@@ -9,15 +9,95 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
     <title>LoL Damage Calculator</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://golden-layout.com/files/latest/js/goldenlayout.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
+    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
 
     <script type="text/javascript">
-        var calc_spell = function(form)
-        {
+        window.onload = function () {
+
+            var config = {
+                content: [{
+                    type: 'row',
+                    content: [{
+                        type: 'component',
+                        componentName: 'testComponent',
+                        componentState: {
+                            label: 'A'
+                        }
+                    }, {
+                        type: 'column',
+                        content: [{
+                            type: 'component',
+                            componentName: 'testComponent',
+                            componentState: {
+                                label: 'B'
+                            }
+                        }, {
+                            type: 'component',
+                            componentName: 'testComponent',
+                            componentState: {
+                                label: 'C'
+                            }
+                        }]
+                    }]
+                }]
+            };
+            var myLayout, savedState = localStorage.getItem('GoldenLayout_savedState');
+
+            if (savedState !== null) {
+                myLayout = new GoldenLayout(JSON.parse(savedState), $('#layoutContainer'));
+            } else {
+                myLayout = new GoldenLayout(config, $('#layoutContainer'));
+            }
+
+            var addMenuItem = function (text) {
+                var element = $('<li>' + text + '</li>');
+                $('#menuContainer').append(element);
+
+                //insertion code will go here
+            };
+            addMenuItem('Spell Q');
+            addMenuItem('Spell W');
+
+            myLayout.registerComponent('testComponent', function (container, state) {
+                container.getElement().html('<h2>' + state.label + '</h2>');
+
+                // Create the input
+                var input = $('<input type="text" />');
+
+                // Set the initial / saved state
+                if (state.label) {
+                    input.val(state.label);
+                }
+
+                // Store state updates
+                input.on('change', function () {
+                    container.extendState({
+                        label: input.val()
+                    });
+                });
+
+                // Append it to the DOM
+                container.getElement().append(input);
+            });
+
+            myLayout.on('stateChanged', function () {
+                var state = JSON.stringify(myLayout.toConfig());
+                localStorage.setItem('GoldenLayout_savedState', state);
+            });
+
+            myLayout.init();
+        }
+        var calc_spell = function (form) {
             var base_magic_damage = parseFloat(form.base_magic_damage.value),
                 ap = parseFloat(form.champs_ap.value),
                 apscale = parseFloat(form.ap_ratio.value),
                 cooldown = parseFloat(form.cooldown.value),
                 mr = parseFloat(form.target_mr.value)
+
+
 
             var percent_pen = form.champs_void_staff.value ? 0.40 : 0.0
             var mr = parseFloat(form.target_mr.value) * (1.0 - percent_pen) - parseFloat(form.champs_pen.value)
@@ -25,59 +105,66 @@
 
             var dmg_onhit = (base_magic_damage + (ap * apscale)) * (100 / (100 + mr))
             var dmg_dps = dmg_onhit * (1 / cooldown);
-        
+
             form.dmg_onhit.value = dmg_onhit;
             form.dmg_dps.value = dmg_dps;
         }
-        </script>
+    </script>
 
 </head>
 
 <body>
+    <div id="wrapper">
+        <ul id="menuContainer"></ul>
+        <div id="layoutContainer" style="height: 400px"></div>
 
-        <form name="spell_q">
+        <div id="old">
+            <form name="spell_q">
                 <table>
-                    <tbody><tr>
-                        <td>Base magic damage</td>
-                        <td><input type="text" name="base_magic_damage" value="100"></td>
-                    </tr>
-                    <tr>
-                        <td>Champion's AP</td>
-                        <td><input type="text" name="champs_ap" value="100"></td>
-                    </tr>
-                    <tr>
-                        <td>Spell's AP Scaling</td>
-                        <td><input type="text" name="ap_ratio" value="1.0"></td>
-                    </tr>
-                    <tr>
-                        <td>Spell's Cooldown (secs)</td>
-                        <td><input type="text" name="cooldown" value="10"></td>
-                    </tr>
-                    <td>Champion's Void Staff?</td>
+                    <tbody>
+                        <tr>
+                            <td>Base magic damage</td>
+                            <td><input type="text" name="base_magic_damage" value="100"></td>
+                        </tr>
+                        <tr>
+                            <td>Champion's AP</td>
+                            <td><input type="text" name="champs_ap" value="100"></td>
+                        </tr>
+                        <tr>
+                            <td>Spell's AP Scaling</td>
+                            <td><input type="text" name="ap_ratio" value="1.0"></td>
+                        </tr>
+                        <tr>
+                            <td>Spell's Cooldown (secs)</td>
+                            <td><input type="text" name="cooldown" value="10"></td>
+                        </tr>
+                        <td>Champion's Void Staff?</td>
                         <td><input type="checkbox" name="champs_void_staff" value="false"></td>
-                    </tr>
-                    <tr>
-                        <td>Champion's Pen</td>
-                        <td><input type="text" name="champs_pen" value="0"></td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td>Target's Magic Resistance</td>
-                        <td><input type="text" name="target_mr" value="30"></td>
-                    </tr>
-                    <tr colspan="2">
-                        <td><input type="button" value="Calculate" onclick="calc_spell(this.form)"><input type="reset"></td>
-                    </tr>
-                    <tr>
-                        <td>Damage on hit</td>
-                        <td><input type="text" name="dmg_onhit"></td>
-                    </tr>
-                    <tr>
-                        <td>Expected damage per second</td>
-                        <td><input type="text" name="dmg_dps"></td>
-                    </tr>
-                </tbody></table>
-                </form>
+                        </tr>
+                        <tr>
+                            <td>Champion's Pen</td>
+                            <td><input type="text" name="champs_pen" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Target's Magic Resistance</td>
+                            <td><input type="text" name="target_mr" value="30"></td>
+                        </tr>
+                        <tr colspan="2">
+                            <td><input type="button" value="Calculate" onclick="calc_spell(this.form)"><input type="reset"></td>
+                        </tr>
+                        <tr>
+                            <td>Damage on hit</td>
+                            <td><input type="text" name="dmg_onhit"></td>
+                        </tr>
+                        <tr>
+                            <td>Expected damage per second</td>
+                            <td><input type="text" name="dmg_dps"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
