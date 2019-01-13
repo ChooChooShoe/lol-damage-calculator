@@ -17,9 +17,14 @@
                 ap = parseFloat(form.champs_ap.value),
                 apscale = parseFloat(form.ap_ratio.value),
                 cooldown = parseFloat(form.cooldown.value),
-                mr = parseFloat(form.target_mr.value),
-                dmg_onhit = (base_magic_damage + (ap * apscale)) * (100 / (100 + mr)),
-                dmg_dps = dmg_onhit * (1 / cooldown);
+                mr = parseFloat(form.target_mr.value)
+
+            var percent_pen = form.champs_void_staff.value ? 0.40 : 0.0
+            var mr = parseFloat(form.target_mr.value) * (1.0 - percent_pen) - parseFloat(form.champs_pen.value)
+
+
+            var dmg_onhit = (base_magic_damage + (ap * apscale)) * (100 / (100 + mr))
+            var dmg_dps = dmg_onhit * (1 / cooldown);
         
             form.dmg_onhit.value = dmg_onhit;
             form.dmg_dps.value = dmg_dps;
@@ -48,10 +53,14 @@
                         <td>Spell's Cooldown (secs)</td>
                         <td><input type="text" name="cooldown" value="10"></td>
                     </tr>
-                    <tr>
-                        <td>Champion's AP</td>
-                        <td><input type="text" name="champs_ap" value="0"></td>
+                    <td>Champion's Void Staff?</td>
+                        <td><input type="checkbox" name="champs_void_staff" value="false"></td>
                     </tr>
+                    <tr>
+                        <td>Champion's Pen</td>
+                        <td><input type="text" name="champs_pen" value="0"></td>
+                    </tr>
+                    <tr>
                     <tr>
                         <td>Target's Magic Resistance</td>
                         <td><input type="text" name="target_mr" value="30"></td>
