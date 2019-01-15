@@ -1,4 +1,4 @@
-var champion_dat = document.forms.champion_data_form;
+var champion_data = document.forms.champion_data_form;
 var target_data = document.forms.target_data_form;
 var other_data = document.forms.other_data_form;
 
@@ -32,21 +32,21 @@ function validate_champion_data(form) {
     return true;
 }
 
-function calc_champion_data(form) {
+function recalc() {
     console.log("Caculating");
-    var ap = asNumber(form.ap);
-    var total_ad = asNumber(form.total_ad);
-    var base_ad = asNumber(form.base_ad);
-    var bonus_ad = asNumber(form.bonus_ad);
+    var ap = asNumber(champion_data.ap);
+    var total_ad = asNumber(champion_data.total_ad);
+    var base_ad = asNumber(champion_data.base_ad);
+    var bonus_ad = asNumber(champion_data.bonus_ad);
 
-    var attack_speed = asPercent(form.attack_speed);
-    var crit_change = asPercent(form.crit_change);
-    var crit_damage = asPercent(form.crit_damage);
-    var life_steal = asPercent(form.life_steal);
+    var attack_speed = asPercent(champion_data.attack_speed);
+    var crit_change = asPercent(champion_data.crit_change);
+    var crit_damage = asPercent(champion_data.crit_damage);
+    var life_steal = asPercent(champion_data.life_steal);
 
 
     var percent_magic_pen;
-    if (form.has_void_staff.checked) {
+    if (champion_data.has_void_staff.checked) {
         percent_magic_pen = 0.40;
         percent_magic_pen_value.innerHTML = "&nbsp;= 40% Magic Pen.";
     } else {
@@ -54,14 +54,18 @@ function calc_champion_data(form) {
         percent_magic_pen_value.innerHTML = "&nbsp;= 0% Magic Pen.";
     }
 
-    var flat_magic_pen = asNumber(form.flat_magic_pen);
-    var spell_vamp = asPercent(form.spell_vamp);
+    var percent_armor_pen = asPercent(champion_data.percent_armor_pen);
 
-    var lethality = asNumber(form.lethality);
-    var champ_level = asNumber(form.champ_level);
-    var armor_pen = asNumber(form.armor_pen);
+    var flat_magic_pen = asNumber(champion_data.flat_magic_pen);
+    var spell_vamp = asPercent(champion_data.spell_vamp);
 
-    var mr = parseFloat(form.target_mr.value) * (1.0 - percent_pen) - parseFloat(form.champs_pen.value);
+    var lethality = asNumber(champion_data.lethality);
+    var champ_level = asNumber(champion_data.champ_level);
+    var armor_pen = asNumber(champion_data.armor_pen);
+
+    var mr  = asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen;
+
+    var armor  = asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen;
 
     var damage = (base_magic_damage + (ap * apscale));
     var dmg_onhit = damage * (100 / (100 + mr));
@@ -73,42 +77,35 @@ function calc_champion_data(form) {
     other_data.dmg_dps.value = dmg_dps;
 }
 
-function calc_lethality(form, direction) {
+function calc_lethality(direction) {
     console.log("calc_lethality");
 
-    var lethality = asNumber(form.lethality.value);
-    var champ_level = asNumber(form.champ_level.value);
-    var armor_pen = asNumber(form.armor_pen.value);
+    var lethality = asNumber(champion_data.lethality);
+    var champ_level = asNumber(champion_data.champ_level);
+    var armor_pen = asNumber(champion_data.armor_pen);
 
     if (direction) {
-        form.armor_pen.value = rnd3(lethality * (0.6 + (0.4 * champ_level / 18.0)));
+        champion_data.armor_pen.value = rnd3(lethality * (0.6 + (0.4 * champ_level / 18.0)));
     } else {
-        form.lethality.value = rnd3(armor_pen / (0.6 + (0.4 * champ_level / 18.0)));
+        champion_data.lethality.value = rnd3(armor_pen / (0.6 + (0.4 * champ_level / 18.0)));
     }
 }
 
-var form = document.forms.champion_data_form;
-
 // For lethality and armor pen.
 document.getElementById("lethality").addEventListener("input", function () {
-    calc_lethality(form, true);
+    calc_lethality(true);
 });
 document.getElementById("champ_level").addEventListener("input", function () {
-    calc_lethality(form, true);
+    calc_lethality(true);
 });
 document.getElementById("armor_pen").addEventListener("input", function () {
-    calc_lethality(form, false);
+    calc_lethality(false);
 });
 
-var f = function () {
-    if (validate_champion_data(form)) {
-        calc_champion_data(form);
-    }
-};
-var inputs = form.getElementsByClassName("input");
+var inputs = document.getElementsByClassName("input");
 for (var i = 0; i < inputs.length; i++) {
     // inputs[i].style.backgroundColor = "red";
-    inputs[i].addEventListener("input", f);
+    inputs[i].addEventListener("input", recalc);
 }
 
 function collapseExtras(self) {
