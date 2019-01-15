@@ -1,4 +1,3 @@
-
 var champion_dat = document.forms.champion_data_form;
 var target_data = document.forms.target_data_form;
 var other_data = document.forms.other_data_form;
@@ -6,14 +5,25 @@ var other_data = document.forms.other_data_form;
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
 function asNumber(field) {
-    if(isNaN(field.value))
-        return 0.0;
-    return parseFloat(field.value);
+    var x = parseFloat(field.value);
+    if (isNaN(x))
+        return 0;
+    return x;
+}
+function asInt(field) {
+    var x = parseInt(field.value);
+    if (isNaN(x))
+        return 0;
+    return x;
 }
 
 function asPercent(field) {
-    return field.value;
+    var x = parseFloat(field.value);
+    if (isNaN(x))
+        return 0;
+    return x / 100.0;
 }
+
 function rnd3(num) {
     return Math.round(num * 1000.0) / 1000.0;
 }
@@ -21,6 +31,7 @@ function rnd3(num) {
 function validate_champion_data(form) {
     return true;
 }
+
 function calc_champion_data(form) {
     console.log("Caculating");
     var ap = asNumber(form.ap);
@@ -54,7 +65,7 @@ function calc_champion_data(form) {
 
     var damage = (base_magic_damage + (ap * apscale));
     var dmg_onhit = damage * (100 / (100 + mr));
-    var dmg_dps = 0;// dmg_onhit * (1 / cooldown);
+    var dmg_dps = 0; // dmg_onhit * (1 / cooldown);
 
 
     other_data.dmg_premitigation.value = damage;
@@ -64,7 +75,7 @@ function calc_champion_data(form) {
 
 function calc_lethality(form, direction) {
     console.log("calc_lethality");
-    
+
     var lethality = asNumber(form.lethality.value);
     var champ_level = asNumber(form.champ_level.value);
     var armor_pen = asNumber(form.armor_pen.value);
@@ -90,7 +101,7 @@ document.getElementById("armor_pen").addEventListener("input", function () {
 });
 
 var f = function () {
-    if(validate_champion_data(form)) {
+    if (validate_champion_data(form)) {
         calc_champion_data(form);
     }
 };
@@ -100,18 +111,32 @@ for (var i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("input", f);
 }
 
-function collapseExtras(thiss) {
-    var inputs = thiss.parentElement.getElementsByClassName("extra");
+function collapseExtras(self) {
+    var inputs = self.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < inputs.length; i++) {
         var element = inputs[i];
         element.style = "display: none;";
     }
 }
 
-function expandExtras(thiss) {
-    var inputs = thiss.parentElement.getElementsByClassName("extra");
+function expandExtras(self) {
+    var inputs = self.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < inputs.length; i++) {
         var element = inputs[i];
         element.style = "";
     }
+}
+
+function minusButton(self) {
+    var x = asInt(self.nextElementSibling);
+    if (x > 0)
+        self.nextElementSibling.value = x - 1;
+}
+
+function plusButton(self) {
+    var x = asInt(self.previousElementSibling);
+    if (x < 0)
+    self.previousElementSibling.value = 1;
+    else
+        self.previousElementSibling.value = x + 1;
 }
