@@ -24,18 +24,20 @@
                 <form name="champion_data_form">
                     <label for="ap">Total Ability Power (AP)</label>
                     <input type="text" id="ap" name="ap" value="100" class="input" />
+
                     <label for="total_ad">Total Attack Damage (AD)</label>
                     <input type="text" id="total_ad" name="total_ad" value="100" class="input" />
-                    <label for="base_ad" class="short">➤ Base AD</label>
-                    <input type="text" id="base_ad" name="base_ad" value="100" class="input short" />
-                    <label for="bonus_ad" class="short">➤ Bonus AD</label>
-                    <input type="text" id="bonus_ad" name="bonus_ad" value="100" class="input short" />
-                    <label for="attack_speed">Attack Speed</label>
-                    <input type="text" id="attack_speed" name="attack_speed" value="0.67" class="input" />
-                    <label for="crit_change">% Crit. Change</label>
-                    <input type="text" id="crit_change" name="crit_change" value="50%" class="input" />
-                    <label for="crit_damage">% Crit. Damage</label>
-                    <input type="text" id="crit_damage" name="crit_damage" value="200%" class="input" />
+                    <label for="base_ad" class="extra short">➤ Base AD</label>
+                    <input type="text" id="base_ad" name="base_ad" value="100" class="extra input short" />
+                    <label for="bonus_ad" class="extra short">➤ Bonus AD</label>
+                    <input type="text" id="bonus_ad" name="bonus_ad" value="100" class="extra input short" />
+                    
+                    <label for="attack_speed" class="extra">Attack Speed</label>
+                    <input type="text" id="attack_speed" name="attack_speed" value="0.67" class="extra input" />
+                    <label for="crit_change" class="extra">% Crit. Change</label>
+                    <input type="text" id="crit_change" name="crit_change" value="50%" class="extra input" />
+                    <label for="crit_damage" class="extra">% Crit. Damage</label>
+                    <input type="text" id="crit_damage" name="crit_damage" value="200%" class="extra input" />
                     <!-- <label>
                             <label class="switch">
                                 <input id="crit_damage" name="crit_damage" type="checkbox" class="input">
@@ -43,8 +45,8 @@
                             </label>
                             <span id="percent_crit_damage_value">&nbsp;= 200% Crit Damage</span>
                         </label> -->
-                    <label for="life_steal">% Life Steal</label>
-                    <input type="text" id="life_steal" name="life_steal" value="0%" class="input" />
+                    <label for="life_steal" class="extra">% Life Steal</label>
+                    <input type="text" id="life_steal" name="life_steal" value="0%" class="extra input" />
 
                     <label for="has_void_staff">Has Void Staff?</label>
                     <label>
@@ -58,57 +60,56 @@
                     <label for="flat_magic_pen">Flat Magic Penetration</label>
                     <input type="text" id="flat_magic_pen" name="flat_magic_pen" value="18" class="input" />
 
-                    <label for="spell_vamp">% Spell Vamp</label>
-                    <input type="text" id="spell_vamp" name="spell_vamp" value="0%" class="input" />
+                    <label for="spell_vamp" class="extra">% Spell Vamp</label>
+                    <input type="text" id="spell_vamp" name="spell_vamp" value="0%" class="extra input" />
 
                     <label for="lethality">Lethality</label>
                     <input type="text" id="lethality" name="lethality" value="21" class="input" />
-                    <label for="champ_level" class="short">➤ Champion Level</label>
-                    <input type="text" id="champ_level" name="champ_level" value="18" class="input short" />
-                    <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
-                    <input type="text" id="armor_pen" name="armor_pen" value="21" class="input short" />
+                    <label for="champ_level" class="extra short">➤ Champion Level</label>
+                    <input type="text" id="champ_level" name="champ_level" value="18" class="extra input short" />
+                    <label for="armor_pen" class="extra short">➤ Effective Armor Pen.</label>
+                    <input type="text" id="armor_pen" name="armor_pen" value="21" class="extra input short" />
 
                     <input name="reset" type="reset" value="Reset Above">
+                    <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                 </form>
             </div>
 
             <div class="data_holder" id="target_data">
                 <h2>Target's Data</h2>
                 <form name="target_data_form">
+                    <label for="target_hp">Health (HP)</label>
+                    <input type="text" id="target_hp" name="target_hp" value="2000" class="input" />
+
+                    <label for="target_armor">Armor</label>
+                    <input type="text" id="target_armor" name="target_armor" value="100" class="input" />
+                    <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
+                    <input type="text" id="target_physical_reduction" name="target_physical_reduction" value="50%"
+                        class="extra input short" />
+                    <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
+                    <input type="text" id="target_eff_physical_hp" name="target_eff_physical_hp" value="3000" class="extra input short" />
+
                     <label for="target_mr">Magic Resistance (MR)</label>
                     <input type="text" id="target_mr" name="target_mr" value="100" class="input" />
-                    <label for="target_ad">Armor</label>
-                    <input type="text" id="target_ad" name="target_ad" value="100" class="input" />
+                    <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
+                    <input type="text" id="target_magic_reduction" name="target_magic_reduction" value="50%" class="extra input short" />
+                    <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
+                    <input type="text" id="target_eff_magic_hp" name="target_eff_magic_hp" value="3000" class="extra input short" />
 
-                    <label for="base_ad" class="short">➤ Base AD</label>
-                    <input type="text" id="base_ad" name="base_ad" value="100" class="input short" />
-                    <label for="bonus_ad" class="short">➤ Bonus AD</label>
-                    <input type="text" id="bonus_ad" name="bonus_ad" value="100" class="input short" />
-
-                    <label for="champs_void_staff">Has Void Staff?</label>
-                    <label>
-                        <label class="switch">
-                            <input id="champs_void_staff" name="champs_void_staff" type="checkbox" class="input">
-                            <span class="slider"></span>
-                        </label>
-                        <span id="percent_magic_pen">&nbsp;= 0% Magic Pen.</span>
-                    </label>
-
-                    <label for="magic_pen">Flat Magic Penetration</label>
-                    <input type="text" id="magic_pen" name="magic_pen" value="18" class="input short" />
-
-                    <label for="magic_pen">Flat MR Reduction</label>
-                    <input type="text" id="magic_pen" name="magic_pen" value="18" class="input short" />
+                    <label for="target_hp5" class="extra">Health regeneration (hp5)</label>
+                    <input type="text" id="target_hp5" name="target_hp5" value="3.75" class="extra input" />
 
                     <input name="reset" type="reset" value="Reset Above">
+                    <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                 </form>
             </div>
 
 
             <div class="data_holder" id="other_data">
                 <h2>Other Data & Outputs</h2>
-                <form autocomplete="off" name="other_data_form">
-                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                <form name="other_data_form">
                     <label for="dmg_premitigation">Damage before resistances</label>
                     <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input" />
 
@@ -119,6 +120,30 @@
                     <input type="text" id="dmg_dps" name="dmg_dps" value="" class="input" />
 
                     <input name="reset" type="reset" value="Reset Above">
+                    <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
+                </form>
+            </div>
+
+            <div class="data_holder" id="other_data">
+                <form name="other_data_form" method='POST' action='#'>
+                    <h2>Spell Q - Casts (
+                        <input type='button' value='-' id='cast_minus' class="cast_pm" />
+                        <input type='text' name='casts' value='1' class='casts_count'>
+                        <input type='button' value='+' id='cast_plus' class="cast_pm" />)</h2>
+
+                    <label for="dmg_premitigation">Damage before resistances</label>
+                    <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input" />
+
+                    <label for="dmg_onhit">Damage on hit</label>
+                    <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input" />
+
+                    <label for="dmg_dps">Expected damage per second</label>
+                    <input type="text" id="dmg_dps" name="dmg_dps" value="" class="input" />
+
+                    <input name="reset" type="reset" value="Reset Above">
+                    <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                 </form>
             </div>
         </div>

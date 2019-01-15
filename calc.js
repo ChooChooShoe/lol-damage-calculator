@@ -1,75 +1,8 @@
-// var config = {
-//     content: [{
-//         type: 'row',
-//         content: [{
-//             type: 'component',
-//             componentName: 'testComponent',
-//             componentState: {
-//                 label: 'A'
-//             }
-//         }, {
-//             type: 'column',
-//             content: [{
-//                 type: 'component',
-//                 componentName: 'testComponent',
-//                 componentState: {
-//                     label: 'B'
-//                 }
-//             }, {
-//                 type: 'component',
-//                 componentName: 'testComponent',
-//                 componentState: {
-//                     label: 'C'
-//                 }
-//             }]
-//         }]
-//     }]
-// };
-// var myLayout, savedState = localStorage.getItem('GoldenLayout_savedState');
 
-// if (savedState !== null) {
-//     myLayout = new GoldenLayout(JSON.parse(savedState), $('#layoutContainer'));
-// } else {
-//     myLayout = new GoldenLayout(config, $('#layoutContainer'));
-// }
+var champion_dat = document.forms.champion_data_form;
+var target_data = document.forms.target_data_form;
+var other_data = document.forms.other_data_form;
 
-// var addMenuItem = function (text) {
-//     var element = $('<button>' + text + '</button>');
-//     $('#menuContainer').append(element);
-
-//     //insertion code will go here
-// };
-// addMenuItem('Spell Q');
-// addMenuItem('Spell W');
-
-// myLayout.registerComponent('testComponent', function (container, state) {
-//     container.getElement().html('<h2>' + state.label + '</h2>');
-
-//     // Create the input
-//     var input = $('<input type="text" />');
-
-//     // Set the initial / saved state
-//     if (state.label) {
-//         input.val(state.label);
-//     }
-
-//     // Store state updates
-//     input.on('change', function () {
-//         container.extendState({
-//             label: input.val()
-//         });
-//     });
-
-//     // Append it to the DOM
-//     container.getElement().append(input);
-// });
-
-// myLayout.on('stateChanged', function () {
-//     var state = JSON.stringify(myLayout.toConfig());
-//     localStorage.setItem('GoldenLayout_savedState', state);
-// });
-
-// myLayout.init();
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
 function asNumber(field) {
@@ -117,16 +50,16 @@ function calc_champion_data(form) {
     var champ_level = asNumber(form.champ_level);
     var armor_pen = asNumber(form.armor_pen);
 
-    // var mr = parseFloat(form.target_mr.value) * (1.0 - percent_pen) - parseFloat(form.champs_pen.value);
+    var mr = parseFloat(form.target_mr.value) * (1.0 - percent_pen) - parseFloat(form.champs_pen.value);
 
-    // var damage = (base_magic_damage + (ap * apscale));
-    // var dmg_onhit = damage * (100 / (100 + mr));
-    // var dmg_dps = dmg_onhit * (1 / cooldown);
+    var damage = (base_magic_damage + (ap * apscale));
+    var dmg_onhit = damage * (100 / (100 + mr));
+    var dmg_dps = 0;// dmg_onhit * (1 / cooldown);
 
 
-    // form.dmg_premitigation.value = damage;
-    // form.dmg_onhit.value = dmg_onhit;
-    // form.dmg_dps.value = dmg_dps;
+    other_data.dmg_premitigation.value = damage;
+    other_data.dmg_onhit.value = dmg_onhit;
+    other_data.dmg_dps.value = dmg_dps;
 }
 
 function calc_lethality(form, direction) {
@@ -165,4 +98,20 @@ var inputs = form.getElementsByClassName("input");
 for (var i = 0; i < inputs.length; i++) {
     // inputs[i].style.backgroundColor = "red";
     inputs[i].addEventListener("input", f);
+}
+
+function collapseExtras(thiss) {
+    var inputs = thiss.parentElement.getElementsByClassName("extra");
+    for (var i = 0; i < inputs.length; i++) {
+        var element = inputs[i];
+        element.style = "display: none;";
+    }
+}
+
+function expandExtras(thiss) {
+    var inputs = thiss.parentElement.getElementsByClassName("extra");
+    for (var i = 0; i < inputs.length; i++) {
+        var element = inputs[i];
+        element.style = "";
+    }
 }
