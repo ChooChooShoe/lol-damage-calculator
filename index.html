@@ -9,67 +9,118 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
     <title>LoL Damage Calculator</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="https://golden-layout.com/files/latest/js/goldenlayout.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
-    <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
+    <link type="text/css" rel="stylesheet" href="main.css" />
 
 </head>
 
 <body>
     <div id="wrapper">
         <ul id="menuContainer"></ul>
-        <div id="layoutContainer" style="height: 400px"></div>
+        <!--div id="layoutContainer" style="height: 400px"></div>-->
 
-        <div id="old">
-            <form name="spell_q">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Base magic damage</td>
-                            <td><input type="text" name="base_magic_damage" value="100"></td>
-                        </tr>
-                        <tr>
-                            <td>Champion's AP</td>
-                            <td><input type="text" name="champs_ap" value="100"></td>
-                        </tr>
-                        <tr>
-                            <td>Spell's AP Scaling</td>
-                            <td><input type="text" name="ap_ratio" value="1.0"></td>
-                        </tr>
-                        <tr>
-                            <td>Spell's Cooldown (secs)</td>
-                            <td><input type="text" name="cooldown" value="10"></td>
-                        </tr>
-                        <td>Champion's Void Staff?</td>
-                        <td><input type="checkbox" name="champs_void_staff" value="false"></td>
-                        </tr>
-                        <tr>
-                            <td>Champion's Pen</td>
-                            <td><input type="text" name="champs_pen" value="0"></td>
-                        </tr>
-                        <tr>
-                            <td>Target's Magic Resistance</td>
-                            <td><input type="text" name="target_mr" value="30"></td>
-                        </tr>
-                        <tr colspan="2">
-                            <td><input type="button" value="Calculate" onclick="calc_spell(this.form)"><input type="reset"></td>
-                        </tr>
-                        <tr>
-                            <td>Damage before resistances</td>
-                            <td><input type="text" name="dmg_premitigation"></td>
-                        </tr>
-                        <tr>
-                            <td>Damage on hit</td>
-                            <td><input type="text" name="dmg_onhit"></td>
-                        </tr>
-                        <tr>
-                            <td>Expected damage per second</td>
-                            <td><input type="text" name="dmg_dps"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+        <div id="main">
+            <div class="data_holder" id="champion_data">
+                <h2>Player's Champion Data</h2>
+                <form name="champion_data_form">
+                    <label for="ap">Total Ability Power (AP)</label>
+                    <input type="text" id="ap" name="ap" value="100" class="input" />
+                    <label for="total_ad">Total Attack Damage (AD)</label>
+                    <input type="text" id="total_ad" name="total_ad" value="100" class="input" />
+                    <label for="base_ad" class="short">➤ Base AD</label>
+                    <input type="text" id="base_ad" name="base_ad" value="100" class="input short" />
+                    <label for="bonus_ad" class="short">➤ Bonus AD</label>
+                    <input type="text" id="bonus_ad" name="bonus_ad" value="100" class="input short" />
+                    <label for="attack_speed">Attack Speed</label>
+                    <input type="text" id="attack_speed" name="attack_speed" value="0.67" class="input" />
+                    <label for="crit_change">% Crit. Change</label>
+                    <input type="text" id="crit_change" name="crit_change" value="50%" class="input" />
+                    <label for="crit_damage">% Crit. Damage</label>
+                    <input type="text" id="crit_damage" name="crit_damage" value="200%" class="input" />
+                    <!-- <label>
+                            <label class="switch">
+                                <input id="crit_damage" name="crit_damage" type="checkbox" class="input">
+                                <span class="slider"></span>
+                            </label>
+                            <span id="percent_crit_damage_value">&nbsp;= 200% Crit Damage</span>
+                        </label> -->
+                    <label for="life_steal">% Life Steal</label>
+                    <input type="text" id="life_steal" name="life_steal" value="0%" class="input" />
+
+                    <label for="has_void_staff">Has Void Staff?</label>
+                    <label>
+                        <label class="switch">
+                            <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="percent_magic_pen_value">&nbsp;= 0% Magic Pen.</span>
+                    </label>
+
+                    <label for="flat_magic_pen">Flat Magic Penetration</label>
+                    <input type="text" id="flat_magic_pen" name="flat_magic_pen" value="18" class="input" />
+
+                    <label for="spell_vamp">% Spell Vamp</label>
+                    <input type="text" id="spell_vamp" name="spell_vamp" value="0%" class="input" />
+
+                    <label for="lethality">Lethality</label>
+                    <input type="text" id="lethality" name="lethality" value="21" class="input" />
+                    <label for="champ_level" class="short">➤ Champion Level</label>
+                    <input type="text" id="champ_level" name="champ_level" value="18" class="input short" />
+                    <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
+                    <input type="text" id="armor_pen" name="armor_pen" value="21" class="input short" />
+
+                    <input name="reset" type="reset" value="Reset Above">
+                </form>
+            </div>
+
+            <div class="data_holder" id="target_data">
+                <h2>Target's Data</h2>
+                <form name="target_data_form">
+                    <label for="target_mr">Magic Resistance (MR)</label>
+                    <input type="text" id="target_mr" name="target_mr" value="100" class="input" />
+                    <label for="target_ad">Armor</label>
+                    <input type="text" id="target_ad" name="target_ad" value="100" class="input" />
+
+                    <label for="base_ad" class="short">➤ Base AD</label>
+                    <input type="text" id="base_ad" name="base_ad" value="100" class="input short" />
+                    <label for="bonus_ad" class="short">➤ Bonus AD</label>
+                    <input type="text" id="bonus_ad" name="bonus_ad" value="100" class="input short" />
+
+                    <label for="champs_void_staff">Has Void Staff?</label>
+                    <label>
+                        <label class="switch">
+                            <input id="champs_void_staff" name="champs_void_staff" type="checkbox" class="input">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="percent_magic_pen">&nbsp;= 0% Magic Pen.</span>
+                    </label>
+
+                    <label for="magic_pen">Flat Magic Penetration</label>
+                    <input type="text" id="magic_pen" name="magic_pen" value="18" class="input short" />
+
+                    <label for="magic_pen">Flat MR Reduction</label>
+                    <input type="text" id="magic_pen" name="magic_pen" value="18" class="input short" />
+
+                    <input name="reset" type="reset" value="Reset Above">
+                </form>
+            </div>
+
+
+            <div class="data_holder" id="other_data">
+                <h2>Other Data & Outputs</h2>
+                <form autocomplete="off" name="other_data_form">
+                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                    <label for="dmg_premitigation">Damage before resistances</label>
+                    <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input" />
+
+                    <label for="dmg_onhit">Damage on hit</label>
+                    <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input" />
+
+                    <label for="dmg_dps">Expected damage per second</label>
+                    <input type="text" id="dmg_dps" name="dmg_dps" value="" class="input" />
+
+                    <input name="reset" type="reset" value="Reset Above">
+                </form>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="calc.js"></script>
