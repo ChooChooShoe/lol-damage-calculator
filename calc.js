@@ -5,12 +5,17 @@ var other_data = document.forms.other_data_form;
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
 function asNumber(field) {
+    if (field.value === "")
+        return field.placeholder;
     var x = parseFloat(field.value);
     if (isNaN(x))
         return 0;
     return x;
 }
+
 function asInt(field) {
+    if (field.value === "")
+        return field.placeholder;
     var x = parseInt(field.value);
     if (isNaN(x))
         return 0;
@@ -18,6 +23,8 @@ function asInt(field) {
 }
 
 function asPercent(field) {
+    if (field.value === "")
+        return parseFloat(field.placeholder) / 100.0;
     var x = parseFloat(field.value);
     if (isNaN(x))
         return 0;
@@ -63,9 +70,9 @@ function recalc() {
     var champ_level = asNumber(champion_data.champ_level);
     var armor_pen = asNumber(champion_data.armor_pen);
 
-    var mr  = asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen;
+    var mr = asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen;
 
-    var armor  = asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen;
+    var armor = asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen;
 
     var damage = (base_magic_damage + (ap * apscale));
     var dmg_onhit = damage * (100 / (100 + mr));
@@ -92,15 +99,15 @@ function calc_lethality(direction) {
 }
 
 // For lethality and armor pen.
-document.getElementById("lethality").addEventListener("input", function () {
-    calc_lethality(true);
-});
-document.getElementById("champ_level").addEventListener("input", function () {
-    calc_lethality(true);
-});
-document.getElementById("armor_pen").addEventListener("input", function () {
-    calc_lethality(false);
-});
+// document.getElementById("lethality").addEventListener("input", function () {
+//     calc_lethality(true);
+// });
+// document.getElementById("champ_level").addEventListener("input", function () {
+//     calc_lethality(true);
+// });
+// document.getElementById("armor_pen").addEventListener("input", function () {
+//     calc_lethality(false);
+// });
 
 var inputs = document.getElementsByClassName("input");
 for (var i = 0; i < inputs.length; i++) {
@@ -109,6 +116,8 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 function collapseExtras(self) {
+    self.classList.add("hidden");
+    self.previousElementSibling.classList.remove("hidden");
     var inputs = self.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < inputs.length; i++) {
         var element = inputs[i];
@@ -117,6 +126,8 @@ function collapseExtras(self) {
 }
 
 function expandExtras(self) {
+    self.classList.add("hidden");
+    self.nextElementSibling.classList.remove("hidden");
     var inputs = self.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < inputs.length; i++) {
         var element = inputs[i];
@@ -133,7 +144,7 @@ function minusButton(self) {
 function plusButton(self) {
     var x = asInt(self.previousElementSibling);
     if (x < 0)
-    self.previousElementSibling.value = 1;
+        self.previousElementSibling.value = 1;
     else
         self.previousElementSibling.value = x + 1;
 }
