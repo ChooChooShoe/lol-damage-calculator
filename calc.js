@@ -1,6 +1,10 @@
+var main_div = document.getElementById("main");
 var champion_data = document.forms.champion_data_form;
 var target_data = document.forms.target_data_form;
 var other_data = document.forms.other_data_form;
+
+var spell_data = [document.forms.spell_data_q_form];
+var spell_data_index = 0;
 
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
@@ -46,7 +50,7 @@ function recalc() {
     var base_ad = asNumber(champion_data.base_ad);
     var bonus_ad = asNumber(champion_data.bonus_ad);
 
-    var attack_speed = asPercent(champion_data.attack_speed);
+    var attack_speed = asNumber(champion_data.attack_speed);
     var crit_change = asPercent(champion_data.crit_change);
     var crit_damage = asPercent(champion_data.crit_damage);
     var life_steal = asPercent(champion_data.life_steal);
@@ -109,9 +113,9 @@ function calc_lethality(direction) {
 //     calc_lethality(false);
 // });
 
-var inputs = document.getElementsByClassName("input");
+var inputs = champion_data.getElementsByClassName("input");
 for (var i = 0; i < inputs.length; i++) {
-    // inputs[i].style.backgroundColor = "red";
+    inputs[i].style.backgroundColor = "red";
     inputs[i].addEventListener("input", recalc);
 }
 
@@ -147,4 +151,11 @@ function plusButton(self) {
         self.previousElementSibling.value = 1;
     else
         self.previousElementSibling.value = x + 1;
+}
+
+function addNewSpellForm(self) {
+    var cloned = document.getElementById("spell_data_0").cloneNode(true);
+    spell_data_index++;
+    cloned.id = "spell_data_" + (spell_data_index);
+    main_div.appendChild(cloned);
 }
