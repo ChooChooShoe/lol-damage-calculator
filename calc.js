@@ -43,36 +43,39 @@ function validate_champion_data(form) {
     return true;
 }
 
-function calc_spell(data) {
+function calc_spell(form) {
     console.log("Caculating a spell");
-    var base_damage = asNumber(data.base_damage);
-    var ap_ratio = asPercent(data.ap_ratio);
+    var base_damage = asNumber(form.base_damage);
+    var ap_ratio = asPercent(form.ap_ratio);
 
-    var total_ad_ratio = asPercent(data.total_ad_ratio);
-    var bonus_ad_ratio = asPercent(data.bonus_ad_ratio);
+    var total_ad_ratio = asPercent(form.total_ad_ratio);
+    var bonus_ad_ratio = asPercent(form.bonus_ad_ratio);
 
     var d = recalc();
 
-    var damage = (base_damage + (data.ap * ap_ratio) + (data.total_ad * total_ad_ratio) + (data.bonus_ad * bonus_ad_ratio));
-    var dmg_onhit = damage * (100 / (100 + data.mr));
+    var damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
+    var dmg_onhit = damage * (100 / (100 + d.eff_mr));
     var dmg_dps = 0; // dmg_onhit * (1 / cooldown);
 
 
-    data.dmg_premitigation.value = damage;
-    data.dmg_onhit.value = dmg_onhit;
-    data.dmg_dps.value = dmg_dps;
+    form.dmg_premitigation.value = damage;
+    form.dmg_onhit.value = dmg_onhit;
+    form.dmg_dps.value = dmg_dps;
 }
 
 function recalc() {
     console.log("Caculating");
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
-            percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
-            percent_magic_pen= 0.40;
-        } else {
-            percent_magic_pen_value.innerHTML = "&nbsp = 0% Magic Pen.";
-            percent_magic_pen= 0.0;
-        }
+        percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
+        percent_magic_pen = 0.40;
+    } else {
+        percent_magic_pen_value.innerHTML = "&nbsp = 0% Magic Pen.";
+        percent_magic_pen = 0.0;
+    }
+    var flat_magic_pen = asNumber(champion_data.flat_magic_pen);
+    var percent_armor_pen = asNumber(champion_data.percent_armor_pen);
+    var armor_pen = asNumber(champion_data.armor_pen);
     return {
         ap: asNumber(champion_data.ap),
         total_ad: asNumber(champion_data.total_ad),
@@ -84,21 +87,21 @@ function recalc() {
         crit_damage: asPercent(champion_data.crit_damage),
         life_steal: asPercent(champion_data.life_steal),
 
-
         percent_magic_pen: percent_magic_pen,
-
-        percent_armor_pen: asPercent(champion_data.percent_armor_pen),
-
-        flat_magic_pen: asNumber(champion_data.flat_magic_pen),
+        percent_armor_pen: percent_armor_pen,
+        flat_magic_pen: flat_magic_pen,
         spell_vamp: asPercent(champion_data.spell_vamp),
 
         lethality: asNumber(champion_data.lethality),
         champ_level: asNumber(champion_data.champ_level),
         armor_pen: asNumber(champion_data.armor_pen),
 
-        mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
+        mr: asNumber(target_data.target_mr),
+        armor: asNumber(target_data.target_armor),
 
-        armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
+        eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
+
+        eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
     };
 }
 
