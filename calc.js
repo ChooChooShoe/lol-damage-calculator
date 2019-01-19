@@ -43,49 +43,63 @@ function validate_champion_data(form) {
     return true;
 }
 
-function recalc() {
-    console.log("Caculating");
-    var ap = asNumber(champion_data.ap);
-    var total_ad = asNumber(champion_data.total_ad);
-    var base_ad = asNumber(champion_data.base_ad);
-    var bonus_ad = asNumber(champion_data.bonus_ad);
+function calc_spell(data) {
+    console.log("Caculating a spell");
+    var base_damage = asNumber(data.base_damage);
+    var ap_ratio = asPercent(data.ap_ratio);
 
-    var attack_speed = asNumber(champion_data.attack_speed);
-    var crit_change = asPercent(champion_data.crit_change);
-    var crit_damage = asPercent(champion_data.crit_damage);
-    var life_steal = asPercent(champion_data.life_steal);
+    var total_ad_ratio = asPercent(data.total_ad_ratio);
+    var bonus_ad_ratio = asPercent(data.bonus_ad_ratio);
 
+    var d = recalc();
 
-    var percent_magic_pen;
-    if (champion_data.has_void_staff.checked) {
-        percent_magic_pen = 0.40;
-        percent_magic_pen_value.innerHTML = "&nbsp;= 40% Magic Pen.";
-    } else {
-        percent_magic_pen = 0.0;
-        percent_magic_pen_value.innerHTML = "&nbsp;= 0% Magic Pen.";
-    }
-
-    var percent_armor_pen = asPercent(champion_data.percent_armor_pen);
-
-    var flat_magic_pen = asNumber(champion_data.flat_magic_pen);
-    var spell_vamp = asPercent(champion_data.spell_vamp);
-
-    var lethality = asNumber(champion_data.lethality);
-    var champ_level = asNumber(champion_data.champ_level);
-    var armor_pen = asNumber(champion_data.armor_pen);
-
-    var mr = asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen;
-
-    var armor = asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen;
-
-    var damage = (base_magic_damage + (ap * apscale));
-    var dmg_onhit = damage * (100 / (100 + mr));
+    var damage = (base_damage + (data.ap * ap_ratio) + (data.total_ad * total_ad_ratio) + (data.bonus_ad * bonus_ad_ratio));
+    var dmg_onhit = damage * (100 / (100 + data.mr));
     var dmg_dps = 0; // dmg_onhit * (1 / cooldown);
 
 
-    other_data.dmg_premitigation.value = damage;
-    other_data.dmg_onhit.value = dmg_onhit;
-    other_data.dmg_dps.value = dmg_dps;
+    data.dmg_premitigation.value = damage;
+    data.dmg_onhit.value = dmg_onhit;
+    data.dmg_dps.value = dmg_dps;
+}
+
+function recalc() {
+    console.log("Caculating");
+    var percent_magic_pen;
+    if (champion_data.has_void_staff.checked) {
+            percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
+            percent_magic_pen= 0.40;
+        } else {
+            percent_magic_pen_value.innerHTML = "&nbsp = 0% Magic Pen.";
+            percent_magic_pen= 0.0;
+        }
+    return {
+        ap: asNumber(champion_data.ap),
+        total_ad: asNumber(champion_data.total_ad),
+        base_ad: asNumber(champion_data.base_ad),
+        bonus_ad: asNumber(champion_data.bonus_ad),
+
+        attack_speed: asNumber(champion_data.attack_speed),
+        crit_change: asPercent(champion_data.crit_change),
+        crit_damage: asPercent(champion_data.crit_damage),
+        life_steal: asPercent(champion_data.life_steal),
+
+
+        percent_magic_pen: percent_magic_pen,
+
+        percent_armor_pen: asPercent(champion_data.percent_armor_pen),
+
+        flat_magic_pen: asNumber(champion_data.flat_magic_pen),
+        spell_vamp: asPercent(champion_data.spell_vamp),
+
+        lethality: asNumber(champion_data.lethality),
+        champ_level: asNumber(champion_data.champ_level),
+        armor_pen: asNumber(champion_data.armor_pen),
+
+        mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
+
+        armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
+    };
 }
 
 function calc_lethality(direction) {
@@ -153,9 +167,25 @@ function plusButton(self) {
         self.previousElementSibling.value = x + 1;
 }
 
+
+
 function addNewSpellForm(self) {
     var cloned = document.getElementById("spell_data_0").cloneNode(true);
     spell_data_index++;
     cloned.id = "spell_data_" + (spell_data_index);
+
+    var form = cloned.getElementsByTagName("form")[0];
+    form.name = "spell_data_" + (spell_data_index) + "_form";
+
+    var idx = spell_data_index;
+    var f = function () {
+        calc_spell(form, idx);
+    };
+    var inputs = cloned.getElementsByClassName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].style.backgroundColor = "blue";
+        inputs[i].addEventListener("input", f);
+    }
+
     main_div.appendChild(cloned);
 }
