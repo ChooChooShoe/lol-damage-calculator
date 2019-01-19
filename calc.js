@@ -1,28 +1,34 @@
 var main_div = document.getElementById("main");
 var champion_data = document.forms.champion_data_form;
 var target_data = document.forms.target_data_form;
-var other_data = document.forms.other_data_form;
+// var other_data = document.forms.other_data_form;
 
-var spell_data = [document.forms.spell_data_q_form];
+
+var spell_data_template = document.getElementById("spell_data_template");
+var spell_data = [];
 var spell_data_index = 0;
 
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
-function asNumber(field) {
-    if (field.value === "")
-        return field.placeholder;
-    var x = parseFloat(field.value);
-    if (isNaN(x))
-        return 0;
+function asNumber(field, usePlaceHolder=true) {
+    var x;
+    if (field.value === "" && usePlaceHolder)
+        x = parseFloat(field.placeholder);
+    else
+        x = parseFloat(field.value);
+    // if (isNaN(x))
+    //     return 0;
     return x;
 }
 
 function asInt(field) {
+    var x;
     if (field.value === "")
-        return field.placeholder;
-    var x = parseInt(field.value);
-    if (isNaN(x))
-        return 0;
+        x = parseInt(field.placeholder);
+    else
+        x = parseInt(field.value);
+    // if (isNaN(x))
+    //     return 0;
     return x;
 }
 
@@ -30,20 +36,24 @@ function asPercent(field) {
     if (field.value === "")
         return parseFloat(field.placeholder) / 100.0;
     var x = parseFloat(field.value);
-    if (isNaN(x))
-        return 0;
+    // if (isNaN(x))
+    //     return 0;
     return x / 100.0;
 }
 
 function rnd3(num) {
     return Math.round(num * 1000.0) / 1000.0;
 }
+// for percents
+function rnd3p(num) {
+    return (Math.round(num * 100.0 * 1000.0) / 1000.0 )+ "%";
+}
 
 function validate_champion_data(form) {
     return true;
 }
 
-function calc_spell(form) {
+function calc_spell(form, idx) {
     console.log("Caculating a spell");
     var base_damage = asNumber(form.base_damage);
     var ap_ratio = asPercent(form.ap_ratio);
@@ -51,11 +61,11 @@ function calc_spell(form) {
     var total_ad_ratio = asPercent(form.total_ad_ratio);
     var bonus_ad_ratio = asPercent(form.bonus_ad_ratio);
 
-    var d = recalc();
+    var d = get_data();
 
     var damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
     var dmg_onhit = damage * (100 / (100 + d.eff_mr));
-    var dmg_dps = 0; // dmg_onhit * (1 / cooldown);
+    var dmg_dps = "Literally Healing //TODO FIX"; // dmg_onhit * (1 / cooldown);
 
 
     form.dmg_premitigation.value = damage;
@@ -64,6 +74,12 @@ function calc_spell(form) {
 }
 
 function recalc() {
+    for (var i = 0; i < spell_data.length; i++) {
+        calc_spell(spell_data[i], i);
+        
+    }
+}
+function get_data() {
     console.log("Caculating");
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
@@ -119,22 +135,105 @@ function calc_lethality(direction) {
     }
 }
 
-// For lethality and armor pen.
-// document.getElementById("lethality").addEventListener("input", function () {
-//     calc_lethality(true);
-// });
-// document.getElementById("champ_level").addEventListener("input", function () {
-//     calc_lethality(true);
-// });
-// document.getElementById("armor_pen").addEventListener("input", function () {
-//     calc_lethality(false);
-// });
+function calc_ad(direction) {
+    var total_ad = asNumber(champion_data.total_ad);
+    var base_ad = asNumber(champion_data.base_ad);
+    var bonus_ad = asNumber(champion_data.bonus_ad);
+
+    if (direction === 0) {//change to total_ad
+        bonus_ad = total_ad - base_ad;
+    } else if (direction === 1) {//change to base_ad
+        bonus_ad = total_ad - base_ad;
+    } else if (direction === 2) {//change to bonus_ad
+        total_ad = base_ad + bonus_ad;
+    }
+    champion_data.total_ad.value = total_ad;
+    champion_data.base_ad.value = base_ad;
+    champion_data.bonus_ad.value = bonus_ad;
+}
+function calc_armor(direction) {
+    var target_hp = asNumber(target_data.target_hp);
+
+    var target_armor = asNumber(target_data.target_armor);
+    var target_eff_physical_hp = asNumber(target_data.target_eff_physical_hp);
+
+    if (direction === 0) {
+        if (target_armor < 0) {
+            // Damage is amplified.
+            target_data.target_physical_reduction.value = "-" + rnd3p(1 - (100.0 / (100.0 - target_armor)));
+            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
+
+        } else {
+            //Normal damage reduction.
+            target_data.target_physical_reduction.value = rnd3p(1 - (100.0 / (100.0 + target_armor)));
+            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
+
+        }
+    } else if (direction === 1) {
+        var damage_multiplier = 1 - asPercent(target_data.target_physical_reduction);
+        if (damage_multiplier <= 0.0 ){
+            // not the best way to do +inf.
+            target_data.target_armor.value = 100000000;
+        }
+        else {
+            target_data.target_armor.value = rnd3( (100 / damage_multiplier) - 100);
+    
+            target_armor = asNumber(target_data.target_armor);
+            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
+        }
+    } else if (direction === 2) {
+
+        // target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
+    }
+}
+
+function calc_mr(direction) {
+    var target_hp = asNumber(target_data.target_hp);
+
+    var target_mr = asNumber(target_data.target_mr);
+    var target_eff_magic_hp = asNumber(target_data.target_eff_magic_hp);
+
+    if (direction === 0) {
+        if (target_mr < 0) {
+            // Damage is amplified.
+            target_data.target_magic_reduction.value = "-" + rnd3p(1 - (100.0 / (100.0 - target_mr)));
+            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
+
+        } else {
+            //Normal damage reduction.
+            target_data.target_magic_reduction.value = rnd3p(1 - (100.0 / (100.0 + target_mr)));
+            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
+
+        }
+    } else if (direction === 1) {
+        var damage_multiplier = 1 - asPercent(target_data.target_magic_reduction);
+        if (damage_multiplier <= 0.0 ){
+            // not the best way to do +inf.
+            target_data.target_mr.value = 100000000;
+        }
+        else {
+            target_data.target_mr.value = rnd3( (100 / damage_multiplier) - 100);
+    
+            target_mr = asNumber(target_data.target_mr);
+            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
+        }
+    } else if (direction === 2) {
+
+    }
+}
+
 
 var inputs = champion_data.getElementsByClassName("input");
 for (var i = 0; i < inputs.length; i++) {
-    inputs[i].style.backgroundColor = "red";
+    // inputs[i].style.backgroundColor = "red";
     inputs[i].addEventListener("input", recalc);
 }
+inputs = target_data.getElementsByClassName("input");
+for (var i = 0; i < inputs.length; i++) {
+    // inputs[i].style.backgroundColor = "red";
+    inputs[i].addEventListener("input", recalc);
+}
+
 
 function collapseExtras(self) {
     self.classList.add("hidden");
@@ -171,24 +270,32 @@ function plusButton(self) {
 }
 
 
-
 function addNewSpellForm(self) {
-    var cloned = document.getElementById("spell_data_0").cloneNode(true);
+    var cloned = spell_data_template.cloneNode(true);
+    var idx = spell_data_index;
     spell_data_index++;
-    cloned.id = "spell_data_" + (spell_data_index);
+
+    cloned.classList.remove("hidden");
+    cloned.id = "spell_data_" + (idx);
 
     var form = cloned.getElementsByTagName("form")[0];
-    form.name = "spell_data_" + (spell_data_index) + "_form";
+    form.name = "spell_data_" + (idx) + "_form";
+    spell_data.push(form);
 
-    var idx = spell_data_index;
     var f = function () {
         calc_spell(form, idx);
     };
+    var i;
     var inputs = cloned.getElementsByClassName("input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].style.backgroundColor = "blue";
+    for (i = 0; i < inputs.length; i++) {
+        // inputs[i].style.backgroundColor = "blue";
         inputs[i].addEventListener("input", f);
     }
 
     main_div.appendChild(cloned);
 }
+
+spell_data_template.classList.add("hidden");
+addNewSpellForm(null);
+document.getElementById("main_collapse").click();
+recalc();

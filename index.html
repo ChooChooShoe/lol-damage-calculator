@@ -15,7 +15,16 @@
 
 <body>
     <div id="root">
-        <ul id="menu"><li>6-2-1-5-7-2-1</li></ul>
+        <ul id="nav">
+            <li>8-2-5-1-5-7-4</li>
+            <form name="other_data_form">
+                <input name="add_new" type="button" value="Add New Spell" onclick="addNewSpellForm(this)">
+
+                <!-- <input name="reset" type="reset" value="Reset Above">
+                <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
+                <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)"> -->
+            </form>
+        </ul>
         <!--div id="layoutContainer" style="height: 400px"></div>-->
 
         <div id="main">
@@ -26,11 +35,11 @@
                     <input type="number" min="0" id="ap" name="ap" placeholder="100" class="input" />
 
                     <label for="total_ad">Total Attack Damage (AD)</label>
-                    <input type="number" min="0" id="total_ad" name="total_ad" placeholder="100" class="input" />
+                    <input type="number" min="0" id="total_ad" name="total_ad" placeholder="100" class="input" oninput="calc_ad(0)"/>
                     <label for="base_ad" class="extra short">➤ Base AD</label>
-                    <input type="number" min="0" id="base_ad" name="base_ad" placeholder="100" class="extra input short" />
+                    <input type="number" min="0" id="base_ad" name="base_ad" placeholder="100" class="extra input short" oninput="calc_ad(1)"/>
                     <label for="bonus_ad" class="extra short">➤ Bonus AD</label>
-                    <input type="number" min="0" id="bonus_ad" name="bonus_ad" placeholder="0" class="extra input short" />
+                    <input type="number" min="0" id="bonus_ad" name="bonus_ad" placeholder="0" class="extra input short" oninput="calc_ad(2)"/>
 
                     <label for="attack_speed" class="extra">Attack Speed</label>
                     <input type="text" id="attack_speed" name="attack_speed" placeholder="0.67" class="extra input" />
@@ -77,7 +86,7 @@
 
                     <input name="reset" type="reset" value="Reset Above">
                     <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
-                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
+                    <input id="main_collapse" name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                 </form>
             </div>
 
@@ -85,50 +94,38 @@
                 <h2>Target's Data</h2>
                 <form name="target_data_form">
                     <label for="target_hp">Health (HP)</label>
-                    <input type="number" min="0" id="target_hp" name="target_hp" placeholder="2000" class="input" />
+                    <input type="number" min="0" id="target_hp" name="target_hp" placeholder="2000" class="input" oninput="calc_armor(0);calc_mr(0);" />
 
                     <label for="target_armor">Armor</label>
-                    <input type="number" min="0" id="target_armor" name="target_armor" placeholder="100" class="input" />
+                    <input type="number" max="100000000" id="target_armor" name="target_armor" placeholder="0" class="input"
+                        oninput="calc_armor(0)" />
                     <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
-                    <input type="text" id="target_physical_reduction" name="target_physical_reduction" placeholder="50%"
-                        class="extra input short" />
+                    <input type="text" id="target_physical_reduction" name="target_physical_reduction" placeholder="0%"
+                        class="extra input short" oninput="calc_armor(1)" />
                     <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
-                    <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp" placeholder="3000"
-                        class="extra input short" />
+                    <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp" placeholder="2000"
+                        class="extra input short" oninput="calc_armor(2)" />
 
                     <label for="target_mr">Magic Resistance (MR)</label>
-                    <input type="number" min="0" id="target_mr" name="target_mr" placeholder="100" class="input" />
+                    <input type="number" max="100000000" id="target_mr" name="target_mr" placeholder="0" class="input" oninput="calc_mr(0)"   />
                     <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
-                    <input type="text" id="target_magic_reduction" name="target_magic_reduction" placeholder="50%"
-                        class="extra input short" />
+                    <input type="text" id="target_magic_reduction" name="target_magic_reduction" placeholder="0%"
+                        class="extra input short" oninput="calc_mr(1)"  />
                     <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
-                    <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp" placeholder="3000"
-                        class="extra input short" />
+                    <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp" placeholder="2000"
+                        class="extra input short" oninput="calc_mr(2)"  />
 
                     <label for="target_hp5" class="extra">Health regeneration (hp5)</label>
-                    <input type="number" min="0" step="0.01" id="target_hp5" name="target_hp5" placeholder="3.75" class="extra input" />
+                    <input type="number" min="0" step="0.01" id="target_hp5" name="target_hp5" placeholder="0" class="extra input" />
 
                     <input name="reset" type="reset" value="Reset Above">
                     <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                     <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                 </form>
             </div>
-
-
-            <div class="data_holder" id="other_data">
-                <h2>Other Data & Outputs</h2>
-                <form name="other_data_form">
-                    <input name="add_new" type="button" value="Add New Spell" onclick="addNewSpellForm(this)">
-
-                    <!-- <input name="reset" type="reset" value="Reset Above">
-                    <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
-                    <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)"> -->
-                </form>
-            </div>
-
-            <div class="data_holder" id="spell_data_0">
+            <div class="data_holder" id="spell_data_template">
                 <form name="spell_data_q_form" method="POST" action="#">
-                    <h2><input type="text" placeholder="Click here to Name Spell" class = "title_input"> Casts (
+                    <h2><input type="text" placeholder="Click here to Name Spell" class="title_input"> Casts (
                         <input type="button" value="-" class="cast_pm" onclick="minusButton(this);" />
                         <input type="text" name="casts" value="1" class="casts_count">
                         <input type="button" value="+" class="cast_pm" onclick="plusButton(this);" />)</h2>
