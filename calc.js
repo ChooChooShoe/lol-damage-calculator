@@ -53,6 +53,13 @@ function validate_champion_data(form) {
     return true;
 }
 
+window.onload = function() {
+    var last_used_data = JSON.parse(localStorage.getItem("last_used_data"));
+    if (last_used_data) {
+        
+    }
+};
+
 function handle_input(self, form, idx, d) {
     console.log("Caculating a spell");
     console.log(self);
@@ -106,6 +113,8 @@ function recalc() {
 
     var ret;
     var data = get_data();
+    localStorage.setItem("last_used_data", JSON.stringify(data));
+
     for (var i = 0; i < spell_data.length; i++) {
         ret = handle_input(this, spell_data[i], i, data);
 
@@ -157,7 +166,6 @@ function recalc() {
 }
 
 function get_data() {
-    console.log("Caculating");
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
         percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
