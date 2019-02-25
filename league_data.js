@@ -63,8 +63,13 @@ var league_static_data = {
 
 
 function downloadingChampionFiles(version, champion) {
-    if (league_static_data.champion_data_full[champion])
+    if (league_static_data.champion_data_full[champion]) {
+        const children = [...document.getElementsByClassName(`owner-${champion}`)];
+        children.forEach(s => {
+            s.classList.remove('hidden');
+        });
         return;
+    }
     const cdn = 'https://ddragon.leagueoflegends.com/cdn';
     const locale = 'en_US';
     const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
@@ -95,11 +100,37 @@ function downloadingChampionFiles(version, champion) {
         });
 }
 
-
+/**
+Example Dao
+{
+	id: string
+	name: string
+	description: string
+	tooltip: string
+	leveltip: {
+		label: string[]
+		effect: string[]
+	}
+	maxrank: number
+	cooldown: number[]
+	cooldownBurn: string
+	cost: number[]
+	costBurn: string
+	datavalues: any // TODO: typing
+	effect: Array<number[]>
+	effectBurn: string[]
+	vars: Array<{ link: string, coeff: number, key: string }>
+	costType: string
+	// numeric string
+	maxammo: string
+	range: number[]
+	// numeric string
+	rangeBurn: string
+    resource: string
+*/
 function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     const id = `spell_dao_${spellDao.id}`;
     if (document.getElementById(id)) {
-        document.getElementById(id).classList.remove('hidden')
         return;
     }
 
@@ -112,11 +143,32 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     var form = cloned.getElementsByTagName("form")[0];
     form.id = `${id}_form`
 
+    for (var i = 1; i < 7; i++) {
+        if (i > spellDao.maxrank) {
+            cloned.getElementsByClassName('spellrank' + i)[0].classList.add('hidden');
+            form['cooldown' + i].classList.add('hidden');
+            form['cooldown' + i].previousElementSibling.classList.add('hidden');
+            form['cost' + i].classList.add('hidden');
+            form['cost' + i].previousElementSibling.classList.add('hidden');
+        }
+        else {
+            if (i === spellDao.maxrank){
+                cloned.getElementsByClassName('spellrank' + i)[0].checked = true;
+                form['cooldown' + i].setAttribute('data-active', true);
+                form['cost' + i].setAttribute('data-active', true);
+            }
+            // If i is < 7 and < maxrank
+            form['cost' + i].value = spellDao.cost[i-1];
+            form['cooldown' + i].value = spellDao.cooldown[i-1];
+        }
+    }
+    form['costType'].value = spellDao.costType;
+
     const imageStyle = `url(${spriteUrl}${spellDao.image.sprite}) -${spellDao.image.x}px -${spellDao.image.y}px`
-    cloned.getElementsByClassName('champion-name')[0].innerHTML = championDao.name;
-    cloned.getElementsByClassName('spell-key')[0].innerHTML = spellDao.id.substr(spellDao.id.length - 1);
+    // cloned.getElementsByClassName('champion-name')[0].innerHTML = championDao.name;
+    cloned.getElementsByClassName('spell-key')[0].innerHTML = spellDao.id;
     cloned.getElementsByClassName('spell-name')[0].innerHTML = spellDao.name;
-    cloned.getElementsByClassName('spell-description')[0].innerHTML = spellDao.tooltip;
+    form['tooltip'].innerHTML = spellDao.tooltip;
     cloned.getElementsByClassName('spell-image')[0].style.background = imageStyle;
 
     // Adds recalc to all the input for cloned section.
@@ -124,16 +176,10 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", recalc);
     }
-
-    spell_data.push(form);
-
-    // Adds recalc to all the input for cloned section.
-    var inputs = cloned.getElementsByClassName("input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", recalc);
-    }
+    form.spellDao = spellDao;
 
     main_div.appendChild(cloned);
+    onSpellRankInput(form);
     recalc();
 }
 

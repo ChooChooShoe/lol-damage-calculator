@@ -234,8 +234,8 @@ function calc_lethality(direction) {
 
 function calc_ad(direction) {
     var champion_level = asNumber(champion_data.champion_level);
-    var attackdamage = asNumber(champion_data.attackdamage);
-    var attackdamageperlevel = asNumber(champion_data.attackdamageperlevel);
+    var attackdamage = getStat(champion_data, 'attackdamage')
+    var attackdamageperlevel = getStat(champion_data, 'attackdamageperlevel');
     var base_ad = attackdamage + attackdamageperlevel * champion_level;
 
     var total_ad = asNumber(champion_data.total_ad);
@@ -419,25 +419,26 @@ function setChampion(form, champion) {
     if (!champion || !form)
         return;
     const known_stats_data = ["hp", "hpperlevel", "mp", "mpperlevel", "movespeed", "armor", "armorperlevel", "spellblock", "spellblockperlevel", "attackrange", "hpregen", "hpregenperlevel", "mpregen", "mpregenperlevel", "crit", "critperlevel", "attackdamage", "attackdamageperlevel", "attackspeedperlevel", "attackspeed"];
-
     const known_data = ["partype", "name", "title"];
 
-    if (form.data_last_chamption) {
-        const children = [...document.getElementsByClassName(`owner-${form.data_last_chamption}`)];
-        children.forEach(s => {
-            s.classList.add('hidden');
-        });
+    if (form.id === 'champion_data_form') {
+        if (form.data_last_chamption) {
+            const children = [...document.getElementsByClassName(`owner-${form.data_last_chamption}`)];
+            children.forEach(s => {
+                s.classList.add('hidden');
+            });
+        }
+        form.data_last_chamption = champion;
     }
-    form.data_last_chamption = champion;
     console.log(`Setting champion to ${champion}`);
     if (league_static_data.isReady) {
         const data = league_static_data.champion_data[champion];
 
         known_stats_data.forEach(key => {
-            form.elements[key].value = data.stats[key];
+            form.elements[`dao_stats_${key}`].value = data.stats[key];
         });
         known_data.forEach(key => {
-            form.elements[key].value = data[key];
+            form.elements[`dao_${key}`].value = data[key];
         });
         if (form.id === 'champion_data_form')
             downloadingChampionFiles(data.version, champion);
@@ -445,29 +446,35 @@ function setChampion(form, champion) {
     }
 }
 
+function getStat(form, stat) {
+    var d = form[`dao_stats_${stat}`]
+    return parseFloat(d.value);
+}
+
 function setBaseStats(form) {
     // These values from stats are not used.
-    // form.name;
-    // form.title;
-    // form.partype;
-    // form.mp
-    // form.mpperlevel
-    // form.attackrange
-    // form.mpregen
-    // form.mpregenperlevel
+    // form.dao_name;
+    // form.dao_title;
+    // form.dao_partype;
+    // form.dao_stats_mp
+    // form.dao_stats_mpperlevel
+    // form.dao_stats_attackrange
+    // form.dao_stats_mpregen
+    // form.dao_stats_mpregenperlevel
 
     if (form.id === 'champion_data_form') {
         var champion_level = asNumber(form.champion_level);
-        champion_data.base_ad.value = rnd3(asNumber(form.attackdamage) + asNumber(form.attackdamageperlevel) * champion_level);
-        champion_data.attack_speed.value = rnd3(asNumber(form.attackspeed) + asNumber(form.attackspeed) * asPercent(form.attackspeedperlevel) * champion_level);
-        champion_data.crit_change.value = rnd3(asNumber(form.crit) + asNumber(form.critperlevel) * champion_level);
+        champion_data.base_ad.value = rnd3(getStat(form, 'attackdamage') + getStat(form, 'attackdamageperlevel') * champion_level);
+        const ats = getStat(form, 'attackspeed');
+        champion_data.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
+        champion_data.crit_change.value = rnd3(getStat(form, 'crit') + getStat(form, 'critperlevel') * champion_level);
 
     } else if (form.id === 'target_data_form') {
         var champion_level = asNumber(form.champion_level);
-        target_data.target_hp.value = rnd3(asNumber(form.hp) + asNumber(form.hpperlevel) * champion_level);
-        target_data.target_mr.value = rnd3(asNumber(form.spellblock) + asNumber(form.spellblockperlevel) * champion_level);
-        target_data.target_armor.value = rnd3(asNumber(form.armor) + asNumber(form.armorperlevel) * champion_level);
-        target_data.target_hp5.value = rnd3(asNumber(form.hpregen) + asNumber(form.hpregenperlevel) * champion_level);
+        target_data.target_hp.value = rnd3(getStat(form, 'hp') + getStat(form, 'hpperlevel') * champion_level);
+        target_data.target_mr.value = rnd3(getStat(form, 'spellblock') + getStat(form, 'spellblockperlevel') * champion_level);
+        target_data.target_armor.value = rnd3(getStat(form, 'armor') + getStat(form, 'armorperlevel') * champion_level);
+        target_data.target_hp5.value = rnd3(getStat(form, 'hpregen') + getStat(form, 'hpregenperlevel') * champion_level);
 
         // eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
 
@@ -491,11 +498,63 @@ spell_data_template.classList.add("hidden");
 // addNewSpellForm("physical");
 document.getElementById("main_collapse").click();
 
-function onReady(){
-    var select =     document.getElementById('player_champion_select');
+function onReady() {
+    var select = document.getElementById('player_champion_select');
     select.value = 'Viktor';
     setChampion(select.form, select.value)
-    select =document.getElementById('target_champion_select');
+    select = document.getElementById('target_champion_select');
     select.value = 'Syndra';
     setChampion(select.form, select.value)
+}
+
+function onSpellRankInput(form) {
+    const idx = form.spellrank.value;
+    for (var i = 1; i < 7; i++) {
+        form['cooldown' + i].setAttribute('data-active', idx == i);
+        form['cost' + i].setAttribute('data-active', idx == i);
+    }
+    try {
+        var desc = form.spellDao.tooltip.replace(/{{ (\w*) }}+/g, function (match, capture) {
+            try {
+                const effext_index = parseInt(capture[1])
+                if (capture[0] === 'e') {
+                    var burn = form.spellDao['effectBurn'][effext_index];
+                    var exact = form.spellDao['effect'][effext_index][asNumber(form.spellrank) - 1];
+
+                    if (effext_index == 1) {
+                        form.base_damage.value = exact;
+                    }
+
+                    return burn.replace(exact.toString(), `<span class="spelleffect active" >${exact}</span>`);
+                } else if (capture[0] === 'a') {
+                    for (let e of form.spellDao['vars']) {
+                        if (e.key === capture) {
+
+                            if (effext_index == 1) {
+                                if (e.link === "spelldamage")
+                                    form.ap_ratio.value = rnd3p(e.coeff);
+                                else
+                                    form.total_ad_ratio.value = rnd3p(e.coeff);
+                            }
+
+                            return e.coeff;
+                        }
+                    }
+                } else if (capture[0] === 'f') {
+                    for (let e of form.spellDao['vars']) {
+                        if (e.key === capture) {
+                            return e.coeff;
+                        }
+                    }
+                }
+            } catch {}
+            return `{{ unknown value ${capture} }}`
+        });
+        form['tooltip'].innerHTML = desc;
+        console.log(form['tooltip']);
+
+    } catch (e) {
+        console.log('Could not spell');
+        console.log(e);
+    }
 }
