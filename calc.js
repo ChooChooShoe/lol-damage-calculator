@@ -1,3 +1,4 @@
+"use strict";
 var main_div = document.getElementById("main");
 var champion_data = document.forms.champion_data_form;
 var target_data = document.forms.target_data_form;
@@ -53,16 +54,16 @@ function validate_champion_data(form) {
     return true;
 }
 
-window.onload = function() {
+window.onload = function () {
     var last_used_data = JSON.parse(localStorage.getItem("last_used_data"));
     if (last_used_data) {
-        
+
     }
 };
 
-function handle_input(self, form, idx, d) {
+function onInputForSpell(sender, form, idx, d) {
     console.log("Caculating a spell");
-    console.log(self);
+    console.log(sender);
     var damage_type = form.damage_type.value;
 
     var base_damage = asNumber(form.base_damage);
@@ -103,6 +104,8 @@ function handle_input(self, form, idx, d) {
 }
 
 function recalc() {
+    console.group('Re-calc');
+    console.log(this);
     var total_pre_damage = 0,
         total_pre_magic_damage = 0,
         total_pre_physical_damage = 0,
@@ -116,7 +119,7 @@ function recalc() {
     localStorage.setItem("last_used_data", JSON.stringify(data));
 
     for (var i = 0; i < spell_data.length; i++) {
-        ret = handle_input(this, spell_data[i], i, data);
+        ret = onInputForSpell(this, spell_data[i], i, data);
 
         if (ret.damage_type === "damage_type_physical") {
             total_pre_damage += ret.pre_damage;
@@ -163,6 +166,7 @@ function recalc() {
         total_data.target_percent_hp_left.value = "0%";
 
     }
+    console.groupEnd();
 }
 
 function get_data() {
@@ -312,7 +316,7 @@ function calc_mr(direction) {
 function collapseExtras(self) {
     self.previousElementSibling.classList.remove("hidden");
     self.classList.add("hidden");
-    var elements = self.parentElement.getElementsByClassName("extra");
+    var elements = self.parentElement.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < elements.length; i++) {
         elements[i].classList.add("hidden");
     }
@@ -321,7 +325,7 @@ function collapseExtras(self) {
 function expandExtras(self) {
     self.classList.add("hidden");
     self.nextElementSibling.classList.remove("hidden");
-    var elements = self.parentElement.getElementsByClassName("extra");
+    var elements = self.parentElement.parentElement.getElementsByClassName("extra");
     for (var i = 0; i < elements.length; i++) {
         elements[i].classList.remove("hidden");
     }
@@ -398,6 +402,32 @@ function addNewSpellForm(damge_type) {
 function removeSpell(self) {
     main_div.removeChild(self.parentElement.parentElement);
 }
+
+function setPatchVersion(version) {
+    console.log(`Data is now sourced from patch ${version}`);
+    if (version) {
+        downloadingStaticDataFiles(version);
+    }
+}
+
+function setChampion(form, champion) {
+    const known_stats_data = ["hp", "hpperlevel", "mp", "mpperlevel", "movespeed", "armor", "armorperlevel", "spellblock", "spellblockperlevel", "attackrange", "hpregen", "hpregenperlevel", "mpregen", "mpregenperlevel", "crit", "critperlevel", "attackdamage", "attackdamageperlevel", "attackspeedperlevel", "attackspeed"];
+    
+    const known_data = ["partype", "name", "title"];
+    
+    console.log(`Setting champion to ${champion}`);
+    if (league_static_data.isReady) {
+        const data = league_static_data.champion_data[champion];
+
+        known_stats_data.forEach(key => {
+            form.elements[key].value = data.stats[key];
+        });
+        known_data.forEach(key => {
+            form.elements[key].value = data[key];
+        });
+    }
+}
+
 
 /// Main Code.
 
