@@ -429,6 +429,10 @@ function setChampion(form, champion) {
         known_data.forEach(key => {
             form.elements[key].value = data[key];
         });
+        calc_ad(0);
+        calc_lethality(true);
+        calc_armor(0);
+        calc_mr(0);
     }
 }
 
