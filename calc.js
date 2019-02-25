@@ -526,24 +526,23 @@ function onSpellRankInput(form) {
                     }
 
                     return burn.replace(exact.toString(), `<span class="spelleffect active" >${exact}</span>`);
-                } else if (capture[0] === 'a') {
+                } else if (capture[0] === 'a' || capture[0] === 'f') {
                     for (let e of form.spellDao['vars']) {
                         if (e.key === capture) {
 
                             if (effext_index == 1) {
-                                if (e.link === "spelldamage")
+                                if (e.link === "spelldamage"){
                                     form.ap_ratio.value = rnd3p(e.coeff);
+                                    form.damage_type.selectedIndex = 1;
+                                }
                                 else
                                     form.total_ad_ratio.value = rnd3p(e.coeff);
                             }
 
-                            return e.coeff;
-                        }
-                    }
-                } else if (capture[0] === 'f') {
-                    for (let e of form.spellDao['vars']) {
-                        if (e.key === capture) {
-                            return e.coeff;
+                            if (e.link === "spelldamage")
+                                return e.coeff + ' AP';
+                            else
+                                return e.coeff + ' AD';
                         }
                     }
                 }

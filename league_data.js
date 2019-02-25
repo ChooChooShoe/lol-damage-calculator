@@ -87,13 +87,14 @@ function downloadingChampionFiles(version, champion) {
         })
         .then(function (myJson) {
             var dao = myJson.data[champion];
-            dao.spells.forEach(spellDao => {
-                addNewSpellFormWithSpellDao(dao, spellDao, `${cdn}/${version}/img/sprite/`)
-            });
-            console.log(dao.passive);
+
             var imgStyle = `url("${cdn}/${version}/img/sprite/${dao.passive.image.sprite}") -${dao.passive.image.x}px -${dao.passive.image.y}px`
 
             addNewPasiveForm(champion, dao.name, imgStyle, dao.passive.name, dao.passive.description);
+
+            dao.spells.forEach(spellDao => {
+                addNewSpellFormWithSpellDao(dao, spellDao, `${cdn}/${version}/img/sprite/`)
+            });
             league_static_data.champion_data_full[champion] = {
                 passiveImage: imgStyle,
             };
@@ -178,6 +179,7 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     }
     form.spellDao = spellDao;
 
+    spell_data.push(form);
     main_div.appendChild(cloned);
     onSpellRankInput(form);
     recalc();
