@@ -63,7 +63,6 @@ window.onload = function () {
 
 function onInputForSpell(sender, form, idx, d) {
     console.log("Caculating a spell");
-    console.log(sender);
     var damage_type = form.damage_type.value;
 
     var base_damage = asNumber(form.base_damage);
@@ -115,6 +114,7 @@ function recalc() {
     var target_overkill = 0;
 
     var ret;
+
     var data = get_data();
     localStorage.setItem("last_used_data", JSON.stringify(data));
 
@@ -227,8 +227,12 @@ function calc_lethality(direction) {
 }
 
 function calc_ad(direction) {
+    var champ_level = asNumber(champion_data.champ_level);
+    var attackdamage = asNumber(champion_data.attackdamage);
+    var attackdamageperlevel = asNumber(champion_data.attackdamageperlevel);
+    var base_ad = attackdamage + attackdamageperlevel * champ_level;
+    
     var total_ad = asNumber(champion_data.total_ad);
-    var base_ad = asNumber(champion_data.base_ad);
     var bonus_ad = asNumber(champion_data.bonus_ad);
 
     if (direction === 0) { //change to total_ad
