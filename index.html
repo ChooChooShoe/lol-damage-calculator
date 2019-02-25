@@ -64,15 +64,15 @@
                 <h2 class="title_input">Player's Champion Data</h2>
 
 
-                <form name="champion_data_form">
+                <form id="champion_data_form">
 
                     <label for="player_champion_select" class="">Load Champion Data For</label>
                     <select id="player_champion_select" class="input" oninput="setChampion(this.form, this.value);">
                         <option value=''>Loading Data...</option>
                     </select>
-                    <label for="champ_level" class="short">➤ Champion Level</label>
-                    <input type="number" min="0" id="champ_level" name="champ_level" placeholder="0" value="18" class="input short"
-                        oninput="calc_lethality(true)" />
+                    <label for="player_champion_level" class="short">➤ Champion Level</label>
+                    <input type="number" min="0" id="player_champion_level" name="champion_level" placeholder="0" value="18"
+                        class="input short" oninput="setBaseStats(this.form)" />
 
                     <span class="tooltip">Mouse Over to view base stats.
                         <div class="table stats-table tooltip-float">
@@ -197,14 +197,14 @@
 
             <div class="data_holder" id="target_data">
                 <h2 class="title_input">Target's Data</h2>
-                <form name="target_data_form">
+                <form id="target_data_form">
                     <label for="target_champion_select" class="">Load Champion Data For</label>
                     <select id="target_champion_select" class="input" oninput="setChampion(this.form, this.value);">
                         <option value=''>Loading Data...</option>
                     </select>
                     <label for="target_champion_level" class="short">➤ Champion Level</label>
-                    <input type="number" min="0" id="target_champion_level" name="target_champion_level" placeholder="18"
-                        value="18" class="input short" />
+                    <input type="number" min="0" id="target_champion_level" name="champion_level" placeholder="18"
+                        value="18" class="input short" oninput="setBaseStats(this.form)" />
 
                     <span class="tooltip">Mouse Over to view base stats.
                         <div class="table stats-table tooltip-float">
@@ -280,12 +280,13 @@
                             <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                             <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                         </div>
+                    </div>
                 </form>
             </div>
 
             <div class="data_holder" id="total_data">
                 <h2 class="title_input">Totals</h2>
-                <form name="total_data_form">
+                <form id="total_data_form">
                     <label for="total_pre_damage" class="">Premitigation Damage</label>
                     <input type="text" id="total_pre_damage" name="total_pre_damage" class="input" readonly />
 
@@ -327,7 +328,7 @@
             </div>
 
             <div class="data_holder" id="spell_data_template">
-                <form name="spell_data_q_form" method="POST" action="#">
+                <form id="spell_data_q_form" method="POST" action="#">
                     <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
 
 
@@ -375,6 +376,75 @@
                 </form>
             </div>
 
+            <div class="data_holder hidden" id="passive_dao_template">
+                <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
+                <span class="subtitle passive-name">Passive Name</span>
+                <img class="passive-image" width="48px" height="48px" />
+                <p class="passive-description">Inner Text goes here</p>
+
+            </div>
+
+            <div class="data_holder hidden" id="spell_dao_template">
+                <form id="spell_dao_template_form" method="POST" action="#">
+                    <span class="title_input"><span class="champion-name">Champion</span> <span class="spell-key">Q</span>:</span>
+                    <span class="subtitle spell-name">Spell Name</span>
+                    <img class="spell-image" width="48px" height="48px" />
+                    <output name=""></output>
+                    <p class="spell-description">Inner Text goes here</p>
+
+                    <div class="table fill">
+                        <div>
+                            <label for="damage_type">Damage Type</label>
+                            <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
+                                <option value="damage_type_physical" class="ad">Physical Damage</option>
+                                <option value="damage_type_magic" class="ap">Magic Damage</option>
+                                <option value="damage_type_mixed" class="mixed">Mixed Damage</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="base_damage">Base Damage</label>
+                            <input type="number" id="base_damage" name="base_damage" placeholder="0" value="100" class="input" />
+                        </div>
+                        <div>
+                            <label for="ap_ratio" class="ap">Total AP Ratio</label>
+                            <input type="text" id="ap_ratio" name="ap_ratio" placeholder="0%" class="input" />
+                        </div>
+                        <div>
+                            <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
+                            <input type="text" id="total_ad_ratio" name="total_ad_ratio" placeholder="0%" class="input" />
+                        </div>
+                        <div>
+                            <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
+                            <input type="text" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0%" class="input" />
+                        </div>
+                        <div>
+                            <label for="max_health_ratio" class="health extra hidden">% Max Health Ratio</label>
+                            <input type="text" id="max_health_ratio" name="max_health_ratio" placeholder="0%" class="input extra hidden" />
+                        </div>
+                        <div>
+                            <label for="dmg_premitigation">Premitigation Damage</label>
+                            <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
+                                readonly />
+                        </div>
+                        <div>
+                            <label for="dmg_onhit">Damage after Resistances</label>
+                            <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
+
+                        </div>
+                        <div>
+                            <label for="dmg_dps">Expected damage per second</label>
+                            <input type="text" id="dmg_dps" name="dmg_dps" value="" class="input output" readonly />
+                        </div>
+                    </div>
+
+                    <div>
+                        <input name="reset" type="reset" value="Reset Above">
+                        <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                        <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
+                        <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)">
+                    </div>
+                </form>
+            </div>
 
         </div>
     </div>

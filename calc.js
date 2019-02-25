@@ -1,11 +1,13 @@
 "use strict";
-var main_div = document.getElementById("main");
-var champion_data = document.forms.champion_data_form;
-var target_data = document.forms.target_data_form;
-var total_data = document.forms.total_data_form;
+const main_div = document.getElementById("main");
+const champion_data = document.forms.champion_data_form;
+const target_data = document.forms.target_data_form;
+const total_data = document.forms.total_data_form;
 
 
-var spell_data_template = document.getElementById("spell_data_template");
+const spell_data_template = document.getElementById("spell_data_template");
+const passive_dao_template = document.getElementById("passive_dao_template");
+
 var spell_data = [];
 var spell_data_index = 0;
 
@@ -170,6 +172,10 @@ function recalc() {
 }
 
 function get_data() {
+    calc_lethality(true);
+    calc_armor(0);
+    calc_mr(0);
+    calc_ad(0);
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
         percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
@@ -198,7 +204,7 @@ function get_data() {
         spell_vamp: asPercent(champion_data.spell_vamp),
 
         lethality: asNumber(champion_data.lethality),
-        champ_level: asNumber(champion_data.champ_level),
+        champion_level: asNumber(champion_data.champion_level),
         armor_pen: asNumber(champion_data.armor_pen),
 
         health: asNumber(target_data.target_hp),
@@ -216,22 +222,22 @@ function calc_lethality(direction) {
     console.log("calc_lethality");
 
     var lethality = asNumber(champion_data.lethality);
-    var champ_level = asNumber(champion_data.champ_level);
+    var champion_level = asNumber(champion_data.champion_level);
     var armor_pen = asNumber(champion_data.armor_pen);
 
     if (direction) {
-        champion_data.armor_pen.value = rnd3(lethality * (0.6 + (0.4 * champ_level / 18.0)));
+        champion_data.armor_pen.value = rnd3(lethality * (0.6 + (0.4 * champion_level / 18.0)));
     } else {
-        champion_data.lethality.value = rnd3(armor_pen / (0.6 + (0.4 * champ_level / 18.0)));
+        champion_data.lethality.value = rnd3(armor_pen / (0.6 + (0.4 * champion_level / 18.0)));
     }
 }
 
 function calc_ad(direction) {
-    var champ_level = asNumber(champion_data.champ_level);
+    var champion_level = asNumber(champion_data.champion_level);
     var attackdamage = asNumber(champion_data.attackdamage);
     var attackdamageperlevel = asNumber(champion_data.attackdamageperlevel);
-    var base_ad = attackdamage + attackdamageperlevel * champ_level;
-    
+    var base_ad = attackdamage + attackdamageperlevel * champion_level;
+
     var total_ad = asNumber(champion_data.total_ad);
     var bonus_ad = asNumber(champion_data.bonus_ad);
 
@@ -377,7 +383,7 @@ function addNewSpellForm(damge_type) {
     cloned.id = "spell_data_" + (idx);
 
     var form = cloned.getElementsByTagName("form")[0];
-    form.name = "spell_data_" + (idx) + "_form";
+    form.id = "spell_data_" + (idx) + "_form";
 
     if (damge_type === "magic") {
         form.damage_type.value = "damage_type_magic";
@@ -407,18 +413,22 @@ function removeSpell(self) {
     main_div.removeChild(self.parentElement.parentElement);
 }
 
-function setPatchVersion(version) {
-    console.log(`Data is now sourced from patch ${version}`);
-    if (version) {
-        downloadingStaticDataFiles(version);
-    }
-}
+var last_chamption = null;
 
 function setChampion(form, champion) {
+    if (!champion || !form)
+        return;
     const known_stats_data = ["hp", "hpperlevel", "mp", "mpperlevel", "movespeed", "armor", "armorperlevel", "spellblock", "spellblockperlevel", "attackrange", "hpregen", "hpregenperlevel", "mpregen", "mpregenperlevel", "crit", "critperlevel", "attackdamage", "attackdamageperlevel", "attackspeedperlevel", "attackspeed"];
-    
+
     const known_data = ["partype", "name", "title"];
-    
+
+    if (form.data_last_chamption) {
+        const children = [...document.getElementsByClassName(`owner-${form.data_last_chamption}`)];
+        children.forEach(s => {
+            s.classList.add('hidden');
+        });
+    }
+    form.data_last_chamption = champion;
     console.log(`Setting champion to ${champion}`);
     if (league_static_data.isReady) {
         const data = league_static_data.champion_data[champion];
@@ -429,10 +439,40 @@ function setChampion(form, champion) {
         known_data.forEach(key => {
             form.elements[key].value = data[key];
         });
-        calc_ad(0);
-        calc_lethality(true);
-        calc_armor(0);
-        calc_mr(0);
+        if (form.id === 'champion_data_form')
+            downloadingChampionFiles(data.version, champion);
+        setBaseStats(form);
+    }
+}
+
+function setBaseStats(form) {
+    // These values from stats are not used.
+    // form.name;
+    // form.title;
+    // form.partype;
+    // form.mp
+    // form.mpperlevel
+    // form.attackrange
+    // form.mpregen
+    // form.mpregenperlevel
+
+    if (form.id === 'champion_data_form') {
+        var champion_level = asNumber(form.champion_level);
+        champion_data.base_ad.value = rnd3(asNumber(form.attackdamage) + asNumber(form.attackdamageperlevel) * champion_level);
+        champion_data.attack_speed.value = rnd3(asNumber(form.attackspeed) + asNumber(form.attackspeed) * asPercent(form.attackspeedperlevel) * champion_level);
+        champion_data.crit_change.value = rnd3(asNumber(form.crit) + asNumber(form.critperlevel) * champion_level);
+
+    } else if (form.id === 'target_data_form') {
+        var champion_level = asNumber(form.champion_level);
+        target_data.target_hp.value = rnd3(asNumber(form.hp) + asNumber(form.hpperlevel) * champion_level);
+        target_data.target_mr.value = rnd3(asNumber(form.spellblock) + asNumber(form.spellblockperlevel) * champion_level);
+        target_data.target_armor.value = rnd3(asNumber(form.armor) + asNumber(form.armorperlevel) * champion_level);
+        target_data.target_hp5.value = rnd3(asNumber(form.hpregen) + asNumber(form.hpregenperlevel) * champion_level);
+
+        // eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
+
+        // eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
+        form.health;
     }
 }
 
@@ -446,8 +486,16 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 spell_data_template.classList.add("hidden");
-addNewSpellForm("magic");
-addNewSpellForm("magic");
-addNewSpellForm("physical");
+// addNewSpellForm("magic");
+// addNewSpellForm("magic");
+// addNewSpellForm("physical");
 document.getElementById("main_collapse").click();
-recalc();
+
+function onReady(){
+    var select =     document.getElementById('player_champion_select');
+    select.value = 'Viktor';
+    setChampion(select.form, select.value)
+    select =document.getElementById('target_champion_select');
+    select.value = 'Syndra';
+    setChampion(select.form, select.value)
+}
