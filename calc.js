@@ -79,17 +79,26 @@ function onInputForSpell(sender, form, idx, d) {
     switch (damage_type) {
         case "damage_type_physical":
             damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            dmg_onhit = damage * (100 / (100 + d.eff_armor));
+
+            if (d.eff_armor > 0)
+                dmg_onhit = damage * (100 / (100 + d.eff_armor));
+            else
+                dmg_onhit = 2 - (100 / (100 - d.eff_armor));
 
             break;
 
         case "damage_type_magic":
             damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            dmg_onhit = damage * (100 / (100 + d.eff_mr));
+            if (d.eff_mr > 0)
+                dmg_onhit = damage * (100 / (100 + d.eff_mr));
+            else
+                dmg_onhit = 2 - (100 / (100 - d.eff_mr));
             break;
         case "damage_type_mixed":
-            damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            dmg_onhit = damage * (100 / (100 + (d.eff_mr / 2 + d.eff_armor / 2)));
+            // damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
+            // dmg_onhit = damage * (100 / (100 + (d.eff_mr / 2 + d.eff_armor / 2)));
+            damage = 0;
+            dmg_onhit = 0;
             break;
     }
 
@@ -121,6 +130,9 @@ function recalc() {
     localStorage.setItem("last_used_data", JSON.stringify(data));
 
     for (var i = 0; i < spell_data.length; i++) {
+        if (spell_data[i].parentElement.classList.contains('hidden'))
+            continue;
+
         ret = onInputForSpell(this, spell_data[i], i, data);
 
         if (ret.damage_type === "damage_type_physical") {
@@ -451,6 +463,15 @@ function getStat(form, stat) {
     return parseFloat(d.value);
 }
 
+
+
+function calcStatNums(champion_level, base, growth) {
+    return base + growth * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
+}
+function calcStat(form, champion_level, base, growth) {
+    return getStat(form, base) +  getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
+}
+
 function setBaseStats(form) {
     // These values from stats are not used.
     // form.dao_name;
@@ -464,22 +485,38 @@ function setBaseStats(form) {
 
     if (form.id === 'champion_data_form') {
         var champion_level = asNumber(form.champion_level);
-        champion_data.base_ad.value = rnd3(getStat(form, 'attackdamage') + getStat(form, 'attackdamageperlevel') * champion_level);
+
+        champion_data.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
+
+        if(asNumber(champion_data.total_ad) < asNumber(champion_data.base_ad))
+            champion_data.total_ad.value = champion_data.base_ad.value;
+
         const ats = getStat(form, 'attackspeed');
         champion_data.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
-        champion_data.crit_change.value = rnd3(getStat(form, 'crit') + getStat(form, 'critperlevel') * champion_level);
+        champion_data.crit_change.value = calcStat(form, champion_level, 'crit', 'critperlevel');
+        // form.target_hp.value = calcStat(form, champion_level, 'hp', 'hpperlevel');
+        // form.target_mr.value = calcStat(form, champion_level, 'spellblock', 'spellblockperlevel');
+        // form.target_armor.value = calcStat(form, champion_level, 'armor', 'armorperlevel');
+        // form.target_hp5.value = calcStat(form, champion_level, 'hpregen', 'hpregenperlevel');
 
     } else if (form.id === 'target_data_form') {
         var champion_level = asNumber(form.champion_level);
-        target_data.target_hp.value = rnd3(getStat(form, 'hp') + getStat(form, 'hpperlevel') * champion_level);
-        target_data.target_mr.value = rnd3(getStat(form, 'spellblock') + getStat(form, 'spellblockperlevel') * champion_level);
-        target_data.target_armor.value = rnd3(getStat(form, 'armor') + getStat(form, 'armorperlevel') * champion_level);
-        target_data.target_hp5.value = rnd3(getStat(form, 'hpregen') + getStat(form, 'hpregenperlevel') * champion_level);
+        // form.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
+        
+        // if(asNumber(form.total_ad) < asNumber(form.base_ad))
+        //     form.total_ad.value = form.base_ad.value;
+        // const ats = getStat(form, 'attackspeed');
+        // form.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
+        // form.crit_change.value = calcStat(form, champion_level, 'crit', 'critperlevel');
+        target_data.target_hp.value = calcStat(form, champion_level, 'hp', 'hpperlevel');
+        target_data.target_mr.value = calcStat(form, champion_level, 'spellblock', 'spellblockperlevel');
+        target_data.target_armor.value = calcStat(form, champion_level, 'armor', 'armorperlevel');
+        target_data.target_hp5.value = calcStat(form, champion_level, 'hpregen', 'hpregenperlevel');
 
         // eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
 
         // eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
-        form.health;
+        // form.health;
     }
 }
 
@@ -531,11 +568,10 @@ function onSpellRankInput(form) {
                         if (e.key === capture) {
 
                             if (effext_index == 1) {
-                                if (e.link === "spelldamage"){
+                                if (e.link === "spelldamage") {
                                     form.ap_ratio.value = rnd3p(e.coeff);
                                     form.damage_type.selectedIndex = 1;
-                                }
-                                else
+                                } else
                                     form.total_ad_ratio.value = rnd3p(e.coeff);
                             }
 
