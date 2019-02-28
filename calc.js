@@ -124,8 +124,6 @@ function recalc() {
         total_physical_damage = 0;
     var target_overkill = 0;
 
-    var ret;
-
     var data = get_data();
     localStorage.setItem("last_used_data", JSON.stringify(data));
 
@@ -133,27 +131,31 @@ function recalc() {
         if (spell_data[i].parentElement.classList.contains('hidden'))
             continue;
 
-        ret = onInputForSpell(this, spell_data[i], i, data);
+        const inner_forms = spell_data[i].getElementsByTagName('form');
+        Array.prototype.slice.call(inner_forms).forEach(inner_form => {
 
-        if (ret.damage_type === "damage_type_physical") {
-            total_pre_damage += ret.pre_damage;
-            total_pre_physical_damage += ret.pre_damage;
-            total_damage += ret.damage;
-            total_physical_damage += ret.damage;
-        } else if (ret.damage_type === "damage_type_magic") {
-            total_pre_damage += ret.pre_damage;
-            total_pre_magic_damage += ret.pre_damage;
-            total_damage += ret.damage;
-            total_magic_damage += ret.damage;
-        } else if (ret.damage_type === "damage_type_mixed") {
-            total_pre_damage += ret.pre_damage;
-            total_pre_magic_damage += ret.pre_damage / 2;
-            total_pre_physical_damage += ret.pre_damage / 2;
-            total_damage += ret.damage;
-            total_magic_damage += ret.damage / 2;
-            total_physical_damage += ret.damage / 2;
+            var ret = onInputForSpell(this, inner_form, i, data);
 
-        }
+            if (ret.damage_type === "damage_type_physical") {
+                total_pre_damage += ret.pre_damage;
+                total_pre_physical_damage += ret.pre_damage;
+                total_damage += ret.damage;
+                total_physical_damage += ret.damage;
+            } else if (ret.damage_type === "damage_type_magic") {
+                total_pre_damage += ret.pre_damage;
+                total_pre_magic_damage += ret.pre_damage;
+                total_damage += ret.damage;
+                total_magic_damage += ret.damage;
+            } else if (ret.damage_type === "damage_type_mixed") {
+                total_pre_damage += ret.pre_damage;
+                total_pre_magic_damage += ret.pre_damage / 2;
+                total_pre_physical_damage += ret.pre_damage / 2;
+                total_damage += ret.damage;
+                total_magic_damage += ret.damage / 2;
+                total_physical_damage += ret.damage / 2;
+            }
+        });
+
     }
     total_data.total_pre_damage.value = total_pre_damage;
     total_data.total_pre_magic_damage.value = total_pre_magic_damage;
@@ -424,7 +426,10 @@ function addNewSpellForm(damge_type) {
 function removeSpell(self) {
     main_div.removeChild(self.parentElement.parentElement);
 }
-
+function remSpellEffect(self) {
+    //yikes
+    self.parentElement.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement.parentElement);
+}
 var last_chamption = null;
 
 function setChampion(form, champion) {
@@ -468,8 +473,9 @@ function getStat(form, stat) {
 function calcStatNums(champion_level, base, growth) {
     return base + growth * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
 }
+
 function calcStat(form, champion_level, base, growth) {
-    return getStat(form, base) +  getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
+    return getStat(form, base) + getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
 }
 
 function setBaseStats(form) {
@@ -488,7 +494,7 @@ function setBaseStats(form) {
 
         champion_data.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
 
-        if(asNumber(champion_data.total_ad) < asNumber(champion_data.base_ad))
+        if (asNumber(champion_data.total_ad) < asNumber(champion_data.base_ad))
             champion_data.total_ad.value = champion_data.base_ad.value;
 
         const ats = getStat(form, 'attackspeed');
@@ -502,7 +508,7 @@ function setBaseStats(form) {
     } else if (form.id === 'target_data_form') {
         var champion_level = asNumber(form.champion_level);
         // form.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
-        
+
         // if(asNumber(form.total_ad) < asNumber(form.base_ad))
         //     form.total_ad.value = form.base_ad.value;
         // const ats = getStat(form, 'attackspeed');
@@ -541,55 +547,6 @@ function onReady() {
     setChampion(select.form, select.value)
     select = document.getElementById('target_champion_select');
     select.value = 'Syndra';
-    setChampion(select.form, select.value)
-}
+    setChampion(select.form, select.value);
 
-function onSpellRankInput(form) {
-    const idx = form.spellrank.value;
-    for (var i = 1; i < 7; i++) {
-        form['cooldown' + i].setAttribute('data-active', idx == i);
-        form['cost' + i].setAttribute('data-active', idx == i);
-    }
-    try {
-        var desc = form.spellDao.tooltip.replace(/{{ (\w*) }}+/g, function (match, capture) {
-            try {
-                const effext_index = parseInt(capture[1])
-                if (capture[0] === 'e') {
-                    var burn = form.spellDao['effectBurn'][effext_index];
-                    var exact = form.spellDao['effect'][effext_index][asNumber(form.spellrank) - 1];
-
-                    if (effext_index == 1) {
-                        form.base_damage.value = exact;
-                    }
-
-                    return burn.replace(exact.toString(), `<span class="spelleffect active" >${exact}</span>`);
-                } else if (capture[0] === 'a' || capture[0] === 'f') {
-                    for (let e of form.spellDao['vars']) {
-                        if (e.key === capture) {
-
-                            if (effext_index == 1) {
-                                if (e.link === "spelldamage") {
-                                    form.ap_ratio.value = rnd3p(e.coeff);
-                                    form.damage_type.selectedIndex = 1;
-                                } else
-                                    form.total_ad_ratio.value = rnd3p(e.coeff);
-                            }
-
-                            if (e.link === "spelldamage")
-                                return e.coeff + ' AP';
-                            else
-                                return e.coeff + ' AD';
-                        }
-                    }
-                }
-            } catch {}
-            return `{{ unknown value ${capture} }}`
-        });
-        form['tooltip'].innerHTML = desc;
-        console.log(form['tooltip']);
-
-    } catch (e) {
-        console.log('Could not spell');
-        console.log(e);
-    }
 }
