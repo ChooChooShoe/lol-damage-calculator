@@ -49,6 +49,7 @@ function downloadVersion() {
 function setPatchVersion(version) {
     console.log(`Data is now sourced from patch ${version}`);
     if (version) {
+        window.patchVersion = version;
         downloadingStaticDataFiles(version);
         downloadStaticItems(version);
     }
@@ -88,7 +89,7 @@ function downloadingChampionFiles(version, champion) {
         })
         .then(function (myJson) {
             var dao = myJson.data[champion];
-
+            window.playerChamption = dao.id;
             var imgStyle = `url("${cdn}/${version}/img/sprite/${dao.passive.image.sprite}") -${dao.passive.image.x}px -${dao.passive.image.y}px`
 
             addNewPasiveForm(champion, dao.name, imgStyle, dao.passive.name, dao.passive.description);
@@ -173,6 +174,7 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
 
     //This is needed for spell costs.
     form.abilityresourcename = championDao.partype;
+    form.custom_eff_index = 0;
 
     const imageStyle = `url(${spriteUrl}${spellDao.image.sprite}) -${spellDao.image.x}px -${spellDao.image.y}px`
     // cloned.getElementsByClassName('champion-name')[0].innerHTML = championDao.name;
@@ -192,6 +194,29 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     main_div.appendChild(cloned);
     onSpellRankInput(form, true);
     recalc();
+}
+
+
+function addSpellEffect(form, damage_type="magic") {
+    var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
+
+    // cloned.classList.add(`owner-${form.spellDao}`);
+    cloned.id = `spell_data_effect_${form.spellDao.id}_${form.custom_eff_index}`
+
+    var inner_form = cloned.getElementsByTagName("form")[0];
+    inner_form.id = `${cloned.id}_form`
+
+    inner_form.effect_name.value = `Custom Effect ${(form.custom_eff_index + 10).toString(36).toUpperCase()}`;
+    inner_form.effect_value.innerHTML = '';
+
+    inner_form.damage_type.value = damage_type;
+
+    var inputs = cloned.getElementsByClassName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", recalc);
+    }
+    form.getElementsByClassName('spell_data_custom_effect_list')[0].appendChild(cloned);
+    form.custom_eff_index =  form.custom_eff_index + 1;
 }
 
 /// Called when the spell rank radio has changed.

@@ -68,16 +68,16 @@ function onInputForSpell(sender, form, idx, d) {
     var damage_type = form.damage_type.value;
 
     var base_damage = asNumber(form.base_damage);
-    var ap_ratio = asPercent(form.ap_ratio);
+    var ap_ratio = asNumber(form.ap_ratio);
 
-    var total_ad_ratio = asPercent(form.total_ad_ratio);
-    var bonus_ad_ratio = asPercent(form.bonus_ad_ratio);
+    var total_ad_ratio = asNumber(form.total_ad_ratio);
+    var bonus_ad_ratio = asNumber(form.bonus_ad_ratio);
 
-    var max_health_ratio = asPercent(form.max_health_ratio);
+    var max_health_ratio = asNumber(form.max_health_ratio);
 
     var damage, dmg_onhit, dmg_dps = "Literally Healing //TODO FIX"; // dmg_onhit * (1 / cooldown);
     switch (damage_type) {
-        case "damage_type_physical":
+        case "physical":
             damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
 
             if (d.eff_armor > 0)
@@ -87,19 +87,21 @@ function onInputForSpell(sender, form, idx, d) {
 
             break;
 
-        case "damage_type_magic":
+        case "magic":
             damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
             if (d.eff_mr > 0)
                 dmg_onhit = damage * (100 / (100 + d.eff_mr));
             else
                 dmg_onhit = 2 - (100 / (100 - d.eff_mr));
             break;
-        case "damage_type_mixed":
+        case "not_detected":
             // damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
             // dmg_onhit = damage * (100 / (100 + (d.eff_mr / 2 + d.eff_armor / 2)));
             damage = 0;
             dmg_onhit = 0;
             break;
+        case "no_damage":
+            return;
     }
 
     form.dmg_premitigation.value = damage;
@@ -136,23 +138,20 @@ function recalc() {
 
             var ret = onInputForSpell(this, inner_form, i, data);
 
-            if (ret.damage_type === "damage_type_physical") {
+            if (ret.damage_type === "physical") {
                 total_pre_damage += ret.pre_damage;
                 total_pre_physical_damage += ret.pre_damage;
                 total_damage += ret.damage;
                 total_physical_damage += ret.damage;
-            } else if (ret.damage_type === "damage_type_magic") {
+            } else if (ret.damage_type === "magic") {
                 total_pre_damage += ret.pre_damage;
                 total_pre_magic_damage += ret.pre_damage;
                 total_damage += ret.damage;
                 total_magic_damage += ret.damage;
-            } else if (ret.damage_type === "damage_type_mixed") {
-                total_pre_damage += ret.pre_damage;
-                total_pre_magic_damage += ret.pre_damage / 2;
-                total_pre_physical_damage += ret.pre_damage / 2;
-                total_damage += ret.damage;
-                total_magic_damage += ret.damage / 2;
-                total_physical_damage += ret.damage / 2;
+            } else if (ret.damage_type === "not_detected") {
+                //TODO
+            } else if (ret.damage_type === "no_damage") {
+                //TODO
             }
         });
 
@@ -186,10 +185,10 @@ function recalc() {
 }
 
 function get_data() {
-    calc_lethality(true);
-    calc_armor(0);
-    calc_mr(0);
-    calc_ad(0);
+    // calc_lethality(true);
+    // calc_armor(0);
+    // calc_mr(0);
+    calc_ad(2);
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
         percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
@@ -199,7 +198,8 @@ function get_data() {
         percent_magic_pen = 0.0;
     }
     var flat_magic_pen = asNumber(champion_data.flat_magic_pen);
-    var percent_armor_pen = asNumber(champion_data.percent_armor_pen);
+    var percent_armor_pen = Math.min(Math.max(asPercent(champion_data.percent_armor_pen), 0), 1);
+
     var armor_pen = asNumber(champion_data.armor_pen);
     return {
         ap: asNumber(champion_data.ap),
@@ -247,23 +247,16 @@ function calc_lethality(direction) {
 }
 
 function calc_ad(direction) {
-    var champion_level = asNumber(champion_data.champion_level);
-    var attackdamage = getStat(champion_data, 'attackdamage')
-    var attackdamageperlevel = getStat(champion_data, 'attackdamageperlevel');
-    var base_ad = attackdamage + attackdamageperlevel * champion_level;
-
+    var base_ad = asNumber(champion_data.base_ad);
     var total_ad = asNumber(champion_data.total_ad);
     var bonus_ad = asNumber(champion_data.bonus_ad);
 
     if (direction === 0) { //change to total_ad
         bonus_ad = total_ad - base_ad;
-    } else if (direction === 1) { //change to base_ad
-        bonus_ad = total_ad - base_ad;
     } else if (direction === 2) { //change to bonus_ad
         total_ad = base_ad + bonus_ad;
     }
     champion_data.total_ad.value = total_ad;
-    champion_data.base_ad.value = base_ad;
     champion_data.bonus_ad.value = bonus_ad;
 }
 
@@ -389,6 +382,8 @@ function styleSelect(self) {
 
 
 function addNewSpellForm(damge_type) {
+    //TODO
+    return;
     var cloned = spell_data_template.cloneNode(true);
     var idx = spell_data_index;
     spell_data_index++;
@@ -426,6 +421,7 @@ function addNewSpellForm(damge_type) {
 function removeSpell(self) {
     main_div.removeChild(self.parentElement.parentElement);
 }
+
 function remSpellEffect(self) {
     //yikes
     self.parentElement.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement.parentElement);
@@ -494,8 +490,10 @@ function setBaseStats(form) {
 
         champion_data.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
 
-        if (asNumber(champion_data.total_ad) < asNumber(champion_data.base_ad))
+        if (asNumber(champion_data.bonus_ad) < 0) {
             champion_data.total_ad.value = champion_data.base_ad.value;
+            champion_data.bonus_ad.value = 0;
+        }
 
         const ats = getStat(form, 'attackspeed');
         champion_data.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
