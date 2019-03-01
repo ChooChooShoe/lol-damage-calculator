@@ -42,23 +42,62 @@ function downloadStaticItems(version) {
                 for (let i in item.maps)
                     if (item.maps[i] === true)
                         maps.push(i);
-                newItem.preRendered = `
-                <div class="item tooltiplink">
-                <img style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px" width="${item.image.w}" height="${item.image.h}"/>
-               
-                <span>${item.name}
-                
-                <div class="tooltipcontent">
-                <p>
-                 ${item.description}
-                 </p>
-                Cost: <span class="cost">${item.gold.total}</span>
-                Tags: <span class="tags">${tags}</span>
-                Maps: <span class="tags">${maps.join(' ')}</span>
-                </div>
-                </span>
-                </div>`.trim();
 
+                newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px" width="${item.image.w}" height="${item.image.h}"`
+                
+                var statsRender = [];
+                for(let i in item.stats) {
+                    statsRender.push(`
+                    <div><a>${i}:</a>
+                    <a style="color:#8AC88A;">+${item.stats[i]}</a></div>`);
+                }
+                var fromRender = [];
+                for(let i in item.from) {
+                    const other = itemJson.data[item.from[i]];
+                    fromRender.push(`<img style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/> + `);
+                }
+                if (fromRender.length > 0){
+                    fromRender =
+                    `<div class="item-recipe">Recipe: 
+                    ${fromRender.join("")}
+                    ${item.gold.base}<img src="/images/Gold.png" />
+                    </div>`
+                } else {
+                    fromRender = "";
+                }
+
+                var render = `
+<div class="item tooltiplink item-tooltip-container">
+<div>
+    <img ${newItem.imgRender}/>
+    <span class="item-title">${item.name}</span>
+</div>
+<div class="tooltipcontent">
+    <div class="item-tooltip-container">
+        <div>
+            <img ${newItem.imgRender}/>
+            <span class="item-title">${item.name}</span>
+            <div style="float: right">
+            ${item.gold.total}
+            <img src="/images/Gold.png" />
+            </div>
+        </div>
+        <div class="item-underline"></div>
+        <!--div class="item-stats-table table">
+            ${statsRender.join('\n')}
+        </div-->
+        <div class="item-description">
+            ${item.description}
+        </div>
+        <div class="item-underline"></div>
+        ${fromRender}
+        <div class="item-tags">Tags: 
+        ${item.tags.join(' ')}
+        </div>
+    </div>
+</div>
+</div>`
+                newItem.preRendered = render.trim();
                 itemData[key] = newItem;
             });
             render_lists(itemData, '');
