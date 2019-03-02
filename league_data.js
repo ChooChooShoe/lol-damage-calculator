@@ -55,7 +55,7 @@ function setPatchVersion(version) {
     }
 }
 
-downloadVersion();
+window.addEventListener('load', downloadVersion);
 
 var league_static_data = {
     isReady: false,

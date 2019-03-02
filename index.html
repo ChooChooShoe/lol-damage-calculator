@@ -188,42 +188,35 @@
                         <div>
                             <div class="item-section">
                                 <div class="item-grid-container">
-                                    <div>
-                                        <!-- <img style="background: url('https://ddragon.leagueoflegends.com/cdn/9.4.1/img/sprite/item0.png') -96px -288px"
-                                        width="48" height="48"> -->
-
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3089.png" width="64"
-                                            height="64">
+                                    <div onclick="sellItem(0);" class="item-inventory-0">
+                                        <img class="full-image" src="" width="64" height="64">
                                         <div><span>1</span></div>
                                     </div>
-                                    <div>
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3090.png" width="64"
-                                            height="64">
+                                    <div onclick="sellItem(1);" class="item-inventory-1">
+                                        <img class="full-image" src="" width="64" height="64">
                                         <div><span>2</span></div>
                                     </div>
-                                    <div>
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64"
-                                            height="64">
+                                    <div onclick="sellItem(2);" class="item-inventory-2">
+                                        <img class="full-image" src="" width="64" height="64">
                                         <div><span>3</span></div>
                                     </div>
-                                    <div>
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3089.png" width="64"
-                                            height="64">
+                                    <div onclick="sellItem(3);" class="item-inventory-3">
+                                        <img class="full-image" src="" width="64" height="64">
                                         <div><span>4</span></div>
                                     </div>
-                                    <div>
-                                        <img width="64" height="64">
+                                    <div onclick="sellItem(4);" class="item-inventory-4">
+                                        <img class="full-image" width="64" height="64">
                                         <div><span>5</span></div>
                                     </div>
-                                    <div>
-                                        <img width="64" height="64">
+                                    <div onclick="sellItem(5);" class="item-inventory-5">
+                                        <img class="full-image" width="64" height="64">
                                         <div><span>6</span></div>
                                     </div>
                                 </div>
                                 <div class="itemcontrol-grid-container">
-                                    <input type="button" id="clear_items" value="Clear Items">
-                                    <input type="button" id="load_items" value="Load Items">
-                                    <input type="button" id="save_items" value="Save Items">
+                                    <input class="clear_items" type="button" value="Clear Items">
+                                    <input class="hidden" type="button" id="load_items" value="Load Items">
+                                    <input class="hidden" type="button" id="save_items" value="Save Items">
                                     <input type="button" id="player_shop" value="Shop" onclick="openShopModel(this.form);">
                                 </div>
                             </div>
@@ -424,7 +417,8 @@
                     <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
 
                     <label class="hidden" for="dmg_dps">Expected damage per second</label>
-                    <input class="hidden"  type="text" id="dmg_dps" name="dmg_dps" value="" class="input output" readonly />
+                    <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
+                        readonly />
 
                     <input name="reset" type="reset" value="Reset Above" disabled>
                     <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
@@ -529,19 +523,22 @@
                     </div>
                     <div class="extra">
                         <label for="ap_ratio" class="ap">Total AP Ratio</label>
-                        <input type="number" step="0.01" min="0"  id="ap_ratio" name="ap_ratio" placeholder="0.00" class="input" />
+                        <input type="number" step="0.01" min="0" id="ap_ratio" name="ap_ratio" placeholder="0.00" class="input" />
                     </div>
                     <div class="extra">
                         <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
-                        <input type="number" step="0.01" min="0" id="total_ad_ratio" name="total_ad_ratio" placeholder="0.00" class="input" />
+                        <input type="number" step="0.01" min="0" id="total_ad_ratio" name="total_ad_ratio" placeholder="0.00"
+                            class="input" />
                     </div>
                     <div class="extra">
                         <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
-                        <input type="number" step="0.01" min="0"  id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0.00" class="input" />
+                        <input type="number" step="0.01" min="0" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0.00"
+                            class="input" />
                     </div>
                     <div class="extra">
                         <label for="max_health_ratio" class="health">% Max Health Ratio</label>
-                        <input type="number" step="0.01" min="0"  id="max_health_ratio" name="max_health_ratio" placeholder="0.00" class="input" />
+                        <input type="number" step="0.01" min="0" id="max_health_ratio" name="max_health_ratio"
+                            placeholder="0.00" class="input" />
                     </div>
                     <div class="extra">
                         <label for="dmg_premitigation">Premitigation Damage</label>
@@ -555,64 +552,81 @@
                     </div>
                     <div class="extra">
                         <label class="hidden" for="dmg_dps">Expected damage per second</label>
-                        <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output" readonly />
+                        <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
+                            readonly />
                     </div>
                 </form>
             </div>
         </div>
-        <div id="item_shop_model" class="modal">
+        <div id="item_shop_model" class="modal" style="display: none;">
             <div class="modal-content">
                 <div class="modal-header">
                     <span id="item_shop_model_close" class="close">&times;</span>
                     <h2>Shop</h2>
-                    <input type="search" id="item_shop_search" placeholder="Type to filter items..." class="shop-search"/>
+                    <input type="search" id="item_shop_search" placeholder="Type to filter items..." class="shop-search" />
                     <label for="item_shop_rift_only">Summoner's Rift Only</label>
-                    <input type="checkbox" id="item_shop_rift_only" checked/>
+                    <input type="checkbox" id="item_shop_rift_only" checked />
                     <output id="item_count"></output>
                 </div>
                 <div class="modal-body">
-                    <div class="shop-grid-container" id="items_dump">
+                    <div class="fixed-scroller">
+                        <div class="shop-grid-container" id="items_dump">
 
+                        </div>
                     </div>
-
+                    <div class="model-side">
+                        <div class="iteminfo-grid-container" id="item_shop_iteminfo">
+                            <div class="item-header">
+                                <img class="item-img-left" width="48" height="48" />
+                                <span class="item-title">Item</span>
+                                <span class="gold"><img src="/images/Gold.png" />100</span>
+                                <div style="float: right">
+                                    <input type="button" id="shop_buy_item" value="BUY" class="buy-item-btn" />
+                                </div>
+                            </div>
+                            <div class="item-underline"></div>
+                            <div class="item-stats-table table">
+                            </div>
+                            <div class="item-description">
+                            </div>
+                            <div class="item-underline"></div>
+                            <div class="item-recipe">
+                            </div>
+                            <div class="item-tags">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="item-section">
                         <div class="item-grid-container">
-                            <div>
-                                <!-- <img style="background: url('https://ddragon.leagueoflegends.com/cdn/9.4.1/img/sprite/item0.png') -96px -288px"
-                                        width="48" height="48"> -->
-
-                                <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3089.png" width="64"
-                                    height="64">
+                            <div onclick="sellItem(0);" class="item-inventory-0">
+                                <img class="full-image" src="" width="64" height="64">
                                 <div><span>1</span></div>
                             </div>
-                            <div>
-                                <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3090.png" width="64"
-                                    height="64">
+                            <div onclick="sellItem(1);" class="item-inventory-1">
+                                <img class="full-image" src="" width="64" height="64">
                                 <div><span>2</span></div>
                             </div>
-                            <div>
-                                <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64"
-                                    height="64">
+                            <div onclick="sellItem(2);" class="item-inventory-2">
+                                <img class="full-image" src="" width="64" height="64">
                                 <div><span>3</span></div>
                             </div>
-                            <div>
-                                <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3089.png" width="64"
-                                    height="64">
+                            <div onclick="sellItem(3);" class="item-inventory-3">
+                                <img class="full-image" src="" width="64" height="64">
                                 <div><span>4</span></div>
                             </div>
-                            <div>
-                                <img width="64" height="64">
+                            <div onclick="sellItem(4);" class="item-inventory-4">
+                                <img class="full-image" width="64" height="64">
                                 <div><span>5</span></div>
                             </div>
-                            <div>
-                                <img width="64" height="64">
+                            <div onclick="sellItem(5);" class="item-inventory-5">
+                                <img class="full-image" width="64" height="64">
                                 <div><span>6</span></div>
                             </div>
                         </div>
                         <div class="itemcontrol-grid-container">
-                            <input type="button" id="clear_items" value="Clear Items">
+                            <input type="button" class="clear_items" value="Clear Items">
                         </div>
                     </div>
                 </div>

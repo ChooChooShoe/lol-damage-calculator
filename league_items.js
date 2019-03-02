@@ -4,6 +4,7 @@ const items_dump = document.getElementById('items_dump');
 const item_count = document.getElementById('item_count');
 var basicItemData;
 var itemData = {};
+let itemInventory = [null, null, null, null, null, null]
 
 const cdn = 'https://ddragon.leagueoflegends.com/cdn';
 const locale = 'en_US';
@@ -24,120 +25,92 @@ function downloadStaticItems(version) {
         })
         .then(function (itemJson) {
             basicItemData = itemJson.basic;
+            let listHtml = "";
 
             Object.keys(itemJson.data).forEach(key => {
                 const item = itemJson.data[key];
-                var newItem = {};
+                let newItem = {};
+                newItem.key = key;
                 const tags = item.tags.join(' ');
                 newItem.search = [
                     item.name.toLowerCase(),
                     item.colloq.split(';'),
+                    // item.description.toLowerCase(),
                 ].flat();
                 newItem.searchExact = tags.toLowerCase().split(' ');
 
                 newItem.requiredChampion = item.requiredChampion;
                 newItem.nonRift = !item.maps['12'];
 
-                var maps = [];
-                for (let i in item.maps)
-                    if (item.maps[i] === true)
-                        maps.push(i);
+                // For sprite images
+                newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;" width="${item.image.w}" height="${item.image.h}"`
 
-                newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px" width="${item.image.w}" height="${item.image.h}"`
-                
-                var statsRender = [];
-                for(let i in item.stats) {
+                // For full images - Eg: <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64" height="64">
+                newItem.imageFull = `${cdn}/${version}/img/item/${item.image.full}`
+
+                let statsRender = [];
+                for (let i in item.stats) {
                     statsRender.push(`
                     <div><a>${i}:</a>
                     <a style="color:#8AC88A;">+${item.stats[i]}</a></div>`);
                 }
-                var fromRender = [];
-                for(let i in item.from) {
+                let fromRender = [];
+                for (let i in item.from) {
                     const other = itemJson.data[item.from[i]];
                     fromRender.push(`<img style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/> + `);
                 }
-                if (fromRender.length > 0){
+                if (fromRender.length > 0) {
                     fromRender =
-                    `<div class="item-recipe">Recipe: 
+                        `<div class="item-recipe">Recipe: 
                     ${fromRender.join("")}
-                    ${item.gold.base}<img src="/images/Gold.png" />
+                    <img src="/images/Gold.png" />
+                    <span class="gold">${item.gold.base}</span>
                     </div>`
                 } else {
-                    fromRender = "";
+                    fromRender = '<div class="item-recipe"></div>';
                 }
+                let total_cost;
+                if (item.gold.purchasable)
+                    total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
+                else
+                    total_cost = '<span class="red">Not for Sale</span>';
 
-                var render = `
-<div class="item tooltiplink item-tooltip-container">
-<div>
-    <img ${newItem.imgRender}/>
-    <span class="item-title">${item.name}</span>
-</div>
-<div class="tooltipcontent">
-    <div class="item-tooltip-container">
-        <div>
-            <img ${newItem.imgRender}/>
-            <span class="item-title">${item.name}</span>
-            <div style="float: right">
-            ${item.gold.total}
-            <img src="/images/Gold.png" />
+                let render = `
+<div class="item tooltiplink item-container" id="shop_item_${key}" data-key="${key}">
+    <div class="item-img-left " ${newItem.imgRender}></div>
+    <span class="item-name">${item.name}</span>
+    <span class="gold"><img src="/images/Gold.png" />${total_cost}</span>
+    <div class="tooltipcontent">
+        <div class="item-tooltip-container">
+            <div class="item-header">
+                <img class="item-img-left" ${newItem.imgRender}/>
+                <span class="item-title">${item.name}</span> 
+                <div style="float: right">
+                <span class="gold"><img src="/images/Gold.png" />${total_cost}</span>
+                </div>
+            </div>
+            <div class="item-underline"></div>
+            <div class="item-stats-table table">
+                ${statsRender.join('\n')}
+            </div>
+            <div class="item-description">
+                ${item.description}
+            </div>
+            <div class="item-underline"></div>
+            ${fromRender}
+            <div class="item-tags">Tags: 
+            ${item.tags.join(' ')}
             </div>
         </div>
-        <div class="item-underline"></div>
-        <!--div class="item-stats-table table">
-            ${statsRender.join('\n')}
-        </div-->
-        <div class="item-description">
-            ${item.description}
-        </div>
-        <div class="item-underline"></div>
-        ${fromRender}
-        <div class="item-tags">Tags: 
-        ${item.tags.join(' ')}
-        </div>
     </div>
-</div>
 </div>`
-                newItem.preRendered = render.trim();
+                // newItem.preRendered = render.trim();
+                listHtml += render.trim();
                 itemData[key] = newItem;
             });
-            render_lists(itemData, '');
+            items_dump.innerHTML = listHtml;
+            addTooltipEvents();
         });
-}
-
-// Get the modal
-const item_shop_model = document.getElementById('item_shop_model');
-
-function openShopModel(form) {
-    item_shop_model.style.display = "block";
-    item_shop_search.focus();
-    item_shop_search.value = '';
-    filterShop();
-}
-
-
-document.getElementById('item_shop_model_close').addEventListener('click', function () {
-    item_shop_model.style.display = "none";
-});
-
-window.onclick = function (event) {
-    if (event.target == item_shop_model) {
-        item_shop_model.style.display = "none";
-    }
-}
-
-function render_lists(listOfItems, champion) {
-    var listHtml = "";
-    for (var index in listOfItems) {
-        const item = listOfItems[index];
-
-        if (item.requiredChampion === champion)
-            listHtml = item.preRendered + listHtml;
-        else
-            listHtml += item.preRendered;
-    }
-    items_dump.innerHTML = listHtml;
-    item_count.innerText = 'Item Count: ' + Object.keys(listOfItems).length;
-    addTooltipEvents();
 }
 
 function addTooltipEvents() {
@@ -153,9 +126,98 @@ function addTooltipEvents() {
             const tip = e.currentTarget.getElementsByClassName('tooltipcontent')[0];
             tip.style.display = 'none';
         });
+        item.addEventListener('click', e => {
+            showInfo(item.getAttribute('data-key'));
+        });
+        item.addEventListener('dblclick', e => {
+            buyItem(item.getAttribute('data-key'));
+        });
+        item.addEventListener('contextmenu', e => {
+            showInfo(item.getAttribute('data-key'));
+            buyItem(item.getAttribute('data-key'));
+            e.preventDefault();
+        });
     }
 }
 
+
+// Get the modal
+const item_shop_model = document.getElementById('item_shop_model');
+const iteminfo = document.getElementById('item_shop_iteminfo');
+
+function openShopModel(form) {
+    item_shop_model.style.display = null;
+    item_shop_search.focus();
+    item_shop_search.value = '';
+    filterShop();
+}
+
+function byClass(a, b) {
+    return a.getElementsByClassName(b)[0]
+}
+
+function showInfo(itemKey) {
+    const el = document.getElementById(`shop_item_${itemKey}`);
+
+    byClass(iteminfo, 'item-img-left').style.background = byClass(el, 'item-img-left').style.background;
+    byClass(iteminfo, 'item-title').innerText = byClass(el, 'item-title').innerText;
+    byClass(iteminfo, 'item-description').innerHTML = byClass(el, 'item-description').innerHTML;
+    byClass(iteminfo, 'item-stats-table').innerHTML = byClass(el, 'item-stats-table').innerHTML;
+    byClass(iteminfo, 'item-tags').innerHTML = byClass(el, 'item-tags').innerHTML;
+    byClass(iteminfo, 'item-recipe').innerHTML = byClass(el, 'item-recipe').innerHTML;
+
+    window.shoppingCardItem = itemKey;
+}
+
+Array.from(document.getElementsByClassName('clear_items')).forEach(function (element) {
+    element.addEventListener('click', e => {
+        for (let i = 0; i < 6; i++) {
+            sellItem(i);
+        }
+    });
+});
+
+document.getElementById('item_shop_model_close').addEventListener('click', function () {
+    item_shop_model.style.display = "none";
+});
+
+document.getElementById('shop_buy_item').addEventListener('click', e => {
+    buyItem(window.shoppingCardItem);
+});
+
+function buyItem(item) {
+    console.log(item);
+    let openIndex = 0;
+    for (; openIndex < 6; openIndex++) {
+        if (itemInventory[openIndex] === null)
+            break;
+    }
+    if (openIndex > 5)
+        openIndex = 5;
+    const els = document.getElementsByClassName(`item-inventory-${openIndex}`);
+
+    for (var i = 0; i < els.length; i++) {
+        const items = els[i].getElementsByClassName('full-image')[0];
+        items.src = itemData[item].imageFull;
+    }
+    itemInventory[openIndex] = item;
+}
+
+function sellItem(itemNumber) {
+    const els = document.getElementsByClassName(`item-inventory-${itemNumber}`);
+
+    for (var i = 0; i < els.length; i++) {
+        const items = els[i].getElementsByClassName('full-image')[0];
+        items.src = "";
+    }
+    itemInventory[itemNumber] = null;
+}
+
+window.onclick = function (event) {
+    if (event.target == item_shop_model) {
+        item_shop_model.style.display = "none";
+    }
+}
 
 // lets filters it
 const item_shop_search = document.getElementById('item_shop_search');
@@ -164,23 +226,27 @@ const item_shop_rift_only = document.getElementById('item_shop_rift_only')
 function filterShop(event) {
     const keyword = item_shop_search.value.toLowerCase();
 
-    const filterd = Object.keys(itemData).filter(key => {
+    Object.keys(itemData).forEach(key => {
         const item = itemData[key];
-        if (item_shop_rift_only.checked && item.nonRift)
-            return false;
+        const el = document.getElementById(`shop_item_${key}`);
+
+        let order = item.requiredChampion === window.playerChamption ? -1 : 0;
+        el.style.order = order;
+
+        if (item_shop_rift_only.checked && item.nonRift) {
+            el.style.display = 'none';
+            return;
+        }
+
         const lazySearch = itemData[key].search.some(e => {
             return e.indexOf(keyword) > -1;
         });
-        if (lazySearch)
-            return true;
-        else
-            return itemData[key].searchExact.includes(keyword);
-    }).reduce((obj, key) => {
-        obj[key] = itemData[key];
-        return obj;
-    }, {});
-
-    render_lists(filterd, window.playerChamption);
+        if (lazySearch || itemData[key].searchExact.includes(keyword)) {
+            el.style.display = null;
+        } else {
+            el.style.display = 'none';
+        }
+    });
 }
 
 item_shop_search.addEventListener('input', filterShop);
