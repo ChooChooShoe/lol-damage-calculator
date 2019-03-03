@@ -29,7 +29,7 @@ function downloadStaticItems(version) {
 
             Object.keys(itemJson.data).forEach(key => {
                 const item = itemJson.data[key];
-                let newItem = {};
+                let newItem = item;
                 newItem.key = key;
                 const tags = item.tags.join(' ');
                 newItem.search = [
@@ -40,6 +40,8 @@ function downloadStaticItems(version) {
                 newItem.searchExact = tags.toLowerCase().split(' ');
 
                 newItem.requiredChampion = item.requiredChampion;
+                newItem.gold = item.gold;
+                newItem.stats = item.stats;
                 newItem.nonRift = !item.maps['12'];
 
                 // For sprite images
@@ -57,7 +59,7 @@ function downloadStaticItems(version) {
                 let fromRender = [];
                 for (let i in item.from) {
                     const other = itemJson.data[item.from[i]];
-                    fromRender.push(`<img style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/> + `);
+                    fromRender.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/> + `);
                 }
                 if (fromRender.length > 0) {
                     fromRender =
@@ -69,12 +71,33 @@ function downloadStaticItems(version) {
                 } else {
                     fromRender = '<div class="item-recipe"></div>';
                 }
+                
+                let intoRender = [];
+                let intoRenderSmall = [];
+                for (let i in item.into) {
+                    const other = itemJson.data[item.into[i]];
+                    intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+                    intoRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+                }
+                if (intoRender.length > 0) {
+                    intoRender = intoRender.join("");
+                    intoRenderSmall =
+                        `<div class="item-builds">Builds Into: 
+                    ${intoRenderSmall.join("")}
+                    </div>`
+                } else {
+                    intoRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
+                    intoRenderSmall = '<div class="item-builds"></div>';
+                }
+
                 let total_cost;
                 if (item.gold.purchasable)
                     total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
                 else
                     total_cost = '<span class="red">Not for Sale</span>';
 
+                
+                newItem.intoRender = intoRender;
                 let render = `
 <div class="item tooltiplink item-container" id="shop_item_${key}" data-key="${key}">
     <div class="item-img-left " ${newItem.imgRender}></div>
@@ -98,6 +121,7 @@ function downloadStaticItems(version) {
             </div>
             <div class="item-underline"></div>
             ${fromRender}
+            ${intoRenderSmall}
             <div class="item-tags">Tags: 
             ${item.tags.join(' ')}
             </div>
@@ -158,6 +182,7 @@ function byClass(a, b) {
 
 function showInfo(itemKey) {
     const el = document.getElementById(`shop_item_${itemKey}`);
+    const item = itemData[itemKey];
 
     byClass(iteminfo, 'item-img-left').style.background = byClass(el, 'item-img-left').style.background;
     byClass(iteminfo, 'item-title').innerText = byClass(el, 'item-title').innerText;
@@ -165,6 +190,15 @@ function showInfo(itemKey) {
     byClass(iteminfo, 'item-stats-table').innerHTML = byClass(el, 'item-stats-table').innerHTML;
     byClass(iteminfo, 'item-tags').innerHTML = byClass(el, 'item-tags').innerHTML;
     byClass(iteminfo, 'item-recipe').innerHTML = byClass(el, 'item-recipe').innerHTML;
+
+    byClass(iteminfo, 'item-builds').innerHTML = '';
+    for(let i in item.into) {
+        const otherItem = itemData[item.into[i]];
+        const cloned = document.getElementById(`shop_item_${item.into[i]}`).cloneNode(true);
+        cloned.className = "item tooltiplink item-container icon";
+        cloned.id = '';
+        byClass(iteminfo, 'item-builds').appendChild(cloned);
+    }
 
     window.shoppingCardItem = itemKey;
 }
@@ -201,6 +235,7 @@ function buyItem(item) {
         items.src = itemData[item].imageFull;
     }
     itemInventory[openIndex] = item;
+    onItemsUpdated();
 }
 
 function sellItem(itemNumber) {
@@ -208,9 +243,20 @@ function sellItem(itemNumber) {
 
     for (var i = 0; i < els.length; i++) {
         const items = els[i].getElementsByClassName('full-image')[0];
-        items.src = "";
+        items.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
     }
     itemInventory[itemNumber] = null;
+    onItemsUpdated();
+}
+
+function onItemsUpdated() {
+    let total_cost = 0;
+    for(let i = 0; i < 6; i++) {
+        if(itemInventory[i]) {
+            total_cost += itemData[itemInventory[i]].gold.total;
+        }
+    }
+    document.getElementById('item_total_cost').value = total_cost;
 }
 
 window.onclick = function (event) {
@@ -225,7 +271,7 @@ const item_shop_rift_only = document.getElementById('item_shop_rift_only')
 
 function filterShop(event) {
     const keyword = item_shop_search.value.toLowerCase();
-
+    let count = 0;
     Object.keys(itemData).forEach(key => {
         const item = itemData[key];
         const el = document.getElementById(`shop_item_${key}`);
@@ -243,10 +289,12 @@ function filterShop(event) {
         });
         if (lazySearch || itemData[key].searchExact.includes(keyword)) {
             el.style.display = null;
+            count++;
         } else {
             el.style.display = 'none';
         }
     });
+    item_count.value = count;
 }
 
 item_shop_search.addEventListener('input', filterShop);
