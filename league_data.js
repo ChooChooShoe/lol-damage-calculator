@@ -100,6 +100,8 @@ function downloadingChampionFiles(version, champion) {
             league_static_data.champion_data_full[champion] = {
                 passiveImage: imgStyle,
             };
+            // sellAllItems();
+            //TODO buy default items
         });
 }
 

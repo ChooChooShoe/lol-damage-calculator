@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.png">
     <title>LoL Damage Calculator</title>
+    <link type="text/css" rel="stylesheet" href="common.css" />
     <link type="text/css" rel="stylesheet" href="main.css" />
     <link type="text/css" rel="stylesheet" href="items.css" />
 
@@ -22,29 +23,29 @@
                     <h2>League of Legends Damage Calcuator: v0.1</h2>
                 </li>
                 <li>
-                    <button class="navbutton" onclick="addNewSpellForm('magic')">
+                    <a class="btn small" onclick="addNewSpellForm('magic')">
                         Add Magic Damage Spell
-                    </button>
+                    </a>
                 </li>
                 <li>
-                    <button class="navbutton" onclick="addNewSpellForm('physical')">
+                    <a class="btn small" onclick="addNewSpellForm('physical')">
                         Add Physical Damage Spell
-                    </button>
+                    </a>
                 </li>
                 <li>
-                    <button class="navbutton" onclick="addNewSpellForm('mixed')">
+                    <a class="btn small disabled" onclick="addNewSpellForm('mixed')">
                         Add Complex Spell
-                    </button>
+                    </a>
                 </li>
                 <li>
-                    <button class="navbutton" onclick="save()">
+                    <a class="btn small" onclick="save()">
                         Save
-                    </button>
+                    </a>
                 </li>
                 <li>
-                    <button class="navbutton" onclick="load()">
+                    <a class="btn small" onclick="load()">
                         Load
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <div class="version-select">
@@ -54,9 +55,6 @@
                         </select>
                     </div>
 
-                </li>
-                <li>
-                    <img id="reksai" width="1" height="1">
                 </li>
             </ul>
         </div>
@@ -188,36 +186,44 @@
                         <div>
                             <div class="item-section">
                                 <div class="item-grid-container">
-                                    <div onclick="sellItem(0);" class="item-inventory-0">
-                                        <img class="full-image" src="" width="64" height="64">
+                                    <div class="item-inventory-0">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>1</span></div>
                                     </div>
-                                    <div onclick="sellItem(1);" class="item-inventory-1">
-                                        <img class="full-image" src="" width="64" height="64">
+                                    <div class="item-inventory-1">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>2</span></div>
                                     </div>
-                                    <div onclick="sellItem(2);" class="item-inventory-2">
-                                        <img class="full-image" src="" width="64" height="64">
+                                    <div class="item-inventory-2">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>3</span></div>
                                     </div>
-                                    <div onclick="sellItem(3);" class="item-inventory-3">
-                                        <img class="full-image" src="" width="64" height="64">
+                                    <div class="item-inventory-3">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>4</span></div>
                                     </div>
-                                    <div onclick="sellItem(4);" class="item-inventory-4">
-                                        <img class="full-image" width="64" height="64">
+                                    <div class="item-inventory-4">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>5</span></div>
                                     </div>
-                                    <div onclick="sellItem(5);" class="item-inventory-5">
-                                        <img class="full-image" width="64" height="64">
+                                    <div class="item-inventory-5">
+                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                            width="64" height="64">
                                         <div><span>6</span></div>
                                     </div>
                                 </div>
                                 <div class="itemcontrol-grid-container">
-                                    <input class="clear_items" type="button" value="Clear Items">
-                                    <input class="hidden" type="button" id="load_items" value="Load Items">
-                                    <input class="hidden" type="button" id="save_items" value="Save Items">
-                                    <input type="button" id="player_shop" value="Shop" onclick="openShopModel(this.form);">
+                                    <input class="clear_items btn" type="button" value="Clear Items">
+                                    <input class="btn hidden" type="button" id="load_items" value="Load Items">
+                                    <input class="btn hidden" type="button" id="save_items" value="Save Items">
+                                    <input class="btn" type="button" id="player_shop" value="Shop" onclick="openShopModel(this.form);">
+                                </div>
+                                <div class="stats_total">
                                 </div>
                             </div>
                         </div>
@@ -225,7 +231,7 @@
 
                     <div>
                         <input name="reset" type="reset" value="Reset Above" disabled>
-                        <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
+                        <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                         <input id="main_collapse" name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                     </div>
                 </form>
@@ -313,7 +319,7 @@
                         </div>
                         <div>
                             <input name="reset" type="reset" value="Reset Above" disabled>
-                            <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
+                            <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                             <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                         </div>
                     </div>
@@ -371,7 +377,7 @@
                         </div>
                     </div>
                     <!-- <input name="reset" type="reset" value="Reset Above"> -->
-                    <!-- <input Dname="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)"> -->
+                    <!-- <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)"> -->
                     <!-- <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)"> -->
                 </form>
             </div>
@@ -564,9 +570,11 @@
                     <span id="item_shop_model_close" class="close">&times;</span>
                     <h2>Shop</h2>
                     <input type="search" id="item_shop_search" placeholder="Type to filter items..." class="shop-search" />
-                    <label for="item_shop_rift_only">Summoner's Rift Only</label>
+                    <label for="item_shop_rift_only">Show Summoner's Rift Only</label>
                     <input type="checkbox" id="item_shop_rift_only" checked />
-                    <label for="item_count">Item Count: </label>
+                    <label for="item_shop_hide_event">Hide special event items</label>
+                    <input type="checkbox" id="item_shop_hide_event" checked />
+                    <label for="item_count">Item Count:</label>
                     <output id="item_count"></output>
                 </div>
                 <div class="model-body-left fixed-scroller">
@@ -602,27 +610,33 @@
                 <div class="modal-footer">
                     <div class="item-grid-container">
                         <div onclick="sellItem(0);" class="item-inventory-0">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>1</span></div>
                         </div>
                         <div onclick="sellItem(1);" class="item-inventory-1">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>2</span></div>
                         </div>
                         <div onclick="sellItem(2);" class="item-inventory-2">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>3</span></div>
                         </div>
                         <div onclick="sellItem(3);" class="item-inventory-3">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>4</span></div>
                         </div>
                         <div onclick="sellItem(4);" class="item-inventory-4">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>5</span></div>
                         </div>
                         <div onclick="sellItem(5);" class="item-inventory-5">
-                            <img class="full-image" width="64" height="64">
+                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                width="64" height="64">
                             <div><span>6</span></div>
                         </div>
                     </div>
@@ -631,8 +645,13 @@
                     </div>
                     <label for="item_total_cost">Total Cost: </label>
                     <output id="item_total_cost"></output>
+                    <div class="stats_total" style="float: right;">
+                    </div>
                 </div>
             </div>
+        </div>
+        <div id="item_tooltips">
+
         </div>
     </div>
     <script type="text/javascript" src="calc.js"></script>
