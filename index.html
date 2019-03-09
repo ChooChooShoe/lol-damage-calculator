@@ -12,651 +12,621 @@
     <link type="text/css" rel="stylesheet" href="common.css" />
     <link type="text/css" rel="stylesheet" href="main.css" />
     <link type="text/css" rel="stylesheet" href="items.css" />
-
+    <script type="module" src="league_data.js"></script>
+    <script type="module" src="league_items.js"></script>
+    <script type="module" src="ui.js"></script>
+    <script type="module" src="calc.js"></script>
 </head>
 
 <body>
-    <div id="root">
-        <div id="header">
-            <ul id="nav">
-                <li>
-                    <h2>League of Legends Damage Calcuator: v0.1</h2>
-                </li>
-                <li>
-                    <a class="btn small" onclick="addNewSpellForm('magic')">
-                        Add Magic Damage Spell
-                    </a>
-                </li>
-                <li>
-                    <a class="btn small" onclick="addNewSpellForm('physical')">
-                        Add Physical Damage Spell
-                    </a>
-                </li>
-                <li>
-                    <a class="btn small disabled" onclick="addNewSpellForm('mixed')">
-                        Add Complex Spell
-                    </a>
-                </li>
-                <li>
-                    <a class="btn small" onclick="save()">
-                        Save
-                    </a>
-                </li>
-                <li>
-                    <a class="btn small" onclick="load()">
-                        Load
-                    </a>
-                </li>
-                <li>
-                    <div class="version-select">
-                        <span>League Patch:</span>
-                        <select id="version_select" oninput="setPatchVersion(this.value);">
-                            <option value=''>Loading Data...</option>
-                        </select>
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-        <div id="main">
-            <div class="data_holder" id="champion_data">
-                <h2 class="title_input">Player's Champion Data</h2>
-
-
-                <form autocomplete="off" id="champion_data_form">
-
-                    <label for="player_champion_select" class="">Load Champion Data For</label>
-                    <select id="player_champion_select" class="input" oninput="setChampion(this.form, this.value);">
+    <div id="header">
+        <ul id="nav">
+            <li>
+                <h2>League of Legends Damage Calcuator: v0.1</h2>
+            </li>
+            <li>
+                <a class="btn small" onclick="addNewSpellForm('magic')">
+                    Add Magic Damage Spell
+                </a>
+            </li>
+            <li>
+                <a class="btn small" onclick="addNewSpellForm('physical')">
+                    Add Physical Damage Spell
+                </a>
+            </li>
+            <li>
+                <a class="btn small disabled" onclick="addNewSpellForm('mixed')">
+                    Add Complex Spell
+                </a>
+            </li>
+            <li>
+                <a class="btn small" onclick="save()">
+                    Save
+                </a>
+            </li>
+            <li>
+                <a class="btn small" onclick="load()">
+                    Load
+                </a>
+            </li>
+            <li>
+                <div class="version-select">
+                    <span>League Patch:</span>
+                    <select id="version_select" oninput="setPatchVersion(this.value);">
                         <option value=''>Loading Data...</option>
                     </select>
-                    <label for="player_champion_level" class="short">➤ Champion Level</label>
-                    <input type="number" min="0" id="player_champion_level" name="champion_level" placeholder="0" value="18"
-                        class="input short" oninput="setBaseStats(this.form)" />
+                </div>
 
-                    <span class="tooltip">Mouse Over to view base stats.
-                        <div class="table stats-table tooltip-float">
-                            <div><span>Name:</span><output name="dao_name"></output></div>
-                            <div><span>Title:</span><output name="dao_title"></output></div>
-                            <div><span>Resource Type:</span><output name="dao_partype"></output></div>
-                            <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
-                            <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
-                            <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
-                            <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
-                            <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
-                            <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
-                            <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
-                            <div><span class="mr">Base Magic Res.:</span><output name="dao_stats_spellblock">0</output></div>
-                            <div><span class="mr">Magic Res. growth:</span><output name="dao_stats_spellblockperlevel">0</output></div>
-                            <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
-                            <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
-                            <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
-                            <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
-                            <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
-                            <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
-                            <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
-                            <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
-                            <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
-                            <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
-                            <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
-                        </div>
-                    </span>
-                    <div class="table fill">
-                        <div>
-                            <label for="ap" class="ap">Total Ability Power (AP)</label>
-                            <input type="number" min="0" id="ap" name="ap" placeholder="0" value="100" class="input" />
-                        </div>
-                        <div>
-                            <label for="total_ad" class="ad">Total Attack Damage (AD)</label>
-                            <input type="number" min="0" id="total_ad" name="total_ad" placeholder="0" class="input"
-                                oninput="calc_ad(0)" />
-                        </div>
-                        <div class="extra">
-                            <label for="base_ad" class="short ad">➤ Base AD</label>
-                            <input readonly type="number" min="0" id="base_ad" name="base_ad" placeholder="0" class="input short" />
-                        </div>
-                        <div class="extra">
-                            <label for="bonus_ad" class="short ad">➤ Bonus AD</label>
-                            <input type="number" min="0" id="bonus_ad" name="bonus_ad" placeholder="0" class="input short"
-                                oninput="calc_ad(2)" />
-                        </div>
-                        <div class="extra">
+            </li>
+        </ul>
+    </div>
+    <div id="main">
 
-                            <label for="attack_speed" class="">Attack Speed</label>
-                            <input type="text" id="attack_speed" name="attack_speed" placeholder="0.67" value="0.67"
-                                class="input" />
-                        </div>
-                        <div class="extra">
-                            <label for="crit_change" class="">% Crit. Chance</label>
-                            <input type="text" id="crit_change" name="crit_change" placeholder="0%" class="input" />
-                        </div>
-                        <div class="extra">
-                            <label for="crit_damage" class="">% Crit. Damage</label>
-                            <input type="text" id="crit_damage" name="crit_damage" placeholder="200%" value="200%"
-                                class="input" />
-                        </div>
-                        <div class="extra">
-                            <!-- <label>
-                            <label class="switch">
-                                <input id="crit_damage" name="crit_damage" type="checkbox" class="input">
-                                <span class="slider"></span>
-                            </label>
-                            <span id="percent_crit_damage_value">&nbsp;= 200% Crit Damage</span>
-                        </label> -->
-                            <label for="life_steal" class="">% Life Steal</label>
-                            <input type="text" id="life_steal" name="life_steal" placeholder="0%" class="input" />
-                        </div>
-                        <div>
+        <div class="data_holder" id="champion_data">
+            <h2 class="title_input">Player's Champion Data</h2>
 
-                            <label for="has_void_staff" class="ap">Has Void Staff?</label>
-                            <label>
+            <form autocomplete="off" id="champion_data_form">
+                <label for="player_champion_select" class="">Load Champion Data For</label>
+                <select id="player_champion_select" class="input" oninput="setChampion(this.form, this.value);">
+                    <option value=''>Loading Data...</option>
+                </select>
+                <label for="player_champion_level" class="short">➤ Champion Level</label>
+                <input type="number" min="0" id="player_champion_level" name="champion_level" placeholder="0" value="18"
+                    class="input short" oninput="setBaseStats(this.form)" />
+
+                <span class="tooltip">Mouse Over to view base stats.
+                    <div class="table stats-table tooltip-float">
+                        <div><span>Name:</span><output name="dao_name"></output></div>
+                        <div><span>Title:</span><output name="dao_title"></output></div>
+                        <div><span>Resource Type:</span><output name="dao_partype"></output></div>
+                        <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
+                        <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
+                        <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
+                        <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
+                        <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
+                        <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
+                        <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
+                        <div><span class="mr">Base Magic Res.:</span><output name="dao_stats_spellblock">0</output></div>
+                        <div><span class="mr">Magic Res. growth:</span><output name="dao_stats_spellblockperlevel">0</output></div>
+                        <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
+                        <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
+                        <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
+                        <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
+                        <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
+                        <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
+                        <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
+                        <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
+                        <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
+                        <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
+                        <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
+                    </div>
+                </span>
+                <div class="table fill">
+                    <div>
+                        <label for="ap" class="ap">Total Ability Power (AP)</label>
+                        <input type="number" min="0" id="ap" name="ap" placeholder="0" class="input" />
+                    </div>
+                    <div>
+                        <label for="total_ad" class="ad">Total Attack Damage (AD)</label>
+                        <input type="number" min="0" id="total_ad" name="total_ad" placeholder="0" class="input"
+                            oninput="calc_ad(0)" />
+                    </div>
+                    <div class="extra">
+                        <label for="base_ad" class="short ad">➤ Base AD</label>
+                        <input readonly type="number" min="0" id="base_ad" name="base_ad" placeholder="0" class="input short" />
+                    </div>
+                    <div class="extra">
+                        <label for="bonus_ad" class="short ad">➤ Bonus AD</label>
+                        <input type="number" min="0" id="bonus_ad" name="bonus_ad" placeholder="0" class="input short"
+                            oninput="calc_ad(2)" />
+                    </div>
+                    <div class="extra">
+
+                        <label for="attack_speed" class="">Attack Speed</label>
+                        <input type="text" id="attack_speed" name="attack_speed" placeholder="0.67" value="0.67" class="input" />
+                    </div>
+                    <div class="extra">
+                        <label for="crit_change" class="">% Crit. Chance</label>
+                        <input type="text" id="crit_change" name="crit_change" placeholder="0%" class="input" />
+                    </div>
+                    <div class="extra">
+                        <label for="crit_damage" class="">% Crit. Damage</label>
+                        <input type="text" id="crit_damage" name="crit_damage" placeholder="200%" value="200%" class="input" />
+                    </div>
+                    <div class="extra">
+                        <!-- <label>
                                 <label class="switch">
-                                    <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input">
+                                    <input id="crit_damage" name="crit_damage" type="checkbox" class="input">
                                     <span class="slider"></span>
                                 </label>
-                                <span id="percent_magic_pen_value">&nbsp;= 0% Magic Pen.</span>
+                                <span id="percent_crit_damage_value">&nbsp;= 200% Crit Damage</span>
+                            </label> -->
+                        <label for="life_steal" class="">% Life Steal</label>
+                        <input type="text" id="life_steal" name="life_steal" placeholder="0%" class="input" />
+                    </div>
+                    <div>
+
+                        <label for="has_void_staff" class="ap">Has Void Staff?</label>
+                        <label>
+                            <label class="switch">
+                                <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input">
+                                <span class="slider"></span>
                             </label>
-                        </div>
-                        <div>
+                            <span id="percent_magic_pen_value">&nbsp;= 0% Magic Pen.</span>
+                        </label>
+                    </div>
+                    <div>
 
-                            <label for="flat_magic_pen">Flat Magic Penetration</label>
-                            <input type="number" min="0" id="flat_magic_pen" name="flat_magic_pen" placeholder="0"
-                                class="input" />
-                        </div>
-                        <div class="extra">
+                        <label for="flat_magic_pen">Flat Magic Penetration</label>
+                        <input type="number" min="0" id="flat_magic_pen" name="flat_magic_pen" placeholder="0" class="input" />
+                    </div>
+                    <div class="extra">
 
-                            <label for="spell_vamp" class="">% Spell Vamp</label>
-                            <input type="text" id="spell_vamp" name="spell_vamp" placeholder="0%" class="input" />
-                        </div>
-                        <div>
+                        <label for="spell_vamp" class="">% Spell Vamp</label>
+                        <input type="text" id="spell_vamp" name="spell_vamp" placeholder="0%" class="input" />
+                    </div>
+                    <div>
 
-                            <label for="lethality" class="lethality">Lethality</label>
-                            <input type="number" min="0" id="lethality" name="lethality" placeholder="0" class="input"
-                                oninput="calc_lethality(true)" />
-                        </div>
-                        <div class="extra">
+                        <label for="lethality" class="lethality">Lethality</label>
+                        <input type="number" min="0" id="lethality" name="lethality" placeholder="0" class="input"
+                            oninput="calc_lethality(true)" />
+                    </div>
+                    <div class="extra">
 
-                            <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
-                            <input type="number" min="0" id="armor_pen" name="armor_pen" placeholder="0" class="input short"
-                                oninput="calc_lethality(false)" />
-                        </div>
-                        <div>
-                            <label for="percent_armor_pen">% Total Armor Penetration</label>
-                            <input type="text" id="percent_armor_pen" name="percent_armor_pen" placeholder="0%" class="input" />
-                        </div>
-                        <div>
-                            <div class="item-section">
-                                <div class="item-grid-container">
-                                    <div class="item-inventory-0">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>1</span></div>
-                                    </div>
-                                    <div class="item-inventory-1">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>2</span></div>
-                                    </div>
-                                    <div class="item-inventory-2">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>3</span></div>
-                                    </div>
-                                    <div class="item-inventory-3">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>4</span></div>
-                                    </div>
-                                    <div class="item-inventory-4">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>5</span></div>
-                                    </div>
-                                    <div class="item-inventory-5">
-                                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                            width="64" height="64">
-                                        <div><span>6</span></div>
-                                    </div>
+                        <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
+                        <input type="number" min="0" id="armor_pen" name="armor_pen" placeholder="0" class="input short"
+                            oninput="calc_lethality(false)" />
+                    </div>
+                    <div>
+                        <label for="percent_armor_pen">% Total Armor Penetration</label>
+                        <input type="text" id="percent_armor_pen" name="percent_armor_pen" placeholder="0%" class="input" />
+                    </div>
+                    <div>
+                        <div class="item-section">
+                            <div class="item-grid-container">
+                                <div class="item-inventory-0">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>1</span></div>
                                 </div>
-                                <div class="itemcontrol-grid-container">
-                                    <input class="clear_items btn" type="button" value="Clear Items">
-                                    <input class="btn hidden" type="button" id="load_items" value="Load Items">
-                                    <input class="btn hidden" type="button" id="save_items" value="Save Items">
-                                    <input class="btn" type="button" id="player_shop" value="Shop" onclick="openShopModel(this.form);">
+                                <div class="item-inventory-1">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>2</span></div>
                                 </div>
-                                <div class="stats_total">
+                                <div class="item-inventory-2">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>3</span></div>
                                 </div>
+                                <div class="item-inventory-3">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>4</span></div>
+                                </div>
+                                <div class="item-inventory-4">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>5</span></div>
+                                </div>
+                                <div class="item-inventory-5">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>6</span></div>
+                                </div>
+                            </div>
+                            <div class="itemcontrol-grid-container">
+                                <input class="clear_items btn" type="button" value="Clear Items">
+                                <input class="btn hidden" type="button" id="load_items" value="Load Items">
+                                <input class="btn hidden" type="button" id="save_items" value="Save Items">
+                                <input class="btn open-shop-btn" type="button" id="player_shop_btn" value="Shop">
+                            </div>
+                            <div class="stats_total">
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div>
+                    <input name="reset" type="reset" value="Reset Above" disabled>
+                    <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
+                    <input id="main_collapse" name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
+                </div>
+            </form>
+        </div>
+
+        <div class="data_holder" id="target_data">
+            <h2 class="title_input">Target's Data</h2>
+            <form autocomplete="off" id="target_data_form">
+                <label for="target_champion_select" class="">Load Champion Data For</label>
+                <select id="target_champion_select" class="input" oninput="setChampion(this.form, this.value);">
+                    <option value=''>Loading Data...</option>
+                </select>
+                <label for="target_champion_level" class="short">➤ Champion Level</label>
+                <input type="number" min="0" id="target_champion_level" name="champion_level" placeholder="18" value="18"
+                    class="input short" oninput="setBaseStats(this.form)" />
+
+                <span class="tooltip">Mouse Over to view base stats.
+                    <div class="table stats-table tooltip-float">
+                        <div><span>Name:</span><output name="dao_name"></output></div>
+                        <div><span>Title:</span><output name="dao_title"></output></div>
+                        <div><span>Resource Type:</span><output name="dao_partype"></output></div>
+                        <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
+                        <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
+                        <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
+                        <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
+                        <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
+                        <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
+                        <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
+                        <div><span class="mr">Base Magic Res.:</span><output name="dao_stats_spellblock">0</output></div>
+                        <div><span class="mr">Magic Res. growth:</span><output name="dao_stats_spellblockperlevel">0</output></div>
+                        <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
+                        <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
+                        <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
+                        <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
+                        <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
+                        <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
+                        <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
+                        <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
+                        <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
+                        <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
+                        <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
+                    </div>
+                </span>
+
+                <div class="table fill">
+                    <div>
+                        <label for="target_hp" class="health">Health (HP)</label>
+                        <input type="number" min="0" id="target_hp" name="target_hp" placeholder="0" value="2000" class="input"
+                            oninput="calc_armor(0);calc_mr(0);" />
+                    </div>
+                    <div>
+                        <label for="target_armor" class="armor">Armor</label>
+                        <input type="number" max="100000000" id="target_armor" name="target_armor" placeholder="0"
+                            class="input" oninput="calc_armor(0)" />
+                    </div>
+                    <div>
+                        <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
+                        <input type="text" id="target_physical_reduction" name="target_physical_reduction" placeholder="0%"
+                            class="extra input short" oninput="calc_armor(1)" />
+                    </div>
+                    <div>
+                        <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
+                        <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp"
+                            placeholder="0" value="2000" class="extra input short" oninput="calc_armor(2)" />
+                    </div>
+                    <div>
+                        <label for="target_mr" class="mr">Magic Resistance (MR)</label>
+                        <input type="number" max="100000000" id="target_mr" name="target_mr" placeholder="0" class="input"
+                            oninput="calc_mr(0)" />
+                    </div>
+                    <div>
+                        <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
+                        <input type="text" id="target_magic_reduction" name="target_magic_reduction" placeholder="0%"
+                            class="extra input short" oninput="calc_mr(1)" />
+                    </div>
+                    <div>
+                        <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
+                        <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp" placeholder="0"
+                            value="2000" class="extra input short" oninput="calc_mr(2)" />
+                    </div>
+                    <div>
+                        <label for="target_hp5" class="extra">Health regeneration (hp5)</label>
+                        <input type="number" min="0" step="0.01" id="target_hp5" name="target_hp5" placeholder="0"
+                            class="extra input" />
+                    </div>
                     <div>
                         <input name="reset" type="reset" value="Reset Above" disabled>
                         <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
-                        <input id="main_collapse" name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
+                        <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
                     </div>
-                </form>
-            </div>
-
-            <div class="data_holder" id="target_data">
-                <h2 class="title_input">Target's Data</h2>
-                <form autocomplete="off" id="target_data_form">
-                    <label for="target_champion_select" class="">Load Champion Data For</label>
-                    <select id="target_champion_select" class="input" oninput="setChampion(this.form, this.value);">
-                        <option value=''>Loading Data...</option>
-                    </select>
-                    <label for="target_champion_level" class="short">➤ Champion Level</label>
-                    <input type="number" min="0" id="target_champion_level" name="champion_level" placeholder="18"
-                        value="18" class="input short" oninput="setBaseStats(this.form)" />
-
-                    <span class="tooltip">Mouse Over to view base stats.
-                        <div class="table stats-table tooltip-float">
-                            <div><span>Name:</span><output name="dao_name"></output></div>
-                            <div><span>Title:</span><output name="dao_title"></output></div>
-                            <div><span>Resource Type:</span><output name="dao_partype"></output></div>
-                            <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
-                            <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
-                            <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
-                            <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
-                            <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
-                            <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
-                            <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
-                            <div><span class="mr">Base Magic Res.:</span><output name="dao_stats_spellblock">0</output></div>
-                            <div><span class="mr">Magic Res. growth:</span><output name="dao_stats_spellblockperlevel">0</output></div>
-                            <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
-                            <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
-                            <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
-                            <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
-                            <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
-                            <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
-                            <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
-                            <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
-                            <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
-                            <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
-                            <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
-                        </div>
-                    </span>
-
-                    <div class="table fill">
-                        <div>
-                            <label for="target_hp" class="health">Health (HP)</label>
-                            <input type="number" min="0" id="target_hp" name="target_hp" placeholder="0" value="2000"
-                                class="input" oninput="calc_armor(0);calc_mr(0);" />
-                        </div>
-                        <div>
-                            <label for="target_armor" class="armor">Armor</label>
-                            <input type="number" max="100000000" id="target_armor" name="target_armor" placeholder="0"
-                                class="input" oninput="calc_armor(0)" />
-                        </div>
-                        <div>
-                            <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
-                            <input type="text" id="target_physical_reduction" name="target_physical_reduction"
-                                placeholder="0%" class="extra input short" oninput="calc_armor(1)" />
-                        </div>
-                        <div>
-                            <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
-                            <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp"
-                                placeholder="0" value="2000" class="extra input short" oninput="calc_armor(2)" />
-                        </div>
-                        <div>
-                            <label for="target_mr" class="mr">Magic Resistance (MR)</label>
-                            <input type="number" max="100000000" id="target_mr" name="target_mr" placeholder="0" class="input"
-                                oninput="calc_mr(0)" />
-                        </div>
-                        <div>
-                            <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
-                            <input type="text" id="target_magic_reduction" name="target_magic_reduction" placeholder="0%"
-                                class="extra input short" oninput="calc_mr(1)" />
-                        </div>
-                        <div>
-                            <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
-                            <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp"
-                                placeholder="0" value="2000" class="extra input short" oninput="calc_mr(2)" />
-                        </div>
-                        <div>
-                            <label for="target_hp5" class="extra">Health regeneration (hp5)</label>
-                            <input type="number" min="0" step="0.01" id="target_hp5" name="target_hp5" placeholder="0"
-                                class="extra input" />
-                        </div>
-                        <div>
-                            <input name="reset" type="reset" value="Reset Above" disabled>
-                            <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
-                            <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
-                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="data_holder" id="total_data">
+            <h2 class="title_input">Totals</h2>
+            <form autocomplete="off" id="total_data_form">
+                <div class="table fill">
+                    <div>
+                        <label for="total_pre_damage" class="">Premitigation Damage</label>
+                        <input type="text" id="total_pre_damage" name="total_pre_damage" class="input" readonly />
                     </div>
-                </form>
-            </div>
-
-            <div class="data_holder" id="total_data">
-                <h2 class="title_input">Totals</h2>
-                <form autocomplete="off" id="total_data_form">
-                    <div class="table fill">
-                        <div>
-                            <label for="total_pre_damage" class="">Premitigation Damage</label>
-                            <input type="text" id="total_pre_damage" name="total_pre_damage" class="input" readonly />
-                        </div>
-                        <div>
-                            <label for="total_pre_magic_damage" class="">Premitigation Magic Damage</label>
-                            <input type="text" id="total_pre_magic_damage" name="total_pre_magic_damage" class="input short"
-                                readonly />
-                        </div>
-                        <div>
-                            <label for="total_pre_physical_damage" class="">Premitigation Physical Damage</label>
-                            <input type="text" id="total_pre_physical_damage" name="total_pre_physical_damage" class="input short"
-                                readonly />
-                        </div>
-                        <div>
-                            <label for="total_damage" class="">Total Damage</label>
-                            <input type="text" id="total_damage" name="total_damage" class="input" readonly />
-                        </div>
-                        <div>
-                            <label for="total_magic_damage" class="">Total Magic Damage</label>
-                            <input type="text" id="total_magic_damage" name="total_magic_damage" class="input short"
-                                readonly />
-                        </div>
-                        <div>
-                            <label for="total_physical_damage" class="">Total Physical Damage</label>
-                            <input type="text" id="total_physical_damage" name="total_physical_damage" class="input short"
-                                readonly />
-                        </div>
-                        <div>
-                            <label for="target_status" class="">Target Status</label>
-                            <input type="text" id="target_status" name="target_status" class="input" readonly />
-                        </div>
-                        <div>
-                            <label for="target_overkill" class="">Overkill Damage</label>
-                            <input type="text" id="target_overkill" name="target_overkill" class="input" readonly />
-                        </div>
-                        <div>
-                            <label for="target_hp_left" class="">Health Remaining</label>
-                            <input type="text" id="target_hp_left" name="target_hp_left" class="input" readonly />
-                        </div>
-                        <div>
-                            <label for="target_percent_hp_left" class="">% Health Remaining</label>
-                            <input type="text" id="target_percent_hp_left" name="target_percent_hp_left" class="input"
-                                readonly />
-                        </div>
+                    <div>
+                        <label for="total_pre_magic_damage" class="">Premitigation Magic Damage</label>
+                        <input type="text" id="total_pre_magic_damage" name="total_pre_magic_damage" class="input short"
+                            readonly />
                     </div>
-                    <!-- <input name="reset" type="reset" value="Reset Above"> -->
-                    <!-- <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)"> -->
-                    <!-- <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)"> -->
-                </form>
-            </div>
-
-            <div class="data_holder" id="spell_data_template">
-                <form autocomplete="off" id="spell_data_q_form" method="POST" action="#">
-                    <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
-
-
-                    <!-- <input type="button" value="-" class="cast_pm" onclick="minusButton(this);" />
-                        <input type="text" name="casts" value="1" class="casts_count" />
-                        <input type="button" value="+" class="cast_pm" onclick="plusButton(this);" />) -->
-
-
+                    <div>
+                        <label for="total_pre_physical_damage" class="">Premitigation Physical Damage</label>
+                        <input type="text" id="total_pre_physical_damage" name="total_pre_physical_damage" class="input short"
+                            readonly />
+                    </div>
+                    <div>
+                        <label for="total_damage" class="">Total Damage</label>
+                        <input type="text" id="total_damage" name="total_damage" class="input" readonly />
+                    </div>
+                    <div>
+                        <label for="total_magic_damage" class="">Total Magic Damage</label>
+                        <input type="text" id="total_magic_damage" name="total_magic_damage" class="input short"
+                            readonly />
+                    </div>
+                    <div>
+                        <label for="total_physical_damage" class="">Total Physical Damage</label>
+                        <input type="text" id="total_physical_damage" name="total_physical_damage" class="input short"
+                            readonly />
+                    </div>
+                    <div>
+                        <label for="target_status" class="">Target Status</label>
+                        <input type="text" id="target_status" name="target_status" class="input" readonly />
+                    </div>
+                    <div>
+                        <label for="target_overkill" class="">Overkill Damage</label>
+                        <input type="text" id="target_overkill" name="target_overkill" class="input" readonly />
+                    </div>
+                    <div>
+                        <label for="target_hp_left" class="">Health Remaining</label>
+                        <input type="text" id="target_hp_left" name="target_hp_left" class="input" readonly />
+                    </div>
+                    <div>
+                        <label for="target_percent_hp_left" class="">% Health Remaining</label>
+                        <input type="text" id="target_percent_hp_left" name="target_percent_hp_left" class="input"
+                            readonly />
+                    </div>
+                </div>
+                <!-- <input name="reset" type="reset" value="Reset Above"> -->
+                <!-- <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)"> -->
+                <!-- <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)"> -->
+            </form>
+        </div>
+    </div>
+    <div id="templates" class="hidden">
+        <div class="table fill spell-effect" id="spell_data_effect_template">
+            <form autocomplete="off" id="spell_data_effect_template_form">
+                <div>
+                    <output id="effect_name">Effect</output>
+                    <output id="effect_value" style="white-space: normal;"></output>
+                </div>
+                <div>
+                    <input name="remove_effect" class="right" type="button" value="Remove" onclick="remSpellEffect(this)">
+                </div>
+                <div class="extra">
                     <label for="damage_type">Damage Type</label>
                     <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
                         <option value="no_damage" class="mixed">No Damage</option>
                         <option value="not_detected" class="mixed">Unknown Damage</option>
                         <option value="physical" class="ad">Physical Damage</option>
                         <option value="magic" class="ap">Magic Damage</option>
+                        <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
                     </select>
-
+                </div>
+                <div class="extra">
                     <label for="base_damage">Base Damage</label>
-                    <input type="number" id="base_damage" name="base_damage" placeholder="0" value="100" class="input" />
-
+                    <input type="number" id="base_damage" name="base_damage" placeholder="0" class="input" />
+                </div>
+                <div class="extra">
                     <label for="ap_ratio" class="ap">Total AP Ratio</label>
-                    <input type="text" id="ap_ratio" name="ap_ratio" placeholder="0%" class="input" />
-
+                    <input type="number" step="0.01" min="0" id="ap_ratio" name="ap_ratio" placeholder="0.00" class="input" />
+                </div>
+                <div class="extra">
                     <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
-                    <input type="text" id="total_ad_ratio" name="total_ad_ratio" placeholder="0%" class="input" />
-
+                    <input type="number" step="0.01" min="0" id="total_ad_ratio" name="total_ad_ratio" placeholder="0.00"
+                        class="input" />
+                </div>
+                <div class="extra">
                     <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
-                    <input type="text" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0%" class="input" />
-
-                    <label for="max_health_ratio" class="health extra hidden">% Max Health Ratio</label>
-                    <input type="text" id="max_health_ratio" name="max_health_ratio" placeholder="0%" class="input extra hidden" />
-
+                    <input type="number" step="0.01" min="0" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0.00"
+                        class="input" />
+                </div>
+                <div class="extra">
+                    <label for="max_health_ratio" class="health">% Max Health Ratio</label>
+                    <input type="number" step="0.01" min="0" id="max_health_ratio" name="max_health_ratio" placeholder="0.00"
+                        class="input" />
+                </div>
+                <div class="extra">
                     <label for="dmg_premitigation">Premitigation Damage</label>
                     <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
                         readonly />
-
+                </div>
+                <div class="extra">
                     <label for="dmg_onhit">Damage after Resistances</label>
                     <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
 
+                </div>
+                <div class="extra">
                     <label class="hidden" for="dmg_dps">Expected damage per second</label>
                     <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
                         readonly />
+                </div>
+            </form>
+        </div>
 
-                    <input name="reset" type="reset" value="Reset Above" disabled>
+
+        <div class="data_holder" id="spell_data_template">
+            <form autocomplete="off" id="spell_data_q_form" method="POST" action="#">
+                <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
+
+
+                <!-- <input type="button" value="-" class="cast_pm" onclick="minusButton(this);" />
+                    <input type="text" name="casts" value="1" class="casts_count" />
+                    <input type="button" value="+" class="cast_pm" onclick="plusButton(this);" />) -->
+
+
+                <label for="damage_type">Damage Type</label>
+                <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
+                    <option value="no_damage" class="mixed">No Damage</option>
+                    <option value="not_detected" class="mixed">Unknown Damage</option>
+                    <option value="physical" class="ad">Physical Damage</option>
+                    <option value="magic" class="ap">Magic Damage</option>
+                </select>
+
+                <label for="base_damage">Base Damage</label>
+                <input type="number" id="base_damage" name="base_damage" placeholder="0" value="100" class="input" />
+
+                <label for="ap_ratio" class="ap">Total AP Ratio</label>
+                <input type="text" id="ap_ratio" name="ap_ratio" placeholder="0%" class="input" />
+
+                <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
+                <input type="text" id="total_ad_ratio" name="total_ad_ratio" placeholder="0%" class="input" />
+
+                <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
+                <input type="text" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0%" class="input" />
+
+                <label for="max_health_ratio" class="health extra hidden">% Max Health Ratio</label>
+                <input type="text" id="max_health_ratio" name="max_health_ratio" placeholder="0%" class="input extra hidden" />
+
+                <label for="dmg_premitigation">Premitigation Damage</label>
+                <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
+                    readonly />
+
+                <label for="dmg_onhit">Damage after Resistances</label>
+                <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
+
+                <label class="hidden" for="dmg_dps">Expected damage per second</label>
+                <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output" readonly />
+
+                <input name="reset" type="reset" value="Reset Above" disabled>
+                <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
+                <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
+                <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)">
+            </form>
+        </div>
+
+        <div class="data_holder" id="passive_dao_template">
+            <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
+            <span class="subtitle passive-name">Passive Name</span>
+            <img class="passive-image" width="48px" height="48px" />
+            <p class="passive-description">Inner Text goes here</p>
+
+        </div>
+
+        <div class="data_holder" id="spell_dao_template">
+            <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
+                <span class="title_input"><span class="spell-key">Champion</span>:</span>
+                <span class="subtitle spell-name">Spell Name</span>
+                <img class="spell-image" width="48px" height="48px" />
+                <p class="lol-tooltip-full">
+                    <output name="tooltip"></output>
+                </p>
+
+                <div class="table fill">
+                    <div>
+                        <label for="spellrank">Spell Rank</label>
+                        <fieldset class="spellrank input" oninput="onSpellRankInput(this.form);">
+                            <input type="radio" class="spellrank1" name="spellrank" value="1" title="Rank 1" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                            <input type="radio" class="spellrank2" name="spellrank" value="2" title="Rank 2" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                            <input type="radio" class="spellrank3" name="spellrank" value="3" title="Rank 3" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                            <input type="radio" class="spellrank4" name="spellrank" value="4" title="Rank 4" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                            <input type="radio" class="spellrank5" name="spellrank" value="5" title="Rank 5" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                            <input type="radio" class="spellrank6" name="spellrank" value="6" title="Rank 6" />
+                            <!-- <span class="cost">10</span>
+                            <span class="cooldown">99</span> -->
+                        </fieldset>
+                    </div>
+                    <div class="cooldown-container">
+                        <label>Cooldown</label>
+                        <output name="cooldown"></output>
+                    </div>
+                    <div class="cost-container">
+                        <label class="cost-title">Cost</label>
+                        <output name="cost"></output>
+                    </div>
+                    <div class="range-container">
+                        <label class="range-title">Range</label>
+                        <output name="range"></output>
+                    </div>
+                </div>
+                <div class="spell_data_effect_list">
+
+                </div>
+                <div class="spell_data_custom_effect_list">
+
+                </div>
+                <div>
+                    <input name="reset" type="reset" value="Zero Above" disabled>
                     <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
                     <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
-                    <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)">
-                </form>
-            </div>
-
-            <div class="data_holder hidden" id="passive_dao_template">
-                <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
-                <span class="subtitle passive-name">Passive Name</span>
-                <img class="passive-image" width="48px" height="48px" />
-                <p class="passive-description">Inner Text goes here</p>
-
-            </div>
-
-            <div class="data_holder hidden" id="spell_dao_template">
-                <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
-                    <span class="title_input"><span class="spell-key">Champion</span>:</span>
-                    <span class="subtitle spell-name">Spell Name</span>
-                    <img class="spell-image" width="48px" height="48px" />
-                    <p class="lol-tooltip-full">
-                        <output name="tooltip"></output>
-                    </p>
-
-                    <div class="table fill">
-                        <div>
-                            <label for="spellrank">Spell Rank</label>
-                            <fieldset class="spellrank input" oninput="onSpellRankInput(this.form);">
-                                <input type="radio" class="spellrank1" name="spellrank" value="1" title="Rank 1" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                                <input type="radio" class="spellrank2" name="spellrank" value="2" title="Rank 2" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                                <input type="radio" class="spellrank3" name="spellrank" value="3" title="Rank 3" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                                <input type="radio" class="spellrank4" name="spellrank" value="4" title="Rank 4" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                                <input type="radio" class="spellrank5" name="spellrank" value="5" title="Rank 5" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                                <input type="radio" class="spellrank6" name="spellrank" value="6" title="Rank 6" />
-                                <!-- <span class="cost">10</span>
-                                <span class="cooldown">99</span> -->
-                            </fieldset>
-                        </div>
-                        <div class="cooldown-container">
-                            <label>Cooldown</label>
-                            <output name="cooldown"></output>
-                        </div>
-                        <div class="cost-container">
-                            <label class="cost-title">Cost</label>
-                            <output name="cost"></output>
-                        </div>
-                        <div class="range-container">
-                            <label class="range-title">Range</label>
-                            <output name="range"></output>
-                        </div>
-                    </div>
-                    <div class="spell_data_effect_list">
-
-                    </div>
-                    <div class="spell_data_custom_effect_list">
-
-                    </div>
-                    <div>
-                        <input name="reset" type="reset" value="Zero Above" disabled>
-                        <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
-                        <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
-                        <input name="add_effect" class="right" type="button" value="Add Effect" onclick="addSpellEffect(this.form)">
-                        <!-- <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)"> -->
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="templates" class="hidden">
-            <div class="table fill spell-effect" id="spell_data_effect_template">
-                <form autocomplete="off" id="spell_data_effect_template_form">
-                    <div>
-                        <output id="effect_name">Effect</output>
-                        <output id="effect_value" style="white-space: normal;"></output>
-                    </div>
-                    <div>
-                        <input name="remove_effect" class="right" type="button" value="Remove" onclick="remSpellEffect(this)">
-                    </div>
-                    <div class="extra">
-                        <label for="damage_type">Damage Type</label>
-                        <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
-                            <option value="no_damage" class="mixed">No Damage</option>
-                            <option value="not_detected" class="mixed">Unknown Damage</option>
-                            <option value="physical" class="ad">Physical Damage</option>
-                            <option value="magic" class="ap">Magic Damage</option>
-                            <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
-                        </select>
-                    </div>
-                    <div class="extra">
-                        <label for="base_damage">Base Damage</label>
-                        <input type="number" id="base_damage" name="base_damage" placeholder="0" class="input" />
-                    </div>
-                    <div class="extra">
-                        <label for="ap_ratio" class="ap">Total AP Ratio</label>
-                        <input type="number" step="0.01" min="0" id="ap_ratio" name="ap_ratio" placeholder="0.00" class="input" />
-                    </div>
-                    <div class="extra">
-                        <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
-                        <input type="number" step="0.01" min="0" id="total_ad_ratio" name="total_ad_ratio" placeholder="0.00"
-                            class="input" />
-                    </div>
-                    <div class="extra">
-                        <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
-                        <input type="number" step="0.01" min="0" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0.00"
-                            class="input" />
-                    </div>
-                    <div class="extra">
-                        <label for="max_health_ratio" class="health">% Max Health Ratio</label>
-                        <input type="number" step="0.01" min="0" id="max_health_ratio" name="max_health_ratio"
-                            placeholder="0.00" class="input" />
-                    </div>
-                    <div class="extra">
-                        <label for="dmg_premitigation">Premitigation Damage</label>
-                        <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
-                            readonly />
-                    </div>
-                    <div class="extra">
-                        <label for="dmg_onhit">Damage after Resistances</label>
-                        <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
-
-                    </div>
-                    <div class="extra">
-                        <label class="hidden" for="dmg_dps">Expected damage per second</label>
-                        <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
-                            readonly />
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="item_shop_model" class="modal" style="display: none;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="item_shop_model_close" class="close">&times;</span>
-                    <h2>Shop</h2>
-                    <input type="search" id="item_shop_search" placeholder="Type to filter items..." class="shop-search" />
-                    <label for="item_shop_rift_only">Show Summoner's Rift Only</label>
-                    <input type="checkbox" id="item_shop_rift_only" checked />
-                    <label for="item_shop_hide_event">Hide special event items</label>
-                    <input type="checkbox" id="item_shop_hide_event" checked />
-                    <label for="item_count">Item Count:</label>
-                    <output id="item_count"></output>
+                    <input name="add_effect" class="right" type="button" value="Add Effect" onclick="addSpellEffect(this.form)">
+                    <!-- <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)"> -->
                 </div>
-                <div class="model-body-left fixed-scroller">
-                    <div class="shop-grid-container" id="items_dump">
-
-                    </div>
-                </div>
-                <div class="model-body-right iteminfo-grid-container" id="item_shop_iteminfo">
-                    <div>
-                        <span>Builds into:</span>
-                    </div>
-                    <div class="item-builds"></div>
-                    <div class="item-underline"></div>
-                    <div class="item-header">
-                        <img class="item-img-left" width="48" height="48" />
-                        <span class="item-title">Item</span>
-                        <span class="gold"><img src="/images/Gold.png" /></span>
-                        <div style="float: right">
-                            <input type="button" id="shop_buy_item" value="BUY" class="buy-item-btn" />
-                        </div>
-                    </div>
-                    <div class="item-underline"></div>
-                    <div class="item-stats-table table">
-                    </div>
-                    <div class="item-description">
-                    </div>
-                    <div class="item-underline"></div>
-                    <div class="item-recipe">
-                    </div>
-                    <div class="item-tags">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="item-grid-container">
-                        <div onclick="sellItem(0);" class="item-inventory-0">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>1</span></div>
-                        </div>
-                        <div onclick="sellItem(1);" class="item-inventory-1">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>2</span></div>
-                        </div>
-                        <div onclick="sellItem(2);" class="item-inventory-2">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>3</span></div>
-                        </div>
-                        <div onclick="sellItem(3);" class="item-inventory-3">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>4</span></div>
-                        </div>
-                        <div onclick="sellItem(4);" class="item-inventory-4">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>5</span></div>
-                        </div>
-                        <div onclick="sellItem(5);" class="item-inventory-5">
-                            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                                width="64" height="64">
-                            <div><span>6</span></div>
-                        </div>
-                    </div>
-                    <div class="itemcontrol-grid-container">
-                        <input type="button" class="clear_items" value="Clear Items">
-                    </div>
-                    <label for="item_total_cost">Total Cost: </label>
-                    <output id="item_total_cost"></output>
-                    <div class="stats_total" style="float: right;">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="item_tooltips">
-
+            </form>
         </div>
     </div>
-    <script type="text/javascript" src="calc.js"></script>
-    <script type="text/javascript" src="league_data.js"></script>
-    <script type="text/javascript" src="league_items.js"></script>
+    <div id="item_shop_model" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="item_shop_model_close" class="close">&times;</span>
+                <h2>Shop</h2>
+                <input type="search" id="item_shop_search" placeholder="Type to filter items..." class="shop-search" />
+                <label for="item_shop_rift_only">Show Summoner's Rift Only</label>
+                <input type="checkbox" id="item_shop_rift_only" checked />
+                <label for="item_shop_hide_event">Hide special event items</label>
+                <input type="checkbox" id="item_shop_hide_event" checked />
+                <label for="item_count">Item Count:</label>
+                <output id="item_count"></output>
+            </div>
+            <div class="model-body-left fixed-scroller">
+                <div class="shop-grid-container" id="items_dump">
+
+                </div>
+            </div>
+            <div class="model-body-right iteminfo-grid-container" id="item_shop_iteminfo">
+            </div>
+            <div class="modal-footer">
+                <div class="item-grid-container">
+                    <div onclick="sellItem(0);" class="item-inventory-0">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>1</span></div>
+                    </div>
+                    <div onclick="sellItem(1);" class="item-inventory-1">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>2</span></div>
+                    </div>
+                    <div onclick="sellItem(2);" class="item-inventory-2">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>3</span></div>
+                    </div>
+                    <div onclick="sellItem(3);" class="item-inventory-3">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>4</span></div>
+                    </div>
+                    <div onclick="sellItem(4);" class="item-inventory-4">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>5</span></div>
+                    </div>
+                    <div onclick="sellItem(5);" class="item-inventory-5">
+                        <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
+                            height="64">
+                        <div><span>6</span></div>
+                    </div>
+                </div>
+                <div class="itemcontrol-grid-container">
+                    <input type="button" class="clear_items" value="Clear Items">
+                </div>
+                <label for="item_total_cost">Total Cost: </label>
+                <output id="item_total_cost"></output>
+                <div class="stats_total" style="float: right;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="item_tooltips">
+
+    </div>
 </body>
 
 </html>

@@ -1,19 +1,20 @@
-"use strict";
-const main_div = document.getElementById("main");
-const champion_data = document.forms.champion_data_form;
-const target_data = document.forms.target_data_form;
-const total_data = document.forms.total_data_form;
+import { downloadingChampionFiles, league_static_data } from './league_data.js';
+
+export const main_div = document.getElementById("main");
+export const champion_data = document.forms.champion_data_form;
+export const target_data = document.forms.target_data_form;
+export const total_data = document.forms.total_data_form;
 
 
-const spell_data_template = document.getElementById("spell_data_template");
-const passive_dao_template = document.getElementById("passive_dao_template");
+export const spell_data_template = document.getElementById("spell_data_template");
+export const passive_dao_template = document.getElementById("passive_dao_template");
 
-var spell_data = [];
-var spell_data_index = 0;
+export let spell_data = [];
+export let  spell_data_index = 0;
 
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
-function asNumber(field, usePlaceHolder = true) {
+export function asNumber(field, usePlaceHolder = true) {
     var x;
     if (field.value === "" && usePlaceHolder)
         x = parseFloat(field.placeholder);
@@ -35,7 +36,7 @@ function asInt(field) {
     return x;
 }
 
-function asPercent(field) {
+export function asPercent(field) {
     if (field.value === "")
         return parseFloat(field.placeholder) / 100.0;
     var x = parseFloat(field.value);
@@ -57,14 +58,25 @@ function validate_champion_data(form) {
 }
 
 window.onload = function () {
-    var last_used_data = JSON.parse(localStorage.getItem("last_used_data"));
-    if (last_used_data) {
+    // var last_used_data = JSON.parse(localStorage.getItem("last_used_data"));
+    // if (last_used_data) {
 
+    // }
+    // Adds recalc to all the input on the page.
+    var inputs = document.getElementsByClassName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("input", recalc);
     }
+    
+    // spell_data_template.classList.add("hidden");
+    // addNewSpellForm("magic");
+    // addNewSpellForm("magic");
+    // addNewSpellForm("physical");
+    document.getElementById("main_collapse").click();
 };
 
 function onInputForSpell(sender, form, idx, d) {
-    console.log("Caculating a spell");
+    console.log("Caculating spell", idx);
     var damage_type = form.damage_type.value;
 
     var base_damage = asNumber(form.base_damage);
@@ -115,9 +127,9 @@ function onInputForSpell(sender, form, idx, d) {
     };
 }
 
-function recalc() {
+export function recalc() {
     console.group('Re-calc');
-    console.log(this);
+    console.log('Caused by:', this);
     var total_pre_damage = 0,
         total_pre_magic_damage = 0,
         total_pre_physical_damage = 0,
@@ -232,7 +244,7 @@ function get_data() {
     };
 }
 
-function calc_lethality(direction) {
+window.calc_lethality = (direction) => {
     console.log("calc_lethality");
 
     var lethality = asNumber(champion_data.lethality);
@@ -246,7 +258,7 @@ function calc_lethality(direction) {
     }
 }
 
-function calc_ad(direction) {
+window.calc_ad = (direction) => {
     var base_ad = asNumber(champion_data.base_ad);
     var total_ad = asNumber(champion_data.total_ad);
     var bonus_ad = asNumber(champion_data.bonus_ad);
@@ -260,7 +272,7 @@ function calc_ad(direction) {
     champion_data.bonus_ad.value = bonus_ad;
 }
 
-function calc_armor(direction) {
+window.calc_armor = (direction) => {
     var target_hp = asNumber(target_data.target_hp);
 
     var target_armor = asNumber(target_data.target_armor);
@@ -295,7 +307,7 @@ function calc_armor(direction) {
     }
 }
 
-function calc_mr(direction) {
+window.calc_mr = (direction) => {
     var target_hp = asNumber(target_data.target_hp);
 
     var target_mr = asNumber(target_data.target_mr);
@@ -330,7 +342,7 @@ function calc_mr(direction) {
 }
 
 /// Functions for buttons
-function collapseExtras(self) {
+window.collapseExtras = function(self) {
     self.previousElementSibling.classList.remove("hidden");
     self.classList.add("hidden");
     var elements = self.parentElement.parentElement.getElementsByClassName("extra");
@@ -339,7 +351,7 @@ function collapseExtras(self) {
     }
 }
 
-function expandExtras(self) {
+window.expandExtras = function(self) {
     self.classList.add("hidden");
     self.nextElementSibling.classList.remove("hidden");
     var elements = self.parentElement.parentElement.getElementsByClassName("extra");
@@ -348,13 +360,13 @@ function expandExtras(self) {
     }
 }
 
-function minusButton(self) {
+window.minusButton = function(self) {
     var x = asInt(self.nextElementSibling);
     if (x > 0)
         self.nextElementSibling.value = x - 1;
 }
 
-function plusButton(self) {
+window.plusButton = function(self) {
     var x = asInt(self.previousElementSibling);
     if (x < 0)
         self.previousElementSibling.value = 1;
@@ -362,7 +374,7 @@ function plusButton(self) {
         self.previousElementSibling.value = x + 1;
 }
 
-function styleSelect(self) {
+window.styleSelect = function(self) {
     var last = self.previousElementSibling.classList;
     switch (self.value) {
         case "damage_type_physical":
@@ -418,23 +430,23 @@ function addNewSpellForm(damge_type) {
     recalc();
 }
 
-function removeSpell(self) {
+window.removeSpell = function(self) {
     main_div.removeChild(self.parentElement.parentElement);
 }
-
-function remSpellEffect(self) {
+window.remSpellEffect = function(self) {
     //yikes
     self.parentElement.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement.parentElement);
 }
-var last_chamption = null;
+// var last_chamption = null;
 
-function setChampion(form, champion) {
+window.setChampion = (form, champion) => {
     if (!champion || !form)
         return;
     const known_stats_data = ["hp", "hpperlevel", "mp", "mpperlevel", "movespeed", "armor", "armorperlevel", "spellblock", "spellblockperlevel", "attackrange", "hpregen", "hpregenperlevel", "mpregen", "mpregenperlevel", "crit", "critperlevel", "attackdamage", "attackdamageperlevel", "attackspeedperlevel", "attackspeed"];
     const known_data = ["partype", "name", "title"];
 
     if (form.id === 'champion_data_form') {
+        localStorage.setItem("last_used_player_champ", champion);
         if (form.data_last_chamption) {
             const children = [...document.getElementsByClassName(`owner-${form.data_last_chamption}`)];
             children.forEach(s => {
@@ -442,6 +454,8 @@ function setChampion(form, champion) {
             });
         }
         form.data_last_chamption = champion;
+    } else {
+        localStorage.setItem("last_used_target_champ", champion);
     }
     console.log(`Setting champion to ${champion}`);
     if (league_static_data.isReady) {
@@ -473,8 +487,7 @@ function calcStatNums(champion_level, base, growth) {
 function calcStat(form, champion_level, base, growth) {
     return getStat(form, base) + getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
 }
-
-function setBaseStats(form) {
+window.setBaseStats = (form) => {
     // These values from stats are not used.
     // form.dao_name;
     // form.dao_title;
@@ -526,25 +539,16 @@ function setBaseStats(form) {
 
 
 /// Main Code.
+window.onReady = function() {
 
-// Adds recalc to all the input on the page.
-var inputs = document.getElementsByClassName("input");
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("input", recalc);
-}
+    let playerChamp = localStorage.getItem('last_used_player_champ');
+    let tagetChamp = localStorage.getItem('last_used_target_champ');
 
-spell_data_template.classList.add("hidden");
-// addNewSpellForm("magic");
-// addNewSpellForm("magic");
-// addNewSpellForm("physical");
-document.getElementById("main_collapse").click();
-
-function onReady() {
     var select = document.getElementById('player_champion_select');
-    select.value = 'Viktor';
+    select.value = playerChamp;
     setChampion(select.form, select.value)
     select = document.getElementById('target_champion_select');
-    select.value = 'Syndra';
+    select.value = tagetChamp;
     setChampion(select.form, select.value);
 
 }

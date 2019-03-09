@@ -1,10 +1,16 @@
-'use strict';
+import { el, list, mount, text } from 'https://redom.js.org/redom.es.min.js';
+import { downloadStaticItems } from './league_items.js';
+import { recalc, spell_data, main_div , asNumber} from './calc.js';
+
+export const cdn = 'https://ddragon.leagueoflegends.com/cdn';
+export let locale = 'en_US';
+export let version = '0.0.0';
 
 const version_select = document.getElementById('version_select');
 const player_champion_select = document.getElementById('player_champion_select');
 const target_champion_select = document.getElementById('target_champion_select');
 
-function downloadVersion() {
+export function downloadVersion() {
     const url = 'https://ddragon.leagueoflegends.com/api/versions.json';
     console.log(`Fetching: ${url}`)
     fetch(url)
@@ -46,10 +52,10 @@ function downloadVersion() {
         });
 }
 
-function setPatchVersion(version) {
-    console.log(`Data is now sourced from patch ${version}`);
-    if (version) {
-        window.patchVersion = version;
+export function setPatchVersion(newVersion) {
+    console.log(`Data is now sourced from patch ${newVersion} (was ${version})`);
+    if (version != newVersion) {
+        version = newVersion;
         downloadingStaticDataFiles(version);
         downloadStaticItems(version);
     }
@@ -57,14 +63,14 @@ function setPatchVersion(version) {
 
 window.addEventListener('load', downloadVersion);
 
-var league_static_data = {
+export let league_static_data = {
     isReady: false,
     champion_data: null,
     champion_data_full: {},
 };
 
 
-function downloadingChampionFiles(version, champion) {
+export function downloadingChampionFiles(version, champion) {
     if (league_static_data.champion_data_full[champion]) {
         const children = [...document.getElementsByClassName(`owner-${champion}`)];
         children.forEach(s => {
@@ -72,8 +78,6 @@ function downloadingChampionFiles(version, champion) {
         });
         return;
     }
-    const cdn = 'https://ddragon.leagueoflegends.com/cdn';
-    const locale = 'en_US';
     const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
 
     console.log(`Fetching: ${url}`)
@@ -199,7 +203,7 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
 }
 
 
-function addSpellEffect(form, damage_type="magic") {
+export function addSpellEffect(form, damage_type="magic") {
     var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
 
     // cloned.classList.add(`owner-${form.spellDao}`);
@@ -383,13 +387,12 @@ function addNewPasiveForm(champion, champname, imageStyle, name, description) {
     cloned.getElementsByClassName('passive-name')[0].innerHTML = name;
     cloned.getElementsByClassName('passive-description')[0].innerHTML = description;
     cloned.getElementsByClassName('passive-image')[0].style.background = imageStyle;
-    main_div.appendChild(cloned);
+    document.getElementById("main").appendChild(cloned);
 }
 
 function downloadingStaticDataFiles(version) {
 
     //From https://ddragon.leagueoflegends.com/realms/na.json
-    const cdn = 'https://ddragon.leagueoflegends.com/cdn';
     const locale = 'en_US';
     const baseUrl = `${cdn}/${version}/data/${locale}`;
 
