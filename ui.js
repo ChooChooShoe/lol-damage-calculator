@@ -1,9 +1,11 @@
 import  { el, list, mount }  from 'https://redom.js.org/redom.es.min.js';
 import * as item from './league_items.js';
+import * as data from './league_data.js';
+import * as calc from './calc.js';
 
 class Hello {
   constructor() {
-    this.el = el('h1', 'Hello RE:DOM!');
+    this.el = el('h1', '');
   }
   update(data) {
     console.log('update()');
@@ -55,3 +57,7 @@ const app = new App();
 
 mount(document.body, app);
 app.update();
+
+window.sellItem = item.sellItem;
+window.onSpellRankInput = data.onSpellRankInput;
+window.addSpellEffect = data.addSpellEffect;

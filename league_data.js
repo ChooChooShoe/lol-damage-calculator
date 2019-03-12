@@ -226,7 +226,7 @@ export function addSpellEffect(form, damage_type="magic") {
 }
 
 /// Called when the spell rank radio has changed.
-function onSpellRankInput(form, create = false) {
+export function onSpellRankInput(form, create = false) {
     const idx = form.spellrank.value;
     const spellrankindex = asNumber(form.spellrank) - 1;
     // for (var i = 1; i < 7; i++) {

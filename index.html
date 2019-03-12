@@ -19,50 +19,35 @@
 </head>
 
 <body>
-    <div id="header">
-        <ul id="nav">
-            <li>
-                <h2>League of Legends Damage Calcuator: v0.1</h2>
-            </li>
-            <li>
-                <a class="btn small" onclick="addNewSpellForm('magic')">
-                    Add Magic Damage Spell
-                </a>
-            </li>
-            <li>
-                <a class="btn small" onclick="addNewSpellForm('physical')">
-                    Add Physical Damage Spell
-                </a>
-            </li>
-            <li>
-                <a class="btn small disabled" onclick="addNewSpellForm('mixed')">
-                    Add Complex Spell
-                </a>
-            </li>
-            <li>
-                <a class="btn small" onclick="save()">
-                    Save
-                </a>
-            </li>
-            <li>
-                <a class="btn small" onclick="load()">
-                    Load
-                </a>
-            </li>
-            <li>
-                <div class="version-select">
-                    <span>League Patch:</span>
-                    <select id="version_select" oninput="setPatchVersion(this.value);">
-                        <option value=''>Loading Data...</option>
-                    </select>
-                </div>
-
-            </li>
-        </ul>
+    <div id="header container">
+        <h1>League of Legends Damage Calcuator: v1.1</h1>
+        <nav id="nav" class="flex navbar">
+            <a class="inline" onclick="addNewSpellForm('magic')">
+                Add Magic Damage Spell
+            </a>
+            <a class="inline" onclick="addNewSpellForm('physical')">
+                Add Physical Damage Spell
+            </a>
+            <a class="inline" disabled onclick="addNewSpellForm('mixed')">
+                Add Complex Spell
+            </a>
+            <a class="inline" onclick="save()">
+                Save...
+            </a>
+            <a class="inline" onclick="load()">
+                Load...
+            </a>
+            <div class="block version-select">
+                <span>League Patch:</span>
+                <select id="version_select" oninput="setPatchVersion(this.value);">
+                    <option value=''>Loading Data...</option>
+                </select>
+            </div>
+        </nav>
     </div>
-    <div id="main">
+    <div id="main" class="flex">
 
-        <div class="data_holder" id="champion_data">
+        <div class="data_holder inline" id="champion_data">
             <h2 class="title_input">Player's Champion Data</h2>
 
             <form autocomplete="off" id="champion_data_form">
@@ -74,8 +59,8 @@
                 <input type="number" min="0" id="player_champion_level" name="champion_level" placeholder="0" value="18"
                     class="input short" oninput="setBaseStats(this.form)" />
 
-                <span class="tooltip">Mouse Over to view base stats.
-                    <div class="table stats-table tooltip-float">
+                <div class="stats-tooltip"><span>Mouse Over to view base stats.</span>
+                    <div class="stats-table">
                         <div><span>Name:</span><output name="dao_name"></output></div>
                         <div><span>Title:</span><output name="dao_title"></output></div>
                         <div><span>Resource Type:</span><output name="dao_partype"></output></div>
@@ -100,7 +85,7 @@
                         <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
                         <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
                     </div>
-                </span>
+                </div>
                 <div class="table fill">
                     <div>
                         <label for="ap" class="ap">Total Ability Power (AP)</label>
@@ -219,9 +204,10 @@
                                 <input class="clear_items btn" type="button" value="Clear Items">
                                 <input class="btn hidden" type="button" id="load_items" value="Load Items">
                                 <input class="btn hidden" type="button" id="save_items" value="Save Items">
-                                <input class="btn open-shop-btn" type="button" id="player_shop_btn" value="Shop">
+                                <input class="btn open-shop-btn" type="button" id="player_shop_btn" value="Shop"
+                                    data-shop-offset="0">
                             </div>
-                            <div class="stats_total">
+                            <div class="stats-total-0">
                             </div>
                         </div>
                     </div>
@@ -235,7 +221,7 @@
             </form>
         </div>
 
-        <div class="data_holder" id="target_data">
+        <div class="data_holder inline" id="target_data">
             <h2 class="title_input">Target's Data</h2>
             <form autocomplete="off" id="target_data_form">
                 <label for="target_champion_select" class="">Load Champion Data For</label>
@@ -246,8 +232,8 @@
                 <input type="number" min="0" id="target_champion_level" name="champion_level" placeholder="18" value="18"
                     class="input short" oninput="setBaseStats(this.form)" />
 
-                <span class="tooltip">Mouse Over to view base stats.
-                    <div class="table stats-table tooltip-float">
+                <div class="stats-tooltip"><span>Mouse Over to view base stats.</span>
+                    <div class="stats-table">
                         <div><span>Name:</span><output name="dao_name"></output></div>
                         <div><span>Title:</span><output name="dao_title"></output></div>
                         <div><span>Resource Type:</span><output name="dao_partype"></output></div>
@@ -272,7 +258,7 @@
                         <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
                         <div><span>Percent Attack Speed growth:</span><output name="dao_stats_attackspeedperlevel">0</output></div>
                     </div>
-                </span>
+                </div>
 
                 <div class="table fill">
                     <div>
@@ -316,6 +302,50 @@
                             class="extra input" />
                     </div>
                     <div>
+                        <div class="item-section">
+                            <div class="item-grid-container">
+                                <div class="item-inventory-6">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>1</span></div>
+                                </div>
+                                <div class="item-inventory-7">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>2</span></div>
+                                </div>
+                                <div class="item-inventory-8">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>3</span></div>
+                                </div>
+                                <div class="item-inventory-9">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>4</span></div>
+                                </div>
+                                <div class="item-inventory-10">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>5</span></div>
+                                </div>
+                                <div class="item-inventory-11">
+                                    <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                                        width="64" height="64">
+                                    <div><span>6</span></div>
+                                </div>
+                            </div>
+                            <div class="itemcontrol-grid-container">
+                                <input class="clear_items btn" type="button" value="Clear Items" data-shop-offset="6">
+                                <input class="btn hidden" type="button" value="Load Items" data-shop-offset="6">
+                                <input class="btn hidden" type="button" value="Save Items" data-shop-offset="6">
+                                <input class="btn open-shop-btn" type="button" value="Shop" data-shop-offset="6">
+                            </div>
+                            <div class="stats-total-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
                         <input name="reset" type="reset" value="Reset Above" disabled>
                         <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                         <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">
@@ -323,8 +353,8 @@
                 </div>
             </form>
         </div>
-        <div class="data_holder" id="total_data">
-            <h2 class="title_input">Totals</h2>
+        <div class="data_holder inline" id="total_data">
+            <h2 class="title_input">Damage Totals & Outputs</h2>
             <form autocomplete="off" id="total_data_form">
                 <div class="table fill">
                     <div>
@@ -441,7 +471,7 @@
         </div>
 
 
-        <div class="data_holder" id="spell_data_template">
+        <div class="data_holder inline" id="spell_data_template">
             <form autocomplete="off" id="spell_data_q_form" method="POST" action="#">
                 <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
 
@@ -491,7 +521,7 @@
             </form>
         </div>
 
-        <div class="data_holder" id="passive_dao_template">
+        <div class="data_holder inline" id="passive_dao_template">
             <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
             <span class="subtitle passive-name">Passive Name</span>
             <img class="passive-image" width="48px" height="48px" />
@@ -499,7 +529,7 @@
 
         </div>
 
-        <div class="data_holder" id="spell_dao_template">
+        <div class="data_holder inline" id="spell_dao_template">
             <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
                 <span class="title_input"><span class="spell-key">Champion</span>:</span>
                 <span class="subtitle spell-name">Spell Name</span>
@@ -583,32 +613,32 @@
             </div>
             <div class="modal-footer">
                 <div class="item-grid-container">
-                    <div onclick="sellItem(0);" class="item-inventory-0">
+                    <div onclick="sellItem(0);" class="item-shop-0">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>1</span></div>
                     </div>
-                    <div onclick="sellItem(1);" class="item-inventory-1">
+                    <div onclick="sellItem(1);" class="item-shop-1">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>2</span></div>
                     </div>
-                    <div onclick="sellItem(2);" class="item-inventory-2">
+                    <div onclick="sellItem(2);" class="item-shop-2">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>3</span></div>
                     </div>
-                    <div onclick="sellItem(3);" class="item-inventory-3">
+                    <div onclick="sellItem(3);" class="item-shop-3">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>4</span></div>
                     </div>
-                    <div onclick="sellItem(4);" class="item-inventory-4">
+                    <div onclick="sellItem(4);" class="item-shop-4">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>5</span></div>
                     </div>
-                    <div onclick="sellItem(5);" class="item-inventory-5">
+                    <div onclick="sellItem(5);" class="item-shop-5">
                         <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
                             height="64">
                         <div><span>6</span></div>
@@ -619,7 +649,7 @@
                 </div>
                 <label for="item_total_cost">Total Cost: </label>
                 <output id="item_total_cost"></output>
-                <div class="stats_total" style="float: right;">
+                <div class="stats-total-shop" style="float: right;">
                 </div>
             </div>
         </div>

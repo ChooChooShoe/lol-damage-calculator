@@ -1,12 +1,14 @@
 import { el, list, mount, text } from 'https://redom.js.org/redom.es.min.js';
-import { cdn, locale, version } from './league_data.js'
+import { cdn, locale, version } from './league_data.js';
+import {recalc} from './calc.js';
 
 const items_dump = document.getElementById('items_dump');
 const item_tooltips_div = document.getElementById('item_tooltips');
 const item_count = document.getElementById('item_count');
 var basicItemData;
 var itemData = {};
-let itemInventory = [null, null, null, null, null, null]
+let itemInventory = [null, null, null, null, null, null,null, null, null, null, null, null];
+let currentOffset = 0;
 
 function queryAndAddEventAll(selector, event, method) {
     Array.from(document.querySelectorAll(selector)).forEach(element => {
@@ -398,12 +400,6 @@ function addToolTipEvents(element) {
 const item_shop_model = document.getElementById('item_shop_model');
 const iteminfo = document.getElementById('item_shop_iteminfo');
 
-export function openShopModel(_form) {
-    item_shop_model.style.display = null;
-    item_shop_search.focus();
-    item_shop_search.value = '';
-    filterShop();
-}
 
 function byClass(a, b) {
     return a.getElementsByClassName(b)[0]
@@ -434,58 +430,112 @@ function showInfo(itemKey, ) {
     window.shoppingCardItem = itemKey;
 }
 
-queryAndAddEventAll('.clear_items', 'click', sellAllItems);
 queryAndAddEventAll('#item_shop_model_close', 'click', _e => item_shop_model.style.display = "none");
 queryAndAddEventAll('#shop_buy_item', 'click', _e => buyItem(window.shoppingCardItem));
-queryAndAddEventAll('.open-shop-btn', 'click', e => openShopModel(e.currentTarget.form));
 
+queryAndAddEventAll('.clear_items', 'click', e => {
+    currentOffset = parseInt(e.currentTarget.getAttribute('data-shop-offset')) || 0;
+    console.log('Setting offset to', currentOffset);
+    sellAllItems();
+});
+queryAndAddEventAll('.open-shop-btn', 'click', e => {
+    currentOffset = parseInt(e.currentTarget.getAttribute('data-shop-offset')) || 0;
+    console.log('Setting offset to', currentOffset);
+    openShopModel(e.currentTarget.form);
+});
+
+export function openShopModel(_form) {
+    item_shop_model.style.display = null;
+    item_shop_search.focus();
+    item_shop_search.value = '';
+    document.querySelector('#shop_buy_item').disabled = false;
+
+    for (let i = 0; i < 6; i++) {
+        let item = itemInventory[i + currentOffset];
+        let els = document.querySelectorAll(`.item-shop-${i}`);
+        for (const el of els) {
+            if (item === null) {
+                const image = el.querySelector('.full-image');
+                image.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+            } else {
+                el.setAttribute('data-key', item);
+                const image = el.querySelector('.full-image');
+                image.src = itemData[item].imageFull;
+                addToolTipEvents(el);
+            }
+        }
+    }
+    filterShop();
+}
 
 export function buyItem(item) {
     console.log('Buying item: ' + item);
     let openIndex = 0;
     for (; openIndex < 6; openIndex++) {
-        if (itemInventory[openIndex] === null)
+        if (itemInventory[openIndex + currentOffset] === null)
             break;
     }
-    if (openIndex > 5)
+    if (openIndex >= 5){
         openIndex = 5;
-    const els = document.getElementsByClassName(`item-inventory-${openIndex}`);
-
-    for (var i = 0; i < els.length; i++) {
-        const itemEl = els[i];
-        itemEl.setAttribute('data-key', item);
-        const image = itemEl.querySelector('.full-image');
-        image.src = itemData[item].imageFull;
-        addToolTipEvents(itemEl)
+        document.querySelector('#shop_buy_item').disabled = true;
     }
-    itemInventory[openIndex] = item;
+    let openIndexInv = openIndex + currentOffset;
+
+    
+    const els = document.querySelectorAll(`.item-inventory-${openIndexInv}, .item-shop-${openIndex}`);
+    for (const el of els) {
+        el.setAttribute('data-key', item);
+        const image = el.querySelector('.full-image');
+        image.src = itemData[item].imageFull;
+        addToolTipEvents(el)
+    }
+    itemInventory[openIndexInv] = item;
     onItemsUpdated();
 }
 
 export function sellAllItems() {
     for (let i = 0; i < 6; i++) {
-        sellItem(i);
+        sellItem(i, i == 5);
     }
 }
-
-export function sellItem(itemNumber) {
-    console.log('Selling item: #' + itemNumber);
-    const els = document.getElementsByClassName(`item-inventory-${itemNumber}`);
-
-    for (var i = 0; i < els.length; i++) {
-        const items = els[i].getElementsByClassName('full-image')[0];
-        items.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+export function sellItem(itemNumber, docalc=true) {
+    console.log('Selling item: #', itemNumber, 'at offset', currentOffset);
+    const item = itemNumber + currentOffset;
+    const els = document.querySelectorAll(`.item-inventory-${item}, .item-shop-${itemNumber}`);
+    for (const el of els) {
+        const image = el.querySelector('.full-image');
+        image.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
     }
-    itemInventory[itemNumber] = null;
-    onItemsUpdated();
+    itemInventory[item] = null;
+    document.querySelector('#shop_buy_item').disabled = false;
+    if(docalc)
+        onItemsUpdated();
 }
-
 function onItemsUpdated() {
+    const data = getItemData(currentOffset);
+    document.getElementById('item_total_cost').value = data.totalCost;
+
+    let statsRender = [];
+    for (let i in data.stats) {
+        statsRender.push(`
+        <div><a>${i}:</a>
+        <a style="color:#8AC88A;">+${data.stats[i]}</a></div>`);
+    }
+    const els = document.querySelectorAll(`.stats-total-${currentOffset}, .stats-total-shop`);
+    for (const el of els) {
+        el.innerHTML = `
+    <div class="item-stats-table table">
+        ${statsRender.join('\n')}
+    </div>`
+    }
+    recalc();
+}
+export function getItemData(offset) {
     const stats = {};
     let total_cost = 0;
     for (let i = 0; i < 6; i++) {
-        if (itemInventory[i]) {
-            const item = itemData[itemInventory[i]];
+        if (itemInventory[i + offset]) {
+            const item = itemData[itemInventory[i + offset]];
             total_cost += item.gold.total;
             Object.keys(item.stats).forEach(key => {
                 if (stats[key])
@@ -495,22 +545,10 @@ function onItemsUpdated() {
             });
         }
     }
-    document.getElementById('item_total_cost').value = total_cost;
-    console.log(stats);
-
-
-    let statsRender = [];
-    for (let i in stats) {
-        statsRender.push(`
-        <div><a>${i}:</a>
-        <a style="color:#8AC88A;">+${stats[i]}</a></div>`);
-    }
-    Array.from(document.getElementsByClassName('stats_total')).forEach(e => {
-        e.innerHTML = `
-    <div class="item-stats-table table">
-        ${statsRender.join('\n')}
-    </div>`
-    });
+    return {
+        'totalCost': total_cost,
+        'stats': stats
+    };
 }
 
 window.onclick = function (event) {
