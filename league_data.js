@@ -78,7 +78,8 @@ export function downloadingChampionFiles(version, champion) {
         });
         return;
     }
-    const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
+    // const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
+    const url = `/export/${champion}.json`;
 
     console.log(`Fetching: ${url}`)
     fetch(url)
@@ -91,16 +92,19 @@ export function downloadingChampionFiles(version, champion) {
             }
             throw new Error('Network response was not ok.');
         })
-        .then(function (myJson) {
-            var dao = myJson.data[champion];
+        .then(function (dao) {
+            // var dao = myJson.data[champion];
             window.playerChamption = dao.id;
-            var imgStyle = `url("${cdn}/${version}/img/sprite/${dao.passive.image.sprite}") -${dao.passive.image.x}px -${dao.passive.image.y}px`
+            const i = dao.simple_skills.i;
+            var imgStyle = `url("${cdn}/${version}/img/sprite/${i.image.sprite}") -${i.image.x}px -${i.image.y}px`
 
-            addNewPasiveForm(champion, dao.name, imgStyle, dao.passive.name, dao.passive.description);
+            addNewPasiveForm(champion, dao.name, imgStyle, i.name, i.description);
 
-            dao.spells.forEach(spellDao => {
-                addNewSpellFormWithSpellDao(dao, spellDao, `${cdn}/${version}/img/sprite/`)
-            });
+            addNewSpellFormWithSpellDao(dao, dao.complex_skills.q1.riot, `${cdn}/${version}/img/sprite/`)
+            addNewSpellFormWithSpellDao(dao, dao.complex_skills.w1.riot, `${cdn}/${version}/img/sprite/`)
+            addNewSpellFormWithSpellDao(dao, dao.complex_skills.e1.riot, `${cdn}/${version}/img/sprite/`)
+            addNewSpellFormWithSpellDao(dao, dao.complex_skills.r1.riot, `${cdn}/${version}/img/sprite/`)
+
             league_static_data.champion_data_full[champion] = {
                 passiveImage: imgStyle,
             };
@@ -108,35 +112,6 @@ export function downloadingChampionFiles(version, champion) {
             //TODO buy default items
         });
 }
-
-/**
-Example Dao
-{
-	id: string
-	name: string
-	description: string
-	tooltip: string
-	leveltip: {
-		label: string[]
-		effect: string[]
-	}
-	maxrank: number
-	cooldown: number[]
-	cooldownBurn: string
-	cost: number[]
-	costBurn: string
-	datavalues: any // TODO: typing
-	effect: Array<number[]>
-	effectBurn: string[]
-	vars: Array<{ link: string, coeff: number, key: string }>
-	costType: string
-	// numeric string
-	maxammo: string
-	range: number[]
-	// numeric string
-	rangeBurn: string
-    resource: string
-*/
 
 /// Called to add a new block and form
 function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
