@@ -101,7 +101,7 @@ export function downloadingChampionFiles(version, champion) {
             addNewPasiveForm(champion, dao.name, imgStyle, i.name, i.description);
 
             for(const skill in dao.complex_skills){
-                addNewSpellFormWithSpellDao(skill, dao.complex_skills[skill], `${cdn}/${version}/img/sprite/`)
+                addNewSpellFormWithSpellDao(skill, dao.complex_skills[skill], champion,`${cdn}/${version}/img/sprite/`)
             }
 
             league_static_data.champion_data_full[champion] = {
@@ -113,7 +113,7 @@ export function downloadingChampionFiles(version, champion) {
 }
 
 /// Called to add a new block and form
-function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
+function addNewSpellFormWithSpellDao(key, spell, champion, spriteUrl) {
     const spellDao = spell.riot;
     if (spell.skill === 'I')
         return;
@@ -126,7 +126,7 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
     var cloned = document.getElementById('spell_dao_template').cloneNode(true);
 
     cloned.classList.remove("hidden");
-    cloned.classList.add(`owner-${spell.champion}`);
+    cloned.classList.add(`owner-${champion}`);
     cloned.id = id;
 
     var form = cloned.getElementsByTagName("form")[0];
@@ -207,6 +207,7 @@ export function addSpellEffect(form, damage_type="magic") {
 /// Called when the spell rank radio has changed.
 export function onSpellRankInput(form, create = false) {
     const idx = form.spellrank.value;
+    const spell = form.spell;
     const spellrankindex = asNumber(form.spellrank) - 1;
     // for (var i = 1; i < 7; i++) {
     //     form['cooldown' + i].setAttribute('data-active', idx == i);
@@ -228,65 +229,43 @@ export function onSpellRankInput(form, create = false) {
     form.range.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`);
 
     // console.log(form.spellDao.tooltip.split(/(\W)/));
-    let tooltip = form.defaultTooltipHtml;
-    if (tooltip.includes('{{')) {
-        tooltip = tooltip.replace(/{{([^{]*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
-        tooltip = tooltip.replace(/{{([^{]*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
-    }
-    form.tooltip.innerHTML = tooltip;
+    let ret = matchReplaceSpellEffects(form.defaultTooltipHtml, form, spellrankindex);
+    form.tooltip.innerHTML = ret.str;
 
     const add_to_node = form.getElementsByClassName('spell_data_effect_list')[0];
     while (add_to_node.firstChild) {
         add_to_node.removeChild(add_to_node.firstChild);
     }
-
-    var eff_index = 0;
-    tooltip.replace(/deal(.*?)damage/g, function (match, capture) {
-        console.log('deal damage',match);
+    
+    for(let eff_index = 0; eff_index < form.spell.leveling.length; eff_index ++) {
+        const leveling = matchReplaceSpellEffects(form.spell.leveling[eff_index], form, spellrankindex);
         var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
-
-        // cloned.classList.add(`owner-${form.spellDao}`);
-        cloned.id = `spell_data_effect_${form.spellDao.id}_${eff_index}`
+        cloned.id = `spell_data_effect_${form.spell.id}_${eff_index}`
 
         var inner_form = cloned.getElementsByTagName("form")[0];
-        inner_form.id = `spell_data_effect_${form.spellDao.id}_${eff_index}_form`
+        inner_form.id = cloned.id + `_form`
 
         inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
         
-        inner_form.effect_value.innerHTML = '"' + form.spell.leveling[eff_index] + '"';
+        inner_form.effect_value.innerHTML = leveling.str;
 
-        //data-base="${exact}"
-        var base = match.match(/data-base=\"(\S+)\"/);
-        if (base) {
-            inner_form.base_damage.value = base[1];
+        if (leveling.vars.base_damage) {
+            inner_form.base_damage.value = leveling.vars.base_damage[spellrankindex];
+        }
+        if (leveling.vars.ratio_ap_1) {
+            inner_form.ap_ratio.value = leveling.vars.ratio_ap_1;
+        }
+        if (leveling.vars.ratio_ad_1) {
+            inner_form.ad_ratio.value = leveling.vars.ratio_ad_1;
         }
 
-        /// takes values from data-ratio to add default ratios. 
-        var ratios = match.match(/data-ratio=\"(\w+) ([\d.]+)\"/);
-        if (ratios) {
-            for (var i = 0; i < ratios.length; i += 3) {
-                try {
-                    if (ratios[i + 1] === 'special') {
-                        var special = /data-ratio-special=\"(\S+)\"/.exec(match);
-                        if (special)
-                            console.log('Creating special ratio = ' + special[1]);
-                    } else {
-                        inner_form[ratios[i + 1]].value = ratios[i + 2];
-                    }
-                } catch (e) {
-                    console.log('Unknown ratio ' + ratios);
-                }
-            }
-        }
-
-        if (match.includes("magic")) {
-            // form.ap_ratio.value = rnd3p(e.coeff);
+        if (spell.damagetype.includes("agic")) {
             inner_form.damage_type.selectedIndex = 3;
-        } else if (match.includes("physical")) {
-            // form.ap_ratio.value = rnd3p(e.coeff);
+        } else if (spell.damagetype.includes("hysical")) {
             inner_form.damage_type.selectedIndex = 2;
+        }  else if (spell.damagetype.includes("rue")) {
+            inner_form.damage_type.selectedIndex = 4;
         } else {
-            console.log('Could not detect damage')
             inner_form.damage_type.selectedIndex = 1;
         }
 
@@ -295,17 +274,94 @@ export function onSpellRankInput(form, create = false) {
             inputs[i].addEventListener("input", recalc);
         }
         add_to_node.appendChild(cloned);
+    }
 
-        eff_index = eff_index + 1;
-    });
+    //for riot's data
+    // var eff_index = 0;
+
+    // tooltip.replace(/deal(.*?)damage/g, function (match, capture) {
+    //     console.log('deal damage',match);
+    //     var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
+
+    //     // cloned.classList.add(`owner-${form.spellDao}`);
+    //     cloned.id = `spell_data_effect_${form.spellDao.id}_${eff_index}`
+
+    //     var inner_form = cloned.getElementsByTagName("form")[0];
+    //     inner_form.id = `spell_data_effect_${form.spellDao.id}_${eff_index}_form`
+
+    //     inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
+        
+    //     inner_form.effect_value.innerHTML = '"' + form.spell.leveling[eff_index] + '"';
+
+    //     //data-base="${exact}"
+    //     var base = match.match(/data-base=\"(\S+)\"/);
+    //     if (base) {
+    //         inner_form.base_damage.value = base[1];
+    //     }
+
+    //     /// takes values from data-ratio to add default ratios. 
+    //     var ratios = match.match(/data-ratio=\"(\w+) ([\d.]+)\"/);
+    //     if (ratios) {
+    //         for (var i = 0; i < ratios.length; i += 3) {
+    //             try {
+    //                 if (ratios[i + 1] === 'special') {
+    //                     var special = /data-ratio-special=\"(\S+)\"/.exec(match);
+    //                     if (special)
+    //                         console.log('Creating special ratio = ' + special[1]);
+    //                 } else {
+    //                     inner_form[ratios[i + 1]].value = ratios[i + 2];
+    //                 }
+    //             } catch (e) {
+    //                 console.log('Unknown ratio ' + ratios);
+    //             }
+    //         }
+    //     }
+
+    //     if (match.includes("magic")) {
+    //         // form.ap_ratio.value = rnd3p(e.coeff);
+    //         inner_form.damage_type.selectedIndex = 3;
+    //     } else if (match.includes("physical")) {
+    //         // form.ap_ratio.value = rnd3p(e.coeff);
+    //         inner_form.damage_type.selectedIndex = 2;
+    //     } else {
+    //         console.log('Could not detect damage')
+    //         inner_form.damage_type.selectedIndex = 1;
+    //     }
+
+    //     var inputs = cloned.getElementsByClassName("input");
+    //     for (var i = 0; i < inputs.length; i++) {
+    //         inputs[i].addEventListener("input", recalc);
+    //     }
+    //     add_to_node.appendChild(cloned);
+
+    //     eff_index = eff_index + 1;
+    // });
 
     // console.log(form['tooltip']);
 
 }
 
+function define_keyword(word) {
+    if(word === 'stun')
+        return '<b>Stun</b>'
+    else
+        return `<span class="keyword">Define "${word}"</span>`
+}   
 
-function matchReplaceSpellEffects(form, spellrankindex) {
-    return function (match, capture) {
+function matchReplaceSpellEffects(string, form, spellrankindex) {
+    let retvalues = {}
+    string = string.replace(/'''(.*?)'''+/g, '<b class="champname">$1</b>')
+    string = string.replace(/''(.*?)''+/g, '<i class="spellname">$1</i>')
+    string = string.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>')
+    string = string.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>')
+    for(let i = 0; i < 15; i++) {
+        if (string.includes('{{') )
+            string = string.replace(/{{([^{}]*)}}/g, matchInner(form, spellrankindex, retvalues));
+    }
+    return {str: string, vars: retvalues};
+}
+function matchInner(form, spellrankindex, retvalues) {
+    return function (match, capture){
         console.log('match:', match, capture)
         capture = capture.trim()
         try {
@@ -315,8 +371,8 @@ function matchReplaceSpellEffects(form, spellrankindex) {
             if (capture.startsWith('tip|')){
                 var inner = capture.slice(4);
                 if (inner.includes('|'))
-                    return `<span class='tooltip blue'>${inner.slice(inner.indexOf('|') + 1)}<span class='tooltip-float'>Define keyword "${inner.slice(0, inner.indexOf('|'))}"</span></span>`;
-                return `<span class='tooltip blue'>${inner}<span class='tooltip-float'>Define keyword "${inner}"</span></span>`;
+                    return `<span class='tooltip blue'>${inner.slice(inner.indexOf('|') + 1)}<span class='tooltip-float'>${define_keyword(inner.slice(0, inner.indexOf('|')))}</span></span>`;
+                return `<span class='tooltip blue'>${inner}<span class='tooltip-float'>${define_keyword(inner)}</span></span>`;
             }
             if (capture.startsWith('tt|')){
                 var inner = capture.slice(3);
@@ -327,14 +383,53 @@ function matchReplaceSpellEffects(form, spellrankindex) {
             if (capture.startsWith('sbc|')){
                 return `<span class="blue">${capture.slice(4)}</span>`;
             }
-            if (capture.startsWith('as|')){
-                return `<span class="ad">${capture.slice(3)}</span>`;
+            if (capture.startsWith('as|')) {
+                var inner = capture.slice(3);
+                if (inner.includes('AP')) {
+                    if (!retvalues.ratio_ap_1 )
+                        retvalues.ratio_ap_1 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                    if (!retvalues.ratio_ap_2)
+                        retvalues.ratio_ap_2 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                }
+                else if (inner.includes('AD')) {
+                    if (!retvalues.ratio_ad_1 )
+                        retvalues.ratio_ad_1 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                    if (!retvalues.ratio_ad_2)
+                        retvalues.ratio_ad_2 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                }
+                return `<span class="ad">${inner}</span>`;
             }
             if (capture.startsWith('fd|')){
                 return `<span class="armor">${capture.slice(3)}</span>`;
             }
             if (capture.startsWith('ai|')){
                 return `<span class="mr">${capture.slice(3)}</span>`;
+            }
+            if (capture.startsWith('sti|')){
+                return `<span class="armor">${capture.slice(4)}</span>`;
+            }
+
+            if (capture.startsWith('st|')){
+                var inner = capture.slice(3);
+                var split1 = inner.slice(0, inner.indexOf('|'))
+                var split2 = inner.slice(inner.indexOf('|'))
+                return `<a>${split1}</a>: <span>${split2}</span>`;
+            }
+
+            if (capture.startsWith('ap|')){
+                var inner = capture.substring(3);
+                inner = inner.replace(/([\d.]+) to ([\d.]+)/g, (match, start, end) => {
+                    start = parseFloat(start)
+                    end = parseFloat(end)
+                    const diff = (end - start) / 4
+                    return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
+                    
+                });
+                inner = inner.replace(' ', '/').replace('|', '/');
+
+                if(!retvalues.base_damage)
+                    retvalues.base_damage = inner.split('/');
+                return `<span style="font-family: 'DejaVu Sans Mono', 'Lucida Console', monospace;">${inner}</span>`;
             }
 
             //for riot data

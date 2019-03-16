@@ -285,6 +285,9 @@ def testing_spell(champ, skill):
     if 'speed' in skill:
         export['speed'] = otherify(skill['speed'])
     if 'spelleffects' in skill:
+        # ['Area of Effect', 'Area of effect', 'Aoe', False, 'Single target', 'aoe', 'Heal', '', 
+        # 'AoE', 'AoeDoT', 'DoT', 'Special', 'Shield', 'aoe, false', 'Single', 'AoEDoT', 'area of effect',
+        # 'single', 'AoE, Heal', 'dot, single', 'area', 'DOT', 'Single Target', 'Multi-hit', 'aoedot', 'dot']
         export['spelleffects'] = otherify(skill['spelleffects'])
     if 'spelleffects-aoe' in skill:
         export['spelleffects-aoe'] = otherify(skill['spelleffects-aoe'])
@@ -297,7 +300,7 @@ def testing_spell(champ, skill):
     if 'spellshield' in skill:
         export['spellshield'] = boolishify(skill['spellshield'])
     if 'spellshields' in skill:
-        export['spellshields'] = otherify(skill['spellshields'])
+        pass #export['spellshields'] = otherify(skill['spellshields'])
     if 'static' in skill:
         export['static'] = otherify(skill['static'])
     if 'target_range' in skill:
