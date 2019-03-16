@@ -224,7 +224,7 @@ def testing_spell(champ, skill):
     ]))
 
     if 'disp_name' in skill:
-        export['disp_name'] = otherify(skill['disp_name', skill['name']])
+        export['disp_name'] = otherify(skill.get('disp_name', skill['name']))
     if 'effect_radius' in skill:
         export['effect_radius'] = otherify(skill['effect_radius'])
     if 'flavorsound' in skill:
