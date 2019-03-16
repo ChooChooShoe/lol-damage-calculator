@@ -256,7 +256,7 @@ export function onSpellRankInput(form, create = false) {
             inner_form.ap_ratio.value = leveling.vars.ratio_ap_1;
         }
         if (leveling.vars.ratio_ad_1) {
-            inner_form.ad_ratio.value = leveling.vars.ratio_ad_1;
+            inner_form.total_ad_ratio.value = leveling.vars.ratio_ad_1;
         }
 
         if (spell.damagetype.includes("agic")) {
