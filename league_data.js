@@ -228,8 +228,12 @@ export function onSpellRankInput(form, create = false) {
     form.range.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`);
 
     // console.log(form.spellDao.tooltip.split(/(\W)/));
-    const tooltip = form.defaultTooltipHtml.replace(/{{(.*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
-    form.tooltip.innerHTML = tooltip
+    let tooltip = form.defaultTooltipHtml;
+    if (tooltip.includes('{{')) {
+        tooltip = tooltip.replace(/{{([^{]*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
+        tooltip = tooltip.replace(/{{([^{]*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
+    }
+    form.tooltip.innerHTML = tooltip;
 
     const add_to_node = form.getElementsByClassName('spell_data_effect_list')[0];
     while (add_to_node.firstChild) {
@@ -238,7 +242,7 @@ export function onSpellRankInput(form, create = false) {
 
     var eff_index = 0;
     tooltip.replace(/deal(.*?)damage/g, function (match, capture) {
-        console.log(match);
+        console.log('deal damage',match);
         var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
 
         // cloned.classList.add(`owner-${form.spellDao}`);
@@ -248,7 +252,8 @@ export function onSpellRankInput(form, create = false) {
         inner_form.id = `spell_data_effect_${form.spellDao.id}_${eff_index}_form`
 
         inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
-        inner_form.effect_value.innerHTML = '"' + match + '"';
+        
+        inner_form.effect_value.innerHTML = '"' + form.spell.leveling[eff_index] + '"';
 
         //data-base="${exact}"
         var base = match.match(/data-base=\"(\S+)\"/);
@@ -305,6 +310,34 @@ function matchReplaceSpellEffects(form, spellrankindex) {
         capture = capture.trim()
         try {
             const effext_index = parseInt(capture[1]);
+            // for wikia data
+
+            if (capture.startsWith('tip|')){
+                var inner = capture.slice(4);
+                if (inner.includes('|'))
+                    return `<span class='tooltip blue'>${inner.slice(inner.indexOf('|') + 1)}<span class='tooltip-float'>Define keyword "${inner.slice(0, inner.indexOf('|'))}"</span></span>`;
+                return `<span class='tooltip blue'>${inner}<span class='tooltip-float'>Define keyword "${inner}"</span></span>`;
+            }
+            if (capture.startsWith('tt|')){
+                var inner = capture.slice(3);
+                if (inner.includes('|'))
+                    return `<span class='tooltip ap'>${inner.slice(0, inner.indexOf('|')) }<span class='tooltip-float'>${inner.slice(inner.indexOf('|') + 1)}</span></span>`;
+                return `<span class='tooltip ap'>${inner}<span class='tooltip-float'>${inner}</span></span>`;
+            }
+            if (capture.startsWith('sbc|')){
+                return `<span class="blue">${capture.slice(4)}</span>`;
+            }
+            if (capture.startsWith('as|')){
+                return `<span class="ad">${capture.slice(3)}</span>`;
+            }
+            if (capture.startsWith('fd|')){
+                return `<span class="armor">${capture.slice(3)}</span>`;
+            }
+            if (capture.startsWith('ai|')){
+                return `<span class="mr">${capture.slice(3)}</span>`;
+            }
+
+            //for riot data
             if (capture === 'cost') {
                 var exact = form.spellDao['cost'][spellrankindex].toString();
                 return form.spellDao['costBurn'].replace(exact, `<span class="spelleffect active" >${exact}</span>`);
@@ -351,7 +384,7 @@ function matchReplaceSpellEffects(form, spellrankindex) {
             console.log(e);
         }
         console.log(`Unknown spell effect '${match}'`);
-        return `<span class='tooltip capture-unknown'>${capture}<span class='tooltip-float'>Unknown value for '${match}'</span></span>`;
+        return `<span class='tooltip capture-unknown'>${capture}<span class='tooltip-float'>Unknown value for '${capture}'</span></span>`;
     };
 }
 
