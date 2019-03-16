@@ -121,6 +121,7 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
     if (document.getElementById(id)) {
         return;
     }
+    spell.id = id;
 
     var cloned = document.getElementById('spell_dao_template').cloneNode(true);
 
@@ -132,14 +133,14 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
     form.id = `${id}_form`
 
     for (var i = 1; i < 7; i++) {
-        if (i > spellDao.maxrank) {
+        if (i > spell.maxrank) {
             cloned.getElementsByClassName('spellrank' + i)[0].classList.add('hidden');
             // form['cooldown' + i].classList.add('hidden');
             // form['cooldown' + i].previousElementSibling.classList.add('hidden');
             // form['cost' + i].classList.add('hidden');
             // form['cost' + i].previousElementSibling.classList.add('hidden');
         } else {
-            if (i === spellDao.maxrank) {
+            if (i === spell.maxrank) {
                 cloned.getElementsByClassName('spellrank' + i)[0].checked = true;
                 // form['cooldown' + i].setAttribute('data-active', true);
                 // form['cost' + i].setAttribute('data-active', true);
@@ -151,7 +152,7 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
     }
     // form['costType'].value = spellDao.costType;
 
-    if (spellDao.maxammo != '-1') {
+    if (spell.maxammo > -1) {
         //TODO
     }
 
@@ -159,11 +160,11 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
     form.abilityresourcename = spell.costtype;
     form.custom_eff_index = 0;
 
-    const imageStyle = `url(${spriteUrl}${spellDao.image.sprite}) -${spellDao.image.x}px -${spellDao.image.y}px`
+    const imageStyle = `url(${spriteUrl}${spell.image.sprite}) -${spell.image.x}px -${spell.image.y}px`
     // cloned.getElementsByClassName('champion-name')[0].innerHTML = championDao.name;
-    cloned.getElementsByClassName('spell-key')[0].innerHTML = spellDao.id;
-    cloned.getElementsByClassName('spell-name')[0].innerHTML = spellDao.name;
-    form['tooltip'].innerHTML = spellDao.tooltip;
+    cloned.getElementsByClassName('spell-key')[0].innerHTML = spell.champion + ' ' + key.toUpperCase();
+    cloned.getElementsByClassName('spell-name')[0].innerHTML = spell.name;
+    form.defaultTooltipHtml = '<p>' + spell.description.join('</p><p>') + '</p>';
     cloned.getElementsByClassName('spell-image')[0].style.background = imageStyle;
 
     // Adds recalc to all the input for cloned section.
@@ -172,6 +173,7 @@ function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
         inputs[i].addEventListener("input", recalc);
     }
 
+    form.spell = spell;
     form.spellDao = spellDao;
     spell_data.push(form);
     main_div.appendChild(cloned);
@@ -213,18 +215,20 @@ export function onSpellRankInput(form, create = false) {
     // }
 
 
-    var burn = form.spellDao['cooldownBurn'];
+    var burn = form.spell['cooldownBurn'];
     var exact = form.spellDao['cooldown'][spellrankindex];
     form.cooldown.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' seconds';
 
-    form.cost.innerHTML = form.spellDao['resource'].replace(/{{ (\w*) }}+/g, matchReplaceSpellEffects(form, spellrankindex));
+    var burn = form.spell['costBurn'];
+    var exact = form.spell['cost'][spellrankindex];
+    form.cost.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' ' + form.spell.costtype;
 
     var burn = form.spellDao['rangeBurn'];
     var exact = form.spellDao['range'][spellrankindex];
     form.range.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`);
 
     // console.log(form.spellDao.tooltip.split(/(\W)/));
-    const tooltip = form.spellDao.tooltip.replace(/{{ (\w*) }}+/g, matchReplaceSpellEffects(form, spellrankindex));
+    const tooltip = form.defaultTooltipHtml.replace(/{{(.*?)}}+/g, matchReplaceSpellEffects(form, spellrankindex));
     form.tooltip.innerHTML = tooltip
 
     const add_to_node = form.getElementsByClassName('spell_data_effect_list')[0];
@@ -297,6 +301,8 @@ export function onSpellRankInput(form, create = false) {
 
 function matchReplaceSpellEffects(form, spellrankindex) {
     return function (match, capture) {
+        console.log('match:', match, capture)
+        capture = capture.trim()
         try {
             const effext_index = parseInt(capture[1]);
             if (capture === 'cost') {

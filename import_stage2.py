@@ -152,11 +152,18 @@ def testing_spell(champ, skill):
         export['champion'] = otherify(skill['champion'])
     if 'collision_radius' in skill:
         export['collision_radius'] = otherify(skill['collision_radius'])
-    if 'cooldown' in skill:
-        if not is_passive:
-            print('debug: cooldown', skill['cooldown'], 'riot',
-                  riot['cooldown'], 'riotBurn', riot['cooldownBurn'])
-        export['cooldown'] = skill['cooldown']
+
+    # if 'cooldown' in skill:
+    if not is_passive:
+        print('debug: cooldown', skill.get('cooldown', None), 'riot',
+                riot['cooldown'], 'riotBurn', riot['cooldownBurn'])
+        export['cooldown'] = riot['cooldown']
+        export['cooldownBurn'] = riot['cooldownBurn']
+    else:
+        export['cooldown'] = skill.get('cooldown', None)
+        export['cooldownBurn'] = skill.get('cooldown', None)
+
+
     if 'cost' in skill:
         value = skill['cost']
         if value == "":
