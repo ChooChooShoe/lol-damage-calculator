@@ -100,10 +100,9 @@ export function downloadingChampionFiles(version, champion) {
 
             addNewPasiveForm(champion, dao.name, imgStyle, i.name, i.description);
 
-            addNewSpellFormWithSpellDao(dao, dao.complex_skills.q1.riot, `${cdn}/${version}/img/sprite/`)
-            addNewSpellFormWithSpellDao(dao, dao.complex_skills.w1.riot, `${cdn}/${version}/img/sprite/`)
-            addNewSpellFormWithSpellDao(dao, dao.complex_skills.e1.riot, `${cdn}/${version}/img/sprite/`)
-            addNewSpellFormWithSpellDao(dao, dao.complex_skills.r1.riot, `${cdn}/${version}/img/sprite/`)
+            for(const skill in dao.complex_skills){
+                addNewSpellFormWithSpellDao(skill, dao.complex_skills[skill], `${cdn}/${version}/img/sprite/`)
+            }
 
             league_static_data.champion_data_full[champion] = {
                 passiveImage: imgStyle,
@@ -114,8 +113,11 @@ export function downloadingChampionFiles(version, champion) {
 }
 
 /// Called to add a new block and form
-function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
-    const id = `spell_dao_${spellDao.id}`;
+function addNewSpellFormWithSpellDao(key, spell, spriteUrl) {
+    const spellDao = spell.riot;
+    if (spell.skill === 'I')
+        return;
+    const id = `spell_dao_${spell.champion}_${key}`;
     if (document.getElementById(id)) {
         return;
     }
@@ -123,7 +125,7 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     var cloned = document.getElementById('spell_dao_template').cloneNode(true);
 
     cloned.classList.remove("hidden");
-    cloned.classList.add(`owner-${championDao.id}`);
+    cloned.classList.add(`owner-${spell.champion}`);
     cloned.id = id;
 
     var form = cloned.getElementsByTagName("form")[0];
@@ -154,7 +156,7 @@ function addNewSpellFormWithSpellDao(championDao, spellDao, spriteUrl) {
     }
 
     //This is needed for spell costs.
-    form.abilityresourcename = championDao.partype;
+    form.abilityresourcename = spell.costtype;
     form.custom_eff_index = 0;
 
     const imageStyle = `url(${spriteUrl}${spellDao.image.sprite}) -${spellDao.image.x}px -${spellDao.image.y}px`

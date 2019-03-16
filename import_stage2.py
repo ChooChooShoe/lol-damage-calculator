@@ -133,6 +133,8 @@ def testing_spell(champ, skill):
     riot = skill['riot']
     last_warn_count = warn_count
     is_passive = skill.get('skill', 'x') == "I"
+    if not is_passive:
+        handle_riot_spell(export, riot)
 
     if '_flavorsound' in skill:
         export['_flavorsound'] = otherify(skill['_flavorsound'])
