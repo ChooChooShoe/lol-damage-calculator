@@ -14,14 +14,23 @@ export let  spell_data_index = 0;
 
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
 
+export function toNum(value, defaultValue=0) {
+    const sanatized = str(value).replace(/([^0-9/*\-+ .]+)/g,'');
+    const x = parseFloat(eval(sanatized));
+    if (isNaN(x))
+        return defaultValue;
+    return x;
+}
 export function asNumber(field, usePlaceHolder = true) {
     var x;
     if (field.value === "" && usePlaceHolder)
         x = parseFloat(field.placeholder);
-    else
-        x = parseFloat(field.value);
-    // if (isNaN(x))
-    //     return 0;
+    else{
+        const sanatized = field.value.replace(/([^0-9/*\-+ .]+)/g,'');
+        x = parseFloat(eval(sanatized));
+    }
+    if (isNaN(x))
+        return 0;
     return x;
 }
 
@@ -37,20 +46,25 @@ function asInt(field) {
 }
 
 export function asPercent(field) {
-    if (field.value === "")
-        return parseFloat(field.placeholder) / 100.0;
-    var x = parseFloat(field.value);
-    // if (isNaN(x))
-    //     return 0;
+    let x = 0;
+    if(field) {
+        if (field.value === "")
+            x = parseFloat(field.placeholder);
+        else
+            x = parseFloat(field.value);
+
+    }
+    if (isNaN(x))
+        return 0.00;
     return x / 100.0;
 }
 
 function rnd3(num) {
-    return Math.round(num * 1000.0) / 1000.0;
+    return Math.round(num * 100000.0) / 100000.0;
 }
 // for percents
 function rnd3p(num) {
-    return (Math.round(num * 100.0 * 1000.0) / 1000.0) + "%";
+    return (Math.round(num * 100.0 * 100000.0) / 100000.0) + "%";
 }
 
 function validate_champion_data(form) {
@@ -66,6 +80,7 @@ window.onload = function () {
     var inputs = document.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", recalc);
+        inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
     
     // spell_data_template.classList.add("hidden");
@@ -80,12 +95,12 @@ function onInputForSpell(sender, form, idx, d) {
     var damage_type = form.damage_type.value;
 
     var base_damage = asNumber(form.base_damage);
-    var ap_ratio = asNumber(form.ap_ratio);
+    var ap_ratio = asPercent(form.ap_ratio);
 
-    var total_ad_ratio = asNumber(form.total_ad_ratio);
-    var bonus_ad_ratio = asNumber(form.bonus_ad_ratio);
+    var total_ad_ratio = asPercent(form.total_ad_ratio);
+    var bonus_ad_ratio = asPercent(form.bonus_ad_ratio);
 
-    var max_health_ratio = asNumber(form.max_health_ratio);
+    var max_health_ratio = asPercent(form.max_health_ratio);
 
     var damage, dmg_onhit, dmg_dps = "Literally Healing //TODO FIX"; // dmg_onhit * (1 / cooldown);
     switch (damage_type) {
@@ -99,26 +114,30 @@ function onInputForSpell(sender, form, idx, d) {
 
             break;
 
-        case "magic":
+            case "magic":
             damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
             if (d.eff_mr > 0)
                 dmg_onhit = damage * (100 / (100 + d.eff_mr));
             else
                 dmg_onhit = 2 - (100 / (100 - d.eff_mr));
             break;
+        case "true":
+            damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
+            dmg_onhit = damage
+            break;
         case "not_detected":
-            // damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            // dmg_onhit = damage * (100 / (100 + (d.eff_mr / 2 + d.eff_armor / 2)));
             damage = 0;
             dmg_onhit = 0;
             break;
         case "no_damage":
-            return;
+            damage = 0;
+            dmg_onhit = 0;
+            break;
     }
 
-    form.dmg_premitigation.value = damage;
-    form.dmg_onhit.value = dmg_onhit;
-    form.dmg_dps.value = dmg_dps;
+    form.dmg_premitigation.value = rnd3(damage);
+    form.dmg_onhit.value = rnd3(dmg_onhit);
+    // form.dmg_dps.value = dmg_dps;
 
     return {
         damage_type: damage_type,
@@ -133,9 +152,11 @@ export function recalc() {
     var total_pre_damage = 0,
         total_pre_magic_damage = 0,
         total_pre_physical_damage = 0,
+        total_pre_true_damage = 0,
         total_damage = 0,
         total_magic_damage = 0,
-        total_physical_damage = 0;
+        total_physical_damage = 0,
+        total_true_damage = 0;
     var target_overkill = 0;
 
     var data = get_data();
@@ -160,20 +181,24 @@ export function recalc() {
                 total_pre_magic_damage += ret.pre_damage;
                 total_damage += ret.damage;
                 total_magic_damage += ret.damage;
-            } else if (ret.damage_type === "not_detected") {
-                //TODO
-            } else if (ret.damage_type === "no_damage") {
+            } else if (ret.damage_type === "true") {
+                total_pre_damage += ret.pre_damage;
+                total_pre_true_damage += ret.pre_damage;
+                total_damage += ret.damage;
+                total_true_damage += ret.damage;
+
+            } else {
                 //TODO
             }
         });
 
     }
-    total_data.total_pre_damage.value = total_pre_damage;
-    total_data.total_pre_magic_damage.value = total_pre_magic_damage;
-    total_data.total_pre_physical_damage.value = total_pre_physical_damage;
-    total_data.total_damage.value = total_damage;
-    total_data.total_magic_damage.value = total_magic_damage;
-    total_data.total_physical_damage.value = total_physical_damage;
+    total_data.total_pre_damage.value = rnd3(total_pre_damage)
+    total_data.total_pre_magic_damage.value = rnd3(total_pre_magic_damage)
+    total_data.total_pre_physical_damage.value = rnd3(total_pre_physical_damage)
+    total_data.total_damage.value = rnd3(total_damage)
+    total_data.total_magic_damage.value = rnd3(total_magic_damage)
+    total_data.total_physical_damage.value = rnd3(total_physical_damage)
 
     var hp_diff = total_damage - data.health;
     if (hp_diff > 0) {
@@ -268,8 +293,8 @@ window.calc_ad = (direction) => {
     } else if (direction === 2) { //change to bonus_ad
         total_ad = base_ad + bonus_ad;
     }
-    champion_data.total_ad.value = total_ad;
-    champion_data.bonus_ad.value = bonus_ad;
+    champion_data.total_ad.value = rnd3(total_ad)
+    champion_data.bonus_ad.value = rnd3(bonus_ad)
 }
 
 window.calc_armor = (direction) => {
@@ -424,6 +449,7 @@ function addNewSpellForm(damge_type) {
     var inputs = cloned.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", recalc);
+        inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
 
     main_div.appendChild(cloned);
@@ -435,7 +461,7 @@ window.removeSpell = function(self) {
 }
 window.remSpellEffect = function(self) {
     //yikes
-    self.parentElement.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement.parentElement);
+    self.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement);
 }
 // var last_chamption = null;
 

@@ -25,7 +25,7 @@ export class ItemToolTip {
         }, el('div.item-tooltip-container',
 
             el('.item-header',
-                this.image = el('img.item-img-left'),
+                this.img = el('img.item-img-left'),
                 this.title = el('span.item-title'),
                 el('div', {
                         style: 'float: right'
@@ -72,23 +72,6 @@ export class ItemToolTip {
     //                 } else {
     //                     fromRender = '<div class="item-recipe"></div>';
     //                 }
-
-    //                 let intoRender = [];
-    //                 let intoRenderSmall = [];
-    //                 for (let i in item.into) {
-    //                     const other = itemJson.data[item.into[i]];
-    //                     intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
-    //                     intoRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
-    //                 }
-    //                 if (intoRender.length > 0) {
-    //                     intoRender = intoRender.join("");
-    //                     intoRenderSmall =
-    //                         `<div class="item-builds">Builds Into: 
-    //                     ${intoRenderSmall.join("")}
-    //                     </div>`
-    //                 } else {
-    //                     intoRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
-    //                     intoRenderSmall = '<div class="item-builds"></div>';
     //                 }
 
     //                 let total_cost;
@@ -120,6 +103,30 @@ export class ItemToolTip {
         }
         this.el.setAttribute('data-key', data);
         this.el.id = `tooltipcontent_item_${data}`;
+        
+
+        let intoRender = [];
+        let intoRenderSmall = [];
+        for (let i in item.into) {
+            const other = context[item.into[i]];
+            intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+            intoRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+        }
+        if (intoRender.length > 0) {
+            intoRender = intoRender.join("");
+            intoRenderSmall =
+                `<div class="item-builds">Builds Into: 
+            ${intoRenderSmall.join("")}
+            </div>`
+        } else {
+            intoRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
+            intoRenderSmall = '<div class="item-builds"></div>';
+        }
+
+
+        this.title.textContent = item.name;
+        this.img.style = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`;
+
     }
 }
 

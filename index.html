@@ -47,7 +47,7 @@
     </div>
     <div id="main" class="flex">
 
-        <div class="data_holder inline" id="champion_data">
+        <div class="data_holder block" id="champion_data">
             <h2 class="title_input">Player's Champion Data</h2>
 
             <form autocomplete="off" id="champion_data_form">
@@ -221,7 +221,7 @@
             </form>
         </div>
 
-        <div class="data_holder inline" id="target_data">
+        <div class="data_holder block" id="target_data">
             <h2 class="title_input">Target's Data</h2>
             <form autocomplete="off" id="target_data_form">
                 <label for="target_champion_select" class="">Load Champion Data For</label>
@@ -353,7 +353,7 @@
                 </div>
             </form>
         </div>
-        <div class="data_holder inline" id="total_data">
+        <div class="data_holder block" id="total_data">
             <h2 class="title_input">Damage Totals & Outputs</h2>
             <form autocomplete="off" id="total_data_form">
                 <div class="table fill">
@@ -410,16 +410,15 @@
         </div>
     </div>
     <div id="templates" class="hidden">
-        <div class="table fill spell-effect" id="spell_data_effect_template">
-            <form autocomplete="off" id="spell_data_effect_template_form">
-                <div>
-                    <output id="effect_name">Effect</output>
-                    <output id="effect_value" style="white-space: normal;"></output>
-                </div>
-                <div>
-                    <input name="remove_effect" class="right" type="button" value="Remove" onclick="remSpellEffect(this)">
-                </div>
-                <div class="extra">
+        <div class="container fill spell-effect" id="spell_data_effect_template">
+            <form autocomplete="off" id="spell_data_effect_template_form" class="flex flex-row flex-wrap flex-top">
+                
+                <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"></output>
+                <input name="remove_effect" class="inline float-right" type="button" value="Remove" onclick="remSpellEffect(this)">
+              
+                <output id="effect_value" class="column"></output>
+                
+                <div class="field inline">
                     <label for="damage_type">Damage Type</label>
                     <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
                         <option value="no_damage" class="mixed">No Damage</option>
@@ -430,49 +429,17 @@
                         <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
                     </select>
                 </div>
-                <div class="extra">
-                    <label for="base_damage">Base Damage</label>
-                    <input type="number" id="base_damage" name="base_damage" placeholder="0" class="input" />
-                </div>
-                <div class="extra">
-                    <label for="ap_ratio" class="ap">Total AP Ratio</label>
-                    <input type="number" step="0.01" min="0" id="ap_ratio" name="ap_ratio" placeholder="0.00" class="input" />
-                </div>
-                <div class="extra">
-                    <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
-                    <input type="number" step="0.01" min="0" id="total_ad_ratio" name="total_ad_ratio" placeholder="0.00"
-                        class="input" />
-                </div>
-                <div class="extra">
-                    <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
-                    <input type="number" step="0.01" min="0" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0.00"
-                        class="input" />
-                </div>
-                <div class="extra">
-                    <label for="max_health_ratio" class="health">% Max Health Ratio</label>
-                    <input type="number" step="0.01" min="0" id="max_health_ratio" name="max_health_ratio" placeholder="0.00"
-                        class="input" />
-                </div>
-                <div class="extra">
-                    <label for="dmg_premitigation">Premitigation Damage</label>
-                    <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
-                        readonly />
-                </div>
-                <div class="extra">
-                    <label for="dmg_onhit">Damage after Resistances</label>
-                    <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
-
-                </div>
-                <div class="extra">
+                <div class="extra hidden insert-before">
                     <label class="hidden" for="dmg_dps">Expected damage per second</label>
                     <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
                         readonly />
                 </div>
+                <div style="width: 100%;height: 1.4em;"></div>
             </form>
         </div>
 
 
-        <div class="data_holder inline" id="spell_data_template">
+        <div class="data_holder block" id="spell_data_template">
             <form autocomplete="off" id="spell_data_q_form" method="POST" action="#">
                 <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
 
@@ -523,7 +490,7 @@
             </form>
         </div>
 
-        <div class="data_holder inline" id="passive_dao_template">
+        <div class="data_holder block" id="passive_dao_template">
             <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
             <span class="subtitle passive-name">Passive Name</span>
             <img class="passive-image" width="48px" height="48px" />
@@ -531,7 +498,7 @@
 
         </div>
 
-        <div class="data_holder inline" id="spell_dao_template">
+        <div class="data_holder block" id="spell_dao_template">
             <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
                 <span class="title_input"><span class="spell-key">Champion</span>:</span>
                 <span class="subtitle spell-name">Spell Name</span>

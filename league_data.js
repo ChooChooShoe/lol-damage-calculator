@@ -114,40 +114,23 @@ export function downloadingChampionFiles(version, champion) {
 
 /// Called to add a new block and form
 function addNewSpellFormWithSpellDao(key, spell, champion, spriteUrl) {
-    const spellDao = spell.riot;
     if (spell.skill === 'I')
         return;
-    const id = `spell_dao_${spell.champion}_${key}`;
+    const id = `spell_dao_${champion}_${key}`;
     if (document.getElementById(id)) {
         return;
     }
     spell.id = id;
 
-    var cloned = document.getElementById('spell_dao_template').cloneNode(true);
-
-    cloned.classList.remove("hidden");
-    cloned.classList.add(`owner-${champion}`);
-    cloned.id = id;
-
-    var form = cloned.getElementsByTagName("form")[0];
-    form.id = `${id}_form`
+    var cloned = new SpellEffect(id, champion, spell, key, spriteUrl);
 
     for (var i = 1; i < 7; i++) {
         if (i > spell.maxrank) {
-            cloned.getElementsByClassName('spellrank' + i)[0].classList.add('hidden');
-            // form['cooldown' + i].classList.add('hidden');
-            // form['cooldown' + i].previousElementSibling.classList.add('hidden');
-            // form['cost' + i].classList.add('hidden');
-            // form['cost' + i].previousElementSibling.classList.add('hidden');
+            cloned.el.getElementsByClassName('spellrank' + i)[0].classList.add('hidden');
         } else {
             if (i === spell.maxrank) {
-                cloned.getElementsByClassName('spellrank' + i)[0].checked = true;
-                // form['cooldown' + i].setAttribute('data-active', true);
-                // form['cost' + i].setAttribute('data-active', true);
+                cloned.el.getElementsByClassName('spellrank' + i)[0].checked = true;
             }
-            // If i is < 7 and < maxrank
-            // form['cost' + i].value = spellDao.cost[i - 1];
-            // form['cooldown' + i].value = spellDao.cooldown[i - 1];
         }
     }
     // form['costType'].value = spellDao.costType;
@@ -157,36 +140,24 @@ function addNewSpellFormWithSpellDao(key, spell, champion, spriteUrl) {
     }
 
     //This is needed for spell costs.
-    form.abilityresourcename = spell.costtype;
-    form.custom_eff_index = 0;
+    cloned.form.abilityresourcename = spell.costtype;
+    cloned.form.custom_eff_index = 0;
 
-    const imageStyle = `url(${spriteUrl}${spell.image.sprite}) -${spell.image.x}px -${spell.image.y}px`
-    // cloned.getElementsByClassName('champion-name')[0].innerHTML = championDao.name;
-    cloned.getElementsByClassName('spell-key')[0].innerHTML = spell.champion + ' ' + key.toUpperCase();
-    cloned.getElementsByClassName('spell-name')[0].innerHTML = spell.name;
-    form.defaultTooltipHtml = '<p>' + spell.description.join('</p><p>') + '</p>';
-    cloned.getElementsByClassName('spell-image')[0].style.background = imageStyle;
-
-    // Adds recalc to all the input for cloned section.
-    var inputs = cloned.getElementsByClassName("input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", recalc);
-    }
-
-    form.spell = spell;
-    form.spellDao = spellDao;
-    spell_data.push(form);
-    main_div.appendChild(cloned);
-    onSpellRankInput(form, true);
+    cloned.form.spell = spell;
+    cloned.form.spellDao = spell.riot;
+    spell_data.push(cloned.form);
+    mount(main_div, cloned)
+    cloned.update(spell);
     recalc();
 }
 
 
 export function addSpellEffect(form, damage_type="magic") {
     var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
+    const add_to_node = form.getElementsByClassName('spell_data_custom_effect_list')[0];
 
     // cloned.classList.add(`owner-${form.spellDao}`);
-    cloned.id = `spell_data_effect_${form.spellDao.id}_${form.custom_eff_index}`
+    cloned.id = `spell_data_effect_${form.spellDao.id}_cutom_${form.custom_eff_index}`
 
     var inner_form = cloned.getElementsByTagName("form")[0];
     inner_form.id = `${cloned.id}_form`
@@ -196,86 +167,235 @@ export function addSpellEffect(form, damage_type="magic") {
 
     inner_form.damage_type.value = damage_type;
 
+    mount(inner_form, new Field('dmg_premitigation', 'Premitigation Damage', '', false, false, true));
+    mount(inner_form, new Field('dmg_onhit', 'Damage after Resistances', '', false, false, true));
+
+    mount(inner_form, new Field('base_damage', 'Base Damage', '.base'));
+    mount(inner_form, new Field('ap_ratio', 'AP Ratio', '.ap'));
+    mount(inner_form, new Field('total_ad_ratio', 'AD Ratio', '.ad'));
+    mount(inner_form, new Field('bonus_ad_ratio', 'Bonus AD Ratio', '.ad'));
+    mount(inner_form, new Field('total_health_ratio', '% Health Ratio', '.health'));
+
+    mount(add_to_node, cloned)
+
     var inputs = cloned.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", recalc);
+        inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
-    form.getElementsByClassName('spell_data_custom_effect_list')[0].appendChild(cloned);
+    add_to_node.appendChild(cloned);
     form.custom_eff_index =  form.custom_eff_index + 1;
 }
-
-/// Called when the spell rank radio has changed.
-export function onSpellRankInput(form, create = false) {
-    const idx = form.spellrank.value;
-    const spell = form.spell;
-    const spellrankindex = asNumber(form.spellrank) - 1;
-    // for (var i = 1; i < 7; i++) {
-    //     form['cooldown' + i].setAttribute('data-active', idx == i);
-    //     form['cost' + i].setAttribute('data-active', idx == i);
-
-    // }
-
-
-    var burn = form.spell['cooldownBurn'];
-    var exact = form.spellDao['cooldown'][spellrankindex];
-    form.cooldown.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' seconds';
-
-    var burn = form.spell['costBurn'];
-    var exact = form.spell['cost'][spellrankindex];
-    form.cost.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' ' + form.spell.costtype;
-
-    var burn = form.spellDao['rangeBurn'];
-    var exact = form.spellDao['range'][spellrankindex];
-    form.range.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`);
-
-    // console.log(form.spellDao.tooltip.split(/(\W)/));
-    let ret = matchReplaceSpellEffects(form.defaultTooltipHtml, form, spellrankindex);
-    form.tooltip.innerHTML = ret.str;
-
-    const add_to_node = form.getElementsByClassName('spell_data_effect_list')[0];
-    while (add_to_node.firstChild) {
-        add_to_node.removeChild(add_to_node.firstChild);
-    }
-    
-    for(let eff_index = 0; eff_index < form.spell.leveling.length; eff_index ++) {
-        const leveling = matchReplaceSpellEffects(form.spell.leveling[eff_index], form, spellrankindex);
-        var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
-        cloned.id = `spell_data_effect_${form.spell.id}_${eff_index}`
-
-        var inner_form = cloned.getElementsByTagName("form")[0];
-        inner_form.id = cloned.id + `_form`
-
-        inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
+export class Field {
+    constructor(id, label_text, classColor, removeable=true, editable=true, fullsize=false) {
         
-        inner_form.effect_value.innerHTML = leveling.str;
+        this.delBtn = removeable ?  el(`a.del-btn.inline`, {
+            title: 'Remove Field'
+        }, text('\u2715')) : el('a.inline');
 
-        if (leveling.vars.base_damage) {
-            inner_form.base_damage.value = leveling.vars.base_damage[spellrankindex];
-        }
-        if (leveling.vars.ratio_ap_1) {
-            inner_form.ap_ratio.value = leveling.vars.ratio_ap_1;
-        }
-        if (leveling.vars.ratio_ad_1) {
-            inner_form.total_ad_ratio.value = leveling.vars.ratio_ad_1;
-        }
+        this.input = editable ? el(`input.input.block`, {
+            type: 'text',
+            name: id,
+            enabled: true,
+        }) : el('input.input.block', {
+            name: id,
+            enabled: false
+        });
 
-        if (spell.damagetype.includes("agic")) {
-            inner_form.damage_type.selectedIndex = 3;
-        } else if (spell.damagetype.includes("hysical")) {
-            inner_form.damage_type.selectedIndex = 2;
-        }  else if (spell.damagetype.includes("rue")) {
-            inner_form.damage_type.selectedIndex = 4;
-        } else {
-            inner_form.damage_type.selectedIndex = 1;
-        }
+        this.el = el(`div.field.inline${fullsize ? '.full' : ''}`,
+            el('div.flex.flex-row', {
+                style: ''
+            },
+            this.label = el(`span.block${classColor}`, text(label_text)),
+            this.input,
+            this.delBtn,
+        ));
 
-        var inputs = cloned.getElementsByClassName("input");
+        this.delBtn.addEventListener('click', e => {
+            this.el.classList.add('hidden');
+            this.input.value = '';
+            recalc();
+        });
+    }
+    get() {
+        return this.input.value
+    }
+    update(data) {
+
+    }
+}
+export class SpellEffect {
+    constructor(id, champion, spell, key, spriteUrl) {
+        this.spell = spell;
+        this.el = el(`div#${id}.data_holder.block.owner-${champion}`,
+            this.form = el(`form#${id}_form`, {
+                autocomplete: 'off',
+                method: 'POST',
+                action: '#'
+            },
+                this.img = el('img.spell-image', {
+                    style: `float: right; background: url(${spriteUrl}${spell.image.sprite}) -${spell.image.x}px -${spell.image.y}px;`,
+                    width: "48",
+                    height: "48",
+                }),
+                this.key = el('h4.spell-key', text(spell.champion + ' ' + key.toUpperCase() + ': ' + spell.name)),
+                this.tooltip = el('div.spell-tooltip'),
+                el('div.table.fill',
+                    el('div',
+                        text('Spell Rank'),
+                        this.spellrank = el('fieldset.spellrank.input',
+                        el('input.spellrank1', {type: 'radio', name: 'spellrank', value: '1', title: 'Rank 1'}),
+                        el('input.spellrank2', {type: 'radio', name: 'spellrank', value: '2', title: 'Rank 2'}),
+                        el('input.spellrank3', {type: 'radio', name: 'spellrank', value: '3', title: 'Rank 3'}),
+                        el('input.spellrank4', {type: 'radio', name: 'spellrank', value: '4', title: 'Rank 4'}),
+                        el('input.spellrank5', {type: 'radio', name: 'spellrank', value: '5', title: 'Rank 5'}),
+                        el('input.spellrank6', {type: 'radio', name: 'spellrank', value: '6', title: 'Rank 6'}),
+                        
+                        )
+                    ),
+                    el('.cooldown-container', 
+                        el('label', text('Cooldown')), 
+                        this.cooldown = el('span')
+                    ),
+                    el('.cost-container', 
+                        el('label.cost-title', text('Cost')), 
+                        this.cost = el('span')
+                    ),
+                    el('.range-container', 
+                        el('label.tange-title', text('Range')), 
+                        this.range = el('span')
+                    ),
+                ),
+                this.effect_list = el('div.spell_data_effect_list'),
+                this.custom_effect_list = el('div.spell_data_custom_effect_list'),
+                el('div',
+                    // el('input', {
+                    //     name: 'reset',
+                    //     type: 'reset',
+                    //     value: 'Zero Above'
+                    // }),
+                    // el('input', {
+                    //     name: 'expand',
+                    //     type: 'button',
+                    //     value: 'Expand'
+                    // }),
+                    // el('input.hidden', {
+                    //     name: 'reset',
+                    //     type: 'button',
+                    //     value: 'Collapse'
+                    // }),
+                    this.adeffect = el('input.right', {
+                        name: 'add_effect',
+                        type: 'button',
+                        value: 'Add Effect +'
+                    })
+                ),
+            )
+        );
+        this.form.defaultTooltipHtml = '<p>' + spell.description.join('</p><p>') + '</p>';
+        var inputs = this.el.getElementsByClassName("input");
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].addEventListener("input", recalc);
+            inputs[i].addEventListener("focus", e => e.currentTarget.select());
         }
-        add_to_node.appendChild(cloned);
+        for(let x of this.form.spellrank)
+            x.addEventListener('input', e => this.update());
+        this.adeffect.addEventListener('click', e => addSpellEffect(this.form));
     }
 
+    update(x) {
+        const idx = this.form.spellrank.value;
+        const spellrankindex = asNumber(this.form.spellrank) - 1;
+        // for (var i = 1; i < 7; i++) {
+        //     form['cooldown' + i].setAttribute('data-active', idx == i);
+        //     form['cost' + i].setAttribute('data-active', idx == i);
+    
+        // }
+    
+        var burn = this.spell['cooldownBurn'];
+        var exact = this.spell.riot['cooldown'][spellrankindex];
+        this.cooldown.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' seconds';
+    
+        var burn = this.spell.riot['costBurn'];
+        var exact = this.spell.riot['cost'][spellrankindex];
+        this.cost.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`) + ' ' + this.spell.costtype;
+    
+        var burn = this.spell.riot['rangeBurn'];
+        var exact = this.spell.riot['range'][spellrankindex];
+        this.range.innerHTML = burn.replace(exact.toString(), `<span class="spelleffect">${exact}</span>`);
+    
+        // console.log(form.spellDao.tooltip.split(/(\W)/));
+        let ret = matchReplaceSpellEffects(this.form.defaultTooltipHtml, this.form, spellrankindex);
+        this.tooltip.innerHTML = ret.str;
+    
+        const add_to_node = this.form.getElementsByClassName('spell_data_effect_list')[0];
+        while (add_to_node.firstChild) {
+            add_to_node.removeChild(add_to_node.firstChild);
+        }
+        
+        for(let eff_index = 0; eff_index < this.spell.leveling.length; eff_index ++) {
+            const leveling = matchReplaceSpellEffects(this.spell.leveling[eff_index], this.form, spellrankindex);
+            var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
+            cloned.id = `spell_data_effect_${this.spell.id}_${eff_index}`
+
+            var inner_form = cloned.getElementsByTagName("form")[0];
+            inner_form.id = cloned.id + `_form`
+            // inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
+            inner_form.removeChild(inner_form.effect_name);
+            inner_form.removeChild(inner_form.remove_effect);
+            inner_form.effect_value.innerHTML = leveling.str;
+
+
+            mount(inner_form, new Field('dmg_premitigation', 'Pre-Mitigation Damage', '', false, false));
+            mount(inner_form, new Field('dmg_onhit', 'After Resistances', '', false, false));
+            mount(add_to_node, cloned)
+            // add_to_node.appendChild(cloned);
+    
+            const before = cloned.querySelector('.insert-before');
+            if (leveling.vars.base_damage) {
+                mount(inner_form, new Field('base_damage', 'Base Damage', '.base', false), before);
+                inner_form.base_damage.value = leveling.vars.base_damage[spellrankindex];
+            }
+            if (leveling.vars.ratio_ap_1) {
+                mount(inner_form, new Field('ap_ratio', 'AP Ratio', '.ap', false), before);
+                inner_form.ap_ratio.value = leveling.vars.ratio_ap_1;
+            }
+            // if (leveling.vars.ratio_ap_1) {
+            //     inner_form.ap_ratio.value = leveling.vars.ratio_ap_2;
+            // }
+            if (leveling.vars.ratio_ad_1) {
+                mount(inner_form, new Field('total_ad_ratio', 'AD Ratio', '.ad', false), before);
+                inner_form.total_ad_ratio.value = leveling.vars.ratio_ad_1;
+            }
+            if (leveling.vars.ratio_ad_2) {
+                mount(inner_form, new Field('bonus_ad_ratio', 'Bonus AD Ratio', '.ad', false), before);
+                inner_form.total_ad_ratio.value = leveling.vars.ratio_ad_2;
+            }
+    
+            // mount(inner_form, new Field('max_health_ratio', '% Max Health Ratio', '.health'));
+
+            if (this.spell.damagetype.includes("agic")) {
+                inner_form.damage_type.selectedIndex = 3;
+            } else if (this.spell.damagetype.includes("hysical")) {
+                inner_form.damage_type.selectedIndex = 2;
+            }  else if (this.spell.damagetype.includes("rue")) {
+                inner_form.damage_type.selectedIndex = 4;
+            } else {
+                inner_form.damage_type.selectedIndex = 1;
+            }
+    
+            var inputs = cloned.getElementsByClassName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", recalc);
+                inputs[i].addEventListener("focus", e => e.currentTarget.select());
+            }
+        }
+    
+    }
+}
+/// Called when the spell rank radio has changed.
+export function onSpellRankInput(form, create = false) {
+    return;
     //for riot's data
     // var eff_index = 0;
 
@@ -350,10 +470,11 @@ function define_keyword(word) {
 
 function matchReplaceSpellEffects(string, form, spellrankindex) {
     let retvalues = {}
-    string = string.replace(/'''(.*?)'''+/g, '<b class="champname">$1</b>')
-    string = string.replace(/''(.*?)''+/g, '<i class="spellname">$1</i>')
-    string = string.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>')
-    string = string.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>')
+    string = string.replace('<!--\n-->', '<br/>');
+    string = string.replace(/'''(.*?)'''+/g, '<b class="champname">$1</b>');
+    string = string.replace(/''(.*?)''+/g, '<i class="spellname">$1</i>');
+    string = string.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>');
+    string = string.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>');
     for(let i = 0; i < 15; i++) {
         if (string.includes('{{') )
             string = string.replace(/{{([^{}]*)}}/g, matchInner(form, spellrankindex, retvalues));
@@ -387,15 +508,15 @@ function matchInner(form, spellrankindex, retvalues) {
                 var inner = capture.slice(3);
                 if (inner.includes('AP')) {
                     if (!retvalues.ratio_ap_1 )
-                        retvalues.ratio_ap_1 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                        retvalues.ratio_ap_1 = inner.replace(/\D/g, '') + "%";
                     if (!retvalues.ratio_ap_2)
-                        retvalues.ratio_ap_2 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                        retvalues.ratio_ap_2 = inner.replace(/\D/g, '') + "%";
                 }
                 else if (inner.includes('AD')) {
                     if (!retvalues.ratio_ad_1 )
-                        retvalues.ratio_ad_1 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                        retvalues.ratio_ad_1 = inner.replace(/\D/g, '') + "%";
                     if (!retvalues.ratio_ad_2)
-                        retvalues.ratio_ad_2 = parseFloat(inner.replace(/\D/g, '')) / 100;
+                        retvalues.ratio_ad_2 = inner.replace(/\D/g, '') + "%";
                 }
                 return `<span class="ad">${inner}</span>`;
             }
@@ -412,20 +533,20 @@ function matchInner(form, spellrankindex, retvalues) {
             if (capture.startsWith('st|')){
                 var inner = capture.slice(3);
                 var split1 = inner.slice(0, inner.indexOf('|'))
-                var split2 = inner.slice(inner.indexOf('|'))
+                var split2 = inner.slice(inner.indexOf('|') + 1)
                 return `<a>${split1}</a>: <span>${split2}</span>`;
             }
 
-            if (capture.startsWith('ap|')){
+            if (capture.startsWith('ap|') || capture.startsWith('pp|')) {
                 var inner = capture.substring(3);
-                inner = inner.replace(/([\d.]+) to ([\d.]+)/g, (match, start, end) => {
-                    start = parseFloat(start)
-                    end = parseFloat(end)
+                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)/g, (match, start, end) => {
+                    start = parseFloat(eval(start))
+                    end = parseFloat(eval(end))
                     const diff = (end - start) / 4
                     return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
                     
                 });
-                inner = inner.replace(' ', '/').replace('|', '/');
+                inner = inner.replace(/[| ]/g, '/');
 
                 if(!retvalues.base_damage)
                     retvalues.base_damage = inner.split('/');
