@@ -21,10 +21,14 @@ import traceback
 from collections import OrderedDict
 from html.parser import HTMLParser
 
+# os.remove("stage2.log")
+import logging as log
+log.basicConfig(filename='stage2.log', filemode='w',level=log.INFO)
+
 if len(sys.argv) == 2:
     h = sys.argv[1]
     if h == "help" or h == "-h" or h == "--help":
-        print("usage:", sys.argv[0], "")
+        log.info("usage: %s", sys.argv[0])
         sys.exit(0)
 cl_collect_known = True
 
@@ -81,7 +85,7 @@ def intify(value):
     if not isinstance(value, int):
         global warn_count
         warn_count += 1
-        print('warning: type mismatch. expected int but got', value)
+        log.warning('type mismatch. expected int but got %d', value)
         value = wikia(value)
     return value
 
@@ -92,7 +96,7 @@ def boolify(value):
     if not isinstance(value, bool):
         global warn_count
         warn_count += 1
-        print('warning: type mismatch. expected bool but got', value)
+        log.warning('type mismatch. expected bool but got %d', value)
         value = wikia(value)
     return value
 
@@ -105,14 +109,14 @@ def boolishify(value):
     if not isinstance(value, bool):
         global warn_count
         warn_count += 1
-        print('warning: type mismatch. expected bool but got', value)
+        log.warning('type mismatch. expected bool but got %d', value)
         value = wikia(value)
     return value
 
 
 def stringify(value):
     if not isinstance(value, str):
-        print('info: type mismatch. expected string but got', value, 'will auto wrap')
+        log.info('type mismatch. expected string but got %d will auto wrap', value)
         value = str(value)
     else:
         value = wikia(value)
@@ -133,8 +137,13 @@ def testing_spell(champ, skill):
     riot = skill['riot']
     last_warn_count = warn_count
     is_passive = skill.get('skill', 'x') == "I"
+
     if not is_passive:
         handle_riot_spell(export, riot)
+    else:
+        export['riotName'] = riot['name']
+        # export['description'] = riot['description']
+        export['image'] = riot['image']
 
     if '_flavorsound' in skill:
         export['_flavorsound'] = otherify(skill['_flavorsound'])
@@ -155,8 +164,7 @@ def testing_spell(champ, skill):
 
     # if 'cooldown' in skill:
     if not is_passive:
-        print('debug: cooldown', skill.get('cooldown', None), 'riot',
-                riot['cooldown'], 'riotBurn', riot['cooldownBurn'])
+        log.debug('cooldown %s + riot %s burn %s', skill.get('cooldown', None), riot['cooldown'],  riot['cooldownBurn'])
         export['cooldown'] = riot['cooldown']
         export['cooldownBurn'] = riot['cooldownBurn']
     else:
@@ -172,14 +180,13 @@ def testing_spell(champ, skill):
             export['cost'] = riot['cost']
             export['costBurn'] = riot['costBurn']
             warn_count += 1
-            print('warning: cost is non-standard value', value,
-                  'riot cost', riot['cost'], 'riot burn', riot['costBurn'])
+            log.debug('cost %s + riot %s burn %s', skill.get('cost', None), riot['cost'],  riot['costBurn'])
+
         elif isinstance(value, int) and str(value) not in riot['costBurn']:
             export['cost'] = riot['cost']
             export['costBurn'] = riot['costBurn']
             warn_count += 1
-            print('warning: cost is not matching riots: value', value,
-                  'riot cost', riot['cost'], 'riot burn', riot['costBurn'])
+            log.warning('cost is not matching riots: value %s riot %s burn %s', value, riot['cost'], riot['costBurn'])
         else:
             # use riot cost and costBurn
             export['cost'] = riot['cost']
@@ -193,7 +200,6 @@ def testing_spell(champ, skill):
     elif value == '':
         value = 'No cost'
     export['costtype'] = otherify(value)
-    print('damagetype', export['costtype'])
 
     if 'custominfo' in skill:
         export['custominfo'] = otherify(skill['custominfo'])
@@ -331,8 +337,7 @@ def testing_spell(champ, skill):
                 
     if last_warn_count != warn_count:
         warn_champs[champ['id']] = True
-        print('There were', warn_count - last_warn_count,
-              'warning(s) for', skill['name'])
+        log.warning('There were %d warnings for %s', warn_count - last_warn_count, skill['name'])
     return export
 
 
@@ -347,7 +352,7 @@ def take_spell(champ, spells):
         for num in ['1', '2', '3', '4', '5', '6', '7']:
             skillkey = 'wikia_skill_'+letter+num
             if skillkey in champ:
-                print('Taking spell:', skillkey)
+                log.info('Taking spell: %s', skillkey)
                 try:
                     skill = champ[skillkey]
                     export = OrderedDict()
@@ -362,30 +367,33 @@ def take_spell(champ, spells):
                                 export['name'] = re.sub(regex, r"\1", value)
                             else:
                                 last_key = list(export.items())[-1][0]
-                                print('info: backtracing', key, 'to',
-                                      last_key, 'adding value', value)
-                                export[last_key] = export[last_key] + \
-                                    '\n' + value
+                                log.debug('backtracing %s to %s adding "%s"', key, last_key, value)
+                                export[last_key] = export[last_key] + '\n' + value
                         else:
                             export[key] = value
-
+                    
+                    if num == '1':
+                        last_desc = export['description']
+                    elif last_desc == export['description']:
+                        log.info('Removing spell because of duplicate description %s', last_desc)
+                        continue
                     spells[letter+num] = testing_spell(champ, export)
                 except:
-                    print('Spells for champ failed at: ', letter, num)
-                    print(traceback.format_exc())
+                    log.warning('Spells for champ failed at: %s %s', letter, num)
+                    log.warning(traceback.format_exc())
                     did_fail = True
                     fail_count += 1
 
     if did_fail:
         failed_champ_count += 1
-        print('warning:', champ["name"], 'had errors')
+        log.warning('%s had errors', champ["name"])
 
 
 os.chdir("./export")
 for filename in glob.glob("*.pass1.json"):
     export = {}
     with open(filename, "r") as file:
-        print("Processing:", filename)
+        log.info("Processing: %s", filename)
         champ = json.load(file)
         export = {
             "id": champ["id"],
@@ -427,17 +435,14 @@ for filename in glob.glob("*.pass1.json"):
     with open(filename.replace(".pass1", ""), "w") as file:
         file.write(json.dumps(export))
 
-print('Complete!')
-print('Champion with erorrs', failed_champ_count, ': total errors', fail_count)
-print('warnings', warn_count)
+log.info('Complete!')
+log.info('Champion with erorrs %s: total errors %s', failed_champ_count, fail_count)
+log.info('Warnings: %s', warn_count)
 for c in warn_champs:
-    print(c, end=' ')
-print()
+    log.warning(c)
 
 if cl_collect_known:
     known_keys.sort()
-    print('known_keys', known_keys)
-    print('\n')
+    log.warning('known_keys %s', str(known_keys))
     for k in known_values:
-        print(k, str(known_values[k]))
-        print('\n')
+        log.warning('%s = %s', k, str(known_values[k]))

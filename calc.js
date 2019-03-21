@@ -80,7 +80,8 @@ window.onload = function () {
     var inputs = document.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("input", recalc);
-        inputs[i].addEventListener("focus", e => e.currentTarget.select());
+        if (inputs[i].tagName !== 'SELECT')
+            inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
     
     // spell_data_template.classList.add("hidden");
