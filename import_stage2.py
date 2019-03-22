@@ -180,7 +180,7 @@ def testing_spell(champ, skill):
             export['cost'] = riot['cost']
             export['costBurn'] = riot['costBurn']
             warn_count += 1
-            log.debug('cost %s + riot %s burn %s', skill.get('cost', None), riot['cost'],  riot['costBurn'])
+            log.warning('cost %s + riot %s burn %s', skill.get('cost', None), riot['cost'],  riot['costBurn'])
 
         elif isinstance(value, int) and str(value) not in riot['costBurn']:
             export['cost'] = riot['cost']

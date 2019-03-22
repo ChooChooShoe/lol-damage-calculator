@@ -18,29 +18,36 @@
 import sys
 import requests
 import json
-
+import time
 import os
 
 from html.parser import HTMLParser
 
+import logging as log
+log.basicConfig(filename='stage1.log', filemode='w',level=log.DEBUG,format='%(levelname)s: %(message)s')
+
 if len(sys.argv) == 1:
-    print("error: champion id to download is required but not supplied")
-    print("usage:", sys.argv[0], "<champion ids...|all|list|help>")
+    print("WARNING champion id to download is required but not supplied")
+    print("usage: %s <champion ids...|all|list|help>", sys.argv[0])
     sys.exit(1)
 else:
     clarg = sys.argv[1]
     if clarg == "help" or clarg == "-h" or clarg == "--help":
-        print("usage:", sys.argv[0], "<champion ids...|all|list|help>")
+        log.info("usage: %s <champion ids...|all|list|help>", sys.argv[0])
         sys.exit(0)
     champsList = ",".join(sys.argv[1:]).split(",")
 
 
 if not os.path.exists("export"):
-    print("creating dir: export")
+    log.info("creating dir: export")
     os.makedirs("export")
 
 
 class MyHTMLParser(HTMLParser):
+    def __init__(self):
+        self.noRedoUrls = []
+        super(MyHTMLParser, self).__init__()
+
     def handle_starttag(self, tag, attrs):
         if tag == "textarea":
             self.readAbility = True
@@ -59,12 +66,17 @@ class MyHTMLParser(HTMLParser):
         super(MyHTMLParser, self).reset()
 
     def chomp(self, url):
+        log.info("Fetching (chomp): %s", url)
         r = requests.get(url)
-        print("Fetching (chomp):", r.url)
         if r.status_code != 200:
-            print("Bad request:", url, "gave code", r.status_code)
+            log.warning("Bad request for %s gave code: %s", r.url, r.status_code)
             self.reset()
             return ""
+        if r.url in self.noRedoUrls:
+            log.info("Url is the same as one before. skipping %s", r.url)
+            self.reset()
+            return ""
+        self.noRedoUrls.append(r.url)
         self.feed(r.text)
         ret = parser.outputData
         self.reset()
@@ -118,34 +130,36 @@ def try_take_skill(line, value, export):
                             skillobj[key] = cast(value)
                         else:
                             skillobj[lineNumber] = line
-                    export["wikia_skill_{}{}".format(letter, skillnum)] = skillobj
+                    if skillobj != {}:
+                        export["wikia_skill_{}{}".format(letter, skillnum)] = skillobj
         return True
     return False
 
 
 # Use the latest league version.
-version = "9.5.1"
+version = "9.6.1"
+timestamp = "2019-03-22T00:40:54+00:00"
 
 url = "https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/championFull.json".format(
     version
 )
-print("Fetching (json):", url)
+log.info("Fetching (json): %s", url)
 champion_json = requests.get(url).json()
 
 if clarg == "list":
-    print("List of champion for lol patch "+version+":")
+    log.info("List of champion for lol patch "+version+":")
 
 champtions = {}
 for keyid in champion_json["data"]:
     if clarg == "list":
-        print(keyid, end=" ")
+        log.info(keyid, end=" ")
         continue
     if clarg != "all" and keyid not in champsList:
         continue
     champ = champion_json["data"][keyid]
     export = {
-        "api_version": "9.5.1",
-        "timestamp": "2019-03-14T17:08:00+00:00", # yikes, im lazy
+        "api_version": version,
+        "timestamp": timestamp, # yikes, im lazy
         "id": champ["id"],  # "RekSai"
         "key": champ["key"],  # "421"
         "name": champ["name"],  # "Rek'Sai"
@@ -195,8 +209,5 @@ for keyid in champion_json["data"]:
 
     champtions[keyid] = export
     with open("./export/" + keyid + ".pass1.json", "w") as file:
-        print("Writing file:", "./export/" + keyid + ".json")
+        log.info("Writing file: ./export/%s.json", keyid)
         file.write(json.dumps(export))
-
-if clarg == "list":
-    print()
