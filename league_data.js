@@ -6,6 +6,8 @@ export const cdn = 'https://ddragon.leagueoflegends.com/cdn';
 export let locale = 'en_US';
 export let version = '0.0.0';
 
+export const list_of_colors = ['health', 'hp', 'attack damage', 'ad', 'physical damage', 'ability power', 'ap', 'magic damage', 'true damage', 'attack speed', 'armor', 'lethality', 'magic resist', 'mr', 'mana', 'mana regen', 'energy', 'critical strike chance', 'critical chance', 'critical strike damage', 'critical damage', 'movement speed', 'ms', 'xp', 'gold', 'siphoning strike', 'buzzword', 'buzzword2', 'buzzword3'];
+
 const version_select = document.getElementById('version_select');
 const player_champion_select = document.getElementById('player_champion_select');
 const target_champion_select = document.getElementById('target_champion_select');
@@ -395,7 +397,12 @@ export class SpellEffect {
                 inputs[i].addEventListener("focus", e => e.currentTarget.select());
             }
         }
-    
+        tippy(`#${this.el.id} [data-tippy-content]`,{
+            animation: 'fade',
+            duration: 50,
+            delay: [0, 0],
+            followCursor: true,
+        });
     }
 }
 /// Called when the spell rank radio has changed.
@@ -470,25 +477,26 @@ function define_keyword(word) {
     if(word === 'stun')
         return '<b>Stun</b>'
     else
-        return `<span class="keyword">Define "${word}"</span>`
+        return `<b>${word}</b>`
 }   
 
 function matchReplaceSpellEffects(string, form, spellrankindex) {
     let retvalues = {}
     string = string.replace('<!--\n-->', '<br/>');
-    string = string.replace(/'''(.*?)'''+/g, '<b class="chamption-name">$1</b>');
-    string = string.replace(/''(.*?)''+/g, '<i class="chamption-name">$1</i>');
-    string = string.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>');
-    string = string.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>');
     for(let i = 0; i < 15; i++) {
         if (string.includes('{{') )
             string = string.replace(/{{([^{}]*)}}/g, matchInner(form, spellrankindex, retvalues));
     }
+    string = string.replace(/'''(.*?)'''+/g, '<b class="chamption-name">$1</b>');
+    string = string.replace(/''(.*?)''+/g, '<i class="chamption-name">$1</i>');
+    string = string.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>');
+    string = string.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>');
+    
     return {str: string, vars: retvalues};
 }
 function matchInner(form, spellrankindex, retvalues) {
     return function (match, capture){
-        console.log('match:', match, capture)
+        console.log('match:', match)
         capture = capture.trim()
         try {
             const effext_index = parseInt(capture[1]);
@@ -558,13 +566,20 @@ function matchInner(form, spellrankindex, retvalues) {
             // sis (or Spell icon with possessive apostrophes): {{sis|<Spell>}}
 
             // sti (or Stat icon): {{sti|<stat>|<Custom name>}}
+            if (capture.startsWith('sti|')){
+                const slices = capture.slice(4).split('|');
+                let stat = slices[0].replace(' ','-');
+                let statName = slices[0];
+                let name = slices.slice(1).join('|') || stat;
+                return `<span><i title=${statName} class="icon i-${stat}"></i>${name}</span>`;
+            }
 
             // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
-            if (capture.startsWith('tip|')){
-                var inner = capture.slice(4);
-                if (inner.includes('|'))
-                    return `<span class='tooltip blue'>${inner.slice(inner.indexOf('|') + 1)}<span class='tooltip-float'>${define_keyword(inner.slice(0, inner.indexOf('|')))}</span></span>`;
-                return `<span class='tooltip blue'>${inner}<span class='tooltip-float'>${define_keyword(inner)}</span></span>`;
+            if (capture.startsWith('tip|')) {
+                const slices = capture.slice(4).split('|');
+                let effect = slices[0];
+                let name = slices.slice(1).join('|') || effect;
+                return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
             }
 
             // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
@@ -577,8 +592,16 @@ function matchInner(form, spellrankindex, retvalues) {
                 return  `<span class="title-tooltip" title="${slices[1]}">${slices[0]}</span>`;
             }
             
+            //pp (or Passive progression): 
+            //    {{pp|<Size>|<Value1>|<Value2>|<...>|<ValueN>|<Level1>|<Level2>|<...>|<LevelN>}}
+            // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
+            // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
+            // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
+            if (capture.startsWith('pp|')) {
+                return `<span class="red">progression</span>`
+            }
             // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-            if (capture.startsWith('ap|') || capture.startsWith('pp|')) {
+            if (capture.startsWith('ap|')) {
                 var inner = capture.substring(3);
                 inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)/g, (match, start, end) => {
                     start = parseFloat(eval(start))
@@ -595,7 +618,17 @@ function matchInner(form, spellrankindex, retvalues) {
             }
             // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
             if (capture.startsWith('as|')) {
+                console.log('as Ability scaling =',capture);
+                
                 var inner = capture.slice(3);
+                const inner_lo = inner.toLowerCase();
+
+                let cssClass = list_of_colors.find( c => {
+                    return inner_lo.includes(c)
+                }) || 'ad';
+                cssClass = cssClass.replace(' ', '-');
+                
+                console.log('as Ability scaling = calss=',cssClass);
                 if (inner.includes('AP')) {
                     if (!retvalues.ratio_ap_1 )
                         retvalues.ratio_ap_1 = inner.replace(/\D/g, '') + "%";
@@ -610,23 +643,20 @@ function matchInner(form, spellrankindex, retvalues) {
                     else if (!retvalues.ratio_ad_1 )
                         retvalues.ratio_ad_1 = inner.replace(/\D/g, '') + "%";
                 }
-                return `<span class="ad">${inner}</span>`;
+                return `<span class="${cssClass}">${inner}</span>`;
             }
             // sbc (or Small bold capitals): {{sbc|<Text>}}
             if (capture.startsWith('sbc|')){
                 return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
             }
-            //pp (or Passive progression): {{pp|<Size>|<Value1>|<Value2>|<...>|<ValueN>|<Level1>|<Level2>|<...>|<LevelN>}} or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-            
+
             //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
 
             //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
 
+            // format number
             if (capture.startsWith('fd|')){
-                return `<span class="armor">${capture.slice(3)}</span>`;
-            }
-            if (capture.startsWith('sti|')){
-                return `<span class="armor">${capture.slice(4)}</span>`;
+                return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
             }
 
             if (capture.startsWith('st|')){

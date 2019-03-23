@@ -14,6 +14,9 @@
     <link type="text/css" rel="stylesheet" href="common.css" />
     <link type="text/css" rel="stylesheet" href="main.css" />
     <link type="text/css" rel="stylesheet" href="items.css" />
+    <link type="text/css" rel="stylesheet" href="icons.css" />
+    <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
     <script type="module" src="league_data.js"></script>
     <script type="module" src="league_items.js"></script>
     <script type="module" src="ui.js"></script>
@@ -68,8 +71,8 @@
                         <div><span>Resource Type:</span><output name="dao_partype"></output></div>
                         <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
                         <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
-                        <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
-                        <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
+                        <div><span class="mana">Base Mana:</span><output name="dao_stats_mp">0</output></div>
+                        <div><span class="mana">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
                         <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
                         <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
                         <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
@@ -78,10 +81,10 @@
                         <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
                         <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
                         <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
-                        <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
-                        <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
-                        <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
-                        <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
+                        <div><span class="mana">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
+                        <div><span class="mana">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
+                        <div><span class="critical-chance">Crit:</span><output name="dao_stats_crit">0</output></div>
+                        <div><span class="critical-chance">Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
                         <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
                         <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
                         <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
@@ -109,15 +112,15 @@
                     </div>
                     <div class="extra">
 
-                        <label for="attack_speed" class="">Attack Speed</label>
+                        <label for="attack_speed" class="attack-speed">Attack Speed</label>
                         <input type="text" id="attack_speed" name="attack_speed" placeholder="0.67" value="0.67" class="input" />
                     </div>
                     <div class="extra">
-                        <label for="crit_change" class="">% Crit. Chance</label>
+                        <label for="crit_change" class="critical-chance">% Crit. Chance</label>
                         <input type="text" id="crit_change" name="crit_change" placeholder="0%" class="input" />
                     </div>
                     <div class="extra">
-                        <label for="crit_damage" class="">% Crit. Damage</label>
+                        <label for="crit_damage" class="critical-damage">% Crit. Damage</label>
                         <input type="text" id="crit_damage" name="crit_damage" placeholder="200%" value="200%" class="input" />
                     </div>
                     <div class="extra">
@@ -241,8 +244,8 @@
                         <div><span>Resource Type:</span><output name="dao_partype"></output></div>
                         <div><span class="health">Base HP:</span><output name="dao_stats_hp">0</output></div>
                         <div><span class="health">HP growth:</span><output name="dao_stats_hpperlevel">0</output></div>
-                        <div><span class="blue">Base Mana:</span><output name="dao_stats_mp">0</output></div>
-                        <div><span class="blue">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
+                        <div><span class="mana">Base Mana:</span><output name="dao_stats_mp">0</output></div>
+                        <div><span class="mana">Mana growth:</span><output name="dao_stats_mpperlevel">0</output></div>
                         <div><span>Movespeed:</span><output name="dao_stats_movespeed">0</output></div>
                         <div><span class="armor">Base Armor:</span><output name="dao_stats_armor">0</output></div>
                         <div><span class="armor">Armor growth:</span><output name="dao_stats_armorperlevel">0</output></div>
@@ -251,10 +254,10 @@
                         <div><span>Attack Range:</span><output name="dao_stats_attackrange">0</output></div>
                         <div><span class="health">Base HP Regen:</span><output name="dao_stats_hpregen">0</output></div>
                         <div><span class="health">HP Regen growth:</span><output name="dao_stats_hpregenperlevel">0</output></div>
-                        <div><span class="blue">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
-                        <div><span class="blue">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
-                        <div><span>Crit:</span><output name="dao_stats_crit">0</output></div>
-                        <div><span>Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
+                        <div><span class="mana">Mana Regen:</span><output name="dao_stats_mpregen">0</output></div>
+                        <div><span class="mana">Mana Regen growth:</span><output name="dao_stats_mpregenperlevel">0</output></div>
+                        <div><span class="critical-chance">Crit:</span><output name="dao_stats_crit">0</output></div>
+                        <div><span class="critical-chance">Crit growth:</span><output name="dao_stats_critperlevel">0</output></div>
                         <div><span class="ad">Attack Damage:</span><output name="dao_stats_attackdamage">0</output></div>
                         <div><span class="ad">Attack Damage growth:</span><output name="dao_stats_attackdamageperlevel">0</output></div>
                         <div><span>Base Attack Speed:</span><output name="dao_stats_attackspeed">0</output></div>
