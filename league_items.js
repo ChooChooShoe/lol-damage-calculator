@@ -18,7 +18,7 @@ function queryAndAddEventAll(selector, event, method) {
 
 export class ItemToolTip {
     constructor() {
-        this.el = el('div.tooltipcontent', {
+        this.el = el('div.tooltipcontent.item', {
             style: {
                 display: 'none'
             }
@@ -38,8 +38,6 @@ export class ItemToolTip {
             this.stats = el('.item-stats-table.table'),
             this.desc = el('.item-description'),
             el('.item-underline'),
-            this.from = el('.from-render'),
-            this.into = el('.into-render'),
             this.tags = el('.item-tags'),
 
         ));
@@ -50,40 +48,6 @@ export class ItemToolTip {
 
     //                 // For full images - Eg: <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64" height="64">
     //                 newItem.imageFull = `${cdn}/${version}/img/item/${item.image.full}`
-
-    //                 let statsRender = [];
-    //                 for (let i in item.stats) {
-    //                     statsRender.push(`
-    //                     <div><a>${i}:</a>
-    //                     <a style="color:#8AC88A;">+${item.stats[i]}</a></div>`);
-    //                 }
-    //                 let fromRender = [];
-    //                 for (let i in item.from) {
-    //                     const other = itemJson.data[item.from[i]];
-    //                     fromRender.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/> + `);
-    //                 }
-    //                 if (fromRender.length > 0) {
-    //                     fromRender =
-    //                         `<div class="item-recipe">Recipe: 
-    //                     ${fromRender.join("")}
-    //                     <img src="/images/Gold.png" />
-    //                     <span class="gold">${item.gold.base}</span>
-    //                     </div>`
-    //                 } else {
-    //                     fromRender = '<div class="item-recipe"></div>';
-    //                 }
-    //                 }
-
-    //                 let total_cost;
-    //                 if (item.gold.purchasable)
-    //                     total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
-    //                 else
-    //                     total_cost = '<span class="red">Not In Shop</span>';
-
-
-    //                 newItem.intoRender = intoRender;
-
-    //                 let tooltipContent = 
 
     update(data, index, items, context) {
         const item = context[data];
@@ -104,27 +68,9 @@ export class ItemToolTip {
         this.el.setAttribute('data-key', data);
         this.el.id = `tooltipcontent_item_${data}`;
         
-
-        let intoRender = [];
-        let intoRenderSmall = [];
-        for (let i in item.into) {
-            const other = context[item.into[i]];
-            intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
-            intoRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
-        }
-        if (intoRender.length > 0) {
-            intoRender = intoRender.join("");
-            intoRenderSmall =
-                `<div class="item-builds">Builds Into: 
-            ${intoRenderSmall.join("")}
-            </div>`
-        } else {
-            intoRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
-            intoRenderSmall = '<div class="item-builds"></div>';
-        }
-
-
+        this.desc.innerHTML = item.description;
         this.title.textContent = item.name;
+        this.tags.textContent = 'Tags: ' + item.tags.join(', ');
         this.img.style = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`;
 
     }
@@ -159,14 +105,7 @@ export class Item {
 
     update(data, index, items, context) {
         const item = context[data];
-        // console.log(data, index, item.name);
-
-        if (item.inStore === false) {
-            //TODO something
-        }
-        if (item.hideFromAll === true) {
-            //TODO something
-        }
+        
         if (item.gold.purchasable || item.gold != 0)
             this.cost.textContent = item.gold.total == 0 ? 'Free' : item.gold.total;
         else {
@@ -176,9 +115,45 @@ export class Item {
         this.el.setAttribute('data-key', data);
         this.el.id = `shop_item_${data}`;
 
-        this.name.textContent = item.name;
-        this.img.style = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`;
 
+        let intoRender = [];
+        let intoRenderSmall = [];
+        for (let i in item.into) {
+            const other = context[item.into[i]];
+            intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+            intoRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+        }
+        if (intoRender.length > 0) {
+            item.intoRender = intoRender.join("");
+            item.intoRenderSmall =
+                `<div class="item-builds">Builds Into: 
+            ${intoRenderSmall.join("")}
+            </div>`
+        } else {
+            item.intoRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
+            item.intoRenderSmall = '<div class="item-builds"></div>';
+        }
+
+        let fromRender = [];
+        let fromRenderSmall = [];
+        for (let i in item.from) {
+            const other = context[item.from[i]];
+            fromRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+            fromRenderSmall.push(`<img data-key="${other.key}" style="zoom: 66.66666%; background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`);
+        }
+        if (fromRender.length > 0) {
+            item.fromRender = fromRender.join("");
+            item.fromRenderSmall =
+                `<div class="item-builds">Builds from: 
+            ${fromRenderSmall.join("")}
+            </div>`
+        } else {
+            item.fromRender = `<img data-key="Empty" style="zoom: 100%; background: url('') -0px -0px" width="48" height="48"/>`;
+            item.fromRenderSmall = '<div class="item-builds"></div>';
+        }
+        this.name.textContent = item.name;
+        item.imageStyle = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`;
+        this.img.style = item.imageStyle;
     }
 }
 
@@ -186,6 +161,7 @@ export class ShopItemInfo {
     constructor() {
         this.lastItem = null;
         this.el = el('div.item',
+            this.from = el('.from-render'),
             el('.item-header',
                 this.image = el('img.item-img-left'),
                 this.title = el('span.item-title'),
@@ -205,7 +181,6 @@ export class ShopItemInfo {
             this.stats = el('.item-stats-table.table'),
             this.desc = el('.item-description'),
             el('.item-underline'),
-            this.from = el('.from-render'),
             this.into = el('.into-render'),
             this.tags = el('.item-tags'),
         );
@@ -231,10 +206,14 @@ export class ShopItemInfo {
         this.el.setAttribute('data-key', data);
         this.el.id = `shop_item_info_${data}`;
 
-        this.title.textContent = item.name;
+
+        this.into.innerHTML = item.intoRenderSmall;
+        this.from.innerHTML = item.fromRender;
+        this.title.textContent = item.name + ' / ' + data;
         this.desc.innerHTML = item.description;
+        this.tags.textContent = 'Tags: ' + item.tags.join(', ');
         // this.image.src = `${cdn}/${version}/img/item/${item.image.full}`;
-        this.image.style = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`;
+        this.image.style = item.imageStyle
 
     }
 }
@@ -568,7 +547,7 @@ window.onclick = function (event) {
 const item_shop_search = document.getElementById('item_shop_search');
 const item_shop_rift_only = document.getElementById('item_shop_rift_only')
 const item_shop_hide_event = document.getElementById('item_shop_hide_event')
-const known_event_items = [];
+const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
 item_shop_search.addEventListener('input', filterShop);
 item_shop_rift_only.addEventListener('input', filterShop);
