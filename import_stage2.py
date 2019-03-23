@@ -24,13 +24,14 @@ from html.parser import HTMLParser
 # os.remove("stage2.log")
 import logging as log
 log.basicConfig(filename='stage2.log', filemode='w',level=log.INFO)
+# log.getLogger().addHandler(log.StreamHandler(sys.stdout))
 
 if len(sys.argv) == 2:
     h = sys.argv[1]
     if h == "help" or h == "-h" or h == "--help":
         log.info("usage: %s", sys.argv[0])
         sys.exit(0)
-cl_collect_known = True
+cl_collect_known = False
 
 regex = re.compile(
     r"\{\{\{\{\{1<noinclude>\|Ability data</noinclude>\}\}\}\|([\S\s]+)\|\{\{\{2\|\}\}\}\|\{\{\{3\|\}\}\}\|\{\{\{4\|\}\}\}\|\{\{\{5\|\}\}\}")
@@ -127,6 +128,33 @@ def otherify(value):
         value = wikia(value)
     return value
 
+def burnify(value, rank):
+    r = re.search('([\d./*\-+]+) to ([\d./*\-+]+)', value)
+    if r != None:
+        start = float(r.group(1))
+        end = float(r.group(2))
+        diff = (end - start) / 4.0
+        if rank == 3:
+            return '%d/%d/%d' %(start, start + diff * 2, end)
+        return '%d/%d/%d/%d/%d' % (start, start + diff * 1, start + diff * 2, start + diff * 3, end)
+    return value[5:-2].replace('|', '/').replace(' ', '/')
+
+def cast(s):
+    s = s.strip()
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            if s == "True" or s == "true":
+                return True
+            elif s == "False" or s == "false":
+                return False
+            else:
+                return s
+
+
 def testing_spell(champ, skill):
     global failed_champ_count
     global fail_count
@@ -137,6 +165,7 @@ def testing_spell(champ, skill):
     riot = skill['riot']
     last_warn_count = warn_count
     is_passive = skill.get('skill', 'x') == "I"
+    maxrank = 5 if is_passive else int(riot['maxrank'])
 
     if not is_passive:
         handle_riot_spell(export, riot)
@@ -172,25 +201,47 @@ def testing_spell(champ, skill):
         export['cooldownBurn'] = skill.get('cooldown', None)
 
 
-    if 'cost' in skill:
-        value = skill['cost']
-        if value == "":
-            value = 0
-        if isinstance(value, str) and 'ap' not in str(value):
-            export['cost'] = riot['cost']
-            export['costBurn'] = riot['costBurn']
-            warn_count += 1
-            log.warning('cost %s + riot %s burn %s', skill.get('cost', None), riot['cost'],  riot['costBurn'])
+    #if 'cost' in skill:
+    if not is_passive:
+        old_val = str(skill.get('cost', '0')) or '0'
+        value = old_val
+        
+        if r'{{' in value:
+            value = burnify(value, maxrank)
 
-        elif isinstance(value, int) and str(value) not in riot['costBurn']:
+        if value != riot['costBurn']:
+            log.warning('cost is not matching riots: value %s as %s to riot %s burn %s', old_val, value, riot['cost'], riot['costBurn'])
+        
             export['cost'] = riot['cost']
             export['costBurn'] = riot['costBurn']
-            warn_count += 1
-            log.warning('cost is not matching riots: value %s riot %s burn %s', value, riot['cost'], riot['costBurn'])
         else:
-            # use riot cost and costBurn
-            export['cost'] = riot['cost']
-            export['costBurn'] = riot['costBurn']
+            li = value.split('/')
+            if len(li) == 1:
+                export['cost'] = list(map(cast, [li[0]] * maxrank))
+            else:
+                export['cost'] = list(map(cast, li))
+            export['costBurn'] = value
+
+    # if isinstance(value, str) and 'ap' not in str(value):
+    #     export['cost'] = riot['cost']
+    #     export['costBurn'] = riot['costBurn']
+    #     warn_count += 1
+    #     log.warning('cost %s + riot %s burn %s', skill.get('cost', None), riot['cost'],  riot['costBurn'])
+
+    # elif isinstance(value, int) and str(value) not in riot['costBurn']:
+    #     export['cost'] = riot['cost']
+    #     export['costBurn'] = riot['costBurn']
+    #     warn_count += 1
+    #     log.warning('cost is not matching riots: value %s riot %s burn %s', value, riot['cost'], riot['costBurn'])
+    #     print('For spell %s - %s Cost mismatched: wiki = %s ---- riot: %s  burn: %s' % (champ['name'], skill['name'], value, riot['cost'], riot['costBurn']))
+    #     input_num = input(": ") or "riot"
+    #     print(input_num)
+        
+    # else:
+    #     # use riot cost and costBurn
+    #     export['cost'] = riot['cost']
+    #     export['costBurn'] = riot['costBurn']
+
     #if 'costtype' in skill:
     value = skill.get('costtype', 'No cost')
     if value == 'energy':
@@ -396,10 +447,13 @@ for filename in glob.glob("*.pass1.json"):
         log.info("Processing: %s", filename)
         champ = json.load(file)
         export = {
+            "api_version": champ['api_version'],
+            "patch": champ["wikia_champ"].get("patch", ""),
+            "changes": champ["wikia_champ"].get("changes", ""),
             "id": champ["id"],
             "key": champ["key"],
             "name": champ["name"],
-            "fullname":  champ["wikia_champ"].get("fullname", ""),
+            "fullname":  champ["wikia_champ"].get("fullname", champ["name"]),
             "title": champ["title"],
             "image": champ["image"],  # maybe change?
             "tags": champ["tags"],
@@ -407,8 +461,6 @@ for filename in glob.glob("*.pass1.json"):
             # "resource": champ["wikia_champ"].get("resource", "Mana"),
             "herotype": champ["wikia_champ"].get("herotype", ""),  # fix Zoe
             "alttype": champ["wikia_champ"].get("alttype", ""),
-            "patch": champ["wikia_champ"].get("patch", ""),
-            "changes": champ["wikia_champ"].get("changes", ""),
             "be_cost": champ["wikia_champ"].get("be", 0),
             "rp_cost": champ["wikia_champ"].get("rp", 0),
             "adaptivetype": champ["wikia_champ"].get("adaptivetype", "magic"),
@@ -433,7 +485,7 @@ for filename in glob.glob("*.pass1.json"):
         export['complex_skills'] = spells
 
     with open(filename.replace(".pass1", ""), "w") as file:
-        file.write(json.dumps(export))
+        file.write(json.dumps(export, indent=4, sort_keys=False))
 
 log.info('Complete!')
 log.info('Champion with erorrs %s: total errors %s', failed_champ_count, fail_count)
