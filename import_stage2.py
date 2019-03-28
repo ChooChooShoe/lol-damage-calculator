@@ -154,6 +154,12 @@ def cast(s):
             else:
                 return s
 
+def make_changes(changes):
+    nums = changes.replace('V', '').replace('b', '.2').split('.')
+    if len(nums) == 2:
+        return nums[0] + '.' + nums[1] + '.1'
+    else:
+        return nums[0] + '.' + nums[1] + '.' + nums[2]
 
 def testing_spell(champ, skill):
     global failed_champ_count
@@ -441,6 +447,7 @@ def take_spell(champ, spells):
 
 
 os.chdir("./export")
+all_champs = {}
 for filename in glob.glob("*.pass1.json"):
     export = {}
     with open(filename, "r") as file:
@@ -449,7 +456,7 @@ for filename in glob.glob("*.pass1.json"):
         export = {
             "api_version": champ['api_version'],
             "patch": champ["wikia_champ"].get("patch", ""),
-            "changes": champ["wikia_champ"].get("changes", ""),
+            "changes": make_changes(champ["wikia_champ"].get("changes", "V0.0")),
             "id": champ["id"],
             "key": champ["key"],
             "name": champ["name"],
@@ -484,9 +491,18 @@ for filename in glob.glob("*.pass1.json"):
         take_spell(champ, spells)
         export['complex_skills'] = spells
 
+    all_champs[export["id"]] = {
+            "id": export["id"],
+            "key": export["key"],
+            "name": export["name"],
+            "changes": export["changes"],
+    }
     with open(filename.replace(".pass1", ""), "w") as file:
         file.write(json.dumps(export, indent=4, sort_keys=False))
 
+
+with open('ChampionList.json', "w") as file:
+    file.write(json.dumps(all_champs, indent=4, sort_keys=False))
 log.info('Complete!')
 log.info('Champion with erorrs %s: total errors %s', failed_champ_count, fail_count)
 log.info('Warnings: %s', warn_count)
