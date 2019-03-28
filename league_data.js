@@ -1,9 +1,10 @@
 import { el, list, mount, text } from 'https://redom.js.org/redom.es.min.js';
 import { downloadStaticItems } from './league_items.js';
 import { recalc, spell_data, main_div , asNumber} from './calc.js';
+import { vue } from './ui.js'
 
 export const cdn = 'https://ddragon.leagueoflegends.com/cdn';
-export let locale = 'en_US';
+export const locale = 'en_US';
 export let version = '0.0.0';
 
 export const list_of_colors = ['health', 'hp', 'attack damage', 'ad', 'physical damage', 'ability power', 'ap', 'magic damage', 'true damage', 'attack speed', 'armor', 'lethality', 'magic resist', 'mr', 'mana', 'mana regen', 'energy', 'critical strike chance', 'critical chance', 'critical strike damage', 'critical damage', 'movement speed', 'ms', 'xp', 'gold', 'siphoning strike', 'buzzword', 'buzzword2', 'buzzword3'];
@@ -13,6 +14,8 @@ const player_champion_select = document.getElementById('player_champion_select')
 const target_champion_select = document.getElementById('target_champion_select');
 
 export function downloadVersion() {
+    setPatchVersion('9.6.1');
+    return;
     const url = 'https://ddragon.leagueoflegends.com/api/versions.json';
     console.log(`Fetching: ${url}`)
     fetch(url)
@@ -56,28 +59,26 @@ export function downloadVersion() {
 
 export function setPatchVersion(newVersion) {
     console.log(`Data is now sourced from patch ${newVersion} (was ${version})`);
-    if (version != newVersion) {
         version = newVersion;
         downloadingStaticDataFiles(version);
         downloadStaticItems(version);
     }
-}
 
 window.addEventListener('load', downloadVersion);
 
-export let league_static_data = {
+export const league_static_data = {
     isReady: false,
     champion_data: null,
     champion_data_full: {},
 };
 
 
-export function downloadingChampionFiles(version, champion) {
+export function downloadingChampionFiles(champion) {
+    if(!champion)
+        return;
     if (league_static_data.champion_data_full[champion]) {
-        const children = [...document.getElementsByClassName(`owner-${champion}`)];
-        children.forEach(s => {
-            s.classList.remove('hidden');
-        });
+        for (let s of document.getElementsByClassName(`owner-${champion}`))
+          s.classList.remove('hidden');
         return;
     }
     // const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
@@ -86,9 +87,6 @@ export function downloadingChampionFiles(version, champion) {
     console.log(`Fetching: ${url}`)
     fetch(url)
         .then(function (response) {
-            // while (target_champion_select.firstChild) {
-            //     target_champion_select.removeChild(target_champion_select.firstChild);
-            // }
             if (response.ok) {
                 return response.json();
             }
@@ -105,6 +103,7 @@ export function downloadingChampionFiles(version, champion) {
             for(const skill in dao.complex_skills){
                 addNewSpellFormWithSpellDao(skill, dao.complex_skills[skill], champion,`${cdn}/${version}/img/sprite/`)
             }
+            recalc();
 
             league_static_data.champion_data_full[champion] = {
                 passiveImage: imgStyle,
@@ -138,9 +137,8 @@ function addNewSpellFormWithSpellDao(key, spell, champion, spriteUrl) {
     cloned.form.spell = spell;
     cloned.form.spellDao = spell.riot;
     spell_data.push(cloned.form);
-    mount(main_div, cloned)
+    mount(vue.$el, cloned);
     cloned.update(spell);
-    recalc();
 }
 
 
@@ -216,6 +214,15 @@ export class Field {
 
     }
 }
+Vue.component('spell-effect', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })
+
 export class SpellEffect {
     constructor(id, champion, spell, key, spriteUrl) {
         this.spell = spell;
@@ -571,7 +578,8 @@ function matchInner(form, spellrankindex, retvalues) {
                 let stat = slices[0].replace(' ','-');
                 let statName = slices[0];
                 let name = slices.slice(1).join('|') || stat;
-                return `<span><i title=${statName} class="icon i-${stat}"></i>${name}</span>`;
+                // return `<span><i title=${statName} class="icon i-${stat}"></i>${name}</span>`;
+                return `<span>${name}</span>`;
             }
 
             // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
@@ -579,7 +587,8 @@ function matchInner(form, spellrankindex, retvalues) {
                 const slices = capture.slice(4).split('|');
                 let effect = slices[0];
                 let name = slices.slice(1).join('|') || effect;
-                return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
+                // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
+                return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
             }
 
             // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
@@ -598,7 +607,19 @@ function matchInner(form, spellrankindex, retvalues) {
             // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
             // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
             if (capture.startsWith('pp|')) {
-                return `<span class="red">progression</span>`
+                var inner = capture.substring(3);
+                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)/g, (match, start, end) => {
+                    start = parseFloat(eval(start))
+                    end = parseFloat(eval(end))
+                    const diff = (end - start) / 4
+                    return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
+                    
+                });
+                inner = inner.replace(/[| ]/g, '/');
+
+                if(!retvalues.base_damage)
+                    retvalues.base_damage = inner.split('/');
+                return `<span>${inner}</span>`;
             }
             // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
             if (capture.startsWith('ap|')) {
@@ -684,47 +705,47 @@ function matchInner(form, spellrankindex, retvalues) {
                 return '°';
 
             //for riot data
-            if (capture === 'cost') {
-                var exact = form.spellDao['cost'][spellrankindex].toString();
-                return form.spellDao['costBurn'].replace(exact, `<span class="spelleffect active" >${exact}</span>`);
-            } else if (capture === 'abilityresourcename')
-                return form.abilityresourcename;
-            else if (capture[0] === 'e') {
-                var burn = form.spellDao['effectBurn'][effext_index];
-                var exact = form.spellDao['effect'][effext_index][spellrankindex];
-                // if (effext_index == 1) {
-                //     form.base_damage.value = exact;
-                // }
-                return burn.replace(exact.toString(), `<span class="spelleffect active" data-base="${exact}">${exact}</span>`);
-            } else if (capture[0] === 'a' || capture[0] === 'f') {
-                for (let e of form.spellDao['vars']) {
-                    if (e.key === capture) {
-                        switch (e.link) {
-                            case "spelldamage":
-                                return `<span class="ap" data-ratio="ap_ratio ${e.coeff}">${e.coeff} AP</span>`;
-                            case "attackdamage":
-                                return `<span class="ad" data-ratio="total_ad_ratio ${e.coeff}">${e.coeff} AD</span>`;
-                            case "bonusattackdamage":
-                                return `<span class="ad" data-ratio="bonus_ad_ratio ${e.coeff}">${e.coeff} Bonus AD</span>`;
-                            case "health":
-                                return `<span class="hp" data-ratio="max_health_ratio ${e.coeff}">${e.coeff} Health</span>`;
-                            case "bonushealth":
-                                return `<span class="hp" data-ratio="bonushealth_ratio ${e.coeff}">${e.coeff} Bonus Health</span>`;
-                            case "bonusarmor":
-                                return `<span class="armor" data-ratio="bonusarmor_ratio ${e.coeff}">${e.coeff} Bonus Armor</span>`;
-                            case "armor":
-                                return `<span class="armor" data-ratio="armor_ratio ${e.coeff}">${e.coeff} Armor</span>`;
-                            case "bonusspellblock":
-                                return `<span class="mr" data-ratio="bonusspellblock_ratio ${e.coeff}">${e.coeff} Bonus MR</span>`;
-                            case "spellblock":
-                                return `<span class="mr" data-ratio="spellblock_ratio ${e.coeff}">${e.coeff} MR</span>`;
-                            default:
-                                console.log(`Unknown vars.link value = ${e.link}`);
-                                return `<span class="spelleffect" data-ratio="special ${e.coeff}" data-ratio-special="${e.link}">${e.coeff} ?</span>`;
-                        }
-                    }
-                }
-            }
+            // if (capture === 'cost') {
+            //     var exact = form.spellDao['cost'][spellrankindex].toString();
+            //     return form.spellDao['costBurn'].replace(exact, `<span class="spelleffect active" >${exact}</span>`);
+            // } else if (capture === 'abilityresourcename')
+            //     return form.abilityresourcename;
+            // else if (capture[0] === 'e') {
+            //     var burn = form.spellDao['effectBurn'][effext_index];
+            //     var exact = form.spellDao['effect'][effext_index][spellrankindex];
+            //     // if (effext_index == 1) {
+            //     //     form.base_damage.value = exact;
+            //     // }
+            //     return burn.replace(exact.toString(), `<span class="spelleffect active" data-base="${exact}">${exact}</span>`);
+            // } else if (capture[0] === 'a' || capture[0] === 'f') {
+            //     for (let e of form.spellDao['vars']) {
+            //         if (e.key === capture) {
+            //             switch (e.link) {
+            //                 case "spelldamage":
+            //                     return `<span class="ap" data-ratio="ap_ratio ${e.coeff}">${e.coeff} AP</span>`;
+            //                 case "attackdamage":
+            //                     return `<span class="ad" data-ratio="total_ad_ratio ${e.coeff}">${e.coeff} AD</span>`;
+            //                 case "bonusattackdamage":
+            //                     return `<span class="ad" data-ratio="bonus_ad_ratio ${e.coeff}">${e.coeff} Bonus AD</span>`;
+            //                 case "health":
+            //                     return `<span class="hp" data-ratio="max_health_ratio ${e.coeff}">${e.coeff} Health</span>`;
+            //                 case "bonushealth":
+            //                     return `<span class="hp" data-ratio="bonushealth_ratio ${e.coeff}">${e.coeff} Bonus Health</span>`;
+            //                 case "bonusarmor":
+            //                     return `<span class="armor" data-ratio="bonusarmor_ratio ${e.coeff}">${e.coeff} Bonus Armor</span>`;
+            //                 case "armor":
+            //                     return `<span class="armor" data-ratio="armor_ratio ${e.coeff}">${e.coeff} Armor</span>`;
+            //                 case "bonusspellblock":
+            //                     return `<span class="mr" data-ratio="bonusspellblock_ratio ${e.coeff}">${e.coeff} Bonus MR</span>`;
+            //                 case "spellblock":
+            //                     return `<span class="mr" data-ratio="spellblock_ratio ${e.coeff}">${e.coeff} MR</span>`;
+            //                 default:
+            //                     console.log(`Unknown vars.link value = ${e.link}`);
+            //                     return `<span class="spelleffect" data-ratio="special ${e.coeff}" data-ratio-special="${e.link}">${e.coeff} ?</span>`;
+            //             }
+            //         }
+            //     }
+            // }
         } catch (e) {
             console.log('Spell effect error:');
             console.log(e);
@@ -753,7 +774,23 @@ function addNewPasiveForm(champion, champname, imageStyle, name, description) {
 }
 
 function downloadingStaticDataFiles(version) {
-
+    const url = `${cdn}/${version}/data/en_US/champion.json`;
+    // const url = `./export/ChampionList.json`;
+    console.log(`Fetching: ${url}`)
+    fetch(url)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(function (json) {
+            Object.values(json.data).sort((a, b) => {return a.name < b.name ? -1: 1}).forEach(onChampionData);
+            league_static_data.champion_data = json.data;
+            league_static_data.isReady = true;
+            onReady();
+        });
+    return;
     //From https://ddragon.leagueoflegends.com/realms/na.json
     const locale = 'en_US';
     const baseUrl = `${cdn}/${version}/data/${locale}`;
@@ -818,9 +855,5 @@ function downloadingStaticDataFiles(version) {
 }
 
 function onChampionData(data) {
-    var el = document.createElement('option');
-    el.setAttribute('value', data.id);
-    el.appendChild(document.createTextNode(data.name));
-    player_champion_select.appendChild(el.cloneNode(true));
-    target_champion_select.appendChild(el);
+    Vue.set(vue.championList, data.id, data)
 }

@@ -1,9 +1,9 @@
 import { downloadingChampionFiles, league_static_data } from './league_data.js';
+import { vue } from './ui.js';
 
 export const main_div = document.getElementById("main");
 export const champion_data = document.forms.champion_data_form;
 export const target_data = document.forms.target_data_form;
-export const total_data = document.forms.total_data_form;
 
 
 export const spell_data_template = document.getElementById("spell_data_template");
@@ -150,7 +150,7 @@ function onInputForSpell(sender, form, idx, d) {
 export function recalc() {
     console.group('Re-calc');
     console.log('Caused by:', this);
-    var total_pre_damage = 0,
+    let total_pre_damage = 0,
         total_pre_magic_damage = 0,
         total_pre_physical_damage = 0,
         total_pre_true_damage = 0,
@@ -158,10 +158,9 @@ export function recalc() {
         total_magic_damage = 0,
         total_physical_damage = 0,
         total_true_damage = 0;
-    var target_overkill = 0;
 
     var data = get_data();
-    localStorage.setItem("last_used_data", JSON.stringify(data));
+    // localStorage.setItem("last_used_data", JSON.stringify(data));
 
     for (var i = 0; i < spell_data.length; i++) {
         if (spell_data[i].parentElement.classList.contains('hidden'))
@@ -194,39 +193,36 @@ export function recalc() {
         });
 
     }
-    total_data.total_pre_damage.value = rnd3(total_pre_damage)
-    total_data.total_pre_magic_damage.value = rnd3(total_pre_magic_damage)
-    total_data.total_pre_physical_damage.value = rnd3(total_pre_physical_damage)
-    total_data.total_damage.value = rnd3(total_damage)
-    total_data.total_magic_damage.value = rnd3(total_magic_damage)
-    total_data.total_physical_damage.value = rnd3(total_physical_damage)
+    vue.output.preTotalDmg = total_pre_damage;
+    vue.output.preMagicDmg = total_pre_magic_damage;
+    vue.output.prePhysicalDmg = total_pre_physical_damage;
 
-    var hp_diff = total_damage - data.health;
-    if (hp_diff > 0) {
-        total_data.target_status.value = "Dead";
-        total_data.target_overkill.value = hp_diff + " damage overkill";
-        total_data.target_hp_left.value = "0";
-        total_data.target_percent_hp_left.value = "0%";
-    } else if (hp_diff < 0) {
-        total_data.target_status.value = "Alive";
-        total_data.target_overkill.value = "N/A";
-        total_data.target_hp_left.value = -hp_diff;
-        total_data.target_percent_hp_left.value = rnd3p(-hp_diff / data.health);
+    vue.output.totalDmg = total_damage;
+    vue.output.magicDmg = total_magic_damage;
+    vue.output.physicalDmg = total_physical_damage;
+    vue.output.trueDmg = total_magic_damage;
+
+    var hp_diff = data.health - total_damage;
+    if (hp_diff < 0) {
+        vue.output.status = "Dead";
+        vue.output.overkill = -hp_diff + " damage overkill";
+        vue.output.hpRemaining = "0";
+        vue.output.hpRemainingPercent = "0%";
+    } else if (hp_diff > 1) {
+        vue.output.status = "Alive";
+        vue.output.overkill = "N/A";
+        vue.output.hpRemaining = hp_diff;
+        vue.output.hpRemainingPercent = hp_diff / data.health;
     } else {
-        total_data.target_status.value = "Dead (Exact Leathal)";
-        total_data.target_overkill.value = "N/A";
-        total_data.target_hp_left.value = "0";
-        total_data.target_percent_hp_left.value = "0%";
-
+        vue.output.status = "Dead (Maybe)";
+        vue.output.overkill = "N/A";
+        vue.output.hpRemaining = hp_diff;
+        vue.output.hpRemainingPercent = "0%";
     }
     console.groupEnd();
 }
 
 function get_data() {
-    // calc_lethality(true);
-    // calc_armor(0);
-    // calc_mr(0);
-    calc_ad(2);
     var percent_magic_pen;
     if (champion_data.has_void_staff.checked) {
         percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
@@ -270,102 +266,6 @@ function get_data() {
     };
 }
 
-window.calc_lethality = (direction) => {
-    console.log("calc_lethality");
-
-    var lethality = asNumber(champion_data.lethality);
-    var champion_level = asNumber(champion_data.champion_level);
-    var armor_pen = asNumber(champion_data.armor_pen);
-
-    if (direction) {
-        champion_data.armor_pen.value = rnd3(lethality * (0.6 + (0.4 * champion_level / 18.0)));
-    } else {
-        champion_data.lethality.value = rnd3(armor_pen / (0.6 + (0.4 * champion_level / 18.0)));
-    }
-}
-
-window.calc_ad = (direction) => {
-    var base_ad = asNumber(champion_data.base_ad);
-    var total_ad = asNumber(champion_data.total_ad);
-    var bonus_ad = asNumber(champion_data.bonus_ad);
-
-    if (direction === 0) { //change to total_ad
-        bonus_ad = total_ad - base_ad;
-    } else if (direction === 2) { //change to bonus_ad
-        total_ad = base_ad + bonus_ad;
-    }
-    champion_data.total_ad.value = rnd3(total_ad)
-    champion_data.bonus_ad.value = rnd3(bonus_ad)
-}
-
-window.calc_armor = (direction) => {
-    var target_hp = asNumber(target_data.target_hp);
-
-    var target_armor = asNumber(target_data.target_armor);
-    var target_eff_physical_hp = asNumber(target_data.target_eff_physical_hp);
-
-    if (direction === 0) {
-        if (target_armor < 0) {
-            // Damage is amplified.
-            target_data.target_physical_reduction.value = "-" + rnd3p(1 - (100.0 / (100.0 - target_armor)));
-            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
-
-        } else {
-            //Normal damage reduction.
-            target_data.target_physical_reduction.value = rnd3p(1 - (100.0 / (100.0 + target_armor)));
-            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
-
-        }
-    } else if (direction === 1) {
-        var damage_multiplier = 1 - asPercent(target_data.target_physical_reduction);
-        if (damage_multiplier <= 0.0) {
-            // not the best way to do +inf.
-            target_data.target_armor.value = 100000000;
-        } else {
-            target_data.target_armor.value = rnd3((100 / damage_multiplier) - 100);
-
-            target_armor = asNumber(target_data.target_armor);
-            target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
-        }
-    } else if (direction === 2) {
-
-        // target_data.target_eff_physical_hp.value = rnd3((1 + (target_armor / 100.0)) * target_hp);
-    }
-}
-
-window.calc_mr = (direction) => {
-    var target_hp = asNumber(target_data.target_hp);
-
-    var target_mr = asNumber(target_data.target_mr);
-    var target_eff_magic_hp = asNumber(target_data.target_eff_magic_hp);
-
-    if (direction === 0) {
-        if (target_mr < 0) {
-            // Damage is amplified.
-            target_data.target_magic_reduction.value = "-" + rnd3p(1 - (100.0 / (100.0 - target_mr)));
-            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
-
-        } else {
-            //Normal damage reduction.
-            target_data.target_magic_reduction.value = rnd3p(1 - (100.0 / (100.0 + target_mr)));
-            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
-
-        }
-    } else if (direction === 1) {
-        var damage_multiplier = 1 - asPercent(target_data.target_magic_reduction);
-        if (damage_multiplier <= 0.0) {
-            // not the best way to do +inf.
-            target_data.target_mr.value = 100000000;
-        } else {
-            target_data.target_mr.value = rnd3((100 / damage_multiplier) - 100);
-
-            target_mr = asNumber(target_data.target_mr);
-            target_data.target_eff_magic_hp.value = rnd3((1 + (target_mr / 100.0)) * target_hp);
-        }
-    } else if (direction === 2) {
-
-    }
-}
 
 /// Functions for buttons
 window.collapseExtras = function(self) {
@@ -467,37 +367,6 @@ window.remSpellEffect = function(self) {
 // var last_chamption = null;
 
 window.setChampion = (form, champion) => {
-    if (!champion || !form)
-        return;
-    const known_stats_data = ["hp", "hpperlevel", "mp", "mpperlevel", "movespeed", "armor", "armorperlevel", "spellblock", "spellblockperlevel", "attackrange", "hpregen", "hpregenperlevel", "mpregen", "mpregenperlevel", "crit", "critperlevel", "attackdamage", "attackdamageperlevel", "attackspeedperlevel", "attackspeed"];
-    const known_data = ["partype", "name", "title"];
-
-    if (form.id === 'champion_data_form') {
-        localStorage.setItem("last_used_player_champ", champion);
-        if (form.data_last_chamption) {
-            const children = [...document.getElementsByClassName(`owner-${form.data_last_chamption}`)];
-            children.forEach(s => {
-                s.classList.add('hidden');
-            });
-        }
-        form.data_last_chamption = champion;
-    } else {
-        localStorage.setItem("last_used_target_champ", champion);
-    }
-    console.log(`Setting champion to ${champion}`);
-    if (league_static_data.isReady) {
-        const data = league_static_data.champion_data[champion];
-
-        known_stats_data.forEach(key => {
-            form.elements[`dao_stats_${key}`].value = data.stats[key];
-        });
-        known_data.forEach(key => {
-            form.elements[`dao_${key}`].value = data[key];
-        });
-        if (form.id === 'champion_data_form')
-            downloadingChampionFiles(data.version, champion);
-        setBaseStats(form);
-    }
 }
 
 function getStat(form, stat) {
@@ -515,6 +384,7 @@ function calcStat(form, champion_level, base, growth) {
     return getStat(form, base) + getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
 }
 window.setBaseStats = (form) => {
+    return;
     // These values from stats are not used.
     // form.dao_name;
     // form.dao_title;
@@ -568,14 +438,14 @@ window.setBaseStats = (form) => {
 /// Main Code.
 window.onReady = function() {
 
-    let playerChamp = localStorage.getItem('last_used_player_champ');
-    let tagetChamp = localStorage.getItem('last_used_target_champ');
+    // let playerChamp = localStorage.getItem('last_used_player_champ');
+    // let tagetChamp = localStorage.getItem('last_used_target_champ');
 
-    var select = document.getElementById('player_champion_select');
-    select.value = playerChamp;
-    setChampion(select.form, select.value)
-    select = document.getElementById('target_champion_select');
-    select.value = tagetChamp;
-    setChampion(select.form, select.value);
+    // var select = document.getElementById('player_champion_select');
+    // select.value = playerChamp;
+    // setChampion(select.form, select.value)
+    // select = document.getElementById('target_champion_select');
+    // select.value = tagetChamp;
+    // setChampion(select.form, select.value);
 
 }
