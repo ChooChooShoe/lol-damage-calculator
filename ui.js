@@ -39,7 +39,7 @@ function default_stats() {
 
 function default_user(name) {
   return {
-    champ: window.localStorage.getItem('last_used_champ_' + name) || '',
+    champ: '',
     level: 18,
     partype: 'Mana',
     name: name,
@@ -75,9 +75,21 @@ function calcStat(lvl, base, growth) {
   return base + growth * (lvl - 1) * (0.7025 + 0.0175 * (lvl - 1));
 }
 
+// Define a new component called button-counter
+Vue.component('numeral-input', {
+  data: function () {
+    return {
+      value: 69
+    }
+  },
+  template: `<div><input type="text" v-model:number="value" class="extra input short percent" />
+              <div class="numeral-inc inc">+</div><div class="numeral-inc dec">−</div></div>`
+})
+
 export const vue = new Vue({
   el: '#main',
   data: {
+    currentSpells: [],
     championList: {
       'None': {
         name: '  -- None --  ',
@@ -240,7 +252,8 @@ export const vue = new Vue({
     },
   },
   methods: {
-    setBaseStats: function (val) {}
+    setBaseStats: function (val) {},
+    numeral: window.numeral
   }
 })
 

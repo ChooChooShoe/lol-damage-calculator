@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- production version, optimized for size and speed -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script type="module" src="league_data.js"></script>
     <script type="module" src="league_items.js"></script>
     <script type="module" src="ui.js"></script>
@@ -28,8 +29,56 @@
 </head>
 
 <body>
-    <div id="header container">
-        <h1>League of Legends Damage Calcuator: v1.3 - With Data from Wiki</h1>
+    <div class="header">
+        <h1>League of Legends Damage Calcuator: v1.3<h1>
+        <h5>With Data from <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">League of Legends Wiki</a> - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> - View <a href="https://github.com/ChooChooShoe/choochooshoe.github.io">source on GitHub</a></h1>
+    </div>
+    <div id="main">    
+    <div class="data_holder sidebar" id="total_data">
+        <h2 class="title_input">Damage Totals & Outputs</h2>
+        <form autocomplete="off" id="total_data_form">
+            <div class="flex fill">
+                <label for="total_pre_damage">Premitigation Damage</label>
+                <input v-model:number="output.preTotalDmg" type="text" id="total_pre_damage" name="total_pre_damage"
+                    class="input" readonly />
+                <label for="total_pre_magic_damage">Premitigation <span class="magic-damage">Magic
+                        Damage</span></label>
+                <input v-model:number="output.preMagicDmg" type="text" id="total_pre_magic_damage"
+                    name="total_pre_magic_damage" class="input" readonly />
+                <label for="total_pre_physical_damage">Premitigation <span class="physical-damage">Physical
+                        Damage</span>
+                </label>
+                <input v-model:number="output.prePhysicalDmg" type="text" id="total_pre_physical_damage"
+                    name="total_pre_physical_damage" class="input" readonly />
+
+                <label for="total_damage">Total Damage</label>
+                <input v-model:number="output.totalDmg" type="text" id="total_damage" name="total_damage"
+                    class="input" readonly />
+                <label for="total_magic_damage">Total <span class="magic-damage">Magic Damage</span></label>
+                <input v-model:number="output.magicDmg" type="text" id="total_magic_damage"
+                    name="total_magic_damage" class="input" readonly />
+                <label for="total_physical_damage">Total <span class="physical-damage">Physical
+                        Damage</span></label>
+                <input v-model:number="output.physicalDmg" type="text" id="total_physical_damage"
+                    name="total_physical_damage" class="input" readonly />
+                <label for="total_true_damage">Total <span class="true-damage">True Damage</span></label>
+                <input v-model:number="output.trueDmg" type="text" id="total_true_damage" name="total_true_damage"
+                    class="input" readonly />
+
+                <label for="target_status">Target Status</label>
+                <input v-model="output.status" type="text" id="target_status" name="target_status" class="input"
+                    readonly />
+                <label for="target_overkill">Overkill Damage</label>
+                <input v-model="output.overkill" type="text" id="target_overkill" name="target_overkill"
+                    class="input" readonly />
+                <label for="target_hp_left">Health Remaining</label>
+                <input v-model="output.hpRemaining" type="text" id="target_hp_left" name="target_hp_left"
+                    class="input" readonly />
+                <label for="target_percent_hp_left">% Health Remaining</label>
+                <input v-model="output.hpRemainingPercent" type="text" id="target_percent_hp_left"
+                    name="target_percent_hp_left" class="input" readonly />
+            </div>
+        </form>
         <nav id="nav" class="flex navbar">
             <a class="inline" onclick="addNewSpellForm('magic')">
                 Add Magic Damage Spell
@@ -54,9 +103,8 @@
             </div>
         </nav>
     </div>
-    <div id="main" class="flex">
-
-        <div class="data_holder block" id="champion_data">
+    <div class="flex main">
+        <div class="data_holder block small" id="champion_data">
             <h2 class="title_input">Player's Champion Data</h2>
 
             <form autocomplete="off" id="champion_data_form">
@@ -123,9 +171,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex fill">
+                <div class="flex">
                     <label for="ap" class="ap">Total Ability Power (AP)</label>
-                    <input type="number" min="0" id="ap" name="ap" placeholder="0" class="input" v-model:number="player.ap" />
+                    <input type="number" min="0" id="ap" name="ap" placeholder="0" class="input"
+                        v-model:number="player.ap" />
                     <label for="total_ad" class="ad">Total Attack Damage (AD)</label>
                     <input type="number" min="0" id="total_ad" name="total_ad" placeholder="0" class="input"
                         v-model:number="player.total_ad" />
@@ -167,7 +216,7 @@
                         v-model:number="player.spellvamp" />
                     <label for="lethality" class="lethality">Lethality</label>
                     <input type="number" min="0" id="lethality" name="lethality" placeholder="0" class="input"
-                        v-model:number="player.lethality"  />
+                        v-model:number="player.lethality" />
                     <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
                     <input type="number" min="0" id="armor_pen" name="armor_pen" placeholder="0" class="input short"
                         v-model:number="player.flat_armorpen" />
@@ -175,7 +224,7 @@
                     <input type="text" id="percent_armor_pen" name="percent_armor_pen" placeholder="0%" class="input"
                         v-model:number="player.precent_armorpen" />
                     <div>
-                        <div class="item-section">
+                        <div class="item-section hidden">
                             <div class="item-grid-container">
                                 <div class="item-inventory-0">
                                     <img class="full-image"
@@ -236,7 +285,7 @@
             </form>
         </div>
 
-        <div class="data_holder block" id="target_data">
+        <div class="data_holder block small" id="target_data">
             <h2 class="title_input">Target's Data</h2>
             <form autocomplete="off" id="target_data_form">
                 <label for="target_champion_select" class="">Load Champion Data For</label>
@@ -303,30 +352,33 @@
                     </div>
                 </div>
 
-                <div class="flex fill">
+                <div class="flex">
                     <label for="target_hp" class="health">Health (HP)</label>
                     <input type="number" min="0" id="target_hp" name="target_hp" placeholder="0" value="2000"
                         class="input" v-model:number="target.base_hp" />
 
                     <label for="target_armor" class="armor">Armor</label>
                     <input type="number" max="100000000" id="target_armor" name="target_armor" placeholder="0"
-                        v-model:number="target.base_armor" class="input" />
+                        v-bind:value="target.base_armor"
+                        v-on:input="target.base_armor = numeral($event.target.value).value()" class="input" />
+                    <!-- <numeral-input></numeral-input> -->
 
                     <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
                     <input type="number" step="0.01" id="target_physical_reduction" name="target_physical_reduction"
-                        v-model:number="percent_pysical_reduction" placeholder="0.00" class="extra input short percent" />
+                        v-model:number="percent_pysical_reduction" placeholder="0.00"
+                        class="extra input short percent" />
 
                     <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
                     <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp"
                         v-model:number="eff_physical_hp" placeholder="0" value="2000" class="extra input short" />
                     <label for="target_mr" class="mr">Magic Resistance (MR)</label>
+
                     <input type="number" max="100000000" id="target_mr" name="target_mr" placeholder="0"
-                        v-model:number="target.base_mr" class="input" />
+                        v-model="target.base_mr" class="input" />
 
                     <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
                     <input type="number" step="0.01" id="target_magic_reduction" name="target_magic_reduction"
-                        placeholder="0.00" v-model:number="percent_magic_reduction" class="extra input short percent"
-                        />
+                        placeholder="0.00" v-model:number="percent_magic_reduction" class="extra input short percent" />
 
                     <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
                     <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp" placeholder="0"
@@ -337,7 +389,7 @@
                         v-model:number="target.base_hpregen" class="extra input" />
 
                     <div>
-                        <div class="item-section">
+                        <div class="item-section hidden">
                             <div class="item-grid-container">
                                 <div class="item-inventory-6">
                                     <img class="full-image"
@@ -394,55 +446,20 @@
                 </div>
             </form>
         </div>
-        <div class="data_holder block" id="total_data">
-            <h2 class="title_input">Damage Totals & Outputs</h2>
-            <form autocomplete="off" id="total_data_form">
-                <div class="flex fill">
-                    <label for="total_pre_damage">Premitigation Damage</label>
-                    <input v-model:number="output.preTotalDmg" type="text" id="total_pre_damage" name="total_pre_damage"
-                        class="input" readonly />
-                    <label for="total_pre_magic_damage">Premitigation <span class="magic-damage">Magic
-                            Damage</span></label>
-                    <input v-model:number="output.preMagicDmg" type="text" id="total_pre_magic_damage"
-                        name="total_pre_magic_damage" class="input" readonly />
-                    <label for="total_pre_physical_damage">Premitigation <span class="physical-damage">Physical
-                            Damage</span>
-                    </label>
-                    <input v-model:number="output.prePhysicalDmg" type="text" id="total_pre_physical_damage"
-                        name="total_pre_physical_damage" class="input" readonly />
 
-                    <label for="total_damage">Total Damage</label>
-                    <input v-model:number="output.totalDmg" type="text" id="total_damage" name="total_damage" class="input"
-                        readonly />
-                    <label for="total_magic_damage">Total <span class="magic-damage">Magic Damage</span></label>
-                    <input v-model:number="output.magicDmg" type="text" id="total_magic_damage" name="total_magic_damage"
-                        class="input" readonly />
-                    <label for="total_physical_damage">Total <span class="physical-damage">Physical
-                            Damage</span></label>
-                    <input v-model:number="output.physicalDmg" type="text" id="total_physical_damage"
-                        name="total_physical_damage" class="input" readonly />
-                    <label for="total_true_damage">Total <span class="true-damage">True Damage</span></label>
-                    <input v-model:number="output.trueDmg" type="text" id="total_true_damage" name="total_true_damage"
-                        class="input" readonly />
+        <champion-spells 
+            v-for="spellObj in currentSpells" 
+            v-bind:key="spellObj.key"
+            v-bind:id="spellObj.key"
+            v-bind:spellkey="spellObj.key.toUpperCase().replace('I','Passive ')" 
+            v-bind:spell="spellObj.spell"
+            v-bind:champion="spellObj.champion" 
+            v-bind:spriteurl="spellObj.sprite + spellObj.spell.image.sprite">
+        </champion-spells>
 
-                    <label for="target_status">Target Status</label>
-                    <input v-model="output.status" type="text" id="target_status" name="target_status" class="input"
-                        readonly />
-                    <label for="target_overkill">Overkill Damage</label>
-                    <input v-model="output.overkill" type="text" id="target_overkill" name="target_overkill"
-                        class="input" readonly />
-                    <label for="target_hp_left">Health Remaining</label>
-                    <input v-model="output.hpRemaining" type="text" id="target_hp_left" name="target_hp_left"
-                        class="input" readonly />
-                    <label for="target_percent_hp_left">% Health Remaining</label>
-                    <input v-model="output.hpRemainingPercent" type="text" id="target_percent_hp_left"
-                        name="target_percent_hp_left" class="input" readonly />
-                </div>
-            </form>
-        </div>
     </div>
     <div id="templates" class="hidden">
-        <div class="container fill spell-effect" id="spell_data_effect_template">
+        <div class="container spell-effect" id="spell_data_effect_template">
             <form autocomplete="off" id="spell_data_effect_template_form" class="flex flex-row flex-wrap flex-top">
 
                 <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"></output>
@@ -531,7 +548,7 @@
             <p class="passive-description">Inner Text goes here</p>
 
         </div>
-
+    </div>
         <div class="data_holder block" id="spell_dao_template">
             <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
                 <span class="title_input"><span class="spell-key">Champion</span>:</span>
@@ -541,7 +558,7 @@
                     <output name="tooltip"></output>
                 </p>
 
-                <div class="table fill">
+                <div class="table">
                     <div>
                         <label for="spellrank">Spell Rank</label>
                         <fieldset class="spellrank input" oninput="onSpellRankInput(this.form);">

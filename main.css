@@ -19,15 +19,20 @@
 .red {
 	color: #e83d32 !important;
 }
+.header {
+	margin-left: -8px;
+	margin-right: -8px;
+	padding-left: 8px;
+	border-bottom: #45a049 solid 2px;
+}
 
 .navbar {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-    background-color: rgb(12, 22, 23);
-    display: flex;
-	border-bottom: #45a049 solid 2px;
+  background-color: rgb(12, 22, 23);
+  display: flex;
 }
 
 /* Style the navigation bar links */
@@ -91,11 +96,47 @@
 
 /* for void staff switch */
 .data_holder {
-	width: 35em;
+	/* width: 35em; */
 	/* max-width: 50em; */
 	margin: 3.5px auto;
 	border: 1px solid #1e8ad6;
+	background-color: #121a1b;
 	padding: 5px;
+}
+
+.data_holder.small {
+	width: 36em;
+}
+.sidebar {
+  margin: 0;
+	padding: 4px;
+	left: 70%;
+	width: 30%;
+	max-height: 10%;
+	z-index: 700;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+	overflow: auto;
+	float: right;
+}
+.main {
+	width: 70%;
+}
+
+@media (min-width: 880px) and (max-width: 1375px) {
+	.sidebar .fill > * {
+			width: 100%;
+	}
+}
+@media (max-width: 880px) {
+	.sidebar {
+		position: inherit;
+		width: 100%;
+	}
+	.main {
+		width: 100%;
+	}
 }
 
 
@@ -228,4 +269,44 @@
 .chamption-name {
 	font-weight: bold;
 	color: plum;
+}
+
+.numeral-inc {
+	background-color: #d4dbdd;
+	border: 0.1rem solid #606c76;
+	border-radius: 1rem;
+	color: #000000;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 3rem;
+	font-weight: 700;
+	height: 3rem;
+	width: 3rem;
+	letter-spacing: 0rem;
+	line-height: 3rem;
+	text-align: center;       
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+
+.numeral-inc:focus,
+.numeral-inc:hover {
+	background-color: #606c76;
+	border-color: #606c76;
+}
+
+.spell-notes  {
+
+}
+.spell-notes .collapsible-content {
+	border: #1e8ad6 solid 1px;
+	-moz-transition: max-height .5s;
+	-ms-transition: max-height .5s;
+	-o-transition: max-height .5s;
+	-webkit-transition: max-height .5s;
+	transition: max-height .5s;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/* max-height: 400px; */
 }
