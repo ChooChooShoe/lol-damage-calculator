@@ -62,6 +62,7 @@ export function setPatchVersion(newVersion) {
     downloadingStaticDataFiles(version);
     // downloadStaticItems(version);
     vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
+    vue.target.champ = window.localStorage.getItem('last_used_champ_target') || '';
 }
 
 window.addEventListener('load', downloadVersion);
@@ -227,8 +228,30 @@ export class Field {
     }
 }
 
+const fieldvals =  [
+    ['dmg_premitigation', 'Pre-Mitigation Damage', '', false],
+    ['dmg_onhit', 'After Resistances', '', false],
+    ['base_damage', 'Base Damage', '.base', false],
+    ['ap_ratio', 'AP Ratio', '.ap', false],
+    ['total_ad_ratio', 'AD Ratio', '.ad', false],
+    ['bonus_ad_ratio', 'Bonus AD Ratio', '.ad', false]
+];
+
+Vue.component('spell-field', {
+  //id, label_text, classColor, removeable=true, editable=true, fullsize=false
+  props: ['fieldtype', 'value'],
+  data: function() {return {
+    fieldvals: fieldvals,
+  }},
+  template: `<div class="flex flex-row">
+  <span class="block">{{ fieldvals[fieldtype][1] }}</span>
+  <input class="input block" :class="fieldvals[fieldtype][3]" :name="fieldvals[fieldtype][0]" v-model="value" enabled="true">
+  <a class="inline"></a>
+  </div>`
+});
+
 Vue.component('spell-tooltip', {
-    props: ['spell', 'spellrankindex'],
+  props: ['spell', 'spellrankindex'],
   template: `<div v-html="calchtml()"></div>`,
   methods:{
     calchtml: function () {
@@ -242,77 +265,95 @@ Vue.component('spell-tooltip', {
 
 Vue.component('spell-effects', {
   props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex'],
-  template: `<div v-html="calchtml()"></div>`,
-  methods:{
-    calchtml: function() {
-    // for(let effectindex = 0; effectindex < this.spell.leveling.length; effectindex ++) {
+  data: function() {
+    return {
+        damagetype: 'not_detected',
+        base_damage:0,
+        ap_ratio: 0,
+        total_ad_ratio: 0,
+        bonus_ad_ratio: 0,
+        dmg_premitigation: 0,
+        dmg_onhit: 0,
+    }
+  },
+  template: `<div class="container float-clear spell-effect" :id="id">
+  <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
+      <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"> Effect {{ effectindex + 1}}</output>
+      <input name="remove_effect" class="inline float-right" type="button" value="Remove" onclick="remSpellEffect(this)">
+      <output id="effect_value" class="column"></output>
+      <div class="field inline">
+          <label :for="id + '-damagetype'">Damage Type</label>
+          <select :id="id + '-damagetype'" v-model="damagetype" class="input" oninput="styleSelect(this)">
+              <option value="no_damage" class="mixed">No Damage</option>
+              <option value="not_detected" class="mixed">Unknown Damage</option>
+              <option value="physical" class="ad">Physical Damage</option>
+              <option value="magic" class="ap">Magic Damage</option>
+              <option value="true" class="true">True Damage</option>
+              <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
+          </select>
+          <spell-field :fieldtype="2" :value="base_damage"></spell-field>
+          <spell-field :fieldtype="3" :value="ap_ratio"></spell-field>
+          <spell-field :fieldtype="4" :value="total_ad_ratio"></spell-field>
+          <spell-field :fieldtype="5" :value="bonus_ad_ratio"></spell-field>
+      </div>
+      <div style="width: 100%;height: 1.4em;"></div>
+      <spell-field :fieldtype="0" :value="dmg_premitigation"></spell-field>
+      <spell-field :fieldtype="1" :value="dmg_onhit"></spell-field>
+  </form>
+</div>`,
+  mounted: function () {
+    //TODO test if this works
+    tippy(`#${this.$el.id} [data-tippy-content]`,{
+        animation: 'fade',
+        duration: 50,
+        delay: [0, 0],
+        followCursor: true,
+    });
 
     const leveling = matchReplaceSpellEffects(this.effect, null, this.spellrankindex);
-    var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
-    cloned.id = this.id;
+    var cloned = this.$el;
 
     var inner_form = cloned.getElementsByTagName("form")[0];
-    inner_form.id = cloned.id + `_form`
+
     // inner_form.effect_name.value = `Effect ${(this.effectindex + 10).toString(36).toUpperCase()}: `;
-    inner_form.removeChild(inner_form.effect_name);
+    // inner_form.removeChild(inner_form.effect_name);
     // inner_form.removeChild(inner_form.remove_effect);
     inner_form.effect_value.innerHTML = leveling.str;
 
-
-    mount(inner_form, new Field('dmg_premitigation', 'Pre-Mitigation Damage', '', false, false));
-    mount(inner_form, new Field('dmg_onhit', 'After Resistances', '', false, false));
-    // mount(add_to_node, cloned)
-    // add_to_node.appendChild(cloned);
-
-    const before = cloned.querySelector('.insert-before');
     if (leveling.vars.base_damage) {
-        mount(inner_form, new Field('base_damage', 'Base Damage', '.base', false), before);
-        inner_form.base_damage.value = leveling.vars.base_damage[this.spellrankindex];
+        this.base_damage = leveling.vars.base_damage[this.spellrankindex]
     }
     if (leveling.vars.ratio_ap_1) {
-        mount(inner_form, new Field('ap_ratio', 'AP Ratio', '.ap', false), before);
-        inner_form.ap_ratio.value = leveling.vars.ratio_ap_1;
+        this.ap_ratio = leveling.vars.ratio_ap_1;
     }
-    // if (leveling.vars.ratio_ap_1) {
-    //     inner_form.ap_ratio.value = leveling.vars.ratio_ap_2;
+    // if (leveling.vars.ratio_ap_2) {
+    //     this.ap_ratio = leveling.vars.ratio_ap_2;
     // }
     if (leveling.vars.ratio_ad_1) {
-        mount(inner_form, new Field('total_ad_ratio', 'AD Ratio', '.ad', false), before);
-        inner_form.total_ad_ratio.value = leveling.vars.ratio_ad_1;
+        this.total_ad_ratio = leveling.vars.ratio_ad_1;
     }
     if (leveling.vars.ratio_ad_2) {
-        mount(inner_form, new Field('bonus_ad_ratio', 'Bonus AD Ratio', '.ad', false), before);
-        inner_form.bonus_ad_ratio.value = leveling.vars.ratio_ad_2;
+        this.bonus_ad_ratio = leveling.vars.ratio_ad_2;
     }
 
-    // mount(inner_form, new Field('max_health_ratio', '% Max Health Ratio', '.health'));
-
     if (this.spell.damagetype.includes("agic")) {
-        inner_form.damage_type.selectedIndex = 3;
+        this.damagetype = "magic";
     } else if (this.spell.damagetype.includes("hysical")) {
-        inner_form.damage_type.selectedIndex = 2;
+        this.damagetype = "physical";
     }  else if (this.spell.damagetype.includes("rue")) {
-        inner_form.damage_type.selectedIndex = 4;
+        this.damagetype = "true";
+    } else if (this.spell.damagetype.includes("no")) {
+        this.damagetype = "no_damage";
     } else {
-        inner_form.damage_type.selectedIndex = 1;
+        this.damagetype = "not_detected";
     }
 
     var inputs = cloned.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", recalc);
+        // inputs[i].addEventListener("input", recalc);
         inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
-    
-    // tippy(`#${this.el.id} [data-tippy-content]`,{
-    //     animation: 'fade',
-    //     duration: 50,
-    //     delay: [0, 0],
-    //     followCursor: true,
-    // });
-    // }
-    return cloned.innerHTML;
   }
-}
 });
 
 Vue.component('spell-span', {
@@ -327,7 +368,7 @@ Vue.component('spell-span', {
     }
   });
 
-  Vue.component('spell-notes', {
+Vue.component('spell-notes', {
     props: ['spell', 'id'],
     data: function() {return {isopen: false}},
     template: `<div class="spell-notes float-clear">
@@ -347,11 +388,18 @@ Vue.component('spell-span', {
             return this.isopen ? 'max-height: '+ ((this.spell.notes.length * 35) + 30 )+'px;' : 'max-height: 0px;'
           }
     }
-  });
+});
 
 Vue.component('champion-spells', {
     props: ['id', 'spellkey', 'spell', 'champion', 'spriteurl'],
     data: function() {return {spellrankindex: 0} },
+    mounted: function () {
+        spell_data.push(this);
+      },
+      destroyed: function() {
+          //TODO not this for vue destroyed event.
+        spell_data.length = 0;
+      },
     template: `<div class="data_holder column">
         <img class="spell-image"
             :style="{ float: 'right', background: 'url('+spriteurl + ') -' + spell.image.x + 'px -' + spell.image.y + 'px'}"
@@ -389,8 +437,10 @@ Vue.component('champion-spells', {
             :spellrankindex="spellrankindex">
         </spell-effects>
         
-        <spell-notes :spell="spell" :id="id"></spell-notes>
+        <input class="right" name="add_effect" type="button" value="Add Effect +"></input>
         
+        <spell-notes :spell="spell" :id="id"></spell-notes>
+
         </form>
     </div>
     `,
@@ -805,6 +855,7 @@ function matchInner(form, spellrankindex, retvalues) {
             console.log(e);
         }
         console.log(`Unknown spell effect '${match}'`);
+        capture = capture.replace(/\|/g, ' ')
         return `<span class='tooltip capture-unknown'>${capture}<span class='tooltip-float'>Unknown value for '${capture}'</span></span>`;
     };
 }

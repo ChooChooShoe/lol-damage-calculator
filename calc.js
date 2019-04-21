@@ -147,7 +147,13 @@ function onInputForSpell(sender, form, idx, d) {
     };
 }
 
+var is_recalcing = false;
 export function recalc() {
+    if (is_recalcing) {
+        console.log('Re-calc called in a Re-calc call. Skipping this Re-calc.');
+        return;
+    }
+    is_recalcing = true;
     console.group('Re-calc');
     console.log('Caused by:', this);
     let total_pre_damage = 0,
@@ -163,13 +169,17 @@ export function recalc() {
     // localStorage.setItem("last_used_data", JSON.stringify(data));
 
     for (var i = 0; i < spell_data.length; i++) {
-        if (spell_data[i].parentElement.classList.contains('hidden'))
-            continue;
 
-        const inner_forms = spell_data[i].getElementsByTagName('form');
+        const inner_forms = spell_data[i].$el.getElementsByTagName('form');
         Array.prototype.slice.call(inner_forms).forEach(inner_form => {
 
-            var ret = onInputForSpell(this, inner_form, i, data);
+            var ret;
+            try {
+                ret = onInputForSpell(this, inner_form, i, data);
+            }
+             catch {
+                return;
+             }
 
             if (ret.damage_type === "physical") {
                 total_pre_damage += ret.pre_damage;
@@ -200,7 +210,7 @@ export function recalc() {
     vue.output.totalDmg = total_damage;
     vue.output.magicDmg = total_magic_damage;
     vue.output.physicalDmg = total_physical_damage;
-    vue.output.trueDmg = total_magic_damage;
+    vue.output.trueDmg = total_true_damage;
 
     var hp_diff = data.health - total_damage;
     if (hp_diff < 0) {
@@ -217,9 +227,10 @@ export function recalc() {
         vue.output.status = "Dead (Maybe)";
         vue.output.overkill = "N/A";
         vue.output.hpRemaining = hp_diff;
-        vue.output.hpRemainingPercent = "0%";
+        vue.output.hpRemainingPercent = hp_diff / data.health;
     }
     console.groupEnd();
+    is_recalcing = false;
 }
 
 function get_data() {

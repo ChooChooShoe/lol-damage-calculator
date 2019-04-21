@@ -169,7 +169,7 @@ export const vue = new Vue({
       downloadingChampionFiles(champ);
     },
     'target.champ': function (champ, old) {
-      window.localStorage.setItem('last_used_champ_player', champ);
+      window.localStorage.setItem('last_used_champ_target', champ);
     },
   },
   computed: {
