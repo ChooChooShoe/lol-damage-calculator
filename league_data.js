@@ -343,7 +343,10 @@ mounted: function(){
 watch: {
     'spell': function() {
         this.calcspell();
-    }
+    },
+    'spellrankindex': function() {
+        this.calcspell();
+    },
 },
 methods: {
     calcspell: function () {
@@ -638,7 +641,8 @@ function define_keyword(word) {
 
 function matchReplaceSpellEffects(string, form, spellrankindex) {
     let retvalues = {}
-    string = string.replace('<!--\n-->', '<br/>');
+    string = string.replace(/<!--\n-->/g, '<br/>');
+    string = string.replace(/\n/g, '<br/>');
     for(let i = 0; i < 15; i++) {
         if (string.includes('{{') )
             string = string.replace(/{{([^{}]*)}}/g, matchInner(form, spellrankindex, retvalues));
@@ -703,6 +707,10 @@ function matchInner(form, spellrankindex, retvalues) {
             // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
 
             // ii (or Item icon): {{ii|<Item>|<Custom name>}}
+            if (capture.startsWith('ii|')){
+                const slices = capture.slice(3).split('|');
+                return  `<span class="title-tooltip blue" title="The iem '${slices[0]}'">${slices[0]}</span>`;
+            }
 
             // iis (or Item icon with possessive apostrophes): {{iis|<Item>}}
 
@@ -755,28 +763,18 @@ function matchInner(form, spellrankindex, retvalues) {
             // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
             // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
             // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-            if (capture.startsWith('pp|')) {
-                var inner = capture.substring(3);
-                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)/g, (match, start, end) => {
-                    start = parseFloat(eval(start))
-                    end = parseFloat(eval(end))
-                    const diff = (end - start) / 4
-                    return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
-                    
-                });
-                inner = inner.replace(/[| ]/g, '/');
-
-                if(!retvalues.base_damage)
-                    retvalues.base_damage = inner.split('/');
-                return `<span>${inner}</span>`;
-            }
+            
             // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-            if (capture.startsWith('ap|')) {
+            if (capture.startsWith('pp|') || capture.startsWith('ap|')) {
                 var inner = capture.substring(3);
-                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)/g, (match, start, end) => {
-                    start = parseFloat(eval(start))
-                    end = parseFloat(eval(end))
-                    const diff = (end - start) / 4
+                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
+                    start = parseFloat(eval(start));
+                    end = parseFloat(eval(end));
+                    if(Number(len) === 3) {
+                        const diff = (end - start) / 2;
+                        return `${start}/${start + diff}/${end}`;
+                    }
+                    const diff = (end - start) / 4;
                     return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
                     
                 });
@@ -824,6 +822,11 @@ function matchInner(form, spellrankindex, retvalues) {
 
             //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
 
+            if(capture.startsWith('g|')) {
+                const slices = capture.slice(2).split('|');
+                return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
+            }
+
             // format number
             if (capture.startsWith('fd|')){
                 return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
@@ -852,6 +855,8 @@ function matchInner(form, spellrankindex, retvalues) {
                 return '=';
             if (capture == 'degree')
                 return '°';
+
+            
 
             //for riot data
             // if (capture === 'cost') {
