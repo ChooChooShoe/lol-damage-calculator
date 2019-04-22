@@ -154,6 +154,33 @@ function addNewSpellFormWithSpellDao(key, spell, champion, spriteUrl) {
     cloned.update(spell);
 }
 
+Vue.component('data-input', {
+    //id, label_text, classColor, removeable=true, editable=true, fullsize=false
+    props: ['dname', 'value', 'ispercent'],
+    data: function() {return {
+      fieldvals: fieldvals,
+    }},
+    name: 'data-input',
+    computed: {
+        displayValue: function() {
+            return this.encode(this.value);
+      },
+    },
+    methods: {
+      encode(val) {
+          if(this.ispercent === true)
+              return +(Math.round(val + "e+12")  + "e-10");
+          return +(Math.round(val + "e+10")  + "e-10");
+      },
+      decode(val) {
+          if(this.ispercent === true)
+              return parseFloat(val) / 100 || 0;
+          return parseFloat(val) || 0;
+      },
+    },
+    template: `<input class="input numinput" type="number" step="1" title=""
+    :name="dname" :id="dname" :value="encode(value)" v-on:input="$emit('input', decode($event.target.value))">`
+  });
 
 export function addSpellEffect(form, damage_type="magic") {
     var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
@@ -242,27 +269,45 @@ Vue.component('spell-field', {
   props: ['fieldtype', 'value'],
   data: function() {return {
     fieldvals: fieldvals,
-    ispercent: false,
   }},
+  computed: {
+      displayValue: function() {
+          return this.encode(this.value);
+    },
+      ispercent: function() {
+        return this.fieldtype > 2;
+    },
+  },
   methods: {
     rnd: function(val) {
-        return Math.max(Math.min( +(Math.round(val + "e+2")  + "e-2"), 100000), -100000) || 0;
+        return +(Math.round(val + "e+6")  + "e-6");
     },
     rnd2: function(val) {
-        const x = Math.max(Math.min( +(Math.round(val + "e+2")  + "e-2"), 100000), -100000) || 0;
+        const x = +(Math.round(val + "e+6")  + "e-6");
         return x < 0 ? x : '+' + x;
-    }
+    },
+    encode(val) {
+        if(this.fieldtype > 2)
+            return +(Math.round(val + "e+12")  + "e-10");;
+        return val;
+    },
+    decode(val) {
+        if(this.fieldtype > 2)
+            return parseFloat(val) / 100 || 0;
+        return parseFloat(val);
+    },
   },
   template: `<div class="flex flex-row">
   <span>{{ fieldvals[fieldtype][1] }} 
-  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype > 2">{{ rnd2(value) + '%' }} {{fieldvals[fieldtype][3]}}
+  <span :class="fieldvals[fieldtype][2]" v-if="ispercent">{{ rnd2(displayValue) + '%' }} {{fieldvals[fieldtype][3]}}
   </span>
   <span :class="fieldvals[fieldtype][2]" v-if="fieldtype === 2">
-  {{ rnd(value) }} {{fieldvals[fieldtype][3]}}
+  {{ rnd(displayValue) }} {{fieldvals[fieldtype][3]}}
   </span>
   </span>
-  <input class="input block numinput" type="number" :step="fieldtype > 2 ? '1' : '1'" title="" :name="fieldvals[fieldtype][0]" :value="value" v-on:input="$emit('input', $event.target.valueAsNumber)" enabled="true">
-  <span class="inline">{{ fieldtype > 2 ? '%' : '' }}</span>
+  <input class="input block numinput" type="number" step="1" title=""
+   :name="fieldvals[fieldtype][0]" :value="encode(value)" v-on:input="$emit('input', decode($event.target.value))">
+  <span class="inline">{{ ispercent ? '%' : '' }}</span>
   </div>`
 });
 
@@ -403,16 +448,16 @@ methods: {
         this.base_damage = numeral(leveling.vars.base_damage[this.spellrankindex]).value()
     }
     if (leveling.vars.ratio_ap_1) {
-        this.ap_ratio = numeral(leveling.vars.ratio_ap_1).value();
+        this.ap_ratio = leveling.vars.ratio_ap_1;
     }
     // if (leveling.vars.ratio_ap_2) {
     //     this.ap_ratio = leveling.vars.ratio_ap_2;
     // }
     if (leveling.vars.ratio_ad_1) {
-        this.total_ad_ratio = numeral(leveling.vars.ratio_ad_1).value();
+        this.total_ad_ratio = leveling.vars.ratio_ad_1;
     }
     if (leveling.vars.ratio_ad_2) {
-        this.bonus_ad_ratio = numeral(leveling.vars.ratio_ad_2).value();
+        this.bonus_ad_ratio = leveling.vars.ratio_ad_2;
     }
 
     if (this.spell.damagetype.includes("agic")) {
@@ -827,20 +872,19 @@ function matchInner(form, spellrankindex, retvalues) {
                 }) || 'ad';
                 cssClass = cssClass.replace(' ', '-');
                 
-                console.log('as Ability scaling = calss=',cssClass);
                 if (inner.includes('AP')) {
                     if (!retvalues.ratio_ap_1 )
-                        retvalues.ratio_ap_1 = inner.replace(/\D/g, '');
+                        retvalues.ratio_ap_1 = numeral(inner.replace(/\(/g, '')).value();
                     if (!retvalues.ratio_ap_2)
-                        retvalues.ratio_ap_2 = inner.replace(/\D/g, '');
+                        retvalues.ratio_ap_2 = numeral(inner.replace(/\(/g, '')).value();
                 }
                 else if (inner.includes('AD')) {
                     if(inner.includes('bonus')) {
                         if (!retvalues.ratio_ad_2)
-                            retvalues.ratio_ad_2 = inner.replace(/\D/g, '');
+                            retvalues.ratio_ad_2 = numeral(inner.replace(/\(/g, '')).value();
                     }
                     else if (!retvalues.ratio_ad_1 )
-                        retvalues.ratio_ad_1 = inner.replace(/\D/g, '');
+                        retvalues.ratio_ad_1 = numeral(inner.replace(/\(/g, '')).value();
                 }
                 return `<span class="${cssClass}">${inner}</span>`;
             }

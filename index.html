@@ -37,46 +37,36 @@
     <div class="data_holder sidebar" id="total_data">
         <h2 class="title_input">Damage Totals & Outputs</h2>
         <form autocomplete="off" id="total_data_form">
-            <div class="flex fill">
-                <label for="total_pre_damage">Premitigation Damage</label>
-                <input v-model:number="output.preTotalDmg" type="text" id="total_pre_damage" name="total_pre_damage"
-                    class="input" readonly />
-                <label for="total_pre_magic_damage">Premitigation <span class="magic-damage">Magic
-                        Damage</span></label>
-                <input v-model:number="output.preMagicDmg" type="text" id="total_pre_magic_damage"
-                    name="total_pre_magic_damage" class="input" readonly />
-                <label for="total_pre_physical_damage">Premitigation <span class="physical-damage">Physical
-                        Damage</span>
-                </label>
-                <input v-model:number="output.prePhysicalDmg" type="text" id="total_pre_physical_damage"
-                    name="total_pre_physical_damage" class="input" readonly />
+            <div class="fill">
 
-                <label for="total_damage">Total Damage</label>
-                <input v-model:number="output.totalDmg" type="text" id="total_damage" name="total_damage"
-                    class="input" readonly />
-                <label for="total_magic_damage">Total <span class="magic-damage">Magic Damage</span></label>
-                <input v-model:number="output.magicDmg" type="text" id="total_magic_damage"
-                    name="total_magic_damage" class="input" readonly />
-                <label for="total_physical_damage">Total <span class="physical-damage">Physical
-                        Damage</span></label>
-                <input v-model:number="output.physicalDmg" type="text" id="total_physical_damage"
-                    name="total_physical_damage" class="input" readonly />
-                <label for="total_true_damage">Total <span class="true-damage">True Damage</span></label>
-                <input v-model:number="output.trueDmg" type="text" id="total_true_damage" name="total_true_damage"
-                    class="input" readonly />
+                <h4>Damage before Resistances</h4>
+                <div class="damage-dealt-chart">
+                    <div class="physical-bg" :title="percentf(output.preMagicDmg / output.preTotalDmg) + ' Physical'" :style="outputStyle[0]"></div>
+                    <div class="magic-bg" :title="percentf(output.prePhysicalDmg / output.preTotalDmg) +' Magic'" :style="outputStyle[1]"></div>
+                    <div class="true-bg" :title="percentf(output.trueDmg / output.preTotalDmg) +' True'" :style="outputStyle[2]"></div>
+                </div>
+                <p>{{ Math.round(output.preMagicDmg) }} <span class="magic-damage">Magic Damage</span> dealt. {{ percentf(output.preMagicDmg / output.preTotalDmg) }}</p>
+                <p>{{ Math.round(output.prePhysicalDmg) }} <span class="physical-damage">Physical Damage</span> dealt. {{ percentf(output.prePhysicalDmg / output.preTotalDmg) }}</p>
+                <p>{{ Math.round(output.trueDmg) }} <span class="true-damage">True Damage</span> dealt. {{ percentf(output.trueDmg / output.preTotalDmg) }}</p>
+                <p style="font-weight: bold;"><span>Total Damage</span> dealt: {{ Math.round(output.preTotalDmg) }} </p>
 
-                <label for="target_status">Target Status</label>
-                <input v-model="output.status" type="text" id="target_status" name="target_status" class="input"
-                    readonly />
-                <label for="target_overkill">Overkill Damage</label>
-                <input v-model="output.overkill" type="text" id="target_overkill" name="target_overkill"
-                    class="input" readonly />
-                <label for="target_hp_left">Health Remaining</label>
-                <input v-model="output.hpRemaining" type="text" id="target_hp_left" name="target_hp_left"
-                    class="input" readonly />
-                <label for="target_percent_hp_left">% Health Remaining</label>
-                <input v-model="output.hpRemainingPercent" type="text" id="target_percent_hp_left"
-                    name="target_percent_hp_left" class="input" readonly />
+                <hr>
+                <h4>Damage Dealt to Target</h4>
+                <div class="damage-dealt-chart">
+                    <div class="physical-bg" :title="percentf(output.magicDmg / output.totalDmg) + ' Physical'" :style="outputStyle[3]"></div>
+                    <div class="magic-bg" :title="percentf(output.physicalDmg / output.preTotalDmg) +' Magic'" :style="outputStyle[4]"></div>
+                    <div class="true-bg" :title="percentf(output.trueDmg / output.totalDmg) +' True'" :style="outputStyle[5]"></div>
+                </div>
+                <p>{{ Math.round(output.magicDmg) }} <span class="magic-damage">Magic Damage</span> dealt. {{ percentf(output.magicDmg / output.totalDmg) }}</p>
+                <p>{{ Math.round(output.physicalDmg) }} <span class="physical-damage">Physical Damage</span> dealt. {{ percentf(output.physicalDmg / output.totalDmg) }}</p>
+                <p>{{ Math.round(output.trueDmg) }} <span class="true-damage">True Damage</span> dealt. {{ percentf(output.trueDmg / output.totalDmg) }}</p>
+                <p style="font-weight: bold;"><span>Total Damage</span> dealt: {{ Math.round(output.totalDmg) }} </p>
+                <hr>
+                <h3>Target Status: {{ output.status }}</h3>
+                <p>Overkill Damage: {{ output.overkill }}</p>
+                <p>Health Remaining: <span class="health">{{ rnd(output.hpRemaining) }} HP</span></p>
+                <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
+                <hr>
             </div>
             <input type="button" name="force_recalc" onclick="recalc()" value="Force RE-Calc"/>
         </form>
@@ -173,57 +163,56 @@
                     </div>
                 </div>
                 <div class="flex">
-                    <label for="ap" class="ap">Total Ability Power (AP)</label>
-                    <input type="number" min="0" id="ap" name="ap" placeholder="0" class="input"
-                        v-model:number="player.ap" />
-                    <label for="total_ad" class="ad">Total Attack Damage (AD)</label>
-                    <input type="number" min="0" id="total_ad" name="total_ad" placeholder="0" class="input"
-                        v-model:number="player.total_ad" />
-                    <label for="base_ad" class="short ad">➤ Base AD</label>
-                    <input readonly type="number" min="0" id="base_ad" name="base_ad" placeholder="0"
-                        v-model:number="player.base_ad" class="input short" />
-                    <label for="bonus_ad" class="short ad">➤ Bonus AD</label>
-                    <input type="number" min="0" id="bonus_ad" name="bonus_ad" placeholder="0" class="input short"
-                        v-model:number="player.bonus_ad" />
-                    <label for="attack_speed" class="attack-speed">Attack Speed</label>
-                    <input type="text" id="attack_speed" name="attack_speed" placeholder="0.67" value="0.67"
-                        v-model:number="player.base_attackspeed" class="input" />
-                    <label for="crit_change" class="critical-chance">% Crit. Chance</label>
-                    <input type="text" id="crit_change" name="crit_change" placeholder="0%" class="input"
-                        v-model:number="player.base_critchange" />
-                    <label for="crit_damage" class="critical-damage">% Crit. Damage</label>
-                    <input type="text" id="crit_damage" name="crit_damage" placeholder="200%" value="200%"
-                        v-model:number="player.critdamage" class="input" />
-                    <label for="life_steal" class="">% Life Steal</label>
-                    <input type="text" id="life_steal" name="life_steal" placeholder="0%" class="input"
-                        v-model:number="player.lifesteal" />
-                    <div>
+                    <label for="ap" class="ap">Total Ability Power (AP) = {{ player.ap }}</label>
+                    <data-input :dname="'ap'" v-model="player.ap" ></data-input>
+
+                    <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ player.total_ad }}</label>
+                    <data-input :dname="'total_ad'" v-model="player.total_ad" ></data-input>
+
+                    <label for="base_ad" class="short ad">➤ Base AD = {{ player.base_ad }}</label>
+                    <data-input :dname="'base_ad'" v-model="player.base_ad" :readonly="true" ></data-input>
+                    <label for="bonus_ad" class="short ad">➤ Bonus AD = {{ player.bonus_ad }}</label>
+                    <data-input :dname="'bonus_ad'" v-model="player.bonus_ad" ></data-input>
+
+                    <label for="attack_speed" class="attack-speed">Attack Speed = {{ (player.base_attackspeed * 100).toFixed(2) }}%</label>
+                    <data-input :dname="'attack_speed'" v-model="player.base_attackspeed" :ispercent="true"></data-input>
+
+                    <label for="crit_change" class="critical-chance">{{ (player.base_critchance * 100).toFixed(0) }}% Crit. Chance</label>
+                    <data-input :dname="'crit_change'" v-model="player.base_critchance" :ispercent="true"></data-input>
+
+                    <label for="crit_damage" class="critical-damage">{{ (player.critdamage * 100).toFixed(0) }}% Crit. Damage</label>
+                    <data-input :dname="'crit_damage'" v-model="player.critdamage" :ispercent="true"></data-input>
+
+                    <label for="life_steal" class="">{{ (player.lifesteal * 100).toFixed(0) }}% Life Steal</label>
+                    <data-input :dname="'life_steal'" v-model="player.lifesteal" :ispercent="true"></data-input>
+
+                    <div style="width: 100%">
 
                         <label for="has_void_staff" class="ap">Has Void Staff?</label>
-                        <label>
+                        <label style="width: 100%">
                             <label class="switch">
                                 <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input"
                                     v-model="player.hasVoidStaff">
                                 <span class="slider"></span>
                             </label>
-                            <span id="percent_magic_pen_value">&nbsp;= 0% Magic Pen.</span>
+                            <span id="percent_magic_pen_value">{{ player.hasVoidStaff ? '&nbsp;= 40% Magic Pen.' : '&nbsp;= 0% Magic Pen.'}}</span>
                         </label>
                     </div>
-                    <label for="flat_magic_pen">Flat Magic Penetration</label>
-                    <input type="number" min="0" id="flat_magic_pen" name="flat_magic_pen" placeholder="0"
-                        v-model:number="player.flat_magicpen" class="input" />
-                    <label for="spell_vamp" class="">% Spell Vamp</label>
-                    <input type="text" id="spell_vamp" name="spell_vamp" placeholder="0%" class="input"
-                        v-model:number="player.spellvamp" />
-                    <label for="lethality" class="lethality">Lethality</label>
-                    <input type="number" min="0" id="lethality" name="lethality" placeholder="0" class="input"
-                        v-model:number="player.lethality" />
-                    <label for="armor_pen" class="short">➤ Effective Armor Pen.</label>
-                    <input type="number" min="0" id="armor_pen" name="armor_pen" placeholder="0" class="input short"
-                        v-model:number="player.flat_armorpen" />
-                    <label for="percent_armor_pen">% Total Armor Penetration</label>
-                    <input type="text" id="percent_armor_pen" name="percent_armor_pen" placeholder="0%" class="input"
-                        v-model:number="player.precent_armorpen" />
+
+                    <label for="flat_magic_pen">Flat Magic Penetration = {{ player.flat_magicpen }}</label>
+                    <data-input :dname="'flat_magic_pen'" v-model="player.flat_magicpen" ></data-input>
+
+                    <label for="spell_vamp" class="">{{ (player.spellvamp * 100).toFixed(0) }}% Spell Vamp</label>
+                    <data-input :dname="'spell_vamp'" v-model="player.spellvamp" :ispercent="true"></data-input>
+
+                    <label for="lethality" class="lethality">Lethality = {{ player.lethality }}</label>
+                    <data-input :dname="'lethality'" v-model="player.lethality" ></data-input>
+
+                    <label for="armor_pen" class="short">➤ Effective Flat Armor Pen. = {{ player.flat_armorpen }}</label>
+                    <data-input :dname="'armor_pen'" v-model="player.flat_armorpen" ></data-input>
+
+                    <label for="percent_armor_pen">{{ (player.precent_armorpen * 100).toFixed(0) }}% Total Armor Penetration</label>
+                    <data-input :dname="'percent_armor_pen'" v-model="player.precent_armorpen" :ispercent="true"></data-input>
                     <div>
                         <div class="item-section hidden">
                             <div class="item-grid-container">
@@ -277,7 +266,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="hidden">
                     <input name="reset" type="reset" value="Reset Above" disabled>
                     <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                     <input id="main_collapse" name="collapse" type="button" value="Collapse"
@@ -355,39 +344,31 @@
 
                 <div class="flex">
                     <label for="target_hp" class="health">Health (HP)</label>
-                    <input type="number" min="0" id="target_hp" name="target_hp" placeholder="0" value="2000"
-                        class="input" v-model:number="target.base_hp" />
+                    <data-input :dname="'target_hp'" v-model="target.base_hp"></data-input>
 
                     <label for="target_armor" class="armor">Armor</label>
-                    <input type="number" max="100000000" id="target_armor" name="target_armor" placeholder="0"
-                        v-bind:value="target.base_armor"
-                        v-on:input="target.base_armor = numeral($event.target.value).value()" class="input" />
-                    <!-- <numeral-input></numeral-input> -->
+                    <data-input :dname="'target_armor'" v-model="target.base_armor" ></data-input>
 
-                    <label for="target_physical_reduction" class="extra short">➤ % Physical Reduction</label>
-                    <input type="number" step="0.01" id="target_physical_reduction" name="target_physical_reduction"
-                        v-model:number="percent_pysical_reduction" placeholder="0.00"
-                        class="extra input short percent" />
+                    <span> &#8226; This will reduce <span class="physical-damage">Physical Damage</span> taken by <span class="ap">{{ Math.round(percent_pysical_reduction * 10000 ) / 100 }}%</span>.</span>
 
-                    <label for="target_eff_physical_hp" class="extra short">➤ Effective HP vs. Physical</label>
-                    <input type="number" min="0" id="target_eff_physical_hp" name="target_eff_physical_hp"
-                        v-model:number="eff_physical_hp" placeholder="0" value="2000" class="extra input short" />
+                    <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs. <span class="physical-damage">Physical Damage</span>.</span>
+                    <hr>
                     <label for="target_mr" class="mr">Magic Resistance (MR)</label>
+                    <data-input :dname="'target_mr'" v-model="target.base_mr"></data-input>
 
-                    <input type="number" max="100000000" id="target_mr" name="target_mr" placeholder="0"
-                        v-model="target.base_mr" class="input" />
 
-                    <label for="target_magic_reduction" class="extra short">➤ % Magic Reduction</label>
-                    <input type="number" step="0.01" id="target_magic_reduction" name="target_magic_reduction"
-                        placeholder="0.00" v-model:number="percent_magic_reduction" class="extra input short percent" />
+                    <span> &#8226; This will reduce <span class="magic-damage">Magic Damage</span> taken by <span class="ap">{{ Math.round(percent_magic_reduction * 10000 ) / 100 }}%</span>.</span>
 
-                    <label for="target_eff_magic_hp" class="extra short">➤ Effective HP vs. Magic</label>
-                    <input type="number" min="0" id="target_eff_magic_hp" name="target_eff_magic_hp" placeholder="0"
-                        v-model:number="eff_magic_hp" value="2000" class="extra input short" />
-
-                    <label for="target_hp5" class="extra">Health regeneration (hp5)</label>
-                    <input type="number" min="0" step="0.01" id="target_hp5" name="target_hp5" placeholder="0"
-                        v-model:number="target.base_hpregen" class="extra input" />
+                    <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs. <span class="magic-damage">Magic Damage</span>.</span>
+                    <hr>
+                    <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
+                    <data-input :dname="'target_hp5'" v-model="target.base_hpregen"></data-input>
+                    <span> &#8226; This is <span class="health">{{ (target.base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and <span class="health">{{ Math.round(target.base_hpregen * 12) }} HP</span> after 60 seconds.</span>
+                    <hr>
+                    <label for="target_hp5" class="extra">{{target_info.partype}} regeneration ({{target_info.partype}} per 5)</label>
+                    <data-input :dname="'target_hp5'" v-model="target.base_manaregen"></data-input>
+                    <span> &#8226; This is <span class="mana">{{ (target.base_manaregen / 5).toFixed(1) }} {{target_info.partype}}</span> after 1 second and <span class="mana">{{ Math.round(target.base_manaregen * 12) }} {{target_info.partype}}</span> after 60 seconds.</span>
+                    <hr>
 
                     <div>
                         <div class="item-section hidden">
@@ -439,7 +420,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="hidden">
                         <input name="reset" type="reset" value="Reset Above" disabled>
                         <input name="expand" class="hidden" type="button" value="Expand" onclick="expandExtras(this)">
                         <input name="collapse" type="button" value="Collapse" onclick="collapseExtras(this)">

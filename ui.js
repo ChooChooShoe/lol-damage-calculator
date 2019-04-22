@@ -119,6 +119,13 @@ export const vue = new Vue({
       bonus_ad = Math.max(bonus_ad, 0);
       this.player.total_ad = this.player.base_ad + bonus_ad
     },
+    'player.lethality': function (lethality, old) {
+      this.player.flat_armorpen = lethality * (0.6 + 0.4 * this.player.level / 18);
+    },
+    'player.flat_armorpen': function (bonus_ad, old) {
+      //pass
+    },
+
     target: {
       handler: function (newAP, oldAP) {},
       deep: true
@@ -141,6 +148,8 @@ export const vue = new Vue({
     },
     'player.level': function (level, _old) {
       update_user_stats(this.player_stats, this.player, level);
+      // update lethality to flat_armorpen
+      this.player.flat_armorpen = this.player.lethality * (0.6 + 0.4 * level / 18);
     },
     target_stats: function (stats, _old) {
       update_user_stats(stats, this.target, this.target.level);
@@ -186,7 +195,7 @@ export const vue = new Vue({
         if (this.target.base_mr < 0)
           return -1 + (100.0 / (100.0 - this.target.base_mr));
         else
-          return 1 - (100.0 / (100.0 + this.target.base_mr));
+          return 1.0 - (100.0 / (100.0 + this.target.base_mr));
       },
       set: function (val) {
         console.log('percent_magic_reduction =>', val);
@@ -235,6 +244,43 @@ export const vue = new Vue({
     },
     player_info: function () {
       return this.championList[this.player.champ] || {};
+    },
+    outputStyle: function() {
+      const t = this. output.preTotalDmg
+      const p1 = (this.output.preMagicDmg / t);
+      const p2 = (this.output.prePhysicalDmg / t);
+      const p3 = (this.output.trueDmg / t);
+
+      const t2 = this.output.totalDmg
+      const p4 = (this.output.magicDmg / t2);
+      const p5 = (this.output.physicalDmg /t2);
+      const p6 = (this.output.trueDmg / t2);
+      return [
+        {
+          left: '0%',
+          width: this.percentf(p1),
+        },
+        {
+          left: this.percentf(p1),
+          width: this.percentf(p2),
+        },
+        {
+          left: this.percentf(p1+p2),
+          width: this.percentf(p3),
+        },
+        {
+          left: '0%',
+          width: this.percentf(p4),
+        },
+        {
+          left: this.percentf(p4),
+          width: this.percentf(p5),
+        },
+        {
+          left: this.percentf(p4+p5),
+          width: this.percentf(p6),
+        }
+      ]
     },
     output: function () {
       const p = this.$root.player;
@@ -301,7 +347,13 @@ export const vue = new Vue({
   },
   methods: {
     setBaseStats: function (val) {},
-    numeral: window.numeral
+    numeral: window.numeral,
+    rnd: function(value) {
+      return Math.round(value)
+    },
+    percentf: function(value) {
+      return numeral(value).format('0.00%')
+    }
   }
 })
 
@@ -326,5 +378,5 @@ function update_user_stats(stats, user, lvl) {
   user.base_hpregen = calcStat(lvl, stats.hpregen, stats.hpregenperlevel);
   user.base_manaregen = calcStat(lvl, stats.mpregen, stats.mpregenperlevel);
   user.base_critchance = calcStat(lvl, stats.crit, stats.critperlevel);
-  user.base_attackspeed = stats.attackspeed + stats.attackspeed * stats.attackspeedperlevel * lvl;
+  user.base_attackspeed = calcStat(lvl, stats.attackspeed, stats.attackspeedperlevel);
 }
