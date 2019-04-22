@@ -99,21 +99,7 @@ export const vue = new Vue({
     message: 'Hello Vue!',
     player: default_user('player'),
     target: default_user('target'),
-    output: {
-      preTotalDmg: 0,
-      preMagicDmg: 0,
-      prePhysicalDmg: 0,
 
-      totalDmg: 0,
-      magicDmg: 0,
-      physicalDmg: 0,
-      trueDmg: 0,
-
-      status: 0,
-      overkill: 0,
-      hpRemaining: 0,
-      hpRemainingPercent: 0,
-    },
   },
   watch: {
     'player.ap': function (newAP, oldAP) {
@@ -189,7 +175,7 @@ export const vue = new Vue({
         if (this.target.base_armor < 0)
           return (1 + (this.target.base_armor / 100.0)) * this.target.base_hp;
         else
-          return (1 + (this.target.base_armor / 100.0)) *  this.target.base_hp;
+          return (1 + (this.target.base_armor / 100.0)) * this.target.base_hp;
       },
       set: function (val) {
         console.log('eff_physical_hp =>', val);
@@ -211,7 +197,7 @@ export const vue = new Vue({
         if (this.target.base_mr < 0)
           return (1 + (this.target.base_mr / 100.0)) * this.target.base_hp;
         else
-          return (1 + (this.target.base_mr / 100.0)) *  this.target.base_hp;
+          return (1 + (this.target.base_mr / 100.0)) * this.target.base_hp;
       },
       set: function (val) {
         console.log('eff_magic_hp =>', val);
@@ -250,6 +236,68 @@ export const vue = new Vue({
     player_info: function () {
       return this.championList[this.player.champ] || {};
     },
+    output: function () {
+      const p = this.$root.player;
+      const t = this.$root.target;
+      console.log('Re-calc 4.0 (output computed value)');
+      let output = {
+        preTotalDmg: 0,
+        preMagicDmg: 0,
+        prePhysicalDmg: 0,
+        totalDmg: 0,
+        magicDmg: 0,
+        physicalDmg: 0,
+        trueDmg : 0,
+      };
+
+      for (let child of this.$children) {
+        for (let spellEff of child.$children) {
+          if (spellEff.$options.name && spellEff.$options.name != 'spell-effects')
+            continue;
+          switch (spellEff.damagetype) {
+            case "physical":
+              output.preTotalDmg += spellEff.dmg_premitigation;
+              output.prePhysicalDmg += spellEff.dmg_premitigation;
+              output.totalDmg += spellEff.dmg_onhit;
+              output.physicalDmg += spellEff.dmg_onhit;
+              break;
+            case "magic":
+              output.preTotalDmg += spellEff.dmg_premitigation;
+              output.preMagicDmg += spellEff.dmg_premitigation;
+              output.totalDmg += spellEff.dmg_onhit;
+              output.magicDmg += spellEff.dmg_onhit;
+              break;
+            case "true":
+              output.preTotalDmg += spellEff.dmg_premitigation;
+
+              output.totalDmg += spellEff.dmg_onhit;
+              output.trueDmg += spellEff.dmg_onhit;
+              break;
+            default:
+              break;
+          }
+        }
+      }
+
+      const hp_diff = t.base_hp - output.totalDmg;
+      if (hp_diff < 0) {
+        output.status = "Dead";
+        output.overkill = -hp_diff + " damage overkill";
+        output.hpRemaining = "0";
+        output.hpRemainingPercent = "0%";
+      } else if (hp_diff > 1) {
+        output.status = "Alive";
+        output.overkill = "N/A";
+        output.hpRemaining = hp_diff;
+        output.hpRemainingPercent = hp_diff / t.base_hp;
+      } else {
+        output.status = "Dead (Maybe)";
+        output.overkill = "N/A";
+        output.hpRemaining = hp_diff;
+        output.hpRemainingPercent = hp_diff / t.base_hp;
+      }
+      return output;
+    }
   },
   methods: {
     setBaseStats: function (val) {},

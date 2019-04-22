@@ -100,10 +100,10 @@ function onInputForSpellEffect(parent, spellEffect, d) {
     var damage_type = spellEffect.damagetype;
 
     var base_damage = asNumber(spellEffect.base_damage);
-    var ap_ratio = asNumber(spellEffect.ap_ratio);
+    var ap_ratio = asPercent(spellEffect.ap_ratio);
 
-    var total_ad_ratio = asNumber(spellEffect.total_ad_ratio);
-    var bonus_ad_ratio = asNumber(spellEffect.bonus_ad_ratio);
+    var total_ad_ratio = asPercent(spellEffect.total_ad_ratio);
+    var bonus_ad_ratio = asPercent(spellEffect.bonus_ad_ratio);
 
     // var max_health_ratio = asNumber(spellEffect.max_health_ratio);
 
@@ -140,8 +140,10 @@ function onInputForSpellEffect(parent, spellEffect, d) {
             break;
     }
 
-    spellEffect.dmg_premitigation = damage;
-    spellEffect.dmg_onhit = dmg_onhit;
+    // now are done by calcuated values
+    // spellEffect.dmg_premitigation = damage;
+    // spellEffect.dmg_onhit = dmg_onhit;
+
     // spellEffect.dmg_dps.value = dmg_dps;
 
     return {
@@ -153,6 +155,8 @@ function onInputForSpellEffect(parent, spellEffect, d) {
 
 var is_recalcing = false;
 export function recalc() {
+    vue.$forceUpdate();
+    return;
     if (is_recalcing) {
         console.log('Re-calc called in a Re-calc call. Skipping this Re-calc.');
         return;
@@ -181,7 +185,12 @@ export function recalc() {
 
             var ret;
             try {
-                ret = onInputForSpellEffect(championSpells[i], v, data);
+                //ret = onInputForSpellEffect(championSpells[i], v, data);
+                ret = {
+                    damage_type: v.damagetype,
+                    pre_damage: v.dmg_premitigation,
+                    damage: v.dmg_onhit
+                }
             }
              catch(e) {
                  console.log(e);

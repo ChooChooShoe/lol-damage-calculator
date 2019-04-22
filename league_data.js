@@ -255,14 +255,14 @@ Vue.component('spell-field', {
   },
   template: `<div class="flex flex-row">
   <span>{{ fieldvals[fieldtype][1] }} 
-  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype > 2">{{ rnd2(value*100) + '%' }} {{fieldvals[fieldtype][3]}}
+  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype > 2">{{ rnd2(value) + '%' }} {{fieldvals[fieldtype][3]}}
   </span>
   <span :class="fieldvals[fieldtype][2]" v-if="fieldtype === 2">
   {{ rnd(value) }} {{fieldvals[fieldtype][3]}}
   </span>
   </span>
-  <input class="input block" type="number" :step="fieldtype > 2 ? '0.01' : '1'" :name="fieldvals[fieldtype][0]" :value="value" v-on:input="$emit('input', $event.target.valueAsNumber)" enabled="true">
-  <a class="inline"></a>
+  <input class="input block numinput" type="number" :step="fieldtype > 2 ? '1' : '1'" title="" :name="fieldvals[fieldtype][0]" :value="value" v-on:input="$emit('input', $event.target.valueAsNumber)" enabled="true">
+  <span class="inline">{{ fieldtype > 2 ? '%' : '' }}</span>
   </div>`
 });
 
@@ -289,8 +289,6 @@ Vue.component('spell-effects', {
         ap_ratio: 0,
         total_ad_ratio: 0,
         bonus_ad_ratio: 0,
-        dmg_premitigation: 0,
-        dmg_onhit: 0,
     }
   },
   computed: {
@@ -309,8 +307,14 @@ Vue.component('spell-effects', {
             default:
                 return '';
         }        
-    }
-  },
+    },
+    dmg_onhit: function() {
+        return this.calc_dmg_onhit();
+    },
+    dmg_premitigation: function() {
+        return this.calc_dmg_premitigation();
+    },
+},
   template: `<div class="container float-clear spell-effect" :id="id">
   <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
       <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"> Effect {{ effectindex + 1}}</output>
@@ -349,6 +353,33 @@ watch: {
     },
 },
 methods: {
+    calc_dmg_premitigation: function(player, _target){
+        const p = player || this.$root.player;
+        return (this.base_damage + (p.ap * this.ap_ratio) + (p.total_ad * this.total_ad_ratio) + (p.bonus_ad * this.bonus_ad_ratio));
+    },
+    calc_dmg_onhit: function(player, target){
+        const p = player || this.$root.player;
+        const t = target || this.$root.target;
+        switch (this.damagetype) {
+            case "physical":
+                const eff_armor = t.base_armor * (1.0 - p.precent_armorpen / 100) - p.flat_armorpen;
+                if (eff_armor > 0)
+                    return this.dmg_premitigation * (100 / (100 + eff_armor));
+                else
+                    return 2 - (100 / (100 - eff_armor));   
+            case "magic":
+                const percent_magicpen = p.percent_magicpen / 100 || p.hasVoidStaff ? 0.4: 0.0;
+                const eff_mr = t.base_mr * (1.0 - percent_magicpen) - p.flat_magicpen;
+                if (eff_mr > 0)
+                    return this.dmg_premitigation * (100 / (100 + eff_mr));
+                else
+                    return 2 - (100 / (100 - eff_mr));
+            case "true":
+                return this.dmg_premitigation;
+            default:
+                return 0;
+        }
+    },
     calcspell: function () {
     //TODO test if this works
     tippy(`#${this.$el.id} [data-tippy-content]`,{
@@ -799,17 +830,17 @@ function matchInner(form, spellrankindex, retvalues) {
                 console.log('as Ability scaling = calss=',cssClass);
                 if (inner.includes('AP')) {
                     if (!retvalues.ratio_ap_1 )
-                        retvalues.ratio_ap_1 = inner.replace(/\D/g, '') + "%";
+                        retvalues.ratio_ap_1 = inner.replace(/\D/g, '');
                     if (!retvalues.ratio_ap_2)
-                        retvalues.ratio_ap_2 = inner.replace(/\D/g, '') + "%";
+                        retvalues.ratio_ap_2 = inner.replace(/\D/g, '');
                 }
                 else if (inner.includes('AD')) {
                     if(inner.includes('bonus')) {
                         if (!retvalues.ratio_ad_2)
-                            retvalues.ratio_ad_2 = inner.replace(/\D/g, '') + "%";
+                            retvalues.ratio_ad_2 = inner.replace(/\D/g, '');
                     }
                     else if (!retvalues.ratio_ad_1 )
-                        retvalues.ratio_ad_1 = inner.replace(/\D/g, '') + "%";
+                        retvalues.ratio_ad_1 = inner.replace(/\D/g, '');
                 }
                 return `<span class="${cssClass}">${inner}</span>`;
             }
