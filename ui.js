@@ -164,8 +164,8 @@ export const vue = new Vue({
     },
     'player.champ': function (champ, old) {
       window.localStorage.setItem('last_used_champ_player', champ);
-      for (let s of document.getElementsByClassName(`owner-${old}`))
-        s.classList.add('hidden');
+      // for (let s of document.getElementsByClassName(`owner-${old}`))
+      //   s.classList.add('hidden');
       downloadingChampionFiles(champ);
     },
     'target.champ': function (champ, old) {

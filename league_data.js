@@ -333,11 +333,20 @@ Vue.component('spell-effects', {
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
 
-      <p>This effect will deal {{dmg_premitigation}} <span v-html="damagetype_user"></span> before resistances.
-      <br>This damage will cause the target to <span class="spelleffect">lose {{dmg_onhit}} health</span>.</p>
+      <p>This effect will deal {{Math.round(dmg_premitigation)}} <span v-html="damagetype_user"></span> before resistances.
+      <br>This damage will cause the target to <span class="spelleffect">lose {{Math.round(dmg_onhit)}} health</span>.</p>
   </form>
 </div>`,
-  mounted: function () {
+mounted: function(){
+    this.calcspell();
+},
+watch: {
+    'spell': function() {
+        this.calcspell();
+    }
+},
+methods: {
+    calcspell: function () {
     //TODO test if this works
     tippy(`#${this.$el.id} [data-tippy-content]`,{
         animation: 'fade',
@@ -389,7 +398,7 @@ Vue.component('spell-effects', {
         // inputs[i].addEventListener("input", recalc);
         inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
-  }
+  }}
 });
 
 Vue.component('spell-span', {

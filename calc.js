@@ -140,8 +140,8 @@ function onInputForSpellEffect(parent, spellEffect, d) {
             break;
     }
 
-    spellEffect.dmg_premitigation = rnd3(damage);
-    spellEffect.dmg_onhit = rnd3(dmg_onhit);
+    spellEffect.dmg_premitigation = damage;
+    spellEffect.dmg_onhit = dmg_onhit;
     // spellEffect.dmg_dps.value = dmg_dps;
 
     return {
