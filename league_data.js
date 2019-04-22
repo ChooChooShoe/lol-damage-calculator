@@ -229,12 +229,12 @@ export class Field {
 }
 
 const fieldvals =  [
-    ['dmg_premitigation', 'Pre-Mitigation Damage', '', false],
-    ['dmg_onhit', 'After Resistances', '', false],
-    ['base_damage', 'Base Damage', '.base', false],
-    ['ap_ratio', 'AP Ratio', '.ap', false],
-    ['total_ad_ratio', 'AD Ratio', '.ad', false],
-    ['bonus_ad_ratio', 'Bonus AD Ratio', '.ad', false]
+    ['dmg_premitigation', 'Pre-Mitigation Damage', '', ''],
+    ['dmg_onhit', 'After Resistances', '', ''],
+    ['base_damage', 'Base Damage', 'spelleffect', ''],
+    ['ap_ratio', '', 'ap', 'AP'],
+    ['total_ad_ratio', '', 'ad', 'AD'],
+    ['bonus_ad_ratio', '', 'ad', 'Bonus AD']
 ];
 
 Vue.component('spell-field', {
@@ -242,10 +242,26 @@ Vue.component('spell-field', {
   props: ['fieldtype', 'value'],
   data: function() {return {
     fieldvals: fieldvals,
+    ispercent: false,
   }},
+  methods: {
+    rnd: function(val) {
+        return Math.max(Math.min( +(Math.round(val + "e+2")  + "e-2"), 100000), -100000) || 0;
+    },
+    rnd2: function(val) {
+        const x = Math.max(Math.min( +(Math.round(val + "e+2")  + "e-2"), 100000), -100000) || 0;
+        return x < 0 ? x : '+' + x;
+    }
+  },
   template: `<div class="flex flex-row">
-  <span class="block">{{ fieldvals[fieldtype][1] }}</span>
-  <input class="input block" :class="fieldvals[fieldtype][3]" :name="fieldvals[fieldtype][0]" v-model="value" enabled="true">
+  <span>{{ fieldvals[fieldtype][1] }} 
+  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype > 2">{{ rnd2(value*100) + '%' }} {{fieldvals[fieldtype][3]}}
+  </span>
+  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype === 2">
+  {{ rnd(value) }} {{fieldvals[fieldtype][3]}}
+  </span>
+  </span>
+  <input class="input block" type="number" :step="fieldtype > 2 ? '0.01' : '1'" :name="fieldvals[fieldtype][0]" :value="value" v-on:input="$emit('input', $event.target.valueAsNumber)" enabled="true">
   <a class="inline"></a>
   </div>`
 });
@@ -265,15 +281,34 @@ Vue.component('spell-tooltip', {
 
 Vue.component('spell-effects', {
   props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex'],
+  name: 'spell-effects',
   data: function() {
     return {
         damagetype: 'not_detected',
-        base_damage:0,
+        base_damage: 0,
         ap_ratio: 0,
         total_ad_ratio: 0,
         bonus_ad_ratio: 0,
         dmg_premitigation: 0,
         dmg_onhit: 0,
+    }
+  },
+  computed: {
+    damagetype_user: function() {
+        switch (this.damagetype) {
+            case 'no_damage':
+                return '<span class="true">no damage</span>';
+            case 'not_detected':
+                return '<span class="mixed">unknown damage</span>';
+            case 'physical':
+                return '<span class="ad">physical damage</span>';
+            case 'magic':
+                return '<span class="ap">magic damage</span>';
+            case 'true':
+                return '<span class="true">true damage</span>';
+            default:
+                return '';
+        }        
     }
   },
   template: `<div class="container float-clear spell-effect" :id="id">
@@ -283,7 +318,7 @@ Vue.component('spell-effects', {
       <output id="effect_value" class="column"></output>
       <div class="field inline">
           <label :for="id + '-damagetype'">Damage Type</label>
-          <select :id="id + '-damagetype'" v-model="damagetype" class="input" oninput="styleSelect(this)">
+          <select :id="id + '-damagetype'" v-model="damagetype" name="damage_type" class="input" oninput="styleSelect(this)">
               <option value="no_damage" class="mixed">No Damage</option>
               <option value="not_detected" class="mixed">Unknown Damage</option>
               <option value="physical" class="ad">Physical Damage</option>
@@ -291,14 +326,15 @@ Vue.component('spell-effects', {
               <option value="true" class="true">True Damage</option>
               <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
           </select>
-          <spell-field :fieldtype="2" :value="base_damage"></spell-field>
-          <spell-field :fieldtype="3" :value="ap_ratio"></spell-field>
-          <spell-field :fieldtype="4" :value="total_ad_ratio"></spell-field>
-          <spell-field :fieldtype="5" :value="bonus_ad_ratio"></spell-field>
+          <spell-field :fieldtype="2" v-model="base_damage"></spell-field>
+          <spell-field :fieldtype="3" v-model="ap_ratio"></spell-field>
+          <spell-field :fieldtype="4" v-model="total_ad_ratio"></spell-field>
+          <spell-field :fieldtype="5" v-model="bonus_ad_ratio"></spell-field>
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
-      <spell-field :fieldtype="0" :value="dmg_premitigation"></spell-field>
-      <spell-field :fieldtype="1" :value="dmg_onhit"></spell-field>
+
+      <p>This effect will deal {{dmg_premitigation}} <span v-html="damagetype_user"></span> before resistances.
+      <br>This damage will cause the target to <span class="spelleffect">lose {{dmg_onhit}} health</span>.</p>
   </form>
 </div>`,
   mounted: function () {
@@ -321,19 +357,19 @@ Vue.component('spell-effects', {
     inner_form.effect_value.innerHTML = leveling.str;
 
     if (leveling.vars.base_damage) {
-        this.base_damage = leveling.vars.base_damage[this.spellrankindex]
+        this.base_damage = numeral(leveling.vars.base_damage[this.spellrankindex]).value()
     }
     if (leveling.vars.ratio_ap_1) {
-        this.ap_ratio = leveling.vars.ratio_ap_1;
+        this.ap_ratio = numeral(leveling.vars.ratio_ap_1).value();
     }
     // if (leveling.vars.ratio_ap_2) {
     //     this.ap_ratio = leveling.vars.ratio_ap_2;
     // }
     if (leveling.vars.ratio_ad_1) {
-        this.total_ad_ratio = leveling.vars.ratio_ad_1;
+        this.total_ad_ratio = numeral(leveling.vars.ratio_ad_1).value();
     }
     if (leveling.vars.ratio_ad_2) {
-        this.bonus_ad_ratio = leveling.vars.ratio_ad_2;
+        this.bonus_ad_ratio = numeral(leveling.vars.ratio_ad_2).value();
     }
 
     if (this.spell.damagetype.includes("agic")) {

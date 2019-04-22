@@ -22,13 +22,17 @@ export function toNum(value, defaultValue=0) {
     return x;
 }
 export function asNumber(field, usePlaceHolder = true) {
-    var x;
-    if (field.value === "" && usePlaceHolder)
+    if(field == null || field == undefined)
+        return 0;
+    let x = field;
+    if(field.value) {
+        if (field.value === "" && usePlaceHolder)
         x = parseFloat(field.placeholder);
     else{
         const sanatized = field.value.replace(/([^0-9/*\-+ .]+)/g,'');
         x = parseFloat(eval(sanatized));
     }
+    } 
     if (isNaN(x))
         return 0;
     return x;
@@ -46,8 +50,8 @@ function asInt(field) {
 }
 
 export function asPercent(field) {
-    let x = 0;
-    if(field) {
+    let x = field;
+    if(field.value) {
         if (field.value === "")
             x = parseFloat(field.placeholder);
         else
@@ -91,17 +95,17 @@ window.onload = function () {
     document.getElementById("main_collapse").click();
 };
 
-function onInputForSpell(sender, form, idx, d) {
-    console.log("Caculating spell", idx);
-    var damage_type = form.damage_type.value;
+function onInputForSpellEffect(parent, spellEffect, d) {
+    console.log("Caculating spell", spellEffect.id);
+    var damage_type = spellEffect.damagetype;
 
-    var base_damage = asNumber(form.base_damage);
-    var ap_ratio = asPercent(form.ap_ratio);
+    var base_damage = asNumber(spellEffect.base_damage);
+    var ap_ratio = asNumber(spellEffect.ap_ratio);
 
-    var total_ad_ratio = asPercent(form.total_ad_ratio);
-    var bonus_ad_ratio = asPercent(form.bonus_ad_ratio);
+    var total_ad_ratio = asNumber(spellEffect.total_ad_ratio);
+    var bonus_ad_ratio = asNumber(spellEffect.bonus_ad_ratio);
 
-    var max_health_ratio = asPercent(form.max_health_ratio);
+    // var max_health_ratio = asNumber(spellEffect.max_health_ratio);
 
     var damage, dmg_onhit, dmg_dps = "Literally Healing //TODO FIX"; // dmg_onhit * (1 / cooldown);
     switch (damage_type) {
@@ -136,9 +140,9 @@ function onInputForSpell(sender, form, idx, d) {
             break;
     }
 
-    form.dmg_premitigation.value = rnd3(damage);
-    form.dmg_onhit.value = rnd3(dmg_onhit);
-    // form.dmg_dps.value = dmg_dps;
+    spellEffect.dmg_premitigation = rnd3(damage);
+    spellEffect.dmg_onhit = rnd3(dmg_onhit);
+    // spellEffect.dmg_dps.value = dmg_dps;
 
     return {
         damage_type: damage_type,
@@ -168,17 +172,20 @@ export function recalc() {
     var data = get_data();
     // localStorage.setItem("last_used_data", JSON.stringify(data));
 
-    for (var i = 0; i < spell_data.length; i++) {
+    const championSpells = vue.$children;
+    for (var i = 0; i < championSpells.length; i++) {
 
-        const inner_forms = spell_data[i].$el.getElementsByTagName('form');
-        Array.prototype.slice.call(inner_forms).forEach(inner_form => {
+        for(let v of championSpells[i].$children) {
+            if(v.$options.name && v.$options.name != 'spell-effects')
+                continue;
 
             var ret;
             try {
-                ret = onInputForSpell(this, inner_form, i, data);
+                ret = onInputForSpellEffect(championSpells[i], v, data);
             }
-             catch {
-                return;
+             catch(e) {
+                 console.log(e);
+                continue;
              }
 
             if (ret.damage_type === "physical") {
@@ -200,8 +207,7 @@ export function recalc() {
             } else {
                 //TODO
             }
-        });
-
+        }
     }
     vue.output.preTotalDmg = total_pre_damage;
     vue.output.preMagicDmg = total_pre_magic_damage;
@@ -232,6 +238,7 @@ export function recalc() {
     console.groupEnd();
     is_recalcing = false;
 }
+window.recalc = recalc;
 
 function get_data() {
     var percent_magic_pen;
@@ -247,24 +254,24 @@ function get_data() {
 
     var armor_pen = asNumber(champion_data.armor_pen);
     return {
-        ap: asNumber(champion_data.ap),
-        total_ad: asNumber(champion_data.total_ad),
-        base_ad: asNumber(champion_data.base_ad),
-        bonus_ad: asNumber(champion_data.bonus_ad),
+        ap: vue.player.ap,
+        total_ad: vue.player.total_ad,
+        base_ad: vue.player.base_ad,
+        bonus_ad: vue.player.bonus_ad,
 
-        attack_speed: asNumber(champion_data.attack_speed),
-        crit_change: asPercent(champion_data.crit_change),
-        crit_damage: asPercent(champion_data.crit_damage),
-        life_steal: asPercent(champion_data.life_steal),
+        attack_speed: vue.player.attack_speed,
+        crit_change: vue.player.crit_change,
+        crit_damage: vue.player.crit_damage,
+        life_steal: vue.player.life_steal,
 
         percent_magic_pen: percent_magic_pen,
         percent_armor_pen: percent_armor_pen,
         flat_magic_pen: flat_magic_pen,
-        spell_vamp: asPercent(champion_data.spell_vamp),
+        spell_vamp: vue.player.spell_vamp,
 
-        lethality: asNumber(champion_data.lethality),
-        champion_level: asNumber(champion_data.champion_level),
-        armor_pen: asNumber(champion_data.armor_pen),
+        lethality: vue.player.lethality,
+        champion_level: vue.player.level,
+        armor_pen: vue.player.flat_armor_pen,
 
         health: asNumber(target_data.target_hp),
         mr: asNumber(target_data.target_mr),
