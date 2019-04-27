@@ -1,4 +1,3 @@
-import { downloadingChampionFiles, league_static_data } from './league_data.js';
 import { vue } from './ui.js';
 
 export const main_div = document.getElementById("main");
@@ -9,10 +8,11 @@ export const target_data = document.forms.target_data_form;
 export const spell_data_template = document.getElementById("spell_data_template");
 export const passive_dao_template = document.getElementById("passive_dao_template");
 
-export let spell_data = [];
 export let  spell_data_index = 0;
 
 var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
+
+console.log('calc.js is ready!')
 
 export function toNum(value, defaultValue=0) {
     const sanatized = str(value).replace(/([^0-9/*\-+ .]+)/g,'');
@@ -346,42 +346,9 @@ window.styleSelect = function(self) {
 }
 
 
-function addNewSpellForm(damge_type) {
+window.addNewSpellForm = function(damge_type) {
     //TODO
     return;
-    var cloned = spell_data_template.cloneNode(true);
-    var idx = spell_data_index;
-    spell_data_index++;
-
-    cloned.classList.remove("hidden");
-    cloned.id = "spell_data_" + (idx);
-
-    var form = cloned.getElementsByTagName("form")[0];
-    form.id = "spell_data_" + (idx) + "_form";
-
-    if (damge_type === "magic") {
-        form.damage_type.value = "damage_type_magic";
-        form.spell_title.value = "Magic Spell #" + (spell_data_index);
-    } else if (damge_type === "physical") {
-        form.damage_type.value = "damage_type_physical";
-        form.spell_title.value = "Physical Spell #" + (spell_data_index);
-    } else {
-        form.damage_type.value = "damage_type_mixed";
-        form.spell_title.value = "Complex Spell #" + (spell_data_index);
-        form.expand.click();
-    }
-
-    spell_data.push(form);
-
-    // Adds recalc to all the input for cloned section.
-    var inputs = cloned.getElementsByClassName("input");
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", recalc);
-        inputs[i].addEventListener("focus", e => e.currentTarget.select());
-    }
-
-    main_div.appendChild(cloned);
-    recalc();
 }
 
 window.removeSpell = function(self) {
@@ -459,20 +426,4 @@ window.setBaseStats = (form) => {
         // eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
         // form.health;
     }
-}
-
-
-/// Main Code.
-window.onReady = function() {
-
-    // let playerChamp = localStorage.getItem('last_used_player_champ');
-    // let tagetChamp = localStorage.getItem('last_used_target_champ');
-
-    // var select = document.getElementById('player_champion_select');
-    // select.value = playerChamp;
-    // setChampion(select.form, select.value)
-    // select = document.getElementById('target_champion_select');
-    // select.value = tagetChamp;
-    // setChampion(select.form, select.value);
-
 }

@@ -22,9 +22,9 @@
     <!-- production version, optimized for size and speed -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script type="module" src="ui.js"></script>
     <script type="module" src="league_data.js"></script>
     <script type="module" src="league_items.js"></script>
-    <script type="module" src="ui.js"></script>
     <script type="module" src="calc.js"></script>
 </head>
 
@@ -95,124 +95,92 @@
         </nav>
     </div>
     <div class="flex main">
-        <div class="data_holder block small" id="champion_data">
+        <champion-div class="data_holder block small" id="champion_data" userid="player" isprimary="true" inline-template>
+        <div>
             <h2 class="title_input">Player's Champion Data</h2>
 
             <form autocomplete="off" id="champion_data_form">
                 <label for="player_champion_select" class="">Load Champion Data For</label>
-                <select id="player_champion_select" class="input" v-model="player.champ">
-                    <template v-for="item in championList">
+                <select id="player_champion_select" class="input" v-model="champ">
+                    <template v-for="item in $parent.championList">
                         <option :key="item.id" :value="item.id">{{ item.name }}</option>
                     </template>
                 </select>
                 <label for="player_champion_level" class="short">➤ Champion Level</label>
                 <input type="number" min="0" id="player_champion_level" name="champion_level" placeholder="0" value="18"
-                    class="input short" v-model.number="player.level" />
+                    class="input short" v-model.number="level" />
 
                 <div class="stats-tooltip" style="display: inline-block;"><span>Mouse Over to view base stats.</span>
                     <div class="stats-table">
-                        <div><span>Name:</span><output name="dao_name">{{ player_info.name }}</output></div>
-                        <div><span>Title:</span><output name="dao_title">{{ player_info.title }}</output></div>
-                        <div><span>Resource Type:</span><output name="dao_partype">{{ player_info.partype }}</output>
-                        </div>
-                        <div><span class="health">Base HP:</span><output
-                                name="dao_stats_hp">{{ player_stats.hp }}</output></div>
-                        <div><span class="health">HP growth:</span><output
-                                name="dao_stats_hpperlevel">{{ player_stats.hpperlevel }}</output></div>
-                        <div><span class="mana">Base Mana:</span><output
-                                name="dao_stats_mp">{{ player_stats.mp }}</output></div>
-                        <div><span class="mana">Mana growth:</span><output
-                                name="dao_stats_mpperlevel">{{ player_stats.mpperlevel }}</output></div>
-                        <div><span>Movespeed:</span><output
-                                name="dao_stats_movespeed">{{ player_stats.movespeed }}</output></div>
-                        <div><span class="armor">Base Armor:</span><output
-                                name="dao_stats_armor">{{ player_stats.armor }}</output></div>
-                        <div><span class="armor">Armor growth:</span><output
-                                name="dao_stats_armorperlevel">{{ player_stats.armorperlevel }}</output>
-                        </div>
-                        <div><span class="mr">Base Magic Res.:</span><output
-                                name="dao_stats_spellblock">{{ player_stats.spellblock }}</output>
-                        </div>
-                        <div><span class="mr">Magic Res. growth:</span><output
-                                name="dao_stats_spellblockperlevel">{{ player_stats.spellblockperlevel }}</output></div>
-                        <div><span>Attack Range:</span><output
-                                name="dao_stats_attackrange">{{ player_stats.attackrange }}</output></div>
-                        <div><span class="health">Base HP Regen:</span><output
-                                name="dao_stats_hpregen">{{ player_stats.hpregen }}</output></div>
-                        <div><span class="health">HP Regen growth:</span><output
-                                name="dao_stats_hpregenperlevel">{{ player_stats.hpregenperlevel }}</output></div>
-                        <div><span class="mana">Mana Regen:</span><output
-                                name="dao_stats_mpregen">{{ player_stats.mpregen }}</output></div>
-                        <div><span class="mana">Mana Regen growth:</span><output
-                                name="dao_stats_mpregenperlevel">{{ player_stats.mpregenperlevel }}</output></div>
-                        <div><span class="critical-chance">Crit:</span><output
-                                name="dao_stats_crit">{{ player_stats.crit }}</output></div>
-                        <div><span class="critical-chance">Crit growth:</span><output
-                                name="dao_stats_critperlevel">{{ player_stats.critperlevel }}</output></div>
-                        <div><span class="ad">Attack Damage:</span><output
-                                name="dao_stats_attackdamage">{{ player_stats.attackdamage }}</output>
-                        </div>
-                        <div><span class="ad">Attack Damage growth:</span><output
-                                name="dao_stats_attackdamageperlevel">{{ player_stats.attackdamageperlevel }}</output>
-                        </div>
-                        <div><span>Base Attack Speed:</span><output
-                                name="dao_stats_attackspeed">{{ player_stats.attackspeed }}</output></div>
-                        <div><span>Percent Attack Speed growth:</span><output
-                                name="dao_stats_attackspeedperlevel">{{ player_stats.attackspeedperlevel }}</output>
-                        </div>
+                        <div><span>Name:</span><span>{{ info.name }}</span></div>
+                        <div><span>Title:</span><span>{{ info.title }}</span></div>
+                        <div><span>Resource Type:</span><span>{{ info.partype }}</span></div>
+                        <div><span class="health">Base HP:</span><span>{{ stats.hp }}</span></div>
+                        <div><span class="health">HP growth:</span><span>{{ stats.hpperlevel }}</span></div>
+                        <div><span class="mana">Base Mana:</span><span>{{ stats.mp }}</span></div>
+                        <div><span class="mana">Mana growth:</span><span>{{ stats.mpperlevel }}</span></div>
+                        <div><span>Movespeed:</span><span>{{ stats.movespeed }}</span></div>
+                        <div><span class="armor">Base Armor:</span><span>{{ stats.armor }}</span></div>
+                        <div><span class="armor">Armor growth:</span><span>{{ stats.armorperlevel }}</span></div>
+                        <div><span class="mr">Base Magic Res.:</span><span>{{ stats.spellblock }}</span></div>
+                        <div><span class="mr">Magic Res. growth:</span><span>{{ stats.spellblockperlevel }}</span></div>
+                        <div><span>Attack Range:</span><span>{{ stats.attackrange }}</span></div>
+                        <div><span class="health">Base HP Regen:</span><span>{{ stats.hpregen }}</span></div>
+                        <div><span class="health">HP Regen growth:</span><span>{{ stats.hpregenperlevel }}</span></div>
+                        <div><span class="mana">Mana Regen:</span><span>{{ stats.mpregen }}</span></div>
+                        <div><span class="mana">Mana Regen growth:</span><span>{{ stats.mpregenperlevel }}</span></div>
+                        <div><span class="critical-chance">Crit:</span><span>{{ stats.crit }}</span></div>
+                        <div><span class="critical-chance">Crit growth:</span><span>{{ stats.critperlevel }}</span></div>
+                        <div><span class="ad">Attack Damage:</span><span>{{ stats.attackdamage }}</span></div>
+                        <div><span class="ad">Attack Damage growth:</span><span>{{ stats.attackdamageperlevel }}</span></div>
+                        <div><span>Base Attack Speed:</span><span>{{ stats.attackspeed }}</span></div>
+                        <div><span>Percent Attack Speed growth:</span><span>{{ stats.attackspeedperlevel }}</span></div>
                     </div>
                 </div>
                 <div class="flex">
-                    <label for="ap" class="ap">Total Ability Power (AP) = {{ player.ap }}</label>
-                    <data-input :dname="'ap'" v-model="player.ap" ></data-input>
+                    <label for="ap" class="ap">Total Ability Power (AP) = {{ ap }}</label>
+                    <data-input dname="ap" v-model="ap" ></data-input>
 
-                    <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ player.total_ad }}</label>
-                    <data-input :dname="'total_ad'" v-model="player.total_ad" ></data-input>
+                    <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ total_ad }}</label>
+                    <data-input dname="total_ad" v-model="total_ad" ></data-input>
 
-                    <label for="base_ad" class="short ad">➤ Base AD = {{ player.base_ad }}</label>
-                    <data-input :dname="'base_ad'" v-model="player.base_ad" :readonly="true" ></data-input>
-                    <label for="bonus_ad" class="short ad">➤ Bonus AD = {{ player.bonus_ad }}</label>
-                    <data-input :dname="'bonus_ad'" v-model="player.bonus_ad" ></data-input>
+                    <label for="base_ad" class="short ad">➤ Base AD = {{ base_ad }}</label>
+                    <data-input dname="base_ad" v-model="base_ad" :readonly="true" ></data-input>
+                    <label for="bonus_ad" class="short ad">➤ Bonus AD = {{ bonus_ad }}</label>
+                    <data-input dname="bonus_ad" v-model="bonus_ad" ></data-input>
 
-                    <label for="attack_speed" class="attack-speed">Attack Speed = {{ (player.base_attackspeed * 100).toFixed(2) }}%</label>
-                    <data-input :dname="'attack_speed'" v-model="player.base_attackspeed" :ispercent="true"></data-input>
+                    <label for="attack_speed" class="attack-speed">Attack Speed = {{ base_attackspeed }} + {{ (base_attackspeed * 100).toFixed(2) }}%</label>
+                    <data-input dname="attack_speed" v-model="base_attackspeed" :ispercent="true"></data-input>
 
-                    <label for="crit_change" class="critical-chance">{{ (player.base_critchance * 100).toFixed(0) }}% Crit. Chance</label>
-                    <data-input :dname="'crit_change'" v-model="player.base_critchance" :ispercent="true"></data-input>
+                    <label for="crit_change" class="critical-chance">{{ (base_critchance * 100).toFixed(0) }}% Crit. Chance</label>
+                    <data-input dname="crit_change" v-model="base_critchance" :ispercent="true"></data-input>
 
-                    <label for="crit_damage" class="critical-damage">{{ (player.critdamage * 100).toFixed(0) }}% Crit. Damage</label>
-                    <data-input :dname="'crit_damage'" v-model="player.critdamage" :ispercent="true"></data-input>
+                    <label for="crit_damage" class="critical-damage">{{ (critdamage * 100).toFixed(0) }}% Crit. Damage</label>
+                    <data-input dname="crit_damage" v-model="critdamage" :ispercent="true"></data-input>
 
-                    <label for="life_steal" class="">{{ (player.lifesteal * 100).toFixed(0) }}% Life Steal</label>
-                    <data-input :dname="'life_steal'" v-model="player.lifesteal" :ispercent="true"></data-input>
+                    <label for="life_steal" class="">{{ (lifesteal * 100).toFixed(0) }}% Life Steal</label>
+                    <data-input dname="life_steal" v-model="lifesteal" :ispercent="true"></data-input>
 
-                    <div style="width: 100%">
 
-                        <label for="has_void_staff" class="ap">Has Void Staff?</label>
-                        <label style="width: 100%">
-                            <label class="switch">
-                                <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input"
-                                    v-model="player.hasVoidStaff">
-                                <span class="slider"></span>
-                            </label>
-                            <span id="percent_magic_pen_value">{{ player.hasVoidStaff ? '&nbsp;= 40% Magic Pen.' : '&nbsp;= 0% Magic Pen.'}}</span>
-                        </label>
-                    </div>
+                    <label for="has_void_staff" class="ap">Has Void Staff? <span>&nbsp;= {{ (precent_magicpen * 100).toFixed(0) }}% Magic Pen.</span></label>
+                    <input id="has_void_staff" name="has_void_staff" type="checkbox" class="input"
+                            @change="precent_magicpen = $event.target.checked ? 0.4 : 0.0">
+                        
 
-                    <label for="flat_magic_pen">Flat Magic Penetration = {{ player.flat_magicpen }}</label>
-                    <data-input :dname="'flat_magic_pen'" v-model="player.flat_magicpen" ></data-input>
+                    <label for="flat_magic_pen">Flat Magic Penetration = {{ flat_magicpen }}</label>
+                    <data-input dname="flat_magic_pen" v-model="flat_magicpen" ></data-input>
 
-                    <label for="spell_vamp" class="">{{ (player.spellvamp * 100).toFixed(0) }}% Spell Vamp</label>
-                    <data-input :dname="'spell_vamp'" v-model="player.spellvamp" :ispercent="true"></data-input>
+                    <label for="spell_vamp" class="">{{ (spellvamp * 100).toFixed(0) }}% Spell Vamp</label>
+                    <data-input dname="spell_vamp" v-model="spellvamp" :ispercent="true"></data-input>
 
-                    <label for="lethality" class="lethality">Lethality = {{ player.lethality }}</label>
-                    <data-input :dname="'lethality'" v-model="player.lethality" ></data-input>
+                    <label for="lethality" class="lethality">Lethality = {{ lethality }}</label>
+                    <data-input dname="lethality" v-model="lethality" ></data-input>
 
-                    <label for="armor_pen" class="short">➤ Effective Flat Armor Pen. = {{ player.flat_armorpen }}</label>
-                    <data-input :dname="'armor_pen'" v-model="player.flat_armorpen" ></data-input>
+                    <label for="armor_pen" class="short">➤ Effective Flat Armor Pen. = {{ flat_armorpen }}</label>
+                    <data-input dname="armor_pen" v-model="flat_armorpen" ></data-input>
 
-                    <label for="percent_armor_pen">{{ (player.precent_armorpen * 100).toFixed(0) }}% Total Armor Penetration</label>
-                    <data-input :dname="'percent_armor_pen'" v-model="player.precent_armorpen" :ispercent="true"></data-input>
+                    <label for="percent_armor_pen">{{ (precent_armorpen * 100).toFixed(0) }}% Total Armor Penetration</label>
+                    <data-input dname="percent_armor_pen" v-model="precent_armorpen" :ispercent="true"></data-input>
                     <div>
                         <div class="item-section hidden">
                             <div class="item-grid-container">
@@ -274,101 +242,76 @@
                 </div>
             </form>
         </div>
+        </champion-div>
 
+        <champion-div class="data_holder block small" id="champion_data" userid="target" isprimary="false" inline-template>
         <div class="data_holder block small" id="target_data">
             <h2 class="title_input">Target's Data</h2>
             <form autocomplete="off" id="target_data_form">
                 <label for="target_champion_select" class="">Load Champion Data For</label>
-                <select id="target_champion_select" class="input" v-model="target.champ">
-                    <template v-for="item in championList">
+                <select id="target_champion_select" class="input" v-model="  champ">
+                    <template v-for="item in $root.championList">
                         <option :key="item.id" :value="item.id">{{ item.name }}</option>
                     </template>
                 </select>
                 <label for="target_champion_level" class="short">➤ Champion Level</label>
                 <input type="number" min="0" id="target_champion_level" name="champion_level" placeholder="18"
-                    value="18" class="input short" v-model.number="target.level" />
+                    value="18" class="input short" v-model.number="  level" />
 
                 <div class="stats-tooltip" style="display: inline-block;"><span>Mouse Over to view base stats.</span>
                     <div class="stats-table">
-                        <div><span>Name:</span><output name="dao_name">{{ target_info.name }}</output></div>
-                        <div><span>Title:</span><output name="dao_title">{{ target_info.title }}</output></div>
-                        <div><span>Resource Type:</span><output name="dao_partype">{{ target_info.partype }}</output>
-                        </div>
-                        <div><span class="health">Base HP:</span><output
-                                name="dao_stats_hp">{{ target_stats.hp }}</output></div>
-                        <div><span class="health">HP growth:</span><output
-                                name="dao_stats_hpperlevel">{{ target_stats.hpperlevel }}</output></div>
-                        <div><span class="mana">Base Mana:</span><output
-                                name="dao_stats_mp">{{ target_stats.mp }}</output></div>
-                        <div><span class="mana">Mana growth:</span><output
-                                name="dao_stats_mpperlevel">{{ target_stats.mpperlevel }}</output></div>
-                        <div><span>Movespeed:</span><output
-                                name="dao_stats_movespeed">{{ target_stats.movespeed }}</output></div>
-                        <div><span class="armor">Base Armor:</span><output
-                                name="dao_stats_armor">{{ target_stats.armor }}</output></div>
-                        <div><span class="armor">Armor growth:</span><output
-                                name="dao_stats_armorperlevel">{{ target_stats.armorperlevel }}</output>
-                        </div>
-                        <div><span class="mr">Base Magic Res.:</span><output
-                                name="dao_stats_spellblock">{{ target_stats.spellblock }}</output>
-                        </div>
-                        <div><span class="mr">Magic Res. growth:</span><output
-                                name="dao_stats_spellblockperlevel">{{ target_stats.spellblockperlevel }}</output></div>
-                        <div><span>Attack Range:</span><output
-                                name="dao_stats_attackrange">{{ target_stats.attackrange }}</output></div>
-                        <div><span class="health">Base HP Regen:</span><output
-                                name="dao_stats_hpregen">{{ target_stats.hpregen }}</output></div>
-                        <div><span class="health">HP Regen growth:</span><output
-                                name="dao_stats_hpregenperlevel">{{ target_stats.hpregenperlevel }}</output></div>
-                        <div><span class="mana">Mana Regen:</span><output
-                                name="dao_stats_mpregen">{{ target_stats.mpregen }}</output></div>
-                        <div><span class="mana">Mana Regen growth:</span><output
-                                name="dao_stats_mpregenperlevel">{{ target_stats.mpregenperlevel }}</output></div>
-                        <div><span class="critical-chance">Crit:</span><output
-                                name="dao_stats_crit">{{ target_stats.crit }}</output></div>
-                        <div><span class="critical-chance">Crit growth:</span><output
-                                name="dao_stats_critperlevel">{{ target_stats.critperlevel }}</output></div>
-                        <div><span class="ad">Attack Damage:</span><output
-                                name="dao_stats_attackdamage">{{ target_stats.attackdamage }}</output>
-                        </div>
-                        <div><span class="ad">Attack Damage growth:</span><output
-                                name="dao_stats_attackdamageperlevel">{{ target_stats.attackdamageperlevel }}</output>
-                        </div>
-                        <div><span>Base Attack Speed:</span><output
-                                name="dao_stats_attackspeed">{{ target_stats.attackspeed }}</output></div>
-                        <div><span>Percent Attack Speed growth:</span><output
-                                name="dao_stats_attackspeedperlevel">{{ target_stats.attackspeedperlevel }}</output>
-                        </div>
+                        <div><span>Name:</span><span>{{ info.name }}</span></div>
+                        <div><span>Title:</span><span>{{ info.title }}</span></div>
+                        <div><span>Resource Type:</span><span>{{ info.partype }}</span></div>
+                        <div><span class="health">Base HP:</span><span>{{ stats.hp }}</span></div>
+                        <div><span class="health">HP growth:</span><span>{{ stats.hpperlevel }}</span></div>
+                        <div><span class="mana">Base Mana:</span><span>{{ stats.mp }}</span></div>
+                        <div><span class="mana">Mana growth:</span><span>{{ stats.mpperlevel }}</span></div>
+                        <div><span>Movespeed:</span><span>{{ stats.movespeed }}</span></div>
+                        <div><span class="armor">Base Armor:</span><span>{{ stats.armor }}</span></div>
+                        <div><span class="armor">Armor growth:</span><span>{{ stats.armorperlevel }}</span></div>
+                        <div><span class="mr">Base Magic Res.:</span><span>{{ stats.spellblock }}</span></div>
+                        <div><span class="mr">Magic Res. growth:</span><span>{{ stats.spellblockperlevel }}</span></div>
+                        <div><span>Attack Range:</span><span>{{ stats.attackrange }}</span></div>
+                        <div><span class="health">Base HP Regen:</span><span>{{ stats.hpregen }}</span></div>
+                        <div><span class="health">HP Regen growth:</span><span>{{ stats.hpregenperlevel }}</span></div>
+                        <div><span class="mana">Mana Regen:</span><span>{{ stats.mpregen }}</span></div>
+                        <div><span class="mana">Mana Regen growth:</span><span>{{ stats.mpregenperlevel }}</span></div>
+                        <div><span class="critical-chance">Crit:</span><span>{{ stats.crit }}</span></div>
+                        <div><span class="critical-chance">Crit growth:</span><span>{{ stats.critperlevel }}</span></div>
+                        <div><span class="ad">Attack Damage:</span><span>{{ stats.attackdamage }}</span></div>
+                        <div><span class="ad">Attack Damage growth:</span><span>{{ stats.attackdamageperlevel }}</span></div>
+                        <div><span>Base Attack Speed:</span><span>{{ stats.attackspeed }}</span></div>
+                        <div><span>Percent Attack Speed growth:</span><span>{{ stats.attackspeedperlevel }}</span></div>
                     </div>
                 </div>
 
                 <div class="flex">
                     <label for="target_hp" class="health">Health (HP)</label>
-                    <data-input :dname="'target_hp'" v-model="target.base_hp"></data-input>
-
-                    <label for="target_armor" class="armor">Armor</label>
-                    <data-input :dname="'target_armor'" v-model="target.base_armor" ></data-input>
-
+                    <data-input dname="target_hp" v-model="total_hp"></data-input>
+                    <span> &#8226; {{ Math.round(base_hp) }} Base HP + {{ Math.round(bonus_hp) }} Bonus HP = {{ Math.round(total_hp) }} Total HP</span>
+                    <hr class="column">
+                    <label for="target_armor" class="armor"> Armor</label>
+                    <data-input dname="target_armor" v-model="total_armor" ></data-input>
+                    <span> &#8226; {{ Math.round(base_armor) }} Base Armor + {{ Math.round(bonus_armor) }} Bonus Armor = {{ Math.round(total_armor) }} Total Armor</span>
                     <span> &#8226; This will reduce <span class="physical-damage">Physical Damage</span> taken by <span class="ap">{{ Math.round(percent_pysical_reduction * 10000 ) / 100 }}%</span>.</span>
-
                     <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs. <span class="physical-damage">Physical Damage</span>.</span>
-                    <hr>
+                    <hr class="column">
                     <label for="target_mr" class="mr">Magic Resistance (MR)</label>
-                    <data-input :dname="'target_mr'" v-model="target.base_mr"></data-input>
-
-
+                    <data-input dname="target_mr" v-model="total_mr"></data-input>
+                    <span> &#8226; {{ Math.round(base_mr) }} Base MR + {{ Math.round(bonus_mr) }} Bonus MR = {{ Math.round(total_mr) }} Total MR</span>
                     <span> &#8226; This will reduce <span class="magic-damage">Magic Damage</span> taken by <span class="ap">{{ Math.round(percent_magic_reduction * 10000 ) / 100 }}%</span>.</span>
-
                     <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs. <span class="magic-damage">Magic Damage</span>.</span>
-                    <hr>
+                    <hr class="column">
                     <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
-                    <data-input :dname="'target_hp5'" v-model="target.base_hpregen"></data-input>
-                    <span> &#8226; This is <span class="health">{{ (target.base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and <span class="health">{{ Math.round(target.base_hpregen * 12) }} HP</span> after 60 seconds.</span>
-                    <hr>
-                    <label for="target_hp5" class="extra">{{target_info.partype}} regeneration ({{target_info.partype}} per 5)</label>
-                    <data-input :dname="'target_hp5'" v-model="target.base_manaregen"></data-input>
-                    <span> &#8226; This is <span class="mana">{{ (target.base_manaregen / 5).toFixed(1) }} {{target_info.partype}}</span> after 1 second and <span class="mana">{{ Math.round(target.base_manaregen * 12) }} {{target_info.partype}}</span> after 60 seconds.</span>
-                    <hr>
+                    <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
+                    <span> &#8226; This is <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and <span class="health">{{ Math.round(base_hpregen * 12) }} HP</span> after 60 seconds.</span>
+                    <hr class="column">
+                    <label v-if="info.partype !== 'None'" for="target_hp5" class="extra">{{info.partype}} regeneration ({{info.partype}} per 5)</label>
+                    <data-input v-if="info.partype !== 'None'" dname="target_hp5" v-model="base_manaregen"></data-input>
+                    <span v-if="info.partype !== 'None'"> &#8226; This is <span class="mana">{{ (base_manaregen / 5).toFixed(1) }} {{info.partype}}</span> after 1 second and <span class="mana">{{ Math.round(base_manaregen * 12) }} {{info.partype}}</span> after 60 seconds.</span>
+                    <span v-if="info.partype === 'None'"> * {{ info.name }} does not use any secondary resource.</span>
+                    
 
                     <div>
                         <div class="item-section hidden">
@@ -428,6 +371,8 @@
                 </div>
             </form>
         </div>
+        </champion-div>
+
 
         <champion-spells 
             v-for="spellObj in currentSpells" 
