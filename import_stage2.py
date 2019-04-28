@@ -128,16 +128,21 @@ def otherify(value):
         value = wikia(value)
     return value
 
-def burnify(value, rank):
-    r = re.search('([\d./*\-+]+) to ([\d./*\-+]+)', value)
+def burnify(value, maxrank):
+    r = re.search(r'([\d./*\-+]+) to ([\d./*\-+]+)', value)
+    result = ''
     if r != None:
         start = float(r.group(1))
         end = float(r.group(2))
         diff = (end - start) / 4.0
-        if rank == 3:
-            return '%d/%d/%d' %(start, start + diff * 2, end)
-        return '%d/%d/%d/%d/%d' % (start, start + diff * 1, start + diff * 2, start + diff * 3, end)
-    return value[5:-2].replace('|', '/').replace(' ', '/')
+        if maxrank == 3:
+            result = '%g/%g/%g' %(start, start + diff * 2, end)
+        else:
+            result = '%g/%g/%g/%g/%g' % (start, start + diff * 1, start + diff * 2, start + diff * 3, end)
+    else:
+        result = value[5:-2].replace('|', '/')
+    log.debug('burnify for value %s at maxrank %s => output is %s', value, maxrank, result)
+    return result
 
 def cast(s):
     s = s.strip()
@@ -180,31 +185,54 @@ def testing_spell(champ, skill):
         # export['description'] = riot['description']
         export['image'] = riot['image']
 
-    if '_flavorsound' in skill:
-        export['_flavorsound'] = otherify(skill['_flavorsound'])
-    if 'affects' in skill:
-        export['affects'] = otherify(skill['affects'])
+    export['affects'] = otherify(skill.get('affects', 'None'))
+
+    # if '_flavorsound' in skill:
+    #     export['_flavorsound'] = otherify(skill['_flavorsound'])
     if 'angle' in skill:
         export['angle'] = otherify(skill['angle'])
-    if 'blurb' in skill:
-        export['blurb'] = otherify(skill['blurb'])
+
+    export['blurb'] = otherify(skill.get('blurb', ''))
+
     if 'callforhelp' in skill:
         export['callforhelp'] = otherify(skill['callforhelp'])
     if 'cast_time' in skill:
         export['cast_time'] = otherify(skill['cast_time'])
-    if 'champion' in skill:
-        export['champion'] = otherify(skill['champion'])
+
+    export['champion'] = otherify(skill.get('champion', ''))
+
     if 'collision_radius' in skill:
         export['collision_radius'] = otherify(skill['collision_radius'])
+        
 
     # if 'cooldown' in skill:
     if not is_passive:
-        log.debug('cooldown %s + riot %s burn %s', skill.get('cooldown', None), riot['cooldown'],  riot['cooldownBurn'])
-        export['cooldown'] = riot['cooldown']
-        export['cooldownBurn'] = riot['cooldownBurn']
+        old_val = str(skill.get('cooldown', '0')) or '0'
+        value = old_val
+        
+        if r'{{' in value:
+            value = burnify(value, maxrank)
+
+        if value != riot['cooldownBurn']:
+            log.warning('cooldown is not matching riots: value %s as %s to riot %s burn %s', old_val, value, riot['cooldown'], riot['cooldownBurn'])
+        
+            export['cooldown'] = riot['cooldown']
+            export['cooldownBurn'] = riot['cooldownBurn']
+        else:
+            li = value.split('/')
+            if len(li) == 1:
+                export['cooldown'] = list(map(cast, [li[0]] * maxrank))
+            else:
+                export['cooldown'] = list(map(cast, li))
+            export['cooldownBurn'] = value
+        
     else:
         export['cooldown'] = skill.get('cooldown', None)
-        export['cooldownBurn'] = skill.get('cooldown', None)
+        export['cooldownBurn'] = skill.get('cooldownBurn', None)
+
+    if type(export['cooldown']) != type([]) and type(export['cooldown']) != type(None):
+        log.warning("cooldown is not a list: its a %s", type(export['cooldown']))
+        export['cooldown'] = None
 
 
     #if 'cost' in skill:
@@ -249,13 +277,15 @@ def testing_spell(champ, skill):
     #     export['costBurn'] = riot['costBurn']
 
     #if 'costtype' in skill:
-    value = skill.get('costtype', 'No cost')
-    if value == 'energy':
+    value = skill.get('costtype', 'no cost')
+    if value.lower() == 'energy':
         value = 'Energy'
-    elif value == 'mana':
+    elif value.lower() == 'mana':
         value = 'Mana'
-    elif value == '':
+    elif value == '' or value.lower() == 'no cost':
         value = 'No cost'
+    else:
+        log.warning('Unknown costtype value %s',value)
     export['costtype'] = otherify(value)
 
     if 'custominfo' in skill:
@@ -316,8 +346,8 @@ def testing_spell(champ, skill):
         skill.get('leveling4', None),
         skill.get('leveling5', None),
     ]))
-    if 'missile_cast_range?' in skill:
-        export['missile_cast_range?'] = otherify(skill['missile_cast_range?'])
+    # if 'missile_cast_range?' in skill:
+    #     export['missile_cast_range?'] = otherify(skill['missile_cast_range?'])
     if 'name' in skill:
         export['name'] = otherify(skill['name'])
     if 'notes' in skill:
@@ -372,14 +402,14 @@ def testing_spell(champ, skill):
         export['targeting'] = otherify(skill['targeting'])
     if 'tether_radius' in skill:
         export['tether_radius'] = otherify(skill['tether_radius'])
-    if 'video' in skill:
-        export['video'] = otherify(skill['video'])
-    if 'width' in skill:
-        export['width'] = otherify(skill['width'])
-    if 'yvideo' in skill:
-        export['yvideo'] = otherify(skill['yvideo'])
-    if 'yvideo2' in skill:
-        export['yvideo2'] = otherify(skill['yvideo2'])
+    # if 'video' in skill:
+    #     export['video'] = otherify(skill['video'])
+    # if 'width' in skill:
+    #     export['width'] = otherify(skill['width'])
+    # if 'yvideo' in skill:
+    #     export['yvideo'] = otherify(skill['yvideo'])
+    # if 'yvideo2' in skill:
+    #     export['yvideo2'] = otherify(skill['yvideo2'])
 
     if cl_collect_known:
         for key in skill:
