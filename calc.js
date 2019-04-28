@@ -156,143 +156,8 @@ function onInputForSpellEffect(parent, spellEffect, d) {
 var is_recalcing = false;
 export function recalc() {
     vue.$forceUpdate();
-    return;
-    if (is_recalcing) {
-        console.log('Re-calc called in a Re-calc call. Skipping this Re-calc.');
-        return;
-    }
-    is_recalcing = true;
-    console.group('Re-calc');
-    console.log('Caused by:', this);
-    let total_pre_damage = 0,
-        total_pre_magic_damage = 0,
-        total_pre_physical_damage = 0,
-        total_pre_true_damage = 0,
-        total_damage = 0,
-        total_magic_damage = 0,
-        total_physical_damage = 0,
-        total_true_damage = 0;
-
-    var data = get_data();
-    // localStorage.setItem("last_used_data", JSON.stringify(data));
-
-    const championSpells = vue.$children;
-    for (var i = 0; i < championSpells.length; i++) {
-
-        for(let v of championSpells[i].$children) {
-            if(v.$options.name && v.$options.name != 'spell-effects')
-                continue;
-
-            var ret;
-            try {
-                //ret = onInputForSpellEffect(championSpells[i], v, data);
-                ret = {
-                    damage_type: v.damagetype,
-                    pre_damage: v.dmg_premitigation,
-                    damage: v.dmg_onhit
-                }
-            }
-             catch(e) {
-                 console.log(e);
-                continue;
-             }
-
-            if (ret.damage_type === "physical") {
-                total_pre_damage += ret.pre_damage;
-                total_pre_physical_damage += ret.pre_damage;
-                total_damage += ret.damage;
-                total_physical_damage += ret.damage;
-            } else if (ret.damage_type === "magic") {
-                total_pre_damage += ret.pre_damage;
-                total_pre_magic_damage += ret.pre_damage;
-                total_damage += ret.damage;
-                total_magic_damage += ret.damage;
-            } else if (ret.damage_type === "true") {
-                total_pre_damage += ret.pre_damage;
-                total_pre_true_damage += ret.pre_damage;
-                total_damage += ret.damage;
-                total_true_damage += ret.damage;
-
-            } else {
-                //TODO
-            }
-        }
-    }
-    vue.output.preTotalDmg = total_pre_damage;
-    vue.output.preMagicDmg = total_pre_magic_damage;
-    vue.output.prePhysicalDmg = total_pre_physical_damage;
-
-    vue.output.totalDmg = total_damage;
-    vue.output.magicDmg = total_magic_damage;
-    vue.output.physicalDmg = total_physical_damage;
-    vue.output.trueDmg = total_true_damage;
-
-    var hp_diff = data.health - total_damage;
-    if (hp_diff < 0) {
-        vue.output.status = "Dead";
-        vue.output.overkill = -hp_diff + " damage overkill";
-        vue.output.hpRemaining = "0";
-        vue.output.hpRemainingPercent = "0%";
-    } else if (hp_diff > 1) {
-        vue.output.status = "Alive";
-        vue.output.overkill = "N/A";
-        vue.output.hpRemaining = hp_diff;
-        vue.output.hpRemainingPercent = hp_diff / data.health;
-    } else {
-        vue.output.status = "Dead (Maybe)";
-        vue.output.overkill = "N/A";
-        vue.output.hpRemaining = hp_diff;
-        vue.output.hpRemainingPercent = hp_diff / data.health;
-    }
-    console.groupEnd();
-    is_recalcing = false;
 }
 window.recalc = recalc;
-
-function get_data() {
-    var percent_magic_pen;
-    if (champion_data.has_void_staff.checked) {
-        percent_magic_pen_value.innerHTML = "&nbsp = 40% Magic Pen.";
-        percent_magic_pen = 0.40;
-    } else {
-        percent_magic_pen_value.innerHTML = "&nbsp = 0% Magic Pen.";
-        percent_magic_pen = 0.0;
-    }
-    var flat_magic_pen = asNumber(champion_data.flat_magic_pen);
-    var percent_armor_pen = Math.min(Math.max(asPercent(champion_data.percent_armor_pen), 0), 1);
-
-    var armor_pen = asNumber(champion_data.armor_pen);
-    return {
-        ap: vue.player.ap,
-        total_ad: vue.player.total_ad,
-        base_ad: vue.player.base_ad,
-        bonus_ad: vue.player.bonus_ad,
-
-        attack_speed: vue.player.attack_speed,
-        crit_change: vue.player.crit_change,
-        crit_damage: vue.player.crit_damage,
-        life_steal: vue.player.life_steal,
-
-        percent_magic_pen: percent_magic_pen,
-        percent_armor_pen: percent_armor_pen,
-        flat_magic_pen: flat_magic_pen,
-        spell_vamp: vue.player.spell_vamp,
-
-        lethality: vue.player.lethality,
-        champion_level: vue.player.level,
-        armor_pen: vue.player.flat_armor_pen,
-
-        health: asNumber(target_data.target_hp),
-        mr: asNumber(target_data.target_mr),
-        armor: asNumber(target_data.target_armor),
-
-        eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
-
-        eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
-        hp5: asNumber(target_data.target_hp5),
-    };
-}
-
 
 /// Functions for buttons
 window.collapseExtras = function(self) {
@@ -352,78 +217,17 @@ window.addNewSpellForm = function(damge_type) {
 }
 
 window.removeSpell = function(self) {
-    main_div.removeChild(self.parentElement.parentElement);
+    // main_div.removeChild(self.parentElement.parentElement);
 }
 window.remSpellEffect = function(self) {
     //yikes
-    self.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement);
+    // self.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement);
 }
 // var last_chamption = null;
 
 window.setChampion = (form, champion) => {
 }
 
-function getStat(form, stat) {
-    var d = form[`dao_stats_${stat}`]
-    return parseFloat(d.value);
-}
-
-
-
-function calcStatNums(champion_level, base, growth) {
-    return base + growth * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
-}
-
-function calcStat(form, champion_level, base, growth) {
-    return getStat(form, base) + getStat(form, growth) * (champion_level - 1) * (0.7025 + 0.0175 * (champion_level - 1));
-}
 window.setBaseStats = (form) => {
     return;
-    // These values from stats are not used.
-    // form.dao_name;
-    // form.dao_title;
-    // form.dao_partype;
-    // form.dao_stats_mp
-    // form.dao_stats_mpperlevel
-    // form.dao_stats_attackrange
-    // form.dao_stats_mpregen
-    // form.dao_stats_mpregenperlevel
-
-    if (form.id === 'champion_data_form') {
-        var champion_level = asNumber(form.champion_level);
-
-        champion_data.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
-
-        if (asNumber(champion_data.bonus_ad) < 0) {
-            champion_data.total_ad.value = champion_data.base_ad.value;
-            champion_data.bonus_ad.value = 0;
-        }
-
-        const ats = getStat(form, 'attackspeed');
-        champion_data.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
-        champion_data.crit_change.value = calcStat(form, champion_level, 'crit', 'critperlevel');
-        // form.target_hp.value = calcStat(form, champion_level, 'hp', 'hpperlevel');
-        // form.target_mr.value = calcStat(form, champion_level, 'spellblock', 'spellblockperlevel');
-        // form.target_armor.value = calcStat(form, champion_level, 'armor', 'armorperlevel');
-        // form.target_hp5.value = calcStat(form, champion_level, 'hpregen', 'hpregenperlevel');
-
-    } else if (form.id === 'target_data_form') {
-        var champion_level = asNumber(form.champion_level);
-        // form.base_ad.value = calcStat(form, champion_level, 'attackdamage', 'attackdamageperlevel');
-
-        // if(asNumber(form.total_ad) < asNumber(form.base_ad))
-        //     form.total_ad.value = form.base_ad.value;
-        // const ats = getStat(form, 'attackspeed');
-        // form.attack_speed.value = rnd3(ats + ats * asPercent(form.dao_stats_attackspeedperlevel) * champion_level);
-        // form.crit_change.value = calcStat(form, champion_level, 'crit', 'critperlevel');
-        target_data.target_hp.value = calcStat(form, champion_level, 'hp', 'hpperlevel');
-        target_data.target_mr.value = calcStat(form, champion_level, 'spellblock', 'spellblockperlevel');
-        target_data.target_armor.value = calcStat(form, champion_level, 'armor', 'armorperlevel');
-        target_data.target_hp5.value = calcStat(form, champion_level, 'hpregen', 'hpregenperlevel');
-
-        // eff_mr: asNumber(target_data.target_mr) * (1.0 - percent_magic_pen) - flat_magic_pen,
-
-        // eff_armor: asNumber(target_data.target_armor) * (1.0 - percent_armor_pen) - armor_pen,
-        // form.health;
-    }
 }

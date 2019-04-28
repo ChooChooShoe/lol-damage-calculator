@@ -336,7 +336,7 @@ Vue.component('spell-tooltip', {
 });
 
 Vue.component('spell-effects', {
-    props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex'],
+    props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'custom'],
     name: 'spell-effects',
     data: function () {
         return {
@@ -348,6 +348,9 @@ Vue.component('spell-effects', {
         }
     },
     computed: {
+        iscustom: function() {
+            return this.custom === "true";
+        },
         damagetype_user: function () {
             switch (this.damagetype) {
                 case 'no_damage':
@@ -373,8 +376,8 @@ Vue.component('spell-effects', {
     },
     template: `<div class="container float-clear spell-effect" :id="id">
   <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
-    <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"> Effect {{ effectindex + 1}}</output>
-    <input name="remove_effect" class="inline float-right" type="button" value="Remove" onclick="remSpellEffect(this)">
+    <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"> {{ iscustom ? 'Custom' : '' }} Effect {{ effectindex + 1}}</output>
+    <input v-if="iscustom" name="remove_effect" class="inline float-right" type="button" value="Remove" onclick="remSpellEffect(this)" @click="removeEffect()">
     <output id="effect_value" class="column"></output>
     <div class="field inline">
       <label :for="id + '-damagetype'">Damage Type</label>
@@ -414,6 +417,10 @@ Vue.component('spell-effects', {
         },
     },
     methods: {
+        removeEffect: function() {
+            if (this.iscustom)
+                this.$parent.customEffects = this.$parent.customEffects.filter(i => i !== this.effectindex)
+        },
         calc_dmg_premitigation: function (player, _target) {
             const p = player || this.$root.player;
             return (this.base_damage + (p.ap * this.ap_ratio) + (p.total_ad * this.total_ad_ratio) + (p.bonus_ad * this.bonus_ad_ratio));
@@ -458,7 +465,8 @@ Vue.component('spell-effects', {
             // inner_form.effect_name.value = `Effect ${(this.effectindex + 10).toString(36).toUpperCase()}: `;
             // inner_form.removeChild(inner_form.effect_name);
             // inner_form.removeChild(inner_form.remove_effect);
-            inner_form.effect_value.innerHTML = leveling.str;
+            if(!this.iscustom)
+                inner_form.effect_value.innerHTML = leveling.str;
 
             if (leveling.vars.base_damage) {
                 this.base_damage = numeral(leveling.vars.base_damage[this.spellrankindex]).value()
@@ -539,7 +547,14 @@ Vue.component('champion-spells', {
     props: ['id', 'spellkey', 'spell', 'champion', 'spriteurl'],
     data: function () {
         return {
-            spellrankindex: 0
+            spellrankindex: 0,
+            customEffects: [],
+            lastEffectIndex: 0,
+        }
+    },
+    methods: {
+        addEffect: function () {
+            this.customEffects.push(this.lastEffectIndex++);
         }
     },
     template: `<div class="data_holder column">
@@ -569,6 +584,7 @@ Vue.component('champion-spells', {
     <div v-if="spell.cost">Cost: <spell-span :burn="spell.costBurn" :exact="spell.cost[spellrankindex]"></spell-span> {{spell.costtype}}</div>
     <div v-if="spell.riot.range">Range: <spell-span :burn="spell.riot.rangeBurn" :exact="spell.riot.range[spellrankindex]"></spell-span> units</div>
     </div>
+    
     <spell-effects
       v-for="(item, index) in spell.leveling" 
       :id="id + '-effect-' + index"
@@ -578,8 +594,19 @@ Vue.component('champion-spells', {
       :effectindex="index"
       :spellrankindex="spellrankindex">
     </spell-effects>
+
+    <spell-effects
+      v-for="(item, index) in customEffects" 
+      :id="id + '-custom-effect-' + item"
+      :key="id + '-custom-effect-' + item"
+      :spell="spell"
+      effect=""
+      :effectindex="item"
+      :spellrankindex="spellrankindex"
+      custom="true">
+    </spell-effects>
     
-    <input class="right" name="add_effect" type="button" value="Add Effect +"></input>
+    <input class="right" name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
     
     <spell-notes :spell="spell" :id="id"></spell-notes>
 

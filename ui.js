@@ -33,40 +33,6 @@ function default_stats() {
   }
 }
 
-function default_user(name) {
-  return {
-    champ: '',
-    level: 18,
-    partype: 'Mana',
-    name: name,
-    title: '',
-
-    ap: 0,
-    total_ad: 0,
-    bonus_ad: 0,
-    critdamage: 2,
-    lifesteal: 0,
-    hasVoidStaff: false,
-    flat_magicpen: 0,
-    spellvamp: 0,
-    lethality: 0,
-    flat_armorpen: 0,
-    precent_armorpen: 0,
-
-
-    base_hp: 0,
-    base_mana: 0,
-    base_movespeed: 0,
-    base_armor: 0,
-    base_mr: 0,
-    base_attackrange: 0,
-    base_hpregen: 0,
-    base_manaregen: 0,
-    base_critchance: 0,
-    base_attackspeed: 0,
-  }
-}
-
 function calcStat(lvl, base, growth) {
   return base + growth * (lvl - 1) * (0.7025 + 0.0175 * (lvl - 1));
 }
@@ -149,10 +115,10 @@ Vue.component('champion-div', {
     },
     percent_pysical_reduction: {
       get: function () {
-        if (this.base_armor < 0) // Damage is amplified.
-          return -1 + (100.0 / (100.0 - this.base_armor));
+        if (this.total_armor < 0) // Damage is amplified.
+          return -1 + (100.0 / (100.0 - this.total_armor));
         else //Normal damage reduction.
-          return 1.0 - (100.0 / (100.0 + this.base_armor));
+          return 1.0 - (100.0 / (100.0 + this.total_armor));
       },
       set: function (val) {
         console.log('percent_pysical_reduction =>', val);
@@ -160,10 +126,10 @@ Vue.component('champion-div', {
     },
     eff_physical_hp: {
       get: function () {
-        if (this.base_armor < 0)
-          return (1 + (this.base_armor / 100.0)) * this.base_hp;
+        if (this.total_armor < 0)
+          return (1 + (this.total_armor / 100.0)) * this.total_hp;
         else
-          return (1 + (this.base_armor / 100.0)) * this.base_hp;
+          return (1 + (this.total_armor / 100.0)) * this.total_hp;
       },
       set: function (val) {
         console.log('eff_physical_hp =>', val);
@@ -171,10 +137,10 @@ Vue.component('champion-div', {
     },
     percent_magic_reduction: {
       get: function () {
-        if (this.base_mr < 0)
-          return -1 + (100.0 / (100.0 - this.base_mr));
+        if (this.total_mr < 0)
+          return -1 + (100.0 / (100.0 - this.total_mr));
         else
-          return 1.0 - (100.0 / (100.0 + this.base_mr));
+          return 1.0 - (100.0 / (100.0 + this.total_mr));
       },
       set: function (val) {
         console.log('percent_magic_reduction =>', val);
@@ -182,10 +148,10 @@ Vue.component('champion-div', {
     },
     eff_magic_hp: {
       get: function () {
-        if (this.base_mr < 0)
-          return (1 + (this.base_mr / 100.0)) * this.sbase_hp;
+        if (this.total_mr < 0)
+          return (1 + (this.total_mr / 100.0)) * this.total_hp;
         else
-          return (1 + (this.base_mr / 100.0)) * this.base_hp;
+          return (1 + (this.total_mr / 100.0)) * this.total_hp;
       },
       set: function (val) {
         console.log('eff_magic_hp =>', val);
@@ -315,7 +281,7 @@ export const vue = new Vue({
         }
       }
 
-      const hp_diff = t.base_hp - output.totalDmg;
+      const hp_diff = t.total_hp - output.totalDmg;
       if (hp_diff < 0) {
         output.status = "Dead";
         output.overkill = -hp_diff + " damage overkill";
@@ -325,12 +291,12 @@ export const vue = new Vue({
         output.status = "Alive";
         output.overkill = "N/A";
         output.hpRemaining = hp_diff;
-        output.hpRemainingPercent = hp_diff / t.base_hp;
+        output.hpRemainingPercent = hp_diff / t.total_hp;
       } else {
         output.status = "Dead (Maybe)";
         output.overkill = "N/A";
         output.hpRemaining = hp_diff;
-        output.hpRemainingPercent = hp_diff / t.base_hp;
+        output.hpRemainingPercent = hp_diff / t.total_hp;
       }
       return output;
     }
