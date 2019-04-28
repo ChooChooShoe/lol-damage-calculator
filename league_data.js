@@ -506,13 +506,25 @@ Vue.component('spell-effects', {
 });
 
 Vue.component('spell-span', {
-    props: ['burn', 'exact'],
+    props: ['list', 'spellrankindex'],
     template: `<span v-html="calchtml()"></span>`,
     methods: {
         calchtml: function () {
-            if (this.burn && this.exact)
-                return this.burn.toString().replace(this.exact, `<span class="spelleffect">${this.exact}</span>`);
-            return 'unknown';
+            let last = undefined;
+            let final = [];
+            for(let i = 0; i < this.list.length; i++){
+                if(i === this.spellrankindex) {
+                    if (last === this.list[i]) {
+                        final.pop();
+                    }
+                    final.push(`<span class="spelleffect">${this.list[i]}</span>`);
+                }
+                else if (last !== this.list[i]) {
+                    final.push(this.list[i]);
+                }
+                last = this.list[i];
+            }
+            return final.join(' / ');
         }
     }
 });
@@ -567,22 +579,24 @@ Vue.component('champion-spells', {
     <form autocomplete="off" method="POST" action="#">
       <spell-tooltip :spell="spell" :spellrankindex="spellrankindex"></spell-tooltip>
 
-      <div class="float-left">
+      <div class="float-left" v-if="spell.maxrank > 0">
       Spell Rank ({{ spellrankindex + 1 }})
-      <fieldset class="spellrank input">
+      <fieldset class="spellrank input" >
         <input v-model.number="spellrankindex" class="spellrank1" type="radio" name="spellrank" value="0" title="Rank 1">
-        <input v-model.number="spellrankindex" class="spellrank2" type="radio" name="spellrank" value="1" title="Rank 2">
-        <input v-model.number="spellrankindex" class="spellrank3" type="radio" name="spellrank" value="2" title="Rank 3">
-        <input v-model.number="spellrankindex" class="spellrank4" type="radio" name="spellrank" value="3" title="Rank 4">
-        <input v-model.number="spellrankindex" class="spellrank5" type="radio" name="spellrank" value="4" title="Rank 5">
-        <input v-model.number="spellrankindex" class="spellrank6 hidden" type="radio" name="spellrank" value="5" title="Rank 6">
+        <input v-if="spell.maxrank > 1" v-model.number="spellrankindex" class="spellrank2" type="radio" name="spellrank" value="1" title="Rank 2">
+        <input v-if="spell.maxrank > 2" v-model.number="spellrankindex" class="spellrank3" type="radio" name="spellrank" value="2" title="Rank 3">
+        <input v-if="spell.maxrank > 3" v-model.number="spellrankindex" class="spellrank4" type="radio" name="spellrank" value="3" title="Rank 4">
+        <input v-if="spell.maxrank > 4" v-model.number="spellrankindex" class="spellrank5" type="radio" name="spellrank" value="4" title="Rank 5">
+        <input v-if="spell.maxrank > 5" v-model.number="spellrankindex" class="spellrank6" type="radio" name="spellrank" value="5" title="Rank 6">
       </fieldset>
       </div>
       
     <div class="float-right">
-    <div v-if="spell.cooldown">Cooldown: <spell-span :burn="spell.cooldownBurn" :exact="spell.cooldown[spellrankindex]"></spell-span> seconds</div>
-    <div v-if="spell.cost">Cost: <spell-span :burn="spell.costBurn" :exact="spell.cost[spellrankindex]"></spell-span> {{spell.costtype}}</div>
-    <div v-if="spell.riot.range">Range: <spell-span :burn="spell.riot.rangeBurn" :exact="spell.riot.range[spellrankindex]"></spell-span> units</div>
+    <div v-if="spell.cooldown">Cooldown: <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span> seconds</div>
+    <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span> {{spell.costtype}}</div>
+    <div v-if="spell.target_range">Target Range: <spell-span :list="[spell.target_range]" :spellrankindex="0"></spell-span></div>
+    <div v-if="spell.effect_range">Effect Range: <spell-span :list="[spell.effect_range]" :spellrankindex="0"></spell-span></div>
+    <div v-if="spell.targeting">Targeting: <spell-span :list="[spell.targeting]" :spellrankindex="0"></spell-span></div>
     </div>
     
     <spell-effects
