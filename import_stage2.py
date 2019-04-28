@@ -139,6 +139,12 @@ def burnify(value, maxrank):
             result = '%g/%g/%g' %(start, start + diff * 2, end)
         else:
             result = '%g/%g/%g/%g/%g' % (start, start + diff * 1, start + diff * 2, start + diff * 3, end)
+    elif '%|health' in value:
+        x = float(re.sub('[^0-9]','', value))
+        if maxrank == 3:
+            result = '%g%%/%g%%/%g%%' % (x, x, x)
+        else:
+            result = '%g%%/%g%%/%g%%/%g%%/%g%%' % (x, x, x, x, x)
     else:
         result = value[5:-2].replace('|', '/')
     log.debug('burnify for value %s at maxrank %s => output is %s', value, maxrank, result)
@@ -231,7 +237,7 @@ def testing_spell(champ, skill):
         export['cooldownBurn'] = skill.get('cooldownBurn', None)
 
     if type(export['cooldown']) != type([]) and type(export['cooldown']) != type(None):
-        log.warning("cooldown is not a list: its a %s", type(export['cooldown']))
+        log.warning("cooldown is not a list: its a %s = %s", type(export['cooldown']), export['cooldown'])
         export['cooldown'] = None
 
 
@@ -245,16 +251,13 @@ def testing_spell(champ, skill):
 
         if value != riot['costBurn']:
             log.warning('cost is not matching riots: value %s as %s to riot %s burn %s', old_val, value, riot['cost'], riot['costBurn'])
-        
-            export['cost'] = riot['cost']
-            export['costBurn'] = riot['costBurn']
+            
+        li = value.split('/')
+        if len(li) == 1:
+            export['cost'] = list(map(cast, [li[0]] * maxrank))
         else:
-            li = value.split('/')
-            if len(li) == 1:
-                export['cost'] = list(map(cast, [li[0]] * maxrank))
-            else:
-                export['cost'] = list(map(cast, li))
-            export['costBurn'] = value
+            export['cost'] = list(map(cast, li))
+        export['costBurn'] = value
 
     # if isinstance(value, str) and 'ap' not in str(value):
     #     export['cost'] = riot['cost']
@@ -284,7 +287,7 @@ def testing_spell(champ, skill):
         value = 'Mana'
     elif value == '' or value.lower() == 'no cost':
         value = 'No cost'
-    else:
+    elif 'charge' not in value.lower():
         log.warning('Unknown costtype value %s',value)
     export['costtype'] = otherify(value)
 
@@ -370,7 +373,18 @@ def testing_spell(champ, skill):
     if 'range' in skill:
         export['range'] = otherify(skill['range'])
     if 'recharge' in skill:
-        export['recharge'] = otherify(skill['recharge'])
+        old_val = str(skill.get('recharge', '0')) or '0'
+        value = old_val
+        
+        if r'{{' in value:
+            value = burnify(value, maxrank)
+
+        li = value.split('/')
+        if len(li) == 1:
+            export['recharge'] = list(map(cast, [li[0]] * maxrank))
+        else:
+            export['recharge'] = list(map(cast, li))
+
     if 'riot' in skill:
         export['riot'] = otherify(skill['riot'])
     if 'skill' in skill:
