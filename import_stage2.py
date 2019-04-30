@@ -464,8 +464,9 @@ def take_spell(champ, spells):
                         if x.startswith('line_'):
                             if value == "" or value == r"}}":
                                 pass
-                            elif x == 'line_1':
+                            elif x == 'line_1' or r'{{{{{1<noinclude>|Ability data</noinclude>}}}' in value:
                                 export['name'] = re.sub(regex, r"\1", value)
+                                export['name'] = re.sub('-->', '', export['name'])
                             else:
                                 last_key = list(export.items())[-1][0]
                                 log.debug('backtracing %s to %s adding "%s"', key, last_key, value)
