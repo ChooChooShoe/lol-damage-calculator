@@ -106,7 +106,7 @@ function downloadingStaticDataFiles() {
     // const spriteImg = `${cdn}/${version}/img/sprite/1001.png`;
 
     // const runesReforgedUri = `${baseUrl}/runesReforged.json`;
-    
+
     console.log(`Fetching: ${url}`)
     fetch(url)
         .then(function (response) {
@@ -348,7 +348,7 @@ Vue.component('spell-effects', {
         }
     },
     computed: {
-        iscustom: function() {
+        iscustom: function () {
             return this.custom === "true";
         },
         damagetype_user: function () {
@@ -417,7 +417,7 @@ Vue.component('spell-effects', {
         },
     },
     methods: {
-        removeEffect: function() {
+        removeEffect: function () {
             if (this.iscustom)
                 this.$parent.customEffects = this.$parent.customEffects.filter(i => i !== this.effectindex)
         },
@@ -465,7 +465,7 @@ Vue.component('spell-effects', {
             // inner_form.effect_name.value = `Effect ${(this.effectindex + 10).toString(36).toUpperCase()}: `;
             // inner_form.removeChild(inner_form.effect_name);
             // inner_form.removeChild(inner_form.remove_effect);
-            if(!this.iscustom)
+            if (!this.iscustom)
                 inner_form.effect_value.innerHTML = leveling.str;
 
             if (leveling.vars.base_damage) {
@@ -512,8 +512,8 @@ Vue.component('spell-span', {
         calchtml: function () {
             let last = undefined;
             let final = [];
-            for(let i = 0; i < this.list.length; i++){
-                if(i === this.spellrankindex) {
+            for (let i = 0; i < this.list.length; i++) {
+                if (i === this.spellrankindex) {
                     if (last === this.list[i]) {
                         final.pop();
                     }
@@ -524,7 +524,8 @@ Vue.component('spell-span', {
                 }
                 last = this.list[i];
             }
-            return final.join(' / ');
+            final = final.join(' / ');
+            return matchReplaceSpellEffects(final, null, this.spellrankindex).str;
         }
     }
 });
@@ -567,7 +568,10 @@ Vue.component('champion-spells', {
     methods: {
         addEffect: function () {
             this.customEffects.push(this.lastEffectIndex++);
-        }
+        },
+        matchReplace: function (text) {
+            return matchReplaceSpellEffects(text, null, this.spellrankindex).str
+        },
     },
     template: `<div class="data_holder column">
     <img class="spell-image"
@@ -592,8 +596,9 @@ Vue.component('champion-spells', {
       </div>
       
     <div class="float-right">
+    <div v-if="spell.customlabel"><span v-html="matchReplace(spell.customlabel)"> </span>: <spell-span :list="[spell.custominfo]" :spellrankindex="0"></spell-span></div>
     <div v-if="spell.cooldown">Cooldown: <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span> seconds</div>
-    <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span> {{spell.costtype}}</div>
+    <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span> <span v-html="matchReplace(spell.costtype)"></span></div>
     <div v-if="spell.target_range">Target Range: <spell-span :list="[spell.target_range]" :spellrankindex="0"></spell-span></div>
     <div v-if="spell.effect_range">Effect Range: <spell-span :list="[spell.effect_range]" :spellrankindex="0"></spell-span></div>
     <div v-if="spell.targeting">Targeting: <spell-span :list="[spell.targeting]" :spellrankindex="0"></spell-span></div>
@@ -626,38 +631,7 @@ Vue.component('champion-spells', {
 
     </form>
   </div>
-  `,
-    other: `
-  this.form = el(form#$ {id}_form, {
-    
-  },
-    this.tooltip = el('div.spell-tooltip'),
-    this.effect_list = el('div.spell_data_effect_list'),
-    this.custom_effect_list = el('div.spell_data_custom_effect_list'),
-    el('div',
-      // el('input', {
-      //   name: 'reset',
-      //   type: 'reset',
-      //   value: 'Zero Above'
-      // }),
-      // el('input', {
-      //   name: 'expand',
-      //   type: 'button',
-      //   value: 'Expand'
-      // }),
-      // el('input.hidden', {
-      //   name: 'reset',
-      //   type: 'button',
-      //   value: 'Collapse'
-      // }),
-      this.adeffect = el('input.right', {
-        name: 'add_effect',
-        type: 'button',
-        value: 'Add Effect +'
-      })
-    ),
-  )
-);`
+  `
 })
 
 export class SpellEffect {
@@ -780,7 +754,27 @@ function matchReplaceSpellEffects(string, form, spellrankindex) {
     string = string.replace(/\n/g, '<br/>');
     for (let i = 0; i < 15; i++) {
         if (string.includes('{{'))
-            string = string.replace(/{{([^{}]*)}}/g, matchInner(form, spellrankindex, retvalues));
+            string = string.replace(/{{([^{}]*)}}/g, function (match, capture) {
+                // console.log('match:', match)
+                const parms = capture.split('|');
+                if (parms[0] in match_lookup) {
+                    const inner_fn = match_lookup[parms[0]];
+                    try {
+                        return inner_fn(capture, parms, spellrankindex, retvalues);
+                    } catch (e) {
+                        console.log(`Error for spell effect '${match}'`);
+                        console.log(e);
+                        capture = capture.replace(/\|/g, ' ')
+                        return `<span class='tooltip red'>${capture}<span class='tooltip-float'>Error for '${capture}'</span></span>`;
+                    }
+                } else {
+                    console.log(`Unknown spell effect '${match}'`);
+                    capture = capture.replace(/\|/g, ' ')
+                    return `<span class='tooltip capture-unknown'>${capture}<span class='tooltip-float'>Unknown value for '${capture}'</span></span>`;
+                }
+            });
+        else
+            break;
     }
     string = string.replace(/'''(.*?)'''+/g, '<b class="chamption-name">$1</b>');
     string = string.replace(/''(.*?)''+/g, '<i class="chamption-name">$1</i>');
@@ -792,256 +786,243 @@ function matchReplaceSpellEffects(string, form, spellrankindex) {
         vars: retvalues
     };
 }
-
-function matchInner(form, spellrankindex, retvalues) {
-    return function (match, capture) {
-        // console.log('match:', match)
-        capture = capture.trim()
-        try {
-            const effext_index = parseInt(capture[1]);
-
-            // ci (or Champion icon): {{ci|<Champion>|<Custom name>}}
-            if (capture.startsWith('ci|')) {
-                const slices = capture.slice(3).split('|')
-                if (slices.length == 2)
-                    return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[1]}</span>`;
-                return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}</span>`;
-            }
-            // cis (or Champion icon with possessive apostrophes): {{cis|<Champion>}}
-            if (capture.startsWith('cis|')) {
-                const slices = capture.slice(4).split('|')
-                return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}'s</span>`;
-            }
-
-            // cai (or Champion's ability icon): {{cai|<Ability>|<Champion>|<Custom ability name>}}
-            if (capture.startsWith('cai|')) {
-                const slices = capture.slice(4).split('|');
-                let abilty = slices[0];
-                let champ = slices[1];
-                let display = slices[0];
-                if (slices.length == 3)
-                    display = slices[2];
-                return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${champ}'s ${display}</span>`;
-            }
-            // csl (or Champion skin link icon): {{csl|<Champion>|<Skin>}}
-
-            // ai (or Ability icon): {{ai|<Ability>|<Champion>|<Custom ability name>}}
-            if (capture.startsWith('ai|')) {
-                const slices = capture.slice(3).split('|');
-                let abilty = slices[0];
-                let champ = slices[1];
-                let display = slices[0];
-                if (slices.length == 3)
-                    display = slices[2];
-                return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${display}</span>`;
-            }
-            // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
-            if (capture.startsWith('ais|')) {
-                const slices = capture.slice(4).split('|');
-                let abilty = slices[0];
-                let champ = slices[1];
-                return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${abilty}'s</span>`;
-            }
-
-            // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
-
-            // ii (or Item icon): {{ii|<Item>|<Custom name>}}
-            if (capture.startsWith('ii|')) {
-                const slices = capture.slice(3).split('|');
-                return `<span class="title-tooltip blue" title="The iem '${slices[0]}'">${slices[0]}</span>`;
-            }
-
-            // iis (or Item icon with possessive apostrophes): {{iis|<Item>}}
-
-            // mi6 (or Mastery icon Season 2016): {{mi6|<Mastery>|<Custom name>}}
-
-            // mi7 (or Mastery icon Season 2017): {{mi7|<Mastery>|<Custom name>}}
-
-            // ri (or Rune icon): {{ri|<Rune>|<Custom name
-
-            // si (or Spell icon): {{si|<Spell>|<Custom name>}}
-
-            if (capture.startsWith('si|')) {
-                const slices = capture.slice(3).split('|')
-                return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1]}</span>`;
-            }
-
-            // sis (or Spell icon with possessive apostrophes): {{sis|<Spell>}}
-
-            // sti (or Stat icon): {{sti|<stat>|<Custom name>}}
-            if (capture.startsWith('sti|')) {
-                const slices = capture.slice(4).split('|');
-                let stat = slices[0].replace(' ', '-');
-                let statName = slices[0];
-                let name = slices.slice(1).join('|') || stat;
-                // return `<span><i title=${statName} class="icon i-${stat}"></i>${name}</span>`;
-                return `<span>${name}</span>`;
-            }
-
-            // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
-            if (capture.startsWith('tip|')) {
-                const slices = capture.slice(4).split('|');
-                let effect = slices[0];
-                let name = slices.slice(1).join('|') || effect;
-                // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
-                return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
-            }
-
-            // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
-            // uis (or Unit icon with possessive apostrophes): {{uis|<Unit>}}
-
-
-            // tt (or Text tooltip): {{tt|<Text>|<Tooltip>}}
-            if (capture.startsWith('tt|')) {
-                const slices = capture.slice(3).split('|');
-                return `<span class="title-tooltip" title="${slices[1]}">${slices[0]}</span>`;
-            }
-
-            //pp (or Passive progression): 
-            //  {{pp|<Size>|<Value1>|<Value2>|<...>|<ValueN>|<Level1>|<Level2>|<...>|<LevelN>}}
-            // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
-            // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
-            // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-
-            // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-            if (capture.startsWith('pp|') || capture.startsWith('ap|')) {
-                var inner = capture.substring(3);
-                inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
-                    start = parseFloat(eval(start));
-                    end = parseFloat(eval(end));
-                    if (Number(len) === 3) {
-                        const diff = (end - start) / 2;
-                        return `${start}/${start + diff}/${end}`;
-                    }
-                    const diff = (end - start) / 4;
-                    return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
-
-                });
-                inner = inner.replace(/[| ]/g, '/');
-
-                if (!retvalues.base_damage)
-                    retvalues.base_damage = inner.split('/');
-                return `<span style="font-family: 'DejaVu Sans Mono', 'Lucida Console', monospace;">${inner}</span>`;
-            }
-            // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
-            if (capture.startsWith('as|')) {
-                console.log('as Ability scaling =', capture);
-
-                var inner = capture.slice(3);
-                const inner_lo = inner.toLowerCase();
-
-                let cssClass = list_of_colors.find(c => {
-                    return inner_lo.includes(c)
-                }) || 'ad';
-                cssClass = cssClass.replace(' ', '-');
-
-                if (inner.includes('AP')) {
-                    if (!retvalues.ratio_ap_1)
-                        retvalues.ratio_ap_1 = numeral(inner.replace(/\(/g, '')).value();
-                    if (!retvalues.ratio_ap_2)
-                        retvalues.ratio_ap_2 = numeral(inner.replace(/\(/g, '')).value();
-                } else if (inner.includes('AD')) {
-                    if (inner.includes('bonus')) {
-                        if (!retvalues.ratio_ad_2)
-                            retvalues.ratio_ad_2 = numeral(inner.replace(/\(/g, '')).value();
-                    } else if (!retvalues.ratio_ad_1)
-                        retvalues.ratio_ad_1 = numeral(inner.replace(/\(/g, '')).value();
-                }
-                return `<span class="${cssClass}">${inner}</span>`;
-            }
-            // sbc (or Small bold capitals): {{sbc|<Text>}}
-            if (capture.startsWith('sbc|')) {
-                return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
-            }
-
-            //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
-
-            //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
-
-            if (capture.startsWith('g|')) {
-                const slices = capture.slice(2).split('|');
-                return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
-            }
-
-            // format number
-            if (capture.startsWith('fd|')) {
-                return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
-            }
-
-            if (capture.startsWith('st|')) {
-                const slices = capture.slice(3).split('|')
-                let rets = []
-                for (let i = 0; i < slices.length; i += 2) {
-                    rets.push(`<a>${slices[i]}</a>: <span>${slices[i + 1]}</span>`);
-                }
-                return rets.join('<br/>');
-            }
-            // MATH OPERATORS:
-            if (capture == 'plus')
-                return '+';
-            if (capture == 'minus')
-                return '−';
-            if (capture == 'plusminus')
-                return '±';
-            if (capture == 'divided by')
-                return '÷';
-            if (capture == 'times')
-                return '×';
-            if (capture == 'equals')
-                return '=';
-            if (capture == 'degree')
-                return '°';
-
-
-
-            //for riot data
-            // if (capture === 'cost') {
-            //   var exact = form.spellDao['cost'][spellrankindex].toString();
-            //   return form.spellDao['costBurn'].replace(exact, `<span class="spelleffect active" >${exact}</span>`);
-            // } else if (capture === 'abilityresourcename')
-            //   return form.abilityresourcename;
-            // else if (capture[0] === 'e') {
-            //   var burn = form.spellDao['effectBurn'][effext_index];
-            //   var exact = form.spellDao['effect'][effext_index][spellrankindex];
-            //   // if (effext_index == 1) {
-            //   //   form.base_damage.value = exact;
-            //   // }
-            //   return burn.replace(exact.toString(), `<span class="spelleffect active" data-base="${exact}">${exact}</span>`);
-            // } else if (capture[0] === 'a' || capture[0] === 'f') {
-            //   for (let e of form.spellDao['vars']) {
-            //     if (e.key === capture) {
-            //       switch (e.link) {
-            //         case "spelldamage":
-            //           return `<span class="ap" data-ratio="ap_ratio ${e.coeff}">${e.coeff} AP</span>`;
-            //         case "attackdamage":
-            //           return `<span class="ad" data-ratio="total_ad_ratio ${e.coeff}">${e.coeff} AD</span>`;
-            //         case "bonusattackdamage":
-            //           return `<span class="ad" data-ratio="bonus_ad_ratio ${e.coeff}">${e.coeff} Bonus AD</span>`;
-            //         case "health":
-            //           return `<span class="hp" data-ratio="max_health_ratio ${e.coeff}">${e.coeff} Health</span>`;
-            //         case "bonushealth":
-            //           return `<span class="hp" data-ratio="bonushealth_ratio ${e.coeff}">${e.coeff} Bonus Health</span>`;
-            //         case "bonusarmor":
-            //           return `<span class="armor" data-ratio="bonusarmor_ratio ${e.coeff}">${e.coeff} Bonus Armor</span>`;
-            //         case "armor":
-            //           return `<span class="armor" data-ratio="armor_ratio ${e.coeff}">${e.coeff} Armor</span>`;
-            //         case "bonusspellblock":
-            //           return `<span class="mr" data-ratio="bonusspellblock_ratio ${e.coeff}">${e.coeff} Bonus MR</span>`;
-            //         case "spellblock":
-            //           return `<span class="mr" data-ratio="spellblock_ratio ${e.coeff}">${e.coeff} MR</span>`;
-            //         default:
-            //           console.log(`Unknown vars.link value = ${e.link}`);
-            //           return `<span class="spelleffect" data-ratio="special ${e.coeff}" data-ratio-special="${e.link}">${e.coeff} ?</span>`;
-            //       }
-            //     }
-            //   }
-            // }
-        } catch (e) {
-            console.log('Spell effect error:');
-            console.log(e);
+function numberExpand(numberToNnumber, forceRange) {
+    return numberToNnumber.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
+        let range = forceRange || Number(len) || 5;
+        start = parseFloat(eval(start));
+        end = parseFloat(eval(end));
+        if (range === 3) {
+            const diff = (end - start) / 2;
+            return `${start}/${start + diff}/${end}`;
         }
-        console.log(`Unknown spell effect '${match}'`);
-        capture = capture.replace(/\|/g, ' ')
-        return `<span class='tooltip capture-unknown'>${capture}<span class='tooltip-float'>Unknown value for '${capture}'</span></span>`;
-    };
+        const diff = (end - start) / 4;
+        return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
+    });
 }
+
+const match_lookup = {
+    // ci (or Champion icon): {{ci|<Champion>|<Custom name>}}
+    'ci': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|')
+        if (slices.length == 2)
+            return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[1]}</span>`;
+        return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}</span>`;
+    },
+    // cis (or Champion icon with possessive apostrophes): {{cis|<Champion>}}
+    'cis': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(4).split('|')
+        return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}'s</span>`;
+    },
+
+    // cai (or Champion's ability icon): {{cai|<Ability>|<Champion>|<Custom ability name>}}
+    'cai': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(4).split('|');
+        let abilty = slices[0];
+        let champ = slices[1];
+        let display = slices[0];
+        if (slices.length == 3)
+            display = slices[2];
+        return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${champ}'s ${display}</span>`;
+    },
+    // csl (or Champion skin link icon): {{csl|<Champion>|<Skin>}}
+
+    // ai (or Ability icon): {{ai|<Ability>|<Champion>|<Custom ability name>}}
+    'ai': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|');
+        let abilty = slices[0];
+        let champ = slices[1];
+        let display = slices[0];
+        if (slices.length == 3)
+            display = slices[2];
+        return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${display}</span>`;
+    },
+    // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
+    'ais': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(4).split('|');
+        let abilty = slices[0];
+        let champ = slices[1];
+        return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${abilty}'s</span>`;
+    },
+
+    // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
+
+    // ii (or Item icon): {{ii|<Item>|<Custom name>}}
+    'ii': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|');
+        return `<span class="title-tooltip blue" title="The iem '${slices[0]}'">${slices[0]}</span>`;
+    },
+
+    // iis (or Item icon with possessive apostrophes): {{iis|<Item>}}
+
+    // mi6 (or Mastery icon Season 2016): {{mi6|<Mastery>|<Custom name>}}
+
+    // mi7 (or Mastery icon Season 2017): {{mi7|<Mastery>|<Custom name>}}
+
+    // ri (or Rune icon): {{ri|<Rune>|<Custom name
+
+    // si (or Spell icon): {{si|<Spell>|<Custom name>}}
+
+    'si': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|')
+        return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1]}</span>`;
+    },
+
+    // sis (or Spell icon with possessive apostrophes): {{sis|<Spell>}}
+
+    // sti (or Stat icon): {{sti|<stat>|<Custom name>}}
+    'sti': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(4).split('|');
+        let stat = slices[0].replace(' ', '-');
+        let statName = slices[0];
+        let name = slices.slice(1).join('|') || stat;
+        // return `<span><i title=${statName} class="icon i-${stat}"></i>${name}</span>`;
+        return `<span>${name}</span>`;
+    },
+
+    // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
+    'tip': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(4).split('|');
+        let effect = slices[0];
+        let name = slices.slice(1).join('|') || effect;
+        // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
+        return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
+    },
+
+    // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
+    // uis (or Unit icon with possessive apostrophes): {{uis|<Unit>}}
+
+
+    // tt (or Text tooltip): {{tt|<Text>|<Tooltip>}}
+    'tt': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|');
+        return `<span class="title-tooltip" title="${slices[1]}">${slices[0]}</span>`;
+    },
+
+    //pp (or Passive progression): 
+    //  {{pp|<Size>|<Value1>|<Value2>|<...>|<ValueN>|<Level1>|<Level2>|<...>|<LevelN>}}
+    // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
+    // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
+    // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
+    'pp': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|');
+        console.log('Match pp=', capture, '==>', slices);
+        if (slices.length === 1) {
+            let inner = numberExpand(slices[0]);
+            console.log('Match pp=result=', inner);
+            return inner;
+        }
+        else if (slices.length === 4) {
+            let range = Number(slices[0]);
+            let setting = slices[1];
+            let top = numberExpand(slices[2], range);
+            let bot = numberExpand(slices[3], range);
+            console.log('Match pp=result=', top, bot, 'setting', setting);
+            return `<span class="title-tooltip" title="At levels ${bot}">${top} </span>`;
+        } else {
+            let range = Number(slices[0]);
+            return `<span class="title-tooltip" title="${slices.slice(1, range + 1).join(' / ')}">${slices[1]} ‒ ${slices[range]}</span>`;
+        }
+    },
+
+    // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
+    'ap': function (capture, parms, spellrankindex, retvalues) {
+        var inner = capture.substring(3);
+        inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
+            start = parseFloat(eval(start));
+            end = parseFloat(eval(end));
+            if (Number(len) === 3) {
+                const diff = (end - start) / 2;
+                return `${start}/${start + diff}/${end}`;
+            }
+            const diff = (end - start) / 4;
+            return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
+
+        });
+        inner = inner.replace(/[| ]/g, '/');
+
+        if (!retvalues.base_damage)
+            retvalues.base_damage = inner.split('/');
+        return `<span style="font-family: 'DejaVu Sans Mono', 'Lucida Console', monospace;">${inner}</span>`;
+    },
+    // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
+    'as': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|');
+        console.log('as Ability scaling =', capture, slices);
+
+        const inner = slices[0];
+        const stat = slices.length == 2 ? slices[1] : undefined;
+        const inner_lo = inner.toLowerCase();
+
+        let cssClass = stat || list_of_colors.find(c => {
+            return inner_lo.includes(c)
+        }) || 'ad';
+        cssClass = cssClass.replace(' ', '-');
+
+        if (inner.includes('AP')) {
+            if (!retvalues.ratio_ap_1)
+                retvalues.ratio_ap_1 = numeral(inner.replace(/\(/g, '')).value();
+            if (!retvalues.ratio_ap_2)
+                retvalues.ratio_ap_2 = numeral(inner.replace(/\(/g, '')).value();
+        } else if (inner.includes('AD')) {
+            if (inner.includes('bonus')) {
+                if (!retvalues.ratio_ad_2)
+                    retvalues.ratio_ad_2 = numeral(inner.replace(/\(/g, '')).value();
+            } else if (!retvalues.ratio_ad_1)
+                retvalues.ratio_ad_1 = numeral(inner.replace(/\(/g, '')).value();
+        }
+        return `<span class="${cssClass}">${inner}</span>`;
+    },
+    // sbc (or Small bold capitals): {{sbc|<Text>}}
+    'sbc': function (capture, parms, spellrankindex, retvalues) {
+        return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
+    },
+
+    //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
+
+    //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
+    'ft': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(2).split('|');
+        return `<span>${slices[0]} (${slices[1]})</span>`;
+    },
+
+    'g': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(2).split('|');
+        return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
+    },
+
+    // format number
+    'fd': function (capture, parms, spellrankindex, retvalues) {
+        return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
+    },
+
+    'st': function (capture, parms, spellrankindex, retvalues) {
+        const slices = capture.slice(3).split('|')
+        let rets = []
+        for (let i = 0; i < slices.length; i += 2) {
+            rets.push(`<a>${slices[i]}</a>: <span>${slices[i + 1]}</span>`);
+        }
+        return rets.join('<br/>');
+    },
+    // MATH OPERATORS:
+    'plus': function (capture, parms, spellrankindex, retvalues) {
+        return '+';
+    },
+    'minus': function (capture, parms, spellrankindex, retvalues) {
+        return '−';
+    },
+    'plusminus': function (capture, parms, spellrankindex, retvalues) {
+        return '±';
+    },
+    'divided by': function (capture, parms, spellrankindex, retvalues) {
+        return '÷';
+    },
+    'times': function (capture, parms, spellrankindex, retvalues) {
+        return '×';
+    },
+    'equals': function (capture, parms, spellrankindex, retvalues) {
+        return '=';
+    },
+    'degree': function (capture, parms, spellrankindex, retvalues) {
+        return '°';
+    },
+};
