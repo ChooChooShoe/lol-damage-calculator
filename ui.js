@@ -36,8 +36,11 @@ function calcStat(lvl, base, growth) {
 // Define a new component to store champion stats
 Vue.component('champion-div', {
   props: ['userid', 'isprimary'],
+  template: '#champion-div-template',
   data: function () {
     return {
+      showDamage: this.userid === 'player',
+      showDefence:  this.userid === 'target',
       champ: '',
       level: 18,
 
@@ -84,6 +87,11 @@ Vue.component('champion-div', {
     }
   },
   computed: {
+    username: function() {
+      if (this.userid === 'player')
+        return "Player's Champion";
+      return "Target's";
+    },
     flat_armorpen: {
       get: function () {
         return this.lethality * (0.6 + 0.4 * this.level / 18);

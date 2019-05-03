@@ -144,9 +144,15 @@ Vue.component('spell-effects', {
       }
     },
     dmg_onhit: function () {
-      return this.calc_dmg_onhit(this.$root.player, this.$root.target);
+      return this.calc_dmg_onhit(this.$root.player, this.$root.target, this.dmg_premitigation);
     },
     dmg_premitigation: function () {
+      return this.calc_dmg_premitigation(this.$root.player, this.$root.target) * Math.max(0, this.repeat);
+    },
+    dmg_onhit_for_one: function () {
+      return this.calc_dmg_onhit(this.$root.player, this.$root.target, this.dmg_premitigation_for_one);
+    },
+    dmg_premitigation_for_one: function () {
       return this.calc_dmg_premitigation(this.$root.player, this.$root.target);
     },
   },
@@ -217,16 +223,16 @@ Vue.component('spell-effects', {
       }
       return damage;
     },
-    calc_dmg_onhit: function (p, t) {
+    calc_dmg_onhit: function (p, t, damage) {
       switch (this.damagetype) {
         case "physical":
-          return calcDamageWithRedection(this.dmg_premitigation, t.base_armor, t.bonus_armor,
+          return calcDamageWithRedection(damage, t.base_armor, t.bonus_armor,
             p.flat_armor_reduction, p.percent_armor_reduction, p.percent_armorpen, p.percent_bonus_armorpen, p.flat_armorpen);
         case "magic":
-          return calcDamageWithRedection(this.dmg_premitigation, t.base_mr, t.bonus_mr,
+          return calcDamageWithRedection(damage, t.base_mr, t.bonus_mr,
             p.flat_mr_reduction, p.percent_mr_reduction, p.percent_magicpen, 0, p.flat_magicpen);
         case "true":
-          return this.dmg_premitigation;
+          return damage;
         default:
           return 0;
       }
