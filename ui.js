@@ -184,11 +184,35 @@ Vue.component('champion-div', {
     level: function (level, _old) {
       update_user_stats(this.stats, this, level);
     },
+    $data: {
+        handler: function(val, oldVal) {
+          window.localStorage.setItem('last_used_data_' + this.userid, JSON.stringify(val));
+        },
+        deep: true
+    },
   },
   mounted: function () {
     this.$root[this.userid] = this;
     this.champ = window.localStorage.getItem('last_used_champ_' + this.userid) || '';
-  }
+    this.load(window.localStorage.getItem('last_used_data_' + this.userid) || "{}")
+  },
+  methods: {
+    load: function(json) {
+      const data = JSON.parse(json);
+      for (let key in data) {
+        this[key] =  data[key];
+      }
+    },
+    save: function() {
+      return JSON.stringify(this.$data)
+    },
+    clear: function(andChamp=false) {
+      const lastChamp = this.champ;
+      Object.assign(this.$data, this.$options.data.call(this));
+      if(!andChamp)
+        this.champ = lastChamp;
+    },
+  },
 })
 
 export const vue = new Vue({
