@@ -46,13 +46,14 @@ Vue.component('champion-div', {
       level: 18,
 
       flat_mr_reduction: 0,
-      precent_mr_reduction: 0,
-      precent_magicpen: 0,
+      percent_mr_reduction: 0,
+      percent_magicpen: 0,
       flat_magicpen: 0,
 
       flat_armor_reduction: 0,
-      precent_armor_reduction: 0,
-      precent_armorpen: 0,
+      percent_armor_reduction: 0,
+      percent_armorpen: 0,
+      percent_bonus_armorpen: 0,
       lethality: 0,
   
       base_ad: 0,
@@ -83,6 +84,7 @@ Vue.component('champion-div', {
       critdamage: 2,
       lifesteal: 0,
       spellvamp: 0,
+      missing_hp: 0,
     }
   },
   computed: {
@@ -92,6 +94,14 @@ Vue.component('champion-div', {
       }, 
       set: function(flat_armorpen) {
         this.lethality = Math.round(45 * flat_armorpen / ( this.level + 27));
+      }
+    },
+    current_hp: {
+      get: function() {
+        return this.total_hp - this.missing_hp;
+      }, 
+      set: function(current_hp) {
+        this.missing_hp = this.total_hp - current_hp;
       }
     },
     total_ad: makeTotal('ad'),

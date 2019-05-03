@@ -164,11 +164,6 @@ export function downloadingChampionFiles(champion) {
 Vue.component('data-input', {
     //id, label_text, classColor, removeable=true, editable=true, fullsize=false
     props: ['dname', 'value', 'ispercent'],
-    data: function () {
-        return {
-            fieldvals: fieldvals,
-        }
-    },
     name: 'data-input',
     computed: {
         displayValue: function () {
@@ -250,7 +245,7 @@ export class Field {
                 this.delBtn,
             ));
 
-        this.delBtn.addEventListener('click', e => {
+        this.delBtn.addEventListener('click', _e => {
             this.el.classList.add('hidden');
             this.input.value = '';
             recalc();
@@ -259,66 +254,74 @@ export class Field {
     get() {
         return this.input.value
     }
-    update(data) {
+    update(_data) {
 
     }
 }
-
-const fieldvals = [
-    ['dmg_premitigation', 'Pre-Mitigation Damage', '', ''],
-    ['dmg_onhit', 'After Resistances', '', ''],
-    ['base_damage', 'Base Damage', 'spelleffect', ''],
-    ['ap_ratio', '', 'ap', 'AP'],
-    ['total_ad_ratio', '', 'ad', 'AD'],
-    ['bonus_ad_ratio', '', 'ad', 'Bonus AD']
-];
+const known_ratios = {
+    'base_damage': { prefex: 'Base Damage', color: '', sufex: '', },
+    'ap': { color: 'ap', sufex: 'AP', },
+    'total_ad': { color: 'ad', sufex: 'AD', },
+    'bonus_ad': { color: 'ad', sufex: 'Bonus AD', },
+    'total_hp': { color: 'health', sufex: 'Max Health', },
+    'bonus_hp': { color: 'health', sufex: 'Bonus Health', },
+    'missing_hp': { color: 'health', sufex: 'Missing Health', },
+    'target.total_hp': { color: 'health', sufex: "Target's Max Health", },
+    'target.bonus_hp': { color: 'health', sufex: "Target's Bonus Health", },
+    'target.current_hp': { color: 'health', sufex: "Target's Current Health", },
+    'target.missing_hp': { color: 'health', sufex: "Target's Missing Health", },
+    'bonus_armor': { color: 'armor', sufex: 'Bonus Armor', },
+    'total_armor': { color: 'armor', sufex: 'Armor', },
+    'bonus_mr': { color: 'mr', sufex: 'Bonus Magic Resistance', },
+    'total_mr': { color: 'mr', sufex: 'Magic Resistance', },
+};
 
 Vue.component('spell-field', {
-    //id, label_text, classColor, removeable=true, editable=true, fullsize=false
-    props: ['fieldtype', 'value'],
+    props: ['value', 'type'],
     data: function () {
         return {
-            fieldvals: fieldvals,
+            known_ratios: known_ratios,
         }
     },
     computed: {
+        prefex: function () {
+            return this.known_ratios[this.type].prefex || '';
+        },
+        color: function () {
+            return this.known_ratios[this.type].color || '';
+        },
+        sufex: function () {
+            return this.known_ratios[this.type].sufex || '';
+        },
         displayValue: function () {
-            return this.encode(this.value);
+            if (this.data === 'base_damage')
+                return +(Math.round(this.value + "e+6") + "e-6");
+            else {
+                const x = +(Math.round(this.value + "e+6") + "e-6");
+                return '' + (x < 0 ? x : '+' + x) + '%';
+            }
         },
         ispercent: function () {
-            return this.fieldtype > 2;
+            return this.type !== 'base_damage';
         },
     },
     methods: {
-        rnd: function (val) {
-            return +(Math.round(val + "e+6") + "e-6");
-        },
-        rnd2: function (val) {
-            const x = +(Math.round(val + "e+6") + "e-6");
-            return x < 0 ? x : '+' + x;
-        },
         encode(val) {
-            if (this.fieldtype > 2)
+            if (this.ispercent)
                 return +(Math.round(val + "e+12") + "e-10");;
             return val;
         },
         decode(val) {
-            if (this.fieldtype > 2)
+            if (this.ispercent)
                 return parseFloat(val) / 100 || 0;
             return parseFloat(val);
         },
     },
     template: `<div class="flex flex-row">
-  <span>{{ fieldvals[fieldtype][1] }} 
-  <span :class="fieldvals[fieldtype][2]" v-if="ispercent">{{ rnd2(displayValue) + '%' }} {{fieldvals[fieldtype][3]}}
-  </span>
-  <span :class="fieldvals[fieldtype][2]" v-if="fieldtype === 2">
-  {{ rnd(displayValue) }} {{fieldvals[fieldtype][3]}}
-  </span>
-  </span>
+  <span>{{ prefex }}<span :class="color">{{ displayValue }} {{ sufex }}</span></span>
   <input class="input block numinput" type="number" step="1" title=""
-   :name="fieldvals[fieldtype][0]" :value="encode(value)" v-on:input="$emit('input', decode($event.target.value))">
-  <span class="inline">{{ ispercent ? '%' : '' }}</span>
+   :value="encode(value)" v-on:input="$emit('input', decode($event.target.value))">
+  <span class="inline">{{ ispercent ? '%' : ' ' }}</span>
   </div>`
 });
 
@@ -336,21 +339,18 @@ Vue.component('spell-tooltip', {
 });
 
 Vue.component('spell-effects', {
-    props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'custom'],
+    props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'iscustom'],
     name: 'spell-effects',
     data: function () {
         return {
             damagetype: 'not_detected',
             base_damage: 0,
-            ap_ratio: 0,
-            total_ad_ratio: 0,
-            bonus_ad_ratio: 0,
+            showRatiosDropdown: false,
+            ratios: {},
+            vars: null,
         }
     },
     computed: {
-        iscustom: function () {
-            return this.custom === "true";
-        },
         damagetype_user: function () {
             switch (this.damagetype) {
                 case 'no_damage':
@@ -368,18 +368,18 @@ Vue.component('spell-effects', {
             }
         },
         dmg_onhit: function () {
-            return this.calc_dmg_onhit();
+            return this.calc_dmg_onhit(this.$root.player, this.$root.target);
         },
         dmg_premitigation: function () {
-            return this.calc_dmg_premitigation();
+            return this.calc_dmg_premitigation(this.$root.player, this.$root.target);
         },
     },
-    template: `<div class="container float-clear spell-effect" :id="id">
+    template: `<div class="container float-clear spell-effect" :id="id" @click="showRatiosDropdown = $event.target.matches('.dropbutton')">
   <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
-    <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"> {{ iscustom ? 'Custom' : '' }} Effect {{ effectindex + 1}}</output>
-    <input v-if="iscustom" name="remove_effect" class="inline float-right" type="button" value="Remove" onclick="remSpellEffect(this)" @click="removeEffect()">
-    <output id="effect_value" class="column"></output>
-    <div class="field inline">
+    <h4>{{ iscustom ? 'Custom' : '' }} Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}</h4>
+    <input v-if="iscustom" name="remove_effect" class="inline float-right" type="button" value="Remove" @click="removeEffect()">
+    <match-replace class="column effect-value" :text="effect" :spellrankindex="spellrankindex" v-model="vars"></match-replace>
+    <div class="field column">
       <label :for="id + '-damagetype'">Damage Type</label>
       <select :id="id + '-damagetype'" v-model="damagetype" name="damage_type" class="input" oninput="styleSelect(this)">
         <option value="no_damage" class="mixed">No Damage</option>
@@ -387,12 +387,31 @@ Vue.component('spell-effects', {
         <option value="physical" class="ad">Physical Damage</option>
         <option value="magic" class="ap">Magic Damage</option>
         <option value="true" class="true">True Damage</option>
-        <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
       </select>
-      <spell-field :fieldtype="2" v-model="base_damage"></spell-field>
-      <spell-field :fieldtype="3" v-model="ap_ratio"></spell-field>
-      <spell-field :fieldtype="4" v-model="total_ad_ratio"></spell-field>
-      <spell-field :fieldtype="5" v-model="bonus_ad_ratio"></spell-field>
+      
+    <spell-field v-model="base_damage" type="base_damage"></spell-field>
+    <spell-field v-for="(item, key, index) in ratios"
+        :key="item.target  + '-' + item.key + '-ratio'"
+        :type="item.target === 'target' ? 'target.' + item.key : item.key"
+        v-model="item.value">
+    </spell-field>
+    <input class="inline dropbutton" type="button" value="Add Ratio+">
+    <div :class="showRatiosDropdown ? '' : 'hidden'">
+    <span v-if="ratios['player-ap'] === undefined" class="simple-link" @click="addRatio('ap')">AP Ratio</span>-
+    <span v-if="ratios['player-total_ad'] === undefined" class="simple-link" @click="addRatio('total_ad')">AD Ratio</span>-
+    <span v-if="ratios['player-bonus_ad'] === undefined" class="simple-link" @click="addRatio('bonus_ad')">Bonus AD Ratio</span>-
+    <span v-if="ratios['player-total_hp'] === undefined" class="simple-link" @click="addRatio('total_hp')">Health Ratio</span>-
+    <span v-if="ratios['player-bonus_hp'] === undefined" class="simple-link" @click="addRatio('bonus_hp')">Bonus Health Ratio</span>-
+    <span v-if="ratios['player-missing_hp'] === undefined" class="simple-link" @click="addRatio('missing_hp')">Missing Health</span>-
+    <span v-if="ratios['target-total_hp'] === undefined" class="simple-link" @click="addRatio('total_hp','target')"> Target's Max Health</span>-
+    <span v-if="ratios['target-bonus_hp'] === undefined" class="simple-link" @click="addRatio('bonus_hp','target')"> Target's Bonus Health</span>-
+    <span v-if="ratios['target-current_hp'] === undefined" class="simple-link" @click="addRatio('current_hp','target')"> Target's Current Health</span>-
+    <span v-if="ratios['target-missing_hp'] === undefined" class="simple-link" @click="addRatio('missing_hp','target')"> Target's Missing Health</span>-
+    <span v-if="ratios['player-bonus_armor'] === undefined" class="simple-link" @click="addRatio('bonus_armor')">Bonus Armor Ratio</span>-
+    <span v-if="ratios['player-total_armor'] === undefined" class="simple-link" @click="addRatio('total_armor')">Armor Ratio</span>-
+    <span v-if="ratios['player-bonus_mr'] === undefined" class="simple-link" @click="addRatio('bonus_mr')">Bonus MR Ratio</span>-
+    <span v-if="ratios['player-total_mr'] === undefined" class="simple-link" @click="addRatio('total_mr')">MR Ratio</span>
+    </div>
     </div>
     <div style="width: 100%;height: 1.4em;"></div>
 
@@ -409,39 +428,73 @@ Vue.component('spell-effects', {
         this.$root.spellComponents = this.$root.spellComponents.filter(el => el !== self);
     },
     watch: {
-        'spell': function () {
-            this.calcspell();
+        spell: {
+            immediate: true,
+            handler() {
+                if (this.spell.damagetype.includes("agic")) {
+                    this.damagetype = "magic";
+                } else if (this.spell.damagetype.includes("hysical")) {
+                    this.damagetype = "physical";
+                } else if (this.spell.damagetype.includes("rue")) {
+                    this.damagetype = "true";
+                } else if (this.spell.damagetype.includes("no")) {
+                    this.damagetype = "no_damage";
+                } else {
+                    this.damagetype = "not_detected";
+                }
+            }
         },
-        'spellrankindex': function () {
-            this.calcspell();
-        },
+        vars: function (vars) {
+            this.ratios = {};
+            if ('base_damage' in vars) {
+                this.base_damage = numeral(vars.base_damage[this.spellrankindex]).value();
+            }
+            if ('ratio_ad_1' in vars) {
+                this.addRatio('total_ad', 'player',vars.ratio_ad_1 );
+            }
+            if ('ratio_ad_2' in vars) {
+                this.addRatio('bonus_ad', 'player',vars.ratio_ad_2 );
+            }
+            if ('ratio_ap_1' in vars) {
+                this.addRatio('ap', 'player',vars.ratio_ap_1 );
+            }
+            if ('ratio_ap_2' in vars) {
+            }
+        }
     },
     methods: {
+        addRatio: function (ratio, target, value) {
+            target = target || 'player'
+            value = value || 0
+            Vue.set(this.ratios, target + '-' + ratio, {
+                target: target,
+                key: ratio,
+                value: value
+            });
+        },
         removeEffect: function () {
             if (this.iscustom)
                 this.$parent.customEffects = this.$parent.customEffects.filter(i => i !== this.effectindex)
         },
-        calc_dmg_premitigation: function (player, _target) {
-            const p = player || this.$root.player;
-            return (this.base_damage + (p.ap * this.ap_ratio) + (p.total_ad * this.total_ad_ratio) + (p.bonus_ad * this.bonus_ad_ratio));
+        calc_dmg_premitigation: function (player, target) {
+            let damage = this.base_damage;
+            for (const r in this.ratios) {
+                const ratio = this.ratios[r];
+                if (ratio.target === 'target')
+                    damage += target[ratio.key] || 0 * ratio.value;
+                else
+                    damage += player[ratio.key] || 0 * ratio.value;
+            }
+            return damage;
         },
-        calc_dmg_onhit: function (player, target) {
-            const p = player || this.$root.player;
-            const t = target || this.$root.target;
+        calc_dmg_onhit: function (p, t) {
             switch (this.damagetype) {
                 case "physical":
-                    const eff_armor = t.base_armor * (1.0 - p.precent_armorpen / 100) - p.flat_armorpen;
-                    if (eff_armor > 0)
-                        return this.dmg_premitigation * (100 / (100 + eff_armor));
-                    else
-                        return 2 - (100 / (100 - eff_armor));
+                    return calcDamageWithRedection(this.dmg_premitigation, t.base_armor, t.bonus_armor,
+                        p.flat_armor_reduction, p.percent_armor_reduction, p.percent_armorpen, p.percent_bonus_armorpen, p.flat_armorpen);
                 case "magic":
-                    const percent_magicpen = p.percent_magicpen / 100 || p.hasVoidStaff ? 0.4 : 0.0;
-                    const eff_mr = t.base_mr * (1.0 - percent_magicpen) - p.flat_magicpen;
-                    if (eff_mr > 0)
-                        return this.dmg_premitigation * (100 / (100 + eff_mr));
-                    else
-                        return 2 - (100 / (100 - eff_mr));
+                    return calcDamageWithRedection(this.dmg_premitigation, t.base_mr, t.bonus_mr,
+                        p.flat_mr_reduction, p.percent_mr_reduction, p.percent_magicpen, 0, p.flat_magicpen);
                 case "true":
                     return this.dmg_premitigation;
                 default:
@@ -450,60 +503,58 @@ Vue.component('spell-effects', {
         },
         calcspell: function () {
             //TODO test if this works
-            tippy(`#${this.$el.id} [data-tippy-content]`, {
-                animation: 'fade',
-                duration: 50,
-                delay: [0, 0],
-                followCursor: true,
-            });
+            // tippy(`#${this.$el.id} [data-tippy-content]`, {
+            //     animation: 'fade',
+            //     duration: 50,
+            //     delay: [0, 0],
+            //     followCursor: true,
+            // });
 
-            const leveling = matchReplaceSpellEffects(this.effect, null, this.spellrankindex);
-            var cloned = this.$el;
-
-            var inner_form = cloned.getElementsByTagName("form")[0];
-
-            // inner_form.effect_name.value = `Effect ${(this.effectindex + 10).toString(36).toUpperCase()}: `;
-            // inner_form.removeChild(inner_form.effect_name);
-            // inner_form.removeChild(inner_form.remove_effect);
-            if (!this.iscustom)
-                inner_form.effect_value.innerHTML = leveling.str;
-
-            if (leveling.vars.base_damage) {
-                this.base_damage = numeral(leveling.vars.base_damage[this.spellrankindex]).value()
-            }
-            if (leveling.vars.ratio_ap_1) {
-                this.ap_ratio = leveling.vars.ratio_ap_1;
-            }
-            // if (leveling.vars.ratio_ap_2) {
-            //   this.ap_ratio = leveling.vars.ratio_ap_2;
+            // var inputs = this.$el.getElementsByClassName("input");
+            // for (var i = 0; i < inputs.length; i++) {
+            //     // inputs[i].addEventListener("input", recalc);
+            //     inputs[i].addEventListener("focus", e => e.currentTarget.select());
             // }
-            if (leveling.vars.ratio_ad_1) {
-                this.total_ad_ratio = leveling.vars.ratio_ad_1;
-            }
-            if (leveling.vars.ratio_ad_2) {
-                this.bonus_ad_ratio = leveling.vars.ratio_ad_2;
-            }
-
-            if (this.spell.damagetype.includes("agic")) {
-                this.damagetype = "magic";
-            } else if (this.spell.damagetype.includes("hysical")) {
-                this.damagetype = "physical";
-            } else if (this.spell.damagetype.includes("rue")) {
-                this.damagetype = "true";
-            } else if (this.spell.damagetype.includes("no")) {
-                this.damagetype = "no_damage";
-            } else {
-                this.damagetype = "not_detected";
-            }
-
-            var inputs = cloned.getElementsByClassName("input");
-            for (var i = 0; i < inputs.length; i++) {
-                // inputs[i].addEventListener("input", recalc);
-                inputs[i].addEventListener("focus", e => e.currentTarget.select());
-            }
         }
     }
 });
+
+const clampP = function (num) {
+    return Math.max(0, Math.min(num, 1))
+}
+const calcDamageWithRedection = function (damage, base, bonus, flat_reduction, percent_reduction, percent_pen, percent_bonus_pen, flat_pen) {
+    // Flat Reduction is distuputed between base and bonus armor.
+    const base_ratio = base / (base + bonus);
+    const bonus_ratio = bonus / (base + bonus);
+    // Flat Reduction
+    let ebase = base - (flat_reduction * base_ratio);
+    if (ebase > 0) {
+        // % Reduction
+        ebase *= clampP(1 - percent_reduction);
+        if (ebase > 0) {
+            // % Pen
+            ebase *= clampP(1 - percent_pen);
+        }
+    }
+    // Flat Reduction
+    let ebonus = bonus - (flat_reduction * bonus_ratio);
+    if (ebonus > 0) {
+        // % Reduction
+        ebonus *= clampP(1 - percent_reduction);
+        if (ebonus > 0) {
+            // % Pen and % Bonus Pen
+            ebonus *= clampP(1 - percent_pen) * clampP(1 - percent_bonus_pen);
+        }
+    }
+    let defence = ebase + ebonus;
+    if (defence > 0) {
+        // Flat pen only for positive armor
+        defence = Math.max(0, defence - flat_pen);
+        return damage * (100 / (100 + defence));
+    }
+    else
+        return damage * (2 - (100 / (100 - defence)));
+}
 
 Vue.component('spell-span', {
     props: ['list', 'spellrankindex'],
@@ -540,19 +591,18 @@ Vue.component('spell-notes', {
     template: `<div class="spell-notes float-clear">
     <input v-model="isopen" :id="'collapsible-'+id" class="hidden" type="checkbox">
     <label :for="'collapsible-'+id" class="lbl-toggle">More Info <span class="blue" style="user-select: none;">[{{ isopen ? 'Hide' : 'Show'}}]</span></label>
-    <div class="collapsible-content" v-html="calchtml()" :style="calcheight()"></div>
+    <div class="collapsible-content" :style="calcheight">
+        <match-replace :text="text"></match-replace>
+    </div>
   </div>`,
-    methods: {
-        calchtml: function () {
-            const notesHtml = '<p>' + this.spell.notes.join('</p><p>') + '</p>';
-            let ret = matchReplaceSpellEffects(notesHtml, null, 0);
-            return ret.str;
+    computed: {
+        text: function () {
+            return '<p>' + this.spell.notes.join('</p><p>') + '</p>';
         },
         calcheight: function () {
-            console.log(this);
-
-            return this.isopen ? 'max-height: ' + ((this.spell.notes.length * 35) + 30) + 'px;' : 'max-height: 0px;'
-        }
+            const len = this.spell.notes.length;
+            return this.isopen ? 'max-height: ' + ((len * 35) + 30) + 'px;' : 'max-height: 0px;'
+        },
     }
 });
 
@@ -581,7 +631,7 @@ Vue.component('champion-spells', {
     </img>
     <h2>{{ spell.name }} ({{ spellkey }})</h2>
     <form autocomplete="off" method="POST" action="#">
-      <spell-tooltip :spell="spell" :spellrankindex="spellrankindex"></spell-tooltip>
+      <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'" :spellrankindex="spellrankindex"></match-replace>
 
       <div class="float-left" v-if="spell.maxrank > 0">
       Spell Rank ({{ spellrankindex + 1 }})
@@ -611,7 +661,8 @@ Vue.component('champion-spells', {
       :spell="spell"
       :effect="item"
       :effectindex="index"
-      :spellrankindex="spellrankindex">
+      :spellrankindex="spellrankindex"
+      :iscustom="false">
     </spell-effects>
 
     <spell-effects
@@ -622,7 +673,7 @@ Vue.component('champion-spells', {
       effect=""
       :effectindex="item"
       :spellrankindex="spellrankindex"
-      custom="true">
+      :iscustom="true">
     </spell-effects>
     
     <input class="right" name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
@@ -634,112 +685,59 @@ Vue.component('champion-spells', {
   `
 })
 
-export class SpellEffect {
-    constructor(id, champion, spell, key, spriteUrl) {
-        this.spell = spell;
-        const is_passive = this.spell.skill === 'I';
-        this.e
-        this.form.defaultTooltipHtml = '<p>' + spell.description.join('</p><p>') + '</p>';
-        var inputs = this.el.getElementsByClassName("input");
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].addEventListener("input", recalc);
-            inputs[i].addEventListener("focus", e => e.currentTarget.select());
+/// Called when the spell rank radio has changed.
+export function onSpellRankInput(_form, _create = false) {
+    return;
+}
+
+Vue.component('match-replace', {
+    props: ['spellrankindex', 'text', 'value'],
+    data: function () {
+        return {
+            templateRender: null,
         }
-        if (!is_passive) {
-            for (let x of this.form.spellrank) {
-                if (parseInt(x.value) > spell.maxrank) {
-                    x.classList.add('hidden');
-                } else {
-                    x.addEventListener('input', e => this.update());
-                    if (parseInt(x.value) === spell.maxrank) {
-                        x.checked = true;
-                    }
+    },
+    computed: {
+        template: function () {
+            const text = this.text || this.$slots.default || '';
+            const replaced = matchReplaceSpellEffects(text.toString(), null, this.spellrankindex || 0);
+            this.$emit('input', replaced.vars);
+            return `<div>${replaced.str}</div>`;
+        },
+    },
+    watch: {
+        // Every time the template prop changes, I recompile it to update the DOM
+        template: {
+            immediate: true, // makes the watcher fire on first render, too.
+            handler() {
+                var res = Vue.compile(this.template);
+
+                this.templateRender = res.render;
+
+                // staticRenderFns belong into $options, 
+                // appearantly
+                this.$options.staticRenderFns = []
+
+                // clean the cache of static elements
+                // this is a cache with the results from the staticRenderFns
+                this._staticTrees = []
+
+                // Fill it with the new staticRenderFns
+                for (var i in res.staticRenderFns) {
+                    //staticRenderFns.push(res.staticRenderFns[i]);
+                    this.$options.staticRenderFns.push(res.staticRenderFns[i])
                 }
             }
         }
-        this.adeffect.addEventListener('click', e => addSpellEffect(this.form));
-    }
-
-    update(x) {
-        const is_passive = this.spell.skill === 'I';
-
-        // const idx = this.form.spellrank.value;
-        const spellrankindex = is_passive ? 0 : asNumber(this.form.spellrank) - 1;
-        // for (var i = 1; i < 7; i++) {
-        //   form['cooldown' + i].setAttribute('data-active', idx == i);
-        //   form['cost' + i].setAttribute('data-active', idx == i);
-
-        // }
-
-    }
-}
-/// Called when the spell rank radio has changed.
-export function onSpellRankInput(form, create = false) {
-    return;
-    //for riot's data
-    // var eff_index = 0;
-
-    // tooltip.replace(/deal(.*?)damage/g, function (match, capture) {
-    //   console.log('deal damage',match);
-    //   var cloned = document.getElementById('spell_data_effect_template').cloneNode(true);
-
-    //   // cloned.classList.add(`owner-${form.spellDao}`);
-    //   cloned.id = `spell_data_effect_${form.spellDao.id}_${eff_index}`
-
-    //   var inner_form = cloned.getElementsByTagName("form")[0];
-    //   inner_form.id = `spell_data_effect_${form.spellDao.id}_${eff_index}_form`
-
-    //   inner_form.effect_name.value = `Effect ${(eff_index + 10).toString(36).toUpperCase()}: `;
-
-    //   inner_form.effect_value.innerHTML = '"' + form.spell.leveling[eff_index] + '"';
-
-    //   //data-base="${exact}"
-    //   var base = match.match(/data-base=\"(\S+)\"/);
-    //   if (base) {
-    //     inner_form.base_damage.value = base[1];
-    //   }
-
-    //   /// takes values from data-ratio to add default ratios. 
-    //   var ratios = match.match(/data-ratio=\"(\w+) ([\d.]+)\"/);
-    //   if (ratios) {
-    //     for (var i = 0; i < ratios.length; i += 3) {
-    //       try {
-    //         if (ratios[i + 1] === 'special') {
-    //           var special = /data-ratio-special=\"(\S+)\"/.exec(match);
-    //           if (special)
-    //             console.log('Creating special ratio = ' + special[1]);
-    //         } else {
-    //           inner_form[ratios[i + 1]].value = ratios[i + 2];
-    //         }
-    //       } catch (e) {
-    //         console.log('Unknown ratio ' + ratios);
-    //       }
-    //     }
-    //   }
-
-    //   if (match.includes("magic")) {
-    //     // form.ap_ratio.value = rnd3p(e.coeff);
-    //     inner_form.damage_type.selectedIndex = 3;
-    //   } else if (match.includes("physical")) {
-    //     // form.ap_ratio.value = rnd3p(e.coeff);
-    //     inner_form.damage_type.selectedIndex = 2;
-    //   } else {
-    //     console.log('Could not detect damage')
-    //     inner_form.damage_type.selectedIndex = 1;
-    //   }
-
-    //   var inputs = cloned.getElementsByClassName("input");
-    //   for (var i = 0; i < inputs.length; i++) {
-    //     inputs[i].addEventListener("input", recalc);
-    //   }
-    //   add_to_node.appendChild(cloned);
-
-    //   eff_index = eff_index + 1;
-    // });
-
-    // console.log(form['tooltip']);
-
-}
+    },
+    render(h) {
+        if (!this.templateRender) {
+            return h('div', 'loading...');
+        } else { // If there is a template, I'll show it
+            return this.templateRender();
+        }
+    },
+})
 
 function define_keyword(word) {
     if (word === 'stun')
@@ -748,10 +746,10 @@ function define_keyword(word) {
         return `<b>${word}</b>`
 }
 
-function matchReplaceSpellEffects(string, form, spellrankindex) {
+function matchReplaceSpellEffects(string, _null, spellrankindex) {
     let retvalues = {}
-    string = string.replace(/<!--\n-->/g, '<br/>');
-    string = string.replace(/\n/g, '<br/>');
+    string = string.replace(/<!--\n-->/g, '<br>');
+    string = string.replace(/\n/g, '<br>');
     for (let i = 0; i < 15; i++) {
         if (string.includes('{{'))
             string = string.replace(/{{([^{}]*)}}/g, function (match, capture) {
@@ -760,7 +758,7 @@ function matchReplaceSpellEffects(string, form, spellrankindex) {
                 if (parms[0] in match_lookup) {
                     const inner_fn = match_lookup[parms[0]];
                     try {
-                        return inner_fn(capture, parms, spellrankindex, retvalues);
+                        return inner_fn(capture, parms.slice(1), spellrankindex, retvalues);
                     } catch (e) {
                         console.log(`Error for spell effect '${match}'`);
                         console.log(e);
@@ -787,7 +785,7 @@ function matchReplaceSpellEffects(string, form, spellrankindex) {
     };
 }
 function numberExpand(numberToNnumber, forceRange) {
-    return numberToNnumber.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
+    return numberToNnumber.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (_match, start, end, len) => {
         let range = forceRange || Number(len) || 5;
         start = parseFloat(eval(start));
         end = parseFloat(eval(end));
@@ -802,21 +800,18 @@ function numberExpand(numberToNnumber, forceRange) {
 
 const match_lookup = {
     // ci (or Champion icon): {{ci|<Champion>|<Custom name>}}
-    'ci': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|')
-        if (slices.length == 2)
-            return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[1]}</span>`;
-        return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}</span>`;
+    'ci': function (_capture, parms, _spellrankindex, _retvalues) {
+        if (parms.length === 2)
+            return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[1]}</span>`;
+        return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[0]}</span>`;
     },
     // cis (or Champion icon with possessive apostrophes): {{cis|<Champion>}}
-    'cis': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(4).split('|')
-        return `<span class="chamption-name" data-champkey="${slices[0]}">${slices[0]}'s</span>`;
+    'cis': function (_capture, parms, _spellrankindex, _retvalues) {
+        return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[0]}'s</span>`;
     },
 
     // cai (or Champion's ability icon): {{cai|<Ability>|<Champion>|<Custom ability name>}}
-    'cai': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(4).split('|');
+    'cai': function (_capture, slices, _spellrankindex, _retvalues) {
         let abilty = slices[0];
         let champ = slices[1];
         let display = slices[0];
@@ -827,8 +822,7 @@ const match_lookup = {
     // csl (or Champion skin link icon): {{csl|<Champion>|<Skin>}}
 
     // ai (or Ability icon): {{ai|<Ability>|<Champion>|<Custom ability name>}}
-    'ai': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|');
+    'ai': function (_capture, slices, _spellrankindex, _retvalues) {
         let abilty = slices[0];
         let champ = slices[1];
         let display = slices[0];
@@ -837,19 +831,20 @@ const match_lookup = {
         return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${display}</span>`;
     },
     // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
-    'ais': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(4).split('|');
+    'ais': function (_capture, slices, _spellrankindex, _retvalues) {
         let abilty = slices[0];
         let champ = slices[1];
         return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${abilty}'s</span>`;
     },
 
     // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
+    'bi': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip blue" title="The Buff '${slices[0]}'">${slices[1] || slices[0]}</span>`;
+    },
 
     // ii (or Item icon): {{ii|<Item>|<Custom name>}}
-    'ii': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|');
-        return `<span class="title-tooltip blue" title="The iem '${slices[0]}'">${slices[0]}</span>`;
+    'ii': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip blue" title="The item '${slices[0]}'">${slices[1] || slices[0]}</span>`;
     },
 
     // iis (or Item icon with possessive apostrophes): {{iis|<Item>}}
@@ -862,16 +857,17 @@ const match_lookup = {
 
     // si (or Spell icon): {{si|<Spell>|<Custom name>}}
 
-    'si': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|')
-        return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1]}</span>`;
+    'si': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1] || slices[0]}</span>`;
     },
 
     // sis (or Spell icon with possessive apostrophes): {{sis|<Spell>}}
+    'sis': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1] || slices[0]}'s</span>`;
+    },
 
     // sti (or Stat icon): {{sti|<stat>|<Custom name>}}
-    'sti': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(4).split('|');
+    'sti': function (_capture, slices, _spellrankindex, _retvalues) {
         let stat = slices[0].replace(' ', '-');
         let statName = slices[0];
         let name = slices.slice(1).join('|') || stat;
@@ -880,8 +876,7 @@ const match_lookup = {
     },
 
     // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
-    'tip': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(4).split('|');
+    'tip': function (_capture, slices, _spellrankindex, _retvalues) {
         let effect = slices[0];
         let name = slices.slice(1).join('|') || effect;
         // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
@@ -889,12 +884,19 @@ const match_lookup = {
     },
 
     // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
+
+    'ui': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip blue" title="The Unit '${slices[0]}'">${slices[1] || slices[0]}</span>`;
+    },
+
     // uis (or Unit icon with possessive apostrophes): {{uis|<Unit>}}
+    'uis': function (_capture, slices, _spellrankindex, _retvalues) {
+        return `<span class="title-tooltip blue" title="The Unit '${slices[0]}'">${slices[1] || slices[0]}'s</span>`;
+    },
 
 
     // tt (or Text tooltip): {{tt|<Text>|<Tooltip>}}
-    'tt': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|');
+    'tt': function (_capture, slices, _spellrankindex, _retvalues) {
         return `<span class="title-tooltip" title="${slices[1]}">${slices[0]}</span>`;
     },
 
@@ -903,7 +905,7 @@ const match_lookup = {
     // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
     // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
     // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-    'pp': function (capture, parms, spellrankindex, retvalues) {
+    'pp': function (capture, _parms, _spellrankindex, _retvalues) {
         const slices = capture.slice(3).split('|');
         console.log('Match pp=', capture, '==>', slices);
         if (slices.length === 1) {
@@ -925,29 +927,30 @@ const match_lookup = {
     },
 
     // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-    'ap': function (capture, parms, spellrankindex, retvalues) {
+    'ap': function (capture, _parms, spellrankindex, retvalues) {
         var inner = capture.substring(3);
-        inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (match, start, end, len) => {
+        inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (_match, start, end, len) => {
             start = parseFloat(eval(start));
             end = parseFloat(eval(end));
             if (Number(len) === 3) {
                 const diff = (end - start) / 2;
-                return `${start}/${start + diff}/${end}`;
+                return `${start}|${start + diff}|${end}`;
             }
             const diff = (end - start) / 4;
-            return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
+            return `${start}|${start + diff * 1}|${start + diff * 2}|${start + diff * 3}|${end}`;
 
         });
-        inner = inner.replace(/[| ]/g, '/');
+        const list = inner.split('|');
 
         if (!retvalues.base_damage)
-            retvalues.base_damage = inner.split('/');
-        return `<span style="font-family: 'DejaVu Sans Mono', 'Lucida Console', monospace;">${inner}</span>`;
+            retvalues.base_damage = list;
+
+        return `<spell-span :list="[${list}]" :spellrankindex="${spellrankindex}"></spell-span>`;
     },
     // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
-    'as': function (capture, parms, spellrankindex, retvalues) {
+    'as': function (capture, _parms, _spellrankindex, retvalues) {
         const slices = capture.slice(3).split('|');
-        console.log('as Ability scaling =', capture, slices);
+        // console.log('as Ability scaling =', capture, slices);
 
         const inner = slices[0];
         const stat = slices.length == 2 ? slices[1] : undefined;
@@ -973,56 +976,53 @@ const match_lookup = {
         return `<span class="${cssClass}">${inner}</span>`;
     },
     // sbc (or Small bold capitals): {{sbc|<Text>}}
-    'sbc': function (capture, parms, spellrankindex, retvalues) {
+    'sbc': function (capture, _parms, _spellrankindex, _retvalues) {
         return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
     },
 
     //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
 
     //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
-    'ft': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(2).split('|');
+    'ft': function (capture, slices, _spellrankindex, _retvalues) {
         return `<span>${slices[0]} (${slices[1]})</span>`;
     },
 
-    'g': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(2).split('|');
+    'g': function (_capture, slices, _spellrankindex, _retvalues) {
         return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
     },
 
     // format number
-    'fd': function (capture, parms, spellrankindex, retvalues) {
+    'fd': function (capture, _parms, _spellrankindex, _retvalues) {
         return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
     },
 
-    'st': function (capture, parms, spellrankindex, retvalues) {
-        const slices = capture.slice(3).split('|')
+    'st': function (_capture, slices, _spellrankindex, _retvalues) {
         let rets = []
         for (let i = 0; i < slices.length; i += 2) {
-            rets.push(`<a>${slices[i]}</a>: <span>${slices[i + 1]}</span>`);
+            rets.push(`<span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span>`);
         }
-        return rets.join('<br/>');
+        return rets.join('<br>');
     },
     // MATH OPERATORS:
-    'plus': function (capture, parms, spellrankindex, retvalues) {
+    'plus': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '+';
     },
-    'minus': function (capture, parms, spellrankindex, retvalues) {
+    'minus': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '−';
     },
-    'plusminus': function (capture, parms, spellrankindex, retvalues) {
+    'plusminus': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '±';
     },
-    'divided by': function (capture, parms, spellrankindex, retvalues) {
+    'divided by': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '÷';
     },
-    'times': function (capture, parms, spellrankindex, retvalues) {
+    'times': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '×';
     },
-    'equals': function (capture, parms, spellrankindex, retvalues) {
+    'equals': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '=';
     },
-    'degree': function (capture, parms, spellrankindex, retvalues) {
+    'degree': function (_capture, _parms, _spellrankindex, _retvalues) {
         return '°';
     },
 };
