@@ -9,7 +9,7 @@ function define_keyword(word) {
 }
 
 export default function matchReplaceSpellEffects(text, spellrankindex) {
-  let retvalues = {}
+  let vars = {ratios: {}}
   text = text.replace(/<!--\n-->/g, '<br>');
   text = text.replace(/\n/g, '<br>');
   for (let i = 0; i < 15; i++) {
@@ -20,7 +20,7 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
         if (parms[0] in match_lookup) {
           const inner_fn = match_lookup[parms[0]];
           try {
-            return inner_fn(capture, parms.slice(1), spellrankindex, retvalues);
+            return inner_fn(capture, parms.slice(1), spellrankindex, vars);
           } catch (e) {
             console.log(`Error for spell effect '${match}'`);
             console.log(e);
@@ -43,7 +43,7 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
 
   return {
     str: text,
-    vars: retvalues
+    vars: vars
   };
 }
 function numberExpand(numberToNnumber, forceRange) {
@@ -62,18 +62,18 @@ function numberExpand(numberToNnumber, forceRange) {
 
 const match_lookup = {
   // ci (or Champion icon): {{ci|<Champion>|<Custom name>}}
-  'ci': function (_capture, parms, _spellrankindex, _retvalues) {
+  'ci': function (_capture, parms, _spellrankindex, _vars) {
     if (parms.length === 2)
       return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[1]}</span>`;
     return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[0]}</span>`;
   },
   // cis (or Champion icon with possessive apostrophes): {{cis|<Champion>}}
-  'cis': function (_capture, parms, _spellrankindex, _retvalues) {
+  'cis': function (_capture, parms, _spellrankindex, _vars) {
     return `<span class="chamption-name" data-champkey="${parms[0]}">${parms[0]}'s</span>`;
   },
 
   // cai (or Champion's ability icon): {{cai|<Ability>|<Champion>|<Custom ability name>}}
-  'cai': function (_capture, slices, _spellrankindex, _retvalues) {
+  'cai': function (_capture, slices, _spellrankindex, _vars) {
     let abilty = slices[0];
     let champ = slices[1];
     let display = slices[0];
@@ -84,7 +84,7 @@ const match_lookup = {
   // csl (or Champion skin link icon): {{csl|<Champion>|<Skin>}}
 
   // ai (or Ability icon): {{ai|<Ability>|<Champion>|<Custom ability name>}}
-  'ai': function (_capture, slices, _spellrankindex, _retvalues) {
+  'ai': function (_capture, slices, _spellrankindex, _vars) {
     let abilty = slices[0];
     let champ = slices[1];
     let display = slices[0];
@@ -93,19 +93,19 @@ const match_lookup = {
     return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${display}</span>`;
   },
   // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
-  'ais': function (_capture, slices, _spellrankindex, _retvalues) {
+  'ais': function (_capture, slices, _spellrankindex, _vars) {
     let abilty = slices[0];
     let champ = slices[1];
     return `<span class="champion-ability" data-champkey="${champ}" data-ability="${abilty}">${abilty}'s</span>`;
   },
 
   // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
-  'bi': function (_capture, slices, _spellrankindex, _retvalues) {
+  'bi': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip blue" title="The Buff '${slices[0]}'">${slices[1] || slices[0]}</span>`;
   },
 
   // ii (or Item icon): {{ii|<Item>|<Custom name>}}
-  'ii': function (_capture, slices, _spellrankindex, _retvalues) {
+  'ii': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip blue" title="The item '${slices[0]}'">${slices[1] || slices[0]}</span>`;
   },
 
@@ -119,17 +119,17 @@ const match_lookup = {
 
   // si (or Spell icon): {{si|<Spell>|<Custom name>}}
 
-  'si': function (_capture, slices, _spellrankindex, _retvalues) {
+  'si': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1] || slices[0]}</span>`;
   },
 
   // sis (or Spell icon with possessive apostrophes): {{sis|<Spell>}}
-  'sis': function (_capture, slices, _spellrankindex, _retvalues) {
+  'sis': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip" title="${slices[0]}" data-spellkey="${slices[0]}">${slices[1] || slices[0]}'s</span>`;
   },
 
   // sti (or Stat icon): {{sti|<stat>|<Custom name>}}
-  'sti': function (_capture, slices, _spellrankindex, _retvalues) {
+  'sti': function (_capture, slices, _spellrankindex, _vars) {
     let stat = slices[0].replace(' ', '-');
     let statName = slices[0];
     let name = slices.slice(1).join('|') || stat;
@@ -138,7 +138,7 @@ const match_lookup = {
   },
 
   // tip (or Tip icon): {{tip|<effect>|<Custom name>}}
-  'tip': function (_capture, slices, _spellrankindex, _retvalues) {
+  'tip': function (_capture, slices, _spellrankindex, _vars) {
     let effect = slices[0];
     let name = slices.slice(1).join('|') || effect;
     // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
@@ -147,18 +147,18 @@ const match_lookup = {
 
   // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
 
-  'ui': function (_capture, slices, _spellrankindex, _retvalues) {
+  'ui': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip blue" title="The Unit '${slices[0]}'">${slices[1] || slices[0]}</span>`;
   },
 
   // uis (or Unit icon with possessive apostrophes): {{uis|<Unit>}}
-  'uis': function (_capture, slices, _spellrankindex, _retvalues) {
+  'uis': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip blue" title="The Unit '${slices[0]}'">${slices[1] || slices[0]}'s</span>`;
   },
 
 
   // tt (or Text tooltip): {{tt|<Text>|<Tooltip>}}
-  'tt': function (_capture, slices, _spellrankindex, _retvalues) {
+  'tt': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="title-tooltip" title="${slices[1]}">${slices[0]}</span>`;
   },
 
@@ -167,7 +167,7 @@ const match_lookup = {
   // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
   // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
   // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-  'pp': function (capture, _parms, _spellrankindex, _retvalues) {
+  'pp': function (capture, _parms, _spellrankindex, _vars) {
     const slices = capture.slice(3).split('|');
     console.log('Match pp=', capture, '==>', slices);
     if (slices.length === 1) {
@@ -189,7 +189,7 @@ const match_lookup = {
   },
 
   // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-  'ap': function (capture, _parms, spellrankindex, retvalues) {
+  'ap': function (capture, _parms, spellrankindex, vars) {
     var inner = capture.substring(3);
     inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (_match, start, end, len) => {
       start = parseFloat(eval(start));
@@ -204,13 +204,13 @@ const match_lookup = {
     });
     const list = inner.split('|');
 
-    if (!retvalues.base_damage)
-      retvalues.base_damage = list;
+    if (!vars.base_damage)
+      vars.base_damage = list;
 
     return `<spell-span :list="[${list}]" :spellrankindex="${spellrankindex}"></spell-span>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
-  'as': function (capture, _parms, _spellrankindex, retvalues) {
+  'as': function (capture, _parms, _spellrankindex, vars) {
     const slices = capture.slice(3).split('|');
     // console.log('as Ability scaling =', capture, slices);
 
@@ -223,42 +223,83 @@ const match_lookup = {
     }) || 'ad';
     cssClass = cssClass.replace(' ', '-');
 
-    if (inner.includes('AP')) {
-      if (!retvalues.ratio_ap_1)
-        retvalues.ratio_ap_1 = numeral(inner.replace(/\(/g, '')).value();
-      if (!retvalues.ratio_ap_2)
-        retvalues.ratio_ap_2 = numeral(inner.replace(/\(/g, '')).value();
-    } else if (inner.includes('AD')) {
-      if (inner.includes('bonus')) {
-        if (!retvalues.ratio_ad_2)
-          retvalues.ratio_ad_2 = numeral(inner.replace(/\(/g, '')).value();
-      } else if (!retvalues.ratio_ad_1)
-        retvalues.ratio_ad_1 = numeral(inner.replace(/\(/g, '')).value();
+    // 'base_damage': { prefex: 'Base Damage', color: '', sufex: '', },
+    // 'ap': { color: 'ap', sufex: 'AP', },
+    // 'total_ad': { color: 'ad', sufex: 'AD', },
+    // 'bonus_ad': { color: 'ad', sufex: 'Bonus AD', },
+    // 'total_hp': { color: 'health', sufex: 'Max Health', },
+    // 'bonus_hp': { color: 'health', sufex: 'Bonus Health', },
+    // 'missing_hp': { color: 'health', sufex: 'Missing Health', },
+    // 'target.total_hp': { color: 'health', sufex: "Target's Max Health", },
+    // 'target.bonus_hp': { color: 'health', sufex: "Target's Bonus Health", },
+    // 'target.current_hp': { color: 'health', sufex: "Target's Current Health", },
+    // 'target.missing_hp': { color: 'health', sufex: "Target's Missing Health", },
+    // 'bonus_armor': { color: 'armor', sufex: 'Bonus Armor', },
+    // 'total_armor': { color: 'armor', sufex: 'Armor', },
+    // 'bonus_mr': { color: 'mr', sufex: 'Bonus Magic Resistance', },
+    // 'total_mr':
+
+    const test = inner.toLowerCase();
+    const num = numeral(test.replace(/^[\d%., ]/g, '')).value();
+    const isBonus = inner.includes('bonus');
+    const target = inner.includes('target');
+    const targetStr = target ? 'target' : 'player';
+    
+    if (test.includes('ap')) {
+      vars.ratios.ap = num;
+    }
+    else if(test.includes('ad')){
+      if (isBonus)  vars.ratios.bonus_ad = num;
+      else  vars.ratios.total_ad = num;
+    }
+    else if(test.includes('health') || test.includes('hp') ){
+      if (target) {
+        if (isBonus)  vars.ratios.bonus_hp = {target: 'target', value: num};
+        else if (test.includes('missing'))  vars.ratios.missing_hp = {target: 'target', value: num};
+        else if (test.includes('current'))  vars.ratios.current_hp = {target: 'target', value: num};
+        else  vars.ratios.total_hp = {target: 'target', value: num};
+      } else {
+        if (isBonus)  vars.ratios.bonus_hp = num;
+        else if (test.includes('missing'))  vars.ratios.missing_hp = num;
+        else  vars.ratios.total_hp = num;
+      }
+    }
+    else if(test.includes('ad')){
+      if (isBonus)  vars.ratios.bonus_ad = num;
+      else  vars.ratios.total_ad = num;
+    }
+    else if(test.includes('armor')){
+      if (isBonus)  vars.ratios.bonus_armor = num;
+      else  vars.ratios.total_armor = num;
+    }
+    else if(test.includes('mr') || test.includes('resist') ){
+      if (isBonus)  vars.ratios.bonus_mr = num;
+      else  vars.ratios.total_mr = num;
     }
     return `<span class="${cssClass}">${inner}</span>`;
   },
   // sbc (or Small bold capitals): {{sbc|<Text>}}
-  'sbc': function (capture, _parms, _spellrankindex, _retvalues) {
+  'sbc': function (capture, _parms, _spellrankindex, _vars) {
     return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
   },
 
   //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
 
   //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
-  'ft': function (capture, slices, _spellrankindex, _retvalues) {
+  'ft': function (capture, slices, _spellrankindex, _vars) {
     return `<span>${slices[0]} (${slices[1]})</span>`;
   },
 
-  'g': function (_capture, slices, _spellrankindex, _retvalues) {
+  'g': function (_capture, slices, _spellrankindex, _vars) {
     return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
   },
 
   // format number
-  'fd': function (capture, _parms, _spellrankindex, _retvalues) {
+  'fd': function (capture, _parms, _spellrankindex, _vars) {
     return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
   },
 
-  'st': function (_capture, slices, _spellrankindex, _retvalues) {
+  'st': function (_capture, slices, _spellrankindex, _vars) {
     let rets = []
     for (let i = 0; i < slices.length; i += 2) {
       rets.push(`<span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span>`);
@@ -266,25 +307,25 @@ const match_lookup = {
     return rets.join('<br>');
   },
   // MATH OPERATORS:
-  'plus': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'plus': function (_capture, _parms, _spellrankindex, _vars) {
     return '+';
   },
-  'minus': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'minus': function (_capture, _parms, _spellrankindex, _vars) {
     return '−';
   },
-  'plusminus': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'plusminus': function (_capture, _parms, _spellrankindex, _vars) {
     return '±';
   },
-  'divided by': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'divided by': function (_capture, _parms, _spellrankindex, _vars) {
     return '÷';
   },
-  'times': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'times': function (_capture, _parms, _spellrankindex, _vars) {
     return '×';
   },
-  'equals': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'equals': function (_capture, _parms, _spellrankindex, _vars) {
     return '=';
   },
-  'degree': function (_capture, _parms, _spellrankindex, _retvalues) {
+  'degree': function (_capture, _parms, _spellrankindex, _vars) {
     return '°';
   },
 };

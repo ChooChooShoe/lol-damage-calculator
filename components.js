@@ -185,16 +185,16 @@ Vue.component('spell-effects', {
       if ('base_damage' in vars) {
         this.base_damage = numeral(vars.base_damage[this.spellrankindex]).value();
       }
-      if ('ratio_ad_1' in vars) {
-        this.addRatio('total_ad', 'player', vars.ratio_ad_1);
-      }
-      if ('ratio_ad_2' in vars) {
-        this.addRatio('bonus_ad', 'player', vars.ratio_ad_2);
-      }
-      if ('ratio_ap_1' in vars) {
-        this.addRatio('ap', 'player', vars.ratio_ap_1);
-      }
-      if ('ratio_ap_2' in vars) {
+      for (const ratio in vars.ratios) {
+        const el = vars.ratios[ratio];
+        const target = el.target || 'player';
+        const key = el.key || ratio;
+        const value = el.value || el || 0;
+        Vue.set(this.ratios, target + '-' + ratio, {
+          target: target,
+          key: key,
+          value: value
+        });
       }
     }
   },
