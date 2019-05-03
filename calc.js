@@ -96,11 +96,6 @@ window.onload = function () {
         if (inputs[i].tagName !== 'SELECT')
             inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
-    
-    // addNewSpellForm("magic");
-    // addNewSpellForm("magic");
-    // addNewSpellForm("physical");
-    document.getElementById("main_collapse").click();
 };
 
 export function recalc() {

@@ -147,7 +147,7 @@ Vue.component('spell-effects', {
       return this.calc_dmg_onhit(this.$root.player, this.$root.target, this.dmg_premitigation);
     },
     dmg_premitigation: function () {
-      return this.calc_dmg_premitigation(this.$root.player, this.$root.target) * Math.max(0, this.repeat);
+      return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
     },
     dmg_onhit_for_one: function () {
       return this.calc_dmg_onhit(this.$root.player, this.$root.target, this.dmg_premitigation_for_one);
@@ -216,10 +216,14 @@ Vue.component('spell-effects', {
       let damage = this.base_damage;
       for (const r in this.ratios) {
         const ratio = this.ratios[r];
-        if (ratio.target === 'target')
-          damage += target[ratio.key] || 0 * ratio.value;
-        else
-          damage += player[ratio.key] || 0 * ratio.value;
+        if (ratio.target === 'target') {
+          const stat = target[ratio.key] || 0;
+          damage += (stat * ratio.value);
+        }
+        else {
+          const stat = player[ratio.key] || 0;
+          damage += (stat * ratio.value);
+        }
       }
       return damage;
     },
