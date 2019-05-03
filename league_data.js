@@ -294,10 +294,10 @@ Vue.component('spell-field', {
             return this.known_ratios[this.type].sufex || '';
         },
         displayValue: function () {
-            if (this.data === 'base_damage')
+            if (this.type === 'base_damage')
                 return +(Math.round(this.value + "e+6") + "e-6");
             else {
-                const x = +(Math.round(this.value + "e+6") + "e-6");
+                const x = +(Math.round(this.value + "e+12") + "e-10");
                 return '' + (x < 0 ? x : '+' + x) + '%';
             }
         },
