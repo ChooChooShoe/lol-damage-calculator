@@ -1,10 +1,6 @@
 import * as item from './league_items.js';
-import {
-  downloadingChampionFiles,
-  onSpellRankInput,
-  addSpellEffect
-} from './league_data.js';
-
+import { downloadingChampionFiles } from './league_data.js';
+import './components.js'
 
 console.log('ui.js is ready!')
 
@@ -55,7 +51,7 @@ Vue.component('champion-div', {
       percent_armorpen: 0,
       percent_bonus_armorpen: 0,
       lethality: 0,
-  
+
       base_ad: 0,
       base_hp: 0,
       base_mana: 0,
@@ -79,7 +75,7 @@ Vue.component('champion-div', {
       bonus_manaregen: 0,
       bonus_critchance: 0,
       bonus_attackspeed: 0,
-      
+
       ap: 0,
       critdamage: 2,
       lifesteal: 0,
@@ -89,18 +85,18 @@ Vue.component('champion-div', {
   },
   computed: {
     flat_armorpen: {
-      get: function() {
+      get: function () {
         return this.lethality * (0.6 + 0.4 * this.level / 18);
-      }, 
-      set: function(flat_armorpen) {
-        this.lethality = Math.round(45 * flat_armorpen / ( this.level + 27));
+      },
+      set: function (flat_armorpen) {
+        this.lethality = Math.round(45 * flat_armorpen / (this.level + 27));
       }
     },
     current_hp: {
-      get: function() {
+      get: function () {
         return this.total_hp - this.missing_hp;
-      }, 
-      set: function(current_hp) {
+      },
+      set: function (current_hp) {
         this.missing_hp = this.total_hp - current_hp;
       }
     },
@@ -115,7 +111,7 @@ Vue.component('champion-div', {
     total_manaregen: makeTotal('manaregen'),
     total_critchance: makeTotal('critchance'),
     total_attackspeed: makeTotal('attackspeed'),
-    stats: function() {
+    stats: function () {
       if (this.$root.championList[this.champ])
         return this.$root.championList[this.champ].stats;
       return default_stats();
@@ -169,19 +165,19 @@ Vue.component('champion-div', {
     },
   },
   watch: {
-    champ: function(champ, _old) {
+    champ: function (champ, _old) {
       window.localStorage.setItem('last_used_champ_' + this.userid, champ);
-      if(this.isprimary === "true")
+      if (this.isprimary === "true")
         downloadingChampionFiles(champ);
     },
-    stats: function(stats, _old) {
+    stats: function (stats, _old) {
       update_user_stats(stats, this, this.level);
     },
-    level: function(level, _old) {
+    level: function (level, _old) {
       update_user_stats(this.stats, this, level);
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.$root[this.userid] = this;
     this.champ = window.localStorage.getItem('last_used_champ_' + this.userid) || '';
   }
@@ -211,15 +207,15 @@ export const vue = new Vue({
       // `this` points to the vm instance
       return this.message.split('').reverse().join('')
     },
-    outputStyle: function() {
-      const t = this. output.preTotalDmg
+    outputStyle: function () {
+      const t = this.output.preTotalDmg
       const p1 = (this.output.preMagicDmg / t);
       const p2 = (this.output.prePhysicalDmg / t);
       const p3 = (this.output.trueDmg / t);
 
       const t2 = this.output.totalDmg
       const p4 = (this.output.magicDmg / t2);
-      const p5 = (this.output.physicalDmg /t2);
+      const p5 = (this.output.physicalDmg / t2);
       const p6 = (this.output.trueDmg / t2);
       return [
         {
@@ -231,7 +227,7 @@ export const vue = new Vue({
           width: this.percentf(p2),
         },
         {
-          left: this.percentf(p1+p2),
+          left: this.percentf(p1 + p2),
           width: this.percentf(p3),
         },
         {
@@ -243,7 +239,7 @@ export const vue = new Vue({
           width: this.percentf(p5),
         },
         {
-          left: this.percentf(p4+p5),
+          left: this.percentf(p4 + p5),
           width: this.percentf(p6),
         }
       ]
@@ -259,9 +255,9 @@ export const vue = new Vue({
         totalDmg: 0,
         magicDmg: 0,
         physicalDmg: 0,
-        trueDmg : 0,
+        trueDmg: 0,
       };
-      if(!p || !t) {
+      if (!p || !t) {
         console.log('Re-calc 4.0 failed, missing player and target.');
         return output;
       }
@@ -312,12 +308,11 @@ export const vue = new Vue({
     }
   },
   methods: {
-    setBaseStats: function (val) {},
     numeral: window.numeral,
-    rnd: function(value) {
+    rnd: function (value) {
       return Math.round(value)
     },
-    percentf: function(value) {
+    percentf: function (value) {
       return numeral(value).format('0.00%')
     }
   }
@@ -325,8 +320,6 @@ export const vue = new Vue({
 
 
 window.sellItem = item.sellItem;
-window.onSpellRankInput = onSpellRankInput;
-window.addSpellEffect = addSpellEffect;
 
 function makeTotal(stat) {
   return {
@@ -340,7 +333,7 @@ function makeTotal(stat) {
 }
 
 function update_user_stats(stats, user, lvl) {
-  console.log('Updating user stats for',user)
+  console.log('Updating user stats for', user)
   user.base_ad = calcStat(lvl, stats.attackdamage, stats.attackdamageperlevel);
   user.base_hp = calcStat(lvl, stats.hp, stats.hpperlevel);
   user.base_mana = calcStat(lvl, stats.mp, stats.mpperlevel);
@@ -352,4 +345,8 @@ function update_user_stats(stats, user, lvl) {
   user.base_manaregen = calcStat(lvl, stats.mpregen, stats.mpregenperlevel);
   user.base_critchance = calcStat(lvl, stats.crit, stats.critperlevel);
   user.base_attackspeed = calcStat(lvl, stats.attackspeed, stats.attackspeedperlevel);
+}
+
+export function onChampionData(data) {
+  Vue.set(vue.championList, data.id, data)
 }

@@ -77,9 +77,6 @@
             <a class="inline" onclick="addNewSpellForm('physical')">
                 Add Physical Damage Spell
             </a>
-            <a class="inline" disabled onclick="addNewSpellForm('mixed')">
-                Add Complex Spell
-            </a>
             <a class="inline" onclick="save()">
                 Save...
             </a>
@@ -385,159 +382,6 @@
         </champion-spells>
 
     </div>
-    <div id="templates" class="hidden">
-        <div class="container spell-effect" id="spell_data_effect_template">
-            <form autocomplete="off" id="spell_data_effect_template_form" class="flex flex-row flex-wrap flex-top">
-
-                <output name="effect_name" class="inline" style="font-size: 2.2rem;line-height: 1.35"></output>
-                <input name="remove_effect" class="inline float-right" type="button" value="Remove"
-                    onclick="remSpellEffect(this)">
-
-                <output id="effect_value" class="column"></output>
-
-                <div class="field inline">
-                    <label for="damage_type">Damage Type</label>
-                    <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
-                        <option value="no_damage" class="mixed">No Damage</option>
-                        <option value="not_detected" class="mixed">Unknown Damage</option>
-                        <option value="physical" class="ad">Physical Damage</option>
-                        <option value="magic" class="ap">Magic Damage</option>
-                        <option value="true" class="true">True Damage</option>
-                        <!-- <option value="mixed" class="mixed">Mixed Damage</option> -->
-                    </select>
-                </div>
-                <div class="extra hidden insert-before">
-                    <label class="hidden" for="dmg_dps">Expected damage per second</label>
-                    <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output"
-                        readonly />
-                </div>
-                <div style="width: 100%;height: 1.4em;"></div>
-            </form>
-        </div>
-
-
-        <div class="data_holder block" id="spell_data_template">
-            <form autocomplete="off" id="spell_data_q_form" method="POST" action="#">
-                <input name="spell_title" type="text" placeholder="Unnamed Spell" class="title_input" />
-
-
-                <!-- <input type="button" value="-" class="cast_pm" onclick="minusButton(this);" />
-          <input type="text" name="casts" value="1" class="casts_count" />
-          <input type="button" value="+" class="cast_pm" onclick="plusButton(this);" />) -->
-
-
-                <label for="damage_type">Damage Type</label>
-                <select id="damage_type" name="damage_type" class="input" oninput="styleSelect(this)">
-                    <option value="no_damage" class="mixed">No Damage</option>
-                    <option value="not_detected" class="mixed">Unknown Damage</option>
-                    <option value="physical" class="ad">Physical Damage</option>
-                    <option value="magic" class="ap">Magic Damage</option>
-                    <option value="true" class="true">True Damage</option>
-                </select>
-
-                <label for="base_damage">Base Damage</label>
-                <input type="number" id="base_damage" name="base_damage" placeholder="0" value="100" class="input" />
-
-                <label for="ap_ratio" class="ap">Total AP Ratio</label>
-                <input type="text" id="ap_ratio" name="ap_ratio" placeholder="0%" class="input" />
-
-                <label for="total_ad_ratio" class="ad">Total AD Ratio</label>
-                <input type="text" id="total_ad_ratio" name="total_ad_ratio" placeholder="0%" class="input" />
-
-                <label for="bonus_ad_ratio" class="ad">Bonus AD Ratio</label>
-                <input type="text" id="bonus_ad_ratio" name="bonus_ad_ratio" placeholder="0%" class="input" />
-
-                <label for="max_health_ratio" class="health extra hidden">% Max Health Ratio</label>
-                <input type="text" id="max_health_ratio" name="max_health_ratio" placeholder="0%"
-                    class="input extra hidden" />
-
-                <label for="dmg_premitigation">Premitigation Damage</label>
-                <input type="text" id="dmg_premitigation" name="dmg_premitigation" value="" class="input output"
-                    readonly />
-
-                <label for="dmg_onhit">Damage after Resistances</label>
-                <input type="text" id="dmg_onhit" name="dmg_onhit" value="" class="input output" readonly />
-
-                <label class="hidden" for="dmg_dps">Expected damage per second</label>
-                <input class="hidden" type="text" id="dmg_dps" name="dmg_dps" value="" class="input output" readonly />
-
-                <input name="reset" type="reset" value="Reset Above" disabled>
-                <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
-                <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
-                <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)">
-            </form>
-        </div>
-
-        <div class="data_holder block" id="passive_dao_template">
-            <span class="title_input"><span class="champion-name">Champion</span> Passive:</span>
-            <span class="subtitle passive-name">Passive Name</span>
-            <img class="passive-image" width="48px" height="48px" />
-            <p class="passive-description">Inner Text goes here</p>
-
-        </div>
-        <div class="data_holder block" id="spell_dao_template">
-            <form autocomplete="off" id="spell_dao_template_form" method="POST" action="#">
-                <span class="title_input"><span class="spell-key">Champion</span>:</span>
-                <span class="subtitle spell-name">Spell Name</span>
-                <img class="spell-image" width="48px" height="48px" />
-                <p class="lol-tooltip-full">
-                    <output name="tooltip"></output>
-                </p>
-
-                <div class="table">
-                    <div>
-                        <label for="spellrank">Spell Rank</label>
-                        <fieldset class="spellrank input" oninput="onSpellRankInput(this.form);">
-                            <input type="radio" class="spellrank1" name="spellrank" value="1" title="Rank 1" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                            <input type="radio" class="spellrank2" name="spellrank" value="2" title="Rank 2" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                            <input type="radio" class="spellrank3" name="spellrank" value="3" title="Rank 3" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                            <input type="radio" class="spellrank4" name="spellrank" value="4" title="Rank 4" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                            <input type="radio" class="spellrank5" name="spellrank" value="5" title="Rank 5" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                            <input type="radio" class="spellrank6" name="spellrank" value="6" title="Rank 6" />
-                            <!-- <span class="cost">10</span>
-              <span class="cooldown">99</span> -->
-                        </fieldset>
-                    </div>
-                    <div class="cooldown-container">
-                        <label>Cooldown</label>
-                        <output name="cooldown"></output>
-                    </div>
-                    <div class="cost-container">
-                        <label class="cost-title">Cost</label>
-                        <output name="cost"></output>
-                    </div>
-                    <div class="range-container">
-                        <label class="range-title">Range</label>
-                        <output name="range"></output>
-                    </div>
-                </div>
-                <div class="spell_data_effect_list">
-
-                </div>
-                <div class="spell_data_custom_effect_list">
-
-                </div>
-                <div>
-                    <input name="reset" type="reset" value="Zero Above" disabled>
-                    <input name="expand" type="button" value="Expand" onclick="expandExtras(this)">
-                    <input name="collapse" class="hidden" type="button" value="Collapse" onclick="collapseExtras(this)">
-                    <input name="add_effect" class="right" type="button" value="Add Effect"
-                        onclick="addSpellEffect(this.form)">
-                    <!-- <input name="delete" class="delete" type="button" value="Delete" onclick="removeSpell(this)"> -->
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
     <div id="item_shop_model" class="modal" style="display: none;">
         <div class="modal-content">
@@ -605,6 +449,123 @@
     <div id="item_tooltips">
 
     </div>
+    <template id="spell-effects-template">
+        <div class="container float-clear spell-effect" :id="id" @click="showRatiosDropdown = $event.target.matches('.dropbutton')">
+            <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
+              <h4>{{ iscustom ? 'Custom' : '' }} Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}</h4>
+              <input v-if="iscustom" name="remove_effect" class="inline float-right" type="button" value="Remove" @click="removeEffect()">
+              <match-replace class="column effect-value" :text="effect" :spellrankindex="spellrankindex" v-model="vars"></match-replace>
+              <div class="field column">
+                <label :for="id + '-damagetype'">Damage Type</label>
+                <select :id="id + '-damagetype'" v-model="damagetype" name="damage_type" class="input">
+                  <option value="no_damage" class="mixed">No Damage</option>
+                  <option value="not_detected" class="mixed">Unknown Damage</option>
+                  <option value="physical" class="ad">Physical Damage</option>
+                  <option value="magic" class="ap">Magic Damage</option>
+                  <option value="true" class="true">True Damage</option>
+                </select>
+                
+              <spell-field v-model="base_damage" type="base_damage"></spell-field>
+              <spell-field v-for="(item, key, index) in ratios"
+                  :key="item.target  + '-' + item.key + '-ratio'"
+                  :type="item.target === 'target' ? 'target.' + item.key : item.key"
+                  v-model="item.value">
+              </spell-field>
+              <input class="inline dropbutton" type="button" value="Add Ratio+">
+              <div :class="showRatiosDropdown ? '' : 'hidden'">
+              <span v-if="ratios['player-ap'] === undefined" class="simple-link ap" @click="addRatio('ap')">AP Ratio</span>-
+              <span v-if="ratios['player-total_ad'] === undefined" class="simple-link ad" @click="addRatio('total_ad')">AD Ratio</span>-
+              <span v-if="ratios['player-bonus_ad'] === undefined" class="simple-link ad" @click="addRatio('bonus_ad')">Bonus AD Ratio</span>-
+              <span v-if="ratios['player-total_hp'] === undefined" class="simple-link health" @click="addRatio('total_hp')">Health Ratio</span>-
+              <span v-if="ratios['player-bonus_hp'] === undefined" class="simple-link health" @click="addRatio('bonus_hp')">Bonus Health Ratio</span>-
+              <span v-if="ratios['player-missing_hp'] === undefined" class="simple-link health" @click="addRatio('missing_hp')">Missing Health</span>-
+              <span v-if="ratios['target-total_hp'] === undefined" class="simple-link health" @click="addRatio('total_hp','target')"> Target's Max Health</span>-
+              <span v-if="ratios['target-bonus_hp'] === undefined" class="simple-link health" @click="addRatio('bonus_hp','target')"> Target's Bonus Health</span>-
+              <span v-if="ratios['target-current_hp'] === undefined" class="simple-link health" @click="addRatio('current_hp','target')"> Target's Current Health</span>-
+              <span v-if="ratios['target-missing_hp'] === undefined" class="simple-link health" @click="addRatio('missing_hp','target')"> Target's Missing Health</span>-
+              <span v-if="ratios['player-bonus_armor'] === undefined" class="simple-link armor" @click="addRatio('bonus_armor')">Bonus Armor Ratio</span>-
+              <span v-if="ratios['player-total_armor'] === undefined" class="simple-link armor" @click="addRatio('total_armor')">Armor Ratio</span>-
+              <span v-if="ratios['player-bonus_mr'] === undefined" class="simple-link mr" @click="addRatio('bonus_mr')">Bonus MR Ratio</span>-
+              <span v-if="ratios['player-total_mr'] === undefined" class="simple-link mr" @click="addRatio('total_mr')">MR Ratio</span>
+              </div>
+              </div>
+              <div style="width: 100%;height: 1.4em;"></div>
+          
+              <p>This effect will deal {{Math.round(dmg_premitigation)}} <span v-html="damagetype_user"></span> before resistances.
+              <br>This damage will cause the target to <span class="spelleffect">lose {{Math.round(dmg_onhit)}} health</span>.</p>
+              <label>
+                  This effect will repeat
+                <input type="number" value="1" v-model.number="repeat" class="simple-input">
+                time{{ repeat === 1 ? '' : 's' }}
+              </label>
+              <input type="button" value="1x">
+              <input type="button" value="2x">
+              <input type="button" value="5x">
+              <input type="button" value="10x">
+            </form>
+          </div>
+    </template>
+    <template id="champion-spells-template">
+        <div class="data_holder column">
+            <img class="spell-image"
+              :style="{ float: 'right', background: 'url('+spriteurl + ') -' + spell.image.x + 'px -' + spell.image.y + 'px'}"
+              :width="spell.image.w" :height="spell.image.h">
+        
+            </img>
+            <h2>{{ spell.name }} ({{ spellkey }})</h2>
+            <form autocomplete="off" method="POST" action="#">
+              <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'" :spellrankindex="spellrankindex"></match-replace>
+        
+              <div class="float-left" v-if="spell.maxrank > 0">
+              Spell Rank ({{ spellrankindex + 1 }})
+              <fieldset class="spellrank input" >
+                <input v-model.number="spellrankindex" class="spellrank1" type="radio" name="spellrank" value="0" title="Rank 1">
+                <input v-if="spell.maxrank > 1" v-model.number="spellrankindex" class="spellrank2" type="radio" name="spellrank" value="1" title="Rank 2">
+                <input v-if="spell.maxrank > 2" v-model.number="spellrankindex" class="spellrank3" type="radio" name="spellrank" value="2" title="Rank 3">
+                <input v-if="spell.maxrank > 3" v-model.number="spellrankindex" class="spellrank4" type="radio" name="spellrank" value="3" title="Rank 4">
+                <input v-if="spell.maxrank > 4" v-model.number="spellrankindex" class="spellrank5" type="radio" name="spellrank" value="4" title="Rank 5">
+                <input v-if="spell.maxrank > 5" v-model.number="spellrankindex" class="spellrank6" type="radio" name="spellrank" value="5" title="Rank 6">
+              </fieldset>
+              </div>
+              
+            <div class="float-right">
+            <div v-if="spell.customlabel"><span v-html="matchReplace(spell.customlabel)"> </span>: <spell-span :list="[spell.custominfo]" :spellrankindex="0"></spell-span></div>
+            <div v-if="spell.cooldown">Cooldown: <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span> seconds</div>
+            <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span> <span v-html="matchReplace(spell.costtype)"></span></div>
+            <div v-if="spell.target_range">Target Range: <spell-span :list="[spell.target_range]" :spellrankindex="0"></spell-span></div>
+            <div v-if="spell.effect_range">Effect Range: <spell-span :list="[spell.effect_range]" :spellrankindex="0"></spell-span></div>
+            <div v-if="spell.targeting">Targeting: <spell-span :list="[spell.targeting]" :spellrankindex="0"></spell-span></div>
+            </div>
+            
+            <spell-effects
+              v-for="(item, index) in spell.leveling" 
+              :id="id + '-effect-' + index"
+              :key="id + '-effect-' + index"
+              :spell="spell"
+              :effect="item"
+              :effectindex="index"
+              :spellrankindex="spellrankindex"
+              :iscustom="false">
+            </spell-effects>
+        
+            <spell-effects
+              v-for="(item, index) in customEffects" 
+              :id="id + '-custom-effect-' + item"
+              :key="id + '-custom-effect-' + item"
+              :spell="spell"
+              effect=""
+              :effectindex="item"
+              :spellrankindex="spellrankindex"
+              :iscustom="true">
+            </spell-effects>
+            
+            <input class="right" name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
+            
+            <spell-notes :spell="spell" :id="id"></spell-notes>
+        
+            </form>
+          </div>
+    </template>
 </body>
 
 </html>

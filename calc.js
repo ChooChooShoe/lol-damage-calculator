@@ -1,17 +1,5 @@
 import { vue } from './ui.js';
 
-export const main_div = document.getElementById("main");
-export const champion_data = document.forms.champion_data_form;
-export const target_data = document.forms.target_data_form;
-
-
-export const spell_data_template = document.getElementById("spell_data_template");
-export const passive_dao_template = document.getElementById("passive_dao_template");
-
-export let  spell_data_index = 0;
-
-var percent_magic_pen_value = document.getElementById("percent_magic_pen_value");
-
 console.log('calc.js is ready!')
 
 export function toNum(value, defaultValue=0) {
@@ -63,23 +51,44 @@ export function asPercent(field) {
     return x / 100.0;
 }
 
-function rnd3(num) {
-    return Math.round(num * 100000.0) / 100000.0;
+export function clampP(num) {
+    return Math.max(0, Math.min(num, 1))
 }
-// for percents
-function rnd3p(num) {
-    return (Math.round(num * 100.0 * 100000.0) / 100000.0) + "%";
-}
-
-function validate_champion_data(form) {
-    return true;
+export function calcDamageWithRedection(damage, base, bonus, flat_reduction, percent_reduction, percent_pen, percent_bonus_pen, flat_pen) {
+    // Flat Reduction is distuputed between base and bonus armor.
+    const base_ratio = base / (base + bonus);
+    const bonus_ratio = bonus / (base + bonus);
+    // Flat Reduction
+    let ebase = base - (flat_reduction * base_ratio);
+    if (ebase > 0) {
+        // % Reduction
+        ebase *= clampP(1 - percent_reduction);
+        if (ebase > 0) {
+            // % Pen
+            ebase *= clampP(1 - percent_pen);
+        }
+    }
+    // Flat Reduction
+    let ebonus = bonus - (flat_reduction * bonus_ratio);
+    if (ebonus > 0) {
+        // % Reduction
+        ebonus *= clampP(1 - percent_reduction);
+        if (ebonus > 0) {
+            // % Pen and % Bonus Pen
+            ebonus *= clampP(1 - percent_pen) * clampP(1 - percent_bonus_pen);
+        }
+    }
+    let defence = ebase + ebonus;
+    if (defence > 0) {
+        // Flat pen only for positive armor
+        defence = Math.max(0, defence - flat_pen);
+        return damage * (100 / (100 + defence));
+    }
+    else
+        return damage * (2 - (100 / (100 - defence)));
 }
 
 window.onload = function () {
-    // var last_used_data = JSON.parse(localStorage.getItem("last_used_data"));
-    // if (last_used_data) {
-
-    // }
     // Adds recalc to all the input on the page.
     var inputs = document.getElementsByClassName("input");
     for (var i = 0; i < inputs.length; i++) {
@@ -88,72 +97,12 @@ window.onload = function () {
             inputs[i].addEventListener("focus", e => e.currentTarget.select());
     }
     
-    // spell_data_template.classList.add("hidden");
     // addNewSpellForm("magic");
     // addNewSpellForm("magic");
     // addNewSpellForm("physical");
     document.getElementById("main_collapse").click();
 };
 
-function onInputForSpellEffect(parent, spellEffect, d) {
-    console.log("Caculating spell", spellEffect.id);
-    var damage_type = spellEffect.damagetype;
-
-    var base_damage = asNumber(spellEffect.base_damage);
-    var ap_ratio = asPercent(spellEffect.ap_ratio);
-
-    var total_ad_ratio = asPercent(spellEffect.total_ad_ratio);
-    var bonus_ad_ratio = asPercent(spellEffect.bonus_ad_ratio);
-
-    // var max_health_ratio = asNumber(spellEffect.max_health_ratio);
-
-    var damage, dmg_onhit, dmg_dps = "Literally Healing //TODO FIX"; // dmg_onhit * (1 / cooldown);
-    switch (damage_type) {
-        case "physical":
-            damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-
-            if (d.eff_armor > 0)
-                dmg_onhit = damage * (100 / (100 + d.eff_armor));
-            else
-                dmg_onhit = 2 - (100 / (100 - d.eff_armor));
-
-            break;
-
-            case "magic":
-            damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            if (d.eff_mr > 0)
-                dmg_onhit = damage * (100 / (100 + d.eff_mr));
-            else
-                dmg_onhit = 2 - (100 / (100 - d.eff_mr));
-            break;
-        case "true":
-            damage = (base_damage + (d.ap * ap_ratio) + (d.total_ad * total_ad_ratio) + (d.bonus_ad * bonus_ad_ratio));
-            dmg_onhit = damage
-            break;
-        case "not_detected":
-            damage = 0;
-            dmg_onhit = 0;
-            break;
-        case "no_damage":
-            damage = 0;
-            dmg_onhit = 0;
-            break;
-    }
-
-    // now are done by calcuated values
-    // spellEffect.dmg_premitigation = damage;
-    // spellEffect.dmg_onhit = dmg_onhit;
-
-    // spellEffect.dmg_dps.value = dmg_dps;
-
-    return {
-        damage_type: damage_type,
-        pre_damage: damage,
-        damage: dmg_onhit
-    };
-}
-
-var is_recalcing = false;
 export function recalc() {
     vue.$forceUpdate();
 }
@@ -192,42 +141,8 @@ window.plusButton = function(self) {
         self.previousElementSibling.value = x + 1;
 }
 
-window.styleSelect = function(self) {
-    var last = self.previousElementSibling.classList;
-    switch (self.value) {
-        case "damage_type_physical":
-            last.add("ad");
-            last.remove("ap");
-            break;
-        case "damage_type_magic":
-            last.add("ap");
-            last.remove("ad");
-            break;
-        default:
-            last.remove("ad");
-            last.remove("ap");
-            break;
-    }
-}
-
 
 window.addNewSpellForm = function(damge_type) {
     //TODO
-    return;
-}
-
-window.removeSpell = function(self) {
-    // main_div.removeChild(self.parentElement.parentElement);
-}
-window.remSpellEffect = function(self) {
-    //yikes
-    // self.parentElement.parentElement.parentElement.removeChild(self.parentElement.parentElement);
-}
-// var last_chamption = null;
-
-window.setChampion = (form, champion) => {
-}
-
-window.setBaseStats = (form) => {
     return;
 }
