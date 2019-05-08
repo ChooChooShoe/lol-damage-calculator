@@ -101,7 +101,7 @@ function downloadingStaticDataFiles() {
             }
         });
 }
-setPatchVersion('9.6.1');
+setPatchVersion('9.9.1');
 
 export function downloadingChampionFiles(champion) {
     if (!champion)

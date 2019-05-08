@@ -225,7 +225,8 @@ const match_lookup = {
     if (!vars.base_damage)
       vars.base_damage = list;
 
-    return `<spell-span :list="[${list}]" :spellrankindex="${spellrankindex}"></spell-span>`;
+    const l = list.join("','");
+    return `<spell-span :list="['${l}']" :spellrankindex="${spellrankindex}"></spell-span>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
   'as': function (capture, _parms, _spellrankindex, vars) {

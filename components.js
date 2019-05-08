@@ -300,7 +300,36 @@ Vue.component('spell-notes', {
   </div>`,
   computed: {
     text: function () {
-      return '<p>' + this.spell.notes.join('</p><p>') + '</p>';
+      let notes = '';
+      let level = 0;
+      for (let i = 0; i < this.spell.notes.length; i++) {
+        const el = this.spell.notes[i];
+        const indent = el.slice(0, el.indexOf(' ')).length;
+        let diff = indent - level;
+        while(diff > 0){
+          notes += '<ul>';
+          diff--;
+          level++;
+        }
+        while(diff < 0){
+          notes += '</ul>';
+          diff++;
+          level--;
+        }
+        notes += '<li>' +  el.slice(el.indexOf(' ') + 1) + '</li>'
+      }
+      let diff = 0 - level;
+      while(diff > 0){
+        notes += '<ul>';
+        diff--;
+        level++;
+      }
+      while(diff < 0){
+        notes += '</ul>';
+        diff++;
+        level--;
+      }
+      return notes;
     },
     calcheight: function () {
       const len = this.spell.notes.length;
@@ -313,7 +342,7 @@ Vue.component('champion-spells', {
   props: ['id', 'spellkey', 'spell', 'champion', 'spriteurl'],
   data: function () {
     return {
-      spellrankindex: 0,
+      spellrankindex: (this.spell.maxrank || 0) - 1,
       customEffects: [],
       lastEffectIndex: 0,
     }
@@ -410,3 +439,10 @@ Vue.component('simple-tooltip', {
   <div class="tooltipcontent" :class="visable ? '' : 'hidden'" :style="{left:clientX,top:clientY}"><slot></slot></div>
 </span>`,
 });
+
+Vue.component('nowiki', {
+  template: `<span><slot></slot></span>`,
+})
+Vue.component('ref', {
+  template: `<span>See Also: <slot></slot></span>`,
+})

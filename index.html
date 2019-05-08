@@ -444,10 +444,9 @@
   
     </img>
     <h2>{{ spell.name }} ({{ spellkey }})</h2>
-    <form autocomplete="off" method="POST" action="#">
-      <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'" :spellrankindex="spellrankindex"></match-replace>
-  
-      <div class="float-left" v-if="spell.maxrank > 0">
+    <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'" :spellrankindex="spellrankindex"></match-replace>
+
+    <div class="float-left" v-if="spell.maxrank > 0">
       Spell Rank ({{ spellrankindex + 1 }})
       <fieldset class="spellrank input" >
       <input v-model.number="spellrankindex" class="spellrank1" type="radio" name="spellrank" value="0" title="Rank 1">
@@ -457,7 +456,7 @@
       <input v-if="spell.maxrank > 4" v-model.number="spellrankindex" class="spellrank5" type="radio" name="spellrank" value="4" title="Rank 5">
       <input v-if="spell.maxrank > 5" v-model.number="spellrankindex" class="spellrank6" type="radio" name="spellrank" value="5" title="Rank 6">
       </fieldset>
-      </div>
+    </div>
       
     <div class="float-right">
     <div v-if="spell.customlabel"><span v-html="matchReplace(spell.customlabel)"> </span>: <spell-span :list="[spell.custominfo]" :spellrankindex="0"></spell-span></div>
@@ -490,11 +489,9 @@
       :iscustom="true">
     </spell-effects>
     
-    <input class="right" name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
+    <input name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
     
     <spell-notes :spell="spell" :id="id"></spell-notes>
-  
-    </form>
     </div>
 </template>
 </body>

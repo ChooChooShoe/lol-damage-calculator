@@ -170,7 +170,7 @@ Vue.component('champion-div', {
       set: function (val) {
         console.log('eff_magic_hp =>', val);
       }
-    },
+    }
   },
   watch: {
     champ: function (champ, _old) {
@@ -234,6 +234,13 @@ export const vue = new Vue({
   watch: {
   },
   computed: {
+    skillpoints_used: function() {
+      let sum = 0;
+      for (const x in this.spellComponents) {
+        sum += this.spellComponents[x].spellrankindex + 1;
+      }
+      return sum;
+    },
     outputStyle: function () {
       const t = this.output.preTotalDmg
       const p1 = (this.output.preMagicDmg / t);
