@@ -1,5 +1,5 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "V1.0.0.102",
     "changes": "8.24.1",
     "id": "Swain",
@@ -58,7 +58,7 @@
                 "full": "SwainQ.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -71,8 +71,8 @@
                 "full": "SwainW.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 0,
-                "y": 48,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -84,8 +84,8 @@
                 "full": "SwainE.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 48,
-                "y": 48,
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -97,8 +97,8 @@
                 "full": "SwainR.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 96,
-                "y": 48,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -307,7 +307,7 @@
                     "full": "SwainQ.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 432,
+                    "x": 192,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -322,7 +322,7 @@
                 "full": "SwainQ.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -527,8 +527,8 @@
                     "full": "SwainW.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 0,
-                    "y": 48,
+                    "x": 240,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -542,8 +542,8 @@
                 "full": "SwainW.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 0,
-                "y": 48,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -748,8 +748,8 @@
                     "full": "SwainE.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 48,
-                    "y": 48,
+                    "x": 288,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -763,8 +763,8 @@
                 "full": "SwainE.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 48,
-                "y": 48,
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -825,7 +825,7 @@
                 "id": "SwainR",
                 "name": "Demonic Ascension",
                 "description": "Swain transforms into a demon and drains health from the 3 closest enemy champions. After draining enough health, Swain can cast Demonflare to end his transformation and decimate nearby enemies with a nova of soulfire.",
-                "tooltip": "Swain frees the demon within for {{ e3 }} seconds, gaining {{ e6 }} health. Every second, he drains the 3 closest enemy champions for {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage, healing him for {{ e4 }} <scaleAP>(+{{ a2 }})</scaleAP> health. After draining <scaleLevel>{{ f7 }}</scaleLevel> health, Swain gains the ability to cast Demonflare.<br /><br /><span class=\"colorDDDD77\">Demonflare:</span> Swain unleashes a nova of soulfire dealing magic damage and ending his transformation. Damage per <span class=\"size18 colorFF3F3F\">Soul Fragment</span>: {{ e0 }} <scaleAP>(+{{ f1 }})</scaleAP>.<br /><br />Current Damage: {{ f3 }}<br />Max Damage: {{ f2 }}<br /><br /><rules>Swain can drain non-champions to heal for {{ e7 }}% of the normal amount.</rules>",
+                "tooltip": "Swain frees the demon within for {{ demonformduration }} seconds, gaining {{ basehealthgain }} health. Every second, he drains the 3 closest enemy champions for {{ damagecalc }} magic damage, healing him for {{ healingcalc }} health. After draining <scaleLevel>{{ f7 }}</scaleLevel> health, Swain gains the ability to cast Demonflare.<br /><br /><span class=\"colorDDDD77\">Demonflare:</span> Swain unleashes a nova of soulfire dealing magic damage and ending his transformation. Damage per <span class=\"size18 colorFF3F3F\">Soul Fragment</span>: {{ damagepersoulcalc }}.<br /><br />Current Damage: {{ f3 }}<br />Max Damage: {{ f2 }}<br /><br /><rules>Swain can drain non-champions to heal for {{ minionmonsterhealreduction*100 }}% of the normal amount.</rules>",
                 "leveltip": {
                     "label": [
                         "Healing",
@@ -834,10 +834,10 @@
                         "Damage Per Soul"
                     ],
                     "effect": [
-                        "{{ e6 }} -> {{ e6NL }}",
-                        "{{ e1 }} -> {{ e1NL }}",
-                        "{{ e4 }} -> {{ e4NL }}",
-                        "{{ e0 }} -> {{ e0NL }}"
+                        "{{ basehealthgain }} -> {{ basehealthgainNL }}",
+                        "{{ damagepersecond }} -> {{ damagepersecondNL }}",
+                        "{{ healpersecond }} -> {{ healpersecondNL }}",
+                        "{{ flaredamagepersoul }} -> {{ flaredamagepersoulNL }}"
                     ]
                 },
                 "maxrank": 3,
@@ -857,44 +857,9 @@
                 "effect": [
                     null,
                     [
-                        35,
-                        50,
-                        65
-                    ],
-                    [
-                        1,
-                        1,
-                        1
-                    ],
-                    [
-                        12,
-                        12,
-                        12
-                    ],
-                    [
-                        20,
-                        35,
-                        50
-                    ],
-                    [
-                        0.04,
-                        0.06,
-                        0.08
-                    ],
-                    [
-                        150,
-                        275,
-                        400
-                    ],
-                    [
-                        20,
-                        20,
-                        20
-                    ],
-                    [
-                        0.21,
-                        0.21,
-                        0.21
+                        0,
+                        0,
+                        0
                     ],
                     [
                         0,
@@ -902,36 +867,60 @@
                         0
                     ],
                     [
-                        45,
-                        60,
-                        75
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
                     ]
                 ],
                 "effectBurn": [
                     null,
-                    "35/50/65",
-                    "1",
-                    "12",
-                    "20/35/50",
-                    "0.04/0.06/0.08",
-                    "150/275/400",
-                    "20",
-                    "0.21",
                     "0",
-                    "45/60/75"
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0"
                 ],
-                "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.14,
-                        "key": "a1"
-                    },
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.16,
-                        "key": "a2"
-                    }
-                ],
+                "vars": [],
                 "costType": "All Soul Fragments",
                 "maxammo": "-1",
                 "range": [
@@ -944,8 +933,8 @@
                     "full": "SwainR.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 96,
-                    "y": 48,
+                    "x": 336,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -959,8 +948,8 @@
                 "full": "SwainR.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 96,
-                "y": 48,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -1000,8 +989,8 @@
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Bonus Health|{{as|{{ap|150|275|400}}|health}}}}",
-                "{{st|Damage per Second|{{ap|420/12 to 780/12 3}} {{as|(+ {{fd|14.167}}% AP)}}|Maximum Damage|{{ap|420 to 780 3}} {{as|(+ 170% AP)}}}}\n{{st|Heal per Second|{{ap|20 to 50 3}} {{as|(+ 16% AP)}}|Reduced Healing|{{ap|20*0.2 to 50*0.2 3}} {{as|(+ {{fd|3.2}}% AP)}}|Maximum Single-Champion Heal|{{ap|20*12 to 50*12 3}} {{as|(+ 192% AP)}}|Maximum Single-Minion Heal|{{ap|20*12*0.2 to 50*12*0.2 3}} {{as|(+ {{fd|38.4}}% AP)}}}}"
+                "{{st|Bonus Health|{{as|{{ap|150 to 400}}|health}}}}",
+                "{{st|Damage per Second|{{ap|420/12 to 780/12}} {{as|(+ {{fd|14.167}}% AP)}}|Maximum Damage|{{ap|420 to 780}} {{as|(+ 170% AP)}}}}\n{{st|Heal per Second|{{ap|20 to 50}} {{as|(+ 16% AP)}}|Reduced Healing|{{ap|20*0.2 to 50*0.2}} {{as|(+ {{fd|3.2}}% AP)}}|Maximum Single-Champion Heal|{{ap|20*12 to 50*12}} {{as|(+ 192% AP)}}|Maximum Single-Minion Heal|{{ap|20*12*0.2 to 50*12*0.2}} {{as|(+ {{fd|38.4}}% AP)}}}}"
             ],
             "name": "Demonic Ascension",
             "notes": [

@@ -1,7 +1,7 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "V5.13",
-    "changes": "9.2.1",
+    "changes": "9.9.1",
     "id": "TahmKench",
     "key": "223",
     "name": "Tahm Kench",
@@ -58,8 +58,8 @@
                 "full": "TahmKenchQ.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 48,
-                "y": 96,
+                "x": 288,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -71,8 +71,8 @@
                 "full": "TahmKenchW.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 96,
-                "y": 96,
+                "x": 336,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -84,8 +84,8 @@
                 "full": "TahmKenchE.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 144,
-                "y": 96,
+                "x": 384,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -97,8 +97,8 @@
                 "full": "TahmKenchNewR.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 192,
-                "y": 96,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             }
@@ -127,7 +127,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s and {{ai|Tongue Lash|Tahm Kench}} deal {{as|{{pp|3|key=%|showtype=true|1.25 to 1.75|1 to 13}} of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times, which increase the damage by the same amount per stack up to a total damage of {{as|{{pp|3|key=%|showtype=true|1.25*3 to 1.75*3|1 to 13}}|health}}. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
+                "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s and {{ai|Tongue Lash|Tahm Kench}} deal {{as|{{fd|1.5}}% of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times, which increase the damage by the same amount per stack up to a total damage of {{as|{{fd|4.5}}%|health}}. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
                 "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with three stacks."
             ],
             "icon": [
@@ -137,8 +137,9 @@
             "name": "An Acquired Taste",
             "notes": [
                 "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, we can define ''An Acquired Taste's'' damage in a different way:",
-                "::{{sbc|0 stack:}} {{pp|18|7.63|8.81|10|11.19|12.38|13.56|17.7|19.13|20.55|21.98|23.4|24.83|30.63|32.29|33.95|35.61|37.28|38.94}} {{as|(+{{pp|3|key=%|showtype=true|1.25 to 1.75|1 to 13}} '''bonus''' health)}}.",
-                "::{{sbc|2+ stacks:}} {{pp|18|22.88|26.44|30|33.56|37.13|40.69|53.1|57.38|61.65|65.93|70.2|74.48|91.88|96.86|101.85|106.84|111.83|116.82}} {{as|(+{{pp|3|key=%|showtype=true|1.25*3 to 1.75*3|1 to 13}} '''bonus''' health)}}."
+                "::{{sbc|0 stack:}} {{pp|0.015*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ {{fd|1.5}}% '''bonus''' health)}}.",
+                "::{{sbc|1 stack:}} {{pp|0.015*2*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 3% '''bonus''' health)}}.",
+                "::{{sbc|2+ stacks:}} {{pp|0.015*3*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ {{fd|4.5}}% '''bonus''' health)}}."
             ],
             "parry": true,
             "riot": {
@@ -168,22 +169,24 @@
                 "leveltip": {
                     "label": [
                         "Base Damage",
-                        "Slow"
+                        "Slow",
+                        "Cooldown"
                     ],
                     "effect": [
                         "{{ e3 }} -> {{ e3NL }}",
-                        "{{ effect4amount*-100.000000 }}% -> {{ effect4amountnl*-100.000000 }}%"
+                        "{{ effect4amount*-100.000000 }}% -> {{ effect4amountnl*-100.000000 }}%",
+                        "{{ cooldown }} -> {{ cooldownNL }}"
                     ]
                 },
                 "maxrank": 5,
                 "cooldown": [
+                    8,
+                    7,
+                    6,
                     5,
-                    5,
-                    5,
-                    5,
-                    5
+                    4
                 ],
-                "cooldownBurn": "5",
+                "cooldownBurn": "8/7/6/5/4",
                 "cost": [
                     50,
                     50,
@@ -196,11 +199,11 @@
                 "effect": [
                     null,
                     [
-                        875,
-                        875,
-                        875,
-                        875,
-                        875
+                        925,
+                        925,
+                        925,
+                        925,
+                        925
                     ],
                     [
                         1000,
@@ -217,18 +220,18 @@
                         280
                     ],
                     [
-                        30,
-                        40,
                         50,
+                        55,
                         60,
+                        65,
                         70
                     ],
                     [
-                        1.5,
-                        1.5,
-                        1.5,
-                        1.5,
-                        1.5
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
                     ],
                     [
                         1.5,
@@ -268,11 +271,11 @@
                 ],
                 "effectBurn": [
                     null,
-                    "875",
+                    "925",
                     "1000",
                     "80/130/180/230/280",
-                    "30/40/50/60/70",
-                    "1.5",
+                    "50/55/60/65/70",
+                    "2",
                     "1.5",
                     "0",
                     "0",
@@ -289,19 +292,19 @@
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
-                    800,
-                    800,
-                    800,
-                    800,
-                    800
+                    900,
+                    900,
+                    900,
+                    900,
+                    900
                 ],
-                "rangeBurn": "800",
+                "rangeBurn": "900",
                 "image": {
                     "full": "TahmKenchQ.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 48,
-                    "y": 96,
+                    "x": 288,
+                    "y": 48,
                     "w": 48,
                     "h": 48
                 },
@@ -315,8 +318,8 @@
                 "full": "TahmKenchQ.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 48,
-                "y": 96,
+                "x": 288,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -325,13 +328,13 @@
             "champion": "Tahm Kench",
             "collision_radius": 35,
             "cooldown": [
+                8,
+                7,
+                6,
                 5,
-                5,
-                5,
-                5,
-                5
+                4
             ],
-            "cooldownBurn": "5",
+            "cooldownBurn": "8/7/6/5/4",
             "cost": [
                 50,
                 50,
@@ -346,25 +349,26 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} After a brief delay, '''Tahm Kench''' lashes his tongue in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for {{fd|1.5}} seconds.",
-                "During ''Tongue Lash'', {{ai|Devour|Tahm Kench}} can be cast {{sti|mana|{{as|for free|mana}}}} to devour enemy [[minion]]s or non-epic [[monster]]s from a distance.",
+                "{{sbc|Active:}} After a brief delay, '''Tahm Kench''' lashes his tongue in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for 2 seconds.",
+                "During ''Tongue Lash'', {{ai|Devour|Tahm Kench}} can be cast for {{sti|mana|{{as|0 mana|mana}}}} to devour the {{tip|minion}} or non-epic {{tip|monster}} struck. ''Devour's'' mana refund applies using the original amount.",
                 "Enemy champions with three {{ai|An Acquired Taste|Tahm Kench}} stacks are {{tip|stun|stunned}} for {{fd|1.5}} seconds."
             ],
             "icon": [
                 "Tongue Lash.png"
             ],
             "leveling": [
-                "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}\n{{st|Slow|{{ap|30 to 70}}%}}"
+                "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}\n{{st|Slow|{{ap|50 to 70}}%}}"
             ],
             "name": "Tongue Lash",
             "notes": [
-                "* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''."
+                "* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''.",
+                "* The mana refund upon using ''Devour'' during ''Tongue Lash'' effectively also reduces the cost of ''Tongue Lash'' to 0."
             ],
             "projectile": true,
             "skill": "Q",
             "spelleffects": "Single target",
             "spellshield": true,
-            "target_range": 800,
+            "target_range": 900,
             "targeting": "Direction"
         },
         "w1": {
@@ -372,38 +376,38 @@
                 "id": "TahmKenchW",
                 "name": "Devour",
                 "description": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
-                "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e3 }}% <scaleAP>(+{{ a1 }}%)</scaleAP> of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding an enemy champion, Tahm Kench is slowed by 95%.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown is refunded.</span></rules>",
+                "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e7 }} (+{{ e3 }}%) of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding any champion, Tahm Kench is slowed by 95% and grounded.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown and mana cost are refunded.</span></rules>",
                 "leveltip": {
                     "label": [
+                        "Base Damage",
                         "Maximum Health Damage",
                         "Monster Damage Cap",
-                        "Minion Spit Damage",
-                        "Cooldown"
+                        "Minion Spit Damage"
                     ],
                     "effect": [
+                        "{{ e7 }} -> {{ e7NL }}",
                         "{{ e3 }}% -> {{ e3NL }}%",
                         "{{ e2 }} -> {{ e2NL }}",
-                        "{{ e7 }} -> {{ e7NL }}",
-                        "{{ cooldown }} -> {{ cooldownNL }}"
+                        "{{ e7 }} -> {{ e7NL }}"
                     ]
                 },
                 "maxrank": 5,
                 "cooldown": [
-                    28,
-                    25,
-                    22,
-                    19,
-                    16
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
                 ],
-                "cooldownBurn": "28/25/22/19/16",
+                "cooldownBurn": "20",
                 "cost": [
-                    60,
-                    60,
-                    60,
-                    60,
-                    60
+                    100,
+                    100,
+                    100,
+                    100,
+                    100
                 ],
-                "costBurn": "60",
+                "costBurn": "100",
                 "datavalues": {},
                 "effect": [
                     null,
@@ -422,11 +426,11 @@
                         600
                     ],
                     [
-                        20,
-                        23,
-                        26,
-                        29,
-                        32
+                        5,
+                        7,
+                        9,
+                        11,
+                        13
                     ],
                     [
                         0.3,
@@ -451,10 +455,10 @@
                     ],
                     [
                         100,
-                        150,
-                        200,
-                        250,
-                        300
+                        135,
+                        170,
+                        205,
+                        240
                     ],
                     [
                         0,
@@ -482,21 +486,16 @@
                     null,
                     "4",
                     "400/450/500/550/600",
-                    "20/23/26/29/32",
+                    "5/7/9/11/13",
                     "0.3/0.35/0.4/0.45/0.5",
                     "0",
                     "0",
-                    "100/150/200/250/300",
+                    "100/135/170/205/240",
                     "0",
                     "0",
                     "0"
                 ],
                 "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.02,
-                        "key": "a1"
-                    },
                     {
                         "link": "spelldamage",
                         "coeff": 0.6,
@@ -517,8 +516,8 @@
                     "full": "TahmKenchW.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 96,
-                    "y": 96,
+                    "x": 336,
+                    "y": 48,
                     "w": 48,
                     "h": 48
                 },
@@ -532,8 +531,8 @@
                 "full": "TahmKenchW.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 96,
-                "y": 96,
+                "x": 336,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -541,21 +540,21 @@
             "blurb": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
             "champion": "Tahm Kench",
             "cooldown": [
-                28,
-                25,
-                22,
-                19,
-                16
+                20,
+                20,
+                20,
+                20,
+                20
             ],
-            "cooldownBurn": "28/25/22/19/16",
+            "cooldownBurn": "20",
             "cost": [
-                60,
-                60,
-                60,
-                60,
-                60
+                100,
+                100,
+                100,
+                100,
+                100
             ],
-            "costBurn": "60",
+            "costBurn": "100",
             "costtype": "Mana",
             "damagetype": "Magic",
             "damageTypes": [
@@ -563,8 +562,8 @@
             ],
             "description": [
                 "{{sbc|First Cast \u2013 Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
-                "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks {{tip|slow|slowing}} himself by 95%. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}}, {{tip|nearsight|nearsights}} and makes them {{tip|untargetable}}.",
-                "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}}.",
+                "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks. If '''Tahm Kench''' swallows an allied or enemy champion, he is {{tip|ground|grounded}} and {{tip|slow|slowed}} by 95% for the duration. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}}, {{tip|nearsight|nearsights}} and makes them {{tip|untargetable}}.",
+                "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}} and {{sti|mana|{{as|50% of the mana cost}}}}.",
                 "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay."
             ],
             "icon": [
@@ -593,38 +592,38 @@
                 "id": "TahmKenchW",
                 "name": "Devour",
                 "description": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
-                "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e3 }}% <scaleAP>(+{{ a1 }}%)</scaleAP> of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding an enemy champion, Tahm Kench is slowed by 95%.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown is refunded.</span></rules>",
+                "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e7 }} (+{{ e3 }}%) of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding any champion, Tahm Kench is slowed by 95% and grounded.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown and mana cost are refunded.</span></rules>",
                 "leveltip": {
                     "label": [
+                        "Base Damage",
                         "Maximum Health Damage",
                         "Monster Damage Cap",
-                        "Minion Spit Damage",
-                        "Cooldown"
+                        "Minion Spit Damage"
                     ],
                     "effect": [
+                        "{{ e7 }} -> {{ e7NL }}",
                         "{{ e3 }}% -> {{ e3NL }}%",
                         "{{ e2 }} -> {{ e2NL }}",
-                        "{{ e7 }} -> {{ e7NL }}",
-                        "{{ cooldown }} -> {{ cooldownNL }}"
+                        "{{ e7 }} -> {{ e7NL }}"
                     ]
                 },
                 "maxrank": 5,
                 "cooldown": [
-                    28,
-                    25,
-                    22,
-                    19,
-                    16
+                    20,
+                    20,
+                    20,
+                    20,
+                    20
                 ],
-                "cooldownBurn": "28/25/22/19/16",
+                "cooldownBurn": "20",
                 "cost": [
-                    60,
-                    60,
-                    60,
-                    60,
-                    60
+                    100,
+                    100,
+                    100,
+                    100,
+                    100
                 ],
-                "costBurn": "60",
+                "costBurn": "100",
                 "datavalues": {},
                 "effect": [
                     null,
@@ -643,11 +642,11 @@
                         600
                     ],
                     [
-                        20,
-                        23,
-                        26,
-                        29,
-                        32
+                        5,
+                        7,
+                        9,
+                        11,
+                        13
                     ],
                     [
                         0.3,
@@ -672,10 +671,10 @@
                     ],
                     [
                         100,
-                        150,
-                        200,
-                        250,
-                        300
+                        135,
+                        170,
+                        205,
+                        240
                     ],
                     [
                         0,
@@ -703,21 +702,16 @@
                     null,
                     "4",
                     "400/450/500/550/600",
-                    "20/23/26/29/32",
+                    "5/7/9/11/13",
                     "0.3/0.35/0.4/0.45/0.5",
                     "0",
                     "0",
-                    "100/150/200/250/300",
+                    "100/135/170/205/240",
                     "0",
                     "0",
                     "0"
                 ],
                 "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.02,
-                        "key": "a1"
-                    },
                     {
                         "link": "spelldamage",
                         "coeff": 0.6,
@@ -738,8 +732,8 @@
                     "full": "TahmKenchW.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 96,
-                    "y": 96,
+                    "x": 336,
+                    "y": 48,
                     "w": 48,
                     "h": 48
                 },
@@ -753,8 +747,8 @@
                 "full": "TahmKenchW.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 96,
-                "y": 96,
+                "x": 336,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -762,13 +756,13 @@
             "blurb": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
             "champion": "Tahm Kench",
             "cooldown": [
-                28,
-                25,
-                22,
-                19,
-                16
+                20,
+                20,
+                20,
+                20,
+                20
             ],
-            "cooldownBurn": "28/25/22/19/16",
+            "cooldownBurn": "20",
             "cost": [
                 0,
                 0,
@@ -790,8 +784,8 @@
                 "Regurgitate.png"
             ],
             "leveling": [
-                "{{st|Magic Damage|{{as|{{ap|20 to 32}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health}}|Maximum Monster Damage|{{ap|400 to 600}}}}",
-                "{{st|Projectile Damage|{{ap|100 to 300}} {{as|(+ 60% AP)}}}}"
+                "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ {{ap|5 to 13}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Maximum Monster Damage|{{ap|400 to 600}}}}",
+                "{{st|Projectile Damage|{{ap|100 to 240}} {{as|(+ 60% AP)}}}}"
             ],
             "name": "Regurgitate",
             "notes": [
@@ -831,13 +825,13 @@
                 ],
                 "cooldownBurn": "6",
                 "cost": [
-                    50,
-                    50,
-                    50,
-                    50,
-                    50
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
-                "costBurn": "50",
+                "costBurn": "0",
                 "datavalues": {},
                 "effect": [
                     null,
@@ -849,18 +843,18 @@
                         3
                     ],
                     [
-                        15,
                         20,
                         25,
                         30,
-                        35
+                        35,
+                        40
                     ],
                     [
-                        70,
-                        75,
                         80,
                         85,
-                        90
+                        90,
+                        95,
+                        100
                     ],
                     [
                         0,
@@ -915,8 +909,8 @@
                 "effectBurn": [
                     null,
                     "3",
-                    "15/20/25/30/35",
-                    "70/75/80/85/90",
+                    "20/25/30/35/40",
+                    "80/85/90/95/100",
                     "0",
                     "0",
                     "0",
@@ -940,8 +934,8 @@
                     "full": "TahmKenchE.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 144,
-                    "y": 96,
+                    "x": 384,
+                    "y": 48,
                     "w": 48,
                     "h": 48
                 },
@@ -955,8 +949,8 @@
                 "full": "TahmKenchE.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 144,
-                "y": 96,
+                "x": 384,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -972,35 +966,34 @@
             ],
             "cooldownBurn": "6",
             "cost": [
-                50,
-                50,
-                50,
-                50,
-                50
+                0,
+                0,
+                0,
+                0,
+                0
             ],
-            "costBurn": "50",
-            "costtype": "Mana",
+            "costBurn": "0",
+            "costtype": "No cost",
             "damagetype": "None",
             "damageTypes": [
                 "none"
             ],
             "description": [
                 "{{sbc|Passive:}} '''Tahm Kench''' stores a percentage of the damage he takes as ''Grey Health'' on his {{as|health bar}}.",
-                "While ''Thick Skin'' is not on cooldown, and after taking no damage for {{tt|{{fd|2.5}}|Estimated}} seconds, '''Tahm Kench''' rapidly {{tip|heals}} for a portion of his ''Grey Health'' over time, consuming it in the process.",
+                "While ''Thick Skin'' is available, and after taking no damage for {{tt|{{fd|2.5}}|Estimated}} seconds, '''Tahm Kench''' rapidly {{tip|heals}} a portion of his ''Grey Health'' over time.",
                 "{{sbc|Active:}} '''Tahm Kench''' converts his current ''Grey Health'' into a {{tip|shield}} that lasts for 3 seconds."
             ],
             "icon": [
                 "Thick Skin.png"
             ],
             "leveling": [
-                "{{st|Damage into Grey Health|{{ap|70 to 90}}%}}",
-                "{{st|Total Health Restored|{{ap|15 to 35}}% of ''Grey Health''|Health Restored from Damage|{{as|{{pp|5|notooltip=true|(15+5*(x-1))/100*(70+5*(x-1))}}%|health}}}}"
+                "{{st|Damage into Grey Health|{{ap|80 to 100}}%}}",
+                "{{st|Total Health Restored|{{ap|20 to 40}}% of ''Grey Health''|Health Restored from Damage|{{as|{{pp|5|notooltip=true|(20+5*(x-1))/100*(80+5*(x-1))}}%|health}}}}"
             ],
             "name": "Thick Skin",
             "notes": [
-                "* The cooldown starts when the spell is casted.",
                 "* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means you can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than your maximum health.",
-                "* As [[true damage]] is converted into ''Grey Health'' the same as all other post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of true damage mitigation."
+                "* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of true damage mitigation."
             ],
             "skill": "E",
             "spelleffects": "Special",
@@ -1024,11 +1017,11 @@
                 },
                 "maxrank": 3,
                 "cooldown": [
-                    120,
-                    110,
-                    100
+                    140,
+                    130,
+                    120
                 ],
-                "cooldownBurn": "120/110/100",
+                "cooldownBurn": "140/130/120",
                 "cost": [
                     100,
                     100,
@@ -1039,9 +1032,9 @@
                 "effect": [
                     null,
                     [
-                        4500,
+                        2500,
                         5500,
-                        6500
+                        8500
                     ],
                     [
                         0.02,
@@ -1091,7 +1084,7 @@
                 ],
                 "effectBurn": [
                     null,
-                    "4500/5500/6500",
+                    "2500/5500/8500",
                     "0.02/0.04/0.06",
                     "20",
                     "0",
@@ -1106,17 +1099,17 @@
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
-                    4500,
+                    2500,
                     5500,
-                    6500
+                    8500
                 ],
-                "rangeBurn": "4500/5500/6500",
+                "rangeBurn": "2500/5500/8500",
                 "image": {
                     "full": "TahmKenchNewR.png",
                     "sprite": "spell11.png",
                     "group": "spell",
-                    "x": 192,
-                    "y": 96,
+                    "x": 432,
+                    "y": 48,
                     "w": 48,
                     "h": 48
                 },
@@ -1130,8 +1123,8 @@
                 "full": "TahmKenchNewR.png",
                 "sprite": "spell11.png",
                 "group": "spell",
-                "x": 192,
-                "y": 96,
+                "x": 432,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -1139,11 +1132,11 @@
             "blurb": "Tahm Kench teleports across the map, and he may bring one ally champion with him.",
             "champion": "Tahm Kench",
             "cooldown": [
-                120,
-                110,
-                100
+                140,
+                130,
+                120
             ],
-            "cooldownBurn": "120/110/100",
+            "cooldownBurn": "140/130/120",
             "cost": [
                 100,
                 100,
@@ -1157,7 +1150,7 @@
             ],
             "description": [
                 "{{sbc|Active:}} '''Tahm Kench''' {{tip|channels}} for up to 6 seconds, highlighting the path to his intended destination to allied champions while opening his maw to offer up to one of them the chance to come with him. If an ally has climbed in, '''Tahm Kench''' automatically begins a {{tt|1|Estimated}} second channel.",
-                "After a {{fd|0.25}}-second delay, '''Tahm Kench''' can reactivate {{ai|Abyssal Voyage 2|Tahm Kench|Abyssal Voyage}} to begin the channel without an ally. Once the channel is completed, '''Tahm Kench''', and the ally that has climbed in if there is any, {{tip|blink}} to the target location, arriving after a {{tt|{{fd|0.5}}|Estimated.}}-second delay.",
+                "After a {{fd|0.25}}-second delay, '''Tahm Kench''' can reactivate {{ai|Abyssal Voyage 2|Tahm Kench|Abyssal Voyage}} to begin the channel without an ally. Once the channel is completed, '''Tahm Kench''' and the ally that has climbed in will {{tip|blink}} to the target location, arriving after a {{tt|{{fd|0.5}}|Estimated.}}-second delay.",
                 "Taking damage or cancelling the channel interrupts ''Abyssal Voyage'', putting it on a {{sti|cooldown|10 second cooldown}}. ''Abyssal Voyage'' cannot be activated while '''Tahm Kench''' has a {{ai|Devour|Tahm Kench|full belly}}."
             ],
             "flavortext": "Boy, the world's one river, and I'm its king. Ain't no place I ain't been; ain't no place I can't go again.",
@@ -1175,7 +1168,7 @@
             ],
             "skill": "R",
             "spelleffects": false,
-            "target_range": "{{ap|4500|5500|6500}}",
+            "target_range": "{{ap|2500 to 8500}}",
             "targeting": "Ground"
         }
     }

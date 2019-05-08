@@ -458,21 +458,8 @@ def take_spell(champ, spells):
                     skill = champ[skillkey]
                     export = OrderedDict()
                     export['riot'] = champ["riot_spell_"+letter]
-                    for x in skill:
-                        key = x.replace(' ', '_')
-                        value = skill[x]
-                        if x.startswith('line_'):
-                            if value == "" or value == r"}}":
-                                pass
-                            elif x == 'line_1' or r'{{{{{1<noinclude>|Ability data</noinclude>}}}' in value:
-                                export['name'] = re.sub(regex, r"\1", value)
-                                export['name'] = re.sub('-->', '', export['name'])
-                            else:
-                                last_key = list(export.items())[-1][0]
-                                log.debug('backtracing %s to %s adding "%s"', key, last_key, value)
-                                export[last_key] = export[last_key] + '\n' + value
-                        else:
-                            export[key] = value
+                    for key in skill:
+                        export[key] = skill[key]
                     
                     if num == '1':
                         last_desc = export['description']

@@ -1,7 +1,7 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "V0.9.22.16",
-    "changes": "8.8.1",
+    "changes": "9.9.1",
     "id": "Blitzcrank",
     "key": "53",
     "name": "Blitzcrank",
@@ -39,8 +39,8 @@
     "r_dispalyname": "Static Field",
     "simple_skills": {
         "i": {
-            "name": "Mana Barrier",
-            "description": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 50% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
+            "name": "",
+            "description": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 30% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
             "image": {
                 "full": "Blitzcrank_ManaBarrier.png",
                 "sprite": "passive0.png",
@@ -58,7 +58,7 @@
                 "full": "RocketGrab.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -71,7 +71,7 @@
                 "full": "Overdrive.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -84,7 +84,7 @@
                 "full": "PowerFist.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -92,12 +92,12 @@
         },
         "r": {
             "name": "Static Field",
-            "description": "Passively causes lightning bolts to damage a nearby enemy. Additionally, Blitzcrank can activate this ability to damage nearby enemies and silence them for 0.5 seconds, but doing so removes the passive lightning until Static Field becomes available again.",
+            "description": "Enemies attacked by Blitzcrank are marked and take lightning damage after 3 seconds. Additionally, Blitzcrank can activate this ability to damage nearby enemies and silence them for 0.5 seconds.",
             "image": {
                 "full": "StaticField.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -106,7 +106,7 @@
     },
     "complex_skills": {
         "i1": {
-            "riotName": "Mana Barrier",
+            "riotName": "",
             "image": {
                 "full": "Blitzcrank_ManaBarrier.png",
                 "sprite": "passive0.png",
@@ -117,7 +117,7 @@
                 "h": 48
             },
             "affects": "Self",
-            "blurb": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 50% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
+            "blurb": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 30% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
             "champion": "Blitzcrank",
             "cooldown": null,
             "cooldownBurn": null,
@@ -127,7 +127,7 @@
                 "none"
             ],
             "description": [
-                "{{sbc|Innate:}} When '''Blitzcrank''' receives damage that would bring him below {{as|{{sti|health|20% '''maximum''' health}}}}, he generates a {{tip|shield}} equal to {{sti|mana|{{as|50% of his '''current''' mana|mana}}}} that lasts up to 10 seconds."
+                "{{sbc|Innate:}} When '''Blitzcrank''' receives damage that would bring him below {{as|{{sti|health|20% '''maximum''' health}}}}, he generates a {{tip|shield}} equal to {{sti|mana|{{as|30% of his '''maximum''' mana|mana}}}} that lasts up to 10 seconds."
             ],
             "grounded": false,
             "icon": [
@@ -142,8 +142,8 @@
                 "* ''Mana Barrier'' will activate even when below 20% max health."
             ],
             "riot": {
-                "name": "Mana Barrier",
-                "description": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 50% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
+                "name": "",
+                "description": "When Blitzcrank's life is brought below 20% health, he activates Mana Barrier. This creates a mana shield equal to 30% of his mana for 10 seconds. Mana Barrier can only occur once every 90 seconds.",
                 "image": {
                     "full": "Blitzcrank_ManaBarrier.png",
                     "sprite": "passive0.png",
@@ -301,7 +301,7 @@
                     "full": "RocketGrab.png",
                     "sprite": "spell1.png",
                     "group": "spell",
-                    "x": 240,
+                    "x": 0,
                     "y": 96,
                     "w": 48,
                     "h": 48
@@ -316,7 +316,7 @@
                 "full": "RocketGrab.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -390,14 +390,14 @@
                 "id": "Overdrive",
                 "name": "Overdrive",
                 "description": "Blitzcrank super charges himself to get dramatically increased Movement and Attack Speed. He is temporarily slowed after the effect ends.",
-                "tooltip": "Blitzcrank supercharges himself, gaining {{ e1 }}% Movement Speed and {{ e2 }}% Attack Speed for {{ e4 }} seconds. The Movement Speed bonus decays over the duration.<br /><br />When Overdrive ends, Blitzcrank's Movement Speed is slowed by {{ e3 }}% for {{ e5 }} seconds.",
+                "tooltip": "Blitzcrank supercharges himself, gaining {{ initialms }}% Movement Speed and {{ e2 }}% Attack Speed for {{ e4 }} seconds. The Movement Speed bonus decays over the duration.<br /><br />When Overdrive ends, Blitzcrank's Movement Speed is slowed by {{ e3 }}% for {{ e5 }} seconds.",
                 "leveltip": {
                     "label": [
                         "Movement Speed",
                         "Attack Speed"
                     ],
                     "effect": [
-                        "{{ e1 }}% -> {{ e1NL }}%",
+                        "{{ initialms }}% -> {{ initialmsNL }}%",
                         "{{ e2 }}% -> {{ e2NL }}%"
                     ]
                 },
@@ -457,25 +457,25 @@
                         1.5
                     ],
                     [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+                        1,
+                        1,
+                        1,
+                        1,
+                        1
                     ],
                     [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+                        1,
+                        1,
+                        1,
+                        1,
+                        1
                     ],
                     [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+                        10,
+                        15,
+                        20,
+                        25,
+                        30
                     ],
                     [
                         0,
@@ -499,9 +499,9 @@
                     "30",
                     "5",
                     "1.5",
-                    "0",
-                    "0",
-                    "0",
+                    "1",
+                    "1",
+                    "10/15/20/25/30",
                     "0",
                     "0"
                 ],
@@ -520,7 +520,7 @@
                     "full": "Overdrive.png",
                     "sprite": "spell1.png",
                     "group": "spell",
-                    "x": 288,
+                    "x": 48,
                     "y": 96,
                     "w": 48,
                     "h": 48
@@ -535,7 +535,7 @@
                 "full": "Overdrive.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -715,7 +715,7 @@
                     "full": "PowerFist.png",
                     "sprite": "spell1.png",
                     "group": "spell",
-                    "x": 336,
+                    "x": 96,
                     "y": 96,
                     "w": 48,
                     "h": 48
@@ -730,7 +730,7 @@
                 "full": "PowerFist.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -789,17 +789,17 @@
             "riot": {
                 "id": "StaticField",
                 "name": "Static Field",
-                "description": "Passively causes lightning bolts to damage a nearby enemy. Additionally, Blitzcrank can activate this ability to damage nearby enemies and silence them for 0.5 seconds, but doing so removes the passive lightning until Static Field becomes available again.",
-                "tooltip": "<spellPassive>Passive: </spellPassive>Lightning arcs off of Blitzcrank to hit a random nearby enemy for {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage every 2.5 seconds.<br /><br /><spellPassive>Active: </spellPassive>Deals {{ e2 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage and silences surrounding enemy units for 0.5 seconds. The passive is not in effect during the cooldown.",
+                "description": "Enemies attacked by Blitzcrank are marked and take lightning damage after 3 seconds. Additionally, Blitzcrank can activate this ability to damage nearby enemies and silence them for 0.5 seconds.",
+                "tooltip": "<spellPassive>Passive: </spellPassive>Lightning charges Blitzcrank's fists, marking enemies. After 1 second, they are shocked for <magicDamage>{{ passivedamage }}</magicDamage> magic damage. This stacks up to two times.<br /><br /><spellPassive>Active: </spellPassive>Deals <magicDamage>{{ activedamage }} magic damage</magicDamage> and silences surrounding enemy units for 0.5 seconds.",
                 "leveltip": {
                     "label": [
-                        "Lightning Damage",
-                        "Activation Damage",
-                        "Cooldown"
+                        "Passive Base Damage",
+                        "Active Base Damage",
+                        "Active Cooldown"
                     ],
                     "effect": [
-                        "{{ e1 }} -> {{ e1NL }}",
-                        "{{ e2 }} -> {{ e2NL }}",
+                        "{{ passive base damage }} -> {{ passive base damageNL }}",
+                        "{{ activebasedamage }} -> {{ activebasedamageNL }}",
                         "{{ cooldown }} -> {{ cooldownNL }}"
                     ]
                 },
@@ -821,33 +821,33 @@
                     null,
                     [
                         100,
-                        200,
-                        300
+                        150,
+                        200
                     ],
                     [
-                        250,
-                        375,
-                        500
+                        150,
+                        275,
+                        400
                     ],
                     [
-                        2.5,
-                        2.5,
-                        2.5
+                        0.25,
+                        0.25,
+                        0.25
                     ],
                     [
-                        0,
-                        0,
-                        0
+                        0.08,
+                        0.08,
+                        0.08
                     ],
                     [
-                        0,
-                        0,
-                        0
+                        2,
+                        2,
+                        2
                     ],
                     [
-                        0,
-                        0,
-                        0
+                        400,
+                        400,
+                        400
                     ],
                     [
                         0,
@@ -872,29 +872,18 @@
                 ],
                 "effectBurn": [
                     null,
-                    "100/200/300",
-                    "250/375/500",
-                    "2.5",
-                    "0",
-                    "0",
-                    "0",
+                    "100/150/200",
+                    "150/275/400",
+                    "0.25",
+                    "0.08",
+                    "2",
+                    "400",
                     "0",
                     "0",
                     "0",
                     "0"
                 ],
-                "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.2,
-                        "key": "a1"
-                    },
-                    {
-                        "link": "spelldamage",
-                        "coeff": 1,
-                        "key": "a2"
-                    }
-                ],
+                "vars": [],
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
@@ -907,7 +896,7 @@
                     "full": "StaticField.png",
                     "sprite": "spell1.png",
                     "group": "spell",
-                    "x": 384,
+                    "x": 144,
                     "y": 96,
                     "w": 48,
                     "h": 48
@@ -922,7 +911,7 @@
                 "full": "StaticField.png",
                 "sprite": "spell1.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 96,
                 "w": 48,
                 "h": 48
@@ -948,7 +937,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Passive:}} While ''Static Field'' is available and '''Blitzcrank''' is [[Combat status|in combat]], he fires a lightning bolt at a random visible enemy within a 450 radius every {{fd|2.5}} seconds, dealing {{as|magic damage}}.",
+                "{{sbc|Passive:}} While ''Static Field'' is available, lightning charges '''Blitzcrank's''' fists, marking enemies he basic attacks, stacking up to 2 times. After every 1 second, 1 mark is consumed to deal {{as|magic damage}} to marked enemies.",
                 "{{sbc|Active:}} '''Blitzcrank''' detonates his static field, dealing {{as|magic damage}} to nearby enemies and {{tip|silence|silencing}} them for {{fd|0.5}} seconds."
             ],
             "effect_radius": 600,
@@ -956,7 +945,7 @@
                 "Static Field.png"
             ],
             "leveling": [
-                "{{st|Bolt Magic Damage|{{ap|100 to 300}} {{as|(+ 20% AP)}}}}",
+                "{{st|Bolt Magic Damage|{{ap|50 to 150}} {{as|(+ 30% AP)}}}}",
                 "{{st|Detonation Magic Damage|{{ap|250 to 500}} {{as|(+ 100% AP)}}}}"
             ],
             "name": "Static Field",

@@ -1,7 +1,7 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "June 26, 2009 Patch",
-    "changes": "9.5.1",
+    "changes": "9.7.1",
     "id": "Chogath",
     "key": "31",
     "name": "Cho'Gath",
@@ -58,7 +58,7 @@
                 "full": "Rupture.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -71,8 +71,8 @@
                 "full": "FeralScream.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 0,
-                "y": 48,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -84,8 +84,8 @@
                 "full": "VorpalSpikes.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 48,
-                "y": 48,
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -97,8 +97,8 @@
                 "full": "Feast.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 96,
-                "y": 48,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             }
@@ -174,13 +174,13 @@
                 },
                 "maxrank": 5,
                 "cooldown": [
-                    9,
-                    9,
-                    9,
-                    9,
-                    9
+                    7,
+                    7,
+                    7,
+                    7,
+                    7
                 ],
-                "cooldownBurn": "9",
+                "cooldownBurn": "7",
                 "cost": [
                     60,
                     60,
@@ -297,7 +297,7 @@
                     "full": "Rupture.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 432,
+                    "x": 192,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -312,22 +312,23 @@
                 "full": "Rupture.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 0,
                 "w": 48,
                 "h": 48
             },
             "affects": "Enemies",
             "blurb": "Ruptures the ground at target location, popping enemy units into the air, dealing damage and slowing them.",
+            "cast_time": "{{fd|0.5}}",
             "champion": "Cho'Gath",
             "cooldown": [
-                9,
-                9,
-                9,
-                9,
-                9
+                7,
+                7,
+                7,
+                7,
+                7
             ],
-            "cooldownBurn": "9",
+            "cooldownBurn": "7",
             "cost": [
                 60,
                 60,
@@ -351,11 +352,10 @@
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Magic damage|{{ap|80|135|190|245|300}} {{as|(+ 100% AP)}}}}"
+                "{{st|Magic damage|{{ap|80 to 300}} {{as|(+ 100% AP)}}}}"
             ],
             "name": "Rupture",
             "notes": [
-                "* There is a brief cast time that must be completed in order for ''Rupture'' to begin. Unlike [[channel]] times cast ones can only be interrupted by the caster's death.",
                 "* The animation is visible in brush and in [[Sight|fog of war]].",
                 "* ''Rupture'' grants {{tip|sight}} while its visual effect plays."
             ],
@@ -511,8 +511,8 @@
                     "full": "FeralScream.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 0,
-                    "y": 48,
+                    "x": 240,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -526,8 +526,8 @@
                 "full": "FeralScream.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 0,
-                "y": 48,
+                "x": 240,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -721,8 +721,8 @@
                     "full": "VorpalSpikes.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 48,
-                    "y": 48,
+                    "x": 288,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -736,8 +736,8 @@
                 "full": "VorpalSpikes.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 48,
-                "y": 48,
+                "x": 288,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },
@@ -796,15 +796,15 @@
                 "id": "Feast",
                 "name": "Feast",
                 "description": "Devours an enemy unit, dealing a high amount of true damage. If the target is killed, Cho'Gath grows, gaining maximum Health.",
-                "tooltip": "Ravenously feed on an enemy, dealing {{ e2 }} <scaleHealth>(+{{ f2 }})</scaleHealth> <scaleAP>(+{{ a2 }})</scaleAP> true damage to champions or {{ e1 }} <scaleHealth>(+{{ f2 }}) </scaleHealth><scaleAP>(+{{ a2 }})</scaleAP> to minions and monsters. If the target is killed, Cho'Gath gains a stack of Feast, which causes him to grow in size and gain {{ e3 }} maximum health.<br /><br /><rules>Only {{ e4 }} total stacks can be gained from minions and non-epic monsters. <keywordMajor>(Current: {{ f3 }}/{{ e4 }})</keywordMajor></rules>",
+                "tooltip": "Ravenously feed on an enemy, dealing {{ rdamage }} true damage to champions or {{ rmonsterdamage }} to minions and monsters. If the target is killed, Cho'Gath gains a stack of Feast, which causes him to grow in size and gain {{ rhealthperstack }} maximum health.<br /><br /><rules>Only {{ rminionmaxstacks }} total stacks can be gained from minions and non-epic monsters. <keywordMajor>(Current: {{ f3 }}/{{ rminionmaxstacks }})</keywordMajor></rules>",
                 "leveltip": {
                     "label": [
                         "Champion Damage",
                         "Health per Stack"
                     ],
                     "effect": [
-                        "{{ e2 }} -> {{ e2NL }}",
-                        "{{ e3 }} -> {{ e3NL }}"
+                        "{{ rbasedamage }} -> {{ rbasedamageNL }}",
+                        "{{ rhealthperstack }} -> {{ rhealthperstackNL }}"
                     ]
                 },
                 "maxrank": 3,
@@ -824,24 +824,24 @@
                 "effect": [
                     null,
                     [
-                        1000,
-                        1000,
-                        1000
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        300,
-                        475,
-                        650
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        80,
-                        120,
-                        160
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        6,
-                        6,
-                        6
+                        0,
+                        0,
+                        0
                     ],
                     [
                         0,
@@ -876,10 +876,10 @@
                 ],
                 "effectBurn": [
                     null,
-                    "1000",
-                    "300/475/650",
-                    "80/120/160",
-                    "6",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
                     "0",
                     "0",
                     "0",
@@ -887,18 +887,7 @@
                     "0",
                     "0"
                 ],
-                "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.5,
-                        "key": "a2"
-                    },
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.5,
-                        "key": "a2"
-                    }
-                ],
+                "vars": [],
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
@@ -911,8 +900,8 @@
                     "full": "Feast.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 96,
-                    "y": 48,
+                    "x": 336,
+                    "y": 0,
                     "w": 48,
                     "h": 48
                 },
@@ -926,8 +915,8 @@
                 "full": "Feast.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 96,
-                "y": 48,
+                "x": 336,
+                "y": 0,
                 "w": 48,
                 "h": 48
             },

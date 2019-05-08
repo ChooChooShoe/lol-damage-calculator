@@ -1,5 +1,5 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "Alpha Week 2",
     "changes": "9.1.1",
     "id": "Tristana",
@@ -58,7 +58,7 @@
                 "full": "TristanaQ.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -71,7 +71,7 @@
                 "full": "TristanaW.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -84,7 +84,7 @@
                 "full": "TristanaE.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -97,7 +97,7 @@
                 "full": "TristanaR.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -293,7 +293,7 @@
                     "full": "TristanaQ.png",
                     "sprite": "spell12.png",
                     "group": "spell",
-                    "x": 240,
+                    "x": 0,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -308,7 +308,7 @@
                 "full": "TristanaQ.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -503,7 +503,7 @@
                     "full": "TristanaW.png",
                     "sprite": "spell12.png",
                     "group": "spell",
-                    "x": 288,
+                    "x": 48,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -518,7 +518,7 @@
                 "full": "TristanaW.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -727,7 +727,7 @@
                     "full": "TristanaE.png",
                     "sprite": "spell12.png",
                     "group": "spell",
-                    "x": 336,
+                    "x": 96,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -742,7 +742,7 @@
                 "full": "TristanaE.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -790,10 +790,10 @@
             ],
             "name": "Explosive Charge",
             "notes": [
-                "* ''Explosive Charge's'' active range benefits from {{ai|Draw a Bead|Tristana}} and her size but doesn't benefit from {{ii|Rapid Firecannon}}.",
-                "* ''Explosive Charge's'' explosions will affect turrets.",
+                "* ''Explosive Charge's'' active range doesn't benefit from {{ii|Rapid Firecannon}}.",
                 "* ''Explosive Charge's'' cast time is reduced with {{sti|attack speed}}.",
-                "* '''Tristana''' will automatically be ordered to attack the target of ''Explosive Charge''."
+                "* '''Tristana''' will automatically be ordered to attack the target of ''Explosive Charge''.",
+                "* All ''Explosive Charge'' explosions will affect turrets."
             ],
             "projectile": true,
             "skill": "E",
@@ -808,7 +808,7 @@
                 "id": "TristanaR",
                 "name": "Buster Shot",
                 "description": "Tristana loads a massive cannonball into her weapon and fires it at an enemy unit. This deals Magic Damage and knocks the target back. If the target is carrying the Explosive Charge bomb, the bomb detonation radius is doubled.",
-                "tooltip": "Tristana fires a massive cannonball at an enemy unit. This deals {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> Magic Damage and knocks surrounding units back {{ e2 }} distance.",
+                "tooltip": "Tristana fires a massive cannonball at an enemy unit. This deals {{ damagecalc }} Magic Damage and knocks surrounding units back {{ knockbackdistance }} distance.",
                 "leveltip": {
                     "label": [
                         "Damage",
@@ -816,8 +816,8 @@
                         "Cooldown"
                     ],
                     "effect": [
-                        "{{ e1 }} -> {{ e1NL }}",
-                        "{{ e2 }} -> {{ e2NL }}",
+                        "{{ basedamage }} -> {{ basedamageNL }}",
+                        "{{ knockbackdistance }} -> {{ knockbackdistanceNL }}",
                         "{{ cooldown }} -> {{ cooldownNL }}"
                     ]
                 },
@@ -838,19 +838,19 @@
                 "effect": [
                     null,
                     [
-                        300,
-                        400,
-                        500
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        600,
-                        800,
-                        1000
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        200,
-                        200,
-                        200
+                        0,
+                        0,
+                        0
                     ],
                     [
                         0,
@@ -890,9 +890,9 @@
                 ],
                 "effectBurn": [
                     null,
-                    "300/400/500",
-                    "600/800/1000",
-                    "200",
+                    "0",
+                    "0",
+                    "0",
                     "0",
                     "0",
                     "0",
@@ -901,13 +901,7 @@
                     "0",
                     "0"
                 ],
-                "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 1,
-                        "key": "a1"
-                    }
-                ],
+                "vars": [],
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
@@ -920,7 +914,7 @@
                     "full": "TristanaR.png",
                     "sprite": "spell12.png",
                     "group": "spell",
-                    "x": 384,
+                    "x": 144,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -935,7 +929,7 @@
                 "full": "TristanaR.png",
                 "sprite": "spell12.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48

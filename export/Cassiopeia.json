@@ -1,7 +1,7 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "v1.0.0.107",
-    "changes": "9.3.1",
+    "changes": "9.8.1",
     "id": "Cassiopeia",
     "key": "69",
     "name": "Cassiopeia",
@@ -57,7 +57,7 @@
                 "full": "CassiopeiaQ.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -70,7 +70,7 @@
                 "full": "CassiopeiaW.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -83,7 +83,7 @@
                 "full": "CassiopeiaE.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -96,7 +96,7 @@
                 "full": "CassiopeiaR.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -297,7 +297,7 @@
                     "full": "CassiopeiaQ.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 240,
+                    "x": 0,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -312,7 +312,7 @@
                 "full": "CassiopeiaQ.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 240,
+                "x": 0,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -352,7 +352,7 @@
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Total Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}|Damage Per Second|{{ap|75/3 to 215/3}} {{as|(+ 30% AP)}}}}",
+                "{{st|Total Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}|Damage Per Second|{{ap|75/3 to 215/3|round=2}} {{as|(+ 30% AP)}}}}",
                 "{{st|Bonus Movement Speed|{{ap|30 to 50}}%}}"
             ],
             "name": "Noxious Blast",
@@ -511,7 +511,7 @@
                     "full": "CassiopeiaW.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 288,
+                    "x": 48,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -526,7 +526,7 @@
                 "full": "CassiopeiaW.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 288,
+                "x": 48,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -607,12 +607,12 @@
                 "cooldownBurn": "0.75",
                 "cost": [
                     40,
+                    45,
                     50,
-                    60,
-                    70,
-                    80
+                    55,
+                    60
                 ],
-                "costBurn": "40/50/60/70/80",
+                "costBurn": "40/45/50/55/60",
                 "datavalues": {},
                 "effect": [
                     null,
@@ -731,7 +731,7 @@
                     "full": "CassiopeiaE.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 336,
+                    "x": 96,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -746,7 +746,7 @@
                 "full": "CassiopeiaE.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -765,12 +765,12 @@
             "cooldownBurn": "0.75",
             "cost": [
                 40,
+                45,
                 50,
-                60,
-                70,
-                80
+                55,
+                60
             ],
-            "costBurn": "40/50/60/70/80",
+            "costBurn": "40/45/50/55/60",
             "costtype": "Mana",
             "damagetype": "Magic",
             "damageTypes": [
@@ -809,14 +809,14 @@
                 "id": "CassiopeiaR",
                 "name": "Petrifying Gaze",
                 "description": "Cassiopeia releases a swirl of magical energy from her eyes, stunning any enemies in front of her that are facing her and slowing any others with their back turned.",
-                "tooltip": "Cassiopeia deals {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage to all enemies in front of her. Enemies facing her turn to stone and are stunned for {{ e3 }} seconds while enemies facing away are slowed by {{ e2 }}%.",
+                "tooltip": "Cassiopeia deals {{ rdamage }} magic damage to all enemies in front of her. Enemies facing her turn to stone and are stunned for {{ rccduration }} seconds while enemies facing away are slowed by {{ rslowpercent }}%.",
                 "leveltip": {
                     "label": [
                         "Damage",
                         "Cooldown"
                     ],
                     "effect": [
-                        "{{ e1 }} -> {{ e1NL }}",
+                        "{{ rbasedamage }} -> {{ rbasedamageNL }}",
                         "{{ cooldown }} -> {{ cooldownNL }}"
                     ]
                 },
@@ -837,19 +837,19 @@
                 "effect": [
                     null,
                     [
-                        150,
-                        250,
-                        350
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        40,
-                        40,
-                        40
+                        0,
+                        0,
+                        0
                     ],
                     [
-                        2,
-                        2,
-                        2
+                        0,
+                        0,
+                        0
                     ],
                     [
                         0,
@@ -889,9 +889,9 @@
                 ],
                 "effectBurn": [
                     null,
-                    "150/250/350",
-                    "40",
-                    "2",
+                    "0",
+                    "0",
+                    "0",
                     "0",
                     "0",
                     "0",
@@ -900,13 +900,7 @@
                     "0",
                     "0"
                 ],
-                "vars": [
-                    {
-                        "link": "spelldamage",
-                        "coeff": 0.5,
-                        "key": "a1"
-                    }
-                ],
+                "vars": [],
                 "costType": " {{ abilityresourcename }}",
                 "maxammo": "-1",
                 "range": [
@@ -919,7 +913,7 @@
                     "full": "CassiopeiaR.png",
                     "sprite": "spell2.png",
                     "group": "spell",
-                    "x": 384,
+                    "x": 144,
                     "y": 0,
                     "w": 48,
                     "h": 48
@@ -934,7 +928,7 @@
                 "full": "CassiopeiaR.png",
                 "sprite": "spell2.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -971,7 +965,7 @@
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Magic Damage|{{ap|150 to 350 3}} {{as|(+ 50% AP)}}}}"
+                "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 50% AP)}}}}"
             ],
             "name": "Petrifying Gaze",
             "notes": [

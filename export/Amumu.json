@@ -1,7 +1,7 @@
 {
-    "api_version": "9.6.1",
+    "api_version": "9.9.1",
     "patch": "June 26, 2009 Patch",
-    "changes": "8.24.1",
+    "changes": "9.8.1",
     "id": "Amumu",
     "key": "32",
     "name": "Amumu",
@@ -58,7 +58,7 @@
                 "full": "BandageToss.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -71,7 +71,7 @@
                 "full": "AuraofDespair.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -84,7 +84,7 @@
                 "full": "Tantrum.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -95,10 +95,10 @@
             "description": "Amumu entangles surrounding enemy units in bandages, applying his <font color='#9b0f5f'>Curse</font>, damaging them and rendering them unable to attack or move.",
             "image": {
                 "full": "CurseoftheSadMummy.png",
-                "sprite": "spell1.png",
+                "sprite": "spell0.png",
                 "group": "spell",
-                "x": 0,
-                "y": 0,
+                "x": 240,
+                "y": 144,
                 "w": 48,
                 "h": 48
             }
@@ -128,7 +128,7 @@
             ],
             "description": [
                 "{{sbc|Innate:}} '''Amumu's''' basic attacks and {{ai|Curse of the Sad Mummy|Amumu}} apply a {{as|Curse|buzzword}} for 3 seconds, refreshing with each subsequent basic attack.",
-                "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|10% '''bonus''' true damage}}}} from all incoming {{as|magic damage}}, calculated before {{sti|{{as|magic resistance}}}} reduction."
+                "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|13% '''bonus''' true damage}}}} from all incoming {{as|magic damage}}, calculated before {{sti|{{as|magic resistance}}}} reduction."
             ],
             "icon": [
                 "Cursed Touch.png"
@@ -136,7 +136,8 @@
             "leveling": [],
             "name": "Cursed Touch",
             "notes": [
-                "* ''Cursed Touch'' will not apply if the basic attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Riposte|Fiora|parried}}, or if the attack {{tip|blind|misses}}."
+                "* ''Cursed Touch'' will not apply if the basic attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Riposte|Fiora|parried}}, or if the attack {{tip|blind|misses}}.",
+                "* If '''Amumu''' has on-hit magic damage, the bonus true damage will be applied even against non-Cursed targets, as the Curse applies before the magic damage."
             ],
             "parry": true,
             "projectile": false,
@@ -178,13 +179,13 @@
                 },
                 "maxrank": 5,
                 "cooldown": [
-                    16,
-                    14,
                     12,
+                    11,
                     10,
+                    9,
                     8
                 ],
-                "cooldownBurn": "16/14/12/10/8",
+                "cooldownBurn": "12/11/10/9/8",
                 "cost": [
                     50,
                     55,
@@ -301,7 +302,7 @@
                     "full": "BandageToss.png",
                     "sprite": "spell0.png",
                     "group": "spell",
-                    "x": 336,
+                    "x": 96,
                     "y": 144,
                     "w": 48,
                     "h": 48
@@ -316,7 +317,7 @@
                 "full": "BandageToss.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 336,
+                "x": 96,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -325,13 +326,13 @@
             "blurb": "Amumu tosses a sticky bandage at a target, stunning and damaging the target while he pulls himself to them.",
             "champion": "Amumu",
             "cooldown": [
-                16,
-                14,
                 12,
+                11,
                 10,
+                9,
                 8
             ],
-            "cooldownBurn": "16/14/12/10/8",
+            "cooldownBurn": "12/11/10/9/8",
             "cost": [
                 50,
                 55,
@@ -354,16 +355,17 @@
             ],
             "knockdown": true,
             "leveling": [
-                "{{st|Magic Damage|{{ap|80|130|180|230|280}} {{as|(+ 70% AP)}}}}"
+                "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}"
             ],
             "name": "Bandage Toss",
             "notes": [
-                "* ''Bandage Toss'' cannot be cast while Amumu is {{tip|root|rooted}}.",
-                "* Crowd control effects will not prevent Amumu from dashing if they hit him before the skill shot hits. However, the duration of the crowd control can persist the duration of the dash.",
-                "* While Amumu is mid-dash, only knock-abouts crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.",
+                "* ''Bandage Toss'' follows his target for up to 2000 units from where he cast ''Bandage Toss'', in case targets get out of the stun before he arrives.",
+                "* ''Bandage Toss'' cannot be cast while '''Amumu''' is {{tip|root|rooted}}.",
+                "* Crowd control effects will not prevent '''Amumu''' from dashing if they hit him before the skill shot hits. However, the duration of the crowd control can persist the duration of the dash.",
+                "* While '''Amumu''' is mid-dash, only knock-abouts crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.",
                 "* ''Bandage Toss'' can hit stealthed targets.",
-                "* ''Bandage Toss'' does not fizzle on Amumu's death, and it can still stun and damage enemies.",
-                "* Amumu is still able to dash even if ''Bandage Toss'' is blocked by [[spell shield]]s.",
+                "* ''Bandage Toss'' does not fizzle on '''Amumu's''' death, and it can still stun and damage enemies.",
+                "* '''Amumu''' is still able to dash even if ''Bandage Toss'' is blocked by [[spell shield]]s.",
                 "* The projectile does not interrupt '''Amumu's''' orders and will adjust its direction based on '''Amumu's''' position."
             ],
             "projectile": true,
@@ -515,7 +517,7 @@
                     "full": "AuraofDespair.png",
                     "sprite": "spell0.png",
                     "group": "spell",
-                    "x": 384,
+                    "x": 144,
                     "y": 144,
                     "w": 48,
                     "h": 48
@@ -530,7 +532,7 @@
                 "full": "AuraofDespair.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 384,
+                "x": 144,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -567,7 +569,7 @@
                 "Despair.png"
             ],
             "leveling": [
-                "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1|round=3}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
+                "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
             ],
             "name": "Despair",
             "notes": [
@@ -725,7 +727,7 @@
                     "full": "Tantrum.png",
                     "sprite": "spell0.png",
                     "group": "spell",
-                    "x": 432,
+                    "x": 192,
                     "y": 144,
                     "w": 48,
                     "h": 48
@@ -740,7 +742,7 @@
                 "full": "Tantrum.png",
                 "sprite": "spell0.png",
                 "group": "spell",
-                "x": 432,
+                "x": 192,
                 "y": 144,
                 "w": 48,
                 "h": 48
@@ -779,7 +781,7 @@
                 "Tantrum.png"
             ],
             "leveling": [
-                "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% magic resistance)}}}}",
+                "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% '''bonus''' magic resistance)}}}}",
                 "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 50% AP)}}}}"
             ],
             "name": "Tantrum",
@@ -902,10 +904,10 @@
                 "rangeBurn": "550",
                 "image": {
                     "full": "CurseoftheSadMummy.png",
-                    "sprite": "spell1.png",
+                    "sprite": "spell0.png",
                     "group": "spell",
-                    "x": 0,
-                    "y": 0,
+                    "x": 240,
+                    "y": 144,
                     "w": 48,
                     "h": 48
                 },
@@ -917,10 +919,10 @@
             "maxammo": -1,
             "image": {
                 "full": "CurseoftheSadMummy.png",
-                "sprite": "spell1.png",
+                "sprite": "spell0.png",
                 "group": "spell",
-                "x": 0,
-                "y": 0,
+                "x": 240,
+                "y": 144,
                 "w": 48,
                 "h": 48
             },
@@ -952,7 +954,7 @@
                 "Curse of the Sad Mummy.png"
             ],
             "leveling": [
-                "{{st|Magic Damage|{{ap|150 to 350 3}} {{as|(+ 80% AP)}}}}"
+                "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}"
             ],
             "name": "Curse of the Sad Mummy",
             "notes": [
