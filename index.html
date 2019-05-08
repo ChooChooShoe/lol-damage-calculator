@@ -15,8 +15,6 @@
   <link type="text/css" rel="stylesheet" href="main.css" />
   <link type="text/css" rel="stylesheet" href="items.css" />
   <link type="text/css" rel="stylesheet" href="icons.css" />
-  <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
-  <script src="https://unpkg.com/tippy.js@4"></script>
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- production version, optimized for size and speed -->
@@ -193,33 +191,37 @@
       </label>
 
 
-      <div class="stats-tooltip column" style="display: inline-block;"><span>Mouse Over to view base stats.</span>
-        <div class="stats-table">
-          <div><span>Name:</span><span>{{ info.name }}</span></div>
-          <div><span>Title:</span><span>{{ info.title }}</span></div>
-          <div><span>Resource Type:</span><span>{{ info.partype }}</span></div>
-          <div><span class="health">Base HP:</span><span>{{ stats.hp }}</span></div>
-          <div><span class="health">HP growth:</span><span>{{ stats.hpperlevel }}</span></div>
-          <div><span class="mana">Base Mana:</span><span>{{ stats.mp }}</span></div>
-          <div><span class="mana">Mana growth:</span><span>{{ stats.mpperlevel }}</span></div>
-          <div><span>Movespeed:</span><span>{{ stats.movespeed }}</span></div>
-          <div><span class="armor">Base Armor:</span><span>{{ stats.armor }}</span></div>
-          <div><span class="armor">Armor growth:</span><span>{{ stats.armorperlevel }}</span></div>
-          <div><span class="mr">Base Magic Res.:</span><span>{{ stats.spellblock }}</span></div>
-          <div><span class="mr">Magic Res. growth:</span><span>{{ stats.spellblockperlevel }}</span></div>
-          <div><span>Attack Range:</span><span>{{ stats.attackrange }}</span></div>
-          <div><span class="health">Base HP Regen:</span><span>{{ stats.hpregen }}</span></div>
-          <div><span class="health">HP Regen growth:</span><span>{{ stats.hpregenperlevel }}</span></div>
-          <div><span class="mana">Mana Regen:</span><span>{{ stats.mpregen }}</span></div>
-          <div><span class="mana">Mana Regen growth:</span><span>{{ stats.mpregenperlevel }}</span></div>
-          <div><span class="critical-chance">Crit:</span><span>{{ stats.crit }}</span></div>
-          <div><span class="critical-chance">Crit growth:</span><span>{{ stats.critperlevel }}</span></div>
-          <div><span class="ad">Attack Damage:</span><span>{{ stats.attackdamage }}</span></div>
-          <div><span class="ad">Attack Damage growth:</span><span>{{ stats.attackdamageperlevel }}</span></div>
-          <div><span>Base Attack Speed:</span><span>{{ stats.attackspeed }}</span></div>
-          <div><span>Percent Attack Speed growth:</span><span>{{ stats.attackspeedperlevel }}</span></div>
-        </div>
+      <div class="column">
+        <div>
+          <simple-tooltip dname="Mouse over for stats.">
+              <div class="stats-table">
+                <div><span>Name:</span><span>{{ info.name }}</span></div>
+                <div><span>Title:</span><span>{{ info.title }}</span></div>
+                <div><span>Resource Type:</span><span>{{ info.partype }}</span></div>
+                <div><span class="health">Base HP:</span><span>{{ stats.hp }}</span></div>
+                <div><span class="health">HP growth:</span><span>{{ stats.hpperlevel }}</span></div>
+                <div><span class="mana">Base Mana:</span><span>{{ stats.mp }}</span></div>
+                <div><span class="mana">Mana growth:</span><span>{{ stats.mpperlevel }}</span></div>
+                <div><span>Movespeed:</span><span>{{ stats.movespeed }}</span></div>
+                <div><span class="armor">Base Armor:</span><span>{{ stats.armor }}</span></div>
+                <div><span class="armor">Armor growth:</span><span>{{ stats.armorperlevel }}</span></div>
+                <div><span class="mr">Base Magic Res.:</span><span>{{ stats.spellblock }}</span></div>
+                <div><span class="mr">Magic Res. growth:</span><span>{{ stats.spellblockperlevel }}</span></div>
+                <div><span>Attack Range:</span><span>{{ stats.attackrange }}</span></div>
+                <div><span class="health">Base HP Regen:</span><span>{{ stats.hpregen }}</span></div>
+                <div><span class="health">HP Regen growth:</span><span>{{ stats.hpregenperlevel }}</span></div>
+                <div><span class="mana">Mana Regen:</span><span>{{ stats.mpregen }}</span></div>
+                <div><span class="mana">Mana Regen growth:</span><span>{{ stats.mpregenperlevel }}</span></div>
+                <div><span class="critical-chance">Crit:</span><span>{{ stats.crit }}</span></div>
+                <div><span class="critical-chance">Crit growth:</span><span>{{ stats.critperlevel }}</span></div>
+                <div><span class="ad">Attack Damage:</span><span>{{ stats.attackdamage }}</span></div>
+                <div><span class="ad">Attack Damage growth:</span><span>{{ stats.attackdamageperlevel }}</span></div>
+                <div><span>Base Attack Speed:</span><span>{{ stats.attackspeed }}</span></div>
+                <div><span>Percent Attack Speed growth:</span><span>{{ stats.attackspeedperlevel }}</span></div>
+            </div>
+          </simple-tooltip>
       </div>
+    </div>
       <label class="column column-50">
         Show Damage Stats
         <label class="switch-wrap">
@@ -228,7 +230,7 @@
         </label>
       </label>
       <label class="column column-50 flex">
-        Show Defenceive Stats
+        Show Defensive Stats
         <label class="switch-wrap">
           <input type="checkbox" v-model="showDefence">
           <div class="switch"></div>

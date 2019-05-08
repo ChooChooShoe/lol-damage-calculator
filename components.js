@@ -193,7 +193,7 @@ Vue.component('spell-effects', {
         Vue.set(this.ratios, target + '-' + ratio, {
           target: target,
           key: key,
-          value: value
+          value: Math.abs(value)
         });
       }
     }
@@ -376,4 +376,37 @@ Vue.component('match-replace', {
       return this.templateRender();
     }
   },
-})
+});
+
+const globalTooltips = {};
+Vue.component('simple-tooltip', {
+  props: ['dname', 'tipid'],
+  data: function () {
+    return {
+      visable: false,
+      clientX: 0,
+      clientY: 0,
+    }
+  },
+  methods: {
+    addEffect: function () {
+      this.customEffects.push(this.lastEffectIndex++);
+    },
+    matchReplace: function (text) {
+      return matchReplaceSpellEffects(text, this.spellrankindex).str
+    },
+    draw: function (e) {
+      const comp = globalTooltips[this.tipid] || this;
+      comp.clientX = e.clientX + 10 + 'px';
+      comp.clientY = e.clientY + 10 + 'px';
+      comp.visable = true;
+    },
+    hide: function(e) {
+      const comp = globalTooltips[this.tipid] || this;
+      comp.visable = false;
+    },
+  },
+  template: `<span class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">{{dname}}
+  <div class="tooltipcontent" :class="visable ? '' : 'hidden'" :style="{left:clientX,top:clientY}"><slot></slot></div>
+</span>`,
+});
