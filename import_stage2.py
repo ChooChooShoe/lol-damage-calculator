@@ -498,6 +498,11 @@ for filename in glob.glob("*.pass1.json"):
             "fullname":  champ["wikia_champ"].get("fullname", champ["name"]),
             "title": champ["title"],
             "image": champ["image"],  # maybe change?
+            # "skins": champ["skins"],
+            # "lore": champ["lore"],
+            # "blurb": champ["blurb"],
+            # "allytips": champ["allytips"],
+            # "enemytips": champ["enemytips"],
             "tags": champ["tags"],
             "resource": champ["partype"],  # renamed to resource
             # "resource": champ["wikia_champ"].get("resource", "Mana"),
@@ -507,19 +512,20 @@ for filename in glob.glob("*.pass1.json"):
             "rp_cost": champ["wikia_champ"].get("rp", 0),
             "adaptivetype": champ["wikia_champ"].get("adaptivetype", "magic"),
             "info": champ["info"],
+            # "stats": champ["stats"],
             "i_displayname": champ["wikia_champ"]["skill_i"].replace(";", " / "),
             "q_displayname": champ["wikia_champ"]["skill_q"].replace(";", " / "),
             "w_dispalyname": champ["wikia_champ"]["skill_w"].replace(";", " / "),
             "e_dispalyname": champ["wikia_champ"]["skill_e"].replace(";", " / "),
             "r_dispalyname": champ["wikia_champ"]["skill_r"].replace(";", " / "),
 
-            "simple_skills": {
-                "i": champ["riot_spell_i"],
-                "q": simple_riot(champ["riot_spell_q"]),
-                "w": simple_riot(champ["riot_spell_w"]),
-                "e": simple_riot(champ["riot_spell_e"]),
-                "r": simple_riot(champ["riot_spell_r"]),
-            }
+            # "simple_skills": {
+            #     "i": champ["riot_spell_i"],
+            #     "q": simple_riot(champ["riot_spell_q"]),
+            #     "w": simple_riot(champ["riot_spell_w"]),
+            #     "e": simple_riot(champ["riot_spell_e"]),
+            #     "r": simple_riot(champ["riot_spell_r"]),
+            # }
 
         }
         spells = {}
