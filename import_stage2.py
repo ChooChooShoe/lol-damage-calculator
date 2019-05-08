@@ -184,6 +184,7 @@ def testing_spell(champ, skill):
     is_passive = skill.get('skill', 'x') == "I"
     maxrank = 5 if is_passive else int(riot['maxrank'])
 
+    export['key'] = skill['key']
     if not is_passive:
         handle_riot_spell(export, riot)
     else:
@@ -456,17 +457,19 @@ def take_spell(champ, spells):
                 log.info('Taking spell: %s', skillkey)
                 try:
                     skill = champ[skillkey]
-                    export = OrderedDict()
-                    export['riot'] = champ["riot_spell_"+letter]
-                    for key in skill:
-                        export[key] = skill[key]
-                    
+                    skill['riot'] = champ["riot_spell_"+letter]
+
+                    if 'wikia_skill_'+letter+'2' in champ:
+                        skill['key'] = letter.upper() + num
+                    else:
+                        skill['key'] = letter.upper()
+
                     if num == '1':
-                        last_desc = export['description']
-                    elif last_desc == export['description']:
+                        last_desc = skill['description']
+                    elif last_desc == skill['description']:
                         log.info('Removing spell because of duplicate description %s', last_desc)
                         continue
-                    spells[letter+num] = testing_spell(champ, export)
+                    spells[letter+num] = testing_spell(champ, skill)
                 except:
                     log.warning('Spells for champ failed at: %s %s', letter, num)
                     log.warning(traceback.format_exc())
