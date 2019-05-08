@@ -53,7 +53,7 @@ def simple_riot(spell):
 
 
 def handle_riot_spell(export, riot):
-    export['riot'] = riot
+    # export['riot'] = riot
     export['id'] = riot['id']
     export['riotName'] = riot['name']
     # export['description'] = riot['description']
@@ -386,8 +386,8 @@ def testing_spell(champ, skill):
         else:
             export['recharge'] = list(map(cast, li))
 
-    if 'riot' in skill:
-        export['riot'] = otherify(skill['riot'])
+    # if 'riot' in skill:
+        # export['riot'] = otherify(skill['riot'])
     if 'skill' in skill:
         export['skill'] = otherify(skill['skill'])
     if 'speed' in skill:
