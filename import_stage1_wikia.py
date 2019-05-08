@@ -17,6 +17,7 @@
 
 import sys
 import requests
+import re
 import json
 import time
 import os
@@ -107,6 +108,14 @@ def cast(s):
             else:
                 return s
 
+def make_changes(changes):
+    nums = changes.replace('V', '').replace('b', '.2').split('.')
+    if len(nums) == 2:
+        return '' + nums[0] + '.' + nums[1] + '.1'
+    else:
+        return '' + nums[0] + '.' + nums[1] + '.' + nums[2]
+
+regex = re.compile(r"\{\{\{\{\{1<noinclude>\|Ability data</noinclude>\}\}\}\|([\S\s]+)\|\{\{\{2\|\}\}\}\|\{\{\{3\|\}\}\}\|\{\{\{4\|\}\}\}\|\{\{\{5\|\}\}\}")
 
 def try_take_skill(line, value, export):
     if line.startswith("skill_"):
@@ -119,17 +128,28 @@ def try_take_skill(line, value, export):
                     )
                     wikia_skill = parser.chomp(url)
                     skillobj = {}
+                    last_key = '_preamble'
                     for lineNumber, line in enumerate(wikia_skill.splitlines(), 1):
+                        log.debug('skill line is %s', line)
                         lineNumber = "line_" + str(lineNumber)
                         line = line.strip()
-                        
-                        if line.startswith('|') and "=" in line:
+                        if line == "" or line == r"}}":
+                            pass
+                        elif r'{{{1<noinclude>|Ability data</noinclude>}}}' in line:
+                            skillobj['name'] = re.sub(regex, r"\1", line)
+                            skillobj['name'] = re.sub('-->', '', skillobj['name'])
+                            last_key = 'name'
+                        elif line.startswith('|') and "=" in line:
                             split = line.split("=")
-                            key = split[0].strip().replace("|", "", 1)
+                            key = split[0].strip().replace("|", "", 1).replace(' ', '_')
                             value = '='.join(split[1:]).strip()
                             skillobj[key] = cast(value)
+                            last_key = key
                         else:
-                            skillobj[lineNumber] = line
+                            # skillobj[lineNumber] = line
+                            # last_key = list(skillobj.items())[-1][0]
+                            log.debug('backtracing %s to %s adding "%s"', 'key', last_key, line)
+                            skillobj[last_key] = skillobj.get(last_key,'') + '\n' + line
                     if skillobj != {}:
                         export["wikia_skill_{}{}".format(letter, skillnum)] = skillobj
         return True
@@ -137,7 +157,7 @@ def try_take_skill(line, value, export):
 
 
 # Use the latest league version.
-version = "9.6.1"
+version = "9.9.1"
 timestamp = "2019-03-22T00:40:54+00:00"
 
 url = "https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/championFull.json".format(
@@ -152,14 +172,16 @@ if clarg == "list":
 champtions = {}
 for keyid in champion_json["data"]:
     if clarg == "list":
-        log.info(keyid, end=" ")
+        log.info(keyid)
+        print(keyid, end=" ")
         continue
     if clarg != "all" and keyid not in champsList:
         continue
+    print('Taking: ' + keyid)
     champ = champion_json["data"][keyid]
     export = {
         "api_version": version,
-        "timestamp": timestamp, # yikes, im lazy
+        # "timestamp": timestamp, # yikes, im lazy
         "id": champ["id"],  # "RekSai"
         "key": champ["key"],  # "421"
         "name": champ["name"],  # "Rek'Sai"
@@ -193,21 +215,28 @@ for keyid in champion_json["data"]:
     lines = enumerate(wikia_champ.splitlines(), 1)
     champObj = {}
     for lineNumber, line in lines:
+        log.info('Champ has line %s', line)
         lineNumber = "line_" + str(lineNumber)
         line = line.strip()
-        if line.startswith('|') and "=" in line:
+        if line == "" or line == r"}}":
+            pass
+        elif r'{{1<noinclude>|champion data</noinclude>}}' in line:
+            pass
+        elif line.startswith('|') and "=" in line:
             split = line.split("=")
-            key = split[0].strip().replace("|", "", 1)
+            key = split[0].strip().replace("|", "", 1).replace(' ', '_')
             value = '='.join(split[1:]).strip()
             champObj[key] = cast(value)
             # Each skill gets an object
             try_take_skill(key, value, export)
         else:
             champObj[lineNumber] = line
-    # for line in lines
+    
+    champObj["changes"] = make_changes(champObj.get("changes", "V0.0"))
+
     export["wikia_champ"] = champObj
 
     champtions[keyid] = export
     with open("./export/" + keyid + ".pass1.json", "w") as file:
-        log.info("Writing file: ./export/%s.json", keyid)
-        file.write(json.dumps(export))
+        log.info("Writing file: ./export/%s.pass1.json", keyid)
+        file.write(json.dumps(export, indent=2, sort_keys=False))
