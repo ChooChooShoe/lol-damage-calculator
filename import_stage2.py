@@ -530,14 +530,20 @@ for filename in glob.glob("*.pass1.json"):
             "id": export["id"],
             "key": export["key"],
             "name": export["name"],
+            "title": export["title"],
             "changes": export["changes"],
+            "resource": export["resource"],
+            "stats": champ['stats'],
     }
     with open(filename.replace(".pass1", ""), "w") as file:
         file.write(json.dumps(export, indent=4, sort_keys=False))
 
+all_champs_2 = {}
+for k in sorted(all_champs.items(), key=lambda item: item[1]['name']):
+    all_champs_2[k[0]] = k[1]
 
 with open('ChampionList.json', "w") as file:
-    file.write(json.dumps(all_champs, indent=4, sort_keys=False))
+    file.write(json.dumps(all_champs_2, indent=2, sort_keys=False))
 log.info('Complete!')
 log.info('Champion with erorrs %s: total errors %s', failed_champ_count, fail_count)
 log.info('Warnings: %s', warn_count)

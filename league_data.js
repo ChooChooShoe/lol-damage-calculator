@@ -60,8 +60,8 @@ export function setPatchVersion(newVersion) {
 }
 
 function downloadingStaticDataFiles() {
-    const url = `${cdn}/${version}/data/en_US/champion.json`;
-    // const url = `./export/ChampionList.json`;
+    // const url = `${cdn}/${version}/data/en_US/champion.json`;
+    const url = `./export/ChampionList.json`;
 
     //see also: https://ddragon.leagueoflegends.com/realms/na.json
     // const baseUrl = `${cdn}/${version}/data/${locale}`;
@@ -96,16 +96,11 @@ function downloadingStaticDataFiles() {
             throw new Error('Network response was not ok.');
         })
         .then(function (json) {
-            Object.values(json.data).sort((a, b) => {
-                return a.name < b.name ? -1 : 1
-            }).forEach(onChampionData);
+            for (const key in json) {
+                Vue.set(vue.championList, key, json[key])
+            }
         });
 }
-
-function onChampionData(data) {
-    Vue.set(vue.championList, data.id, data)
-}
-
 setPatchVersion('9.6.1');
 
 export function downloadingChampionFiles(champion) {
@@ -125,6 +120,8 @@ export function downloadingChampionFiles(champion) {
         .then(function (dao) {
             // Used for items. TODO change this.
             window.playerChamption = dao.id;
+            // championData caches all the data.
+            Vue.set(vue.championData, dao.id, dao)
             // Removes all the last champions spells.
             vue.currentSpells.length = 0;
 

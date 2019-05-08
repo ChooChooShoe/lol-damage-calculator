@@ -197,7 +197,7 @@
               <div class="stats-table">
                 <div><span>Name:</span><span>{{ info.name }}</span></div>
                 <div><span>Title:</span><span>{{ info.title }}</span></div>
-                <div><span>Resource Type:</span><span>{{ info.partype }}</span></div>
+                <div><span>Resource Type:</span><span>{{ info.resource }}</span></div>
                 <div><span class="health">Base HP:</span><span>{{ stats.hp }}</span></div>
                 <div><span class="health">HP growth:</span><span>{{ stats.hpperlevel }}</span></div>
                 <div><span class="mana">Base Mana:</span><span>{{ stats.mp }}</span></div>
@@ -317,13 +317,13 @@
         <span> &#8226; This is <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and
           <span class="health">{{ Math.round(base_hpregen * 12) }} HP</span> after 60 seconds.</span>
         <hr class="column">
-        <label v-if="info.partype !== 'None'" for="target_hp5" class="extra">{{info.partype}} regeneration
-          ({{info.partype}} per 5)</label>
-        <data-input v-if="info.partype !== 'None'" dname="target_hp5" v-model="base_manaregen"></data-input>
-        <span v-if="info.partype !== 'None'"> &#8226; This is <span class="mana">{{ (base_manaregen / 5).toFixed(1) }}
-            {{info.partype}}</span> after 1 second and <span class="mana">{{ Math.round(base_manaregen * 12) }}
-            {{info.partype}}</span> after 60 seconds.</span>
-        <span v-if="info.partype === 'None'"> * {{ info.name }} does not use any secondary resource.</span>
+        <label v-if="info.resource !== 'None'" for="target_hp5" class="extra">{{info.resource}} regeneration
+          ({{info.resource}} per 5)</label>
+        <data-input v-if="info.resource !== 'None'" dname="target_hp5" v-model="base_manaregen"></data-input>
+        <span v-if="info.resource !== 'None'"> &#8226; This is <span class="mana">{{ (base_manaregen / 5).toFixed(1) }}
+            {{info.resource}}</span> after 1 second and <span class="mana">{{ Math.round(base_manaregen * 12) }}
+            {{info.resource}}</span> after 60 seconds.</span>
+        <span v-if="info.resource === 'None'"> * {{ info.name }} does not use any secondary resource.</span>
 
       </div>
       <div class="item-section hidden">

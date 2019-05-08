@@ -226,7 +226,7 @@ export const vue = new Vue({
         id: ''
       }
     },
-    message: 'Hello Vue!',
+    championData: {},
     player: null,
     target: null,
 
@@ -234,11 +234,6 @@ export const vue = new Vue({
   watch: {
   },
   computed: {
-    // a computed getter
-    reversedMessage: function () {
-      // `this` points to the vm instance
-      return this.message.split('').reverse().join('')
-    },
     outputStyle: function () {
       const t = this.output.preTotalDmg
       const p1 = (this.output.preMagicDmg / t);
