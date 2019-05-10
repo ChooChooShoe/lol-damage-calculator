@@ -281,7 +281,6 @@ export const vue = new Vue({
     output: function () {
       const p = this.player;
       const t = this.target;
-      console.log('Re-calc 4.0 (output computed value)');
       let output = {
         preTotalDmg: 0,
         preMagicDmg: 0,

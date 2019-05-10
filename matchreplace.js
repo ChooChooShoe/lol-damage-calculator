@@ -243,7 +243,7 @@ const match_lookup = {
     cssClass = cssClass.replace(' ', '-');
 
     const test = inner.toLowerCase();
-    const num = numeral(test.replace(/^[\d%., ]/g, '')).value();
+    const num = numeral(test.replace(/[^\d%., ]/g, '')).value();
     const isBonus = inner.includes('bonus');
     const target = inner.includes('target');
     const targetStr = target ? 'target' : 'player';

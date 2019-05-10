@@ -190,10 +190,11 @@ Vue.component('spell-effects', {
         const target = el.target || 'player';
         const key = el.key || ratio;
         const value = el.value || el || 0;
+        console.log('Setting var ',ratio,'to',value);
         Vue.set(this.ratios, target + '-' + ratio, {
           target: target,
           key: key,
-          value: Math.abs(value)
+          value: value
         });
       }
     }
