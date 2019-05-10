@@ -212,6 +212,13 @@ Vue.component('champion-div', {
       if(!andChamp)
         this.champ = lastChamp;
     },
+    rnd: function (n, digits) {
+      if (n === undefined || isNaN(n))
+        n = 0;
+      if (digits === undefined)
+        digits = 0;
+      return +((n).toFixed(digits))
+    },
   },
 })
 
@@ -342,8 +349,12 @@ export const vue = new Vue({
   },
   methods: {
     numeral: window.numeral,
-    rnd: function (value) {
-      return Math.round(value)
+    rnd: function (n, digits) {
+      if (n === undefined || isNaN(n))
+        n = 0;
+      if (digits === undefined)
+        digits = 0;
+      return +((n).toFixed(digits))
     },
     percentf: function (value) {
       return numeral(value).format('0.00%')

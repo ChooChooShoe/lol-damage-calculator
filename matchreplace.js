@@ -9,9 +9,16 @@ function define_keyword(word) {
 }
 
 export default function matchReplaceSpellEffects(text, spellrankindex) {
-  let vars = {ratios: {}}
+  let vars = {ratios: {},progression: []}
   text = text.replace(/<!--\n-->/g, '<br>');
   text = text.replace(/\n/g, '<br>');
+  // Matches [[ thing ]] captures thing
+  text = text.replace(/\[\[([^\[]*)\]\]/g, function(match, capture){
+    const parms = capture.split('|');
+    const link = parms[0];
+    const tile = parms[1] || parms[0];
+    return  `<a class="effect link" title="${tile}">${link}</a>`
+  });
   for (let i = 0; i < 15; i++) {
     if (text.includes('{{'))
       text = text.replace(/{{([^{}]*)}}/g, function (match, capture) {
@@ -21,7 +28,18 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
         if (tag in match_lookup) {
           const inner_fn = match_lookup[tag];
           try {
-            return inner_fn(capture, parms.slice(1), spellrankindex, vars);
+            const slices = [];
+            const options = {};
+            for (const par of parms.slice(1)) {
+              const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
+              if(capture){
+                options[capture[1]] = capture[2];
+                console.log('MatchReplace: for tag',tag,'options were found',options);
+              } else {
+                slices.push(par);
+              }
+            }
+            return inner_fn(capture, slices, spellrankindex, vars, options);
           } catch (e) {
             console.log(`Error for spell effect '${match}'`);
             console.log(e);
@@ -37,28 +55,35 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
     else
       break;
   }
-  text = text.replace(/'''(.*?)'''+/g, '<b class="chamption-name">$1</b>');
-  text = text.replace(/''(.*?)''+/g, '<i class="chamption-name">$1</i>');
-  text = text.replace(/\[\[([^\[]*?)\|([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$2</a>');
-  text = text.replace(/\[\[([^\[]*?)\]\]+/g, '<a class="effect link" title="$1">$1</a>');
+  text = text.replace(/'''(.*?)'''+/g, '<b class="bold">$1</b>');
+  text = text.replace(/''(.*?)''+/g, '<i class="italic">$1</i>');
 
   return {
     str: text,
     vars: vars
   };
 }
-function numberExpand(numberToNnumber, forceRange) {
-  return numberToNnumber.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (_match, start, end, len) => {
-    let range = forceRange || Number(len) || 5;
-    start = parseFloat(eval(start));
-    end = parseFloat(eval(end));
-    if (range === 3) {
-      const diff = (end - start) / 2;
-      return `${start}/${start + diff}/${end}`;
+function numberExpand(param, forceRange, round) {
+  const regex = /([\d./*\-+\(\)]+) to ([\d./*\-+\(\)]+)( [\d]+)?/;
+  const clean = /([^\d./*\-+\(\)]+)/g;
+  const list = [];
+  round = parseInt(round) || 3;
+    
+  for (const p of param.split(';')) {
+    const found = p.match(regex);
+    if (found) {
+      const start = parseFloat(eval(found[1]));
+      const end = parseFloat(eval(found[2]));
+      const range = forceRange || parseInt(found[3]) || 5;
+      const diff = (end - start) / (range - 1 - list.length);
+      for (let i = list.length; i < range; i++) {
+        list.push(+(start + diff * i).toFixed(round));
+      }
+    } else  {
+      list.push(+parseFloat(eval(p.replace(clean,''))).toFixed(round));
     }
-    const diff = (end - start) / 4;
-    return `${start}/${start + diff * 1}/${start + diff * 2}/${start + diff * 3}/${end}`;
-  });
+  }
+  return list;
 }
 
 const match_lookup = {
@@ -185,56 +210,60 @@ const match_lookup = {
   // or {{pp|Size|type=X|Value1|...|ValueN|Level1|...|LevelN}} 
   // or {{pp|Size|formula=X|Value1|...|ValueN|Level1|...|LevelN}} 
   // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
-  'pp': function (capture, _parms, _spellrankindex, _vars) {
-    const slices = capture.slice(3).split('|');
-    console.log('Match pp=', capture, '==>', slices);
+  'pp': function (capture, slices, _spellrankindex, _vars, options) {
+    // const slices = capture.slice(3).split('|');
+    console.log('Match pp=', capture, '==>', slices, 'opt',options);
     if (slices.length === 1) {
       let inner = numberExpand(slices[0]);
       console.log('Match pp=result=', inner);
       return inner;
     }
-    else if (slices.length === 4) {
+    else if (slices.length === 3) {
       let range = Number(slices[0]);
-      let setting = slices[1];
-      let top = numberExpand(slices[2], range);
-      let bot = numberExpand(slices[3], range);
-      console.log('Match pp=result=', top, bot, 'setting', setting);
-      return `<span class="title-tooltip" title="At levels ${bot}">${top} </span>`;
+      // let setting = slices[1];
+      let top = numberExpand(slices[1], range);
+      let bot = numberExpand(slices[2], range);
+      console.log('Match pp=result-top-bot=', top, bot);
+      return `<simple-tooltip dname="${top.join(' / ')} (based on level)">At levels: ${bot.join(', ')}</simple-tooltip>`;
     } else {
       let range = Number(slices[0]);
+      console.log('Match pp=range=', range);
       return `<span class="title-tooltip" title="${slices.slice(1, range + 1).join(' / ')}">${slices[1]} ‒ ${slices[range]}</span>`;
     }
   },
 
   // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-  'ap': function (capture, _parms, spellrankindex, vars) {
-    var inner = capture.substring(3);
-    inner = inner.replace(/([\d./*\-+]+) to ([\d./*\-+]+)( [\d./*\-+]+)?/g, (_match, start, end, len) => {
-      start = parseFloat(eval(start));
-      end = parseFloat(eval(end));
-      if (Number(len) === 3) {
-        const diff = (end - start) / 2;
-        return `${start}|${start + diff}|${end}`;
+  'ap': function (_capture, slices, spellrankindex, vars, options) {
+    const regex = /([\d./*\-+\(\)]+) to ([\d./*\-+\(\)]+)( [\d]+)?/;
+    const list = [];
+    const round = parseInt(options.round) || 3;
+
+    for (const param of slices) {
+      const found = param.match(regex);
+      if (found) {
+        const start = parseFloat(eval(found[1]));
+        const end = parseFloat(eval(found[2]));
+        const range = parseInt(found[3]) || 5;
+        const diff = (end - start) / (range - 1);
+        for (let i = 0; i < range; i++) {
+          list.push(+(start + diff * i).toFixed(round));
+        }
+      } else {
+        list.push(+parseFloat(eval(param)).toFixed(round));
       }
-      const diff = (end - start) / 4;
-      return `${start}|${start + diff * 1}|${start + diff * 2}|${start + diff * 3}|${end}`;
-
-    });
-    const list = inner.split('|');
-
+    }    
     if (!vars.base_damage)
       vars.base_damage = list;
-
-    const l = list.join("','");
-    return `<spell-span :list="['${l}']" :spellrankindex="${spellrankindex}"></spell-span>`;
+    else
+      vars.progression.push(list);
+    return `<spell-span :list="['${list.join("','")}']" :spellrankindex="${spellrankindex}"></spell-span>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
-  'as': function (capture, _parms, _spellrankindex, vars) {
-    const slices = capture.slice(3).split('|');
+  'as': function (capture, slices, _spellrankindex, vars, options) {
     // console.log('as Ability scaling =', capture, slices);
 
     const inner = slices[0];
-    const stat = slices.length == 2 ? slices[1] : undefined;
+    const stat = slices[1];
     const inner_lo = inner.toLowerCase();
 
     let cssClass = stat || list_of_colors.find(c => {

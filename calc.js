@@ -87,7 +87,11 @@ export function calcDamageWithRedection(damage, base, bonus, flat_reduction, per
     else
         return damage * (2 - (100 / (100 - defence)));
 }
-
+export function round(n, digits) {
+    if (digits === undefined)
+        digits = 0;
+    return +((n).toFixed(digits))
+}
 window.onload = function () {
     // Adds recalc to all the input on the page.
     var inputs = document.getElementsByClassName("input");
