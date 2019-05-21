@@ -20,6 +20,7 @@ import traceback
 
 from collections import OrderedDict
 from html.parser import HTMLParser
+from pathlib import Path
 
 # os.remove("stage2.log")
 import logging as log
@@ -481,11 +482,15 @@ def take_spell(champ, spells):
         log.warning('%s had errors', champ["name"])
 
 
-os.chdir("./export")
+inpath = Path("./export")
+exportpath = Path("./public/api/champion/")
+# Create folders as needed.
+exportpath.mkdir(parents=True,exist_ok=True)
+# os.chdir("./export")
 all_champs = {}
-for filename in glob.glob("*.pass1.json"):
+for filename in inpath.glob("*.pass1.json"):
     export = {}
-    with open(filename, "r") as file:
+    with open(filename, "r",encoding='UTF-8') as file:
         log.info("Processing: %s", filename)
         champ = json.load(file)
         export = {
@@ -541,14 +546,18 @@ for filename in glob.glob("*.pass1.json"):
             "resource": export["resource"],
             "stats": champ['stats'],
     }
-    with open(filename.replace(".pass1", ""), "w") as file:
+    newfilename = exportpath / (export["id"] + '.json')
+    # Remove old exports
+    # (Path("./export/") / (export["id"] + '.json')).unlink()
+    # Save to new '/api/champion/Id.json' style
+    with open(newfilename, "w") as file:
         file.write(json.dumps(export, indent=4, sort_keys=False))
 
 all_champs_2 = {}
 for k in sorted(all_champs.items(), key=lambda item: item[1]['name']):
     all_champs_2[k[0]] = k[1]
 
-with open('ChampionList.json', "w") as file:
+with open(Path('public/api') / 'ChampionList.json', "w") as file:
     file.write(json.dumps(all_champs_2, indent=2, sort_keys=False))
 log.info('Complete!')
 log.info('Champion with erorrs %s: total errors %s', failed_champ_count, fail_count)
