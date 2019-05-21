@@ -1,5 +1,5 @@
 {
-  "api_version": "9.9.1",
+  "api_version": "9.10.1",
   "id": "Riven",
   "key": "92",
   "name": "Riven",
@@ -127,22 +127,24 @@
     "leveltip": {
       "label": [
         "Damage",
-        "Attack Damage Scaling"
+        "Attack Damage Scaling",
+        "Cooldown"
       ],
       "effect": [
         "{{ e1 }} -> {{ e1NL }}",
-        "{{ e5 }}% -> {{ e5NL }}%"
+        "{{ e5 }}% -> {{ e5NL }}%",
+        "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
-      13,
-      13,
-      13,
-      13,
-      13
+      12,
+      11.5,
+      11,
+      10.5,
+      10
     ],
-    "cooldownBurn": "13",
+    "cooldownBurn": "12/11.5/11/10.5/10",
     "cost": [
       0,
       0,
@@ -447,13 +449,13 @@
     },
     "maxrank": 5,
     "cooldown": [
-      10,
-      9,
-      8,
-      7,
-      6
+      14,
+      13,
+      12,
+      11,
+      10
     ],
-    "cooldownBurn": "10/9/8/7/6",
+    "cooldownBurn": "14/13/12/11/10",
     "cost": [
       0,
       0,
@@ -2540,7 +2542,7 @@
     "skill": "I",
     "icon": "Runic Blade.png",
     "blurb": "Riven's abilities charge her blade, causing her basic attacks to deal bonus physical damage. Riven's blade may be charged up to three times and expends one charge per attack.",
-    "description": "{{sbc|Innate:}} '''Riven's''' blade gains a ''Charge'' for 6 seconds every time she uses an ability (stacks up to 3 times). '''Riven's''' [[basic attack]]s consume a ''Charge'' when available to deal {{as|{{pp|6|key=%|25 to 50|1;6 to 18|displayformula = 25%+5% at level 6, then+5% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+    "description": "{{sbc|Innate:}} '''Riven's''' blade gains a ''Charge'' for 6 seconds every time she uses an ability (stacks up to 3 times). '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{pp|6|key=%|25 to 50|1;6 to 18|displayformula = 25%+5% at level 6, then+5% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
     "description2": "''Runic Blade'' can {{tip|critical strike|critically strike}} for {{as|100% {{critical damage|100|melee}} '''bonus''' physical damage}}.",
     "targeting": "Passive",
     "affects": "Enemies",
@@ -2558,9 +2560,9 @@
     "blurb": "Riven lashes out in a series of strikes. This ability can be reactivated three times in a short time frame with the third hit knocking back nearby enemies.",
     "description": "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} towards the target nearest to the cursor or in the direction she is currently facing, dealing {{as|physical damage}} to all enemies in front of her. ''Broken Wings'' can then be reactivated twice within the next 4 seconds, with the second cast refreshing the timer.",
     "leveling": "{{st|Physical Damage|{{ap|15 to 95}} {{as|(+ {{ap|45 to 65}}% AD)}}|Total Physical Damage|{{ap|15*3 to 95*3}} {{as|(+ {{ap|45*3 to 65*3}}% AD)}}}}",
-    "description2": "''Broken Wings' '' third cast damages all enemies around '''Riven''' in an expanded radius, and {{tip|airborne|knocks them up}}. Riven can cross terrain during this cast.",
+    "description2": "{{tt|The third cast|This can cross terrain}} {{tip|airborne|knocks up}} and damages all enemies around '''Riven''' in an expanded radius.",
     "description3": "Each ''Broken Wings'' cast causes her next basic attack to occur more quickly. This is not considered a basic attack timer reset.",
-    "cooldown": "{{tt|13|Begins after first cast}}",
+    "cooldown": "{{tt|{{ap|12 to 10}}|Begins after first cast}}",
     "target_range": 260,
     "effect_radius": "{{tt|{{fd|112.5}}|Standard first casts range}} / {{tt|150|Standard final cast range}} / {{tt|{{fd|162.5}}|Enhanced first casts range}} / {{tt|200|Enhanced final cast range}}",
     "targeting": "Direction",
@@ -2569,7 +2571,7 @@
     "spelleffects": "aoe",
     "onhiteffects": "",
     "spellshield": "Special",
-    "notes": "\n* ''Broken Wings'' uses a barrage system (can be cast multiple times within a given period at no additional cost)\n** Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.\n* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.\n* ''Broken Wings' '' third cast is the only one that can be used to go over impassable terrain.\n** Dash distance can be extended when jumping over certain thick walls, for example the inhibitor one.\n* {{tip|Spell shield}} will only block the third cast."
+    "notes": "\n* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.\n* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.\n* {{tip|Spell shield}} will only block the third cast."
   },
   "wikia_skill_w1": {
     "name": "Ki Burst",
@@ -2597,7 +2599,7 @@
     "blurb": "Riven steps forward a short distance and blocks incoming damage.",
     "description": "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{sti|shield|shielding}} herself for {{fd|1.5}} seconds.",
     "leveling": "{{st|Shield Strength|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}",
-    "cooldown": "{{ap|10|9|8|7|6}}",
+    "cooldown": "{{ap|14 to 10}}",
     "target_range": 325,
     "targeting": "Direction",
     "affects": "Self",
@@ -2613,7 +2615,7 @@
     "skill": "R",
     "icon": "Blade of the Exile.png",
     "blurb": "Riven empowers her keepsake weapon with energy, and gains Attack Damage and Range. During this time, she also gains the ability to use Wind Slash, a powerful ranged attack, once.",
-    "description": "{{sbc|Active:}} '''Riven''' transforms her sword for 15 seconds, gaining {{as|(20% AD) '''bonus''' attack damage}}, {{sti|range|75 '''bonus''' range}} on her basic attacks, increased range on {{ai|Broken Wings|Riven}}, and {{ai|Ki Burst|Riven}}, as well as becoming able to cast {{ai|Wind Slash|Riven}} once for the duration.",
+    "description": "{{sbc|Active:}} '''Riven''' empowers her sword for 15 seconds, gaining {{as|(20% AD) '''bonus''' attack damage}}, {{sti|range|75 '''bonus''' range}} on her basic attacks, increased range on {{ai|Broken Wings|Riven}} and {{ai|Ki Burst|Riven}}, and the ability to cast {{ai|Wind Slash|Riven}} once for the duration.",
     "cooldown": "{{ap|120|90|60}}",
     "targeting": "None",
     "affects": "Self",
@@ -2642,7 +2644,7 @@
     "spelleffects": "aoe",
     "onhiteffects": "",
     "spellshield": true,
-    "notes": "\n* There is a 1 second cooldown before ''Riven'' can cast ''Wind Slash'' after activating ''Blade of the Exile''."
+    "notes": "\n* No additional details."
   },
   "wikia_champ": {
     "fullname": "Konte Riven",
@@ -2671,7 +2673,7 @@
     "rangetype": "Melee",
     "date": "2011-09-14",
     "patch": "V1.0.0.125",
-    "changes": "9.4.1",
+    "changes": "9.10.1",
     "role": "Skirmisher",
     "damage": 3,
     "toughness": 2,

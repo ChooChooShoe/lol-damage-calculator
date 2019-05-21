@@ -37,6 +37,7 @@ else:
         log.info("usage: %s <champion ids...|all|list|help>", sys.argv[0])
         sys.exit(0)
     champsList = ",".join(sys.argv[1:]).split(",")
+    log.info('Command Line Args: '  + ' '.join(clarg))
 
 
 if not os.path.exists("export"):
@@ -157,7 +158,7 @@ def try_take_skill(line, value, export):
 
 
 # Use the latest league version.
-version = "9.9.1"
+version = "9.10.1"
 timestamp = "2019-03-22T00:40:54+00:00"
 
 url = "https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/championFull.json".format(

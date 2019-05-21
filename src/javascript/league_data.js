@@ -29,7 +29,7 @@ export const locale = 'en_US';
 export let version = '0.0.0';
 
 export function setupVue(vue) {
-    const newVersion = '9.9.1';
+    const newVersion = '9.10.1';
     console.log(`Data is now sourced from patch ${newVersion}`);
     version = newVersion;
     fetchChampionList(vue);
