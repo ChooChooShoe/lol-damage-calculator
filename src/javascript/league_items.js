@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { el, list, mount, text } from 'https://redom.js.org/redom.es.min.js';
 import { cdn, locale, version } from './league_data.js';
-import {recalc} from './calc.js';
 
 const items_dump = document.getElementById('items_dump');
 const item_tooltips_div = document.getElementById('item_tooltips');
@@ -515,7 +514,6 @@ function onItemsUpdated() {
         ${statsRender.join('\n')}
     </div>`
     }
-    recalc();
 }
 export function getItemData(offset) {
     const stats = {};

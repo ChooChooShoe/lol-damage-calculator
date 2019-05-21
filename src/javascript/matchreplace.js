@@ -64,8 +64,8 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
   };
 }
 function numberExpand(param, forceRange, round) {
-  const regex = /([\d./*\-+\(\)]+) to ([\d./*\-+\(\)]+)( [\d]+)?/;
-  const clean = /([^\d./*\-+\(\)]+)/g;
+  const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
+  const clean = /([^\d./*\-+()]+)/g;
   const list = [];
   round = parseInt(round) || 3;
     
@@ -234,7 +234,8 @@ const match_lookup = {
 
   // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
   'ap': function (_capture, slices, spellrankindex, vars, options) {
-    const regex = /([\d./*\-+\(\)]+) to ([\d./*\-+\(\)]+)( [\d]+)?/;
+    const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
+    const clean = /([^\d./*\-+()]+)/g;
     const list = [];
     const round = parseInt(options.round) || 3;
 
@@ -249,7 +250,7 @@ const match_lookup = {
           list.push(+(start + diff * i).toFixed(round));
         }
       } else {
-        list.push(+parseFloat(eval(param)).toFixed(round));
+        list.push(+parseFloat(eval(param.replace(clean,''))).toFixed(round));
       }
     }    
     if (!vars.base_damage)

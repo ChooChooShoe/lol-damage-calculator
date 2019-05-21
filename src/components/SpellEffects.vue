@@ -64,7 +64,7 @@
 
 <script>
 import numeral from 'numeral'
-import {calcDamageWithRedection} from '../javascript/calc'
+import { calcDamageWithRedection } from '../javascript/league_data'
 import Vue from 'vue'
 import MatchReplace from './MatchReplace.vue';
 import SpellField from './SpellField.vue';

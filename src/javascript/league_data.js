@@ -94,3 +94,40 @@ export function fetchSingleChampFile(vue, champion) {
             //TODO buy default items
         });
 }
+
+function clampP(num) {
+    return Math.max(0, Math.min(num, 1))
+}
+export function calcDamageWithRedection(damage, base, bonus, flat_reduction, percent_reduction, percent_pen, percent_bonus_pen, flat_pen) {
+    // Flat Reduction is distuputed between base and bonus armor.
+    const base_ratio = base / (base + bonus);
+    const bonus_ratio = bonus / (base + bonus);
+    // Flat Reduction
+    let ebase = base - (flat_reduction * base_ratio);
+    if (ebase > 0) {
+        // % Reduction
+        ebase *= clampP(1 - percent_reduction);
+        if (ebase > 0) {
+            // % Pen
+            ebase *= clampP(1 - percent_pen);
+        }
+    }
+    // Flat Reduction
+    let ebonus = bonus - (flat_reduction * bonus_ratio);
+    if (ebonus > 0) {
+        // % Reduction
+        ebonus *= clampP(1 - percent_reduction);
+        if (ebonus > 0) {
+            // % Pen and % Bonus Pen
+            ebonus *= clampP(1 - percent_pen) * clampP(1 - percent_bonus_pen);
+        }
+    }
+    let defence = ebase + ebonus;
+    if (defence > 0) {
+        // Flat pen only for positive armor
+        defence = Math.max(0, defence - flat_pen);
+        return damage * (100 / (100 + defence));
+    }
+    else
+        return damage * (2 - (100 / (100 - defence)));
+}

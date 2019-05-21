@@ -6,20 +6,16 @@
 </template>
 
 <script>
+import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import MainBody from "./components/MainBody.vue";
-// import './javascript/ui.js';
 import { setupVue } from "./javascript/league_data.js";
-// // import './javascript/league_items.js';
-import "./javascript/calc.js";
-
-// import './javascript/matchreplace.js';
 
 export default {
   name: "app",
   components: {
     SideBody,
-    MainBody,
+    MainBody
   },
   data: function() {
     return {
@@ -40,6 +36,17 @@ export default {
     this.$root.$app = this;
     setupVue(this);
   },
+  mounted: function() {
+    Vue.nextTick().then(function() {
+      // Adds focus event to all the input on the page. from calc.js
+      // var inputs = document.getElementsByClassName("input");
+      // for (var i = 0; i < inputs.length; i++) {
+      //   // inputs[i].addEventListener("input", recalc);
+      //   if (inputs[i].tagName !== "SELECT")
+      //     inputs[i].addEventListener("focus", e => e.target.select());
+      // }
+    });
+  },
   computed: {
     skillpoints_used: function() {
       let sum = 0;
@@ -47,8 +54,8 @@ export default {
         sum += this.spellComponents[x].spellrankindex + 1;
       }
       return sum;
-    },
-  },
+    }
+  }
 };
 </script>
 

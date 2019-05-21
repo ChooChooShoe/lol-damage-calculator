@@ -89,7 +89,7 @@
           <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
           <hr>
         </div>
-        <input type="button" name="force_recalc" onclick="recalc()" value="Force RE-Calc">
+        <!-- <input type="button" name="force_recalc" onclick="recalc()" value="Force RE-Calc"> -->
       </form>
       <!-- <nav id="nav" class="flex navbar">
       <a class="inline" onclick="addNewSpellForm('magic')">
