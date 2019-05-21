@@ -118,7 +118,6 @@ props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'iscustom'],
   },
   mounted: function () {
     this.$root.$app.spellComponents.push(this);
-    this.calcspell();
   },
   destroyed: function () {
     const self = this;
@@ -145,18 +144,20 @@ props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'iscustom'],
       if ('base_damage' in vars) {
         this.base_damage = numeral(vars.base_damage[this.spellrankindex]).value();
       }
+      let newRatios = {};
       for (const ratio in vars.ratios) {
         const el = vars.ratios[ratio];
         const target = el.target || 'player';
         const key = el.key || ratio;
-        const value = el.value || el || 0;
-        console.log('Setting var ',ratio,'to',value);
-        Vue.set(this.ratios, target + '-' + ratio, {
+        let value = el.value || el || 0;
+        if (Array.isArray(value)) value = value[this.spellrankindex];
+        newRatios[target + '-' + ratio] = {
           target: target,
           key: key,
           value: value
-        });
+        };
       }
+      this.ratios = newRatios;
     }
   },
   methods: {
@@ -201,21 +202,6 @@ props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'iscustom'],
         default:
           return 0;
       }
-    },
-    calcspell: function () {
-      //TODO test if this works
-      // tippy(`#${this.$el.id} [data-tippy-content]`, {
-      //   animation: 'fade',
-      //   duration: 50,
-      //   delay: [0, 0],
-      //   followCursor: true,
-      // };
-
-      // var inputs = this.$el.getElementsByClassName("input");
-      // for (var i = 0; i < inputs.length; i++) {
-      //   // inputs[i].addEventListener("input", recalc);
-      //   inputs[i].addEventListener("focus", e => e.currentTarget.select());
-      // }
     }
   }
 };

@@ -273,41 +273,45 @@ const match_lookup = {
     cssClass = cssClass.replace(' ', '-');
 
     const test = inner.toLowerCase();
-    const num = numeral(test.replace(/[^\d%., ]/g, '')).value();
-    const isBonus = inner.includes('bonus');
-    const target = inner.includes('target');
-    const targetStr = target ? 'target' : 'player';
-    
-    if (test.includes('ap')) {
-      vars.ratios.ap = num;
-    }
-    else if(test.includes('ad')){
-      if (isBonus)  vars.ratios.bonus_ad = num;
-      else  vars.ratios.total_ad = num;
-    }
-    else if(test.includes('health') || test.includes('hp') ){
-      if (target) {
-        if (isBonus)  vars.ratios.bonus_hp = {target: 'target', value: num};
-        else if (test.includes('missing'))  vars.ratios.missing_hp = {target: 'target', value: num};
-        else if (test.includes('current'))  vars.ratios.current_hp = {target: 'target', value: num};
-        else  vars.ratios.total_hp = {target: 'target', value: num};
-      } else {
-        if (isBonus)  vars.ratios.bonus_hp = num;
-        else if (test.includes('missing'))  vars.ratios.missing_hp = num;
-        else  vars.ratios.total_hp = num;
+    let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
+    console.log('mathcrepalce+?> test',test,'to','num',num)
+    if(num !== null) {
+      if(test.length > 20)
+         num = 0.01;
+      const isBonus = inner.includes('bonus');
+      const target = inner.includes('target');
+      const targetStr = target ? 'target' : 'player';
+      if (test.includes('ap')) {
+        vars.ratios.ap = num;
       }
-    }
-    else if(test.includes('ad')){
-      if (isBonus)  vars.ratios.bonus_ad = num;
-      else  vars.ratios.total_ad = num;
-    }
-    else if(test.includes('armor')){
-      if (isBonus)  vars.ratios.bonus_armor = num;
-      else  vars.ratios.total_armor = num;
-    }
-    else if(test.includes('mr') || test.includes('resist') ){
-      if (isBonus)  vars.ratios.bonus_mr = num;
-      else  vars.ratios.total_mr = num;
+      else if(test.includes('ad')){
+        if (isBonus)  vars.ratios.bonus_ad = num;
+        else  vars.ratios.total_ad = num;
+      }
+      else if(test.includes('health') || test.includes('hp') ){
+        if (target) {
+          if (isBonus)  vars.ratios.bonus_hp = {target: 'target', value: num};
+          else if (test.includes('missing'))  vars.ratios.missing_hp = {target: 'target', value: num};
+          else if (test.includes('current'))  vars.ratios.current_hp = {target: 'target', value: num};
+          else  vars.ratios.total_hp = {target: 'target', value: num};
+        } else {
+          if (isBonus)  vars.ratios.bonus_hp = num;
+          else if (test.includes('missing'))  vars.ratios.missing_hp = num;
+          else  vars.ratios.total_hp = num;
+        }
+      }
+      else if(test.includes('ad')){
+        if (isBonus)  vars.ratios.bonus_ad = num;
+        else  vars.ratios.total_ad = num;
+      }
+      else if(test.includes('armor')){
+        if (isBonus)  vars.ratios.bonus_armor = num;
+        else  vars.ratios.total_armor = num;
+      }
+      else if(test.includes('mr') || test.includes('resist') ){
+        if (isBonus)  vars.ratios.bonus_mr = num;
+        else  vars.ratios.total_mr = num;
+      }
     }
     return `<span class="${cssClass}">${inner}</span>`;
   },

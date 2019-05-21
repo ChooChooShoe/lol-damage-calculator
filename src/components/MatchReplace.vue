@@ -3,12 +3,16 @@ import matchReplaceSpellEffects from '../javascript/matchreplace';
 import Vue from 'vue';
 import SimpleTooltip from './SimpleTooltip.vue';
 import SpellSpan from './SpellSpan.vue';
+import NoWiki from './NoWiki.vue';
+import Ref from './Ref.vue';
 
 export default {
   name: 'match-replace',
   components: {
     SimpleTooltip,
     SpellSpan,
+    NoWiki,
+    Ref
   },
   props: ['spellrankindex', 'text', 'value'],
   data: function () {
