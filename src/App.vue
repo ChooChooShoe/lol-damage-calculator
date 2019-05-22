@@ -2,6 +2,7 @@
   <div id="app">
     <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
     <MainBody :currentSpells="currentSpells"></MainBody>
+    <ShopModel ref="shop"></ShopModel>
   </div>
 </template>
 
@@ -9,24 +10,20 @@
 import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import MainBody from "./components/MainBody.vue";
+import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
 
 export default {
   name: "app",
   components: {
     SideBody,
-    MainBody
+    MainBody,
+    ShopModel
   },
   data: function() {
     return {
       currentSpells: [],
       spellComponents: [],
-      championList: {
-        None: {
-          name: "  -- None --  ",
-          id: ""
-        }
-      },
       championData: {},
       player: null,
       target: null
@@ -54,6 +51,9 @@ export default {
         sum += this.spellComponents[x].spellrankindex + 1;
       }
       return sum;
+    },
+    championList() {
+      return this.$store.state.championList;
     }
   }
 };

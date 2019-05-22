@@ -3,13 +3,13 @@
   <div class="column">
     <h2>{{ username }} Data</h2>
     <div class="flex">
-        <label class="column">Load Champion Data For
-          <select class="input" v-model="champ">
-            <template v-for="item in championList">
-              <option :key="item.id" :value="item.id">{{ item.name }}</option>
-            </template>
-          </select>
-        </label>
+      <label class="column">Load Champion Data For
+        <select class="input" v-model="champ">
+          <template v-for="item in championList">
+            <option :key="item.id" :value="item.id">{{ item.name }}</option>
+          </template>
+        </select>
+      </label>
       <label class="column">➤ Champion Level
         <input type="number" value="18" v-model.number="level" class="simple-input">
         <input :active="level === 1" type="button" class="simple-btn" value="1" @click="level = 1">
@@ -18,7 +18,6 @@
         <input :active="level === 16" type="button" class="simple-btn" value="16" @click="level = 16">
         <input :active="level === 18" type="button" class="simple-btn" value="18" @click="level = 18">
       </label>
-
 
       <div class="column">
         <div>
@@ -51,155 +50,113 @@
           </simple-tooltip>
       </div>
     </div>
+    <label class="column column-50">
+      Show Damage Stats
+      <label class="switch-wrap">
+        <input type="checkbox" v-model="showDamage">
+        <div class="switch"></div>
+      </label>
+    </label>
+    <label class="column column-50 flex">
+      Show Defensive Stats
+      <label class="switch-wrap">
+        <input type="checkbox" v-model="showDefence">
+        <div class="switch"></div>
+      </label>
+    </label>
+
+    <div class="flex" v-if="showDamage">
+      <label for="ap" class="ap">Total Ability Power (AP) = {{ rnd(ap, 2) }}</label>
+      <data-input dname="ap" v-model="ap"></data-input>
+
+      <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ rnd(total_ad, 2) }}</label>
+      <data-input dname="total_ad" v-model="total_ad"></data-input>
+
+      <label for="base_ad" class="short ad">➤ Base AD = {{ rnd(base_ad, 2) }}</label>
+      <data-input dname="base_ad" v-model="base_ad" :readonly="true"></data-input>
+      <label for="bonus_ad" class="short ad">➤ Bonus AD = {{rnd(bonus_ad, 2) }}</label>
+      <data-input dname="bonus_ad" v-model="bonus_ad"></data-input>
+
+      <label for="attack_speed" class="attack-speed">Attack Speed = {{ base_attackspeed }} +
+        {{ rnd(base_attackspeed * 100) }}%</label>
+      <data-input dname="attack_speed" v-model="base_attackspeed" :ispercent="true"></data-input>
+
+      <label for="crit_change" class="critical-chance">{{ rnd(base_critchance * 100) }}% Crit. Chance</label>
+      <data-input dname="crit_change" v-model="base_critchance" :ispercent="true"></data-input>
+
+      <label for="crit_damage" class="critical-damage">{{ rnd(critdamage * 100) }}% Crit. Damage</label>
+      <data-input dname="crit_damage" v-model="critdamage" :ispercent="true"></data-input>
+
+      <label for="life_steal" class="">{{ rnd(lifesteal * 100) }}% Life Steal</label>
+      <data-input dname="life_steal" v-model="lifesteal" :ispercent="true"></data-input>
+
+      <label class="column column-50 ap">
+          Has Void Staff? <span>&nbsp;= {{ rnd(percent_magicpen * 100) }}% Magic Pen.</span>
+      </label>
       <label class="column column-50">
-        Show Damage Stats
-        <label class="switch-wrap">
-          <input type="checkbox" v-model="showDamage">
-          <div class="switch"></div>
-        </label>
+          <label class="switch-wrap">
+            <input type="checkbox" @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0">
+            <div class="switch"></div>
+          </label>
       </label>
-      <label class="column column-50 flex">
-        Show Defensive Stats
-        <label class="switch-wrap">
-          <input type="checkbox" v-model="showDefence">
-          <div class="switch"></div>
-        </label>
-      </label>
-      
-
-      <div class="flex" v-if="showDamage">
-        <label for="ap" class="ap">Total Ability Power (AP) = {{ rnd(ap, 2) }}</label>
-        <data-input dname="ap" v-model="ap"></data-input>
-
-        <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ rnd(total_ad, 2) }}</label>
-        <data-input dname="total_ad" v-model="total_ad"></data-input>
-
-        <label for="base_ad" class="short ad">➤ Base AD = {{ rnd(base_ad, 2) }}</label>
-        <data-input dname="base_ad" v-model="base_ad" :readonly="true"></data-input>
-        <label for="bonus_ad" class="short ad">➤ Bonus AD = {{rnd(bonus_ad, 2) }}</label>
-        <data-input dname="bonus_ad" v-model="bonus_ad"></data-input>
-
-        <label for="attack_speed" class="attack-speed">Attack Speed = {{ base_attackspeed }} +
-          {{ rnd(base_attackspeed * 100) }}%</label>
-        <data-input dname="attack_speed" v-model="base_attackspeed" :ispercent="true"></data-input>
-
-        <label for="crit_change" class="critical-chance">{{ rnd(base_critchance * 100) }}% Crit. Chance</label>
-        <data-input dname="crit_change" v-model="base_critchance" :ispercent="true"></data-input>
-
-        <label for="crit_damage" class="critical-damage">{{ rnd(critdamage * 100) }}% Crit. Damage</label>
-        <data-input dname="crit_damage" v-model="critdamage" :ispercent="true"></data-input>
-
-        <label for="life_steal" class="">{{ rnd(lifesteal * 100) }}% Life Steal</label>
-        <data-input dname="life_steal" v-model="lifesteal" :ispercent="true"></data-input>
-
-        <label class="column column-50 ap">
-            Has Void Staff? <span>&nbsp;= {{ rnd(percent_magicpen * 100) }}% Magic Pen.</span>
-        </label>
-        <label class="column column-50">
-            <label class="switch-wrap">
-              <input type="checkbox" @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0">
-              <div class="switch"></div>
-            </label>
-        </label>
 
 
-        <label for="flat_magic_pen">Flat Magic Penetration = {{ rnd(flat_magicpen) }}</label>
-        <data-input dname="flat_magic_pen" v-model="flat_magicpen"></data-input>
+      <label for="flat_magic_pen">Flat Magic Penetration = {{ rnd(flat_magicpen) }}</label>
+      <data-input dname="flat_magic_pen" v-model="flat_magicpen"></data-input>
 
-        <label for="spell_vamp" class="">{{ rnd(spellvamp * 100) }}% Spell Vamp</label>
-        <data-input dname="spell_vamp" v-model="spellvamp" :ispercent="true"></data-input>
+      <label for="spell_vamp" class="">{{ rnd(spellvamp * 100) }}% Spell Vamp</label>
+      <data-input dname="spell_vamp" v-model="spellvamp" :ispercent="true"></data-input>
 
-        <label for="lethality" class="lethality">Lethality = {{ rnd(lethality) }}</label>
-        <data-input dname="lethality" v-model="lethality"></data-input>
+      <label for="lethality" class="lethality">Lethality = {{ rnd(lethality) }}</label>
+      <data-input dname="lethality" v-model="lethality"></data-input>
 
-        <label for="armor_pen" class="short">➤ Effective Flat Armor Pen. = {{ rnd(flat_armorpen) }}</label>
-        <data-input dname="armor_pen" v-model="flat_armorpen"></data-input>
+      <label for="armor_pen" class="short">➤ Effective Flat Armor Pen. = {{ rnd(flat_armorpen) }}</label>
+      <data-input dname="armor_pen" v-model="flat_armorpen"></data-input>
 
-        <label for="percent_armor_pen">{{ rnd(percent_armorpen * 100) }}% Armor Penetration</label>
-        <data-input dname="percent_armor_pen" v-model="percent_armorpen" :ispercent="true"></data-input>
-        <label for="percent_armor_pen">{{ rnd(percent_bonus_armorpen * 100) }}% Bonus Armor Penetration</label>
-        <data-input dname="percent_armor_pen" v-model="percent_bonus_armorpen" :ispercent="true"></data-input>
-      </div>
+      <label for="percent_armor_pen">{{ rnd(percent_armorpen * 100) }}% Armor Penetration</label>
+      <data-input dname="percent_armor_pen" v-model="percent_armorpen" :ispercent="true"></data-input>
+      <label for="percent_armor_pen">{{ rnd(percent_bonus_armorpen * 100) }}% Bonus Armor Penetration</label>
+      <data-input dname="percent_armor_pen" v-model="percent_bonus_armorpen" :ispercent="true"></data-input>
+    </div>
 
-
-      <div class="flex" v-if="showDefence">
-        <hr class="column">
-        <label for="target_hp" class="health">Health (HP)</label>
-        <data-input dname="target_hp" v-model="total_hp"></data-input>
-        <span> &#8226; {{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
-          {{ rnd(total_hp) }} Total HP</span>
-        <hr class="column">
-        <label for="target_armor" class="armor"> Armor</label>
-        <data-input dname="target_armor" v-model="total_armor"></data-input>
-        <span> &#8226; {{ rnd(base_armor) }} Base Armor + {{ rnd(bonus_armor) }} Bonus Armor = {{ rnd(total_armor) }} Total Armor</span>
-        <span> &#8226; This will reduce <span class="physical-damage">Physical Damage</span> taken by <span class="ap">{{ rnd(percent_pysical_reduction * 10000 ) / 100 }}%</span>.</span>
-        <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs. <span class="physical-damage">Physical Damage</span>.</span>
-        <hr class="column">
-        <label for="target_mr" class="mr">Magic Resistance (MR)</label>
-        <data-input dname="target_mr" v-model="total_mr"></data-input>
-        <span> &#8226; {{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</span>
-        <span> &#8226; This will reduce <span class="magic-damage">Magic Damage</span> taken by <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.</span>
-        <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs. <span class="magic-damage">Magic Damage</span>.</span>
-        <hr class="column">
-        <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
-        <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
-        <span> &#8226; This is <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and
-          <span class="health">{{ rnd(base_hpregen * 12) }} HP</span> after 60 seconds.</span>
-        <hr class="column">
-        <label v-if="info.resource !== 'None'" for="target_hp5" class="extra">{{info.resource}} regeneration
-          ({{info.resource}} per 5)</label>
-        <data-input v-if="info.resource !== 'None'" dname="target_hp5" v-model="base_manaregen"></data-input>
-        <span v-if="info.resource !== 'None'"> &#8226; This is <span class="mana">{{ (base_manaregen / 5).toFixed(1) }}
-            {{info.resource}}</span> after 1 second and <span class="mana">{{ rnd(base_manaregen * 12) }}
-            {{info.resource}}</span> after 60 seconds.</span>
-        <span v-if="info.resource === 'None'"> * {{ info.name }} does not use any secondary resource.</span>
-
-      </div>
-      <div class="item-section hidden">
-        <div class="item-grid-container">
-          <div class="item-inventory-6">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>1</span></div>
-          </div>
-          <div class="item-inventory-7">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>2</span></div>
-          </div>
-          <div class="item-inventory-8">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>3</span></div>
-          </div>
-          <div class="item-inventory-9">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>4</span></div>
-          </div>
-          <div class="item-inventory-10">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>5</span></div>
-          </div>
-          <div class="item-inventory-11">
-            <img class="full-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="64"
-              height="64">
-            <div><span>6</span></div>
-          </div>
-        </div>
-        <div class="itemcontrol-grid-container">
-          <input class="clear_items btn" type="button" value="Clear Items" data-shop-offset="6">
-          <input class="btn hidden" type="button" value="Load Items" data-shop-offset="6">
-          <input class="btn hidden" type="button" value="Save Items" data-shop-offset="6">
-          <input class="btn open-shop-btn" type="button" value="Shop" data-shop-offset="6">
-        </div>
-      <div class="stats-total-6"></div>
+    <div class="flex" v-if="showDefence">
+      <hr class="column">
+      <label for="target_hp" class="health">Health (HP)</label>
+      <data-input dname="target_hp" v-model="total_hp"></data-input>
+      <span> &#8226; {{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
+        {{ rnd(total_hp) }} Total HP</span>
+      <hr class="column">
+      <label for="target_armor" class="armor"> Armor</label>
+      <data-input dname="target_armor" v-model="total_armor"></data-input>
+      <span> &#8226; {{ rnd(base_armor) }} Base Armor + {{ rnd(bonus_armor) }} Bonus Armor = {{ rnd(total_armor) }} Total Armor</span>
+      <span> &#8226; This will reduce <span class="physical-damage">Physical Damage</span> taken by <span class="ap">{{ rnd(percent_pysical_reduction * 10000 ) / 100 }}%</span>.</span>
+      <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs. <span class="physical-damage">Physical Damage</span>.</span>
+      <hr class="column">
+      <label for="target_mr" class="mr">Magic Resistance (MR)</label>
+      <data-input dname="target_mr" v-model="total_mr"></data-input>
+      <span> &#8226; {{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</span>
+      <span> &#8226; This will reduce <span class="magic-damage">Magic Damage</span> taken by <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.</span>
+      <span> &#8226; This is equivalent to having <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs. <span class="magic-damage">Magic Damage</span>.</span>
+      <hr class="column">
+      <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
+      <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
+      <span> &#8226; This is <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and
+        <span class="health">{{ rnd(base_hpregen * 12) }} HP</span> after 60 seconds.</span>
+      <hr class="column">
+      <label v-if="info.resource !== 'None'" for="target_hp5" class="extra">{{info.resource}} regeneration
+        ({{info.resource}} per 5)</label>
+      <data-input v-if="info.resource !== 'None'" dname="target_hp5" v-model="base_manaregen"></data-input>
+      <span v-if="info.resource !== 'None'"> &#8226; This is <span class="mana">{{ (base_manaregen / 5).toFixed(1) }}
+          {{info.resource}}</span> after 1 second and <span class="mana">{{ rnd(base_manaregen * 12) }}
+          {{info.resource}}</span> after 60 seconds.</span>
+      <span v-if="info.resource === 'None'"> * {{ info.name }} does not use any secondary resource.</span>
     </div>
     <div class="column">
         <input name="reset" type="reset" value="Reset All" @click="clear(true)">
         <input name="reset" type="reset" value="Clear" @click="clear()">
     </div>
+    <ItemInventory ref="inventory" :userid="userid"></ItemInventory>
+
   </div>
 </div>
 </template>
@@ -207,13 +164,15 @@
 <script>
 import DataInput from './DataInput.vue';
 import SimpleTooltip from './SimpleTooltip.vue';
-import {fetchSingleChampFile} from '../javascript/league_data';
+import ItemInventory from './ItemInventory.vue';
+import {fetchSingleChampFile, default_stats} from '../javascript/league_data';
 
 export default {
   name: 'champion-div',
   components: {
     DataInput,
     SimpleTooltip,
+    ItemInventory,
   },
   props: ['userid', 'isprimary'],
   data: function () {
@@ -266,8 +225,8 @@ export default {
     }
   },
   computed: {
-    championList: function() {
-      return this.$root.$app.championList;
+    championList () {
+      return this.$store.state.championList
     },
     username: function() {
       if (this.userid === 'player')
@@ -373,8 +332,10 @@ export default {
         deep: true
     },
   },
-  mounted: function () {
+  created() {
     this.$root.$app[this.userid] = this;
+  },
+  mounted: function () {
     this.champ = window.localStorage.getItem('last_used_champ_' + this.userid) || '';
     this.load(window.localStorage.getItem('last_used_data_' + this.userid) || "{}")
   },
@@ -402,31 +363,6 @@ export default {
       return +((n).toFixed(digits))
     },
   },
-}
-
-function default_stats() {
-  return {
-    hp: 0,
-    hpperlevel: 0,
-    mp: 0,
-    mpperlevel: 0,
-    movespeed: 0,
-    armor: 0,
-    armorperlevel: 0,
-    spellblock: 0,
-    spellblockperlevel: 0,
-    attackrange: 0,
-    hpregen: 0,
-    hpregenperlevel: 0,
-    mpregen: 0,
-    mpregenperlevel: 0,
-    crit: 0,
-    critperlevel: 0,
-    attackdamage: 0,
-    attackdamageperlevel: 0,
-    attackspeedperlevel: 0,
-    attackspeed: 0,
-  }
 }
 
 function calcStat(lvl, base, growth) {
@@ -458,26 +394,7 @@ function update_user_stats(stats, user, lvl) {
   user.base_critchance = calcStat(lvl, stats.crit, stats.critperlevel);
   user.base_attackspeed = calcStat(lvl, stats.attackspeed, stats.attackspeedperlevel);
 }
-
-export function onChampionData(data) {
-  console.log('onChampionData',data)
-  // Vue.set(vue.championList, data.id, data)
-}
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

@@ -28,12 +28,16 @@ export const cdn = 'https://ddragon.leagueoflegends.com/cdn';
 export const locale = 'en_US';
 export let version = '0.0.0';
 
+
 export function setupVue(vue) {
     const newVersion = '9.10.1';
     console.log(`Data is now sourced from patch ${newVersion}`);
     version = newVersion;
     fetchChampionList(vue);
-    // downloadStaticItems(version);
+    fetchStaticItems((basic, data, groups, tree) => {
+        vue.$store.state.basicItemData = basic;
+        vue.$store.state.itemData = data;
+    });
     // vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
     // vue.target.champ = window.localStorage.getItem('last_used_champ_target') || '';
 }
@@ -51,10 +55,9 @@ function fetchChampionList(vue) {
             throw new Error('Network response was not ok.');
         })
         .then(function (json) {
-            // for (const key in json) {
-            //     Vue.set(vue.championList, key, json[key])
-            // }
-            vue.championList = json;
+            let championList = { None: { name: "  -- None --  ", id: "" } }
+            Object.assign(championList, json);
+            vue.$store.state.championList = championList;
         });
 }
 
@@ -94,6 +97,118 @@ export function fetchSingleChampFile(vue, champion) {
             //TODO buy default items
         });
 }
+const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
+
+export function fetchStaticItems(callback) {
+    const url = `${cdn}/${version}/data/${locale}/item.json`;
+    console.log(`Fetching: ${url}`)
+    fetch(url)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(function (json) {
+            const type = json.type; // "item"
+            const version = json.version; // "9.10.1"
+            const basic = json.basic;
+            const data = json.data;
+            const groups = json.groups;
+            const tree = json.tree;
+
+            for (const key in data) {
+                const item = data[key];
+                
+                const tags = item.tags.join(' ');
+                item.search = [
+                    item.name.toLowerCase(),
+                    item.colloq.toLowerCase().split(';'),
+                    // item.description.toLowerCase(),
+                ].flat();
+
+                item.nonRift = !item.maps['11'];
+                item.searchExact = tags.toLowerCase().split(' ');
+
+                item.isKnownEventItem = known_event_items.includes(key);
+
+                item.imageFull = `${cdn}/${version}/img/item/${item.image.full}`;
+                item.spriteStyle = `background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;`
+
+                const statsRender = [];
+                for (let i in item.stats) {
+                    statsRender.push(`<div><a>${i}:</a><a style="color:#8AC88A;">+${item.stats[i]}</a></div>`);
+                }
+                item.statsRender = statsRender.join('\n');                
+            }
+            callback(basic, data, groups, tree);
+            // console.log(itemData);
+
+//             let listHtml = "";
+//             let tooltipsHtml = "";
+
+//             Object.keys(itemJson.data).forEach(key => {
+
+//                 // For sprite images
+//                 newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;" width="${item.image.w}" height="${item.image.h}"`
+
+//                 // For full images - Eg: <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64" height="64">
+//                 newItem.imageFull = `${cdn}/${version}/img/item/${item.image.full}`
+
+
+
+//                 let total_cost;
+//                 if (item.gold.purchasable)
+//                     total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
+//                 else
+//                     total_cost = '<span class="red">Not In Shop</span>';
+
+
+//                 newItem.intoRender = intoRender;
+
+//                 let tooltipContent = `
+// <div class="tooltipcontent" id="tooltipcontent_item_${key}">
+//     <div class="item-tooltip-container">
+//         <div class="item-header">
+//             <img class="item-img-left" ${newItem.imgRender}/>
+//             <span class="item-title">${item.name}</span> 
+//             <div style="float: right">
+//             <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
+//             </div>
+//         </div>
+//         <div class="item-underline"></div>
+//         <div class="item-stats-table table">
+//             ${statsRender.join('\n')}
+//         </div>
+//         <div class="item-description">
+//             ${item.description}
+//         </div>
+//         <div class="item-underline"></div>
+//         ${fromRender}
+//         ${intoRenderSmall}
+//         <div class="item-tags">Tags: 
+//         ${item.tags.join(' ')}
+//         </div>
+//     </div>
+// </div>`;
+
+
+//                 let render = `
+// <div class="item tooltiplink item-container" id="shop_item_${key}" data-key="${key}">
+//     <div class="item-img-left " ${newItem.imgRender}></div>
+//     <span class="item-name">${item.name}</span>
+//     <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
+// </div>`
+//                 // newItem.preRendered = render.trim();
+//                 listHtml += render.trim();
+//                 tooltipsHtml += tooltipContent.trim();
+//                 itemData[key] = newItem;
+//             });
+//             items_dump.innerHTML = listHtml;
+//             item_tooltips_div.innerHTML = tooltipsHtml;
+//             addEvents();
+        });
+}
 
 function clampP(num) {
     return Math.max(0, Math.min(num, 1))
@@ -131,3 +246,28 @@ export function calcDamageWithRedection(damage, base, bonus, flat_reduction, per
     else
         return damage * (2 - (100 / (100 - defence)));
 }
+
+export function default_stats() {
+    return {
+      hp: 0,
+      hpperlevel: 0,
+      mp: 0,
+      mpperlevel: 0,
+      movespeed: 0,
+      armor: 0,
+      armorperlevel: 0,
+      spellblock: 0,
+      spellblockperlevel: 0,
+      attackrange: 0,
+      hpregen: 0,
+      hpregenperlevel: 0,
+      mpregen: 0,
+      mpregenperlevel: 0,
+      crit: 0,
+      critperlevel: 0,
+      attackdamage: 0,
+      attackdamageperlevel: 0,
+      attackspeedperlevel: 0,
+      attackspeed: 0,
+    }
+  }

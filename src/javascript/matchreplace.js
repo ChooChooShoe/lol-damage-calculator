@@ -13,7 +13,7 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
   text = text.replace(/<!--\n-->/g, '<br>');
   text = text.replace(/\n/g, '<br>');
   // Matches [[ thing ]] captures thing
-  text = text.replace(/\[\[([^\[]*)\]\]/g, function(match, capture){
+  text = text.replace(/\[\[([^[]*)\]\]/g, function(match, capture){
     const parms = capture.split('|');
     const link = parms[0];
     const tile = parms[1] || parms[0];
@@ -320,7 +320,7 @@ const match_lookup = {
     return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
   },
 
-  //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}​​​​​​​
+  //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}
 
   //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
   'ft': function (capture, slices, _spellrankindex, _vars) {
