@@ -37,16 +37,20 @@ export function defaultItemValues() {
 function take(key, value) {
   const stats = [];
   const options = {};
-  const uniques = {};
+  const uniques = [];
   const parser = new DOMParser()
   const el = parser.parseFromString(`<body>${value.description}</body>`, "text/html");
   const bodyNode = el.childNodes[0].childNodes[1];
 
   let active = false;
 
-  let lastKey = 'text';
+  let lastKey = 0;
   let lastLine = [];
-  for (const child of Array.from(bodyNode.childNodes)) {
+  for (let child of Array.from(bodyNode.childNodes)) {
+    if (child.nodeName === 'MANA') {
+      child = child.childNodes[0];
+    }
+
     if (child.nodeName === 'STATS') {
       for (const statChild of Array.from(child.childNodes)) {
         if (statChild.nodeName === 'LEVELLIMIT')
@@ -57,17 +61,36 @@ function take(key, value) {
     } else if (child.nodeName === 'UNIQUE' ||
       child.nodeName === 'PASSIVE' ||
       child.nodeName === 'ACTIVE' ||
-      child.nodeName === 'CONSUMABLE' ||
-      child.nodeName === 'AURA' ||
-      child.nodeName === 'RULES'
+      child.nodeName === 'AURA'
     ) {
-      lastKey = child.innerHTML.replace(/:/, '');
-      // lastLine.push(child.outerHTML);
+      const parts1 = child.textContent.split(' - ');
+      const parts2 = parts1[0].trim().split(' ', 2);
+      const isUnique = parts2.length == 2 ? parts2[0] : undefined; //capture[1] ? capture[1].trim() : capture[1];
+      const type = parts2[parts2.length - 1];//capture[2];
+      const name = parts1[1] ? parts1[1].slice(0, parts1[1].length - 1) : undefined;//capture[3];
+      // console.log('UNIQUE: for capture', child.textContent, '|', isUnique, '|', type, '|', name);
 
+      lastKey = uniques.length;
+      uniques[lastKey] = {
+        unique: isUnique === 'UNIQUE' ? true : isUnique,
+        type: type.toLocaleLowerCase(),
+        name: name.replace(/:/,''),
+        description: '',
+      }
+    } else if (child.nodeName === 'CONSUMABLE' || child.nodeName === 'RULES') {
+      lastKey = uniques.length;
+      uniques[lastKey] = {
+        unique: undefined,
+        type: child.nodeName.toLocaleLowerCase(),
+        name: child.textContent.replace(/:/,''),
+        description: '',
+      }
     }
     else if (child.nodeName === 'BR') {
-      if (lastLine.join() === '') continue;
-      uniques[lastKey] = lastLine.join().trim();
+      if (lastLine.join('') === '') continue;
+      if (!uniques[lastKey])
+        uniques[lastKey] = { type: 'text', }
+      uniques[lastKey].description = lastLine.join('').trim();
       lastLine = [];
     } else if (child.nodeName === 'GROUPLIMIT' || child.nodeName === 'LEVELLIMIT'
     ) {
@@ -80,7 +103,9 @@ function take(key, value) {
     }
   }
   if (lastLine.length > 0) {
-    uniques[lastKey] = lastLine.join().trim();
+    if (!uniques[lastKey])
+      uniques[lastKey] = { type: 'text',}
+    uniques[lastKey].description = lastLine.join('').trim();
   }
 
   const newStats = {};
