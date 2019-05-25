@@ -67,14 +67,14 @@ function take(key, value) {
       const parts2 = parts1[0].trim().split(' ', 2);
       const isUnique = parts2.length == 2 ? parts2[0] : undefined; //capture[1] ? capture[1].trim() : capture[1];
       const type = parts2[parts2.length - 1];//capture[2];
-      const name = parts1[1] ? parts1[1].slice(0, parts1[1].length - 1) : undefined;//capture[3];
+      const name = parts1[1] ? parts1[1].replace(/:/,'').trim() : undefined;//capture[3];
       // console.log('UNIQUE: for capture', child.textContent, '|', isUnique, '|', type, '|', name);
 
       lastKey = uniques.length;
       uniques[lastKey] = {
         unique: isUnique === 'UNIQUE' ? true : isUnique,
-        type: type.toLocaleLowerCase(),
-        name: name.replace(/:/,''),
+        type: type.toLocaleLowerCase().replace(/:/,'').trim(),
+        name: name,
         description: '',
       }
     } else if (child.nodeName === 'CONSUMABLE' || child.nodeName === 'RULES') {

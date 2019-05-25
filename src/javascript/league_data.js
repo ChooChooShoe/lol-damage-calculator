@@ -35,8 +35,7 @@ export function setupVue(vue) {
     console.log(`Data is now sourced from patch ${newVersion}`);
     version = newVersion;
     fetchChampionList(vue);
-    fetchStaticItems((basic, data, groups, tree) => {
-        vue.$store.state.basicItemData = basic;
+    fetchStaticItems((data) => {
         vue.$store.state.itemData = data;
     });
     // vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
@@ -113,13 +112,7 @@ export function fetchStaticItems(callback) {
             throw new Error('Network response was not ok.');
         })
         .then(function (json) {
-            // const type = json.type; // "item"
-            // const version = json.version; // "9.10.1"
-            const basic = json.basic;
-            // const data = json.data;
-            const data = json;
-            const groups = json.groups;
-            const tree = json.tree;
+            const data = Object.assign({}, json);
 
             for (const key in data) {
                 const item = data[key];
@@ -149,7 +142,7 @@ export function fetchStaticItems(callback) {
 
             // ITEM TEST
             // test_item(data);
-            callback(basic, data, groups, tree);
+            callback(data);
             // console.log(itemData);
 
             //             let listHtml = "";

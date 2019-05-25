@@ -72,7 +72,7 @@
       </div>
     </div>
   </div>
-  <div v-else></div>
+  <div v-else>No Item Selected</div>
 </template>
 
 <script>

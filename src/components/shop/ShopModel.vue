@@ -122,7 +122,7 @@ export default {
     return {
       isOpen: false,
       userid: "player",
-      selectedItem: "1004",
+      selectedItem: null,
       mapfilter: "11",
       hide_event: false,
       rift_only: false,

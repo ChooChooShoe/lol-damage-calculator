@@ -11,7 +11,6 @@ export default new Vuex.Store({
         id: ""
       }
     },
-    basicItemData: [],
     itemData: [],
   },
   mutations: {
