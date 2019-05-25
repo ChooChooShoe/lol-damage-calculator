@@ -6,7 +6,7 @@
       <div class="flex flex-row">
         <template v-for="(key) in value.into">
           <img
-            class="intoimage"
+            class="intoimage click"
             :key="key"
             :data-key="key"
             :style="$store.state.itemData[key].spriteStyle"
@@ -16,9 +16,34 @@
       </div>
     </div>
     <div class="others">
-      <div class="itemspriteimage" :style="value.spriteStyle"></div>
-      <div class="nameheader">{{ value.name }}</div>
+      <div class="header">
+        <div class="itemspriteimage" :style="value.spriteStyle"></div>
+        <input type="button" value="BUY" class="buy" @click="buySelf()">
+        <span class="nameheader">{{ value.name }} ({{ itemId }})</span>
+        <br>
+        <div class="inline">
+          <img class="intoimage inline" src="../../assets/Gold.png">
+          <span class="inline gold">{{ displayCost }}</span>
+        </div>
+        <div class="inline" v-if="value.gold.sell != value.gold.total">
+          <span>&nbsp;(Sells for:</span>
+          <img class="intoimage inline" src="../../assets/Gold.png">
+          <span class="inline gold">{{ value.gold.sell }}</span>
+          <span>)</span>
+        </div>
+        <div class="inline" v-if="value.gold.purchasable === false">
+          <span>&nbsp;-&nbsp;</span>
+          <span class="red">Not for Sale</span>
+        </div>
+        <div class="inline" v-if="value.inStore === false">
+          <span>&nbsp;-&nbsp;</span>
+          <span class="red">Not In Store</span>
+        </div>
+      </div>
+
       <div class="item-underline"></div>
+      <h4 v-if="value.requiredAlly">Required Ally: {{ value.requiredAlly }}</h4>
+      <h4 v-if="value.requiredChampion">Required Champion: {{ value.requiredChampion }}</h4>
       <div class="item description" v-html="value.description"></div>
       <div class="item-underline"></div>
       <div class="from">
@@ -27,7 +52,7 @@
           <template v-for="(key,index) in value.from">
             <div :key="key+index" class="inline">
               <img
-                class="intoimage inline"
+                class="intoimage inline click"
                 :data-key="key"
                 :style="'zoom: 66.66666%;'+$store.state.itemData[key].spriteStyle"
                 @click="onSelectItem(key)"
@@ -43,9 +68,7 @@
       </div>
       <div class="item-tags">
         <span>Tags:&nbsp;</span>
-        <template v-for="key in value.tags">
-          <span :key="key">{{key}}&nbsp;</span>
-        </template>
+        <template v-for="key in value.tags">{{key}}&nbsp;</template>
       </div>
     </div>
   </div>
@@ -71,18 +94,9 @@ export default {
     }
   },
   methods: {
-    draw: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.clientX = e.clientX + 10 + "px";
-      comp.clientY = e.clientY + 10 + "px";
-      comp.visable = true;
+    buySelf() {
+      this.$parent.buyItem(this.itemId);
     },
-    hide: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.visable = false;
-    },
-    showInfo() {},
-    buyItem() {},
     onSelectItem(key) {
       this.$parent.selectedItem = key;
     }
@@ -98,17 +112,27 @@ export default {
   box-sizing: content-box;
   display: block;
 }
+.buy {
+  float: right;
+  border: 2px solid #aaa;
+  margin: 5px;
+}
 .intoimage {
   /* border: 1px solid #aaa; */
   margin: 3px;
   /* box-sizing: content-box; */
   display: block;
 }
-.nameheader {
+.header {
   min-height: 60px;
+  /* font-size: 1.4rem; */
+  line-height: 1.2;
+  color: #efefef;
+}
+.nameheader {
   /* white-space: nowrap; */
   font-weight: 300;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   line-height: 1.2;
   color: #efefef;
 }
@@ -134,19 +158,16 @@ export default {
 .inline {
   display: inline;
 }
-.gold {
-  font-size: 2.2rem;
-  line-height: 1.35;
-}
 .others {
   background: #0c1617;
   position: relative;
 }
 .shopinfo {
   height: 100%;
+  position: relative;
 }
 .description {
-  max-height: 100px;
+  max-height: 50vh;
   overflow: auto;
 }
 </style>

@@ -1,4 +1,5 @@
-import Vue from 'vue'
+// ITEM TEST
+// import { test_item } from './league_items.js';
 
 // see also: https://ddragon.leagueoflegends.com/realms/na.json
 // const baseUrl = `${cdn}/${version}/data/${locale}`;
@@ -79,7 +80,7 @@ export function fetchSingleChampFile(vue, champion) {
             // Used for items. TODO change this.
             // window.playerChamption = dao.id;
             // championData caches all the data.
-            Vue.set(vue.championData, dao.id, dao);
+            vue.$set(vue.championData, dao.id, dao);
             // Removes all the last champions spells.
             vue.currentSpells.length = 0;
 
@@ -100,7 +101,9 @@ export function fetchSingleChampFile(vue, champion) {
 const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
 export function fetchStaticItems(callback) {
-    const url = `${cdn}/${version}/data/${locale}/item.json`;
+    // const url = `${cdn}/${version}/data/${locale}/item.json`;
+    // const url = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
+    const url = './api/items.json';
     console.log(`Fetching: ${url}`)
     fetch(url)
         .then(function (response) {
@@ -110,20 +113,22 @@ export function fetchStaticItems(callback) {
             throw new Error('Network response was not ok.');
         })
         .then(function (json) {
-            const type = json.type; // "item"
-            const version = json.version; // "9.10.1"
+            // const type = json.type; // "item"
+            // const version = json.version; // "9.10.1"
             const basic = json.basic;
-            const data = json.data;
+            // const data = json.data;
+            const data = json;
             const groups = json.groups;
             const tree = json.tree;
 
             for (const key in data) {
                 const item = data[key];
-                
+                item.maps = {'11': true};
+
                 const tags = item.tags.join(' ');
                 item.search = [
                     item.name.toLowerCase(),
-                    item.colloq.toLowerCase().split(';'),
+                    (item.colloq || '').toLowerCase().split(';'),
                     // item.description.toLowerCase(),
                 ].flat();
 
@@ -139,74 +144,77 @@ export function fetchStaticItems(callback) {
                 for (let i in item.stats) {
                     statsRender.push(`<div><a>${i}:</a><a style="color:#8AC88A;">+${item.stats[i]}</a></div>`);
                 }
-                item.statsRender = statsRender.join('\n');                
+                item.statsRender = statsRender.join('\n');
             }
+
+            // ITEM TEST
+            // test_item(data);
             callback(basic, data, groups, tree);
             // console.log(itemData);
 
-//             let listHtml = "";
-//             let tooltipsHtml = "";
+            //             let listHtml = "";
+            //             let tooltipsHtml = "";
 
-//             Object.keys(itemJson.data).forEach(key => {
+            //             Object.keys(itemJson.data).forEach(key => {
 
-//                 // For sprite images
-//                 newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;" width="${item.image.w}" height="${item.image.h}"`
+            //                 // For sprite images
+            //                 newItem.imgRender = `style="background: url('${cdn}/${version}/img/sprite/${item.image.sprite}') -${item.image.x}px -${item.image.y}px; width:${item.image.w}px; height:${item.image.h}px;" width="${item.image.w}" height="${item.image.h}"`
 
-//                 // For full images - Eg: <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64" height="64">
-//                 newItem.imageFull = `${cdn}/${version}/img/item/${item.image.full}`
-
-
-
-//                 let total_cost;
-//                 if (item.gold.purchasable)
-//                     total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
-//                 else
-//                     total_cost = '<span class="red">Not In Shop</span>';
+            //                 // For full images - Eg: <img src="http://ddragon.leagueoflegends.com/cdn/9.4.1/img/item/3092.png" width="64" height="64">
+            //                 newItem.imageFull = `${cdn}/${version}/img/item/${item.image.full}`
 
 
-//                 newItem.intoRender = intoRender;
 
-//                 let tooltipContent = `
-// <div class="tooltipcontent" id="tooltipcontent_item_${key}">
-//     <div class="item-tooltip-container">
-//         <div class="item-header">
-//             <img class="item-img-left" ${newItem.imgRender}/>
-//             <span class="item-title">${item.name}</span> 
-//             <div style="float: right">
-//             <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
-//             </div>
-//         </div>
-//         <div class="item-underline"></div>
-//         <div class="item-stats-table table">
-//             ${statsRender.join('\n')}
-//         </div>
-//         <div class="item-description">
-//             ${item.description}
-//         </div>
-//         <div class="item-underline"></div>
-//         ${fromRender}
-//         ${intoRenderSmall}
-//         <div class="item-tags">Tags: 
-//         ${item.tags.join(' ')}
-//         </div>
-//     </div>
-// </div>`;
+            //                 let total_cost;
+            //                 if (item.gold.purchasable)
+            //                     total_cost = `<span class="gold">${item.gold.total == 0 ? 'Free' : item.gold.total}</span>`;
+            //                 else
+            //                     total_cost = '<span class="red">Not In Shop</span>';
 
 
-//                 let render = `
-// <div class="item tooltiplink item-container" id="shop_item_${key}" data-key="${key}">
-//     <div class="item-img-left " ${newItem.imgRender}></div>
-//     <span class="item-name">${item.name}</span>
-//     <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
-// </div>`
-//                 // newItem.preRendered = render.trim();
-//                 listHtml += render.trim();
-//                 tooltipsHtml += tooltipContent.trim();
-//                 itemData[key] = newItem;
-//             });
-//             items_dump.innerHTML = listHtml;
-//             item_tooltips_div.innerHTML = tooltipsHtml;
-//             addEvents();
+            //                 newItem.intoRender = intoRender;
+
+            //                 let tooltipContent = `
+            // <div class="tooltipcontent" id="tooltipcontent_item_${key}">
+            //     <div class="item-tooltip-container">
+            //         <div class="item-header">
+            //             <img class="item-img-left" ${newItem.imgRender}/>
+            //             <span class="item-title">${item.name}</span> 
+            //             <div style="float: right">
+            //             <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
+            //             </div>
+            //         </div>
+            //         <div class="item-underline"></div>
+            //         <div class="item-stats-table table">
+            //             ${statsRender.join('\n')}
+            //         </div>
+            //         <div class="item-description">
+            //             ${item.description}
+            //         </div>
+            //         <div class="item-underline"></div>
+            //         ${fromRender}
+            //         ${intoRenderSmall}
+            //         <div class="item-tags">Tags: 
+            //         ${item.tags.join(' ')}
+            //         </div>
+            //     </div>
+            // </div>`;
+
+
+            //                 let render = `
+            // <div class="item tooltiplink item-container" id="shop_item_${key}" data-key="${key}">
+            //     <div class="item-img-left " ${newItem.imgRender}></div>
+            //     <span class="item-name">${item.name}</span>
+            //     <span class="gold"><img src="../../assets/Gold.png" />${total_cost}</span>
+            // </div>`
+            //                 // newItem.preRendered = render.trim();
+            //                 listHtml += render.trim();
+            //                 tooltipsHtml += tooltipContent.trim();
+            //                 itemData[key] = newItem;
+            //             });
+            //             items_dump.innerHTML = listHtml;
+            //             item_tooltips_div.innerHTML = tooltipsHtml;
+            //             addEvents();
         });
 }
 
@@ -249,25 +257,25 @@ export function calcDamageWithRedection(damage, base, bonus, flat_reduction, per
 
 export function default_stats() {
     return {
-      hp: 0,
-      hpperlevel: 0,
-      mp: 0,
-      mpperlevel: 0,
-      movespeed: 0,
-      armor: 0,
-      armorperlevel: 0,
-      spellblock: 0,
-      spellblockperlevel: 0,
-      attackrange: 0,
-      hpregen: 0,
-      hpregenperlevel: 0,
-      mpregen: 0,
-      mpregenperlevel: 0,
-      crit: 0,
-      critperlevel: 0,
-      attackdamage: 0,
-      attackdamageperlevel: 0,
-      attackspeedperlevel: 0,
-      attackspeed: 0,
+        hp: 0,
+        hpperlevel: 0,
+        mp: 0,
+        mpperlevel: 0,
+        movespeed: 0,
+        armor: 0,
+        armorperlevel: 0,
+        spellblock: 0,
+        spellblockperlevel: 0,
+        attackrange: 0,
+        hpregen: 0,
+        hpregenperlevel: 0,
+        mpregen: 0,
+        mpregenperlevel: 0,
+        crit: 0,
+        critperlevel: 0,
+        attackdamage: 0,
+        attackdamageperlevel: 0,
+        attackspeedperlevel: 0,
+        attackspeed: 0,
     }
-  }
+}

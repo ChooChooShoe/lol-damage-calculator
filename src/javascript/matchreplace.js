@@ -274,7 +274,6 @@ const match_lookup = {
 
     const test = inner.toLowerCase();
     let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    console.log('mathcrepalce+?> test',test,'to','num',num)
     if(num !== null) {
       if(test.length > 20)
          num = 0.01;

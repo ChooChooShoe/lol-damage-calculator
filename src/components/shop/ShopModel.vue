@@ -1,51 +1,51 @@
 
 <template>
   <div>
-    <div class="modal" :style=" isOpen ? '' : 'display: none;'" >
+    <!-- <div >
+      <template v-for="(key, val) in $store.state.itemData">
+        <p :key="val">{{ '------' + key.name + ': ' +val + ': ' + json(key.stats) }}</p>
+      </template>
+    </div>-->
+    <div class="modal" :style=" isOpen ? '' : 'display: none;'">
       <div class="modal-content">
-        <div class="modal-header">
-          <span id="item_shop_model_close" class="close">&times;</span>
-          <h2>Shop</h2>
+        <header>
+          <span class="close" @click="isOpen = false">&times;</span>
+          <h2>League Item Shop</h2>
           <input
             type="search"
-            ref="search"
+            v-model="search"
             placeholder="Type to filter items..."
             class="shop-search"
-            @input="filterShop()"
           >
           <label>
             Show Summoner's Rift Only
-            <input
-              type="checkbox"
-              ref="rift_only"
-              checked
-              @input="filterShop()"
-            >
+            <input type="checkbox" v-model="rift_only" checked>
           </label>
 
           <label>
             Hide special event items
             <input
               type="checkbox"
-              ref="hide_event"
+              v-model="hide_event"
               checked
               @input="filterShop()"
             >
           </label>
 
+          <input type="search" v-model="mapfilter" placeholder="Type to filter map...">
           <label>Item Count: {{ visableItems.length }}</label>
-        </div>
-        <div class="model-body-left fixed-scroller">
+        </header>
+        <nav class="fixed-scroller">
           <div class="shop-grid-container">
             <template v-for="(key) in visableItems">
               <Item :key="key" :itemId="key" :value="$store.state.itemData[key]"></Item>
             </template>
           </div>
-        </div>
-        <div class="model-body-right iteminfo-grid-container">
+        </nav>
+        <main>
           <ShopItemInfo :itemId="selectedItem" :value="$store.state.itemData[selectedItem]"></ShopItemInfo>
-        </div>
-        <div class="modal-footer">
+        </main>
+        <footer>
           <div class="item-grid-container">
             <div @click="sellItem(0);" class="item-shop-0">
               <img class="full-image" :src="image(0)" width="64" height="64">
@@ -85,12 +85,14 @@
             </div>
           </div>
           <div class="itemcontrol-grid-container">
-            <input type="button" class="clear_items" value="Clear Items">
+            <input type="button" @click="sellAllItems()" value="Clear Items">
           </div>
-          <label for="item_total_cost">Total Cost:</label>
-          <output id="item_total_cost"></output>
+          <label>Total Cost: {{ sumData.cost }}</label>
+          <p>
+            <template v-for="(key,val) in sumData.stats">{{val}}: {{key}}</template>
+          </p>
           <div class="stats-total-shop" style="float: right;"></div>
-        </div>
+        </footer>
       </div>
     </div>
     <div>
@@ -107,6 +109,7 @@ import Item from "./Item.vue";
 import ItemTooltip from "./ItemTooltip.vue";
 import ShopItemInfo from "./ShopItemInfo";
 // import DataInput from "./DataInput.vue";
+import league_items from "../../javascript/league_items.js";
 
 export default {
   name: "ShopModel",
@@ -119,8 +122,11 @@ export default {
     return {
       isOpen: false,
       userid: "player",
-      visableItems: [],
-      selectedItem: "1004"
+      selectedItem: "1004",
+      mapfilter: "11",
+      hide_event: false,
+      rift_only: false,
+      search: ""
     };
   },
   computed: {
@@ -136,6 +142,63 @@ export default {
     username: function() {
       if (this.userid === "player") return "Player's Champion";
       return "Target's";
+    },
+    sumData() {
+      const stats = {};
+      let total_cost = 0;
+      for (let i = 0; i < this.items.length; i++) {
+        const data = this.itemdata(i);
+        if (data) {
+          total_cost += data.gold.total;
+          Object.keys(data.stats).forEach(key => {
+            if (stats[key]) stats[key] = stats[key] + data.stats[key];
+            else stats[key] = data.stats[key];
+          });
+        }
+      }
+      return {
+        cost: total_cost,
+        stats: stats
+      };
+    },
+    visableItems() {
+      const itemData = this.$store.state.itemData;
+      const keyword = this.search.toLowerCase();
+      const mapfilter = this.mapfilter;
+      const ret = [];
+      for (const key in itemData) {
+        const item = itemData[key];
+        // const el = document.getElementById(`shop_item_${key}`);
+
+        let show;
+        if (item.search.some(e => e.indexOf(keyword) > -1)) show = true;
+        else show = item.searchExact.includes(keyword);
+
+        if (keyword === key) show = true;
+
+        // if (
+        //   window.playerChamption &&
+        //   (item.requiredChampion === window.playerChamption ||
+        //     item.requiredAlly === window.playerChamption)
+        // ) {
+        //   el.style.order = -10;
+        // }
+        if (item.maps[mapfilter] === false) show = false;
+
+        if (this.rift_only && item.nonRift) {
+          show = false;
+        } else if (this.hide_event && item.isKnownEventItem) {
+          show = false;
+        }
+
+        if (show) {
+          ret.push(key);
+        }
+      }
+      let x = ret.sort(
+        (a, b) => itemData[a].gold.total < itemData[b].gold.total
+      );
+      return x;
     }
   },
   watch: {
@@ -158,18 +221,17 @@ export default {
       // }
     }
   },
-  mounted: function() {
-    document.addEventListener('scroll', this.onScroll)
-  },
+  mounted: function() {},
   methods: {
-    onScroll(e){
-      e.preventDefault();
-      console.log('e');
-    },
     image(index) {
       const d = this.itemdata(index);
       if (d) return d.imageFull;
       return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+    },
+    json(a) {
+      if (!window.a) window.a = {};
+      window.a = Object.assign(window.a, a);
+      return JSON.stringify(a);
     },
     itemdata(index) {
       const item = this.items[index];
@@ -182,45 +244,48 @@ export default {
     sellAllItems() {
       this.inventory.sellAllItems();
     },
-    sellItem(itemNumber, docalc = true) {
-      this.inventory.sellItem(itemNumber, docalc);
+    sellItem(slot) {
+      this.inventory.sellItem(slot);
+    },
+    buyItem(itemId) {
+      this.inventory.buyItem(itemId);
     },
     filterShop() {
-      const keyword = this.$refs.search.value.toLowerCase();
-      let newVisableItems = [];
-      for (const key in this.$store.state.itemData) {
-        const item = this.$store.state.itemData[key];
-        // const el = document.getElementById(`shop_item_${key}`);
-
-        let show;
-        if (item.search.some(e => e.indexOf(keyword) > -1)) show = true;
-        else show = item.searchExact.includes(keyword);
-
-        // if (
-        //   window.playerChamption &&
-        //   (item.requiredChampion === window.playerChamption ||
-        //     item.requiredAlly === window.playerChamption)
-        // ) {
-        //   el.style.order = -10;
-        // }
-
-        if (this.$refs.rift_only.checked && item.nonRift) {
-          show = false;
-        } else if (this.$refs.hide_event.checked && item.isKnownEventItem) {
-          show = false;
-        }
-
-        if (show) {
-          newVisableItems.push(key);
-        }
-      }
-      this.visableItems = newVisableItems;
+      // const itemData = this.$store.state.itemData;
+      // const keyword = this.$refs.search.value.toLowerCase();
+      // const mapfilter = this.$refs.mapfilter.value;
+      // let newVisableItems = [];
+      // for (const key in itemData) {
+      //   const item = itemData[key];
+      //   // const el = document.getElementById(`shop_item_${key}`);
+      //   let show;
+      //   if (item.search.some(e => e.indexOf(keyword) > -1)) show = true;
+      //   else show = item.searchExact.includes(keyword);
+      //   // if (
+      //   //   window.playerChamption &&
+      //   //   (item.requiredChampion === window.playerChamption ||
+      //   //     item.requiredAlly === window.playerChamption)
+      //   // ) {
+      //   //   el.style.order = -10;
+      //   // }
+      //   if(item.maps[mapfilter] === false)
+      //     show = false;
+      //   if (this.$refs.rift_only.checked && item.nonRift) {
+      //     show = false;
+      //   } else if (this.$refs.hide_event.checked && item.isKnownEventItem) {
+      //     show = false;
+      //   }
+      //   if (show) {
+      //     newVisableItems.push(key);
+      //   }
+      // }
+      // this.visableItems = newVisableItems.sort((a,b) => itemData[a].gold.total < itemData[b].gold.total);
     },
     open(userid) {
       this.userid = userid;
       this.isOpen = true;
-      this.$refs.search.focus();
-      this.$refs.search.value = "";
+      // this.$refs.search.focus();
+      // this.$refs.search.value = "";
       //   document.querySelector("#shop_buy_item").disabled = false;
       this.filterShop();
     }
@@ -247,16 +312,27 @@ export default {
 
 /* Modal Content */
 .modal-content {
+  display: grid;
+  max-width: 1380px;
+  min-width: 300px;
+  width: 100vw;
+  /* height: 100vh; */
+  grid-template-areas:
+    "head"
+    "nav"
+    "main"
+    "foot";
+  grid-template-rows: 20vh 30vh 30vh 20vh;
+  grid-template-columns: 1fr;
+
   position: relative;
-  background: rgb(12, 22, 23);
+  background: #0c1617;
   margin: auto;
   padding: 0;
-  display: flex;
-  flex-flow: row wrap;
-  width: 100vw;
-  height: 100vh;
+  /* display: flex; */
+  /* flex-flow: row wrap; */
   border: 3px solid rgb(115, 100, 45);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
   /* -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s; */
   animation-name: animatetop;
@@ -290,35 +366,46 @@ export default {
   cursor: pointer;
 }
 
-.modal-header {
-  padding: 2px 16px;
+header {
+  grid-area: head;
+  padding: 6px 10px;
   background-color: #4c4d49;
-  flex: 1 100%;
 }
 
-.model-body-left {
-  flex: 1 100%;
+nav {
+  grid-area: nav;
+}
+.fixed-scroller {
+  height: 30vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.model-body-right {
-  flex: 1 100%;
+main {
+  grid-area: main;
+  background: #0c1617;
+  color: #cfcfcf;
 }
-
-.modal-footer {
-  background-color: #4c4d49;
+footer {
+  grid-area: foot;
+  border-right: 2px solid gold;
   border-top: 2px solid gold;
   padding: 0.5em;
-  flex: 1 100%;
 }
 
 @media all and (min-width: 725px) {
-  .model-body-left,
-  .model-body-right {
-    flex: 1 0 50%;
+  .fixed-scroller {
+    height: 55vh;
   }
   .modal-content {
     width: 90vw;
-    height: 90vh;
+    /* height: 100vh; */
+    grid-template-areas:
+      "head head"
+      "nav  main"
+      "foot  main";
+    grid-template-rows: 16vh 1fr 19vh;
+    grid-template-columns: 1fr 50vh;
   }
 }
 </style>

@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     shop() {
-        return this.$root.$app.$refs.shop;
+      return this.$root.$app.$refs.shop;
     },
     championList() {
       return this.$store.state.championList;
@@ -81,45 +81,40 @@ export default {
     }
   },
   watch: {},
-  mounted: function() {
-    this.items[2] = "1001";
-    this.items[3] = "1006";
-    this.$forceUpdate();
-    this.items[1] = "1006";
-    // this.$root.$app[this.userid] = this;
-    // this.champ =
-    //   window.localStorage.getItem("last_used_champ_" + this.userid) || "";
-    // this.load(
-    //   window.localStorage.getItem("last_used_data_" + this.userid) || "{}"
-    // );
-  },
+  mounted: function() {},
   methods: {
     image(index) {
+      const d = this.itemdata(index);
+      if (d) return d.imageFull;
+      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+    },
+    itemdata(index) {
       const item = this.items[index];
       if (item) {
         const data = this.$store.state.itemData[item];
-        if (data) return data.imageFull;
+        if (data) return data;
       }
-      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      return null;
     },
     sellAllItems() {
-      for (let i = 0; i < 6; i++) sellItem(i, i==5);
+      console.log("Selling all items");
+      this.items = [];
     },
-    sellItem(itemNumber, docalc = true) {
-      console.log("Selling item: #", itemNumber);
-    //   const item = itemNumber + currentOffset;
-    //   const els = document.querySelectorAll(
-    //     `.item-inventory-${item}, .item-shop-${itemNumber}`
-    //   );
-    //   for (const el of els) {
-    //     const image = el.querySelector(".full-image");
-    //     image.src =
-    //       "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-    //   }
-    //   itemInventory[item] = null;
-    //   document.querySelector("#shop_buy_item").disabled = false;
-    //   if (docalc) onItemsUpdated();
+    sellItem(slot) {
+      console.log("Selling item at slot", slot);
+      this.$set(this.items, slot, null);
     },
+    buyItem(itemId) {
+      let openIndex = 0;
+      for (; openIndex < this.items.length; openIndex++) {
+        if (this.items[openIndex] === null) break;
+      }
+      if (openIndex >= 5) {
+        openIndex = 5;
+      }
+      console.log("Buying item:", itemId, "for slot", openIndex);
+      this.$set(this.items, openIndex, itemId);
+    }
   }
 };
 </script>
