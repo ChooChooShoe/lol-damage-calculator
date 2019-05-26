@@ -1,23 +1,144 @@
-import numeral from 'numeral'
+import numeral from 'numeral';
+import Vue from 'vue';
 export const list_of_colors = ['health', 'hp', 'attack damage', 'ad', 'physical damage', 'ability power', 'ap', 'magic damage', 'true damage', 'attack speed', 'armor', 'lethality', 'magic resist', 'mr', 'mana', 'mana regen', 'energy', 'critical strike chance', 'critical chance', 'critical strike damage', 'critical damage', 'movement speed', 'ms', 'xp', 'gold', 'siphoning strike', 'buzzword', 'buzzword2', 'buzzword3'];
 
 function define_keyword(word) {
-  if (word === 'stun')
-    return '<b>Stun</b>'
-  else
-    return `<b>${word}</b>`
+  const lookedup = keyword_lookup[word.toLowerCase()];
+  if (lookedup) {
+    return `<div><h4>${lookedup.h}<hr></h4><p>${lookedup.b}</p></div>`;
+  }
+  // console.log('keyword', word);
+  let body = 'Description for keyword ' + word;
+  return `<div><h4>${word}<hr></h4><p>${body}</p></div>`;
+}
+
+const keyword_lookup = {
+  __: {
+    h: 'Header',
+    b: `Body`,
+    interrupts: '',
+    reduction: '',
+    resist: '',
+    removal: '',
+    champsWith: [],
+    itemsWith: [],
+    othersWith: [],
+  },
+  heal: {
+    h: 'Healing',
+    b: `<b>Healing</b> restores some of the user or the target's <span class="health">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.`
+  },
+  shields: {
+    h: 'Shields',
+    b: `<b>Shields</b> are temporay health.`
+  },
+  'crowd control': {
+    h: 'Crowd Control (CC)',
+    b: `<b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.`
+  },
+  blind: {
+    h: 'Blind',
+    b: `Unit's basic attacks will miss the target and deal 0 daamge.`
+  },
+  cripple: {
+    h: 'Cripple: Attack Speed Reduction',
+    b: `Unit's attack speed is reduced for the duration.`,
+    reduction: 'tenacity',
+  },
+  disarm: {
+    h: 'Disarm',
+    b: 'A unit that is disarmed is unable to declare basic attacks.'
+  },
+  disrupt: {
+    h: 'Disrupt / Interrupt',
+    b: 'Interrupts channeled and charged abilities. Like a silence but unit still cast abilites.'
+  },
+  charm: {
+    h: 'Charm',
+    b: ''
+  },
+  flee: {
+    h: 'Fear',
+    b: 'Spooky'
+  },
+  taunt: {
+    h: 'Taunt',
+    b: 'Taunty'
+  },
+  ground: {
+    h: 'Ground / Grounded ',
+    b: `Unit that is grounded is unable to activate mobility spells (dash and blink). <br><br>Does <b>not</b> interrupts an in progress dash or blink.<br>Does Interrupts channeled and charged dashes.`,
+  },
+  knockdown: {
+    h: 'Knockdown',
+    b: `Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous`,
+  },
+  nearsight: {
+    h: 'Nearsight',
+    b: `Target's <i class="blue">Vision</i> reduced by 900 units and cannot see what allies can see.<br><br<<b>Tenacity</b> has no effect.`,
+    removal: 'qss',
+    champsWith: ['Graves', 'Nocturne', 'Quinn', 'TahmKench'],
+  },
+  silence: {
+    h: 'Slence',
+    b: `Cannot cast abilities, activate items, or use summoner <b>Flash</b> and <b>Teleport</b>.<br><br>Interrupts channeled and charged abilities. (Except: Lucian's The Culling)<br>Duration reduced by <b>Tenacity</b>`
+  },
+  sleep: {
+    h: 'Sleep',
+    b: `Caused by Zoe.`
+  },
+  slow: {
+    h: 'Slow',
+    b: `A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.`
+  },
+  root: {
+    h: 'Root / Snare / Binding',
+    b: 'Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.'
+  },
+  stasis: {
+    h: 'Stasis',
+    b: 'When in a stasis, Unit is invunerable and untargetable.'
+  },
+  stun: {
+    h: 'Stun',
+    b: `Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>
+Interrupts all channeled and charged abilities<br>
+Duration reduced by <b>Tenacity</b>.<br>
+Resisted by Spell and Crowd Control Immunity.<br>
+Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br>`
+  },
+  suspension: {
+    h: 'Suspension: Airborne Stun',
+    b: `Unit is Airborne and Stuned for the duration of the suspension. Unit isunable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>
+    Interrupts all channeled and charged abilities<br>
+    Duration reduced by <b>Tenacity</b>.<br>
+    Resisted by Spell and Crowd Control Immunity.<br>
+    Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br>`
+  },
+  suppression: {
+    h: '',
+    b: `Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use <b>any</b> summoner spells for the duration.<br><br>
+    Interrupts all channeled and charged abilities<br>
+    Duration is <b>not</b> reduced by <b>Tenacity</b>.<br>
+    Resisted by Spell and Crowd Control Immunity.<br>
+    Removed by <b>Quicksilver</b><br>`
+  },
+  minions: {
+    h: 'Lane Minions',
+    b: `A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.`
+  },
 }
 
 export default function matchReplaceSpellEffects(text, spellrankindex) {
-  let vars = {ratios: {},progression: []}
+  let vars = { ratios: {}, progression: [] }
   text = text.replace(/<!--\n-->/g, '<br>');
   text = text.replace(/\n/g, '<br>');
   // Matches [[ thing ]] captures thing
-  text = text.replace(/\[\[([^[]*)\]\]/g, function(match, capture){
+  text = text.replace(/\[\[([^[]*)\]\]/g, function (match, capture) {
     const parms = capture.split('|');
     const link = parms[0];
     const tile = parms[1] || parms[0];
-    return  `<a class="effect link" title="${tile}">${link}</a>`
+    return `<a class="effect link" title="${tile}">${link}</a>`
   });
   for (let i = 0; i < 15; i++) {
     if (text.includes('{{'))
@@ -32,21 +153,33 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
             const options = {};
             for (const par of parms.slice(1)) {
               const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
-              if(capture){
+              if (capture) {
                 options[capture[1]] = capture[2];
-                console.log('MatchReplace: for tag',tag,'options were found',options);
+                console.log('MatchReplace: for tag', tag, 'options were found', options);
               } else {
                 slices.push(par);
               }
             }
             return inner_fn(capture, slices, spellrankindex, vars, options);
           } catch (e) {
+            Vue.notify({
+              group: "main",
+              title: "Error: Unknown Error.",
+              text: match,
+              type: "error"
+            });
             console.log(`Error for spell effect '${match}'`);
             console.log(e);
             capture = capture.replace(/\|/g, ' ')
             return `<simple-tooltip class="red" dname="${capture}">Error: ${e}</simple-tooltip>`;
           }
         } else {
+          Vue.notify({
+            group: "main",
+            title: "Warn: Unknown spell effect.",
+            text: match,
+            type: "warn"
+          });
           console.log(`Unknown spell effect '${match}'`);
           capture = capture.replace(/\|/g, ' ')
           return `<simple-tooltip class="capture-unknown" dname="${capture}">Unknown value: ${capture}</simple-tooltip>`;
@@ -55,8 +188,10 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
     else
       break;
   }
-  text = text.replace(/'''(.*?)'''+/g, '<b class="bold">$1</b>');
-  text = text.replace(/''(.*?)''+/g, '<i class="italic">$1</i>');
+
+  text = text.replace(/'''''(.*?)'''''/g, '<b><i>$1</i></b>');
+  text = text.replace(/'''(.*?)'''/g, '<b>$1</b>');
+  text = text.replace(/''(.*?)''/g, '<i>$1</i>');
 
   return {
     str: text,
@@ -68,7 +203,7 @@ function numberExpand(param, forceRange, round) {
   const clean = /([^\d./*\-+()]+)/g;
   const list = [];
   round = parseInt(round) || 3;
-    
+
   for (const p of param.split(';')) {
     const found = p.match(regex);
     if (found) {
@@ -79,8 +214,8 @@ function numberExpand(param, forceRange, round) {
       for (let i = list.length; i < range; i++) {
         list.push(+(start + diff * i).toFixed(round));
       }
-    } else  {
-      list.push(+parseFloat(eval(p.replace(clean,''))).toFixed(round));
+    } else {
+      list.push(+parseFloat(eval(p.replace(clean, ''))).toFixed(round));
     }
   }
   return list;
@@ -119,18 +254,18 @@ const match_lookup = {
 
   // ai (or Ability icon): {{ai|<Ability>|<Champion>|<Custom ability name>}}
   'ai': function (_capture, slices, _spellrankindex, _vars) {
-    let abilty = slices[0];
-    let champ = slices[1];
+    const abilty = slices[0];
+    const champ = slices[1];
     let display = slices[0];
     if (slices.length == 3)
       display = slices[2];
-    return `<span class="champion-ability blue" data-champkey="${champ}" data-ability="${abilty}">${display}</span>`;
+    return `<HtmlTooltip class="champion-ability blue link" data-champkey="${champ}">${display}<template #content>${abilty}</template></HtmlTooltip>`;
   },
   // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
   'ais': function (_capture, slices, _spellrankindex, _vars) {
     let abilty = slices[0];
     let champ = slices[1];
-    return `<span class="champion-ability blue" data-champkey="${champ}" data-ability="${abilty}">${abilty}'s</span>`;
+    return `<HtmlTooltip class="champion-ability blue link" data-champkey="${champ}">${abilty}'s<template #content>${abilty}</template></HtmlTooltip>`;
   },
 
   // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
@@ -187,7 +322,8 @@ const match_lookup = {
     let effect = slices[0];
     let name = slices.slice(1).join('|') || effect;
     // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
-    return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
+    // return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
+    return `<HtmlTooltip class="blue link">${name}<template #content>${define_keyword(effect)}</template></HtmlTooltip>`;
   },
 
   // ui (or Unit icon): {{ui|<Unit>|<Custom name>}}
@@ -212,19 +348,23 @@ const match_lookup = {
   // or {{pp|Size|color=X|Value1|...|ValueN|Level1|...|LevelN}}
   'pp': function (capture, slices, _spellrankindex, _vars, options) {
     // const slices = capture.slice(3).split('|');
-    console.log('Match pp=', capture, '==>', slices, 'opt',options);
+    console.log('Match pp=', capture, '==>', slices, 'opt', options);
     if (slices.length === 1) {
-      let inner = numberExpand(slices[0]);
-      console.log('Match pp=result=', inner);
-      return inner;
+      let range = slices[0].split(' to ');
+      const display = [range[0] + options.key || '', range[1] + options.key || '',];
+      let top = numberExpand(slices[0], 18);
+      const bot = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+      console.log('Match pp=result=', top);
+      return `<HtmlTooltip class="blue link">${display[0]} − ${display[1]} (based on level)<template #content>Values: ${top.join(', ')}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
     }
     else if (slices.length === 3) {
       let range = Number(slices[0]);
       // let setting = slices[1];
       let top = numberExpand(slices[1], range);
+      const display = [top[0] + options.key || '', top[top.length - 1] + options.key || '',];
       let bot = numberExpand(slices[2], range);
       console.log('Match pp=result-top-bot=', top, bot);
-      return `<simple-tooltip dname="${top.join(' / ')} (based on level)">At levels: ${bot.join(', ')}</simple-tooltip>`;
+      return `<HtmlTooltip class="blue link">${display[0]} − ${display[1]} (based on level)<template #content>Values: ${top.join(', ')}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
     } else {
       let range = Number(slices[0]);
       console.log('Match pp=range=', range);
@@ -250,9 +390,9 @@ const match_lookup = {
           list.push(+(start + diff * i).toFixed(round));
         }
       } else {
-        list.push(+parseFloat(eval(param.replace(clean,''))).toFixed(round));
+        list.push(+parseFloat(eval(param.replace(clean, ''))).toFixed(round));
       }
-    }    
+    }
     if (!vars.base_damage)
       vars.base_damage = list;
     else
@@ -274,42 +414,42 @@ const match_lookup = {
 
     const test = inner.toLowerCase();
     let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    if(num !== null) {
-      if(test.length > 20)
-         num = 0.01;
+    if (num !== null) {
+      if (test.length > 20)
+        num = 0.01;
       const isBonus = inner.includes('bonus');
       const target = inner.includes('target');
       const targetStr = target ? 'target' : 'player';
       if (test.includes('ap')) {
         vars.ratios.ap = num;
       }
-      else if(test.includes('ad')){
-        if (isBonus)  vars.ratios.bonus_ad = num;
-        else  vars.ratios.total_ad = num;
+      else if (test.includes('ad')) {
+        if (isBonus) vars.ratios.bonus_ad = num;
+        else vars.ratios.total_ad = num;
       }
-      else if(test.includes('health') || test.includes('hp') ){
+      else if (test.includes('health') || test.includes('hp')) {
         if (target) {
-          if (isBonus)  vars.ratios.bonus_hp = {target: 'target', value: num};
-          else if (test.includes('missing'))  vars.ratios.missing_hp = {target: 'target', value: num};
-          else if (test.includes('current'))  vars.ratios.current_hp = {target: 'target', value: num};
-          else  vars.ratios.total_hp = {target: 'target', value: num};
+          if (isBonus) vars.ratios.bonus_hp = { target: 'target', value: num };
+          else if (test.includes('missing')) vars.ratios.missing_hp = { target: 'target', value: num };
+          else if (test.includes('current')) vars.ratios.current_hp = { target: 'target', value: num };
+          else vars.ratios.total_hp = { target: 'target', value: num };
         } else {
-          if (isBonus)  vars.ratios.bonus_hp = num;
-          else if (test.includes('missing'))  vars.ratios.missing_hp = num;
-          else  vars.ratios.total_hp = num;
+          if (isBonus) vars.ratios.bonus_hp = num;
+          else if (test.includes('missing')) vars.ratios.missing_hp = num;
+          else vars.ratios.total_hp = num;
         }
       }
-      else if(test.includes('ad')){
-        if (isBonus)  vars.ratios.bonus_ad = num;
-        else  vars.ratios.total_ad = num;
+      else if (test.includes('ad')) {
+        if (isBonus) vars.ratios.bonus_ad = num;
+        else vars.ratios.total_ad = num;
       }
-      else if(test.includes('armor')){
-        if (isBonus)  vars.ratios.bonus_armor = num;
-        else  vars.ratios.total_armor = num;
+      else if (test.includes('armor')) {
+        if (isBonus) vars.ratios.bonus_armor = num;
+        else vars.ratios.total_armor = num;
       }
-      else if(test.includes('mr') || test.includes('resist') ){
-        if (isBonus)  vars.ratios.bonus_mr = num;
-        else  vars.ratios.total_mr = num;
+      else if (test.includes('mr') || test.includes('resist')) {
+        if (isBonus) vars.ratios.bonus_mr = num;
+        else vars.ratios.total_mr = num;
       }
     }
     return `<span class="${cssClass}">${inner}</span>`;

@@ -1,18 +1,19 @@
 
 <template>
-  <div v-if="globalId" @mousemove="draw($event)" @mouseout="hide($event)">
-    <slot></slot>
-  </div>
-  <span v-else class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">
+  <span v-if="dname" class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">
     {{dname}}
-    <div ref="local" class="tooltipcontent" style="display:none;">
+    <div ref="local" class="tooltipcontent simplebg" style="display:none;">
       <slot></slot>
     </div>
   </span>
+  <div v-else @mousemove="draw($event)" @mouseout="hide($event)">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 import matchReplaceSpellEffects from "../javascript/matchreplace";
+import { log } from "util";
 export default {
   props: ["dname", "globalId"],
   name: "simple-tooltip",
@@ -29,7 +30,7 @@ export default {
     }
   },
   destroyed() {
-    this.hide();
+    if (this.globalEl) this.globalEl.setAttribute("style", `display:none;`);
   },
   methods: {
     addEffect: function() {
@@ -53,15 +54,26 @@ export default {
 
 <style>
 .tooltiplink {
-  border-bottom: white 1px dotted;
+  border-bottom: whitesmoke 1px dotted;
+}
+.tooltiplink.help {
   cursor: help;
+}
+.tooltiplink.link {
+  border: none;
+  cursor: pointer;
+}
+.tooltiplink.link:hover {
+  text-decoration: underline;
 }
 .tooltipcontent {
   position: fixed;
   z-index: 2500;
-  /* background: #121a1b; */
-  /* padding: 3px; */
-  /* border: #9797fc solid 1px; */
-  /* color: #eee; */
+}
+.tooltipcontent.simplebg {
+  background: #121a1b;
+  padding: 3px;
+  border: #9797fc solid 1px;
+  color: #eee;
 }
 </style>

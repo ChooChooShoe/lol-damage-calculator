@@ -3,6 +3,7 @@
     <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
     <MainBody :currentSpells="currentSpells"></MainBody>
     <ShopModel ref="shop"></ShopModel>
+    <notifications group="main" position="bottom left" :reverse="true" :speed="500"/>
   </div>
 </template>
 

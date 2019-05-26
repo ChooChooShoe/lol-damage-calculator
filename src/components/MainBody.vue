@@ -4,13 +4,13 @@
       class="data_holder block small"
       id="champion_data"
       userid="player"
-      isprimary="true"
+      :isprimary="true"
     ></champion-div>
     <champion-div
       class="data_holder block small"
       id="champion_data"
       userid="target"
-      isprimary="false"
+      :isprimary="false"
     ></champion-div>
     <champion-spells
       v-for="spellObj in currentSpells"
