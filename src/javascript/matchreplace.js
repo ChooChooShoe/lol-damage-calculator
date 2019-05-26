@@ -162,24 +162,24 @@ export default function matchReplaceSpellEffects(text, spellrankindex) {
             }
             return inner_fn(capture, slices, spellrankindex, vars, options);
           } catch (e) {
-            Vue.notify({
-              group: "main",
-              title: "Error: Unknown Error.",
-              text: match,
-              type: "error"
-            });
+            // Vue.notify({
+            //   group: "main",
+            //   title: "Error: Unknown Error.",
+            //   text: capture,
+            //   type: "error"
+            // });
             console.log(`Error for spell effect '${match}'`);
             console.log(e);
             capture = capture.replace(/\|/g, ' ')
             return `<simple-tooltip class="red" dname="${capture}">Error: ${e}</simple-tooltip>`;
           }
         } else {
-          Vue.notify({
-            group: "main",
-            title: "Warn: Unknown spell effect.",
-            text: match,
-            type: "warn"
-          });
+          // Vue.notify({
+          //   group: "main",
+          //   title: "Warn: Unknown spell effect.",
+          //   text: capture,
+          //   type: "warn"
+          // });
           console.log(`Unknown spell effect '${match}'`);
           capture = capture.replace(/\|/g, ' ')
           return `<simple-tooltip class="capture-unknown" dname="${capture}">Unknown value: ${capture}</simple-tooltip>`;
