@@ -107,6 +107,7 @@
 import Vue from "vue";
 import Item from "./Item.vue";
 import ItemTooltip from "./ItemTooltip.vue";
+import SimpleTooltip from "../SimpleTooltip.vue";
 import ShopItemInfo from "./ShopItemInfo";
 // import DataInput from "./DataInput.vue";
 import league_items from "../../javascript/league_items.js";
@@ -116,7 +117,8 @@ export default {
   components: {
     Item,
     ItemTooltip,
-    ShopItemInfo
+    ShopItemInfo,
+    SimpleTooltip
   },
   data: function() {
     return {

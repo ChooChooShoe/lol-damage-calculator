@@ -1,22 +1,22 @@
 <template>
-  <div class="item tooltipcontent" :style=" visable ? '' : 'display: none;'">
-    <div class="item-tooltip-container" >
-      <div class="item-header">
-        <div class="item-img-left" :style="value.spriteStyle"></div>
-
-        <span class="item-title">{{ value.name }}</span>
-        <div class="float-right">
-          <span class="gold">
-            <img src="../../assets/Gold.png">
-            {{ displayCost }}
-          </span>
+  <div class="tooltipcontent">
+    <div class="bg">
+      <div class="header">
+        <div class="itemspriteimage" :style="value.spriteStyle"></div>
+        <span class="nameheader">{{ value.name }}</span>
+        <br>
+        <div class="inline">
+          <img class="intoimage inline" src="../../assets/Gold.png">
+          <span class="inline gold">{{ displayCost }}</span>
+        </div>
+        <div class="inline" v-if="value.gold.sell != value.gold.total">
+          <span>&nbsp;(</span>
+          <img class="intoimage inline" src="../../assets/Gold.png">
+          <span class="inline gold">{{ value.gold.sell }}</span>
+          <span>)</span>
         </div>
       </div>
-      <div class="item-underline"></div>
-      <div class="item-stats-table table"></div>
-      <div class="item-description">{{ value.description }}</div>
-      <div class="item-underline"></div>
-      <div ref="tags" class="item-tags"></div>
+      <div class="item description" v-html="value.description"></div>
     </div>
   </div>
 </template>
@@ -28,34 +28,63 @@ export default {
   props: ["itemId", "value"],
   name: "ItemTooltip",
   data() {
-    return {
-      visable: false,
-      clientX: 0,
-      clientY: 0
-    };
+    return {};
   },
   computed: {
+    globalId() {
+      return "item" + this.itemId;
+    },
     displayCost: function() {
       const cost = this.value.gold.total;
       return cost === 0 ? "Free" : cost;
     }
   },
-  methods: {
-    draw: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.clientX = e.clientX + 10 + "px";
-      comp.clientY = e.clientY + 10 + "px";
-      comp.visable = true;
-    },
-    hide: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.visable = false;
-    },
-    showInfo() {},
-    buyItem() {}
+  mounted() {
+    this.$store.state.globalToolTips[this.globalId] = this.$el;
+  },
+  destroyed() {
+    this.$store.state.globalToolTips[this.globalId] = undefined;
   }
 };
 </script>
 
 <style scoped>
+.itemspriteimage {
+  float: left;
+  border: 1px solid #aaa;
+  margin: 5px;
+  box-sizing: content-box;
+  display: block;
+}
+.header {
+  min-height: 60px;
+  /* font-size: 1.4rem; */
+  line-height: 1.2;
+  color: #efefef;
+}
+.nameheader {
+  /* white-space: nowrap; */
+  font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #efefef;
+}
+.bg {
+  background: #0c1617;
+  line-height: 1.25em;
+  white-space: normal;
+  max-width: 400px;
+  min-width: 250px;
+  border: rgb(96, 89, 60) 2px solid;
+  padding: 5px;
+  color: rgb(180, 180, 180);
+}
+.inline {
+  display: inline;
+}
+.description {
+  margin: 7px 0 3px 0;
+  max-height: 50vh;
+  overflow: auto;
+}
 </style>

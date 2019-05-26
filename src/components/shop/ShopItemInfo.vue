@@ -5,13 +5,13 @@
       <div class="gradient"></div>
       <div class="flex flex-row">
         <template v-for="(key) in value.into">
-          <img
-            class="intoimage click"
-            :key="key"
-            :data-key="key"
-            :style="$store.state.itemData[key].spriteStyle"
-            @click="onSelectItem(key)"
-          >
+          <SimpleTooltip :key="key" :globalId="'item'+key">
+            <img
+              class="intoimage click"
+              :style="$store.state.itemData[key].spriteStyle"
+              @click="onSelectItem(key)"
+            >
+          </SimpleTooltip>
         </template>
       </div>
     </div>
@@ -50,15 +50,14 @@
         <span>Recipe:</span>
         <div class="flex flex-row">
           <template v-for="(key,index) in value.from">
-            <div :key="key+index" class="inline">
+            <SimpleTooltip :key="key+index" :globalId="'item'+key" class="inline">
               <img
-                class="intoimage inline click"
-                :data-key="key"
+                class="intoimage click"
                 :style="'zoom: 66.66666%;'+$store.state.itemData[key].spriteStyle"
                 @click="onSelectItem(key)"
               >
               <h4 class="inline">+</h4>
-            </div>
+            </SimpleTooltip>
           </template>
           <div class="inline">
             <img class="intoimage inline" src="../../assets/Gold.png">
@@ -76,10 +75,14 @@
 </template>
 
 <script>
+import SimpleTooltip from "../SimpleTooltip.vue";
 //intoRender.push(`<img data-key="${other.key}" style="background: url('${cdn}/${version}/img/sprite/${other.image.sprite}') -${other.image.x}px -${other.image.y}px" width="${other.image.w}" height="${other.image.h}"/>`)
 export default {
   props: ["itemId", "value"],
   name: "ShopItemInfo",
+  components: {
+    SimpleTooltip
+  },
   data() {
     return {
       visable: false,
@@ -167,6 +170,7 @@ export default {
   position: relative;
 }
 .description {
+  margin: 7px;
   max-height: 50vh;
   overflow: auto;
 }

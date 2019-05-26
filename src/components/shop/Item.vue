@@ -1,33 +1,24 @@
 <template>
-  <div
-    class="item item-container click"
-    @click="showInfo()"
-    @dblclick="buySelf()"
-    @contextmenu.prevent="showInfo();buySelf();"
-    @mousemove="draw($event)"
-    @mouseout="hide($event)"
-  >
-    <div class="item-img-left" :style="value.spriteStyle"></div>
-    <span class="item-name">{{ value.name }}</span>
-    <span class="gold">
-      <img src="../../assets/Gold.png">
-      {{ displayCost }}
-    </span>
+  <div @click="showInfo()" @dblclick="buySelf()" @contextmenu.prevent="showInfo();buySelf();">
+    <SimpleTooltip :globalId="'item'+itemId" class="item item-container click">
+      <div class="item-img-left" :style="value.spriteStyle"></div>
+      <span class="item-name">{{ value.name }}</span>
+      <span class="gold">
+        <img src="../../assets/Gold.png">
+        {{ displayCost }}
+      </span>
+    </SimpleTooltip>
   </div>
 </template>
 
 <script>
-import ToolTip from "../SimpleTooltip.vue";
+import SimpleTooltip from "../SimpleTooltip.vue";
 
 export default {
   props: ["itemId", "value"],
   name: "shop-item",
-  data() {
-    return {
-      visable: false,
-      clientX: 0,
-      clientY: 0
-    };
+  components: {
+    SimpleTooltip
   },
   computed: {
     displayCost: function() {
@@ -36,16 +27,6 @@ export default {
     }
   },
   methods: {
-    draw: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.clientX = e.clientX + 10 + "px";
-      comp.clientY = e.clientY + 10 + "px";
-      comp.visable = true;
-    },
-    hide: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.visable = false;
-    },
     showInfo() {
       this.$parent.selectedItem = this.itemId;
     },
@@ -57,6 +38,57 @@ export default {
 </script>
 
 <style>
+.item-container {
+    display: grid;
+    grid-template-columns: 62px auto;
+    text-align: left;
+    /* white-space: nowrap; */
+    /* line-height: 1em; */
+    width: 210px;
+    /* height: 62px; */
+    border: #60593c 1px solid;
+    padding: 3px;
+    margin: 3px;
+    color: #b4b4b4;
+}
+
+.item-container.small {
+    display: block;
+    padding: 5px 5px 25px 5px;
+    /* margin: 5px 20px 5px 5px; */
+    width: 62px;
+    height: 62px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.item-container.icon {
+    display: block;
+    padding: 0;
+    margin: 2px;
+    width: 55px;
+    height: 55px;
+    border: none;
+}
+
+.item-container.icon>.item-name,
+.item-container.small>.item-name {
+    display: none;
+}
+
+.item-container.icon>.gold {
+    display: none;
+}
+.item-container.small>.gold {
+    display: block;
+}
+
+.item-container.icon>.item-name,
+.item-container.small>.gold>img {
+    display: none;
+}
+
+
 .item a {
   color: #9c85ff;
 }

@@ -12,6 +12,7 @@ export default new Vuex.Store({
       }
     },
     itemData: [],
+    globalToolTips: {},
   },
   mutations: {
 

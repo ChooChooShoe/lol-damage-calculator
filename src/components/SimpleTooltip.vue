@@ -1,21 +1,20 @@
 
 <template>
-  <span class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">
+  <div v-if="globalId" @mousemove="draw($event)" @mouseout="hide($event)">
+    <slot></slot>
+  </div>
+  <span v-else class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">
     {{dname}}
-    <div
-      class="tooltipcontent"
-      :class="visable ? '' : 'hidden'"
-      :style="{left:clientX,top:clientY}"
-    >
+    <div ref="local" class="tooltipcontent" style="display:none;">
       <slot></slot>
     </div>
   </span>
 </template>
 
 <script>
-import matchReplaceSpellEffects from '../javascript/matchreplace';
+import matchReplaceSpellEffects from "../javascript/matchreplace";
 export default {
-  props: ["dname", "tipid"],
+  props: ["dname", "globalId"],
   name: "simple-tooltip",
   data: function() {
     return {
@@ -23,6 +22,14 @@ export default {
       clientX: 0,
       clientY: 0
     };
+  },
+  computed: {
+    globalEl() {
+      return this.$store.state.globalToolTips[this.globalId];
+    }
+  },
+  destroyed() {
+    this.hide();
   },
   methods: {
     addEffect: function() {
@@ -32,18 +39,29 @@ export default {
       return matchReplaceSpellEffects(text, this.spellrankindex).str;
     },
     draw: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.clientX = e.clientX + 10 + "px";
-      comp.clientY = e.clientY + 10 + "px";
-      comp.visable = true;
+      const element = this.globalEl || this.$refs.local;
+      const style = `left:${e.clientX + 10}px;top:${e.clientY + 10}px;`;
+      element.setAttribute("style", style);
     },
-    hide: function(e) {
-      const comp = /* $root.globalTooltips[this.tipid] || */ this;
-      comp.visable = false;
+    hide: function() {
+      const element = this.globalEl || this.$refs.local;
+      element.setAttribute("style", `display:none;`);
     }
   }
 };
 </script>
 
-<style scoped>
+<style>
+.tooltiplink {
+  border-bottom: white 1px dotted;
+  cursor: help;
+}
+.tooltipcontent {
+  position: fixed;
+  z-index: 2500;
+  /* background: #121a1b; */
+  /* padding: 3px; */
+  /* border: #9797fc solid 1px; */
+  /* color: #eee; */
+}
 </style>
