@@ -296,7 +296,7 @@ import ItemInventory from "./ItemInventory.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
 
 export default {
-  name: "champion-div",
+  name: "ChampionDiv",
   components: {
     DataInput,
     SimpleTooltip,
@@ -476,7 +476,7 @@ export default {
     }
   },
   created() {
-    this.$root.$app[this.userid] = this;
+    this.$app[this.userid] = this;
   },
   mounted: function() {
     this.champ =

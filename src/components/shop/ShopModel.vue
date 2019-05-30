@@ -133,7 +133,7 @@ export default {
   },
   computed: {
     inventory() {
-      return this.$root.$app[this.userid].$refs.inventory;
+      return this.$app[this.userid].$refs.inventory;
     },
     items() {
       return this.inventory.items;

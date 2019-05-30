@@ -104,24 +104,24 @@ props: ['id', 'spell', 'effect', 'spellrankindex', 'effectindex', 'iscustom'],
       }
     },
     dmg_onhit: function () {
-      return this.calc_dmg_onhit(this.$root.$app.player, this.$root.$app.target, this.dmg_premitigation);
+      return this.calc_dmg_onhit(this.$app.player, this.$app.target, this.dmg_premitigation);
     },
     dmg_premitigation: function () {
       return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
     },
     dmg_onhit_for_one: function () {
-      return this.calc_dmg_onhit(this.$root.$app.player, this.$root.$app.target, this.dmg_premitigation_for_one);
+      return this.calc_dmg_onhit(this.$app.player, this.$app.target, this.dmg_premitigation_for_one);
     },
     dmg_premitigation_for_one: function () {
-      return this.calc_dmg_premitigation(this.$root.$app.player, this.$root.$app.target);
+      return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
     },
   },
   mounted: function () {
-    this.$root.$app.spellComponents.push(this);
+    this.$app.spellComponents.push(this);
   },
   destroyed: function () {
     const self = this;
-    this.$root.$app.spellComponents = this.$root.$app.spellComponents.filter(el => el !== self);
+    this.$app.spellComponents = this.$app.spellComponents.filter(el => el !== self);
   },
   watch: {
     spell: {

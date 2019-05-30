@@ -1,7 +1,19 @@
 <template>
   <div id="app">
     <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
-    <MainBody :currentSpells="currentSpells"></MainBody>
+    <div class="flex main">
+      <ChampionDiv class="data_holder block small" userid="player" :isprimary="true"></ChampionDiv>
+      <ChampionDiv class="data_holder block small" userid="target" :isprimary="false"></ChampionDiv>
+      <champion-spells
+        v-for="spellObj in currentSpells"
+        :key="spellObj.key"
+        :id="spellObj.key"
+        :spellkey="spellObj.key.toUpperCase().replace('I','Passive ')"
+        :spell="spellObj.spell"
+        :champion="spellObj.champion"
+        :spriteurl="spellObj.sprite + spellObj.spell.image.sprite"
+      ></champion-spells>
+    </div>
     <ShopModel ref="shop"></ShopModel>
     <notifications group="main" position="bottom left" :reverse="true" :speed="500"/>
   </div>
@@ -10,7 +22,8 @@
 <script>
 import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
-import MainBody from "./components/MainBody.vue";
+import ChampionDiv from "./components/ChampionDiv";
+import ChampionSpells from "./components/ChampionSpells.vue";
 import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
 
@@ -18,7 +31,8 @@ export default {
   name: "app",
   components: {
     SideBody,
-    MainBody,
+    ChampionDiv,
+    ChampionSpells,
     ShopModel
   },
   data: function() {
@@ -31,7 +45,7 @@ export default {
     };
   },
   created: function() {
-    this.$root.$app = this;
+    Vue.prototype.$app = this;
     setupVue(this);
   },
   mounted: function() {
@@ -61,12 +75,23 @@ export default {
 </script>
 
 <style>
-#main {
+#app {
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   /* color: #2c3e50; */
   /* margin-top: 60px; */
+}
+.data_holder {
+  /* width: 35em; */
+  /* max-width: 50em; */
+  margin: 3.5px auto;
+  border: 1px solid #1e8ad6;
+  background-color: #121a1b;
+  padding: 5px;
+}
+.data_holder.small {
+  width: 36em;
 }
 </style>

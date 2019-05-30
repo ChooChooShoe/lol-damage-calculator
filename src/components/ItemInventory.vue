@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     shop() {
-      return this.$root.$app.$refs.shop;
+      return this.$app.$refs.shop;
     },
     championList() {
       return this.$store.state.championList;
