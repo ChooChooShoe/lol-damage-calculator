@@ -29,8 +29,6 @@ import ChampionSpells from "./components/ChampionSpells.vue";
 import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
 
-import store from "./store";
-
 function loadLocalConfig() {
   console.log("loading config...");
   return {
