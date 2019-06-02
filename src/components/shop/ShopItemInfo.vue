@@ -8,7 +8,7 @@
           <SimpleTooltip :key="key" :globalId="'item'+key">
             <img
               class="intoimage click"
-              :style="$store.state.itemData[key].spriteStyle"
+              :style="$app.itemData[key].spriteStyle"
               @click="onSelectItem(key)"
             >
           </SimpleTooltip>
@@ -53,7 +53,7 @@
             <SimpleTooltip :key="key+index" :globalId="'item'+key" class="inline">
               <img
                 class="intoimage click"
-                :style="'zoom: 66.66666%;'+$store.state.itemData[key].spriteStyle"
+                :style="'zoom: 66.66666%;'+$app.itemData[key].spriteStyle"
                 @click="onSelectItem(key)"
               >
               <h4 class="inline">+</h4>

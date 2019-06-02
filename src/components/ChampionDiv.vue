@@ -284,7 +284,7 @@
         <input name="reset" type="reset" value="Reset All" @click="clear(true)">
         <input name="reset" type="reset" value="Clear" @click="clear()">
       </div>
-      <ItemInventory ref="inventory" :userid="userid"></ItemInventory>
+      <ItemInventory v-if="$app.config.shopEnabled" ref="inventory" :userid="userid"></ItemInventory>
     </div>
   </div>
 </template>
@@ -357,7 +357,7 @@ export default {
   },
   computed: {
     championList() {
-      return this.$store.state.championList;
+      return this.$app.championList;
     },
     username: function() {
       if (this.userid === "player") return "Player's Champion";

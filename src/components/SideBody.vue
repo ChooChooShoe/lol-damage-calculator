@@ -91,26 +91,26 @@
         </div>
         <!-- <input type="button" name="force_recalc" onclick="recalc()" value="Force RE-Calc"> -->
       </form>
-      <!-- <nav id="nav" class="flex navbar">
-      <a class="inline" onclick="addNewSpellForm('magic')">
+      <nav id="nav" class="flex navbar">
+      <!-- <a class="inline" onclick="addNewSpellForm('magic')">
         Add Magic Damage Spell
       </a>
       <a class="inline" onclick="addNewSpellForm('physical')">
         Add Physical Damage Spell
+      </a> -->
+      <a class="inline" @click="openSettings()">
+        Settings...
       </a>
-      <a class="inline" onclick="save()">
-        Save...
-      </a>
-      <a class="inline" onclick="load()">
+      <!-- <a class="inline" onclick="load()">
         Load...
-      </a>
+      </a> -->
       <div class="block version-select hidden">
         <span>League Patch:</span>
         <select id="version_select" oninput="setPatchVersion(this.value);">
           <option value=''>Loading Data...</option>
         </select>
       </div>
-      </nav>-->
+      </nav>
     </div>
 </template>
 
@@ -121,6 +121,10 @@ export default {
   name: "SideBody",
   props: ["spellComponents", "player", "target"],
   methods: {
+    openSettings() {
+      // this.$app.$refs.shop.visable = false;
+      this.$app.$refs.settings.visable = true;
+    },
     rnd: function(n, digits) {
       if (n === undefined || isNaN(n)) n = 0;
       if (digits === undefined) digits = 0;

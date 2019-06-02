@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <SettingsModel ref="settings"></SettingsModel>
     <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
     <div class="flex main">
       <ChampionDiv class="data_holder block small" userid="player" :isprimary="true"></ChampionDiv>
@@ -14,7 +15,7 @@
         :spriteurl="spellObj.sprite + spellObj.spell.image.sprite"
       ></champion-spells>
     </div>
-    <ShopModel ref="shop"></ShopModel>
+    <ShopModel v-if="config.shopEnabled" ref="shop"></ShopModel>
     <notifications group="main" position="bottom left" :reverse="true" :speed="500"/>
   </div>
 </template>
@@ -22,10 +23,24 @@
 <script>
 import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
+import SettingsModel from "./components/SettingsModel.vue";
 import ChampionDiv from "./components/ChampionDiv";
 import ChampionSpells from "./components/ChampionSpells.vue";
 import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
+
+import store from "./store";
+
+function loadLocalConfig() {
+  console.log("loading config...");
+  return {
+    shopEnabled: localStorage.getItem("shopEnabled") == "true"
+  };
+}
+function saveLocalConfig(config) {
+  console.log("saving config...");
+  localStorage.setItem("shopEnabled", config.shopEnabled);
+}
 
 export default {
   name: "app",
@@ -33,6 +48,7 @@ export default {
     SideBody,
     ChampionDiv,
     ChampionSpells,
+    SettingsModel,
     ShopModel
   },
   data: function() {
@@ -41,7 +57,11 @@ export default {
       spellComponents: [],
       championData: {},
       player: null,
-      target: null
+      target: null,
+      championList: {},
+      itemData: [],
+      globalToolTips: {},
+      config: loadLocalConfig()
     };
   },
   created: function() {
@@ -59,16 +79,24 @@ export default {
       // }
     });
   },
+  watch: {
+    config: {
+      handler(val, oldVal) {
+        saveLocalConfig(val);
+      },
+      deep: true
+    }
+  },
   computed: {
+    shopEnabled() {
+      return this.$app.config.shopEnabled;
+    },
     skillpoints_used: function() {
       let sum = 0;
       for (const x in this.spellComponents) {
         sum += this.spellComponents[x].spellrankindex + 1;
       }
       return sum;
-    },
-    championList() {
-      return this.$store.state.championList;
     }
   }
 };

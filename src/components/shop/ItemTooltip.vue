@@ -40,10 +40,10 @@ export default {
     }
   },
   mounted() {
-    this.$store.state.globalToolTips[this.globalId] = this.$el;
+    this.$app.globalToolTips[this.globalId] = this.$el;
   },
   destroyed() {
-    this.$store.state.globalToolTips[this.globalId] = undefined;
+    this.$app.globalToolTips[this.globalId] = undefined;
   }
 };
 </script>

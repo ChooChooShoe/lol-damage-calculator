@@ -36,7 +36,7 @@ export function setupVue(vue) {
     version = newVersion;
     fetchChampionList(vue);
     fetchStaticItems((data) => {
-        vue.$store.state.itemData = data;
+        vue.$app.itemData = data;
     });
     // vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
     // vue.target.champ = window.localStorage.getItem('last_used_champ_target') || '';
@@ -57,7 +57,7 @@ function fetchChampionList(vue) {
         .then(function (json) {
             let championList = { None: { name: "  -- None --  ", id: "" } }
             Object.assign(championList, json);
-            vue.$store.state.championList = championList;
+            vue.$app.championList = championList;
         });
 }
 

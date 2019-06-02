@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     globalEl() {
-      return this.$store.state.globalToolTips[this.globalId];
+      return this.$app.globalToolTips[this.globalId];
     }
   },
   destroyed() {

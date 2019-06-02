@@ -2,14 +2,14 @@
 <template>
   <div>
     <!-- <div >
-      <template v-for="(key, val) in $store.state.itemData">
+      <template v-for="(key, val) in $app.config.itemData">
         <p :key="val">{{ '------' + key.name + ': ' +val + ': ' + json(key.stats) }}</p>
       </template>
     </div>-->
-    <div class="modal" :style=" isOpen ? '' : 'display: none;'">
+    <div class="modal" :style=" visible ? '' : 'display: none;'">
       <div class="modal-content">
         <header>
-          <span class="close" @click="isOpen = false">&times;</span>
+          <span class="close" @click="visible = false">&times;</span>
           <h2>League Item Shop</h2>
           <input
             type="search"
@@ -33,17 +33,17 @@
           </label>
 
           <input type="search" v-model="mapfilter" placeholder="Type to filter map...">
-          <label>Item Count: {{ visableItems.length }}</label>
+          <label>Item Count: {{ visibleItems.length }}</label>
         </header>
         <nav class="fixed-scroller">
           <div class="shop-grid-container">
-            <template v-for="(key) in visableItems">
-              <Item :key="key" :itemId="key" :value="$store.state.itemData[key]"></Item>
+            <template v-for="(key) in visibleItems">
+              <Item :key="key" :itemId="key" :value="$app.config.itemData[key]"></Item>
             </template>
           </div>
         </nav>
         <main>
-          <ShopItemInfo :itemId="selectedItem" :value="$store.state.itemData[selectedItem]"></ShopItemInfo>
+          <ShopItemInfo :itemId="selectedItem" :value="$app.config.itemData[selectedItem]"></ShopItemInfo>
         </main>
         <footer>
           <div class="item-grid-container">
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div>
-      <template v-for="(val,key) in $store.state.itemData">
+      <template v-for="(val,key) in $app.config.itemData">
         <ItemTooltip :key="key" :itemId="key" :value="val"></ItemTooltip>
       </template>
     </div>
@@ -122,7 +122,7 @@ export default {
   },
   data: function() {
     return {
-      isOpen: false,
+      visible: false,
       userid: "player",
       selectedItem: null,
       mapfilter: "11",
@@ -136,6 +136,7 @@ export default {
       return this.$app[this.userid].$refs.inventory;
     },
     items() {
+      if(this.inventory)
       return this.inventory.items;
     },
     emptyImage() {
@@ -163,8 +164,8 @@ export default {
         stats: stats
       };
     },
-    visableItems() {
-      const itemData = this.$store.state.itemData;
+    visibleItems() {
+      const itemData = this.$app.config.itemData;
       const keyword = this.search.toLowerCase();
       const mapfilter = this.mapfilter;
       const ret = [];
@@ -238,7 +239,7 @@ export default {
     itemdata(index) {
       const item = this.items[index];
       if (item) {
-        const data = this.$store.state.itemData[item];
+        const data = this.$app.config.itemData[item];
         if (data) return data;
       }
       return null;
@@ -253,10 +254,10 @@ export default {
       this.inventory.buyItem(itemId);
     },
     filterShop() {
-      // const itemData = this.$store.state.itemData;
+      // const itemData = this.$app.config.itemData;
       // const keyword = this.$refs.search.value.toLowerCase();
       // const mapfilter = this.$refs.mapfilter.value;
-      // let newVisableItems = [];
+      // let newvisibleItems = [];
       // for (const key in itemData) {
       //   const item = itemData[key];
       //   // const el = document.getElementById(`shop_item_${key}`);
@@ -278,14 +279,14 @@ export default {
       //     show = false;
       //   }
       //   if (show) {
-      //     newVisableItems.push(key);
+      //     newvisibleItems.push(key);
       //   }
       // }
-      // this.visableItems = newVisableItems.sort((a,b) => itemData[a].gold.total < itemData[b].gold.total);
+      // this.visibleItems = newvisibleItems.sort((a,b) => itemData[a].gold.total < itemData[b].gold.total);
     },
     open(userid) {
       this.userid = userid;
-      this.isOpen = true;
+      this.visible = true;
       // this.$refs.search.focus();
       // this.$refs.search.value = "";
       //   document.querySelector("#shop_buy_item").disabled = false;

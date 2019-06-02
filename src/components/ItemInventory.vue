@@ -69,9 +69,6 @@ export default {
     shop() {
       return this.$app.$refs.shop;
     },
-    championList() {
-      return this.$store.state.championList;
-    },
     emptyImage() {
       return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
     },
@@ -91,7 +88,7 @@ export default {
     itemdata(index) {
       const item = this.items[index];
       if (item) {
-        const data = this.$store.state.itemData[item];
+        const data = this.$app.itemData[item];
         if (data) return data;
       }
       return null;
