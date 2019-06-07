@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "Lissandra",
   "key": "127",
   "name": "Lissandra",
@@ -542,7 +541,7 @@
     "id": "LissandraR",
     "name": "Frozen Tomb",
     "description": "If cast on an enemy champion, the target is frozen solid, stunning it. If cast on Lissandra, she encases herself in dark ice, healing herself while becoming untargetable and invulnerable. Dark ice then emanates from the target dealing magic damage to enemies and slowing Movement Speed.",
-    "tooltip": "<span class=\"colorFF9999\">On Enemy Cast: </span>Freezes target champion solid, stunning it for {{ e4 }} seconds.<br /><br /><span class=\"colorCCFF99\">On Self Cast: </span>Lissandra encases herself in dark ice for {{ e5 }} seconds, healing for {{ e6 }} <scaleAP>(+{{ a2 }})</scaleAP>, increased by {{ e7 }}% for each {{ e8 }}% Health she is missing. During this time Lissandra is untargetable and invulnerable but is unable to take any actions.<br /><br />Dark ice then emanates from the target dealing {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage to enemies. The ice lasts for {{ e3 }} seconds and slows enemy Movement Speed by {{ e2 }}%.",
+    "tooltip": "<span class=\"colorFF9999\">On Enemy Cast: </span>Freezes target champion solid, stunning it for {{ enemycastduration }} seconds.<br /><br /><span class=\"colorCCFF99\">On Self Cast: </span>Lissandra encases herself in dark ice for {{ selfcastduration }} seconds, healing for {{ healamount }}, increased by {{ selfcastmissinghpratio }}% for each {{ selfcastmissinghpperabove }}% Health she is missing. During this time Lissandra is untargetable and invulnerable but is unable to take any actions.<br /><br />Dark ice then emanates from the target dealing {{ calculateddamage }} magic damage to enemies. The ice lasts for {{ slowduration }} seconds and slows enemy Movement Speed by {{ slowamount*-100 }}%.",
     "leveltip": {
       "label": [
         "Damage",
@@ -551,9 +550,9 @@
         "Cooldown"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ effect2amount*-100.000000 }}% -> {{ effect2amountnl*-100.000000 }}%",
-        "{{ e6 }} -> {{ e6NL }}",
+        "{{ basedamage }} -> {{ basedamageNL }}",
+        "{{ slowamount*-100.000000 }}% -> {{ slowamountnl*-100.000000 }}%",
+        "{{ selfcastflatheal }} -> {{ selfcastflathealNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
@@ -574,49 +573,49 @@
     "effect": [
       null,
       [
-        150,
-        250,
-        350
+        0,
+        0,
+        0
       ],
       [
-        30,
-        45,
-        75
+        0,
+        0,
+        0
       ],
       [
-        3,
-        3,
-        3
+        0,
+        0,
+        0
       ],
       [
-        1.5,
-        1.5,
-        1.5
+        0,
+        0,
+        0
       ],
       [
-        2.5,
-        2.5,
-        2.5
+        0,
+        0,
+        0
       ],
       [
-        100,
-        150,
-        200
+        0,
+        0,
+        0
       ],
       [
-        1,
-        1,
-        1
+        0,
+        0,
+        0
       ],
       [
-        1,
-        1,
-        1
+        0,
+        0,
+        0
       ],
       [
-        292,
-        292,
-        292
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -626,29 +625,18 @@
     ],
     "effectBurn": [
       null,
-      "150/250/350",
-      "30/45/75",
-      "3",
-      "1.5",
-      "2.5",
-      "100/150/200",
-      "1",
-      "1",
-      "292",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.3,
-        "key": "a2"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
@@ -670,7 +658,7 @@
   },
   "riot_spell_i": {
     "name": "Iceborn Subjugation",
-    "description": "When an enemy champion dies near Lissandra they become a Frozen Thrall. Frozen Thralls slow nearby enemies and then, after 4 seconds, shatter from the intense cold, dealing magic damage to nearby targets.</mainText>",
+    "description": "When an enemy champion dies near Lissandra they become a Frozen Thrall. Frozen Thralls slow nearby enemies and then, after 4 seconds, shatter from the intense cold, dealing magic damage to nearby targets.",
     "image": {
       "full": "Lissandra_Passive.png",
       "sprite": "passive2.png",
@@ -2336,11 +2324,11 @@
     "icon": "Iceborn Subjugation.png",
     "blurb": "",
     "description": "{{sbc|Innate:}} Whenever an enemy champion dies while '''Lissandra''' is near, she spawns a ''Frozen Thrall'' from their corpse.",
-    "description2": "''Frozen Thralls'' chase nearby enemies, prioritizing champions, {{tip|slow|slowing}} nearby enemies by 25% and shattering after 4 seconds, dealing {{as|{{pp|120 to 340;370;400;430;460;490;520}}|magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|magic damage}}}}. ''Frozen Thralls'' initially have X movement speed, which increases to Y over the duration.",
+    "description2": "''Frozen Thralls'' chase nearby enemies, prioritizing champions, {{tip|slow|slowing}} nearby enemies by 25% and shattering after 4 seconds, dealing {{as|{{pp|120 to 340;370;400;430;460;490;520}}|magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|magic damage}}}}. ''Frozen Thralls'' initially have a slow movement speed, which increases over the duration.",
     "targeting": "Passive",
     "affects": "Enemies",
     "damagetype": "[[Magic damage|Magic]]",
-    "notes": "\n* ''Thralls'' can grab the {{ii|Eye of the Herald}} and are considered champions for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
+    "notes": "\n* ''Thralls'' are considered champions for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
     "yvideo": "Lissandra - Passive"
   },
   "wikia_skill_q1": {
@@ -2465,7 +2453,7 @@
     "rangetype": "Ranged",
     "date": "2013-04-30",
     "patch": "V3.6",
-    "changes": "9.9.1",
+    "changes": "9.11.1",
     "role": "Burst",
     "damage": 3,
     "toughness": 1,

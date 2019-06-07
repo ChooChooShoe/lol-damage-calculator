@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "Leona",
   "key": "89",
   "name": "Leona",
@@ -572,7 +571,7 @@
     "id": "LeonaSolarFlare",
     "name": "Solar Flare",
     "description": "Leona calls down a beam of solar energy, dealing damage to enemies in an area. Enemies in the center of the area are stunned, while enemies on the outside are slowed. Afterward, Leona's sword is charged with the power of the sun and deals bonus magic damage for a few attacks.",
-    "tooltip": "Calls down a radiant beam of solar energy dealing {{ e4 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage and slowing enemies by {{ e1 }}% for {{ e2 }} seconds. Enemies in the center of the flare are stunned instead of slowed.<br /><br />Leona's sword remains charged with <span class=\"colorFFBB00\">Incandescence</span>, causing her next {{ e5 }} basic attacks to gain 100 range and deal {{ e3 }} <scaleAP>(+{{ a2 }})</scaleAP> bonus magic damage on hit.",
+    "tooltip": "Calls down a radiant beam of solar energy dealing {{ explosioncalculateddamage }} magic damage and slowing enemies by {{ slowpercent }}% for {{ ccduration }} seconds. Enemies in the center of the flare are stunned instead of slowed.<br /><br />Leona's sword remains charged with <span class=\"colorFFBB00\">Incandescence</span>, causing her next {{ onhitstacks }} basic attacks to gain {{ attackrangeincrease }} range and deal {{ onhitcalculateddamage }} bonus magic damage on hit.",
     "leveltip": {
       "label": [
         "Damage",
@@ -581,9 +580,9 @@
         "Cooldown"
       ],
       "effect": [
-        "{{ e4 }} -> {{ e4NL }}",
-        "{{ e3 }} -> {{ e3NL }}",
-        "{{ e5 }} -> {{ e5NL }}",
+        "{{ explosionbasedamage }} -> {{ explosionbasedamageNL }}",
+        "{{ onhitbasedamage }} -> {{ onhitbasedamageNL }}",
+        "{{ onhitstacks }} -> {{ onhitstacksNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
@@ -604,39 +603,39 @@
     "effect": [
       null,
       [
-        80,
-        80,
-        80
+        0,
+        0,
+        0
       ],
       [
-        1.5,
-        1.5,
-        1.5
+        0,
+        0,
+        0
       ],
       [
-        30,
-        40,
-        50
-      ],
-      [
-        100,
-        175,
-        250
-      ],
-      [
-        3,
-        4,
-        5
-      ],
-      [
-        5,
-        5,
-        5
+        0,
+        0,
+        0
       ],
       [
         100,
         100,
         100
+      ],
+      [
+        3,
+        3,
+        3
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -656,29 +655,18 @@
     ],
     "effectBurn": [
       null,
-      "80",
-      "1.5",
-      "30/40/50",
-      "100/175/250",
-      "3/4/5",
-      "5",
+      "0",
+      "0",
+      "0",
       "100",
+      "3",
+      "0",
+      "0",
       "0",
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.8,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.15,
-        "key": "a2"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [

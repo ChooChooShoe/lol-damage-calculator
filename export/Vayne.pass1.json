@@ -1,5 +1,4 @@
 {
-  "api_version": "9.10.1",
   "id": "Vayne",
   "key": "67",
   "name": "Vayne",
@@ -129,15 +128,15 @@
     "id": "VayneTumble",
     "name": "Tumble",
     "description": "Vayne tumbles, maneuvering to carefully place her next shot. Her next attack deals bonus damage.",
-    "tooltip": "Vayne rolls a short distance, and deals <scaleAD>{{ f1 }}</scaleAD> bonus physical damage on her next basic attack within {{ e3 }} seconds.<br /><br /><rules>Tumble's bonus damage is equal to {{ e1 }}% of Vayne's total attack damage.</rules>",
+    "tooltip": "Vayne rolls a short distance, and deals <scaleAD>{{ adratiobonus }}</scaleAD> bonus physical damage on her next basic attack within {{ duration }} seconds. <br /><br /><rules>Tumble's bonus damage is equal to {{ totaladratio*100 }}% of her Attack Damage</rules>",
     "leveltip": {
       "label": [
-        "Damage",
-        "Cooldown"
+        "Cooldown",
+        "AD Ratio %"
       ],
       "effect": [
-        "{{ e1 }}% -> {{ e1NL }}%",
-        "{{ cooldown }} -> {{ cooldownNL }}"
+        "{{ cooldown }} -> {{ cooldownNL }}",
+        "{{ totaladratio*100.000000 }}% -> {{ totaladrationl*100.000000 }}%"
       ]
     },
     "maxrank": 5,
@@ -161,11 +160,11 @@
     "effect": [
       null,
       [
-        50,
-        55,
-        60,
-        65,
-        70
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -175,11 +174,11 @@
         0
       ],
       [
-        7,
-        7,
-        7,
-        7,
-        7
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -233,9 +232,9 @@
     ],
     "effectBurn": [
       null,
-      "50/55/60/65/70",
       "0",
-      "7",
+      "0",
+      "0",
       "0",
       "0",
       "0",
@@ -244,20 +243,8 @@
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "attackdamage",
-        "coeff": [
-          0.3,
-          0.35,
-          0.4,
-          0.45,
-          0.5
-        ],
-        "key": "f1"
-      }
-    ],
-    "costType": " Mana",
+    "vars": [],
+    "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
       300,
@@ -276,32 +263,32 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ cost }} Mana"
+    "resource": "{{ cost }} {{ abilityresourcename }}"
   },
   "riot_spell_w": {
     "id": "VayneSilveredBolts",
     "name": "Silver Bolts",
-    "description": "Vayne tips her bolts with a rare metal, toxic to evil things. The third consecutive attack or ability against the same target deals a percentage of the target's maximum Health as bonus true damage. (Max: 200 damage vs. Monsters)",
-    "tooltip": "Every third consecutive attack or ability against an enemy deals an additional {{ e1 }}% of the enemy's maximum health as true damage (no less than {{ e2 }}).<br /><br /><rules>Silver Bolts deals no more than {{ e3 }} damage against monsters.</rules>",
+    "description": "Vayne tips her bolts with a rare metal, toxic to evil things. The third consecutive attack or ability against the same target deals a percentage of the target's max health as bonus true damage.",
+    "tooltip": "Every third consecutive attack or ability against an enemy deals an additional {{ maxhealthratio*100 }}% of the enemy's maximum health as true damage (no less than {{ damagefloor }})<br /><br /><rules>Silver Bolts deals no more than {{ damagemaxvsmonsters }} damage against monsters. </rules>",
     "leveltip": {
       "label": [
-        "Damage",
+        "True Damage %",
         "Minimum Damage"
       ],
       "effect": [
-        "{{ e1 }}% -> {{ e1NL }}%",
-        "{{ e2 }} -> {{ e2NL }}"
+        "{{ maxhealthratio*100.000000 }}% -> {{ maxhealthrationl*100.000000 }}%",
+        "{{ damagefloor }} -> {{ damagefloorNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
-      6,
-      6,
-      6,
-      6,
-      6
+      0,
+      0,
+      0,
+      0,
+      0
     ],
-    "cooldownBurn": "6",
+    "cooldownBurn": "0",
     "cost": [
       0,
       0,
@@ -314,32 +301,32 @@
     "effect": [
       null,
       [
-        4,
-        6.5,
-        9,
-        11.5,
-        14
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        50,
-        65,
-        80,
-        95,
-        110
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        200,
-        200,
-        200,
-        200,
-        200
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        3.5,
-        3.5,
-        3.5,
-        3.5,
-        3.5
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -386,10 +373,10 @@
     ],
     "effectBurn": [
       null,
-      "4/6.5/9/11.5/14",
-      "50/65/80/95/110",
-      "200",
-      "3.5",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
@@ -423,15 +410,15 @@
     "id": "VayneCondemn",
     "name": "Condemn",
     "description": "Vayne draws a heavy crossbow from her back, and fires a huge bolt at her target, knocking them back and dealing damage. If they collide with terrain, they are impaled, dealing bonus damage and stunning them.",
-    "tooltip": "Fires a bolt that knocks back a target and deals {{ e1 }} <scaleAD>(+{{ a1 }})</scaleAD> physical damage.<br /><br />If the target collides with terrain, the damage is increased to <scaleAD>{{ f1 }}</scaleAD> and the target is stunned for {{ e3 }} seconds.<br /><br /><rules>Condemn's damage is increased by {{ e2 }}% if the target collides with terrain.</rules>",
+    "tooltip": "Fires a bolt that knocks back a target and deals <scaleAD>{{ totaldamage }}</scaleAD> damage. If the target collides with terrain, the damage is increased by {{ stundamage*100 }}% and the target is stunned for {{ stunduration }} seconds. ",
     "leveltip": {
       "label": [
-        "Damage",
-        "Cooldown"
+        "Cooldown",
+        "Damage"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}"
+        "{{ cooldown }} -> {{ cooldownNL }}",
+        "{{ damage }} -> {{ damageNL }}"
       ]
     },
     "maxrank": 5,
@@ -455,32 +442,32 @@
     "effect": [
       null,
       [
-        50,
-        85,
-        120,
-        155,
-        190
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        100,
-        100,
-        100,
-        100,
-        100
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        1.5,
-        1.5,
-        1.5,
-        1.5,
-        1.5
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        475,
-        475,
-        475,
-        475,
-        475
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -527,10 +514,10 @@
     ],
     "effectBurn": [
       null,
-      "50/85/120/155/190",
-      "100",
-      "1.5",
-      "475",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
@@ -538,19 +525,8 @@
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "bonusattackdamage",
-        "coeff": 0.5,
-        "key": "a1"
-      },
-      {
-        "link": "bonusattackdamage",
-        "coeff": 0.5,
-        "key": "f1"
-      }
-    ],
-    "costType": " Mana",
+    "vars": [],
+    "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
       550,
@@ -569,23 +545,25 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ cost }} Mana"
+    "resource": "{{ cost }} {{ abilityresourcename }}"
   },
   "riot_spell_r": {
     "id": "VayneInquisition",
     "name": "Final Hour",
-    "description": "Readying herself for an epic confrontation, Vayne gains increased Attack Damage, Invisibility during Tumble, reduced Tumble cooldown, and triple the bonus Movement Speed from Night Hunter.",
-    "tooltip": "Vayne gains {{ e1 }} bonus attack damage and improvements to Night Hunter and Tumble for {{ e2 }} seconds. The duration of Final Hour is extended by {{ e5 }} seconds whenever a champion damaged by Vayne dies within {{ e6 }} seconds.<br /><br /><span class=\"colorF0F0F0\">Night Hunter</span>: Vayne instead gains {{ e4 }} movement speed.<br /><span class=\"colorF0F0F0\">Tumble</span>: Tumble's cooldown is reduced by {{ e7 }}%, and Vayne gains <span class=\"color91d7ee\">Invisibility</span> for {{ e3 }} second when she Tumbles.<br /><br /><rules><span class=\"color91d7ee\">Stealth - Invisible:</span> Vayne can only be revealed by nearby enemy Turrets or <span class=\"coloree91d7\">True Sight</span>.<br />Final Hour's duration can't be increased beyond its original maximum duration.</rules>",
+    "description": "Readying herself for an epic confrontation, Vayne gains increased Attack Damage, Invisibility during Tumble, reduced Tumble cooldown, and more bonus Movement Speed from Night Hunter",
+    "tooltip": "Vayne gains {{ bonusattackdamage }} bonus attack damage and improvements to Night Hunter and Tumble for {{ baseduration }} seconds. The Duration of Final Hour is extended by {{ durationtoadd }} seconds whenever a champion damaged by Vayne dies within {{ damagedmarkerduration }} seconds. <br /><br /><span class=\"colorF0F0F0\">Night Hunter</span>: Vayne instead gains {{ movementspeed }} movement speed<br /><span class=\"colorF0F0F0\">Tumble</span>: Tumble's cooldown is reduced by {{ tumblecdreduction }}%, and Vayne gains <keywordStealth>Invisibility</keywordStealth> for {{ tumblestealthduration }} second when she Tumbles.<br /><br /><rules><keywordStealth>Stealth - Invisible:</keywordStealth> Vayne can only be revealed by nearby enemy turrets or <keywordStealth>True Sight</keywordStealth>.<br />Final Hour's duration can't be increased beyond its original maximum duration</rules>",
     "leveltip": {
       "label": [
-        "Bonus Attack Damage",
+        "Cooldown",
         "Duration",
-        "Cooldown"
+        "Bonus AD",
+        "Tumble Cooldown Reduction"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e2 }} -> {{ e2NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}"
+        "{{ cooldown }} -> {{ cooldownNL }}",
+        "{{ baseduration }} -> {{ basedurationNL }}",
+        "{{ bonusattackdamage }} -> {{ bonusattackdamageNL }}",
+        "{{ tumblecdreduction }}% -> {{ tumblecdreductionNL }}%"
       ]
     },
     "maxrank": 3,
@@ -605,39 +583,39 @@
     "effect": [
       null,
       [
-        20,
-        30,
-        40
+        0,
+        0,
+        0
       ],
       [
-        8,
-        10,
-        12
+        0,
+        0,
+        0
       ],
       [
-        1,
-        1,
-        1
+        0,
+        0,
+        0
       ],
       [
-        90,
-        90,
-        90
+        0,
+        0,
+        0
       ],
       [
-        4,
-        4,
-        4
+        0,
+        0,
+        0
       ],
       [
-        3,
-        3,
-        3
+        0,
+        0,
+        0
       ],
       [
-        30,
-        40,
-        50
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -657,19 +635,19 @@
     ],
     "effectBurn": [
       null,
-      "20/30/40",
-      "8/10/12",
-      "1",
-      "90",
-      "4",
-      "3",
-      "30/40/50",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0"
     ],
     "vars": [],
-    "costType": " Mana",
+    "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
       1,
@@ -686,7 +664,7 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ cost }} Mana"
+    "resource": "{{ cost }} {{ abilityresourcename }}"
   },
   "riot_spell_i": {
     "name": "Night Hunter",
@@ -2537,7 +2515,7 @@
     "rangetype": "Ranged",
     "date": "2011-05-10",
     "patch": "v1.0.0.118",
-    "changes": "9.10.1",
+    "changes": "9.11.1",
     "role": "Marksman",
     "damage": 3,
     "toughness": 0,

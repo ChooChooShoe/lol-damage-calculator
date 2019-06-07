@@ -1,5 +1,4 @@
 {
-    "api_version": "9.9.1",
     "patch": "V1.0.0.147",
     "changes": "8.15.1",
     "id": "Syndra",
@@ -124,7 +123,7 @@
                 "{{sbc|Active:}} After {{fd|0.6}} seconds, '''Syndra''' conjures a ''Dark Sphere'' at the target location, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit, which then remains for 6 seconds.",
                 "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Dark Spheres'' deal 15% '''bonus''' damage against [[champion]]s."
             ],
-            "effect_radius": 175,
+            "effect_radius": 180,
             "icon": [
                 "Dark Sphere.png"
             ],
@@ -184,7 +183,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|First Active:}} '''Syndra''' telekinetically grabs a {{ai|Dark Sphere|Syndra}}, enemy [[minion]] or non-epic [[monster]] for 5 seconds. If a '''Dark Sphere''' is grabbed, its duration is refreshed. If a minion or monster is grabbed, it is put in {{tip|stasis}}.",
+                "{{sbc|First Active:}} '''Syndra''' telekinetically grabs the nearest {{ai|Dark Sphere|Syndra}}, enemy [[minion]] or non-epic [[monster]] within 400 range from the target location for 5 seconds, or if not found it grabs the nearest '''Dark Sphere'''. If a '''Dark Sphere''' is grabbed, its duration is refreshed. If a minion or monster is grabbed, it is put in {{tip|stasis}}.",
                 "{{sbc|Second Active:}} '''Syndra''' throws the grabbed target to the designated area, granting {{tip|sight}} of the projectile's surroundings as they fall. The projectile, if it is an enemy, and any enemies struck take {{as|magic damage}} and are {{tip|slow|slowed}} for {{fd|1.5}} seconds.",
                 "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Force of Will'' deals {{tip|true damage|{{as|20% '''bonus''' true damage}}}}."
             ],
@@ -209,7 +208,7 @@
                 "*** {{cai|Jack in the Box|Shaco}} is the exception.",
                 "** {{ci|Wukong|link=Wukong#Decoy|text=Champion clones}}",
                 "* Casting {{si|Teleport}} will cause Syndra to cancel ''Force of Will'' and drop anything she is holding.",
-                "* If any available, automatically grabs nearby possible object if first cast aimed to empty space or invalid object. '''Grab priority list needed!!'''",
+                "* Grabbing prioritizes '''Dark Spheres'''.",
                 "* Even if the unit is put in ''stasis'' minion attacks may still kill it during it. The ''dead'' unit may still, however, be launched.",
                 "* Once upgraded to maximum rank '''Syndra''' gains a total damage increase of (20 + {{as|enemy's MR}}{{Divided by}}5)%.",
                 "* Enemy [[Champion summoned units|pets]] that passively have an effect on their surroundings will continue to affect the area around them while they are being held. For example, {{cai|Summon: Tibbers|Annie|Tibbers}} will continue to inflict burn damage on surrounding units while in stasis.",
@@ -239,7 +238,7 @@
                 "h": 48
             },
             "affects": "Enemies",
-            "angle": "{{tt|40{{degree}}|Estimated}}",
+            "angle": "40{{degree}} / {{tt|60{{degree}}|Transcendent Bonus.}}",
             "blurb": "Syndra knocks enemies and Dark Spheres back dealing magic damage. Enemies hit by Dark Spheres become stunned.",
             "champion": "Syndra",
             "cooldown": [
@@ -264,11 +263,10 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Syndra''' {{tip|airborne|knocks back}} all enemies and {{ai|Dark Sphere|Syndra|Dark Spheres}} in front of her up to 1100 units, based on their proximity to her, dealing {{as|magic damage}} to them and any enemies with which they collide.",
-                "Launched {{ai|Dark Sphere|Syndra|Dark Spheres}} also {{tip|stun}} all enemies in their path for {{fd|1.5}} seconds, dealing ''Scatter the Weak's'' damage to enemies who weren't affected by the initial cast.",
+                "{{sbc|Active:}} '''Syndra''' {{tip|airborne|knocks back}} all enemy units for 400 units and up to 800 units away from '''Syndra''', dealing {{as|magic damage}}.",
+                "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''', knocking back all enemy units they collide with for 100 units and {{tip|stun|stunning}} them for {{fd|1.5}} seconds, dealing ''Scatter the Weak's'' damage to enemies who weren't affected by the initial cast.",
                 "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
             ],
-            "effect_radius": 700,
             "icon": [
                 "Scatter the Weak.png"
             ],
@@ -277,8 +275,7 @@
             ],
             "name": "Scatter the Weak",
             "notes": [
-                "* Launched {{ai|Dark Sphere|Syndra|Dark Spheres}} that successfully strike an enemy will grant [[sight]] on that enemy for the duration of the stun.",
-                "* Spheres knocked back by ''Scatter the Weak'' do not travel a set distance. The closer a ''Sphere'' is to Syndra, the further it will travel when hit by ''Scatter the Weak'', however every sphere hit will travel to the same distance from Syndra."
+                "* Launched {{ai|Dark Sphere|Syndra|Dark Spheres}} that successfully strike an enemy will grant [[sight]] on that enemy for the duration of the stun."
             ],
             "onhiteffects": "",
             "projectile": true,
@@ -286,6 +283,7 @@
             "speed": 2500,
             "spelleffects": "area",
             "spellshield": true,
+            "target_range": "700 / {{tt|800|Dark Spheres}}",
             "targeting": "Direction"
         },
         "r1": {

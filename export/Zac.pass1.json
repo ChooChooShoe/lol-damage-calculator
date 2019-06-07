@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "Zac",
   "key": "154",
   "name": "Zac",
@@ -8,7 +7,7 @@
     "full": "Zac.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 48,
     "w": 48,
     "h": 48
@@ -101,13 +100,13 @@
     },
     "maxrank": 5,
     "cooldown": [
-      13,
+      15,
+      13.5,
       12,
-      11,
-      10,
+      10.5,
       9
     ],
-    "cooldownBurn": "13/12/11/10/9",
+    "cooldownBurn": "15/13.5/12/10.5/9",
     "cost": [
       0,
       0,
@@ -141,11 +140,11 @@
         800
       ],
       [
-        -0.6,
-        -0.6,
-        -0.6,
-        -0.6,
-        -0.6
+        -0.4,
+        -0.4,
+        -0.4,
+        -0.4,
+        -0.4
       ],
       [
         0.5,
@@ -195,7 +194,7 @@
       "40/55/70/85/100",
       "8",
       "800",
-      "-0.6",
+      "-0.4",
       "0.5",
       "2.5",
       "1000",
@@ -229,7 +228,7 @@
       "full": "ZacQ.png",
       "sprite": "spell14.png",
       "group": "spell",
-      "x": 192,
+      "x": 384,
       "y": 0,
       "w": 48,
       "h": 48
@@ -370,7 +369,7 @@
       "full": "ZacW.png",
       "sprite": "spell14.png",
       "group": "spell",
-      "x": 240,
+      "x": 432,
       "y": 0,
       "w": 48,
       "h": 48
@@ -519,8 +518,8 @@
       "full": "ZacE.png",
       "sprite": "spell14.png",
       "group": "spell",
-      "x": 288,
-      "y": 0,
+      "x": 0,
+      "y": 48,
       "w": 48,
       "h": 48
     },
@@ -529,29 +528,23 @@
   "riot_spell_r": {
     "id": "ZacR",
     "name": "Let's Bounce!",
-    "description": "Zac flattens himself, making him immune to crowd control while slowing enemies standing on top of him. When he decides to bounce away, he will suck up any enemies standing on top of him, taking them for a ride.",
-    "tooltip": "<span class=\"colorFF9900\">First cast: </span>Zac squishes himself down, making him immune to Crowd Control for up to {{ e5 }} seconds. Enemies standing on top of him are slowed by {{ e4 }}%.<br /><br /><span class=\"colorFF9900\">Second cast: </span>Charging for at least {{ f1 }} seconds before recasting causes Zac to scoop up enemies on top of him, carrying them towards a location. Upon landing nearby enemies take {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage and are briefly slowed.<br /><br />Reactivating before Zac charges up knocks back nearby enemies instead.",
+    "description": "Zac bounces four times, knocking up enemies hit and slowing them.",
+    "tooltip": "Zac bounces {{ bounces }} times, knocking back enemies for {{ knockupduration }} second and dealing {{ damageperbounce }} magic damage. Enemies hit with multiple bounces take {{ damagereductionbounce*100 }}% less damage and are not knocked up. <br /><br />Enemies hit by Let's Bounce! are slowed by {{ slowamount*100 }}% for {{ slowduration }} second.<br /><br />Zac gains movement speed over the duration and can cast <spellActive>Unstable Matter</spellActive> while bouncing.",
     "leveltip": {
       "label": [
-        "Damage",
-        "Range",
-        "Slow Percent",
-        "Cooldown"
+        "Base Bounce Damage"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e3 }} -> {{ e3NL }}",
-        "{{ e4 }}% -> {{ e4NL }}%",
-        "{{ cooldown }} -> {{ cooldownNL }}"
+        "{{ basedamagebounce }} -> {{ basedamagebounceNL }}"
       ]
     },
     "maxrank": 3,
     "cooldown": [
-      130,
+      120,
       115,
       100
     ],
-    "cooldownBurn": "130/115/100",
+    "cooldownBurn": "120/115/100",
     "cost": [
       0,
       0,
@@ -577,9 +570,9 @@
         1000
       ],
       [
-        30,
-        40,
-        50
+        -0.3,
+        -0.4,
+        -0.5
       ],
       [
         2.5,
@@ -617,7 +610,7 @@
       "150/250/350",
       "1.1",
       "700/850/1000",
-      "30/40/50",
+      "-0.3/-0.4/-0.5",
       "2.5",
       "275",
       "300",
@@ -625,13 +618,7 @@
       "0.25",
       "0.1"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.9,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": "No Cost",
     "maxammo": "-1",
     "range": [
@@ -644,8 +631,8 @@
       "full": "ZacR.png",
       "sprite": "spell14.png",
       "group": "spell",
-      "x": 336,
-      "y": 0,
+      "x": 48,
+      "y": 48,
       "w": 48,
       "h": 48
     },
@@ -658,7 +645,7 @@
       "full": "ZacPassive.png",
       "sprite": "passive4.png",
       "group": "passive",
-      "x": 336,
+      "x": 384,
       "y": 48,
       "w": 48,
       "h": 48
@@ -884,17 +871,17 @@
           ],
           "items": [
             {
-              "id": "3065",
-              "count": 1,
-              "hideCount": false
-            },
-            {
               "id": "3111",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3068",
+              "id": "3065",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3083",
               "count": 1,
               "hideCount": false
             }
@@ -917,17 +904,17 @@
           ],
           "items": [
             {
+              "id": "3068",
+              "count": 1,
+              "hideCount": false
+            },
+            {
               "id": "3001",
               "count": 1,
               "hideCount": false
             },
             {
               "id": "3151",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3116",
               "count": 1,
               "hideCount": false
             }
@@ -950,12 +937,12 @@
           ],
           "items": [
             {
-              "id": "3143",
+              "id": "3193",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3190",
+              "id": "3143",
               "count": 1,
               "hideCount": false
             },
@@ -983,17 +970,17 @@
           ],
           "items": [
             {
-              "id": "3165",
+              "id": "3116",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3089",
+              "id": "3194",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3157",
+              "id": "3190",
               "count": 1,
               "hideCount": false
             }
@@ -3003,14 +2990,14 @@
     "icon": "Stretching Strikes.png",
     "icon2": "",
     "blurb": "Zac stretches an arm, grabbing an enemy. Attacking a different enemy will cause him to throw both targets towards each other.",
-    "description": "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 60% for {{fd|0.5}} seconds, and attaching it to the target for 2 seconds.",
+    "description": "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and attaching it to the target for 2 seconds.",
     "leveling": "{{st|Magic Damage|{{ap|40 to 100}} {{as|(+ 30% AP)}} {{as|(+ {{fd|2.5}}% of '''Zac's''' '''maximum''' health)}}|Total Magic Damage|{{ap|40*2 to 100*2}} {{as|(+ 60% AP)}} {{as|(+ 5% of '''Zac's''' '''maximum''' health)}}}}",
     "description2": "While his arm is attached, his next [[basic attack]] has {{sti|range|200 range}} and is replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}.",
     "description3": "If both ''Stretching Strikes'' affect two different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them against each other, dealing the initial {{as|magic damage}} around the point of collision and applying the {{tip|slow}} again.",
     "target_range": 800,
     "cost": "{{as|8%|health}}",
     "costtype": "{{as|Current Health|health}}",
-    "cooldown": "{{ap|13 to 9}}",
+    "cooldown": "{{ap|15 to 9}}",
     "targeting": "Direction",
     "affects": "Enemies",
     "damagetype": "Magic",
@@ -3026,7 +3013,7 @@
     "icon": "Unstable Matter.png",
     "blurb": "Zac's body erupts, damaging nearby enemies.",
     "description": "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}, and becoming {{tip|ghosted}} for 5 seconds against monsters hit.",
-    "leveling": "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ {{ap|4 to 8}}% of target's '''maximum''' health)}}|Capped Damage|{{ap|215 to 275}}}}",
+    "leveling": "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ {{ap|4 to 8}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Capped Damage|{{ap|215 to 275}}}}",
     "description2": "''Unstable Matter's'' {{sti|cooldown}} is reduced by 1 second every time '''Zac''' picks up a {{ai|Cell Division|Zac}} chunk.",
     "target_range": 350,
     "cost": "{{as|4%|health}}",
@@ -3071,24 +3058,22 @@
     "champion": "Zac",
     "skill": "R",
     "icon": "Let's Bounce!.png",
-    "blurb": "Zac flattens himself, making him immune to crowd control while slowing enemies standing on top of him. When he decides to bounce away, he will suck up any enemies standing on top of him, taking them for a ride.",
-    "description": "{{sbc|Active:}} '''Zac''' squishes himself down while charging for up to {{fd|2.5}} seconds, during which he is {{tip|unstoppable}}, and {{tip|slow|slowing}} any enemies standing on top of him.",
-    "leveling": "{{st|Slow|{{ap|30 to 50}}%}}",
-    "description2": "{{sbc|Second Cast:}} '''Zac''' {{tip|airborne|knocks back}} nearby enemies 275 units over 1 second and deals {{as|magic damage}}. If charged for at least 1 second before recasting, '''Zac''' instead scoops up enemies on top of him, {{tip|airborne|carrying}} them towards the target location. While flying through the air, '''Zac''' is immune to {{tip|crowd control}}.",
-    "description3": "Upon landing, nearby and transported enemies take {{as|magic damage}} and are {{tip|slow|slowed}} by 25% for {{fd|0.5}} seconds.",
-    "leveling3": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 90% AP)}}}}",
-    "target_range": "{{ap|700 to 1000}}",
-    "effect_radius": 300,
+    "blurb": "",
+    "description": "{{sbc|Active:}} After a small delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{pp|7|type=duration|key=%|20 to 50|0 to 3}} '''bonus''' movement speed as he does so but becoming unable to use basic attacks, {{ai|Stretching Strikes|Zac}}, or {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
+    "description2": "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
+    "leveling2": "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}",
+    "description3": "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them.",
+    "effect_radius": "{{tt|300|Damage radius}} / {{tt|400|Displacement distance from Zac's center}}",
     "cooldown": "{{ap|130 to 100}}",
     "targeting": "Ground",
-    "affects": "Enemies",
+    "affects": "Enemies, Self",
     "damagetype": "Magic",
     "spelleffects": "Area of effect",
     "spellshield": true,
     "projectile": "",
     "knockdown": false,
     "grounded": true,
-    "notes": "\n* If '''Zac''' dies while channeling, he will {{tip|airborne|knock back}} nearby enemies 275 units, despite of how long he channelled."
+    "notes": "\n* No additional details."
   },
   "wikia_champ": {
     "nickname": "Zaun Amorphous Combatant, Z.A.C.",
@@ -3119,7 +3104,7 @@
     "rangetype": "Melee",
     "date": "2013-03-29",
     "patch": "V3.5",
-    "changes": "8.21.1",
+    "changes": "9.11.1",
     "resource": "Health",
     "role": "Vanguard",
     "damage": 2,
@@ -3130,8 +3115,8 @@
     "style": 100,
     "difficulty": 1,
     "adaptivetype": "magic",
-    "be": 6300,
-    "rp": 975,
+    "be": 4800,
+    "rp": 880,
     "skill_i": "Cell Division;Cell Division 2",
     "skill_q": "Stretching Strikes",
     "skill_w": "Unstable Matter",

@@ -1,7 +1,6 @@
 {
-    "api_version": "9.9.1",
     "patch": "V3.5",
-    "changes": "8.21.1",
+    "changes": "9.11.1",
     "id": "Zac",
     "key": "154",
     "name": "Zac",
@@ -11,7 +10,7 @@
         "full": "Zac.png",
         "sprite": "champion4.png",
         "group": "champion",
-        "x": 336,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
@@ -23,8 +22,8 @@
     "resource": "None",
     "herotype": "Tank",
     "alttype": "Fighter",
-    "be_cost": 6300,
-    "rp_cost": 975,
+    "be_cost": 4800,
+    "rp_cost": 880,
     "adaptivetype": "magic",
     "info": {
         "attack": 3,
@@ -45,7 +44,7 @@
                 "full": "ZacPassive.png",
                 "sprite": "passive4.png",
                 "group": "passive",
-                "x": 336,
+                "x": 384,
                 "y": 48,
                 "w": 48,
                 "h": 48
@@ -98,7 +97,7 @@
                 "full": "ZacQ.png",
                 "sprite": "spell14.png",
                 "group": "spell",
-                "x": 192,
+                "x": 384,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -107,13 +106,13 @@
             "blurb": "Zac stretches an arm, grabbing an enemy. Attacking a different enemy will cause him to throw both targets towards each other.",
             "champion": "Zac",
             "cooldown": [
-                13,
+                15,
+                13.5,
                 12,
-                11,
-                10,
+                10.5,
                 9
             ],
-            "cooldownBurn": "13/12/11/10/9",
+            "cooldownBurn": "15/13.5/12/10.5/9",
             "cost": [
                 "8%",
                 "8%",
@@ -128,7 +127,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 60% for {{fd|0.5}} seconds, and attaching it to the target for 2 seconds.",
+                "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and attaching it to the target for 2 seconds.",
                 "While his arm is attached, his next [[basic attack]] has {{sti|range|200 range}} and is replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}.",
                 "If both ''Stretching Strikes'' affect two different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them against each other, dealing the initial {{as|magic damage}} around the point of collision and applying the {{tip|slow}} again."
             ],
@@ -163,7 +162,7 @@
                 "full": "ZacW.png",
                 "sprite": "spell14.png",
                 "group": "spell",
-                "x": 240,
+                "x": 432,
                 "y": 0,
                 "w": 48,
                 "h": 48
@@ -200,7 +199,7 @@
                 "Unstable Matter.png"
             ],
             "leveling": [
-                "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ {{ap|4 to 8}}% of target's '''maximum''' health)}}|Capped Damage|{{ap|215 to 275}}}}"
+                "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ {{ap|4 to 8}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Capped Damage|{{ap|215 to 275}}}}"
             ],
             "name": "Unstable Matter",
             "notes": [
@@ -223,8 +222,8 @@
                 "full": "ZacE.png",
                 "sprite": "spell14.png",
                 "group": "spell",
-                "x": 288,
-                "y": 0,
+                "x": 0,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
@@ -289,20 +288,20 @@
                 "full": "ZacR.png",
                 "sprite": "spell14.png",
                 "group": "spell",
-                "x": 336,
-                "y": 0,
+                "x": 48,
+                "y": 48,
                 "w": 48,
                 "h": 48
             },
-            "affects": "Enemies",
-            "blurb": "Zac flattens himself, making him immune to crowd control while slowing enemies standing on top of him. When he decides to bounce away, he will suck up any enemies standing on top of him, taking them for a ride.",
+            "affects": "Enemies, Self",
+            "blurb": "",
             "champion": "Zac",
             "cooldown": [
-                130,
+                120,
                 115,
                 100
             ],
-            "cooldownBurn": "130/115/100",
+            "cooldownBurn": "120/115/100",
             "cost": [
                 0,
                 0,
@@ -315,29 +314,27 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Zac''' squishes himself down while charging for up to {{fd|2.5}} seconds, during which he is {{tip|unstoppable}}, and {{tip|slow|slowing}} any enemies standing on top of him.",
-                "{{sbc|Second Cast:}} '''Zac''' {{tip|airborne|knocks back}} nearby enemies 275 units over 1 second and deals {{as|magic damage}}. If charged for at least 1 second before recasting, '''Zac''' instead scoops up enemies on top of him, {{tip|airborne|carrying}} them towards the target location. While flying through the air, '''Zac''' is immune to {{tip|crowd control}}.",
-                "Upon landing, nearby and transported enemies take {{as|magic damage}} and are {{tip|slow|slowed}} by 25% for {{fd|0.5}} seconds."
+                "{{sbc|Active:}} After a small delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{pp|7|type=duration|key=%|20 to 50|0 to 3}} '''bonus''' movement speed as he does so but becoming unable to use basic attacks, {{ai|Stretching Strikes|Zac}}, or {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
+                "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
+                "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them."
             ],
-            "effect_radius": 300,
+            "effect_radius": "{{tt|300|Damage radius}} / {{tt|400|Displacement distance from Zac's center}}",
             "grounded": true,
             "icon": [
                 "Let's Bounce!.png"
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Slow|{{ap|30 to 50}}%}}",
-                "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 90% AP)}}}}"
+                "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}"
             ],
             "name": "Let's Bounce!",
             "notes": [
-                "* If '''Zac''' dies while channeling, he will {{tip|airborne|knock back}} nearby enemies 275 units, despite of how long he channelled."
+                "* No additional details."
             ],
             "projectile": false,
             "skill": "R",
             "spelleffects": "Area of effect",
             "spellshield": true,
-            "target_range": "{{ap|700 to 1000}}",
             "targeting": "Ground"
         }
     }

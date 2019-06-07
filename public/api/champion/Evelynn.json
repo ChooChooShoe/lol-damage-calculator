@@ -1,5 +1,4 @@
 {
-    "api_version": "9.9.1",
     "patch": "May 1, 2009 Patch",
     "changes": "9.8.1",
     "id": "Evelynn",
@@ -35,7 +34,7 @@
     "i_displayname": "Demon Shade",
     "q_displayname": "Hate Spike",
     "w_dispalyname": "Allure",
-    "e_dispalyname": "Whiplash",
+    "e_dispalyname": "Whiplash / Empowered Whiplash",
     "r_dispalyname": "Last Caress",
     "complex_skills": {
         "i1": {
@@ -65,6 +64,7 @@
                 "{{sbc|Demon Shade:}} While below {{as|{{sti|health|{{pp|250 to 590}} {{as|(+ 250% AP)}} health}}}}, '''Evelynn''' {{sti|healing|restores}} {{as|{{sti|health|{{pp|15 to 75}} health}}}} every second. From level 6 onward, ''Demon Shade'' also grants {{tip|camouflage}}."
             ],
             "effect_radius": "{{tt|700|Range required to see Evelynn}}",
+            "flavorsound": "{{sm2|Evelynn.enterDemonShade04.ogg|''\"It's better in the dark.\"''}}",
             "icon": [
                 "Demon Shade.png"
             ],
@@ -129,8 +129,8 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Dart:}} '''Evelynn''' flourishes her lashers, launching a dart in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit. Hitting a [[monster]] [[Cooldown_reduction#Percentage_reduction|refunds]] 60% of the {{sti|cooldown}}.",
-                "For the next 4 seconds the enemy hit takes {{as|'''bonus''' magic damage}} from her next 3 [[basic attack]]s or abilities.",
+                "{{sbc|Dart:}} '''Evelynn''' flourishes her lashers, launching a dart in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit. Hitting a {{tip|monster}} refunds {{sti|cdr|60%}} of the cooldown.",
+                "For the next 4 seconds, the enemy hit takes {{as|'''bonus''' magic damage}} from her next 3 [[basic attack]]s or abilities.",
                 "''Hate Spike'' may be re-activated up to 3 times at no cost until the ability comes off cooldown.",
                 "{{sbc|Spikes:}} '''Evelynn''' projects a line of spikes in the direction of her attack target, dealing {{as|magic damage}} to all enemies struck. ''Hate Spike'' will first prioritize '''Evelynn's''' attack target, then the nearest enemy champion."
             ],
@@ -205,8 +205,9 @@
                 "{{sbc|Active:}} '''Evelynn''' ''curses'' the target champion or monster for 5 seconds.",
                 "'''Evelynn's''' next basic attack or ability against the ''accursed'' ''expunges'' them, {{tip|slow|slowing}} them by 65%.",
                 "''Expunging'' a target will refund ''Allure's'' {{as|{{sti|mana|mana cost}}}}. If the target is ''cursed'' for at least {{fd|2.5}} seconds she also {{tip|charm|charms}} them, as well as applying additional effects based on the target type.",
-                "Against champions, the ''expunge'' also {{sti|magic penetration|reduces}} their {{as|magic resistance}} for 4 seconds.<br>Against monsters, the ''expunge'' deals {{as|'''bonus''' magic damage}} and the {{tip|charm}} lasts for 2 more seconds."
+                "Against {{tip|champions}}, the ''expunge'' also {{sti|magic penetration|reduces}} their {{as|magic resistance}} for 4 seconds.<br>Against {{tip|monsters}}, the ''expunge'' deals {{as|'''bonus''' magic damage}} and the {{tip|charm}} lasts for 2 more seconds."
             ],
+            "flavorsound": "{{sm2|Evelynn.castAllure03.ogg|''\"Go on, touch me.\"''}}",
             "icon": [
                 "Allure.png"
             ],
@@ -228,7 +229,7 @@
             "targeting": "Unit"
         },
         "e1": {
-            "key": "E",
+            "key": "E1",
             "id": "EvelynnE",
             "riotName": "Whiplash",
             "maxrank": 5,
@@ -270,25 +271,85 @@
             "description": [
                 "{{sbc|Active:}} '''Evelynn''' whips the target enemy with her lashers, applying [[on-hit effects]] and dealing {{as|magic damage}}.",
                 "'''Evelynn''' also gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds.",
-                "Gaining {{ai|Demon Shade|Evelynn}} resets ''Whiplash's'' {{sti|cooldown}} and empowers the next cast.",
-                "{{sbc|{{ai|Empowered Whiplash|Evelynn|Empowered Active}}:}} '''Evelynn''' {{tip|dash|dashes}} toward the target enemy, dealing increased damage as well as damaging all enemies she passes through. ''On-hit effects are only applied to her target.''",
-                "''The {{as|percent health}} ratio deals a minimum of 25 damage and is capped at 450 against monsters.''"
+                "Gaining {{ai|Demon Shade|Evelynn}} resets ''Whiplash's'' {{sti|cooldown}} and {{ai|Empowered Whiplash|Evelynn|empowers}} the next cast."
             ],
             "grounded": true,
             "icon": [
                 "Whiplash.png",
-                "Whiplash 2.png",
-                "Empowered Whiplash.png"
+                "Whiplash 2.png"
             ],
             "knockdown": true,
             "leveling": [
-                "{{st|Magic Damage|{{ap|55 to 115}} {{as|(+ 3% {{as|(+ {{fd|1.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}",
-                "{{st|Empowered Damage|{{ap|75 to 175}} {{as|(+ 4% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
+                "{{st|Magic Damage|{{ap|55 to 115}} {{as|(+ 3% {{as|(+ {{fd|1.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
             ],
             "name": "Whiplash",
             "notes": [
                 "* ''Whiplash'' applies both {{tip|single target}} and {{tip|on-hit}} effects.",
-                "** The damage dealt by the ability itself is classified as ability damage, and will not apply [[life steal]]. Effects such as the on-hit physical damage from {{ii|Blade of the Ruined King}} will apply life steal to its own damage when inflicted by Whiplash.",
+                "** The damage dealt by the ability itself is classified as ability damage, and will not apply [[life steal]]. Effects such as the on-hit physical damage from {{ii|Blade of the Ruined King}} will apply life steal to its own damage when inflicted by ''Whiplash''."
+            ],
+            "onhiteffects": true,
+            "parry": true,
+            "projectile": false,
+            "skill": "E",
+            "spelleffects": "Special",
+            "spellshield": true,
+            "target_range": 210,
+            "targeting": "Unit"
+        },
+        "e2": {
+            "key": "E2",
+            "id": "EvelynnE",
+            "riotName": "Whiplash",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "EvelynnE.png",
+                "sprite": "spell2.png",
+                "group": "spell",
+                "x": 384,
+                "y": 144,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Enemies",
+            "blurb": "",
+            "callforhelp": true,
+            "champion": "Evelynn",
+            "cooldown": [
+                8,
+                8,
+                8,
+                8,
+                8
+            ],
+            "cooldownBurn": "8",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "Magic",
+            "damageTypes": [
+                "magic"
+            ],
+            "description": [
+                "{{sbc|Active:}} '''Evelynn''' {{tip|dash|dashes}} toward the target enemy, dealing increased damage as well as damaging all enemies she passes through. ''On-hit effects are only applied to her target.''",
+                "''The {{as|percent health}} ratio deals a minimum of 25 damage and is capped at 450 against monsters.''"
+            ],
+            "grounded": true,
+            "icon": [
+                "Empowered Whiplash.png"
+            ],
+            "knockdown": true,
+            "leveling": [
+                "{{st|Empowered Damage|{{ap|75 to 175}} {{as|(+ 4% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
+            ],
+            "name": "Empowered Whiplash",
+            "notes": [
                 "* ''Empowered Whiplash'' applies {{tip|AoE}} effects to secondary targets, but still applies {{tip|single target}} effects to her target.",
                 "* There is no time-out period on ''Empowered Whiplash''."
             ],
@@ -298,7 +359,6 @@
             "skill": "E",
             "spelleffects": "Special",
             "spellshield": true,
-            "target_range": 210,
             "targeting": "Unit"
         },
         "r1": {

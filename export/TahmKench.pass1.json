@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "TahmKench",
   "key": "223",
   "name": "Tahm Kench",
@@ -235,7 +234,7 @@
     "id": "TahmKenchW",
     "name": "Devour",
     "description": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
-    "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e7 }} (+{{ e3 }}%) of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding any champion, Tahm Kench is slowed by 95% and grounded.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown and mana cost are refunded.</span></rules>",
+    "tooltip": "Devour a target for {{ e1 }}s (half that for enemy champions.) Enemies are dealt {{ e7 }} (+{{ e3 }}%) <scaleAP>(+{{ a1 }}%)</scaleAP> of their maximum health as magic damage (maximum of {{ e2 }} against neutral monsters).<br /><br /><spellPassive>Enemy Champions:</spellPassive> Requires 3 stacks of An Acquired Taste to be devoured. While holding any champion, Tahm Kench is slowed by 95% and grounded.<br /><br /><spellPassive>Minions and Monsters:</spellPassive> Reactivate to spit them, dealing {{ e7 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage to targets hit.<br /><br /><rules><span class=\"color8c8c8c\">When used on an enemy, half of Devour's cooldown and mana cost are refunded.</span></rules>",
     "leveltip": {
       "label": [
         "Base Damage",
@@ -355,6 +354,11 @@
       "0"
     ],
     "vars": [
+      {
+        "link": "spelldamage",
+        "coeff": 0.02,
+        "key": "a1"
+      },
       {
         "link": "spelldamage",
         "coeff": 0.6,
@@ -2650,7 +2654,7 @@
     "skill": "W",
     "icon": "Devour.png",
     "blurb": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
-    "description": "{{sbc|First Cast \u2013 Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
+    "description": "{{sbc|Active \u2013 Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
     "description2": "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks. If '''Tahm Kench''' swallows an allied or enemy champion, he is {{tip|ground|grounded}} and {{tip|slow|slowed}} by 95% for the duration. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}}, {{tip|nearsight|nearsights}} and makes them {{tip|untargetable}}.",
     "description3": "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}} and {{sti|mana|{{as|50% of the mana cost}}}}.",
     "description4": "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay.",
@@ -2671,9 +2675,9 @@
     "skill": "W",
     "blurb": "Tahm Kench devours a target, dealing a percentage of their maximum health as magic damage. He can spit devoured minions and monsters out as a skillshot that deals magic damage in an area upon impact.",
     "icon": "Regurgitate.png",
-    "description": "{{sbc|Second Cast \u2013 Regurgitate:}} '''Tahm Kench''' regurgitates the swallowed target. If they are an enemy, they are {{tip|stun|stunned}} for {{fd|0.25}} seconds and take {{as|magic damage}}, capped against monsters.",
+    "description": "{{sbc|Active \u2013 Regurgitate:}} '''Tahm Kench''' regurgitates the swallowed target. If they are an enemy, they are {{tip|stun|stunned}} for {{fd|0.25}} seconds and take {{as|magic damage}}, capped against monsters.",
     "leveling": "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ {{ap|5 to 13}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Maximum Monster Damage|{{ap|400 to 600}}}}",
-    "description2": "Minions and non-epic monsters are spat forth, stopping if they hit an enemy or terrain, and dealing {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' damage. Allied champions are also spat out stopping if they hit an enemy, while enemy champions are regurgitated in front of '''Tahm Kench'''.",
+    "description2": "Minions and non-epic monsters are spat forth, colliding at an enemy or terrain to deal {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' stun damage. Allied champions are also spat out stopping if they hit an enemy, while enemy champions are regurgitated in front of '''Tahm Kench'''.",
     "leveling2": "{{st|Projectile Damage|{{ap|100 to 240}} {{as|(+ 60% AP)}}}}",
     "target_range": 650,
     "targeting": "Direction",
@@ -2772,7 +2776,7 @@
     "resource": "Mana",
     "date": "2015-07-09",
     "patch": "V5.13",
-    "changes": "9.9.1",
+    "changes": "9.10.1",
     "role": "Warden",
     "damage": 2,
     "toughness": 3,

@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "Janna",
   "key": "40",
   "name": "Janna",
@@ -284,24 +283,26 @@
         "Passive Movement Speed",
         "Damage",
         "Slow Amount",
-        "Mana Cost"
+        "Mana Cost",
+        "Cooldown"
       ],
       "effect": [
         "{{ e1 }}% -> {{ e1NL }}%",
         "{{ e2 }} -> {{ e2NL }} ",
         "{{ e3 }}% -> {{ e3NL }}%",
-        "{{ cost }} -> {{ costNL }}"
+        "{{ cost }} -> {{ costNL }}",
+        "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
       8,
-      8,
-      8,
-      8,
-      8
+      7.5,
+      7,
+      6.5,
+      6
     ],
-    "cooldownBurn": "8",
+    "cooldownBurn": "8/7.5/7/6.5/6",
     "cost": [
       50,
       60,
@@ -322,10 +323,10 @@
       ],
       [
         55,
-        100,
-        145,
-        190,
-        235
+        90,
+        125,
+        160,
+        195
       ],
       [
         24,
@@ -387,7 +388,7 @@
     "effectBurn": [
       null,
       "6/7/8/9/10",
-      "55/100/145/190/235",
+      "55/90/125/160/195",
       "24/28/32/36/40",
       "2",
       "0",
@@ -439,7 +440,7 @@
     "id": "EyeOfTheStorm",
     "name": "Eye Of The Storm",
     "description": "Janna conjures a defensive gale that shields an ally champion or turret from incoming damage and increases their Attack Damage.",
-    "tooltip": "Grants an allied champion or turret a shield that decays over {{ e3 }} seconds. The shield absorbs up to {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> damage and grants {{ e2 }} <span class=\"color99FF99\">(+{{ a2 }})</span> attack damage until it is fully depleted.",
+    "tooltip": "Grants an allied champion or turret a shield that decays over {{ e3 }} seconds. The shield absorbs up to {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> damage and grants {{ e2 }} <span class=\"color99FF99\">(+{{ a2 }})</span> attack damage until it is fully depleted.<br /><br /><rules>Each Janna ability that slows or knocks an enemy champion airborne will reduce Eye of the Storm's cooldown by {{ ecdrefundforcc*100 }}%.",
     "leveltip": {
       "label": [
         "Shield Health",
@@ -448,7 +449,7 @@
         "Mana Cost"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }} ",
+        "{{ e1 }} -> {{ e1NL }}",
         "{{ e2 }} -> {{ e2NL }}",
         "{{ cooldown }} -> {{ cooldownNL }}",
         "{{ cost }} -> {{ costNL }}"
@@ -456,13 +457,13 @@
     },
     "maxrank": 5,
     "cooldown": [
-      18,
       16,
+      15,
       14,
-      12,
-      10
+      13,
+      12
     ],
-    "cooldownBurn": "18/16/14/12/10",
+    "cooldownBurn": "16/15/14/13/12",
     "cost": [
       70,
       80,
@@ -475,11 +476,11 @@
     "effect": [
       null,
       [
-        70,
-        105,
-        140,
-        175,
-        210
+        80,
+        115,
+        150,
+        185,
+        220
       ],
       [
         10,
@@ -547,7 +548,7 @@
     ],
     "effectBurn": [
       null,
-      "70/105/140/175/210",
+      "80/115/150/185/220",
       "10/17.5/25/32.5/40",
       "5",
       "0.75",
@@ -2551,7 +2552,7 @@
     "effect_radius": 1250,
     "targeting": "Passive",
     "affects": "Self",
-    "notes": "\n* Considering '''Janna's''' base movement speed of {{data Janna|pst2|ms}}, she actually has a starting movement speed of {{tt|{{fd|{{#expr:{{data Janna|pst2|ms}}*1.08}}}}|315{{times}}1.08}} thus granting {{pp|2|{{data Janna|pst2|ms}}*0.08*0.25;{{data Janna|pst2|ms}}*0.08*0.35|1;10}} bonus on-hit magic damage."
+    "notes": "\n* Considering '''Janna's''' base movement speed of {{data Janna|pst2|ms}}, she actually has a starting movement speed of {{tt|{{fd|{{#expr:{{data Janna|pst2|ms}}*1.08}}}}|{{data Janna|pst2|ms}}{{times}}1.08}} thus granting {{pp|2|{{data Janna|pst2|ms}}*0.08*0.25;{{data Janna|pst2|ms}}*0.08*0.35|1;10}} bonus on-hit magic damage."
   },
   "wikia_skill_q1": {
     "name": "Howling Gale",
@@ -2586,8 +2587,8 @@
     "description": "{{sbc|Passive:}} While ''Zephyr'' is not on cooldown, '''Janna''' is aided by an air elemental who {{tip|ghosted|ghosts}} her and grants her {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
     "leveling": "{{st|Bonus Movement Speed|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}}}}",
     "description2": "{{sbc|Active:}} '''Janna''' commands her air elemental to attack the target enemy, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them for 2 seconds by an amount, capped at a maximum of 99%.",
-    "leveling2": "{{st|Magic Damage|{{ap|55 to 235}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
-    "cooldown": 8,
+    "leveling2": "{{st|Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}} {{as|(+ {{pp|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
+    "cooldown": "{{ap|8 to 6}}",
     "cost": "{{ap|50 to 90}}",
     "costtype": "mana",
     "target_range": "{{tip|er|550}}",
@@ -2608,12 +2609,13 @@
     "icon": "Eye of the Storm.png",
     "blurb": "Janna conjures a defensive gale that shields an ally champion or turret from incoming damage and increases their Attack Damage.",
     "description": "{{sbc|Active:}} '''Janna''' {{tip|shields}} the target allied champion or herself for 5 seconds, decaying over the duration after {{fd|0.75}} seconds.",
-    "leveling": "{{st|Shield Strength|{{ap|70|105|140|175|210}} {{as|(+ 70% AP)}}}}",
+    "leveling": "{{st|Shield Strength|{{ap|80 to 220}} {{as|(+ 70% AP)}}}}",
     "description2": "While the shield holds, her target gains {{as|'''bonus''' attack damage}}.",
-    "leveling2": "{{st|Bonus AD|{{as|{{ap|10|17.5|25|32.5|40}} {{as|(+ 10% AP)}}|AD}}}}",
-    "description3": "''Eye of the Storm'' can be used on turrets, causing '''Janna''' to be credited for any kills it earns while the shield holds.",
-    "cooldown": "{{ap|18|16|14|12|10}}",
-    "cost": "{{ap|70|80|90|100|110}}",
+    "leveling2": "{{st|Bonus AD|{{as|{{ap|10 to 40}} {{as|(+ 10% AP)}}|AD}}}}",
+    "description3": "Each ability that {{tip|slow|slows}} or {{tip|airborne|knocks}} an enemy champion airborne reduces ''Eye of the Storm's'' cooldown by 20%, up to once per ability cast.",
+    "description4": "''Eye of the Storm'' can be used on turrets, causing '''Janna''' to be credited for any champion kills it earns while the shield holds.",
+    "cooldown": "{{ap|16 to 12}}",
+    "cost": "{{ap|70 to 110}}",
     "costtype": "mana",
     "target_range": 800,
     "targeting": "Unit, Self",
@@ -2673,7 +2675,7 @@
     "rangetype": "Ranged",
     "date": "2009-09-02",
     "patch": "V0.9.22.16",
-    "changes": "8.19.1",
+    "changes": "9.11.1",
     "role": "Enchanter",
     "damage": 1,
     "toughness": 1,

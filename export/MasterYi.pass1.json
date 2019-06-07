@@ -1,5 +1,4 @@
 {
-  "api_version": "9.10.1",
   "id": "MasterYi",
   "key": "11",
   "name": "Master Yi",
@@ -118,7 +117,7 @@
     "attackdamage": 66,
     "attackdamageperlevel": 3,
     "attackspeedperlevel": 2,
-    "attackspeed": 0.733
+    "attackspeed": 0.679
   },
   "riot_spell_q": {
     "id": "AlphaStrike",
@@ -2904,6 +2903,7 @@
     "notes": "\n* The fourth attack that triggers ''Double Strike'' will both reset the counter and add a stack for the next ''Double Strike'' activation.\n** The next ''Double Strikes'' will happen at every third basic attack because of this."
   },
   "wikia_skill_q1": {
+    "_preamble": "\n<!--Edit this value to update the entire ability description\n-->{{#vardefine:r|100}}<!--Primary Damage Ratio\n-->{{#vardefine:b1|25}}<!--Primary Base Rank 1 Damage\n-->{{#vardefine:b5|165}}<!--Primary Base Rank 5 Damage\n-->{{#vardefine:m1|75}}<!--Monster Rank 1 Damage\n-->{{#vardefine:m5|175}}<!--Monster Rank 5 Damage\n-->{{#vardefine:l|25}}<!--Master Yi's Lesser % Damage",
     "name": "Alpha Strike",
     "champion": "Master Yi",
     "skill": "Q",
@@ -2911,10 +2911,10 @@
     "blurb": "Master Yi teleports across the battlefield with blinding speed, dealing physical damage to multiple units in his path, while simultaneously becoming untargetable. Alpha Strike can critically strike and deals bonus physical damage to minions and monsters. Basic attacks reduce Alpha Strike's cooldown.",
     "description": "{{sbc|Active:}} '''Master Yi''' {{tip|vanish|vanishes}} and, after {{fd|0.225}} seconds, marks his target and then moves to mark the nearest {{tip|sight|visible}} un-marked enemy within 600 units, recurring up to 3 times, once every {{fd|0.225}} seconds.",
     "description2": "Upon finishing marking, or if there're no other enemies in range, he {{tip|blink|re-appears}} after a {{fd|0.15}} second delay in front of his target and deals {{as|physical damage}} to all marked enemies, increased against [[monster]]s. If his target dies during the delay, he will reappear at the cast location instead.",
-    "leveling2": "{{st|Physical Damage|{{ap|25 to 165}} {{as|(+ 100% AD)}}|Monster Damage|{{ap|25+75 to 165+175}} {{as|(+ 100% AD)}}|Monster Bonus Damage|{{ap|75 to 175}}}}",
-    "description3": "If there are no other un-marked enemies in range, he may strike the same enemies again, dealing 25% damage instantly.",
-    "leveling3": "{{st|Reduced Damage|{{ap|25*0.25 to 165*0.25}} {{as|(+ 25% AD)}}|Reduced Monster Damage|{{ap|(25+75)*0.25 to (165+175)*0.25}} {{as|(+ 25% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|25*1.75 to 165*1.75}} {{as|(+ 175% AD)}}|Max Monster Single-Target Damage|{{ap|(25+75)*1.75 to (165+175)*1.75}} {{as|(+ 175% AD)}}}}",
-    "description4": "Each enemy struck has a {{tip|critical strike|chance}} to take {{as|60% {{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} from the primary damage, and {{as|15% {{critical damage|15|melee}} AD}} {{as|'''bonus''' physical damage}} from the lesser ones.",
+    "leveling2": "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Bonus Damage|{{ap|{{#var:m1}} to {{#var:m5}}}}}}",
+    "description3": "If there are no other un-marked enemies in range, he may strike the same enemies again, dealing {{fd|{{#var:l}}}}% damage instantly.",
+    "leveling3": "{{st|Reduced Damage|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Reduced Monster Damage|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}",
+    "description4": "Each enemy struck has a {{tip|critical strike|chance}} to take {{as|60% {{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} from the primary damage, and {{as|{{ap|60*{{#var:l}}/100}}% {{critical damage|{{#expr:60*{{#var:l}}/100}}|melee}} AD}} {{as|'''bonus''' physical damage}} from the lesser ones.",
     "description5": "Basic attacks reduce ''Alpha Strike's'' {{stil|cooldown}} by 1 second.",
     "target_range": 600,
     "effect_radius": 600,
@@ -2928,7 +2928,7 @@
     "spellshield": true,
     "grounded": true,
     "knockdown": false,
-    "notes": "\n* ''Alpha Strike's'' cooldown reduction applies on structures but not when ''Master Yi'' is {{tip|blind|blinded}}.\n* ''Master Yi'' can use [[summoner spell]]s during ''Alpha Strike''.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} around it. It will always grant vision around the primary target even if he doesn't bounce off it. This vision will not reveal [[brush|brushes]].\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* If the primary target is a champion, '''Master Yi''' will basic attack that champion when ''Alpha Strike'' finishes, but he cannot buffer ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}''.\n* If the primary target is a minon or monster, '''Master Yi''' can buffer either ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}'', but he will not automatically basic attack the target.\n* ''Master Yi'' will follow his primary target's movement even if it {{tip|vanish|vanishes}} or becomes {{tip|invisibility|invisible}}.\n* ''Alpha Strike'' applies damage after '''Master Yi''' leaves {{tip|untargetable|untargetability}} and thus can attract turret aggro.\n* ''Alpha Strike'' counts as movement for the purposes of {{nie|Energized Strike}}, {{nie|Dreadnought}} and {{nie|Echo}}."
+    "notes": "\n* ''Alpha Strike's'' cooldown reduction applies on structures but not when ''Master Yi'' is {{tip|blind|blinded}}.\n* ''Master Yi'' can use [[summoner spell]]s during ''Alpha Strike''.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} around it. It will always grant vision around the primary target even if he doesn't bounce off it. This vision will not reveal [[brush|brushes]].\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* If the target becomes {{tip|untargetable}} during ''Alpha Strike's'' cast, ''Alpha Strike'' will not end, but will instead last as if it had kept bouncing around targets.\n* '''Master Yi''' will follow his primary target's movement even if it {{tip|vanish|vanishes}} or becomes {{tip|invisibility|invisible}}.\n* ''Alpha Strike's'' primary damage applies after '''Master Yi''' leaves {{tip|untargetable|untargetability}} and thus can attract turret aggro.\n* ''Alpha Strike'' counts as movement for the purposes of {{nie|Energized Strike}}, {{nie|Dreadnought}} and {{nie|Echo}}.\n* If the primary target is a champion, '''Master Yi''' will basic attack that champion when ''Alpha Strike'' finishes, but he cannot buffer ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}''.\n* If the primary target is a minon or monster, '''Master Yi''' can buffer either ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}'', but he will not automatically basic attack the target."
   },
   "wikia_skill_w1": {
     "name": "Meditate",
@@ -2996,8 +2996,6 @@
     "hp5_base": 7.5,
     "mp5_base": 7.256,
     "as_lvl": 2,
-    "as_lvl1": 0.733,
-    "as_lvl1_bonus": 8,
     "dam_lvl": 3,
     "arm_lvl": 3,
     "mr_lvl": 1.25,
@@ -3012,7 +3010,7 @@
     "rangetype": "Melee",
     "date": "2009-02-21",
     "patch": "Alpha Week 2",
-    "changes": "9.10.1",
+    "changes": "9.11.1",
     "role": "Skirmisher",
     "damage": 3,
     "toughness": 1,

@@ -1,5 +1,4 @@
 {
-    "api_version": "9.9.1",
     "patch": "V1.0.0.110",
     "changes": "9.6.1",
     "id": "Karma",
@@ -77,7 +76,7 @@
             "targeting": "Passive"
         },
         "q1": {
-            "key": "Q",
+            "key": "Q1",
             "id": "KarmaQ",
             "riotName": "Inner Flame",
             "maxrank": 5,
@@ -116,26 +115,20 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Karma''' fires a burst of spiritual energy in the target direction, detonating with the first enemy hit, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies around the target by 25% for {{ap|1.5}} seconds.",
-                "{{sbc|{{ai|Mantra|Karma}} - Soulflare:}} ''Inner Flame'' detonates upon hitting an enemy or reaching maximum range, dealing {{as|'''bonus''' magic damage}} in an increased area.",
-                "An area lingers around the detonation for {{fd|1.5}} seconds, {{tip|slow|slowing}} all enemies inside by 50%, after which it explodes, dealing {{as|magic damage}} to all enemies inside.",
-                "{{ai|Soulflare|Karma}} scales with {{ais|Mantra|Karma}} rank."
+                "{{sbc|Active:}} '''Karma''' fires a burst of spiritual energy in the target direction, detonating with the first enemy hit, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies around the target by 25% for {{ap|1.5}} seconds."
             ],
-            "effect_radius": "{{tt|280|Inner Flame splash radius}}",
+            "effect_radius": 280,
             "grounded": false,
             "icon": [
-                "Inner Flame.png",
-                "Soulflare.png"
+                "Inner Flame.png"
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Magic Damage|{{ap|80|125|170|215|260}} {{as|(+ 60% AP)}}}}",
-                "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25|75|125|175}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|25|75|125|175}}}}) {{as|(+ 90% AP)}}}}",
-                "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35|140|245|350}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|60|215|370|525}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|60|215|370|525}}}}) {{as|(+ 150% AP)}}}}"
+                "{{st|Magic Damage|{{ap|80|125|170|215|260}} {{as|(+ 60% AP)}}}}"
             ],
             "name": "Inner Flame",
             "notes": [
-                "* {{tip|Spell shield}} will block the initial impact from either ability but will not block ''Soulflare's'' delayed damage."
+                "* {{tip|Spell shield}} will block the initial impact from ''Inner Flame''."
             ],
             "projectile": true,
             "skill": "Q",
@@ -144,8 +137,71 @@
             "target_range": 950,
             "targeting": "Direction"
         },
+        "q2": {
+            "key": "Q2",
+            "id": "KarmaQ",
+            "riotName": "Inner Flame",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "KarmaQ.png",
+                "sprite": "spell5.png",
+                "group": "spell",
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Enemies",
+            "blurb": "",
+            "champion": "Karma",
+            "cooldown": [
+                7,
+                6.5,
+                6,
+                5.5,
+                5
+            ],
+            "cooldownBurn": "7/6.5/6/5.5/5",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "Magic",
+            "damageTypes": [
+                "magic"
+            ],
+            "description": [
+                "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inner Flame'' detonates upon hitting an enemy or reaching maximum range, dealing {{as|'''bonus''' magic damage}} in an increased area.",
+                "An area lingers around the detonation for {{fd|1.5}} seconds, {{tip|slow|slowing}} all enemies inside by 50%, after which it explodes, dealing {{as|magic damage}} to all enemies inside.",
+                "''Soulflare'' scales with {{ais|Mantra|Karma}} rank."
+            ],
+            "grounded": false,
+            "icon": [
+                "Soulflare.png"
+            ],
+            "knockdown": false,
+            "leveling": [
+                "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25|75|125|175}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|25|75|125|175}}}}) {{as|(+ 90% AP)}}}}",
+                "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35|140|245|350}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|60|215|370|525}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|60|215|370|525}}}}) {{as|(+ 150% AP)}}}}"
+            ],
+            "name": "Soulflare",
+            "notes": [
+                "* {{tip|Spell shield}} will block the initial impact from either ability but will not block ''Soulflare's'' delayed damage."
+            ],
+            "projectile": true,
+            "skill": "Q",
+            "spelleffects": "Area of effect",
+            "spellshield": "Special",
+            "targeting": "Direction"
+        },
         "w1": {
-            "key": "W",
+            "key": "W1",
             "id": "KarmaSpiritBind",
             "riotName": "Focused Resolve",
             "maxrank": 5,
@@ -186,20 +242,16 @@
             ],
             "description": [
                 "{{sbc|Active:}} '''Karma''' exerts her will over a target enemy champion or [[monster]], dealing {{as|magic damage}} and forming a tether between them for up to 2 seconds, during which the target is {{tip|true sight|revealed}}.",
-                "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and is {{tip|root|rooted}} for a short duration.",
-                "{{sbc|{{ai|Mantra|Karma}} - Renewal:}} ''Focused Resolve's'' {{tip|root}} duration is increased, and {{tip|heal|heals}} '''Karma''' for {{sti|health|{{as|20% {{as|(+ 1% per 100 AP)}} of '''missing''' health}}}} on-cast and once more when the target {{tip|takedown|dies}} while tethered or is {{tip|root|rooted}}.",
-                "{{ai|Renewal|Karma}} scales with {{ais|Mantra|Karma}} rank."
+                "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and is {{tip|root|rooted}} for a short duration."
             ],
             "grounded": false,
             "icon": [
-                "Focused Resolve.png",
-                "Renewal.png"
+                "Focused Resolve.png"
             ],
             "knockdown": false,
             "leveling": [
                 "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 45% AP)}}}}",
-                "{{st|Total Magic Damage|{{ap|30*2 to 130*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}",
-                "{{st|Total Root Duration|{{ap|1.4 to 2}} (+ {{ai|Mantra|Karma|{{ap|0.5 to 1.25 4}}}})}}"
+                "{{st|Total Magic Damage|{{ap|30*2 to 130*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}"
             ],
             "name": "Focused Resolve",
             "notes": [
@@ -213,8 +265,70 @@
             "targeting": "Unit",
             "tether_radius": 1000
         },
+        "w2": {
+            "key": "W2",
+            "id": "KarmaSpiritBind",
+            "riotName": "Focused Resolve",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "KarmaSpiritBind.png",
+                "sprite": "spell5.png",
+                "group": "spell",
+                "x": 144,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Enemies / Self",
+            "blurb": "",
+            "callforhelp": true,
+            "champion": "Karma",
+            "cooldown": [
+                12,
+                12,
+                12,
+                12,
+                12
+            ],
+            "cooldownBurn": "12",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "Magic",
+            "damageTypes": [
+                "magic"
+            ],
+            "description": [
+                "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Focused Resolve's'' {{tip|root}} duration is increased, and {{tip|heal|heals}} '''Karma''' for {{sti|health|{{as|20% {{as|(+ 1% per 100 AP)}} of '''missing''' health}}}} on-cast and once more when the target {{tip|takedown|dies}} while tethered or is {{tip|root|rooted}}.",
+                "''Renewal'' scales with {{ais|Mantra|Karma}} rank."
+            ],
+            "grounded": false,
+            "icon": [
+                "Renewal.png"
+            ],
+            "knockdown": false,
+            "leveling": [
+                "{{st|Total Root Duration|{{ap|1.4 to 2}} (+ {{ai|Mantra|Karma|{{ap|0.5 to 1.25 4}}}})}}"
+            ],
+            "name": "Renewal",
+            "notes": [
+                "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one."
+            ],
+            "projectile": false,
+            "skill": "W",
+            "spelleffects": "DOT",
+            "spellshield": "Special",
+            "targeting": "Unit"
+        },
         "e1": {
-            "key": "E",
+            "key": "E1",
             "id": "KarmaSolKimShield",
             "riotName": "Inspire",
             "maxrank": 5,
@@ -253,26 +367,79 @@
                 "none"
             ],
             "description": [
-                "{{sbc|Active:}} '''Karma''' {{tip|shield|shields}} the target allied [[champion]] or herself for {{fd|2.5}} seconds, granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds.",
-                "{{sbc|{{ai|Mantra|Karma}} - Defiance:}} ''Inspire's'' shield is increased. Allied champions near the target are shielded for 30% of the target's shield and gain the same {{sti|ms|{{as|'''bonus''' movement speed}}}}, both for their same durations.",
-                "{{ai|Defiance|Karma}} scales with {{ais|Mantra|Karma}} rank."
+                "{{sbc|Active:}} '''Karma''' {{tip|shield|shields}} the target allied [[champion]] or herself for {{fd|2.5}} seconds, granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds."
             ],
             "effect_radius": 600,
             "icon": [
-                "Inspire.png",
-                "Defiance.png"
+                "Inspire.png"
             ],
             "leveling": [
-                "{{st|Shield|{{ap|70 to 170}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}",
-                "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|30 to 210 4}}}} {{as|(+ 60% AP)}}|Total Target Shield|{{ap|70 to 170}} (+ {{ai|Mantra|Karma|{{ap|30 to 210 4}}}}) {{as|(+ 110% AP)}}|Allies' Shields|{{ap|70*0.3 to 170*0.3}} (+ {{ai|Mantra|Karma|{{ap|30*0.3 to 210*0.3 4}}}}) {{as|(+ 33% AP)}}}}"
+                "{{st|Shield|{{ap|70 to 170}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}"
             ],
             "name": "Inspire",
             "notes": [
-                "* ''Inspire'' / ''Defiance'' has no cast time and does not interrupt ''Karma's'' previous orders."
+                "* ''Inspire'' has no cast time and does not interrupt ''Karma's'' previous orders."
             ],
             "skill": "E",
             "spelleffects": "Shield",
             "target_range": 800,
+            "targeting": "Unit"
+        },
+        "e2": {
+            "key": "E2",
+            "id": "KarmaSolKimShield",
+            "riotName": "Inspire",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "KarmaSolKimShield.png",
+                "sprite": "spell5.png",
+                "group": "spell",
+                "x": 192,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Allies",
+            "blurb": "",
+            "champion": "Karma",
+            "cooldown": [
+                10,
+                9.5,
+                9,
+                8.5,
+                8
+            ],
+            "cooldownBurn": "10/9.5/9/8.5/8",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "Mana",
+            "damagetype": "None",
+            "damageTypes": [
+                "none"
+            ],
+            "description": [
+                "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inspire's'' shield is increased. Allied champions near the target are shielded for 30% of the target's shield and gain the same {{sti|ms|{{as|'''bonus''' movement speed}}}}, both for their same durations.",
+                "''Defiance'' scales with {{ais|Mantra|Karma}} rank."
+            ],
+            "icon": [
+                "Defiance.png"
+            ],
+            "leveling": [
+                "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|30 to 210 4}}}} {{as|(+ 60% AP)}}|Total Target Shield|{{ap|70 to 170}} (+ {{ai|Mantra|Karma|{{ap|30 to 210 4}}}}) {{as|(+ 110% AP)}}|Allies' Shields|{{ap|70*0.3 to 170*0.3}} (+ {{ai|Mantra|Karma|{{ap|30*0.3 to 210*0.3 4}}}}) {{as|(+ 33% AP)}}}}"
+            ],
+            "name": "Defiance",
+            "notes": [
+                "* ''Defiance'' has no cast time and does not interrupt ''Karma's'' previous orders."
+            ],
+            "skill": "E",
+            "spelleffects": "Shield",
             "targeting": "Unit"
         },
         "r1": {

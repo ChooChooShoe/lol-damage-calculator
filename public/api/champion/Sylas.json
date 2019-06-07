@@ -1,5 +1,4 @@
 {
-    "api_version": "9.9.1",
     "patch": "V9.2",
     "changes": "9.9.1",
     "id": "Sylas",
@@ -61,8 +60,9 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Innate:}} After casting an ability, '''Sylas'''' next basic attack within 4 seconds is modified to whirl his chains around him, dealing {{pp|5 to 48|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies."
+                "{{sbc|Innate:}} After casting an ability, '''Sylas'''' next basic attack within 4 seconds is modified to whirl his chains around him, dealing {{pp|5 to 47.5|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies."
             ],
+            "effect_radius": 400,
             "grounded": false,
             "icon": [
                 "Petricite Burst.png"
@@ -218,7 +218,7 @@
             "targeting": "Unit"
         },
         "e1": {
-            "key": "E",
+            "key": "E1",
             "id": "SylasE",
             "riotName": "Abscond / Abduct",
             "maxrank": 5,
@@ -257,21 +257,18 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|First Cast - Abscond:}} '''Sylas''' {{tip|dash|dashes}} forward to the target location, {{sti|shield|link=true|shielding}} himself for 2 seconds and resetting his basic attack timer.",
-                "For the next {{fd|3.5}} seconds, '''Sylas''' may cast ''Abduct''.",
-                "{{sbc|Second Cast - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.5}} seconds upon arrival."
+                "{{sbc|Active - Abscond:}} '''Sylas''' {{tip|dash|dashes}} forward to the target location, {{sti|shield|link=true|shielding}} himself for 2 seconds and resetting his basic attack timer.",
+                "For the next {{fd|3.5}} seconds, '''Sylas''' may cast {{ai|Abduct|Sylas}}."
             ],
             "grounded": true,
             "icon": [
-                "Abscond.png",
-                "Abduct.png"
+                "Abscond.png"
             ],
             "knockdown": true,
             "leveling": [
-                "{{st|Shield|{{ap|60 to 180}} {{as|(+ 90% AP)}}}}",
-                "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}"
+                "{{st|Shield|{{ap|60 to 180}} {{as|(+ 90% AP)}}}}"
             ],
-            "name": "Abscond / Abduct",
+            "name": "Abscond",
             "notes": [
                 "* No additional details"
             ],
@@ -281,7 +278,70 @@
             "skill": "E",
             "spelleffects": "Single target",
             "spellshield": true,
-            "target_range": "{{tt|400|Abscond}} / {{tt|800|Abduct (estimated)}}",
+            "target_range": 400,
+            "targeting": "Direction"
+        },
+        "e2": {
+            "key": "E2",
+            "id": "SylasE",
+            "riotName": "Abscond / Abduct",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "SylasE.png",
+                "sprite": "spell11.png",
+                "group": "spell",
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Self, Enemies",
+            "blurb": "",
+            "champion": "Sylas",
+            "cooldown": [
+                18,
+                16,
+                14,
+                12,
+                10
+            ],
+            "cooldownBurn": "18/16/14/12/10",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "Magic",
+            "damageTypes": [
+                "magic"
+            ],
+            "description": [
+                "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.5}} seconds upon arrival."
+            ],
+            "grounded": true,
+            "icon": [
+                "Abduct.png"
+            ],
+            "knockdown": true,
+            "leveling": [
+                "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}"
+            ],
+            "name": "Abduct",
+            "notes": [
+                "* No additional details"
+            ],
+            "occurrence": "",
+            "parry": false,
+            "projectile": true,
+            "skill": "E",
+            "spelleffects": "Single target",
+            "spellshield": true,
+            "target_range": "{{tt|800|Estimated}}",
             "targeting": "Direction"
         },
         "r1": {
@@ -348,6 +408,7 @@
                 "* {{cai|Noxian Guillotine|Darius}} - Does not gain {{ai|Hemorrhage|Darius}} and so the ultimate deals minimal damage.",
                 "* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but Vitals do not deal bonus damage.",
                 "* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.",
+                "* {{cai|Demacian Justice|Garen}} - No Villain is marked, as such it will only deal magic damage.",
                 "* {{cai|GNAR!|Gnar}} - Gains a usable ultimate even if Mini Gnar is targeted.",
                 "* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.",
                 "* {{cai|Leap of Faith|Illaoi}} - Spawns tentacles and can make them slam with {{ai|Kingslayer|Sylas}} but does not reduce its cooldown.",

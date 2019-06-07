@@ -1,5 +1,4 @@
 {
-  "api_version": "9.9.1",
   "id": "Kennen",
   "key": "85",
   "name": "Kennen",
@@ -565,7 +564,7 @@
     "id": "KennenShurikenStorm",
     "name": "Slicing Maelstrom",
     "description": "Kennen summons a storm that strikes at nearby enemy champions for magical damage.",
-    "tooltip": "Summons a magical storm for {{ e3 }} seconds that grants him {{ e5 }} Armor and Magic Resist and deals {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage to all enemies near Kennen every {{ e2 }} seconds. Each maelstrom hit applies Mark of the Storm, up to a maximum of 3.<br /><br />Successive maelstrom hits against the same enemy deal an additional {{ e4 }}% damage for each hit they've already suffered from this storm.",
+    "tooltip": "Summons a magical storm for {{ kennenrduration }} seconds that grants him {{ kennenrdefenses }} Armor and Magic Resist and deals {{ pertickdamagecalculated }} magic damage to all enemies near Kennen every {{ kennenrtickrate }} seconds. Each maelstrom hit applies Mark of the Storm, up to a maximum of 3.<br /><br />Successive maelstrom hits against the same enemy deal an additional {{ damageamp*100 }}% damage for each hit they've already suffered from this storm.",
     "leveltip": {
       "label": [
         "Damage",
@@ -573,9 +572,9 @@
         "Magic Resist Bonus"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e5 }} -> {{ e5NL }}",
-        "{{ e5 }} -> {{ e5NL }}"
+        "{{ basedamage }} -> {{ basedamageNL }}",
+        "{{ kennenrdefenses }} -> {{ kennenrdefensesNL }}",
+        "{{ kennenrdefenses }} -> {{ kennenrdefensesNL }}"
       ]
     },
     "maxrank": 3,
@@ -595,29 +594,29 @@
     "effect": [
       null,
       [
-        40,
-        75,
-        110
+        0,
+        0,
+        0
       ],
       [
-        0.5,
-        0.5,
-        0.5
+        0,
+        0,
+        0
       ],
       [
-        3,
-        3,
-        3
+        0,
+        0,
+        0
       ],
       [
-        10,
-        10,
-        10
+        0,
+        0,
+        0
       ],
       [
-        20,
-        40,
-        60
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -647,24 +646,18 @@
     ],
     "effectBurn": [
       null,
-      "40/75/110",
-      "0.5",
-      "3",
-      "10",
-      "20/40/60",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.2,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [

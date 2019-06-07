@@ -1,5 +1,4 @@
 {
-    "api_version": "9.9.1",
     "patch": "V6.20",
     "changes": "9.7.1",
     "id": "Ivern",
@@ -62,7 +61,7 @@
             ],
             "description": [
                 "{{sbc|Innate:}} '''Ivern''' cannot attack or damage non-epic [[monster]]s. Instead, targeting a jungle camp initiates a {{fd|2.5}} seconds {{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}} that, upon completion, places the monsters within a ''grove''. Placing a ''grove'' costs {{sti|health|{{as|{{pp|(23.5-x)/100*({{Data Ivern|pst2|hp_base}}+{{Data Ivern|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))|displayformula = (23.5%-1% per level) of base health}} health}}}} and {{sti|mana|{{as|{{pp|(34.5-1.5*x)/100*({{Data Ivern|pst2|mp_base}}+{{Data Ivern|pst2|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))|displayformula = (34.5%-1.5% per level) of base mana}} mana}}}}, and cannot be cast if '''Ivern''' lacks the resources. The channel cannot be cancelled in the first {{fd|0.15}} seconds and in the last {{fd|0.5}} seconds.",
-                "The ''grove'' matures over {{pp|15|40|38|36|34|32|30|27|24|21|18|15|11|7|3|1|displayformula = 42-2 per level until level 6, then 3 until level 11, then 4 until level 15. ''This is capped at 1 second at level 15.''}} seconds. When fully matured, '''Ivern''' can interact with the camp again to ''free'' the monsters after {{fd|0.5}} seconds, sending them away while receiving their {{tt|{{g|full gold}} and {{sti|experience|{{as|full experience}}}}|not full when freeing Krug camp, see notes}} [[bounty|bounties]]. {{si|Smite|Smiting}} a camp within a ''grove'' will instantly ''free'' the monsters, regardless of its maturity or the monsters' current health.",
+                "The ''grove'' matures over {{pp|15|40|38|36|34|32|30|27|24|21|18|15|11|7|3|1|displayformula = 42-2 per level until level 6, then 3 until level 11, then 4 until level 15. ''This is capped at 1 second at level 15.''}} seconds. When fully matured, '''Ivern''' can interact with the camp again to ''free'' the monsters after {{fd|0.5}} seconds, sending them away while receiving their {{tt|{{g|full gold}} and {{sti|experience|{{as|full experience}}}}|not full when freeing Krug camp, see notes}} [[bounty|bounties]]. {{si|Smite|Smiting}} a large [[monster]] within a ''grove'' will instantly ''free'' the camp's monsters, regardless of its maturity or the monsters' current health.",
                 "If the camp's large [[monster]] has already been slain, '''Ivern''' will ''free'' the camp upon completing the channel at no cost. Similarly, the ''grove'' will instantly mature if the large monster is slain.",
                 "Starting at level 5, freeing the {{ui|Red Brambleback}} or the {{ui|Blue Sentinel}} leaves behind a ''sapling'' that can be picked up by an allied champion to gain the camp's buff, consuming it in the process. If at least one allied [[champion]] is nearby, '''Ivern''' can pick up the ''sapling'' to transfer it to the nearest one in range. If an ally kills either monster, they also leave behind a ''sapling'' that only '''Ivern''' can consume."
             ],
@@ -75,8 +74,11 @@
             "name": "Friend of the Forest",
             "notes": [
                 "* ''Friend of the Forest'' can be used while ''Ivern'' or the camp is in combat and, once the ''grove'' is placed, {{si|Smite}} can be used to instantly claim the camp. Interrupting the channel or killing ''Ivern'' is the only way to contest jungle camps, short of killing the camp during the channel time.",
+                "*  If the large monster in a camp is still alive, Ivern must gain vision of it to use Friend of the Forest on that camp.",
+                "* If the large monster in a camp is still alive, Ivern will walk towards it to use Friend of the Forest. Attempting to use Friend of the Forest on the camp\u2019s smaller monster will not change the total distance that Ivern walks.",
                 "* ''Friend of the Forest'' will leave ''Ivern'' at 1 current health if cast with exactly the required amount. ''Friend of the Forest'' cannot be cast with less, unlike other abilities with health costs.",
                 "* Non-epic monsters turned hostile by an allied or an enemy champion will still attack ''Ivern'' if he is the closest target (he is not immune to monster damage) yet he still cannot return fire if so (despite not being the one turning the monsters hostile)",
+                "* {{ui|Daisy}} also cannot attack non-epic [[monster]]s.",
                 "* Monsters are not hurt nor do they become hostile by ''Ivern'' when he is equipped with an item that has the [[Named_item_effect#Immolate|Immolate]] effect.",
                 "* Freeing a camp does not grant the ''Healing Rune'' that monsters usually grant on-kill.",
                 "* The ''sapling'' left behind by ''Friend of the Forest'' lasts for only 1 minute before completely disappearing.",
@@ -142,7 +144,9 @@
             "name": "Rootcaller",
             "notes": [
                 "* ''Rootcaller'' can hit monsters and allow '''Ivern''' to dash to them although it won't deal damage.",
-                "* '''Ivern''' can also recast this ability to dash to targets."
+                "* '''Ivern''' can also recast this ability to dash to targets.",
+                "* '''Ivern''''s pull/attack range is determined when he dashes to the target -- not from when he initially casts ''Rootcaller'' and throws the vine.",
+                "* '''Ivern''' (and allies?) are not able to dash to the target unless they are within approximately 1200 range."
             ],
             "projectile": true,
             "skill": "Q",

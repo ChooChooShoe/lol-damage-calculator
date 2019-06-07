@@ -494,7 +494,7 @@ for filename in inpath.glob("*.pass1.json"):
         log.info("Processing: %s", filename)
         champ = json.load(file)
         export = {
-            "api_version": champ['api_version'],
+            # "api_version": champ['api_version'],
             "patch": champ["wikia_champ"].get("patch", ""),
             "changes": make_changes(champ["wikia_champ"].get("changes", "V0.0")),
             "id": champ["id"],

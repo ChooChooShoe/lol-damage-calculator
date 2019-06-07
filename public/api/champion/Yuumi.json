@@ -1,7 +1,6 @@
 {
-    "api_version": "9.10.1",
     "patch": "V9.10",
-    "changes": "9.10.1",
+    "changes": "9.11.1",
     "id": "Yuumi",
     "key": "350",
     "name": "Yuumi",
@@ -23,7 +22,7 @@
     "resource": "Mana",
     "herotype": "",
     "alttype": "",
-    "be_cost": 7800,
+    "be_cost": 6300,
     "rp_cost": 975,
     "adaptivetype": "Magic",
     "info": {
@@ -126,7 +125,7 @@
             "description": [
                 "{{sbc|Active:}} '''Yuumi''' fires an errant missile that deals {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
                 "If the missile is in flight for 1 second, it deals increased {{as|magic damage}} and applies a decaying {{tip|slow}} to enemy {{tip|champions}} struck.",
-                "While {{ai|You and Me!|Yuumi|Attached}}, '''Yuumi''' directs the trajectory of the missile instead for up to 3 seconds before fizzling."
+                "While {{ai|You and Me!|Yuumi|Attached}}, '''Yuumi''' directs the trajectory of the missile instead for up to 3 seconds before fizzling, during which she and the ''Anchor'' can see the effective range."
             ],
             "effect_radius": "",
             "grounded": false,
@@ -141,7 +140,7 @@
             ],
             "name": "Prowling Projectile",
             "notes": [
-                "* Casting ''Prowling Projectile'' will not interrupt '''Yuumi's''' orders."
+                "* ''Prowling Projectile'' does not interrupt '''Yuumi's''' previous orders."
             ],
             "occurrence": "",
             "parry": false,
@@ -193,9 +192,9 @@
                 "none"
             ],
             "description": [
-                "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain '''bonus''' {{as|attack damage}} or {{as|ability power}} ([[Adaptive force|Adaptive]]) equal to a percentage of the other's highest stat. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
-                "{{sbc|Active:}} '''Yuumi''' {{tip|dash|dashes}} to an allied champion and attaches to them. While '''Attached''', '''Yuumi''' is {{tip|untargetable}} except from {{tip|turrets}} and follows her ''Anchor's'' movement, losing the ability to basic attack but retaining the ability to cast (except movement spells).",
-                "{{sbc|Active - Change of Plan:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies. If re-activated without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash up to 250 units in the target direction, triggering the cooldown. The cooldown starts ticking down when you ''attach'' to the first ally."
+                "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain {{tip|Adaptive force|adaptive force}} equal to a percentage of the other's {{as|attack damage}} or {{as|ability power}}, whichever is higher. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
+                "{{sbc|Active:}} '''Yuumi''' {{tip|dash|dashes}} to an allied champion and attaches to them. While '''Attached''', '''Yuumi''' is {{tip|disarm|disarmed}}, {{tip|untargetable}} except from {{tip|turrets}} and follows her ''Anchor's'' movement, and retains the ability to cast (''except movement spells'').",
+                "{{sbc|Active - Change of Plan:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies. If re-activated without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash up to 250 units in the target direction, triggering the cooldown. The cooldown starts ticking down when ''attaching'' to the first ally."
             ],
             "effect_radius": "",
             "grounded": false,
@@ -205,7 +204,7 @@
             ],
             "knockdown": false,
             "leveling": [
-                "{{st|Bonus AD|{{ap|3 to 12.6}}%}}\n{{st|Bonus AP|{{ap|5 to 21}}%}}"
+                "{{st|Adaptive Force|{{ap|5 to 21}}%|Bonus AP|{{ap|5 to 21}}%|Bonus AD|{{ap|3 to 12.6}}%}}"
             ],
             "name": "You and Me!",
             "notes": [
@@ -214,6 +213,7 @@
                 "* ''You and Me!'' will follow an ally under stealth, or any type of {{tip|blink}} or {{tip|dash}}, regardless of range.",
                 "** If her ''Anchor'' recalls, '''Yuumi''' will detach automatically when they arrive at the fountain.",
                 "* If '''Yuumi''' is on the blue team, she will always attach her ally on the bottom-left side of them (regardless of where their champion is facing), and if '''Yuumi''' is on the red team, she will always attach her ally on the top-right side of them.",
+                "* ''You and Me!'' gives assists on champion takedowns from her teammates when she first attaches to a participating ally.",
                 "* To clarify the conversion:",
                 "<table class=\"article-table\">",
                 "<tr>",
@@ -290,7 +290,7 @@
             "description": [
                 "{{sbc|Passive:}} '''Yuumi''' periodically stores a ''Zoomies'' charge, up to 2 stored at once.",
                 "{{sbc|Active:}} '''Yuumi''' {{tip|heals}} herself, with the '''base''' amount increased by {{pp|11|type=target's '''missing''' health|color=health|key=%|key1=%|0 to 100|0 to 80}} and the '''scaling''' amount increased by {{pp|11|type=target's '''missing''' health|color=health|key=%|key1=%|0 to 300|0 to 80}}, and gains 25% {{as|(+ 10% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed|ms}}}} decaying over 2 seconds.",
-                "While {{ai|You and Me!|Yuumi|Attached}}, her partner is targeted by the ability instead."
+                "While {{ai|You and Me!|Yuumi|Attached}}, the ''Anchor'' is targeted by the ability instead."
             ],
             "grounded": false,
             "icon": [
@@ -355,7 +355,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Yuumi''' {{tip|dash|recoils}} X units in the opposite direction, after which ''Book'' launches 7 waves over {{fd|3.5}} seconds, each dealing {{as|magic damage}}. Enemy {{tip|champions}} hit take only 50% damage from subsequent waves, and when struck with three waves, they are {{tip|root|rooted}} for {{fd|1.75}} seconds.",
+                "{{sbc|Active:}} '''Yuumi''' {{tip|dash|recoils}} X units in the opposite direction, after which ''Book'' {{ct|channel|channels|cast=true|attack=false|move=true|items=true,,,false|spells=true}} to launch 7 waves over {{fd|3.5}} seconds, each dealing {{as|magic damage}}. Enemy {{tip|champions}} hit take only 50% damage from subsequent waves, and when struck with three waves, they are {{tip|root|rooted}} for {{fd|1.75}} seconds.",
                 "'''Yuumi''' can move and cast both {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} during ''Final Chapter''."
             ],
             "effect_radius": "",

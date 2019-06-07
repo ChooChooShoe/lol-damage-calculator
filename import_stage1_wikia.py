@@ -89,10 +89,7 @@ parser = MyHTMLParser()
 
 
 def make_spell(spell):
-    spell
-
     return spell
-
 
 def cast(s):
     s = s.strip()
@@ -118,47 +115,43 @@ def make_changes(changes):
 
 regex = re.compile(r"\{\{\{\{\{1<noinclude>\|Ability data</noinclude>\}\}\}\|([\S\s]+)\|\{\{\{2\|\}\}\}\|\{\{\{3\|\}\}\}\|\{\{\{4\|\}\}\}\|\{\{\{5\|\}\}\}")
 
-def try_take_skill(line, value, export):
-    if line.startswith("skill_"):
-        for letter in ["i", "q", "w", "e", "r"]:
-            if line.startswith("skill_" + letter):
-                for skillnum, skill_name in enumerate(value.split(";"), 1):
-                    skill_name = skill_name.strip().replace(" ", "_")
-                    url = "https://leagueoflegends.fandom.com/wiki/Template:Data_{}/{}?action=edit".format(
-                        champ["name"], skill_name
-                    )
-                    wikia_skill = parser.chomp(url)
-                    skillobj = {}
-                    last_key = '_preamble'
-                    for lineNumber, line in enumerate(wikia_skill.splitlines(), 1):
-                        log.debug('skill line is %s', line)
-                        lineNumber = "line_" + str(lineNumber)
-                        line = line.strip()
-                        if line == "" or line == r"}}":
-                            pass
-                        elif r'{{{1<noinclude>|Ability data</noinclude>}}}' in line:
-                            skillobj['name'] = re.sub(regex, r"\1", line)
-                            skillobj['name'] = re.sub('-->', '', skillobj['name'])
-                            last_key = 'name'
-                        elif line.startswith('|') and "=" in line:
-                            split = line.split("=")
-                            key = split[0].strip().replace("|", "", 1).replace(' ', '_')
-                            value = '='.join(split[1:]).strip()
-                            skillobj[key] = cast(value)
-                            last_key = key
-                        else:
-                            # skillobj[lineNumber] = line
-                            # last_key = list(skillobj.items())[-1][0]
-                            log.debug('backtracing %s to %s adding "%s"', 'key', last_key, line)
-                            skillobj[last_key] = skillobj.get(last_key,'') + '\n' + line
-                    if skillobj != {}:
-                        export["wikia_skill_{}{}".format(letter, skillnum)] = skillobj
-        return True
-    return False
+def try_take_skill(letter, value, export):
+    skillcount = len(value.split(";"))
+    for skillnum, skill_name in enumerate(value.split(";"), 1):
+        skill_name = skill_name.strip().replace(" ", "_")
+        url = "https://leagueoflegends.fandom.com/wiki/Template:Data_{}/{}?action=edit"
+        wikia_skill = parser.chomp(url.format(champ["name"], skill_name))
+        
+        skillobj = {}
+        last_key = '_preamble'
+        for lineNumber, line in enumerate(wikia_skill.splitlines(), 1):
+            log.debug('skill line is %s', line)
+            line = line.strip()
+            if line == "" or line == r"}}":
+                pass
+            elif r'{{{1<noinclude>|Ability data</noinclude>}}}' in line:
+                skillobj['name'] = re.sub(regex, r"\1", line)
+                skillobj['name'] = re.sub('-->', '', skillobj['name'])
+                last_key = 'name'
+            elif line.startswith('|') and "=" in line:
+                split = line.split("=")
+                key = split[0].strip().replace("|", "", 1).replace(' ', '_')
+                value = '='.join(split[1:]).strip()
+                skillobj[key] = cast(value)
+                last_key = key
+            else:
+                # skillobj[lineNumber] = line
+                # last_key = list(skillobj.items())[-1][0]
+                log.debug('backtracing %s to %s adding "%s"', 'key', last_key, line)
+                skillobj[last_key] = skillobj.get(last_key,'') + '\n' + line
+        if skillobj != {}:
+            skillobj["skill"] = letter.upper()
+            place = "wikia_skill_" + letter.lower() + str(skillnum)
+            export[place] = skillobj
 
 
 # Use the latest league version.
-version = "9.10.1"
+version = "9.11.1"
 timestamp = "2019-03-22T00:40:54+00:00"
 
 url = "https://ddragon.leagueoflegends.com/cdn/{}/data/en_US/championFull.json".format(
@@ -181,7 +174,7 @@ for keyid in champion_json["data"]:
     print('Taking: ' + keyid)
     champ = champion_json["data"][keyid]
     export = {
-        "api_version": version,
+        #"api_version": version,
         # "timestamp": timestamp, # yikes, im lazy
         "id": champ["id"],  # "RekSai"
         "key": champ["key"],  # "421"
@@ -228,13 +221,17 @@ for keyid in champion_json["data"]:
             key = split[0].strip().replace("|", "", 1).replace(' ', '_')
             value = '='.join(split[1:]).strip()
             champObj[key] = cast(value)
-            # Each skill gets an object
-            try_take_skill(key, value, export)
         else:
+            log.warn('Unknown line: "' + lineNumber + '" value ' + line)
             champObj[lineNumber] = line
     
     champObj["changes"] = make_changes(champObj.get("changes", "V0.0"))
 
+    try_take_skill('I', champObj["skill_i"], export)
+    try_take_skill('Q', champObj["skill_q"], export)
+    try_take_skill('W', champObj["skill_w"], export)
+    try_take_skill('E', champObj["skill_e"], export)
+    try_take_skill('R', champObj["skill_r"], export)
     export["wikia_champ"] = champObj
 
     champtions[keyid] = export
