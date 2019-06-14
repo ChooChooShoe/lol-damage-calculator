@@ -1,6 +1,6 @@
 {
     "patch": "V1.0.0.75",
-    "changes": "9.6<!-- 9.12 -->",
+    "changes": "9.12.1",
     "id": "Mordekaiser",
     "key": "82",
     "name": "Mordekaiser",
@@ -30,12 +30,56 @@
         "magic": 7,
         "difficulty": 4
     },
-    "i_displayname": "Iron Man<!-- Darkness Rise -->",
-    "q_displayname": "Mace of Spades / Mace of Spades 2 / Mace of Spades 3<!-- Obliterate -->",
-    "w_dispalyname": "Harvester of Sorrow<!-- Indestructible -->",
-    "e_dispalyname": "Siphon of Destruction<!-- Death's Grasp -->",
-    "r_dispalyname": "Children of the Grave / Dragon Force<!-- Realm of Death -->",
+    "i_displayname": "Darkness Rise",
+    "q_displayname": "Obliterate",
+    "w_dispalyname": "Indestructible",
+    "e_dispalyname": "Death's Grasp",
+    "r_dispalyname": "Realm of Death",
     "complex_skills": {
+        "i1": {
+            "key": "I",
+            "riotName": "Iron Man",
+            "image": {
+                "full": "MordekaiserPassive.png",
+                "sprite": "passive2.png",
+                "group": "passive",
+                "x": 144,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Self / Enemies",
+            "blurb": "",
+            "champion": "Mordekaiser",
+            "cooldown": null,
+            "cooldownBurn": null,
+            "costtype": "No cost",
+            "damagetype": "Magic",
+            "damageTypes": [
+                "magic"
+            ],
+            "description": [
+                "{{sbc|Innate:}} '''Mordekaiser's''' basic attacks deal {{as|40% AP}} {{as|'''bonus''' magic damage on-hit}}.",
+                "Abilities or basic attacks grant 1 stack per enemy champion or large monster hit. At 3 stacks, '''Mordekaiser''' gains ''Darkness Rise'' for 5 seconds. Further basic attacks and abilities against enemy champions and large monsters refresh the duration.",
+                "{{sbc|Darkness Rise:}} '''Mordekaiser''' deals {{ft|{{pp|10 to 35.5}} {{as|(+ 30% AP)}} {{as|(+ {{pp|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} per second|{{pp|10*0.125 to 35.5*0.125}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{pp|key=%|1*0.125 to 6.1*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}} to all nearby enemies and gains {{as|{{pp|3|key=%|changedisplay=true|3 to 9|1 to 11}} '''bonus''' movement speed}}."
+            ],
+            "effect_radius": 375,
+            "icon": [
+                "Darkness Rise.png"
+            ],
+            "leveling": [],
+            "name": "Darkness Rise",
+            "notes": [
+                "* ''Darkness Rise's'' damage doesn't refresh ''Darkness Rise's'' buff.",
+                "* {{iis|Dead Man's Plate}} bonus damage gives one bonus stack for ''Darkness Rise'', even at 0 ''Momentum'' stacks."
+            ],
+            "onhiteffects": "",
+            "projectile": false,
+            "skill": "I",
+            "spelleffects": "dot",
+            "spellshield": false,
+            "targeting": "Self"
+        },
         "q1": {
             "key": "Q",
             "id": "MordekaiserMaceOfSpades",
@@ -52,7 +96,7 @@
                 "h": 48
             },
             "affects": "Enemies",
-            "blurb": "Mordekaiser's next three attacks deal escalating bonus damage.",
+            "blurb": "",
             "champion": "Mordekaiser",
             "cooldown": [
                 10,
@@ -63,40 +107,164 @@
             ],
             "cooldownBurn": "10/8.5/7/5.5/4",
             "cost": [
-                20,
-                23,
-                26,
-                29,
-                32
+                0,
+                0,
+                0,
+                0,
+                0
             ],
-            "costBurn": "20/23/26/29/32",
-            "costtype": "{{as|Health}}",
+            "costBurn": "0",
+            "costtype": "No cost",
             "damagetype": "Magic",
             "damageTypes": [
                 "magic"
             ],
             "description": [
-                "{{sbc|Active:}} '''Mordekaiser's''' next three [[basic attack]]s deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, with the third hit dealing double of that.",
-                "''Mace of Spades'' resets '''Mordekaiser's''' autoattack timer."
+                "{{sbc|Active:}} '''Mordekaiser''' smashes the area in the target direction, dealing {{as|magic damage}} to all enemies hit, increased if it hits only one enemy."
             ],
             "icon": [
-                "Mace of Spades.png"
+                "Obliterate.png"
             ],
             "leveling": [
-                "{{st|{{ai|Mace of Spades|Mordekaiser|First}} / {{ai|Mace of Spades 2|Mordekaiser|Second}} Bonus Magic Damage|{{ap|10 to 50}} {{as|(+ {{ap|50 to 90}}% AD)}} {{as|(+ 60% AP)}}|{{ai|Mace of Spades 3|Mordekaiser|Third}} Bonus Magic Damage|{{ap|10*2 to 50*2}} {{as|(+ {{ap|50*2 to 90*2}}% AD)}} {{as|(+ 120% AP)}}|Total Bonus Damage|{{ap|10*4 to 50*4}} {{as|(+ {{ap|50*4 to 90*4}}% AD)}} {{as|(+ 240% AP)}}}}"
+                "{{st|Magic Damage|{{pp|18|5;9;13;17;21;25;29;33;37;41;51;61;71;81;91;107;123;139}} (+ {{ap|75 to 155}}) {{as|(+ 60% AP)}}}}\n{{st|Damage Increase|{{ap|20 to 40}}%}}"
             ],
-            "name": "Mace of Spades",
+            "name": "Obliterate",
             "notes": [
-                "* ''Mace of Spades'' does not multiply {{nie|Spellblade}} or other [[on-hit effect|on-hit effects']] damage.",
-                "* The enhanced attacks will apply on-hit effects if they can apply basic attack damage, but they do not affect structures.",
-                "* The attacks can be {{ai|Aegis Protection|Pantheon|blocked}} and {{ai|Counter Strike|Jax|dodged}} and the modifier will be consumed if ''Mordekaiser'' is {{tip|blind|blinded}}."
+                "* No additional details."
             ],
-            "onhiteffects": "Special",
+            "onhiteffects": "",
             "projectile": false,
             "skill": "Q",
-            "spelleffects": false,
-            "spellshield": true,
+            "spelleffects": "",
+            "spellshield": false,
+            "target_range": 675,
+            "targeting": "Direction"
+        },
+        "w1": {
+            "key": "W",
+            "id": "MordekaiserCreepingDeathCast",
+            "riotName": "Harvesters of Sorrow",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "MordekaiserCreepingDeathCast.png",
+                "sprite": "spell7.png",
+                "group": "spell",
+                "x": 432,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Self",
+            "blurb": "",
+            "champion": "Mordekaiser",
+            "cooldown": [
+                12,
+                11,
+                10,
+                9,
+                8
+            ],
+            "cooldownBurn": "12/11/10/9/8",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "None",
+            "damageTypes": [
+                "none"
+            ],
+            "description": [
+                "{{sbc|Passive:}} '''Mordekaiser''' stores 30% of damage he deals and 15% of damage he takes, reduced by 75% against non-champion sources, as ''Potential Shield'' on his secondary resource bar, up to {{sti|health|{{as|30% of his '''maximum''' health}}}}. The ''Potential Shield'' bar has a minimum of {{as|5% of his '''maximum''' health}}.",
+                "{{sbc|Active - First Cast:}} '''Mordekaiser''' consumes all his current ''Potential Shield'' to {{tip|shield}} himself for 4 seconds for the same amount. At start the shield decays very slowly but exponentially increases near the end. After {{fd|0.25}} seconds he can re-cast the ability.",
+                "{{sbc|Active - Second Cast:}} '''Mordekaiser''' consumes the remaining shield, {{tip|healing}} for a percentage of the amount."
+            ],
+            "effect_radius": "",
+            "icon": [
+                "Indestructible.png"
+            ],
+            "leveling": [
+                "{{st|Healing|{{ap|40 to 50}}%}}"
+            ],
+            "name": "Indestructible",
+            "notes": [
+                "* No additional details."
+            ],
+            "onhiteffects": "",
+            "projectile": false,
+            "skill": "W",
+            "spelleffects": "",
+            "spellshield": false,
+            "target_range": "",
             "targeting": "Self"
+        },
+        "e1": {
+            "key": "E",
+            "id": "MordekaiserSyphonOfDestruction",
+            "riotName": "Siphon of Destruction",
+            "maxrank": 5,
+            "maxammo": -1,
+            "image": {
+                "full": "MordekaiserSyphonOfDestruction.png",
+                "sprite": "spell7.png",
+                "group": "spell",
+                "x": 0,
+                "y": 144,
+                "w": 48,
+                "h": 48
+            },
+            "affects": "Self, Enemies",
+            "angle": "",
+            "blurb": "",
+            "champion": "Mordekaiser",
+            "cooldown": [
+                6,
+                5.75,
+                5.5,
+                5.25,
+                5
+            ],
+            "cooldownBurn": "6/5.75/5.5/5.25/5",
+            "cost": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "costBurn": "0",
+            "costtype": "No cost",
+            "damagetype": "None",
+            "damageTypes": [
+                "none"
+            ],
+            "description": [
+                "{{sbc|Passive:}} '''Mordekaiser''' gains {{sti|mpen|{{as|magic penetration}}}}.",
+                "{{sbc|Active:}} After a small delay, '''Mordekaiser''' {{tip|airborne|pulls}} enemies in the targeted area over a fixed distance, dealing {{as|magic damage}}."
+            ],
+            "effect_radius": "",
+            "icon": [
+                "Death's Grasp.png"
+            ],
+            "leveling": [
+                "{{st|Magic Penetration|{{ap|5 to 25}}%}}",
+                "{{st|Magic Damage|{{ap|80 to 140}} {{as|(+ 60% AP)}}}}"
+            ],
+            "name": "Death's Grasp",
+            "notes": [
+                "* No additional details"
+            ],
+            "onhiteffects": "",
+            "skill": "E",
+            "spelleffects": "",
+            "spellshield": false,
+            "target_range": "{{tt|150|Estimated (Minimum)}} / 700 / {{tt|900|Estimated (Maximum)}}",
+            "targeting": "Direction"
         },
         "r1": {
             "key": "R",
@@ -114,8 +282,8 @@
                 "h": 48
             },
             "affects": "Enemies",
-            "blurb": "Mordekaiser curses an enemy champion or the Dragon, stealing a percent of their life initially and each second. If the target dies while the spell is active, their soul is enslaved and will follow Mordekaiser as a [[ghost]].",
-            "callforhelp": true,
+            "blurb": "",
+            "callforhelp": "",
             "champion": "Mordekaiser",
             "cooldown": [
                 120,
@@ -130,37 +298,55 @@
             ],
             "costBurn": "0",
             "costtype": "No cost",
-            "damagetype": "Magic",
+            "damagetype": "None",
             "damageTypes": [
-                "magic"
+                "none"
             ],
             "description": [
-                "{{sbc|Passive - Dragon Force:}} '''Mordekaiser's''' basic attacks and abilities ''Curse'' the {{ui|Dragon}} for 10 seconds.",
-                "{{sbc|Active:}} '''Mordekaiser''' ''curses'' the target enemy champion, dealing {{as|magic damage}} and {{tip|healing}} himself for the same amount. 25% of the damage and healing is applied instantly, while the other 75% is applied over 10 seconds.",
-                "''{{sbc|Curse:}}'' If '''Mordekaiser's''' team scores an enemy champion {{tip|takedown}} on a ''Cursed'' enemy, he temporarily enslaves their soul as a controllable ''[[Champion_summoned_units#Decoys|ghost]]''. Enslaving the {{ui|Dragon}} will kill '''Mordekaiser's''' current ''ghost'' and prevent him from summoning a new one while it survives.",
-                "{{sbc|Second Active:}} While a ghost is active, ''Children of the Grave'' can be used to move them to the target location.",
-                "''Champion ghosts'' gain {{as|100% of '''Mordekaiser's''' '''bonus''' AD}} as {{sti|ad|{{as|'''bonus''' AD}}}} and {{as|15% of '''Mordekaiser's''' '''maximum''' health}} as {{sti|health|{{as|'''bonus''' health}}}}, and while '''Mordekaiser''' has a champion enslaved he gains {{as|25% of their '''bonus''' health}} as {{sti|health|{{as|'''bonus''' health}}}} and {{as|30% of their AP}} as {{sti|ap|{{as|'''bonus''' AP}}}}. ''Dragon ghosts'' gain {{sti|range|'''bonus''' range}} and modified {{sti|ms|{{as|movement speed}}}}."
+                "{{sbc|Active:}} '''Mordekaiser''' {{tip|slow|slows}} the targeted enemy champion by 75% for {{ct|cast|{{fd|0.5}}}} seconds. If the target is still in range and targetable by the end of the duration they're banished together with '''Mordekaiser''' to the ''Death Realm'' for 7 seconds, during which they {{tip|suppression|cannot}} leave.",
+                "Units between realms see each other as spirits, considering each other dead and negating any interactions between the two. Only the target and '''Mordekaiser''' will enter the realm, other champions cannot follow them. Everything that occurs inside the ''Death Realm'' is hidden, and all non-champion [[pets]] still inside are destroyed at the end.",
+                "For the same duration '''Mordekaiser''' also reduces the target's '''current''' {{as|attack damage}}, {{as|ability power}}, {{as|'''total''' attack speed}}, {{as|'''maximum''' health}}, {{as|armor}}, {{as|magic resist}}, and size by 10%, in addition to gaining them for himself. If '''Mordekaiser''' kills his target, he consumes their soul, keeping their partial stats until they respawn.",
+                "If one of the two affected champions leave the ''Death Realm'', because of having died or having it dispelled, the other will do so as well, but the stats will remain stolen for the full duration."
             ],
-            "effect_radius": "{{tt|1125|Champion's ghost leash range}} / {{tt|Global|Dragon's ghost leash range}}",
+            "effect_radius": "{{tt|1200|The center changes based on Mordekaiser's position from the target}}",
             "icon": [
-                "Dragon Force.png",
-                "Children of the Grave.png"
+                "Realm of Death.png"
             ],
-            "leveling": [
-                "{{st|Total Magic Damage|{{as|{{ap|25 to 35}}% {{as|(+ 4% per 100 AP)}} of target's '''maximum''' health}}|Initial Magic Damage|{{as|{{ap|25*0.25 to 35*0.25}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}|Magic Damage Per Second|{{as|{{ap|25*0.75/10 to 35*0.75/10}}% {{as|(+ {{fd|0.3}}% per 100 AP)}} of target's '''maximum''' health}}}}",
-                "{{st|Ghost Duration|{{ap|45 to 75}}}}",
-                "{{st|Bonus Attack Range|{{ap|0 to 150}}}}<!--\n-->{{st|Bonus Movement Speed|{{ap|-50 to 50}}}}"
-            ],
-            "name": "Children of the Grave",
+            "leveling": [],
+            "name": "Realm of Death",
             "notes": [
-                "* ''Children of the Grave'' will grant ''Mordekaiser'' a ''ghost'' and bonus stats at the start of {{ai|Death Defied|Karthus}}, {{ai|Icathian Surprise|Kog'Maw}} or {{ai|Glory in Death|Sion}}.",
-                "* ''Children of the Grave'' will not grant ''Mordekaiser'' a ''ghost'' or bonus stats if the target is revived by {{ii|Guardian Angel}}, {{ai|World Ender|Aatrox}}, {{ai|Cell Division|Zac}}, or {{ai|Chronoshift|Zilean}}.",
-                "* ''Mordekaiser'' cannot cast ''Children of the Grave'' while the ''Dragon Force's'' ghost is alive.",
-                "* The Dragon Ghost applies effects as a standard pet, but also applies AoE effects."
+                "* The ability will cancel and go on cooldown after the cast time if:",
+                "** The target is {{tip|unstoppable}} or {{tip|spell shield|cc-immune}}.",
+                "** He targets a [[decoy]] or {{cai|Glory in Death|Sion}}.",
+                "* The ability will cancel without going on cooldown if:",
+                "** The target is {{tip|untargetable}}.",
+                "** He loses sight of his target.",
+                "** The target is too far away.",
+                "* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion|exception}}), but enemies that try to move out of the area will be displaced back inside.",
+                "** Abilities such as {{ai|Comet of Legend|Aurelion Sol}} and {{ai|Keeper's Verdict|Poppy}} will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.",
+                "* Multiple ''Death Realms'' spawned will exist in the same dimension, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.",
+                "** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.",
+                "** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knockback and damage secondary targets multiple times.",
+                "* The transition in and out of the Death Realm doesn't interrupt [[channel]]s and doesn't affect the target's commands. Being in Death Realm can be dispelled if:",
+                "** The target uses {{ii|Quicksilver Sash|cc-removals}}.",
+                "** '''Mordekaiser''' or the target cast another ''Realm of Death''. The affected champions will remain stuck for the duration of the new circle.",
+                "* [[Tether]] effects will break upon entering the dimension, unless it is between the two champions entering the dimension.",
+                "* [[Structures]] exist in all realms at the same time, and {{tip|turrets}} will target normally as if all units were in the same realm.",
+                "* Effects interactions:",
+                "** {{ai|The Hextech Ultimatum|Camille}}, catching a {{ai|Spinning Axe|Draven}}, {{ai|Timewinder|Ekko}}, {{ai|Test of Spirit|Illaoi}}, {{ai|Null Zone|Malzahar}}, {{ai|Twisted Advance|Maokai}}, {{ai|Threaded Volley 2|Taliyah|Worked Grounds}}, {{ai|Gravity Field|Viktor}}, {{ai|Satchel Charge|Ziggs}}, {{ui|Rift Scuttler|Rift Scuttler's}} {{bi|Speed Shrine}} and gaining {{ii|Zeke's Convergence}} [[File:Harbinger of Frost icon.png|20px|border|link=File:Harbinger of Frost icon.png]] '''Harbinger of Frost''' effect are exceptions and may still take effect between dimensions.",
+                "** Effects such as {{ai|Requiem|Karthus}}, {{ai|Absolute Zero|Nunu}}, {{ai|Grand Skyfall|Pantheon}} and {{ai|Final Spark|Lux}} will only deal damage to enemies of the dimension they're in at time of cast. Ending the channel or cast time while inside another dimension will not do damage to nearby enemies.",
+                "** {{ai|Shuriken Flip|Akali}} may be re-cast inside the ''Death Realm'' even if its target is outside it, but ''Akali'' will stop ''dashing'' upon colliding with the boundary.",
+                "** {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} may not be re-cast while his victim is not in the same realm as him, but an already chained foe will still continue to be reeled in and executed. The {{tip|fear}} is cast in the realm Urgot is in.",
+                "** {{ai|Void Shift|Malzahar}} dispels from ''Realm of Death's'' slow, making it vulnerable to the ''Death Realm''.",
+                "** {{ai|Clockwork Windup|Orianna|Ball}} will instantly return back to her if she's in another dimension.",
+                "** Controllable [[pets]] and [[decoys]] are still controllable between realms.",
+                "* {{pending for test}}:",
+                "** {{ci|Tahm Kench}} {{ai|Devour|Tahm Kench|Devours}} the target affected by ''Death Realm'' before it ends."
             ],
             "onhiteffects": "",
+            "projectile": false,
             "skill": "R",
-            "spelleffects": "dot",
+            "spelleffects": "",
             "spellshield": true,
             "target_range": 650,
             "targeting": "Unit"

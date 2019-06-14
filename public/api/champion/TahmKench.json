@@ -1,6 +1,6 @@
 {
     "patch": "V5.13",
-    "changes": "9.10.1",
+    "changes": "9.12.1",
     "id": "TahmKench",
     "key": "223",
     "name": "Tahm Kench",
@@ -60,7 +60,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s and {{ai|Tongue Lash|Tahm Kench}} deal {{as|{{fd|1.5}}% of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times, which increase the damage by the same amount per stack up to a total damage of {{as|{{fd|4.5}}%|health}}. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
+                "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s, {{ai|Tongue Lash|Tahm Kench}}, and non-champion units {{ai|Regurgitate|Tahm Kench|Regurgitated}} deal {{as|{{fd|1.5}}% of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times, which increase the damage by the same amount per stack up to a total damage of {{as|{{fd|4.5}}%|health}}. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
                 "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with three stacks."
             ],
             "icon": [
@@ -122,7 +122,7 @@
             ],
             "description": [
                 "{{sbc|Active:}} After a brief delay, '''Tahm Kench''' lashes his tongue in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for 2 seconds.",
-                "During ''Tongue Lash'', {{ai|Devour|Tahm Kench}} can be cast for {{sti|mana|{{as|0 mana|mana}}}} to devour the {{tip|minion}} or non-epic {{tip|monster}} struck. ''Devour's'' mana refund applies using the original amount.",
+                "During ''Tongue Lash'', {{ai|Devour|Tahm Kench}} can be cast for no {{sti|mana|{{as|mana}}}} to devour the {{tip|minion}} or non-epic {{tip|monster}} struck. ''Devour's'' mana refund doesn't apply in this case.",
                 "Enemy champions with three {{ai|An Acquired Taste|Tahm Kench}} stacks are {{tip|stun|stunned}} for {{fd|1.5}} seconds."
             ],
             "icon": [
@@ -133,8 +133,7 @@
             ],
             "name": "Tongue Lash",
             "notes": [
-                "* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''.",
-                "* The mana refund upon using ''Devour'' during ''Tongue Lash'' effectively also reduces the cost of ''Tongue Lash'' to 0."
+                "* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''."
             ],
             "projectile": true,
             "skill": "Q",
@@ -186,7 +185,7 @@
                 "{{sbc|Active \u2013 Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
                 "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks. If '''Tahm Kench''' swallows an allied or enemy champion, he is {{tip|ground|grounded}} and {{tip|slow|slowed}} by 95% for the duration. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}}, {{tip|nearsight|nearsights}} and makes them {{tip|untargetable}}.",
                 "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}} and {{sti|mana|{{as|50% of the mana cost}}}}.",
-                "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay."
+                "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay, unless they're {{tip|stun|immobilized}}."
             ],
             "icon": [
                 "Devour.png"
@@ -195,7 +194,6 @@
             "name": "Devour",
             "notes": [
                 "* The {{tip|slow|self-slow}} is affected by [[slow resist]].",
-                "* ''Devour'' deals 1 magic damage from {{ai|An Acquired Taste|Tahm Kench}}.",
                 "* ''Devour'' will prioritize champions (cannot be used on those who are [[channel]]ing an ability) over minions.",
                 "** If champions stay on top of each other it will prioritize those who stay beneath.",
                 "* ''Tahm Kench'' cannot use {{si|Teleport}}, {{si|Flash}}, or {{ai|Dark Passage|Thresh}} while holding an enemy champion in his belly (he can when holding an allied champion or minion).",
@@ -249,14 +247,14 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active \u2013 Regurgitate:}} '''Tahm Kench''' regurgitates the swallowed target. If they are an enemy, they are {{tip|stun|stunned}} for {{fd|0.25}} seconds and take {{as|magic damage}}, capped against monsters.",
-                "Minions and non-epic monsters are spat forth, colliding at an enemy or terrain to deal {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' stun damage. Allied champions are also spat out stopping if they hit an enemy, while enemy champions are regurgitated in front of '''Tahm Kench'''."
+                "{{sbc|Active \u2013 Regurgitate:}} '''Tahm Kench''' regurgitates the swallowed target, locking them out from taking actions for {{fd|0.25}} seconds. If they are an enemy they also take {{as|magic damage}}, capped against monsters.",
+                "Minions and non-epic monsters that are spat forth can collide with an enemy or terrain to deal {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' stun damage."
             ],
             "icon": [
                 "Regurgitate.png"
             ],
             "leveling": [
-                "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ {{ap|5 to 13}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Maximum Monster Damage|{{ap|400 to 600}}}}",
+                "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ {{ap|9 to 13}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Maximum Monster Damage|{{ap|400 to 600}}}}",
                 "{{st|Projectile Damage|{{ap|100 to 240}} {{as|(+ 60% AP)}}}}"
             ],
             "name": "Regurgitate",
@@ -268,7 +266,7 @@
             "skill": "W",
             "spelleffects": "AoE",
             "spellshield": true,
-            "target_range": 650,
+            "target_range": "{{tt|150|Enemy Champion}} / {{tt|250|Allied Champion}} / {{tt|650|Non-Champion}}",
             "targeting": "Direction"
         },
         "e1": {

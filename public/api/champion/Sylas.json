@@ -1,6 +1,6 @@
 {
     "patch": "V9.2",
-    "changes": "9.9.1",
+    "changes": "9.12.1",
     "id": "Sylas",
     "key": "517",
     "name": "Sylas",
@@ -60,7 +60,8 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Innate:}} After casting an ability, '''Sylas'''' next basic attack within 4 seconds is modified to whirl his chains around him, dealing {{pp|5 to 47.5|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies."
+                "{{sbc|Innate:}} Casting an ability grants a stack of ''Preticite Burst'' for 4 seconds, up to 2.",
+                "{{sbc|Petricite Burst:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, dealing {{pp|9 to 60|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies, reduced to 30% against minions who aren't the primary targets."
             ],
             "effect_radius": 400,
             "grounded": false,
@@ -123,9 +124,9 @@
             ],
             "description": [
                 "{{sbc|Active:}} '''Sylas''' lashes out with his chains that converge to the target location and extend beyond it up to a maximum range, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit for 2 seconds.",
-                "After a {{fd|0.5}}-seconds delay, the chains' intersection detonates with the same {{as|magic damage}} and {{tip|slow|slows}} enemies hit by 50% for 2 seconds. Against {{tip|minions}} the detonation deals 45% reduced damage."
+                "After a {{fd|0.5}}-seconds delay, the chains' intersection detonates, dealing {{as|magic damage}} and {{tip|slow|slowing}} all enemies hit by 50% for 2 seconds. Against {{tip|minions}} the detonation deals 45% reduced damage."
             ],
-            "effect_radius": "{{tt|180|Detonation radius against champions}} / {{tt|200|Detonation radius against minions and monsters}}",
+            "effect_radius": "{{tt|180|Detonation radius against champions and minions}} / {{tt|200|Detonation radius against monsters}}",
             "grounded": false,
             "icon": [
                 "Chain Lash.png"
@@ -133,7 +134,7 @@
             "knockdown": false,
             "leveling": [
                 "{{st|Magic Damage|{{ap|45 to 145}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|15 to 35}}%}}",
-                "{{st|Minion Magic Damage|{{ap|45*0.55 to 145*0.55}} {{as|(+ 33% AP)}}}}\n{{st|Maximum Non-Minion Damage|{{ap|45*2 to 145*2}} {{as|(+ 120% AP)}}|Maximum Minion Damage|{{ap|45*(1+0.55) to 145*(1+0.55)}} {{as|(+ 93% AP)}}}}"
+                "{{st|Detonation Damage|{{ap|40 to 120}} {{as|(+ 40% AP)}}|Minion Detonation Damage|{{ap|40*0.55 to 120*0.55}} {{as|(+ 22% AP)}}}}\n{{st|Maximum Non-Minion Damage|{{ap|45+40 to 145+120}} {{as|(+ 100% AP)}}|Maximum Minion Damage|{{ap|45+40*0.55 to 145+120*0.55}} {{as|(+ 82% AP)}}}}"
             ],
             "name": "Chain Lash",
             "notes": [
@@ -199,7 +200,7 @@
             "knockdown": true,
             "leveling": [
                 "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 65% AP)}}|Increased Damage|{{ap|60*1.5 to 180*1.5}} {{as|(+ {{fd|97.5}}% AP)}}}}",
-                "{{st|Heal|{{ap|60 to 140}} {{as|(+ 40% AP)}}|Increased Heal|{{ap|60*1.75 to 140*1.75}} {{as|(+ 70% AP)}}}}"
+                "{{st|Heal|{{ap|70 to 150}} {{as|(+ 50% AP)}}|Increased Heal|{{ap|70*1.75 to 150*1.75}} {{as|(+ {{ap|50*1.75}}% AP)}}}}"
             ],
             "name": "Kingslayer",
             "notes": [
@@ -257,7 +258,7 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active - Abscond:}} '''Sylas''' {{tip|dash|dashes}} forward to the target location, {{sti|shield|link=true|shielding}} himself for 2 seconds and resetting his basic attack timer.",
+                "{{sbc|Active - Abscond:}} '''Sylas''' {{tip|dash|dashes}} forward to the target location, resetting his basic attack timer.",
                 "For the next {{fd|3.5}} seconds, '''Sylas''' may cast {{ai|Abduct|Sylas}}."
             ],
             "grounded": true,
@@ -265,9 +266,7 @@
                 "Abscond.png"
             ],
             "knockdown": true,
-            "leveling": [
-                "{{st|Shield|{{ap|60 to 180}} {{as|(+ 90% AP)}}}}"
-            ],
+            "leveling": [],
             "name": "Abscond",
             "notes": [
                 "* No additional details"
@@ -321,7 +320,8 @@
                 "magic"
             ],
             "description": [
-                "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.5}} seconds upon arrival."
+                "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.5}} seconds upon arrival.",
+                "If he hits an enemy champion or monster, he {{sti|shield|link=true|shields}} himself for 2 seconds."
             ],
             "grounded": true,
             "icon": [
@@ -329,7 +329,8 @@
             ],
             "knockdown": true,
             "leveling": [
-                "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}"
+                "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}",
+                "{{st|Shield|{{ap|80 to 220}} {{as|(+ 100% AP)}}}}"
             ],
             "name": "Abduct",
             "notes": [
