@@ -4,12 +4,12 @@
 </template>
 
 <script>
-import matchReplaceSpellEffects from '../javascript/matchreplace';
+import { quickMatchReplace } from "../javascript/matchreplace";
 export default {
   name: "spell-span",
   props: ["list", "spellrankindex"],
-  methods: {
-    calchtml: function() {
+  computed: {
+    final() {
       let last = undefined;
       let final = [];
       for (let i = 0; i < this.list.length; i++) {
@@ -23,8 +23,12 @@ export default {
         }
         last = this.list[i];
       }
-      final = final.join(" / ");
-      return matchReplaceSpellEffects(final, this.spellrankindex).str;
+      return final.join(" / ");
+    }
+  },
+  methods: {
+    calchtml: function() {
+      return quickMatchReplace(this.final);
     }
   }
 };

@@ -4,7 +4,7 @@
       :style="{ float: 'right', background: 'url('+spriteurl + ') -' + spell.image.x + 'px -' + spell.image.y + 'px'}"
       :width="spell.image.w" :height="spell.image.h">
     <h2>{{ spell.name }} ({{ spellkey }})</h2>
-    <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'" :spellrankindex="spellrankindex"></match-replace>
+    <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
 
     <div class="float-left" v-if="spell.maxrank > 0">
       Spell Rank ({{ spellrankindex + 1 }})
@@ -19,12 +19,12 @@
     </div>
       
     <div class="float-right">
-    <div v-if="spell.customlabel"><span v-html="matchReplace(spell.customlabel)"> </span>: <spell-span :list="[spell.custominfo]" :spellrankindex="0"></spell-span></div>
+    <div v-if="spell.customlabel"><span v-html="matchReplace(spell.customlabel)"></span>: <span class="blue" v-html="matchReplace(spell.custominfo)"></span></div>
     <div v-if="spell.cooldown">Cooldown: <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span> seconds</div>
-    <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span> <span v-html="matchReplace(spell.costtype)"></span></div>
-    <div v-if="spell.target_range">Target Range: <spell-span :list="[spell.target_range]" :spellrankindex="0"></spell-span></div>
-    <div v-if="spell.effect_range">Effect Range: <spell-span :list="[spell.effect_range]" :spellrankindex="0"></spell-span></div>
-    <div v-if="spell.targeting">Targeting: <spell-span :list="[spell.targeting]" :spellrankindex="0"></spell-span></div>
+    <div v-if="spell.cost">Cost: <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span>&nbsp;<span v-html="costtype"></span></div>
+    <div v-if="spell.target_range">Target Range: <span class="blue" v-html="targetRange"></span></div>
+    <!-- <div v-if="spell.effect_range">Effect Range: <span class="blue" v-html="matchReplace(spell.effect_range)"></span></div> -->
+    <div v-if="spell.targeting">Targeting: <span class="blue" v-html="targeting"></span></div>
     </div>
     
     <spell-effects
@@ -49,7 +49,7 @@
       :iscustom="true">
     </spell-effects>
     
-    <input name="add_effect" type="button" value="Add Effect +" @click="addEffect()"></input>
+    <input name="add_effect" type="button" value="Add Effect +" @click="addEffect()">
     
     <spell-notes :spell="spell" :id="id"></spell-notes>
     </div>
@@ -61,7 +61,7 @@ import SpellEffects from './SpellEffects.vue';
 import SimpleTooltip from './SimpleTooltip.vue';
 import SpellNotes from './SpellNotes.vue';
 import SpellSpan from './SpellSpan.vue';
-import matchReplaceSpellEffects from '../javascript/matchreplace';
+import {quickMatchReplace} from '../javascript/matchreplace.js';
 
 export default {
   name: 'champion-spells',
@@ -80,14 +80,25 @@ export default {
       lastEffectIndex: 0,
     }
   },
+  computed: {
+    costtype() {
+      return quickMatchReplace(this.spell.costtype);
+    },
+    targeting() {
+      return quickMatchReplace(this.spell.targeting);
+    },
+    targetRange() {
+      return quickMatchReplace(String(this.spell.target_range));
+    }
+  },
   methods: {
     addEffect: function () {
       this.customEffects.push(this.lastEffectIndex++);
     },
     matchReplace: function (text) {
-      return matchReplaceSpellEffects(text, this.spellrankindex).str
+      return quickMatchReplace(text);
     },
-  },
+  }
 };
 </script>
 

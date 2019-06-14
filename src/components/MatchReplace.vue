@@ -16,6 +16,8 @@ export default {
     NoWiki,
     Ref
   },
+  //spellrankindex is need for child spell-spans to bind to.
+  // text is what is match replaced.
   props: ["spellrankindex", "text", "value"],
   data: function() {
     return {
@@ -25,10 +27,7 @@ export default {
   computed: {
     template: function() {
       const text = this.text || this.$slots.default || "";
-      const replaced = matchReplaceSpellEffects(
-        text.toString(),
-        this.spellrankindex || 0
-      );
+      const replaced = matchReplaceSpellEffects(text.toString());
       this.$emit("input", replaced.vars);
       return `<div>${replaced.str}</div>`;
     }

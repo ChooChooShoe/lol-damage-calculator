@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import matchReplaceSpellEffects from "../javascript/matchreplace";
 import { log } from "util";
 export default {
   props: ["dname", "globalId"],
@@ -33,12 +32,6 @@ export default {
     if (this.globalEl) this.globalEl.setAttribute("style", `display:none;`);
   },
   methods: {
-    addEffect: function() {
-      this.customEffects.push(this.lastEffectIndex++);
-    },
-    matchReplace: function(text) {
-      return matchReplaceSpellEffects(text, this.spellrankindex).str;
-    },
     draw: function(e) {
       const element = this.globalEl || this.$refs.local;
       const style = `left:${e.clientX + 10}px;top:${e.clientY + 10}px;`;
