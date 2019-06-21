@@ -50,7 +50,7 @@
       "chromas": false
     }
   ],
-  "lore": "A lonely legend as old as the first piers sunk in Bilgewater, the armored goliath known as Nautilus roams the dark waters off the coast of the Blue Flame Isles. Driven by a forgotten betrayal, he strikes without warning, swinging his enormous anchor to save the wretched, and drag the greedy to their doom. It is said he comes for those who forget to pay the \u201cBilgewater tithe\u201d, pulling them down beneath the waves with him\u2014an iron-clad reminder that none can escape the depths.",
+  "lore": "A lonely legend as old as the first piers sunk in Bilgewater, the armored goliath known as Nautilus roams the dark waters off the coast of the Blue Flame Isles. Driven by a forgotten betrayal, he strikes without warning, swinging his enormous anchor to save the wretched, and drag the greedy to their doom. It is said he comes for those who forget to pay the “Bilgewater tithe”, pulling them down beneath the waves with him—an iron-clad reminder that none can escape the depths.",
   "blurb": "A lonely legend as old as the first piers sunk in Bilgewater, the armored goliath known as Nautilus roams the dark waters off the coast of the Blue Flame Isles. Driven by a forgotten betrayal, he strikes without warning, swinging his enormous anchor to...",
   "allytips": [
     "While ganking, consider aiming Dredge Line at nearby terrain and following it up with Riptide for a higher hit rate.",
@@ -129,10 +129,10 @@
     "effect": [
       null,
       [
-        100,
-        145,
-        190,
-        235,
+        80,
+        130,
+        180,
+        230,
         280
       ],
       [
@@ -201,7 +201,7 @@
     ],
     "effectBurn": [
       null,
-      "100/145/190/235/280",
+      "80/130/180/230/280",
       "0",
       "50",
       "50",
@@ -554,7 +554,7 @@
     "id": "NautilusGrandLine",
     "name": "Depth Charge",
     "description": "Nautilus fires a shockwave into the earth that chases an opponent. This shockwave rips up the earth above it, knocking enemies into the air. When it reaches the opponent, the shockwave erupts, knocking his target into the air and stunning them.",
-    "tooltip": "Nautilus fires a shockwave that chases an enemy champion, dealing {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage to other enemies it passes through, knocking them into the air, and stunning them for {{ e5 }} seconds.<br /><br />The shockwave explodes upon hitting its target dealing {{ e2 }} <scaleAP>(+{{ a2 }})</scaleAP> magic damage, launching them into the air and stunning them for {{ e5 }} seconds. ",
+    "tooltip": "Nautilus fires a shockwave that chases an enemy champion, dealing {{ secondarytargetdamage }} magic damage to other enemies it passes through, knocking them into the air, and stunning them for {{ stunduration }} seconds.<br /><br />The shockwave explodes upon hitting its target dealing {{ primarytargetdamage }} magic damage, launching them into the air and stunning them for {{ stunduration }} seconds. ",
     "leveltip": {
       "label": [
         "Pass Through Damage",
@@ -563,9 +563,9 @@
         "Cooldown"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e2 }} -> {{ e2NL }}",
-        "{{ e5 }} -> {{ e5NL }}",
+        "{{ primarydamage }} -> {{ primarydamageNL }}",
+        "{{ secondarydamage }} -> {{ secondarydamageNL }}",
+        "{{ stunduration }} -> {{ stundurationNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
@@ -586,14 +586,14 @@
     "effect": [
       null,
       [
-        125,
-        175,
-        225
+        0,
+        0,
+        0
       ],
       [
-        200,
-        325,
-        450
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -606,9 +606,9 @@
         0
       ],
       [
-        1,
-        1.5,
-        2
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -638,29 +638,18 @@
     ],
     "effectBurn": [
       null,
-      "125/175/225",
-      "200/325/450",
       "0",
       "0",
-      "1/1.5/2",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.4,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.8,
-        "key": "a2"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
@@ -2771,6 +2760,52 @@
       ]
     }
   ],
+  "wikia_champ": {
+    "ms": 325,
+    "range": 175,
+    "as_base": 0.612,
+    "dam_base": 61,
+    "arm_base": 39,
+    "mr_base": 32.1,
+    "hp_base": 576.48,
+    "mp_base": 400,
+    "hp5_base": 8.5,
+    "mp5_base": 8.626,
+    "as_lvl": 1,
+    "as_lvl1": 0.706,
+    "as_lvl1_bonus": 15,
+    "dam_lvl": 3.3,
+    "arm_lvl": 3.75,
+    "mr_lvl": 1.25,
+    "hp_lvl": 86,
+    "mp_lvl": 47,
+    "hp5_lvl": 0.55,
+    "mp5_lvl": 0.5,
+    "image": "NautilusSquare.png",
+    "title": "the Titan of the Depths",
+    "herotype": "Tank",
+    "alttype": "Fighter",
+    "rangetype": "Melee",
+    "date": 2012,
+    "patch": "V1.0.0.134",
+    "changes": "9.12.1",
+    "role": "Vanguard",
+    "damage": 1,
+    "toughness": 3,
+    "control": 3,
+    "mobility": 1,
+    "utility": 0,
+    "style": 80,
+    "difficulty": 2,
+    "adaptivetype": "magic",
+    "be": 4800,
+    "rp": 880,
+    "skill_i": "Staggering Blow",
+    "skill_q": "Dredge Line",
+    "skill_w": "Titan's Wrath",
+    "skill_e": "Riptide",
+    "skill_r": "Depth Charge;Depth Charge 2"
+  },
   "wikia_skill_i1": {
     "name": "Staggering Blow",
     "champion": "Nautilus",
@@ -2880,51 +2915,5 @@
     "spellshield": "Special",
     "projectile": false,
     "notes": "\n* Despite being a projectile, ''Depth Charge'' cannot be intercepted by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}} (possibly its nature of travelling underground).\n* ''Depth Charge'' permeates through terrain, and will accelerate over time to ensure it cannot be outran (only extreme movement speed could potentially make it so).\n** Moving away for a vast distance ({{si|recall|recalling}}, {{si|Teleport|teleporting}}) before ''Depth Charge'' hits will make the projectile disappear.\n* {{tip|Spell shield}} will block the entire ability only for the primary target."
-  },
-  "wikia_champ": {
-    "ms": 325,
-    "range": 175,
-    "as_base": 0.612,
-    "dam_base": 61,
-    "arm_base": 39,
-    "mr_base": 32.1,
-    "hp_base": 576.48,
-    "mp_base": 400,
-    "hp5_base": 8.5,
-    "mp5_base": 8.626,
-    "as_lvl": 1,
-    "as_lvl1": 0.706,
-    "as_lvl1_bonus": 15,
-    "dam_lvl": 3.3,
-    "arm_lvl": 3.75,
-    "mr_lvl": 1.25,
-    "hp_lvl": 86,
-    "mp_lvl": 47,
-    "hp5_lvl": 0.55,
-    "mp5_lvl": 0.5,
-    "image": "NautilusSquare.png",
-    "title": "the Titan of the Depths",
-    "herotype": "Tank",
-    "alttype": "Fighter",
-    "rangetype": "Melee",
-    "date": "2012-02-14",
-    "patch": "V1.0.0.134",
-    "changes": "9.12.1",
-    "role": "Vanguard",
-    "damage": 1,
-    "toughness": 3,
-    "control": 3,
-    "mobility": 1,
-    "utility": 0,
-    "style": 80,
-    "difficulty": 2,
-    "adaptivetype": "magic",
-    "be": 4800,
-    "rp": 880,
-    "skill_i": "Staggering Blow",
-    "skill_q": "Dredge Line",
-    "skill_w": "Titan's Wrath",
-    "skill_e": "Riptide",
-    "skill_r": "Depth Charge;Depth Charge 2"
   }
 }

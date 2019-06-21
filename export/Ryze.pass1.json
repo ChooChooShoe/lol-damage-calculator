@@ -80,10 +80,10 @@
       "chromas": false
     }
   ],
-  "lore": "Widely considered one of the most adept sorcerers on Runeterra, Ryze is an ancient, hard-bitten archmage with an impossibly heavy burden to bear. Armed with immense arcane power and a boundless constitution, he tirelessly hunts for World Runes\u2014fragments of the raw magic that once shaped the world from nothingness. He must retrieve these artifacts before they fall into the wrong hands, for Ryze understands the horrors they could unleash on Runeterra.",
-  "blurb": "Widely considered one of the most adept sorcerers on Runeterra, Ryze is an ancient, hard-bitten archmage with an impossibly heavy burden to bear. Armed with immense arcane power and a boundless constitution, he tirelessly hunts for World Runes\u2014fragments...",
+  "lore": "Widely considered one of the most adept sorcerers on Runeterra, Ryze is an ancient, hard-bitten archmage with an impossibly heavy burden to bear. Armed with immense arcane power and a boundless constitution, he tirelessly hunts for World Runes—fragments of the raw magic that once shaped the world from nothingness. He must retrieve these artifacts before they fall into the wrong hands, for Ryze understands the horrors they could unleash on Runeterra.",
+  "blurb": "Widely considered one of the most adept sorcerers on Runeterra, Ryze is an ancient, hard-bitten archmage with an impossibly heavy burden to bear. Armed with immense arcane power and a boundless constitution, he tirelessly hunts for World Runes—fragments...",
   "allytips": [
-    "Use Overload's passive to optimize for maximum damage or maximum survivability.",
+    "Use Overload's passive to optimize for maximum damage or maximum speed.",
     "Spell Flux's short cooldown allows it to be used to spread Flux to many enemies.",
     "Ryze can move and cast other spells while Realm Warp is charging without cancelling the portal."
   ],
@@ -106,7 +106,7 @@
   "stats": {
     "hp": 570.48,
     "hpperlevel": 98,
-    "mp": 400,
+    "mp": 300,
     "mpperlevel": 50,
     "movespeed": 340,
     "armor": 21.552,
@@ -116,7 +116,7 @@
     "attackrange": 550,
     "hpregen": 7,
     "hpregenperlevel": 0.55,
-    "mpregen": 6,
+    "mpregen": 8,
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
@@ -128,21 +128,20 @@
   "riot_spell_q": {
     "id": "RyzeQWrapper",
     "name": "Overload",
-    "description": "Passively, Ryze's other damaging spells reset Overload and begin to charge a Rune that can be used to empower Overload.<br><br>On cast, Ryze throws a charge of pure energy in a line, dealing damage to the first enemy struck. If a Rune is fully charged, Ryze also gains a shield and Movement Speed.",
-    "tooltip": "<spellPassive>Passive:</spellPassive> Rune Prison and Spell Flux reset Overload's cooldown and charge a <keywordMajor>Rune</keywordMajor> for {{ e2 }} seconds, up to {{ e9 }} <keywordMajor>Runes</keywordMajor>.<br /><br /><spellPassive>Active:</spellPassive> Unleash a runic blast, dealing {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> <scaleMana>(+{{ f1 }})</scaleMana> magic damage to the first enemy struck. Any active <keywordMajor>Runes</keywordMajor> are discharged.<br /><br />If {{ e9 }} <keywordMajor>Runes</keywordMajor> are discharged, they Overload, shielding Ryze from <scaleLevel>{{ f3 }}</scaleLevel> <scaleAP>(+{{ a2 }})</scaleAP> <scaleMana>(+{{ f2 }})</scaleMana> damage and increasing his Movement Speed by {{ e4 }}% for {{ e5 }} seconds. ",
+    "description": "Passively, Ryze's other basic abilities reset the cooldown of Overload and charge a rune. When Ryze casts Overload with 2 runes charged, he gains a brief burst of Movement Speed.<br><br>On cast, Ryze throws a charge of pure energy in a line, dealing damage to the first enemy struck. If the target has Flux on it, Overload deals extra damage and bounces to nearby enemies with Flux.",
+    "tooltip": "<spellPassive>Passive:</spellPassive> Rune Prison and Spell Flux reset Overload's cooldown and charge a rune (up to {{ maximumrunes }}) for {{ runeduration }} seconds. Overload discharges all runes, granting {{ movementspeedamount }}% Movement Speed for {{ movementspeedduration }} seconds if {{ maximumrunes }} runes are charged.<br /><br /><spellActive>Active:</spellActive> Unleash a blast that deals {{ qdamagecalc }} magic damage to the first enemy struck. If the target has <keywordMajor>Flux</keywordMajor> on it, Overload consumes it, dealing {{ spell.ryzer:overloaddamagebonus }}% increased damage and bouncing to nearby enemies with <keywordMajor>Flux</keywordMajor>.",
     "leveltip": {
       "label": [
         "Damage",
         "Movement Speed"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e4 }}% -> {{ e4NL }}%"
+        "{{ basedamage }} -> {{ basedamageNL }}",
+        "{{ movementspeedamount }}% -> {{ movementspeedamountNL }}%"
       ]
     },
-    "maxrank": 6,
+    "maxrank": 5,
     "cooldown": [
-      6,
       6,
       6,
       6,
@@ -155,7 +154,6 @@
       40,
       40,
       40,
-      40,
       40
     ],
     "costBurn": "40",
@@ -164,38 +162,33 @@
       null,
       [
         60,
-        85,
-        110,
-        135,
-        160,
-        185
+        100,
+        140,
+        180,
+        220
       ],
       [
-        4,
-        4,
-        4,
-        4,
-        4,
-        4
+        25,
+        40,
+        55,
+        70,
+        85
       ],
       [
-        55,
-        55,
-        55,
-        55,
-        55,
-        55
+        50,
+        75,
+        100,
+        125,
+        150
       ],
       [
         25,
         28,
         31,
-        34,
-        37,
-        40
+        24,
+        37
       ],
       [
-        2,
         2,
         2,
         2,
@@ -207,11 +200,9 @@
         2,
         2,
         2,
-        2,
         2
       ],
       [
-        3,
         3,
         3,
         3,
@@ -219,15 +210,13 @@
         3
       ],
       [
-        3,
-        3,
-        3,
-        3,
-        3,
-        3
+        0.015,
+        0.015,
+        0.015,
+        0.015,
+        0.015
       ],
       [
-        2,
         2,
         2,
         2,
@@ -235,7 +224,6 @@
         2
       ],
       [
-        0,
         0,
         0,
         0,
@@ -245,33 +233,21 @@
     ],
     "effectBurn": [
       null,
-      "60/85/110/135/160/185",
-      "4",
-      "55",
-      "25/28/31/34/37/40",
+      "60/100/140/180/220",
+      "25/40/55/70/85",
+      "50/75/100/125/150",
+      "25/28/31/24/37",
       "2",
       "2",
       "3",
-      "3",
+      "0.01",
       "2",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.45,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a2"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
-      1000,
       1000,
       1000,
       1000,
@@ -293,16 +269,16 @@
   "riot_spell_w": {
     "id": "RyzeW",
     "name": "Rune Prison",
-    "description": "Ryze traps a target enemy unit in a cage of runes, damaging them and preventing them from moving.",
-    "tooltip": "Instantly root an enemy for {{ e1 }} second and deal {{ e2 }} <scaleAP>(+{{ a1 }})</scaleAP> <scaleMana>(+{{ f1 }})</scaleMana> magic damage.",
+    "description": "Ryze traps a target in a cage of runes, damaging them and slowing their movement. If the target has Flux on it, they are instead rooted.",
+    "tooltip": "Instantly deal {{ wdamagecalc }} magic damage and slow an enemy by {{ slowamount*100 }}% for {{ ccduration }} seconds. If the the target has <keywordMajor>Flux</keywordMajor> on it, it is rooted instead, consuming <keywordMajor>Flux</keywordMajor> in the process.",
     "leveltip": {
       "label": [
         "Damage",
         "Cooldown",
-        "@AbilityResourceName@ Cost"
+        "Mana Cost"
       ],
       "effect": [
-        "{{ e2 }} -> {{ e2NL }}",
+        "{{ basedamage }} -> {{ basedamageNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}",
         "{{ cost }} -> {{ costNL }}"
       ]
@@ -317,22 +293,22 @@
     ],
     "cooldownBurn": "13/12/11/10/9",
     "cost": [
-      50,
-      60,
+      40,
+      55,
       70,
-      80,
-      90
+      85,
+      100
     ],
-    "costBurn": "50/60/70/80/90",
+    "costBurn": "40/55/70/85/100",
     "datavalues": {},
     "effect": [
       null,
       [
-        0.75,
-        0.75,
-        0.75,
-        0.75,
-        0.75
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5
       ],
       [
         80,
@@ -342,11 +318,11 @@
         160
       ],
       [
-        0,
-        0,
-        0,
-        0,
-        0
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3
       ],
       [
         0,
@@ -400,9 +376,9 @@
     ],
     "effectBurn": [
       null,
-      "0.75",
+      "1.5",
       "80/100/120/140/160",
-      "0",
+      "0.3",
       "0",
       "0",
       "0",
@@ -411,13 +387,7 @@
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
@@ -442,18 +412,16 @@
   "riot_spell_e": {
     "id": "RyzeE",
     "name": "Spell Flux",
-    "description": "Ryze releases an orb of pure magical power that damages an enemy and debuffs them. Ryze's spells have additional effects against the debuffed enemy.",
-    "tooltip": "Apply Flux to an enemy, dealing {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> <scaleMana>(+{{ f1 }})</scaleMana> magic damage. Spells consume Flux for bonus effects:<br /><br /><keywordMajor>Overload:</keywordMajor> Deals {{ e2 }}% more damage and spreads to nearby enemies with Flux.<br /><keywordMajor>Rune Prison:</keywordMajor> Root duration is increased to {{ e6 }} seconds.<br /><keywordMajor>Spell Flux:</keywordMajor> Spreads Spell Flux to nearby enemies, dealing {{ e8 }}% damage.<br /><br />Spells that kill enemies affected by Flux spread Spell Flux to nearby enemies.",
+    "description": "Ryze releases an orb of pure magical power that damages an enemy and debuffs all nearby enemies. Ryze's spells have additional effects against the debuffed enemy.",
+    "tooltip": "Fire an orb that deals {{ edamagecalc }} magic damage, spreading <keywordMajor>Flux</keywordMajor> to the target and all nearby enemies for {{ debuffduration }} seconds.<br /><br />If attempting to apply <keywordMajor>Flux</keywordMajor> to an enemy that already has it, it further spreads.<br />",
     "leveltip": {
       "label": [
         "Damage",
-        "Overload Damage Increase",
         "Cooldown",
-        "@AbilityResourceName@ Cost"
+        "Mana Cost"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e2 }}% -> {{ e2NL }}%",
+        "{{ basedamage }} -> {{ basedamageNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}",
         "{{ cost }} -> {{ costNL }}"
       ]
@@ -468,22 +436,22 @@
     ],
     "cooldownBurn": "3.25/3/2.75/2.5/2.25",
     "cost": [
-      60,
+      40,
+      55,
       70,
-      80,
-      90,
+      85,
       100
     ],
-    "costBurn": "60/70/80/90/100",
+    "costBurn": "40/55/70/85/100",
     "datavalues": {},
     "effect": [
       null,
       [
-        70,
+        80,
         90,
+        100,
         110,
-        130,
-        150
+        120
       ],
       [
         40,
@@ -528,11 +496,11 @@
         4
       ],
       [
-        50,
-        50,
-        50,
-        50,
-        50
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       [
         0,
@@ -551,24 +519,18 @@
     ],
     "effectBurn": [
       null,
-      "70/90/110/130/150",
+      "80/90/100/110/120",
       "40/50/60/70/80",
       "100",
       "0.1",
       "1.5",
       "1.5",
       "4",
-      "50",
+      "1",
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.3,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
@@ -593,23 +555,27 @@
   "riot_spell_r": {
     "id": "RyzeR",
     "name": "Realm Warp",
-    "description": "Ryze creates a portal to a nearby location. After a few seconds, allies standing near the portal are teleported to the target location.",
-    "tooltip": "Ryze opens a portal to a location up to {{ castrange }} range away. After {{ chargetimetooltip }} seconds, all allies near the portal are teleported to that location.<br /><br /><i>If Ryze becomes unable to cast or move, Realm Warp is cancelled.</i>",
+    "description": "Passively, Overload deals even more damage against targets with Flux.<br><br>On cast, Ryze creates a portal to a nearby location. After a few seconds, allies standing near the portal are teleported to the target location.",
+    "tooltip": "<spellPassive>Passive:</spellPassive> Overload damage bonus against targets with Flux increased to {{ overloaddamagebonus }}%.<br /><br /><spellActive>Active:</spellActive> Ryze opens a portal to another location. After {{ chargetimetooltip }} seconds, all allies near the portal are teleported to that location.<br /><br /><rules>If Ryze becomes unable to cast or move, Realm Warp is cancelled.</rules>",
     "leveltip": {
       "label": [
-        "Range"
+        "Cooldown",
+        "Overload Damage Increase"
       ],
       "effect": [
-        "{{ castrange }} -> {{ castrangeNL }}"
+        "{{ cooldown }} -> {{ cooldownNL }}",
+        "{{ overloaddamagebonus }}% -> {{ overloaddamagebonusNL }}%"
       ]
     },
-    "maxrank": 2,
+    "maxrank": 3,
     "cooldown": [
+      210,
       180,
-      180
+      150
     ],
-    "cooldownBurn": "180",
+    "cooldownBurn": "210/180/150",
     "cost": [
+      100,
       100,
       100
     ],
@@ -619,41 +585,51 @@
       null,
       [
         0,
-        0
-      ],
-      [
         0,
         0
       ],
       [
         0,
-        0
-      ],
-      [
         0,
         0
       ],
       [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         0
       ],
       [
         6,
+        6,
         6
       ],
       [
         0,
-        0
-      ],
-      [
         0,
         0
       ],
       [
         0,
+        0,
         0
       ],
       [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
         0,
         0
       ]
@@ -675,10 +651,11 @@
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
-      1750,
+      3000,
+      3000,
       3000
     ],
-    "rangeBurn": "1750/3000",
+    "rangeBurn": "3000",
     "image": {
       "full": "RyzeR.png",
       "sprite": "spell10.png",
@@ -2104,6 +2081,7 @@
       "customTag": "",
       "sortrank": 0,
       "extensionPage": false,
+      "useObviousCheckmark": false,
       "customPanel": null,
       "blocks": [
         {
@@ -2128,8 +2106,8 @@
               "hideCount": false
             },
             {
-              "id": "2003",
-              "count": 3,
+              "id": "2031",
+              "count": 1,
               "hideCount": false
             },
             {
@@ -2171,7 +2149,7 @@
               "hideCount": false
             },
             {
-              "id": "3010",
+              "id": "3802",
               "count": 1,
               "hideCount": false
             }
@@ -2194,17 +2172,7 @@
           ],
           "items": [
             {
-              "id": "3158",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3027",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3029",
+              "id": "3020",
               "count": 1,
               "hideCount": false
             },
@@ -2237,17 +2205,17 @@
           ],
           "items": [
             {
+              "id": "3165",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3089",
+              "count": 1,
+              "hideCount": false
+            },
+            {
               "id": "3135",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3157",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3907",
               "count": 1,
               "hideCount": false
             }
@@ -2270,17 +2238,17 @@
           ],
           "items": [
             {
-              "id": "3102",
+              "id": "3116",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3089",
+              "id": "3800",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3165",
+              "id": "3001",
               "count": 1,
               "hideCount": false
             }
@@ -2302,11 +2270,6 @@
             ""
           ],
           "items": [
-            {
-              "id": "2031",
-              "count": 1,
-              "hideCount": false
-            },
             {
               "id": "2139",
               "count": 1,
@@ -2490,6 +2453,50 @@
       ]
     }
   ],
+  "wikia_champ": {
+    "ms": 340,
+    "range": 550,
+    "as_base": 0.625,
+    "dam_base": 55.04,
+    "arm_base": 21.552,
+    "mr_base": 30,
+    "hp_base": 570.48,
+    "mp_base": 300,
+    "hp5_base": 7,
+    "mp5_base": 8,
+    "as_lvl": 2.112,
+    "dam_lvl": 3,
+    "arm_lvl": 3,
+    "mr_lvl": 0.5,
+    "hp_lvl": 98,
+    "mp_lvl": 50,
+    "hp5_lvl": 0.55,
+    "mp5_lvl": 0.8,
+    "image": "RyzeSquare.png",
+    "title": "the Rune Mage",
+    "herotype": "Mage",
+    "alttype": "Fighter",
+    "rangetype": "Ranged",
+    "date": 2009,
+    "patch": "Alpha Week 2",
+    "changes": "9.12.1",
+    "role": "Battlemage",
+    "damage": 3,
+    "toughness": 1,
+    "control": 2,
+    "mobility": 2,
+    "utility": 2,
+    "style": 100,
+    "difficulty": 2,
+    "adaptivetype": "magic",
+    "be": 450,
+    "rp": 260,
+    "skill_i": "Arcane Mastery",
+    "skill_q": "Overload;Overload 2;Overload 3;Overload 4;Overload 5",
+    "skill_w": "Rune Prison",
+    "skill_e": "Spell Flux",
+    "skill_r": "Realm Warp"
+  },
   "wikia_skill_i1": {
     "name": "Arcane Mastery",
     "champion": "Ryze",
@@ -2598,49 +2605,5 @@
     "spelleffects": false,
     "notes": "\n* ''Realm Warp'' casts at maximum range if attempting to cast beyond it.\n* ''Realm Warp'' will try to predict whether an ally is trying to run out of it or not and will not teleport allies that are very near the edge and move click outside of it.\n* {{tip|Untargetable}} effect lasts approximately {{fd|0.75}} seconds.\n* Teleported units retain the same relative positions to one another upon arrival.\n* '''Ryze''' will not teleport if he exits the area, but the teleport will still occur for other allies so long as Ryze isn't interrupted.\n* {{tip|Ground}} will both prevent '''Ryze''' from activating, as well as prevent units from being teleported, but will not interrupt the channel.\n* Allied {{tip|stasis}} effects will '''not''' interrupt ''Realm Warp's'' channel - excluding {{ii|Zhonya's Hourglass}} and {{ii|Stopwatch}} - like the passive of {{ii|Guardian Angel}} or an allied {{cai|Tempered Fate|Bard}}. Other allies untargetable by similar effects will also be teleported.\n** A hostile {{cai|Tempered Fate|Bard}} will interrupt the channel.\n* ''Realm Warp's'' interaction with channelled abilities seems to be case-by-case:\n** The following channels will prevent the caster from being teleported: {{si|Teleport}}, {{si|Recall}} and {{ai|Ace in the Hole|Caitlyn}}. They will not, however, interrupt the channel (e.g. if Ryze uses Teleport).\n** The following channels do not prevent you getting teleported and are '''not''' interrupted: {{ai|Crowstorm|Fiddlesticks}}{{tt|*|When Fiddlesticks' channel resolves, he will blink the full distance to his own target location regardless of how far away Ryze has taken him.}}, {{ai|Requiem|Karthus}} and {{ai|Absolute Zero|Nunu}}.\n** ''These lists are not complete.''\n* Ryze can teleport {{ci|Zac}} during his {{ai|Cell Division}}, moving both his ''blobbies'' as well as the point where they are attempting to converge.",
     "yvideo": "Ryze - R"
-  },
-  "wikia_champ": {
-    "ms": 340,
-    "range": 550,
-    "as_base": 0.625,
-    "dam_base": 55.04,
-    "arm_base": 21.552,
-    "mr_base": 30,
-    "hp_base": 570.48,
-    "mp_base": 300,
-    "hp5_base": 7,
-    "mp5_base": 8,
-    "as_lvl": 2.112,
-    "dam_lvl": 3,
-    "arm_lvl": 3,
-    "mr_lvl": 0.5,
-    "hp_lvl": 98,
-    "mp_lvl": 50,
-    "hp5_lvl": 0.55,
-    "mp5_lvl": 0.8,
-    "image": "RyzeSquare.png",
-    "title": "the Rune Mage",
-    "herotype": "Mage",
-    "alttype": "Fighter",
-    "rangetype": "Ranged",
-    "date": "2009-02-21",
-    "patch": "Alpha Week 2",
-    "changes": "9.12.1",
-    "role": "Battlemage",
-    "damage": 3,
-    "toughness": 1,
-    "control": 2,
-    "mobility": 2,
-    "utility": 2,
-    "style": 100,
-    "difficulty": 2,
-    "adaptivetype": "magic",
-    "be": 450,
-    "rp": 260,
-    "skill_i": "Arcane Mastery",
-    "skill_q": "Overload;Overload 2;Overload 3;Overload 4;Overload 5",
-    "skill_w": "Rune Prison",
-    "skill_e": "Spell Flux",
-    "skill_r": "Realm Warp"
   }
 }

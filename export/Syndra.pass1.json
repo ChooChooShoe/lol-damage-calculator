@@ -555,14 +555,14 @@
     "id": "SyndraR",
     "name": "Unleashed Power",
     "description": "Syndra bombards an enemy Champion with all of her Dark Spheres.",
-    "tooltip": "Draws upon Syndra's full cataclysmic power, harnessing Dark Spheres to deal magic damage to target enemy Champion. Unleashed Power manipulates the three Dark Spheres orbiting Syndra, in addition to up to 4 Dark Spheres previously created.<br /><br />Damage per sphere: {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP>.<br />Minimum total damage: {{ e2 }} <scaleAP>(+{{ a2 }})</scaleAP>.",
+    "tooltip": "Draws upon Syndra's full cataclysmic power, harnessing Dark Spheres to deal magic damage to target enemy Champion. Unleashed Power manipulates the three Dark Spheres orbiting Syndra, in addition to up to 4 Dark Spheres previously created.<br /><br />Damage per sphere: {{ damagecalc }}.<br />Minimum total damage: {{ mindamagecalc }}.",
     "leveltip": {
       "label": [
         "Damage",
         "Cooldown"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
+        "{{ damagepersphere }} -> {{ damagepersphereNL }}",
         "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
@@ -583,19 +583,19 @@
     "effect": [
       null,
       [
-        90,
-        135,
-        180
+        0,
+        0,
+        0
       ],
       [
-        270,
-        405,
-        540
+        0,
+        0,
+        0
       ],
       [
-        7,
-        7,
-        7
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -635,9 +635,9 @@
     ],
     "effectBurn": [
       null,
-      "90/135/180",
-      "270/405/540",
-      "7",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
@@ -646,18 +646,7 @@
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.2,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a2"
-      }
-    ],
+    "vars": [],
     "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
@@ -2467,6 +2456,50 @@
       ]
     }
   ],
+  "wikia_champ": {
+    "ms": 330,
+    "range": 550,
+    "as_base": 0.625,
+    "dam_base": 53.872,
+    "arm_base": 24.712,
+    "mr_base": 30,
+    "hp_base": 523,
+    "mp_base": 480,
+    "hp5_base": 6.5,
+    "mp5_base": 8,
+    "as_lvl": 2,
+    "dam_lvl": 2.9,
+    "arm_lvl": 3.4,
+    "mr_lvl": 0.5,
+    "hp_lvl": 90,
+    "mp_lvl": 30,
+    "hp5_lvl": 0.6,
+    "mp5_lvl": 0.8,
+    "image": "SyndraSquare.png",
+    "title": "the Dark Sovereign",
+    "herotype": "Mage",
+    "alttype": "Controller",
+    "rangetype": "Ranged",
+    "date": 2012,
+    "patch": "V1.0.0.147",
+    "changes": "8.15.1",
+    "role": "Burst",
+    "damage": 3,
+    "toughness": 0,
+    "control": 2,
+    "mobility": 0,
+    "utility": 0,
+    "style": 100,
+    "difficulty": 2,
+    "adaptivetype": "magic",
+    "be": 4800,
+    "rp": 880,
+    "skill_i": "Transcendent",
+    "skill_q": "Dark Sphere",
+    "skill_w": "Force of Will;Force of Will 2",
+    "skill_e": "Scatter the Weak",
+    "skill_r": "Unleashed Power"
+  },
   "wikia_skill_i1": {
     "name": "Transcendent",
     "champion": "Syndra",
@@ -2506,6 +2539,9 @@
     "spellshield": true,
     "notes": "\n* ''Dark Sphere'' has no cast time and does not interrupt '''Syndra's''' previous orders.\n* ''Dark Sphere'' can be conjured inside terrain, but can't be thrown there with {{ai|Force of Will|Syndra}}."
   },
+  "wikia_skill_w2": {
+    "skill": "W"
+  },
   "wikia_skill_w1": {
     "name": "Force of Will",
     "champion": "Syndra",
@@ -2544,8 +2580,8 @@
     "cooldown": "{{ap|16 to 12}}",
     "cost": 50,
     "costtype": "Mana",
-    "target_range": "700 / {{tt|800|Dark Spheres}}",
-    "angle": "40{{degree}} / {{tt|60{{degree}}|Transcendent Bonus.}}",
+    "target_range": 700,
+    "angle": 40,
     "speed": 2500,
     "targeting": "Direction",
     "affects": "Enemies",
@@ -2579,49 +2615,5 @@
     "callforhelp": true,
     "spellshield": "Special",
     "notes": "\n* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the spheres apply their damage. She can walk away as soon as the casting has completed, as the spheres only begin dealing their damage after the casting time.\n* Each one of the sphere hits is considered a single-target spell, triggering {{ii|Muramana}} each time.\n* Casting ''Unleashed Power'' on a target that becomes [[Untargetability|untargetable]] while the spheres are in flight will cause all spheres to deal no damage and be destroyed.\n* Spheres already in flight will still travel if '''Syndra's''' target dies, but any remaining sphere will not. However their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown.\n** Depending on how many spheres are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the sphere behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single sphere."
-  },
-  "wikia_champ": {
-    "ms": 330,
-    "range": 550,
-    "as_base": 0.625,
-    "dam_base": 53.872,
-    "arm_base": 24.712,
-    "mr_base": 30,
-    "hp_base": 523,
-    "mp_base": 480,
-    "hp5_base": 6.5,
-    "mp5_base": 8,
-    "as_lvl": 2,
-    "dam_lvl": 2.9,
-    "arm_lvl": 3.4,
-    "mr_lvl": 0.5,
-    "hp_lvl": 90,
-    "mp_lvl": 30,
-    "hp5_lvl": 0.6,
-    "mp5_lvl": 0.8,
-    "image": "SyndraSquare.png",
-    "title": "the Dark Sovereign",
-    "herotype": "Mage",
-    "alttype": "Controller",
-    "rangetype": "Ranged",
-    "date": "2012-09-13",
-    "patch": "V1.0.0.147",
-    "changes": "8.15.1",
-    "role": "Burst",
-    "damage": 3,
-    "toughness": 0,
-    "control": 2,
-    "mobility": 0,
-    "utility": 0,
-    "style": 100,
-    "difficulty": 2,
-    "adaptivetype": "magic",
-    "be": 4800,
-    "rp": 880,
-    "skill_i": "Transcendent",
-    "skill_q": "Dark Sphere",
-    "skill_w": "Force of Will;Force of Will 2",
-    "skill_e": "Scatter the Weak",
-    "skill_r": "Unleashed Power"
   }
 }

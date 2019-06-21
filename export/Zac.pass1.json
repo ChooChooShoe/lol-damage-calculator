@@ -238,16 +238,16 @@
   "riot_spell_w": {
     "id": "ZacW",
     "name": "Unstable Matter",
-    "description": "Zac's body erupts, damaging nearby enemies.",
-    "tooltip": "Zac's body erupts, dealing {{ e1 }} magic damage +{{ e3 }}% of the enemy's max health as magic damage to nearby enemies.<br /><br />Absorbing <span class=\"color3ca126\">Goo</span> reduces Unstable Matter's cooldown by {{ e4 }} second.<br /><br /><span class=\"size16 color8C8C8C\">Max health damage is capped at {{ e5 }} versus minions and monsters.</span>",
+    "description": "Zac explodes outward towards nearby enemies, dealing a percentage of their maximum health as magic damage.",
+    "tooltip": "Zac's body erupts, dealing {{ basedamage }} + ({{ basemaxhealthdamage*100 }}+{{ displaypercentdamage }}) of the enemy's max health as magic damage to nearby enemies.<br /><br />Absorbing <span class=\"color3ca126\">Goo</span> reduces Unstable Matter's cooldown by 1 second.<br /><br /><rules>Max health damage is capped at 200 versus minions and monsters</rules>",
     "leveltip": {
       "label": [
         "Flat Damage",
-        "Percent Max Health Damage"
+        "Percent Max Health"
       ],
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e3 }}% -> {{ e3NL }}%"
+        "{{ basedamage }} -> {{ basedamageNL }}",
+        "{{ basemaxhealthdamage*100.000000 }}% -> {{ basemaxhealthdamagenl*100.000000 }}%"
       ]
     },
     "maxrank": 5,
@@ -271,25 +271,25 @@
     "effect": [
       null,
       [
-        15,
-        30,
-        45,
-        60,
-        75
+        25,
+        40,
+        55,
+        70,
+        85
       ],
       [
-        4,
-        4,
-        4,
-        4,
-        4
+        0.04,
+        0.04,
+        0.04,
+        0.04,
+        0.04
       ],
       [
-        4,
-        5,
-        6,
-        7,
-        8
+        0.04,
+        0.05,
+        0.06,
+        0.07,
+        0.08
       ],
       [
         1,
@@ -343,9 +343,9 @@
     ],
     "effectBurn": [
       null,
-      "15/30/45/60/75",
-      "4",
-      "4/5/6/7/8",
+      "25/40/55/70/85",
+      "0.04",
+      "0.04/0.05/0.06/0.07/0.08",
       "1",
       "200",
       "0",
@@ -355,7 +355,7 @@
       "0"
     ],
     "vars": [],
-    "costType": "% of current Health",
+    "costType": " {{ abilityresourcename }}",
     "maxammo": "-1",
     "range": [
       350,
@@ -374,7 +374,7 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ e2 }}% of current Health"
+    "resource": "{{ cost }} {{ abilityresourcename }}"
   },
   "riot_spell_e": {
     "id": "ZacE",
@@ -2963,13 +2963,61 @@
       ]
     }
   ],
+  "wikia_champ": {
+    "nickname": "Zaun Amorphous Combatant, Z.A.C.",
+    "ms": 340,
+    "range": 175,
+    "as_base": 0.638,
+    "dam_base": 60,
+    "arm_base": 33,
+    "mr_base": 32,
+    "hp_base": 615,
+    "mp_base": 0,
+    "hp5_base": 8,
+    "mp5_base": 0,
+    "as_lvl": 1.6,
+    "as_lvl1": 0.736,
+    "as_lvl1_bonus": 15,
+    "dam_lvl": 3.4,
+    "arm_lvl": 3.5,
+    "mr_lvl": 1.25,
+    "hp_lvl": 95,
+    "mp_lvl": 0,
+    "hp5_lvl": 0.5,
+    "mp5_lvl": 0,
+    "image": "ZacSquare.png",
+    "title": "the Secret Weapon",
+    "herotype": "Tank",
+    "alttype": "Fighter",
+    "rangetype": "Melee",
+    "date": 2013,
+    "patch": "V3.5",
+    "changes": "9.12.1",
+    "resource": "Health",
+    "role": "Vanguard",
+    "damage": 2,
+    "toughness": 3,
+    "control": 3,
+    "mobility": 2,
+    "utility": 0,
+    "style": 100,
+    "difficulty": 1,
+    "adaptivetype": "magic",
+    "be": 4800,
+    "rp": 880,
+    "skill_i": "Cell Division;Cell Division 2",
+    "skill_q": "Stretching Strikes",
+    "skill_w": "Unstable Matter",
+    "skill_e": "Elastic Slingshot",
+    "skill_r": "Let's Bounce!"
+  },
   "wikia_skill_i1": {
     "name": "Cell Division",
     "champion": "Zac",
     "skill": "I",
     "icon": "Cell Division.png",
     "blurb": "Each time Zac hits an enemy with an ability, he sheds a chunk of himself that can be reabsorbed to restore Health. Upon taking fatal damage, Zac splits into 4 bloblets that attempt to recombine. If any bloblets remain, he will revive with an amount of Health depending on the Health of the surviving bloblets. Each bloblet has a percentage of Zac's maximum Health, Armor and Magic Resistance. This ability has a 5 minute cooldown.",
-    "description": "{{sbc|Innate - Goo:}} Every time '''Zac''' damages at least one enemy with an [[Champion ability|ability]], he sheds, depending on the ability, {{tt|a number of chunks|\u2022 Depending on the ability the amount of produced chunks can vary:&#013;\n&nbsp;\u2022 Stretching Strikes: Maximum of 2 chunks, 1 chunk for each strike hit on a different target. The collision does not produce additional chunks.&#013;\n&nbsp;\u2022 Unstable Matter: Maximum of 1 chunk, no matter how many enemies hit.&#013;\n&nbsp;\u2022 Elastic Slingshot: Maximum of 5 chunks, 1 chunk for each enemy champion hit.&#013;\n&nbsp;\u2022 Let's Bounce!: Maximum of 4 chunks, 1 chunk for each bounce that hits one or more enemy champion.}} of himself to a nearby location, landing towards visible nearby enemy champions and lasting for 6 seconds.",
+    "description": "{{sbc|Innate - Goo:}} Every time '''Zac''' damages at least one enemy with an [[Champion ability|ability]], he sheds, depending on the ability, {{tt|a number of chunks|• Depending on the ability the amount of produced chunks can vary:&#013;\n&nbsp;• Stretching Strikes: Maximum of 2 chunks, 1 chunk for each strike hit on a different target. The collision does not produce additional chunks.&#013;\n&nbsp;• Unstable Matter: Maximum of 1 chunk, no matter how many enemies hit.&#013;\n&nbsp;• Elastic Slingshot: Maximum of 5 chunks, 1 chunk for each enemy champion hit.&#013;\n&nbsp;• Let's Bounce!: Maximum of 4 chunks, 1 chunk for each bounce that hits one or more enemy champion.}} of himself to a nearby location, landing towards visible nearby enemy champions and lasting for 6 seconds.",
     "description2": "Both '''Zac''' and his enemies can interact with these chunks by being within 50 units of them: '''Zac''' can move over them to consume them, restoring {{sti|health|{{as|4% '''maximum''' health}}}}; enemies can move over them to prematurely destroy them.",
     "icon3": "Cell Division 2.png",
     "description3": "Upon taking [[Death|fatal damage]], '''Zac''' splits into 4 uncontrollable bloblets that move to his final location over {{pp|5|8 to 4|1;6;10;13;17}} seconds. If any of these bloblets remain at the end of the duration, '''Zac''' {{tip|resurrection|recombines}} and returns at {{sti|health|{{as|{{tt|10 - 50%|Based on his bloblets' total remaining health. Reaches the maximum amount at full health on all bloblets}} '''maximum''' health}}}}.",
@@ -3074,53 +3122,5 @@
     "knockdown": false,
     "grounded": true,
     "notes": "\n* No additional details."
-  },
-  "wikia_champ": {
-    "nickname": "Zaun Amorphous Combatant, Z.A.C.",
-    "ms": 340,
-    "range": 175,
-    "as_base": 0.638,
-    "dam_base": 60,
-    "arm_base": 33,
-    "mr_base": 32,
-    "hp_base": 615,
-    "mp_base": 0,
-    "hp5_base": 8,
-    "mp5_base": 0,
-    "as_lvl": 1.6,
-    "as_lvl1": 0.736,
-    "as_lvl1_bonus": 15,
-    "dam_lvl": 3.4,
-    "arm_lvl": 3.5,
-    "mr_lvl": 1.25,
-    "hp_lvl": 95,
-    "mp_lvl": 0,
-    "hp5_lvl": 0.5,
-    "mp5_lvl": 0,
-    "image": "ZacSquare.png",
-    "title": "the Secret Weapon",
-    "herotype": "Tank",
-    "alttype": "Fighter",
-    "rangetype": "Melee",
-    "date": "2013-03-29",
-    "patch": "V3.5",
-    "changes": "9.12.1",
-    "resource": "Health",
-    "role": "Vanguard",
-    "damage": 2,
-    "toughness": 3,
-    "control": 3,
-    "mobility": 2,
-    "utility": 0,
-    "style": 100,
-    "difficulty": 1,
-    "adaptivetype": "magic",
-    "be": 4800,
-    "rp": 880,
-    "skill_i": "Cell Division;Cell Division 2",
-    "skill_q": "Stretching Strikes",
-    "skill_w": "Unstable Matter",
-    "skill_e": "Elastic Slingshot",
-    "skill_r": "Let's Bounce!"
   }
 }

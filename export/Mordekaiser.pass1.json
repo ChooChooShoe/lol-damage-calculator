@@ -50,17 +50,17 @@
       "chromas": false
     }
   ],
-  "lore": "The baleful revenant Mordekaiser is among the most terrifying and hateful spirits haunting the Shadow Isles. He has existed for countless centuries, shielded from true death by necromantic sorcery and the force of his own dark will. Those who dare face Mordekaiser in battle risk a horrific curse: He enslaves his victims' souls to become instruments of destruction.",
-  "blurb": "The baleful revenant Mordekaiser is among the most terrifying and hateful spirits haunting the Shadow Isles. He has existed for countless centuries, shielded from true death by necromantic sorcery and the force of his own dark will. Those who dare face...",
+  "lore": "Twice slain and thrice born, Mordekaiser is a brutal warlord from a foregone epoch who uses his necromantic sorcery to bind souls into an eternity of servitude. Few now remain who remember his earlier conquests, or know the true extent of his powers—but there are some ancient souls that do, and they fear the day when he may return to claim dominion over both the living and the dead.",
+  "blurb": "Twice slain and thrice born, Mordekaiser is a brutal warlord from a foregone epoch who uses his necromantic sorcery to bind souls into an eternity of servitude. Few now remain who remember his earlier conquests, or know the true extent of his powers—but...",
   "allytips": [
-    "You can control a pet by holding down the alt key and using the right mouse button.",
-    "Sometimes the best defense is more offense; use Mordekaiser's abilities to charge up his shield.",
-    "Remember that Children of the Grave can be used defensively because of its lifesteal component."
+    "Offense is your defense. Keep fighting to build up larger Indestructible shields.",
+    "Hitting multiple champions with the same ability can help quickly activate Darkness Rise.",
+    "Use Realm of Death on a low health enemy to guarantee the kill and keep their stats for the rest of a teamfight."
   ],
   "enemytips": [
-    "Mordekaiser's abilities charge up his shield, making him tougher to kill over time. Try focusing fire on Mordekaiser to burst him down.",
-    "Keep your distance and don't stand near creep waves since he'll be aiming Siphon of Destruction at them.",
-    "Watch out for the Children of the Grave and Ignite combo. If you're low enough, this will kill you and give his team a powerful ghost."
+    "Mordekaiser builds up a powerful damage aura when fighting champions, so keep your distance.",
+    "Damage he deals can be converted into a large shield, and consumed for health",
+    "Realm of Death will cut you off from your teammates completely. Try to save mobility spells to escape Mordekaiser once inside"
   ],
   "tags": [
     "Fighter"
@@ -73,55 +73,53 @@
     "difficulty": 4
   },
   "stats": {
-    "hp": 530,
-    "hpperlevel": 78,
-    "mp": 0,
+    "hp": 575,
+    "hpperlevel": 90,
+    "mp": 100,
     "mpperlevel": 0,
-    "movespeed": 325,
-    "armor": 25,
-    "armorperlevel": 3.75,
-    "spellblock": 32.1,
-    "spellblockperlevel": 1.25,
+    "movespeed": 335,
+    "armor": 39,
+    "armorperlevel": 4,
+    "spellblock": 32,
+    "spellblockperlevel": 1.5,
     "attackrange": 175,
-    "hpregen": 4,
-    "hpregenperlevel": 0.3,
+    "hpregen": 5,
+    "hpregenperlevel": 0.75,
     "mpregen": 0,
     "mpregenperlevel": 0,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 61,
-    "attackdamageperlevel": 5,
-    "attackspeedperlevel": 2.2,
-    "attackspeed": 0.601
+    "attackdamage": 65,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 1,
+    "attackspeed": 0.625
   },
   "riot_spell_q": {
-    "id": "MordekaiserMaceOfSpades",
-    "name": "Mace of Spades",
-    "description": "Mordekaiser's next three attacks deal escalating bonus damage.",
-    "tooltip": "Mordekaiser's next three hits are empowered. The first two strikes deal {{ e3 }} <span class=\"colorFF8C00\">(+{{ f1 }})</span> <span class=\"color99FF99\">(+{{ f2 }})</span> bonus magic damage. The final strike deals {{ e9 }} times the bonus damage of the previous strikes, up to {{ f5 }} <span class=\"colorFF8C00\">(+{{ f3 }})</span> <span class=\"color99FF99\">(+{{ f4 }})</span>.",
+    "id": "MordekaiserQ",
+    "name": "Obliterate",
+    "description": "Mordekaiser smashes the ground with his mace dealing damage to each enemy struck. Damage is increased when hitting a single enemy.",
+    "tooltip": "Mordekaiser smashes the ground with Nightfall dealing <magicDamage>{{ qdamage }} magic damage</magicDamage> to all enemies in the area, increased by {{ isolationtooltip*100 }}% if it hits only a single enemy.",
     "leveltip": {
       "label": [
-        "Bonus Damage",
-        "Attack Damage Ratio",
-        "Cooldown",
-        "Health Cost"
+        "Isolation Damage",
+        "Damage",
+        "Cooldown"
       ],
       "effect": [
-        "{{ e3 }} -> {{ e3NL }}",
-        "{{ e7 }} -> {{ e7NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}",
-        "{{ e0 }} -> {{ e0NL }}"
+        "{{ isolationscalar*100.000000 }}% -> {{ isolationscalarnl*100.000000 }}%",
+        "{{ qbasedamage }} -> {{ qbasedamageNL }}",
+        "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
-      10,
-      8.5,
-      7,
-      5.5,
+      9,
+      7.75,
+      6.5,
+      5.25,
       4
     ],
-    "cooldownBurn": "10/8.5/7/5.5/4",
+    "cooldownBurn": "9/7.75/6.5/5.25/4",
     "cost": [
       0,
       0,
@@ -134,113 +132,102 @@
     "effect": [
       null,
       [
-        132,
-        181.5,
-        231,
-        280.5,
-        330
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        10,
-        15,
-        20,
-        25,
-        30
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        10,
-        20,
-        30,
-        40,
-        50
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        4,
-        4,
-        4,
-        4,
-        4
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        30,
-        60,
-        90,
-        120,
-        150
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        20,
-        225,
-        250,
-        275,
-        300
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        0.5,
-        0.6,
-        0.7,
-        0.8,
-        0.9
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        0.6,
-        0.6,
-        0.6,
-        0.6,
-        0.6
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        20,
-        23,
-        26,
-        29,
-        32
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     ],
     "effectBurn": [
       null,
-      "132/181.5/231/280.5/330",
-      "10/15/20/25/30",
-      "10/20/30/40/50",
-      "4",
-      "30/60/90/120/150",
-      "20/225/250/275/300",
-      "0.5/0.6/0.7/0.8/0.9",
-      "0.6",
-      "2",
-      "20/23/26/29/32"
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
     ],
-    "vars": [
-      {
-        "link": "bonusattackdamage",
-        "coeff": 1.65,
-        "key": "f1"
-      },
-      {
-        "link": "bonusattackdamage",
-        "coeff": 1,
-        "key": "f2"
-      }
-    ],
-    "costType": " Health",
+    "vars": [],
+    "costType": "No Cost",
     "maxammo": "-1",
     "range": [
-      600,
-      600,
-      600,
-      600,
-      600
+      675,
+      675,
+      675,
+      675,
+      675
     ],
-    "rangeBurn": "600",
+    "rangeBurn": "675",
     "image": {
-      "full": "MordekaiserMaceOfSpades.png",
+      "full": "MordekaiserQ.png",
       "sprite": "spell7.png",
       "group": "spell",
       "x": 384,
@@ -248,34 +235,32 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ e0 }} Health"
+    "resource": "No Cost"
   },
   "riot_spell_w": {
-    "id": "MordekaiserCreepingDeathCast",
-    "name": "Harvesters of Sorrow",
-    "description": "Coats an ally in magnetic metal, increasing each unit's movement speed toward one another. While near one another, the metal swirls violently dealing damage per second to enemies.",
-    "tooltip": "<span class=\"size18 colorFF9900\">Passive:</span> Mordekaiser gains bonus experience for killing minions near allied champions.<br /><br />Bonus Experience Earned: <span class=\"colorFFFFFF\">{{ f3 }}</span><br /><br /><span class=\"size18 colorFF9900\">Active:</span> Target an ally, linking them to Mordekaiser:<ul><li>Both gain up to {{ e5 }} movement speed toward one another.</li><li>When they touch, they deal {{ e2 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage over 4 seconds to nearby enemies.</li><li>Reactivate to both instantly steal {{ e6 }} <span class=\"color99FF99\">(+{{ a2 }})</span> health from nearby enemies ({{ e7 }}% heal on minions, max {{ e8 }} units; deals magic damage).</li></ul>",
+    "id": "MordekaiserW",
+    "name": "Indestructible",
+    "description": "Mordekaiser stores damage he deals and takes to create a shield. He may consume the shield to heal.",
+    "tooltip": "Mordekaiser stores (<span class=\"color00BFFF\">{{ damageconversion*100 }}%</span>/<span class=\"colorB30000\">{{ damagetakenconversion*100 }}%</span>) of all damage he (<span class=\"color00BFFF\">deals</span>/<span class=\"colorB30000\">takes</span>) as a potential shield.<br /><br /><scaleLevel>Indestructible</scaleLevel> grants him the shield and may be cast a second time to consume it, healing for {{ healingpercent*100 }}% of the remaining value.",
     "leveltip": {
       "label": [
-        "Damage",
-        "Reactivation Damage",
+        "Healing Percent",
         "Cooldown"
       ],
       "effect": [
-        "{{ e2 }} -> {{ e2NL }}",
-        "{{ e6 }} -> {{ e6NL }}",
+        "{{ healingpercent*100.000000 }}% -> {{ healingpercentnl*100.000000 }}%",
         "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
+      14,
+      13,
       12,
       11,
-      10,
-      9,
-      8
+      10
     ],
-    "cooldownBurn": "12/11/10/9/8",
+    "cooldownBurn": "14/13/12/11/10",
     "cost": [
       0,
       0,
@@ -288,67 +273,67 @@
     "effect": [
       null,
       [
-        20,
-        30,
-        40,
-        50,
-        60
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        140,
-        180,
-        220,
-        260,
-        300
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        25,
-        35,
-        45,
-        55,
-        65
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        1,
-        1,
-        1,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        75,
-        75,
-        75,
-        75,
-        75
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        50,
-        85,
-        120,
-        155,
-        190
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        25,
-        25,
-        25,
-        25,
-        25
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        2,
-        2,
-        2,
-        2,
-        2
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        50,
-        50,
-        50,
-        50,
-        50
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -360,41 +345,30 @@
     ],
     "effectBurn": [
       null,
-      "20/30/40/50/60",
-      "140/180/220/260/300",
-      "25/35/45/55/65",
-      "1",
-      "75",
-      "50/85/120/155/190",
-      "25",
-      "2",
-      "50",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.9,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.3,
-        "key": "a2"
-      }
-    ],
-    "costType": " Health",
+    "vars": [],
+    "costType": "No Cost",
     "maxammo": "-1",
     "range": [
-      1000,
-      1000,
-      1000,
-      1000,
-      1000
+      25000,
+      25000,
+      25000,
+      25000,
+      25000
     ],
-    "rangeBurn": "1000",
+    "rangeBurn": "25000",
     "image": {
-      "full": "MordekaiserCreepingDeathCast.png",
+      "full": "MordekaiserW.png",
       "sprite": "spell7.png",
       "group": "spell",
       "x": 432,
@@ -402,36 +376,34 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ e3 }} Health"
+    "resource": "No Cost"
   },
   "riot_spell_e": {
-    "id": "MordekaiserSyphonOfDestruction",
-    "name": "Siphon of Destruction",
-    "description": "Mordekaiser deals damage to enemies in a cone in front of him. For each unit hit, Mordekaiser's shield absorbs energy.",
-    "tooltip": "Mordekaiser deals {{ e3 }} <span class=\"colorFF8C00\">(+{{ a1 }})</span><span class=\"color99FF99\"> (+{{ a1 }})</span> magic damage in a cone.<span class=\"size8\"><br /><br /></span>For each Champion hit, he gains {{ f1 }}% maximum shield.",
+    "id": "MordekaiserE",
+    "name": "Death's Grasp",
+    "description": "Mordekaiser pulls all enemies in an area.",
+    "tooltip": "<spellPassive>Passive:</spellPassive> Mordekaiser gains {{ magicpen*100 }}% Magic Penetration.<br /><br /><spellActive>Active:</spellActive> Mordekaiser pulls enemies in the chosen area dealing <magicDamage>{{ totaldamage }} magic damage.</magicDamage>",
     "leveltip": {
       "label": [
+        "Percent Magic Penetration",
         "Damage",
-        "Cooldown",
-        "% Max Shield From Champions",
-        "Health Cost"
+        "Cooldown"
       ],
       "effect": [
-        "{{ e3 }} -> {{ e3NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}",
-        "{{ e5 }}% -> {{ e5NL }}%",
-        "{{ e1 }} -> {{ e1NL }}"
+        "{{ magicpen*100.000000 }}% -> {{ magicpennl*100.000000 }}%",
+        "{{ damage }} -> {{ damageNL }}",
+        "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 5,
     "cooldown": [
-      6,
-      5.75,
-      5.5,
-      5.25,
-      5
+      24,
+      21,
+      18,
+      15,
+      12
     ],
-    "cooldownBurn": "6/5.75/5.5/5.25/5",
+    "cooldownBurn": "24/21/18/15/12",
     "cost": [
       0,
       0,
@@ -444,39 +416,39 @@
     "effect": [
       null,
       [
-        24,
-        36,
-        48,
-        60,
-        72
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        1,
-        2,
-        3,
-        4,
-        5
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        35,
-        65,
-        95,
-        125,
-        155
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        4,
-        4,
-        4,
-        4,
-        4
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
-        15,
-        17.5,
-        20,
-        22.5,
-        25
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       [
         0,
@@ -516,30 +488,19 @@
     ],
     "effectBurn": [
       null,
-      "24/36/48/60/72",
-      "1/2/3/4/5",
-      "35/65/95/125/155",
-      "4",
-      "15/17.5/20/22.5/25",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
       "0",
       "0",
       "0",
       "0",
       "0"
     ],
-    "vars": [
-      {
-        "link": "attackdamage",
-        "coeff": 0.6,
-        "key": "a1"
-      },
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a1"
-      }
-    ],
-    "costType": " Health",
+    "vars": [],
+    "costType": "No Cost",
     "maxammo": "-1",
     "range": [
       700,
@@ -550,7 +511,7 @@
     ],
     "rangeBurn": "700",
     "image": {
-      "full": "MordekaiserSyphonOfDestruction.png",
+      "full": "MordekaiserE.png",
       "sprite": "spell7.png",
       "group": "spell",
       "x": 0,
@@ -558,32 +519,28 @@
       "w": 48,
       "h": 48
     },
-    "resource": "{{ e1 }} Health"
+    "resource": "No Cost"
   },
   "riot_spell_r": {
-    "id": "MordekaiserChildrenOfTheGrave",
-    "name": "Children of the Grave",
-    "description": "Mordekaiser curses an enemy champion or the Dragon, stealing a percent of their life initially and each second. If the target dies while the spell is active, their soul is enslaved and will follow Mordekaiser as a ghost.",
-    "tooltip": "<span class=\"size18 colorFF9900\">Passive - Dragon Force:</span> Damaging the Dragon will <span class=\"size18 color53c653\">Curse</span> it for 10 seconds.<br /><br /><span class=\"size18 colorFF9900\">Active:</span> <span class=\"size18 color53c653\">Curse</span> target Champion and steal {{ e1 }}% <span class=\"color99FF99\">(+{{ a1 }}%)</span> of their maximum health (25% initially, 75% over 10 seconds; deals magic damage).<br /><br /><span class=\"size18 color53c653\">Curse Effect:</span> When killed by Mordekaiser's team, the Cursed unit's soul will follow Mordekaiser for {{ e9 }} seconds. Mordekaiser gains {{ e7 }}% of their ability power and {{ e8 }}% of their bonus health. The ghost gains <span class=\"colorFF8C00\">(+{{ f1 }})</span> attack damage and <span class=\"colorCC3300\">(+{{ f2 }})</span> health.<br /><br /><span class=\"color53c653\">The ghost can be controlled by holding the alt key and using the right mouse button or by reactivating this ability.</span>",
+    "id": "MordekaiserR",
+    "name": "Realm of Death",
+    "description": "Mordekaiser drags his victim to a different dimention with him and steals a portion of their stats. If he kills them, he keeps the stats until the victim respawns.",
+    "tooltip": "Mordekaiser banishes a target to the <keywordMajor>Death Realm</keywordMajor> with him for {{ spiritrealmduration }}s, stealing {{ statstealpercentscalar*100 }}% of their core stats for the duration.<br /><br />If Mordekaiser kills his target in the <keywordMajor>Death Realm</keywordMajor> he consumes their soul, keeping the stats he stole until the target respawns.",
     "leveltip": {
       "label": [
-        "Total Health Stolen",
-        "Cooldown",
-        "Ghost Lifetime"
+        "Cooldown"
       ],
       "effect": [
-        "{{ e1 }}% -> {{ e1NL }}%",
-        "{{ cooldown }} -> {{ cooldownNL }}",
-        "{{ e9 }} -> {{ e9NL }}"
+        "{{ cooldown }} -> {{ cooldownNL }}"
       ]
     },
     "maxrank": 3,
     "cooldown": [
+      140,
       120,
-      105,
-      90
+      100
     ],
-    "cooldownBurn": "120/105/90",
+    "cooldownBurn": "140/120/100",
     "cost": [
       0,
       0,
@@ -594,76 +551,70 @@
     "effect": [
       null,
       [
-        25,
-        30,
-        35
+        0,
+        0,
+        0
       ],
       [
-        55,
-        65,
-        75
+        0,
+        0,
+        0
       ],
       [
-        75,
-        150,
-        225
+        0,
+        0,
+        0
       ],
       [
-        2,
-        2,
-        2
+        0,
+        0,
+        0
       ],
       [
-        3,
-        3,
-        3
+        0,
+        0,
+        0
       ],
       [
-        10,
-        25,
-        50
+        0,
+        0,
+        0
       ],
       [
-        30,
-        30,
-        30
+        0,
+        0,
+        0
       ],
       [
-        25,
-        25,
-        25
+        0,
+        0,
+        0
       ],
       [
-        45,
-        60,
-        75
+        0,
+        0,
+        0
       ],
       [
-        2000,
-        2000,
-        2000
+        0,
+        0,
+        0
       ]
     ],
     "effectBurn": [
       null,
-      "25/30/35",
-      "55/65/75",
-      "75/150/225",
-      "2",
-      "3",
-      "10/25/50",
-      "30",
-      "25",
-      "45/60/75",
-      "2000"
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
     ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.04,
-        "key": "a1"
-      }
-    ],
+    "vars": [],
     "costType": "No Cost",
     "maxammo": "-1",
     "range": [
@@ -673,7 +624,7 @@
     ],
     "rangeBurn": "650",
     "image": {
-      "full": "MordekaiserChildrenOfTheGrave.png",
+      "full": "MordekaiserR.png",
       "sprite": "spell7.png",
       "group": "spell",
       "x": 48,
@@ -685,9 +636,9 @@
   },
   "riot_spell_i": {
     "name": "Iron Man",
-    "description": "A percent of the damage dealt from abilities is converted into a temporary shield, absorbing incoming damage.",
+    "description": "",
     "image": {
-      "full": "MordekaiserPassive.png",
+      "full": "MordekaiserPassive.MordeVGU.png",
       "sprite": "passive2.png",
       "group": "passive",
       "x": 144,
@@ -854,6 +805,7 @@
       "customTag": "",
       "sortrank": 0,
       "extensionPage": false,
+      "useObviousCheckmark": false,
       "customPanel": null,
       "blocks": [
         {
@@ -939,17 +891,17 @@
           ],
           "items": [
             {
-              "id": "3146",
-              "count": 1,
-              "hideCount": false
-            },
-            {
               "id": "3089",
               "count": 1,
               "hideCount": false
             },
             {
               "id": "3135",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3165",
               "count": 1,
               "hideCount": false
             }
@@ -972,17 +924,17 @@
           ],
           "items": [
             {
-              "id": "3053",
-              "count": 1,
-              "hideCount": false
-            },
-            {
               "id": "3157",
               "count": 1,
               "hideCount": false
             },
             {
               "id": "3065",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3742",
               "count": 1,
               "hideCount": false
             }
@@ -2048,6 +2000,7 @@
       "customTag": "",
       "sortrank": 0,
       "extensionPage": false,
+      "useObviousCheckmark": false,
       "customPanel": null,
       "blocks": [
         {
@@ -2105,12 +2058,12 @@
               "hideCount": false
             },
             {
-              "id": "3067",
+              "id": "1052",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3145",
+              "id": "1028",
               "count": 1,
               "hideCount": false
             }
@@ -2133,12 +2086,7 @@
           ],
           "items": [
             {
-              "id": "3020",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3152",
+              "id": "3111",
               "count": 1,
               "hideCount": false
             },
@@ -2146,37 +2094,9 @@
               "id": "3116",
               "count": 1,
               "hideCount": false
-            }
-          ]
-        },
-        {
-          "type": "offensive",
-          "recMath": false,
-          "recSteps": false,
-          "minSummonerLevel": -1,
-          "maxSummonerLevel": -1,
-          "showIfSummonerSpell": "",
-          "hideIfSummonerSpell": "",
-          "appendAfterSection": "",
-          "visibleWithAllOf": [
-            ""
-          ],
-          "hiddenWithAnyOf": [
-            ""
-          ],
-          "items": [
-            {
-              "id": "3102",
-              "count": 1,
-              "hideCount": false
             },
             {
               "id": "3151",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3135",
               "count": 1,
               "hideCount": false
             }
@@ -2199,12 +2119,17 @@
           ],
           "items": [
             {
-              "id": "3157",
+              "id": "3065",
               "count": 1,
               "hideCount": false
             },
             {
               "id": "3742",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3083",
               "count": 1,
               "hideCount": false
             }
@@ -2227,17 +2152,17 @@
           ],
           "items": [
             {
-              "id": "3078",
+              "id": "3157",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3089",
+              "id": "3152",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3053",
+              "id": "3165",
               "count": 1,
               "hideCount": false
             }
@@ -2260,7 +2185,7 @@
           ],
           "items": [
             {
-              "id": "2003",
+              "id": "2138",
               "count": 1,
               "hideCount": true
             },
@@ -2282,6 +2207,7 @@
       "customTag": "",
       "sortrank": 0,
       "extensionPage": false,
+      "useObviousCheckmark": false,
       "customPanel": null,
       "blocks": [
         {
@@ -2342,11 +2268,6 @@
               "id": "3116",
               "count": 1,
               "hideCount": false
-            },
-            {
-              "id": "3078",
-              "count": 1,
-              "hideCount": false
             }
           ]
         },
@@ -2367,12 +2288,12 @@
           ],
           "items": [
             {
-              "id": "3146",
+              "id": "3135",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3135",
+              "id": "3151",
               "count": 1,
               "hideCount": false
             },
@@ -2400,12 +2321,12 @@
           ],
           "items": [
             {
-              "id": "3053",
+              "id": "3742",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3742",
+              "id": "3065",
               "count": 1,
               "hideCount": false
             }
@@ -2442,6 +2363,51 @@
       ]
     }
   ],
+  "wikia_champ": {
+    "ms": 335,
+    "range": 175,
+    "as_base": 0.625,
+    "dam_base": 61,
+    "arm_base": 37,
+    "mr_base": 32,
+    "hp_base": 575,
+    "mp_base": 0,
+    "hp5_base": 5,
+    "mp5_base": 0,
+    "as_lvl": 1,
+    "dam_lvl": 4,
+    "arm_lvl": 3,
+    "mr_lvl": 1.25,
+    "hp_lvl": 90,
+    "mp_lvl": 0,
+    "hp5_lvl": 0.75,
+    "mp5_lvl": 0,
+    "image": "MordekaiserSquare.png",
+    "title": "the Iron Revenant",
+    "herotype": "Fighter",
+    "alttype": "",
+    "rangetype": "Melee",
+    "date": 2010,
+    "patch": "V1.0.0.75",
+    "changes": "9.12.1",
+    "role": "Juggernaut",
+    "damage": 3,
+    "toughness": 2,
+    "control": 1,
+    "mobility": 0,
+    "utility": 2,
+    "style": 80,
+    "difficulty": 2,
+    "adaptivetype": "magic",
+    "be": 1350,
+    "rp": 585,
+    "resource": "Shield",
+    "skill_i": "Darkness Rise",
+    "skill_q": "Obliterate",
+    "skill_w": "Indestructible",
+    "skill_e": "Death's Grasp",
+    "skill_r": "Realm of Death"
+  },
   "wikia_skill_i1": {
     "name": "Darkness Rise",
     "champion": "Mordekaiser",
@@ -2450,7 +2416,7 @@
     "blurb": "",
     "description": "{{sbc|Innate:}} '''Mordekaiser's''' basic attacks deal {{as|40% AP}} {{as|'''bonus''' magic damage on-hit}}.",
     "description2": "Abilities or basic attacks grant 1 stack per enemy champion or large monster hit. At 3 stacks, '''Mordekaiser''' gains ''Darkness Rise'' for 5 seconds. Further basic attacks and abilities against enemy champions and large monsters refresh the duration.",
-    "description3": "{{sbc|Darkness Rise:}} '''Mordekaiser''' deals {{ft|{{pp|10 to 35.5}} {{as|(+ 30% AP)}} {{as|(+ {{pp|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} per second|{{pp|10*0.125 to 35.5*0.125}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{pp|key=%|1*0.125 to 6.1*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}} to all nearby enemies and gains {{as|{{pp|3|key=%|changedisplay=true|3 to 9|1 to 11}} '''bonus''' movement speed}}.",
+    "description3": "{{sbc|Darkness Rise:}} '''Mordekaiser''' deals {{ft|{{pp|8 to 25}} {{as|(+ 30% AP)}} {{as|(+ {{pp|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} per second|{{pp|8*0.125 to 25*0.125}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{pp|key=%|1*0.125 to 5*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}} to all nearby enemies and gains {{as|{{pp|3|key=%|changedisplay=true|3 to 9|1 to 11}} '''bonus''' movement speed}}.",
     "targeting": "Self",
     "effect_radius": 375,
     "affects": "Self / Enemies",
@@ -2470,6 +2436,7 @@
     "description": "{{sbc|Active:}} '''Mordekaiser''' smashes the area in the target direction, dealing {{as|magic damage}} to all enemies hit, increased if it hits only one enemy.",
     "leveling": "{{st|Magic Damage|{{pp|18|5;9;13;17;21;25;29;33;37;41;51;61;71;81;91;107;123;139}} (+ {{ap|75 to 155}}) {{as|(+ 60% AP)}}}}\n{{st|Damage Increase|{{ap|20 to 40}}%}}",
     "cooldown": "{{ap|9 to 4}}",
+    "cast_time": "{{fd|0.5}}",
     "target_range": 675,
     "width": "{{tt|400|Estimated}}",
     "targeting": "Direction",
@@ -2511,7 +2478,7 @@
     "blurb": "",
     "description": "{{sbc|Passive:}} '''Mordekaiser''' gains {{sti|mpen|{{as|magic penetration}}}}.",
     "leveling": "{{st|Magic Penetration|{{ap|5 to 25}}%}}",
-    "description2": "{{sbc|Active:}} After a small delay, '''Mordekaiser''' {{tip|airborne|pulls}} enemies in the targeted area over a fixed distance, dealing {{as|magic damage}}.",
+    "description2": "{{sbc|Active:}} After {{fd|0.75}} seconds, '''Mordekaiser''' {{tip|airborne|pulls}} enemies in the targeted area over a fixed distance, dealing {{as|magic damage}}.",
     "leveling2": "{{st|Magic Damage|{{ap|80 to 140}} {{as|(+ 60% AP)}}}}",
     "cooldown": "{{ap|24 to 12}}",
     "target_range": "{{tt|150|Estimated (Minimum)}} / 700 / {{tt|900|Estimated (Maximum)}}",
@@ -2534,7 +2501,7 @@
     "blurb": "",
     "description": "{{sbc|Active:}} '''Mordekaiser''' {{tip|slow|slows}} the targeted enemy champion by 75% for {{ct|cast|{{fd|0.5}}}} seconds. If the target is still in range and targetable by the end of the duration they're banished together with '''Mordekaiser''' to the ''Death Realm'' for 7 seconds, during which they {{tip|suppression|cannot}} leave.",
     "description2": "Units between realms see each other as spirits, considering each other dead and negating any interactions between the two. Only the target and '''Mordekaiser''' will enter the realm, other champions cannot follow them. Everything that occurs inside the ''Death Realm'' is hidden, and all non-champion [[pets]] still inside are destroyed at the end.",
-    "description3": "For the same duration '''Mordekaiser''' also reduces the target's '''current''' {{as|attack damage}}, {{as|ability power}}, {{as|'''total''' attack speed}}, {{as|'''maximum''' health}}, {{as|armor}}, {{as|magic resist}}, and size by 10%, in addition to gaining them for himself. If '''Mordekaiser''' kills his target, he consumes their soul, keeping their partial stats until they respawn.",
+    "description3": "For the same duration '''Mordekaiser''' also reduces the target's '''current''' {{as|attack damage}}, {{as|ability power}}, {{as|'''total''' attack speed}}, {{as|'''maximum''' health}}, {{as|armor}}, {{as|magic resist}}, and size by 10%, in addition to gaining them for himself. If '''Mordekaiser''' kills his target, he keeps their partial stats until they respawn.",
     "description4": "If one of the two affected champions leave the ''Death Realm'', because of having died or having it dispelled, the other will do so as well, but the stats will remain stolen for the full duration.",
     "cooldown": "{{ap|140 to 100}}",
     "target_range": 650,
@@ -2547,51 +2514,6 @@
     "projectile": false,
     "spellshield": true,
     "callforhelp": "",
-    "notes": "\n* The ability will cancel and go on cooldown after the cast time if:\n** The target is {{tip|unstoppable}} or {{tip|spell shield|cc-immune}}.\n** He targets a [[decoy]] or {{cai|Glory in Death|Sion}}.\n* The ability will cancel without going on cooldown if:\n** The target is {{tip|untargetable}}.\n** He loses sight of his target.\n** The target is too far away.\n* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion|exception}}), but enemies that try to move out of the area will be displaced back inside.\n** Abilities such as {{ai|Comet of Legend|Aurelion Sol}} and {{ai|Keeper's Verdict|Poppy}} will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.\n* Multiple ''Death Realms'' spawned will exist in the same dimension, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.\n** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.\n** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knockback and damage secondary targets multiple times.\n* The transition in and out of the Death Realm doesn't interrupt [[channel]]s and doesn't affect the target's commands. Being in Death Realm can be dispelled if:\n** The target uses {{ii|Quicksilver Sash|cc-removals}}.\n** '''Mordekaiser''' or the target cast another ''Realm of Death''. The affected champions will remain stuck for the duration of the new circle.\n* [[Tether]] effects will break upon entering the dimension, unless it is between the two champions entering the dimension.\n* [[Structures]] exist in all realms at the same time, and {{tip|turrets}} will target normally as if all units were in the same realm.\n* Effects interactions:\n** {{ai|The Hextech Ultimatum|Camille}}, catching a {{ai|Spinning Axe|Draven}}, {{ai|Timewinder|Ekko}}, {{ai|Test of Spirit|Illaoi}}, {{ai|Null Zone|Malzahar}}, {{ai|Twisted Advance|Maokai}}, {{ai|Threaded Volley 2|Taliyah|Worked Grounds}}, {{ai|Gravity Field|Viktor}}, {{ai|Satchel Charge|Ziggs}}, {{ui|Rift Scuttler|Rift Scuttler's}} {{bi|Speed Shrine}} and gaining {{ii|Zeke's Convergence}} [[File:Harbinger of Frost icon.png|20px|border|link=File:Harbinger of Frost icon.png]] '''Harbinger of Frost''' effect are exceptions and may still take effect between dimensions.\n** Effects such as {{ai|Requiem|Karthus}}, {{ai|Absolute Zero|Nunu}}, {{ai|Grand Skyfall|Pantheon}} and {{ai|Final Spark|Lux}} will only deal damage to enemies of the dimension they're in at time of cast. Ending the channel or cast time while inside another dimension will not do damage to nearby enemies.\n** {{ai|Shuriken Flip|Akali}} may be re-cast inside the ''Death Realm'' even if its target is outside it, but ''Akali'' will stop ''dashing'' upon colliding with the boundary.\n** {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} may not be re-cast while his victim is not in the same realm as him, but an already chained foe will still continue to be reeled in and executed. The {{tip|fear}} is cast in the realm Urgot is in.\n** {{ai|Void Shift|Malzahar}} dispels from ''Realm of Death's'' slow, making it vulnerable to the ''Death Realm''.\n** {{ai|Clockwork Windup|Orianna|Ball}} will instantly return back to her if she's in another dimension.\n** Controllable [[pets]] and [[decoys]] are still controllable between realms.\n* {{pending for test}}:\n** {{ci|Tahm Kench}} {{ai|Devour|Tahm Kench|Devours}} the target affected by ''Death Realm'' before it ends."
-  },
-  "wikia_champ": {
-    "ms": 335,
-    "range": 175,
-    "as_base": 0.625,
-    "dam_base": 61,
-    "arm_base": 37,
-    "mr_base": 32,
-    "hp_base": 575,
-    "mp_base": 0,
-    "hp5_base": 4,
-    "mp5_base": 0,
-    "as_lvl": 1,
-    "dam_lvl": 4,
-    "arm_lvl": 3,
-    "mr_lvl": 1.25,
-    "hp_lvl": 90,
-    "mp_lvl": 0,
-    "hp5_lvl": 0.75,
-    "mp5_lvl": 0,
-    "image": "MordekaiserSquare.png",
-    "title": "the Iron Revenant",
-    "herotype": "Fighter",
-    "alttype": "",
-    "rangetype": "Melee",
-    "date": "2010-02-24",
-    "patch": "V1.0.0.75",
-    "changes": "9.12.1",
-    "role": "Juggernaut",
-    "damage": 3,
-    "toughness": 2,
-    "control": 1,
-    "mobility": 0,
-    "utility": 2,
-    "style": 80,
-    "difficulty": 2,
-    "adaptivetype": "magic",
-    "be": 1350,
-    "rp": 585,
-    "resource": "Shield",
-    "skill_i": "Darkness Rise",
-    "skill_q": "Obliterate",
-    "skill_w": "Indestructible",
-    "skill_e": "Death's Grasp",
-    "skill_r": "Realm of Death"
+    "notes": "\n* The ability will cancel and go on cooldown after the cast time if:\n** The target is {{tip|unstoppable}} or {{tip|spell shield|cc-immune}}.\n** He targets a [[decoy]] or {{cai|Glory in Death|Sion}}.\n* The ability will cancel without going on cooldown if:\n** The target is {{tip|untargetable}}.\n** He loses sight of his target.\n** The target is too far away.\n* If the target's health is lower than the amount that should be stolen, they will be brought down to 1 health. '''Mordekaiser''' will still get the usual amount of maximum health.\n* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion|exception}}), but enemies that try to move out of the area will be displaced back inside.\n** Abilities such as {{ai|Comet of Legend|Aurelion Sol}} and {{ai|Keeper's Verdict|Poppy}} will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.\n* Multiple ''Death Realms'' spawned will exist in the same dimension, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.\n** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.\n** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knockback and damage secondary targets multiple times.\n* The transition in and out of the Death Realm doesn't interrupt [[channel]]s and doesn't affect the target's commands. Being in Death Realm can be dispelled if:\n** The target uses {{ii|Quicksilver Sash}} or abilities with cc-removals.\n** '''Mordekaiser''' or the target cast another ''Realm of Death''. The affected champions will remain stuck for the duration of the new circle.\n* [[Tether]] effects will break upon entering the dimension, unless it is between the two champions entering the dimension.\n* [[Structures]] exist in all realms at the same time, and {{tip|turrets}} will target normally as if all units were in the same realm.\n* Effects interactions:\n** {{ai|The Hextech Ultimatum|Camille}}, catching a {{ai|Spinning Axe|Draven}}, {{ai|Timewinder|Ekko}}, {{ai|Test of Spirit|Illaoi}}, {{ai|Null Zone|Malzahar}}, {{ai|Twisted Advance|Maokai}}, {{ai|Threaded Volley 2|Taliyah|Worked Grounds}}, {{ai|Gravity Field|Viktor}}, {{ai|Satchel Charge|Ziggs}}, {{ui|Rift Scuttler|Rift Scuttler's}} {{bi|Speed Shrine}} and gaining {{ii|Zeke's Convergence}} [[File:Harbinger of Frost icon.png|20px|border|link=File:Harbinger of Frost icon.png]] area of effect are exceptions and may still take effect between dimensions.\n** Effects such as {{ai|Requiem|Karthus}}, {{ai|Absolute Zero|Nunu}}, {{ai|Grand Skyfall|Pantheon}} and {{ai|Final Spark|Lux}} will only deal damage to enemies of the dimension they're in at time of cast. Ending the channel or cast time while inside another dimension will not do damage to nearby enemies.\n** {{ai|Shuriken Flip|Akali}} may be re-cast inside the ''Death Realm'' even if its target is outside it, but ''Akali'' will stop ''dashing'' upon colliding with the boundary.\n** {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} may not be re-cast while his victim is not in the same realm as him, but an already chained foe will still continue to be reeled in and executed. The {{tip|fear}} is cast in the realm Urgot is in.\n** {{ai|Void Shift|Malzahar}} dispels from ''Realm of Death's'' slow, making it vulnerable to the ''Death Realm''.\n** {{ai|Clockwork Windup|Orianna|Ball}} will instantly return back to her if she's in another dimension.\n** Controllable [[pets]] and [[decoy]]s are still controllable between realms.\n* {{pending for test}}:\n** {{ci|Tahm Kench}} {{ai|Devour|Tahm Kench|Devours}} the target affected by ''Death Realm'' before it ends."
   }
 }
