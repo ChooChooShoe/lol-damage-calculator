@@ -239,11 +239,6 @@ request(url, { json: true }, (err, res, body) => {
           console.log("The file was saved!");
         });
       });
-
-      // with open("./export/" + keyid + ".pass1.json", "w") as file:
-      // log.info("Writing file: ./export/%s.pass1.json", keyid)
-      // file.write(json.dumps(export, indent = 2, sort_keys = False))
-
     });
   }
 });
