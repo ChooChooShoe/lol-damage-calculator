@@ -1,354 +1,299 @@
 {
-    "patch": "V4.3",
-    "changes": "9.6.1",
-    "id": "Velkoz",
-    "key": "161",
-    "name": "Vel'Koz",
-    "fullname": "Vel'Koz",
-    "title": "the Eye of the Void",
-    "image": {
-        "full": "Velkoz.png",
-        "sprite": "champion4.png",
-        "group": "champion",
+  "patch": "V4.3",
+  "changes": "9.6.1",
+  "id": "Velkoz",
+  "key": "161",
+  "name": "Vel'Koz",
+  "fullname": "Vel'Koz",
+  "title": "the Eye of the Void",
+  "image": {
+    "full": "Velkoz.png",
+    "sprite": "champion4.png",
+    "group": "champion",
+    "x": 288,
+    "y": 0,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Mage"
+  ],
+  "resource": "Mana",
+  "herotype": "Mage",
+  "alttype": "",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 2,
+    "defense": 2,
+    "magic": 10,
+    "difficulty": 8
+  },
+  "i_displayname": "Organic Deconstruction",
+  "q_displayname": "Plasma Fission / Plasma Fission 2",
+  "w_dispalyname": "Void Rift",
+  "e_dispalyname": "Tectonic Disruption",
+  "r_dispalyname": "Life Form Disintegration Ray / Researched",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Organic Deconstruction",
+      "image": {
+        "full": "VelKoz_Passive.png",
+        "sprite": "passive4.png",
+        "group": "passive",
         "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
+      },
+      "affects": "Enemies / Self",
+      "blurb": "Vel'Koz's abilities apply Organic Deconstruction to enemies on hit. If 3 stacks are accumulated, the enemy will take a burst of true damage.",
+      "champion": "Vel'Koz",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "true",
+      "damageTypes": [
+        "true"
+      ],
+      "description": [
+        "{{sbc|Basic Attacks:}} '''Vel'Koz's''' [[basic attack]]s don't use {{tip|projectiles}}.",
+        "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] apply a ''Deconstruction'' stack for 7 seconds, stacking up to 3 times. Basic attacks refresh the duration on-hit.",
+        "The third stack consumes them all to deal {{pp|33 to 169}} {{as|(+ 50% AP)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} and briefly grant {{tip|sight}} of the enemy."
+      ],
+      "icon": [
+        "Organic Deconstruction.png"
+      ],
+      "leveling": [],
+      "name": "Organic Deconstruction",
+      "notes": [
+        "* No additional notes."
+      ],
+      "projectile": "true",
+      "skill": "I",
+      "spelleffects": "Single target",
+      "spellshield": true,
+      "targeting": "Passive"
     },
-    "tags": [
-        "Mage"
-    ],
-    "resource": "Mana",
-    "herotype": "Mage",
-    "alttype": "",
-    "be_cost": 6300,
-    "rp_cost": 975,
-    "adaptivetype": "magic",
-    "info": {
-        "attack": 2,
-        "defense": 2,
-        "magic": 10,
-        "difficulty": 8
+    "q1": {
+      "key": "Q",
+      "id": "VelkozQ",
+      "riotName": "Plasma Fission",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "VelkozQ.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Vel'Koz shoots a bolt of plasma that splits in two on reactivation or upon hitting an enemy. The bolt slows and damages on hit.",
+      "champion": "Vel'Koz",
+      "cooldownBurn": "7",
+      "costBurn": "40 / 45 / 50 / 55 / 60",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Vel'Koz''' fires an energy bolt that collides with the first enemy hit to deal {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slow}} by 70% for a few seconds, decaying over the duration.",
+        "At the end of its range, upon re-activation after {{fd|0.25}} seconds, or upon colliding with an enemy, the bolt splits in half, each part firing in opposite directions perpendicular to the primary bolt's trajectory.",
+        "''Plasma Fission'' restores {{sti|mana|{{as|mana}}}} per target killed."
+      ],
+      "icon": [
+        "Plasma Fission.png",
+        "Plasma Fission 2.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow Duration|{{ap|1 to 2.6}}}}",
+        "{{st|Mana Restored On-Kill|{{as|{{ap|20 to 30}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*3 to 30*3}}|mana}}}}"
+      ],
+      "name": "Plasma Fission",
+      "notes": [
+        "* An enemy cannot be hit by multiple bolts even when having blocked one with a spell shield.",
+        "* ''Plasma Fission'' can travel a maximum ~1521 units diagonally."
+      ],
+      "projectile": true,
+      "skill": "Q",
+      "spelleffects": "Area of Effect",
+      "spellshield": true,
+      "target_range": "{{ap|{{tt|1050|Primary bolt}}|{{tt|1100|Secondary bolt}}}}",
+      "targeting": "Direction"
     },
-    "i_displayname": "Organic Deconstruction",
-    "q_displayname": "Plasma Fission / Plasma Fission 2",
-    "w_dispalyname": "Void Rift",
-    "e_dispalyname": "Tectonic Disruption",
-    "r_dispalyname": "Life Form Disintegration Ray / Researched",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Organic Deconstruction",
-            "image": {
-                "full": "VelKoz_Passive.png",
-                "sprite": "passive4.png",
-                "group": "passive",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies / Self",
-            "blurb": "Vel'Koz's abilities apply Organic Deconstruction to enemies on hit. If 3 stacks are accumulated, the enemy will take a burst of true damage.",
-            "champion": "Vel'Koz",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "True",
-            "damageTypes": [
-                "true"
-            ],
-            "description": [
-                "{{sbc|Basic Attacks:}} '''Vel'Koz's''' [[basic attack]]s don't use [[projectile]]s.",
-                "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] ''Deconstruct'' enemies every time they are hit, stacking up to 3 times. ''Deconstruction'' stacks last for 7 seconds. '''Vel'Koz's''' basic attacks refresh ''Deconstruction'' stacks' duration on-hit.",
-                "Three ''Deconstruction'' stacks are consumed to deal {{pp|33 to 169}} {{as|(+ 50% AP)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} and briefly grant {{tip|sight}} of the enemy."
-            ],
-            "grounded": false,
-            "icon": [
-                "Organic Deconstruction.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Organic Deconstruction",
-            "notes": [
-                "* No additional notes."
-            ],
-            "projectile": false,
-            "skill": "I",
-            "spelleffects": "Single target",
-            "spellshield": true,
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q1",
-            "id": "VelkozQ",
-            "riotName": "Plasma Fission",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "VelkozQ.png",
-                "sprite": "spell13.png",
-                "group": "spell",
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Vel'Koz shoots a bolt of plasma that splits in two on reactivation or upon hitting an enemy. The bolt slows and damages on hit.",
-            "champion": "Vel'Koz",
-            "cooldown": [
-                7,
-                7,
-                7,
-                7,
-                7
-            ],
-            "cooldownBurn": "7",
-            "cost": [
-                40,
-                45,
-                50,
-                55,
-                60
-            ],
-            "costBurn": "40/45/50/55/60",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|First Active:}} '''Vel'Koz''' fires an energy bolt in a line, stopping at the first enemy hit, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} by 70% for a few seconds, decaying over the duration.",
-                "After a {{fd|0.25}} seconds delay, and while the bolt is in the air, '''Vel'Koz''' can reactivate ''Plasma Fission'' and automatically does so upon reaching maximum [[range]] or upon hitting an enemy unit.",
-                "{{sbc|Second Active:}} '''Vel'Koz''' splits the energy bolt in two, each firing in opposite directions perpendicular to the original bolt's trajectory as well as copying its effects.",
-                "''Plasma Fission'' restores {{sti|mana|{{as|mana}}}} per target killed."
-            ],
-            "grounded": false,
-            "icon": [
-                "Plasma Fission.png",
-                "Plasma Fission 2.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow Duration|{{ap|1 to 2.6}}}}",
-                "{{st|Mana Restored On-Kill|{{as|{{ap|20 to 30}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*3 to 30*3}}|mana}}}}"
-            ],
-            "name": "Plasma Fission",
-            "notes": [
-                "* An enemy cannot be hit by multiple bolts even when having blocked one with a spell shield.",
-                "* There is a short delay before ''Plasma Fission'' can be reactivated, making the primary bolt travel ~500 units before it can be split.",
-                "* If one considers the primary and each secondary bolt as a triangle's legs, and by use of the {{w|Pythagorean theorem}}, ''Plasma Fission's'' would travel ~1521 units diagonally (hypotenuse on each side)."
-            ],
-            "projectile": true,
-            "skill": "Q",
-            "spelleffects": "Area of Effect",
-            "spellshield": true,
-            "target_range": "{{ap|{{tt|1050|Primary bolt}}|{{tt|1100|Secondary bolts}}}}",
-            "targeting": "Direction"
-        },
-        "w1": {
-            "key": "W",
-            "id": "VelkozW",
-            "riotName": "Void Rift",
-            "maxrank": 5,
-            "maxammo": 2,
-            "image": {
-                "full": "VelkozW.png",
-                "sprite": "spell13.png",
-                "group": "spell",
-                "x": 48,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Vel'Koz opens a rift to the void that deals an initial burst of damage, then explodes for a second burst of damage after a delay.",
-            "champion": "Vel'Koz",
-            "cooldown": [
-                1.5,
-                1.5,
-                1.5,
-                1.5,
-                1.5
-            ],
-            "cooldownBurn": "1.5",
-            "cost": [
-                50,
-                55,
-                60,
-                65,
-                70
-            ],
-            "costBurn": "50/55/60/65/70",
-            "costtype": "Mana + 1 Charge",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Passive:}} '''Vel'Koz''' stores a charge of ''Void Rift'' periodically, up to a maximum of 2 stored at once.",
-                "{{sbc|Active:}} '''Vel'Koz''' opens a rift to the void that cuts through the ground in a line, dealing {{as|magic damage}} and leaving behind a trail. After a {{fd|0.25}} seconds delay, the entire trail detonates, dealing {{as|magic damage}} to enemies standing upon it."
-            ],
-            "grounded": false,
-            "icon": [
-                "Void Rift.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}<!--\n-->{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}"
-            ],
-            "name": "Void Rift",
-            "notes": [
-                "* Each damage portions applies an {{ai|Organic Deconstruction|Vel'Koz}} stack.",
-                "* It is not possible to have more than one ''Void Rift'' active at a time.",
-                "* '''Vel'Koz''' can cast ''Void Rift'' while moving but not while attacking.",
-                "* {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will not destroy the trail created by ''Void Rift'' before being blocked."
-            ],
-            "projectile": "Special",
-            "recharge": [
-                19,
-                18,
-                17,
-                16,
-                15
-            ],
-            "skill": "W",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "static": "{{fd|1.5}}",
-            "target_range": 1050,
-            "targeting": "Direction"
-        },
-        "e1": {
-            "key": "E",
-            "id": "VelkozE",
-            "riotName": "Tectonic Disruption",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "VelkozE.png",
-                "sprite": "spell13.png",
-                "group": "spell",
-                "x": 96,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Vel'Koz causes an area to explode, knocking up enemies, and knocking close enemies slightly away.",
-            "champion": "Vel'Koz",
-            "cooldown": [
-                16,
-                15,
-                14,
-                13,
-                12
-            ],
-            "cooldownBurn": "16/15/14/13/12",
-            "cost": [
-                50,
-                55,
-                60,
-                65,
-                70
-            ],
-            "costBurn": "50/55/60/65/70",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} After {{fd|0.25}} seconds, '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.55}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|suspension|suspending}} enemies hit for {{fd|0.75}} seconds. Enemies close to '''Vel'Koz''' at the time of impact are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
-            ],
-            "effect_radius": 225,
-            "grounded": false,
-            "icon": [
-                "Tectonic Disruption.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}"
-            ],
-            "name": "Tectonic Disruption",
-            "notes": [
-                "* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}} and can be removed ({{nie|Quicksilver}}, {{si|Cleanse}}, {{ai|Remove Scurvy|Gangplank}}).",
-                "* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.",
-                "* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.",
-                "* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it. This is most likely a bug."
-            ],
-            "projectile": "Special",
-            "skill": "E",
-            "speed": 1500,
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "target_range": "800<!--",
-            "targeting": "Ground"
-        },
-        "r1": {
-            "key": "R1",
-            "id": "VelkozR",
-            "riotName": "Life Form Disintegration Ray",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "VelkozR.png",
-                "sprite": "spell13.png",
-                "group": "spell",
-                "x": 144,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Vel'Koz unleashes a channelled beam that follows the cursor for 2.5 seconds that deals magic damage. Organic Deconstruction Researches enemy champions causing them to take true damage instead.",
-            "champion": "Vel'Koz",
-            "cooldown": [
-                120,
-                100,
-                80
-            ],
-            "cooldownBurn": "120/100/80",
-            "cost": [
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Magic / True",
-            "damageTypes": [
-                "magic",
-                "true"
-            ],
-            "description": [
-                "{{sbc|Passive - Researched:}} {{ai|Organic Deconstruction|Vel'Koz|Deconstructing}} enemy champions marks them as ''{{ai|Researched|Vel'Koz}}'' for 7 seconds. Basic attacks and ability damage will refresh this duration.",
-                "{{sbc|Active:}} '''Vel'Koz''' [[channel]]s for {{fd|2.5}} seconds and projects an energy beam in a line. The ray's trajectory updates itself over the duration to face the cursor. Reactivating ''Life Form Disintegration Ray'' immediately ends its effects.",
-                "The ray deals {{as|magic damage}} in {{fd|0.25}} seconds intervals to enemies caught in its wake, and {{tip|slow|slows}} them by 20% for 1 second. {{ai|Organic Deconstruction|Vel'Koz|Deconstruction}} is applied every {{fd|0.7}} seconds to enemies hit, up to 3 stacks. {{ai|Researched|Vel'Koz|''Researched''}} enemies take {{as|true damage}} instead."
-            ],
-            "grounded": false,
-            "icon": [
-                "Researched.png",
-                "Lifeform Disintegration Ray.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage Per Tick|{{ap|45 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Magic Damage|{{ap|45*10 to 80*10}} {{as|(+ 125% AP)}}}}"
-            ],
-            "name": "Life Form Disintegration Ray",
-            "notes": [
-                "* ''Life Form Disintegration Ray's'' trajectory updates gradually (moving the cursor from one side of '''Vel'Koz''' to the other will not make him rotate instantly).",
-                "* '''Vel'Koz''' will only start {{ai|Researched|Vel'Koz|''Researching''}} enemies once ''Life Form Disintegration Ray'' has been learned.",
-                "* If an enemy champion becomes {{ai|Researched|Vel'Koz|''Researched''}} during ''Life Form Disintegration Ray's'' channel, it will take true damage for the remainder of the channel.",
-                "* Enemies standing inside '''Vel'Koz's''' hitbox during ''Life Form Disintegration Ray'' will take damage from it, regardless of '''Vel'Koz's''' orientation."
-            ],
-            "projectile": false,
-            "skill": "R",
-            "spelleffects": "aoedot",
-            "spellshield": false,
-            "target_range": 1550,
-            "targeting": "Direction"
-        }
+    "w1": {
+      "key": "W",
+      "id": "VelkozW",
+      "riotName": "Void Rift",
+      "maxrank": 5,
+      "maxammo": 2,
+      "image": {
+        "full": "VelkozW.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 48,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Vel'Koz opens a rift to the void that deals an initial burst of damage, then explodes for a second burst of damage after a delay.",
+      "champion": "Vel'Koz",
+      "cooldown": [
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5
+      ],
+      "cooldownBurn": "1.5",
+      "costBurn": "50 / 55 / 60 / 65 / 70",
+      "costtype": "Mana + 1 Charge",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Passive:}} '''Vel'Koz''' periodically [[stock]]s a ''Void Rift'' charge, up to a maximum of 2.",
+        "{{sbc|Active:}} '''Vel'Koz''' opens a rift to the void that cuts through the ground in a line, dealing {{as|magic damage}} and leaving behind a trail. After a {{fd|0.25}} seconds delay, the trail detonates, dealing {{as|magic damage}}."
+      ],
+      "icon": [
+        "Void Rift.png"
+      ],
+      "leveling": [
+        "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}<!--\n-->{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}"
+      ],
+      "name": "Void Rift",
+      "notes": [
+        "* '''Vel'Koz''' can cast ''Void Rift'' while moving but not while attacking.",
+        "* {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block the rift from forming over them, but they will not destroy the trail that was created before it.",
+        "* ''Void Rift'' must finish before another can be cast."
+      ],
+      "projectile": "Special",
+      "skill": "W",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "static": "{{fd|1.5}}",
+      "target_range": 1050,
+      "targeting": "Direction"
+    },
+    "e1": {
+      "key": "E",
+      "id": "VelkozE",
+      "riotName": "Tectonic Disruption",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "VelkozE.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Vel'Koz causes an area to explode, knocking up enemies, and knocking close enemies slightly away.",
+      "cast_time": 0.25,
+      "champion": "Vel'Koz",
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cooldownBurn": "16/15/14/13/12",
+      "costBurn": "50 / 55 / 60 / 65 / 70",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.55}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|suspension|suspending}} enemies in the area for {{fd|0.75}} seconds. If the area is created close to '''Vel'Koz''', enemies hit are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
+      ],
+      "effect_radius": 225,
+      "icon": [
+        "Tectonic Disruption.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}"
+      ],
+      "name": "Tectonic Disruption",
+      "notes": [
+        "* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}}.",
+        "* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.",
+        "* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.",
+        "* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it."
+      ],
+      "projectile": "Special",
+      "skill": "E",
+      "speed": 1500,
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "target_range": 800,
+      "targeting": "Ground"
+    },
+    "r1": {
+      "key": "R",
+      "id": "VelkozR",
+      "riotName": "Life Form Disintegration Ray",
+      "maxrank": 3,
+      "maxammo": -1,
+      "image": {
+        "full": "VelkozR.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Vel'Koz unleashes a channelled beam that follows the cursor for 2.5 seconds that deals magic damage. Organic Deconstruction Researches enemy champions causing them to take true damage instead.",
+      "champion": "Vel'Koz",
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cooldownBurn": "120/100/80",
+      "costBurn": "100",
+      "costtype": "Mana",
+      "damagetype": "magic / true",
+      "damageTypes": [
+        "magic",
+        "true"
+      ],
+      "description": [
+        "{{sbc|Passive - Researched:}} {{ai|Organic Deconstruction|Vel'Koz|Deconstructing}} enemy champions marks them as ''{{ai|Researched|Vel'Koz}}'' for 7 seconds. Basic attacks and ability damage refresh the duration on-hit.",
+        "{{sbc|Active:}} '''Vel'Koz''' {{ct|channels}} for {{fd|2.5}} seconds to project an energy beam in a line. The ray's trajectory updates itself over the duration to face the target direction. Reactivating ''Life Form Disintegration Ray'' ends the channel.",
+        "The ray deals {{as|magic damage}} in {{fd|0.25}} seconds intervals, and {{tip|slow|slows}} by 20% for 1 second. {{ai|Organic Deconstruction|Vel'Koz|Deconstruction}} is applied every {{fd|0.7}} seconds to enemies hit. {{ai|Researched|Vel'Koz|''Researched''}} enemies take {{as|true damage}} instead."
+      ],
+      "icon": [
+        "Researched.png",
+        "Lifeform Disintegration Ray.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage Per Tick|{{ap|45 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Magic Damage|{{ap|45*10 to 80*10}} {{as|(+ 125% AP)}}}}"
+      ],
+      "name": "Life Form Disintegration Ray",
+      "notes": [
+        "* ''Life Form Disintegration Ray's'' trajectory updates gradually (moving the cursor from one side of '''Vel'Koz''' to the other will not make him rotate instantly).",
+        "* The beam covers '''Vel'Koz's '''hitbox, damaging enemies standing close."
+      ],
+      "projectile": "[[Magic damage|Magic]] / [[True damage|True]]",
+      "skill": "R",
+      "spelleffects": "aoedot",
+      "target_range": 1550,
+      "targeting": "Direction"
     }
+  }
 }

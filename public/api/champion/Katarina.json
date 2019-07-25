@@ -1,342 +1,304 @@
 {
-    "patch": "V0.9.25.21",
-    "changes": "9.6.1",
-    "id": "Katarina",
-    "key": "55",
-    "name": "Katarina",
-    "fullname": "Katarina Du Couteau",
-    "title": "the Sinister Blade",
-    "image": {
-        "full": "Katarina.png",
-        "sprite": "champion1.png",
-        "group": "champion",
+  "patch": "V0.9.25.21",
+  "changes": "9.14.1",
+  "id": "Katarina",
+  "key": "55",
+  "name": "Katarina",
+  "fullname": "Katarina Du Couteau",
+  "title": "the Sinister Blade",
+  "image": {
+    "full": "Katarina.png",
+    "sprite": "champion1.png",
+    "group": "champion",
+    "x": 96,
+    "y": 96,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Assassin",
+    "Mage"
+  ],
+  "resource": "None",
+  "herotype": "Slayer",
+  "alttype": "Mage",
+  "be_cost": 3150,
+  "rp_cost": 790,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 4,
+    "defense": 3,
+    "magic": 9,
+    "difficulty": 8
+  },
+  "i_displayname": "Voracity / Sinister Steel",
+  "q_displayname": "Bouncing Blade",
+  "w_dispalyname": "Preparation",
+  "e_dispalyname": "Shunpo",
+  "r_dispalyname": "Death Lotus",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Voracity",
+      "image": {
+        "full": "Katarina_Passive.png",
+        "sprite": "passive1.png",
+        "group": "passive",
         "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
+      },
+      "affects": "Enemies, Self",
+      "blurb": "Whenever an enemy champion dies that Katarina has damaged in the last 3 seconds, her ability cooldowns are reduced by 15 seconds. If Katarina picks up a Dagger, she uses it to slash through all nearby enemies, dealing magic damage.",
+      "champion": "Katarina",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Innate:}} Whenever an enemy champion dies within 3 seconds of '''Katarina''' damaging them, her abilities' {{sti|cooldowns}} are reduced by 15 seconds.",
+        "{{sbc|Sinister Steel:}} Whenever '''Katarina''' retrieves a {{as|Dagger|buzzword}}, she uses it to slash through all nearby enemies, dealing {{pp|18|68|72|77|82|89|96|103|112|121|131|142|154|166|180|194|208|224|240|color=magic damage}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ {{pp|4|key=%|55 to 100|1 to 16}} AP)}} {{tip|magic damage|{{as|magic damage}}}} and reducing {{ai|Shunpo|Katarina|Shunpo's}} {{sti|cooldown}} by {{pp|4|key=%|78 to 96|1 to 16}}.",
+        "{{as|Daggers|buzzword}} last 4 seconds before disappearing."
+      ],
+      "effect_radius": 340,
+      "icon": [
+        "Voracity.png",
+        "Sinister Steel.png"
+      ],
+      "leveling": [],
+      "name": "Voracity",
+      "notes": [
+        "* ''Voracity's'' cooldown reduction will still take effect even after ''Katarina'' dies.",
+        "* ''Katarina'' can use ''Shunpo'' on ''Daggers'' in mid-air.",
+        "** However, the damage will not apply until it lands."
+      ],
+      "projectile": "Magic",
+      "skill": "I",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "targeting": "Passive"
     },
-    "tags": [
-        "Assassin",
-        "Mage"
-    ],
-    "resource": "None",
-    "herotype": "Slayer",
-    "alttype": "Mage",
-    "be_cost": 3150,
-    "rp_cost": 790,
-    "adaptivetype": "magic",
-    "info": {
-        "attack": 4,
-        "defense": 3,
-        "magic": 9,
-        "difficulty": 8
+    "q1": {
+      "key": "Q",
+      "id": "KatarinaQ",
+      "riotName": "Bouncing Blade",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KatarinaQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Katarina throws a Dagger at the target that then bounces to nearby enemies before ricocheting onto the ground.",
+      "callforhelp": true,
+      "champion": "Katarina",
+      "cooldown": [
+        11,
+        10,
+        9,
+        8,
+        7
+      ],
+      "cooldownBurn": "11/10/9/8/7",
+      "costBurn": "0",
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Katarina''' throws a {{as|Dagger|buzzword}} to the target enemy that bounces to up to 2 nearby enemies, dealing {{as|magic damage}} to each target.",
+        "The {{as|Dagger|buzzword}} then lands on the ground 350 units opposite from where it struck the target. The time to land from striking the target is the same regardless of distance traveled."
+      ],
+      "effect_radius": "{{tt|625|Estimated}}",
+      "icon": [
+        "Bouncing Blade.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
+      ],
+      "name": "Bouncing Blade",
+      "notes": [
+        "* ''Bouncing Blades'' can hit targets in [[Sight|fog of war]] as well as [[stealth]]ed ones.",
+        "* ''Bouncing Blade'' will not stop if the target dies before hitting it but it will vanish mid-air if it targeted a vanishing [[Champion_summoned_units#decoys|decoy]]."
+      ],
+      "projectile": true,
+      "skill": "Q",
+      "spelleffects": "Multi-hit",
+      "spellshield": true,
+      "target_range": 625,
+      "targeting": "[[Unit-targeted|Unit]] / [[Auto-targeted|Auto]]"
     },
-    "i_displayname": "Voracity / Sinister Steel",
-    "q_displayname": "Bouncing Blade",
-    "w_dispalyname": "Preparation",
-    "e_dispalyname": "Shunpo",
-    "r_dispalyname": "Death Lotus",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Voracity",
-            "image": {
-                "full": "Katarina_Passive.png",
-                "sprite": "passive1.png",
-                "group": "passive",
-                "x": 96,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies, Self",
-            "blurb": "Whenever an enemy champion dies that Katarina has damaged in the last 3 seconds, her ability cooldowns are reduced by 15 seconds. If Katarina picks up a Dagger, she uses it to slash through all nearby enemies, dealing magic damage.",
-            "champion": "Katarina",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Innate:}} Whenever an enemy champion dies within 3 seconds of '''Katarina''' damaging them, her abilities' {{sti|cooldowns}} are reduced by 15 seconds.",
-                "{{sbc|Sinister Steel:}} Whenever '''Katarina''' retrieves a {{as|Dagger|buzzword}}, she uses it to slash through all nearby enemies, dealing {{pp|18|68|72|77|82|89|96|103|112|121|131|142|154|166|180|194|208|224|240|color=magic damage}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ {{pp|4|key=%|55 to 100|1 to 16}} AP)}} {{tip|magic damage|{{as|magic damage}}}} and reducing {{ai|Shunpo|Katarina|Shunpo's}} {{sti|cooldown}} by {{pp|4|key=%|78 to 96|1 to 16}}.",
-                "{{as|Daggers|buzzword}} last 4 seconds before disappearing."
-            ],
-            "effect_radius": 340,
-            "grounded": false,
-            "icon": [
-                "Voracity.png",
-                "Sinister Steel.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Voracity",
-            "notes": [
-                "* ''Voracity's'' cooldown reduction will still take effect even after ''Katarina'' dies.",
-                "* ''Katarina'' can use ''Shunpo'' on ''Daggers'' in mid-air.",
-                "** However, the damage will not apply until it lands."
-            ],
-            "projectile": false,
-            "skill": "I",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "KatarinaQ",
-            "riotName": "Bouncing Blade",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KatarinaQ.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Katarina throws a Dagger at the target that then bounces to nearby enemies before ricocheting onto the ground.",
-            "callforhelp": true,
-            "champion": "Katarina",
-            "cooldown": [
-                11,
-                10,
-                9,
-                8,
-                7
-            ],
-            "cooldownBurn": "11/10/9/8/7",
-            "cost": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ],
-            "costBurn": "0",
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Katarina''' throws a {{as|Dagger|buzzword}} to the target enemy that bounces to up to 2 nearby enemies, dealing {{as|magic damage}} to each target.",
-                "The {{as|Dagger|buzzword}} then lands on the ground 350 units opposite from where it struck the target. The time to land from striking the target is the same regardless of distance traveled."
-            ],
-            "effect_radius": "{{tt|625|Estimated}}",
-            "grounded": false,
-            "icon": [
-                "Bouncing Blade.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
-            ],
-            "name": "Bouncing Blade",
-            "notes": [
-                "* ''Bouncing Blades'' can hit targets in [[Sight|fog of war]] as well as [[stealth]]ed ones.",
-                "* ''Bouncing Blade'' will not stop if the target dies before hitting it but it will vanish mid-air if it targeted a vanishing [[Champion_summoned_units#decoys|decoy]]."
-            ],
-            "projectile": true,
-            "skill": "Q",
-            "spelleffects": "Multi-hit",
-            "spellshield": true,
-            "target_range": 625,
-            "targeting": "[[Unit-targeted|Unit]] / [[Auto-targeted|Auto]]"
-        },
-        "w1": {
-            "key": "W",
-            "id": "KatarinaW",
-            "riotName": "Preparation",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KatarinaW.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 240,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "Katarina gains a burst of movement speed, tossing a Dagger into the air directly above herself.",
-            "champion": "Katarina",
-            "cooldown": [
-                15,
-                14,
-                13,
-                12,
-                11
-            ],
-            "cooldownBurn": "15/14/13/12/11",
-            "cost": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ],
-            "costBurn": "0",
-            "costtype": "No cost",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Katarina''' tosses a {{as|Dagger|buzzword}} into the air above her current location, gaining {{tip|ghosted|ghost}} and a decaying {{sti|ms|{{as|'''bonus''' movement speed}}}} until it lands after {{fd|1.25}} seconds."
-            ],
-            "grounded": false,
-            "icon": [
-                "Preparation.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Bonus Movement speed|{{ap|50|60|70|80|90}}%}}"
-            ],
-            "name": "Preparation",
-            "notes": [
-                "* No additional details."
-            ],
-            "projectile": false,
-            "range": "",
-            "skill": "W",
-            "spelleffects": "",
-            "spellshield": false,
-            "targeting": "None"
-        },
-        "e1": {
-            "key": "E",
-            "id": "KatarinaEWrapper",
-            "riotName": "Shunpo",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KatarinaEWrapper.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 288,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Katarina blinks to the target, striking it if its an enemy, or striking the nearest enemy otherwise.",
-            "callforhelp": true,
-            "champion": "Katarina",
-            "cooldown": [
-                14,
-                12.5,
-                11,
-                9.5,
-                8
-            ],
-            "cooldownBurn": "14/12.5/11/9.5/8",
-            "cost": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ],
-            "costBurn": "0",
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} After a short delay, '''Katarina''' {{tip|blinks}} to the target location around the target unit or {{as|Dagger|buzzword}}, dealing {{as|magic damage}} to the nearest enemy in range.",
-                "'''Shunpo''' resets '''Katarina's''' autoattack timer.",
-                "''Upon blinking, '''Katarina''' remains in {{ct|cast|cast time}} for {{fd|0.15}} seconds, increased if the target is killed. Movement command buffering is also delayed by {{fd|0.85}} seconds.''"
-            ],
-            "grounded": true,
-            "icon": [
-                "Shunpo.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ 50% AD)}} {{as|(+ 25% AP)}}}}"
-            ],
-            "name": "Shunpo",
-            "notes": [
-                "* ''Shunpo'' should be an instant ability but it has extra logic inside it which makes it have a short cast time before blinking.",
-                "* ''Katarina'' cannot target [[wards]], but she can target objects such as allied {{cai|Demacian Standard|Jarvan IV}}, {{cai|Dark Passage|Thresh}} or jungle plants.",
-                "* {{si|Flash}} can be used during cast time but it will not cancel the blink.",
-                "* If the target is very close to a wall and '''Katarina''' targets ''Shunpo'' behind the target, she can blink over the wall."
-            ],
-            "projectile": false,
-            "skill": "E",
-            "spelleffects": "Single target",
-            "spellshield": true,
-            "target_range": "{{tt|725|Normal cast.}} / {{tt|775|Cast on daggers.}}",
-            "targeting": "Unit"
-        },
-        "r1": {
-            "key": "R",
-            "id": "KatarinaR",
-            "riotName": "Death Lotus",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "KatarinaR.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Katarina becomes a flurry of blades, dealing massive magic damage while she channels to the 3 nearest enemy champions.",
-            "champion": "Katarina",
-            "cooldown": [
-                90,
-                60,
-                45
-            ],
-            "cooldownBurn": "90/60/45",
-            "cost": [
-                0,
-                0,
-                0
-            ],
-            "costBurn": "0",
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Katarina''' rapidly {{ct|channel|channels|spins in place|cast=interrupts|items=interrupts,true,,false,false,melee|spells=true,interrupts,interrupts,false,false}} for {{fd|2.5}} seconds, throwing a dagger every {{fd|0.166}} seconds to up to 3 nearby enemy champions, dealing {{as|magic damage}} and applying {{tip|Grievous Wounds}} for 3 seconds.",
-                "''Death Lotus'' cannot be cancelled by movement and basic attack commands in the first and last {{fd|0.25}} seconds of channeling."
-            ],
-            "effect_radius": 550,
-            "grounded": false,
-            "icon": [
-                "Death Lotus.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 22% '''bonus''' AD)}} {{as|(+ 19% AP)}}|Total Single-Target Damage|{{ap|25*15 to 50*15}} {{as|(+ 330% '''bonus''' AD)}} {{as|(+ 285% AP)}}}}"
-            ],
-            "name": "Death Lotus",
-            "notes": [
-                "* ''Death Lotus'' cannot be activated unless there is at least one enemy champion in range.",
-                "** ''Katarina'' can activate ''Death Lotus'' even if nearby targets are in [[Sight|fog of war]] and/or [[stealth]]ed.  Due to this, it is possible to use the ability to scout in the [[sight|fog of war]] and provide pseudo [[stealth]] detection of enemy champions.",
-                "** Leaving ''Death Lotus'' radius while ''Katarina'' is channeling will not cause her to stop prematurely.",
-                "* {{tip|Spell shield}} will block only one dagger."
-            ],
-            "projectile": true,
-            "skill": "R",
-            "spelleffects": "aoedot",
-            "spellshield": "Special",
-            "targeting": "Auto"
-        }
+    "w1": {
+      "key": "W",
+      "id": "KatarinaW",
+      "riotName": "Preparation",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KatarinaW.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Self",
+      "blurb": "Katarina gains a burst of movement speed, tossing a Dagger into the air directly above herself.",
+      "champion": "Katarina",
+      "cooldown": [
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "cooldownBurn": "15/14/13/12/11",
+      "costBurn": "0",
+      "costtype": "No cost",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Katarina''' tosses a {{as|Dagger|buzzword}} into the air above her current location, gaining {{tip|ghosted|ghost}} and a decaying {{sti|ms|{{as|'''bonus''' movement speed}}}} until it lands after {{fd|1.25}} seconds."
+      ],
+      "icon": [
+        "Preparation.png"
+      ],
+      "leveling": [
+        "{{st|Bonus Movement speed|{{ap|50|60|70|80|90}}%}}"
+      ],
+      "name": "Preparation",
+      "notes": [
+        "* No additional details."
+      ],
+      "projectile": "None",
+      "skill": "W",
+      "targeting": "None"
+    },
+    "e1": {
+      "key": "E",
+      "id": "KatarinaEWrapper",
+      "riotName": "Shunpo",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KatarinaEWrapper.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 288,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Katarina blinks to the target, striking it if its an enemy, or striking the nearest enemy otherwise.",
+      "callforhelp": true,
+      "champion": "Katarina",
+      "cooldown": [
+        14,
+        12.5,
+        11,
+        9.5,
+        8
+      ],
+      "cooldownBurn": "14/12.5/11/9.5/8",
+      "costBurn": "0",
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} After a short delay, '''Katarina''' {{tip|blinks}} to the target location around the target unit or {{as|Dagger|buzzword}}, dealing {{as|magic damage}} to the nearest enemy in range.",
+        "'''Shunpo''' resets '''Katarina's''' autoattack timer.",
+        "''Upon blinking, '''Katarina''' remains in {{ct|cast|cast time}} for {{fd|0.15}} seconds, increased if the target is killed. Movement command buffering is also delayed by {{fd|0.85}} seconds.''"
+      ],
+      "grounded": true,
+      "icon": [
+        "Shunpo.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ 50% AD)}} {{as|(+ 25% AP)}}}}"
+      ],
+      "name": "Shunpo",
+      "notes": [
+        "* ''Shunpo'' should be an instant ability but it has extra logic inside it which makes it have a short cast time before blinking.",
+        "* ''Katarina'' cannot target [[wards]], but she can target objects such as allied {{cai|Demacian Standard|Jarvan IV}}, {{cai|Dark Passage|Thresh}} or jungle plants.",
+        "* {{si|Flash}} can be used during cast time but it will not cancel the blink.",
+        "* If the target is very close to a wall and '''Katarina''' targets ''Shunpo'' behind the target, she can blink over the wall."
+      ],
+      "projectile": "Magic",
+      "skill": "E",
+      "spelleffects": "Single target",
+      "spellshield": true,
+      "target_range": "{{tt|725|Normal cast.}} / {{tt|775|Cast on daggers.}}",
+      "targeting": "Unit"
+    },
+    "r1": {
+      "key": "R",
+      "id": "KatarinaR",
+      "riotName": "Death Lotus",
+      "maxrank": 3,
+      "maxammo": -1,
+      "image": {
+        "full": "KatarinaR.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Katarina becomes a flurry of blades, dealing massive magic damage while she channels to the 3 nearest enemy champions.",
+      "champion": "Katarina",
+      "cooldown": [
+        90,
+        60,
+        45
+      ],
+      "cooldownBurn": "90/60/45",
+      "costBurn": "0",
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Katarina''' rapidly {{ct|channel|channels|spins in place|cast=interrupts|items=interrupts,true,,false,false,melee|spells=true,interrupts,interrupts,false,false}} for {{fd|2.5}} seconds, throwing a dagger every {{fd|0.166}} seconds to up to 3 nearby enemy champions, dealing {{as|magic damage}} and applying {{tip|Grievous Wounds}} for 3 seconds, reducing healing on the target by 60%."
+      ],
+      "effect_radius": 550,
+      "icon": [
+        "Death Lotus.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 22% '''bonus''' AD)}} {{as|(+ 19% AP)}}|Total Single-Target Damage|{{ap|25*15 to 50*15}} {{as|(+ 330% '''bonus''' AD)}} {{as|(+ 285% AP)}}}}"
+      ],
+      "name": "Death Lotus",
+      "notes": [
+        "* ''Death Lotus'' cannot be activated unless there is at least one enemy champion in range.",
+        "** ''Katarina'' can activate ''Death Lotus'' even if nearby targets are in [[Sight|fog of war]] and/or [[stealth]]ed.  Due to this, it is possible to use the ability to scout in the [[sight|fog of war]] and provide pseudo [[stealth]] detection of enemy champions.",
+        "** Leaving ''Death Lotus'' radius while ''Katarina'' is channeling will not cause her to stop prematurely.",
+        "*''Death Lotus'' cannot be cancelled by movement and basic attack commands in the first and last {{fd|0.25}} seconds of channelling.",
+        "* {{tip|Spell shield}} will block only one dagger."
+      ],
+      "projectile": true,
+      "skill": "R",
+      "spelleffects": "aoedot",
+      "spellshield": "Special",
+      "targeting": "Auto"
     }
+  }
 }

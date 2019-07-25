@@ -1,358 +1,335 @@
 {
-    "patch": "V7.14",
-    "changes": "9.9.1",
-    "id": "Kayn",
-    "key": "141",
-    "name": "Kayn",
-    "fullname": "Shieda Kayn",
-    "title": "the Shadow Reaper",
-    "image": {
-        "full": "Kayn.png",
-        "sprite": "champion1.png",
-        "group": "champion",
+  "patch": "V7.14",
+  "changes": "9.9.1",
+  "id": "Kayn",
+  "key": "141",
+  "name": "Kayn",
+  "fullname": "Shieda Kayn",
+  "title": "the Shadow Reaper",
+  "image": {
+    "full": "Kayn.png",
+    "sprite": "champion1.png",
+    "group": "champion",
+    "x": 192,
+    "y": 96,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Fighter",
+    "Assassin"
+  ],
+  "resource": "Mana",
+  "herotype": "Skirmisher",
+  "alttype": "",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "Physical",
+  "info": {
+    "attack": 10,
+    "defense": 6,
+    "magic": 1,
+    "difficulty": 8
+  },
+  "i_displayname": "The Darkin Scythe / The Darkin Scythe A / The Darkin Scythe R",
+  "q_displayname": "Reaping Slash / Reaping Slash A / Reaping Slash R",
+  "w_dispalyname": "Blade's Reach / Blade's Reach A / Blade's Reach R",
+  "e_dispalyname": "Shadow Step / Shadow Step A / Shadow Step R",
+  "r_dispalyname": "Umbral Trespass / Umbral Trespass R / Umbral Trespass 2 / Umbral Trespass 2 R",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "The Darkin Scythe",
+      "image": {
+        "full": "Kayn_Passive_Primary.png",
+        "sprite": "passive1.png",
+        "group": "passive",
         "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
+      },
+      "affects": "Self",
+      "blurb": "At one point in the game, Kayn will permanently transform into either a Shadow Assassin or a Darkin.",
+      "champion": "Kayn",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Innate:}} '''{{ci|Kayn}}''' wields an ancient, [[Darkin|sentient weapon]], that battles with him for control. Each instance of damage '''Kayn''' deals against champions (excluding [[damage over time]]) and {{tip|takedown|takedowns}} causes them to drop orbs, red by {{tip|melee}} champions and blue by {{tip|ranged}} champions, that are automatically collected upon leaving combat, {{tt|filling a bar|Additional info in the notes below}} around '''Kayn's''' portrait.",
+        "Once the bar is filled, '''Kayn''' can either return to the [[Spawn|summoning platform]] to interact with his portrait to either be overwhelmed by {{ci|Rhaast}} or expel him to become the {{ci|Shadow Assassin}}, or wait 4 minutes until the other form becomes available, reduced by 5 seconds for each collected orb of their type after that.",
+        "The transformation type is decided based on the highest amount of damage dealt to the respective range type. If the two forms are within 8% of each other, the last champion range type hit will determine the transformation. The transformation will permanently change his abilities and grant him [[Homeguard]].",
+        "{{sbc|{{ci|Shadow Assassin}}:}} '''Kayn''' deals {{pp|key=%|12 to 44}} of post-mitigation [[damage]] dealt against enemy champions as {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, lasting for 3 seconds upon entering in combat with an enemy [[champion]], refreshing after 8 seconds out-of-combat with them or by using {{ai|Umbral Trespass|Kayn}}.",
+        "{{sbc|{{ci|Rhaast}}:}} '''Rhaast''' {{tip|heals}} for {{pp|key=%|34.5 to 43}} of the post-mitigation {{tip|physical damage|{{as|physical damage}}}} that he deals with abilities against enemy champions."
+      ],
+      "icon": [
+        "The Darkin Scythe.png",
+        "The Darkin Scythe A.png",
+        "The Darkin Scythe R.png"
+      ],
+      "leveling": [],
+      "name": "The Darkin Scythe",
+      "notes": [
+        "* The bar gets filled up completely at 500 points.",
+        "** ''Melee'' orbs grant 2 points per hit and 6 points per takedown.",
+        "** ''Ranged'' orbs grant 3 points per hit and 7 points per takedown.",
+        "** Each bar has a bucket system.",
+        "*** The bucket starts at 60 points.",
+        "*** Each time an orb is taken the system checks if there's an amount of points in the bucket equal to or higher than the amount received from the orb.<br>If there is, '''Kayn''' is given an additional orb of the same type he received, while also subtracting that amount of points from the bucket.",
+        "*** The bucket fills by {{fd|0.8}} points per second if out of champion combat for 70 seconds.",
+        "** The amount of points received per orb is then multiplied by {{pp|3|type=minutes|3;6;10|0:00; 8:20; 12:30}}.",
+        "* The orbs will be collected even if '''Kayn''' dies."
+      ],
+      "projectile": "null",
+      "skill": "I",
+      "targeting": "Passive"
     },
-    "tags": [
-        "Fighter",
-        "Assassin"
-    ],
-    "resource": "Mana",
-    "herotype": "Skirmisher",
-    "alttype": "",
-    "be_cost": 6300,
-    "rp_cost": 975,
-    "adaptivetype": "Physical",
-    "info": {
-        "attack": 10,
-        "defense": 6,
-        "magic": 1,
-        "difficulty": 8
+    "q1": {
+      "key": "Q",
+      "id": "KaynQ",
+      "riotName": "Reaping Slash",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KaynQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Kayn dashes, then slashes. Both deal damage.",
+      "champion": "Kayn",
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cooldownBurn": "7/6.5/6/5.5/5",
+      "costBurn": "50",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Kayn''' {{tip|dashes}} forward, dealing {{as|physical damage}} to enemies he passes through, before swinging his scythe, dealing the same damage to surrounding enemies.",
+        "Both instances of ''Reaping Slash'' deal 55 '''bonus''' damage against monsters.",
+        "{{sbc|{{ci|Rhaast}}:}} ''Reaping Slash's'' damage is modified to deal {{as|50% AD}} {{as|(+ 5% {{as|(+ 4% per 100 '''bonus''' AD)}} of the target's '''maximum''' health)}} {{as|physical damage}} for both instances. This damage is {{tt|capped against monsters|This includes the 55 bonus damage to monsters.}}.",
+        "The dash's speed scales with '''Kayn's''' {{sti|ms|{{as|'''total''' movement speed}}}}."
+      ],
+      "grounded": true,
+      "icon": [
+        "Reaping Slash.png",
+        "Reaping Slash R.png"
+      ],
+      "knockdown": true,
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 140}} {{as|(+ 65% '''bonus''' AD)}}|Total Non-Monster Damage|{{ap|60*2 to 140*2}} {{as|(+ 130% '''bonus''' AD)}}}}",
+        "{{st|Monster Physical Damage|{{ap|60+55 to 140+55}} {{as|(+ 65% '''bonus''' AD)}}|Total Monster Damage|{{ap|(60+55)*2 to (140+55)*2}} {{as|(+ 130% '''bonus''' AD)}}}}",
+        "{{st|Max. Monster Damage per Hit|{{ap|200 to 400}}|Total Maximum Monster Damage|{{ap|200*2 to 400*2}}}}"
+      ],
+      "name": "Reaping Slash",
+      "notes": [
+        "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage - either the dash or the slash.",
+        "* As {{ci|Shadow Assassin}}, an alternate icon for {{ai|Reaping Slash A|Kayn|Reaping Slash}} is used but has no modified effect.",
+        "* Other abilities can be queued while casting ''Reaping Slash''."
+      ],
+      "projectile": "Physical",
+      "skill": "Q",
+      "spelleffects": "Area of effect",
+      "spellshield": "Special",
+      "target_range": 350,
+      "targeting": "Direction"
     },
-    "i_displayname": "The Darkin Scythe / The Darkin Scythe A / The Darkin Scythe R",
-    "q_displayname": "Reaping Slash / Reaping Slash A / Reaping Slash R",
-    "w_dispalyname": "Blade's Reach / Blade's Reach A / Blade's Reach R",
-    "e_dispalyname": "Shadow Step / Shadow Step A / Shadow Step R",
-    "r_dispalyname": "Umbral Trespass / Umbral Trespass R / Umbral Trespass 2 / Umbral Trespass 2 R",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "The Darkin Scythe",
-            "image": {
-                "full": "Kayn_Passive_Primary.png",
-                "sprite": "passive1.png",
-                "group": "passive",
-                "x": 192,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "At one point in the game, Kayn will permanently transform into either a Shadow Assassin or a Darkin.",
-            "champion": "Kayn",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Innate:}} '''{{ci|Kayn}}''' wields an ancient, [[Darkin|sentient weapon]], that battles with him for control. Each instance of damage '''Kayn''' deals against champions (excluding [[damage over time]]) and {{tip|takedown|takedowns}} causes them to drop orbs, red by {{tip|melee}} champions and blue by {{tip|ranged}} champions, that are automatically collected upon leaving combat, {{tt|filling a bar|Additional info in the notes below}} around '''Kayn's''' portrait.",
-                "Once the bar is filled, '''Kayn''' can either return to the [[Spawn|summoning platform]] to interact with his portrait to either be overwhelmed by {{ci|Rhaast}} or expel him to become the {{ci|Shadow Assassin}}, or wait 4 minutes until the other form becomes available, reduced by 5 seconds for each collected orb of their type after that.",
-                "The transformation type is decided based on the highest amount of damage dealt to the respective range type. If the two forms are within 8% of each other, the last champion range type hit will determine the transformation. The transformation will permanently change his abilities and grant him [[Homeguard]].",
-                "{{sbc|{{ci|Shadow Assassin}}:}} '''Kayn''' deals {{pp|key=%|12 to 44}} of post-mitigation [[damage]] dealt against enemy champions as {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, lasting for 3 seconds upon entering in combat with an enemy [[champion]], refreshing after 8 seconds out-of-combat with them or by using {{ai|Umbral Trespass|Kayn}}.",
-                "{{sbc|{{ci|Rhaast}}:}} '''Rhaast''' {{tip|heals}} for {{pp|key=%|34.5 to 43}} of the post-mitigation {{tip|physical damage|{{as|physical damage}}}} that he deals with abilities against enemy champions."
-            ],
-            "icon": [
-                "The Darkin Scythe.png",
-                "The Darkin Scythe A.png",
-                "The Darkin Scythe R.png"
-            ],
-            "leveling": [],
-            "name": "The Darkin Scythe",
-            "notes": [
-                "* The bar gets filled up completely at 500 points.",
-                "** ''Melee'' orbs grant 2 points per hit and 6 points per takedown.",
-                "** ''Ranged'' orbs grant 3 points per hit and 7 points per takedown.",
-                "** Each bar has a bucket system.",
-                "*** The bucket starts at 60 points.",
-                "*** Each time an orb is taken the system checks if there's an amount of points in the bucket equal to or higher than the amount received from the orb.<br>If there is, '''Kayn''' is given an additional orb of the same type he received, while also subtracting that amount of points from the bucket.",
-                "*** The bucket fills by {{fd|0.8}} points per second if out of champion combat for 70 seconds.",
-                "** The amount of points received per orb is then multiplied by {{pp|3|type=minutes|3;6;10|0:00; 8:20; 12:30}}.",
-                "* The orbs will be collected even if '''Kayn''' dies."
-            ],
-            "skill": "I",
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "KaynQ",
-            "riotName": "Reaping Slash",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KaynQ.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 96,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Kayn dashes, then slashes. Both deal damage.",
-            "champion": "Kayn",
-            "cooldown": [
-                7,
-                6.5,
-                6,
-                5.5,
-                5
-            ],
-            "cooldownBurn": "7/6.5/6/5.5/5",
-            "cost": [
-                50,
-                50,
-                50,
-                50,
-                50
-            ],
-            "costBurn": "50",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Kayn''' {{tip|dashes}} forward, dealing {{as|physical damage}} to enemies he passes through, before swinging his scythe, dealing the same damage to surrounding enemies.",
-                "Both instances of ''Reaping Slash'' deal 55 '''bonus''' damage against monsters.",
-                "{{sbc|{{ci|Rhaast}}:}} ''Reaping Slash's'' damage is modified to deal {{as|50% AD}} {{as|(+ 5% {{as|(+ 4% per 100 '''bonus''' AD)}} of the target's '''maximum''' health)}} {{as|physical damage}} for both instances. This damage is {{tt|capped against monsters|This includes the 55 bonus damage to monsters.}}.",
-                "The dash's speed scales with '''Kayn's''' {{sti|ms|{{as|'''total''' movement speed}}}}."
-            ],
-            "grounded": true,
-            "icon": [
-                "Reaping Slash.png",
-                "Reaping Slash R.png"
-            ],
-            "knockdown": true,
-            "leveling": [
-                "{{st|Physical Damage|{{ap|60 to 140}} {{as|(+ 65% '''bonus''' AD)}}|Total Non-Monster Damage|{{ap|60*2 to 140*2}} {{as|(+ 130% '''bonus''' AD)}}}}",
-                "{{st|Monster Physical Damage|{{ap|60+55 to 140+55}} {{as|(+ 65% '''bonus''' AD)}}|Total Monster Damage|{{ap|(60+55)*2 to (140+55)*2}} {{as|(+ 130% '''bonus''' AD)}}}}",
-                "{{st|Max. Monster Damage per Hit|{{ap|200 to 400}}|Total Maximum Monster Damage|{{ap|200*2 to 400*2}}}}"
-            ],
-            "name": "Reaping Slash",
-            "notes": [
-                "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage - either the dash or the slash.",
-                "* As {{ci|Shadow Assassin}}, an alternate icon for {{ai|Reaping Slash A|Kayn|Reaping Slash}} is used but has no modified effect.",
-                "* Other abilities can be queued while casting ''Reaping Slash''."
-            ],
-            "skill": "Q",
-            "spelleffects": "Area of effect",
-            "spellshield": "Special",
-            "target_range": 350,
-            "targeting": "Direction"
-        },
-        "w1": {
-            "key": "W1",
-            "id": "KaynW",
-            "riotName": "Blade's Reach",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KaynW.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 144,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Kayn damages and slows targets in a line.",
-            "champion": "Kayn",
-            "cooldown": [
-                13,
-                12,
-                11,
-                10,
-                9
-            ],
-            "cooldownBurn": "13/12/11/10/9",
-            "cost": [
-                60,
-                65,
-                70,
-                75,
-                80
-            ],
-            "costBurn": "60/65/70/75/80",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Active:}} After a short delay in which he cannot perform any other actions, '''Kayn''' performs an upwards sweep with his scythe, dealing {{as|physical damage}} to all enemies in a line in the target direction and {{tip|slow|slowing}} them by 60% decaying over {{fd|1.5}} seconds.",
-                "{{sbc|{{ci|Shadow Assassin}}:}} ''Blade's Reach's'' [[range]] is increased by 200. Additionally, '''Kayn''' conjures a ''living shadow'' at the casting position to perform ''Blade's Reach'' in his stead, allowing '''Kayn''' to perform other actions.",
-                "{{sbc|{{ci|Rhaast}}:}} ''Blade's Reach'' {{tip|airborne|knocks up}} enemies for 1 second."
-            ],
-            "icon": [
-                "Blade's Reach.png",
-                "Blade's Reach A.png",
-                "Blade's Reach R.png"
-            ],
-            "leveling": [
-                "{{st|Physical Damage|{{ap|90 to 270}} {{as|(+ 130% '''bonus''' AD)}}}}"
-            ],
-            "name": "Blade's Reach",
-            "notes": [
-                "* The ''shadow'' created by the '''Shadow Assassin''' can grab the {{ii|Eye of the Herald}} and is considered a champion for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing."
-            ],
-            "projectile": false,
-            "skill": "W",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "target_range": 700,
-            "targeting": "Direction"
-        },
-        "e1": {
-            "key": "E",
-            "id": "KaynE",
-            "riotName": "Shadow Step",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "KaynE.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 192,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "Kayn can walk through terrain.",
-            "champion": "Kayn",
-            "cooldown": [
-                21,
-                19,
-                17,
-                15,
-                13
-            ],
-            "cooldownBurn": "21/19/17/15/13",
-            "cost": [
-                90,
-                90,
-                90,
-                90,
-                90
-            ],
-            "costBurn": "90",
-            "costtype": "Mana",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Kayn''' gains {{sti|ms|{{as|40% '''bonus''' movement speed}}}}, is {{tip|ghosted}} and can ignore terrain collision for {{fd|1.5}} seconds. [[Crowd control#Movement|Immobilizing]] effects will interrupt ''Shadow Step''.",
-                "'''Kayn''' {{tip|heals}} himself upon moving through terrain for the first time and, if he's not in combat with enemy champions, ''Shadow Step's'' duration is increased. While inside terrain, '''Kayn's''' vision pierces all obstructions although cannot see into {{tip|brush}}.",
-                "Receiving damage from an enemy champion or dealing ability damage to them after the effect is enhanced reduces the remaining duration to {{fd|1.5}} seconds. The effect also cannot remain active out of terrain for longer than {{fd|1.5}} seconds and will cancel completely if '''Kayn''' basic attacks.",
-                "{{sbc|{{ci|Shadow Assassin}}:}} ''Shadow Step's'' cooldown is reduced to 8 seconds at all ranks. Casting ''Shadow Step'' removes {{tip|slow|slows}} and makes '''Kayn''' [[Slow resist#Slow Immunity|immune]] to them for the duration. Additionally, entering terrain will increase the {{sti|ms|{{as|'''bonus''' movement speed}}}} to {{as|80%|ms}} for the remaining duration."
-            ],
-            "grounded": true,
-            "icon": [
-                "Shadow Step.png",
-                "Shadow Step A.png"
-            ],
-            "knockdown": true,
-            "leveling": [
-                "{{st|Heal|{{ap|100 to 160}} {{as|(+ 40% '''bonus''' AD)}}}}\n{{st|Empowered Duration|{{ap|7 to 9}}}}"
-            ],
-            "name": "Shadow Step",
-            "notes": [
-                "* As {{ci|Rhaast}}, an alternate icon for {{ai|Shadow Step R|Kayn|Shadow Step}} is used but has no modified effect.",
-                "* Unblocked vision allows '''Kayn''' to see the full circle of his vision radius, with the exception of within {{tip|brush}}. Note that despite not being able to see into {{tip|brush}}, he can still see things beyond the {{tip|brush}}.",
-                "* Effects such as {{cai|Condemn|Vayne}} and {{cai|Heroic Charge|Poppy}} apply an immobilizing effect and so interrupt Shadow Step.",
-                "* Enemies cannot see {{ci|Kayn}} while he is inside of terrain unless they have terrain-piercing vision, such as {{ai|Heightened Senses|Quinn}}, {{ai|Hawkshot|Ashe}} or {{ai|Comet of Legend|Aurelion Sol}}.",
-                "** However, enemies will be notified if nearby terrain is infested if '''Kayn''' is within 1000 units - with an indicator being placed on the terrain with a direct line between '''Kayn''' and the enemy champion. ''Slightly less than standard sight radius, but more than the {{tip|Camouflage}} detection radius.''",
-                "* While moving in terrain, '''Kayn''' is considered [[dash|dashing]], so {{tip|knockdown}} effects would stop him from moving.",
-                "* '''Kayn''' can move up to 550 units beyond the outer-edge of the battlefield.",
-                "* While in terrain, '''Kayn''' will '''not''' be considered unseen for the sake of {{ii|Duskblade of Draktharr}}."
-            ],
-            "skill": "E",
-            "spelleffects": "Heal",
-            "targeting": "None"
-        },
-        "r1": {
-            "key": "R",
-            "id": "KaynR",
-            "riotName": "Umbral Trespass",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "KaynR.png",
-                "sprite": "spell5.png",
-                "group": "spell",
-                "x": 240,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies, Self",
-            "blurb": "Kayn hides in an enemy's body, dealing massive damage when he bursts out.",
-            "champion": "Kayn",
-            "cooldown": [
-                120,
-                100,
-                80
-            ],
-            "cooldownBurn": "120/100/80",
-            "cost": [
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Passive:}} '''Kayn''' marks enemy champions he damaged in the last {{fd|3.5}} seconds.",
-                "{{sbc|Active:}} '''Kayn''' becomes {{tip|untargetable}} and {{tip|dash|infests}} a marked enemy champion for up to {{fd|2.5}} seconds, {{tip|true sight|revealing them}} for the duration. Reactivating ''Umbral Trespass'' ends it earlier.",
-                "Upon reactivation or at the end of the duration, '''Kayn''' {{tip|dash|dashes}} out from their body 300-units away in the target direction, dealing {{as|physical damage}} to the target.",
-                "{{sbc|{{ci|Shadow Assassin}}:}} ''Umbral Trespass'' gains up to 200 '''bonus''' cast range and emerge range. Additionally, emerging will reset {{ai|The Darkin Scythe A|Kayn|The Darkin Scythe's}} {{sti|cooldown}}.",
-                "{{sbc|{{ci|Rhaast}}:}} ''Umbral Trespass'' is modified to deal {{as|10% {{as|(+ 13% per 100 '''bonus''' AD)}} of target's '''maximum''' health}} {{as|physical damage}}, and {{tip|heals}} him for{{ft|70% of the pre-mitigation damage|{{as|7% {{as|(+ {{fd|9.1}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}."
-            ],
-            "grounded": true,
-            "icon": [
-                "Umbral Trespass.png",
-                "Umbral Trespass 2.png",
-                "Umbral Trespass 2 R.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Physical Damage|{{ap|150 to 350}} {{as|(+ 175% '''bonus''' AD)}}}}"
-            ],
-            "name": "Umbral Trespass",
-            "notes": [
-                "* As {{ci|Rhaast}}, an alternate icon is used for the initial activation of {{ai|Umbral Trespass R|Kayn|Umbral Trespass}}.",
-                "* Until the second cast, the ability will have had no effect on the target for the purposes of {{ri|Electrocute}} or the 'in-combat' status.",
-                "* {{tip|Spell shield|Spell shields}} will prevent '''Kayn''' from infesting the target, but will do nothing to mitigate the damage once he has already infested them.",
-                "** If '''Kayn''' targets an enemy with a spell shield, the ability will simply go on cooldown without making '''Kayn''' dash to his target.",
-                "* '''Kayn''' is not able to target {{ci|Fiora}} during her {{ai|Riposte|Fiora}}.",
-                "* The damage is '''not''' blocked if the target is untargetable."
-            ],
-            "skill": "R",
-            "spelleffects": "Single target",
-            "spellshield": "Special",
-            "target_range": 550,
-            "targeting": "Unit"
-        }
+    "w1": {
+      "key": "W",
+      "id": "KaynW",
+      "riotName": "Blade's Reach",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KaynW.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Kayn damages and slows targets in a line.",
+      "champion": "Kayn",
+      "cooldown": [
+        13,
+        12,
+        11,
+        10,
+        9
+      ],
+      "cooldownBurn": "13/12/11/10/9",
+      "costBurn": "60 / 65 / 70 / 75 / 80",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Active:}} After a short delay in which he cannot perform any other actions, '''Kayn''' performs an upwards sweep with his scythe, dealing {{as|physical damage}} to all enemies in a line in the target direction and {{tip|slow|slowing}} them by 60% decaying over {{fd|1.5}} seconds.",
+        "{{sbc|{{ci|Shadow Assassin}}:}} ''Blade's Reach's'' [[range]] is increased by 200. Additionally, '''Kayn''' conjures a ''living shadow'' at the casting position to perform ''Blade's Reach'' in his stead, allowing '''Kayn''' to perform other actions.",
+        "{{sbc|{{ci|Rhaast}}:}} ''Blade's Reach'' {{tip|airborne|knocks up}} enemies for 1 second."
+      ],
+      "icon": [
+        "Blade's Reach.png",
+        "Blade's Reach A.png",
+        "Blade's Reach R.png"
+      ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|90 to 270}} {{as|(+ 130% '''bonus''' AD)}}}}"
+      ],
+      "name": "Blade's Reach",
+      "notes": [
+        "* The ''shadow'' created by the '''Shadow Assassin''' can grab the {{ii|Eye of the Herald}} and is considered a champion for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing."
+      ],
+      "projectile": "Physical",
+      "skill": "W",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "target_range": 700,
+      "targeting": "Direction"
+    },
+    "e1": {
+      "key": "E",
+      "id": "KaynE",
+      "riotName": "Shadow Step",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "KaynE.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Self",
+      "blurb": "Kayn can walk through terrain.",
+      "champion": "Kayn",
+      "cooldown": [
+        21,
+        19,
+        17,
+        15,
+        13
+      ],
+      "cooldownBurn": "21/19/17/15/13",
+      "costBurn": "90",
+      "costtype": "Mana",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Kayn''' gains {{sti|ms|{{as|40% '''bonus''' movement speed}}}}, is {{tip|ghosted}} and can ignore terrain collision for {{fd|1.5}} seconds. [[Crowd control#Movement|Immobilizing]] effects will interrupt ''Shadow Step''.",
+        "'''Kayn''' {{tip|heals}} himself upon moving through terrain for the first time and, if he's not in combat with enemy champions, ''Shadow Step's'' duration is increased. While inside terrain, '''Kayn's''' vision pierces all obstructions although cannot see into {{tip|brush}}.",
+        "Receiving damage from an enemy champion or dealing ability damage to them after the effect is enhanced reduces the remaining duration to {{fd|1.5}} seconds. The effect also cannot remain active out of terrain for longer than {{fd|1.5}} seconds and will cancel completely if '''Kayn''' basic attacks.",
+        "{{sbc|{{ci|Shadow Assassin}}:}} ''Shadow Step's'' cooldown is reduced to 8 seconds at all ranks. Casting ''Shadow Step'' removes {{tip|slow|slows}} and makes '''Kayn''' [[Slow resist#Slow Immunity|immune]] to them for the duration. Additionally, entering terrain will increase the {{sti|ms|{{as|'''bonus''' movement speed}}}} to {{as|80%|ms}} for the remaining duration."
+      ],
+      "grounded": true,
+      "icon": [
+        "Shadow Step.png",
+        "Shadow Step A.png"
+      ],
+      "knockdown": true,
+      "leveling": [
+        "{{st|Heal|{{ap|100 to 160}} {{as|(+ 40% '''bonus''' AD)}}}}\n{{st|Empowered Duration|{{ap|7 to 9}}}}"
+      ],
+      "name": "Shadow Step",
+      "notes": [
+        "* As {{ci|Rhaast}}, an alternate icon for {{ai|Shadow Step R|Kayn|Shadow Step}} is used but has no modified effect.",
+        "* Unblocked vision allows '''Kayn''' to see the full circle of his vision radius, with the exception of within {{tip|brush}}. Note that despite not being able to see into {{tip|brush}}, he can still see things beyond the {{tip|brush}}.",
+        "* Effects such as {{cai|Condemn|Vayne}} and {{cai|Heroic Charge|Poppy}} apply an immobilizing effect and so interrupt Shadow Step.",
+        "* Enemies cannot see {{ci|Kayn}} while he is inside of terrain unless they have terrain-piercing vision, such as {{ai|Heightened Senses|Quinn}}, {{ai|Hawkshot|Ashe}} or {{ai|Comet of Legend|Aurelion Sol}}.",
+        "** However, enemies will be notified if nearby terrain is infested if '''Kayn''' is within 1000 units - with an indicator being placed on the terrain with a direct line between '''Kayn''' and the enemy champion. ''Slightly less than standard sight radius, but more than the {{tip|Camouflage}} detection radius.''",
+        "* While moving in terrain, '''Kayn''' is considered [[dash|dashing]], so {{tip|knockdown}} effects would stop him from moving.",
+        "* '''Kayn''' can move up to 550 units beyond the outer-edge of the battlefield.",
+        "* While in terrain, '''Kayn''' will '''not''' be considered unseen for the sake of {{ii|Duskblade of Draktharr}}."
+      ],
+      "projectile": "null",
+      "skill": "E",
+      "spelleffects": "Heal",
+      "targeting": "None"
+    },
+    "r1": {
+      "key": "R",
+      "id": "KaynR",
+      "riotName": "Umbral Trespass",
+      "maxrank": 3,
+      "maxammo": -1,
+      "image": {
+        "full": "KaynR.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies, Self",
+      "blurb": "Kayn hides in an enemy's body, dealing massive damage when he bursts out.",
+      "champion": "Kayn",
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cooldownBurn": "120/100/80",
+      "costBurn": "100",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Passive:}} '''Kayn''' marks enemy champions he damaged in the last {{fd|3.5}} seconds.",
+        "{{sbc|Active:}} '''Kayn''' becomes {{tip|untargetable}} and {{tip|dash|infests}} a marked enemy champion for up to {{fd|2.5}} seconds, {{tip|true sight|revealing them}} for the duration. Reactivating ''Umbral Trespass'' ends it earlier.",
+        "Upon reactivation or at the end of the duration, '''Kayn''' {{tip|dash|dashes}} out from their body 300-units away in the target direction, dealing {{as|physical damage}} to the target.",
+        "{{sbc|{{ci|Shadow Assassin}}:}} ''Umbral Trespass'' gains up to 200 '''bonus''' cast range and emerge range. Additionally, emerging will reset {{ai|The Darkin Scythe A|Kayn|The Darkin Scythe's}} {{sti|cooldown}}.",
+        "{{sbc|{{ci|Rhaast}}:}} ''Umbral Trespass'' is modified to deal {{as|10% {{as|(+ 13% per 100 '''bonus''' AD)}} of target's '''maximum''' health}} {{as|physical damage}}, and {{tip|heals}} him for{{ft|70% of the pre-mitigation damage|{{as|7% {{as|(+ {{fd|9.1}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}."
+      ],
+      "grounded": true,
+      "icon": [
+        "Umbral Trespass.png",
+        "Umbral Trespass 2.png",
+        "Umbral Trespass 2 R.png"
+      ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|150 to 350}} {{as|(+ 175% '''bonus''' AD)}}}}"
+      ],
+      "name": "Umbral Trespass",
+      "notes": [
+        "* As {{ci|Rhaast}}, an alternate icon is used for the initial activation of {{ai|Umbral Trespass R|Kayn|Umbral Trespass}}.",
+        "* Until the second cast, the ability will have had no effect on the target for the purposes of {{ri|Electrocute}} or the 'in-combat' status.",
+        "* {{tip|Spell shield|Spell shields}} will prevent '''Kayn''' from infesting the target, but will do nothing to mitigate the damage once he has already infested them.",
+        "** If '''Kayn''' targets an enemy with a spell shield, the ability will simply go on cooldown without making '''Kayn''' dash to his target.",
+        "* '''Kayn''' is not able to target {{ci|Fiora}} during her {{ai|Riposte|Fiora}}.",
+        "* The damage is '''not''' blocked if the target is untargetable."
+      ],
+      "projectile": "Physical",
+      "skill": "R",
+      "spelleffects": "Single target",
+      "spellshield": "Special",
+      "target_range": 550,
+      "targeting": "Unit"
     }
+  }
 }

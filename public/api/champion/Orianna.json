@@ -1,353 +1,301 @@
 {
-    "patch": "v1.0.0.119",
-    "changes": "9.8.1",
-    "id": "Orianna",
-    "key": "61",
-    "name": "Orianna",
-    "fullname": "Orianna Reveck",
-    "title": "the Lady of Clockwork",
-    "image": {
-        "full": "Orianna.png",
-        "sprite": "champion2.png",
-        "group": "champion",
+  "patch": "v1.0.0.119",
+  "changes": "9.8.1",
+  "id": "Orianna",
+  "key": "61",
+  "name": "Orianna",
+  "fullname": "Orianna Reveck",
+  "title": "the Lady of Clockwork",
+  "image": {
+    "full": "Orianna.png",
+    "sprite": "champion2.png",
+    "group": "champion",
+    "x": 144,
+    "y": 96,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Mage",
+    "Support"
+  ],
+  "resource": "Mana",
+  "herotype": "Mage",
+  "alttype": "Controller",
+  "be_cost": 4800,
+  "rp_cost": 880,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 4,
+    "defense": 3,
+    "magic": 9,
+    "difficulty": 7
+  },
+  "i_displayname": "Clockwork Windup / Clockwork Winding",
+  "q_displayname": "Command Attack",
+  "w_dispalyname": "Command Dissonance",
+  "e_dispalyname": "Command Protect",
+  "r_dispalyname": "Command Shockwave",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Clockwork Windup",
+      "image": {
+        "full": "OriannaPassive.png",
+        "sprite": "passive2.png",
+        "group": "passive",
         "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
+      },
+      "affects": "Enemies, Self",
+      "blurb": "Orianna's autoattack deals additional magic damage. This damage increases the more Orianna attacks the same target.",
+      "champion": "Orianna",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Innate - The Ball:}} '''Orianna''' is accompanied by ''The Ball'', which she commands with her abilities. ''The Ball'' has a {{fd|0.15}} seconds global cooldown between casts. Additionally, ''The Ball'' attaches to '''Orianna''' if she is near it, and blinks back to '''Orianna''' if she is too far away from it.",
+        "{{sbc|Clockwork Winding:}} '''Orianna's''' [[basic attack]]s deal {{pp|6|10 to 50|1 to 16|formula = 10+8 every 3 levels|color=magic damage}} {{as|(+ 15% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} [[on-hit]] and gain ''Clockwork Winding'' for 4 seconds, stacking up to twice. ''Clockwork Windup'' deals{{ft|20% '''bonus''' damage|{{pp|6|10*0.2 to 50*0.2|1 to 16|formula = 2+1.6 every 3 levels}} {{as|(+ 3% AP)}} '''bonus''' damage}} per stack, up to {{pp|6|10*(1+0.2*2) to 50*(1+0.2*2)|1 to 16|formula = 14+11.2 every 3 levels|color=magic damage}} {{as|(+ 21% AP)}} {{as|'''total bonus''' magic damage}}.",
+        "'''Orianna''' loses all stacks of ''Clockwork Winding'' when she attacks a new target."
+      ],
+      "effect_radius": "{{tt|1125|Standard leash range}} / {{tt|1225|Leash range on ally}} / {{tt|225|Sight range (estimated)}}",
+      "icon": [
+        "Clockwork Windup.png",
+        "Clockwork Winding.png"
+      ],
+      "leveling": [],
+      "name": "Clockwork Windup",
+      "notes": [
+        ";The Ball",
+        "* An arrow will appear near ''Orianna'' whenever ''The Ball'' is not attached to her, pointing towards its location.",
+        "** The arrow will change colors depending on how far away they are from each other. From nearest to farthest: {{as|green|ap}}/{{as|blue|mana}} (whether colorblind mode is off or on, respectively) {{as|yellow|energy}}, {{as|red|health}} (at which point ''The Ball'' will blink back to ''Orianna'' if she moves just a bit further away).",
+        "*** ''Orianna's'' abilities go on a {{fd|0.5}} seconds global cooldown ({{fd|0.75}} for {{ai|Command: Shockwave|Orianna}}) each time ''The Ball'' blinks back to her (to prevent sudden mistargeting).",
+        "* ''The Ball'' is untargetable, ignores terrain, and grants {{tip|sight}} around its current location.",
+        ";Clockwork Winding",
+        "* ''Clockwork Winding's'' stack count can be seen in ''Orianna's'' buff bar.",
+        "* ''Clockwork Winding'' doesn't increase any on-hit magic damage other than its own.",
+        "* ''Orianna's'' basic attacks will not apply ''Clockwork Winding'' if she purchases {{ii|Runaan's Hurricane}}."
+      ],
+      "parry": true,
+      "projectile": "Magic",
+      "skill": "I",
+      "targeting": "None"
     },
-    "tags": [
-        "Mage",
-        "Support"
-    ],
-    "resource": "Mana",
-    "herotype": "Mage",
-    "alttype": "Controller",
-    "be_cost": 4800,
-    "rp_cost": 880,
-    "adaptivetype": "magic",
-    "info": {
-        "attack": 4,
-        "defense": 3,
-        "magic": 9,
-        "difficulty": 7
+    "q1": {
+      "key": "Q",
+      "id": "OrianaIzunaCommand",
+      "riotName": "Command: Attack",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "OrianaIzunaCommand.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 384,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Orianna commands her Ball to fire toward a target location, dealing magic damage to targets along the way (deals less damage to subsequent targets). Her Ball remains at the target location after.",
+      "champion": "Orianna",
+      "collision_radius": 175,
+      "cooldown": [
+        6,
+        5.25,
+        4.5,
+        3.75,
+        3
+      ],
+      "cooldownBurn": "6/5.25/4.5/3.75/3",
+      "costBurn": "30 / 35 / 40 / 45 / 50",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to fly to the target location and remain there, dealing {{as|magic damage}} to all enemies it passes through, reduced to {{pp|7|key=%|100 to 40|type=enemies hit}}."
+      ],
+      "icon": [
+        "Command Attack.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 50% AP)}}|Minimum Damage|{{ap|60*0.4 to 180*0.4}} {{as|(+ 20% AP)}}}}"
+      ],
+      "name": "Command: Attack",
+      "notes": [
+        "* ''Command Attack'' has no cast time and does not interrupt ''Orianna's'' movement if ''The Ball'' is not attached to her (otherwise an animation will play and interrupt any movement commands).",
+        "** ''Orianna'' cannot use other abilities while ''The Ball'' is in transit but she may still perform other actions.",
+        "* ''The Ball'' will remain in the target location until ''Orianna'' retrieves it or if she goes beyond its leash range.",
+        "** ''Orianna'' will attempt to walk to ''Command Attack's'' cast point if it lies outside cast range (''The Ball'' will never exceed its leash range regardless of target direction)."
+      ],
+      "projectile": true,
+      "skill": "Q",
+      "speed": 1400,
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "target_range": 825,
+      "targeting": "Direction"
     },
-    "i_displayname": "Clockwork Windup / Clockwork Winding",
-    "q_displayname": "Command Attack",
-    "w_dispalyname": "Command Dissonance",
-    "e_dispalyname": "Command Protect",
-    "r_dispalyname": "Command Shockwave",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Clockwork Windup",
-            "image": {
-                "full": "OriannaPassive.png",
-                "sprite": "passive2.png",
-                "group": "passive",
-                "x": 144,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies, Self",
-            "blurb": "Orianna's autoattack deals additional magic damage. This damage increases the more Orianna attacks the same target.",
-            "champion": "Orianna",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Innate - The Ball:}} '''Orianna''' is accompanied by ''The Ball'', which she commands with her abilities. ''The Ball'' has a {{fd|0.15}} seconds global cooldown between casts. Additionally, ''The Ball'' attaches to '''Orianna''' if she is near it, and blinks back to '''Orianna''' if she is too far away from it.",
-                "{{sbc|Clockwork Winding:}} '''Orianna's''' [[basic attack]]s deal {{pp|6|10 to 50|1 to 16|formula = 10+8 every 3 levels|color=magic damage}} {{as|(+ 15% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} [[on-hit]] and gain ''Clockwork Winding'' for 4 seconds, stacking up to twice. ''Clockwork Windup'' deals{{ft|20% '''bonus''' damage|{{pp|6|10*0.2 to 50*0.2|1 to 16|formula = 2+1.6 every 3 levels}} {{as|(+ 3% AP)}} '''bonus''' damage}} per stack, up to {{pp|6|10*(1+0.2*2) to 50*(1+0.2*2)|1 to 16|formula = 14+11.2 every 3 levels|color=magic damage}} {{as|(+ 21% AP)}} {{as|'''total bonus''' magic damage}}.",
-                "'''Orianna''' loses all stacks of ''Clockwork Winding'' when she attacks a new target."
-            ],
-            "effect_radius": "{{tt|1125|Standard leash range}} / {{tt|1225|Leash range on ally}} / {{tt|225|Sight range (estimated)}}",
-            "grounded": false,
-            "icon": [
-                "Clockwork Windup.png",
-                "Clockwork Winding.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Clockwork Windup",
-            "notes": [
-                ";The Ball",
-                "* An arrow will appear near ''Orianna'' whenever ''The Ball'' is not attached to her, pointing towards its location.",
-                "** The arrow will change colors depending on how far away they are from each other. From nearest to farthest: {{as|green|ap}}/{{as|blue|mana}} (whether colorblind mode is off or on, respectively) {{as|yellow|energy}}, {{as|red|health}} (at which point ''The Ball'' will blink back to ''Orianna'' if she moves just a bit further away).",
-                "*** ''Orianna's'' abilities go on a {{fd|0.5}} seconds global cooldown ({{fd|0.75}} for {{ai|Command: Shockwave|Orianna}}) each time ''The Ball'' blinks back to her (to prevent sudden mistargeting).",
-                "* ''The Ball'' is untargetable, ignores terrain, and grants {{tip|sight}} around its current location.",
-                ";Clockwork Winding",
-                "* ''Clockwork Winding's'' stack count can be seen in ''Orianna's'' buff bar.",
-                "* ''Clockwork Winding'' doesn't increase any on-hit magic damage other than its own.",
-                "* ''Orianna's'' basic attacks will not apply ''Clockwork Winding'' if she purchases {{ii|Runaan's Hurricane}}."
-            ],
-            "parry": true,
-            "projectile": false,
-            "skill": "I",
-            "spelleffects": "",
-            "spellshield": false,
-            "targeting": "None"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "OrianaIzunaCommand",
-            "riotName": "Command: Attack",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "OrianaIzunaCommand.png",
-                "sprite": "spell8.png",
-                "group": "spell",
-                "x": 384,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Orianna commands her Ball to fire toward a target location, dealing magic damage to targets along the way (deals less damage to subsequent targets). Her Ball remains at the target location after.",
-            "champion": "Orianna",
-            "collision_radius": 175,
-            "cooldown": [
-                6,
-                5.25,
-                4.5,
-                3.75,
-                3
-            ],
-            "cooldownBurn": "6/5.25/4.5/3.75/3",
-            "cost": [
-                30,
-                35,
-                40,
-                45,
-                50
-            ],
-            "costBurn": "30/35/40/45/50",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to fly to the target location and remain there, dealing {{as|magic damage}} to all enemies it passes through, reduced to {{pp|7|key=%|100 to 40|type=enemies hit}}."
-            ],
-            "grounded": false,
-            "icon": [
-                "Command Attack.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 50% AP)}}|Minimum Damage|{{ap|60*0.4 to 180*0.4}} {{as|(+ 20% AP)}}}}"
-            ],
-            "name": "Command: Attack",
-            "notes": [
-                "* ''Command Attack'' has no cast time and does not interrupt ''Orianna's'' movement if ''The Ball'' is not attached to her (otherwise an animation will play and interrupt any movement commands).",
-                "** ''Orianna'' cannot use other abilities while ''The Ball'' is in transit but she may still perform other actions.",
-                "* ''The Ball'' will remain in the target location until ''Orianna'' retrieves it or if she goes beyond its leash range.",
-                "** ''Orianna'' will attempt to walk to ''Command Attack's'' cast point if it lies outside cast range (''The Ball'' will never exceed its leash range regardless of target direction)."
-            ],
-            "projectile": true,
-            "skill": "Q",
-            "speed": 1400,
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "target_range": 825,
-            "targeting": "Direction"
-        },
-        "w1": {
-            "key": "W",
-            "id": "OrianaDissonanceCommand",
-            "riotName": "Command: Dissonance",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "OrianaDissonanceCommand.png",
-                "sprite": "spell8.png",
-                "group": "spell",
-                "x": 432,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies, Allies",
-            "blurb": "Orianna commands the Ball to release a pulse of energy, dealing magic damage around it. This leaves a field behind that speeds up allies and slows enemies.",
-            "champion": "Orianna",
-            "cooldown": [
-                7,
-                7,
-                7,
-                7,
-                7
-            ],
-            "cooldownBurn": "7",
-            "cost": [
-                70,
-                80,
-                90,
-                100,
-                110
-            ],
-            "costBurn": "70/80/90/100/110",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to emit an electric pulse around its current location, dealing {{as|magic damage}} to all enemies around it and leaving an electric field on the area for 3 seconds.",
-                "'''Orianna''' and her allies gain {{sti|ms|{{as|'''bonus''' movement speed}}}} upon stepping on the field. Enemies, in turn, are {{tip|slow|slowed}} for the same amount, decaying over 2 seconds after leaving the field."
-            ],
-            "effect_radius": 250,
-            "grounded": false,
-            "icon": [
-                "Command Dissonance.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 70% AP)}}}}",
-                "{{st|Movement Speed Modifier|{{ap|20 to 40}}%}}"
-            ],
-            "name": "Command: Dissonance",
-            "notes": [
-                "* ''Command Dissonance'' has no cast time and does not interrupt ''Orianna's'' movement.",
-                "* ''Command Dissonance'', if buffered while {{ai|Command: Attack|Orianna}}, will fire at the destination when the ball has stopped moving."
-            ],
-            "projectile": false,
-            "skill": "W",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "targeting": "Ground"
-        },
-        "e1": {
-            "key": "E",
-            "id": "OrianaRedactCommand",
-            "riotName": "Command: Protect",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "OrianaRedactCommand.png",
-                "sprite": "spell8.png",
-                "group": "spell",
-                "x": 0,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies, Allies",
-            "blurb": "Orianna commands her Ball to attach to an allied champion, shielding them and dealing magic damage to any enemies it passes through on the way. Additionally, the Ball grants additional Armor and Magic Resist to the champion it is attached to.",
-            "champion": "Orianna",
-            "cooldown": [
-                9,
-                9,
-                9,
-                9,
-                9
-            ],
-            "cooldownBurn": "9",
-            "cost": [
-                60,
-                60,
-                60,
-                60,
-                60
-            ],
-            "costBurn": "60",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Passive:}} {{ai|Clockwork Windup|Orianna|The Ball}} grants whomever it is attached to '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}}.",
-                "{{sbc|Active:}} '''Orianna''' commands ''The Ball'' to fly to the targeted allied champion or herself and attach itself to her target, dealing {{as|magic damage}} to all enemies it passes through and {{tip|shield|shielding}} her target on arrival for {{fd|2.5}} seconds."
-            ],
-            "grounded": false,
-            "icon": [
-                "Command Protect.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Bonus Resistances|{{ap|10 to 30}}}}",
-                "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}"
-            ],
-            "name": "Command: Protect",
-            "notes": [
-                "* ''Command Protect'' has no cast time and does not interrupt ''Orianna's'' previous orders.",
-                "* ''Orianna'' gains ''Command Protect's'' bonus resistances whenever ''The Ball'' is attached to her (even if she didn't self-cast).",
-                "* ''The Ball'' will remain where ''Command Protect's'' target ally died or, if instead they die or become untargetable while it is mid-flight, snap back to ''Orianna''.",
-                "* ''The Ball'' will not attach itself to ''Orianna'' if she walks by ''Command Protect's'' target ally.",
-                "** ''The Ball'' will return to ''Orianna'' if ''Command Protect's'' target ally moves too far away from her (''The Ball'' will always respect its leash range, which is increased by 100 when attached to allied champions).",
-                "* ''The Ball'' will join ''Command Protect's'' target ally in [[stealth]] if they are affected by it when ''Orianna'' targets them.",
-                "* Apply {{tip|Area of effect}} to enemies and {{tip|Shield}} to ally target."
-            ],
-            "projectile": true,
-            "skill": "E",
-            "spelleffects": "Special",
-            "spellshield": true,
-            "target_range": 1100,
-            "targeting": "Unit"
-        },
-        "r1": {
-            "key": "R",
-            "id": "OrianaDetonateCommand",
-            "riotName": "Command: Shockwave",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "OrianaDetonateCommand.png",
-                "sprite": "spell8.png",
-                "group": "spell",
-                "x": 48,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Orianna commands her Ball to unleash a shockwave, dealing magic damage and launching nearby enemies towards the Ball after a short delay.",
-            "champion": "Orianna",
-            "cooldown": [
-                110,
-                95,
-                80
-            ],
-            "cooldownBurn": "110/95/80",
-            "cost": [
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to unleash a shockwave after a {{fd|0.75}} seconds delay, dealing {{as|magic damage}} to all nearby enemies and {{tip|airborne|pulling}} them 350 units towards ''The Ball''."
-            ],
-            "effect_radius": 325,
-            "grounded": false,
-            "icon": [
-                "Command Shockwave.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 70% AP)}}}}"
-            ],
-            "name": "Command: Shockwave",
-            "notes": [
-                "* {{Pending for test}}: Enemies are disabled for a total {{fd|1.25}} seconds.",
-                "* ''Command Shockwave'' tosses enemies a set distance (those on the edge of the flinging area will be tossed to the center while those close to the middle will go over ''The Ball'' towards the edge) and can send them through walls.",
-                "* ''Command Shockwave'', if buffered while {{ai|Command: Attack|Orianna}}, will fire at the destination when the ball has stopped moving."
-            ],
-            "projectile": false,
-            "skill": "R",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "targeting": "Ground"
-        }
+    "w1": {
+      "key": "W",
+      "id": "OrianaDissonanceCommand",
+      "riotName": "Command: Dissonance",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "OrianaDissonanceCommand.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 432,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies, Allies",
+      "blurb": "Orianna commands the Ball to release a pulse of energy, dealing magic damage around it. This leaves a field behind that speeds up allies and slows enemies.",
+      "champion": "Orianna",
+      "cooldownBurn": "7",
+      "costBurn": "70 / 80 / 90 / 100 / 110",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to emit an electric pulse around its current location, dealing {{as|magic damage}} to all enemies around it and leaving an electric field on the area for 3 seconds.",
+        "'''Orianna''' and her allies gain {{sti|ms|{{as|'''bonus''' movement speed}}}} upon stepping on the field. Enemies, in turn, are {{tip|slow|slowed}} for the same amount, decaying over 2 seconds after leaving the field."
+      ],
+      "effect_radius": 250,
+      "icon": [
+        "Command Dissonance.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 70% AP)}}}}",
+        "{{st|Movement Speed Modifier|{{ap|20 to 40}}%}}"
+      ],
+      "name": "Command: Dissonance",
+      "notes": [
+        "* ''Command Dissonance'' has no cast time and does not interrupt ''Orianna's'' movement.",
+        "* ''Command Dissonance'', if buffered while {{ai|Command: Attack|Orianna}}, will fire at the destination when the ball has stopped moving."
+      ],
+      "projectile": "Physical",
+      "skill": "W",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "targeting": "Ground"
+    },
+    "e1": {
+      "key": "E",
+      "id": "OrianaRedactCommand",
+      "riotName": "Command: Protect",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "OrianaRedactCommand.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 0,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies, Allies",
+      "blurb": "Orianna commands her Ball to attach to an allied champion, shielding them and dealing magic damage to any enemies it passes through on the way. Additionally, the Ball grants additional Armor and Magic Resist to the champion it is attached to.",
+      "champion": "Orianna",
+      "cooldownBurn": "9",
+      "costBurn": "60",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Passive:}} {{ai|Clockwork Windup|Orianna|The Ball}} grants whomever it is attached to '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}}.",
+        "{{sbc|Active:}} '''Orianna''' commands ''The Ball'' to fly to the targeted allied champion or herself and attach itself to her target, dealing {{as|magic damage}} to all enemies it passes through and {{tip|shield|shielding}} her target on arrival for {{fd|2.5}} seconds."
+      ],
+      "icon": [
+        "Command Protect.png"
+      ],
+      "leveling": [
+        "{{st|Bonus Resistances|{{ap|10 to 30}}}}",
+        "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}"
+      ],
+      "name": "Command: Protect",
+      "notes": [
+        "* ''Command Protect'' has no cast time and does not interrupt ''Orianna's'' previous orders.",
+        "* ''Orianna'' gains ''Command Protect's'' bonus resistances whenever ''The Ball'' is attached to her (even if she didn't self-cast).",
+        "* ''The Ball'' will remain where ''Command Protect's'' target ally died or, if instead they die or become untargetable while it is mid-flight, snap back to ''Orianna''.",
+        "* ''The Ball'' will not attach itself to ''Orianna'' if she walks by ''Command Protect's'' target ally.",
+        "** ''The Ball'' will return to ''Orianna'' if ''Command Protect's'' target ally moves too far away from her (''The Ball'' will always respect its leash range, which is increased by 100 when attached to allied champions).",
+        "* ''The Ball'' will join ''Command Protect's'' target ally in [[stealth]] if they are affected by it when ''Orianna'' targets them.",
+        "* Apply {{tip|Area of effect}} to enemies and {{tip|Shield}} to ally target."
+      ],
+      "projectile": true,
+      "skill": "E",
+      "spelleffects": "Special",
+      "spellshield": true,
+      "target_range": 1100,
+      "targeting": "Unit"
+    },
+    "r1": {
+      "key": "R",
+      "id": "OrianaDetonateCommand",
+      "riotName": "Command: Shockwave",
+      "maxrank": 3,
+      "maxammo": -1,
+      "image": {
+        "full": "OrianaDetonateCommand.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 48,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Orianna commands her Ball to unleash a shockwave, dealing magic damage and launching nearby enemies towards the Ball after a short delay.",
+      "champion": "Orianna",
+      "cooldown": [
+        110,
+        95,
+        80
+      ],
+      "cooldownBurn": "110/95/80",
+      "costBurn": "100",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to unleash a shockwave after a {{fd|0.75}} seconds delay, dealing {{as|magic damage}} to all nearby enemies and {{tip|airborne|pulling}} them 350 units towards ''The Ball''."
+      ],
+      "effect_radius": 325,
+      "icon": [
+        "Command Shockwave.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 70% AP)}}}}"
+      ],
+      "name": "Command: Shockwave",
+      "notes": [
+        "* {{Pending for test}}: Enemies are disabled for a total {{fd|1.25}} seconds.",
+        "* ''Command Shockwave'' tosses enemies a set distance (those on the edge of the flinging area will be tossed to the center while those close to the middle will go over ''The Ball'' towards the edge) and can send them through walls.",
+        "* ''Command Shockwave'', if buffered while {{ai|Command: Attack|Orianna}}, will fire at the destination when the ball has stopped moving."
+      ],
+      "projectile": "Magic",
+      "skill": "R",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "targeting": "Ground"
     }
+  }
 }

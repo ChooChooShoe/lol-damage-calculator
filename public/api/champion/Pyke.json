@@ -1,356 +1,238 @@
 {
-    "patch": "V8.11",
-    "changes": "9.7.1",
-    "id": "Pyke",
-    "key": "555",
-    "name": "Pyke",
-    "fullname": "Pyke",
-    "title": "the Bloodharbor Ripper",
-    "image": {
-        "full": "Pyke.png",
-        "sprite": "champion2.png",
-        "group": "champion",
+  "patch": "V8.11",
+  "changes": "9.14.1",
+  "id": "Pyke",
+  "key": "555",
+  "name": "Pyke",
+  "fullname": "Pyke",
+  "title": "the Bloodharbor Ripper",
+  "image": {
+    "full": "Pyke.png",
+    "sprite": "champion2.png",
+    "group": "champion",
+    "x": 336,
+    "y": 96,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Support",
+    "Assassin"
+  ],
+  "resource": "Mana",
+  "herotype": "",
+  "alttype": "",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "physical",
+  "info": {
+    "attack": 9,
+    "defense": 3,
+    "magic": 1,
+    "difficulty": 7
+  },
+  "i_displayname": "Gift of the Drowned Ones",
+  "q_displayname": "Bone Skewer",
+  "w_dispalyname": "Ghostwater Dive",
+  "e_dispalyname": "Phantom Undertow",
+  "r_dispalyname": "Death from Below /  Death from Below 2",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Gift of the Drowned Ones",
+      "image": {
+        "full": "PykePassive.png",
+        "sprite": "passive2.png",
+        "group": "passive",
         "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
+      },
+      "affects": "Self",
+      "blurb": "",
+      "champion": "Pyke",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Innate:}} '''Pyke's''' maximum health cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}}}.",
+        "'''Pyke''' also stores {{pp|key=%|30 to 81}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
+        "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount."
+      ],
+      "icon": [
+        "Gift of the Drowned Ones.png"
+      ],
+      "leveling": [],
+      "name": "Gift of the Drowned Ones",
+      "notes": [
+        "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.",
+        "* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.",
+        "*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.",
+        "* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches {{as|60% of '''maximum''' health}} at {{pp|(0.6*(600+100*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.",
+        "* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':",
+        "{{stat table header|item}}{{Do for every item|item table row|p1n=2|p1v=pykehealth}}",
+        "{{stat table footer}}"
+      ],
+      "projectile": "null",
+      "skill": "I",
+      "targeting": "Passive"
     },
-    "tags": [
-        "Support",
-        "Assassin"
-    ],
-    "resource": "Mana",
-    "herotype": "",
-    "alttype": "",
-    "be_cost": 6300,
-    "rp_cost": 975,
-    "adaptivetype": "physical",
-    "info": {
-        "attack": 9,
-        "defense": 3,
-        "magic": 1,
-        "difficulty": 7
+    "q1": {
+      "key": "Q",
+      "id": "PykeQ",
+      "riotName": "Bone Skewer",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "PykeQ.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 192,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "",
+      "cast_time": "{{fd|0.25}}",
+      "champion": "Pyke",
+      "cooldown": [
+        14,
+        12.5,
+        11,
+        9.5,
+        8
+      ],
+      "cooldownBurn": "14/12.5/11/9.5/8",
+      "costBurn": "70",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|First Cast:}} '''Pyke''' {{ct|windup|winds up|cast=interrupts|items=false|consume=Disabled, but can use trinkets}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%.",
+        "{{sbc|Second Cast:}} '''Pyke''' hurls his harpoon towards the target location, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units towards him and {{tip|slow|slowing}} them by 90% for 1 second.",
+        "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to thrust his harpoon in a line, hitting the closest enemy unit, prioritizing enemy champions.",
+        "If '''Pyke''' is interrupted during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full cooldown but refunds {{sti|mana|{{as|half the mana cost}}}}."
+      ],
+      "icon": [
+        "Bone Skewer.png"
+      ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|75 to 275}} {{as|(+ 60% '''bonus''' AD)}}}}"
+      ],
+      "name": "Bone Skewer",
+      "notes": [
+        "* Since the pull is a fixed distance, '''Pyke''' will throw enemies behind him if he uses the ability at close range.",
+        "* If '''Pyke''' casts the ability while it's on cooldown he will be unable to receive movement or attack commands for {{fd|0.25}} seconds."
+      ],
+      "projectile": "Physical",
+      "skill": "Q",
+      "target_range": "{{pp|type=channel time|7|400;400 to 1100|0;0.5 to 1|displayformula=400+(140 per 0.1 seconds, starting at 0.5 seconds). ''This is capped at 1 second.''}}",
+      "targeting": "Direction"
     },
-    "i_displayname": "Gift of the Drowned Ones",
-    "q_displayname": "Bone Skewer",
-    "w_dispalyname": "Ghostwater Dive",
-    "e_dispalyname": "Phantom Undertow",
-    "r_dispalyname": "Death from Below /  Death from Below 2",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Gift of the Drowned Ones",
-            "image": {
-                "full": "PykePassive.png",
-                "sprite": "passive2.png",
-                "group": "passive",
-                "x": 336,
-                "y": 96,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "",
-            "champion": "Pyke",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Innate:}} '''Pyke's''' maximum health cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}}}.",
-                "'''Pyke''' also stores {{pp|key=%|30 to 81}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
-                "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount."
-            ],
-            "grounded": false,
-            "icon": [
-                "Gift of the Drowned Ones.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Gift of the Drowned Ones",
-            "notes": [
-                "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.",
-                "* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.",
-                "*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.",
-                "* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches {{as|60% of '''maximum''' health}} at {{pp|(0.6*(600+100*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.",
-                "* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':",
-                "{{stat table header|item}}{{Do for every item|item table row|p1n=2|p1v=pykehealth}}",
-                "{{stat table footer}}"
-            ],
-            "occurrence": "",
-            "parry": false,
-            "projectile": false,
-            "skill": "I",
-            "spelleffects": "",
-            "spellshield": false,
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "PykeQ",
-            "riotName": "Bone Skewer",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "PykeQ.png",
-                "sprite": "spell9.png",
-                "group": "spell",
-                "x": 192,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "",
-            "champion": "Pyke",
-            "cooldown": [
-                14,
-                12.5,
-                11,
-                9.5,
-                8
-            ],
-            "cooldownBurn": "14/12.5/11/9.5/8",
-            "cost": [
-                70,
-                70,
-                70,
-                70,
-                70
-            ],
-            "costBurn": "70",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|First Cast:}} '''Pyke''' {{ct|windup|winds up|cast=interrupts|items=false|consume=Disabled, but can use trinkets}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%.",
-                "{{sbc|Second Cast:}} After a brief delay, '''Pyke''' hurls his harpoon forward, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units towards him and {{tip|slow|slowing}} them by 90% for 1 second.",
-                "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to thrust his harpoon forward in a line after a {{fd|0.25}}-second delay, dealing 115% damage and {{tip|slow|slowing}} enemies by 90% for 1 second. The stab deals 30% damage to minions and monsters beyond the closest.",
-                "If '''Pyke''' is interrupted during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full cooldown but refunds {{sti|mana|{{as|half the mana cost}}}}."
-            ],
-            "effect_radius": "",
-            "grounded": false,
-            "icon": [
-                "Bone Skewer.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Physical Damage|{{ap|75 to 275}} {{as|(+ 60% '''bonus''' AD)}}}}",
-                "{{st|Stab Damage|{{ap|75*1.15 to 275*1.15}} {{as|(+ {{ap|60*1.15}}% '''bonus''' AD)}}|Reduced Damage|{{ap|75*1.15*0.3 to 275*1.15*0.3}} {{as|(+ {{ap|60*1.15*0.3}}% '''bonus''' AD)}}}}"
-            ],
-            "name": "Bone Skewer",
-            "notes": [
-                "* Since the pull is a fixed distance, '''Pyke''' will throw enemies behind him if he uses the ability at close range.",
-                "* If '''Pyke''' casts the ability while it's on cooldown he will be unable to receive movement or attack commands for {{fd|0.25}} seconds."
-            ],
-            "occurrence": "",
-            "parry": false,
-            "projectile": false,
-            "skill": "Q",
-            "spelleffects": "",
-            "spellshield": false,
-            "target_range": "{{pp|type=channel time|7|400;400 to 1100|0;0.5 to 1|displayformula=400+(140 per 0.1 seconds, starting at 0.5 seconds). ''This is capped at 1 second.''}}",
-            "targeting": "Direction"
-        },
-        "w1": {
-            "key": "W",
-            "id": "PykeW",
-            "riotName": "Ghostwater Dive",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "PykeW.png",
-                "sprite": "spell9.png",
-                "group": "spell",
-                "x": 240,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "",
-            "champion": "Pyke",
-            "cooldown": [
-                12,
-                11.5,
-                11,
-                10.5,
-                10
-            ],
-            "cooldownBurn": "12/11.5/11/10.5/10",
-            "cost": [
-                50,
-                50,
-                50,
-                50,
-                50
-            ],
-            "costBurn": "50",
-            "costtype": "Mana",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Pyke''' enters {{tip|camouflage}} and gains 40% {{as|(+ {{fd|1.5}}% per 1 Lethality)}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within X-units of them.",
-                "Attacking or casting abilities immediately ends {{tip|camouflage}}."
-            ],
-            "effect_radius": "{{tt|600|Range required to see Pyke}}",
-            "grounded": false,
-            "icon": [
-                "Ghostwater Dive.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Ghostwater Dive",
-            "notes": [
-                "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.",
-                "** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of ''Death from Below''."
-            ],
-            "occurrence": "",
-            "parry": false,
-            "projectile": false,
-            "skill": "W",
-            "spelleffects": "",
-            "spellshield": false,
-            "targeting": "None"
-        },
-        "e1": {
-            "key": "E",
-            "id": "PykeE",
-            "riotName": "Phantom Undertow",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "PykeE.png",
-                "sprite": "spell9.png",
-                "group": "spell",
-                "x": 288,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self, Enemies",
-            "blurb": "",
-            "champion": "Pyke",
-            "cooldown": [
-                15,
-                15,
-                15,
-                15,
-                15
-            ],
-            "cooldownBurn": "15",
-            "cost": [
-                40,
-                40,
-                40,
-                40,
-                40
-            ],
-            "costBurn": "40",
-            "costtype": "Mana",
-            "damagetype": "Physical",
-            "damageTypes": [
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}}, leaving behind a drowned phantom.",
-                "After 1 second, the phantom returns to '''Pyke''', dealing {{as|physical damage}} and {{tip|stun|stunning}} enemies it passes through for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds."
-            ],
-            "effect_radius": "",
-            "grounded": true,
-            "icon": [
-                "Phantom Undertow.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Physical Damage|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}"
-            ],
-            "name": "Phantom Undertow",
-            "notes": [
-                "* The phantom hitbox is {{tt|100|approximative}} units radius. {{Pending for test}}",
-                "* The returning phantom can be blocked by {{cai|Wind Wall|Yasuo}}."
-            ],
-            "occurrence": "",
-            "parry": false,
-            "projectile": "Yasuo",
-            "skill": "E",
-            "speed": "",
-            "spelleffects": "",
-            "spellshield": false,
-            "target_range": 550,
-            "targeting": "Direction"
-        },
-        "r1": {
-            "key": "R",
-            "id": "PykeR",
-            "riotName": "Death From Below",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "PykeR.png",
-                "sprite": "spell9.png",
-                "group": "spell",
-                "x": 336,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self, Enemies",
-            "blurb": "",
-            "champion": "Pyke",
-            "cooldown": [
-                120,
-                100,
-                80
-            ],
-            "cooldownBurn": "120/100/80",
-            "cost": [
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Physical / True",
-            "damageTypes": [
-                "physical",
-                "true"
-            ],
-            "description": [
-                "{{sbc|Active:}} After a {{fd|0.75}}-second delay, '''Pyke''' strikes in an X-shaped area, {{as|executing|true damage}} enemy {{tip|champions}} below {{pp|250;290;330;370;400;430;450;470;490;510;530;540;550|6 to 18}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ {{fd|1.5}} per 1 Lethality)}} {{as|health}} while dealing the same amount as {{as|physical damage}} to enemies not within the threshold for execution.",
-                "If ''Death from Below'' hits an enemy champion or one dies inside it, '''Pyke''' will {{tip|blink}} to the center of the X. If an enemy champion dies in the X, the last assisting ally is granted {{ii|'Your Cut'}}, and '''Pyke''' gains the ability to recast within 20 seconds at no cost."
-            ],
-            "grounded": true,
-            "icon": [
-                "Death from Below.png",
-                "Death from Below 2.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Death from Below",
-            "notes": [
-                "* '''Pyke''' gains an assist on enemy champions that die inside the X, even if he didn't affect them beforehand.",
-                "* {{ii|'Your Cut'}} is an item that can be consumed to gain gold. If the ally's inventory is full, it's auto-consumed.",
-                "* When {{ii|'Your Cut'}} is consumed, it quickly grants {{g|100}} stacks until reaching the full gold value.",
-                "* Only the target's current health will count as '''Pyke's''' damage in post-game statistics and {{sti|spell vamp}} healing.",
-                "** If the target's current health is less than the {{tt|post-mitigation|after damage modifiers}} non-executing damage, '''Pyke''' will heal less from spell vamp.",
-                "* ''Death from Below'' will not stop if cast before {{tip|resurrection|resurrecting}}."
-            ],
-            "occurrence": "",
-            "parry": false,
-            "projectile": false,
-            "skill": "R",
-            "spelleffects": "",
-            "spellshield": true,
-            "target_range": 750,
-            "targeting": "Ground"
-        }
+    "w1": {
+      "key": "W",
+      "id": "PykeW",
+      "riotName": "Ghostwater Dive",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "PykeW.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 240,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Self",
+      "blurb": "",
+      "champion": "Pyke",
+      "cooldown": [
+        12,
+        11.5,
+        11,
+        10.5,
+        10
+      ],
+      "cooldownBurn": "12/11.5/11/10.5/10",
+      "costBurn": "50",
+      "costtype": "Mana",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Pyke''' enters {{tip|camouflage}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within X-units of them.",
+        "Attacking or casting abilities immediately ends {{tip|camouflage}}."
+      ],
+      "effect_radius": "{{tt|600|Range required to see Pyke}}",
+      "icon": [
+        "Ghostwater Dive.png"
+      ],
+      "leveling": [
+        "{{st|Bonus Movement Speed|{{ap|40 to 60}}% {{as|(+ {{fd|1.5}}% per 1 Lethality)}}}}"
+      ],
+      "name": "Ghostwater Dive",
+      "notes": [
+        "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.",
+        "** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of ''Death from Below''."
+      ],
+      "projectile": "null",
+      "skill": "W",
+      "targeting": "None"
+    },
+    "e1": {
+      "key": "E",
+      "id": "PykeE",
+      "riotName": "Phantom Undertow",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "PykeE.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 288,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Self, Enemies",
+      "blurb": "",
+      "champion": "Pyke",
+      "cooldownBurn": "15",
+      "costBurn": "40",
+      "costtype": "Mana",
+      "damagetype": "physical",
+      "damageTypes": [
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}}, leaving behind a drowned phantom.",
+        "After 1 second, the phantom returns to '''Pyke''', {{tip|stun|stunning}} enemies it passes through for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds. Enemy champions also take {{as|physical damage}}."
+      ],
+      "grounded": true,
+      "icon": [
+        "Phantom Undertow.png"
+      ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}"
+      ],
+      "name": "Phantom Undertow",
+      "notes": [
+        "* The phantom hitbox is {{tt|100|approximative}} units radius."
+      ],
+      "projectile": true,
+      "skill": "E",
+      "target_range": 550,
+      "targeting": "Direction"
     }
+  }
 }

@@ -1,344 +1,193 @@
 {
-    "patch": "V1.0.0.101",
-    "changes": "8.18.1",
-    "id": "Sona",
-    "key": "37",
-    "name": "Sona",
-    "fullname": "Sona Buvelle",
-    "title": "Maven of the Strings",
-    "image": {
-        "full": "Sona.png",
-        "sprite": "champion3.png",
-        "group": "champion",
+  "patch": "V1.0.0.101",
+  "changes": "9.13.1",
+  "id": "Sona",
+  "key": "37",
+  "name": "Sona",
+  "fullname": "Sona Buvelle",
+  "title": "Maven of the Strings",
+  "image": {
+    "full": "Sona.png",
+    "sprite": "champion3.png",
+    "group": "champion",
+    "x": 240,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Support",
+    "Mage"
+  ],
+  "resource": "Mana",
+  "herotype": "Controller",
+  "alttype": "Mage",
+  "be_cost": 3150,
+  "rp_cost": 790,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 5,
+    "defense": 2,
+    "magic": 8,
+    "difficulty": 4
+  },
+  "i_displayname": "Power Chord",
+  "q_displayname": "Hymn of Valor",
+  "w_dispalyname": "Aria of Perseverance",
+  "e_dispalyname": "Song of Celerity",
+  "r_dispalyname": "Crescendo",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Power Chord",
+      "image": {
+        "full": "Sona_Passive_Charged.png",
+        "sprite": "passive3.png",
+        "group": "passive",
         "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
+      },
+      "affects": "Self",
+      "blurb": "After casting 3 spells, Sona's next attack deals bonus magic damage in addition to a bonus effect depending on what song Sona last activated.",
+      "champion": "Sona",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Aura:}} '''Sona's''' basic [[Champion ability|abilities]] each generate a unique [[aura]] for 3 seconds that empowers her and all allied [[champion]]s who enter its radius, also incurring a {{fd|0.5}} seconds period during which she cannot cast her other basic abilities.",
+        "{{sbc|Power Chord:}} After casting 3 basic abilities, '''Sona's''' next [[basic attack]] deals {{pp|20;30;40;50;60;70;80;90;105 to 240|formula=10+10 at each level up to 8 and+15 up to 18}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, with an additional effect depending on the last basic ability cast.",
+        "''Power Chord'' resets '''Sona's''' basic attack timer."
+      ],
+      "effect_radius": 400,
+      "icon": [
+        "Power Chord 2.png",
+        "Power Chord.png"
+      ],
+      "leveling": [],
+      "name": "Power Chord",
+      "notes": [
+        "* When ''Power Chord'' is ready, Sona gains a ring around her. This ring will have a different color depending on the last ability used (''{{ai|Hymn of Valor|Sona|blue}}, {{ai|Aria of Perseverance|Sona|green}} or {{ai|Song of Celerity|Sona|purple}}'').",
+        "** The effect does not change if abilities are used while the projectile is in motion.",
+        "* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal."
+      ],
+      "parry": true,
+      "projectile": "Magic",
+      "skill": "I",
+      "spellshield": true,
+      "targeting": "Passive"
     },
-    "tags": [
-        "Support",
-        "Mage"
-    ],
-    "resource": "Mana",
-    "herotype": "Controller",
-    "alttype": "Mage",
-    "be_cost": 3150,
-    "rp_cost": 790,
-    "adaptivetype": "magic",
-    "info": {
-        "attack": 5,
-        "defense": 2,
-        "magic": 8,
-        "difficulty": 4
+    "w1": {
+      "key": "W",
+      "id": "SonaW",
+      "riotName": "Aria of Perseverance",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "SonaW.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 336,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Self, Allies",
+      "blurb": "Sona plays the Aria of Perseverance, sending out protective melodies, healing Sona and a nearby wounded ally. Sona gains a temporary aura that grants allies tagged by the zone a temporary shield.",
+      "champion": "Sona",
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cooldownBurn": "10",
+      "costBurn": "80859095100",
+      "costtype": "Mana",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Sona''' {{tip|heals}} herself and the most wounded nearby allied champion.",
+        "{{sbc|Aura:}} '''Sona''' and tagged allied champions receive a {{tip|shield}} lasting up to {{fd|1.5}} seconds.",
+        "{{sbc|{{ai|Power Chord|Sona}} – Diminuendo:}} ''Power Chord'' reduces its target's size and damage output by 25% {{as|(+ 4% per 100 AP)}} for 3 seconds."
+      ],
+      "effect_radius": 1000,
+      "icon": [
+        "Aria of Perseverance.png",
+        "Tempo Aria of Perseverance.png"
+      ],
+      "leveling": [
+        "{{st|Heal|{{ap|30|50|70|90|110}} {{as|(+ 25% AP)}}}}",
+        "{{st|Shield Strength|{{ap|25|50|75|100|125}} {{as|(+ 30% AP)}}}}"
+      ],
+      "name": "Aria of Perseverance",
+      "notes": [
+        "* If no one is injured ''Aria of Perseverance'' will target the closest allied champion."
+      ],
+      "projectile": "null",
+      "skill": "W",
+      "spelleffects": "Heal",
+      "targeting": "Auto"
     },
-    "i_displayname": "Power Chord",
-    "q_displayname": "Hymn of Valor",
-    "w_dispalyname": "Aria of Perseverance",
-    "e_dispalyname": "Song of Celerity",
-    "r_dispalyname": "Crescendo",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Power Chord",
-            "image": {
-                "full": "Sona_Passive_Charged.png",
-                "sprite": "passive3.png",
-                "group": "passive",
-                "x": 240,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "After casting 3 spells, Sona's next attack deals bonus magic damage in addition to a bonus effect depending on what song Sona last activated.",
-            "champion": "Sona",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Aura:}} '''Sona's''' basic [[Champion ability|abilities]] each generate a unique [[aura]] for 3 seconds that empowers her and all allied [[champion]]s who enter its radius, also incurring a {{fd|0.5}} seconds period during which she cannot cast her other basic abilities.",
-                "{{sbc|Power Chord:}} After casting 3 basic abilities, '''Sona's''' next [[basic attack]] deals {{pp|20;30;40;50;60;70;80;90;105 to 240|formula=10+10 at each level up to 8 and+15 up to 18}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, with an additional effect depending on the last basic ability cast.",
-                "''Power Chord'' resets '''Sona's''' basic attack timer."
-            ],
-            "effect_radius": 400,
-            "icon": [
-                "Power Chord 2.png",
-                "Power Chord.png"
-            ],
-            "leveling": [],
-            "name": "Power Chord",
-            "notes": [
-                "* When ''Power Chord'' is ready, Sona gains a ring around her.",
-                "** This ring will have a different color depending on the last ability used (''{{ai|Hymn of Valor|Sona|blue}}, {{ai|Aria of Perseverance|Sona|green}} or {{ai|Song of Celerity|Sona|purple}}'').",
-                "*** The effect does not change if abilities are used while the projectile is in motion.",
-                "* Sona's auras will only affect allied champions, not [[minion]]s or [[Champion summoned units|pets]].",
-                "* ''Power Chord'' affects [[turret]]s, [[inhibitor]]s, and the [[nexus]], but {{ai|Aria of Perseverance|Sona|Diminuendo's}} damage debuff does not.",
-                "* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-                "** ''Power Chord's'' bonus damage will go through {{ai|Counter Strike|Jax|dodge}} while the triggering attack will be mitigated.",
-                "** ''Power Chord's'' damage can {{tip|blind|miss}} or be {{ai|Aegis Protection|Pantheon|blocked}}."
-            ],
-            "parry": "Special",
-            "skill": "I",
-            "spelleffects": false,
-            "spellshield": false,
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "SonaQ",
-            "riotName": "Hymn of Valor",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "SonaQ.png",
-                "sprite": "spell10.png",
-                "group": "spell",
-                "x": 288,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Sona plays the Hymn of Valor, sends out bolts of sound, dealing magic damage to two nearby enemies, prioritizing champions and monsters. Sona gains a temporary aura that grants allies tagged by the zone bonus damage on their next attack against enemies.",
-            "callforhelp": true,
-            "champion": "Sona",
-            "cooldown": [
-                8,
-                8,
-                8,
-                8,
-                8
-            ],
-            "cooldownBurn": "8",
-            "cost": [
-                50,
-                55,
-                60,
-                65,
-                70
-            ],
-            "costBurn": "50/55/60/65/70",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Sona''' sends out two bolts of sound that deal {{as|magic damage}} to the nearest enemies, prioritizing champions.",
-                "{{sbc|Aura:}} '''Sona''' and tagged allied champions deal {{as|'''bonus''' magic damage}} on their next basic attack within 3 seconds.",
-                "{{sbc|{{ai|Power Chord|Sona}} \u2013 Staccato:}} ''Power Chord'' deals{{ft|{{pp|20*1.4;30*1.4;40*1.4;50*1.4;60*1.4;70*1.4;80*1.4;90*1.4;105*1.4 to 240*1.4|formula=14+14 at each level up to 8 and+21 up to 18}} {{as|(+ 28% AP)}} '''total''' magic damage.|40% '''bonus''' magic damage.}}"
-            ],
-            "effect_radius": 825,
-            "grounded": false,
-            "icon": [
-                "Hymn of Valor.png",
-                "Tempo Hymn of Valor.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|40 to 160}} {{as|(+ 50% AP)}}}}",
-                "{{st|Bonus Magic Damage|{{ap|10 to 30}} {{as|(+ 30% AP)}}}}"
-            ],
-            "name": "Hymn of Valor",
-            "notes": [
-                "* ''Hymn of Valor's'' aura doesn't trigger [[spell effects]].",
-                "* Even if both bolts hit the same enemy they can only be damaged by one.",
-                "* ''Hymn of Valor'' will only target enemy units if Sona has sight of them.",
-                "** If the target gets out of sight before the projectile hits them they will still be damaged."
-            ],
-            "projectile": true,
-            "skill": "Q",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "targeting": "Auto"
-        },
-        "w1": {
-            "key": "W",
-            "id": "SonaW",
-            "riotName": "Aria of Perseverance",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "SonaW.png",
-                "sprite": "spell10.png",
-                "group": "spell",
-                "x": 336,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self, Allies",
-            "blurb": "Sona plays the Aria of Perseverance, sending out protective melodies, healing Sona and a nearby wounded ally. Sona gains a temporary aura that grants allies tagged by the zone a temporary shield.",
-            "champion": "Sona",
-            "cooldown": [
-                10,
-                10,
-                10,
-                10,
-                10
-            ],
-            "cooldownBurn": "10",
-            "cost": [
-                80,
-                85,
-                90,
-                95,
-                100
-            ],
-            "costBurn": "80/85/90/95/100",
-            "costtype": "Mana",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Sona''' {{tip|heals}} herself and the most wounded nearby allied champion.",
-                "{{sbc|Aura:}} '''Sona''' and tagged allied champions receive a {{tip|shield}} lasting up to {{fd|1.5}} seconds.",
-                "{{sbc|{{ai|Power Chord|Sona}} \u2013 Diminuendo:}} ''Power Chord'' reduces its target's damage output by 25% {{as|(+ 4% per 100 AP)}} for 3 seconds."
-            ],
-            "effect_radius": 1000,
-            "grounded": false,
-            "icon": [
-                "Aria of Perseverance.png",
-                "Tempo Aria of Perseverance.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Heal|{{ap|30|50|70|90|110}} {{as|(+ 25% AP)}}}}",
-                "{{st|Shield Strength|{{ap|25|50|75|100|125}} {{as|(+ 30% AP)}}}}"
-            ],
-            "name": "Aria of Perseverance",
-            "notes": [
-                "* ''Aria of Perseverance'' can heal [[stealth]]ed ally champions without revealing them but the projectile will reveal their position on cast.",
-                "* If no one is injured ''Aria of Perseverance'' will target the closest allied champion.",
-                "* While ''Aria of Perseverance'' will not heal [[minion]]s or [[Champion summoned units|pets]] it will heal {{ai|Mirror Image|LeBlanc}}, {{ai|Hallucinate|Shaco}}, and {{ai|Decoy|Wukong}}.",
-                "*Diminuendo will also reduce the target's size slightly as well."
-            ],
-            "skill": "W",
-            "spelleffects": "Heal",
-            "spellshield": false,
-            "targeting": "Auto"
-        },
-        "e1": {
-            "key": "E",
-            "id": "SonaE",
-            "riotName": "Song of Celerity",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "SonaE.png",
-                "sprite": "spell10.png",
-                "group": "spell",
-                "x": 384,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self, Allies",
-            "blurb": "Sona plays the Song of Celerity, granting nearby allies bonus Movement Speed. Sona gains a temporary aura that grants allied champions tagged by the zone bonus Movement Speed on their next attack.",
-            "champion": "Sona",
-            "cooldown": [
-                12,
-                12,
-                12,
-                12,
-                12
-            ],
-            "cooldownBurn": "12",
-            "cost": [
-                65,
-                65,
-                65,
-                65,
-                65
-            ],
-            "costBurn": "65",
-            "costtype": "Mana",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Sona''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds, extended to up to 7 seconds if she doesn't take damage.",
-                "{{sbc|Aura:}} Tagged allied champions gain {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds.",
-                "{{sbc|{{ai|Power Chord|Sona}} \u2013 Tempo:}} ''Power Chord'' {{tip|slow|slows}} its target by 40% {{as|(+ 4% per 100 AP)}} for 2 seconds."
-            ],
-            "effect_radius": 430,
-            "icon": [
-                "Song of Celerity.png",
-                "Tempo Song of Celerity.png"
-            ],
-            "leveling": [
-                "{{st|Self and Aura Bonus Movement Speed|{{ap|10|11|12|13|14}}% {{as|(+ 6% per 100 AP)}}}}"
-            ],
-            "name": "Song of Celerity",
-            "notes": [
-                "* No additional details."
-            ],
-            "skill": "E",
-            "targeting": "None"
-        },
-        "r1": {
-            "key": "R",
-            "id": "SonaR",
-            "riotName": "Crescendo",
-            "maxrank": 3,
-            "maxammo": -1,
-            "image": {
-                "full": "SonaR.png",
-                "sprite": "spell10.png",
-                "group": "spell",
-                "x": 432,
-                "y": 144,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Sona plays her ultimate chord, stunning enemy champions and forcing them to dance and dealing magic damage to them. Each rank reduces the base cooldown of Sona's basic abilities.",
-            "champion": "Sona",
-            "cooldown": [
-                140,
-                120,
-                100
-            ],
-            "cooldownBurn": "140/120/100",
-            "cost": [
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Passive:}} Reduces the '''base''' {{sti|cooldown}} of '''Sona's''' basic [[Champion ability|abilities]].",
-                "{{sbc|Active:}} After a {{fd|0.2}}-second delay, '''Sona''' plays an irresistible chord in the target direction, dealing {{as|magic damage}} to all enemy champions struck and {{tip|stun|stunning}} them for {{fd|1.5}} seconds."
-            ],
-            "icon": [
-                "Crescendo.png"
-            ],
-            "leveling": [
-                "{{st|Basic Ability Base Cooldown Reduction|{{ap|10|25|40}}%}}",
-                "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 50% AP)}}}}"
-            ],
-            "name": "Crescendo",
-            "notes": [
-                "* Enemies {{tip|stun|stunned}} by ''Crescendo'' are made to dance 50% faster for its duration.",
-                "* ''Crescendo'' has a short travel time, and enemies will be stunned and take damage as soon as it reaches them, but if a target moves out of range as it is cast, the target will be unaffected."
-            ],
-            "projectile": true,
-            "skill": "R",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "target_range": 900,
-            "targeting": "Direction"
-        }
+    "r1": {
+      "key": "R",
+      "id": "SonaR",
+      "riotName": "Crescendo",
+      "maxrank": 3,
+      "maxammo": -1,
+      "image": {
+        "full": "SonaR.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Sona plays her ultimate chord, stunning enemy champions and forcing them to dance and dealing magic damage to them. Each rank reduces the base cooldown of Sona's basic abilities.",
+      "champion": "Sona",
+      "cooldown": [
+        140,
+        120,
+        100
+      ],
+      "cooldownBurn": "140/120/100",
+      "costBurn": "100",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Passive:}} Reduces the '''base''' {{sti|cooldown}} of '''Sona's''' basic [[Champion ability|abilities]].",
+        "{{sbc|Active:}} After a {{fd|0.2}}-second delay, '''Sona''' plays an irresistible chord in the target direction, dealing {{as|magic damage}} to all enemy champions struck and {{tip|stun|stunning}} them for {{fd|1.5}} seconds."
+      ],
+      "icon": [
+        "Crescendo.png"
+      ],
+      "leveling": [
+        "{{st|Basic Ability Base Cooldown Reduction|{{ap|10|25|40}}%}}",
+        "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 50% AP)}}}}"
+      ],
+      "name": "Crescendo",
+      "notes": [
+        "* Enemies {{tip|stun|stunned}} by ''Crescendo'' are made to dance 50% faster for its duration."
+      ],
+      "projectile": true,
+      "skill": "R",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "target_range": 900,
+      "targeting": "Direction"
     }
+  }
 }

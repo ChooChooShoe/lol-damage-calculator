@@ -1,414 +1,349 @@
 {
-    "patch": "V0.9.25.21",
-    "changes": "9.6.1",
-    "id": "Corki",
-    "key": "42",
-    "name": "Corki",
-    "fullname": "Corki",
-    "title": "the Daring Bombardier",
-    "image": {
-        "full": "Corki.png",
-        "sprite": "champion0.png",
-        "group": "champion",
+  "patch": "V0.9.25.21",
+  "changes": "9.14.1",
+  "id": "Corki",
+  "key": "42",
+  "name": "Corki",
+  "fullname": "Corki",
+  "title": "the Daring Bombardier",
+  "image": {
+    "full": "Corki.png",
+    "sprite": "champion0.png",
+    "group": "champion",
+    "x": 384,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "tags": [
+    "Marksman"
+  ],
+  "resource": "Mana",
+  "herotype": "Marksman",
+  "alttype": "",
+  "be_cost": 3150,
+  "rp_cost": 790,
+  "adaptivetype": "Mixed,Physical",
+  "info": {
+    "attack": 8,
+    "defense": 3,
+    "magic": 6,
+    "difficulty": 6
+  },
+  "i_displayname": "Hextech Munitions / The Package",
+  "q_displayname": "Phosphorus Bomb",
+  "w_dispalyname": "Valkyrie / Special Delivery",
+  "e_dispalyname": "Gatling Gun",
+  "r_dispalyname": "Missile Barrage / Big One",
+  "complex_skills": {
+    "i1": {
+      "key": "I",
+      "riotName": "Hextech Munitions",
+      "image": {
+        "full": "Corki_RapidReload.png",
+        "sprite": "passive0.png",
+        "group": "passive",
         "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
+      },
+      "affects": "Self",
+      "blurb": "Corki's basic attack deals a percentage of their damage as magic instead of physical. Every once in a while, The Package arrives in Corki's base to be picked up, temporarily granting him out of combat Movement Speed and upgrading Valkyrie into Special Delivery.",
+      "champion": "Corki",
+      "cooldown": null,
+      "cooldownBurn": null,
+      "costtype": "No cost",
+      "damagetype": "null",
+      "damageTypes": [
+        "null"
+      ],
+      "description": [
+        "{{sbc|Hextech Shrapnel Shells:}} '''Corki's''' [[basic attack]]s are permanently modified to deal {{as|20% AD}} {{tip|physical damage|{{as|physical damage}}}} and {{as|80% AD}} {{tip|magic damage|{{as|magic damage}}}}.",
+        "{{sbc|The Package:}} After 8 minutes elapse, ''{{ai|The Package|Corki}}'' is delivered to both corners of '''Corki's''' [[Spawn|fountain]], which he can pick up after {{ct|channel|channeling|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}} for 1 second. Doing so grants him one cast of {{ai|Special Delivery|Corki}} within the next 60 seconds, as well as {{sti|ms|{{as|40% '''bonus''' movement speed}}}} [[out of combat]] prior to the ability being cast, after which ''{{ai|The Package|Corki}}'' goes on {{sti|cooldown}} before being delivered again."
+      ],
+      "flavorsound": "{{sm2|Corki.move5.ogg|''\"Ready to fly!\"''}}",
+      "icon": [
+        "Hextech Munitions.png",
+        "The Package.png"
+      ],
+      "leveling": [],
+      "name": "Hextech Munitions",
+      "notes": [
+        "* All players are alerted by Corki emitting a global siren/alarm sound upon picking up ''The Package''.",
+        "* Triggering attacks will apply [[on-hit effect]]s normally.",
+        "** The bonus damage from {{nie|Spellblade}} will not be consumed if the magic damage part is enough to kill the target.",
+        "** Furthermore, the bonus damage from physical {{nie|Spellblade}} effects (namely {{ii|Sheen}}, {{ii|Iceborn Gauntlet}}, and {{ii|Trinity Force}}) will be split evenly between physical and magic damage.",
+        "** The damage from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} is not affected by ''Hextech Munitions''.",
+        "** Both components apply {{sti|life steal}} even though on-hit magic damage does not usually interact with it.",
+        "** {{tip|critical strike|Critical strikes}} amplify both components' damage."
+      ],
+      "occurrence": "On-hit",
+      "projectile": "null",
+      "skill": "I",
+      "static": 240,
+      "targeting": "Passive"
     },
-    "tags": [
-        "Marksman"
-    ],
-    "resource": "Mana",
-    "herotype": "Marksman",
-    "alttype": "",
-    "be_cost": 3150,
-    "rp_cost": 790,
-    "adaptivetype": "Mixed,Physical",
-    "info": {
-        "attack": 8,
-        "defense": 3,
-        "magic": 6,
-        "difficulty": 6
+    "q1": {
+      "key": "Q",
+      "id": "PhosphorusBomb",
+      "riotName": "Phosphorus Bomb",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "PhosphorusBomb.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 384,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Corki fires a flash bomb at a target location, dealing magic damage to enemies in the area. This attack additionally reveals units in the area for a duration.",
+      "champion": "Corki",
+      "cooldownBurn": "8",
+      "costBurn": "60 / 70 / 80 / 90 / 100",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Corki''' launches a bomb at the target area, dealing {{as|magic damage}} to enemies hit.",
+        "The bomb {{tip|sight|reveals}} the area as it travels and for 6 seconds afterwards, as well as all affected enemies."
+      ],
+      "effect_radius": 250,
+      "icon": [
+        "Phosphorus Bomb.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}"
+      ],
+      "name": "Phosphorus Bomb",
+      "notes": [
+        "* No additional details."
+      ],
+      "projectile": true,
+      "skill": "Q",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "target_range": 825,
+      "targeting": "Ground"
     },
-    "i_displayname": "Hextech Munitions / The Package",
-    "q_displayname": "Phosphorus Bomb",
-    "w_dispalyname": "Valkyrie / Special Delivery",
-    "e_dispalyname": "Gatling Gun",
-    "r_dispalyname": "Missile Barrage / Big One",
-    "complex_skills": {
-        "i1": {
-            "key": "I",
-            "riotName": "Hextech Munitions",
-            "image": {
-                "full": "Corki_RapidReload.png",
-                "sprite": "passive0.png",
-                "group": "passive",
-                "x": 384,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Self",
-            "blurb": "Corki's basic attack deals a percentage of their damage as magic instead of physical. Every once in a while, The Package arrives in Corki's base to be picked up, temporarily granting him out of combat Movement Speed and upgrading Valkyrie into Special Delivery.",
-            "champion": "Corki",
-            "cooldown": null,
-            "cooldownBurn": null,
-            "costtype": "No cost",
-            "damagetype": "None",
-            "damageTypes": [
-                "none"
-            ],
-            "description": [
-                "{{sbc|Hextech Shrapnel Shells:}} '''Corki's''' [[basic attack]]s are permanently modified to deal {{as|20% AD}} {{tip|physical damage|{{as|physical damage}}}} and {{as|80% AD}} {{tip|magic damage|{{as|magic damage}}}}.",
-                "{{sbc|The Package:}} After 8 minutes have passed, ''{{ai|The Package|Corki}}'' is delivered to both corners of '''Corki's''' [[Spawn|fountain]], which he can pick up after {{ct|channel|channeling|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}} for 1 second. Doing so grants him one cast of {{ai|Special Delivery|Corki}} within the next 60 seconds, as well as {{sti|ms|{{as|40% '''bonus''' movement speed}}}} out of combat prior to the ability being cast, after which ''{{ai|The Package|Corki}}'' goes on {{sti|cooldown}} before being delivered again."
-            ],
-            "flavorsound": "{{sm2|Corki.move5.ogg|''\"Ready to fly!\"''}}",
-            "grounded": false,
-            "icon": [
-                "Hextech Munitions.png",
-                "The Package.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Hextech Munitions",
-            "notes": [
-                "* All players are warned by Corki emitting a global siren/alarm sound upon picking up ''The Package''.",
-                "* Triggering attacks will apply [[on-hit effect]]s normally.",
-                "** The bonus damage from {{nie|Spellblade}} will not be consumed if the magic damage part is enough to kill the target.",
-                "** Furthermore, the bonus damage from physical {{nie|Spellblade}} effects (namely {{ii|Sheen}}, {{ii|Iceborn Gauntlet}}, and {{ii|Trinity Force}}) will be split evenly between physical and magic damage.",
-                "** The damage from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} is not affected by ''Hextech Munitions''.",
-                "** Both components apply {{sti|life steal}} even though on-hit magic damage does not usually interact with it.",
-                "** {{tip|critical strike|Critical strikes}} amplify both components' damage."
-            ],
-            "occurrence": "On-hit",
-            "projectile": false,
-            "skill": "I",
-            "spelleffects": "",
-            "spellshield": false,
-            "static": 240,
-            "targeting": "Passive"
-        },
-        "q1": {
-            "key": "Q",
-            "id": "PhosphorusBomb",
-            "riotName": "Phosphorus Bomb",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "PhosphorusBomb.png",
-                "sprite": "spell2.png",
-                "group": "spell",
-                "x": 384,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Corki fires a flash bomb at a target location, dealing magic damage to enemies in the area. This attack additionally reveals units in the area for a duration.",
-            "champion": "Corki",
-            "cooldown": [
-                8,
-                8,
-                8,
-                8,
-                8
-            ],
-            "cooldownBurn": "8",
-            "cost": [
-                60,
-                70,
-                80,
-                90,
-                100
-            ],
-            "costBurn": "60/70/80/90/100",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Corki''' launches a bomb at the target area, dealing {{as|magic damage}} to enemies hit.",
-                "The bomb {{tip|sight|reveals}} the area as it travels and for 6 seconds afterwards, as well as all affected enemies."
-            ],
-            "effect_radius": 250,
-            "grounded": false,
-            "icon": [
-                "Phosphorus Bomb.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}"
-            ],
-            "name": "Phosphorus Bomb",
-            "notes": [
-                "* No additional details."
-            ],
-            "projectile": true,
-            "skill": "Q",
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "target_range": 825,
-            "targeting": "Ground"
-        },
-        "w1": {
-            "key": "W1",
-            "id": "CarpetBomb",
-            "riotName": "Valkyrie",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "CarpetBomb.png",
-                "sprite": "spell2.png",
-                "group": "spell",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Corki flies a short distance, dropping bombs that create a trail of fire that damages opponents who remain in it.",
-            "champion": "Corki",
-            "collision_radius": 100,
-            "cooldown": [
-                20,
-                19,
-                18,
-                17,
-                16
-            ],
-            "cooldownBurn": "20/19/18/17/16",
-            "cost": [
-                100,
-                100,
-                100,
-                100,
-                100
-            ],
-            "costBurn": "100",
-            "costtype": "Mana",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Corki''' {{tip|dashes}} to the target location, dropping bombs that leave up to 3 blazing patches along his path, depending on the distance traveled, lasting for 2 seconds.",
-                "Any enemies that remain in the area are dealt {{as|magic damage}} every {{fd|0.25}} seconds."
-            ],
-            "grounded": true,
-            "icon": [
-                "Valkyrie.png"
-            ],
-            "knockdown": true,
-            "leveling": [
-                "{{st|Magic Damage Per Tick|{{ap|15 to 45}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|15*8 to 45*8}} {{as|(+ 80% AP)}}}}"
-            ],
-            "name": "Valkyrie",
-            "notes": [
-                "* The trail is made up of three individual areas-of-effects (unlike {{cai|Poison Trail|Singed}} or {{cais|Dragon's Descent|Shyvana}} trail being more fluid)."
-            ],
-            "projectile": false,
-            "skill": "W",
-            "speed": "{{tt|650|Dash speed}}",
-            "spelleffects": "Area of effect",
-            "spellshield": false,
-            "target_range": 600,
-            "targeting": "Direction"
-        },
-        "w2": {
-            "key": "W2",
-            "id": "CarpetBomb",
-            "riotName": "Valkyrie",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "CarpetBomb.png",
-                "sprite": "spell2.png",
-                "group": "spell",
-                "x": 432,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Corki hurtles forward a long distance, knocking aside enemies and creating a trail of scorched earth that damages opponents who remain in it.",
-            "champion": "Corki",
-            "collision_radius": 100,
-            "cooldown": [
-                20,
-                19,
-                18,
-                17,
-                16
-            ],
-            "cooldownBurn": "20/19/18/17/16",
-            "cost": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ],
-            "costBurn": "0",
-            "costtype": "No cost",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|{{ai|The Package|Corki}} - Active:}} '''Corki''' {{tip|dashes}} to the target location with extreme speed, {{tip|unstoppable}} and {{tip|airborne|knocking aside}} all enemies hit 500 units and leaving behind a fire trail for 5 seconds.",
-                "Any enemies that remain in the area are {{tip|slow|slowed}} by 90% and dealt {{pp|18|7.5;7.5;7.5;7.5;7.5;7.5;7.5 to 17.5;20;22.5;25|formula=static 7.5 until lvl 7; then+1.25 until lvl 15, then+2.5|color=magic damage}} {{as|(+ {{fd|37.5}}% '''bonus''' AD)}} {{as|(+ 5% AP)}} {{as|magic damage}} every {{fd|0.25}} seconds, for a maximum of {{pp|18|7.5*20;7.5*20;7.5*20;7.5*20;7.5*20;7.5*20;7.5*20 to 17.5*20;20*20;22.5*20;25*20|formula=static 150 until lvl 7; then+25 until lvl 15, then+50|color=magic damage}} {{as|(+ 750% '''bonus''' AD)}} {{as|(+ 100% AP)}} {{as|magic damage}}.",
-                "Casting ''Special Delivery'' instantly resets ''Valkyrie's'' {{sti|cooldown}}."
-            ],
-            "grounded": true,
-            "icon": [
-                "Special Delivery.png"
-            ],
-            "knockdown": false,
-            "leveling": [],
-            "name": "Special Delivery",
-            "notes": [
-                "* Unlike {{ai|Valkyrie|Corki}}, the trail is fluid like {{cai|Poison Trail|Singed}} or {{cai|Dragon's Descent|Shyvana}}'s trail."
-            ],
-            "projectile": false,
-            "skill": "W",
-            "speed": "{{tt|1500|dash speed}}",
-            "spelleffects": "Area of effect",
-            "spellshield": false,
-            "target_range": 1800,
-            "targeting": "Direction"
-        },
-        "e1": {
-            "key": "E",
-            "id": "GGun",
-            "riotName": "Gatling Gun",
-            "maxrank": 5,
-            "maxammo": -1,
-            "image": {
-                "full": "GGun.png",
-                "sprite": "spell2.png",
-                "group": "spell",
-                "x": 0,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "angle": "35{{degree}}",
-            "blurb": "Corki's gatling gun rapidly fires in a cone in front of him, dealing damage and reducing enemy Armor and Magic Resist.",
-            "champion": "Corki",
-            "cooldown": [
-                16,
-                16,
-                16,
-                16,
-                16
-            ],
-            "cooldownBurn": "16",
-            "cost": [
-                50,
-                50,
-                50,
-                50,
-                50
-            ],
-            "costBurn": "50",
-            "costtype": "Mana",
-            "damagetype": "Magic / Physical",
-            "damageTypes": [
-                "magic",
-                "physical"
-            ],
-            "description": [
-                "{{sbc|Active:}} '''Corki''' activates his gatling gun and sprays bullets in a cone in front of him for 4 seconds, dealing equal parts {{as|physical|physical damage}} and {{as|magic|magic damage}} damage every quarter-second and reducing his targets' {{sti|lethality|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} each tick, stacking up to 8 times, lingering for 2 seconds after last being damaged.",
-                "''Gatling Gun'' does not hinder '''Corki's''' actions and its cone remains in front of him as he moves."
-            ],
-            "effect_radius": 600,
-            "grounded": false,
-            "icon": [
-                "Gatling Gun.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Mixed Damage Per Quarter Second|{{ap|120/16 to 320/16}} {{as|(+ 10% '''bonus''' AD)}}|Total Mixed Damage|{{ap|120 to 320}} {{as|(+ 160% '''bonus''' AD)}}}}{{st|Resistance Reduction Per Tick|{{ap|1 to 2.5}}|Total Resistance Reduction|{{ap|1*8 to 2.5*8}}}}"
-            ],
-            "name": "Gatling Gun",
-            "notes": [
-                "* No additional details."
-            ],
-            "projectile": false,
-            "skill": "E",
-            "spelleffects": "Area of effect",
-            "spellshield": false,
-            "targeting": "Direction"
-        },
-        "r1": {
-            "key": "R",
-            "id": "MissileBarrage",
-            "riotName": "Missile Barrage",
-            "maxrank": 3,
-            "maxammo": 7,
-            "image": {
-                "full": "MissileBarrage.png",
-                "sprite": "spell2.png",
-                "group": "spell",
-                "x": 48,
-                "y": 48,
-                "w": 48,
-                "h": 48
-            },
-            "affects": "Enemies",
-            "blurb": "Corki fires a missile toward his target location that explodes on impact, dealing damage to enemies in an area. Corki stores missiles over time, up to a maximum. Every 3rd missile fired will be a Big One, dealing extra damage.",
-            "champion": "Corki",
-            "cooldown": [
-                2,
-                2,
-                2
-            ],
-            "cooldownBurn": "2",
-            "cost": [
-                20,
-                20,
-                20
-            ],
-            "costBurn": "20",
-            "costtype": "mana + 1 Missile",
-            "damagetype": "Magic",
-            "damageTypes": [
-                "magic"
-            ],
-            "description": [
-                "{{sbc|Passive:}} '''Corki''' stores a charge of ''Missile Barrage'' periodically, up to a maximum of 7 at once, and starts with 7 missiles every time he [[Death|respawns]].",
-                "{{sbc|Active:}} '''Corki''' fires a missile in the target direction that explodes if it hits an enemy, dealing {{as|magic damage}} in an area.",
-                "Every third missile '''Corki''' fires is a ''{{ai|Big One|Corki}}'', dealing 100% increased [[damage]] and increasing its explosion [[range|radius]]."
-            ],
-            "effect_radius": "{{tt|75|Standard radius}} / {{tt|150|Enhanced radius}}",
-            "grounded": false,
-            "icon": [
-                "Missile Barrage.png",
-                "Big One.png"
-            ],
-            "knockdown": false,
-            "leveling": [
-                "{{st|Magic Damage|{{ap|90 to 140}} {{as|(+ {{ap|15 to 75}}% AD)}} {{as|(+ 20% AP)}}|Big One Magic Damage|{{ap|90*2 to 140*2}} {{as|(+ {{ap|30 to 150}}% AD)}} {{as|(+ 40% AP)}}}}"
-            ],
-            "name": "Missile Barrage",
-            "notes": [
-                "* No additional details."
-            ],
-            "projectile": true,
-            "recharge": [
-                12,
-                11,
-                10
-            ],
-            "skill": "R",
-            "speed": 1950,
-            "spelleffects": "Area of effect",
-            "spellshield": true,
-            "static": 2,
-            "target_range": 1225,
-            "targeting": "Direction"
-        }
+    "w1": {
+      "key": "W1",
+      "id": "CarpetBomb",
+      "riotName": "Valkyrie",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "CarpetBomb.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 432,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Corki flies a short distance, dropping bombs that create a trail of fire that damages opponents who remain in it.",
+      "champion": "Corki",
+      "collision_radius": 100,
+      "cooldown": [
+        20,
+        19,
+        18,
+        17,
+        16
+      ],
+      "cooldownBurn": "20/19/18/17/16",
+      "costBurn": "100",
+      "costtype": "Mana",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Corki''' {{tip|dashes}} to the target location, dropping bombs that leave up to 3 blazing patches along his path, depending on the distance traveled, lasting for 2 seconds.",
+        "Any enemies that remain in the area are dealt {{as|magic damage}} every {{fd|0.25}} seconds."
+      ],
+      "grounded": true,
+      "icon": [
+        "Valkyrie.png"
+      ],
+      "knockdown": true,
+      "leveling": [
+        "{{st|Magic Damage Per Tick|{{ap|15 to 45}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|15*8 to 45*8}} {{as|(+ 80% AP)}}}}"
+      ],
+      "name": "Valkyrie",
+      "notes": [
+        "* The trail is made up of three individual areas-of-effects (unlike {{cai|Poison Trail|Singed}} or {{cais|Dragon's Descent|Shyvana}} trail being more fluid)."
+      ],
+      "projectile": "Magic",
+      "skill": "W",
+      "speed": "{{tt|650|Dash speed}}",
+      "spelleffects": "Area of effect",
+      "target_range": 600,
+      "targeting": "Direction"
+    },
+    "w2": {
+      "key": "W2",
+      "id": "CarpetBomb",
+      "riotName": "Valkyrie",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "CarpetBomb.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 432,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Corki hurtles forward a long distance, knocking aside enemies and creating a trail of scorched earth that damages opponents who remain in it.",
+      "champion": "Corki",
+      "collision_radius": 100,
+      "cooldown": [
+        20,
+        19,
+        18,
+        17,
+        16
+      ],
+      "cooldownBurn": "20/19/18/17/16",
+      "costBurn": "0",
+      "costtype": "No cost",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|{{ai|The Package|Corki}} - Active:}} '''Corki''' {{tip|dashes}} to the target location with extreme speed, {{tip|unstoppable}} and {{tip|airborne|knocking aside}} all enemies hit 500 units and leaving behind a fire trail for 5 seconds.",
+        "Any enemies that remain in the area are {{tip|slow|slowed}} by 90% and dealt {{pp|18|7.5;7.5;7.5;7.5;7.5;7.5;7.5 to 17.5;20;22.5;25|formula=static 7.5 until lvl 7; then+1.25 until lvl 15, then+2.5|color=magic damage}} {{as|(+ {{fd|37.5}}% '''bonus''' AD)}} {{as|(+ 5% AP)}} {{as|magic damage}} every {{fd|0.25}} seconds, for a maximum of {{pp|18|7.5*20;7.5*20;7.5*20;7.5*20;7.5*20;7.5*20;7.5*20 to 17.5*20;20*20;22.5*20;25*20|formula=static 150 until lvl 7; then+25 until lvl 15, then+50|color=magic damage}} {{as|(+ 750% '''bonus''' AD)}} {{as|(+ 100% AP)}} {{as|magic damage}}.",
+        "Casting ''Special Delivery'' instantly resets ''Valkyrie's'' {{sti|cooldown}}."
+      ],
+      "grounded": true,
+      "icon": [
+        "Special Delivery.png"
+      ],
+      "leveling": [],
+      "name": "Special Delivery",
+      "notes": [
+        "* Unlike {{ai|Valkyrie|Corki}}, the trail is fluid like {{cai|Poison Trail|Singed}} or {{cai|Dragon's Descent|Shyvana}}'s trail."
+      ],
+      "projectile": "Magic",
+      "skill": "W",
+      "speed": "{{tt|1500|dash speed}}",
+      "spelleffects": "Area of effect",
+      "target_range": 1800,
+      "targeting": "Direction"
+    },
+    "e1": {
+      "key": "E",
+      "id": "GGun",
+      "riotName": "Gatling Gun",
+      "maxrank": 5,
+      "maxammo": -1,
+      "image": {
+        "full": "GGun.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "angle": 35,
+      "blurb": "Corki's gatling gun rapidly fires in a cone in front of him, dealing damage and reducing enemy Armor and Magic Resist.",
+      "cast_time": "none",
+      "champion": "Corki",
+      "cooldownBurn": "16",
+      "costBurn": "50",
+      "costtype": "Mana",
+      "damagetype": "magic / physical",
+      "damageTypes": [
+        "magic",
+        "physical"
+      ],
+      "description": [
+        "{{sbc|Active:}} '''Corki''' sprays bullets in a frontal cone for 4 seconds, dealing equal parts {{as|physical|physical damage}} and {{as|magic|magic damage}} damage every {{fd|0.25}} seconds and reducing the target's {{sti|lethality|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} each tick, stacking up to 8 times, lingering for 2 seconds.",
+        "''Gatling Gun'' does not hinder '''Corki's''' actions."
+      ],
+      "effect_radius": 600,
+      "icon": [
+        "Gatling Gun.png"
+      ],
+      "leveling": [
+        "{{st|Mixed Damage Per Quarter Second|{{ap|120/16 to 320/16}} {{as|(+ 10% '''bonus''' AD)}}|Total Mixed Damage|{{ap|120 to 320}} {{as|(+ 160% '''bonus''' AD)}}}}{{st|Resistance Reduction Per Tick|{{ap|1 to 2.5}}|Total Resistance Reduction|{{ap|1*8 to 2.5*8}}}}"
+      ],
+      "name": "Gatling Gun",
+      "notes": [
+        "* No additional details."
+      ],
+      "projectile": "[[Physical damage|Physical]], [[Magic damage|Magic]]",
+      "skill": "E",
+      "spelleffects": "Area of effect",
+      "targeting": "Direction"
+    },
+    "r1": {
+      "key": "R",
+      "id": "MissileBarrage",
+      "riotName": "Missile Barrage",
+      "maxrank": 3,
+      "maxammo": 7,
+      "image": {
+        "full": "MissileBarrage.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "affects": "Enemies",
+      "blurb": "Corki fires a missile toward his target location that explodes on impact, dealing damage to enemies in an area. Corki stores missiles over time, up to a maximum. Every 3rd missile fired will be a Big One, dealing extra damage.",
+      "champion": "Corki",
+      "cooldown": [
+        2,
+        2,
+        2
+      ],
+      "cooldownBurn": "2",
+      "costBurn": "20",
+      "costtype": "mana + 1 Missile",
+      "damagetype": "magic",
+      "damageTypes": [
+        "magic"
+      ],
+      "description": [
+        "{{sbc|Passive:}} '''Corki''' periodically [[stock]]s a missile, up to a maximum of 7, and starts with 7 missiles every time he [[Death|respawns]].",
+        "{{sbc|Active:}} '''Corki''' fires a missile in the target direction that explodes upon enemy collision, dealing {{as|magic damage}} in an area.",
+        "Every third missile '''Corki''' fires is a ''{{ai|Big One|Corki}}'', dealing 100% increased damage and increasing its explosion [[range|radius]]."
+      ],
+      "effect_radius": "{{tt|75|Standard radius}} / {{tt|150|Enhanced radius}}",
+      "icon": [
+        "Missile Barrage.png",
+        "Big One.png"
+      ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|90 to 140}} {{as|(+ {{ap|15 to 75}}% AD)}} {{as|(+ 20% AP)}}|Big One Magic Damage|{{ap|90*2 to 140*2}} {{as|(+ {{ap|30 to 150}}% AD)}} {{as|(+ 40% AP)}}}}"
+      ],
+      "name": "Missile Barrage",
+      "notes": [
+        "* No additional details."
+      ],
+      "projectile": true,
+      "skill": "R",
+      "speed": 1950,
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "static": 2,
+      "target_range": 1225,
+      "targeting": "Direction"
     }
+  }
 }
