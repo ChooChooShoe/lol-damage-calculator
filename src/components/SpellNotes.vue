@@ -29,8 +29,9 @@ export default {
     text: function() {
       let notes = "";
       let level = 0;
-      for (let i = 0; i < this.spell.notes.length; i++) {
-        const el = this.spell.notes[i];
+      const arr = this.spell.notes.split('\n');
+      for (let i = 0; i < arr.length; i++) {
+        const el = arr[i];
         const indent = el.slice(0, el.indexOf(" ")).length;
         let diff = indent - level;
         while (diff > 0) {

@@ -25,24 +25,25 @@
 
 // const runesReforgedUri = `${baseUrl}/runesReforged.json`;
 
-export const cdn = 'https://ddragon.leagueoflegends.com/cdn';
-export const locale = 'en_US';
-export let version = '0.0.0';
-
+export const cdn = process.env.VUE_APP_DDRAGON_CDN;
+export const locale = process.env.VUE_APP_LANG;
+export let version = process.env.VUE_APP_DDRAGON_VERSION;
+export let spriteBaseUri = '';
 
 export function setupVue(vue) {
-    const newVersion = '9.10.1';
-    console.log(`Data is now sourced from patch ${newVersion}`);
-    version = newVersion;
-    fetchChampionList(vue);
-    fetchStaticItems((data) => {
-        vue.$app.itemData = data;
+    console.log(`Data is sourced from patch ${version}`);
+    spriteBaseUri = `${cdn}/${version}/img/sprite/`;
+    fetchChampionList((champList) => {
+        vue.$app.championList = champList;
     });
+    // fetchStaticItems((data) => {
+    //     vue.$app.itemData = data;
+    // });
     // vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
     // vue.target.champ = window.localStorage.getItem('last_used_champ_target') || '';
 }
 
-function fetchChampionList(vue) {
+function fetchChampionList(callback) {
     // const url = `${cdn}/${version}/data/en_US/champion.json`;
     const url = `./api/ChampionList.json`;
 
@@ -57,7 +58,7 @@ function fetchChampionList(vue) {
         .then(function (json) {
             let championList = { None: { name: "  -- None --  ", id: "" } }
             Object.assign(championList, json);
-            vue.$app.championList = championList;
+            callback(championList);
         });
 }
 
@@ -67,7 +68,7 @@ export function fetchSingleChampFile(vue, champion) {
     // const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
     const url = `/api/champion/${champion}.json`;
 
-    console.log(`Fetching: ${url}`)
+    console.log(`Fetching: ${url}`);
     fetch(url)
         .then(function (response) {
             if (response.ok) {
@@ -75,23 +76,23 @@ export function fetchSingleChampFile(vue, champion) {
             }
             throw new Error('Network response was not ok.');
         })
-        .then(function (dao) {
+        .then(function (model) {
             // Used for items. TODO change this.
             // window.playerChamption = dao.id;
             // championData caches all the data.
-            vue.$set(vue.championData, dao.id, dao);
+            vue.$set(vue.championData, model.id, model);
             // Removes all the last champions spells.
             vue.currentSpells.length = 0;
-
+            vue.currentChamp = null;
             let newList = [];
-            for (const skillkey in dao.complex_skills) {
+            for (const skillkey in model.skills) {
+                let value = model.skills[skillkey];
                 newList.push({
                     key: skillkey,
-                    spell: dao.complex_skills[skillkey],
-                    champion: champion,
-                    sprite: `${cdn}/${version}/img/sprite/`
+                    value: value,
                 });
             }
+            vue.currentChamp = champion;
             vue.currentSpells = newList;
             // sellAllItems();
             //TODO buy default items
@@ -116,7 +117,7 @@ export function fetchStaticItems(callback) {
 
             for (const key in data) {
                 const item = data[key];
-                item.maps = {'11': true};
+                item.maps = { '11': true };
 
                 const tags = item.tags.join(' ');
                 item.search = [

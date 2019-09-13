@@ -6,13 +6,11 @@
       <ChampionDiv class="data_holder block small" userid="player" :isprimary="true"></ChampionDiv>
       <ChampionDiv class="data_holder block small" userid="target" :isprimary="false"></ChampionDiv>
       <champion-spells
-        v-for="spellObj in currentSpells"
-        :key="spellObj.key"
-        :id="spellObj.key"
-        :spellkey="spellObj.key.toUpperCase().replace('I','Passive ')"
-        :spell="spellObj.spell"
-        :champion="spellObj.champion"
-        :spriteurl="spellObj.sprite + spellObj.spell.image.sprite"
+        v-for="obj in currentSpells"
+        :key="currentChamp+obj.key"
+        :id="obj.key" 
+        :spell="obj.value"
+        :champion="currentChamp"
       ></champion-spells>
     </div>
     <ShopModel v-if="config.shopEnabled" ref="shop"></ShopModel>
@@ -52,6 +50,7 @@ export default {
   data: function() {
     return {
       currentSpells: [],
+      currentChamp: 'None',
       spellComponents: [],
       championData: {},
       player: null,
@@ -59,7 +58,12 @@ export default {
       championList: {},
       itemData: [],
       globalToolTips: {},
-      config: loadLocalConfig()
+      config: loadLocalConfig(),
+      versionInfo: {
+        v: '0.0.0',
+        l: 'en_US',
+        cdn: '',
+      },
     };
   },
   created: function() {
@@ -67,15 +71,21 @@ export default {
     setupVue(this);
   },
   mounted: function() {
-    Vue.nextTick().then(function() {
-      // Adds focus event to all the input on the page. from calc.js
-      // var inputs = document.getElementsByClassName("input");
-      // for (var i = 0; i < inputs.length; i++) {
-      //   // inputs[i].addEventListener("input", recalc);
-      //   if (inputs[i].tagName !== "SELECT")
-      //     inputs[i].addEventListener("focus", e => e.target.select());
-      // }
-    });
+    console.log('process.env.VUE_APP_DDRAGON_VERSION',process.env);
+    // const url = `./api/version.json`;
+    // const self = this;
+
+    // console.log(`Fetching: ${url}`);
+    // fetch(url)
+    //     .then(function (response) {
+    //         if (response.ok) {
+    //             return response.json();
+    //         }
+    //         throw new Error('Network response was not ok.');
+    //     })
+    //     .then(function (json) {
+    //         self.versionInfo = json;
+    //     });
   },
   watch: {
     config: {

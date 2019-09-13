@@ -155,8 +155,8 @@
       </label>
 
       <div class="flex" v-if="showDamage">
-        <label for="ap" class="ap">Total Ability Power (AP) = {{ rnd(ap, 2) }}</label>
-        <data-input dname="ap" v-model="ap"></data-input>
+        <label for="ap" class="ap">Total Ability Power (AP) = {{ rnd(total_ap, 2) }}</label>
+        <data-input dname="ap" v-model="total_ap"></data-input>
 
         <label for="total_ad" class="ad">Total Attack Damage (AD) = {{ rnd(total_ad, 2) }}</label>
         <data-input dname="total_ad" v-model="total_ad"></data-input>
@@ -348,7 +348,7 @@ export default {
       bonus_critchance: 0,
       bonus_attackspeed: 0,
 
-      ap: 0,
+      total_ap: 0,
       critdamage: 2,
       lifesteal: 0,
       spellvamp: 0,

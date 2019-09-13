@@ -1,7 +1,7 @@
 <template>
   <div class="data_holder column">
     <img class="spell-image"
-      :style="{ float: 'right', background: 'url('+spriteurl + ') -' + spell.image.x + 'px -' + spell.image.y + 'px'}"
+      :style="imageStyle"
       :width="spell.image.w" :height="spell.image.h">
     <h2>{{ spell.name }} ({{ spellkey }})</h2>
     <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
@@ -28,7 +28,7 @@
     </div>
     
     <spell-effects
-      v-for="(item, index) in spell.leveling" 
+      v-for="(item, index) in spell.effects" 
       :id="id + '-effect-' + index"
       :key="id + '-effect-' + index"
       :spell="spell"
@@ -61,7 +61,7 @@ import SpellEffects from './SpellEffects.vue';
 import SimpleTooltip from './SimpleTooltip.vue';
 import SpellNotes from './SpellNotes.vue';
 import SpellSpan from './SpellSpan.vue';
-import {quickMatchReplace} from '../javascript/matchreplace.js';
+import {quickMatchReplace} from '../javascript/matchreplace';
 
 export default {
   name: 'champion-spells',
@@ -89,6 +89,12 @@ export default {
     },
     targetRange() {
       return quickMatchReplace(String(this.spell.target_range));
+    },
+    imageStyle() {
+      return { 
+        float: 'right', 
+        background: 'url('+"spriteurl" + ') -' + "spell.image.x" + 'px -' + "spell.image.y" + 'px'
+      };
     }
   },
   methods: {

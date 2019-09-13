@@ -1,65 +1,181 @@
-
 <template>
-  <div class="container float-clear spell-effect" :id="id" @click="showRatiosDropdown = $event.target.matches('.dropbutton')">
+  <div
+    class="container float-clear spell-effect"
+    :id="id"
+    @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
+  >
     <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
-      <h4><span v-if="iscustom">Custom </span>Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}</h4>
-      <input v-if="iscustom" name="remove_effect" class="inline float-right" type="button" value="Remove" @click="removeEffect()">
-      <match-replace class="column effect-value" :text="effect" :spellrankindex="spellrankindex" v-model="vars"></match-replace>
+      <h4>
+        <span v-if="iscustom">Custom</span>
+        Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}
+      </h4>
+      <input
+        v-if="iscustom"
+        name="remove_effect"
+        class="inline float-right"
+        type="button"
+        value="Remove"
+        @click="removeEffect()"
+      />
+      <span>
+        <span class="blue">{{ edata.title }}</span>
+        <match-replace
+          class="column effect-value"
+          :text="edata.str"
+          :spellrankindex="spellrankindex"
+        ></match-replace>
+      </span>
       <div class="field column">
-      <label :for="id + '-damagetype'">Damage Type</label>
-      <select :id="id + '-damagetype'" v-model="damagetype" name="damage_type" class="input">
-        <option value="no_damage" class="mixed">No Damage</option>
-        <option value="not_detected" class="mixed">Unknown Damage</option>
-        <option value="physical" class="ad">Physical Damage</option>
-        <option value="magic" class="ap">Magic Damage</option>
-        <option value="true" class="true">True Damage</option>
-      </select>
-      
-      <spell-field v-model="base_damage" type="base_damage"></spell-field>
+        <label :for="id + '-damagetype'">Damage Type</label>
+        <select :id="id + '-damagetype'" v-model="damage_type" name="damage_type" class="input">
+          <option value="none" class="true">No Damage</option>
+          <option value="unknown" class="mixed">Unknown Damage</option>
+          <option value="physical" class="ad">Physical Damage</option>
+          <option value="magic" class="ap">Magic Damage</option>
+          <option value="true" class="true">True Damage</option>
+        </select>
+
         <spell-field
-          v-for="(item, key, index) in ratios"
-          :key="item.target  + '-' + item.key + '-ratio'"
-          :type="item.target === 'target' ? 'target.' + item.key : item.key"
+          v-for="(item, key) in ratios"
+          :key="'ratio-'+key"
+          :type="item.key"
+          :spellrankindex="spellrankindex"
+          :ispercent="item.ispercent"
           v-model="item.value"
         ></spell-field>
-        <input class="inline dropbutton" type="button" value="Add Ratio+">
+        <input class="inline dropbutton" type="button" value="Add Ratio+" />
         <div :class="showRatiosDropdown ? '' : 'hidden'">
-      <span v-if="ratios['player-ap'] === undefined" class="simple-link ap" @click="addRatio('ap')">AP Ratio</span>-
-      <span v-if="ratios['player-total_ad'] === undefined" class="simple-link ad" @click="addRatio('total_ad')">AD Ratio</span>-
-      <span v-if="ratios['player-bonus_ad'] === undefined" class="simple-link ad" @click="addRatio('bonus_ad')">Bonus AD Ratio</span>-
-      <span v-if="ratios['player-total_hp'] === undefined" class="simple-link health" @click="addRatio('total_hp')">Health Ratio</span>-
-      <span v-if="ratios['player-bonus_hp'] === undefined" class="simple-link health" @click="addRatio('bonus_hp')">Bonus Health Ratio</span>-
-      <span v-if="ratios['player-missing_hp'] === undefined" class="simple-link health" @click="addRatio('missing_hp')">Missing Health</span>-
-      <span v-if="ratios['target-total_hp'] === undefined" class="simple-link health" @click="addRatio('total_hp','target')"> Target's Max Health</span>-
-      <span v-if="ratios['target-bonus_hp'] === undefined" class="simple-link health" @click="addRatio('bonus_hp','target')"> Target's Bonus Health</span>-
-      <span v-if="ratios['target-current_hp'] === undefined" class="simple-link health" @click="addRatio('current_hp','target')"> Target's Current Health</span>-
-      <span v-if="ratios['target-missing_hp'] === undefined" class="simple-link health" @click="addRatio('missing_hp','target')"> Target's Missing Health</span>-
-      <span v-if="ratios['player-bonus_armor'] === undefined" class="simple-link armor" @click="addRatio('bonus_armor')">Bonus Armor Ratio</span>-
-      <span v-if="ratios['player-total_armor'] === undefined" class="simple-link armor" @click="addRatio('total_armor')">Armor Ratio</span>-
-      <span v-if="ratios['player-bonus_mr'] === undefined" class="simple-link mr" @click="addRatio('bonus_mr')">Bonus MR Ratio</span>-
-      <span v-if="ratios['player-total_mr'] === undefined" class="simple-link mr" @click="addRatio('total_mr')">MR Ratio</span>
-      </div>
+          <span
+            v-if="ratios['player_total_ap']    === undefined"
+            class="simple-link ap"
+            @click="addRatio('player_total_ap')"
+          >AP Ratio</span>-
+          <span
+            v-if="ratios['player_total_ad']    === undefined"
+            class="simple-link ad"
+            @click="addRatio('player_total_ad')"
+          >AD Ratio</span>-
+          <span
+            v-if="ratios['player_bonus_ad']    === undefined"
+            class="simple-link ad"
+            @click="addRatio('player_bonus_ad')"
+          >Bonus AD Ratio</span>-
+          <span
+            v-if="ratios['player_total_hp']    === undefined"
+            class="simple-link health"
+            @click="addRatio('player_total_hp')"
+          >Health Ratio</span>-
+          <span
+            v-if="ratios['player_bonus_hp']    === undefined"
+            class="simple-link health"
+            @click="addRatio('player_bonus_hp')"
+          >Bonus Health Ratio</span>-
+          <span
+            v-if="ratios['player_missing_hp']  === undefined"
+            class="simple-link health"
+            @click="addRatio('player_missing_hp')"
+          >Missing Health</span>-
+          <span
+            v-if="ratios['target_total_hp']    === undefined"
+            class="simple-link health"
+            @click="addRatio('target_total_hp')"
+          >Target's Max Health</span>-
+          <span
+            v-if="ratios['target_bonus_hp']    === undefined"
+            class="simple-link health"
+            @click="addRatio('target_bonus_hp')"
+          >Target's Bonus Health</span>-
+          <span
+            v-if="ratios['target_current_hp']  === undefined"
+            class="simple-link health"
+            @click="addRatio('target_current_hp')"
+          >Target's Current Health</span>-
+          <span
+            v-if="ratios['target_missing_hp']  === undefined"
+            class="simple-link health"
+            @click="addRatio('target_missing_hp')"
+          >Target's Missing Health</span>-
+          <span
+            v-if="ratios['player_bonus_armor'] === undefined"
+            class="simple-link armor"
+            @click="addRatio('player_bonus_armor')"
+          >Bonus Armor Ratio</span>-
+          <span
+            v-if="ratios['player_total_armor'] === undefined"
+            class="simple-link armor"
+            @click="addRatio('player_total_armor')"
+          >Armor Ratio</span>-
+          <span
+            v-if="ratios['player_bonus_mr']    === undefined"
+            class="simple-link mr"
+            @click="addRatio('player_bonus_mr')"
+          >Bonus MR Ratio</span>-
+          <span
+            v-if="ratios['player_total_mr']    === undefined"
+            class="simple-link mr"
+            @click="addRatio('player_total_mr')"
+          >MR Ratio</span>
+        </div>
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
 
       <div class="column">
-      This effect will deal {{Math.round(dmg_premitigation_for_one)}} <span v-html="damagetype_user"></span> before resistances<span class="gold">{{  repeat === 1 ? '' : ' per hit' }}</span>.
-      <br>This damage will cause the target to <span class="spelleffect">lose {{Math.round(dmg_onhit_for_one)}} health</span><span class="gold">{{  repeat === 1 ? '' : ' per hit' }}</span>.
+        This effect will deal {{Math.round(dmg_premitigation_for_one)}}
+        <span
+          v-html="damagetype_user"
+        ></span> before resistances
+        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+        <br />This damage will cause the target to
+        <span
+          class="spelleffect"
+        >lose {{Math.round(dmg_onhit_for_one)}} health</span>
+        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
       </div>
       <label class="column">
         This effect will hit
-      <input type="number" value="1" v-model.number="repeat" class="simple-input">
-      time{{  repeat === 1 ? '' : 's' }}. 
-      <input :active="repeat === 1" type="button" class="simple-btn" value="1x" @click="repeat = 1">
-      <input :active="repeat === 2" type="button" class="simple-btn" value="2x" @click="repeat = 2">
-      <input :active="repeat === 5" type="button" class="simple-btn" value="5x" @click="repeat = 5">
-      <input :active="repeat === 10" type="button" class="simple-btn" value="10x" @click="repeat = 10">
+        <input
+          type="number"
+          value="1"
+          v-model.number="repeat"
+          class="simple-input"
+        />
+        time{{ repeat === 1 ? '' : 's' }}.
+        <input
+          :active="repeat === 1"
+          type="button"
+          class="simple-btn"
+          value="1x"
+          @click="repeat = 1"
+        />
+        <input
+          :active="repeat === 2"
+          type="button"
+          class="simple-btn"
+          value="2x"
+          @click="repeat = 2"
+        />
+        <input
+          :active="repeat === 5"
+          type="button"
+          class="simple-btn"
+          value="5x"
+          @click="repeat = 5"
+        />
+        <input
+          :active="repeat === 10"
+          type="button"
+          class="simple-btn"
+          value="10x"
+          @click="repeat = 10"
+        />
       </label>
       <div v-if="repeat != 1" class="column">
         In total, this effect deals {{Math.round(dmg_premitigation)}}
         <span v-html="damagetype_user"></span> before resistances.
-        <br>This damage will cause the target to
-        <span class="spelleffect">lose {{Math.round(dmg_onhit)}} health</span>.
+        <br />This damage will cause the target to
+        <span
+          class="spelleffect"
+        >lose {{Math.round(dmg_onhit)}} health</span>.
       </div>
     </form>
   </div>
@@ -81,20 +197,23 @@ export default {
   },
   data: function() {
     return {
-      damagetype: "not_detected",
-      base_damage: 0,
+      damage_type: this.effect.subeffects[0].damage_type,
       showRatiosDropdown: false,
       user_ratios: {},
-      vars: null,
-      repeat: 1
+      repeat: 1,
+      subIndex: 0,
+      ratios: {}
     };
   },
   computed: {
+    edata: function() {
+      return this.effect.subeffects[this.subIndex];
+    },
     damagetype_user: function() {
-      switch (this.damagetype) {
-        case "no_damage":
+      switch (this.damage_type) {
+        case "none":
           return '<span class="true">no damage</span>';
-        case "not_detected":
+        case "unknown":
           return '<span class="mixed">unknown damage</span>';
         case "physical":
           return '<span class="ad">physical damage</span>';
@@ -125,36 +244,6 @@ export default {
     },
     dmg_premitigation_for_one: function() {
       return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
-    },
-    ratios() {
-      return Object.assign(this.auto_vars, this.user_ratios);
-    },
-    auto_vars() {
-      const vars = this.vars;
-      const i = this.spellrankindex;
-      if (!vars) return {};
-
-      if ("base_damage" in vars) {
-        this.base_damage = numeral(vars.base_damage[i]).value();
-      }
-      let newRatios = {};
-      for (const ratio in vars.ratios) {
-        const el = vars.ratios[ratio];
-        const target = el.target || "player";
-        const key = el.key || ratio;
-        let value = el.value || el || 0;
-
-        if (Array.isArray(value)) {
-          value = numeral(value[i]).value() / 100;
-          // Might not be the best solution but works with ez W.
-        }
-        newRatios[target + "-" + ratio] = {
-          target: target,
-          key: key,
-          value: value
-        };
-      }
-      return newRatios;
     }
   },
   mounted: function() {
@@ -167,31 +256,39 @@ export default {
     );
   },
   watch: {
-    spell: {
+    edata: {
       immediate: true,
       handler() {
-        if (this.spell.damagetype.includes("agic")) {
-          this.damagetype = "magic";
-        } else if (this.spell.damagetype.includes("hysical")) {
-          this.damagetype = "physical";
-        } else if (this.spell.damagetype.includes("rue")) {
-          this.damagetype = "true";
-        } else if (this.spell.damagetype.includes("no")) {
-          this.damagetype = "no_damage";
-        } else {
-          this.damagetype = "not_detected";
+        let newRatios = {};
+        for (const ratio in this.edata.ratios) {
+          const value = this.edata.ratios[ratio];
+
+          // if (Array.isArray(value)) {
+          //   value = numeral(value[i]).value() / 100;
+          //   // Might not be the best solution but works with ez W.
+          // }
+          let ispercent = true;
+          if (
+            ratio === "base_damage" ||
+            (ratio === "base_progression" && !this.edata.str.includes("%"))
+          )
+            ispercent = false;
+          newRatios[ratio] = {
+            key: ratio,
+            value: value,
+            ispercent: ispercent
+          };
         }
+        this.ratios = newRatios;
       }
     }
   },
   methods: {
-    addRatio: function(ratio, target, value) {
-      target = target || "player";
-      value = value || 0;
-      Vue.set(this.user_ratios, target + "-" + ratio, {
-        target: target,
+    addRatio: function(ratio) {
+      Vue.set(this.ratios, ratio, {
         key: ratio,
-        value: value
+        value: 0,
+        ispercent: true
       });
     },
     removeEffect: function() {
@@ -200,22 +297,39 @@ export default {
           i => i !== this.effectindex
         );
     },
+    ratioValue(ratio) {
+      if (this.ratios[ratio]) {
+        const r = this.ratios[ratio];
+        if (Array.isArray(r.value)) {
+          return r.value[this.spellrankindex];
+        }
+        return r.value;
+      }
+      return 0;
+    },
     calc_dmg_premitigation: function(player, target) {
-      let damage = this.base_damage;
-      for (const r in this.ratios) {
-        const ratio = this.ratios[r];
-        if (ratio.target === "target") {
-          const stat = target[ratio.key] || 0;
-          damage += stat * ratio.value;
-        } else {
-          const stat = player[ratio.key] || 0;
-          damage += stat * ratio.value;
+      let damage = this.ratioValue("base_damage") || 0;
+      for (const key in this.ratios) {
+        if (key.startsWith("target")) {
+          let stat = target[key.substring(7)];
+          if (isNaN(stat)) {
+            console.log(`Stat for ratio ${key} missing for target`);
+            stat = 0;
+          }
+          damage += stat * this.ratioValue(key);
+        } else if (key.startsWith("player")) {
+          let stat = player[key.substring(7)];
+          if (isNaN(stat)) {
+            console.log(`Stat for ratio ${key} missing for player`);
+            stat = 0;
+          }
+          damage += stat * this.ratioValue(key);
         }
       }
       return damage;
     },
     calc_dmg_onhit: function(p, t, damage) {
-      switch (this.damagetype) {
+      switch (this.damage_type) {
         case "physical":
           return calcDamageWithRedection(
             damage,

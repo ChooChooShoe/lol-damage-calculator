@@ -164,6 +164,7 @@ export function quickMatchReplace(text) {
   });
 }
 export default function matchReplaceSpellEffects(text, quick = false) {
+  text = (text || '').toString();
   if (quick === true) {
     return quickMatchReplace(text);
   }
@@ -437,9 +438,12 @@ const match_lookup = {
         list.push(+parseFloat(eval(param.replace(clean, ''))).toFixed(round));
       }
     }
-    if (!vars.base_damage)
-      vars.base_damage = list;
-    vars.progression = list;
+    // if (!vars.base_damage)
+    //   vars.base_damage = list;
+    // vars.progression = list;
+    if (!vars.ap_progressions)
+      vars.ap_progressions = [];
+    vars.ap_progressions.push(list);
     return `<spell-span :list="['${list.join("','")}']" :spellrankindex="spellrankindex"></spell-span>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
@@ -449,6 +453,7 @@ const match_lookup = {
     const inner = slices[0];
     const stat = slices[1];
     const test = inner.toLowerCase();
+    let ratios = {};
 
     let cssClass = stat || list_of_colors.find(c => {
       return test.includes(c)
@@ -456,44 +461,43 @@ const match_lookup = {
     cssClass = cssClass.replace(' ', '-');
 
     let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    if (test.includes('spell-span'))
-      num = vars.progression;
+    if (test.includes('spell-span') && vars.ap_progressions.length > 0){
+      const idx = vars.ap_progressions.length -1;
+      console.log("herherhehrheh\n",test,"\nvars",vars,"\nold_num",num);
+      // ratios = vars.as_ratios[vars.as_ratios.length - 1];
+      let list = [];
+      for (const x of vars.ap_progressions[idx]) {
+        list.push(Number(x) / 100);
+      }
+      num = list;
+      vars.ap_progressions[idx] = undefined;
+      console.log("okay\n",test,"\nvars",vars,"\nold_num",num);
+    }
     if (num !== null) {
       const isBonus = inner.includes('bonus');
-      const target = inner.includes('target');
-      const targetStr = target ? 'target' : 'player';
-      if (test.includes('ap')) {
-        vars.ratios.ap = num;
-      }
-      else if (test.includes('ad')) {
-        if (isBonus) vars.ratios.bonus_ad = num;
-        else vars.ratios.total_ad = num;
-      }
+      const isTarget = inner.includes('target');
+      let a = isTarget ? 'target' : 'player';
+      let b = isBonus ? 'bonus' : 'total';
+      let c = 'unknown';
+
+      if (test.includes('ap')) c = 'ap';
+      else if (test.includes('ad')) c = 'ad';
+      else if (test.includes('mana')) c = 'mana';
+      else if (test.includes('armor')) c = 'armor';
+      else if (test.includes('mr') || test.includes('resist')) c = 'mr';
       else if (test.includes('health') || test.includes('hp')) {
-        if (target) {
-          if (isBonus) vars.ratios.bonus_hp = { target: 'target', value: num };
-          else if (test.includes('missing')) vars.ratios.missing_hp = { target: 'target', value: num };
-          else if (test.includes('current')) vars.ratios.current_hp = { target: 'target', value: num };
-          else vars.ratios.total_hp = { target: 'target', value: num };
-        } else {
-          if (isBonus) vars.ratios.bonus_hp = num;
-          else if (test.includes('missing')) vars.ratios.missing_hp = num;
-          else vars.ratios.total_hp = num;
-        }
+        c = 'hp';
+        if (test.includes('missing')) b = 'missing';
+        else if (test.includes('current')) b = 'current';
       }
-      else if (test.includes('ad')) {
-        if (isBonus) vars.ratios.bonus_ad = num;
-        else vars.ratios.total_ad = num;
-      }
-      else if (test.includes('armor')) {
-        if (isBonus) vars.ratios.bonus_armor = num;
-        else vars.ratios.total_armor = num;
-      }
-      else if (test.includes('mr') || test.includes('resist')) {
-        if (isBonus) vars.ratios.bonus_mr = num;
-        else vars.ratios.total_mr = num;
-      }
+      const final_ratio_key = `${a}_${b ? (b + '_') : ''}${c}`;
+      ratios[final_ratio_key] = num;
     }
+    if (!vars.as_ratios)
+      vars.as_ratios = [];
+    vars.as_ratios.push(ratios);
+    // vars.as_ratios = ratios;
+    // vars.ratios = ratios;
     return `<span class="${cssClass}">${inner}</span>`;
   },
   // sbc (or Small bold capitals): {{sbc|<Text>}}
@@ -521,12 +525,13 @@ const match_lookup = {
     return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(3)}</span>`;
   },
 
-  'st': function (_capture, slices, _vars) {
-    let rets = []
+  'st': function (_capture, slices, vars) {
+    let rets = [];
     for (let i = 0; i < slices.length; i += 2) {
-      rets.push(`<span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span>`);
+      rets.push(`<li><span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span></li>`);
     }
-    return rets.join('<br>');
+    vars.st_slices = slices;
+    return `<ul>${rets.join('')}</ul>`;
   },
   // MATH OPERATORS:
   'plus': function (_capture, _parms, _vars) {

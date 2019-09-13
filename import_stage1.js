@@ -57,8 +57,6 @@ function make_changes(changes) {
 }
 function default_export(champ) {
   return {
-    // #"api_version": version,
-    // # "timestamp": timestamp, // yikes, im lazy
     "id": champ["id"], // "RekSai"
     "key": champ["key"], // "421"
     "name": champ["name"], // "Rek'Sai"
@@ -73,16 +71,13 @@ function default_export(champ) {
     "partype": champ["partype"], // "Battlefury"
     "info": champ["info"],
     "stats": champ["stats"],
-    "riot_spell_q": champ["spells"][0],
-    "riot_spell_w": champ["spells"][1],
-    "riot_spell_e": champ["spells"][2],
-    "riot_spell_r": champ["spells"][3],
-    "riot_spell_i": {
+    "riot_spells": champ.spells, // renamed 
+    "riot_passive": { // renamed 
       "name": champ["passive"]["name"],
       "description": champ["passive"]["description"],
       "image": champ["passive"]["image"],
     },
-    "riot_recommended": champ['recommended'],
+    "riot_recommended": champ['recommended'], // renamed 
   }
 }
 function cast(s) {
@@ -157,9 +152,9 @@ function try_take_skill(letter, value, cexport, champ_name, callback) {
           noRepeatDesc.add(skillobj.description);
       }
       if (valid) {
-        skillobj.skill = letter.toUpperCase()
-        const place = "wikia_skill_" + letter.toLowerCase() + (skillnum + 1).toString()
-        cexport[place] = skillobj
+        skillobj.skillkey = letter.toUpperCase();
+        skillobj.skillid = letter.toLowerCase() + (skillnum + 1).toString();
+        cexport.skills[skillobj.skillid] = skillobj;
       }
       if (callback && isfianl)
         callback();
@@ -186,59 +181,76 @@ log.info('Command Line Args: ' + champsList)
 fs.mkdir('./export', (err) => { if (err) log.debug(err) })
 
 
-// Use the latest league version.
-const version = "9.12.1"
-// const timestamp = "2019-03-22T00:40:54+00:00"
-
-const url = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/championFull.json`;
-
-log.info("Fetching (json): %s", url)
-request(url, { json: true }, (err, res, body) => {
+const realmsUrl = "https://ddragon.leagueoflegends.com/realms/na.json";
+/// Get the latest version from /realms/na.json
+request(realmsUrl, { json: true }, (err, res, body) => {
   if (err) { return console.log(err); }
+  const cdn = body.cdn;
+  const version = body.v;
+  const lang = body.l;
+  log.info("using ddragon version:",version);
 
-  if (clarg == "list") {
-    log.info(`List of champion for lol patch ${version}: ` + Object.keys(body.data).join(' '))
-    return;
-  }
-  // let champtions = {};
-  for (const keyid in body.data) {
-    if (!all && !champsList.includes(keyid)) continue;
-    const champ = body.data[keyid];
-    log.info('Taking: ' + keyid);
+  const championFull = `${cdn}/${version}/data/${lang}/championFull.json`;
 
-    fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikia_champ) => {
-      let cexport = default_export(champ);
-      let lines = wikia_champ.split('\n');
-      let champObj = {}
-      for (let index = 0; index < lines.length; index++) {
-        const line = lines[index].trim();
-        if (!line || line === "" || line.startsWith("}}") || line.startsWith('{{')) {
-          log.info('Skipping line: ' + line)
-          continue;
-        }
-        else if (line.startsWith('|') && line.includes("=")) {
-          let split = line.split("=")
-          let key = split[0].trim().replace("|", "", 1).replace(' ', '_')
-          let value = split.slice(1).join('=').trim()
-          champObj[key] = cast(value)
-        } else {
-          const lineNumber = "line_" + (index + 1)
-          log.warn('Unknown line: "' + lineNumber + '" value ' + line)
-          champObj[lineNumber] = line
-        }
-      }
-      champObj["changes"] = make_changes(champObj["changes"] || "V0.0")
-      cexport.wikia_champ = champObj
-
-      chain_skills(cexport, champ.name, () => {
-        // champtions[keyid] = cexport
-        fs.writeFile(`./export/${keyid}.pass1.json`, JSON.stringify(cexport, null, 2), function (err) {
-          if (err) {
-            return console.log(err);
+  fs.writeFile(`./export/version.json`, JSON.stringify({
+    v: version,
+    l: lang,
+    cdn: cdn,
+  }, null, 2), function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("The file ./public/api/version.json was saved!");
+  });
+  log.info("Fetching (json): %s", championFull)
+  request(championFull, { json: true }, (err, res, body) => {
+    if (err) { return console.log(err); }
+  
+    if (clarg == "list") {
+      log.info(`List of champion for lol patch ${version}: ` + Object.keys(body.data).join(' '))
+      return;
+    }
+    // let champtions = {};
+    for (const keyid in body.data) {
+      if (!all && !champsList.includes(keyid)) continue;
+      const champ = body.data[keyid];
+      log.info('Taking: ' + keyid);
+  
+      fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikia_champ) => {
+        let cexport = default_export(champ);
+        let lines = wikia_champ.split('\n');
+        let champObj = {}
+        for (let index = 0; index < lines.length; index++) {
+          const line = lines[index].trim();
+          if (!line || line === "" || line.startsWith("}}") || line.startsWith('{{')) {
+            log.info('Skipping line: ' + line)
+            continue;
           }
-          console.log("The file was saved!");
+          else if (line.startsWith('|') && line.includes("=")) {
+            let split = line.split("=")
+            let key = split[0].trim().replace("|", "", 1).replace(' ', '_')
+            let value = split.slice(1).join('=').trim()
+            champObj[key] = cast(value)
+          } else {
+            const lineNumber = "line_" + (index + 1)
+            log.warn('Unknown line: "' + lineNumber + '" value ' + line)
+            champObj[lineNumber] = line
+          }
+        }
+        champObj["changes"] = make_changes(champObj["changes"] || "V0.0")
+        cexport.wikia_champ = champObj
+  
+        cexport.skills = {};
+        chain_skills(cexport, champ.name, () => {
+          // champtions[keyid] = cexport
+          fs.writeFile(`./export/${keyid}.pass1.json`, JSON.stringify(cexport, null, 2), function (err) {
+            if (err) {
+              return console.log(err);
+            }
+            console.log("The file was saved!");
+          });
         });
       });
-    });
-  }
-});
+    }
+  });  
+})
