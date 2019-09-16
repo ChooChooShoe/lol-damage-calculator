@@ -1,10 +1,9 @@
 {
   "patch": "V4.20",
-  "changes": "9.14.1",
+  "changes": "9.17.1",
   "id": "Kalista",
   "key": "429",
   "name": "Kalista",
-  "fullname": "Kalista",
   "title": "the Spear of Vengeance",
   "image": {
     "full": "Kalista.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "physical",
@@ -30,15 +30,35 @@
     "magic": 4,
     "difficulty": 7
   },
-  "i_displayname": "Martial Poise",
-  "q_displayname": "Pierce",
-  "w_dispalyname": "Sentinel",
-  "e_dispalyname": "Rend",
-  "r_dispalyname": "Fate's Call",
-  "complex_skills": {
+  "stats": {
+    "hp": 534,
+    "hpperlevel": 89,
+    "mp": 250,
+    "mpperlevel": 45,
+    "movespeed": 325,
+    "armor": 23,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 3.75,
+    "hpregenperlevel": 0.55,
+    "mpregen": 6.3,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 69,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 4,
+    "attackspeed": 0.694
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Martial Poise",
+      "riotId": "",
+      "name": "Martial Poise",
+      "maxrank": 0,
+      "targeting": "Direction",
+      "target_range": "{{pp|4|type=Boots Tier|showtype=true|250 to 350|No Boots;Tier 1 Boots;Tier 2 Boots}}",
       "image": {
         "full": "Kalista_Passive.png",
         "sprite": "passive1.png",
@@ -48,46 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Enter a movement command while winding up Kalista's basic attack or Pierce to lunge a short distance when she launches her attack.",
-      "champion": "Kalista",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Martial Poise:}} '''Kalista's''' [[basic attack]]s have special interactions:\n* Use only {{as|90% attack damage}}.\n* Miss if she loses {{tip|sight}} of her target before they hit.\n* Cannot cancel their wind-up, but can select a new target within range.\n* Make her {{tip|dash|lunge}} in the target direction after issuing a movement command during a wind-up or right after casting {{ai|Pierce|Kalista}}. The lunge distance scales with her boots tier.",
         "The wind-up while dashing is only reduced by {{fd|0.66}}% per {{sti|{{as|1% '''bonus''' attack speed}}}} compared to the standard 1% per 1%. <br><br>Additionally, '''Kalista''' begins the game with {{ii|The Black Spear}}, a unique item."
       ],
-      "flavorsound": "{{sm2|Kalista.link06.ogg|''\"The oath has been taken.\"''}}",
-      "grounded": true,
-      "icon": [
-        "Martial Poise.png"
-      ],
-      "knockdown": true,
-      "leveling": [],
-      "name": "Martial Poise",
-      "notes": [
-        "[[File:Kalista-Martial-Poise-Indicator.png|Martial Poise's dash indicator|right]]",
-        "* {{tip|Critical strike}} damage is reduced to 90%.",
-        "* ''The Black Spear'' can not be used on [[Champion summoned units|decoys]]. Targeting those will put the item on a 10 seconds cooldown.",
-        "* The dash speed is affected by movement speed modifiers and so it will be reduced by {{tip|Slow}}.",
-        "* {{Pending for test}}: Dash range values using {{ai|Pierce|Kalista}}."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "target_range": "{{pp|4|type=Boots Tier|showtype=true|250 to 350|No Boots;Tier 1 Boots;Tier 2 Boots}}",
-      "targeting": "Direction"
+      "notes": "\n[[File:Kalista-Martial-Poise-Indicator.png|Martial Poise's dash indicator|right]]\n* {{tip|Critical strike}} damage is reduced to 90%.\n* ''The Black Spear'' can not be used on [[Champion summoned units|decoys]]. Targeting those will put the item on a 10 seconds cooldown.\n* The dash speed is affected by movement speed modifiers and so it will be reduced by {{tip|Slow}}.\n* {{Pending for test}}: Dash range values using {{ai|Pierce|Kalista}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "KalistaMysticShot",
-      "riotName": "Pierce",
+      "riotId": "KalistaMysticShot",
+      "name": "Pierce",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1150,
       "image": {
         "full": "KalistaMysticShot.png",
         "sprite": "spell5.png",
@@ -97,44 +105,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Throw a fast moving spear that passes through enemies it kills.",
-      "champion": "Kalista",
-      "cooldownBurn": "8",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Kalista''' hurls a fast and narrow spear, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy hit.",
         "If ''Pierce'' kills its target, the spear continues onward, transferring all of the dead victim's {{ai|Rend|Kalista}} stacks to the next enemy it hits. This can repeat indefinitely until the spear reaches its maximum distance."
       ],
-      "icon": [
-        "Pierce.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 280}} {{as|(+ 100% AD)}}}}"
-      ],
-      "name": "Pierce",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": "{{tt|2100|Estimated}}",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1150,
-      "targeting": "Direction"
+      "notes": "\n* No additional details.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 280}} {{as|(+ 100% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                85,
+                150,
+                215,
+                280
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  85,
+                  150,
+                  215,
+                  280
+                ],
+                "player_total_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "KalistaW",
-      "riotName": "Sentinel",
+      "riotId": "KalistaW",
+      "name": "Sentinel",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
       "image": {
         "full": "KalistaW.png",
         "sprite": "spell5.png",
@@ -144,49 +188,112 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Passively gain Attack Speed when near her Oathsworn ally, and deal bonus damage when striking the same target. Activate to send a soul to scout out the path, revealing the area in front of it.",
-      "champion": "Kalista",
-      "cooldownBurn": "30",
-      "costBurn": "20",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Passive - Soul-Marked:}} While '''Kalista''' and her {{ii|The Black Spear|Oathsworn}} are linked, their basic attacks<!-- and Kalista's Pierce, please check in-game Kalista Q description--> apply a ''Soul-Mark'' to their targets.",
+        "{{sbc|Passive - Soul-Marked:}} While '''Kalista''' and her {{ii|The Black Spear|Oathsworn}} are linked, their basic attacks and {{ai|Pierce|Kalista}} apply a ''Soul-Mark'' to their targets.",
         "If both ''Soul-Marks'' are applied within 2 seconds, the target takes {{tip|magic damage|{{as|'''bonus''' magic damage}}}} (capped against non-champions), and cannot be ''Soul-Marked'' for 10 seconds. ''Soul-Mark'' deals 75 minimum damage to {{tip|minions}} and executes them if they're below {{as|{{sti|health|125 health}}}}.",
-        "'''Kalista''' stores a charge of ''Sentinel'' periodically, up to a maximum of 2 stored at once.",
-        "{{sbc|Active:}} '''Kalista''' summons a ''Sentinel'' by her side to {{tip|sight|scout}} {{tt|the target area|5000 range}}."
+        "{{sbc|Passive:}} '''Kalista''' periodically [[stock]]s a ''Sentinel'' charge, up to a maximum of 2.",
+        "{{sbc|Active:}} '''Kalista''' summons a ''Sentinel'' to {{tip|sight|patrol}} along {{tt|the target area|5000 range}}."
       ],
-      "icon": [
-        "Oathsworn.png",
-        "Soul-Mark.png",
-        "Sentinel.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{as|{{ap|5 to 15}}% of target's '''maximum''' health}}|Maximum Non-Champion Damage|{{ap|100 to 200}}}}"
-      ],
-      "name": "Sentinel",
-      "notes": [
-        "<!-- If pierce kills the target by soul-marked added damage, will it continue? -->",
-        "* ''Soul-Marked'' displays a mark above the target hit by ''Kalista'' or her {{ii|The Black Spear|Oathsworn}} ally's basic attacks.",
-        "** This mark resembles half a spearhead and, if either attacks the target after the other has done so, the spearhead will assemble itself and ''Soul-Marked's'' bonus damage will trigger.",
-        "* ''Soul-Marked's'' bonus damage is credited to ''Kalista'' and will benefit from both her [[magic penetration]] and her [[spell effects]].",
-        "** If her {{ii|The Black Spear|Oathsworn}} ally scores a kill using ''Soul-Marked's'' bonus damage they will get a message stating 'Kill Secured' in place of the usual gold pop-up (the gold itself is credited to ''Kalista'').",
-        "* The ''Sentinel's'' vision grants assists and/or kills (if the spotted enemy champion dies shortly after being so)."
-      ],
-      "projectile": "None",
-      "skill": "W",
-      "targeting": "Direction"
+      "notes": "<!-- If pierce kills the target by soul-marked added damage, will it continue? -->\n* ''Soul-Marked's'' bonus damage is credited to ''Kalista'' and will benefit from both her [[magic penetration]] and [[spell effects]].\n** If her {{ii|The Black Spear|Oathsworn}} ally scores a kill using ''Soul-Marked's'' bonus damage they will get a message stating 'Kill Secured' in place of the usual gold pop-up (the gold itself is credited to ''Kalista'').\n* The ''Sentinel's'' vision grants assists and/or kills (if the spotted enemy champion dies shortly after being so).",
+      "costBurn": "20",
+      "cooldownBurn": "30",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{as|{{ap|5 to 15}}% of target's '''maximum''' health}}|Maximum Non-Champion Damage|{{ap|100 to 200}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                7.5,
+                10,
+                12.5,
+                15
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "target_total_hp": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<span class=\"health\"><spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "Maximum Non-Champion Damage",
+              "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  5,
+                  7.5,
+                  10,
+                  12.5,
+                  15
+                ],
+                "target_total_hp": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ]
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<span class=\"health\"><spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "target_total_hp": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ]
+              },
+              "title": "Maximum Non-Champion Damage",
+              "str": "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "KalistaExpungeWrapper",
-      "riotName": "Rend",
+      "riotId": "KalistaExpungeWrapper",
+      "name": "Rend",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        12.5,
+        11,
+        9.5,
+        8
+      ],
+      "cost": [
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
       "image": {
         "full": "KalistaExpungeWrapper.png",
         "sprite": "spell5.png",
@@ -196,52 +303,151 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Attacks impale their targets with spears. Activate to rip the spears out, slowing and dealing escalating damage.",
-      "champion": "Kalista",
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cooldownBurn": "0",
-      "costBurn": "30",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
-        "{{sbc|Passive:}} '''Kalista's''' basic attacks and {{ai|Pierce|Kalista}} each lodge a spear in her target, stacking up to 254 times. The stack of spears remains for 4 seconds while untouched.",
+        "{{sbc|Passive:}} '''Kalista's''' basic attacks and {{ai|Pierce|Kalista}} each lodge a spear in her target, stacking up to 255 times. The stack of spears remains for 4 seconds while untouched.",
         "{{sbc|Active:}} '''Kalista''' rips all lodged spears from nearby enemies, dealing {{as|physical damage}} and {{tip|slow|slowing}} them for 2 seconds, with spears beyond the first dealing reduced damage. ''Rend'' deals 50% reduced damage to epic [[monster]]s.",
         "''Rend'' resets its {{sti|cooldown}} and refunds {{sti|{{as|mana}}}} if it kills at least one target."
       ],
-      "icon": [
-        "Rend.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 60}} {{as|(+ 60% AD)}}|Damage per Additional Spear|{{pp|5|notooltip=true|10+3*(x-1)+x*(x-1)/2}} {{as|(+ {{ap|60*0.33|60*0.3958 to 60*0.5833 4}}% AD)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}",
-        "{{st|Mana Refund|{{ap|10 to 30}}}}"
-      ],
-      "name": "Rend",
-      "notes": [
-        "* A fully-stacked ''Rend'' will deal {{pp|5|notooltip=true|20+10*(x-1)+(10+3*(x-1)+x*(x-1)/2)*253}} {{as|(+ {{ap|60*(1+0.33*253)|60*(1+0.3958*253) to 60*(1+0.5833*253)}}% AD)}} physical damage.",
-        "* The cooldown will reset if the target dies but has a revival effect (e.g. {{cai|Chronoshift|Zilean}}).",
-        "* {{sbc|Possible Bug:}} If ''Rend'' is used against a {{ci|Sion}} under the effects of {{ai|Glory in Death|Sion}}, the cooldown will reset even if it doesn't kill the {{ci|Sion}}."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "targeting": "Auto"
+      "notes": "\n* A fully-stacked ''Rend'' will deal {{ap|(20 to 60)+(10+3*(x-1)+x*(x-1)/2)*254}} {{as|(+ {{ap|60*(1+0.33*254)|60*(1+0.3958*254) to 60*(1+0.5833*254) 4}}% AD)}} physical damage.\n* The cooldown will reset if the target dies but has a revival effect (e.g. {{cai|Chronoshift|Zilean}}).\n* {{sbc|Possible Bug:}} If ''Rend'' is used against a {{ci|Sion}} under the effects of {{ai|Glory in Death|Sion}}, the cooldown will reset even if it doesn't kill the {{ci|Sion}}.",
+      "costBurn": "30",
+      "cooldownBurn": "14/12.5/11/9.5/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 60}} {{as|(+ 60% AD)}}|Damage per Additional Spear|{{ap|10+3*(x-1)+x*(x-1)/2}} {{as|(+ {{ap|60*0.33|60*0.3958 to 60*0.5833 4}}% AD)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span></span></li><li><span class=\"blue\">Damage per Additional Spear</span>: <span><simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token *</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                19.8,
+                23.748,
+                27.498,
+                31.248,
+                34.998
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.6
+              },
+              {
+                "player_total_ad": [
+                  0.25,
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span>",
+              "Damage per Additional Spear",
+              "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token *</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ad": 0.6
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  19.8,
+                  23.748,
+                  27.498,
+                  31.248,
+                  34.998
+                ],
+                "player_total_ad": 0.6
+              },
+              "title": "Damage per Additional Spear",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token *</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Mana Refund|{{ap|10 to 30}}}}",
+          "str": "<ul><li><span class=\"blue\">Mana Refund</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ],
+            "st_slices": [
+              "Mana Refund",
+              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ]
+              },
+              "title": "Mana Refund",
+              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "KalistaRx",
-      "riotName": "Fate's Call",
+      "riotId": "KalistaRx",
+      "name": "Fate's Call",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        150,
+        120,
+        90
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Auto",
+      "target_range": 1200,
       "image": {
         "full": "KalistaRx.png",
         "sprite": "spell5.png",
@@ -251,44 +457,50 @@
         "w": 48,
         "h": 48
       },
-      "affects": "{{ai|Oathsworn|Kalista}} Ally / Enemies",
-      "blurb": "Kalista teleports the Oathsworn ally to herself. They gain the ability to Launch toward a position, knocking enemy champions back.",
-      "champion": "Kalista",
-      "cooldown": [
-        150,
-        120,
-        90
-      ],
-      "cooldownBurn": "150/120/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Kalista''' invokes her {{ii|The Black Spear|link}}, retrieving her ''Oathsworn'' and placing them in {{tip|stasis}} for 4 seconds.",
+        "{{sbc|Active:}} '''Kalista''' invokes her {{ii|The Black Spear|link}}, retrieving her ''Oathsworn'' and carrying them in {{tip|stasis}} for 4 seconds.",
         "'''Kalista's''' ''Oathsworn'' can emerge to a target location, stopping at the first enemy hit, {{tip|airborne|knocking up}} all surrounding enemies and landing themselves at their basic attack range relative to the target hit."
       ],
-      "effect_radius": 1100,
-      "flavorsound": "{{sm2|Kalista.linkRescue02.ogg|''\"They shall not have you.\"''}}",
-      "icon": [
-        "Fate's Call.png"
-      ],
-      "leveling": [
-        "{{st|Knockup Duration|{{ap|1.5|1.75|2}}}}"
-      ],
-      "name": "Fate's Call",
-      "notes": [
-        "* ''Fate's Call'' will wait for the ''Oathsworn'' ally to finish their channels before holding them.",
-        "* The ''Oathsworn'' ally is {{tip|untargetable}} and {{tip|invisibility|invisible}} so long as they remain held by ''Fate's Call'', represented by a light over ''Kalista's'' head until they dash.",
-        "** '''Kalista's''' death does not interrupt ''Fate's Call''."
-      ],
-      "projectile": "None",
-      "skill": "R",
-      "spellshield": true,
-      "target_range": 1200,
-      "targeting": "Auto"
+      "notes": "\n* ''Fate's Call'' will wait for the ''Oathsworn'' ally to finish their channels before holding them.\n* The ''Oathsworn'' ally is {{tip|untargetable}} and {{tip|invisibility|invisible}} so long as they remain held by ''Fate's Call'', represented by a light over ''Kalista's'' head until they dash.\n** '''Kalista's''' death does not interrupt ''Fate's Call''.",
+      "costBurn": "100",
+      "cooldownBurn": "150/120/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Knockup Duration|{{ap|1.5|1.75|2}}}}",
+          "str": "<ul><li><span class=\"blue\">Knockup Duration</span>: <span><spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.5,
+                1.75,
+                2
+              ]
+            ],
+            "st_slices": [
+              "Knockup Duration",
+              "<spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.5,
+                  1.75,
+                  2
+                ]
+              },
+              "title": "Knockup Duration",
+              "str": "<spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

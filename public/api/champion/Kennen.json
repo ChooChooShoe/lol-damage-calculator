@@ -4,7 +4,6 @@
   "id": "Kennen",
   "key": "85",
   "name": "Kennen",
-  "fullname": "Kennen",
   "title": "the Heart of the Tempest",
   "image": {
     "full": "Kennen.png",
@@ -22,6 +21,7 @@
   "resource": "Energy",
   "herotype": "Mage",
   "alttype": "Marksman",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 4
   },
-  "i_displayname": "Mark of the Storm",
-  "q_displayname": "Thundering Shuriken",
-  "w_dispalyname": "Electrical Surge",
-  "e_dispalyname": "Lightning Rush",
-  "r_dispalyname": "Slicing Maelstrom",
-  "complex_skills": {
+  "stats": {
+    "hp": 541,
+    "hpperlevel": 84,
+    "mp": 200,
+    "mpperlevel": 0,
+    "movespeed": 335,
+    "armor": 29,
+    "armorperlevel": 3.75,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.65,
+    "mpregen": 50,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 48,
+    "attackdamageperlevel": 3.75,
+    "attackspeedperlevel": 3.4,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Mark of the Storm",
+      "riotId": "",
+      "name": "Mark of the Storm",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Kennen_Passive.png",
         "sprite": "passive1.png",
@@ -49,39 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Kennen's abilities add one stack of Mark of the Storm to their target for 6 seconds. If the target reaches 3 stacks, it is stunned for 1.25 seconds and Kennen gains 25 Energy. The stun will be a diminished duration of 0.5 seconds if it occurs again within 6 seconds.",
-      "champion": "Kennen",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Mark of the Storm:}} Enemies hit by '''Kennen's''' [[Champion ability|abilities]] receive a {{as|Mark of the Storm|buzzword}} for 6 seconds, stacking up to 3 times. At three stacks, the marks consume themselves to {{tip|stun}} the target for {{fd|1.25}} seconds and restore {{tip|energy|{{as|25 energy}}}}.",
         "{{sbc|Diminished Mark:}} If the {{tip|stun}} is applied more than once within 6 seconds, its duration is reduced to {{fd|0.5}} seconds."
       ],
-      "icon": [
-        "Mark of the Storm.png"
-      ],
-      "leveling": [],
-      "name": "Mark of the Storm",
-      "notes": [
-        "* '''Kennen''' will still restore energy if the target dies from a third {{as|Mark of the Storm|buzzword}}."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spellshield": true,
-      "targeting": "Passive"
+      "notes": "\n* '''Kennen''' will still restore energy if the target dies from a third {{as|Mark of the Storm|buzzword}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "KennenShurikenHurlMissile1",
-      "riotName": "Thundering Shuriken",
+      "riotId": "KennenShurikenHurlMissile1",
+      "name": "Thundering Shuriken",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "cost": [
+        60,
+        55,
+        50,
+        45,
+        40
+      ],
+      "costtype": "Energy",
+      "targeting": "Direction",
+      "target_range": 1050,
       "image": {
         "full": "KennenShurikenHurlMissile1.png",
         "sprite": "spell5.png",
@@ -91,50 +105,79 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Kennen throws a fast moving shuriken towards a location, causing damage and adding a Mark of the Storm to any opponent that it hits.",
-      "champion": "Kennen",
-      "cooldown": [
-        8,
-        7,
-        6,
-        5,
-        4
-      ],
-      "cooldownBurn": "8/7/6/5/4",
-      "costBurn": "60 / 55 / 50 / 45 / 40",
-      "costtype": "Energy",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Kennen''' throws a charged shuriken in a line in front of him, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits."
       ],
-      "icon": [
-        "Thundering Shuriken.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 75% AP)}}}}"
-      ],
-      "name": "Thundering Shuriken",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1650,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1050,
-      "targeting": "Direction"
+      "notes": "\n* No additional details.",
+      "costBurn": "60/55/50/45/40",
+      "cooldownBurn": "8/7/6/5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 75% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                115,
+                155,
+                195,
+                235
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  115,
+                  155,
+                  195,
+                  235
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "KennenBringTheLight",
-      "riotName": "Electrical Surge",
+      "riotId": "KennenBringTheLight",
+      "name": "Electrical Surge",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        12,
+        10,
+        8,
+        6
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "Energy",
+      "targeting": "Auto",
       "image": {
         "full": "KennenBringTheLight.png",
         "sprite": "spell5.png",
@@ -144,60 +187,141 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Kennen passively deals extra damage and adds a Mark of the Storm to his target every few attacks, and he can activate this ability to damage and add another Mark of the Storm to targets who are already marked.",
-      "champion": "Kennen",
-      "cooldown": [
-        14,
-        12,
-        10,
-        8,
-        6
-      ],
-      "cooldownBurn": "14/12/10/8/6",
-      "costBurn": "40",
-      "costtype": "Energy",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Kennen''' deals {{as|'''bonus''' magic damage}} and applies a {{as|Mark of the Storm|buzzword}} once every 5 [[basic attack]]s.",
         "{{sbc|Active:}} '''Kennen''' sends out a surge of electricity to all nearby enemies afflicted by {{as|Mark of the Storm|buzzword}} or caught in {{ai|Slicing Maelstrom|Kennen}}, dealing {{as|magic damage}}."
       ],
-      "effect_radius": 750,
-      "icon": [
-        "Electrical Surge.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10 to 50}} {{as|(+ {{ap|60 to 100}}% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}",
-        "{{st|Magic Damage|{{ap|60 to 160}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Electrical Surge",
-      "notes": [
-        "* Basic attacks against [[structures]] do not stack the counter nor do they consume the enhanced attack.",
-        "* ''Electrical Surge's'' active will still hit [[stealth]]ed champions as well as those hidden in [[Sight|fog of war]] (revealing their position but not granting {{tip|sight}} of them).",
-        "* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* {{tip|critical strike|Critical strikes}} do not interact with ''Electrical Surge's'' bonus damage.",
-        "** The bonus damage apply {{tip|single target}} effect.",
-        "* ''Electrical Surge's'' enhanced attack will be consumed and the bonus damage will not be applied if '''Kennen''' is {{tip|blind|blinded}}.",
-        "* ''Electrical Surge's passive'' cannot be {{ai|Counter Strike|Jax|dodged}} or {{ai|Aegis Protection|Pantheon|blocked}} but can be {{ai|Riposte|Fiora|parried}}.",
-        "* {{ai|Wind Wall|Yasuo}} will destroy the enhanced attack but not consume it."
-      ],
-      "onhiteffects": "Special",
-      "parry": "Special",
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "Auto"
+      "notes": "\n* Basic attacks against [[structures]] do not stack the counter nor do they consume the enhanced attack.\n* ''Electrical Surge's'' active will still hit [[stealth]]ed champions as well as those hidden in [[Sight|fog of war]] (revealing their position but not granting {{tip|sight}} of them).\n* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the '''bonus''' damage does not).\n** The bonus damage applies {{tip|single target}} effects.\n* ''Electrical Surge's'' enhanced attack will be consumed and the bonus damage will not be applied if '''Kennen''' is {{tip|blind|blinded}}.\n** ''Electrical Surge's passive'' cannot be {{ai|Counter Strike|Jax|dodged}} or {{ai|Spirit's Refuge|Shen|blocked}}.\n* {{ai|Wind Wall|Yasuo}} will destroy the enhanced attack but not consume it.",
+      "costBurn": "40",
+      "cooldownBurn": "14/12/10/8/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 50}} {{as|(+ {{ap|60 to 100}}% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_bonus_ad": [
+                  0.6,
+                  0.7,
+                  0.8,
+                  0.9,
+                  1
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_total_ap": 0.2,
+                "player_bonus_ad": [
+                  0.6,
+                  0.7,
+                  0.8,
+                  0.9,
+                  1
+                ]
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 160}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "KennenLightningRush",
-      "riotName": "Lightning Rush",
+      "riotId": "KennenLightningRush",
+      "name": "Lightning Rush",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": [
+        100,
+        95,
+        90,
+        85,
+        80
+      ],
+      "costtype": "Energy",
+      "targeting": "None",
       "image": {
         "full": "KennenLightningRush.png",
         "sprite": "spell5.png",
@@ -207,53 +331,143 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Kennen morphs into a lightning form, enabling him to pass through units. Each enemy unit he touches takes damage and receives a Mark of the Storm.",
-      "champion": "Kennen",
-      "cooldown": [
-        10,
-        9,
-        8,
-        7,
-        6
-      ],
-      "cooldownBurn": "10/9/8/7/6",
-      "costBurn": "100 / 95 / 90 / 85 / 80",
-      "costtype": "Energy",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Kennen''' transforms into a ball of electricity, {{tip|disarm|disarming}} himself but becoming {{tip|ghosted}} and gaining {{sti|ms|{{as|100% '''bonus''' movement speed}}}} for 2 seconds.",
         "'''Kennen''' deals {{as|magic damage}} to all enemies he passes through, halved against non-champions and restores {{tip|energy|{{as|40 energy}}}} the first time ''Lightning Rush'' damages an enemy.",
         "'''Kennen''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 4 seconds upon exiting ''Lightning Rush''.",
         "'''Kennen''' can reactivate ''Lightning Rush'' to prematurely cancel it, allowing him to use [[basic attack]]s again."
       ],
-      "icon": [
-        "Lightning Rush.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}|Non-Champion Damage|{{ap|80/2 to 240/2}} {{as|(+ 40% AP)}}}}",
-        "{{st|Bonus Attack Speed|{{ap|40 to 80}}%}}"
-      ],
-      "name": "Lightning Rush",
-      "notes": [
-        "* ''Lightning Rush'' will only damage any particular enemy once per cast.",
-        "* ''Lightning Rush'' can grant '''Kennen''' an effective 230 bonus movement speed (assuming there are no modifiers involved)."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Lightning Rush'' will only damage any particular enemy once per cast.\n* ''Lightning Rush'' can grant '''Kennen''' an effective 230 bonus movement speed (assuming there are no modifiers involved).",
+      "costBurn": "100/95/90/85/80",
+      "cooldownBurn": "10/9/8/7/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}|Non-Champion Damage|{{ap|80/2 to 240/2}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ],
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "Non-Champion Damage",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Non-Champion Damage",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 80}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  50,
+                  60,
+                  70,
+                  80
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "KennenShurikenStorm",
-      "riotName": "Slicing Maelstrom",
+      "riotId": "KennenShurikenStorm",
+      "name": "Slicing Maelstrom",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        120,
+        120
+      ],
+      "cost": [
+        0,
+        0,
+        0
+      ],
+      "targeting": "Auto",
       "image": {
         "full": "KennenShurikenStorm.png",
         "sprite": "spell5.png",
@@ -263,38 +477,106 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Kennen summons a storm that strikes at nearby enemy champions for magical damage.",
-      "champion": "Kennen",
-      "cooldownBurn": "120",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Kennen''' summons ''Shuriken Storm'', a magical storm around himself for 3 seconds, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} and dealing {{as|magic damage}} to all enemies within range every {{fd|0.5}} seconds.",
         "Each maelstrom hit applies a {{as|Mark of the Storm|buzzword}}, up to a maximum of 3.",
         "''Slicing Maelstrom'' deals 10% increased damage with each successive strike against a target, up to a maximum of 150% damage with one strike."
       ],
-      "effect_radius": 550,
-      "icon": [
-        "Slicing Maelstrom.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Resistances|{{ap|20 to 60}}}}\n{{st|Magic Damage Per Bolt|{{ap|40|75|110}} {{as|(+ 20% AP)}}}}",
-        "{{st|Total Single-Target Damage|{{ap|300|562.5|825}} {{as|(+ 150% AP)}}}}"
-      ],
-      "name": "Slicing Maelstrom",
-      "notes": [
-        "* Not being a channeled ability means ''Slicing Maelstrom'' will persist even if '''Kennen''' is disabled, activates {{ii|Zhonya's Hourglass}}, or is being revived by {{ii|Guardian Angel}} or {{ai|Chronoshift|Zilean}}."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "spellshield": true,
-      "targeting": "Auto"
+      "notes": "\n* Not being a channeled ability means ''Slicing Maelstrom'' will persist even if '''Kennen''' is disabled, activates {{ii|Zhonya's Hourglass}}, or is being revived by {{ii|Guardian Angel}} or {{ai|Chronoshift|Zilean}}.",
+      "costBurn": "0",
+      "cooldownBurn": "120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Resistances|{{ap|20 to 60}}}}\n{{st|Magic Damage Per Bolt|{{ap|40|75|110}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Resistances</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Bolt</span>: <span><spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                40,
+                75,
+                110
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Bolt",
+              "<spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage Per Bolt",
+              "str": "<spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Total Single-Target Damage|{{ap|300|562.5|825}} {{as|(+ 150% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                562.5,
+                825
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              "Total Single-Target Damage",
+              "<spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  300,
+                  562.5,
+                  825
+                ],
+                "player_total_ap": 1.5
+              },
+              "title": "Total Single-Target Damage",
+              "str": "<spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

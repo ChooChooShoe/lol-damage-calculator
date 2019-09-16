@@ -1,16 +1,15 @@
 {
   "patch": "V9.10",
-  "changes": "9.14.1",
+  "changes": "9.16.1",
   "id": "Yuumi",
   "key": "350",
   "name": "Yuumi",
-  "fullname": "Yuumi",
   "title": "the Magical Cat",
   "image": {
     "full": "Yuumi.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 48,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "Magic",
@@ -31,278 +31,550 @@
     "magic": 8,
     "difficulty": 2
   },
-  "i_displayname": "Bop 'n' Block",
-  "q_displayname": "Prowling Projectile",
-  "w_dispalyname": "You and Me!",
-  "e_dispalyname": "Zoomies",
-  "r_dispalyname": "Final Chapter",
-  "complex_skills": {
+  "stats": {
+    "hp": 480,
+    "hpperlevel": 70,
+    "mp": 400,
+    "mpperlevel": 45,
+    "movespeed": 330,
+    "armor": 25,
+    "armorperlevel": 3,
+    "spellblock": 25,
+    "spellblockperlevel": 0.3,
+    "attackrange": 500,
+    "hpregen": 7,
+    "hpregenperlevel": 0.55,
+    "mpregen": 10,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 55,
+    "attackdamageperlevel": 3.1,
+    "attackspeedperlevel": 1,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "",
+      "riotId": "",
+      "name": "Bop 'n' Block",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "YuumiP.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Every so often, Yuumi's next attack against an opponent restores mana and generates a shield. If Yuumi is Attached, the shield protects her ally. The shield protects Yuumi or her ally until it's broken.",
-      "champion": "Yuumi",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} Periodically, '''Yuumi's''' next [[basic attack]] against an enemy champion won't use a {{tip|projectile|projectile}} and grants her a {{pp|50;55;60;72;84;96;111;126;141;156 to 300}} {{as|(+ 30% AP)}} {{tip|shield}} that lasts until it is broken.",
         "While {{ai|You and Me!|Yuumi|Attached}}, the shield transfers to her ''Anchor''."
       ],
-      "icon": [
-        "Bop 'n' Block.png"
-      ],
-      "leveling": [],
-      "name": "Bop 'n' Block",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "static": "{{pp|20 to 8}}",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "YuumiQ",
-      "riotName": "Prowling Projectile",
+      "riotId": "YuumiQ",
+      "name": "Prowling Projectile",
       "maxrank": 6,
-      "maxammo": -1,
+      "cooldown": [
+        13,
+        11.6,
+        10.2,
+        8.8,
+        7.4,
+        6
+      ],
+      "cost": [
+        75,
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1150,
       "image": {
         "full": "YuumiQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Yuumi",
-      "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7,
-        6
-      ],
-      "cooldownBurn": "11/10/9/8/7/6",
-      "costBurn": "75 / 80 / 85 / 90 / 95 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Yuumi''' fires an errant missile that deals {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
-        "If the missile is in flight for 1 second, it deals increased {{as|magic damage}} and applies a decaying {{tip|slow}} to enemy {{tip|champions}} struck.",
+        "If the missile is in flight for 1 second, it deals increased {{as|magic damage}}, and {{tip|slow|slows}} enemy {{tip|champions}} struck, decaying over {{fd|1.5}} seconds.",
         "While {{ai|You and Me!|Yuumi|Attached}}, '''Yuumi''' directs the trajectory of the missile instead for up to 3 seconds before fizzling, during which she and the ''Anchor'' can see the effective range."
       ],
-      "icon": [
-        "Prowling Projectile.png",
-        "Prowling Projectile 2.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|40 to 165 6}} {{as|(+ 45% AP)}}}}",
-        "{{st|Empowered Damage|{{ap|50 to 275 6}} {{as|(+ 65% AP)}}}}\n{{st|Slow|{{ap|40 to 80 6}}%}}\n{{st|Slow Duration|{{ap|1.25 to 1.75 6}}}}"
-      ],
-      "name": "Prowling Projectile",
-      "notes": [
-        "* ''Prowling Projectile'' does not interrupt '''Yuumi's''' previous orders."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "speed": 1000,
-      "target_range": 1150,
-      "targeting": "Direction"
+      "notes": "\n* ''Prowling Projectile'' does not interrupt '''Yuumi's''' previous orders.",
+      "costBurn": "75/80/85/90/95/100",
+      "cooldownBurn": "13/11.6/10.2/8.8/7.4/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 165 6}} {{as|(+ 45% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                65,
+                90,
+                115,
+                140,
+                165
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['40','65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  65,
+                  90,
+                  115,
+                  140,
+                  165
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['40','65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Empowered Damage|{{ap|50 to 225 6}} {{as|(+ 65% AP)}}}}\n{{st|Slow|{{ap|20 to 80 6}}%}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Damage</span>: <span><spell-span :list=\"['50','85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                85,
+                120,
+                155,
+                190,
+                225
+              ],
+              [
+                20,
+                32,
+                44,
+                56,
+                68,
+                80
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  85,
+                  120,
+                  155,
+                  190,
+                  225
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "YuumiW",
-      "riotName": "You and Me!",
+      "riotId": "YuumiW",
+      "name": "You and Me!",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Unit / Non-Unit",
+      "target_range": 700,
       "image": {
         "full": "YuumiW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Allied Champion",
-      "blurb": "",
-      "champion": "Yuumi",
-      "cooldownBurn": "0",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain flat {{tip|Adaptive force|adaptive force}} plus an amount equal to a percentage of the other's {{as|attack damage}} or {{as|ability power}}, whichever is higher. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
-        "{{sbc|Active:}} '''Yuumi''' {{tip|dash|dashes}} to an allied champion and attaches to them. While '''Attached''', '''Yuumi''' is {{tip|disarm|disarmed}}, {{tip|untargetable}} except from {{tip|turrets}} and follows her ''Anchor's'' movement, and retains the ability to cast (''except movement spells'').",
+        "{{sbc|Active:}} '''Yuumi''' {{tip|dash|dashes}} to an allied champion and attaches to them. While '''Attached''', '''Yuumi''' is {{tip|disarm|disarmed}}, {{tip|untargetable}} (except from {{tip|turrets}} and in-flight projectiles targeting her) and follows her ''Anchor's'' movement, and retains the ability to cast (''except movement spells'').",
         "{{sbc|Active - Change of Plan:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies. If re-activated without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash up to 250 units in the target direction, triggering the cooldown. The cooldown starts ticking down when ''attaching'' to the first ally."
       ],
-      "flavorsound": "{{sm2|Yuumi 135.ogg|''\"Book, meet new friend!\"''}}",
-      "icon": [
-        "You and Me!.png",
-        "Change of Plan.png"
-      ],
-      "leveling": [
-        "{{st|Adaptive Force|{{ap|5 to 13}} (+ {{ap|4 to 16}}%)}}"
-      ],
-      "name": "You and Me!",
-      "notes": [
-        "* The cooldown begins upon the first cast.",
-        "* Her monster aggression transfers to the ''Anchor''.",
-        "* The dash is interrupted by any immobilizing crowd control.",
-        "* Enemies gain an assist on '''Yuumi''' if they damage an attached ally.",
-        "* ''You and Me!'' will follow an ally under stealth, or any type of {{tip|blink}} or {{tip|dash}}, regardless of range.",
-        "** If her ''Anchor'' recalls, '''Yuumi''' will detach automatically when they arrive at the fountain.",
-        "* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side, and if '''Yuumi''' is on the red team, she will attach to the northeast.",
-        "* ''You and Me!'' gives assists on champion takedowns from her teammates when she first attaches to a participating ally.",
-        "* To clarify the conversion (not considering the flat amount):",
-        "<table class=\"article-table\">",
-        "<tr>",
-        "<td colspan=\"2\" rowspan=\"2\">&nbsp;</td>",
-        "<th colspan=\"2\" style=\"text-align:center\">Their Highest</th>",
-        "</tr>",
-        "<tr>",
-        "<th style=\"color:{{keyword color|AP}}; text-align:center\"> AP </th>",
-        "<th style=\"color:{{keyword color|AD}}; text-align:center\"> tAD </th>",
-        "</tr>",
-        "<tr>",
-        "<th rowspan=\"2\"> Your Highest<ref>This is the stat you will receive a bonus to.</ref> </th>",
-        "<th style=\"color:{{keyword color|AP}}\"> AP </th>",
-        "<td> {{as|{{ap|4 to 16}}% their AP}} </td>",
-        "<td> {{as|{{ap|4 to 16}}% their tAD}} </td>",
-        "</tr>",
-        "<tr>",
-        "<th style=\"color:{{keyword color|AD}}\"> bAD </th>",
-        "<td> {{as|{{ap|4*0.6 to 16*0.6}}% their AP}}  </td>",
-        "<td> {{as|{{ap|4*0.6 to 16*0.6}}% their tAD}}  </td>",
-        "</tr>",
-        "</table>",
-        "<references/>"
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "static": "{{pp|3|10 to 0|1;6;11}}",
-      "target_range": 700,
-      "targeting": "Unit / Non-Unit"
+      "notes": "\n* The cooldown begins upon the first cast.\n* Her monster aggression transfers to the ''Anchor''.\n* The dash is interrupted by any immobilizing crowd control.\n* '''Yuumi''' can dash to zombie state targets (i.e {{cai|Glory in Death|Sion}}), but she cannot stay attached.\n* Enemies gain an assist on '''Yuumi''' if they damage an attached ally.\n* ''You and Me!'' will follow an ally under stealth, or any type of {{tip|blink}} or {{tip|dash}}, regardless of range.\n** If her ''Anchor'' recalls, '''Yuumi''' will detach automatically when they arrive at the fountain.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side, and if '''Yuumi''' is on the red team, she will attach to the northeast.\n* ''You and Me!'' gives assists on champion takedowns from her teammates when she first attaches to a participating ally.\n* To clarify the conversion (not considering the flat amount):\n<table class=\"article-table\">\n<tr>\n<td colspan=\"2\" rowspan=\"2\">&nbsp;</td>\n<th colspan=\"2\" style=\"text-align:center\">Their Highest</th>\n</tr>\n<tr>\n<th style=\"color:{{keyword color|AP}}; text-align:center\"> AP </th>\n<th style=\"color:{{keyword color|AD}}; text-align:center\"> tAD </th>\n</tr>\n<tr>\n<th rowspan=\"2\"> Your Highest<ref>This is the stat you will receive a bonus to.</ref> </th>\n<th style=\"color:{{keyword color|AP}}\"> AP </th>\n<td> {{as|{{ap|4 to 16}}% their AP}} </td>\n<td> {{as|{{ap|4 to 16}}% their tAD}} </td>\n</tr>\n<tr>\n<th style=\"color:{{keyword color|AD}}\"> bAD </th>\n<td> {{as|{{ap|4*0.6 to 16*0.6}}% their AP}}  </td>\n<td> {{as|{{ap|4*0.6 to 16*0.6}}% their tAD}}  </td>\n</tr>\n</table>\n<references/>",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Adaptive Force|{{ap|5 to 13}} (+ {{ap|4 to 16}}%)}}",
+          "str": "<ul><li><span class=\"blue\">Adaptive Force</span>: <span><spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                7,
+                9,
+                11,
+                13
+              ],
+              [
+                4,
+                7,
+                10,
+                13,
+                16
+              ]
+            ],
+            "st_slices": [
+              "Adaptive Force",
+              "<spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  5,
+                  7,
+                  9,
+                  11,
+                  13
+                ]
+              },
+              "title": "Adaptive Force",
+              "str": "<spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "YuumiE",
-      "riotName": "Zoomies",
+      "riotId": "YuumiE",
+      "name": "Zoomies",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        0.5
+      ],
+      "cost": [
+        30,
+        40,
+        50,
+        60,
+        70
+      ],
+      "costtype": "Mana + 1 Charge",
+      "targeting": "Auto",
       "image": {
         "full": "YuumiE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Self / Allies",
-      "blurb": "",
-      "champion": "Yuumi",
-      "cooldownBurn": "0.5",
-      "costBurn": "30 / 40 / 50 / 60 / 70",
-      "costtype": "Mana + 1 Charge",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Yuumi''' periodically [[stock]]s a ''Zoomies'' charge, up to a maximum of 2.",
         "{{sbc|Active:}} '''Yuumi''' {{tip|heals}} herself, with the '''base''' amount increased by {{pp|11|type=target's '''missing''' health|color=health|key=%|key1=%|0 to 130|0 to 80}} and the '''scaling''' amount increased by {{pp|11|type=target's '''missing''' health|color=health|key=%|key1=%|0 to 300|0 to 80}}, and gains 25% {{as|(+ 10% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed|ms}}}} decaying over 2 seconds.",
         "While {{ai|You and Me!|Yuumi|Attached}}, the ''Anchor'' is targeted by the ability instead."
       ],
-      "icon": [
-        "Zoomies.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 10% AP)}}|Maximum Heal|{{ap|30*2.3 to 70*2.3}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Zoomies",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "targeting": "Auto"
+      "notes": "\n* No additional details.",
+      "costBurn": "30/40/50/60/70",
+      "cooldownBurn": "0.5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 10% AP)}}|Maximum Heal|{{ap|30*2.3 to 70*2.3}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['69','92','115','138','161']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                40,
+                50,
+                60,
+                70
+              ],
+              [
+                69,
+                92,
+                115,
+                138,
+                161
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Minimum Heal",
+              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Maximum Heal",
+              "<spell-span :list=\"['69','92','115','138','161']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  40,
+                  50,
+                  60,
+                  70
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Minimum Heal",
+              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  69,
+                  92,
+                  115,
+                  138,
+                  161
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Maximum Heal",
+              "str": "<spell-span :list=\"['69','92','115','138','161']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "YuumiR",
-      "riotName": "Final Chapter",
+      "riotId": "YuumiR",
+      "name": "Final Chapter",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "YuumiR.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 336,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Yuumi",
       "cooldown": [
         130,
         110,
         90
       ],
-      "cooldownBurn": "130/110/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1100,
+      "image": {
+        "full": "YuumiR.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Yuumi''' {{tip|dash|recoils}} X units in the opposite direction, after which ''Book'' {{ct|channel|channels|cast=true|attack=false|move=true|items=true,,,false|spells=true}} to launch 7 waves over {{fd|3.5}} seconds, each dealing {{as|magic damage}}. Enemy {{tip|champions}} hit take only 50% damage from subsequent waves, and when struck with three waves, they are {{tip|root|rooted}} for {{fd|1.75}} seconds.",
         "'''Yuumi''' can move and cast both {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} during ''Final Chapter''."
       ],
-      "icon": [
-        "Final Chapter.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Wave|{{ap|60 to 100}} {{as|(+ 20% AP)}}|Reduced Damage Per Wave|{{ap|60*0.5 to 100*0.5}} {{as|(+ 10% AP)}}|Maximum Champion Damage|{{ap|60*4 to 100*4}} {{as|(+ 80% AP)}}|Maximum Non-Champion Damage|{{ap|60*7 to 100*7}} {{as|(+ 140% AP)}}}}"
-      ],
-      "name": "Final Chapter",
-      "notes": [
-        "* The {{tip|root}} can only occur once per target.",
-        "* If {{ai|You and Me!|Yuumi|attached}}, {{ri|Nimbus Cloak}} will delay activation until '''Yuumi''' detaches."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "target_range": 1100,
-      "targeting": "Direction"
+      "notes": "\n* The {{tip|root}} can only occur once per target.\n* If {{ai|You and Me!|Yuumi|attached}}, {{ri|Nimbus Cloak}} will delay activation until '''Yuumi''' detaches.",
+      "costBurn": "100",
+      "cooldownBurn": "130/110/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Wave|{{ap|60 to 100}} {{as|(+ 20% AP)}}|Reduced Damage Per Wave|{{ap|60*0.5 to 100*0.5}} {{as|(+ 10% AP)}}|Maximum Champion Damage|{{ap|60*4 to 100*4}} {{as|(+ 80% AP)}}|Maximum Non-Champion Damage|{{ap|60*7 to 100*7}} {{as|(+ 140% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Reduced Damage Per Wave</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Champion Damage</span>: <span><spell-span :list=\"['240','280','320','360','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><spell-span :list=\"['420','490','560','630','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                70,
+                80,
+                90,
+                100
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ],
+              [
+                240,
+                280,
+                320,
+                360,
+                400
+              ],
+              [
+                420,
+                490,
+                560,
+                630,
+                700
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 1.4000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Wave",
+              "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "Reduced Damage Per Wave",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Maximum Champion Damage",
+              "<spell-span :list=\"['240','280','320','360','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "Maximum Non-Champion Damage",
+              "<spell-span :list=\"['420','490','560','630','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 140% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  70,
+                  80,
+                  90,
+                  100
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage Per Wave",
+              "str": "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Reduced Damage Per Wave",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  240,
+                  280,
+                  320,
+                  360,
+                  400
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Maximum Champion Damage",
+              "str": "<spell-span :list=\"['240','280','320','360','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_damage": [
+                  420,
+                  490,
+                  560,
+                  630,
+                  700
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Maximum Non-Champion Damage",
+              "str": "<spell-span :list=\"['420','490','560','630','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 140% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

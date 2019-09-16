@@ -4,14 +4,13 @@
   "id": "TwistedFate",
   "key": "4",
   "name": "Twisted Fate",
-  "fullname": "Tobias",
   "title": "the Card Master",
   "image": {
     "full": "TwistedFate.png",
-    "sprite": "champion3.png",
+    "sprite": "champion4.png",
     "group": "champion",
-    "x": 432,
-    "y": 96,
+    "x": 0,
+    "y": 0,
     "w": 48,
     "h": 48
   },
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -30,253 +30,543 @@
     "magic": 6,
     "difficulty": 9
   },
-  "i_displayname": "Loaded Dice",
-  "q_displayname": "Wild Cards",
-  "w_dispalyname": "Pick a Card / Blue Card / Red Card / Gold Card",
-  "e_dispalyname": "Stacked Deck",
-  "r_dispalyname": "Destiny / Gate",
-  "complex_skills": {
+  "stats": {
+    "hp": 534,
+    "hpperlevel": 94,
+    "mp": 333,
+    "mpperlevel": 19,
+    "movespeed": 335,
+    "armor": 20.542,
+    "armorperlevel": 3.15,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 49.954,
+    "attackdamageperlevel": 3.3,
+    "attackspeedperlevel": 3.22,
+    "attackspeed": 0.651
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Loaded Dice",
+      "riotId": "",
+      "name": "Loaded Dice",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Cardmaster_SealFate.png",
-        "sprite": "passive3.png",
+        "sprite": "passive4.png",
         "group": "passive",
-        "x": 432,
-        "y": 96,
+        "x": 0,
+        "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Upon killing a unit, Twisted Fate rolls his 'lucky' dice receiving anywhere between 1 and 6 bonus gold.",
-      "champion": "Twisted Fate",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Twisted Fate''' rolls his dice every time he kills an enemy, randomly gaining {{g|icononly=true}}{{pp|6|type=probability|1 to 6|key1=%|100*2/3/5 to 100*2/3/5;100/3|color=gold}}."
       ],
-      "icon": [
-        "Loaded Dice.png"
-      ],
-      "leveling": [],
-      "name": "Loaded Dice",
-      "notes": [
-        "* Total average of gold gained is {{g|4}}."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Total average of gold gained is {{g|4}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "WildCards",
-      "riotName": "Wild Cards",
+      "riotId": "WildCards",
+      "name": "Wild Cards",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1450,
       "image": {
         "full": "WildCards.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 45,
-      "blurb": "Twisted Fate throws three cards, dealing damage to each enemy unit they pass through.",
-      "champion": "Twisted Fate",
-      "cooldownBurn": "6",
-      "costBurn": "60708090100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Twisted Fate''' throws three cards in a cone, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies they pass through.",
         "Enemies can only be damaged once by ''Wild Cards''."
       ],
-      "icon": [
-        "Wild Cards.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60|105|150|195|240}} {{as|(+ 65% AP)}}}}"
-      ],
-      "name": "Wild Cards",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1000,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1450,
-      "targeting": "Direction"
+      "notes": "\n* No additional details.",
+      "costBurn": "60/70/80/90/100",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60|105|150|195|240}} {{as|(+ 65% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "PickACard",
-      "riotName": "Pick A Card",
+      "riotId": "PickACard",
+      "name": "Pick a Card",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        40,
+        55,
+        70,
+        85,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Self",
       "image": {
         "full": "PickACard.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Twisted Fate chooses a magic card from his deck, and uses that for his next attack, causing bonus effects.",
-      "champion": "Twisted Fate",
-      "cooldownBurn": "6",
-      "costBurn": "40 / 55 / 70 / 85 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|First Cast - Pick a Card:}} '''Twisted Fate''' cycles through {{ai|Blue Card||icononly=true}}{{ai|Red Card||icononly=true}}{{ai|Gold Card||icononly=true}} three cards for 6 seconds. Choosing one by reactivating ''Pick a Card'' converts '''Twisted Fate's''' next [[basic attack]] within 6 seconds to instead deal {{as|magic damage}} and a bonus effect based on the card selected.",
         "{{sbc|Second Cast - {{ai|Blue Card}}:}} Restores {{sti|{{as|mana}}}}.",
         "{{sbc|Second Cast - {{ai|Red Card}}:}} Deals {{as|magic damage}} around the target and {{tip|slow|slows}} all enemies hit for {{fd|2.5}} seconds.",
         "{{sbc|Second Cast - {{ai|Gold Card}}:}} {{tip|stun|Stuns}} the target."
       ],
-      "effect_radius": 100,
-      "icon": [
-        "Pick a Card.png",
-        "Blue Card.png",
-        "Red Card.png",
-        "Gold Card.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Mana Restored|{{as|{{ap|50 to 150}}|mana}}}}",
-        "{{st|Magic Damage|{{ap|30 to 90}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Slow|{{ap|30 to 50}}%}}",
-        "{{st|Magic Damage|{{ap|15 to 45}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Stun Duration|{{ap|1 to 2}}}}"
-      ],
-      "name": "Pick a Card",
-      "notes": [
-        "* ''Pick a Card'' will stack and can trigger {{ai|Stacked Deck|Twisted Fate}}.",
-        "* The first card shown on-first-cast is random but the order always remains the same ({{ai|Blue Card|Twisted Fate}}, {{ai|Red Card|Twisted Fate}}, {{ai|Gold Card|Twisted Fate}}, repeat)."
-      ],
-      "parry": true,
-      "projectile": true,
-      "skill": "W",
-      "spellshield": true,
-      "targeting": "Self"
+      "notes": "\n* ''Pick a Card'' will stack and can trigger {{ai|Stacked Deck|Twisted Fate}}.\n* The first card shown on-first-cast is random but the order always remains the same ({{ai|Blue Card|Twisted Fate}}, {{ai|Red Card|Twisted Fate}}, {{ai|Gold Card|Twisted Fate}}, repeat).",
+      "costBurn": "40/55/70/85/100",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Mana Restored|{{as|{{ap|50 to 150}}|mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_unknown": [
+                  0.5,
+                  0.75,
+                  1,
+                  1.25,
+                  1.5
+                ]
+              }
+            ],
+            "st_slices": [
+              "Mana Restored",
+              "<span class=\"mana\"><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.5,
+                "player_total_unknown": [
+                  0.5,
+                  0.75,
+                  1,
+                  1.25,
+                  1.5
+                ]
+              },
+              "title": "Mana Restored",
+              "str": "<span class=\"mana\"><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|30 to 90}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Slow|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                45,
+                60,
+                75,
+                90
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  45,
+                  60,
+                  75,
+                  90
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.5
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|15 to 45}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Stun Duration|{{ap|1 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                15,
+                22.5,
+                30,
+                37.5,
+                45
+              ],
+              [
+                1,
+                1.25,
+                1.5,
+                1.75,
+                2
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Stun Duration",
+              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  15,
+                  22.5,
+                  30,
+                  37.5,
+                  45
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.5
+              },
+              "title": "Stun Duration",
+              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "CardmasterStack",
-      "riotName": "Stacked Deck",
+      "riotId": "CardmasterStack",
+      "name": "Stacked Deck",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Passive",
       "image": {
         "full": "CardmasterStack.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Every 4 attacks, Twisted Fate deals bonus damage. In addition, his Attack Speed is increased.",
-      "champion": "Twisted Fate",
-      "cooldownBurn": "0",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Twisted Fate''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}.",
         "{{sbc|Passive:}} Every fourth basic attack deals {{as|'''bonus''' magic damage}}."
       ],
-      "icon": [
-        "Stacked Deck.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Attack Speed|{{ap|10|15|20|25|30}}%}}",
-        "{{st|Bonus Magic Damage|{{ap|55|80|105|130|155}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Stacked Deck",
-      "notes": [
-        "* Attacking turrets will generate stacks (does not apply to other structures) but will not consume the enhanced attack.",
-        "* ''Stacked Deck'' can be {{ai|Counter Strike|Jax|dodged}} or negated if ''Twisted Fate'' is {{tip|blind|blinded}} (the enhanced attack is not consumed in either case) but can only be mitigated if {{ai|Aegis Protection|Pantheon|blocked}} (the enhanced attack is consumed but the bonus damage is still applied)",
-        "* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will generate stacks but will not consume the enhanced attack."
-      ],
-      "parry": true,
-      "projectile": true,
-      "skill": "E",
-      "targeting": "Passive"
+      "notes": "\n* Attacking turrets will generate stacks (does not apply to other structures) but will not consume the enhanced attack.\n* ''Stacked Deck'' can be {{ai|Counter Strike|Jax|dodged}} or negated if ''Twisted Fate'' is {{tip|blind|blinded}} (the enhanced attack is not consumed in either case) but can only be mitigated if {{ai|Aegis Protection|Pantheon|blocked}} (the enhanced attack is consumed but the bonus damage is still applied)\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will generate stacks but will not consume the enhanced attack.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|10|15|20|25|30}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|55|80|105|130|155}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                80,
+                105,
+                130,
+                155
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  80,
+                  105,
+                  130,
+                  155
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "Destiny",
-      "riotName": "Destiny",
+      "riotId": "Destiny",
+      "name": "Destiny",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "Destiny.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": null,
-      "blurb": "Twisted Fate predicts the fortunes of his foes, revealing all enemy champions and enabling the use of Gate, which teleports Twisted Fate to any target location in 1.5 seconds.",
-      "champion": "Twisted Fate",
       "cooldown": [
         180,
         150,
         120
       ],
-      "cooldownBurn": "180/150/120",
-      "costBurn": "150 / 125 / 100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        150,
+        125,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 5500,
+      "image": {
+        "full": "Destiny.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|First Cast - Destiny:}} '''Twisted Fate''' and his allies gain {{tip|true sight}} of all enemy champions for a few seconds. After a {{fd|0.5}} second delay, '''Twisted Fate''' can use {{ai|Gate}} once for the duration.",
         "{{sbc|Second Cast - Gate:}} '''Twisted Fate''' {{ct|channel|channels|attack=false|move=false|cast=W is usable, the others are disabled|items=true,,interrupts,false,false|spells=false}} for {{fd|1.5}} seconds, {{tip|blink|blinking}} to the target location upon completion."
       ],
-      "effect_radius": "Global",
-      "flavorsound": "{{sm2|TwistedFate.destiny1.ogg|''\"No fightin' destiny.\"''}}",
-      "grounded": true,
-      "icon": [
-        "Destiny.png",
-        "Gate.png"
-      ],
-      "leveling": [
-        "{{st|Duration|{{ap|6 to 10}}}}"
-      ],
-      "name": "Destiny",
-      "notes": [
-        "* ''Destiny'' will reveal [[ward]]s, {{ai|Jack in the Box|Shaco}}, and/or {{ai|Noxious Trap|Teemo}} if they are within {{tip|sight}} range of a revealed enemy champion.",
-        "* ''Gate'' will be interrupted if ''Twisted Fate'' enters {{tip|stasis}} ({{ii|Zhonya's Hourglass}}, {{ai|Tempered Fate|Bard}}) while channeling.",
-        "* {{ai|Paranoia|Nocturne}} will prevent ''Destiny's'' {{tip|true sight}} regardless of which one was cast first (enemy champions can still be revealed by ''Destiny'' after {{ai|Paranoia|Nocturne}} ends if durations permit) but will not prevent ''Twisted Fate'' from using ''Gate''."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "spellshield": true,
-      "target_range": 5500,
-      "targeting": "Ground"
+      "notes": "\n* ''Destiny'' will reveal [[ward]]s, {{ai|Jack in the Box|Shaco}}, and/or {{ai|Noxious Trap|Teemo}} if they are within {{tip|sight}} range of a revealed enemy champion.\n* ''Gate'' will be interrupted if '''Twisted Fate''' enters {{tip|stasis}} ({{ii|Zhonya's Hourglass}}, {{ai|Tempered Fate|Bard}}) while channeling.\n* {{ai|Paranoia|Nocturne}} will prevent ''Destiny's'' {{tip|true sight}} regardless of which one was cast first (enemy champions can still be revealed by ''Destiny'' after {{ai|Paranoia|Nocturne}} ends if durations permit) but will not prevent '''Twisted Fate''' from using ''Gate''.\n* ''Gate'' will destroy any projectiles targeting '''Twisted Fate''' when the channel ends.\n** Due to a bug, this will also happen if the channel ends by interruption.",
+      "costBurn": "150/125/100",
+      "cooldownBurn": "180/150/120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Duration|{{ap|6 to 10}}}}",
+          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            ],
+            "st_slices": [
+              "Duration",
+              "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ]
+              },
+              "title": "Duration",
+              "str": "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

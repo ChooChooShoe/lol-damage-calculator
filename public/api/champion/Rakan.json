@@ -4,14 +4,13 @@
   "id": "Rakan",
   "key": "497",
   "name": "Rakan",
-  "fullname": "Rakan",
   "title": "The Charmer",
   "image": {
     "full": "Rakan.png",
-    "sprite": "champion2.png",
+    "sprite": "champion3.png",
     "group": "champion",
-    "x": 432,
-    "y": 96,
+    "x": 0,
+    "y": 0,
     "w": 48,
     "h": 48
   },
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "magic",
@@ -30,129 +30,142 @@
     "magic": 8,
     "difficulty": 5
   },
-  "i_displayname": "Fey Feathers / Lover's Leap",
-  "q_displayname": "Gleaming Quill",
-  "w_dispalyname": "Grand Entrance",
-  "e_dispalyname": "Battle Dance / Battle Dance 2",
-  "r_dispalyname": "The Quickness",
-  "complex_skills": {
+  "stats": {
+    "hp": 540,
+    "hpperlevel": 85,
+    "mp": 315,
+    "mpperlevel": 50,
+    "movespeed": 335,
+    "armor": 32,
+    "armorperlevel": 3.9,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 300,
+    "hpregen": 5,
+    "hpregenperlevel": 0.5,
+    "mpregen": 8.75,
+    "mpregenperlevel": 0.5,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 62,
+    "attackdamageperlevel": 3.5,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.635
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Fey Feathers",
+      "riotId": "",
+      "name": "Fey Feathers",
+      "maxrank": 0,
+      "cooldown": "{{pp|9|40 to 16|1 to 17|formula=40-3 every 2 levels}}",
+      "targeting": "Passive",
       "image": {
         "full": "Rakan_P.png",
-        "sprite": "passive2.png",
+        "sprite": "passive3.png",
         "group": "passive",
-        "x": 432,
-        "y": 96,
+        "x": 0,
+        "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Rakan periodically gains a shield.",
-      "champion": "Rakan",
-      "cooldown": "{{pp|9|40 to 16|1 to 17|formula=40-3 every 2 levels}}",
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Basic Attacks:}} '''Rakan's''' [[basic attack]]s don't use {{tip|projectiles}}.",
         "{{sbc|Innate:}} '''Rakan''' periodically generates a {{pp|33 to 254}} {{as|(+ 90% AP)}} {{tip|shield}} that lasts until broken. If the shield is damaged, but not destroyed after being [[out of combat]] for 5 seconds, it will regenerate 10% of its maximum value every second.",
         "Damaging an enemy {{tip|champion}} with a [[Basic attack|basic attack]] or [[Abilities|ability]] reduces the {{sti|cooldown}} of ''Fey Feathers'' by 1 second per champion hit.",
         "{{sbc|Lover's Leap:}} If either '''Rakan''' or {{ci|Xayah}} is {{si|Recall|recalling}}, the other may move nearby and activate their own recall to join them. '''Both''' reach base at the time of which the initiator's recall ends."
       ],
-      "icon": [
-        "Fey Feathers.png",
-        "ProfileIcon1634 Blazing Feathers.png"
-      ],
-      "leveling": [],
-      "name": "Fey Feathers",
-      "notes": [
-        "* {{ri|Revitalize}} will record bonus shielding when a new shield is created, but not when it regenerates. In either case, there's no bonus shielding received."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "Shield",
-      "targeting": "Passive"
+      "notes": "\n* {{ri|Revitalize}} will record bonus shielding when a new shield is created, but not when it regenerates. In either case, there's no bonus shielding received.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "RakanQ",
-      "riotName": "Gleaming Quill",
+      "riotId": "RakanQ",
+      "name": "Gleaming Quill",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 900,
       "image": {
         "full": "RakanQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Allies",
-      "blurb": "Flings a magical feather that deals magic damage. Striking a champion or epic monster enables Rakan to heal his allies.",
-      "champion": "Rakan",
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cooldownBurn": "0",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Rakan''' slings an enchanted feather forward, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
         "If that enemy was a champion or epic [[monster]], an area is marked around '''Rakan'''.",
         "After 3 seconds or if an ally champion comes within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allies by {{pp|18 to 120}} {{as|(+ 70% AP)}}."
       ],
-      "effect_radius": 200,
-      "icon": [
-        "Gleaming Quill.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Gleaming Quill",
-      "notes": [
-        "* The heal benefits from {{tip|Heal}} effects.",
-        "* The trigger radius is slightly smaller than the heal radius.",
-        "* If the spell is blocked by a {{tip|Spell shield}}, the damage will be blocked, but '''Rakan''' will still be affected by the heal component."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 900,
-      "targeting": "Direction"
+      "notes": "\n* The heal benefits from {{tip|Heal}} effects.\n* The trigger radius is slightly smaller than the heal radius.\n* If the spell is blocked by a {{tip|Spell shield}}, the damage will be blocked, but '''Rakan''' will still be affected by the heal component.",
+      "costBurn": "60",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "RakanW",
-      "riotName": "Grand Entrance",
+      "riotId": "RakanW",
+      "name": "Grand Entrance",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RakanW.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Dashes to a location, knocking up nearby enemies on arrival.",
-      "champion": "Rakan",
       "cooldown": [
         18,
         16.5,
@@ -160,149 +173,246 @@
         13.5,
         12
       ],
-      "cooldownBurn": "18/16.5/15/13.5/12",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
       "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Rakan''' {{tip|dashes}} to the target location.",
-        "After a {{fd|0.35}}-second delay, he leaps into the air, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} surrounding enemies for 1 second."
-      ],
-      "effect_radius": 250,
-      "grounded": true,
-      "icon": [
-        "Grand Entrance.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Grand Entrance",
-      "notes": [
-        "* Rakan will stop mid-dash if he is immobilized by {{tip|crowd control}} effects during ''Grand Entrance''."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "speed": 1700,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
+      "targeting": "Ground",
       "target_range": 600,
-      "targeting": "Ground"
-    },
-    "e1": {
-      "key": "E",
-      "id": "RakanE",
-      "riotName": "Battle Dance",
-      "maxrank": 5,
-      "maxammo": -1,
       "image": {
-        "full": "RakanE.png",
+        "full": "RakanW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 192,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Allies",
-      "blurb": "Flies to an allied champion granting them a shield. Can be re-cast for free for a short duration.",
-      "champion": "Rakan",
+      "description": [
+        "{{sbc|Active:}} '''Rakan''' {{tip|dashes}} to the target location.",
+        "After a {{fd|0.35}}-second delay, he leaps into the air, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} surrounding enemies for 1 second."
+      ],
+      "notes": "\n* Rakan will stop mid-dash if he is immobilized by {{tip|crowd control}} effects during ''Grand Entrance''.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "18/16.5/15/13.5/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                120,
+                170,
+                220,
+                270
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  120,
+                  170,
+                  220,
+                  270
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "e2": {
+      "riotId": "RakanE",
+      "name": "Battle Dance",
+      "maxrank": 5,
       "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
+        20,
+        18,
+        16,
+        14,
+        12
       ],
-      "cooldownBurn": "0",
-      "costBurn": "60708090100",
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
       "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
+      "targeting": "Unit",
+      "target_range": "{{ap|{{tt|700|Standard range}}|{{tt|1000|Enhanced range}}}}",
+      "image": {
+        "full": "RakanE.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Rakan''' {{tip|dashes|leaps}} to an allied champion and {{tip|shield|shields}} them for 3 seconds.",
         "''Battle Dance'' can be re-cast for 5 seconds at no cost, and may select the same target again.",
         "''If {{ci|Xayah}} is the target, Battle Dance is able to be cast from an increased range.''"
       ],
-      "grounded": true,
-      "icon": [
-        "Battle Dance.png",
-        "Battle Dance 2.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Shield Strength|{{ap|40|65|90|115|140}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Battle Dance",
-      "notes": [
-        "* The shield does not stack when reapplied. Thus, jumping on an ally who's already shielded will only have their shield refreshed.",
-        "* '''Rakan''' will shield the target even if he doesn't reaches them (i.e {{tip|stun}})."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "speed": 1250,
-      "spelleffects": "Shield",
-      "target_range": "{{ap|{{tt|700|Standard range}}|{{tt|1000|Enhanced range}}}}",
-      "targeting": "Unit"
+      "notes": "\n* The shield does not stack when reapplied. Thus, jumping on an ally who's already shielded will only have their shield refreshed.\n* '''Rakan''' will shield the target even if he doesn't reaches them (i.e {{tip|stun}}).",
+      "costBurn": "60/70/80/90/100",
+      "cooldownBurn": "20/18/16/14/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield Strength|{{ap|40|65|90|115|140}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                65,
+                90,
+                115,
+                140
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Shield Strength",
+              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  65,
+                  90,
+                  115,
+                  140
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Shield Strength",
+              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "RakanR",
-      "riotName": "The Quickness",
+      "riotId": "RakanR",
+      "name": "The Quickness",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "RakanR.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self / Enemies",
-      "blurb": "Gains movement speed, charming and dealing magic damage to enemies touched.",
-      "champion": "Rakan",
-      "collision_radius": 150,
       "cooldown": [
         130,
         110,
         90
       ],
-      "cooldownBurn": "130/110/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "image": {
+        "full": "RakanR.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Rakan''' breaks into a captivating sprint for 4 seconds, gaining {{sti|ms|{{as|50% '''bonus''' movement speed}}}} for the duration. During this time he deals {{as|magic damage}} to all enemy units he collides with, {{tip|charm|charming}} and {{tip|slow|slowing}} them by 75%. This may only occur once per unit.",
         "When '''Rakan''' collides with his first enemy champion he gains an additional {{sti|ms|{{as|100% '''bonus''' movement speed}}}}, which starts decaying after {{fd|0.5}} seconds by 20% every {{fd|0.5}} seconds.",
         "''During the first {{fd|0.5}} seconds of The Quickness, '''Rakan''' is in {{ct|cast|cast time|attack=true|cast=W is disabled. Q and E are usable|move=true|items=true|consume=true|spells=true,false,true,true,true}}.''",
         "''During The Quickness, '''Rakan''' cannot [[basic attack]] enemy champions if he did not charm them.''"
       ],
-      "icon": [
-        "The Quickness.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100|200|300}} {{as|(+ 50% AP)}}}}\n{{st|Charm Duration|{{ap|1|1.25|1.5}}}}"
-      ],
-      "name": "The Quickness",
-      "notes": [
-        "* The spell duration is increased by {{fd|0.25}} seconds per enemy hit.",
-        "* {{ai|Grand Entrance|Rakan}} can be buffered while ''The Quickness'' is active."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* The spell duration is increased by {{fd|0.25}} seconds per enemy hit.\n* {{ai|Grand Entrance|Rakan}} can be buffered while ''The Quickness'' is active.",
+      "costBurn": "100",
+      "cooldownBurn": "130/110/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100|200|300}} {{as|(+ 50% AP)}}}}\n{{st|Charm Duration|{{ap|1|1.25|1.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','200','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Charm Duration</span>: <span><spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                200,
+                300
+              ],
+              [
+                1,
+                1.25,
+                1.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Charm Duration",
+              "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  100,
+                  200,
+                  300
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Charm Duration",
+              "str": "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

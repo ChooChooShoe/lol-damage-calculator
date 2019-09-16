@@ -4,7 +4,6 @@
   "id": "Gangplank",
   "key": "41",
   "name": "Gangplank",
-  "fullname": "Gangplank",
   "title": "the Saltwater Scourge",
   "image": {
     "full": "Gangplank.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "",
+  "rangetype": "Melee",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "physical",
@@ -30,15 +30,34 @@
     "magic": 4,
     "difficulty": 9
   },
-  "i_displayname": "Trial by Fire / Trial by Fire 2",
-  "q_displayname": "Parrrley",
-  "w_dispalyname": "Remove Scurvy",
-  "e_dispalyname": "Powder Keg",
-  "r_dispalyname": "Cannon Barrage",
-  "complex_skills": {
-    "i1": {
-      "key": "I",
-      "riotName": "Trial by Fire",
+  "stats": {
+    "hp": 540,
+    "hpperlevel": 82,
+    "mp": 282,
+    "mpperlevel": 40,
+    "movespeed": 345,
+    "armor": 35,
+    "armorperlevel": 3,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 6,
+    "hpregenperlevel": 0.6,
+    "mpregen": 7.5,
+    "mpregenperlevel": 0.7,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 3.2,
+    "attackspeed": 0.658
+  },
+  "skills": {
+    "i2": {
+      "riotId": "",
+      "name": "Trial by Fire",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Gangplank_Passive.png",
         "sprite": "passive1.png",
@@ -48,41 +67,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Every few seconds, Gangplank's melee strike will set his opponent on fire.",
-      "champion": "Gangplank",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "true",
-      "damageTypes": [
-        "true"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing {{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds, ticking every {{fd|0.25}} seconds. {{tip|turret|Turrets}} receive 50% reduced damage.",
         "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Destroying a {{ai|Powder Keg|Gangplank}} resets ''Trial by Fire'' and grants its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
         "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} or {{ai|Powder Keg|Gangplank}}."
       ],
-      "icon": [
-        "Trial by Fire.png",
-        "Trial by Fire 2.png"
-      ],
-      "leveling": [],
-      "name": "Trial by Fire",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "true",
-      "skill": "I",
-      "static": 15,
-      "targeting": "Passive"
+      "notes": "\n* Unlike most [[damage over time]] debuffs, reapplying ''Trial by Fire'' before a previous application has run out will stack the full damage, instead of just refreshing the duration.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "GangplankQWrapper",
-      "riotName": "Parrrley",
+      "riotId": "GangplankQWrapper",
+      "name": "Parrrley",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "cost": [
+        60,
+        55,
+        50,
+        45,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "GangplankQWrapper.png",
         "sprite": "spell3.png",
@@ -92,50 +105,143 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Shoots target, plundering Gold for each enemy unit killed.",
-      "callforhelp": true,
-      "champion": "Gangplank",
-      "cooldownBurn": "5",
-      "costBurn": "60 / 55 / 50 / 45 / 40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Gangplank''' shoots the target enemy with his pistol, dealing {{tip|physical damage|{{as|physical damage}}}} and applying [[on-hit effects]].",
         "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' physical damage}}.",
         "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}."
       ],
-      "icon": [
-        "Parrrley.png",
-        "Silver Serpents.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
-        "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}"
-      ],
-      "name": "Parrrley",
-      "notes": [
-        "* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ais|Powder Keg|Gangplank}} when activated by ''Parrrley''.",
-        "* ''Parrrley'' doesn't count as a basic attack for {{ii|Guinsoo's Rageblade}}."
-      ],
-      "onhiteffects": true,
-      "parry": true,
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 625,
-      "targeting": "Unit"
+      "notes": "\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ais|Powder Keg|Gangplank}} when activated by ''Parrrley''.\n* ''Parrrley'' doesn't count as a basic attack for {{ii|Guinsoo's Rageblade}}.",
+      "costBurn": "60/55/50/45/40",
+      "cooldownBurn": "5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                45,
+                70,
+                95,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  45,
+                  70,
+                  95,
+                  120
+                ],
+                "player_total_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}",
+          "str": "<ul><li><span class=\"blue\">Gold Plunder</span>: <span><span class=\"gold\"> <img src=\"/images/Gold.png\"><spell-span :list=\"['3','4','5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Silver Serpent Plunder</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            ],
+            "st_slices": [
+              "Gold Plunder",
+              "<span class=\"gold\"> <img src=\"/images/Gold.png\"><spell-span :list=\"['3','4','5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "Silver Serpent Plunder",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "title": "Gold Plunder",
+              "str": "<span class=\"gold\"> <img src=\"/images/Gold.png\"><spell-span :list=\"['3','4','5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ]
+              },
+              "title": "Silver Serpent Plunder",
+              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "GangplankW",
-      "riotName": "Remove Scurvy",
+      "riotId": "GangplankW",
+      "name": "Remove Scurvy",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        22,
+        20,
+        18,
+        16,
+        14
+      ],
+      "cost": [
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "GangplankW.png",
         "sprite": "spell3.png",
@@ -145,53 +251,84 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Eats citrus to cure crowd control effects and restore Health.",
-      "champion": "Gangplank",
-      "cooldown": [
-        22,
-        20,
-        18,
-        16,
-        14
-      ],
-      "cooldownBurn": "22/20/18/16/14",
-      "costBurn": "80 / 90 / 100 / 110 / 120",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Gangplank''' consumes a large quantity of citrus fruit, removing all [[crowd control]] affecting him and {{tip|heal|healing}} himself."
+        "{{sbc|Active:}} '''Gangplank''' consumes a large quantity of citrus fruit, {{tip|cleanse|cleansing}} himself from all {{tip|crowd control}} and {{tip|heal|healing}} himself."
       ],
-      "icon": [
-        "Remove Scurvy.png"
-      ],
-      "leveling": [
-        "{{st|Heal|{{ap|50 to 150}} {{as|(+ 90% AP)}} {{as|(+ 15% '''missing''' health)}}}}"
-      ],
-      "name": "Remove Scurvy",
-      "notes": [
-        "* ''Remove Scurvy'' only removes crowd control debuffs, so it cannot remove:",
-        "** {{sis|Ignite}} damage over time",
-        "** {{sis|Exhaust}} damage reduction",
-        "** {{tip|Airborne}} crowd control effects (pull, knockback, knockup...)",
-        "** {{ai|Malefic Visions|Malzahar}}",
-        "*** Yet it is one of the few abilities that can remove {{tip|suppression}}.",
-        "**** {{ai|Nether Grasp|Malzahar}} and {{ai|Infinite Duress|Warwick}} will still damage '''Gangplank''' even if he moves away."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "spelleffects": "Heal",
-      "targeting": "None"
+      "notes": "\n* ''Remove Scurvy'' only removes crowd control debuffs, so it cannot remove:\n** {{sis|Ignite}} damage over time\n** {{sis|Exhaust}} damage reduction\n** {{tip|Airborne}} crowd control effects (pull, knockback, knockup...)\n** {{ai|Malefic Visions|Malzahar}}\n*** Yet it is one of the few abilities that can remove {{tip|suppression}}.\n**** {{ai|Nether Grasp|Malzahar}} and {{ai|Infinite Duress|Warwick}} will still damage '''Gangplank''' even if he moves away.",
+      "costBurn": "80/90/100/110/120",
+      "cooldownBurn": "22/20/18/16/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Heal|{{ap|50 to 150}} {{as|(+ 90% AP)}} {{as|(+ 15% '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                75,
+                100,
+                125,
+                150
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_missing_hp": 0.15
+              }
+            ],
+            "st_slices": [
+              "Heal",
+              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  75,
+                  100,
+                  125,
+                  150
+                ],
+                "player_total_ap": 0.9,
+                "player_missing_hp": 0.15
+              },
+              "title": "Heal",
+              "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "GangplankE",
-      "riotName": "Powder Keg",
+      "riotId": "GangplankE",
+      "name": "Powder Keg",
       "maxrank": 5,
-      "maxammo": 3,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "costtype": "Charge",
+      "targeting": "Ground",
+      "target_range": 1000,
       "image": {
         "full": "GangplankE.png",
         "sprite": "spell3.png",
@@ -201,49 +338,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Gangplank uncovers a powder keg at target location. If he attacks it, it explodes, spreading the attack's damage to enemies in the area, slowing them.",
-      "champion": "Gangplank",
-      "cooldownBurn": "0",
-      "costBurn": "1",
-      "costtype": "Charge",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
-        "{{sbc|Passive:}} '''Gangplank''' stores a charge of ''Powder Keg'' periodically, up to a maximum of 3 stored at once.",
-        "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs''.",
-        "'''Gangplank''' and his enemies can attack the ''Powder Keg'' with their basic attacks, dealing 1 damage per hit. '''Gangplank''' may also shoot the barrel with ''Parrrley''. If '''Gangplank''' scores the killing blow, it explodes, also triggering a chain reaction that explodes nearby connected ''kegs''. If killed by an enemy, the ''keg'' is safely dismantled.",
-        "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against champions, ignoring {{as|40% of their armor}}, as well as {{tip|slow|slowing}} them for 2 seconds. Enemies can only be damaged once."
+        "{{sbc|Passive:}} '''Gangplank''' periodically [[stocks]] a ''Powder Keg'', up to a maximum of 3.",
+        "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs'' with overlapping explosion radii.",
+        "'''Gangplank''' and his enemies can attack the ''Powder Keg'' with basic attacks, dealing 1 damage per hit. '''Gangplank''' may also shoot the barrel with ''Parrrley''. If '''Gangplank''' scores the killing blow, it explodes, also triggering a chain reaction that explodes nearby connected ''kegs''. If killed by an enemy, the ''keg'' is safely dismantled.",
+        "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against {{tip|champions}}, ignoring {{as|40% of their armor}}, as well as {{tip|slowing}} them for 2 seconds. Enemies can only be damaged once per chain."
       ],
-      "icon": [
-        "Powder Keg.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Physical Damage|{{ap|80 to 180}}}}\n{{st|Slow|{{ap|40 to 80}}%}}"
-      ],
-      "name": "Powder Keg",
-      "notes": [
-        "* Placed barrels do '''not''' grant {{tip|sight|vision}}.",
-        "* An exploding ''Powder Keg'' will splash {{ai|Parrrley|Gangplank}} bonus damage, and will also be modified if the attack critically strikes.",
-        "* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from runes or items, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{ii|Sheen}} (and its upgrades) will be splashed to all targets.",
-        "* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.",
-        "* As of [[V7.22]], enemies hit by ''Powder Keg's'' damage will be subject to [[ability effects]]."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1000,
-      "targeting": "Ground"
+      "notes": "\n* Placed barrels do '''not''' grant {{tip|sight|vision}}.\n* An exploding ''Powder Keg'' will splash {{ai|Parrrley|Gangplank}} bonus damage, and will also be modified if the attack critically strikes.\n* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from runes or items, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{ii|Sheen}} (and its upgrades) will be splashed to all targets.\n* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.\n* As of [[V7.22]], enemies hit by ''Powder Keg's'' damage will be subject to [[ability effects]].",
+      "costBurn": "1",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|80 to 180}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                105,
+                130,
+                155,
+                180
+              ],
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  105,
+                  130,
+                  155,
+                  180
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "GangplankR",
-      "riotName": "Cannon Barrage",
+      "riotId": "GangplankR",
+      "name": "Cannon Barrage",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        180,
+        160,
+        140
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": "Global",
       "image": {
         "full": "GangplankR.png",
         "sprite": "spell3.png",
@@ -253,21 +421,6 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Gangplank signals his ship to bombard an area, slowing and damaging enemies.",
-      "champion": "Gangplank",
-      "cooldown": [
-        180,
-        160,
-        140
-      ],
-      "cooldownBurn": "180/160/140",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Gangplank''' signals his ship off-shore to fire upon the target area for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and {{tip|sight|revealing}} it for the duration. Each wave deals {{tip|magic damage|{{as|magic damage}}}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
         "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
@@ -275,28 +428,184 @@
         "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
         "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration."
       ],
-      "effect_radius": 600,
-      "icon": [
-        "Cannon Barrage.png",
-        "Death's Daughter item.png",
-        "Raise Morale item.png",
-        "Fire at Will item.png"
-      ],
-      "inner_radius": 200,
-      "leveling": [
-        "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
-        "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}"
-      ],
-      "name": "Cannon Barrage",
-      "notes": [
-        "* ''Cannon Barrage's'' slow lingers for 0.25 seconds after affected enemies leave the target area."
-      ],
-      "projectile": "Physical",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": "Global",
-      "targeting": "Ground"
+      "notes": "\n* ''Cannon Barrage's'' slow lingers for 0.25 seconds after affected enemies leave the target area.",
+      "costBurn": "100",
+      "cooldownBurn": "180/160/140",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Cluster</span>: <span><spell-span :list=\"['120','165','210','255','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                55,
+                70,
+                85,
+                100
+              ],
+              [
+                120,
+                165,
+                210,
+                255,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Wave",
+              "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Magic Damage Per Cluster",
+              "<spell-span :list=\"['120','165','210','255','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  55,
+                  70,
+                  85,
+                  100
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Magic Damage Per Wave",
+              "str": "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  120,
+                  165,
+                  210,
+                  255,
+                  300
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Magic Damage Per Cluster",
+              "str": "<spell-span :list=\"['120','165','210','255','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['480','660','840','1020','1200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage with<br><i>Fire at Will</i></span>: <span><spell-span :list=\"['720','990','1260','1530','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 180% AP)</span></span></li><li><span class=\"blue\">Maximum Mixed Total Damage with<br><i>Fire at Will</i> and <i>Death's Daughter</i></span>: <span><spell-span :list=\"['840','1155','1470','1785','2100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 210% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                480,
+                660,
+                840,
+                1020,
+                1200
+              ],
+              [
+                720,
+                990,
+                1260,
+                1530,
+                1800
+              ],
+              [
+                840,
+                1155,
+                1470,
+                1785,
+                2100
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.2
+              },
+              {
+                "player_total_ap": 1.8
+              },
+              {
+                "player_total_ap": 2.1
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<spell-span :list=\"['480','660','840','1020','1200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "Total Magic Damage with<br>''Fire at Will''",
+              "<spell-span :list=\"['720','990','1260','1530','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 180% AP)</span>",
+              "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
+              "<spell-span :list=\"['840','1155','1470','1785','2100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 210% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  480,
+                  660,
+                  840,
+                  1020,
+                  1200
+                ],
+                "player_total_ap": 1.2
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['480','660','840','1020','1200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  720,
+                  990,
+                  1260,
+                  1530,
+                  1800
+                ],
+                "player_total_ap": 1.2
+              },
+              "title": "Total Magic Damage with<br>''Fire at Will''",
+              "str": "<spell-span :list=\"['720','990','1260','1530','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 180% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  840,
+                  1155,
+                  1470,
+                  1785,
+                  2100
+                ],
+                "player_total_ap": 1.2
+              },
+              "title": "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
+              "str": "<spell-span :list=\"['840','1155','1470','1785','2100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 210% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

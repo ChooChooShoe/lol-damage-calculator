@@ -4,7 +4,6 @@
   "id": "MonkeyKing",
   "key": "62",
   "name": "Wukong",
-  "fullname": "Wukong",
   "title": "the Monkey King",
   "image": {
     "full": "MonkeyKing.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Tank",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 2,
     "difficulty": 3
   },
-  "i_displayname": "Stone Skin",
-  "q_displayname": "Crushing Blow",
-  "w_dispalyname": "Decoy",
-  "e_dispalyname": "Nimbus Strike",
-  "r_dispalyname": "Cyclone",
-  "complex_skills": {
+  "stats": {
+    "hp": 577.8,
+    "hpperlevel": 85,
+    "mp": 265.84,
+    "mpperlevel": 38,
+    "movespeed": 345,
+    "armor": 34,
+    "armorperlevel": 3.5,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 175,
+    "hpregen": 6,
+    "hpregenperlevel": 0.65,
+    "mpregen": 8.042,
+    "mpregenperlevel": 0.65,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 68,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.711
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Stone Skin",
+      "riotId": "",
+      "name": "Stone Skin",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "MonkeyKingStoneSkin.png",
         "sprite": "passive2.png",
@@ -49,38 +68,32 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Increases Wukong's Armor and Magic Resist for each nearby enemy champion.",
-      "champion": "Wukong",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Wukong''' gains {{pp|3|showtype=true|4 to 8|1 to 13}} '''bonus''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}} for each {{tip|sight|visible}} enemy {{tip|champion}} nearby."
       ],
-      "effect_radius": 1400,
-      "icon": [
-        "Stone Skin.png"
-      ],
-      "leveling": [],
-      "name": "Stone Skin",
-      "notes": [
-        "* [[Champion_summoned_units#decoys|Decoys]] are considered champions for ''Stone Skin''."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* [[Champion_summoned_units#decoys|Decoys]] are considered champions for ''Stone Skin''.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "MonkeyKingDoubleAttack",
-      "riotName": "Crushing Blow",
+      "riotId": "MonkeyKingDoubleAttack",
+      "name": "Crushing Blow",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "mana",
+      "targeting": "Self",
       "image": {
         "full": "MonkeyKingDoubleAttack.png",
         "sprite": "spell7.png",
@@ -90,56 +103,100 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Wukong's next attack deals additional physical damage, gains range, and reduces the enemy's Armor for a short duration.",
-      "champion": "Wukong",
-      "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "cooldownBurn": "9/8/7/6/5",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Wukong's''' next [[basic attack]] within 5 seconds gains {{sti|range|125 '''bonus''' range}}, deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and reduces {{sti|armor|{{as|his target's armor}}}} for 3 seconds.",
         "''Crushing Blow'' resets '''Wukong's''' autoattack timer."
       ],
-      "icon": [
-        "Crushing Blow.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Physical Damage|{{ap|10 to 130}} {{as|(+ {{ap|0 to 40}}% AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}"
-      ],
-      "name": "Crushing Blow",
-      "notes": [
-        "* ''Crushing Blow'' has no cast time.",
-        "* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* As with most on-hit physical damage, the bonus damage from this ability will apply {{sti|life steal}}.",
-        "* This will trigger upon structures and wards (save for the debuff).",
-        "* Both the damage and the armor reduction debuff are negated if the attack is {{ai|Counter Strike|Jax|dodged}} or {{ai|Aegis Protection|Pantheon|blocked}}.",
-        "** If the attack {{tip|Blind|misses}} ''Crushing Blow'' will not go on cooldown, allowing the empowered attack to be re-used.",
-        "* {{tip|Spell shield}} will block the damage and debuff.",
-        "* Performing an action after the animation is played, but before dealing damage will start the attack timer, and you must wait before you attack again, although the buff is not lost."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "Physical",
-      "skill": "Q",
-      "spellshield": "Special",
-      "targeting": "Self"
+      "notes": "\n* ''Crushing Blow'' has no cast time.\n* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* As with most on-hit physical damage, the bonus damage from this ability will apply {{sti|life steal}}.\n* This will trigger upon structures and wards (save for the debuff).\n* Both the damage and the armor reduction debuff are negated if the attack is {{ai|Counter Strike|Jax|dodged}} or {{ai|Aegis Protection|Pantheon|blocked}}.\n** If the attack {{tip|Blind|misses}} ''Crushing Blow'' will not go on cooldown, allowing the empowered attack to be re-used.\n* {{tip|Spell shield}} will block the damage and debuff.\n* Performing an action after the animation is played, but before dealing damage will start the attack timer, and you must wait before you attack again, although the buff is not lost.",
+      "costBurn": "40",
+      "cooldownBurn": "9/8/7/6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|10 to 130}} {{as|(+ {{ap|0 to 40}}% AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['10','40','70','100','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','10','20','30','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                40,
+                70,
+                100,
+                130
+              ],
+              [
+                0,
+                10,
+                20,
+                30,
+                40
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.1,
+                  0.15,
+                  0.2,
+                  0.25,
+                  0.3
+                ]
+              }
+            ],
+            "st_slices": [
+              "Armor Reduction",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  40,
+                  70,
+                  100,
+                  130
+                ],
+                "player_total_ad": [
+                  0.1,
+                  0.15,
+                  0.2,
+                  0.25,
+                  0.3
+                ]
+              },
+              "title": "Armor Reduction",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "MonkeyKingDecoy",
-      "riotName": "Decoy",
+      "riotId": "MonkeyKingDecoy",
+      "name": "Decoy",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        18,
+        16,
+        14,
+        12,
+        10
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "mana",
+      "targeting": "Self",
       "image": {
         "full": "MonkeyKingDecoy.png",
         "sprite": "spell7.png",
@@ -149,53 +206,81 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Wukong becomes Invisible for a short duration, leaving behind a decoy that will deal Magic Damage to enemies near it when Wukong's stealth expires.",
-      "champion": "Wukong",
-      "cooldown": [
-        18,
-        16,
-        14,
-        12,
-        10
-      ],
-      "cooldownBurn": "18/16/14/12/10",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Wukong''' is {{tip|lunge|pushed}} {{tt|100|Estimated}} units away, entering {{tip|invisibility}} for {{fd|1.5}} seconds and leaving behind a [[Champion summoned units#decoys|decoy]] of himself.",
         "After {{fd|1.5}} seconds, the decoy performs a circular attack around itself for {{fd|0.5}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} to all nearby enemies before disappearing."
       ],
-      "effect_radius": 175,
-      "icon": [
-        "Decoy.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Decoy",
-      "notes": [
-        "* ''Decoy'' has no cast time.",
-        "* If the decoy is killed before it vanishes, it will not deal any damage.",
-        "* The ''Decoy'' cannot be targeted by allies, unless it's from an [[auto-targeted]] effect (i.e {{si|Heal}}, {{ai|Divine Judgement|Kayle}}).",
-        "* Killing it rewards {{g|25}} and {{as|{{sti|Experience|44}}}}."
-      ],
-      "projectile": "magic",
-      "skill": "W",
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "targeting": "Self"
+      "notes": "\n* ''Decoy'' has no cast time.\n* If the decoy is killed before it vanishes, it will not deal any damage.\n* The ''Decoy'' cannot be targeted by allies, unless it's from an [[auto-targeted]] effect (i.e {{si|Heal}}, {{ai|Divine Judgement|Kayle}}).\n* Killing it rewards {{g|25}} and {{as|{{sti|Experience|44}}}}.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "18/16/14/12/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "MonkeyKingNimbus",
-      "riotName": "Nimbus Strike",
+      "riotId": "MonkeyKingNimbus",
+      "name": "Nimbus Strike",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "MonkeyKingNimbus.png",
         "sprite": "spell7.png",
@@ -205,46 +290,114 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Wukong dashes to target enemy and sends out images to attack up to 2 additional enemies near his target, dealing physical damage to each enemy struck.",
-      "callforhelp": true,
-      "champion": "Wukong",
-      "cooldownBurn": "8",
-      "costBurn": "45 / 50 / 55 / 60 / 65",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Wukong''' {{tip|dashes}} on a cloud to the target enemy and sends out {{tip|untargetable}} [[decoy]]s to attack up to two additional enemies near the primary target, dealing {{as|physical damage}} to each enemy struck. The ''decoys'' can block non-targeted attacks or abilities for {{fd|0.25}} seconds after hitting their targets.",
         "Upon hitting his target, '''Wukong''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 4 seconds."
       ],
-      "effect_radius": "{{fd|187.5}}",
-      "icon": [
-        "Nimbus Strike.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|65 to 205}} {{as|(+ 80% '''bonus''' AD)}}}}",
-        "{{st|Bonus Attack Speed|{{ap|30 to 50}}%}}"
-      ],
-      "name": "Nimbus Strike",
-      "notes": [
-        "* It applies a stack of {{ri|Electrocute}} / {{ri|Phase Rush}} even if the target is untargettable."
-      ],
-      "projectile": "physical",
-      "skill": "E",
-      "spelleffects": "area",
-      "spellshield": true,
-      "target_range": 625,
-      "targeting": "Unit"
+      "notes": "\n* It applies a stack of {{ri|Electrocute}} / {{ri|Phase Rush}} even if the target is untargettable.",
+      "costBurn": "45/50/55/60/65",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|65 to 205}} {{as|(+ 80% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                65,
+                100,
+                135,
+                170,
+                205
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  65,
+                  100,
+                  135,
+                  170,
+                  205
+                ],
+                "player_bonus_ad": 0.8
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "MonkeyKingSpinToWin",
-      "riotName": "Cyclone",
+      "riotId": "MonkeyKingSpinToWin",
+      "name": "Cyclone",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        105,
+        90
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Self",
       "image": {
         "full": "MonkeyKingSpinToWin.png",
         "sprite": "spell7.png",
@@ -254,42 +407,88 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Wukong's staff grows outward and he spins it around, dealing damage and knocking up enemies. Wukong gains Movement Speed over the duration of the spell.",
-      "champion": "Wukong",
-      "cooldown": [
-        120,
-        105,
-        90
-      ],
-      "cooldownBurn": "120/105/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Wukong''' spins his staff around for up to 4 seconds, becomes {{tip|pacify|pacified}} and gains {{sti|ms|{{as|{{pp|8|type=time active|key=%|5 to 40|0.5 to 4|formula=5% '''bonus''' movement speed every half second. ''This is capped at 4 seconds.''}} '''bonus''' movement speed|ms}}}}. Reactivating ''Cyclone'' cancels it immediately.",
         "The spin deals {{as|physical damage}} to nearby enemies every second. Enemies affected by ''Cyclone'' for the first time are briefly {{tip|airborne|knocked up}}."
       ],
-      "effect_radius": "{{fd|162.5}}",
-      "icon": [
-        "Cyclone.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage Per Second|{{ap|20 to 200}} {{as|(+ 110% AD)}}|Total Physical Damage|{{ap|20*4 to 200*4}} {{as|(+ 440% AD)}}}}"
-      ],
-      "name": "Cyclone",
-      "notes": [
-        "* While spinning, summoner spells and item actives can still be used, with the exception of {{nie|Crescent}}, the active portion of {{ii|Tiamat}}, {{ii|Ravenous Hydra}} and {{ii|Titanic Hydra}}.",
-        "* {{tip|Spell shield}} will block one second of damage."
-      ],
-      "projectile": "physical",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "spellshield": "Special",
-      "targeting": "Self"
+      "notes": "\n* While spinning, summoner spells and item actives can still be used, with the exception of {{nie|Crescent}}, the active portion of {{ii|Tiamat}}, {{ii|Ravenous Hydra}} and {{ii|Titanic Hydra}}.\n* {{tip|Spell shield}} will block one second of damage.",
+      "costBurn": "100",
+      "cooldownBurn": "120/105/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage Per Second|{{ap|20 to 200}} {{as|(+ 110% AD)}}|Total Physical Damage|{{ap|20*4 to 200*4}} {{as|(+ 440% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Second</span>: <span><spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                65,
+                110,
+                155,
+                200
+              ],
+              [
+                80,
+                260,
+                440,
+                620,
+                800
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1.1
+              },
+              {
+                "player_total_ad": 4.4
+              }
+            ],
+            "st_slices": [
+              "Physical Damage Per Second",
+              "<spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>",
+              "Total Physical Damage",
+              "<spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  65,
+                  110,
+                  155,
+                  200
+                ],
+                "player_total_ad": 1.1
+              },
+              "title": "Physical Damage Per Second",
+              "str": "<spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  260,
+                  440,
+                  620,
+                  800
+                ],
+                "player_total_ad": 1.1
+              },
+              "title": "Total Physical Damage",
+              "str": "<spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

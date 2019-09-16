@@ -1,10 +1,9 @@
 {
   "patch": "v0.9.22.7",
-  "changes": "9.2.1",
+  "changes": "9.16.1",
   "id": "Kassadin",
   "key": "38",
   "name": "Kassadin",
-  "fullname": "Kassadin",
   "title": "the Void Walker",
   "image": {
     "full": "Kassadin.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Mage",
+  "rangetype": "Melee",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 8,
     "difficulty": 8
   },
-  "i_displayname": "Void Stone",
-  "q_displayname": "Null Sphere",
-  "w_dispalyname": "Nether Blade",
-  "e_dispalyname": "Force Pulse",
-  "r_dispalyname": "Riftwalk",
-  "complex_skills": {
+  "stats": {
+    "hp": 576,
+    "hpperlevel": 90,
+    "mp": 397.6,
+    "mpperlevel": 67,
+    "movespeed": 340,
+    "armor": 19,
+    "armorperlevel": 2.8,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 150,
+    "hpregen": 6,
+    "hpregenperlevel": 0.5,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 58.852,
+    "attackdamageperlevel": 3.9,
+    "attackspeedperlevel": 3.7,
+    "attackspeed": 0.64
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Void Stone",
+      "riotId": "",
+      "name": "Void Stone",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Kassadin_Passive.png",
         "sprite": "passive1.png",
@@ -49,37 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Kassadin takes 15% reduced magic damage and ignores unit collision.",
-      "champion": "Kassadin",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Kassadin''' is permanently {{tip|ghosted}} and takes 15% reduced {{tip|magic damage|{{as|magic damage}}}}."
       ],
-      "icon": [
-        "Void Stone.png"
-      ],
-      "leveling": [],
-      "name": "Void Stone",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "NullLance",
-      "riotName": "Null Sphere",
+      "riotId": "NullLance",
+      "name": "Null Sphere",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 650,
       "image": {
         "full": "NullLance.png",
         "sprite": "spell5.png",
@@ -89,45 +104,124 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Kassadin fires an orb of void energy at a target, dealing damage and interrupting channels. The excess energy forms around himself, granting a temporary shield that absorbs magic damage.",
-      "champion": "Kassadin",
-      "cooldownBurn": "9",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Kassadin''' fires an orb of void energy at the target enemy, dealing {{as|magic damage}} and {{tip|Disrupt|interrupting channeled abilities}}.",
         "The excess energy forms around '''Kassadin''', granting him a {{tip|shield}} that exclusively absorbs {{as|magic damage}} for {{fd|1.5}} seconds."
       ],
-      "icon": [
-        "Null Sphere.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 70% AP)}}}}",
-        "{{st|Magic Shield|{{ap|60 to 160}} {{as|(+ 30% AP)}}}}"
-      ],
-      "name": "Null Sphere",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1400,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 650,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "9",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                65,
+                95,
+                125,
+                155,
+                185
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  65,
+                  95,
+                  125,
+                  155,
+                  185
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Shield|{{ap|60 to 160}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Shield</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Shield",
+              "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Shield",
+              "str": "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "NetherBlade",
-      "riotName": "Nether Blade",
+      "riotId": "NetherBlade",
+      "name": "Nether Blade",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "cost": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "NetherBlade.png",
         "sprite": "spell5.png",
@@ -137,47 +231,116 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Passive: Kassadin's basic attacks deal bonus magic damage. Active: Kassadin's next basic attack deals significant bonus magic damage and restores Mana.",
-      "champion": "Kassadin",
-      "cooldownBurn": "7",
-      "costBurn": "1",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Kassadin's''' [[basic attack]]s deal {{as|20|magic damage}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}}.",
         "{{sbc|Active:}} '''Kassadin's''' next basic attack gains {{sti|range|50 '''bonus''' range}}, deals increased {{as|'''bonus''' magic damage}} and restores {{sti|{{as|mana}}}}, with the amount quintupled against {{tip|champion|champions}}.",
         "''Nether Blade'' resets '''Kassadin's''' autoattack timer."
       ],
-      "icon": [
-        "Nether Blade.png"
-      ],
-      "leveling": [
-        "{{st|Increased Bonus Magic Damage|{{ap|40|65|90|115|140}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Mana Restored|{{as|{{ap|4|5|6|7|8}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|20|25|30|35|40}}% of '''missing''' mana}}}}"
-      ],
-      "name": "Nether Blade",
-      "notes": [
-        "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* ''Nether Blade's'' enhanced attack can be avoided if '''Kassadin''' is {{tip|blind|blinded}} or if the attack is {{ai|Counter Strike|Jax|dodged}}. The enhanced attack will be consumed and no mana will be gained.",
-        "* The ''passive'' damage will affect structures but the ''active'' one will not.",
-        "* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one."
-      ],
-      "parry": "Special",
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Single target",
-      "spellshield": "Special",
-      "targeting": "None"
+      "notes": "\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Nether Blade's'' enhanced attack can be avoided if '''Kassadin''' is {{tip|blind|blinded}} or if the attack is {{ai|Counter Strike|Jax|dodged}}. The enhanced attack will be consumed and no mana will be gained.\n* The ''passive'' damage will affect structures but the ''active'' one will not.\n* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one.",
+      "costBurn": "1",
+      "cooldownBurn": "7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Increased Bonus Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|4 to 8}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 8*5}}% of '''missing''' mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Increased Bonus Magic Damage</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li><li><span class=\"blue\">Mana Restored Against Champions</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                95,
+                120,
+                145,
+                170
+              ],
+              [
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_mana": [
+                  0.2,
+                  0.25,
+                  0.3,
+                  0.35,
+                  0.4
+                ]
+              }
+            ],
+            "st_slices": [
+              "Mana Restored",
+              "<span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "Mana Restored Against Champions",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  95,
+                  120,
+                  145,
+                  170
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Mana Restored",
+              "str": "<span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Mana Restored Against Champions",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "ForcePulse",
-      "riotName": "Force Pulse",
+      "riotId": "ForcePulse",
+      "name": "Force Pulse",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana + 6 Charges",
+      "targeting": "Direction",
       "image": {
         "full": "ForcePulse.png",
         "sprite": "spell5.png",
@@ -187,44 +350,85 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 80,
-      "blurb": "Kassadin draws energy from spells cast in his vicinity. Upon charging up, Kassadin can use Force Pulse to damage and slow enemies in a cone in front of him.",
-      "champion": "Kassadin",
-      "cooldownBurn": "5",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana + 6 Charges",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Kassadin''' gains a ''Void Energy'' stack each time a nearby champion, including himself, uses an [[Champion ability|ability]], up to 6. At 6 stacks, '''Kassadin''' gains the ability to cast ''Force Pulse''.",
         "{{sbc|Active:}} '''Kassadin''' emits a pulse of void energy, dealing {{as|magic damage}} to all enemies in a cone in the target direction and {{tip|slow|slowing}} them for 1 second."
       ],
-      "effect_radius": 600,
-      "icon": [
-        "Force Pulse.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 180}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|50 to 90}}%}}"
-      ],
-      "name": "Force Pulse",
-      "notes": [
-        "* [[Toggle|Toggle abilities]] '''do not''' grant any ''Void Energy'' stacks for ''Force Pulse''."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* [[Toggle|Toggle abilities]] '''do not''' grant any ''Void Energy'' stacks for ''Force Pulse''.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 180}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|50 to 90}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                105,
+                130,
+                155,
+                180
+              ],
+              [
+                50,
+                60,
+                70,
+                80,
+                90
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  105,
+                  130,
+                  155,
+                  180
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "RiftWalk",
-      "riotName": "Riftwalk",
+      "riotId": "RiftWalk",
+      "name": "Riftwalk",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        5,
+        3.5,
+        2
+      ],
+      "cost": [
+        5,
+        4,
+        8,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 500,
       "image": {
         "full": "RiftWalk.png",
         "sprite": "spell5.png",
@@ -234,44 +438,144 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Kassadin teleports to a nearby location dealing damage to nearby enemy units. Multiple Riftwalks in a short period of time cost additional Mana but also deal additional damage.",
-      "champion": "Kassadin",
-      "cooldown": [
-        5,
-        3.5,
-        2
-      ],
-      "cooldownBurn": "5/3.5/2",
-      "costBurn": "0 / 2 / 4",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a small delay, '''Kassadin''' {{tip|blinks}} to the target location, dealing {{as|magic damage}} to all nearby enemies on arrival.",
         "Each subsequent ''Riftwalk'' within 15 seconds doubles its {{as|mana cost}} and increases its damage, stacking up to 4 times."
       ],
-      "effect_radius": 150,
-      "grounded": true,
-      "icon": [
-        "Riftwalk.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 120}} {{as|(+ 40% AP)}} {{as|(+ 2% '''maximum''' mana)}}}}",
-        "{{st|Bonus Damage Per Stack|{{ap|40 to 60}} {{as|(+ 10% AP)}} {{as|(+ 1% '''maximum''' mana)}}|Maximum Magic Damage|{{ap|80+40*4 to 120+60*4}} {{as|(+ 80% AP)}} {{as|(+ 6% '''maximum''' mana)}}}}"
-      ],
-      "name": "Riftwalk",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 500,
-      "targeting": "Ground"
+      "notes": "\n* No additional details.",
+      "costBurn": "5/4/8/100",
+      "cooldownBurn": "5/3.5/2",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 120}} {{as|(+ 40% AP)}} {{as|(+ 2% '''maximum''' mana)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% <b>maximum</b> mana)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                90,
+                100,
+                110,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_mana": 0.02
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  90,
+                  100,
+                  110,
+                  120
+                ],
+                "player_total_ap": 0.4,
+                "player_total_mana": 0.02
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Damage Per Stack|{{ap|40 to 60}} {{as|(+ 10% AP)}} {{as|(+ 1% '''maximum''' mana)}}|Maximum Magic Damage|{{ap|80+40*4 to 120+60*4}} {{as|(+ 80% AP)}} {{as|(+ 6% '''maximum''' mana)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% <b>maximum</b> mana)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% <b>maximum</b> mana)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ],
+              [
+                240,
+                270,
+                300,
+                330,
+                360
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_mana": 0.01
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_mana": 0.06
+              }
+            ],
+            "st_slices": [
+              "Bonus Damage Per Stack",
+              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
+              "Maximum Magic Damage",
+              "<spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  45,
+                  50,
+                  55,
+                  60
+                ],
+                "player_total_ap": 0.1,
+                "player_total_mana": 0.01
+              },
+              "title": "Bonus Damage Per Stack",
+              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  240,
+                  270,
+                  300,
+                  330,
+                  360
+                ],
+                "player_total_ap": 0.1,
+                "player_total_mana": 0.01
+              },
+              "title": "Maximum Magic Damage",
+              "str": "<spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

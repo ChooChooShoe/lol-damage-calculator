@@ -1,10 +1,9 @@
 {
   "patch": "V3.10a",
-  "changes": "9.14.1",
+  "changes": "9.17.1",
   "id": "Lucian",
   "key": "236",
   "name": "Lucian",
-  "fullname": "Lucian",
   "title": "the Purifier",
   "image": {
     "full": "Lucian.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "physical",
@@ -30,15 +30,34 @@
     "magic": 3,
     "difficulty": 6
   },
-  "i_displayname": "Lightslinger",
-  "q_displayname": "Piercing Light",
-  "w_dispalyname": "Ardent Blaze / Ardent Blaze 2 / Ardent Blaze 3",
-  "e_dispalyname": "Relentless Pursuit",
-  "r_dispalyname": "The Culling",
-  "complex_skills": {
+  "stats": {
+    "hp": 571,
+    "hpperlevel": 86,
+    "mp": 348.88,
+    "mpperlevel": 38,
+    "movespeed": 335,
+    "armor": 28,
+    "armorperlevel": 3,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 500,
+    "hpregen": 3.75,
+    "hpregenperlevel": 0.65,
+    "mpregen": 8.176,
+    "mpregenperlevel": 0.7,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 2.75,
+    "attackspeedperlevel": 3.3,
+    "attackspeed": 0.638
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Lightslinger",
+      "riotId": "",
+      "name": "Lightslinger",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Lucian_Passive.png",
         "sprite": "passive2.png",
@@ -48,46 +67,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Whenever Lucian uses an ability, his next attack becomes a double-shot.",
-      "callforhelp": true,
-      "champion": "Lucian",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} After using an ability, '''Lucian's''' next [[basic attack]] within 3 seconds shoots twice, the second shot dealing {{as|{{pp|showtype=true|key=%|50 to 60|1;7;13}} AD {{tip|physical damage|{{as|physical damage}}}}}}, increased to {{as|100% AD}} against minions.",
         "The second shot applies [[on-hit effect]]s and can {{tip|critical strike|critically strike}} for {{as|{{critical damage|75}} '''bonus''' physical damage}}, increased to {{as|{{critical damage|100}}|physical damage}} against minions.",
         "If '''Lucian's''' primary target is killed before the second shot can go off, he automatically shoots another enemy."
       ],
-      "icon": [
-        "Lightslinger.png"
-      ],
-      "leveling": [],
-      "name": "Lightslinger",
-      "notes": [
-        "* ''Lightslinger'' is triggered and consumed by the first attack.",
-        "* The second attack will prioritize enemy champions (even if hidden in fog of war or in brush) and enemy minions with low health.",
-        "** ''Lightslinger'' will still be consumed if no second target is found when ''Lucian'' fires.",
-        "* ''Lucian'' can move freely while firing ''Lightslinger'' since the second attack is integrated into the first one (like {{ai|Double Strike|Master Yi}}) and has special movement animations depending on the direction he is moving while firing.",
-        "* The second shot will not proc [[on-hit effect|on-attack effects]]  like {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}}."
-      ],
-      "occurrence": "On-hit",
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Lightslinger'' is triggered and consumed by the first attack.\n* The second attack will prioritize enemy champions (even if hidden in fog of war or in brush) and enemy minions with low health.\n** ''Lightslinger'' will still be consumed if no second target is found when ''Lucian'' fires.\n* ''Lucian'' can move freely while firing ''Lightslinger'' since the second attack is integrated into the first one (like {{ai|Double Strike|Master Yi}}) and has special movement animations depending on the direction he is moving while firing.\n* The second shot will not proc [[on-hit effect|on-attack effects]]  like {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "LucianQ",
-      "riotName": "Piercing Light",
+      "riotId": "LucianQ",
+      "name": "Piercing Light",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 500,
       "image": {
         "full": "LucianQ.png",
         "sprite": "spell6.png",
@@ -97,50 +105,93 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Lucian shoots a bolt of piercing light through a target.",
-      "champion": "Lucian",
-      "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "cooldownBurn": "9/8/7/6/5",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} After a {{pp|0.4 to 0.25}}-second delay, '''Lucian''' fires a laser in the direction of the target enemy, dealing {{as|physical damage}} to all enemies in a line."
       ],
-      "effect_radius": 900,
-      "icon": [
-        "Piercing Light.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|85 to 225}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}}}}"
-      ],
-      "name": "Piercing Light",
-      "notes": [
-        "* ''Piercing Light'' will attempt to lead the target if it is moving but does not adjust further during cast time (enemies can dodge the laser if they change their velocity by a sufficient amount during the delay)."
-      ],
-      "projectile": "Physical",
-      "skill": "Q",
-      "spelleffects": "AoE",
-      "spellshield": true,
-      "target_range": 500,
-      "targeting": "Unit"
+      "notes": "\n* ''Piercing Light'' will attempt to lead the target if it is moving but does not adjust further during cast time (enemies can dodge the laser if they change their velocity by a sufficient amount during the delay).",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "9/8/7/6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|85 to 225}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                85,
+                120,
+                155,
+                190,
+                225
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.6,
+                  0.75,
+                  0.9,
+                  1.05,
+                  1.2
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  85,
+                  120,
+                  155,
+                  190,
+                  225
+                ],
+                "player_bonus_ad": [
+                  0.6,
+                  0.75,
+                  0.9,
+                  1.05,
+                  1.2
+                ]
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "LucianW",
-      "riotName": "Ardent Blaze",
+      "riotId": "LucianW",
+      "name": "Ardent Blaze",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 900,
       "image": {
         "full": "LucianW.png",
         "sprite": "spell6.png",
@@ -150,57 +201,120 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self, Allies",
-      "blurb": "Lucian shoots a missile that explodes in a star shape, marking enemies. Lucian gains Movement Speed for attacking marked enemies.",
-      "champion": "Lucian",
-      "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a {{fd|0.25}}-second delay, '''Lucian''' fires a shot that explodes in a cross pattern upon hitting an enemy or reaching the end of its path, dealing {{tip|magic damage|{{as|magic damage}}}}.",
         "Enemies hit are {{as|marked|buzzword}} for 6 seconds, granting {{tip|sight}} of them for the same duration.",
         "'''Lucian''' gains {{sti|{{as|'''bonus''' movement speed}}}} for 1 second if he or allied champions damage a {{as|marked|Buzzword}} target."
       ],
-      "icon": [
-        "Ardent Blaze.png",
-        "Ardent Blaze 2.png",
-        "Ardent Blaze 3.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}}}",
-        "{{st|Bonus Movement Speed|{{ap|60 to 80}}}}"
-      ],
-      "name": "Ardent Blaze",
-      "notes": [
-        "* ''Lucian'' will not gain ''Ardent Blaze's'' bonus movement speed if attacks on {{as|marked|buzzword}} targets are {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Riposte|Fiora|parried}}, or if he is {{tip|blind|blinded}}.",
-        "* ''Ardent Blaze's'' cross pattern will grant {{tip|sight}} of any {{ii|Control Ward}} hidden inside brushes.",
-        "* [[Damage over time|DoT]] will proc ''Ardent Blaze'' only once."
-      ],
-      "parry": "Special",
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "AoE",
-      "spellshield": true,
-      "target_range": 900,
-      "targeting": "Direction"
+      "notes": "\n* ''Lucian'' will not gain ''Ardent Blaze's'' bonus movement speed if attacks on {{as|marked|buzzword}} targets are {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or if he is {{tip|blind|blinded}}.\n* ''Ardent Blaze's'' cross pattern will grant {{tip|sight}} of any {{ii|Control Ward}} hidden inside brushes.\n* [[Damage over time|DoT]] will proc ''Ardent Blaze'' only once.",
+      "costBurn": "70",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                110,
+                145,
+                180,
+                215
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  110,
+                  145,
+                  180,
+                  215
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|60 to 80}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                65,
+                70,
+                75,
+                80
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  65,
+                  70,
+                  75,
+                  80
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "LucianE",
-      "riotName": "Relentless Pursuit",
+      "riotId": "LucianE",
+      "name": "Relentless Pursuit",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        22,
+        20,
+        18,
+        16,
+        14
+      ],
+      "cost": [
+        40,
+        30,
+        20,
+        10,
+        0
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 425,
       "image": {
         "full": "LucianE.png",
         "sprite": "spell6.png",
@@ -210,49 +324,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Lucian quickly dashes a short distance. Lightslinger attacks reduce Relentless Pursuit's cooldown.",
-      "champion": "Lucian",
-      "cooldown": [
-        22,
-        20,
-        18,
-        16,
-        14
-      ],
-      "cooldownBurn": "22/20/18/16/14",
-      "costBurn": "403020100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} ''Relentless Pursuit's'' {{sti|cooldown}} is reduced by 1 second for each {{ai|Lightslinger|Lucian}} shot landed, doubled to 2 seconds against enemy champions.",
         "{{sbc|Active:}} '''Lucian''' {{tip|dash|dashes}} in the target direction.",
         "''Relentless Pursuit'' resets '''Lucian's''' basic attack timer."
       ],
-      "grounded": true,
-      "icon": [
-        "Relentless Pursuit.png"
-      ],
-      "knockdown": true,
-      "leveling": [],
-      "name": "Relentless Pursuit",
-      "notes": [
-        "* {{ai|Lightslinger|Lucian}} does not interact with {{ii|Runaan's Hurricane}} when reducing ''Relentless Pursuit's'' cooldown."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "target_range": 425,
-      "targeting": "Direction"
+      "notes": "\n* {{ai|Lightslinger|Lucian}} does not interact with {{ii|Runaan's Hurricane}} when reducing ''Relentless Pursuit's'' cooldown.",
+      "costBurn": "40/30/20/10/0",
+      "cooldownBurn": "22/20/18/16/14",
+      "effects": []
     },
     "r1": {
-      "key": "R",
-      "id": "LucianR",
-      "riotName": "The Culling",
+      "riotId": "LucianR",
+      "name": "The Culling",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        110,
+        100,
+        90
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1200,
       "image": {
         "full": "LucianR.png",
         "sprite": "spell6.png",
@@ -262,47 +360,135 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Lucian unleashes a torrent of shots from his weapons.",
-      "champion": "Lucian",
-      "cooldown": [
-        110,
-        100,
-        90
-      ],
-      "cooldownBurn": "110/100/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lucian''' fires shots in the target direction for 3 seconds, dealing {{as|physical damage}} to the first enemy they collide with. The damage is doubled against enemy minions.",
         "While using ''The Culling'', '''Lucian''' cannot use [[basic attack]]s, {{ai|Piercing Light|Lucian}} or {{ai|Ardent Blaze|Lucian}}, but is {{tip|ghosted}}, can move freely, and can activate {{ai|Relentless Pursuit|Lucian}}. ''The Culling'' can only be interrupted by [[crowd control]] that prevents the ability to use basic attacks.",
         "''The Culling'' can be reactivated to end its effects prematurely."
       ],
-      "icon": [
-        "The Culling.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage Per Shot|{{ap|20 to 50}} {{as|(+ 25% AD)}} {{as|(+ 10% AP)}}|Total non-minion damage|{{ap|20*20|35*25|50*30}} {{as|(+ {{ap|25*20 to 25*30}}% AD)}} {{as|(+ {{ap|10*20 to 10*30}}% AP)}}}}<!--\n-->{{st|Shots Fired|{{ap|20 to 30}}}}"
-      ],
-      "name": "The Culling",
-      "notes": [
-        "* ''Lucian'' '''does not''' [[channel]] during ''The Culling'' (he will keep firing while {{tip|silence|silenced}} and/or {{tip|blind|blinded}}).",
-        "* ''Lucian'' must be {{tip|airborne|displaced}}, {{tip|charm|charmed}}, {{tip|fear|feared}}, {{tip|taunt|taunted}}, {{tip|entangle|entangled}}, {{tip|stun|stunned}}, {{tip|suppression|suppressed}}, {{tip|disarm|disarmed}} and/or {{tip|polymorph|polymorphed}} in order to interrupt ''The Culling''.",
-        "* ''Lucian'' can activate {{si|Ghost}}, {{si|Flash}}, {{si|Barrier}}, {{si|Heal}} and {{ai|Relentless Pursuit|Lucian}} (as well as interact with {{ai|Dark Passage|Thresh}} or {{ai|Devour|Tahm Kench}}) without interrupting ''The Culling''.",
-        "* For the purposes of direction-based abilities ({{ai|Backstab|Shaco}}, {{ai|Mocking Shout|Tryndamere}}, {{ai|Petrifying Gaze|Cassiopeia}}) ''Lucian'' is facing in the direction he is moving and not the one his model is facing.",
-        "* Since ''The Culling'' is made up of two parallel [[skillshot]]s it is possible for enemies to take only half the damage (half of ''Lucian's'' shots) if they stand on the edge of ''The Culling's'' fire line.",
-        "* Even though each bullet can only hit one target, it will not proc {{ii|Muramana}} since ''The Culling'' applies spell effects as an {{tip|area of effect}}."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "spellshield": true,
-      "target_range": 1200,
-      "targeting": "Direction"
+      "notes": "\n* ''Lucian'' '''does not''' [[channel]] during ''The Culling'' (he will keep firing while {{tip|silence|silenced}} and/or {{tip|blind|blinded}}).\n* ''Lucian'' must be {{tip|airborne|displaced}}, {{tip|charm|charmed}}, {{tip|fear|feared}}, {{tip|taunt|taunted}}, {{tip|entangle|entangled}}, {{tip|stun|stunned}}, {{tip|suppression|suppressed}}, {{tip|disarm|disarmed}} and/or {{tip|polymorph|polymorphed}} in order to interrupt ''The Culling''.\n* ''Lucian'' can activate {{si|Ghost}}, {{si|Flash}}, {{si|Barrier}}, {{si|Heal}} and {{ai|Relentless Pursuit|Lucian}} (as well as interact with {{ai|Dark Passage|Thresh}} or {{ai|Devour|Tahm Kench}}) without interrupting ''The Culling''.\n* For the purposes of direction-based abilities ({{ai|Backstab|Shaco}}, {{ai|Mocking Shout|Tryndamere}}, {{ai|Petrifying Gaze|Cassiopeia}}) ''Lucian'' is facing in the direction he is moving and not the one his model is facing.\n* Since ''The Culling'' is made up of two parallel [[skillshot]]s it is possible for enemies to take only half the damage (half of ''Lucian's'' shots) if they stand on the edge of ''The Culling's'' fire line.\n* Even though each bullet can only hit one target, it will not proc {{ii|Muramana}} since ''The Culling'' applies spell effects as an {{tip|area of effect}}.",
+      "costBurn": "100",
+      "cooldownBurn": "110/100/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage Per Shot|{{ap|20 to 60}} {{as|(+ 25% AD)}} {{as|(+ 10% AP)}}|Total Non-Minion Damage|{{ap|(20 to 60)*(20 to 30)}} {{as|(+ {{ap|25*20 to 25*30}}% AD)}} {{as|(+ {{ap|10*20 to 10*30}}% AP)}}}}\n{{st|Minion Damage Per Shot|{{ap|20*2 to 60*2}} {{as|(+ 50% AD)}} {{as|(+ 20% AP)}}|Total Minion Damage|{{ap|(20*2 to 60*2)*(20 to 30)}} {{as|(+ {{ap|25*2*20 to 25*2*30}}% AD)}} {{as|(+ {{ap|10*2*20 to 10*2*30}}% AP)}}}}\n{{st|Shots Fired|{{ap|20 to 30}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Shot</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Non-Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(20 to 30)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['500','562.5','625','687.5','750']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['200','225','250','275','300']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul><br><ul><li><span class=\"blue\">Minion Damage Per Shot</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(20 to 30)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['1000','1125','1250','1375','1500']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['400','450','500','550','600']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul><br><ul><li><span class=\"blue\">Shots Fired</span>: <span><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                500,
+                562.5,
+                625,
+                687.5,
+                750
+              ],
+              [
+                200,
+                225,
+                250,
+                275,
+                300
+              ],
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              [
+                1000,
+                1125,
+                1250,
+                1375,
+                1500
+              ],
+              [
+                400,
+                450,
+                500,
+                550,
+                600
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.25
+              },
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ad": 0.5
+              },
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ad": [
+                  0.2,
+                  0.225,
+                  0.25,
+                  0.275,
+                  0.3
+                ]
+              }
+            ],
+            "st_slices": [
+              "Minion Damage Per Shot",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "Total Minion Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(20 to 30)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['1000','1125','1250','1375','1500']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['400','450','500','550','600']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ad": 0.5,
+                "player_total_ap": 0.1
+              },
+              "title": "Minion Damage Per Shot",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  500,
+                  562.5,
+                  625,
+                  687.5,
+                  750
+                ],
+                "player_total_ad": 0.5,
+                "player_total_ap": 0.1
+              },
+              "title": "Total Minion Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(20 to 30)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['1000','1125','1250','1375','1500']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['400','450','500','550','600']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

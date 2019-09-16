@@ -4,13 +4,12 @@
   "id": "Zilean",
   "key": "26",
   "name": "Zilean",
-  "fullname": "Zilean",
   "title": "the Chronokeeper",
   "image": {
     "full": "Zilean.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 96,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "Mage",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -31,74 +31,56 @@
     "magic": 8,
     "difficulty": 6
   },
-  "i_displayname": "Time in a Bottle",
-  "q_displayname": "Time Bomb",
-  "w_dispalyname": "Rewind",
-  "e_dispalyname": "Time Warp",
-  "r_dispalyname": "Chronoshift",
-  "complex_skills": {
+  "stats": {
+    "hp": 504,
+    "hpperlevel": 82,
+    "mp": 452,
+    "mpperlevel": 30,
+    "movespeed": 335,
+    "armor": 24,
+    "armorperlevel": 3.8,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.5,
+    "mpregen": 11.335,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 51.64,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2.13,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Time in a Bottle",
+      "riotId": "",
+      "name": "Time in a Bottle",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "target_range": 1000,
       "image": {
         "full": "Zilean_Passive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Allies",
-      "blurb": "Zilean stores time as Experience. When he has enough Experience to finish an ally's level, he can right-click them to impart it. Zilean receives as much Experience as he gives. Cannot be used in combat.",
-      "champion": "Zilean",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Zilean''' generates {{sti|Experience|{{as|{{pp|5|2|3.5|5|6|12|1|6|11|16|18}} experience}}}} (does not count towards [[Experience (champion)|level up]]) every 5 seconds. ''Time in a Bottle'' is on cooldown when the game starts.",
         "When the amount stored is enough to level up an allied [[champion]] and '''Zilean''' has been out of combat for the last 10 seconds, he can right-click the target ally to initiate a 1 second {{tip|channel}} (if interrupted, ''Time in a Bottle'' goes on a {{sti|cooldown|{{tt|reduced cooldown|2 seconds}}}}).",
         "A successful channel levels up the target and grants '''Zilean''' the stored amount as {{sti|{{as|experience}}}} of his own."
       ],
-      "icon": [
-        "Time in a Bottle.png"
-      ],
-      "leveling": [],
-      "name": "Time in a Bottle",
-      "notes": [
-        "* ''Time in a Bottle'' marks allies with two circles around their feet; the inner one represents how close they are to leveling up, turning golden when able to activate ''Time in a Bottle'' on them.",
-        "* The target ally is not required to be out of combat to be leveled up by ''Time in a Bottle'' - only ''Zilean'' is.",
-        "* ''Zilean'' only consumes the amount of {{sti|{{as|experience}}}} required to level up an ally. He retains the excess for later use."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "static": 120,
-      "target_range": 1000,
-      "targeting": "Passive"
+      "notes": "\n* ''Time in a Bottle'' marks allies with two circles around their feet; the inner one represents how close they are to leveling up, turning golden when able to activate ''Time in a Bottle'' on them.\n* The target ally is not required to be out of combat to be leveled up by ''Time in a Bottle'' - only ''Zilean'' is.\n* ''Zilean'' only consumes the amount of {{sti|{{as|experience}}}} required to level up an ally. He retains the excess for later use.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "ZileanQ",
-      "riotName": "Time Bomb",
+      "riotId": "ZileanQ",
+      "name": "Time Bomb",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ZileanQ.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Tosses a bomb to target area that sticks to units that come near it (prioritizes Champions). It detonates after 3 seconds, dealing area of effect damage. If a Time Bomb is detonated early by another Time Bomb, it also stuns enemies.",
-      "champion": "Zilean",
-      "collision_radius": 100,
       "cooldown": [
         10,
         9.5,
@@ -106,67 +88,122 @@
         8.5,
         8
       ],
-      "cooldownBurn": "10/9.5/9/8.5/8",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
       "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Zilean''' throws a ticking time bomb to the target location that detonates after 3 seconds, dealing {{tip|magic damage|{{as|magic damage}}}} to all surrounding enemies.",
-        "''Time Bomb'' will attach itself to units hit directly, or those who move within a small radius while it's on the ground, detonating at their location when the duration ends.",
-        "''Time Bomb'' detonates immediately if another one attaches itself to the same unit, briefly {{tip|stun|stunning}} all affected enemies."
-      ],
-      "effect_radius": 300,
-      "icon": [
-        "Time Bomb.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75|115|165|230|300}} {{as|(+ 90% AP)}}}}",
-        "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}"
-      ],
-      "name": "Time Bomb",
-      "notes": [
-        "* ''Time Bombs'' landing directly on top of multiple units follow a priority order for whom to attach themselves to.",
-        "*# Units already carrying a bomb",
-        "*# Enemy champions",
-        "*# Allied champions",
-        "*# Enemy minions",
-        "*# Allied minions",
-        "* ''Time Bombs'' will detonate immediately if their holder dies.",
-        "* ''Time Bombs'' enter [[stealth]] if the ally they attach themselves to does so.",
-        "* Placing the ''Time Bomb'' triggers in-combat effects such as drawing turret aggro and applying {{ii|Elixir of Sorcery}} and {{ri|Sudden Impact}}.",
-        "* ''Zilean'' can detonate an enemy counterpart's ''Time Bomb'' by placing his own on the same unit (the first bomb still deals damage).",
-        "* ''Time Bomb'' will be removed if the holder dies and is revived ({{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}) before it explodes.",
-        "* ''Time Bomb'' can deal damage to the holder through {{tip|untargetable|untargetablility}}.",
-        "* ''Time Bomb'' is one of the few abilities in the game that doesn't have linear scaling damage."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
+      "targeting": "Ground",
       "target_range": 900,
-      "targeting": "Ground"
-    },
-    "w1": {
-      "key": "W",
-      "id": "ZileanW",
-      "riotName": "Rewind",
-      "maxrank": 5,
-      "maxammo": -1,
       "image": {
-        "full": "ZileanW.png",
+        "full": "ZileanQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Zilean can prepare himself for future confrontations, reducing the cooldowns of his other basic abilities.",
-      "champion": "Zilean",
+      "description": [
+        "{{sbc|Active:}} '''Zilean''' throws a ticking time bomb to the target location that detonates after 3 seconds, dealing {{tip|magic damage|{{as|magic damage}}}} to all surrounding enemies.",
+        "''Time Bomb'' will attach itself to units hit directly, or those who move within a small radius of its center while it's on the ground, detonating at their location when the duration ends.",
+        "''Time Bomb'' detonates immediately if another one attaches itself to the same unit, briefly {{tip|stun|stunning}} all affected enemies."
+      ],
+      "notes": "\n* ''Time Bombs'' landing directly on top of multiple units follow a priority order for whom to attach themselves to.\n*# Units already carrying a bomb\n*# Enemy champions\n*# Allied champions\n*# Enemy minions\n*# Allied minions\n* ''Time Bombs'' will detonate immediately if their holder dies.\n* ''Time Bombs'' enter [[stealth]] if the ally they attach themselves to does so.\n* Placing the ''Time Bomb'' triggers in-combat effects such as drawing turret aggro and applying {{ii|Elixir of Sorcery}} and {{ri|Sudden Impact}}.\n* ''Zilean'' can detonate an enemy counterpart's ''Time Bomb'' by placing his own on the same unit (the first bomb still deals damage).\n* ''Time Bomb'' will be removed if the holder dies and is revived ({{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}) before it explodes.\n* ''Time Bomb'' can deal damage to the holder through {{tip|untargetable|untargetablility}}.\n* ''Time Bomb'' is one of the few abilities in the game that doesn't have linear scaling damage.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "10/9.5/9/8.5/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|75|115|165|230|300}} {{as|(+ 90% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','115','165','230','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                115,
+                165,
+                230,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['75','115','165','230','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  115,
+                  165,
+                  230,
+                  300
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['75','115','165','230','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.1,
+                1.2,
+                1.3,
+                1.4,
+                1.5
+              ]
+            ],
+            "st_slices": [
+              "Stun Duration",
+              "<spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.1,
+                  1.2,
+                  1.3,
+                  1.4,
+                  1.5
+                ]
+              },
+              "title": "Stun Duration",
+              "str": "<spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "ZileanW",
+      "name": "Rewind",
+      "maxrank": 5,
       "cooldown": [
         14,
         12,
@@ -174,123 +211,189 @@
         8,
         6
       ],
-      "cooldownBurn": "14/12/10/8/6",
-      "costBurn": "35",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        35,
+        35,
+        35,
+        35,
+        35
       ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "image": {
+        "full": "ZileanW.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Zilean''' reduces {{ais|Time Bomb|Zilean}} and {{ais|Time Warp|Zilean}} {{sti|cooldown|cooldowns}} by 10 seconds each."
       ],
-      "icon": [
-        "Rewind.png"
-      ],
-      "leveling": [],
-      "name": "Rewind",
-      "notes": [
-        "* {{ai|Rewind|Zilean}} cannot be ranked up at level 1 (essentially useless at that point).",
-        "* ''Rewind'' can only be cast when either {{ai|Time Bomb|Zilean}} or {{ai|Time Warp|Zilean}} is on cooldown."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n* {{ai|Rewind|Zilean}} cannot be ranked up at level 1 (essentially useless at that point).\n* ''Rewind'' can only be cast when either {{ai|Time Bomb|Zilean}} or {{ai|Time Warp|Zilean}} is on cooldown.",
+      "costBurn": "35",
+      "cooldownBurn": "14/12/10/8/6",
+      "effects": []
     },
     "e1": {
-      "key": "E",
-      "id": "TimeWarp",
-      "riotName": "Time Warp",
+      "riotId": "TimeWarp",
+      "name": "Time Warp",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 550,
       "image": {
         "full": "TimeWarp.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Allies",
-      "blurb": "Zilean bends time around any unit, decreasing an enemy's Movement Speed or increasing an ally's Movement Speed for a short time.",
-      "champion": "Zilean",
-      "cooldownBurn": "15",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Zilean''' bends time around the target champion, {{tip|slow|slowing}} enemies for {{fd|2.5}} seconds or granting allies {{sti|ms|{{as|'''bonus''' movement speed}}}} for the same duration."
       ],
-      "icon": [
-        "Time Warp.png"
-      ],
-      "leveling": [
-        "{{st|Movement Speed Modifier|{{ap|40 to 85 4|99}}%}}"
-      ],
-      "name": "Time Warp",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "spellshield": true,
-      "target_range": 550,
-      "targeting": "Unit"
+      "notes": "\n* No additional notes.",
+      "costBurn": "50",
+      "cooldownBurn": "15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Movement Speed Modifier|{{ap|40 to 85 4|99}}%}}",
+          "str": "<ul><li><span class=\"blue\">Movement Speed Modifier</span>: <span><spell-span :list=\"['40','55','70','85','99']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                55,
+                70,
+                85,
+                99
+              ]
+            ],
+            "st_slices": [
+              "Movement Speed Modifier",
+              "<spell-span :list=\"['40','55','70','85','99']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  55,
+                  70,
+                  85,
+                  99
+                ]
+              },
+              "title": "Movement Speed Modifier",
+              "str": "<spell-span :list=\"['40','55','70','85','99']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "ChronoShift",
-      "riotName": "Chronoshift",
+      "riotId": "ChronoShift",
+      "name": "Chronoshift",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "ChronoShift.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 144,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self, Allies",
-      "blurb": "Zilean places a protective time rune on an allied champion, teleporting the champion back in time if they take lethal damage.",
-      "champion": "Zilean",
       "cooldown": [
         120,
         90,
         60
       ],
-      "cooldownBurn": "120/90/60",
-      "costBurn": "125 / 150 / 175",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        125,
+        150,
+        175
       ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 900,
+      "image": {
+        "full": "ChronoShift.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Zilean''' places a protective time rune on the target ally champion or himself, lasting for 5 seconds.",
         "If the target takes [[death|fatal damage]] during that time, they are put in {{tip|stasis}} for 3 seconds and then {{tip|resurrection|revived}}, regaining a set amount of {{as|{{sti|health}}}}."
       ],
-      "icon": [
-        "Chronoshift.png"
-      ],
-      "leveling": [
-        "{{st|Health Regained|{{ap|600 to 1100}} {{as|(+ 200% AP)}}}}"
-      ],
-      "name": "Chronoshift",
-      "notes": [
-        "* ''Chronoshift'' will not trigger if the target is killed by the [[Nexus Obelisk]].",
-        "* ''Chronoshift'' takes precedence over all other revive effects ({{ii|Guardian Angel}}, {{ai|Rebirth|Anivia}})."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "spelleffects": "Heal",
-      "target_range": 900,
-      "targeting": "Unit"
+      "notes": "\n* ''Chronoshift'' will not trigger if the target is killed by the [[Nexus Obelisk]].\n* ''Chronoshift'' takes precedence over all other revive effects ({{ii|Guardian Angel}}, {{ai|Rebirth|Anivia}}).",
+      "costBurn": "125/150/175",
+      "cooldownBurn": "120/90/60",
+      "effects": [
+        {
+          "levelingtext": "{{st|Health Regained|{{ap|600 to 1100}} {{as|(+ 200% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Health Regained</span>: <span><spell-span :list=\"['600','725','850','975','1100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                600,
+                725,
+                850,
+                975,
+                1100
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 2
+              }
+            ],
+            "st_slices": [
+              "Health Regained",
+              "<spell-span :list=\"['600','725','850','975','1100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 200% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  600,
+                  725,
+                  850,
+                  975,
+                  1100
+                ],
+                "player_total_ap": 2
+              },
+              "title": "Health Regained",
+              "str": "<spell-span :list=\"['600','725','850','975','1100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 200% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

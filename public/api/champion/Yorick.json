@@ -4,13 +4,12 @@
   "id": "Yorick",
   "key": "83",
   "name": "Yorick",
-  "fullname": "Yorick Mori",
   "title": "Shepherd of Souls",
   "image": {
     "full": "Yorick.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 48,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Tank",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "Mixed,Physical",
@@ -31,125 +31,92 @@
     "magic": 4,
     "difficulty": 6
   },
-  "i_displayname": "Shepherd of Souls",
-  "q_displayname": "Last Rites /  Awakening",
-  "w_dispalyname": "Dark Procession",
-  "e_dispalyname": "Mourning Mist",
-  "r_dispalyname": "Eulogy of the Isles",
-  "complex_skills": {
+  "stats": {
+    "hp": 580,
+    "hpperlevel": 100,
+    "mp": 300,
+    "mpperlevel": 40,
+    "movespeed": 340,
+    "armor": 39,
+    "armorperlevel": 4,
+    "spellblock": 32,
+    "spellblockperlevel": 1.25,
+    "attackrange": 175,
+    "hpregen": 8,
+    "hpregenperlevel": 0.8,
+    "mpregen": 7.5,
+    "mpregenperlevel": 0.75,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 62,
+    "attackdamageperlevel": 5,
+    "attackspeedperlevel": 2,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Shepherd of Souls",
+      "riotId": "",
+      "name": "Shepherd of Souls",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Yorick_P.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Yorick can raise Mist Walkers with his abilities. Enemies that die near Yorick will sometimes leave a grave.",
-      "champion": "Yorick",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|The Horde:}} '''Yorick''' and the {{ai|Eulogy of the Isles|Yorick|Maiden of the Mist}} can have four total {{as|Mist Walkers|buzzword}} under their command.",
-        "{{sbc|Final Service:}} '''Yorick''' raises a {{as|Grave|buzzword2}} for every enemy [[champion]] and {{pp|3|showtype=true|12th;6th;2nd|1;7;13}} non-champion enemy that dies near him, as well as for every enemy he kills with {{ai|Last Rites|Yorick}}. '''Yorick''' can use {{ai|Awakening|Yorick}} to raise a {{as|Mist Walker|buzzword}} from a {{as|Grave|buzzword2}}."
+        "{{sbc|Final Service:}} '''Yorick''' raises a {{as|Grave|buzzword2}} for every enemy [[champion]] and {{pp|3|showtype=true|12th;6th;2nd|1;7;13}} non-champion enemy that dies near him, as well as for every enemy he kills with {{ai|Last Rites|Yorick}}. There can only exist 4 {{as|Graves|buzzword2}} at the same time, with the furthest ones being replaced by the newest.",
+        "'''Yorick''' can use {{ai|Awakening|Yorick}} to raise a {{as|Mist Walker|buzzword}} from a {{as|Grave|buzzword2}}.",
+        "{{sbc|The Horde:}} There can only exist 4 {{as|Mist Walkers|buzzword}} at the same time, with the closest ones being replaced by the newest."
       ],
-      "effect_radius": "{{tt|1200|Mist Walker summon range}} / {{tt|2000|Grave despawn range}}",
-      "icon": [
-        "Shepherd of Souls.png"
-      ],
-      "leveling": [],
-      "name": "Shepherd of Souls",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
-    },
-    "q1": {
-      "key": "Q1",
-      "id": "YorickQ",
-      "riotName": "Last Rites",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "YorickQ.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self, Enemies",
-      "blurb": "Yorick deals bonus damage on his next attack and heals himself. If the target dies a grave will be dug.",
-      "champion": "Yorick",
-      "cooldown": [
-        7,
-        6.25,
-        5.5,
-        4.75,
-        4
-      ],
-      "cooldownBurn": "7/6.25/5.5/4.75/4",
-      "costBurn": "25",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
-      "description": [
-        "{{sbc|Active - Last Rites:}} '''Yorick's''' next [[basic attack]] within 6 seconds has {{sti|range|50 '''bonus''' range}}, deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, and {{tip|heal|heals}} him for {{as|{{sti|health|{{pp|18|12|14|16|18|20|22|26|30|34|38|42|46|52|58|64|70|76|82|formula = 10+2 per level up to 6,+4 per level up to 12, and+6 per level up to 18}} health}}|health}}, doubled to {{as|{{sti|health|{{pp|18|24|28|32|36|40|44|52|60|68|76|84|92|104|116|128|140|152|164|formula = 20+4 per level up to 6,+8 per level up to 12, and+12 per level up to 18}} health}}|health}} if he is {{as|{{sti|health|below 50% '''maximum''' health}}}}.",
-        "If there are at least 3 {{as|Graves|buzzword2}} nearby, '''Yorick''' can cast ''{{ai|Awakening|Yorick}}'' within ''Last Rites' ''{{stil|cooldown}}.",
-        "''Last Rites'' resets '''Yorick's''' autoattack timer."
-      ],
-      "icon": [
-        "Last Rites.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Physical Damage|{{ap|30 to 130}} {{as|(+ 40% AD)}}}}"
-      ],
-      "name": "Last Rites",
-      "notes": [
-        "* ''Last Rites' ''cooldown begins on-hit.",
-        "* '''Yorick''' does not need to use ''Last Rites' ''enhanced attack to cast {{ai|Awakening|Yorick}}.",
-        "* ''Last Rites'' can affect structures.",
-        "* ''Last Rites'' has no cast time and does not interrupt '''Yorick''' previous orders."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "Q",
-      "spelleffects": "Heal",
-      "targeting": "None"
+      "notes": "\n* No additional notes.",
+      "effects": []
     },
     "q2": {
-      "key": "Q2",
-      "id": "YorickQ",
-      "riotName": "Last Rites",
+      "riotId": "YorickQ",
+      "name": "Awakening",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
+      "target_range": 1200,
       "image": {
         "full": "YorickQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Yorick summons Mist Walkers from the graves around him.",
-      "champion": "Yorick",
+      "description": [
+        "{{sbc|Active – Awakening:}} '''Yorick''' exhumes a {{as|Mist Walker|buzzword}} under his command from each nearby {{as|Grave|buzzword2}}."
+      ],
+      "notes": "\n* Mist Walkers update their stats when '''Yorick's''' stats change.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "YorickQ",
+      "name": "Last Rites",
+      "maxrank": 5,
       "cooldown": [
         7,
         6.25,
@@ -157,51 +124,83 @@
         4.75,
         4
       ],
-      "cooldownBurn": "7/6.25/5.5/4.75/4",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        25,
+        25,
+        25,
+        25,
+        25
       ],
-      "description": [
-        "{{sbc|Active – Awakening:}} '''Yorick''' raises a {{as|Mist Walker|buzzword}} under his command from each nearby {{as|Grave|buzzword2}}, consuming the {{as|Graves|buzzword2}} he used.",
-        "This ability can only be casted if {{ai|Last Rites|Yorick}} is on {{stil|cooldown}} and there are at least 3 {{as|Graves|buzzword2}} around him."
-      ],
-      "effect_radius": "{{tt|1200|Mist Walker summon range}}",
-      "icon": [
-        "Awakening.png"
-      ],
-      "leveling": [],
-      "name": "Awakening",
-      "notes": [
-        "* '''Yorick''' does not need to use {{ais|Last Rites|Yorick}} enhanced attack to cast ''Awakening''.",
-        "* ''Awakening'' has no cast time and does not interupt '''Yorick''' previous orders.",
-        "* Mist Walkers update their stats when '''Yorick's''' stats change."
-      ],
-      "projectile": "null",
-      "skill": "Q",
-      "spelleffects": "pet",
-      "targeting": "None"
-    },
-    "w1": {
-      "key": "W",
-      "id": "YorickW",
-      "riotName": "Dark Procession",
-      "maxrank": 5,
-      "maxammo": -1,
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
-        "full": "YorickW.png",
+        "full": "YorickQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Yorick summons a destructible wall at target location that will block enemy movement.",
-      "champion": "Yorick",
+      "description": [
+        "{{sbc|Active - Last Rites:}} '''Yorick's''' next [[basic attack]] within 6 seconds has {{sti|range|50 '''bonus''' range}}, deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, and {{tip|heal|heals}} him for {{as|{{sti|health|{{pp|18|12|14|16|18|20|22|26|30|34|38|42|46|52|58|64|70|76|82|formula = 10+2 per level up to 6,+4 per level up to 12, and+6 per level up to 18}} health}}|health}}, doubled to {{as|{{sti|health|{{pp|18|24|28|32|36|40|44|52|60|68|76|84|92|104|116|128|140|152|164|formula = 20+4 per level up to 6,+8 per level up to 12, and+12 per level up to 18}} health}}|health}} if he is {{as|{{sti|health|below 50% '''maximum''' health}}}}.",
+        "If there are at least 3 {{as|Graves|buzzword2}} nearby and ''Last Rites'' has been cast or is on {{stil|cooldown}}, '''Yorick''' is granted the ability to cast ''{{ai|Awakening|Yorick}}''. ''Awakening'' will remain cast-able until there're no {{as|Graves|buzzword2}} nearby.",
+        "''Last Rites'' resets '''Yorick's''' basic attack timer."
+      ],
+      "notes": "\n* ''Last Rites'' damage can affect structures.",
+      "costBurn": "25",
+      "cooldownBurn": "7/6.25/5.5/4.75/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|30 to 130}} {{as|(+ 40% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                55,
+                80,
+                105,
+                130
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.4
+              }
+            ],
+            "st_slices": [
+              "Bonus Physical Damage",
+              "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
+                ],
+                "player_total_ad": 0.4
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "YorickW",
+      "name": "Dark Procession",
+      "maxrank": 5,
       "cooldown": [
         20,
         18,
@@ -209,51 +208,77 @@
         14,
         12
       ],
-      "cooldownBurn": "20/18/16/14/12",
-      "costBurn": "70",
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
       "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Active:}} After a 1-second delay, '''Yorick''' summons a circular wall of spirits around the target area that lasts up to 4 seconds, which enemies cannot walk through.",
-        "''Dark Procession'' can only be targeted by enemy champion basic attacks and takes 1 [[damage]] per attack, dissolving after taking enough damage. Turret shots instantly dissolve the wall regardless of its remaining health."
-      ],
-      "icon": [
-        "Dark Procession.png"
-      ],
-      "leveling": [
-        "{{st|Wall Health|{{ap|2|2|3|3|4}}}}"
-      ],
-      "name": "Dark Procession",
-      "notes": [
-        "* Allies can freely walk through ''Dark Procession''.",
-        "* ''Dark Procession'' will {{tip|airborne|knock up}} enemies away from it on-cast and trigger in-combat effects such as drawing [[turret]] aggro, applying {{ii|Elixir of Sorcery}} and {{ri|Sudden Impact}}."
-      ],
-      "projectile": "null",
-      "skill": "W",
+      "targeting": "Ground",
       "target_range": 600,
-      "targeting": "Ground"
-    },
-    "e1": {
-      "key": "E",
-      "id": "YorickE",
-      "riotName": "Mourning Mist",
-      "maxrank": 5,
-      "maxammo": -1,
       "image": {
-        "full": "YorickE.png",
+        "full": "YorickW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Yorick throws a globule of Black Mist that damages, slows and marks enemies.",
-      "champion": "Yorick",
+      "description": [
+        "{{sbc|Active:}} After a 1-second delay, '''Yorick''' summons a circular wall of spirits around the target area that lasts up to 4 seconds and acts as impassable terrain for enemies, while allowing allies to walk through.",
+        "''Dark Procession'' can only be targeted by enemy champion basic attacks and takes 1 [[damage]] per attack, dissolving after taking enough damage. {{tip|Turret}} shots instantly dissolve the wall."
+      ],
+      "notes": "\n* ''Dark Procession'' will {{tip|airborne|knock up}} enemies away from it on-cast and trigger in-combat effects such as drawing turret aggro, applying {{ii|Elixir of Sorcery}} and {{ri|Sudden Impact}}.",
+      "costBurn": "70",
+      "cooldownBurn": "20/18/16/14/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Wall Health|{{ap|2|2|3|3|4}}}}",
+          "str": "<ul><li><span class=\"blue\">Wall Health</span>: <span><spell-span :list=\"['2','2','3','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                2,
+                2,
+                3,
+                3,
+                4
+              ]
+            ],
+            "st_slices": [
+              "Wall Health",
+              "<spell-span :list=\"['2','2','3','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  2,
+                  2,
+                  3,
+                  3,
+                  4
+                ]
+              },
+              "title": "Wall Health",
+              "str": "<spell-span :list=\"['2','2','3','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "YorickE",
+      "name": "Mourning Mist",
+      "maxrank": 5,
       "cooldown": [
         12,
         11,
@@ -261,87 +286,150 @@
         9,
         8
       ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
       "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Yorick''' hurls a globule of Black Mist that splashes across an off-centered area, dealing {{as|15% of target's '''current''' health}} {{tip|magic damage|{{as|magic damage}}}} to all enemies hit, down to a minimum threshold.",
-        "Affected enemy champions and [[monster]]s are {{tip|slow|slowed}} by 30% for 2 seconds, and marked for 4 seconds, during which '''Yorick''' gains {{sti|ms|{{as|20% '''bonus''' movement speed}}}} when moving towards them."
-      ],
-      "icon": [
-        "Mourning Mist.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Magic Damage|{{ap|70 to 210}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Mourning Mist",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "AoE",
-      "spellshield": true,
+      "targeting": "Ground",
       "target_range": 700,
-      "targeting": "Ground"
-    },
-    "r1": {
-      "key": "R",
-      "id": "YorickR",
-      "riotName": "Eulogy of the Isles",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "YorickR.png",
+        "full": "YorickE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 144,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Yorick summons the Maiden of the Mist that causes Yorick's attacks against the Maiden's target to deal bonus damage. The Maiden will also automatically raise Walkers from dead enemies.",
-      "champion": "Yorick",
+      "description": [
+        "{{sbc|Active:}} '''Yorick''' hurls a globule of Black Mist that splashes across an off-centered area, dealing {{as|15% of target's '''current''' health}} {{tip|magic damage|{{as|magic damage}}}} to all enemies hit, down to a minimum threshold.",
+        "Affected enemy champions and [[monster]]s are {{tip|slow|slowed}} by 30% for 2 seconds, and are ''marked'' for 4 seconds, during which '''Yorick''', {{as|Mist Walkers|buzzword}} and the ''The Maiden'' gain {{sti|ms|{{as|20% '''bonus''' movement speed}}}} when moving towards them.",
+        "{{as|Mist Walkers|buzzword}} will {{tip|dash}} to enemy champions affected by the ''mark''."
+      ],
+      "notes": "\n* No additional notes.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Magic Damage|{{ap|70 to 210}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                105,
+                140,
+                175,
+                210
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Minimum Magic Damage",
+              "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Minimum Magic Damage",
+              "str": "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "YorickR",
+      "name": "Eulogy of the Isles",
+      "maxrank": 3,
       "cooldown": [
         160,
         130,
         100
       ],
-      "cooldownBurn": "160/130/100",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 600,
+      "image": {
+        "full": "YorickR.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Yorick''' summons the ''Maiden of the Mist'' along with {{as|Mist Walkers|buzzword}}, which remain on the battlefield until she or '''Yorick''' dies.",
         "While the ''Maiden of the Mist'' is alive, ''Eulogy of the Isles'' can be reactivated to set the ''Maiden'' free, letting her push the nearest lane until she dies."
       ],
-      "flavorsound": "{{sm2|Yorick.spellR1.ogg|''\"Behold the horrors of the isles!\"''}}",
-      "icon": [
-        "Eulogy of the Isles.png"
-      ],
-      "leveling": [
-        "{{st|Mist Walkers|{{ap|2|3|4}}}}"
-      ],
-      "name": "Eulogy of the Isles",
-      "notes": [
-        "* See the ''Pets'' section below for more details about ''Maiden of the Mist'' and {{as|Mist Walkers|buzzword}}.",
-        "* The Maiden updates its stats when '''Yorick's''' stats change."
-      ],
-      "parry": "Special",
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Special",
-      "spellshield": "Special",
-      "target_range": 600,
-      "targeting": "Ground"
+      "notes": "\n* See the ''Pets'' section below for more details about ''Maiden of the Mist'' and {{as|Mist Walkers|buzzword}}.\n* The Maiden updates its stats when '''Yorick's''' stats change.",
+      "costBurn": "100",
+      "cooldownBurn": "160/130/100",
+      "effects": [
+        {
+          "levelingtext": "{{st|Mist Walkers|{{ap|2|3|4}}}}",
+          "str": "<ul><li><span class=\"blue\">Mist Walkers</span>: <span><spell-span :list=\"['2','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                2,
+                3,
+                4
+              ]
+            ],
+            "st_slices": [
+              "Mist Walkers",
+              "<spell-span :list=\"['2','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  2,
+                  3,
+                  4
+                ]
+              },
+              "title": "Mist Walkers",
+              "str": "<spell-span :list=\"['2','3','4']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 6
 }

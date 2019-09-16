@@ -1,10 +1,9 @@
 {
   "patch": "V0.9.22.16",
-  "changes": "9.14.1",
+  "changes": "9.17.1",
   "id": "Malphite",
   "key": "54",
   "name": "Malphite",
-  "fullname": "Malphite",
   "title": "Shard of the Monolith",
   "image": {
     "full": "Malphite.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Fighter<!--, Mage-->",
+  "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 2
   },
-  "i_displayname": "Granite Shield",
-  "q_displayname": "Seismic Shard",
-  "w_dispalyname": "Brutal Strikes",
-  "e_dispalyname": "Ground Slam",
-  "r_dispalyname": "Unstoppable Force",
-  "complex_skills": {
+  "stats": {
+    "hp": 574.2,
+    "hpperlevel": 90,
+    "mp": 282.2,
+    "mpperlevel": 40,
+    "movespeed": 335,
+    "armor": 37,
+    "armorperlevel": 3.75,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 7,
+    "hpregenperlevel": 0.55,
+    "mpregen": 7.324,
+    "mpregenperlevel": 0.55,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 61.97,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 3.4,
+    "attackspeed": 0.736
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Granite Shield",
+      "riotId": "",
+      "name": "Granite Shield",
+      "maxrank": 0,
+      "targeting": "None",
       "image": {
         "full": "Malphite_GraniteShield.png",
         "sprite": "passive2.png",
@@ -49,41 +68,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Malphite is shielded by a layer of rock which absorbs damage up to 10% of his maximum Health. If Malphite has not been hit for 10 seconds, this effect recharges.",
-      "champion": "Malphite",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Malphite''' {{tip|shields}} himself for {{sti|health|{{as|10% '''maximum''' health}}}}.",
         "The shield lasts until it is broken, and refreshes if he has not taken damage in the last few seconds.",
-        "'''Malphite's''' size scales with {{sti|armor|{{as|his '''maximum''' armor}}}}, capped at around 850 '''maximum''' armor."
+        "'''Malphite's''' size scales with {{sti|armor|{{as|his '''maximum''' armor}}}} (before applying {{ais|Thunderclap|Malphite}} '''bonus''' armor), capped at around 850 '''maximum''' armor."
       ],
-      "icon": [
-        "Granite Shield.png"
-      ],
-      "leveling": [],
-      "name": "Granite Shield",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "Shield",
-      "static": "{{pp|3|showtype=true|10 to 6|1 to 13}}",
-      "targeting": "None"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "SeismicShard",
-      "riotName": "Seismic Shard",
+      "riotId": "SeismicShard",
+      "name": "Seismic Shard",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "SeismicShard.png",
         "sprite": "spell7.png",
@@ -93,45 +106,86 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Using his primal elemental magic, Malphite sends a shard of the earth through the ground at his foe, dealing damage upon impact and stealing Movement Speed for 3 seconds.",
-      "callforhelp": true,
-      "champion": "Malphite",
-      "cooldownBurn": "8",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Malphite''' sends a rock rolling to the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} to them upon impact, {{tip|slow|slowing}} them for 3 seconds and gaining {{sti|ms|{{as|'''bonus''' movement speed}}}} equal to the raw amount the target lost."
       ],
-      "icon": [
-        "Seismic Shard.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|15 to 35}}%}}"
-      ],
-      "name": "Seismic Shard",
-      "notes": [
-        "* The rock spawns 100 units in front of '''Malphite'''.",
-        "* ''Malphite'' will gain the bonus movement speed for the full duration as long as ''Seismic Shard'' impacts the target.",
-        "* {{tip|Spell shield}} will block the damage and the slow but not the bonus movement speed gain."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "single",
-      "spellshield": "Special",
-      "target_range": 625,
-      "targeting": "Unit"
+      "notes": "\n* The rock spawns 100 units in front of '''Malphite'''.\n* ''Malphite'' will gain the bonus movement speed for the full duration as long as ''Seismic Shard'' impacts the target.\n* {{tip|Spell shield}} will block the damage and the slow but not the bonus movement speed gain.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|20 to 40}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                120,
+                170,
+                220,
+                270
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  120,
+                  170,
+                  220,
+                  270
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "Obduracy",
-      "riotName": "Brutal Strikes",
+      "riotId": "Obduracy",
+      "name": "Thunderclap",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "costtype": "mana",
+      "targeting": "Self",
       "image": {
         "full": "Obduracy.png",
         "sprite": "spell7.png",
@@ -141,42 +195,191 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Malphite starts to hit with such force that his attacks deal damage to all units in front of him. Passively increases his Armor (this amount is tripled while Granite Shield is active).",
-      "champion": "Malphite",
-      "cooldownBurn": "12",
-      "costBurn": "25",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Malphite''' gains {{sti|armor|{{as|'''bonus''' armor}}}}, tripled while {{ai|Granite Shield|Malphite}} is active.",
-        "{{sbc|Active:}} For 6 seconds, '''Malphite's''' [[basic attack]]s deal {{tip|physical damage|{{as|'''bonus''' physical damage}}}} which splashes to enemies around his target."
+        "{{sbc|Active:}} '''Malphite's''' next basic attack within 6 seconds gains 50 '''bonus''' range and deals {{as|'''bonus''' physical damage on-hit}}. Additionally, for 5 seconds, '''Malphite's''' basic attacks also deal {{as|physical damage}} in a cone to units behind his target.",
+        "''Thunderclap'' resets '''Malphite's''' basic attack timer."
       ],
-      "effect_radius": 225,
-      "icon": [
-        "Brutal Strikes.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Armor|{{as|{{ap|10 to 30}}% armor}}|Increased Armor|{{as|{{ap|10*3 to 30*3}}% armor}}}}",
-        "{{st|Bonus Physical Damage|{{ap|15 to 75}} {{as|(+ 10% AP)}} {{as|(+ 15% armor)}}}}"
-      ],
-      "name": "Brutal Strikes",
-      "notes": [
-        "* ''Brutal Strikes'' has no cast time and does not interrupt ''Malphite's'' previous orders."
-      ],
-      "projectile": "physical",
-      "skill": "W",
-      "targeting": "Self"
+      "notes": "\n* ''Thunderclap'' has no cast time and does not interrupt ''Malphite's'' previous orders.",
+      "costBurn": "30/35/40/45/50",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Armor|{{as|{{ap|10 to 30}}% armor}}|Increased Armor|{{as|{{ap|10*3 to 30*3}}% armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span><span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor</span></span></li><li><span class=\"blue\">Increased Armor</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_armor": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Armor",
+              "<span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor</span>",
+              "Increased Armor",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "player_total_armor": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
+              },
+              "title": "Bonus Armor",
+              "str": "<span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_armor": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
+              },
+              "title": "Increased Armor",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% armor\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|30 to 90}} {{as|(+ 20% AP)}} {{as|(+ 15% armor)}}|Cone Damage|{{ap|10 to 50}} {{as|(+ 20% AP)}} {{as|(+ 10% armor)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 15% armor)</span></span></li><li><span class=\"blue\">Cone Damage</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 10% armor)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                45,
+                60,
+                75,
+                90
+              ],
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_armor": 0.15
+              },
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_armor": 0.1
+              }
+            ],
+            "st_slices": [
+              "Bonus Physical Damage",
+              "<spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 15% armor)</span>",
+              "Cone Damage",
+              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 10% armor)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  45,
+                  60,
+                  75,
+                  90
+                ],
+                "player_total_ap": 0.2,
+                "player_total_armor": 0.15
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 15% armor)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_total_ap": 0.2,
+                "player_total_armor": 0.15
+              },
+              "title": "Cone Damage",
+              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"armor\">(+ 10% armor)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "Landslide",
-      "riotName": "Ground Slam",
+      "riotId": "Landslide",
+      "name": "Ground Slam",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "Landslide.png",
         "sprite": "spell7.png",
@@ -186,42 +389,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malphite slams the ground, sending out a shockwave that deals magic damage based on his Armor as damage and reduces the Attack Speed of enemies for a short duration.",
-      "champion": "Malphite",
-      "cooldownBurn": "7",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Malphite''' slams the ground, dealing {{as|magic damage}} to all nearby enemies and {{tip|cripple|crippling}} them for 3 seconds."
       ],
-      "effect_radius": 200,
-      "icon": [
-        "Ground Slam.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 60% AP)}} {{as|(+ 40% armor)}}}}<!--\n-->{{st|Cripple|{{ap|30 to 50}}%}}"
-      ],
-      "name": "Ground Slam",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "magic",
-      "skill": "E",
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* No additional details.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 60% AP)}} {{as|(+ 40% armor)}}}}<!--\n-->{{st|Cripple|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"armor\">(+ 40% armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Cripple</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                95,
+                130,
+                165,
+                200
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_armor": 0.4
+              }
+            ],
+            "st_slices": [
+              "Cripple",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  95,
+                  130,
+                  165,
+                  200
+                ],
+                "player_total_ap": 0.6,
+                "player_total_armor": 0.4
+              },
+              "title": "Cripple",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "UFSlash",
-      "riotName": "Unstoppable Force",
+      "riotId": "UFSlash",
+      "name": "Unstoppable Force",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        130,
+        105,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1000,
       "image": {
         "full": "UFSlash.png",
         "sprite": "spell7.png",
@@ -231,43 +479,55 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malphite ferociously charges to a location, damaging enemies and knocking them into the air.",
-      "champion": "Malphite",
-      "cooldown": [
-        130,
-        105,
-        80
-      ],
-      "cooldownBurn": "130/105/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Malphite''' {{tip|dashes}} {{tip|unstoppable|unstoppably}} to the target location and, upon impact, deals {{as|magic damage}} to all nearby enemies and {{tip|airborne|knocks them up}} for {{fd|1.5}} seconds."
       ],
-      "effect_radius": 300,
-      "icon": [
-        "Unstoppable Force.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|200|300|400}} {{as|(+ 100% AP)}}}}"
-      ],
-      "name": "Unstoppable Force",
-      "notes": [
-        "* ''Unstoppable Force'' {{tip|stun|stuns}} enemies hit for the displacement's duration.",
-        "* ''Malphite'' can still take damage during ''Unstoppable Force''."
-      ],
-      "projectile": "magic",
-      "skill": "R",
-      "speed": 1835,
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "target_range": 1000,
-      "targeting": "Ground"
+      "notes": "\n* ''Unstoppable Force'' {{tip|stun|stuns}} enemies hit for the displacement's duration.\n* ''Malphite'' can still take damage during ''Unstoppable Force''.",
+      "costBurn": "100",
+      "cooldownBurn": "130/105/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|200|300|400}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                200,
+                300,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  300,
+                  400
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

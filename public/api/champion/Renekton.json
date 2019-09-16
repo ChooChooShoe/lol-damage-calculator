@@ -4,13 +4,12 @@
   "id": "Renekton",
   "key": "58",
   "name": "Renekton",
-  "fullname": "Renekton",
   "title": "the Butcher of the Sands",
   "image": {
     "full": "Renekton.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 0,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Fury",
   "herotype": "Fighter",
   "alttype": "Tank",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,119 +31,273 @@
     "magic": 2,
     "difficulty": 3
   },
-  "i_displayname": "Reign of Anger",
-  "q_displayname": "Cull the Meek",
-  "w_dispalyname": "Ruthless Predator",
-  "e_dispalyname": "Slice / Dice",
-  "r_dispalyname": "Dominus",
-  "complex_skills": {
+  "stats": {
+    "hp": 575,
+    "hpperlevel": 87,
+    "mp": 100,
+    "mpperlevel": 0,
+    "movespeed": 345,
+    "armor": 35,
+    "armorperlevel": 4,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8,
+    "hpregenperlevel": 0.75,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 69,
+    "attackdamageperlevel": 3.75,
+    "attackspeedperlevel": 2.75,
+    "attackspeed": 0.665
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Reign of Anger",
+      "riotId": "",
+      "name": "Reign of Anger",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Renekton_Passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 96,
+        "x": 144,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Renekton gains Fury for every autoattack he makes. This Fury can empower his abilities with bonus effects. Additionally, Renekton gains bonus Fury when he is low on life.",
-      "champion": "Renekton",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Renekton''' generates {{tip|fury|{{as|5 Fury}}}} each time he lands a [[basic attack]] on an enemy, and loses {{as|4 Fury}} per second if he hasn't dealt or taken damage in the last 12 seconds.",
         "When at or above {{as|50 Fury}}, '''Renekton's''' next [[Champion ability|basic ability]] consumes {{as|50 Fury}} to enhance its effects. The enhanced ability does not generate {{as|Fury}}.",
         "{{sbc|Reign of Anger:}} '''Renekton''' generates {{as|50% '''bonus''' Fury}} from all sources while {{as|{{sti|health|below 50% of his '''maximum''' health}}}}."
       ],
-      "icon": [
-        "Reign of Anger.png"
-      ],
-      "leveling": [],
-      "name": "Reign of Anger",
-      "notes": [
-        "* ''Renekton'' generates Fury by collecting [[Health Relic (Howling Abyss)|Health Relics]] on {{tip|Howling Abyss}} (interacts with ''Reign of Anger's'' bonus generation)."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Renekton'' generates Fury by collecting [[Health Relic (Howling Abyss)|Health Relics]] on {{tip|Howling Abyss}} (interacts with ''Reign of Anger's'' bonus generation).",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "RenektonCleave",
-      "riotName": "Cull the Meek",
+      "riotId": "RenektonCleave",
+      "name": "Cull the Meek",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "RenektonCleave.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self",
-      "blurb": "Renekton swings his blade, dealing moderate physical damage to all targets around him, and heals for a small portion of the damage dealt. If he has more than 50 Fury, his damage and heal are increased.",
-      "champion": "Renekton",
-      "cooldownBurn": "8",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Renekton''' deals {{tip|physical damage|{{as|physical damage}}}} to all nearby enemies and {{sti|healing|heals}} himself for each unit hit, up to a cap.",
         "'''Renekton''' also generates {{tip|fury|{{as|{{fd|2.5}} Fury}}}} for each non-champion hit and {{as|10 Fury}} for each champion hit, with the {{as|Fury}} generated per cast capped at 30.",
         "Against champions the healing is increased by 300%.",
         "{{sbc|{{ai|Reign of Anger|Renekton}}:}} ''Cull the Meek'' deals additional damage, increases the total healing by 200%, and the healing cap by 300%."
       ],
-      "effect_radius": 325,
-      "icon": [
-        "Cull the Meek.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|65 to 205}} {{as|(+ 80% '''bonus''' AD)}}|Enhanced Physical Damage|{{ap|100 to 300}} {{as|(+ 120% '''bonus''' AD)}}}}\n{{st|Non-Champion Healing|{{ap|3 to 9}} {{as|(+ 4% '''bonus''' AD)}}|Enhanced Non-Champion Healing|{{ap|9 to 27}} {{as|(+ 12% '''bonus''' AD)}}}}\n{{st|Healing Cap|{{ap|50 to 150}}|Enhanced Healing Cap|{{ap|200 to 600}}}}",
-        "{{st|Champion Healing|{{ap|12 to 36}} {{as|(+ 16% '''bonus''' AD)}}|Enhanced Champion Healing|{{ap|36 to 108}} {{as|(+ 48% '''bonus''' AD)}}}}"
-      ],
-      "name": "Cull the Meek",
-      "notes": [
-        "* ''Cull the Meek'' has a {{fd|0.25}} seconds cast time and does not interrupt ''Renekton's'' previous orders.",
-        "* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Cull the Meek's'' healing cap."
-      ],
-      "projectile": "Physical",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Cull the Meek'' has a {{fd|0.25}} seconds cast time and does not interrupt ''Renekton's'' previous orders.\n* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Cull the Meek's'' healing cap.",
+      "costBurn": "0",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|65 to 205}} {{as|(+ 80% '''bonus''' AD)}}|Enhanced Physical Damage|{{ap|100 to 300}} {{as|(+ 120% '''bonus''' AD)}}}}\n{{st|Non-Champion Healing|{{ap|3 to 9}} {{as|(+ 4% '''bonus''' AD)}}|Enhanced Non-Champion Healing|{{ap|9 to 27}} {{as|(+ 12% '''bonus''' AD)}}}}\n{{st|Healing Cap|{{ap|50 to 150}}|Enhanced Healing Cap|{{ap|200 to 600}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Physical Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Non-Champion Healing</span>: <span><spell-span :list=\"['3','4.5','6','7.5','9']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 4% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Non-Champion Healing</span>: <span><spell-span :list=\"['9','13.5','18','22.5','27']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 12% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Healing Cap</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Enhanced Healing Cap</span>: <span><spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                65,
+                100,
+                135,
+                170,
+                205
+              ],
+              [
+                100,
+                150,
+                200,
+                250,
+                300
+              ],
+              [
+                3,
+                4.5,
+                6,
+                7.5,
+                9
+              ],
+              [
+                9,
+                13.5,
+                18,
+                22.5,
+                27
+              ],
+              [
+                50,
+                75,
+                100,
+                125,
+                150
+              ],
+              [
+                200,
+                300,
+                400,
+                500,
+                600
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              },
+              {
+                "player_bonus_ad": 1.2
+              },
+              {
+                "player_bonus_ad": 0.04
+              },
+              {
+                "player_bonus_ad": 0.12
+              }
+            ],
+            "st_slices": [
+              "Healing Cap",
+              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "Enhanced Healing Cap",
+              "<spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  65,
+                  100,
+                  135,
+                  170,
+                  205
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "Healing Cap",
+              "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  100,
+                  150,
+                  200,
+                  250,
+                  300
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "Enhanced Healing Cap",
+              "str": "<spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Champion Healing|{{ap|12 to 36}} {{as|(+ 16% '''bonus''' AD)}}|Enhanced Champion Healing|{{ap|36 to 108}} {{as|(+ 48% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Champion Healing</span>: <span><spell-span :list=\"['12','18','24','30','36']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 16% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Champion Healing</span>: <span><spell-span :list=\"['36','54','72','90','108']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 48% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                18,
+                24,
+                30,
+                36
+              ],
+              [
+                36,
+                54,
+                72,
+                90,
+                108
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.16
+              },
+              {
+                "player_bonus_ad": 0.48
+              }
+            ],
+            "st_slices": [
+              "Champion Healing",
+              "<spell-span :list=\"['12','18','24','30','36']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
+              "Enhanced Champion Healing",
+              "<spell-span :list=\"['36','54','72','90','108']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  18,
+                  24,
+                  30,
+                  36
+                ],
+                "player_bonus_ad": 0.16
+              },
+              "title": "Champion Healing",
+              "str": "<spell-span :list=\"['12','18','24','30','36']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  36,
+                  54,
+                  72,
+                  90,
+                  108
+                ],
+                "player_bonus_ad": 0.16
+              },
+              "title": "Enhanced Champion Healing",
+              "str": "<spell-span :list=\"['36','54','72','90','108']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "RenektonPreExecute",
-      "riotName": "Ruthless Predator",
+      "riotId": "RenektonPreExecute",
+      "name": "Ruthless Predator",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RenektonPreExecute.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies / Self",
-      "blurb": "Renekton slashes his target twice, dealing moderate physical damage and stuns them for 0.75 seconds. If Renekton has more than 50 Fury, he slashes his target three times, dealing high physical damage and stuns them for 1.5 seconds.",
-      "champion": "Renekton",
       "cooldown": [
         13,
         12,
@@ -151,199 +305,536 @@
         10,
         9
       ],
-      "cooldownBurn": "13/12/11/10/9",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
+      "targeting": "None",
+      "image": {
+        "full": "RenektonPreExecute.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Renekton's''' next basic attack within 7 seconds gains {{sti|range|50 '''bonus''' range}} and strikes his target twice dealing {{As|modified physical damage}} and {{tip|stun|stunning}} them for {{fd|0.75}} seconds. Each hit applies [[on-hit effect]]s and grants {{tip|fury|{{as|Fury}}}}. Hitting an enemy {{tip|champion}} grants {{as|10 '''bonus''' Fury}}.",
         "{{sbc|{{ai|Reign of Anger|Renekton}}:}} '''Renekton''' destroys damage-mitigating shields on the target before striking them 3 times, dealing 50% '''bonus''' damage and increasing the {{tip|stun}} duration to {{fd|1.5}} seconds.",
         "''Ruthless Predator'' resets '''Renekton's''' basic attack timer."
       ],
-      "icon": [
-        "Ruthless Predator.png"
-      ],
-      "leveling": [
-        "{{st|Total Physical Damage|{{ap|5*2 to 45*2}} {{as|(+ 150% AD)}}|Physical Damage Per Hit|{{ap|5 to 45}} {{as|(+ 75% AD)}}}}",
-        "{{st|Total Enhanced Damage|{{ap|5*3 to 45*3}} {{as|(+ 225% AD)}}}}"
-      ],
-      "name": "Ruthless Predator",
-      "notes": [
-        "* ''Ruthless Predator'' has a {{tt|{{fd|0.5}} seconds|Estimated}} cast time during which ''Renekton'' cannot perform any actions (can use [[summoner spell]]s as well as [[active ability items]]).",
-        "** ''Ruthless Predator's'' cast time can be dual cast with active ability items that play one of their own  ({{iis|Tiamat}} {{nie|Crescent}}).",
-        "** ''Ruthless Predator's'' cast time can be canceled with {{ais|Dominus|Renekton}}.",
-        "* The basic attack can {{tip|critical strike|critically strike}} as normal (the modified damage cannot)."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "W",
-      "spellshield": true,
-      "targeting": "None"
-    },
-    "e1": {
-      "key": "E1",
-      "id": "RenektonSliceAndDice",
-      "riotName": "Slice and Dice",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RenektonSliceAndDice.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 288,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Renekton dashes, dealing damage to units along the way. Empowered, Renekton deals bonus damage and reduces the Armor of units hit.",
-      "champion": "Renekton",
-      "cooldown": [
-        18,
-        17,
-        16,
-        15,
-        14
-      ],
-      "cooldownBurn": "18/17/16/15/14",
+      "notes": "\n* ''Ruthless Predator'' has a {{tt|{{fd|0.5}} seconds|Estimated}} cast time during which ''Renekton'' cannot perform any actions (can use [[summoner spell]]s as well as [[active ability items]]).\n** ''Ruthless Predator's'' cast time can be dual cast with active ability items that play one of their own  ({{iis|Tiamat}} {{nie|Crescent}}).\n** ''Ruthless Predator's'' cast time can be canceled with {{ais|Dominus|Renekton}}.\n* The basic attack can {{tip|critical strike|critically strike}} as normal (the modified damage cannot).",
       "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
-      "description": [
-        "{{sbc|Active - Slice:}} '''Renekton''' {{tip|dashes}} in the target direction, dealing {{as|physical damage}} to all enemies he passes through.",
-        "Hitting an enemy allows '''Renekton''' to cast ''Dice'' within the next 4 seconds."
-      ],
-      "grounded": true,
-      "icon": [
-        "Slice.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Physical Damage|{{ap|40 to 160}} {{as|(+ 90% '''bonus''' AD)}}}}"
-      ],
-      "name": "Slice",
-      "notes": [
-        "* Movement speed has minimal to no impact on the dash speed.",
-        "* {{Pending for test}}: ''Renekton'' can cast ''Dice'' even if ''Slice'' is blocked."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 450,
-      "targeting": "Direction"
+      "cooldownBurn": "13/12/11/10/9",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Physical Damage|{{ap|5*2 to 45*2}} {{as|(+ 150% AD)}}|Physical Damage Per Hit|{{ap|5 to 45}} {{as|(+ 75% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span></span></li><li><span class=\"blue\">Physical Damage Per Hit</span>: <span><spell-span :list=\"['5','15','25','35','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                30,
+                50,
+                70,
+                90
+              ],
+              [
+                5,
+                15,
+                25,
+                35,
+                45
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1.5
+              },
+              {
+                "player_total_ad": 0.75
+              }
+            ],
+            "st_slices": [
+              "Total Physical Damage",
+              "<spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span>",
+              "Physical Damage Per Hit",
+              "<spell-span :list=\"['5','15','25','35','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  30,
+                  50,
+                  70,
+                  90
+                ],
+                "player_total_ad": 1.5
+              },
+              "title": "Total Physical Damage",
+              "str": "<spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  5,
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "player_total_ad": 1.5
+              },
+              "title": "Physical Damage Per Hit",
+              "str": "<spell-span :list=\"['5','15','25','35','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Total Enhanced Damage|{{ap|5*3 to 45*3}} {{as|(+ 225% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Enhanced Damage</span>: <span><spell-span :list=\"['15','45','75','105','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 225% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                15,
+                45,
+                75,
+                105,
+                135
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 2.25
+              }
+            ],
+            "st_slices": [
+              "Total Enhanced Damage",
+              "<spell-span :list=\"['15','45','75','105','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 225% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  15,
+                  45,
+                  75,
+                  105,
+                  135
+                ],
+                "player_total_ad": 2.25
+              },
+              "title": "Total Enhanced Damage",
+              "str": "<spell-span :list=\"['15','45','75','105','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 225% AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "RenektonSliceAndDice",
-      "riotName": "Slice and Dice",
+      "riotId": "RenektonSliceAndDice",
+      "name": "Dice",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
       "image": {
         "full": "RenektonSliceAndDice.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 288,
-        "y": 96,
+        "x": 0,
+        "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Renekton dashes, dealing damage to units along the way. Empowered, Renekton deals bonus damage and reduces the Armor of units hit.",
-      "champion": "Renekton",
-      "cooldown": [
-        18,
-        17,
-        16,
-        15,
-        14
-      ],
-      "cooldownBurn": "18/17/16/15/14",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active - Dice:}} '''Renekton''' {{tip|dashes}} in the target direction, dealing the same {{as|physical damage}} to all enemies he passes through.",
         "Both ''Slice'' and ''Dice'' generate {{tip|fury|{{as|2 Fury}}}} for each non-champion hit, and {{as|10 Fury}} for each champion hit, with the {{as|Fury}} generated per dash capped at 30.",
         "{{sbc|{{ai|Reign of Anger|Renekton}}:}} ''Dice'' deals additional damage to all enemies and reduces their {{sti|{{as|armor}}}} for 4 seconds."
       ],
-      "grounded": true,
-      "icon": [
-        "Dice.png"
+      "notes": "\n* Movement speed has minimal to no impact on the dash speed.\n* {{Pending for test}}: ''Renekton'' can cast ''Dice'' even if ''Slice'' is blocked.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Physical Damage|{{ap|40*2 to 160*2}} {{as|(+ 180% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                140,
+                200,
+                260,
+                320
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.8
+              }
+            ],
+            "st_slices": [
+              "Total Physical Damage",
+              "<spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  140,
+                  200,
+                  260,
+                  320
+                ],
+                "player_bonus_ad": 1.8
+              },
+              "title": "Total Physical Damage",
+              "str": "<spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Enhanced Physical Damage|{{ap|70 to 250}} {{as|(+ 135% '''bonus''' AD)}}|Total Enhanced Damage|{{ap|40+70 to 160+250}} {{as|(+ 225% '''bonus''' AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|25 to 35}}%|armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Enhanced Physical Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 135% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Enhanced Damage</span>: <span><spell-span :list=\"['110','185','260','335','410']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 225% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ],
+              [
+                110,
+                185,
+                260,
+                335,
+                410
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.35
+              },
+              {
+                "player_bonus_ad": 2.25
+              },
+              {
+                "player_total_unknown": [
+                  0.25,
+                  0.275,
+                  0.3,
+                  0.325,
+                  0.35
+                ]
+              }
+            ],
+            "st_slices": [
+              "Armor Reduction",
+              "<span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_bonus_ad": 2.25,
+                "player_total_unknown": [
+                  0.25,
+                  0.275,
+                  0.3,
+                  0.325,
+                  0.35
+                ]
+              },
+              "title": "Armor Reduction",
+              "str": "<span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "RenektonSliceAndDice",
+      "name": "Slice",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
       ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Total Physical Damage|{{ap|40*2 to 160*2}} {{as|(+ 180% '''bonus''' AD)}}}}",
-        "{{st|Enhanced Physical Damage|{{ap|70 to 250}} {{as|(+ 135% '''bonus''' AD)}}|Total Enhanced Damage|{{ap|40+70 to 160+250}} {{as|(+ 225% '''bonus''' AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|25 to 35}}%|armor}}}}"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "name": "Dice",
-      "notes": [
-        "* Movement speed has minimal to no impact on the dash speed.",
-        "* {{Pending for test}}: ''Renekton'' can cast ''Dice'' even if ''Slice'' is blocked."
+      "targeting": "Direction",
+      "target_range": 450,
+      "image": {
+        "full": "RenektonSliceAndDice.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 0,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active - Slice:}} '''Renekton''' {{tip|dashes}} in the target direction, dealing {{as|physical damage}} to all enemies he passes through.",
+        "Hitting an enemy allows '''Renekton''' to cast ''Dice'' within the next 4 seconds."
       ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* Movement speed has minimal to no impact on the dash speed.\n* {{Pending for test}}: ''Renekton'' can cast ''Dice'' even if ''Slice'' is blocked.",
+      "costBurn": "0",
+      "cooldownBurn": "18/17/16/15/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|40 to 160}} {{as|(+ 90% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                70,
+                100,
+                130,
+                160
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.9
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  70,
+                  100,
+                  130,
+                  160
+                ],
+                "player_bonus_ad": 0.9
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "RenektonReignOfTheTyrant",
-      "riotName": "Dominus",
+      "riotId": "RenektonReignOfTheTyrant",
+      "name": "Dominus",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        120,
+        120
+      ],
+      "cost": [
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "RenektonReignOfTheTyrant.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 336,
-        "y": 96,
+        "x": 48,
+        "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self",
-      "blurb": "Renekton transforms into the Tyrant form, gaining bonus Health and dealing damage to enemies around him. While in this form, Renekton gains Fury periodically.",
-      "champion": "Renekton",
-      "cooldownBurn": "120",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Renekton''' empowers himself for 15 seconds, gaining {{as|{{sti|health|'''bonus''' health}}}}, increased size, {{sti|range|25 '''bonus''' range}} and {{tip|fury|{{as|20 Fury}}}}.",
         "For the duration, he deals {{tip|magic damage|{{As|magic damage}}}} each half second to all nearby enemies and generates {{as|5 Fury}} per second, up to a maximum of {{as|75 Fury}}."
       ],
-      "effect_radius": 175,
-      "icon": [
-        "Dominus.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Health|{{as|{{ap|250 to 750}}|hp}}}}",
-        "{{st|Magic Damage Per Half Second|{{ap|20 to 60}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|20*30 to 60*30}} {{as|(+ 300% AP)}}}}"
-      ],
-      "name": "Dominus",
-      "notes": [
-        "* ''Dominus' ''range increase does not stack with {{ai|Ruthless Predator|Renekton}}.",
-        "* ''Dominus' ''cooldown starts on-cast (is not refunded if ''Renekton'' is killed during the cast animation).",
-        "* ''Dominus' ''bonus health gain does not interact with {{ii|Spirit Visage}} or {{tip|Grievous Wounds}}.",
-        "** ''Renekton'' retains ''Dominus' ''bonus health (if not over his normal maximum) once the duration ends."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "targeting": "None"
+      "notes": "\n* ''Dominus' ''range increase does not stack with {{ai|Ruthless Predator|Renekton}}.\n* ''Dominus' ''cooldown starts on-cast (is not refunded if ''Renekton'' is killed during the cast animation).\n* ''Dominus' ''bonus health gain does not interact with {{ii|Spirit Visage}} or {{tip|Grievous Wounds}}.\n** ''Renekton'' retains ''Dominus' ''bonus health (if not over his normal maximum) once the duration ends.",
+      "costBurn": "0",
+      "cooldownBurn": "120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Health|{{as|{{ap|250 to 750}}|hp}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"hp\"><spell-span :list=\"['250','375','500','625','750']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  2.5,
+                  3.75,
+                  5,
+                  6.25,
+                  7.5
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Health",
+              "<span class=\"hp\"><spell-span :list=\"['250','375','500','625','750']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_unknown": [
+                  2.5,
+                  3.75,
+                  5,
+                  6.25,
+                  7.5
+                ]
+              },
+              "title": "Bonus Health",
+              "str": "<span class=\"hp\"><spell-span :list=\"['250','375','500','625','750']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage Per Half Second|{{ap|20 to 60}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|20*30 to 60*30}} {{as|(+ 300% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['600','900','1200','1500','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 300% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                600,
+                900,
+                1200,
+                1500,
+                1800
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Half Second",
+              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['600','900','1200','1500','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 300% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Magic Damage Per Half Second",
+              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  600,
+                  900,
+                  1200,
+                  1500,
+                  1800
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['600','900','1200','1500','1800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 300% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 6
 }

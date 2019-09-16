@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.100",
-  "changes": "9.10.1",
+  "changes": "9.18.1",
   "id": "MissFortune",
   "key": "21",
   "name": "Miss Fortune",
-  "fullname": "Sarah Fortune",
   "title": "the Bounty Hunter",
   "image": {
     "full": "MissFortune.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "physical",
@@ -30,15 +30,34 @@
     "magic": 5,
     "difficulty": 1
   },
-  "i_displayname": "Love Tap",
-  "q_displayname": "Double Up",
-  "w_dispalyname": "Strut / Impure Shots",
-  "e_dispalyname": "Make It Rain",
-  "r_dispalyname": "Bullet Time",
-  "complex_skills": {
+  "stats": {
+    "hp": 541,
+    "hpperlevel": 91,
+    "mp": 325.84,
+    "mpperlevel": 35,
+    "movespeed": 325,
+    "armor": 28,
+    "armorperlevel": 3,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 3.75,
+    "hpregenperlevel": 0.65,
+    "mpregen": 8.042,
+    "mpregenperlevel": 0.65,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 50,
+    "attackdamageperlevel": 2.7,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.656
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Love Tap",
+      "riotId": "",
+      "name": "Love Tap",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "MissFortune_W.png",
         "sprite": "passive2.png",
@@ -48,39 +67,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Miss Fortune deals bonus physical damage whenever she attacks a new target.",
-      "champion": "Miss Fortune",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Miss Fortune's''' next basic attack against an enemy unit ({{tip|turrets}} included), that was not the target of her previous basic attack, will deal {{as|{{pp|6|key=%|50 to 100|1;4;7 to 13|formula=50%+10% every 3 levels up to 7, then+10% every 2 levels up to 13}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, halved to {{as|{{pp|6|key=%|50/2 to 100/2|1;4;7 to 13|formula=25%+5% every 3 levels up to 7, then+5% every 2 levels up to 13}} AD}} versus [[minions]]."
       ],
-      "icon": [
-        "Love Tap.png"
-      ],
-      "leveling": [],
-      "name": "Love Tap",
-      "notes": [
-        "* With {{ii|Runaan's Hurricane}} ''Love Tap'' only applies to the target affected by ''Miss Fortune's'' primary basic attack.",
-        "* The bonus damage applies {{sti|life steal}}."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* With {{ii|Runaan's Hurricane}} ''Love Tap'' only applies to the target affected by ''Miss Fortune's'' primary basic attack.\n* The bonus damage applies {{sti|life steal}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "MissFortuneRicochetShot",
-      "riotName": "Double Up",
+      "riotId": "MissFortuneRicochetShot",
+      "name": "Double Up",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        6,
+        5,
+        4,
+        3
+      ],
+      "cost": [
+        43,
+        46,
+        49,
+        52,
+        55
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 650,
       "image": {
         "full": "MissFortuneRicochetShot.png",
         "sprite": "spell7.png",
@@ -90,64 +103,85 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 160,
-      "blurb": "Miss Fortune fires a bullet at an enemy, damaging them and a target behind them. Both strikes can also apply Love Tap.",
-      "callforhelp": true,
-      "champion": "Miss Fortune",
-      "cooldown": [
-        7,
-        6,
-        5,
-        4,
-        3
-      ],
-      "cooldownBurn": "7/6/5/4/3",
-      "costBurn": "43 / 46 / 49 / 52 / 55",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Miss Fortune''' fires a shot at a target enemy that deals {{as|physical damage}}, which then bounces to hit another unit behind it. The shot applies [[on-hit effects]], including {{ai|Love Tap}}.",
         "''Double Up's'' bounce prioritizes units directly behind the primary target.",
         "''Double Up's'' bounce can {{tip|critically strike}} for {{as|{{critical damage|100}} '''bonus''' physical damage}}. If ''Double Up'' kills the first target, the second hit will {{tip|critically strike}}."
       ],
-      "effect_radius": 500,
-      "icon": [
-        "Double Up.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 100}} {{as|(+ 100% AD)}} {{as|(+ 35% AP)}}}}"
-      ],
-      "name": "Double Up",
-      "notes": [
-        "* {{tip|Spell shield|Spell shields}} can be used by either target. A {{tip|spell shield}} on the primary target will not prevent the shot from bouncing.",
-        "* The second shot follows a priority order on targets within 500 units of the primary one:",
-        "*# Enemy or neutral units within a 20º cone.",
-        "*# Enemy or neutral units within a 40º cone.",
-        "*# Enemy or neutral units within a 110º cone.",
-        "*# Enemy or neutral units within {{tt|150|Estimated}} units in a 160º cone.",
-        "* ''Double Up's'' cast range adjusts based on '''Miss Fortune's''' attack range.",
-        "* ''Double Up'' can bounce to units in [[brush]] or in [[Sight|fog of war]] if they are in range of the primary target.",
-        "* The damage of a {{tip|critical strike|critically striking}} second shot is {{ap|20*2 to 100*2}} {{as|(+ 200% AD)}} {{as|(+ 70% AP)}} {{as|physical damage}}."
-      ],
-      "onhiteffects": true,
-      "parry": true,
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 650,
-      "targeting": "Unit"
+      "notes": "\n* {{tip|Spell shield|Spell shields}} can be used by either target. A {{tip|spell shield}} on the primary target will not prevent the shot from bouncing.\n* The second shot follows a priority order on targets within 500 units of the primary one:\n*# Enemy or neutral units within a 20º cone.\n*# Enemy or neutral units within a 40º cone.\n*# Enemy or neutral units within a 110º cone.\n*# Enemy or neutral units within {{tt|150|Estimated}} units in a 160º cone.\n* ''Double Up's'' cast range adjusts based on '''Miss Fortune's''' attack range.\n* ''Double Up'' can bounce to units in [[brush]] or in [[Sight|fog of war]] if they are in range of the primary target.\n* The damage of a {{tip|critical strike|critically striking}} second shot is {{ap|20*2 to 100*2}} {{as|(+ 200% AD)}} {{as|(+ 70% AP)}} {{as|physical damage}}.",
+      "costBurn": "43/46/49/52/55",
+      "cooldownBurn": "7/6/5/4/3",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 100}} {{as|(+ 100% AD)}} {{as|(+ 35% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                40,
+                60,
+                80,
+                100
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.35000000000000003
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 35% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  40,
+                  60,
+                  80,
+                  100
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.35000000000000003
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "MissFortuneViciousStrikes",
-      "riotName": "Strut",
+      "riotId": "MissFortuneViciousStrikes",
+      "name": "Strut",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "MissFortuneViciousStrikes.png",
         "sprite": "spell7.png",
@@ -157,43 +191,114 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Miss Fortune passively gains Movement Speed when not attacked. This ability can be activated to grant bonus Attack Speed for a short duration. While it's on cooldown, Love Taps reduce the remaining cooldown of Strut.",
-      "champion": "Miss Fortune",
-      "cooldownBurn": "12",
-      "costBurn": "30",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive - Strut:}} '''Miss Fortune''' gains {{sti|ms|{{as|25 '''bonus''' movement speed}}}} if she has not taken damage in the last 5 seconds, excluding damage over time. This bonus is increased to a greater amount after another 5 seconds.",
         "{{sbc|Active - Guns Blazing:}} '''Miss Fortune''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} for 4 seconds and brings ''Strut's'' passive effect to full power.",
         "Marking a new target with {{ai|Love Tap|Miss Fortune}} reduces ''Strut's'' {{sti|cooldown}} by {{tt|2 seconds|Affected by cooldown reduction}}."
       ],
-      "icon": [
-        "Strut.png",
-        "Guns Blazing.png"
-      ],
-      "leveling": [
-        "{{st|Maximum Bonus Movement Speed|{{ap|60 to 100}}}}",
-        "{{st|Bonus Attack Speed|{{ap|40 to 100}}%}}"
-      ],
-      "name": "Strut",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n* No additional details.",
+      "costBurn": "30",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Maximum Bonus Movement Speed|{{ap|60 to 100}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Bonus Movement Speed</span>: <span><spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                70,
+                80,
+                90,
+                100
+              ]
+            ],
+            "st_slices": [
+              "Maximum Bonus Movement Speed",
+              "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  70,
+                  80,
+                  90,
+                  100
+                ]
+              },
+              "title": "Maximum Bonus Movement Speed",
+              "str": "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 100}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                55,
+                70,
+                85,
+                100
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  55,
+                  70,
+                  85,
+                  100
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "MissFortuneScattershot",
-      "riotName": "Make It Rain",
+      "riotId": "MissFortuneScattershot",
+      "name": "Make It Rain",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        18,
+        16,
+        14,
+        12,
+        10
+      ],
+      "cost": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1000,
       "image": {
         "full": "MissFortuneScattershot.png",
         "sprite": "spell7.png",
@@ -203,50 +308,113 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Miss Fortune reveals an area with a flurry of bullets, dealing waves of damage to opponents and slowing them.",
-      "champion": "Miss Fortune",
-      "cooldown": [
-        18,
-        16,
-        14,
-        12,
-        10
-      ],
-      "cooldownBurn": "18/16/14/12/10",
-      "costBurn": "80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Miss Fortune''' rains down hundreds of bullets onto the target area for 2 seconds, {{tip|slow|slowing}} and dealing {{tip|magic damage|{{as|magic damage}}}} every {{fd|0.25}} seconds to units within the area."
       ],
-      "effect_radius": 200,
-      "icon": [
-        "Make It Rain.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Tick|{{ap|10|14.375|18.75|23.125|27.5}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|80|115|150|185|220}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|28|36|44|52|60}}%}}"
-      ],
-      "name": "Make It Rain",
-      "notes": [
-        "* ''Make It Rain'' grants {{tip|sight}} of its area of effect.",
-        "* ''Make It Rain'' remains active for its duration even if ''Miss Fortune'' dies."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "target_range": 1000,
-      "targeting": "Ground"
+      "notes": "\n* ''Make It Rain'' grants {{tip|sight}} of its area of effect.\n* ''Make It Rain'' remains active for its duration even if ''Miss Fortune'' dies.",
+      "costBurn": "80",
+      "cooldownBurn": "18/16/14/12/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Tick|{{ap|10 to 27.5}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|10*2/0.25 to 27.5*2/0.25}} {{as|(+ {{ap|10*2/0.25}}% AP)}}}}<!--\n-->{{st|Slow|{{ap|40 to 60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                14.375,
+                18.75,
+                23.125,
+                27.5
+              ],
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ],
+              [
+                80
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": [
+                  0.4,
+                  0.45,
+                  0.5,
+                  0.55,
+                  0.6
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Tick",
+              "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Maximum Magic Damage",
+              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  14.375,
+                  18.75,
+                  23.125,
+                  27.5
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Magic Damage Per Tick",
+              "str": "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Maximum Magic Damage",
+              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "MissFortuneBulletTime",
-      "riotName": "Bullet Time",
+      "riotId": "MissFortuneBulletTime",
+      "name": "Bullet Time",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        110,
+        100
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
       "image": {
         "full": "MissFortuneBulletTime.png",
         "sprite": "spell7.png",
@@ -256,41 +424,104 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": "{{tt|40{{degree}}|Estimated}}",
-      "blurb": "Miss Fortune channels a flurry of bullets into a cone in front of her, dealing large amounts of damage to enemies. Each wave of Bullet Time can critically strike.",
-      "champion": "Miss Fortune",
-      "cooldown": [
-        120,
-        110,
-        100
-      ],
-      "cooldownBurn": "120/110/100",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Miss Fortune''' {{tip|channels}} for 3 seconds while firing several waves of bullets in a cone, with each wave dealing {{as|75% AD}} {{as|(+ 20% AP)}} {{as|physical damage}}.",
         "Each wave can {{tip|critical strike|critically strike}}, dealing {{as|{{critical damage|20}} '''bonus''' physical damage}}."
       ],
-      "effect_radius": 1400,
-      "icon": [
-        "Bullet Time.png"
-      ],
-      "leveling": [
-        "{{st|Total Waves|{{ap|12 to 16}}|Minimum Total Damage|{{as|{{ap|75*12 to 75*16}}% AD}} {{as|(+ {{ap|20*12 to 20*16}}% AP)}}}}"
-      ],
-      "name": "Bullet Time",
-      "notes": [
-        "* ''Bullet Time'' fires a wave of bullets each {{ap|(3 to 3)/(12 to 16)|round=4}} seconds."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "targeting": "Direction"
+      "notes": "\n* ''Bullet Time'' fires a wave of bullets each {{ap|(3 to 3)/(12 to 16)|round=4}} seconds.",
+      "costBurn": "100",
+      "cooldownBurn": "120/110/100",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Waves|{{ap|12 to 16}}|Minimum Total Damage|{{as|{{ap|75*12 to 75*16}}% AD}} {{as|(+ {{ap|20*12 to 20*16}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Waves</span>: <span><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              [
+                900,
+                975,
+                1050,
+                1125,
+                1200
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  2.4,
+                  2.6,
+                  2.8,
+                  3,
+                  3.2
+                ]
+              }
+            ],
+            "st_slices": [
+              "Total Waves",
+              "<spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "Minimum Total Damage",
+              "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  13,
+                  14,
+                  15,
+                  16
+                ],
+                "player_total_ad": [
+                  2.4,
+                  2.6,
+                  2.8,
+                  3,
+                  3.2
+                ]
+              },
+              "title": "Total Waves",
+              "str": "<spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  900,
+                  975,
+                  1050,
+                  1125,
+                  1200
+                ],
+                "player_total_ad": [
+                  2.4,
+                  2.6,
+                  2.8,
+                  3,
+                  3.2
+                ]
+              },
+              "title": "Minimum Total Damage",
+              "str": "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

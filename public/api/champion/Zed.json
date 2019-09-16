@@ -4,14 +4,13 @@
   "id": "Zed",
   "key": "238",
   "name": "Zed",
-  "fullname": "Zed",
   "title": "the Master of Shadows",
   "image": {
     "full": "Zed.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 432,
-    "y": 48,
+    "x": 0,
+    "y": 96,
     "w": 48,
     "h": 48
   },
@@ -21,6 +20,7 @@
   "resource": "Energy",
   "herotype": "Slayer",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -30,116 +30,165 @@
     "magic": 1,
     "difficulty": 7
   },
-  "i_displayname": "Contempt for the Weak",
-  "q_displayname": "Razor Shuriken",
-  "w_dispalyname": "Living Shadow / Living Shadow 2",
-  "e_dispalyname": "Shadow Slash",
-  "r_dispalyname": "Death Mark / Death Mark 2",
-  "complex_skills": {
+  "stats": {
+    "hp": 584,
+    "hpperlevel": 85,
+    "mp": 200,
+    "mpperlevel": 0,
+    "movespeed": 345,
+    "armor": 32,
+    "armorperlevel": 3.5,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 7,
+    "hpregenperlevel": 0.65,
+    "mpregen": 50,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 63,
+    "attackdamageperlevel": 3.4,
+    "attackspeedperlevel": 3.3,
+    "attackspeed": 0.651
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Contempt for the Weak",
+      "riotId": "",
+      "name": "Contempt for the Weak",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "shadowninja_P.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 432,
-        "y": 48,
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Zed's basic attacks against targets below 50% Health deal 6-10% of the target's maximum Health as bonus Magic Damage. This effect can only occur once every 10 seconds on the same target.",
-      "champion": "Zed",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Zed's''' [[basic attack]]s against targets {{sti|health|{{as|below 50% '''maximum''' health}}}} deal {{as|{{pp|3|key=%|6 to 10|1;7;17}} of target's '''maximum''' health}} as {{tip|magic damage|{{as|'''bonus''' magic damage}}}}.",
         "''Contempt for the Weak'' can only affect the same target once every few seconds."
       ],
-      "icon": [
-        "Contempt for the Weak.png"
-      ],
-      "leveling": [],
-      "name": "Contempt for the Weak",
-      "notes": [
-        "* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal but does not affect structures.",
-        "* ''Contempt for the Weak'' can be {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, negated if ''Zed'' is {{tip|blind|blinded}} (the enhanced attack is not consumed in all cases) and {{ai|Aegis Protection|Pantheon|blocked}} (the enhanced attack is consumed)."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "magic",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal but does not affect structures.\n* ''Contempt for the Weak'' can be {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, negated if ''Zed'' is {{tip|blind|blinded}} (the enhanced attack is not consumed in all cases) and {{ai|Aegis Protection|Pantheon|blocked}} (the enhanced attack is consumed).",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "ZedQ",
-      "riotName": "Razor Shuriken",
+      "riotId": "ZedQ",
+      "name": "Razor Shuriken",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        75,
+        70,
+        65,
+        60,
+        55
+      ],
+      "costtype": "energy",
+      "targeting": "Direction",
+      "target_range": 900,
       "image": {
         "full": "ZedQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Zed and his shadow both throw their spinning blades forward, dealing damage to any targets they pass through.",
-      "champion": "Zed",
-      "cooldownBurn": "6",
-      "costBurn": "75 / 70 / 65 / 60 / 55",
-      "costtype": "Energy",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' throw their spinning blades in the target direction, each dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies they pass through, reduced to 60% against units beyond the first."
       ],
-      "icon": [
-        "Razor Shuriken.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 100% '''bonus''' AD)}}|Secondary Damage|{{ap|80*0.6 to 220*0.6}} {{as|(+ 60% '''bonus''' AD)}}}}"
-      ],
-      "name": "Razor Shuriken",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 900,
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "target_range": 900,
-      "targeting": "Direction"
+      "notes": "\n* No additional notes.",
+      "costBurn": "75/70/65/60/55",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 100% '''bonus''' AD)}}|Secondary Damage|{{ap|80*0.6 to 220*0.6}} {{as|(+ 60% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Secondary Damage</span>: <span><spell-span :list=\"['48','69','90','111','132']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ],
+              [
+                48,
+                69,
+                90,
+                111,
+                132
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "player_bonus_ad": 0.6
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "Secondary Damage",
+              "<spell-span :list=\"['48','69','90','111','132']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  48,
+                  69,
+                  90,
+                  111,
+                  132
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Secondary Damage",
+              "str": "<spell-span :list=\"['48','69','90','111','132']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "ZedW",
-      "riotName": "Living Shadow",
+      "riotId": "ZedW",
+      "name": "Living Shadow",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ZedW.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Zed's shadow dashes forward, remaining in place for 5 seconds, and mimicking his spell casts. Zed can reactivate to swap places with the shadow.",
-      "champion": "Zed",
       "cooldown": [
         22,
         20,
@@ -147,55 +196,83 @@
         16,
         14
       ],
-      "cooldownBurn": "22/20/18/16/14",
-      "costBurn": "40 / 35 / 30 / 25 / 20",
-      "costtype": "Energy",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        40,
+        35,
+        30,
+        25,
+        20
       ],
+      "costtype": "energy",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "target_range": 650,
+      "image": {
+        "full": "ZedW.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 336,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|First Cast:}} '''Zed's''' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' dashes in the target direction, remaining in place for 5 seconds and being able to mimic ''{{ai|Razor Shuriken}}'' and ''{{ai|Shadow Slash}}'' while in range of each other.",
         "'''Zed''' restores {{sti|{{as|energy}}}} whenever a [[File:Zed's Shadow.png|20px|border]] ''Shadow'' lands a mimicked ability on the same target he does. This may only happen once per cast ability.",
         "{{sbc|Second Cast - Shadow Swap:}} While in range of each other, '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadow'' {{tip|blink}} to their respective locations, swapping places."
       ],
-      "effect_radius": 1950,
-      "grounded": true,
-      "icon": [
-        "Living Shadow.png",
-        "Living Shadow 2.png"
-      ],
-      "leveling": [
-        "{{st|Energy Restored|{{as|{{ap|30 to 50}}|energy}}}}"
-      ],
-      "name": "Living Shadow",
-      "notes": [
-        "* The [[File:Zed's Shadow.png|20px|border]] ''Shadow'' grants {{tip|sight}} of its surroundings and is {{tip|untargetable}}."
-      ],
-      "projectile": "None",
-      "skill": "W",
-      "speed": 1750,
-      "target_range": 650,
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]"
+      "notes": "\n* The [[File:Zed's Shadow.png|20px|border]] ''Shadow'' grants {{tip|sight}} of its surroundings and is {{tip|untargetable}}.",
+      "costBurn": "40/35/30/25/20",
+      "cooldownBurn": "22/20/18/16/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Energy Restored|{{as|{{ap|30 to 50}}|energy}}}}",
+          "str": "<ul><li><span class=\"blue\">Energy Restored</span>: <span><span class=\"energy\"><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
+              }
+            ],
+            "st_slices": [
+              "Energy Restored",
+              "<span class=\"energy\"><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_unknown": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
+              },
+              "title": "Energy Restored",
+              "str": "<span class=\"energy\"><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "ZedE",
-      "riotName": "Shadow Slash",
+      "riotId": "ZedE",
+      "name": "Shadow Slash",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ZedE.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Zed and his shadow spin their blades, creating a burst of shadow energy. The shadow's spin slows.",
-      "champion": "Zed",
       "cooldown": [
         5,
         4.5,
@@ -203,93 +280,219 @@
         3.5,
         3
       ],
-      "cooldownBurn": "5/4.5/4/3.5/3",
-      "costBurn": "50",
-      "costtype": "Energy",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
       ],
+      "costtype": "energy",
+      "targeting": "None",
+      "image": {
+        "full": "ZedE.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' slash, dealing {{as|physical damage}} to surrounding enemies.",
         "Enemies hit by a [[File:Zed's Shadow.png|20px|border]] ''Shadow's'' ''Shadow Slash'' are {{tip|slow|slowed}} for {{fd|1.5}} seconds. Enemies hit by multiple slashes take no additional damage but instead are slowed by a 50% stronger slow.",
         "Each enemy champion hit by '''Zed's''' slash reduces ''{{ais|Living Shadow}}'' {{stil|cooldown}} by 2 seconds."
       ],
-      "effect_radius": 290,
-      "icon": [
-        "Shadow Slash.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|70 to 170}} {{as|(+ 80% '''bonus''' AD)}}}}",
-        "{{st|Slow|{{ap|20 to 40}}%|Increased Slow|{{ap|20*1.5 to 40*1.5}}%}}"
-      ],
-      "name": "Shadow Slash",
-      "notes": [
-        "* ''Shadow Slash'' has no cast time and does not interrupt '''Zed's''' previous orders."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Shadow Slash'' has no cast time and does not interrupt '''Zed's''' previous orders.",
+      "costBurn": "50",
+      "cooldownBurn": "5/4.5/4/3.5/3",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|70 to 170}} {{as|(+ 80% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                95,
+                120,
+                145,
+                170
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  95,
+                  120,
+                  145,
+                  170
+                ],
+                "player_bonus_ad": 0.8
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Slow|{{ap|20 to 40}}%|Increased Slow|{{ap|20*1.5 to 40*1.5}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Increased Slow</span>: <span><spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ],
+              [
+                30,
+                37.5,
+                45,
+                52.5,
+                60
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Increased Slow",
+              "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  37.5,
+                  45,
+                  52.5,
+                  60
+                ]
+              },
+              "title": "Increased Slow",
+              "str": "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "ZedR",
-      "riotName": "Death Mark",
+      "riotId": "ZedR",
+      "name": "Death Mark",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "ZedR.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self, Enemies",
-      "blurb": "Zed leaves a shadow behind and dashes to target Champion, marking them for death. After 3 seconds, the mark will trigger, dealing a percentage of the damage Zed has dealt while the mark was active. If the Champion dies under Death Mark, Zed can gain a portion of their attack damage.",
-      "champion": "Zed",
       "cooldown": [
         120,
         90,
         60
       ],
-      "cooldownBurn": "120/90/60",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0
       ],
-      "description": [
-        "{{sbc|First Cast:}} '''Zed''' {{tip|vanish|vanishes}} for {{fd|0.75}} seconds during which he {{tip|dashes}} through the target enemy champion, {{as|marking|buzzword}} them, becoming {{tip|ghosted}} for 3 seconds, and spawning a [[File:Zed's Shadow.png|20px|border]] ''Shadow'' at the cast location which lasts for 6 seconds. After {{fd|0.5}} seconds of his reappearance he can activate ''{{ai|Death Mark 2||Death Mark Shadow}}''.",
-        "For the next 3 seconds, the {{as|mark|buzzword}} stores a percentage of all pre-mitigation {{as|physical|AD}} and {{as|magic|AP}} damage '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' deal to the target, detonating at the end of the duration to deal {{as|physical damage}}.",
-        "{{sbc|Second Cast - Death Mark Shadow:}} Regardless of distance between each other, '''Zed''' and the ''Death Mark'' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' {{tip|blink}} to their respective locations, swapping places."
-      ],
-      "grounded": true,
-      "icon": [
-        "Death Mark.png",
-        "Death Mark 2.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{as|100% AD}} (+ {{ap|25|40|55}}% of damage dealt)}}"
-      ],
-      "name": "Death Mark",
-      "notes": [
-        "* If the target dies before '''Zed''' reaches them to apply the {{as|mark|buzzword}}, ''Death Mark'' is canceled, goes on a {{tt|reduced cooldown|5 seconds}}, and '''Zed''' reappears at the cast location.",
-        "* The {{as|mark|buzzword}} can be prevented by becoming {{tip|untargetable}} before it is applied (untargetability after application will not prevent the mark's detonation).",
-        "* ''Death Mark's'' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is functionally the same as a regular one.",
-        "* ''Death Mark's'' stored damage is taken from all [[Champion ability|abilities]], [[item]]s, and [[buff]]s.",
-        "* {{tip|Spell shield|Spell shields}} will block the {{as|mark's|buzzword}} application as well as '''Zed's''' {{tip|untargetable|untargetability}} and dash. They will not block the detonation from a {{as|mark|buzzword}} that is already applied."
-      ],
-      "projectile": "Physical",
-      "skill": "R",
-      "spelleffects": "Single target",
-      "spellshield": "Special",
+      "costtype": "",
+      "targeting": "Unit",
       "target_range": 625,
-      "targeting": "Unit"
+      "image": {
+        "full": "ZedR.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|First Cast:}} '''Zed''' becomes {{tip|untargetable}} for {{fd|0.6}} seconds after which he {{tip|dashes}} through the target enemy champion over {{fd|0.4}} seconds, {{as|marking|buzzword}} them, becoming {{tip|ghosted}} for 3 seconds, and spawning a [[File:Zed's Shadow.png|20px|border]] ''Shadow'' at the cast location which lasts for {{fd|6.5}} seconds. After {{fd|0.5}} seconds of his reappearance he can activate ''{{ai|Death Mark 2||Death Mark Shadow}}''.",
+        "For the next 3 seconds, the {{as|mark|buzzword}} stores a percentage of all pre-mitigation {{as|physical|physical damage}} and {{as|magic|magic damage}} damage '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' deal to the target, detonating at the end of the duration to deal {{as|physical damage}}.",
+        "{{sbc|Second Cast - Death Mark Shadow:}} Regardless of distance between each other, '''Zed''' and the ''Death Mark'' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' {{tip|blink}} to their respective locations, swapping places.",
+        "''If the target dies or is {{tt|too far away|1950 range}} before the dash begins, Death Mark is canceled, goes on a {{tt|reduced cooldown|5 seconds}}, and '''Zed''' reappears at the cast location.''"
+      ],
+      "notes": "\n* The {{as|mark|buzzword}} can be prevented by becoming {{tip|untargetable}} before it is applied (untargetability after application will not prevent the mark's detonation).\n* ''Death Mark's'' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is functionally the same as a regular one.\n* ''Death Mark's'' stored damage is taken from all [[Champion ability|abilities]], [[item]]s, and [[buff]]s.\n* {{tip|Spell shield|Spell shields}} will block the {{as|mark's|buzzword}} application as well as '''Zed's''' {{tip|untargetable|untargetability}} and dash. They will not block the detonation from a {{as|mark|buzzword}} that is already applied.",
+      "costBurn": "0",
+      "cooldownBurn": "120/90/60",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{as|100% AD}} (+ {{ap|25|40|55}}% of damage dealt)}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><span class=\"ad\">100% AD</span> (+ <spell-span :list=\"['25','40','55']\" :spellrankindex=\"spellrankindex\"></spell-span>% of damage dealt)</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "ap_progressions": [
+              [
+                25,
+                40,
+                55
+              ]
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<span class=\"ad\">100% AD</span> (+ <spell-span :list=\"['25','40','55']\" :spellrankindex=\"spellrankindex\"></spell-span>% of damage dealt)"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  25,
+                  40,
+                  55
+                ],
+                "player_total_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<span class=\"ad\">100% AD</span> (+ <spell-span :list=\"['25','40','55']\" :spellrankindex=\"spellrankindex\"></spell-span>% of damage dealt)",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

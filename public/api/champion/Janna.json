@@ -4,7 +4,6 @@
   "id": "Janna",
   "key": "40",
   "name": "Janna",
-  "fullname": "Janna Windforce",
   "title": "the Storm's Fury",
   "image": {
     "full": "Janna.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "Mage",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 7
   },
-  "i_displayname": "Tailwind",
-  "q_displayname": "Howling Gale",
-  "w_dispalyname": "Zephyr",
-  "e_dispalyname": "Eye of the Storm",
-  "r_dispalyname": "Monsoon",
-  "complex_skills": {
+  "stats": {
+    "hp": 500,
+    "hpperlevel": 70,
+    "mp": 350,
+    "mpperlevel": 64,
+    "movespeed": 315,
+    "armor": 28,
+    "armorperlevel": 3.8,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 11.5,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 46,
+    "attackdamageperlevel": 1.5,
+    "attackspeedperlevel": 2.95,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Tailwind",
+      "riotId": "",
+      "name": "Tailwind",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Janna_Tailwind.png",
         "sprite": "passive1.png",
@@ -49,39 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Janna passively gains 8% Movement Speed, and nearby allied champions gain this bonus when moving toward her. Additionally, Janna's basic attacks cause additional magic damage based on her bonus Movement Speed.",
-      "champion": "Janna",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Janna''' passively gains {{sti|ms|{{as|8% '''bonus''' movement speed}}}} and grants the same amount to nearby allied [[champion]]s moving towards her.",
         "'''Janna's''' [[basic attack]]s and {{ai|Zephyr|Janna}} deal bonus [[on-hit]] {{as|magic damage}} equal to {{as|{{pp|2|key=%|25;35|1;10}} of her '''bonus''' {{sti|[[movement speed]]}}}}."
       ],
-      "effect_radius": 1250,
-      "icon": [
-        "Tailwind.png"
-      ],
-      "leveling": [],
-      "name": "Tailwind",
-      "notes": [
-        "* Considering '''Janna's''' base movement speed of {{data Janna|pst2|ms}}, she actually has a starting movement speed of {{tt|{{fd|{{#expr:{{data Janna|pst2|ms}}*1.08}}}}|{{data Janna|pst2|ms}}{{times}}1.08}} thus granting {{pp|2|{{data Janna|pst2|ms}}*0.08*0.25;{{data Janna|pst2|ms}}*0.08*0.35|1;10}} bonus on-hit magic damage."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Considering '''Janna's''' base movement speed of {{data Janna|pst2|ms}}, she actually has a starting movement speed of {{tt|{{fd|{{#expr:{{data Janna|pst2|ms}}*1.08}}}}|{{data Janna|pst2|ms}}{{times}}1.08}} thus granting {{pp|2|{{data Janna|pst2|ms}}*0.08*0.25;{{data Janna|pst2|ms}}*0.08*0.35|1;10}} bonus on-hit magic damage.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "HowlingGale",
-      "riotName": "Howling Gale",
+      "riotId": "HowlingGale",
+      "name": "Howling Gale",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        60,
+        80,
+        100,
+        120,
+        140
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": "{{pp|7|type=seconds charged|1000 to 1000*1.75|0 to 3|formula=1000+(125 per half second).}}",
       "image": {
         "full": "HowlingGale.png",
         "sprite": "spell4.png",
@@ -91,46 +105,119 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "By creating a localized change in pressure and temperature, Janna is able to create a small storm that grows in size with time. She can activate the spell again to release the storm. On release this storm will fly towards the direction it was cast in, dealing damage and knocking away any enemies in its path.",
-      "champion": "Janna",
-      "collision_radius": 60,
-      "cooldownBurn": "12",
-      "costBurn": "60 / 80 / 100 / 120 / 140",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Janna''' summons a whirlwind at her current location which charges up over 3 seconds. Its range, speed, damage, and {{tip|airborne|knockup}} duration increase for each second it is left charging.",
         "At the end of the duration, or upon reactivation, the whirlwind launches itself for {{fd|1.5}} seconds in the target direction, dealing {{as|magic damage}} to all enemies it passes through and {{tip|airborne|knocking them up}} for {{pp|7|type=seconds charged|0.5 to 1.25|0 to 3|formula=0.5+(0.125 per half second).}} seconds."
       ],
-      "icon": [
-        "Howling Gale.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Magic Damage|{{ap|60 to 160}} {{as|(+ 35% AP)}}}}<!--\n-->{{st|Bonus Magic Damage Per Second|{{ap|15 to 35}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|60+15*3 to 160+35*3}} {{as|(+ 65% AP)}}}}"
-      ],
-      "name": "Howling Gale",
-      "notes": [
-        "* ''Howling Gale'' has no cast time and does not interrupt '''Janna's''' previous orders.",
-        "* The storm does not interact with enemy units that stand on top of it while it is charging."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": "{{pp|7|type=seconds charged|1000*2/3 to 1000*2/3*1.75|0 to 3|formula=666.7+(83.3 per half second).}}",
-      "spelleffects": "area of effect",
-      "spellshield": true,
-      "target_range": "{{pp|7|type=seconds charged|1000 to 1000*1.75|0 to 3|formula=1000+(125 per half second).}}",
-      "targeting": "Direction"
+      "notes": "\n* ''Howling Gale'' has no cast time and does not interrupt '''Janna's''' previous orders.\n* The storm does not interact with enemy units that stand on top of it while it is charging.",
+      "costBurn": "60/80/100/120/140",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Magic Damage|{{ap|60 to 160}} {{as|(+ 35% AP)}}}}<!--\n-->{{st|Bonus Magic Damage Per Second|{{ap|15 to 35}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|60+15*3 to 160+35*3}} {{as|(+ 65% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage Per Second</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ],
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ],
+              [
+                105,
+                145,
+                185,
+                225,
+                265
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.35000000000000003
+              },
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage Per Second",
+              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "Maximum Magic Damage",
+              "<spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Bonus Magic Damage Per Second",
+              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  15,
+                  20,
+                  25,
+                  30,
+                  35
+                ],
+                "player_total_ap": 0.1
+              },
+              "title": "Maximum Magic Damage",
+              "str": "<spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "SowTheWind",
-      "riotName": "Zephyr",
+      "riotId": "SowTheWind",
+      "name": "Zephyr",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|550}}",
       "image": {
         "full": "SowTheWind.png",
         "sprite": "spell4.png",
@@ -140,52 +227,138 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Janna summons an air elemental that passively increases her Movement Speed and enables her to pass through units. She may also activate this ability to deal damage and slow an enemy's Movement Speed. The passive is lost while this ability is on cooldown.",
-      "callforhelp": true,
-      "champion": "Janna",
-      "cooldown": [
-        8,
-        7.5,
-        7,
-        6.5,
-        6
-      ],
-      "cooldownBurn": "8/7.5/7/6.5/6",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} While ''Zephyr'' is not on cooldown, '''Janna''' is aided by an air elemental who {{tip|ghosted|ghosts}} her and grants her {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
         "{{sbc|Active:}} '''Janna''' commands her air elemental to attack the target enemy, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them for 2 seconds by an amount, capped at a maximum of 99%."
       ],
-      "icon": [
-        "Zephyr.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Movement Speed|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}}}}",
-        "{{st|Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}} {{as|(+ {{pp|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}"
-      ],
-      "name": "Zephyr",
-      "notes": [
-        "* The maximum slow (99%) is reached with {{ap|(99-24)*100/6 to (99-40)*100/6|round=2}} ability power."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "single",
-      "spellshield": true,
-      "target_range": "{{tip|er|550}}",
-      "targeting": "Unit"
+      "notes": "\n* The maximum slow (99%) is reached with {{ap|(99-24)*100/6 to (99-40)*100/6|round=2}} ability power.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "8/7.5/7/6.5/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 21
+              }
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "player_total_ap": 21
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}} {{as|(+ {{pp|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
+          "str": "{{st|Magic Damage|<spell-span :list=\"['55','90','125','160','195']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span> <span class=\"ap\">(+ <HtmlTooltip class=\"blue link\">25% − 35% (based on level)<template #content>Values: 25, 35<br>At levels: 1, 10</template></HtmlTooltip> <span><a class=\"effect link\" title=\"<simple-tooltip class=\"capture-unknown\" dname=\"as\">movement speed</a>)\">Unknown value: as\">movement speed</a>)</simple-tooltip></span></span><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                90,
+                125,
+                160,
+                195
+              ],
+              [
+                24,
+                28,
+                32,
+                36,
+                40
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 61
+              },
+              {
+                "player_total_ap": 253525351.1
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  55,
+                  90,
+                  125,
+                  160,
+                  195
+                ],
+                "player_total_ap": 253525351.1
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "EyeOfTheStorm",
-      "riotName": "Eye Of The Storm",
+      "riotId": "EyeOfTheStorm",
+      "name": "Eye of the Storm",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "mana",
+      "targeting": "Unit, Self",
+      "target_range": 800,
       "image": {
         "full": "EyeOfTheStorm.png",
         "sprite": "spell4.png",
@@ -195,52 +368,124 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Allies, Allied turrets, Self",
-      "blurb": "Janna conjures a defensive gale that shields an ally champion or turret from incoming damage and increases their Attack Damage.",
-      "champion": "Janna",
-      "cooldown": [
-        16,
-        15,
-        14,
-        13,
-        12
-      ],
-      "cooldownBurn": "16/15/14/13/12",
-      "costBurn": "70 / 80 / 90 / 100 / 110",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Janna''' {{tip|shields}} the target allied champion or herself for 5 seconds, decaying over the duration after {{fd|0.75}} seconds.",
         "While the shield holds, her target gains {{as|'''bonus''' attack damage}}.",
         "Each ability that {{tip|slow|slows}} or {{tip|airborne|knocks}} an enemy champion airborne reduces ''Eye of the Storm's'' cooldown by 20%, up to once per ability cast.",
         "''Eye of the Storm'' can be used on turrets, causing '''Janna''' to be credited for any champion kills it earns while the shield holds."
       ],
-      "icon": [
-        "Eye of the Storm.png"
-      ],
-      "leveling": [
-        "{{st|Shield Strength|{{ap|80 to 220}} {{as|(+ 70% AP)}}}}",
-        "{{st|Bonus AD|{{as|{{ap|10 to 40}} {{as|(+ 10% AP)}}|AD}}}}"
-      ],
-      "name": "Eye of the Storm",
-      "notes": [
-        "* ''Eye of the Storm'' has no cast time and does not interrupt Janna's previous orders.",
-        "* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "target_range": 800,
-      "targeting": "Unit, Self"
+      "notes": "\n* ''Eye of the Storm'' has no cast time and does not interrupt Janna's previous orders.\n* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''.",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "16/15/14/13/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield Strength|{{ap|80 to 220}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Shield Strength",
+              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Shield Strength",
+              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus AD|{{as|{{ap|10 to 40}} {{as|(+ 10% AP)}}|AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": [
+                  0.1,
+                  0.175,
+                  0.25,
+                  0.325,
+                  0.4
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus AD",
+              "<span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_ap": [
+                  0.1,
+                  0.175,
+                  0.25,
+                  0.325,
+                  0.4
+                ]
+              },
+              "title": "Bonus AD",
+              "str": "<span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "ReapTheWhirlwind",
-      "riotName": "Monsoon",
+      "riotId": "ReapTheWhirlwind",
+      "name": "Monsoon",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        150,
+        135,
+        120
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "None",
       "image": {
         "full": "ReapTheWhirlwind.png",
         "sprite": "spell4.png",
@@ -250,43 +495,81 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Allies",
-      "blurb": "Janna surrounds herself in a magical storm, throwing enemies back. After the storm has settled, soothing winds heal nearby allies while the ability is active.",
-      "champion": "Janna",
-      "cooldown": [
-        150,
-        135,
-        120
-      ],
-      "cooldownBurn": "150/135/120",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Janna''' {{tip|channels}} for 3 seconds, {{tip|airborne|knocking back}} all nearby enemies up to 875 units based on their proximity to her, while {{tip|stun|stunning}} them for {{fd|0.5}} seconds.",
         "While channeling, she releases soothing winds that {{tip|heal}} nearby allies every half-second.",
         "Moving ends its effects immediately."
       ],
-      "effect_radius": 725,
-      "icon": [
-        "Monsoon.png"
-      ],
-      "leveling": [
-        "{{st|Heal Per Half Second|{{ap|50|75|100}} {{as|(+ 25% AP)}}|Total Heal|{{ap|300|450|600}} {{as|(+ 150% AP)}}}}"
-      ],
-      "name": "Monsoon",
-      "notes": [
-        "* ''Monsoon'' can be used to pseudo-stun enemy champions pushed into a wall before the knockback travels its full distance.",
-        "* {{tip|Spell shield}} will block the knockback."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "spelleffects": "AoE, Heal",
-      "spellshield": "Special",
-      "targeting": "None"
+      "notes": "\n* ''Monsoon'' can be used to pseudo-stun enemy champions pushed into a wall before the knockback travels its full distance.\n* {{tip|Spell shield}} will block the knockback.",
+      "costBurn": "100",
+      "cooldownBurn": "150/135/120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Heal Per Half Second|{{ap|50|75|100}} {{as|(+ 25% AP)}}|Total Heal|{{ap|300|450|600}} {{as|(+ 150% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Heal Per Half Second</span>: <span><spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Heal</span>: <span><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                75,
+                100
+              ],
+              [
+                300,
+                450,
+                600
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              "Heal Per Half Second",
+              "<spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "Total Heal",
+              "<spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  75,
+                  100
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Heal Per Half Second",
+              "str": "<spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  300,
+                  450,
+                  600
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Total Heal",
+              "str": "<spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

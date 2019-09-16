@@ -4,13 +4,12 @@
   "id": "Veigar",
   "key": "45",
   "name": "Veigar",
-  "fullname": "Veigar",
   "title": "the Tiny Master of Evil",
   "image": {
     "full": "Veigar.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 240,
+    "x": 288,
     "y": 0,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -30,69 +30,54 @@
     "magic": 10,
     "difficulty": 7
   },
-  "i_displayname": "Phenomenal Evil Power",
-  "q_displayname": "Baleful Strike",
-  "w_dispalyname": "Dark Matter",
-  "e_dispalyname": "Event Horizon",
-  "r_dispalyname": "Primordial Burst",
-  "complex_skills": {
+  "stats": {
+    "hp": 505,
+    "hpperlevel": 94,
+    "mp": 490,
+    "mpperlevel": 26,
+    "movespeed": 340,
+    "armor": 22.55,
+    "armorperlevel": 3.75,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 6.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 50.71,
+    "attackdamageperlevel": 2.625,
+    "attackspeedperlevel": 2.24,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Phenomenal Evil Power",
+      "riotId": "",
+      "name": "Phenomenal Evil Power",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Veigar_Entropy.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 240,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Veigar is the greatest Evil to ever strike at the hearts of Runeterra - and he's only getting bigger! Striking an enemy Champion with a spell or scoring a takedown grants Veigar permanently increased Ability Power.",
-      "champion": "Veigar",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Veigar''' gains a stack of {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}} whenever he hits an enemy [[champion]] with an ability, and 5 stacks whenever he scores a champion {{tip|takedown}}.",
         "'''Veigar''' gains {{as|1 ability power}} for every stack of {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}."
       ],
-      "icon": [
-        "Phenomenal Evil Power.png"
-      ],
-      "leveling": [],
-      "name": "Phenomenal Evil Power",
-      "notes": [
-        "* Stacks are gained for ''landing'' the ability, not dealing damage, and so is triggered by {{ai|Event Horizon|Veigar}} and even versus spell-immune or magic-shielded targets.",
-        "* The two effects stack, granting 6 stacks for each enemy champion takedowned by an ability, 7 with {{ai|Baleful Strike}}."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Stacks are gained for ''landing'' the ability, not dealing damage, and so is triggered by {{ai|Event Horizon|Veigar}} and even versus spell-immune or magic-shielded targets.\n* The two effects stack, granting 6 stacks for each enemy champion takedowned by an ability, 7 with {{ai|Baleful Strike}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "VeigarBalefulStrike",
-      "riotName": "Baleful Strike",
+      "riotId": "VeigarBalefulStrike",
+      "name": "Baleful Strike",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "VeigarBalefulStrike.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 288,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Veigar unleashes a bolt of dark energy that deals magic damage to the first two enemies hit. Units killed by this bolt grant Veigar some ability power permanently.",
-      "champion": "Veigar",
       "cooldown": [
         7,
         6.5,
@@ -100,55 +85,163 @@
         5.5,
         5
       ],
-      "cooldownBurn": "7/6.5/6/5.5/5",
-      "costBurn": "40 / 45 / 50 / 55 / 60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
       ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 950,
+      "image": {
+        "full": "VeigarBalefulStrike.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Passive:}} Killing a unit with ''Baleful Strike'' grants 1 stack of {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}, doubled against large [[minion]]s and [[monster]]s.",
         "{{sbc|Active:}} '''Veigar''' unleashes a bolt of dark energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first two enemies hit."
       ],
-      "icon": [
-        "Baleful Strike.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Baleful Strike",
-      "notes": [
-        "* Killing two enemy champions with ''Baleful Strike'' grants {{tt|{{as|+14 AP}}|+12 from ''Phenomenal Evil Power'' and +2 from ''Baleful Strike''}}.",
-        "* Champion [[Champion summoned units|decoys]] (''such as {{cai|Mirror Image|LeBlanc}}'') do not count as \"champions\", but are considered \"units\" and thus grant {{as|+1 AP}}.",
-        "* Units killed by {{iis|Luden's Echo}} [[passive]] bolts can not grant extra {{as|ability power}}."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 2000,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 950,
-      "targeting": "Direction"
+      "notes": "\n* Killing two enemy champions with ''Baleful Strike'' grants {{tt|{{as|+14 AP}}|+12 from ''Phenomenal Evil Power'' and +2 from ''Baleful Strike''}}.\n* Champion [[Champion summoned units|decoys]] (''such as {{cai|Mirror Image|LeBlanc}}'') do not count as \"champions\", but are considered \"units\" and thus grant {{as|+1 AP}}.\n* Units killed by {{iis|Luden's Echo}} [[passive]] bolts can not grant extra {{as|ability power}}.",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "7/6.5/6/5.5/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
-    "e1": {
-      "key": "E",
-      "id": "VeigarEventHorizon",
-      "riotName": "Event Horizon",
+    "w1": {
+      "riotId": "VeigarDarkMatter",
+      "name": "Dark Matter",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        20,
+        21
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 900,
       "image": {
-        "full": "VeigarEventHorizon.png",
-        "sprite": "spell12.png",
+        "full": "VeigarDarkMatter.png",
+        "sprite": "spell13.png",
         "group": "spell",
-        "x": 384,
-        "y": 144,
+        "x": 48,
+        "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "After a brief delay Veigar twists the edges of space around the target location for 3 seconds, stunning enemies who pass through the perimeter.",
-      "champion": "Veigar",
+      "description": [
+        "{{sbc|Active:}} '''Veigar''' calls a mass of dark matter to fall from the sky which lands after a {{fd|1.25}} second delay to the target location, dealing {{as|magic damage}} to all enemies hit."
+      ],
+      "notes": "\n* ''Dark Matter'' grants a short instance of {{tip|sight}} around its cast location.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "20/21",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200,
+                250,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  150,
+                  200,
+                  250,
+                  300
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "VeigarEventHorizon",
+      "name": "Event Horizon",
+      "maxrank": 5,
       "cooldown": [
         18,
         17,
@@ -156,87 +249,179 @@
         15,
         14
       ],
-      "cooldownBurn": "18/17/16/15/14",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
       ],
-      "description": [
-        "{{sbc|Active:}} '''Veigar''' forms a cage around the target location which materializes after a {{fd|0.5}} second delay and lasts for 3 seconds, {{tip|knockdown|knocking down}} and {{tip|stun|stunning}} all enemies who pass through its edges for the first time."
-      ],
-      "effect_radius": 375,
-      "icon": [
-        "Event Horizon.png"
-      ],
-      "leveling": [
-        "{{st|Stun Duration|{{ap|1.5 to 2.5}}}}"
-      ],
-      "name": "Event Horizon",
-      "notes": [
-        "* ''Event Horizon'' can only {{tip|stun}} a unit once per cast. A unit will not be {{tip|stun|stunned}} twice if they walk through the perimeter again after recovering from an initial {{tip|stun}}.",
-        "** A champion that [[spell shield]]s the stun will be immune to it even if he walks through the perimeter again.",
-        "** {{ai|Glory in Death|Sion}} allows an ''Event Horizon'' to stun ''Sion'' twice.",
-        "* {{tip|Blink|Blinks}} and {{tip|untargetable|untargetabilities}} (i.e {{cai|Riftwalk|Kassadin}}, {{cai|Playful|Fizz}}) are not stopped by ''Event Horizon''.",
-        "* Forced movement of a unit by {{tip|airborne|knockbacks}} or {{tip|airborne|pulls}} such as {{ai|Rocket Grab|Blitzcrank}} through ''Event Horizon's'' perimeter will be stopped."
-      ],
-      "projectile": "None",
-      "skill": "E",
-      "spellshield": true,
+      "costtype": "mana",
+      "targeting": "Ground",
       "target_range": 700,
-      "targeting": "Ground"
-    },
-    "r1": {
-      "key": "R",
-      "id": "VeigarR",
-      "riotName": "Primordial Burst",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "VeigarR.png",
-        "sprite": "spell12.png",
+        "full": "VeigarEventHorizon.png",
+        "sprite": "spell13.png",
         "group": "spell",
-        "x": 432,
-        "y": 144,
+        "x": 96,
+        "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Blasts target enemy champion, dealing a large amount of magic damage, increasing based on the target's missing health.",
-      "callforhelp": true,
-      "champion": "Veigar",
+      "description": [
+        "{{sbc|Active:}} '''Veigar''' forms a cage around the target location which materializes after a {{fd|0.5}} second delay and lasts for 3 seconds, {{tip|knockdown|knocking down}} and {{tip|stun|stunning}} all enemies who pass through its edges for the first time."
+      ],
+      "notes": "\n* ''Event Horizon'' can only {{tip|stun}} a unit once per cast. A unit will not be {{tip|stun|stunned}} twice if they walk through the perimeter again after recovering from an initial {{tip|stun}}.\n** A champion that [[spell shield]]s the stun will be immune to it even if they walk through the perimeter again.\n** {{ai|Glory in Death|Sion}} allows an ''Event Horizon'' to stun ''Sion'' twice.\n* {{tip|Blink|Blinks}} and {{tip|untargetable|untargetabilities}} (i.e {{cai|Riftwalk|Kassadin}}, {{cai|Playful|Fizz}}) are not stopped by ''Event Horizon''.\n* Forced movement of a unit by {{tip|airborne|knockbacks}} or {{tip|airborne|pulls}} such as {{ai|Rocket Grab|Blitzcrank}} through ''Event Horizon's'' perimeter will be stopped.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "18/17/16/15/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Stun Duration|{{ap|1.5 to 2.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.5,
+                1.75,
+                2,
+                2.25,
+                2.5
+              ]
+            ],
+            "st_slices": [
+              "Stun Duration",
+              "<spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.5,
+                  1.75,
+                  2,
+                  2.25,
+                  2.5
+                ]
+              },
+              "title": "Stun Duration",
+              "str": "<spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "VeigarR",
+      "name": "Primordial Burst",
+      "maxrank": 3,
       "cooldown": [
         120,
         100,
         80
       ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 650,
+      "image": {
+        "full": "VeigarR.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Veigar''' blasts the target enemy champion with primordial energy, dealing {{as|magic damage}} to them, increased by {{as|{{pp|type=target's '''missing''' health|11|key=%|0 to 100|key1=%|0 to 100*2/3|displayformula=1.5% per 1% of target's '''missing''' health. ''This is capped at 66.66% '''missing''' health.''}}|health}}."
       ],
-      "icon": [
-        "Primordial Burst.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Damage|{{ap|175 to 325}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|175*2 to 325*2}} {{as|(+ 150% AP)}}}}"
-      ],
-      "name": "Primordial Burst",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 650,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Damage|{{ap|175 to 325}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|175*2 to 325*2}} {{as|(+ 150% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Damage</span>: <span><spell-span :list=\"['175','212.5','250','287.5','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['350','425','500','575','650']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                175,
+                212.5,
+                250,
+                287.5,
+                325
+              ],
+              [
+                350,
+                425,
+                500,
+                575,
+                650
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              },
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              "Minimum Damage",
+              "<spell-span :list=\"['175','212.5','250','287.5','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "Maximum Damage",
+              "<spell-span :list=\"['350','425','500','575','650']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  175,
+                  212.5,
+                  250,
+                  287.5,
+                  325
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Minimum Damage",
+              "str": "<spell-span :list=\"['175','212.5','250','287.5','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  350,
+                  425,
+                  500,
+                  575,
+                  650
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Maximum Damage",
+              "str": "<spell-span :list=\"['350','425','500','575','650']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

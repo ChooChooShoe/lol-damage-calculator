@@ -4,7 +4,6 @@
   "id": "Cassiopeia",
   "key": "69",
   "name": "Cassiopeia",
-  "fullname": "Cassiopeia Du Couteau",
   "title": "the Serpent's Embrace",
   "image": {
     "full": "Cassiopeia.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -30,15 +30,34 @@
     "magic": 9,
     "difficulty": 10
   },
-  "i_displayname": "Serpentine Grace",
-  "q_displayname": "Noxious Blast",
-  "w_dispalyname": "Miasma",
-  "e_dispalyname": "Twin Fang",
-  "r_dispalyname": "Petrifying Gaze",
-  "complex_skills": {
+  "stats": {
+    "hp": 575,
+    "hpperlevel": 90,
+    "mp": 350,
+    "mpperlevel": 40,
+    "movespeed": 328,
+    "armor": 20,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.5,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 1.5,
+    "attackspeed": 0.647
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Serpentine Grace",
+      "riotId": "",
+      "name": "Serpentine Grace",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Cassiopeia_Passive.png",
         "sprite": "passive0.png",
@@ -48,39 +67,29 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Cassiopeia gains Movement Speed per level, but she cannot purchase Boots items.",
-      "champion": "Cassiopeia",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Cassiopeia''' cannot purchase [[boots]], but instead gains {{pp|4 to 72|color=ms}} {{sti|ms|{{as|'''base''' movement speed}}}}, for a total of {{pp|4+{{Data Cassiopeia|pst2|ms}} to 72+{{Data Cassiopeia|pst2|ms}}|color=ms}} {{sti|ms|{{as|movement speed}}}}."
       ],
-      "icon": [
-        "Serpentine Grace.png"
-      ],
-      "leveling": [],
-      "name": "Serpentine Grace",
-      "notes": [
-        "* ''Serpentine Grace'' disables boots within the store but does not prevent '''Cassiopeia''' from purchasing other movement speed items.",
-        "* The movement speed from ''Serpentine Grace'' is worth {{g|48}} per level, up to a maximum of {{g|864}} at level 18.",
-        "* As {{ri|Predator}} and {{ri|Magical Footwear}} require boots, they will be replaced with {{ri|Electrocute}} and {{ri|Perfect Timing}}, respectively."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Serpentine Grace'' disables boots within the store but does not prevent '''Cassiopeia''' from purchasing other movement speed items.\n* The movement speed from ''Serpentine Grace'' is worth {{g|48}} per level, up to a maximum of {{g|864}} at level 18.\n* As {{ri|Predator}} and {{ri|Magical Footwear}} require boots, they will be replaced with {{ri|Electrocute}} and {{ri|Perfect Timing}}, respectively.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "CassiopeiaQ",
-      "riotName": "Noxious Blast",
+      "riotId": "CassiopeiaQ",
+      "name": "Noxious Blast",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        3.5
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 850,
       "image": {
         "full": "CassiopeiaQ.png",
         "sprite": "spell2.png",
@@ -90,45 +99,147 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Cassiopeia blasts an area with Poison after a brief delay, granting her increased Movement Speed if she hits an enemy champion.",
-      "champion": "Cassiopeia",
-      "cooldownBurn": "3.5",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a {{fd|0.4}}-second delay, '''Cassiopeia''' blasts the target area with {{tip|poison|Noxious Poison}}, dealing {{tip|magic damage|{{as|magic damage}}}} every second for 3 seconds to all enemies it hits.",
         "'''Cassiopeia''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds if ''Noxious Blast'' hits an enemy champion."
       ],
-      "effect_radius": 75,
-      "icon": [
-        "Noxious Blast.png"
-      ],
-      "leveling": [
-        "{{st|Total Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}|Damage Per Second|{{ap|75/3 to 215/3|round=2}} {{as|(+ 30% AP)}}}}",
-        "{{st|Bonus Movement Speed|{{ap|30 to 50}}%}}"
-      ],
-      "name": "Noxious Blast",
-      "notes": [
-        "* ''Noxious Blast'' uses [[quick cast]]ing by default."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "spelleffects": "DoT",
-      "spellshield": true,
-      "target_range": 850,
-      "targeting": "Ground"
+      "notes": "\n* ''Noxious Blast'' uses [[quick cast]]ing by default.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "3.5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|75 to 215}} {{as|(+ 90% AP)}}|Damage Per Second|{{ap|75/3 to 215/3|round=2}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Damage Per Second</span>: <span><spell-span :list=\"['25','36.67','48.33','60','71.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                110,
+                145,
+                180,
+                215
+              ],
+              [
+                25,
+                36.67,
+                48.33,
+                60,
+                71.67
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "Damage Per Second",
+              "<spell-span :list=\"['25','36.67','48.33','60','71.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  110,
+                  145,
+                  180,
+                  215
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  25,
+                  36.67,
+                  48.33,
+                  60,
+                  71.67
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Damage Per Second",
+              "str": "<spell-span :list=\"['25','36.67','48.33','60','71.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "CassiopeiaW",
-      "riotName": "Miasma",
+      "riotId": "CassiopeiaW",
+      "name": "Miasma",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        24,
+        22,
+        20,
+        18,
+        16
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 700,
       "image": {
         "full": "CassiopeiaW.png",
         "sprite": "spell2.png",
@@ -138,50 +249,94 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Cassiopeia releases several clouds of poison, slowing, grounding, and lightly damaging enemies that pass through them. Grounded enemies cannot use Movement abilities.",
-      "champion": "Cassiopeia",
-      "cooldown": [
-        18,
-        17.5,
-        17,
-        16.5,
-        16
-      ],
-      "cooldownBurn": "18/17.5/17/16.5/16",
-      "costBurn": "70 / 80 / 90 / 100 / 110",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Cassiopeia''' spits forth eight bolts of venom in an arc, leaving toxic clouds of {{tip|poison|Debilitating Poison}} where they hit the ground for 5 seconds.",
         "{{tip|poison|Debilitating Poison}} deals {{as|magic damage}} to enemies standing upon it every second, also {{tip|ground|grounding}} them and applying a {{tip|slow}} that decays over the area's duration."
       ],
-      "effect_radius": 160,
-      "icon": [
-        "Miasma.png"
-      ],
-      "leveling": [
-        "{{st|Damage Per Second|{{ap|20 to 40}} {{as|(+ 15% AP)}}|Maximum Damage|{{ap|20*5 to 40*5}} {{as|(+ 75% AP)}}}}{{st|Slow|{{ap|40|50|60|70|80%}}}}"
-      ],
-      "name": "Miasma",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "DoT",
-      "target_range": 700,
-      "targeting": "Ground"
+      "notes": "\n* No additional details.",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "24/22/20/18/16",
+      "effects": [
+        {
+          "levelingtext": "{{st|Damage Per Second|{{ap|20 to 40}} {{as|(+ 15% AP)}}|Maximum Damage|{{ap|20*5 to 40*5}} {{as|(+ 75% AP)}}}}{{st|Slow|{{ap|40|50|60|70|80%}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage Per Second</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ],
+              [
+                100,
+                125,
+                150,
+                175,
+                200
+              ],
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.15
+              },
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "CassiopeiaE",
-      "riotName": "Twin Fang",
+      "riotId": "CassiopeiaE",
+      "name": "Twin Fang",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0.75
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 700,
       "image": {
         "full": "CassiopeiaE.png",
         "sprite": "spell2.png",
@@ -191,49 +346,111 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Cassiopeia lets loose an attack that deals increased damage to Poisoned targets and heals her for a percentage of the damage dealt. If the target dies from this attack, Cassiopeia regains Mana.",
-      "callforhelp": true,
-      "champion": "Cassiopeia",
-      "cooldownBurn": "0.75",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Cassiopeia''' launches her fangs at the target enemy, dealing {{pp|52 to 120|color=magic damage}} {{as|(+ 10% AP)}} {{as|magic damage}}. If ''Twin Fang'' kills its target, or the target is killed mid-flight, ''Twin Fang'' refunds {{as|its {{sti|mana}} cost}}.",
         "If the target is {{tip|poison|poisoned}}, ''Twin Fang'' deals {{as|'''bonus''' magic damage}} and {{tip|heals}} '''Cassiopeia'''. The heal is only 25% as effective against minions and small monsters."
       ],
-      "icon": [
-        "Twin Fang.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10 to 90}} {{as|(+ 60% AP)}}}}\n{{st|Healing|{{as|{{ap|12 to 20}}% AP}}|Reduced Healing|{{as|{{ap|12*0.25 to 20*0.25}}% AP}}}}"
-      ],
-      "name": "Twin Fang",
-      "notes": [
-        "* ''Twin Fang's'' bonus damage and healing will also trigger on the following {{tip|poison|poisons}}.",
-        "** {{ai|Poison Trail|Singed}}",
-        "** {{ai|Noxious Trap|Teemo}}",
-        "** {{ai|Toxic Shot|Teemo}}",
-        "** {{ai|Deadly Venom|Twitch}}",
-        "* Apply {{tip|Single target}} effect to enemy target and {{tip|Heal}} to {{ci|Cassiopeia}}."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "Special",
-      "spellshield": true,
-      "target_range": 700,
-      "targeting": "Unit"
+      "notes": "\n* ''Twin Fang's'' bonus damage and healing will also trigger on the following {{tip|poison|poisons}}.\n** {{ai|Poison Trail|Singed}}\n** {{ai|Noxious Trap|Teemo}}\n** {{ai|Toxic Shot|Teemo}}\n** {{ai|Deadly Venom|Twitch}}\n* Apply {{tip|Single target}} effect to enemy target and {{tip|Heal}} to {{ci|Cassiopeia}}.",
+      "costBurn": "50",
+      "cooldownBurn": "0.75",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 90}} {{as|(+ 60% AP)}}}}\n{{st|Healing|{{as|{{ap|12 to 20}}% AP}}|Reduced Healing|{{as|{{ap|12*0.25 to 20*0.25}}% AP}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Healing</span>: <span><span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span></span></li><li><span class=\"blue\">Reduced Healing</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                30,
+                50,
+                70,
+                90
+              ],
+              [
+                12,
+                14,
+                16,
+                18,
+                20
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": [
+                  0.03,
+                  0.035,
+                  0.04,
+                  0.045,
+                  0.05
+                ]
+              }
+            ],
+            "st_slices": [
+              "Healing",
+              "<span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span>",
+              "Reduced Healing",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  30,
+                  50,
+                  70,
+                  90
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Healing",
+              "str": "<span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Reduced Healing",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "CassiopeiaR",
-      "riotName": "Petrifying Gaze",
+      "riotId": "CassiopeiaR",
+      "name": "Petrifying Gaze",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
       "image": {
         "full": "CassiopeiaR.png",
         "sprite": "spell2.png",
@@ -243,43 +460,60 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 80,
-      "blurb": "Cassiopeia releases a swirl of magical energy from her eyes, stunning any enemies in front of her that are facing her and slowing any others with their back turned.",
-      "champion": "Cassiopeia",
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a brief delay, '''Cassiopeia''' blasts enemies in a cone in the target direction, dealing {{as|magic damage}} to all enemies hit.",
         "Enemies facing '''Cassiopeia''' are {{tip|stun|stunned}} for 2 seconds upon being hit by ''Petrifying Gaze'', and all other affected enemies are instead {{tip|slow|slowed}} by 40% for the same duration."
       ],
-      "effect_radius": 825,
-      "icon": [
-        "Petrifying Gaze.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Petrifying Gaze",
-      "notes": [
-        "* The facing direction of champions whose abilities/animations cause them to spin is always the direction they are moving in. In the event of abilities that cause the champion to spin on the spot ({{ai|Death Lotus|Katarina}}) it will factor the direction they were facing on cast.",
-        "* {{ci|Lucian}}, {{ci|Garen}} and {{ci|Wukong}} are facing in the direction of their movement when they are using {{ai|The Culling|Lucian}}, {{ai|Judgment|Garen}} and {{ai|Cyclone|Wukong}}."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* ''Petryfing Gaze's'' target direction will change if '''Cassiopeia's''' facing direction changes during the cast time (i.e through {{tip|airborne|knockbacks}}).\n* The facing direction of champions whose abilities/animations cause them to spin is always the direction they are moving in. In the event of abilities that cause the champion to spin on the spot ({{ai|Death Lotus|Katarina}}) it will factor the direction they were facing on cast.\n* {{ci|Lucian}}, {{ci|Garen}} and {{ci|Wukong}} are facing in the direction of their movement when they are using {{ai|The Culling|Lucian}}, {{ai|Judgment|Garen}} and {{ai|Cyclone|Wukong}}.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

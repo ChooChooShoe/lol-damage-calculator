@@ -1,10 +1,9 @@
 {
   "patch": "V6.2",
-  "changes": "9.14.1",
+  "changes": "9.18.1",
   "id": "Jhin",
   "key": "202",
   "name": "Jhin",
-  "fullname": "Khada Jhin",
   "title": "the Virtuoso",
   "image": {
     "full": "Jhin.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Slayer",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 6,
     "difficulty": 6
   },
-  "i_displayname": "Whisper",
-  "q_displayname": "Dancing Grenade",
-  "w_dispalyname": "Deadly Flourish / Caught Out",
-  "e_dispalyname": "Captive Audience",
-  "r_dispalyname": "Curtain Call / Curtain Call 2 / Curtain Call 3",
-  "complex_skills": {
+  "stats": {
+    "hp": 556,
+    "hpperlevel": 91,
+    "mp": 300,
+    "mpperlevel": 50,
+    "movespeed": 330,
+    "armor": 24,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 3.75,
+    "hpregenperlevel": 0.55,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 59,
+    "attackdamageperlevel": 4.7,
+    "attackspeedperlevel": 0,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Whisper",
+      "riotId": "",
+      "name": "Whisper",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Jhin_P.png",
         "sprite": "passive1.png",
@@ -49,51 +68,36 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Jhin's hand cannon, Whisper, is a precise instrument designed to deal superior damage. It fires at a fixed rate and carries only four shots. Jhin imbues the final bullet with dark magics to critically strike and deal bonus execute damage. Whenever Whisper crits, it inspires Jhin with a burst of movement speed.",
-      "champion": "Jhin",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Death In 4 Acts:}} '''Jhin's''' attack speed cannot be improved except through [[Champion statistic#Increasing Statistics|growth]], and his [[basic attack]]s consume [[ammunition]] for 4 rounds. '''Jhin''' will {{tip|disarm|reload}} over {{fd|2.5}} seconds after firing his 4th attack, or after 10 seconds without attacking or using an ability.",
         "'''Jhin's''' fourth attack will {{tip|critically strike}} and deal {{as|{{pp|3|key=%|15 to 25|1 to 11}} of the target's '''missing''' health}} {{tip|physical damage|{{as|'''bonus''' physical damage|physical damage}}}}. Against [[structures]], '''Jhin's''' fourth attack will instead critically strike for {{as|{{critical damage|20|60}} AD}} {{as|'''bonus''' physical damage}}.",
         "{{sbc|Every Moment Matters:}} '''Jhin''' gains {{pp|key=%|4;5;6;7;8;9;10;11;12;14;16;20;24;28;32;36;40;44|displayformula = 3%+1% per level up to 9, then+2% up to 11, then+4% up to 18}}{{ft|{{as|(+ {{fd|0.4}}% per 1% critical strike chance)}} {{as|(+ {{fd|0.25}}% per 1% '''bonus''' attack speed)}}|{{as|(+ 40% of his critical strike chance)}} {{as|(+ 25% of his '''bonus''' attack speed)}}}} {{as|'''bonus''' {{sti|attack damage}}}}.",
         "{{tip|Critical strikes}} grant 10% {{as|(+ {{fd|0.4}}% per 1% '''bonus''' attack speed)}} {{sti|{{as|'''bonus''' movement speed}}}} for 2 seconds, but deal only {{as|{{critical damage|50|75}} AD}} {{as|'''bonus''' physical damage}}."
       ],
-      "flavorsound": "{{sm2|Jhin.I18.ogg|''\"One, two, three, four, two, two, three, four.\"''}}",
-      "icon": [
-        "Whisper.png"
-      ],
-      "leveling": [],
-      "name": "Whisper",
-      "notes": [
-        "* Note that the above template shows '''Jhin''' as gaining bonus attack speed. This is a limitation of the template. In actuality, it's '''Jhin's''' '''base''' attack speed that increases by the specified amount each level and would be more correctly displayed as {{fd|0.625}} – {{fd|0.944}}.",
-        "* The penalty to '''Jhin's''' {{as|critical damage}} is multiplicative (200%{{times}}0.75 rather than -25%) and stacks with other sources (i.e {{ii|Infinity Edge}}) ((100+100{{times}}1.25){{times}}0.75).",
-        "** This penalty does not affect {{ai|Curtain Call|Jhin}}.",
-        "* The 4th attack versus a structure is classified as a critical strike for effects such as {{ii|Statikk Shiv}}.",
-        "* The attack damage multiplier stacks additively with {{bi|Dragon Slayer|Dragon Slayer's}}.",
-        "* ''Every Moment Matter's'' bonus {{as|AD}} will benefit from any amount of {{as|bonus attack speed}}, even in excess of an amount that would usually reach the attacks per second cap ({{fd|2.5}}).",
-        "** The maximum modifier without attack speed is 84%.",
-        "*** 44% base modifier at level 18.",
-        "*** 40% from critical strike chance on account of the 100% cap.",
-        "*** [[Attack speed#Reducing attack speed|Attack speed slows]] will only affect '''Jhin's''' bonus attack damage from his passive and will ignore his attack speed as it is fixed.",
-        "* Attack damage reductions apply before the multiplier causing them to be stronger against Jhin than advertised or versus other champions."
-      ],
-      "projectile": true,
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Note that the above template shows '''Jhin''' as gaining bonus attack speed. This is a limitation of the template. In actuality, it's '''Jhin's''' '''base''' attack speed that increases by the specified amount each level and would be more correctly displayed as {{fd|0.625}} – {{fd|0.944}}.\n* The penalty to '''Jhin's''' {{as|critical damage}} also reduces the base damage ((100 + 100){{times}}0.75 rather than 100 + 100{{times}}0.75) and stacks with other sources (i.e {{ii|Infinity Edge}}) ((100 + 100{{times}}1.25){{times}}0.75).\n** This penalty does not affect {{ai|Curtain Call|Jhin}}.\n* The 4th attack versus a structure is classified as a critical strike for effects such as {{ii|Statikk Shiv}}.\n* The attack damage multiplier stacks additively with {{bi|Dragon Slayer|Dragon Slayer's}}.\n* ''Every Moment Matter's'' bonus {{as|AD}} will benefit from any amount of {{as|bonus attack speed}}, even in excess of an amount that would usually reach the attacks per second cap ({{fd|2.5}}).\n** The maximum modifier without attack speed is 84%.\n*** 44% base modifier at level 18.\n*** 40% from critical strike chance on account of the 100% cap.\n*** [[Attack speed#Reducing attack speed|Attack speed slows]] will only affect '''Jhin's''' bonus attack damage from his passive and will ignore his attack speed as it is fixed.\n* Attack damage reductions apply before the multiplier causing them to be stronger against Jhin than advertised or versus other champions.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "JhinQ",
-      "riotName": "Dancing Grenade",
+      "riotId": "JhinQ",
+      "name": "Dancing Grenade",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 550,
       "image": {
         "full": "JhinQ.png",
         "sprite": "spell4.png",
@@ -103,52 +107,139 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Jhin launches a magical cartridge at an enemy. It can hit up to four targets and gains damage each time it kills.",
-      "callforhelp": true,
-      "champion": "Jhin",
-      "cooldown": [
-        7,
-        6.5,
-        6,
-        5.5,
-        5
-      ],
-      "cooldownBurn": "7/6.5/6/5.5/5",
-      "costBurn": "40 / 45 / 50 / 55 / 60",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Jhin''' launches a canister at the target enemy, dealing {{as|physical damage}}. ''Dancing Grenade'' bounces to up to three additional enemies beyond the first, with each kill it performs increasing its total damage by 35%."
       ],
-      "effect_radius": "{{tt|400|Estimated}}",
-      "icon": [
-        "Dancing Grenade.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Physical Damage|{{ap|45 to 145}} {{as|(+ {{ap|45 to 75}}% AD)}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|45*1.35^3 to 145*1.35^3}} {{as|(+ {{ap|45*1.35^3 to 75*1.35^3}}% AD)}} {{as|(+ {{fd|147.62}}% AP)}}}}"
-      ],
-      "name": "Dancing Grenade",
-      "notes": [
-        "* The ''Grenade'' will still bounce even if it's ''spell shielded''.",
-        "* ''Dancing Grenade'' does not need to last hit minions in order to gain bonus damage on subsequent bounces. Any minions that die, from any means, after having been bounced from will still contribute bonus damage to any remaining bounces."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Multi-hit",
-      "spellshield": true,
-      "target_range": 550,
-      "targeting": "Unit"
+      "notes": "\n* The ''Grenade'' will still bounce even if it's ''spell shielded''.\n* ''Dancing Grenade'' does not need to last hit minions in order to gain bonus damage on subsequent bounces. Any minions that die, from any means, after having been bounced from will still contribute bonus damage to any remaining bounces.",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "7/6.5/6/5.5/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|45 to 145}} {{as|(+ {{ap|45 to 75}}% AD)}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|45*1.35^3 to 145*1.35^3}} {{as|(+ {{ap|45*1.35^3 to 75*1.35^3}}% AD)}} {{as|(+ {{fd|147.62}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                45,
+                70,
+                95,
+                120,
+                145
+              ],
+              [
+                45,
+                52.5,
+                60,
+                67.5,
+                75
+              ],
+              [
+                3,
+                51.188,
+                99.375,
+                147.563,
+                195.75
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ad": [
+                  0.03,
+                  0.27563,
+                  0.52125,
+                  0.76688,
+                  1.0125
+                ]
+              },
+              {
+                "player_total_ap": 1.4762000000000002
+              }
+            ],
+            "st_slices": [
+              "Minimum Physical Damage",
+              "<spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
+              "Maximum Damage",
+              "<spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  70,
+                  95,
+                  120,
+                  145
+                ],
+                "player_total_ap": 0.6,
+                "player_total_ad": [
+                  0.03,
+                  0.27563,
+                  0.52125,
+                  0.76688,
+                  1.0125
+                ]
+              },
+              "title": "Minimum Physical Damage",
+              "str": "<spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  52.5,
+                  60,
+                  67.5,
+                  75
+                ],
+                "player_total_ap": 0.6,
+                "player_total_ad": [
+                  0.03,
+                  0.27563,
+                  0.52125,
+                  0.76688,
+                  1.0125
+                ]
+              },
+              "title": "Maximum Damage",
+              "str": "<spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "JhinW",
-      "riotName": "Deadly Flourish",
+      "riotId": "JhinW",
+      "name": "Deadly Flourish",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 3000,
       "image": {
         "full": "JhinW.png",
         "sprite": "spell4.png",
@@ -158,55 +249,148 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Jhin brandishes his cane, firing a single shot with incredible range. It pierces through minions and monsters, but stops on the first champion hit. If the target was recently struck by Jhin's allies, lotus traps, or basic attacks, they are rooted.",
-      "cast_time": 0.75,
-      "champion": "Jhin",
-      "cooldown": [
-        14,
-        14,
-        14,
-        14,
-        14
-      ],
-      "cooldownBurn": "14",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Passive - Caught Out:}} Enemy champions damaged by '''Jhin''', his allies, or inside a blooming ''{{ai|Captive Audience||Lotus Trap}}'' are marked for 4 seconds.",
         "{{sbc|Active:}} '''Jhin''' fires a shot in the target direction that deals {{as|physical damage}} to all enemies in a line until colliding with an enemy {{tip|champion}}. Deals 75% damage against non-champions.",
         "Damaging a '''Caught Out''' champion {{tip|root|roots}} them and grants '''Jhin''' ''{{ais|Whisper||Every Moment Matters}}'' {{sti|ms|{{as|'''bonus''' movement speed}}}}."
       ],
-      "icon": [
-        "Caught Out.png",
-        "Deadly Flourish.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 50% AD)}}|Non-Champion Damage|{{ap|50*0.75 to 190*0.75}} {{as|(+ {{fd|37.5}}% AD)}}}}",
-        "{{st|Root Duration|{{ap|1 to 2}}}}"
-      ],
-      "name": "Deadly Flourish",
-      "notes": [
-        "* The '''Caught Out''' mark only appears if ''Deadly Flourish'' can {{tip|root}} the enemy, and will not if the ability's cooldown is longer than 4 seconds or isn't ranked up.",
-        "* Applies {{tip|single target}} to enemy champions and {{tip|area of effect}} to other units."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "Special",
-      "spellshield": true,
-      "target_range": 3000,
-      "targeting": "Direction"
+      "notes": "\n* The '''Caught Out''' mark only appears if ''Deadly Flourish'' can {{tip|root}} the enemy, and will not if the ability's cooldown is longer than 4 seconds or isn't ranked up.\n* Applies {{tip|single target}} to enemy champions and {{tip|area of effect}} to other units.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 50% AD)}}|Non-Champion Damage|{{ap|50*0.75 to 190*0.75}} {{as|(+ {{fd|37.5}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span></span></li><li><span class=\"blue\">Non-Champion Damage</span>: <span><spell-span :list=\"['37.5','63.75','90','116.25','142.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                85,
+                120,
+                155,
+                190
+              ],
+              [
+                37.5,
+                63.75,
+                90,
+                116.25,
+                142.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.5
+              },
+              {
+                "player_total_ad": 0.375
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span>",
+              "Non-Champion Damage",
+              "<spell-span :list=\"['37.5','63.75','90','116.25','142.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  85,
+                  120,
+                  155,
+                  190
+                ],
+                "player_total_ad": 0.5
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  37.5,
+                  63.75,
+                  90,
+                  116.25,
+                  142.5
+                ],
+                "player_total_ad": 0.5
+              },
+              "title": "Non-Champion Damage",
+              "str": "<spell-span :list=\"['37.5','63.75','90','116.25','142.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Root Duration|{{ap|1 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1,
+                1.25,
+                1.5,
+                1.75,
+                2
+              ]
+            ],
+            "st_slices": [
+              "Root Duration",
+              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ]
+              },
+              "title": "Root Duration",
+              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "JhinE",
-      "riotName": "Captive Audience",
+      "riotId": "JhinE",
+      "name": "Captive Audience",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "cost": [
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "costtype": "Mana + 1 Charge",
+      "targeting": "Ground",
+      "target_range": 750,
       "image": {
         "full": "JhinE.png",
         "sprite": "spell4.png",
@@ -216,45 +400,114 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Jhin places an invisible lotus trap that blooms when walked over. It slows nearby enemies before dealing damage with an explosion of serrated petals. Beauty in Death - When Jhin kills an enemy champion, a lotus trap will bloom near their corpse.",
-      "champion": "Jhin",
-      "cooldownBurn": "2",
-      "costBurn": "30 / 35 / 40 / 45 / 50",
-      "costtype": "Mana + 1 Charge",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive - Beauty in Death:}} '''Jhin''' summons a blooming ''Lotus Trap'' under every enemy champion he kills.",
         "Additionally, '''Jhin''' periodically [[stock]]s a ''Lotus Trap'' charge, up to a maximum of 2, which are unaffected by ''Beauty in Death''.",
         "{{sbc|Active:}} '''Jhin''' places a ''Lotus Trap'' at the target location which {{tip|Stealthed Trap|stealths}} and arms after a brief delay, lasting up to 180 seconds. The ''Lotus Trap'' blooms upon enemy contact, {{tip|sight|revealing}} enemies in the area for 4 seconds.",
         "Blooming ''Lotus Traps'' {{tip|slow}} enemies for 35% for 2 seconds before detonating, dealing {{as|magic damage}}. ''Lotus Traps'' deal 65% damage against non-champions and champions recently hit by one."
       ],
-      "icon": [
-        "Captive Audience.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|20 to 260}} {{as|(+ 120% AD)}} {{as|(+ 100% AP)}}|Reduced Damage|{{ap|20*0.65 to 260*0.65}} {{as|(+ 78% AD)}} {{as|(+ 65% AP)}}}}"
-      ],
-      "name": "Captive Audience",
-      "notes": [
-        "* The ''Lotus Trap'' will stop when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}."
-      ],
-      "projectile": "Special",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 750,
-      "targeting": "Ground"
+      "notes": "\n* The ''Lotus Trap'' will stop when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.",
+      "costBurn": "30/35/40/45/50",
+      "cooldownBurn": "2",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|20 to 260}} {{as|(+ 120% AD)}} {{as|(+ 100% AP)}}|Reduced Damage|{{ap|20*0.65 to 260*0.65}} {{as|(+ 78% AD)}} {{as|(+ 65% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['20','80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['13','52','91','130','169']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 78% AD)</span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                80,
+                140,
+                200,
+                260
+              ],
+              [
+                13,
+                52,
+                91,
+                130,
+                169
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1.2
+              },
+              {
+                "player_total_ap": 1
+              },
+              {
+                "player_total_ad": 0.78
+              },
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['20','80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+              "Reduced Damage",
+              "<spell-span :list=\"['13','52','91','130','169']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 78% AD)</span> <span class=\"ap\">(+ 65% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  80,
+                  140,
+                  200,
+                  260
+                ],
+                "player_total_ad": 1.2,
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['20','80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  13,
+                  52,
+                  91,
+                  130,
+                  169
+                ],
+                "player_total_ad": 1.2,
+                "player_total_ap": 1
+              },
+              "title": "Reduced Damage",
+              "str": "<spell-span :list=\"['13','52','91','130','169']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 78% AD)</span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "JhinR",
-      "riotName": "Curtain Call",
+      "riotId": "JhinR",
+      "name": "Curtain Call",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        105,
+        90
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
       "image": {
         "full": "JhinR.png",
         "sprite": "spell4.png",
@@ -264,50 +517,89 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": "{{tt|60{{degree}}|Estimated}}",
-      "blurb": "Jhin channels, transforming Whisper into a shoulder-mounted mega-cannon. It is able to fire 4 super shots at extreme range that pierce through minions and monsters, but stop on the first champion impacted. Whisper cripples enemies hit, which slows them and deals execute damage. The 4th shot is perfectly crafted, epically powerful, and guaranteed to critically strike.",
-      "champion": "Jhin",
-      "cooldown": [
-        120,
-        105,
-        90
-      ],
-      "cooldownBurn": "120/105/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|First Cast:}} '''Jhin''' begins {{ct|channel|channeling|cast=interrupts|items=interrupts,true,,false|spells=true,false,interrupts,interrupts,false}}, gaining a wider field of view but not a larger vision range, during which he has the ability to cancel or recast ''Curtain Call'' up to four times. '''Jhin''' cannot cancel the channeling or fire the first shot until after 1 second, and has 10 seconds in which to use all casts.",
         "{{sbc|Successive Casts:}} After {{fd|0.25}} seconds, '''Jhin''' fires a round in the target direction that deals {{as|physical damage}} to all enemies hit, increased by {{as|{{pp|type=target's '''missing''' health|11|key=%|key1=%|0 to 300|0 to 100|formula=3% per 1% of target's '''missing''' health.}}}}, until colliding with an enemy {{tip|champion}}, {{tip|sight|revealing}} the traveled area for {{fd|0.5}} seconds and all enemies hit for 2 seconds while also {{tip|slow|slowing}} them by 80% for {{fd|0.5}} seconds.",
         "The {{ai|Curtain Call 3||final shot}} will {{tip|critically strike}} for {{as|{{critical damage|100}} '''bonus''' physical damage}}."
       ],
-      "effect_radius": "{{tt|3500|Estimated}}",
-      "flavorsound": "{{sm2|Jhin.R1.ogg|''\"Prepare... for your finale.\"''}}",
-      "icon": [
-        "Curtain Call.png",
-        "Curtain Call 2.png",
-        "Curtain Call 3.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Non-Fourth Shot Damage|{{ap|50 to 200}} {{as|(+ 20% AD)}}|Maximum Non-Fourth Shot Damage|{{ap|50*4 to 200*4}} {{as|(+ 80% AD)}}}}"
-      ],
-      "name": "Curtain Call",
-      "notes": [
-        "* Applies {{tip|single target}} to enemy champions and {{tip|area of effect}} to other units.",
-        "* The opening sound effect and area of range are audible and visible to both teams.",
-        "* There is 1 second preparation time on cast and 1 second static cooldown between each bullet.",
-        "* Cooldown starts after 10 seconds or after firing all 4 shots. Leveling up the ability while channeling will change the final cooldown.",
-        "<!--Bullet travel speed approx 3200? -->"
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "Special",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* Applies {{tip|single target}} to enemy champions and {{tip|area of effect}} to other units.\n* The opening sound effect and area of range are audible and visible to both teams.\n* There is 1 second preparation time on cast and 1 second static cooldown between each bullet.\n* Cooldown starts after 10 seconds or after firing all 4 shots. Leveling up the ability while channeling will change the final cooldown.\n<!--Bullet travel speed approx 3200? -->",
+      "costBurn": "100",
+      "cooldownBurn": "120/105/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Non-Fourth Shot Damage|{{ap|50 to 200}} {{as|(+ 20% AD)}}|Maximum Non-Fourth Shot Damage|{{ap|50*4 to 200*4}} {{as|(+ 80% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Non-Fourth Shot Damage</span>: <span><spell-span :list=\"['50','87.5','125','162.5','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% AD)</span></span></li><li><span class=\"blue\">Maximum Non-Fourth Shot Damage</span>: <span><spell-span :list=\"['200','350','500','650','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                87.5,
+                125,
+                162.5,
+                200
+              ],
+              [
+                200,
+                350,
+                500,
+                650,
+                800
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.2
+              },
+              {
+                "player_total_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Minimum Non-Fourth Shot Damage",
+              "<spell-span :list=\"['50','87.5','125','162.5','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% AD)</span>",
+              "Maximum Non-Fourth Shot Damage",
+              "<spell-span :list=\"['200','350','500','650','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  87.5,
+                  125,
+                  162.5,
+                  200
+                ],
+                "player_total_ad": 0.2
+              },
+              "title": "Minimum Non-Fourth Shot Damage",
+              "str": "<spell-span :list=\"['50','87.5','125','162.5','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  350,
+                  500,
+                  650,
+                  800
+                ],
+                "player_total_ad": 0.2
+              },
+              "title": "Maximum Non-Fourth Shot Damage",
+              "str": "<spell-span :list=\"['200','350','500','650','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

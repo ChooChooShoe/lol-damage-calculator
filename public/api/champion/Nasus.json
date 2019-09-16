@@ -4,7 +4,6 @@
   "id": "Nasus",
   "key": "75",
   "name": "Nasus",
-  "fullname": "Nasus",
   "title": "the Curator of the Sands",
   "image": {
     "full": "Nasus.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Tank",
+  "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 6,
     "difficulty": 6
   },
-  "i_displayname": "Soul Eater",
-  "q_displayname": "Siphoning Strike",
-  "w_dispalyname": "Wither",
-  "e_dispalyname": "Spirit Fire",
-  "r_dispalyname": "Fury of the Sands",
-  "complex_skills": {
+  "stats": {
+    "hp": 561.2,
+    "hpperlevel": 90,
+    "mp": 325.6,
+    "mpperlevel": 42,
+    "movespeed": 350,
+    "armor": 34,
+    "armorperlevel": 3.5,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 9,
+    "hpregenperlevel": 0.9,
+    "mpregen": 7.44,
+    "mpregenperlevel": 0.5,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 67,
+    "attackdamageperlevel": 3.5,
+    "attackspeedperlevel": 3.48,
+    "attackspeed": 0.638
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Soul Eater",
+      "riotId": "",
+      "name": "Soul Eater",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Nasus_Passive.png",
         "sprite": "passive2.png",
@@ -49,38 +68,32 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Nasus drains his foe's spiritual energy, giving him bonus Life Steal.",
-      "champion": "Nasus",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Innate:}} '''Nasus''' permanently has {{pp|3|key=%|showtype=true|12 to 24|1 to 13}} {{sti|life steal|'''bonus''' life steal}}."
+        "{{sbc|Innate:}} '''Nasus''' permanently has {{sti|life steal|{{pp|3|key=%|showtype=true|12 to 24|1 to 13}} '''bonus''' life steal}}."
       ],
-      "icon": [
-        "Soul Eater.png"
-      ],
-      "leveling": [],
-      "name": "Soul Eater",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "Heal",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "NasusQ",
-      "riotName": "Siphoning Strike",
+      "riotId": "NasusQ",
+      "name": "Siphoning Strike",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "NasusQ.png",
         "sprite": "spell8.png",
@@ -90,57 +103,79 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Nasus strikes his foe, dealing damage and increasing the power of his future Siphoning Strikes if he slays his target.",
-      "champion": "Nasus",
-      "cooldown": [
-        8,
-        7,
-        6,
-        5,
-        4
-      ],
-      "cooldownBurn": "8/7/6/5/4",
-      "costBurn": "20",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nasus's''' next [[basic attack]] within 10 seconds gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "If ''Siphoning Strike'' [[kill]]s its target, '''Nasus''' permanently gains {{as|3 stacks|Siphoning Strike}}, increased to {{as|12|Siphoning Strike}} if its target is a [[champion]], large [[minion]], or large [[monster]].",
         "''Siphoning Strike'' resets '''Nasus'''' autoattack timer."
       ],
-      "icon": [
-        "Siphoning Strike.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Physical Damage|{{tt|{{ap|30 to 110}}|Amplified by critical strikes and critical damage}} {{as|(+ ''Siphoning Strike'' stacks)|Siphoning Strike}}}}"
-      ],
-      "name": "Siphoning Strike",
-      "notes": [
-        "* ''Siphoning Strike's'' cooldown will not start until the enhanced attack is used or it expires.",
-        "* ''Siphoning Strike's'' bonus range stacks with {{ais|Fury of the Sands|Nasus}}, granting 200 total range.",
-        "* ''Nasus'' can gain ''Siphoning Strike'' stacks by last-hitting any targetable enemy units ([[ward]]s, structures, {{ai|Summon: Tibbers|Annie|Tibbers}}, {{ai|Powder Keg|Gangplank}}, {{ai|Prophet of an Elder God|Illaoi|Tentacles}}, {{ai|Void Swarm|Malzahar|Voidlings}}, {{ai|Jack in the Box|Shaco}}, {{ai|Noxious Trap|Teemo}}, {{ai|Shepherd of Souls|Yorick|Mist Walkers}}, {{ai|Eulogy of the Isles|Yorick|Maiden of the Mist}})",
-        "* ''Siphoning Strike'' will not generate stacks from secondary units killed by item area-of-effect damage ({{nie|Cleave}}, {{nie|Crescent}}, {{nie|Icy Zone}}).",
-        "* ''Siphoning Strike'' will not generate stacks from jungle plants.",
-        "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* Only ''Siphoning Strike's'' base damage interacts with {{tip|critical strike|critical strikes}} but the bonus damage will still apply {{sti|life steal}} as well as affect structures.",
-        "* If ''Nasus'' is {{tip|blind|blinded}} ''Siphoning Strike's'' enhanced attack will not be consumed."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "Q",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Siphoning Strike's'' cooldown will not start until the enhanced attack is used or it expires.\n* ''Siphoning Strike's'' bonus range stacks with {{ais|Fury of the Sands|Nasus}}, granting 200 total range.\n* ''Nasus'' can gain ''Siphoning Strike'' stacks by last-hitting any targetable enemy units ([[ward]]s, structures, {{ai|Summon: Tibbers|Annie|Tibbers}}, {{ai|Powder Keg|Gangplank}}, {{ai|Prophet of an Elder God|Illaoi|Tentacles}}, {{ai|Void Swarm|Malzahar|Voidlings}}, {{ai|Jack in the Box|Shaco}}, {{ai|Noxious Trap|Teemo}}, {{ai|Shepherd of Souls|Yorick|Mist Walkers}}, {{ai|Eulogy of the Isles|Yorick|Maiden of the Mist}})\n* ''Siphoning Strike'' will not generate stacks from secondary units killed by item area-of-effect damage ({{nie|Cleave}}, {{nie|Crescent}}, {{nie|Icy Zone}}).\n* ''Siphoning Strike'' will not generate stacks from jungle plants.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* Only ''Siphoning Strike's'' base damage interacts with {{tip|critical strike|critical strikes}} but the bonus damage will still apply {{sti|life steal}} as well as affect structures.\n* If ''Nasus'' is {{tip|blind|blinded}} ''Siphoning Strike's'' enhanced attack will not be consumed.",
+      "costBurn": "20",
+      "cooldownBurn": "8/7/6/5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{tt|{{ap|30 to 110}}|Amplified by critical strikes and critical damage}} {{as|(+ ''Siphoning Strike'' stacks)|Siphoning Strike}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"title-tooltip\" title=\"Amplified by critical strikes and critical damage\"><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"Siphoning-Strike\">(+ <i>Siphoning Strike</i> stacks)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                50,
+                70,
+                90,
+                110
+              ]
+            ],
+            "as_ratios": [
+              {}
+            ],
+            "st_slices": [
+              "Bonus Physical Damage",
+              "<span class=\"title-tooltip\" title=\"Amplified by critical strikes and critical damage\"><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"Siphoning-Strike\">(+ ''Siphoning Strike'' stacks)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  50,
+                  70,
+                  90,
+                  110
+                ]
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<span class=\"title-tooltip\" title=\"Amplified by critical strikes and critical damage\"><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"Siphoning-Strike\">(+ ''Siphoning Strike'' stacks)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "NasusW",
-      "riotName": "Wither",
+      "riotId": "NasusW",
+      "name": "Wither",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "cost": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 600,
       "image": {
         "full": "NasusW.png",
         "sprite": "spell8.png",
@@ -150,48 +185,112 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Nasus ages an enemy champion, decelerating their Movement and Attack Speeds over time.",
-      "champion": "Nasus",
-      "cooldown": [
-        15,
-        14,
-        13,
-        12,
-        11
-      ],
-      "cooldownBurn": "15/14/13/12/11",
-      "costBurn": "80",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nasus''' ages the target enemy champion for 5 seconds, {{tip|slow|slowing}} them by 35% and {{tip|cripple|crippling}} them by half that amount, both increasing over the duration."
       ],
-      "icon": [
-        "Wither.png"
-      ],
-      "leveling": [
-        "{{st|Maximum Slow|{{ap|35+3*4 to 35+15*4}}%|Additional Slow Per Second|{{ap|3 to 15}}%}}\n{{st|Maximum Cripple|{{ap|(35+3*4)/2 to (35+15*4)/2}}%|Additional Cripple Per Second|{{ap|3/2 to 15/2}}%}}"
-      ],
-      "name": "Wither",
-      "notes": [
-        "* If ''Wither's'' duration is reduced by {{tip|Tenacity}} the effects will apply faster so the maximum values are reached when the shortened duration ends."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "spellshield": true,
-      "target_range": 600,
-      "targeting": "Unit"
+      "notes": "\n* If ''Wither's'' duration is reduced by {{tip|Tenacity}} the effects will apply faster so the maximum values are reached when the shortened duration ends.",
+      "costBurn": "80",
+      "cooldownBurn": "15/14/13/12/11",
+      "effects": [
+        {
+          "levelingtext": "{{st|Maximum Slow|{{ap|35+3*4 to 35+15*4}}%|Additional Slow Per Second|{{ap|3 to 15}}%}}\n{{st|Maximum Cripple|{{ap|(35+3*4)/2 to (35+15*4)/2}}%|Additional Cripple Per Second|{{ap|3/2 to 15/2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Slow</span>: <span><spell-span :list=\"['47','59','71','83','95']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Additional Slow Per Second</span>: <span><spell-span :list=\"['3','6','9','12','15']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Maximum Cripple</span>: <span><spell-span :list=\"['23.5','29.5','35.5','41.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Additional Cripple Per Second</span>: <span><spell-span :list=\"['1.5','3','4.5','6','7.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                47,
+                59,
+                71,
+                83,
+                95
+              ],
+              [
+                3,
+                6,
+                9,
+                12,
+                15
+              ],
+              [
+                23.5,
+                29.5,
+                35.5,
+                41.5,
+                47.5
+              ],
+              [
+                1.5,
+                3,
+                4.5,
+                6,
+                7.5
+              ]
+            ],
+            "st_slices": [
+              "Maximum Cripple",
+              "<spell-span :list=\"['23.5','29.5','35.5','41.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Additional Cripple Per Second",
+              "<spell-span :list=\"['1.5','3','4.5','6','7.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  47,
+                  59,
+                  71,
+                  83,
+                  95
+                ]
+              },
+              "title": "Maximum Cripple",
+              "str": "<spell-span :list=\"['23.5','29.5','35.5','41.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  6,
+                  9,
+                  12,
+                  15
+                ]
+              },
+              "title": "Additional Cripple Per Second",
+              "str": "<spell-span :list=\"['1.5','3','4.5','6','7.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "NasusE",
-      "riotName": "Spirit Fire",
+      "riotId": "NasusE",
+      "name": "Spirit Fire",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        70,
+        85,
+        100,
+        115,
+        130
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 650,
       "image": {
         "full": "NasusE.png",
         "sprite": "spell8.png",
@@ -201,44 +300,147 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Nasus unleashes a spirit flame at a location, dealing damage and reducing the Armor of enemies who stand on it.",
-      "champion": "Nasus",
-      "cooldownBurn": "12",
-      "costBurn": "7085100115130",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nasus''' unleashes a spirit flame at the target location, dealing {{tip|magic damage|{{as|magic damage}}}} to enemies in the area.",
         "The flame then remains for 5 seconds, dealing {{as|magic damage}} each second to all enemies within and {{as|reducing their armor}} while they remain, lingering for 1 second."
       ],
-      "effect_radius": 400,
-      "icon": [
-        "Spirit Fire.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|55|95|135|175|215}} {{as|(+ 60% AP)}}}}",
-        "{{st|Magic Damage Per Second|{{ap|11|19|27|35|43}} {{as|(+ 12% AP)}}|Total Magic Damage|{{ap|110|190|270|350|430}} {{as|(+ 120% AP)}}}}<!--\n-->{{st|Armor Reduction|{{as|{{ap|15|20|25|30|35}}% of target's armor}}}}"
-      ],
-      "name": "Spirit Fire",
-      "notes": [
-        "* ''Spirit Fire'' grants {{tip|sight}} of the target area (is smaller than the damage area) for a short duration on-cast."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "AoEDoT",
-      "target_range": 650,
-      "targeting": "Ground"
+      "notes": "\n* ''Spirit Fire'' grants {{tip|sight}} of the target area (is smaller than the damage area) for a short duration on-cast.",
+      "costBurn": "70/85/100/115/130",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|55|95|135|175|215}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                95,
+                135,
+                175,
+                215
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  95,
+                  135,
+                  175,
+                  215
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{ap|11|19|27|35|43}} {{as|(+ 12% AP)}}|Total Magic Damage|{{ap|110|190|270|350|430}} {{as|(+ 120% AP)}}}}<!--\n-->{{st|Armor Reduction|{{as|{{ap|15|20|25|30|35}}% of target's armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['11','19','27','35','43']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['110','190','270','350','430']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                11,
+                19,
+                27,
+                35,
+                43
+              ],
+              [
+                110,
+                190,
+                270,
+                350,
+                430
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.12
+              },
+              {
+                "player_total_ap": 1.2
+              },
+              {
+                "target_total_armor": [
+                  0.15,
+                  0.2,
+                  0.25,
+                  0.3,
+                  0.35
+                ]
+              }
+            ],
+            "st_slices": [
+              "Armor Reduction",
+              "<span class=\"armor\"><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  11,
+                  19,
+                  27,
+                  35,
+                  43
+                ],
+                "player_total_ap": 1.2,
+                "target_total_armor": [
+                  0.15,
+                  0.2,
+                  0.25,
+                  0.3,
+                  0.35
+                ]
+              },
+              "title": "Armor Reduction",
+              "str": "<span class=\"armor\"><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "NasusR",
-      "riotName": "Fury of the Sands",
+      "riotId": "NasusR",
+      "name": "Fury of the Sands",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        120,
+        120
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "NasusR.png",
         "sprite": "spell8.png",
@@ -248,36 +450,142 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Nasus unleashes a mighty sandstorm that batters nearby enemies. While the storm rages, he gains increased Health, Attack Range, damages nearby enemies, has a reduced cooldown on Siphoning Strike, and gains bonus Armor and Magic Resistance for the duration.",
-      "champion": "Nasus",
-      "cooldownBurn": "120",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nasus''' empowers himself for 15 seconds, gaining '''bonus''' {{sti|health|{{as|health}}}}, {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}}, increased size, and {{sti|range|50 '''bonus''' range}} on his basic attacks for the duration.",
         "While '''Nasus''' is empowered, he deals {{as|magic damage}} to all enemies around him each second, capped at 240, gains '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}} each second, and {{ais|Siphoning Strike|Nasus}} {{sti|cooldown}} is reduced by 50%."
       ],
-      "effect_radius": 175,
-      "icon": [
-        "Fury of the Sands.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Health|{{as|{{ap|300|450|600}}|health}}}}<!--\n-->{{st|Bonus Resistances|{{ap|15|35|55}}}}",
-        "{{st|Magic Damage Per Second|{{as|{{ap|3|4|5}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}|Total Magic Damage|{{as|{{ap|45|60|75}}% {{as|(+ 15% per 100 AP)}} of target's '''maximum''' health}}}}<!--\n-->{{st|Bonus Resistances Per Second|{{ap|1|2|3}}|Total Bonus Resistances|{{ap|30|65|100}}}}"
-      ],
-      "name": "Fury of the Sands",
-      "notes": [
-        "* ''Fury of the Sands' '' bonus health is not affected by {{tip|Grievous Wounds}} and ''Nasus'' retains it once the duration ends."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "targeting": "None"
+      "notes": "\n* ''Fury of the Sands' '' bonus health is not affected by {{tip|Grievous Wounds}} and ''Nasus'' retains it once the duration ends.",
+      "costBurn": "100",
+      "cooldownBurn": "120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Health|{{as|{{ap|300|450|600}}|health}}}}<!--\n-->{{st|Bonus Resistances|{{ap|15|35|55}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"health\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Resistances</span>: <span><spell-span :list=\"['15','35','55']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                450,
+                600
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.15,
+                  0.35,
+                  0.55
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Health",
+              "<span class=\"health\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  300,
+                  450,
+                  600
+                ],
+                "player_total_unknown": [
+                  0.15,
+                  0.35,
+                  0.55
+                ]
+              },
+              "title": "Bonus Health",
+              "str": "<span class=\"health\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{as|{{ap|3|4|5}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}|Total Magic Damage|{{as|{{ap|45|60|75}}% {{as|(+ 15% per 100 AP)}} of target's '''maximum''' health}}}}<!--\n-->{{st|Bonus Resistances Per Second|{{ap|1|2|3}}|Total Bonus Resistances|{{ap|30|65|100}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's <b>maximum</b> health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul><br><ul><li><span class=\"blue\">Bonus Resistances Per Second</span>: <span><spell-span :list=\"['1','2','3']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Total Bonus Resistances</span>: <span><spell-span :list=\"['30','65','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                4,
+                5
+              ],
+              [
+                45,
+                60,
+                75
+              ],
+              [
+                1,
+                2,
+                3
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 11
+              },
+              {
+                "player_total_ap": 151
+              },
+              {
+                "target_total_ap": [
+                  0.3,
+                  0.65,
+                  1
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Second",
+              "<span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "Total Magic Damage",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  3,
+                  4,
+                  5
+                ],
+                "player_total_ap": 151
+              },
+              "title": "Magic Damage Per Second",
+              "str": "<span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  60,
+                  75
+                ],
+                "player_total_ap": 151
+              },
+              "title": "Total Magic Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

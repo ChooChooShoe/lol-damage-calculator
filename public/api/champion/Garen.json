@@ -4,7 +4,6 @@
   "id": "Garen",
   "key": "86",
   "name": "Garen",
-  "fullname": "Garen Crownguard",
   "title": "The Might of Demacia",
   "image": {
     "full": "Garen.png",
@@ -22,6 +21,7 @@
   "resource": "None",
   "herotype": "Fighter",
   "alttype": "Tank",
+  "rangetype": "Melee",
   "be_cost": 450,
   "rp_cost": 260,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 1,
     "difficulty": 5
   },
-  "i_displayname": "Perseverance",
-  "q_displayname": "Decisive Strike",
-  "w_dispalyname": "Courage",
-  "e_dispalyname": "Judgment / Judgment 2",
-  "r_dispalyname": "Demacian Justice",
-  "complex_skills": {
+  "stats": {
+    "hp": 616.28,
+    "hpperlevel": 84.25,
+    "mp": 0,
+    "mpperlevel": 0,
+    "movespeed": 340,
+    "armor": 36,
+    "armorperlevel": 3,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 175,
+    "hpregen": 8,
+    "hpregenperlevel": 0.5,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 66,
+    "attackdamageperlevel": 4.5,
+    "attackspeedperlevel": 2.9,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Perseverance",
+      "riotId": "",
+      "name": "Perseverance",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Garen_Passive.png",
         "sprite": "passive1.png",
@@ -49,40 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "If Garen has not recently been struck by damage or enemy abilities, he regenerates a percentage of his total health each second. Minion damage does not stop Perseverance.",
-      "champion": "Garen",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Garen''' passively [[Health regeneration|regenerates]]{{ft|{{as|{{sti|health|{{pp|2|showtype=true|0.2;0.8|1;11|key=%}} '''maximum''' health}}}} every half-second|{{as|{{sti|health|{{pp|2|showtype=true|0.2*10;0.8*10|1;11|key=%}} '''maximum''' health}} every 5 seconds}}}}and is doubled to{{ft|{{as|{{sti|health|{{pp|2|showtype=true|0.2*2;0.8*2|1;11|key=%}} '''maximum''' health}}}} every half-second|{{as|{{sti|health|{{pp|2|showtype=true|0.2*2*10;0.8*2*10|1;11|key=%}} '''maximum''' health}}}} every 5 seconds}}while below {{as|{{sti|health|{{pp|2|showtype=true|25;50|1;11|key=%}} of his '''maximum''' health}}}}.",
         "This regeneration is interrupted for {{pp|2|showtype=true|9;4|1;11}} seconds if he takes non-[[minion]] damage or if he is hit by an enemy [[Champion ability|ability]].",
         "At level 11, damage from non-epic [[monster]]s will no longer stop ''Perseverance''."
       ],
-      "icon": [
-        "Perseverance.png"
-      ],
-      "leveling": [],
-      "name": "Perseverance",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "Heal",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "GarenQ",
-      "riotName": "Decisive Strike",
+      "riotId": "GarenQ",
+      "name": "Decisive Strike",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "GarenQ.png",
         "sprite": "spell3.png",
@@ -92,57 +104,118 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Garen gains a burst of movement speed, breaking free of all slows affecting him. His next attack strikes a vital area of his foe, dealing bonus damage and silencing them.",
-      "champion": "Garen",
-      "cooldownBurn": "8",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Garen''' cleanses himself of all {{tip|slow|slows}} affecting him and gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for a few seconds.",
+        "{{sbc|Active:}} '''Garen''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for a few seconds.",
         "Additionally, his next [[basic attack]] within {{fd|4.5}} seconds has a static delay of {{fd|0.5}} seconds and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, {{tip|silence|silencing}} his target for {{fd|1.5}} seconds.",
         "''Decisive Strike'' resets '''Garen's''' autoattack timer."
       ],
-      "icon": [
-        "Decisive Strike.png"
-      ],
-      "leveling": [
-        "{{st|Duration|{{ap|1.5 to 3.5}}}}",
-        "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ 40% AD)}}}}"
-      ],
-      "name": "Decisive Strike",
-      "notes": [
-        "* ''Decisive Strike'' has no cast time and does not interrupt ''Garen's'' previous orders.",
-        "** The on-hit effect and the bonus movement speed are independent (''Garen'' can silence his target and the bonus movement speed will remain, duration permitting).",
-        "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* As with most on-hit physical damage, ''Decisive Strike's'' bonus damage will apply {{sti|life steal}}.",
-        "** It will not interact with {{tip|critical strike|critical strikes}}.",
-        "*** It will affect structures.",
-        "* ''Decisive Strike'' will also remove {{tip|cripple}} in case it is inextricably linked with {{tip|slow}} within the ability used against ''Garen''.",
-        "** For example, it will remove {{tip|cripple}} from {{cai|Wither|Nasus}}, but not from {{cai|Ground Slam|Malphite}}.",
-        "* ''Decisive Strike'' will remove {{tip|slow}} from {{si|Exhaust}}, but not the damage reduction, for it being two separate effects within one summoner spell.",
-        "* ''Decisive Strike'' does not protect ''Garen'' from re-application of {{tip|slow|slows}} on him.",
-        "** [[Area of effect]] {{tip|slow|slows}} (like {{cai|Pillar of Ice|Trundle}}) are re-applied immediately after removing if ''Garen'' stays in the corresponding area.",
-        "* ''Decisive Strike's'' empowered attack triggers {{tip|Energized}} effects on-cast rather than on-hit.",
-        "** Since the empowered attack has a cast time, it is possible for the ''energized'' effect to kill its target and cause ''Decisive Strike'' to cancel without consuming the empowered attack.",
-        "** {{ii|Statikk Shiv}} cannot critically strike when used with ''Decisive Strike''."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "Q",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Decisive Strike'' has no cast time and does not interrupt ''Garen's'' previous orders.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage does not).\n** The bonus damage will also apply {{sti|life steal}}.\n** The bonus damage is applied to structures.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within it, it will also be removed together with the ''slow''.\n** For example, it will remove {{tip|cripple}} from {{cai|Wither|Nasus}}, but not from {{cai|Ground Slam|Malphite}}.\n** ''Decisive Strike'' will remove {{tip|slow}} from {{si|Exhaust}}, but not the damage reduction, for it being two separate effects within one summoner spell.\n** It will remove the slow from {{bi|Crest of Cinders|Red Buff}}, but not the damage over time.\n* ''Decisive Strike'' does not protect ''Garen'' from re-application of {{tip|slow|slows}} on him.\n** [[Area of effect]] {{tip|slow|slows}} (like {{cai|Pillar of Ice|Trundle}}) are re-applied immediately after removing if ''Garen'' stays in the corresponding area.\n* ''Decisive Strike's'' empowered attack triggers {{tip|Energized}} effects on-cast rather than on-hit.\n** Since the empowered attack has a cast time, it is possible for the ''energized'' effect to kill its target and cause ''Decisive Strike'' to cancel without consuming the empowered attack.\n** {{ii|Statikk Shiv}} cannot critically strike when used with ''Decisive Strike''.",
+      "costBurn": "0",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Movement Speed Duration|{{ap|1.5 to 3.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Movement Speed Duration</span>: <span><spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.5,
+                2,
+                2.5,
+                3,
+                3.5
+              ]
+            ],
+            "st_slices": [
+              "Movement Speed Duration",
+              "<spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.5,
+                  2,
+                  2.5,
+                  3,
+                  3.5
+                ]
+              },
+              "title": "Movement Speed Duration",
+              "str": "<spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ 40% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                60,
+                90,
+                120,
+                150
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.4
+              }
+            ],
+            "st_slices": [
+              "Bonus Physical Damage",
+              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  60,
+                  90,
+                  120,
+                  150
+                ],
+                "player_total_ad": 0.4
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "GarenW",
-      "riotName": "Courage",
+      "riotId": "GarenW",
+      "name": "Courage",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        23,
+        21,
+        19,
+        17,
+        15
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "GarenW.png",
         "sprite": "spell3.png",
@@ -152,51 +225,73 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Garen passively increases his armor and magic resist by killing enemies. He may also activate this ability to give him a huge burst of Tenacity and damage reduction for a brief moment followed by a lesser amount of damage reduction for a longer duration.",
-      "champion": "Garen",
-      "cooldown": [
-        23,
-        21,
-        19,
-        17,
-        15
-      ],
-      "cooldownBurn": "23/21/19/17/15",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Garen''' permanently gains {{sti|armor|{{as|{{fd|0.3{{Recurring|3}}}} '''bonus''' armor}}}} and {{sti|mr|{{as|{{fd|0.3{{Recurring|3}}}} '''bonus''' magic resistance}}}} every time he kills an enemy unit, up to a maximum of 50 '''bonus''' resistances at 150 unit kills.",
         "{{sbc|Active:}} '''Garen''' reduces incoming damage by 60% and has 60% {{sti|[[Tenacity]]}} for the first {{fd|0.75}} seconds. For the rest of the duration '''Garen''' reduces incoming damage by 30%."
       ],
-      "icon": [
-        "Courage.png"
-      ],
-      "leveling": [
-        "{{st|Duration|{{ap|2 to 5}}}}"
-      ],
-      "name": "Courage",
-      "notes": [
-        "* ''Courage'' has no cast time and does not interrupt '''Garen's''' previous orders.",
-        "* ''Courage's'' bonus resistances are only gained when it is ranked up at least once, but ''Courage's'' passive is retroactive.",
-        "* Any enemy unit counts towards ''Courage's'' bonus resistances: champions, minions, monsters (including epic ones), [[Champion summoned units|summoned units]] and turrets. The bonus is equal in all these cases.",
-        "* ''Courage'' will only grant bonus resistances from units killed by '''Garen''' himself. {{ii|Eye of the Herald}} and {{ii|Zz'Rot Portal}} do not count.",
-        "* ''Courage's'' active does not reduce [[true damage]]."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n* ''Courage'' has no cast time and does not interrupt '''Garen's''' previous orders.\n* ''Courage's'' bonus resistances are only gained when it is ranked up at least once, but ''Courage's'' passive is retroactive.\n* Any enemy unit counts towards ''Courage's'' bonus resistances: champions, minions, monsters (including epic ones), [[Champion summoned units|summoned units]] and turrets. The bonus is equal in all these cases.\n* ''Courage'' will only grant bonus resistances from units killed by '''Garen''' himself. {{ii|Eye of the Herald}}, {{ii|Zz'Rot Portal}} and {{ii|Relic Shield|Spoils of War}} of allies do not count.\n* ''Courage's'' active does not reduce [[true damage]].",
+      "costBurn": "0",
+      "cooldownBurn": "23/21/19/17/15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Duration|{{ap|2 to 5}}}}",
+          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['2','2.75','3.5','4.25','5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                2,
+                2.75,
+                3.5,
+                4.25,
+                5
+              ]
+            ],
+            "st_slices": [
+              "Duration",
+              "<spell-span :list=\"['2','2.75','3.5','4.25','5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  2,
+                  2.75,
+                  3.5,
+                  4.25,
+                  5
+                ]
+              },
+              "title": "Duration",
+              "str": "<spell-span :list=\"['2','2.75','3.5','4.25','5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "GarenE",
-      "riotName": "Judgment",
+      "riotId": "GarenE",
+      "name": "Judgment",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "GarenE.png",
         "sprite": "spell3.png",
@@ -206,16 +301,6 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Garen performs a dance of death with his sword, dealing damage around him for the duration and shredding the armor of enemy champions hit.",
-      "champion": "Garen",
-      "cooldownBurn": "9",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Garen''' rapidly spins his sword around his body {{ft|{{pp|6|5 to 10|1 to 16}} times|every {{pp|6|3/5 to 3/10|1 to 16}} seconds}} for 3 seconds, dealing {{as|physical damage}} with each spin to nearby enemies.",
         "While spinning, '''Garen''' is {{tip|disarm|disarmed}} and {{tip|ghosted}}.",
@@ -223,35 +308,123 @@
         "Enemy champions hit 4 times have their {{sti|armor penetration|{{as|armor reduced by 25%}}}} for 6 seconds. Hits after the 4th refresh the duration of the debuff.",
         "After 1 second, '''Garen''' can reactivate to cancel it immediately, reducing its cooldown by its remaining duration."
       ],
-      "effect_radius": 325,
-      "icon": [
-        "Judgment.png",
-        "Judgment 2.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage Per Spin|{{ap|14 to 30}} {{as|(+ {{ap|36 to 40}}% AD)}}|Single-Target Damage Per Spin|{{ap|14*1.33 to 30*1.33}} {{as|(+ {{ap|36*1.33 to 40*1.33}}% AD)}}}}"
-      ],
-      "name": "Judgment",
-      "notes": [
-        "* ''Judgment'' is not a [[channel]]ed ability, so crowd control effects will not interrupt it.",
-        "** Silencing ''Garen'' will prevent him from deactivating the ability early.",
-        "* ''Garen'' will benefit from {{ais|Decisive Strike|Garen}} slow removal and bonus movement speed while ''Judgment'' is active.",
-        "* ''Judgment'' cancels ''Garen's'' last movement command upon ending.",
-        "** He will not be able to apply its on-hit silence or bonus damage since he cannot basic attack over ''Judgment's'' duration.",
-        "* ''Garen'' may cast {{ai|Demacian Justice|Garen}} while ''Judgment'' is active but it will stop ticking if so.",
-        "* Each spin deals damage simultaneously to all enemies within its range when the spin is completed."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "targeting": "None"
+      "notes": "\n* ''Judgment'' is not a [[channel]]ed ability, so crowd control effects will not interrupt it.\n** Silencing ''Garen'' will prevent him from deactivating the ability early.\n* ''Garen'' will benefit from {{ais|Decisive Strike|Garen}} slow removal and bonus movement speed while ''Judgment'' is active.\n* ''Judgment'' cancels ''Garen's'' last movement command upon ending.\n** He will not be able to apply its on-hit silence or bonus damage since he cannot basic attack over ''Judgment's'' duration.\n* ''Garen'' may cast {{ai|Demacian Justice|Garen}} while ''Judgment'' is active but it will stop ticking if so.\n* Each spin deals damage simultaneously to all enemies within its range when the spin is completed.",
+      "costBurn": "0",
+      "cooldownBurn": "9",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage Per Spin|{{ap|14 to 30}} {{as|(+ {{ap|36 to 40}}% AD)}}|Single-Target Damage Per Spin|{{ap|14*1.33 to 30*1.33}} {{as|(+ {{ap|36*1.33 to 40*1.33}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Spin</span>: <span><spell-span :list=\"['14','18','22','26','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['36','37','38','39','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Single-Target Damage Per Spin</span>: <span><spell-span :list=\"['18.62','23.94','29.26','34.58','39.9']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['47.88','49.21','50.54','51.87','53.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                14,
+                18,
+                22,
+                26,
+                30
+              ],
+              [
+                36,
+                37,
+                38,
+                39,
+                40
+              ],
+              [
+                18.62,
+                23.94,
+                29.26,
+                34.58,
+                39.9
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.4788,
+                  0.4921,
+                  0.5054,
+                  0.5186999999999999,
+                  0.532
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage Per Spin",
+              "<spell-span :list=\"['14','18','22','26','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['36','37','38','39','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "Single-Target Damage Per Spin",
+              "<spell-span :list=\"['18.62','23.94','29.26','34.58','39.9']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['47.88','49.21','50.54','51.87','53.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  14,
+                  18,
+                  22,
+                  26,
+                  30
+                ],
+                "player_total_ad": [
+                  0.4788,
+                  0.4921,
+                  0.5054,
+                  0.5186999999999999,
+                  0.532
+                ]
+              },
+              "title": "Physical Damage Per Spin",
+              "str": "<spell-span :list=\"['14','18','22','26','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['36','37','38','39','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  36,
+                  37,
+                  38,
+                  39,
+                  40
+                ],
+                "player_total_ad": [
+                  0.4788,
+                  0.4921,
+                  0.5054,
+                  0.5186999999999999,
+                  0.532
+                ]
+              },
+              "title": "Single-Target Damage Per Spin",
+              "str": "<spell-span :list=\"['18.62','23.94','29.26','34.58','39.9']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['47.88','49.21','50.54','51.87','53.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "GarenR",
-      "riotName": "Demacian Justice",
+      "riotId": "GarenR",
+      "name": "Demacian Justice",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cost": [
+        0,
+        0,
+        0
+      ],
+      "targeting": "Unit",
+      "target_range": 400,
       "image": {
         "full": "GarenR.png",
         "sprite": "spell3.png",
@@ -261,48 +434,66 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "The enemy champion with the most recent kills is the Villain. Garen's attacks deal additional true damage to that champion. Garen can call upon the might of Demacia to deal a finishing blow to an enemy champion that deals damage based upon how much health his target has missing. This damage is true damage against the Villain.",
-      "callforhelp": true,
-      "champion": "Garen",
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic / true",
-      "damageTypes": [
-        "magic",
-        "true"
-      ],
       "description": [
         "{{sbc|Passive:}} The enemy with the most kills in the last 5 minutes is marked as the ''Villain''. The mark cannot be assigned to another champion while '''Garen''' is in combat with the ''Villain''. If more than one enemy has the same bounty, the enemy who received it first is marked the ''Villain''.",
         "'''Garen's''' basic attacks and each spin of {{ai|Judgment|Garen}} against the ''Villain'' deal {{as|1% of their '''maximum''' health}} as {{tip|true damage|{{as|'''bonus''' true damage}}}} [[on-hit]].",
         "{{sbc|Active:}} '''Garen''' calls upon the might of Demacia to attempt to execute the target enemy champion, dealing them {{tip|magic damage|{{as|magic damage}}}}, converted to {{as|true damage}} when targeting the ''Villain''."
       ],
-      "icon": [
-        "Demacian Justice 2.png",
-        "Demacian Justice.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|175|350|525}} {{as|(+ {{ap|28.6|33.3|40%}} of target's '''missing''' health)}}}}"
-      ],
-      "name": "Demacian Justice",
-      "notes": [
-        "* The tooltip displays damage values as simple digits rather than percentages (deals 1 additional damage per {{as|{{ap|3.5|3|2.5}} target's '''missing''' health}}).",
-        "* Kills against ''Garen'' will not be considered when determining the ''Villain''.",
-        "* ''Villains'' that can be executed by this spell, will have their ''Villain'' icon highlighted.",
-        "* The ability will not complete and will not go on cooldown if the target moves out of '''Garen's''' vision or it becomes {{tip|untargetable}}."
-      ],
-      "projectile": "{{tip|Magic damage|Magic}} / {{tip|True damage|True}}",
-      "skill": "R",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 400,
-      "targeting": "Unit"
+      "notes": "\n* The tooltip displays damage values as simple digits rather than percentages (deals 1 additional damage per {{as|{{ap|3.5|3|2.5}} target's '''missing''' health}}).\n* Kills against ''Garen'' will not be considered when determining the ''Villain''.\n* ''Villains'' that can be executed by this spell, will have their ''Villain'' icon highlighted.\n* The ability will not complete and will not go on cooldown if the target moves out of '''Garen's''' vision or it becomes {{tip|untargetable}}.",
+      "costBurn": "0",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|175|350|525}} {{as|(+ {{ap|28.6|33.3|40%}} of target's '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['175','350','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['28.6','33.3','40']\" :spellrankindex=\"spellrankindex\"></spell-span> of target's <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                175,
+                350,
+                525
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "target_missing_hp": [
+                  0.28600000000000003,
+                  0.33299999999999996,
+                  0.4
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['175','350','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['28.6','33.3','40']\" :spellrankindex=\"spellrankindex\"></spell-span> of target's '''missing''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  175,
+                  350,
+                  525
+                ],
+                "target_missing_hp": [
+                  0.28600000000000003,
+                  0.33299999999999996,
+                  0.4
+                ]
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['175','350','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['28.6','33.3','40']\" :spellrankindex=\"spellrankindex\"></spell-span> of target's '''missing''' health)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

@@ -1,10 +1,9 @@
 {
   "patch": "June 12, 2009 Patch",
-  "changes": "9.11.1",
+  "changes": "9.18.1",
   "id": "Karthus",
   "key": "30",
   "name": "Karthus",
-  "fullname": "Karthus",
   "title": "the Deathsinger",
   "image": {
     "full": "Karthus.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -30,15 +30,34 @@
     "magic": 10,
     "difficulty": 7
   },
-  "i_displayname": "Death Defied",
-  "q_displayname": "Lay Waste",
-  "w_dispalyname": "Wall of Pain",
-  "e_dispalyname": "Defile",
-  "r_dispalyname": "Requiem",
-  "complex_skills": {
+  "stats": {
+    "hp": 528,
+    "hpperlevel": 87,
+    "mp": 467,
+    "mpperlevel": 30.5,
+    "movespeed": 335,
+    "armor": 20.88,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 450,
+    "hpregen": 6.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 45.66,
+    "attackdamageperlevel": 3.25,
+    "attackspeedperlevel": 2.11,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Death Defied",
+      "riotId": "",
+      "name": "Death Defied",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Karthus_Passive.png",
         "sprite": "passive1.png",
@@ -48,40 +67,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Upon dying, Karthus enters a spirit form that allows him to continue casting spells for 7 seconds.",
-      "champion": "Karthus",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} Upon taking [[death|fatal damage]], '''Karthus''' remains active for 7 seconds, rendering himself unable to move, [[basic attack|attack]], or use item actives/passives, but becoming {{tip|untargetable}} and {{tip|Invulnerability|invulnerable}} for the duration as well as being able to use [[Champion ability|abilities]] at no cost.",
         "If {{ai|Defile|Karthus}} has been learned, it will remain toggled on for ''Death Defied's'' entire duration at no mana cost."
       ],
-      "icon": [
-        "Death Defied.png"
-      ],
-      "leveling": [],
-      "name": "Death Defied",
-      "notes": [
-        "* ''Death Defied'' will always trigger after revival effects ({{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}) and if '''Karthus''' is killed by the [[Nexus Obelisk]].",
-        "* '''Karthus''' will still benefit from cooldown reduction during ''Death Defied''.",
-        "* After ''Death Defied'' ends, the corpse of '''Karthus''' will retain body block despite being dead on the ground."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Death Defied'' will always trigger after revival effects ({{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}) and if '''Karthus''' is killed by the [[Nexus Obelisk]].\n* '''Karthus''' will still benefit from cooldown reduction during ''Death Defied''.\n* After ''Death Defied'' ends, the corpse of '''Karthus''' will retain body block despite being dead on the ground.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "KarthusLayWasteA1",
-      "riotName": "Lay Waste",
+      "riotId": "KarthusLayWasteA1",
+      "name": "Lay Waste",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        20,
+        26,
+        32,
+        38,
+        44
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 875,
       "image": {
         "full": "KarthusLayWasteA1.png",
         "sprite": "spell5.png",
@@ -91,53 +104,108 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Karthus unleashes a delayed blast at a location, dealing damage to nearby enemies.",
-      "champion": "Karthus",
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cooldownBurn": "0",
-      "costBurn": "20 / 26 / 32 / 38 / 44",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a {{fd|0.5}}-second delay, '''Karthus''' detonates the target area in the cursor's direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies within, '''doubled''' when hitting only one target."
       ],
-      "effect_radius": 160,
-      "icon": [
-        "Lay Waste.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|45 to 125}} {{as|(+ 30% AP)}}|Enhanced Magic Damage|{{ap|45*2 to 125*2}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Lay Waste",
-      "notes": [
-        "* ''Lay Waste'' briefly grants {{tip|sight}} before detonation.",
-        "* ''Lay Waste's'' single-target damage is listed as a {{tip|critical strike}} both in-game (damage text) and in post-game screen ('Largest Critical Strike') but it cannot actually {{tip|critical strike|critically strike}} nor will it scale with {{iis|Infinity Edge}} modifier.",
-        "* ''Lay Waste'' has a different sound effect when it only hits one target.",
-        "* If ''Lay Waste'' only hits one target it will apply {{tip|single target}} [[spell effects]]."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "spelleffects": "AoE",
-      "spellshield": true,
-      "target_range": 875,
-      "targeting": "Ground"
+      "notes": "\n* ''Lay Waste'' briefly grants {{tip|sight}} before detonation.\n* ''Lay Waste's'' single-target damage is listed as a {{tip|critical strike}} both in-game (damage text) and in post-game screen ('Largest Critical Strike') but it cannot actually {{tip|critical strike|critically strike}} nor will it scale with {{iis|Infinity Edge}} modifier.\n* ''Lay Waste'' has a different sound effect when it only hits one target.\n* If ''Lay Waste'' only hits one target it will apply {{tip|single target}} [[spell effects]].",
+      "costBurn": "20/26/32/38/44",
+      "cooldownBurn": "1",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|45 to 125}} {{as|(+ 30% AP)}}|Enhanced Magic Damage|{{ap|45*2 to 125*2}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Enhanced Magic Damage</span>: <span><spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                45,
+                65,
+                85,
+                105,
+                125
+              ],
+              [
+                90,
+                130,
+                170,
+                210,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "Enhanced Magic Damage",
+              "<spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  65,
+                  85,
+                  105,
+                  125
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  90,
+                  130,
+                  170,
+                  210,
+                  250
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Enhanced Magic Damage",
+              "str": "<spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "KarthusWallOfPain",
-      "riotName": "Wall of Pain",
+      "riotId": "KarthusWallOfPain",
+      "name": "Wall of Pain",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1000,
       "image": {
         "full": "KarthusWallOfPain.png",
         "sprite": "spell5.png",
@@ -147,44 +215,136 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Karthus creates a passable screen of leeching energy. Any enemy units that walk through the screen have their Movement Speed and Magic Resist reduced for a period.",
-      "champion": "Karthus",
-      "cooldownBurn": "15",
-      "costBurn": "70",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Karthus''' creates a wall at the target location for 5 seconds and grants {{tip|sight}} around it.",
         "For the duration, all units who cross it are both {{tip|slow|slowed}} for 4 seconds, reduced by 50% over the first second, decaying over its duration and {{sti|magic penetration|{{as|lose 15% magic resistance}}}} for the same duration."
       ],
-      "icon": [
-        "Wall of Pain.png"
-      ],
-      "leveling": [
-        "{{st|Wall Length|{{ap|800 to 1200}}}}",
-        "{{st|Slow|{{ap|40 to 80}}%|Reduced Slow|{{ap|40/2 to 80/2}}%}}"
-      ],
-      "name": "Wall of Pain",
-      "notes": [
-        "* The {{tip|sight}} is granted around ''Wall of Pain's'' pillars but not the wall itself.",
-        "* ''Wall of Pain'' can only affect any given unit once per cast.",
-        "* ''Wall of Pain'' is not considered ''terrain'' for {{ai|Searing Charge|Ornn}}."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "target_range": 1000,
-      "targeting": "Ground"
+      "notes": "\n* The {{tip|sight}} is granted around ''Wall of Pain's'' pillars but not the wall itself.\n* ''Wall of Pain'' can only affect any given unit once per cast.\n* ''Wall of Pain'' is not considered ''terrain'' for {{ai|Searing Charge|Ornn}}.",
+      "costBurn": "70",
+      "cooldownBurn": "15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Wall Length|{{ap|800 to 1200}}}}",
+          "str": "<ul><li><span class=\"blue\">Wall Length</span>: <span><spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                800,
+                900,
+                1000,
+                1100,
+                1200
+              ]
+            ],
+            "st_slices": [
+              "Wall Length",
+              "<spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  800,
+                  900,
+                  1000,
+                  1100,
+                  1200
+                ]
+              },
+              "title": "Wall Length",
+              "str": "<spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Slow|{{ap|40 to 80}}%|Reduced Slow|{{ap|40/2 to 80/2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Reduced Slow</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Reduced Slow",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  50,
+                  60,
+                  70,
+                  80
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              },
+              "title": "Reduced Slow",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "KarthusDefile",
-      "riotName": "Defile",
+      "riotId": "KarthusDefile",
+      "name": "Defile",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        30,
+        42,
+        54,
+        66,
+        78
+      ],
+      "costtype": "Mana per second",
+      "targeting": "Self",
       "image": {
         "full": "KarthusDefile.png",
         "sprite": "spell5.png",
@@ -194,51 +354,119 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Karthus passively steals energy from his victims, gaining Mana on each kill. Alternatively, Karthus can surround himself in the souls of his prey, dealing damage to nearby enemies, but quickly draining his own Mana.",
-      "champion": "Karthus",
-      "cooldown": [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      "cooldownBurn": "0.5",
-      "costBurn": "30 / 42 / 54 / 66 / 78",
-      "costtype": "Mana per second",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Toggle Off:}} '''Karthus''' restores {{sti|{{as|mana}}}} whenever he kills a unit.",
         "{{sbc|Toggle On:}} '''Karthus''' deals {{as|magic damage}} per second to all nearby units."
       ],
-      "effect_radius": 425,
-      "icon": [
-        "Defile.png"
-      ],
-      "leveling": [
-        "{{st|Mana Restored|{{as|{{ap|20 to 48}}|mana}}}}",
-        "{{st|Magic Damage Per Second|{{ap|30 to 110}} {{as|(+ 20% AP)}}}}"
-      ],
-      "name": "Defile",
-      "notes": [
-        "* ''Defile'' also restores {{tip|mana}} if ''Karthus'' destroys an enemy structure.",
-        "* ''Defile'' will automatically toggle on during {{ai|Death Defied|Karthus}}."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "aoedot",
-      "targeting": "Self"
+      "notes": "\n* ''Defile'' also restores {{tip|mana}} if ''Karthus'' destroys an enemy structure.\n* ''Defile'' will automatically toggle on during {{ai|Death Defied|Karthus}}.",
+      "costBurn": "30/42/54/66/78",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Mana Restored|{{as|{{ap|20 to 48}}|mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.2,
+                  0.27,
+                  0.34,
+                  0.41,
+                  0.48
+                ]
+              }
+            ],
+            "st_slices": [
+              "Mana Restored",
+              "<span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_unknown": [
+                  0.2,
+                  0.27,
+                  0.34,
+                  0.41,
+                  0.48
+                ]
+              },
+              "title": "Mana Restored",
+              "str": "<span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{ap|30 to 110}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                50,
+                70,
+                90,
+                110
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Second",
+              "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  50,
+                  70,
+                  90,
+                  110
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage Per Second",
+              "str": "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "KarthusFallenOne",
-      "riotName": "Requiem",
+      "riotId": "KarthusFallenOne",
+      "name": "Requiem",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        200,
+        180,
+        160
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
       "image": {
         "full": "KarthusFallenOne.png",
         "sprite": "spell5.png",
@@ -248,43 +476,59 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "After channeling for 3 seconds, Karthus deals damage to all enemy champions.",
-      "champion": "Karthus",
-      "cooldown": [
-        200,
-        180,
-        160
-      ],
-      "cooldownBurn": "200/180/160",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Karthus''' {{ct|channel|channels|attack=false|cast=false|items=false,true|move=false|spells=true,interrupts,false,false,false}} for 3 seconds and deals {{as|magic damage}} to all enemy {{tip|champions}} upon its completion."
+        "{{sbc|Active:}} '''Karthus''' {{ct|channel|channels|attack=false|cast=false|items=false,true|move=false|spells=true,interrupts,false,false,false}} for 3 seconds and deals {{as|magic damage}} to all targetable enemy {{tip|champions}} upon its completion."
       ],
-      "effect_radius": "Global",
-      "icon": [
-        "Requiem.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|200 to 500}} {{as|(+ 75% AP)}}}}"
-      ],
-      "name": "Requiem",
-      "notes": [
-        "* ''Requiem's'' channel is telegraphed to all enemy champions by a beam of light that descends on all targets.",
-        "** There is no visible beam if the enemy champion respawns during ''Requiem's'' channel, yet damage is applied normally.",
-        "* ''Requiem'' hits through {{tip|untargetable|untargetability}}.",
-        "* '''Karthus''' cannot cast ''Requiem'' if {{ais|Death Defied|Karthus}} duration is less than 3 seconds."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Aoe",
-      "spellshield": true,
-      "targeting": "Auto"
+      "notes": "\n* ''Requiem's'' channel is telegraphed to all enemy champions by a beam of light that descends on all targets.\n** There is no visible beam if the enemy champion respawns during ''Requiem's'' channel, yet damage is applied normally.\n* '''Karthus''' cannot cast ''Requiem'' if {{ais|Death Defied|Karthus}} duration is less than 3 seconds.",
+      "costBurn": "100",
+      "cooldownBurn": "200/180/160",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|200 to 500}} {{as|(+ 75% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                200,
+                275,
+                350,
+                425,
+                500
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  275,
+                  350,
+                  425,
+                  500
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

@@ -4,7 +4,6 @@
   "id": "Fizz",
   "key": "105",
   "name": "Fizz",
-  "fullname": "Fizz",
   "title": "the Tidal Trickster",
   "image": {
     "full": "Fizz.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 6
   },
-  "i_displayname": "Nimble Fighter",
-  "q_displayname": "Urchin Strike",
-  "w_dispalyname": "Seastone Trident",
-  "e_dispalyname": "Playful / Trickster",
-  "r_dispalyname": "Chum the Waters",
-  "complex_skills": {
+  "stats": {
+    "hp": 570,
+    "hpperlevel": 98,
+    "mp": 317.2,
+    "mpperlevel": 37,
+    "movespeed": 335,
+    "armor": 22.412,
+    "armorperlevel": 3.4,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 175,
+    "hpregen": 8,
+    "hpregenperlevel": 0.7,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 58.04,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 3.1,
+    "attackspeed": 0.658
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Nimble Fighter",
+      "riotId": "",
+      "name": "Nimble Fighter",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Fizz_P.png",
         "sprite": "passive0.png",
@@ -49,37 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "",
-      "champion": "Fizz",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Fizz''' is permanently {{tip|ghosted}}, and takes 4 {{as|(+ 1% AP)}} reduced pre-mitigation damage from each tick of damage, up to a maximum of 50% reduction."
       ],
-      "icon": [
-        "Nimble Fighter.png"
-      ],
-      "leveling": [],
-      "name": "Nimble Fighter",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* No additional notes.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "FizzQ",
-      "riotName": "Urchin Strike",
+      "riotId": "FizzQ",
+      "name": "Urchin Strike",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 550,
       "image": {
         "full": "FizzQ.png",
         "sprite": "spell3.png",
@@ -89,61 +104,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fizz dashes through his target, dealing magic damage and applying on hit effects.",
-      "callforhelp": true,
-      "champion": "Fizz",
-      "cooldown": [
-        8,
-        7.5,
-        7,
-        6.5,
-        6
-      ],
-      "cooldownBurn": "8/7.5/7/6.5/6",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "magic / physical",
-      "damageTypes": [
-        "magic",
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, dealing {{as|100% AD}} {{as|physical damage}}, and {{tip|magic damage|{{as|'''bonus''' magic damage}}}}.",
         "The {{as|physical damage}} applies [[on-hit effect]]s to the target."
       ],
-      "grounded": true,
-      "icon": [
-        "Urchin Strike.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}"
-      ],
-      "name": "Urchin Strike",
-      "notes": [
-        "* Once ''Fizz'' has used it, ''Urchin Strike'' can be dodged with sufficiently fast displacement, resulting in no damage dealt.",
-        "* ''Urchin Strike'' applies all melee on-hit effects ({{sti|life steal}}, {{nie|Spellblade}}, {{ii|Blade of the Ruined King}}) as well as {{sti|spell vamp}}.",
-        "** The physical component can be {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, {{ai|Aegis Protection|Pantheon|blocked}} and can {{tip|blind|miss}}.",
-        "** The physical component will only apply {{sti|life steal}} and physical damage {{nie|Spellblade}} effects ({{ii|Trinity Force}}, {{ii|Iceborn Gauntlet}}) but {{sti|spell vamp}} will apply to the combined physical and magic damage.",
-        "*** {{sti|Spell vamp}} will not be applied on the damage from on-hit effects.",
-        "**** {{ii|Wit's End}} and {{ii|Lich Bane}} will not benefit from either {{sti|life steal}} or {{sti|spell vamp}}."
-      ],
-      "onhiteffects": true,
-      "parry": "Special",
-      "projectile": "{{tip|physical damage|Physical}} / {{tip|magic damage|Magic}}",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 550,
-      "targeting": "Unit"
+      "notes": "\n* Once ''Fizz'' has used it, ''Urchin Strike'' can be dodged with sufficiently fast displacement, resulting in no damage dealt.\n* {{sti|Life steal}} applies only on the physical damage component while {{sti|spell vamp}} applies to both the physical damage and '''bonus''' magic damage.",
+      "costBurn": "50",
+      "cooldownBurn": "8/7.5/7/6.5/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                25,
+                40,
+                55,
+                70
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.55
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  25,
+                  40,
+                  55,
+                  70
+                ],
+                "player_total_ap": 0.55
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "FizzW",
-      "riotName": "Seastone Trident",
+      "riotId": "FizzW",
+      "name": "Seastone Trident",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
+      ],
+      "cost": [
+        30,
+        40,
+        50,
+        60,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
       "image": {
         "full": "FizzW.png",
         "sprite": "spell3.png",
@@ -153,55 +187,178 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fizz's attacks bleed his enemies, dealing magic damage over several seconds. Fizz can empower his next attack to deal bonus damage, increased by how long the bleed was active on his target.",
-      "champion": "Fizz",
-      "cooldown": [
-        7,
-        6.5,
-        6,
-        5.5,
-        5
-      ],
-      "cooldownBurn": "7/6.5/6/5.5/5",
-      "costBurn": "30 / 40 / 50 / 60 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies on-hit, dealing {{as|magic damage}} over 3 seconds.",
         "{{sbc|Active:}} '''Fizz's''' next basic attack is empowered, dealing {{as|'''bonus''' magic damage}} and gaining {{sti|range|50 '''bonus''' range}}.",
         "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks gain {{as|'''bonus''' on-hit magic damage}} for 5 seconds.",
         "''Seastone Trident'' resets '''Fizz's''' autoattack timer."
       ],
-      "icon": [
-        "Seastone Trident.png"
-      ],
-      "leveling": [
-        "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}}}",
-        "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
-        "{{st|Mana Refunded|{{ap|20 to 52}}}}\n{{st|Bonus On-Hit Damage|{{ap|10 to 30}} {{as|(+ 35% AP)}}}}"
-      ],
-      "name": "Seastone Trident",
-      "notes": [
-        "* The active does not trigger spell effects.",
-        "* The passive's damage-over-time applies every {{fd|0.5}} seconds.",
-        "** Every subsequent hit over the active's duration will refresh the passive's."
-      ],
-      "occurrence": "On-hit",
-      "projectile": "Magic",
-      "skill": "W",
-      "spellshield": true,
-      "targeting": "Auto"
+      "notes": "\n* The active does not trigger spell effects.\n* The passive's damage-over-time applies every {{fd|0.5}} seconds.\n** Every subsequent hit over the active's duration will refresh the passive's.",
+      "costBurn": "30/40/50/60/70",
+      "cooldownBurn": "7/6.5/6/5.5/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                70,
+                90,
+                110,
+                130
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  70,
+                  90,
+                  110,
+                  130
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Mana Refunded|{{ap|20 to 52}}}}\n{{st|Bonus On-Hit Damage|{{ap|10 to 30}} {{as|(+ 35% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Mana Refunded</span>: <span><spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus On-Hit Damage</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                28,
+                36,
+                44,
+                52
+              ],
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.35000000000000003
+              }
+            ],
+            "st_slices": [
+              "Bonus On-Hit Damage",
+              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  28,
+                  36,
+                  44,
+                  52
+                ],
+                "player_total_ap": 0.35000000000000003
+              },
+              "title": "Bonus On-Hit Damage",
+              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E1",
-      "id": "FizzE",
-      "riotName": "Playful / Trickster",
+      "riotId": "FizzE",
+      "name": "Playful",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        16,
+        14.5,
+        13,
+        11.5,
+        10
+      ],
+      "cost": [
+        90,
+        95,
+        100,
+        105,
+        110
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 330,
       "image": {
         "full": "FizzE.png",
         "sprite": "spell3.png",
@@ -211,56 +368,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fizz hops into the air, landing gracefully upon his spear and becoming untargetable. From this position, Fizz can either slam the ground or choose to jump again before smashing back down.",
-      "champion": "Fizz",
-      "cooldown": [
-        16,
-        14.5,
-        13,
-        11.5,
-        10
-      ],
-      "cooldownBurn": "16/14.5/13/11.5/10",
-      "costBurn": "90 / 95 / 100 / 105 / 110",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Single Cast:}} '''Fizz''' {{tip|dash|vaults}} towards the target location, becoming {{tip|untargetable}} for up to {{fd|0.75}} seconds while balancing on his trident.",
         "'''Fizz''' then splashes onto the ground below him, dealing {{as|magic damage}} to nearby enemies and {{tip|slow|slowing}} them for 2 seconds."
       ],
-      "effect_radius": 400,
-      "grounded": true,
-      "icon": [
-        "Playful.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 75% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}"
-      ],
-      "name": "Playful",
-      "notes": [
-        "* ''Playful'' does not break tethers ({{ai|Drain|Fiddlesticks}}, {{ai|Ethereal Chains|LeBlanc}}).",
-        "* After ''Playful'' is used (without activating ''Trickster'') ''Fizz'' can orientate his landing by right-clicking before/as he drops for a longer reach (but same radius) on the slow/damage.",
-        "* ''Playful'' cannot be used for approximately {{fd|0.5}} seconds after using {{ai|Urchin Strike|Fizz}}.",
-        "* {{si|Flash}} can be used during both ''dashes''.",
-        "* The ''untargetability'' partially cancels if {{ci|Fizz}} is {{tip|stun|disabled}} during it (because of effects such as {{ai|Power Fist|Blitzcrank}}), allowing non on-target effects to hit him."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 330,
-      "targeting": "Ground"
+      "notes": "\n* ''Playful'' does not break tethers ({{ai|Drain|Fiddlesticks}}, {{ai|Ethereal Chains|LeBlanc}}).\n* After ''Playful'' is used (without activating ''Trickster'') ''Fizz'' can orientate his landing by right-clicking before/as he drops for a longer reach (but same radius) on the slow/damage.\n* ''Playful'' cannot be used for approximately {{fd|0.5}} seconds after using {{ai|Urchin Strike|Fizz}}.\n* {{si|Flash}} can be used during both ''dashes''.\n* The ''untargetability'' partially cancels if {{ci|Fizz}} is {{tip|stun|disabled}} during it (because of effects such as {{ai|Power Fist|Blitzcrank}}), allowing non on-target effects to hit him.",
+      "costBurn": "90/95/100/105/110",
+      "cooldownBurn": "16/14.5/13/11.5/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 75% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                120,
+                170,
+                220,
+                270
+              ],
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  120,
+                  170,
+                  220,
+                  270
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "FizzE",
-      "riotName": "Playful / Trickster",
+      "riotId": "FizzE",
+      "name": "Trickster",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Ground",
+      "target_range": 270,
       "image": {
         "full": "FizzE.png",
         "sprite": "spell3.png",
@@ -270,51 +458,32 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fizz hops into the air, landing gracefully upon his spear and becoming untargetable. From this position, Fizz can either slam the ground or choose to jump again before smashing back down.",
-      "champion": "Fizz",
-      "cooldown": [
-        16,
-        14.5,
-        13,
-        11.5,
-        10
-      ],
-      "cooldownBurn": "16/14.5/13/11.5/10",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Double Cast:}} '''Fizz''' can recast during the vault to instead dismount toward the target location in quick succession. Upon landing, he deals {{as|magic damage|magic damage}} to nearby enemies. The damage dealt is the same as the single-cast, but in a smaller radius without applying a slow.",
         "Both {{tip|dashes}} may be directed separately."
       ],
-      "effect_radius": 200,
-      "grounded": true,
-      "icon": [
-        "Trickster.png"
-      ],
-      "leveling": [],
-      "name": "Trickster",
-      "notes": [
-        "* ''Trickster'' does not break tethers ({{ai|Drain|Fiddlesticks}}, {{ai|Ethereal Chains|LeBlanc}}).",
-        "* {{si|Flash}} can be used during both ''dashes''."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 270,
-      "targeting": "Ground"
+      "notes": "\n* ''Trickster'' does not break tethers ({{ai|Drain|Fiddlesticks}}, {{ai|Ethereal Chains|LeBlanc}}).\n* {{si|Flash}} can be used during both ''dashes''.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
     },
     "r1": {
-      "key": "R",
-      "id": "FizzR",
-      "riotName": "Chum the Waters",
+      "riotId": "FizzR",
+      "name": "Chum the Waters",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        100,
+        85,
+        70
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1300,
       "image": {
         "full": "FizzR.png",
         "sprite": "spell3.png",
@@ -324,21 +493,6 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fizz tosses a fish in a direction that attaches to any champion that touches it, slowing the target. After a short delay, a shark erupts from the ground, knocking up the target and knocking any nearby enemies aside. All enemies hit are dealt magic damage and slowed.",
-      "champion": "Fizz",
-      "cooldown": [
-        100,
-        85,
-        70
-      ],
-      "cooldownBurn": "100/85/70",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Fizz''' throws down a lure in the target direction that attracts a shark, causing it to emerge after 2 seconds, dealing {{as|magic damage}}, {{tip|airborne|knocking aside}} surrounding enemies and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its slow, eruption radius and knockback distance.",
         "{{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knockback distance.",
@@ -346,31 +500,144 @@
         "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knockback distance.",
         "If an enemy [[champion]] intercepts the lure as it flies, it binds to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of away."
       ],
-      "icon": [
-        "Chum the Waters.png"
-      ],
-      "leveling": [
-        "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
-        "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
-        "{{st|Gigalodon Damage|{{ap|300 to 500}} {{as|(+ 120% AP)}}}}"
-      ],
-      "name": "Chum the Waters",
-      "notes": [
-        "* ''Chum the Waters'' will only attach the fish to an enemy champion and will pass through all terrain and non-champion targets.",
-        "** If the fish is thrown onto a target without an active spell shield, the target will be slowed. If the spell shield activates while the fish is already latched on, the slow will remain but the shark's damage and knockup will be negated, consuming the shield.",
-        "* The fish's slow can be removed by {{si|Cleanse}}, {{ii|Quicksilver Sash}}, {{ii|Mikael's Crucible}}, {{ai|Unbreakable Will|Alistar}}, {{ai|Shadow Step A|Kayn|Shadow Step}}, {{ai|Remove Scurvy|Gangplank}}, {{ai|Decisive Strike|Garen}}, {{ai|Highlander|Master Yi}}, and {{ai|Ragnarok|Olaf}}.",
-        "** The fish will still remain and the shark will still appear.",
-        "* ''Chum the Waters'' can hit [[stealth]]ed units and will be revealed if the fish hits them and until the shark appears.",
-        "** The shark will also damage untargetable champions.",
-        "*** If the target the fish latched on to dies before the shark appears, the moment the target dies the shark will appear immediately."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 1300,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1300,
-      "targeting": "Ground"
+      "notes": "\n* ''Chum the Waters'' will only attach the fish to an enemy champion and will pass through all terrain and non-champion targets.\n** If the fish is thrown onto a target without an active spell shield, the target will be slowed. If the spell shield activates while the fish is already latched on, the slow will remain but the shark's damage and knockup will be negated, consuming the shield.\n* The fish's slow can be removed by {{si|Cleanse}}, {{ii|Quicksilver Sash}}, {{ii|Mikael's Crucible}}, {{ai|Unbreakable Will|Alistar}}, {{ai|Shadow Step A|Kayn|Shadow Step}}, {{ai|Remove Scurvy|Gangplank}}, {{ai|Decisive Strike|Garen}}, {{ai|Highlander|Master Yi}}, and {{ai|Ragnarok|Olaf}}.\n** The fish will still remain and the shark will still appear.\n* ''Chum the Waters'' can hit [[stealth]]ed units and will be revealed if the fish hits them and until the shark appears.\n** The shark will also damage untargetable champions.\n*** If the target the fish latched on to dies before the shark appears, the moment the target dies the shark will appear immediately.",
+      "costBurn": "100",
+      "cooldownBurn": "100/85/70",
+      "effects": [
+        {
+          "levelingtext": "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Guppy Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Guppy Damage",
+              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Guppy Damage",
+              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Chomper Damage</span>: <span><spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                225,
+                275,
+                325,
+                375,
+                425
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Chomper Damage",
+              "<spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  225,
+                  275,
+                  325,
+                  375,
+                  425
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Chomper Damage",
+              "str": "<spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Gigalodon Damage|{{ap|300 to 500}} {{as|(+ 120% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Gigalodon Damage</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                350,
+                400,
+                450,
+                500
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.2
+              }
+            ],
+            "st_slices": [
+              "Gigalodon Damage",
+              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  300,
+                  350,
+                  400,
+                  450,
+                  500
+                ],
+                "player_total_ap": 1.2
+              },
+              "title": "Gigalodon Damage",
+              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 6
 }

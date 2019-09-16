@@ -7,7 +7,7 @@
     "full": "Xerath.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 144,
+    "x": 192,
     "y": 48,
     "w": 48,
     "h": 48
@@ -88,588 +88,588 @@
     "attackspeedperlevel": 1.36,
     "attackspeed": 0.625
   },
-  "riot_spell_q": {
-    "id": "XerathArcanopulseChargeUp",
-    "name": "Arcanopulse",
-    "description": "Fires a long-range beam of energy, dealing magic damage to all targets hit.",
-    "tooltip": "<span class=\"colorFF9900\">First cast:</span> Xerath charges Arcanopulse, gradually decreasing his Movement Speed while increasing the spell's range.<br /><br /><span class=\"colorFF9900\">Second cast:</span> Xerath fires Arcanopulse, dealing {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies in a line.<br /><br />While charging Arcanopulse, Xerath cannot attack or cast other spells. If Xerath does not fire the spell, half the Mana cost is refunded.",
-    "leveltip": {
-      "label": [
-        "Damage",
-        "Cooldown",
-        "Mana Cost"
+  "riot_spells": [
+    {
+      "id": "XerathArcanopulseChargeUp",
+      "name": "Arcanopulse",
+      "description": "Fires a long-range beam of energy, dealing magic damage to all targets hit.",
+      "tooltip": "<span class=\"colorFF9900\">First cast:</span> Xerath charges Arcanopulse, gradually decreasing his Movement Speed while increasing the spell's range.<br /><br /><span class=\"colorFF9900\">Second cast:</span> Xerath fires Arcanopulse, dealing {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies in a line.<br /><br />While charging Arcanopulse, Xerath cannot attack or cast other spells. If Xerath does not fire the spell, half the Mana cost is refunded.",
+      "leveltip": {
+        "label": [
+          "Damage",
+          "Cooldown",
+          "Mana Cost"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
+          "{{ cost }} -> {{ costNL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
       ],
-      "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
-        "{{ cost }} -> {{ costNL }}"
-      ]
-    },
-    "maxrank": 5,
-    "cooldown": [
-      9,
-      8,
-      7,
-      6,
-      5
-    ],
-    "cooldownBurn": "9/8/7/6/5",
-    "cost": [
-      80,
-      90,
-      100,
-      110,
-      120
-    ],
-    "costBurn": "80/90/100/110/120",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
+      "cooldownBurn": "9/8/7/6/5",
+      "cost": [
         80,
-        120,
-        160,
-        200,
-        240
-      ],
-      [
-        4,
-        4,
-        4,
-        4,
-        4
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        145,
-        145,
-        145,
-        145,
-        145
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        -0.2,
-        -0.2,
-        -0.2,
-        -0.2,
-        -0.2
-      ],
-      [
-        0.1,
-        0.1,
-        0.1,
-        0.1,
-        0.1
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        1.5,
-        1.5,
-        1.5,
-        1.5,
-        1.5
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "80/120/160/200/240",
-      "4",
-      "0.5",
-      "145",
-      "0.5",
-      "-0.2",
-      "0.1",
-      "0.5",
-      "1.5",
-      "0"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.75,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "1",
-    "range": [
-      750,
-      750,
-      750,
-      750,
-      750
-    ],
-    "rangeBurn": "750",
-    "image": {
-      "full": "XerathArcanopulseChargeUp.png",
-      "sprite": "spell13.png",
-      "group": "spell",
-      "x": 384,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_w": {
-    "id": "XerathArcaneBarrage2",
-    "name": "Eye of Destruction",
-    "description": "Calls down a barrage of arcane energy, slowing and dealing magic damage to all enemies in an area. Targets in the middle receive additional damage and a stronger slow.",
-    "tooltip": "Xerath calls down a blast of arcane energy, dealing {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies within the target area, slowing them by {{ e8 }}% for {{ e4 }} seconds. Enemies in the center of the blast take {{ f1 }} <span class=\"color99FF99\">(+{{ f2 }})</span> magic damage and are slowed by {{ e3 }}%. This slow decays rapidly.",
-    "leveltip": {
-      "label": [
-        "Damage",
-        "Cooldown",
-        "Slow Amount",
-        "Mana Cost"
-      ],
-      "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
-        "{{ e3 }}% -> {{ e3NL }}%",
-        "{{ cost }} -> {{ costNL }}"
-      ]
-    },
-    "maxrank": 5,
-    "cooldown": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "cooldownBurn": "1",
-    "cost": [
-      70,
-      80,
-      90,
-      100,
-      110
-    ],
-    "costBurn": "70/80/90/100/110",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        60,
         90,
-        120,
-        150,
-        180
+        100,
+        110,
+        120
       ],
-      [
-        2,
-        2,
-        2,
-        2,
-        2
+      "costBurn": "80/90/100/110/120",
+      "datavalues": {},
+      "effect": [
+        null,
+        [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          145,
+          145,
+          145,
+          145,
+          145
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2,
+          -0.2
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          1.5,
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       ],
-      [
+      "effectBurn": [
+        null,
+        "80/120/160/200/240",
+        "4",
+        "0.5",
+        "145",
+        "0.5",
+        "-0.2",
+        "0.1",
+        "0.5",
+        "1.5",
+        "0"
+      ],
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.75,
+          "key": "a1"
+        }
+      ],
+      "costType": " Mana",
+      "maxammo": "1",
+      "range": [
+        750,
+        750,
+        750,
+        750,
+        750
+      ],
+      "rangeBurn": "750",
+      "image": {
+        "full": "XerathArcanopulseChargeUp.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
+    },
+    {
+      "id": "XerathArcaneBarrage2",
+      "name": "Eye of Destruction",
+      "description": "Calls down a barrage of arcane energy, slowing and dealing magic damage to all enemies in an area. Targets in the middle receive additional damage and a stronger slow.",
+      "tooltip": "Xerath calls down a blast of arcane energy, dealing {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies within the target area, slowing them by {{ e8 }}% for {{ e4 }} seconds. Enemies in the center of the blast take {{ f1 }} <span class=\"color99FF99\">(+{{ f2 }})</span> magic damage and are slowed by {{ e3 }}%. This slow decays rapidly.",
+      "leveltip": {
+        "label": [
+          "Damage",
+          "Cooldown",
+          "Slow Amount",
+          "Mana Cost"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
+          "{{ e3 }}% -> {{ e3NL }}%",
+          "{{ cost }} -> {{ costNL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "cooldownBurn": "1",
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costBurn": "70/80/90/100/110",
+      "datavalues": {},
+      "effect": [
+        null,
+        [
+          60,
+          90,
+          120,
+          150,
+          180
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          60,
+          65,
+          70,
+          75,
+          80
+        ],
+        [
+          2.5,
+          2.5,
+          2.5,
+          2.5,
+          2.5
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        [
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        [
+          25,
+          25,
+          25,
+          25,
+          25
+        ],
+        [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        [
+          -0.25,
+          -0.25,
+          -0.25,
+          -0.25,
+          -0.25
+        ]
+      ],
+      "effectBurn": [
+        null,
+        "60/90/120/150/180",
+        "2",
+        "60/65/70/75/80",
+        "2.5",
+        "0.5",
+        "50",
+        "50",
+        "25",
+        "0.8",
+        "-0.25"
+      ],
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.6,
+          "key": "a1"
+        }
+      ],
+      "costType": " Mana",
+      "maxammo": "1",
+      "range": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "rangeBurn": "1000",
+      "image": {
+        "full": "XerathArcaneBarrage2.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
+    },
+    {
+      "id": "XerathMageSpear",
+      "name": "Shocking Orb",
+      "description": "Deals magic damage to an enemy and stuns them.",
+      "tooltip": "Xerath fires an orb of raw magic. The first enemy hit takes {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage and is stunned for between {{ e8 }} and {{ e2 }} seconds. The stun duration lengthens based on how far the orb travels.",
+      "leveltip": {
+        "label": [
+          "Damage",
+          "Cooldown",
+          "Mana Cost"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
+          "{{ cost }} -> {{ costNL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
+        13,
+        12.5,
+        12,
+        11.5,
+        11
+      ],
+      "cooldownBurn": "13/12.5/12/11.5/11",
+      "cost": [
         60,
         65,
         70,
         75,
         80
       ],
-      [
-        2.5,
-        2.5,
-        2.5,
-        2.5,
-        2.5
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
-      [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
-      [
-        25,
-        25,
-        25,
-        25,
-        25
-      ],
-      [
-        0.8,
-        0.8,
-        0.8,
-        0.8,
-        0.8
-      ],
-      [
-        -0.25,
-        -0.25,
-        -0.25,
-        -0.25,
-        -0.25
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "60/90/120/150/180",
-      "2",
-      "60/65/70/75/80",
-      "2.5",
-      "0.5",
-      "50",
-      "50",
-      "25",
-      "0.8",
-      "-0.25"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.6,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "1",
-    "range": [
-      1100,
-      1100,
-      1100,
-      1100,
-      1100
-    ],
-    "rangeBurn": "1100",
-    "image": {
-      "full": "XerathArcaneBarrage2.png",
-      "sprite": "spell13.png",
-      "group": "spell",
-      "x": 432,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_e": {
-    "id": "XerathMageSpear",
-    "name": "Shocking Orb",
-    "description": "Deals magic damage to an enemy and stuns them.",
-    "tooltip": "Xerath fires an orb of raw magic. The first enemy hit takes {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage and is stunned for between {{ e8 }} and {{ e2 }} seconds. The stun duration lengthens based on how far the orb travels.",
-    "leveltip": {
-      "label": [
-        "Damage",
-        "Cooldown",
-        "Mana Cost"
-      ],
+      "costBurn": "60/65/70/75/80",
+      "datavalues": {},
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ ammorechargetime }} -> {{ ammorechargetimeNL }}",
-        "{{ cost }} -> {{ costNL }}"
-      ]
+        null,
+        [
+          80,
+          110,
+          140,
+          170,
+          200
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          0.17,
+          0.17,
+          0.17,
+          0.17,
+          0.17
+        ],
+        [
+          1125,
+          1125,
+          1125,
+          1125,
+          1125
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "effectBurn": [
+        null,
+        "80/110/140/170/200",
+        "2",
+        "0.17",
+        "1125",
+        "0.5",
+        "0",
+        "0",
+        "0.5",
+        "0",
+        "0"
+      ],
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.45,
+          "key": "a1"
+        }
+      ],
+      "costType": " Mana",
+      "maxammo": "1",
+      "range": [
+        1050,
+        1050,
+        1050,
+        1050,
+        1050
+      ],
+      "rangeBurn": "1050",
+      "image": {
+        "full": "XerathMageSpear.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
     },
-    "maxrank": 5,
-    "cooldown": [
-      13,
-      12.5,
-      12,
-      11.5,
-      11
-    ],
-    "cooldownBurn": "13/12.5/12/11.5/11",
-    "cost": [
-      60,
-      65,
-      70,
-      75,
-      80
-    ],
-    "costBurn": "60/65/70/75/80",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        80,
-        110,
-        140,
-        170,
-        200
+    {
+      "id": "XerathLocusOfPower2",
+      "name": "Rite of the Arcane",
+      "description": "Xerath immobilizes himself and gains numerous long-range barrages.",
+      "tooltip": "Xerath ascends to his true form, becoming rooted in place and gaining {{ e2 }} Arcane Barrages. This magic artillery deals {{ e3 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies hit.<br /><br />The root ends after {{ e1 }} seconds, when all shots have been fired or when manually deactivated by issuing a move command. If no barrages are fired, {{ e7 }}% of the cooldown is refunded.",
+      "leveltip": {
+        "label": [
+          "Damage",
+          "Number of Shots",
+          "Cooldown"
+        ],
+        "effect": [
+          "{{ e3 }} -> {{ e3NL }}",
+          "{{ e2 }} -> {{ e2NL }}",
+          "{{ cooldown }} -> {{ cooldownNL }}"
+        ]
+      },
+      "maxrank": 3,
+      "cooldown": [
+        130,
+        115,
+        100
       ],
-      [
-        2,
-        2,
-        2,
-        2,
-        2
+      "cooldownBurn": "130/115/100",
+      "cost": [
+        100,
+        100,
+        100
       ],
-      [
-        0.17,
-        0.17,
-        0.17,
-        0.17,
-        0.17
-      ],
-      [
-        1125,
-        1125,
-        1125,
-        1125,
-        1125
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "80/110/140/170/200",
-      "2",
-      "0.17",
-      "1125",
-      "0.5",
-      "0",
-      "0",
-      "0.5",
-      "0",
-      "0"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.45,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "1",
-    "range": [
-      1050,
-      1050,
-      1050,
-      1050,
-      1050
-    ],
-    "rangeBurn": "1050",
-    "image": {
-      "full": "XerathMageSpear.png",
-      "sprite": "spell13.png",
-      "group": "spell",
-      "x": 0,
-      "y": 144,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_r": {
-    "id": "XerathLocusOfPower2",
-    "name": "Rite of the Arcane",
-    "description": "Xerath immobilizes himself and gains numerous long-range barrages.",
-    "tooltip": "Xerath ascends to his true form, becoming rooted in place and gaining {{ e2 }} Arcane Barrages. This magic artillery deals {{ e3 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage to all enemies hit.<br /><br />The root ends after {{ e1 }} seconds, when all shots have been fired or when manually deactivated by issuing a move command. If no barrages are fired, {{ e7 }}% of the cooldown is refunded.",
-    "leveltip": {
-      "label": [
-        "Damage",
-        "Number of Shots",
-        "Range",
-        "Cooldown"
-      ],
+      "costBurn": "100",
+      "datavalues": {},
       "effect": [
-        "{{ e3 }} -> {{ e3NL }}",
-        "{{ e2 }} -> {{ e2NL }}",
-        "{{ e5 }} -> {{ e5NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}"
-      ]
-    },
-    "maxrank": 3,
-    "cooldown": [
-      130,
-      115,
-      100
-    ],
-    "cooldownBurn": "130/115/100",
-    "cost": [
-      100,
-      100,
-      100
-    ],
-    "costBurn": "100",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        10,
-        10,
-        10
+        null,
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          200,
+          240,
+          280
+        ],
+        [
+          200,
+          200,
+          200
+        ],
+        [
+          5000,
+          5000,
+          5000
+        ],
+        [
+          0.8,
+          0.8,
+          0.8
+        ],
+        [
+          50,
+          50,
+          50
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
       ],
-      [
-        3,
-        4,
-        5
+      "effectBurn": [
+        null,
+        "10",
+        "3/4/5",
+        "200/240/280",
+        "200",
+        "5000",
+        "0.8",
+        "50",
+        "0",
+        "0",
+        "0"
       ],
-      [
-        200,
-        240,
-        280
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.43,
+          "key": "a1"
+        }
       ],
-      [
-        200,
-        200,
-        200
+      "costType": " Mana",
+      "maxammo": "-1",
+      "range": [
+        5000,
+        5000,
+        5000
       ],
-      [
-        3200,
-        4400,
-        5600
-      ],
-      [
-        0.8,
-        0.8,
-        0.8
-      ],
-      [
-        50,
-        50,
-        50
-      ],
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "10",
-      "3/4/5",
-      "200/240/280",
-      "200",
-      "3200/4400/5600",
-      "0.8",
-      "50",
-      "0",
-      "0",
-      "0"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.43,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "-1",
-    "range": [
-      3200,
-      4400,
-      5600
-    ],
-    "rangeBurn": "3200/4400/5600",
-    "image": {
-      "full": "XerathLocusOfPower2.png",
-      "sprite": "spell13.png",
-      "group": "spell",
-      "x": 48,
-      "y": 144,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_i": {
+      "rangeBurn": "5000",
+      "image": {
+        "full": "XerathLocusOfPower2.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
+    }
+  ],
+  "riot_passive": {
     "name": "Mana Surge",
     "description": "Xerath's basic attacks periodically restore Mana.",
     "image": {
       "full": "Xerath_Passive1.png",
       "sprite": "passive4.png",
       "group": "passive",
-      "x": 144,
+      "x": 192,
       "y": 48,
       "w": 48,
       "h": 48
@@ -2385,7 +2385,7 @@
     "rangetype": "Ranged",
     "date": 2011,
     "patch": "V1.0.0.126",
-    "changes": "9.1.1",
+    "changes": "9.15.1",
     "role": "Artillery",
     "damage": 3,
     "toughness": 0,
@@ -2403,108 +2403,120 @@
     "skill_e": "Shocking Orb",
     "skill_r": "Rite of the Arcane"
   },
-  "wikia_skill_i1": {
-    "name": "Mana Surge",
-    "champion": "Xerath",
-    "skill": "I",
-    "icon": "Mana Surge.png",
-    "blurb": "Xerath's basic attacks periodically restore Mana.",
-    "description": "{{sbc|Innate:}} '''Xerath''' periodically empowers his next [[basic attack]] to restore {{pp|18|30|33|36|42|48|54|63|72|81|90|102|114|126|138|150|165|180|195|formula=27 plus 3 at each level up to 3, then 6 at each level up to 6, 9 at each level up to 10, 12 at each level up to 15, and 15 at each level|color=mana}} {{sti|mana|{{as|mana}}}}, doubled to {{pp|18|60|66|72|84|96|108|126|144|162|180|204|228|252|276|300|330|360|390|formula=54 plus 6 at each level up to 3, then 12 at each level up to 6, 18 at each level up to 10, 24 at each level up to 15, and 30 at each level|color=mana}} against enemy champions.",
-    "static": 12,
-    "targeting": "Passive",
-    "affects": "Self",
-    "notes": "\n* The passive doesn't trigger if the mana restored would cause Xerath to exceed his maximum mana.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?p=45068210#post45068210 Full Mana vs. Mana Surge]</ref>\n* ''Mana Surge'' works with jungle plants and monsters."
-  },
-  "wikia_skill_q1": {
-    "name": "Arcanopulse",
-    "champion": "Xerath",
-    "skill": "Q",
-    "icon": "Arcanopulse.png",
-    "blurb": "Fires a long-range beam of energy, dealing magic damage to all targets hit.",
-    "description": "{{sbc|First Cast:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over {{fd|1.5}} seconds, gradually {{tip|slow|slowing}} himself for the duration by up to 50%.",
-    "description2": "''Arcanopulse'' is canceled when the charge ends, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
-    "description3": "{{sbc|Second Cast:}} After a brief delay, '''Xerath''' fires a beam of energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit.",
-    "leveling2": "{{st|Mana Refunded|{{ap|40|45|50|55|60}}}}",
-    "leveling3": "{{st|Magic Damage|{{ap|80|120|160|200|240}} {{as|(+ 75% AP)}}}}",
-    "target_range": "{{pp|type=channel time|11|750|815|880|945|1010|1075|1140|1205|1270|1335|1400|0|0.15|0.3|0.45|0.6|0.75|0.9|1.05|1.2|1.35|1.5|formula=750{{plus}}(65 per 0.15 seconds). ''This is capped at 1.5 seconds.''}}",
-    "collision_radius": "{{fd|72.5}}",
-    "cooldown": "{{ap|9|8|7|6|5}}",
-    "cost": "{{ap|80|90|100|110|120}}",
-    "costtype": "mana",
-    "targeting": "Direction",
-    "affects": "Self, Enemies",
-    "damagetype": "Magic",
-    "spelleffects": "Area of effect",
-    "spellshield": true,
-    "projectile": false,
-    "notes": "\n* While charging, ''Arcanopulse'' can be interrupted by any hard disables.\n* ''Arcanonopulse's'' cooldown starts after firing the beam or after it's cast time ends if not fired, not while channeling.\n* Once casting, ''Arcanopulse'' cannot be interrupted. During the cast time, Xerath will ignore crowd control effects but still suffers from them if the duration persists.\n* If Xerath is displaced by a knockback or pull effect during the cast time, the beam will fire from the original point of casting.\n* If Xerath dies while charging or during the cast time, ''Arcanopulse'' will not fire but is still placed on cooldown."
-  },
-  "wikia_skill_w1": {
-    "name": "Eye of Destruction",
-    "champion": "Xerath",
-    "skill": "W",
-    "icon": "Eye of Destruction.png",
-    "blurb": "Calls down a barrage of arcane energy, slowing and dealing magic damage to all enemies in an area. Targets in the middle receive additional damage and a stronger slow.",
-    "description": "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target area which strikes after a {{fd|0.5}}-seconds delay, dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
-    "leveling": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 60% AP)}}}}",
-    "description2": "Enemies in the center of the blast take 50% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying down to 25% over the duration.",
-    "leveling2": "{{st|Enhanced Damage|{{ap|90 to 270}} {{as|(+ 90% AP)}}}}<!--\n-->{{st|Enhanced Slow|{{ap|60 to 80}}%}}",
-    "target_range": 1000,
-    "effect_radius": 210,
-    "cooldown": "{{ap|14 to 10}}",
-    "cost": "{{ap|70 to 110}}",
-    "costtype": "mana",
-    "targeting": "Ground",
-    "damagetype": "Magic",
-    "affects": "Enemies",
-    "spelleffects": "Area of effect",
-    "spellshield": true,
-    "notes": "\n* There is an {{fd|0.2}} second casting time that must be completed in order for the impact to deal damage. After the {{fd|0.2}} second casting time, there is no way to stop the blast.\n** Cast times cannot be interrupted by crowd control effects, and will only be interrupted by ''Xerath's'' death. If ''Xerath'' dies during the {{fd|0.2}} seconds, the impact will fizzle after the {{fd|0.5}} seconds (and will not deal damage).\n** During the cast time, ''Xerath'' will ignore crowd control effects but still suffers from them if the duration persists.\n** If ''Xerath'' is displaced by a knockback or pull effect during the cast time, ''Eye of Destruction'' will still go off at the target location even if he is no longer in range.\n* ''Eye of Destruction'' grants sight over a large area on-cast, which persists for a short duration after the blast hits."
-  },
-  "wikia_skill_e1": {
-    "name": "Shocking Orb",
-    "champion": "Xerath",
-    "skill": "E",
-    "icon": "Shocking Orb.png",
-    "blurb": "Deals magic damage to an enemy and stuns them.",
-    "description": "{{sbc|Active:}} '''Xerath''' fires an orb of energy in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|stun|stunning}} them for {{pp|11|type=distance the orb traveled|0.5 to 2|0 to 1050|formula=0.5+(0.15 per 105 units). ''This is capped at 1050 units traveled.''}} seconds.",
-    "leveling": "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 45% AP)}}}}",
-    "target_range": 1060,
-    "collision_radius": 60,
-    "speed": 1600,
-    "cooldown": "{{ap|13 to 11}}",
-    "cost": "{{ap|60 to 80}}",
-    "costtype": "mana",
-    "targeting": "Direction",
-    "affects": "Enemies",
-    "damagetype": "Magic",
-    "projectile": true,
-    "spelleffects": "Single target",
-    "spellshield": true,
-    "notes": "\n* No additional details."
-  },
-  "wikia_skill_r1": {
-    "name": "Rite of the Arcane",
-    "champion": "Xerath",
-    "skill": "R",
-    "icon": "Rite of the Arcane.png",
-    "blurb": "Xerath immobilizes himself and gains numerous long-range barrages.",
-    "description": "{{sbc|Active:}} '''Xerath''' {{tip|root|roots}} himself to his current location for up to 10 seconds, gaining the ability to cast {{ai|Rite of the Arcane||Arcane Barrage}} multiple times, but losing the ability to cast his other abilities.",
-    "leveling": "{{st|Number of Barrages|{{ap|3 to 5}}}}",
-    "description2": "{{sbc|{{ai|Rite of the Arcane||Arcane Barrage}} - Active:}} '''Xerath''' launches a blast of arcane energy to the target area which strikes after {{fd|0.5}} seconds, dealing {{as|magic damage}}. Each cast has a {{tt|static cooldown|Unaffected by cooldown reduction}} of {{fd|0.8}} seconds.",
-    "leveling2": "{{st|Magic Damage|{{ap|200 to 280}} {{as|(+ 43% AP)}}|Total Damage|{{pp|3|notooltip=true|(200+40*(x-1))*(3+x-1)}} {{as|(+ {{ap|43*3 to 43*5}}% AP)}}}}",
-    "description3": "''Rite of the Arcane'' can be canceled early by moving or attacking. If ''Arcane Barrage'' ends without any usage, half the {{sti|cooldown}} is refunded. ''Rite of the Arcane'' is canceled and put on full cooldown if '''Xerath''' is affected by any {{tip|crowd control}} that prevents or interrupts the casting of abilities.",
-    "target_range": "{{ap|3200 to 5600}}",
-    "effect_radius": 135,
-    "cooldown": "{{ap|130 to 100}}",
-    "cost": 100,
-    "costtype": "mana",
-    "targeting": "Ground",
-    "affects": "Self, Enemies",
-    "damagetype": "Magic",
-    "spelleffects": "Area of effect",
-    "spellshield": true,
-    "projectile": false,
-    "notes": "\n* ''Rite of the Arcane'' has a short activation time where ''Xerath'' ascends into his true form. During this time, ''Arcane Barrage'' cannot be activated and a circle indicating the ability's maximum range appears (starting small and rapidly expanding to the maximum range over the cast time).\n** The maximum-range indicator is visible to both allies and enemies.\n* Activating ''Rite of the Arcane'' '''does not''' automatically use the first cast of ''Arcane Barrage'' - you must activate the ability twice in order to first deal damage.\n* ''Arcane Barrage'' uses a [[Champion ability|barrage system]] so that it can be cast multiple times within a given period at no additional cost.\n* Each cast of ''Arcane Barrage'' grants a brief area of sight.\n* Each cast is classified as an activation for the purposes of effects such as {{ii|Tear of the Goddess|Tear}} and {{nie|Spellblade}}.\n* ''Xerath'' can use {{ai|Dark Passage|Thresh}} while rooted."
+  "skills": {
+    "i1": {
+      "name": "Mana Surge",
+      "champion": "Xerath",
+      "skill": "I",
+      "icon": "Mana Surge.png",
+      "blurb": "Xerath's basic attacks periodically restore Mana.",
+      "description": "{{sbc|Innate:}} '''Xerath''' periodically empowers his next [[basic attack]] to restore {{pp|18|30|33|36|42|48|54|63|72|81|90|102|114|126|138|150|165|180|195|formula=27 plus 3 at each level up to 3, then 6 at each level up to 6, 9 at each level up to 10, 12 at each level up to 15, and 15 at each level|color=mana}} {{sti|mana|{{as|mana}}}}, doubled to {{pp|18|60|66|72|84|96|108|126|144|162|180|204|228|252|276|300|330|360|390|formula=54 plus 6 at each level up to 3, then 12 at each level up to 6, 18 at each level up to 10, 24 at each level up to 15, and 30 at each level|color=mana}} against enemy champions.",
+      "static": 12,
+      "targeting": "Passive",
+      "affects": "Self",
+      "notes": "\n* The passive doesn't trigger if the mana restored would cause Xerath to exceed his maximum mana.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?p=45068210#post45068210 Full Mana vs. Mana Surge]</ref>\n* ''Mana Surge'' works with jungle plants and monsters.",
+      "skillkey": "I",
+      "skillid": "i1"
+    },
+    "q1": {
+      "name": "Arcanopulse",
+      "champion": "Xerath",
+      "skill": "Q",
+      "icon": "Arcanopulse.png",
+      "blurb": "Fires a long-range beam of energy, dealing magic damage to all targets hit.",
+      "description": "{{sbc|First Cast:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over {{fd|1.5}} seconds, gradually {{tip|slow|slowing}} himself for the duration by up to 50%.",
+      "description2": "''Arcanopulse'' is canceled when the charge ends, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
+      "description3": "{{sbc|Second Cast:}} After a brief delay, '''Xerath''' fires a beam of energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit.",
+      "leveling2": "{{st|Mana Refunded|{{ap|40|45|50|55|60}}}}",
+      "leveling3": "{{st|Magic Damage|{{ap|80|120|160|200|240}} {{as|(+ 75% AP)}}}}",
+      "target_range": "{{pp|type=channel time|11|750|815|880|945|1010|1075|1140|1205|1270|1335|1400|0|0.15|0.3|0.45|0.6|0.75|0.9|1.05|1.2|1.35|1.5|formula=750{{plus}}(65 per 0.15 seconds). ''This is capped at 1.5 seconds.''}}",
+      "collision_radius": "{{fd|72.5}}",
+      "cooldown": "{{ap|9|8|7|6|5}}",
+      "cost": "{{ap|80|90|100|110|120}}",
+      "costtype": "mana",
+      "targeting": "Direction",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "projectile": false,
+      "notes": "\n* While charging, ''Arcanopulse'' can be interrupted by any hard disables.\n* ''Arcanonopulse's'' cooldown starts after firing the beam or after it's cast time ends if not fired, not while channeling.\n* Once casting, ''Arcanopulse'' cannot be interrupted. During the cast time, Xerath will ignore crowd control effects but still suffers from them if the duration persists.\n* If Xerath is displaced by a knockback or pull effect during the cast time, the beam will fire from the original point of casting.\n* If Xerath dies while charging or during the cast time, ''Arcanopulse'' will not fire but is still placed on cooldown.",
+      "skillkey": "Q",
+      "skillid": "q1"
+    },
+    "w1": {
+      "name": "Eye of Destruction",
+      "champion": "Xerath",
+      "skill": "W",
+      "icon": "Eye of Destruction.png",
+      "blurb": "Calls down a barrage of arcane energy, slowing and dealing magic damage to all enemies in an area. Targets in the middle receive additional damage and a stronger slow.",
+      "description": "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target area which strikes after a {{fd|0.5}}-seconds delay, dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
+      "leveling": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 60% AP)}}}}",
+      "description2": "Enemies in the center of the blast take 50% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying down to 25% over the duration.",
+      "leveling2": "{{st|Enhanced Damage|{{ap|90 to 270}} {{as|(+ 90% AP)}}}}<!--\n-->{{st|Enhanced Slow|{{ap|60 to 80}}%}}",
+      "target_range": 1000,
+      "effect_radius": 210,
+      "cooldown": "{{ap|14 to 10}}",
+      "cost": "{{ap|70 to 110}}",
+      "costtype": "mana",
+      "targeting": "Ground",
+      "damagetype": "Magic",
+      "affects": "Enemies",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "notes": "\n* There is an {{fd|0.2}} second casting time that must be completed in order for the impact to deal damage. After the {{fd|0.2}} second casting time, there is no way to stop the blast.\n** Cast times cannot be interrupted by crowd control effects, and will only be interrupted by ''Xerath's'' death. If ''Xerath'' dies during the {{fd|0.2}} seconds, the impact will fizzle after the {{fd|0.5}} seconds (and will not deal damage).\n** During the cast time, ''Xerath'' will ignore crowd control effects but still suffers from them if the duration persists.\n** If ''Xerath'' is displaced by a knockback or pull effect during the cast time, ''Eye of Destruction'' will still go off at the target location even if he is no longer in range.\n* ''Eye of Destruction'' grants sight over a large area on-cast, which persists for a short duration after the blast hits.",
+      "skillkey": "W",
+      "skillid": "w1"
+    },
+    "e1": {
+      "name": "Shocking Orb",
+      "champion": "Xerath",
+      "skill": "E",
+      "icon": "Shocking Orb.png",
+      "blurb": "Deals magic damage to an enemy and stuns them.",
+      "description": "{{sbc|Active:}} '''Xerath''' fires an orb of energy in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|stun|stunning}} them for {{pp|11|type=distance the orb traveled|0.5 to 2|0 to 1050|formula=0.5+(0.15 per 105 units). ''This is capped at 1050 units traveled.''}} seconds.",
+      "leveling": "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 45% AP)}}}}",
+      "target_range": 1060,
+      "collision_radius": 60,
+      "speed": 1600,
+      "cooldown": "{{ap|13 to 11}}",
+      "cost": "{{ap|60 to 80}}",
+      "costtype": "mana",
+      "targeting": "Direction",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "projectile": true,
+      "spelleffects": "Single target",
+      "spellshield": true,
+      "notes": "\n* No additional details.",
+      "skillkey": "E",
+      "skillid": "e1"
+    },
+    "r1": {
+      "name": "Rite of the Arcane",
+      "champion": "Xerath",
+      "skill": "R",
+      "icon": "Rite of the Arcane.png",
+      "blurb": "Xerath immobilizes himself and gains numerous long-range barrages.",
+      "description": "{{sbc|Active:}} '''Xerath''' {{tip|root|roots}} himself to his current location for up to 10 seconds, gaining the ability to cast {{ai|Rite of the Arcane||Arcane Barrage}} multiple times, but losing the ability to cast his other abilities.",
+      "leveling": "{{st|Number of Barrages|{{ap|3 to 5}}}}",
+      "description2": "{{sbc|{{ai|Rite of the Arcane||Arcane Barrage}} - Active:}} '''Xerath''' launches a blast of arcane energy to the target area which strikes after {{fd|0.5}} seconds, dealing {{as|magic damage}}. Each cast has a {{tt|static cooldown|Unaffected by cooldown reduction}} of {{fd|0.8}} seconds.",
+      "leveling2": "{{st|Magic Damage|{{ap|200 to 280}} {{as|(+ 43% AP)}}|Total Damage|{{ap|(200 to 280)*(3 to 5)}} {{as|(+ {{ap|43*3 to 43*5}}% AP)}}}}",
+      "description3": "''Rite of the Arcane'' can be canceled early by moving or attacking. If ''Arcane Barrage'' ends without any usage, half the {{sti|cooldown}} is refunded. ''Rite of the Arcane'' is canceled and put on full cooldown if '''Xerath''' is affected by any {{tip|crowd control}} that prevents or interrupts the casting of abilities.",
+      "target_range": 5000,
+      "effect_radius": 135,
+      "cooldown": "{{ap|130 to 100}}",
+      "cost": 100,
+      "costtype": "mana",
+      "targeting": "Ground",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Area of effect",
+      "spellshield": true,
+      "projectile": false,
+      "notes": "\n* ''Rite of the Arcane'' has a short activation time where ''Xerath'' ascends into his true form. During this time, ''Arcane Barrage'' cannot be activated and a circle indicating the ability's maximum range appears (starting small and rapidly expanding to the maximum range over the cast time).\n** The maximum-range indicator is visible to both allies and enemies.\n* Activating ''Rite of the Arcane'' '''does not''' automatically use the first cast of ''Arcane Barrage'' - you must activate the ability twice in order to first deal damage.\n* ''Arcane Barrage'' uses a [[Champion ability|barrage system]] so that it can be cast multiple times within a given period at no additional cost.\n* Each cast of ''Arcane Barrage'' grants a brief area of sight.\n* Each cast is classified as an activation for the purposes of effects such as {{ii|Tear of the Goddess|Tear}} and {{nie|Spellblade}}.\n* ''Xerath'' can use {{ai|Dark Passage|Thresh}} while rooted.",
+      "skillkey": "R",
+      "skillid": "r1"
+    }
   }
 }

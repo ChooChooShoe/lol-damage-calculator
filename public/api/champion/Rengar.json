@@ -4,13 +4,12 @@
   "id": "Rengar",
   "key": "107",
   "name": "Rengar",
-  "fullname": "Rengar",
   "title": "the Pridestalker",
   "image": {
     "full": "Rengar.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 144,
+    "x": 192,
     "y": 0,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Ferocity",
   "herotype": "Slayer",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,288 +31,479 @@
     "magic": 2,
     "difficulty": 8
   },
-  "i_displayname": "Unseen Predator / Bonetooth Necklace",
-  "q_displayname": "Savagery",
-  "w_dispalyname": "Battle Roar",
-  "e_dispalyname": "Bola Strike",
-  "r_dispalyname": "Thrill of the Hunt",
-  "complex_skills": {
+  "stats": {
+    "hp": 585,
+    "hpperlevel": 90,
+    "mp": 4,
+    "mpperlevel": 0,
+    "movespeed": 345,
+    "armor": 34,
+    "armorperlevel": 3,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 7,
+    "hpregenperlevel": 0.5,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 68,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.667
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Unseen Predator",
+      "riotId": "",
+      "name": "Unseen Predator",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Rengar_P.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 144,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "While in brush, Rengar leaps at his target with his basic attack. Rengar's abilities build Ferocity. Upon reaching full Ferocity, his next ability becomes empowered and grants him Movement Speed on cast, but he instantly loses all Ferocity if he leaves combat. Killing enemy champions awards trophies on Rengar's Bonetooth Necklace, permanently increasing his Attack Damage.",
-      "champion": "Rengar",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} While in {{tip|brush}} or {{tip|camouflage|camouflaged}}, '''Rengar's''' [[basic attack]]s have {{sti|range|725 range}} and cause him to {{tip|dash|leap}} to enemies beyond his normal {{tip|melee}} range. This bonus lasts for {{tt|{{fd|0.25}}|Estimated}} seconds upon exiting brush or stealth.<br> Leaping when on {{as|0 Ferocity|buzzword3}} generates {{as|1 Ferocity|buzzword3}}.",
         "{{sbc|Ferocity:}} '''Rengar''' generates {{as|1 Ferocity|buzzword3}} whenever he casts a ''basic [[Champion ability|ability]]''. Reaching {{as|4 Ferocity|buzzword3}} makes his next ability empowered, granting an additional cast along with {{pp|3|key=%|30 to 50|1 to 13|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds at the cost of all {{as|Ferocity|buzzword3}}. Reaching {{as|4 Ferocity|buzzword3}} with {{ai|Savagery|Rengar}} or {{ai|Bola Strike|Rengar}} locks its empowered version for {{fd|0.1}} seconds before and after casting it. All {{as|Ferocity|buzzword3}} is lost after being out-of-combat for 8 seconds.",
         "{{sbc|Bonetooth Necklace:}} {{tip|takedown|Takedowns}} within {{fd|1.5}} seconds of being damaged by '''Rengar''' grant him a '''Trophy''' per unique enemy champion (max 5). An [[File:Head of Kha'Zix.png|20px|border|link=]] additional one is made available through the event [[The Hunt is On!]].<br> '''Trophies''' grant {{as|{{pp|6|type=[[File:Bonetooth Necklace Green.png|20px|border|adjustsize|link=]] trophies|key=%|x^2|x;Head of Kha'Zix|formula=(Number of Trophies) * (Number of Trophies)}} '''bonus''' AD}} as {{as|'''bonus''' attack damage}}."
       ],
-      "effect_radius": "{{tt|50|Distance from target upon landing.}}",
-      "flavorsound": "{{sm2|Rengar.trophy3.ogg|''\"Spoils of the hunt.\"''}}",
-      "grounded": true,
-      "icon": [
-        "Unseen Predator.png",
-        "Bonetooth Necklace.png"
-      ],
-      "knockdown": true,
-      "leveling": [],
-      "name": "Unseen Predator",
-      "notes": [
-        "* ''Unseen Predator'' occurs regardless of whether or not ''Rengar's'' target has {{tip|sight}} of him.",
-        "* ''Rengar'' will not leap to targets already in his basic attack range.",
-        "* He also cannot leap if he's {{tip|root|rooted}}.",
-        "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* ''Rengar'' will only leap to a target if his basic attack timer has been refreshed (if not so he will not automatically attempt to path towards his target, despite them being within leap range).",
-        "* ''Rengar'' can freely use any ability mid-leap.",
-        "* ''Unseen Predator'' will be lost immediately if ''Rengar'' {{si|Flash|Flashes}} outside brush.",
-        "* {{iis|Rapid Firecannon}} and {{ais|Savagery|Rengar}} '''bonus''' range are lost after {{fd|0.25}} seconds upon gaining ''Unseen Predator'', and are re-gained after {{fd|0.25}} seconds upon losing ''Unseen Predator''.",
-        "* ''Bonetooth Necklace'' uses icons for each stack: [[File:Bonetooth Necklace Green.png|20px|border|link=]] 1, [[File:Bonetooth Necklace Green 2.png|20px|border|link=]] 2, [[File:Bonetooth Necklace Green 3.png|20px|border|link=]] 3, [[File:Bonetooth Necklace Green 4.png|20px|border|link=]] 4, [[File:Bonetooth Necklace Green 5.png|20px|border|link=]] 5, and [[File:Head of Kha'Zix.png|20px|border|link=]] '''Head of Kha'Zix'''."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "I",
-      "speed": 1450,
-      "targeting": "Passive"
+      "notes": "\n* ''Unseen Predator'' occurs regardless of whether or not ''Rengar's'' target has {{tip|sight}} of him.\n* ''Rengar'' will not leap to targets already in his basic attack range.\n* He also cannot leap if he's {{tip|root|rooted}}.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Rengar'' will only leap to a target if his basic attack timer has been refreshed (if not so he will not automatically attempt to path towards his target, despite them being within leap range).\n* ''Rengar'' can freely use any ability mid-leap.\n* ''Unseen Predator'' will be lost immediately if ''Rengar'' {{si|Flash|Flashes}} outside brush.\n* {{iis|Rapid Firecannon}} and {{ais|Savagery|Rengar}} '''bonus''' range are lost after {{fd|0.25}} seconds upon gaining ''Unseen Predator'', and are re-gained after {{fd|0.25}} seconds upon losing ''Unseen Predator''.\n* ''Bonetooth Necklace'' uses icons for each stack: [[File:Bonetooth Necklace Green.png|20px|border|link=]] 1, [[File:Bonetooth Necklace Green 2.png|20px|border|link=]] 2, [[File:Bonetooth Necklace Green 3.png|20px|border|link=]] 3, [[File:Bonetooth Necklace Green 4.png|20px|border|link=]] 4, [[File:Bonetooth Necklace Green 5.png|20px|border|link=]] 5, and [[File:Head of Kha'Zix.png|20px|border|link=]] '''Head of Kha'Zix'''.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "RengarQ",
-      "riotName": "Savagery",
+      "riotId": "RengarQ",
+      "name": "Savagery",
       "maxrank": 5,
-      "maxammo": 1,
+      "cooldown": [
+        6,
+        5.5,
+        5,
+        4.5,
+        4
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "RengarQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 96,
+        "x": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "",
-      "champion": "Rengar",
-      "cooldown": [
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25
-      ],
-      "cooldownBurn": "0.25",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Rengar's''' next two basic attacks within 3 seconds gain {{sti|{{as|40% '''bonus''' attack speed}}}}, with the first also gaining {{sti|range|25 '''bonus''' range}} and dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "{{sbc|Empowered Active:}} ''Savagery's'' {{as|'''bonus''' physical damage}} is modified and grants '''Rengar''' {{as|{{pp|key=%|50 to 101}} {{sti|'''bonus''' attack speed}}}} for 5 seconds.",
         "''Savagery'' resets '''Rengar's''' basic attack timer."
       ],
-      "icon": [
-        "Savagery.png",
-        "Savagery 2.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ {{ap|0 to 20}}% AD)}}}}",
-        "{{st|Empowered Bonus Physical Damage|{{pp|18|30|45|60|75|90|105|120|135|150|160|170|180|190|200|210|220|230|240|formula = 15 + 15 per level up to 9, then + 10 per level up to 18}} {{as|(+ 40% AD)}}}}"
-      ],
-      "name": "Savagery",
-      "notes": [
-        "* ''(Empowered) Savagery'' has no cast time and does not interrupt ''Rengar's'' previous orders.",
-        "* The enhanced attack applies other {{tip|on-hit}} effects as well as [[life steal]] and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect structures."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "Q",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''(Empowered) Savagery'' has no cast time and does not interrupt ''Rengar's'' previous orders.\n* The enhanced attack applies other {{tip|on-hit}} effects as well as [[life steal]] and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect structures.",
+      "costBurn": "0",
+      "cooldownBurn": "6/5.5/5/4.5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ {{ap|0 to 20}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','5','10','15','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                60,
+                90,
+                120,
+                150
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0,
+                  0.05,
+                  0.1,
+                  0.15,
+                  0.2
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Physical Damage",
+              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','5','10','15','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  60,
+                  90,
+                  120,
+                  150
+                ],
+                "player_total_ad": [
+                  0,
+                  0.05,
+                  0.1,
+                  0.15,
+                  0.2
+                ]
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','5','10','15','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Empowered Bonus Physical Damage|{{pp|18|30|45|60|75|90|105|120|135|150|160|170|180|190|200|210|220|230|240|formula = 15 + 15 per level up to 9, then + 10 per level up to 18}} {{as|(+ 40% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Bonus Physical Damage</span>: <span><span class=\"title-tooltip\" title=\"30 / 45 / 60 / 75 / 90 / 105 / 120 / 135 / 150 / 160 / 170 / 180 / 190 / 200 / 210 / 220 / 230 / 240\">30 ‒ 240</span> <span class=\"ad\">(+ 40% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.4
+              }
+            ],
+            "st_slices": [
+              "Empowered Bonus Physical Damage",
+              "<span class=\"title-tooltip\" title=\"30 / 45 / 60 / 75 / 90 / 105 / 120 / 135 / 150 / 160 / 170 / 180 / 190 / 200 / 210 / 220 / 230 / 240\">30 ‒ 240</span> <span class=\"ad\">(+ 40% AD)</span>"
+            ]
+          }
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "RengarW",
-      "riotName": "Battle Roar",
+      "riotId": "RengarW",
+      "name": "Battle Roar",
       "maxrank": 5,
-      "maxammo": 1,
+      "cooldown": [
+        16,
+        14.5,
+        13,
+        11.5,
+        10
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "RengarW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 432,
-        "y": 96,
+        "x": 144,
+        "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Self / Enemies",
-      "blurb": "Rengar lets out a battle roar, damaging enemies and healing for some of the recent damage he has taken. Ferocity effect: additionally breaks crowd control effects.",
-      "champion": "Rengar",
-      "cooldown": [
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25
-      ],
-      "cooldownBurn": "0.25",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Rengar''' stores 50% of the [[damage]] he's taken in the last {{fd|1.5}} seconds as ''Grey Health'' (''75% versus monsters'').",
         "{{sbc|Active:}} '''Rengar''' lets out a battle roar, dealing {{tip|magic damage|{{as|magic damage}}}} to nearby enemies and {{sti|healing|link=true}} '''Rengar''' for his ''Grey Health''.",
-        "{{sbc|Empowered Active:}} ''Battle Roar's'' {{as|magic damage}} is modified and additionally removes all existing [[crowd control]] effects."
+        "{{sbc|Empowered Active:}} ''Battle Roar's'' {{as|magic damage}} is modified and additionally {{tip|cleanse|cleanses}} '''Rengar''' of all {{tip|crowd control}}."
       ],
-      "effect_radius": 450,
-      "icon": [
-        "Battle Roar.png",
-        "Battle Roar 2.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|50 to 170}} {{as|(+ 80% AP)}}}}",
-        "{{st|Empowered Magic Damage|{{pp|50 to 220}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Battle Roar",
-      "notes": [
-        "* ''Battle Roar'' has no cast time and does not interrupt ''Rengar's'' previous orders."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Battle Roar'' has no cast time and does not interrupt ''Rengar's'' previous orders.",
+      "costBurn": "0",
+      "cooldownBurn": "16/14.5/13/11.5/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|50 to 170}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','80','110','140','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                80,
+                110,
+                140,
+                170
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['50','80','110','140','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  80,
+                  110,
+                  140,
+                  170
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['50','80','110','140','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Empowered Magic Damage|{{pp|50 to 220}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Magic Damage</span>: <span><HtmlTooltip class=\"blue link\">50undefined − 220undefined (based on level)<template #content>Values: 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Empowered Magic Damage",
+              "<HtmlTooltip class=\"blue link\">50undefined − 220undefined (based on level)<template #content>Values: 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          }
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "RengarE",
-      "riotName": "Bola Strike",
+      "riotId": "RengarE",
+      "name": "Bola Strike",
       "maxrank": 5,
-      "maxammo": 1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "target_range": 1000,
       "image": {
         "full": "RengarE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Rengar throws a bola, slowing the first target hit for a short duration. Ferocity effect: roots the target.",
-      "champion": "Rengar",
-      "cooldown": [
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25
-      ],
-      "cooldownBurn": "0.25",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Rengar''' throws a bola in the target direction, dealing {{as|physical damage}} to the first enemy hit and {{tip|slow|slowing}} them for {{fd|1.75}} seconds.",
         "{{sbc|Empowered Active:}} ''Bola Strike's'' {{as|physical damage}} is modified and {{tip|root|roots}} its target for {{fd|1.75}} seconds."
       ],
-      "icon": [
-        "Bola Strike.png",
-        "Bola Strike 2.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55|100|145|190|235}} {{as|(+ 80% '''bonus''' AD)}}}}<!--\n-->{{st|Slow|{{ap|30|45|60|75|90}}%}}",
-        "{{st|Empowered Physical Damage|{{pp|50 to 305}} {{as|(+ 80% '''bonus''' AD)}}}}"
-      ],
-      "name": "Bola Strike",
-      "notes": [
-        "* If '''Rengar''' presses {{ai|Savagery|Rengar|Q}} or {{ai|Battle Roar|Rengar|W}} during ''Bola Strike's'' cast time, he'll buffer those spells and cast them when ''Bola Strike'' completes."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1000,
-      "targeting": "Direction"
+      "notes": "\n* If '''Rengar''' presses {{ai|Savagery|Rengar|Q}} or {{ai|Battle Roar|Rengar|W}} during ''Bola Strike's'' cast time, he'll buffer those spells and cast them when ''Bola Strike'' completes.",
+      "costBurn": "0",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|55|100|145|190|235}} {{as|(+ 80% '''bonus''' AD)}}}}<!--\n-->{{st|Slow|{{ap|30|45|60|75|90}}%}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['55','100','145','190','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                100,
+                145,
+                190,
+                235
+              ],
+              [
+                30,
+                45,
+                60,
+                75,
+                90
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  55,
+                  100,
+                  145,
+                  190,
+                  235
+                ],
+                "player_bonus_ad": 0.8
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Empowered Physical Damage|{{pp|50 to 305}} {{as|(+ 80% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Physical Damage</span>: <span><HtmlTooltip class=\"blue link\">50undefined − 305undefined (based on level)<template #content>Values: 50, 65, 80, 95, 110, 125, 140, 155, 170, 185, 200, 215, 230, 245, 260, 275, 290, 305<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Empowered Physical Damage",
+              "<HtmlTooltip class=\"blue link\">50undefined − 305undefined (based on level)<template #content>Values: 50, 65, 80, 95, 110, 125, 140, 155, 170, 185, 200, 215, 230, 245, 260, 275, 290, 305<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>"
+            ]
+          }
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "RengarR",
-      "riotName": "Thrill of the Hunt",
+      "riotId": "RengarR",
+      "name": "Thrill of the Hunt",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "RengarR.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 48,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Rengar's predatory instincts take over, Camouflaging him and revealing the nearest enemy champion in a large radius around him. During Thrill of the Hunt, Rengar gains Movement Speed and he can leap to the tracked enemy for a guaranteed critical strike, even without being in brush.",
-      "champion": "Rengar",
       "cooldown": [
         110,
         90,
         70
       ],
-      "cooldownBurn": "110/90/70",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0
       ],
+      "targeting": "None",
+      "image": {
+        "full": "RengarR.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Rengar''' channels his predatory instincts gaining {{tip|true sight}} of the nearest enemy champion and {{sti|ms|{{as|'''bonus''' movement speed}}}} for a duration.",
         "After 2 seconds he also becomes {{tip|camouflage|camouflaged}} and gains {{ai|Unseen Predator|Rengar}} for the remaining duration. His next basic attack within normal attack range against any unit or with ''Unseen Predator'' against the nearest enemy champion deals {{as|50% AD}} {{as|'''bonus''' physical damage}} and reduces the target's {{sti|{{as|armor}}}} for 4 seconds.",
         "The nearest enemy champion to '''Rengar''' alerts all allies within 1200 range about his presence. Attacking or casting most spells ends ''Thrill of the Hunt''."
       ],
-      "effect_radius": "{{tt|{{ap|2500|3000|3500}}|Rengar vision range}}",
-      "flavorsound": "{{sm2|Rengar.ult1.ogg|''\"Listen.\"''}}",
-      "icon": [
-        "Thrill of the Hunt.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Duration|{{ap|12|16|20}}}}\n{{st|Bonus Movement Speed|{{ap|40|50|60}}%}}",
-        "{{st|Armor Reduction|{{ap|12|18|24}}}}"
-      ],
-      "name": "Thrill of the Hunt",
-      "notes": [
-        "* The enemy have a vision range of '''Rengar''' of 1600 units.",
-        "* Enemies revealed by ''Thrill of the Hunt'' stay revealed for the spell's duration.",
-        "* The true vision lingers on his target until the leap completes."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "R",
-      "targeting": "None"
+      "notes": "\n* The enemy have a vision range of '''Rengar''' of 1600 units.\n* Enemies revealed by ''Thrill of the Hunt'' stay revealed for the spell's duration.\n* The true vision lingers on his target until the leap completes.",
+      "costBurn": "0",
+      "cooldownBurn": "110/90/70",
+      "effects": [
+        {
+          "levelingtext": "{{st|Duration|{{ap|12|16|20}}}}\n{{st|Bonus Movement Speed|{{ap|40|50|60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['12','16','20']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                16,
+                20
+              ],
+              [
+                40,
+                50,
+                60
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  16,
+                  20
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Armor Reduction|{{ap|12|18|24}}}}",
+          "str": "<ul><li><span class=\"blue\">Armor Reduction</span>: <span><spell-span :list=\"['12','18','24']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                18,
+                24
+              ]
+            ],
+            "st_slices": [
+              "Armor Reduction",
+              "<spell-span :list=\"['12','18','24']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  18,
+                  24
+                ]
+              },
+              "title": "Armor Reduction",
+              "str": "<spell-span :list=\"['12','18','24']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

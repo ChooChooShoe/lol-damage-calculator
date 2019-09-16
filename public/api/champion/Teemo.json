@@ -1,16 +1,15 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.8.1",
+  "changes": "9.18.1",
   "id": "Teemo",
   "key": "17",
   "name": "Teemo",
-  "fullname": "Teemo",
   "title": "the Swift Scout",
   "image": {
     "full": "Teemo.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 96,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Slayer",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -31,164 +31,54 @@
     "magic": 7,
     "difficulty": 6
   },
-  "i_displayname": "Guerrilla Warfare",
-  "q_displayname": "Blinding Dart",
-  "w_dispalyname": "Move Quick",
-  "e_dispalyname": "Toxic Shot",
-  "r_dispalyname": "Noxious Trap",
-  "complex_skills": {
+  "stats": {
+    "hp": 528,
+    "hpperlevel": 90,
+    "mp": 334,
+    "mpperlevel": 20,
+    "movespeed": 330,
+    "armor": 24.3,
+    "armorperlevel": 3.75,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 500,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.65,
+    "mpregen": 9.6,
+    "mpregenperlevel": 0.45,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 54,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 3.38,
+    "attackspeed": 0.69
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Guerrilla Warfare",
+      "riotId": "",
+      "name": "Guerrilla Warfare",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Teemo_P.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 192,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "If Teemo stands still and takes no actions for a short duration, he becomes Invisible indefinitely. If he's in brush, Teemo can enter and maintain his Invisibility while moving. After leaving Invisibility, Teemo gains the Element of Surprise, increasing his Attack Speed for 3 seconds.",
-      "champion": "Teemo",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Teemo''' gains {{tip|invisibility}} if he stands still for {{fd|1.5}} seconds without acting or being acted upon. He will remain stealthed so long as he doesn't move, doesn't act, or is {{tip|airborne|displaced}}. If within a {{tip|brush}}, '''Teemo''' gains stealth after {{fd|1.5}} seconds even while moving and may move freely within its boundaries without breaking stealth.",
         "{{sbc|Element of Surprise:}} When '''Teemo''' breaks stealth, he gains the ''Element of Surprise'' for 3 seconds, granting him {{sti|{{as|{{pp|4|key=%|20 to 80|1;5;10;15}} '''bonus''' attack speed}}}}."
       ],
-      "icon": [
-        "Guerrilla Warfare.png",
-        "Element of Surprise.png"
-      ],
-      "leveling": [],
-      "name": "Guerrilla Warfare",
-      "notes": [
-        "* ''Guerrilla Warfare'' will not grant ''Teemo'' stealth as long as he is taking damage (damage taken once stealthed will not reveal ''Teemo'').",
-        "* ''Teemo'' will break ''Guerrilla Warfare's'' stealth by using certain [[summoner spell]]s ({{si|Clarity}}, {{si|Dash}}, {{si|Exhaust}}, {{si|Heal}}, {{si|Ignite}}, {{si|Mark}}, {{si|Recall}}, {{si|Smite}}, {{si|Teleport}}) and certain [[Trinket item|trinkets]] ({{ii|Oracle Lens}}) but not when placing [[ward]]s, when using [[consumable item]]s, or when using {{si|Flash}} to get within a brush (while already stealthed beforehand).",
-        "* If ''Teemo'' triggers ''Element of Surprise'' twice in less than 3 seconds he will only refresh the bonus attack speed's duration (it will not stack with itself)."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Guerrilla Warfare'' will not grant ''Teemo'' stealth as long as he is taking damage (damage taken once stealthed will not reveal ''Teemo'').\n* ''Teemo'' will break ''Guerrilla Warfare's'' stealth by using certain [[summoner spell]]s ({{si|Clarity}}, {{si|Dash}}, {{si|Exhaust}}, {{si|Heal}}, {{si|Ignite}}, {{si|Mark}}, {{si|Recall}}, {{si|Smite}}, {{si|Teleport}}) and certain [[Trinket item|trinkets]] ({{ii|Oracle Lens}}) but not when placing [[ward]]s, when using [[consumable item]]s, or when using {{si|Flash}} to get within a brush (while already stealthed beforehand).\n* If ''Teemo'' triggers ''Element of Surprise'' twice in less than 3 seconds he will only refresh the bonus attack speed's duration (it will not stack with itself).",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "BlindingDart",
-      "riotName": "Blinding Dart",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "BlindingDart.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Obscures an enemy's vision with a powerful venom, dealing damage to the target unit and blinding it for the duration.",
-      "callforhelp": true,
-      "champion": "Teemo",
-      "cooldownBurn": "8",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Teemo''' shoots a dart at the target enemy, dealing them {{tip|magic damage|{{as|magic damage}}}} and {{tip|blind|blinding}} them for a short duration."
-      ],
-      "icon": [
-        "Blinding Dart.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 80% AP)}}}}{{st|Blind Duration|{{ap|1.5 to 2.5}}}}"
-      ],
+      "riotId": "BlindingDart",
       "name": "Blinding Dart",
-      "notes": [
-        "* Abilities that grant empowered attacks may go through blind, dealing damage and / or applying their effects. The situations where this happens are all case to case.",
-        "* ''Blinding Dart'' will not make abilities that can trigger [[on-hit effect]]s ({{ai|Parrrley|Gangplank}}, {{ai|Mystic Shot|Ezreal}}) miss."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 680,
-      "targeting": "Unit"
-    },
-    "w1": {
-      "key": "W",
-      "id": "MoveQuick",
-      "riotName": "Move Quick",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "MoveQuick.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 144,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Teemo scampers around, passively increasing his Movement Speed until he is struck by an enemy champion or turret. Teemo can sprint to gain bonus Movement Speed that isn't stopped by being struck for a short time.",
-      "champion": "Teemo",
-      "cooldownBurn": "17",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Passive:}} '''Teemo''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} if he hasn't taken damage from enemy [[champion]]s or [[turret]]s for 5 seconds.",
-        "{{sbc|Active:}} '''Teemo''' doubles his {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds and prevents it from being disabled by damage for the duration."
-      ],
-      "icon": [
-        "Move Quick.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Movement Speed|{{ap|10 to 26}}%}}",
-        "{{st|Active Bonus Movement Speed|{{ap|20 to 52}}%}}"
-      ],
-      "name": "Move Quick",
-      "notes": [
-        "* ''Move Quick's'' active's cooldown starts when the ability is first cast and not when the duration ends.",
-        "* When ''Move Quick's'' active bonus movement speed ends ''Teemo'' will not regain the passive one if he was damaged during the active's duration.",
-        "*''Move Quick's'' passive will be disabled even if the damage is blocked with a spell shield."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
-    },
-    "e1": {
-      "key": "E",
-      "id": "ToxicShot",
-      "riotName": "Toxic Shot",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ToxicShot.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 192,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Each of Teemo's attacks will poison the target, dealing damage on impact and each second after for 4 seconds.",
-      "champion": "Teemo",
       "cooldown": [
         8,
         8,
@@ -196,89 +86,537 @@
         8,
         8
       ],
-      "cooldownBurn": "8",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
       ],
-      "description": [
-        "{{sbc|Passive:}} '''Teemo's''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and {{tip|poison}} his target.",
-        "{{tip|poison|Poisoned}} targets suffer {{as|magic damage}} for 4 seconds, with subsequent attacks refreshing the {{tip|poison|poison's}} duration."
-      ],
-      "icon": [
-        "Toxic Shot.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage On-Hit|{{ap|10 to 50}} {{as|(+ 30% AP)}}}}",
-        "{{st|Magic Damage per Second|{{ap|6 to 30}} {{as|(+ 10% AP)}}|Total Magic Damage Over Time|{{ap|6*4 to 30*4}} {{as|(+ 40% AP)}}}}<!--\n-->{{st|Total Magic Damage in a Single Hit|{{ap|10+6*4 to 50+30*4}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Toxic Shot",
-      "notes": [
-        "* ''Toxic Shot's'' poison will trigger {{ais|Twin Fang|Cassiopeia}} bonus effects for {{ci|Cassiopeia}} and will apply {{iis|Morellonomicon}} {{tip|Grievous Wounds}}.",
-        "*Each ticks of damage from ''Toxic Shot'' can apply ''Hunter's Talisman'' DoT effect."
-      ],
-      "parry": true,
-      "projectile": "Magic",
-      "skill": "E",
-      "targeting": "Passive"
-    },
-    "r1": {
-      "key": "R",
-      "id": "TeemoRCast",
-      "riotName": "Noxious Trap",
-      "maxrank": 3,
-      "maxammo": 3,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 680,
       "image": {
-        "full": "TeemoRCast.png",
+        "full": "BlindingDart.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 240,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Teemo throws an explosive poisonous trap using one of the mushrooms stored in his pack. If an enemy steps on the trap, it will release a poisonous cloud, slowing enemies and damaging them over time. If Teemo throws a mushroom onto another mushroom it will bounce, gaining additional range.",
-      "champion": "Teemo",
-      "collision_radius": 75,
-      "cooldownBurn": "0.25",
-      "costBurn": "75",
-      "costtype": "Mana + 1 Charge",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
-        "{{sbc|Passive:}} '''Teemo''' stores a ''Noxious Trap'' charge periodically, up to a maximum of 3 at once.",
-        "{{sbc|Active:}} '''Teemo''' tosses a {{tip|stealthed trap|mushroom trap}} on the ground, which stealths and arms after 1 second, lasting up to 5 minutes. While armed, mushrooms grant {{tip|sight}} around them. Mushrooms can bounce if thrown on top of another mushroom. This can only happen once.",
+        "{{sbc|Active:}} '''Teemo''' shoots a dart at the target enemy, dealing them {{tip|magic damage|{{as|magic damage}}}} and {{tip|blind|blinding}} them for a short duration."
+      ],
+      "notes": "\n* Abilities that grant empowered attacks may go through blind, dealing damage and / or applying their effects. The situations where this happens are all case to case.\n* ''Blinding Dart'' will not make abilities that can trigger [[on-hit effect]]s ({{ai|Parrrley|Gangplank}}, {{ai|Mystic Shot|Ezreal}}) miss.\n* When blinded, enemies have a green tint on their screen.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 80% AP)}}}}{{st|Blind Duration|{{ap|1.5 to 2.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><ul><li><span class=\"blue\">Blind Duration</span>: <span><spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ],
+              [
+                1.5,
+                1.75,
+                2,
+                2.25,
+                2.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Blind Duration",
+              "<spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Blind Duration",
+              "str": "<spell-span :list=\"['1.5','1.75','2','2.25','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "MoveQuick",
+      "name": "Move Quick",
+      "maxrank": 5,
+      "cooldown": [
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "mana",
+      "targeting": "None",
+      "image": {
+        "full": "MoveQuick.png",
+        "sprite": "spell11.png",
+        "group": "spell",
+        "x": 336,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Teemo''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} if he hasn't taken damage from enemy [[champion]]s or [[turret]]s for 5 seconds.",
+        "{{sbc|Active:}} '''Teemo''' doubles his {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds and prevents it from being disabled by damage for the duration."
+      ],
+      "notes": "\n* ''Move Quick's'' active's cooldown starts when the ability is first cast and not when the duration ends.\n* When ''Move Quick's'' active bonus movement speed ends ''Teemo'' will not regain the passive one if he was damaged during the active's duration.\n*''Move Quick's'' passive will be disabled even if the damage is blocked with a spell shield.",
+      "costBurn": "40",
+      "cooldownBurn": "17",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|10 to 26}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                14,
+                18,
+                22,
+                26
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  14,
+                  18,
+                  22,
+                  26
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Active Bonus Movement Speed|{{ap|20 to 52}}%}}",
+          "str": "<ul><li><span class=\"blue\">Active Bonus Movement Speed</span>: <span><spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                28,
+                36,
+                44,
+                52
+              ]
+            ],
+            "st_slices": [
+              "Active Bonus Movement Speed",
+              "<spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  28,
+                  36,
+                  44,
+                  52
+                ]
+              },
+              "title": "Active Bonus Movement Speed",
+              "str": "<spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "ToxicShot",
+      "name": "Toxic Shot",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Passive",
+      "image": {
+        "full": "ToxicShot.png",
+        "sprite": "spell11.png",
+        "group": "spell",
+        "x": 384,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Teemo's''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and {{tip|poison}} his target.",
+        "{{tip|poison|Poisoned}} targets suffer {{as|magic damage}} for 4 seconds, with subsequent attacks refreshing the {{tip|poison|poison's}} duration."
+      ],
+      "notes": "\n* ''Toxic Shot's'' poison will trigger {{ais|Twin Fang|Cassiopeia}} bonus effects for {{ci|Cassiopeia}} and will apply {{iis|Morellonomicon}} {{tip|Grievous Wounds}}.\n*Each ticks of damage from ''Toxic Shot'' can apply ''Hunter's Talisman'' DoT effect.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage On-Hit|{{ap|10 to 50}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage On-Hit</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage On-Hit",
+              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage On-Hit",
+              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage per Second|{{ap|6 to 30}} {{as|(+ 10% AP)}}|Total Magic Damage Over Time|{{ap|6*4 to 30*4}} {{as|(+ 40% AP)}}}}<!--\n-->{{st|Total Magic Damage in a Single Hit|{{ap|10+6*4 to 50+30*4}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['6','12','18','24','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage Over Time</span>: <span><spell-span :list=\"['24','48','72','96','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Total Magic Damage in a Single Hit</span>: <span><spell-span :list=\"['34','68','102','136','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                6,
+                12,
+                18,
+                24,
+                30
+              ],
+              [
+                24,
+                48,
+                72,
+                96,
+                120
+              ],
+              [
+                34,
+                68,
+                102,
+                136,
+                170
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage in a Single Hit",
+              "<spell-span :list=\"['34','68','102','136','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  6,
+                  12,
+                  18,
+                  24,
+                  30
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Total Magic Damage in a Single Hit",
+              "str": "<spell-span :list=\"['34','68','102','136','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "TeemoRCast",
+      "name": "Noxious Trap",
+      "maxrank": 3,
+      "cooldown": [
+        0.25
+      ],
+      "cost": [
+        75,
+        75,
+        75
+      ],
+      "costtype": "Mana + 1 Charge",
+      "targeting": "Ground",
+      "target_range": "{{ap|400 to 900}}",
+      "image": {
+        "full": "TeemoRCast.png",
+        "sprite": "spell11.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Teemo''' stores a ''Noxious Trap'' charge periodically, up to a maximum amount at once.",
+        "{{sbc|Active:}} '''Teemo''' tosses a {{tip|stealthed trap|mushroom trap}} on the ground, which stealths and arms after 1 second, lasting up to 5 minutes. While armed, mushrooms grant {{tip|sight}} around them. Mushrooms bounce forward if they land on top of another mushroom. This can happen an infinite amount of times while '''Teemo''' is alive. If '''Teemo''' dies before the mushroom lands on another mushroom, the mushroom will disappear.",
         "If an enemy steps on a mushroom, it detonates, {{tip|poison|poisoning}} all nearby enemies, {{tip|slow|slowing}} them, granting {{tip|sight}} of them, and dealing them {{as|magic damage}} over 4 seconds.",
         "''Noxious Trap'' have {{sti|health|{{as|6 '''maximum''' health}}}} and can only be damaged by champion basic attacks (2 damage from {{tip|ranged}} and 3 from {{tip|melee}})."
       ],
-      "effect_radius": 450,
-      "icon": [
-        "Noxious Trap.png"
-      ],
-      "leveling": [
-        "{{st|Bounce Range|{{ap|300 to 500}}}}",
-        "{{st|Magic Damage per Second|{{ap|200/4 to 450/4}} {{as|(+ {{fd|12.5}}% AP)}}|Total Magic Damage|{{ap|200 to 450}} {{as|(+ 50% AP)}}}}{{st|Slow|{{ap|30 to 50}}%}}"
-      ],
-      "name": "Noxious Trap",
-      "notes": [
-        "* ''Noxious Trap's'' poison will trigger {{ais|Twin Fang|Cassiopeia}} bonus effects for {{ci|Cassiopeia}}.",
-        "* Enemies who step on multiple ''Noxious Traps'' will only refresh the poison's duration (their damage does not stack).",
-        "* ''Noxious Trap's'' damage is determined when it detonates and not when planted, meaning '''Teemo's''' [[ability power]] gain/loss will apply to all active mushrooms' damage so long as they don't explode.",
-        "* ''Noxious Trap'' can be targeted by any allied {{si|Teleport}}. The mushroom will not become invulnerable but its detonation (if the teleportation is already channeling when so) will not be canceled.",
-        "* {{tip|Spell shield}} will only block the poison (self and allied) and the slow but will not prevent the detonation itself.",
-        "* A thrown ''Noxious Trap'' will be destroyed when colliding with {{ai|Wind Wall|Yasuo}} / {{ai|Unbreakable|Braum}}."
-      ],
-      "projectile": "Special",
-      "skill": "R",
-      "spelleffects": "AoEDoT",
-      "spellshield": "Special",
-      "target_range": "{{ap|400 to 900}}",
-      "targeting": "Ground"
+      "notes": "\n* {{ui|Rift Scuttler}} will not trigger ''Noxious Trap's'' explosion if it is not in combat.\n* ''Noxious Trap's'' poison will trigger {{ais|Twin Fang|Cassiopeia}} bonus effects for {{ci|Cassiopeia}}.\n* Enemies who step on multiple ''Noxious Traps'' will only refresh the poison's duration (their damage does not stack).\n* ''Noxious Trap's'' damage is determined when it detonates and not when planted, meaning '''Teemo's''' [[ability power]] gain/loss will apply to all active mushrooms' damage so long as they don't explode.\n* ''Noxious Trap'' can be targeted by any allied {{si|Teleport}}. The mushroom will not become invulnerable but its detonation (if the teleportation is already channeling when so) will not be canceled.\n* {{tip|Spell shield}} will only block the poison (self and allied) and the slow but will not prevent the detonation itself.\n* A thrown ''Noxious Trap'' will be destroyed when colliding with {{ai|Wind Wall|Yasuo}} / {{ai|Unbreakable|Braum}}.",
+      "costBurn": "75",
+      "cooldownBurn": "0.25",
+      "effects": [
+        {
+          "levelingtext": "{{st|Maximum Charges|{{ap|3 to 5}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Charges</span>: <span><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                3.5,
+                4,
+                4.5,
+                5
+              ]
+            ],
+            "st_slices": [
+              "Maximum Charges",
+              "<spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  3.5,
+                  4,
+                  4.5,
+                  5
+                ]
+              },
+              "title": "Maximum Charges",
+              "str": "<spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Bounce Range|{{ap|300 to 500}}}}",
+          "str": "<ul><li><span class=\"blue\">Bounce Range</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                350,
+                400,
+                450,
+                500
+              ]
+            ],
+            "st_slices": [
+              "Bounce Range",
+              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  300,
+                  350,
+                  400,
+                  450,
+                  500
+                ]
+              },
+              "title": "Bounce Range",
+              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage per Second|{{ap|200/4 to 450/4}} {{as|(+ {{fd|12.5}}% AP)}}|Total Magic Damage|{{ap|200 to 450}} {{as|(+ 50% AP)}}}}{{st|Slow|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['50','65.625','81.25','96.875','112.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['200','262.5','325','387.5','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                65.625,
+                81.25,
+                96.875,
+                112.5
+              ],
+              [
+                200,
+                262.5,
+                325,
+                387.5,
+                450
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 0.125
+              }
+            ],
+            "st_slices": [
+              "Magic Damage per Second",
+              "<spell-span :list=\"['50','65.625','81.25','96.875','112.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['200','262.5','325','387.5','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  65.625,
+                  81.25,
+                  96.875,
+                  112.5
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage per Second",
+              "str": "<spell-span :list=\"['50','65.625','81.25','96.875','112.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  262.5,
+                  325,
+                  387.5,
+                  450
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['200','262.5','325','387.5','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

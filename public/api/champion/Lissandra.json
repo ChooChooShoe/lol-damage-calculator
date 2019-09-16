@@ -1,10 +1,9 @@
 {
   "patch": "V3.6",
-  "changes": "9.11.1",
+  "changes": "9.15.1",
   "id": "Lissandra",
   "key": "127",
   "name": "Lissandra",
-  "fullname": "Lissandra",
   "title": "the Ice Witch",
   "image": {
     "full": "Lissandra.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -30,15 +30,34 @@
     "magic": 8,
     "difficulty": 6
   },
-  "i_displayname": "Iceborn Subjugation",
-  "q_displayname": "Ice Shard",
-  "w_dispalyname": "Ring of Frost",
-  "e_dispalyname": "Glacial Path",
-  "r_dispalyname": "Frozen Tomb",
-  "complex_skills": {
+  "stats": {
+    "hp": 550,
+    "hpperlevel": 90,
+    "mp": 475,
+    "mpperlevel": 30,
+    "movespeed": 325,
+    "armor": 20.216,
+    "armorperlevel": 3.7,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 7,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53,
+    "attackdamageperlevel": 2.7,
+    "attackspeedperlevel": 1.36,
+    "attackspeed": 0.656
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Iceborn Subjugation",
+      "riotId": "",
+      "name": "Iceborn Subjugation",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Lissandra_Passive.png",
         "sprite": "passive2.png",
@@ -48,38 +67,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Lissandra",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} Whenever an enemy champion dies while '''Lissandra''' is near, she spawns a ''Frozen Thrall'' from their corpse.",
         "''Frozen Thralls'' chase nearby enemies, prioritizing champions, {{tip|slow|slowing}} nearby enemies by 25% and shattering after 4 seconds, dealing {{as|{{pp|120 to 340;370;400;430;460;490;520}}|magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|magic damage}}}}. ''Frozen Thralls'' initially have a slow movement speed, which increases over the duration."
       ],
-      "icon": [
-        "Iceborn Subjugation.png"
-      ],
-      "leveling": [],
-      "name": "Iceborn Subjugation",
-      "notes": [
-        "* ''Thralls'' are considered champions for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing."
-      ],
-      "projectile": "[[Magic damage|Magic]]",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Thralls'' are considered champions for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "LissandraQ",
-      "riotName": "Ice Shard",
+      "riotId": "LissandraQ",
+      "name": "Ice Shard",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        8.5,
+        7,
+        5.5,
+        4
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "{{tt|725|Standard range}} / {{tt|825|Enhanced range}}",
       "image": {
         "full": "LissandraQ.png",
         "sprite": "spell6.png",
@@ -89,53 +104,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Throws a spear of ice that shatters when it hits an enemy, dealing magic damage and slowing Movement Speed. Shards pass through the target, dealing the same damage to other enemies hit.",
-      "champion": "Lissandra",
-      "cooldown": [
-        10,
-        8.5,
-        7,
-        5.5,
-        4
-      ],
-      "cooldownBurn": "10/8.5/7/5.5/4",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lissandra''' hurls a spear of ice in a line which deals {{as|magic damage}} to the first enemy it hits and {{tip|slow|slows}} them for {{fd|1.5}} seconds.",
         "If the spear damages an enemy, it then shatters, gaining increased range and dealing the same damage to other enemies hit, but applying no slow."
       ],
-      "icon": [
-        "Ice Shard.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 70% AP)}}}}\n{{st|Slow|{{ap|16 to 28}}%}}"
-      ],
-      "name": "Ice Shard",
-      "notes": [
-        "* The shattering projectiles travel the remaining distance ''Ice Shard'' would plus an extra 100 units.",
-        "* ''Ice Shard'' sounds like breaking glass when shattering (the projectiles do not produce any sound on contact).",
-        "* ''Ice Shard's'' slow has particles resembling cold air.",
-        "* {{tip|Spell shield}} will block the damage and the slow but will not stop the projectile from shattering."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "target_range": "{{tt|725|Standard range}} / {{tt|825|Enhanced range}}",
-      "targeting": "Direction"
+      "notes": "\n* The shattering projectiles travel the remaining distance ''Ice Shard'' would plus an extra 100 units.\n* ''Ice Shard'' sounds like breaking glass when shattering (the projectiles do not produce any sound on contact).\n* ''Ice Shard's'' slow has particles resembling cold air.\n* {{tip|Spell shield}} will block the damage and the slow but will not stop the projectile from shattering.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "10/8.5/7/5.5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 70% AP)}}}}\n{{st|Slow|{{ap|16 to 28}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','100','130','160','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['16','19','22','25','28']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                100,
+                130,
+                160,
+                190
+              ],
+              [
+                16,
+                19,
+                22,
+                25,
+                28
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['16','19','22','25','28']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  100,
+                  130,
+                  160,
+                  190
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['16','19','22','25','28']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "LissandraW",
-      "riotName": "Ring of Frost",
+      "riotId": "LissandraW",
+      "name": "Ring of Frost",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "LissandraW.png",
         "sprite": "spell6.png",
@@ -145,49 +194,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Freezes nearby enemies in ice, dealing magic damage and rooting them.",
-      "champion": "Lissandra",
-      "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lissandra''' freezes all nearby enemies, dealing them {{as|magic damage}} and briefly {{tip|root|rooting}} them."
       ],
-      "effect_radius": 450,
-      "icon": [
-        "Ring of Frost.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}}}\n{{st|Root Duration|{{ap|1.1 to 1.5}}}}"
-      ],
-      "name": "Ring of Frost",
-      "notes": [
-        "* ''Ring of Frost'' has no cast time and does not interrupt ''Lissandra's'' previous orders or animations (meaning she can overlap it with any of her other abilities or even basic attacks)."
-      ],
-      "projectile": "magic",
-      "skill": "W",
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Ring of Frost'' has no cast time and does not interrupt ''Lissandra's'' previous orders or animations (meaning she can overlap it with any of her other abilities or even basic attacks).",
+      "costBurn": "40",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}}}\n{{st|Root Duration|{{ap|1.1 to 1.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                105,
+                140,
+                175,
+                210
+              ],
+              [
+                1.1,
+                1.2,
+                1.3,
+                1.4,
+                1.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Root Duration",
+              "<spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Root Duration",
+              "str": "<spell-span :list=\"['1.1','1.2','1.3','1.4','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "LissandraE",
-      "riotName": "Glacial Path",
+      "riotId": "LissandraE",
+      "name": "Glacial Path",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        24,
+        21,
+        18,
+        15,
+        12
+      ],
+      "cost": [
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1050,
       "image": {
         "full": "LissandraE.png",
         "sprite": "spell6.png",
@@ -197,56 +284,77 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Lissandra creates an ice claw that deals magic damage. Reactivating this ability transports Lissandra to the claw's current location.",
-      "champion": "Lissandra",
-      "cooldown": [
-        24,
-        21,
-        18,
-        15,
-        12
-      ],
-      "cooldownBurn": "24/21/18/15/12",
-      "costBurn": "80 / 85 / 90 / 95 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lissandra''' casts a claw of ice that moves forward in a line, decelerating over {{fd|1.25}} seconds, dealing {{as|magic damage}} to all enemies it passes through.",
         "Reactivating ''Glacial Path'' consumes the claw and {{tip|blinks}} '''Lissandra''' to its current location."
       ],
-      "icon": [
-        "Glacial Path.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Glacial Path",
-      "notes": [
-        "* ''Lissandra'' can reactivate ''Glacial Path'' for the duration (plus another {{fd|0.2}}-{{fd|0.3}} after the claw 'skins' into the ground).",
-        "* ''Glacial Path'' allows ''Lissandra'' to blink past every single wall in all maps, so long as the claw is at least halfway through them.",
-        "* ''Glacial Path's'' cooldown starts with the initial cast whether or not the blink is used.",
-        "* ''Glacial Path'' cannot be reactivated if ''Lissandra'' is disabled.",
-        "* Enemies hit by the claw (stealthed or not) will make a sound and a small visual effect displays.",
-        "* ''Glacial Path's'' endpoint shows through terrain, fog of war, and brush to enemies within 600 range of it."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": "{{tt|1200|starting speed}} / {{tt|640|minimum speed}}",
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "target_range": 1050,
-      "targeting": "Direction"
+      "notes": "\n* ''Lissandra'' can reactivate ''Glacial Path'' for the duration (plus another {{fd|0.2}}-{{fd|0.3}} after the claw 'skins' into the ground).\n* ''Glacial Path'' allows ''Lissandra'' to blink past every single wall in all maps, so long as the claw is at least halfway through them.\n* ''Glacial Path's'' cooldown starts with the initial cast whether or not the blink is used.\n* ''Glacial Path'' cannot be reactivated if ''Lissandra'' is disabled.\n* Enemies hit by the claw (stealthed or not) will make a sound and a small visual effect displays.\n* ''Glacial Path's'' endpoint shows through terrain, fog of war, and brush to enemies within 600 range of it.",
+      "costBurn": "80/85/90/95/100",
+      "cooldownBurn": "24/21/18/15/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                105,
+                140,
+                175,
+                210
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "LissandraR",
-      "riotName": "Frozen Tomb",
+      "riotId": "LissandraR",
+      "name": "Frozen Tomb",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit, Self",
+      "target_range": 550,
       "image": {
         "full": "LissandraR.png",
         "sprite": "spell6.png",
@@ -256,49 +364,140 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "If cast on an enemy champion, the target is frozen solid, stunning it. If cast on Lissandra, she encases herself in dark ice, healing herself while becoming untargetable and invulnerable. Dark ice then emanates from the target dealing magic damage to enemies and slowing Movement Speed.",
-      "callforhelp": true,
-      "champion": "Lissandra",
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Enemy Cast:}} After a {{fd|0.5}}-second delay, '''Lissandra''' freezes the target enemy [[champion]], {{tip|knockdown|knocking down}} and {{tip|stun|stunning}} the target for {{fd|1.5}} seconds.",
         "{{sbc|Self Cast:}} '''Lissandra''' instantly entombs herself, placing herself in {{tip|stasis}} for {{fd|2.5}} seconds while {{tip|healing}} herself over the duration, with the heal increased by {{as|{{pp|11|type='''missing''' health|key=%|0 to 100|key1=%|0 to 100|formula=1% per 1% of '''missing''' health}}|health}} at time of cast.",
         "Upon cast, after a {{fd|0.5}}-second delay, Black Ice spreads from ''Frozen Tomb's'' target and lasts for 3 seconds, dealing {{as|magic damage}} to all unique enemies entering the area, and {{tip|slow|slowing}} them while they remain within."
       ],
-      "effect_radius": 550,
-      "icon": [
-        "Frozen Tomb.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Self-Heal|{{ap|100 to 200}} {{as|(+ 30% AP)}}|Maximum Self-Heal|{{ap|100*2 to 200*2}} {{as|(+ 60% AP)}}}}",
-        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|30 to 75}}%}}"
-      ],
-      "name": "Frozen Tomb",
-      "notes": [
-        "* It takes ~{{fd|0.4}} for ''Frozen Tomb'' to stun and damage the enemy target (they may become untargetable during this window to avoid the effects but the ice field will still be formed) and any movement abilities will be immediately canceled if enemies use them to try to get away from ''Lissandra'' when she targets them.",
-        "** It takes ~1 second for ''Frozen Tomb's'' slow field to fully form.",
-        "* Enemies who come in contact with ''Frozen Tomb's'' slow field will be damaged and a small visual and sound effect will play.",
-        "** Enemies can only be damaged by the ice field once per cast (if they come in contact with it with an active {{ii|Banshee's Veil|spell shield}} they will consume it to become immune to any damage from that particular cast).",
-        "* {{tip|Spell shield}} will block the single-targeted portion and the radiating ice damage but will not stop it from spreading."
-      ],
-      "projectile": "magic",
-      "skill": "R",
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "target_range": 550,
-      "targeting": "Unit, Self"
+      "notes": "\n* It takes ~{{fd|0.4}} for ''Frozen Tomb'' to stun and damage the enemy target (they may become untargetable during this window to avoid the effects but the ice field will still be formed) and any movement abilities will be immediately canceled if enemies use them to try to get away from ''Lissandra'' when she targets them.\n** It takes ~1 second for ''Frozen Tomb's'' slow field to fully form.\n* Enemies who come in contact with ''Frozen Tomb's'' slow field will be damaged and a small visual and sound effect will play.\n** Enemies can only be damaged by the ice field once per cast (if they come in contact with it with an active {{ii|Banshee's Veil|spell shield}} they will consume it to become immune to any damage from that particular cast).\n* {{tip|Spell shield}} will block the single-targeted portion and the radiating ice damage but will not stop it from spreading.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Self-Heal|{{ap|100 to 200}} {{as|(+ 30% AP)}}|Maximum Self-Heal|{{ap|100*2 to 200*2}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Self-Heal</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Self-Heal</span>: <span><spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                125,
+                150,
+                175,
+                200
+              ],
+              [
+                200,
+                250,
+                300,
+                350,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Minimum Self-Heal",
+              "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "Maximum Self-Heal",
+              "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  100,
+                  125,
+                  150,
+                  175,
+                  200
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Minimum Self-Heal",
+              "str": "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  200,
+                  250,
+                  300,
+                  350,
+                  400
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Maximum Self-Heal",
+              "str": "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 75% AP)}}}}\n{{st|Slow|{{ap|30 to 75}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','41.25','52.5','63.75','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ],
+              [
+                30,
+                41.25,
+                52.5,
+                63.75,
+                75
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['30','41.25','52.5','63.75','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','41.25','52.5','63.75','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

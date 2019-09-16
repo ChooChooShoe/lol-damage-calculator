@@ -1,16 +1,15 @@
 {
   "patch": "V1.0.0.125",
-  "changes": "9.10.1",
+  "changes": "9.16.1",
   "id": "Riven",
   "key": "92",
   "name": "Riven",
-  "fullname": "Konte Riven",
   "title": "the Exile",
   "image": {
     "full": "Riven.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 0,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "None",
   "herotype": "Fighter",
   "alttype": "Slayer",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,131 +31,185 @@
     "magic": 1,
     "difficulty": 8
   },
-  "i_displayname": "Runic Blade",
-  "q_displayname": "Broken Wings",
-  "w_dispalyname": "Ki Burst",
-  "e_dispalyname": "Valor",
-  "r_dispalyname": "Blade of the Exile / Wind Slash",
-  "complex_skills": {
+  "stats": {
+    "hp": 558.48,
+    "hpperlevel": 86,
+    "mp": 0,
+    "mpperlevel": 0,
+    "movespeed": 340,
+    "armor": 33,
+    "armorperlevel": 3.2,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 7,
+    "hpregenperlevel": 0.5,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 3.5,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Runic Blade",
+      "riotId": "",
+      "name": "Runic Blade",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "RivenRunicBlades.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 192,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Riven's abilities charge her blade, causing her basic attacks to deal bonus physical damage. Riven's blade may be charged up to three times and expends one charge per attack.",
-      "champion": "Riven",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Riven's''' blade gains a ''Charge'' for 6 seconds every time she uses an ability (stacks up to 3 times). '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{pp|6|key=%|25 to 50|1;6 to 18|displayformula = 25%+5% at level 6, then+5% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "''Runic Blade'' can {{tip|critical strike|critically strike}} for {{as|{{critical damage|100|melee}} '''bonus''' physical damage}}."
       ],
-      "icon": [
-        "Runic Blade.png"
-      ],
-      "leveling": [],
-      "name": "Runic Blade",
-      "notes": [
-        "* ''Runic Blade's'' duration refreshes whenever ''Riven'' gains or consumes a stack.",
-        "* The bonus damage applies {{sti|life steal}}.",
-        "* ''Runic Blade'' does not affect structures (charges are not consumed when attacking them).",
-        "* ''Runic Blade'' can be {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, or {{ai|Riposte|Fiora|parried}}.",
-        "* ''Runic Blade'' charges are not be consumed if ''Riven'' is {{tip|blind|blinded}} when landing the enhanced attack.",
-        "* ''Runic Blade'' charges do not proc against wards."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "physical",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Runic Blade's'' duration refreshes whenever ''Riven'' gains or consumes a stack.\n* The bonus damage applies {{sti|life steal}}.\n* ''Runic Blade'' does not affect structures (charges are not consumed when attacking them).\n* ''Runic Blade'' can be {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, or {{ai|Riposte|Fiora|parried}}.\n* ''Runic Blade'' charges are not be consumed if ''Riven'' is {{tip|blind|blinded}} when landing the enhanced attack.\n* ''Runic Blade'' charges do not proc against wards.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "RivenTriCleave",
-      "riotName": "Broken Wings",
+      "riotId": "RivenTriCleave",
+      "name": "Broken Wings",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "target_range": 260,
       "image": {
         "full": "RivenTriCleave.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Riven lashes out in a series of strikes. This ability can be reactivated three times in a short time frame with the third hit knocking back nearby enemies.",
-      "champion": "Riven",
-      "cooldown": [
-        12,
-        11.5,
-        11,
-        10.5,
-        10
-      ],
-      "cooldownBurn": "12/11.5/11/10.5/10",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} towards the target nearest to the cursor or in the direction she is currently facing, dealing {{as|physical damage}} to all enemies in front of her. ''Broken Wings'' can then be reactivated twice within the next 4 seconds, with the second cast refreshing the timer.",
         "{{tt|The third cast|This can cross terrain}} {{tip|airborne|knocks up}} and damages all enemies around '''Riven''' in an expanded radius.",
         "Each ''Broken Wings'' cast causes her next basic attack to occur more quickly. This is not considered a basic attack timer reset."
       ],
-      "effect_radius": "{{tt|{{fd|112.5}}|Standard first casts range}} / {{tt|150|Standard final cast range}} / {{tt|{{fd|162.5}}|Enhanced first casts range}} / {{tt|200|Enhanced final cast range}}",
-      "icon": [
-        "Broken Wings.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|15 to 95}} {{as|(+ {{ap|45 to 65}}% AD)}}|Total Physical Damage|{{ap|15*3 to 95*3}} {{as|(+ {{ap|45*3 to 65*3}}% AD)}}}}"
-      ],
-      "name": "Broken Wings",
-      "notes": [
-        "* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.",
-        "* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.",
-        "* {{tip|Spell shield}} will only block the third cast."
-      ],
-      "projectile": "physical",
-      "skill": "Q",
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "target_range": 260,
-      "targeting": "Direction"
+      "notes": "\n* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.\n* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.\n* {{tip|Spell shield}} will only block the third cast.",
+      "costBurn": "0",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|15 to 95}} {{as|(+ {{ap|45 to 65}}% AD)}}|Total Physical Damage|{{ap|15*3 to 95*3}} {{as|(+ {{ap|45*3 to 65*3}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                15,
+                35,
+                55,
+                75,
+                95
+              ],
+              [
+                45,
+                50,
+                55,
+                60,
+                65
+              ],
+              [
+                45,
+                105,
+                165,
+                225,
+                285
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  1.35,
+                  1.5,
+                  1.65,
+                  1.8,
+                  1.95
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "Total Physical Damage",
+              "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  15,
+                  35,
+                  55,
+                  75,
+                  95
+                ],
+                "player_total_ad": [
+                  1.35,
+                  1.5,
+                  1.65,
+                  1.8,
+                  1.95
+                ]
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  50,
+                  55,
+                  60,
+                  65
+                ],
+                "player_total_ad": [
+                  1.35,
+                  1.5,
+                  1.65,
+                  1.8,
+                  1.95
+                ]
+              },
+              "title": "Total Physical Damage",
+              "str": "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "RivenMartyr",
-      "riotName": "Ki Burst",
+      "riotId": "RivenMartyr",
+      "name": "Ki Burst",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RivenMartyr.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 144,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Riven emits a Ki Burst, damaging and stunning nearby enemies.",
-      "champion": "Riven",
       "cooldown": [
         11,
         10,
@@ -163,51 +217,80 @@
         8,
         7
       ],
-      "cooldownBurn": "11/10/9/8/7",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "description": [
-        "{{sbc|Active:}} '''Riven's''' sword emits a burst of runic energy that shocks nearby enemies, dealing {{as|physical damage}} and applying a {{tip|stun}} for {{fd|0.75}} seconds."
-      ],
-      "effect_radius": "{{ap|{{tt|125|Standard range}}|{{tt|135|Enhanced range}}}}",
-      "icon": [
-        "Ki Burst.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55|85|115|145|175}} {{as|(+ 100% '''bonus''' AD)}}}}"
-      ],
-      "name": "Ki Burst",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "physical",
-      "skill": "W",
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "targeting": "None"
-    },
-    "e1": {
-      "key": "E",
-      "id": "RivenFeint",
-      "riotName": "Valor",
-      "maxrank": 5,
-      "maxammo": -1,
+      "targeting": "None",
       "image": {
-        "full": "RivenFeint.png",
+        "full": "RivenMartyr.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 192,
+        "x": 336,
         "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Riven steps forward a short distance and blocks incoming damage.",
-      "champion": "Riven",
+      "description": [
+        "{{sbc|Active:}} '''Riven's''' sword emits a burst of runic energy that shocks nearby enemies, dealing {{as|physical damage}} and applying a {{tip|stun}} for {{fd|0.75}} seconds."
+      ],
+      "notes": "\n* No additional details.",
+      "costBurn": "0",
+      "cooldownBurn": "11/10/9/8/7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|55|85|115|145|175}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                85,
+                115,
+                145,
+                175
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  85,
+                  115,
+                  145,
+                  175
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "RivenFeint",
+      "name": "Valor",
+      "maxrank": 5,
       "cooldown": [
         14,
         13,
@@ -215,83 +298,214 @@
         11,
         10
       ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "description": [
-        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{sti|shield|shielding}} herself for {{fd|1.5}} seconds."
-      ],
-      "icon": [
-        "Valor.png"
-      ],
-      "leveling": [
-        "{{st|Shield Strength|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}"
-      ],
-      "name": "Valor",
-      "notes": [
-        "* ''Valor'' can be used to bypass player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Cataclysm|Jarvan IV}}) but not to go through walls.",
-        "* ''Valor'' cannot be cast while ''Riven'' is {{tip|root|rooted}}."
-      ],
-      "projectile": "null",
-      "skill": "E",
+      "targeting": "Direction",
       "target_range": 325,
-      "targeting": "Direction"
-    },
-    "r2": {
-      "key": "R2",
-      "id": "RivenFengShuiEngine",
-      "riotName": "Blade of the Exile",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "RivenFengShuiEngine.png",
+        "full": "RivenFeint.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 240,
+        "x": 384,
         "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": "{{tt|75{{degree}}|Estimated}}",
-      "blurb": "Riven unleashes a powerful ranged attack, which she may do once during Blade of the Exile.",
-      "champion": "Riven",
+      "description": [
+        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{sti|shield|shielding}} herself for {{fd|1.5}} seconds."
+      ],
+      "notes": "\n* ''Valor'' can be used to bypass player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Cataclysm|Jarvan IV}}) but not to go through walls.\n* ''Valor'' cannot be cast while ''Riven'' is {{tip|root|rooted}}.",
+      "costBurn": "0",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield Strength|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                95,
+                125,
+                155,
+                185,
+                215
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Shield Strength",
+              "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  95,
+                  125,
+                  155,
+                  185,
+                  215
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Shield Strength",
+              "str": "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "RivenFengShuiEngine",
+      "name": "Blade of the Exile",
+      "maxrank": 3,
       "cooldown": [
         120,
         90,
         60
       ],
-      "cooldownBurn": "120/90/60",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0
       ],
+      "targeting": "None",
+      "image": {
+        "full": "RivenFengShuiEngine.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Riven''' empowers her sword for 15 seconds, gaining {{as|(20% AD) '''bonus''' attack damage}}, {{sti|range|75 '''bonus''' range}} on her basic attacks, increased range on {{ai|Broken Wings|Riven}} and {{ai|Ki Burst|Riven}}, and the ability to cast {{ai|Wind Slash|Riven}} once for the duration."
+      ],
+      "notes": "\n* There is a 1 second cooldown before ''Riven'' can cast ''Wind Slash'' after activating ''Blade of the Exile''.\n* The {{as|'''bonus''' AD}} is gained on cast and does not change for the duration.",
+      "costBurn": "0",
+      "cooldownBurn": "120/90/60",
+      "effects": []
+    },
+    "r2": {
+      "riotId": "RivenFengShuiEngine",
+      "name": "Wind Slash",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "image": {
+        "full": "RivenFengShuiEngine.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Riven''' unleashes a wave of energy in a cone, dealing {{as|physical damage}} to all enemies hit, increased by {{as|{{pp|9|type='''missing''' health|key=%|0 to 200|key1=%|0 to 75|formula=2.667% per 1% missing health. ''This is capped at 200% bonus damage at 75% missing health.''}}|health}}."
       ],
-      "effect_radius": 900,
-      "icon": [
-        "Wind Slash.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Physical Damage|{{ap|100 to 200}} {{as|(+ 60% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|100*3 to 200*3}} {{as|(+ 180% '''bonus''' AD)}}}}"
-      ],
-      "name": "Wind Slash",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 1600,
-      "spelleffects": "aoe",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* No additional details.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|100 to 200}} {{as|(+ 60% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|100*3 to 200*3}} {{as|(+ 180% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                125,
+                150,
+                175,
+                200
+              ],
+              [
+                300,
+                375,
+                450,
+                525,
+                600
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.6
+              },
+              {
+                "player_bonus_ad": 1.8
+              }
+            ],
+            "st_slices": [
+              "Minimum Physical Damage",
+              "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "Maximum Physical Damage",
+              "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  125,
+                  150,
+                  175,
+                  200
+                ],
+                "player_bonus_ad": 0.6
+              },
+              "title": "Minimum Physical Damage",
+              "str": "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  300,
+                  375,
+                  450,
+                  525,
+                  600
+                ],
+                "player_bonus_ad": 0.6
+              },
+              "title": "Maximum Physical Damage",
+              "str": "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 6
 }

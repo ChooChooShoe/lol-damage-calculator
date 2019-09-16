@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.108",
-  "changes": "9.12.1",
+  "changes": "9.18.1",
   "id": "Caitlyn",
   "key": "51",
   "name": "Caitlyn",
-  "fullname": "Caitlyn",
   "title": "the Sheriff of Piltover",
   "image": {
     "full": "Caitlyn.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -30,15 +30,34 @@
     "magic": 2,
     "difficulty": 6
   },
-  "i_displayname": "Headshot",
-  "q_displayname": "Piltover Peacemaker",
-  "w_dispalyname": "Yordle Snap Trap",
-  "e_dispalyname": "90",
-  "r_dispalyname": "Ace in the Hole",
-  "complex_skills": {
+  "stats": {
+    "hp": 481,
+    "hpperlevel": 91,
+    "mp": 313.7,
+    "mpperlevel": 35,
+    "movespeed": 325,
+    "armor": 28,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 650,
+    "hpregen": 3.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 7.4,
+    "mpregenperlevel": 0.55,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 62,
+    "attackdamageperlevel": 2.88,
+    "attackspeedperlevel": 4,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Headshot",
+      "riotId": "",
+      "name": "Headshot",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Caitlyn_Headshot.png",
         "sprite": "passive0.png",
@@ -48,46 +67,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Every few basic attacks, or against a target she has trapped or netted, Caitlyn will fire a headshot dealing bonus damage that scales with her critical strike chance. On trapped or netted targets, Caitlyn's Headshot attack range is doubled.",
-      "champion": "Caitlyn",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
-        "{{sbc|Innate:}} '''Caitlyn's''' non-empowered basic attacks generate a stack of ''Headshot'', doubled when attacking from {{tip|brush}}. At 6 stacks, or 5 while in ''brush'', '''Caitlyn's''' next [[basic attack]] shoots after a {{pp|13|type='''bonus''' attack speed|color=attack speed|0.3 to 0.1|key1=%|0 to 300|formula=0.3-0.1 every 100% '''bonus''' attack speed. ''Numbers estimated.''}} second delay, dealing {{as|{{pp|3|key=%|50 to 100|1 to 13}}|ad}} {{as|(+ {{critical damage|125|62.5}} critical strike chance)|critical chance}} {{as|AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, increased to {{as|100% {{As|(+ {{critical damage|125|62.5}} critical strike chance)|critical chance}} AD}} against non-champions.",
+        "{{sbc|Innate:}} '''Caitlyn's''' non-empowered basic attacks generate a stack of ''Headshot'' [[on-attack]], doubled when attacking from {{tip|brush}}. At 6 stacks, or 5 while in ''brush'', '''Caitlyn's''' next [[basic attack]] shoots after a {{pp|13|type='''bonus''' attack speed|color=attack speed|0.3 to 0.1|key1=%|0 to 300|formula=0.3-0.1 every 100% '''bonus''' attack speed. ''Numbers estimated.''}} second delay, dealing {{as|{{pp|3|key=%|50 to 100|1 to 13}}|ad}} {{as|(+ {{critical damage|125|62.5}} critical strike chance)|critical chance}} {{as|AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, increased to {{as|100% {{As|(+ {{critical damage|125|62.5}} critical strike chance)|critical chance}} AD}} against non-champions.",
+        "'''Caitlyn''' may fire other empowered basic attacks until ''Headshot'' hits a target, which consumes all stacks.",
         "Enemies {{tip|root|rooted}} by {{ai|Yordle Snap Trap|Caitlyn}} or {{tip|slow|slowed}} by {{ai|90 Caliber Net|Caitlyn}} can grant an additional ''headshot'' at {{sti|range|1300 range}}."
       ],
-      "icon": [
-        "Headshot.png",
-        "Headshot 2.png"
-      ],
-      "leveling": [],
-      "name": "Headshot",
-      "notes": [
-        "* The additional on-hits from {{ii|Runaan's Hurricane}} and {{ii|Guinsoo's Rageblade}} do not grant additional stacks of ''Headshot''.",
-        "* The bonus range from {{ii|Rapid Firecannon}} will not have any effect during {{ai|Yordle Snap Trap|Caitlyn|trap}} and {{ai|90 Caliber Net|Caitlyn|net}} extended ''Headshot'' attacks.",
-        "* As with most on-hit physical damage, the bonus damage from ''Headshot'' will apply {{sti|life steal}}.",
-        "* Attacking wards will still generate stacks towards ''Headshot'' but empowered attack will not be consumed.",
-        "* The basic attack triggering ''Headshot'' can {{tip|Critical Strike|critically strike}}, but ''Headshot's'' damage remains unchanged if it does.",
-        "* The empowered basic attack is considered an ability and will thus fire after the cast time even if '''Caitlyn''' is {{tip|stun|stunned}} or {{tip|stasis|stasised}}.",
-        "** Because of this, the attack is also unable to stack {{tip|Energized}}, {{ii|Guinsoo's Rageblade}} or apply {{iis|Spear of Shojin}} cooldown reduction."
-      ],
-      "parry": true,
-      "projectile": true,
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* The bonus range from {{ii|Rapid Firecannon}} will not have any effect during {{ai|Yordle Snap Trap|Caitlyn|trap}} and {{ai|90 Caliber Net|Caitlyn|net}} extended ''Headshot'' attacks.\n* As with most on-hit physical damage, the bonus damage from ''Headshot'' will apply {{sti|life steal}}.\n* Attacking wards will still generate stacks towards ''Headshot'' but empowered attack will not be consumed.\n* The basic attack triggering ''Headshot'' can {{tip|Critical Strike|critically strike}}, but ''Headshot's'' damage remains unchanged if it does.\n* The empowered basic attack is considered an ability and will thus fire after the cast time even if '''Caitlyn''' is {{tip|stun|stunned}} or {{tip|stasis|stasised}}.\n** Because of this, the attack is also unable to stack {{tip|Energized}}, {{ii|Guinsoo's Rageblade}} or apply {{iis|Spear of Shojin}} cooldown reduction.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "CaitlynPiltoverPeacemaker",
-      "riotName": "Piltover Peacemaker",
+      "riotId": "CaitlynPiltoverPeacemaker",
+      "name": "Piltover Peacemaker",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 1300,
       "image": {
         "full": "CaitlynPiltoverPeacemaker.png",
         "sprite": "spell1.png",
@@ -97,52 +105,132 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Caitlyn revs up her rifle for 1 second to unleash a penetrating shot that deals physical damage (deals less damage to subsequent targets).",
-      "cast_time": "{{fd|0.625}}",
-      "champion": "Caitlyn",
-      "cooldown": [
-        10,
-        9,
-        8,
-        7,
-        6
-      ],
-      "cooldownBurn": "10/9/8/7/6",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Caitlyn''' fires a projectile in the target direction that deals {{as|physical damage}} to the first enemy it passes through, after which it expands in width but deals only 60% damage to all enemies it passes through thereafter.",
         "Enemies {{tip|sight|revealed}} by {{ai|Yordle Snap Trap|Caitlyn}} always take full damage from ''Piltover Peacemaker''."
       ],
-      "icon": [
-        "Piltover Peacemaker.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|50 to 210}} {{as|(+ {{ap|130 to 170}}% AD)}}|Reduced Damage|{{ap|50*0.6 to 210*0.6}} {{as|(+ {{ap|130*0.6 to 170*0.6}}% AD)}}}}"
-      ],
-      "name": "Piltover Peacemaker",
-      "notes": [
-        "* Enemies hit while protected by a {{tip|spell shield}} will still be considered when calculating damage for subsequent hits."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 2200,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1300,
-      "targeting": "Direction"
+      "notes": "\n* Enemies hit while protected by a {{tip|spell shield}} will still be considered when calculating damage for subsequent hits.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "10/9/8/7/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|50 to 210}} {{as|(+ {{ap|130 to 170}}% AD)}}|Reduced Damage|{{ap|50*0.6 to 210*0.6}} {{as|(+ {{ap|130*0.6 to 170*0.6}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['130','140','150','160','170']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['30','54','78','102','126']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['78','84','90','96','102']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                90,
+                130,
+                170,
+                210
+              ],
+              [
+                130,
+                140,
+                150,
+                160,
+                170
+              ],
+              [
+                30,
+                54,
+                78,
+                102,
+                126
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.78,
+                  0.84,
+                  0.9,
+                  0.96,
+                  1.02
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['130','140','150','160','170']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "Reduced Damage",
+              "<spell-span :list=\"['30','54','78','102','126']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['78','84','90','96','102']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  90,
+                  130,
+                  170,
+                  210
+                ],
+                "player_total_ad": [
+                  0.78,
+                  0.84,
+                  0.9,
+                  0.96,
+                  1.02
+                ]
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['130','140','150','160','170']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  130,
+                  140,
+                  150,
+                  160,
+                  170
+                ],
+                "player_total_ad": [
+                  0.78,
+                  0.84,
+                  0.9,
+                  0.96,
+                  1.02
+                ]
+              },
+              "title": "Reduced Damage",
+              "str": "<spell-span :list=\"['30','54','78','102','126']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['78','84','90','96','102']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "CaitlynYordleTrap",
-      "riotName": "Yordle Snap Trap",
+      "riotId": "CaitlynYordleTrap",
+      "name": "Yordle Snap Trap",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "Mana + 1 Charge",
+      "targeting": "Ground",
+      "target_range": 800,
       "image": {
         "full": "CaitlynYordleTrap.png",
         "sprite": "spell1.png",
@@ -152,56 +240,168 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Caitlyn sets a trap to find sneaky yordles. When sprung, the trap reveals and immobilizes the enemy champion for 1.5 seconds.",
-      "champion": "Caitlyn",
-      "collision_radius": "{{fd|67.5}}",
-      "cooldown": [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      "cooldownBurn": "0.5",
-      "costBurn": "20",
-      "costtype": "Mana + 1 Charge",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Caitlyn''' periodically [[stock]]s a ''Yordle Snap Trap'' charge, up to a maximum amount.",
         "{{sbc|Active:}} '''Caitlyn''' sets a trap at the target location that arms after {{fd|1.1}} seconds and lasts for a duration. After the maximum amount of traps is laid down, deploying another immediately destroys the oldest one.",
         "Enemy champions that walk into a trap are {{tip|root|rooted}} for {{fd|1.5}} seconds, during which they are {{tip|true sight|revealed}} for 3 seconds, take additional damage from {{ai|Headshot|Caitlyn}}, and become immune to ''Yordle Snap Traps'' for 4 seconds while they remain in the area."
       ],
-      "icon": [
-        "Yordle Snap Trap.png"
-      ],
-      "leveling": [
-        "{{st|Maximum Traps|{{ap|3|3|4|4|5}}}}",
-        "{{st|Trap Duration|{{ap|30 to 50}}}}",
-        "{{st|{{ai|Headshot|Caitlyn}} Damage Increase|{{ap|60 to 240}} {{as|(+ {{ap|40 to 100}}% '''bonus''' AD)}}}}"
-      ],
-      "name": "Yordle Snap Trap",
-      "notes": [
-        "* Deployment grants brief sight to the area.",
-        "* Traps are untargetable.",
-        "* {{tip|critical strike|Critical strikes}} deal increased damage '''after''' critical modifier."
-      ],
-      "projectile": "None",
-      "skill": "W",
-      "spellshield": true,
-      "static": "{{fd|0.5}}",
-      "target_range": 800,
-      "targeting": "Ground"
+      "notes": "\n* Deployment grants brief sight to the area.\n* Traps are untargetable.\n* {{tip|critical strike|Critical strikes}} deal increased damage '''after''' critical modifier.",
+      "costBurn": "20",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Maximum Traps|{{ap|3|3|4|4|5}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Traps</span>: <span><spell-span :list=\"['3','3','4','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                3,
+                4,
+                4,
+                5
+              ]
+            ],
+            "st_slices": [
+              "Maximum Traps",
+              "<spell-span :list=\"['3','3','4','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ]
+              },
+              "title": "Maximum Traps",
+              "str": "<spell-span :list=\"['3','3','4','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Trap Duration|{{ap|30 to 50}}}}",
+          "str": "<ul><li><span class=\"blue\">Trap Duration</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ],
+            "st_slices": [
+              "Trap Duration",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              },
+              "title": "Trap Duration",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|{{ai|Headshot|Caitlyn}} Damage Increase|{{ap|60 to 240}} {{as|(+ {{ap|40 to 100}}% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Caitlyn\">Headshot<template #content>Headshot</template></HtmlTooltip> Damage Increase</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.4,
+                  0.55,
+                  0.7,
+                  0.85,
+                  1
+                ]
+              }
+            ],
+            "st_slices": [
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Caitlyn\">Headshot<template #content>Headshot</template></HtmlTooltip> Damage Increase",
+              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_bonus_ad": [
+                  0.4,
+                  0.55,
+                  0.7,
+                  0.85,
+                  1
+                ]
+              },
+              "title": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Caitlyn\">Headshot<template #content>Headshot</template></HtmlTooltip> Damage Increase",
+              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "CaitlynEntrapment",
-      "riotName": "90 Caliber Net",
+      "riotId": "CaitlynEntrapment",
+      "name": "90 Caliber Net",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "image": {
         "full": "CaitlynEntrapment.png",
         "sprite": "spell1.png",
@@ -211,35 +411,29 @@
         "w": 48,
         "h": 48
       },
-      "affects": null,
-      "blurb": "",
-      "champion": "",
-      "cooldown": [
-        16,
-        14.5,
-        13,
-        11.5,
-        10
-      ],
-      "cooldownBurn": "16/14.5/13/11.5/10",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [],
-      "icon": [],
-      "leveling": [],
-      "projectile": "null",
-      "skill": "E"
+      "notes": "",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
     },
     "r1": {
-      "key": "R",
-      "id": "CaitlynAceintheHole",
-      "riotName": "Ace in the Hole",
+      "riotId": "CaitlynAceintheHole",
+      "name": "Ace in the Hole",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        90,
+        75,
+        60
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 3500,
       "image": {
         "full": "CaitlynAceintheHole.png",
         "sprite": "spell1.png",
@@ -249,46 +443,61 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Caitlyn takes time to line up the perfect shot, dealing massive damage to a single target at a huge range. Enemy champions can intercept the bullet for their ally.",
-      "callforhelp": true,
-      "champion": "Caitlyn",
-      "cooldown": [
-        90,
-        75,
-        60
-      ],
-      "cooldownBurn": "90/75/60",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} After a brief delay, '''Caitlyn''' locks onto a target enemy champion and {{ct|channels|items=false,true,false,false,false}} for 1 second, gaining {{tip|true sight}} of the target.",
         "Once '''Caitlyn''' completes the channel, she fires a homing projectile toward the target that deals {{as|physical damage}} to the first enemy champion it hits.",
         "''If the target dies during the channel the ability is cancelled and put on a 5-second cooldown without refunding the mana cost.''"
       ],
-      "icon": [
-        "Ace in the Hole.png"
-      ],
-      "leveling": [
-        "{{st|Physical damage|{{ap|300 to 750}} {{as|(+ 200% '''bonus''' AD)}}}}"
-      ],
-      "name": "Ace in the Hole",
-      "notes": [
-        "* If Caitlyn loses sight of her target before she locks on, the ability cancels but does not go on cooldown or consume any mana.",
-        "* [[Champion summoned units#Decoys|Decoys]] will intercept the missile.",
-        "* If the target dies after the bullet has been fired the shot will continue towards their corpse and may still hit other champions."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 3200,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 3500,
-      "targeting": "Unit"
+      "notes": "\n* If Caitlyn loses sight of her target before she locks on, the ability cancels but does not go on cooldown or consume any mana.\n* [[Champion summoned units#Decoys|Decoys]] will intercept the missile.\n* If the target dies after the bullet has been fired the shot will continue towards their corpse and may still hit other champions.",
+      "costBurn": "100",
+      "cooldownBurn": "90/75/60",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical damage|{{ap|300 to 750}} {{as|(+ 200% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><spell-span :list=\"['300','412.5','525','637.5','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                412.5,
+                525,
+                637.5,
+                750
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 2
+              }
+            ],
+            "st_slices": [
+              "Physical damage",
+              "<spell-span :list=\"['300','412.5','525','637.5','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  300,
+                  412.5,
+                  525,
+                  637.5,
+                  750
+                ],
+                "player_bonus_ad": 2
+              },
+              "title": "Physical damage",
+              "str": "<spell-span :list=\"['300','412.5','525','637.5','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

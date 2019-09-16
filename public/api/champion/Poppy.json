@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.70",
-  "changes": "9.14.1",
+  "changes": "9.16.1",
   "id": "Poppy",
   "key": "78",
   "name": "Poppy",
-  "fullname": "Poppy",
   "title": "Keeper of the Hammer",
   "image": {
     "full": "Poppy.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 450,
   "rp_cost": 260,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 2,
     "difficulty": 6
   },
-  "i_displayname": "Iron Ambassador / Iron Ambassador 2",
-  "q_displayname": "Hammer Shock",
-  "w_dispalyname": "Steadfast Presence / Stubborn to a Fault",
-  "e_dispalyname": "Heroic Charge",
-  "r_dispalyname": "Keeper's Verdict",
-  "complex_skills": {
+  "stats": {
+    "hp": 540,
+    "hpperlevel": 90,
+    "mp": 280,
+    "mpperlevel": 40,
+    "movespeed": 345,
+    "armor": 38,
+    "armorperlevel": 3.5,
+    "spellblock": 32,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8,
+    "hpregenperlevel": 0.8,
+    "mpregen": 7,
+    "mpregenperlevel": 0.7,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 2.5,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Iron Ambassador",
+      "riotId": "",
+      "name": "Iron Ambassador",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Poppy_Passive.png",
         "sprite": "passive2.png",
@@ -49,44 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Poppy throws her buckler, gaining range and bonus magic damage. The buckler lands at a nearby location and Poppy can pick it up to gain a shield. Enemies can step on the buckler to destroy it.",
-      "champion": "Poppy",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Poppy''' periodically {{tip|projectile|throws}} her buckler as her next [[basic attack]], gaining {{sti|350 '''bonus''' range}} and dealing {{pp|20 to 180|color=magic damage}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. The buckler then falls near her target, where it remains for up to 4 seconds.",
         "When '''Poppy''' picks up the buckler, she {{sti|shields}} herself for {{sti|health|{{as|{{pp|3|key=%|showtype=true|15 to 20|1 to 13}} '''maximum''' health}}}} for 3 seconds. If the buckler kills its target, it bounces back to '''Poppy''' automatically. Enemies can step on the buckler to destroy it."
       ],
-      "icon": [
-        "Iron Ambassador.png",
-        "Iron Ambassador 2.png"
-      ],
-      "leveling": [],
-      "name": "Iron Ambassador",
-      "notes": [
-        "* ''Iron Ambassador's'' enhanced attack applies [[on-hit effect]]s as well as {{sti|life steal}} and can {{tip|critical strike|critically strike}} (the bonus damage cannot).",
-        "* ''Iron Ambassador'' is considered a {{tip|melee}} attack.",
-        "* ''Iron Ambassador'' does not trigger [[On-hit effect|on-attack effects]] nor does it interact with {{ai|Help, Pix!|Lulu}}.",
-        "* ''Iron Ambassador'' can be prevented and mitigated by [[On-hit effect|on-being-hit effects]] from both champions and items."
-      ],
-      "projectile": true,
-      "skill": "I",
-      "spelleffects": "Shield",
-      "static": "{{pp|3|showtype=true|16 to 8|1 to 13}}",
-      "targeting": "Passive"
+      "notes": "\n* ''Iron Ambassador's'' enhanced attack applies [[on-hit effect]]s as well as {{sti|life steal}} and can {{tip|critical strike|critically strike}} (the bonus damage cannot).\n* ''Iron Ambassador'' is considered a {{tip|melee}} attack.\n* ''Iron Ambassador'' does not trigger [[On-hit effect|on-attack effects]] nor does it interact with {{ai|Help, Pix!|Lulu}}.\n* ''Iron Ambassador'' can be prevented and mitigated by [[On-hit effect|on-being-hit effects]] from both champions and items.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "PoppyQ",
-      "riotName": "Hammer Shock",
+      "riotId": "PoppyQ",
+      "name": "Hammer Shock",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "cost": [
+        35,
+        40,
+        45,
+        50,
+        55
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 430,
       "image": {
         "full": "PoppyQ.png",
         "sprite": "spell9.png",
@@ -96,51 +105,200 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Poppy swings her hammer, dealing damage and creating a zone that will slow enemies and explode after a delay.",
-      "champion": "Poppy",
-      "cooldown": [
-        8,
-        7,
-        6,
-        5,
-        4
-      ],
-      "cooldownBurn": "8/7/6/5/4",
-      "costBurn": "35 / 40 / 45 / 50 / 55",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Poppy''' smashes the ground in front of her, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies hit. Against {{tip|monsters}}, the damage based on the percentage of their '''maximum''' health is capped.",
         "The impacted ground becomes unstable, {{tip|slow|slowing}} enemies standing on it before erupting after 1 second, dealing the same {{as|physical damage}} to all enemies hit."
       ],
-      "icon": [
-        "Hammer Shock.png"
-      ],
-      "leveling": [
-        "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Capped Monster Percentage Damage|{{ap|40 to 120}}|Maximum Initial Monster Damage|{{ap|40*2 to 120*2}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|40*4 to 120*4}} {{as|(+ 180% '''bonus''' AD)}}}}",
-        "{{st|Slow|{{ap|20 to 40}}%}}"
-      ],
-      "name": "Hammer Shock",
-      "notes": [
-        "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage."
-      ],
-      "projectile": "Physical",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "target_range": 430,
-      "targeting": "Direction"
+      "notes": "\n* {{tip|Spell shield|Spell shields}} will block only a single instance of damage.",
+      "costBurn": "35/40/45/50/55",
+      "cooldownBurn": "8/7/6/5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Capped Monster Percentage Damage|{{ap|40 to 120}}|Maximum Initial Monster Damage|{{ap|40*2 to 120*2}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|40*4 to 120*4}} {{as|(+ 180% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Physical Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span> <span class=\"health\">(+ 16% of target's <b>maximum</b> health)</span></span></li></ul><br><ul><li><span class=\"blue\">Capped Monster Percentage Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Maximum Initial Monster Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Monster Damage</span>: <span><spell-span :list=\"['160','240','320','400','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ],
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ],
+              [
+                160,
+                240,
+                320,
+                400,
+                480
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.9
+              },
+              {
+                "target_total_hp": 0.08
+              },
+              {
+                "player_bonus_ad": 1.8
+              },
+              {
+                "target_total_hp": 0.16
+              },
+              {
+                "player_bonus_ad": 0.9
+              },
+              {
+                "player_bonus_ad": 1.8
+              }
+            ],
+            "st_slices": [
+              "Capped Monster Percentage Damage",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "Maximum Initial Monster Damage",
+              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+              "Maximum Monster Damage",
+              "<spell-span :list=\"['160','240','320','400','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_bonus_ad": 0.9,
+                "target_total_hp": 0.08
+              },
+              "title": "Capped Monster Percentage Damage",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_bonus_ad": 0.9,
+                "target_total_hp": 0.08
+              },
+              "title": "Maximum Initial Monster Damage",
+              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_bonus_ad": 0.9,
+                "target_total_hp": 0.08
+              },
+              "title": "Maximum Monster Damage",
+              "str": "<spell-span :list=\"['160','240','320','400','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Slow|{{ap|20 to 40}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "PoppyW",
-      "riotName": "Steadfast Presence",
+      "riotId": "PoppyW",
+      "name": "Steadfast Presence",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        24,
+        22,
+        20,
+        18,
+        16
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "PoppyW.png",
         "sprite": "spell9.png",
@@ -150,54 +308,82 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Poppy passively gains Armor and Magic Resist. This bonus increases when she is low on Health. Poppy can activate Steadfast Presence to stop enemy dashes around her and gain movement speed.",
-      "champion": "Poppy",
-      "cooldown": [
-        24,
-        22,
-        20,
-        18,
-        16
-      ],
-      "cooldownBurn": "24/22/20/18/16",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive - Stubborn to a Fault:}} '''Poppy's''' {{sti|armor|{{as|'''total''' armor}}}} and {{sti|mr|{{as|'''total''' magic resistance}}}} are both increased by 10%, doubled to 20% when she falls {{sti|health|{{as|below 40% '''maximum''' health}}}}.",
-        "{{sbc|Active:}} '''Poppy''' gains {{sti|ms|{{as|35% '''bonus''' movement speed}}}} for 2 seconds and generates a barrier around her for the duration, causing all enemies who {{tip|dash}} within to be {{tip|knockdown|knocked down}}, dealt {{as|magic damage}}, and are both {{tip|ground|grounded}} and {{tip|slow|slowed}} by 25% for 2 seconds.",
+        "{{sbc|Active:}} '''Poppy''' gains {{sti|ms|{{as|40% '''bonus''' movement speed}}}} for 2 seconds and generates a barrier around her for the duration, causing all enemies who {{tip|dash}} within to be {{tip|knockdown|knocked down}}, dealt {{as|magic damage}}, and are both {{tip|ground|grounded}} and {{tip|slow|slowed}} by 25% for 2 seconds.",
         "''Steadfast Presence'' can only block a single dash per enemy per cast."
       ],
-      "effect_radius": 400,
-      "icon": [
-        "Stubborn to a Fault.png",
-        "Steadfast Presence.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Steadfast Presence",
-      "notes": [
-        "* ''Steadfast Presence'' has no cast time and does not interrupt ''Poppy's'' previous orders.",
-        "* ''Steadfast Presence'' [https://www.youtube.com/watch?v=u3JOjNR-eFE does not stop] [[dash|dashes]] that are classified as {{tip|unstoppable}} or they are {{tip|untargetable}} while dashing ({{ai|Playful|Fizz}} / {{ai|Trickster|Fizz}}, {{ai|Onslaught of Shadows|Hecarim}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Fate's Call|Kalista}}, {{ai|Unstoppable Force|Malphite}}, {{ai|Twisted Advance|Maokai}}, {{ai|Paranoia|Nocturne}}, {{ai|Void Rush|Rek'Sai}}, {{ai|Assault and Battery|Vi}}, {{ai|Infinite Duress|Warwick}}, {{ai|Death Mark|Zed}}).",
-        "* ''Steadfast Presence'' does not stop enemy abilities with small self-displacements (e.g. {{ai|Bear Stance|Udyr}} and {{ai|Noxian Guillotine|Darius}}) because they do not count as \"dashes\"."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Steadfast Presence'' has no cast time and does not interrupt ''Poppy's'' previous orders.\n* ''Steadfast Presence'' [https://www.youtube.com/watch?v=u3JOjNR-eFE does not stop] [[dash|dashes]] that are classified as {{tip|unstoppable}} or they are {{tip|untargetable}} while dashing ({{ai|Playful|Fizz}} / {{ai|Trickster|Fizz}}, {{ai|Onslaught of Shadows|Hecarim}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Fate's Call|Kalista}}, {{ai|Unstoppable Force|Malphite}}, {{ai|Twisted Advance|Maokai}}, {{ai|Paranoia|Nocturne}}, {{ai|Void Rush|Rek'Sai}}, {{ai|Assault and Battery|Vi}}, {{ai|Infinite Duress|Warwick}}, {{ai|Death Mark|Zed}}).\n* ''Steadfast Presence'' does not stop enemy abilities with small self-displacements (e.g. {{ai|Bear Stance|Udyr}} and {{ai|Noxian Guillotine|Darius}}) because they do not count as \"dashes\".",
+      "costBurn": "50",
+      "cooldownBurn": "24/22/20/18/16",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "PoppyE",
-      "riotName": "Heroic Charge",
+      "riotId": "PoppyE",
+      "name": "Heroic Charge",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 475,
       "image": {
         "full": "PoppyE.png",
         "sprite": "spell9.png",
@@ -207,56 +393,143 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Poppy dashes to the target and pushes it back. If the target is pushed into a wall, it is stunned.",
-      "callforhelp": true,
-      "champion": "Poppy",
-      "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "70",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Poppy''' {{tip|dashes}} to the target enemy, dealing {{as|physical damage}} and {{tip|airborne|carrying}} them along with her for up to 300 units.",
         "If they collide with terrain, she deals them the same {{as|physical damage}} again and {{tip|stun|stuns}} them."
       ],
-      "grounded": true,
-      "icon": [
-        "Heroic Charge.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Initial Physical Damage|{{ap|60 to 140}} {{as|(+ 50% '''bonus''' AD)}}|Total Physical Damage|{{ap|60*2 to 140*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
-        "{{st|Stun Duration|{{ap|1.6 to 2}}}}"
-      ],
-      "name": "Heroic Charge",
-      "notes": [
-        "* ''Heroic Charge'' applies spell effects twice (once when ''Poppy'' hits her target and once she stuns them against a wall).",
-        "* ''Poppy'' can use ''Heroic Charge'' to go through walls provided her target is on the opposite side when she casts.",
-        "* ''Heroic Charge'' interacts with impassable player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Emperor's Divide|Azir}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}})."
-      ],
-      "projectile": "Physical",
-      "skill": "E",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 475,
-      "targeting": "Unit"
+      "notes": "\n* ''Heroic Charge'' applies spell effects twice (once when ''Poppy'' hits her target and once she stuns them against a wall).\n* ''Poppy'' can use ''Heroic Charge'' to go through walls provided her target is on the opposite side when she casts.\n* ''Heroic Charge'' interacts with impassable player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Emperor's Divide|Azir}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}}).",
+      "costBurn": "70",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Physical Damage|{{ap|60 to 140}} {{as|(+ 50% '''bonus''' AD)}}|Total Physical Damage|{{ap|60*2 to 140*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Physical Damage</span>: <span><spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ],
+              [
+                120,
+                160,
+                200,
+                240,
+                280
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.5
+              },
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Initial Physical Damage",
+              "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "Total Physical Damage",
+              "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  80,
+                  100,
+                  120,
+                  140
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Initial Physical Damage",
+              "str": "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  120,
+                  160,
+                  200,
+                  240,
+                  280
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Total Physical Damage",
+              "str": "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Stun Duration|{{ap|1.6 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.6,
+                1.7,
+                1.8,
+                1.9,
+                2
+              ]
+            ],
+            "st_slices": [
+              "Stun Duration",
+              "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.6,
+                  1.7,
+                  1.8,
+                  1.9,
+                  2
+                ]
+              },
+              "title": "Stun Duration",
+              "str": "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "PoppyR",
-      "riotName": "Keeper's Verdict",
+      "riotId": "PoppyR",
+      "name": "Keeper's Verdict",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        140,
+        120,
+        100
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1900,
       "image": {
         "full": "PoppyR.png",
         "sprite": "spell9.png",
@@ -266,45 +539,98 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Poppy channels a hammer strike that knocks enemies very far away.",
-      "champion": "Poppy",
-      "cooldown": [
-        140,
-        120,
-        100
-      ],
-      "cooldownBurn": "140/120/100",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|First Cast:}} '''Poppy''' {{tip|channels|charges}} for up to 4 seconds, {{tip|slow|slowing}} herself by 15% for the duration. ''Keeper's Verdict's'' {{sti|cooldown}} is set to 30 seconds if canceled.",
         "{{sbc|Second Cast:}} '''Poppy''' smashes the ground, sending out a shockwave that travels in the target direction. When it hits an enemy champion, a massive hammer erupts, dealing {{as|physical damage}} to all enemies around it. Enemies struck by the hammer are {{tip|airborne|knocked back}} an incredible distance towards their [[Spawn|fountain]].",
         "Instantly releasing the ability ends the charge, dealing 50% reduced damage and {{tip|airborne|knocking up}} all enemies around '''Poppy''' for {{fd|0.75}} seconds.",
         "'''Poppy''' has {{tip|sight}} of {{tip|airborne}} enemies and they are rendered {{tip|untargetable}} for the duration, with their displacement distance increasing based on how long ''Keeper's Verdict'' was charged. An uncharged attack does not render enemies {{tip|untargetable}}."
       ],
-      "icon": [
-        "Keeper's Verdict.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|200|300|400}} {{as|(+ 90% '''bonus''' AD)}}}}",
-        "{{st|Reduced Physical Damage|{{ap|100|150|200}} {{as|(+ 45% '''bonus''' AD)}}}}"
-      ],
-      "name": "Keeper's Verdict",
-      "notes": [
-        "* ''Keeper's Verdict'' only interacts with {{cai|Last Breath|Yasuo}} when instantly released due to enemies hit becoming {{tip|untargetable}} for the displacement's duration when charged."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 2000,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1900,
-      "targeting": "Direction"
+      "notes": "\n* ''Keeper's Verdict'' only interacts with {{cai|Last Breath|Yasuo}} when instantly released due to enemies hit becoming {{tip|untargetable}} for the displacement's duration when charged.",
+      "costBurn": "100",
+      "cooldownBurn": "140/120/100",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|200|300|400}} {{as|(+ 90% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                200,
+                300,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.9
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  300,
+                  400
+                ],
+                "player_bonus_ad": 0.9
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['200','300','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Reduced Physical Damage|{{ap|100|150|200}} {{as|(+ 45% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Reduced Physical Damage</span>: <span><spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 45% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.45
+              }
+            ],
+            "st_slices": [
+              "Reduced Physical Damage",
+              "<spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 45% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  150,
+                  200
+                ],
+                "player_bonus_ad": 0.45
+              },
+              "title": "Reduced Physical Damage",
+              "str": "<spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 45% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

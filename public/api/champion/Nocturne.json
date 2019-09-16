@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.113",
-  "changes": "9.1.1",
+  "changes": "9.16.1",
   "id": "Nocturne",
   "key": "56",
   "name": "Nocturne",
-  "fullname": "Nocturne",
   "title": "the Eternal Nightmare",
   "image": {
     "full": "Nocturne.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 2,
     "difficulty": 4
   },
-  "i_displayname": "Umbra Blades",
-  "q_displayname": "Duskbringer",
-  "w_dispalyname": "Shroud of Darkness",
-  "e_dispalyname": "Unspeakable Horror",
-  "r_dispalyname": "Paranoia",
-  "complex_skills": {
+  "stats": {
+    "hp": 585,
+    "hpperlevel": 85,
+    "mp": 275,
+    "mpperlevel": 35,
+    "movespeed": 345,
+    "armor": 38,
+    "armorperlevel": 3.5,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8.5,
+    "hpregenperlevel": 0.75,
+    "mpregen": 7,
+    "mpregenperlevel": 0.45,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 62,
+    "attackdamageperlevel": 3.1,
+    "attackspeedperlevel": 2.7,
+    "attackspeed": 0.721
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Umbra Blades",
+      "riotId": "",
+      "name": "Umbra Blades",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Nocturne_UmbraBlades.png",
         "sprite": "passive2.png",
@@ -49,41 +68,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Every 10 seconds, Nocturne's next attack strikes surrounding enemies for 120% physical damage and heals himself. Nocturne's basic attacks reduce this cooldown by 1 second.",
-      "champion": "Nocturne",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Nocturne's''' [[basic attack]] is periodically enhanced, dealing {{as|20% AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to his target and {{as|120% AD}} {{as|physical damage}} to surrounding enemies, while also {{tip|healing}} himself for {{pp|15 to 40}} {{as|(+ 15% AP)}} per enemy hit.",
         "''Umbra Blades's'' damage to the primary target can {{tip|critical strike|critically strike}} for {{as|{{critical damage||10}} AD}} {{as|'''bonus''' physical damage}}.",
         "Basic attacks reduce '''Umbra Blades'''' {{sti|cooldown}} by 1 second, increased to 2 seconds against enemy champions."
       ],
-      "icon": [
-        "Umbra Blades.png"
-      ],
-      "leveling": [],
-      "name": "Umbra Blades",
-      "notes": [
-        "* Basic attacks against structures will reduce ''Umbra Blades' ''cooldown but will not trigger the {{tip|splash damage}}.",
-        "* The enhanced attack will apply other [[on-hit effect]]s (only to main target) and can {{tip|critical strike|critically strike}} as normal."
-      ],
-      "projectile": "Physical",
-      "skill": "I",
-      "static": 10,
-      "targeting": "Passive"
+      "notes": "\n* Basic attacks against structures will reduce ''Umbra Blades' ''cooldown but will not trigger the {{tip|splash damage}}.\n* The enhanced attack will apply other [[on-hit effect]]s (only to main target) and can {{tip|critical strike|critically strike}} as normal.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "NocturneDuskbringer",
-      "riotName": "Duskbringer",
+      "riotId": "NocturneDuskbringer",
+      "name": "Duskbringer",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1200,
       "image": {
         "full": "NocturneDuskbringer.png",
         "sprite": "spell8.png",
@@ -93,47 +106,137 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Nocturne throws a shadow blade that deals damage, leaves a Dusk Trail, and causes champions to leave a Dusk Trail. While on the trail, Nocturne can move through units and has increased Movement Speed and Attack Damage.",
-      "champion": "Nocturne",
-      "cooldownBurn": "10",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nocturne''' sends out a shadow blade in a line that leaves a ''Dusk Trail'' on its path, dealing {{as|physical damage}} to enemies it passes through and causing enemy {{tip|champion|champions}} hit to also leave a ''Dusk Trail'' behind their movement for 5 seconds.",
         "While on the ''Dusk Trail'', '''Nocturne''' is {{tip|Ghosted|ghosted}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} and {{as|'''bonus''' attack damage}}."
       ],
-      "icon": [
-        "Duskbringer.png"
-      ],
-      "leveling": [
-        "{{st|Physical damage|{{ap|65 to 245}} {{as|(+ 75% '''bonus''' AD)}}}}",
-        "{{st|Movement Speed|{{ap|15 to 35}}%}}<!--\n-->{{st|Bonus AD|{{as|{{ap|20 to 60}}|AD}}}}"
-      ],
-      "name": "Duskbringer",
-      "notes": [
-        "* '''Duskbringer's''' ''Dusk Trail'' will 'reveal' the path of affected units until its duration ends. This means it can indirectly show the location of any affected units without vision on them, including those in stealth.",
-        "* With the {{as|bonus AD}} from the ''Dusk Trail'', the effective base damage is {{ap|65+0.75*20 to 245+0.75*60}}",
-        "* {{tip|Spell shield}} will block the damage and also prevent the ''Dusk Trail''."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1600,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1200,
-      "targeting": "Direction"
+      "notes": "\n* '''Duskbringer's''' ''Dusk Trail'' will 'reveal' the path of affected units until its duration ends. This means it can indirectly show the location of any affected units without vision on them, including those in stealth.\n* With the {{as|bonus AD}} from the ''Dusk Trail'', the effective base damage is {{ap|65+0.75*20 to 245+0.75*60}}\n* {{tip|Spell shield}} will block the damage and also prevent the ''Dusk Trail''.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical damage|{{ap|65 to 245}} {{as|(+ 75% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                65,
+                110,
+                155,
+                200,
+                245
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.75
+              }
+            ],
+            "st_slices": [
+              "Physical damage",
+              "<spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  65,
+                  110,
+                  155,
+                  200,
+                  245
+                ],
+                "player_bonus_ad": 0.75
+              },
+              "title": "Physical damage",
+              "str": "<spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Movement Speed|{{ap|15 to 35}}%}}<!--\n-->{{st|Bonus AD|{{as|{{ap|20 to 60}}|AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Movement Speed</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ],
+              null
+            ],
+            "st_slices": [
+              "Bonus AD",
+              "<span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              }
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  15,
+                  20,
+                  25,
+                  30,
+                  35
+                ],
+                "player_total_unknown": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              },
+              "title": "Bonus AD",
+              "str": "<span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "NocturneShroudofDarkness",
-      "riotName": "Shroud of Darkness",
+      "riotId": "NocturneShroudofDarkness",
+      "name": "Shroud of Darkness",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        20,
+        18,
+        16,
+        14,
+        12
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "NocturneShroudofDarkness.png",
         "sprite": "spell8.png",
@@ -143,49 +246,100 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Nocturne empowers his blades, passively gaining Attack Speed. Activating Shroud of Darkness allows Nocturne to fade into the shadows, creating a magical barrier which blocks a single enemy ability and doubles his passive Attack Speed if successful.",
-      "champion": "Nocturne",
-      "cooldown": [
-        20,
-        18,
-        16,
-        14,
-        12
-      ],
-      "cooldownBurn": "20/18/16/14/12",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Nocturne''' empowers his blades, permanently gaining {{sti|{{as|'''bonus''' attack speed}}}}.",
         "{{sbc|Active:}} '''Nocturne''' gains a {{tip|spell shield}} for {{fd|1.5}} seconds.",
         "Blocking an ability will double ''Shroud of Darkness' ''passive {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds."
       ],
-      "icon": [
-        "Shroud of Darkness.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Attack Speed|{{ap|20 to 40}}%|Maximum Bonus Attack Speed|{{ap|20*2 to 40*2}}%}}"
-      ],
-      "name": "Shroud of Darkness",
-      "notes": [
-        "* ''Shroud of Darkness'' has no cast time and does not interrupt ''Nocturne's'' previous orders.",
-        "* If ''Shroud of Darkness'' is active when '''Nocturne''' re-casts {{ai|Paranoia|Nocturne}} to dash to a target, it'll stay active until '''Nocturne''' reaches his target."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n* ''Shroud of Darkness'' has no cast time and does not interrupt ''Nocturne's'' previous orders.\n* If ''Shroud of Darkness'' is active when '''Nocturne''' re-casts {{ai|Paranoia|Nocturne}} to dash to a target, it'll stay active until '''Nocturne''' reaches his target.",
+      "costBurn": "50",
+      "cooldownBurn": "20/18/16/14/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 50}}%|Maximum Bonus Attack Speed|{{ap|30*2 to 50*2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Bonus Attack Speed</span>: <span><spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ],
+              [
+                60,
+                70,
+                80,
+                90,
+                100
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Maximum Bonus Attack Speed",
+              "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  70,
+                  80,
+                  90,
+                  100
+                ]
+              },
+              "title": "Maximum Bonus Attack Speed",
+              "str": "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "NocturneUnspeakableHorror",
-      "riotName": "Unspeakable Horror",
+      "riotId": "NocturneUnspeakableHorror",
+      "name": "Unspeakable Horror",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 425,
       "image": {
         "full": "NocturneUnspeakableHorror.png",
         "sprite": "spell8.png",
@@ -195,56 +349,116 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Nocturne plants a nightmare into his target's mind, dealing damage each second and terrifying the target if they do not get out of range by the end of the duration.",
-      "callforhelp": true,
-      "champion": "Nocturne",
-      "cooldown": [
-        15,
-        14,
-        13,
-        12,
-        11
-      ],
-      "cooldownBurn": "15/14/13/12/11",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Nocturne''' gains {{sti|ms|{{as|335 '''bonus''' movement speed}}}} when moving toward {{tip|flee|fleeing}} targets.",
         "{{sbc|Active:}} '''Nocturne''' plants nightmares into his target's mind, dealing {{tip|magic damage|{{as|magic damage}}}} over 2 seconds and forming a tether between him and his target.",
         "If the target does not break the tether by moving out of range, they are made to {{tip|Flee|flee}} from '''Nocturne''' for a short duration while {{tip|slow|slowed}} by 90%."
       ],
-      "icon": [
-        "Unspeakable Horror.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 100% AP)}}}}",
-        "{{st|Fear Duration|{{ap|1.25 to 2.25}}}}"
-      ],
-      "name": "Unspeakable Horror",
-      "notes": [
-        "* ''Unspeakable Horror'' has no cast time and does not interrupt ''Nocturne's'' previous orders.",
-        "* ''Unspeakable Horror's'' tether will not break if the target enters {{tip|invisibility|stealth}} or becomes {{tip|untargetable}}.",
-        "* {{tip|Spell shield}} will block the tether but not the {{tip|flee|fear}} from one already present."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "DoT",
-      "spellshield": "Special",
-      "target_range": 425,
-      "targeting": "Direction",
-      "tether_radius": 465
+      "notes": "\n* ''Unspeakable Horror'' has no cast time and does not interrupt ''Nocturne's'' previous orders.\n* ''Unspeakable Horror's'' tether will not break if the target enters {{tip|invisibility|stealth}} or becomes {{tip|untargetable}}.\n* {{tip|Spell shield}} will block the tether but not the {{tip|flee|fear}} from one already present.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "15/14/13/12/11",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Fear Duration|{{ap|1.25 to 2.25}}}}",
+          "str": "<ul><li><span class=\"blue\">Fear Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.25,
+                1.5,
+                1.75,
+                2,
+                2.25
+              ]
+            ],
+            "st_slices": [
+              "Fear Duration",
+              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.25,
+                  1.5,
+                  1.75,
+                  2,
+                  2.25
+                ]
+              },
+              "title": "Fear Duration",
+              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "NocturneParanoia",
-      "riotName": "Paranoia",
+      "riotId": "NocturneParanoia",
+      "name": "Paranoia",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        150,
+        125,
+        100
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{ap|2500|3250|4000}}",
       "image": {
         "full": "NocturneParanoia.png",
         "sprite": "spell8.png",
@@ -254,47 +468,56 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Nocturne reduces the sight radius of all enemy champions and removes their ally vision in the process. He can then launch himself at a nearby enemy champion.",
-      "callforhelp": true,
-      "champion": "Nocturne",
-      "cooldown": [
-        150,
-        125,
-        100
-      ],
-      "cooldownBurn": "150/125/100",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|First Active:}} After a brief delay, '''Nocturne''' applies {{tip|nearsight}} to all enemy champions for 6 seconds.",
         "{{sbc|Second Active:}} While ''Paranoia'' is active, '''Nocturne''' can reactivate it to {{tip|dash}} {{tip|unstoppable|unstoppably}} to the target enemy champion, dealing them {{as|physical damage}}."
       ],
-      "effect_radius": "Global",
-      "grounded": true,
-      "icon": [
-        "Paranoia.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|150|275|400}} {{as|(+ 120% '''bonus''' AD)}}}}"
-      ],
-      "name": "Paranoia",
-      "notes": [
-        "* ''Paranoia's'' {{tip|nearsight}} has no cast time and does not interrupt ''Nocturne's'' previous orders.",
-        "* ''Paranoia's'' nearsight can be blocked by spell shields.",
-        "* ''Nocturne'' will track targets that change locations (moving, [[dash]]ing, {{si|Flash|flashing}}) but not those that cover great distances ({{si|Recall|recalling}}, {{si|Teleport|teleporting}}) in which case he will dash to their previous location.",
-        "* ''Paranoia's'' {{tip|Nearsight|nearsight}} will prevent an enemy {{ci|Shen}} from using {{ai|Stand United|Shen}} on allies (regardless of having {{tip|sight}} of them or not) while active."
-      ],
-      "projectile": "Physical",
-      "skill": "R",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": "{{ap|2500|3250|4000}}",
-      "targeting": "Unit"
+      "notes": "\n* ''Paranoia's'' {{tip|nearsight}} has no cast time and does not interrupt ''Nocturne's'' previous orders.\n* ''Paranoia's'' nearsight can be blocked by spell shields.\n* ''Nocturne'' will track targets that change locations (moving, [[dash]]ing, {{si|Flash|flashing}}) but not those that cover great distances ({{si|Recall|recalling}}, {{si|Teleport|teleporting}}) in which case he will dash to their previous location.\n* ''Paranoia's'' {{tip|Nearsight|nearsight}} will prevent an enemy {{ci|Shen}} or {{ci|Galio}} from using their ultimate abilities ({{ai|Stand United|Shen}} and {{ai|Hero's Entrance|Galio}}) on allies (regardless of having {{tip|sight}} of them or not) while active.",
+      "costBurn": "100",
+      "cooldownBurn": "150/125/100",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|150|275|400}} {{as|(+ 120% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                275,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.2
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  275,
+                  400
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

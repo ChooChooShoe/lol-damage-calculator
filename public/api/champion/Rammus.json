@@ -4,13 +4,12 @@
   "id": "Rammus",
   "key": "33",
   "name": "Rammus",
-  "fullname": "Rammus",
   "title": "the Armordillo",
   "image": {
     "full": "Rammus.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 0,
+    "x": 48,
     "y": 0,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "Mixed,Physical",
@@ -31,68 +31,53 @@
     "magic": 5,
     "difficulty": 5
   },
-  "i_displayname": "Spiked Shell",
-  "q_displayname": "Powerball",
-  "w_dispalyname": "Defensive Ball Curl",
-  "e_dispalyname": "Frenzying Taunt",
-  "r_dispalyname": "Tremors",
-  "complex_skills": {
+  "stats": {
+    "hp": 564.48,
+    "hpperlevel": 86,
+    "mp": 310.44,
+    "mpperlevel": 33,
+    "movespeed": 335,
+    "armor": 36,
+    "armorperlevel": 4.3,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8,
+    "hpregenperlevel": 0.55,
+    "mpregen": 7.84,
+    "mpregenperlevel": 0.5,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 55.88,
+    "attackdamageperlevel": 3.5,
+    "attackspeedperlevel": 2.215,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Spiked Shell",
+      "riotId": "",
+      "name": "Spiked Shell",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Armordillo_ScavengeArmor.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 0,
+        "x": 48,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Rammus' basic attacks deal bonus magic damage, scaling with his Armor.",
-      "champion": "Rammus",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} Basic attacks deal {{as|10|magic damage}} {{as|(+ 10% armor)}} {{tip|magic damage|'''bonus''' magic damage}}, increased by 50% to {{as|15 {{as|(+ 15% armor)}} '''bonus''' magic damage}} while {{ai|Defensive Ball Curl|Rammus}} is active."
       ],
-      "icon": [
-        "Spiked Shell.png"
-      ],
-      "leveling": [],
-      "name": "Spiked Shell",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "PowerBall",
-      "riotName": "Powerball",
+      "riotId": "PowerBall",
+      "name": "Powerball",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "PowerBall.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Rammus accelerates in a ball towards his enemies, dealing damage and slowing targets affected by the impact.",
-      "champion": "Rammus",
-      "collision_radius": "{{fd|112.5}}",
       "cooldown": [
         16,
         13.5,
@@ -100,174 +85,455 @@
         8.5,
         6
       ],
-      "cooldownBurn": "16/13.5/11/8.5/6",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
       ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "image": {
+        "full": "PowerBall.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Rammus''' tucks into a ball and begins to roll, {{ct|channel|channeling|attack=false|move=true|cast=Q and W interrupt. E is disabled. R is usable|items=interrupts,true,,false|spells=true,true,interrupts,interrupts,interrupts}} for up to 6 seconds, gaining {{pp|key=%|150/6 to 235/6|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} per second over the duration, up to a maximum of {{pp|key=%|150 to 235|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
         "'''Rammus''' stops rolling upon colliding with an enemy, {{tip|airborne|knocking back}} all nearby enemies 100 units over {{tt|{{fd|0.75}} seconds|Estimated}}, dealing them {{as|magic damage}}, and {{tip|slow|slowing}} them for 1 second."
       ],
-      "icon": [
-        "Powerball.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ 100% AP)}}}}\n{{st|Slow|{{ap|40 to 80}}%}}"
-      ],
-      "name": "Powerball",
-      "notes": [
-        "* ''Powerball'' will still hit nearby enemies (including minions) if ''Rammus'' is {{tip|ghosted}}.",
-        "* ''Powerball'' will trigger {{nie|Mana Charge}} twice (upon activation and when ending it prematurely)."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Powerball'' will still hit nearby enemies (including minions) if ''Rammus'' is {{tip|ghosted}}.\n* ''Powerball'' will trigger {{nie|Mana Charge}} twice (upon activation and when ending it prematurely).",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "16/13.5/11/8.5/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ 100% AP)}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','135','170','205','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                135,
+                170,
+                205,
+                240
+              ],
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  100,
+                  135,
+                  170,
+                  205,
+                  240
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "DefensiveBallCurl",
-      "riotName": "Defensive Ball Curl",
+      "riotId": "DefensiveBallCurl",
+      "name": "Defensive Ball Curl",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "DefensiveBallCurl.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 336,
-        "y": 48,
+        "x": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Rammus goes into a defensive formation, vastly increasing his Armor and Magic Resistance, amplifying Spiked Shells' damage, and returning damage to enemies that basic attack him, but he is also slowed during this time.",
-      "champion": "Rammus",
-      "cooldownBurn": "6",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Rammus''' drops into a defensive stance for 6 seconds, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, increasing {{ais|Spiked Shell|Rammus}} damage by 50%, and applying it to enemies whenever they use basic attacks against him. '''Rammus''' is {{tip|slow|slowed}} by 30% for the duration.",
         "''Defensive Ball Curl'' can be canceled instantly by reactivating the ability or by activating {{ai|Powerball|Rammus}}."
       ],
-      "icon": [
-        "Defensive Ball Curl.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Armor|30 {{as|(+ {{ap|60 to 100}}% '''total''' armor)}}}}\n{{st|Bonus Magic Resistance|10 {{as|(+ {{ap|30 to 50}}% '''total''' magic resistance)}}}}"
-      ],
-      "name": "Defensive Ball Curl",
-      "notes": [
-        "* ''Defensive Ball Curl'' will return damage from attacks and/or abilities that apply [[on-hit effect]]s ({{ai|Mystic Shot|Ezreal}}) as well as from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} (will not return damage from [[turret]]s, {{ai|H-28G Evolution Turret|Heimerdinger}}, or {{ai|Jack in the Box|Shaco}})."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n* ''Defensive Ball Curl'' will return damage from attacks and/or abilities that apply [[on-hit effect]]s ({{ai|Mystic Shot|Ezreal}}) as well as from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} (will not return damage from [[turret]]s, {{ai|H-28G Evolution Turret|Heimerdinger}}, or {{ai|Jack in the Box|Shaco}}).",
+      "costBurn": "40",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Armor|30 {{as|(+ {{ap|60 to 100}}% '''total''' armor)}}}}\n{{st|Bonus Magic Resistance|10 {{as|(+ {{ap|30 to 50}}% '''total''' magic resistance)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span>30 <span class=\"armor\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>total</b> armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span>10 <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>total</b> magic resistance)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                70,
+                80,
+                90,
+                100
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_armor": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Resistance",
+              "10 <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''total''' magic resistance)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  70,
+                  80,
+                  90,
+                  100
+                ],
+                "player_total_armor": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
+              },
+              "title": "Bonus Magic Resistance",
+              "str": "10 <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''total''' magic resistance)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "PuncturingTaunt",
-      "riotName": "Frenzying Taunt",
+      "riotId": "PuncturingTaunt",
+      "name": "Frenzying Taunt",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 325,
       "image": {
         "full": "PuncturingTaunt.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Rammus taunts an enemy champion or monster into a reckless assault against him. Additionally, he gains increased Attack Speed for a short time, but this bonus is extended by having any of his other spells active.",
-      "callforhelp": true,
-      "champion": "Rammus",
-      "cooldownBurn": "12",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Rammus''' {{tip|taunt|taunts}} the target enemy, gaining {{sti|{{as|'''bonus''' attack speed}}}} for the duration.",
         "While {{ai|Powerball|Rammus}}, {{ai|Defensive Ball Curl|Rammus}} or {{ai|Tremors|Rammus}} is active, the {{sti|{{as|'''bonus''' attack speed}}}} is refreshed."
       ],
-      "icon": [
-        "Frenzying Taunt.png"
-      ],
-      "leveling": [
-        "{{st|Taunt Duration|{{ap|1.25 to 2.25}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}"
-      ],
-      "name": "Frenzying Taunt",
-      "notes": [
-        "* ''Frenzying Taunt'' behaves like a {{tip|stun}} when cast right before ''Rammus'' enters {{tip|stasis}}."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "spellshield": true,
-      "target_range": 325,
-      "targeting": "Unit"
+      "notes": "* ''Frenzying Taunt'' behaves like a {{tip|stun}} when cast right before ''Rammus'' enters {{tip|stasis}}.",
+      "costBurn": "50",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Taunt Duration|{{ap|1.25 to 2.25}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}",
+          "str": "<ul><li><span class=\"blue\">Taunt Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.25,
+                1.5,
+                1.75,
+                2,
+                2.25
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.25,
+                  1.5,
+                  1.75,
+                  2,
+                  2.25
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "Tremors2",
-      "riotName": "Tremors",
+      "riotId": "Tremors2",
+      "name": "Tremors",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "Tremors2.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 432,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Rammus creates waves of destruction pulsing through the ground, causing damage to nearby enemies and slowing them. Turrets take double damage from Tremors.",
-      "champion": "Rammus",
       "cooldown": [
         100,
         80,
         60
       ],
-      "cooldownBurn": "100/80/60",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "image": {
+        "full": "Tremors2.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Rammus''' creates an earthquake around himself for 8 seconds, {{tip|slow|slowing}} and dealing {{as|magic damage}} each second to nearby enemies for the duration. Structures receive double damage.",
         "The {{tip|slow}} persists for {{fd|1.5}} seconds and stacks up to 8 times."
       ],
-      "effect_radius": 300,
-      "icon": [
-        "Tremors.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Second|{{ap|30 to 90}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|30*8 to 90*8}} {{as|(+ 160% AP)}}}}\n{{st|Structure Magic Damage Per Second|{{ap|30*2 to 90*2}} {{as|(+ 40% AP)}}|Structure Total Magic Damage|{{ap|30*2*8 to 90*2*8}} {{as|(+ 320% AP)}}}}",
-        "{{st|Slow|{{ap|8 to 12}}%|Maximum Slow|{{ap|8*8 to 12*8}}%}}"
-      ],
-      "name": "Tremors",
-      "notes": [
-        "* ''Tremors'' has no cast time and does not interrupt ''Rammus' ''previous orders."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "* ''Tremors'' has no cast time and does not interrupt ''Rammus' ''previous orders.",
+      "costBurn": "100",
+      "cooldownBurn": "100/80/60",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{ap|30 to 90}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|30*8 to 90*8}} {{as|(+ 160% AP)}}}}\n{{st|Structure Magic Damage Per Second|{{ap|30*2 to 90*2}} {{as|(+ 40% AP)}}|Structure Total Magic Damage|{{ap|30*2*8 to 90*2*8}} {{as|(+ 320% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['240','360','480','600','720']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 160% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Structure Magic Damage Per Second</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Structure Total Magic Damage</span>: <span><spell-span :list=\"['480','720','960','1200','1440']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 320% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                45,
+                60,
+                75,
+                90
+              ],
+              [
+                240,
+                360,
+                480,
+                600,
+                720
+              ],
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ],
+              [
+                480,
+                720,
+                960,
+                1200,
+                1440
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ap": 1.6
+              },
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 3.2
+              }
+            ],
+            "st_slices": [
+              "Structure Magic Damage Per Second",
+              "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "Structure Total Magic Damage",
+              "<spell-span :list=\"['480','720','960','1200','1440']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 320% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  45,
+                  60,
+                  75,
+                  90
+                ],
+                "player_total_ap": 1.6
+              },
+              "title": "Structure Magic Damage Per Second",
+              "str": "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  240,
+                  360,
+                  480,
+                  600,
+                  720
+                ],
+                "player_total_ap": 1.6
+              },
+              "title": "Structure Total Magic Damage",
+              "str": "<spell-span :list=\"['480','720','960','1200','1440']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 320% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Slow|{{ap|8 to 12}}%|Maximum Slow|{{ap|8*8 to 12*8}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Slow</span>: <span><spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              [
+                64,
+                72,
+                80,
+                88,
+                96
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Maximum Slow",
+              "<spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  8,
+                  9,
+                  10,
+                  11,
+                  12
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  64,
+                  72,
+                  80,
+                  88,
+                  96
+                ]
+              },
+              "title": "Maximum Slow",
+              "str": "<spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

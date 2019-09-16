@@ -4,13 +4,12 @@
   "id": "Tryndamere",
   "key": "23",
   "name": "Tryndamere",
-  "fullname": "Tryndamere",
   "title": "the Barbarian King",
   "image": {
     "full": "Tryndamere.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 96,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Fury",
   "herotype": "Fighter",
   "alttype": "Slayer",
+  "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "physical",
@@ -31,160 +31,413 @@
     "magic": 2,
     "difficulty": 5
   },
-  "i_displayname": "Battle Fury",
-  "q_displayname": "Bloodlust",
-  "w_dispalyname": "Mocking Shout",
-  "e_dispalyname": "Spinning Slash",
-  "r_dispalyname": "Undying Rage",
-  "complex_skills": {
+  "stats": {
+    "hp": 625.64,
+    "hpperlevel": 98,
+    "mp": 100,
+    "mpperlevel": 0,
+    "movespeed": 345,
+    "armor": 33,
+    "armorperlevel": 3.1,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8.5,
+    "hpregenperlevel": 0.9,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 69,
+    "attackdamageperlevel": 3.7,
+    "attackspeedperlevel": 2.9,
+    "attackspeed": 0.67
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Battle Fury",
+      "riotId": "",
+      "name": "Battle Fury",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Tryndamere_Passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Tryndamere gains Fury for each attack, critical strike, and killing blow he makes. Fury passively increases his Critical Strike Chance and can be consumed with his Bloodlust spell.",
-      "champion": "Tryndamere",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Fury:}} '''Tryndamere''' gains {{tip|fury|{{as|5 Fury}}}} each time he lands a [[basic attack]], and {{as|10 Fury}} on {{tip|critical strike|critical strikes}} and each time he kills an enemy. After not dealing or receiving damage for 8 seconds, '''Tryndamere''' loses {{as|5 Fury}} per second.",
+        "{{sbc|Fury:}} '''Tryndamere''' gains {{tip|fury|{{as|5 Fury}}}} each time he lands a [[basic attack]], and {{as|10 Fury}} on {{tip|critical strike|critical strikes}} and each time he kills an enemy, up to a maximum of 100. After not dealing or receiving damage for 8 seconds, '''Tryndamere''' loses {{as|5 Fury}} per second.",
         "{{sbc|Battle Fury:}} '''Tryndamere''' gains {{as|{{pp|4|changedisplay=true|key=%|0.35 to 0.5|1;6;11;16}} critical strike chance}} per point of {{as|Fury}}, up to a maximum of {{as|{{pp|4|changedisplay=true|key=%|35 to 50|1;6;11;16}} critical strike chance}}."
       ],
-      "icon": [
-        "Battle Fury.png"
-      ],
-      "leveling": [],
-      "name": "Battle Fury",
-      "notes": [
-        "* Attacks against structures will not grant bonus '''Fury''', but will still reset the timer on '''Fury''' decay."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Attacks against structures will not grant bonus '''Fury''', but will still reset the timer on '''Fury''' decay.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "TryndamereQ",
-      "riotName": "Bloodlust",
+      "riotId": "TryndamereQ",
+      "name": "Bloodlust",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        100
+      ],
+      "costtype": "{{as|Current Fury}}",
+      "targeting": "Self",
       "image": {
         "full": "TryndamereQ.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Tryndamere thrives on the thrills of combat, increasing his Attack Damage as he is more and more wounded. He can cast Bloodlust to consume his Fury and heal himself.",
-      "champion": "Tryndamere",
-      "cooldownBurn": "12",
-      "costBurn": "100",
-      "costtype": "{{as|Current Fury}}",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Passive:}} '''Tryndamere''' permanently has {{as|'''bonus''' attack damage}}, and gains additional {{as|'''bonus''' attack damage}} per {{as|{{sti|health|1% of his '''missing''' health}}}}.",
-        "{{sbc|Active:}} '''Tryndamere''' consumes all of his {{tip|fury|{{as|Fury}}}} and [[healing|heals]] himself, increased for every point of {{as|Fury}} consumed."
-      ],
-      "icon": [
-        "Bloodlust.png"
-      ],
-      "leveling": [
-        "{{st|Bonus AD|{{as|{{ap|5 to 25}} AD}}|Bonus AD Per Missing Health|{{as|{{ap|0.15 to 0.35}} AD}}|Maximum Bonus AD|{{as|{{ap|5+0.15*100 to 25+0.35*100}} AD}}}}",
-        "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 30% AP)}}|Heal Per Fury|{{ap|0.5 to 2.3}} {{as|(+ {{fd|1.2}}% AP)}}|Maximum Heal|{{ap|30+0.5*100 to 70+2.3*100}} {{as|(+ 150% AP)}}}}"
-      ],
-      "name": "Bloodlust",
-      "notes": [
-        "* ''Bloodlust'' has no cast time and does not interrupt Tryndamere's previous orders.",
-        "* ''Bloodlust'' can still be activated if Tryndamere does not have any '''Fury'''."
-      ],
-      "projectile": "null",
-      "skill": "Q",
-      "targeting": "Self"
-    },
-    "w1": {
-      "key": "W",
-      "id": "TryndamereW",
-      "riotName": "Mocking Shout",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "TryndamereW.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 432,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Tryndamere lets out an insulting cry, decreasing surrounding champions' Attack Damage. Enemies with their backs turned to Tryndamere also have their Movement Speed reduced.",
-      "champion": "Tryndamere",
-      "cooldownBurn": "14",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Tryndamere''' reduces the {{as|attack damage}} of all nearby enemies for 4 seconds.",
-        "Targets who have their backs turned to him are also {{tip|slow|slowed}} for the duration."
-      ],
-      "effect_radius": 850,
-      "icon": [
-        "Mocking Shout.png"
-      ],
-      "leveling": [
-        "{{st|AD Reduction|{{as|{{ap|20|35|50|65|80}} AD}}}}",
-        "{{st|Slow|{{ap|30|37.5|45|52.5|60}}%}}"
-      ],
-      "name": "Mocking Shout",
-      "notes": [
-        "*''Mocking Shout'' cannot be activated unless an enemy is within range of Tryndamere. Due to this, it is possible to use the ability to scout in the [[sight|Fog of War]] and provide pseudo [[stealth]] detection of enemy champions.",
-        "*''Mocking Shout'' will briefly provide sight of Tryndamere if he uses it in the [[sight|Fog of War]]."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "spellshield": true,
-      "targeting": "Auto"
-    },
-    "e1": {
-      "key": "E",
-      "id": "TryndamereE",
-      "riotName": "Spinning Slash",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "TryndamereE.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Tryndamere slices toward a target unit, dealing damage to enemies in his path.",
-      "champion": "Tryndamere",
+      "description": [
+        "{{sbc|Passive:}} '''Tryndamere''' permanently has {{as|'''bonus''' attack damage}}, and gains additional {{as|'''bonus''' attack damage}} per {{as|{{sti|health|1% of his '''missing''' health}}}}.",
+        "{{sbc|Active:}} '''Tryndamere''' consumes all of his {{tip|fury|{{as|Fury}}}} and [[healing|heals]] himself, increased for every point of {{as|Fury}} consumed."
+      ],
+      "notes": "\n* ''Bloodlust'' has no cast time and does not interrupt Tryndamere's previous orders.\n* ''Bloodlust'' can still be activated if Tryndamere does not have any '''Fury'''.",
+      "costBurn": "100",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus AD|{{as|{{ap|5 to 25}} AD}}|Bonus AD Per Missing Health|{{as|{{ap|0.15 to 0.35}} AD}}|Maximum Bonus AD|{{as|{{ap|5+0.15*100 to 25+0.35*100}} AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"ad\"><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span></span></li><li><span class=\"blue\">Bonus AD Per Missing Health</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['0.15','0.2','0.25','0.3','0.35']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                10,
+                15,
+                20,
+                25
+              ],
+              [
+                0.15,
+                0.2,
+                0.25,
+                0.3,
+                0.35
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus AD",
+              "<span class=\"ad\"><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span>",
+              "Bonus AD Per Missing Health",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['0.15','0.2','0.25','0.3','0.35']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "Maximum Bonus AD",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  5,
+                  10,
+                  15,
+                  20,
+                  25
+                ],
+                "player_total_ad": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              },
+              "title": "Bonus AD",
+              "str": "<span class=\"ad\"><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  0.15,
+                  0.2,
+                  0.25,
+                  0.3,
+                  0.35
+                ],
+                "player_total_ad": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              },
+              "title": "Bonus AD Per Missing Health",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['0.15','0.2','0.25','0.3','0.35']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "player_total_ad": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
+              },
+              "title": "Maximum Bonus AD",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 30% AP)}}|Heal Per Fury|{{ap|0.5 to 2.3}} {{as|(+ {{fd|1.2}}% AP)}}|Maximum Heal|{{ap|30+0.5*100 to 70+2.3*100}} {{as|(+ 150% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Heal Per Fury</span>: <span><spell-span :list=\"['0.5','0.95','1.4','1.85','2.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['80','135','190','245','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                40,
+                50,
+                60,
+                70
+              ],
+              [
+                0.5,
+                0.95,
+                1.4,
+                1.85,
+                2.3
+              ],
+              [
+                80,
+                135,
+                190,
+                245,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 1.5
+              },
+              {
+                "player_total_ap": 0.012
+              }
+            ],
+            "st_slices": [
+              "Minimum Heal",
+              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "Heal Per Fury",
+              "<spell-span :list=\"['0.5','0.95','1.4','1.85','2.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
+              "Maximum Heal",
+              "<spell-span :list=\"['80','135','190','245','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  40,
+                  50,
+                  60,
+                  70
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Minimum Heal",
+              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  0.5,
+                  0.95,
+                  1.4,
+                  1.85,
+                  2.3
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Heal Per Fury",
+              "str": "<spell-span :list=\"['0.5','0.95','1.4','1.85','2.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  135,
+                  190,
+                  245,
+                  300
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Maximum Heal",
+              "str": "<spell-span :list=\"['80','135','190','245','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "TryndamereW",
+      "name": "Mocking Shout",
+      "maxrank": 5,
+      "cooldown": [
+        14,
+        14,
+        14,
+        14,
+        14
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Auto",
+      "image": {
+        "full": "TryndamereW.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Tryndamere''' reduces the {{as|attack damage}} of all nearby enemies for 4 seconds.",
+        "Targets who have their backs turned to him are also {{tip|slow|slowed}} for the duration."
+      ],
+      "notes": "\n*''Mocking Shout'' cannot be activated unless an enemy is within range of Tryndamere.\n** This can be utilized to scout for nearby enemy champions that are not {{tip|sight|visible}} because of Tall Grass or the Fog of War, and provide pseudo [[stealth]] detection of enemy champions.\n*''Mocking Shout'' will provide the enemy with a moment of {{tip|sight}} of Tryndamere if he uses it in the Fog of War.",
+      "costBurn": "0",
+      "cooldownBurn": "14",
+      "effects": [
+        {
+          "levelingtext": "{{st|AD Reduction|{{as|{{ap|20|35|50|65|80}} AD}}}}",
+          "str": "<ul><li><span class=\"blue\">AD Reduction</span>: <span><span class=\"ad\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.2,
+                  0.35,
+                  0.5,
+                  0.65,
+                  0.8
+                ]
+              }
+            ],
+            "st_slices": [
+              "AD Reduction",
+              "<span class=\"ad\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_ad": [
+                  0.2,
+                  0.35,
+                  0.5,
+                  0.65,
+                  0.8
+                ]
+              },
+              "title": "AD Reduction",
+              "str": "<span class=\"ad\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> AD</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Slow|{{ap|30|37.5|45|52.5|60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                37.5,
+                45,
+                52.5,
+                60
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  37.5,
+                  45,
+                  52.5,
+                  60
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "TryndamereE",
+      "name": "Spinning Slash",
+      "maxrank": 5,
       "cooldown": [
         12,
         11,
@@ -192,84 +445,165 @@
         9,
         8
       ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "description": [
-        "{{sbc|Active:}} '''Tryndamere''' {{tip|dashes}} to a target location, dealing {{tip|physical damage|{{as|physical damage}}}} to enemies in his path and gaining {{tip|fury|{{as|2 Fury}}}} per enemy hit.",
-        "''Spinning Slash's'' {{sti|cooldown}} is reduced by 1 second whenever '''Tryndamere''' {{tip|critical strike|critically strikes}}, increased to 2 seconds against enemy champions."
-      ],
-      "effect_radius": 225,
-      "icon": [
-        "Spinning Slash.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|80 to 200}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Spinning Slash",
-      "notes": [
-        "* The cooldown reduction on crit is doubled with a phantom hit from {{ii|Guinsoo's Rageblade}}."
-      ],
-      "projectile": "physical",
-      "skill": "E",
-      "spelleffects": "aoe",
-      "spellshield": true,
+      "targeting": "Direction",
       "target_range": 660,
-      "targeting": "Direction"
-    },
-    "r1": {
-      "key": "R",
-      "id": "UndyingRage",
-      "riotName": "Undying Rage",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "UndyingRage.png",
+        "full": "TryndamereE.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 48,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Tryndamere's lust for battle becomes so strong that he is unable to die, no matter how wounded he becomes.",
-      "champion": "Tryndamere",
+      "description": [
+        "{{sbc|Active:}} '''Tryndamere''' {{tip|dashes}} to a target location, dealing {{tip|physical damage|{{as|physical damage}}}} to enemies in his path and gaining {{tip|fury|{{as|2 Fury}}}} per enemy hit.",
+        "''Spinning Slash's'' {{sti|cooldown}} is reduced by 1 second whenever '''Tryndamere''' {{tip|critical strike|critically strikes}}, increased to 2 seconds against enemy champions."
+      ],
+      "notes": "\n* The cooldown reduction on crit is doubled with a phantom hit from {{ii|Guinsoo's Rageblade}}.",
+      "costBurn": "0",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|80 to 200}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                110,
+                140,
+                170,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.3
+              },
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
+                ],
+                "player_bonus_ad": 1.3,
+                "player_total_ap": 0.8
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "UndyingRage",
+      "name": "Undying Rage",
+      "maxrank": 3,
       "cooldown": [
         110,
         100,
         90
       ],
-      "cooldownBurn": "110/100/90",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        0,
+        0,
+        0
       ],
+      "targeting": "None",
+      "image": {
+        "full": "UndyingRage.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Tryndamere''' instantly gains {{tip|fury|{{as|Fury}}}} and becomes immune to [[death]] for 5 seconds, during which his health cannot fall below a certain amount.",
         "''Undying Rage'' can be used even when affected by [[crowd control]]."
       ],
-      "icon": [
-        "Undying Rage.png"
-      ],
-      "leveling": [
-        "{{st|Fury Gained|{{as|{{ap|50|75|100}}|Fury}}}}\n{{st|Minimum Health|{{ap|30|50|70}}}}"
-      ],
-      "name": "Undying Rage",
-      "notes": [
-        "*''Undying Rage'' has no cast time and does not interrupt Tryndamere's previous orders.",
-        "* Drain-type effects such as [[life steal]] and [[spell vamp]] are applied '''before''' the damage reduction of ''Undying Rage'' takes place. As such, these attacks will heal as if the full damage was dealt, despite being unable to bring Tryndamere below {{pp|3|30|50|70|1|2|3|type=''Undying Rage'' level}} health.",
-        "*''Undying Rage'' has no effect against the [[Nexus Obelisk]]."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "targeting": "None"
+      "notes": "\n*''Undying Rage'' has no cast time and does not interrupt Tryndamere's previous orders.\n* Drain-type effects such as [[life steal]] and [[spell vamp]] are applied '''before''' the damage reduction of ''Undying Rage'' takes place. As such, these attacks will heal as if the full damage was dealt, despite being unable to bring Tryndamere below {{pp|3|30|50|70|1|2|3|type=''Undying Rage'' level}} health.\n*''Undying Rage'' has no effect against the [[Nexus Obelisk]].",
+      "costBurn": "0",
+      "cooldownBurn": "110/100/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Fury Gained|{{as|{{ap|50|75|100}}|Fury}}}}\n{{st|Minimum Health|{{ap|30|50|70}}}}",
+          "str": "<ul><li><span class=\"blue\">Fury Gained</span>: <span><span class=\"Fury\"><spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Health</span>: <span><spell-span :list=\"['30','50','70']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                75,
+                100
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.3,
+                  0.5,
+                  0.7
+                ]
+              }
+            ],
+            "st_slices": [
+              "Fury Gained",
+              "<span class=\"Fury\"><spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  75,
+                  100
+                ],
+                "player_total_unknown": [
+                  0.3,
+                  0.5,
+                  0.7
+                ]
+              },
+              "title": "Fury Gained",
+              "str": "<span class=\"Fury\"><spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

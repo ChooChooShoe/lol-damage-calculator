@@ -1,10 +1,9 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.6.1",
+  "changes": "9.18.1",
   "id": "Annie",
   "key": "1",
   "name": "Annie",
-  "fullname": "Annie Hastur",
   "title": "the Dark Child",
   "image": {
     "full": "Annie.png",
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 450,
   "rp_cost": 260,
   "adaptivetype": "magic",
@@ -30,15 +30,34 @@
     "magic": 10,
     "difficulty": 6
   },
-  "i_displayname": "Pyromania",
-  "q_displayname": "Disintegrate",
-  "w_dispalyname": "Incinerate",
-  "e_dispalyname": "Molten Shield",
-  "r_dispalyname": "Summon Tibbers / Command Tibbers",
-  "complex_skills": {
+  "stats": {
+    "hp": 524,
+    "hpperlevel": 88,
+    "mp": 418,
+    "mpperlevel": 25,
+    "movespeed": 335,
+    "armor": 19.22,
+    "armorperlevel": 4,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 625,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 50.41,
+    "attackdamageperlevel": 2.625,
+    "attackspeedperlevel": 1.36,
+    "attackspeed": 0.579
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Pyromania",
+      "riotId": "",
+      "name": "Pyromania",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Annie_Passive.png",
         "sprite": "passive0.png",
@@ -48,43 +67,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "After casting 4 spells, Annie's next offensive spell will stun the target for a short duration.",
-      "champion": "Annie",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Annie''' gains a stack of ''Pyromania'' when she casts a spell, up to a maximum of 4. At 4 stacks, she gains ''Pyromania''.",
         "{{sbc|Pyromania:}} When '''Annie''' succeeds in her next '''damaging ability''', she consumes all ''Pyromania'' stacks and {{tip|stun|stuns}} enemies hit for {{pp|3|showtype=true|1.25 to 1.75|1 to 11}} seconds."
       ],
-      "icon": [
-        "Pyromania.png"
-      ],
-      "leveling": [],
-      "name": "Pyromania",
-      "notes": [
-        "* {{ai|Incinerate|Annie}} and {{ai|Summon: Tibbers|Annie}} will stun all enemies hit.",
-        "* {{ais|Molten Shield|Annie}} reflected damage and {{uis|Tibbers}} damaging aura will not apply the stun.",
-        "* The stun applies to the first ability that lands when the stun is available. If you cast {{ai|Disintegrate|Annie}} followed by {{ai|Incinerate|Annie}} while the stun is available and ''Incinerate'' lands first, the stun will be applied through ''Incinerate''.",
-        "* The stun '''will not''' be consumed if the target of {{ai|Disintegrate|Annie}} becomes untargetable or the projectile is destroyed by {{ai|Wind Wall|Yasuo}}.",
-        "* Annie loses all ''Pyromania'' stacks when she is killed."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spellshield": true,
-      "targeting": "Passive"
+      "notes": "\n* {{ai|Incinerate|Annie}} and {{ai|Summon: Tibbers|Annie}} will stun all enemies hit.\n* {{ais|Molten Shield|Annie}} reflected damage and {{uis|Tibbers}} damaging aura will not apply the stun.\n* The stun applies to the first ability that lands when the stun is available. If you cast {{ai|Disintegrate|Annie}} followed by {{ai|Incinerate|Annie}} while the stun is available and ''Incinerate'' lands first, the stun will be applied through ''Incinerate''.\n* The stun '''will not''' be consumed if the target of {{ai|Disintegrate|Annie}} becomes untargetable or the projectile is destroyed by {{ai|Wind Wall|Yasuo}}.\n* Annie loses all ''Pyromania'' stacks when she is killed.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "AnnieQ",
-      "riotName": "Disintegrate",
+      "riotId": "AnnieQ",
+      "name": "Disintegrate",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "AnnieQ.png",
         "sprite": "spell1.png",
@@ -94,44 +104,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Annie hurls a Mana infused fireball, dealing damage and refunding the Mana cost if it destroys the target.",
-      "callforhelp": true,
-      "champion": "Annie",
-      "cooldownBurn": "4",
-      "costBurn": "60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Annie''' hurls a fireball at the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}}.",
         "If ''Disintegrate'' kills its target, it refunds {{as|its {{sti|mana}} cost}} and half of its {{sti|cooldown}} is immediately refreshed."
       ],
-      "icon": [
-        "Disintegrate.png"
-      ],
-      "leveling": [
-        "{{st|Magic damage|{{ap|80 to 220}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Disintegrate",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 625,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic damage|{{ap|80 to 220}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic damage",
+              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic damage",
+              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "AnnieW",
-      "riotName": "Incinerate",
+      "riotId": "AnnieW",
+      "name": "Incinerate",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
       "image": {
         "full": "AnnieW.png",
         "sprite": "spell1.png",
@@ -141,43 +187,79 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 50,
-      "blurb": "Annie casts a blazing cone of fire, dealing damage to all enemies in the area.",
-      "champion": "Annie",
-      "cooldownBurn": "8",
-      "costBurn": "708090100110",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Annie''' releases a cone of fire in the target direction, dealing {{as|magic damage}} to all enemies in the area."
       ],
-      "effect_radius": 625,
-      "icon": [
-        "Incinerate.png"
-      ],
-      "leveling": [
-        "{{st|Magic damage|{{ap|70|115|160|205|250}} {{as|(+ 85% AP)}}}}"
-      ],
-      "name": "Incinerate",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Aoe",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "* No additional details.",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic damage|{{ap|70|115|160|205|250}} {{as|(+ 85% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.85
+              }
+            ],
+            "st_slices": [
+              "Magic damage",
+              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_total_ap": 0.85
+              },
+              "title": "Magic damage",
+              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "AnnieE",
-      "riotName": "Molten Shield",
+      "riotId": "AnnieE",
+      "name": "Molten Shield",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "mana",
+      "targeting": "None",
       "image": {
         "full": "AnnieE.png",
         "sprite": "spell1.png",
@@ -187,36 +269,127 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Grants Annie and Tibbers increased percentage Damage Resist and damages enemies who attack with basic attacks.",
-      "champion": "Annie",
-      "cooldownBurn": "10",
-      "costBurn": "20",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, reducing damage taken for the next 3 seconds.",
+        "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, gaining {{sti|movement speed|{{as|{{pp|25 to 50.5|key=%}} '''bonus''' movement speed|ms}}}} decaying over {{fd|1.5}} seconds, and reducing damage taken for 3 seconds.",
         "Enemies who deal [[basic attack]] damage on '''Annie''' or {{ui|Tibbers}} during this time are dealt {{as|magic damage}}."
       ],
-      "icon": [
-        "Molten Shield.png"
+      "notes": "\n* ''Molten Shield'' does not deal damage against towers and their attacks.\n* Attacks that {{tip|blind|miss}} against '''Annie''' or {{ui|Tibbers}} will {{sbc|not}} cause the shield to deal damage.",
+      "costBurn": "20",
+      "cooldownBurn": "15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Damage reduction|{{ap|10 to 22}}%}}",
+          "str": "<ul><li><span class=\"blue\">Damage reduction</span>: <span><spell-span :list=\"['10','13','16','19','22']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                13,
+                16,
+                19,
+                22
+              ]
+            ],
+            "st_slices": [
+              "Damage reduction",
+              "<spell-span :list=\"['10','13','16','19','22']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  13,
+                  16,
+                  19,
+                  22
+                ]
+              },
+              "title": "Damage reduction",
+              "str": "<spell-span :list=\"['10','13','16','19','22']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|20|30|40|50|60}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r2": {
+      "riotId": "AnnieR",
+      "name": "Summon: Tibbers",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        0,
+        0
       ],
-      "leveling": [
-        "{{st|Damage reduction|{{ap|16|22|28|34|40}}%}}",
-        "{{st|Magic Damage|{{ap|20|30|40|50|60}} {{as|(+ 20% AP)}}}}"
+      "cost": [
+        0,
+        0,
+        0
       ],
-      "name": "Molten Shield",
-      "notes": [
-        "* ''Molten Shield'' does not deal damage against towers and their attacks.",
-        "* Attacks that {{tip|blind|miss}} against '''Annie''' or {{ui|Tibbers}} will {{sbc|not}} cause the shield to deal damage."
-      ],
-      "projectile": "magic",
-      "skill": "E",
-      "spelleffects": "Aoe",
-      "targeting": "None"
+      "image": {
+        "full": "AnnieR.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [],
+      "notes": "",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 5
 }

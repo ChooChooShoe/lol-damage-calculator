@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.121",
-  "changes": "9.14.1",
+  "changes": "9.17.1",
   "id": "Leona",
   "key": "89",
   "name": "Leona",
-  "fullname": "Leona",
   "title": "the Radiant Dawn",
   "image": {
     "full": "Leona.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Controller",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 3,
     "difficulty": 4
   },
-  "i_displayname": "Sunlight",
-  "q_displayname": "Shield of Daybreak",
-  "w_dispalyname": "Eclipse",
-  "e_dispalyname": "Zenith Blade",
-  "r_dispalyname": "Solar Flare",
-  "complex_skills": {
+  "stats": {
+    "hp": 576.16,
+    "hpperlevel": 87,
+    "mp": 302.2,
+    "mpperlevel": 40,
+    "movespeed": 335,
+    "armor": 47,
+    "armorperlevel": 3.6,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8.5,
+    "hpregenperlevel": 0.85,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 60.04,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2.9,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Sunlight",
+      "riotId": "",
+      "name": "Sunlight",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "LeonaSunlight.png",
         "sprite": "passive2.png",
@@ -49,41 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Damaging spells afflict enemies with Sunlight for 1.5 seconds. When allied Champions deal damage to those targets, they consume the Sunlight to deal additional magic damage.",
-      "champion": "Leona",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Leona's''' abilities mark enemies hit with ''Sunlight'' for {{fd|1.5}} seconds.",
         "Any damage dealt by allies (other than herself) consumes ''Sunlight'', dealing {{tip|magic damage|icononly=true}} {{as|{{pp|25 to 144}}|magic damage}}{{tip|magic damage|noimg=true|{{as|'''bonus''' magic damage}}}}."
       ],
-      "icon": [
-        "Sunlight.png"
-      ],
-      "leveling": [],
-      "name": "Sunlight",
-      "notes": [
-        "* ''Sunlight's'' mark damage is credited to the allied champion and not to '''Leona'''.",
-        "** The damage will benefit from allies' magic penetration and will apply any spell effects they have (including {{sti|spell vamp}})",
-        "* Each ''Sunlight'' application does not stack and simply refreshes the debuff's timer."
-      ],
-      "projectile": "magic",
-      "skill": "I",
-      "spelleffects": "single",
-      "targeting": "Passive"
+      "notes": "\n* ''Sunlight's'' mark damage is credited to the allied champion and not to '''Leona'''.\n** The damage will benefit from allies' magic penetration and will apply any spell effects they have (including {{sti|spell vamp}})\n* Each ''Sunlight'' application does not stack and simply refreshes the debuff's timer.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "LeonaShieldOfDaybreak",
-      "riotName": "Shield of Daybreak",
+      "riotId": "LeonaShieldOfDaybreak",
+      "name": "Shield of Daybreak",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "costtype": "Mana",
+      "targeting": "Self",
       "image": {
         "full": "LeonaShieldOfDaybreak.png",
         "sprite": "spell6.png",
@@ -93,45 +104,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target.",
-      "cast_time": "none",
-      "champion": "Leona",
-      "cooldownBurn": "6",
-      "costBurn": "4550556065",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Leona's''' next [[basic attack]] gains {{sti|range|50 '''bonus''' range}}, deals {{as|'''bonus''' magic damage}} and {{tip|stun|stuns}} her target for 1 second.",
         "''Shield of Daybreak'' resets '''Leona's''' basic attack timer."
       ],
-      "icon": [
-        "Shield of Daybreak.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10|35|60|85|110}} {{as|(+ 30% AP)}}}}"
-      ],
-      "name": "Shield of Daybreak",
-      "notes": [
-        "* ''Shield of Daybreak'' will cause {{iis|Muramana}} {{nie|Shock}} damage to trigger twice with a single basic attack.",
-        "* The enhanced attack will apply other on-hit effects and can {{tip|critical strike|critically strike}} as normal.",
-        "** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.",
-        "** ''Shield of Daybreak's'' bonus damage will affect towers, but not inhibitors or the Nexus."
-      ],
-      "projectile": "magic",
-      "skill": "Q",
-      "spellshield": true,
-      "targeting": "Self"
+      "notes": "\n* ''Shield of Daybreak'' will cause {{iis|Muramana}} {{nie|Shock}} damage to trigger twice with a single basic attack.\n* The enhanced attack will apply other on-hit effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.\n** ''Shield of Daybreak's'' bonus damage will affect towers, but not inhibitors or the Nexus.",
+      "costBurn": "45/50/55/60/65",
+      "cooldownBurn": "5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 110}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                35,
+                60,
+                85,
+                110
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  35,
+                  60,
+                  85,
+                  110
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "LeonaSolarBarrier",
-      "riotName": "Eclipse",
+      "riotId": "LeonaSolarBarrier",
+      "name": "Eclipse",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "LeonaSolarBarrier.png",
         "sprite": "spell6.png",
@@ -141,54 +187,143 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Leona raises her shield to gain Armor and Magic Resist. When the duration first ends, if there are nearby enemies, she will deal magic damage to them and prolong the duration of the effect.",
-      "cast_time": "none",
-      "champion": "Leona",
-      "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} For 3 seconds, '''Leona''' takes reduced pre-mitigation damage from each tick of damage, up to a maximum of 50% reduction. '''Leona''' also gains {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}.",
         "She then explodes, dealing {{as|magic damage}} to all nearby enemies and retains ''Eclipse's'' reduced damage and '''bonus''' resistances for an additional 3 seconds if she hits an enemy."
       ],
-      "effect_radius": 275,
-      "icon": [
-        "Eclipse.png"
-      ],
-      "leveling": [
-        "{{st|Flat Damage Reduction|{{ap|8 to 24}}}}\n{{st|Bonus Armor|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' armor)}}}}\n{{st|Bonus Magic Resistance|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' magic resistance)}}}}",
-        "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Eclipse",
-      "notes": [
-        "* ''Eclipse'' will interrupt ''Leona's'' previous orders if she is in the beginning of a basic attack, in which case the attack itself and its animation will get canceled.",
-        "* ''Eclipse's'' bonus resistances do not factor themselves.",
-        "* {{tip|Spell shield}} will block the damage but the buff's extended duration will not be prevented."
-      ],
-      "projectile": "magic",
-      "skill": "W",
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "targeting": "None"
+      "notes": "\n* ''Eclipse'' will interrupt ''Leona's'' previous orders if she is in the beginning of a basic attack, in which case the attack itself and its animation will get canceled.\n* ''Eclipse's'' bonus resistances do not factor themselves.\n* {{tip|Spell shield}} will block the damage but the buff's extended duration will not be prevented.",
+      "costBurn": "60",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Flat Damage Reduction|{{ap|8 to 24}}}}\n{{st|Bonus Armor|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' armor)}}}}\n{{st|Bonus Magic Resistance|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' magic resistance)}}}}",
+          "str": "<ul><li><span class=\"blue\">Flat Damage Reduction</span>: <span><spell-span :list=\"['8','12','16','20','24']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Armor</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 20% <b>bonus</b> armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                8,
+                12,
+                16,
+                20,
+                24
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_armor": 0.2
+              },
+              {
+                "player_bonus_mr": 0.2
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Resistance",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  8,
+                  12,
+                  16,
+                  20,
+                  24
+                ],
+                "player_bonus_armor": 0.2,
+                "player_bonus_mr": 0.2
+              },
+              "title": "Bonus Magic Resistance",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "LeonaZenithBlade",
-      "riotName": "Zenith Blade",
+      "riotId": "LeonaZenithBlade",
+      "name": "Zenith Blade",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        10.5,
+        9,
+        7.5,
+        6
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 875,
       "image": {
         "full": "LeonaZenithBlade.png",
         "sprite": "spell6.png",
@@ -198,53 +333,77 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Leona projects a solar image of her sword, dealing magic damage to all enemies in a line. When the image fades, the last enemy champion struck will be briefly immobilized and Leona will dash to them.",
-      "champion": "Leona",
-      "collision_radius": 35,
-      "cooldown": [
-        12,
-        10.5,
-        9,
-        7.5,
-        6
-      ],
-      "cooldownBurn": "12/10.5/9/7.5/6",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Leona''' projects a solar image of her sword, dealing {{as|magic damage}} to all enemies struck.",
         "If she damages an enemy champion, she will {{tip|dash}} to the last one struck and {{tip|root|root}} them for {{fd|0.5}} seconds."
       ],
-      "icon": [
-        "Zenith Blade.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60|100|140|180|220}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Zenith Blade",
-      "notes": [
-        "* ''Leona'' will automatically attempt to attack the target she dashes to.",
-        "* {{tip|Spell shield}} will block the damage but not the dash if being the last target hit."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 2000,
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "target_range": 875,
-      "targeting": "Direction"
+      "notes": "\n* ''Leona'' will automatically attempt to attack the target she dashes to.\n* {{tip|Spell shield}} will block the damage but not the dash if being the last target hit.",
+      "costBurn": "60",
+      "cooldownBurn": "12/10.5/9/7.5/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60|100|140|180|220}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "LeonaSolarFlare",
-      "riotName": "Solar Flare",
+      "riotId": "LeonaSolarFlare",
+      "name": "Solar Flare",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        90,
+        75,
+        60
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1200,
       "image": {
         "full": "LeonaSolarFlare.png",
         "sprite": "spell6.png",
@@ -254,44 +413,56 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Leona calls down a beam of solar energy, dealing damage to enemies in an area. Enemies in the center of the area are stunned, while enemies on the outside are slowed. Afterward, Leona's sword is charged with the power of the sun and deals bonus magic damage for a few attacks.",
-      "champion": "Leona",
-      "cooldown": [
-        90,
-        75,
-        60
-      ],
-      "cooldownBurn": "90/75/60",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Leona''' calls down a beam of solar energy to the target location after a {{fd|0.625}} second delay, dealing {{as|magic damage}} to all enemies it hits and {{tip|slow|slowing}} them by 80% for {{fd|1.5}} seconds.",
         "Enemies hit by the flare's center are instead {{tip|stun|stunned}} for the same duration."
       ],
-      "effect_radius": 250,
-      "icon": [
-        "Solar Flare.png"
-      ],
-      "inner_radius": 100,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100|175|250}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Solar Flare",
-      "notes": [
-        "* '''Solar Flare''' grants {{tip|sight}} in a 350 radius for the duration.",
-        "* Casting it to a location the enemy has no vision of (i.e [[bush]]) will not show any visual effect, but enemies around the area will still be affected."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "spelleffects": "aoe",
-      "spellshield": "Special",
-      "target_range": 1200,
-      "targeting": "Ground"
+      "notes": "\n* '''Solar Flare''' grants {{tip|sight}} in a 350 radius for the duration.\n* Casting it to a location the enemy has no vision of (i.e [[bush]]) will not show any visual effect, but enemies around the area will still be affected.",
+      "costBurn": "100",
+      "cooldownBurn": "90/75/60",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100|175|250}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                175,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  175,
+                  250
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

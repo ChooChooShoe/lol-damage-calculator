@@ -43,7 +43,7 @@ let all_champs = {};
 let files = fs.readdirSync(inpath);
 
 files.forEach((filename, i, array) => {
-    log.info("file ", filename)
+    log.info("file ", filename);
 
     try {
         let f = fs.readFileSync(inpath + filename);
@@ -138,44 +138,44 @@ function buildSkill(skilldata, riotSpell, is_passive, champ, model) {
         log.info("Name mismatch wikia: [" + skilldata.name + "] and riot: [" + riotSpell.name + "]");
 
 
-        if (!is_passive) {
-            let old_val = (skilldata.cost || '0').toString();
-            let value = old_val;
-            let list;
-    
-            if (value.includes('{{')){
-                list = burnify(value, skillout.maxrank);
-                value = list.join('/');
-            } else {
-                value = Number(old_val) || 0;
-                list = [value, value, value, value, value, value];
-                list.length = skillout.maxrank;
-            }
-            if (value != riotSpell['costBurn'])
-                log.warning(`cost is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cost']} burn ${riotSpell['costBurn']}`)
-    
-            skillout.costBurn = String(value);
-            skillout.cost = list;
+    if (!is_passive) {
+        let old_val = (skilldata.cost || '0').toString();
+        let value = old_val;
+        let list;
+
+        if (value.includes('{{')) {
+            list = burnify(value, skillout.maxrank);
+            value = list.join('/');
+        } else {
+            value = Number(old_val) || 0;
+            list = [value, value, value, value, value, value];
+            list.length = skillout.maxrank;
         }
-        if (!is_passive) {
-            let old_val = (skilldata.cooldown || '0').toString();
-            let value = old_val;
-            let list;
-    
-            if (value.includes('{{')){
-                list = burnify(value, skillout.maxrank);
-                value = list.join('/');
-            } else {
-                value = Number(old_val) || 0;
-                list = [value, value, value, value, value, value];
-                list.length = skillout.maxrank;
-            }
-            if (value != riotSpell['cooldownBurn'])
-                log.warning(`cooldown is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cooldown']} burn ${riotSpell['cooldownBurn']}`)
-    
-            skillout.cooldownBurn = String(value);
-            skillout.cooldown = list;
+        if (value != riotSpell['costBurn'])
+            log.warning(`cost is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cost']} burn ${riotSpell['costBurn']}`)
+
+        skillout.costBurn = String(value);
+        skillout.cost = list;
+    }
+    if (!is_passive) {
+        let old_val = (skilldata.cooldown || '0').toString();
+        let value = old_val;
+        let list;
+
+        if (value.includes('{{')) {
+            list = burnify(value, skillout.maxrank);
+            value = list.join('/');
+        } else {
+            value = Number(old_val) || 0;
+            list = [value, value, value, value, value, value];
+            list.length = skillout.maxrank;
         }
+        if (value != riotSpell['cooldownBurn'])
+            log.warning(`cooldown is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cooldown']} burn ${riotSpell['cooldownBurn']}`)
+
+        skillout.cooldownBurn = String(value);
+        skillout.cooldown = list;
+    }
 
     skillout.effects = [];
     for (let effectindex in skilldata.leveling) {
@@ -188,7 +188,7 @@ function buildSkill(skilldata, riotSpell, is_passive, champ, model) {
         if (x.vars.ap_progressions) {
             effect.subeffects = [];
             const subeffCount = x.vars.st_slices.length / 2;
-            const as_ratios_per = x.vars.as_ratios.length / subeffCount;
+            const as_ratios_per = x.vars.as_ratios ? (x.vars.as_ratios.length / subeffCount) : 0;
             for (let subindex = 0; subindex < subeffCount; subindex++) {
                 const subeff = {
                     index: subindex,
@@ -218,7 +218,7 @@ function buildSkill(skilldata, riotSpell, is_passive, champ, model) {
                 for (let ratio_index = 0; ratio_index < as_ratios_per; ratio_index++) {
                     for (const r in x.vars.as_ratios[ratio_index])
                         subeff.ratios[r] = x.vars.as_ratios[ratio_index][r];
-                    
+
                 }
                 effect.subeffects[subindex] = subeff;
             }
@@ -284,9 +284,14 @@ function burnify(param, forceRange, round) {
                 list.push(+(start + diff * i).toFixed(round));
             }
         } else {
-            let num = eval(p.replace(clean, ''));
-            if(!isNaN(num))
-                list.push(+parseFloat(num).toFixed(round));
+            try {
+
+                let num = eval(p.replace(clean, ''));
+                if (!isNaN(num))
+                    list.push(+parseFloat(num).toFixed(round));
+            } catch (msg) {
+                log.warning(msg);
+            }
         }
     }
     // from matchreplace.js

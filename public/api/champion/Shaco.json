@@ -1,16 +1,15 @@
 {
   "patch": "V0.9.25.34",
-  "changes": "9.11.1",
+  "changes": "9.18.1",
   "id": "Shaco",
   "key": "35",
   "name": "Shaco",
-  "fullname": "Shaco",
   "title": "the Demon Jester",
   "image": {
     "full": "Shaco.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 0,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "",
+  "rangetype": "Melee",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "physical",
@@ -30,69 +30,54 @@
     "magic": 6,
     "difficulty": 9
   },
-  "i_displayname": "Backstab",
-  "q_displayname": "Deceive",
-  "w_dispalyname": "Jack in the Box",
-  "e_dispalyname": "Two-Shiv Poison",
-  "r_dispalyname": "Hallucinate / Command Hallucinate",
-  "complex_skills": {
+  "stats": {
+    "hp": 587,
+    "hpperlevel": 89,
+    "mp": 297.2,
+    "mpperlevel": 40,
+    "movespeed": 350,
+    "armor": 30,
+    "armorperlevel": 3.5,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 8.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 7.156,
+    "mpregenperlevel": 0.45,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 66,
+    "attackdamageperlevel": 3.5,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.694
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Backstab",
+      "riotId": "",
+      "name": "Backstab",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Jester_CarefulStrikes.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Shaco's basic attack critically strikes for extra damage when striking a unit from behind. Units can't be Backstabbed more than once every few seconds, modified by Shaco's cooldown reduction.",
-      "champion": "Shaco",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} [[Basic attack]]ing an enemy from behind {{tip|critical strike|critically strikes}} for {{as|{{critical damage|30|100|melee}} AD}} {{as|(+ 40% AP)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}, increased to {{as|{{critical damage|100|melee}} AD}} {{as|(+ 40% AP)}} against [[monster]]s.",
         "''Backstab'' cannot happen on the same target more than once every few seconds."
       ],
-      "icon": [
-        "Backstab.png"
-      ],
-      "leveling": [],
-      "name": "Backstab",
-      "notes": [
-        "* No additional notes."
-      ],
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* No additional notes.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "Deceive",
-      "riotName": "Deceive",
+      "riotId": "Deceive",
+      "name": "Deceive",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "Deceive.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 384,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Shaco becomes Invisible and teleports to target location.",
-      "champion": "Shaco",
       "cooldown": [
         16,
         15.5,
@@ -100,134 +85,455 @@
         14.5,
         14
       ],
-      "cooldownBurn": "16/15.5/15/14.5/14",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
       ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 400,
+      "image": {
+        "full": "Deceive.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} After a {{fd|0.125}}-second delay, '''Shaco''' {{tip|blinks}}  to the target location, temporarily becoming {{tip|invisibility|invisible}} for a few seconds.",
         "After exiting invisibility, his next basic attack within {{fd|0.25}} seconds deals {{as|'''bonus''' physical damage}} and reduces ''Deceive's'' {{sti|cooldown}} by {{ap|2.5}} seconds.",
         "''Deceive's'' {{tip|invisibility}} is not removed when '''Shaco''' casts {{ai|Hallucinate|Shaco}}, while casting {{ai|Jack in the Box|Shaco}} causes him to shimmer without removing it."
       ],
-      "grounded": true,
-      "icon": [
-        "Deceive.png"
-      ],
-      "leveling": [
-        "{{st|Invisibility Duration|{{ap|1.5 to 4.5}}}}",
-        "{{st|Physical Damage|{{ap|10 to 50}} {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}"
-      ],
-      "name": "Deceive",
-      "notes": [
-        "''Deceive's'' cast animation (an orange puff of smoke) can be seen by both teams through [[Sight|fog of war]]."
-      ],
-      "projectile": "null",
-      "skill": "Q",
-      "target_range": 400,
-      "targeting": "Ground"
+      "notes": "''Deceive's'' cast animation (an orange puff of smoke) can be seen by both teams through [[Sight|fog of war]].",
+      "costBurn": "60",
+      "cooldownBurn": "16/15.5/15/14.5/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Invisibility Duration|{{ap|1.5 to 4.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Invisibility Duration</span>: <span><spell-span :list=\"['1.5','2.25','3','3.75','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.5,
+                2.25,
+                3,
+                3.75,
+                4.5
+              ]
+            ],
+            "st_slices": [
+              "Invisibility Duration",
+              "<spell-span :list=\"['1.5','2.25','3','3.75','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.5,
+                  2.25,
+                  3,
+                  3.75,
+                  4.5
+                ]
+              },
+              "title": "Invisibility Duration",
+              "str": "<spell-span :list=\"['1.5','2.25','3','3.75','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|10 to 50}} {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.4
+              },
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_bonus_ad": 0.4,
+                "player_total_ap": 0.3
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "JackInTheBox",
-      "riotName": "Jack In The Box",
+      "riotId": "JackInTheBox",
+      "name": "Jack in the Box",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        16,
+        16,
+        16,
+        16,
+        16
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 425,
       "image": {
         "full": "JackInTheBox.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 144,
+        "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Shaco creates a hidden animated Jack-in-the-Box. When triggered, it will fear and attack nearby enemies.",
-      "champion": "Shaco",
-      "cooldownBurn": "16",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "custominfo": 300,
-      "customlabel": "Detection Radius",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Shaco''' summons a ''Jack in the Box'' at the target location, lasting for up to 60 {{as|(+ 5% AP)}} seconds. The ''box'' arms after a 2 second delay, becoming {{tip|Stealthed trap|stealthed}}.",
         "Triggering the ''box'' will {{tip|stun|startle}} nearby enemies for {{fd|0.5}} seconds as well as cause them to turn and {{tip|flee}} for a duration, during which they have a static 100 {{sti|movement speed}}.",
         "Once triggered, the box will immediately start attacking nearby enemies, up to one at a time. Its attacks deal {{tip|magic damage|{{as|magic damage}}}}."
       ],
-      "icon": [
-        "Jack in the Box.png"
-      ],
-      "leveling": [
-        "{{st|Flee Duration|{{ap|0 to 1}}}}",
-        "{{st|Magic Damage|{{ap|35 to 95}} {{as|(+ 20% AP)}}}}"
-      ],
-      "name": "Jack in the Box",
-      "notes": [
-        "* The duration of the {{tip|flee}} starts at the beginning of the {{tip|root}}, meaning the initial 0.5 seconds of ''{{tip|Flee}}'' does not incur any movement. The {{tip|flee}} will still cause the {{tip|root|rooted}} target to turn around, however, which may have the appearance of moving slightly depending on the champion's model.",
-        "* ''Static movement speed'' cannot be modified (e.g. with [[slow resist]] or {{si|Ghost}}).",
-        "** This effect is negated only if the target is fully ''Slow Immune'' (ex:{{cai|Highlander|Master Yi}}, {{ci|Shadow Assassin|Kayn - Shadow Assassin's}} {{ai|Shadow Step A|Kayn|Shadow Step}}).",
-        "* {{tip|Spell shield}} will block the {{tip|flee}} but not the ''boxes' '' attacks."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "pet",
-      "spellshield": "Special",
-      "target_range": 425,
-      "targeting": "Ground"
+      "notes": "\n* The duration of the {{tip|flee}} starts at the beginning of the {{tip|root}}, meaning the initial 0.5 seconds of ''{{tip|Flee}}'' does not incur any movement. The {{tip|flee}} will still cause the {{tip|root|rooted}} target to turn around, however, which may have the appearance of moving slightly depending on the champion's model.\n* ''Static movement speed'' cannot be modified (e.g. with [[slow resist]] or {{si|Ghost}}).\n** This effect is negated only if the target is fully ''Slow Immune'' (ex:{{cai|Highlander|Master Yi}}, {{ci|Shadow Assassin|Kayn - Shadow Assassin's}} {{ai|Shadow Step A|Kayn|Shadow Step}}).\n* {{tip|Spell shield}} will block the {{tip|flee}} but not the ''boxes' '' attacks.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "16",
+      "effects": [
+        {
+          "levelingtext": "{{st|Flee Duration|{{ap|0 to 1}}}}",
+          "str": "<ul><li><span class=\"blue\">Flee Duration</span>: <span><spell-span :list=\"['0','0.25','0.5','0.75','1']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                0,
+                0.25,
+                0.5,
+                0.75,
+                1
+              ]
+            ],
+            "st_slices": [
+              "Flee Duration",
+              "<spell-span :list=\"['0','0.25','0.5','0.75','1']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1
+                ]
+              },
+              "title": "Flee Duration",
+              "str": "<spell-span :list=\"['0','0.25','0.5','0.75','1']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|35 to 95}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                35,
+                50,
+                65,
+                80,
+                95
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  35,
+                  50,
+                  65,
+                  80,
+                  95
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "TwoShivPoison",
-      "riotName": "Two-Shiv Poison",
+      "riotId": "TwoShivPoison",
+      "name": "Two-Shiv Poison",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "TwoShivPoison.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Shaco's Shivs passively poison targets on hit, slowing their movement speed. He can throw his Shivs to deal damage and poison the target. The thrown Shiv deals bonus damage based on the target's missing Health.",
-      "champion": "Shaco",
-      "cooldownBurn": "8",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Shaco's''' basic attacks {{tip|slow}} enemies for 2 seconds while ''Two-Shiv Poison'' is off [[cooldown]].",
         "{{sbc|Active:}} '''Shaco''' throws a dagger at the target enemy, {{tip|slow|slowing}} them for 3 seconds and dealing {{as|physical damage}}, increased by {{as|{{pp|11|type=target's '''missing''' health|key=%|0 to 50|key1=%|0 to 100|formula=0.5% per 1% of target's '''missing''' health}}|health}}."
       ],
-      "icon": [
-        "Two-Shiv Poison.png"
+      "notes": "\n* No additional details.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Slow|{{ap|20 to 30}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                22.5,
+                25,
+                27.5,
+                30
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  22.5,
+                  25,
+                  27.5,
+                  30
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|55 to 155}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|55*1.5 to 155*1.5}} {{as|(+ {{ap|60*1.5 to 120*1.5}}% '''bonus''' AD)}} {{as|(+ {{fd|112.5}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['82.5','120','157.5','195','232.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['90','112.5','135','157.5','180']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">112.5</span>% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                80,
+                105,
+                130,
+                155
+              ],
+              [
+                60,
+                75,
+                90,
+                105,
+                120
+              ],
+              [
+                82.5,
+                120,
+                157.5,
+                195,
+                232.5
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              },
+              {
+                "player_bonus_ad": [
+                  0.9,
+                  1.125,
+                  1.35,
+                  1.575,
+                  1.8
+                ]
+              },
+              {
+                "player_total_ap": 1.125
+              }
+            ],
+            "st_slices": [
+              "Minimum Physical Damage",
+              "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 75% AP)</span>",
+              "Maximum Damage",
+              "<spell-span :list=\"['82.5','120','157.5','195','232.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['90','112.5','135','157.5','180']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">112.5</span>% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  80,
+                  105,
+                  130,
+                  155
+                ],
+                "player_total_ap": 0.75,
+                "player_bonus_ad": [
+                  0.9,
+                  1.125,
+                  1.35,
+                  1.575,
+                  1.8
+                ]
+              },
+              "title": "Minimum Physical Damage",
+              "str": "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  75,
+                  90,
+                  105,
+                  120
+                ],
+                "player_total_ap": 0.75,
+                "player_bonus_ad": [
+                  0.9,
+                  1.125,
+                  1.35,
+                  1.575,
+                  1.8
+                ]
+              },
+              "title": "Maximum Damage",
+              "str": "<spell-span :list=\"['82.5','120','157.5','195','232.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['90','112.5','135','157.5','180']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">112.5</span>% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
+    },
+    "r2": {
+      "riotId": "HallucinateFull",
+      "name": "Hallucinate",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        0,
+        0
       ],
-      "leveling": [
-        "{{st|Slow|{{ap|20 to 30}}%}}",
-        "{{st|Minimum Physical Damage|{{ap|55 to 155}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|55*1.5 to 155*1.5}} {{as|(+ {{ap|60*1.5 to 120*1.5}}% '''bonus''' AD)}} {{as|(+ {{fd|112.5}}% AP)}}}}"
+      "cost": [
+        0,
+        0,
+        0
       ],
-      "name": "Two-Shiv Poison",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 625,
-      "targeting": "Unit"
+      "image": {
+        "full": "HallucinateFull.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [],
+      "notes": "",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 5
 }

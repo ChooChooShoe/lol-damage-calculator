@@ -117,571 +117,573 @@
     "attackspeedperlevel": 3.2,
     "attackspeed": 0.658
   },
-  "riot_spell_q": {
-    "id": "GangplankQWrapper",
-    "name": "Parrrley",
-    "description": "Shoots target, plundering Gold for each enemy unit killed.",
-    "tooltip": "Fires a bullet that deals {{ e1 }} (<span class=\"colorFF8C00\">+{{ a1 }}</span>) physical damage (can crit and applies on-hit effects).<br /><br />If Parrrley kills the target, Gangplank plunders <span class=\"colorFFDD00\">{{ e2 }}</span> bonus Gold and <span class=\"colorFFDD00\">{{ e5 }}</span> <span class=\"colorffd700\">Silver Serpents</span>. (Trade <span class=\"colorffd700\">Silver Serpents</span> at the shop to upgrade Cannon Barrage).<br /><br />",
-    "leveltip": {
-      "label": [
-        "Damage",
-        "Plunder Gold",
-        "Plunder Silver Serpents",
-        "Mana Cost"
+  "riot_spells": [
+    {
+      "id": "GangplankQWrapper",
+      "name": "Parrrley",
+      "description": "Shoots target, plundering Gold for each enemy unit killed.",
+      "tooltip": "Fires a bullet that deals {{ e1 }} (<span class=\"colorFF8C00\">+{{ a1 }}</span>) physical damage (can crit and applies on-hit effects).<br /><br />If Parrrley kills the target, Gangplank plunders <span class=\"colorFFDD00\">{{ e2 }}</span> bonus Gold and <span class=\"colorFFDD00\">{{ e5 }}</span> <span class=\"colorffd700\">Silver Serpents</span>. (Trade <span class=\"colorffd700\">Silver Serpents</span> at the shop to upgrade Cannon Barrage).<br /><br />",
+      "leveltip": {
+        "label": [
+          "Damage",
+          "Plunder Gold",
+          "Plunder Silver Serpents",
+          "Mana Cost"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ e2 }} -> {{ e2NL }}",
+          "{{ e5 }} -> {{ e5NL }}",
+          "{{ cost }} -> {{ costNL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
+        5,
+        5,
+        5,
+        5,
+        5
       ],
-      "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ e2 }} -> {{ e2NL }}",
-        "{{ e5 }} -> {{ e5NL }}",
-        "{{ cost }} -> {{ costNL }}"
-      ]
-    },
-    "maxrank": 5,
-    "cooldown": [
-      5,
-      5,
-      5,
-      5,
-      5
-    ],
-    "cooldownBurn": "5",
-    "cost": [
-      60,
-      55,
-      50,
-      45,
-      40
-    ],
-    "costBurn": "60/55/50/45/40",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        20,
+      "cooldownBurn": "5",
+      "cost": [
+        60,
+        55,
+        50,
         45,
-        70,
-        95,
+        40
+      ],
+      "costBurn": "60/55/50/45/40",
+      "datavalues": {},
+      "effect": [
+        null,
+        [
+          20,
+          45,
+          70,
+          95,
+          120
+        ],
+        [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          500,
+          500,
+          500,
+          500,
+          500
+        ],
+        [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "effectBurn": [
+        null,
+        "20/45/70/95/120",
+        "3/4/5/6/7",
+        "0",
+        "500",
+        "4/5/6/7/8",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "vars": [
+        {
+          "link": "attackdamage",
+          "coeff": 1,
+          "key": "a1"
+        }
+      ],
+      "costType": " Mana",
+      "maxammo": "-1",
+      "range": [
+        625,
+        625,
+        625,
+        625,
+        625
+      ],
+      "rangeBurn": "625",
+      "image": {
+        "full": "GangplankQWrapper.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
+    },
+    {
+      "id": "GangplankW",
+      "name": "Remove Scurvy",
+      "description": "Eats citrus to cure crowd control effects and restore Health.",
+      "tooltip": "Gangplank consumes a large quantity of citrus fruit, curing all disabling effects and healing him for {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> + <span class=\"colorCC3300\">{{ e2 }}% of his missing Health</span>.",
+      "leveltip": {
+        "label": [
+          "Healing",
+          "Cooldown",
+          "Mana Cost"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ cooldown }} -> {{ cooldownNL }}",
+          "{{ cost }} -> {{ costNL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
+        22,
+        20,
+        18,
+        16,
+        14
+      ],
+      "cooldownBurn": "22/20/18/16/14",
+      "cost": [
+        80,
+        90,
+        100,
+        110,
         120
       ],
-      [
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        500,
-        500,
-        500,
-        500,
-        500
-      ],
-      [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "20/45/70/95/120",
-      "3/4/5/6/7",
-      "0",
-      "500",
-      "4/5/6/7/8",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0"
-    ],
-    "vars": [
-      {
-        "link": "attackdamage",
-        "coeff": 1,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "-1",
-    "range": [
-      625,
-      625,
-      625,
-      625,
-      625
-    ],
-    "rangeBurn": "625",
-    "image": {
-      "full": "GangplankQWrapper.png",
-      "sprite": "spell3.png",
-      "group": "spell",
-      "x": 0,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_w": {
-    "id": "GangplankW",
-    "name": "Remove Scurvy",
-    "description": "Eats citrus to cure crowd control effects and restore Health.",
-    "tooltip": "Gangplank consumes a large quantity of citrus fruit, curing all disabling effects and healing him for {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> + <span class=\"colorCC3300\">{{ e2 }}% of his missing Health</span>.",
-    "leveltip": {
-      "label": [
-        "Healing",
-        "Cooldown",
-        "Mana Cost"
-      ],
+      "costBurn": "80/90/100/110/120",
+      "datavalues": {},
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}",
-        "{{ cost }} -> {{ costNL }}"
-      ]
+        null,
+        [
+          50,
+          75,
+          100,
+          125,
+          150
+        ],
+        [
+          15,
+          15,
+          15,
+          15,
+          15
+        ],
+        [
+          0.25,
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        [
+          200,
+          200,
+          200,
+          200,
+          200
+        ],
+        [
+          30,
+          40,
+          50,
+          60,
+          70
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "effectBurn": [
+        null,
+        "50/75/100/125/150",
+        "15",
+        "0.25",
+        "200",
+        "30/40/50/60/70",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.9,
+          "key": "a1"
+        }
+      ],
+      "costType": " Mana",
+      "maxammo": "-1",
+      "range": [
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "rangeBurn": "400",
+      "image": {
+        "full": "GangplankW.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 48,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
     },
-    "maxrank": 5,
-    "cooldown": [
-      22,
-      20,
-      18,
-      16,
-      14
-    ],
-    "cooldownBurn": "22/20/18/16/14",
-    "cost": [
-      80,
-      90,
-      100,
-      110,
-      120
-    ],
-    "costBurn": "80/90/100/110/120",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        50,
-        75,
-        100,
-        125,
-        150
-      ],
-      [
-        15,
-        15,
-        15,
-        15,
-        15
-      ],
-      [
-        0.25,
-        0.25,
-        0.25,
-        0.25,
-        0.25
-      ],
-      [
-        200,
-        200,
-        200,
-        200,
-        200
-      ],
-      [
-        30,
-        40,
-        50,
-        60,
-        70
-      ],
-      [
+    {
+      "id": "GangplankE",
+      "name": "Powder Keg",
+      "description": "Gangplank uncovers a powder keg at target location. If he attacks it, it explodes, spreading the attack's damage to enemies in the area, slowing them.",
+      "tooltip": "Places a powder keg that can be attacked by Gangplank or his enemies at a location for {{ e5 }} seconds.<br /><br />If Gangplank destroys a keg, it explodes dealing <span class=\"colorFF8C00\">the attack's damage</span> as physical damage (ignores {{ e0 }}% Armor) to enemies and slowing them by {{ e4 }}% for {{ e2 }} seconds. Champions take {{ e3 }} bonus physical damage from the explosion.<br /><br />When a keg explodes, other kegs with overlapping blast zones chain explode (damage does not stack).<br /><br />Kegs health decays every {{ f5 }} seconds. (Decay rate increases at level 7 and 13)<br /><br /><span class=\"colorffd700\">Keg explosions apply Parrrley's plunder effect.</span>",
+      "leveltip": {
+        "label": [
+          "Barrel Ammo Charge",
+          "Slow",
+          "Bonus Damage Against Champions"
+        ],
+        "effect": [
+          "{{ f2 }} -> {{ f3 }}",
+          "{{ e4 }}% -> {{ e4NL }}%",
+          "{{ e3 }} -> {{ e3NL }}"
+        ]
+      },
+      "maxrank": 5,
+      "cooldown": [
         0,
         0,
         0,
         0,
         0
       ],
-      [
+      "cooldownBurn": "0",
+      "cost": [
         0,
         0,
         0,
         0,
         0
       ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      [
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "50/75/100/125/150",
-      "15",
-      "0.25",
-      "200",
-      "30/40/50/60/70",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.9,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "-1",
-    "range": [
-      400,
-      400,
-      400,
-      400,
-      400
-    ],
-    "rangeBurn": "400",
-    "image": {
-      "full": "GangplankW.png",
-      "sprite": "spell3.png",
-      "group": "spell",
-      "x": 48,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_e": {
-    "id": "GangplankE",
-    "name": "Powder Keg",
-    "description": "Gangplank uncovers a powder keg at target location. If he attacks it, it explodes, spreading the attack's damage to enemies in the area, slowing them.",
-    "tooltip": "Places a powder keg that can be attacked by Gangplank or his enemies at a location for {{ e5 }} seconds.<br /><br />If Gangplank destroys a keg, it explodes dealing <span class=\"colorFF8C00\">the attack's damage</span> as physical damage (ignores {{ e0 }}% Armor) to enemies and slowing them by {{ e4 }}% for {{ e2 }} seconds. Champions take {{ e3 }} bonus physical damage from the explosion.<br /><br />When a keg explodes, other kegs with overlapping blast zones chain explode (damage does not stack).<br /><br />Kegs health decays every {{ f5 }} seconds. (Decay rate increases at level 7 and 13)<br /><br /><span class=\"colorffd700\">Keg explosions apply Parrrley's plunder effect.</span>",
-    "leveltip": {
-      "label": [
-        "Barrel Ammo Charge",
-        "Slow",
-        "Bonus Damage Against Champions"
-      ],
+      "costBurn": "0",
+      "datavalues": {},
       "effect": [
-        "{{ f2 }} -> {{ f3 }}",
-        "{{ e4 }}% -> {{ e4NL }}%",
-        "{{ e3 }} -> {{ e3NL }}"
-      ]
+        null,
+        [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          80,
+          105,
+          130,
+          155,
+          180
+        ],
+        [
+          40,
+          50,
+          60,
+          70,
+          80
+        ],
+        [
+          25,
+          25,
+          25,
+          25,
+          25
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          40,
+          40,
+          40,
+          40,
+          40
+        ]
+      ],
+      "effectBurn": [
+        null,
+        "3",
+        "2",
+        "80/105/130/155/180",
+        "40/50/60/70/80",
+        "25",
+        "2",
+        "10",
+        "100",
+        "0.5",
+        "40"
+      ],
+      "vars": [],
+      "costType": "No Cost",
+      "maxammo": "3",
+      "range": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "rangeBurn": "1000",
+      "image": {
+        "full": "GangplankE.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "No Cost"
     },
-    "maxrank": 5,
-    "cooldown": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "cooldownBurn": "0",
-    "cost": [
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "costBurn": "0",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        3,
-        3,
-        3,
-        3,
-        3
+    {
+      "id": "GangplankR",
+      "name": "Cannon Barrage",
+      "description": "Gangplank signals his ship to bombard an area, slowing and damaging enemies.",
+      "tooltip": "Signals Gangplank's ship to fire {{ f3 }} waves of cannonballs at an area over {{ e3 }} seconds. Each wave deals {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage and slows enemies by {{ e2 }}% for {{ e6 }} seconds.<br /><br /><span class=\"colorffd700\">Collect Silver Serpents with Parrrley to upgrade in the shop.</span>",
+      "leveltip": {
+        "label": [
+          "Damage Per Wave",
+          "Cooldown"
+        ],
+        "effect": [
+          "{{ e1 }} -> {{ e1NL }}",
+          "{{ cooldown }} -> {{ cooldownNL }}"
+        ]
+      },
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        160,
+        140
       ],
-      [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      [
-        80,
-        105,
-        130,
-        155,
-        180
-      ],
-      [
-        40,
-        50,
-        60,
-        70,
-        80
-      ],
-      [
-        25,
-        25,
-        25,
-        25,
-        25
-      ],
-      [
-        2,
-        2,
-        2,
-        2,
-        2
-      ],
-      [
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      [
-        100,
-        100,
+      "cooldownBurn": "180/160/140",
+      "cost": [
         100,
         100,
         100
       ],
-      [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        40,
-        40,
-        40,
-        40,
-        40
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "3",
-      "2",
-      "80/105/130/155/180",
-      "40/50/60/70/80",
-      "25",
-      "2",
-      "10",
-      "100",
-      "0.5",
-      "40"
-    ],
-    "vars": [],
-    "costType": "No Cost",
-    "maxammo": "3",
-    "range": [
-      1000,
-      1000,
-      1000,
-      1000,
-      1000
-    ],
-    "rangeBurn": "1000",
-    "image": {
-      "full": "GangplankE.png",
-      "sprite": "spell3.png",
-      "group": "spell",
-      "x": 96,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "No Cost"
-  },
-  "riot_spell_r": {
-    "id": "GangplankR",
-    "name": "Cannon Barrage",
-    "description": "Gangplank signals his ship to bombard an area, slowing and damaging enemies.",
-    "tooltip": "Signals Gangplank's ship to fire {{ f3 }} waves of cannonballs at an area over {{ e3 }} seconds. Each wave deals {{ e1 }} <span class=\"color99FF99\">(+{{ a1 }})</span> magic damage and slows enemies by {{ e2 }}% for {{ e6 }} seconds.<br /><br /><span class=\"colorffd700\">Collect Silver Serpents with Parrrley to upgrade in the shop.</span>",
-    "leveltip": {
-      "label": [
-        "Damage Per Wave",
-        "Cooldown"
-      ],
+      "costBurn": "100",
+      "datavalues": {},
       "effect": [
-        "{{ e1 }} -> {{ e1NL }}",
-        "{{ cooldown }} -> {{ cooldownNL }}"
-      ]
-    },
-    "maxrank": 3,
-    "cooldown": [
-      180,
-      160,
-      140
-    ],
-    "cooldownBurn": "180/160/140",
-    "cost": [
-      100,
-      100,
-      100
-    ],
-    "costBurn": "100",
-    "datavalues": {},
-    "effect": [
-      null,
-      [
-        40,
-        70,
-        100
+        null,
+        [
+          40,
+          70,
+          100
+        ],
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          8,
+          8,
+          8
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          1.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          300,
+          300,
+          300
+        ],
+        [
+          60,
+          60,
+          60
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          30,
+          30,
+          30
+        ]
       ],
-      [
-        30,
-        30,
-        30
+      "effectBurn": [
+        null,
+        "40/70/100",
+        "30",
+        "8",
+        "2",
+        "1.5/0.5/0.5",
+        "0.5",
+        "300",
+        "60",
+        "1",
+        "30"
       ],
-      [
-        8,
-        8,
-        8
+      "vars": [
+        {
+          "link": "spelldamage",
+          "coeff": 0.1,
+          "key": "a1"
+        }
       ],
-      [
-        2,
-        2,
-        2
+      "costType": " Mana",
+      "maxammo": "-1",
+      "range": [
+        30000,
+        30000,
+        30000
       ],
-      [
-        1.5,
-        0.5,
-        0.5
-      ],
-      [
-        0.5,
-        0.5,
-        0.5
-      ],
-      [
-        300,
-        300,
-        300
-      ],
-      [
-        60,
-        60,
-        60
-      ],
-      [
-        1,
-        1,
-        1
-      ],
-      [
-        30,
-        30,
-        30
-      ]
-    ],
-    "effectBurn": [
-      null,
-      "40/70/100",
-      "30",
-      "8",
-      "2",
-      "1.5/0.5/0.5",
-      "0.5",
-      "300",
-      "60",
-      "1",
-      "30"
-    ],
-    "vars": [
-      {
-        "link": "spelldamage",
-        "coeff": 0.1,
-        "key": "a1"
-      }
-    ],
-    "costType": " Mana",
-    "maxammo": "-1",
-    "range": [
-      30000,
-      30000,
-      30000
-    ],
-    "rangeBurn": "30000",
-    "image": {
-      "full": "GangplankR.png",
-      "sprite": "spell3.png",
-      "group": "spell",
-      "x": 144,
-      "y": 96,
-      "w": 48,
-      "h": 48
-    },
-    "resource": "{{ cost }} Mana"
-  },
-  "riot_spell_i": {
+      "rangeBurn": "30000",
+      "image": {
+        "full": "GangplankR.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "resource": "{{ cost }} Mana"
+    }
+  ],
+  "riot_passive": {
     "name": "Trial by Fire",
     "description": "Every few seconds, Gangplank's melee strike will set his opponent on fire.",
     "image": {
@@ -2654,132 +2656,145 @@
     "skill_e": "Powder Keg",
     "skill_r": "Cannon Barrage"
   },
-  "wikia_skill_i1": {
-    "name": "Trial by Fire",
-    "champion": "Gangplank",
-    "skill": "I",
-    "icon": "Trial by Fire.png",
-    "icon2": "Trial by Fire 2.png",
-    "blurb": "Every few seconds, Gangplank's melee strike will set his opponent on fire.",
-    "description": "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing {{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds, ticking every {{fd|0.25}} seconds. {{tip|turret|Turrets}} receive 50% reduced damage.",
-    "description2": "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Destroying a {{ai|Powder Keg|Gangplank}} resets ''Trial by Fire'' and grants its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
-    "description3": "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} or {{ai|Powder Keg|Gangplank}}.",
-    "static": 15,
-    "targeting": "Passive",
-    "affects": "Self, Enemies",
-    "damagetype": true,
-    "spellshield": false,
-    "spelleffects": "",
-    "projectile": "",
-    "grounded": "",
-    "knockdown": "",
-    "notes": "\n* No additional details."
-  },
-  "wikia_skill_q1": {
-    "name": "Parrrley",
-    "champion": "Gangplank",
-    "skill": "Q",
-    "icon": "Parrrley.png",
-    "blurb": "Shoots target, plundering Gold for each enemy unit killed.",
-    "description": "{{sbc|Active:}} '''Gangplank''' shoots the target enemy with his pistol, dealing {{tip|physical damage|{{as|physical damage}}}} and applying [[on-hit effects]].",
-    "leveling": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
-    "description2": "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' physical damage}}.",
-    "icon3": "Silver Serpents.png",
-    "description3": "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}.",
-    "leveling3": "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}",
-    "target_range": 625,
-    "cooldown": 5,
-    "cost": "{{ap|60 to 40}}",
-    "costtype": "Mana",
-    "targeting": "Unit",
-    "affects": "Enemies, Self",
-    "damagetype": "Physical",
-    "spellshield": true,
-    "spelleffects": "Single target",
-    "projectile": true,
-    "parry": true,
-    "onhiteffects": true,
-    "callforhelp": true,
-    "grounded": "",
-    "knockdown": "",
-    "notes": "\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ais|Powder Keg|Gangplank}} when activated by ''Parrrley''.\n* ''Parrrley'' doesn't count as a basic attack for {{ii|Guinsoo's Rageblade}}."
-  },
-  "wikia_skill_w1": {
-    "name": "Remove Scurvy",
-    "champion": "Gangplank",
-    "skill": "W",
-    "icon": "Remove Scurvy.png",
-    "blurb": "Eats citrus to cure crowd control effects and restore Health.",
-    "description": "{{sbc|Active:}} '''Gangplank''' consumes a large quantity of citrus fruit, removing all [[crowd control]] affecting him and {{tip|heal|healing}} himself.",
-    "leveling": "{{st|Heal|{{ap|50 to 150}} {{as|(+ 90% AP)}} {{as|(+ 15% '''missing''' health)}}}}",
-    "cooldown": "{{ap|22 to 14}}",
-    "cost": "{{ap|80 to 120}}",
-    "costtype": "Mana",
-    "targeting": "None",
-    "affects": "Self",
-    "damagetype": "",
-    "spellshield": "",
-    "spelleffects": "Heal",
-    "projectile": "",
-    "grounded": "",
-    "knockdown": "",
-    "notes": "\n* ''Remove Scurvy'' only removes crowd control debuffs, so it cannot remove:\n** {{sis|Ignite}} damage over time\n** {{sis|Exhaust}} damage reduction\n** {{tip|Airborne}} crowd control effects (pull, knockback, knockup...)\n** {{ai|Malefic Visions|Malzahar}}\n*** Yet it is one of the few abilities that can remove {{tip|suppression}}.\n**** {{ai|Nether Grasp|Malzahar}} and {{ai|Infinite Duress|Warwick}} will still damage '''Gangplank''' even if he moves away."
-  },
-  "wikia_skill_e1": {
-    "name": "Powder Keg",
-    "champion": "Gangplank",
-    "skill": "E",
-    "icon": "Powder Keg.png",
-    "blurb": "Gangplank uncovers a powder keg at target location. If he attacks it, it explodes, spreading the attack's damage to enemies in the area, slowing them.",
-    "description": "{{sbc|Passive:}} '''Gangplank''' stores a charge of ''Powder Keg'' periodically, up to a maximum of 3 stored at once.",
-    "description2": "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs''.",
-    "description3": "'''Gangplank''' and his enemies can attack the ''Powder Keg'' with their basic attacks, dealing 1 damage per hit. '''Gangplank''' may also shoot the barrel with ''Parrrley''. If '''Gangplank''' scores the killing blow, it explodes, also triggering a chain reaction that explodes nearby connected ''kegs''. If killed by an enemy, the ''keg'' is safely dismantled.",
-    "description4": "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against champions, ignoring {{as|40% of their armor}}, as well as {{tip|slow|slowing}} them for 2 seconds. Enemies can only be damaged once.",
-    "leveling4": "{{st|Bonus Physical Damage|{{ap|80 to 180}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
-    "target_range": 1000,
-    "cost": 1,
-    "costtype": "Charge",
-    "recharge": "{{ap|18 to 10}}",
-    "targeting": "Ground",
-    "affects": "Enemies",
-    "damagetype": "Physical",
-    "spellshield": true,
-    "spelleffects": "Area of effect",
-    "projectile": false,
-    "grounded": "",
-    "knockdown": "",
-    "notes": "\n* Placed barrels do '''not''' grant {{tip|sight|vision}}.\n* An exploding ''Powder Keg'' will splash {{ai|Parrrley|Gangplank}} bonus damage, and will also be modified if the attack critically strikes.\n* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from runes or items, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{ii|Sheen}} (and its upgrades) will be splashed to all targets.\n* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.\n* As of [[V7.22]], enemies hit by ''Powder Keg's'' damage will be subject to [[ability effects]]."
-  },
-  "wikia_skill_r1": {
-    "name": "Cannon Barrage",
-    "champion": "Gangplank",
-    "skill": "R",
-    "icon": "Cannon Barrage.png",
-    "blurb": "Gangplank signals his ship to bombard an area, slowing and damaging enemies.",
-    "description": "{{sbc|Active:}} '''Gangplank''' signals his ship off-shore to fire upon the target area for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and {{tip|sight|revealing}} it for the duration. Each wave deals {{tip|magic damage|{{as|magic damage}}}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
-    "description2": "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
-    "leveling2": "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
-    "icon3": "Death's Daughter item.png",
-    "description3": "{{sbc|{{ii|Death's Daughter}}:}} An initial cannonball lands in the center of the barrage, dealing a cluster's worth of {{as|true damage}} to all enemies it hits and {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.",
-    "icon4": "Raise Morale item.png",
-    "description4": "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
-    "icon5": "Fire at Will item.png",
-    "description5": "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration.",
-    "leveling3": "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}",
-    "target_range": "Global",
-    "effect_radius": 600,
-    "inner_radius": 200,
-    "cooldown": "{{ap|180 to 140}}",
-    "cost": 100,
-    "costtype": "Mana",
-    "targeting": "Ground",
-    "affects": "Enemies",
-    "damagetype": "Physical",
-    "spellshield": true,
-    "spelleffects": "Area of effect",
-    "projectile": "",
-    "grounded": "",
-    "knockdown": "",
-    "notes": "\n* ''Cannon Barrage's'' slow lingers for 0.25 seconds after affected enemies leave the target area."
+  "skills": {
+    "i2": {
+      "name": "Trial by Fire",
+      "champion": "Gangplank",
+      "skill": "I",
+      "icon": "Trial by Fire.png",
+      "icon2": "Trial by Fire 2.png",
+      "blurb": "Every few seconds, Gangplank's melee strike will set his opponent on fire.",
+      "description": "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing {{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds, ticking every {{fd|0.25}} seconds. {{tip|turret|Turrets}} receive 50% reduced damage.",
+      "description2": "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Destroying a {{ai|Powder Keg|Gangplank}} resets ''Trial by Fire'' and grants its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
+      "description3": "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} or {{ai|Powder Keg|Gangplank}}.",
+      "static": 15,
+      "targeting": "Passive",
+      "affects": "Self, Enemies",
+      "damagetype": true,
+      "spellshield": false,
+      "spelleffects": "",
+      "projectile": "",
+      "grounded": "",
+      "knockdown": "",
+      "notes": "\n* Unlike most [[damage over time]] debuffs, reapplying ''Trial by Fire'' before a previous application has run out will stack the full damage, instead of just refreshing the duration.",
+      "skillkey": "I",
+      "skillid": "i2"
+    },
+    "q1": {
+      "name": "Parrrley",
+      "champion": "Gangplank",
+      "skill": "Q",
+      "icon": "Parrrley.png",
+      "blurb": "Shoots target, plundering Gold for each enemy unit killed.",
+      "description": "{{sbc|Active:}} '''Gangplank''' shoots the target enemy with his pistol, dealing {{tip|physical damage|{{as|physical damage}}}} and applying [[on-hit effects]].",
+      "leveling": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
+      "description2": "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' physical damage}}.",
+      "icon3": "Silver Serpents.png",
+      "description3": "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}.",
+      "leveling3": "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}",
+      "target_range": 625,
+      "cooldown": 5,
+      "cost": "{{ap|60 to 40}}",
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "affects": "Enemies, Self",
+      "damagetype": "Physical",
+      "spellshield": true,
+      "spelleffects": "Single target",
+      "projectile": true,
+      "parry": true,
+      "onhiteffects": true,
+      "callforhelp": true,
+      "grounded": "",
+      "knockdown": "",
+      "notes": "\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ais|Powder Keg|Gangplank}} when activated by ''Parrrley''.\n* ''Parrrley'' doesn't count as a basic attack for {{ii|Guinsoo's Rageblade}}.",
+      "skillkey": "Q",
+      "skillid": "q1"
+    },
+    "w1": {
+      "name": "Remove Scurvy",
+      "champion": "Gangplank",
+      "skill": "W",
+      "icon": "Remove Scurvy.png",
+      "blurb": "Eats citrus to cure crowd control effects and restore Health.",
+      "description": "{{sbc|Active:}} '''Gangplank''' consumes a large quantity of citrus fruit, {{tip|cleanse|cleansing}} himself from all {{tip|crowd control}} and {{tip|heal|healing}} himself.",
+      "leveling": "{{st|Heal|{{ap|50 to 150}} {{as|(+ 90% AP)}} {{as|(+ 15% '''missing''' health)}}}}",
+      "cooldown": "{{ap|22 to 14}}",
+      "cost": "{{ap|80 to 120}}",
+      "costtype": "Mana",
+      "targeting": "None",
+      "affects": "Self",
+      "damagetype": "",
+      "spellshield": "",
+      "spelleffects": "Heal",
+      "projectile": "",
+      "grounded": "",
+      "knockdown": "",
+      "notes": "\n* ''Remove Scurvy'' only removes crowd control debuffs, so it cannot remove:\n** {{sis|Ignite}} damage over time\n** {{sis|Exhaust}} damage reduction\n** {{tip|Airborne}} crowd control effects (pull, knockback, knockup...)\n** {{ai|Malefic Visions|Malzahar}}\n*** Yet it is one of the few abilities that can remove {{tip|suppression}}.\n**** {{ai|Nether Grasp|Malzahar}} and {{ai|Infinite Duress|Warwick}} will still damage '''Gangplank''' even if he moves away.",
+      "skillkey": "W",
+      "skillid": "w1"
+    },
+    "e1": {
+      "name": "Powder Keg",
+      "champion": "Gangplank",
+      "skill": "E",
+      "icon": "Powder Keg.png",
+      "blurb": "Gangplank uncovers a powder keg at target location. If he attacks it, it explodes, spreading the attack's damage to enemies in the area, slowing them.",
+      "description": "{{sbc|Passive:}} '''Gangplank''' periodically [[stocks]] a ''Powder Keg'', up to a maximum of 3.",
+      "description2": "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs'' with overlapping explosion radii.",
+      "description3": "'''Gangplank''' and his enemies can attack the ''Powder Keg'' with basic attacks, dealing 1 damage per hit. '''Gangplank''' may also shoot the barrel with ''Parrrley''. If '''Gangplank''' scores the killing blow, it explodes, also triggering a chain reaction that explodes nearby connected ''kegs''. If killed by an enemy, the ''keg'' is safely dismantled.",
+      "description4": "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against {{tip|champions}}, ignoring {{as|40% of their armor}}, as well as {{tip|slowing}} them for 2 seconds. Enemies can only be damaged once per chain.",
+      "leveling4": "{{st|Bonus Physical Damage|{{ap|80 to 180}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
+      "target_range": 1000,
+      "effect_radius": 325,
+      "cost": 1,
+      "costtype": "Charge",
+      "recharge": "{{ap|18 to 10}}",
+      "targeting": "Ground",
+      "affects": "Enemies",
+      "damagetype": "Physical",
+      "spellshield": true,
+      "spelleffects": "Area of effect",
+      "projectile": false,
+      "grounded": "",
+      "knockdown": "",
+      "notes": "\n* Placed barrels do '''not''' grant {{tip|sight|vision}}.\n* An exploding ''Powder Keg'' will splash {{ai|Parrrley|Gangplank}} bonus damage, and will also be modified if the attack critically strikes.\n* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from runes or items, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{ii|Sheen}} (and its upgrades) will be splashed to all targets.\n* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.\n* As of [[V7.22]], enemies hit by ''Powder Keg's'' damage will be subject to [[ability effects]].",
+      "skillkey": "E",
+      "skillid": "e1"
+    },
+    "r1": {
+      "name": "Cannon Barrage",
+      "champion": "Gangplank",
+      "skill": "R",
+      "icon": "Cannon Barrage.png",
+      "blurb": "Gangplank signals his ship to bombard an area, slowing and damaging enemies.",
+      "description": "{{sbc|Active:}} '''Gangplank''' signals his ship off-shore to fire upon the target area for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and {{tip|sight|revealing}} it for the duration. Each wave deals {{tip|magic damage|{{as|magic damage}}}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
+      "description2": "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
+      "leveling2": "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
+      "icon3": "Death's Daughter item.png",
+      "description3": "{{sbc|{{ii|Death's Daughter}}:}} An initial cannonball lands in the center of the barrage, dealing a cluster's worth of {{as|true damage}} to all enemies it hits and {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.",
+      "icon4": "Raise Morale item.png",
+      "description4": "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
+      "icon5": "Fire at Will item.png",
+      "description5": "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration.",
+      "leveling3": "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}",
+      "target_range": "Global",
+      "effect_radius": 600,
+      "inner_radius": 200,
+      "cooldown": "{{ap|180 to 140}}",
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "affects": "Enemies",
+      "damagetype": "Physical",
+      "spellshield": true,
+      "spelleffects": "Area of effect",
+      "projectile": "",
+      "grounded": "",
+      "knockdown": "",
+      "notes": "\n* ''Cannon Barrage's'' slow lingers for 0.25 seconds after affected enemies leave the target area.",
+      "skillkey": "R",
+      "skillid": "r1"
+    }
   }
 }

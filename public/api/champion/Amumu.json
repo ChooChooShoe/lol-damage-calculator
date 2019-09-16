@@ -4,7 +4,6 @@
   "id": "Amumu",
   "key": "32",
   "name": "Amumu",
-  "fullname": "Amumu",
   "title": "the Sad Mummy",
   "image": {
     "full": "Amumu.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Mage",
+  "rangetype": "Melee",
   "be_cost": 450,
   "rp_cost": 260,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 8,
     "difficulty": 3
   },
-  "i_displayname": "Cursed Touch",
-  "q_displayname": "Bandage Toss",
-  "w_dispalyname": "Despair",
-  "e_dispalyname": "Tantrum",
-  "r_dispalyname": "Curse of the Sad Mummy",
-  "complex_skills": {
+  "stats": {
+    "hp": 613.12,
+    "hpperlevel": 84,
+    "mp": 287.2,
+    "mpperlevel": 40,
+    "movespeed": 335,
+    "armor": 33,
+    "armorperlevel": 3.8,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 9,
+    "hpregenperlevel": 0.85,
+    "mpregen": 7.382,
+    "mpregenperlevel": 0.525,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53.38,
+    "attackdamageperlevel": 3.8,
+    "attackspeedperlevel": 2.18,
+    "attackspeed": 0.736
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Cursed Touch",
+      "riotId": "",
+      "name": "Cursed Touch",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Amumu_Passive.png",
         "sprite": "passive0.png",
@@ -49,40 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Amumu's basic attacks Curse enemies for 3 seconds, causing them to take 10% bonus true damage from any magic damage dealt to them.",
-      "champion": "Amumu",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "true",
-      "damageTypes": [
-        "true"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Amumu's''' basic attacks and {{ai|Curse of the Sad Mummy|Amumu}} apply a {{as|Curse|buzzword}} for 3 seconds, refreshing with each subsequent basic attack.",
         "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|10% '''bonus''' true damage}}}} from all incoming {{as|magic damage}}, calculated before {{sti|{{as|magic resistance}}}} reduction."
       ],
-      "icon": [
-        "Cursed Touch.png"
-      ],
-      "leveling": [],
-      "name": "Cursed Touch",
-      "notes": [
-        "* ''Cursed Touch'' will not apply if the basic attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Riposte|Fiora|parried}}, or if the attack {{tip|blind|misses}}.",
-        "* If '''Amumu''' has on-hit magic damage, the bonus true damage will be applied even against non-Cursed targets, as the Curse applies before the magic damage."
-      ],
-      "parry": true,
-      "projectile": "true",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* If '''Amumu''' has on-hit magic damage, the bonus true damage will be applied even against non-Cursed targets, as the Curse applies before the magic damage.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "BandageToss",
-      "riotName": "Bandage Toss",
+      "riotId": "BandageToss",
+      "name": "Bandage Toss",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 1100,
       "image": {
         "full": "BandageToss.png",
         "sprite": "spell0.png",
@@ -92,59 +105,79 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self",
-      "blurb": "Amumu tosses a sticky bandage at a target, stunning and damaging the target while he pulls himself to them.",
-      "champion": "Amumu",
-      "cooldown": [
-        12,
-        11,
-        10,
-        9,
-        8
-      ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Amumu''' tosses a bandage in the target direction that {{tip|stun|stuns}} the first enemy it hits for 1 second, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|dash|pulling}} him to their location."
       ],
-      "grounded": true,
-      "icon": [
-        "Bandage Toss.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Bandage Toss",
-      "notes": [
-        "* ''Bandage Toss'' follows his target for up to 2000 units from where he cast ''Bandage Toss'', in case targets get out of the stun before he arrives.",
-        "* ''Bandage Toss'' cannot be cast while '''Amumu''' is {{tip|root|rooted}}.",
-        "* Crowd control effects will not prevent '''Amumu''' from dashing if they hit him before the skill shot hits. However, the duration of the crowd control can persist the duration of the dash.",
-        "* While '''Amumu''' is mid-dash, only knock-abouts crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.",
-        "* ''Bandage Toss'' can hit stealthed targets.",
-        "* ''Bandage Toss'' does not fizzle on '''Amumu's''' death, and it can still stun and damage enemies.",
-        "* '''Amumu''' is still able to dash even if ''Bandage Toss'' is blocked by [[spell shield]]s.",
-        "* The projectile does not interrupt '''Amumu's''' orders and will adjust its direction based on '''Amumu's''' position."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 2000,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1100,
-      "targeting": "Direction"
+      "notes": "\n* ''Bandage Toss'' follows his target for up to 2000 units from where he cast ''Bandage Toss'', in case targets get out of the stun before he arrives.\n* ''Bandage Toss'' cannot be cast while '''Amumu''' is {{tip|root|rooted}}.\n* Crowd control effects will not prevent '''Amumu''' from dashing if they hit him before the skill shot hits. However, the duration of the crowd control can persist the duration of the dash.\n* While '''Amumu''' is mid-dash, only knock-abouts crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.\n* ''Bandage Toss'' can hit stealthed targets.\n* ''Bandage Toss'' does not fizzle on '''Amumu's''' death, and it can still stun and damage enemies.\n* '''Amumu''' is still able to dash even if ''Bandage Toss'' is blocked by [[spell shield]]s.\n* The projectile does not interrupt '''Amumu's''' orders and will adjust its direction based on '''Amumu's''' position.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                130,
+                180,
+                230,
+                280
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  130,
+                  180,
+                  230,
+                  280
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "AuraofDespair",
-      "riotName": "Despair",
+      "riotId": "AuraofDespair",
+      "name": "Despair",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "cost": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "costtype": "mana per second",
+      "targeting": "None",
       "image": {
         "full": "AuraofDespair.png",
         "sprite": "spell0.png",
@@ -154,44 +187,96 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Overcome by anguish, nearby enemies lose a percentage of their maximum Health each second and have their Curses refreshed.",
-      "champion": "Amumu",
-      "cooldownBurn": "1",
-      "costBurn": "8",
-      "costtype": "mana per second",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Toggle:}} '''Amumu''' cries a continuous pool of tears, refreshing {{as|Curse|buzzword}} for 3 seconds and dealing {{as|magic damage}} every half second to nearby enemies."
       ],
-      "effect_radius": 300,
-      "icon": [
-        "Despair.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
-      ],
-      "name": "Despair",
-      "notes": [
-        "* ''Despair'' has a minimum duration of 1 second.",
-        "* Despite the rounding in ''Despair's'' tooltip, it will do increased damage for every point of {{tt|ability power|+0.005% per 1 AP}}.",
-        "* ''Despair'' cannot be toggled-off while [[crowd control|unable to activate abilities]].",
-        "* Toggled abilities do not count as ability activation for the purposes of effects such as {{nie|Spellblade}} or {{ai|Force Pulse|Kassadin}}."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "DoT",
-      "targeting": "None"
+      "notes": "\n* ''Despair'' has a minimum duration of 1 second.\n* Despite the rounding in ''Despair's'' tooltip, it will do increased damage for every point of {{tt|ability power|+0.005% per 1 AP}}.\n* ''Despair'' cannot be toggled-off while [[crowd control|unable to activate abilities]].\n* Toggled abilities do not count as ability activation for the purposes of effects such as {{nie|Spellblade}} or {{ai|Force Pulse|Kassadin}}.",
+      "costBurn": "8",
+      "cooldownBurn": "1",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['0.5','0.625','0.75','0.875','1']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                7.5,
+                10,
+                12.5,
+                15
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.0051
+              },
+              {
+                "target_total_ap": [
+                  0.005,
+                  0.00625,
+                  0.0075,
+                  0.00875,
+                  0.01
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Half Second",
+              "<spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['0.5','0.625','0.75','0.875','1']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  5,
+                  7.5,
+                  10,
+                  12.5,
+                  15
+                ],
+                "player_total_ap": 0.0051,
+                "target_total_ap": [
+                  0.005,
+                  0.00625,
+                  0.0075,
+                  0.00875,
+                  0.01
+                ]
+              },
+              "title": "Magic Damage Per Half Second",
+              "str": "<spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['0.5','0.625','0.75','0.875','1']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "Tantrum",
-      "riotName": "Tantrum",
+      "riotId": "Tantrum",
+      "name": "Tantrum",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        9,
+        8,
+        7,
+        6
+      ],
+      "cost": [
+        35,
+        35,
+        35,
+        35,
+        35
+      ],
+      "costtype": "mana",
+      "targeting": "None",
       "image": {
         "full": "Tantrum.png",
         "sprite": "spell0.png",
@@ -201,53 +286,125 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self",
-      "blurb": "Permanently reduces the physical damage Amumu would take. Amumu can unleash his rage, dealing damage to surrounding enemies. Each time Amumu is hit, the cooldown on Tantrum is reduced by 0.5 seconds.",
-      "champion": "Amumu",
-      "cooldown": [
-        10,
-        9,
-        8,
-        7,
-        6
-      ],
-      "cooldownBurn": "10/9/8/7/6",
-      "costBurn": "35",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Amumu''' takes reduced post-mitigation damage from each tick of {{as|physical damage}}.",
         "{{sbc|Active:}} '''Amumu''' releases his anger, dealing {{as|magic damage}} to nearby enemies.",
         "''Tantrum's'' {{sti|cooldown}} is reduced by {{fd|0.5}} seconds every time '''Amumu''' is hit by a basic attack."
       ],
-      "effect_radius": 350,
-      "icon": [
-        "Tantrum.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% '''bonus''' magic resistance)}}}}",
-        "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Tantrum",
-      "notes": [
-        "* Tower attacks reduce ''Tantrum's'' cooldown.",
-        "* ''Tantrum's'' cooldown reduction will trigger multiple times for effects such as {{ai|Double Strike|Master Yi}}."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* Tower attacks reduce ''Tantrum's'' cooldown.\n* ''Tantrum's'' cooldown reduction will trigger multiple times for effects such as {{ai|Double Strike|Master Yi}}.",
+      "costBurn": "35",
+      "cooldownBurn": "10/9/8/7/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% '''bonus''' magic resistance)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Reduction</span>: <span><spell-span :list=\"['2','4','6','8','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 3% <b>bonus</b> armor)</span> <span class=\"magic-resist\">(+ 3% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                2,
+                4,
+                6,
+                8,
+                10
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_armor": 0.03
+              },
+              {
+                "player_bonus_mr": 0.03
+              }
+            ],
+            "st_slices": [
+              "Physical Damage Reduction",
+              "<spell-span :list=\"['2','4','6','8','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  2,
+                  4,
+                  6,
+                  8,
+                  10
+                ],
+                "player_bonus_armor": 0.03,
+                "player_bonus_mr": 0.03
+              },
+              "title": "Physical Damage Reduction",
+              "str": "<spell-span :list=\"['2','4','6','8','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                100,
+                125,
+                150,
+                175
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['75','100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  100,
+                  125,
+                  150,
+                  175
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['75','100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "CurseoftheSadMummy",
-      "riotName": "Curse of the Sad Mummy",
+      "riotId": "CurseoftheSadMummy",
+      "name": "Curse of the Sad Mummy",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        150,
+        130,
+        110
+      ],
+      "cost": [
+        100,
+        150,
+        200
+      ],
+      "costtype": "mana",
+      "targeting": "None",
       "image": {
         "full": "CurseoftheSadMummy.png",
         "sprite": "spell0.png",
@@ -257,40 +414,59 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Amumu entangles surrounding enemy units in bandages, applying his Curse, damaging them and rendering them unable to attack or move.",
-      "champion": "Amumu",
-      "cooldown": [
-        150,
-        130,
-        110
-      ],
-      "cooldownBurn": "150/130/110",
-      "costBurn": "100 / 150 / 200",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Amumu''' {{tip|entangle|entangles}} surrounding enemies for 2 seconds, dealing {{as|magic damage}} and applying {{as|Curse|buzzword}} for 3 seconds."
       ],
-      "effect_radius": 550,
-      "icon": [
-        "Curse of the Sad Mummy.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Curse of the Sad Mummy",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* No additional details.",
+      "costBurn": "100/150/200",
+      "cooldownBurn": "150/130/110",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

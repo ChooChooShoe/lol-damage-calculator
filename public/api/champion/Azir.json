@@ -1,10 +1,9 @@
 {
   "patch": "V4.16",
-  "changes": "9.14.1",
+  "changes": "9.16.1",
   "id": "Azir",
   "key": "268",
   "name": "Azir",
-  "fullname": "Omah Azir",
   "title": "the Emperor of the Sands",
   "image": {
     "full": "Azir.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Marksman",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "magic",
@@ -31,15 +31,35 @@
     "magic": 8,
     "difficulty": 9
   },
-  "i_displayname": "Shurima's Legacy",
-  "q_displayname": "Conquering Sands",
-  "w_dispalyname": "Arise!",
-  "e_dispalyname": "Shifting Sands",
-  "r_dispalyname": "Emperor's Divide",
-  "complex_skills": {
+  "stats": {
+    "hp": 552,
+    "hpperlevel": 92,
+    "mp": 438,
+    "mpperlevel": 21,
+    "movespeed": 335,
+    "armor": 19.04,
+    "armorperlevel": 3,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 7,
+    "hpregenperlevel": 0.75,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 52,
+    "attackdamageperlevel": 2.8,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Shurima's Legacy",
+      "riotId": "",
+      "name": "Shurima's Legacy",
+      "maxrank": 0,
+      "targeting": "[[Unit-targeted|Unit]]",
+      "target_range": 400,
       "image": {
         "full": "Azir_Passive.png",
         "sprite": "passive0.png",
@@ -49,42 +69,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Turret ruins",
-      "blurb": "Azir can summon the Disc of the Sun from the ruins of allied or enemy turrets.",
-      "champion": "Azir",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Basic Attacks:}} '''Azir's''' [[basic attack]]s don't use {{tip|projectiles}}.",
         "{{sbc|Disc of the Sun:}} '''Azir''' places a marker above the ruins of all destroyed {{tip|turrets}} outside the enemy base. Invoking the marker will construct the {{as|Sun Disc|buzzword2}} above the ruins, which functions like a standard inner turret but gains {{as|(15% AP)}} {{sti|ad|{{as|'''bonus''' attack damage}}}} and grants '''Azir''' any {{g|gold}} it earns. The {{as|Sun Disc's|buzzword2}} {{sti|{{as|health}}}} decays over 60 seconds and loses {{sti|armor|{{as|100 armor}}}} if '''Azir''' dies or moves too far away."
       ],
-      "icon": [
-        "Shurima's Legacy.png"
-      ],
-      "leveling": [],
-      "name": "Shurima's Legacy",
-      "notes": [
-        "* In {{tip|Ascension}}, '''Azir''' can summon a {{as|Sun Disc|buzzword2}} in the center of the map provided the {{ci|Xerath|Ancient Ascended}} is dead.",
-        "** The {{as|Sun Disc|buzzword2}} will be destroyed if the ''Ancient Ascended'' respawns while active."
-      ],
-      "projectile": "Physical",
-      "skill": "I",
-      "static": "{{tt|180|Starts after Sun Disc is destroyed/expires}}",
-      "target_range": 400,
-      "targeting": "[[Unit-targeted|Unit]]",
-      "tether_radius": 2000
+      "notes": "\n* In {{tip|Ascension}}, '''Azir''' can summon a {{as|Sun Disc|buzzword2}} in the center of the map provided the {{ci|Xerath|Ancient Ascended}} is dead.\n** The {{as|Sun Disc|buzzword2}} will be destroyed if the ''Ancient Ascended'' respawns while active.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "AzirQWrapper",
-      "riotName": "Conquering Sands",
+      "riotId": "AzirQWrapper",
+      "name": "Conquering Sands",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        13,
+        11,
+        9,
+        7
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 740,
       "image": {
         "full": "AzirQWrapper.png",
         "sprite": "spell1.png",
@@ -94,52 +106,78 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Azir sends all Sand Soldiers towards a location. Sand Soldiers deal magic damage to enemies they pass through and apply a slow for 1 second.",
-      "champion": "Azir",
-      "cooldown": [
-        15,
-        12.5,
-        10,
-        7.5,
-        5
-      ],
-      "cooldownBurn": "15/12.5/10/7.5/5",
-      "costBurn": "70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Azir''' orders all {{as|Sand Soldiers|buzzword2}} to dash toward the target location, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies they pass through and {{tip|slow|slowing}} them by 25% for 1 second.",
         "Enemies hit by subsequent soldiers are instead {{tip|slow|slowed}} by an additional 25% per soldier.",
         "''Conquering Sands'' resets '''Azir's''' [[Basic attack#Resets|basic attack]] timer."
       ],
-      "effect_radius": "{{tt|370|Spear length}}",
-      "icon": [
-        "Conquering Sands.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 150}} {{as|(+ 30% AP)}}}}"
-      ],
-      "name": "Conquering Sands",
-      "notes": [
-        "* {{as|Sand Soldiers|buzzword2}} will stop when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} during the charge."
-      ],
-      "projectile": "Special",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 740,
-      "targeting": "Ground"
+      "notes": "\n* {{as|Sand Soldiers|buzzword2}} will stop when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} during the charge.",
+      "costBurn": "70",
+      "cooldownBurn": "15/13/11/9/7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 150}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                90,
+                110,
+                130,
+                150
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  90,
+                  110,
+                  130,
+                  150
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "AzirW",
-      "riotName": "Arise!",
+      "riotId": "AzirW",
+      "name": "Arise!",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        1.5
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "mana + 1 Sand Soldier",
+      "targeting": "Ground",
+      "target_range": 500,
       "image": {
         "full": "AzirW.png",
         "sprite": "spell1.png",
@@ -149,49 +187,101 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Azir summons a Sand Soldier to attack nearby targets for him, replacing his basic attack against targets within the soldier's range. Their attacks deal magic damage to enemies in a line. Arise! also passively grants attack speed to Azir and his Sand Soldiers.",
-      "callforhelp": true,
-      "champion": "Azir",
-      "cooldownBurn": "1.5",
-      "costBurn": "40",
-      "costtype": "mana + 1 Sand Soldier",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Azir''' periodically [[stock]]s a {{as|Sand Soldier|buzzword2}}, up to a maximum of 2. He also gains {{sti|{{as|'''bonus''' attack speed}}}}, doubled for 5 seconds if he summons a third concurrent soldier.",
         "{{sbc|Active:}} '''Azir''' [[Champion summoned units|summons]] an {{tip|untargetable}} {{as|Sand Soldier|buzzword2}} at the target location that lasts 10 seconds, expiring twice as fast while within range of an enemy {{tip|turret}}, and expiring instantly if '''Azir''' is not in control range.",
         "When '''Azir''' selects an enemy in a soldier's attack range, the {{as|Sand Soldier|buzzword2}} attacks in his stead, dealing {{pp|18|60|62|64|66|68|70|72|75|80|85|90|100|110|120|130|140|150|160|color=magic damage}} {{as|(+ 60% AP)}} {{as|magic damage}} in a line. Targets beyond the closest take {{pp|4|key=%|25 to 100|1 to 16}} damage. Subsequent {{as|Sand Soldiers|buzzword2}} beyond the first deal 25% damage.",
         "{{as|Sand Soldiers|buzzword2}} cannot attack enemy structures, wards, trinkets and traps."
       ],
-      "icon": [
-        "Arise!.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Attack Speed|{{ap|20 to 60}}%|Increased Attack Speed|{{ap|20*2 to 60*2}}%}}"
-      ],
-      "name": "Arise!",
-      "notes": [
-        "* '''Azir''' must rank ''Arise!'' first.",
-        "** In {{tip|ARAM}}, '''Azir''' will start the game with one point already in ''Arise!'' with only two points to allocate to other abilities.",
-        "* {{tip|Spell shield}} will block a single attack of the soliders."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 500,
-      "targeting": "Ground",
-      "tether_radius": "{{tt|660|Solider command range}}"
+      "notes": "\n* '''Azir''' must rank ''Arise!'' first.\n** In {{tip|ARAM}}, '''Azir''' will start the game with one point already in ''Arise!'' with only two points to allocate to other abilities.\n* {{tip|Spell shield}} will block a single attack of the soliders.",
+      "costBurn": "40",
+      "cooldownBurn": "1.5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 60}}%|Increased Attack Speed|{{ap|20*2 to 60*2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Increased Attack Speed</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Increased Attack Speed",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ]
+              },
+              "title": "Increased Attack Speed",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "AzirEWrapper",
-      "riotName": "Shifting Sands",
+      "riotId": "AzirEWrapper",
+      "name": "Shifting Sands",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        19,
+        18,
+        17,
+        16,
+        15
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 1100,
       "image": {
         "full": "AzirEWrapper.png",
         "sprite": "spell1.png",
@@ -201,52 +291,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Azir shields himself briefly and dashes to one of his Sand Soldiers, damaging enemies. If he hits an enemy champion, he instantly readies a new Sand Soldier for deployment and halts his dash.",
-      "champion": "Azir",
-      "cooldown": [
-        19,
-        18,
-        17,
-        16,
-        15
-      ],
-      "cooldownBurn": "19/18/17/16/15",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Azir''' {{tip|shield|shields}} himself for {{fd|1.5}} seconds and {{tip|dashes}} to one of his {{as|Sand Soldiers|buzzword2}}, dealing {{as|magic damage}} to enemies he passes through.",
         "If '''Azir''' hits an enemy champion, he stops moving and gains a charge of {{ai|Arise!|Azir}}."
       ],
-      "grounded": true,
-      "icon": [
-        "Shifting Sands.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Shield Strength|{{ap|80 to 240}} {{as|(+ 70% AP)}}}}{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Shifting Sands",
-      "notes": [
-        "* If '''Azir''' casts ''Shifting Sands'' on a {{as|Sand Soldier|buzzword2}} moving from {{ai|Conquering Sands|Azir}}, '''Azir''' will follow the soldier all the way."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1100,
-      "targeting": "Unit"
+      "notes": "\n* If '''Azir''' casts ''Shifting Sands'' on a {{as|Sand Soldier|buzzword2}} moving from {{ai|Conquering Sands|Azir}}, '''Azir''' will follow the soldier all the way.",
+      "costBurn": "60",
+      "cooldownBurn": "19/18/17/16/15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield Strength|{{ap|80 to 240}} {{as|(+ 70% AP)}}}}{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ],
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              },
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "AzirR",
-      "riotName": "Emperor's Divide",
+      "riotId": "AzirR",
+      "name": "Emperor's Divide",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        105,
+        90
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 250,
       "image": {
         "full": "AzirR.png",
         "sprite": "spell1.png",
@@ -256,45 +381,91 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Azir summons a wall of soldiers which charge forward, knocking back and damaging enemies.",
-      "champion": "Azir",
-      "cooldown": [
-        120,
-        105,
-        90
-      ],
-      "cooldownBurn": "120/105/90",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Azir''' calls forth a phalanx of soldiers from behind him, charging forward in the target direction.",
         "Enemies impacted by the charge are dealt {{as|magic damage}} and {{tip|airborne|knocked back}}.",
-        "When the soldiers finish their charge, they stand as a wall for 3 seconds, acting as impassible terrain for enemies. Allies and '''Azir''' can freely pass through the wall."
+        "When the soldiers finish their charge, they stand as a wall for 3 seconds, acting as impassible terrain against enemies. Allies and '''Azir''' can move through the wall."
       ],
-      "icon": [
-        "Emperor's Divide.png"
-      ],
-      "leveling": [
-        "{{st|Width|{{ap|5|6|7}} soldiers}}",
-        "{{st|Magic Damage|{{ap|150|250|450}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Emperor's Divide",
-      "notes": [
-        "* The charge begins slightly behind '''Azir''', making it easier to set up ''Emperor's Divide'' with {{ai|Shifting Sands|Azir}}.",
-        "** The soldiers will stop charging when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.",
-        "* The wall '''will''' count as terrain for the purposes of 'into terrain' effects ({{ai|Condemn|Vayne}}, {{ai|Dredge Line|Nautilus}}, etc.) This will only affect enemies, allies will pass through the wall in all circumstances, even if knocked into it by an enemy."
-      ],
-      "projectile": "Special",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 250,
-      "targeting": "Direction"
+      "notes": "\n* The charge begins slightly behind '''Azir''', making it easier to set up ''Emperor's Divide'' with {{ai|Shifting Sands|Azir}}.\n** The soldiers will stop charging when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.\n* The wall '''will''' count as terrain for the purposes of 'into terrain' effects ({{ai|Condemn|Vayne}}, {{ai|Dredge Line|Nautilus}}, etc.) This will only affect enemies, allies will pass through the wall in all circumstances, even if knocked into it by an enemy.",
+      "costBurn": "100",
+      "cooldownBurn": "120/105/90",
+      "effects": [
+        {
+          "levelingtext": "{{st|Width|{{ap|5|6|7}} soldiers}}",
+          "str": "<ul><li><span class=\"blue\">Width</span>: <span><spell-span :list=\"['5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span> soldiers</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                6,
+                7
+              ]
+            ],
+            "st_slices": [
+              "Width",
+              "<spell-span :list=\"['5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span> soldiers"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "title": "Width",
+              "str": "<spell-span :list=\"['5','6','7']\" :spellrankindex=\"spellrankindex\"></spell-span> soldiers",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150|250|450}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','250','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                250,
+                450
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['150','250','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  250,
+                  450
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['150','250','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

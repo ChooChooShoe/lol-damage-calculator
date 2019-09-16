@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.86",
-  "changes": "9.7.1",
+  "changes": "9.16.1",
   "id": "Malzahar",
   "key": "90",
   "name": "Malzahar",
-  "fullname": "Malzahar",
   "title": "the Prophet of the Void",
   "image": {
     "full": "Malzahar.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Slayer",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 9,
     "difficulty": 6
   },
-  "i_displayname": "Void Shift",
-  "q_displayname": "Call of the Void",
-  "w_dispalyname": "Void Swarm",
-  "e_dispalyname": "Malefic Visions",
-  "r_dispalyname": "Nether Grasp",
-  "complex_skills": {
+  "stats": {
+    "hp": 537,
+    "hpperlevel": 87,
+    "mp": 375,
+    "mpperlevel": 27.5,
+    "movespeed": 335,
+    "armor": 18,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 500,
+    "hpregen": 6,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 55,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 1.5,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Void Shift",
+      "riotId": "",
+      "name": "Void Shift",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Malzahar_Passive.png",
         "sprite": "passive2.png",
@@ -49,39 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "When he hasn't recently taken damage or been crowd controlled, Malzahar gains massive damage reduction and crowd control immunity, lingering for a short period after taking damage. Damage from lane minions is unaffected.",
-      "champion": "Malzahar",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Malzahar''' receives ''Void Shift'' if he hasn't taken damage nor been affected by {{tip|crowd control}} in the last {{pp|4|30|24|18|12|1|6|11|16}} seconds. Damage from {{tip|minions}} does not interact with ''Void Shift''.",
         "''Void Shift'' phases out '''Malzahar''', making him immune to crowd control and taking 90% reduced damage, lingering for {{fd|0.25}} seconds after taking damage or blocking a crowd control effect."
       ],
-      "icon": [
-        "Void Shift.png"
-      ],
-      "leveling": [],
-      "name": "Void Shift",
-      "notes": [
-        "* ''Void Shift'' will not mitigate true damage but the buff will be still consumed.",
-        "* Damage from [[monster]]s does interact with ''Void Shift''."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Void Shift'' will not mitigate true damage but the buff will be still consumed.\n* Damage from [[monster]]s does interact with ''Void Shift''.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "MalzaharQ",
-      "riotName": "Call of the Void",
+      "riotId": "MalzaharQ",
+      "name": "Call of the Void",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        80,
+        80,
+        80,
+        80,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": "{{tt|900|Cast range}}",
       "image": {
         "full": "MalzaharQ.png",
         "sprite": "spell7.png",
@@ -91,42 +105,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malzahar opens up two portals to the Void. After a short delay, they fire projectiles that deal Magic Damage and silence enemy champions.",
-      "champion": "Malzahar",
-      "cooldownBurn": "6",
-      "costBurn": "80",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After a {{fd|0.25}}-second cast time, '''Malzahar''' opens two portals that are each 200 units {{tt|perpendicular|Relative to his facing direction.}} from the target location. After a {{fd|0.4}}-seconds delay, all enemies between the portals take {{tip|magic damage|{{as|magic damage}}}} and are {{tip|silence|silenced}}."
       ],
-      "icon": [
-        "Call of the Void.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}\n{{st|Silence Duration|{{ap|1 to 2}}}}"
-      ],
-      "name": "Call of the Void",
-      "notes": [
-        "* ''Call of the Void'' provides vision of a small area around it."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": "{{tt|900|Cast range}}",
-      "targeting": "Ground"
+      "notes": "\n* ''Call of the Void'' provides vision of a small area around it.",
+      "costBurn": "80",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}\n{{st|Silence Duration|{{ap|1 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Silence Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                105,
+                140,
+                175,
+                210
+              ],
+              [
+                1,
+                1.25,
+                1.5,
+                1.75,
+                2
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Silence Duration",
+              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Silence Duration",
+              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "MalzaharW",
-      "riotName": "Void Swarm",
+      "riotId": "MalzaharW",
+      "name": "Void Swarm",
       "maxrank": 5,
-      "maxammo": 0,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "target_range": 150,
       "image": {
         "full": "MalzaharW.png",
         "sprite": "spell7.png",
@@ -136,45 +195,124 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malzahar summons Voidlings to attack nearby enemies.",
-      "champion": "Malzahar",
-      "cooldownBurn": "8",
-      "costBurn": "40 / 45 / 50 / 55 / 60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Malzahar''' gains a stack of ''Gathering Swarm'' when he casts another spell, up to a maximum of 2.",
         "{{sbc|Active:}} '''Malzahar''' consumes all ''Gathering Swarm'' stacks and, after a {{fd|0.5}}-second delay, summons a ''Voidling'' at the target location. Additional ''Voidlings'' are then summoned for each ''Gathering Swarm'' stack consumed.",
         "''Voidlings'' deal {{as|magic damage}} with their attacks. ''Voidlings'' deal 50% damage to epic [[monster]]s, and 300% damage against lane minions affected by {{ai|Malefic Visions|Malzahar}}."
       ],
-      "icon": [
-        "Void Swarm.png"
-      ],
-      "leveling": [
-        "{{st|Voidling Duration|{{ap|8|8|9|9|10}}}}",
-        "{{st|Magic Damage|{{pp|5+3.5*(x-1)*(0.7025+0.0175*(x-1))|formula=5+3.5 growth}} (+ {{ap|12 to 20}}) {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}"
-      ],
-      "name": "Void Swarm",
-      "notes": [
-        "* '''Malzahar''' loses all stacks upon [[death]].",
-        "* ''Gathering Swarm'' stacks are gained per cast and not per ability activation. I.e if {{ai|Malefic Visions|Malzahar}} is casted but loses its target during its cast time the ability will not activate nor go on cooldown, but a ''Gathering Swarm'' stack will still be granted."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "pet",
-      "target_range": 150,
-      "targeting": "None"
+      "notes": "\n* '''Malzahar''' loses all stacks upon [[death]].\n* ''Gathering Swarm'' stacks are gained per cast and not per ability activation. I.e if {{ai|Malefic Visions|Malzahar}} is casted but loses its target during its cast time the ability will not activate nor go on cooldown, but a ''Gathering Swarm'' stack will still be granted.",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Voidling Duration|{{ap|8|8|9|9|10}}}}",
+          "str": "<ul><li><span class=\"blue\">Voidling Duration</span>: <span><spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                8,
+                8,
+                9,
+                9,
+                10
+              ]
+            ],
+            "st_slices": [
+              "Voidling Duration",
+              "<spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  8,
+                  8,
+                  9,
+                  9,
+                  10
+                ]
+              },
+              "title": "Voidling Duration",
+              "str": "<spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{pp|5+3.5*(x-1)*(0.7025+0.0175*(x-1))|formula=5+3.5 growth}} (+ {{ap|12 to 20}}) {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><HtmlTooltip class=\"blue link\">5+3.5*(x-1)*(0.7025+0.0175*(x-1))undefined −  (based on level)<template #content>Values: 2.603<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                14,
+                16,
+                18,
+                20
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.4
+              },
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<HtmlTooltip class=\"blue link\">5+3.5*(x-1)*(0.7025+0.0175*(x-1))undefined −  (based on level)<template #content>Values: 2.603<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ],
+                "player_bonus_ad": 0.4,
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage",
+              "str": "<HtmlTooltip class=\"blue link\">5+3.5*(x-1)*(0.7025+0.0175*(x-1))undefined −  (based on level)<template #content>Values: 2.603<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "MalzaharE",
-      "riotName": "Malefic Visions",
+      "riotId": "MalzaharE",
+      "name": "Malefic Visions",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        13,
+        11,
+        9,
+        7
+      ],
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 650,
       "image": {
         "full": "MalzaharE.png",
         "sprite": "spell7.png",
@@ -184,53 +322,105 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malzahar infects his target's mind with cruel visions of their demise, dealing damage over time. Using Malzahar's other spells on the target will refresh the visions. If the target dies while afflicted by the visions, they pass on to a nearby enemy unit and Malzahar gains Mana. Malzahar's Voidlings are attracted to affected units.",
-      "callforhelp": true,
-      "champion": "Malzahar",
-      "cooldown": [
-        15,
-        13,
-        11,
-        9,
-        7
-      ],
-      "cooldownBurn": "15/13/11/9/7",
-      "costBurn": "60 / 70 / 80 / 90 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Malzahar''' infects the target enemy's mind, dealing them {{as|magic damage}} every half second over 4 seconds. Damaging a target with {{ai|Call of the Void|Malzahar}} or {{ai|Nether Grasp|Malzahar}} will refresh the duration of ''Malefic Visions''.",
         "If the target dies during this time, they pass ''Malefic Visions'' onto the closest enemy, refreshing the duration and restoring {{sti|mana|{{as|2% of '''Malzahar's''' '''maximum''' mana}}}}."
       ],
-      "effect_radius": "{{tt|650|Estimated}}",
-      "icon": [
-        "Malefic Visions.png"
-      ],
-      "leveling": [
-        "{{st|Total Magic Damage|{{ap|80 to 220}} {{as|(+ 80% AP)}}|Magic Damage Per Half Second|{{ap|80/8 to 220/8}} {{as|(+ {{fd|10%}} AP)}}}}"
-      ],
-      "name": "Malefic Visions",
-      "notes": [
-        "* {{ai|Void Swarm|Malzahar|Voidlings}} will automatically attack the nearest target affected by ''Malefic Visions'' (prioritizing champions) if no target is affected by {{ai|Nether Grasp|Malzahar}}.",
-        "* ''Malefic Visions'' cannot be removed."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "DoT",
-      "spellshield": true,
-      "target_range": 650,
-      "targeting": "Unit"
+      "notes": "\n* {{ai|Void Swarm|Malzahar|Voidlings}} will automatically attack the nearest target affected by ''Malefic Visions'' (prioritizing champions) if no target is affected by {{ai|Nether Grasp|Malzahar}}.\n* ''Malefic Visions'' cannot be removed.",
+      "costBurn": "60/70/80/90/100",
+      "cooldownBurn": "15/13/11/9/7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|80 to 220}} {{as|(+ 80% AP)}}|Magic Damage Per Half Second|{{ap|80/8 to 220/8}} {{as|(+ {{fd|10%}} AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ],
+              [
+                10,
+                14.375,
+                18.75,
+                23.125,
+                27.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 0.1
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "Magic Damage Per Half Second",
+              "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  14.375,
+                  18.75,
+                  23.125,
+                  27.5
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage Per Half Second",
+              "str": "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "MalzaharR",
-      "riotName": "Nether Grasp",
+      "riotId": "MalzaharR",
+      "name": "Nether Grasp",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        140,
+        110,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 700,
       "image": {
         "full": "MalzaharR.png",
         "sprite": "spell7.png",
@@ -240,47 +430,157 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Malzahar channels the essence of the Void to suppress an enemy champion over a zone of damaging negative energy.",
-      "callforhelp": true,
-      "champion": "Malzahar",
-      "cooldown": [
-        140,
-        110,
-        80
-      ],
-      "cooldownBurn": "140/110/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Malzahar''' {{tip|channels}} for {{fd|2.5}} seconds, during which the target is {{tip|knockdown|knocked down}}, {{tip|suppression|suppressed}}, and dealt {{as|magic damage}} every {{fd|0.25}} seconds.",
         "A ''Null Zone'' is opened beneath the target that lasts 5 seconds, dealing {{as|magic damage}} every half-second to all enemies within.",
         "'''''Malzahar''' may prematurely end the ability after {{fd|0.5}} seconds by performing an action.''"
       ],
-      "icon": [
-        "Nether Grasp.png",
-        "Null Zone.png"
-      ],
-      "leveling": [
-        "{{st|Total Magic Damage|{{ap|125 to 275}} {{as|(+ 80% AP)}}|Damage Per 0.25 Seconds|{{ap|125/10 to 275/10}} {{as|(+ 8% AP)}}}}",
-        "{{st|Total Magic Damage|{{as|{{ap|10 to 20}}% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health}}|Damage Per Half-Second|{{as|{{ap|10/10 to 20/10}}% {{as|(+ {{fd|0.25}}% per 100 AP)}} of target's '''maximum''' health}}}}"
-      ],
-      "name": "Nether Grasp",
-      "notes": [
-        "* Performing an action can go from moving to casting other abilities.",
-        "** ''Summoner Spells'' and ''Item Actives'' can be used without interrupting it (excluding {{si|Flash}}, {{si|Teleport}}, {{ii|Zhonya's Hourglass}} and items that make him move).",
-        "* ''Nether Grasp'' and ''Null Zone'' count as two different abilities for effects such as {{ri|Electrocute}}."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "DoT",
-      "spellshield": true,
-      "target_range": 700,
-      "targeting": "Unit"
+      "notes": "\n* Performing an action can go from moving to casting other abilities.\n** ''Summoner Spells'' and ''Item Actives'' can be used without interrupting it (excluding {{si|Flash}}, {{si|Teleport}}, {{ii|Zhonya's Hourglass}} and items that make him move).\n* ''Nether Grasp'' and ''Null Zone'' count as two different abilities for effects such as {{ri|Electrocute}}.",
+      "costBurn": "100",
+      "cooldownBurn": "140/110/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|125 to 275}} {{as|(+ 80% AP)}}|Damage Per 0.25 Seconds|{{ap|125/10 to 275/10}} {{as|(+ 8% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Damage Per 0.25 Seconds</span>: <span><spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                125,
+                162.5,
+                200,
+                237.5,
+                275
+              ],
+              [
+                12.5,
+                16.25,
+                20,
+                23.75,
+                27.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 0.08
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "Damage Per 0.25 Seconds",
+              "<spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  125,
+                  162.5,
+                  200,
+                  237.5,
+                  275
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  12.5,
+                  16.25,
+                  20,
+                  23.75,
+                  27.5
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Damage Per 0.25 Seconds",
+              "str": "<spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{as|{{ap|10 to 20}}% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health}}|Damage Per Half-Second|{{as|{{ap|10/10 to 20/10}}% {{as|(+ {{fd|0.25}}% per 100 AP)}} of target's '''maximum''' health}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Damage Per Half-Second</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's <b>maximum</b> health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                12.5,
+                15,
+                17.5,
+                20
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.025099999999999997
+              },
+              {
+                "player_total_ap": 0.00251
+              },
+              {
+                "target_total_ap": [
+                  0.01,
+                  0.0125,
+                  0.015,
+                  0.0175,
+                  0.02
+                ]
+              }
+            ],
+            "st_slices": [
+              "Total Magic Damage",
+              "<span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "Damage Per Half-Second",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  12.5,
+                  15,
+                  17.5,
+                  20
+                ],
+                "player_total_ap": 0.00251
+              },
+              "title": "Total Magic Damage",
+              "str": "<span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_ap": 0.00251
+              },
+              "title": "Damage Per Half-Second",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

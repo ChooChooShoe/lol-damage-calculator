@@ -1,10 +1,9 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.6.1",
+  "changes": "9.17.1",
   "id": "Fiddlesticks",
   "key": "9",
   "name": "Fiddlesticks",
-  "fullname": "Fiddlesticks",
   "title": "the Harbinger of Doom",
   "image": {
     "full": "Fiddlesticks.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 9,
     "difficulty": 9
   },
-  "i_displayname": "Dread",
-  "q_displayname": "Terrify",
-  "w_dispalyname": "Drain",
-  "e_dispalyname": "Dark Wind",
-  "r_dispalyname": "Crowstorm",
-  "complex_skills": {
+  "stats": {
+    "hp": 524.4,
+    "hpperlevel": 80,
+    "mp": 500,
+    "mpperlevel": 28,
+    "movespeed": 335,
+    "armor": 30,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 480,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 48.36,
+    "attackdamageperlevel": 2.625,
+    "attackspeedperlevel": 2.11,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Dread",
+      "riotId": "",
+      "name": "Dread",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "FiddleSticks_Passive.png",
         "sprite": "passive0.png",
@@ -49,39 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Standing still or channeling abilities for 1.5 seconds empowers Fiddlesticks with Dread. Immobilizing crowd control resets this timer. Dread grants Movement Speed, but only lasts for 1.5s after Fiddlesticks starts moving.",
-      "champion": "Fiddlesticks",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} Standing still or {{tip|channels|channeling}} abilities for {{fd|1.5}} seconds grants '''Fiddlesticks''' {{sti|ms|{{as|{{pp|4|25 to 40|1 to 16|key=%}} '''bonus''' movement speed}}}}, that lasts for {{fd|1.5}} seconds once he starts moving. Being {{tip|immobilize|immobilized}} will not trigger ''Dread'', and will reset the timer.",
         "After 5 seconds of not moving, '''Fiddlesticks''' will stand completely still and become a scarecrow."
       ],
-      "icon": [
-        "Dread.png"
-      ],
-      "leveling": [],
-      "name": "Dread",
-      "notes": [
-        "* Standing still and basic attacking will not reset ''Dread's'' timer.",
-        "* Unlike {{ai|Guerrilla Warfare|Teemo}} ''Fiddlesticks'' can perform other actions so long as he does not move."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Standing still and basic attacking will not reset ''Dread's'' timer.\n* Unlike {{ai|Guerrilla Warfare|Teemo}} ''Fiddlesticks'' can perform other actions so long as he does not move.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "Terrify",
-      "riotName": "Terrify",
+      "riotId": "Terrify",
+      "name": "Terrify",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        15,
+        14,
+        13,
+        12,
+        11
+      ],
+      "cost": [
+        65,
+        65,
+        65,
+        65,
+        65
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 575,
       "image": {
         "full": "Terrify.png",
         "sprite": "spell3.png",
@@ -91,48 +105,74 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Strikes a target unit with fear, causing it to flee in terror for a duration.",
-      "champion": "Fiddlesticks",
-      "cooldown": [
-        15,
-        14,
-        13,
-        12,
-        11
-      ],
-      "cooldownBurn": "15/14/13/12/11",
-      "costBurn": "65",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Fiddlesticks''' causes the target enemy to {{tip|flee}} as well as {{tip|slow|slowing}} them by 90%."
       ],
-      "icon": [
-        "Terrify.png"
-      ],
-      "leveling": [
-        "{{st|Duration|{{ap|1.25|1.5|1.75|2|2.25}}}}"
-      ],
-      "name": "Terrify",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "Q",
-      "spellshield": true,
-      "target_range": 575,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "65",
+      "cooldownBurn": "15/14/13/12/11",
+      "effects": [
+        {
+          "levelingtext": "{{st|Duration|{{ap|1.25|1.5|1.75|2|2.25}}}}",
+          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.25,
+                1.5,
+                1.75,
+                2,
+                2.25
+              ]
+            ],
+            "st_slices": [
+              "Duration",
+              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.25,
+                  1.5,
+                  1.75,
+                  2,
+                  2.25
+                ]
+              },
+              "title": "Duration",
+              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "Drain",
-      "riotName": "Drain",
+      "riotId": "Drain",
+      "name": "Drain",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        4,
+        3.75,
+        3.5,
+        3.25,
+        3
+      ],
+      "cost": [
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 575,
       "image": {
         "full": "Drain.png",
         "sprite": "spell3.png",
@@ -142,58 +182,98 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Fiddlesticks saps the life force of an enemy, dealing damage to a target over time and healing himself.",
-      "callforhelp": true,
-      "champion": "Fiddlesticks",
-      "cooldown": [
-        4,
-        3.75,
-        3.5,
-        3.25,
-        3
-      ],
-      "cooldownBurn": "4/3.75/3.5/3.25/3",
-      "costBurn": "80 / 90 / 100 / 110 / 120",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Fiddlesticks''' tethers himself to the target enemy and {{tip|channels}} for up to 5 seconds. While channeling, '''Fiddlesticks''' deals {{tip|magic damage|{{as|magic damage}}}} each second, and {{tip|heal|heals}} himself for a percentage of the [[damage]] done.",
         "If the target breaks the tether by moving out of range, ''Drain'' ends immediately. If the target dies before the channel completes, the {{sti|cooldown}} is reduced by its remaining duration."
       ],
-      "icon": [
-        "Drain.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage per Second|{{ap|80 to 180}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|80*5 to 180*5}} {{as|(+ 225% AP)}}}}{{st|Heal Ratio|{{ap|60 to 80}}%}}"
-      ],
-      "name": "Drain",
-      "notes": [
-        "* ''Drain'' deals damage every {{fd|0.25}} seconds.",
-        "* ''Drain'' has a brief [[channel]] time ({{fd|0.1}} seconds) on cast before activation.",
-        "* ''Drain's'' channel will be interrupted if ''Fiddlesticks'' performs any other action, uses [[item]] actives, or is disabled.",
-        "** Using [[summoner spell]]s (except {{si|Flash}} and {{si|Teleport}}) will not interrupt the channel.",
-        "* ''Drain'' will not continue channeling through {{ai|Death Defied|Karthus}} or {{ai|Icathian Surprise|Kog'Maw}}.",
-        "* ''Drain'' will continue channeling through [[Untargetability|untargetable]] abilities ({{ai|Playful|Fizz}}, {{ai|Sanguine Pool|Vladimir}}) so long as the target remains in tether range.",
-        "* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "DoT",
-      "spellshield": "Special",
-      "target_range": 575,
-      "targeting": "Unit",
-      "tether_radius": 650
+      "notes": "\n* ''Drain'' deals damage every {{fd|0.25}} seconds.\n* ''Drain'' has a brief [[channel]] time ({{fd|0.1}} seconds) on cast before activation.\n* ''Drain's'' channel will be interrupted if ''Fiddlesticks'' performs any other action, uses [[item]] actives, or is disabled.\n** Using [[summoner spell]]s (except {{si|Flash}} and {{si|Teleport}}) will not interrupt the channel.\n* ''Drain'' will not continue channeling through {{ai|Death Defied|Karthus}} or {{ai|Icathian Surprise|Kog'Maw}}.\n* ''Drain'' will continue channeling through [[Untargetability|untargetable]] abilities ({{ai|Playful|Fizz}}, {{ai|Sanguine Pool|Vladimir}}) so long as the target remains in tether range.\n* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.",
+      "costBurn": "80/90/100/110/120",
+      "cooldownBurn": "4/3.75/3.5/3.25/3",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage per Second|{{ap|80 to 180}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|80*5 to 180*5}} {{as|(+ 225% AP)}}}}{{st|Heal Ratio|{{ap|60 to 80}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['400','525','650','775','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span></span></li></ul><ul><li><span class=\"blue\">Heal Ratio</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                105,
+                130,
+                155,
+                180
+              ],
+              [
+                400,
+                525,
+                650,
+                775,
+                900
+              ],
+              [
+                60,
+                65,
+                70,
+                75,
+                80
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              },
+              {
+                "player_total_ap": 2.25
+              }
+            ],
+            "st_slices": [
+              "Heal Ratio",
+              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  105,
+                  130,
+                  155,
+                  180
+                ],
+                "player_total_ap": 2.25
+              },
+              "title": "Heal Ratio",
+              "str": "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "FiddlesticksDarkWind",
-      "riotName": "Dark Wind",
+      "riotId": "FiddlesticksDarkWind",
+      "name": "Dark Wind",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 750,
       "image": {
         "full": "FiddlesticksDarkWind.png",
         "sprite": "spell3.png",
@@ -203,46 +283,177 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "A wisp of wind strikes an enemy unit and then bounces to nearby enemy units, dealing damage and silencing the victims.",
-      "callforhelp": true,
-      "champion": "Fiddlesticks",
-      "cooldownBurn": "10",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Fiddlesticks''' sends a crow to the target enemy that bounces to nearby enemies up to 5 times, prioritizing targets not yet hit or targets affected by ''{{ai|Drain|Fiddlesticks}}'', dealing {{as|magic damage}} with each bounce and {{tip|silence|silencing}} them for {{fd|1.25}} seconds once.",
         "[[Monster]]s take 100% '''bonus''' damage."
       ],
-      "effect_radius": 450,
-      "icon": [
-        "Dark Wind.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage per Bounce|{{ap|60 to 140}} {{as|(+ 45% AP)}}|Total Single-Target Damage|{{ap|60*3 to 140*3}} {{as|(+ 135% AP)}}}}",
-        "{{st|Monster Damage per Bounce|{{ap|60*2 to 140*2}} {{as|(+ 90% AP)}}|Monster Total Single-Target Damage|{{ap|60*6 to 140*6}} {{as|(+ 270% AP)}}}}"
-      ],
-      "name": "Dark Wind",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "Multi-hit",
-      "spellshield": true,
-      "target_range": 750,
-      "targeting": "Unit"
+      "notes": "\n* No additional notes.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage per Bounce|{{ap|60 to 140}} {{as|(+ 45% AP)}}|Total Single-Target Damage|{{ap|60*3 to 140*3}} {{as|(+ 135% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Bounce</span>: <span><spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ],
+              [
+                180,
+                240,
+                300,
+                360,
+                420
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              },
+              {
+                "player_total_ap": 1.35
+              }
+            ],
+            "st_slices": [
+              "Magic Damage per Bounce",
+              "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "Total Single-Target Damage",
+              "<spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  80,
+                  100,
+                  120,
+                  140
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Magic Damage per Bounce",
+              "str": "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  180,
+                  240,
+                  300,
+                  360,
+                  420
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Total Single-Target Damage",
+              "str": "<spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Monster Damage per Bounce|{{ap|60*2 to 140*2}} {{as|(+ 90% AP)}}|Monster Total Single-Target Damage|{{ap|60*6 to 140*6}} {{as|(+ 270% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Monster Damage per Bounce</span>: <span><spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Monster Total Single-Target Damage</span>: <span><spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                120,
+                160,
+                200,
+                240,
+                280
+              ],
+              [
+                360,
+                480,
+                600,
+                720,
+                840
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_total_ap": 2.7
+              }
+            ],
+            "st_slices": [
+              "Monster Damage per Bounce",
+              "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "Monster Total Single-Target Damage",
+              "<spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  120,
+                  160,
+                  200,
+                  240,
+                  280
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Monster Damage per Bounce",
+              "str": "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  360,
+                  480,
+                  600,
+                  720,
+                  840
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Monster Total Single-Target Damage",
+              "str": "<spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "Crowstorm",
-      "riotName": "Crowstorm",
+      "riotId": "Crowstorm",
+      "name": "Crowstorm",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        140,
+        110,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 800,
       "image": {
         "full": "Crowstorm.png",
         "sprite": "spell3.png",
@@ -252,46 +463,87 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "A murder of crows flock wildly around Fiddlesticks, dealing damage per second to all enemy units in the area.",
-      "champion": "Fiddlesticks",
-      "cooldown": [
-        140,
-        110,
-        80
-      ],
-      "cooldownBurn": "140/110/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} After {{tip|channels|channeling}} for {{fd|1.5}} seconds, '''Fiddlesticks''' {{tip|blinks}} to the target location with a murder of crows flying wildly around him for 5 seconds, dealing {{as|magic damage}} to nearby enemies each second."
       ],
-      "effect_radius": 600,
-      "grounded": true,
-      "icon": [
-        "Crowstorm.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage per Second|{{ap|125 to 325}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|125*5 to 325*5}} {{as|(+ 225% AP)}}}}"
-      ],
-      "name": "Crowstorm",
-      "notes": [
-        "* ''Crowstorm'' deals damage every {{fd|0.5}} seconds.",
-        "* If ''Fiddlesticks'' is {{tip|ground|grounded}} while channeling ''Crowstorm'', he will be interrupted and the ability will then go on full cooldown.",
-        "* If ''Fiddlesticks'' is {{tip|root|rooted}} while channeling ''Crowstorm'' he will still blink to the target location.",
-        "** The root will affect him for the remaining duration once he blinks.",
-        "* ''Fiddlesticks'' can use [[summoner spell]]s while channeling so long as he doesn't have to move to do so.",
-        "* [[File:Crowstorm Surprise Party.png|30px|border|link=]] - {{csl|Fiddlesticks|Surprise Party}} has this special icon for this ability."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "target_range": 800,
-      "targeting": "Ground"
+      "notes": "\n* ''Crowstorm'' deals damage every {{fd|0.5}} seconds.\n* If ''Fiddlesticks'' is {{tip|ground|grounded}} while channeling ''Crowstorm'', he will be interrupted and the ability will then go on full cooldown.\n* If ''Fiddlesticks'' is {{tip|root|rooted}} while channeling ''Crowstorm'' he will still blink to the target location.\n** The root will affect him for the remaining duration once he blinks.\n* ''Fiddlesticks'' can use [[summoner spell]]s while channeling so long as he doesn't have to move to do so.\n* [[File:Crowstorm Surprise Party.png|30px|border|link=]] - {{csl|Fiddlesticks|Surprise Party}} has this special icon for this ability.",
+      "costBurn": "100",
+      "cooldownBurn": "140/110/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage per Second|{{ap|125 to 325}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|125*5 to 325*5}} {{as|(+ 225% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                125,
+                175,
+                225,
+                275,
+                325
+              ],
+              [
+                625,
+                875,
+                1125,
+                1375,
+                1625
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              },
+              {
+                "player_total_ap": 2.25
+              }
+            ],
+            "st_slices": [
+              "Magic Damage per Second",
+              "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  125,
+                  175,
+                  225,
+                  275,
+                  325
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Magic Damage per Second",
+              "str": "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  625,
+                  875,
+                  1125,
+                  1375,
+                  1625
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

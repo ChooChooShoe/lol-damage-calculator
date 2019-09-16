@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.103",
-  "changes": "9.14.1",
+  "changes": "9.16.1",
   "id": "Lux",
   "key": "99",
   "name": "Lux",
-  "fullname": "Luxanna Crownguard",
   "title": "the Lady of Luminosity",
   "image": {
     "full": "Lux.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 9,
     "difficulty": 5
   },
-  "i_displayname": "Illumination",
-  "q_displayname": "Light Binding",
-  "w_dispalyname": "Prismatic Barrier",
-  "e_dispalyname": "Lucent Singularity",
-  "r_dispalyname": "Final Spark",
-  "complex_skills": {
+  "stats": {
+    "hp": 490,
+    "hpperlevel": 85,
+    "mp": 480,
+    "mpperlevel": 23.5,
+    "movespeed": 330,
+    "armor": 18.72,
+    "armorperlevel": 4,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53.54,
+    "attackdamageperlevel": 3.3,
+    "attackspeedperlevel": 1,
+    "attackspeed": 0.669
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Illumination",
+      "riotId": "",
+      "name": "Illumination",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "LuxIlluminatingFraulein.png",
         "sprite": "passive2.png",
@@ -49,38 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Lux's damaging spells charge the target with energy for 6 seconds. Lux's next attack ignites the energy, dealing bonus magic damage (depending on Lux's level) to the target.",
-      "champion": "Lux",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Innate:}} Damaging enemies with [[Champion ability|abilities]] marks them with light energy for 6 seconds.",
         "Her [[basic attack]]s and {{ai|Final Spark|Lux}} consume the mark, dealing {{pp|20 to 190}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}."
       ],
-      "icon": [
-        "Illumination.png"
-      ],
-      "leveling": [],
-      "name": "Illumination",
-      "notes": [
-        "* No additional effects."
-      ],
-      "projectile": "Magic",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* No additional effects.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "LuxLightBinding",
-      "riotName": "Light Binding",
+      "riotId": "LuxLightBinding",
+      "name": "Light Binding",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        13,
+        12,
+        11,
+        10,
+        9
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1175,
       "image": {
         "full": "LuxLightBinding.png",
         "sprite": "spell7.png",
@@ -90,50 +105,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Lux releases a sphere of light that binds and deals damage to up to two enemy units.",
-      "champion": "Lux",
-      "cooldown": [
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      "cooldownBurn": "10",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lux''' releases a sphere of light in a line that deals {{as|magic damage}} to the first two enemies hit and {{tip|root|roots}} them for 2 seconds."
       ],
-      "icon": [
-        "Light Binding.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Light Binding",
-      "notes": [
-        "* Targets affected by a {{tip|spell shield}} or by {{ai|Black Shield|Morgana}} count towards ''Light Binding's'' two-target limit."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1200,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1175,
-      "targeting": "Direction"
+      "notes": "\n* Targets affected by a {{tip|spell shield}} or by {{ai|Black Shield|Morgana}} count towards ''Light Binding's'' two-target limit.",
+      "costBurn": "50",
+      "cooldownBurn": "13/12/11/10/9",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "LuxPrismaticWave",
-      "riotName": "Prismatic Barrier",
+      "riotId": "LuxPrismaticWave",
+      "name": "Prismatic Barrier",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1075,
       "image": {
         "full": "LuxPrismaticWave.png",
         "sprite": "spell7.png",
@@ -143,54 +188,127 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Allies",
-      "blurb": "Lux throws her wand and bends the light around any friendly target it touches, protecting them from enemy damage.",
-      "champion": "Lux",
-      "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cooldownBurn": "14/13/12/11/10",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lux''' launches her wand in the target direction which returns to her after reaching maximum range.",
         "The outgoing wand {{tip|shield|shields}} '''Lux''' and all allied champions it touches for {{fd|2.5}} seconds.",
         "The returning wand shields for the same amount and for the same duration, while also stacking with the outgoing shield and resetting its duration.",
         "''The shields can only stack up to 2 times. Additional shields will neither reset the duration nor strengthen it.''"
       ],
-      "icon": [
-        "Prismatic Barrier.png"
-      ],
-      "leveling": [
-        "{{st|Shield Strength|{{ap|50 to 110}} {{as|(+ 30% AP)}}}}",
-        "{{st|Maximum Shield|{{ap|50*2 to 110*2}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Prismatic Barrier",
-      "notes": [
-        "* If ''Lux'' dies before her wand changes direction it will fizzle upon reaching maximum range.",
-        "* ''Lux's'' wand decelerates on the way out and accelerates on the way back."
-      ],
-      "projectile": "Yasuo",
-      "skill": "W",
-      "speed": 1400,
-      "spelleffects": "Shield",
-      "target_range": 1075,
-      "targeting": "Direction"
+      "notes": "\n* If ''Lux'' dies before her wand changes direction it will fizzle upon reaching maximum range.\n* ''Lux's'' wand decelerates on the way out and accelerates on the way back.",
+      "costBurn": "60",
+      "cooldownBurn": "14/13/12/11/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield Strength|{{ap|50 to 150}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                75,
+                100,
+                125,
+                150
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Shield Strength",
+              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  75,
+                  100,
+                  125,
+                  150
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Shield Strength",
+              "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Maximum Shield|{{ap|50*2 to 150*2}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Shield</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200,
+                250,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Maximum Shield",
+              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  100,
+                  150,
+                  200,
+                  250,
+                  300
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Maximum Shield",
+              "str": "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "LuxLightStrikeKugel",
-      "riotName": "Lucent Singularity",
+      "riotId": "LuxLightStrikeKugel",
+      "name": "Lucent Singularity",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        9.5,
+        9,
+        8.5,
+        8
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1000,
       "image": {
         "full": "LuxLightStrikeKugel.png",
         "sprite": "spell7.png",
@@ -200,55 +318,116 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Fires an anomaly of twisted light to an area, which slows nearby enemies. Lux can detonate it to damage enemies in the area of effect.",
-      "champion": "Lux",
-      "cooldown": [
-        10,
-        9.5,
-        9,
-        8.5,
-        8
-      ],
-      "cooldownBurn": "10/9.5/9/8.5/8",
-      "costBurn": "70 / 80 / 90 / 100 / 110",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lux''' sends an anomaly of twisted light to the target area for up to 5 seconds, {{tip|slow|slowing}} enemies inside and {{tip|sight|revealing}} the area around it.",
         "At the end of the duration or if ''Lucent Singularity'' is reactivated, the area detonates, dealing {{as|magic damage}}.",
         "''The slow lingers for {{fd|0.25}} seconds after leaving the area.''"
       ],
-      "effect_radius": 310,
-      "icon": [
-        "Lucent Singularity.png"
-      ],
-      "leveling": [
-        "{{st|Slow|{{ap|25 to 45}}%}}",
-        "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Lucent Singularity",
-      "notes": [
-        "* '''Lux''' can re-cast ''Lucent Singularity'' in flight to detonate on arrival.",
-        "* ''Lucent Singularity'' grants {{tip|sight}} while also in flight."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 1200,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1000,
-      "targeting": "Ground"
+      "notes": "\n* '''Lux''' can re-cast ''Lucent Singularity'' in flight to detonate on arrival.\n* ''Lucent Singularity'' grants {{tip|sight}} while also in flight.",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "10/9.5/9/8.5/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Slow|{{ap|25 to 45}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                25,
+                30,
+                35,
+                40,
+                45
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "LuxMaliceCannon",
-      "riotName": "Final Spark",
+      "riotId": "LuxMaliceCannon",
+      "name": "Final Spark",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        80,
+        60,
+        40
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 3340,
       "image": {
         "full": "LuxMaliceCannon.png",
         "sprite": "spell7.png",
@@ -258,43 +437,59 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "After gathering energy, Lux fires a beam of light that deals damage to all targets in the area. If Final Spark kills a champion, part of its cooldown is refunded. In addition, triggers Lux's passive ability and refreshes the Illumination debuff duration.",
-      "cast_time": 1,
-      "champion": "Lux",
-      "cooldown": [
-        80,
-        65,
-        50
-      ],
-      "cooldownBurn": "80/65/50",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Lux''' fires a giant laser in a line that deals {{as|magic damage}}, briefly {{tip|sight|revealing}} enemies as well as the surrounding area."
       ],
-      "icon": [
-        "Final Spark.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|300 to 500}} {{as|(+ 100% AP)}}}}"
-      ],
-      "name": "Final Spark",
-      "notes": [
-        "* '''Lux''' cannot use any ability, summoner spell, or item while casting, but she can reactivate {{ai|Lucent Singularity|Lux}}.",
-        "* If '''Lux''' is {{tip|airborne|displaced}} while casting, ''Final Spark'' will fire from her original location.",
-        "* ''Final Spark'' only goes on cooldown when it fires and not when '''Lux''' starts casting. If she dies while casting, ''Final Spark'' will not go on cooldown."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 3340,
-      "targeting": "Direction"
+      "notes": "\n* '''Lux''' cannot use any ability, summoner spell, or item while casting, but she can reactivate {{ai|Lucent Singularity|Lux}}.\n* If '''Lux''' is {{tip|airborne|displaced}} while casting, ''Final Spark'' will fire from her original location.\n* ''Final Spark'' only goes on cooldown when it fires and not when '''Lux''' starts casting. If she dies while casting, ''Final Spark'' will not go on cooldown.",
+      "costBurn": "100",
+      "cooldownBurn": "80/60/40",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|300 to 500}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                300,
+                350,
+                400,
+                450,
+                500
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  300,
+                  350,
+                  400,
+                  450,
+                  500
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

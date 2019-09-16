@@ -1,16 +1,15 @@
 {
   "patch": "V1.0.0.131",
-  "changes": "9.6.1",
+  "changes": "9.17.1",
   "id": "Viktor",
   "key": "112",
   "name": "Viktor",
-  "fullname": "Viktor",
   "title": "the Machine Herald",
   "image": {
     "full": "Viktor.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 0,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -30,73 +30,53 @@
     "magic": 10,
     "difficulty": 9
   },
-  "i_displayname": "Glorious Evolution",
-  "q_displayname": "Siphon Power",
-  "w_dispalyname": "Gravity Field",
-  "e_dispalyname": "Death Ray",
-  "r_dispalyname": "Chaos Storm / Chaos Storm 2",
-  "complex_skills": {
+  "stats": {
+    "hp": 528.04,
+    "hpperlevel": 90,
+    "mp": 405,
+    "mpperlevel": 25,
+    "movespeed": 335,
+    "armor": 22.72,
+    "armorperlevel": 4,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 8,
+    "hpregenperlevel": 0.65,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 52.04,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2.11,
+    "attackspeed": 0.658
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Glorious Evolution",
+      "riotId": "",
+      "name": "Glorious Evolution",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Viktor_Passive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Viktor starts with the Prototype Hex Core that can be upgraded three times in the store to augment his abilities.",
-      "champion": "Viktor",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Viktor''' starts each game with an exclusive {{ii|Prototype Hex Core}}, which permanently occupies one of his item slots. For some additional gold, '''Viktor''' can upgrade his ''Hex Core'' to increase its bonuses and grant him one ''Evolution'' point, which he can use to augment one of his basic [[Champion ability|abilities]]. Once he augments all of his basic abilities, '''Viktor''' automatically augments his ultimate ability, {{ai|Chaos Storm|Viktor}}.\n* {{ii|Prototype Hex Core}}: {{Item data Prototype Hex Core|pst2|pass}}\n* {{ii|The Hex Core mk-1}}: {{Item data The Hex Core mk-1|pst2|pass}} And one Evolution Point.\n* {{ii|The Hex Core mk-2}}: {{Item data The Hex Core mk-2|pst2|pass}} And one Evolution Point.\n* {{ii|Perfect Hex Core}}: {{Item data Perfect Hex Core|pst2|pass}} And one Evolution Point."
       ],
-      "icon": [
-        "Glorious Evolution.png"
-      ],
-      "leveling": [],
-      "name": "Glorious Evolution",
-      "notes": [
-        "* Given the gold values of {{g|21.75}} per ability power and {{g|1.4}} per mana:",
-        "** Prototype Hex Core is worth {{g|35.75}} at level 1, and {{g|643.5}} at level 18, and has infinite efficiency since it free;",
-        "** The Hex Core mk-1 is at least 100% gold efficient at level 15;",
-        "** The Hex Core mk-2 is at least 100% gold efficient at level 15;",
-        "** Perfect Hex Core is at least 100% gold efficient at level 12.",
-        "* At level 18, The Perfect Hex Core grants 180 ability power and 450 mana. It's worth {{g|4545}} at level 18 (excluding passives) and is 152% gold efficient."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* Given the gold values of {{g|21.75}} per ability power and {{g|1.4}} per mana:\n** Prototype Hex Core is worth {{g|35.75}} at level 1, and {{g|643.5}} at level 18, and has infinite efficiency since it free;\n** The Hex Core mk-1 is at least 100% gold efficient at level 15;\n** The Hex Core mk-2 is at least 100% gold efficient at level 15;\n** Perfect Hex Core is at least 100% gold efficient at level 12.\n* At level 18, The Perfect Hex Core grants 180 ability power and 450 mana. It's worth {{g|4545}} at level 18 (excluding passives) and is 152% gold efficient.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "ViktorPowerTransfer",
-      "riotName": "Siphon Power",
+      "riotId": "ViktorPowerTransfer",
+      "name": "Siphon Power",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ViktorPowerTransfer.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 384,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies / Self",
-      "blurb": "Viktor blasts an enemy unit dealing magic damage, gaining a shield and empowering his next basic attack. Augment: Viktor gains bonus Movement Speed after casting.",
-      "callforhelp": true,
-      "champion": "Viktor",
       "cooldown": [
         9,
         8,
@@ -104,63 +84,164 @@
         6,
         5
       ],
-      "cooldownBurn": "9/8/7/6/5",
-      "costBurn": "45 / 50 / 55 / 60 / 65",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
       ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 600,
+      "image": {
+        "full": "ViktorPowerTransfer.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Viktor''' {{tip|shields}} himself for {{as|8% of his '''maximum''' mana}} {{as|(+ 15% AP)}} for {{fd|2.5}} seconds, deals {{tip|magic damage|{{as|magic damage}}}} to the target enemy, and gains {{ai|Discharge|Viktor}} for {{fd|3.5}} seconds.",
         "{{sbc|{{ai|Discharge|Viktor}}:}} '''Victor's''' next [[basic attack]] won't use a {{tip|projectile}} and is modified to deal {{as|magic damage}}.",
         "{{sbc|{{ai|Augment- Turbocharge|Viktor|Augment: Turbocharge}}:}} '''Viktor''' instantly gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for {{fd|2.5}} seconds after using ''Siphon Power'', while also increasing the shield's value by 60%, up to {{as|{{fd|12.8}}% of his '''maximum''' mana}} {{as|(+ 24% AP)}}."
       ],
-      "icon": [
-        "Siphon Power.png",
-        "Discharge.png",
-        "Augment- Turbocharge.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|50 to 110}} {{as|(+ 40% AP)}}}}",
-        "{{st|Discharge Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}} {{as|(+ 55% AP)}}|Total Damage|{{ap|50+20 to 110+120}} {{as|(+ 100% AD)}} {{as|(+ 95% AP)}}}}"
-      ],
-      "name": "Siphon Power",
-      "notes": [
-        "* The enhanced attack activates on-ability-hit procs.",
-        "* The enhanced attack will apply other [[on-hit effect]]s and can critically strike as normal.",
-        "** The enhanced attack's damage has two components. {{tip|Critical strike}} and {{sti|life steal}} only interact with the basic attack damage component.",
-        "** The enhanced attack itself does '''not''' apply spell effects such as {{sti|Spell vamp}} or {{ii|Rylai's Crystal Scepter}}.",
-        "** The bonus damage will not trigger on structures.",
-        "** All damage dealt by {{nie|Spellblade}} on the enhanced attack is converted into magic damage.",
-        "* {{tip|Spell shield}} will block the damage, but will not cancel the shield nor the auto attack and movement speed buffs."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 2000,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 600,
-      "targeting": "Unit"
+      "notes": "\n* The enhanced attack activates on-ability-hit procs.\n* The enhanced attack will apply other [[on-hit effect]]s and can critically strike as normal.\n** The enhanced attack's damage has two components. {{tip|Critical strike}} and {{sti|life steal}} only interact with the basic attack damage component.\n** The enhanced attack itself does '''not''' apply spell effects such as {{sti|Spell vamp}} or {{ii|Rylai's Crystal Scepter}}.\n** The bonus damage will not trigger on structures.\n** All damage dealt by {{nie|Spellblade}} on the enhanced attack is converted into magic damage.\n* {{tip|Spell shield}} will block the damage, but will not cancel the shield nor the auto attack and movement speed buffs.",
+      "costBurn": "45/50/55/60/65",
+      "cooldownBurn": "9/8/7/6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|50 to 110}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                65,
+                80,
+                95,
+                110
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  65,
+                  80,
+                  95,
+                  110
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Discharge Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}} {{as|(+ 55% AP)}}|Total Damage|{{ap|50+20 to 110+120}} {{as|(+ 100% AD)}} {{as|(+ 95% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Discharge Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 55% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 95% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                45,
+                70,
+                95,
+                120
+              ],
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.55
+              },
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.9500000000000001
+              }
+            ],
+            "st_slices": [
+              "Discharge Damage",
+              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 55% AP)</span>",
+              "Total Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 95% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  45,
+                  70,
+                  95,
+                  120
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.55
+              },
+              "title": "Discharge Damage",
+              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 55% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.55
+              },
+              "title": "Total Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 95% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "ViktorGravitonField",
-      "riotName": "Gravity Field",
+      "riotId": "ViktorGravitonField",
+      "name": "Gravity Field",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ViktorGravitonField.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 432,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Viktor conjures a heavy gravitational field that slows enemies in its radius. Enemies who stay within the device for too long are stunned. Augment: Enemies stunned by Gravity Field are dragged to the center.",
-      "champion": "Viktor",
       "cooldown": [
         17,
         16,
@@ -168,55 +249,78 @@
         14,
         13
       ],
-      "cooldownBurn": "17/16/15/14/13",
-      "costBurn": "65",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        65,
+        65,
+        65,
+        65,
+        65
       ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 800,
+      "image": {
+        "full": "ViktorGravitonField.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Viktor''' deploys a gravitational imprisonment device at the target location which arms after a brief delay. For 4 seconds, the trap {{tip|slow|slows}} all enemies that pass through its field, persisting for {{fd|0.25}} seconds after leaving.",
         "Whilst under the trap's effects, enemies generate a stack every {{fd|0.5}} seconds. At 3 stacks, enemies are {{tip|knockdown|knocked down}} and {{tip|stun|stunned}} for {{fd|1.5}} seconds.",
         "{{sbc|{{ai|Augment- Implosion|Viktor|Augment: Implosion}}:}} Units {{tip|stun|stunned}} by ''Gravity Field'' are {{tt|dragged|not considered airborne}} into the center."
       ],
-      "icon": [
-        "Gravity Field.png",
-        "Augment- Implosion.png"
-      ],
-      "leveling": [
-        "{{st|Slow|{{ap|28 to 44}}%}}"
-      ],
-      "name": "Gravity Field",
-      "notes": [
-        "* An enemy can only be stunned by the field once per cast, after which they will '''not''' be slowed or accumulate stacks again.",
-        "* ''Gravity Field'' will remain active if '''Viktor''' dies.",
-        "* ''Gravity Field's'' animation can be seen by both teams through [[Sight|fog of war]]."
-      ],
-      "projectile": "None",
-      "skill": "W",
-      "spellshield": true,
-      "target_range": 800,
-      "targeting": "Ground"
+      "notes": "\n* An enemy can only be stunned by the field once per cast, after which they will '''not''' be slowed or accumulate stacks again.\n* ''Gravity Field'' will remain active if '''Viktor''' dies.\n* ''Gravity Field's'' animation can be seen by both teams through [[Sight|fog of war]].",
+      "costBurn": "65",
+      "cooldownBurn": "17/16/15/14/13",
+      "effects": [
+        {
+          "levelingtext": "{{st|Slow|{{ap|28 to 44}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['28','32','36','40','44']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                28,
+                32,
+                36,
+                40,
+                44
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['28','32','36','40','44']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  28,
+                  32,
+                  36,
+                  40,
+                  44
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['28','32','36','40','44']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "ViktorDeathRay",
-      "riotName": "Death Ray",
+      "riotId": "ViktorDeathRay",
+      "name": "Death Ray",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "ViktorDeathRay.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Viktor uses his robotic arm to fire a chaos beam that cuts across the field in a line, dealing damage to all enemies in its path. Augment: An explosion follows the Death Ray's wake, dealing magic damage.",
-      "champion": "Viktor",
       "cooldown": [
         12,
         11,
@@ -224,105 +328,270 @@
         9,
         8
       ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "70 / 80 / 90 / 100 / 110",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
       ],
-      "description": [
-        "{{sbc|Active:}} '''Viktor''' uses his synthetic arm to fire an energy beam 500 units down the target path, dealing {{as|magic damage}} to every enemy it hits. The arm can fire in any direction from any point within [[range]], and does not interrupt '''Viktor's''' previous orders.",
-        "{{sbc|{{ai|Augment- Aftershock|Viktor|Augment: Aftershock}}:}} An explosion follows ''Death Ray's'' wake after 1 second, dealing additional {{as|magic damage}}."
-      ],
-      "icon": [
-        "Death Ray.png",
-        "Augment- Aftershock.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}",
-        "{{st|{{ai|Augment- Aftershock|Viktor|Aftershock}} Magic Damage|{{ap|20 to 180}} {{as|(+ 70% AP)}}|Total Magic Damage|{{ap|70+20 to 230+180}} {{as|(+ 130% AP)}}}}"
-      ],
-      "name": "Death Ray",
-      "notes": [
-        "* ''Death Ray'' has no cast time and Viktor may freely act while the ray is travelling.",
-        "** The effected area is set upon casting, no matter how far away Viktor moves. Unlike a leash, ''Death Ray'' will not break off its own effect.",
-        "* The laser grants a moderate area of [[sight]] around where the beam strikes the ground.",
-        "* If ''Death Ray'' is blocked by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}, the explosions will travel only up to the wall and will not continue past it.",
-        "** However, the capability to be blocked only applies to the laser as it hits the ground. Viktor can cast the ability ''over'' the wall and it will not be destroyed or intercepted.",
-        "* If Viktor dies while he is firing the beam it will become interrupted and deal damage up to the location where it was in the moment Viktor died."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 1350,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
+      "costtype": "mana",
+      "targeting": "[[Direction-targeted|Vector-targeted]]",
       "target_range": 525,
-      "targeting": "[[Direction-targeted|Vector-targeted]]"
-    },
-    "r1": {
-      "key": "R",
-      "id": "ViktorChaosStorm",
-      "riotName": "Chaos Storm",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "ViktorChaosStorm.png",
+        "full": "ViktorDeathRay.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 48,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "'''Viktor''' conjures a singularity on the field which deals magic damage and interrupts enemy channels. The singularity then periodically does magic damage to all nearby enemies. '''Viktor''' can redirect the singularity. Augment: The Chaos Storm moves faster.",
-      "champion": "Viktor",
+      "description": [
+        "{{sbc|Active:}} '''Viktor''' uses his synthetic arm to fire an energy beam 500 units down the target path, dealing {{as|magic damage}} to every enemy it hits. The arm can fire in any direction from any point within [[range]], and does not interrupt '''Viktor's''' previous orders.",
+        "{{sbc|{{ai|Augment- Aftershock|Viktor|Augment: Aftershock}}:}} An explosion follows ''Death Ray's'' wake after 1 second, dealing additional {{as|magic damage}}."
+      ],
+      "notes": "\n* ''Death Ray'' has no cast time and Viktor may freely act while the ray is travelling.\n** The effected area is set upon casting, no matter how far away Viktor moves. Unlike a leash, ''Death Ray'' will not break off its own effect.\n* The laser grants a moderate area of [[sight]] around where the beam strikes the ground.\n* If ''Death Ray'' is blocked by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}, the explosions will travel only up to the wall and will not continue past it.\n** However, the capability to be blocked only applies to the laser as it hits the ground. Viktor can cast the ability ''over'' the wall and it will not be destroyed or intercepted.\n* If Viktor dies while he is firing the beam it will become interrupted and deal damage up to the location where it was in the moment Viktor died.",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|{{ai|Augment- Aftershock|Viktor|Aftershock}} Magic Damage|{{ap|20 to 180}} {{as|(+ 70% AP)}}|Total Magic Damage|{{ap|70+20 to 230+180}} {{as|(+ 130% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Viktor\">Aftershock<template #content>Augment- Aftershock</template></HtmlTooltip> Magic Damage</span>: <span><spell-span :list=\"['20','60','100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['90','170','250','330','410']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 130% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                60,
+                100,
+                140,
+                180
+              ],
+              [
+                90,
+                170,
+                250,
+                330,
+                410
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              },
+              {
+                "player_total_ap": 1.3
+              }
+            ],
+            "st_slices": [
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Viktor\">Aftershock<template #content>Augment- Aftershock</template></HtmlTooltip> Magic Damage",
+              "<spell-span :list=\"['20','60','100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['90','170','250','330','410']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 130% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  60,
+                  100,
+                  140,
+                  180
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Viktor\">Aftershock<template #content>Augment- Aftershock</template></HtmlTooltip> Magic Damage",
+              "str": "<spell-span :list=\"['20','60','100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  90,
+                  170,
+                  250,
+                  330,
+                  410
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['90','170','250','330','410']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 130% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "ViktorChaosStorm",
+      "name": "Chaos Storm",
+      "maxrank": 3,
       "cooldown": [
         120,
         100,
         80
       ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 700,
+      "image": {
+        "full": "ViktorChaosStorm.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|First Cast:}} '''Viktor''' conjures an arcane singularity at the target location, dealing {{as|magic damage}} to every enemy it hits and {{tip|Disrupt|interrupting channeled abilities}}. The singularity remains active for {{fd|6.5}} seconds afterwards, dealing {{as|magic damage}} to all nearby enemies every 2 seconds.",
         "{{sbc|Second Cast:}} '''Viktor''' directs the singularity to the target location. Once the singularity damages an enemy [[champion]], it automatically follows them until the target dies or escapes it. The singularity moves faster depending on its proximity to '''Viktor'''.",
         "{{sbc|{{ai|Augment- Velocity|Viktor|Augment: Velocity}}:}} ''Chaos Storm'' moves 20% faster."
       ],
-      "effect_radius": 325,
-      "icon": [
-        "Chaos Storm.png",
-        "Chaos Storm 2.png",
-        "Augment- Velocity.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100 to 250}} {{as|(+ 50% AP)}}}}\n{{st|Magic Damage Per Tick|{{ap|130 to 290}} {{as|(+ 85% AP)}}|Total Magic Damage|{{ap|100+130*3 to 250+290*3}} {{as|(+ 305% AP)}}}}"
-      ],
-      "name": "Chaos Storm",
-      "notes": [
-        "* ''Chaos Storm'' reaches its maximum speed at 300 units and minimum speed at 900 units away from '''Viktor'''.",
-        "** Without {{ai|Augment- Velocity|Viktor|Augment: Velocity}}, ''Chaos Storm's'' maximum speed and minimum speed are 400 and 200, respectively.",
-        "* Including the initial damage, ''Chaos Storm'' deals 4 instance of damage.",
-        "** {{ii|Rylai's Crystal Scepter}} will apply a 20% slow on each instance of damage dealt.",
-        "* ''Chaos Storm'' can be controlled by Alt + Right-Click or by pressing the R button (''default hotkeys''). It can be commanded to move toward locations or enemy champions (''it will continue to follow the chosen enemy champion unless commanded otherwise'').",
-        "* If '''Viktor''' is affected by hard [[crowd control]] he cannot issue new commands to the singularity.",
-        "* If the champion the storm is currently following enters [[stealth]], the singularity will continue to follow them, effectively giving away their position.",
-        "* The singularity grants [[sight]] around its position for the full duration.",
-        "* If '''Viktor''' dies, ''Chaos Storm'' will remain active and continue to deal damage for the rest of its duration, but will cease its movement and cannot be subsequently redirected.",
-        "* ''Chaos Storm'' cannot go through (player-made) terrain."
-      ],
-      "projectile": "Magic",
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 700,
-      "targeting": "Ground"
+      "notes": "\n* ''Chaos Storm'' reaches its maximum speed at 300 units and minimum speed at 900 units away from '''Viktor'''.\n** Without {{ai|Augment- Velocity|Viktor|Augment: Velocity}}, ''Chaos Storm's'' maximum speed and minimum speed are 400 and 200, respectively.\n* Including the initial damage, ''Chaos Storm'' deals 4 instance of damage.\n** {{ii|Rylai's Crystal Scepter}} will apply a 20% slow on each instance of damage dealt.\n* ''Chaos Storm'' can be controlled by Alt + Right-Click or by pressing the R button (''default hotkeys''). It can be commanded to move toward locations or enemy champions (''it will continue to follow the chosen enemy champion unless commanded otherwise'').\n* If '''Viktor''' is affected by hard [[crowd control]] he cannot issue new commands to the singularity.\n* If the champion the storm is currently following enters [[stealth]], the singularity will continue to follow them, effectively giving away their position.\n* The singularity grants [[sight]] around its position for the full duration.\n* If '''Viktor''' dies, ''Chaos Storm'' will remain active and continue to deal damage for the rest of its duration, but will cease its movement and cannot be subsequently redirected.\n* ''Chaos Storm'' cannot go through (player-made) terrain.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100 to 250}} {{as|(+ 50% AP)}}}}\n{{st|Magic Damage Per Tick|{{ap|130 to 290}} {{as|(+ 85% AP)}}|Total Magic Damage|{{ap|100+130*3 to 250+290*3}} {{as|(+ 305% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','137.5','175','212.5','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['130','170','210','250','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['490','647.5','805','962.5','1120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 305% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                137.5,
+                175,
+                212.5,
+                250
+              ],
+              [
+                130,
+                170,
+                210,
+                250,
+                290
+              ],
+              [
+                490,
+                647.5,
+                805,
+                962.5,
+                1120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 0.85
+              },
+              {
+                "player_total_ap": 3.0500000000000003
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Tick",
+              "<spell-span :list=\"['130','170','210','250','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['490','647.5','805','962.5','1120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 305% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  137.5,
+                  175,
+                  212.5,
+                  250
+                ],
+                "player_total_ap": 0.85
+              },
+              "title": "Magic Damage Per Tick",
+              "str": "<spell-span :list=\"['130','170','210','250','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  130,
+                  170,
+                  210,
+                  250,
+                  290
+                ],
+                "player_total_ap": 0.85
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['490','647.5','805','962.5','1120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 305% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

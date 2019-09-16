@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.142",
-  "changes": "9.14.1",
+  "changes": "9.18.1",
   "id": "Jayce",
   "key": "126",
   "name": "Jayce",
-  "fullname": "Jayce Giopara",
   "title": "the Defender of Tomorrow",
   "image": {
     "full": "Jayce.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Marksman",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 3,
     "difficulty": 7
   },
-  "i_displayname": "Hextech Capacitor",
-  "q_displayname": "To the Skies! / Shock Blast",
-  "w_dispalyname": "Lightning Field / Hyper Charge",
-  "e_dispalyname": "Thundering Blow / Acceleration Gate",
-  "r_dispalyname": "Transform Mercury Cannon / Transform Mercury Hammer",
-  "complex_skills": {
+  "stats": {
+    "hp": 560,
+    "hpperlevel": 90,
+    "mp": 357.2,
+    "mpperlevel": 37,
+    "movespeed": 335,
+    "armor": 27,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 125,
+    "hpregen": 6,
+    "hpregenperlevel": 0.6,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 54,
+    "attackdamageperlevel": 4.25,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.658
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Hextech Capacitor",
+      "riotId": "",
+      "name": "Hextech Capacitor",
+      "maxrank": 0,
+      "targeting": "Self",
       "image": {
         "full": "Jayce_Passive.png",
         "sprite": "passive1.png",
@@ -49,91 +68,35 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "After casting Transform Jayce gains 40 Movement Speed and can move through units for the next 1.25 seconds.",
-      "champion": "Jayce",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} Each time '''Jayce''' switches between {{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}}}} and {{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}}}} he is {{tip|ghosted}} and gains {{sti|ms|{{as|40 '''bonus''' movement speed}}}} for {{fd|1.25}} seconds."
       ],
-      "icon": [
-        "Hextech Capacitor.png"
-      ],
-      "leveling": [],
-      "name": "Hextech Capacitor",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Self"
-    },
-    "q1": {
-      "key": "Q1",
-      "id": "JayceToTheSkies",
-      "riotName": "To the Skies! / Shock Blast",
-      "maxrank": 6,
-      "maxammo": -1,
-      "image": {
-        "full": "JayceToTheSkies.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Hammer Stance: Leaps to an enemy dealing physical damage and slowing enemies.",
-      "callforhelp": true,
-      "champion": "Jayce",
-      "cooldown": [
-        16,
-        14,
-        12,
-        10,
-        8,
-        6
-      ],
-      "cooldownBurn": "16/14/12/10/8/6",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
-      "description": [
-        "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Active:}} '''Jayce''' {{tip|dashes}} to the target enemy and smashes his hammer to the ground, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies in the area and {{tip|slow|slowing}} them for 2 seconds."
-      ],
-      "icon": [
-        "To the Skies!.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|45 to 220 6}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Slow|{{ap|30 to 55 6}}%}}"
-      ],
-      "name": "To the Skies!",
-      "notes": [
-        "* ''To The Skies!'' will always direct ''Jayce'' linearly to his target's location.",
-        "** If the target uses either {{si|Flash}} or a movement ability ''Jayce'' will not follow them."
-      ],
-      "projectile": "physical",
-      "skill": "Q",
-      "spelleffects": "aoe",
-      "target_range": 600,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q2": {
-      "key": "Q2",
-      "id": "JayceToTheSkies",
-      "riotName": "To the Skies! / Shock Blast",
+      "riotId": "JayceToTheSkies",
+      "name": "Shock Blast",
       "maxrank": 6,
-      "maxammo": -1,
+      "cooldown": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "{{tt|1050|Standard range}} / {{tt|1470|Enhanced range}}",
       "image": {
         "full": "JayceToTheSkies.png",
         "sprite": "spell4.png",
@@ -143,52 +106,209 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Cannon Stance: Fires an orb of electricity that detonates upon hitting an enemy (or reaching the end of its path) dealing physical damage to all enemies hit.",
-      "champion": "Jayce",
-      "cooldown": [
-        16,
-        14,
-        12,
-        10,
-        8,
-        6
-      ],
-      "cooldownBurn": "16/14/12/10/8/6",
-      "costBurn": "55 / 60 / 65 / 70 / 75 / 80",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}} - Active:}} '''Jayce''' fires an orb of electricity that detonates upon hitting an enemy or reaching the end of its path, dealing {{as|physical damage}} to all enemies around them.",
         "If ''Shock Blast'' is fired through {{ai|Acceleration Gate|Jayce}} its area of effect, range and damage are increased by 40%, and its speed by {{fd|30.34}}%."
       ],
-      "icon": [
-        "Shock Blast.png"
+      "notes": "\n* When gaining bonus range when going through {{ai|Acceleration Gate|Jayce}} ''Shock Blast'' is simply re-targeted so as to reach a location further along its travel path (but further away from ''Jayce's'' original position) ignoring any range calculations whatsoever.\n** ''Shock Blast'' briefly grants vision of the area it explodes in.",
+      "costBurn": "55/60/65/70/75/80",
+      "cooldownBurn": "8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|55 to 305 6}} {{as|(+ 120% '''bonus''' AD)}}|{{ai|Acceleration Gate|Jayce|Accelerated}} Damage|{{ap|55*1.4 to 305*1.4 6}} {{as|(+ 168% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['55','105','155','205','255','305']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage</span>: <span><spell-span :list=\"['77','147','217','287','357','427']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 168% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                105,
+                155,
+                205,
+                255,
+                305
+              ],
+              [
+                77,
+                147,
+                217,
+                287,
+                357,
+                427
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.2
+              },
+              {
+                "player_bonus_ad": 1.68
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['55','105','155','205','255','305']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage",
+              "<spell-span :list=\"['77','147','217','287','357','427']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 168% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  105,
+                  155,
+                  205,
+                  255,
+                  305
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['55','105','155','205','255','305']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  77,
+                  147,
+                  217,
+                  287,
+                  357,
+                  427
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage",
+              "str": "<spell-span :list=\"['77','147','217','287','357','427']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 168% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "JayceToTheSkies",
+      "name": "To the Skies!",
+      "maxrank": 6,
+      "cooldown": [
+        16,
+        14,
+        12,
+        10,
+        8,
+        6
       ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55 to 305 6}} {{as|(+ 120% '''bonus''' AD)}}|{{ai|Acceleration Gate|Jayce|Accelerated}} Damage|{{ap|55*1.4 to 305*1.4 6}} {{as|(+ 168% '''bonus''' AD)}}}}"
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
       ],
-      "name": "Shock Blast",
-      "notes": [
-        "* When gaining bonus range when going through {{ai|Acceleration Gate|Jayce}} ''Shock Blast'' is simply re-targeted so as to reach a location further along its travel path (but further away from ''Jayce's'' original position) ignoring any range calculations whatsoever.",
-        "** ''Shock Blast'' briefly grants vision of the area it explodes in."
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 600,
+      "image": {
+        "full": "JayceToTheSkies.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Active:}} '''Jayce''' {{tip|dashes}} to the target enemy and smashes his hammer to the ground, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies in the area and {{tip|slow|slowing}} them for 2 seconds."
       ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": "{{tt|1450|Standard speed}} / {{tt|1890|Enhanced speed}}",
-      "spelleffects": "aoe",
-      "target_range": "{{tt|1050|Standard range}} / {{tt|1470|Enhanced range}}",
-      "targeting": "Direction"
+      "notes": "\n* ''To The Skies!'' will always direct ''Jayce'' linearly to his target's location.\n** If the target uses either {{si|Flash}} or a movement ability ''Jayce'' will not follow them.",
+      "costBurn": "40",
+      "cooldownBurn": "16/14/12/10/8/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|45 to 220 6}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Slow|{{ap|30 to 55 6}}%}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['45','80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                45,
+                80,
+                115,
+                150,
+                185,
+                220
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50,
+                55
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.2
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  45,
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_bonus_ad": 1.2
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W1",
-      "id": "JayceStaticField",
-      "riotName": "Lightning Field / Hyper Charge",
+      "riotId": "JayceStaticField",
+      "name": "Lightning Field",
       "maxrank": 6,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Passive, Self",
       "image": {
         "full": "JayceStaticField.png",
         "sprite": "spell4.png",
@@ -198,43 +318,159 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Hammer Stance: Passive: Restores Mana per strike. Active: Creates a field of lightning damaging nearby enemies for several seconds.",
-      "champion": "Jayce",
-      "cooldownBurn": "10",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Passive:}} '''Jayce''' restores {{sti|{{as|mana}}}} each time he hits an enemy with a [[basic attack]] while in {{sbc|Hammer Stance}}.",
         "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Active:}} '''Jayce''' surrounds himself with an electric field for 4 seconds, dealing {{tip|magic damage|{{as|magic damage}}}} each second to all nearby enemies."
       ],
-      "effect_radius": 285,
-      "icon": [
-        "Lightning Field.png"
-      ],
-      "leveling": [
-        "{{st|Mana Restored|{{as|{{ap|6 to 16 6}}|Mana}}}}",
-        "{{st|Magic Damage Per Second|{{ap|25 to 100 6}} {{as|(+ 25% AP)}}|Total Magic Damage| {{ap|25*4 to 100*4 6}} {{as|(+ 100% AP)}}}}"
-      ],
-      "name": "Lightning Field",
-      "notes": [
-        "* ''Lightning Field'' has no cast time and do not interrupt ''Jayce's'' previous orders."
-      ],
-      "projectile": "magic",
-      "skill": "W",
-      "spelleffects": "aoedot",
-      "targeting": "Passive, Self"
+      "notes": "\n* ''Lightning Field'' has no cast time and do not interrupt ''Jayce's'' previous orders.",
+      "costBurn": "40",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Mana Restored|{{as|{{ap|6 to 16 6}}|Mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"Mana\"><spell-span :list=\"['6','8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.06,
+                  0.08,
+                  0.1,
+                  0.12,
+                  0.14,
+                  0.16
+                ]
+              }
+            ],
+            "st_slices": [
+              "Mana Restored",
+              "<span class=\"Mana\"><spell-span :list=\"['6','8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_unknown": [
+                  0.06,
+                  0.08,
+                  0.1,
+                  0.12,
+                  0.14,
+                  0.16
+                ]
+              },
+              "title": "Mana Restored",
+              "str": "<span class=\"Mana\"><spell-span :list=\"['6','8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{ap|25 to 100 6}} {{as|(+ 25% AP)}}|Total Magic Damage| {{ap|25*4 to 100*4 6}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['25','40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span> <spell-span :list=\"['100','160','220','280','340','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                25,
+                40,
+                55,
+                70,
+                85,
+                100
+              ],
+              [
+                100,
+                160,
+                220,
+                280,
+                340,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Second",
+              "<spell-span :list=\"['25','40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "Total Magic Damage",
+              " <spell-span :list=\"['100','160','220','280','340','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  25,
+                  40,
+                  55,
+                  70,
+                  85,
+                  100
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Magic Damage Per Second",
+              "str": "<spell-span :list=\"['25','40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  160,
+                  220,
+                  280,
+                  340,
+                  400
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Total Magic Damage",
+              "str": " <spell-span :list=\"['100','160','220','280','340','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w2": {
-      "key": "W2",
-      "id": "JayceStaticField",
-      "riotName": "Lightning Field / Hyper Charge",
+      "riotId": "JayceStaticField",
+      "name": "Hyper Charge",
       "maxrank": 6,
-      "maxammo": -1,
+      "cooldown": [
+        13,
+        11.4,
+        9.8,
+        8.2,
+        6.6,
+        5
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Self",
       "image": {
         "full": "JayceStaticField.png",
         "sprite": "spell4.png",
@@ -244,106 +480,79 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Cannon Stance: Gains a burst of energy, increasing Attack Speed to maximum for several attacks.",
-      "champion": "Jayce",
-      "cooldown": [
-        10,
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      "cooldownBurn": "10",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}} - Active:}} '''Jayce''' gains {{as|300% '''bonus''' attack speed}} on his next 3 basic attacks within 4 seconds, with each one dealing modified damage.",
         "''Hyper Charge'' resets '''Jayce's''' autoattack timer, and its modified damage is affected by {{tip|critical strike|critical strikes}}, dealing {{as|{{critical damage|100}} '''bonus''' physical damage}}."
       ],
-      "icon": [
-        "Hyper Charge.png"
-      ],
-      "leveling": [
-        "{{st|Damage Modifier|{{ap|70 to 110 6}}%}}"
-      ],
-      "name": "Hyper Charge",
-      "notes": [
-        "* ''Hyper Charge'' has no cast time and do not interrupt ''Jayce's'' previous orders.",
-        "* The last basic attack is checked on-hit rather than on-attack.",
-        "** If {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}} hit the target before the basic attack does, the basic attack damage will not be modified.",
-        "* ''Hyper Charge'' only goes on cooldown after the third shot is consumed or the duration ends, not on-cast."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "physical",
-      "skill": "W",
-      "targeting": "Self"
-    },
-    "e1": {
-      "key": "E1",
-      "id": "JayceThunderingBlow",
-      "riotName": "Thundering Blow / Acceleration Gate",
-      "maxrank": 6,
-      "maxammo": -1,
-      "image": {
-        "full": "JayceThunderingBlow.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 192,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Hammer Stance: Deals magic damage to an enemy and knocks them back a short distance.",
-      "callforhelp": true,
-      "champion": "Jayce",
-      "cooldown": [
-        20,
-        18,
-        16,
-        14,
-        12,
-        10
-      ],
-      "cooldownBurn": "20/18/16/14/12/10",
-      "costBurn": "55",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Active:}} '''Jayce''' swings his hammer at the target enemy, dealing {{as|magic damage}}, capped against [[monsters]], while also marking a location 500 units away from him in the direction of the target, {{tip|airborne|pulling}} them to it."
-      ],
-      "icon": [
-        "Thundering Blow.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{as|{{ap|8 to 20 6}}% of target's '''maximum''' health}} {{as|(+ 100% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|200 to 700 6}}}}"
-      ],
-      "name": "Thundering Blow",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "magic",
-      "skill": "E",
-      "spelleffects": "single",
-      "spellshield": true,
-      "target_range": 240,
-      "targeting": "Unit"
+      "notes": "\n* ''Hyper Charge'' has no cast time and do not interrupt ''Jayce's'' previous orders.\n* The last basic attack is checked on-hit rather than on-attack.\n** If {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}} hit the target before the basic attack does, the basic attack damage will not be modified.\n* ''Hyper Charge'' only goes on cooldown after the third shot is consumed or the duration ends, not on-cast.",
+      "costBurn": "40",
+      "cooldownBurn": "13/11.4/9.8/8.2/6.6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Damage Modifier|{{ap|70 to 110 6}}%}}",
+          "str": "<ul><li><span class=\"blue\">Damage Modifier</span>: <span><spell-span :list=\"['70','78','86','94','102','110']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                78,
+                86,
+                94,
+                102,
+                110
+              ]
+            ],
+            "st_slices": [
+              "Damage Modifier",
+              "<spell-span :list=\"['70','78','86','94','102','110']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  78,
+                  86,
+                  94,
+                  102,
+                  110
+                ]
+              },
+              "title": "Damage Modifier",
+              "str": "<spell-span :list=\"['70','78','86','94','102','110']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "JayceThunderingBlow",
-      "riotName": "Thundering Blow / Acceleration Gate",
+      "riotId": "JayceThunderingBlow",
+      "name": "Acceleration Gate",
       "maxrank": 6,
-      "maxammo": -1,
+      "cooldown": [
+        16,
+        16,
+        16,
+        16,
+        16,
+        16
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 650,
       "image": {
         "full": "JayceThunderingBlow.png",
         "sprite": "spell4.png",
@@ -353,50 +562,175 @@
         "w": 48,
         "h": 48
       },
-      "affects": "None",
-      "blurb": "Cannon Stance: Deploys an Acceleration Gate increasing the Movement Speed of all allied champions who pass through it. If Shock Blast is fired through the gate the missile speed, range, and damage will increase.",
-      "champion": "Jayce",
-      "cooldown": [
-        20,
-        18,
-        16,
-        14,
-        12,
-        10
-      ],
-      "cooldownBurn": "20/18/16/14/12/10",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}} - Active:}} '''Jayce''' deploys an ''Acceleration Gate'' for 4 seconds, granting all allies who pass through it, including himself, {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds."
       ],
-      "icon": [
-        "Acceleration Gate.png"
+      "notes": "\n* ''Acceleration Gate'' has no cast time and does not interrupt ''Jayce's'' previous orders.\n* ''Acceleration Gate'' does not grant bonus movement speed to pets or minions.\n* ''Acceleration Gate'' briefly grants vision of the area it was deployed at.",
+      "costBurn": "50",
+      "cooldownBurn": "16",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|30 to 55 6}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50,
+                55
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50,
+                  55
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['30','35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "JayceThunderingBlow",
+      "name": "Thundering Blow",
+      "maxrank": 6,
+      "cooldown": [
+        20,
+        18,
+        16,
+        14,
+        12,
+        10
       ],
-      "leveling": [
-        "{{st|Bonus Movement Speed|{{ap|30 to 55 6}}%}}"
+      "cost": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
       ],
-      "name": "Acceleration Gate",
-      "notes": [
-        "* ''Acceleration Gate'' has no cast time and does not interrupt ''Jayce's'' previous orders.",
-        "* ''Acceleration Gate'' does not grant bonus movement speed to pets or minions.",
-        "* ''Acceleration Gate'' briefly grants vision of the area it was deployed at."
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 240,
+      "image": {
+        "full": "JayceThunderingBlow.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}} - Active:}} '''Jayce''' swings his hammer at the target enemy, dealing {{as|magic damage}}, capped against [[monsters]], while also marking a location 500 units away from him in the direction of the target, {{tip|airborne|pulling}} them to it."
       ],
-      "projectile": "null",
-      "skill": "E",
-      "target_range": 650,
-      "targeting": "Ground"
+      "notes": "\n* No additional notes.",
+      "costBurn": "55",
+      "cooldownBurn": "20/18/16/14/12/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{as|{{ap|8 to 20 6}}% of target's '''maximum''' health}} {{as|(+ 100% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|200 to 700 6}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['8','10.4','12.8','15.2','17.6','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Monster Damage</span>: <span><spell-span :list=\"['200','300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                8,
+                10.4,
+                12.8,
+                15.2,
+                17.6,
+                20
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "target_total_hp": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<span class=\"health\"><spell-span :list=\"['8','10.4','12.8','15.2','17.6','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "Maximum Monster Damage",
+              "<spell-span :list=\"['200','300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  8,
+                  10.4,
+                  12.8,
+                  15.2,
+                  17.6,
+                  20
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Magic Damage",
+              "str": "<span class=\"health\"><spell-span :list=\"['8','10.4','12.8','15.2','17.6','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_bonus_ad": 1
+              },
+              "title": "Maximum Monster Damage",
+              "str": "<spell-span :list=\"['200','300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "r2": {
-      "key": "R2",
-      "id": "JayceStanceHtG",
-      "riotName": "Mercury Cannon / Mercury Hammer",
+      "riotId": "JayceStanceHtG",
+      "name": "Transform Mercury Hammer",
       "maxrank": 1,
-      "maxammo": -1,
+      "cooldown": [
+        6
+      ],
+      "cost": [
+        0
+      ],
+      "targeting": "Self",
       "image": {
         "full": "JayceStanceHtG.png",
         "sprite": "spell4.png",
@@ -406,37 +740,15 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Cannon Stance: Transforms the Mercury Cannon into the Mercury Hammer gaining new abilities and increasing Armor and Magic Resist. The first attack in this form deals additional magic damage.",
-      "champion": "Jayce",
-      "cooldownBurn": "6",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}} - Active:}} '''Jayce''' transforms the {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}} into the ''Mercury Hammer'', gaining new abilities, becoming {{tip|melee}} with {{sti|range|125 range}}, gaining {{pp|4|5 to 35|1 to 16}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, and causing his next basic attack to deal {{as|{{pp|4|25 to 145|1 to 16}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{as|'''bonus''' magic damage}}.",
         "'''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic [[Champion ability|abilities]] each have 6 ranks."
       ],
-      "icon": [
-        "Transform Mercury Hammer.png"
-      ],
-      "leveling": [],
-      "name": "Transform Mercury Hammer",
-      "notes": [
-        "* ''Transform'' has no cast time and does not interrupt ''Jayce's'' previous orders.",
-        "* ''Transform'' does not count as an activation for the purposes of {{nie|Mana Charge}}, {{nie|Spellblade}}, or {{ai|Force Pulse|Kassadin}}.",
-        "* The respective on-hit effects will not be consumed if the respective enhanced attacks are {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, or if they {{tip|blind|miss}}.",
-        "* The ''Mercury Hammer's'' bonus damage can affect structures.",
-        "* Both ''Transform'' on-hit effects have no set duration and will only be consumed when ''Jayce'' either lands a basic attack or switches stances.",
-        "* ''Transform's'' on-hit effects will not proc on wards."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "magic",
-      "skill": "R",
-      "targeting": "Self"
+      "notes": "\n* ''Transform'' has no cast time and does not interrupt ''Jayce's'' previous orders.\n* ''Transform'' does not count as an activation for the purposes of {{nie|Mana Charge}}, {{nie|Spellblade}}, or {{ai|Force Pulse|Kassadin}}.\n* The respective on-hit effects will not be consumed if the respective enhanced attacks are {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, or if they {{tip|blind|miss}}.\n* The ''Mercury Hammer's'' bonus damage can affect structures.\n* Both ''Transform'' on-hit effects have no set duration and will only be consumed when ''Jayce'' either lands a basic attack or switches stances.\n* ''Transform's'' on-hit effects will not proc on wards.",
+      "costBurn": "0",
+      "cooldownBurn": "6",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 8
 }

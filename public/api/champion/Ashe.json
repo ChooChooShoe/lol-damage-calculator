@@ -4,7 +4,6 @@
   "id": "Ashe",
   "key": "22",
   "name": "Ashe",
-  "fullname": "Ashe",
   "title": "the Frost Archer",
   "image": {
     "full": "Ashe.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 450,
   "rp_cost": 260,
   "adaptivetype": "physical",
@@ -31,15 +31,34 @@
     "magic": 2,
     "difficulty": 4
   },
-  "i_displayname": "Frost Shot / Frost Shot 2",
-  "q_displayname": "Ranger's Focus / Ranger's Focus 2",
-  "w_dispalyname": "Volley",
-  "e_dispalyname": "Hawkshot",
-  "r_dispalyname": "Enchanted Crystal Arrow",
-  "complex_skills": {
+  "stats": {
+    "hp": 539,
+    "hpperlevel": 85,
+    "mp": 280,
+    "mpperlevel": 32,
+    "movespeed": 325,
+    "armor": 26,
+    "armorperlevel": 3.4,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 600,
+    "hpregen": 3.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 6.972,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 61,
+    "attackdamageperlevel": 2.96,
+    "attackspeedperlevel": 3.33,
+    "attackspeed": 0.658
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Frost Shot",
+      "riotId": "",
+      "name": "Frost Shot",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Ashe_P.png",
         "sprite": "passive0.png",
@@ -49,46 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ashe's attacks slow their target, causing her to deal increased damage to these targets. Ashe's critical strikes deal no bonus damage but apply an empowered slow to the target.",
-      "champion": "Ashe",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Frost Shot:}} '''Ashe's''' [[basic attack]]s and abilities apply ''Frost'' to enemies, {{tip|slow|slowing}} them by {{pp|6|key=%|15 to 30|1 to 16|displayformula = 15%+3% every 3 levels}} for 2 seconds and causing subsequent basic attacks against them to deal {{as|10% {{as|(+ {{critical damage|100}} critical strike chance)|critical chance}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} while they remain {{tip|slow|slowed}}.",
         "{{sbc|Critical Slow:}} '''Ashe's''' {{tip|critical strike|critical strikes}} deal no additional damage, but double ''Frost's'' slow strength to {{pp|6|key=%|30 to 60|1 to 16|displayformula = 30%+6% every 3 levels}}, decaying over 1 second to its normal strength."
       ],
-      "icon": [
-        "Frost Shot.png",
-        "Frost Shot 2.png"
-      ],
-      "leveling": [],
-      "name": "Frost Shot",
-      "notes": [
-        "* ''Frost Shot's'' damage is reduced by {{ii|Randuin's Omen}}.",
-        "* ''Frost Shot's'' base 10% bonus damage is not affected by critical strike modifiers.",
-        "* {{iis|Runaan's Hurricane}} bolts will deal increased damage from ''Frost Shot''.",
-        "* {{iis|Runaan's Hurricane}} additional bolts will also not deal additional damage on {{tip|critical strike|critical strikes}}.",
-        "* After slowing an enemy champion she will be able to trigger {{ri|Cheap Shot}} on that enemy champion without slowing them for the entire game."
-      ],
-      "occurrence": "On-hit",
-      "parry": true,
-      "projectile": "Physical",
-      "skill": "I",
-      "spellshield": true,
-      "targeting": "Passive"
+      "notes": "\n* ''Frost Shot's'' damage is reduced by {{ii|Randuin's Omen}}.\n* ''Frost Shot's'' base 10% bonus damage is not affected by critical strike modifiers.\n* {{iis|Runaan's Hurricane}} bolts will deal increased damage from ''Frost Shot''.\n* {{iis|Runaan's Hurricane}} additional bolts will also not deal additional damage on {{tip|critical strike|critical strikes}}.\n* After slowing an enemy champion she will be able to trigger {{ri|Cheap Shot}} on that enemy champion without slowing them for the entire game.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "AsheQ",
-      "riotName": "Ranger's Focus",
+      "riotId": "AsheQ",
+      "name": "Ranger's Focus",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana + 4 Focus",
+      "targeting": "None",
       "image": {
         "full": "AsheQ.png",
         "sprite": "spell1.png",
@@ -98,58 +104,150 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Ashe builds up Focus by attacking. At maximum Focus, Ashe can cast Ranger's Focus to consume all stacks of Focus, temporarily increasing her Attack Speed and transforming her basic attack into a powerful flurry attack for the duration.",
-      "champion": "Ashe",
-      "cooldownBurn": "0",
-      "costBurn": "50",
-      "costtype": "Mana + 4 Focus",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Passive - Focus:}} While ''Ranger's Focus'' is inactive, '''Ashe's''' basic attacks grant ''Focus'' for 4 seconds [[on-hit effect|on attack]], stacking up to 4 times. After 4 seconds, each stack thereafter will fall off every second.",
         "{{sbc|Active:}} '''Ashe''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} for 4 seconds and causes each of her basic attacks to fire a flurry of five arrows.",
         "Flurries trigger [[on-hit effect]]s only once, and each arrow deals modified {{as|physical damage}} that benefits from {{ai|Frost Shot|Ashe|Frost Shots}} and {{sti|life steal}}.",
         "''Ranger's Focus'' reduces '''Ashe's''' next basic attack's delay to 40% if currently any higher."
       ],
-      "icon": [
-        "Focus.png",
-        "Ranger's Focus.png",
-        "Ranger's Focus 2.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}",
-        "{{st|Damage Per Arrow|{{as|{{ap|105/5 to 125/5}}% AD}}|Total Damage Per Flurry|{{as|{{ap|105 to 125}}% AD}}}}"
-      ],
-      "name": "Ranger's Focus",
-      "notes": [
-        "* Although ''Ranger's Focus'' has no actual cooldown, 4 stacks of focus are needed before ''Ranger's Focus'' can be reactivated. The time before being able to reactivate ''Ranger's Focus'' is {{pp|type=attack speed|9|1/(0.625/(1-0.05))*4;1/(0.75+0.25*(x-1))*4|0.625/(1-0.05);0.75 to 2.5|round1=3|displayformula=4/average attack speed. ''This is using her base attack speed as the minimum, and considering the time over the course of 4 consecutive attacks.''}} seconds.",
-        "* The multi-attack effect is similar to {{ai|Lightslinger|Lucian}} and {{ai|Double Strike|Master Yi}}, except that on-hit effects aren't applied by the extra attacks.",
-        "* Each arrow from a flurry applies {{ai|Frost Shot 2|Ashe|Frost}} and the bonus damage from {{ai|Frost Shot|Ashe}} is calculated individually per arrow.",
-        "** Similarly, since a flurry is 5 instances of physical damage, {{ii|The Black Cleaver}} allows her to cleave the enemy target 5 times per flurry.",
-        "** {{cai|Tantrum|Amumu}} will reduce each arrow's damage, for a total of {{pp|5|type=E Rank|changedisplay=true|10 to 50}} per flurry.",
-        "** {{cai|Aegis Protection|Pantheon}} will block only one arrow, while other [[parry]] effects will block all the flurry's damage.",
-        "* Each additional arrow from {{ii|Runaan's Hurricane}} will also split into 5 arrows.",
-        "** The arrows are evenly distributed among secondary enemies but one enemy cannot be hit by more than 5 arrows.",
-        "** The flurry will trigger on-hit effects once to each enemy hit.",
-        "** {{nie|Wind's Fury's|Wind's Fury}} splash damage is affected by the damage modifier of ''Ranger's Focus'' Rank 1 and doesn't increase based on its Rank - always dealing{{ft|{{as|({{fd|8.4}}% AD)}} damage per arrow|{{as|(42% AD)|ad}} damage per flurry}}to each secondary target.",
-        "* Attacks against structures will refresh the timer on ''Focus'' but they will not generate new stacks.",
-        "* The flurry attack can be used on structures."
-      ],
-      "occurrence": "On-hit",
-      "parry": "Special",
-      "projectile": true,
-      "skill": "Q",
-      "targeting": "None"
+      "notes": "\n* Although ''Ranger's Focus'' has no actual cooldown, 4 stacks of focus are needed before ''Ranger's Focus'' can be reactivated. The time before being able to reactivate ''Ranger's Focus'' is {{pp|type=attack speed|9|1/(0.625/(1-0.05))*4;1/(0.75+0.25*(x-1))*4|0.625/(1-0.05);0.75 to 2.5|round1=3|displayformula=4/average attack speed. ''This is using her base attack speed as the minimum, and considering the time over the course of 4 consecutive attacks.''}} seconds.\n* The multi-attack effect is similar to {{ai|Lightslinger|Lucian}} and {{ai|Double Strike|Master Yi}}, except that on-hit effects aren't applied by the extra attacks.\n* Each arrow from a flurry applies {{ai|Frost Shot 2|Ashe|Frost}} and the bonus damage from {{ai|Frost Shot|Ashe}} is calculated individually per arrow.\n** Similarly, since a flurry is 5 instances of physical damage, {{ii|The Black Cleaver}} allows her to cleave the enemy target 5 times per flurry.\n** {{cai|Tantrum|Amumu}} will reduce each arrow's damage, for a total of {{pp|5|type=E Rank|changedisplay=true|10 to 50}} per flurry.\n* Each additional arrow from {{ii|Runaan's Hurricane}} will also split into 5 arrows.\n** The arrows are evenly distributed among secondary enemies but one enemy cannot be hit by more than 5 arrows.\n** The flurry will trigger on-hit effects once to each enemy hit.\n** {{nie|Wind's Fury's|Wind's Fury}} splash damage is affected by the damage modifier of ''Ranger's Focus'' Rank 1 and doesn't increase based on its Rank - always dealing{{ft|{{as|({{fd|8.4}}% AD)}} damage per arrow|{{as|(42% AD)|ad}} damage per flurry}}to each secondary target.\n* Attacks against structures will refresh the timer on ''Focus'' but they will not generate new stacks.\n* The flurry attack can be used on structures.",
+      "costBurn": "50",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Damage Per Arrow|{{as|{{ap|105/5 to 125/5}}% AD}}|Total Damage Per Flurry|{{as|{{ap|105 to 125}}% AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage Per Arrow</span>: <span><span class=\"ad\"><spell-span :list=\"['21','22','23','24','25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span></span></li><li><span class=\"blue\">Total Damage Per Flurry</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['105','110','115','120','125']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                21,
+                22,
+                23,
+                24,
+                25
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  1.05,
+                  1.1,
+                  1.15,
+                  1.2,
+                  1.25
+                ]
+              }
+            ],
+            "st_slices": [
+              "Damage Per Arrow",
+              "<span class=\"ad\"><spell-span :list=\"['21','22','23','24','25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
+              "Total Damage Per Flurry",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['105','110','115','120','125']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  21,
+                  22,
+                  23,
+                  24,
+                  25
+                ],
+                "player_total_ad": [
+                  1.05,
+                  1.1,
+                  1.15,
+                  1.2,
+                  1.25
+                ]
+              },
+              "title": "Damage Per Arrow",
+              "str": "<span class=\"ad\"><spell-span :list=\"['21','22','23','24','25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_ad": [
+                  1.05,
+                  1.1,
+                  1.15,
+                  1.2,
+                  1.25
+                ]
+              },
+              "title": "Total Damage Per Flurry",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['105','110','115','120','125']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "Volley",
-      "riotName": "Volley",
+      "riotId": "Volley",
+      "name": "Volley",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        14,
+        11.5,
+        9,
+        6.5,
+        4
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
       "image": {
         "full": "Volley.png",
         "sprite": "spell1.png",
@@ -159,53 +257,81 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": "{{fd|57.5}}{{degrees}}",
-      "blurb": "Ashe fires 9 arrows in a cone for increased damage. Also applies Frost Shot.",
-      "champion": "Ashe",
-      "collision_radius": 10,
-      "cooldown": [
-        14,
-        11.5,
-        9,
-        6.5,
-        4
-      ],
-      "cooldownBurn": "14/11.5/9/6.5/4",
-      "costBurn": "50",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Ashe''' fires 9 arrows in a cone in the target direction, dealing {{as|physical damage}} to enemies, and applying {{ai|Frost Shot 2|Ashe|Critical Slow}} to enemy {{tip|champions}}.",
         "Enemies do not take damage from arrows beyond the first."
       ],
-      "effect_radius": 1200,
-      "icon": [
-        "Volley.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 80}} {{as|(+ 100% AD)}}}}"
-      ],
-      "name": "Volley",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "speed": 2000,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "targeting": "Direction"
+      "notes": "\n* No additional notes.",
+      "costBurn": "50",
+      "cooldownBurn": "14/11.5/9/6.5/4",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 80}} {{as|(+ 100% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                35,
+                50,
+                65,
+                80
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  35,
+                  50,
+                  65,
+                  80
+                ],
+                "player_total_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "AsheSpiritOfTheHawk",
-      "riotName": "Hawkshot",
+      "riotId": "AsheSpiritOfTheHawk",
+      "name": "Hawkshot",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "cost": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "costtype": "Charge",
+      "targeting": "Ground",
+      "target_range": "Global",
       "image": {
         "full": "AsheSpiritOfTheHawk.png",
         "sprite": "spell1.png",
@@ -215,44 +341,32 @@
         "w": 48,
         "h": 48
       },
-      "affects": "None",
-      "blurb": "Ashe sends her Hawk Spirit on a scouting mission anywhere on the map.",
-      "champion": "Ashe",
-      "cooldownBurn": "5",
-      "costBurn": "1",
-      "costtype": "Charge",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Ashe''' periodically [[stock]]s a ''Hawkshot'' charge, up to a maximum of 2.",
         "{{sbc|Active:}} '''Ashe''' sends a hawk spirit toward the target location, {{tip|expose|exposing}} the area along its path for 2 seconds and in a large radius at its destination for 5 seconds."
       ],
-      "effect_radius": 1000,
-      "icon": [
-        "Hawkshot.png"
-      ],
-      "leveling": [],
-      "name": "Hawkshot",
-      "notes": [
-        "* ''Hawkshot'' grants standard {{tip|sight}}, which does not reveal [[stealth]]ed units.",
-        "* ''Hawkshot's'' recharge timer seems to start at the beginning of the game, even prior to ranking the ability, but when you actually rank the ability, you start with one charge and the recharge timer starts from 0.",
-        "* ''Hawkshot'' will ping enemies it spots if your team didn't already have vision of them.",
-        "* ''Hawkshot'' will grant assist credit if a previously-unseen enemy is killed within 10 seconds of being revealed by ''Hawkshot''."
-      ],
-      "projectile": "Yasuo",
-      "skill": "E",
-      "speed": 1400,
-      "target_range": "Global",
-      "targeting": "Ground"
+      "notes": "\n* ''Hawkshot'' grants standard {{tip|sight}}, which does not reveal [[stealth]]ed units.\n* ''Hawkshot's'' recharge timer seems to start at the beginning of the game, even prior to ranking the ability, but when you actually rank the ability, you start with one charge and the recharge timer starts from 0.\n* ''Hawkshot'' will ping enemies it spots if your team didn't already have vision of them.\n* ''Hawkshot'' will grant assist credit if a previously-unseen enemy is killed within 10 seconds of being revealed by ''Hawkshot''.",
+      "costBurn": "1",
+      "cooldownBurn": "5",
+      "effects": []
     },
     "r1": {
-      "key": "R",
-      "id": "EnchantedCrystalArrow",
-      "riotName": "Enchanted Crystal Arrow",
+      "riotId": "EnchantedCrystalArrow",
+      "name": "Enchanted Crystal Arrow",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        100,
+        90,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "Global",
       "image": {
         "full": "EnchantedCrystalArrow.png",
         "sprite": "spell1.png",
@@ -262,45 +376,104 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ashe fires a missile of ice in a straight line. If the arrow collides with an enemy Champion, it deals damage and stuns the Champion, stunning for longer the farther arrow has traveled. In addition, surrounding enemy units take damage and are slowed.",
-      "champion": "Ashe",
-      "cooldown": [
-        100,
-        90,
-        80
-      ],
-      "cooldownBurn": "100/90/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
-        "{{sbc|Active:}} '''Ashe''' fires a [[File:Enchanted Crystal Arrow Minimap.png|20px|link=]] missile of ice in the target direction. The arrow shatters upon hitting an enemy champion, dealing {{tip|magic damage|{{as|magic damage}}}},{{tip|knockdown|knocking down}} and {{tip|stun|stunning}} them for {{pp|15|type=distance traveled|1 to 3.5|0 to 2800|displayformula=1+(0.18 per 200 units). ''This is capped at 2800 units traveled.''}} seconds.",
+        "{{sbc|Active:}} '''Ashe''' fires a [[File:Enchanted Crystal Arrow Minimap.png|20px|link=]] missile of ice in the target direction. The arrow shatters upon hitting an enemy champion, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|stun|stunning}} them for {{pp|15|type=distance traveled|1 to 3.5|0 to 2800|displayformula=1+(0.18 per 200 units). ''This is capped at 2800 units traveled.''}} seconds.",
         "Enemies surrounding the main target also take 50% damage."
       ],
-      "effect_radius": 125,
-      "icon": [
-        "Enchanted Crystal Arrow.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|200 to 600}} {{as|(+ 100% AP)}}}}",
-        "{{st|Secondary Magic Damage|{{ap|200/2 to 600/2}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Enchanted Crystal Arrow",
-      "notes": [
-        "* ''Enchanted Crystal Arrow'' provides {{tip|sight}} around the arrow and briefly after detonation.",
-        "* Upon hitting, ''Enchanted Crystal Arrow'' will interrupt the movement of the champion that was directly hit (including dashes)."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 1600,
-      "spelleffects": "Special",
-      "spellshield": true,
-      "target_range": "Global",
-      "targeting": "Direction"
+      "notes": "\n* ''Enchanted Crystal Arrow'' provides {{tip|sight}} around the arrow and briefly after detonation.",
+      "costBurn": "100",
+      "cooldownBurn": "100/90/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|200 to 600}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                200,
+                300,
+                400,
+                500,
+                600
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  300,
+                  400,
+                  500,
+                  600
+                ],
+                "player_total_ap": 1
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Secondary Magic Damage|{{ap|200/2 to 600/2}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Secondary Magic Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200,
+                250,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Secondary Magic Damage",
+              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  150,
+                  200,
+                  250,
+                  300
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Secondary Magic Damage",
+              "str": "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

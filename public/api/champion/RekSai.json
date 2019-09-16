@@ -1,16 +1,15 @@
 {
   "patch": "V4.21",
-  "changes": "9.9.1",
+  "changes": "9.17.1",
   "id": "RekSai",
   "key": "421",
   "name": "Rek'Sai",
-  "fullname": "Rek'Sai",
   "title": "the Void Burrower",
   "image": {
     "full": "RekSai.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 0,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Rage",
   "herotype": "Fighter",
   "alttype": "",
+  "rangetype": "Melee",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "physical",
@@ -30,322 +30,399 @@
     "magic": 2,
     "difficulty": 3
   },
-  "i_displayname": "Fury of the Xer'Sai",
-  "q_displayname": "Queen's Wrath / Prey Seeker",
-  "w_dispalyname": "Burrow / Unburrow",
-  "e_dispalyname": "Furious Bite / Tunnel",
-  "r_dispalyname": "Void Rush",
-  "complex_skills": {
+  "stats": {
+    "hp": 570,
+    "hpperlevel": 85,
+    "mp": 100,
+    "mpperlevel": 0,
+    "movespeed": 335,
+    "armor": 33,
+    "armorperlevel": 3.75,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 175,
+    "hpregen": 7.5,
+    "hpregenperlevel": 0.65,
+    "mpregen": 0,
+    "mpregenperlevel": 0,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2,
+    "attackspeed": 0.667
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Fury of the Xer'Sai",
+      "riotId": "",
+      "name": "Fury of the Xer'Sai",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "RekSai_Passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "While unburrowed Rek'Sai generates Fury with her basic attacks and spells. When burrowed Rek'Sai consumes Fury to heal herself.",
-      "champion": "Rek'Sai",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Rek'Sai''' generates {{tip|fury|{{as|25 Fury}}}} upon dealing damage with [[basic attack]], {{ai|Prey Seeker|Rek'Sai}}, {{ai|Unburrow|Rek'Sai}} or {{ai|Furious Bite|Rek'Sai}}, and loses {{as|20 Fury}} per second if she hasn't generated any in the last 5 seconds.",
         "While {{sbc|{{ai|Burrow|Rek'Sai|burrowed}}}}, '''Rek'Sai''' consumes her current {{as|Fury}} over 3 seconds, {{tip|healing}} up to {{sti|health|{{as|{{pp|20 to 190}} health}}}} at {{as|100 Fury}}, stopping once she consumes it all or returns to {{sti|health|{{as|full health}}}}."
       ],
-      "icon": [
-        "Fury of the Xer'Sai.png"
-      ],
-      "leveling": [],
-      "name": "Fury of the Xer'Sai",
-      "notes": [
-        "* Fury bar changes from yellow to red when full."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "Heal",
-      "targeting": "Passive"
+      "notes": "\n* Fury bar changes from yellow to red when full.",
+      "effects": []
     },
-    "q1": {
-      "key": "Q1",
-      "id": "RekSaiQ",
-      "riotName": "Queen's Wrath / Prey Seeker",
+    "q2": {
+      "riotId": "RekSaiQ",
+      "name": "''Prey Seeker''",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        11.5,
+        11,
+        10.5,
+        10
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "target_range": 1650,
       "image": {
         "full": "RekSaiQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Rek'Sai's next 3 basic attacks deal bonus Physical Damage to nearby enemies.",
-      "champion": "Rek'Sai",
-      "cooldownBurn": "4",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "description": [
+        "{{sbc|{{ai|Burrow|Rek'Sai|Burrowed}} - Active:}} '''Rek'Sai''' fires a void-charged pulse in a target direction, stopping at the first enemy hit, dealing {{as|physical damage}} to enemies in the area and {{tip|sight|revealing}} them for {{fd|2.5}} seconds."
       ],
+      "notes": "\n* No additional details.",
+      "costBurn": "0",
+      "cooldownBurn": "12/11.5/11/10.5/10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.5
+              },
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ],
+                "player_bonus_ad": 0.5,
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "RekSaiQ",
+      "name": "Queen's Wrath",
+      "maxrank": 5,
+      "cooldown": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
+      "image": {
+        "full": "RekSaiQ.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai's''' next three basic attacks within 5 seconds deal {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to her target and all surrounding enemies. The damage to the primary target can {{tip|critical strike|critically strike}} for {{as|{{critical damage|100}} '''bonus''' physical damage}}.",
         "''Queen's Wrath'' resets '''Rek'Sai's''' basic attack timer."
       ],
-      "effect_radius": 325,
-      "icon": [
-        "Queen's Wrath.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 40}} {{as|(+ 50% '''bonus''' AD)}}|Total Damage|{{ap|20*3 to 40*3}} {{as|(+ 150% '''bonus''' AD)}}}}"
-      ],
-      "name": "Queen's Wrath",
-      "notes": [
-        "* ''Queen's Wrath'' ends and goes on cooldown if '''Rek'Sai''' is {{ai|Burrow|Rek'Sai|burrowed}} for more than 1 second.",
-        "* {{Pending for test}}: ''Queen's Wrath'' has a fixed attack animation forbidding ''Rek'Sai'' from attacking faster if she has over {{as|{{tt|{{fd|2.0}} attack speed|Estimated}}}}.",
-        "* ''Queen's Wrath's'' enhanced attacks apply other [[on-hit effect]]s, on-attack effects, and [[life steal]] but do not affect structures. The damage to additional targets is not affected by these.",
-        "* ''Queen's Wrath'' can be mitigated ({{tip|splash damage}} still applies) if {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, and/or if ''Rek'Sai'' is {{tip|blind|blinded}}.",
-        "* The splash damage does not apply {{ii|Hunter's Talisman}}."
-      ],
-      "parry": "Special",
-      "projectile": "Physical",
-      "skill": "Q",
-      "targeting": "None"
-    },
-    "q2": {
-      "key": "Q2",
-      "id": "RekSaiQ",
-      "riotName": "Queen's Wrath / Prey Seeker",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RekSaiQ.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "While Burrowed, Rek'Sai launches a burst of void-charged earth that deals Physical Damage and reveals enemies hit.",
-      "champion": "Rek'Sai",
-      "cooldown": [
-        4,
-        4,
-        4,
-        4,
-        4
-      ],
-      "cooldownBurn": "4",
+      "notes": "\n* ''Queen's Wrath'' ends and goes on cooldown if '''Rek'Sai''' is {{ai|Burrow|Rek'Sai|burrowed}} for more than 1 second.\n* {{Pending for test}}: ''Queen's Wrath'' has a fixed attack animation forbidding ''Rek'Sai'' from attacking faster if she has over {{as|{{tt|{{fd|2.0}} attack speed|Estimated}}}}.\n* ''Queen's Wrath's'' enhanced attacks apply other [[on-hit effect]]s, on-attack effects, and [[life steal]] but do not affect structures. The damage to additional targets is not affected by these.\n* ''Queen's Wrath'' can be mitigated ({{tip|splash damage}} still applies) if {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, and/or if ''Rek'Sai'' is {{tip|blind|blinded}}.\n* The splash damage does not apply {{ii|Hunter's Talisman}}.",
       "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
-      "description": [
-        "{{sbc|{{ai|Burrow|Rek'Sai|Burrowed}} - Active:}} '''Rek'Sai''' fires a void-charged pulse in a target direction, stopping at the first enemy hit, dealing {{as|physical damage}} to enemies in the area and {{tip|sight|revealing}} them for {{fd|2.5}} seconds."
-      ],
-      "icon": [
-        "Prey Seeker.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "''Prey Seeker''",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1650,
-      "targeting": "Direction"
-    },
-    "w1": {
-      "key": "W1",
-      "id": "RekSaiW",
-      "riotName": "Burrow / Un-burrow",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "RekSaiW.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 48,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self",
-      "blurb": "Rek'Sai burrows into the ground, gaining new abilities and increased Movement Speed. Her vision range is reduced and she cannot use basic attacks.",
-      "champion": "Rek'Sai",
       "cooldownBurn": "4",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' burrows into the ground, {{tip|disarm|self-disarming}} and reducing her sight radius to 250, but gaining {{pp|4|15 to 30|1 to 16|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, becoming {{tip|ghosted}}, accessing an alternate set of basic [[Champion ability|abilities]], and activating ''Tremor Sense''.",
-        "{{sbc|Tremor Sense:}} '''Rek'Sai''' gains {{tip|obscured vision}} of nearby enemy and neutral units in fog of war every {{fd|1.5}} seconds if they are moving."
-      ],
-      "effect_radius": 1300,
-      "icon": [
-        "Burrow.png"
-      ],
-      "leveling": [],
-      "name": "Burrow",
-      "notes": [
-        "* '''Rek'Sai''' Immediately burrows on respawn once she has at least one point in ''Burrow''.",
-        "* ''Burrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.",
-        "* Enemies detected by ''Tremor Sense'' are displayed as rings on the ground (champions display much larger ones and play a sound effect for ''Rek'Sai'').",
-        "** Enemies standing still while ''Rek'Sai'' is nearby are insensible to ''Tremor Sense''.",
-        "* ''Burrow'' briefly {{tip|slow|slows}} displaced enemies."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 40}} {{as|(+ 50% '''bonus''' AD)}}|Total Damage|{{ap|20*3 to 40*3}} {{as|(+ 150% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ],
+              [
+                60,
+                75,
+                90,
+                105,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.5
+              },
+              {
+                "player_bonus_ad": 1.5
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "Total Damage",
+              "<spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  75,
+                  90,
+                  105,
+                  120
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Total Damage",
+              "str": "<spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w2": {
-      "key": "W2",
-      "id": "RekSaiW",
-      "riotName": "Burrow / Un-burrow",
+      "riotId": "RekSaiW",
+      "name": "Unburrow",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        1
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "RekSaiW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self / Enemies",
-      "blurb": "While Burrowed, Rek'Sai may cast Un-burrow to knock up and damage nearby enemies.",
-      "champion": "Rek'Sai",
-      "cooldown": [
-        4,
-        4,
-        4,
-        4,
-        4
-      ],
-      "cooldownBurn": "4",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "custominfo": 10,
-      "customlabel": "{{tt|On-Target Cooldown|Unaffected by cooldown reduction (begins after the target is displaced)}}",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|{{ai|Burrow|Rek'Sai|Burrowed}} - Active:}} '''Rek'Sai''' bursts out of the ground, dealing {{as|physical damage}} to surrounding enemies and {{tip|airborne|knocking them aside}} 250 units. The enemy closest to the center is {{tip|airborne|knocked up}} for 1 second instead, and cannot be affected again by ''Unburrow'' for some time.",
         "'''Rek'Sai''' can also trigger ''Unburrow'' by issuing an attack command, applying the full {{tip|airborne|knock up}} against her target."
       ],
-      "effect_radius": 160,
-      "icon": [
-        "Unburrow.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55 to 115}} {{as|(+ 80% '''bonus''' AD)}}}}"
-      ],
-      "name": "Unburrow",
-      "notes": [
-        "* ''Unburrow's'' per-target cooldown only applies to targets affected by the full {{tip|airborne|knock-up}}, but provides immunity to all effects of the ability.",
-        "* ''Unburrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.",
-        "* ''Unburrow'' is still considered an ability and is thus stopped by {{tip|silence}}. She can basic attack normally during this time, without leaving ''unburrow''."
-      ],
-      "projectile": "Physical",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* ''Unburrow's'' per-target cooldown only applies to targets affected by the full {{tip|airborne|knock-up}}, but provides immunity to all effects of the ability.\n* ''Unburrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.\n* ''Unburrow'' is still considered an ability and is thus stopped by {{tip|silence}}. She can basic attack normally during this time, without leaving ''unburrow''.",
+      "costBurn": "0",
+      "cooldownBurn": "1",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|55 to 115}} {{as|(+ 80% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['55','70','85','100','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                70,
+                85,
+                100,
+                115
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['55','70','85','100','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  70,
+                  85,
+                  100,
+                  115
+                ],
+                "player_bonus_ad": 0.8
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['55','70','85','100','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     },
-    "e1": {
-      "key": "E1",
-      "id": "RekSaiE",
-      "riotName": "Furious Bite / Tunnel",
+    "w1": {
+      "riotId": "RekSaiW",
+      "name": "Burrow",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        4
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
-        "full": "RekSaiE.png",
+        "full": "RekSaiW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 96,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Rek'Sai bites her target, dealing double and True Damage if she has max Fury.",
-      "callforhelp": true,
-      "champion": "Rek'Sai",
-      "cooldownBurn": "12",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical / true",
-      "damageTypes": [
-        "physical",
-        "true"
-      ],
       "description": [
-        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' bites the target enemy, dealing {{as|physical damage}}.",
-        "At maximum {{tip|fury|{{as|Fury}}}} the damage is doubled and converted to {{tip|true damage}}."
+        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' burrows into the ground, {{tip|disarm|self-disarming}} and reducing her sight radius to 250, but gaining {{pp|4|15 to 30|1 to 16|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, becoming {{tip|ghosted}}, accessing an alternate set of basic [[Champion ability|abilities]], and activating ''Tremor Sense''.",
+        "{{sbc|Tremor Sense:}} '''Rek'Sai''' gains {{tip|obscured vision}} of nearby enemy and neutral units in fog of war every {{fd|1.5}} seconds if they are moving."
       ],
-      "icon": [
-        "Furious Bite.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|50 to 90}} {{as|(+ 85% '''bonus''' AD)}}}}",
-        "{{st|True Damage|{{ap|50*2 to 90*2}} {{as|(+ 170% '''bonus''' AD)}}}}"
-      ],
-      "name": "Furious Bite",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "[[Physical damage|Physical]] / [[True damage|True]]",
-      "skill": "E",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 250,
-      "targeting": "Unit"
+      "notes": "\n* '''Rek'Sai''' Immediately burrows on respawn once she has at least one point in ''Burrow''.\n* ''Burrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.\n* Enemies detected by ''Tremor Sense'' are displayed as rings on the ground (champions display much larger ones and play a sound effect for ''Rek'Sai'').\n** Enemies standing still while ''Rek'Sai'' is nearby are insensible to ''Tremor Sense''.\n* ''Burrow'' briefly {{tip|slow|slows}} displaced enemies.",
+      "costBurn": "0",
+      "cooldownBurn": "4",
+      "effects": []
     },
     "e2": {
-      "key": "E2",
-      "id": "RekSaiE",
-      "riotName": "Furious Bite / Tunnel",
+      "riotId": "RekSaiE",
+      "name": "Tunnel",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        26,
+        23,
+        20,
+        17,
+        14
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "target_range": 850,
       "image": {
         "full": "RekSaiE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "While Burrowed, Rek'Sai creates a re-usable, long lasting tunnel. Enemies can destroy it by standing on top of either entrance.",
-      "champion": "Rek'Sai",
+      "description": [
+        "{{sbc|{{ai|Burrow|Rek'Sai|Burrowed}} - Active:}} '''Rek'Sai''' {{tip|dashes}} in the cursor's direction, leaving behind a ''Tunnel'' with two interconnected entrances, lasting up to 10 minutes. The ''Tunnel'' can be traversed again if '''Rek'Sai''' targets either entrance, shutting down the ''Tunnel'' for a few seconds.",
+        "'''Rek'Sai''' can have up to 8 pairs of entrances active on the map at the same time. Enemy {{tip|champions}} can destroy a ''Tunnel'' by standing on either entrance for {{fd|1.5}} seconds."
+      ],
+      "notes": "\n* ''Tunnel'' entrances can be targeted by allied movement abilities ({{ai|Leap Strike|Jax}}, {{ai|Shunpo|Katarina}}, {{ai|Safeguard|Lee Sin}}) and by {{si|Teleport}}.\n* ''Tunnel'' entrances are visible on allied champions' minimaps, while enemies must first gain {{tip|sight}} of one before it becomes visible on theirs (the opposite entrance is not revealed).\n* Enemy champions that destroy a ''Tunnel'' are each granted {{g|5}}.\n** Destroying a ''Tunnel'' while ''Rek'Sai'' is traversing it will not prevent her from reaching the opposite entrance.\n* ''Rek'Sai'' exits a ''Tunnel'' the same way she entered (either {{ai|Unburrow|Rek'Sai|Unburrowed}} or {{ai|Burrow|Rek'Sai|Burrowed}}, no switching).\n** An {{ai|Unburrow|Rek'Sai|Unburrowed}} ''Rek'Sai'' is considered to be {{ai|Burrow|Rek'Sai|Burrowed}} while inside a ''Tunnel''. She will gain her {{ai|Burrow|Rek'Sai|Burrowed}} abilities (unusable) suffer from {{tip|nearsight}}, and activate ''Tremor Sense'', but will not be healed by {{ai|Fury of the Xer'Sai|Rek'Sai}} (unless {{ai|Burrow|Rek'Sai|Burrowed}} prior to entering the ''Tunnel'').\n* ''Rek'Sai'' can ''Tunnel'' through walls if she dashes close to them and the wall is thin enough to allow the opposite entrance to spawn on the other side.",
+      "costBurn": "0",
+      "cooldownBurn": "26/23/20/17/14",
+      "effects": []
+    },
+    "e1": {
+      "riotId": "RekSaiE",
+      "name": "Furious Bite",
+      "maxrank": 5,
       "cooldown": [
         12,
         12,
@@ -353,96 +430,219 @@
         12,
         12
       ],
-      "cooldownBurn": "12",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "custominfo": "{{ap|10 to 2}}",
-      "customlabel": "{{tt|On-Target Cooldown|Unaffected by cooldown reduction (begins after Rek'Sai exits the tunnel)}}",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "description": [
-        "{{sbc|{{ai|Burrow|Rek'Sai|Burrowed}} - Active:}} '''Rek'Sai''' {{tip|dashes}} in the cursor's direction, leaving behind a ''Tunnel'' with two interconnected entrances, lasting up to 10 minutes. The ''Tunnel'' can be traversed again if '''Rek'Sai''' targets either entrance, shutting down the ''Tunnel'' for a few seconds.",
-        "'''Rek'Sai''' can have up to 8 pairs of entrances active on the map at the same time. Enemy {{tip|champions}} can destroy a ''Tunnel'' by standing on either entrance for {{fd|1.5}} seconds."
-      ],
-      "grounded": true,
-      "icon": [
-        "Tunnel.png"
-      ],
-      "knockdown": true,
-      "leveling": [],
-      "name": "Tunnel",
-      "notes": [
-        "* ''Tunnel'' entrances can be targeted by allied movement abilities ({{ai|Leap Strike|Jax}}, {{ai|Shunpo|Katarina}}, {{ai|Safeguard|Lee Sin}}) and by {{si|Teleport}}.",
-        "* ''Tunnel'' entrances are visible on allied champions' minimaps, while enemies must first gain {{tip|sight}} of one before it becomes visible on theirs (the opposite entrance is not revealed).",
-        "* Enemy champions that destroy a ''Tunnel'' are each granted {{g|5}}.",
-        "** Destroying a ''Tunnel'' while ''Rek'Sai'' is traversing it will not prevent her from reaching the opposite entrance.",
-        "* ''Rek'Sai'' exits a ''Tunnel'' the same way she entered (either {{ai|Unburrow|Rek'Sai|Unburrowed}} or {{ai|Burrow|Rek'Sai|Burrowed}}, no switching).",
-        "** An {{ai|Unburrow|Rek'Sai|Unburrowed}} ''Rek'Sai'' is considered to be {{ai|Burrow|Rek'Sai|Burrowed}} while inside a ''Tunnel''. She will gain her {{ai|Burrow|Rek'Sai|Burrowed}} abilities (unusable) suffer from {{tip|nearsight}}, and activate ''Tremor Sense'', but will not be healed by {{ai|Fury of the Xer'Sai|Rek'Sai}} (unless {{ai|Burrow|Rek'Sai|Burrowed}} prior to entering the ''Tunnel'').",
-        "* ''Rek'Sai'' can ''Tunnel'' through walls if she dashes close to them and the wall is thin enough to allow the opposite entrance to spawn on the other side."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "target_range": 850,
-      "targeting": "Direction"
-    },
-    "r1": {
-      "key": "R",
-      "id": "RekSaiRWrapper",
-      "riotName": "Void Rush",
-      "maxrank": 3,
-      "maxammo": -1,
+      "targeting": "Unit",
+      "target_range": 250,
       "image": {
-        "full": "RekSaiRWrapper.png",
+        "full": "RekSaiE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 144,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Rek'Sai dives underground and leaps towards her target, dealing massive damage.",
-      "callforhelp": true,
-      "champion": "Rek'Sai",
+      "description": [
+        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' bites the target enemy, dealing {{as|physical damage}}.",
+        "At maximum {{tip|fury|{{as|Fury}}}} the damage is doubled and converted to {{tip|true damage}}."
+      ],
+      "notes": "\n* No additional details.",
+      "costBurn": "0",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|50 to 90}} {{as|(+ 85% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 85% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                50,
+                60,
+                70,
+                80,
+                90
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.85
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 85% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  60,
+                  70,
+                  80,
+                  90
+                ],
+                "player_bonus_ad": 0.85
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 85% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|True Damage|{{ap|50*2 to 90*2}} {{as|(+ 170% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">True Damage</span>: <span><spell-span :list=\"['100','120','140','160','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                120,
+                140,
+                160,
+                180
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.7
+              }
+            ],
+            "st_slices": [
+              "True Damage",
+              "<spell-span :list=\"['100','120','140','160','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  120,
+                  140,
+                  160,
+                  180
+                ],
+                "player_bonus_ad": 1.7
+              },
+              "title": "True Damage",
+              "str": "<spell-span :list=\"['100','120','140','160','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% '''bonus''' AD)</span>",
+              "damage_type": "true"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "RekSaiRWrapper",
+      "name": "Void Rush",
+      "maxrank": 3,
       "cooldown": [
         100,
         90,
         80
       ],
-      "cooldownBurn": "100/90/80",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        0,
+        0,
+        0
       ],
+      "targeting": "Unit",
+      "target_range": 1500,
+      "image": {
+        "full": "RekSaiRWrapper.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Passive:}} '''Rek'Sai's''' applies ''Mark as Prey'' to enemy champions she damaged in the last 5 seconds.",
         "{{sbc|Active:}}  '''Rek'Sai''' selects an enemy champion with ''Mark as Prey'' and {{tip|vanish|vanishes}} into the ground. After {{fd|1.5}} seconds, she emerges from the ground near her target and {{tip|dash|pounces}} a fixed distance in their direction to deal {{as|physical damage}} ''if'' she hits them.",
-        "''The damage can only be dodged if the target moves 1500 units away.''"
+        "''The damage can be dodged if the target moves 1500 units away.''"
       ],
-      "flavorsound": "{{sm2|RekSai.R1.ogg|''Screech.''}}",
-      "grounded": true,
-      "icon": [
-        "Void Rush Mark.png",
-        "Void Rush.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|100 to 400}} {{as|(+ 175% '''bonus''' AD)}} {{as|(+ {{ap|20 to 30}}% of target's '''missing''' health)}}}}"
-      ],
-      "name": "Void Rush",
-      "notes": [
-        "* ''Rek'Sai'' can activate ''Void Rush'' while {{ai|Burrow|Rek'Sai|Burrowed}} or {{ai|Unburrow|Rek'Sai|Unburrowed}}.",
-        "* The target champion will glow once ''Rek'Sai'' {{ai|Burrow|Rek'Sai|Burrows}} to them, followed by a global screech (''will be heard by enemies even if they don't have {{tip|sight}} of '''Rek'Sai''' and/or her destination'')."
-      ],
-      "projectile": "Physical",
-      "skill": "R",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1500,
-      "targeting": "Unit"
+      "notes": "\n* ''Rek'Sai'' can activate ''Void Rush'' while {{ai|Burrow|Rek'Sai|Burrowed}} or {{ai|Unburrow|Rek'Sai|Unburrowed}}.\n* The target champion will glow once ''Rek'Sai'' {{ai|Burrow|Rek'Sai|Burrows}} to them, followed by a global screech (''will be heard by enemies even if they don't have {{tip|sight}} of '''Rek'Sai''' and/or her destination'').",
+      "costBurn": "0",
+      "cooldownBurn": "100/90/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|100 to 400}} {{as|(+ 175% '''bonus''' AD)}} {{as|(+ {{ap|20 to 30}}% of target's '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 175% <b>bonus</b> AD)</span> <span class=\"health\">(+ <spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                175,
+                250,
+                325,
+                400
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.75
+              },
+              {
+                "target_missing_hp": [
+                  0.2,
+                  0.225,
+                  0.25,
+                  0.275,
+                  0.3
+                ]
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  175,
+                  250,
+                  325,
+                  400
+                ],
+                "player_bonus_ad": 1.75,
+                "target_missing_hp": [
+                  0.2,
+                  0.225,
+                  0.25,
+                  0.275,
+                  0.3
+                ]
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 8
 }

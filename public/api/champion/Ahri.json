@@ -4,7 +4,6 @@
   "id": "Ahri",
   "key": "103",
   "name": "Ahri",
-  "fullname": "Ahri",
   "title": "the Nine-Tailed Fox",
   "image": {
     "full": "Ahri.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Slayer",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 8,
     "difficulty": 5
   },
-  "i_displayname": "Vastayan Grace",
-  "q_displayname": "Orb of Deception",
-  "w_dispalyname": "Fox-Fire",
-  "e_dispalyname": "Charm",
-  "r_dispalyname": "Spirit Rush",
-  "complex_skills": {
+  "stats": {
+    "hp": 526,
+    "hpperlevel": 92,
+    "mp": 418,
+    "mpperlevel": 25,
+    "movespeed": 330,
+    "armor": 20.88,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 6.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53.04,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2,
+    "attackspeed": 0.668
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Vastayan Grace",
+      "riotId": "",
+      "name": "Vastayan Grace",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Ahri_SoulEater2.png",
         "sprite": "passive0.png",
@@ -49,38 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "",
-      "champion": "Ahri",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} Whenever '''Ahri''' lands 2 ability hits against a champion within {{fd|1.5}} seconds, she gains {{sti|ms|{{as|20% '''bonus''' movement speed}}}} for 3 seconds."
       ],
-      "icon": [
-        "Vastayan Grace.png"
-      ],
-      "leveling": [],
-      "name": "Vastayan Grace",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "static": 9,
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "AhriOrbofDeception",
-      "riotName": "Orb of Deception",
+      "riotId": "AhriOrbofDeception",
+      "name": "Orb of Deception",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "cost": [
+        65,
+        70,
+        75,
+        80,
+        85
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 880,
       "image": {
         "full": "AhriOrbofDeception.png",
         "sprite": "spell0.png",
@@ -90,50 +104,109 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ahri sends out and pulls back her orb, dealing magic damage on the way out and true damage on the way back. Ahri gains movement speed that decays while her orb is traveling.",
-      "champion": "Ahri",
-      "cooldownBurn": "7",
-      "costBurn": "65 / 70 / 75 / 80 / 85",
-      "costtype": "Mana",
-      "damagetype": "magic / true",
-      "damageTypes": [
-        "magic",
-        "true"
-      ],
       "description": [
         "{{sbc|Passive:}} Whenever '''Ahri''' hits an enemy with one of her abilities, she gains a charge of ''Essence Theft'', and can gain up to 3 charges per ability cast. Upon reaching 9 charges, her next ''Orb of Deception'' {{tip|heals}} her for {{sti|health|{{pp|4|3;5;9;18|1 to 16|color=health}} {{as|(+ 9% AP)}}}} every time an enemy is hit.",
         "{{sbc|Active:}} '''Ahri''' sends an orb of arcane energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies it passes through, then pulls it back, dealing {{tip|true damage|{{as|true damage}}}} instead."
       ],
-      "icon": [
-        "Essence Theft.png",
-        "Orb of Deception.png"
-      ],
-      "leveling": [
-        "{{st|Damage Per Pass|{{ap|40 to 140}} {{as|(+ 35% AP)}}|Total Mixed Damage|{{ap|40*2 to 140*2}} {{as|(+ 70% AP)}}}}"
-      ],
-      "name": "Orb of Deception",
-      "notes": [
-        "* ''Orb of Deception'' functions normally during flight regardless of '''Ahri's''' condition.",
-        "* Each pass of the projectile can only damage an enemy once.",
-        "* If '''Ahri''' is performing an attack animation when the orb switches direction, the attack animation is canceled.",
-        "* {{si|Flash}} can be cast during the cast animation of ''Orb of Deception''. If done so, the ability resolves after {{si|Flash}} from the location '''Ahri''' flashed to.",
-        "* {{tip|Spell shield}} will block only a single instance of damage."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1700,
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "target_range": 880,
-      "targeting": "Direction"
+      "notes": "\n* ''Orb of Deception'' functions normally during flight regardless of '''Ahri's''' condition.\n* Each pass of the projectile can only damage an enemy once.\n* If '''Ahri''' is performing an attack animation when the orb switches direction, the attack animation is canceled.\n* {{si|Flash}} can be cast during the cast animation of ''Orb of Deception''. If done so, the ability resolves after {{si|Flash}} from the location '''Ahri''' flashed to.\n* {{tip|Spell shield}} will block only a single instance of damage.",
+      "costBurn": "65/70/75/80/85",
+      "cooldownBurn": "7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Damage Per Pass|{{ap|40 to 140}} {{as|(+ 35% AP)}}|Total Mixed Damage|{{ap|40*2 to 140*2}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage Per Pass</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                65,
+                90,
+                115,
+                140
+              ],
+              [
+                80,
+                130,
+                180,
+                230,
+                280
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.35000000000000003
+              },
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Damage Per Pass",
+              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "Total Mixed Damage",
+              "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  65,
+                  90,
+                  115,
+                  140
+                ],
+                "player_total_ap": 0.35000000000000003
+              },
+              "title": "Damage Per Pass",
+              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  130,
+                  180,
+                  230,
+                  280
+                ],
+                "player_total_ap": 0.35000000000000003
+              },
+              "title": "Total Mixed Damage",
+              "str": "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "AhriFoxFire",
-      "riotName": "Fox-Fire",
+      "riotId": "AhriFoxFire",
+      "name": "Fox-Fire",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "costtype": "mana",
+      "targeting": "Auto",
+      "target_range": "{{tt|700|Non-priority targets range}}",
       "image": {
         "full": "AhriFoxFire.png",
         "sprite": "spell0.png",
@@ -143,63 +216,155 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ahri releases three fox-fires, that lock onto and attack nearby enemies.",
-      "champion": "Ahri",
-      "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "cooldownBurn": "9/8/7/6/5",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Ahri''' summons three spectral flames which orbit her for up to 5 seconds.",
         "Flames prioritize champions hit by {{ai|Charm|Ahri}} or any enemy hit by '''Ahri's''' last basic attack, within 3 seconds and {{sti|range|725 range}}.",
         "After {{fd|0.25}} seconds, each flame targets a prioritized enemy, or after {{fd|0.4}} seconds pursues the closest visible enemy in range, prioritizing champions, then the target of '''Ahri's''' last basic attack, dealing {{as|magic damage}}.",
         "Multiple flames can hit the same target, with each flame beyond the first dealing 30% damage."
       ],
-      "icon": [
-        "Fox-Fire.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|40|65|90|115|140}} {{as|(+ 30% AP)}}}}",
-        "{{st|Additional Magic Damage|{{ap|12|19.5|27|34.5|42}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|64|104|144|184|224}} {{as|(+ 48% AP)}}}}"
-      ],
-      "name": "Fox-Fire",
-      "notes": [
-        "* ''Fox-Fire'' has no casting time and will not interrupt '''Ahri's''' previous orders.",
-        "* ''Fox-Fire's'' targeting priority is as follows:",
-        "** The enemy champion closest to the orb's location",
-        "** The target of '''Ahri's''' last autoattack",
-        "** The enemy unit closest to the orb's location",
-        "* '''Ahri''' must have sight of an enemy in order for ''Fox-Fire'' to target them. Once targeted, the missiles will chase its target even if Ahri loses sight.",
-        "* If the target of ''Fox-Fire'' dies, the missile will fizzle.",
-        "* Any unused ''Fox-Fires'' will fizzle on '''Ahri's''' death.",
-        "* If '''Ahri''' uses {{ii|Zhonya's Hourglass}} while ''Fox-Fire'' is active, any orbs that have not acquired a target will fizzle.",
-        "* The cooldown of ''Fox-Fire'' begin once all the orbs have been cast or timed-out.",
-        "* Each missile of ''Fox-Fire'' has its own range."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": "{{tt|700|Non-priority targets range}}",
-      "targeting": "Auto"
+      "notes": "\n* ''Fox-Fire'' has no casting time and will not interrupt '''Ahri's''' previous orders.\n* ''Fox-Fire's'' targeting priority is as follows:\n** The enemy champion closest to the orb's location\n** The target of '''Ahri's''' last autoattack\n** The enemy unit closest to the orb's location\n* '''Ahri''' must have sight of an enemy in order for ''Fox-Fire'' to target them. Once targeted, the missiles will chase its target even if Ahri loses sight.\n* If the target of ''Fox-Fire'' dies, the missile will fizzle.\n* Any unused ''Fox-Fires'' will fizzle on '''Ahri's''' death.\n* If '''Ahri''' uses {{ii|Zhonya's Hourglass}} while ''Fox-Fire'' is active, any orbs that have not acquired a target will fizzle.\n* The cooldown of ''Fox-Fire'' begin once all the orbs have been cast or timed-out.\n* Each missile of ''Fox-Fire'' has its own range.",
+      "costBurn": "40",
+      "cooldownBurn": "9/8/7/6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40|65|90|115|140}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                65,
+                90,
+                115,
+                140
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  65,
+                  90,
+                  115,
+                  140
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Additional Magic Damage|{{ap|12|19.5|27|34.5|42}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|64|104|144|184|224}} {{as|(+ 48% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span></span></li><li><span class=\"blue\">Total Single Target Damage</span>: <span><spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                19.5,
+                27,
+                34.5,
+                42
+              ],
+              [
+                64,
+                104,
+                144,
+                184,
+                224
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.09
+              },
+              {
+                "player_total_ap": 0.48
+              }
+            ],
+            "st_slices": [
+              "Additional Magic Damage",
+              "<spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span>",
+              "Total Single Target Damage",
+              "<spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  12,
+                  19.5,
+                  27,
+                  34.5,
+                  42
+                ],
+                "player_total_ap": 0.09
+              },
+              "title": "Additional Magic Damage",
+              "str": "<spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  64,
+                  104,
+                  144,
+                  184,
+                  224
+                ],
+                "player_total_ap": 0.09
+              },
+              "title": "Total Single Target Damage",
+              "str": "<spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "AhriSeduce",
-      "riotName": "Charm",
+      "riotId": "AhriSeduce",
+      "name": "Charm",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 975,
       "image": {
         "full": "AhriSeduce.png",
         "sprite": "spell0.png",
@@ -209,47 +374,84 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ahri blows a kiss that damages and charms an enemy it encounters, causing them to walk harmlessly towards her.",
-      "champion": "Ahri",
-      "cooldownBurn": "12",
-      "costBurn": "70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Ahri''' blows a kiss in the target direction that deals {{as|magic damage}} to the first enemy hit, interrupting in-progress dashes, {{tip|charm|charming}} and {{tip|slow|slowing}} them by 65%.",
         "An enemy hit by ''Charm'' is vulnerable for 3 seconds, taking 20% '''bonus''' damage from '''Ahri's''' abilities."
       ],
-      "icon": [
-        "Charm.png"
-      ],
-      "leveling": [
-        "{{st|Magic damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}{{st|Charm Duration|{{ap|1.4 to 2}}}}"
-      ],
-      "name": "Charm",
-      "notes": [
-        "* The damage amplification also affects the true damage portion of {{ai|Orb of Deception|Ahri}}.",
-        "* If the charmed enemy does not have sight of '''Ahri''' they will stand still for its duration.",
-        "* The effect ends if '''Ahri''' dies.",
-        "* {{si|Flash}} can be cast during the cast animation of ''Charm''."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 1600,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 975,
-      "targeting": "Direction"
+      "notes": "\n* The damage amplification also affects the true damage portion of {{ai|Orb of Deception|Ahri}}.\n* If the charmed enemy does not have sight of '''Ahri''' they will stand still for its duration.\n* The effect ends if '''Ahri''' dies.\n* {{si|Flash}} can be cast during the cast animation of ''Charm''.",
+      "costBurn": "70",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}{{st|Charm Duration|{{ap|1.4 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul><li><span class=\"blue\">Charm Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ],
+              [
+                1.4,
+                1.55,
+                1.7,
+                1.85,
+                2
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Charm Duration",
+              "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Charm Duration",
+              "str": "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "AhriTumble",
-      "riotName": "Spirit Rush",
+      "riotId": "AhriTumble",
+      "name": "Spirit Rush",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        130,
+        105,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 450,
       "image": {
         "full": "AhriTumble.png",
         "sprite": "spell0.png",
@@ -259,49 +461,120 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Ahri dashes forward and fires essence bolts, damaging 3 nearby enemies (prioritizes Champions). Spirit Rush can be cast up to three times before going on cooldown.",
-      "champion": "Ahri",
-      "cooldown": [
-        130,
-        105,
-        80
-      ],
-      "cooldownBurn": "130/105/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Ahri''' {{tip|dashes}} in the target direction, and then fires energy bolts up to 3 visible targets to deal {{as|magic damage}}.",
         "''Spirit Rush'' can be recast twice more at a 1 second {{tt|static cooldown|unaffected by cooldown reduction}} within 10 seconds of activation at no additional cost."
       ],
-      "effect_radius": 600,
-      "grounded": true,
-      "icon": [
-        "Spirit Rush.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Magic damage|{{ap|60|90|120}} {{as|(+ 35% AP)}}}}",
-        "{{st|Maximum single target damage|{{ap|180|270|360}} {{as|(+ 105% AP)}}|Maximum damage|{{ap|540|810|1080}} {{as|(+ 315% AP)}}}}"
-      ],
-      "name": "Spirit Rush",
-      "notes": [
-        "* Each dash counts as another ability instance for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.",
-        "* ''Spirit Rush'' uses [[quick cast]] by default.",
-        "* '''Ahri''' must have sight of an enemy in order for ''Spirit Rush'' to target them. Once targeted, the bolts will chase its target even if '''Ahri''' loses sight of them.",
-        "** Even if '''Ahri''' gets vision of the fog of war after dashing, it's possible that ''Spirit Rush'' will not target any enemy.",
-        "* If '''Ahri''' dies mid-dash, she will not fire the bolts."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 450,
-      "targeting": "Direction"
+      "notes": "\n* Each dash counts as another ability instance for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Spirit Rush'' uses [[quick cast]] by default.\n* '''Ahri''' must have sight of an enemy in order for ''Spirit Rush'' to target them. Once targeted, the bolts will chase its target even if '''Ahri''' loses sight of them.\n** Even if '''Ahri''' gets vision of the fog of war after dashing, it's possible that ''Spirit Rush'' will not target any enemy.\n* If '''Ahri''' dies mid-dash, she will not fire the bolts.",
+      "costBurn": "100",
+      "cooldownBurn": "130/105/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic damage|{{ap|60|90|120}} {{as|(+ 35% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                90,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.35000000000000003
+              }
+            ],
+            "st_slices": [
+              "Magic damage",
+              "<spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  90,
+                  120
+                ],
+                "player_total_ap": 0.35000000000000003
+              },
+              "title": "Magic damage",
+              "str": "<spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Maximum single target damage|{{ap|180|270|360}} {{as|(+ 105% AP)}}|Maximum damage|{{ap|540|810|1080}} {{as|(+ 315% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum single target damage</span>: <span><spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span></span></li><li><span class=\"blue\">Maximum damage</span>: <span><spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                180,
+                270,
+                360
+              ],
+              [
+                540,
+                810,
+                1080
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.05
+              },
+              {
+                "player_total_ap": 3.15
+              }
+            ],
+            "st_slices": [
+              "Maximum single target damage",
+              "<spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span>",
+              "Maximum damage",
+              "<spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  180,
+                  270,
+                  360
+                ],
+                "player_total_ap": 1.05
+              },
+              "title": "Maximum single target damage",
+              "str": "<spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  540,
+                  810,
+                  1080
+                ],
+                "player_total_ap": 1.05
+              },
+              "title": "Maximum damage",
+              "str": "<spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

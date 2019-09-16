@@ -1,16 +1,15 @@
 {
   "patch": "V7.8",
-  "changes": "9.6.1",
+  "changes": "9.18.1",
   "id": "Xayah",
   "key": "498",
   "name": "Xayah",
-  "fullname": "Xayah",
   "title": "the Rebel",
   "image": {
     "full": "Xayah.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 48,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "physical",
@@ -30,75 +30,55 @@
     "magic": 1,
     "difficulty": 5
   },
-  "i_displayname": "Clean Cuts / Lover's Leap",
-  "q_displayname": "Double Daggers",
-  "w_dispalyname": "Deadly Plumage",
-  "e_dispalyname": "Bladecaller",
-  "r_dispalyname": "Featherstorm",
-  "complex_skills": {
-    "i1": {
-      "key": "I",
-      "riotName": "Clean Cuts",
+  "stats": {
+    "hp": 561,
+    "hpperlevel": 86,
+    "mp": 340,
+    "mpperlevel": 40,
+    "movespeed": 325,
+    "armor": 25,
+    "armorperlevel": 3,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 3.25,
+    "hpregenperlevel": 0.75,
+    "mpregen": 8.25,
+    "mpregenperlevel": 0.75,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 60,
+    "attackdamageperlevel": 2.9,
+    "attackspeedperlevel": 3.3,
+    "attackspeed": 0.625
+  },
+  "skills": {
+    "i2": {
+      "riotId": "",
+      "name": "Clean Cuts",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "XayahPassive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 96,
+        "x": 144,
         "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "After using an ability, Xayah's next few basic attacks will hit all enemies along their path and dropping Feathers she can recall.",
-      "callforhelp": true,
-      "champion": "Xayah",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Innate:}} After casting an [[Champion ability|ability]], '''Xayah's''' next 3 [[basic attack]]s additionally penetrate through all enemies along a {{tt|900|Estimated}} [[range]] line, dealing 100% damage to her main target and {{pp|3|key=%|showtype=true|30 to 50|1 to 13}} pass-through [[damage]] to other enemies.  At the end of their path, a {{as|Feather|buzzword}} will be left in the ground for 6 seconds.",
         "'''Xayah''' can store up to 5 empowered attacks for 8 seconds, refreshed with further ability use or upon attacking buildings.",
         "{{sbc|Lover's Leap:}} If either '''Xayah''' or {{ci|Rakan}} is {{si|Recall|recalling}}, the other may move nearby and activate their own recall to join them. '''Both''' reach base at the time of which the initiator's recall ends."
       ],
-      "icon": [
-        "Clean Cuts.png",
-        "ProfileIcon1634 Blazing Feathers.png"
-      ],
-      "leveling": [],
-      "name": "Clean Cuts",
-      "notes": [
-        "* On-hit effects are only applied to her selected attack target.",
-        "* {{pending for test}}",
-        "** Parry effects",
-        "** Xayah is {{tip|blind|blinded}}"
-      ],
-      "parry": "Special",
-      "projectile": true,
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* On-hit effects are only applied to her selected attack target.\n* {{pending for test}}\n** Parry effects\n** Xayah is {{tip|blind|blinded}}",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "XayahQ",
-      "riotName": "Double Daggers",
+      "riotId": "XayahQ",
+      "name": "Double Daggers",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "XayahQ.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 192,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Xayah throws two damaging daggers that also drop Feathers she can recall.",
-      "champion": "Xayah",
       "cooldown": [
         10,
         9,
@@ -106,54 +86,183 @@
         7,
         6
       ],
-      "cooldownBurn": "10/9/8/7/6",
-      "costBurn": "50",
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
       "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Xayah''' throws two feather-blades in quick succession, dealing {{tip|physical damage|{{as|physical damage}}}}, and leaving two {{as|Feathers|buzzword}} on the ground.",
-        "Targets hit after the first take 50% damage."
-      ],
-      "icon": [
-        "Double Daggers.png"
-      ],
-      "leveling": [
-        "{{st|Damage Per Knife|{{ap|45|65|85|105|125}} {{as|(+ 50% '''bonus''' AD)}}|Maximum Total Damage|{{ap|90|130|170|210|250}} {{as|(+ 100% '''bonus''' AD)}}}}",
-        "{{st|Minimum Damage Per Knife|{{ap|22.5|32.5|42.5|52.5|62.5}} {{as|(+ 25% '''bonus''' AD)}}|Minimum Total Damage|{{ap|45|65|85|105|125}} {{as|(+ 50% '''bonus''' AD)}}}}"
-      ],
-      "name": "Double Daggers",
-      "notes": [
-        "* ''{{tip|Spell shield|Spell shields}}'' will block only a single feather blade.",
-        "* '''Xayah''' cannot basic attack for a set duration during the cast time of ''Double Daggers''. The lock out duration is reduced by {{ft|{{fd|0.007}} seconds per every {{as|1% '''bonus''' attack speed}}|1 second per every {{as|140% '''bonus''' attack speed}}}}.",
-        "*As the feathers are forming, they will deal damage in a small area around '''Xayah''''s feet before firing."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spellshield": "Special",
+      "targeting": "Direction",
       "target_range": 1100,
-      "targeting": "Direction"
-    },
-    "w1": {
-      "key": "W",
-      "id": "XayahW",
-      "riotName": "Deadly Plumage",
-      "maxrank": 5,
-      "maxammo": -1,
       "image": {
-        "full": "XayahW.png",
+        "full": "XayahQ.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 240,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
-      "affects": "Self, {{ci|Rakan}}",
-      "blurb": "Xayah creates a storm of blades that increase her basic attack speed and damage while granting her movement speed if she attacks a champion.",
-      "champion": "Xayah",
+      "description": [
+        "{{sbc|Active:}} '''Xayah''' throws two feather-blades in quick succession, dealing {{tip|physical damage|{{as|physical damage}}}}, and leaving two {{as|Feathers|buzzword}} on the ground.",
+        "Targets hit after the first take 50% damage."
+      ],
+      "notes": "\n* ''{{tip|Spell shield|Spell shields}}'' will block only a single feather blade.\n* '''Xayah''' cannot basic attack for a set duration during the cast time of ''Double Daggers''. The lock out duration is reduced by {{ft|{{fd|0.007}} seconds per every {{as|1% '''bonus''' attack speed}}|1 second per every {{as|140% '''bonus''' attack speed}}}}.\n*As the feathers are forming, they will deal damage in a small area around '''Xayah''''s feet before firing.",
+      "costBurn": "50",
+      "cooldownBurn": "10/9/8/7/6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Damage Per Knife|{{ap|45|65|85|105|125}} {{as|(+ 50% '''bonus''' AD)}}|Maximum Total Damage|{{ap|90|130|170|210|250}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage Per Knife</span>: <span><spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Total Damage</span>: <span><spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                45,
+                65,
+                85,
+                105,
+                125
+              ],
+              [
+                90,
+                130,
+                170,
+                210,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.5
+              },
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Damage Per Knife",
+              "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "Maximum Total Damage",
+              "<spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  65,
+                  85,
+                  105,
+                  125
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Damage Per Knife",
+              "str": "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  90,
+                  130,
+                  170,
+                  210,
+                  250
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Maximum Total Damage",
+              "str": "<spell-span :list=\"['90','130','170','210','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Minimum Damage Per Knife|{{ap|22.5|32.5|42.5|52.5|62.5}} {{as|(+ 25% '''bonus''' AD)}}|Minimum Total Damage|{{ap|45|65|85|105|125}} {{as|(+ 50% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Damage Per Knife</span>: <span><spell-span :list=\"['22.5','32.5','42.5','52.5','62.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 25% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                22.5,
+                32.5,
+                42.5,
+                52.5,
+                62.5
+              ],
+              [
+                45,
+                65,
+                85,
+                105,
+                125
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.25
+              },
+              {
+                "player_bonus_ad": 0.5
+              }
+            ],
+            "st_slices": [
+              "Minimum Damage Per Knife",
+              "<spell-span :list=\"['22.5','32.5','42.5','52.5','62.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 25% '''bonus''' AD)</span>",
+              "Minimum Total Damage",
+              "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  22.5,
+                  32.5,
+                  42.5,
+                  52.5,
+                  62.5
+                ],
+                "player_bonus_ad": 0.25
+              },
+              "title": "Minimum Damage Per Knife",
+              "str": "<spell-span :list=\"['22.5','32.5','42.5','52.5','62.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 25% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  65,
+                  85,
+                  105,
+                  125
+                ],
+                "player_bonus_ad": 0.25
+              },
+              "title": "Minimum Total Damage",
+              "str": "<spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "XayahW",
+      "name": "Deadly Plumage",
+      "maxrank": 5,
       "cooldown": [
         20,
         19,
@@ -161,52 +270,77 @@
         17,
         16
       ],
-      "cooldownBurn": "20/19/18/17/16",
-      "costBurn": "60 / 55 / 50 / 45 / 40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        60,
+        55,
+        50,
+        45,
+        40
       ],
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "XayahW.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 432,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Xayah''' creates a storm of blades for 4 seconds that grants her {{sti|{{as|'''bonus''' attack speed}}}} and cause her basic attacks to strike an additional time for 20% damage.",
         "If ''Deadly Plumage'' strikes an enemy champion, '''Xayah''' gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for {{fd|1.5}} seconds.",
         "''If {{ci|Rakan}} is nearby he will also gain the effects of Deadly Plumage, while also gaining the bonus movement speed when '''Xayah''' strikes an enemy champion.''"
       ],
-      "icon": [
-        "Deadly Plumage.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Attack Speed|{{ap|40 to 70}}%}}"
-      ],
-      "name": "Deadly Plumage",
-      "notes": [
-        "* The lesser bolts do ''not'' inflict additional damage for sources of on-hit damage, such as {{ii|Blade of the Ruined King}}, but will inflict additional damage on {{ii|Sheen}} procs.",
-        "* The lesser bolts count as additional sources of single target physical damage, and will apply bonus stacks of {{ii|The Black Cleaver}} and {{ri|Electrocute}}.",
-        "* The lesser bolts from {{ii|Runaan's Hurricane}} will also deal 20% increased damage, which is represented with additional lesser bolts being conjured from the storm. The damage of these W bolts is 20% of the fired Runaan's bolt, ''not'' of the initial auto attack."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "targeting": "Auto"
+      "notes": "\n* The lesser bolts count as additional sources of single target physical damage, and will apply bonus stacks of {{ii|The Black Cleaver}} and {{ri|Electrocute}}.\n* The lesser bolts from {{ii|Runaan's Hurricane}} will also deal 20% increased damage, which is represented with additional lesser bolts being conjured from the storm. The damage of these W bolts is 20% of the fired Runaan's bolt, ''not'' of the initial auto attack.",
+      "costBurn": "60/55/50/45/40",
+      "cooldownBurn": "20/19/18/17/16",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 70}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                47.5,
+                55,
+                62.5,
+                70
+              ]
+            ],
+            "st_slices": [
+              "Bonus Attack Speed",
+              "<spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  47.5,
+                  55,
+                  62.5,
+                  70
+                ]
+              },
+              "title": "Bonus Attack Speed",
+              "str": "<spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "XayahE",
-      "riotName": "Bladecaller",
+      "riotId": "XayahE",
+      "name": "Bladecaller",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "XayahE.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 288,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Xayah calls back all her dropped Feathers dealing damage and rooting enemies.",
-      "champion": "Xayah",
       "cooldown": [
         12,
         11,
@@ -214,86 +348,180 @@
         9,
         8
       ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "40",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
+      "cost": [
+        40,
+        40,
+        40,
+        40,
+        40
       ],
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "XayahE.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 0,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Xayah''' calls all {{as|Feathers|buzzword}} back to her, dealing {{as|physical damage}} to enemies they pass through, increased by {{as|{{pp|11|key=%|key1=%|type=critical chance|0 to 50|0 to 100|formula=0.5%*critical chance}}|critical chance}}. Minions take 50% damage.",
         "Enemies take {{pp|10|type=feathers hit|key=%|100 to 10|0 to 9|displayformula=100%-(10% per previous feather hit). ''This is capped at 10% damage.''}} damage from a {{as|Feather|buzzword}}.",
         "Enemies hit by at least 3 {{as|Feathers|buzzword}} are {{tip|root|rooted}} for {{fd|1.25}} seconds."
       ],
-      "effect_radius": "Global",
-      "icon": [
-        "Bladecaller.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage Per Feather|{{ap|55 to 95}} {{as|(+ 60% '''bonus''' AD)}}|Minion Damage Per Feather|{{ap|55/2 to 95/2}} {{as|(+ 30% '''bonus''' AD)}}}}"
-      ],
-      "name": "Bladecaller",
-      "notes": [
-        "* This ability cannot be ranked at level 1.",
-        "* The damage dealt by ''Bladecaller'' follows a diminishing returns formula not mentioned in the ability's description, successively reducing extra damage from feathers beyond the first.",
-        "** This formula is:",
-        "*** For feathers <=10: Damage of one feather{{times}}(n{{minus}}0.1{{times}}(n{{minus}}1){{divided by}}2{{times}}n) where n stands for the number of feathers hit.",
-        "*** For feathers >=11: Damage of one feather{{times}}(5.5{{plus}}0.1{{times}}(n{{minus}}10)) where n stands for the number of feathers hit.",
-        "** For example, at rank 1 ''Bladecaller'' deals {{pp|10|type=feathers hit|55*(x-0.1*(x-1)/2*x)}}."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "targeting": "Auto"
+      "notes": "\n* This ability cannot be ranked at level 1.\n* The damage dealt by ''Bladecaller'' follows a diminishing returns formula not mentioned in the ability's description, successively reducing extra damage from feathers beyond the first.\n** This formula is:\n*** For feathers <=10: Damage of one feather{{times}}(n{{minus}}0.1{{times}}(n{{minus}}1){{divided by}}2{{times}}n) where n stands for the number of feathers hit.\n*** For feathers >=11: Damage of one feather{{times}}(5.5{{plus}}0.1{{times}}(n{{minus}}10)) where n stands for the number of feathers hit.\n** For example, at rank 1 ''Bladecaller'' deals {{pp|10|type=feathers hit|55*(x-0.1*(x-1)/2*x)}}.",
+      "costBurn": "40",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage Per Feather|{{ap|55 to 95}} {{as|(+ 60% '''bonus''' AD)}}|Minion Damage Per Feather|{{ap|55/2 to 95/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Feather</span>: <span><spell-span :list=\"['55','65','75','85','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minion Damage Per Feather</span>: <span><spell-span :list=\"['27.5','32.5','37.5','42.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                55,
+                65,
+                75,
+                85,
+                95
+              ],
+              [
+                27.5,
+                32.5,
+                37.5,
+                42.5,
+                47.5
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.6
+              },
+              {
+                "player_bonus_ad": 0.3
+              }
+            ],
+            "st_slices": [
+              "Physical Damage Per Feather",
+              "<spell-span :list=\"['55','65','75','85','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "Minion Damage Per Feather",
+              "<spell-span :list=\"['27.5','32.5','37.5','42.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  65,
+                  75,
+                  85,
+                  95
+                ],
+                "player_bonus_ad": 0.6
+              },
+              "title": "Physical Damage Per Feather",
+              "str": "<spell-span :list=\"['55','65','75','85','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  27.5,
+                  32.5,
+                  37.5,
+                  42.5,
+                  47.5
+                ],
+                "player_bonus_ad": 0.6
+              },
+              "title": "Minion Damage Per Feather",
+              "str": "<spell-span :list=\"['27.5','32.5','37.5','42.5','47.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "XayahR",
-      "riotName": "Featherstorm",
+      "riotId": "XayahR",
+      "name": "Featherstorm",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        160,
+        145,
+        130
+      ],
+      "cost": [
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1100,
       "image": {
         "full": "XayahR.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 336,
-        "y": 96,
+        "x": 48,
+        "y": 144,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Xayah leaps into the air, becoming untargetable and throwing out a fan of daggers, dropping Feathers she can recall.",
-      "champion": "Xayah",
-      "cooldown": [
-        140,
-        125,
-        110
-      ],
-      "cooldownBurn": "140/125/110",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "physical",
-      "damageTypes": [
-        "physical"
-      ],
       "description": [
         "{{sbc|Active:}} '''Xayah''' leaps into the air, becoming {{tip|untargetable}} for 1.5 seconds, during which she is still able to move, then rains down daggers which deal {{as|physical damage}} and leave behind a line of 5 {{as|Feathers|buzzword}}."
       ],
-      "icon": [
-        "Featherstorm.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|100|150|200}} {{as|(+ 100% '''bonus''' AD)}}}}"
-      ],
-      "name": "Featherstorm",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spellshield": true,
-      "target_range": 1100,
-      "targeting": "Direction"
+      "notes": "\n* No additional details.",
+      "costBurn": "100",
+      "cooldownBurn": "160/145/130",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|100|150|200}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  150,
+                  200
+                ],
+                "player_bonus_ad": 1
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['100','150','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

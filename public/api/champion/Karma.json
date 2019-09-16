@@ -1,10 +1,9 @@
 {
   "patch": "V1.0.0.110",
-  "changes": "9.14.1",
+  "changes": "9.16.1",
   "id": "Karma",
   "key": "43",
   "name": "Karma",
-  "fullname": "Karma",
   "title": "the Enlightened One",
   "image": {
     "full": "Karma.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 8,
     "difficulty": 5
   },
-  "i_displayname": "Gathering Fire",
-  "q_displayname": "Inner Flame / Soulflare",
-  "w_dispalyname": "Focused Resolve / Renewal",
-  "e_dispalyname": "Inspire / Defiance",
-  "r_dispalyname": "Mantra",
-  "complex_skills": {
+  "stats": {
+    "hp": 534,
+    "hpperlevel": 95,
+    "mp": 374,
+    "mpperlevel": 50,
+    "movespeed": 335,
+    "armor": 26,
+    "armorperlevel": 3.8,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 11.5,
+    "mpregenperlevel": 0.5,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 53.544,
+    "attackdamageperlevel": 3.3,
+    "attackspeedperlevel": 2.3,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Gathering Fire",
+      "riotId": "",
+      "name": "Gathering Fire",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Karma_Passive.png",
         "sprite": "passive1.png",
@@ -49,92 +68,31 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Reduces Mantra's cooldown each time Karma damages an enemy champion with one of her abilities (Half-effect for Karma's basic attacks)",
-      "champion": "Karma",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Karma''' {{sti|cooldown reduction|link=true|reduces}} {{ais|Mantra|Karma}} cooldown by {{pp|3|showtype=true|2 to 4|1 to 13}} seconds every time she [[damage]]s an enemy [[champion]] with an [[Champion ability|ability]], halved to {{pp|3|showtype=true|1 to 2|1 to 13}} seconds on her [[basic attack]]s."
       ],
-      "icon": [
-        "Gathering Fire.png"
-      ],
-      "leveling": [],
-      "name": "Gathering Fire",
-      "notes": [
-        "* {{ai|Inner Flame|Karma}} / {{ai|Soulflare|Karma}} reduces {{ais|Mantra|Karma}} cooldown per target hit (for a total of {{pp|3|2*5 to 4*5|1 to 13|showtype=true}} seconds if 5 enemy champions are hit at once).",
-        "* {{ai|Focused Resolve|Karma}} / {{ai|Renewal|Karma}} reduces {{ais|Mantra|Karma}} cooldown per tick (for a total of {{pp|3|2*2 to 4*2|1 to 13|showtype=true}} seconds for the entire duration).",
-        "* {{ai|Inspire|Karma}} / {{ai|Defiance|Karma}} does not reduce {{ais|Mantra|Karma}} cooldown (it has no damage component)."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
-    },
-    "q1": {
-      "key": "Q1",
-      "id": "KarmaQ",
-      "riotName": "Inner Flame",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "KarmaQ.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 96,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Karma sends forth a ball of spirit energy that explodes and deals damage upon hitting an enemy unit. Mantra Bonus: In addition to the explosion, Mantra increases the destructive power of her Inner Flame, creating a cataclysm which deals damage after a short delay.",
-      "champion": "Karma",
-      "cooldown": [
-        7,
-        6.5,
-        6,
-        5.5,
-        5
-      ],
-      "cooldownBurn": "7/6.5/6/5.5/5",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Karma''' fires a burst of spiritual energy in the target direction, detonating with the first enemy hit, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies around the target by 35% for {{ap|1.5}} seconds."
-      ],
-      "effect_radius": 280,
-      "icon": [
-        "Inner Flame.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Inner Flame",
-      "notes": [
-        "* {{tip|Spell shield}} will block the initial impact from ''Inner Flame''."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "target_range": 950,
-      "targeting": "Direction"
+      "notes": "\n* {{ai|Inner Flame|Karma}} / {{ai|Soulflare|Karma}} reduces {{ais|Mantra|Karma}} cooldown per target hit (for a total of {{pp|3|2*5 to 4*5|1 to 13|showtype=true}} seconds if 5 enemy champions are hit at once).\n* {{ai|Focused Resolve|Karma}} / {{ai|Renewal|Karma}} reduces {{ais|Mantra|Karma}} cooldown per tick (for a total of {{pp|3|2*2 to 4*2|1 to 13|showtype=true}} seconds for the entire duration).\n* {{ai|Inspire|Karma}} / {{ai|Defiance|Karma}} does not reduce {{ais|Mantra|Karma}} cooldown (it has no damage component).",
+      "effects": []
     },
     "q2": {
-      "key": "Q2",
-      "id": "KarmaQ",
-      "riotName": "Inner Flame",
+      "riotId": "KarmaQ",
+      "name": "Soulflare",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
       "image": {
         "full": "KarmaQ.png",
         "sprite": "spell5.png",
@@ -144,115 +102,282 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Karma",
-      "cooldown": [
-        7,
-        6.5,
-        6,
-        5.5,
-        5
-      ],
-      "cooldownBurn": "7/6.5/6/5.5/5",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inner Flame'' detonates upon hitting an enemy or reaching maximum range, dealing {{as|'''bonus''' magic damage}} in an increased area.",
         "A field lingers around the detonation for {{fd|1.5}} seconds, {{tip|slow|slowing}} enemies by 50%, after which it explodes, dealing {{as|magic damage}} to all enemies inside.",
         "''Soulflare'' scales with {{ais|Mantra|Karma}} rank."
       ],
-      "effect_radius": 300,
-      "icon": [
-        "Soulflare.png"
+      "notes": "\n* {{tip|Spell shield}} will block the initial impact from either ability but will not block ''Soulflare's'' field damage.\n* The lingering field will place under the impacted enemy, rather than the impact point.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25|75|125|175}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|25|75|125|175}}}}) {{as|(+ 90% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Burst Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                25,
+                75,
+                125,
+                175
+              ],
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ],
+              [
+                25,
+                75,
+                125,
+                175
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.9
+              }
+            ],
+            "st_slices": [
+              "Bonus Magic Damage",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span>",
+              "Total Burst Damage",
+              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 90% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  25,
+                  75,
+                  125,
+                  175
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Total Burst Damage",
+              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35|140|245|350}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|60|215|370|525}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|60|215|370|525}}}}) {{as|(+ 150% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['35','140','245','350']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                35,
+                140,
+                245,
+                350
+              ],
+              [
+                60,
+                215,
+                370,
+                525
+              ],
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ],
+              [
+                60,
+                215,
+                370,
+                525
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              "Detonation Damage",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['35','140','245','350']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 60% AP)</span>",
+              "Total Bonus Damage",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 150% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  35,
+                  140,
+                  245,
+                  350
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Detonation Damage",
+              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['35','140','245','350']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  215,
+                  370,
+                  525
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Total Bonus Damage",
+              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 150% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "KarmaQ",
+      "name": "Inner Flame",
+      "maxrank": 5,
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5
       ],
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25|75|125|175}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|25|75|125|175}}}}) {{as|(+ 90% AP)}}}}",
-        "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35|140|245|350}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|60|215|370|525}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|80|125|170|215|260}} (+ {{ai|Mantra|Karma|{{ap|60|215|370|525}}}}) {{as|(+ 150% AP)}}}}"
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
       ],
-      "name": "Soulflare",
-      "notes": [
-        "* {{tip|Spell shield}} will block the initial impact from either ability but will not block ''Soulflare's'' field damage.",
-        "* The lingering field will place under the impacted enemy, rather than the impact point."
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 950,
+      "image": {
+        "full": "KarmaQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Karma''' fires a burst of spiritual energy in the target direction, detonating with the first enemy hit, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies around the target by 35% for {{ap|1.5}} seconds."
       ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "targeting": "Direction"
+      "notes": "\n* {{tip|Spell shield}} will block the initial impact from ''Inner Flame''.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "7/6.5/6/5.5/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W1",
-      "id": "KarmaSpiritBind",
-      "riotName": "Focused Resolve",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "KarmaSpiritBind.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies / Self",
-      "blurb": "Karma creates a tether between herself and a targeted enemy, dealing damage and revealing them. If the tether is not broken, the enemy will be rooted and damaged again. Mantra Bonus: Karma strengthens the link, healing herself and extending the root duration.",
-      "callforhelp": true,
-      "champion": "Karma",
-      "cooldownBurn": "12",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Karma''' exerts her will over a target enemy champion or [[monster]], dealing {{as|magic damage}} and forming a tether between them for up to 2 seconds, during which the target is {{tip|true sight|revealed}}.",
-        "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and is {{tip|true sight|revealed}} and {{tip|root|rooted}} for a duration."
-      ],
-      "icon": [
-        "Focused Resolve.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 45% AP)}}}}",
-        "{{st|Total Magic Damage|{{ap|30*2 to 130*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}"
-      ],
+      "riotId": "KarmaSpiritBind",
       "name": "Focused Resolve",
-      "notes": [
-        "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "DOT",
-      "spellshield": "Special",
-      "target_range": 675,
-      "targeting": "Unit",
-      "tether_radius": 1000
-    },
-    "w2": {
-      "key": "W2",
-      "id": "KarmaSpiritBind",
-      "riotName": "Focused Resolve",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "KarmaSpiritBind.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies / Self",
-      "blurb": "",
-      "callforhelp": true,
-      "champion": "Karma",
       "cooldown": [
         12,
         12,
@@ -260,90 +385,232 @@
         12,
         12
       ],
-      "cooldownBurn": "12",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
       ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 675,
+      "image": {
+        "full": "KarmaSpiritBind.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Karma''' exerts her will over a target enemy champion or [[monster]], dealing {{as|magic damage}} and forming a tether between them for up to 2 seconds, during which the target is {{tip|true sight|revealed}}.",
+        "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and is {{tip|true sight|revealed}} and {{tip|root|rooted}} for a duration."
+      ],
+      "notes": "\n* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 45% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                55,
+                80,
+                105,
+                130
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Total Magic Damage|{{ap|30*2 to 130*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                110,
+                160,
+                210,
+                260
+              ],
+              [
+                1.4,
+                1.55,
+                1.7,
+                1.85,
+                2
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9
+              }
+            ],
+            "st_slices": [
+              "Root Duration",
+              "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  110,
+                  160,
+                  210,
+                  260
+                ],
+                "player_total_ap": 0.9
+              },
+              "title": "Root Duration",
+              "str": "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "w2": {
+      "riotId": "KarmaSpiritBind",
+      "name": "Renewal",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Unit",
+      "image": {
+        "full": "KarmaSpiritBind.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Focused Resolve's'' {{tip|root}} duration is increased, and {{tip|heal|heals}} '''Karma''' for {{sti|health|{{as|20% {{as|(+ 1% per 100 AP)}} of '''missing''' health}}}} on-cast and once more when the target {{tip|takedown|dies}} while tethered or is {{tip|root|rooted}}.",
         "''Renewal'' scales with {{ais|Mantra|Karma}} rank."
       ],
-      "icon": [
-        "Renewal.png"
-      ],
-      "leveling": [
-        "{{st|Total Root Duration|{{ap|1.4 to 2}} (+ {{ai|Mantra|Karma|{{ap|0.5 to 1.25 4}}}})}}"
-      ],
-      "name": "Renewal",
-      "notes": [
-        "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "DOT",
-      "spellshield": "Special",
-      "targeting": "Unit"
-    },
-    "e1": {
-      "key": "E1",
-      "id": "KarmaSolKimShield",
-      "riotName": "Inspire",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "KarmaSolKimShield.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Allies",
-      "blurb": "Karma summons a protective shield that absorbs incoming damage and increases the Movement Speed of the protected ally. Mantra Bonus: Energy radiates out from her target, strengthening the initial shield and applying Inspire to nearby allied champions.",
-      "champion": "Karma",
-      "cooldown": [
-        10,
-        9.5,
-        9,
-        8.5,
-        8
-      ],
-      "cooldownBurn": "10/9.5/9/8.5/8",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Karma''' {{tip|shield|shields}} the target allied [[champion]] or herself for {{fd|2.5}} seconds, granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds."
-      ],
-      "icon": [
-        "Inspire.png"
-      ],
-      "leveling": [
-        "{{st|Shield|{{ap|70 to 170}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}"
-      ],
-      "name": "Inspire",
-      "notes": [
-        "* ''Inspire'' has no cast time and does not interrupt ''Karma's'' previous orders."
-      ],
-      "projectile": "null",
-      "skill": "E",
-      "spelleffects": "Shield",
-      "target_range": 800,
-      "targeting": "Unit"
+      "notes": "\n* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Root Duration|{{ap|1.4 to 2}} (+ {{ai|Mantra|Karma|{{ap|0.5 to 1.25 4}}}})}}",
+          "str": "<ul><li><span class=\"blue\">Total Root Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['0.5','0.75','1','1.25']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>)</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.4,
+                1.55,
+                1.7,
+                1.85,
+                2
+              ],
+              [
+                0.5,
+                0.75,
+                1,
+                1.25
+              ]
+            ],
+            "st_slices": [
+              "Total Root Duration",
+              "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['0.5','0.75','1','1.25']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>)"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.4,
+                  1.55,
+                  1.7,
+                  1.85,
+                  2
+                ]
+              },
+              "title": "Total Root Duration",
+              "str": "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['0.5','0.75','1','1.25']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>)",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "KarmaSolKimShield",
-      "riotName": "Inspire",
+      "riotId": "KarmaSolKimShield",
+      "name": "Defiance",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
       "image": {
         "full": "KarmaSolKimShield.png",
         "sprite": "spell5.png",
@@ -353,49 +620,242 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Allies",
-      "blurb": "",
-      "champion": "Karma",
-      "cooldown": [
-        10,
-        9.5,
-        9,
-        8.5,
-        8
-      ],
-      "cooldownBurn": "10/9.5/9/8.5/8",
-      "costBurn": "0",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inspire's'' target receives '''bonus''' shield, and the effects are extended to allied champions near it, except they only gain 30% of the shield amount.",
         "''Defiance'' scales with {{ais|Mantra|Karma}} rank."
       ],
-      "effect_radius": 600,
-      "icon": [
-        "Defiance.png"
+      "notes": "\n* No additional notes.",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|25 to 190 4}}}} {{as|(+ 50% AP)}}|Total Target Shield|{{ap|70 to 170}} (+ {{ai|Mantra|Karma|{{ap|25 to 190 4}}}}) {{as|(+ 100% AP)}}|Allies' Shields|{{ap|70*0.3 to 170*0.3}} (+ {{ai|Mantra|Karma|{{ap|25*0.3 to 190*0.3 4}}}}) {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Shield</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Total Target Shield</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Allies' Shields</span>: <span><spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                25,
+                80,
+                135,
+                190
+              ],
+              [
+                70,
+                95,
+                120,
+                145,
+                170
+              ],
+              [
+                25,
+                80,
+                135,
+                190
+              ],
+              [
+                21,
+                28.5,
+                36,
+                43.5,
+                51
+              ],
+              [
+                7.5,
+                24,
+                40.5,
+                57
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 1
+              },
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Bonus Shield",
+              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span>",
+              "Total Target Shield",
+              "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
+              "Allies' Shields",
+              "<spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  80,
+                  135,
+                  190
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Bonus Shield",
+              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  95,
+                  120,
+                  145,
+                  170
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Total Target Shield",
+              "str": "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  80,
+                  135,
+                  190
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Allies' Shields",
+              "str": "<spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "KarmaSolKimShield",
+      "name": "Inspire",
+      "maxrank": 5,
+      "cooldown": [
+        10,
+        9.5,
+        9,
+        8.5,
+        8
       ],
-      "leveling": [
-        "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|30 to 210 4}}}} {{as|(+ 60% AP)}}|Total Target Shield|{{ap|70 to 170}} (+ {{ai|Mantra|Karma|{{ap|30 to 210 4}}}}) {{as|(+ 110% AP)}}|Allies' Shields|{{ap|70*0.3 to 170*0.3}} (+ {{ai|Mantra|Karma|{{ap|30*0.3 to 210*0.3 4}}}}) {{as|(+ 33% AP)}}}}"
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
       ],
-      "name": "Defiance",
-      "notes": [
-        "* No additional notes."
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 800,
+      "image": {
+        "full": "KarmaSolKimShield.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Karma''' {{tip|shield|shields}} the target allied [[champion]] or herself for {{fd|2.5}} seconds, granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds."
       ],
-      "projectile": "null",
-      "skill": "E",
-      "spelleffects": "Shield",
-      "targeting": "Unit"
+      "notes": "\n* ''Inspire'' has no cast time and does not interrupt ''Karma's'' previous orders.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "10/9.5/9/8.5/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Shield|{{ap|70 to 170}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                95,
+                120,
+                145,
+                170
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_unknown": [
+                  0.4,
+                  0.45,
+                  0.5,
+                  0.55,
+                  0.6
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<span class=\"ms\"><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  95,
+                  120,
+                  145,
+                  170
+                ],
+                "player_total_ap": 0.5,
+                "player_total_unknown": [
+                  0.4,
+                  0.45,
+                  0.5,
+                  0.55,
+                  0.6
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<span class=\"ms\"><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "KarmaMantra",
-      "riotName": "Mantra",
+      "riotId": "KarmaMantra",
+      "name": "Mantra",
       "maxrank": 4,
-      "maxammo": -1,
+      "cooldown": [
+        45,
+        42,
+        39,
+        36
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "KarmaMantra.png",
         "sprite": "spell5.png",
@@ -405,39 +865,15 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Karma empowers her next ability to do an additional effect. Mantra is available at level 1 and does not require a skill point.",
-      "champion": "Karma",
-      "cooldown": [
-        45,
-        42,
-        39,
-        36
-      ],
-      "cooldownBurn": "45/42/39/36",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Karma''' empowers her next basic ability within 8 seconds for an additional effect.",
         "'''Karma''' begins the game with one rank in ''Mantra''."
       ],
-      "icon": [
-        "Mantra.png"
-      ],
-      "leveling": [],
-      "name": "Mantra",
-      "notes": [
-        "* ''Mantra'' has no cast time, does not interrupt ''Karma's'' previous orders and can be used while [[Crowd control|crowd controlled]].",
-        "* ''Mantra's'' bonus effects are added on top of Karma's basic abilities.",
-        "* ''Mantra's'' cooldown begins on-cast, not when its effect is consumed."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "targeting": "None"
+      "notes": "\n* ''Mantra'' has no cast time, does not interrupt ''Karma's'' previous orders and can be used while [[Crowd control|crowd controlled]].\n* ''Mantra's'' bonus effects are added on top of Karma's basic abilities.\n* ''Mantra's'' cooldown begins on-cast, not when its effect is consumed.",
+      "costBurn": "0",
+      "cooldownBurn": "45/42/39/36",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 8
 }

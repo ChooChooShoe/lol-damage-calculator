@@ -1,16 +1,15 @@
 {
   "patch": "V1.0.0.132",
-  "changes": "9.13.1",
+  "changes": "9.16.1",
   "id": "Sejuani",
   "key": "113",
   "name": "Sejuani",
-  "fullname": "Sejuani",
   "title": "Fury of the North",
   "image": {
     "full": "Sejuani.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 0,
     "w": 48,
     "h": 48
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Fighter",
+  "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,126 +31,138 @@
     "magic": 6,
     "difficulty": 4
   },
-  "i_displayname": "Fury of the North",
-  "q_displayname": "Arctic Assault",
-  "w_dispalyname": "Winter's Wrath",
-  "e_dispalyname": "Permafrost",
-  "r_dispalyname": "Glacial Prison",
-  "complex_skills": {
+  "stats": {
+    "hp": 560,
+    "hpperlevel": 95,
+    "mp": 400,
+    "mpperlevel": 40,
+    "movespeed": 340,
+    "armor": 34,
+    "armorperlevel": 4.25,
+    "spellblock": 32.1,
+    "spellblockperlevel": 1.25,
+    "attackrange": 150,
+    "hpregen": 8.5,
+    "hpregenperlevel": 0.85,
+    "mpregen": 7,
+    "mpregenperlevel": 0.7,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 64,
+    "attackdamageperlevel": 4,
+    "attackspeedperlevel": 3,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Fury of the North",
+      "riotId": "",
+      "name": "Fury of the North",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Sejuani_passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "After being out of combat, Sejuani gains Frost Armor which grants Armor and Magic Resist and immunity to slows. Frost Armor persists for a short time after Sejuani takes damage. Sejuani can damage a stunned enemy to shatter it, dealing massive magic damage.",
-      "champion": "Sejuani",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Frost Armor:}} '''Sejuani''' receives [[File:Sejuani Frost Armor.png|18px|link=]] ''Frost Armor'' if she hasn't taken damage from large [[monster]]s and enemy [[champion]]s in the last 12 seconds, lingering for 3 seconds after taking damage.",
-        "[[File:Sejuani Frost Armor.png|18px|link=]] ''Frost Armor'' engulfs {{ui|Bristle}} in True Ice, becoming [[Slow resist#Slow Immunity|immune]] to {{tip|slow|slows}} and gains {{sti|armor|{{as|20 (+ 25% '''bonus''' armor) '''bonus''' armor}}}} and {{sti|mr|{{as|20 (+ 25% '''bonus''' magic resistance) '''bonus''' magic resistance}}}}.",
+        "[[File:Sejuani Frost Armor.png|18px|link=]] ''Frost Armor'' engulfs {{ui|Bristle}} in True Ice, becoming [[Slow resist#Slow Immunity|immune]] to {{tip|slow|slows}} and gains {{sti|armor|{{as|10 (+ 35% '''bonus''' armor) '''bonus''' armor}}}} and {{sti|mr|{{as|10 (+ 35% '''bonus''' magic resistance) '''bonus''' magic resistance}}}}.",
         "{{sbc|Icebreaker:}} Enemies {{tip|stun|stunned}} by '''Sejuani''' are ''Frozen''. '''Sejuani's''' basic attacks and abilities against ''Frozen'' enemies consume the effect to deal {{as|{{pp|3|10 to 20|1;7;14|key=%}} of their '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, capped to 300 against epic monsters."
       ],
-      "icon": [
-        "Fury of the North.png"
-      ],
-      "leveling": [],
-      "name": "Fury of the North",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "I",
-      "spelleffects": "Single target",
-      "targeting": "Passive"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "SejuaniQ",
-      "riotName": "Arctic Assault",
+      "riotId": "SejuaniQ",
+      "name": "Arctic Assault",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        20,
+        18,
+        16,
+        14,
+        12
+      ],
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 650,
       "image": {
         "full": "SejuaniQ.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Sejuani charges forward, knocking enemies into the air. The charge stops after hitting an enemy champion.",
-      "champion": "Sejuani",
-      "cooldown": [
-        17,
-        15.5,
-        14,
-        12.5,
-        11
-      ],
-      "cooldownBurn": "17/15.5/14/12.5/11",
-      "costBurn": "70 / 75 / 80 / 85 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Sejuani''' signals {{ui|Bristle}} to {{tip|dash}} in the target direction, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} all enemies hit for {{fd|0.5}} seconds. The charge will prematurely end upon colliding with an enemy [[champion]]."
       ],
-      "grounded": true,
-      "icon": [
-        "Arctic Assault.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Arctic Assault",
-      "notes": [
-        "* Champions will slightly be {{tip|airborne|knocked back}}, while [[minion]]s and [[monster]]s will instead be slightly {{tip|airborne|pulled}} for a fixed distance.",
-        "* ''Arctic Assault'' cannot {{tip|airborne|knock}} enemies over terrain."
-      ],
-      "projectile": "Magic",
-      "skill": "Q",
-      "speed": 1000,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 650,
-      "targeting": "Direction"
+      "notes": "\n* Champions will slightly be {{tip|airborne|knocked back}}, while [[minion]]s and [[monster]]s will instead be slightly {{tip|airborne|pulled}} for a fixed distance.\n* ''Arctic Assault'' cannot {{tip|airborne|knock}} enemies over terrain.",
+      "costBurn": "70/75/80/85/90",
+      "cooldownBurn": "20/18/16/14/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "SejuaniW",
-      "riotName": "Winter's Wrath",
+      "riotId": "SejuaniW",
+      "name": "Winter's Wrath",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "SejuaniW.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 240,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Sejuani swings her mace twice, dealing damage and applying Frost stacks.",
-      "champion": "Sejuani",
       "cooldown": [
         9,
         8,
@@ -158,146 +170,398 @@
         6,
         5
       ],
-      "cooldownBurn": "9/8/7/6/5",
-      "costBurn": "65",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        65,
+        65,
+        65,
+        65,
+        65
       ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 600,
+      "image": {
+        "full": "SejuaniW.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 432,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} After a {{fd|0.25}}-seconds delay, '''Sejuani''' swings her flail in a cone in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies hit and {{tip|airborne|knocking back}} minions and monsters.",
         "She then lashes out with her flail after {{fd|0.75}} seconds in a straight line in the same direction, dealing additional {{as|physical damage}} and {{tip|slow|slowing}} all enemies hit by 75% for {{fd|0.25}} seconds.",
         "'''Sejuani''' can move freely during ''Winter's Wrath''. Both swings will strike in the cast direction, but their hitboxes follow '''Sejuani's''' movement."
       ],
-      "icon": [
-        "Winter's Wrath.png"
-      ],
-      "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 40}} {{as|(+ 20% AP)}} {{as|(+ 2% of her '''maximum''' health)}}}}",
-        "{{st|Physical Damage|{{ap|30 to 190}} {{as|(+ 60% AP)}} {{as|(+ {{fd|5.25}}% of her '''maximum''' health)}}|Total Damage|{{ap|20+30 to 40+190}} {{as|(+ 80% AP)}} {{as|(+ {{fd|7.25}}% of her '''maximum''' health)}}}}"
-      ],
-      "name": "Winter's Wrath",
-      "notes": [
-        "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage - either the swing or the lash.",
-        "* The ability's cooldown starts after both flail attacks are completed."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": "Special",
-      "target_range": 600,
-      "targeting": "Direction"
+      "notes": "\n* {{tip|Spell shield|Spell shields}} will block only a single instance of damage - either the swing or the lash.\n* The ability's cooldown starts after both flail attacks are completed.",
+      "costBurn": "65",
+      "cooldownBurn": "9/8/7/6/5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 40}} {{as|(+ 20% AP)}} {{as|(+ 2% of her '''maximum''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"health\">(+ 2% of her <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_hp": 0.02
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"health\">(+ 2% of her '''maximum''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_total_ap": 0.2,
+                "player_total_hp": 0.02
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"health\">(+ 2% of her '''maximum''' health)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|30 to 190}} {{as|(+ 60% AP)}} {{as|(+ {{fd|5.25}}% of her '''maximum''' health)}}|Total Damage|{{ap|20+30 to 40+190}} {{as|(+ 80% AP)}} {{as|(+ {{fd|7.25}}% of her '''maximum''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['30','70','110','150','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">5.25</span>% of her <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['50','95','140','185','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">7.25</span>% of her <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                70,
+                110,
+                150,
+                190
+              ],
+              [
+                50,
+                95,
+                140,
+                185,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_hp": 0.0525
+              },
+              {
+                "player_total_hp": 0.0725
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['30','70','110','150','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">5.25</span>% of her '''maximum''' health)</span>",
+              "Total Damage",
+              "<spell-span :list=\"['50','95','140','185','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">7.25</span>% of her '''maximum''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  70,
+                  110,
+                  150,
+                  190
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['30','70','110','150','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">5.25</span>% of her '''maximum''' health)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  50,
+                  95,
+                  140,
+                  185,
+                  230
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Total Damage",
+              "str": "<spell-span :list=\"['50','95','140','185','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">7.25</span>% of her '''maximum''' health)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "SejuaniE",
-      "riotName": "Permafrost",
+      "riotId": "SejuaniE",
+      "name": "Permafrost",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        1.5
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "Mana + 4 ''Frost'' Stacks",
+      "targeting": "Unit",
+      "target_range": 600,
       "image": {
         "full": "SejuaniE.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Allies, Self",
-      "blurb": "Sejuani freezes and stuns an enemy champion that has maximum Frost stacks.",
-      "callforhelp": true,
-      "champion": "Sejuani",
-      "cooldownBurn": "1.5",
-      "costBurn": "20",
-      "costtype": "Mana + 4 ''Frost'' Stacks",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} {{ai|Winter's Wrath|Sejuani}} and both '''Sejuani's''' and {{tt|nearby|1100 range}} allied {{tip|melee}} champions' basic attacks apply ''Frost'' to enemy champions, epic, large and medium monsters, super minions and siege minions for 5 seconds, stacking up to 4 times.",
         "{{sbc|Active:}} If the targeted enemy has 4 stacks of ''Frost'', '''Sejuani''' consumes all stacks to deal {{as|magic damage}}, {{tip|knockdown|knock them down}}, and {{tip|stun}} them for 1 second.",
         "Enemy champions {{tip|stun|stunned}} by '''Sejuani''' cannot gain ''Frost'' for {{pp|3|10 to 8|1;7;14}} seconds.",
         "''Permafrost'' resets '''Sejuani's''' basic attack timer."
       ],
-      "icon": [
-        "Sejuani Frost Stack.png",
-        "Permafrost.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|40 to 200}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "Permafrost",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 600,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "20",
+      "cooldownBurn": "1.5",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 200}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                80,
+                120,
+                160,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  80,
+                  120,
+                  160,
+                  200
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "SejuaniR",
-      "riotName": "Glacial Prison",
+      "riotId": "SejuaniR",
+      "name": "Glacial Prison",
       "maxrank": 3,
-      "maxammo": -1,
-      "image": {
-        "full": "SejuaniR.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 336,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Sejuani throws her bola that freezes and stuns the first champion hit and creates an ice storm that slows other enemies.",
-      "champion": "Sejuani",
       "cooldown": [
         120,
         100,
         80
       ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1300,
+      "image": {
+        "full": "SejuaniR.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Active:}} '''Sejuani''' throws a True Ice bola in the target direction, stopping at the first enemy champion hit, dealing {{as|magic damage}}, {{tip|knockdown|knocking them down}}, and {{tip|stun|stunning}} them for 1 second.",
         "The bola deals increased damage, {{tip|stun|stuns}} for {{fd|1.5}} seconds and shatters upon reaching maximum range or upon colliding with a unit beyond {{tt|400 range|estimated}}, creating a storm for 2 seconds that {{tip|slow|slows}} enemies by 30%.",
         "At the end of the duration the storm shatters the ground, dealing the same damage and {{tip|slow|slowing}} enemies by 80% for 1 second.",
         "The enemy hit by the bola is not affected by the storm's effects."
       ],
-      "icon": [
-        "Glacial Prison.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100 to 150}} {{as|(+ 40% AP)}}|Empowered Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
-        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}"
-      ],
-      "name": "Glacial Prison",
-      "notes": [
-        "* ''Glacial Prison'' affects minions only if they are within detonation radius.",
-        "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage.",
-        "* The {{tip|stun}} will apply {{tip|single target}} spell effect, while the storm will apply {{tip|area of effect}} spell damage.",
-        "* The True Ice bola is always thrown at maximum range.",
-        "* The True Ice bola does not collide with terrain.",
-        "* The True Ice bola applies the freeze immunity of {{ai|Permafrost|Sejuani}} when {{tip|stun|stunning}} a champion."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "speed": 1350,
-      "spelleffects": "Special",
-      "spellshield": "Special",
-      "target_range": 1300,
-      "targeting": "Direction"
+      "notes": "\n* ''Glacial Prison'' affects minions only if they are within detonation radius.\n* {{tip|Spell shield|Spell shields}} will block only a single instance of damage.\n* The {{tip|stun}} will apply {{tip|single target}} spell effect, while the storm will apply {{tip|area of effect}} spell damage.\n* The True Ice bola is always thrown at maximum range.\n* The True Ice bola does not collide with terrain.\n* The True Ice bola applies the freeze immunity of {{ai|Permafrost|Sejuani}} when {{tip|stun|stunning}} a champion.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|100 to 150}} {{as|(+ 40% AP)}}|Empowered Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','112.5','125','137.5','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Empowered Magic Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                112.5,
+                125,
+                137.5,
+                150
+              ],
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['100','112.5','125','137.5','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "Empowered Magic Damage",
+              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  112.5,
+                  125,
+                  137.5,
+                  150
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['100','112.5','125','137.5','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Empowered Magic Damage",
+              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

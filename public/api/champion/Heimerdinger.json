@@ -4,7 +4,6 @@
   "id": "Heimerdinger",
   "key": "74",
   "name": "Heimerdinger",
-  "fullname": "Cecil B. Heimerdinger",
   "title": "the Revered Inventor",
   "image": {
     "full": "Heimerdinger.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 8,
     "difficulty": 8
   },
-  "i_displayname": "Hextech Affinity",
-  "q_displayname": "H-28G Evolution Turret / H-28Q Apex Turret",
-  "w_dispalyname": "Hextech Micro-Rockets / Hextech Rocket Swarm",
-  "e_dispalyname": "CH-2 Electron Storm Grenade / CH-3X Lightning Grenade",
-  "r_dispalyname": "UPGRADE!!!",
-  "complex_skills": {
+  "stats": {
+    "hp": 488,
+    "hpperlevel": 87,
+    "mp": 385,
+    "mpperlevel": 20,
+    "movespeed": 340,
+    "armor": 19.04,
+    "armorperlevel": 3,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 7,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 55.536,
+    "attackdamageperlevel": 2.7,
+    "attackspeedperlevel": 1.36,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Hextech Affinity",
+      "riotId": "",
+      "name": "Hextech Affinity",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Heimerdinger_Passive.png",
         "sprite": "passive1.png",
@@ -49,85 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Gain Movement Speed while near allied towers and turrets deployed by Heimerdinger.",
-      "champion": "Heimerdinger",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} '''Heimerdinger''' gains {{sti|ms|{{as|20% '''bonus''' movement speed}}}} while near allied [[Turret|turrets]] or his {{ai|H-28G Evolution Turret|Heimerdinger|icononly=yes}} {{ai|H-28Q Apex Turret|Heimerdinger|icononly=yes}} [[Heimerdinger#Pets|own]]."
       ],
-      "effect_radius": 300,
-      "icon": [
-        "Hextech Affinity.png"
-      ],
-      "leveling": [],
-      "name": "Hextech Affinity",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
-    },
-    "q1": {
-      "key": "Q1",
-      "id": "HeimerdingerQ",
-      "riotName": "H-28 G Evolution Turret",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "HeimerdingerQ.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 192,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Heimerdinger lays down a rapid-fire cannon turret equipped with a secondary pass-through beam attack (turrets deal half damage to towers).",
-      "callforhelp": true,
-      "champion": "Heimerdinger",
-      "cooldownBurn": "1",
-      "costBurn": "20",
-      "costtype": "Mana + 1 Spare Part",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Passive:}} '''Heimerdinger''' stores a ''Spare Part'' periodically, up to a maximum of 3 stored at once.",
-        "{{sbc|Active:}} '''Heimerdinger''' deploys a ''H-28G Evolution Turret'' at the target location.",
-        "Up to 3 ''H-28G Evolution Turrets'' can be deployed at a time, and deploying a fourth destroys the oldest one."
-      ],
-      "icon": [
-        "H-28G Evolution Turret.png"
-      ],
-      "leveling": [],
-      "name": "H-28G Evolution Turret",
-      "notes": [
-        "* Leveling up and ranking up ''H-28G Evolution Turret'' will not affect the stats of any existing one.",
-        "* Available ''Spare Parts'' for turrets are represented as small metal nuts orbiting ''Heimerdinger''."
-      ],
-      "parry": true,
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "pet",
-      "target_range": "{{tt|350|Turret deployment range}}",
-      "targeting": "Ground"
+      "notes": "\n* No additional details.",
+      "effects": []
     },
     "q2": {
-      "key": "Q2",
-      "id": "HeimerdingerQ",
-      "riotName": "H-28 G Evolution Turret",
+      "riotId": "HeimerdingerQ",
+      "name": "H-28Q Apex Turret",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": "{{tt|450|Turret deployment range}}",
       "image": {
         "full": "HeimerdingerQ.png",
         "sprite": "spell4.png",
@@ -137,10 +104,19 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "callforhelp": true,
-      "champion": "Heimerdinger",
+      "description": [
+        "{{sbc|{{ai|UPGRADE!!!|Heimerdinger}} - Active:}} '''Heimerdinger''' deploys a ''H-28Q Apex Turret'' at the target location, which lasts for 8 seconds.",
+        "''H-28Q Apex Turret'' scales with {{ais|UPGRADE!!!|Heimerdinger}} rank."
+      ],
+      "notes": "\n* No additional details.",
+      "costBurn": "20",
+      "cooldownBurn": "0",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "HeimerdingerQ",
+      "name": "H-28G Evolution Turret",
+      "maxrank": 5,
       "cooldown": [
         1,
         1,
@@ -148,38 +124,56 @@
         1,
         1
       ],
-      "cooldownBurn": "1",
-      "costBurn": "20",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        20,
+        20,
+        20,
+        20,
+        20
       ],
+      "costtype": "Mana + 1 Turret Kit",
+      "targeting": "Ground",
+      "target_range": "{{tt|350|Turret deployment range}}",
+      "image": {
+        "full": "HeimerdingerQ.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 192,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
-        "{{sbc|{{ai|UPGRADE!!!|Heimerdinger}} - Active:}} '''Heimerdinger''' deploys a ''H-28Q Apex Turret'' at the target location, which lasts for 8 seconds.",
-        "''H-28Q Apex Turret'' scales with {{ais|UPGRADE!!!|Heimerdinger}} rank."
+        "{{sbc|Passive:}} '''Heimerdinger''' periodically [[stocks]] a ''Turret Kit'', up to a maximum of 3.",
+        "{{sbc|Active:}} '''Heimerdinger''' deploys a ''H-28G Evolution Turret'' at the target location.",
+        "Up to 3 ''H-28G Evolution Turrets'' can be deployed at a time, and deploying a fourth destroys the oldest one."
       ],
-      "icon": [
-        "H-28Q Apex Turret.png"
-      ],
-      "leveling": [],
-      "name": "H-28Q Apex Turret",
-      "notes": [
-        "* No additional details."
-      ],
-      "parry": true,
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "pet",
-      "target_range": "{{tt|450|Turret deployment range}}",
-      "targeting": "Ground"
+      "notes": "\n* Leveling or ranking up ''H-28G Evolution Turret'' will not affect the stats of ''turrets'' created beforehand.\n* ''Turret Kit'' stockpile is displayed by a buff, represented as small metal nuts orbiting ''Heimerdinger''.",
+      "costBurn": "20",
+      "cooldownBurn": "1",
+      "effects": []
     },
     "w1": {
-      "key": "W1",
-      "id": "HeimerdingerW",
-      "riotName": "Hextech Micro-Rockets",
+      "riotId": "HeimerdingerW",
+      "name": "Hextech Micro-Rockets",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        11,
+        10,
+        9,
+        8,
+        7
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1325,
       "image": {
         "full": "HeimerdingerW.png",
         "sprite": "spell4.png",
@@ -189,50 +183,173 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Heimerdinger fires long-range rockets that converge on his cursor.",
-      "champion": "Heimerdinger",
-      "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
-      ],
-      "cooldownBurn": "11/10/9/8/7",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Heimerdinger''' unleashes a wave of 5 rockets that converge to the target location and fan beyond it up to a maximum range, with each rocket dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits. Every rocket hitting an enemy {{tip|champion}} grants 20% beam charge to all turrets within 1000 range, up to a maximum of 100% beam charge when hitting 5 rockets on an enemy champion.",
         "Enemies can be hit by multiple rockets, with each one beyond the first dealing reduced damage."
       ],
-      "icon": [
-        "Hextech Micro-Rockets.png"
-      ],
-      "leveling": [
-        "{{st|Initial Rocket Magic Damage|{{ap|{{#var:r1}} to {{#var:r2}}}} {{as|(+ 45% AP)}}}}",
-        "{{st|Additional Damage|{{ap|{{#var:r1}}*0.2 to {{#var:r2}}*0.2}} {{as|(+ 12% AP)}}|Total Damage|{{ap|{{#var:r1}}*1.8 to {{#var:r2}}*1.8}} {{as|(+ 93% AP)}}}}{{st|Additional Minion Damage|{{ap|{{#var:r1}}*0.6 to {{#var:r2}}*0.6}} {{as|(+ 35.75% AP)}}|Total Minion Damage|{{ap|{{#var:r1}}*3.4 to {{#var:r2}}*3.4}} {{as|(+ 188% AP)}}}}"
-      ],
-      "notes": [
-        "* Aiming ''Hextech Micro-Rockets'' is done in the same fashion as {{ai|Glitterlance|Lulu}}, allowing for custom spread."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1325,
-      "targeting": "Ground"
+      "notes": "\n* Aiming ''Hextech Micro-Rockets'' is done in the same fashion as {{ai|Glitterlance|Lulu}}, allowing for custom spread.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "11/10/9/8/7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Rocket Magic Damage|{{ap|{{#var:r1}} to {{#var:r2}}}} {{as|(+ 45% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Rocket Magic Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              }
+            ],
+            "ap_progressions": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "st_slices": [
+              "Initial Rocket Magic Damage",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Initial Rocket Magic Damage",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Additional Damage|{{ap|{{#var:r1}}*0.2 to {{#var:r2}}*0.2}} {{as|(+ 12% AP)}}|Total Damage|{{ap|{{#var:r1}}*1.8 to {{#var:r2}}*1.8}} {{as|(+ 93% AP)}}}}{{st|Additional Minion Damage|{{ap|{{#var:r1}}*0.6 to {{#var:r2}}*0.6}} {{as|(+ 35.75% AP)}}|Total Minion Damage|{{ap|{{#var:r1}}*3.4 to {{#var:r2}}*3.4}} {{as|(+ 188% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Additional Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 93% AP)</span></span></li></ul><ul><li><span class=\"blue\">Additional Minion Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35.75% AP)</span></span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 188% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.12
+              },
+              {
+                "player_total_ap": 0.93
+              },
+              {
+                "player_total_ap": 0.3575
+              },
+              {
+                "player_total_ap": 1.8800000000000001
+              }
+            ],
+            "ap_progressions": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "st_slices": [
+              "Additional Minion Damage",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35.75% AP)</span>",
+              "Total Minion Damage",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 188% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "player_total_ap": 0.93
+              },
+              "title": "Additional Minion Damage",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35.75% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "player_total_ap": 0.93
+              },
+              "title": "Total Minion Damage",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 188% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w2": {
-      "key": "W2",
-      "id": "HeimerdingerW",
-      "riotName": "Hextech Micro-Rockets",
+      "riotId": "HeimerdingerW",
+      "name": "Hextech Micro-Rockets",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        11,
+        10,
+        9,
+        8,
+        7
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 1325,
       "image": {
         "full": "HeimerdingerW.png",
         "sprite": "spell4.png",
@@ -242,50 +359,94 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Heimerdinger",
-      "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
-      ],
-      "cooldownBurn": "11/10/9/8/7",
-      "costBurn": "50 / 60 / 70 / 80 / 90",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{ai|UPGRADE!!!|Heimerdinger}} - Active:}} '''Heimerdinger''' launches 4 waves of rockets in quick succession, each rocket dealing {{as|magic damage}}. {{tip|Champions}} and {{tip|monsters}} are dealt reduced damage from rockets beyond the first, and further reduced beyond the fifth.",
         "''Hextech Rocket Swarm'' scales with {{ais|UPGRADE!!!|Heimerdinger}} rank."
       ],
-      "icon": [
-        "Hextech Rocket Swarm.png"
-      ],
-      "leveling": [
-        "{{st|Initial Rocket Magic Damage|{{ap|{{#var:ur1}} to {{#var:ur2}} 3}} {{as|(+ 45% AP)}}|2-5 Rocket Magic Damage|{{ap|32 to 58 3}} {{as|(+ 12% AP)}}|6-20 Rocket Magic Damage|{{ap|16 to 29 3}} {{as|(+ 6% AP)}}|Total Magic Damage|{{ap|{{#var:ur1}}+32*11.5 to {{#var:ur2}}+58*11.5 3}} {{as|(+ 183% AP)}}}}{{st|Total Minion Magic Damage|{{ap|{{#var:ur1}}*20 to {{#var:ur2}}*20 3}} {{as|(+ 900% AP)}}}}"
-      ],
-      "notes": [
-        "* Aiming ''Hextech Rocket Swarm'' is done in the same fashion as {{ai|Glitterlance|Lulu}}, allowing for custom spread.",
-        "* '''Heimerdinger''' can move once ''Hextech Rocket Swarm'' has been cast, even if the projectiles are still spawning or haven't even started to move yet."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 1325,
-      "targeting": "Ground"
+      "notes": "\n* Aiming ''Hextech Rocket Swarm'' is done in the same fashion as {{ai|Glitterlance|Lulu}}, allowing for custom spread.\n* '''Heimerdinger''' can move once ''Hextech Rocket Swarm'' has been cast, even if the projectiles are still spawning or haven't even started to move yet.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "11/10/9/8/7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Rocket Magic Damage|{{ap|{{#var:ur1}} to {{#var:ur2}} 3}} {{as|(+ 45% AP)}}|2-5 Rocket Magic Damage|{{ap|32 to 58 3}} {{as|(+ 12% AP)}}|6-20 Rocket Magic Damage|{{ap|16 to 29 3}} {{as|(+ 6% AP)}}|Total Magic Damage|{{ap|{{#var:ur1}}+32*11.5 to {{#var:ur2}}+58*11.5 3}} {{as|(+ 183% AP)}}}}{{st|Total Minion Magic Damage|{{ap|{{#var:ur1}}*20 to {{#var:ur2}}*20 3}} {{as|(+ 900% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Rocket Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur1\">Unknown value: #var:ur1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur2\">Unknown value: #var:ur2</simple-tooltip> 3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">2-5 Rocket Magic Damage</span>: <span><spell-span :list=\"['32','45','58']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span></span></li><li><span class=\"blue\">6-20 Rocket Magic Damage</span>: <span><spell-span :list=\"['16','22.5','29']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 6% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur1\">Unknown value: #var:ur1</simple-tooltip>+32*11.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur2\">Unknown value: #var:ur2</simple-tooltip>+58*11.5 3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ap\">(+ 183% AP)</span></span></li></ul><ul><li><span class=\"blue\">Total Minion Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur1\">Unknown value: #var:ur1</simple-tooltip>*20 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur2\">Unknown value: #var:ur2</simple-tooltip>*20 3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ap\">(+ 900% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              },
+              {
+                "player_total_ap": 0.12
+              },
+              {
+                "player_total_ap": 0.06
+              },
+              {
+                "player_total_ap": 1.83
+              },
+              {
+                "player_total_ap": 9
+              }
+            ],
+            "ap_progressions": [
+              [
+                32,
+                45,
+                58
+              ],
+              [
+                16,
+                22.5,
+                29
+              ]
+            ],
+            "st_slices": [
+              "Total Minion Magic Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur1\">Unknown value: #var:ur1</simple-tooltip>*20 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur2\">Unknown value: #var:ur2</simple-tooltip>*20 3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ap\">(+ 900% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  32,
+                  45,
+                  58
+                ],
+                "player_total_ap": 9
+              },
+              "title": "Total Minion Magic Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur1\">Unknown value: #var:ur1</simple-tooltip>*20 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:ur2\">Unknown value: #var:ur2</simple-tooltip>*20 3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ap\">(+ 900% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E1",
-      "id": "HeimerdingerE",
-      "riotName": "CH-2 Electron Storm Grenade",
+      "riotId": "HeimerdingerE",
+      "name": "CH-2 Electron Storm Grenade",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        85,
+        85,
+        85,
+        85,
+        85
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 970,
       "image": {
         "full": "HeimerdingerE.png",
         "sprite": "spell4.png",
@@ -295,46 +456,81 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Heimerdinger lobs a grenade at a location, dealing damage to enemy units, as well as stunning anyone directly hit and slowing surrounding units.",
-      "champion": "Heimerdinger",
-      "cooldownBurn": "12",
-      "costBurn": "85",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Heimerdinger''' hurls a grenade at the target location, dealing {{as|magic damage}} upon impact to all nearby enemies and {{tip|slow|slowing}} them by 35% for 2 seconds. If the grenade hits an enemy {{tip|champion|nolink=true}}, all turrets within 1000 range of the impact gain 100% beam charge.",
         "Enemies at the center of the grenade's impact are also {{tip|stun|stunned}} for {{fd|1.25}} seconds."
       ],
-      "effect_radius": 250,
-      "icon": [
-        "CH-2 Electron Storm Grenade.png"
-      ],
-      "inner_radius": 135,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 60% AP)}}}}"
-      ],
-      "name": "CH-2 Electron Storm Grenade",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 1200,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 970,
-      "targeting": "Ground"
+      "notes": "\n* No additional details.",
+      "costBurn": "85",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "HeimerdingerE",
-      "riotName": "CH-2 Electron Storm Grenade",
+      "riotId": "HeimerdingerE",
+      "name": "CH-3X Lightning Grenade",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "cost": [
+        85,
+        85,
+        85,
+        85,
+        85
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 970,
       "image": {
         "full": "HeimerdingerE.png",
         "sprite": "spell4.png",
@@ -344,47 +540,73 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "",
-      "champion": "Heimerdinger",
-      "cooldownBurn": "12",
-      "costBurn": "85",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{ai|UPGRADE!!!|Heimerdinger}} - Active:}} {{ai|CH-2 Electron Storm Grenade|Heimerdinger}} bounces {{tt|a fixed distance|540 range}} 3 times, exploding each time at {{tt|twice the radius|420 explosion radius, 270 stun radius}}, with its {{tip|slow}} increased to 80%.",
         "Enemy champions can only be damaged once per cast, but can be {{tip|slow|slowed}} and {{tip|stun|stunned}} multiple times if circumstances permit.",
         "''CH-3X Lightning Grenade'' scales with {{ais|UPGRADE!!!|Heimerdinger}} rank."
       ],
-      "effect_radius": 250,
-      "icon": [
-        "CH-3X Lightning Grenade.png"
-      ],
-      "inner_radius": 135,
-      "leveling": [
-        "{{st|Magic Damage|{{ap|150 to 350 3}} {{as|(+ 75% AP)}}}}"
-      ],
-      "name": "CH-3X Lightning Grenade",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "speed": 1200,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 970,
-      "targeting": "Ground"
+      "notes": "\n* No additional details.",
+      "costBurn": "85",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150 to 350 3}} {{as|(+ 75% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','250','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                250,
+                350
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['150','250','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  250,
+                  350
+                ],
+                "player_total_ap": 0.75
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['150','250','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "HeimerdingerR",
-      "riotName": "UPGRADE!!!",
+      "riotId": "HeimerdingerR",
+      "name": "UPGRADE!!!",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        100,
+        85,
+        70
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
       "image": {
         "full": "HeimerdingerR.png",
         "sprite": "spell4.png",
@@ -394,36 +616,15 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Heimerdinger invents an upgrade, causing his next spell to have increased effects.",
-      "champion": "Heimerdinger",
-      "cooldown": [
-        100,
-        85,
-        70
-      ],
-      "cooldownBurn": "100/85/70",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Active:}} '''Heimerdinger''' empowers his next basic [[Champion ability|ability]], placing it on the same {{sti|cooldown}} as its basic form, modifying its damage and making it free to cast.",
         "After '''Heimerdinger''' has had ''UPGRADE!!!'' active for 3 seconds without using another ability, he can reactivate it to cancel the empowerment and put it on a 3-second cooldown. ''UPGRADE!!!'' only goes on its normal cooldown if '''Heimerdinger''' uses an empowered ability."
       ],
-      "icon": [
-        "UPGRADE!!!.png"
-      ],
-      "leveling": [],
-      "name": "UPGRADE!!!",
-      "notes": [
-        "* ''UPGRADE!!!'' can be cast while ''Heimerdinger'' is {{tip|crowd control|disabled}}."
-      ],
-      "projectile": "null",
-      "skill": "R",
-      "targeting": "None"
+      "notes": "\n* ''UPGRADE!!!'' can be cast while ''Heimerdinger'' is {{tip|crowd control|disabled}}.",
+      "costBurn": "100",
+      "cooldownBurn": "100/85/70",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 8
 }

@@ -4,7 +4,6 @@
   "id": "Elise",
   "key": "60",
   "name": "Elise",
-  "fullname": "Elise Kythera Zaavan",
   "title": "the Spider Queen",
   "image": {
     "full": "Elise.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Fighter<!--, Assassin-->",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 9
   },
-  "i_displayname": "Spider Queen",
-  "q_displayname": "Neurotoxin / Venomous Bite",
-  "w_dispalyname": "Volatile Spiderling / Skittering Frenzy",
-  "e_dispalyname": "Cocoon / Rappel",
-  "r_dispalyname": "Spider Form / Human Form",
-  "complex_skills": {
+  "stats": {
+    "hp": 534,
+    "hpperlevel": 93,
+    "mp": 324,
+    "mpperlevel": 50,
+    "movespeed": 330,
+    "armor": 27,
+    "armorperlevel": 3.35,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 55,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 1.75,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Spider Queen",
+      "riotId": "",
+      "name": "Spider Queen",
+      "maxrank": 0,
+      "targeting": "Self",
       "image": {
         "full": "ElisePassive.png",
         "sprite": "passive0.png",
@@ -49,41 +68,34 @@
         "w": 48,
         "h": 48
       },
-      "affects": null,
-      "blurb": "Human Form: When Elise's abilities hit an enemy, she gains a dormant Spiderling. Spider Form: Basic attacks deal bonus magic damage and restore health to Elise.",
-      "champion": "Elise",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']] - Innate:}} When '''Elise's''' [[Champion ability|abilities]] hits a target she gains one dormant ''Spiderling'', up to {{pp|4|showtype=true|type = [[File:EliseSquare.png|20px|link=]] Human Form's Rank|2 to 5}}.",
         "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Innate:}} '''Elise's''' [[basic attack]]s deal {{pp|4|showtype=true|type = [[File:Spider Form.png|20px|link=]] Spider Form's Rank|10 to 40|color=magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and {{tip|heal}} her for {{sti|health|icononly=true}} {{pp|4|showtype=true|type = [[File:Spider Form.png|20px|link=]] Spider Form's Rank|4 to 10|color=health}} {{as|(+ 10% AP)}} {{as|health}} [[On-hit effect|on-hit]]."
       ],
-      "icon": [
-        "Spider Queen.png"
-      ],
-      "leveling": [],
-      "name": "Spider Queen",
-      "notes": [
-        "* ''Elise'' will always begin the game and respawn with maximum available ''Spiderlings'' stored.",
-        "* ''Elise's'' {{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']]}} ability casts can only store one ''Spiderling'' each."
-      ],
-      "occurrence": "On-hit",
-      "projectile": "null",
-      "skill": "I",
-      "spelleffects": "pet",
-      "targeting": "Self"
+      "notes": "\n* ''Elise'' will always begin the game and respawn with maximum available ''Spiderlings'' stored.\n* ''Elise's'' {{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']]}} ability casts can only store one ''Spiderling'' each.\n* ''Spider Form's'' basic attacks will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the '''bonus''' damage does not).\n** ''Spider Form's'' bonus damage does not affect structures.\n** ''Spider Form's'' heal will not trigger when attacking structures.\n** {{Pending for test}}: ''Spider Form's'' relationship with {{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, and {{tip|blind}}.",
+      "effects": []
     },
     "q1": {
-      "key": "Q1",
-      "id": "EliseHumanQ",
-      "riotName": "Neurotoxin / Venomous Bite",
+      "riotId": "EliseHumanQ",
+      "name": "Neurotoxin",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 625,
       "image": {
         "full": "EliseHumanQ.png",
         "sprite": "spell2.png",
@@ -93,43 +105,107 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Human Form: Deals damage based upon how high the target's Health is.",
-      "callforhelp": true,
-      "champion": "Elise",
-      "cooldownBurn": "6",
-      "costBurn": "80 / 85 / 90 / 95 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|{{cci|EliseSquare.png|Elise#Human Form|'''Human Form'''}} - Active:}} '''Elise''' fires toxin at the target enemy unit, dealing {{as|magic damage}}, capped against {{tip|monster|monsters}}."
       ],
-      "icon": [
-        "Neurotoxin.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|40 to 180}} {{as|(+ 4% {{as|(+ 3% per 100 AP)}} of target's '''current''' health)|health}}|Max. Monster Damage|{{ap|115 to 355}}}}"
-      ],
-      "name": "Neurotoxin",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "magic",
-      "skill": "Q",
-      "spelleffects": "single",
-      "spellshield": true,
-      "target_range": 625,
-      "targeting": "Unit"
+      "notes": "\n* No additional details.",
+      "costBurn": "80/85/90/95/100",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 180}} {{as|(+ 4% {{as|(+ 3% per 100 AP)}} of target's '''current''' health)|health}}|Max. Monster Damage|{{ap|115 to 355}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 4% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's <b>current</b> health)</span></span></li><li><span class=\"blue\">Max. Monster Damage</span>: <span><spell-span :list=\"['115','175','235','295','355']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                75,
+                110,
+                145,
+                180
+              ],
+              [
+                115,
+                175,
+                235,
+                295,
+                355
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 31
+              },
+              {
+                "target_total_ap": 431
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 4% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's '''current''' health)</span>",
+              "Max. Monster Damage",
+              "<spell-span :list=\"['115','175','235','295','355']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  75,
+                  110,
+                  145,
+                  180
+                ],
+                "player_total_ap": 31
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 4% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's '''current''' health)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  115,
+                  175,
+                  235,
+                  295,
+                  355
+                ],
+                "player_total_ap": 31
+              },
+              "title": "Max. Monster Damage",
+              "str": "<spell-span :list=\"['115','175','235','295','355']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "q2": {
-      "key": "Q2",
-      "id": "EliseHumanQ",
-      "riotName": "Neurotoxin / Venomous Bite",
+      "riotId": "EliseHumanQ",
+      "name": "Venomous Bite",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Unit",
+      "target_range": 475,
       "image": {
         "full": "EliseHumanQ.png",
         "sprite": "spell2.png",
@@ -139,92 +215,107 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Spider Form: Lunges at an enemy and deals damage based upon how low their Health is.",
-      "callforhelp": true,
-      "champion": "Elise",
-      "cooldownBurn": "6",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Active:}} '''Elise''' {{tip|dashes}} to the target enemy and bites them, dealing {{as|magic damage}}, capped against monsters.",
         "If there are active {{ai|Spider Queen|Elise|spiderlings}} or a {{ai|Volatile Spiderling|Elise|votatile spiderling}} nearby, they will {{tip|dash}} alongside '''Elise''' towards ''Venomous Bite's'' target and reprioritize them."
       ],
-      "icon": [
-        "Venomous Bite.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 8% {{as|(+ 3% per 100 AP)}} of target's '''missing''' health)|health}}|Max. Monster Damage|{{ap|145 to 405}}}}"
-      ],
-      "name": "Venomous Bite",
-      "notes": [
-        "* ''Venomous Bite'' cannot be used to cross walls or impassable terrain.",
-        "** The target will be damaged regardless.",
-        "*** {{ai|Spider Queen|Elise|Spiderlings}} can cross walls and terrain to reach ''Venomous Bite's'' target and will attack provided Elise stays within their leash range."
-      ],
-      "projectile": "magic",
-      "skill": "Q",
-      "spelleffects": "single",
-      "spellshield": true,
-      "target_range": 475,
-      "targeting": "Unit"
-    },
-    "w1": {
-      "key": "W1",
-      "id": "EliseHumanW",
-      "riotName": "Volatile Spiderling / Skittering Frenzy",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "EliseHumanW.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 144,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Human Form: Releases a venom-gorged Spiderling that explodes when it nears a target.",
-      "champion": "Elise",
-      "cooldownBurn": "12",
-      "costBurn": "60 / 70 / 80 / 90 / 100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']] - Active:}} '''Elise''' summons a venom-gorged spider for 3 seconds, which moves in the target direction.",
-        "The spider explodes upon contact with an enemy unit or at the end of its lifespan, dealing {{as|magic damage}} to nearby enemies.",
-        "If the spider does not hit an enemy before reaching the target location, it re-targets and chases down a nearby enemy, prioritizing {{tip|champion|champions}}. The spider gains {{sti|ms|{{as|'''bonus''' movement speed}}}}, based on its proximity to its target."
-      ],
-      "icon": [
-        "Volatile Spiderling.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 95% AP)}}}}"
-      ],
-      "name": "Volatile Spiderling",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "magic",
-      "skill": "W",
-      "spelleffects": "aoe",
-      "target_range": 950,
-      "targeting": "Direction"
+      "notes": "\n* ''Venomous Bite'' cannot be used to cross walls or impassable terrain.\n** The target will be damaged regardless.\n*** {{ai|Spider Queen|Elise|Spiderlings}} can cross walls and terrain to reach ''Venomous Bite's'' target and will attack provided Elise stays within their leash range.",
+      "costBurn": "0",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 8% {{as|(+ 3% per 100 AP)}} of target's '''missing''' health)|health}}|Max. Monster Damage|{{ap|145 to 405}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 8% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Max. Monster Damage</span>: <span><spell-span :list=\"['145','210','275','340','405']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ],
+              [
+                145,
+                210,
+                275,
+                340,
+                405
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 31
+              },
+              {
+                "target_total_ap": 831
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 8% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's '''missing''' health)</span>",
+              "Max. Monster Damage",
+              "<spell-span :list=\"['145','210','275','340','405']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 31
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 8% <span class=\"ap\">(+ 3% per 100 AP)</span> of target's '''missing''' health)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  145,
+                  210,
+                  275,
+                  340,
+                  405
+                ],
+                "player_total_ap": 31
+              },
+              "title": "Max. Monster Damage",
+              "str": "<spell-span :list=\"['145','210','275','340','405']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "w2": {
-      "key": "W2",
-      "id": "EliseHumanW",
-      "riotName": "Volatile Spiderling / Skittering Frenzy",
+      "riotId": "EliseHumanW",
+      "name": "Skittering Frenzy",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "EliseHumanW.png",
         "sprite": "spell2.png",
@@ -234,9 +325,97 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Spiderlings, Self",
-      "blurb": "Spider Form: Elise and her Spiderlings gain Attack Speed.",
-      "champion": "Elise",
+      "description": [
+        "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Passive:}} '''Elise's''' {{ai|Spider Queen|Elise|Spiderlings}} gain {{sti|{{as|'''bonus''' attack speed}}}}.",
+        "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Active:}} '''Elise''' and her {{ai|Spider Queen|Elise|Spiderlings}} gain {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
+        "''Skittering Frenzy'' resets '''Elise's''' autoattack timer."
+      ],
+      "notes": "\n* ''Skittering Frenzy'' has no cast time and does not interrupt ''Elise's'' previous orders.\n* ''Elise'' loses the attack speed bonus immediately when turning back to {{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']]}}.\n** But if she is able to transform back in less than 3 seconds (only via sufficient [[cooldown reduction]]) she gets the bonus back for its remaining duration.",
+      "costBurn": "0",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Passive Attack Speed|{{ap|5 to 25}}%}}",
+          "str": "<ul><li><span class=\"blue\">Passive Attack Speed</span>: <span><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                5,
+                10,
+                15,
+                20,
+                25
+              ]
+            ],
+            "st_slices": [
+              "Passive Attack Speed",
+              "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  5,
+                  10,
+                  15,
+                  20,
+                  25
+                ]
+              },
+              "title": "Passive Attack Speed",
+              "str": "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Active Attack Speed|{{ap|60 to 140}}%}}",
+          "str": "<ul><li><span class=\"blue\">Active Attack Speed</span>: <span><spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ]
+            ],
+            "st_slices": [
+              "Active Attack Speed",
+              "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  60,
+                  80,
+                  100,
+                  120,
+                  140
+                ]
+              },
+              "title": "Active Attack Speed",
+              "str": "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "EliseHumanW",
+      "name": "Volatile Spiderling",
+      "maxrank": 5,
       "cooldown": [
         12,
         12,
@@ -244,41 +423,101 @@
         12,
         12
       ],
-      "cooldownBurn": "12",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 950,
+      "image": {
+        "full": "EliseHumanW.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
       "description": [
-        "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Passive:}} '''Elise's''' {{ai|Spider Queen|Elise|Spiderlings}} gain {{sti|{{as|'''bonus''' attack speed}}}}.",
-        "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Active:}} '''Elise''' and her {{ai|Spider Queen|Elise|Spiderlings}} gain {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
-        "''Skittering Frenzy'' resets '''Elise's''' autoattack timer."
+        "{{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']] - Active:}} '''Elise''' summons a venom-gorged spider for 3 seconds, which moves in the target direction.",
+        "The spider explodes upon contact with an enemy unit or at the end of its lifespan, dealing {{as|magic damage}} to nearby enemies.",
+        "If the spider does not hit an enemy before reaching the target location, it re-targets and chases down a nearby enemy, prioritizing {{tip|champion|champions}}. The spider gains {{sti|ms|{{as|'''bonus''' movement speed}}}}, based on its proximity to its target."
       ],
-      "icon": [
-        "Skittering Frenzy.png"
-      ],
-      "leveling": [
-        "{{st|Passive Attack Speed|{{ap|5 to 25}}%}}",
-        "{{st|Active Attack Speed|{{ap|60 to 140}}%}}"
-      ],
-      "name": "Skittering Frenzy",
-      "notes": [
-        "* ''Skittering Frenzy'' has no cast time and does not interrupt ''Elise's'' previous orders.",
-        "* ''Elise'' loses the attack speed bonus immediately when turning back to {{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']]}}.",
-        "** But if she is able to transform back in less than 3 seconds (only via sufficient [[cooldown reduction]]) she gets the bonus back for its remaining duration."
-      ],
-      "projectile": "null",
-      "skill": "W",
-      "targeting": "None"
+      "notes": "\n*If ''Volatile Spiderling'' dashes to a target due to {{ai|Venomous Bite|Elise}}, it will not expire before finishing its jump.",
+      "costBurn": "60/70/80/90/100",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 95% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 95% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.9500000000000001
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 95% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_total_ap": 0.9500000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 95% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
-    "e2": {
-      "key": "E2",
-      "id": "EliseHumanE",
-      "riotName": "Cocoon / Rappel",
+    "e1": {
+      "riotId": "EliseHumanE",
+      "name": "Cocoon",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        11.5,
+        11,
+        10.5,
+        10
+      ],
+      "cost": [
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1075,
       "image": {
         "full": "EliseHumanE.png",
         "sprite": "spell2.png",
@@ -288,51 +527,146 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "Spider Form: Elise and her Spiderlings ascend into the air and then descend upon target enemy.",
-      "champion": "Elise",
-      "cooldown": [
-        12,
-        11.5,
-        11,
-        10.5,
-        10
+      "description": [
+        "{{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']] - Active:}} '''Elise''' fires a web in the target direction, granting {{tip|sight}} of the first enemy hit for 1 second and {{tip|stun|stunning}} them."
       ],
+      "notes": "\n* No additional details.",
+      "costBurn": "50",
       "cooldownBurn": "12/11.5/11/10.5/10",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
+      "effects": [
+        {
+          "levelingtext": "{{st|Stun Duration|{{ap|1.6|1.7|1.8|1.9|2}}}}",
+          "str": "<ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.6,
+                1.7,
+                1.8,
+                1.9,
+                2
+              ]
+            ],
+            "st_slices": [
+              "Stun Duration",
+              "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.6,
+                  1.7,
+                  1.8,
+                  1.9,
+                  2
+                ]
+              },
+              "title": "Stun Duration",
+              "str": "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e2": {
+      "riotId": "EliseHumanE",
+      "name": "Rappel",
+      "maxrank": 5,
+      "cooldown": [
+        22,
+        21,
+        20,
+        19,
+        18
       ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Unit",
+      "image": {
+        "full": "EliseHumanE.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Active:}} '''Elise''' lifts up into the air, becoming {{tip|untargetable}} for up to 2 seconds and {{tip|sight|revealing}} the area for the duration. While she's in the air she can select a target to instantly descend upon.",
         "If cast directly on an enemy, '''Elise''' automatically descends upon them after 1 second. Upon landing, '''Elise's''' {{ai|Spider Queen|Elise}} bonuses are increased for 5 seconds."
       ],
-      "effect_radius": 750,
-      "icon": [
-        "Rappel.png"
-      ],
-      "leveling": [
-        "{{st|Spider Effects Increase|{{ap|40|50|70|85|100}}%}}"
-      ],
-      "name": "Rappel",
-      "notes": [
-        "* When ''Elise'' casts ''Rappel'' a circle shows the area in which a target or location can be selected.",
-        "*''Elise'' only gains an increase in her passive bonuses if she directly targets an enemy with ''Rappel''.",
-        "** Elise cannot descend outside the bounds of this circle.",
-        "* Elise can cast ''Rappel'' on any targetable enemy unit ([[minion]]s, [[monster]]s, [[champion]]s, [[Champion summoned units|pets]], wards, and traps (provided she has {{tip|true sight}}))."
-      ],
-      "projectile": true,
-      "skill": "E",
-      "targeting": "Unit"
+      "notes": "\n* When ''Elise'' casts ''Rappel'' a circle shows the area in which a target or location can be selected.\n*''Elise'' only gains an increase in her passive bonuses if she directly targets an enemy with ''Rappel''.\n** Elise cannot descend outside the bounds of this circle.\n* Elise can cast ''Rappel'' on any targetable enemy unit ([[minion]]s, [[monster]]s, [[champion]]s, [[Champion summoned units|pets]], wards, and traps (provided she has {{tip|true sight}})).\n*If Elise’s target is closer than Rappel’s max range, Elise will attempt to position herself behind that target.\n*Elise’s descending location is determined upon target-cast. Elise’s descending location does not change after being determined, even if her target moves.",
+      "costBurn": "0",
+      "cooldownBurn": "22/21/20/19/18",
+      "effects": [
+        {
+          "levelingtext": "{{st|Spider Effects Increase|{{ap|40|50|70|85|100}}%}}",
+          "str": "<ul><li><span class=\"blue\">Spider Effects Increase</span>: <span><spell-span :list=\"['40','50','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                50,
+                70,
+                85,
+                100
+              ]
+            ],
+            "st_slices": [
+              "Spider Effects Increase",
+              "<spell-span :list=\"['40','50','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  50,
+                  70,
+                  85,
+                  100
+                ]
+              },
+              "title": "Spider Effects Increase",
+              "str": "<spell-span :list=\"['40','50','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
-    "r1": {
-      "key": "R",
-      "id": "EliseR",
-      "riotName": "Spider Form",
+    "r2": {
+      "riotId": "EliseR",
+      "name": "Spider Form / Human Form",
       "maxrank": 4,
-      "maxammo": -1,
+      "cooldown": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Self",
       "image": {
         "full": "EliseR.png",
         "sprite": "spell2.png",
@@ -342,41 +676,17 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self",
-      "blurb": "Transforms into a menacing spider, reducing her attack range in exchange for movement speed, new abilities, and a Spiderling swarm that will attack her foes.",
-      "champion": "Elise",
-      "cooldownBurn": "4",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} {{ais|Spider Queen|Elise}} bonuses are increased.",
         "{{sbc|[[File:EliseSquare.png|'''Human Form'''|20px|link=Elise#Human Form|border]] [[Elise#Spider Form / Human Form|'''Human Form''']] - Active:}} '''Elise''' transforms into a menacing spider, gaining {{sti|ms|{{as|25 '''bonus''' movement speed}}}}, {{tip|melee}} basic attacks with 125 {{sti|range}}, and access to her arachnid abilities. Additionally, '''Elise''' unleashes all stored ''Spiderlings''.",
         "{{sbc|[[File:Spider_Form.png|'''Spider Form'''|20px|link=Elise#Spider Form|border]] [[Elise#Spider Form / Human Form|'''Spider Form''']] - Active:}} '''Elise''' transforms into her human form, gaining {{tip|ranged}} basic attacks, and access to her human abilities. Additionally, '''Elise''' stores all unleashed ''Spiderlings''.",
         "'''Elise''' begins with one rank in ''Spider Form / Human Form'' and can increase it at levels 6, 11, and 16."
       ],
-      "icon": [
-        "Spider Form.png"
-      ],
-      "leveling": [],
-      "name": "Spider Form / Human Form",
-      "notes": [
-        "* Both ''Spider Form'' and ''Human Form'' have no cast time and do not interrupt ''Elise's'' previous orders.",
-        "** ''Spider Form'' and ''Human Form'' have separate cooldowns.",
-        "* ''Spider Form's'' heal will not trigger when attacking structures.",
-        "* Neither transformation counts as an activation for the purposes of items such as {{ii|Tear of the Goddess}}, {{nie|Spellblade}}, and {{ai|Force Pulse|Kassadin}}.",
-        "* The triggering attacks will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "** {{tip|critical strike|Critical strikes}} do not interact with ''Spider Form's'' bonus damage.",
-        "** ''Spider Form's'' bonus damage does not affect structures.",
-        "** {{Pending for test}}: ''Spider Form's'' relationship with {{ai|Counter Strike|Jax|dodge}}, {{ai|Riposte|Fiora|parry}}, {{ai|Aegis Protection|Pantheon|block}}, and {{tip|blind}}."
-      ],
-      "onhiteffects": "Special",
-      "projectile": "magic",
-      "skill": "R",
-      "targeting": "Self"
+      "notes": "\n* Both ''Spider Form'' and ''Human Form'' have no cast time and do not interrupt ''Elise's'' previous orders.\n** ''Spider Form'' and ''Human Form'' have separate cooldowns.\n* Neither transformation counts as an activation for the purposes of items such as {{ii|Tear of the Goddess}}, {{nie|Spellblade}}, and {{ai|Force Pulse|Kassadin}}.",
+      "costBurn": "0",
+      "cooldownBurn": "4",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 8
 }

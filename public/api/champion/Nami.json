@@ -4,7 +4,6 @@
   "id": "Nami",
   "key": "267",
   "name": "Nami",
-  "fullname": "Nami",
   "title": "the Tidecaller",
   "image": {
     "full": "Nami.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "Mage",
+  "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 5
   },
-  "i_displayname": "Surging Tides",
-  "q_displayname": "Aqua Prison",
-  "w_dispalyname": "Ebb and Flow",
-  "e_dispalyname": "Tidecaller's Blessing",
-  "r_dispalyname": "Tidal Wave",
-  "complex_skills": {
+  "stats": {
+    "hp": 489.32,
+    "hpperlevel": 74,
+    "mp": 377.24,
+    "mpperlevel": 43,
+    "movespeed": 335,
+    "armor": 29,
+    "armorperlevel": 4,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 11.5,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 51.208,
+    "attackdamageperlevel": 3.1,
+    "attackspeedperlevel": 2.61,
+    "attackspeed": 0.644
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Surging Tides",
+      "riotId": "",
+      "name": "Surging Tides",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "NamiPassive.png",
         "sprite": "passive2.png",
@@ -49,37 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Allies",
-      "blurb": "When Nami's abilities hit allied champions they gain Movement Speed for a short duration.",
-      "champion": "Nami",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
         "{{sbc|Innate:}} All allied [[champion]]s touched by any of '''Nami's''' [[Champion ability|abilities]] gain {{sti|ms|{{as|60|ms}} {{as|(+ 20% AP)}} {{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds,{{ft|doubled|{{as|120|ms}} {{as|(+ 40% AP)}}}} when touched by {{ai|Tidal Wave|Nami}}."
       ],
-      "icon": [
-        "Surging Tides.png"
-      ],
-      "leveling": [],
-      "name": "Surging Tides",
-      "notes": [
-        "* ''Surging Tides'' will apply when an ally champion is targeted by {{ai|Ebb and Flow|Nami}} / {{ai|Tidecaller's Blessing|Nami}} or when within {{ai|Aqua Prison|Nami}} / {{ais|Tidal Wave|Nami}} impact area."
-      ],
-      "projectile": "null",
-      "skill": "I",
-      "targeting": "Passive"
+      "notes": "\n* ''Surging Tides'' will apply when an ally champion is targeted by {{ai|Ebb and Flow|Nami}} / {{ai|Tidecaller's Blessing|Nami}} or when within {{ai|Aqua Prison|Nami}} / {{ais|Tidal Wave|Nami}} impact area.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "NamiQ",
-      "riotName": "Aqua Prison",
+      "riotId": "NamiQ",
+      "name": "Aqua Prison",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "costtype": "mana",
+      "targeting": "Ground",
+      "target_range": 875,
       "image": {
         "full": "NamiQ.png",
         "sprite": "spell7.png",
@@ -89,52 +104,80 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Sends a bubble to a target area, dealing damage and stunning all enemies on impact.",
-      "champion": "Nami",
-      "cooldown": [
-        12,
-        11,
-        10,
-        9,
-        8
-      ],
-      "cooldownBurn": "12/11/10/9/8",
-      "costBurn": "60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nami''' sends a bubble towards the targeted area, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit, {{tip|sight|revealing}} them, and {{tip|suspension|suspending}} them for {{fd|1.5}} seconds."
       ],
-      "icon": [
-        "Aqua Prison.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75|130|185|240|295}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Aqua Prison",
-      "notes": [
-        "* ''Aqua Prison'' counts as a knockup for enabling {{ai|Last Breath|Yasuo}}.<ref>[http://www.reddit.com/r/leagueoflegends/comments/1s0gkx/were_the_yasuo_team_ama/cdsp1op Yasuo Reddit AMA]</ref>",
-        "* Cast time makes ''Aqua Prison'' take ~{{fd|0.875}} seconds from casting to landing regardless of distance.",
-        "** Since the area of effect has a ~162 units radius, an enemy unit with {{fd|185.14}} or less movement speed (325 affected by a {{fd|53.8}}% slow, due to the low-end movement speed soft cap) would find it impossible to escape.",
-        "*** As a result it might be necessary to have another source of crowd control in order for ''Aqua Prison'' to land. A fully-ranked {{ai|Tidecaller's Blessing|Nami}} powered by {{as|376 AP}} would be able to slow for the amount above, alhough it is unlikely an enemy has not purchased movement speed by that time."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 875,
-      "targeting": "Ground"
+      "notes": "\n* ''Aqua Prison'' counts as a knockup for enabling {{ai|Last Breath|Yasuo}}.<ref>[http://www.reddit.com/r/leagueoflegends/comments/1s0gkx/were_the_yasuo_team_ama/cdsp1op Yasuo Reddit AMA]</ref>\n* Cast time makes ''Aqua Prison'' take ~{{fd|0.875}} seconds from casting to landing regardless of distance.\n** Since the area of effect has a ~162 units radius, an enemy unit with {{fd|185.14}} or less movement speed (325 affected by a {{fd|53.8}}% slow, due to the low-end movement speed soft cap) would find it impossible to escape.\n*** As a result it might be necessary to have another source of crowd control in order for ''Aqua Prison'' to land. A fully-ranked {{ai|Tidecaller's Blessing|Nami}} powered by {{as|376 AP}} would be able to slow for the amount above, alhough it is unlikely an enemy has not purchased movement speed by that time.",
+      "costBurn": "60",
+      "cooldownBurn": "12/11/10/9/8",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|75|130|185|240|295}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','130','185','240','295']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                75,
+                130,
+                185,
+                240,
+                295
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['75','130','185','240','295']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  75,
+                  130,
+                  185,
+                  240,
+                  295
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['75','130','185','240','295']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "NamiW",
-      "riotName": "Ebb and Flow",
+      "riotId": "NamiW",
+      "name": "Ebb and Flow",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "cost": [
+        70,
+        85,
+        100,
+        115,
+        130
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 725,
       "image": {
         "full": "NamiW.png",
         "sprite": "spell7.png",
@@ -144,49 +187,91 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Allies",
-      "blurb": "Unleashes a stream of water that bounces back and forth between allied and enemy champions, healing allies and damaging enemies.",
-      "callforhelp": true,
-      "champion": "Nami",
-      "cooldownBurn": "10",
-      "costBurn": "7085100115130",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nami''' unleashes a stream of water onto the target champion or herself, which then bounces to nearby unaffected champions up to twice, alternating between enemies, allies and herself.",
         "''Ebb and Flow'' {{tip|Heal|heals}} allies and deals {{as|magic damage}} to enemies, with each bounce being 85% {{as|(+ {{fd|7.5%}} per 100 AP)}} as effective as the previous one."
       ],
-      "effect_radius": "{{tt|725|Estimated}}",
-      "icon": [
-        "Ebb and Flow.png"
-      ],
-      "leveling": [
-        "{{st|Heal|{{ap|60|85|110|135|160}} {{as|(+ 30% AP)}}}}<!--\n-->{{st|Magic Damage|{{ap|70|110|150|190|230}} {{as|(+ 50% AP)}}}}"
-      ],
-      "name": "Ebb and Flow",
-      "notes": [
-        "* {{tip|Spell shield}} will block only one bounce. ''Ebb and Flow'' will continue to bounce and the target who blocked the ability may be targeted again by a later bounce.",
-        "* Additional [[ability power]] will modify the damage/healing of ''Ebb and Flow'' by a percentage, based on the number of bounces.",
-        "** At Rank 5 with {{as|0 AP}} (-15% per bounce) the first heal/damage will be 185/230, the second 157/196, and the third 130/161.",
-        "*** At Rank 5 with {{as|200 AP}} (no change per bounce) the heal/damage will be will remain at 245/330 throughout.",
-        "**** At Rank 5 with {{as|600 AP}} (+30% per bounce) the first heal/damage will be 365/530, the second 475/689, and the third 584/848."
-      ],
-      "projectile": true,
-      "skill": "W",
-      "spelleffects": "Aoe",
-      "spellshield": true,
-      "target_range": 725,
-      "targeting": "Unit"
+      "notes": "\n* {{tip|Spell shield}} will block only one bounce. ''Ebb and Flow'' will continue to bounce and the target who blocked the ability may be targeted again by a later bounce.\n* Additional [[ability power]] will modify the damage/healing of ''Ebb and Flow'' by a percentage, based on the number of bounces.\n** At Rank 5 with {{as|0 AP}} (-15% per bounce) the first heal/damage will be 185/230, the second 157/196, and the third 130/161.\n*** At Rank 5 with {{as|200 AP}} (no change per bounce) the heal/damage will be will remain at 245/330 throughout.\n**** At Rank 5 with {{as|600 AP}} (+30% per bounce) the first heal/damage will be 365/530, the second 475/689, and the third 584/848.",
+      "costBurn": "70/85/100/115/130",
+      "cooldownBurn": "10",
+      "effects": [
+        {
+          "levelingtext": "{{st|Heal|{{ap|60|85|110|135|160}} {{as|(+ 30% AP)}}}}<!--\n-->{{st|Magic Damage|{{ap|70|110|150|190|230}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ],
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "NamiE",
-      "riotName": "Tidecaller's Blessing",
+      "riotId": "NamiE",
+      "name": "Tidecaller's Blessing",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 800,
       "image": {
         "full": "NamiE.png",
         "sprite": "spell7.png",
@@ -196,48 +281,96 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Allies",
-      "blurb": "Empowers an allied champion for a short duration. The ally's basic attacks deal bonus magic damage and slow the target.",
-      "champion": "Nami",
-      "cooldownBurn": "11",
-      "costBurn": "5560657075",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nami''' blesses the target allied champion or herself for 6 seconds, causing her target's next three [[basic attack]]s to each deal {{as|'''bonus''' magic damage}} and {{tip|slow}} their target for 1 second."
       ],
-      "icon": [
-        "Tidecaller's Blessing.png"
-      ],
-      "leveling": [
-        "{{st|Bonus Magic Damage Per Hit|{{ap|25|40|55|70|85}} {{as|(+ 20% AP)}}|Total Bonus Magic Damage|{{ap|75|120|165|210|255}} {{as|(+ 60% AP)}}}}<!--\n-->{{st|Slow|{{ap|15|20|25|30|35%}} {{as|(+ 5% per 100 AP)}}}}"
-      ],
-      "name": "Tidecaller's Blessing",
-      "notes": [
-        "* ''Tidecaller's Blessing'' has no cast time and does not interrupt ''Nami's'' previous orders.",
-        "* The enhanced attacks will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
-        "* {{tip|critical strike|Critical strikes}} do not interact with ''Tidecaller's Blessing's'' bonus damage.",
-        "* ''Tidecaller's Blessing'' has no effect against structures.",
-        "* ''Tidecaller's Blessing'' will not proc {{ii|Muramana}} more than once per auto attack.",
-        "* Both effects of ''Tidecaller's Blessing'' will be wasted if the attacks are {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Riposte|Fiora|parried}}, or if they {{tip|blind|miss}}.",
-        "* ''Tidecaller's Blessing's'' amount of on-hit damage dealt is based on ''Nami's'' own [[ability power]] on-cast.",
-        "** It's also based on the buffed ally's [[magic penetration]] rather than ''Nami's''."
-      ],
-      "parry": true,
-      "projectile": "Magic",
-      "skill": "E",
-      "target_range": 800,
-      "targeting": "Unit"
+      "notes": "\n* ''Tidecaller's Blessing'' has no cast time and does not interrupt ''Nami's'' previous orders.\n* The enhanced attacks will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the '''bonus''' damage does not).\n** ''Tidecaller's Blessing'' has no effect against structures.\n* ''Tidecaller's Blessing'' will not proc {{ii|Muramana}} more than once per auto attack.\n* ''Tidecaller's Blessing's'' amount of on-hit damage dealt is based on ''Nami's'' own [[ability power]] on-cast.\n** It's also based on the buffed ally's [[magic penetration]] rather than ''Nami's''.",
+      "costBurn": "55/60/65/70/75",
+      "cooldownBurn": "11",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Magic Damage Per Hit|{{ap|25|40|55|70|85}} {{as|(+ 20% AP)}}|Total Bonus Magic Damage|{{ap|75|120|165|210|255}} {{as|(+ 60% AP)}}}}<!--\n-->{{st|Slow|{{ap|15|20|25|30|35%}} {{as|(+ 5% per 100 AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage Per Hit</span>: <span><spell-span :list=\"['25','40','55','70','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Bonus Magic Damage</span>: <span><spell-span :list=\"['75','120','165','210','255']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% per 100 AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                25,
+                40,
+                55,
+                70,
+                85
+              ],
+              [
+                75,
+                120,
+                165,
+                210,
+                255
+              ],
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 51
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% per 100 AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  40,
+                  55,
+                  70,
+                  85
+                ],
+                "player_total_ap": 51
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% per 100 AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "r1": {
-      "key": "R",
-      "id": "NamiR",
-      "riotName": "Tidal Wave",
+      "riotId": "NamiR",
+      "name": "Tidal Wave",
       "maxrank": 3,
-      "maxammo": -1,
+      "cooldown": [
+        120,
+        110,
+        100
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 2750,
       "image": {
         "full": "NamiR.png",
         "sprite": "spell7.png",
@@ -247,45 +380,60 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Summons a massive Tidal Wave that knocks up, slows, and damages enemies. Allies hit gain double the effect of Surging Tides.",
-      "champion": "Nami",
-      "cooldown": [
-        120,
-        110,
-        100
-      ],
-      "cooldownBurn": "120/110/100",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nami''' summons a tidal wave that surges forth, dealing {{as|magic damage}} to all units it hits, {{tip|airborne|knocking them up}} for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|slow|slowing}} them for {{pp|type=distance traveled|11|2|2.2|2.4|2.6|2.8|3|3.2|3.4|3.6|3.8|4|0|275|550|825|1100|1375|1650|1925|2200|2475|2750|formula=2 (+ <nowiki>{{fd|0.2}}</nowiki> per 275 units traveled). ''The duration increased is capped at 2750 units.''}} seconds."
       ],
-      "icon": [
-        "Tidal Wave.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 60% AP)}}}}<!--\n-->{{st|Slow|{{ap|50|60|70%}}}}"
-      ],
-      "name": "Tidal Wave",
-      "notes": [
-        "* There is a brief channel time during which '''Nami''' performs the animation.",
-        "** It can only be interrupted by death in which case the ability will not trigger and will not go on cooldown.",
-        "* {{ai|Surging Tides|Nami}} will immediately trigger on Nami on cast.",
-        "* The wave travels for ~{{fd|3.2}} seconds at ~859 speed and the projectile is ~562 units wide.",
-        "** It is undodgeable by foot at 325 movement speed and 742 range.",
-        "* The wave places you slightly closer to her cast position."
-      ],
-      "projectile": true,
-      "skill": "R",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": 2750,
-      "targeting": "Direction"
+      "notes": "\n* There is a brief channel time during which '''Nami''' performs the animation.\n** It can only be interrupted by death in which case the ability will not trigger and will not go on cooldown.\n* {{ai|Surging Tides|Nami}} will immediately trigger on Nami on cast.\n* The wave travels for ~{{fd|3.2}} seconds at ~859 speed and the projectile is ~562 units wide.\n** It is undodgeable by foot at 325 movement speed and 742 range.\n* The wave places you slightly closer to her cast position.",
+      "costBurn": "100",
+      "cooldownBurn": "120/110/100",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 60% AP)}}}}<!--\n-->{{st|Slow|{{ap|50|60|70%}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','250','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                250,
+                350
+              ],
+              [
+                50,
+                60,
+                70
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  150,
+                  250,
+                  350
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }

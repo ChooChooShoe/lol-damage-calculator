@@ -4,7 +4,6 @@
   "id": "Nidalee",
   "key": "76",
   "name": "Nidalee",
-  "fullname": "Nidalee",
   "title": "the Bestial Huntress",
   "image": {
     "full": "Nidalee.png",
@@ -22,6 +21,7 @@
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Fighter",
+  "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
   "adaptivetype": "magic",
@@ -31,15 +31,34 @@
     "magic": 7,
     "difficulty": 8
   },
-  "i_displayname": "Prowl",
-  "q_displayname": "Javelin Toss / Takedown",
-  "w_dispalyname": "Bushwhack / Pounce",
-  "e_dispalyname": "Primal Surge / Swipe",
-  "r_dispalyname": "Aspect of the Cougar / Aspect of the Cougar 2",
-  "complex_skills": {
+  "stats": {
+    "hp": 545,
+    "hpperlevel": 85,
+    "mp": 295.6,
+    "mpperlevel": 45,
+    "movespeed": 335,
+    "armor": 28,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 6,
+    "hpregenperlevel": 0.6,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 61,
+    "attackdamageperlevel": 3.5,
+    "attackspeedperlevel": 3.22,
+    "attackspeed": 0.638
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Prowl",
+      "riotId": "",
+      "name": "Prowl",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "Nidalee_Passive.png",
         "sprite": "passive2.png",
@@ -49,85 +68,33 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies, Self",
-      "blurb": "Moving through brush increases Nidalee's Movement Speed by 10% for 2 seconds, increased to 30% toward visible enemy champions within 1400 range. Hitting champions or monsters with Javelin Toss or Bushwhack triggers a Hunt, granting True Sight of them for 4 seconds. During this time, Nidalee gains 10% Movement Speed (increased to 30% toward the Hunted target) and her Takedown and Pounce are enhanced against them.",
-      "champion": "Nidalee",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
       "description": [
-        "{{sbc|Innate - Hunt:}} Hitting [[monster]]s or enemy champions with ''{{ai|Javelin Toss}}'' or ''{{ai|Bushwhack}}'' grants '''Prowl''' for 4 seconds and marks the target as '''Hunted''' for the same duration, granting {{tip|true sight|True Sight}} of them. Additionally, '''Nidalee's''' first use of ''{{ai|Takedown}}'' and ''{{ai|Pounce}}'' against '''Hunted''' targets are empowered. '''Prowl''' is also gained for 2 seconds while inside a {{tip|brush}}.",
-        "{{sbc|Prowl:}} Grants '''Nidalee''' {{sti|ms|{{as|10% '''bonus''' movement speed}}}}, increased to {{as|30%|ms}} when facing a {{tt|nearby|1400 range}} [[Sight|visible]] enemy {{tip|champion}}."
+        "{{sbc|Innate - Prowl:}} Being in {{tip|brush}} grants '''Nidalee''' {{sti|ms|{{as|10% '''bonus''' movement speed}}}} for 2 seconds, increased to {{as|30%|ms}} when facing a {{tt|nearby|1400 range}} [[Sight|visible]] enemy {{tip|champion}}.",
+        "{{sbc|Innate - Hunt:}} Hitting {{tt|nearby|3000 range}} [[monster]]s or enemy champions with ''{{ai|Javelin Toss}}'' or ''{{ai|Bushwhack}}'' marks them as ''Hunted'', {{tip|true sight|revealing}} them for 4 seconds and granting '''Nidalee''' {{sti|ms|{{as|10% '''bonus''' movement speed}}}} for the same duration, increased to {{as|30%|ms}} when facing a {{tt|nearby|5500 range}} ''Hunted'' target. Additionally, '''Nidalee's''' first use of ''{{ai|Takedown}}'' and ''{{ai|Pounce}}'' against '''Hunted''' targets are empowered.",
+        "The '''bonus''' movement speed from ''Prowl'' and ''Hunt'' can stack, but cannot exceed 30%."
       ],
-      "icon": [
-        "Prowl.png"
-      ],
-      "leveling": [],
-      "name": "Prowl",
-      "notes": [
-        "* Marked units outside ''Hunt's'' range will not be revealed."
-      ],
-      "projectile": "None",
-      "skill": "I",
-      "targeting": "Passive"
-    },
-    "q1": {
-      "key": "Q1",
-      "id": "JavelinToss",
-      "riotName": "Javelin Toss / Takedown",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "JavelinToss.png",
-        "sprite": "spell8.png",
-        "group": "spell",
-        "x": 96,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "In human form, Nidalee throws a spiked javelin at her target that gains damage as it flies.",
-      "champion": "Nidalee",
-      "collision_radius": 20,
-      "cooldownBurn": "6",
-      "costBurn": "5060708090",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Nidalee''' hurls a javelin forward in a line, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits, which is increased by {{pp|9|key=%|type=distance traveled|0|25|50|75|100|125|150|175|200|525|621.875|718.75|815.625|912.5|1009.375|1106.25|1203.125|1300|formula=0%{{plus}}(25% per 96.875 units traveled). ''This is capped at 200%. Damage ramps from 525 to 1300 units''}}."
-      ],
-      "icon": [
-        "Javelin Toss.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Magic Damage|{{ap|70|85|100|115|130}} {{as|(+ 40% AP)}}|Maximum Magic Damage|{{ap|210|255|300|345|390}} {{as|(+ 120% AP)}}}}"
-      ],
-      "name": "Javelin Toss",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "speed": 1300,
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "target_range": 1500,
-      "targeting": "Direction"
+      "notes": "\n* No additional notes.",
+      "effects": []
     },
     "q2": {
-      "key": "Q2",
-      "id": "JavelinToss",
-      "riotName": "Javelin Toss / Takedown",
+      "riotId": "JavelinToss",
+      "name": "Takedown",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
       "image": {
         "full": "JavelinToss.png",
         "sprite": "spell8.png",
@@ -137,49 +104,324 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Self, Enemies",
-      "blurb": "As a cougar, her next attack will attempt to fatally wound her target, dealing more damage the less life they have.",
-      "champion": "Nidalee",
-      "cooldownBurn": "6",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nidalee's''' next [[basic attack]] gains {{sti|range|75 '''bonus''' range}} and is modified to deal {{as|magic damage}}, increased by an amount for every {{as|1% of target's '''missing''' health}}.",
         "{{sbc|''{{ai|Prowl||Hunt}}'' Bonus:}} ''Takedown'' deals 40% increased damage to ''Hunted'' targets.",
         "''Takedown'' resets '''Nidalee's''' autoattack timer. Other damage converted to magic damage by ''Takedown'' are not increased by ''Takedown's'' respective effects."
       ],
-      "icon": [
-        "Takedown.png"
+      "notes": "\n* ''Takedown'' has no cast time and does not interrupt ''Nidalee's'' previous orders.\n* The attack enhanced by ''Takedown'' will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (damage not increased by ''Takedown'') (magic damage to ''{{ai|Prowl||Hunted}}'' targets is displayed as such only for clarity reasons) as well as affect structures (will not deal bonus damage based on their '''missing''' health).\n* Basic attacks enhanced by ''Takedown'' convert {{nie|Spellblade}} damage from {{ii|Sheen}}, {{ii|Iceborn Gauntlet}}, and/or {{ii|Trinity Force}} from physical to magic. Their damage is however not increased by ''Takedown''.\n* ''Takedown's'' damage will apply {{sti|life steal}}.\n* ''Takedown's'' enhanced attack cannot be {{ai|Counter Strike|Jax|dodged}} but can be {{ai|Riposte|Fiora|parried}}, {{ai|Aegis Protection|Pantheon|blocked}}, and/or miss if ''Nidalee'' is {{tip|blind|blinded}}.",
+      "costBurn": "0",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{sbc|''{{ai|Takedown}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Bonus Damage|{{ap|1 to 1.75 4}}%|Maximum Bonus Damage|{{ap|1*100 to 1.75*100 4}}%}}<!--\n-->{{st|Minimum Magic Damage|{{ap|5 to 80 4}} {{as|(+ 75% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75)) 4}} {{as|(+ {{ap|75*(1+1) to 75*(1+1.75) 4}}% AD)}} {{as|(+ {{ap|40*(1+1) to 40*(1+1.75) 4}}% AP)}}}}",
+          "str": "<span style=\"font-weight:bold; font-size:89%; text-transform:uppercase;\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Takedown<template #content>Takedown</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><spell-span :list=\"['100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1,
+                1.25,
+                1.5,
+                1.75
+              ],
+              [
+                100,
+                125,
+                150,
+                175
+              ],
+              [
+                5,
+                30,
+                55,
+                80
+              ],
+              [
+                150,
+                168.75,
+                187.5,
+                206.25
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.75
+              },
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ad": [
+                  0.8,
+                  0.9,
+                  1,
+                  1.1
+                ]
+              }
+            ],
+            "st_slices": [
+              "Minimum Magic Damage",
+              "<spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
+              "Maximum Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75
+                ],
+                "player_total_ad": 0.75,
+                "player_total_ap": 0.4
+              },
+              "title": "Minimum Magic Damage",
+              "str": "<spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  125,
+                  150,
+                  175
+                ],
+                "player_total_ad": 0.75,
+                "player_total_ap": 0.4
+              },
+              "title": "Maximum Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|''{{ai|Prowl}}''-Enhanced Minimum Damage|{{ap|5*1.4 to 80*1.4 4}} {{as|(+ {{ap|75*1.4}}% AD)}} {{as|(+ {{ap|40*1.4}}% AP)}}|''{{ai|Prowl}}''-Enhanced Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75))*1.4 4}} {{as|(+ {{ap|75*(1+1)*1.4 to 75*(1+1.75)*1.4 4}}% AD)}} {{as|(+ {{ap|40*(1+1)*1.4 to 40*(1+1.75)*1.4 4}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Minimum Damage</span>: <span><spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                7,
+                42,
+                77,
+                112
+              ],
+              [
+                105
+              ],
+              [
+                56
+              ],
+              [
+                210,
+                236.25,
+                262.5,
+                288.75
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  1.12,
+                  1.26,
+                  1.4,
+                  1.54
+                ]
+              }
+            ],
+            "st_slices": [
+              "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
+              "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Maximum Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  7,
+                  42,
+                  77,
+                  112
+                ],
+                "player_total_ad": [
+                  1.12,
+                  1.26,
+                  1.4,
+                  1.54
+                ]
+              },
+              "title": "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
+              "str": "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  105
+                ],
+                "player_total_ad": [
+                  1.12,
+                  1.26,
+                  1.4,
+                  1.54
+                ]
+              },
+              "title": "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Maximum Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "JavelinToss",
+      "name": "Javelin Toss",
+      "maxrank": 5,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
       ],
-      "leveling": [
-        "{{sbc|''{{ai|Takedown}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Increased Damage|{{ap|1 to 1.75 4}}%|Maximum Bonus Damage|{{ap|1*100 to 1.75*100 4}}%}}<!--\n-->{{st|Minimum Magic Damage|{{ap|5 to 80 4}} {{as|(+ 75% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{pp|4|notooltip=true|(5+25*(x-1))*(2+0.25*(x-1))}} {{as|(+ {{ap|75*2 to 75*2.75 4}}% AD)}} {{as|(+ {{ap|40*2 to 40*2.75 4}}% AP)}}}}",
-        "{{st|''{{ai|Prowl}}''-Enhanced Minimum Damage|{{ap|5*1.4 to 80*1.4 4}} {{as|(+ 105% AD)}} {{as|(+ 56% AP)}}|''{{ai|Prowl}}''-Enhanced Maximum Damage|{{pp|4|notooltip=true|(5+25*(x-1))*(2+0.25*(x-1))*1.4}} {{as|(+ {{ap|75*2*1.4 to 75*2.75*1.4 4}}% AD)}} {{as|(+ {{ap|40*2*1.4 to 40*2.75*1.4 4}}% AP)}}}}"
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
       ],
-      "name": "Takedown",
-      "notes": [
-        "* ''Takedown'' has no cast time and does not interrupt ''Nidalee's'' previous orders.",
-        "* The attack enhanced by ''Takedown'' will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (damage not increased by ''Takedown'') (magic damage to ''{{ai|Prowl||Hunted}}'' targets is displayed as such only for clarity reasons) as well as affect structures (will not deal bonus damage based on their '''missing''' health).",
-        "* Basic attacks enhanced by ''Takedown'' convert {{nie|Spellblade}} damage from {{ii|Sheen}}, {{ii|Iceborn Gauntlet}}, and/or {{ii|Trinity Force}} from physical to magic. Their damage is however not increased by ''Takedown''.",
-        "* ''Takedown's'' damage will apply {{sti|life steal}}.",
-        "* ''Takedown's'' enhanced attack cannot be {{ai|Counter Strike|Jax|dodged}} but can be {{ai|Riposte|Fiora|parried}}, {{ai|Aegis Protection|Pantheon|blocked}}, and/or miss if ''Nidalee'' is {{tip|blind|blinded}}."
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1500,
+      "image": {
+        "full": "JavelinToss.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' hurls a javelin forward in a line, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits, which is increased by {{pp|9|key=%|type=distance traveled|0|25|50|75|100|125|150|175|200|525|621.875|718.75|815.625|912.5|1009.375|1106.25|1203.125|1300|formula=0%{{plus}}(25% per 96.875 units traveled). ''This is capped at 200%. Damage ramps from 525 to 1300 units''}}."
       ],
-      "parry": "Special",
-      "projectile": "Magic",
-      "skill": "Q",
-      "spelleffects": "Special",
-      "spellshield": true,
-      "targeting": "None"
+      "notes": "\n* No additional details.",
+      "costBurn": "50/60/70/80/90",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Magic Damage|{{ap|70|85|100|115|130}} {{as|(+ 40% AP)}}|Maximum Magic Damage|{{ap|210|255|300|345|390}} {{as|(+ 120% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['210','255','300','345','390']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                85,
+                100,
+                115,
+                130
+              ],
+              [
+                210,
+                255,
+                300,
+                345,
+                390
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 1.2
+              }
+            ],
+            "st_slices": [
+              "Minimum Magic Damage",
+              "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "Maximum Magic Damage",
+              "<spell-span :list=\"['210','255','300','345','390']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  85,
+                  100,
+                  115,
+                  130
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Minimum Magic Damage",
+              "str": "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  210,
+                  255,
+                  300,
+                  345,
+                  390
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Maximum Magic Damage",
+              "str": "<spell-span :list=\"['210','255','300','345','390']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W1",
-      "id": "Bushwhack",
-      "riotName": "Bushwhack / Pounce",
+      "riotId": "Bushwhack",
+      "name": "Bushwhack",
       "maxrank": 5,
-      "maxammo": 0,
+      "cooldown": [
+        13,
+        12,
+        11,
+        10,
+        9
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": 900,
       "image": {
         "full": "Bushwhack.png",
         "sprite": "spell8.png",
@@ -189,50 +431,108 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "In human form, Nidalee lays a trap for unwary opponents that, when sprung, damages and reveals its target.",
-      "champion": "Nidalee",
-      "cooldown": [
-        13,
-        12,
-        11,
-        10,
-        9
-      ],
-      "cooldownBurn": "13/12/11/10/9",
-      "costBurn": "40 / 45 / 50 / 55 / 60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nidalee''' lays a trap at the target location, which {{tip|Stealthed Trap|stealths}} and arms after a brief delay and lasts for up to 2 minutes. The next enemy who springs the trap takes {{as|magic damage}} over 4 seconds, granting {{tip|true sight|True Sight}} for the duration.",
         "Traps have {{as|{{sti|health|6 '''maximum''' health}}}} and can only be damaged by champion basic attacks (2 damage from {{tip|ranged}} and 3 from {{tip|melee}}). Up to a maximum of {{pp|4|4 to 10|1 to 16}} traps may be active at once."
       ],
-      "icon": [
-        "Bushwhack.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Second|{{ap|10 to 50}} {{as|(+ 5% AP)}}|Total Magic Damage|{{ap|10*4 to 50*4}} {{as|(+ 20% AP)}}}}"
-      ],
-      "name": "Bushwhack",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "DoT",
-      "spellshield": true,
-      "target_range": 900,
-      "targeting": "Ground"
+      "notes": "\n* No additional notes.",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "13/12/11/10/9",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Second|{{ap|10 to 50}} {{as|(+ 5% AP)}}|Total Magic Damage|{{ap|10*4 to 50*4}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ],
+              [
+                40,
+                80,
+                120,
+                160,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.05
+              },
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Second",
+              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_total_ap": 0.05
+              },
+              "title": "Magic Damage Per Second",
+              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  80,
+                  120,
+                  160,
+                  200
+                ],
+                "player_total_ap": 0.05
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['40','80','120','160','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     },
     "w2": {
-      "key": "W2",
-      "id": "Bushwhack",
-      "riotName": "Bushwhack / Pounce",
+      "riotId": "Bushwhack",
+      "name": "Pounce",
       "maxrank": 5,
-      "maxammo": 0,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Ground",
+      "target_range": "{{tt|375|Standard range}} / {{tt|750|Enhanced range}}",
       "image": {
         "full": "Bushwhack.png",
         "sprite": "spell8.png",
@@ -242,101 +542,122 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "As a cougar, she jumps in a direction, dealing damage in an area where she lands.",
-      "champion": "Nidalee",
-      "cooldown": [
-        13,
-        12,
-        11,
-        10,
-        9
-      ],
-      "cooldownBurn": "13/12/11/10/9",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Nidalee''' {{tip|dash|dashes}} a fixed distance in the direction of the cursor, dealing {{as|magic damage}} to enemies around her landing point.",
         "{{sbc|''{{ai|Prowl||Hunt}}'' Bonus:}} '''Nidalee''' can cursor-over ''Hunted'' enemies to ''Pounce'' on them from increased range.",
         "[[Kill]]ing a unit while in ''Cougar Form'' or using ''Pounce's'' ''Hunt'' bonus reduces ''Pounce's'' remaining {{sti|cooldown}} to a value. This has no effect if the remaining cooldown is already lower than that value."
       ],
-      "effect_radius": 75,
-      "grounded": true,
-      "icon": [
-        "Pounce.png"
-      ],
-      "knockdown": true,
-      "leveling": [
-        "{{sbc|''{{ai|Pounce}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}",
-        "{{st|Magic Damage|{{ap|60 to 210 4}} {{as|(+ 30% AP)}}}}",
-        "{{st|Reduced Cooldown|{{tt|{{ap|3 to 1.5 4}}|Affected by Cooldown Reduction.}}}}"
-      ],
-      "name": "Pounce",
-      "notes": [
-        "* '''Pounce''' goes on cooldown on cast, and will not receive the reduced cooldown if the target becomes ''Hunted'' mid-air.",
-        "* {{Pending for test}} {{ci|Akali}} can still be affected by an enhanced ''{{ai|Pounce}}'' during her {{ai|Twilight Shroud|Akali}}."
-      ],
-      "projectile": "Magic",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "target_range": "{{tt|375|Standard range}} / {{tt|750|Enhanced range}}",
-      "targeting": "Ground"
-    },
-    "e1": {
-      "key": "E1",
-      "id": "PrimalSurge",
-      "riotName": "Primal Surge / Swipe",
-      "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "PrimalSurge.png",
-        "sprite": "spell8.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Self, Allies",
-      "blurb": "In human form, Nidalee channels the spirit of the cougar to heal her allies and imbue them with Attack Speed for a short duration.",
-      "champion": "Nidalee",
-      "cooldownBurn": "12",
-      "costBurn": "60 / 75 / 90 / 105 / 120",
-      "costtype": "Mana",
-      "damagetype": "null",
-      "damageTypes": [
-        "null"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Nidalee''' evokes the spirit of the cougar, {{tip|healing}} the target allied champion or herself, increased by {{as|{{pp|11|label1=target's '''missing''' health|label2=Heal increase|key=%|0 to 100|key1=%|0 to 100|displayformula=1% per 1% of target's '''missing''' health}}|health}}, and granting them {{sti|{{as|'''bonus''' attack speed}}}} for 7 seconds."
-      ],
-      "icon": [
-        "Primal Surge.png"
-      ],
-      "leveling": [
-        "{{st|Minimum Heal|{{ap|35 to 115}} {{as|(+ {{fd|32.5}}% AP)}}|Maximum Heal|{{ap|35*2 to 115*2}} {{as|(+ 65% AP)}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 60}}%}}"
-      ],
-      "name": "Primal Surge",
-      "notes": [
-        "* The bonus attack speed will persist through ''{{ai|Aspect of the Cougar 2||Cougar Form}}'' if '''Nidalee''' uses ''{{ai|Primal Surge}}'' on herself."
-      ],
-      "projectile": "None",
-      "skill": "E",
-      "spelleffects": "Heal",
-      "target_range": 600,
-      "targeting": "Unit"
+      "notes": "\n* '''Pounce''' goes on cooldown on cast, and will not receive the reduced cooldown if the target becomes ''Hunted'' mid-air.\n* {{Pending for test}} {{ci|Akali}} can still be affected by an enhanced ''{{ai|Pounce}}'' during her {{ai|Twilight Shroud|Akali}}.",
+      "costBurn": "0",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{sbc|''{{ai|Pounce}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}",
+          "str": "<span style=\"font-weight:bold; font-size:89%; text-transform:uppercase;\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Pounce<template #content>Pounce</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span>",
+          "vars": {
+            "ratios": {},
+            "progression": []
+          }
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 210 4}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','110','160','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                110,
+                160,
+                210
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['60','110','160','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  110,
+                  160,
+                  210
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['60','110','160','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Reduced Cooldown|{{tt|{{ap|3 to 1.5 4}}|Affected by Cooldown Reduction.}}}}",
+          "str": "<ul><li><span class=\"blue\">Reduced Cooldown</span>: <span><span class=\"title-tooltip\" title=\"Affected by Cooldown Reduction.\"><spell-span :list=\"['3','2.5','2','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                2.5,
+                2,
+                1.5
+              ]
+            ],
+            "st_slices": [
+              "Reduced Cooldown",
+              "<span class=\"title-tooltip\" title=\"Affected by Cooldown Reduction.\"><spell-span :list=\"['3','2.5','2','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  2.5,
+                  2,
+                  1.5
+                ]
+              },
+              "title": "Reduced Cooldown",
+              "str": "<span class=\"title-tooltip\" title=\"Affected by Cooldown Reduction.\"><spell-span :list=\"['3','2.5','2','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "e2": {
-      "key": "E2",
-      "id": "PrimalSurge",
-      "riotName": "Primal Surge / Swipe",
+      "riotId": "PrimalSurge",
+      "name": "Swipe",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
       "image": {
         "full": "PrimalSurge.png",
         "sprite": "spell8.png",
@@ -346,10 +667,61 @@
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "angle": 180,
-      "blurb": "As a cougar, she claws in a direction, dealing damage to enemies in front of her.",
-      "champion": "Nidalee",
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' claws at enemies in an arc in the direction of the cursor, dealing {{as|magic damage}} to all enemies hit."
+      ],
+      "notes": "\n* No additional details.",
+      "costBurn": "0",
+      "cooldownBurn": "6",
+      "effects": [
+        {
+          "levelingtext": "{{sbc|''{{ai|Swipe}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Magic Damage|{{ap|80 to 260 4}} {{as|(+ 45% AP)}}}}",
+          "str": "<span style=\"font-weight:bold; font-size:89%; text-transform:uppercase;\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Swipe<template #content>Swipe</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                140,
+                200,
+                260
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  140,
+                  200,
+                  260
+                ],
+                "player_total_ap": 0.45
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','140','200','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "PrimalSurge",
+      "name": "Primal Surge",
+      "maxrank": 5,
       "cooldown": [
         12,
         12,
@@ -357,32 +729,144 @@
         12,
         12
       ],
-      "cooldownBurn": "12",
-      "costBurn": "0",
-      "costtype": "No cost",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
+      "cost": [
+        60,
+        75,
+        90,
+        105,
+        120
       ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 600,
+      "image": {
+        "full": "PrimalSurge.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
       "description": [
-        "{{sbc|Active:}} '''Nidalee''' claws at enemies in an arc in the direction of the cursor, dealing {{as|magic damage}} to all enemies hit."
+        "{{sbc|Active:}} '''Nidalee''' evokes the spirit of the cougar, {{tip|healing}} the target allied champion or herself, increased by {{as|{{pp|11|label1=target's '''missing''' health|label2=Heal increase|key=%|0 to 100|key1=%|0 to 100|displayformula=1% per 1% of target's '''missing''' health}}|health}}, and granting them {{sti|{{as|'''bonus''' attack speed}}}} for 7 seconds."
       ],
-      "effect_radius": "{{tt|300|Estimated}}",
-      "icon": [
-        "Swipe.png"
+      "notes": "\n* The bonus attack speed will persist through ''{{ai|Aspect of the Cougar 2||Cougar Form}}'' if '''Nidalee''' uses ''{{ai|Primal Surge}}'' on herself.",
+      "costBurn": "60/75/90/105/120",
+      "cooldownBurn": "12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Minimum Heal|{{ap|35 to 115}} {{as|(+ {{fd|32.5}}% AP)}}|Maximum Heal|{{ap|35*2 to 115*2}} {{as|(+ 65% AP)}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><spell-span :list=\"['35','55','75','95','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">32.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                35,
+                55,
+                75,
+                95,
+                115
+              ],
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ],
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              },
+              {
+                "player_total_ap": 0.325
+              }
+            ],
+            "st_slices": [
+              "Minimum Heal",
+              "<spell-span :list=\"['35','55','75','95','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">32.5</span>% AP)</span>",
+              "Maximum Heal",
+              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  35,
+                  55,
+                  75,
+                  95,
+                  115
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Minimum Heal",
+              "str": "<spell-span :list=\"['35','55','75','95','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">32.5</span>% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Maximum Heal",
+              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "r2": {
+      "riotId": "AspectOfTheCougar",
+      "name": "Aspect Of The Cougar",
+      "maxrank": 4,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0
       ],
-      "leveling": [
-        "{{sbc|''{{ai|Swipe}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Magic Damage|{{ap|80 to 260 4}} {{as|(+ 45% AP)}}}}"
+      "cost": [
+        0,
+        0,
+        0,
+        0
       ],
-      "name": "Swipe",
-      "notes": [
-        "* No additional details."
-      ],
-      "projectile": "Magic",
-      "skill": "E",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "targeting": "Direction"
+      "image": {
+        "full": "AspectOfTheCougar.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [],
+      "notes": "",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
     }
-  }
+  },
+  "skillcount": 8
 }

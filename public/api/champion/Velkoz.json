@@ -4,13 +4,12 @@
   "id": "Velkoz",
   "key": "161",
   "name": "Vel'Koz",
-  "fullname": "Vel'Koz",
   "title": "the Eye of the Void",
   "image": {
     "full": "Velkoz.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 0,
     "w": 48,
     "h": 48
@@ -21,6 +20,7 @@
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
+  "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
   "adaptivetype": "magic",
@@ -30,178 +30,343 @@
     "magic": 10,
     "difficulty": 8
   },
-  "i_displayname": "Organic Deconstruction",
-  "q_displayname": "Plasma Fission / Plasma Fission 2",
-  "w_dispalyname": "Void Rift",
-  "e_dispalyname": "Tectonic Disruption",
-  "r_dispalyname": "Life Form Disintegration Ray / Researched",
-  "complex_skills": {
+  "stats": {
+    "hp": 520,
+    "hpperlevel": 88,
+    "mp": 469,
+    "mpperlevel": 21,
+    "movespeed": 340,
+    "armor": 21.88,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 54.9379,
+    "attackdamageperlevel": 3.1416,
+    "attackspeedperlevel": 1.36,
+    "attackspeed": 0.625
+  },
+  "skills": {
     "i1": {
-      "key": "I",
-      "riotName": "Organic Deconstruction",
+      "riotId": "",
+      "name": "Organic Deconstruction",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
         "full": "VelKoz_Passive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies / Self",
-      "blurb": "Vel'Koz's abilities apply Organic Deconstruction to enemies on hit. If 3 stacks are accumulated, the enemy will take a burst of true damage.",
-      "champion": "Vel'Koz",
-      "cooldown": null,
-      "cooldownBurn": null,
-      "costtype": "No cost",
-      "damagetype": "true",
-      "damageTypes": [
-        "true"
-      ],
       "description": [
         "{{sbc|Basic Attacks:}} '''Vel'Koz's''' [[basic attack]]s don't use {{tip|projectiles}}.",
         "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] apply a ''Deconstruction'' stack for 7 seconds, stacking up to 3 times. Basic attacks refresh the duration on-hit.",
         "The third stack consumes them all to deal {{pp|33 to 169}} {{as|(+ 50% AP)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} and briefly grant {{tip|sight}} of the enemy."
       ],
-      "icon": [
-        "Organic Deconstruction.png"
-      ],
-      "leveling": [],
-      "name": "Organic Deconstruction",
-      "notes": [
-        "* No additional notes."
-      ],
-      "projectile": "true",
-      "skill": "I",
-      "spelleffects": "Single target",
-      "spellshield": true,
-      "targeting": "Passive"
+      "notes": "\n* No additional notes.",
+      "effects": []
     },
     "q1": {
-      "key": "Q",
-      "id": "VelkozQ",
-      "riotName": "Plasma Fission",
+      "riotId": "VelkozQ",
+      "name": "Plasma Fission",
       "maxrank": 5,
-      "maxammo": -1,
+      "cooldown": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "{{ap|{{tt|1050|Primary bolt}}|{{tt|1100|Secondary bolt}}}}",
       "image": {
         "full": "VelkozQ.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Vel'Koz shoots a bolt of plasma that splits in two on reactivation or upon hitting an enemy. The bolt slows and damages on hit.",
-      "champion": "Vel'Koz",
-      "cooldownBurn": "7",
-      "costBurn": "40 / 45 / 50 / 55 / 60",
-      "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Active:}} '''Vel'Koz''' fires an energy bolt that collides with the first enemy hit to deal {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slow}} by 70% for a few seconds, decaying over the duration.",
         "At the end of its range, upon re-activation after {{fd|0.25}} seconds, or upon colliding with an enemy, the bolt splits in half, each part firing in opposite directions perpendicular to the primary bolt's trajectory.",
         "''Plasma Fission'' restores {{sti|mana|{{as|mana}}}} per target killed."
       ],
-      "icon": [
-        "Plasma Fission.png",
-        "Plasma Fission 2.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow Duration|{{ap|1 to 2.6}}}}",
-        "{{st|Mana Restored On-Kill|{{as|{{ap|20 to 30}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*3 to 30*3}}|mana}}}}"
-      ],
-      "name": "Plasma Fission",
-      "notes": [
-        "* An enemy cannot be hit by multiple bolts even when having blocked one with a spell shield.",
-        "* ''Plasma Fission'' can travel a maximum ~1521 units diagonally."
-      ],
-      "projectile": true,
-      "skill": "Q",
-      "spelleffects": "Area of Effect",
-      "spellshield": true,
-      "target_range": "{{ap|{{tt|1050|Primary bolt}}|{{tt|1100|Secondary bolt}}}}",
-      "targeting": "Direction"
+      "notes": "\n* An enemy cannot be hit by multiple bolts even when having blocked one with a spell shield.\n* ''Plasma Fission'' can travel a maximum ~1521 units diagonally.",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "7",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow Duration|{{ap|1 to 2.6}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow Duration</span>: <span><spell-span :list=\"['1','1.4','1.8','2.2','2.6']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ],
+              [
+                1,
+                1.4,
+                1.8,
+                2.2,
+                2.6
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              "Slow Duration",
+              "<spell-span :list=\"['1','1.4','1.8','2.2','2.6']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Slow Duration",
+              "str": "<spell-span :list=\"['1','1.4','1.8','2.2','2.6']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Mana Restored On-Kill|{{as|{{ap|20 to 30}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*3 to 30*3}}|mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Mana Restored On-Kill</span>: <span><span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Mana Restored</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                22.5,
+                25,
+                27.5,
+                30
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.6,
+                  0.675,
+                  0.75,
+                  0.825,
+                  0.9
+                ]
+              }
+            ],
+            "st_slices": [
+              "Mana Restored On-Kill",
+              "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "Maximum Mana Restored",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  22.5,
+                  25,
+                  27.5,
+                  30
+                ],
+                "player_total_unknown": [
+                  0.6,
+                  0.675,
+                  0.75,
+                  0.825,
+                  0.9
+                ]
+              },
+              "title": "Mana Restored On-Kill",
+              "str": "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_unknown": [
+                  0.6,
+                  0.675,
+                  0.75,
+                  0.825,
+                  0.9
+                ]
+              },
+              "title": "Maximum Mana Restored",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: Cannot read property 'Symbol(Symbol.iterator)' of undefined</simple-tooltip>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
     },
     "w1": {
-      "key": "W",
-      "id": "VelkozW",
-      "riotName": "Void Rift",
+      "riotId": "VelkozW",
+      "name": "Void Rift",
       "maxrank": 5,
-      "maxammo": 2,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana + 1 Charge",
+      "targeting": "Direction",
+      "target_range": 1050,
       "image": {
         "full": "VelkozW.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Vel'Koz opens a rift to the void that deals an initial burst of damage, then explodes for a second burst of damage after a delay.",
-      "champion": "Vel'Koz",
-      "cooldown": [
-        1.5,
-        1.5,
-        1.5,
-        1.5,
-        1.5
-      ],
-      "cooldownBurn": "1.5",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
-      "costtype": "Mana + 1 Charge",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
       "description": [
         "{{sbc|Passive:}} '''Vel'Koz''' periodically [[stock]]s a ''Void Rift'' charge, up to a maximum of 2.",
         "{{sbc|Active:}} '''Vel'Koz''' opens a rift to the void that cuts through the ground in a line, dealing {{as|magic damage}} and leaving behind a trail. After a {{fd|0.25}} seconds delay, the trail detonates, dealing {{as|magic damage}}."
       ],
-      "icon": [
-        "Void Rift.png"
-      ],
-      "leveling": [
-        "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}<!--\n-->{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}"
-      ],
-      "name": "Void Rift",
-      "notes": [
-        "* '''Vel'Koz''' can cast ''Void Rift'' while moving but not while attacking.",
-        "* {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block the rift from forming over them, but they will not destroy the trail that was created before it.",
-        "* ''Void Rift'' must finish before another can be cast."
-      ],
-      "projectile": "Special",
-      "skill": "W",
-      "spelleffects": "Area of effect",
-      "spellshield": true,
-      "static": "{{fd|1.5}}",
-      "target_range": 1050,
-      "targeting": "Direction"
+      "notes": "\n* '''Vel'Koz''' can cast ''Void Rift'' while moving but not while attacking.\n* {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block the rift from forming over them, but they will not destroy the trail that was created before it.\n* ''Void Rift'' must finish before another can be cast.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}<!--\n-->{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Magic Damage</span>: <span><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Detonation Magic Damage</span>: <span><spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                50,
+                70,
+                90,
+                110
+              ],
+              [
+                45,
+                75,
+                105,
+                135,
+                165
+              ],
+              [
+                75,
+                125,
+                175,
+                225,
+                275
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.15
+              },
+              {
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Detonation Magic Damage",
+              "<spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "Maximum Damage",
+              "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  50,
+                  70,
+                  90,
+                  110
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Detonation Magic Damage",
+              "str": "<spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  75,
+                  105,
+                  135,
+                  165
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Maximum Damage",
+              "str": "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     },
     "e1": {
-      "key": "E",
-      "id": "VelkozE",
-      "riotName": "Tectonic Disruption",
+      "riotId": "VelkozE",
+      "name": "Tectonic Disruption",
       "maxrank": 5,
-      "maxammo": -1,
-      "image": {
-        "full": "VelkozE.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "affects": "Enemies",
-      "blurb": "Vel'Koz causes an area to explode, knocking up enemies, and knocking close enemies slightly away.",
-      "cast_time": 0.25,
-      "champion": "Vel'Koz",
       "cooldown": [
         16,
         15,
@@ -209,91 +374,187 @@
         13,
         12
       ],
-      "cooldownBurn": "16/15/14/13/12",
-      "costBurn": "50 / 55 / 60 / 65 / 70",
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
       "costtype": "Mana",
-      "damagetype": "magic",
-      "damageTypes": [
-        "magic"
-      ],
-      "description": [
-        "{{sbc|Active:}} '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.55}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|suspension|suspending}} enemies in the area for {{fd|0.75}} seconds. If the area is created close to '''Vel'Koz''', enemies hit are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
-      ],
-      "effect_radius": 225,
-      "icon": [
-        "Tectonic Disruption.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}"
-      ],
-      "name": "Tectonic Disruption",
-      "notes": [
-        "* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}}.",
-        "* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.",
-        "* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.",
-        "* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it."
-      ],
-      "projectile": "Special",
-      "skill": "E",
-      "speed": 1500,
-      "spelleffects": "Area of effect",
-      "spellshield": true,
+      "targeting": "Ground",
       "target_range": 800,
-      "targeting": "Ground"
-    },
-    "r1": {
-      "key": "R",
-      "id": "VelkozR",
-      "riotName": "Life Form Disintegration Ray",
-      "maxrank": 3,
-      "maxammo": -1,
       "image": {
-        "full": "VelkozR.png",
+        "full": "VelkozE.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 144,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
-      "affects": "Enemies",
-      "blurb": "Vel'Koz unleashes a channelled beam that follows the cursor for 2.5 seconds that deals magic damage. Organic Deconstruction Researches enemy champions causing them to take true damage instead.",
-      "champion": "Vel'Koz",
+      "description": [
+        "{{sbc|Active:}} '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.55}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|suspension|suspending}} enemies in the area for {{fd|0.75}} seconds. If the area is created close to '''Vel'Koz''', enemies hit are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
+      ],
+      "notes": "\n* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}}.\n* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.\n* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.\n* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it.",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "16/15/14/13/12",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','100','130','160','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                100,
+                130,
+                160,
+                190
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','100','130','160','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  100,
+                  130,
+                  160,
+                  190
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','100','130','160','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "VelkozR",
+      "name": "Life Form Disintegration Ray",
+      "maxrank": 3,
       "cooldown": [
         120,
         100,
         80
       ],
-      "cooldownBurn": "120/100/80",
-      "costBurn": "100",
-      "costtype": "Mana",
-      "damagetype": "magic / true",
-      "damageTypes": [
-        "magic",
-        "true"
+      "cost": [
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1550,
+      "image": {
+        "full": "VelkozR.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
       "description": [
         "{{sbc|Passive - Researched:}} {{ai|Organic Deconstruction|Vel'Koz|Deconstructing}} enemy champions marks them as ''{{ai|Researched|Vel'Koz}}'' for 7 seconds. Basic attacks and ability damage refresh the duration on-hit.",
         "{{sbc|Active:}} '''Vel'Koz''' {{ct|channels}} for {{fd|2.5}} seconds to project an energy beam in a line. The ray's trajectory updates itself over the duration to face the target direction. Reactivating ''Life Form Disintegration Ray'' ends the channel.",
         "The ray deals {{as|magic damage}} in {{fd|0.25}} seconds intervals, and {{tip|slow|slows}} by 20% for 1 second. {{ai|Organic Deconstruction|Vel'Koz|Deconstruction}} is applied every {{fd|0.7}} seconds to enemies hit. {{ai|Researched|Vel'Koz|''Researched''}} enemies take {{as|true damage}} instead."
       ],
-      "icon": [
-        "Researched.png",
-        "Lifeform Disintegration Ray.png"
-      ],
-      "leveling": [
-        "{{st|Magic Damage Per Tick|{{ap|45 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Magic Damage|{{ap|45*10 to 80*10}} {{as|(+ 125% AP)}}}}"
-      ],
-      "name": "Life Form Disintegration Ray",
-      "notes": [
-        "* ''Life Form Disintegration Ray's'' trajectory updates gradually (moving the cursor from one side of '''Vel'Koz''' to the other will not make him rotate instantly).",
-        "* The beam covers '''Vel'Koz's '''hitbox, damaging enemies standing close."
-      ],
-      "projectile": "[[Magic damage|Magic]] / [[True damage|True]]",
-      "skill": "R",
-      "spelleffects": "aoedot",
-      "target_range": 1550,
-      "targeting": "Direction"
+      "notes": "\n* ''Life Form Disintegration Ray's'' trajectory updates gradually (moving the cursor from one side of '''Vel'Koz''' to the other will not make him rotate instantly).\n* The beam covers '''Vel'Koz's '''hitbox, damaging enemies standing close.",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage Per Tick|{{ap|45 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Magic Damage|{{ap|45*10 to 80*10}} {{as|(+ 125% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['45','53.75','62.5','71.25','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['450','537.5','625','712.5','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 125% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                45,
+                53.75,
+                62.5,
+                71.25,
+                80
+              ],
+              [
+                450,
+                537.5,
+                625,
+                712.5,
+                800
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.25
+              },
+              {
+                "player_total_ap": 0.125
+              }
+            ],
+            "st_slices": [
+              "Magic Damage Per Tick",
+              "<spell-span :list=\"['45','53.75','62.5','71.25','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "Maximum Magic Damage",
+              "<spell-span :list=\"['450','537.5','625','712.5','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 125% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  45,
+                  53.75,
+                  62.5,
+                  71.25,
+                  80
+                ],
+                "player_total_ap": 1.25
+              },
+              "title": "Magic Damage Per Tick",
+              "str": "<spell-span :list=\"['45','53.75','62.5','71.25','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  450,
+                  537.5,
+                  625,
+                  712.5,
+                  800
+                ],
+                "player_total_ap": 1.25
+              },
+              "title": "Maximum Magic Damage",
+              "str": "<spell-span :list=\"['450','537.5','625','712.5','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 125% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
-  }
+  },
+  "skillcount": 5
 }
