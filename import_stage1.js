@@ -188,11 +188,11 @@ request(realmsUrl, { json: true }, (err, res, body) => {
   const cdn = body.cdn;
   const version = body.v;
   const lang = body.l;
-  log.info("using ddragon version:",version);
+  log.info("using ddragon version:", version);
 
   const championFull = `${cdn}/${version}/data/${lang}/championFull.json`;
 
-  fs.writeFile(`./export/version.json`, JSON.stringify({
+  fs.writeFile(`./public/api/version.json`, JSON.stringify({
     v: version,
     l: lang,
     cdn: cdn,
@@ -205,7 +205,7 @@ request(realmsUrl, { json: true }, (err, res, body) => {
   log.info("Fetching (json): %s", championFull)
   request(championFull, { json: true }, (err, res, body) => {
     if (err) { return console.log(err); }
-  
+
     if (clarg == "list") {
       log.info(`List of champion for lol patch ${version}: ` + Object.keys(body.data).join(' '))
       return;
@@ -215,7 +215,7 @@ request(realmsUrl, { json: true }, (err, res, body) => {
       if (!all && !champsList.includes(keyid)) continue;
       const champ = body.data[keyid];
       log.info('Taking: ' + keyid);
-  
+
       fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikia_champ) => {
         let cexport = default_export(champ);
         let lines = wikia_champ.split('\n');
@@ -239,7 +239,7 @@ request(realmsUrl, { json: true }, (err, res, body) => {
         }
         champObj["changes"] = make_changes(champObj["changes"] || "V0.0")
         cexport.wikia_champ = champObj
-  
+
         cexport.skills = {};
         chain_skills(cexport, champ.name, () => {
           // champtions[keyid] = cexport
@@ -252,5 +252,5 @@ request(realmsUrl, { json: true }, (err, res, body) => {
         });
       });
     }
-  });  
+  });
 })
