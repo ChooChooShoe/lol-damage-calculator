@@ -59,11 +59,6 @@ export default {
       itemData: [],
       globalToolTips: {},
       config: loadLocalConfig(),
-      versionInfo: {
-        v: '0.0.0',
-        l: 'en_US',
-        cdn: '',
-      },
     };
   },
   created: function() {
@@ -72,20 +67,6 @@ export default {
   },
   mounted: function() {
     console.log('process.env.VUE_APP_DDRAGON_VERSION',process.env);
-    // const url = `./api/version.json`;
-    // const self = this;
-
-    // console.log(`Fetching: ${url}`);
-    // fetch(url)
-    //     .then(function (response) {
-    //         if (response.ok) {
-    //             return response.json();
-    //         }
-    //         throw new Error('Network response was not ok.');
-    //     })
-    //     .then(function (json) {
-    //         self.versionInfo = json;
-    //     });
   },
   watch: {
     config: {
