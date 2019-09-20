@@ -1,0 +1,234 @@
+{
+	"$id": "https://choochooshoe.github.io/champion.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"description": "My modified championDao.json",
+	"type": "object",
+	"properties": {
+		"patch": {
+			"type": "string"
+		},
+		"changes": {
+			"type": "string"
+		},
+		"id": {
+			"type": "string"
+		},
+		"key": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		},
+		"image": {
+      "type": "object",
+      "properties": {
+        "full": {
+          "type": "string"
+        },
+        "sprite": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string",
+          "const": "champion"
+        },
+        "x": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "w": {
+          "type": "integer",
+          "const": 48
+        },
+        "h": {
+          "type": "integer",
+          "const": 48
+        }
+      }
+		},
+		"tags": {
+      "type": "array",
+      "enum": ["Mage", "Assasin"]
+		},
+		"resource": {
+      "type": "string",
+      "enum": ["Mana", "None"]
+		},
+		"herotype": {
+			"type": "string"
+		},
+		"alttype": {
+			"type": "string"
+		},
+		"rangetype": {
+      "type": "string",
+      "enum": ["Ranged", "Melee"]
+		},
+		"adaptivetype": {
+			"type": "string",
+			"default": "magic",
+			"enum": [
+				"magic",
+				"physical"
+			]
+		},
+		"be_cost": {
+			"type": "integer"
+		},
+		"rp_cost": {
+			"type": "integer"
+		},
+		"info": {
+			"required": [
+				"attack",
+				"defense",
+				"magic",
+				"difficulty"
+			],
+			"type": "object",
+			"properties": {
+				"attack": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 10
+				},
+				"defence": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 10
+				},
+				"magic": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 10
+				},
+				"difficulty": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 10
+				}
+			}
+		},
+		"stats": {
+			"type": "object",
+			"properties": {
+        "hp": {
+          "type": "number",
+          "default": 0,
+        },
+        "hpperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "mp": {
+          "type": "number",
+          "default": 0,
+        },
+        "mpperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "movespeed": {
+          "type": "number",
+          "default": 0,
+        },
+        "armor": {
+          "type": "number",
+          "default": 0,
+        },
+        "armorperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "spellblock": {
+          "type": "number",
+          "default": 0,
+        },
+        "spellblockperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "attackrange": {
+          "type": "number",
+          "default": 0,
+        },
+        "hpregen": {
+          "type": "number",
+          "default": 0,
+        },
+        "hpregenperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "mpregen": {
+          "type": "number",
+          "default": 0,
+        },
+        "mpregenperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "crit": {
+          "type": "number",
+          "default": 0,
+        },
+        "critperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "attackdamage": {
+          "type": "number",
+          "default": 0,
+        },
+        "attackdamageperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "attackspeedperlevel": {
+          "type": "number",
+          "default": 0,
+        },
+        "attackspeed": {
+          "type": "number",
+          "default": 0,
+        }
+      }
+		},
+		"skills": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"skillcount": {
+			"type": "integer"
+		}
+	},
+	"required": [
+    "patch",
+    "changes",
+    "id",
+    "key",
+    "name",
+    "title",
+    "image",
+    "tags",
+    "resource",
+    "herotype",
+    "alttype",
+    "rangetype",
+    "be_cost",
+    "rp_cost",
+    "adaptivetype",
+    "info",
+    "stats",
+    "skills",
+    "skillcount"
+
+	]
+}

@@ -1,0 +1,173 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://choochooshoe.github.io/skill.json",
+  "type": "object",
+  "title": "The Skill Schema",
+  "properties": {
+    "riotId": {
+      "$id": "#/properties/riotId",
+      "type": "string",
+      "title": "The Riotid Schema",
+      "default": "",
+      "pattern": "^(.*)$"
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Z-Drive Resonance"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "maxrank": {
+      "$id": "#/properties/maxrank",
+      "type": "integer",
+      "title": "The Maxrank Schema",
+      "default": 5,
+      "minimum": 0,
+      "maximum": 6,
+      "examples": [
+        0,
+        3,
+        5,
+        6
+      ]
+    },
+    "targeting": {
+      "$id": "#/properties/targeting",
+      "type": "string",
+      "title": "The Targeting Schema",
+      "default": "",
+      "examples": [
+        "Passive"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "image": {
+      "$id": "#/properties/image",
+      "type": "object",
+      "title": "The Image Schema",
+      "required": [
+        "full",
+        "sprite",
+        "group",
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "properties": {
+        "full": {
+          "$id": "#/properties/image/properties/full",
+          "type": "string",
+          "title": "The Full Schema",
+          "default": "",
+          "examples": [
+            "Ekko_P.png"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "sprite": {
+          "$id": "#/properties/image/properties/sprite",
+          "type": "string",
+          "title": "The Sprite Schema",
+          "default": "",
+          "examples": [
+            "passive0.png"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "group": {
+          "$id": "#/properties/image/properties/group",
+          "type": "string",
+          "title": "The Group Schema",
+          "default": "",
+          "examples": [
+            "passive"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "x": {
+          "$id": "#/properties/image/properties/x",
+          "type": "integer",
+          "title": "The X Schema",
+          "default": 0,
+          "examples": [
+            144
+          ]
+        },
+        "y": {
+          "$id": "#/properties/image/properties/y",
+          "type": "integer",
+          "title": "The Y Schema",
+          "default": 0,
+          "examples": [
+            96
+          ]
+        },
+        "w": {
+          "$id": "#/properties/image/properties/w",
+          "type": "integer",
+          "title": "The W Schema",
+          "default": 0,
+          "examples": [
+            48
+          ]
+        },
+        "h": {
+          "$id": "#/properties/image/properties/h",
+          "type": "integer",
+          "title": "The H Schema",
+          "default": 0,
+          "examples": [
+            48
+          ]
+        }
+      }
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "array",
+      "title": "The Description Schema",
+      "items": {
+        "$id": "#/properties/description/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "{{sbc|Resonance:}} '''Ekko's''' [[basic attack]]s and [[damage|damaging]] [[Champion ability|abilities]] apply ''Resonance'' to affected enemies for 4 seconds, stacking up to 3 times.<br/>At 3 stacks, ''Resonance'' is consumed to deal {{pp|30;40;50;60;70;80 to 140|color=magic damage}} {{as|(+ 80% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target, doubled to {{pp|30*2;40*2;50*2;60*2;70*2;80*2 to 140*2|color=magic damage}} {{as|(+ 160% AP)}} against {{tip|monsters}}, but capped at 600.",
+          "{{sbc|Stolen Time:}} If '''Ekko''' triggers ''Resonance'' against enemy {{tip|champions}}, he also gains {{pp|4|key=%|50 to 80|1 to 16|displayformula = 50%+10% every 5 levels|color=movement speed}} {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{pp|3|2 to 3|1 to 11}} seconds.",
+          "{{sbc|Stabilized:}} ''Resonance'' cannot affect the same target more than once every few seconds."
+        ],
+        "pattern": "^(.*)$"
+      }
+    },
+    "notes": {
+      "$id": "#/properties/notes",
+      "type": "string",
+      "title": "The Notes Schema",
+      "default": "",
+      "examples": [
+        "\n* No additional details."
+      ],
+      "pattern": "^(.*)$"
+    },
+    "effects": {
+      "$id": "#/properties/effects",
+      "type": "array",
+      "title": "The Effects Schema"
+    }
+  },
+  "required": [
+    "name",
+    "maxrank",
+    "targeting",
+    "image",
+    "description",
+    "notes",
+    "effects"
+  ]
+}

@@ -80,6 +80,24 @@ function default_export(champ) {
     "riot_recommended": champ['recommended'], // renamed 
   }
 }
+
+function autoCast(s) {
+  if (s === null || s == undefined)
+    return null;
+  s = s.toString().trim();
+  if (s === '')
+    return '';
+  if (!isNaN(Number(s)))
+    return Number(s);
+  if (parseFloat(s))
+    return parseFloat(s)
+  if (s === "true" || s === "True")
+    return true;
+  if (s === "false" || s === "False")
+    return false;
+  return s;
+}
+
 function cast(s) {
   s = s.trim();
   if (s === '')
@@ -205,6 +223,7 @@ request(realmsUrl, { json: true }, (err, res, body) => {
   log.info("Fetching (json): %s", championFull)
   request(championFull, { json: true }, (err, res, body) => {
     if (err) { return console.log(err); }
+    log.info("File got %s", championFull)
 
     if (clarg == "list") {
       log.info(`List of champion for lol patch ${version}: ` + Object.keys(body.data).join(' '))
@@ -216,34 +235,26 @@ request(realmsUrl, { json: true }, (err, res, body) => {
       const champ = body.data[keyid];
       log.info('Taking: ' + keyid);
 
-      fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikia_champ) => {
-        let cexport = default_export(champ);
-        let lines = wikia_champ.split('\n');
+      fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikiaDataIn) => {
+        log.info("File got (wikia) " + champ.name);
+        let rootObj = default_export(champ);
+
         let champObj = {}
-        for (let index = 0; index < lines.length; index++) {
-          const line = lines[index].trim();
-          if (!line || line === "" || line.startsWith("}}") || line.startsWith('{{')) {
-            log.info('Skipping line: ' + line)
-            continue;
-          }
-          else if (line.startsWith('|') && line.includes("=")) {
-            let split = line.split("=")
-            let key = split[0].trim().replace("|", "", 1).replace(' ', '_')
-            let value = split.slice(1).join('=').trim()
-            champObj[key] = cast(value)
-          } else {
-            const lineNumber = "line_" + (index + 1)
-            log.warn('Unknown line: "' + lineNumber + '" value ' + line)
-            champObj[lineNumber] = line
-          }
+        const wikiDataSplit = wikiaDataIn.split(/[\n|]/);
+        for (const line of wikiDataSplit) {
+          const parts = line.split('=');
+          if (parts.length == 2) {
+            champObj[parts[0].trim()] = autoCast(parts[1]);
+          } else
+            log.debug('Skipping line: ' + line);
         }
         champObj["changes"] = make_changes(champObj["changes"] || "V0.0")
-        cexport.wikia_champ = champObj
+        rootObj.wikia_champ = champObj
 
-        cexport.skills = {};
-        chain_skills(cexport, champ.name, () => {
+        rootObj.skills = {};
+        chain_skills(rootObj, champ.name, () => {
           // champtions[keyid] = cexport
-          fs.writeFile(`./export/${keyid}.pass1.json`, JSON.stringify(cexport, null, 2), function (err) {
+          fs.writeFile(`./export/${keyid}.pass1.json`, JSON.stringify(rootObj, null, 2), function (err) {
             if (err) {
               return console.log(err);
             }
