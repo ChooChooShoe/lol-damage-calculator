@@ -273,3 +273,22 @@ export function default_stats() {
         attackspeed: 0,
     }
 }
+
+export const spell_ratios = {
+    base_damage: { prefex: "Base Damage", color: "", sufex: "", extra: true, },
+    base_progression: { prefex: "Leveling", color: "", sufex: "", extra: true,  },
+    player_total_ap: { color: "ap", sufex: "AP" },
+    player_total_ad: { color: "ad", sufex: "AD" },
+    player_bonus_ad: { color: "ad", sufex: "Bonus AD" },
+    player_total_hp: { color: "health", sufex: "Max Health" },
+    player_bonus_hp: { color: "health", sufex: "Bonus Health" },
+    player_missing_hp: { color: "health", sufex: "Missing Health" },
+    target_total_hp: { color: "health", sufex: "Target's Max Health" },
+    target_bonus_hp: { color: "health", sufex: "Target's Bonus Health" },
+    target_current_hp: { color: "health", sufex: "Target's Current Health" },
+    target_missing_hp: { color: "health", sufex: "Target's Missing Health" },
+    player_bonus_armor: { color: "armor", sufex: "Bonus Armor" },
+    player_total_armor: { color: "armor", sufex: "Armor" },
+    player_bonus_mr: { color: "mr", sufex: "Bonus Magic Resistance" },
+    player_total_mr: { color: "mr", sufex: "Magic Resistance" }
+  };

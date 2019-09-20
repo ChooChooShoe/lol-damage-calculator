@@ -71,6 +71,8 @@
         "{{sbc|Innate:}} '''Vladimir''' gains {{as|({{fd|{{#var:cp1}}}}% '''bonus''' health)}} {{sti|ap|{{as|'''bonus''' ability power}}}} and {{as|({{#var:cp2}}% AP)}} {{sti|health|{{as|'''bonus''' health}}}}. These two bonuses do not stack with each other."
       ],
       "notes": "* ''Crimson Pact's'' '''bonus''' ability power stacks multiplicatively with other sources of {{as|% ability power}} but its '''bonus''' health stacks additively with other sources of {{as|'''bonus''' health}}. Examples on how they calculate below:\n**Case 1: With {{ii|Rabadon's Deathcap}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|From Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP enhanced by Rabadon's Deathcap.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}/10000}}}}% '''bonus''' health}}|Though these 2 bonuses do not stack with each other and it's Crimson Pact's bonus AP that enhanced by Rabadon's Deathcap, the enhanced part of AP is credited to Rabadon's Deathcap, not Crimson Pact, thus still counted as resource for Crimson Pact's bonus health.}}) {{as|'''bonus''' health}}.\n**Case 2: With {{ii|Cinderhulk}} you get a total of {{tt|{{as|({{fd|{{#expr:{{#var:cp1}}*(1+{{#var:ch}}/100)}}}}% '''bonus''' health)}}|Crimson Pact's bonus AP comes from bonus health, thus indirectly enhanced by Cinderhulk.}} {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#var:cp2}}% AP}}|From Crimson Pact}} + {{tt|{{as|{{#var:ch}}% '''bonus''' health}}|From Cinderhulk.}}) {{as|'''bonus''' health}}.\n**Case 3: With {{ii|Rabadon's Deathcap}} + {{ii|Cinderhulk}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|Same with case 1, from Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)*(1+{{#var:ch}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Rabadon's Deathcap and Cinderhulk, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Same with case 1, won't stack with other sources of bonus health (Cinderhulk).}} + {{tt|{{as|{{fd|{{#expr:{{#var:ch}}+{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}*(1+{{#var:ch}}/100)/10000}}}}% '''bonus''' health}}|Crimson Pact's bonus AP indirectly enhanced by Cinderhulk (refer case 2), then multiplicatively enhanced again by Rabadon's Deathcap. The enhanced part that's credited to Rabadon's Deathcap then enhances Crimson Pact's bonus health (refer case 1). Finally, add the simple bonus health from Cinderhulk.}}) {{as|'''bonus''' health}}.",
+      "skillkey": "I",
+      "skillid": "i1",
       "effects": []
     },
     "q1": {
@@ -108,6 +110,8 @@
         "{{sbc|Crimson Rush:}} ''Transfusion'' deals 85% increased [[damage]] and heals for an '''additional''' {{pp|30 to 200}} {{as|(+ 5% {{as|(+ 4% per 100 AP)}} '''missing''' health)}}, reduced to 35% against [[minion]]s."
       ],
       "notes": "* ''Vladimir's'' resource bar changes colors depending on ''Bloodthirst's'' charge-up.\n*# <span style=\"color:white\">White</span> while generating the first stack and while at 1 stack   (there is no time-out period).\n*# <span style=\"color:orange\">Orange</span> while generating the second stack.\n*# <span style=\"color:red\">Red</span> while ''Crimson Rush'' is active (''Bloodthirst'' will deplete over {{fd|2.5}} seconds once triggered).\n** Each stack generates over-time (''Transfusion's'' cooldown).\n* ''Transfusion'' will heal ''Vladimir'' instantly, not when the blood comes to him.\n* While ''Crimson Rush'' is active ''Bloodthirst's'' depletion timer will be slowed while charging {{ai|Tides of Blood|Vladimir}} or using {{ai|Sanguine Pool|Vladimir}}",
+      "skillkey": "Q",
+      "skillid": "q1",
       "costBurn": "0",
       "cooldownBurn": "9/8/7/6/5",
       "effects": [
@@ -241,6 +245,8 @@
         "Enemies who stand upon the pool are {{tip|slow|slowed}} by 40% and dealt {{as|magic damage}} every half second, while '''Vladimir''' {{tip|heals}} himself for 15% of the damage dealt."
       ],
       "notes": "* The first tick damages immediately so the final one occurs {{fd|0.5}} seconds before ''Vladimir'' becomes targetable again.\n* The slow ends immediately once affected enemies get out of range.\n* ''Sanguine Pool'' has no cast time.\n* ''Sanguine Pool'' has a {{as|(+ 14% AP)}} ratio thanks to {{ai|Crimson Pact|Vladimir}}.\n* ''Vladimir'' cannot use basic attacks or abilities while ''Sanguine Pool'' is active (but he can use summoner spells and/or activate items).\n* ''Vladimir'' will be affected by some abilities ({{ai|Petrifying Gaze|Cassiopeia}}, {{ai|Feral Scream|Cho'Gath}}) as he enters ''Sanguine Pool'' but he will still gain its effects.\n* If damage-over-time effects ({{si|Ignite}}, {{ai|Drain|Fiddlesticks}}) were applied to ''Vladimir'' before entering ''Sanguine Pool'' he will still be damaged by them while being untargetable.\n* ''Vladimir'' will become untargetable to self-cast allied abilities ({{ai|Monsoon|Janna}}, {{ai|Aria of Perseverance|Sona}}, although {{ai|Wish|Soraka}} will heal him), auras ({{ii|Abyssal Mask}}, {{ai|Tailwind|Janna}}), and will not be healed by fountain while inside ''Sanguine Pool''.\n* ''Sanguine Pool'' cannot go through player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}}) but can bypass {{ai|Event Horizon|Veigar}} since ''Vladimir'' ignores crowd control effects for the duration.",
+      "skillkey": "W",
+      "skillid": "w1",
       "costBurn": "20",
       "cooldownBurn": "28/25/22/19/16",
       "effects": [
@@ -350,6 +356,8 @@
         "Enemies can intercept multiple bolts, but can only be damaged once. [[Minions]] can each absorb up to 5 bolts, and damage nearby unaffected minions if hit."
       ],
       "notes": "* ''Tides of Blood'' has a {{fd|0.25}} second cast time.\n* ''Tides of Blood'' can hit enemy champions in [[Sight|fog of war]], in brush, or when stealthed.\n* ''Tides of Blood'' has a bonus {{as|(+ {{fd|2.5}}% '''bonus''' health)}} ratio thanks to {{ai|Crimson Pact|Vladimir}}.",
+      "skillkey": "E",
+      "skillid": "e1",
       "costBurn": "8",
       "cooldownBurn": "13/11/9/7/5",
       "effects": [
@@ -503,6 +511,8 @@
         "'''Vladimir''' is {{tip|heal|healed}} for every champion damaged by the detonation, reduced to 50% after the first."
       ],
       "notes": "* ''Hemoplague'' will amplify almost all sources and types of damage (including damage from neutral monsters but excluding [[true damage]], with percent modifiers stacking multiplicatively).\n** ''Hemoplague'' amplifies itself for an actual {{ap|150*1.1 to 350*1.1}} {{as|(+ {{fd|77}}% AP)}} damage.\n* ''Hemoplague'' has no cast time and affects the target area instantly, yet there is a {{fd|0.5}} seconds animation time which prevents ''Vladimir'' from using {{ai|Transfusion|Vladimir}} or {{ai|Tides of Blood|Vladimir}}, although he can use {{ai|Sanguine Pool|Vladimir}}, summoner spells, and activate items during this time.\n* ''Hemoplague'' will not cancel an enemy's {{si|Recall}} since the damage is delayed.",
+      "skillkey": "R",
+      "skillid": "r1",
       "costBurn": "0",
       "cooldownBurn": "150/135/120",
       "effects": [

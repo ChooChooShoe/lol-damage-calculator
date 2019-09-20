@@ -131,7 +131,10 @@ function buildSkill(skilldata, riotSpell, is_passive, champ, model) {
         image: riotSpell.image,
         description: skilldata.description || [],
         // riotDescription: riotSpell.description,
-        notes: skilldata.notes || "",
+        notes: skilldata.notes || "",      
+        
+        skillkey: skilldata.skillkey,
+        skillid: skilldata.skillid,
 
     };
     if (skilldata.name !== riotSpell.name)

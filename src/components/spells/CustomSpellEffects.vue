@@ -1,39 +1,28 @@
 <template>
   <div
     class="container float-clear spell-effect"
-    :id="id"
     @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
   >
-    <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
-      <h4>
-        <span v-if="iscustom">Custom</span>
-        Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}
-      </h4>
+    <form autocomplete="off" class="flex flex-row flex-wrap flex-top">
+      <h4>Custom Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}</h4>
       <input
-        v-if="iscustom"
         name="remove_effect"
         class="inline float-right"
         type="button"
         value="Remove"
         @click="removeEffect()"
       />
-      <span>
-        <span class="blue">{{ edata.title }}</span>
-        <match-replace
-          class="column effect-value"
-          :text="edata.str"
-          :spellrankindex="spellrankindex"
-        ></match-replace>
-      </span>
       <div class="field column">
-        <label :for="id + '-damagetype'">Damage Type</label>
-        <select :id="id + '-damagetype'" v-model="damage_type" name="damage_type" class="input">
-          <option value="none" class="true">No Damage</option>
-          <option value="unknown" class="mixed">Unknown Damage</option>
-          <option value="physical" class="ad">Physical Damage</option>
-          <option value="magic" class="ap">Magic Damage</option>
-          <option value="true" class="true">True Damage</option>
-        </select>
+        <label>
+          Damage Type
+          <select v-model="damage_type" name="damage_type" class="input">
+            <option value="none" class="true">No Damage</option>
+            <option value="unknown" class="mixed">Unknown Damage</option>
+            <option value="physical" class="ad">Physical Damage</option>
+            <option value="magic" class="ap">Magic Damage</option>
+            <option value="true" class="true">True Damage</option>
+          </select>
+        </label>
 
         <spell-field
           v-for="(item, key) in ratios"
@@ -45,76 +34,12 @@
         ></spell-field>
         <input class="inline dropbutton" type="button" value="Add Ratio+" />
         <div :class="showRatiosDropdown ? '' : 'hidden'">
-          <span
-            v-if="ratios['player_total_ap']    === undefined"
-            class="simple-link ap"
-            @click="addRatio('player_total_ap')"
-          >AP Ratio</span>-
-          <span
-            v-if="ratios['player_total_ad']    === undefined"
-            class="simple-link ad"
-            @click="addRatio('player_total_ad')"
-          >AD Ratio</span>-
-          <span
-            v-if="ratios['player_bonus_ad']    === undefined"
-            class="simple-link ad"
-            @click="addRatio('player_bonus_ad')"
-          >Bonus AD Ratio</span>-
-          <span
-            v-if="ratios['player_total_hp']    === undefined"
-            class="simple-link health"
-            @click="addRatio('player_total_hp')"
-          >Health Ratio</span>-
-          <span
-            v-if="ratios['player_bonus_hp']    === undefined"
-            class="simple-link health"
-            @click="addRatio('player_bonus_hp')"
-          >Bonus Health Ratio</span>-
-          <span
-            v-if="ratios['player_missing_hp']  === undefined"
-            class="simple-link health"
-            @click="addRatio('player_missing_hp')"
-          >Missing Health</span>-
-          <span
-            v-if="ratios['target_total_hp']    === undefined"
-            class="simple-link health"
-            @click="addRatio('target_total_hp')"
-          >Target's Max Health</span>-
-          <span
-            v-if="ratios['target_bonus_hp']    === undefined"
-            class="simple-link health"
-            @click="addRatio('target_bonus_hp')"
-          >Target's Bonus Health</span>-
-          <span
-            v-if="ratios['target_current_hp']  === undefined"
-            class="simple-link health"
-            @click="addRatio('target_current_hp')"
-          >Target's Current Health</span>-
-          <span
-            v-if="ratios['target_missing_hp']  === undefined"
-            class="simple-link health"
-            @click="addRatio('target_missing_hp')"
-          >Target's Missing Health</span>-
-          <span
-            v-if="ratios['player_bonus_armor'] === undefined"
-            class="simple-link armor"
-            @click="addRatio('player_bonus_armor')"
-          >Bonus Armor Ratio</span>-
-          <span
-            v-if="ratios['player_total_armor'] === undefined"
-            class="simple-link armor"
-            @click="addRatio('player_total_armor')"
-          >Armor Ratio</span>-
-          <span
-            v-if="ratios['player_bonus_mr']    === undefined"
-            class="simple-link mr"
-            @click="addRatio('player_bonus_mr')"
-          >Bonus MR Ratio</span>-
-          <span
-            v-if="ratios['player_total_mr']    === undefined"
-            class="simple-link mr"
-            @click="addRatio('player_total_mr')"
-          >MR Ratio</span>
+          <template v-for="(r,i) in spell_ratios">
+            <span :key="i" v-if="!r.extra && ratios[i]    === undefined"
+              :class="'simple-link ' + r.color"
+              @click="addRatio(i)"
+            >{{ r.prefex }} {{ r.sufex }} {{ r.ispercent == false ? 'Ratio' : ''}}</span>-
+          </template>
         </div>
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
@@ -183,31 +108,35 @@
 
 <script>
 import numeral from "numeral";
-import { calcDamageWithRedection } from "../javascript/league_data";
+import {
+  calcDamageWithRedection,
+  spell_ratios
+} from "../../javascript/league_data";
 import Vue from "vue";
-import MatchReplace from "./MatchReplace.vue";
 import SpellField from "./SpellField.vue";
 
 export default {
-  props: ["id", "spell", "effect", "spellrankindex", "effectindex", "iscustom"],
-  name: "spell-effects",
+  props: ["spell", "effectindex", "spellrankindex"],
+  name: "CustomSpellEffects",
   components: {
-    MatchReplace,
     SpellField
   },
   data: function() {
     return {
-      damage_type: this.effect.subeffects[0].damage_type,
+      damage_type: "magic",
       showRatiosDropdown: false,
-      user_ratios: {},
-      repeat: 1,
-      subIndex: 0,
-      ratios: {}
+      ratios: {
+        base_damage: { key: "base_damage", value: 0, ispercent: false },
+        player_total_ap: { key: "player_total_ap", value: 0, ispercent: true },
+        player_total_ad: { key: "player_total_ad", value: 0, ispercent: true },
+        player_bonus_ad: { key: "player_bonus_ad", value: 0, ispercent: true }
+      },
+      repeat: 1
     };
   },
   computed: {
-    edata: function() {
-      return this.effect.subeffects[this.subIndex];
+    spell_ratios: function() {
+      return spell_ratios
     },
     damagetype_user: function() {
       switch (this.damage_type) {
@@ -255,35 +184,10 @@ export default {
       el => el !== self
     );
   },
-  watch: {
-    edata: {
-      immediate: true,
-      handler() {
-        let newRatios = {};
-        for (const ratio in this.edata.ratios) {
-          const value = this.edata.ratios[ratio];
-
-          // if (Array.isArray(value)) {
-          //   value = numeral(value[i]).value() / 100;
-          //   // Might not be the best solution but works with ez W.
-          // }
-          let ispercent = true;
-          if (
-            ratio === "base_damage" ||
-            (ratio === "base_progression" && !this.edata.str.includes("%"))
-          )
-            ispercent = false;
-          newRatios[ratio] = {
-            key: ratio,
-            value: value,
-            ispercent: ispercent
-          };
-        }
-        this.ratios = newRatios;
-      }
-    }
-  },
   methods: {
+    toggleSubIndex: function() {
+      this.subIndex = (this.subIndex + 1) % this.effect.subeffects.length;
+    },
     addRatio: function(ratio) {
       Vue.set(this.ratios, ratio, {
         key: ratio,
@@ -292,10 +196,10 @@ export default {
       });
     },
     removeEffect: function() {
-      if (this.iscustom)
-        this.$parent.customEffects = this.$parent.customEffects.filter(
-          i => i !== this.effectindex
-        );
+      const index = this.effectindex;
+      this.$parent.customEffects = this.$parent.customEffects.filter(
+        i => i !== index
+      );
     },
     ratioValue(ratio) {
       if (this.ratios[ratio]) {

@@ -20,24 +20,8 @@
 
 <script>
 import Vue from "vue";
-const known_ratios_table = {
-  base_damage: { prefex: "Base Damage", color: "", sufex: "" },
-  base_progression: { prefex: "Leveling", color: "", sufex: "" },
-  player_total_ap: { color: "ap", sufex: "AP" },
-  player_total_ad: { color: "ad", sufex: "AD" },
-  player_bonus_ad: { color: "ad", sufex: "Bonus AD" },
-  player_total_hp: { color: "health", sufex: "Max Health" },
-  player_bonus_hp: { color: "health", sufex: "Bonus Health" },
-  player_missing_hp: { color: "health", sufex: "Missing Health" },
-  target_total_hp: { color: "health", sufex: "Target's Max Health" },
-  target_bonus_hp: { color: "health", sufex: "Target's Bonus Health" },
-  target_current_hp: { color: "health", sufex: "Target's Current Health" },
-  target_missing_hp: { color: "health", sufex: "Target's Missing Health" },
-  player_bonus_armor: { color: "armor", sufex: "Bonus Armor" },
-  player_total_armor: { color: "armor", sufex: "Armor" },
-  player_bonus_mr: { color: "mr", sufex: "Bonus Magic Resistance" },
-  player_total_mr: { color: "mr", sufex: "Magic Resistance" }
-};
+import {spell_ratios } from '../../javascript/league_data';
+
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "spell-field",
@@ -47,13 +31,13 @@ export default {
   },
   computed: {
     prefex: function() {
-      return known_ratios_table[this.type].prefex || "";
+      return spell_ratios[this.type].prefex || "";
     },
     color: function() {
-      return known_ratios_table[this.type].color || "";
+      return spell_ratios[this.type].color || "";
     },
     sufex: function() {
-      return known_ratios_table[this.type].sufex || "";
+      return spell_ratios[this.type].sufex || "";
     },
     displayValue: function() {
       let v = this.value;

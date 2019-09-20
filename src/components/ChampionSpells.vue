@@ -3,7 +3,7 @@
     <img class="spell-image"
       :style="imageStyle"
       :width="spell.image.w" :height="spell.image.h">
-    <h2>{{ spell.name }} ({{ spellkey }})</h2>
+    <h2>{{ spell.name }} ({{ spell.skillkey }})</h2>
     <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
 
     <div class="float-left" v-if="spell.maxrank > 0">
@@ -38,16 +38,13 @@
       :iscustom="false">
     </spell-effects>
   
-    <spell-effects
-      v-for="(item, index) in customEffects" 
-      :id="id + '-custom-effect-' + item"
+    <CustomSpellEffects
+      v-for="(item) in customEffects" 
       :key="id + '-custom-effect-' + item"
       :spell="spell"
-      effect=""
       :effectindex="item"
-      :spellrankindex="spellrankindex"
-      :iscustom="true">
-    </spell-effects>
+      :spellrankindex="spellrankindex">
+    </CustomSpellEffects>
     
     <input name="add_effect" type="button" value="Add Effect +" @click="addEffect()">
     
@@ -57,11 +54,13 @@
 
 <script>
 import MatchReplace from './MatchReplace.vue';
-import SpellEffects from './SpellEffects.vue';
+import SpellEffects from './spells/SpellEffects.vue';
+import CustomSpellEffects from './spells/CustomSpellEffects.vue';
 import SimpleTooltip from './SimpleTooltip.vue';
 import SpellNotes from './SpellNotes.vue';
 import SpellSpan from './SpellSpan.vue';
 import {quickMatchReplace} from '../javascript/matchreplace';
+import { spriteBaseUri } from '../javascript/league_data';
 
 export default {
   name: 'champion-spells',
@@ -71,8 +70,9 @@ export default {
     SimpleTooltip,
     SpellNotes,
     SpellSpan,
+    CustomSpellEffects,
   },
-  props: ['id', 'spellkey', 'spell', 'champion', 'spriteurl'],
+  props: ['id','spell','champion'],
   data: function () {
     return {
       spellrankindex: (this.spell.maxrank || 0) - 1,
@@ -82,18 +82,18 @@ export default {
   },
   computed: {
     costtype() {
-      return quickMatchReplace(this.spell.costtype);
+      return quickMatchReplace(this.spell.costtype || 'Mana');
     },
     targeting() {
-      return quickMatchReplace(this.spell.targeting);
+      return quickMatchReplace(this.spell.targeting || '');
     },
     targetRange() {
-      return quickMatchReplace(String(this.spell.target_range));
+      return quickMatchReplace(String(this.spell.target_range || ''));
     },
     imageStyle() {
       return { 
         float: 'right', 
-        background: 'url('+"spriteurl" + ') -' + "spell.image.x" + 'px -' + "spell.image.y" + 'px'
+        background: 'url('+ spriteBaseUri + this.spell.image.sprite + ') -' + this.spell.image.x + 'px -' + this.spell.image.y + 'px'
       };
     }
   },
