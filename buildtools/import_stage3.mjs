@@ -9,7 +9,7 @@
 /// #######################################################################################
 
 import fs from 'fs';
-import matchReplaceSpellEffects from './src/javascript/matchreplace.mjs';
+import matchReplaceSpellEffects from '../src/javascript/matchreplace.mjs';
 
 /// Simple Logger
 class Log {

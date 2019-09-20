@@ -72,7 +72,7 @@
         "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s deal {{as|4% of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
         "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with three stacks."
       ],
-      "notes": "\n* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, we can define ''An Acquired Taste's'' damage in a different way: {{pp|4/100*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 4% '''bonus''' health)}}.",
+      "notes": "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, we can define ''An Acquired Taste's'' damage in a different way: {{pp|4/100*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 4% '''bonus''' health)}}.",
       "effects": []
     },
     "q1": {
@@ -110,7 +110,7 @@
         "If an enemy champion is struck while at three {{ai|An Acquired Taste|Tahm Kench}} stacks, they're also {{tip|stun|stunned}} for 2 seconds, consuming all stacks.",
         "During ''Tongue Lash'', {{ai|Devour|Tahm Kench}} can be cast for no {{sti|mana|{{as|mana}}}} to devour the {{tip|minion}} or non-epic {{tip|monster}} struck. ''Devour's'' mana refund doesn't apply in this case."
       ],
-      "notes": "\n* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''.",
+      "notes": "* {{ai|Devour|Tahm Kench}} can be 'queued' at any point during ''Tongue Lash'' (including the wind-up animation) and will not go on cooldown if ''Tahm Kench'' fails to hit a valid target with ''Tongue Lash''.",
       "costBurn": "50",
       "cooldownBurn": "5",
       "effects": [
@@ -167,6 +167,43 @@
         }
       ]
     },
+    "w1": {
+      "riotId": "TahmKenchW",
+      "name": "Devour",
+      "maxrank": 5,
+      "cooldown": [
+        20
+      ],
+      "cost": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 250,
+      "image": {
+        "full": "TahmKenchW.png",
+        "sprite": "spell11.png",
+        "group": "spell",
+        "x": 48,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active – Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
+        "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks. If '''Tahm Kench''' swallows an allied or enemy champion, he is {{tip|ground|grounded}} and {{tip|slow|slowed}} by 95% for the duration. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}} and makes them {{tip|untargetable}}.",
+        "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}} and {{sti|mana|{{as|50% of the mana cost}}}}.",
+        "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay, unless they're {{tip|stun|immobilized}}."
+      ],
+      "notes": "* The {{tip|slow|self-slow}} is affected by [[slow resist]].\n* ''Devour'' will prioritize champions (cannot be used on those who are [[channel]]ing an ability) over minions.\n** If champions stay on top of each other it will prioritize those who stay beneath.\n* ''Tahm Kench'' cannot use {{si|Teleport}}, {{si|Flash}}, or {{ai|Dark Passage|Thresh}} while holding an enemy champion in his belly (he can when holding an allied champion or minion).\n* ''Devour'' cannot be used on epic monsters ({{ui|Vilemaw}}, {{ui|Rift Herald}}, {{ui|Dragon}}, {{ui|Baron Nashor}}) and on {{ci|Sion}} during his {{ai|Glory in Death|Sion}}.\n* ''Devour'' will not interrupt persistent area-of-effect abilities ({{ai|Glacial Storm|Anivia}},{{ai|Slicing Maelstrom|Kennen}}, {{ai|Burnout|Shyvana}}) non-channeled ones ({{ai|The Culling|Lucian}}, {{ai|Center of the Universe|Aurelion Sol}}, {{ai|Celestial Expansion|Aurelion Sol}}) damage over time ({{si|Ignite}}) or delayed single-target damage ({{ai|Death Mark|Zed}}) but will interrupt the delayed area-of-effect kind ({{ai|Explosive Charge|Tristana}}).\n* {{ii|Quicksilver Sash}} will cleanse ''Devour's'' {{tip|suppression}} but the damage will still be dealt.",
+      "costBurn": "100",
+      "cooldownBurn": "20",
+      "effects": []
+    },
     "w2": {
       "riotId": "TahmKenchW",
       "name": "Regurgitate",
@@ -200,7 +237,7 @@
         "{{sbc|Active – Regurgitate:}} '''Tahm Kench''' regurgitates the swallowed target. If they are an enemy they also take {{as|magic damage}}, capped at 500 against monsters.",
         "Minions and non-epic monsters that are spat forth can collide with an enemy or terrain to deal {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' stun damage."
       ],
-      "notes": "\n* {{ii|Quicksilver Sash}} will cleanse ''Devour's'' {{tip|suppression}} but the damage will still be dealt.\n* ''Regurgitate'' can send allies to the other side of small walls.",
+      "notes": "* {{ii|Quicksilver Sash}} will cleanse ''Devour's'' {{tip|suppression}} but the damage will still be dealt.\n* ''Regurgitate'' can send allies to the other side of small walls.",
       "costBurn": "0",
       "cooldownBurn": "0",
       "effects": [
@@ -298,43 +335,6 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "TahmKenchW",
-      "name": "Devour",
-      "maxrank": 5,
-      "cooldown": [
-        20
-      ],
-      "cost": [
-        100,
-        100,
-        100,
-        100,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": 250,
-      "image": {
-        "full": "TahmKenchW.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 48,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active – Devour:}} '''Tahm Kench''' swallows an enemy minion, non-epic monster or allied champion, making them {{tip|untargetable}} and unable to take any actions for 4 seconds.",
-        "'''Tahm Kench''' can swallow an enemy champion if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks. If '''Tahm Kench''' swallows an allied or enemy champion, he is {{tip|ground|grounded}} and {{tip|slow|slowed}} by 95% for the duration. Swallowing a targeted enemy champion only lasts for half the duration, down to 2 seconds, consumes all their ''An Acquired Taste'' stacks, {{tip|suppression|suppresses}} and makes them {{tip|untargetable}}.",
-        "Swallowing an enemy refunds {{sti|cooldown|50% of the cooldown}} and {{sti|mana|{{as|50% of the mana cost}}}}.",
-        "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full. Allied champions can exit at will after the same delay, unless they're {{tip|stun|immobilized}}."
-      ],
-      "notes": "\n* The {{tip|slow|self-slow}} is affected by [[slow resist]].\n* ''Devour'' will prioritize champions (cannot be used on those who are [[channel]]ing an ability) over minions.\n** If champions stay on top of each other it will prioritize those who stay beneath.\n* ''Tahm Kench'' cannot use {{si|Teleport}}, {{si|Flash}}, or {{ai|Dark Passage|Thresh}} while holding an enemy champion in his belly (he can when holding an allied champion or minion).\n* ''Devour'' cannot be used on epic monsters ({{ui|Vilemaw}}, {{ui|Rift Herald}}, {{ui|Dragon}}, {{ui|Baron Nashor}}) and on {{ci|Sion}} during his {{ai|Glory in Death|Sion}}.\n* ''Devour'' will not interrupt persistent area-of-effect abilities ({{ai|Glacial Storm|Anivia}},{{ai|Slicing Maelstrom|Kennen}}, {{ai|Burnout|Shyvana}}) non-channeled ones ({{ai|The Culling|Lucian}}, {{ai|Center of the Universe|Aurelion Sol}}, {{ai|Celestial Expansion|Aurelion Sol}}) damage over time ({{si|Ignite}}) or delayed single-target damage ({{ai|Death Mark|Zed}}) but will interrupt the delayed area-of-effect kind ({{ai|Explosive Charge|Tristana}}).\n* {{ii|Quicksilver Sash}} will cleanse ''Devour's'' {{tip|suppression}} but the damage will still be dealt.",
-      "costBurn": "100",
-      "cooldownBurn": "20",
-      "effects": []
-    },
     "e1": {
       "riotId": "TahmKenchE",
       "name": "Thick Skin",
@@ -364,7 +364,7 @@
         "While ''Thick Skin'' is available, and after taking no damage for {{tt|{{fd|2.5}}|Estimated}} seconds, '''Tahm Kench''' rapidly {{tip|heals}} for 75% of his ''Grey Health'' over time.",
         "{{sbc|Active:}} '''Tahm Kench''' converts his current ''Grey Health'' into a {{tip|shield}} that lasts for 2 seconds."
       ],
-      "notes": "\n* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means you can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than your maximum health.\n* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of true damage mitigation.",
+      "notes": "* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means you can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than your maximum health.\n* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of true damage mitigation.",
       "costBurn": "0",
       "cooldownBurn": "3",
       "effects": [
@@ -482,7 +482,7 @@
         "After a {{fd|0.25}}-second delay, '''Tahm Kench''' can reactivate {{ai|Abyssal Voyage 2|Tahm Kench|Abyssal Voyage}} to begin the channel without an ally. Once the channel is completed, '''Tahm Kench''' and the ally that has climbed in will {{tip|blink}} to the target location, arriving after a {{tt|{{fd|0.5}}|Estimated.}}-second delay.",
         "Taking damage or cancelling the channel interrupts ''Abyssal Voyage'', putting it on a {{sti|cooldown|10 second cooldown}}. ''Abyssal Voyage'' cannot be activated while '''Tahm Kench''' has a {{ai|Devour|Tahm Kench|full belly}}."
       ],
-      "notes": "\n* Allies may still join '''Tahm Kench''' by clicking him while he performs ''Abyssal Voyage's'' second cast's animation.\n* Allies in combat with enemy champions cannot jump into ''Abyssal Voyage''.",
+      "notes": "* Allies may still join '''Tahm Kench''' by clicking him while he performs ''Abyssal Voyage's'' second cast's animation.\n* Allies in combat with enemy champions cannot jump into ''Abyssal Voyage''.",
       "costBurn": "100",
       "cooldownBurn": "140/130/120",
       "effects": []

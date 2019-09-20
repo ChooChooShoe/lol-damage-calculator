@@ -15,36 +15,16 @@ const fs = require('fs');
 const request = require('request');
 const he = require('he');
 
-class Log {
-  constructor(filename, minlevel) {
-    this.filename = filename;
-    this.minlevel = minlevel || 0;
-  }
-  info(msg, opt) {
-    if (opt) console.log(`INFO: ${msg}`, opt)
-    else console.log(`INFO: ${msg}`)
-  }
-  debug(msg) {
-    console.log(`DEBUG: ${msg}`)
-  }
-  warn(msg) {
-    console.log(`WARN: ${msg}`)
-  }
-  error(msg) {
-    console.log(`ERROR: ${msg}`)
-  }
-}
-const log = new Log('stage1.log', 0);
 const noReedoHrefs = new Set();
 function fetch_wikia(url, callback) {
-  log.info("Fetching (chomp): %s", url)
+  console.log("Fetching (chomp): %s", url);
   request(url, (err, res, body) => {
-    if (err) return log.warn('Bad request: ' + err.toString());
-    // if (noReedoHrefs.has(res.href)) return log.warn('Url is the same as one before. skipping ' + res.href)
+    if (err) return console.warn('Bad request: ' + err.toString());
+    // if (noReedoHrefs.has(res.href)) return console.warn('Url is the same as one before. skipping ' + res.href)
     // noReedoHrefs.add(res.href);
     const content = body.match(/<textarea[^>]*>([\s\S]*)<\/textarea>/m);
     if (!content)
-      return log.warn('Unknown page found for ' + url);
+      return console.warn('Unknown page found for ' + url);
     callback(he.decode(content[1]));
   });
 }
@@ -78,6 +58,8 @@ function default_export(champ) {
       "image": champ["passive"]["image"],
     },
     "riot_recommended": champ['recommended'], // renamed 
+    wikia_champ: null,
+    skills: {},
   }
 }
 
@@ -97,23 +79,9 @@ function autoCast(s) {
     return false;
   return s;
 }
-
-function cast(s) {
-  s = s.trim();
-  if (s === '')
-    return ''
-  if (!isNaN(Number(s)))
-    return Number(s)
-  if (parseFloat(s))
-    return parseFloat(s)
-  if (s == "true" || s == "True")
-    return true;
-  if (s == "false" || s == "False")
-    return false;
-  return s;
-}
 // might call callback on r2 before r1 is saved. 
 function chain_skills(cexport, champ_name, calback) {
+  champ_name = champ_name.replace(/ /g, '_');
   try_take_skill('I', cexport.wikia_champ.skill_i, cexport, champ_name, () => {
     try_take_skill('Q', cexport.wikia_champ.skill_q, cexport, champ_name, () =>
       try_take_skill('W', cexport.wikia_champ.skill_w, cexport, champ_name, () => {
@@ -130,51 +98,26 @@ function try_take_skill(letter, value, cexport, champ_name, callback) {
   if (!value) return;
   let skillsplit = value.toString().split(";")
   for (let skillnum = 0; skillnum < skillsplit.length; skillnum++) {
-    const isfianl = skillnum === skillsplit.length - 1;
+    const isFinalCall = skillnum === skillsplit.length - 1;
     const element = skillsplit[skillnum];
-    const skill_name = element.trim().replace(" ", "_")
+    const skill_name = element.trim().replace(/ /g, "_")
     const url = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name}/${skill_name}?action=edit`
     fetch_wikia(url, (data) => {
-      const lines = data.split('\n')
-      const skillobj = {}
-      let last_key = '_preamble'
-      for (let index = 0; index < lines.length; index++) {
-        const line = lines[index].trim();
-        if (!line || line === "" || line.startsWith("}}")) {
-          log.debug('Skipping line: ' + line)
-          continue;
-        }
-        else if (line.startsWith('{{') && !skillobj.name) {
-          const s = line.split('|')[2] || 'No Name';
-          skillobj['name'] = s.replace('-->', '');
-          last_key = 'name'
-        }
-        else if (line.startsWith('|') && line.includes("=")) {
-          let split = line.split("=")
-          let key = split[0].trim().replace("|", "", 1).replace(' ', '_')
-          let value = split.slice(1).join('=').trim()
-          skillobj[key] = cast(value)
-          last_key = key
-        }
-        else {
-          log.debug('backtracing key to ' + last_key + ' adding ' + line)
-          skillobj[last_key] = (skillobj[last_key] || '') + '\n' + line
-        }
-      }
+      let skillObj = wikiaSourceToObj(data);
       let valid = true;
-      if (skillobj.description) {
-        if (noRepeatDesc.has(skillobj.description)) {
-          log.warn('Description is the same as one before. Skipping ' + skill_name)
+      if (skillObj.description) {
+        if (noRepeatDesc.has(skillObj.description)) {
+          console.warn('Description is the same as one before. Skipping', skill_name, skillObj.description)
           valid = false;
         } else
-          noRepeatDesc.add(skillobj.description);
+          noRepeatDesc.add(skillObj.description);
       }
       if (valid) {
-        skillobj.skillkey = letter.toUpperCase();
-        skillobj.skillid = letter.toLowerCase() + (skillnum + 1).toString();
-        cexport.skills[skillobj.skillid] = skillobj;
+        skillObj.skillkey = letter.toUpperCase();
+        skillObj.skillid = letter.toLowerCase() + (skillnum + 1).toString();
+        cexport.skills[skillObj.skillid] = skillObj;
       }
-      if (callback && isfianl)
+      if (callback && isFinalCall)
         callback();
     });
   }
@@ -187,16 +130,16 @@ if (process.argv.length <= 2) {
 }
 const clarg = process.argv[2]
 if (clarg == "help" || clarg == "-h" || clarg == "--help") {
-  log.info("usage: node %s <champion ids...|all|list|help>", process.argv[1])
+  console.log("usage: node %s <champion ids...|all|list|help>", process.argv[1])
   process.exit(0)
 }
 const all = (clarg == 'all');
 
 const champsList = process.argv.slice(2).join(',').split(",")
-log.info('Command Line Args: ' + champsList)
+console.log('Command Line Args: ', champsList)
 
 
-fs.mkdir('./export', (err) => { if (err) log.debug(err) })
+fs.mkdir('./export', (err) => { if (err) console.info(err) })
 
 
 const realmsUrl = "https://ddragon.leagueoflegends.com/realms/na.json";
@@ -206,7 +149,7 @@ request(realmsUrl, { json: true }, (err, res, body) => {
   const cdn = body.cdn;
   const version = body.v;
   const lang = body.l;
-  log.info("using ddragon version:", version);
+  console.log("using ddragon version:", version);
 
   const championFull = `${cdn}/${version}/data/${lang}/championFull.json`;
 
@@ -220,35 +163,27 @@ request(realmsUrl, { json: true }, (err, res, body) => {
     }
     console.log("The file ./public/api/version.json was saved!");
   });
-  log.info("Fetching (json): %s", championFull)
+  console.log("Fetching (json): %s", championFull)
   request(championFull, { json: true }, (err, res, body) => {
     if (err) { return console.log(err); }
-    log.info("File got %s", championFull)
+    console.log("File got %s", championFull)
 
     if (clarg == "list") {
-      log.info(`List of champion for lol patch ${version}: ` + Object.keys(body.data).join(' '))
+      console.log(`List of champion for lol patch ${version}: `, Object.keys(body.data).join(' '))
       return;
     }
     // let champtions = {};
     for (const keyid in body.data) {
       if (!all && !champsList.includes(keyid)) continue;
       const champ = body.data[keyid];
-      log.info('Taking: ' + keyid);
+      console.log('Taking: ', keyid);
 
-      fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (wikiaDataIn) => {
-        log.info("File got (wikia) " + champ.name);
+      fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`, (data) => {
+        console.log("File got (wikia) ", champ.name);
         let rootObj = default_export(champ);
 
-        let champObj = {}
-        const wikiDataSplit = wikiaDataIn.split(/[\n|]/);
-        for (const line of wikiDataSplit) {
-          const parts = line.split('=');
-          if (parts.length == 2) {
-            champObj[parts[0].trim()] = autoCast(parts[1]);
-          } else
-            log.debug('Skipping line: ' + line);
-        }
-        champObj["changes"] = make_changes(champObj["changes"] || "V0.0")
+        let champObj = wikiaSourceToObj(data);
+        champObj.changes = make_changes(champObj.changes || "V0.0")
         rootObj.wikia_champ = champObj
 
         rootObj.skills = {};
@@ -258,10 +193,36 @@ request(realmsUrl, { json: true }, (err, res, body) => {
             if (err) {
               return console.log(err);
             }
-            console.log("The file was saved!");
+            console.log(`The file './export/${keyid}.pass1.json' was saved!`);
           });
         });
       });
     }
   });
 })
+
+function wikiaSourceToObj(data) {
+  if(data.length < 3){
+    console.warn("Missing data. No data found");
+    return {};
+  }
+  let obj = new Object();
+  const dataSplit = data.trim().slice(2, data.length - 3).split("\n|");
+  let isFirstLine = true;
+  for (const line of dataSplit) {
+    if (isFirstLine) {
+      // line === "{{{{{1<noinclude>|Ability data</noinclude>}}}|Terrashape|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}"
+      const match = line.match(/noinclude>}}}\|([^|]*)\|/);
+      obj["name"] =  match[1];
+      console.log("Setting name from to",  match[1]);
+      isFirstLine = false;
+    } else {
+      const parts = line.split('=');
+      let key = parts[0].trim().replace(/ /g, '_');
+      let value = parts.slice(1).join('=').trim();
+      obj[key] = autoCast(value);
+      // console.log("key", key, ", value", value)
+    }
+  }
+  return obj;
+}
