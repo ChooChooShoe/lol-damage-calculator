@@ -219,40 +219,38 @@
         <hr class="column">
         <label for="target_hp" class="health">Health (HP)</label>
         <data-input dname="target_hp" v-model="total_hp"></data-input>
-        <span>
-          &#8226; {{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
-          {{ rnd(total_hp) }} Total HP
-        </span>
+        <ul>
+          <li>{{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
+          {{ rnd(total_hp) }} Total HP</li>
+        </ul>
         <hr class="column">
         <label for="target_armor" class="armor">Armor</label>
         <data-input dname="target_armor" v-model="total_armor"></data-input>
-        <span>&#8226; {{ rnd(base_armor) }} Base Armor + {{ rnd(bonus_armor) }} Bonus Armor = {{ rnd(total_armor) }} Total Armor</span>
-        <span>
-          &#8226; This will reduce
-          <span class="physical-damage">Physical Damage</span> taken by
-          <span class="ap">{{ rnd(percent_pysical_reduction * 10000 ) / 100 }}%</span>.
-        </span>
-        <span>
-          &#8226; This is equivalent to having
-          <span
-            class="health"
-          >{{ Math.ceil(eff_physical_hp) }} HP</span> vs.
-          <span class="physical-damage">Physical Damage</span>.
-        </span>
+        <ul>
+          <li>{{ rnd(base_armor) }} Base Armor + {{ rnd(bonus_armor) }} Bonus Armor = {{ rnd(total_armor) }} Total Armor</li>
+          <li>This will reduce
+            <span class="physical-damage">Physical Damage</span> taken by
+            <span class="ap">{{ rnd(percent_pysical_reduction * 10000 ) / 100 }}%</span>.
+          </li>
+          <li>This is equivalent to having
+            <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs.
+            <span class="physical-damage">Physical Damage</span>.
+          </li>
+        </ul>
         <hr class="column">
         <label for="target_mr" class="mr">Magic Resistance (MR)</label>
         <data-input dname="target_mr" v-model="total_mr"></data-input>
-        <span>&#8226; {{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</span>
-        <span>
-          &#8226; This will reduce
+        <ul>
+        <li>{{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</li>
+        <li>This will reduce
           <span class="magic-damage">Magic Damage</span> taken by
           <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
-        </span>
-        <span>
-          &#8226; This is equivalent to having
+        </li>
+        <li>This is equivalent to having
           <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
           <span class="magic-damage">Magic Damage</span>.
-        </span>
+        </li>
+        </ul>
         <hr class="column">
         <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
         <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
