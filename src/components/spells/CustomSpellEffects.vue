@@ -47,7 +47,7 @@
       <div class="column">
         This effect will deal {{Math.round(dmg_premitigation_for_one)}}
         <span
-          v-html="damagetype_user"
+          v-html="damage_type_user"
         ></span> before resistances
         <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
         <br />This damage will cause the target to
@@ -96,7 +96,7 @@
       </label>
       <div v-if="repeat != 1" class="column">
         In total, this effect deals {{Math.round(dmg_premitigation)}}
-        <span v-html="damagetype_user"></span> before resistances.
+        <span v-html="damage_type_user"></span> before resistances.
         <br />This damage will cause the target to
         <span
           class="spelleffect"
@@ -138,7 +138,7 @@ export default {
     spell_ratios: function() {
       return spell_ratios
     },
-    damagetype_user: function() {
+    damage_type_user: function() {
       switch (this.damage_type) {
         case "none":
           return '<span class="true">no damage</span>';

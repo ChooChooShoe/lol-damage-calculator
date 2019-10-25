@@ -194,7 +194,7 @@ export default {
       }
 
       for (const spellEff of this.spellComponents) {
-        switch (spellEff.damagetype) {
+        switch (spellEff.damage_type) {
           case "physical":
             output.preTotalDmg += spellEff.dmg_premitigation;
             output.prePhysicalDmg += spellEff.dmg_premitigation;

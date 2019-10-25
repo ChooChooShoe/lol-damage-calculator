@@ -58,14 +58,16 @@
         ></match-replace>
       </div>
       <div class="field column">
-        <label :for="id + '-damagetype'">Damage Type</label>
-        <select :id="id + '-damagetype'" v-model="damage_type" name="damage_type" class="input">
-          <option value="none" class="true">No Damage</option>
-          <option value="unknown" class="mixed">Unknown Damage</option>
-          <option value="physical" class="ad">Physical Damage</option>
-          <option value="magic" class="ap">Magic Damage</option>
-          <option value="true" class="true">True Damage</option>
-        </select>
+        <label>
+          Damage Type
+          <select v-model="damage_type" name="damage_type" class="input">
+            <option value="none" class="true">No Damage</option>
+            <option value="unknown" class="mixed">Unknown Damage</option>
+            <option value="physical" class="ad">Physical Damage</option>
+            <option value="magic" class="ap">Magic Damage</option>
+            <option value="true" class="true">True Damage</option>
+          </select>
+        </label>
 
         <spell-field
           v-for="(item, key) in ratios"
@@ -92,7 +94,7 @@
       <div class="column">
         This effect will deal {{Math.round(dmg_premitigation_for_one)}}
         <span
-          v-html="damagetype_user"
+          v-html="damage_type_user"
         ></span> before resistances
         <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
         <br />This damage will cause the target to
@@ -141,7 +143,7 @@
       </label>
       <div v-if="repeat != 1" class="column">
         In total, this effect deals {{Math.round(dmg_premitigation)}}
-        <span v-html="damagetype_user"></span> before resistances.
+        <span v-html="damage_type_user"></span> before resistances.
         <br />This damage will cause the target to
         <span
           class="spelleffect"
@@ -187,7 +189,7 @@ export default {
     edata: function() {
       return this.effect.subeffects[this.subIndex];
     },
-    damagetype_user: function() {
+    damage_type_user: function() {
       switch (this.damage_type) {
         case "none":
           return '<span class="true">no damage</span>';
