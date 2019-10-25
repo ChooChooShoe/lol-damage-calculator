@@ -108,7 +108,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Poppy''' smashes the ground in front of her, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies hit. Against {{tip|monsters}}, the damage based on the percentage of their '''maximum''' health is capped.",
+        "{{sbc|Active:}} '''Poppy''' smashes the ground in front of her, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies hit. Against {{tip|monsters}}, the damage based on their {{as|'''maximum''' health}} is capped at the base damage value.",
         "The impacted ground becomes unstable, {{tip|slow|slowing}} enemies standing on it before erupting after 1 second, dealing the same {{as|physical damage}} to all enemies hit."
       ],
       "notes": "* {{tip|Spell shield|Spell shields}} will block only a single instance of damage.",
@@ -118,8 +118,8 @@
       "cooldownBurn": "8/7/6/5/4",
       "effects": [
         {
-          "levelingtext": "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Capped Monster Percentage Damage|{{ap|40 to 120}}|Maximum Initial Monster Damage|{{ap|40*2 to 120*2}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|40*4 to 120*4}} {{as|(+ 180% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Initial Physical Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span> <span class=\"health\">(+ 16% of target's <b>maximum</b> health)</span></span></li></ul><br><ul><li><span class=\"blue\">Capped Monster Percentage Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Maximum Initial Monster Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Monster Damage</span>: <span><spell-span :list=\"['160','240','320','400','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Maximum Initial Monster Damage|{{ap|40*2 to 120*2}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|40*4 to 120*4}} {{as|(+ 180% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Physical Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span> <span class=\"health\">(+ 16% of target's <b>maximum</b> health)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Initial Monster Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Monster Damage</span>: <span><spell-span :list=\"['160','240','320','400','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -137,13 +137,6 @@
                 160,
                 200,
                 240
-              ],
-              [
-                40,
-                60,
-                80,
-                100,
-                120
               ],
               [
                 80,
@@ -181,8 +174,6 @@
               }
             ],
             "st_slices": [
-              "Capped Monster Percentage Damage",
-              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "Maximum Initial Monster Damage",
               "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
               "Maximum Monster Damage",
@@ -200,11 +191,11 @@
                   100,
                   120
                 ],
-                "player_bonus_ad": 0.9,
+                "player_bonus_ad": 1.8,
                 "target_total_hp": 0.08
               },
-              "title": "Capped Monster Percentage Damage",
-              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "title": "Maximum Initial Monster Damage",
+              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -217,24 +208,7 @@
                   200,
                   240
                 ],
-                "player_bonus_ad": 0.9,
-                "target_total_hp": 0.08
-              },
-              "title": "Maximum Initial Monster Damage",
-              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  40,
-                  60,
-                  80,
-                  100,
-                  120
-                ],
-                "player_bonus_ad": 0.9,
+                "player_bonus_ad": 1.8,
                 "target_total_hp": 0.08
               },
               "title": "Maximum Monster Damage",

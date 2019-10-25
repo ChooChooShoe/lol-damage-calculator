@@ -84,6 +84,12 @@
       "num": 11,
       "name": "Super Galaxy Annie",
       "chromas": false
+    },
+    {
+      "id": "1012",
+      "num": 12,
+      "name": "Annie-Versary",
+      "chromas": false
     }
   ],
   "lore": "Dangerous, yet disarmingly precocious, Annie is a child mage with immense pyromantic power. Even in the shadows of the mountains north of Noxus, she is a magical outlier. Her natural affinity for fire manifested early in life through unpredictable, emotional outbursts, though she eventually learned to control these “playful tricks.” Her favorite includes the summoning of her beloved teddy bear, Tibbers, as a fiery protector. Lost in the perpetual innocence of childhood, Annie wanders the dark forests, always looking for someone to play with.",
@@ -433,22 +439,24 @@
       "leveltip": {
         "label": [
           "Damage Reduction",
-          "Damage Reflection"
+          "Damage Reflection",
+          "Cooldown"
         ],
         "effect": [
           "{{ damagereduction }}% -> {{ damagereductionNL }}%",
-          "{{ damagereflection }} -> {{ damagereflectionNL }}"
+          "{{ damagereflection }} -> {{ damagereflectionNL }}",
+          "{{ cooldown }} -> {{ cooldownNL }}"
         ]
       },
       "maxrank": 5,
       "cooldown": [
-        15,
-        15,
-        15,
-        15,
-        15
+        14,
+        13,
+        12,
+        11,
+        10
       ],
-      "cooldownBurn": "15",
+      "cooldownBurn": "14/13/12/11/10",
       "cost": [
         20,
         20,
@@ -2422,7 +2430,7 @@
     "rangetype": "Ranged",
     "date": 2009,
     "patch": "Alpha Week 2",
-    "changes": "9.18.1",
+    "changes": "9.19.1",
     "role": "Burst",
     "damage": 3,
     "toughness": 1,
@@ -2511,11 +2519,11 @@
       "skill": "E",
       "icon": "Molten Shield.png",
       "blurb": "Grants Annie and Tibbers increased percentage Damage Resist and damages enemies who attack with basic attacks.",
-      "description": "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, gaining {{sti|movement speed|{{as|{{pp|25 to 50.5|key=%}} '''bonus''' movement speed|ms}}}} decaying over {{fd|1.5}} seconds, and reducing damage taken for 3 seconds.",
+      "description": "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, gaining {{sti|movement speed|{{as|{{pp|30 to 60|key=%}} '''bonus''' movement speed|ms}}}} decaying over {{fd|1.5}} seconds, and reducing damage taken for 3 seconds.",
       "leveling": "{{st|Damage reduction|{{ap|10 to 22}}%}}",
       "description2": "Enemies who deal [[basic attack]] damage on '''Annie''' or {{ui|Tibbers}} during this time are dealt {{as|magic damage}}.",
-      "leveling2": "{{st|Magic Damage|{{ap|20|30|40|50|60}} {{as|(+ 20% AP)}}}}",
-      "cooldown": 15,
+      "leveling2": "{{st|Magic Damage|{{ap|20 to 60}} {{as|(+ 20% AP)}}}}",
+      "cooldown": "{{ap|14 to 10}}",
       "cost": 20,
       "costtype": "mana",
       "targeting": "None",
@@ -2528,9 +2536,31 @@
       "skillkey": "E",
       "skillid": "e1"
     },
-    "r2": {
+    "r1": {
+      "name": "Summon: Tibbers",
+      "champion": "Annie",
+      "skill": "R",
+      "icon": "Summon Tibbers.png",
+      "blurb": "Annie wills her bear Tibbers to life, dealing damage to units in the area. Tibbers can attack and also burns enemies that stand near him.",
+      "description": "{{sbc|First Cast:}} '''Annie''' summons {{ui|Tibbers}} to the target location in a burst of flame, dealing {{as|magic damage}} to surrounding enemies.",
+      "leveling": "{{st|Initial Magic Damage|{{ap|150 to 400}} {{as|(+ 65% AP)}}}}",
+      "description2": "He then remains on the field as a controllable [[Champion summoned units|pet]] for up to 45 seconds.",
+      "icon3": "Command- Tibbers.png",
+      "description3": "{{sbc|Tibbers Active:}} '''Annie''' directs Tibbers to the target location.",
+      "target_range": "{{tt|600|Cast range}} / {{tt|Global|Tibbers control range}}",
+      "effect_radius": 290,
+      "cooldown": "{{ap|120|100|80}}",
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "damagetype": "Magic",
+      "spelleffects": "Aoe",
+      "onhiteffects": "",
+      "affects": "Enemies / Tibbers",
+      "spellshield": true,
+      "notes": "* No additional notes.",
       "skillkey": "R",
-      "skillid": "r2"
+      "skillid": "r1"
     }
   }
 }

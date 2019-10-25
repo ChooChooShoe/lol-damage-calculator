@@ -1,6 +1,6 @@
 {
   "patch": "V9.10",
-  "changes": "9.16.1",
+  "changes": "9.20.1",
   "id": "Yuumi",
   "key": "350",
   "name": "Yuumi",
@@ -111,7 +111,7 @@
       },
       "description": [
         "{{sbc|Active:}} '''Yuumi''' fires an errant missile that deals {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
-        "If the missile is in flight for 1 second, it deals increased {{as|magic damage}}, and {{tip|slow|slows}} enemy {{tip|champions}} struck, decaying over {{fd|1.5}} seconds.",
+        "If the missile is in flight for 1 second, it deals increased {{as|magic damage}}, and {{tip|slow|slows}} enemy {{tip|champions}} struck by 20% for 1 second.",
         "While {{ai|You and Me!|Yuumi|Attached}}, '''Yuumi''' directs the trajectory of the missile instead for up to 3 seconds before fizzling, during which she and the ''Anchor'' can see the effective range."
       ],
       "notes": "* ''Prowling Projectile'' does not interrupt '''Yuumi's''' previous orders.",
@@ -167,8 +167,8 @@
           ]
         },
         {
-          "levelingtext": "{{st|Empowered Damage|{{ap|50 to 225 6}} {{as|(+ 65% AP)}}}}\n{{st|Slow|{{ap|20 to 80 6}}%}}",
-          "str": "<ul><li><span class=\"blue\">Empowered Damage</span>: <span><spell-span :list=\"['50','85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Empowered Damage|{{ap|50 to 225 6}} {{as|(+ 65% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Damage</span>: <span><spell-span :list=\"['50','85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -180,14 +180,6 @@
                 155,
                 190,
                 225
-              ],
-              [
-                20,
-                32,
-                44,
-                56,
-                68,
-                80
               ]
             ],
             "as_ratios": [
@@ -196,15 +188,15 @@
               }
             ],
             "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "Empowered Damage",
+              "<spell-span :list=\"['50','85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   50,
                   85,
                   120,
@@ -214,9 +206,9 @@
                 ],
                 "player_total_ap": 0.65
               },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['20','32','44','56','68','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
+              "title": "Empowered Damage",
+              "str": "<spell-span :list=\"['50','85','120','155','190','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -252,19 +244,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain flat {{tip|Adaptive force|adaptive force}} plus an amount equal to a percentage of the other's {{as|attack damage}} or {{as|ability power}}, whichever is higher. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
+        "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain flat {{tip|Adaptive force|adaptive force}} plus an amount equal to a percentage of the other's {{as|'''bonus''' attack damage}} or {{as|ability power}}, whichever is higher. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
         "{{sbc|Active:}} '''Yuumi''' {{tip|dash|dashes}} to an allied champion and attaches to them. While '''Attached''', '''Yuumi''' is {{tip|disarm|disarmed}}, {{tip|untargetable}} (except from {{tip|turrets}} and in-flight projectiles targeting her) and follows her ''Anchor's'' movement, and retains the ability to cast (''except movement spells'').",
         "{{sbc|Active - Change of Plan:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies. If re-activated without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash up to 250 units in the target direction, triggering the cooldown. The cooldown starts ticking down when ''attaching'' to the first ally."
       ],
-      "notes": "* The cooldown begins upon the first cast.\n* Her monster aggression transfers to the ''Anchor''.\n* The dash is interrupted by any immobilizing crowd control.\n* '''Yuumi''' can dash to zombie state targets (i.e {{cai|Glory in Death|Sion}}), but she cannot stay attached.\n* Enemies gain an assist on '''Yuumi''' if they damage an attached ally.\n* ''You and Me!'' will follow an ally under stealth, or any type of {{tip|blink}} or {{tip|dash}}, regardless of range.\n** If her ''Anchor'' recalls, '''Yuumi''' will detach automatically when they arrive at the fountain.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side, and if '''Yuumi''' is on the red team, she will attach to the northeast.\n* ''You and Me!'' gives assists on champion takedowns from her teammates when she first attaches to a participating ally.\n* To clarify the conversion (not considering the flat amount):\n<table class=\"article-table\">\n <tr>\n  <td colspan=\"2\" rowspan=\"2\">&nbsp;</td>\n  <th colspan=\"2\" style=\"text-align:center\">Their Highest</th>\n </tr>\n <tr>\n  <th style=\"color:{{keyword color|AP}}; text-align:center\"> AP </th>\n  <th style=\"color:{{keyword color|AD}}; text-align:center\"> tAD </th>\n </tr>\n <tr>\n  <th rowspan=\"2\"> Your Highest<ref>This is the stat you will receive a bonus to.</ref> </th>\n  <th style=\"color:{{keyword color|AP}}\"> AP </th>\n  <td> {{as|{{ap|4 to 16}}% their AP}} </td>\n  <td> {{as|{{ap|4 to 16}}% their tAD}} </td>\n </tr>\n <tr>\n  <th style=\"color:{{keyword color|AD}}\"> bAD </th>\n  <td> {{as|{{ap|4*0.6 to 16*0.6}}% their AP}}  </td>\n  <td> {{as|{{ap|4*0.6 to 16*0.6}}% their tAD}}  </td>\n </tr>\n</table>\n<references/>",
+      "notes": "* The cooldown begins upon the first cast.\n* Her monster aggression transfers to the ''Anchor''.\n* The dash is interrupted by any immobilizing crowd control.\n* '''Yuumi''' can dash to zombie state targets (i.e {{cai|Glory in Death|Sion}}), but she cannot stay attached.\n* Enemies gain an assist on '''Yuumi''' if they damage an attached ally.\n* ''You and Me!'' will follow an ally under stealth, or any type of {{tip|blink}} or {{tip|dash}}, regardless of range.\n** If her ''Anchor'' recalls, '''Yuumi''' will detach automatically when they arrive at the fountain.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side, and if '''Yuumi''' is on the red team, she will attach to the northeast.\n* ''You and Me!'' gives assists on champion takedowns from her teammates when she first attaches to a participating ally.\n* To clarify the conversion (not considering the flat amount):\n<table class=\"article-table\">\n <tr>\n  <td colspan=\"2\" rowspan=\"2\">&nbsp;</td>\n  <th colspan=\"2\" style=\"text-align:center\">Their Highest</th>\n </tr>\n <tr>\n  <th style=\"color:{{keyword color|AP}}; text-align:center\"> AP </th>\n  <th style=\"color:{{keyword color|AD}}; text-align:center\"> '''bonus''' AD </th>\n </tr>\n <tr>\n  <th rowspan=\"2\"> Your Highest<ref>This is the stat you will receive a bonus to.</ref> </th>\n  <th style=\"color:{{keyword color|AP}}\"> AP </th>\n  <td> {{as|{{ap|4 to 16}}% their AP}} </td>\n  <td> {{as|{{ap|4*0.6 to 16*0.6}}% their '''bonus''' AD}} </td>\n </tr>\n <tr>\n  <th style=\"color:{{keyword color|AD}}\"> bonus AD </th>\n  <td> {{as|{{ap|4*0.6 to 16*0.6}}% their AP}}  </td>\n  <td> {{as|{{ap|4*0.6*0.6 to 16*0.6*0.6}}% their '''bonus''' AD}}  </td>\n </tr>\n</table>\n<references/>",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
       "cooldownBurn": "0",
       "effects": [
         {
-          "levelingtext": "{{st|Adaptive Force|{{ap|5 to 13}} (+ {{ap|4 to 16}}%)}}",
-          "str": "<ul><li><span class=\"blue\">Adaptive Force</span>: <span><spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)</span></li></ul>",
+          "levelingtext": "{{st|Flat Adaptive Force|{{ap|5 to 13}}}}\n{{st|Attack Damage Adaptive Force|{{as|{{ap|4*0.6 to 16*0.6}}% '''bonus''' AD}}}}\n{{st|Ability Power Adaptive Force|{{as|{{ap|4 to 16}}% AP}}}}",
+          "str": "<ul><li><span class=\"blue\">Flat Adaptive Force</span>: <span><spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Attack Damage Adaptive Force</span>: <span><span class=\"ad\"><spell-span :list=\"['2.4','4.2','6','7.8','9.6']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD</span></span></li></ul><br><ul><li><span class=\"blue\">Ability Power Adaptive Force</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -277,16 +269,28 @@
                 13
               ],
               [
-                4,
-                7,
-                10,
-                13,
-                16
-              ]
+                2.4,
+                4.2,
+                6,
+                7.8,
+                9.6
+              ],
+              null
             ],
             "st_slices": [
-              "Adaptive Force",
-              "<spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)"
+              "Ability Power Adaptive Force",
+              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.04,
+                  0.07,
+                  0.1,
+                  0.13,
+                  0.16
+                ]
+              }
             ]
           },
           "subeffects": [
@@ -299,10 +303,17 @@
                   9,
                   11,
                   13
+                ],
+                "player_bonus_ad": [
+                  0.04,
+                  0.07,
+                  0.1,
+                  0.13,
+                  0.16
                 ]
               },
-              "title": "Adaptive Force",
-              "str": "<spell-span :list=\"['5','7','9','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%)",
+              "title": "Ability Power Adaptive Force",
+              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['4','7','10','13','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
               "damage_type": "none"
             }
           ]

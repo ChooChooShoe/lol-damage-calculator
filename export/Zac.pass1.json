@@ -530,13 +530,15 @@
       "id": "ZacR",
       "name": "Let's Bounce!",
       "description": "Zac bounces four times, knocking up enemies hit and slowing them.",
-      "tooltip": "Zac bounces {{ bounces }} times, knocking back enemies for {{ knockupduration }} second and dealing {{ damageperbounce }} magic damage. Enemies hit with multiple bounces take {{ damagereductionbounce*100 }}% less damage and are not knocked up. <br /><br />Enemies hit by Let's Bounce! are slowed by {{ slowamount*100 }}% for {{ slowduration }} second.<br /><br />Zac gains movement speed over the duration and can cast <spellActive>Unstable Matter</spellActive> while bouncing.",
+      "tooltip": "<spellPassive>Passive:</spellPassive> Healing from Cell Division <span class=\"color3ca126\">Goo</span> chunks increased to {{ f8 }}% of your maximum health.<br /><br /><spellPassive>Active:</spellPassive> Zac bounces {{ bounces }} times, knocking back enemies for {{ knockupduration }} second and dealing {{ damageperbounce }} magic damage. Enemies hit with multiple bounces take {{ damagereductionbounce*100 }}% less damage and are not knocked up. <br /><br />Enemies hit by Let's Bounce! are slowed by {{ slowamount*100 }}% for {{ slowduration }} second.<br /><br />Zac gains movement speed over the duration and can cast <spellActive>Unstable Matter</spellActive> while bouncing.",
       "leveltip": {
         "label": [
-          "Base Bounce Damage"
+          "Base Bounce Damage",
+          "Additional Chunk Healing"
         ],
         "effect": [
-          "{{ basedamagebounce }} -> {{ basedamagebounceNL }}"
+          "{{ basedamagebounce }} -> {{ basedamagebounceNL }}",
+          "{{ additionalchunkhealing }}% -> {{ additionalchunkhealingNL }}%"
         ]
       },
       "maxrank": 3,
@@ -2915,7 +2917,7 @@
     "rangetype": "Melee",
     "date": 2013,
     "patch": "V3.5",
-    "changes": "9.17.1",
+    "changes": "9.19.1",
     "resource": "Health",
     "role": "Vanguard",
     "damage": 2,
@@ -2942,7 +2944,7 @@
       "icon": "Cell Division.png",
       "blurb": "Each time Zac hits an enemy with an ability, he sheds a chunk of himself that can be reabsorbed to restore Health. Upon taking fatal damage, Zac splits into 4 bloblets that attempt to recombine. If any bloblets remain, he will revive with an amount of Health depending on the Health of the surviving bloblets. Each bloblet has a percentage of Zac's maximum Health, Armor and Magic Resistance. This ability has a 5 minute cooldown.",
       "description": "{{sbc|Innate - Goo:}} Every time '''Zac''' damages at least one enemy with an [[Champion ability|ability]], he sheds, depending on the ability, {{tt|a number of chunks|• Depending on the ability the amount of produced chunks can vary:&#013;\n&nbsp;• Stretching Strikes: Maximum of 2 chunks, 1 chunk for each strike hit on a different target. The collision does not produce additional chunks.&#013;\n&nbsp;• Unstable Matter: Maximum of 1 chunk, no matter how many enemies hit.&#013;\n&nbsp;• Elastic Slingshot: Maximum of 5 chunks, 1 chunk for each enemy champion hit.&#013;\n&nbsp;• Let's Bounce!: Maximum of 4 chunks, 1 chunk for each bounce that hits one or more enemy champion.}} of himself to a nearby location, landing towards visible nearby enemy champions and lasting for 6 seconds.",
-      "description2": "Both '''Zac''' and his enemies can interact with these chunks by being within 50 units of them: '''Zac''' can move over them to consume them, restoring {{sti|health|{{as|4% '''maximum''' health}}}}; enemies can move over them to prematurely destroy them.",
+      "description2": "Both '''Zac''' and his enemies can interact with these chunks by being within 50 units of them: '''Zac''' can move over them to consume them, restoring {{sti|health|{{as|{{pp|type=[[File:Let's Bounce!.png|20px|border]] Let's Bounce!'s rank|4|key=%|4 to 7|0 to 3}} of his '''maximum''' health}}}}; enemies can move over them to destroy them.",
       "icon3": "Cell Division 2.png",
       "description3": "Upon taking [[Death|fatal damage]], '''Zac''' splits into 4 uncontrollable bloblets that move to his final location over {{pp|5|8 to 4|1;6;10;13;17}} seconds. If any of these bloblets remain at the end of the duration, '''Zac''' {{tip|resurrection|recombines}} and returns at {{sti|health|{{as|{{tt|10 - 50%|Based on his bloblets' total remaining health. Reaches the maximum amount at full health on all bloblets}} '''maximum''' health}}}}.",
       "description4": "'''Zac's''' size scales with {{sti|health|{{as|his '''current''' health}}}}, getting larger when it exceeds {{sti|health|{{as|his '''base''' health}}}} and getting smaller the higher {{sti|health|{{as|his '''missing''' health}}}}.",
@@ -2969,6 +2971,7 @@
       "description2": "While his arm is attached, his next [[basic attack]] has {{sti|range|200 range}} and is replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}.",
       "description3": "If both ''Stretching Strikes'' affect two different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them against each other, dealing the initial {{as|magic damage}} around the point of collision and applying the {{tip|slow}} again.",
       "target_range": 800,
+      "effect_radius": 200,
       "cost": "{{as|8%|health}}",
       "costtype": "{{as|Current Health|health}}",
       "cooldown": "{{ap|15 to 9}}",
@@ -3039,10 +3042,12 @@
       "skill": "R",
       "icon": "Let's Bounce!.png",
       "blurb": "",
-      "description": "{{sbc|Active:}} After a small delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{pp|7|type=duration|key=%|20 to 50|0 to 3}} '''bonus''' movement speed as he does so but becoming unable to use basic attacks, {{ai|Stretching Strikes|Zac}}, or {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
-      "description2": "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
-      "leveling2": "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}",
-      "description3": "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them.",
+      "description": "{{sbc|Passive:}} Increases {{ais|Cell Division|Zac}} healing from chunks.",
+      "leveling": "{{st|Chunk Healing|{{as|{{ap|5 to 7}}% of his '''maximum''' health}}}}",
+      "description2": "{{sbc|Active:}} After a small delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{pp|7|type=duration|key=%|20 to 50|0 to 3}} '''bonus''' movement speed as he does so but becoming unable to use basic attacks, {{ai|Stretching Strikes|Zac}}, or {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
+      "description3": "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
+      "leveling3": "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}",
+      "description4": "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them.",
       "effect_radius": "{{tt|300|Damage radius}} / {{tt|250|Displacement distance from where target is hit}}",
       "cooldown": "{{ap|130 to 100}}",
       "targeting": "Ground",

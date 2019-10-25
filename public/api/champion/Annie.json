@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.18.1",
+  "changes": "9.19.1",
   "id": "Annie",
   "key": "1",
   "name": "Annie",
@@ -252,11 +252,11 @@
       "name": "Molten Shield",
       "maxrank": 5,
       "cooldown": [
-        15,
-        15,
-        15,
-        15,
-        15
+        14,
+        13,
+        12,
+        11,
+        10
       ],
       "cost": [
         20,
@@ -277,14 +277,14 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, gaining {{sti|movement speed|{{as|{{pp|25 to 50.5|key=%}} '''bonus''' movement speed|ms}}}} decaying over {{fd|1.5}} seconds, and reducing damage taken for 3 seconds.",
+        "{{sbc|Active:}} '''Annie''' wraps herself and {{ui|Tibbers}} in a fiery aura, gaining {{sti|movement speed|{{as|{{pp|30 to 60|key=%}} '''bonus''' movement speed|ms}}}} decaying over {{fd|1.5}} seconds, and reducing damage taken for 3 seconds.",
         "Enemies who deal [[basic attack]] damage on '''Annie''' or {{ui|Tibbers}} during this time are dealt {{as|magic damage}}."
       ],
       "notes": "* ''Molten Shield'' does not deal damage against towers and their attacks.\n* Attacks that {{tip|blind|miss}} against '''Annie''' or {{ui|Tibbers}} will {{sbc|not}} cause the shield to deal damage.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "20",
-      "cooldownBurn": "15",
+      "cooldownBurn": "14/13/12/11/10",
       "effects": [
         {
           "levelingtext": "{{st|Damage reduction|{{ap|10 to 22}}%}}",
@@ -325,7 +325,7 @@
           ]
         },
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|20|30|40|50|60}} {{as|(+ 20% AP)}}}}",
+          "levelingtext": "{{st|Magic Damage|{{ap|20 to 60}} {{as|(+ 20% AP)}}}}",
           "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
@@ -370,20 +370,23 @@
         }
       ]
     },
-    "r2": {
+    "r1": {
       "riotId": "AnnieR",
       "name": "Summon: Tibbers",
       "maxrank": 3,
       "cooldown": [
-        0,
-        0,
-        0
+        120,
+        100,
+        80
       ],
       "cost": [
-        0,
-        0,
-        0
+        100,
+        100,
+        100
       ],
+      "costtype": "Mana",
+      "targeting": "Ground",
+      "target_range": "{{tt|600|Cast range}} / {{tt|Global|Tibbers control range}}",
       "image": {
         "full": "AnnieR.png",
         "sprite": "spell1.png",
@@ -393,13 +396,62 @@
         "w": 48,
         "h": 48
       },
-      "description": [],
-      "notes": "",
+      "description": [
+        "{{sbc|First Cast:}} '''Annie''' summons {{ui|Tibbers}} to the target location in a burst of flame, dealing {{as|magic damage}} to surrounding enemies.",
+        "He then remains on the field as a controllable [[Champion summoned units|pet]] for up to 45 seconds.",
+        "{{sbc|Tibbers Active:}} '''Annie''' directs Tibbers to the target location."
+      ],
+      "notes": "* No additional notes.",
       "skillkey": "R",
-      "skillid": "r2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": []
+      "skillid": "r1",
+      "costBurn": "100",
+      "cooldownBurn": "120/100/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Initial Magic Damage|{{ap|150 to 400}} {{as|(+ 65% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Initial Magic Damage</span>: <span><spell-span :list=\"['150','212.5','275','337.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                150,
+                212.5,
+                275,
+                337.5,
+                400
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              "Initial Magic Damage",
+              "<spell-span :list=\"['150','212.5','275','337.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  150,
+                  212.5,
+                  275,
+                  337.5,
+                  400
+                ],
+                "player_total_ap": 0.65
+              },
+              "title": "Initial Magic Damage",
+              "str": "<spell-span :list=\"['150','212.5','275','337.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
     }
   },
   "skillcount": 5

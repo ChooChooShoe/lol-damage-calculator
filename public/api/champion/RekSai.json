@@ -1,6 +1,6 @@
 {
   "patch": "V4.21",
-  "changes": "9.17.1",
+  "changes": "9.19.1",
   "id": "RekSai",
   "key": "421",
   "name": "Rek'Sai",
@@ -36,7 +36,7 @@
     "mp": 100,
     "mpperlevel": 0,
     "movespeed": 335,
-    "armor": 33,
+    "armor": 36,
     "armorperlevel": 3.75,
     "spellblock": 32.1,
     "spellblockperlevel": 1.25,
@@ -105,10 +105,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai's''' next three basic attacks within 5 seconds deal {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to her target and all surrounding enemies. The damage to the primary target can {{tip|critical strike|critically strike}} for {{as|{{critical damage|100}} '''bonus''' physical damage}}.",
+        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai's''' next three basic attacks within 5 seconds deal {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to her target and all surrounding enemies. The damage to the primary target is affected by {{tip|critical strike}} modifiers.",
         "''Queen's Wrath'' resets '''Rek'Sai's''' basic attack timer."
       ],
-      "notes": "* ''Queen's Wrath'' ends and goes on cooldown if '''Rek'Sai''' is {{ai|Burrow|Rek'Sai|burrowed}} for more than 1 second.\n* {{Pending for test}}: ''Queen's Wrath'' has a fixed attack animation forbidding ''Rek'Sai'' from attacking faster if she has over {{as|{{tt|{{fd|2.0}} attack speed|Estimated}}}}.\n* ''Queen's Wrath's'' enhanced attacks apply other [[on-hit effect]]s, on-attack effects, and [[life steal]] but do not affect structures. The damage to additional targets is not affected by these.\n* ''Queen's Wrath'' can be mitigated ({{tip|splash damage}} still applies) if {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, and/or if ''Rek'Sai'' is {{tip|blind|blinded}}.\n* The splash damage does not apply {{ii|Hunter's Talisman}}.",
+      "notes": "* ''Queen's Wrath's'' bonus damage applies against turrets.\n* ''Queen's Wrath'' ends and goes on cooldown if '''Rek'Sai''' is {{ai|Burrow|Rek'Sai|burrowed}} for more than 1 second.\n* {{Pending for test}}: ''Queen's Wrath'' has a fixed attack animation forbidding ''Rek'Sai'' from attacking faster if she has over {{as|{{tt|{{fd|2.0}} attack speed|Estimated}}}}.\n* ''Queen's Wrath's'' enhanced attacks apply other [[on-hit effect]]s, on-attack effects, and [[life steal]] but do not affect structures. The damage to additional targets is not affected by these.\n* ''Queen's Wrath'' can be mitigated ({{tip|splash damage}} still applies) if {{ai|Aegis Protection|Pantheon|blocked}}, {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, and/or if ''Rek'Sai'' is {{tip|blind|blinded}}.\n* The splash damage does not apply {{ii|Hunter's Talisman}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -276,6 +276,41 @@
         }
       ]
     },
+    "w1": {
+      "riotId": "RekSaiW",
+      "name": "Burrow",
+      "maxrank": 5,
+      "cooldown": [
+        4
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
+      "image": {
+        "full": "RekSaiW.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' burrows into the ground, {{tip|disarm|self-disarming}} and reducing her sight radius to 250, but gaining {{pp|4|15 to 30|1 to 16|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, becoming {{tip|ghosted}}, accessing an alternate set of basic [[Champion ability|abilities]], and activating ''Tremor Sense''.",
+        "{{sbc|Tremor Sense:}} '''Rek'Sai''' gains {{tip|obscured vision}} of nearby enemy and neutral units in fog of war every {{fd|1.5}} seconds if they are moving."
+      ],
+      "notes": "* '''Rek'Sai''' Immediately burrows on respawn once she has at least one point in ''Burrow''.\n* ''Burrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.\n* Enemies detected by ''Tremor Sense'' are displayed as rings on the ground (champions display much larger ones and play a sound effect for ''Rek'Sai'').\n** Enemies standing still while ''Rek'Sai'' is nearby are insensible to ''Tremor Sense''.\n* ''Burrow'' briefly {{tip|slow|slows}} displaced enemies.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "costBurn": "0",
+      "cooldownBurn": "4",
+      "effects": []
+    },
     "w2": {
       "riotId": "RekSaiW",
       "name": "Unburrow",
@@ -355,41 +390,6 @@
           ]
         }
       ]
-    },
-    "w1": {
-      "riotId": "RekSaiW",
-      "name": "Burrow",
-      "maxrank": 5,
-      "cooldown": [
-        4
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "None",
-      "image": {
-        "full": "RekSaiW.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|{{ai|Unburrow|Rek'Sai|Unburrowed}} - Active:}} '''Rek'Sai''' burrows into the ground, {{tip|disarm|self-disarming}} and reducing her sight radius to 250, but gaining {{pp|4|15 to 30|1 to 16|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, becoming {{tip|ghosted}}, accessing an alternate set of basic [[Champion ability|abilities]], and activating ''Tremor Sense''.",
-        "{{sbc|Tremor Sense:}} '''Rek'Sai''' gains {{tip|obscured vision}} of nearby enemy and neutral units in fog of war every {{fd|1.5}} seconds if they are moving."
-      ],
-      "notes": "* '''Rek'Sai''' Immediately burrows on respawn once she has at least one point in ''Burrow''.\n* ''Burrow'' has no cast time and does not interrupt '''Rek'Sai's''' previous orders.\n* Enemies detected by ''Tremor Sense'' are displayed as rings on the ground (champions display much larger ones and play a sound effect for ''Rek'Sai'').\n** Enemies standing still while ''Rek'Sai'' is nearby are insensible to ''Tremor Sense''.\n* ''Burrow'' briefly {{tip|slow|slows}} displaced enemies.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "4",
-      "effects": []
     },
     "e1": {
       "riotId": "RekSaiE",

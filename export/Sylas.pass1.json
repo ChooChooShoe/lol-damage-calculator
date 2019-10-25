@@ -75,7 +75,7 @@
       "id": "SylasQ",
       "name": "Chain Lash",
       "description": "Sylas lashes his chains out, intersecting at his targeted location dealing damage to and slowing enemies. <br><br>After a delay, magical energy explodes from the intersection point dealing damage and increasing the slow.",
-      "tooltip": "Sylas lashes his chains out in an X-shaped area, intersecting at his targeted location dealing <scaleAP>{{ damage }}</scaleAP> magic damage to and slowing enemies by {{ slowamountcalc }} for 2 seconds. <br /><br />After .5 seconds, magical energy explodes from the intersection point dealing <scaleAP>{{ explosiondamage }}</scaleAP> and increasing the slow by 50%.<br /><br /><rules>The explosion deals {{ minionmodcalc }} damage to minions and monsters.</rules>",
+      "tooltip": "Sylas lashes his chains out in an X-shaped area, intersecting at his targeted location dealing <scaleAP>{{ damage }}</scaleAP> magic damage to and slowing enemies by {{ slowamountcalc }} for 2 seconds. <br /><br />After {{ detonationdelay }} seconds, magical energy explodes from the intersection point dealing <scaleAP>{{ explosiondamage }}</scaleAP> and increasing the slow by 50%.<br /><br /><rules>The explosion deals {{ minionmonstermod*100 }}% damage to minions and monsters.</rules>",
       "leveltip": {
         "label": [
           "Damage",
@@ -362,8 +362,8 @@
     {
       "id": "SylasE",
       "name": "Abscond / Abduct",
-      "description": "Sylas dashes to a location. Sylas can recast the ability to throw his chains out, pulling himself to an enemy he hits. If he hits an enemy champion or monster, he gains a shield against magic damage.",
-      "tooltip": "Sylas dashes to a location, gaining a magic damage absorbing shield for <scaleAP>{{ shieldvalue }}</scaleAP> for {{ shieldduration }} seconds.<br /><br /><span class=\"colorFF5733\">Recast:</span> Sylas throws out his chain in a direction, pulling himself to the first enemy hit dealing <scaleAP>{{ damage }}</scaleAP> magic damage and knocking them up for .35 seconds.",
+      "description": "Sylas dashes to a location, gaining a magic damage shield. Sylas can recast the ability to throw his chains out, pulling himself to an enemy he hits.",
+      "tooltip": "Sylas dashes to a location, gaining a magic damage absorbing shield for <scaleAP>{{ shieldvalue }}</scaleAP> for {{ shieldduration }} seconds.<br /><br /><span class=\"colorFF5733\">Recast:</span> Sylas throws out his chain in a direction, pulling himself to the first enemy hit dealing <scaleAP>{{ damage }}</scaleAP> magic damage and knocking them up for {{ knockupduration }} seconds.",
       "leveltip": {
         "label": [
           "Damage",
@@ -616,7 +616,7 @@
   ],
   "riot_passive": {
     "name": "Petricite Burst",
-    "description": "After casting a spell, Sylas's next basic attack whirls his energized chains around him dealing bonus magic damage to enemies hit.",
+    "description": "After casting a spell, Sylas stores a charge of Petricite Burst.  Sylas's basic attacks will expend a charge and whirl his energized chains around him dealing bonus magic damage to enemies hit.",
     "image": {
       "full": "SylasP.png",
       "sprite": "passive3.png",
@@ -742,6 +742,7 @@
       "customTag": "",
       "sortrank": 0,
       "extensionPage": false,
+      "useObviousCheckmark": false,
       "customPanel": null,
       "blocks": [
         {
@@ -752,6 +753,13 @@
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
           "hideIfSummonerSpell": "",
+          "appendAfterSection": "",
+          "visibleWithAllOf": [
+            ""
+          ],
+          "hiddenWithAnyOf": [
+            ""
+          ],
           "items": [
             {
               "id": "3112",
@@ -778,9 +786,16 @@
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
           "hideIfSummonerSpell": "",
+          "appendAfterSection": "",
+          "visibleWithAllOf": [
+            ""
+          ],
+          "hiddenWithAnyOf": [
+            ""
+          ],
           "items": [
             {
-              "id": "3165",
+              "id": "3152",
               "count": 1,
               "hideCount": false
             },
@@ -804,7 +819,19 @@
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
           "hideIfSummonerSpell": "",
+          "appendAfterSection": "",
+          "visibleWithAllOf": [
+            ""
+          ],
+          "hiddenWithAnyOf": [
+            ""
+          ],
           "items": [
+            {
+              "id": "3165",
+              "count": 1,
+              "hideCount": false
+            },
             {
               "id": "3089",
               "count": 1,
@@ -812,11 +839,6 @@
             },
             {
               "id": "3135",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3151",
               "count": 1,
               "hideCount": false
             }
@@ -830,19 +852,26 @@
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
           "hideIfSummonerSpell": "",
+          "appendAfterSection": "",
+          "visibleWithAllOf": [
+            ""
+          ],
+          "hiddenWithAnyOf": [
+            ""
+          ],
           "items": [
-            {
-              "id": "3116",
-              "count": 1,
-              "hideCount": false
-            },
             {
               "id": "3157",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3001",
+              "id": "3151",
+              "count": 1,
+              "hideCount": false
+            },
+            {
+              "id": "3065",
               "count": 1,
               "hideCount": false
             }
@@ -856,6 +885,13 @@
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
           "hideIfSummonerSpell": "",
+          "appendAfterSection": "",
+          "visibleWithAllOf": [
+            ""
+          ],
+          "hiddenWithAnyOf": [
+            ""
+          ],
           "items": [
             {
               "id": "2003",
@@ -1732,13 +1768,8 @@
           ],
           "items": [
             {
-              "id": "1056",
+              "id": "2033",
               "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "2003",
-              "count": 2,
               "hideCount": false
             },
             {
@@ -1844,11 +1875,6 @@
               "id": "3108",
               "count": 1,
               "hideCount": false
-            },
-            {
-              "id": "2032",
-              "count": 1,
-              "hideCount": false
             }
           ]
         },
@@ -1879,7 +1905,7 @@
               "hideCount": false
             },
             {
-              "id": "3100",
+              "id": "3152",
               "count": 1,
               "hideCount": false
             }
@@ -1912,7 +1938,7 @@
               "hideCount": false
             },
             {
-              "id": "3100",
+              "id": "3152",
               "count": 1,
               "hideCount": false
             }
@@ -1925,39 +1951,6 @@
           "minSummonerLevel": -1,
           "maxSummonerLevel": -1,
           "showIfSummonerSpell": "",
-          "hideIfSummonerSpell": "SummonerSiegeChampSelect1",
-          "appendAfterSection": "",
-          "visibleWithAllOf": [
-            ""
-          ],
-          "hiddenWithAnyOf": [
-            ""
-          ],
-          "items": [
-            {
-              "id": "3089",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3102",
-              "count": 1,
-              "hideCount": false
-            },
-            {
-              "id": "3135",
-              "count": 1,
-              "hideCount": false
-            }
-          ]
-        },
-        {
-          "type": "offensive",
-          "recMath": false,
-          "recSteps": false,
-          "minSummonerLevel": -1,
-          "maxSummonerLevel": -1,
-          "showIfSummonerSpell": "SummonerSmite",
           "hideIfSummonerSpell": "",
           "appendAfterSection": "",
           "visibleWithAllOf": [
@@ -1968,17 +1961,17 @@
           ],
           "items": [
             {
-              "id": "3089",
+              "id": "3157",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3135",
+              "id": "3100",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3907",
+              "id": "3165",
               "count": 1,
               "hideCount": false
             }
@@ -2001,17 +1994,17 @@
           ],
           "items": [
             {
-              "id": "3157",
+              "id": "3089",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3152",
+              "id": "3135",
               "count": 1,
               "hideCount": false
             },
             {
-              "id": "3165",
+              "id": "3065",
               "count": 1,
               "hideCount": false
             }
@@ -2202,7 +2195,7 @@
     "rangetype": "Melee",
     "date": 2019,
     "patch": "V9.2",
-    "changes": "9.17.1",
+    "changes": "9.21.1",
     "role": "Burst, Skirmisher",
     "damage": 2,
     "toughness": 2,
@@ -2228,7 +2221,8 @@
       "icon": "Petricite Burst.png",
       "blurb": "",
       "description": "{{sbc|Innate:}} Casting an ability grants a stack of ''Petricite Burst'' for 4 seconds, up to 2 stacks.",
-      "description2": "{{sbc|Petricite Burst:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, dealing {{pp|9 to 60|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies, reduced to 50% against minions who aren't the primary targets.",
+      "description2": "{{sbc|Petricite Burst:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, dealing {{as|110% AD}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to his primary target, and {{as|40% AD}} {{as|(+ 20% AP)}} {{as|magic damage}} to nearby secondary targets.",
+      "description3": "''The empowered attack applies [[on-hit effect]]s to the primary target but disables '''Sylas' '''{{tip|critical strike|critical strikes'}} '''bonus''' damage.''",
       "targeting": "Passive",
       "affects": "Self",
       "damagetype": "Magic",
@@ -2240,7 +2234,7 @@
       "grounded": "",
       "knockdown": "",
       "parry": false,
-      "notes": "* ''Petricite Burst'' cannot {{tip|critical strike|critically strike}}.\n* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.",
+      "notes": "* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.\n* Hitting a target multiple times with ''Petricite Burst'' will not add additional stacks of {{ri|Electrocute}} or {{ri|Phase Rush}}.\n* ''Petricite Burst'' does not add stacks of {{ri|Press the Attack}} to the target.",
       "yvideo": "Sylas - Passive",
       "skillkey": "I",
       "skillid": "i1"
@@ -2305,31 +2299,6 @@
       "skillkey": "W",
       "skillid": "w1"
     },
-    "e2": {
-      "name": "Abduct",
-      "champion": "Sylas",
-      "skill": "E",
-      "icon": "Abduct.png",
-      "blurb": "",
-      "description": "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.35}} seconds upon arrival.",
-      "leveling": "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}",
-      "target_range": "{{tt|800|Estimated}}",
-      "speed": "{{tt|1600|Missile speed}} / {{tt|1800|Dash speed}}",
-      "targeting": "Direction",
-      "affects": "Self, Enemies",
-      "damagetype": "Magic",
-      "spellshield": true,
-      "spelleffects": "Single target",
-      "occurrence": "",
-      "projectile": true,
-      "grounded": true,
-      "knockdown": true,
-      "parry": "",
-      "notes": "* No additional details.",
-      "yvideo": "Sylas - E",
-      "skillkey": "E",
-      "skillid": "e2"
-    },
     "e1": {
       "name": "Abscond",
       "champion": "Sylas",
@@ -2344,7 +2313,29 @@
       "costtype": "Mana",
       "cooldown": 14,
       "targeting": "Direction",
-      "affects": "Self, Enemies",
+      "affects": "Self",
+      "occurrence": "",
+      "grounded": true,
+      "knockdown": true,
+      "parry": "",
+      "notes": "* No additional details.",
+      "yvideo": "Sylas - E",
+      "skillkey": "E",
+      "skillid": "e1"
+    },
+    "e2": {
+      "name": "Abduct",
+      "champion": "Sylas",
+      "skill": "E",
+      "icon": "Abduct.png",
+      "blurb": "",
+      "description": "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.35}} seconds upon arrival.",
+      "leveling": "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}",
+      "description2": "'''''Sylas''' may still move and cast other abilities before the chains reaches his target, but he may not basic attack. If {{ai|Kingslayer|Sylas}} is cast during this time frame, it will be cancelled by '''Sylas' '''dash and not heal him or deal damage to the target.''",
+      "target_range": "{{tt|800|Estimated}}",
+      "speed": "{{tt|1600|Missile speed}} / {{tt|1800|Dash speed}}",
+      "targeting": "Direction",
+      "affects": "Enemies",
       "damagetype": "Magic",
       "spellshield": true,
       "spelleffects": "Single target",
@@ -2353,10 +2344,10 @@
       "grounded": true,
       "knockdown": true,
       "parry": "",
-      "notes": "* No additional details.",
+      "notes": "* '''Sylas''' will not dash to his target if the chains are {{tip|spell shield|spell shielded}}.",
       "yvideo": "Sylas - E",
       "skillkey": "E",
-      "skillid": "e1"
+      "skillid": "e2"
     },
     "r1": {
       "name": "Hijack",
@@ -2382,7 +2373,7 @@
       "grounded": "",
       "knockdown": "",
       "parry": "",
-      "notes": "* If the stolen ability is on-target and it loses its target during the cast time (i.e {{tip|untargetable|untargetability}}, lost of vision) the ability will cancel and go on cooldown.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' mana, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of mana restoration will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones. All stacks gained while transformed are consumed with one basic attack.\n*** This damage overrides {{cais|Takedown|Nidalee}} damage.\n*** If '''Sylas''' has both normal and transformed stacks a basic attack will consume all transformed stacks and one normal stack, but the damage dealt will be based only on the amount of transformed stacks consumed.\n* Ultimates comply with [[One For All]] rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked Noxian Guillotine; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked Unleashed Power as well as producing 3 spheres that she can use.\n;Notable Interactions\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' charges on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not gain {{ai|Hemorrhage|Darius}} and so the ultimate deals minimal damage.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but Vitals do not deal bonus damage.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|Demacian Justice|Garen}} - No Villain is marked, as such it will only deal magic damage.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate even if Mini Gnar is targeted.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{ais|Kingslayer|Sylas}} cooldown. \n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abscond / Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - '''Sylas''' begins the game with {{ii|The Black Spear}}.\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form.\n* {{cai|Void Assault|Kha'Zix}} - Based on current evolution. \n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need mount.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of ''LeBlanc's'' last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce Sylas' basic ability cooldowns.\n* {{cai|Command: Shockwave|Orianna}} - Self-cast.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Demonic Ascension|Swain}} - '''Sylas''' always has full soul fragments regardless of how many Swain has.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy ''Sylas'' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws the minimum of 3 spheres, which are left on the ground afterwards.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as melee, and so will trigger effects such as Tiamat versus every target.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - PENDING: Does he steal the Hex Core evolution?\n* {{cai|Death Mark|Zed}} - Shadow does not mimic spells but can be reactivated to swap places.\n* {{cai|Portal Jump|Zoe}} - '''Sylas''' can use his spells for the 1 second at the target location, but not during the jump.",
+      "notes": "* If the stolen ability is on-target and it loses its target during the cast time (i.e {{tip|untargetable|untargetability}}, lost of vision) the ability will cancel and go on cooldown.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' mana, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of mana restoration will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones. Each transformed stack applies 3 additional [[on-hit]] effects and all stacks gained while transformed are consumed with one basic attack.\n*** ''Petricite Burst'' does not do damage if only one transformed stack is consumed, but each stack does double damage if two are consumed.\n*** If '''Sylas''' has both normal and transformed stacks a basic attack will consume all transformed stacks and one normal stack, but the effect will only be based on the amount of transformed stacks.\n* Ultimates comply with [[One For All]] rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked Noxian Guillotine; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked Unleashed Power as well as producing 3 spheres that she can use.\n;Notable Interactions\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' charges on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not gain {{ai|Hemorrhage|Darius}} and so the ultimate deals minimal damage.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but Vitals do not deal bonus damage.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate even if Mini Gnar is targeted.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{ais|Kingslayer|Sylas}} cooldown. \n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abscond / Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - '''Sylas''' begins the game with {{ii|The Black Spear}}.\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form.\n* {{cai|Void Assault|Kha'Zix}} - Based on current evolution. \n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need mount.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of ''LeBlanc's'' last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce Sylas' basic ability cooldowns.\n* {{cai|Command: Shockwave|Orianna}} - Self-cast.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy ''Sylas'' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws the minimum of 3 spheres, which are left on the ground afterwards.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as melee, and so will trigger effects such as Tiamat versus every target.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - PENDING: Does he steal the Hex Core evolution?\n* {{cai|Death Mark|Zed}} - Shadow does not mimic spells but can be reactivated to swap places.\n* {{cai|Portal Jump|Zoe}} - '''Sylas''' can use his spells for the 1 second at the target location, but not during the jump.",
       "yvideo": "Sylas - R",
       "skillkey": "R",
       "skillid": "r1"

@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.128",
-  "changes": "9.6.1",
+  "changes": "9.19.1",
   "id": "Shyvana",
   "key": "102",
   "name": "Shyvana",
@@ -106,13 +106,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Shyvana's''' next [[basic attack]] within 6 seconds strikes twice in one swift movement, dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and applying [[on-hit effect]]s twice.",
-        "''Twin Bite'' can {{tip|critical strike|critically strike}} for {{as|{{critical damage|100|melee}}|physical damage}} {{as|'''bonus''' physical damage}}.",
-        "'''Shyvana's''' basic attacks against non-structures reduce ''Twin Bite's'' {{sti|cooldown}} by {{fd|0.5}} seconds.",
+        "{{sbc|Active:}} '''Shyvana's''' next [[basic attack]] within 6 seconds strikes an additional time after {{fd|0.25}} seconds, dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "The second strike applies [[on-hit effect]]s and is affected by {{tip|critical strike}} modifiers.",
+        "'''Shyvana's''' basic attacks against non-structures reduce ''Twin Bite's'' {{sti|cooldown}} by {{fd|0.5}} seconds [[on-hit]].",
         "''Twin Bite'' resets '''Shyvana's''' basic attack timer.",
-        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} ''Twin Bite'' damages all enemies in a cone in front of '''Shyvana''', generating {{tip|fury}} and applying on-hit effects ''twice'' to all enemies hit."
+        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} '''Shyvana''' instantly strikes all enemies in a cone in front of her twice, applying on-hit effects ''twice'' to each target hit. The second strike '''cannot''' {{tip|critical strike|critically strike}} on the primary target."
       ],
-      "notes": "{{ai|Dragon's Descent|Shyvana|Dragon Form's}} ''Twin Bite'' cannot apply {{iis|Tiamat}} {{nie|Cleave}} twice per target hit ({{nie|Cleave}} has an internal {{fd|0.05}} seconds internal cooldown when applied on different targets to prevent abuse).",
+      "notes": "* {{ai|Dragon's Descent|Shyvana|Dragon Form's}} ''Twin Bite'' cannot apply {{iis|Tiamat}} {{nie|Cleave}} on each target hit because of {{nies|Cleave}} internal {{fd|0.05}} seconds interval during which it cannot be applied on a different target.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -379,19 +379,12 @@
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 30% AD)}} {{as|(+ 70% AP)}}|Empowered Magic Damage|{{pp|13|100 to 160|6 to 18|formula= 100+5 per level}} + <br>{{ap|60 to 220}} {{as|(+ 60% AD)}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Empowered Magic Damage</span>: <span><HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 30% AD)}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              [
-                60,
-                100,
-                140,
-                180,
-                220
-              ],
               [
                 60,
                 100,
@@ -406,19 +399,11 @@
               },
               {
                 "player_total_ap": 0.7000000000000001
-              },
-              {
-                "player_total_ad": 0.6
-              },
-              {
-                "player_total_ap": 1
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 70% AP)</span>",
-              "Empowered Magic Damage",
-              "<HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -438,9 +423,40 @@
               "title": "Magic Damage",
               "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
-            },
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Empowered Magic Damage|{{pp|13|100 to 160|6 to 18|formula= 100+5 per level}} + <br>{{ap|60 to 220}} {{as|(+ 60% AD)}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Magic Damage</span>: <span><HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.6
+              },
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Empowered Magic Damage",
+              "<HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
             {
-              "index": 1,
+              "index": 0,
               "ratios": {
                 "base_damage": [
                   60,
@@ -449,8 +465,8 @@
                   180,
                   220
                 ],
-                "player_total_ad": 0.3,
-                "player_total_ap": 0.7000000000000001
+                "player_total_ad": 0.6,
+                "player_total_ap": 1
               },
               "title": "Empowered Magic Damage",
               "str": "<HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
@@ -485,11 +501,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive - Fury:}} ''Dragon's Descent'' has no cooldown or initial cost but can only be activated when '''Shyvana''' has {{tip|fury|{{as|100 Fury}}}}. '''Shyvana''' passively generates {{as|Fury}} per second while in human form, {{as|2 Fury}} per basic attack in either form, and {{as|100 Fury}} when ''Dragon's Descent'' is first learned.",
+        "{{sbc|Passive - Fury:}} ''Dragon's Descent'' has no cooldown or initial cost but can only be activated when '''Shyvana''' has {{tip|fury|{{as|100 Fury}}}}. '''Shyvana''' passively generates {{as|Fury}} per second while in human form, {{as|2 Fury}} per basic attack [[on-hit]] in either form, and {{as|100 Fury}} when ''Dragon's Descent'' is first learned.",
         "{{sbc|Active - Dragon Form:}} '''Shyvana''' transforms into a dragon and {{tip|dashes}} {{tip|unstoppable|unstoppably}} to the target location, {{tip|airborne|carrying}} and dealing {{as|magic damage}} to all enemies she runs through.",
-        "'''Shyvana's''' dragon form grants her basic attacks {{sti|range|'''bonus''' range}}, {{sti|health|{{as|'''bonus''' health}}}}, and empowered basic [[Champion ability|abilities]] at the cost of {{as|5 Fury}} per second, returning to human form once depleted."
+        "'''Shyvana's''' dragon form grants her {{sti|health|{{as|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}}, and empowers her basic [[Champion ability|abilities]] at the cost of {{as|5 Fury}} per second, returning to human form once depleted."
       ],
-      "notes": "* ''Dragon's Descent'' has a 20 seconds effective duration when not attacking (indefinite when attacking continuously with {{as|{{fd|2.5}} attack speed}}).\n* ''Dragon's Descent'' has a {{ap|150|75|50}} seconds effective cooldown when not attacking ({{tt|{{ap|17.65|15.8|14.3}} seconds|Estimated}} when attacking continuously with {{as|{{fd|2.5}} attack speed}}).",
+      "notes": "* ''Dragon's Descent'' has a 20 seconds effective duration when not attacking, but can last indefinitely when attacking continuously with {{as|{{ap|5/2}} attack speed}} (without counting {{ai|Q|Shyvana}}) or {{as|{{ap|5/(8/3)}} attack speed}} with {{ii|Guinsoo's Rageblade}}.\n* ''Dragon's Descent'' has a {{ap|100/1 to 100/2}} seconds effective cooldown when not attacking ({{ap|100/((1 to 2)+2.5*2)|round=2}} seconds when attacking continuously with {{as|{{fd|2.5}} attack speed}}, {{ap|100/((1 to 2)+(2.5+1/3)*2)|round=2}} while also having {{ii|Guinsoo's Rageblade}}).",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "5",

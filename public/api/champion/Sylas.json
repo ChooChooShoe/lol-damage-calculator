@@ -1,6 +1,6 @@
 {
   "patch": "V9.2",
-  "changes": "9.17.1",
+  "changes": "9.21.1",
   "id": "Sylas",
   "key": "517",
   "name": "Sylas",
@@ -70,9 +70,10 @@
       },
       "description": [
         "{{sbc|Innate:}} Casting an ability grants a stack of ''Petricite Burst'' for 4 seconds, up to 2 stacks.",
-        "{{sbc|Petricite Burst:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, dealing {{pp|9 to 60|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to the target and nearby enemies, reduced to 50% against minions who aren't the primary targets."
+        "{{sbc|Petricite Burst:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, dealing {{as|110% AD}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|magic damage}}}} to his primary target, and {{as|40% AD}} {{as|(+ 20% AP)}} {{as|magic damage}} to nearby secondary targets.",
+        "''The empowered attack applies [[on-hit effect]]s to the primary target but disables '''Sylas' '''{{tip|critical strike|critical strikes'}} '''bonus''' damage.''"
       ],
-      "notes": "* ''Petricite Burst'' cannot {{tip|critical strike|critically strike}}.\n* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.",
+      "notes": "* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.\n* Hitting a target multiple times with ''Petricite Burst'' will not add additional stacks of {{ri|Electrocute}} or {{ri|Phase Rush}}.\n* ''Petricite Burst'' does not add stacks of {{ri|Press the Attack}} to the target.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -430,90 +431,6 @@
         }
       ]
     },
-    "e2": {
-      "riotId": "SylasE",
-      "name": "Abduct",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "target_range": "{{tt|800|Estimated}}",
-      "image": {
-        "full": "SylasE.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.35}} seconds upon arrival."
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "E",
-      "skillid": "e2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                85,
-                100,
-                115,
-                130
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.2
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  70,
-                  85,
-                  100,
-                  115,
-                  130
-                ],
-                "player_total_ap": 0.2
-              },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "magic"
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "SylasE",
       "name": "Abscond",
@@ -600,6 +517,91 @@
         }
       ]
     },
+    "e2": {
+      "riotId": "SylasE",
+      "name": "Abduct",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "Direction",
+      "target_range": "{{tt|800|Estimated}}",
+      "image": {
+        "full": "SylasE.png",
+        "sprite": "spell11.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active - Abduct:}} '''Sylas''' whips out his chains in the target direction, dealing {{as|magic damage}} and {{tip|stun|stunning}} the first enemy hit, {{tip|dash|pulling}} himself towards them, and {{tip|airborne|knocking}} them up for {{fd|0.35}} seconds upon arrival.",
+        "'''''Sylas''' may still move and cast other abilities before the chains reaches his target, but he may not basic attack. If {{ai|Kingslayer|Sylas}} is cast during this time frame, it will be cancelled by '''Sylas' '''dash and not heal him or deal damage to the target.''"
+      ],
+      "notes": "* '''Sylas''' will not dash to his target if the chains are {{tip|spell shield|spell shielded}}.",
+      "skillkey": "E",
+      "skillid": "e2",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 20% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                85,
+                100,
+                115,
+                130
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  85,
+                  100,
+                  115,
+                  130
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
     "r1": {
       "riotId": "SylasR",
       "name": "Hijack",
@@ -631,7 +633,7 @@
         "{{sbc|Active:}} '''Sylas''' casts his hijacked ultimate ability without cost, scaling based on ''Hijack's'' rank and his own statistics.",
         "All ''Hijacked'' ultimates and abilities that do not scale with {{as|ability power}} have their {{as|attack damage}} ratios converted to {{as|ability power}} ratios, scaling with {{as|{{fd|0.6}}% AP}} per {{as|1% '''total''' AD}}, and {{as|{{fd|0.4}}% AP}} per {{as|1% '''bonus''' AD}}."
       ],
-      "notes": "* If the stolen ability is on-target and it loses its target during the cast time (i.e {{tip|untargetable|untargetability}}, lost of vision) the ability will cancel and go on cooldown.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' mana, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of mana restoration will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones. All stacks gained while transformed are consumed with one basic attack.\n*** This damage overrides {{cais|Takedown|Nidalee}} damage.\n*** If '''Sylas''' has both normal and transformed stacks a basic attack will consume all transformed stacks and one normal stack, but the damage dealt will be based only on the amount of transformed stacks consumed.\n* Ultimates comply with [[One For All]] rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked Noxian Guillotine; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked Unleashed Power as well as producing 3 spheres that she can use.\n;Notable Interactions\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' charges on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not gain {{ai|Hemorrhage|Darius}} and so the ultimate deals minimal damage.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but Vitals do not deal bonus damage.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|Demacian Justice|Garen}} - No Villain is marked, as such it will only deal magic damage.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate even if Mini Gnar is targeted.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{ais|Kingslayer|Sylas}} cooldown. \n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abscond / Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - '''Sylas''' begins the game with {{ii|The Black Spear}}.\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form.\n* {{cai|Void Assault|Kha'Zix}} - Based on current evolution. \n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need mount.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of ''LeBlanc's'' last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce Sylas' basic ability cooldowns.\n* {{cai|Command: Shockwave|Orianna}} - Self-cast.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Demonic Ascension|Swain}} - '''Sylas''' always has full soul fragments regardless of how many Swain has.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy ''Sylas'' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws the minimum of 3 spheres, which are left on the ground afterwards.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as melee, and so will trigger effects such as Tiamat versus every target.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - PENDING: Does he steal the Hex Core evolution?\n* {{cai|Death Mark|Zed}} - Shadow does not mimic spells but can be reactivated to swap places.\n* {{cai|Portal Jump|Zoe}} - '''Sylas''' can use his spells for the 1 second at the target location, but not during the jump.",
+      "notes": "* If the stolen ability is on-target and it loses its target during the cast time (i.e {{tip|untargetable|untargetability}}, lost of vision) the ability will cancel and go on cooldown.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' mana, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of mana restoration will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones. Each transformed stack applies 3 additional [[on-hit]] effects and all stacks gained while transformed are consumed with one basic attack.\n*** ''Petricite Burst'' does not do damage if only one transformed stack is consumed, but each stack does double damage if two are consumed.\n*** If '''Sylas''' has both normal and transformed stacks a basic attack will consume all transformed stacks and one normal stack, but the effect will only be based on the amount of transformed stacks.\n* Ultimates comply with [[One For All]] rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked Noxian Guillotine; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked Unleashed Power as well as producing 3 spheres that she can use.\n;Notable Interactions\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' charges on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not gain {{ai|Hemorrhage|Darius}} and so the ultimate deals minimal damage.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but Vitals do not deal bonus damage.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate even if Mini Gnar is targeted.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{ais|Kingslayer|Sylas}} cooldown. \n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abscond / Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - '''Sylas''' begins the game with {{ii|The Black Spear}}.\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form.\n* {{cai|Void Assault|Kha'Zix}} - Based on current evolution. \n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need mount.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of ''LeBlanc's'' last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce Sylas' basic ability cooldowns.\n* {{cai|Command: Shockwave|Orianna}} - Self-cast.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy ''Sylas'' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws the minimum of 3 spheres, which are left on the ground afterwards.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as melee, and so will trigger effects such as Tiamat versus every target.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - PENDING: Does he steal the Hex Core evolution?\n* {{cai|Death Mark|Zed}} - Shadow does not mimic spells but can be reactivated to swap places.\n* {{cai|Portal Jump|Zoe}} - '''Sylas''' can use his spells for the 1 second at the target location, but not during the jump.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "75",

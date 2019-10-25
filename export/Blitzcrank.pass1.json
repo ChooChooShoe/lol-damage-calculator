@@ -78,6 +78,12 @@
       "num": 21,
       "name": "Lancer Paragon Blitzcrank",
       "chromas": false
+    },
+    {
+      "id": "53022",
+      "num": 22,
+      "name": "Witch's Brew Blitzcrank",
+      "chromas": true
     }
   ],
   "lore": "Blitzcrank is an enormous, near-indestructible automaton from Zaun, originally built to dispose of hazardous waste. However, he found this primary purpose too restricting, and modified his own form to better serve the fragile people of the Sump. Blitzcrank selflessly uses his strength and durability to protect others, extending a helpful metal fist or burst of energy to subdue any troublemakers.",
@@ -107,8 +113,8 @@
     "mp": 267.2,
     "mpperlevel": 40,
     "movespeed": 325,
-    "armor": 44,
-    "armorperlevel": 4,
+    "armor": 40,
+    "armorperlevel": 3.5,
     "spellblock": 32.1,
     "spellblockperlevel": 1.25,
     "attackrange": 125,
@@ -128,14 +134,14 @@
       "id": "RocketGrab",
       "name": "Rocket Grab",
       "description": "Blitzcrank fires his right hand to grab an opponent on its path, dealing damage and dragging it back to him.",
-      "tooltip": "Blitzcrank fires his right hand. If it encounters an enemy unit it will stun them and deal {{ e1 }} <scaleAP>(+{{ a1 }})</scaleAP> magic damage while he pulls them to himself.",
+      "tooltip": "Blitzcrank fires his right hand. If it encounters an enemy unit it will stun them and deal <magicDamage>{{ totaldamage }} magic damage</magicDamage> while he pulls them to himself.",
       "leveltip": {
         "label": [
           "Damage",
           "Cooldown"
         ],
         "effect": [
-          "{{ e1 }} -> {{ e1NL }}",
+          "{{ basedamage }} -> {{ basedamageNL }}",
           "{{ cooldown }} -> {{ cooldownNL }}"
         ]
       },
@@ -243,23 +249,17 @@
         "0",
         "0"
       ],
-      "vars": [
-        {
-          "link": "spelldamage",
-          "coeff": 1,
-          "key": "a1"
-        }
-      ],
+      "vars": [],
       "costType": " {{ abilityresourcename }}",
       "maxammo": "-1",
       "range": [
-        925,
-        925,
-        925,
-        925,
-        925
+        1079,
+        1079,
+        1079,
+        1079,
+        1079
       ],
-      "rangeBurn": "925",
+      "rangeBurn": "1079",
       "image": {
         "full": "RocketGrab.png",
         "sprite": "spell1.png",
@@ -555,7 +555,7 @@
       "id": "StaticField",
       "name": "Static Field",
       "description": "Enemies attacked by Blitzcrank are marked and take lightning damage after 1 second. Additionally, Blitzcrank can activate this ability to remove nearby enemies' shields, damage them, and silence them briefly.",
-      "tooltip": "<spellPassive>Passive: </spellPassive>While this spell is available, lightning charges Blitzcrank's fists, marking enemies. After 1 second, they are shocked for <magicDamage>{{ passivedamage }}</magicDamage> magic damage. This stacks up to two times.<br /><br /><spellPassive>Active: </spellPassive>Destroys damage shields on nearby enemies, deals <magicDamage>{{ activedamage }} magic damage</magicDamage>, and silences for 0.75 seconds.",
+      "tooltip": "<spellPassive>Passive: </spellPassive>While this spell is available, lightning charges Blitzcrank's fists, marking enemies. After 1 second, they are shocked for <magicDamage>{{ passivedamage }}</magicDamage> magic damage. This stacks up to {{ maxstacks }} times.<br /><br /><spellPassive>Active: </spellPassive>Destroys damage shields on nearby enemies, deals <magicDamage>{{ activedamage }} magic damage</magicDamage>, and silences for 0.75 seconds.",
       "leveltip": {
         "label": [
           "Passive Base Damage",
@@ -2277,7 +2277,7 @@
     "range": 125,
     "as_base": 0.625,
     "dam_base": 61.54,
-    "arm_base": 44,
+    "arm_base": 40,
     "mr_base": 32.1,
     "hp_base": 582.6,
     "mp_base": 267.2,
@@ -2285,7 +2285,7 @@
     "mp5_base": 8.5,
     "as_lvl": 1.13,
     "dam_lvl": 3.5,
-    "arm_lvl": 4,
+    "arm_lvl": 3.5,
     "mr_lvl": 1.25,
     "hp_lvl": 95,
     "mp_lvl": 40,
@@ -2298,7 +2298,7 @@
     "rangetype": "Melee",
     "date": 2009,
     "patch": "V0.9.22.16",
-    "changes": "9.14.1",
+    "changes": "9.20.1",
     "role": "Catcher",
     "damage": 1,
     "toughness": 2,
@@ -2343,13 +2343,13 @@
       "icon": "Rocket Grab.png",
       "blurb": "Blitzcrank fires his right hand to grab an opponent on its path, dealing damage and dragging it back to him.",
       "description": "{{sbc|Active:}} '''Blitzcrank''' fires his right hand in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} while {{tip|airborne|pulling}} the first enemy hit to him, {{tip|stun|stunning}} them for {{fd|0.5}} seconds.",
-      "description2": "'''Blitzcrank''' is unable to move or attack while ''Rocket Grab'' is in flight.",
-      "leveling": "{{st|Magic Damage|{{ap|80|135|190|245|300}} {{as|(+ 100% AP)}}}}",
+      "description2": "'''''Blitzcrank''' is unable to move or attack while Rocket Grab is in flight.''",
+      "leveling": "{{st|Magic Damage|{{ap|80 to 300}} {{as|(+ 100% AP)}}}}",
       "cast_time": 0.25,
       "width": 140,
-      "target_range": 1050,
+      "target_range": 1150,
       "speed": 1800,
-      "cooldown": "{{ap|20|19|18|17|16}}",
+      "cooldown": "{{ap|20 to 16}}",
       "cost": 100,
       "costtype": "mana",
       "targeting": "Direction",
@@ -2360,7 +2360,7 @@
       "grounded": "",
       "knockdown": "",
       "projectile": true,
-      "notes": "* ''Rocket Grab'' has a {{fd|0.25}} second casting time.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?p=41352754#41352754 CertainlyT on hook abilities]</ref>\n* ''Rocket Grab'' can hit and pull [[stealth]]ed units, however this will not explicitly reveal the stealthed enemy.\n* ''Rocket Grab'' will damage visible {{ai|Jack in the Box|Shaco|Jacks in the Boxes}}, but will not pull these traps towards '''Blitzcrank'''. Invisible boxes will neither take damage or be pulled.\n* '''Blitzcrank''' will attempt to attack enemy champions that are successfully pulled towards him.\n* {{si|Cleanse}}, {{ai|Remove Scurvy|Gangplank}}, or {{ii|Quicksilver Sash}} used by enemy champions while being pulled will not interrupt ''Rocket Grab'' and the champion will reach Blitzcrank.\n* Forced action and {{tip|airborne}} [[crowd control]] effects that affect the target during the grab will stop the grab.<ref>[http://www.youtube.com/watch?NR=1&feature=endscreen&v=PTezJPONkZM Fearing a grabbed target]</ref>\n* Abilities with imminent casting times are not interrupted by ''Rocket Grab'' (''or any crowd control'') and will go off as if '''Blitzcrank''' hadn't grabbed them. \n** For skillshots, such as {{ai|Final Spark|Lux}}, they will fire from the point of cast regardless of the caster's position when the casting time ends. \n** For dashes and blinks such as {{ai|Arcane Shift|Ezreal}} the caster will blink to the target location after the casting time regardless of crowd control effects. '''Blitzcrank's''' arm will visibly stretch and then fizzle. \n*** Contrary to popular belief, you cannot cast {{ai|Arcane Shift|Ezreal}} ''during Rocket Grab''. However, as of [[V1.0.0.140]], spells cast while disabled will immediately be cast after the effect ends.\n* If '''Blitzcrank''' becomes [[Untargetability|untargetable]] while pulling a target, the target will continue to be pulled to his location. This includes {{ai|Fate's Call|Kalista}} where the target will continue to follow '''Blitzcrank''' even though he's untargetable.\n** However, if ''Rocket Grab'' hits after '''Blitzcrank''' becomes untargetable, the target will be pulled to the location where he was last targetable.\n* Mobility effects (such as {{ii|Hextech Protobelt-01}} and {{si|Teleport}}) can be buffered.",
+      "notes": "* ''Rocket Grab'' has a {{fd|0.25}} second casting time.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?p=41352754#41352754 CertainlyT on hook abilities]</ref>\n* ''Rocket Grab'' can hit and pull [[stealth]]ed units, however this will not explicitly reveal the stealthed enemy.\n* ''Rocket Grab'' will damage visible {{ai|Jack in the Box|Shaco|Jacks in the Boxes}}, but will not pull these traps towards '''Blitzcrank'''. Invisible boxes will neither take damage or be pulled.\n* '''Blitzcrank''' will attempt to basic attack the target.\n* {{si|Cleanse}}, {{ai|Remove Scurvy|Gangplank}}, or {{ii|Quicksilver Sash}} used by enemy champions while being pulled will not interrupt ''Rocket Grab'' and the champion will reach Blitzcrank.\n* Forced action and {{tip|airborne}} [[crowd control]] effects that affect the target during the grab will stop the grab.<ref>[http://www.youtube.com/watch?NR=1&feature=endscreen&v=PTezJPONkZM Fearing a grabbed target]</ref>\n* Abilities with imminent casting times are not interrupted by ''Rocket Grab'' (''or any crowd control'') and will go off as if '''Blitzcrank''' hadn't grabbed them. \n** For skillshots, such as {{ai|Final Spark|Lux}}, they will fire from the point of cast regardless of the caster's position when the casting time ends. \n** For dashes and blinks such as {{ai|Arcane Shift|Ezreal}} the caster will blink to the target location after the casting time regardless of crowd control effects. '''Blitzcrank's''' arm will visibly stretch and then fizzle. \n*** Contrary to popular belief, you cannot cast {{ai|Arcane Shift|Ezreal}} ''during Rocket Grab''. However, as of [[V1.0.0.140]], spells cast while disabled will immediately be cast after the effect ends.\n* If '''Blitzcrank''' becomes [[Untargetability|untargetable]] while pulling a target, the target will continue to be pulled to his location. This includes {{ai|Fate's Call|Kalista}} where the target will continue to follow '''Blitzcrank''' even though he's untargetable.\n** However, if ''Rocket Grab'' hits after '''Blitzcrank''' becomes untargetable, the target will be pulled to the location where he was last targetable.\n* Mobility effects (such as {{ii|Hextech Protobelt-01}} and {{si|Teleport}}) can be buffered.",
       "skillkey": "Q",
       "skillid": "q1"
     },
@@ -2410,7 +2410,7 @@
       "skill": "R",
       "icon": "Static Field.png",
       "blurb": "Passively causes lightning bolts to damage a nearby enemy. Additionally, Blitzcrank can activate this ability to damage nearby enemies and silence them for 0.5 seconds, but doing so removes the passive lightning until Static Field becomes available again.",
-      "description": "{{sbc|Passive:}} While ''Static Field'' is available, '''Blitzcrank's''' basic attacks apply a mark that stacks up to 2 times. After every 1 second, 1 mark is consumed to deal {{as|magic damage}}.",
+      "description": "{{sbc|Passive:}} While ''Static Field'' is available, '''Blitzcrank's''' basic attacks apply a mark that stacks up to 3 times. After every 1 second, 1 mark is consumed to deal {{as|magic damage}}.",
       "leveling": "{{st|Bolt Magic Damage|{{ap|50 to 150}} {{as|(+ 30% AP)}}}}",
       "description2": "{{sbc|Active:}} '''Blitzcrank''' detonates his static field, destroying damage-mitigating shields of nearby enemies before dealing {{as|magic damage}} and {{tip|silence|silencing}} them for {{fd|0.5}} seconds.",
       "leveling2": "{{st|Detonation Magic Damage|{{ap|250 to 500}} {{as|(+ 100% AP)}}}}",

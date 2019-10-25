@@ -58,7 +58,7 @@
       "riotId": "",
       "name": "Harrier",
       "maxrank": 0,
-      "cooldown": "{{tt|{{pp|type=critical strike chance|color=critical chance|11|8*(0.99^((x-1)*10))|key1=%|0 to 100|formula=8*(0.99 ^ critical strike chance %)}}|Unaffected by cooldown reduction}}",
+      "cooldown": "",
       "targeting": "Auto",
       "image": {
         "full": "Quinn_Passive.png",
@@ -72,7 +72,7 @@
       "description": [
         "{{sbc|Innate:}} '''{{ci|Valor}}''' periodically marks a nearby [[sight|visible]] [[unit]] as '''Vulnerable''', {{tip|sight|revealing}} them for 4 seconds. Units hit by {{ai|Blinding Assault|Quinn}}, {{ai|Vault|Quinn}} and {{ai|Skystrike|Quinn}} will also be marked as '''Vulnerable'''.",
         "'''Quinn's''' next [[basic attack]] against a '''Vulnerable''' target deals {{pp|10 to 95|color=physical damage}} {{as|(+ {{pp|key=%|16 to 50}} AD)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "''Harrier'' is disabled while {{ai|Behind Enemy Lines|Quinn}} is active and for a few seconds after a target's mark ends. The {{sti|cooldown}} of ''Harrier'' is reduced by by 1% for every {{sti|critical strike chance|{{as|1% critical strike chance}}}}, but with {{tt|diminishing returns|stacks multiplicatively rather than additively}}."
+        "''Harrier'' is disabled while {{ai|Behind Enemy Lines|Quinn}} is active and for a few seconds after a target's mark ends."
       ],
       "notes": "* ''Harrier's'' targeting priority:\n*# Last unit hit (if it was a small minion it appears to select a different target).\n*# Lowest-health enemy champion.\n*# Lowest-health enemy minion.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* {{tip|critical strike|Critical strikes}} do not interact with ''Harrier's'' bonus damage.\n* As with most on-hit physical damage ''Harrier's'' bonus damage will apply {{sti|life steal}}.\n* ''Harrier'' is consumed but does no damage if the enhanced attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Riposte|Fiora|parried}}, {{ai|Aegis Protection|Pantheon|blocked}}, or if '''Quinn''' is {{tip|blind|blinded}}.\n* ''Harrier's'' bonus damage will not affect structures even if '''Quinn''' is seen using its attack animation against them if the ensuing basic attack was the last one prior.\n* Basic attacks that are already in-flight will trigger and consume ''Harrier'' mark.\n* If a mark was originally applied by {{ai|Blinding Assault|Quinn}} or {{ai|Vault|Quinn}}, attacking that ''Vulnerable'' target will place ''Harrier's'' passive application on a 1 second cooldown instead of its full duration.",
       "skillkey": "I",
@@ -110,7 +110,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Quinn''' signals '''{{ci|Valor}}''' to fly forward in a line, stopping when he collides with a unit, dealing {{as|physical damage}} and applying {{tip|nearsight}} for {{fd|1.5}} seconds.",
+        "{{sbc|Active:}} '''Quinn''' signals '''{{ci|Valor}}''' to fly forward in a line, stopping when he collides with a unit, dealing {{as|physical damage}} to all nearby enemies and applying {{tip|nearsight}} to the target for {{fd|1.5}} seconds.",
         "Non-[[champion]] targets are {{tip|disarm|disarmed}} instead for the same duration."
       ],
       "notes": "* No additional details.",
@@ -352,6 +352,82 @@
         }
       ]
     },
+    "r1": {
+      "riotId": "QuinnR",
+      "name": "Behind Enemy Lines",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        100,
+        50,
+        0
+      ],
+      "costtype": "Mana",
+      "targeting": "None",
+      "image": {
+        "full": "QuinnR.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Quinn''' {{tip|channels}} for 2 seconds. Upon completing it successfully, '''{{ci|Valor}}''' picks her up and they unite, increasing her {{sti|ms|{{as|{{tt|'''total''' movement speed|Increases base movement as well as bonus movement speed.}}}}}} and gaining the ability to use {{ai|Skystrike|Quinn}}.",
+        "Taking damage from champions, monsters, or {{tip|turrets}} while ''Behind Enemy Lines'' is active disables the {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds.",
+        "If you have a least one point in ''Behind Enemy Lines'', respawning or returning to the summoning platform will spawn '''{{ci|Valor}}'''."
+      ],
+      "notes": "* If ''Quinn'' uses {{ai|Vault|Quinn}} while ''Behind Enemy Lines'' is active then {{ai|Skystrike|Quinn}} will activate at her target's location after she bounces.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "costBurn": "100/50/0",
+      "cooldownBurn": "0",
+      "effects": [
+        {
+          "levelingtext": "{{st|Total Movement Speed Increase|{{ap|70 to 130}}%}}",
+          "str": "<ul><li><span class=\"blue\">Total Movement Speed Increase</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                85,
+                100,
+                115,
+                130
+              ]
+            ],
+            "st_slices": [
+              "Total Movement Speed Increase",
+              "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  70,
+                  85,
+                  100,
+                  115,
+                  130
+                ]
+              },
+              "title": "Total Movement Speed Increase",
+              "str": "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
     "r2": {
       "riotId": "QuinnR",
       "name": "Skystrike",
@@ -389,5 +465,5 @@
       "effects": []
     }
   },
-  "skillcount": 5
+  "skillcount": 6
 }
