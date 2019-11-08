@@ -70,7 +70,7 @@ files.forEach((filename, i, array) => {
             rangetype: champ.wikia_champ.rangetype || "Ranged",
             be_cost: champ.wikia_champ.be || 0,
             rp_cost: champ.wikia_champ.rp || 0,
-            adaptivetype: champ.wikia_champ.adaptivetype || "magic",
+            adaptivetype: champ.wikia_champ.adaptivetype.split(',')[0].toLowerCase(),
             info: champ.info,
             stats: champ.stats,
 
@@ -186,7 +186,7 @@ function buildSkill(skilldata, riotSpell, is_passive, champ, model) {
         effect.levelingtext = skilldata.leveling[effectindex];
         let x = matchReplaceSpellEffects(effect.levelingtext, false);
         effect.str = x.str;
-        effect.vars = x.vars;
+        // effect.vars = x.vars;
 
         if (x.vars.ap_progressions) {
             effect.subeffects = [];

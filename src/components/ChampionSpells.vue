@@ -29,13 +29,11 @@
     
     <spell-effects
       v-for="(item, index) in spell.effects" 
-      :id="id + '-effect-' + index"
       :key="id + '-effect-' + index"
       :spell="spell"
       :effect="item"
       :effectindex="index"
-      :spellrankindex="spellrankindex"
-      :iscustom="false">
+      :spellrankindex="spellrankindex">
     </spell-effects>
   
     <CustomSpellEffects

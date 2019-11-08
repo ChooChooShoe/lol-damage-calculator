@@ -1,22 +1,9 @@
 <template>
   <div
     class="container float-clear spell-effect"
-    :id="id"
     @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
   >
-    <form autocomplete="off" :id="id + '-form'" class="flex flex-row flex-wrap flex-top">
-      <!-- <h4>
-        <span v-if="iscustom">Custom</span>
-        Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}
-      </h4>-->
-      <input
-        v-if="iscustom"
-        name="remove_effect"
-        class="inline float-right"
-        type="button"
-        value="Remove"
-        @click="removeEffect()"
-      />
+    <form autocomplete="off" class="flex flex-row flex-wrap flex-top">
       <div v-if="effect.subeffects.length > 1">
         <label>
           View A
@@ -91,6 +78,7 @@
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
 
+      <div v-if="doesDoDamage">
       <div class="column">
         This effect will deal {{Math.round(dmg_premitigation_for_one)}}
         <span
@@ -149,6 +137,8 @@
           class="spelleffect"
         >lose {{Math.round(dmg_onhit)}} health</span>.
       </div>
+
+    </div>  
     </form>
   </div>
 </template>
@@ -164,7 +154,7 @@ import MatchReplace from "../MatchReplace.vue";
 import SpellField from "./SpellField.vue";
 
 export default {
-  props: ["id", "spell", "effect", "spellrankindex", "effectindex", "iscustom"],
+  props: ["spell", "effect", "spellrankindex", "effectindex"],
   name: "spell-effects",
   components: {
     MatchReplace,
@@ -172,17 +162,17 @@ export default {
   },
   data: function() {
     return {
-      damage_type: this.iscustom
-        ? "magic"
-        : this.effect.subeffects[0].damage_type,
+      damage_type: this.effect.subeffects[0].damage_type,
       showRatiosDropdown: false,
-      user_ratios: {},
       repeat: 1,
       subIndex: 0,
       ratios: {}
     };
   },
   computed: {
+    doesDoDamage: function() {
+      return ["magic", "physical", "true"].includes(this.damage_type);
+    },
     spell_ratios: function() {
       return spell_ratios;
     },
@@ -274,12 +264,7 @@ export default {
         ispercent: true
       });
     },
-    removeEffect: function() {
-      if (this.iscustom)
-        this.$parent.customEffects = this.$parent.customEffects.filter(
-          i => i !== this.effectindex
-        );
-    },
+    removeEffect: function() {},
     ratioValue(ratio) {
       if (this.ratios[ratio]) {
         const r = this.ratios[ratio];

@@ -252,6 +252,22 @@
         </li>
         </ul>
         <hr class="column">
+        <div v-if="info.resource == 'Mana'">
+        <label for="target_mana" class="mr">Mana</label>
+        <data-input dname="target_mana" v-model="total_mana"></data-input>
+        <ul>
+        <li>{{ rnd(base_mana) }} Base Mana + {{ rnd(bonus_mana) }} Bonus Mana = {{ rnd(total_mana) }} Total Mana</li>
+        <li>This will reduce
+          <span class="magic-damage">Magic Damage</span> taken by
+          <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
+        </li>
+        <li>This is equivalent to having
+          <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
+          <span class="magic-damage">Magic Damage</span>.
+        </li>
+        </ul>
+        </div>
+        <hr class="column">
         <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
         <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
         <span>

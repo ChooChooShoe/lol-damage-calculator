@@ -466,9 +466,10 @@ const match_lookup = {
       console.log("herherhehrheh\n",test,"\nvars",vars,"\nold_num",num);
       // ratios = vars.as_ratios[vars.as_ratios.length - 1];
       let list = [];
-      for (const x of vars.ap_progressions[idx]) {
-        list.push(Number(x) / 100);
-      }
+      if(vars.ap_progressions[idx])
+        for (const x of vars.ap_progressions[idx]) {
+          list.push(Number(x) / 100);
+        }
       num = list;
       vars.ap_progressions[idx] = undefined;
       console.log("okay\n",test,"\nvars",vars,"\nold_num",num);

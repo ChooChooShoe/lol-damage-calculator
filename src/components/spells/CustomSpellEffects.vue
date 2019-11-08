@@ -44,6 +44,7 @@
       </div>
       <div style="width: 100%;height: 1.4em;"></div>
 
+      <div v-if="doesDoDamage">
       <div class="column">
         This effect will deal {{Math.round(dmg_premitigation_for_one)}}
         <span
@@ -102,6 +103,7 @@
           class="spelleffect"
         >lose {{Math.round(dmg_onhit)}} health</span>.
       </div>
+      </div>
     </form>
   </div>
 </template>
@@ -135,6 +137,9 @@ export default {
     };
   },
   computed: {
+    doesDoDamage: function() {
+      return ["magic", "physical", "true"].includes(this.damage_type);
+    },
     spell_ratios: function() {
       return spell_ratios
     },
