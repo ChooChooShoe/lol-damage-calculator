@@ -14,29 +14,31 @@
       <label class="column">
         ➤ Champion Level
         <input type="number" value="18" v-model.number="level" class="simple-input">
-        <input :active="level === 1" type="button" class="simple-btn" value="1" @click="level = 1">
-        <input :active="level === 6" type="button" class="simple-btn" value="6" @click="level = 6">
-        <input
-          :active="level === 11"
-          type="button"
-          class="simple-btn"
-          value="11"
-          @click="level = 11"
-        >
-        <input
-          :active="level === 16"
-          type="button"
-          class="simple-btn"
-          value="16"
-          @click="level = 16"
-        >
-        <input
-          :active="level === 18"
-          type="button"
-          class="simple-btn"
-          value="18"
-          @click="level = 18"
-        >
+        <div class="button-group">
+          <input :active="level === 1" type="button" class="button" value="1" @click="level = 1">
+          <input :active="level === 6" type="button" class="button" value="6" @click="level = 6">
+          <input
+            :active="level === 11"
+            type="button"
+            class="button"
+            value="11"
+            @click="level = 11"
+          >
+          <input
+            :active="level === 16"
+            type="button"
+            class="button"
+            value="16"
+            @click="level = 16"
+          >
+          <input
+            :active="level === 18"
+            type="button"
+            class="button"
+            value="18"
+            @click="level = 18"
+          >
+        </div>
       </label>
 
       <div class="column">
@@ -556,5 +558,5 @@ function update_user_stats(stats, user, lvl) {
 }
 </script>
 
-<style scoped>
+<style>
 </style>
