@@ -2,7 +2,6 @@
   "patch": "V1.0.0.131",
   "changes": "9.14.1",
   "id": "Ahri",
-  "key": "103",
   "name": "Ahri",
   "title": "the Nine-Tailed Fox",
   "image": {
@@ -14,10 +13,6 @@
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Mage",
-    "Assassin"
-  ],
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Slayer",
@@ -58,7 +53,7 @@
       "riotId": "",
       "name": "Vastayan Grace",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "Ahri_SoulEater2.png",
         "sprite": "passive0.png",
@@ -101,16 +96,16 @@
         "full": "AhriOrbofDeception.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 0,
-        "y": 96,
+        "x": 384,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} Whenever '''Ahri''' hits an enemy with one of her abilities, she gains a charge of ''Essence Theft'', and can gain up to 3 charges per ability cast. Upon reaching 9 charges, her next ''Orb of Deception'' {{tip|heals}} her for {{sti|health|{{pp|4|3;5;9;18|1 to 16|color=health}} {{as|(+ 9% AP)}}}} every time an enemy is hit.",
-        "{{sbc|Active:}} '''Ahri''' sends an orb of arcane energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies it passes through, then pulls it back, dealing {{tip|true damage|{{as|true damage}}}} instead."
+        "{{sbc|Passive:}} Ability hits grant an ''Essence Theft'' stack, up to a maximum of 3 per cast. At a maximum of 9 stacks, the next ''Orb of Deception'' consumes them all to {{tip|heal}} '''Ahri''' for {{sti|health|{{pp|4|3;5;9;18|1 to 16|color=health}} {{as|(+ 9% AP)}}}} every time an enemy is hit. ''Essence Theft'' is not stacked within the same instance.",
+        "{{sbc|Active:}} '''Ahri''' sends an orb of arcane energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies it passes through. At maximum range, it homes back to '''Ahri''', dealing {{tip|true damage|{{as|true damage}}}} instead."
       ],
-      "notes": "* ''Orb of Deception'' functions normally during flight regardless of '''Ahri's''' condition.\n* Each pass of the projectile can only damage an enemy once.\n* If '''Ahri''' is performing an attack animation when the orb switches direction, the attack animation is canceled.\n* {{si|Flash}} can be cast during the cast animation of ''Orb of Deception''. If done so, the ability resolves after {{si|Flash}} from the location '''Ahri''' flashed to.\n* {{tip|Spell shield}} will block only a single instance of damage.",
+      "notes": "* ''Orb of Deception'' functions normally during flight regardless of '''Ahri's''' condition.\n* Each pass of the projectile can only damage an enemy once.\n* If '''Ahri''' is performing an attack animation when the orb switches direction, the attack animation is canceled.\n* {{si|Flash}} can be cast during the cast time of the ability.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65/70/75/80/85",
@@ -209,24 +204,23 @@
         40
       ],
       "costtype": "mana",
-      "targeting": "Auto",
-      "target_range": "{{tt|700|Non-priority targets range}}",
+      "targeting": "[[Auto-targeted|Auto]]",
       "image": {
         "full": "AhriFoxFire.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 48,
-        "y": 96,
+        "x": 432,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Ahri''' summons three spectral flames which orbit her for up to 5 seconds.",
-        "Flames prioritize champions hit by {{ai|Charm|Ahri}} or any enemy hit by '''Ahri's''' last basic attack, within 3 seconds and {{sti|range|725 range}}.",
-        "After {{fd|0.25}} seconds, each flame targets a prioritized enemy, or after {{fd|0.4}} seconds pursues the closest visible enemy in range, prioritizing champions, then the target of '''Ahri's''' last basic attack, dealing {{as|magic damage}}.",
-        "Multiple flames can hit the same target, with each flame beyond the first dealing 30% damage."
+        "Flames prioritize champions hit by {{ai|Charm|Ahri}}, then the target of '''Ahri's''' last basic attack within 3 seconds.",
+        "After {{fd|0.25}} seconds, each flame targets a visible prioritized enemy; or after {{fd|0.4}} seconds targets the closest visible enemy in range, prioritizing champions, dealing {{as|magic damage}}.",
+        "Subsequent flames on a target deal 30% damage."
       ],
-      "notes": "* ''Fox-Fire'' has no casting time and will not interrupt '''Ahri's''' previous orders.\n* ''Fox-Fire's'' targeting priority is as follows:\n** The enemy champion closest to the orb's location\n** The target of '''Ahri's''' last autoattack\n** The enemy unit closest to the orb's location\n* '''Ahri''' must have sight of an enemy in order for ''Fox-Fire'' to target them. Once targeted, the missiles will chase its target even if Ahri loses sight.\n* If the target of ''Fox-Fire'' dies, the missile will fizzle.\n* Any unused ''Fox-Fires'' will fizzle on '''Ahri's''' death.\n* If '''Ahri''' uses {{ii|Zhonya's Hourglass}} while ''Fox-Fire'' is active, any orbs that have not acquired a target will fizzle.\n* The cooldown of ''Fox-Fire'' begin once all the orbs have been cast or timed-out.\n* Each missile of ''Fox-Fire'' has its own range.",
+      "notes": "* Each missile of ''Fox-Fire'' has its own shorter non-priority range.\n* Once locked-on, the missiles will pursue even if Ahri loses sight.\n* If the target of ''Fox-Fire'' dies, the missile will fizzle.\n* Any unused ''Fox-Fires'' will fizzle upon death.\n* If '''Ahri''' uses {{ii|Zhonya's Hourglass}} while ''Fox-Fire'' is active, any orbs that have not acquired a target will fizzle.\n* The cooldown of ''Fox-Fire'' begin once all the orbs have acquired a target or timed-out.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "40",
@@ -369,13 +363,13 @@
         70
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": 975,
       "image": {
         "full": "AhriSeduce.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 96,
+        "x": 0,
         "y": 96,
         "w": 48,
         "h": 48
@@ -458,22 +452,22 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
       "target_range": 450,
       "image": {
         "full": "AhriTumble.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 144,
+        "x": 48,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ahri''' {{tip|dashes}} in the target direction, and then fires energy bolts up to 3 visible targets to deal {{as|magic damage}}.",
-        "''Spirit Rush'' can be recast twice more at a 1 second {{tt|static cooldown|unaffected by cooldown reduction}} within 10 seconds of activation at no additional cost."
+        "{{sbc|Active:}} '''Ahri''' {{tip|dashes}} in the target direction and then fires energy bolts to up to 3 {{tip|sight|visible}} targets, dealing {{as|magic damage}}. ''Spirit Rush'' can be recast twice more at a 1 second {{tt|static cooldown|unaffected by cooldown reduction}} within 10 seconds of activation at no additional cost.",
+        "{{sbc|Recast:}} '''Ahri''' {{tip|dashes}}, mimicking the first cast's effects."
       ],
-      "notes": "* Each dash counts as another ability instance for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Spirit Rush'' uses [[quick cast]] by default.\n* '''Ahri''' must have sight of an enemy in order for ''Spirit Rush'' to target them. Once targeted, the bolts will chase its target even if '''Ahri''' loses sight of them.\n** Even if '''Ahri''' gets vision of the fog of war after dashing, it's possible that ''Spirit Rush'' will not target any enemy.\n* If '''Ahri''' dies mid-dash, she will not fire the bolts.",
+      "notes": "* Each dash counts as another ability instance for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Spirit Rush'' uses [[quick cast]] by default.\n* There's a slight delay before a champion gains vision of the fog of war once inside it. Because of this, if '''Ahri''' dashes into it, it is possible that ''Spirit Rush'' will not target any enemy in range.\n* If '''Ahri''' dies mid-dash, she will not fire the bolts.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -585,6 +579,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

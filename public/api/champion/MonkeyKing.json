@@ -2,22 +2,17 @@
   "patch": "V1.0.0.122",
   "changes": "9.20.1",
   "id": "MonkeyKing",
-  "key": "62",
   "name": "Wukong",
   "title": "the Monkey King",
   "image": {
     "full": "MonkeyKing.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Tank"
-  ],
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Tank",
@@ -63,7 +58,7 @@
         "full": "MonkeyKingStoneSkin.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 96,
+        "x": 144,
         "y": 48,
         "w": 48,
         "h": 48
@@ -100,24 +95,24 @@
         "full": "MonkeyKingDoubleAttack.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Wukong's''' next [[basic attack]] within 5 seconds gains {{sti|range|125 '''bonus''' range}}, deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and reduces {{sti|armor|{{as|his target's armor}}}} for 3 seconds.",
+        "{{sbc|Active:}} '''Wukong's''' next [[basic attack]] within 5 seconds gains {{sti|range|125 '''bonus''' range}}, deals {{tip|physical damage|{{as|modified physical damage}}}} and reduces {{sti|armor|{{as|his target's armor}}}} for 3 seconds.",
         "''Crushing Blow'' resets '''Wukong's''' autoattack timer."
       ],
-      "notes": "* ''Crushing Blow'' has no cast time.\n* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* As with most on-hit physical damage, the bonus damage from this ability will apply {{sti|life steal}}.\n* This will trigger upon structures and wards (save for the debuff).\n* Both the damage and the armor reduction debuff are negated if the attack is {{ai|Counter Strike|Jax|dodged}} or {{ai|Aegis Protection|Pantheon|blocked}}.\n** If the attack {{tip|Blind|misses}} ''Crushing Blow'' will not go on cooldown, allowing the empowered attack to be re-used.\n* {{tip|Spell shield}} will block the damage and debuff.\n* Performing an action after the animation is played, but before dealing damage will start the attack timer, and you must wait before you attack again, although the buff is not lost.",
+      "notes": "* ''Crushing Blow'' has no cast time.\n* This will trigger upon structures and wards (save for the debuff).\n* Both the damage and the armor reduction debuff are negated if the attack is {{ai|Counter Strike|Jax|dodged}} or {{ai|Aegis Protection|Pantheon|blocked}}.\n** If the attack {{tip|Blind|misses}} ''Crushing Blow'' will not go on cooldown, allowing the empowered attack to be re-used.\n* {{tip|Spell shield}} will block the damage and debuff.\n* Performing an action after the animation is played, but before dealing damage will start the attack timer, and you must wait before you attack again, although the buff is not lost.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "40",
       "cooldownBurn": "9/8/7/6/5",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Physical Damage|{{ap|10 to 130}} {{as|(+ {{ap|0 to 40}}% AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['10','40','70','100','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','10','20','30','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "levelingtext": "{{st|Modified Physical Damage|{{ap|10 to 130}} {{as|(+ {{ap|100 to 140}}% AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Modified Physical Damage</span>: <span><spell-span :list=\"['10','40','70','100','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['100','110','120','130','140']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -130,11 +125,11 @@
                 130
               ],
               [
-                0,
-                10,
-                20,
-                30,
-                40
+                100,
+                110,
+                120,
+                130,
+                140
               ],
               null
             ],
@@ -147,11 +142,14 @@
                   0.25,
                   0.3
                 ]
+              },
+              {
+                "target_total_armor": []
               }
             ],
             "st_slices": [
               "Armor Reduction",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span>"
             ]
           },
           "subeffects": [
@@ -171,10 +169,11 @@
                   0.2,
                   0.25,
                   0.3
-                ]
+                ],
+                "target_total_armor": []
               },
               "title": "Armor Reduction",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"armor\"><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's armor</span>",
               "damage_type": "none"
             }
           ]
@@ -205,7 +204,7 @@
         "full": "MonkeyKingDecoy.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
@@ -291,7 +290,7 @@
         "full": "MonkeyKingNimbus.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
@@ -300,7 +299,7 @@
         "{{sbc|Active:}} '''Wukong''' {{tip|dashes}} on a cloud to the target enemy and sends out {{tip|untargetable}} ''clones'' to attack up to two additional enemies near the primary target, dealing {{as|physical damage}} to each enemy struck. The ''clones'' can block non-targeted attacks or abilities for {{fd|0.25}} seconds after hitting their targets.",
         "Upon hitting his target, '''Wukong''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 4 seconds."
       ],
-      "notes": "* It applies a stack of {{ri|Electrocute}} / {{ri|Phase Rush}} even if the target is {{tip|untargetable}}.\n* The created ''clones'' are considered champions for {{tip|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
+      "notes": "* It applies a stack of {{ri|Electrocute}} / {{ri|Phase Rush}} even if the target is {{tip|untargetable}}.\n* The created ''clones'' are considered champions for {{ii|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "45/50/55/60/65",
@@ -410,14 +409,14 @@
         "full": "MonkeyKingSpinToWin.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Wukong''' spins his staff around for up to 4 seconds, becomes {{tip|pacify|pacified}} and gains {{sti|ms|{{as|{{pp|8|type=time active|key=%|5 to 40|0.5 to 4|formula=5% '''bonus''' movement speed every half second. ''This is capped at 4 seconds.''}} '''bonus''' movement speed|ms}}}}. Reactivating ''Cyclone'' cancels it immediately.",
-        "The spin deals {{as|physical damage}} to nearby enemies every second. Enemies affected by ''Cyclone'' for the first time are briefly {{tip|airborne|knocked up}}."
+        "The spin deals {{as|physical damage}} to nearby enemies every {{fd|0.5}} seconds. Enemies affected by ''Cyclone'' for the first time are briefly {{tip|airborne|knocked up}}."
       ],
       "notes": "* While spinning, summoner spells and item actives can still be used, with the exception of {{nie|Crescent}}, the active portion of {{ii|Tiamat}}, {{ii|Ravenous Hydra}} and {{ii|Titanic Hydra}}.\n* {{tip|Spell shield}} will block one second of damage.",
       "skillkey": "R",
@@ -426,18 +425,18 @@
       "cooldownBurn": "120/105/90",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage Per Second|{{ap|20 to 200}} {{as|(+ 110% AD)}}|Total Physical Damage|{{ap|20*4 to 200*4}} {{as|(+ 440% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage Per Second</span>: <span><spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage Per Tick|{{ap|20/2 to 200/2}} {{as|(+ 55% AD)}}|Total Physical Damage|{{ap|20*4 to 200*4}} {{as|(+ 440% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Tick</span>: <span><spell-span :list=\"['10','32.5','55','77.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 55% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                20,
-                65,
-                110,
-                155,
-                200
+                10,
+                32.5,
+                55,
+                77.5,
+                100
               ],
               [
                 80,
@@ -449,15 +448,15 @@
             ],
             "as_ratios": [
               {
-                "player_total_ad": 1.1
+                "player_total_ad": 0.55
               },
               {
                 "player_total_ad": 4.4
               }
             ],
             "st_slices": [
-              "Physical Damage Per Second",
-              "<spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>",
+              "Physical Damage Per Tick",
+              "<spell-span :list=\"['10','32.5','55','77.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 55% AD)</span>",
               "Total Physical Damage",
               "<spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span>"
             ]
@@ -467,16 +466,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  20,
-                  65,
-                  110,
-                  155,
-                  200
+                  10,
+                  32.5,
+                  55,
+                  77.5,
+                  100
                 ],
-                "player_total_ad": 1.1
+                "player_total_ad": 0.55
               },
-              "title": "Physical Damage Per Second",
-              "str": "<spell-span :list=\"['20','65','110','155','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>",
+              "title": "Physical Damage Per Tick",
+              "str": "<spell-span :list=\"['10','32.5','55','77.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 55% AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -489,7 +488,7 @@
                   620,
                   800
                 ],
-                "player_total_ad": 1.1
+                "player_total_ad": 0.55
               },
               "title": "Total Physical Damage",
               "str": "<spell-span :list=\"['80','260','440','620','800']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 440% AD)</span>",
@@ -499,6 +498,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

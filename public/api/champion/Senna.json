@@ -1,0 +1,516 @@
+{
+  "patch": "V9.22",
+  "changes": "9.24.1",
+  "id": "Senna",
+  "name": "Senna",
+  "title": "the Redeemer",
+  "image": {
+    "full": "Senna.png",
+    "sprite": "champion3.png",
+    "group": "champion",
+    "x": 0,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "resource": "Mana",
+  "herotype": "Support",
+  "alttype": "Marksman",
+  "rangetype": "Ranged, Non-Projectile",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "physical",
+  "info": {
+    "attack": 7,
+    "defense": 2,
+    "magic": 6,
+    "difficulty": 7
+  },
+  "stats": {
+    "hp": 520,
+    "hpperlevel": 75,
+    "mp": 350,
+    "mpperlevel": 45,
+    "movespeed": 330,
+    "armor": 28,
+    "armorperlevel": 3.5,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 600,
+    "hpregen": 3.5,
+    "hpregenperlevel": 0.55,
+    "mpregen": 11.5,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 50,
+    "attackdamageperlevel": 0,
+    "attackspeedperlevel": 4,
+    "attackspeed": 0.625
+  },
+  "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Absolution",
+      "maxrank": 0,
+      "targeting": "[[Passive]] / [[Unit-targeted|Unit]]",
+      "image": {
+        "full": "Senna_Passive.Senna.png",
+        "sprite": "passive3.png",
+        "group": "passive",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Weakened Soul}}: '''Senna's''' [[basic attack]]s and abilities on enemy champions apply {{as|Mist}} for 4 seconds. '''Senna's''' next attack collects the {{as|Mist}} and deals {{as|{{pp|11|1;2;3;4;5;6;8;10;12;14;16|key=%}} of target's '''current''' health}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}. The same target cannot be collected more than once every few seconds.",
+        "Enemy {{tip|champion|champions}} and large {{tip|monster|monsters}} that die near '''Senna''' spawn a ''Mist Wraith'' for 8 seconds. Epic monsters spawn 2 ''Mist Wraiths'' instead. {{tip|minion|Minions}} and lesser {{tip|monster|monsters}} have a 25% chance to spawn ''Mist Wraiths'', reduced to {{fd|1.67}}% chance on those that '''Senna''' kills. '''Senna''' can basic attack a ''Mist Wraith'' to destroy it, gaining {{g|3}} and collecting its {{as|Mist}}.",
+        "{{sbc|Absolution}}: Each stack of {{as|Mist}} grants '''Senna''' {{sti|attack damage|{{as|1 '''bonus''' attack damage}}}}. For every 20 stacks, '''Senna''' also gains {{sti|attack range|25 '''bonus''' range}} and {{sti|critical strike chance|{{as|15% critical strike chance}}}}. Upon exceeding 100% {{as|critical strike chance}}, '''Senna''' converts 35% of the excess into {{sti|life steal}}.",
+        "{{sbc|Relic Cannon}}: '''Senna''' basic attacks deal {{as|20% AD}} {{as|bonus physical damage}} [[on-hit]] and grant {{as|{{pp|3|key=%|showtype=false|10 to 20|1;6;10}} of the target's movement speed}} as {{sti|movement speed|{{as|'''bonus''' movement speed}}}} for {{fd|0.5}} seconds on-hit."
+      ],
+      "notes": "* Minions executed by allies with {{nie|Spoils of War}} have a {{fd|1.67}}% chance to spawn Mist Wraiths.\n* A ''Mist Wraith'' can be hit by {{ai|Cosmic Binding|Bard}} and it will interact with it the same way minions or monsters interact with Cosmic Binding but it will not take damage.\n* ''Mist Wraith'' has a spawn animation, but is targetable immediately.\n* ''Mist Wraith'' grants a small amount of {{tip|sight}} around itself.\n* With {{ii|Runaan's Hurricane}}, ''Mist Wraiths'' can only be consumed if they are the main target, the secondary bolts will ignore them. Secondary targets of {{ii|Runaan's Hurricane}} will still apply {{as|Mist}}, and can still collect the {{as|Mist}} from champions, dealing the bonus damage.\n* {{tt|Excluding|Due to lack of available metric}} the range increase, one stack of ''Mist'' values approx. {{g|49}} ({{g|+3}} from ''Mist Wraith'' pickup). The bonuses have a gross value of {{g|59}} ({{g|44}} with Lifesteal).\n** {{as|1 AD}} is worth {{g|35}}. ''Absolution'' effectively boosts basic attacks with {{as|1.2 AD}}, making the value {{g|42}}.\n** {{sti|critical chance|0.75%}} Critical strike chance is worth {{g|24}}. ''Absolution'' reduces its efficiency by 70%, making the value ≈{{g|7}}.\n*** {{sti|life steal|0.26%}} Life steal is worth ≈{{g|9}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "SennaQ",
+      "name": "Piercing Darkness",
+      "maxrank": 5,
+      "cooldown": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Unit-targeted|Unit]]",
+      "target_range": "{{pp|15|600 to 1300|type=[[File:Absolution.png|20px|link=]] Mist|0 to 560}}",
+      "image": {
+        "full": "SennaQ.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} After a brief delay, '''Senna''' fires a spectral laser in the direction of the target unit, {{tip|heal|healing}} herself and allied {{tip|champions}} in a line, and dealing {{as|physical damage}} to enemy {{tip|minions}} and {{tip|champions}} in a thinner line.",
+        "Upon struck, enemy {{tip|Turrets}}, {{tip|Wards}}, {{ai|Absolution|Senna|''Mist Wraiths''}} and [[Champion_summoned_units#Targetable|any other attack-interactive units]] are considered basic attacked once, while {{tip|champions}} and {{tip|Turrets}} take {{tip|on-hit|on-hit effects}} (with all turret-specific rules applied).",
+        "Basic attacks reduce ''Piercing Darkness' '' {{sti|cooldown}} by 1 second [[on-hit]]."
+      ],
+      "notes": "* Senna can generally target anything that is not either explicitly {{tip|untargetable}} or herself.\n** Valid targets include anything that can be targeted by a basic attack from someone.\n* As for interactions, there's differences between specific units.\n**{{ai|Powder Keg|Gangplank}}: dealt 1 damage.\n**[[Wards|Ward]]: dealt 1 damage only if visible.\n*  To enemy {{tip|champions}} struck, ''Piercing Darkness'' applies {{ai|Absolution_2|Senna|{{sbc|Relic Cannon}}}}, collects {{ai|Absolution|Senna|{{as|Mist}}}} if there's one with relative effects proc.\n* ''Piercing Darkness'' deals no damage to enemy {{tip|Turrets}} itself. The fact that {{tip|Turrets}} struck are considered basic attacked once by Senna was the reason damage came out.\n** This may be confirmed by that the damage follows the rule of [[Turret#Damaging_Turrets|Ability Power damage conversion]]\n** Also this implements that the damage is not as described in this skill, but is same with a basic attack to {{tip|Turrets}} from Senna.\n* On-hit effects are applied in order of struck units' spawn ID. This matters for effects that are consumed on-hit (E.g. {{ii|Duskblade of Draktharr}}, {{nie|Spellblade}}), which are applied to the target with the lowest {{tt|Spawn ID|among champions, this would also be the enemy first pick in Blind Pick mode}}.\n** \"spawn ID\" is an unofficial abbreviation to describe the spawn order for all units at the beginning of games, below are some examples.\n** If '''Senna''' targets an enemy champion but hits at least one more enemy champion simultaneously, {{ri|Press the Attack}}'s first stack will be applied to that target. If no champion was targeted, it will default to the champion with the lowest Spawn ID out of the ones struck by the ability. Whether the effect stacks up on a champion or not when multiple enemy champions are stuck also depends on Spawn ID.\n** IF ''Piercing Darkness'' struck an enemy champion and turret simultaneously, with {{ii|Rapid Firecannon}} fully charged, {{iis|Rapid Firecannon}} effect will most likely proc on the turret since turrets are often spawned before champions.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "costBurn": "70/80/90/100/110",
+      "cooldownBurn": "15",
+      "effects": [
+        {
+          "levelingtext": "{{st|Healing|{{ap|40 to 120}} {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 25% AP)}}}}\n{{st|Physical Damage|{{ap|40 to 160}} {{as|(+ 40% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Healing</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              [
+                40,
+                70,
+                100,
+                130,
+                160
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.4
+              },
+              {
+                "player_total_ap": 0.25
+              },
+              {
+                "player_bonus_ad": 0.4
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_bonus_ad": 0.4,
+                "player_total_ap": 0.25
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "SennaW",
+      "name": "Last Embrace",
+      "maxrank": 5,
+      "cooldown": [
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Direction-targeted|Direction]]",
+      "target_range": 1175,
+      "image": {
+        "full": "SennaW.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Senna''' throws a globule of Black Mist in the target direction, dealing {{as|physical damage}} and sticking onto the first enemy hit.",
+        "After a 1 second delay or when the target dies, the Black Mist spreads out of the target, {{tip|root|rooting}} them and nearby enemies for a few seconds."
+      ],
+      "notes": "* No additional details",
+      "skillkey": "W",
+      "skillid": "w1",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "11",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|70 to 250}} {{as|(+ 70% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                70,
+                115,
+                160,
+                205,
+                250
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
+                ],
+                "player_bonus_ad": 0.7000000000000001
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Root Duration|{{ap|1.25 to 2.25}}}}",
+          "str": "<ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.25,
+                1.5,
+                1.75,
+                2,
+                2.25
+              ]
+            ],
+            "st_slices": [
+              "Root Duration",
+              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.25,
+                  1.5,
+                  1.75,
+                  2,
+                  2.25
+                ]
+              },
+              "title": "Root Duration",
+              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "SennaE",
+      "name": "Curse of the Black Mist",
+      "maxrank": 5,
+      "cooldown": [
+        26,
+        24.5,
+        23,
+        21.5,
+        20
+      ],
+      "cost": [
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Point Blank [[Area of effect]]",
+      "image": {
+        "full": "SennaE.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} After a 1 second delay, '''Senna''' surrounds herself with an aura of mist and gains {{tip|camouflage}} for a duration. '''Senna's''' basic attacks and abilities briefly remove the effects of camouflage.",
+        "Allied champions who enter the mist gain {{sbc|Wraith Form}} for a duration equal to the remaining duration.",
+        "{{sbc|Wraith Form:}} Gain {{tip|Camouflage}}. Enemies will gain {{tip|obscured}} vision of ''Wraiths'' moving outside of the mist. Performing a basic attack or casting an ability removes ''Wraith Form'', which cannot be regained for 2 seconds.",
+        "'''Senna''' and allies camouflaged by ''Curse of the Black Mist'' also gain {{sti|ms|{{as|20% '''bonus''' movement speed}}}}."
+      ],
+      "notes": "* Allies affected by the ''Curse of the Blast Mist'' aura receive a buff called ''Cloak of Mist''.\n* Obscured targets appear as ''Wraiths'', hence the name. The wraith model does not distinguish which champion is obscured. \n* In-game, the 'Cloak of Mist' buff grants camouflage and the 'Wraith Form' buff obscures you and grants movement speed. However, 'Cloak of Mist' has the unspecified effect of negating the obscuring effects of 'Wraith Form' (i.e. you're not a wraith while inside the mist); you have the bonus movement speed even when you're not a wraith (e.g. inside the mist or an enemy is nearby); and 'Wraith Form' also grants the functionality of camouflage (i.e. you are treated as a camouflaged unit with regards to [[turret|turret vision]] and {{ii|Control Ward|Control Wards}}). \n** Given this overly complex interaction between the two buffs granted as well as the overlapping effects, it is easier to describe the effects as a single buff that is modified in specific circumstances rather than trying to establish a new game mechanic. \n** Senna likewise has her aura buff and the 'Wraith Form' buff, but her 'Wraith Form' does not share gameplay functionality with other allies benefiting from Wraith Form. For Senna, the appearance of being a wraith is a form-swap while camouflaged (similar to {{cai|Demon Shade|Evelynn}}). Senna will remain in her wraith form when she is detected so long as the camouflage effect isn't broken, and her wraith's appearance is very distinct from other wraiths.\n* {{ii|Oracle's Extract}} has no effect on champions with the ''Cloak of Mist'' buff, even though Oracle's Extract has a range of 500, while the camouflage radius is only 280 or 400 in the case of '''Senna''' herself.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "costBurn": "70",
+      "cooldownBurn": "26/24.5/23/21.5/20",
+      "effects": [
+        {
+          "levelingtext": "{{st|Effect Duration|{{ap|6 to 8}}}}",
+          "str": "<ul><li><span class=\"blue\">Effect Duration</span>: <span><spell-span :list=\"['6','6.5','7','7.5','8']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                6,
+                6.5,
+                7,
+                7.5,
+                8
+              ]
+            ],
+            "st_slices": [
+              "Effect Duration",
+              "<spell-span :list=\"['6','6.5','7','7.5','8']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  6,
+                  6.5,
+                  7,
+                  7.5,
+                  8
+                ]
+              },
+              "title": "Effect Duration",
+              "str": "<spell-span :list=\"['6','6.5','7','7.5','8']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "SennaR",
+      "name": "Dawning Shadow",
+      "maxrank": 3,
+      "cooldown": [
+        160,
+        140,
+        120
+      ],
+      "cost": [
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Direction-targeted|Direction]]",
+      "target_range": "Global",
+      "image": {
+        "full": "SennaR.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 336,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Senna''' fires two beams of spectral light in the target direction, the center beam deals {{as|physical damage}} to enemy {{tip|champions}} hit and afflicts them with {{as|Mist}}.",
+        "The broad beam {{tip|shields}} '''Senna''' and allied champions hit for 3 seconds."
+      ],
+      "notes": "* '''Dawning Shadow''' grants a brief area of {{tip|sight}} along its path, this is negated while under the effects of {{cai|Paranoia|Nocturne}}.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "costBurn": "100",
+      "cooldownBurn": "160/140/120",
+      "effects": [
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|250 to 500}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['250','312.5','375','437.5','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                250,
+                312.5,
+                375,
+                437.5,
+                500
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['250','312.5','375','437.5','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  250,
+                  312.5,
+                  375,
+                  437.5,
+                  500
+                ],
+                "player_bonus_ad": 1,
+                "player_total_ap": 0.5
+              },
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['250','312.5','375','437.5','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Shield|{{ap|120 to 200}} {{as|(+ 40% AP)}}<br />{{as|(+ {{fd|1.5}} per {{ai|Absolution|Senna|Mist}} collected)|mist}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['120','140','160','180','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span><br /><span class=\"mist\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Senna\">Mist<template #content>Absolution</template></HtmlTooltip> collected)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                120,
+                140,
+                160,
+                180,
+                200
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_unknown": 1.5
+              }
+            ],
+            "st_slices": [
+              "Shield",
+              "<spell-span :list=\"['120','140','160','180','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span><br /><span class=\"mist\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Senna\">Mist<template #content>Absolution</template></HtmlTooltip> collected)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  120,
+                  140,
+                  160,
+                  180,
+                  200
+                ],
+                "player_total_ap": 0.4,
+                "player_total_unknown": 1.5
+              },
+              "title": "Shield",
+              "str": "<spell-span :list=\"['120','140','160','180','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span><br /><span class=\"mist\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Senna\">Mist<template #content>Absolution</template></HtmlTooltip> collected)</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

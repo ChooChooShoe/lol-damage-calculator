@@ -1,22 +1,18 @@
 {
   "patch": "V8.5",
-  "changes": "9.18.1",
+  "changes": "9.22.1",
   "id": "Kaisa",
-  "key": "145",
   "name": "Kai'Sa",
   "title": "Daughter of the Void",
   "image": {
     "full": "Kaisa.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman"
-  ],
   "resource": "Mana",
   "herotype": "",
   "alttype": "",
@@ -62,15 +58,15 @@
         "full": "Kaisa_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} '''Kai'Sa's''' basic attacks deal {{pp|7|4 to 10|1;3;6;9;11;14;17}} {{as|(+ {{pp|5|changedisplay=true|1 to 5|1;4 to 16}} per Plasma stack)|buzzword}} {{as|(+ {{pp|5|key=%|type=Plasma stacks|changedisplay=true|10 to 20|0 to 4}} AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}.",
-        "{{sbc|Caustic Wounds:}} '''Kai'Sa's''' [[basic attack]]s, {{ai|Void Seeker|Kai'Sa}}, and nearby allies' {{tip|immobilize|immobilizing}} effects mark enemies with {{as|Plasma|buzzword}} for 4 seconds, stacking up to 4 times. '''Kai'Sa's''' attacks or {{ai|Void Seeker|Kai'Sa}} can then rupture enemies with {{as|4 Plasma|buzzword}}, consuming them to deal {{as|15% {{as|(+ {{fd|2.5}}% per 100 AP)}} of the target's '''missing''' health}} {{as|magic damage}}, capped at 400 against monsters.",
-        "{{sbc|Living Weapon:}} When reaching a certain amount of stat from {{tt|items|Does not include item buffs (e.g. Guinsoo's Rageblade's or Ardent Censer's).}} and {{tt|stat growth|Includes all stats gained when leveling (including base AD gained), but does not include stats at level 1.}}, '''Kai'Sa''' can evolve the related [[champion ability|basic ability]]. This has a channel time of 2 seconds, and the upgrade is canceled if the said amount of stat isn't reached anymore."
+        "{{sbc|Innate - Caustic Wounds:}} '''Kai'Sa's''' [[basic attack]]s, {{ai|Void Seeker|Kai'Sa}}, and nearby allies' {{tip|immobilize|immobilizing}} effects mark enemies with {{as|Plasma|buzzword}} for 4 seconds, stacking up to 4 times. '''Kai'Sa's''' attacks or {{ai|Void Seeker|Kai'Sa}} can then rupture enemies with {{as|4 Plasma|buzzword}}, consuming them to deal {{as|15% {{as|(+ {{fd|2.5}}% per 100 AP)}} of the target's '''missing''' health}} {{as|magic damage}}, capped at 400 against monsters.",
+        "{{sbc|Innate - Living Weapon:}} Upon gaining a set amount of permanent stats from items and {{tt|stat growth|Includes all stats gained when leveling (including base AD gained), but does not include stats at level 1.}}, '''Kai'Sa''' can evolve the related [[champion ability|basic ability]]. This has a channel time of 2 seconds, and the upgrade is lost if the stat requirement is no longer met."
       ],
       "notes": "* Allied {{tip|immobilize|immobilizing}} effects '''cannot''' rupture the {{as|Plasma|buzzword}}.\n* {{as|Plasma|buzzword}} which exceed the 5th stack are applied normally.\n* Stats from runes do not count toward the minimum requirement to upgrade a [[champion ability|basic ability]].",
       "skillkey": "I",
@@ -102,17 +98,17 @@
         "full": "KaisaQ.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Kai'Sa''' releases a swarm of 6 missiles that evenly distributes among nearby {{tip|sight|visible}} enemies, each dealing {{tip|physical damage|{{as|physical damage}}}}. {{tip|Minions}} below {{sti|health|{{as|35% health}}}} take double damage.",
-        "Non-minions take 30% damage from missiles beyond their first.",
-        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|{{as|{{pp|round=ceil|100-{{Data Kai'Sa|pst2|dam_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} '''bonus''' attack damage}}}} to upgrade – ''Icathian Rain'' fires 10 missiles."
+        "Non-minions take 25% damage from missiles beyond their first.",
+        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|{{as|{{pp|round=ceil|100-{{ccd|Kai'Sa|dam_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} '''bonus''' attack damage}}}} to upgrade – ''Icathian Rain'' fires 10 missiles."
       ],
-      "notes": "* ''Icathian Rain'' has no cast time and does not interrupt '''Kai'Sa's''' previous orders.\n** ''Icathian Rain'' acquires its targets upon cast. Moving will not change its targets.\n* Charging {{ai|Supercharge|Kai'Sa}} will not stop the missiles from firing.",
+      "notes": "* {{tip|Spell shield|Spell shields}} only block the damage from a single missile.\n* ''Icathian Rain'' has no cast time and does not interrupt '''Kai'Sa's''' previous orders.\n** ''Icathian Rain'' acquires its targets upon cast. Moving will not change its targets.\n* Charging {{ai|Supercharge|Kai'Sa}} will not stop the missiles from firing.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "55",
@@ -167,49 +163,58 @@
           ]
         },
         {
-          "levelingtext": "{{st|Reduced Damage|{{ap|45*0.3 to 110*0.3}} {{as|(+ {{ap|35*0.3}}% '''bonus''' AD)}} {{as|(+ {{ap|40*0.3}}% AP)}}|Maximum Single-Target Damage|{{ap|45*(1+0.3*5) to 110*(1+0.3*5)}} {{as|(+ {{ap|35*(1+0.3*5)}}% '''bonus''' AD)}} {{as|(+ {{ap|40*(1+0.3*5)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['13.5','18.375','23.25','28.125','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['10.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><spell-span :list=\"['112.5','153.125','193.75','234.375','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['87.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "levelingtext": "{{st|Reduced Damage|{{ap|45*0.25 to 110*0.25}} {{as|(+ {{ap|35*0.25}}% '''bonus''' AD)}} {{as|(+ {{ap|40*0.25}}% AP)}}|Maximum Single-Target Damage|{{ap|45*(1+0.25*5) to 110*(1+0.25*5)}} {{as|(+ {{ap|35*(1+0.25*5)}}% '''bonus''' AD)}} {{as|(+ {{ap|40*(1+0.25*5)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['11.25','15.313','19.375','23.438','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['10']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><spell-span :list=\"['101.25','137.813','174.375','210.938','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['78.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                13.5,
-                18.375,
-                23.25,
-                28.125,
-                33
+                11.25,
+                15.313,
+                19.375,
+                23.438,
+                27.5
               ],
               [
-                10.5
+                8.75
               ],
               [
-                12
+                10
               ],
               [
-                112.5,
-                153.125,
-                193.75,
-                234.375,
-                275
+                101.25,
+                137.813,
+                174.375,
+                210.938,
+                247.5
               ],
               [
-                87.5
+                78.75
               ],
               null
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": [
-                  1
+                  0.9
                 ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_bonus_ad": []
+              },
+              {
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "Reduced Damage",
-              "<spell-span :list=\"['13.5','18.375','23.25','28.125','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['10.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['11.25','15.313','19.375','23.438','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['10']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "Maximum Single-Target Damage",
-              "<spell-span :list=\"['112.5','153.125','193.75','234.375','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['87.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['101.25','137.813','174.375','210.938','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['78.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -217,65 +222,70 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  13.5,
-                  18.375,
-                  23.25,
-                  28.125,
-                  33
+                  11.25,
+                  15.313,
+                  19.375,
+                  23.438,
+                  27.5
                 ],
                 "player_bonus_ad": [
-                  1
-                ]
+                  0.9
+                ],
+                "player_total_ap": []
               },
               "title": "Reduced Damage",
-              "str": "<spell-span :list=\"['13.5','18.375','23.25','28.125','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['10.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['11.25','15.313','19.375','23.438','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['10']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  10.5
+                  8.75
                 ],
                 "player_bonus_ad": [
-                  1
-                ]
+                  0.9
+                ],
+                "player_total_ap": []
               },
               "title": "Maximum Single-Target Damage",
-              "str": "<spell-span :list=\"['112.5','153.125','193.75','234.375','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['87.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['101.25','137.813','174.375','210.938','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['78.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Maximum Evolved Single-Target Damage|{{ap|45*(1+0.3*9) to 110*(1+0.3*9)}} {{as|(+ {{ap|35*(1+0.3*9)}}% '''bonus''' AD)}} {{as|(+ {{ap|40*(1+0.3*9)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Evolved Single-Target Damage</span>: <span><spell-span :list=\"['166.5','226.625','286.75','346.875','407']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['129.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['148']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "levelingtext": "{{st|Maximum Evolved Single-Target Damage|{{ap|45*(1+0.25*9) to 110*(1+0.25*9)}} {{as|(+ {{ap|35*(1+0.25*9)}}% '''bonus''' AD)}} {{as|(+ {{ap|40*(1+0.25*9)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Evolved Single-Target Damage</span>: <span><spell-span :list=\"['146.25','199.063','251.875','304.688','357.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['113.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['130']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                166.5,
-                226.625,
-                286.75,
-                346.875,
-                407
+                146.25,
+                199.063,
+                251.875,
+                304.688,
+                357.5
               ],
               [
-                129.5
+                113.75
               ],
               null
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": [
-                  1.48
+                  1.3
                 ]
+              },
+              {
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "Maximum Evolved Single-Target Damage",
-              "<spell-span :list=\"['166.5','226.625','286.75','346.875','407']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['129.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['148']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['146.25','199.063','251.875','304.688','357.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['113.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['130']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -283,18 +293,19 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  166.5,
-                  226.625,
-                  286.75,
-                  346.875,
-                  407
+                  146.25,
+                  199.063,
+                  251.875,
+                  304.688,
+                  357.5
                 ],
                 "player_bonus_ad": [
-                  1.48
-                ]
+                  1.3
+                ],
+                "player_total_ap": []
               },
               "title": "Maximum Evolved Single-Target Damage",
-              "str": "<spell-span :list=\"['166.5','226.625','286.75','346.875','407']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['129.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['148']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['146.25','199.063','251.875','304.688','357.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['113.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['130']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -326,13 +337,13 @@
         "full": "KaisaW.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kai'Sa''' fires a Void blast in the target direction, stopping at the first enemy hit, dealing {{as|magic damage}}, {{tip|true sight|revealing}} them for 4 seconds and applying {{as|2 Plasma|buzzword}}.",
+        "{{sbc|Active:}} '''Kai'Sa''' fires a Void blast in the target direction, stopping at the first enemy hit, dealing {{as|magic damage}}, gaining {{tip|true sight}} of them for 4 seconds and applying {{as|2 Plasma|buzzword}}.",
         "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|{{as|100 ability power}}}} to upgrade – ''Void Seeker'' applies {{as|3 Plasma|buzzword}} and refunds 50% of the {{sti|cooldown}} against {{tip|champions}}."
       ],
       "notes": "* If the stacks detonate {{as|Plasma|buzzword}}, any remaining stacks are reapplied afterwards.\n* ''Void Seeker'' also deals ''Second Skin's'' damage based on {{as|Plasma|buzzword}} stacks on the target.\n** This increases the base damage by ''Second Skin's'' base damage, and further increased by at least {{as|{{fd|22.5}}% AP}} ({{tt|10%|0 stack Plasma AP ratio}} + {{tt|{{fd|12.5}}%|1 stack Plasma AP ratio}}), and up to {{as|{{fd|37.5}}% AP}} ({{tt|{{fd|17.5}}%|3 stacks Plasma AP ratio}} + {{tt|20%|4 stacks Plasma AP ratio}}).\n** When evolved, the AP ratio increases by at least {{as|{{fd|37.5}}% AP}} ({{tt|10%|0 stack Plasma AP ratio}} + {{tt|{{fd|12.5}}%|1 stack Plasma AP ratio}} + {{tt|15%|2 stacks Plasma AP ratio}}), and up to {{as|{{fd|52.5}}% AP}} ({{tt|15%|2 stacks Plasma AP ratio}} + {{tt|{{fd|17.5}}%|3 stacks Plasma AP ratio}} + {{tt|20%|4 stacks Plasma AP ratio}}).",
@@ -410,24 +421,24 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "[[Buff]]",
       "target_range": "",
       "image": {
         "full": "KaisaE.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kai'Sa''' {{tip|disarm|charges}} for {{as|{{pp|6|type='''bonus''' attack speed|1.2 to 0.6|key1=%|0 to 100|displayformula=0.5% per 1% '''bonus''' attack speed. ''This is capped at 50% reduction.''}}|attack speed}} seconds, gaining {{sti|ms|{{As|'''bonus''' movement speed}}}}, increased by {{as|{{pp|11|type='''bonus''' attack speed|key=%|0 to 100|key1=%|0 to 100|displayformula=1% per 1% '''bonus''' attack speed.}}}}.",
-        "After charging up, '''Kai'Sa''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} for 4 seconds.",
-        "'''Kai'Sa's''' [[basic attack]]s reduce ''Supercharge's'' {{sti|cooldown}} by {{fd|0.5}} seconds.",
-        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|as|{{as|{{pp|round=ceil|key=%|100-{{Data Kai'Sa|pst2|as_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} '''bonus''' attack speed}}}} to upgrade – ''Supercharge'' grants {{tip|invisibility}} for {{fd|0.5}} seconds."
+        "{{sbc|Active:}} '''Kai'Sa''' {{tip|disarm|charges}} for {{as|{{pp|6|type='''bonus''' attack speed|1.2 to 0.6|key1=%|0 to 100|displayformula=0.5% per 1% '''bonus''' attack speed. ''This is capped at 50% reduction.''}}|attack speed}} seconds, gaining {{sti|ms|{{As|'''bonus''' movement speed}}}}, increased by {{as|{{pp|11|type='''bonus''' attack speed|key=%|0 to 100|key1=%|0 to 100|displayformula=1% per 1% '''bonus''' attack speed.}}|as}}.",
+        "After charging up, '''Kai'Sa''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} and her windup percentage is reduced to {{fd|6.44%}} for 4 seconds.",
+        "''Supercharge's'' {{sti|cooldown}} is reduced by {{fd|0.5}} seconds [[on-attack]].",
+        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|as|{{as|{{pp|round=ceil|key=%|100-{{ccd|Kai'Sa|as_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} '''bonus''' attack speed}}}} to upgrade – ''Supercharge'' grants {{tip|invisibility}} for {{fd|0.5}} seconds."
       ],
-      "notes": "* '''Kai'Sa''' can use instant summoner spells (ie. {{si|Flash}}) during the charge.\n* {{iis|Runaan's Hurricane}} bolts will '''not''' reduce ''Supercharge's'' cooldown.",
+      "notes": "* No additional details.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30",
@@ -550,13 +561,13 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Auto",
       "target_range": "{{ap|1500|2000|2500}}",
       "image": {
         "full": "KaisaR.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
@@ -564,7 +575,7 @@
       "description": [
         "{{sbc|Active:}} '''Kai'Sa''' {{tip|shields}} herself and {{tip|dashes}} to a target location near an enemy champion {{tt|recently affected by {{as|Plasma|buzzword}}|about 4 seconds if ruptured}}. The shield holds for 2 seconds upon arrival."
       ],
-      "notes": "* Kai'Sa will move to the casting location regardless of whether she can dash.",
+      "notes": "* '''Kai'Sa''' will move to the casting location regardless of whether she can dash.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -625,6 +636,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

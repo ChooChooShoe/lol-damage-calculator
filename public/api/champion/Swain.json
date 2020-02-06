@@ -2,22 +2,17 @@
   "patch": "V1.0.0.102",
   "changes": "9.15.1",
   "id": "Swain",
-  "key": "50",
   "name": "Swain",
   "title": "the Noxian Grand General",
   "image": {
     "full": "Swain.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 384,
-    "y": 48,
+    "x": 48,
+    "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Mage",
-    "Fighter"
-  ],
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Fighter",
@@ -64,8 +59,8 @@
         "full": "Swain_P.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 384,
-        "y": 48,
+        "x": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -105,7 +100,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 384,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -120,8 +115,8 @@
       "cooldownBurn": "10/8.5/7/5.5/4",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)/100)}} {{as|(+ {{ap|40*(1+15/100*4) to 40*(1+35/100*4)}}% AP)}}}}\n{{st|Bonus Damage Per Bolt|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Damage Per Bolt</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Damage Per Bolt|{{ap|15 to 35}}%|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)*4/100)}} {{as|(+ {{ap|40*(1+(15 to 35)*4/100)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Damage Per Bolt</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,33 +129,26 @@
                 135
               ],
               [
-                64,
-                72,
-                80,
-                88,
-                96
-              ],
-              null
+                15,
+                20,
+                25,
+                30,
+                35
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.4
               },
               {
-                "player_total_ap": [
-                  0.15,
-                  0.2,
-                  0.25,
-                  0.3,
-                  0.35
-                ]
+                "player_total_ap": 401153541
               }
             ],
             "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "Bonus Damage Per Bolt",
+              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "Maximum Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -176,24 +164,24 @@
                 ],
                 "player_total_ap": 0.4
               },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
+              "title": "Bonus Damage Per Bolt",
+              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "unknown"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  64,
-                  72,
-                  80,
-                  88,
-                  96
+                  15,
+                  20,
+                  25,
+                  30,
+                  35
                 ],
                 "player_total_ap": 0.4
               },
               "title": "Maximum Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['64','72','80','88','96']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -226,7 +214,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 432,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -234,7 +222,7 @@
         "{{sbc|Active:}} '''Swain''' summons a demonic eye at the target area, {{tip|sight|revealing}} it for 2 seconds, which explodes after {{fd|1.5}} seconds, dealing {{as|magic damage}} to all enemies hit, halved against minions, and {{tip|slow|slowing}} them for {{fd|2.5}} seconds.",
         "Enemy champions are {{tip|sight|revealed}} for an additional duration and have a {{as|Soul Fragment|buzzword3}} ripped from them."
       ],
-      "notes": "* Even if [[spell shield]]ed, Swain will still acquire the {{as|Soul Fragments|buzzword3}}.\n* Enemies are able to see the VFX and hear the SFX of ''Vision of Empire'' through the [[fog of war]].",
+      "notes": "* Even if [[spell shield]]ed, Swain will still acquire the {{as|Soul Fragments|buzzword3}}.\n* Enemies are able to see the VFX and hear the SFX of ''Vision of Empire'' through the [[fog of war]].\n*With the right circumstances, Swain can get 2 {{as|Soul Fragments|buzzword3}} by getting a takedown with {{ai|Vision of Empire|Swain}} and being within range of the target for {{ai|Ravenous Flock|Swain}} to grant another {{as|Soul Fragment|buzzword3}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70/85/100/115/130",
@@ -367,7 +355,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 0,
-        "y": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -520,7 +508,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 48,
-        "y": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -530,7 +518,7 @@
         "After draining any amount of health with ''Demonic Ascension'', '''Swain''' can end its effects early to cast {{ai|Demonflare|Swain}}, and automatically does so at the end of its duration.",
         "If '''Swain''' dies during the channel time of ''Demonic Ascension'', the cooldown is fully refunded."
       ],
-      "notes": "* ''Demonic Ascension'' can drain stealthed enemies.\n* {{ai|Demonic Ascension}} persists through revival effects (e.g {{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}).",
+      "notes": "* ''Demonic Ascension'' can drain stealthed enemies.\n* {{ai|Demonic Ascension}} persists through {{tip|stasis}} effects (e.g {{ii|Guardian Angel}}, {{ii|Zhonya's Hourglass}}).",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -749,12 +737,12 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 48,
-        "y": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Swain''' releases a nova of energy, dealing a base amount of {{as|magic damage}} to all nearby enemies plus 75% of the health drained during {{ai|Demonic Ascension|Swain}}, with the total damage capped."
+        "{{sbc|Active:}} '''Swain''' releases a nova of energy, dealing a base amount of {{as|magic damage}} to all nearby enemies plus {{fd|37.5}}% of the health drained during {{ai|Demonic Ascension|Swain}}, with the total damage capped."
       ],
       "notes": "* ''Demon Flare'' passes through champions. Effects like {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} will block the portion of the nova they intercept.",
       "skillkey": "R",
@@ -836,6 +824,5 @@
         }
       ]
     }
-  },
-  "skillcount": 6
+  }
 }

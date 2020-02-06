@@ -1,23 +1,18 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.17.1",
+  "changes": "9.23.1",
   "id": "Fiddlesticks",
-  "key": "9",
   "name": "Fiddlesticks",
   "title": "the Harbinger of Doom",
   "image": {
     "full": "Fiddlesticks.png",
     "sprite": "champion0.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Mage",
-    "Support"
-  ],
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
@@ -63,14 +58,14 @@
         "full": "FiddleSticks_Passive.png",
         "sprite": "passive0.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} Standing still or {{tip|channels|channeling}} abilities for {{fd|1.5}} seconds grants '''Fiddlesticks''' {{sti|ms|{{as|{{pp|4|25 to 40|1 to 16|key=%}} '''bonus''' movement speed}}}}, that lasts for {{fd|1.5}} seconds once he starts moving. Being {{tip|immobilize|immobilized}} will not trigger ''Dread'', and will reset the timer.",
-        "After 5 seconds of not moving, '''Fiddlesticks''' will stand completely still and become a scarecrow."
+        "After 5 seconds of not moving, '''Fiddlesticks''' will stand completely still."
       ],
       "notes": "* Standing still and basic attacking will not reset ''Dread's'' timer.\n* Unlike {{ai|Guerrilla Warfare|Teemo}} ''Fiddlesticks'' can perform other actions so long as he does not move.",
       "skillkey": "I",
@@ -102,7 +97,7 @@
         "full": "Terrify.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
@@ -181,13 +176,13 @@
         "full": "Drain.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiddlesticks''' tethers himself to the target enemy and {{tip|channels}} for up to 5 seconds. While channeling, '''Fiddlesticks''' deals {{tip|magic damage|{{as|magic damage}}}} each second, and {{tip|heal|heals}} himself for a percentage of the [[damage]] done.",
+        "{{sbc|Active:}} '''Fiddlesticks''' [[tether|tethers]] himself to the target enemy and {{tip|channels}} for up to 5 seconds. While channeling, he deals {{tip|magic damage|{{as|magic damage}}}} each second, and {{tip|heal|heals}} himself for a percentage of the [[damage]] done.",
         "If the target breaks the tether by moving out of range, ''Drain'' ends immediately. If the target dies before the channel completes, the {{sti|cooldown}} is reduced by its remaining duration."
       ],
       "notes": "* ''Drain'' deals damage every {{fd|0.25}} seconds.\n* ''Drain'' has a brief [[channel]] time ({{fd|0.1}} seconds) on cast before activation.\n* ''Drain's'' channel will be interrupted if ''Fiddlesticks'' performs any other action, uses [[item]] actives, or is disabled.\n** Using [[summoner spell]]s (except {{si|Flash}} and {{si|Teleport}}) will not interrupt the channel.\n* ''Drain'' will not continue channeling through {{ai|Death Defied|Karthus}} or {{ai|Icathian Surprise|Kog'Maw}}.\n* ''Drain'' will continue channeling through [[Untargetability|untargetable]] abilities ({{ai|Playful|Fizz}}, {{ai|Sanguine Pool|Vladimir}}) so long as the target remains in tether range.\n* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.",
@@ -197,8 +192,8 @@
       "cooldownBurn": "4/3.75/3.5/3.25/3",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage per Second|{{ap|80 to 180}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|80*5 to 180*5}} {{as|(+ 225% AP)}}}}{{st|Heal Ratio|{{ap|60 to 80}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['400','525','650','775','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span></span></li></ul><ul><li><span class=\"blue\">Heal Ratio</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage per Second|{{ap|80 to 180}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|80*5 to 180*5}} {{as|(+ {{ap|45*5}}% AP)}}}}{{st|Heal Ratio|{{ap|60 to 80}}%|Heal per Second|{{ap|(60 to 80)/100*(80 to 180)}} {{as|(+ {{ap|(60 to 80)/100*45}}% AP)}}|Total Heal|{{ap|(60 to 80)/100*(80 to 180)*5}} {{as|(+ {{ap|(60 to 80)/100*45*5}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['400','525','650','775','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['225']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><ul><li><span class=\"blue\">Heal Ratio</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Heal per Second</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Total Heal</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -218,24 +213,37 @@
                 900
               ],
               [
-                60,
-                65,
-                70,
-                75,
-                80
-              ]
+                225
+              ],
+              null
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.45
               },
               {
-                "player_total_ap": 2.25
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
+              },
+              {
+                "player_total_ap": 6080100.45
+              },
+              {
+                "player_total_ap": 60801004.550000004
               }
             ],
             "st_slices": [
               "Heal Ratio",
-              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Heal per Second",
+              "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
+              "Total Heal",
+              "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -249,10 +257,56 @@
                   155,
                   180
                 ],
-                "player_total_ap": 2.25
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
               },
               "title": "Heal Ratio",
               "str": "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  400,
+                  525,
+                  650,
+                  775,
+                  900
+                ],
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
+              },
+              "title": "Heal per Second",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  225
+                ],
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
+              },
+              "title": "Total Heal",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -278,22 +332,22 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted|Unit]] / [[Auto-targeted|Auto]]",
       "target_range": 750,
       "image": {
         "full": "FiddlesticksDarkWind.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Fiddlesticks''' sends a crow to the target enemy that bounces to nearby enemies up to 5 times, prioritizing targets not yet hit or targets affected by ''{{ai|Drain|Fiddlesticks}}'', dealing {{as|magic damage}} with each bounce and {{tip|silence|silencing}} them for {{fd|1.25}} seconds once.",
-        "[[Monster]]s take 100% '''bonus''' damage."
+        "{{tip|Monster|Monsters}} take twice as much damage."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* Applies {{tip|spell damage}} in a {{tip|area of effect}} range.\n* The ''crow'' will vanish if the target becomes {{tip|untargetable}} but will keep on bouncing if the target has died.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "70/75/80/85/90",
@@ -466,7 +520,7 @@
         "full": "Crowstorm.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
@@ -474,7 +528,7 @@
       "description": [
         "{{sbc|Active:}} After {{tip|channels|channeling}} for {{fd|1.5}} seconds, '''Fiddlesticks''' {{tip|blinks}} to the target location with a murder of crows flying wildly around him for 5 seconds, dealing {{as|magic damage}} to nearby enemies each second."
       ],
-      "notes": "* ''Crowstorm'' deals damage every {{fd|0.5}} seconds.\n* If ''Fiddlesticks'' is {{tip|ground|grounded}} while channeling ''Crowstorm'', he will be interrupted and the ability will then go on full cooldown.\n* If ''Fiddlesticks'' is {{tip|root|rooted}} while channeling ''Crowstorm'' he will still blink to the target location.\n** The root will affect him for the remaining duration once he blinks.\n* ''Fiddlesticks'' can use [[summoner spell]]s while channeling so long as he doesn't have to move to do so.\n* [[File:Crowstorm Surprise Party.png|30px|border|link=]] - {{csl|Fiddlesticks|Surprise Party}} has this special icon for this ability.",
+      "notes": "* ''Crowstorm'' applies a tick of damage every {{fd|0.5}} seconds.\n* {{tip|Ground|Grounding}} effects {{tip|interrupt}} the channel instantly and places ''Crowstorm'' on a full {{sti|cooldown|link=true}}.\n** {{tip|Root|Roots}} do not cancel the channel and allows ''Crowstorm'' to cast normally.\n*** The root will still affect him for the remaining duration once he {{tip|blink|blinks}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -554,6 +608,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

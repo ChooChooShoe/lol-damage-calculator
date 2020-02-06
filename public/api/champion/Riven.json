@@ -2,22 +2,17 @@
   "patch": "V1.0.0.125",
   "changes": "9.19.1",
   "id": "Riven",
-  "key": "92",
   "name": "Riven",
   "title": "the Exile",
   "image": {
     "full": "Riven.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 240,
+    "x": 288,
     "y": 0,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Assassin"
-  ],
   "resource": "None",
   "herotype": "Fighter",
   "alttype": "Slayer",
@@ -63,7 +58,7 @@
         "full": "RivenRunicBlades.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 240,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
@@ -92,22 +87,23 @@
         0
       ],
       "targeting": "Direction",
-      "target_range": 260,
+      "target_range": 225,
       "image": {
         "full": "RivenTriCleave.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} towards the target nearest to the cursor or in the direction she is currently facing, dealing {{as|physical damage}} to all enemies in front of her. ''Broken Wings'' can then be reactivated twice within the next 4 seconds, with the second cast refreshing the timer.",
-        "The third cast {{tip|airborne|knocks up}} and damages all enemies around '''Riven''' in an expanded radius. The third cast is also the only cast able to ''dash'' over terrain.",
-        "Each ''Broken Wings'' cast causes her next basic attack to occur more quickly. This is not considered a basic attack reset."
+        "The third cast {{tip|airborne|knocks up}} and damages all enemies around '''Riven''' in an expanded radius. The third cast is also the only cast able to ''dash'' over terrain, and can do so longer than its normal range.",
+        "Each ''Broken Wings'' cast causes her next basic attack to occur more quickly. This is not considered a basic attack reset.",
+        "Targeted ''Broken Wings'' casts grant {{tip|sight}} of an area around '''Riven''' to the enemies."
       ],
-      "notes": "* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.\n* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.\n* {{tip|Spell shield}} will only block the third cast.",
+      "notes": "* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}}.\n* The damage radius is centered 100 units in front of '''Riven'''.\n* The third cast also {{tip|airborne|knocks back}} enemies away from the epicenter by 75 units.\n* {{tip|Spell shield}} will only block the third cast.\n* Since it's not considered a basic attack reset it does not count for {{ri|Hail of Blades}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -115,7 +111,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|15 to 95}} {{as|(+ {{ap|45 to 65}}% AD)}}|Total Physical Damage|{{ap|15*3 to 95*3}} {{as|(+ {{ap|45*3 to 65*3}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -152,13 +148,16 @@
                   1.8,
                   1.95
                 ]
+              },
+              {
+                "player_total_ad": []
               }
             ],
             "st_slices": [
               "Physical Damage",
               "<spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Total Physical Damage",
-              "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -203,7 +202,7 @@
                 ]
               },
               "title": "Total Physical Damage",
-              "str": "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -233,7 +232,7 @@
         "full": "RivenMartyr.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 144,
         "w": 48,
         "h": 48
@@ -312,19 +311,19 @@
         0
       ],
       "targeting": "Direction",
-      "target_range": 325,
+      "target_range": 250,
       "image": {
         "full": "RivenFeint.png",
-        "sprite": "spell9.png",
+        "sprite": "spell10.png",
         "group": "spell",
-        "x": 384,
-        "y": 144,
+        "x": 0,
+        "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{sti|shield|shielding}} herself for {{fd|1.5}} seconds.",
-        "''Other abilities can be cast during the dash and their cast time is cancelled when used at the end of the dash.''"
+        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{sti|shield|shielding}} herself for {{fd|1.5}} seconds. If she targets an enemy with '''Valor''', she briefly {{tip|sight|reveals}} herself and the area around her to the enemies.",
+        "''Other abilities can be cast during the dash and their cast time is cancelled if used at the end or briefly after the dash.''"
       ],
       "notes": "* ''Valor'' can be used to bypass player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Cataclysm|Jarvan IV}}) but not to go through walls.",
       "skillkey": "E",
@@ -395,10 +394,10 @@
       "targeting": "None",
       "image": {
         "full": "RivenFengShuiEngine.png",
-        "sprite": "spell9.png",
+        "sprite": "spell10.png",
         "group": "spell",
-        "x": 432,
-        "y": 144,
+        "x": 48,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -429,15 +428,16 @@
       "targeting": "Direction",
       "image": {
         "full": "RivenFengShuiEngine.png",
-        "sprite": "spell9.png",
+        "sprite": "spell10.png",
         "group": "spell",
-        "x": 432,
-        "y": 144,
+        "x": 48,
+        "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven''' unleashes a wave of energy in a cone, dealing {{as|physical damage}} to all enemies hit, increased by {{as|{{pp|9|type='''missing''' health|key=%|0 to 200|key1=%|0 to 75|formula=2.667% per 1% missing health. ''This is capped at 200% bonus damage at 75% missing health.''}}|health}}."
+        "{{sbc|Active:}} '''Riven''' unleashes a wave of energy in a cone, dealing {{as|physical damage}} to all enemies hit, increased by {{as|{{pp|9|type='''missing''' health|key=%|0 to 200|key1=%|0 to 75|formula=2.667% per 1% missing health. ''This is capped at 200% bonus damage at 75% missing health.''}}|health}}.",
+        "''Wind Slash'' briefly grants {{tip|sight|vision}} of an area around '''Riven''' to the enemies."
       ],
       "notes": "* No additional details.",
       "skillkey": "R",
@@ -519,6 +519,5 @@
         }
       ]
     }
-  },
-  "skillcount": 6
+  }
 }

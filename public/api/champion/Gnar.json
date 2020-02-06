@@ -1,23 +1,18 @@
 {
   "patch": "V4.14",
-  "changes": "9.16.1",
+  "changes": "9.24.2",
   "id": "Gnar",
-  "key": "150",
   "name": "Gnar",
   "title": "the Missing Link",
   "image": {
     "full": "Gnar.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 144,
+    "x": 192,
     "y": 0,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Tank"
-  ],
   "resource": "Rage",
   "herotype": "Marksman",
   "alttype": "",
@@ -63,32 +58,30 @@
         "full": "Gnar_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 144,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Gnar|Mini Gnar}}:}} While in '''Mini Gnar''' form, he gains '''bonus''' {{sti|ms|{{as|movement speed}}}}, {{sti|range|attack range}}, {{as|attack speed growth}} and {{sti|{{as|attack speed}}}}.",
-        "{{sbc|Innate:}} '''Mini Gnar''' generates {{pp|3|4 to 11|1 to 11}} ''{{ai|Rage Gene|Gnar|Rage}}'' over 2 seconds upon dealing or receiving [[damage]]. Against non-[[champion]]s, basic attacks and {{ai|Boomerang Throw|Gnar}} instantly generate {{pp|3|0.5;0.875;1.375|1 to 11}} ''Rage''. Against champions, {{ai|Boomerang Throw|Gnar}} instantly generates {{pp|3|1;1.75;2.75|1 to 11}} ''Rage'', and basic attacks instantly generate {{pp|3|2;3.5;5.5|1 to 11}}. {{ai|Boomerang Throw|Gnar}} can only generate ''Rage'' once per cast, and grants ''Rage'' based on the first enemy hit. '''Gnar's''' ''Rage'' decays if he has not dealt or taken damage in the last 13 seconds.",
+        "{{sbc|Innate - Mini Gnar:}} While in '''Mini Gnar''' form, he gains '''bonus''' {{sti|ms|{{as|movement speed}}}}, {{sti|range|attack range}}, {{as|attack speed growth}} and {{sti|{{as|attack speed}}}}.",
+        "{{sbc|Innate - Rage Gene:}} '''Mini Gnar''' generates {{pp|4;7;11|1 to 11}} ''{{ai|Rage Gene|Gnar|Rage}}'' over 2 seconds upon dealing or receiving [[damage]]. Against non-[[champion]]s, basic attacks and {{ai|Boomerang Throw|Gnar}} instantly generate {{ft|{{pp2|4*0.125;7*0.125;11*0.125|1 to 11|round=false}} ''Rage''|{{fd|12.5%}} of the amount}}. Against champions, {{ai|Boomerang Throw|Gnar}} instantly generates {{ft|{{pp2|4*0.25;7*0.25;11*0.25|1 to 11|round=false}} ''Rage''|25% of the amount}}, and basic attacks instantly generate {{ft|{{pp2|4*0.5;7*0.5;11*0.5|1 to 11|round=false}}|50% of the amount}}. {{ai|Boomerang Throw|Gnar}} can only generate ''Rage'' once per cast, and grants ''Rage'' based on the first enemy hit. '''Gnar's''' ''Rage'' decays if he has not dealt or taken damage in the last 13 seconds.",
         "At maximum ''{{ai|Rage Gene 2|Gnar|Rage}}'', casting an ability or after 4 seconds will ''{{ai|Rage Gene 3|Gnar|transform}}'' him into {{ci|Mega Gnar}} for 15 seconds, during which '''Gnar's''' ''Rage'' depletes. Afterwards '''Gnar''' returns to '''Mini Gnar''' and is too ''{{ai|Rage Gene 4|Gnar|tired}}'' to generate ''Rage'' for 15 seconds. '''Gnar''' retains his {{sti|health|{{as|current '''percentage''' health}}}} when he returns to '''Mini Gnar'''.",
-        "{{sbc|{{ci|Mega Gnar}}:}} '''Mega Gnar''' has different abilities, although they share ''Mini Gnar's'' ability cooldowns. While in '''Mega Gnar''' form, he loses all '''Mini Gnar's''' buffs and instead has increased {{sti|ad|{{as|'''base''' AD}}}}, {{sti|health|{{as|'''base''' health}}}}, {{sti|armor|{{as|'''base''' armor}}}}, and {{sti|mr|{{as|'''base''' magic resistance}}}}. '''Gnar''' [[healing|restores]] {{sti|{{as|health}}}} equal to the increase."
+        "{{sbc|Innate - Mega Gnar:}} '''Mega Gnar''' has different abilities, although they share ''Mini Gnar's'' ability cooldowns. While in '''Mega Gnar''' form, he loses all '''Mini Gnar's''' buffs and instead has increased {{sti|ad|{{as|'''base''' AD}}}}, {{sti|health|{{as|'''base''' health}}}}, {{sti|armor|{{as|'''base''' armor}}}}, and {{sti|mr|{{as|'''base''' magic resistance}}}}. '''Gnar''' [[healing|restores]] {{sti|{{as|health}}}} equal to the increase."
       ],
-      "notes": "* The ''Rage'' generated upon dealing or receiving damage occurs over 2 seconds with 4 ticks every {{fd|0.5}} seconds. It also does not stack but instead refreshes with subsequent applications (of dealing or receiving damage).\n* The bonus rage generation on basic attacks counts as an on-hit effect, and is triggered by {{ii|Runaan's Hurricane}} and {{ii|Guinsoo's Rageblade}}.\n* Against non-champions, basic attacks and {{ai|Boomerang Throw|Gnar}} instantly generate '''{{fd|12.5}}%''' of the ''Rage'' over time. While, against champions, {{ai|Boomerang Throw|Gnar}} instantly generates '''25%''', and basic attacks '''50%'''.\n* In-game, the value on the ''Rage'' bar always displays rounded down to the nearest integer.\n* {{cis|Mega Gnar}} gained health is not affected by {{tip|Grievous Wounds}} or increased healing from items and runes.\n* When returning to {{ci|Gnar|Mini Gnar}}, ''Gnar'' will only retain his current health percentage, not current health total.\n** This is intentional to prevent Gnar from simply triggering ''Rage Gene'' in order to heal himself over time.\n* '''Gnar's''' abilities share cooldowns across forms.\n* The final stats, after ''Rage Gene'' being applied, can be seen on '''Gnar''' and '''Mega Gnar''' respective data template, in the [[Gnar|front page]].\n** '''Mini Gnar''' gains {{pp|key=%|5.5+({{Data Gnar|pst2|as_lvl}}-{{Data Mega Gnar|pst2|as_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula=5.5 base+{{#expr:{{Data Gnar|pst2|as_lvl}}-{{Data Mega Gnar|pst2|as_lvl}}}} growth}} '''bonus''' attack speed.\n** '''Mega Gnar''' gains {{pp|({{Data Mega Gnar|pst2|hp_base}}-{{Data Gnar|pst2|hp_base}})+({{Data Mega Gnar|pst2|hp_lvl}}-{{Data Gnar|pst2|hp_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{Data Mega Gnar|pst2|hp_base}}-{{Data Gnar|pst2|hp_base}}}} base+{{#expr:{{Data Mega Gnar|pst2|hp_lvl}}-{{Data Gnar|pst2|hp_lvl}}}} growth}} base health, {{pp|({{Data Mega Gnar|pst2|arm_base}}-{{Data Gnar|pst2|arm_base}})+({{Data Mega Gnar|pst2|arm_lvl}}-{{Data Gnar|pst2|arm_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{Data Mega Gnar|pst2|arm_base}}-{{Data Gnar|pst2|arm_base}}}} base+{{#expr:{{Data Mega Gnar|pst2|arm_lvl}}-{{Data Gnar|pst2|arm_lvl}}}} growth}} base armor, {{pp|({{Data Mega Gnar|pst2|mr_base}}-{{Data Gnar|pst2|mr_base}})+({{Data Mega Gnar|pst2|mr_lvl}}-{{Data Gnar|pst2|mr_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{Data Mega Gnar|pst2|mr_base}}-{{Data Gnar|pst2|mr_base}}}} base+{{#expr:{{Data Mega Gnar|pst2|mr_lvl}}-{{Data Gnar|pst2|mr_lvl}}}} growth}} base magic resistance, and {{pp|({{Data Mega Gnar|pst2|dam_base}}-{{Data Gnar|pst2|dam_base}})+({{Data Mega Gnar|pst2|dam_lvl}}-{{Data Gnar|pst2|dam_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{Data Mega Gnar|pst2|dam_base}}-{{Data Gnar|pst2|dam_base}}}} base+{{#expr:{{Data Mega Gnar|pst2|dam_lvl}}-{{Data Gnar|pst2|dam_lvl}}}} growth}} base attack damage.",
+      "notes": "* The ''Rage'' generated upon dealing or receiving damage occurs over 2 seconds with 4 ticks every {{fd|0.5}} seconds. It also does not stack but instead refreshes with subsequent applications (of dealing or receiving damage).\n* The bonus rage generation on basic attacks counts as an on-hit effect, and is triggered by {{ii|Runaan's Hurricane}} and {{ii|Guinsoo's Rageblade}}.\n* In-game, the value on the ''Rage'' bar always displays rounded down to the nearest integer.\n* {{cis|Mega Gnar}} gained health is not affected by {{tip|Grievous Wounds}} or increased healing from items and runes.\n* When returning to {{ci|Gnar|Mini Gnar}}, ''Gnar'' will only retain his current health percentage, not current health total.\n** This is intentional to prevent Gnar from simply triggering ''Rage Gene'' in order to heal himself over time.\n* '''{{ai|Rage Gene 4|Gnar|tired}}''' is treated as a self-cast ''buff''. As such, the 15 seconds that it lasts for can not be reduced by cooldown reduction or {{si|cleanse|cleansed}}.\n* '''Gnar's''' abilities share cooldowns across forms.\n* The final stats, after ''Rage Gene'' being applied, can be seen on '''Gnar''' and '''Mega Gnar''' respective data template, in the [[Gnar|front page]].\n** '''Mini Gnar''' gains {{pp|key=%|5.5+({{ccd|Gnar|as_lvl}}-{{ccd|Mega Gnar|as_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula=5.5 base+{{#expr:{{ccd|Gnar|as_lvl}}-{{ccd|Mega Gnar|as_lvl}}}} growth}} '''bonus''' attack speed.\n** '''Mega Gnar''' gains {{pp|({{ccd|Mega Gnar|hp_base}}-{{ccd|Gnar|hp_base}})+({{ccd|Mega Gnar|hp_lvl}}-{{ccd|Gnar|hp_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{ccd|Mega Gnar|hp_base}}-{{ccd|Gnar|hp_base}}}} base+{{#expr:{{ccd|Mega Gnar|hp_lvl}}-{{ccd|Gnar|hp_lvl}}}} growth}} base health, {{pp|({{ccd|Mega Gnar|arm_base}}-{{ccd|Gnar|arm_base}})+({{ccd|Mega Gnar|arm_lvl}}-{{ccd|Gnar|arm_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{ccd|Mega Gnar|arm_base}}-{{ccd|Gnar|arm_base}}}} base+{{#expr:{{ccd|Mega Gnar|arm_lvl}}-{{ccd|Gnar|arm_lvl}}}} growth}} base armor, {{pp|({{ccd|Mega Gnar|mr_base}}-{{ccd|Gnar|mr_base}})+({{ccd|Mega Gnar|mr_lvl}}-{{ccd|Gnar|mr_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{ccd|Mega Gnar|mr_base}}-{{ccd|Gnar|mr_base}}}} base+{{#expr:{{ccd|Mega Gnar|mr_lvl}}-{{ccd|Gnar|mr_lvl}}}} growth}} base magic resistance, and {{pp|({{ccd|Mega Gnar|dam_base}}-{{ccd|Gnar|dam_base}})+({{ccd|Mega Gnar|dam_lvl}}-{{ccd|Gnar|dam_lvl}})*(x-1)*(0.7025+0.0175*(x-1))|formula={{#expr:{{ccd|Mega Gnar|dam_base}}-{{ccd|Gnar|dam_base}}}} base+{{#expr:{{ccd|Mega Gnar|dam_lvl}}-{{ccd|Gnar|dam_lvl}}}} growth}} base attack damage.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Movespeed|{{pp|10 to 24;26;28;30|displayformula=9 + 1 per level up to 15, then + 2 per level}}|Total Movespeed|{{pp|335 to 349;351;353;355|displayformula=334 + 1 per level up to 15, then + 2 per level}}}}{{st|Bonus Range|{{pp|225 to 325}}|Total Range|{{pp|175+225 to 175+325}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movespeed</span>: <span><HtmlTooltip class=\"blue link\">10undefined − 24;26;28;30undefined (based on level)<template #content>Values: 10, 10.824, 11.647, 12.471, 13.294, 14.118, 14.941, 15.765, 16.588, 17.412, 18.235, 19.059, 19.882, 20.706, 21.529, 22.353, 23.176, 24, 26, 28, 30<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li><li><span class=\"blue\">Total Movespeed</span>: <span><HtmlTooltip class=\"blue link\">335undefined − 349;351;353;355undefined (based on level)<template #content>Values: 335, 335.824, 336.647, 337.471, 338.294, 339.118, 339.941, 340.765, 341.588, 342.412, 343.235, 344.059, 344.882, 345.706, 346.529, 347.353, 348.176, 349, 351, 353, 355<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li></ul><ul><li><span class=\"blue\">Bonus Range</span>: <span><HtmlTooltip class=\"blue link\">225undefined − 325undefined (based on level)<template #content>Values: 225, 230.882, 236.765, 242.647, 248.529, 254.412, 260.294, 266.176, 272.059, 277.941, 283.824, 289.706, 295.588, 301.471, 307.353, 313.235, 319.118, 325<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li><li><span class=\"blue\">Total Range</span>: <span><HtmlTooltip class=\"blue link\">175+225undefined − 175+325undefined (based on level)<template #content>Values: 400, 405.882, 411.765, 417.647, 423.529, 429.412, 435.294, 441.176, 447.059, 452.941, 458.824, 464.706, 470.588, 476.471, 482.353, 488.235, 494.118, 500<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li></ul>",
+          "levelingtext": "{{st|Bonus Movespeed|{{pp2|10 to 24 by 1;24 to 30|displayformula=9 + 1 per level up to 15, then + 2 per level}}|Total Movespeed|{{pp|335 to 349;351;353;355|displayformula=334 + 1 per level up to 15, then + 2 per level}}}}{{st|Bonus Range|{{pp|0 to 100}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movespeed</span>: <span><simple-tooltip class=\"capture-unknown\" dname=\"pp2 10 to 24 by 1;24 to 30 displayformula=9 + 1 per level up to 15, then + 2 per level\">Unknown value: pp2 10 to 24 by 1;24 to 30 displayformula=9 + 1 per level up to 15, then + 2 per level</simple-tooltip></span></li><li><span class=\"blue\">Total Movespeed</span>: <span><HtmlTooltip class=\"blue link\">335undefined − 349;351;353;355undefined (based on level)<template #content>Values: 335, 335.824, 336.647, 337.471, 338.294, 339.118, 339.941, 340.765, 341.588, 342.412, 343.235, 344.059, 344.882, 345.706, 346.529, 347.353, 348.176, 349, 351, 353, 355<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li></ul><ul><li><span class=\"blue\">Bonus Range</span>: <span><HtmlTooltip class=\"blue link\">0undefined − 100undefined (based on level)<template #content>Values: 0, 5.882, 11.765, 17.647, 23.529, 29.412, 35.294, 41.176, 47.059, 52.941, 58.824, 64.706, 70.588, 76.471, 82.353, 88.235, 94.118, 100<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "st_slices": [
               "Bonus Range",
-              "<HtmlTooltip class=\"blue link\">225undefined − 325undefined (based on level)<template #content>Values: 225, 230.882, 236.765, 242.647, 248.529, 254.412, 260.294, 266.176, 272.059, 277.941, 283.824, 289.706, 295.588, 301.471, 307.353, 313.235, 319.118, 325<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>",
-              "Total Range",
-              "<HtmlTooltip class=\"blue link\">175+225undefined − 175+325undefined (based on level)<template #content>Values: 400, 405.882, 411.765, 417.647, 423.529, 429.412, 435.294, 441.176, 447.059, 452.941, 458.824, 464.706, 470.588, 476.471, 482.353, 488.235, 494.118, 500<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>"
+              "<HtmlTooltip class=\"blue link\">0undefined − 100undefined (based on level)<template #content>Values: 0, 5.882, 11.765, 17.647, 23.529, 29.412, 35.294, 41.176, 47.059, 52.941, 58.824, 64.706, 70.588, 76.471, 82.353, 88.235, 94.118, 100<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>"
             ]
           }
         }
@@ -118,16 +111,16 @@
         "full": "GnarQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 384,
-        "y": 96,
+        "x": 0,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Gnar|Mini Gnar}} - Active:}} '''Gnar''' throws a boomerang forward in a line that deals {{tip|physical damage|{{as|physical damage}}}} and {{tip|slow|slows}} enemies for 2 seconds. The boomerang returns towards '''Gnar''' in a fixed line after reaching its maximum range or hitting an enemy, dealing 50% damage to subsequent targets.",
-        "Each enemy can only be hit once. Catching the boomerang while in mid-air refunds 40% of its {{sti|cooldown|maximum cooldown}}, while if caught at the end of its return flight it refunds completely."
+        "{{sbc|Active:}} '''Gnar''' throws a boomerang forward in a line that deals {{tip|physical damage|{{as|physical damage}}}} and {{tip|slow|slows}} enemies for 2 seconds. The boomerang returns towards '''Gnar''' in a fixed line after reaching its maximum range or hitting an enemy, dealing 50% damage to subsequent targets.",
+        "Each enemy can only be hit once. Catching the boomerang while in mid-air refunds 40% of its {{sti|cooldown|maximum cooldown}}."
       ],
-      "notes": "* The boomerang return direction is determined by which direction '''Gnar''' is heading, similar to {{cai|Spinning Axe|Draven}}, and is calculated at the apex of its flight.\n* Since the cooldown between the two is shared ''Mini Gnar'' may pick up a boulder and/or ''Mega Gnar'' may catch a boomerang.\n* Using ''Boomerang Throw'' during {{ai|Hop|Gnar}} will cause the boomerang to travel 1100 units from the destination where '''Gnar''' jumped.\n** As a result the boomerang animation glitches slightly in height.",
+      "notes": "* The boomerang return direction is determined by which direction '''Gnar''' is heading, similar to {{cai|Spinning Axe|Draven}}, and is calculated at the apex of its flight.\n* Since the cooldown between the two is shared ''Mini Gnar'' may pick up a {{tt|boulder|refunding 60% of the maximum cooldown time of ''Boomerang Throw''}} and/or ''Mega Gnar'' may catch a {{tt|boomerang|refunding 40% of the maximum cooldown time of ''Boulder Toss''}}.\n* The boomerang can only be caught on its return trajectory.\n* If '''Gnar''' is dashing, is displaced, or casts flash during the cast time, the boomerang will be launched from the position where he was at the start of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -234,24 +227,24 @@
         "full": "GnarQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 384,
-        "y": 96,
+        "x": 0,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Mega Gnar}} - Active:}} '''Gnar''' throws a boulder that stops when it hits an enemy, applying {{ais|Boomerang Throw|Gnar}} {{tip|slow}} to all nearby enemies and dealing {{as|physical damage}}.",
+        "{{sbc|Active:}} '''Gnar''' throws a boulder that stops when it hits an enemy, applying {{ais|Boomerang Throw|Gnar}} {{tip|slow}} to all nearby enemies and dealing {{as|physical damage}}.",
         "'''Gnar''' can pick up the boulder by moving within 90 units of it, refunding 60% of its {{sti|cooldown|maximum cooldown}}."
       ],
-      "notes": "* Since the cooldown between the two is shared ''Mini Gnar'' may pick up a boulder and/or ''Mega Gnar'' may catch a boomerang.\n* Gnar is locked out of picking up his boulder for {{fd|0.3}} seconds after throwing it.\n* The {{ai|Boulder Toss|Gnar|Boulder}} will stop if colliding with {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}.",
+      "notes": "* Since the cooldown between the two is shared ''Mini Gnar'' may pick up a {{tt|boulder|refunding 60% of the maximum cooldown time of ''Boomerang Throw''}} and/or ''Mega Gnar'' may catch a {{tt|boomerang|refunding 40% of the maximum cooldown time of ''Boulder Toss''}}.\n* Gnar is locked out of picking up his boulder for {{fd|0.3}} seconds after throwing it.\n* The {{ai|Boulder Toss|Gnar|Boulder}} will stop if colliding with {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}.",
       "skillkey": "Q",
       "skillid": "q2",
       "costBurn": "0",
       "cooldownBurn": "2",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|5 to 165}} {{as|(+ 120% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|5 to 165}} {{as|(+ 140% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 140% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -266,12 +259,12 @@
             ],
             "as_ratios": [
               {
-                "player_total_ad": 1.2
+                "player_total_ad": 1.4000000000000001
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span>"
+              "<spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 140% AD)</span>"
             ]
           },
           "subeffects": [
@@ -285,10 +278,10 @@
                   125,
                   165
                 ],
-                "player_total_ad": 1.2
+                "player_total_ad": 1.4000000000000001
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span>",
+              "str": "<spell-span :list=\"['5','45','85','125','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 140% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -318,13 +311,13 @@
         "full": "GnarW.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 432,
-        "y": 96,
+        "x": 48,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Gnar|Mini Gnar}} - Passive:}} Every {{ai|Hyper 2|Gnar|third}} attack or ability on the same target within {{fd|3.5}} seconds deals {{tip|magic damage|{{as|'''bonus''' magic damage}}}} (capped against monsters) and grants '''Gnar''' {{pp|type = [[File:GNAR!.png|20px|border]] GNAR!'s rank|4|key=%|30 to 75|0 to 3|displayformula = 30%+15% per GNAR!'s rank|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds.",
+        "{{sbc|Passive:}} Every {{ai|Hyper 2|Gnar|third}} attack or ability on the same target within {{fd|3.5}} seconds deals {{tip|magic damage|{{as|'''bonus''' magic damage}}}} (capped against {{tip|monster|monsters}}) and grants '''Gnar''' {{pp|type = [[File:GNAR!.png|20px|border]] GNAR!'s rank|4|key=%|30 to 75|0 to 3|displayformula = 30%+15% per GNAR!'s rank|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds.",
         "'''Gnar''' gains ''Hyper's'' {{sti|ms|{{as|'''bonus''' movement speed}}}} when he leaves {{ci|Mega Gnar|Mega}} form."
       ],
       "notes": "* No additional details.",
@@ -441,13 +434,13 @@
         "full": "GnarW.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 432,
-        "y": 96,
+        "x": 48,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Mega Gnar}} - Active:}} '''Gnar''' slams in the target direction, dealing {{as|physical damage}} to all enemies struck and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
+        "{{sbc|Active:}} '''Gnar''' slams in the target direction, dealing {{as|physical damage}} to all enemies struck and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
       ],
       "notes": "* No additional details.",
       "skillkey": "W",
@@ -456,18 +449,18 @@
       "cooldownBurn": "7",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|25 to 105}} {{as|(+ 100% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['25','45','65','85','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|25 to 145}} {{as|(+ 100% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['25','55','85','115','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 25,
-                45,
-                65,
+                55,
                 85,
-                105
+                115,
+                145
               ]
             ],
             "as_ratios": [
@@ -477,7 +470,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['25','45','65','85','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
+              "<spell-span :list=\"['25','55','85','115','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
             ]
           },
           "subeffects": [
@@ -486,15 +479,15 @@
               "ratios": {
                 "base_damage": [
                   25,
-                  45,
-                  65,
+                  55,
                   85,
-                  105
+                  115,
+                  145
                 ],
                 "player_total_ad": 1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['25','45','65','85','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
+              "str": "<spell-span :list=\"['25','55','85','115','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -525,13 +518,13 @@
         "full": "GnarE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Gnar|Mini Gnar}} - Active:}} '''Gnar''' {{tip|dash|leaps}} to a target location, gaining {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
+        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to a target location, gaining {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
         "If '''Gnar''' lands on a unit he will {{tip|dash|bounce}} 525 units further in the same direction.",
         "Landing on an enemy deals {{as|physical damage}} and {{tip|slow|slows}} it by 80% for {{fd|0.5}} seconds."
       ],
@@ -645,14 +638,14 @@
         "full": "GnarE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ci|Mega Gnar}} - Active:}} '''Gnar''' {{tip|dash|leaps}} to a target location and deals ''Hop's'' damage to nearby enemies on landing.",
-        "{{sbc|Hop and Crunch:}} If ''Crunch'' is used to transform, '''Gnar''' will still be able to {{tip|dash|bounce}}. ''Crunch's'' area of effect is dealt in both areas, though enemies can only be damaged once.",
+        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to a target location and deals ''Hop's'' damage to nearby enemies on landing.",
+        "If ''Crunch'' is used to transform, '''Gnar''' will still be able to {{tip|dash|bounce}} as per {{ai|Hop|Gnar}}. ''Crunch's'' area of effect is dealt in both areas, though enemies can only be damaged once.",
         "Enemies '''Gnar''' lands directly on top of are dealt ''Hop's'' {{tip|slow}}."
       ],
       "notes": "* ''Gnar'' is locked out of using any other abilities during ''Crunch'', but he can still transform mid-air if he reaches 100 ''Rage'' during the jump of ''Hop''.",
@@ -685,12 +678,12 @@
         0,
         0
       ],
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "image": {
         "full": "GnarR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 144,
         "w": 48,
         "h": 48
@@ -864,6 +857,5 @@
         }
       ]
     }
-  },
-  "skillcount": 8
+  }
 }

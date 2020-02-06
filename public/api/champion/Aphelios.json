@@ -1,0 +1,640 @@
+{
+  "patch": "V9.24",
+  "changes": "10.1.1",
+  "id": "Aphelios",
+  "name": "Aphelios",
+  "title": "the Weapon of the Faithful",
+  "image": {
+    "full": "Aphelios.png",
+    "sprite": "champion0.png",
+    "group": "champion",
+    "x": 336,
+    "y": 0,
+    "w": 48,
+    "h": 48
+  },
+  "resource": "Mana",
+  "herotype": "Marksman",
+  "alttype": "",
+  "rangetype": "Ranged",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "physical",
+  "info": {
+    "attack": 6,
+    "defense": 2,
+    "magic": 1,
+    "difficulty": 10
+  },
+  "stats": {
+    "hp": 500,
+    "hpperlevel": 86,
+    "mp": 348,
+    "mpperlevel": 42,
+    "movespeed": 325,
+    "armor": 28,
+    "armorperlevel": 3,
+    "spellblock": 26,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 3.25,
+    "hpregenperlevel": 0.55,
+    "mpregen": 6.5,
+    "mpregenperlevel": 0.4,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 57,
+    "attackdamageperlevel": 2.2,
+    "attackspeedperlevel": 2.1,
+    "attackspeed": 0.64
+  },
+  "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "The Hitman and the Seer",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Aphelios''' has access to an arsenal of 5 ''Moonstone Weapons'', created by his sister '''Alune'''. He equips two weapons at any one time, one as his {{as|main weapon}} and one as his {{as|off-hand}}. Each weapon has a unique [[basic attack]] and passive effect.",
+        "'''Aphelios''' begins the game with {{ai|Calibrum|Aphelios}} as his {{as|main weapon}} and {{ai|Severum|Aphelios}} in his {{as|off-hand}}, with {{ai|Gravitum|Aphelios}}, {{ai|Infernum|Aphelios}}, and {{ai|Crescendum|Aphelios}} queued in reserve. The queue order can be rearranged based on weapon usage.",
+        "{{sbc|Innate - Moonlight:}} Weapons spawn with 50 ''Moonlight'' for [[ammunition]], which is consumed on basic attacks or to cast his {{cci|Q.png|champion ability|abilities}}. Abilities that cause '''Aphelios''' to attack do not cost additional ''Moonlight'' on top of their ability cost. Once his {{as|main weapon}} is exhausted of ''Moonlight'', it is moved to the end of the queue and '''Aphelios''' equips the next available weapon from his reserve.",
+        "{{sbc|Innate - Weapon Master:}} '''Aphelios''' cannot improve his abilities with skill points. He starts the game with {{ai|Phase|Aphelios}} and gains access to {{cci|Q.png|champion ability|abilities}} at level 2. He gains access to {{ai|Moonlight Vigil|Aphelios}} at level 6, which improves automatically at levels 11 and 16. Instead, '''Aphelios''' may spend his skill points to gain {{as|{{sti|'''bonus''' attack damage}}}}, {{as|{{sti|'''bonus''' attack speed}}}} or {{as|{{sti|armor penetration|penetration versus {{sti|armor|'''bonus''' armor}}}}}}."
+      ],
+      "notes": "* The [[experience|level up]] for the bonus [[attack damage]], [[attack speed]], and [[armor penetration]] have hotkeys Q, W, E, respectively.\n** Assigning points '''does not''' follow the same rules as conventional point expenditure. The quickest you can get an individual statistic to rank-6 is by assigning points at {{ap|1|2|3|5|7|9}}.\n* An ammunition counter will appear to the right side of the screen at 10 or less ''Moonlight''.\n* Abilities can still be used with less than the required amount of ''Moonlight'', consuming all remaining ''Moonlight'' in the process.\n*{{ii|Runaan's Hurricane}} does not consume additional ''Moonlight'' for his basic attacks.\n* The icon for this ability changes based on the active skin and functions as '''Alune's''' portrait, similarly to '''Aphelios'''' portrait.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": [
+        {
+          "levelingtext": "{{st|Bonus Attack Damage|{{as|{{ap|4 to 24 6}}|ad}}}}\n{{st|Bonus Attack Speed|{{as|{{ap|6 to 36 6}}%|as}}}}\n{{st|Bonus-Armor Penetration|{{as|{{ap|3 to 18 6}}%|armor}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['4','8','12','16','20','24']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><span class=\"as\"><spell-span :list=\"['6','12','18','24','30','36']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus-Armor Penetration</span>: <span><span class=\"armor\"><spell-span :list=\"['3','6','9','12','15','18']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                4,
+                8,
+                12,
+                16,
+                20,
+                24
+              ],
+              [
+                6,
+                12,
+                18,
+                24,
+                30,
+                36
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  0.03,
+                  0.06,
+                  0.09,
+                  0.12,
+                  0.15,
+                  0.18
+                ]
+              },
+              {
+                "player_total_unknown": []
+              },
+              {
+                "player_total_unknown": []
+              }
+            ],
+            "st_slices": [
+              "Bonus-Armor Penetration",
+              "<span class=\"armor\"><spell-span :list=\"['3','6','9','12','15','18']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  4,
+                  8,
+                  12,
+                  16,
+                  20,
+                  24
+                ],
+                "player_total_unknown": []
+              },
+              "title": "Bonus-Armor Penetration",
+              "str": "<span class=\"armor\"><spell-span :list=\"['3','6','9','12','15','18']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "damage_type": "none"
+            }
+          ]
+        }
+      ]
+    },
+    "i2": {
+      "riotId": "",
+      "name": "Calibrum",
+      "maxrank": 0,
+      "cost": 1,
+      "costtype": "Moonlight per attack",
+      "targeting": "Unit",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Precision:}} '''Aphelios''' gains {{sti|range|100 '''bonus''' range}} while '''Calibrum''' is his {{as|main weapon}}. Enemies damaged by '''Calibrum''' via an ability are ''marked'' for {{fd|4.5}} seconds, {{tip|sight|revealing}} them for the duration. '''Aphelios's''' next basic attack against a ''marked'' target uses the current {{as|off-hand}} weapon and has {{sti|range|1800 range}} and '''bonus''' missile speed.",
+        "This attack will consume the marks from all targets, dealing 15 {{as|(+ 20% '''bonus''' AD)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to the main target for each mark consumed. If '''Calibrum''' is the current {{as|off-hand}} weapon, the empowered attack uses the {{as|main weapon}} instead."
+      ],
+      "notes": "* {{ais|Crescendum|Aphelios}} outgoing basic attack can bypass {{cai|W|Yasuo}} and {{cai|E|Braum}} but cannot while returning.\n* Triggered ''Marks'' apply on-hit effects and are considered a basic attack for {{ii|Runaan's Hurricane}}, but are not considered one for {{ii|Guinsoo's Rageblade}}.\n* The mark will not be triggered by {{ai|Onslaught|Aphelios}} attacks.\n* The empowered range will be drawn for '''Aphelios'''.",
+      "skillkey": "I",
+      "skillid": "i2",
+      "effects": []
+    },
+    "i3": {
+      "riotId": "",
+      "name": "Severum",
+      "maxrank": 0,
+      "cost": 1,
+      "costtype": "Moonlight per attack",
+      "targeting": "Unit",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Resurgent:}} Basic attacks with '''Severum''' don't use {{tip|projectiles}}.  '''Severum's''' attacks {{tip|heal}} him for {{pp|18|key=%|8 to 25}} of damage dealt.",
+        "Healing from '''Severum''' in excess of '''Aphelios''' {{as|{{sti|'''maximum''' health}}}} is converted into a {{tip|shield}} for an amount of up to {{pp|14|10;20 to 140|1;6 to 18}} {{as|(+ 6% '''maximum''' health)}}, lasting for up to 30 seconds."
+      ],
+      "notes": "",
+      "skillkey": "I",
+      "skillid": "i3",
+      "effects": []
+    },
+    "i4": {
+      "riotId": "",
+      "name": "Gravitum",
+      "maxrank": 0,
+      "cost": 1,
+      "costtype": "Moonlight per attack",
+      "targeting": "Unit",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Binding:}} '''Gravitum''' applies a 30% {{tip|slow}} for {{fd|3.5}} seconds, decaying to 10% after {{fd|0.7}} seconds."
+      ],
+      "notes": "",
+      "skillkey": "I",
+      "skillid": "i4",
+      "effects": []
+    },
+    "i5": {
+      "riotId": "",
+      "name": "Infernum",
+      "maxrank": 0,
+      "cost": 1,
+      "costtype": "Moonlight per attack",
+      "targeting": "Unit",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Incendiary:}} '''Infernum''' fires a firebolt towards the target enemy unit, splitting into four other firebolts in a cone behind it. The firebolt deals {{as|110% AD}} {{as|physical damage}} to the main target and {{as|{{pp|2|key=%|75 to 100|1 to 9}} AD}} {{as|physical damage}} to each secondary enemy it passes through, reduced to {{as|{{pp|2|key=%|34 to 45|1 to 9}} AD}} {{as|physical damage}} against {{tip|minion|minions}}.",
+        "{{tip|critical strike|Critical strikes}} spray eight firebolts over a 100% wider cone and deal bonus damage."
+      ],
+      "notes": "* No additional notes.",
+      "skillkey": "I",
+      "skillid": "i5",
+      "effects": []
+    },
+    "i6": {
+      "riotId": "",
+      "name": "Crescendum",
+      "maxrank": 0,
+      "cost": 1,
+      "costtype": "Moonlight per attack",
+      "targeting": "Unit",
+      "image": {
+        "full": "ApheliosP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 336,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Arcing:}} Basic attacks with '''Crescendum''' hurl the blade at the target, which lingers for {{fd|0.25}} seconds before homing back to '''Aphelios'''. He is {{tip|disarm|disarmed}} until he retrieves '''Crescendum''', but the attack timer is reset {{tt|once caught|This does not persist when swapping weapons.}}.",
+        "Whenever '''Aphelios''' casts an ability that would require him to throw '''Crescendum''', he instead throws a spectral ''Chakram'' at his target that similarly returns to him. '''Aphelios''' accumulates the ''Chakrams'' he catches, up to 20, which last for 5 seconds. Attacks against {{tip|champions}} and epic {{tip|monsters}} will refresh the lifespan on ''Chakrams''.",
+        "Basic attacks with '''Crescendum''' are empowered to deal {{as|{{pp2|0;then + 30; then + 26; then + 20; then + 14; then + 8; then + 5*x|0 to 20 by 1|type=number of Chakrams|key=%|formula=Each Chakram grants less bonus damage than the last, starting at 30% and diminishing to 5% for 6+ Chakrams.}} {{as|AD}}}} {{as|'''bonus''' physical damage}} and have a {{ap|0.16/1.5*100|round=2}}% ''wind up'' percentage, decreased to {{ap|0.1/1.5*100|round=2}}% when {{tip|critically strike|critically striking}}. The bonus damage from ''Chakrams'' can ''critically strike''."
+      ],
+      "notes": "* Accumulated Chakrams accompany Crescendum whenever Aphelios performs a basic attack. This is merely a visual representation of the increased damage, and the separate blades are not considered separate damage sources nor projectiles. \n* All ''Chakram'' stacks are lost if the '''Crescendum''' projectile is destroyed (i.e {{ai|W|Yasuo}}, {{ai|E|Braum}}).",
+      "skillkey": "I",
+      "skillid": "i6",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Weapons of the Faithful",
+      "maxrank": 6,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "The active effect of '''Aphelios'''' {{ai|Q|icononly=true}} varies based on his current {{as|main hand}} weapon.",
+        "The individual actives do not share a cooldown."
+      ],
+      "notes": "",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
+    },
+    "q2": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Moonshot",
+      "maxrank": 6,
+      "cooldown": [
+        5,
+        9.5,
+        9,
+        8.5,
+        8,
+        7.5
+      ],
+      "cost": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1450,
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Calibrum|Aphelios}} - Active:}} '''Aphelios''' fires a bolt of energy in a line, dealing {{pp|5|60 to 160|1 to 9}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 100% AP)}} {{as|physical damage}} to the first enemy hit."
+      ],
+      "notes": "* '''Moonshot's''' name is modified based on '''Aphelios'''' {{as|off-hand}} weapon:\n** {{ai|Severum|Aphelios|Resurgent Moonshot}}\n** {{ai|Gravitum|Aphelios|Binding Moonshot}}\n** {{ai|Infernum|Aphelios|Incendiary Moonshot}}\n** {{ai|Crescendum|Aphelios|Arcing Moonshot}}",
+      "skillkey": "Q",
+      "skillid": "q2",
+      "costBurn": "10",
+      "cooldownBurn": "5/9.5/9/8.5/8/7.5",
+      "effects": []
+    },
+    "q3": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Onslaught",
+      "maxrank": 6,
+      "cooldown": [
+        3,
+        9.5,
+        9,
+        8.5,
+        8,
+        7.5
+      ],
+      "cost": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Auto-targeted]]",
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Severum|Aphelios}} - Active:}} For {{fd|1.75}} seconds, '''Aphelios''' gains 20% {{as|(+ 10% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed}}}} and autonomously performs up to 6 {{as|(+ 3 per 100% '''bonus''' attack speed)}} attacks over the duration to the nearest enemy, prioritizing enemy {{tip|champions}}.",
+        "Attacks alternate between ''Severum'' and his current {{as|off-hand}} weapon, each dealing {{pp|5|10 to 30|1 to 9}} {{as|(+ 30% '''bonus''' AD)}} {{as|physical damage}}, 25% [[on-hit]] damage and can {{tip|critically strike}}."
+      ],
+      "notes": "* '''Severum's''' attacks are not {{tip|projectile|intercepted}}, but the attacks from the {{as|off-hand}} weapon are during ''Onslaught''.\n* ''Onslaught's'' name is modified based on '''Aphelios'''' {{as|off-hand}} weapon:\n** {{ai|Calibrum|Aphelios|Precision Onslaught}}\n** {{ai|Gravitum|Aphelios|Binding Onslaught}}\n** {{ai|Infernum|Aphelios|Incendiary Onslaught}}\n** {{ai|Crescendum|Aphelios|Arcing Onslaught}}\n* ''Onslaught'' doesn't apply [[on-attack effects]].\n* {{ai|Crescendum|Aphelios}} will not deal damage if blocked by {{ai|Wind Wall|Yasuo}}, but the stacks will still be gained.\n* Cosmetically, the ''Moonlight'' cost is consumed through the duration.",
+      "skillkey": "Q",
+      "skillid": "q3",
+      "costBurn": "10",
+      "cooldownBurn": "3/9.5/9/8.5/8/7.5",
+      "effects": []
+    },
+    "q4": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Binding Eclipse",
+      "maxrank": 6,
+      "cooldown": [
+        5,
+        11.5,
+        11,
+        10.5,
+        10,
+        9.5
+      ],
+      "cost": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Auto-targeted]]",
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Gravitum|Aphelios}} - Active:}} '''Aphelios''' expunges all enemies affected by ''Gravitum's'' {{tip|slow}}, dealing {{pp|5|50 to 110|1 to 9}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 70% AP)}} {{tip|magic damage|{{as|magic damage}}}} and {{tip|root|rooting}} them for 1 second."
+      ],
+      "notes": "",
+      "skillkey": "Q",
+      "skillid": "q4",
+      "costBurn": "10",
+      "cooldownBurn": "5/11.5/11/10.5/10/9.5",
+      "effects": []
+    },
+    "q5": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Duskwave",
+      "maxrank": 6,
+      "cooldown": [
+        4,
+        8.25,
+        7.5,
+        6.75,
+        6,
+        5.25,
+        1379
+      ],
+      "cost": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 650,
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Infernum|Aphelios}} - Active:}} '''Aphelios''' unleashes a wave of energy in a cone, dealing {{pp|5|25 to 65|1 to 9}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ 70% AP)}} {{as|physical damage}} to all enemies hit and locking on to each of them. After a delay, '''Aphelios''' then fires a volley of attacks from his current {{as|off-hand}} weapon, one at each locked-on enemy, applying [[on-hit effects]]. There is no {{sti|range}} limit for locked-on targets."
+      ],
+      "notes": "* The volley applies {{tip|area damage}} and the follow up attacks from the {{as|off-hand}} weapon deal {{tip|basic damage}}.\n*The hitbox also includes a very small portion behind '''Aphelios's''' character model\n* '''Duskwave's''' name is modified based on '''Aphelios'''' {{as|off-hand}} weapon:\n** {{ai|Calibrum|Aphelios|Precision Duskwave}}\n** {{ai|Severum|Aphelios|Resurgent Duskwave}}\n** {{ai|Gravitum|Aphelios|Binding Duskwave}}\n** {{ai|Crescendum|Aphelios|Arcing Duskwave}}\n* '''Aphelios''' is {{tip|disarm|locked-out}} of performing basic attacks until '''Duskwave''' resolves.\n* The automatic attacks do no trigger [[on-attack effects]].",
+      "skillkey": "Q",
+      "skillid": "q5",
+      "costBurn": "10",
+      "cooldownBurn": "4/8.25/7.5/6.75/6/5.25/1379",
+      "effects": []
+    },
+    "q6": {
+      "riotId": "ApheliosQ_ClientTooltipWrapper",
+      "name": "Sentry",
+      "maxrank": 6,
+      "cooldown": [
+        5,
+        8.25,
+        7.5,
+        6.75,
+        6,
+        5.25
+      ],
+      "cost": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Auto-targeted]]",
+      "target_range": 475,
+      "image": {
+        "full": "ApheliosQ_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ai|Crescendum|Aphelios}} - Active:}} '''Aphelios''' deploys an {{tip|untargetable}} lunar sentry for up to 20 seconds. The sentry attacks if an enemy gets in range, reducing its duration to 4 seconds and becoming targetable. Deploying a new sentry reduces the eldest's duration to 4 seconds. A sentry has {{as|3 health}}, enemies can attack the sentry with basic attacks, dealing 1 damage per hit.",
+        "The sentry autonomously attacks the nearest enemy in range with a clone of '''Aphelios''' current {{as|off-hand}} weapon, dealing {{pp|5|25 to 85|1 to 9}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 50% AP)}} {{as|physical damage}}. The sentry can {{tip|critically strike}} and benefits from '''Aphelios'''' {{sti|attack speed|{{as|attack speed}}}} and {{sti|critical chance|{{as|critical strike chance}}}}."
+      ],
+      "notes": "* '''Sentry's''' name is modified based on '''Aphelios'''' {{as|off-hand}} weapon:\n** {{ai|Calibrum|Aphelios|Precision Sentry}}\n** {{ai|Severum|Aphelios|Resurgent Sentry}}\n*** {{tip|Heal|Heals}} '''Aphelios''' for any damage it deals.\n** {{ai|Gravitum|Aphelios|Binding Sentry}}\n** {{ai|Infernum|Aphelios|Incendiary Sentry}}",
+      "skillkey": "Q",
+      "skillid": "q6",
+      "costBurn": "10",
+      "cooldownBurn": "5/8.25/7.5/6.75/6/5.25",
+      "effects": []
+    },
+    "w1": {
+      "riotId": "ApheliosW",
+      "name": "Phase",
+      "maxrank": 6,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "image": {
+        "full": "ApheliosW.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aphelios''' switches between his {{as|main weapon}} and {{as|off-hand}} weapon."
+      ],
+      "notes": "",
+      "skillkey": "W",
+      "skillid": "w1",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
+    },
+    "e1": {
+      "riotId": "ApheliosE_ClientTooltipWrapper",
+      "name": "Weapon Queue System",
+      "maxrank": 6,
+      "cooldown": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "targeting": "None",
+      "image": {
+        "full": "ApheliosE_ClientTooltipWrapper.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 192,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "The icon of this ability reflects the next weapon that is in reserve.",
+        "{{sbc|Active:}} '''Aphelios''' receives a text prompt of the weapon '''Alune''' will create next."
+      ],
+      "notes": "* This ability also includes the icon of the {{as|off-hand}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "costBurn": "0",
+      "cooldownBurn": "0",
+      "effects": []
+    },
+    "r1": {
+      "riotId": "ApheliosR",
+      "name": "Moonlight Vigil",
+      "maxrank": 3,
+      "cooldown": [
+        3,
+        100,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1575,
+      "image": {
+        "full": "ApheliosR.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 240,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aphelios''' casts forth a lunar spotlight that stops upon illuminating an {{tip|champion|enemy champion}}. '''Alune''' smites the [[area of effect|area]] centered on the illuminated enemy, dealing {{pp|3|125 to 225|6 to 16}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 100% AP)}} {{tip|physical damage|{{as|physical damage}}}} and locking-on to each enemy hit.",
+        "After a delay, attacks will begin raining from the sky based on '''Aphelios'''' current {{as|main weapon}}, one upon each enemy locked-on by ''Moonlight Vigil'', applying [[on-hit effects]]. These attacks can {{tip|critically strike}} for {{as|{{critical damage|50|75}} AD}} {{as|'''bonus''' physical damage}}. There is no {{sti|range}} limit for locked-on targets.\n{{lc|{{ai|Calibrum|Aphelios}}}} Applies an empowered mark that deals {{as|{{pp|3|20 to 70|6 to 16}} {{tip|physical damage|{{as|'''additional''' physical damage}}}}}} per ''mark''.\n{{lc|{{ai|Severum|Aphelios}}}} If at least one enemy is hit, '''Aphelios''' {{tip|heals}} for {{as|{{pp|3|200 to 400|6 to 16}} {{as|health}}}}.\n{{lc|{{ai|Gravitum|Aphelios}}}} The initial {{tip|slow}} is increased to 99%.\n{{lc|{{ai|Infernum|Aphelios}}}} The initial blast deals an additional {{pp|3|50 to 150|6 to 16}} {{as|(+ 25% '''bonus''' AD)}} {{as|physical damage}}. Attacks {{tip|splash damage|splash}} in a 400 unit circle instead of a cone, dealing 75% of that damage. Enemies will take damage from overlapping areas.\n{{lc|{{ai|Crescendum|Aphelios}}}} 3 additional spectral chakrams return to '''Aphelios''' from the first enemy hit, for a total of 4, on top of those from other enemies hit."
+      ],
+      "notes": "* The basic attacks do not use projectiles no matter what {{as|main weapon}} is in play.\n* '''Aphelios''' will resume his attack order after the ability is cast, and the basic attack from ''Moonlight Vigil'' does not require his input.\n* The basic attacks from ''Moonlight Vigil'' critically strike independently from each other. Targets further away from the center of the blast are hit after a slightly longer delay. These attacks do not apply [[on-attack effects]].\n*Changing weapons while ''Moonlight Vigil'' is in flight does not change the effect it has when it hits.\n*With {{ai|Calibrum|Aphelios}}, the extra damage from consuming the mark is a bonus damage on top of {{ais|Calibrum|Aphelios}} normal mark consumption damage.\n* With {{ai|Infernum|Aphelios}}, 14 fire bolts splash from each target hit. For critical strikes, 18 fire bolts are launched instead. This does not occur if the initial damage of ''Moonlight Vigil'' kills the target.\n* With {{ai|Crescendum|Aphelios}}, 1 spectral chakram is gained for every target hit by the blast, meaning it is possible to gain up to 8 spectral chakrams with one use of ''Moonlight Vigil'' if it hits 5 enemy champions.\n* With {{ai|Severum|Aphelios}}, the extra flat heal is given only once, not per target. However, all damage done by ''Moonlight Vigil'' with it also heals him from {{ais|Severum|Aphelios}} own passive effect.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "costBurn": "100",
+      "cooldownBurn": "3/100/80",
+      "effects": []
+    }
+  }
+}

@@ -1,8 +1,7 @@
 {
   "patch": "June 26, 2009 Patch",
-  "changes": "9.12.1",
+  "changes": "9.24.1",
   "id": "Amumu",
-  "key": "32",
   "name": "Amumu",
   "title": "the Sad Mummy",
   "image": {
@@ -14,10 +13,6 @@
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Tank",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Mage",
@@ -58,7 +53,7 @@
       "riotId": "",
       "name": "Cursed Touch",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "Amumu_Passive.png",
         "sprite": "passive0.png",
@@ -70,9 +65,9 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Amumu's''' basic attacks and {{ai|Curse of the Sad Mummy|Amumu}} apply a {{as|Curse|buzzword}} for 3 seconds, refreshing with each subsequent basic attack.",
-        "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|10% '''bonus''' true damage}}}} from all incoming {{as|magic damage}}, calculated before {{sti|{{as|magic resistance}}}} reduction."
+        "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|10% '''bonus''' true damage}}}} from all incoming {{tt|pre-mitigation|Damage calculated before modifiers}} {{as|magic damage}}."
       ],
-      "notes": "* If '''Amumu''' has on-hit magic damage, the bonus true damage will be applied even against non-Cursed targets, as the Curse applies before the magic damage.",
+      "notes": "* If '''Amumu''' has on-hit magic damage, the ''Curse'' will be applied before the magic damage.\n* Neutral units / enemies affected by the ''Curse'' can receive bonus damage from the opposing team of '''Amumu''' / neutral units, but the damage will be credited to '''Amumu'''.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -82,10 +77,10 @@
       "name": "Bandage Toss",
       "maxrank": 5,
       "cooldown": [
-        12,
-        11,
         10,
+        9.5,
         9,
+        8.5,
         8
       ],
       "cost": [
@@ -96,27 +91,25 @@
         70
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": 1100,
       "image": {
         "full": "BandageToss.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 96,
+        "x": 0,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Amumu''' tosses a bandage in the target direction that {{tip|stun|stuns}} the first enemy it hits for 1 second, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|dash|pulling}} him to their location.",
-        "'''Amumu''' is unable to attack while ''Bandage Toss'' is in flight.",
-        "'''''Amumu''' will attempt to automatically basic attack his target at the end of the dash.''"
+        "{{sbc|Active:}} '''Amumu''' tosses a bandage in the target direction that {{tip|stun|stuns}} the first enemy it hits for 1 second, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|dash|pulling}} him to their location."
       ],
-      "notes": "* ''Bandage Toss'' follows his target for up to 2000 units from where he cast ''Bandage Toss'', in case targets get out of the stun before he arrives.\n* ''Bandage Toss'' cannot be cast while '''Amumu''' is {{tip|root|rooted}}.\n* Crowd control effects will not prevent '''Amumu''' from dashing if they hit him before the skill shot hits. However, the duration of the crowd control can persist the duration of the dash.\n* While '''Amumu''' is mid-dash, only knock-abouts crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.\n* ''Bandage Toss'' can hit stealthed targets.\n* ''Bandage Toss'' does not fizzle on '''Amumu's''' death, and it can still stun and damage enemies.\n* '''Amumu''' is still able to dash even if ''Bandage Toss'' is blocked by [[spell shield]]s.\n* The projectile does not interrupt '''Amumu's''' orders and will adjust its direction based on '''Amumu's''' position.\n* If ''Bandage Toss'' is used beyond '''Amumu's''' basic attack range, the auto attack following will not grant any stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
+      "notes": "* ''Bandage Toss'' will always be directed towards the target location even if '''Amumu''' moves during it.\n* ''Bandage Toss'' follows his target for up to 2000 units from where he cast ''Bandage Toss'', in case targets get out of the stun before he arrives.\n* ''Bandage Toss'' cannot be cast while '''Amumu''' is {{tip|root|rooted}}.\n* Crowd control effects will not prevent '''Amumu''' from commencing the dash. However, the duration of the crowd control can persist the duration of the dash.\n* While '''Amumu''' is mid-dash, only {{tip|airborne}} crowd control effects will prevent him from reaching his target. Other forms of crowd control will still be applied, but they will not hinder his movement.\n* ''Bandage Toss'' does not fizzle on '''Amumu's''' death, and can still stun and damage enemies.\n* '''Amumu''' is still able to dash even if ''Bandage Toss'' is blocked by {{tip|spell shield}}.\n* '''Amumu''' will attempt to basic attack the target. If ''Bandage Toss'' is used beyond '''Amumu's''' basic attack range, this basic attack will not grant any stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "12/11/10/9/8",
+      "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}",
@@ -183,12 +176,12 @@
         8
       ],
       "costtype": "mana per second",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "AuraofDespair.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 144,
+        "x": 48,
         "y": 144,
         "w": 48,
         "h": 48
@@ -196,7 +189,7 @@
       "description": [
         "{{sbc|Toggle:}} '''Amumu''' cries a continuous pool of tears, refreshing {{as|Curse|buzzword}} for 3 seconds and dealing {{as|magic damage}} every half second to nearby enemies."
       ],
-      "notes": "* ''Despair'' has a minimum duration of 1 second.\n* Despite the rounding in ''Despair's'' tooltip, it will do increased damage for every point of {{tt|ability power|+0.005% per 1 AP}}.\n* ''Despair'' cannot be toggled-off while [[crowd control|unable to activate abilities]].\n* Toggled abilities do not count as ability activation for the purposes of effects such as {{nie|Spellblade}} or {{ai|Force Pulse|Kassadin}}.",
+      "notes": "* ''Despair'' has a minimum duration of 1 second.\n* Despite the rounding in ''Despair's'' tooltip, it will deal increased damage for every point of {{tt|ability power|+0.005% per 1 AP}}.\n* ''Despair'' cannot be toggled-off while under {{tip|crowd control|silencing effects}}.\n* Toggled abilities do not count as ability activation for the purposes of effects such as {{nie|Spellblade}} or {{ai|Force Pulse|Kassadin}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "8",
@@ -284,22 +277,22 @@
         35
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "[[Passive]] / [[Auto-targeted|Auto]]",
       "image": {
         "full": "Tantrum.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 192,
+        "x": 96,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Amumu''' takes reduced post-mitigation damage from each tick of {{as|physical damage}}.",
+        "{{sbc|Passive:}} '''Amumu''' takes reduced {{tt|post-mitigation damage|Damage calculated after modifiers}} from each tick of {{as|physical damage}}.",
         "{{sbc|Active:}} '''Amumu''' releases his anger, dealing {{as|magic damage}} to nearby enemies.",
         "''Tantrum's'' {{sti|cooldown}} is reduced by {{fd|0.5}} seconds every time '''Amumu''' is hit by a basic attack."
       ],
-      "notes": "* Tower attacks reduce ''Tantrum's'' cooldown.\n* ''Tantrum's'' cooldown reduction will trigger multiple times for effects such as {{ai|Double Strike|Master Yi}}.",
+      "notes": "* {{tip|Turret}} attacks count as basic attacks.\n* ''Tantrum's'' cooldown reduction will trigger multiple times for effects such as {{ai|Double Strike|Master Yi}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "35",
@@ -414,18 +407,18 @@
         200
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "[[Ground-targeted|Ground]]",
       "image": {
         "full": "CurseoftheSadMummy.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 240,
+        "x": 144,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Amumu''' {{tip|entangle|entangles}} surrounding enemies for 2 seconds, dealing {{as|magic damage}} and applying {{as|Curse|buzzword}} for 3 seconds."
+        "{{sbc|Active:}} '''Amumu''' {{tip|entangle|entangles}} nearby enemies for 2 seconds, dealing {{as|magic damage}}."
       ],
       "notes": "* No additional details.",
       "skillkey": "R",
@@ -479,6 +472,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

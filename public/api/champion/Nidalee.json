@@ -1,23 +1,18 @@
 {
   "patch": "V1.0.0.63",
-  "changes": "9.14.1",
+  "changes": "9.22.1",
   "id": "Nidalee",
-  "key": "76",
   "name": "Nidalee",
   "title": "the Bestial Huntress",
   "image": {
     "full": "Nidalee.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 432,
-    "y": 48,
+    "x": 0,
+    "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Assassin",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Fighter",
@@ -63,8 +58,8 @@
         "full": "Nidalee_Passive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 432,
-        "y": 48,
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -103,7 +98,7 @@
         "full": "JavelinToss.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
@@ -214,7 +209,7 @@
         "full": "JavelinToss.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
@@ -232,7 +227,7 @@
       "effects": [
         {
           "levelingtext": "{{sbc|''{{ai|Takedown}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Bonus Damage|{{ap|1 to 1.75 4}}%|Maximum Bonus Damage|{{ap|1*100 to 1.75*100 4}}%}}<!--\n-->{{st|Minimum Magic Damage|{{ap|5 to 80 4}} {{as|(+ 75% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75)) 4}} {{as|(+ {{ap|75*(1+1) to 75*(1+1.75) 4}}% AD)}} {{as|(+ {{ap|40*(1+1) to 40*(1+1.75) 4}}% AP)}}}}",
-          "str": "<span style=\"font-weight:bold; font-size:89%; text-transform:uppercase;\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Takedown<template #content>Takedown</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><spell-span :list=\"['100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<span style=\"font-weight:bold; font-size:89%; text-transform:uppercase;\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Takedown<template #content>Takedown</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><spell-span :list=\"['100','125','150','175']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -277,13 +272,16 @@
                   1,
                   1.1
                 ]
+              },
+              {
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "Minimum Magic Damage",
               "<spell-span :list=\"['5','30','55','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
               "Maximum Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -316,14 +314,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Maximum Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['150','168.75','187.5','206.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|''{{ai|Prowl}}''-Enhanced Minimum Damage|{{ap|5*1.4 to 80*1.4 4}} {{as|(+ {{ap|75*1.4}}% AD)}} {{as|(+ {{ap|40*1.4}}% AP)}}|''{{ai|Prowl}}''-Enhanced Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75))*1.4 4}} {{as|(+ {{ap|75*(1+1)*1.4 to 75*(1+1.75)*1.4 4}}% AD)}} {{as|(+ {{ap|40*(1+1)*1.4 to 40*(1+1.75)*1.4 4}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Minimum Damage</span>: <span><spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Minimum Damage</span>: <span><spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -356,13 +354,22 @@
                   1.4,
                   1.54
                 ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
-              "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Maximum Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -380,10 +387,11 @@
                   1.26,
                   1.4,
                   1.54
-                ]
+                ],
+                "player_total_ap": []
               },
               "title": "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
-              "str": "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['7','42','77','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['105']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['56']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -397,10 +405,11 @@
                   1.26,
                   1.4,
                   1.54
-                ]
+                ],
+                "player_total_ap": []
               },
               "title": "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Maximum Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['210','236.25','262.5','288.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['112','126','140','154']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -432,7 +441,7 @@
         "full": "Bushwhack.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
@@ -545,7 +554,7 @@
         "full": "Bushwhack.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
@@ -674,7 +683,7 @@
         "full": "PrimalSurge.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -792,7 +801,7 @@
         "full": "PrimalSurge.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -871,7 +880,7 @@
         "full": "AspectOfTheCougar.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
@@ -898,6 +907,5 @@
         }
       ]
     }
-  },
-  "skillcount": 8
+  }
 }

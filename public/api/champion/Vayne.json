@@ -2,22 +2,17 @@
   "patch": "v1.0.0.118",
   "changes": "9.19.1",
   "id": "Vayne",
-  "key": "67",
   "name": "Vayne",
   "title": "the Night Hunter",
   "image": {
     "full": "Vayne.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 240,
+    "x": 384,
     "y": 0,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman",
-    "Assassin"
-  ],
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Slayer",
@@ -63,7 +58,7 @@
         "full": "Vayne_NightHunter.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 240,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
@@ -100,19 +95,18 @@
       "target_range": 300,
       "image": {
         "full": "VayneTumble.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 288,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Vayne''' {{tip|dash|dashes}} forward, though not through terrain, and her next [[basic attack]] within 7 seconds deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "''Tumble'' resets '''Vayne's''' basic attack timer.",
-        "{{sbc|{{ai|Final Hour|Vayne}}:}} ''Tumble's'' {{sti|cooldown}} is reduced by {{pp|type=[[File:Final Hour.png|20px|link=]] Final Hour Rank|key=%|3|30 to 50|1 to 3}}, and ''Tumble'' turns '''Vayne''' {{tip|invisibility|invisible}} for 1 second on-cast."
+        "''Tumble'' resets '''Vayne's''' basic attack timer."
       ],
-      "notes": "* The enhanced attack applies [[on-hit effect]]s, {{sti|life steal}}, affects [[turret]]s and can {{tip|critical strike|critically strike}} as normal. The bonus damage however cannot.\n* Although ''Tumble'' will reset the basic attack timer, Vayne cannot attack until the animation is complete.\n* ''Tumble's'' {{tip|invisibility}} during {{ai|Final Hour|Vayne}} will end prematurely if ''Vayne'' performs any action other than movement while stealthed.\n* ''Tumble's'' enhanced attack can be {{ai|Counter Strike|Jax|dodged}}, {{ai|Aegis Protection|Pantheon|blocked}}, or {{ai|Riposte|Fiora|parried}} and can {{tip|blind|miss}}.",
+      "notes": "* The enhanced attack applies [[on-hit effect]]s, {{sti|life steal}}, affects [[turret]]s and can {{tip|critical strike|critically strike}} as normal. The bonus damage however cannot.\n* Although ''Tumble'' will reset the basic attack timer, Vayne cannot attack until the animation is complete.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "30",
@@ -184,10 +178,10 @@
       "targeting": "Passive",
       "image": {
         "full": "VayneSilveredBolts.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 336,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -195,7 +189,7 @@
         "{{sbc|Passive:}} '''Vayne's''' [[basic attacks]] and {{ai|Condemn|Vayne}} apply a ''Silver Bolts'' stack for {{fd|3.5}} seconds, up to 3 times. Attacking a new enemy removes all stacks from the previous target.",
         "The third stack consumes them all to deal {{tip|true damage|{{as|'''bonus''' true damage}}}}, with a minimum threshold, and capped at 200 against monsters."
       ],
-      "notes": "* Stacks are not removed if ''Vayne'' switches to attacking a target immune to ''Silver Bolts'' (structures, [[ward]]s).\n* ''Silver Bolts'' only applies stacks to the primary target if ''Vayne'' has purchased {{ii|Runaan's Hurricane}}.\n* The third attack consumes all stacks even if the target is {{tip|untargetable}}.",
+      "notes": "* Stacks are not removed if ''Vayne'' switches to attacking a target immune to ''Silver Bolts'' (structures, [[ward]]s).\n* ''Silver Bolts'' do not apply to additional targets with {{ii|Runaan's Hurricane}}.\n* The third attack consumes all stacks even if the target is {{tip|untargetable}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -203,7 +197,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus True Damage|{{as|{{ap|4 to 14}}% of target's '''maximum''' health}}}}<!--\n-->{{st|Minimum True Damage|{{as|{{ap|50 to 110}}|true damage}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus True Damage</span>: <span><span class=\"health\"><spell-span :list=\"['4','6.5','9','11.5','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum True Damage</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> true damage\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus True Damage</span>: <span><span class=\"health\"><spell-span :list=\"['4','6.5','9','11.5','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum True Damage</span>: <span><span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -226,11 +220,14 @@
                   0.95,
                   1.1
                 ]
+              },
+              {
+                "player_total_unknown": []
               }
             ],
             "st_slices": [
               "Minimum True Damage",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> true damage\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
             ]
           },
           "subeffects": [
@@ -250,10 +247,11 @@
                   0.8,
                   0.95,
                   1.1
-                ]
+                ],
+                "player_total_unknown": []
               },
               "title": "Minimum True Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> true damage\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "damage_type": "true"
             }
           ]
@@ -283,10 +281,10 @@
       "target_range": 550,
       "image": {
         "full": "VayneCondemn.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 384,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -436,10 +434,10 @@
       "targeting": "None",
       "image": {
         "full": "VayneInquisition.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 432,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -448,7 +446,7 @@
         "Additionally, {{ai|Tumble|Vayne}} gains cooldown reduction, and casting it grants {{tip|invisibility}} for 1 second.",
         "While active, whenever a champion damaged by '''Vayne''' dies within 3 seconds, ''Final Hour's'' duration is extended by 4 seconds, up to a maximum of the original duration."
       ],
-      "notes": "* ''Final Hour'' has no cast time and does not interrupt ''Vayne's'' previous orders.\n* ''Vayne's'' animations and basic attack projectiles change slightly during ''Final Hour''.",
+      "notes": "* ''Final Hour'' has no cast time and does not interrupt ''Vayne's'' previous orders.\n* ''Vayne's'' animations and basic attack projectiles change slightly during ''Final Hour''.\n* ''Tumble's'' {{tip|invisibility}} during {{ai|Final Hour|Vayne}} will end prematurely if ''Vayne'' performs any action other than movement while stealthed.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "80",
@@ -589,6 +587,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

@@ -1,23 +1,18 @@
 {
   "patch": "V1.0.0.128",
-  "changes": "9.19.1",
+  "changes": "10.1.1",
   "id": "Shyvana",
-  "key": "102",
   "name": "Shyvana",
   "title": "the Half-Dragon",
   "image": {
     "full": "Shyvana.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 48,
+    "x": 192,
     "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Tank"
-  ],
   "resource": "Fury",
   "herotype": "Fighter",
   "alttype": "Tank",
@@ -63,14 +58,14 @@
         "full": "ShyvanaReinforcedScales.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 48,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} '''Shyvana''' deals 20% '''bonus''' {{as|physical|physical damage}} and {{as|magic|magic damage}} damage to {{ui|Dragon|Dragons}}.",
-        "Additionally, '''Shyvana''' starts with {{sti|armor|{{as|5 '''bonus''' armor}}}} and {{sti|mr|{{as|5 '''bonus''' magic resistance}}}}, which is permanently increased by 5 for every [[Dragon|elemental drake]] ({{ui|Cloud Drake}}, {{ui|Infernal Drake}}, {{ui|Mountain Drake}}, and {{ui|Ocean Drake}}) her team slays."
+        "Additionally, '''Shyvana''' starts with {{sti|armor|{{as|5 '''bonus''' armor}}}} and {{sti|mr|{{as|5 '''bonus''' magic resistance}}}}, which is permanently increased by 5 for every [[Dragon|elemental drake]] ({{ui|Cloud Drake}}, {{ui|Infernal Drake}}, {{ui|Mountain Drake}}, and {{ui|Ocean Drake}}) and {{ui|Elder Dragon}} her team slays."
       ],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -101,7 +96,7 @@
         "sprite": "spell10.png",
         "group": "spell",
         "x": 0,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -187,7 +182,7 @@
         "sprite": "spell10.png",
         "group": "spell",
         "x": 48,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -363,13 +358,13 @@
         "sprite": "spell10.png",
         "group": "spell",
         "x": 96,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Shyvana''' unleashes a fireball in the target direction, dealing {{as|magic damage}} to all enemies hit. The fireball stops upon colliding with an enemy champion, marking them for 5 seconds.",
-        "'''Shyvana's''' basic attacks against marked enemies deal {{as|{{fd|3.25}}% of target's '''maximum''' health}} {{as|'''bonus''' magic damage}}, capped at 100 against monsters.",
+        "'''Shyvana's''' basic attacks against marked enemies deal {{as|{{fd|3.75}}% of target's '''maximum''' health}} {{as|'''bonus''' magic damage}}, capped at 150 against monsters.",
         "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} ''Flame Breath'' explodes upon hitting a champion or reaching the target location, dealing increased {{as|magic damage}} to them and surrounding enemies (area radius scales with {{ais|Dragon's Descent|Shyvana}} rank) and scorching the earth for 4 seconds. Enemies standing on scorched earth take {{pp|13|60 to 120|6 to 18|formula = 60 + 5 per level|color=magic damage}} {{as|(+ 10% AD)}} {{as|(+ 20% AP)}} {{as|magic damage}} per second and are persistently marked."
       ],
       "notes": "* ''Flame Breath's'' mark damage will not apply spell effects or {{sti|life steal}}.",
@@ -486,9 +481,9 @@
         0
       ],
       "cost": [
-        5
+        2.5
       ],
-      "costtype": "{{as|Fury}} per second",
+      "costtype": "{{as|Fury}} every {{fd|0.5}} seconds",
       "targeting": "Direction",
       "target_range": 850,
       "image": {
@@ -496,19 +491,19 @@
         "sprite": "spell10.png",
         "group": "spell",
         "x": 144,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive - Fury:}} ''Dragon's Descent'' has no cooldown or initial cost but can only be activated when '''Shyvana''' has {{tip|fury|{{as|100 Fury}}}}. '''Shyvana''' passively generates {{as|Fury}} per second while in human form, {{as|2 Fury}} per basic attack [[on-hit]] in either form, and {{as|100 Fury}} when ''Dragon's Descent'' is first learned.",
         "{{sbc|Active - Dragon Form:}} '''Shyvana''' transforms into a dragon and {{tip|dashes}} {{tip|unstoppable|unstoppably}} to the target location, {{tip|airborne|carrying}} and dealing {{as|magic damage}} to all enemies she runs through.",
-        "'''Shyvana's''' dragon form grants her {{sti|health|{{as|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}}, and empowers her basic [[Champion ability|abilities]] at the cost of {{as|5 Fury}} per second, returning to human form once depleted."
+        "'''Shyvana's''' dragon form grants her {{sti|health|{{as|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}}, and empowers her basic [[Champion ability|abilities]] at the cost of {{as|{{fd|2.5}} Fury}} per {{fd|0.5}} seconds, returning to human form once depleted."
       ],
-      "notes": "* ''Dragon's Descent'' has a 20 seconds effective duration when not attacking, but can last indefinitely when attacking continuously with {{as|{{ap|5/2}} attack speed}} (without counting {{ai|Q|Shyvana}}) or {{as|{{ap|5/(8/3)}} attack speed}} with {{ii|Guinsoo's Rageblade}}.\n* ''Dragon's Descent'' has a {{ap|100/1 to 100/2}} seconds effective cooldown when not attacking ({{ap|100/((1 to 2)+2.5*2)|round=2}} seconds when attacking continuously with {{as|{{fd|2.5}} attack speed}}, {{ap|100/((1 to 2)+(2.5+1/3)*2)|round=2}} while also having {{ii|Guinsoo's Rageblade}}).",
+      "notes": "* Instead of granting ultimate cooldown reduction, {{bi|Cloudbringer's Grace}} grants {{pp|4|key=%|type=stacks|10 to 10*4}} increased Fury generation.\n* ''Dragon's Descent'' has a {{ap|100/(1 to 2)|round=2}} seconds effective cooldown when not attacking.\n** {{ap|100/((1 to 2)*1.1)|round=2}} with 1 {{bi|Cloudbringer's Grace}} stack.\n** {{ap|100/((1 to 2)*1.2)|round=2}} with 2 {{bi|Cloudbringer's Grace}} stacks.\n** {{ap|100/((1 to 2)*1.3)|round=2}} with 3 {{bi|Cloudbringer's Grace}} stacks.\n** {{ap|100/((1 to 2)*1.4)|round=2}} with 4 {{bi|Cloudbringer's Grace}} stacks.\n* ''Dragon's Descent'' has a {{ap|100/5}} seconds effective duration when not attacking, but can last indefinitely when attacking continuously with {{as|{{ap|2.5/2*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4))*2 4|round=2}}}}) attack speed|as}} (without counting {{ai|Q|Shyvana}}) or {{as|{{ap|2.5/(2*4/3)*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4)*4/3)*2 4|round=2}}}}) attack speed|as}} with {{ii|Guinsoo's Rageblade}}.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "5",
+      "costBurn": "2.5",
       "cooldownBurn": "0",
       "effects": [
         {
@@ -657,6 +652,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

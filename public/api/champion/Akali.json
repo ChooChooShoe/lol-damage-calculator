@@ -1,8 +1,7 @@
 {
   "patch": "V1.0.0.85",
-  "changes": "9.19.1",
+  "changes": "9.24.1",
   "id": "Akali",
-  "key": "84",
   "name": "Akali",
   "title": "the Rogue Assassin",
   "image": {
@@ -14,16 +13,13 @@
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Assassin"
-  ],
   "resource": "Energy",
   "herotype": "Slayer",
   "alttype": "",
   "rangetype": "Melee",
   "be_cost": 3150,
   "rp_cost": 790,
-  "adaptivetype": "Mixed,Physical",
+  "adaptivetype": "mixed",
   "info": {
     "attack": 5,
     "defense": 3,
@@ -57,7 +53,7 @@
       "riotId": "",
       "name": "Assassin's Mark",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "Akali_P.png",
         "sprite": "passive0.png",
@@ -69,10 +65,10 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Akali's''' [[ability damage]] against enemy {{tip|champions}} creates a 500-unit ring around them for 4 seconds and grants her {{sti|ms|{{as|{{pp|4|key=%|40 to 70|1 to 16}} '''bonus''' movement speed}}}} for 2 seconds while moving away from them.",
-        "When '''Akali''' leaves the ring, she regains the {{sti|ms|{{as|'''bonus''' movement speed}}}} towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds.",
-        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack range is doubled, deals {{pp|18|39|42|45|48|51|54|57|60|69|78|87|96|105|120|135|150|165|180|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 50% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and restores {{sti|energy|{{as|{{pp|3|10 to 20|1;8;13}} energy}}}}."
+        "If '''Akali''' leaves the ring within its duration, she regains the {{sti|ms|{{as|'''bonus''' movement speed}}}} towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds.",
+        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack range is doubled, deals {{pp2|39+3*(x-1) for 8;then +9*x for 5; then + 15*x|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 50% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and restores {{sti|energy|{{as|{{pp|3|10 to 20|1;8;13}} energy}}}}."
       ],
-      "notes": "* {{ii|Rapid Firecannon}} interaction:\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}2.35{{times}}1.35 (might be a bug)}}.\n* The ring will create around the last target hit of ''{{ai|Five Point Strike}}''.",
+      "notes": "* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35{{times}}2 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}0.35 (further increased by Rapid Firecannon)}}.\n* The ring will create around the last target hit of ''{{ai|Five Point Strike}}''.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -85,32 +81,32 @@
         1.5
       ],
       "cost": [
-        100,
-        95,
-        90,
-        85,
-        80
+        120,
+        115,
+        110,
+        105,
+        100
       ],
       "costtype": "energy",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": 500,
       "image": {
         "full": "AkaliQ.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 192,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Akali''' throws a flurry of kunais in the target direction, dealing {{as|magic damage}} to enemies hit. Enemies hit at maximum range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds.",
-        "At rank 5, deals{{ft|33% '''bonus''' magic damage|{{ap|125*1.33}} {{as|(+ {{ap|65*1.33}}% AD)}} {{as|(+ {{ap|60*1.33}}% AP)}} '''total''' magic damage}}to {{tip|minions}} and {{tip|monsters}}."
+        "At rank 5, deals{{ft|25% '''bonus''' magic damage|{{ap|125*1.25}} {{as|(+ {{ap|65*1.25}}% AD)}} {{as|(+ {{ap|60*1.25}}% AP)}} '''total''' magic damage}}to {{tip|minions}} and {{tip|monsters}}."
       ],
       "notes": "* No additional details.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "100/95/90/85/80",
+      "costBurn": "120/115/110/105/100",
       "cooldownBurn": "1.5",
       "effects": [
         {
@@ -177,20 +173,20 @@
         0,
         0
       ],
-      "targeting": "Ground",
+      "targeting": "[[Ground-targeted|Ground]]",
       "target_range": 250,
       "image": {
         "full": "AkaliW.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 240,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Akali''' restores {{sti|{{as|80 energy}}}} and detonates a smoke bomb in the target direction, creating a circular shroud that expands over the next 5 seconds into a ring. The shroud does not permeate terrain.",
-        "Entering the shroud renders '''Akali''' {{tip|invisibility|invisible}} and grants her {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
+        "{{sbc|Active:}} '''Akali''' restores {{sti|{{as|80 energy}}}}, gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 2 seconds, and detonates a smoke bomb in the target direction, creating a circular shroud that expands over the next 5 seconds into a ring. The shroud does not permeate terrain.",
+        "Entering the shroud renders '''Akali''' {{tip|invisibility|invisible}}.",
         "'''Akali's''' basic attacks and abilities will break the invisibility for {{pp|5|type=minutes|changedisplay=true|round=3|1|0.9|0.825|0.725|0.625|1|8|11|20|30}} seconds.",
         "The {{ai|Shuriken Flip|Akali|marked}} section of ''Twilight Shroud's'' will linger for the mark's duration, even after the shroud ends."
       ],
@@ -201,12 +197,19 @@
       "cooldownBurn": "20",
       "effects": [
         {
-          "levelingtext": "{{st|Shroud Duration|{{ap|5 to 7}}}}",
-          "str": "<ul><li><span class=\"blue\">Shroud Duration</span>: <span><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|30 to 50}}%}}\n{{st|Shroud Duration|{{ap|5 to 7}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Shroud Duration</span>: <span><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ],
               [
                 5,
                 5.5,
@@ -225,53 +228,15 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  5,
-                  5.5,
-                  6,
-                  6.5,
-                  7
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
                 ]
               },
               "title": "Shroud Duration",
               "str": "<spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Bonus Movement Speed|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                20,
-                25,
-                30,
-                35,
-                40
-              ]
-            ],
-            "st_slices": [
-              "Bonus Movement Speed",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  20,
-                  25,
-                  30,
-                  35,
-                  40
-                ]
-              },
-              "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "none"
             }
           ]
@@ -297,21 +262,21 @@
         30
       ],
       "costtype": "energy",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": "{{tt|650|Mark range}} / {{tt|Global|Dash range}}",
       "image": {
         "full": "AkaliE.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 288,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|First Active:}} '''Akali''' {{tip|dash|flips}} backward and fires a shuriken forward, stopping with the first enemy hit and dealing {{tip|physical damage|{{as|physical damage}}}}.",
+        "{{sbc|Active:}} '''Akali''' {{tip|dash|flips}} backward and fires a shuriken forward, stopping with the first enemy hit and dealing {{tip|physical damage|{{as|physical damage}}}}.",
         "The shuriken ''marks'' the enemy or the last {{ai|Twilight Shroud|Akali|smoke}} section hit for 3 seconds. While the target is marked, '''Akali''' can reactivate ''Shuriken Flip''.",
-        "{{sbc|Second Active:}} '''Akali''' {{ct|dash|dashes|attack=false|move=false|cast=Q and W are usable. E is disabled for 10 seconds and then interrupts. R interrupts|items=true,,,interrupts|spells=true,interrupts,true,true,false}} towards the marked target, consuming the mark, regardless of distance. Against enemies deals the same {{as|physical damage}}."
+        "{{sbc|Recast:}} '''Akali''' {{ct|dash|dashes|attack=false|move=false|cast=Q and W are usable. E is disabled for 10 seconds and then interrupts. R interrupts|items=true,,,interrupts|spells=true,interrupts,true,true,false}} towards the marked target, consuming the mark, regardless of distance. Against enemies deals the same {{as|physical damage}}."
       ],
       "notes": "* Killing an enemy with the shuriken will still mark the last area of the Shroud hit.",
       "skillkey": "E",
@@ -431,21 +396,21 @@
         0,
         0
       ],
-      "targeting": "Direction",
-      "target_range": "{{tt|575|First cast range}} / {{tt|750|Second cast range}}",
+      "targeting": "[[Direction-targeted|Direction]]",
+      "target_range": "{{tt|675|First cast range}} / {{tt|750|Second cast range}}",
       "image": {
         "full": "AkaliR.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 336,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|First Active:}} '''Akali''' {{tip|dash|dashes}} in the target direction, dealing {{as|physical damage}} to all enemies hit.",
-        "After {{fd|2.5}} seconds, ''Perfect Execution'' can be reactivated within the following {{fd|7.5}} seconds.",
-        "{{sbc|Second Active:}} '''Akali''' {{tip|dash|dashes}} in the target direction, dealing {{as|magic damage}} to enemies hit, increasing by {{as|{{pp|11|key=%|key1=%|type=target's '''missing''' health|0 to 200|0 to 70|displayformula=2.86% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|health}}."
+        "{{sbc|Active:}} '''Akali''' {{tip|dash|dashes}} to the target enemy champion, dealing {{as|physical damage}} to all enemies hit.",
+        "''Perfect Execution'' can be recast after a {{fd|2.5}} second {{tt|static cooldown|unaffected by cooldown reduction}} within 10 seconds of first activation at no additional cost.",
+        "{{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} in the target direction, dealing {{as|magic damage}} to enemies hit, increased by {{as|{{pp|11|key=%|key1=%|type=target's '''missing''' health|0 to 200|0 to 70|displayformula=2.86% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|health}}."
       ],
       "notes": "* No additional notes.",
       "skillkey": "R",
@@ -571,6 +536,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

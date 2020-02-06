@@ -2,7 +2,6 @@
   "patch": "V3.8",
   "changes": "9.19.1",
   "id": "Aatrox",
-  "key": "266",
   "name": "Aatrox",
   "title": "the Darkin Blade",
   "image": {
@@ -14,17 +13,13 @@
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Tank"
-  ],
   "resource": "Blood Well",
   "herotype": "Fighter",
   "alttype": "Tank",
   "rangetype": "Melee",
-  "be_cost": 6300,
-  "rp_cost": 975,
-  "adaptivetype": "Physical",
+  "be_cost": 4800,
+  "rp_cost": 880,
+  "adaptivetype": "physical",
   "info": {
     "attack": 8,
     "defense": 4,
@@ -69,10 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next basic attack to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the target's '''maximum''' health}} as {{tip|physical damage|{{as|'''bonus''' physical damage}}}} [[on-hit]], capped at 100 against monsters, and {{tip|heal|healing}} him for 100% of the {{as|'''bonus''' physical damage}} dealt, reduced to 25% against {{tip|minions}}.",
-        "''Deathbringer Stance's'' {{sti|cooldown}} is reduced by 2 seconds whenever '''Aatrox''' hits a champion or large monster with a basic attack [[on-hit]] or an ability, doubled if he hits with the edge of {{ai|The Darkin Blade|Aatrox}}. The cooldown reduction for {{ai|The Darkin Blade|Aatrox}} applies only once and prioritizes for the unit hit by the edge."
+        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next basic attack to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the target's {{sti|'''maximum''' health}}}} as {{tip|physical damage|{{as|'''bonus''' physical damage}}}} on non-{{tip|turrets|structures}}, capped at 100 against monsters, and {{tip|heal|healing}} him for 100% of the {{tip|physical damage|{{as|'''bonus''' physical damage}}}} dealt, reduced to 25% against {{tip|minions}}.",
+        "''Deathbringer Stance's'' {{sti|cooldown}} is reduced by 2 seconds whenever '''Aatrox''' hits a {{tip|champion}} or {{tip|monster|large monster}} with a [[basic attack]] [[on-hit]] or an ability, doubled if he hits with the edge of {{ai|The Darkin Blade|Aatrox}}. The cooldown reduction for {{ai|The Darkin Blade|Aatrox}} applies only once and prioritizes for the unit hit by the edge.",
+        "''The cooldown is also reduced by 2 seconds if '''Aatrox''' misses {{ai|The Darkin Blade|Aatrox}} by up to 50 units.''"
       ],
-      "notes": "* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n* The empowered attack is given [[on-attack]]. Commanding an attack before ''Deathbringer Stance'' is avaiable, but hitting the target while it's available will not trigger the bonus damage.",
+      "notes": "* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n** Pressing {{sbc|CTRL + 5}} switches stances controllably.\n* The empowered attack is given [[on-attack]]. Commanding an attack before ''Deathbringer Stance'' is available, but hitting the target while it's available will not trigger the bonus damage.\n* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Deathbringer Stance's'' cooldown will still be reduced.\n* '''Aatrox''' respawns with his ''Deathbringer Stance'' ready.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -95,13 +91,13 @@
         0,
         0
       ],
-      "targeting": "Direction",
-      "target_range": "{{tt|650|First cast}} / {{tt|525|Second cast}} / {{tt|200|Third cast center}} / {{tt|120|Empowered range offset}}",
+      "targeting": "[[Direction-targeted|Direction]]",
+      "target_range": "{{tt|650|First cast}} / {{tt|525|Second cast}} / {{tt|225|Third cast placement}} / {{tt|180|Empowered range offset}}",
       "image": {
         "full": "AatroxQ.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 288,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
@@ -111,7 +107,7 @@
         "Each strike deals {{as|physical damage}}, reduced to 55% against {{tip|minions}}. All units take 25% increased damage on the second cast and 50% on the third.",
         "Hitting enemies at the far end of the first two casts and the center of the third deals 50% '''bonus''' damage and {{tip|airborne|knocks up}} enemies for {{fd|0.25}} seconds, doubled to {{fd|0.5}} seconds against {{tip|monsters}}."
       ],
-      "notes": "* Each cast of the ''The Darkin Blade'' has a small channel time, during which '''Aatrox''' cannot move and cast abilities, except for {{ai|Umbral Dash|Aatrox}} and {{si|Flash}}.\n* All damage modifiers stack multiplicatively.",
+      "notes": "* '''Aatrox''' cannot move and cast abilities during the cast time, except for {{ai|Umbral Dash|Aatrox}} and {{si|Flash}}.\n* The hitbox and '''Aatrox's''' model are fixed to the initial target direction.\n** '''Aatrox's''' facing-direction, for effects such as {{ai|Petrifying Gaze|Cassiopeia}}, is the direction he is moving, and not the direction the model is facing.\n* All damage modifiers stack multiplicatively.\n* The first cast extends at 50 units behind '''Aatrox''', the second cast extends at 100 units.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -119,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|First Swing Damage|{{ap|{{#var:b1}} to {{#var:b2}}}} {{as|(+ {{ap|{{#var:r1}} to {{#var:r2}}}}% AD)}}|Second Swing Damage|{{ap|{{#var:b1}}*1.25 to {{#var:b2}}*1.25}} {{as|(+ {{ap|{{#var:r1}}*1.25 to {{#var:r2}}*1.25}}% AD)}}|Third Swing Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\">Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -170,15 +166,21 @@
                   0,
                   0
                 ]
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
               }
             ],
             "st_slices": [
               "First Swing Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Second Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Third Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -223,7 +225,7 @@
                 ]
               },
               "title": "Second Swing Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -245,14 +247,14 @@
                 ]
               },
               "title": "Third Swing Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Amplified First Swing Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}|Amplified Second Swing Damage|{{ap|{{#var:b1}}*1.25*1.5 to {{#var:b2}}*1.25*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.25*1.5 to {{#var:r2}}*1.25*1.5}}% AD)}}|Amplified Third Swing Damage|{{ap|{{#var:b1}}*1.5*1.5 to {{#var:b2}}*1.5*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5*1.5 to {{#var:r2}}*1.5*1.5}}% AD)}}|Maximum Non-Minion Damage|{{ap|{{#var:b1}}*3.75*1.5 to {{#var:b2}}*3.75*1.5}} {{as|(+ {{ap|{{#var:r1}}*3.75*1.5 to {{#var:r2}}*3.75*1.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Amplified First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Amplified Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\">Amplified Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\">Maximum Non-Minion Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Amplified First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Amplified Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Amplified Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Maximum Non-Minion Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -317,17 +319,26 @@
                   0,
                   0
                 ]
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
               }
             ],
             "st_slices": [
               "Amplified First Swing Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Amplified Second Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Amplified Third Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Maximum Non-Minion Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -372,7 +383,7 @@
                 ]
               },
               "title": "Amplified Second Swing Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -394,7 +405,7 @@
                 ]
               },
               "title": "Amplified Third Swing Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -416,7 +427,7 @@
                 ]
               },
               "title": "Maximum Non-Minion Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -441,13 +452,13 @@
         0,
         0
       ],
-      "targeting": "Ground",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": 825,
       "image": {
         "full": "AatroxW.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 336,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
@@ -456,7 +467,7 @@
         "{{sbc|Active:}} '''Aatrox''' smashes the ground in the target direction, creating a chain that stops on the first enemy hit, dealing {{as|physical damage}}, doubled against {{tip|minions}}, and {{tip|slow|slowing}} them by 25% for {{fd|1.5}} seconds.",
         "If ''Infernal Chains'' hits a {{tip|champion}} or large monster, they are chained to the impact area. If the chained enemy is still in the impact area after {{fd|1.5}} seconds, they are {{tip|airborne|dragged}} to the center and take the same damage again."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* The impact area is oriented relative to '''Aatrox's''' position when the projectile hits, not where the projectile originated from.\n* The location that the target is dragged to is not at the target's original location, but slightly closer towards '''Aatrox's''' position when the zone expires.\n* There is a \"grace period\" near the end where the enemy will get pulled no matter what, even if they leave the impact area.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -598,13 +609,13 @@
         0,
         0
       ],
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": "{{tt|75|Minimum range}} / {{tt|300|Maximum range}}",
       "image": {
         "full": "AatroxE.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 384,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -614,7 +625,7 @@
         "{{sbc|Active:}} '''Aatrox''' {{tip|dash|dashes}} in the target direction.",
         "''Umbral Dash'' resets '''Aatrox's''' basic attack timer and can be cast during his other spell casts without interruption."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* If ''Umbral Dash'' is cast in the same direction '''Aatrox''' is moving, he will be unable to buffer commands that require him to move.\n* The dash can go through any wall as long as it can reach over half of it, behaving like a {{tip|blink}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -674,23 +685,23 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
       "target_range": "",
       "image": {
         "full": "AatroxR.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 432,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form for 10 seconds, gaining {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds, and {{tip|fear|fearing}} nearby enemy {{tip|minions}}, {{tip|slow|slowing}} them by up to 99% for 3 seconds.",
-        "While transformed '''Aatrox''' gains increased size and {{as|'''bonus''' attack damage}}, and receives increased {{tip|heal|self-healing}} from all sources ({{sti|spell vamp}} exception).",
-        "With each enemy champion takedown, ''World Ender'' is extended by 5 seconds, refreshing its effects, up to the original amount."
+        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form for 10 seconds, gaining {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds, and {{tip|fear|fearing}} nearby enemy {{tip|minions}} and [[pets]], {{tip|slow|slowing}} them by up to 99% for 3 seconds.",
+        "While transformed, '''Aatrox''' gains increased size and {{as|{{sti|'''bonus''' attack damage}}}}, and receives increased {{tip|heal|self-healing}} from all sources ({{sti|spell vamp}} exception).",
+        "With each {{tip|champion|enemy champion}} {{tip|takedown}}, ''World Ender'' is extended by 5 seconds, refreshing its effects, up to the original amount."
       ],
-      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.",
+      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.\n* ''World Ender'' will instantly end if '''Aatrox''' takes a post-mitigation damage bigger than it's {{as|'''current''' health}} (calculated before taking into consideration {{iis|Death's Dance}} damage storage and {{iis|Corrupting Potion}} reduced damage for [[aoe]] attacks).\n** ''World Ender'' will also instantly end if ''Death Dance's'' last tick of damage is reduced to not deal lethal damage as per its effect.\n* If '''Aatrox''' enters {{iis|Guardian Angel}} revival state during ''World Ender's'' cast time, he will revive with ''World Ender'' active and increase ''Guardian Angel's'' self-heal.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",
@@ -793,6 +804,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

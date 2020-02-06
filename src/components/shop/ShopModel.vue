@@ -137,7 +137,8 @@ export default {
     },
     items() {
       if(this.inventory)
-      return this.inventory.items;
+        return this.inventory.items;
+      return null;
     },
     emptyImage() {
       return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";

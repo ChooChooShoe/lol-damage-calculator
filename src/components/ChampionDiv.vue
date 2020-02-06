@@ -13,31 +13,13 @@
       </label>
       <label class="column">
         ➤ Champion Level
-        <input type="number" value="18" v-model.number="level" class="simple-input">
+        <input type="number" value="18" v-model.number="level" class="simple-input" />
         <div class="button-group">
-          <input :active="level === 1" type="button" class="button" value="1" @click="level = 1">
-          <input :active="level === 6" type="button" class="button" value="6" @click="level = 6">
-          <input
-            :active="level === 11"
-            type="button"
-            class="button"
-            value="11"
-            @click="level = 11"
-          >
-          <input
-            :active="level === 16"
-            type="button"
-            class="button"
-            value="16"
-            @click="level = 16"
-          >
-          <input
-            :active="level === 18"
-            type="button"
-            class="button"
-            value="18"
-            @click="level = 18"
-          >
+          <input :active="level === 1" type="button" class="button" value="1" @click="level = 1" />
+          <input :active="level === 6" type="button" class="button" value="6" @click="level = 6" />
+          <input :active="level === 11" type="button" class="button" value="11" @click="level = 11" />
+          <input :active="level === 16" type="button" class="button" value="16" @click="level = 16" />
+          <input :active="level === 18" type="button" class="button" value="18" @click="level = 18" />
         </div>
       </label>
 
@@ -144,14 +126,14 @@
       <label class="column column-50">
         Show Damage Stats
         <label class="switch-wrap">
-          <input type="checkbox" v-model="showDamage">
+          <input type="checkbox" v-model="showDamage" />
           <div class="switch"></div>
         </label>
       </label>
       <label class="column column-50 flex">
         Show Defensive Stats
         <label class="switch-wrap">
-          <input type="checkbox" v-model="showDefence">
+          <input type="checkbox" v-model="showDefence" />
           <div class="switch"></div>
         </label>
       </label>
@@ -192,7 +174,7 @@
         </label>
         <label class="column column-50">
           <label class="switch-wrap">
-            <input type="checkbox" @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0">
+            <input type="checkbox" @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0" />
             <div class="switch"></div>
           </label>
         </label>
@@ -218,58 +200,66 @@
       </div>
 
       <div class="flex" v-if="showDefence">
-        <hr class="column">
+        <hr class="column" />
         <label for="target_hp" class="health">Health (HP)</label>
         <data-input dname="target_hp" v-model="total_hp"></data-input>
         <ul>
-          <li>{{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
-          {{ rnd(total_hp) }} Total HP</li>
+          <li>
+            {{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
+            {{ rnd(total_hp) }} Total HP
+          </li>
         </ul>
-        <hr class="column">
+        <hr class="column" />
         <label for="target_armor" class="armor">Armor</label>
         <data-input dname="target_armor" v-model="total_armor"></data-input>
         <ul>
           <li>{{ rnd(base_armor) }} Base Armor + {{ rnd(bonus_armor) }} Bonus Armor = {{ rnd(total_armor) }} Total Armor</li>
-          <li>This will reduce
+          <li>
+            This will reduce
             <span class="physical-damage">Physical Damage</span> taken by
             <span class="ap">{{ rnd(percent_pysical_reduction * 10000 ) / 100 }}%</span>.
           </li>
-          <li>This is equivalent to having
+          <li>
+            This is equivalent to having
             <span class="health">{{ Math.ceil(eff_physical_hp) }} HP</span> vs.
             <span class="physical-damage">Physical Damage</span>.
           </li>
         </ul>
-        <hr class="column">
+        <hr class="column" />
         <label for="target_mr" class="mr">Magic Resistance (MR)</label>
         <data-input dname="target_mr" v-model="total_mr"></data-input>
         <ul>
-        <li>{{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</li>
-        <li>This will reduce
-          <span class="magic-damage">Magic Damage</span> taken by
-          <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
-        </li>
-        <li>This is equivalent to having
-          <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
-          <span class="magic-damage">Magic Damage</span>.
-        </li>
+          <li>{{ rnd(base_mr) }} Base MR + {{ rnd(bonus_mr) }} Bonus MR = {{ rnd(total_mr) }} Total MR</li>
+          <li>
+            This will reduce
+            <span class="magic-damage">Magic Damage</span> taken by
+            <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
+          </li>
+          <li>
+            This is equivalent to having
+            <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
+            <span class="magic-damage">Magic Damage</span>.
+          </li>
         </ul>
-        <hr class="column">
+        <hr class="column" />
         <div v-if="info.resource == 'Mana'">
-        <label for="target_mana" class="mr">Mana</label>
-        <data-input dname="target_mana" v-model="total_mana"></data-input>
-        <ul>
-        <li>{{ rnd(base_mana) }} Base Mana + {{ rnd(bonus_mana) }} Bonus Mana = {{ rnd(total_mana) }} Total Mana</li>
-        <li>This will reduce
-          <span class="magic-damage">Magic Damage</span> taken by
-          <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
-        </li>
-        <li>This is equivalent to having
-          <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
-          <span class="magic-damage">Magic Damage</span>.
-        </li>
-        </ul>
+          <label for="target_mana" class="mr">Mana</label>
+          <data-input dname="target_mana" v-model="total_mana"></data-input>
+          <ul>
+            <li>{{ rnd(base_mana) }} Base Mana + {{ rnd(bonus_mana) }} Bonus Mana = {{ rnd(total_mana) }} Total Mana</li>
+            <li>
+              This will reduce
+              <span class="magic-damage">Magic Damage</span> taken by
+              <span class="ap">{{ rnd(percent_magic_reduction * 10000 ) / 100 }}%</span>.
+            </li>
+            <li>
+              This is equivalent to having
+              <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
+              <span class="magic-damage">Magic Damage</span>.
+            </li>
+          </ul>
         </div>
-        <hr class="column">
+        <hr class="column" />
         <label for="target_hp5" class="extra">Health regeneration (HP per 5)</label>
         <data-input dname="target_hp5" v-model="base_hpregen"></data-input>
         <span>
@@ -277,7 +267,7 @@
           <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and
           <span class="health">{{ rnd(base_hpregen * 12) }} HP</span> after 60 seconds.
         </span>
-        <hr class="column">
+        <hr class="column" />
         <label v-if="info.resource !== 'None'" for="target_hp5" class="extra">
           {{info.resource}} regeneration
           ({{info.resource}} per 5)
@@ -297,8 +287,8 @@
         <span v-if="info.resource === 'None'">* {{ info.name }} does not use any secondary resource.</span>
       </div>
       <div class="column">
-        <input name="reset" type="reset" value="Reset All" @click="clear(true)">
-        <input name="reset" type="reset" value="Clear" @click="clear()">
+        <input name="reset" type="reset" value="Reset All" @click="clear(true)" />
+        <input name="reset" type="reset" value="Clear" @click="clear()" />
       </div>
       <ItemInventory v-if="$app.config.shopEnabled" ref="inventory" :userid="userid"></ItemInventory>
     </div>
@@ -465,7 +455,29 @@ export default {
           title: "Loading Champion " + champ + "…",
           type: "info"
         });
-        fetchSingleChampFile(this.$root.$app, champ);
+        const vue = this.$root.$app;
+        fetchSingleChampFile(champ).then(model => {
+          // Removes all the last champions spells.
+          vue.currentSpells.length = 0;
+          vue.currentChamp = null;
+          let newList = [];
+          for (const skillkey in model.skills) {
+            let value = model.skills[skillkey];
+            newList.push({
+              key: skillkey,
+              value: value
+            });
+          }
+          vue.currentChamp = model.id;
+          vue.currentSpells = newList;
+          // sellAllItems();
+          //TODO buy default items
+          this.$notify({
+            group: "main",
+            title: "Loading Done.",
+            type: "info"
+          });
+        });
       } else {
         this.$notify({
           group: "main",

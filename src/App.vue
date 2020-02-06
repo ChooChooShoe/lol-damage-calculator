@@ -52,7 +52,6 @@ export default {
       currentSpells: [],
       currentChamp: 'None',
       spellComponents: [],
-      championData: {},
       player: null,
       target: null,
       championList: {},
@@ -66,7 +65,7 @@ export default {
     setupVue(this);
   },
   mounted: function() {
-    console.log('process.env.VUE_APP_DDRAGON_VERSION',process.env);
+    console.log('process.env',process.env);
   },
   watch: {
     config: {

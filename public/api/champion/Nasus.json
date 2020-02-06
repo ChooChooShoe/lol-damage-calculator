@@ -2,22 +2,17 @@
   "patch": "V0.9.25.24",
   "changes": "9.6.1",
   "id": "Nasus",
-  "key": "75",
   "name": "Nasus",
   "title": "the Curator of the Sands",
   "image": {
     "full": "Nasus.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Tank"
-  ],
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Tank",
@@ -63,7 +58,7 @@
         "full": "Nasus_Passive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
@@ -100,7 +95,7 @@
         "full": "NasusQ.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 0,
         "w": 48,
         "h": 48
@@ -184,7 +179,7 @@
         "full": "NasusW.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 0,
         "w": 48,
         "h": 48
@@ -301,7 +296,7 @@
         "full": "NasusE.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
@@ -453,7 +448,7 @@
         "full": "NasusR.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
@@ -519,7 +514,7 @@
         },
         {
           "levelingtext": "{{st|Magic Damage Per Second|{{as|{{ap|3|4|5}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}|Total Magic Damage|{{as|{{ap|45|60|75}}% {{as|(+ 15% per 100 AP)}} of target's '''maximum''' health}}}}<!--\n-->{{st|Bonus Resistances Per Second|{{ap|1|2|3}}|Total Bonus Resistances|{{ap|30|65|100}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's <b>maximum</b> health\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul><br><ul><li><span class=\"blue\">Bonus Resistances Per Second</span>: <span><spell-span :list=\"['1','2','3']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Total Bonus Resistances</span>: <span><spell-span :list=\"['30','65','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Resistances Per Second</span>: <span><spell-span :list=\"['1','2','3']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Total Bonus Resistances</span>: <span><spell-span :list=\"['30','65','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -554,13 +549,16 @@
                   0.65,
                   1
                 ]
+              },
+              {
+                "target_total_ap": []
               }
             ],
             "st_slices": [
               "Magic Damage Per Second",
               "<span class=\"health\"><spell-span :list=\"['3','4','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>",
               "Total Magic Damage",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"health\"><spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -589,13 +587,12 @@
                 "player_total_ap": 151
               },
               "title": "Total Magic Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"health\"><spell-span :list=\"['45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 15% per 100 AP)</span> of target's '''maximum''' health</span>",
               "damage_type": "magic"
             }
           ]
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

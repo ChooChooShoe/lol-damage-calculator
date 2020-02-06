@@ -2,22 +2,17 @@
   "patch": "v1.0.0.98",
   "changes": "9.17.1",
   "id": "Galio",
-  "key": "3",
   "name": "Galio",
   "title": "the Colossus",
   "image": {
     "full": "Galio.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 0,
+    "x": 48,
     "y": 0,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Tank",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Mage",
@@ -59,12 +54,12 @@
       "name": "Colossal Smash",
       "maxrank": 0,
       "cooldown": 5,
-      "targeting": "Self",
+      "targeting": "Passive",
       "image": {
         "full": "Galio_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 0,
+        "x": 48,
         "y": 0,
         "w": 48,
         "h": 48
@@ -73,7 +68,7 @@
         "{{sbc|Innate:}} '''Galio's''' next [[basic attack]] deals {{pp|15 to 200|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}} {{as|(+ 60% '''bonus''' magic resistance)}} {{tip|magic damage|{{as|'''total''' magic damage}}}} to its target and all enemies around it.",
         "''Colossal Smash'' can {{tip|critical strike|critically strike}}, dealing {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' magic damage}} to all targets hit."
       ],
-      "notes": "* {{ii|Sheen|Spellblade}} will also get converted to magic damage but will deal its damage only to the primary target.",
+      "notes": "* Applies {{tip|proc damage}} to the primary target and {{tip|area damage}} to surrounding targets.\n* {{ii|Sheen|Spellblade}} will also get converted to magic damage but will deal its damage only to the primary target.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -97,20 +92,20 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "target_range": 825,
       "image": {
         "full": "GalioQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Galio''' fires two windblasts that arc to either side before converging to the target area, dealing {{as|magic damage}} to all enemies they pass through.",
-        "When the blasts meet, the gusts form a tornado that advances for {{fd|1.5}} seconds, dealing {{as|magic damage}} every {{fd|0.5}} seconds to every enemy within, with the target's health ratio capped at 150 damage against {{tip|monsters}}."
+        "When the blasts meet, the gusts form a tornado that advances for 2 seconds, dealing {{as|magic damage}} every {{fd|0.5}} seconds to every enemy within, with the target's health ratio capped at 150 damage against {{tip|monsters}}."
       ],
       "notes": "* ''Spell shields'' will block the gusts damage but not the tornado's.\n* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block each windblast individually.\n** The tornado will not form if only one windblast reaches the target location.",
       "skillkey": "Q",
@@ -163,30 +158,30 @@
           ]
         },
         {
-          "levelingtext": "{{st|Tornado Magic Damage Per Tick|{{as|2% {{as|(+ {{fd|0.6{{recurring|6}}%}} per 100 AP)}} of target's '''maximum''' health}}|Total Tornado Magic Damage|{{as|6%  {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Tornado Magic Damage Per Tick</span>: <span><span class=\"health\">2% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.6<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip>%</span> per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Tornado Magic Damage</span>: <span><span class=\"health\">6%  <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "levelingtext": "{{st|Tornado Magic Damage Per Tick|{{as|2% {{as|(+ {{fd|0.6{{recurring|6}}%}} per 100 AP)}} of target's '''maximum''' health}}|Total Tornado Magic Damage|{{as|8% {{as|(+ {{fd|2.6{{Recurring|6}}}}% per 100 AP)}} of target's '''maximum''' health}}}}",
+          "str": "<ul><li><span class=\"blue\">Tornado Magic Damage Per Tick</span>: <span><span class=\"health\">2% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.6<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip>%</span> per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Tornado Magic Damage</span>: <span><span class=\"health\">8% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.6<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 6\">Unknown value: Recurring 6</simple-tooltip></span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "as_ratios": [
               {
-                "player_total_ap": 21
-              },
-              {
-                "target_total_ap": 621
-              },
-              {
                 "player_total_ap": 0.006661
               },
               {
+                "player_total_ap": 0.026661
+              },
+              {
                 "target_total_ap": 0.206661
+              },
+              {
+                "target_total_ap": 0.826661
               }
             ],
             "st_slices": [
               "Tornado Magic Damage Per Tick",
               "<span class=\"health\">2% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.6<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip>%</span> per 100 AP)</span> of target's '''maximum''' health</span>",
               "Total Tornado Magic Damage",
-              "<span class=\"health\">6%  <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health</span>"
+              "<span class=\"health\">8% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.6<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 6\">Unknown value: Recurring 6</simple-tooltip></span>% per 100 AP)</span> of target's '''maximum''' health</span>"
             ]
           }
         }
@@ -211,19 +206,20 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "[[Auto-targeted|Auto]]",
       "image": {
         "full": "GalioW.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive - Anti-Magic Bulwark:}} '''Galio''' gains a shield that absorbs {{as|magic damage}} that lasts until broken, refreshing after not taking damage for 12 seconds.",
-        "{{sbc|First Cast:}} '''Galio''' {{ct|windup|charges|items=true,true,interrupts,interrupts,interrupts,melee|consume=true|spells=true,false,false,false,false}} for up to 3 seconds, {{tip|ground|grounding}} and {{tip|slow|slowing}} himself by 15%, and gaining {{as|magic damage}} reduction and half of that amount as {{as|physical damage}} reduction. Charging increases ''Shield of Durand's'' radius, damage and {{tip|taunt}} duration.",
+        "{{sbc|Passive:}} Upon learning ''Shield of Durand'' or after not taking damage for 12 seconds, '''Galio''' gains ''Anti-Magic Bulwark''.",
+        "{{sbc|Anti-Magic Bulwark:}} '''Galio''' gains a {{tip|shield}} that exclusively blocks {{as|magic damage}}.",
+        "{{sbc|First Cast:}} '''Galio''' {{ct|windup|charges|attack=false|cast=false|move=true|items=interrupts,true,,false|consume=true|spells=true,false,false,interrupts,interrupts|interrupts=death}} for up to 3 seconds, {{tip|ground|grounding}} and {{tip|slow|slowing}} himself by 15%, and gaining {{as|magic damage}} reduction and half of that amount as {{as|physical damage}} reduction. Charging increases ''Shield of Durand's'' radius, damage and {{tip|taunt}} duration.",
         "{{sbc|Second Cast:}} '''Galio''' refreshes the damage reduction for 2 seconds, {{tip|taunt|taunts}} nearby enemies and sets their {{sti|ms|{{as|movement speed}}}} to a {{as|static 60|ms}} for {{pp|type=charge time|9|0.5 to 1.5|0 to 2|displayformula=0.5+(0.125 per 0.25 seconds charged).}} seconds.",
         "Affected enemies take {{as|magic damage}}, increased by {{pp|type=charge time|9|key=%|0 to 200|0 to 2|displayformula=100%+(25% per 0.25 seconds charged).}}."
       ],
@@ -430,14 +426,14 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Direction",
       "target_range": 650,
       "image": {
         "full": "GalioE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -445,7 +441,7 @@
         "{{sbc|Active:}} '''Galio''' steps backwards, and after {{fd|0.4}} seconds he {{tip|dash|dashes}} forward, though not through terrain.",
         "He stops upon hitting an enemy champion, dealing them and all enemies along the way {{as|magic damage}}, while also {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds. Non-champions receive 50% reduced damage."
       ],
-      "notes": "* '''Galio''' can cast movement effects during the ability, and buffers all other active effects.",
+      "notes": "* Non-champions hit receive {{tip|area damage}}, while champions take {{tip|spell damage}}.\n* '''Galio''' can cast movement effects during the ability, and buffers all other active effects.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
@@ -540,21 +536,21 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted|Unit]] / [[Ground-targeted|Ground]]",
       "target_range": "{{ap|4000|4750|5500}}",
       "image": {
         "full": "GalioR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Galio''' designates the target allied champion's location at the time of cast as his landing spot, {{tip|channels}} for {{fd|1.25}} seconds, and then {{tip|dashes}} to them, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds."
       ],
-      "notes": "* Galio cannot cast Hero's Entrance on allies while {{tip|Nearsight|nearsighted}}.",
+      "notes": "* '''Galio''' becomes completely {{tip|untargetable}} while in the air.\n*'''Galio''' cannot cast ''Hero's Entrance'' on allies at long distances while {{tip|Nearsight|nearsighted}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -602,6 +598,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

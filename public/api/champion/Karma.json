@@ -1,23 +1,18 @@
 {
   "patch": "V1.0.0.110",
-  "changes": "9.19.1",
+  "changes": "9.24.2",
   "id": "Karma",
-  "key": "43",
   "name": "Karma",
   "title": "the Enlightened One",
   "image": {
     "full": "Karma.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 432,
-    "y": 48,
+    "x": 0,
+    "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Mage",
-    "Support"
-  ],
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Controller",
@@ -63,13 +58,13 @@
         "full": "Karma_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 432,
-        "y": 48,
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Karma''' {{sti|cooldown reduction|link=true|reduces}} {{ais|Mantra|Karma}} cooldown by {{pp|3|showtype=true|2 to 4|1 to 13}} seconds every time she [[damage]]s an enemy [[champion]] with an [[Champion ability|ability]], halved to {{pp|3|showtype=true|1 to 2|1 to 13}} seconds on her [[basic attack]]s."
+        "{{sbc|Innate:}} '''Karma''' reduces {{ais|Mantra|Karma}} {{sti|cooldown}} by {{pp|3|showtype=true|2 to 4|1 to 13}} seconds every time she [[damage]]s an enemy {{tip|champion}} with an [[Champion ability|ability]], or by {{pp|3|showtype=true|1 to 2|1 to 13}} with her [[basic attack]]s [[on-hit]]."
       ],
       "notes": "* {{ai|Inner Flame|Karma}} / {{ai|Soulflare|Karma}} reduces {{ais|Mantra|Karma}} cooldown per target hit (for a total of {{pp|3|2*5 to 4*5|1 to 13|showtype=true}} seconds if 5 enemy champions are hit at once).\n* {{ai|Focused Resolve|Karma}} / {{ai|Renewal|Karma}} reduces {{ais|Mantra|Karma}} cooldown per tick (for a total of {{pp|3|2*2 to 4*2|1 to 13|showtype=true}} seconds for the entire duration).\n* {{ai|Inspire|Karma}} / {{ai|Defiance|Karma}} does not reduce {{ais|Mantra|Karma}} cooldown (it has no damage component).",
       "skillkey": "I",
@@ -101,7 +96,7 @@
         "full": "KarmaQ.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
@@ -116,18 +111,18 @@
       "cooldownBurn": "7/6.5/6/5.5/5",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|90 to 270}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                80,
-                125,
-                170,
-                215,
-                260
+                90,
+                135,
+                180,
+                225,
+                270
               ]
             ],
             "as_ratios": [
@@ -137,7 +132,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -145,16 +140,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  80,
-                  125,
-                  170,
-                  215,
-                  260
+                  90,
+                  135,
+                  180,
+                  225,
+                  270
                 ],
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -179,18 +174,18 @@
         0,
         0
       ],
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "image": {
         "full": "KarmaQ.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inner Flame'' detonates upon hitting an enemy or reaching maximum range, dealing {{as|'''bonus''' magic damage}} in an increased area.",
+        "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Inner Flame'' detonates upon hitting an enemy or reaching maximum range, dealing {{as|'''bonus''' magic damage}} in an increased {{tip|area of effect|area}}.",
         "A field lingers around the detonation for {{fd|1.5}} seconds, {{tip|slow|slowing}} enemies by 50%, after which it explodes, dealing {{as|magic damage}} to all enemies inside.",
         "''Soulflare'' scales with {{ais|Mantra|Karma}} rank."
       ],
@@ -201,8 +196,8 @@
       "cooldownBurn": "0",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25 to 175 4}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|80 to 260 5}} (+ {{ai|Mantra|Karma|{{ap|25 to 175 4}}}}) {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Burst Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Magic Damage|{{ai|Mantra|Karma|{{ap|25 to 175 4}}}} {{as|(+ 30% AP)}}|Total Burst Damage|{{ap|90 to 270 5}} (+ {{ai|Mantra|Karma|{{ap|25 to 175 4}}}}) {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Burst Damage</span>: <span><spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -214,11 +209,11 @@
                 175
               ],
               [
-                80,
-                125,
-                170,
-                215,
-                260
+                90,
+                135,
+                180,
+                225,
+                270
               ],
               [
                 25,
@@ -239,7 +234,7 @@
               "Bonus Magic Damage",
               "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 30% AP)</span>",
               "Total Burst Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span>"
+              "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -262,23 +257,23 @@
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  80,
-                  125,
-                  170,
-                  215,
-                  260
+                  90,
+                  135,
+                  180,
+                  225,
+                  270
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Total Burst Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','75','125','175']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35 to 350 4}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|25+35 to 175+350 4}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|80 to 260}} (+ {{ai|Mantra|Karma|{{ap|25+35 to 175+350 4}}}}) {{as|(+ 130% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['35','140','245','350']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Detonation Damage|{{ai|Mantra|Karma|{{ap|35 to 350 4}}}} {{as|(+ 60% AP)}}|Total Bonus Damage|{{ai|Mantra|Karma|{{ap|25+35 to 175+350 4}}}} {{as|(+ 90% AP)}}|Total Magic Damage|{{ap|90 to 270}} (+ {{ai|Mantra|Karma|{{ap|25+35 to 175+350 4}}}}) {{as|(+ 130% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['35','140','245','350']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -296,11 +291,11 @@
                 525
               ],
               [
-                80,
-                125,
-                170,
-                215,
-                260
+                90,
+                135,
+                180,
+                225,
+                270
               ],
               [
                 60,
@@ -326,7 +321,7 @@
               "Total Bonus Damage",
               "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 90% AP)</span>",
               "Total Magic Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span>"
+              "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span>"
             ]
           },
           "subeffects": [
@@ -364,16 +359,16 @@
               "index": 2,
               "ratios": {
                 "base_damage": [
-                  80,
-                  125,
-                  170,
-                  215,
-                  260
+                  90,
+                  135,
+                  180,
+                  225,
+                  270
                 ],
                 "player_total_ap": 0.6
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span>",
+              "str": "<spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['60','215','370','525']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 130% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -405,34 +400,34 @@
         "full": "KarmaSpiritBind.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Karma''' exerts her will over a target enemy champion or [[monster]], dealing {{as|magic damage}} and forming a tether between them for up to 2 seconds, during which the target is {{tip|true sight|revealed}}.",
-        "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and is {{tip|true sight|revealed}} and {{tip|root|rooted}} for a duration."
+        "{{sbc|Active:}} '''Karma''' exerts her will over a target enemy {{tip|champion}} or {{tip|monster}}, dealing {{as|magic damage}} and forming a tether between them for up to 2 seconds, during which the target is revealed by {{tip|true sight}}.",
+        "If the tether holds for the duration, the target is dealt the same {{as|magic damage}} and {{tip|root|rooted}} for a duration."
       ],
-      "notes": "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.",
+      "notes": "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.\n* The {{tip|true sight}} duration is refreshed if the tether lasts.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
       "cooldownBurn": "12",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 45% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 45% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                30,
-                55,
-                80,
-                105,
-                130
+                40,
+                65,
+                90,
+                115,
+                140
               ]
             ],
             "as_ratios": [
@@ -442,7 +437,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
+              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
             ]
           },
           "subeffects": [
@@ -450,33 +445,33 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  30,
-                  55,
-                  80,
-                  105,
-                  130
+                  40,
+                  65,
+                  90,
+                  115,
+                  140
                 ],
                 "player_total_ap": 0.45
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Total Magic Damage|{{ap|30*2 to 130*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Total Magic Damage|{{ap|40*2 to 140*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                110,
-                160,
-                210,
-                260
+                80,
+                130,
+                180,
+                230,
+                280
               ],
               [
                 1.4,
@@ -501,11 +496,11 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  60,
-                  110,
-                  160,
-                  210,
-                  260
+                  80,
+                  130,
+                  180,
+                  230,
+                  280
                 ],
                 "player_total_ap": 0.9
               },
@@ -540,16 +535,16 @@
         "full": "KarmaSpiritBind.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Focused Resolve's'' {{tip|root}} duration is increased, and {{tip|heal|heals}} '''Karma''' for {{sti|health|{{as|20% {{as|(+ 1% per 100 AP)}} of '''missing''' health}}}} on-cast and once more when the target {{tip|takedown|dies}} while tethered or is {{tip|root|rooted}}.",
+        "{{sbc|{{ai|Mantra|Karma}} - Active:}} ''Focused Resolve's'' {{tip|root}} duration is increased, and {{tip|heal|heals}} '''Karma''' for {{sti|health|{{as|20% {{as|(+ 1% per 100 AP)}} of '''missing''' health}}}} on-cast and once more when the target is {{tip|root|rooted}}.",
         "''Renewal'' scales with {{ais|Mantra|Karma}} rank."
       ],
-      "notes": "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.",
+      "notes": "* {{tip|Spell shield}} will only block the tether's application, not the rooting from an already-applied one.\n* If the target [[death|dies]] while the tether persisted, the {{tip|heal}} is received again.",
       "skillkey": "W",
       "skillid": "w2",
       "costBurn": "0",
@@ -620,13 +615,13 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted|Unit]] / [[Self-targeted|Self]]",
       "target_range": 800,
       "image": {
         "full": "KarmaSolKimShield.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -634,25 +629,25 @@
       "description": [
         "{{sbc|Active:}} '''Karma''' {{tip|shield|shields}} the target allied [[champion]] or herself for {{fd|2.5}} seconds, granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{fd|1.5}} seconds."
       ],
-      "notes": "* ''Inspire'' has no cast time and does not interrupt ''Karma's'' previous orders.",
+      "notes": "* ''Inspire'' has no {{tip|channel|cast time}} and does not interrupt ''Karma's'' previous orders.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
       "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
-          "levelingtext": "{{st|Shield|{{ap|70 to 170}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "levelingtext": "{{st|Shield|{{ap|80 to 200}} {{as|(+ 50% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|40 to 60}}%|ms}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                70,
-                95,
-                120,
-                145,
-                170
+                80,
+                110,
+                140,
+                170,
+                200
               ],
               null
             ],
@@ -680,11 +675,11 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  70,
-                  95,
-                  120,
-                  145,
-                  170
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
                 ],
                 "player_total_ap": 0.5,
                 "player_total_unknown": [
@@ -722,12 +717,12 @@
         0
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted|Unit]] / [[Self-targeted|Self]] / [[Auto-targeted|Auto]]",
       "image": {
         "full": "KarmaSolKimShield.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -743,8 +738,8 @@
       "cooldownBurn": "0",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|25 to 190 4}}}} {{as|(+ 50% AP)}}|Total Target Shield|{{ap|70 to 170}} (+ {{ai|Mantra|Karma|{{ap|25 to 190 4}}}}) {{as|(+ 100% AP)}}|Allies' Shields|{{ap|70*0.3 to 170*0.3}} (+ {{ai|Mantra|Karma|{{ap|25*0.3 to 190*0.3 4}}}}) {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Shield</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Total Target Shield</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Allies' Shields</span>: <span><spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Shield|{{ai|Mantra|Karma|{{ap|25 to 190 4}}}} {{as|(+ 50% AP)}}|Total Target Shield|{{ap|80 to 200}} (+ {{ai|Mantra|Karma|{{ap|25 to 190 4}}}}) {{as|(+ 100% AP)}}|Allies' Shields|{{ap|80*0.3 to 200*0.3}} (+ {{ai|Mantra|Karma|{{ap|25*0.3 to 190*0.3 4}}}}) {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Shield</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Total Target Shield</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Allies' Shields</span>: <span><spell-span :list=\"['24','33','42','51','60']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -756,11 +751,11 @@
                 190
               ],
               [
-                70,
-                95,
-                120,
-                145,
-                170
+                80,
+                110,
+                140,
+                170,
+                200
               ],
               [
                 25,
@@ -769,11 +764,11 @@
                 190
               ],
               [
-                21,
-                28.5,
-                36,
-                43.5,
-                51
+                24,
+                33,
+                42,
+                51,
+                60
               ],
               [
                 7.5,
@@ -797,9 +792,9 @@
               "Bonus Shield",
               "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip> <span class=\"ap\">(+ 50% AP)</span>",
               "Total Target Shield",
-              "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
+              "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
               "Allies' Shields",
-              "<spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>"
+              "<spell-span :list=\"['24','33','42','51','60']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -822,16 +817,16 @@
               "index": 1,
               "ratios": {
                 "base_progression": [
-                  70,
-                  95,
-                  120,
-                  145,
-                  170
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
                 ],
                 "player_total_ap": 0.5
               },
               "title": "Total Target Shield",
-              "str": "<spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['25','80','135','190']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -846,7 +841,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Allies' Shields",
-              "str": "<spell-span :list=\"['21','28.5','36','43.5','51']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<spell-span :list=\"['24','33','42','51','60']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Karma\"><spell-span :list=\"['7.5','24','40.5','57']\" :spellrankindex=\"spellrankindex\"></spell-span><template #content>Mantra</template></HtmlTooltip>) <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -869,12 +864,12 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "[[Self-targeted|Self]]",
       "image": {
         "full": "KarmaMantra.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
@@ -890,6 +885,5 @@
       "cooldownBurn": "45/42/39/36",
       "effects": []
     }
-  },
-  "skillcount": 8
+  }
 }

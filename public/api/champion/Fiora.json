@@ -2,22 +2,17 @@
   "patch": "V1.0.0.135",
   "changes": "9.19.1",
   "id": "Fiora",
-  "key": "114",
   "name": "Fiora",
   "title": "the Grand Duelist",
   "image": {
     "full": "Fiora.png",
     "sprite": "champion0.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Assassin"
-  ],
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Slayer",
@@ -63,16 +58,16 @@
         "full": "Fiora_P.png",
         "sprite": "passive0.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Fiora''' identifies the {{as|Vitals|buzzword}} of nearby {{tip|sight|visible}} enemy champions, marked as an arc around themselves. {{as|Vitals|buzzword}} take {{fd|0.5}} seconds to identify, can be triggered only after 2 seconds, and linger for 15 seconds while '''Fiora''' remains {{tip|sight|visible}} and nearby. After a {{as|Vital|buzzword}} is triggered or times out, '''Fiora''' identifies a new one on her target.",
+        "{{sbc|Innate:}} '''Fiora''' identifies the {{as|Vitals|buzzword}} of nearby {{tip|sight|visible}} enemy champions, marked as an arc around themselves. {{as|Vitals|buzzword}} take {{fd|1.75}} seconds to become targetable and linger for {{fd|13.25}} seconds while '''Fiora''' remains {{tt|near|1600 units}} the target. After a {{as|Vital|buzzword}} is triggered or times out, '''Fiora''' identifies a new one on her target.",
         "Successful [[basic attack]]s and damaging [[Champion ability|abilities]] against a {{as|Vital|buzzword}} trigger it to deal {{as|{{fd|2.5}}% {{as|(+ {{fd|4.5}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}} {{tip|true damage|{{as|'''bonus''' true damage}}}}, {{tip|heal}} '''Fiora''' for {{sti|health|{{pp|40 to 115|color=health}}}} and grant her {{pp|type=[[File:Grand Challenge.png|20px|link=]] Grand Challenge's Rank|key=%|4|showtype=true|20 to 50|0 to 3|displayformula=20%+(10%*Grand Challenge's Rank)|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over {{fd|1.5}} seconds."
       ],
-      "notes": "* A {{as|Vital's|buzzword}} angle is fixed to the champion's model and doesn't interact with its orientation.\n* If '''Fiora''' is on or excessively close to her target, she cannot hit {{as|Vitals|buzzword}}.",
+      "notes": "* A {{as|Vital's|buzzword}} angle is fixed to the champion's model and doesn't interact with its orientation.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -96,20 +91,21 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]] / [[Auto-targeted|Auto]]",
       "target_range": 400,
       "image": {
         "full": "FioraQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiora''' {{tip|dashes}} a short distance in the target direction then stabs a nearby enemy if one is present. ''Lunge'' can damage structures and wards. Stabbing an enemy reduces ''Lunge's'' {{sti|cooldown}} by 60%.",
-        "The stab deals {{tip|physical damage|{{as|physical damage}}}} and applies [[on-hit effect]]s."
+        "{{sbc|Active:}} '''Fiora''' {{tip|dashes}} a short distance in the target direction then stabs a nearby enemy if one is present. ''Lunge'' can damage structures and {{tip|ward|wards}}. Stabbing an enemy reduces ''Lunge's'' {{sti|cooldown}} instantly by 60%.",
+        "The stab deals {{tip|physical damage|{{as|physical damage}}}} and applies [[on-hit effect]]s.",
+        "''Other abilities can be cast during the dash without cancelling it.''"
       ],
       "notes": "* The stab prioritizes in order of:\n** Enemy champion affected by {{ai|Grand Challenge|Fiora}}.\n** {{as|Vitals|buzzword}} facing '''Fiora'''.\n** Champions who would die to the strike.\n** The nearest champion.\n** Enemies that would die to the strike.\n** The closest enemy.\n** Structures.\n** Wards.\n* ''Lunge'' can target stealthed units and those hidden in the fog of war.\n* The [[dash]] '''can''' pass through walls.\n* Cannot be cancelled by {{tip|stasis}} or {{tip|airborne|displacement}} effects.\n* Will land (priority order unchanged) even if ''Fiora'' dies.\n* Will be disabled if ''Fiora'' is {{tip|ground|grounded}}.\n* ''Lunge''s dash speed is affected by movement speed.",
       "skillkey": "Q",
@@ -201,17 +197,17 @@
         "full": "FioraW.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiora''' poises to strike in the target direction, becoming {{tip|invulnerability|invulnerable}} to non-[[turret]] damage as well as gaining {{tip|crowd control}} and [[debuff]] immunity for the next {{fd|0.75}} seconds. '''Fiora''' is immobile while poised.",
+        "{{sbc|Active:}} '''Fiora''' poises to strike in the target direction, becoming {{tip|invulnerability|invulnerable}} to non-[[turret]] damage as well as gaining {{tip|crowd control}} and [[debuff]] immunity for the next {{fd|0.75}} seconds. '''Fiora''' is {{tip|pacify|pacified}} while poised.",
         "After the duration, '''Fiora''' stabs her sword forward, dealing {{tip|magic damage|{{as|magic damage}}}} to enemies in a line.",
-        "The first enemy champion struck is also {{tip|slow|slowed}} and {{tip|cripple|crippled}} by 50% for 2 seconds. If '''Fiora''' parries at least one immobilizing effect, ''Riposte'' {{tip|stun|stuns}} the target for the same duration instead."
+        "The first enemy champion struck is also {{tip|slow|slowed}} and {{tip|cripple|crippled}} by 50% for 2 seconds. If '''Fiora''' parries at least one {{tip|immobilize|immobilizing}} effect, ''Riposte'' {{tip|stun|stuns}} the target for the same duration instead."
       ],
-      "notes": "* While the in-game tooltip mentions \"parrying\", and many players refer to the effect as a parry, the functionality of the ability is identical to invulnerability. It will even prevent the damage being dealt by applied damage over times that were already active. \n* [[Crowd control]] effects from epic [[monster]]s will be blocked and still count toward the {{tip|stun}} effect against champions.\n* [[Debuff]] immunity includes [[summoner spells]], such as {{si|Exhaust}}, as well as damage over times and other effects.\n* The following count as immobilizing effects:\n** {{tip|Airborne}}\n** {{tip|Charm}}\n** {{tip|Entangle}}\n** {{tip|Flee}}\n** {{tip|Root}}\n** {{tip|Stasis}}\n** {{tip|Stun}}\n** {{tip|Suppression}}\n** {{tip|Suspension}}\n** {{tip|Taunt}}\n* {{tip|Spell shield|Spell shielding}} the ability will not prevent {{as|Vitals|buzzword}} from being triggered.",
+      "notes": "* While the in-game tooltip mentions \"parrying\", and many players refer to the effect as a parry, the functionality of the ability is identical to invulnerability. It will even prevent the damage being dealt by applied damage over times that were already active. \n* [[Crowd control]] effects from epic [[monster]]s will be blocked and still count toward the {{tip|stun}} effect against champions.\n* [[Debuff]] immunity includes [[summoner spells]], such as {{si|Exhaust}}, as well as damage over times and other effects.\n* {{tip|Spell shield|Spell shielding}} the ability will not prevent {{as|Vitals|buzzword}} from being triggered.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
@@ -282,22 +278,22 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "[[Buff]]",
       "image": {
         "full": "FioraE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Fiora's''' next two basic attacks [[on-attack]] within 4 seconds gain {{sti|range|25 '''bonus''' range}} and {{sti|{{as|'''bonus''' attack speed}}}}.",
-        "The first attack {{tip|slow|slows}} its target by 30% for 1 second but cannot {{tip|critical strike|critically strike}}. The second attack is guaranteed to {{tip|critical strike|critically strike}} for {{as|'''reduced''' critical damage}}.",
+        "The first attack {{tip|slow|slows}} the target by 30% for 1 second but cannot {{color|#E15F1A|critically strike}}. The second attack will {{tip|critically strike}} for {{sti|critical damage modifiers|'''reduced''' critical damage}} (including to {{tip|turrets|structures}}).",
         "''Bladework'' resets '''Fiora's''' basic attack timer."
       ],
-      "notes": "* {{ii|Infinity Edge}} is not affected by the critical damage reduction and will increase the damage as normally.\n* ''Bladework's'' second attack bonus damage applies to structures.\n* ''Bladework'' will go on cooldown after either its buff wears off or both basic attacks are consumed.\n* {{tip|Spell shield|Spell shields}} will only block the slow from the first hit.",
+      "notes": "* {{ii|Infinity Edge}} is not affected by the critical damage reduction and will increase the damage as normally.\n* ''Bladework'' will go on cooldown after either its buff wears off or both basic attacks are consumed.\n* {{tip|Spell shield}} will only block the slow from the first hit.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40",
@@ -342,44 +338,39 @@
           ]
         },
         {
-          "levelingtext": "{{st|Critical damage reduction|{{as|{{ap|-40 to 0}}%}}}}",
-          "str": "<ul><li><span class=\"blue\">Critical damage reduction</span>: <span><span class=\"ad\"><spell-span :list=\"['-40','-30','-20','-10','0']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "levelingtext": "{{st|Critical damage|{{ap|160 to 200}}%}}",
+          "str": "<ul><li><span class=\"blue\">Critical damage</span>: <span><spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_unknown": [
-                  -0.4,
-                  -0.3,
-                  -0.2,
-                  -0.1,
-                  0
-                ]
-              }
+              [
+                160,
+                170,
+                180,
+                190,
+                200
+              ]
             ],
             "st_slices": [
-              "Critical damage reduction",
-              "<span class=\"ad\"><spell-span :list=\"['-40','-30','-20','-10','0']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+              "Critical damage",
+              "<spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_unknown": [
-                  -0.4,
-                  -0.3,
-                  -0.2,
-                  -0.1,
-                  0
+                "base_damage": [
+                  160,
+                  170,
+                  180,
+                  190,
+                  200
                 ]
               },
-              "title": "Critical damage reduction",
-              "str": "<span class=\"ad\"><spell-span :list=\"['-40','-30','-20','-10','0']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "title": "Critical damage",
+              "str": "<spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "unknown"
             }
           ]
@@ -407,23 +398,62 @@
         "full": "FioraR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive:}} {{ais|Duelist's Dance|Fiora}} {{sti|ms|{{as|'''bonus''' movement speed}}}} is increased.",
-        "{{sbc|Active:}} '''Fiora''' challenges the target enemy champion for 8 seconds, highlighting their four {{as|Vitals|buzzword}} and creates an area around them. While in effect, {{ai|Duelist's Dance|Fiora}} does not identify new {{as|Vitals|buzzword}} on '''Fiora's''' target.",
+        "{{sbc|Active:}} '''Fiora''' challenges the target enemy champion for 8 seconds, highlighting their four {{as|Vitals|buzzword}} after a {{fd|0.5}} second delay. While in effect, {{ai|Duelist's Dance|Fiora}} does not identify new {{as|Vitals|buzzword}} on '''Fiora's''' target.",
         "While near the target, '''Fiora''' gains {{ais|Duelist's Dance|Fiora}} {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
-        "If she triggers at least one {{as|Vital|buzzword}} before her target [[death|dies]], or triggers all four, she creates a {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} that {{tip|heals}} all allied champions within it for {{pp|4|changedisplay=true|type=Vitals hit|2 to 5|color=buzzword}} seconds."
+        "If she triggers at least one {{as|Vital|buzzword}} before her target [[death|dies]], or triggers all four, she creates a {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} that {{tip|heals}} all allied champions within it for {{pp|4|changedisplay=true|type=Vitals hit|2 to 5|color=buzzword}} seconds.",
+        "''Unlike {{ai|Duelist's Dance|Fiora}}, the {{as|Vitals|buzzword}} will keep on lingering even if '''Fiora''' is not nearby.''"
       ],
-      "notes": "* ''Grand Challenge'' is dispelled instantly if targeting a [[decoy]].\n* Just like with {{ai|Duelist's Dance|Fiora}} it takes ''Grand Challenge'' {{fd|0.5}} seconds to identify all four {{as|Vitals|buzzword}}.\n** If the target dies before all {{as|Vitals|buzzword}} are identified or '''Fiora''' didn't hit at least one {{as|Vital|buzzword}}, the {{ai|Grand Challenge 2|Fiora|Victory Zone}} will not trigger and the cooldown of the ability/mana spent are not refunded.\n* The damage of this ability scales with {{ai|Duelist's Dance|Fiora}}.\n* Even if '''Fiora''' dies, the {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} will trigger so long as she hit at least one {{as|Vital|buzzword}} and they die before the {{as|Vitals|buzzword}} wear off.\n** When triggering the {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} the target is considered dead even if they are being revived (for example: {{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}).\n* Ally units in {{tip|stasis}} will not be {{tip|heal|healed}} by the {{ai|Grand Challenge 2|Fiora|Victory Zone}}.\n** The {{ai|Grand Challenge 2|Fiora|Victory Zone}} can {{tip|heal}} the summoned {{ui|Rift Herald}}.",
+      "notes": "* ''Grand Challenge'' is dispelled instantly if targeting a [[decoy]].\n* The damage of this ability scales with {{ai|Duelist's Dance|Fiora}}.\n* Even if '''Fiora''' dies, the {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} will trigger so long as she hit at least one {{as|Vital|buzzword}} and they die before the {{as|Vitals|buzzword}} wear off.\n** When triggering the {{ai|Grand Challenge 2|Fiora|''Victory Zone''}} the target is considered dead even if they are being revived (for example: {{ii|Guardian Angel}}, {{ai|Chronoshift|Zilean}}).\n* Ally units in {{tip|stasis}} will not be {{tip|heal|healed}} by the {{ai|Grand Challenge 2|Fiora|Victory Zone}}.\n** The {{ai|Grand Challenge 2|Fiora|Victory Zone}} can {{tip|heal}} the summoned {{ui|Rift Herald}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "110/90/70",
       "effects": [
+        {
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|10 to 30}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ],
+            "st_slices": [
+              "Bonus Movement Speed",
+              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ]
+              },
+              "title": "Bonus Movement Speed",
+              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
         {
           "levelingtext": "{{st|Heal Per Second|{{ap|80 to 140}} {{as|(+ 60% '''bonus''' AD)}}|Maximum Heal|{{ap|80*5 to 140*5}} {{as|(+ 300% '''bonus''' AD)}}}}",
           "str": "<ul><li><span class=\"blue\">Heal Per Second</span>: <span><spell-span :list=\"['80','95','110','125','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['400','475','550','625','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 300% <b>bonus</b> AD)</span></span></li></ul>",
@@ -498,6 +528,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

@@ -2,21 +2,17 @@
   "patch": "V4.3",
   "changes": "9.6.1",
   "id": "Velkoz",
-  "key": "161",
   "name": "Vel'Koz",
   "title": "the Eye of the Void",
   "image": {
     "full": "Velkoz.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 336,
-    "y": 0,
+    "x": 0,
+    "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Mage",
   "alttype": "",
@@ -57,19 +53,19 @@
       "riotId": "",
       "name": "Organic Deconstruction",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "VelKoz_Passive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 336,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] apply a ''Deconstruction'' stack for 7 seconds, stacking up to 3 times. Basic attacks refresh the duration on-hit.",
-        "The third stack consumes them all to deal {{pp|33 to 169}} {{as|(+ 50% AP)}} {{tip|true damage|{{as|'''bonus''' true damage}}}}."
+        "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] apply a ''Deconstruction'' stack for 7 seconds, stacking up to 3 times. [[Basic attack]]s refresh the duration [[on-hit]].",
+        "The third stack consumes them all, dealing {{pp|33 to 169}} {{as|(+ 50% AP)}} {{tip|true damage|{{as|'''bonus''' true damage}}}}."
       ],
       "notes": "* No additional notes.",
       "skillkey": "I",
@@ -102,7 +98,7 @@
         "sprite": "spell13.png",
         "group": "spell",
         "x": 192,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -170,7 +166,7 @@
         },
         {
           "levelingtext": "{{st|Mana Restored On-Kill|{{as|{{ap|20 to 30}}|mana}}|Maximum Mana Restored|{{as|{{ap|20*3 to 30*3}}|mana}}}}",
-          "str": "<ul><li><span class=\"blue\">Mana Restored On-Kill</span>: <span><span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Mana Restored</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Mana Restored On-Kill</span>: <span><span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -193,13 +189,16 @@
                   0.825,
                   0.9
                 ]
+              },
+              {
+                "player_total_unknown": []
               }
             ],
             "st_slices": [
               "Mana Restored On-Kill",
               "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "Maximum Mana Restored",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"mana\"><spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
             ]
           },
           "subeffects": [
@@ -237,7 +236,7 @@
                 ]
               },
               "title": "Maximum Mana Restored",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span> mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"mana\"><spell-span :list=\"['60','67.5','75','82.5','90']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "damage_type": "none"
             }
           ]
@@ -270,7 +269,7 @@
         "sprite": "spell13.png",
         "group": "spell",
         "x": 240,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -394,14 +393,14 @@
         "sprite": "spell13.png",
         "group": "spell",
         "x": 288,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.55}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|suspension|suspending}} enemies in the area for {{fd|0.75}} seconds. If the area is created close to '''Vel'Koz''', enemies hit are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
       ],
-      "notes": "* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}}.\n* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.\n* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.\n* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it.",
+      "notes": "* ''Tectonic Disruption's'' suspension is affected by {{ii|Mercury's Treads|Tenacity}}.\n* The required proximity for displacement is relative to '''Vel'Koz's''' position when casting and not his current one.\n* There is a brief ~{{fd|0.1}} second cast time before the projectile begins to travel.\n* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it ''visually''.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
@@ -475,7 +474,7 @@
         "sprite": "spell13.png",
         "group": "spell",
         "x": 336,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -564,6 +563,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

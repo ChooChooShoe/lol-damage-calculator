@@ -2,22 +2,17 @@
   "patch": "V5.13",
   "changes": "9.19.1",
   "id": "TahmKench",
-  "key": "223",
   "name": "Tahm Kench",
   "title": "the River King",
   "image": {
     "full": "TahmKench.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 48,
+    "x": 192,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Support",
-    "Tank"
-  ],
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "Tank",
@@ -63,7 +58,7 @@
         "full": "TahmKench_P.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 48,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
@@ -72,7 +67,7 @@
         "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s deal {{as|4% of his '''maximum''' health}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. Against enemy [[champion]]s they also apply ''An Acquired Taste'' stack for 5 seconds, stacking up to 3 times. The stacks decay once every {{fd|0.67}} seconds after the stacks reach the full duration.",
         "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with three stacks."
       ],
-      "notes": "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, we can define ''An Acquired Taste's'' damage in a different way: {{pp|4/100*({{Data Tahm Kench|pst2|hp_base}}+{{Data Tahm Kench|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 4% '''bonus''' health)}}.",
+      "notes": "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, we can define ''An Acquired Taste's'' damage in a different way: {{pp|4/100*({{ccd|Tahm Kench|hp_base}}+{{ccd|Tahm Kench|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}} {{as|(+ 4% '''bonus''' health)}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -103,7 +98,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 0,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -193,7 +188,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 48,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -235,7 +230,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 48,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -363,16 +358,16 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 96,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Tahm Kench''' stores a percentage of the damage he takes as ''Grey Health'' on his {{as|health bar}}.",
+        "{{sbc|Passive:}} '''Tahm Kench''' stores a percentage of the damage he takes as ''Grey Health'' on his {{as|health bar}}, up to a maximum of {{as|100% of his '''missing''' health}}.",
         "While ''Thick Skin'' is available, and after taking no damage for {{tt|{{fd|2.5}}|Estimated}} seconds, '''Tahm Kench''' rapidly {{tip|heals}} for {{pp|key=%|30 to 100}} of his ''Grey Health'' over time.",
         "{{sbc|Active:}} '''Tahm Kench''' converts his current ''Grey Health'' into a {{tip|shield}} that lasts for 2 seconds."
       ],
-      "notes": "* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means you can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than your maximum health.\n* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of true damage mitigation.",
+      "notes": "* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means you can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than your maximum health.\n** At level 18 '''Tahm Kench''' would need {{ap|(100/65-1)*100|round=1}}% {{sti|heal power}} to heal for 100% of the damage he takes, reduced to {{ap|(100/(65*1.1)-1)*100|round=1}}% with {{ri|Revitalize}}, {{ap|(100/(65*1.3)-1)*100|round=1}}% with {{ii|Spirit Visage}}, and {{ap|(100/(65*1.1*1.3)-1)*100|round=1}}% with both.\n* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of {{as|true damage}} mitigation.\n* ''Grey Health'' can temporarily exceed 100% of his missing health when '''Tahm Kench''' {{tt|heals through other means|Any other source of healing besides Thick Skin}} with a ''Grey Health'' bar at 100%. In that case he will keep the higher ''Grey Health'' value for a few moments until it updates and removes the amount that he healed.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -440,7 +435,7 @@
         "sprite": "spell11.png",
         "group": "spell",
         "x": 144,
-        "y": 96,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -449,13 +444,12 @@
         "After a {{fd|0.25}}-second delay, '''Tahm Kench''' can reactivate {{ai|Abyssal Voyage 2|Tahm Kench|Abyssal Voyage}} to begin the channel without an ally. Once the channel is completed, '''Tahm Kench''' and the ally that has climbed in will {{tip|blink}} to the target location, arriving after a {{tt|{{fd|0.5}}|Estimated.}}-second delay.",
         "Taking damage or cancelling the channel interrupts ''Abyssal Voyage'', putting it on a {{sti|cooldown|10 second cooldown}}. ''Abyssal Voyage'' cannot be activated while '''Tahm Kench''' has a {{ai|Devour|Tahm Kench|full belly}}."
       ],
-      "notes": "* Allies may still join '''Tahm Kench''' by clicking him while he performs ''Abyssal Voyage's'' second cast's animation.\n* Allies in combat with enemy champions cannot jump into ''Abyssal Voyage''.",
+      "notes": "* Allies may still join '''Tahm Kench''' by clicking him while he performs ''Abyssal Voyage's'' second cast's animation.\n* Allies in combat with enemy champions cannot jump into ''Abyssal Voyage''.\n* ''Abyssal Voyage'', upon recast, will alert '''Tahm Kench's''' arrival to nearby enemies and allies with a [[ping]].",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "140/130/120",
       "effects": []
     }
-  },
-  "skillcount": 6
+  }
 }

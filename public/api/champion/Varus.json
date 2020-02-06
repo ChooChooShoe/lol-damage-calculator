@@ -1,23 +1,18 @@
 {
   "patch": "V1.0.0.139",
-  "changes": "9.20.1",
+  "changes": "10.1.1",
   "id": "Varus",
-  "key": "110",
   "name": "Varus",
   "title": "the Arrow of Retribution",
   "image": {
     "full": "Varus.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 192,
+    "x": 336,
     "y": 0,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Mage",
@@ -63,7 +58,7 @@
         "full": "VarusPassive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 192,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
@@ -81,11 +76,11 @@
       "name": "Piercing Arrow",
       "maxrank": 5,
       "cooldown": [
-        20,
         18,
         16,
         14,
-        12
+        12,
+        10
       ],
       "cost": [
         70,
@@ -99,10 +94,10 @@
       "target_range": "{{pp|11|type=channel time|925 to 1625|0 to 2|displayformula=925{{plus}}(70 per 0.2 seconds). ''This is capped at 2 seconds.''}}",
       "image": {
         "full": "VarusQ.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 96,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -110,34 +105,37 @@
         "{{sbc|First Cast:}} '''Varus''' {{tip|channel|charges}} for up to 4 seconds to gradually increase ''Piercing Arrow's'' {{sti|range}} and damage over the next 2 seconds, during which he is {{tip|pacify|pacified}} and {{tip|slow|slowed}} by 20%.",
         "''Piercing Arrow'' is canceled when the charge ends, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
         "{{sbc|Second Cast:}} '''Varus''' fires a piercing arrow dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies struck, which is increased by {{pp|11|type=Channel time|key=%|0 to 50|0 to 2|displayformula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}. The arrow's damage is reduced to {{pp|6|type=enemy hit|key=%|100 to 40;33|0 to 5|displayformula=100% - (15% per enemy hit). ''This is capped at a minimum of 33% damage.''}}.",
-        "Detonating {{ai|Blighted Quiver|Varus|Blight}} stacks on an enemy champion reduces ''Piercing Arrow's'' {{sti|cooldown}} by 4 seconds."
+        "Detonating {{ai|Blighted Quiver|Varus|Blight}} stacks on an enemy champion reduces ''Piercing Arrow's'' {{sti|cooldown}} by 3 seconds."
       ],
       "notes": "* Despite being {{tip|pacify|pacified}}, ''Varus'' can still {{si|Flash}} (and cast all other [[summoner spells]] except {{si|Teleport}}) during ''Piercing Arrow's'' channel.\n* The range of the spell will always be displayed, even as it increases.\n* Using {{si|Recall}} while charging ''Piercing Arrow'' will also cancel the cast.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "20/18/16/14/12",
+      "cooldownBurn": "18/16/14/12/10",
       "effects": [
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|10|46.7|83.3|120|156.7}} {{as|(+ 110% AD)}}|Minimum Fully Reduced Damage|{{ap|3.3|15.6|27.8|40|52.2}} {{as|(+ {{fd|36.3}}% AD)}}}}<!--\n-->{{st|Maximum Physical Damage|{{ap|15|70|125|180|235}} {{as|(+ 165% AD)}}|Maximum Fully Reduced Damage|{{ap|5|23.3|41.7|60|78.3}} {{as|(+ {{fd|54.45}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['10','46.7','83.3','120','156.7']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span></span></li><li><span class=\"blue\">Minimum Fully Reduced Damage</span>: <span><spell-span :list=\"['3.3','15.6','27.8','40','52.2']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">36.3</span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 165% AD)</span></span></li><li><span class=\"blue\">Maximum Fully Reduced Damage</span>: <span><spell-span :list=\"['5','23.3','41.7','60','78.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">54.45</span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|15/1.5 to 235/1.5|round=2}} {{as|(+ 110% AD)}}|Minimum Fully Reduced Damage|{{ap|15/1.5*0.33 to 235/1.5*0.33|round=2}} {{as|(+ {{ap|110*0.33}}% AD)}}}}\n{{st|Maximum Physical Damage|{{ap|15 to 235}} {{as|(+ {{ap|110*1.5}}% AD)}}|Maximum Fully Reduced Damage|{{ap|15*0.33 to 235*0.33}} {{as|(+ {{ap|110*1.5*0.33}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['10','46.67','83.33','120','156.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span></span></li><li><span class=\"blue\">Minimum Fully Reduced Damage</span>: <span><spell-span :list=\"['3.3','15.4','27.5','39.6','51.7']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['36.3']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Maximum Fully Reduced Damage</span>: <span><spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54.45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 10,
-                46.7,
-                83.3,
+                46.67,
+                83.33,
                 120,
-                156.7
+                156.67
               ],
               [
                 3.3,
-                15.6,
-                27.8,
-                40,
-                52.2
+                15.4,
+                27.5,
+                39.6,
+                51.7
+              ],
+              [
+                36.3
               ],
               [
                 15,
@@ -147,32 +145,38 @@
                 235
               ],
               [
-                5,
-                23.3,
-                41.7,
-                60,
-                78.3
-              ]
+                165
+              ],
+              [
+                4.95,
+                23.1,
+                41.25,
+                59.4,
+                77.55
+              ],
+              null
             ],
             "as_ratios": [
               {
                 "player_total_ad": 1.1
               },
               {
-                "player_total_ad": 1.6500000000000001
+                "player_total_ad": [
+                  0.5445
+                ]
               },
               {
-                "player_total_ad": 0.363
+                "player_total_ad": []
               },
               {
-                "player_total_ad": 0.5445000000000001
+                "player_total_ad": []
               }
             ],
             "st_slices": [
               "Maximum Physical Damage",
-              "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 165% AD)</span>",
+              "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Maximum Fully Reduced Damage",
-              "<spell-span :list=\"['5','23.3','41.7','60','78.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">54.45</span>% AD)</span>"
+              "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54.45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -181,15 +185,17 @@
               "ratios": {
                 "base_damage": [
                   10,
-                  46.7,
-                  83.3,
+                  46.67,
+                  83.33,
                   120,
-                  156.7
+                  156.67
                 ],
-                "player_total_ad": 1.6500000000000001
+                "player_total_ad": [
+                  0.5445
+                ]
               },
               "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 165% AD)</span>",
+              "str": "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -197,15 +203,17 @@
               "ratios": {
                 "base_damage": [
                   3.3,
-                  15.6,
-                  27.8,
-                  40,
-                  52.2
+                  15.4,
+                  27.5,
+                  39.6,
+                  51.7
                 ],
-                "player_total_ad": 1.6500000000000001
+                "player_total_ad": [
+                  0.5445
+                ]
               },
               "title": "Maximum Fully Reduced Damage",
-              "str": "<spell-span :list=\"['5','23.3','41.7','60','78.3']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">54.45</span>% AD)</span>",
+              "str": "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54.45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -233,10 +241,10 @@
       "targeting": "Passive",
       "image": {
         "full": "VarusW.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 144,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -298,7 +306,7 @@
         },
         {
           "levelingtext": "{{st|Magic Damage per Stack|{{as|{{ap|3 to 5}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health|health)}}|Maximum Magic Damage|{{as|{{ap|9 to 15}}% {{as|(+ 6% per 100 AP)}} of the target's '''maximum''' health|health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Stack</span>: <span><span class=\"health)\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's <b>maximum</b> health health)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage per Stack</span>: <span><span class=\"health)\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><span class=\"health)\"><spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -327,13 +335,16 @@
                   0.135,
                   0.15
                 ]
+              },
+              {
+                "target_total_ap": []
               }
             ],
             "st_slices": [
               "Magic Damage per Stack",
               "<span class=\"health)\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's '''maximum''' health</span>",
               "Maximum Magic Damage",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health health)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"health)\"><spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -359,7 +370,7 @@
                 "player_total_ap": 61
               },
               "title": "Maximum Magic Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health health)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"health)\"><spell-span :list=\"['9','10.5','12','13.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health</span>",
               "damage_type": "magic"
             }
           ]
@@ -389,10 +400,10 @@
       "target_range": 925,
       "image": {
         "full": "VarusE.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 192,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -509,10 +520,10 @@
       "target_range": 1075,
       "image": {
         "full": "VarusR.png",
-        "sprite": "spell12.png",
+        "sprite": "spell13.png",
         "group": "spell",
         "x": 240,
-        "y": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -573,6 +584,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

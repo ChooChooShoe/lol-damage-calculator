@@ -1,30 +1,25 @@
 {
   "patch": "V1.0.0.79",
-  "changes": "9.16.1",
+  "changes": "9.24.2",
   "id": "Ezreal",
-  "key": "81",
   "name": "Ezreal",
   "title": "the Prodigal Explorer",
   "image": {
     "full": "Ezreal.png",
     "sprite": "champion0.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "Mage",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
-  "adaptivetype": "Mixed,Physical",
+  "adaptivetype": "mixed",
   "info": {
     "attack": 7,
     "defense": 2,
@@ -32,9 +27,9 @@
     "difficulty": 7
   },
   "stats": {
-    "hp": 491,
+    "hp": 500,
     "hpperlevel": 86,
-    "mp": 360.6,
+    "mp": 375,
     "mpperlevel": 42,
     "movespeed": 325,
     "armor": 22,
@@ -44,7 +39,7 @@
     "attackrange": 550,
     "hpregen": 4,
     "hpregenperlevel": 0.55,
-    "mpregen": 8.092,
+    "mpregen": 8.5,
     "mpregenperlevel": 0.65,
     "crit": 0,
     "critperlevel": 0,
@@ -63,13 +58,13 @@
         "full": "Ezreal_RisingSpellForce.png",
         "sprite": "passive0.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Every time '''Ezreal''' hits a unit with one of his [[Champion ability|abilities]], he gains {{sti|as|{{as|10% '''bonus''' attack speed}}}} for 6 seconds, stacking up to 5 times for a maximum of {{as|50%|attack speed}}."
+        "{{sbc|Innate:}} Every time '''Ezreal''' hits an enemy unit with one of his [[Champion ability|abilities]], he gains {{sti|as|{{as|10% '''bonus''' attack speed}}}} for 6 seconds, stacking up to 5 times for a maximum of {{as|50%|attack speed}}."
       ],
       "notes": "* ''Rising Spell Force'' will stack even if the abilities used were {{tip|spell shield|spell shielded}}.",
       "skillkey": "I",
@@ -101,13 +96,13 @@
         "full": "EzrealQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ezreal''' fires a bolt of energy in a line, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy hit, and applying [[on-hit effect]]s.",
+        "{{sbc|Active:}} '''Ezreal''' fires a bolt of energy in a line, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy hit, applying [[on-hit effect]]s and healing off {{sti|life steal}} instead of {{sti|spell vamp}}.",
         "If ''Mystic Shot'' successfully hits an enemy, '''Ezreal's''' abilities' {{sti|cooldown|cooldowns}} are reduced by {{fd|1.5}} seconds (including ''Mystic Shot's'')."
       ],
       "notes": "* Even if the ability is {{tip|spell shield|spell shielded}} it will still trigger the cooldown reduction.",
@@ -117,23 +112,23 @@
       "cooldownBurn": "5.5/5.25/5/4.75/4.5",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|15 to 115}} {{as|(+ 110% AD)}} {{as|(+ 15% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['15','40','65','90','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 15% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 120% AD)}} {{as|(+ 15% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 15% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                15,
-                40,
-                65,
-                90,
-                115
+                20,
+                45,
+                70,
+                95,
+                120
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ad": 1.1
+                "player_total_ad": 1.2
               },
               {
                 "player_total_ap": 0.15
@@ -141,7 +136,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['15','40','65','90','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 15% AP)</span>"
+              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 15% AP)</span>"
             ]
           },
           "subeffects": [
@@ -149,17 +144,17 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  15,
-                  40,
-                  65,
-                  90,
-                  115
+                  20,
+                  45,
+                  70,
+                  95,
+                  120
                 ],
-                "player_total_ad": 1.1,
+                "player_total_ad": 1.2,
                 "player_total_ap": 0.15
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['15','40','65','90','115']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 15% AP)</span>",
+              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 15% AP)</span>",
               "damage_type": "physical"
             }
           ]
@@ -191,17 +186,17 @@
         "full": "EzrealW.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ezreal''' fires an orb that sticks to first champion, epic monster, or structure hit for 4 seconds.",
-        "Hitting the target with a damaging ability or basic attack detonates the orb, dealing {{tip|magic damage|{{as|magic damage}}}}.",
-        "Detonating with an ability refunds the cost of that ability plus {{sti|mana|{{as|60 mana}}}}."
+        "{{sbc|Active:}} '''Ezreal''' fires an orb that sticks to first enemy {{tip|champion}}, {{tip|monster|epic monster}}, or structure hit for 4 seconds.",
+        "Hitting the target with a damaging [[champion ability|ability]] or [[basic attack]] detonates the orb, dealing {{tip|magic damage|{{as|magic damage}}}}.",
+        "Detonating with an ability fully refunds the cost of the ability plus gaining {{sti|mana|{{as|60 mana}}}}."
       ],
-      "notes": "* ''Essence Flux'' counts as a single-target ability for effects such as {{iis|Muramana}} {{nie|shock}}.",
+      "notes": "* Applies {{iis|Muramana}} {{nie|shock}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
@@ -289,13 +284,13 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Ground-targeted|Ground]] / [[Auto-targeted|Auto]]",
       "target_range": 475,
       "image": {
         "full": "EzrealE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
@@ -304,7 +299,7 @@
         "{{sbc|Active:}} '''Ezreal''' {{tip|blinks}} to the target location, firing a homing bolt that deals {{as|magic damage}} to the nearest enemy.",
         "''Arcane Shift '' prioritizes target hit by {{ai|Essence Flux|Ezreal}}."
       ],
-      "notes": "* ''Arcane Shift's'' cast time cannot be interrupted by anything other than ''Ezreal's'' own death. He will still suffer any [[crowd control]] effects, duration permitting, after it ends.\n* ''Arcane Shift's'' homing projectile can target and hit [[stealth]]ed units and units hidden in fog of war.\n** It will also grant {{tip|sight|vision}} of the targeted unit hidden in the fog of war for a brief duration.\n* ''Arcane Shift's'' homing projectile does not prioritize champions.",
+      "notes": "* ''Arcane Shift's'' cast time cannot be interrupted by anything other than ''Ezreal's'' own death. He will still suffer any [[crowd control]] effects, duration permitting, after it ends.\n* ''Arcane Shift's'' homing projectile can target and hit {{tip|invisibility|stealthed}} units and hidden units the in [[Summoner's Rift|fog of war]].\n** It will also grant {{tip|sight|vision}} of the targeted unit hidden in the fog of war for a brief duration.\n* The homing projectile does not prioritize enemy champions.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "90",
@@ -381,16 +376,16 @@
         "full": "EzrealR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ezreal''' fires an [[File:Trueshot Barrage Minimap.png|20px|link=]] energy projectile in the target direction, dealing {{as|magic damage}} to enemies it passes through.",
-        "Minions and non-epic monsters take 50% reduced damage."
+        "{{sbc|Active:}} '''Ezreal''' fires an [[File:Trueshot Barrage Minimap.png|20px|link=]] energy projectile in the target direction, dealing {{as|magic damage}} to enemies it passes through and granting brief {{tip|sight}} of its surroundings.",
+        "{{tip|Minion|Minions}} and non-epic {{tip|monster|monsters}} take 50% reduced damage."
       ],
-      "notes": "* If '''Ezreal''' {{si|flash|flashes}} or is {{tip|airborne|displaced}} mid-cast (i.e {{ai|Rocket Grab|Blitzcrank}}), the projectile will still fire from his position at the time of casting.\n* ''Trueshot Barrage's'' projectile grants {{tip|sight}} in a small radius around its current location.",
+      "notes": "* If '''Ezreal''' {{si|Flash|flashes}} or is {{tip|airborne|displaced}} mid-cast (i.e {{ai|Rocket Grab|Blitzcrank}}), the projectile will still fire from his position at the time of casting.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -494,6 +489,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

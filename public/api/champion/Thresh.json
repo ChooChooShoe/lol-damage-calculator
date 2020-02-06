@@ -1,27 +1,22 @@
 {
   "patch": "V1.0.0.154",
-  "changes": "9.17.1",
+  "changes": "9.24.1",
   "id": "Thresh",
-  "key": "412",
   "name": "Thresh",
   "title": "the Chain Warden",
   "image": {
     "full": "Thresh.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 288,
+    "x": 432,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Support",
-    "Fighter"
-  ],
   "resource": "Mana",
   "herotype": "Controller",
   "alttype": "Fighter<!--, Marksman, Tank-->",
-  "rangetype": "Ranged",
+  "rangetype": "Ranged (Non-projectile)",
   "be_cost": 4800,
   "rp_cost": 880,
   "adaptivetype": "magic",
@@ -63,17 +58,17 @@
         "full": "Thresh_Passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 288,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Basic Attacks:}} '''Thresh's''' [[basic attack]]s don't use {{tip|projectile|projectiles}} and his basic attack wind-up is only reduced by {{fd|0.25}}% per {{sti|as|{{as|1% '''bonus''' attack speed}}}} (compared to the standard 1% per 1%).",
-        "{{sbc|Innate:}} Enemies who die near '''Thresh''' drop ''souls'' for 8 seconds, which he can collect by either approaching them or by placing {{ais|Dark Passage|Thresh}} lantern near them. Each collected ''soul'' permanently grants '''Thresh''' {{sti|ap|{{as|{{fd|0.75}} '''bonus''' ability power}}}}, {{sti|armor|{{as|{{fd|0.75}} '''bonus''' armor}}}} and increases {{ais|Dark Passage|Thresh}} shield's strength and {{ais|Flay|Thresh}} minimum {{tip|magic damage|{{as|'''bonus''' magic damage}}}} by 1.",
-        "Champions and large enemies always drop 1 ''soul'', epic [[monster]]s always drop 2, but small [[minion]]s and monsters only have a 33% chance to drop 1. ''Souls'' are visible to allies and only become visible to enemies if their team has {{tip|sight}} of '''Thresh'''."
+        "{{sbc|Innate:}} Enemy {{tip|champion|champions}}, large {{tip|minion|minions}} and large {{tip|monster|monsters}} that die near '''Thresh''' drop a ''Soul'' for 8 seconds. Epic monsters drop 2 ''Souls'' instead. Small minions and lesser monsters have a {{fd|33.{{recurring|33}}}}% chance to drop a ''Soul''.",
+        "'''Thresh''' autonomously collects ''Souls'' near him or his {{ai|Dark Passage|Thresh|lantern}}. ''Souls'' are visible to allies and only become visible to enemies if their team has {{tip|sight}} of '''Thresh'''.",
+        "Each collected ''Soul'' grants '''Thresh''' {{sti|ap|{{as|{{fd|0.75}} '''bonus''' ability power}}}} and {{sti|armor|{{as|{{fd|0.75}} '''bonus''' armor}}}}."
       ],
-      "notes": "* The probability for ''souls'' dropping from small minions and monster on {{tip|Summoner's Rift}} starts at 33% but adjusts dynamically to match the expected quota of ''souls'' dropped (lowers if above, rises if below, remains if even). ''Souls'' collected are not considered when adjusting the probability.\n* ''Thresh'' gains the ''Soul Gluttony'' buff and resets ''Damnation's'' counter every time he collects 255 souls.\n** The maximum amount of ''souls'' '''Thresh''' can collect is 999,999, granting him {{as|749,999 '''bonus''' ability power}} and {{as|749,999 '''bonus''' armor}} ({{fd|99.99}}% damage reduction, reduced to {{fd|99.98}}% when hit by {{ii|Last Whisper}}).\n* {{ci|Nunu|Nunu & Willump}} drop a soul each (sometimes the icy ghosts from {{iis|Twin Shadows}} active will drop one each after reaching their targets).\n* At level 18:\n** 66 ''souls'' are required for ''Thresh'' to reach {{cis|Gnar}} level 18 base armor ({{as|{{fd|65.6}}|armor}}).\n** 70 ''souls'' are required for ''Thresh'' to deal more damage with a fully-charged {{ai|Flay|Thresh}}-enhanced basic attack than {{ci|Vayne}} with a fully-ranked {{ai|Final Hour|Vayne}}-enhanced basic attack ({{as|154 AD}} with no [[item]]s or [[rune]]s).\n** 144 ''souls'' are required for ''Thresh'' to have more armor than {{ci|Malphite}} with a fully-ranked {{ai|Thunderclap|Malphite}} ({{as|{{fd|124.2}}|armor}} with no items or runes).\n** 205 ''souls'' are required for ''Thresh'' to deal more damage with {{iis|Lich Bane}} {{nie|Spellblade}} than with {{iis|Trinity Force}}.\n** 278 ''souls'' are required for ''Thresh'' to have more armor than {{ci|Rammus}} with a fully-ranked {{ai|Defensive Ball Curl|Rammus}} ({{as|224|armor}} with no items or runes).",
+      "notes": "* ''Souls'' grants a small amount of {{tip|sight}} around itself.\n* The probability for ''souls'' dropping from small minions and monster on {{tip|Summoner's Rift}} starts at 33% but adjusts dynamically to match the expected quota of ''souls'' dropped (lowers if above, rises if below, remains if even). ''Souls'' collected are not considered when adjusting the probability.\n* The maximum amount of ''souls'' '''Thresh''' can collect is 999,999, granting him {{as|749,999 '''bonus''' ability power}} and {{as|749,999 '''bonus''' armor}} ({{fd|99.99}}% damage reduction, reduced to {{fd|99.98}}% when hit by {{ii|Last Whisper}}).\n* {{ci|Nunu|Nunu & Willump}} drop a soul each (sometimes the icy ghosts from {{iis|Twin Shadows}} active will drop one each after reaching their targets).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -104,14 +99,14 @@
         "sprite": "spell12.png",
         "group": "spell",
         "x": 0,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast - Death Sentence:}} After a {{fd|0.5}}-second delay, '''Thresh''' throws out his scythe in the target direction and forms a tether with the first enemy hit, dealing {{as|magic damage}} and {{tip|stun|stunning}} them for {{fd|1.5}} seconds. Hitting an enemy reduces ''Death Sentence's'' {{stil|cooldown}} by 3 seconds.",
-        "'''''Thresh''' is unable to move or attack while Death Sentence is in flight.''",
-        "While the tether persists, '''Thresh''' is {{tip|disarm|disarmed}} and periodically tugs at his scythe's chain, {{tip|airborne|pulling}} the target a short distance towards himself. After {{fd|0.5}} seconds, or instantly upon hitting a minion or monster, '''Thresh''' can cast {{ai|Death Leap|Thresh}} while the tether holds.",
+        "{{sbc|First Cast - Death Sentence:}} '''Thresh''' throws out his scythe in the target direction. '''Thresh''' is {{tip|entangle|entangled}} while the scythe is in flight.",
+        "The scythe stops with the first enemy it hits, dealing {{as|magic damage}} and {{tip|stun|stunning}} them for {{fd|1.5}} seconds, while also forming a tether between '''Thresh''' and them for the duration. Hitting an enemy reduces ''Death Sentence's'' {{stil|cooldown}} by 3 seconds.",
+        "While the tether persists, '''Thresh''' is {{tip|disarm|disarmed}} and periodically tugs at his scythe's chain, {{tip|airborne|pulling}} the target a short distance towards himself. After {{fd|0.5}} seconds, or instantly upon hitting a minion or monster, '''Thresh''' can cast {{ai|Death Leap|Thresh}}.",
         "{{sbc|Second Cast - Death Leap:}} '''Thresh''' {{tip|dashes}} to the tethered enemy, removing the {{tip|stun}} but becoming able to attack again."
       ],
       "notes": "* ''Thresh'' will [http://na.leagueoflegends.com/board/showthread.php?p=33837947#post33837947 not face in the target direction] during ''Death Sentence's'' cast animation (only after the projectile starts traveling).\n* While {{tip|ground|grounded}} only the second cast is disabled.\n* ''Death Sentence's'' {{tip|stun}} duration is reduced by {{sti|[[Tenacity]]}} while the tether will persist for the full duration (unless broken by {{nie|Quicksilver}}, {{ii|Mikael's Crucible}}, {{si|Cleanse}}, or certain [[Champion ability|abilities]]).\n** Targets affected by {{ai|Black Shield|Morgana}} will not be {{tip|stun|stunned}} or {{tip|airborne|pulled}} at when hit (''Thresh'' will not tug at his target even if {{ai|Black Shield|Morgana}} wears off before ''Death Sentence'' ends).\n** ''Death Sentence's'' tether will not be broken by becoming [[Untargetability|untargetable]] ({{ai|Playful|Fizz}}, units grabbed by {{ai|Force of Will|Syndra}}).\n** ''Death Sentence's'' effects will persist if ''Thresh'' dies before the duration ends.",
@@ -192,24 +187,24 @@
         "sprite": "spell12.png",
         "group": "spell",
         "x": 48,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Thresh''' throws his lantern to the target location, {{tip|sight|revealing}} its immediate surroundings and collecting nearby {{ai|Damnation|Thresh|souls}} for the duration. The lantern remains for 6 seconds and automatically returns to '''Thresh''' if he moves more than 1500 units away from it.",
-        "'''Thresh''' and the first ally to come near the lantern is {{tip|shield|shielded}} for 4 seconds.",
-        "An ally can right click the lantern to 'grab' it and {{tip|dash}} to '''Thresh's''' location and shield themselves for the same duration."
+        "{{sbc|Active:}} '''Thresh''' throws his lantern to the target location for 6 seconds or until he moves too far away from it, {{tip|sight|revealing}} its surroundings.",
+        "'''Thresh''' and the first allied champion to come near the lantern is {{tip|shield|shielded}} for 4 seconds. An ally can select the lantern while in proximity of it, {{tip|dash|dashing}} to '''Thresh's''' current location and gaining the shield.",
+        "An ally cannot select the lantern while {{tip|silence|silenced}}, {{tip|ground|grounded}} or {{tip|immobilize|immobilized}}."
       ],
-      "notes": "* An ally cannot 'grab' the lantern while {{tip|silence|silenced}}, {{tip|ground|grounded}} or generally being {{tip|immobilize|immobilized}}.\n* Allies can pick up the lantern through small walls if its grab radius allows it.\n* ''Thresh'' cannot grab the lantern but can shield himself if he walks near it.\n* The lantern is considered a unit and can be targeted by {{si|Teleport}}, {{ai|Leap Strike|Jax}}, {{ai|Shunpo|Katarina}}, and {{ai|Safeguard|Lee Sin}}.\n* The lantern's duration and maximum leash range are each displayed as a circle on the ground.\n* Allies carried by ''Dark Passage'' will dash to ''Thresh's'' current location (not where he was when the lantern was picked up).",
+      "notes": "* Allies can pick up the lantern through small walls if its grab radius allows it.\n* ''Thresh'' cannot grab the lantern but can shield himself if he walks near it.\n* The lantern is considered a unit and can be targeted by {{si|Teleport}}, {{ai|Leap Strike|Jax}}, {{ai|Shunpo|Katarina}}, and {{ai|Safeguard|Lee Sin}}.\n* The lantern's duration and maximum leash range are each displayed as a circle on the ground.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
       "cooldownBurn": "22/19.5/17/14.5/12",
       "effects": [
         {
-          "levelingtext": "{{st|Shield Strength|{{ap|60 to 220}} (+ 1 per collected {{ai|Damnation|Thresh|soul}})}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">soul<template #content>Damnation</template></HtmlTooltip>)</span></li></ul>",
+          "levelingtext": "{{st|Shield Strength|{{ap|60 to 220}} (+ 1 per {{ai|Damnation|Thresh|Soul}} collected)}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -224,7 +219,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">soul<template #content>Damnation</template></HtmlTooltip>)"
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)"
             ]
           },
           "subeffects": [
@@ -240,7 +235,7 @@
                 ]
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">soul<template #content>Damnation</template></HtmlTooltip>)",
+              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)",
               "damage_type": "none"
             }
           ]
@@ -273,30 +268,30 @@
         "sprite": "spell12.png",
         "group": "spell",
         "x": 96,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Thresh's''' basic attacks deal {{as|'''bonus''' magic damage}}, increasing with time spent not attacking enemy units or neutral monsters.",
-        "{{sbc|Active:}} '''Thresh''' sweeps his chain in a broad line towards the target direction, dealing {{as|magic damage}} to enemies hit, {{tip|airborne|knocking}} them in the chain's direction, and {{tip|slow|slowing}} them afterwards for 1 second."
+        "{{sbc|Passive:}} '''Thresh's''' basic attacks deal {{as|'''bonus''' magic damage}}, with the {{as|AD}} ratio increasing based on the time spent not attacking enemy or neutral units.",
+        "{{sbc|Active:}} '''Thresh''' sweeps his chain around him and in a broad line towards the target direction, dealing {{as|magic damage}} to enemies hit, {{tip|airborne|knocking}} them in the chain's direction, and {{tip|slow|slowing}} them afterwards for 1 second."
       ],
-      "notes": "*''Flay's'' passive's buff icon changes colors depending on charge level:\n** {{ai|Flay 2||0 - 25%}}\n** {{ai|Flay 3||25 - 50%}}\n** {{ai|Flay 4||50 - 75%}}\n** {{ai|Flay 5||100%}} (''Thresh's'' scythe will glow green and a sound effect will play)\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will apply ''Flay's'' passive to each enemy hit, with the secondary targets taking minimum damage (charge resets upon hitting the primary target).\n* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect structures or [[ward]]s (hitting them does not consume the bonus damage or reset the charge).\n* ''Flay's'' passive can be {{ai|Counter Strike|Jax|dodged}} (the enhanced attack is not consumed and the charge is not reset).\n* {{Pending for test}}: ''Flay's'' passive's interaction with {{ai|Riposte|Fiora|parry}}, {{ai|Aegis Protection|Pantheon|block}}, and {{tip|blind}} (regarding both bonus damage and charge reset).",
+      "notes": "*''Flay's'' passive's buff icon changes colors depending on charge level:\n** {{ai|Flay 2||0 - 25%}}\n** {{ai|Flay 3||25 - 50%}}\n** {{ai|Flay 4||50 - 75%}}\n** {{ai|Flay 5||75 - 100%}} \n** At 100%, ''Thresh's'' scythe will glow green and a sound effect will play.\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will apply ''Flay's'' passive to each enemy hit, with the secondary targets taking minimum damage (charge resets upon hitting the primary target).\n* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect structures or [[ward]]s (hitting them does not consume the bonus damage or reset the charge).\n* ''Flay's'' passive can be {{ai|Counter Strike|Jax|dodged}} (the enhanced attack is not consumed and the charge is not reset).\n* {{Pending for test}}: ''Flay's'' passive's interaction with {{ai|Riposte|Fiora|parry}}, and {{tip|blind}} (regarding both bonus damage and charge reset).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60/65/70/75/80",
       "cooldownBurn": "9",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Magic Damage|Collected {{ai|Damnation|Thresh|souls}} (+ up to {{as|{{ap|100 to 200}}% AD}})}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span>Collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">souls<template #content>Damnation</template></HtmlTooltip> (+ up to <span class=\"ad\"><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>)</span></li></ul>",
+          "levelingtext": "{{st|Minimum Bonus Magic Damage|1 per {{ai|Damnation|Thresh|Soul}} collected {{as|(+ 0% AD)}}|Maximum Bonus Magic Damage|1 per {{ai|Damnation|Thresh|Soul}} collected {{as|(+ {{ap|100 to 200}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Bonus Magic Damage</span>: <span>1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ 0% AD)</span></span></li><li><span class=\"blue\">Maximum Bonus Magic Damage</span>: <span>1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ <spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
-            "ap_progressions": [
-              null
-            ],
             "as_ratios": [
+              {
+                "player_total_ad": 0
+              },
               {
                 "player_total_ad": [
                   1,
@@ -307,25 +302,33 @@
                 ]
               }
             ],
+            "ap_progressions": [
+              null
+            ],
             "st_slices": [
-              "Bonus Magic Damage",
-              "Collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">souls<template #content>Damnation</template></HtmlTooltip> (+ up to <span class=\"ad\"><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>)"
+              "Minimum Bonus Magic Damage",
+              "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ 0% AD)</span>",
+              "Maximum Bonus Magic Damage",
+              "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ <spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_ad": [
-                  1,
-                  1.25,
-                  1.5,
-                  1.75,
-                  2
-                ]
+                "player_total_ad": 0
               },
-              "title": "Bonus Magic Damage",
-              "str": "Collected <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">souls<template #content>Damnation</template></HtmlTooltip> (+ up to <span class=\"ad\"><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>)",
+              "title": "Minimum Bonus Magic Damage",
+              "str": "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ 0% AD)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_ad": 0
+              },
+              "title": "Maximum Bonus Magic Damage",
+              "str": "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ <spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "magic"
             }
           ]
@@ -404,12 +407,12 @@
         "sprite": "spell12.png",
         "group": "spell",
         "x": 144,
-        "y": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} After a {{fd|0.75}}-second delay, '''Thresh''' surrounds himself with 5 spectral walls, each lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing {{as|magic damage}} and {{tip|slow|slowing}} by 99% for 2 seconds.",
+        "{{sbc|Active:}} '''Thresh''' surrounds himself with 5 spectral walls, each lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing {{as|magic damage}} and {{tip|slow|slowing}} by 99% for 2 seconds.",
         "Enemy champions hitting any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second."
       ],
       "notes": "* No additional details.",
@@ -460,6 +463,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

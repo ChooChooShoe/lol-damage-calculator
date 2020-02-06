@@ -1,23 +1,18 @@
 {
   "patch": "v0.9.22.7",
-  "changes": "9.16.1",
+  "changes": "10.1.1",
   "id": "Kassadin",
-  "key": "38",
   "name": "Kassadin",
   "title": "the Void Walker",
   "image": {
     "full": "Kassadin.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Assassin",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Slayer",
   "alttype": "Mage",
@@ -36,7 +31,7 @@
     "hpperlevel": 90,
     "mp": 397.6,
     "mpperlevel": 67,
-    "movespeed": 340,
+    "movespeed": 335,
     "armor": 19,
     "armorperlevel": 2.8,
     "spellblock": 30,
@@ -63,7 +58,7 @@
         "full": "Kassadin_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
@@ -81,10 +76,10 @@
       "name": "Null Sphere",
       "maxrank": 5,
       "cooldown": [
-        9,
-        9,
-        9,
-        9,
+        11,
+        10.5,
+        10,
+        9.5,
         9
       ],
       "cost": [
@@ -101,20 +96,20 @@
         "full": "NullLance.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kassadin''' fires an orb of void energy at the target enemy, dealing {{as|magic damage}} and {{tip|Disrupt|interrupting channeled abilities}}.",
+        "{{sbc|Active:}} '''Kassadin''' fires an orb of void energy at the target enemy, dealing {{as|magic damage}} and {{tip|interrupt|disrupting}} ongoing {{tip|channel|channels}} on them.",
         "The excess energy forms around '''Kassadin''', granting him a {{tip|shield}} that exclusively absorbs {{as|magic damage}} for {{fd|1.5}} seconds."
       ],
       "notes": "* No additional details.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "9",
+      "cooldownBurn": "11/10.5/10/9.5/9",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 70% AP)}}}}",
@@ -225,12 +220,12 @@
         1
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "[[Self-targeted|Self]]",
       "image": {
         "full": "NetherBlade.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
@@ -240,15 +235,15 @@
         "{{sbc|Active:}} '''Kassadin's''' next basic attack gains {{sti|range|50 '''bonus''' range}}, deals increased {{as|'''bonus''' magic damage}} and restores {{sti|{{as|mana}}}}, with the amount quintupled against {{tip|champion|champions}}.",
         "''Nether Blade'' resets '''Kassadin's''' autoattack timer."
       ],
-      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Nether Blade's'' enhanced attack can be avoided if '''Kassadin''' is {{tip|blind|blinded}} or if the attack is {{ai|Counter Strike|Jax|dodged}}. The enhanced attack will be consumed and no mana will be gained.\n* The ''passive'' damage will affect structures but the ''active'' one will not.\n* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one.",
+      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Nether Blade's'' enhanced attack is negated entirely by {{ai|Counter Strike|Jax|dodging}} and {{tip|blind|blinding}} effects. The mana restore is not gained.\n** {{ai|Spirit's Refuge|Shen|Blocking}} effects do not prevent the mana gain.\n* The ''passive'' damage will affect structures but the ''active'' one will not.\n* {{tip|Spell shield}} will only absorb the individual damage dealt from the active.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "1",
       "cooldownBurn": "7",
       "effects": [
         {
-          "levelingtext": "{{st|Increased Bonus Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|4 to 8}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 8*5}}% of '''missing''' mana}}}}",
-          "str": "<ul><li><span class=\"blue\">Increased Bonus Magic Damage</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li><li><span class=\"blue\">Mana Restored Against Champions</span>: <span><simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "levelingtext": "{{st|Increased Bonus Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|4 to 6}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 6*5}}% of '''missing''' mana}}}}",
+          "str": "<ul><li><span class=\"blue\">Increased Bonus Magic Damage</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li><li><span class=\"blue\">Mana Restored Against Champions</span>: <span><span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -262,10 +257,10 @@
               ],
               [
                 4,
+                4.5,
                 5,
-                6,
-                7,
-                8
+                5.5,
+                6
               ],
               null
             ],
@@ -276,18 +271,21 @@
               {
                 "player_total_mana": [
                   0.2,
+                  0.225,
                   0.25,
-                  0.3,
-                  0.35,
-                  0.4
+                  0.275,
+                  0.3
                 ]
+              },
+              {
+                "player_total_mana": []
               }
             ],
             "st_slices": [
               "Mana Restored",
-              "<span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "<span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
               "Mana Restored Against Champions",
-              "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>"
             ]
           },
           "subeffects": [
@@ -301,10 +299,17 @@
                   145,
                   170
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 0.8,
+                "player_total_mana": [
+                  0.2,
+                  0.225,
+                  0.25,
+                  0.275,
+                  0.3
+                ]
               },
               "title": "Mana Restored",
-              "str": "<span class=\"mana\"><spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "str": "<span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
               "damage_type": "none"
             },
             {
@@ -312,15 +317,22 @@
               "ratios": {
                 "base_progression": [
                   4,
+                  4.5,
                   5,
-                  6,
-                  7,
-                  8
+                  5.5,
+                  6
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 0.8,
+                "player_total_mana": [
+                  0.2,
+                  0.225,
+                  0.25,
+                  0.275,
+                  0.3
+                ]
               },
               "title": "Mana Restored Against Champions",
-              "str": "<simple-tooltip class=\"red\" dname=\"as <spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
               "damage_type": "none"
             }
           ]
@@ -351,7 +363,7 @@
         "full": "ForcePulse.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
@@ -441,7 +453,7 @@
         "full": "RiftWalk.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
@@ -586,6 +598,5 @@
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

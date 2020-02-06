@@ -1,23 +1,18 @@
 {
   "patch": "V1.0.0.144",
-  "changes": "9.20.1",
+  "changes": "9.24.1",
   "id": "Diana",
-  "key": "131",
   "name": "Diana",
   "title": "Scorn of the Moon",
   "image": {
     "full": "Diana.png",
     "sprite": "champion0.png",
     "group": "champion",
-    "x": 0,
+    "x": 48,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Fighter",
-    "Mage"
-  ],
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Slayer",
@@ -34,8 +29,8 @@
   "stats": {
     "hp": 594,
     "hpperlevel": 95,
-    "mp": 372,
-    "mpperlevel": 20,
+    "mp": 420,
+    "mpperlevel": 25,
     "movespeed": 345,
     "armor": 31,
     "armorperlevel": 3.6,
@@ -48,7 +43,7 @@
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 53.04,
+    "attackdamage": 57.04,
     "attackdamageperlevel": 3,
     "attackspeedperlevel": 2.25,
     "attackspeed": 0.625
@@ -58,21 +53,21 @@
       "riotId": "",
       "name": "Moonsilver Blade",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "Diana_Passive_LunarBlade.png",
         "sprite": "passive0.png",
         "group": "passive",
-        "x": 0,
+        "x": 48,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Casting an ability grants '''Diana''' {{as|{{pp|type=[[File:Moonfall.png|20px|link=]] Moonfall's Rank|key=%|6|30;50 to 90|0 to 5|displayformula=30%+(10% at rank 1)+(10%*Moonfall's Rank)}} {{sti|'''bonus''' attack speed}}}} for her next 3 [[basic attack]]s [[on-hit]].",
-        "'''Diana''' is granted one ''Moonsilver Blade'' stack for every basic attack [[on-hit]] within {{fd|3.5}} seconds of each other, up to a maximum of two. At two stacks, '''Diana's''' next basic attack [[on-hit]] consumes the stacks to cleave nearby enemies for {{pp2|20+5*(x-1) for 5; then + 5 + 10*x for 5; then + 10 + 15*x for 5; then + 10 + 20*x|color=magic damage}} {{as|(+ 80% AP)}} {{tip|magic damage|{{as|magic damage}}}} and restore {{sti|mana|{{as|(15% AP)}} {{as|mana}}}}."
+        "{{sbc|Innate:}} '''Diana''' permanently has {{as|{{sti|attack speed|{{pp2|10 to 40|1;3 to 18 by 3|key=%}} '''bonus''' attack speed}}}}. After casting an ability, this bonus is tripled to {{pp2|10*3 to 40*3|1;3 to 18 by 3|key=%|color=as}} for 3 seconds.",
+        "'''Diana's''' [[basic attacks]] on-hit grant a stack for {{fd|3.5}} seconds. At 2 stacks, '''Diana's''' next basic attack [[on-hit]] additionally {{tip|splash damage|cleaves}} nearby enemies for {{pp2|20+5*(x-1) for 5; then + 5 + 10*x for 5; then + 10 + 15*x for 5; then + 10 + 20*x}} {{as|(+ 40% AP)}} {{tip|magic damage}}, consuming all stacks."
       ],
-      "notes": "* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} will not interact with ''Moonsilver Blade's'' damage.\n** ''Moonsilver Blade'' will damage structures.\n** Diana will not generate stacks or consume the empowered attack if her basic attacks are {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or if they {{tip|blind|miss}}.\n* The cleave doesn't trigger {{ii|Hunter's Talisman}}.\n* Each attack has a distinct animation and her blade will glow when the empowered attack is ready.",
+      "notes": "* ''Moonsilver Blade'' will affect structures.\n* Each attack has a distinct animation and she will glow when the empowered attack is ready.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -89,32 +84,32 @@
         6
       ],
       "cost": [
-        55,
-        55,
-        55,
-        55,
-        55
+        50,
+        50,
+        50,
+        50,
+        50
       ],
       "costtype": "mana",
-      "targeting": "Ground",
+      "targeting": "Direction",
       "target_range": 900,
       "image": {
         "full": "DianaQ.png",
         "sprite": "spell2.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Diana''' unleashes a bolt of lunar energy that travels in an arc before exploding on the target location, dealing {{as|magic damage}} to enemies hit and afflicting them with ''Moonlight'' for 3 seconds, granting {{tip|sight}} of them for the duration.",
+        "{{sbc|Active:}} '''Diana''' unleashes a bolt of lunar energy that travels in a counter-clockwise arc before exploding at the target location, dealing {{as|magic damage}} to enemies hit and afflicting them with ''Moonlight'' for 3 seconds, {{tip|sight|revealing}} them for the duration.",
         "''Moonlight'' has interactions with {{ai|Lunar Rush|Diana}}."
       ],
       "notes": "* The tip of the arc reveals Fog of War for a short duration.\n* If the {{tip|spell shield}} blocks the bolt, it will not be able to block the explosion.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "55",
+      "costBurn": "50",
       "cooldownBurn": "8/7.5/7/6.5/6",
       "effects": [
         {
@@ -168,270 +163,23 @@
       "name": "Pale Cascade",
       "maxrank": 5,
       "cooldown": [
-        10,
-        10,
-        10,
-        10,
-        10
+        15,
+        13.5,
+        12,
+        10.5,
+        9
       ],
       "cost": [
         40,
+        45,
+        50,
         55,
-        70,
-        85,
-        100
+        60
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "[[Auto-targeted|Auto]]",
       "image": {
         "full": "DianaOrbs.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 336,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Diana''' {{tip|shield|shields}} herself for up to 5 seconds and creates three spheres that orbit her for the duration, detonating upon contact with an enemy and dealing {{as|magic damage}} to nearby enemies upon detonation.",
-        "If all three spheres detonate, ''Pale Cascade's'' shield is reapplied, stacking with its original shield, and its duration is refreshed."
-      ],
-      "notes": "* ''Pale Cascade'' has no cast time and does not interrupt Diana's previous orders.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "40/55/70/85/100",
-      "cooldownBurn": "10",
-      "effects": [
-        {
-          "levelingtext": "{{st|Shield Strength|{{ap|40 to 100}} {{as|(+ 30% AP)}}|Total Shield Strength|{{ap|40*2 to 100*2}} {{as|(+ 60% AP)}}}}{{st|Magic Damage per Orb|{{ap|22 to 70}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|22*3 to 70*3}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Shield Strength</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><ul><li><span class=\"blue\">Magic Damage per Orb</span>: <span><spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                40,
-                55,
-                70,
-                85,
-                100
-              ],
-              [
-                80,
-                110,
-                140,
-                170,
-                200
-              ],
-              [
-                22,
-                34,
-                46,
-                58,
-                70
-              ],
-              [
-                66,
-                102,
-                138,
-                174,
-                210
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              },
-              {
-                "player_total_ap": 0.6
-              },
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              "Magic Damage per Orb",
-              "<spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
-              "Total Magic Damage",
-              "<spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  40,
-                  55,
-                  70,
-                  85,
-                  100
-                ],
-                "player_total_ap": 0.6
-              },
-              "title": "Magic Damage per Orb",
-              "str": "<spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  80,
-                  110,
-                  140,
-                  170,
-                  200
-                ],
-                "player_total_ap": 0.6
-              },
-              "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "DianaVortex",
-      "name": "Moonfall",
-      "maxrank": 5,
-      "cooldown": [
-        26,
-        24,
-        22,
-        20,
-        18
-      ],
-      "cost": [
-        70,
-        70,
-        70,
-        70,
-        70
-      ],
-      "costtype": "mana",
-      "targeting": "None",
-      "image": {
-        "full": "DianaVortex.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 384,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} Increases the {{sti|{{as|'''bonus''' attack speed}}}} gained from {{ai|Moonsilver Blade|Diana}}.",
-        "{{sbc|Active:}} '''Diana''' {{tip|sight|reveals}} and {{tip|airborne|draws}} nearby enemies up to 225 units toward her location, {{tip|slow|slowing}} them for 2 seconds afterwards."
-      ],
-      "notes": "* Enemies stay in the area for a maximum of approximately {{fd|0.5}} seconds while being pulled towards Diana.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "70",
-      "cooldownBurn": "26/24/22/20/18",
-      "effects": [
-        {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|50 to 90}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                50,
-                60,
-                70,
-                80,
-                90
-              ]
-            ],
-            "st_slices": [
-              "Bonus Attack Speed",
-              "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  50,
-                  60,
-                  70,
-                  80,
-                  90
-                ]
-              },
-              "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Slow|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                35,
-                40,
-                45,
-                50,
-                55
-              ]
-            ],
-            "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  35,
-                  40,
-                  45,
-                  50,
-                  55
-                ]
-              },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "DianaTeleport",
-      "name": "Lunar Rush",
-      "maxrank": 3,
-      "cooldown": [
-        25,
-        20,
-        15
-      ],
-      "cost": [
-        50,
-        65,
-        80
-      ],
-      "costtype": "mana",
-      "targeting": "Unit",
-      "target_range": 825,
-      "image": {
-        "full": "DianaTeleport.png",
         "sprite": "spell2.png",
         "group": "spell",
         "x": 432,
@@ -440,40 +188,76 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Diana''' {{tip|dashes}} to the target enemy, dealing {{as|magic damage}}.",
-        "If the target is afflicted with {{ai|Crescent Strike|Diana|Moonlight}}, the effect is consumed on all enemies and ''Lunar Rush's'' {{sti|cooldown}} is reset.",
-        "Other abilities can be used during the dash. If the target is 400 range close to '''Diana''' she will dash through them.",
-        "'''''Diana''' will attempt to automatically basic attack her target at the end of the dash.''"
+        "{{sbc|Active:}} '''Diana''' {{tip|shields}} herself for up to 5 seconds and creates three spheres that orbit her for the duration, detonating upon contact with an enemy and dealing {{as|magic damage}} to nearby enemies upon detonation.",
+        "If all three spheres detonate, ''Pale Cascade's'' shield is reapplied, stacking with its original shield, and its duration is refreshed."
       ],
-      "notes": "* ''Lunar Rush'' can be interrupted if Diana is hit with crowd control while dashing.\n** If the target has the ''Moonlight'' debuff ''Lunar Rush's'' cooldown will still reset.\n* Since abilities can be used during the dash, it is possible for a {{ai|Crescent Strike|Diana}} cast during ''Lunar Rush'' to mark the target before ''Lunar Rush'' hits them, thus resetting the cooldown.\n* {{Pending for test}}: If ''Lunar Rush'' is blocked the ''Moonlight'' debuff is still consumed and therefore ''Lunar Rush's'' cooldown is still reset.\n* The auto attack following the ability will not grant any stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "50/65/80",
-      "cooldownBurn": "25/20/15",
+      "notes": "* On the second application of ''Pale Cascade's'' shield, {{sti|Shield Power}} will apply to both the new shield amount and the shield amount remaining from the first shield, which already benefitted from ''shield power''.\n** Because of this, ''shield power'' effectively applies to the second shield twice, but with reduced efficiency, for up to an increase of 50% of ''shield power'' (maximum benefit if no damage was mitigated by the first shield). With 10% ''shield power'', the second shield's total amount will be increased by up to an additional 5%, for a total of {{tt|{{fd|15.5%}}|1.1*1.05}} '''bonus''' shield. \n** The formula for the total amount of shield '''Diana''' will receive from both shield applications is:\n<div style=\"text-align: right;\">\nTotal Shield = (((Shield Amount * (1 + Shield Power)) - Damage Blocked by Shield) + Shield Amount) * (1 + Shield Power)\n</div>",
+      "skillkey": "W",
+      "skillid": "w1",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "15/13.5/12/10.5/9",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|100 to 220}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','130','160','190','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Shield Strength|{{ap|30 to 90}} {{as|(+ 30% AP)}} {{as|(+ 10% '''bonus''' health)}}|Total Shield Strength|{{ap|30*2 to 90*2}} {{as|(+ 60% AP)}} {{as|(+ 20% '''bonus''' health)}}}}{{st|Magic Damage per Orb|{{ap|18 to 66}} {{as|(+ 15% AP)}}|Total Magic Damage|{{ap|18*3 to 66*3}} {{as|(+ 45% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['30','45','60','75','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Total Shield Strength</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 20% <b>bonus</b> health)</span></span></li></ul><ul><li><span class=\"blue\">Magic Damage per Orb</span>: <span><spell-span :list=\"['18','30','42','54','66']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['54','90','126','162','198']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                100,
-                130,
-                160,
-                190,
-                220
+                30,
+                45,
+                60,
+                75,
+                90
+              ],
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ],
+              [
+                18,
+                30,
+                42,
+                54,
+                66
+              ],
+              [
+                54,
+                90,
+                126,
+                162,
+                198
               ]
             ],
             "as_ratios": [
               {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_bonus_hp": 0.1
+              },
+              {
                 "player_total_ap": 0.6
+              },
+              {
+                "player_bonus_hp": 0.2
+              },
+              {
+                "player_total_ap": 0.15
+              },
+              {
+                "player_total_ap": 0.45
               }
             ],
             "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['100','130','160','190','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "Magic Damage per Orb",
+              "<spell-span :list=\"['18','30','42','54','66']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['54','90','126','162','198']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>"
             ]
           },
           "subeffects": [
@@ -481,22 +265,283 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  100,
-                  130,
-                  160,
-                  190,
-                  220
+                  30,
+                  45,
+                  60,
+                  75,
+                  90
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.6,
+                "player_bonus_hp": 0.1
               },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['100','130','160','190','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "title": "Magic Damage per Orb",
+              "str": "<spell-span :list=\"['18','30','42','54','66']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ],
+                "player_total_ap": 0.6,
+                "player_bonus_hp": 0.1
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['54','90','126','162','198']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "magic"
             }
           ]
         }
       ]
+    },
+    "e1": {
+      "riotId": "DianaTeleport",
+      "name": "Lunar Rush",
+      "maxrank": 5,
+      "cooldown": [
+        22,
+        20,
+        18,
+        16,
+        14
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "mana",
+      "targeting": "[[Unit-targeted|Unit]]",
+      "target_range": 825,
+      "image": {
+        "full": "DianaTeleport.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Diana''' {{tip|dashes}} to an enemy, dealing {{as|magic damage}} to the target and consuming {{ai|Crescent Strike|Diana|Moonlight}} from all enemies. If the target is within 400 range, '''Diana''' will dash through them.",
+        "If ''Moonlight'' is consumed from the target or the target dies mid-dash while being afflicted by ''Moonlight'', ''Lunar Rush's'' {{sti|cooldown}} is reset.",
+        "''Other abilities can be used during the dash.''"
+      ],
+      "notes": "* '''Diana''' will attempt to basic attack the target. This will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.\n* ''Lunar Rush'' consumes ''Moonlight'' upon ending the dash (even if {{tip|interrupt|interrupted}}).\n* If ''Lunar Rush'' is {{tip|spell shield|spell shielded}} the ''Moonlight'' debuff is still consumed and therefore ''Lunar Rush's'' cooldown is still reset.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "22/20/18/16/14",
+      "effects": [
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 40% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_total_ap": 0.4
+              },
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "DianaR",
+      "name": "Moonfall",
+      "maxrank": 3,
+      "cooldown": [
+        100,
+        90,
+        80
+      ],
+      "cost": [
+        100,
+        100,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "[[Auto-targeted|Auto]]",
+      "image": {
+        "full": "DianaR.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 48,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} {{tip|sight|Reveals}}, {{tip|airborne|draws in}}, and successively {{tip|slow|slows}} all nearby enemies for 2 seconds.",
+        "If '''Diana''' pulls in one or more enemy champions, the moonlight crashes down onto her after 1 second, dealing {{as|magic damage}} in an area around her, increased for each champion pulled beyond the first."
+      ],
+      "notes": "* Enemies stay in the area for a maximum of approximately {{fd|0.5}} seconds while being pulled.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "costBurn": "100",
+      "cooldownBurn": "100/90/80",
+      "effects": [
+        {
+          "levelingtext": "{{st|Slow|{{ap|40 to 60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ]
+            ],
+            "st_slices": [
+              "Slow",
+              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  45,
+                  50,
+                  55,
+                  60
+                ]
+              },
+              "title": "Slow",
+              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{ap|200 to 400}} {{as|(+ 60% AP)}}}}\n{{st|Bonus Damage Per Champion|{{ap|35 to 85}} {{as|(+ 15% AP)}}|Maximum Damage|{{ap|200+35*4 to 400+85*4}} {{as|(+ 120% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Damage Per Champion</span>: <span><spell-span :list=\"['35','47.5','60','72.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['340','440','540','640','740']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                200,
+                250,
+                300,
+                350,
+                400
+              ],
+              [
+                35,
+                47.5,
+                60,
+                72.5,
+                85
+              ],
+              [
+                340,
+                440,
+                540,
+                640,
+                740
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 0.15
+              },
+              {
+                "player_total_ap": 1.2
+              }
+            ],
+            "st_slices": [
+              "Bonus Damage Per Champion",
+              "<spell-span :list=\"['35','47.5','60','72.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "Maximum Damage",
+              "<spell-span :list=\"['340','440','540','640','740']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  200,
+                  250,
+                  300,
+                  350,
+                  400
+                ],
+                "player_total_ap": 0.15
+              },
+              "title": "Bonus Damage Per Champion",
+              "str": "<spell-span :list=\"['35','47.5','60','72.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  35,
+                  47.5,
+                  60,
+                  72.5,
+                  85
+                ],
+                "player_total_ap": 0.15
+              },
+              "title": "Maximum Damage",
+              "str": "<spell-span :list=\"['340','440','540','640','740']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        }
+      ]
     }
-  },
-  "skillcount": 5
+  }
 }

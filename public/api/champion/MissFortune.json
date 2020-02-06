@@ -2,21 +2,17 @@
   "patch": "V1.0.0.100",
   "changes": "9.18.1",
   "id": "MissFortune",
-  "key": "21",
   "name": "Miss Fortune",
   "title": "the Bounty Hunter",
   "image": {
     "full": "MissFortune.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 48,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman"
-  ],
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
@@ -62,7 +58,7 @@
         "full": "MissFortune_W.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
@@ -100,7 +96,7 @@
         "full": "MissFortuneRicochetShot.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
@@ -108,7 +104,7 @@
       "description": [
         "{{sbc|Active:}} '''Miss Fortune''' fires a shot at a target enemy that deals {{as|physical damage}}, which then bounces to hit another unit behind it. The shot applies [[on-hit effects]], including {{ai|Love Tap}}.",
         "''Double Up's'' bounce prioritizes units directly behind the primary target.",
-        "''Double Up's'' bounce is affected by {{tip|critical strike}} modifiers. If ''Double Up'' kills its primary target, the bounce is a guaranteed {{tip|critically strike}}."
+        "''Double Up's'' bounce is affected by {{tip|critical strike}} modifiers. If ''Double Up'' kills its primary target, the bounce will critically strike."
       ],
       "notes": "* {{tip|Spell shield|Spell shields}} can be used by either target. A {{tip|spell shield}} on the primary target will not prevent the shot from bouncing.\n* The second shot follows a priority order on targets within 500 units of the primary one:\n*# Enemy or neutral units within a 20º cone.\n*# Enemy or neutral units within a 40º cone.\n*# Enemy or neutral units within a 110º cone.\n*# Enemy or neutral units within {{tt|150|Estimated}} units in a 160º cone.\n* ''Double Up's'' cast range adjusts based on '''Miss Fortune's''' attack range.\n* ''Double Up'' can bounce to units in [[brush]] or in [[Sight|fog of war]] if they are in range of the primary target.\n* The damage of a {{tip|critical strike|critically striking}} second shot is {{ap|20*2 to 100*2}} {{as|(+ 200% AD)}} {{as|(+ 70% AP)}} {{as|physical damage}}.",
       "skillkey": "Q",
@@ -190,7 +186,7 @@
         "full": "MissFortuneViciousStrikes.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
@@ -309,7 +305,7 @@
         "full": "MissFortuneScattershot.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
@@ -427,16 +423,16 @@
         "full": "MissFortuneBulletTime.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Miss Fortune''' {{tip|channels}} for 3 seconds while firing several waves of bullets in a cone towards the target location, with each wave dealing {{as|75% AD}} {{as|(+ 20% AP)}} {{as|physical damage}}.",
+        "{{sbc|Active:}} '''Miss Fortune''' {{ct|channel|channels|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|consume=true|spells=true,interrupts,interrupts,interrupts,interrupts}} for 3 seconds while firing several waves of bullets in a cone towards the target location, with each wave dealing {{as|75% AD}} {{as|(+ 20% AP)}} {{as|physical damage}}.",
         "Each wave can {{tip|critical strike|critically strike}}, dealing {{as|{{critical damage|20}} '''bonus''' physical damage}}."
       ],
-      "notes": "* ''Bullet Time'' fires a wave of bullets each {{ap|(3 to 3)/(12 to 16)|round=4}} seconds.",
+      "notes": "* ''Bullet Time'' fires a wave of bullets each {{ap|3/(12 to 16)|round=4}} seconds.\n* The damage dealt by each wave of ''Bullet Time'' is calculated when the wave reaches the target.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -444,7 +440,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Waves|{{ap|12 to 16}}|Minimum Total Damage|{{as|{{ap|75*12 to 75*16}}% AD}} {{as|(+ {{ap|20*12 to 20*16}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Waves</span>: <span><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Waves</span>: <span><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -474,13 +470,16 @@
                   3,
                   3.2
                 ]
+              },
+              {
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "Total Waves",
               "<spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "Minimum Total Damage",
-              "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -525,13 +524,12 @@
                 ]
               },
               "title": "Minimum Total Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<span class=\"ad\"><spell-span :list=\"['900','975','1050','1125','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ <spell-span :list=\"['240','260','280','300','320']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

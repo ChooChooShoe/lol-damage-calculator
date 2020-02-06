@@ -1,22 +1,18 @@
 {
   "patch": "V1.0.0.140b",
-  "changes": "9.15.1",
+  "changes": "10.1.1",
   "id": "Draven",
-  "key": "119",
   "name": "Draven",
   "title": "the Glorious Executioner",
   "image": {
     "full": "Draven.png",
     "sprite": "champion0.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Marksman"
-  ],
   "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
@@ -62,7 +58,7 @@
         "full": "Draven_passive.png",
         "sprite": "passive0.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
@@ -97,12 +93,12 @@
         45
       ],
       "costtype": "mana",
-      "targeting": "Self",
+      "targeting": "[[Buff]]",
       "image": {
         "full": "DravenSpinning.png",
         "sprite": "spell2.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
@@ -112,7 +108,7 @@
         "The spinning axe ricochets off the target high up into the air, landing 2 seconds later at a location determined by '''Draven's''' current movement. If '''Draven''' catches an axe, ''Spinning Axe'' is reapplied for no additional cost on his next basic attack.",
         "'''Draven''' can hold up to two ''Spinning Axes'' in his hands at once."
       ],
-      "notes": "* The landing location is determined by Draven's movement speed and direction at the time ''Spinning Axe'' hits the target. If '''Draven''' is actually moving, it will bounce directly into his path. Otherwise, it will bounce back towards his current location, either landing directly onto him or to his sides.\n* '''Spinning Axe''' will place a visual cue on the ground where it will land. This visual cue is visible to both player teams, although '''Draven''' himself will see a more prominent marker.\n* Recasting '''Spinning Axe''' will refresh the buff and add another axe if possible.\n** There is no limit to how many axes can be juggled at once, as long as two are carried at a time.\n* '''Draven''' can also catch an enemy's '''Draven''' axe.\n* '''Spinning Axes''' may optically bypass {{ai|Wind Wall|Yasuo}} but will be destroyed upon impact.\n* {{ai|Unbreakable|Braum}} will block the attack, but the axe will bounce off normally.\n* The triggering attack will apply [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n** As with most on-hit physical damage the bonus damage from ''Spinning Axe'' will apply {{sti|life steal}}.\n** {{tip|critical strike|Critical strikes}} will not interact with ''Spinning Axe's'' bonus damage.\n** Attacks against structures will refresh the timer on active ''Spinning Axes'', but no other effects.\n** The damage will be negated if the attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or if it {{tip|blind|misses}}. The axe will still bounce off.\n** {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will not trigger the bonus damage or spawn extra axes.",
+      "notes": "* The landing location is determined by Draven's movement speed and direction at the time ''Spinning Axe'' hits the target. If '''Draven''' is actually moving, it will bounce directly into his path. Otherwise, it will bounce back towards his current location, either landing directly onto him or to his sides.\n* '''Spinning Axe''' will place a visual cue on the ground where it will land. This visual cue is visible to both player teams, although '''Draven''' himself will see a more prominent marker.\n* Recasting '''Spinning Axe''' will refresh the buff and add another axe if possible.\n** There is no limit to how many axes can be juggled at once, as long as two are carried at a time.\n* '''Draven''' can catch an enemy '''Draven's''' axe.\n* '''Spinning Axes''' may optically bypass {{ai|Wind Wall|Yasuo}} but will be destroyed upon impact.\n* {{ai|Unbreakable|Braum}} will block the attack, but the axe will bounce off normally.\n* {{tip|Critical strike}} will not interact with ''Spinning Axe's'' bonus damage.\n** Attacks against structures will refresh the timer on active ''Spinning Axes'', no other effects.\n** The damage will be negated if the attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or if it {{tip|blind|misses}}. The axe will still bounce off.\n** {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will not trigger the bonus damage or spawn extra axes.\n** If a '''Spinning Axe''' is readied (either caught or casted) during an attack wind-up, the effects will be applied to that attack once it fires.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "45",
@@ -196,12 +192,12 @@
         20
       ],
       "costtype": "Mana",
-      "targeting": "Self",
+      "targeting": "[[Buff]]",
       "image": {
         "full": "DravenFury.png",
         "sprite": "spell2.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
@@ -288,7 +284,7 @@
         "full": "DravenDoubleShot.png",
         "sprite": "spell2.png",
         "group": "spell",
-        "x": 96,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
@@ -370,59 +366,77 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "target_range": "Global",
       "image": {
         "full": "DravenRCast.png",
         "sprite": "spell2.png",
         "group": "spell",
-        "x": 144,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Draven''' hurls two [[File:Whirling Death Minimap.png|24px]] massive axes in the target direction, dealing {{as|physical damage}} to all enemies struck.",
-        "Upon reaching the edge of the map, striking an enemy champion, or upon reactivation, the axes slowly come to a stop before changing direction and returning to '''Draven''', dealing the same damage to every enemy struck on the way back.",
+        "Upon reaching the edge of the map, striking an enemy champion, or upon reactivation, the axes slowly come to a stop before homing back to '''Draven''', dealing the same damage to every enemy struck on the way back.",
         "''Whirling Death'' deals {{pp|9|type=enemy hit|key=%|100 to 44;40|0 to 8|displayformula=100% - (8% per enemy hit). ''This is capped at 40% damage.''}} damage, this reduction resets when the axes reverse direction."
       ],
-      "notes": "* ''Whirling Death'' grants {{tip|sight}} along its path. \n* 'Changing direction' does not occur instantly but rather the axes will decelerate and come to a complete halt before turning around.\n** With careful timing, it is possible to reactivate the ability and cause an enemy to instantly take two passes of damage.\n* If Draven dies while the axes are cast, they will fizzle upon the next interaction.\n* {{tip|Spell shield}} will block one instance of damage.",
+      "notes": "* ''Whirling Death'' grants {{tip|sight}} along its path. \n* If Draven dies while the axes are cast, they will fizzle upon the next interaction.\n* {{tip|Spell shield}} will block one instance of damage.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "120/100/80",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|175|275|375}} {{as|(+ 110% '''bonus''' AD)}}|Total Physical Damage|{{ap|350|550|750}} {{as|(+ 220% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['175','275','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['350','550','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 220% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|175 to 375}} {{as|(+ {{ap|110 to 150}}% '''bonus''' AD)}}|Total Physical Damage|{{ap|175*2 to 375*2}} {{as|(+ {{ap|110*2 to 150*2}}% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['175','225','275','325','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','120','130','140','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['350','450','550','650','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['220','240','260','280','300']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 175,
+                225,
                 275,
+                325,
                 375
               ],
               [
+                110,
+                120,
+                130,
+                140,
+                150
+              ],
+              [
                 350,
+                450,
                 550,
+                650,
                 750
-              ]
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": 1.1
+                "player_bonus_ad": [
+                  2.2,
+                  2.4,
+                  2.6,
+                  2.8,
+                  3
+                ]
               },
               {
-                "player_bonus_ad": 2.2
+                "player_bonus_ad": []
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['175','275','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "<spell-span :list=\"['175','225','275','325','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','120','130','140','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "Total Physical Damage",
-              "<spell-span :list=\"['350','550','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 220% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['350','450','550','650','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['220','240','260','280','300']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -431,62 +445,96 @@
               "ratios": {
                 "base_damage": [
                   175,
+                  225,
                   275,
+                  325,
                   375
                 ],
-                "player_bonus_ad": 1.1
+                "player_bonus_ad": [
+                  2.2,
+                  2.4,
+                  2.6,
+                  2.8,
+                  3
+                ]
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['175','275','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['175','225','275','325','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','120','130','140','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  350,
-                  550,
-                  750
+                  110,
+                  120,
+                  130,
+                  140,
+                  150
                 ],
-                "player_bonus_ad": 1.1
+                "player_bonus_ad": [
+                  2.2,
+                  2.4,
+                  2.6,
+                  2.8,
+                  3
+                ]
               },
               "title": "Total Physical Damage",
-              "str": "<spell-span :list=\"['350','550','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 220% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['350','450','550','650','750']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['220','240','260','280','300']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|70|110|150}} {{as|(+ 44% '''bonus''' AD)}}|Minimum Total Damage|{{ap|140|220|300}} {{as|(+ 88% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['70','110','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 44% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><spell-span :list=\"['140','220','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 88% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|175*0.4 to 375*0.4}} {{as|(+ {{ap|110*0.4 to 150*0.4}}% '''bonus''' AD)}}|Minimum Total Damage|{{ap|175*0.4*2 to 375*0.4*2}} {{as|(+ {{ap|110*0.4*2 to 150*0.4*2}}% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['44','48','52','56','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minimum Total Damage</span>: <span><spell-span :list=\"['140','180','220','260','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['88','96','104','112','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 70,
+                90,
                 110,
+                130,
                 150
               ],
               [
+                44,
+                48,
+                52,
+                56,
+                60
+              ],
+              [
                 140,
+                180,
                 220,
+                260,
                 300
-              ]
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": 0.44
+                "player_bonus_ad": [
+                  0.88,
+                  0.96,
+                  1.04,
+                  1.12,
+                  1.2
+                ]
               },
               {
-                "player_bonus_ad": 0.88
+                "player_bonus_ad": []
               }
             ],
             "st_slices": [
               "Minimum Physical Damage",
-              "<spell-span :list=\"['70','110','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 44% '''bonus''' AD)</span>",
+              "<spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['44','48','52','56','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "Minimum Total Damage",
-              "<spell-span :list=\"['140','220','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 88% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['140','180','220','260','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['88','96','104','112','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -495,33 +543,48 @@
               "ratios": {
                 "base_damage": [
                   70,
+                  90,
                   110,
+                  130,
                   150
                 ],
-                "player_bonus_ad": 0.44
+                "player_bonus_ad": [
+                  0.88,
+                  0.96,
+                  1.04,
+                  1.12,
+                  1.2
+                ]
               },
               "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['70','110','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 44% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['70','90','110','130','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['44','48','52','56','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  140,
-                  220,
-                  300
+                  44,
+                  48,
+                  52,
+                  56,
+                  60
                 ],
-                "player_bonus_ad": 0.44
+                "player_bonus_ad": [
+                  0.88,
+                  0.96,
+                  1.04,
+                  1.12,
+                  1.2
+                ]
               },
               "title": "Minimum Total Damage",
-              "str": "<spell-span :list=\"['140','220','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 88% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['140','180','220','260','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['88','96','104','112','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
         }
       ]
     }
-  },
-  "skillcount": 5
+  }
 }

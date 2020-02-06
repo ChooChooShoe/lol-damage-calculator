@@ -2,22 +2,17 @@
   "patch": "V8.11",
   "changes": "9.21.1",
   "id": "Pyke",
-  "key": "555",
   "name": "Pyke",
   "title": "the Bloodharbor Ripper",
   "image": {
     "full": "Pyke.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Support",
-    "Assassin"
-  ],
   "resource": "Mana",
   "herotype": "",
   "alttype": "",
@@ -63,7 +58,7 @@
         "full": "PykePassive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
@@ -73,7 +68,7 @@
         "'''Pyke''' also stores {{pp|key=%|25 to 50}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
         "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount."
       ],
-      "notes": "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.\n* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.\n*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.\n* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches the upper cap of {{as|60% of '''maximum''' health}} at {{pp|(0.6*({{Data Pyke|pst2|hp_base}}+{{Data Pyke|pst2|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.\n* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':\n{{stat table header|item}}{{Do for every item|item table row|p1n=2|p1v=pykehealth}}\n{{stat table footer}}",
+      "notes": "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.\n* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.\n*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.\n* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches the upper cap of {{as|60% of '''maximum''' health}} at {{pp|(0.6*({{ccd|Pyke|hp_base}}+{{ccd|Pyke|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.\n* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':\n{{stat table header|item}}{{Do for every item|item table row|p1n=2|p1v=pykehealth}}\n{{stat table footer}}",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -103,7 +98,7 @@
         "full": "PykeQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
@@ -190,13 +185,13 @@
         "full": "PykeW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 240,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' enters {{tip|camouflage}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within X-units of them.",
+        "{{sbc|Active:}} '''Pyke''' enters {{tip|camouflage}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
         "Attacking or casting abilities immediately ends {{tip|camouflage}}."
       ],
       "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of ''Death from Below''.",
@@ -276,7 +271,7 @@
         "full": "PykeE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
@@ -285,7 +280,7 @@
         "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}}, leaving behind a drowned phantom.",
         "After 1 second, the phantom returns to '''Pyke''', {{tip|stun|stunning}} enemies it passes through for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds. Enemy champions also take {{as|physical damage}}."
       ],
-      "notes": "",
+      "notes": "* The dash can go through any wall as long as it can reach over half of it, behaving like a {{tip|blink}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40",
@@ -358,23 +353,22 @@
         "full": "PykeR.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' marks the targeted area with an X which he strikes after a {{fd|0.75}} second delay, {{as|executing|true damage}} enemy {{tip|champions}} below {{pp|250;290;330;370;400;430;450;470;490;510;530;540;550|6 to 18}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ {{fd|1.5}} per 1 Lethality)}} {{as|health}} while dealing 50% of the amount as {{as|physical damage}} to enemies not within the threshold for execution.",
+        "{{sbc|Active:}} '''Pyke''' marks the targeted area with an X which he strikes after a {{fd|0.75}} second delay, [[Kill#Execute|executing]] enemy {{tip|champions}} below {{pp|250;290;330;370;400;430;450;470;490;510;530;540;550|6 to 18}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ {{fd|1.5}} per 1 Lethality)}} {{as|health}} while dealing 50% of the amount as {{as|physical damage}} to enemies not within the threshold for execution.",
         "If ''Death from Below'' hits an enemy champion or one dies inside it, '''Pyke''' will {{tip|blink}} to the center of the X. For the latter case '''Pyke''' also gains the ability to recast within 20 seconds at no cost.",
         "Each ''execution'' grants one {{ii|'Your Cut'}} to both '''Pyke''' and the last assisting ally, instead of its natural assist gold. In addition, each enemy champion killed inside the X by an ally grants '''Pyke''' two stacks of {{ii|'Your Cut'}}."
       ],
-      "notes": "* {{ii|'Your Cut'}} is an item that can be consumed to gain gold. If the ally's inventory is full, it's auto-consumed.\n** When {{ii|'Your Cut'}} is consumed, it quickly grants {{g|100}} stacks until reaching the full gold value.\n* Only the target's current health will count as '''Pyke's''' damage in post-game statistics and {{sti|spell vamp}} healing if executed.\n** If the target's current health is less than 50% of the {{tt|post-mitigation|after damage modifiers}} non-executing damage, '''Pyke''' will heal less from spell vamp.",
+      "notes": "* Applies {{tip|raw damage}} to executed targets and {{tip|area damage}} to targets above the threshold.\n* ''Death from Below'' cannot execute [[decoy|decoys]] and are always dealt 50% physical damage.\n* {{ii|'Your Cut'}} is an item that can be consumed to gain gold. If the ally's inventory is full, it's auto-consumed.\n** When {{ii|'Your Cut'}} is consumed, it quickly grants {{g|100}} stacks until reaching the full gold value.\n* Only the target's current health will count as '''Pyke's''' damage in post-game statistics and {{sti|spell vamp}} healing if executed.\n** If the target's current health is less than 50% of the {{tt|post-mitigation|after damage modifiers}} non-executing damage, '''Pyke''' will heal less from spell vamp.\n* If a champion dies inside the X before ''Death from Below'' performs, '''Pyke''' will be shown as having received an assist in the kill feed, but this will not grant him {{tip|takedown}} effects.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "120/100/80",
       "effects": []
     }
-  },
-  "skillcount": 5
+  }
 }

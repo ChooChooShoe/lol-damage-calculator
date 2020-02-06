@@ -1,30 +1,25 @@
 {
   "patch": "V9.13",
-  "changes": "9.21.1",
+  "changes": "9.24.2",
   "id": "Qiyana",
-  "key": "246",
   "name": "Qiyana",
   "title": "Empress of the Elements",
   "image": {
     "full": "Qiyana.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 96,
     "w": 48,
     "h": 48
   },
-  "tags": [
-    "Assassin",
-    "Fighter"
-  ],
   "resource": "Mana",
   "herotype": "Fighter",
   "alttype": "Slayer",
   "rangetype": "Melee",
   "be_cost": 6300,
   "rp_cost": 975,
-  "adaptivetype": "Physical",
+  "adaptivetype": "physical",
   "info": {
     "attack": 0,
     "defense": 2,
@@ -63,13 +58,14 @@
         "full": "Qiyana_Passive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Units not recently damaged by '''Qiyana''' take {{pp|15 to 83}} {{as|(+ 55% '''bonus''' AD)}} {{as|(+ 30% AP)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} from her next [[basic attack]] or damaging [[ability|ability]].",
+        "{{sbc|Innate:}} '''Qiyana's''' next [[basic attack]] or damaging [[ability|ability]] deals {{pp|15 to 83}} {{as|(+ 55% '''bonus''' AD)}} {{as|(+ 30% AP)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to all enemies hit.",
+        "This effect cannot occur on the same target more than once every few seconds.",
         "''Royal Privilege's'' cooldown is {{sti|cooldown|reset}} on all targets upon gathering or changing an {{ai|Terrashape|Qiyana|Element}}."
       ],
       "notes": "* No additional details.",
@@ -102,13 +98,13 @@
         "full": "QiyanaQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Qiyana''' slashes forward in a line, dealing {{as|physical damage}}, reduced to 75% damage against subsequent units beyond the closest.",
+        "{{sbc|Active:}} '''Qiyana''' slashes forward in a line, dealing {{as|physical damage}}, reduced to 75% damage against targets beyond the first.",
         "Upon gathering an {{ai|Terrashape|Qiyana|Element}}, ''Edge of Ixtal'' is upgraded to '''Elemental Wrath''' and its cooldown is {{sti|cooldown reduction|reset}}."
       ],
       "notes": "* No additional details.",
@@ -215,8 +211,8 @@
         "full": "QiyanaQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -310,7 +306,7 @@
         },
         {
           "levelingtext": "{{st|Bonus Damage|{{ap|60*0.6 to 160*0.6}} {{as|(+ {{ap|90*0.6}}% '''bonus''' AD)}}|Total Damage|{{ap|60*1.6 to 160*1.6}} {{as|(+ {{ap|90*1.6}}% '''bonus''' AD)}}|Total Damage to targets beyond the first|{{ap|60*(0.75+0.6) to 160*(0.75+0.6)}} {{as|(+ {{ap|90*(0.75+0.6)}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['36','51','66','81','96']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li><li><span class=\"blue\">Total Damage to targets beyond the first</span>: <span><spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['36','51','66','81','96']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage to targets beyond the first</span>: <span><spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -349,15 +345,21 @@
                 "player_bonus_ad": [
                   1.215
                 ]
+              },
+              {
+                "player_bonus_ad": []
+              },
+              {
+                "player_bonus_ad": []
               }
             ],
             "st_slices": [
               "Bonus Damage",
               "<spell-span :list=\"['36','51','66','81','96']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['54']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "Total Damage",
-              "<spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "<spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "Total Damage to targets beyond the first",
-              "<spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>"
+              "<spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -390,7 +392,7 @@
                 ]
               },
               "title": "Total Damage",
-              "str": "<spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['96','136','176','216','256']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['144']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -408,7 +410,7 @@
                 ]
               },
               "title": "Total Damage to targets beyond the first",
-              "str": "<spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <simple-tooltip class=\"red\" dname=\"as (+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)\">Error: TypeError: vars.ap_progressions[idx] is not iterable</simple-tooltip>",
+              "str": "<spell-span :list=\"['81','114.75','148.5','182.25','216']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['121.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -440,29 +442,36 @@
         "full": "QiyanaW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} While holding an ''Element'', '''Qiyana''' gains {{sti|as|{{as|20% '''bonus''' attack speed}}}}, her basic attacks and basic abilities deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, and she gains [[Combat status|out-of-combat]] {{sti|ms|{{as|'''bonus''' movement speed}}}} while moving near the ''Element'' currently being held.",
+        "{{sbc|Passive:}} While holding an ''Element'', '''Qiyana''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}, {{sti|range|25 '''bonus''' range}}, her basic attacks and basic abilities deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, and she gains [[Combat status|out-of-combat]] {{sti|ms|{{as|'''bonus''' movement speed}}}} while moving near the ''Element'' currently being held.",
         "{{sbc|Active:}} '''Qiyana''' {{tip|dashes}} towards a target location, gathering an ''Element'' of the nearest {{cci|Terrashape Brush.png}} {{sbc|{{as|Brush}}}}, {{cci|Terrashape River.png}} {{sbc|{{as|River}}}} or {{cci|Terrashape Rock.png}} {{sbc|{{as|Terrain}}}} she targeted.",
         "''A target Element is required to cast this ability''."
       ],
-      "notes": "* ''Terrashape'' cannot gather an ''Element'' from artificial terrains, such as {{cai|Cataclysm|Jarvan IV}}, {{cai|Weaver's Wall|Taliyah}}, or even {{sbc|{{as|Water}}}} from {{cai|Tidal Wave|Nami}} or {{cai|Riptide|Nautilus}}. Instead, it will gather from the terrain below.\n* Targeting a Health Relic on {{tip|Howling Abyss}} grants the {{sbc|{{as|River}}}} ''Element''.\n* On {{tip|Twisted Treeline}}, since there are no {{sbc|{{as|rivers}}}}, '''Qiyana''' cannot gather {{sbc|{{as|River}}}} ''Element''.",
+      "notes": "* Terrain created by champions are not valid target terrain.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "25/30/35/40/45",
       "cooldownBurn": "7",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{ap|8 to 40}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|5 to 10}}%|ms}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['8','16','24','32','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['5','6.25','7.5','8.75','10']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|5 to 25}}%}}\n{{st|Bonus Magic Damage|{{ap|8 to 40}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|5 to 10}}%|ms}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['8','16','24','32','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['5','6.25','7.5','8.75','10']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
+              [
+                5,
+                10,
+                15,
+                20,
+                25
+              ],
               [
                 8,
                 16,
@@ -499,11 +508,11 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  8,
-                  16,
-                  24,
-                  32,
-                  40
+                  5,
+                  10,
+                  15,
+                  20,
+                  25
                 ],
                 "player_bonus_ad": 0.2,
                 "player_total_ap": 0.3,
@@ -548,7 +557,7 @@
         "full": "QiyanaE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 0,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
@@ -624,13 +633,13 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]], Terrain",
       "target_range": 875,
       "image": {
         "full": "QiyanaR.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 48,
+        "x": 144,
         "y": 48,
         "w": 48,
         "h": 48
@@ -639,7 +648,7 @@
         "{{sbc|Active:}} '''Qiyana''' sends a ''windblast'' in the target direction that {{tip|airborne|knocks back}} enemies. The ''windblast'' stops upon hitting {{as|terrain}}.",
         "The ''windblast'' then creates a shockwave across any {{sbc|{{as|River}}}} or {{sbc|{{as|Brush}}}} it passes through, as well as around the borders of {{as|terrain}} it reaches, dealing {{as|physical damage}}, with the percentage damage capped against monsters, and {{tip|stun|stunning}} enemies for {{pp|2|changedisplay=true|type=proximity|1|0.5|0|X}} seconds."
       ],
-      "notes": "* The windblast needs only to reach near terrain to trigger the terrain shockwave.\n* Champion-created terrain touching map terrain will be treated as a single piece of terrain, even when bridging two pieces of map terrain together; the shockwave will wrap around all connecting terrain.",
+      "notes": "* The windblast needs only to reach near terrain to trigger the terrain shockwave.\n* Artificial terrain (e.g, {{cai|Crystallize|Anivia}}, {{cai|Weaver's Wall|Taliyah}}, {{cai|Pillar of Ice|Trundle}}) touching map terrain will be treated as a single piece of terrain, even when bridging two pieces of map terrain together; the shockwave will wrap around all connecting terrain.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -719,6 +728,5 @@
         }
       ]
     }
-  },
-  "skillcount": 6
+  }
 }

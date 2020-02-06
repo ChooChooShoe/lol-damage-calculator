@@ -27,76 +27,51 @@
 
 export const cdn = process.env.VUE_APP_DDRAGON_CDN;
 export const locale = process.env.VUE_APP_LANG;
-export let version = process.env.VUE_APP_DDRAGON_VERSION;
-export let spriteBaseUri = '';
+export const version = process.env.VUE_APP_DDRAGON_VERSION;
+export const spriteBaseUri = `${cdn}/${version}/img/sprite/`;
 
 export function setupVue(vue) {
-    console.log(`Data is sourced from patch ${version}`);
-    spriteBaseUri = `${cdn}/${version}/img/sprite/`;
-    fetchChampionList((champList) => {
-        vue.$app.championList = champList;
+    fetchChampionList().then((championList) => {
+        vue.$app.championList = championList;
     });
     // fetchStaticItems((data) => {
     //     vue.$app.itemData = data;
     // });
-    // vue.player.champ = window.localStorage.getItem('last_used_champ_player') || '';
-    // vue.target.champ = window.localStorage.getItem('last_used_champ_target') || '';
 }
 
-function fetchChampionList(callback) {
-    // const url = `${cdn}/${version}/data/en_US/champion.json`;
-    const url = `./api/ChampionList.json`;
-
-    console.log(`Fetching: ${url}`)
-    fetch(url)
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(function (json) {
-            let championList = { None: { name: "  -- None --  ", id: "" } }
-            Object.assign(championList, json);
-            callback(championList);
-        });
+async function fetchChampionList() {
+    /// Get the latest version from /realms/na.json
+    const response = await fetch("./api/ChampionList.json");
+    const body = await response.json();
+    let championList = { None: { name: "  -- None --  ", id: "" } }
+    Object.assign(championList, body);
+    return championList;
 }
 
-export function fetchSingleChampFile(vue, champion) {
-    if (!champion || !vue)
-        return;
-    // const url = `${cdn}/${version}/data/${locale}/champion/${champion}.json`;
-    const url = `/api/champion/${champion}.json`;
+const singleChampFileCache = {};
 
+export async function fetchSingleChampFile(champId) {
+    if (!champId)
+        return console.log("Can't fetchSingleChampFile() 'champId' is not set", champId);
+
+    // const url = `${cdn}/${version}/data/${lang}/champion/${championName}.json`;
+    const url = `./api/champion/${champId}.json`;
+
+    // Check cache first
+    if (champId in singleChampFileCache) {
+        return singleChampFileCache[champId];
+    }
+
+    // TODO error checking
     console.log(`Fetching: ${url}`);
-    fetch(url)
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(function (model) {
-            // Used for items. TODO change this.
-            // window.playerChamption = dao.id;
-            // championData caches all the data.
-            vue.$set(vue.championData, model.id, model);
-            // Removes all the last champions spells.
-            vue.currentSpells.length = 0;
-            vue.currentChamp = null;
-            let newList = [];
-            for (const skillkey in model.skills) {
-                let value = model.skills[skillkey];
-                newList.push({
-                    key: skillkey,
-                    value: value,
-                });
-            }
-            vue.currentChamp = champion;
-            vue.currentSpells = newList;
-            // sellAllItems();
-            //TODO buy default items
-        });
+    const response = await fetch(url);
+    const model = await response.json();
+
+    console.assert(model.id === champId);
+    // Add to Cache
+    singleChampFileCache[champId] = model;
+    // return model in promise
+    return model;
 }
 const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
@@ -276,7 +251,7 @@ export function default_stats() {
 
 export const spell_ratios = {
     base_damage: { prefex: "Base Damage", color: "", sufex: "", extra: true, },
-    base_progression: { prefex: "Leveling", color: "", sufex: "", extra: true,  },
+    base_progression: { prefex: "Leveling", color: "", sufex: "", extra: true, },
     player_total_ap: { color: "ap", sufex: "AP" },
     player_total_ad: { color: "ad", sufex: "AD" },
     player_bonus_ad: { color: "ad", sufex: "Bonus AD" },
@@ -291,4 +266,4 @@ export const spell_ratios = {
     player_total_armor: { color: "armor", sufex: "Armor" },
     player_bonus_mr: { color: "mr", sufex: "Bonus Magic Resistance" },
     player_total_mr: { color: "mr", sufex: "Magic Resistance" }
-  };
+};
