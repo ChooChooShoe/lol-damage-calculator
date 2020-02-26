@@ -310,11 +310,11 @@ function saveFile(path, data) {
 let cdn = "", lang = "", version = "", dispVersion = "";
 
 async function onRealmJsonResponse(body) {
-    cdn = body.cdn;
-    version = body.v;
+    cdn = "https://ddragon.leagueoflegends.com/cdn"; // body.cdn;
+    version = body[0]; // body.v;
     // Cuts the last .1 off of ddragon patch versions to look like normal patches.
-    dispVersion = body.v.lastIndexOf('.1') > 2 ? body.v.slice(0, body.v.lastIndexOf('.1')) : body.v;
-    lang = body.l;
+    dispVersion = version.lastIndexOf('.1') > 2 ? version.slice(0, version.lastIndexOf('.1')) : version;
+    lang = "en_US"; // body.l;
     console.log("Using ddragon version:", version);
 
     const championUrl = `${cdn}/${version}/data/${lang}/champion.json`;
@@ -421,7 +421,7 @@ console.log('Hello');
 
 
 fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
-
-fetch("https://ddragon.leagueoflegends.com/realms/na.json")
+//https://ddragon.leagueoflegends.com/realms/na.json
+fetch("https://ddragon.leagueoflegends.com/api/versions.json")
     .then((response) => { return response.json(); })
     .then(onRealmJsonResponse);

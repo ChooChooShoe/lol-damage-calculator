@@ -32,7 +32,7 @@
     "mp": 100,
     "mpperlevel": 0,
     "movespeed": 345,
-    "armor": 30.88,
+    "armor": 31,
     "armorperlevel": 3.5,
     "spellblock": 32.1,
     "spellblockperlevel": 1.25,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 61.036,
+    "attackdamage": 61,
     "attackdamageperlevel": 3.2,
     "attackspeedperlevel": 1.85,
     "attackspeed": 0.644
@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Junkyard Titan",
       "maxrank": 0,
-      "targeting": "Passive",
+      "targeting": "[[Passive]] / [[Self-targeted|Self]]",
       "image": {
         "full": "Rumble_JunkyardTitan1.png",
         "sprite": "passive3.png",
@@ -66,9 +66,9 @@
       "description": [
         "{{sbc|{{tip|Heat}}:}} '''Rumble''' gains ''{{tip|Heat}}'' each time he uses a basic [[Champion ability|ability]] (20 for {{ai|Flamespitter|Rumble}}, 20 for {{ai|Scrap Shield|Rumble}}, 10 for {{ai|Electro Harpoon|Rumble}}) and loses 10 ''{{tip|Heat}}'' per second after not using any abilities for 4 seconds.",
         "{{sbc|Danger Zone:}} '''Rumble's''' basic abilities are enhanced when cast at/above 50 ''{{tip|Heat}}''.",
-        "{{sbc|Overheating:}} At 100 ''{{tip|Heat}}'', '''Rumble''' becomes '''Overheated''', {{tip|silence|silences}} himself for 6 seconds. While {{tip|silence|silenced}}, his [[basic attack]]s deal {{pp|25 to 110|color=magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} each while his ''{{tip|Heat}}'' decays back to 0 over the duration."
+        "{{sbc|Overheating:}} At 100 ''{{tip|Heat}}'', '''Rumble''' becomes '''Overheated''', {{tip|silence|silencing}} himself for 6 seconds. During this time, his [[basic attack]]s deal {{pp|25 to 110|color=magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} while his ''{{tip|Heat}}'' rapidly decays by 10 every {{fd|0.6}} seconds."
       ],
-      "notes": "* The enhanced attacks apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but do not affect structures.\n* ''Rumble'' can use [[summoner spell]]s and/or [[active ability items]] while {{tip|silence|silenced}}.\n** Even though he can use the summoner spell, he is unable to {{si|Cleanse|cleanse}} the silence, neither can he reduce the silence's duration in any way.",
+      "notes": "* The enhanced attacks apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot).\n** They do not affect structures.\n* The self {{tip|silence}} is unaffected by {{tip|cleanse|cleansing}} effects and {{tip|tenacity}}. \n* '''Rumble''' can use [[summoner spell]]s and/or [[active ability items|active items]] while he is {{ai|Junkyard Titan 3|Rumble|overheating}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -91,7 +91,7 @@
         0,
         0
       ],
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
       "target_range": 600,
       "image": {
         "full": "RumbleFlameThrower.png",
@@ -106,7 +106,7 @@
         "{{sbc|Active:}} '''Rumble''' activates his flamethrower for 3 seconds, granting 20 {{tip|Heat}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to all enemies in a cone in front of him. Deals reduced damage to {{tip|minions}}.",
         "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Flamespitter's'' [[damage]] is increased by 50%."
       ],
-      "notes": "* ''Flamespitter'' has no cast time and does not interrupt '''Rumble's''' previous orders.\n* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.\n* ''Flamespitter'' is not canceled by self-stasis effects (e.g. {{ii|Stopwatch}}, {{ii|Zhonya's Hourglass}}).",
+      "notes": "* ''Flamespitter'' has no cast time and does not interrupt '''Rumble's''' previous orders.\n* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.\n* ''Flamespitter'' is not canceled by {{tip|stasis}} effects (e.g. {{ii|Stopwatch}}, {{ii|Zhonya's Hourglass}}, {{ai|Tempered Fate|Bard}}).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -188,7 +188,7 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
       "image": {
         "full": "RumbleShield.png",
         "sprite": "spell10.png",
@@ -199,11 +199,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Rumble''' pulls up a {{tip|shield}} for {{fd|1.5}} seconds.",
-        "While shielding himself '''Rumble''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} until the duration of the shield ends or the shield is broken.",
+        "{{sbc|Active:}} '''Rumble''' gains a {{tip|shield}} for {{fd|1.5}} seconds.",
+        "While shielding himself '''Rumble''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} until the duration of the shield ends or if the shield is broken.",
         "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Scrap Shield's'' effects are increased by 50%."
       ],
-      "notes": "* ''Scrap Shield'' has no cast time and does not interrupt ''Rumble's'' previous orders ([[basic attack]] animation is canceled on-cast).",
+      "notes": "* ''Scrap Shield'' has no cast time and does not interrupt '''Rumble's''' previous orders ([[basic attack]] animation is canceled on-cast).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -375,10 +375,10 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Rumble''' periodically [[stocks]] an ''Electro Harpoon'' charge, up to a maximum of 2.",
-        "{{sbc|Active:}} '''Rumble''' shoots a harpoon, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for 2 seconds. Hitting the same target with another harpoon enhances the {{tip|slow}} (stacks additively).",
+        "{{sbc|Active:}} '''Rumble''' shoots a electrical harpoon, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for 2 seconds. Hitting the same target with another harpoon enhances the {{tip|slow}} (stacks additively).",
         "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Electro Harpoon's'' effects are increased by 50%."
       ],
-      "notes": "* If '''Rumble''' casts ''Electro Harpoon'' before ''Overheating'', he may still use another charge within three seconds of the initial cast.\n* Each ''Electro Harpoon'' cast triggers {{ii|Sheen}} (and its upgrade)'s {{nie|Spellblade}} and stacks {{ai|Force Pulse|Kassadin}}.",
+      "notes": "* If '''Rumble''' casts ''Electro Harpoon'' before ''Overheating'', he may still use another charge within three seconds of the initial cast.\n* Each ''Electro Harpoon'' cast triggers {{ii|Sheen}} (and its upgrades) {{nie|Spellblade}} and stacks {{ai|Force Pulse|Kassadin}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -572,7 +572,7 @@
         0,
         0
       ],
-      "targeting": "Vector-targeted",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "target_range": 1700,
       "image": {
         "full": "RumbleCarpetBomb.png",
@@ -585,7 +585,7 @@
       },
       "description": [
         "{{sbc|Active:}} '''Rumble''' deploys a barrage of rockets 1000 units down the target path, landing in a line over 1 second and lasting for 5 seconds.",
-        "Enemies within the line of rockets take {{as|magic damage}} every {{fd|0.5}} seconds and are {{tip|slow|slowed}} by 35%. After leaving the area the damage will linger for 1 second."
+        "Enemies within the line of flaming rockets take {{as|magic damage}} every {{fd|0.5}} seconds and are {{tip|slow|slowed}} by 35%. After leaving the area the damage will {{tip|persistent damage|linger}} for 1 second."
       ],
       "notes": "* ''The Equalizer'' is blocked by {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}. The line of rockets placed on the ground before being intercepted are not destroyed.",
       "skillkey": "R",

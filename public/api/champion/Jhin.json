@@ -105,17 +105,18 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Jhin''' launches a canister at the target enemy, dealing {{as|physical damage}}. ''Dancing Grenade'' bounces to up to three additional enemies beyond the first, with each kill it performs increasing its total damage by 35%."
+        "{{sbc|Active:}} '''Jhin''' launches a canister at the target enemy, dealing {{as|physical damage}}. ''Dancing Grenade'' bounces to up to three additional enemies beyond the first, with each kill it performs increasing its damage by 35%.",
+        "''The damage will also increase if '''Jhin''' kills the target the grenade last bounced off.''"
       ],
-      "notes": "* Applies {{tip|spell damage}} in an {{tip|area of effect}} range.\n* ''Dancing Grenade'' will still bounce even if it is {{tip|spell shield|spell shielded}}.",
+      "notes": "* ''Dancing Grenade'' will still bounce even if it is {{tip|spell shield|spell shielded}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "40/45/50/55/60",
       "cooldownBurn": "7/6.5/6/5.5/5",
       "effects": [
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|45 to 145}} {{as|(+ {{ap|45 to 75}}% AD)}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|45*1.35^3 to 145*1.35^3}} {{as|(+ {{ap|45*1.35^3 to 75*1.35^3}}% AD)}} {{as|(+ {{fd|147.62}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|45 to 145}} {{as|(+ {{ap|45 to 75}}% AD)}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|(45 to 145)*(1+0.35*3)}} {{as|(+ {{ap|(45 to 75)*(1+0.35*3)}}% AD)}} {{as|(+ {{ap|60*(1+0.35*3)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (45 to 145)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap (45 to 75)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['123']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,13 +135,6 @@
                 67.5,
                 75
               ],
-              [
-                3,
-                51.188,
-                99.375,
-                147.563,
-                195.75
-              ],
               null
             ],
             "as_ratios": [
@@ -149,25 +143,21 @@
               },
               {
                 "player_total_ad": [
-                  0.03,
-                  0.27563,
-                  0.52125,
-                  0.76688,
-                  1.0125
+                  1.23
                 ]
               },
               {
-                "player_total_ad": []
+                "player_total_ap": 4575.10353
               },
               {
-                "player_total_ap": 1.4762000000000002
+                "player_total_ap": []
               }
             ],
             "st_slices": [
               "Minimum Physical Damage",
               "<spell-span :list=\"['45','70','95','120','145']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','52.5','60','67.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
               "Maximum Damage",
-              "<spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (45 to 145)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap (45 to 75)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['123']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -183,11 +173,7 @@
                 ],
                 "player_total_ap": 0.6,
                 "player_total_ad": [
-                  0.03,
-                  0.27563,
-                  0.52125,
-                  0.76688,
-                  1.0125
+                  1.23
                 ]
               },
               "title": "Minimum Physical Damage",
@@ -206,15 +192,11 @@
                 ],
                 "player_total_ap": 0.6,
                 "player_total_ad": [
-                  0.03,
-                  0.27563,
-                  0.52125,
-                  0.76688,
-                  1.0125
+                  1.23
                 ]
               },
               "title": "Maximum Damage",
-              "str": "<spell-span :list=\"['3','51.188','99.375','147.563','195.75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['3','27.563','52.125','76.688','101.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">147.62</span>% AP)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (45 to 145)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap (45 to 75)*(1+0.35*3)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['123']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -252,7 +234,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} Enemy {{tip|champions}} damaged by '''Jhin''', his allies, or caught inside a blooming ''{{ai|Captive Audience|Jhin|Lotus Trap}}'' are ''Caught Out'' for 4 seconds.",
+        "{{sbc|Passive:}} Enemy {{tip|champions}} slowed by a ''{{ai|Captive Audience|Jhin|Lotus Trap}}'' or damaged by '''Jhin''' or his allies, are ''Caught Out'' for 4 seconds.",
         "{{sbc|Active:}} '''Jhin''' fires a shot in the target direction that deals {{as|physical damage}} to all enemies in a line until colliding with an enemy {{tip|champion}}. Deals 75% damage against non-champions.",
         "''Caught Out'' champions are also {{tip|root|rooted}}, granting '''Jhin''' {{ais|Whisper|Jhin|Every Moment Matters}} {{sti|ms|{{as|'''bonus''' movement speed}}}}."
       ],
@@ -410,7 +392,7 @@
         "{{sbc|Active:}} '''Jhin''' places a ''Lotus Trap'' at the target location which {{tip|Stealthed Trap|stealths}} and arms after a brief delay, lasting up to 180 seconds. The ''Lotus Trap'' blooms upon enemy contact, {{tip|sight|revealing}} enemies in the area for 4 seconds.",
         "Blooming ''Lotus Traps'' {{tip|slow}} enemies for 35% for 2 seconds before detonating, dealing {{as|magic damage}}. ''Lotus Traps'' deal 65% damage against non-champions and champions recently hit by one."
       ],
-      "notes": "* The ''Lotus Trap'' is {{tip|knockdown|knocked down}} when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.",
+      "notes": "* The ''Lotus Trap'' will stop upon encountering a {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30/35/40/45/50",

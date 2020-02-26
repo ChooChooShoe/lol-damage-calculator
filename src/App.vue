@@ -58,7 +58,7 @@ export default {
     SideBody,
     ChampionDiv,
     ChampionSpells,
-    SettingsModel,
+    // SettingsModel,
     // ShopModel,
     CustomDamageSource
   },

@@ -300,7 +300,7 @@
         30
       ],
       "costtype": "{{as|Health Per Second|health}}",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "[[Aura]]",
       "image": {
         "full": "BurningAgony.png",
         "sprite": "spell2.png",
@@ -311,7 +311,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, dealing {{as|magic damage}} to nearby enemies and gaining {{sti|30% Tenacity}}."
+        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies and gaining {{sti|30% Tenacity}}."
       ],
       "notes": "* As with all abilities with health costs, ''Burning Agony'' will not reduce Dr. Mundo's health below 1.\n** However this only happens once per ability cast. The ability will be put on a 1 second cooldown the next time his health is lower than the cost.",
       "skillkey": "W",
@@ -320,28 +320,31 @@
       "cooldownBurn": "4",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage Per Half-Second|{{ap|20 to 50}} {{as|(+ 10% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Half-Second</span>: <span><spell-span :list=\"['20','27.5','35','42.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|40/4 to 100/4}} {{as|(+ {{ap|20/4}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                20,
-                27.5,
-                35,
-                42.5,
-                50
-              ]
+                10,
+                13.75,
+                17.5,
+                21.25,
+                25
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.1
+                "player_total_ap": [
+                  0.05
+                ]
               }
             ],
             "st_slices": [
-              "Magic Damage Per Half-Second",
-              "<spell-span :list=\"['20','27.5','35','42.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>"
+              "Magic Damage",
+              "<spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -349,16 +352,18 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  20,
-                  27.5,
-                  35,
-                  42.5,
-                  50
+                  10,
+                  13.75,
+                  17.5,
+                  21.25,
+                  25
                 ],
-                "player_total_ap": 0.1
+                "player_total_ap": [
+                  0.05
+                ]
               },
-              "title": "Magic Damage Per Half-Second",
-              "str": "<spell-span :list=\"['20','27.5','35','42.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "magic"
             }
           ]

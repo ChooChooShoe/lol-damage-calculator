@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Short Fuse",
       "maxrank": 0,
-      "targeting": "Self",
+      "targeting": "[[Passive]]",
       "image": {
         "full": "ZiggsPassiveReady.png",
         "sprite": "passive4.png",
@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} '''Ziggs's''' [[basic attack]]s periodically deal {{as|{{pp|18|20|24|28|32|36|40|48|56|64|72|80|88|100|112|124|136|148|160|formula = 16+4 per level up to 6, then+8 per level up to 12, and then+12 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30 to 50|1 to 13}} AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, doubled to {{as|{{pp|18|40|48|56|64|72|80|96|112|128|144|160|176|200|224|248|272|296|320|formula = 32+8 per level up to 6, then+16 per level up to 12, and then+24 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30*2 to 50*2|1 to 13}} AP)}} against structures.",
         "'''Ziggs''' reduces ''Short Fuse's'' {{sti|cooldown}} by {{pp|3|showtype=true|4 to 6|1 to 13}} seconds whenever he uses an [[Champion ability|ability]]."
       ],
-      "notes": "* {{Pending for test}}: ''Short Fuse's'' interaction with {{ai|Counter Strike|Jax}}, {{ai|Riposte|Fiora}}, {{ai|Aegis Protection|Pantheon}}, and {{tip|blind}}.\n* ''Short Fuse'' will only apply to the primary target if ''Ziggs'' has purchased {{ii|Runaan's Hurricane}}.",
+      "notes": "* {{Pending for test}}: ''Short Fuse's'' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -103,8 +103,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ziggs''' throws a bouncing bomb to the target area, exploding upon contacting an enemy, the terrain or reaching the end of its trajectory. The bomb can bounce up to twice, the distance traveled each time based on how far it was originally thrown.",
-        "When exploding the ''Bouncing Bomb'' deals {{as|magic damage}} to all nearby enemies."
+        "{{sbc|Active:}} '''Ziggs''' throws a bouncing bomb to the target area, exploding upon hitting an enemy, colliding with terrain, or reaching the end of its trajectory. The bomb can bounce up to two times, the distance traveled each time based on how far it was originally thrown.",
+        "When exploding, the ''Bouncing Bomb'' deals {{as|magic damage}} to all nearby enemies."
       ],
       "notes": "* ''Bouncing Bomb'' obeys game physics (can be thrown or bounce over units/terrain if there is sufficient air time).\n* ''Bouncing Bomb'' may go over enemies without exploding (will do so if it lands against walls).\n* {{tip|Spell shield}} can block both the bomb's impact and its explosion (blocking the former will not prevent the latter).",
       "skillkey": "Q",
@@ -190,10 +190,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Ziggs''' flings an explosive charge towards the target area, {{tip|sight|revealing}} its surroundings, and exploding after 4 seconds or upon reactivation.",
-        "When exploding the ''Satchel Charge'' deals {{as|magic damage}} and {{tip|airborne|knocks back}} all surrounding enemies by 250 units. If '''Ziggs''' is within the explosion radius, he instead {{tip|dash|flies}} up to 500 units away while taking no damage in the process.",
+        "When exploding, the ''Satchel Charge'' deals {{as|magic damage}} and {{tip|airborne|knocks back}} all surrounding enemies by 250 units. If '''Ziggs''' is within the explosion radius, he instead {{tip|dash|flies}} up to 500 units away while taking no damage in the process.",
         "{{Cci|Satchel Charge Turret Explosion Indicator.png|border=false||{{sbc|Turret Explosion:}}}} ''Satchel Charge's'' explosion can demolish {{tip|turrets}} below a {{sti|health|{{as|'''percentile''' health}}}} threshold."
       ],
-      "notes": "* ''Satchel Charge'' will explode immediately after landing if reactivated mid-flight.\n* ''Satchel Charge's'' displacement obeys game physics (distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it).\n* ''Ziggs'' will not be displaced by ''Satchel Charge'' while {{si|Teleport|teleporting}} (will be while {{si|Recall|recalling}}, interrupting it in the process).",
+      "notes": "* ''Satchel Charge'' will explode immediately after landing if reactivated mid-flight.\n* ''Satchel Charge's'' distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it.\n* '''Ziggs''' will not be displaced by ''Satchel Charge'' while {{si|Teleport|teleporting}} but he will while {{si|Recall|recalling}}.\n* {{pending for test}}: ''Satchel Charge'' cannot be reactivated while {{tip|ground|grounded}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "65",
@@ -322,7 +322,7 @@
         "{{sbc|Active:}} '''Ziggs''' scatters a cluster of 11 proximity mines over the target area, lasting for up to 10 seconds.",
         "Mines explode on contact with an enemy, {{tip|slow|slowing}} them for {{fd|1.5}} seconds and dealing {{as|magic damage}}. Targets detonating more than one mine take 40% damage from subsequent mines."
       ],
-      "notes": "* ''Hexplosive Minefield'' grants {{tip|sight}} of the target area for a short duration (on-cast and when each mine explodes).\n* Each mine applies spell effects as area-of-effect despite dealing single-target damage.\n* {{tip|Spell shield}} will block a single mine's worth of damage.",
+      "notes": "* ''Hexplosive Minefield'' grants {{tip|sight}} of the target area for a short duration (on-cast and when each mine explodes).\n* {{tip|Spell shield}} will block a single instance of damage.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "70/80/90/100/110",
@@ -449,7 +449,7 @@
         "{{sbc|Active:}} '''Ziggs''' deploys his ultimate creation, the [[File:Mega Inferno Bomb Minimap.png|20px|link=]] ''Mega Inferno Bomb'', hurling it to the target area, granting {{tip|sight}} within a 350 unit radius as it travels.",
         "Upon reaching the target area, it explodes, dealing {{as|magic damage}} to all enemies caught in the blast, increased by 50% in the epicenter."
       ],
-      "notes": "* ''Mega Inferno Bomb'' can be blocked by {{cai|Wind Wall|Yasuo}} or {{cai|Unbreakable|Braum}} only at cast or at a certain angle upon landing.\n* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts from maximum range (reduced to 2 seconds when casting point blank).",
+      "notes": "* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts from maximum range (reduced to 2 seconds when casting point blank).\n* {{Pending for test}}: ''Mega Inferno Bomb'' can be blocked by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}} only at cast or at a certain angle upon landing.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} '''Shaco's''' [[basic attack]]s deal an additional {{pp|10 to 25}} {{as|(+ 15% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} when striking an enemy from behind. ''This damage can {{tip|critical strike|critically strike}}.''",
         "{{ai|Deceive|Shaco}} and {{ai|Two-Shiv Poison|Shaco}} also have additional effects when striking an enemy from behind."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* ''Backstab'' does not affect structures ([[turret]]s, [[inhibitor]]s, [[Nexus]]).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -91,7 +91,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Ground-targeted|Ground]]",
       "target_range": 400,
       "image": {
         "full": "Deceive.png",
@@ -108,7 +108,7 @@
         "''Deceive's'' {{tip|invisibility}} is not removed when '''Shaco''' casts {{ai|Hallucinate|Shaco}}, while casting {{ai|Jack in the Box|Shaco}} causes him to shimmer without removing it.",
         "{{sbc|{{ai|Backstab|Shaco}}:}} Guarantees the basic attack to {{tip|critical strike|critically strike}} for {{as|{{critical damage|30|100}} '''bonus''' physical damage}}."
       ],
-      "notes": "* ''Deceive's'' cast animation (an orange puff of smoke) can be seen by both teams through [[Sight|fog of war]].\n* {{si|Teleport}} can be used during the ''invisibility'' without cancelling it. However {{si|Recall}} cannot.",
+      "notes": "* ''Deceive's'' cast animation (an orange puff of smoke) can be seen by both teams through [[Sight|fog of war]].\n* {{si|Teleport}} can be used during the ''invisibility'' without cancelling it. However {{si|Recall}} cannot.\n* {{Pending for test}}: Enhanced attack's interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -217,7 +217,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Ground-targeted|Ground]] / [[Auto-targeted|Auto]]",
       "target_range": 425,
       "image": {
         "full": "JackInTheBox.png",
@@ -229,12 +229,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Shaco''' summons a ''Jack in the Box'' at the target location, lasting for up to 40 {{as|(+ 5% AP)}} seconds. The ''box'' arms after a 2 second delay, becoming {{tip|Stealthed trap|stealthed}} and {{tip|untargetable}}.",
-        "Triggering the ''box'' will {{tip|stun|startle}} nearby enemies for {{fd|0.5}} seconds as well as cause them to turn and {{tip|flee}} for 2 seconds, reduced against champions. While fleeing, minions and monsters have a static 60 {{sti|movement speed}} and champions have a static 100 {{sti|movement speed}}.",
-        "Once triggered, the ''box'' will also become targetable and start automatically firing at all nearby {{tip|sight|visible}} enemies, dealing {{tip|magic damage|{{as|magic damage}}}} with each attack, reduced by 50% against {{tip|turrets|structures}}. If the ''box'' attacks only one unit, it deals increased damage.",
-        "''The box stays active for 5 seconds or until destroyed, independently from its remaining inactive duration.''"
+        "{{sbc|Active:}} '''Shaco''' summons a ''Jack in the Box'' at the target location, lasting for up to 40 {{as|(+ 5% AP)}} seconds. The ''box'' arms after a 2 second delay, becoming {{tip|Stealthed trap|stealthed}} and {{tip|untargetable}} to enemies.",
+        "Triggering the ''box'' will {{tip|stun|startle}} nearby enemies for {{fd|0.5}} seconds as well as cause them to turn and {{tip|flee}} for 2 seconds, reduced against champions. While fleeing, {{tip|minion|minions}} and {{tip|monster|monsters}} have a static 60 {{sti|movement speed}} and {{tip|champion|champions}} have a static 100 {{sti|movement speed}}.",
+        "Once triggered, the ''box'' will also become targetable and automatically starts firing every {{fd|0.5}} seconds at all nearby {{tip|sight|visible}} enemies, dealing {{tip|magic damage|{{as|magic damage}}}} with each attack, reduced by 50% against {{tip|turrets|structures}}. If the ''box'' attacks only one unit, it deals increased damage.",
+        "''The box can attack up to 10 times and stays active for 5 seconds or until destroyed, independently from its remaining inactive duration.''"
       ],
-      "notes": "* The ''flee'' starts at the same time as the ''startle'', but since the target cannot move while ''startled'' the effective duration of the ''flee'' is reduced by the ''startle's''.\n* ''Static movement speed'' cannot be modified (e.g. with [[slow resist]] or {{si|Ghost}}).\n** This effect is negated only if the target is fully ''Slow Immune'' (i.e {{cai|Highlander|Master Yi}}, {{ci|Shadow Assassin|Kayn - Shadow Assassin's}} {{ai|Shadow Step A|Kayn|Shadow Step}}).\n* Upon becoming ''stealthed'', the ''box'' creates a puff of smoke and a distinct sound that can be detected through [[Sight|fog of war]].",
+      "notes": "* The ''box'' applies {{tip|persistent damage}} to enemies in an {{tip|area of effect}} range.\n* The ''flee'' starts at the same time as the ''startle'', but since the target cannot move while ''startled'' the effective duration of the ''flee'' is reduced by the ''startle's''.\n* ''Static movement speed'' cannot be modified (e.g. with {{stil|slow resist}} or {{si|Ghost}}).\n** This effect is negated only if the target is fully [[Slow resist#Slow Immunity|slow immune]].\n* Upon becoming {{tip|invisibility|stealthed}}, the ''box'' creates a puff of smoke and a distinct sound that can be detected through the [[Sight|fog of war]].",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
@@ -528,7 +528,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "[[Self-targeted|Self]] / [[Ground-targeted|Ground]]",
       "image": {
         "full": "HallucinateFull.png",
         "sprite": "spell10.png",
@@ -539,12 +539,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast:}} '''Shaco''' {{tip|vanish|vanishes}} for {{fd|0.5}} seconds and then {{tip|blink|blinks}} in the {{tt|target direction|200 units}} while creating a ''Hallucination'' of himself that ''blinks'' in the {{tt|opposite direction|200 units}}, remaining within [[tether]] range of him as a controllable [[Champion summoned units|pet]] for up to 18 seconds.",
+        "{{sbc|First Cast:}} '''Shaco''' {{tip|vanish|vanishes}} for {{fd|0.5}} seconds and then {{tip|blink|blinks}} in the {{tt|target direction|200 units}} while creating a [[decoy|clone]] of himself that ''blinks'' in the {{tt|opposite direction|200 units}}, remaining within [[tether]] range of him as a controllable {{tip|pet}} for up to 18 seconds.",
         "{{sbc|Second Cast:}} While the ''Hallucination'' is active, ''Hallucinate'' can be used to move it to the target location.",
-        "When the ''Hallucination'' dies or expires, it explodes, dealing {{as|magic damage}} to enemy units around it and leaving three {{ai|Jack in the Box|Shaco|mini-boxes}} behind which activate instantly, {{tip|flee|fearing}} nearby enemies for 1 second.",
-        "The three boxes possess ''Jack in the Box's'' effects, except they have a doubled, but shared health, and deal modified {{as|magic damage}} with each attack, increased if attacking a single unit."
+        "When the ''Hallucination'' [[death|dies]] or expires, it explodes, dealing {{as|magic damage}} to enemy units around it and leaving three {{ai|Jack in the Box|Shaco|mini-boxes}} behind which activate instantly, causing nearby enemies to {{tip|flee}} for 1 second.",
+        "The three boxes possess ''Jack in the Box's'' effects, except they have a doubled, but shared {{sti|health|{{as|health}}}}, and deal modified {{as|magic damage}} with each attack, increased if attacking a single unit."
       ],
-      "notes": "* '''Shaco''' and the ''Hallucination'' will face each other the moment of their appearance.",
+      "notes": "* '''Shaco''' and the ''Hallucination'' will face each other the moment of their appearance.\n* The clone uses {{tip|pet damage}}.\n* The ''Hallucination's '' explosion applies {{tip|area damage}}.\n* The summoned ''boxes'' deal {{tip|persistent damage}} in an {{tip|area of effect}} range.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
