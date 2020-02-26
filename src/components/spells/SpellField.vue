@@ -1,33 +1,47 @@
 
 <template>
-  <div class="flex flex-row">
-    <span>
-      {{ prefex }}
-      <span :class="color">{{ displayValue }} {{ sufex }}</span>
-    </span>
-    <input
-      class="input block numinput"
-      type="number"
-      step="1"
-      title
-      :value="encode()"
-      v-on:input="$emit('input', decode($event.target.value))"
-    />
-    <span class="inline">{{ ispercent ? '%' : ' ' }}</span>
-    <span v-if="removable" class="inline">✕</span>
+  <div class="field is-horizontal">
+    <div class="field-label is-small">
+      <span>
+        {{ prefex }}
+        <span :class="color">{{ displayValue }} {{ sufex }}</span>
+      </span>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <input
+            class="input block numinput"
+            type="number"
+            step="1"
+            title
+            :value="encode()"
+            v-on:input="$emit('input', decode($event.target.value))"
+          />
+          <!-- <span class="inline">{{ ispercent ? '%' : ' ' }}</span> -->
+          <span v-if="removable" class="inline">✕</span>
+        </div>
+      </div>
+      <div class="control" :class="[ isValid ? 'is-hidden' : '' ]">
+        <span class="tag is-warning is-light">{{ invalidMsg }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import {spell_ratios } from '../../javascript/league_data';
+import { spell_ratios } from "../../javascript/league_data";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "spell-field",
   props: ["value", "type", "ispercent", "spellrankindex"],
   data: function() {
-    return { };
+    return {
+      isValid: true,
+      invalidMsg: '',
+    };
   },
   computed: {
     prefex: function() {
@@ -70,7 +84,7 @@ export default {
       if (Array.isArray(this.value)) {
         Vue.set(this.value, this.spellrankindex, decoded);
         return this.value;
-      } 
+      }
       return decoded;
     }
   }

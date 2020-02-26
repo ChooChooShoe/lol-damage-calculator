@@ -3,108 +3,122 @@
     class="container float-clear spell-effect"
     @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
   >
-    <form autocomplete="off" class="flex flex-row flex-wrap flex-top">
-      <h4>Custom Effect {{ (this.effectindex + 10).toString(36).toUpperCase() }}</h4>
-      <input
-        name="remove_effect"
-        class="inline float-right"
-        type="button"
-        value="Remove"
-        @click="removeEffect()"
-      />
+    <div>
+      <h4 class="title is-4">
+        Effect {{ (this.index + 10).toString(36).toUpperCase() }}
+        <input
+          name="remove_effect"
+          class="button is-danger is-pulled-right"
+          type="button"
+          value="Remove"
+          @click="removeEffect()"
+        />
+      </h4>
       <div class="field column">
-        <label>
-          Damage Type
-          <select v-model="damage_type" name="damage_type" class="input">
-            <option value="none" class="true">No Damage</option>
-            <option value="unknown" class="mixed">Unknown Damage</option>
-            <option value="physical" class="ad">Physical Damage</option>
-            <option value="magic" class="ap">Magic Damage</option>
-            <option value="true" class="true">True Damage</option>
-          </select>
-        </label>
+        <div class="field">
+          <span class="field-label">Damage Type:</span>
+          <div class="field-body tabs is-left is-toggle">
+            <ul>
+              <li :class=" { 'is-active': damage_type === 'none' }">
+                <a @click="damage_type = 'none'">None</a>
+              </li>
+              <li :class=" { 'is-active': damage_type === 'physical' }">
+                <a @click="damage_type = 'physical'" class="ad">Physical</a>
+              </li>
+              <li :class=" { 'is-active': damage_type === 'magic' }">
+                <a @click="damage_type = 'magic'" class="ap">Magic</a>
+              </li>
+              <li :class=" { 'is-active': damage_type === 'true' }">
+                <a @click="damage_type = 'true'">True</a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <spell-field
           v-for="(item, key) in ratios"
           :key="'ratio-'+key"
           :type="item.key"
-          :spellrankindex="spellrankindex"
+          :spellrankindex="0"
           :ispercent="item.ispercent"
           v-model="item.value"
         ></spell-field>
-        <input class="inline dropbutton" type="button" value="Add Ratio+" />
-        <div :class="showRatiosDropdown ? '' : 'hidden'">
+        <input class="inline dropbutton button is-primary" type="button" value="Add Ratio+" />
+        <div :class="showRatiosDropdown ? '' : 'is-hidden'">
           <template v-for="(r,i) in spell_ratios">
-            <span :key="i" v-if="!r.extra && ratios[i]    === undefined"
+            <span
+              :key="i"
+              v-if="!r.extra && ratios[i]    === undefined"
               :class="'simple-link ' + r.color"
               @click="addRatio(i)"
             >{{ r.prefex }} {{ r.sufex }} {{ r.ispercent == false ? 'Ratio' : ''}}</span>-
           </template>
         </div>
       </div>
-      <div style="width: 100%;height: 1.4em;"></div>
 
       <div v-if="doesDoDamage">
-      <div class="column">
-        This effect will deal {{Math.round(dmg_premitigation_for_one)}}
-        <span
-          v-html="damage_type_user"
-        ></span> before resistances
-        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
-        <br />This damage will cause the target to
-        <span
-          class="spelleffect"
-        >lose {{Math.round(dmg_onhit_for_one)}} health</span>
-        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+        <div class="column">
+          This effect will deal {{Math.round(dmg_premitigation_for_one)}}
+          <span
+            v-html="damage_type_user"
+          ></span> before resistances
+          <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+          <br />This damage will cause the target to
+          <span
+            class="spelleffect"
+          >lose {{Math.round(dmg_onhit_for_one)}} health</span>
+          <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+        </div>
+        <label class="column">
+          This effect will hit
+          <input
+            type="number"
+            value="1"
+            v-model.number="repeat"
+            class="simple-input"
+          />
+          time{{ repeat === 1 ? '' : 's' }}.
+          <input
+            :active="repeat === 1"
+            type="button"
+            class="simple-btn"
+            value="1x"
+            @click="repeat = 1"
+          />
+          <input
+            :active="repeat === 2"
+            type="button"
+            class="simple-btn"
+            value="2x"
+            @click="repeat = 2"
+          />
+          <input
+            :active="repeat === 5"
+            type="button"
+            class="simple-btn"
+            value="5x"
+            @click="repeat = 5"
+          />
+          <input
+            :active="repeat === 10"
+            type="button"
+            class="simple-btn"
+            value="10x"
+            @click="repeat = 10"
+          />
+        </label>
+        <div v-if="repeat != 1" class="column">
+          In total, this effect deals {{Math.round(dmg_premitigation)}}
+          <span
+            v-html="damage_type_user"
+          ></span> before resistances.
+          <br />This damage will cause the target to
+          <span
+            class="spelleffect"
+          >lose {{Math.round(dmg_onhit)}} health</span>.
+        </div>
       </div>
-      <label class="column">
-        This effect will hit
-        <input
-          type="number"
-          value="1"
-          v-model.number="repeat"
-          class="simple-input"
-        />
-        time{{ repeat === 1 ? '' : 's' }}.
-        <input
-          :active="repeat === 1"
-          type="button"
-          class="simple-btn"
-          value="1x"
-          @click="repeat = 1"
-        />
-        <input
-          :active="repeat === 2"
-          type="button"
-          class="simple-btn"
-          value="2x"
-          @click="repeat = 2"
-        />
-        <input
-          :active="repeat === 5"
-          type="button"
-          class="simple-btn"
-          value="5x"
-          @click="repeat = 5"
-        />
-        <input
-          :active="repeat === 10"
-          type="button"
-          class="simple-btn"
-          value="10x"
-          @click="repeat = 10"
-        />
-      </label>
-      <div v-if="repeat != 1" class="column">
-        In total, this effect deals {{Math.round(dmg_premitigation)}}
-        <span v-html="damage_type_user"></span> before resistances.
-        <br />This damage will cause the target to
-        <span
-          class="spelleffect"
-        >lose {{Math.round(dmg_onhit)}} health</span>.
-      </div>
-      </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -118,7 +132,7 @@ import Vue from "vue";
 import SpellField from "./SpellField.vue";
 
 export default {
-  props: ["spell", "effectindex", "spellrankindex"],
+  props: ["index"],
   name: "CustomSpellEffects",
   components: {
     SpellField
@@ -141,7 +155,7 @@ export default {
       return ["magic", "physical", "true"].includes(this.damage_type);
     },
     spell_ratios: function() {
-      return spell_ratios
+      return spell_ratios;
     },
     damage_type_user: function() {
       switch (this.damage_type) {
@@ -201,16 +215,16 @@ export default {
       });
     },
     removeEffect: function() {
-      const index = this.effectindex;
+      const idx = this.index;
       this.$parent.customEffects = this.$parent.customEffects.filter(
-        i => i !== index
+        i => i !== idx
       );
     },
     ratioValue(ratio) {
       if (this.ratios[ratio]) {
         const r = this.ratios[ratio];
         if (Array.isArray(r.value)) {
-          return r.value[this.spellrankindex];
+          return r.value[0];
         }
         return r.value;
       }

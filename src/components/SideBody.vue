@@ -1,117 +1,90 @@
 <template>
-    <div class="data_holder sidebar" id="total_data">
-      <h2 class="title_input">Damage Totals & Outputs</h2>
-      <form autocomplete="off" id="total_data_form" v-cloak>
-        <div class="fill">
-          <h4>Damage before Resistances</h4>
-          <div class="damage-dealt-chart">
-            <div
-              class="physical-bg"
-              :title="percentf(output.preMagicDmg / output.preTotalDmg) + ' Physical'"
-              :style="outputStyle[0]"
-            ></div>
-            <div
-              class="magic-bg"
-              :title="percentf(output.prePhysicalDmg / output.preTotalDmg) +' Magic'"
-              :style="outputStyle[1]"
-            ></div>
-            <div
-              class="true-bg"
-              :title="percentf(output.trueDmg / output.preTotalDmg) +' True'"
-              :style="outputStyle[2]"
-            ></div>
-          </div>
-          <p>
-            {{ rnd(output.preMagicDmg) }}
-            <span class="magic-damage">Magic Damage</span>
-            dealt. {{ percentf(output.preMagicDmg / output.preTotalDmg) }}
-          </p>
-          <p>
-            {{ rnd(output.prePhysicalDmg) }}
-            <span class="physical-damage">Physical Damage</span>
-            dealt. {{ percentf(output.prePhysicalDmg / output.preTotalDmg) }}
-          </p>
-          <p>
-            {{ rnd(output.trueDmg) }}
-            <span class="true-damage">True Damage</span>
-            dealt. {{ percentf(output.trueDmg / output.preTotalDmg) }}
-          </p>
-          <p style="font-weight: bold;">
-            <span>Total Damage</span>
-            dealt: {{ rnd(output.preTotalDmg) }}
-          </p>
+  <div class="sidebar column is-one-quarter">
+    <h1 class="title is-4">Damage Totals &amp; Outputs</h1>
+    <h2 class="subtitle is-5">Damage before Resistances</h2>
+    <div class="damage-dealt-chart">
+      <div class="magic-bg" :title="outPes[0] + ' Magic'" :style="outStyle[0]">{{ outPes[0] }}</div>
+      <div class="physical-bg" :title="outPes[1]  +' Physical'" :style="outStyle[1]">{{ outPes[1] }}</div>
+      <div class="true-bg" :title="outPes[2]  +' True'" :style="outStyle[2]">{{ outPes[2] }}</div>
+    </div>
+    <p>
+      {{ rnd(output.preMagicDmg) }}
+      <span class="magic-damage">Magic Damage</span>
+      dealt. {{ percentf(output.preMagicDmg / output.preTotalDmg) }}
+    </p>
+    <p>
+      {{ rnd(output.prePhysicalDmg) }}
+      <span class="physical-damage">Physical Damage</span>
+      dealt. {{ percentf(output.prePhysicalDmg / output.preTotalDmg) }}
+    </p>
+    <p>
+      {{ rnd(output.trueDmg) }}
+      <span class="true-damage">True Damage</span>
+      dealt. {{ percentf(output.trueDmg / output.preTotalDmg) }}
+    </p>
+    <p style="font-weight: bold;">
+      <span>Total Damage</span>
+      dealt: {{ rnd(output.preTotalDmg) }}
+    </p>
 
-          <hr>
-          <h4>Damage Dealt to Target</h4>
-          <div class="damage-dealt-chart">
-            <div
-              class="physical-bg"
-              :title="percentf(output.magicDmg / output.totalDmg) + ' Physical'"
-              :style="outputStyle[3]"
-            ></div>
-            <div
-              class="magic-bg"
-              :title="percentf(output.physicalDmg / output.preTotalDmg) +' Magic'"
-              :style="outputStyle[4]"
-            ></div>
-            <div
-              class="true-bg"
-              :title="percentf(output.trueDmg / output.totalDmg) +' True'"
-              :style="outputStyle[5]"
-            ></div>
-          </div>
-          <p>
-            {{ rnd(output.magicDmg) }}
-            <span class="magic-damage">Magic Damage</span>
-            dealt. {{ percentf(output.magicDmg / output.totalDmg) }}
-          </p>
-          <p>
-            {{ rnd(output.physicalDmg) }}
-            <span class="physical-damage">Physical Damage</span>
-            dealt. {{ percentf(output.physicalDmg / output.totalDmg) }}
-          </p>
-          <p>
-            {{ rnd(output.trueDmg) }}
-            <span class="true-damage">True Damage</span>
-            dealt. {{ percentf(output.trueDmg / output.totalDmg) }}
-          </p>
-          <p style="font-weight: bold;">
-            <span>Total Damage</span>
-            dealt: {{ rnd(output.totalDmg) }}
-          </p>
-          <hr>
-          <h3>Target Status: {{ output.status }}</h3>
-          <p>Overkill Damage: {{ output.overkill }}</p>
-          <p>
-            Health Remaining:
-            <span class="health">{{ rnd(output.hpRemaining) }} HP</span>
-          </p>
-          <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
-          <hr>
-        </div>
-        <!-- <input type="button" name="force_recalc" onclick="recalc()" value="Force RE-Calc"> -->
-      </form>
-      <nav id="nav" class="flex navbar">
+    <hr />
+    <h2 class="subtitle is-5">Damage Dealt to Target</h2>
+    <div class="damage-dealt-chart">
+      <div class="magic-bg" :title="outPes[3] + ' Magic'" :style="outStyle[3]">{{ outPes[3] }}</div>
+      <div class="physical-bg" :title="outPes[4]  +' Physical'" :style="outStyle[4]">{{ outPes[4] }}</div>
+      <div class="true-bg" :title="outPes[5]  +' True'" :style="outStyle[5]">{{ outPes[5] }}</div>
+    </div>
+    <p>
+      {{ rnd(output.magicDmg) }}
+      <span class="magic-damage">Magic Damage</span>
+      dealt. {{ percentf(output.magicDmg / output.totalDmg) }}
+    </p>
+    <p>
+      {{ rnd(output.physicalDmg) }}
+      <span class="physical-damage">Physical Damage</span>
+      dealt. {{ percentf(output.physicalDmg / output.totalDmg) }}
+    </p>
+    <p>
+      {{ rnd(output.trueDmg) }}
+      <span class="true-damage">True Damage</span>
+      dealt. {{ percentf(output.trueDmg / output.totalDmg) }}
+    </p>
+    <p style="font-weight: bold;">
+      <span>Total Damage</span>
+      dealt: {{ rnd(output.totalDmg) }}
+    </p>
+    <hr />
+    <h3>Target Status: {{ output.status }}</h3>
+    <p>Overkill Damage: {{ output.overkill }}</p>
+    <p>
+      Health Remaining:
+      <span class="health">{{ rnd(output.hpRemaining) }} HP</span>
+    </p>
+    <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
+    <hr />
+    <nav id="nav" class="flex navbar is-hidden">
       <!-- <a class="inline" onclick="addNewSpellForm('magic')">
         Add Magic Damage Spell
       </a>
       <a class="inline" onclick="addNewSpellForm('physical')">
         Add Physical Damage Spell
-      </a> -->
-      <a class="inline" @click="openSettings()">
-        Settings...
-      </a>
+      </a>-->
+      <a class="inline" @click="openSettings()">Settings...</a>
       <!-- <a class="inline" onclick="load()">
         Load...
-      </a> -->
-      <div class="block version-select hidden">
+      </a>-->
+      <div class="block version-select is-hidden">
         <span>League Patch:</span>
         <select id="version_select" oninput="setPatchVersion(this.value);">
-          <option value=''>Loading Data...</option>
+          <option value>Loading Data...</option>
         </select>
       </div>
-      </nav>
+    </nav>
+
+    <div class="buttons">
+      <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -132,10 +105,24 @@ export default {
     },
     percentf: function(value) {
       return numeral(value).format("0.00%");
+    },
+    addCustomDamageSource() {
+      this.$app.addCustomDamageSource();
     }
   },
   computed: {
-    outputStyle: function() {
+    outPes: function() {
+      return [
+        this.percentf(this.output.preMagicDmg / this.output.preTotalDmg),
+        this.percentf(this.output.prePhysicalDmg / this.output.preTotalDmg),
+        this.percentf(this.output.trueDmg / this.output.preTotalDmg),
+
+        this.percentf(this.output.magicDmg / this.output.totalDmg),
+        this.percentf(this.output.physicalDmg / this.output.totalDmg),
+        this.percentf(this.output.trueDmg / this.output.totalDmg)
+      ];
+    },
+    outStyle: function() {
       const t = this.output.preTotalDmg;
       const p1 = this.output.preMagicDmg / t;
       const p2 = this.output.prePhysicalDmg / t;
@@ -235,3 +222,61 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.sidebar {
+  z-index: 700;
+  position: sticky;
+  top: 0;
+  overflow: auto;
+  float: right;
+}
+.main {
+  width: 70%;
+}
+
+@media (min-width: 880px) and (max-width: 1375px) {
+  .sidebar .fill > * {
+    width: 100%;
+  }
+}
+@media (max-width: 880px) {
+  .sidebar {
+    position: inherit;
+    width: 100%;
+  }
+  .main {
+    width: 100%;
+  }
+}
+
+.damage-dealt-chart {
+  position: relative;
+  height: 32px + 2px;
+  border: #1e8ad6 1px solid;
+}
+
+.damage-dealt-chart > div {
+  position: absolute;
+  text-align: center;
+  height: 32px;
+  line-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.true-bg {
+  background-color: #f9966b;
+}
+
+.physical-bg {
+  background-color: #bc6032;
+  color: whitesmoke;
+}
+
+.magic-bg {
+  background-color: teal;
+  color: black;
+}
+</style>

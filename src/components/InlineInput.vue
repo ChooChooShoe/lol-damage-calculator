@@ -36,7 +36,7 @@
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   props: ["dname", "value", "ispercent", "labelclass", "iconclass"],
-  name: "data-input",
+  name: "InlineInput",
   data: function() {
     return {
       isValid: true,
