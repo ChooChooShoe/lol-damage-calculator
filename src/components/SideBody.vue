@@ -235,12 +235,12 @@ export default {
   width: 70%;
 }
 
-@media (min-width: 880px) and (max-width: 1375px) {
-  .sidebar .fill > * {
-    width: 100%;
-  }
-}
-@media (max-width: 880px) {
+// @media (min-width: 769px) and (max-width: 1375px) {
+//   .sidebar .fill > * {
+//     width: 100%;
+//   }
+// }
+@media (max-width:769px) {
   .sidebar {
     position: inherit;
     width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="data_holder column">
+  <div class="data_holder column is-full is-half-desktop">
     <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
     <h2 class="title is-4">{{ spell.name }} ({{ spell.skillkey }})</h2>
     <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>

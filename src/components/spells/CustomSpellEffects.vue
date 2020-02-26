@@ -15,45 +15,18 @@
         />
       </h4>
       <div class="field column">
-        <div class="field">
-          <span class="field-label">Damage Type:</span>
-          <div class="field-body tabs is-left is-toggle">
-            <ul>
-              <li :class=" { 'is-active': damage_type === 'none' }">
-                <a @click="damage_type = 'none'">None</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'physical' }">
-                <a @click="damage_type = 'physical'" class="ad">Physical</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'magic' }">
-                <a @click="damage_type = 'magic'" class="ap">Magic</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'true' }">
-                <a @click="damage_type = 'true'">True</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <DamageTypeField v-model="damage_type"></DamageTypeField>
 
-        <spell-field
+        <SpellField
           v-for="(item, key) in ratios"
           :key="'ratio-'+key"
           :type="item.key"
           :spellrankindex="0"
           :ispercent="item.ispercent"
           v-model="item.value"
-        ></spell-field>
-        <input class="inline dropbutton button is-primary" type="button" value="Add Ratio+" />
-        <div :class="showRatiosDropdown ? '' : 'is-hidden'">
-          <template v-for="(r,i) in spell_ratios">
-            <span
-              :key="i"
-              v-if="!r.extra && ratios[i]    === undefined"
-              :class="'simple-link ' + r.color"
-              @click="addRatio(i)"
-            >{{ r.prefex }} {{ r.sufex }} {{ r.ispercent == false ? 'Ratio' : ''}}</span>-
-          </template>
-        </div>
+        ></SpellField>
+        <hr>
+        <AddRatioDropDown></AddRatioDropDown>
       </div>
 
       <div v-if="doesDoDamage">
@@ -130,12 +103,16 @@ import {
 } from "../../javascript/league_data";
 import Vue from "vue";
 import SpellField from "./SpellField.vue";
+import DamageTypeField from "./DamageTypeField.vue";
+import AddRatioDropDown from "./AddRatioDropDown.vue";
 
 export default {
   props: ["index"],
   name: "CustomSpellEffects",
   components: {
-    SpellField
+    SpellField,
+    DamageTypeField,
+    AddRatioDropDown
   },
   data: function() {
     return {

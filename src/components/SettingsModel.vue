@@ -130,7 +130,7 @@ footer {
   margin: 0;
 }
 
-@media all and (min-width: 725px) {
+@media all and (min-width: 769px) {
   .fixed-scroller {
     height: 55vh;
   }

@@ -1,9 +1,8 @@
 <template>
   <div
     class="container float-clear spell-effect"
-    @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
   >
-    <form autocomplete="off" class="flex flex-row flex-wrap flex-top">
+    <nav class="panel columns is-multiline">
       <div v-if="effect.subeffects.length > 1">
         <label>
           View A
@@ -36,7 +35,7 @@
           />
         </label>
       </div>
-      <div :class=" effect.subeffects.length > 1 ?'click' : ''" @click="toggleSubIndex">
+      <div class="column is-full" :class=" effect.subeffects.length > 1 ?'click' : ''" @click="toggleSubIndex">
         <span class="blue">{{ edata.title }}</span>
         <match-replace
           class="column effect-value"
@@ -45,50 +44,18 @@
         ></match-replace>
       </div>
       <div class="field column">
-        <div class="field">
-          <span class="field-label">Damage Type:</span>
-          <div class="field-body tabs is-left is-toggle">
-            <ul>
-              <li :class=" { 'is-active': damage_type === 'none' }">
-                <a @click="damage_type = 'none'" >None</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'physical' }">
-                <a @click="damage_type = 'physical'" class="ad">Physical</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'magic' }">
-                <a @click="damage_type = 'magic'" class="ap">Magic</a>
-              </li>
-              <li :class=" { 'is-active': damage_type === 'true' }">
-                <a @click="damage_type = 'true'">True</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <DamageTypeField v-model="damage_type"></DamageTypeField>
 
-        <spell-field
+        <SpellField
           v-for="(item, key) in ratios"
           :key="'ratio-'+key"
           :type="item.key"
           :spellrankindex="spellrankindex"
           :ispercent="item.ispercent"
           v-model="item.value"
-        ></spell-field>
-        <input
-          class="inline dropbutton button is-primary"
-          type="button"
-          value="Add Ratio+"
-          @click="showRatiosDropdown = true"
-        />
-        <div :class=" showRatiosDropdown ? '' : 'is-hidden'">
-          <template v-for="(r,i) in spell_ratios">
-            <span
-              :key="i"
-              v-if="!r.extra && ratios[i] === undefined"
-              :class="'simple-link ' + r.color"
-              @click="addRatio(i)"
-            >{{ r.prefex }} {{ r.sufex }} {{ r.ispercent == false ? 'Ratio' : ''}}</span>-
-          </template>
-        </div>
+        ></SpellField>
+        <hr>
+        <AddRatioDropDown></AddRatioDropDown>
       </div>
 
       <div v-if="doesDoDamage">
@@ -153,7 +120,7 @@
           >lose {{Math.round(dmg_onhit)}} health</span>.
         </div>
       </div>
-    </form>
+    </nav>
   </div>
 </template>
 
@@ -166,18 +133,21 @@ import {
 import Vue from "vue";
 import MatchReplace from "../MatchReplace.vue";
 import SpellField from "./SpellField.vue";
+import DamageTypeField from "./DamageTypeField.vue";
+import AddRatioDropDown from "./AddRatioDropDown.vue";
 
 export default {
   props: ["spell", "effect", "spellrankindex", "effectindex"],
   name: "spell-effects",
   components: {
     MatchReplace,
-    SpellField
+    SpellField,
+    DamageTypeField,
+    AddRatioDropDown
   },
   data: function() {
     return {
       damage_type: this.effect.subeffects[0].damage_type,
-      showRatiosDropdown: false,
       repeat: 1,
       subIndex: 0,
       ratios: {}
@@ -195,10 +165,6 @@ export default {
     },
     damage_type_user: function() {
       switch (this.damage_type) {
-        case "none":
-          return '<span class="true">no damage</span>';
-        case "unknown":
-          return '<span class="mixed">unknown damage</span>';
         case "physical":
           return '<span class="ad">physical damage</span>';
         case "magic":
@@ -206,7 +172,7 @@ export default {
         case "true":
           return '<span class="true">true damage</span>';
         default:
-          return "";
+          return '<span class="true">no damage</span>';
       }
     },
     dmg_onhit: function() {

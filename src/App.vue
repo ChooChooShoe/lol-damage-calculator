@@ -2,27 +2,21 @@
   <div id="app">
     <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
 
-    <div class="columns">
-      <!-- <SettingsModel ref="settings"></SettingsModel> -->
-      <div class="main column">
-        <ChampionDiv class="data_holder block small" userid="player" :isprimary="true"></ChampionDiv>
-        <ChampionDiv class="data_holder block small" userid="target" :isprimary="false"></ChampionDiv>
-        <champion-spells
-          v-for="obj in currentSpells"
-          :key="currentChamp+obj.key"
-          :id="obj.key"
-          :spell="obj.value"
-          :champion="currentChamp"
-        ></champion-spells>
+    <!-- <SettingsModel ref="settings"></SettingsModel> -->
+    <div class="columns is-multiline">
+      <ChampionDiv class="data_holder column is-full is-half-desktop" userid="player" :isprimary="true"></ChampionDiv>
+      <ChampionDiv class="data_holder column is-full is-half-desktop" userid="target" :isprimary="false"></ChampionDiv>
+      <champion-spells
+        v-for="obj in currentSpells"
+        :key="currentChamp+obj.key"
+        :id="obj.key"
+        :spell="obj.value"
+        :champion="currentChamp"
+      ></champion-spells>
 
-        <CustomDamageSource
-          v-for="i in customDamageSources"
-          :key="'CustomDamageSource'+i"
-          :index="i"
-        ></CustomDamageSource>
-        <div class="buttons">
-          <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
-        </div>
+      <CustomDamageSource v-for="i in customDamageSources" :key="'CustomDamageSource'+i" :index="i"></CustomDamageSource>
+      <div class="buttons">
+        <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
       </div>
     </div>
     <!-- <ShopModel v-if="config.shopEnabled" ref="shop"></ShopModel> -->
@@ -119,11 +113,11 @@ export default {
 
 <style>
 .data_holder {
-  /* width: 35em; */
+  /* width: 6000px; */
   /* max-width: 50em; */
-  margin: 3.5px auto;
+  /* margin: 3.5px auto; */
   border: 1px solid #1e8ad6;
-  /* background-color: #121a1b; */
+  background-color: #121a1b;
   padding: 5px;
 }
 </style>

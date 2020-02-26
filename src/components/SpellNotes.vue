@@ -1,10 +1,10 @@
 
 <template>
-  <div class="spell-notes float-clear">
+  <div class="spell-notes">
     <label class="lbl-toggle">
       <input v-model="isopen" class="is-hidden" type="checkbox" />
       More Info
-      <span class="blue" style="user-select: none;">[{{ isopen ? 'Hide' : 'Show'}}]</span>
+      <span class="blue" style="user-select: none;cursor: pointer;">[{{ isopen ? 'Hide' : 'Show'}}]</span>
     </label>
     <div class="collapsible-content" ref="content" :style="calcheight">
       <match-replace :text="text"></match-replace>

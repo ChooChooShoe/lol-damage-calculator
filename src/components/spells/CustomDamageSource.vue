@@ -1,5 +1,5 @@
 <template>
-  <div class="data_holder column">
+  <div class="data_holder column is-full is-half-desktop">
     <header class="title is-4">
       {{ title }}
       <input

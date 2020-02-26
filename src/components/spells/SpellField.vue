@@ -35,7 +35,7 @@ import { spell_ratios } from "../../javascript/league_data";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
-  name: "spell-field",
+  name: "SpellField",
   props: ["value", "type", "ispercent", "spellrankindex"],
   data: function() {
     return {
@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    encode(val) {
+    encode() {
       let v = this.value;
       if (Array.isArray(this.value)) {
         v = this.value[this.spellrankindex];

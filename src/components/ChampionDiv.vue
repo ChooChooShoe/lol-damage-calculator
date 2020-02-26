@@ -12,7 +12,7 @@
       </div>
     </div>
     <label class="label">Champion Level</label>
-    <div class="field is-grouped">
+    <div class="field">
       <div class="control">
         <input
           type="number"
