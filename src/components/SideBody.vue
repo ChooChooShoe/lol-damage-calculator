@@ -181,31 +181,36 @@ export default {
       }
 
       for (const spellEff of this.spellComponents) {
-        switch (spellEff.damage_type) {
-          case "physical":
-            output.preTotalDmg += spellEff.dmg_premitigation;
-            output.prePhysicalDmg += spellEff.dmg_premitigation;
-            output.totalDmg += spellEff.dmg_onhit;
-            output.physicalDmg += spellEff.dmg_onhit;
-            break;
-          case "magic":
-            output.preTotalDmg += spellEff.dmg_premitigation;
-            output.preMagicDmg += spellEff.dmg_premitigation;
-            output.totalDmg += spellEff.dmg_onhit;
-            output.magicDmg += spellEff.dmg_onhit;
-            break;
-          case "true":
-            output.preTotalDmg += spellEff.dmg_premitigation;
+        let sources = spellEff.damageSources;
+        if (!sources) {
+          sources = [spellEff];
+        }
 
-            output.totalDmg += spellEff.dmg_onhit;
-            output.trueDmg += spellEff.dmg_onhit;
-            break;
-          default:
-            break;
+        for (const damageSource of sources) {
+          let pre = damageSource.dmg_premitigation;
+          let post = damageSource.dmg_onhit;
+
+          output.preTotalDmg += pre;
+          output.totalDmg += post;
+          switch (damageSource.damage_type) {
+            case "physical":
+              output.prePhysicalDmg += pre;
+              output.physicalDmg += post;
+              break;
+            case "magic":
+              output.preMagicDmg += pre;
+              output.magicDmg += post;
+              break;
+            case "true":
+              output.trueDmg += post;
+              break;
+            default:
+              break;
+          }
         }
       }
 
-      const hp_diff = t.total_hp - output.totalDmg;
+      const hp_diff = t.current_hp - output.totalDmg;
       if (hp_diff < 0) {
         output.status = "Dead";
         output.hpRemaining = 0;
@@ -240,7 +245,7 @@ export default {
 //     width: 100%;
 //   }
 // }
-@media (max-width:769px) {
+@media (max-width: 769px) {
   .sidebar {
     position: inherit;
     width: 100%;

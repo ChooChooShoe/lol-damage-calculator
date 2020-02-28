@@ -111,17 +111,17 @@
 </template>
 
 <script>
-import MatchReplace from "./MatchReplace.vue";
-import SpellEffects from "./spells/SpellEffects.vue";
-import CustomSpellEffects from "./spells/CustomSpellEffects.vue";
-import SimpleTooltip from "./SimpleTooltip.vue";
-import SpellNotes from "./SpellNotes.vue";
-import SpellSpan from "./SpellSpan.vue";
-import { quickMatchReplace } from "../javascript/matchreplace";
-import { spriteBaseUri } from "../javascript/league_data";
+import MatchReplace from ".././MatchReplace.vue";
+import SpellEffects from "./SpellEffects.vue";
+import CustomSpellEffects from "./CustomSpellEffects.vue";
+import SimpleTooltip from ".././SimpleTooltip.vue";
+import SpellNotes from ".././SpellNotes.vue";
+import SpellSpan from ".././SpellSpan.vue";
+import { quickMatchReplace } from "../../javascript/matchreplace";
+import { spriteBaseUri } from "../../javascript/league_data";
 
 export default {
-  name: "champion-spells",
+  name: "ChampionSpellDamageSource",
   components: {
     MatchReplace,
     SpellEffects,
@@ -135,7 +135,7 @@ export default {
     return {
       spellrankindex: (this.spell.maxrank || 0) - 1,
       customEffects: [],
-      lastEffectIndex: 0
+      lastEffectIndex: 0,
     };
   },
   computed: {

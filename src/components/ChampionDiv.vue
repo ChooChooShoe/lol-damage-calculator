@@ -430,26 +430,32 @@
       <h3 class=" health title  is-4">
         Health
       </h3>
-      <div class="columns">
-        <div class="column">
-          <data-input v-model="base_hp" iconclass="health-icon">Base</data-input>
+      <div class="columns is-multiline">
+        <div class="column is-half">
+          <data-input v-model="base_hp" iconclass="health-icon" :readonly="true">Base</data-input>
         </div>
-        <div class="column">
+        <div class="column is-half">
           <data-input v-model="bonus_hp" iconclass="health-icon">Bonus</data-input>
         </div>
-        <div class="column">
-          <data-input v-model="total_hp" iconclass="health-icon">Total</data-input>
+        <div class="column is-half">
+          <data-input v-model="total_hp" iconclass="health-icon">Max</data-input>
         </div>
-        <div class="column">
+        <div class="column is-half">
           <data-input v-model="total_shield" iconclass="health-icon">Shield</data-input>
+        </div>
+        <div class="column is-full">
+          <data-input v-model="current_hp" iconclass="health-icon">Current HP</data-input>
+        </div>
+        <div class="column is-full">
+          <data-input v-model="missing_hp" iconclass="health-icon">Missing HP</data-input>
         </div>
       </div>
 
       <data-input class="is-hidden" v-model="total_hp" labelclass="health">Health</data-input>
       <ul v-if="showDefenceLevel  > 0">
         <li>
-          {{ rnd(base_hp) }} Base HP + {{ rnd(bonus_hp) }} Bonus HP =
-          {{ rnd(total_hp) }} Total HP
+          {{ rnd(base_hp) }} <b>base</b> HP + {{ rnd(bonus_hp) }} <b>bonus</b> HP =
+          {{ rnd(total_hp) }} max HP - {{ rnd(missing_hp) }} missing HP = {{ rnd(current_hp) }} current HP
         </li>
       <hr />
       </ul>

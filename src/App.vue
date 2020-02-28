@@ -6,13 +6,15 @@
     <div class="columns is-multiline">
       <ChampionDiv class="data_holder column is-full is-half-desktop" userid="player" :isprimary="true"></ChampionDiv>
       <ChampionDiv class="data_holder column is-full is-half-desktop" userid="target" :isprimary="false"></ChampionDiv>
-      <champion-spells
+
+      <AADamageSource></AADamageSource>
+      <ChampionSpellDamageSource
         v-for="obj in currentSpells"
         :key="currentChamp+obj.key"
         :id="obj.key"
         :spell="obj.value"
         :champion="currentChamp"
-      ></champion-spells>
+      ></ChampionSpellDamageSource>
 
       <CustomDamageSource v-for="i in customDamageSources" :key="'CustomDamageSource'+i" :index="i"></CustomDamageSource>
       <div class="buttons">
@@ -29,10 +31,11 @@ import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
 import ChampionDiv from "./components/ChampionDiv";
-import ChampionSpells from "./components/ChampionSpells.vue";
 // import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
 
+import AADamageSource from "./components/spells/AADamageSource.vue";
+import ChampionSpellDamageSource from "./components/spells/ChampionSpellDamageSource.vue";
 import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
 
 function loadLocalConfig() {
@@ -51,9 +54,10 @@ export default {
   components: {
     SideBody,
     ChampionDiv,
-    ChampionSpells,
+    ChampionSpellDamageSource,
     // SettingsModel,
     // ShopModel,
+    AADamageSource,
     CustomDamageSource
   },
   data: function() {

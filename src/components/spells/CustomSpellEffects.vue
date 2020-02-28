@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="container float-clear spell-effect"
-    @click="showRatiosDropdown = $event.target.matches('.dropbutton')"
-  >
+  <div class="container float-clear spell-effect">
     <div>
       <h4 class="title is-4">
         Effect {{ (this.index + 10).toString(36).toUpperCase() }}
@@ -99,7 +96,9 @@
 import numeral from "numeral";
 import {
   calcDamageWithRedection,
-  spell_ratios
+  spell_ratios,
+  DamageSource,
+  DamageType
 } from "../../javascript/league_data";
 import Vue from "vue";
 import SpellField from "./SpellField.vue";
@@ -117,7 +116,6 @@ export default {
   data: function() {
     return {
       damage_type: "magic",
-      showRatiosDropdown: false,
       ratios: {
         base_damage: { key: "base_damage", value: 0, ispercent: false },
         player_total_ap: { key: "player_total_ap", value: 0, ispercent: true },
@@ -261,6 +259,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

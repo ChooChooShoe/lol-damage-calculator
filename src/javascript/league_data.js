@@ -59,6 +59,7 @@ export async function fetchSingleChampFile(champId) {
 
     // Check cache first
     if (champId in singleChampFileCache) {
+        console.log('Returning singleChampFileCache', champId)
         return singleChampFileCache[champId];
     }
 
@@ -190,6 +191,8 @@ export function fetchStaticItems(callback) {
 function clampP(num) {
     return Math.max(0, Math.min(num, 1))
 }
+/// Takes in the damage and all reisstance of it's type.
+/// retuens the mingated damage delt.
 export function calcDamageWithRedection(damage, base, bonus, flat_reduction, percent_reduction, percent_pen, percent_bonus_pen, flat_pen) {
     // Flat Reduction is distuputed between base and bonus armor.
     const base_ratio = base / (base + bonus);
@@ -251,19 +254,69 @@ export function default_stats() {
 
 export const spell_ratios = {
     base_damage: { prefex: "Base Damage", color: "", sufex: "", extra: true, },
-    base_progression: { prefex: "Leveling", color: "", sufex: "", extra: true, },
-    player_total_ap: { color: "ap", sufex: "AP" },
-    player_total_ad: { color: "ad", sufex: "AD" },
-    player_bonus_ad: { color: "ad", sufex: "Bonus AD" },
-    player_total_hp: { color: "health", sufex: "Max Health" },
-    player_bonus_hp: { color: "health", sufex: "Bonus Health" },
-    player_missing_hp: { color: "health", sufex: "Missing Health" },
-    target_total_hp: { color: "health", sufex: "Target's Max Health" },
-    target_bonus_hp: { color: "health", sufex: "Target's Bonus Health" },
-    target_current_hp: { color: "health", sufex: "Target's Current Health" },
-    target_missing_hp: { color: "health", sufex: "Target's Missing Health" },
-    player_bonus_armor: { color: "armor", sufex: "Bonus Armor" },
-    player_total_armor: { color: "armor", sufex: "Armor" },
-    player_bonus_mr: { color: "mr", sufex: "Bonus Magic Resistance" },
-    player_total_mr: { color: "mr", sufex: "Magic Resistance" }
+    base_progression: { prefex: "Unknown", color: "", sufex: "", extra: true, },
+    player_total_ap: { prefex: '', color: "ap", sufex: "AP" },
+    player_total_ad: { prefex: '', color: "ad", sufex: "AD" },
+    player_bonus_ad: { prefex: '', color: "ad", sufex: "Bonus AD" },
+    player_total_hp: { prefex: '', color: "health", sufex: "Max Health" },
+    player_bonus_hp: { prefex: '', color: "health", sufex: "Bonus Health" },
+    player_missing_hp: { prefex: '', color: "health", sufex: "Missing Health" },
+    target_total_hp: { prefex: '', color: "health", sufex: "Target's Max Health" },
+    target_bonus_hp: { prefex: '', color: "health", sufex: "Target's Bonus Health" },
+    target_current_hp: { prefex: '', color: "health", sufex: "Target's Current Health" },
+    target_missing_hp: { prefex: '', color: "health", sufex: "Target's Missing Health" },
+    player_bonus_armor: { prefex: '', color: "armor", sufex: "Bonus Armor" },
+    player_total_armor: { prefex: '', color: "armor", sufex: "Armor" },
+    player_bonus_mr: { prefex: '', color: "mr", sufex: "Bonus Magic Resistance" },
+    player_total_mr: { prefex: '', color: "mr", sufex: "Magic Resistance" }
 };
+
+export const DamageType = {
+    PHYSICAL: 'physical',
+    MAGIC: 'magic',
+    TRUE: 'true',
+    NONE: 'none'
+}
+export class DamageSource {
+    damage_type = DamageType.MAGIC
+    dmg_premitigation = 0
+    dmg_onhit = 0
+
+    constructor(damage_type, amount) {
+        this.damage_type = damage_type;
+        this.dmg_premitigation = amount;
+    }
+    calc_dmg_onhit(p, t) {
+        switch (this.damage_type) {
+            case DamageType.PHYSICAL:
+                this.dmg_onhit = calcDamageWithRedection(
+                    this.dmg_premitigation,
+                    t.base_armor,
+                    t.bonus_armor,
+                    p.flat_armor_reduction,
+                    p.percent_armor_reduction,
+                    p.percent_armorpen,
+                    p.percent_bonus_armorpen,
+                    p.flat_armorpen
+                );
+                return 0;
+            case DamageType.MAGIC:
+                this.dmg_onhit = calcDamageWithRedection(
+                    this.dmg_premitigation,
+                    t.base_mr,
+                    t.bonus_mr,
+                    p.flat_mr_reduction,
+                    p.percent_mr_reduction,
+                    p.percent_magicpen,
+                    0,
+                    p.flat_magicpen
+                );
+                return 0;
+            case DamageType.TRUE:
+                this.dmg_onhit = this.amount;
+                return 0;
+            default:
+                return 1;
+        }
+    }
+}

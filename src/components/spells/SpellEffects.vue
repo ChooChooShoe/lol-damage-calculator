@@ -128,7 +128,9 @@
 import numeral from "numeral";
 import {
   calcDamageWithRedection,
-  spell_ratios
+  spell_ratios,
+  DamageSource,
+  DamageType
 } from "../../javascript/league_data";
 import Vue from "vue";
 import MatchReplace from "../MatchReplace.vue";

@@ -17,6 +17,7 @@
             :name="dname"
             :id="dname"
             :value="encode(value)"
+            :readonly="readonly"
             v-on:input="$emit('input', decode($event.target.value))"
           />
           <span class="icon is-small is-left">
@@ -35,7 +36,7 @@
 <script>
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
-  props: ["dname", "value", "ispercent", "labelclass", "iconclass"],
+  props: ["dname", "value", "ispercent", "labelclass", "iconclass", "readonly"],
   name: "data-input",
   data: function() {
     return {
