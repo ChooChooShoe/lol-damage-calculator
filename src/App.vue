@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SideBody :spellComponents="spellComponents" :player="player" :target="target"></SideBody>
+    <SideBody :damagingEffects="damagingEffects" :player="player" :target="target"></SideBody>
 
     <!-- <SettingsModel ref="settings"></SettingsModel> -->
     <div class="columns is-multiline">
@@ -66,7 +66,7 @@ export default {
       customDamageSources: [],
       lastCustomDamageSourcesIndex: 0,
       currentChamp: "None",
-      spellComponents: [],
+      damagingEffects: [],
       player: null,
       target: null,
       championList: {},
@@ -96,8 +96,8 @@ export default {
     },
     skillpoints_used: function() {
       let sum = 0;
-      for (const x in this.spellComponents) {
-        sum += this.spellComponents[x].spellrankindex + 1;
+      for (const x in this.damagingEffects) {
+        sum += (this.damagingEffects[x].spellrankindex || 0) + 1;
       }
       return sum;
     }

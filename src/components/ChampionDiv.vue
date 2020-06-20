@@ -548,7 +548,7 @@
 
 <script>
 import DataInput from "./DataInput.vue";
-import InlineInput from "./InlineInput.vue";
+// import InlineInput from "./InlineInput.vue";
 import SimpleTooltip from "./SimpleTooltip.vue";
 import ItemInventory from "./ItemInventory.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
@@ -557,7 +557,7 @@ export default {
   name: "ChampionDiv",
   components: {
     DataInput,
-    InlineInput,
+    // InlineInput,
     SimpleTooltip,
     ItemInventory
   },

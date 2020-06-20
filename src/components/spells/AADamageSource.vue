@@ -4,24 +4,48 @@
     <hr />
 
     <data-input v-model="attack_damage" labelclass="ad" iconclass="attack-damage-icon">Attack Damage</data-input>
-    <data-input v-model="onhit_magic_damage" labelclass="ap" iconclass="ap-icon">On-hit Magic</data-input>
+    <data-input v-model="ds_ph.dmg_premitigation" labelclass="ad" iconclass="attack-damage-icon">On-hit Physical</data-input>
+    <data-input v-model="ds_mg.dmg_premitigation" labelclass="ap" iconclass="ap-icon">On-hit Magic</data-input>
+
     <data-input
-      v-model="onhit_physical_damage"
-      labelclass="ad"
-      iconclass="attack-damage-icon"
-    >On-hit Physical</data-input>
-    <data-input v-model="onhit_true_damage" labelclass="true" iconclass="true-icon">On-hit True</data-input>
+      v-model="ds_tr.dmg_premitigation"
+      labelclass="true"
+      iconclass="true-icon"
+    >On-hit True</data-input>
 
     <div class="column">
       <span>Each basic attacks deals&nbsp;</span>
-      <span class="ad" title="Physical">{{ Math.round(attack_damage + onhit_physical_damage) }} /&nbsp;</span>
-      <span class="ap" title="Magic">{{ Math.round(onhit_magic_damage) }} /&nbsp;</span>
-      <span title="True">{{ Math.round(onhit_true_damage) }}</span>
-      <span>&nbsp;damage before resistances.</span>
+      <span class="ad" title="Basic Physical">{{ Math.round(attack_damage ) }}</span>
+      <span>&nbsp;damage, plus&nbsp;</span>
+      <span class="ad" title="Physical">{{ Math.round(ds_ph.dmg_premitigation) }}</span>
+      <span>&nbsp;/&nbsp;</span>
+      <span class="ap" title="Magic">{{ Math.round(ds_mg.dmg_premitigation) }}</span>
+      <span>&nbsp;/&nbsp;</span>
+      <span title="True">{{ Math.round(ds_tr.dmg_premitigation) }}</span>
+      <span>&nbsp;on-hit, before resistances.</span>
       <br />
-      <span>Target wil&nbsp;</span>
-      <span class="spelleffect">lose {{Math.round(dmg_onhit)}} health</span>
-      <span>&nbsp;per hit.</span>
+      <span>Total&nbsp;</span>
+      <span
+        class="spelleffect"
+      >{{Math.round(attack_damage +ds_ph.dmg_premitigation + ds_mg.dmg_premitigation + ds_tr.dmg_premitigation)}} damage</span>
+      <span>&nbsp;per auto attack, before resistances.</span>
+    </div>
+    <div class="column">
+      <span>The target takes&nbsp;</span>
+      <span class="ad" title="Basic Physical">{{ Math.round(ds_ad.dmg_postmitigation) }}</span>
+      <span>&nbsp;damage, plus&nbsp;</span>
+      <span class="ad" title="Physical">{{ Math.round(ds_ph.dmg_postmitigation) }}</span>
+      <span>&nbsp;/&nbsp;</span>
+      <span class="ap" title="Magic">{{ Math.round(ds_mg.dmg_postmitigation) }}</span>
+      <span>&nbsp;/&nbsp;</span>
+      <span title="True">{{ Math.round(ds_tr.dmg_postmitigation) }}</span>
+      <span>&nbsp;on-hit damage.</span>
+      <br />
+      <span>Total&nbsp;</span>
+      <span
+        class="spelleffect"
+      >{{Math.round(ds_ad.dmg_postmitigation +ds_ph.dmg_postmitigation + ds_mg.dmg_postmitigation + ds_tr.dmg_postmitigation)}} health lost</span>
+      <span>&nbsp;per auto attack.</span>
     </div>
     <label class="column">
       <span>AA&nbsp;</span>
@@ -35,20 +59,18 @@
       <input :active="repeat === 10" type="button" value="10x" @click="repeat = 10" />
     </label>
     <div class="column">
-      <span>In total, basic attacks deals ??? damage before resistances.</span>
+      <span>In total, auto attacks deal&nbsp;</span>
+      <span class="spelleffect">{{Math.round(ds_ph.dmg_postmitigation + ds_ph.dmg_postmitigation + ds_tr.dmg_postmitigation)}} daamge</span>
+      <span>&nbsp;per auto attack, before resistances.</span>
       <br />
       <span>Target will&nbsp;</span>
-      <span class="spelleffect">lose {{Math.round(dmg_onhit)}} health</span>.
+      <span class="spelleffect">lose {{Math.round(0)}} health</span>.
     </div>
   </div>
 </template>
 
 <script>
-import {
-  calcDamageWithRedection,
-  DamageSource,
-  DamageType
-} from "../../javascript/league_data";
+import { DamageSource, DamageType } from "../../javascript/league_data";
 import DataInput from "../DataInput.vue";
 
 export default {
@@ -63,19 +85,37 @@ export default {
       lastEffectIndex: 1,
       repeat: 1,
       ratios: {},
-      onhit_magic_damage: 0,
-      onhit_true_damage: 0,
-      onhit_physical_damage: 0
+      ds_ad: new DamageSource(DamageType.PHYSICAL, 0),
+      ds_ph: new DamageSource(DamageType.PHYSICAL, 0),
+      ds_mg: new DamageSource(DamageType.MAGIC, 0),
+      ds_tr: new DamageSource(DamageType.TRUE, 0)
     };
   },
   mounted: function() {
-    this.$app.spellComponents.push(this);
+    this.$app.damagingEffects.push(this);
+
+    // Sets this.ds_ad.dmg_premitigation to always be player.total_ad
+    // TODO: Kalista
+    let x = this.$app.player;
+    Object.defineProperty(this.ds_ad, "dmg_premitigation", {
+      get() {
+        return x.total_ad;
+      }
+    });
   },
   destroyed: function() {
-    const self = this;
-    this.$app.spellComponents = this.$app.spellComponents.filter(
-      el => el !== self
-    );
+    const index = this.$app.damagingEffects.indexOf(this);
+    if (index > -1) {
+      this.$app.damagingEffects.splice(index, 1);
+    }
+  },
+  watch: {
+    repeat: function(val,old) {
+      this.ds_ad.repeat = val;
+      this.ds_ph.repeat = val;
+      this.ds_mg.repeat = val;
+      this.ds_tr.repeat = val;
+    }
   },
   computed: {
     attack_damage: {
@@ -86,14 +126,8 @@ export default {
         this.$app.player.total_ad = value;
       }
     },
-
     damageSources() {
-      return [
-        new DamageSource(DamageType.PHYSICAL, this.attack_damage),
-        new DamageSource(DamageType.PHYSICAL, this.onhit_physical_damage),
-        new DamageSource(DamageType.MAGIC, this.onhit_magic_damage),
-        new DamageSource(DamageType.TRUE, this.onhit_true_damage)
-      ];
+      return [this.ds_ad, this.ds_ph, this.ds_mg, this.ds_tr];
     },
     damage_type_user: function() {
       switch (this.damage_type) {
@@ -109,89 +143,6 @@ export default {
           return '<span class="true">true damage</span>';
         default:
           return "";
-      }
-    },
-    dmg_onhit: function() {
-      return this.calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
-        this.dmg_premitigation
-      );
-    },
-    dmg_premitigation: function() {
-      return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
-    },
-    dmg_onhit_for_one: function() {
-      return this.calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
-        this.dmg_premitigation_for_one
-      );
-    },
-    dmg_premitigation_for_one: function() {
-      return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
-    }
-  },
-  methods: {
-    ratioValue(ratio) {
-      if (this.ratios[ratio]) {
-        const r = this.ratios[ratio];
-        if (Array.isArray(r.value)) {
-          return r.value[0];
-        }
-        return r.value;
-      }
-      return 0;
-    },
-    calc_dmg_premitigation: function(player, target) {
-      let damage = this.ratioValue("base_damage") || 0;
-      for (const key in this.ratios) {
-        if (key.startsWith("target")) {
-          let stat = target[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for target`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        } else if (key.startsWith("player")) {
-          let stat = player[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for player`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        }
-      }
-      return damage;
-    },
-    calc_dmg_onhit: function(p, t, damage) {
-      switch (this.damage_type) {
-        case "physical":
-          return calcDamageWithRedection(
-            damage,
-            t.base_armor,
-            t.bonus_armor,
-            p.flat_armor_reduction,
-            p.percent_armor_reduction,
-            p.percent_armorpen,
-            p.percent_bonus_armorpen,
-            p.flat_armorpen
-          );
-        case "magic":
-          return calcDamageWithRedection(
-            damage,
-            t.base_mr,
-            t.bonus_mr,
-            p.flat_mr_reduction,
-            p.percent_mr_reduction,
-            p.percent_magicpen,
-            0,
-            p.flat_magicpen
-          );
-        case "true":
-          return damage;
-        default:
-          return 0;
       }
     }
   }

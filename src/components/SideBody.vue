@@ -89,10 +89,10 @@
 
 <script>
 import numeral from "numeral";
-
+import { calc_dmg_onhit, DamageType } from "./../javascript/league_data"
 export default {
   name: "SideBody",
-  props: ["spellComponents", "player", "target"],
+  props: ["damagingEffects", "player", "target"],
   methods: {
     openSettings() {
       // this.$app.$refs.shop.visable = false;
@@ -160,6 +160,7 @@ export default {
       ];
     },
     output: function() {
+      console.log("Re-calc 4.0 start");
       const p = this.player;
       const t = this.target;
       let output = {
@@ -180,33 +181,45 @@ export default {
         return output;
       }
 
-      for (const spellEff of this.spellComponents) {
+      for (const spellEff of this.damagingEffects) {
+        // Use .damageSources for effects with more then one source.
         let sources = spellEff.damageSources;
         if (!sources) {
+          // Use spellEff as the source only if no .damageSources defined.
           sources = [spellEff];
         }
 
         for (const damageSource of sources) {
+          const times_hit = Math.max(damageSource.repeat, 0)
           let pre = damageSource.dmg_premitigation;
-          let post = damageSource.dmg_onhit;
+          let post = calc_dmg_onhit(p,t,pre,damageSource.damage_type);
+          damageSource.dmg_postmitigation = post;
 
-          output.preTotalDmg += pre;
-          output.totalDmg += post;
+          pre = pre * times_hit;
+          post = post * times_hit;
+
           switch (damageSource.damage_type) {
-            case "physical":
+            case DamageType.PHYSICAL:
               output.prePhysicalDmg += pre;
               output.physicalDmg += post;
               break;
-            case "magic":
+            case DamageType.MAGIC:
               output.preMagicDmg += pre;
               output.magicDmg += post;
               break;
-            case "true":
+            case DamageType.TRUE:
               output.trueDmg += post;
               break;
+            case DamageType.NONE:
+            case DamageType.UNKNOWN:
+              continue;
             default:
-              break;
+              console.log('Unknown Damage Type "',damageSource.damage_type,'" Caculations may be incorrect.')
+              continue;
           }
+          // Add totals if magic/phys/true damage
+          output.preTotalDmg += pre;
+          output.totalDmg += post;
         }
       }
 

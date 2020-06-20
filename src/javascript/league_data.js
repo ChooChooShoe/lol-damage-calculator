@@ -226,7 +226,40 @@ export function calcDamageWithRedection(damage, base, bonus, flat_reduction, per
     else
         return damage * (2 - (100 / (100 - defence)));
 }
-
+export function calc_dmg_onhit(player, target, dmg_premitigation, damage_type) {
+    switch (damage_type) {
+        case DamageType.NONE:
+        case DamageType.UNKNOWN:
+            return 0;
+        case DamageType.PHYSICAL:
+            return calcDamageWithRedection(
+                dmg_premitigation,
+                target.base_armor,
+                target.bonus_armor,
+                player.flat_armor_reduction,
+                player.percent_armor_reduction,
+                player.percent_armorpen,
+                player.percent_bonus_armorpen,
+                player.flat_armorpen
+            );
+        case DamageType.MAGIC:
+            return calcDamageWithRedection(
+                dmg_premitigation,
+                target.base_mr,
+                target.bonus_mr,
+                player.flat_mr_reduction,
+                player.percent_mr_reduction,
+                player.percent_magicpen,
+                0,
+                player.flat_magicpen
+            );
+        case DamageType.TRUE:
+            return dmg_premitigation;
+        default:
+            console.log('Unkown Damage Type',damage_type)
+            return 0;
+    }
+}
 export function default_stats() {
     return {
         hp: 0,
@@ -275,48 +308,28 @@ export const DamageType = {
     PHYSICAL: 'physical',
     MAGIC: 'magic',
     TRUE: 'true',
-    NONE: 'none'
+    NONE: 'none',
+    UNKNOWN: 'unknown'
 }
+/**
+ * A Single instance of damage.
+ */
 export class DamageSource {
+    /** See DamageType */ 
     damage_type = DamageType.MAGIC
-    dmg_premitigation = 0
-    dmg_onhit = 0
+    dmg_premitigation = -1
+    dmg_postmitigation = -1
+    repeat = 1
 
+    /**
+     * @param {string} damage_type One of 'physical', 'magic', 'true', or 'none'
+     * @param {number} amount The amount of preminigation damage delt.
+     */
     constructor(damage_type, amount) {
         this.damage_type = damage_type;
         this.dmg_premitigation = amount;
     }
-    calc_dmg_onhit(p, t) {
-        switch (this.damage_type) {
-            case DamageType.PHYSICAL:
-                this.dmg_onhit = calcDamageWithRedection(
-                    this.dmg_premitigation,
-                    t.base_armor,
-                    t.bonus_armor,
-                    p.flat_armor_reduction,
-                    p.percent_armor_reduction,
-                    p.percent_armorpen,
-                    p.percent_bonus_armorpen,
-                    p.flat_armorpen
-                );
-                return 0;
-            case DamageType.MAGIC:
-                this.dmg_onhit = calcDamageWithRedection(
-                    this.dmg_premitigation,
-                    t.base_mr,
-                    t.bonus_mr,
-                    p.flat_mr_reduction,
-                    p.percent_mr_reduction,
-                    p.percent_magicpen,
-                    0,
-                    p.flat_magicpen
-                );
-                return 0;
-            case DamageType.TRUE:
-                this.dmg_onhit = this.amount;
-                return 0;
-            default:
-                return 1;
-        }
+    calc_dmg_onhit(player,target) {
+        return this.dmg_postmitigation
     }
 }

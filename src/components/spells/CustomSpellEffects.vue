@@ -95,7 +95,7 @@
 <script>
 import numeral from "numeral";
 import {
-  calcDamageWithRedection,
+  calc_dmg_onhit,
   spell_ratios,
   DamageSource,
   DamageType
@@ -152,7 +152,8 @@ export default {
       return this.calc_dmg_onhit(
         this.$app.player,
         this.$app.target,
-        this.dmg_premitigation
+        this.dmg_premitigation,
+        this.damage_type
       );
     },
     dmg_premitigation: function() {
@@ -162,7 +163,8 @@ export default {
       return this.calc_dmg_onhit(
         this.$app.player,
         this.$app.target,
-        this.dmg_premitigation_for_one
+        this.dmg_premitigation_for_one,
+        this.damage_type
       );
     },
     dmg_premitigation_for_one: function() {
@@ -170,13 +172,13 @@ export default {
     }
   },
   mounted: function() {
-    this.$app.spellComponents.push(this);
+    this.$app.damagingEffects.push(this);
   },
   destroyed: function() {
-    const self = this;
-    this.$app.spellComponents = this.$app.spellComponents.filter(
-      el => el !== self
-    );
+    const index = this.$app.damagingEffects.indexOf(this);
+    if (index > -1) {
+      this.$app.damagingEffects.splice(index, 1);
+    }
   },
   methods: {
     toggleSubIndex: function() {
@@ -226,36 +228,6 @@ export default {
       }
       return damage;
     },
-    calc_dmg_onhit: function(p, t, damage) {
-      switch (this.damage_type) {
-        case "physical":
-          return calcDamageWithRedection(
-            damage,
-            t.base_armor,
-            t.bonus_armor,
-            p.flat_armor_reduction,
-            p.percent_armor_reduction,
-            p.percent_armorpen,
-            p.percent_bonus_armorpen,
-            p.flat_armorpen
-          );
-        case "magic":
-          return calcDamageWithRedection(
-            damage,
-            t.base_mr,
-            t.bonus_mr,
-            p.flat_mr_reduction,
-            p.percent_mr_reduction,
-            p.percent_magicpen,
-            0,
-            p.flat_magicpen
-          );
-        case "true":
-          return damage;
-        default:
-          return 0;
-      }
-    }
   }
 };
 </script>

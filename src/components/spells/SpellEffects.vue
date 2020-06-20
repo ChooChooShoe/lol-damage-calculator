@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="container float-clear spell-effect"
-  >
+  <div class="container float-clear spell-effect">
     <nav class="panel columns is-multiline">
       <div v-if="effect.subeffects.length > 1">
         <label>
@@ -35,7 +33,11 @@
           />
         </label>
       </div>
-      <div class="column is-full" :class=" effect.subeffects.length > 1 ?'click' : ''" @click="toggleSubIndex">
+      <div
+        class="column is-full"
+        :class=" effect.subeffects.length > 1 ?'click' : ''"
+        @click="toggleSubIndex"
+      >
         <span class="blue">{{ edata.title }}</span>
         <match-replace
           class="column effect-value"
@@ -54,21 +56,19 @@
           :ispercent="item.ispercent"
           v-model="item.value"
         ></SpellField>
-        <hr>
+        <hr />
         <AddRatioDropDown></AddRatioDropDown>
       </div>
 
       <div v-if="doesDoDamage">
         <div class="column">
-          This effect will deal {{Math.round(dmg_premitigation_for_one)}}
-          <span
-            v-html="damage_type_user"
-          ></span> before resistances
+          This effect will deal {{Math.round(dmg_premitigation)}}
+          <span v-html="damage_type_user"></span> before resistances
           <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
           <br />This damage will cause the target to
           <span
             class="spelleffect"
-          >lose {{Math.round(dmg_onhit_for_one)}} health</span>
+          >lose {{Math.round(dmg_postmitigation)}} health</span>
           <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
         </div>
         <label class="column">
@@ -110,14 +110,14 @@
           />
         </label>
         <div v-if="repeat != 1" class="column">
-          In total, this effect deals {{Math.round(dmg_premitigation)}}
+          In total, this effect deals {{Math.round(dmg_premitigation * repeat)}}
           <span
             v-html="damage_type_user"
           ></span> before resistances.
           <br />This damage will cause the target to
           <span
             class="spelleffect"
-          >lose {{Math.round(dmg_onhit)}} health</span>.
+          >lose {{Math.round(dmg_postmitigation * repeat)}} health</span>.
         </div>
       </div>
     </nav>
@@ -127,7 +127,7 @@
 <script>
 import numeral from "numeral";
 import {
-  calcDamageWithRedection,
+  calc_dmg_onhit,
   spell_ratios,
   DamageSource,
   DamageType
@@ -152,7 +152,8 @@ export default {
       damage_type: this.effect.subeffects[0].damage_type,
       repeat: 1,
       subIndex: 0,
-      ratios: {}
+      ratios: {},
+      dmg_postmitigation: -1
     };
   },
   computed: {
@@ -177,35 +178,18 @@ export default {
           return '<span class="true">no damage</span>';
       }
     },
-    dmg_onhit: function() {
-      return this.calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
-        this.dmg_premitigation
-      );
-    },
     dmg_premitigation: function() {
-      return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
-    },
-    dmg_onhit_for_one: function() {
-      return this.calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
-        this.dmg_premitigation_for_one
-      );
-    },
-    dmg_premitigation_for_one: function() {
       return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
     }
   },
   mounted: function() {
-    this.$app.spellComponents.push(this);
+    this.$app.damagingEffects.push(this);
   },
   destroyed: function() {
-    const self = this;
-    this.$app.spellComponents = this.$app.spellComponents.filter(
-      el => el !== self
-    );
+    const index = this.$app.damagingEffects.indexOf(this);
+    if (index > -1) {
+      this.$app.damagingEffects.splice(index, 1);
+    }
   },
   watch: {
     edata: {
@@ -277,36 +261,6 @@ export default {
         }
       }
       return damage;
-    },
-    calc_dmg_onhit: function(p, t, damage) {
-      switch (this.damage_type) {
-        case "physical":
-          return calcDamageWithRedection(
-            damage,
-            t.base_armor,
-            t.bonus_armor,
-            p.flat_armor_reduction,
-            p.percent_armor_reduction,
-            p.percent_armorpen,
-            p.percent_bonus_armorpen,
-            p.flat_armorpen
-          );
-        case "magic":
-          return calcDamageWithRedection(
-            damage,
-            t.base_mr,
-            t.bonus_mr,
-            p.flat_mr_reduction,
-            p.percent_mr_reduction,
-            p.percent_magicpen,
-            0,
-            p.flat_magicpen
-          );
-        case "true":
-          return damage;
-        default:
-          return 0;
-      }
     }
   }
 };

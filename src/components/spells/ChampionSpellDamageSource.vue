@@ -114,7 +114,7 @@
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 import CustomSpellEffects from "./CustomSpellEffects.vue";
-import SimpleTooltip from ".././SimpleTooltip.vue";
+// import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
 import { quickMatchReplace } from "../../javascript/matchreplace";
@@ -125,7 +125,7 @@ export default {
   components: {
     MatchReplace,
     SpellEffects,
-    SimpleTooltip,
+    // SimpleTooltip,
     SpellNotes,
     SpellSpan,
     CustomSpellEffects
