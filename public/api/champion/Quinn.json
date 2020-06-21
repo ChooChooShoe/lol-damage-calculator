@@ -1,6 +1,6 @@
 {
   "patch": "V3.03",
-  "changes": "9.4.1",
+  "changes": "10.9.1",
   "id": "Quinn",
   "name": "Quinn",
   "title": "Demacia's Wings",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Marksman",
-  "alttype": "Fighter",
+  "alttype": "Assassin",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -54,7 +54,7 @@
       "name": "Harrier",
       "maxrank": 0,
       "cooldown": "",
-      "targeting": "[[Passive]] / [[Auto-targeted|Auto]]",
+      "targeting": "Auto",
       "image": {
         "full": "Quinn_Passive.png",
         "sprite": "passive3.png",
@@ -65,11 +65,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''{{ci|Valor}}''' periodically marks a nearby visible enemy [[unit]] as '''Vulnerable''', {{tip|sight|revealing}} them for 4 seconds. Enemies hit by {{ai|Blinding Assault|Quinn}}, {{ai|Vault|Quinn}} and {{ai|Skystrike|Quinn}} will also be marked as '''Vulnerable'''.",
-        "'''Quinn's''' next [[basic attack]] against a '''Vulnerable''' target deals {{pp|10 to 95|color=physical damage}} {{as|(+ {{pp|key=%|16 to 50}} AD)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "''Harrier'' is disabled while {{ai|Behind Enemy Lines|Quinn}} is active and for a few seconds after a target's mark ends."
+        "{{sbc|Innate:}} '''{{ci|Valor}}''' marks a nearby visible enemy as {{color|#FFD300|Vulnerable}}, {{tip|sight|revealing}} them for 4 seconds. Enemies hit by {{ai|Blinding Assault|Quinn}}, {{ai|Vault|Quinn}} or {{ai|Skystrike|Quinn}} will also be marked as {{color|#FFD300|Vulnerable}}.",
+        "'''Quinn's''' next [[basic attack]] against a {{color|#FFD300|Vulnerable}} target consumes the mark and deals {{pp|10 to 95|color=physical damage}} {{as|(+ {{pp|key=%|16 to 50}} AD)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "''Harrier'' is placed on cooldown when the passive mark ends, or the mark is overwritten by an ability. An active ability mark will disable the next ''Harrier'' mark, then end with a 1-second cooldown before ''Harrier'' is enabled.",
+        "''Harrier'' is disabled while {{ai|Behind Enemy Lines|Quinn}} is active."
       ],
-      "notes": "* ''Harrier's'' targeting priority:\n*# Last unit hit (if it was a small minion it appears to select a different target).\n*# Lowest-health enemy champion.\n*# Lowest-health enemy minion.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* {{tip|critical strike|Critical strikes}} do not interact with ''Harrier's'' bonus damage.\n* As with most on-hit physical damage ''Harrier's'' bonus damage will apply {{sti|life steal}}.\n* ''Harrier'' is consumed but does no damage if the enhanced attack is {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or if '''Quinn''' is {{tip|blind|blinded}}.\n* ''Harrier's'' bonus damage will not affect structures even if '''Quinn''' is seen using its attack animation against them if the ensuing basic attack was the last one prior.\n* Basic attacks that are already in-flight will trigger and consume ''Harrier'' mark.\n* If a mark was originally applied by {{ai|Blinding Assault|Quinn}} or {{ai|Vault|Quinn}}, attacking that ''Vulnerable'' target will place ''Harrier's'' passive application on a 1 second cooldown instead of its full duration.",
+      "notes": "* ''Harrier's'' targeting priority:\n*# Last unit hit (if it was a small minion it appears to select a different target).\n*# Lowest-health enemy champion.\n*# Lowest-health enemy minion.\n* An ability mark will visually incur the short cooldown upon marking, but this does not prevent abilities from marking.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Harrier's'' bonus damage.\n* ''Harrier'' is consumed even if it is parried, the attack is negated in any case.\n* ''Harrier'' does not target enemy [[structures]].\n* '''Quinn's''' attacks that are already in-flight will trigger and consume the ''Harrier'' mark.\n* {{ai|Vault|Quinn}} applies a mark even if the {{tip|dash}} is {{tip|interrupt|interrupted}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -105,8 +106,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Quinn''' signals '''{{ci|Valor}}''' to fly forward in a line, stopping when he collides with a enemy unit, dealing {{as|physical damage}} to all nearby enemies and applying {{tip|nearsight}} to the target for {{fd|1.5}} seconds.",
-        "Non-[[champion]] targets are {{tip|disarm|disarmed}} instead for the same duration."
+        "{{sbc|Active:}} '''Quinn''' signals '''{{ci|Valor}}''' to fly forward in a line, stopping upon colliding with an enemy, dealing {{as|physical damage}} to all nearby enemies and applying {{tip|nearsight}} to the target for {{fd|1.75}} seconds, reducing their {{tip|sight}} radius to {{tt|330 units|Estimated}}.",
+        "Non-[[champion]] targets are {{tip|disarm|disarmed}} instead for the same duration.",
+        "''The nearsight persists through {{tip|death}}.''"
       ],
       "notes": "* No additional details.",
       "skillkey": "Q",
@@ -195,7 +197,7 @@
         0,
         0
       ],
-      "targeting": "[[Auto-targeted|Auto]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "QuinnW.png",
         "sprite": "spell9.png",
@@ -293,9 +295,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Quinn''' {{tip|dashes}} to the target unit, {{tip|airborne|knocking them back}}, dealing them {{as|physical damage}}, and {{tip|slow|slowing}} them by 50% which decays over {{fd|1.5}} seconds, before {{tip|dash|leaping back}} and landing 525 units away from them."
+        "{{sbc|Active:}} '''Quinn''' {{tip|dashes}} to the target enemy, {{tip|airborne|knocking them back}}, dealing them {{as|physical damage}}, and {{tip|slow|slowing}} them by 50% which decays over {{fd|1.5}} seconds, before {{tip|dash|leaping back}} and landing 525 units away from them."
       ],
-      "notes": "* '''Quinn''' will automatically attempt to attack the target once she completes ''Vault''.\n* Unlike its constant cast range ''Vault's'' bounce's can vary to allow '''Quinn''' to close or to make a gap between herself and the target (depending on casting position) or even to jump through a wall (if there is enough landing room on the other side).\n* '''Quinn''' will track and follow the target if they move through {{tip|dash|dashes}} and {{tip|blink|blinks}}.\n** This will not occur if the target is travelling to a very far distance (e.g, {{si|Recall}}, {{si|Teleport}}, {{ai|Stand United|Shen}}).",
+      "notes": "* '''Quinn''' will automatically attempt to attack the target once she completes ''Vault''.\n* The target will turn to face the opposite direction after being {{tip|airborne|knocked back}}.\n* Unlike its constant cast range ''Vault's'' bounce's can vary to allow '''Quinn''' to close or to make a gap between herself and the target (depending on casting position) or even to jump through a wall (if there is enough landing room on the other side).\n* '''Quinn''' will track and follow the target if they move through {{tip|dash|dashes}} and {{tip|blink|blinks}}.\n** This will not occur if the target is travelling to a very far distance (e.g, {{si|Recall}}, {{si|Teleport}}, {{ai|Stand United|Shen}}).\n* The target will be marked as {{color|#FFD300|Vulnerable}} even if the {{tip|dash}} is interrupted.\n* ''Vault'' can prevent an {{tip|unstoppable basic attack}} from affecting their target (the empowered attack is not consumed however).{{Bug}}",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
@@ -346,118 +348,6 @@
           ]
         }
       ]
-    },
-    "r1": {
-      "riotId": "QuinnR",
-      "name": "Behind Enemy Lines",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        100,
-        50,
-        0
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
-      "image": {
-        "full": "QuinnR.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 336,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Quinn''' {{tip|channels}} for 2 seconds. Upon completing it successfully, '''{{ci|Valor}}''' picks her up and they unite, increasing her {{sti|ms|{{as|{{tt|'''total''' movement speed|Increases base movement as well as bonus movement speed.}}}}}} and gaining the ability to use {{ai|Skystrike|Quinn}}.",
-        "Taking damage from champions, monsters, or {{tip|turrets}} while ''Behind Enemy Lines'' is active disables the {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds.",
-        "If you have a least one point in ''Behind Enemy Lines'', respawning or returning to the summoning platform will spawn '''{{ci|Valor}}'''."
-      ],
-      "notes": "* If '''Quinn''' uses {{ai|Vault|Quinn}} while ''Behind Enemy Lines'' is active, {{ai|Skystrike|Quinn}} will activate at her target's location after she bounces back.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "100/50/0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Total Movement Speed Increase|{{ap|70 to 130}}%}}",
-          "str": "<ul><li><span class=\"blue\">Total Movement Speed Increase</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                85,
-                100,
-                115,
-                130
-              ]
-            ],
-            "st_slices": [
-              "Total Movement Speed Increase",
-              "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  70,
-                  85,
-                  100,
-                  115,
-                  130
-                ]
-              },
-              "title": "Total Movement Speed Increase",
-              "str": "<spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "r2": {
-      "riotId": "QuinnR",
-      "name": "Skystrike",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
-      "costtype": "Cost",
-      "targeting": "[[Auto-targeted|Auto]]",
-      "image": {
-        "full": "QuinnR.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 336,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Quinn''' detaches from '''{{ci|Valor}}''', ending {{ais|Behind Enemy Lines|Quinn}} effects, and deals {{sti|attack damage|{{as|40% AD}}}} {{tip|physical damage|{{as|physical damage}}}} to all units around her.",
-        "Launching a [[basic attack]], {{ai|Blinding Assault|Quinn}}, or {{ai|Vault|Quinn}} during {{ai|Behind Enemy Lines|Quinn}} automatically activates ''Skystrike''."
-      ],
-      "notes": "* If '''Quinn''' uses {{ai|Vault|Quinn}} while {{ai|Behind Enemy Lines|Quinn}} is active, ''Skystrike'' will activate at her target's location after she bounces back.",
-      "skillkey": "R",
-      "skillid": "r2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": []
     }
   }
 }

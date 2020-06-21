@@ -1,6 +1,6 @@
 {
   "patch": "v1.0.0.98",
-  "changes": "9.17.1",
+  "changes": "10.10.1",
   "id": "Galio",
   "name": "Galio",
   "title": "the Colossus",
@@ -65,7 +65,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Galio's''' next [[basic attack]] deals {{pp|15 to 200|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}} {{as|(+ 60% '''bonus''' magic resistance)}} {{tip|magic damage|{{as|'''total''' magic damage}}}} to its target and all enemies around it.",
+        "{{sbc|Innate:}} '''Galio's''' next [[basic attack]] becomes an {{tip|unstoppable basic attack}} and deals {{pp|15 to 200|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}} {{as|(+ 60% '''bonus''' magic resistance)}} {{tip|magic damage|{{as|'''total''' magic damage}}}} to its target and all enemies around it.",
         "''Colossal Smash'' can {{tip|critical strike|critically strike}}, dealing {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' magic damage}} to all targets hit."
       ],
       "notes": "* {{ii|Sheen|Spellblade}} will also get converted to magic damage but will deal its damage only to the primary target.",
@@ -107,7 +107,7 @@
         "{{sbc|Active:}} '''Galio''' fires two windblasts that arc to either side before converging to the target area, dealing {{as|magic damage}} to all enemies they pass through.",
         "When the blasts meet, the gusts form a tornado that advances for 2 seconds, dealing {{as|magic damage}} every {{fd|0.5}} seconds to every enemy within, with the target's health ratio capped at 150 damage against {{tip|monsters}}."
       ],
-      "notes": "* ''Spell shields'' will block the gusts damage but not the tornado's.\n* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block each windblast individually.\n** The tornado will not form if only one windblast reaches the target location.",
+      "notes": "* Deals {{tip|spell damage}} on the gust and applies {{tip|persistent area damage}} for the tornado. \n* {{tip|Spell shield}} will block the gusts damage but not the tornado's.\n* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block each windblast individually.\n** The tornado will not form if only one windblast reaches the target location.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
@@ -187,226 +187,6 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "GalioW",
-      "name": "Shield of Durand",
-      "maxrank": 5,
-      "cooldown": [
-        16,
-        15,
-        14,
-        13,
-        12
-      ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
-      "image": {
-        "full": "GalioW.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 432,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} Upon learning ''Shield of Durand'' or after not taking damage for 12 seconds, '''Galio''' gains ''Anti-Magic Bulwark''.",
-        "{{sbc|Anti-Magic Bulwark:}} '''Galio''' gains a {{tip|shield}} that exclusively blocks {{as|magic damage}}.",
-        "{{sbc|First Cast:}} '''Galio''' {{ct|windup|charges|attack=false|cast=false|move=true|items=interrupts,true,,false|consume=true|spells=true,false,false,interrupts,interrupts|interrupts=death}} for up to 3 seconds, {{tip|ground|grounding}} and {{tip|slow|slowing}} himself by 15%, and gaining {{as|magic damage}} reduction and half of that amount as {{as|physical damage}} reduction. Charging increases ''Shield of Durand's'' radius, damage and {{tip|taunt}} duration.",
-        "{{sbc|Second Cast:}} '''Galio''' refreshes the damage reduction for 2 seconds, {{tip|taunt|taunts}} nearby enemies and sets their {{sti|ms|{{as|movement speed}}}} to a {{as|static 60|ms}} for {{pp|type=charge time|9|0.5 to 1.5|0 to 2|displayformula=0.5+(0.125 per 0.25 seconds charged).}} seconds.",
-        "Affected enemies take {{as|magic damage}}, increased by {{pp|type=charge time|9|key=%|0 to 200|0 to 2|displayformula=100%+(25% per 0.25 seconds charged).}}."
-      ],
-      "notes": "* ''Static movement speed'' means that the target is unable to modify it anymore (ex: with [[slow resist]] / {{ai|On the Hunt|Sivir}}).\n** This effect is negated only if the target is slow immune (ex: {{ai|Highlander|Master Yi}}).\n* After the second cast, there is a brief period where other spells can only be buffered.\n* '''{{Sbc|Possible Bug}}''': The ability key does not need to be held down when buffered in other abilities except from {{ai|Winds of War|Galio}}.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "50",
-      "cooldownBurn": "16/15/14/13/12",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage Shield|{{as|{{ap|8 to 20}}% of his '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Shield</span>: <span><span class=\"health\"><spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_hp": [
-                  0.08,
-                  0.11,
-                  0.14,
-                  0.17,
-                  0.2
-                ]
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Shield",
-              "<span class=\"health\"><spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "player_total_hp": [
-                  0.08,
-                  0.11,
-                  0.14,
-                  0.17,
-                  0.2
-                ]
-              },
-              "title": "Magic Damage Shield",
-              "str": "<span class=\"health\"><spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>",
-              "damage_type": "magic"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Magic Damage Reduction|{{ap|20 to 40}}% {{as|(+ 5% per 100 AP)}} {{as|(+ 8% per 100 '''bonus''' magic resistance)}}}}{{st|Physical Damage Reduction|{{ap|10 to 20}}% {{as|(+ {{fd|2.5}}% per 100 AP)}} {{as|(+ 4% per 100 '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Reduction</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 5% per 100 AP)</span> <span class=\"magic-resist\">(+ 8% per 100 <b>bonus</b> magic resistance)</span></span></li></ul><ul><li><span class=\"blue\">Physical Damage Reduction</span>: <span><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> <span class=\"magic-resist\">(+ 4% per 100 <b>bonus</b> magic resistance)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                20,
-                25,
-                30,
-                35,
-                40
-              ],
-              [
-                10,
-                12.5,
-                15,
-                17.5,
-                20
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 51
-              },
-              {
-                "player_bonus_mr": 81
-              },
-              {
-                "player_bonus_mr": 41
-              },
-              {
-                "player_total_ap": 0.025099999999999997
-              }
-            ],
-            "st_slices": [
-              "Physical Damage Reduction",
-              "<spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> <span class=\"magic-resist\">(+ 4% per 100 '''bonus''' magic resistance)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  20,
-                  25,
-                  30,
-                  35,
-                  40
-                ],
-                "player_total_ap": 0.025099999999999997,
-                "player_bonus_mr": 41
-              },
-              "title": "Physical Damage Reduction",
-              "str": "<spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> <span class=\"magic-resist\">(+ 4% per 100 '''bonus''' magic resistance)</span>",
-              "damage_type": "physical"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Minimum Magic Damage|{{ap|20 to 80}} {{as|(+ 30% AP)}}|Maximum Magic Damage|{{ap|20*3 to 80*3}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                20,
-                35,
-                50,
-                65,
-                80
-              ],
-              [
-                60,
-                105,
-                150,
-                195,
-                240
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              },
-              {
-                "player_total_ap": 0.9
-              }
-            ],
-            "st_slices": [
-              "Minimum Magic Damage",
-              "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
-              "Maximum Magic Damage",
-              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  20,
-                  35,
-                  50,
-                  65,
-                  80
-                ],
-                "player_total_ap": 0.3
-              },
-              "title": "Minimum Magic Damage",
-              "str": "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  60,
-                  105,
-                  150,
-                  195,
-                  240
-                ],
-                "player_total_ap": 0.3
-              },
-              "title": "Maximum Magic Damage",
-              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
-              "damage_type": "magic"
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "GalioE",
       "name": "Justice Punch",
@@ -426,7 +206,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "direction",
+      "targeting": "Direction",
       "target_range": 650,
       "image": {
         "full": "GalioE.png",
@@ -438,8 +218,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Galio''' steps backwards, and after {{fd|0.4}} seconds he {{tip|dash|dashes}} forward, though not through terrain.",
-        "He stops upon hitting an enemy champion, dealing them and all enemies along the way {{as|magic damage}}, while also {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds. Non-champions receive 50% reduced damage."
+        "{{sbc|Active:}} '''Galio''' steps backwards, and after the cast time he {{tip|dash|dashes}} forward, though not through terrain.",
+        "He stops upon hitting an enemy champion, dealing {{as|magic damage}} to them and all enemies along the way, while also {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds. Non-champions receive 50% reduced damage."
       ],
       "notes": "* '''Galio''' can cast movement effects during the ability, and buffers all other active effects.",
       "skillkey": "E",
@@ -548,9 +328,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Galio''' designates the target allied champion's location at the time of cast as his landing spot, {{tip|channels}} for {{fd|1.25}} seconds, and then becomes {{tip|untargetable}} and {{tip|dashes}} to them, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds."
+        "{{sbc|Active:}} '''Galio''' designates the target allied {{tip|champion|champion's}} location at the time of cast as his landing spot, granting {{ais|Shield of Durand 2|Galio|Shield of Durand}} passive {{as|magic damage}} {{tip|shield}} to himself and all allied champions in the area he casted it at for 5 seconds, and {{tip|channels}} for {{fd|2.75}} seconds.",
+        "After {{fd|1.25}} seconds, '''Galio''' becomes {{tip|untargetable}} and {{tip|cc-immune|crowd control immune}} then leaps into the air for {{tt|{{fd|0.85 seconds}}|Estimated}} before {{tip|dash|dashing}} to the location over {{tt|{{fd|0.25 seconds}}|Estimated}}, after which he lands, retaining the immunity for {{tt|{{fd|0.4 seconds}}|Estimated}} and dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{fd|0.75}} seconds."
       ],
-      "notes": "*'''Galio''' cannot cast ''Hero's Entrance'' on allies at long distances while {{tip|Nearsight|nearsighted}}.",
+      "notes": "* '''Galio''' cannot cast ''Hero's Entrance'' on allies he cannot {{tip|sight|see}} while {{tip|Nearsight|nearsighted}}.\n* '''Galio''' becomes targetable the moment he lands.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

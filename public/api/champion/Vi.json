@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.153",
-  "changes": "10.1.1",
+  "changes": "10.8.1",
   "id": "Vi",
   "name": "Vi",
   "title": "the Piltover Enforcer",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Fighter",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -103,12 +103,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast:}} '''Vi''' {{tip|channel|charges}} for up to 4 seconds to increase ''Vault Breaker's'' {{sti|range}}, speed, and damage over {{fd|1.25}} seconds. While charging, '''Vi''' is {{tip|pacify|pacified}} and {{tip|slow|slowed}} by 15%.",
-        "{{sbc|Second Cast:}} '''Vi''' {{tip|dashes}} in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies she passes through, increased by {{pp|type=channel time|11|key=%|0 to 100|0 to 1.25|round1=3|formula=10% per 0.125 seconds. ''This is capped at 1.25 seconds.''}}.",
-        "'''Vi''' stops upon colliding with an enemy champion, {{tip|airborne|knocking them back}} while other units are instead {{tip|airborne|pulled}} towards her.",
-        "''Vault Breaker'' will go on a 3 second cooldown and refund {{sti|mana|{{as|50% of its mana cost}}}} if '''Vi''' is {{tip|interrupt|interrupted}} during the channeling."
+        "{{sbc|Active:}} '''Vi''' {{tip|channel|charges}} for up to 4 seconds to increase ''Vault Breaker's'' {{sti|range}}, speed, and damage over {{fd|1.25}} seconds. While charging, '''Vi''' is {{tip|slow|slowed}} by 15%. ''Vault Breaker'' can be recast at any time within its duration.",
+        "{{sbc|Recast:}} '''Vi''' {{tip|dashes}} in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies she passes through, increased by {{pp|type=channel time|11|key=%|0 to 100|0 to 1.25|round1=3|formula=10% per 0.125 seconds. ''This is capped at 1.25 seconds.''}}.",
+        "'''Vi''' stops upon colliding with an enemy champion, {{tip|airborne|knocking them back}} while other enemy units are instead {{tip|airborne|pulled}} towards her.",
+        "''Vault Breaker'' will go on a 3-second {{sti|cooldown}} if '''Vi''' is {{tip|interrupt|interrupted}} during the channel or she dies."
       ],
-      "notes": "* Despite being {{tip|pacify|pacified}}, '''Vi''' can still {{si|Flash}} (and cast all other [[summoner spells]] except {{si|Teleport}}) during ''Vault Breaker's'' channel.\n* The self {{tip|slow}} is reduced by {{stil|slow resist}}.\n* {{tip|Spell shield}} will block the damage (will not prevent {{ais|Denting Blows|Vi}} application).\n* {{Pending for test}}: ''Vault Breaker's '' interaction with {{tip|ground|grounding}} effects.",
+      "notes": "* '''Vi''' can still {{si|Flash}} during ''Vault Breaker's'' channel.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/60/70/80/90",
@@ -188,221 +188,6 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "ViW",
-      "name": "Denting Blows",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Passive",
-      "image": {
-        "full": "ViW.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 432,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Vi's''' [[basic attack]]s and {{ai|Vault Breaker|Vi}} apply ''Denting Blows'' to enemies hit, [[stack]]ing up to 3 times. At 3 ''Denting Blows'', '''Vi''' consumes them to deal {{as|'''bonus''' physical damage}}, capped at 300 against non-champions.",
-        "For the next 4 seconds, '''Vi''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} and the target has {{as|20% reduced {{sti|armor}}}}."
-      ],
-      "notes": "* ''Denting Blows'' stacks will not reset when '''Vi''' switches targets.\n* ''Denting Blows'' '''bonus''' attack speed will not stack with itself when '''Vi''' gains ''Denting Blows'' bonuses from the same target repeatedly or from multiple enemies in quick succession.\n* The enhanced attack applies other {{tip|on-hit}} effects and can both {{tip|critical strike|critically strike}} as normal as well as apply {{sti|life steal|link=true}} (the bonus damage cannot do either) but does not affect structures.\n* ''Denting Blows'' can be {{ai|Spirit's Refuge|Shen|blocked}} but cannot be parried by {{ai|Counter Strike|Jax|dodging}} and {{tip|blind|blinding}} effects via basic attack.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|4 to 10}}% {{as|(+{{ft|1% per 35|{{fd|2.86}}% per 100}}'''bonus''' AD)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['4','5.5','7','8.5','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+<span>1% per 35 (<span style=\"font-variant-numeric: tabular-nums;\">2.86</span>% per 100)</span><b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 13.52861
-              },
-              {
-                "target_bonus_ad": [
-                  0.04,
-                  0.055,
-                  0.07,
-                  0.085,
-                  0.1
-                ]
-              }
-            ],
-            "st_slices": [
-              "Bonus Physical Damage",
-              "<span class=\"health\"><spell-span :list=\"['4','5.5','7','8.5','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+<span>1% per 35 (<span style=\"font-variant-numeric: tabular-nums;\">2.86</span>% per 100)</span>'''bonus''' AD)</span> of target's '''maximum''' health</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "player_bonus_ad": 13.52861,
-                "target_bonus_ad": [
-                  0.04,
-                  0.055,
-                  0.07,
-                  0.085,
-                  0.1
-                ]
-              },
-              "title": "Bonus Physical Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['4','5.5','7','8.5','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+<span>1% per 35 (<span style=\"font-variant-numeric: tabular-nums;\">2.86</span>% per 100)</span>'''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "physical"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                30,
-                37.5,
-                45,
-                52.5,
-                60
-              ]
-            ],
-            "st_slices": [
-              "Bonus Attack Speed",
-              "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  30,
-                  37.5,
-                  45,
-                  52.5,
-                  60
-                ]
-              },
-              "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "ViE",
-      "name": "Excessive Force",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        26,
-        32,
-        38,
-        44,
-        50
-      ],
-      "costtype": "Mana + 1 charge",
-      "targeting": "[[Self-targeted|Self]]",
-      "image": {
-        "full": "ViE.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Vi''' periodically stores up to 2 ''Excessive Force'' charges.",
-        "{{sbc|Active:}} '''Vi's''' next basic attack gains {{sti|range|50 '''bonus''' range}} and deals {{as|physical damage}} to all enemies in a cone in front of her. The damage can {{tip|critical strike|critically strike}} for {{as|{{critical damage|100}} AD}} {{as|'''bonus''' physical damage}}.",
-        "''Excessive Force'' resets '''Vi's''' basic attack timer."
-      ],
-      "notes": "* ''Excessive Force'' has no cast time and does not interrupt '''Vi's''' previous orders.\n* {{ai|Denting Blows|Vi}} will only apply a stack on ''Excessive Force's'' primary target (does not interact with the cone's damage).\n* The enhanced attack applies other [[on-hit effect]]s, can {{tip|critical strike|critically strike}} as normal (the cone damage will also crit), apply {{sti|life steal}}, and affect structures if they are the primary target (the cone's damage does not affect them).",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "26/32/38/44/50",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Physical Damage|{{ap|10 to 90}} {{as|(+ 110% AD)}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                10,
-                30,
-                50,
-                70,
-                90
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 1.1
-              },
-              {
-                "player_total_ap": 0.9
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 90% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  10,
-                  30,
-                  50,
-                  70,
-                  90
-                ],
-                "player_total_ad": 1.1,
-                "player_total_ap": 0.9
-              },
-              "title": "Physical Damage",
-              "str": "<spell-span :list=\"['10','30','50','70','90']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span> <span class=\"ap\">(+ 90% AP)</span>",
-              "damage_type": "physical"
-            }
-          ]
-        }
-      ]
-    },
     "r1": {
       "riotId": "ViR",
       "name": "Assault and Battery",
@@ -430,10 +215,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Vi''' {{ct|dash|rushes|attack=false|move=false|cast=E can be cast. Q is disabled.|items=false|consume=false|spells=true,true,false,false,true|interrupts=death|damage=false}} {{tip|unstoppable|unstoppably}} to the target enemy {{tip|champion}} dealing {{as|physical damage}} upon arrival and {{tip|airborne|knocking them up}} for {{fd|1.25}} seconds.",
-        "Enemies along the way are {{tip|airborne|knocked aside}} by 350 units for {{fd|0.75}} seconds and dealt the same damage."
+        "{{sbc|Active:}} '''Vi''' {{tip|dash|rushes}} {{tip|unstoppable|unstoppably}} to the target enemy {{tip|champion}} and {{tip|true sight|reveals}} them, dealing {{as|physical damage}} upon arrival and {{tip|airborne|knocking them up}} for {{fd|1.25}} seconds.",
+        "Enemies along the way are {{tip|airborne|knocked aside}} by 350 units and {{tip|stun|stunned}} for {{fd|0.75}} seconds and dealt the same damage."
       ],
-      "notes": "* '''Vi''' will track targets that change locations, whether by {{tip|dash|dashing}}, {{tip|blink|blinking}}, or simple movement.\n** ''Assault and Battery'' has a maximum tether range, meaning it does not extensively follow targets that move too far away ({{si|Teleport}}, {{si|Recall}}).\n* If the target becomes {{tip|untargetable}} during ''Assault and Battery'', the ability is cancelled prematurely.",
+      "notes": "* '''Vi''' is {{tip|unstoppable}} while {{tip|airborne|knocking them up}} as well but loses it afterwards.\n** She can't cast {{si|Flash}} during this.\n* While charging, '''Vi's''' {{tip|dash}} speed ramps up overtime to ensure the target cannot escape.\n* '''Vi''' will track targets that change locations, whether by {{tip|dash|dashing}}, {{tip|blink|blinking}}, or simple movement.\n** ''Assault and Battery'' has a maximum tether range, meaning it does not extensively follow targets that [[blink]] too far away ({{si|Teleport}}, {{si|Recall}}).\n*** If the target blinks to a far distance while '''Vi''' is dashing, she will stop prematurely but maintains the ''unstoppability'' for 7 seconds.{{Bug}}\n* If the target becomes {{tip|untargetable}} or either '''Vi''' or her target {{tip|death|dies}} during ''Assault and Battery's'' cast time, the ability will cancel. The {{sti|cooldown}} and {{sti|{{as|mana}}}} are refunded in this case.\n** However, if '''Vi''' is {{tip|dash|dashing}} and the target becomes ''untargetable'', she loses her {{tip|unstoppable|unstoppability}}, stops dashing, and instead walks towards the target {{tt|forcefully|movement commands are ignored}}. If she comes into contact with the target, she will apply the {{tip|airborne}} effect but no damage is dealt.\n* If '''Vi''' goes into {{tip|resurrection}} during ''Assault and Battery's'' cast time she will continue to {{tip|dash}} and apply the {{tip|airborne|knock up}} to her target but won't deal damage.\n** If '''Vi''' however goes into ''resurrection'' during the dash, she will stop, but will keep the ''unstoppability'' for another 3 seconds after ''reviving''.\n{{ct|attack=false|move=false|cast=E can be cast. Q is disabled.|items=false|consume=false|spells=true,true,false,false,true|interrupts=death|damage=false}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100/125/150",

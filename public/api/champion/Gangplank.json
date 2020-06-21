@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.15",
-  "changes": "9.22.1",
+  "changes": "10.11.1",
   "id": "Gangplank",
   "name": "Gangplank",
   "title": "the Saltwater Scourge",
@@ -49,30 +49,6 @@
     "attackspeed": 0.658
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Trial by Fire",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Gangplank_Passive.png",
-        "sprite": "passive1.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing {{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{tip|true damage|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds, ticking every {{fd|0.25}} seconds. {{tip|turret|Turrets}} receive 50% reduced damage.",
-        "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Destroying a {{ai|Powder Keg|Gangplank}} resets the {{sti|cooldown}} for ''Trial by Fire'' and grants its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
-        "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} or {{ai|Powder Keg|Gangplank}}."
-      ],
-      "notes": "* Unlike most [[damage over time]] debuffs, reapplying ''Trial by Fire'' before a previous application has run out will stack the full damage, instead of just refreshing the duration.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "GangplankQWrapper",
       "name": "Parrrley",
@@ -108,7 +84,7 @@
         "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' physical damage}}.",
         "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}."
       ],
-      "notes": "* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ais|Powder Keg|Gangplank}} when activated by ''Parrrley''.",
+      "notes": "* ''Parrrley'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ai|Powder Keg|Gangplank|Powder Kegs}} when activated by ''Parrrley''.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60/55/50/45/40",
@@ -241,7 +217,7 @@
         120
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]]",
+      "targeting": "None",
       "image": {
         "full": "GangplankW.png",
         "sprite": "spell3.png",
@@ -254,7 +230,7 @@
       "description": [
         "{{sbc|Active:}} '''Gangplank''' consumes a large quantity of citrus fruit, {{tip|cleanse|cleansing}} himself from all {{tip|crowd control}} and {{tip|heal|healing}} himself."
       ],
-      "notes": "* ''Remove Scurvy'' only removes crowd control debuffs (with the exception of {{tip|nearsight}}), so it cannot remove:\n** {{sis|Ignite}} damage over time\n** {{sis|Exhaust}} damage reduction\n** {{tip|Airborne}} crowd control effects (pull, knockback, knockup...)\n** {{ai|Malefic Visions|Malzahar}}\n*** Yet it is one of the few abilities that can remove {{tip|suppression}}.\n**** {{ai|Nether Grasp|Malzahar}} and {{ai|Infinite Duress|Warwick}} will still damage '''Gangplank''' even if he moves away.",
+      "notes": "* ''Remove Scury'' does not remove {{tip|debuff|debuffs}} other than {{tip|crowd control}}, even if both occur from the same effect. For example, ''Remove Scurvy'' will dispel the {{tip|slow}} from {{si|Exhaust}}, but not its [[damage modifier|damage reduction]].\n* ''Remove Scurvy'' can remove the underlying {{tip|stun}} from {{tip|airborne}}, but a {{tip|blink}} or {{tip|dash}} ability is required to override the displacement.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "80/90/100/110/120",
@@ -342,11 +318,11 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Gangplank''' periodically [[stocks]] a ''Powder Keg'', up to a maximum of 3.",
-        "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs'' with overlapping explosion radii.",
+        "{{sbc|Active:}} '''Gangplank''' places a ''Powder Keg'' at the target location for 25 seconds, which connects to other nearby ''Powder Kegs'' with overlapping explosion radius.",
         "'''Gangplank''' and his enemies can attack the ''Powder Keg'' with basic attacks, dealing 1 damage per hit. '''Gangplank''' may also shoot the barrel with ''Parrrley''. If '''Gangplank''' scores the killing blow, it explodes, also triggering a chain reaction that explodes nearby connected ''kegs''. If killed by an enemy, the ''keg'' is safely dismantled.",
-        "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against {{tip|champions}}, ignoring {{as|40% of their armor}}, as well as {{tip|slowing}} them for 2 seconds. Enemies can only be damaged once per chain."
+        "An exploding ''keg'' deals the {{as|attack's damage}} to all nearby enemies, plus {{as|'''bonus''' physical damage}} against {{tip|champions}}, ignoring {{as|40% of their {{sti|armor}}}}, as well as {{tip|slowing}} them for 2 seconds. Enemies can only be damaged once per chain."
       ],
-      "notes": "* Placed barrels do '''not''' grant {{tip|sight|vision}}.\n* An exploding ''Powder Keg'' will splash {{ai|Parrrley|Gangplank}} bonus damage, and will also be modified if the attack critically strikes.\n* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from runes or items, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{ii|Sheen}} (and its upgrades) will be splashed to all targets.\n* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.\n* ''Powder Keg'' applies spell effects.",
+      "notes": "* Placed barrels do '''not''' grant {{tip|sight|vision}}.\n* An exploding ''Powder Keg'' will splash {{ais|Parrrley|Gangplank}} '''bonus''' damage, and will also be modified if the attack {{tip|critical strike|critically strikes}}.\n* An exploding ''Powder Keg's'' damage is not increased by most [[attack effects]] from [[Runes Reforged|runes]] or [[item]]s, such as {{ii|Blade of the Ruined King}} or {{ii|Wit's End}}. There is a notable exception, however: the bonus damage from {{nie|Spellblade}} will be splashed to all targets.\n* The ''Powder Keg'' is classified as being hit for the purposes of triggering effects such as {{ii|Tiamat}} with the effects centered on the keg.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "1",
@@ -426,13 +402,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Gangplank''' signals his ship off-shore to fire upon the target area for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and {{tip|sight|revealing}} it for the duration. Each wave deals {{tip|magic damage|{{as|magic damage}}}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
+        "{{sbc|Active:}} '''Gangplank''' shoots a flare into the air, signaling his ship off-shore to fire upon the target area for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and {{tip|sight|revealing}} it for the duration. Each wave deals {{tip|magic damage|{{as|magic damage}}}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
         "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
         "{{sbc|{{ii|Death's Daughter}}:}} An initial cannonball lands in the center of the barrage, dealing a cluster's worth of {{as|true damage}} to all enemies it hits and {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.",
         "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
         "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration."
       ],
-      "notes": "* ''Cannon Barrage's'' slow lingers for 0.25 seconds after affected enemies leave the target area.",
+      "notes": "* ''Cannon Barrage's'' slow lingers for {{fd|0.25}} seconds after affected enemies leave the target area.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

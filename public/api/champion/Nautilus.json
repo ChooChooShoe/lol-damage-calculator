@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.134",
-  "changes": "9.22.1",
+  "changes": "10.3.1",
   "id": "Nautilus",
   "name": "Nautilus",
   "title": "the Titan of the Depths",
@@ -105,9 +105,9 @@
       "description": [
         "{{sbc|Active:}} '''Nautilus''' hurls his anchor forward in a line, simultaneously {{tip|airborne|dragging}} the enemy hit towards him while {{tip|dash|dashing}} towards them within {{fd|0.9}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|root|rooting}} them for {{fd|0.1}} seconds.",
         "If the anchor hits terrain, '''Nautilus''' dashes to the very end of its path, ''Dredge Line's'' {{sti|cooldown}} is reduced by 50% and refunds {{Sti|mana|{{as|half its mana cost}}}}.",
-        "'''''Nautilus''' becomes {{tip|entangle|entangled}} while Dredge Line is in flight.''"
+        "'''''Nautilus''' is unable to move or attack while Dredge Line is in flight.''"
       ],
-      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* ''Nautilus'' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executes them.\n* ''Dredge Line'' will not {{tip|interrupt}} any movement commands ''Nautilus'' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will not act if '''Nautilus''' dies while the projectile is traveling.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
+      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executes them or attempts to affect them while they are {{tip|cc-immune|crowd control immune}} or {{tip|unstoppable}}.\n* ''Dredge Line'' will not {{tip|interrupt}} any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -178,7 +178,7 @@
         80
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]]",
+      "targeting": "None",
       "image": {
         "full": "NautilusPiercingGaze.png",
         "sprite": "spell8.png",
@@ -191,9 +191,9 @@
       "description": [
         "{{sbc|Active:}} '''Nautilus''' {{tip|shields}} himself for up to 6 seconds.",
         "While the shield holds, his [[basic attack]]s deal {{as|'''bonus''' magic damage}} over 2 seconds to his target and all enemies around them.",
-        "''Titan's Wrath'' resets '''Nautilus' ''' basic attack timer."
+        "''Titan's Wrath'' {{tip|basic attack reset|resets}} '''Nautilus' ''' basic attack timer."
       ],
-      "notes": "* Applies {{tip|proc damage}} to primary target and {{tip|area damage}} to secondary targets.\n* ''Titan's Wrath'' has no cast time and does not interrupt ''Nautilus' ''previous orders.\n* The first half of ''Titan's Wrath's'' damage is dealt [[on-hit]] (so long as the shield remains) while the rest is applied over the next second (regardless of ''Nautilus' ''attack speed).\n* ''Nautilus' '' basic attacks use different animations while ''Titan's Wrath'' is active.\n** The damage over time will always apply when this animation plays (even if the shield fades during a basic attack).\n* ''Titan's Wrath'' does not deal bonus damage to structures.\n* {{pending for test}} Interaction with {{ai|Counter Strike|Jax}}, {{ai|Spirit's Refuge|Shen}} and {{tip|blind}}.\n* {{tip|Spell shield}} will block the ability (but only a single application).",
+      "notes": "* The first half of ''Titan's Wrath's'' damage is dealt [[on-hit]] (so long as the shield remains) while the rest is applied over the next second (regardless of '''Nautilus' ''' {{stil|attack speed}}).\n* '''Nautilus' ''' basic attacks use different animations while ''Titan's Wrath'' is active.\n** The damage over time will always apply when this animation plays (even if the shield fades during a basic attack).\n* ''Titan's Wrath'' does not deal bonus damage to structures.\n* {{pending for test}}: Interaction with {{ai|Counter Strike|Jax}}, {{ai|Spirit's Refuge|Shen}} and {{tip|blind}}.\n* {{tip|Spell shield}} will block the ability (but only a single application).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "80",
@@ -349,7 +349,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "NautilusSplashZone.png",
         "sprite": "spell8.png",
@@ -489,133 +489,6 @@
               "title": "Total Single-Target Damage",
               "str": "<spell-span :list=\"['110','170','230','290','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "unknown"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "NautilusGrandLine",
-      "name": "Depth Charge",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": 825,
-      "image": {
-        "full": "NautilusGrandLine.png",
-        "sprite": "spell8.png",
-        "group": "spell",
-        "x": 432,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Nautilus''' sends out a ''{{ai|Depth Charge 2||Depth Charge}}'' that chases the target enemy champion, dealing {{as|magic damage}} while {{tip|airborne|knocking them up}} for 1 second and {{tip|stun|stunning}} them on arrival.",
-        "All enemies hit along the way are dealt less damage, {{tip|airborne|knocked up}} for 1 second, and are also {{tip|stun|stunned}}."
-      ],
-      "notes": "* ''Depth Charge'' is cancelled (does not go on {{sti|cooldown}}) if:\n** The target becomes {{tip|untargetable}}.\n** '''Nautilus''' loses {{tip|sight}} of the target (during initial cast).\n** The target [[death|dies]].\n* ''Depth Charge'' permeates through terrain, and will accelerate over time to ensure it cannot be outran (only extreme movement speed could potentially make it so).\n** Moving away from a location at a far distance ({{si|Recall}}, {{si|Teleport}}) before ''Depth Charge'' hits will make the shockwaves disappear.\n* {{tip|Spell shield}} will only block the shockwave for the primary target, while still affecting secondary ones.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/100/80",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|150 to 400}} {{as|(+ 80% AP)}}}}\n{{st|Stun Duration|{{ap|1|1.5|2}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','212.5','275','337.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Stun Duration</span>: <span><spell-span :list=\"['1','1.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                150,
-                212.5,
-                275,
-                337.5,
-                400
-              ],
-              [
-                1,
-                1.5,
-                2
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.8
-              }
-            ],
-            "st_slices": [
-              "Stun Duration",
-              "<spell-span :list=\"['1','1.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  150,
-                  212.5,
-                  275,
-                  337.5,
-                  400
-                ],
-                "player_total_ap": 0.8
-              },
-              "title": "Stun Duration",
-              "str": "<spell-span :list=\"['1','1.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Secondary Magic Damage|{{ap|125|175|225}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Secondary Magic Damage</span>: <span><spell-span :list=\"['125','175','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                125,
-                175,
-                225
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              }
-            ],
-            "st_slices": [
-              "Secondary Magic Damage",
-              "<spell-span :list=\"['125','175','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  125,
-                  175,
-                  225
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Secondary Magic Damage",
-              "str": "<spell-span :list=\"['125','175','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
             }
           ]
         }

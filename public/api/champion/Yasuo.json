@@ -1,6 +1,6 @@
 {
   "patch": "V3.15",
-  "changes": "10.1.1",
+  "changes": "10.12.1",
   "id": "Yasuo",
   "name": "Yasuo",
   "title": "the Unforgiven",
@@ -15,7 +15,7 @@
   },
   "resource": "Flow",
   "herotype": "Fighter",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 6300,
   "rp_cost": 975,
@@ -27,7 +27,7 @@
     "difficulty": 10
   },
   "stats": {
-    "hp": 523,
+    "hp": 490,
     "hpperlevel": 87,
     "mp": 100,
     "mpperlevel": 0,
@@ -64,111 +64,23 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Intent:}} '''Yasuo''' doubles his {{as|{{sti|'''total''' critical strike chance}}}} from all other sources, but his {{sti|critical strike damage|critical strikes}} deal only {{as|{{critical damage|80|90}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "{{sbc|Resolve:}} '''Yasuo''' generates {{tip|Flow}} for every {{pp|3|59 to 46|1 to 13}} units he travels by any means. At {{ft|100 stacks|{{pp|3|59*100 to 46*100|1 to 13}} units traveled}} and upon taking [[champion]] or [[monster]] damage, '''Yasuo''' consumes {{tip|Flow|all Flow}} to {{tip|shield}} himself for {{pp|18|100|105|110|115|120|130|140|150|165|180|200|225|255|290|330|380|440|510}} for up to 1 second."
+        "{{sbc|Innate - Intent:}} '''Yasuo''' doubles his {{as|{{sti|'''total''' critical strike chance}}}} from all other sources, but his {{tip|critical strike|critical strikes}} only deal {{as|{{critical damage|80|90}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Innate - Resolve:}} '''Yasuo''' generates {{tip|Flow}} for every {{pp|3|59 to 46|1 to 13}} units he travels by any means. At {{ft|100 stacks|{{pp|3|59*100 to 46*100|1 to 13}} units traveled}} and upon taking non-{{tip|minion}} damage, '''Yasuo''' consumes {{tip|Flow|all Flow}} to {{tip|shield}} himself for {{pp|115;120;125;130;135;145;155;165;180;195;210;240;270;305;345;395;455;525}} for up to 1 second."
       ],
       "notes": "* No additional notes.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
     },
-    "q1": {
-      "riotId": "YasuoQ1Wrapper",
-      "name": "Steel Tempest",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "target_range": "{{tt|475|Cast range}} / {{tt|900|Empowered cast range}}",
-      "image": {
-        "full": "YasuoQ1Wrapper.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|First Cast - Steel Tempest:}} '''Yasuo''' thrusts his sword in the target direction, dealing {{as|physical damage}} to enemies hit and applying [[on-hit]] and [[on-attack]] effects to the first enemy hit. The ability can {{tip|critically strike}} for {{as|{{critical damage|60|80}} AD}} {{as|'''bonus''' physical damage}}.",
-        "If ''Steel Tempest'' hits an enemy, he gains a ''Gathering Storm'' stack for 6 seconds to which he's able to cast ''Steel Wind Rising''.",
-        "{{sbc|Second Cast - Steel Wind Rising:}} '''Yasuo''' casts ''Steel Tempest''. If it hits an enemy, '''Yasuo''' gains another ''Gathering Storm'' stack to which he can cast ''Gathering Storm''.",
-        "{{sbc|Third Cast - Gathering Storm:}} '''Yasuo''' consumes his stacks to unleash a whirlwind that travels in the target direction, dealing the same damage and {{tip|airborne|knocking up}} all enemies hit.",
-        "Casting ''Steel Tempest'', ''Steel Wind Rising'' or ''Gathering Storm'' during {{ai|Sweeping Blade|Yasuo}} will instead affect enemies around '''Yasuo''' at the end of the dash, or doing so immediately at his landing location after {{tip|Blink|blinking}} while ending the dash prematurely. ''Gathering Storm's'' whirlwind is not released when cast during {{ai|Sweeping Blade|Yasuo}}, but instead {{tip|airborne|knocks up}} all enemies hit around '''Yasuo''' for the same duration."
-      ],
-      "notes": "* Only {{sbc|Gathering Storm}} can be {{tip|projectile|intercepted}}. \n* ''Steel Tempest'' counts as single-target for the first enemy hit and [[area of effect]] for the others.\n** {{ri|Ravenous Hunter}} will only heal from the damage dealt to secondary targets.\n* Each parry has different interactions with this ability, whether it's the first target of ''Steel Tempest'' or the secondary one. In either case '''Yasuo''' still gets a stack of ''Gathering Storm'' and his whirlwind knockup cannot be blocked:\n** {{ai|Counter Strike|Jax}}: both first target and secondary target '''do not''' deal damage.\n** {{ai|Spirit's Refuge|Shen}}: first target '''does not''' deal damage, secondary target '''does''' deal damage.\n** {{ai|Blinding Dart|Teemo}}: both first target and secondary target '''do''' deal damage.\n* ''Steel Tempest'' will not apply [[ability effects|spell effects]] to the first target hit, but will do so to the secondary ones.\n* ''Steel Tempest's'' damage is calculated individually for every enemy hit when {{tip|critical strike|critically striking}}.\n* Unlike other abilities, the first two ''Steel Tempests'' will cancel and reset their cooldown if '''Yasuo''' is {{tip|stun|stunned}} during their cast time.\n** The third ''Steel Tempest'' will continue its cast through the stun.\n** If '''Yasuo''' however buffers ''Steel Tempest'' after {{ai|Sweeping Blade|Yasuo}}, a stun will cause ''Steel Tempest'' to cancel and go on full cooldown.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                20,
-                45,
-                70,
-                95,
-                120
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 1
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  20,
-                  45,
-                  70,
-                  95,
-                  120
-                ],
-                "player_total_ad": 1
-              },
-              "title": "Physical Damage",
-              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
-              "damage_type": "physical"
-            }
-          ]
-        }
-      ]
-    },
     "w1": {
       "riotId": "YasuoW",
       "name": "Wind Wall",
       "maxrank": 5,
       "cooldown": [
-        26,
+        30,
+        27,
         24,
-        22,
-        20,
+        21,
         18
       ],
       "cost": [
@@ -192,11 +104,11 @@
       "description": [
         "{{sbc|Active:}} '''Yasuo''' creates a gust of wind that travels in the target direction over {{tt|{{fd|0.25}} seconds|Estimated}} to form a wall in front of him. The wall slowly drifts forward 50 units over {{fd|3.75}} seconds, blocking all hostile non-{{tip|turret}} {{tip|projectile|projectiles}}."
       ],
-      "notes": "* ''Wind Wall'' starts blocking projectiles on-cast (despite not being fully formed) and grants {{tip|sight}} over a small area.\n* ''Wind Wall'' is {{tip|knockdown|knocked down}} if it collides with another.",
+      "notes": "* ''Wind Wall'' starts blocking projectiles on-cast (despite not being fully formed) and grants {{tip|sight}} over a small area.\n* ''Wind Wall'' stops upon colliding with an enemy ''Wind Wall''.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
-      "cooldownBurn": "26/24/22/20/18",
+      "cooldownBurn": "30/27/24/21/18",
       "effects": [
         {
           "levelingtext": "{{st|Wall Width|{{ap|300|350|400|450|500}}}}",
@@ -243,11 +155,11 @@
       "name": "Sweeping Blade",
       "maxrank": 5,
       "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
+        0.5,
+        0.4,
+        0.3,
+        0.2,
+        0.1
       ],
       "cost": [
         0,
@@ -268,16 +180,17 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Yasuo''' {{tip|dashes}} a fixed distance toward a target enemy, dealing {{tip|magic damage|{{as|magic damage}}}}.",
+        "{{sbc|Active:}} '''Yasuo''' {{tip|dashes}} a fixed distance toward a target enemy, dealing them {{tip|magic damage|{{as|magic damage}}}}.",
         "Each ''Sweeping Blade'' cast increases the next dash's '''base''' damage by 25% for 5 seconds, up to 50%.",
         "'''Yasuo''' cannot dash to the same target more than once every few seconds.",
-        "'''Yasuo''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during ''Sweeping Blade''."
+        "'''Yasuo''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during ''Sweeping Blade''.",
+        "''{{ai|R|Yasuo}} can be cast during Sweeping Blade. If {{ai|Q|Yasuo}} has been buffered, {{ai|W|Yasuo}} may also be cast during it. {{bug|2}}''"
       ],
-      "notes": "* ''Sweeping Blade's'' dash speed is affected by {{tip|slow|slows}}.\n* ''Sweeping Blade'' will generate {{tt|{{fd|7.5}}|If he dashes the maximum distance}} {{tip|Flow}} stacks per cast.\n* ''Yasuo'' can use ''Sweeping Blade's'' fixed dash distance to cross walls both before and after hitting his target (provided his proximity to the wall and/or target allows it).",
+      "notes": "* The damage is not dealt if '''Yasuo''' or his target is not within range before the {{tip|dash}} reaches.\n* ''Sweeping Blade's'' dash speed is affected by {{tip|slow|slows}}.\n* ''Sweeping Blade'' will generate {{tt|{{fd|7.5}}|If he dashes the maximum distance}} {{tip|Flow}} stacks per cast.\n* '''Yasuo''' can use ''Sweeping Blade's'' fixed dash distance to cross walls both before and after hitting his target (provided his proximity to the wall and/or target allows it).\n* '''Yasuo''' can cast {{si|Flash}} during ''Sweeping  Blade'', but it will interrupt it.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
-      "cooldownBurn": "0",
+      "cooldownBurn": "0.5/0.4/0.3/0.2/0.1",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60|70|80|90|100}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 60% AP)}}|Maximum Magic Damage|{{ap|90|105|120|135|150}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 60% AP)}}}}",
@@ -449,12 +362,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Yasuo''' {{tip|blinks}} to the other side of a {{tip|sight|visible}} {{tip|airborne}} enemy champion nearest to the cursor, instantly generating maximum {{tip|Flow}} while resetting ''{{ais|Steel Tempest}}'' stacks.",
-        "Upon arrival, he {{tip|suspension|suspends}} all nearby {{tip|airborne}} enemies around the target for 1 second, dealing {{tip|physical damage|{{as|physical damage}}}} thereafter.",
-        "For the next 15 seconds, '''Yasuo's''' {{tip|critical strikes}} gain {{sti|lethality|{{as|50% armor penetration versus {{sti|'''bonus''' armor}}}}}}.",
-        "''If '''Yasuo''' would be placed inside a turret's attack range upon blinking, he will instead attempt to position himself outside it (does not apply to [[Nexus Obelisk]]).''"
+        "{{sbc|Active:}} '''Yasuo''' {{tip|blinks}} to the other side of a {{tip|sight|visible}} {{tt|{{tip|airborne}}|granted they are not immune to airborne or not targetable}} enemy champion {{tt|nearest to the cursor|searches in a 1100 radius}}, instantly generating maximum {{tip|Flow}} while resetting {{ai|Steel Tempest|Yasuo|Steel Tempest's}} stacks.",
+        "Upon arrival, he {{tip|airborne|knocks up}} all nearby {{tip|airborne}} enemies around the target for 1 second and slashes them with his sword over the duration, dealing {{as|physical damage}} thereafter.",
+        "For the next 15 seconds, '''Yasuo's''' {{tip|critical strikes}} gain {{sti|lethality|{{as|50% {{tt|'''bonus'''-armor penetration|Modifies bonus armor only}}}}}}.",
+        "''If '''Yasuo''' would be placed inside a ''{{tip|turret|turret's}}'' {{sti|attack range}} upon blinking, he will instead attempt to position himself outside it (does not apply to {{tip|Nexus Obelisk}}).''"
       ],
-      "notes": "* ''Last Breath's'' area of effect when suspending enemies increases per rank.\n* ''Last Breath's'' damage and bonus armor penetration do not interact with each other.\n* Suspended enemies are immune to further displacements during ''Last Breath's'' animation time.\n** Casting right after the triggering displacement(s) will overwrite the latter's duration (whether shorter/longer) to ''Last Breath's'' animation time (durations will not stack).\n* The targets will remain suspended and the damage will be applied even if '''Yasuo''' dies during it.\n* Displacement abilities (e.g. {{ai|Weaver's Wall|Taliyah}}, {{ai|Pillar of Ice|Trundle}}, {{ai|Volcanic Rupture|Ornn}}) that affect enemy champions are considered {{tip|Airborne}}, and will therefore interact with ''Last Breath''.\n** Self-applied displacements cannot be targeted by ''Last Breath'':\n** Enemies displaced by neutral monsters (e.g. {{uis|Dragon}} initial knock-back) can be targeted.\n* While ''blinking'', '''Yasuo''' creates an {{tip|untargetable}} clone of himself that instead ''dashes'' to the target location. This clone is considered a champion for {{ii|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
+      "notes": "* ''Last Breath'' requires the target to be affected by {{tip|airborne}} from an {{tt|enemy source|from the target's perspective}}, and simultaneously that the target is not considered {{tip|cc-immune}}, {{tip|unstoppable}}, or {{tip|untargetable}} during it.\n** ''Last Breath'' cannot be cast if there are no nearby enemy champions that meet the conditions.\n** Self-applied or allied-applied {{tip|airborne|displacements}} do not allow ''Last Breath'' to target the champion. Those applied by the ''neutral'' team (e.g. {{uis|Baron Nashor}} [[Baron Nashor#Actives|tentacle knockup]]) '''can''' be targeted.\n** An [[spell indicator|indicator]] will be placed towards enemy champions that meet the cast conditions within range of ''Last Breath'' to signify the ability can be cast.\n* A cast ''Last Breath'' may affect enemy champions that were knocked {{tip|airborne}} near the target within a brief period.\n* Even if the target is protected by {{tip|spell shield}} the ability will still affect them and deal damage, but the ''spell shield'' will be consumed.\n* ''Last Breath'' can be fully {{tip|cleanse|cleansed}} but the damage is applied instantly after the {{tip|airborne}} removal.\n** If '''Yasuo''' cannot finish ''Last Breath'' from certain circumstances, the animation time for him to perform the ability ends prematurely. This includes if there are {{tt|no targets left|Whether by death or cleanses}} for '''Yasuo''' to consider himself in animation time.\n** It is not considered {{tip|suspension}} however.\n* ''Last Breath'' cannot be {{tip|interrupt|interrupted}} by {{tip|crowd control}}. \n* If '''Yasuo''' {{tip|death|dies}} during the animation time, the target(s) will remain {{tip|airborne}} and the damage will still be applied.\n* Terrain displacing abilities (e.g. {{ai|Weaver's Wall|Taliyah}}, {{ai|Pillar of Ice|Trundle}}, {{ai|Volcanic Rupture|Ornn}}) that affect enemy champions are considered {{tip|airborne}}, and will therefore interact with ''Last Breath''.\n* While ''blinking'', '''Yasuo''' creates an {{tip|untargetable}} ''clone'' of himself that cues a dashing animation (similarly to {{ai|Sweeping Blade|Yasuo}}) towards the target. This unit's rules do not follow those of a {{tip|clone|clone's}}. As such, it is more alike a champion, unless special cased.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

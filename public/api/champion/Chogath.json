@@ -1,6 +1,6 @@
 {
   "patch": "June 26, 2009 Patch",
-  "changes": "9.20.1",
+  "changes": "10.9.1",
   "id": "Chogath",
   "name": "Cho'Gath",
   "title": "the Terror of the Void",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Whenever '''Cho'Gath''' kills an enemy or destroys an enemy structure, he restores {{as|{{sti|health|{{pp|20 to 71}} health}}}} and {{as|{{sti|mana|{{pp|3.5 to 7.75}} mana}}}}."
+        "{{sbc|Innate:}} Whenever '''Cho'Gath''' kills an enemy unit or destroys an enemy [[structures|structure]], he {{tip|heals}} for {{pp|20 to 71}} and restores {{as|{{sti|mana|{{pp|3.5 to 7.75}} mana}}}}."
       ],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -176,7 +176,7 @@
       ],
       "costtype": "mana",
       "targeting": "[[Direction-targeted]]",
-      "target_range": 650,
+      "target_range": "{{tip|er|icononly = true}}650",
       "image": {
         "full": "FeralScream.png",
         "sprite": "spell2.png",
@@ -187,17 +187,18 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Cho'Gath''' roars in the target direction, dealing {{as|magic damage}} to enemies in a cone and {{tip|silence|silencing}} them for a duration."
+        "{{sbc|Active:}} '''Cho'Gath''' roars in the target direction, dealing {{as|magic damage}} to enemies in a cone.",
+        "Enemy {{tip|champions}} hit are also {{tip|silence|silenced}} for a duration."
       ],
-      "notes": "* No additional details.",
+      "notes": "* ''Feral Scream'' makes '''Cho'Gath''' turn to face towards the cast direction.\n* ''Feral Scream'' is always cast from '''Cho'Gath's''' position.\n** He can cast {{si|Flash}} during the cast time and he will roar at the new location.\n* ''Feral Scream'' only silences champions, hence it does not remove {{uis|Rift Scuttler}} bonus resistances.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70/80/90/100/110",
       "cooldownBurn": "13/12/11/10/9",
       "effects": [
         {
-          "levelingtext": "{{st|Magic damage|{{ap|75|125|175|225|275}} {{as|(+ 70% AP)}}}}{{st|Silence|{{ap|1.6|1.7|1.8|1.9|2}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><ul><li><span class=\"blue\">Silence</span>: <span><spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Magic damage|{{ap|75|125|175|225|275}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -208,13 +209,6 @@
                 175,
                 225,
                 275
-              ],
-              [
-                1.6,
-                1.7,
-                1.8,
-                1.9,
-                2
               ]
             ],
             "as_ratios": [
@@ -223,15 +217,15 @@
               }
             ],
             "st_slices": [
-              "Silence",
-              "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "Magic damage",
+              "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   75,
                   125,
                   175,
@@ -240,7 +234,45 @@
                 ],
                 "player_total_ap": 0.7000000000000001
               },
-              "title": "Silence",
+              "title": "Magic damage",
+              "str": "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Silence Duration|{{ap|1.6|1.7|1.8|1.9|2}}}}",
+          "str": "<ul><li><span class=\"blue\">Silence Duration</span>: <span><spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                1.6,
+                1.7,
+                1.8,
+                1.9,
+                2
+              ]
+            ],
+            "st_slices": [
+              "Silence Duration",
+              "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  1.6,
+                  1.7,
+                  1.8,
+                  1.9,
+                  2
+                ]
+              },
+              "title": "Silence Duration",
               "str": "<spell-span :list=\"['1.6','1.7','1.8','1.9','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
             }
@@ -268,7 +300,7 @@
       ],
       "costtype": "mana",
       "targeting": "None",
-      "target_range": "{{tip|er|500}}",
+      "target_range": "{{tip|cr|icononly = true}} 500",
       "image": {
         "full": "VorpalSpikes.png",
         "sprite": "spell2.png",
@@ -280,34 +312,34 @@
       },
       "description": [
         "{{sbc|Active:}} '''Cho'Gath's''' next 3 [[basic attack]]s within 6 seconds have {{sti|range|50 '''bonus''' range}} and launch a volley of spikes in a line, dealing {{as|magic damage}} and applying a decaying {{tip|slow}} over the next {{fd|1.5}} seconds to enemies hit.",
-        "''Vorpal Spikes'' resets '''Cho'Gath's''' basic attack timer."
+        "''Vorpal Spikes'' {{tip|basic attack reset|resets}} '''Cho'Gath's''' basic attack timer."
       ],
-      "notes": "* {{ii|Rylai's Crystal Scepter}} and {{iis|Liandry's Torment}} passives apply to every target hit by the spikes.\n* Cho'Gath's size factors into how wide of a hitbox ''Vorpal Spikes'' has. External size modifiers ({{ai|Wild Growth|Lulu}}) contribute.",
+      "notes": "* '''Cho'Gath's''' size factors into the wideness of the hitbox ''Vorpal Spikes'' has. External size modifiers ({{ai|Wild Growth|Lulu}}) contribute to this.\n* When attacking enemies right on top of '''Cho'Gath''', the missile may fire in the opposite direction.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30",
       "cooldownBurn": "8/7/6/5/4",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|22 to 70}} {{as|(+ 30% AP)}} {{as|(+ 3% {{as|(+ {{fd|0.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}|Maximum Damage|{{ap|22*3 to 70*3}} {{as|(+ 90% AP)}} {{as|(+ 9% {{as|(+ {{fd|1.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}}}{{st|Slow|{{ap|30 to 50}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|22 to 82}} {{as|(+ 30% AP)}} {{as|(+ 3% {{as|(+ {{fd|0.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}|Maximum Damage|{{ap|22*3 to 82*3}} {{as|(+ 90% AP)}} {{as|(+ 9% {{as|(+ {{fd|1.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}}}{{st|Slow|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['22','37','52','67','82']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['66','111','156','201','246']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 22,
-                34,
-                46,
-                58,
-                70
+                37,
+                52,
+                67,
+                82
               ],
               [
                 66,
-                102,
-                138,
-                174,
-                210
+                111,
+                156,
+                201,
+                246
               ],
               [
                 30,
@@ -339,9 +371,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+              "<spell-span :list=\"['22','37','52','67','82']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
               "Maximum Damage",
-              "<spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
+              "<spell-span :list=\"['66','111','156','201','246']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -350,16 +382,16 @@
               "ratios": {
                 "base_damage": [
                   22,
-                  34,
-                  46,
-                  58,
-                  70
+                  37,
+                  52,
+                  67,
+                  82
                 ],
                 "player_total_ap": 0.9,
                 "player_total_unknown": 0.005
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['22','34','46','58','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+              "str": "<spell-span :list=\"['22','37','52','67','82']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
               "damage_type": "magic"
             },
             {
@@ -367,16 +399,16 @@
               "ratios": {
                 "base_damage": [
                   66,
-                  102,
-                  138,
-                  174,
-                  210
+                  111,
+                  156,
+                  201,
+                  246
                 ],
                 "player_total_ap": 0.9,
                 "player_total_unknown": 0.005
               },
               "title": "Maximum Damage",
-              "str": "<spell-span :list=\"['66','102','138','174','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+              "str": "<spell-span :list=\"['66','111','156','201','246']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -411,10 +443,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Cho'Gath''' attempts to eat the target enemy, dealing {{tip|true damage|{{as|true damage}}}}. Against non-[[champion]]s, the base damage is increased to 1000.",
-        "If ''Feast'' kills its target, '''Cho'Gath''' gains a ''Feast'' stack. Only 6 stacks can be gained from non-epic monsters or minions.",
-        "Each stack grants {{as|{{sti|health|'''bonus''' health}}}}, which can stack up to 255 times, as well as {{sti|range|'''bonus''' attack range}} and increased size that stack up to {{pp|type=Rank|3|17|13|10|1|2|3}} times, for a maximum {{sti|range|75 '''bonus''' attack range}}."
+        "If ''Feast'' kills its target, '''Cho'Gath''' gains a ''Feast'' [[stack]]. Only 6 stacks can be gained from non-epic {{tip|monster|monsters}} or {{tip|minion|minions}}.",
+        "Each stack grants {{as|{{sti|health|'''bonus''' health}}}} as well as {{sti|range|'''bonus''' attack range}} and increased size which can stack up to {{pp|type=Rank|3|17|13|10|1|2|3}} times, for a maximum {{sti|range|75 '''bonus''' attack range}}."
       ],
-      "notes": "* The health and attack range bonuses from collected stacks will increase as '''Cho'Gath''' ranks up the ability.\n* If an enemy's health is low enough that they will die from ''Feast'' a glowing red ring appears underneath them.\n* Nineteen stacks of max rank ''Feast'' with no other HP items (3040 bonus hp) is the point when {{ii|Cinderhulk}} will give more health than {{ii|Warmog's Armor}} or any other item.\n* Each stack of ''Feast'' increases the damage by {{ap|8|12|16}}.\n* If '''Cho'Gath''' loses sight of his target during the cast time, ''Feast'' will not go on cooldown. It will go on cooldown if the target dies during the cast time.",
+      "notes": "* The maximum number of ''Feast'' stacks is 255, granting {{as|{{ap|(80 to 160)*255}} '''bonus''' health}}.\n* Each stack of ''Feast'' increases the damage by {{ap|8|12|16}}.\n* If an enemy {{tip|champion}} has health below the amount of {{as|true damage}} ''Feast'' deals, they will be marked for execution. This indicator does not consider {{tip|shield|shields}} or {{tip|invulnerability}}.\n[[File:Feast_Execute_Indicator.png|thumb|left|150px|This indicator is only visible to '''Cho'Gath'''.]]",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

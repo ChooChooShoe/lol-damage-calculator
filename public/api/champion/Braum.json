@@ -1,6 +1,6 @@
 {
   "patch": "V4.7",
-  "changes": "9.24.1",
+  "changes": "10.12.1",
   "id": "Braum",
   "name": "Braum",
   "title": "the Heart of the Freljord",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Controller",
+  "herotype": "Support",
   "alttype": "Tank",
   "rangetype": "Melee",
   "be_cost": 6300,
@@ -64,11 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Braum's''' [[basic attack]]s and {{ai|Winter's Bite|Braum}} each apply ''Concussive Blows'' to his target for 4 seconds, stacking up to 4 times. Once the first stack has been applied, any allied [[champion]]'s basic attack on the target generates an additional stack.",
-        "At 4 stacks, ''Concussive Blows'' is consumed to {{tip|stun}} the target for {{pp|3|changedisplay=true|1.25 to 1.75|1 to 13}} seconds and deal {{pp|26 to 196}} {{as|magic damage}}.",
-        "This effect cannot occur on the same target more than once every few seconds, but during this immunity period, affected targets instead take{{ft|20% of the trigger damage|{{pp|5.2 to 39.2}}}} as {{as|'''bonus''' magic damage}} from '''Braum's''' basic attacks and {{ai|Winter's Bite|Braum}}."
+        "{{sbc|Innate:}} '''Braum's''' [[basic attack]]s and {{ai|Winter's Bite|Braum}} each apply ''Concussive Blows'' to his target for 4 seconds, stacking up to 4 times. Once the first stack has been applied, any allied [[champion|champion's]] basic attack on the target generates an additional stack.",
+        "At 4 stacks, ''Concussive Blows'' is consumed to {{tip|stun}} the target for {{pp|3|changedisplay=true|1.25 to 1.75|1 to 13}} seconds and deal {{as|{{pp|26 to 196}}|magic damage}} {{as|magic damage}}.",
+        "This effect cannot occur on the same target more than once every few seconds, but during this immunity period, affected targets instead take{{ft|20% of the trigger damage|{{as|{{pp|5.2 to 39.2}}|magic damage}}}} as {{as|'''bonus''' magic damage}} from '''Braum's''' basic attacks and {{ai|Winter's Bite|Braum}}."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* {{Pending for test}}: ''Concussive Blows' '' application via basic attack interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -106,7 +106,7 @@
       "description": [
         "{{sbc|Active:}} '''Braum''' propels ice from his shield in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them by 70% decaying over 2 seconds."
       ],
-      "notes": "* No additional details.",
+      "notes": "* {{si|Flash}} can be used during the cast time and ''Winter's Bite'' will fire from the new location.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "55/60/65/70/75",
@@ -177,7 +177,7 @@
         40
       ],
       "costtype": "mana",
-      "targeting": "[[Unit-targeted|Unit]] / [[Self-targeted|Self]]",
+      "targeting": "Unit",
       "target_range": 650,
       "image": {
         "full": "BraumW.png",
@@ -189,17 +189,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Braum''' {{tip|dashes}} to the target ally, positioning himself between them and the closest enemy champion, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} for 3 seconds. If his target is a {{tip|champion}}, they also receive some bonus resistances."
+        "{{sbc|Active:}} '''Braum''' {{tip|dashes}} to the target ally, positioning himself between them and the closest enemy champion, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} for 3 seconds. If his target is a {{tip|champion}}, they also receive '''bonus''' resistances.",
+        "'''Braum''' can target himself to instantly grant himself the '''bonus''' resistances.",
+        "{{ai|Unbreakable|Braum}} can be cast while {{tip|dash|dashing}}."
       ],
-      "notes": "* If Braum casts ''Stand Behind Me'' on himself, it has no cast time and does not interrupt Braum's previous orders.\n* ''Stand Behind Me'' can also be used on allied [[minion]]s and [[Champion summoned units|pets]], but cannot be used on wards.",
+      "notes": "* ''Stand Behind Me'' can also be used on allied {{tip|minions}}, but cannot be used on {{tip|ward|wards}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "40",
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
-          "levelingtext": "{{st|Self Bonus Armor|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' armor)}}|Ally Bonus Armor|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' armor)}}}}{{st|Self Bonus MR|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' magic resistance)}}|Ally Bonus MR|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Self Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 36% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Ally Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% <b>bonus</b> armor)</span></span></li></ul><ul><li><span class=\"blue\">Self Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 36% <b>bonus</b> magic resistance)</span></span></li><li><span class=\"blue\">Ally Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "levelingtext": "{{st|Self Bonus Armor|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' armor)}}|Self Bonus MR|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' magic resistance)}}}}\n{{st|Ally Bonus Armor|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' armor)}}|Ally Bonus MR|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' magic resistance)}}}}",
+          "str": "<ul><li><span class=\"blue\">Self Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 36% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Self Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 36% <b>bonus</b> magic resistance)</span></span></li></ul><br><ul><li><span class=\"blue\">Ally Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Ally Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% <b>bonus</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -238,18 +240,18 @@
                 "player_bonus_armor": 0.36
               },
               {
-                "player_bonus_armor": 0.12
+                "player_bonus_mr": 0.36
               },
               {
-                "player_bonus_mr": 0.36
+                "player_bonus_armor": 0.12
               },
               {
                 "player_bonus_mr": 0.12
               }
             ],
             "st_slices": [
-              "Self Bonus MR",
-              "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 36% '''bonus''' magic resistance)</span>",
+              "Ally Bonus Armor",
+              "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
               "Ally Bonus MR",
               "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>"
             ]
@@ -265,10 +267,11 @@
                   22,
                   26
                 ],
-                "player_bonus_armor": 0.12
+                "player_bonus_armor": 0.36,
+                "player_bonus_mr": 0.36
               },
-              "title": "Self Bonus MR",
-              "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 36% '''bonus''' magic resistance)</span>",
+              "title": "Ally Bonus Armor",
+              "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
               "damage_type": "none"
             },
             {
@@ -281,7 +284,8 @@
                   22,
                   26
                 ],
-                "player_bonus_armor": 0.12
+                "player_bonus_armor": 0.36,
+                "player_bonus_mr": 0.36
               },
               "title": "Ally Bonus MR",
               "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>",

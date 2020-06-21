@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Controller",
+  "herotype": "Tank",
   "alttype": "Fighter",
   "rangetype": "Melee",
   "be_cost": 450,
@@ -104,7 +104,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Willump''' takes a bite of a target enemy after {{fd|0.25}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|healing}} himself. The heal is increased by 50% when below {{as|{{sti|health|50% of '''maximum''' health}}}}.",
+        "{{sbc|Active:}} '''Willump''' takes a bite out of the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|healing}} himself. The heal is increased by 50% when below {{as|{{sti|health|50% of '''maximum''' health}}}}.",
         "Against {{tip|minions}} and {{tip|monsters}} he deals {{tip|true damage|{{as|true damage}}}} instead, and restores 25% more health."
       ],
       "notes": "* Icon border glows when he is within the maximum healing threshold.\n* If the ability would deal lethal damage and the target is a minion or small-medium monster, it will instead perform an unique animation, {{tip|stun|stunning}} and {{tip|airborne|pulling}} them, and then deal the {{as|true damage}}.\n* {{tip|Spell shield|Spell shields}} will block the damage and the heal.",
@@ -300,10 +300,6 @@
       "name": "Biggest Snowball Ever!",
       "maxrank": 5,
       "cooldown": [
-        14,
-        14,
-        14,
-        14,
         14
       ],
       "cost": [
@@ -325,13 +321,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Willump''' breaks free of active {{tip|slow|slowing}} effects and conjures a {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} that he {{ct|channel|begins rolling|attack=false|move=true|cast=Recasting the ability will interrupt it. All the other abilities are disabled|items=false|consume=false|spells=false}} in the target direction for up to 10 seconds, increasing in power over 5 seconds. Its size radius also increases to {{pp|3|changedisplay=true|type=charge time|75 to 200|0 to 5|formula= Increases by 62.5 units every 2.5 seconds}} units. He can steer with a {{tt|slow turn rate|See notes.}} that increases over time; changing direction resets the turn rate.",
-        "The duo is slowed by 50% for the first 1 second, but is {{cci|Slow immune icon.png|border=false|Slow resist#Slow Immunity|immune}} to other {{tip|slow|slows}} and keeps all movement speed buffs at time of cast for the duration of the charge. After {{tt|a delay|See notes.}}, the duo gains {{sti|ms|{{tt|{{as|14 movement speed}}|Estimated}}}} every {{fd|0.25}} seconds, up to the greater value between {{ft|Total MS + {{pp|85 to 255}}|Total [[Movement_speed#Movement_speed_caps|Uncapped]] Flat MS + {{pp|85 to 255}}}}. The bonus movement speed from ''Biggest Snowball Ever!'' ignores the [[Movement_speed#Movement_speed_caps|movement speed cap]].",
+        "{{sbc|Active:}} '''Willump''' {{tip|cleanse|breaks free}} of active {{tip|slow|slowing}} effects, becomes {{tip|ghosted}}, and conjures a {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} that he {{tip|channel|begins rolling}} in the direction of the cursor for up to 10 seconds, increasing in power over 5 seconds, while automatically navigating his movement. Its size radius also increases to {{pp|3|changedisplay=true|type=charge time|75 to 200|0 to 5|formula= Increases by 62.5 units every 2.5 seconds}} units. He can steer with a {{tt|slow turn rate|See notes.}} that increases over time; changing direction resets the turn rate.",
+        "The duo is slowed by 50% for the first 1 second, but is {{tip|slow-immune}} and keeps all movement speed buffs at time of cast for the duration of the charge. After {{tt|a delay|See notes.}}, the duo gains {{sti|ms|{{tt|{{as|14 movement speed}}|Estimated}}}} every {{fd|0.25}} seconds, up to the greater value between {{ft|Total MS + {{pp|85 to 255}}|Total [[Movement_speed#Movement_speed_caps|Uncapped]] Flat MS + {{pp|85 to 255}}}} (''click to toggle''). The bonus movement speed from ''Biggest Snowball Ever!'' ignores the [[Movement_speed#Movement_speed_caps|movement speed cap]].",
         "The snowball explodes upon colliding with an enemy {{tip|champion}}, {{tip|pet|large pet}}, medium-large {{tip|monster}} or terrain, dealing {{as|magic damage}} to surrounding enemies, increased by {{pp|6|type=charge time|key=%|0;0 to 400|0 to 5|displayformula=increases per frame after 1 second}}, {{tip|airborne|knocking them up}} for {{pp|6|type=charge time|0.5;0.5 to 0.75|0 to 5|displayformula=Increases per game tick after 1 second.}} seconds and subsequently {{tip|stun|stunning}} them for {{pp|12|type=charge time|0;0;0;0 to 0.5|0;1;2 to 5|displayformula=Increases per game tick after 2.33 seconds.}} seconds.",
-        "The snowball rolls over {{tip|minion|minions}} and small monsters in its path dealing {{fd|33.3}}% of the damage as {{as|magic damage}}.",
-        "After 10 seconds, upon re-activation after {{fd|0.5}} seconds, or if the duo is {{tip|interrupt|interrupted}}, they will let loose the snowball, sending it rolling forward for an additional {{pp|6|type=charge time|750;750 to 1750|0 to 5|displayformula=increases per frame after 1 second}} units during which it will not grow any larger and will explode upon colliding with an enemy unit."
+        "The snowball rolls over enemy {{tip|minion|minions}} and small monsters in its path dealing {{fd|33.3}}% of the damage as {{as|magic damage}}.",
+        "After 10 seconds, or if the duo is {{tip|interrupt|interrupted}}, they will let loose the snowball, sending it rolling forward for an additional {{pp|6|type=charge time|750;750 to 1750|0 to 5|displayformula=increases per frame after 1 second}} units during which it will not grow any larger and will explode upon colliding with an enemy unit. ''Biggest Snowball Ever!'' can be recast after {{fd|0.5}} seconds."
       ],
-      "notes": "* There are 3 stages where the turn rate increases from the original one:\n** After turning for 1 second, the turn rate is increased to 175%.\n** After turning for 3 seconds, the turn rate is increased to 250%.\n** After turning for 6 seconds, the turn rate is increased to 325% where it caps.\n* The time threshold to begin gaining bonus movement speed may be bugged, as Flat Bonus MS increases the time while % Bonus MS decreases the time.\n** The formula appears to be (X / 100) - Y, where:\n*** X = Total Flat MS after caps\n*** Y = 0.1 per 1% %MS \n* The delay is not modified from its initially calculated value on-cast, even if additional movement speed is gained.\n* '''Nunu and Willump's''' movement speed always increases in increments of ~14, regardless of which total value he will reach. This takes 6 increments to reach the Total MS + 85, but may take more to reach the Uncapped Flat + 85. Due to flat bonuses increasing the time threshold, it is possible for the ability's effects to end before reaching the total uncapped movement speed. \n* If '''Nunu''' turns continuously he will create a {{tt|600|Estimated}} unit circle, increased with '''bonus''' movement speed, striking the same point up to 3 times, for a maximum of {{ap|180|225|270|315|360}} {{as|(+ 300% AP)}} magic damage. The damage can be further increased by detonating the snowball, for a total of {{ap|360|450|540|630|720}} {{as|(+450% AP)}} magic damage.\n* {{cai|Realm Warp|Ryze}} will only teleport '''Nunu and Willump''', leaving the {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} behind.\n* Hovering the cursor on the HUD (e.g minimap / champion portraits) does not affect the cast and steering of ''Biggest Snowball Ever!''.",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Biggest Snowball Ever!'' is considered a [[Channel#Movement Channels|movement channel]], and so will be {{tip|interrupt|interrupted}} by {{tip|ground}} and {{tip|root}}.\n* There are 3 stages where the turn rate increases from the original one:\n** After turning for 1 second, the turn rate is increased to 175%.\n** After turning for 3 seconds, the turn rate is increased to 250%.\n** After turning for 6 seconds, the turn rate is increased to 325% where it caps.\n* The time threshold to begin gaining bonus movement speed may be bugged, as Flat Bonus MS increases the time while % Bonus MS decreases the time.\n** The formula appears to be (X ÷ 100) - Y, where:\n*** X = Total Flat MS after caps\n*** Y = {{fd|0.1}} per 1% %MS \n* The delay is not modified from its initially calculated value on-cast, even if additional movement speed is gained.\n* '''Nunu and Willump's''' movement speed always increases in increments of ~14, regardless of which total value he will reach. This takes 6 increments to reach the Total MS + 85, but may take more to reach the Uncapped Flat + 85. Due to flat bonuses increasing the time threshold, it is possible for the ability's effects to end before reaching the total uncapped movement speed. \n* If '''Nunu''' turns continuously he will create a {{tt|600|Estimated}} unit circle, increased with '''bonus''' movement speed, striking the same point up to 3 times, for a maximum of {{as|{{ap|180|225|270|315|360}}|magic damage}} {{as|(+ 300% AP)}} {{as|magic damage}}. The damage can be further increased by detonating the snowball, for a total of {{as|{{ap|360|450|540|630|720}}|magic damage}} {{as|(+450% AP)}} {{as|magic damage}}.\n* {{cai|Realm Warp|Ryze}} will only teleport '''Nunu and Willump''', leaving the {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} behind.\n* Hovering the cursor on the HUD (e.g [[Map (League of Legends)|mini map]] / champion portraits) does not affect the cast and steering of ''Biggest Snowball Ever!''.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within the same status effect, it will also be removed together with the ''slow'' upon activating ''Biggest Snowball Ever!''; e.g. {{cai|Wither|Nasus}}.\n{{ct|channel|attack=false|move=true|cast=Recasting the ability will interrupt it. All the other abilities are disabled|items=false|consume=false|spells=false}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
@@ -511,7 +507,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "targeting": "[[Direction-targeted|Direction]]",
       "target_range": 690,
       "image": {
         "full": "NunuE.png",
@@ -524,11 +520,11 @@
       },
       "description": [
         "{{sbc|Active:}} '''Nunu''' swiftly throws a volley of 3 snowballs in the target direction over {{fd|0.4}} seconds, each snowball shattering upon hitting an enemy, dealing {{as|magic damage}} to enemies in a cone.",
-        "Enemies hit 3 times are {{tip|slow|slowed}} for 1 second. Champions and large monsters hit once are also ''Snowbound'' for 4 seconds, resetting on each hit.",
-        "''Snowball Barrage'' can be re-activated up to 2 times at no cost for 3 seconds. An enemy cannot be {{tip|slow|slowed}} more than once. After 3 seconds, it is ''Willump's Turn''.",
-        "{{sbc|Willump's Turn:}} ''Snowbound'' enemies around '''Willump''' take {{as|magic damage}} and are {{tip|root|rooted}} for {{pp|0.5 to 1.5}} seconds."
+        "Enemies hit 3 times are {{tip|slow|slowed}} for 1 second. Champions and large monsters hit once are also ''Snowbound'' for 4 seconds, resetting on each hit. ''Snowball Barrage'' can be recast twice within 3 seconds at no additional cost.",
+        "{{sbc|Recast:}} '''Nunu''' hurls another volley of snowballs, mimicking the first cast's effects. An enemy may only be {{tip|slow|slowed}} once for being hit by 3 snowballs.",
+        "After 3 seconds of the first cast, ''Snowbound'' enemies around '''Willump''' take {{as|magic damage}} and are {{tip|root|rooted}} for {{pp|0.5 to 1.5}} seconds."
       ],
-      "notes": "* Because of snowballs' cast time and travel time it is possible for ''Willump's Turn'' to come in while '''Nunu''' is still launching his snowballs.\n* '''Nunu''' can move while casting ''Snowball Barrage''.",
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** ''Snowbound'' consumption is not considered as an ability activation, nor does it proc {{ri|Conqueror}}.\n* '''Nunu''' can move while casting ''Snowball Barrage''.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
@@ -733,7 +729,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "NunuR.png",
         "sprite": "spell8.png",
@@ -744,10 +740,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nunu and Willump''' {{ct|channel|sap|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,false}} heat from the surrounding {{tip|area of effect|area}} for 3 seconds, {{tip|slow|slowing}} affected enemies by {{pp|13|type=channel time|key=%|0;50 to 95;95|0 to 3|displayformula=increases by 4.5% every 0.25 seconds. ''Starts at 0.25 seconds and finishes at 2.75 seconds''}}, as well as gaining a {{tip|shield}}. The affected area is hidden if the duo is not {{tip|sight|visible}} to the enemy team.",
-        "At the end of the duration or if the channel is {{tip|interrupt|interrupted}}, surrounding enemies take {{as|magic damage}}, reduced by {{pp|4|key=%|type=channel time|changedisplay=true|100 to 0|0 to 3}}. Once the channel ends, affected enemies will remain {{tip|slow|slowed}} for {{pp|13|type=channel time|0 to 3|0 to 3}} seconds and any remaining shield will decay over 3 seconds."
+        "{{sbc|Active:}} '''Nunu''' and '''Willump''' {{tip|channel|sap}} heat from the surrounding area for 3 seconds, {{tip|slow|slowing}} affected enemies by {{pp|13|type=channel time|key=%|0;50 to 95;95|0 to 3|displayformula=increases by 4.5% every 0.25 seconds. ''Starts at 0.25 seconds and finishes at 2.75 seconds''}}, as well as gaining a {{tip|shield}}. The affected area is hidden if the duo is not {{tip|sight|visible}} to the enemy team. ''Absolute Zero'' can be recast after {{fd|0.5}} seconds.",
+        "At the end of the duration, if the channel is {{tip|interrupt|interrupted}}, or the ability is recast, surrounding enemies take {{as|magic damage}}, reduced by {{pp|4|key=%|type=channel time|changedisplay=true|100 to 0|0 to 3}}. Once the channel ends, affected enemies will remain {{tip|slow|slowed}} for {{pp|13|type=channel time|0 to 3|0 to 3}} seconds and any remaining shield will decay over 3 seconds.",
+        "{{sbc|Recast:}} '''Nunu''' and '''Willump''' end the {{tip|channel}} early."
       ],
-      "notes": "* No additional details.",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n{{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,false}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

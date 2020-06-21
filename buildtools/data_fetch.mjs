@@ -3,10 +3,100 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import he from 'he';
 import matchReplaceSpellEffects from '../src/javascript/matchreplace.mjs';
-
+import JSON5 from 'json5';
 
 const noReedoHrefs = new Set();
+
+/**
+ * From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
+ * @param body string?
+ */
+async function wikia_to_json(body) {
+    const text = await body.text();
+    const content = text.match(/<textarea[^>]*>([\s\S]*)<\/textarea>/m);
+    if (!content) {
+        console.warn("Missing data. No data found");
+        return null;
+    }
+    const raw = he.decode(content[1]);
+    if (raw.length < 3) {
+        console.warn("Missing data. Data length is less then 3");
+        return null;
+    }
+    let results = [];
+
+    // DIFRENT WAY OF CONVERTING TO JSON
+    // let state = 'start'
+    // for (let i = 0; i < raw.length; i++) {
+    //     let v = raw[i];
+    //     switch (state) {
+    //         case 'start':
+    //             if(v == '-' && raw[i+1] == '-') {
+    //                 i = raw.indexOf('\n',i)
+    //                 continue;
+    //             } else {
+    //                 i = raw.indexOf('{',i)
+    //                 state = 'obj'
+    //                 break;
+    //             }
+    //         case 'obj':
+    //             if(v.match(/[\W]/)) {
+    //                 break
+    //             } else {
+    //                 i = raw.indexOf('{',i)
+    //                 state = 'obj'
+    //                 break;
+    //             }
+    //             break;
+    //         default:
+    //             continue;
+    //     }
+    //     results.push(raw[i]);
+    // }
+
+    // let indent = 0
+    for (let line of raw.split('\n')) {
+        const tline = line.trim();
+        if(line === '' || tline.startsWith('--'))
+            continue;
+        if(line.startsWith('return')) {
+            results.push('{')
+            continue;
+        }
+        // if(line.includes('{'))
+        //     indent++;
+        // if(line.includes('}'))
+        //     indent--;
+        line = line
+            // //replaces [" and "] with "
+            .replace(/\["|"]/g,`"`)
+            // //replaces = with :
+            .replace(/=/g,`:`)
+            // //replaces [1] : with nothing if line has a { or is after a ', '
+            .replace(/, \[\d] : /g,`, `).replace(/{\[\d] : /g,`{`)
+            // //replaces { and } with [ and ] only if line has both
+            .replace(/{(.*)}/g,`[$1]`)
+
+            ;
+            // Special case for Aphelios
+            line = line.replace(/\[(\d)] : /g,`"$1" : `)
+        results.push(line);
+    }
+    const js = results.join('\n');
+
+    // DEBUG --- test if the data is valid data.
+    // fs.promises.writeFile('./buildtools/testjson.json', js, function (err) {
+    //     if (err) {
+    //         return console.log(err);
+    //     }
+    //     console.log(`The file  was saved!`);
+    // });
+
+    return JSON5.parse(js);
+
+}
 async function fetch_wikia(url) {
+    console.log('Fetching (wikia)',url);
     const response = await fetch(url);
     const text = await response.text();
 
@@ -26,9 +116,15 @@ async function fetch_wikia(url) {
         if (isFirstLine) {
             // line === "{{{{{1<noinclude>|Ability data</noinclude>}}}|Terrashape|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}"
             const match = line.match(/noinclude>}}}\|([^|]*)\|/);
-            obj["name"] = match[1];
-            console.log("Setting name to", match[1]);
-            isFirstLine = false;
+            if(match) {
+                obj["name"] = match[1];
+                console.log("Setting name to", match[1]);
+                isFirstLine = false;
+            } else {
+                obj["name"] = String(line);
+                console.log("Setting name to",line);
+                isFirstLine = false;
+            }
         } else {
             const parts = line.split('=');
             let key = parts[0].trim().replace(/ /g, '_');
@@ -309,12 +405,17 @@ function saveFile(path, data) {
 
 let cdn = "", lang = "", version = "", dispVersion = "";
 
+/**
+ * From https://ddragon.leagueoflegends.com/api/versions.json
+ * @param body JSON Object
+ */
 async function onRealmJsonResponse(body) {
-    cdn = "https://ddragon.leagueoflegends.com/cdn"; // body.cdn;
-    version = body[0]; // body.v;
+    cdn = "https://ddragon.leagueoflegends.com/cdn";
+    // Use the lateset version.
+    version = body[0];
     // Cuts the last .1 off of ddragon patch versions to look like normal patches.
-    dispVersion = version.lastIndexOf('.1') > 2 ? version.slice(0, version.lastIndexOf('.1')) : version;
-    lang = "en_US"; // body.l;
+    dispVersion = version.replace(/\.1$/,"")
+    lang = "en_US";
     console.log("Using ddragon version:", version);
 
     const championUrl = `${cdn}/${version}/data/${lang}/champion.json`;
@@ -327,28 +428,39 @@ async function onRealmJsonResponse(body) {
         cdn: cdn,
     });
 
-    console.log("Fetching (json): %s", championUrl)
+    const mod_data_url = `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`;
 
-    const response = await fetch(championUrl);
-    const body2 = await response.json();
-    return onChampionJsonResponse(body2);
+    console.log("Fetching (json): %s", championUrl);
+    console.log("Fetching (wikia-module): %s", mod_data_url);
+
+    const responseDDragon = await fetch(championUrl);
+    const responseWikia = await fetch(mod_data_url);
+    const bodyDDragon = await responseDDragon.json();
+    const bodyWikia = await wikia_to_json(responseWikia)
+    return onChampionJsonResponse(bodyDDragon, bodyWikia);
 }
 
-
-function onChampionJsonResponse(body) {
-    console.assert(body.type === 'champion');
-    console.assert(body.format === 'standAloneComplex');
-    console.assert(body.version === version);
+/**
+ * From https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion.json
+ * and From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
+ * @param champ_json JSON Object
+ * @param fandom_data JSON Object
+ */
+function onChampionJsonResponse(champ_json, fandom_data) {
+    // console.log('fandom_data',fandom_data)
+    console.assert(champ_json.type === 'champion');
+    console.assert(champ_json.format === 'standAloneComplex');
+    console.assert(champ_json.version === version);
     let returnData = {};
-    for (const keyid in body.data) {
-        const champ = body.data[keyid];
+    for (const keyid in champ_json.data) {
+        const champ = champ_json.data[keyid];
         // if (champ.id !== 'Syndra') continue;
         returnData[keyid] = {
             // version: champ.version, // ddragon version
-            id: champ.id, // "RekSai"
-            // key: champ.key, // "421" // "Rek'Sai"
+            id: champ.id, // Ex. "RekSai"
+            // key: champ.key, // Ex. "421"
             name: champ.name,
-            title: champ.title, // "the Void Burrower"
+            title: champ.title, // Ex. "the Void Burrower"
             // blurb: champ.blurb,
             // info: champ.info,
             // image: champ.image,
@@ -356,15 +468,14 @@ function onChampionJsonResponse(body) {
             resource: champ.partype, // Renamed 
             stats: champ.stats
         }
-
-        const fullDataPromise = fetch(`${cdn}/${version}/data/${lang}/champion/${champ.id}.json`)
-                .then((response) => response.json());
-
-        fetch_wikia(`https://leagueoflegends.fandom.com/wiki/Template:Data_${champ.name}?action=edit`)
-            .then((wikiaData) => doMergeData(fullDataPromise, wikiaData))
-            .then((data) => {
-                return saveFile(`./public/api/champion/${champ.id}.json`, data);
-            });
+        // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
+        const url = `${cdn}/${version}/data/${lang}/champion/${champ.id}.json`;
+        console.log('Fetching (ddragon)',url)
+        const fullDataPromise = fetch(url).then((response) => response.json());
+        
+        doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
+            return saveFile(`./public/api/champion/${champ.id}.json`, data);
+        });
     }
     Object.freeze(returnData);
     saveFile('./public/api/ChampionList.json', returnData);
@@ -404,23 +515,8 @@ function doMergeSkillData(){
 
 console.log('Hello');
 
-// if (process.argv.length <= 2) {
-//     console.log("WARNING champion id to download is required but not supplied");
-//     console.log("usage: node %s <champion ids...|all|list|help>", process.argv[1]);
-//     process.exit(1);
-// }
-// const clarg = process.argv[2]
-// if (clarg == "help" || clarg == "-h" || clarg == "--help") {
-//     console.log("usage: node %s <champion ids...|all|list|help>", process.argv[1])
-//     process.exit(0)
-// }
-// const all = (clarg == 'all');
-
-// const champsList = process.argv.slice(2).join(',').split(",")
-// console.log('Command Line Args: ', champsList)
-
-
 fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
+
 //https://ddragon.leagueoflegends.com/realms/na.json
 fetch("https://ddragon.leagueoflegends.com/api/versions.json")
     .then((response) => { return response.json(); })

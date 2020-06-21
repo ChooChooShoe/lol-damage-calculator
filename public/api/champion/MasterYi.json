@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.21.1",
+  "changes": "10.8.1",
   "id": "MasterYi",
   "name": "Master Yi",
   "title": "the Wuju Bladesman",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Slayer",
+  "herotype": "Assassin",
   "alttype": "Fighter",
   "rangetype": "Melee",
   "be_cost": 450,
@@ -106,12 +106,12 @@
       },
       "description": [
         "{{sbc|Active:}} '''Master Yi''' {{tip|vanish|vanishes}} and, after {{fd|0.225}} seconds, marks his target and then moves to mark the nearest {{tip|sight|visible}} un-marked enemy within 600 units, recurring up to 3 times, once every {{fd|0.225}} seconds.",
-        "Upon finishing marking, or if there're no other enemies in range, he {{tip|blink|re-appears}} after a {{fd|0.15}} second delay in front of his target and deals {{as|physical damage}} to all marked enemies, increased against [[monster]]s. If his target dies during the delay, he will reappear at the cast location instead.",
+        "Upon finishing marking, or if there're no other enemies in range, he {{tip|blinks|reappears}} after a {{fd|0.15}} second delay in front of his target and deals {{as|physical damage}} to all marked enemies, increased against {{tip|monster|monsters}}. If his target [[death|dies]] during the delay, he will reappear at the cast location instead.",
         "If there are no other un-marked enemies in range, he may strike the same enemies again, dealing {{fd|{{#var:l}}}}% damage instantly.",
-        "''Alpha Strike's'' primary and lesser damage can {{tip|critical strike|critically strike}} for {{as|{{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} and {{as|{{critical damage|{{#expr:60*{{#var:l}}/100}}|melee}} AD}} {{as|'''bonus''' physical damage}} respectively.",
-        "Basic attacks reduce ''Alpha Strike's'' {{stil|cooldown}} by 1 second."
+        "''Alpha Strike's'' primary and lesser damage can {{tip|critically strike}} for {{as|{{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} and {{as|{{critical damage|{{#expr:60*{{#var:l}}/100}}|melee}} AD}} {{as|'''bonus''' physical damage}} respectively.",
+        "Basic attacks reduce ''Alpha Strike's'' {{sti|cooldown}} by 1 second."
       ],
-      "notes": "* ''Alpha Strike's'' cooldown reduction applies on structures but not when ''Master Yi'' is {{tip|blind|blinded}}.\n* ''Master Yi'' can use [[summoner spell]]s during ''Alpha Strike''.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} around it. It will always grant vision around the primary target even if he doesn't bounce off it. This vision will not reveal [[brush|brushes]].\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* If the target becomes {{tip|untargetable}} during ''Alpha Strike's'' cast, ''Alpha Strike'' will not end, but will instead last as if it had kept bouncing around targets.\n* '''Master Yi''' will follow his primary target's movement even if it {{tip|vanish|vanishes}} or becomes {{tip|invisibility|invisible}}.\n* ''Alpha Strike's'' primary damage applies after '''Master Yi''' leaves {{tip|untargetable|untargetability}} and thus can attract turret aggro.\n* ''Alpha Strike'' counts as movement for the purposes of {{nie|Energized Strike}}, {{nie|Dreadnought}} and {{nie|Echo}}.\n* If the primary target is a champion, '''Master Yi''' will basic attack that champion when ''Alpha Strike'' finishes, but he cannot buffer ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}''.\n* If the primary target is a minon or monster, '''Master Yi''' can buffer either ''{{ai|Highlander}}'' or ''{{ai|Wuju Style}}'', but he will not automatically basic attack the target.",
+      "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}} but not when '''Master Yi''' is {{tip|blind|blinded}}.\n* If the target becomes {{tip|untargetable}} during ''Alpha Strike's'' cast, the ability will not end, but will instead last as if it had kept bouncing around targets.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} around it. It will always grant vision around the primary target even if he doesn't bounce off it. This vision will not reveal through {{tip|brush|brushes}}.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to X units; If the target teleports a very long distance, it cannot be followed.\n* ''Alpha Strike'' counts as movement for the purposes of {{nie|Energized Strike}}, {{nie|Dreadnought}} and {{nie|Echo}}.\n* '''Master Yi''' can use [[summoner spell]]s with the exception of {{si|Flash}} and {{si|Teleport}} during ''Alpha Strike''.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.\n* {{tip|Spell shield}} will only block a single instance of damage.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/55/60/65/70",
@@ -119,7 +119,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Bonus Damage|{{ap|{{#var:m1}} to {{#var:m5}}}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -129,17 +129,17 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Bonus Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>"
+              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>"
             ]
           }
         },
         {
           "levelingtext": "{{st|Reduced Damage|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Reduced Monster Damage|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -159,9 +159,9 @@
             ],
             "st_slices": [
               "Maximum Single-Target Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>",
+              "<simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>",
               "Max Monster Single-Target Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>"
             ]
           }
         }
@@ -172,10 +172,6 @@
       "name": "Meditate",
       "maxrank": 5,
       "cooldown": [
-        28,
-        28,
-        28,
-        28,
         28
       ],
       "cost": [
@@ -199,7 +195,8 @@
       "description": [
         "{{sbc|Active:}} '''Master Yi''' {{tip|channels}} for up to 4 seconds, {{tip|healing}} himself every {{fd|0.5}} seconds, increased by {{as|{{pp|11|type='''missing''' health|key=%|0 to 100|key1=%|0 to 100|formula=1% per 1% missing health}}|health}}.",
         "While channeling, '''Master Yi''' reduces incoming damage, halved against [[turret]]s, pauses {{ais|Wuju Style|Master Yi}} and {{ais|Highlander|Master Yi}} duration, and grants one stack of {{ai|Double Strike|Master Yi}} per second.",
-        "''Meditate'' resets '''Master Yi's''' autoattack timer."
+        "After the channel ends, '''Master Yi''' reduces incoming damage for another {{fd|0.25}} seconds, with lesser effectiveness against non-turret damage but greater effectiveness vs turret damage. {{bug|1}}<!-- Yes it scales down with ranks as of current patch contact AnataBakka or Teh 2020-04-20 -->",
+        "''Meditate'' {{tip|basic attack reset|resets}} '''Master Yi's''' basic attack timer."
       ],
       "notes": "* ''Meditate's'' healing amount updates dynamically as he heals himself, making ''Master Yi'' heal for less as his current health increases.",
       "skillkey": "W",
@@ -360,6 +357,68 @@
               "damage_type": "unknown"
             }
           ]
+        },
+        {
+          "levelingtext": "{{st|Post-Channel Damage Reduction|{{ap|100-60 to 100-70}}%|Post-Channel Turret Damage Reduction|{{ap|100-60/2 to 100-70/2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                40,
+                37.5,
+                35,
+                32.5,
+                30
+              ],
+              [
+                70,
+                68.75,
+                67.5,
+                66.25,
+                65
+              ]
+            ],
+            "st_slices": [
+              "Post-Channel Damage Reduction",
+              "<spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Post-Channel Turret Damage Reduction",
+              "<spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  37.5,
+                  35,
+                  32.5,
+                  30
+                ]
+              },
+              "title": "Post-Channel Damage Reduction",
+              "str": "<spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  70,
+                  68.75,
+                  67.5,
+                  66.25,
+                  65
+                ]
+              },
+              "title": "Post-Channel Turret Damage Reduction",
+              "str": "<spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "unknown"
+            }
+          ]
         }
       ]
     },
@@ -381,7 +440,7 @@
         0,
         0
       ],
-      "targeting": "none",
+      "targeting": "None",
       "image": {
         "full": "WujuStyle.png",
         "sprite": "spell7.png",
@@ -392,9 +451,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Master Yi's''' basic attacks deal {{tip|true damage|{{as|'''bonus''' true damage}}}} for 5 seconds."
+        "{{sbc|Active:}} '''Master Yi''' empowers his sword, causing his basic attacks to deal {{tip|true damage|{{as|'''bonus''' true damage}}}} for 5 seconds."
       ],
-      "notes": "* ''Wuju Style'' has no cast time and does not interrupt ''Master Yi's'' previous orders.\n* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{ai|Spirit's Refuge|Shen|blocked}} but can be {{ai|Counter Strike|Jax|dodged}} and/or miss if '''Master Yi''' is {{tip|blind|blinded}}.",
+      "notes": "* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{ai|Spirit's Refuge|Shen|blocked}} but can be {{ai|Counter Strike|Jax|dodged}} and/or miss if '''Master Yi''' is {{tip|blind|blinded}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -464,7 +523,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "none",
+      "targeting": "None",
       "image": {
         "full": "Highlander.png",
         "sprite": "spell7.png",
@@ -476,28 +535,28 @@
       },
       "description": [
         "{{sbc|Passive:}} Champion {{tip|takedown|takedowns}} reduce the '''current''' {{sti|cooldown}} of '''Master Yi's''' basic [[Champion ability|abilities]] by 70%.",
-        "{{sbc|Active:}} For 7 seconds, '''Master Yi''' is {{tip|ghosted}}, gains {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|'''bonus''' movement speed}}}}, and becomes [[Slow resist#Slow Immunity|immune]] to {{tip|slow|slows}} and {{tip|cripple|cripples}}.",
+        "{{sbc|Active:}} '''Master Yi''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and {{tip|cripple|cripples}}. For the next 7 seconds, he is {{tip|ghosted}}, gains {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|'''bonus''' movement speed}}}}, and becomes {{tip|slow-immune}}.",
         "While active, champion {{tip|takedown|takedowns}} extend the duration of ''Highlander'' by 7 seconds."
       ],
-      "notes": "* [[Decoy]]s count as champions for the takedown effect.\n* ''Highlander'' has no cast time and does not interrupt ''Master Yi's'' previous orders.\n* ''Highlander's'' slow immunity extends to all slows including abilities with multiple effects (e.g {{tip|fear}}, {{tip|charm}}) and attack speed slows. The abilities themselves won't be negated, but the slows will.\n* There're two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
+      "notes": "* ''Highlander's'' slow immunity extends to all slows including abilities with multiple effects (e.g {{tip|fear}}, {{tip|charm}}) and attack speed slows. The abilities themselves won't be negated, but the slows will.\n* There are two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "85",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 80}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','42.5','55','67.5','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['25','35','45','55','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                30,
-                42.5,
+                25,
+                35,
+                45,
                 55,
-                67.5,
-                80
+                65
               ],
               [
                 35,
@@ -517,11 +576,11 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  30,
-                  42.5,
+                  25,
+                  35,
+                  45,
                   55,
-                  67.5,
-                  80
+                  65
                 ]
               },
               "title": "Bonus Movement Speed",

@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.116",
-  "changes": "9.15.1",
+  "changes": "10.6.1",
   "id": "Rumble",
   "name": "Rumble",
   "title": "the Mechanized Menace",
@@ -49,30 +49,6 @@
     "attackspeed": 0.644
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Junkyard Titan",
-      "maxrank": 0,
-      "targeting": "[[Passive]] / [[Self-targeted|Self]]",
-      "image": {
-        "full": "Rumble_JunkyardTitan1.png",
-        "sprite": "passive3.png",
-        "group": "passive",
-        "x": 336,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|{{tip|Heat}}:}} '''Rumble''' gains ''{{tip|Heat}}'' each time he uses a basic [[Champion ability|ability]] (20 for {{ai|Flamespitter|Rumble}}, 20 for {{ai|Scrap Shield|Rumble}}, 10 for {{ai|Electro Harpoon|Rumble}}) and loses 10 ''{{tip|Heat}}'' per second after not using any abilities for 4 seconds.",
-        "{{sbc|Danger Zone:}} '''Rumble's''' basic abilities are enhanced when cast at/above 50 ''{{tip|Heat}}''.",
-        "{{sbc|Overheating:}} At 100 ''{{tip|Heat}}'', '''Rumble''' becomes '''Overheated''', {{tip|silence|silencing}} himself for 6 seconds. During this time, his [[basic attack]]s deal {{pp|25 to 110|color=magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} while his ''{{tip|Heat}}'' rapidly decays by 10 every {{fd|0.6}} seconds."
-      ],
-      "notes": "* The enhanced attacks apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot).\n** They do not affect structures.\n* The self {{tip|silence}} is unaffected by {{tip|cleanse|cleansing}} effects and {{tip|tenacity}}. \n* '''Rumble''' can use [[summoner spell]]s and/or [[active ability items|active items]] while he is {{ai|Junkyard Titan 3|Rumble|overheating}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "RumbleFlameThrower",
       "name": "Flamespitter",
@@ -91,7 +67,7 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "targeting": "None",
       "target_range": 600,
       "image": {
         "full": "RumbleFlameThrower.png",
@@ -106,7 +82,7 @@
         "{{sbc|Active:}} '''Rumble''' activates his flamethrower for 3 seconds, granting 20 {{tip|Heat}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to all enemies in a cone in front of him. Deals reduced damage to {{tip|minions}}.",
         "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Flamespitter's'' [[damage]] is increased by 50%."
       ],
-      "notes": "* ''Flamespitter'' has no cast time and does not interrupt '''Rumble's''' previous orders.\n* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.\n* ''Flamespitter'' is not canceled by {{tip|stasis}} effects (e.g. {{ii|Stopwatch}}, {{ii|Zhonya's Hourglass}}, {{ai|Tempered Fate|Bard}}).",
+      "notes": "* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.\n* ''Flamespitter'' is not canceled by {{tip|stasis}} effects (e.g. {{ii|Stopwatch}}, {{ii|Zhonya's Hourglass}}, {{ai|Tempered Fate|Bard}}).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -114,7 +90,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Magic Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AP)}}|Damage Per {{fd|0.25}} Seconds|{{ap|{{#var:b1}}/12 to {{#var:b5}}/12|round=3}} {{as|(+ {{ap|{{#var:r}}/12|round=2}}% AP)}}}}\n{{st|Minion Damage Percentage|{{ap|{{#var:m1}} to {{#var:m5}}}}%|Total Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}} to {{#var:m5}})/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100 to {{#var:r}}*{{#var:m5}}/100}}% AP)}}|Minion Damage per {{fd|0.25}} Seconds|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}} to {{#var:m5}})/100/12|round=3}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100/12 to {{#var:r}}*{{#var:m5}}/100/12|round=3}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Damage Per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>/12 round=3\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>/12 round=2\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minion Damage Percentage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>%</span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12 round=3\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12 round=3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Damage Per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>/12 round=3\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>/12 round=2\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minion Damage Percentage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>%</span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12 round=3\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12 round=3\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -132,17 +108,17 @@
             ],
             "st_slices": [
               "Minion Damage Percentage",
-              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>%",
+              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>%",
               "Total Minion Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>",
+              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>",
               "Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds",
-              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12 round=3\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12 round=3\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12 round=3\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12 round=3\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>"
             ]
           }
         },
         {
           "levelingtext": "{{st|Total Enhanced Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b5}}*1.5}} {{as|(+ {{ap|{{#var:r}}*1.5}}% AP)}}|Enhanced Damage Per {{fd|0.25}} Seconds|{{ap|{{#var:b1}}*1.5/12 to {{#var:b5}}*1.5/12}} {{as|(+ {{ap|{{#var:r}}*1.5/12}}% AP)}}}}\n{{st|Total Enhanced Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}} to {{#var:m5}})/100*1.5}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100*1.5 to {{#var:r}}*{{#var:m5}}/100*1.5}}% AP)}}|Minion Damage per {{fd|0.25}} Seconds|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}} to {{#var:m5}})/100/12*1.5|round=4}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100/12*1.5 to {{#var:r}}*{{#var:m5}}/100/12*1.5}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Enhanced Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*1.5\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*1.5\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage Per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*1.5/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*1.5/12\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*1.5/12\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Total Enhanced Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100*1.5\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100*1.5\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12*1.5 round=4\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12*1.5\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Enhanced Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*1.5\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*1.5\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage Per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*1.5/12 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*1.5/12\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*1.5/12\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Total Enhanced Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100*1.5\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100*1.5\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12*1.5 round=4\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12*1.5\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -162,399 +138,11 @@
             ],
             "st_slices": [
               "Total Enhanced Minion Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100*1.5\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100*1.5\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>",
+              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100*1.5\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100*1.5\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>",
               "Minion Damage per <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> Seconds",
-              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12*1.5 round=4\">Error: ReferenceError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12*1.5\">Error: ReferenceError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>)*(<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)/100/12*1.5 round=4\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100/12*1.5 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100/12*1.5\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AP)</span>"
             ]
           }
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "RumbleShield",
-      "name": "Scrap Shield",
-      "maxrank": 5,
-      "cooldown": [
-        6,
-        6,
-        6,
-        6,
-        6
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
-      "image": {
-        "full": "RumbleShield.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 144,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Rumble''' gains a {{tip|shield}} for {{fd|1.5}} seconds.",
-        "While shielding himself '''Rumble''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} until the duration of the shield ends or if the shield is broken.",
-        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Scrap Shield's'' effects are increased by 50%."
-      ],
-      "notes": "* ''Scrap Shield'' has no cast time and does not interrupt '''Rumble's''' previous orders ([[basic attack]] animation is canceled on-cast).",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "6",
-      "effects": [
-        {
-          "levelingtext": "{{st|Shield Strength|{{ap|60 to 200}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                60,
-                95,
-                130,
-                165,
-                200
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              }
-            ],
-            "st_slices": [
-              "Shield Strength",
-              "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  60,
-                  95,
-                  130,
-                  165,
-                  200
-                ],
-                "player_total_ap": 0.5
-              },
-              "title": "Shield Strength",
-              "str": "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                15,
-                20,
-                25,
-                30,
-                35
-              ]
-            ],
-            "st_slices": [
-              "Bonus Movement Speed",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  15,
-                  20,
-                  25,
-                  30,
-                  35
-                ]
-              },
-              "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Enhanced Shield Strength|{{ap|60*1.5 to 200*1.5}} {{as|(+ 75% AP)}}}}\n{{st|Enhanced Bonus Movement Speed|{{ap|15*1.5 to 35*1.5}}%}}",
-          "str": "<ul><li><span class=\"blue\">Enhanced Shield Strength</span>: <span><spell-span :list=\"['90','142.5','195','247.5','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Enhanced Bonus Movement Speed</span>: <span><spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                90,
-                142.5,
-                195,
-                247.5,
-                300
-              ],
-              [
-                22.5,
-                30,
-                37.5,
-                45,
-                52.5
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.75
-              }
-            ],
-            "st_slices": [
-              "Enhanced Bonus Movement Speed",
-              "<spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  90,
-                  142.5,
-                  195,
-                  247.5,
-                  300
-                ],
-                "player_total_ap": 0.75
-              },
-              "title": "Enhanced Bonus Movement Speed",
-              "str": "<spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "RumbleGrenade",
-      "name": "Electro Harpoon",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "target_range": 850,
-      "image": {
-        "full": "RumbleGrenade.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 192,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Rumble''' periodically [[stocks]] an ''Electro Harpoon'' charge, up to a maximum of 2.",
-        "{{sbc|Active:}} '''Rumble''' shoots a electrical harpoon, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them for 2 seconds. Hitting the same target with another harpoon enhances the {{tip|slow}} (stacks additively).",
-        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Electro Harpoon's'' effects are increased by 50%."
-      ],
-      "notes": "* If '''Rumble''' casts ''Electro Harpoon'' before ''Overheating'', he may still use another charge within three seconds of the initial cast.\n* Each ''Electro Harpoon'' cast triggers {{ii|Sheen}} (and its upgrades) {{nie|Spellblade}} and stacks {{ai|Force Pulse|Kassadin}}.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 160}} {{as|(+ 40% AP)}}|Total Magic Damage|{{ap|60*2 to 160*2}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|15 to 35}}%|Total Slow|{{ap|15*2 to 35*2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['120','170','220','270','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Slow</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                60,
-                85,
-                110,
-                135,
-                160
-              ],
-              [
-                120,
-                170,
-                220,
-                270,
-                320
-              ],
-              [
-                15,
-                20,
-                25,
-                30,
-                35
-              ],
-              [
-                30,
-                40,
-                50,
-                60,
-                70
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "player_total_ap": 0.8
-              }
-            ],
-            "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "Total Slow",
-              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  60,
-                  85,
-                  110,
-                  135,
-                  160
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  120,
-                  170,
-                  220,
-                  270,
-                  320
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Total Slow",
-              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Enhanced Magic Damage|{{ap|60*1.5 to 160*1.5}} {{as|(+ 60% AP)}}|Total Enhanced Magic Damage|{{ap|60*1.5*2 to 160*1.5*2}} {{as|(+ 120% AP)}}}}<!--\n-->{{st|Enhanced Slow|{{ap|15*1.5 to 35*1.5}}%|Total Enhanced Slow|{{ap|15*1.5*2 to 35*1.5*2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Enhanced Magic Damage</span>: <span><spell-span :list=\"['90','127.5','165','202.5','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Total Enhanced Magic Damage</span>: <span><spell-span :list=\"['180','255','330','405','480']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Enhanced Slow</span>: <span><spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Enhanced Slow</span>: <span><spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                90,
-                127.5,
-                165,
-                202.5,
-                240
-              ],
-              [
-                180,
-                255,
-                330,
-                405,
-                480
-              ],
-              [
-                22.5,
-                30,
-                37.5,
-                45,
-                52.5
-              ],
-              [
-                45,
-                60,
-                75,
-                90,
-                105
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.6
-              },
-              {
-                "player_total_ap": 1.2
-              }
-            ],
-            "st_slices": [
-              "Enhanced Slow",
-              "<spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "Total Enhanced Slow",
-              "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  90,
-                  127.5,
-                  165,
-                  202.5,
-                  240
-                ],
-                "player_total_ap": 0.6
-              },
-              "title": "Enhanced Slow",
-              "str": "<spell-span :list=\"['22.5','30','37.5','45','52.5']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  180,
-                  255,
-                  330,
-                  405,
-                  480
-                ],
-                "player_total_ap": 0.6
-              },
-              "title": "Total Enhanced Slow",
-              "str": "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
         }
       ]
     },
@@ -572,7 +160,7 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Vector-targeted",
       "target_range": 1700,
       "image": {
         "full": "RumbleCarpetBomb.png",
@@ -585,7 +173,7 @@
       },
       "description": [
         "{{sbc|Active:}} '''Rumble''' deploys a barrage of rockets 1000 units down the target path, landing in a line over 1 second and lasting for 5 seconds.",
-        "Enemies within the line of flaming rockets take {{as|magic damage}} every {{fd|0.5}} seconds and are {{tip|slow|slowed}} by 35%. After leaving the area the damage will {{tip|persistent damage|linger}} for 1 second."
+        "Enemies within the line of rockets take {{as|magic damage}} every {{fd|0.5}} seconds and are {{tip|slow|slowed}} by 35%. After leaving the area the damage will linger for 1 second."
       ],
       "notes": "* ''The Equalizer'' is blocked by {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}. The line of rockets placed on the ground before being intercepted are not destroyed.",
       "skillkey": "R",

@@ -1,6 +1,6 @@
 {
   "patch": "V5.10",
-  "changes": "9.24.1",
+  "changes": "10.3.1",
   "id": "Ekko",
   "name": "Ekko",
   "title": "the Boy Who Shattered Time",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Slayer",
+  "herotype": "Assassin",
   "alttype": "Fighter",
   "rangetype": "Melee",
   "be_cost": 6300,
@@ -69,7 +69,7 @@
         "''Resonance'' cannot affect the same target more than once every few seconds.",
         "{{sbc|Innate - Stolen Time:}} Triggering ''Resonance'' against a {{tip|champion}} grants {{pp2|key=%|50 to 80 for 4|1 to 16|color=movement speed}} {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{pp2|2 to 3 for 3|1 to 11}} seconds."
       ],
-      "notes": "* No additional details.",
+      "notes": "* '''Ekko's''' basic attacks have different animations based on how many stacks his target has. His attack pattern is as follows: \n** {{tt|Downwards|first stack}} → {{tt|Upwards|second stack}} → {{tt|Sideways|third stack to consume all stacks}}\n*** If the target has already been affected by ''Resonance'', '''Ekko's''' basic attack animations will kick or attack the target sideways.\n* {{Pending for test}}: ''Z-Drive Resonance's'' application via basic attacks interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -105,8 +105,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ekko''' throws a grenade in the target direction, dealing {{as|magic damage}} to enemies along its path.",
-        "After traveling 700 units or upon hitting an enemy champion, the grenade slows down for {{fd|1.75}} seconds, expanding and creating a ''Temporal Sickness'' field that {{tip|slow|slows}} nearby enemies, while continuing to travel in its direction for another 190 units and expanding for another 50 units.",
+        "{{sbc|Active:}} '''Ekko''' throws a temporal grenade in the target direction, dealing {{as|magic damage}} to enemies along its path.",
+        "After traveling 700 units or upon hitting an enemy {{tip|champion}}, the grenade slows down for {{fd|1.75}} seconds, expanding and creating a ''Temporal Sickness'' field that {{tip|slow|slows}} nearby enemies, while continuing to travel in its direction for another 190 units and expanding for another 50 units.",
         "After finishing its path, the grenade contracts and returns to '''Ekko''' at a higher speed, dealing {{as|magic damage}} to enemies along its path.",
         "''The traveling and returning pass each cannot damage the same enemy more than once.''"
       ],
@@ -307,7 +307,7 @@
         "{{sbc|Active:}} '''Ekko''' calls upon an afterimage that bats a device to the target location. After traveling over 3 seconds, the device expands to {{tip|slow}} enemies by 40%, only revealing itself to enemies in the last 1 second.",
         "If '''Ekko''' enters the expansion within the next {{fd|1.5}} seconds after it lands, it detonates to {{tip|shield}} him for 2 seconds and {{tip|stun}} any enemies within for {{fd|2.25}} seconds."
       ],
-      "notes": "* ''Parallel Convergence's'' active provides {{tip|sight}} in its radius 2 seconds after cast and for as long as the {{tip|slow|slowing}} field is active.\n* Ekko can detonate the expansion even while {{tip|untargetable}} (i.e. {{ais|Chronobreak|Ekko}} dash).\n* Ekko's shield buff reads ''Seen It All Before'': \"Ekko has already seen this timeline and is able to avoid some incoming damage\".\n* Enemies affected by the stun receive the debuff ''Temporal Suspension'': \"The unit is frozen in time. WARNING: Avoid the detonation radius of temporal anomalies.\"\n* The passive applies {{tip|proc damage}}.",
+      "notes": "* ''Parallel Convergence's'' active provides {{tip|sight}} in its radius 2 seconds after cast and for as long as the {{tip|slow|slowing}} field is active.\n* '''Ekko''' can detonate the expansion even while {{tip|untargetable}} (i.e. {{ais|Chronobreak|Ekko}} dash).\n* '''Ekko's''' {{tip|shield}} buff reads ''Seen It All Before'': \"'''Ekko''' has already seen this timeline and is able to avoid some incoming damage\".\n* Enemies affected by the stun receive the debuff ''Temporal Suspension'': \"The unit is frozen in time. WARNING: Avoid the detonation radius of temporal anomalies.\"\n* The passive applies {{tip|proc damage}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "30/35/40/45/50",
@@ -390,10 +390,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ekko''' {{tip|dashes}} towards the target location. The next basic attack thereafter has {{sti|range|300 '''bonus''' range}}, deals {{as|'''bonus''' magic damage}}, and causes him to {{tip|blink}} within {{tt|125|Estimated.}} {{sti|range}} of the target.",
-        "''Phase Dive'' resets '''Ekko's''' basic attack timer."
+        "{{sbc|Active:}} '''Ekko''' {{tip|dashes}} in the target direction, then causes his next [[basic attack]] within the next 3 seconds to have {{sti|range|300 '''bonus''' range}} and make him {{tip|blink}} within {{tt|125|Estimated}} range of the target after a {{fd|0.25}} seconds cast time, dealing {{as|'''bonus''' magic damage}}.",
+        "''Phase Dive'' {{tip|basic attack reset|resets}} '''Ekko's''' basic attack timer."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* If '''Ekko''' loses {{tip|sight}} of his target or it becomes {{tip|untargetable}} during the basic attack's cast time, the basic attack will cancel, but '''Ekko''' will keep the buff and allow him to re-cast it.\n* {{Pending for test}}: Parry interactions ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40/45/50/55/60",
@@ -460,7 +460,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Ground-targeted|Ground]]",
+      "targeting": "None",
       "image": {
         "full": "EkkoR.png",
         "sprite": "spell2.png",
@@ -471,10 +471,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} Upon learning ''Chronobreak'' or if its '''current''' cooldown is lower than 4 seconds, '''Ekko''' spawns a time-delayed afterimage of himself that tracks where he was 4 seconds ago.",
-        "{{sbc|Active:}} '''Ekko''' {{tip|dash|traces}} back to his afterimage, entering {{tip|stasis}} during the transportation, dealing {{as|magic damage}} to surrounding enemies on arrival and {{tip|healing}} himself."
+        "{{sbc|Passive:}} Upon learning ''Chronobreak'' or if its '''current''' cooldown is lower than 4 seconds, '''Ekko''' spawns a time-delayed ''afterimage'' of himself that tracks where he was 4 seconds ago.",
+        "{{sbc|Active:}} '''Ekko''' enters {{tip|stasis}} and becomes immune to {{tip|airborne|displacements}} at the start of the cast time, after which he {{tip|heal|heals}} himself and {{tip|dash|traces}} back to his ''afterimage'' over {{fd|0.5}} seconds, dealing {{as|magic damage}} to surrounding enemies on arrival."
       ],
-      "notes": "* '''Ekko''' will attempt to basic attack the closest target, but can do so quicker if he manually attack commands after the dash.",
+      "notes": "* '''Ekko''' will attempt to basic attack the closest target after appearing at the cast location, but can do so quicker if he manually attack commands after the dash.\n* The ''afterimage'' is always visible to '''Ekko''' and his allies. To enemies, the ''afterimage'' can only be seen if they {{tip|sight}} of it.\n** A link can also be seen between the ''afterimage'' and '''Ekko''', following the same visibility rules as above.\n* If '''Ekko''' dies to the {{tip|Nexus Obelisk}} during ''Chronobreak's'' cast time, the ability will not go on {{sti|cooldown}}.\n* [[File: Quicksilver Sash item.png|20px|link=]] {{nie|Quicksilver}} is put on a 1-second {{sti|cooldown}} during ''Chronobreak''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

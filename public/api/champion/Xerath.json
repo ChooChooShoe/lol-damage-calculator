@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.126",
-  "changes": "9.15.1",
+  "changes": "10.9.1",
   "id": "Xerath",
   "name": "Xerath",
   "title": "the Magus Ascendant",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Mage",
-  "alttype": "Slayer",
+  "alttype": "",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -64,9 +64,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Xerath''' periodically empowers his next [[basic attack]] to restore {{pp|18|30|33|36|42|48|54|63|72|81|90|102|114|126|138|150|165|180|195|formula=27 plus 3 at each level up to 3, then 6 at each level up to 6, 9 at each level up to 10, 12 at each level up to 15, and 15 at each level|color=mana}} {{sti|mana|{{as|mana}}}}, doubled to {{pp|18|60|66|72|84|96|108|126|144|162|180|204|228|252|276|300|330|360|390|formula=54 plus 6 at each level up to 3, then 12 at each level up to 6, 18 at each level up to 10, 24 at each level up to 15, and 30 at each level|color=mana}} against enemy champions."
+        "{{sbc|Innate:}} '''Xerath''' periodically empowers his next [[basic attack]] to restore {{pp|18|30|33|36|42|48|54|63|72|81|90|102|114|126|138|150|165|180|195|formula=27 plus 3 at each level up to 3, then 6 at each level up to 6, 9 at each level up to 10, 12 at each level up to 15, and 15 at each level|color=mana}} {{sti|mana|{{as|mana}}}}, doubled to {{pp|18|60|66|72|84|96|108|126|144|162|180|204|228|252|276|300|330|360|390|formula=54 plus 6 at each level up to 3, then 12 at each level up to 6, 18 at each level up to 10, 24 at each level up to 15, and 30 at each level|color=mana}} against enemy champions.",
+        "''Mana Surge'' does not trigger if '''Xerath''' would restore above his {{as|'''maximum''' mana}}."
       ],
-      "notes": "* ''Manasurge'' does not occur if it would restore beyond '''Xerath's ''' {{as|'''maximum''' mana}}.\n* {{Pending for test}}: ''Manasurge's '' interactions with {{tip|turret|turrets}}, {{tip|ward|wards}}, {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* ''Manasurge'' does not occur against [[Structure|structures]] and {{tip|Ward|wards}}.\n* {{Pending for test}}: ''Manasurge's '' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -102,11 +103,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over {{fd|1.5}} seconds, gradually {{tip|slow|slowing}} himself for the duration by up to 50%.",
-        "''Arcanopulse'' is canceled when the charge ends, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
-        "{{sbc|Second Cast:}} After a brief delay, '''Xerath''' fires a beam of energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit."
+        "{{sbc|Active:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over {{fd|1.5}} seconds, gradually {{tip|slow|slowing}} himself for the duration by up to 50%. ''Arcanopulse'' can be recast at any time within its duration.",
+        "If the charge completes without reactivation, ''Arcanopulse'' is cancelled, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
+        "{{sbc|Recast:}} After a {{fd|0.5}} seconds delay, '''Xerath''' fires a beam of energy in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit."
       ],
-      "notes": "* If '''Xerath''' changes locations by any means (i.e - {{tip|airborne|displacements}}), the beam will fire from the original point of casting.",
+      "notes": "* ''Arcanopulse'' will always fire from the original recasting position.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "80/90/100/110/120",
@@ -227,8 +228,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target area which strikes after a {{fd|0.5}}-second delay, {{tip|sight|revealing}} it, and  dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
-        "Enemies in the center of the blast take 50% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying down to 25% over the duration."
+        "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target location which strikes after a {{fd|0.5}}-second delay, {{tip|sight|revealing}} the area, and dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
+        "Enemies in the center of the blast take {{fd|66.7}}% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying down to 25% over the duration."
       ],
       "notes": "* No additional notes.",
       "skillkey": "W",
@@ -281,53 +282,62 @@
           ]
         },
         {
-          "levelingtext": "{{st|Enhanced Damage|{{ap|90 to 270}} {{as|(+ 90% AP)}}}}<!--\n-->{{st|Enhanced Slow|{{ap|60 to 80}}%}}",
-          "str": "<ul><li><span class=\"blue\">Enhanced Damage</span>: <span><spell-span :list=\"['90','135','180','225','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Enhanced Slow</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Enhanced Damage|{{ap|60*1.667 to 180*1.667}} {{as|(+ {{ap|60*1.667}}% AP)}}}}\n{{st|Enhanced Slow|{{ap|60 to 80}}%}}",
+          "str": "<ul><li><span class=\"blue\">Enhanced Damage</span>: <span><spell-span :list=\"['100.02','150.03','200.04','250.05','300.06']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100.02']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Enhanced Slow</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                90,
-                135,
-                180,
-                225,
-                270
+                100.02,
+                150.03,
+                200.04,
+                250.05,
+                300.06
               ],
               [
-                60,
-                65,
-                70,
-                75,
-                80
-              ]
+                100.02
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.9
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
               }
             ],
             "st_slices": [
-              "Enhanced Slow",
-              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "Enhanced Damage",
+              "<spell-span :list=\"['100.02','150.03','200.04','250.05','300.06']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100.02']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
-                  90,
-                  135,
-                  180,
-                  225,
-                  270
+                "base_damage": [
+                  100.02,
+                  150.03,
+                  200.04,
+                  250.05,
+                  300.06
                 ],
-                "player_total_ap": 0.9
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
               },
-              "title": "Enhanced Slow",
-              "str": "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
+              "title": "Enhanced Damage",
+              "str": "<spell-span :list=\"['100.02','150.03','200.04','250.05','300.06']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100.02']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -445,11 +455,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' {{tip|entangle|entangles}} himself to his current location for up to 10 seconds, gaining the ability to cast {{ai|Rite of the Arcane||Arcane Barrage}} multiple times, but losing access to cast his basic abilities.",
-        "{{sbc|{{ai|Rite of the Arcane||Arcane Barrage}} - Active:}} '''Xerath''' launches a blast of arcane energy to the target area which strikes after {{fd|0.5}} seconds, dealing {{as|magic damage}} and briefly granting {{tip|sight}} of it. Each cast has a {{tt|static cooldown|Unaffected by cooldown reduction}} of {{fd|0.8}} seconds.",
-        "''Rite of the Arcane'' can be canceled early by moving or attacking. If ''Arcane Barrage'' ends without any usage, half the {{sti|cooldown}} is refunded. ''Rite of the Arcane'' is canceled and put on full {{sti|cooldown}} is {{tip|interrupt|interrupted}}."
+        "{{sbc|Active:}} '''Xerath''' unleashes his true power, {{tip|channel|channeling}} and {{tip|sight|revealing}} himself for up to 10 seconds, during which he gains a wider field of view, though not a larger {{tip|sight|vision}} range, and is granted the ability to recast ''Rite of the Arcane'' multiple times within its duration after a {{fd|0.5}} seconds delay.",
+        "{{sbc|Recast:}} '''Xerath''' launches a blast of arcane energy to the target location which strikes after {{fd|0.5}} seconds, dealing {{as|magic damage}} and briefly granting {{tip|sight}} of the area. Each cast has a {{tt|static cooldown|Unaffected by cooldown reduction}} of {{fd|0.8}} seconds.",
+        "If ''Rite of the Arcane'' ends without any recasts and is interrupted by '''Xerath''' or the channel times out, half the {{sti|cooldown}} is refunded."
       ],
-      "notes": "* ''Rite of the Arcane'' has a brief delay. During this time, ''Arcane Barrage'' cannot be activated and a circle indicating the ability's maximum range appears (starting small and rapidly expanding to the maximum range over the cast time). \n** The maximum-range indicator is visible to both allies and enemies. \n* ''Arcane Barrage'' uses a [[Champion ability|barrage system]] so that it can be cast multiple times within a given period at no additional cost.\n* Each cast is classified as an activation for the purposes of effects such as {{ii|Tear of the Goddess|Tear}} and {{nie|Spellblade}}.\n* '''Xerath''' can use {{ai|Dark Passage|Thresh}} while self {{tip|root|rooted}}.",
+      "notes": "*Each cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* The recast is named ''Arcane Barrage''.\n* A circular indicator will be displayed at the target location to signify that the area will be blasted.\n* A circle indicating the ability's maximum range forms on the map over 1 second (starting small and rapidly expanding to the maximum range over the delay) for the channel's duration.\n** The maximum-range indicator is visible to both allies and enemies and is color coded for friendly (blue) or hostile (red).\n* ''Rite of the Arcane'' uses a [[Champion ability|barrage system]] so that it can be recast multiple times within a given period at no additional cost.\n* '''Xerath''' can use {{ai|Dark Passage|Thresh}} while ''channeling''. \n{{ct|channel}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -494,40 +504,40 @@
           ]
         },
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|200 to 280}} {{as|(+ 43% AP)}}|Total Damage|{{ap|(200 to 280)*(3 to 5)}} {{as|(+ {{ap|43*3 to 43*5}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','220','240','260','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 43% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (200 to 280)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['129','150.5','172','193.5','215']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|200 to 300}} {{as|(+ 45% AP)}}|Total Damage|{{ap|(200 to 300)*(3 to 5)}} {{as|(+ {{ap|45*3 to 45*5}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','225','250','275','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (200 to 300)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['135','157.5','180','202.5','225']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 200,
-                220,
-                240,
-                260,
-                280
+                225,
+                250,
+                275,
+                300
               ],
               null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.43
+                "player_total_ap": 0.45
               },
               {
                 "player_total_ap": [
-                  1.29,
-                  1.505,
-                  1.72,
-                  1.935,
-                  2.15
+                  1.35,
+                  1.575,
+                  1.8,
+                  2.025,
+                  2.25
                 ]
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['200','220','240','260','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 43% AP)</span>",
+              "<spell-span :list=\"['200','225','250','275','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
               "Total Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (200 to 280)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['129','150.5','172','193.5','215']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (200 to 300)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['135','157.5','180','202.5','225']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -536,24 +546,24 @@
               "ratios": {
                 "base_damage": [
                   200,
-                  220,
-                  240,
-                  260,
-                  280
+                  225,
+                  250,
+                  275,
+                  300
                 ],
-                "player_total_ap": 0.43
+                "player_total_ap": 0.45
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['200','220','240','260','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 43% AP)</span>",
+              "str": "<spell-span :list=\"['200','225','250','275','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "magic"
             },
             {
               "index": 1,
               "ratios": {
-                "player_total_ap": 0.43
+                "player_total_ap": 0.45
               },
               "title": "Total Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (200 to 280)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['129','150.5','172','193.5','215']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (200 to 300)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <spell-span :list=\"['135','157.5','180','202.5','225']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]

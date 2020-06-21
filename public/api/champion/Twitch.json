@@ -1,6 +1,6 @@
 {
   "patch": "May 1, 2009 Patch",
-  "changes": "9.16.1",
+  "changes": "10.11.1",
   "id": "Twitch",
   "name": "Twitch",
   "title": "the Plague Rat",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Marksman",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
@@ -27,8 +27,8 @@
     "difficulty": 6
   },
   "stats": {
-    "hp": 582,
-    "hpperlevel": 84,
+    "hp": 612,
+    "hpperlevel": 86,
     "mp": 287.2,
     "mpperlevel": 40,
     "movespeed": 330,
@@ -68,129 +68,10 @@
         "Each ''Deadly Venom'' stack deals {{as|{{pp|5|1 to 5|1 to 17|formula=1 every 4 levels}} {{sti|true damage|{{as|true damage}}|link=yes}}}} per second over 6 seconds, stacking up to 6 times for a maximum {{as|{{pp|5|1*6 to 5*6|1 to 17|formula=6 every 4 levels}} {{sti|true damage}}}} per second.",
         "Each application of ''Deadly Venom'' resets the duration."
       ],
-      "notes": "* The enhanced attacks will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot).\n* ''Deadly Venom'' does not affect {{tip|turret|structures}}.\n* ''Deadly Venom's'' application via basic attack cannot be {{ai|Riposte|Fiora|parried}} or {{ai|Spirit's Refuge|Shen|blocked}} but can be {{ai|Counter Strike|Jax|dodged}} or negated if '''Twitch''' is {{tip|blind|blinded}}.\n* ''Deadly Venom'' interacts with {{ai|Twin Fang|Cassiopeia}} (thus granting {{ci|Cassiopeia}} its bonus effects).",
+      "notes": "* The enhanced attacks will apply other on-hit effects and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot).\n* ''Deadly Venom'' does not affect structures.\n* ''Deadly Venom'' cannot be {{ai|Riposte|Fiora|parried}} or {{ai|Spirit's Refuge|Shen|blocked}} but can be {{ai|Counter Strike|Jax|dodged}} or negated if '''Twitch''' is {{tip|blind|blinded}}.\n* ''Deadly Venom'' interacts with {{ai|Twin Fang|Cassiopeia}} (thus granting {{ci|Cassiopeia}} its bonus effects).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
-    },
-    "q1": {
-      "riotId": "TwitchHideInShadows",
-      "name": "Ambush",
-      "maxrank": 5,
-      "cooldown": [
-        16,
-        16,
-        16,
-        16,
-        16
-      ],
-      "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
-      "image": {
-        "full": "TwitchHideInShadows.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 0,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} After a 1 second delay, '''Twitch''' becomes {{tip|camouflage|camouflaged}} for a duration. Entering stealth cancels '''Twitch's''' current basic attack. Basic attacks and [[Champion ability|abilities]] break the stealth on-cast.",
-        "While stealthed he gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}}, increased to {{as|30%|ms}} when he moves toward enemy champions within a 1000-range radius who cannot see him.",
-        "Upon breaking stealth he gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.",
-        "''Ambush's'' {{sti|cooldown}} is reset if an enemy champion dies while affected by {{ai|Deadly Venom|Twitch}}."
-      ],
-      "notes": "* ''Ambush'' has no cast time and does not interrupt '''Twitch's''' previous orders.\n* '''Twitch''' will not break stealth if he uses [[consumable item]]s.\n* '''Twitch''' will break stealth if he uses {{si|Recall}} or {{si|Teleport}} while ''Ambush'' is active or if he uses [[active ability items]] ({{ii|Blade of the Ruined King}}). '''Twitch''' can perform actions as normal during the 1 second delay. Activating recall during the delay will allow '''Twitch''' to recall while camouflaged.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "costBurn": "40",
-      "cooldownBurn": "16",
-      "effects": [
-        {
-          "levelingtext": "{{st|Stealth Duration|{{ap|10 to 14}}}}",
-          "str": "<ul><li><span class=\"blue\">Stealth Duration</span>: <span><spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                10,
-                11,
-                12,
-                13,
-                14
-              ]
-            ],
-            "st_slices": [
-              "Stealth Duration",
-              "<spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  10,
-                  11,
-                  12,
-                  13,
-                  14
-                ]
-              },
-              "title": "Stealth Duration",
-              "str": "<spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 50}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                30,
-                35,
-                40,
-                45,
-                50
-              ]
-            ],
-            "st_slices": [
-              "Bonus Attack Speed",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  30,
-                  35,
-                  40,
-                  45,
-                  50
-                ]
-              },
-              "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
     },
     "w1": {
       "riotId": "TwitchVenomCask",
@@ -223,10 +104,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Twitch''' hurls a cask of venom at the target area, infecting all enemies hit with a {{ai|Deadly Venom|Twitch}} stack.",
+        "{{sbc|Active:}} '''Twitch''' hurls a cask of venom at the target area, infecting all enemies hit with a {{ai|Deadly Venom|Twitch}} stack and {{tip|sight|revealing}} the area.",
         "The target area becomes contaminated for 3 seconds, applying a {{ai|Deadly Venom|Twitch}} stack each second and {{tip|slow|slowing}} all enemies inside it."
       ],
-      "notes": "* ''Venom Cask'' can apply a maximum of 4 {{ai|Deadly Venom|Twitch}} stacks per enemy.\n** {{tip|Spell shield}} will only block the {{tip|slow}}.",
+      "notes": "* ''Venom Cask'' can apply a maximum of 4 {{ai|Deadly Venom|Twitch}} stacks per enemy.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70",
@@ -302,7 +183,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Twitch''' deals {{tip|physical damage|{{as|physical damage}}}} to all nearby enemies afflicted by {{ai|Deadly Venom|Twitch}}, with each stack granting '''bonus''' damage."
+        "{{sbc|Active:}} '''Twitch''' sends out a lethal toxin to each nearby enemy afflicted by {{ai|Deadly Venom|Twitch}}, dealing {{tip|physical damage|{{as|physical damage}}}}, increased for each stack of {{ai|Deadly Venom|Twitch}} on the target.",
+        "''Contaminate can be cast regardless of having {{tip|sight}} of targets or not.''"
       ],
       "notes": "* '''Twitch''' is given a range indicator for ''Contaminate's'' radius upon infecting an enemy champion with {{ai|Deadly Venom|Twitch}} (actual range is slightly larger than shown in-game).\n* ''Contaminate'' will not damage enemy targets whose {{ai|Deadly Venom|Twitch}} stacks wear off or if they move out of ''Contaminate's'' range before '''Twitch''' can cast.",
       "skillkey": "E",
@@ -311,8 +193,8 @@
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
-          "levelingtext": "{{st|Base Physical Damage|{{ap|20 to 60}}|Bonus Damage Per Stack|{{ap|15 to 35}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}<!--\n-->{{st|Minimum Damage|{{ap|20+15 to 60+35}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 20% AP)}}|Maximum Damage|{{ap|20+15*6 to 60+35*6}} {{as|(+ 210% '''bonus''' AD)}} {{as|(+ 120% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Base Physical Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Damage</span>: <span><spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['110','150','190','230','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 210% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Base Physical Damage|{{ap|20 to 60}}}}\n{{st|Bonus Damage Per Stack|{{ap|15 to 35}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 20% AP)}}|Minimum Damage|{{ap|20+15 to 60+35}} {{as|(+ 35% '''bonus''' AD)}} {{as|(+ 20% AP)}}|Maximum Damage|{{ap|20+15*6 to 60+35*6}} {{as|(+ 210% '''bonus''' AD)}} {{as|(+ 120% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Base Physical Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Minimum Damage</span>: <span><spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['110','150','190','230','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 210% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -367,6 +249,8 @@
               }
             ],
             "st_slices": [
+              "Bonus Damage Per Stack",
+              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "Minimum Damage",
               "<spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "Maximum Damage",
@@ -387,8 +271,8 @@
                 "player_bonus_ad": 0.35000000000000003,
                 "player_total_ap": 0.2
               },
-              "title": "Minimum Damage",
-              "str": "<spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "title": "Bonus Damage Per Stack",
+              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -400,6 +284,23 @@
                   25,
                   30,
                   35
+                ],
+                "player_bonus_ad": 0.35000000000000003,
+                "player_total_ap": 0.2
+              },
+              "title": "Minimum Damage",
+              "str": "<spell-span :list=\"['35','50','65','80','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  35,
+                  50,
+                  65,
+                  80,
+                  95
                 ],
                 "player_bonus_ad": 0.35000000000000003,
                 "player_total_ap": 0.2
@@ -417,8 +318,6 @@
       "name": "Spray and Pray",
       "maxrank": 3,
       "cooldown": [
-        90,
-        90,
         90
       ],
       "cost": [
@@ -427,7 +326,8 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
+      "target_range": "{{sti|range|attack range}}",
       "image": {
         "full": "TwitchFullAutomatic.png",
         "sprite": "spell12.png",
@@ -438,10 +338,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Twitch''' gains {{as|'''bonus''' attack damage}} and his basic attacks gain {{sti|range|300 '''bonus''' range}} for 5 seconds.",
-        "Additionally, '''Twitch's''' basic attacks travel across their full range and skewer every enemy they pass through for the duration, dealing {{pp|6|key=%|type=enemy hit|100*0.8^(x-1);40|x-1|formula=100%*0.8^(1 per enemy hit). ''This is capped at 40% damage.''}} [[damage]]. These attacks apply {{tip|on-hit}} effects to all affected enemies and can {{tip|critical strike|critically strike}} against each individual target."
+        "{{sbc|Active:}} '''Twitch''' gains {{sti|{{as|'''bonus''' attack damage}}}} and {{sti|range|300 '''bonus''' attack range}} for 5 seconds, during which his {{tip|basic attack|basic attacks}} are replaced by ''bolts'' that travel slightly further than his attack range in a straight line, damaging {{tt|every enemy|non-champions and champions, wards and plants, turrets and structures}} in their path.",
+        "The ''bolts'' deal {{pp|6|key=%|type=enemy hit|100*0.8^(x-1);40|x-1|formula=100%*0.8^(1 per enemy hit). ''This is capped at 40% damage.''}} {{sti|{{as|physical damage}}}}, apply {{tip|on-hit}} effects to and can {{tip|critical strike|critically strike}} against each individual target."
       ],
-      "notes": "* ''Spray and Pray'' has no cast time and does not interrupt '''Twitch's''' previous orders.\n* ''Spray and Pray'' allows '''Twitch''' to outrange {{tip|turret|turrets}} by 50 units, allowing him to hit them without them returning fire. ''This is intended.''\n* '''Twitch's''' enhanced attacks will pass through terrain and enemy structures (the latter will be damaged even if they are not directly targeted while ''Spray and Pray'' is active).\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} interacts with ''Spray and Pray's'' bonus attack range but not with the enhanced attacks (the secondary bolts will not have peas-through effects).",
+      "notes": "* ''Spray and Pray'' allows '''Twitch''' to outrange {{tip|turret|turrets}} by 50 units, allowing him to hit them without them returning fire.\n* There is a brief delay before the ''bolts'' reach targets at range due to finite missile speed, allowing even the primary target to physically dodge the attack.\n* The ''bolt'' projectiles will naturally pass through terrain and enemy structures (the latter will be damaged by ''bolts'' even if they are not directly targeted).\n* The ''bolts'' will only strike units that are not {{tip|untargetable}}.\n** {{pending for test}} {{tip|Blind}} interaction\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} interacts with ''Spray and Pray's'' {{sti|'''bonus''' attack range}} but not with the modified missile effect (the secondary bolts will not have pass-through effects).\n* Whenever the ''bolts'' penetrate a target, a small elongated cloud appears at the location, which's VFX and SFX '''can''' be seen and heard inside the Fog of War.\n* The ''bolts<nowiki>'</nowiki>'' travel distance scales with the fully value of '''Twitch's''' {{sti|range|attack range}} increases such as {{ii|Rapid Firecannon}}, but not with size increases (which only increase his effective attack range, thereby the target range).\n* The {{tip|cr|icononly = true}} center of a unit must be within the maximum travel distance of the ''bolt'' missile, and in front of the spawn location ('''Twitch's''' {{tip|cr|icononly = true}} center) for the ''bolt'' to be able to hit them.\n** Other than this condition, the ''bolt'' missile has to only touch (pass within its half width of 60 units) the {{tip|er|icononly = true}} edge of the unit's radius.\n** This is standard behaviour for ''linear skillshots''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.25.34",
-  "changes": "9.24.2",
+  "changes": "10.10.1",
   "id": "Shaco",
   "name": "Shaco",
   "title": "the Demon Jester",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Slayer",
+  "herotype": "Assassin",
   "alttype": "",
   "rangetype": "Melee",
   "be_cost": 3150,
@@ -64,10 +64,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Shaco's''' [[basic attack]]s deal an additional {{pp|10 to 25}} {{as|(+ 15% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} when striking an enemy from behind. ''This damage can {{tip|critical strike|critically strike}}.''",
+        "{{sbc|Innate:}} '''Shaco's''' [[basic attack]]s deal an additional {{as|{{pp|10 to 25}}|physical damage}} {{as|(+ 15% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} when striking a non-{{tip|turrets|structure}} from behind. ''This damage can {{tip|critical strike|critically strike}}.''",
         "{{ai|Deceive|Shaco}} and {{ai|Two-Shiv Poison|Shaco}} also have additional effects when striking an enemy from behind."
       ],
-      "notes": "* ''Backstab'' does not affect structures ([[turret]]s, [[inhibitor]]s, [[Nexus]]).",
+      "notes": "* No additional notes.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -105,7 +105,7 @@
       "description": [
         "{{sbc|Active:}} After a {{fd|0.125}}-second delay, '''Shaco''' {{tip|blinks}}  to the target location, temporarily becoming {{tip|invisibility|invisible}} for a few seconds.",
         "After exiting invisibility, his next basic attack within {{fd|0.25}} seconds deals {{as|'''bonus''' physical damage}}. ''This damage can {{tip|critical strike|critically strike}}.''",
-        "''Deceive's'' {{tip|invisibility}} is not removed when '''Shaco''' casts {{ai|Hallucinate|Shaco}}, while casting {{ai|Jack in the Box|Shaco}} causes him to shimmer without removing it.",
+        "''Deceive's'' {{tip|invisibility}} does not break when '''Shaco''' casts {{ai|Hallucinate|Shaco}}. Casting {{ai|Jack in the Box|Shaco}} causes '''Shaco''' to shimmer instead, revealing his position.",
         "{{sbc|{{ai|Backstab|Shaco}}:}} Guarantees the basic attack to {{tip|critical strike|critically strike}} for {{as|{{critical damage|30|100}} '''bonus''' physical damage}}."
       ],
       "notes": "* ''Deceive's'' cast animation (an orange puff of smoke) can be seen by both teams through [[Sight|fog of war]].\n* {{si|Teleport}} can be used during the ''invisibility'' without cancelling it. However {{si|Recall}} cannot.\n* {{Pending for test}}: Enhanced attack's interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
@@ -229,12 +229,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Shaco''' summons a ''Jack in the Box'' at the target location, lasting for up to 40 {{as|(+ 5% AP)}} seconds. The ''box'' arms after a 2 second delay, becoming {{tip|Stealthed trap|stealthed}} and {{tip|untargetable}} to enemies.",
-        "Triggering the ''box'' will {{tip|stun|startle}} nearby enemies for {{fd|0.5}} seconds as well as cause them to turn and {{tip|flee}} for 2 seconds, reduced against champions. While fleeing, {{tip|minion|minions}} and {{tip|monster|monsters}} have a static 60 {{sti|movement speed}} and {{tip|champion|champions}} have a static 100 {{sti|movement speed}}.",
-        "Once triggered, the ''box'' will also become targetable and automatically starts firing every {{fd|0.5}} seconds at all nearby {{tip|sight|visible}} enemies, dealing {{tip|magic damage|{{as|magic damage}}}} with each attack, reduced by 50% against {{tip|turrets|structures}}. If the ''box'' attacks only one unit, it deals increased damage.",
-        "''The box can attack up to 10 times and stays active for 5 seconds or until destroyed, independently from its remaining inactive duration.''"
+        "{{sbc|Active:}} '''Shaco''' summons a ''Jack in the Box'' at the target location, lasting for up to 40 {{as|(+ 5% AP)}} seconds. The ''box'' arms after a 2 second delay, becoming {{tip|Stealthed trap|stealthed}}, during which it is {{tip|untargetable}} and {{tip|invulnerable}} to enemies.",
+        "Enemies that come or are near the ''box'' will cause it to trigger, causing them to turn and {{tip|flee}} for 2 seconds, reduced against champions, who are also {{tip|root|rooted}} for {{fd|0.5}} seconds. While fleeing, enemy {{tip|champion|champions}} are set to a {{as|static 100|ms}} {{sti|{{as|movement speed}}}}, reduced to a {{as|static 60|ms}} for {{tip|minion|minions}} and {{tip|monster|monsters}}.",
+        "Once triggered, the ''box'' will also become targetable and automatically start firing every {{fd|0.5}} seconds at all nearby {{tip|sight|visible}} enemies, dealing {{tip|magic damage|{{as|magic damage}}}} with each attack, reduced by 50% against {{tip|turrets|structures}}. If the ''box'' attacks only one unit, it deals increased damage.",
+        "''The box stays active for 5 seconds or until destroyed, independently from its remaining inactive duration.''"
       ],
-      "notes": "* The ''box'' applies {{tip|persistent damage}} to enemies in an {{tip|area of effect}} range.\n* The ''flee'' starts at the same time as the ''startle'', but since the target cannot move while ''startled'' the effective duration of the ''flee'' is reduced by the ''startle's''.\n* ''Static movement speed'' cannot be modified (e.g. with {{stil|slow resist}} or {{si|Ghost}}).\n** This effect is negated only if the target is fully [[Slow resist#Slow Immunity|slow immune]].\n* Upon becoming {{tip|invisibility|stealthed}}, the ''box'' creates a puff of smoke and a distinct sound that can be detected through the [[Sight|fog of war]].",
+      "notes": "* The ''flee'' starts at the same time as the ''root'', but since the target cannot move while ''rooted'' the effective duration of the ''flee'' is reduced by the ''root''.\n* ''Static movement speed'' cannot be modified (e.g. with {{tip|slow resist}} or {{sti|'''bonus''' [[movement speed]]}}).\n** This effect can be negated if the target is {{tip|slow-immune}}.\n* Upon becoming {{tip|stealthed trap|stealthed}}, the ''box'' creates a puff of smoke and a distinct sound that can be detected through the [[Sight|fog of war]].\n* The box is {{tip|untargetable}} and {{tip|invulnerable}} so long as it is in {{tip|stealth}}. Effects that reveal {{tip|stealthed trap|stealthed traps}} will render the box targetable and vulnerable while it can be seen.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
@@ -384,8 +384,8 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Shaco's''' basic attacks {{tip|slow}} enemies for 2 seconds while ''Two-Shiv Poison'' is off [[cooldown]].",
-        "{{sbc|Active:}} '''Shaco''' throws a dagger at the target enemy, {{tip|slow|slowing}} them for 3 seconds and dealing {{as|magic damage}}, increased by 50% against targets {{as|'''below''' 30% of their '''maximum''' health}}.",
-        "{{sbc|{{ai|Backstab|Shaco}}:}} Deals an additional {{pp|15 to 50}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}}, increased to {{pp|15*1.5 to 50*1.5}} {{as|(+ {{ap|10*1.5}}% AP)}} when the target is {{as|'''below''' 30% of their '''maximum''' health}}."
+        "{{sbc|Active:}} '''Shaco''' throws a dagger at the target enemy, {{tip|slow|slowing}} them for 3 seconds and dealing {{as|magic damage}}, [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|increased by 50%|cosmetic critical strike}} against targets {{as|'''below''' 30% of their '''maximum''' health}}.",
+        "{{sbc|{{ai|Backstab|Shaco}}:}} Deals an additional {{as|{{pp|15 to 50}}|magic damage}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}}, increased to {{as|{{pp|15*1.5 to 50*1.5}}|magic damage}} {{as|(+ {{ap|10*1.5}}% AP)}} when the target is {{as|'''below''' 30% of their '''maximum''' health}}."
       ],
       "notes": "* No additional notes.",
       "skillkey": "E",
@@ -507,161 +507,6 @@
               },
               "title": "Increased Damage",
               "str": "<spell-span :list=\"['105','142.5','180','217.5','255']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 105% '''bonus''' AD)</span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "HallucinateFull",
-      "name": "Hallucinate",
-      "maxrank": 3,
-      "cooldown": [
-        100,
-        90,
-        80
-      ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Ground-targeted|Ground]]",
-      "image": {
-        "full": "HallucinateFull.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|First Cast:}} '''Shaco''' {{tip|vanish|vanishes}} for {{fd|0.5}} seconds and then {{tip|blink|blinks}} in the {{tt|target direction|200 units}} while creating a [[decoy|clone]] of himself that ''blinks'' in the {{tt|opposite direction|200 units}}, remaining within [[tether]] range of him as a controllable {{tip|pet}} for up to 18 seconds.",
-        "{{sbc|Second Cast:}} While the ''Hallucination'' is active, ''Hallucinate'' can be used to move it to the target location.",
-        "When the ''Hallucination'' [[death|dies]] or expires, it explodes, dealing {{as|magic damage}} to enemy units around it and leaving three {{ai|Jack in the Box|Shaco|mini-boxes}} behind which activate instantly, causing nearby enemies to {{tip|flee}} for 1 second.",
-        "The three boxes possess ''Jack in the Box's'' effects, except they have a doubled, but shared {{sti|health|{{as|health}}}}, and deal modified {{as|magic damage}} with each attack, increased if attacking a single unit."
-      ],
-      "notes": "* '''Shaco''' and the ''Hallucination'' will face each other the moment of their appearance.\n* The clone uses {{tip|pet damage}}.\n* The ''Hallucination's '' explosion applies {{tip|area damage}}.\n* The summoned ''boxes'' deal {{tip|persistent damage}} in an {{tip|area of effect}} range.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "100/90/80",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','187.5','225','262.5','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                150,
-                187.5,
-                225,
-                262.5,
-                300
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['150','187.5','225','262.5','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  150,
-                  187.5,
-                  225,
-                  262.5,
-                  300
-                ],
-                "player_total_ap": 0.7000000000000001
-              },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['150','187.5','225','262.5','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
-              "damage_type": "magic"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Mini-Box Magic Damage|{{ap|10 to 30}} {{as|(+ 10% AP)}}|Mini-Box Increased Damage|{{ap|25 to 75}} {{as|(+ 15% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Mini-Box Magic Damage</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Mini-Box Increased Damage</span>: <span><spell-span :list=\"['25','37.5','50','62.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                10,
-                15,
-                20,
-                25,
-                30
-              ],
-              [
-                25,
-                37.5,
-                50,
-                62.5,
-                75
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 0.15
-              }
-            ],
-            "st_slices": [
-              "Mini-Box Magic Damage",
-              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
-              "Mini-Box Increased Damage",
-              "<spell-span :list=\"['25','37.5','50','62.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  10,
-                  15,
-                  20,
-                  25,
-                  30
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Mini-Box Magic Damage",
-              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  25,
-                  37.5,
-                  50,
-                  62.5,
-                  75
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Mini-Box Increased Damage",
-              "str": "<spell-span :list=\"['25','37.5','50','62.5','75']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
               "damage_type": "unknown"
             }
           ]

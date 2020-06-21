@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.109",
-  "changes": "9.14.1",
+  "changes": "10.9.1",
   "id": "Renekton",
   "name": "Renekton",
   "title": "the Butcher of the Sands",
@@ -66,7 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Renekton''' generates {{tip|fury|{{as|5 Fury}}}} each time he lands a [[basic attack]] on an enemy, and loses {{as|4 Fury}} per second if he hasn't dealt or taken damage in the last 12 seconds.",
         "When at or above {{as|50 Fury}}, '''Renekton's''' next [[Champion ability|basic ability]] consumes {{as|50 Fury}} to enhance its effects. The enhanced ability does not generate {{as|Fury}}.",
-        "{{sbc|Reign of Anger:}} '''Renekton''' generates {{as|50% '''bonus''' Fury}} from all sources while {{as|{{sti|health|below 50% of his '''maximum''' health}}}}."
+        "'''Renekton''' generates {{as|50% '''bonus''' Fury}} from all sources while {{as|{{sti|health|below 50% of his '''maximum''' health}}}}."
       ],
       "notes": "* ''Renekton'' generates Fury by collecting [[Health Relic (Howling Abyss)|Health Relics]] on {{tip|Howling Abyss}} (interacts with ''Reign of Anger's'' bonus generation).",
       "skillkey": "I",
@@ -91,7 +91,7 @@
         0,
         0
       ],
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "RenektonCleave.png",
         "sprite": "spell9.png",
@@ -105,9 +105,10 @@
         "{{sbc|Active:}} '''Renekton''' deals {{tip|physical damage|{{as|physical damage}}}} to all nearby enemies and {{tip|heal|heals}} himself for each enemy hit, up to a cap.",
         "'''Renekton''' also generates {{tip|fury|{{as|{{fd|2.5}} Fury}}}} for each non-champion hit and {{as|10 Fury}} for each champion hit, with the {{as|Fury}} generated per cast capped at 30.",
         "Against {{tip|champion|champions}}, the healing is increased by 300%.",
-        "{{sbc|{{ai|Reign of Anger|Renekton}}:}} ''Cull the Meek'' deals additional damage, increases the total healing by 200%, and the healing cap by 300%."
+        "{{sbc|{{ai|Reign of Anger|Renekton}}:}} ''Cull the Meek'' deals additional damage, increases the '''total''' healing by 200%, and the healing cap by 300%.",
+        "{{ai|Slice|Renekton}} and {{ai|Dice|Renekton}} cannot be cast for {{fd|0.25}} seconds after ''Cull the Meek's'' activation."
       ],
-      "notes": "* ''Cull the Meek'' has a {{fd|0.25}} second cast time and does not interrupt '''Renekton's''' previous orders.\n* Healing modifiers such as {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Cull the Meek's'' healing cap.",
+      "notes": "* Healing modifiers such as {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Cull the Meek's'' healing cap.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -311,7 +312,7 @@
         0,
         0
       ],
-      "targeting": "Unit",
+      "targeting": "none",
       "image": {
         "full": "RenektonPreExecute.png",
         "sprite": "spell9.png",
@@ -322,11 +323,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Renekton's''' next [[basic attack]] within 7 seconds gains {{sti|range|50 '''bonus''' range}} and strikes his target twice dealing {{tip|physical damage|{{as|modified physical damage}}}} and {{tip|stun|stunning}} them for {{fd|0.75}} seconds. Each slash applies {{tip|on-hit}} effects and grants {{tip|fury|{{as|Fury}}}}. Hitting an enemy {{tip|champion}} grants {{as|10 '''bonus''' Fury}}.",
-        "{{sbc|{{ai|Reign of Anger|Renekton}}:}} '''Renekton''' destroys damage-mitigating shields on the target before striking them 3 times, dealing 50% '''bonus''' damage and increasing the {{tip|stun}} duration to {{fd|1.5}} seconds.",
-        "''Ruthless Predator'' resets '''Renekton's''' basic attack timer."
+        "{{sbc|Active:}} '''Renekton's''' next [[basic attack]] within 7 seconds becomes an {{tip|unstoppable basic attack}}, gaining {{sti|range|50 '''bonus''' range}} and striking his target twice, dealing {{tip|physical damage|{{as|modified physical damage}}}} and {{tip|stun|stunning}} them for {{fd|0.75}} seconds. Each slash applies {{tip|on-hit}} effects and grants {{tip|fury|{{as|Fury}}}}. Hitting an enemy {{tip|champion}} grants {{as|10 '''bonus''' Fury}}.",
+        "{{sbc|{{ai|Reign of Anger|Renekton}}:}} '''Renekton''' destroys damage-mitigating {{tip|shield|shields}} on the target before striking them 3 times, dealing 50% '''bonus''' damage and increasing the {{tip|stun}} duration to {{fd|1.5}} seconds.",
+        "''Ruthless Predator'' {{tip|basic attack reset|resets}} '''Renekton's''' basic attack timer."
       ],
-      "notes": "* ''Ruthless Predator'' has a {{tt|{{fd|0.5}} second|Estimated}} cast time during which '''Renekton''' cannot perform any actions (can use [[summoner spell]]s as well as [[active ability items|active items]]).\n** ''Ruthless Predator's'' cast time can be dual cast with active ability items that play one of their own ({{iis|Tiamat}} {{nie|Crescent}}).\n** ''Ruthless Predator's'' cast time can be cancelled with {{ais|Dominus|Renekton}}.\n* The basic attack can {{tip|critical strike|critically strike}} as normal (the modified damage cannot).",
+      "notes": "* ''Ruthless Predator'' has a {{tt|{{fd|0.5}} second|Estimated}} cast time for the attack during which '''Renekton''' cannot perform any actions (can use [[summoner spell]]s as well as [[active ability items|active items]]).\n** ''Ruthless Predator's'' cast time for the attack can be dual cast with [[active ability items]] that play one of their own ({{iis|Tiamat}} {{nie|Crescent}}).\n** ''Ruthless Predator's'' cast time for the attack can be cancelled with {{ais|Dominus|Renekton}}.\n* The basic attack can {{tip|critical strike|critically strike}} as normal (the modified damage cannot).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -450,254 +451,11 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "RenektonSliceAndDice",
-      "name": "Slice",
-      "maxrank": 5,
-      "cooldown": [
-        18,
-        17,
-        16,
-        15,
-        14
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "target_range": 450,
-      "image": {
-        "full": "RenektonSliceAndDice.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active - Slice:}} '''Renekton''' {{tip|dashes}} in the target direction, dealing {{as|physical damage}} to all enemies he passes through.",
-        "Hitting an enemy allows '''Renekton''' to cast ''Dice'' within the next 4 seconds."
-      ],
-      "notes": "* Movement speed has minimal to no impact on the dash speed.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "18/17/16/15/14",
-      "effects": [
-        {
-          "levelingtext": "{{st|Physical Damage|{{ap|40 to 160}} {{as|(+ 90% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                40,
-                70,
-                100,
-                130,
-                160
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.9
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  40,
-                  70,
-                  100,
-                  130,
-                  160
-                ],
-                "player_bonus_ad": 0.9
-              },
-              "title": "Physical Damage",
-              "str": "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            }
-          ]
-        }
-      ]
-    },
-    "e2": {
-      "riotId": "RenektonSliceAndDice",
-      "name": "Dice",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "image": {
-        "full": "RenektonSliceAndDice.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active - Dice:}} '''Renekton''' {{tip|dashes}} in the target direction, dealing the same {{as|physical damage}} to all enemies he passes through.",
-        "Both ''Slice'' and ''Dice'' generate {{tip|fury|{{as|2 Fury}}}} for each non-champion hit, and {{as|10 Fury}} for each champion hit, with the {{as|Fury}} generated per dash capped at 30.",
-        "{{sbc|{{ai|Reign of Anger|Renekton}}:}} ''Dice'' deals additional damage to all enemies and reduces their {{sti|{{as|armor}}}} for 4 seconds."
-      ],
-      "notes": "* Movement speed has minimal to no impact on the dash speed.",
-      "skillkey": "E",
-      "skillid": "e2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Total Physical Damage|{{ap|40*2 to 160*2}} {{as|(+ 180% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                80,
-                140,
-                200,
-                260,
-                320
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.8
-              }
-            ],
-            "st_slices": [
-              "Total Physical Damage",
-              "<spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  80,
-                  140,
-                  200,
-                  260,
-                  320
-                ],
-                "player_bonus_ad": 1.8
-              },
-              "title": "Total Physical Damage",
-              "str": "<spell-span :list=\"['80','140','200','260','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Enhanced Physical Damage|{{ap|70 to 250}} {{as|(+ 135% '''bonus''' AD)}}|Total Enhanced Damage|{{ap|40+70 to 160+250}} {{as|(+ 225% '''bonus''' AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|25 to 35}}%|armor}}}}",
-          "str": "<ul><li><span class=\"blue\">Enhanced Physical Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 135% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Enhanced Damage</span>: <span><spell-span :list=\"['110','185','260','335','410']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 225% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                115,
-                160,
-                205,
-                250
-              ],
-              [
-                110,
-                185,
-                260,
-                335,
-                410
-              ],
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.35
-              },
-              {
-                "player_bonus_ad": 2.25
-              },
-              {
-                "player_total_unknown": [
-                  0.25,
-                  0.275,
-                  0.3,
-                  0.325,
-                  0.35
-                ]
-              }
-            ],
-            "st_slices": [
-              "Armor Reduction",
-              "<span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  70,
-                  115,
-                  160,
-                  205,
-                  250
-                ],
-                "player_bonus_ad": 2.25,
-                "player_total_unknown": [
-                  0.25,
-                  0.275,
-                  0.3,
-                  0.325,
-                  0.35
-                ]
-              },
-              "title": "Armor Reduction",
-              "str": "<span class=\"armor\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
     "r1": {
       "riotId": "RenektonReignOfTheTyrant",
       "name": "Dominus",
       "maxrank": 3,
       "cooldown": [
-        120,
-        120,
         120
       ],
       "cost": [
@@ -705,7 +463,7 @@
         0,
         0
       ],
-      "targeting": "[[Self-targeted|Self]] / [[Buff]] / [[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "RenektonReignOfTheTyrant.png",
         "sprite": "spell9.png",
@@ -717,9 +475,9 @@
       },
       "description": [
         "{{sbc|Active:}} '''Renekton''' empowers himself for 15 seconds, gaining {{as|{{sti|health|'''bonus''' health}}}}, increased size, {{sti|range|25 '''bonus''' range}} and {{tip|fury|{{as|20 Fury}}}}.",
-        "For the duration, he deals {{tip|magic damage|{{As|magic damage}}}} each half second to all nearby enemies and generates {{as|5 Fury}} per second, up to a maximum of {{as|75 Fury}}."
+        "For the duration, he deals {{tip|magic damage|{{As|magic damage}}}} every {{fd|0.5}} seconds to all nearby enemies and generates {{as|5 Fury}} per second, up to a maximum of {{as|75 Fury}}."
       ],
-      "notes": "* ''Dominus' ''range increase does not stack with {{ai|Ruthless Predator|Renekton}}.\n* ''Dominus' ''cooldown starts on-cast (is not refunded if '''Renekton''' is [[death|dies]] during the cast animation).\n* ''Dominus' ''bonus health gain does not interact with {{ii|Spirit Visage}} or {{tip|Grievous Wounds}}.\n** ''Renekton'' retains ''Dominus' ''bonus health (if not over his normal maximum) once the duration ends.",
+      "notes": "* ''Dominus' ''range increase does not stack with {{ai|Ruthless Predator|Renekton}}.\n* ''Dominus' ''{{sti|cooldown}} is not refunded if '''Renekton''' {{tip|death|dies}} during the cast animation.\n* ''Dominus' ''bonus health gain does not interact with {{ii|Spirit Visage}} or {{tip|Grievous Wounds}}.\n** '''Renekton''' retains ''Dominus' ''bonus health (if not over his normal maximum) once the duration ends.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

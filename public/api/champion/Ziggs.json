@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.133",
-  "changes": "9.16.1",
+  "changes": "10.2.1",
   "id": "Ziggs",
   "name": "Ziggs",
   "title": "the Hexplosives Expert",
@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Short Fuse",
       "maxrank": 0,
-      "targeting": "[[Passive]]",
+      "targeting": "Passive",
       "image": {
         "full": "ZiggsPassiveReady.png",
         "sprite": "passive4.png",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Ziggs's''' [[basic attack]]s periodically deal {{as|{{pp|18|20|24|28|32|36|40|48|56|64|72|80|88|100|112|124|136|148|160|formula = 16+4 per level up to 6, then+8 per level up to 12, and then+12 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30 to 50|1 to 13}} AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, doubled to {{as|{{pp|18|40|48|56|64|72|80|96|112|128|144|160|176|200|224|248|272|296|320|formula = 32+8 per level up to 6, then+16 per level up to 12, and then+24 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30*2 to 50*2|1 to 13}} AP)}} against structures.",
+        "{{sbc|Innate:}} '''Ziggs's''' [[basic attack]]s are periodically empowered to deal {{as|{{pp|18|20|24|28|32|36|40|48|56|64|72|80|88|100|112|124|136|148|160|formula = 16+4 per level up to 6, then+8 per level up to 12, and then+12 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30 to 50|1 to 13}} AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, doubled to {{as|{{pp|18|40|48|56|64|72|80|96|112|128|144|160|176|200|224|248|272|296|320|formula = 32+8 per level up to 6, then+16 per level up to 12, and then+24 per level up to 18}}|magic damage}} {{as|(+ {{pp|3|showtype=true|key=%|30*2 to 50*2|1 to 13}} AP)}} against structures.",
         "'''Ziggs''' reduces ''Short Fuse's'' {{sti|cooldown}} by {{pp|3|showtype=true|4 to 6|1 to 13}} seconds whenever he uses an [[Champion ability|ability]]."
       ],
       "notes": "* {{Pending for test}}: ''Short Fuse's'' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
@@ -189,11 +189,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ziggs''' flings an explosive charge towards the target area, {{tip|sight|revealing}} its surroundings, and exploding after 4 seconds or upon reactivation.",
-        "When exploding, the ''Satchel Charge'' deals {{as|magic damage}} and {{tip|airborne|knocks back}} all surrounding enemies by 250 units. If '''Ziggs''' is within the explosion radius, he instead {{tip|dash|flies}} up to 500 units away while taking no damage in the process.",
-        "{{Cci|Satchel Charge Turret Explosion Indicator.png|border=false||{{sbc|Turret Explosion:}}}} ''Satchel Charge's'' explosion can demolish {{tip|turrets}} below a {{sti|health|{{as|'''percentile''' health}}}} threshold."
+        "{{sbc|Active:}} '''Ziggs''' flings an explosive charge towards the target area, {{tip|sight|revealing}} its surroundings, and exploding after 4 seconds. ''Satchel Charge'' can be recast at no delay.",
+        "When exploding, the ''Satchel Charge'' deals {{as|magic damage}} and {{tip|airborne|knocks back}} all surrounding enemies by 250 units. If '''Ziggs''' is within the explosion radius, he {{tip|dash|flies}} up to 500 units away.",
+        "{{Cci|Satchel Charge Turret Explosion Indicator.png|border=false||{{sbc|Turret Explosion:}}}} ''Satchel Charge's'' explosion can [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|demolish|cosmetic critical strike}} {{tip|turrets}} below a {{sti|health|{{as|'''percentile''' health}}}} threshold.",
+        "{{sbc|Recast:}} '''Ziggs''' detonates ''Satchel Charge'' early. If recast while in flight, the ability will detonate immediately upon landing.",
+        "'''Ziggs''' does not {{tip|dash|fly}} if he is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}}."
       ],
-      "notes": "* ''Satchel Charge'' will explode immediately after landing if reactivated mid-flight.\n* ''Satchel Charge's'' distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it.\n* '''Ziggs''' will not be displaced by ''Satchel Charge'' while {{si|Teleport|teleporting}} but he will while {{si|Recall|recalling}}.\n* {{pending for test}}: ''Satchel Charge'' cannot be reactivated while {{tip|ground|grounded}}.",
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* ''Satchel Charge's'' distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it.\n* '''Ziggs''' will not fly from ''Satchel Charge's'' detonation while {{si|Teleport|teleporting}} but he will while {{si|Recall|recalling}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "65",
@@ -449,7 +451,7 @@
         "{{sbc|Active:}} '''Ziggs''' deploys his ultimate creation, the [[File:Mega Inferno Bomb Minimap.png|20px|link=]] ''Mega Inferno Bomb'', hurling it to the target area, granting {{tip|sight}} within a 350 unit radius as it travels.",
         "Upon reaching the target area, it explodes, dealing {{as|magic damage}} to all enemies caught in the blast, increased by 50% in the epicenter."
       ],
-      "notes": "* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts from maximum range (reduced to 2 seconds when casting point blank).\n* {{Pending for test}}: ''Mega Inferno Bomb'' can be blocked by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}} only at cast or at a certain angle upon landing.",
+      "notes": "* ''Mega Inferno Bomb'' can be blocked by {{cai|Wind Wall|Yasuo}} or {{cai|Unbreakable|Braum}} only at cast or at a certain angle upon landing.\n* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts from maximum range (reduced to 2 seconds when casting point blank).",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

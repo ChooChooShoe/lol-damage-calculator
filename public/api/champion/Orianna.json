@@ -1,6 +1,6 @@
 {
   "patch": "v1.0.0.119",
-  "changes": "9.19.1",
+  "changes": "10.8.1",
   "id": "Orianna",
   "name": "Orianna",
   "title": "the Lady of Clockwork",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Mage",
-  "alttype": "Controller",
+  "alttype": "Support",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -49,30 +49,6 @@
     "attackspeed": 0.658
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Clockwork Windup",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "OriannaPassive.png",
-        "sprite": "passive2.png",
-        "group": "passive",
-        "x": 192,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate - The Ball:}} '''Orianna''' is accompanied by ''The Ball'', which she commands with her abilities. ''The Ball'' has a {{fd|0.15}} seconds global cooldown between casts. Additionally, ''The Ball'' attaches to '''Orianna''' if she is near it, and blinks back to '''Orianna''' if she is too far away from it.",
-        "{{sbc|Clockwork Winding:}} '''Orianna's''' [[basic attack]]s deal {{pp|6|10 to 50|1 to 16|formula = 10+8 every 3 levels|color=magic damage}} {{as|(+ 15% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} {{tip|on-hit}} and gain ''Clockwork Winding'' for 4 seconds, stacking up to twice. ''Clockwork Windup'' deals{{ft|20% '''bonus''' damage|{{pp|6|10*0.2 to 50*0.2|1 to 16|formula = 2+1.6 every 3 levels}} {{as|(+ 3% AP)}} '''bonus''' damage}} per stack, up to {{pp|6|10*(1+0.2*2) to 50*(1+0.2*2)|1 to 16|formula = 14+11.2 every 3 levels|color=magic damage}} {{as|(+ 21% AP)}} {{as|'''total bonus''' magic damage}}.",
-        "'''Orianna''' loses all [[stack]]s of ''Clockwork Winding'' when she attacks a new target."
-      ],
-      "notes": ";The Ball\n* An arrow will appear near ''Orianna'' whenever ''The Ball'' is not attached to her, pointing towards its location.\n** The arrow will change colors depending on how far away they are from each other. From nearest to farthest: {{as|green|ap}}/{{as|blue|mana}} (whether colorblind mode is off or on, respectively) {{as|yellow|energy}}, {{as|red|health}} (at which point ''The Ball'' will blink back to ''Orianna'' if she moves just a bit further away).\n*** ''Orianna's'' abilities go on a {{fd|0.5}} seconds global cooldown ({{fd|0.75}} for {{ai|Command: Shockwave|Orianna}}) each time ''The Ball'' blinks back to her (to prevent sudden mistargeting).\n* ''The Ball'' is {{tip|untargetable}}, ignores terrain collision, and grants {{tip|sight}} around its current location.\n;Clockwork Winding\n* ''Clockwork Winding's'' stack count can be seen in '''Orianna's''' buff bar.\n* ''Clockwork Winding'' doesn't increase any on-hit magic damage other than its own.\n* ''Orianna's'' basic attacks will not apply ''Clockwork Winding'' if she purchases {{ii|Runaan's Hurricane}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "OrianaIzunaCommand",
       "name": "Command: Attack",
@@ -92,7 +68,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "[[Ground-targeted|Ground]]",
       "target_range": 825,
       "image": {
         "full": "OrianaIzunaCommand.png",
@@ -106,7 +82,7 @@
       "description": [
         "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to fly to the target location and remain there, dealing {{as|magic damage}} to all enemies it passes through, reduced to {{pp|7|key=%|100 to 40|type=enemies hit}}."
       ],
-      "notes": "* ''Command Attack'' has no cast time and does not interrupt '''Orianna's''' movement if ''The Ball'' is not attached to her (otherwise an animation will play and interrupt any movement commands).\n** '''Orianna''' cannot use other abilities while ''The Ball'' is in transit but she may still perform other actions.\n* ''The Ball'' will remain in the target location until '''Orianna''' retrieves it or if she goes beyond its leash range.\n** '''Orianna''' will attempt to walk to ''Command Attack's'' cast point if it lies outside cast range (''The Ball'' will never exceed its leash range regardless of target direction).\n* ''The Ball'' will be {{tip|knockdown|knocked down}} upon colliding with {{cai|W|Yasuo}}.",
+      "notes": "* '''Orianna''' cannot use other abilities while ''The Ball'' is in transit but she may still perform other actions.\n* ''The Ball'' will remain in the target location until '''Orianna''' retrieves it or if she goes beyond its leash range.\n** '''Orianna''' will attempt to walk to ''Command Attack's'' cast point if it lies outside cast range (''The Ball'' will never exceed its leash range regardless of target direction).\n* ''The Ball'' will drop to the ground upon colliding with {{cai|W|Yasuo}} but not with {{cai|E|Braum}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "30/35/40/45/50",
@@ -205,7 +181,7 @@
         110
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]] / [[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "OrianaDissonanceCommand.png",
         "sprite": "spell8.png",
@@ -270,23 +246,23 @@
           ]
         },
         {
-          "levelingtext": "{{st|Movement Speed Modifier|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Movement Speed Modifier</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Movement Speed Modifier|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Movement Speed Modifier</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                20,
-                25,
                 30,
                 35,
-                40
+                40,
+                45,
+                50
               ]
             ],
             "st_slices": [
               "Movement Speed Modifier",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
             ]
           },
           "subeffects": [
@@ -294,15 +270,15 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  20,
-                  25,
                   30,
                   35,
-                  40
+                  40,
+                  45,
+                  50
                 ]
               },
               "title": "Movement Speed Modifier",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "none"
             }
           ]
@@ -328,7 +304,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "[[Unit-targeted|Unit]] / [[Self-targeted|Self]]",
+      "targeting": "[[Unit-targeted|Unit]]",
       "target_range": 1100,
       "image": {
         "full": "OrianaRedactCommand.png",
@@ -343,7 +319,7 @@
         "{{sbc|Passive:}} {{ai|Clockwork Windup|Orianna|The Ball}} grants whomever it is attached to '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}}.",
         "{{sbc|Active:}} '''Orianna''' commands ''The Ball'' to fly to the targeted allied {{tip|champion}} or herself and attach itself to her target, dealing {{as|magic damage}} to all enemies it passes through and {{tip|shield|shielding}} her target on arrival for {{fd|2.5}} seconds."
       ],
-      "notes": "* Applies {{tip|area damage}} to enemies along the way and provides a {{tip|shield}} to allies.\n* ''Command Protect'' has no cast time and does not interrupt '''Orianna's''' previous orders.\n* '''Orianna''' gains ''Command Protect's'' bonus resistances whenever ''The Ball'' is attached to her (even if she didn't self-cast).\n* ''The Ball'' will remain where ''Command Protect's'' target ally [[death|died]] or, if instead they die or become {{tip|untargetable}} while it is mid-flight, snap back to '''Orianna'''.\n** ''The Ball'' will return to ''Orianna'' if ''Command Protect's'' target ally moves too far away from her (''The Ball'' will always respect its leash range, which is increased by 100 when attached to allied champions).\n* ''The Ball'' will join ''Command Protect's'' target ally in {{tip|invisibility|stealth}} if they are affected by it when '''Orianna''' targets them.",
+      "notes": "* '''Orianna''' gains ''Command Protect's'' bonus resistances whenever ''The Ball'' is attached to her (even if she didn't self-cast).\n* ''The Ball'' will remain where ''Command Protect's'' target ally [[death|died]] or, if instead they die or become {{tip|untargetable}} while it is mid-flight, snap back to '''Orianna'''.\n** ''The Ball'' will return to '''Orianna''' if ''Command Protect's'' target ally moves too far away from her (''The Ball'' will always respect its [[Pets#Leash range|leash range]], which is increased by 100 when attached to allied champions).\n* ''The Ball'' will join ''Command Protect's'' target ally in {{tip|stealth}} if they are affected by it when '''Orianna''' targets them.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60",
@@ -388,8 +364,8 @@
           ]
         },
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -414,12 +390,12 @@
                 "player_total_ap": 0.3
               },
               {
-                "player_total_ap": 0.4
+                "player_total_ap": 0.5
               }
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -433,10 +409,10 @@
                   150,
                   180
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.5
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -458,7 +434,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "OrianaDetonateCommand.png",
         "sprite": "spell8.png",
@@ -469,9 +445,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to unleash a shockwave after a {{fd|0.75}} seconds delay, dealing {{as|magic damage}} to all nearby enemies and {{tip|airborne|pulling}} them 350 units towards ''The Ball''."
+        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to unleash a shockwave, dealing {{as|magic damage}} to all nearby enemies and {{tip|airborne|pulling}} them 350 units towards ''The Ball''."
       ],
-      "notes": "* {{Pending for test}}: Enemies are disabled for a total {{fd|1.25}} seconds.\n* ''Command Shockwave'' tosses enemies a set distance (those on the edge of the flinging area will be tossed to the center while those close to the middle will go over ''The Ball'' towards the edge) and can send them through walls.\n* ''Command Shockwave'', if buffered while {{ai|Command: Attack|Orianna}}, will be immediately casted at the target location when the ball has stopped moving.\n* '''Orianna''' can {{si|Flash}} during the delay while ''The Ball'' is attached to her and ''Command Shockwave'' will update its {{tip|area of effect}} location.",
+      "notes": "* ''Command Shockwave'' tosses enemies a set distance (those on the edge of the flinging area will be tossed to the center while those close to the middle will go over ''The Ball'' towards the edge) and can send them through walls.\n* ''Command Shockwave'', if buffered while {{ai|Command: Attack|Orianna}}, will be immediately casted at the target location when the ball has stopped moving.\n* '''Orianna''' can {{si|Flash}} during the cast time while ''The Ball'' is attached to her and ''Command Shockwave'' will affect the new location.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

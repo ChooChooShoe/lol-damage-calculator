@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Slayer",
+  "herotype": "Assassin",
   "alttype": "Fighter",
   "rangetype": "Melee",
   "be_cost": 4800,
@@ -105,7 +105,7 @@
         "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, dealing them {{tip|magic damage|{{as|magic damage}}}} plus {{as|100% AD}} {{as|physical damage}}.",
         "''Urchin Strike'' applies [[on-hit effect]]s."
       ],
-      "notes": "* Once ''Fizz'' has used it, ''Urchin Strike'' can be dodged with sufficiently fast displacement, resulting in no damage dealt.\n* {{sti|Life steal}} applies only on the physical damage component while {{sti|spell vamp}} applies to both the physical damage and '''bonus''' magic damage.",
+      "notes": "* ''Urchin Strike'' does not deal damage if the target is not in range or is {{tip|untargetable}} before '''Fizz''' reaches them.\n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50",
@@ -176,7 +176,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "[[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "FizzW.png",
         "sprite": "spell3.png",
@@ -188,9 +188,9 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies [[on-hit]], dealing {{as|magic damage}} every {{fd|0.5}} seconds for 3 seconds, refreshing [[on-hit]].",
-        "{{sbc|Active:}} '''Fizz's''' next basic attack is empowered, dealing {{as|'''bonus''' magic damage}} and gaining {{sti|range|50 '''bonus''' range}}.",
+        "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] becomes an {{tip|unstoppable basic attack}}, dealing {{as|'''bonus''' magic damage}} and gaining {{sti|range|50 '''bonus''' range}}.",
         "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks gain {{as|'''bonus''' on-hit magic damage}} for 5 seconds.",
-        "''Seastone Trident'' resets '''Fizz's''' autoattack timer."
+        "''Seastone Trident'' {{tip|basic attack reset|resets}} '''Fizz's''' basic attack timer."
       ],
       "notes": "* {{Pending for test}}: ''Seastone Trident's '' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "W",
@@ -370,139 +370,6 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "FizzE",
-      "name": "Playful",
-      "maxrank": 5,
-      "cooldown": [
-        16,
-        14.5,
-        13,
-        11.5,
-        10
-      ],
-      "cost": [
-        90,
-        95,
-        100,
-        105,
-        110
-      ],
-      "costtype": "Mana",
-      "targeting": "Ground",
-      "target_range": 330,
-      "image": {
-        "full": "FizzE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fizz''' {{tip|dash|vaults}} towards the target location, becoming {{tip|untargetable}} for up to {{fd|0.75}} seconds while balancing on his trident. While balancing, '''Fizz''' gains the ability to cast {{ai|Trickster|Fizz}}.",
-        "'''Fizz''' then splashes onto the ground below him, dealing {{as|magic damage}} to nearby enemies and {{tip|slow|slowing}} them for 2 seconds."
-      ],
-      "notes": "* After ''Playful'' is used (without activating ''Trickster'') ''Fizz'' can orientate his landing by right-clicking before/as he drops for a longer reach (but same radius) on the slow/damage.\n* ''Playful'' cannot be used for approximately {{fd|0.5}} seconds after using {{ai|Urchin Strike|Fizz}}.\n* {{si|Flash}} can be used during both ''dashes''.\n* The ''untargetability'' partially cancels if {{ci|Fizz}} is {{tip|stun|disabled}} during it (because of effects such as {{ai|Power Fist|Blitzcrank}}), allowing non on-target effects to hit him.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "90/95/100/105/110",
-      "cooldownBurn": "16/14.5/13/11.5/10",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 75% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                120,
-                170,
-                220,
-                270
-              ],
-              [
-                40,
-                45,
-                50,
-                55,
-                60
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.75
-              }
-            ],
-            "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  70,
-                  120,
-                  170,
-                  220,
-                  270
-                ],
-                "player_total_ap": 0.75
-              },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "e2": {
-      "riotId": "FizzE",
-      "name": "Trickster",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "Ground",
-      "target_range": 270,
-      "image": {
-        "full": "FizzE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fizz''' dismounts from his trident toward the target location in quick succession. Upon landing, he deals {{as|magic damage|magic damage}} to nearby enemies. The damage dealt is the same as {{ais|Playful|Fizz}}, but in a smaller radius, and without applying the {{tip|slow}}.",
-        "Both {{tip|dashes}} may be directed separately."
-      ],
-      "notes": "* {{si|Flash}} can be used during both ''dashes''.",
-      "skillkey": "E",
-      "skillid": "e2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": []
-    },
     "r1": {
       "riotId": "FizzR",
       "name": "Chum the Waters",
@@ -518,7 +385,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]] / [[Auto-targeted|Auto]]",
+      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
       "target_range": 1300,
       "image": {
         "full": "FizzR.png",
@@ -530,13 +397,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, {{tip|sight|revealing}} the affected area before emerging after 2 seconds, dealing {{as|magic damage}}, {{tip|airborne|knocking aside}} surrounding enemies and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its slow, eruption radius and knockback distance.",
+        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, {{tip|sight|revealing}} the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing {{as|magic damage}}, {{tip|airborne|knocking aside}} surrounding enemies and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knockback distance.",
         "{{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knockback distance.",
         "{{sbc|Chomper (455-910):}} 60% slow, 325 eruption radius and 250 unit knockback distance.",
         "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knockback distance.",
-        "Enemy {{tip|champion|champions}} can intercept the lure, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of away."
+        "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of away."
       ],
-      "notes": "* ''Chum the Waters'' will stop its movement if {{tip|spell shield|spell shielded}} (does not attach) or upon colliding with {{cai|W|Yasuo}} (does not get destroyed).\n* Only the slow may be removed by {{tip|cleanse|cleansing}} effects.",
+      "notes": "* ''Chum the Waters'' will stop its movement if {{tip|spell shield|spell shielded}} (does not attach) or upon colliding with {{cai|W|Yasuo}} (does not get destroyed).\n* ''Chum the Waters'' is cast from wherever '''Fizz''' is at the end of the cast time. Although the targeted area is not changed, unless the ability was cast beyond maximum range.\n* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is going to emerge. The countdown starts from 4 seconds and ends at the last second, though the numbers decrease twice as fast.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

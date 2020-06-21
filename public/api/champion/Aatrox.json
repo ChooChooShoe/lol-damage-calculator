@@ -1,6 +1,6 @@
 {
   "patch": "V3.8",
-  "changes": "9.19.1",
+  "changes": "10.11.1",
   "id": "Aatrox",
   "name": "Aatrox",
   "title": "the Darkin Blade",
@@ -64,11 +64,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next basic attack to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the target's {{sti|'''maximum''' health}}}} as {{tip|physical damage|{{as|'''bonus''' physical damage}}}} on non-{{tip|turrets|structures}}, capped at 100 against monsters, and {{tip|heal|healing}} him for 100% of the {{tip|physical damage|{{as|'''bonus''' physical damage}}}} dealt, reduced to 25% against {{tip|minions}}.",
-        "''Deathbringer Stance's'' {{sti|cooldown}} is reduced by 2 seconds whenever '''Aatrox''' hits a {{tip|champion}} or {{tip|monster|large monster}} with a [[basic attack]] [[on-hit]] or an ability, doubled if he hits with the edge of {{ai|The Darkin Blade|Aatrox}}. The cooldown reduction for {{ai|The Darkin Blade|Aatrox}} applies only once and prioritizes for the unit hit by the edge.",
-        "''The cooldown is also reduced by 2 seconds if '''Aatrox''' misses {{ai|The Darkin Blade|Aatrox}} by up to 50 units.''"
+        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next [[basic attack]] to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the target's {{sti|'''maximum''' health}}}} as {{tip|physical damage|{{as|'''bonus''' physical damage}}}} (capped at 100 against monsters), and {{tip|heal}} him for 100% of the {{as|'''bonus''' physical damage}} dealt, reduced to 25% against {{tip|minions}}.",
+        "''Deathbringer Stance's'' {{sti|cooldown}} is reduced by 2 seconds whenever '''Aatrox''' hits at least one {{tip|champion}} or {{tip|monster|large monster}} with a basic attack [[on-hit]] or an ability. The ''cooldown'' is further reduced by 2 seconds if he hits with the {{as|Sweetspot|sweetspot}} of {{ai|The Darkin Blade|Aatrox}}."
       ],
-      "notes": "* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n** Pressing {{sbc|CTRL + 5}} switches stances controllably.\n* The empowered attack is given [[on-attack]]. Commanding an attack before ''Deathbringer Stance'' is available, but hitting the target while it's available will not trigger the bonus damage.\n* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Deathbringer Stance's'' cooldown will still be reduced.\n* '''Aatrox''' respawns with his ''Deathbringer Stance'' ready.",
+      "notes": "* The empowered attack does not affect {{tip|turret|structures}} nor {{tip|ward|wards}}.\n* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n** Pressing {{sbc|CTRL + 5}} switches stances controllably.\n* The empowered attack is given [[on-attack]]. Commanding an attack before ''Deathbringer Stance'' is available, but hitting the target while it's available will not trigger the bonus damage.\n* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Deathbringer Stance's'' cooldown will still be reduced.\n* This ability goes on cooldown on death and refreshes upon respawn.\n* {{Pending for test}}: Interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -91,8 +90,8 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": "{{tt|650|First cast}} / {{tt|525|Second cast}} / {{tt|225|Third cast placement}} / {{tt|180|Empowered range offset}}",
+      "targeting": "Special",
+      "target_range": "Varied",
       "image": {
         "full": "AatroxQ.png",
         "sprite": "spell0.png",
@@ -103,37 +102,25 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Aatrox''' swings his greatsword in the target direction, striking enemies in a line. ''The Darkin Blade'' can then be reactivated twice within 4 seconds, with each cast refreshing the timer. The second cast strikes enemies in a cone and the third in the target area. There's a 1 second cooldown between each cast.",
-        "Each strike deals {{as|physical damage}}, reduced to 55% against {{tip|minions}}. All units take 25% increased damage on the second cast and 50% on the third.",
-        "Hitting enemies at the far end of the first two casts and the center of the third deals 50% '''bonus''' damage and {{tip|airborne|knocks up}} enemies for {{fd|0.25}} seconds, doubled to {{fd|0.5}} seconds against {{tip|monsters}}."
+        "'''Aatrox''' can activate ''The Darkin Blade'' three times before the ability goes on cooldown, with a 1 second {{tt|static|Static cooldowns cannot be reduced by cooldown reduction.}} {{sti|cooldown}} between casts. If '''Aatrox''' does not recast the ability within 4 seconds, the ability goes on cooldown.",
+        "Each of the three casts has '''Aatrox''' perform an acrobatic strike with his greatsword, dealing {{as|physical damage}} in a distinct area. Enemies hit within a telegraphed {{as|Sweetspot|sweetspot}} in the strike are dealt [[File:Critical strike icon.png|20px|link=]] {{tt|50% '''bonus''' damage|cosmetic critical strike}} and are {{tip|airborne|knocked up}} for {{fd|0.25}} seconds. Each cast in the sequence deals more damage than the previous.",
+        "{{sbc|First Cast:}} '''Aatrox's''' first strike affects a 625{{times}}180-unit rectangular area in the target direction, with '''Aatrox''' centered on the back line and the {{as|Sweetspot|sweetspot}} at the farthest edge.",
+        "{{sbc|Second Cast:}} '''Aatrox's''' second strike affects a trapezoidal area in the target direction, with the {{as|Sweetspot|sweetspot}} at the farthest edge. The hitbox begins 100-units behind '''Aatrox''' and extends 475-units in front of him, measuring between 300 and 500-units wide from behind to in front.",
+        "{{sbc|Third Cast:}} '''Aatrox's''' third strike affects a 300-radius circular area centered on a target location 200 units in front of him, with a 180-radius {{as|Sweetspot|sweetspot}} within."
       ],
-      "notes": "* '''Aatrox''' cannot move and cast abilities during the cast time, except for {{ai|Umbral Dash|Aatrox}} and {{si|Flash}}.\n* The hitbox and '''Aatrox's''' model are fixed to the initial target direction.\n** '''Aatrox's''' facing-direction, for effects such as {{ai|Petrifying Gaze|Cassiopeia}}, is the direction he is moving, and not the direction the model is facing.\n* All damage modifiers stack multiplicatively.\n* The first cast extends at 50 units behind '''Aatrox''', the second cast extends at 100 units.",
+      "notes": "* [[File:Aatrox hitbox areas.png|thumb|The highlighted areas denote the sweetspot - enemies are affected where the two areas overlap (See {{tip|er|edge range}} and {{tip|cr|center range}}).]] The first and second casts function like any point-blank AOE (i.e. an effect centered on the caster). An enemy is considered to be hit by the ability based on {{tip|er|edge range}} - i.e. any part of your gameplay radius is within the hitbox, you are affected. \n* The third cast, as well as the {{as|sweetspot|sweetspots}} of the first and second cast, function like ground-targeted abilities. An enemy is considered to be hit by the ability based on {{tip|cr|center range}} - i.e. an enemy's center has to be within the hitbox to be affected.\n* As implied by the previous point, the sweetspot for the first and second cast is implemented as separate areas of effect to the main component of the ability. Enemies must be within both areas to trigger the bonus damage and knockup. \n** {{ais|Deathbringer Stance|Aatrox}} cooldown reduction only checks if an enemy is within the sweetspot - meaning it is possible to trigger the cooldown reduction without damaging or knocking up an enemy.\n* In principle, the subsequent casts deal an increased amount of damage from the first cast: the second cast deals 125%, the third cast deals 150%.\n* Each cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* The hitbox and '''Aatrox's''' model are fixed to the initial target direction.\n** '''Aatrox's''' facing-direction, for effects such as {{ai|Petrifying Gaze|Cassiopeia}}, is the direction he is moving, and not the direction the model is facing.\n* All damage modifiers {{tip|stacks multiplicatively|stack multiplicatively}}.\n* Damage dealt by the {{as|sweetspot|sweetspot}} of ''The Darkin Blade'' is a [[Critical_strike#Cosmetic_critical_strikes|cosmetic critical strike]].\n{{ct|cast|cast= {{ai|E|Aatrox}} can be cast. Other abilities are disabled.|interrupts=death}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
       "cooldownBurn": "14/12/10/8/6",
       "effects": [
         {
-          "levelingtext": "{{st|First Swing Damage|{{ap|{{#var:b1}} to {{#var:b2}}}} {{as|(+ {{ap|{{#var:r1}} to {{#var:r2}}}}% AD)}}|Second Swing Damage|{{ap|{{#var:b1}}*1.25 to {{#var:b2}}*1.25}} {{as|(+ {{ap|{{#var:r1}}*1.25 to {{#var:r2}}*1.25}}% AD)}}|Third Swing Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b2}}}} {{as|(+ {{ap|{{#var:r1}} to {{#var:r2}}}}% AD)}}|Sweetspot Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Sweetspot Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
               [
                 0,
                 0,
@@ -169,17 +156,12 @@
               },
               {
                 "player_total_ad": []
-              },
-              {
-                "player_total_ad": []
               }
             ],
             "st_slices": [
-              "First Swing Damage",
+              "Physical Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Second Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Third Swing Damage",
+              "Sweetspot Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
@@ -202,9 +184,9 @@
                   0
                 ]
               },
-              "title": "First Swing Damage",
+              "title": "Physical Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "unknown"
+              "damage_type": "physical"
             },
             {
               "index": 1,
@@ -224,69 +206,19 @@
                   0
                 ]
               },
-              "title": "Second Swing Damage",
-              "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "player_total_ad": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ]
-              },
-              "title": "Third Swing Damage",
+              "title": "Sweetspot Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Amplified First Swing Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}|Amplified Second Swing Damage|{{ap|{{#var:b1}}*1.25*1.5 to {{#var:b2}}*1.25*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.25*1.5 to {{#var:r2}}*1.25*1.5}}% AD)}}|Amplified Third Swing Damage|{{ap|{{#var:b1}}*1.5*1.5 to {{#var:b2}}*1.5*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5*1.5 to {{#var:r2}}*1.5*1.5}}% AD)}}|Maximum Non-Minion Damage|{{ap|{{#var:b1}}*3.75*1.5 to {{#var:b2}}*3.75*1.5}} {{as|(+ {{ap|{{#var:r1}}*3.75*1.5 to {{#var:r2}}*3.75*1.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Amplified First Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Amplified Second Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Amplified Third Swing Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Maximum Non-Minion Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}}*1.25 to {{#var:b2}}*1.25}} {{as|(+ {{ap|{{#var:r1}}*1.25 to {{#var:r2}}*1.25}}% AD)}}|Sweetspot Damage|{{ap|{{#var:b1}}*1.25*1.5 to {{#var:b2}}*1.25*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.25*1.5 to {{#var:r2}}*1.25*1.5}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Sweetspot Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
-              [
-                0,
-                0,
-                0,
-                0,
-                0
-              ],
               [
                 0,
                 0,
@@ -322,22 +254,12 @@
               },
               {
                 "player_total_ad": []
-              },
-              {
-                "player_total_ad": []
-              },
-              {
-                "player_total_ad": []
               }
             ],
             "st_slices": [
-              "Amplified First Swing Damage",
+              "Physical Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Amplified Second Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Amplified Third Swing Damage",
-              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Maximum Non-Minion Damage",
+              "Sweetspot Damage",
               "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
@@ -360,9 +282,9 @@
                   0
                 ]
               },
-              "title": "Amplified First Swing Damage",
+              "title": "Physical Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "unknown"
+              "damage_type": "physical"
             },
             {
               "index": 1,
@@ -382,12 +304,66 @@
                   0
                 ]
               },
-              "title": "Amplified Second Swing Damage",
+              "title": "Sweetspot Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
-            },
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b2}}*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5 to {{#var:r2}}*1.5}}% AD)}}|Sweetspot Damage|{{ap|{{#var:b1}}*1.5*1.5 to {{#var:b2}}*1.5*1.5}} {{as|(+ {{ap|{{#var:r1}}*1.5*1.5 to {{#var:r2}}*1.5*1.5}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Sweetspot Damage</span>: <span><spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "player_total_ad": []
+              }
+            ],
+            "st_slices": [
+              "Physical Damage",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "Sweetspot Damage",
+              "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+            ]
+          },
+          "subeffects": [
             {
-              "index": 2,
+              "index": 0,
               "ratios": {
                 "base_damage": [
                   0,
@@ -404,12 +380,12 @@
                   0
                 ]
               },
-              "title": "Amplified Third Swing Damage",
+              "title": "Physical Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "unknown"
+              "damage_type": "physical"
             },
             {
-              "index": 3,
+              "index": 1,
               "ratios": {
                 "base_damage": [
                   0,
@@ -426,7 +402,7 @@
                   0
                 ]
               },
-              "title": "Maximum Non-Minion Damage",
+              "title": "Sweetspot Damage",
               "str": "<spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['0','0','0','0','0']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
@@ -465,9 +441,9 @@
       },
       "description": [
         "{{sbc|Active:}} '''Aatrox''' smashes the ground in the target direction, creating a chain that stops on the first enemy hit, dealing {{as|physical damage}}, doubled against {{tip|minions}}, and {{tip|slow|slowing}} them by 25% for {{fd|1.5}} seconds.",
-        "If ''Infernal Chains'' hits a {{tip|champion}} or large monster, they are chained to the impact area. If the chained enemy is still in the impact area after {{fd|1.5}} seconds, they are {{tip|airborne|dragged}} to the center and take the same damage again."
+        "If ''Infernal Chains'' hits an enemy {{tip|champion}} or large {{tip|monster}}, they are {{tip|true sight|revealed}} and {{tip|tether|chained}} to the impact area. If the chained enemy is still in the impact area after {{fd|1.5}} seconds, they are {{tip|airborne|dragged}} to the center and take the same damage again."
       ],
-      "notes": "* The impact area is oriented relative to '''Aatrox's''' position when the projectile hits, not where the projectile originated from.\n* The location that the target is dragged to is not at the target's original location, but slightly closer towards '''Aatrox's''' position when the zone expires.\n* There's a small delay in checking if the target is in or outside the ''Infernal Chains'' area. Because of this it is still possible to drag the target if they leave the zone at the last instant.",
+      "notes": "* The impact area is oriented relative to '''Aatrox's''' position when the projectile hits, not where the projectile originated from.\n* The location that the target is dragged to is not at the target's original location, but slightly closer towards '''Aatrox's''' position when the zone expires.\n* There's a small delay in checking if the target is in or outside the ''Infernal Chains'' area. Because of this it is still possible to drag the target if they leave the zone at the last instant.\n* ''Infernal Chains'' will fire from where '''Aatrox''' is at the end of the cast time.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -610,7 +586,7 @@
         0
       ],
       "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": "{{tt|75|Minimum range}} / {{tt|300|Maximum range}}",
+      "target_range": "{{tt|300|Maximum range}}",
       "image": {
         "full": "AatroxE.png",
         "sprite": "spell0.png",
@@ -621,11 +597,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Aatrox''' {{tip|heals}} for a percentage of the non-periodic {{tt|damage|Post-mitigation}} he deals against champions.",
+        "{{sbc|Passive:}} '''Aatrox''' {{tip|heals}} for a percentage of the non-periodic {{tt|post-mitigation damage|Damage calculated after modifiers}} he deals against enemy champions.",
         "{{sbc|Active:}} '''Aatrox''' {{tip|dash|dashes}} in the target direction.",
-        "''Umbral Dash'' resets '''Aatrox's''' basic attack timer and can be cast during his other spell casts without interruption."
+        "''Umbral Dash'' {{tip|basic attack reset|resets}} '''Aatrox's''' basic attack timer.",
+        "''Umbral Dash'' can be cast during his other abilities without cancelling them, and vice versa."
       ],
-      "notes": "* If ''Umbral Dash'' is cast in the same direction '''Aatrox''' is moving, he will be unable to buffer commands that require him to move.\n* The dash can go through any wall as long as it can reach over half of it, behaving like a {{tip|blink}}.",
+      "notes": "* If ''Umbral Dash'' is cast in the same direction '''Aatrox''' is moving, he will be unable to buffer commands that require him to move. {{bug|1}}\n* '''Aatrox's''' model darkens for {{fd|1.5}} seconds upon casting ''Umbral Dash'', which is a remnant from a buff he received before it got removed.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -685,7 +662,7 @@
         0,
         0
       ],
-      "targeting": "none",
+      "targeting": "None",
       "target_range": "",
       "image": {
         "full": "AatroxR.png",
@@ -697,11 +674,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form for 10 seconds, gaining {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds, and {{tip|fear|fearing}} nearby enemy {{tip|minions}} and [[pets]], {{tip|slow|slowing}} them by up to 99% for 3 seconds.",
-        "While transformed, '''Aatrox''' gains increased size and {{as|{{sti|'''bonus''' attack damage}}}}, and receives increased {{tip|heal|self-healing}} from all sources ({{sti|spell vamp}} exception).",
-        "With each {{tip|champion|enemy champion}} {{tip|takedown}}, ''World Ender'' is extended by 5 seconds, refreshing its effects, up to the original amount."
+        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form, {{tip|fear|fearing}} nearby enemy {{tip|minions}} and {{tip|monster|monsters}} and {{tip|slow|slowing}} them by up to 99% for 3 seconds. For the next 10 seconds, '''Aatrox''' is {{tip|ghosted}} and gains {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds.",
+        "While transformed, '''Aatrox''' gains increased size and {{as|{{sti|'''bonus''' attack damage}}}}, and receives increased {{tip|heal|self-healing}} from all sources, except {{sti|spell vamp|link=true}}. {{bug|2}}",
+        "With each enemy {{tip|champion}} {{tip|takedown}}, ''World Ender'' is extended by 5 seconds, refreshing its effects, up to the original amount."
       ],
-      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.\n* ''World Ender'' will instantly end if '''Aatrox''' takes post-mitigation damage bigger than his {{as|'''current''' health}} (calculated before taking into consideration {{iis|Death's Dance}} damage storage and {{iis|Corrupting Potion}} reduced damage for [[aoe]] attacks).\n** ''World Ender'' will also instantly end if {{iis|Death's Dance}} last tick of damage is reduced to not deal lethal damage as per its effect.\n* If '''Aatrox''' enters {{iis|Guardian Angel}} {{tip|resurrection|revival state}} during ''World Ender's'' cast time, he will revive with ''World Ender'' active and increase ''Guardian Angel's'' self-heal.",
+      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.\n* ''World Ender'' persists through {{tip|resurrection}} effects.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

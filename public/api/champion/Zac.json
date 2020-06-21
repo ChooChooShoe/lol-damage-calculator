@@ -49,32 +49,6 @@
     "attackspeed": 0.736
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Cell Division",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "ZacPassive.png",
-        "sprite": "passive4.png",
-        "group": "passive",
-        "x": 96,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|The Secret Weapon:}} '''Zac's''' size scales with {{sti|health|{{as|his '''current''' health}}}}, getting larger when it exceeds {{sti|health|{{as|his '''base''' health}}}} and getting smaller the higher {{sti|health|{{as|his '''missing''' health}}}}.",
-        "{{sbc|Innate - Goo:}} Every time '''Zac''' damages at least one enemy with an [[Champion ability|ability]], he sheds, depending on the ability, {{tt|a number of chunks|• Depending on the ability the amount of produced chunks can vary:&#013;\n&nbsp;• Stretching Strikes: Maximum of 2 chunks, 1 chunk for each strike hit on a different target. The collision does not produce additional chunks.&#013;\n&nbsp;• Unstable Matter: Maximum of 1 chunk, no matter how many enemies hit.&#013;\n&nbsp;• Elastic Slingshot: Maximum of 5 chunks, 1 chunk for each enemy champion hit.&#013;\n&nbsp;• Let's Bounce!: Maximum of 4 chunks, 1 chunk for each bounce that hits one or more enemy champion.}} of himself to a nearby location, landing towards visible nearby enemy champions and lasting for 6 seconds.",
-        "Both '''Zac''' and his enemies can interact with these chunks by being within 50 units of them: '''Zac''' can move over them to consume them, restoring {{sti|health|{{as|{{pp|type=[[File:Let's Bounce!.png|20px|border]] Let's Bounce!'s rank|4|key=%|4 to 7|0 to 3}} of his '''maximum''' health}}}}; enemies can move over them to destroy them.",
-        "Periodically, upon taking [[Death|fatal damage]], '''Zac''' splits into 4 uncontrollable bloblets that move to his final location over {{pp|5|8 to 4|1;6;10;13;17}} seconds. If any of these bloblets remain at the end of the duration, '''Zac''' {{tip|resurrection|recombines}} and returns at {{sti|health|{{as|{{tt|10 - 50%|Based on his bloblets' total remaining health. Reaches the maximum amount at full health on all bloblets}} '''maximum''' health}}}}.",
-        "''Upon splitting, the bloblets stop upon colliding with terrain.''"
-      ],
-      "notes": "* ''Cell Division's'' chunks spawn in two versions.\n** {{sbc|Contestable:}} They will fall to the ground between ''Zac'' and the nearest {{tip|sight|visible}} enemy champion within 1000 range of him (dropping slightly in ''Zac's'' favor). Cannot be interacted with for the first {{fd|0.25}} seconds (except during {{ai|Let's Bounce!|Zac}}).\n** {{sbc|Uncontestable:}} They will fall to the ground near ''Zac'' and can be picked up immediately (version used by default).\n* {{ii|Guardian Angel}} and {{ai|Chronoshift|Zilean}} will take precedence over ''Cell Division''.\n* {{ii|Spirit Visage}} increases the healing of both ''chunks'' and ''bloblets''.\n* {{cai|Realm Warp|Ryze}} is able to individually teleport '''Zac''' or his boblets during ''Cell Division''.\n* ''Cell Division's'' bloblets can be targeted by {{si|teleport}} and are treated as if they were a {{tip|minion}}, becoming {{tip|invulnerable}} and {{tip|immobilize|immobilized}}.\n** Concurrent bloblets are not {{tip|interrupt|interrupted}} and will continue to {{tip|resurrection|recombine}} instinctively.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "ZacQ",
       "name": "Stretching Strikes",
@@ -102,12 +76,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and attaching it to the target for 2 seconds.",
-        "While his arm is attached, his next [[basic attack]] has {{sti|range|200 range}} and is replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}.",
+        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and {{tip|tether|attaching}} it to the target for 2 seconds.",
+        "While his arm is attached, his next [[basic attack]] becomes an {{tip|unstoppable basic attack}}, having {{sti|range|200 range}} and being replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}, but without being able to {{tip|critical strike|critically strike}}.",
         "If the two ''Stretching Strikes'' affect different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them towards each other for 300 range.",
         "If the two targets are {{tt|near|700 range}} each other, they're instead slammed against each other, both taking the initial {{as|magic damage}} and applied the {{tip|slow}} again."
       ],
-      "notes": "* {{tip|Spell shield|Spell shields}} will block only one instance of damage.",
+      "notes": "* {{tip|Spell shield|Spell shields}} will block a single instance of damage only.\n* If the {{tip|tether|attached}} target becomes {{tip|untargetable}} during the second ''Stretching Strike'' via basic attack, they are not {{tip|airborne|flinged}} nor {{tip|root|rooted}}. The target will still take damage however.\n* {{Pending for test}}: Parry interactions ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).\n* {{Pending for test}}: {{sti|Attack range}} modifiers ({{ii|Rapid Firecannon}}).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "8",
@@ -208,7 +182,7 @@
         4
       ],
       "costtype": "{{as|Current Health|health}}",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "target_range": 350,
       "image": {
         "full": "ZacW.png",
@@ -223,7 +197,7 @@
         "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}, and becoming {{tip|ghosted}} for 5 seconds against monsters hit.",
         "''Unstable Matter's'' {{sti|cooldown}} is reduced by 1 second every time '''Zac''' picks up a {{ai|Cell Division|Zac}} chunk."
       ],
-      "notes": "* ''Unstable Matter'' has no cast time and does not interrupt ''Zac's'' previous orders.",
+      "notes": "* No additional information.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "4",
@@ -337,11 +311,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac''' {{ct|channel|channels|cast=Q and W interrupt. R recasts|items=interrupts,true,,false|spells=true,false,false,interrupts,recasts|interrupts = silence, death,nearsight}} up to {{fd|4.5}} seconds, increasing ''Elastic Slingshot's'' {{sti|range}} over a cone in the target direction.",
-        "Moving during the ''channel'' automatically cancels it, refunding 50% of the cost and {{sti|cooldown}}.",
-        "{{sbc|Second Cast:}} '''Zac''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{pp|2|changedisplay=true|type=duration of the charge|0.5|1|0|X}} seconds."
+        "{{sbc|Active:}} '''Zac''' {{tip|channel|channels}} up to {{fd|4.5}} seconds, increasing ''Elastic Slingshot's'' {{sti|range}} over a cone in the target direction. ''Elastic Slingshot'' can be recast at any time within its duration.",
+        "Moving during the ''channel'' cancels it, refunding 50% of the cost and {{sti|cooldown}}.",
+        "{{sbc|Recast:}} '''Zac''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{pp|2|changedisplay=true|type=duration of the charge|0.5|1|0|X}} seconds."
       ],
-      "notes": "* {{sbc|[[Quick cast]]ing:}} ''Elastic Slingshot's'' channel begins when the key is pressed and held, launching ''Zac'' towards the cursor when released.",
+      "notes": "* {{sbc|[[Quick cast]]ing:}} ''Elastic Slingshot's'' channel begins when the key is pressed and held, launching ''Zac'' towards the cursor when released.\n{{ct|channel|cast=Q and W interrupt. R recasts|items=interrupts,true,,false|spells=true,false,false,interrupts,recasts|interrupts = silence, death}}",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "4",
@@ -457,7 +431,7 @@
       },
       "description": [
         "{{sbc|Passive:}} Increases {{ais|Cell Division|Zac}} healing from chunks.",
-        "{{sbc|Active:}} After a small delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{pp|7|type=duration|key=%|20 to 50|0 to 3}} '''bonus''' movement speed, but becoming {{tip|disarm|disarmed}} and unable to use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
+        "{{sbc|Active:}} After a brief delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{as|{{pp|7|type=duration|key=%|20 to 50|0 to 3}} {{sti|'''bonus''' movement speed}}}}, but becoming unable to declare basic attacks and use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
         "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
         "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them."
       ],

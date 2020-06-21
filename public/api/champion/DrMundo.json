@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.16",
-  "changes": "9.16.1",
+  "changes": "10.4.1",
   "id": "DrMundo",
   "name": "Dr. Mundo",
   "title": "the Madman of Zaun",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Dr. Mundo''' passively [[Health regeneration|regenerates]]{{ft|{{as|{{sti|health|{{fd|1.5}}% of his '''maximum''' health}}}} every 5 seconds|{{as|{{sti|health|{{fd|0.3}}% of his '''maximum''' health}}}} each second}}."
+        "{{sbc|Innate:}} '''Dr. Mundo''' passively [[Health regeneration|regenerates]]{{ft|{{as|{{sti|health|{{fd|1.5}}% of his '''maximum''' health}}}} every 5 seconds.|{{as|{{sti|health|{{fd|0.3}}% of his '''maximum''' health}}}} each second.}}"
       ],
       "notes": "* ''Adrenaline Rush'' is not affected by {{ri|Revitalize}} as it is considered as [[health regeneration]].",
       "skillkey": "I",
@@ -104,9 +104,9 @@
       "description": [
         "{{sbc|Active:}} '''Dr. Mundo''' hurls a cleaver in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits and {{tip|slow|slowing}} it by 40% for 2 seconds.",
         "''Infected Cleaver'' has a minimum damage threshold, and is capped against {{tip|minions}} and {{tip|monsters}}.",
-        "If ''Infected Cleaver'' hits an enemy, 40% of the {{sti|{{as|health cost}}}} is refunded, and if it kills it, 80% of the {{as|health cost}} is refunded."
+        "If ''Infected Cleaver'' hits an enemy, '''Dr. Mundo''' {{tip|heal|heals}} for 40% of the {{sti|{{as|health cost}}}}, increased to 80% if it kills an enemy."
       ],
-      "notes": "* As with all abilities with health costs ''Infected Cleaver'' will not reduce Dr. Mundo's health below 1, effectively making it free-to-cast at that threshold.\n* Health cost refund on the ability is affected by increased healing from {{ii|Spirit Visage}}, {{ri|Revitalize}} and {{sti|Heal power}}.\n** '''Dr. Mundo''' will still heal if ''Infected Cleaver'' is blocked.",
+      "notes": "* ''Infected Cleaver'' can be cast even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Infected Cleaver'' will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* {{tip|Spell shield}} does not prevent '''Dr. Mundo''' from receiving the health cost refund.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/60/70/80/90",
@@ -300,7 +300,7 @@
         30
       ],
       "costtype": "{{as|Health Per Second|health}}",
-      "targeting": "[[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "BurningAgony.png",
         "sprite": "spell2.png",
@@ -311,9 +311,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies and gaining {{sti|30% Tenacity}}."
+        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies and gaining 30% {{tip|Tenacity}}.",
+        "''Burning Agony'' can be toggled off after {{fd|0.5}} seconds of toggling on.",
+        "If '''Dr. Mundo's''' health falls below ''Burning Agony's'' {{sti|{{as|health cost}}}} while toggled on, the ability is toggled off automatically and put on a 1 second {{sti|cooldown}}."
       ],
-      "notes": "* As with all abilities with health costs, ''Burning Agony'' will not reduce Dr. Mundo's health below 1.\n** However this only happens once per ability cast. The ability will be put on a 1 second cooldown the next time his health is lower than the cost.",
+      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Burning Agony'' can be cast even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Burning Agony'' will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The {{tip|Tenacity}} increase {{tip|stacks additively}} with the ''tenacity reduction'' from {{tip|Brittle}}, but multiplicatively with other sources.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "10/15/20/25/30",
@@ -389,7 +391,7 @@
         0
       ],
       "costtype": "",
-      "targeting": "[[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "Masochism.png",
         "sprite": "spell2.png",
@@ -401,11 +403,11 @@
       },
       "description": [
         "{{sbc|Passive:}} Taking {{as|magic damage}} or paying a {{sti|{{as|health cost}}}} increases '''Dr. Mundo's''' {{sti|mr|{{as|magic resistance by 3%}}}} for 2 seconds, stacking up to an amount.",
-        "{{sbc|Active:}} '''Dr. Mundo''' gains {{as|'''bonus''' attack damage}} for 5 seconds, increased by {{as|{{pp|11|type='''missing''' health|key=%|key1=%|0 to 100|0 to 100|formula=1% per 1% of '''missing''' health}}|health}}.",
-        "Additionally, '''Dr. Mundo's''' next [[basic attack]] within the duration will cost {{as|health}}, but gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "''Masochism'' resets '''Dr. Mundo's''' basic attack timer."
+        "{{sbc|Active:}} '''Dr. Mundo''' gains {{sti|{{as|'''bonus''' attack damage}}}} for 5 seconds, increased by {{as|{{pp|11|type='''missing''' health|key=%|key1=%|0 to 100|0 to 100|formula=1% per 1% of '''missing''' health}}|health}}.",
+        "Additionally, '''Dr. Mundo's''' next damaging [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "''Masochism'' {{tip|basic attack reset|resets}} '''Dr. Mundo's''' basic attack timer."
       ],
-      "notes": "* As with all abilities with health costs ''Masochism'' will not reduce '''Dr. Mundo's''' health below 1, effectively making it free-to-cast at that threshold.\n* Health cost is paid upon basic attacking once after activating ''Masochism'', not upon activating ''Masochism''.\n** The health cost will be paid whether or not the basic attack deals damage (e.g. {{tip|blind}}).\n* The attack damage bonus adjusts dynamically to '''Dr. Mundo's''' health.\n* ''Masochism's'' bonus AD is the highest basic-ability-[[buff|steroid]] in the game.\n* ''Masochism's'' bonus physical damage does not affect structures. However, the bonus AD gained on activation will increase '''Dr. Mundo's''' damage against structures like any other AD source would.",
+      "notes": "* ''Masochism's'' attack can be used even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Masochism's'' attack will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The attack damage bonus adjusts dynamically to '''Dr. Mundo's''' health.\n* ''Masochism'' does not apply to [[structures]]",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -626,7 +628,7 @@
         25
       ],
       "costtype": "{{as|of current Health}}",
-      "targeting": "[[Buff]] / [[Self-targeted|Self]]",
+      "targeting": "None",
       "image": {
         "full": "Sadism.png",
         "sprite": "spell2.png",
@@ -639,7 +641,7 @@
       "description": [
         "{{sbc|Active:}} '''Dr. Mundo''' [[Health regeneration|regenerates]] {{sti|{{as|health}}}} over 12 seconds and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for the duration."
       ],
-      "notes": "* ''Sadism'' adjusts dynamically to '''Dr. Mundos''' '''maximum''' health.\n* ''Sadism'' will continue its healing effect through pseudo-death effects and while in stasis ({{ai|Chronoshift|Zilean}}, {{ai|Fate's Call|Kalista}}, {{ii|Zhonya's Hourglass}}, {{ii|Guardian Angel}}).\n* ''Sadism'' is not affected by {{ri|Revitalize}} as it is considered as [[health regeneration]].",
+      "notes": "* ''Sadism'' adjusts dynamically to '''Dr. Mundo's''' {{as|'''maximum''' health}}.\n* ''Sadism'' will continue its effect through {{tip|resurrection}} and {{tip|stasis}}.\n* ''Sadism'' is not affected by {{ri|Revitalize}} as it is considered [[health regeneration]].",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "25",

@@ -1,9 +1,9 @@
 {
   "patch": "V1.0.0.130",
-  "changes": "9.9.1",
+  "changes": "10.12.1",
   "id": "Volibear",
   "name": "Volibear",
-  "title": "the Thunder's Roar",
+  "title": "the Relentless Storm",
   "image": {
     "full": "Volibear.png",
     "sprite": "champion4.png",
@@ -27,35 +27,35 @@
     "difficulty": 3
   },
   "stats": {
-    "hp": 584.48,
-    "hpperlevel": 86,
-    "mp": 270.4,
-    "mpperlevel": 30,
-    "movespeed": 345,
-    "armor": 35,
-    "armorperlevel": 3.5,
-    "spellblock": 32.1,
+    "hp": 580,
+    "hpperlevel": 90,
+    "mp": 350,
+    "mpperlevel": 50,
+    "movespeed": 340,
+    "armor": 31,
+    "armorperlevel": 4,
+    "spellblock": 32,
     "spellblockperlevel": 1.25,
-    "attackrange": 125,
-    "hpregen": 8,
-    "hpregenperlevel": 0.65,
-    "mpregen": 8.092,
-    "mpregenperlevel": 0.65,
+    "attackrange": 150,
+    "hpregen": 9,
+    "hpregenperlevel": 0.75,
+    "mpregen": 6.25,
+    "mpregenperlevel": 0.5,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 68,
-    "attackdamageperlevel": 3.3,
-    "attackspeedperlevel": 2.67,
-    "attackspeed": 0.658
+    "attackdamage": 60,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2,
+    "attackspeed": 0.66
   },
   "skills": {
     "i1": {
       "riotId": "",
-      "name": "Chosen of the Storm",
+      "name": "The Relentless Storm",
       "maxrank": 0,
       "targeting": "Passive",
       "image": {
-        "full": "VolibearPassive.png",
+        "full": "Volibear_Icon_P.png",
         "sprite": "passive4.png",
         "group": "passive",
         "x": 192,
@@ -64,33 +64,35 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} When '''Volibear's''' health drops {{as|{{sti|health|below 30% of his '''maximum''' health}}}} he [[health regeneration|regenerates]] {{ft|{{as|{{sti|health|30% of his '''maximum''' health}}}} over 6 seconds|{{as|{{sti|health|{{fd|2.5}}% of his '''maximum''' health}}}} every {{fd|0.5}} seconds}}."
+        "{{sbc|Innate:}} '''Volibear''' gains 1 stack of ''The Relentless Storm'' whenever he damages an enemy with {{tip|basic attack|basic attacks}} [[on-hit]] and [[champion ability|abilities]], up to a maximum of 5. ''The Relentless Storm'' lasts for 6 seconds, refreshing whenever '''Volibear''' gains a stack. At maximum stacks, he gains ''Lightning Claws''.",
+        "{{sbc|The Relentless Storm:}} '''Volibear''' gains {{sti|{{as|5% '''bonus''' attack speed}}}} per stack, up to {{as|25% '''bonus''' attack speed}}.",
+        "{{sbc|Lightning Claws:}} '''Volibear's''' claws ignite with lightning, causing his [[basic attack]]s [[on-hit]] to deal {{as|{{pp2|10+1*x for 3; then + 2*x for 3; then + 3*x for 7; then + 4*x|formula=10+1 per level until lvl 3, then+2 until lvl 6, then+3 per level until lvl 13, then+4 per level}} {{as|(+ 40% AP)}} '''bonus''' magic damage|magic damage}} to the target and the closest {{tip|sight|visible}} enemy within 450 units of the target, chaining up to 4 subsequent targets."
       ],
-      "notes": "* ''Chosen of the Storm's'' cooldown starts as soon as it activates.\n* If the cooldown ends while '''Volibear''' is under 30% health ''Chosen of the Storm'' will not trigger unless he takes damage.\n* If '''Volibear''' is killed directly from anywhere higher than 30% health ''Chosen of the Storm'' will not activate and therefore will not go on cooldown.",
+      "notes": "* '''Volibear's''' spikes visually grow as ''The Relentless Storm'' stacks.\n* ''Lightning Claws'' has no effect on [[structures]] and {{tip|ward|wards}}.\n* While at four stacks, the next attack or ability on-hit reaching the fifth stack will be empowered by ''Lightning Claws''.\n* '''Volibear''' has a hidden passive that grants him {{as|1 armor}} for every enemy {{ci|Zilean}} within 800 range of him.\n** Likewise, {{ci|Zilean}} gains {{as|1 ability power}} for every nearby '''Volibear'''.\n** Neither '''Volibear''' nor {{ci|Zilean}} need {{tip|sight}} of one another to gain these bonuses.\n* A stack of ''The Relentless Storm'' is not gained if the attack is {{tip|blind|missed}} or {{ai|Counter Strike|Jax|dodged}}. A stack is granted even if the attack is {{ai|Spirit's Refuge|Shen|blocked}}. In all cases, ''Lightning Claws'' will not apply (on-hit damage is parried and the bounce is prevented).\n** Since {{ai|Frenzied Maul|Volibear}} cannot {{tip|blind|miss}}, gaining stacks from ''The Relentless Storm'' and applying ''Lighting Claws'' from the ability will not be prevented.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
     },
     "q1": {
       "riotId": "VolibearQ",
-      "name": "Rolling Thunder",
+      "name": "Thundering Smash",
       "maxrank": 5,
       "cooldown": [
+        14,
+        13,
         12,
         11,
-        10,
-        9,
-        8
+        10
       ],
       "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
+        50,
+        50,
+        50,
+        50,
+        50
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "none",
       "image": {
         "full": "VolibearQ.png",
         "sprite": "spell13.png",
@@ -101,43 +103,44 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Volibear''' drops on all fours and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for the next 4 seconds, increased when moving towards a nearby {{tip|sight|visible}} enemy [[champion]] within {{tt|1800|Estimated}} units of him.",
-        "For the duration, '''Volibear's''' next [[basic attack]] deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|airborne|flings}} his target over and behind himself.",
-        "''Rolling Thunder'' resets '''Volibear's''' autoattack timer."
+        "{{sbc|Active:}} '''Volibear''' drops on all fours, becoming {{tip|ghosting|ghosted}} and gaining {{sti|{{as|'''bonus''' movement speed}}}} for 4 seconds, doubled when moving towards {{tip|sight|visible}} enemy {{tip|champions}}.",
+        "While active, '''Volibear's''' next basic attack within the duration becomes an {{tip|unstoppable basic attack}}, {{tt|{{tip|dash|pouncing}} on the target|to 25 to 150 units closer than attack range, if Volibear is not closer already}}, dealing {{as|'''bonus''' physical damage}}, and {{tip|stun|stunning}} the target for 1 second.",
+        "If '''Volibear''' becomes {{tip|immobilize|immobilized}} while ''Thundering Smash'' is active, the effect ends prematurely and the {{sti|cooldown}} is reset.",
+        "''Thundering Smash'' {{tip|basic attack reset|resets}} '''Volibear's''' basic attack timer, benefits from {{stil|life steal}} and is affected by {{tip|critical strike}} modifiers."
       ],
-      "notes": "* ''Rolling Thunder's'' bonus damage affects structures.\n* Enemy can be flinged through very thin walls.\n* '''Volibear''' will retain the bonus movement speed for ''Rolling Thunder's'' full duration even if he flings his target before it expires.\n* When '''Volibear''' changes direction (from \"towards champions\" to any other direction), his bonus movement speed decays over 1 second.\n* ''Rolling Thunder'' can be {{ai|Spirit's Refuge|Shen|blocked}} and {{ai|Counter Strike|Jax|dodged}} but the {{tip|airborne|displacement}} cannot be negated by {{tip|blind|blinding}} effects.",
+      "notes": "* ''Thundering Smash's'' empowered attack scales with attack speed.\n* Unlike most spells that empower a basic attack, ''Thundering Smash'' does '''not''' have an increased {{sti|range|attack range}}.\n* ''Thundering Smash'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* ''Thundering Smash'' will still apply its effects to the target even if the {{tip|dash}} is {{tip|interrupt|interrupted}}, but not if he goes into {{tip|resurrection}}.\n* ''Thundering Smash'' can {{tip|dash}} over walls provided '''Volibear''' is in attack range of his target on the other side.\n* ''Thundering Smash's'' attack triggers against {{tip|turret|structures}} and {{tip|wards}}, consuming the effect but dealing its bonus damage, if applicable.\n* The windup for the attack completes even if the target becomes {{tip|untargetable}} but the {{tip|stun}} and damage do not apply.\n* ''Thundering Smash's'' reset does not trigger from {{tip|drowsy}} and is only granted after falling {{tip|sleep|asleep}}.\n* The [[Summoner|player's]] screen will flash red briefly and cue a sound effect when '''Volibear''' becomes {{tip|immobilize|immobilized}} while ''Thunder Smash'' is active.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "40",
-      "cooldownBurn": "12/11/10/9/8",
+      "costBurn": "50",
+      "cooldownBurn": "14/13/12/11/10",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Movement Speed|{{ap|15 to 25}}%|Increased Movement Speed|{{ap|30 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['15','17.5','20','22.5','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Increased Movement Speed</span>: <span><spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Bonus Movement Speed|{{ap|15 to 35}}%|Increased Movement Speed|{{ap|15*2 to 35*2}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Increased Movement Speed</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 15,
-                17.5,
                 20,
-                22.5,
-                25
+                25,
+                30,
+                35
               ],
               [
                 30,
-                37.5,
-                45,
-                52.5,
-                60
+                40,
+                50,
+                60,
+                70
               ]
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<spell-span :list=\"['15','17.5','20','22.5','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "Increased Movement Speed",
-              "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
             ]
           },
           "subeffects": [
@@ -146,14 +149,14 @@
               "ratios": {
                 "base_progression": [
                   15,
-                  17.5,
                   20,
-                  22.5,
-                  25
+                  25,
+                  30,
+                  35
                 ]
               },
               "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['15','17.5','20','22.5','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "none"
             },
             {
@@ -161,36 +164,41 @@
               "ratios": {
                 "base_progression": [
                   30,
-                  37.5,
-                  45,
-                  52.5,
-                  60
+                  40,
+                  50,
+                  60,
+                  70
                 ]
               },
               "title": "Increased Movement Speed",
-              "str": "<spell-span :list=\"['30','37.5','45','52.5','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Physical Damage|{{ap|30 to 150}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Damage|{{ap|20 to 100}} {{as|(+ 120% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                30,
+                20,
+                40,
                 60,
-                90,
-                120,
-                150
+                80,
+                100
               ]
             ],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.2
+              }
+            ],
             "st_slices": [
-              "Bonus Physical Damage",
-              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "Bonus Damage",
+              "<spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -198,16 +206,17 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  30,
+                  20,
+                  40,
                   60,
-                  90,
-                  120,
-                  150
-                ]
+                  80,
+                  100
+                ],
+                "player_bonus_ad": 1.2
               },
-              "title": "Bonus Physical Damage",
-              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "physical"
+              "title": "Bonus Damage",
+              "str": "<spell-span :list=\"['20','40','60','80','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -215,25 +224,25 @@
     },
     "w1": {
       "riotId": "VolibearW",
-      "name": "Frenzy",
+      "name": "Frenzied Maul",
       "maxrank": 5,
       "cooldown": [
-        18,
-        18,
-        18,
-        18,
-        18
+        5,
+        5,
+        5,
+        5,
+        5
       ],
       "cost": [
+        30,
         35,
-        35,
-        35,
-        35,
-        35
+        40,
+        45,
+        50
       ],
       "costtype": "Mana",
-      "targeting": "[[Passive]] / [[Unit-targeted|Unit]]",
-      "target_range": 400,
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|325|Standard Range}} / {{tt|350|Enhanced Range}}",
       "image": {
         "full": "VolibearW.png",
         "sprite": "spell13.png",
@@ -244,113 +253,57 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Volibear's''' basic attacks grant {{sti|{{as|'''bonus''' attack speed}}}} for 4 seconds, [[stack]]ing up to 3 times. At 3 stacks, '''Volibear''' gains the ability to cast ''Frenzy''.",
-        "{{sbc|Active:}} '''Volibear''' bites the target enemy, dealing {{as|physical damage}}, increasing by {{as|{{pp|11|type=target's '''missing''' health|key=%|0 to 100|key1=%|0 to 100|formula=1% per 1% of target's '''missing''' health}}|health}}.",
-        "''Frenzy's'' {{sti|cooldown}} is halved if it is used on a {{tip|minion}} or {{tip|monster}}."
+        "{{sbc|Active:}} '''Volibear''' strikes the target enemy, dealing {{as|physical damage}}, applying {{tip|on-hit}} and [[on-attack]] effects, and {{as|Wounding|critical chance}} them for 8 seconds.",
+        "If ''Frenzied Maul'' targets a {{as|Wounded|critical chance}} enemy, '''Volibear''' bites the target, dealing [[File:Critical strike icon.png|20px]] {{tt|50% increased damage|cosmetic critical strike}} and {{tip|healing}} himself. The heal is halved against {{tip|minions}}.",
+        "''Frenzied Maul'' also benefits from {{stil|life steal}}."
       ],
-      "notes": "* {{Pending for test}}: ''Frenzy's '' stack gain interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* '''Volibear''' will be ordered to [[basic attack]] the target after casting ''Frenzied Maul''.\n* ''Frenzied Maul'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* The empowered version of ''Frenzied Maul'' has a [[File:Critical_strike_icon.png|20px|link=]] [[Critical_strike#Cosmetic_critical_strikes|cosmetic critical strike]].\n* ''Frenzied Maul's'' bite {{tip|heals}} even if it is blocked by {{tip|spell shield}}.\n* ''Frenzied Maul's'' strike can be {{ai|Counter Strike|Jax|dodged}} and {{ai|Spirit's Refuge|Shen|blocked}}, but it cannot {{tip|blind|miss}}. The ''Wound'' is applied regardless.\n** The bite can be {{ai|Spirit's Refuge|shen|blocked}} but '''Volibear''' still heals. It does not heal nor deal damage if the bite is {{ai|Counter Strike|Jax|dodged}}. The bite cannot {{tip|blind|miss}}.\n* If the target becomes {{tip|untargetable}}, dies, or '''Volibear''' loses {{tip|sight}} of them during the cast time, ''Frenzied Maul'' does not deal damage nor apply the mark but its {{sti|cooldown}} and {{sti|{{as|mana}}}} are refunded.\n* ''Frenzied Maul'' deals bonus damage and heals if the target is still {{as|Wounded|critical chance}} after the cast time. If the mark wares off before the cast time completes, the ability's animation will appear as if the bite was applied but there is no bonus damage or heal.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "35",
-      "cooldownBurn": "18",
+      "costBurn": "30/35/40/45/50",
+      "cooldownBurn": "5",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Attack Speed Per Stack|{{ap|9 to 25}}%|Total Bonus Attack Speed|{{ap|9*3 to 25*3}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed Per Stack</span>: <span><spell-span :list=\"['9','13','17','21','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Bonus Attack Speed</span>: <span><spell-span :list=\"['27','39','51','63','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|10 to 110}} {{as|(+ 100% AD)}} {{as|(+ 6% of his '''bonus''' health)}}|Increased Damage|{{ap|10*1.5 to 110*1.5}} {{as|(+ 150% AD)}} {{as|(+ 9% of his '''bonus''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"health\">(+ 6% of his <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Increased Damage</span>: <span><spell-span :list=\"['15','52.5','90','127.5','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span> <span class=\"health\">(+ 9% of his <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                9,
-                13,
-                17,
-                21,
-                25
-              ],
-              [
-                27,
-                39,
-                51,
-                63,
-                75
-              ]
-            ],
-            "st_slices": [
-              "Bonus Attack Speed Per Stack",
-              "<spell-span :list=\"['9','13','17','21','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "Total Bonus Attack Speed",
-              "<spell-span :list=\"['27','39','51','63','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  9,
-                  13,
-                  17,
-                  21,
-                  25
-                ]
-              },
-              "title": "Bonus Attack Speed Per Stack",
-              "str": "<spell-span :list=\"['9','13','17','21','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  27,
-                  39,
-                  51,
-                  63,
-                  75
-                ]
-              },
-              "title": "Total Bonus Attack Speed",
-              "str": "<spell-span :list=\"['27','39','51','63','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|60 to 260}} {{as|(+ 15% '''bonus''' health)}}|Maximum Physical Damage|{{ap|60*2 to 260*2}} {{as|(+ 30% '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 15% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['120','220','320','420','520']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 30% <b>bonus</b> health)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
+                10,
+                35,
                 60,
-                110,
-                160,
-                210,
-                260
+                85,
+                110
               ],
               [
-                120,
-                220,
-                320,
-                420,
-                520
+                15,
+                52.5,
+                90,
+                127.5,
+                165
               ]
             ],
             "as_ratios": [
               {
-                "player_bonus_hp": 0.15
+                "player_total_ad": 1
               },
               {
-                "player_bonus_hp": 0.3
+                "player_bonus_hp": 0.06
+              },
+              {
+                "player_total_ad": 1.5
+              },
+              {
+                "player_bonus_hp": 0.09
               }
             ],
             "st_slices": [
-              "Minimum Physical Damage",
-              "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 15% '''bonus''' health)</span>",
-              "Maximum Physical Damage",
-              "<spell-span :list=\"['120','220','320','420','520']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 30% '''bonus''' health)</span>"
+              "Physical Damage",
+              "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"health\">(+ 6% of his '''bonus''' health)</span>",
+              "Increased Damage",
+              "<spell-span :list=\"['15','52.5','90','127.5','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span> <span class=\"health\">(+ 9% of his '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -358,33 +311,133 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
+                  10,
+                  35,
                   60,
-                  110,
-                  160,
-                  210,
-                  260
+                  85,
+                  110
                 ],
-                "player_bonus_hp": 0.15
+                "player_total_ad": 1,
+                "player_bonus_hp": 0.06
               },
-              "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 15% '''bonus''' health)</span>",
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span> <span class=\"health\">(+ 6% of his '''bonus''' health)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  120,
-                  220,
-                  320,
-                  420,
-                  520
+                  15,
+                  52.5,
+                  90,
+                  127.5,
+                  165
                 ],
-                "player_bonus_hp": 0.15
+                "player_total_ad": 1,
+                "player_bonus_hp": 0.06
               },
-              "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['120','220','320','420','520']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ 30% '''bonus''' health)</span>",
-              "damage_type": "physical"
+              "title": "Increased Damage",
+              "str": "<spell-span :list=\"['15','52.5','90','127.5','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 150% AD)</span> <span class=\"health\">(+ 9% of his '''bonus''' health)</span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Non-Minion Heal|{{ap|20 to 80}} {{as|(+ {{ap|8 to 16}}% of his '''missing''' health)}}|Minion Heal|{{ap|10 to 40}} {{as|(+ {{ap|4 to 8}}% of his '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Non-Minion Heal</span>: <span><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>missing</b> health)</span></span></li><li><span class=\"blue\">Minion Heal</span>: <span><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                20,
+                35,
+                50,
+                65,
+                80
+              ],
+              [
+                8,
+                10,
+                12,
+                14,
+                16
+              ],
+              [
+                10,
+                17.5,
+                25,
+                32.5,
+                40
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_missing_hp": [
+                  0.04,
+                  0.05,
+                  0.06,
+                  0.07,
+                  0.08
+                ]
+              },
+              {
+                "player_missing_hp": []
+              }
+            ],
+            "st_slices": [
+              "Non-Minion Heal",
+              "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''missing''' health)</span>",
+              "Minion Heal",
+              "<spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''missing''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  35,
+                  50,
+                  65,
+                  80
+                ],
+                "player_missing_hp": [
+                  0.04,
+                  0.05,
+                  0.06,
+                  0.07,
+                  0.08
+                ]
+              },
+              "title": "Non-Minion Heal",
+              "str": "<spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['8','10','12','14','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''missing''' health)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  8,
+                  10,
+                  12,
+                  14,
+                  16
+                ],
+                "player_missing_hp": [
+                  0.04,
+                  0.05,
+                  0.06,
+                  0.07,
+                  0.08
+                ]
+              },
+              "title": "Minion Heal",
+              "str": "<spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''missing''' health)</span>",
+              "damage_type": "none"
             }
           ]
         }
@@ -392,24 +445,25 @@
     },
     "e1": {
       "riotId": "VolibearE",
-      "name": "Majestic Roar",
+      "name": "Sky Splitter",
       "maxrank": 5,
       "cooldown": [
-        11,
-        11,
-        11,
-        11,
-        11
+        15,
+        15,
+        15,
+        15,
+        15
       ],
       "cost": [
         60,
-        65,
-        70,
-        75,
-        80
+        60,
+        60,
+        60,
+        60
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "Ground",
+      "target_range": 1200,
       "image": {
         "full": "VolibearE.png",
         "sprite": "spell13.png",
@@ -420,63 +474,91 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Volibear''' roars with might, dealing {{tip|magic damage|{{as|magic damage}}}} to all nearby enemies, slightly {{tip|airborne|knocking them back}} and {{tip|slow|slowing}} them for 3 seconds. {{tip|Minion|Minions}} and {{tip|monster|monsters}} are instead {{tip|fear|feared}} and slowed by 100% for the same duration.",
-        "Enemies who are {{tip|dash|dashing}} or are {{tip|airborne}} during ''Majestic Roar'' are dealt an additional {{as|8% of their '''maximum''' health}} as {{as|magic damage}}."
+        "{{sbc|Active:}} '''Volibear''' summons a lightning bolt to strike at the target location after a 2-second delay. Enemies can see the cast location indicator after a 1-second delay. If '''Volibear''' is within the lightning strike, he {{tip|shields}} himself for {{as|15% of his '''maximum''' health}} {{as|(+ 80% AP)}} for 3 seconds.",
+        "The lightning bolt deals {{as|magic damage}} to all enemies struck, capped against non-champions, {{tip|slow|slowing}} them by 40% for 2 seconds, and grants {{tip|sight}} of the area for 1 second."
       ],
-      "notes": "* ''Majestic Roar'' will {{tip|fear}} [[decoy|decoys]].",
+      "notes": "* Enemies cannot see the location of the cast for the first second, but they can already tell that the spell is underway by noticing '''Volibear's''' cast animation.\n* '''Volibear''' will receive the {{tip|shield}} even if he is {{tip|untargetable}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "60/65/70/75/80",
-      "cooldownBurn": "11",
+      "costBurn": "60",
+      "cooldownBurn": "15",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|30 to 50}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 80% AP)}} {{as|(+ {{ap|11 to 15}}% of target's '''maximum''' health)}}|Capped Damage|{{ap|150 to 550}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['11','12','13','14','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><spell-span :list=\"['150','250','350','450','550']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                105,
-                150,
-                195,
-                240
+                80,
+                110,
+                140,
+                170,
+                200
               ],
               [
-                30,
-                35,
-                40,
-                45,
-                50
-              ]
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.6
+                "player_total_ap": 0.8
+              },
+              {
+                "target_total_hp": [
+                  1.5,
+                  2.5,
+                  3.5,
+                  4.5,
+                  5.5
+                ]
               }
             ],
             "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "Magic Damage",
+              "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['11','12','13','14','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health)</span>",
+              "Capped Damage",
+              "<spell-span :list=\"['150','250','350','450','550']\" :spellrankindex=\"spellrankindex\"></spell-span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
-                  60,
-                  105,
-                  150,
-                  195,
-                  240
+                "base_damage": [
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.8
               },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['11','12','13','14','15']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Capped Damage",
+              "str": "<spell-span :list=\"['150','250','350','450','550']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -484,12 +566,12 @@
     },
     "r1": {
       "riotId": "VolibearR",
-      "name": "Thunder Claws",
+      "name": "Stormbringer",
       "maxrank": 3,
       "cooldown": [
-        100,
-        90,
-        80
+        160,
+        140,
+        120
       ],
       "cost": [
         100,
@@ -497,7 +579,8 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Auto-targeted|Auto]]",
+      "targeting": "Ground",
+      "target_range": 700,
       "image": {
         "full": "VolibearR.png",
         "sprite": "spell13.png",
@@ -508,38 +591,87 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} After a {{fd|0.1}} second delay, '''Volibear''' erupts with thunder, increasing in size and striking to up to 8 nearby enemies with chain lightning, dealing them {{tip|magic damage|{{as|magic damage}}}}.",
-        "Afterwards, for 12 seconds, '''Volibear's''' [[basic attack]]s are empowered with the lightning, dealing  the same damage as {{as|'''bonus''' magic damage}} {{tip|on-hit}} that also instantly bounces to up to 7 nearby unaffected enemies."
+        "{{sbc|Active:}} '''Volibear''' gains ''Stormbringer'' for 12 seconds and {{tip|dash|leaps}} to the target location with {{tip|cc-immune|immunity to crowd control}} as well as granting {{tip|sight}} of the area in a 500 radius during it. If {{ai|Thundering Smash|Volibear|Thundering Smash}} is active when ''Stormbringer'' is cast, its duration is refreshed.",
+        "{{sbc|Stormbringer:}} '''Volibear''' becomes {{tip|ghosted|ghosted}} and gains {{sti|{{as|'''bonus''' health}}}}, {{sti|50 '''bonus''' attack range}}, 25 increased range on {{ai|Frenzied Maul|Volibear}}, and 25% increased size.",
+        "'''Volibear''' {{tt|impacts|centered on Volibear's location when the dash ends in any way}} after a 1 second delay, {{tip|slow|slowing}} all enemies in an area by 50%, decaying over 1 second. Enemies in the epicenter are also dealt {{as|physical damage}}.",
+        "'''Volibear''' also disables enemy {{tip|turrets}} (including {{tip|untargetable}} ones, excluding {{tip|Nexus Obelisk}}) in an area for a few seconds, dealing them the same {{as|physical damage}}.",
+        "''Stormbringer will cast at max range if cast beyond that.''"
       ],
-      "notes": "* {{Pending for test}}: ''Thunder Claw's '' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects via basic attack.\n* {{Pending for test}}: ''Thunder Claw's '' interaction with {{tip|spell shield}}.",
+      "notes": "* '''Volibear''' grows to his new size and shrinks back to his normal size over 1 second, respectively.\n* The dash takes the same amount of time regardless of distance or movement speed.\n* The damage of ''Stormbringer'' has a [[File:Critical_strike_icon.png|20px|link=]] [[Critical_strike#Cosmetic_critical_strikes|cosmetic critical strike]].\n* The additional bonuses are granted on-cast.\n* The turret disable debuff is named ''Ohmwrecker''.\n* Disabling a {{tip|turret}} does not prevent aggro of the current target it is locked onto. The increased turret shot damage from {{ii|Ohmwrecker (Turret Item)|Ohmwrecker}} is also reset.\n** Turrets maintain the same targeting behavior even when disabled; damaging an enemy champion will still draw turret aggro. However, if the turret's desired target leaves range or has become an invalid target, it will lock onto the most previous target it was going to attack prior to becoming disabled, or instead, find a new one if that condition is not applicable.\n* The following table refers for interactions while '''Volibear''' is dashing:\n{{ct|dash|attack=false|move=false|cast=false|items=false|consume=false|spells=true, false, false, false, false|interrupts=death}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
-      "cooldownBurn": "100/90/80",
+      "cooldownBurn": "160/140/120",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|75 to 155}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','95','115','135','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Health|{{as|{{ap|200 to 600}}|hp}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"hp\"><spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_unknown": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "st_slices": [
+              "Bonus Health",
+              "<span class=\"hp\"><spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "player_total_unknown": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              "title": "Bonus Health",
+              "str": "<span class=\"hp\"><spell-span :list=\"['200','300','400','500','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Physical Damage|{{ap|300 to 700}} {{as|(+ 250% '''bonus''' AD)}} {{as|(+ 125% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 250% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 125% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                75,
-                95,
-                115,
-                135,
-                155
+                300,
+                400,
+                500,
+                600,
+                700
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.4
+                "player_bonus_ad": 2.5
+              },
+              {
+                "player_total_ap": 1.25
               }
             ],
             "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['75','95','115','135','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "Physical Damage",
+              "<spell-span :list=\"['300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 250% '''bonus''' AD)</span> <span class=\"ap\">(+ 125% AP)</span>"
             ]
           },
           "subeffects": [
@@ -547,17 +679,56 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  75,
-                  95,
-                  115,
-                  135,
-                  155
+                  300,
+                  400,
+                  500,
+                  600,
+                  700
                 ],
-                "player_total_ap": 0.4
+                "player_bonus_ad": 2.5,
+                "player_total_ap": 1.25
               },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['75','95','115','135','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
+              "title": "Physical Damage",
+              "str": "<spell-span :list=\"['300','400','500','600','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 250% '''bonus''' AD)</span> <span class=\"ap\">(+ 125% AP)</span>",
+              "damage_type": "physical"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Turret Disable Duration|{{ap|3 to 5}}}}",
+          "str": "<ul><li><span class=\"blue\">Turret Disable Duration</span>: <span><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                3,
+                3.5,
+                4,
+                4.5,
+                5
+              ]
+            ],
+            "st_slices": [
+              "Turret Disable Duration",
+              "<spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  3,
+                  3.5,
+                  4,
+                  4.5,
+                  5
+                ]
+              },
+              "title": "Turret Disable Duration",
+              "str": "<spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "none"
             }
           ]
         }

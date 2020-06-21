@@ -1,6 +1,6 @@
 {
   "patch": "V8.11",
-  "changes": "9.21.1",
+  "changes": "10.4.1",
   "id": "Pyke",
   "name": "Pyke",
   "title": "the Bloodharbor Ripper",
@@ -14,8 +14,8 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "",
-  "alttype": "",
+  "herotype": "Support",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 6300,
   "rp_cost": 975,
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}}}.",
+        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}}}. '''Pyke''' also gains {{as|1 '''bonus''' movement speed}} while in the river.",
         "'''Pyke''' also stores {{pp|key=%|25 to 50}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
         "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount."
       ],
@@ -104,12 +104,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast:}} '''Pyke''' {{ct|windup|winds up|cast=interrupts|items=false|consume=Disabled, but can use trinkets}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%.",
-        "{{sbc|Second Cast:}} '''Pyke''' hurls his harpoon, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units towards him and {{tip|slow|slowing}} them by 90% for 1 second.",
-        "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to instead thrust his harpoon, hitting the closest enemy unit, prioritizing enemy champions.",
-        "If '''Pyke''' {{tip|interrupt|interrupted}} during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full {{sti|cooldown}} but refunds {{sti|mana|{{as|half the mana cost}}}}."
+        "{{sbc|Active:}} '''Pyke''' {{tip|channel|charges}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%. ''Bone Skewer'' can be recast at any time within its duration.",
+        "{{sbc|Recast:}} '''Pyke''' hurls his harpoon, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units {{tt|towards his direction|The pull can fling an enemy behind Pyke if the harpoon hits at close range}} and {{tip|slow|slowing}} them by 90% for 1 second.",
+        "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to instead thrust his harpoon, hitting the closest enemy unit, prioritizing enemy {{tip|champion|champions}}.",
+        "If '''Pyke''' is {{tip|interrupt|interrupted}} during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full {{sti|cooldown}} but refunds {{sti|mana|{{as|half the mana cost}}}}."
       ],
-      "notes": "* Since the pull is a fixed distance, '''Pyke''' will throw enemies behind him if he uses the ability at close range. \n* {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} will only block the charged ability.",
+      "notes": "* {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} will only block the charged ability.\n* {{si|Flash}} can be used during the cast time and ''Bone Skewer'' will affect enemies at the new location.\n* '''Pyke''' can still use [[summoner spell]]s besides {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} while hurling the harpoon but he cannot perform any other action.\n{{ct|charge|cast=interrupts|items=false|consume=Disabled, but can use trinkets}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70",
@@ -180,7 +180,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "PykeW.png",
         "sprite": "spell9.png",
@@ -191,10 +191,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' enters {{tip|camouflage}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
+        "{{sbc|Active:}} '''Pyke''' submerges into water, entering {{tip|camouflage}} and gaining {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
         "Attacking or casting abilities immediately ends {{tip|camouflage}}."
       ],
-      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of ''Death from Below''.",
+      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of {{ai|Death from Below|Pyke}}.\n* The maximum amount of {{sti|{{as|'''bonus''' movement speed}}}} gained possible from all lethality sources is {{fd|154.5%}}.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|37.5%}}'''|25 × 0.015}} bonus MS\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|31.5%}}'''|21 × 0.015}} bonus MS\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''18%'''|12 × 0.015}} bonus MS\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS \n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|10.5%}}'''|7 × 0.015}} bonus MS\n**** {{tt|'''Total Increased Percent'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|37.5%}} + {{fd|31.5%}} + 27% + 18% + 15% + 15% + {{fd|10.5%}}'' = '''{{fd|154.5%}}''' bonus MS\n***** '''Total Bonus Movement Speed''': {{as|{{pp|type= ''Ghostwater Dive's'' level|5|key=%|key1=|40+154.5 to 60+154.5|1 to 5|formula= 35% MS + (5% MS × ''Ghostwater Dive's'' level) + 154.5% MS}}}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
@@ -280,7 +280,7 @@
         "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}}, leaving behind a drowned phantom.",
         "After 1 second, the phantom returns to '''Pyke''', {{tip|stun|stunning}} enemies it passes through for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds. Enemy {{tip|Champion|champions}} also take {{as|physical damage}}."
       ],
-      "notes": "* The {{tip|dash}} can go through any wall as long as it can reach over half of its width, behaving similarly to a {{tip|blink}}.",
+      "notes": "* The {{tip|dash}} distance can be extended to up to 900 units (estimated) when targeting across terrain.\n* The maximum increase in {{tip|stun}} duration possible from all lethality sources is {{fd|1.03}} seconds, with the base duration included for a total of {{fd|2.28}} seconds.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|0.25}}'''|(25 ÷ 10) × 0.1}} seconds\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|0.21}}'''|(21 ÷ 10) × 0.1}} seconds\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''{{fd|0.12}}'''|(12 ÷ 10) × 0.1}} seconds\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|0.07}}'''|(7 ÷ 10) × 0.1}} seconds\n**** {{tt|'''Total Increased Duration'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|0.25}} + {{fd|0.21}} + {{fd|0.18}} + {{fd|0.12}} + {{fd|0.10}} + {{fd|0.10}} + {{fd|0.07}}'' = '''{{fd|1.03}}''' seconds\n***** '''Total Stun Duration''': ''{{fd|1.25}} + {{fd|1.03}}'' = '''{{fd|2.28}}''' seconds",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40",
@@ -331,44 +331,6 @@
           ]
         }
       ]
-    },
-    "r1": {
-      "riotId": "PykeR",
-      "name": "Death from Below",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
-      "costtype": "mana",
-      "targeting": "Ground",
-      "target_range": 750,
-      "image": {
-        "full": "PykeR.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 432,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Pyke''' marks the targeted area with an X which he strikes after a {{fd|0.75}} second delay, [[Kill#Execute|executing]] enemy {{tip|champions}} below {{pp|250;290;330;370;400;430;450;470;490;510;530;540;550|6 to 18}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ {{fd|1.5}} per 1 Lethality)}} {{as|health}} while dealing 50% of the amount as {{as|physical damage}} to enemies not within the threshold for execution.",
-        "If ''Death from Below'' hits an enemy champion or one dies inside it, '''Pyke''' will {{tip|blink}} to the center of the X. For the latter case '''Pyke''' also gains the ability to recast within 20 seconds at no cost.",
-        "Each ''execution'' grants one {{ii|'Your Cut'}} to both '''Pyke''' and the last assisting ally, instead of its natural assist gold. In addition, each enemy champion killed inside the X by an ally grants '''Pyke''' two stacks of {{ii|'Your Cut'}}."
-      ],
-      "notes": "* Applies {{tip|raw damage}} to executed targets and {{tip|area damage}} to targets above the threshold.\n* ''Death from Below'' cannot execute [[decoy|decoys]] and are always dealt 50% physical damage.\n* {{ii|'Your Cut'}} is an item that can be consumed to gain gold. If the ally's inventory is full, it's auto-consumed.\n** When {{ii|'Your Cut'}} is consumed, it quickly grants {{g|100}} stacks until reaching the full gold value.\n* Only the target's current health will count as '''Pyke's''' damage in post-game statistics and {{sti|spell vamp}} healing if executed.\n** If the target's current health is less than 50% of the {{tt|post-mitigation|after damage modifiers}} non-executing damage, '''Pyke''' will heal less from spell vamp.\n* If a champion dies inside the X before ''Death from Below'' performs, '''Pyke''' will be shown as having received an assist in the kill feed, but this will not grant him {{tip|takedown}} effects.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/100/80",
-      "effects": []
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.13.1",
+  "changes": "10.11.1",
   "id": "Tristana",
   "name": "Tristana",
   "title": "the Yordle Gunner",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Marksman",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} The {{sti|range}} of '''Tristana's''' [[basic attack]]s, {{ai|Explosive Charge|Tristana}} and {{ai|Buster Shot|Tristana}} is increased by {{pp|0 to 136}} for a total of {{pp|525 to 661}} range."
+        "{{sbc|Innate:}} The {{sti|range}} of '''Tristana's''' [[basic attack]]s, {{ai|Explosive Charge|Tristana}} and {{ai|Buster Shot|Tristana}} are increased by {{pp|0 to 136}} for a total of {{pp|525 to 661}} range."
       ],
       "notes": "* '''Tristana''' can attack {{ui|Baron Nashor}} over the back wall once she hits level 15, a feature shared by {{ci|Caitlyn}}.",
       "skillkey": "I",
@@ -89,7 +89,7 @@
         0,
         0
       ],
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "TristanaQ.png",
         "sprite": "spell12.png",
@@ -100,7 +100,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Tristana''' gains {{sti|Attack speed|{{as|'''bonus''' attack speed}}}} for 7 seconds."
+        "{{sbc|Active:}} '''Tristana''' empowers her cannon, gaining {{sti|Attack speed|{{as|'''bonus''' attack speed}}}} for 7 seconds."
       ],
       "notes": "* ''Rapid Fire'' is a non-refreshing buff that will not update on rank-up.",
       "skillkey": "Q",
@@ -182,7 +182,7 @@
         "{{sbc|Active:}} '''Tristana''' {{tip|dash|jumps}} to the target location, dealing {{tip|magic damage}} to all nearby enemies on impact and {{tip|slow|slowing}} them by 60%.",
         "On enemy champion {{tip|takedown|takedowns}} or upon detonating {{ai|Explosive Charge|Tristana}} at maximum stacks on an enemy champion, ''Rocket Jump's'' {{sti|cooldown}} is reset."
       ],
-      "notes": "* '''Tristana''' can still use basic attacks, abilities, summoner spells and item actives while in the air.\n* ''Rocket Jump's'' speed depends on the distance of the jump. {{tip|Melee}} range jumps are much shorter while long range jumps leave '''Tristana''' in the air significantly longer.\n* '''Tristana''' is still targetable while jumping and can be hit by [[skillshot]]s such as {{cai|Enchanted Crystal Arrow|Ashe}} and {{cai|Mystic Shot|Ezreal}}.\n** Non-{{tip|airborne}} crowd control effects, such as {{tip|stun|stuns}} and {{tip|root|roots}}, will take effect upon landing and will ''''not''' {{tip|interrupt}} the jump, with the exception of {{tip|knockdown|knockdowns}}.\n** All {{tip|airborne}} crowd control effects, such as {{tip|airborne|knockups}}, {{tip|airborne|knockbacks}} and {{tip|airborne|pulls}}, '''will''' cancel the jump and then complete their effects as normal.",
+      "notes": "* While {{tip|dash|jumping}}, '''Tristana''' can still use her [[champion ability|abilities]], [[summoner spell]]s, and [[active ability items|item actives]].\n** The jump is overriden if she uses a {{tip|dash}} or {{tip|blink}} ability.\n* ''Rocket Jump's'' dash speed depends on the distance of the jump. Close-ranged jumps are much shorter while long-ranged jumps leave '''Tristana''' in the air significantly longer.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "60",
@@ -273,10 +273,11 @@
       },
       "description": [
         "{{sbc|Passive:}} Enemies explode when [[kill|killed]] by '''Tristana's''' basic attacks, dealing {{as|magic damage}} to all nearby enemies.",
-        "{{sbc|Active:}} '''Tristana''' places an explosive charge on the target enemy or enemy turret. After 4 seconds the charge explodes, dealing {{tip|physical damage|{{as|physical damage}}}} to nearby enemies. The explosion radius is increased when used on a {{tip|turret}}.",
-        "'''Tristana's''' basic attacks and abilities against the target increase ''Explosive Charge's'' damage by 30%, stacking up to 4 times for a maximum 120% increase, upon which the charge also detonates instantly."
+        "{{sbc|Active:}} '''Tristana''' places an explosive charge on the target enemy or enemy {{tip|turret}}. After 4 seconds, the charge detonates, dealing {{tip|physical damage|{{as|physical damage}}}} to nearby enemies, including to [[structures]]. The explosion radius is increased when used on a turret.",
+        "'''Tristana's''' [[basic attack]]s and [[champion ability|abilities]] against the target increase ''Explosive Charge's'' damage by 30%, stacking up to 4 times for a maximum 120% increase, upon which the charge also explodes instantly.",
+        "''If {{ai|R|Tristana}} is used to apply the last stack, the detonation will instead be delayed until the end of the {{tip|airborne|knock back}} or the 4 seconds expire.''"
       ],
-      "notes": "* ''Explosive Charge's'' cast time is reduced with {{sti|attack speed|{{as|attack speed}}}}.\n* '''Tristana''' will automatically be ordered to attack the target of ''Explosive Charge''.",
+      "notes": "* ''Explosive Charge's'' cast time is reduced with {{sti|attack speed|{{as|attack speed}}}}.\n* '''Tristana''' will automatically be ordered to attack the target of ''Explosive Charge''.\n* ''Explosive Charge'' will deal damage to the primary target even if they are {{tip|untargetable}}.\n* {{Pending for test}}: ''Explosive Charge's'' stack application via basic attack interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
@@ -327,8 +328,8 @@
           ]
         },
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|70 to 110}} {{as|(+ {{ap|50 to 130}}% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|70 to 110}} {{as|(+ {{ap|50 to 150}}% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -349,16 +350,16 @@
               {
                 "player_bonus_ad": [
                   0.5,
-                  0.7,
-                  0.9,
-                  1.1,
-                  1.3
+                  0.75,
+                  1,
+                  1.25,
+                  1.5
                 ]
               }
             ],
             "st_slices": [
               "Minimum Physical Damage",
-              "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -375,21 +376,21 @@
                 "player_total_ap": 0.5,
                 "player_bonus_ad": [
                   0.5,
-                  0.7,
-                  0.9,
-                  1.1,
-                  1.3
+                  0.75,
+                  1,
+                  1.25,
+                  1.5
                 ]
               },
               "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Damage Per Stack|{{ap|70*0.3 to 110*0.3}} {{as|(+ {{ap|50*0.3 to 130*0.3}}% '''bonus''' AD)}} {{as|(+ {{ap|50*0.3}}% AP)}}|Maximum Physical Damage|{{ap|70*2.2 to 110*2.2}} {{as|(+ {{ap|50*2.2 to 130*2.2}}% '''bonus''' AD)}} {{as|(+ {{ap|50*2.2}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','21','27','33','39']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','154','198','242','286']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Damage Per Stack|{{ap|70*0.3 to 110*0.3}} {{as|(+ {{ap|50*0.3 to 150*0.3}}% '''bonus''' AD)}} {{as|(+ {{ap|50*0.3}}% AP)}}|Maximum Physical Damage|{{ap|70*2.2 to 110*2.2}} {{as|(+ {{ap|50*2.2 to 150*2.2}}% '''bonus''' AD)}} {{as|(+ {{ap|50*2.2}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','165','220','275','330']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -403,10 +404,10 @@
               ],
               [
                 15,
-                21,
-                27,
-                33,
-                39
+                22.5,
+                30,
+                37.5,
+                45
               ],
               [
                 15
@@ -420,10 +421,10 @@
               ],
               [
                 110,
-                154,
-                198,
-                242,
-                286
+                165,
+                220,
+                275,
+                330
               ],
               null
             ],
@@ -445,9 +446,9 @@
             ],
             "st_slices": [
               "Bonus Damage Per Stack",
-              "<spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','21','27','33','39']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "<spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "Maximum Physical Damage",
-              "<spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','154','198','242','286']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','165','220','275','330']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -467,7 +468,7 @@
                 "player_total_ap": []
               },
               "title": "Bonus Damage Per Stack",
-              "str": "<spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','21','27','33','39']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<spell-span :list=\"['21','24','27','30','33']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -475,10 +476,10 @@
               "ratios": {
                 "base_damage": [
                   15,
-                  21,
-                  27,
-                  33,
-                  39
+                  22.5,
+                  30,
+                  37.5,
+                  45
                 ],
                 "player_bonus_ad": [
                   1.1
@@ -486,7 +487,7 @@
                 "player_total_ap": []
               },
               "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','154','198','242','286']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<spell-span :list=\"['154','176','198','220','242']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['110','165','220','275','330']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['110']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
               "damage_type": "physical"
             }
           ]

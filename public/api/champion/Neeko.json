@@ -1,6 +1,6 @@
 {
   "patch": "V8.24",
-  "changes": "9.21.1",
+  "changes": "10.9.1",
   "id": "Neeko",
   "name": "Neeko",
   "title": "the Curious Chameleon",
@@ -14,8 +14,8 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "",
-  "alttype": "",
+  "herotype": "Mage",
+  "alttype": "Support",
   "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
@@ -45,7 +45,7 @@
     "critperlevel": 0,
     "attackdamage": 48,
     "attackdamageperlevel": 2.5,
-    "attackspeedperlevel": 3,
+    "attackspeedperlevel": 3.5,
     "attackspeed": 0.625
   },
   "skills": {
@@ -65,10 +65,10 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Neeko''' is offered a selection of {{tip|champion|allied champions}} to take their appearance. Once selected, there's a {{fd|2.5}} seconds delay before another champion can be selected.",
-        "While disguised, '''Neeko''' can use basic attacks while keeping her form. Taking damage from enemy champions, or casting either {{ai|Blooming Burst|Neeko}} or {{ai|Tangle-Barbs|Neeko}} breaks the illusion and puts ''Inherent Glamour'' on {{sti|cooldown}}.",
+        "While disguised, '''Neeko''' can use basic attacks while keeping her form. Taking damage from enemy champions, or casting either {{ai|Blooming Burst|Neeko}} or {{ai|Tangle-Barbs|Neeko}} or leaping by {{ai|Pop Blossom|Neeko}} breaks the illusion and puts ''Inherent Glamour'' on {{sti|cooldown}}.",
         "When disguised, '''Neeko''' can select herself to deactivate her disguise, putting ''Inherent Glamour'' on a 2-second {{sti|cooldown}}."
       ],
-      "notes": "* '''Neeko''' will copy aesthetics as well as superficial mechanical [[Champion statistic|Statistics]]. She will fake a number of readings:\n** [[Health|Health bar]] (original's current amount becomes her apparent maximum)\n** [[Manaless|Secondary resource]] - e.g. {{as|mana}}, {{as|energy}} or none at all (original's current amount becomes her apparent maximum)\n** [[Champion statistic|Statistics]]\n** [[Buff|Buffs]] and [[Debuff|debuffs]] with their respective icons and VFX\n** Kill feed icon\n*A number of attributes she actually adopts are:\n** Default transformation toggle (non-innate)\n** Voice lines\n** Character interactions (Jokes, taunts, dances, laughs, toggle effects), as well as their {{si|Recall}} animation\n** Base movement speed\n** Attack range (will not adopt longer [[Range|attack range]])",
+      "notes": "* '''Neeko''' will copy aesthetics as well as superficial mechanical [[Champion statistic|Statistics]]. She will fake a number of readings:\n** [[Health|Health bar]] (original's current amount becomes her apparent maximum)\n** [[Manaless|Secondary resource]] - e.g. {{as|mana}}, {{as|energy}} or none at all (original's current amount becomes her apparent maximum)\n** [[Champion statistic|Stats]]\n** [[Buff|Buffs]] and [[Debuff|debuffs]] with their respective icons and VFX/SFX (there are exceptions)\n** Kill feed icon\n* A number of attributes she actually adopts are:\n** Default transformation toggle (non-innate)\n** Voice lines\n** Character interactions (jokes, taunts, dances, laughs, toggle effects), as well as their {{si|Recall}} animation\n** Base movement speed\n** Attack range (will not adopt longer [[Range|attack range]])",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -92,7 +92,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
+      "targeting": "Ground",
       "image": {
         "full": "NeekoQ.png",
         "sprite": "spell8.png",
@@ -261,10 +261,10 @@
       },
       "description": [
         "{{sbc|Passive:}} Basic attacks [[on-hit]] grant '''Neeko''' a stack of ''Shapesplitter'', up to a maximum of two. At 2 stacks, '''Neeko's''' next basic attack [[on-attack]] consumes the stacks to turn her attack into a {{tip|projectile|non-projectile}}, dealing {{as|'''bonus''' magic damage}} and granting her {{sti|ms|{{as|'''bonus''' movement speed}}}} for 1 second.",
-        "{{sbc|Active:}} '''Neeko''' becomes {{tip|invisibility|invisible}} for {{fd|0.5}} seconds, sending a temporary [[Champion_summoned_units#Decoys|clone]] of her {{ai|Inherent Glamour|Neeko|current form}} sprinting in the target direction for 3 seconds and up to 900 units away. The clone is {{tip|untargetable}} for the first {{fd|0.5}} seconds.",
+        "{{sbc|Active:}} '''Neeko''' becomes {{tip|invisibility|invisible}} for {{fd|0.5}} seconds, sending a temporary {{tip|clone}} of her {{ai|Inherent Glamour|Neeko|current form}} sprinting in the target direction for 3 seconds and up to 900 units away. The clone is {{tip|untargetable}} for the first {{fd|0.5}} seconds.",
         "Both '''Neeko''' and the clone gain {{as|'''bonus''' movement speed}} for 3 seconds."
       ],
-      "notes": "* The clone travels in the target direction until it runs into terrain.",
+      "notes": "* Both '''Neeko''' and the clone use the same running animation.\n* The clone travels in the target direction until it runs into terrain.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -409,15 +409,15 @@
         "{{sbc|Active:}} '''Neeko''' slings a magical spiral in a target direction, dealing {{as|magic damage}} and {{tip|root|rooting}} enemies it passes through.",
         "If ''Tangle-Barbs'' hits at least one enemy, it grows in size and speed, and the root duration is increased."
       ],
-      "notes": "* No additional details.",
+      "notes": "* {{si|Flash}} can be used during the cast time of ''Tangle Barbs'' and '''Neeko''' will throw the spiral from the new location.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60/65/70/75/80",
       "cooldownBurn": "12/11.5/11/10.5/10",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|80 to 220}} {{as|(+ 40% AP)}}}}\n{{st|Root Duration|{{ap|0.7 to 1.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['0.7','0.9','1.1','1.3','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 220}} {{as|(+ 60% AP)}}}}\n{{st|Root Duration|{{ap|0.7 to 1.5}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><spell-span :list=\"['0.7','0.9','1.1','1.3','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -439,7 +439,7 @@
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.4
+                "player_total_ap": 0.6
               }
             ],
             "st_slices": [
@@ -458,7 +458,7 @@
                   185,
                   220
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.6
               },
               "title": "Root Duration",
               "str": "<spell-span :list=\"['0.7','0.9','1.1','1.3','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
@@ -521,7 +521,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "NeekoR.png",
         "sprite": "spell8.png",
@@ -532,29 +532,29 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Neeko''' {{ct|channel|winds up|cast=true|attack=true|move=true|items=true|spells=true|interrupts=death}} over {{fd|1.25}} seconds, creating a zone around her. The zone is invisible to enemies while she is {{ai|Inherent Glamour|Neeko|disguised}}.",
-        "'''Neeko''' then {{tip|shields}} herself for 2 seconds, increased for each enemy champion nearby, as she leaps into the air for {{fd|0.6}} seconds.",
-        "Upon landing, '''Neeko''' bursts with spiritual energy, dealing {{as|magic damage}} and {{tip|stun|stunning}} nearby enemies for {{fd|1.25}} seconds."
+        "{{sbc|Active:}} '''Neeko''' sprouts a blossom over {{fd|1.25}} seconds, creating a spiral of roots around her. The roots are invisible to enemies while she is {{ai|Inherent Glamour|Neeko|disguised}}.",
+        "'''Neeko''' then {{tip|shields}} herself for 2 seconds, increased for each enemy {{tip|champion}} nearby, as she leaps into the air for {{fd|0.6}} seconds, causing {{ai|Shapesplitter|Neeko}} clones to disappear in the process.",
+        "Upon landing, the roots burst with spiritual energy, dealing {{as|magic damage}} and {{tip|stun|stunning}} nearby enemies for {{fd|1.25}} seconds."
       ],
-      "notes": "* {{tip|Stasis}} will not cancel ''Pop Blossom'' and can be activated during the wind up but not during the leap.\n* If '''Neeko''' is moved during the leap under any circumstances ({{tip|airborne|knock back}}, {{tip|dash}}, {{tip|blink}}), she will strike down from the new location.",
+      "notes": "* {{tip|Stasis}} will not cancel ''Pop Blossom'' and can be activated during the wind up but not during the leap.\n* The {{tip|shield}} amount considers {{tip|clone|clones}} as well.\n* Note that the shield is not actually capped versus 5 enemy champions - if the ability hits additional clones or {{tip|hexakill|champions}}, the ability will grant additional stacks of bonus shield.\n{{ct|channel|cast=true|attack=true|move=true|items=true|spells=true|interrupts=death}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "90",
       "effects": [
         {
-          "levelingtext": "{{st|Shield|{{ap|50 to 110}} {{as|(+ 50% AP)}}|Bonus Shield Per Champion|{{ap|40 to 80}} {{as|(+ 40% AP)}}|Maximum Shield|{{ap|50+40*5 to 110+80*5}} {{as|(+ 250% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Bonus Shield Per Champion</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Shield</span>: <span><spell-span :list=\"['250','315','380','445','510']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Shield|{{ap|75 to 125}} {{as|(+ 75% AP)}}}}\n{{st|Bonus Shield Per Champion|{{ap|40 to 80}} {{as|(+ 40% AP)}}|Total Shield vs. 5 Champions|{{ap|75+(40*5) to 125+(80*5)}} {{as|(+ {{#expr:75+(40*5)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['75','87.5','100','112.5','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Shield Per Champion</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Shield vs. 5 Champions</span>: <span><spell-span :list=\"['275','337.5','400','462.5','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                50,
-                65,
-                80,
-                95,
-                110
+                75,
+                87.5,
+                100,
+                112.5,
+                125
               ],
               [
                 40,
@@ -564,31 +564,29 @@
                 80
               ],
               [
-                250,
-                315,
-                380,
-                445,
-                510
+                275,
+                337.5,
+                400,
+                462.5,
+                525
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.5
+                "player_total_ap": 0.75
               },
               {
                 "player_total_ap": 0.4
               },
               {
-                "player_total_ap": 2.5
+                "player_total_ap": 75405754.05
               }
             ],
             "st_slices": [
-              "Shield",
-              "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
               "Bonus Shield Per Champion",
               "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
-              "Maximum Shield",
-              "<spell-span :list=\"['250','315','380','445','510']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span>"
+              "Total Shield vs. 5 Champions",
+              "<spell-span :list=\"['275','337.5','400','462.5','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -596,16 +594,16 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  50,
-                  65,
-                  80,
-                  95,
-                  110
+                  75,
+                  87.5,
+                  100,
+                  112.5,
+                  125
                 ],
-                "player_total_ap": 0.5
+                "player_total_ap": 0.4
               },
-              "title": "Shield",
-              "str": "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "title": "Bonus Shield Per Champion",
+              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -618,26 +616,10 @@
                   70,
                   80
                 ],
-                "player_total_ap": 0.5
+                "player_total_ap": 0.4
               },
-              "title": "Bonus Shield Per Champion",
-              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_progression": [
-                  250,
-                  315,
-                  380,
-                  445,
-                  510
-                ],
-                "player_total_ap": 0.5
-              },
-              "title": "Maximum Shield",
-              "str": "<spell-span :list=\"['250','315','380','445','510']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span>",
+              "title": "Total Shield vs. 5 Champions",
+              "str": "<spell-span :list=\"['275','337.5','400','462.5','525']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>",
               "damage_type": "none"
             }
           ]

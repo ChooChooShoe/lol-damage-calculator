@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.124",
-  "changes": "8.17.1",
+  "changes": "10.11.1",
   "id": "Talon",
   "name": "Talon",
   "title": "the Blade's Shadow",
@@ -14,8 +14,8 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Slayer",
-  "alttype": "Fighter",
+  "herotype": "Assassin",
+  "alttype": "",
   "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} '''Talon's''' abilities ''wound'' enemy {{tip|champions}} and {{tip|monsters}} every time they deal damage, lasting 6 seconds and stacking up to 3 times. Basic attacks refresh the duration on-hit.",
         "'''Talon's''' next [[basic attack]] against a target with 3 ''wounds'' will consume them, causing the target to bleed for {{as|{{pp|75 to 245}}|physical damage}} {{as|(+ 200% '''bonus''' AD)}} {{tip|physical damage|{{as|physical damage}}}} over 2 seconds, with each tick occurring every {{fd|0.125}} seconds. The total damage is increased by 20% against monsters."
       ],
-      "notes": "* {{tip|Spell shield|Spell shields}} prevent at least one ''wound'' stack from affecting the target. The triggering bleed cannot be mitigated by them.",
+      "notes": "* No additional notes.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -84,15 +84,15 @@
         6
       ],
       "cost": [
-        30,
-        30,
-        30,
-        30,
-        30
+        40,
+        40,
+        40,
+        40,
+        40
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": "{{tt|575|centered range}}",
+      "target_range": "{{tip|centered range|575}}",
       "image": {
         "full": "TalonQ.png",
         "sprite": "spell11.png",
@@ -103,21 +103,20 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} ''Noxian Diplomacy'' has a different effect depending on the {{sti|range}} with the target.",
-        "{{sbc|Standard - Outside 170 units:}} '''Talon''' {{tip|dashes}} onto his target, dealing {{as|physical damage}} on-arrival.",
-        "{{sbc|Melee - Within 170 units:}} '''Talon''' skewers his target, causing ''Noxian Diplomacy'' to {{tip|critically strike}} for {{as|{{critical damage|50|100|melee}} '''bonus''' physical damage}}.",
-        "If ''Noxian Diplomacy'' kills its target, '''Talon''' {{tip|heals}} for {{sti|health|{{pp|20 to 71|color=health}}}} and 50% of its {{sti|cooldown}} is refunded.",
-        "The melee version of ''Noxian Diplomacy'' resets '''Talon's''' autoattack timer."
+        "{{sbc|Active:}} '''Talon''' {{tip|dashes}} towards the target enemy, dealing {{as|physical damage}} on arrival. Casting the ability within 170 units of the target causes '''Talon''' to instead stab it and {{tip|critically strike}} for {{as|{{critical damage|50|100|melee}} '''bonus''' physical damage}}.",
+        "If ''Noxian Diplomacy'' kills the target, '''Talon''' {{tip|heals}} for {{pp|10 to 70}} and 50% of its {{sti|cooldown}} is refunded.",
+        "The stab version of ''Noxian Diplomacy'' {{tip|basic attack reset|resets}} '''Talon's''' basic attack timer and increases the {{sti|range}} of his next basic attack within 1 second by 75.",
+        "''Noxian Diplomacy will cause '''Talon''' to automatically basic attack the target.''"
       ],
-      "notes": "* While {{tip|ground|grounded}} or {{tip|root|rooted}} only the melee version of this ability may be used.\n* '''Talon''' will stop at the target's last location if they {{tip|blink}} long distances (i.e {{si|Recall}}, {{si|Teleport}}).",
+      "notes": "* While {{tip|ground|grounded}} or {{tip|root|rooted}}, only the melee version of the ability can be used.\n* '''Talon''' will stop at the target's last location if they {{tip|blink}} long distances (i.e {{si|Recall}}, {{si|Teleport}}).\n* For the stab version, if the target becomes {{tip|untargetable}}, dies, is too far away, or '''Talon''' loses {{tip|sight}} of them during the cast time, ''Noxian Diplomacy'' cancels and refunds its {{sti|cooldown}}. No damage is dealt in any of these cases.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "30",
+      "costBurn": "40",
       "cooldownBurn": "8/7.5/7/6.5/6",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|65 to 165}} {{as|(+ 110% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Dash Physical Damage|{{ap|65 to 165}} {{as|(+ 110% '''bonus''' AD)}}|Stab Physical Damage|{{ap|65*1.5 to 165*1.5}} {{as|(+ {{ap|110*1.5}}% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Dash Physical Damage</span>: <span><spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Stab Physical Damage</span>: <span><spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -128,16 +127,31 @@
                 115,
                 140,
                 165
-              ]
+              ],
+              [
+                97.5,
+                135,
+                172.5,
+                210,
+                247.5
+              ],
+              null
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": 1.1
+              },
+              {
+                "player_bonus_ad": [
+                  1.65
+                ]
               }
             ],
             "st_slices": [
-              "Physical Damage",
-              "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>"
+              "Dash Physical Damage",
+              "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "Stab Physical Damage",
+              "<spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -153,8 +167,24 @@
                 ],
                 "player_bonus_ad": 1.1
               },
-              "title": "Physical Damage",
+              "title": "Dash Physical Damage",
               "str": "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  97.5,
+                  135,
+                  172.5,
+                  210,
+                  247.5
+                ],
+                "player_bonus_ad": 1.1
+              },
+              "title": "Stab Physical Damage",
+              "str": "<spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -192,8 +222,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Talon''' sends out a volley of blades, dealing {{as|physical damage}} to all enemies they pass through.",
-        "The blades linger for {{fd|0.75}} seconds before flying back to '''Talon''', dealing {{as|physical damage}} to all enemies they pass through and {{tip|slow|slowing}} them for 1 second."
+        "{{sbc|Active:}} '''Talon''' sends out a volley of daggers, dealing {{as|physical damage}} to all enemies they pass through.",
+        "The daggers linger for {{fd|0.75}} seconds before flying back to '''Talon''', dealing {{as|physical damage}} to all enemies they pass through and {{tip|slow|slowing}} them for 1 second."
       ],
       "notes": "* If '''Talon''' dies while ''Rake'' is mid-air, the projectiles will still complete their travel.",
       "skillkey": "W",
@@ -202,18 +232,18 @@
       "cooldownBurn": "9",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|50 to 110}} {{as|(+ 40% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|45 to 105}} {{as|(+ 40% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                50,
-                65,
-                80,
-                95,
-                110
+                45,
+                60,
+                75,
+                90,
+                105
               ]
             ],
             "as_ratios": [
@@ -223,7 +253,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -231,40 +261,36 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  50,
-                  65,
-                  80,
-                  95,
-                  110
+                  45,
+                  60,
+                  75,
+                  90,
+                  105
                 ],
                 "player_bonus_ad": 0.4
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Return Physical Damage|{{ap|70 to 130}} {{as|(+ 60% '''bonus''' AD)}}|Total Physical Damage|{{ap|50+70 to 110+130}} {{as|(+ 100% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Return Physical Damage</span>: <span><spell-span :list=\"['70','85','100','115','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['120','150','180','210','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Return Physical Damage|{{ap|45 to 125}} {{as|(+ 70% '''bonus''' AD)}}|Total Physical Damage|{{ap|45+45to 105+125}} {{as|(+ 110% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|40 to 60}}%}}",
+          "str": "<ul><li><span class=\"blue\">Return Physical Damage</span>: <span><spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                70,
+                45,
+                65,
                 85,
-                100,
-                115,
-                130
+                105,
+                125
               ],
               [
-                120,
-                150,
-                180,
-                210,
-                240
+                45275
               ],
               [
                 40,
@@ -276,10 +302,10 @@
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": 0.6
+                "player_bonus_ad": 0.7000000000000001
               },
               {
-                "player_bonus_ad": 1
+                "player_bonus_ad": 1.1
               }
             ],
             "st_slices": [
@@ -292,13 +318,13 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  70,
+                  45,
+                  65,
                   85,
-                  100,
-                  115,
-                  130
+                  105,
+                  125
                 ],
-                "player_bonus_ad": 1
+                "player_bonus_ad": 1.1
               },
               "title": "Slow",
               "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
@@ -326,7 +352,7 @@
         0,
         0
       ],
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted]] (Terrain)",
       "target_range": 725,
       "image": {
         "full": "TalonE.png",
@@ -363,7 +389,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "TalonR.png",
         "sprite": "spell12.png",
@@ -374,10 +400,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Talon''' disperses a ring of blades, dealing {{as|physical damage}} to all enemies hit, while gaining {{tip|invisibility}} and {{sti|ms|{{as|'''bonus''' movement speed}}}} for up to {{fd|2.5}} seconds.",
-        "When '''Talon''' emerges from {{tip|invisibility}}, the blades converge to his location, dealing the same {{as|physical damage}} to all enemies they pass through. Breaking {{tip|invisibility}} with a basic attack or {{ai|Noxian Diplomacy|Talon}} causes the blades to converge to his target instead."
+        "{{sbc|Active:}} '''Talon''' disperses a ring of blades, dealing {{as|physical damage}} to all enemies hit, while gaining {{tip|invisibility}} and {{sti|ms|{{as|'''bonus''' movement speed}}}} for up to {{fd|2.5}} seconds. ''Shadow Assault'' can be recast after 1 second.",
+        "When '''Talon''' emerges from invisibility, the blades converge to his location, dealing the same {{as|physical damage}} to all enemies they pass through. Breaking invisibility with a basic attack or {{ai|Noxian Diplomacy|Talon}} causes the blades to converge to his target instead.",
+        "{{sbc|Recast:}} '''Talon''' ends ''Shadow Assault'' early."
       ],
-      "notes": "* {{tip|Spell shield}} will only block one instance of damage.",
+      "notes": "* {{tip|Spell shield}} will block a single pass.\n* ''Shadow Assault'' does not cancel '''Talon's''' basic attacks.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

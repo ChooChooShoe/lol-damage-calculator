@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.24.2",
+  "changes": "10.6.1",
   "id": "Alistar",
   "name": "Alistar",
   "title": "the Minotaur",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Tank",
-  "alttype": "Controller",
+  "alttype": "Support",
   "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
@@ -27,7 +27,7 @@
     "difficulty": 7
   },
   "stats": {
-    "hp": 575,
+    "hp": 600,
     "hpperlevel": 106,
     "mp": 350,
     "mpperlevel": 40,
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Alistar''' gains a stack of ''Triumph'' every time he {{tip|stun|stuns}} or {{tip|airborne|displaces}} at least one enemy champion, and every time a minion, a small monster or a [[pet]] dies.",
-        "At 7 ''Triumph'' stacks, '''Alistar''' consumes them and roars, {{tip|healing}} himself for {{as|{{sti|health|{{pp|25 to 161}} health}}}} and all nearby allied champions for{{ft|double the amount|{{as|{{sti|health|{{pp|25*2 to 161*2}} health}}}}}}.",
-        "'''Alistar''' roars instantly if a nearby enemy champion or epic monster dies. Once ''Triumph'' stacks are consumed '''Alistar''' cannot gain more again for a short duration."
+        "{{sbc|Innate:}} '''Alistar''' gains a [[stack]] of ''Triumph'' every time he {{tip|stun|stuns}} or {{tip|airborne|displaces}} at least one enemy {{tip|champion}} with {{ai|Pulverize|Alistar}}, {{ai|Headbutt|Alistar}}, or {{ai|Trample|Alistar}}, and every time an enemy {{tip|minion}} or a small {{tip|monster}} dies.",
+        "At 7 ''Triumph'' stacks, '''Alistar''' consumes them and roars, {{tip|healing}} himself for {{pp|25 to 161}} and all nearby allied champions for {{ft|double the amount.|{{pp|25*2 to 161*2}}.}}",
+        "'''Alistar''' roars instantly if a nearby enemy champion or epic monster dies. Once ''Triumph'' stacks are consumed '''Alistar''' cannot roar again for a short duration, but can still gain stacks."
       ],
       "notes": "* Healing is affected by {{ii|Spirit Visage}}, {{ri|Revitalize}} and {{sti|Heal Power}}.\n* '''Alistar''' loses all ''Triumph'' stacks upon dying.",
       "skillkey": "I",
@@ -92,7 +92,7 @@
         85
       ],
       "costtype": "mana",
-      "targeting": "none",
+      "targeting": "None",
       "image": {
         "full": "Pulverize.png",
         "sprite": "spell0.png",
@@ -105,7 +105,7 @@
       "description": [
         "{{sbc|Active:}} '''Alistar''' slams the ground beneath him, dealing {{tip|magic damage|{{as|magic damage}}}} to all nearby enemies and {{tip|airborne|knocking them up}} for 1 second."
       ],
-      "notes": "* ''Pulverize'' can be activated during {{ai|Headbutt|Alistar}} to immediately cast on arrival.",
+      "notes": "* ''Pulverize'' can be activated during {{ai|Headbutt|Alistar}} to immediately cast on arrival.\n* Casting {{si|Flash}} during the cast time will affect enemies at the new location.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65/70/75/80/85",
@@ -188,9 +188,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy location. If the target is still in range on arrival, he deals them {{as|magic damage}} and {{tip|stuns}} them for 1 second while also {{tip|airborne|knocking them back}} 650 units."
+        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location. If the target is still in range on arrival, he deals them {{as|magic damage}} and {{tip|stuns}} them for 1 second while also {{tip|airborne|knocking them back}} 650 units."
       ],
-      "notes": "* ''Headbutt'' can knock enemies through terrain.",
+      "notes": "* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.\n* Casting {{si|Flash}} during the {{tip|dash}} will interrupt ''Headbutt''.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "65/70/75/80/85",
@@ -261,7 +261,7 @@
         90
       ],
       "costtype": "mana",
-      "targeting": "[[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "AlistarE.png",
         "sprite": "spell0.png",
@@ -275,7 +275,7 @@
         "{{sbc|Active:}} '''Alistar''' becomes {{tip|ghosted}} and tramples the ground around him every {{fd|0.5}} seconds for 5 seconds, dealing {{as|magic damage}} to all nearby enemies and gaining a ''Trample'' stack every time the ability damages at least one enemy champion.",
         "At 5 ''Trample'' stacks, '''Alistar''' empowers his next [[basic attack]] within 6 seconds to deal {{as|{{pp|35 to 290}} '''bonus''' magic damage}} and {{tip|stun}} his target for 1 second."
       ],
-      "notes": "* The {{tip|stun}} and '''bonus''' damage is blocked by {{tip|spell shield|spell shields}} but the base attack damage is not.",
+      "notes": "* The {{tip|stun}} and '''bonus''' damage is blocked by {{tip|spell shield|spell shields}} but the base attack damage is not.\n* {{Pending for test}}: Empowered attack interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/60/70/80/90",
@@ -370,7 +370,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "FerociousHowl.png",
         "sprite": "spell0.png",
@@ -381,9 +381,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' {{tip|cleanse|cleanses}} himself of all {{tip|crowd control}}. For the next 7 seconds, '''Alistar''' reduces incoming damage received."
+        "{{sbc|Active:}} '''Alistar''' {{tip|cleanse|cleanses}} himself of all {{tip|crowd control}}. For the next 7 seconds, '''Alistar''' [[damage modifier|reduces]] incoming damage received."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* {{tip|True damage}} cannot be reduced by any means and will deal full damage to '''Alistar''' during ''Unbreakable Will''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.83",
-  "changes": "9.24.2",
+  "changes": "10.7.1",
   "id": "Garen",
   "name": "Garen",
   "title": "The Might of Demacia",
@@ -35,7 +35,7 @@
     "armor": 36,
     "armorperlevel": 3,
     "spellblock": 32.1,
-    "spellblockperlevel": 1.25,
+    "spellblockperlevel": 0.75,
     "attackrange": 175,
     "hpregen": 8,
     "hpregenperlevel": 0.5,
@@ -65,9 +65,9 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Garen''' {{sti|healing|restores|link=true}}{{ft|{{as|{{pp2|key=%|1.5+0.2*(x-1) for 6;then + 0.8*x for 7; then + 0.4*x|formula=1.3%+0.2% per level up to level 6, then+0.8% up to level 13, then+0.4%}} of his '''maximum''' health}} every 5 seconds|{{as|{{pp2|key=%|(1.5+0.2*(x-1))/10 for 6;then + 0.8/10*x for 7; then + 0.4/10*x|formula=0.13%+0.02% per level up to level 6, then+0.08% up to level 13, then+0.04%}} of his '''maximum''' health}} every {{fd|0.5}} seconds}}.",
-        "''Perseverance'' is {{tip|interrupt|interrupted}} for {{tt|7 seconds|this is not a cooldown and thus can not be reduced by cooldown reduction}} if '''Garen''' takes damage from epic {{tip|monster|monsters}}, {{tip|turret|turrets}}, or {{tip|champion|champions}}, or if he is hit by an enemy [[Champion ability|ability]]."
+        "''Perseverance'' is interrupted for {{tt|8 seconds|this is not a cooldown and thus can not be reduced by cooldown reduction}} if '''Garen''' takes damage from epic {{tip|monster|monsters}}, enemy {{tip|turret|turrets}}, or enemy {{tip|champion|champions}}, or if he is hit by an enemy [[Champion ability|ability]]."
       ],
-      "notes": "* No additional details.",
+      "notes": "* ''Perseverance'' does not go on or refresh its cooldown from damage which was fully prevented by a {{tip|shield}} or {{tip|invulnerability}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -77,10 +77,6 @@
       "name": "Decisive Strike",
       "maxrank": 5,
       "cooldown": [
-        8,
-        8,
-        8,
-        8,
         8
       ],
       "cost": [
@@ -90,7 +86,7 @@
         0,
         0
       ],
-      "targeting": "[[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "GarenQ.png",
         "sprite": "spell3.png",
@@ -102,33 +98,33 @@
       },
       "description": [
         "{{sbc|Active:}} '''Garen''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for a few seconds.",
-        "Additionally, '''Garen's''' next [[basic attack]] within {{fd|4.5}} seconds {{tip|lunge|lunges}} him towards the target, dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|silence|silencing}} the target for {{fd|1.5}} seconds.",
-        "''Decisive Strike'' resets '''Garen's''' basic attack timer."
+        "Additionally, '''Garen's''' next [[basic attack]] within {{fd|4.5}} seconds becomes an {{tip|unstoppable basic attack}} and {{tip|lunge|lunges}} him towards the target, dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|silence|silencing}} the target for {{fd|1.5}} seconds.",
+        "''Decisive Strike'' {{tip|basic attack reset|resets}} '''Garen's''' basic attack timer."
       ],
-      "notes": "* ''Decisive Strike'' does not interrupt ''Garen's'' previous orders.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage does not).\n** The bonus damage will also apply {{sti|life steal}}.\n** The bonus damage is applied to structures.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within it, it will also be removed together with the ''slow''.\n** For example, it will remove {{tip|cripple}} from {{cai|Wither|Nasus}}, but not from {{cai|Ground Slam|Malphite}}.\n** ''Decisive Strike'' will remove {{tip|slow}} from {{si|Exhaust}}, but not the damage reduction, for it being two separate effects within one summoner spell.\n** It will remove the slow from {{bi|Crest of Cinders|Red Buff}}, but not the damage over time.\n* ''Decisive Strike'' does not protect ''Garen'' from re-application of {{tip|slow|slows}} on him.\n** [[Area of effect]] {{tip|slow|slows}} (like {{cai|Pillar of Ice|Trundle}}) are re-applied immediately after removing if ''Garen'' stays in the corresponding area.\n* ''Decisive Strike's'' leap can pass very thin terrain and will otherwise not be able to. In any case, '''Garen''' will still hit his target.",
+      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage does not).\n** The bonus damage will also apply {{sti|life steal}}.\n** The bonus damage is applied to [[structures]].\n* The enhanced attack will still complete even if the target becomes {{tip|untargetable}} during the {{tip|attack windup}} and {{tt|applies its effects accordingly|The damage and the silence is still applied}}.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within the same status effect, it will also be removed together with the ''slow''; e.g. {{cai|Wither|Nasus}}.\n** {{si|Exhaust|Exhaust's}} {{tip|slow}} is a separate status effect from its [[damage modifier|damage reduction]], thus ''Decisive Strike'' does not remove the damage reduction.\n** Likewise, {{bi|Crest of Cinders|Red Buff's}} {{tip|slow}} is separate from the {{tip|dot|true damage over time}}.\n* ''Decisive Strike'' does not protect '''Garen''' from re-application of {{tip|slow|slows}} on him.\n** [[Area of effect]] {{tip|slow|slows}} (i.e - {{cai|Pillar of Ice|Trundle}}) are re-applied immediately after removal if '''Garen''' stays in the corresponding area.\n* {{tip|Spell shield}} will only negate the {{tip|silence}}.\n* ''Decisive Strike's'' leap can pass very thin terrain and will otherwise not be able to. In any case, '''Garen''' will still hit his target.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
       "cooldownBurn": "8",
       "effects": [
         {
-          "levelingtext": "{{st|Movement Speed Duration|{{ap|1.5 to 3.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Movement Speed Duration</span>: <span><spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Movement Speed Duration|{{ap|1 to 3.6}}}}",
+          "str": "<ul><li><span class=\"blue\">Movement Speed Duration</span>: <span><spell-span :list=\"['1','1.65','2.3','2.95','3.6']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                1.5,
-                2,
-                2.5,
-                3,
-                3.5
+                1,
+                1.65,
+                2.3,
+                2.95,
+                3.6
               ]
             ],
             "st_slices": [
               "Movement Speed Duration",
-              "<spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<spell-span :list=\"['1','1.65','2.3','2.95','3.6']\" :spellrankindex=\"spellrankindex\"></spell-span>"
             ]
           },
           "subeffects": [
@@ -136,15 +132,15 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  1.5,
-                  2,
-                  2.5,
-                  3,
-                  3.5
+                  1,
+                  1.65,
+                  2.3,
+                  2.95,
+                  3.6
                 ]
               },
               "title": "Movement Speed Duration",
-              "str": "<spell-span :list=\"['1.5','2','2.5','3','3.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<spell-span :list=\"['1','1.65','2.3','2.95','3.6']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
             }
           ]
@@ -213,7 +209,7 @@
         0,
         0
       ],
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "GarenW.png",
         "sprite": "spell3.png",
@@ -225,10 +221,10 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Garen''' permanently gains {{sti|armor|{{as|{{fd|0.25}} '''bonus''' armor}}}} and {{sti|mr|{{as|{{fd|0.25}} '''bonus''' magic resistance}}}} every time he kills an enemy, up to a maximum of 30 '''bonus''' resistances at 120 unit kills.",
-        "After reaching maximum stacks, gains an additional {{as|10% '''bonus''' armor}} and {{as|10% '''bonus''' magic resistance}}.",
-        "{{sbc|Active:}} '''Garen''' reduces incoming damage by 30% for a few seconds. For the first {{fd|0.75}} seconds, '''Garen''' is additionally {{sti|shield|shielded|link=true}} and gains 60% {{sti|tenacity|link=true}}."
+        "After reaching maximum stacks, increases {{as|'''bonus''' armor by 10%}} and {{as|'''bonus''' magic resistance by 10%}}.",
+        "{{sbc|Active:}} '''Garen''' [[damage modifier|reduces]] incoming damage by 30% for a few seconds. For the first {{fd|0.75}} seconds, '''Garen''' additionally gains a {{tip|shield}} and 60% {{tip|Tenacity}}."
       ],
-      "notes": "* ''Courage'' does not interrupt '''Garen's''' previous orders.\n* ''Courage's'' bonus resistances are only gained when it is ranked up at least once, but ''Courage's'' passive is retroactive.\n* Any enemy unit counts towards ''Courage's'' bonus resistances: champions, minions, monsters (including epic ones), [[Champion summoned units|summoned units]] and turrets. The bonus is equal in all these cases.\n* ''Courage'' will only grant bonus resistances from units killed by '''Garen''' himself. {{ii|Eye of the Herald}} and {{ii|Relic Shield|Spoils of War}} of allies do not count.",
+      "notes": "* ''Courage's'' bonus resistances are only gained when it is ranked up at least once, but ''Courage's'' passive is retroactive.\n* Any enemy unit counts towards ''Courage's'' bonus resistances: champions, minions, monsters (including epic ones), [[Champion summoned units|summoned units]] and turrets. The bonus is equal in all these cases.\n* ''Courage'' will only grant bonus resistances from units killed by '''Garen''' himself. {{ii|Eye of the Herald}} and {{ii|Relic Shield|Spoils of War}} of allies do not count.\n* The {{tip|Tenacity}} increase {{tip|stacks additively}} with the ''tenacity reduction'' from {{tip|Brittle}}, but multiplicatively with other sources.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -287,145 +283,6 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "GarenE",
-      "name": "Judgment",
-      "maxrank": 5,
-      "cooldown": [
-        9,
-        9,
-        9,
-        9,
-        9
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "[[Auto-targeted|Auto]]",
-      "image": {
-        "full": "GarenE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 384,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Garen''' becomes {{tip|ghosted}} and rapidly {{ct|channel|spins|attack=false|cast=[[File:Decisive_Strike.png|20px|link=Garen#Decisive_Strike]] [[Garen#Decisive_Strike|Decisive Strike]] and [[File:Courage.png|20px|link=Garen#Courage]] [[Garen#Courage|Courage]] are usable. [[File:Demacian_Justice.png|20px|link=Garen#Demacian_Justice]] [[Garen#Demacian_Justice|Demacian Justice]] interrupts.|move=true|items=true|consume=true|spells=true,true,true,false,true|interrupts=death}} his sword around his body {{as|{{pp2|key1=%|type='''bonus''' attack speed|6+x;...;∞|(25*x)-25;...;∞|formula=7{{plus}}1 per 25% '''bonus''' attack speed. ''The amount of spins updates every 25% attack speed. This only considers permanent attack speed from [[item]]s and [[growth|growth (per level)]].''}}|as}} times over 3 seconds, dealing {{as|physical damage}} with each spin to nearby enemies. ''Judgment'' can {{tip|critical strike|{{as|critically strike}}}} for {{as|{{critical damage|50|100|melee}} '''bonus''' physical damage}}. The total damage is increased by 50% against non-epic monsters.",
-        "The nearest enemy is dealt 25% '''bonus''' damage per spin. Enemy champions hit 6 times have their {{sti|armor penetration|{{as|armor reduced by 25%}}}} for 6 seconds. Hits after the 6th refresh the duration of the debuff.",
-        "After 1 second, '''Garen''' can reactivate to cancel it immediately, reducing its {{sti|cooldown}} by its remaining duration."
-      ],
-      "notes": "* Each spin triggers a stack of {{ri|Conqueror}}.\n* Silencing ''Garen'' will prevent him from deactivating the ability early.\n* ''Judgment'' cancels ''Garen's'' last movement command upon ending.\n* Each spin deals damage simultaneously to all enemies within its range when the spin is completed.\n* The spin animation is capped at once per {{fd|0.2}} seconds, but the amount of ticks will keep on scaling.\n* The armor reduction stacks multiplicatively with other percentage armor penetration effects.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "9",
-      "effects": [
-        {
-          "levelingtext": "{{st|Physical Damage Per Spin|{{ap|4 to 20}} (+ {{pp2|0.8*(x-1) for 9;then + 0.2*x|formula=0.8 per level until lvl 9, then+0.2 per level}}) {{as|(+ {{ap|32 to 40}}% AD)}}|Nearest Enemy Damage Per Spin|{{ap|4*1.25 to 20*1.25}} (+ {{pp2|0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25}}) {{as|(+ {{ap|32*1.25 to 40*1.25}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage Per Spin</span>: <span><spell-span :list=\"['4','8','12','16','20']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level\">Unknown value: pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['32','34','36','38','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Nearest Enemy Damage Per Spin</span>: <span><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25\">Unknown value: pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['40','42.5','45','47.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                4,
-                8,
-                12,
-                16,
-                20
-              ],
-              [
-                32,
-                34,
-                36,
-                38,
-                40
-              ],
-              [
-                5,
-                10,
-                15,
-                20,
-                25
-              ],
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": [
-                  0.4,
-                  0.425,
-                  0.45,
-                  0.475,
-                  0.5
-                ]
-              },
-              {
-                "player_total_ad": []
-              }
-            ],
-            "st_slices": [
-              "Physical Damage Per Spin",
-              "<spell-span :list=\"['4','8','12','16','20']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level\">Unknown value: pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['32','34','36','38','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "Nearest Enemy Damage Per Spin",
-              "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25\">Unknown value: pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['40','42.5','45','47.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  4,
-                  8,
-                  12,
-                  16,
-                  20
-                ],
-                "player_total_ad": [
-                  0.4,
-                  0.425,
-                  0.45,
-                  0.475,
-                  0.5
-                ]
-              },
-              "title": "Physical Damage Per Spin",
-              "str": "<spell-span :list=\"['4','8','12','16','20']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level\">Unknown value: pp2 0.8*(x-1) for 9;then + 0.2*x formula=0.8 per level until lvl 9, then+0.2 per level</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['32','34','36','38','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  32,
-                  34,
-                  36,
-                  38,
-                  40
-                ],
-                "player_total_ad": [
-                  0.4,
-                  0.425,
-                  0.45,
-                  0.475,
-                  0.5
-                ]
-              },
-              "title": "Nearest Enemy Damage Per Spin",
-              "str": "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <simple-tooltip class=\"capture-unknown\" dname=\"pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25\">Unknown value: pp2 0.8*(x-1)*1.25 for 9;then + 0.2*x*1.25</simple-tooltip>) <span class=\"ad\">(+ <spell-span :list=\"['40','42.5','45','47.5','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        }
-      ]
-    },
     "r1": {
       "riotId": "GarenR",
       "name": "Demacian Justice",
@@ -452,9 +309,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Garen''' gains {{tip|true sight}} of the target champion for 1 second, dealing them {{tip|true damage|{{as|true damage}}}} after a {{fd|0.5}} second delay."
+        "{{sbc|Active:}} '''Garen''' calls upon the might of ''Demacia'' onto the target enemy {{tip|champion}}, dealing them {{tip|true damage|{{as|true damage}}}}.",
+        "The target is {{tip|true sight|revealed}} for 1 second starting from the beginning of the cast time."
       ],
-      "notes": "* ''Demacian Justice'' is cancelled and does not go on {{sti|cooldown}} under the following circumstances:\n** The target becomes {{tip|untargetable}}.\n** The target leaves {{tip|sight}} [[range]] while '''Garen''' is {{tip|nearsight|nearsighted}}.\n** The target is [[kill|killed]].\n* '''Garen''' can {{si|Flash}} during the cast time without cancelling the ability.",
+      "notes": "* ''Demacian Justice'' is cancelled and does not go on {{sti|cooldown}} under certain circumstances:\n** The target becomes {{tip|untargetable}}.\n** The target leaves {{tip|sight}} [[range]] while '''Garen''' is {{tip|nearsight|nearsighted}}.\n** The target is [[kill|killed]].\n* '''Garen''' can {{si|Flash}} during the cast time without cancelling the ability.\n* If the target is not affected by {{tip|shield|shields}} or {{tip|invulnerability|invulnerabilities}} they will die if they're at least under {{as|{{ap|(20 to 30)/(1+(20 to 30)/100)|round=2}}% '''maximum''' health}} + {{as|{{ap|(150 to 450)/(1+(20 to 30)/100)|round=2}} '''flat''' health}} on top of that.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

@@ -1,9 +1,9 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.23.1",
+  "changes": "10.12.1",
   "id": "Fiddlesticks",
   "name": "Fiddlesticks",
-  "title": "the Harbinger of Doom",
+  "title": "the Ancient Fear",
   "image": {
     "full": "Fiddlesticks.png",
     "sprite": "champion0.png",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Mage",
-  "alttype": "Controller",
+  "alttype": "Support",
   "rangetype": "Ranged",
   "be_cost": 1350,
   "rp_cost": 585,
@@ -27,12 +27,12 @@
     "difficulty": 9
   },
   "stats": {
-    "hp": 524.4,
-    "hpperlevel": 80,
+    "hp": 580.4,
+    "hpperlevel": 92,
     "mp": 500,
     "mpperlevel": 28,
     "movespeed": 335,
-    "armor": 30,
+    "armor": 34,
     "armorperlevel": 3.5,
     "spellblock": 30,
     "spellblockperlevel": 0.5,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 48.36,
+    "attackdamage": 55.36,
     "attackdamageperlevel": 2.625,
     "attackspeedperlevel": 2.11,
     "attackspeed": 0.625
@@ -51,7 +51,7 @@
   "skills": {
     "i1": {
       "riotId": "",
-      "name": "Dread",
+      "name": "A Harmless Scarecrow",
       "maxrank": 0,
       "targeting": "Passive",
       "image": {
@@ -64,24 +64,24 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Standing still or {{tip|channels|channeling}} abilities for {{fd|1.5}} seconds grants '''Fiddlesticks''' {{sti|ms|{{as|{{pp|4|25 to 40|1 to 16|key=%}} '''bonus''' movement speed}}}}, that lasts for {{fd|1.5}} seconds once he starts moving. Being {{tip|immobilize|immobilized}} will not trigger ''Dread'', and will reset the timer.",
-        "After 5 seconds of not moving, '''Fiddlesticks''' will stand completely still."
+        "{{sbc|Innate - Scarecrow Effigy:}} '''Fiddlesticks''' begins the game with an exclusive {{ii|Scarecrow Effigy}}, which permanently occupies the [[Trinket item|trinket]] slot. '''Fiddlesticks''' can pretend to be an ''Effigy'', after standing still for 2 seconds, adjusting its body into a scarecrow and extending its arm out to expose its lantern. Its [[health bar]] is also hidden to enemies while idle, similarly to an ''Effigy''.",
+        "{{sbc|Innate - A Harmless Scarecrow:}} From [[Experience (champion)|level]] 6 onward, placing an {{tip|Effigy}} also summons a demonic eyeball at the location that grants {{tip|obscured vision}} of enemy units in the area for 6 seconds, which also {{tip|true sight|reveals}} and {{tip|disabled ward|disables}} enemy {{tip|ward|wards}} and {{tip|stealthed trap|stealthed traps}}."
       ],
-      "notes": "* Standing still and basic attacking will not reset ''Dread's'' timer.\n* Unlike {{ai|Guerrilla Warfare|Teemo}} ''Fiddlesticks'' can perform other actions so long as he does not move.",
+      "notes": "* ''Effigies'' will mimic '''Fiddlesticks' ''' idle animations and have their [[health bar]] hidden until they fake an action.\n** If '''Fiddlesticks''' pretends to be an ''effigy'', the health bar stays hidden until the animation is interrupted or it takes damage. The health bar will come back into view immediately but will instantly vanish if '''Fiddlesticks''' remains idle the moment it stops taking damage.\n*** {{tip|Channel|Channeling}} a spell interrupts the pose and does not activate it either.\n**** The pose is special cased to only be interrupted by {{ais|Bountiful Harvest|Fiddlesticks}} cast once the tethers are applied.\n* Effigies are considered {{tip|clone|clones}}, but they are not valid targets to [[direction-targeted|direction]], [[ground-targeted|ground]], and [[auto-targeted]] abilities the moment they are placed, a short amount of time must elapse before they are targetable to them.\n* The trinket slot can still be temporarily replaced by {{ii|Eye of the Herald}}.\n* [[File:A Harmless Scarecrow Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
     },
     "q1": {
-      "riotId": "Terrify",
+      "riotId": "FiddleSticksQ",
       "name": "Terrify",
       "maxrank": 5,
       "cooldown": [
         15,
+        14.5,
         14,
-        13,
-        12,
-        11
+        13.5,
+        13
       ],
       "cost": [
         65,
@@ -94,7 +94,7 @@
       "targeting": "Unit",
       "target_range": 575,
       "image": {
-        "full": "Terrify.png",
+        "full": "FiddleSticksQ.png",
         "sprite": "spell3.png",
         "group": "spell",
         "x": 288,
@@ -103,32 +103,35 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiddlesticks''' causes the target enemy to {{tip|flee}} as well as {{tip|slow|slowing}} them by 90%."
+        "{{sbc|Passive:}} While '''Fiddlesticks''' is [[combat status|out of combat]] for at least {{tt|{{fd|2.5}}|Estimated}} seconds and is unseen by any enemy champion, all enemy units are affected by ''Dread''. '''Fiddlesticks'''' next [[ability damage|damaging]] [[champion ability|ability]] against an enemy affected by ''Dread'' will {{tip|fear}} them. If '''Fiddlesticks''' casts {{ai|Bountiful Harvest|Fiddlesticks}} or {{ai|Reap|Fiddlesticks}} while pretending to be an {{ai|A Harmless Scarecrow|Fiddlesticks|Effigy}}, enemies hit will be {{tip|fear|feared}} as if it were unseen.",
+        "{{sbc|Active:}} '''Fiddlesticks''' hurls a crow at the target enemy. After a {{tt|0.4|Static}} second travel time, the target takes {{tip|magic damage|{{as|magic damage}}}} and is {{tip|fear|feared}} for a short duration. ''Terrify'' has a minimum damage threshold and is capped at 400 against {{tip|monster|monsters}}.",
+        "Enemies can only be {{tip|fear|feared}} by ''Terrify's'' passive once every few seconds. ''Terrify's'' active damage and minimum damage threshold are [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} if the target has recently been feared.",
+        "{{tip|fear|Feared}} enemies are {{tip|slow|slowed}} by 90%."
       ],
-      "notes": "* No additional details.",
+      "notes": "* The fear-immunity timer is not refreshed by subsequent attempts to fear the target.\n* '''Fiddlesticks''' is considered \"seen\" if he is visible and is inside an enemy champion's {{tt|sight radius|1350 units}}. Vision from {{tip|minion|minions}}, {{tip|ward|wards}}, and {{tip|turret|turrets}} will not prevent '''Fiddlesticks''' from {{tip|flee|fearing}} if there are no nearby enemy champions.\n** There is no grace period after being seen or entering combat.\n** Vision from the enemy team will not prevent the fear from triggering versus neutral monsters, and vice versa. \n* The ''Dread'' aura does not currently communicate any information to '''Fiddlesticks''', its allies or its enemies. There is no indicator to say that '''Fiddlesticks''' is out of combat; and no indicator or debuff icon on affected enemies.\n** If the ''Dread'' aura is active, a visual indicator will circle around all enemy champions while '''Fiddlesticks''' is channeling {{ai|Crowstorm|Fiddlesticks}}. This is only visible to '''Fiddlesticks'''.\n* The fear immunity applies even if the target is {{tip|cc-immune|crowd control immune}}. It is not applied if it is blocked by {{tip|spell shield}}, the visual indicator is however.\n* [[File:Terrify Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65",
-      "cooldownBurn": "15/14/13/12/11",
+      "cooldownBurn": "15/14.5/14/13.5/13",
       "effects": [
         {
-          "levelingtext": "{{st|Duration|{{ap|1.25|1.5|1.75|2|2.25}}}}",
-          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Fear Duration|{{ap|1 to 2}}}}",
+          "str": "<ul><li><span class=\"blue\">Fear Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
+                1,
                 1.25,
                 1.5,
                 1.75,
-                2,
-                2.25
+                2
               ]
             ],
             "st_slices": [
-              "Duration",
-              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "Fear Duration",
+              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
             ]
           },
           "subeffects": [
@@ -136,44 +139,174 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
+                  1,
                   1.25,
                   1.5,
                   1.75,
-                  2,
-                  2.25
+                  2
                 ]
               },
-              "title": "Duration",
-              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "title": "Fear Duration",
+              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Magic Damage|{{as|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}} of target's '''current''' health}}|Minimum Damage|{{ap|40 to 120}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>current</b> health</span></span></li><li><span class=\"blue\">Minimum Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 21
+              },
+              {
+                "target_total_ap": [
+                  0.4,
+                  0.6,
+                  0.8,
+                  1,
+                  1.2
+                ]
+              }
+            ],
+            "st_slices": [
+              "Magic Damage",
+              "<span class=\"health\"><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''current''' health</span>",
+              "Minimum Damage",
+              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "player_total_ap": 21
+              },
+              "title": "Magic Damage",
+              "str": "<span class=\"health\"><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''current''' health</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_ap": 21
+              },
+              "title": "Minimum Damage",
+              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Increased Magic Damage|{{as|{{ap|6*2 to 10*2}}% {{as|(+ 4% per 100 AP)}} of target's '''current''' health}}|Increased Minimum Damage|{{ap|40*2 to 120*2}}}}",
+          "str": "<ul><li><span class=\"blue\">Increased Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's <b>current</b> health</span></span></li><li><span class=\"blue\">Increased Minimum Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                14,
+                16,
+                18,
+                20
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 41
+              },
+              {
+                "target_total_ap": [
+                  0.8,
+                  1.2,
+                  1.6,
+                  2,
+                  2.4
+                ]
+              }
+            ],
+            "st_slices": [
+              "Increased Magic Damage",
+              "<span class=\"health\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's '''current''' health</span>",
+              "Increased Minimum Damage",
+              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ],
+                "player_total_ap": 41
+              },
+              "title": "Increased Magic Damage",
+              "str": "<span class=\"health\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's '''current''' health</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "player_total_ap": 41
+              },
+              "title": "Increased Minimum Damage",
+              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "damage_type": "unknown"
             }
           ]
         }
       ]
     },
     "w1": {
-      "riotId": "Drain",
-      "name": "Drain",
+      "riotId": "FiddleSticksW",
+      "name": "Bountiful Harvest",
       "maxrank": 5,
       "cooldown": [
-        4,
-        3.75,
-        3.5,
-        3.25,
-        3
+        9,
+        8.5,
+        8,
+        7.5,
+        7
       ],
       "cost": [
-        80,
-        90,
-        100,
-        110,
-        120
+        60,
+        65,
+        70,
+        75,
+        80
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": 575,
+      "targeting": "Auto",
+      "target_range": "",
       "image": {
-        "full": "Drain.png",
+        "full": "FiddleSticksW.png",
         "sprite": "spell3.png",
         "group": "spell",
         "x": 336,
@@ -182,68 +315,211 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiddlesticks''' [[tether|tethers]] himself to the target enemy and {{tip|channels}} for up to 5 seconds. While channeling, he deals {{tip|magic damage|{{as|magic damage}}}} each second, and {{tip|heal|heals}} himself for a percentage of the [[damage]] done.",
-        "If the target breaks the tether by moving out of range, ''Drain'' ends immediately. If the target dies before the channel completes, the {{sti|cooldown}} is reduced by its remaining duration."
+        "{{sbc|Active:}} '''Fiddlesticks''' harvests the souls of all nearby enemies, {{tip|channel|channeling}} and {{tip|sight|revealing}} itself for up to 2 seconds and {{tip|tether|tethering}} itself to them. Tethered enemies are {{tip|true sight|revealed}} and dealt {{as|magic damage}} every {{fd|0.25}} seconds, with the last tick dealing additional {{as|magic damage}}. '''Total''' damage is reduced to 50% against {{tip|minions|minions}}.",
+        "'''Fiddlesticks''' {{tip|heals}} itself for a percentage of the {{tt|pre-mitigation damage|Damage dealt before modifiers}} dealt, reduced to 25% against minions.",
+        "The ability ends if all targets have died or broken their tethers. If the channel was not {{tt|interrupted|e.g. by Fiddlesticks or enemy crowd control effects}}, 60% of the remaining {{sti|cooldown}} is refunded.",
+        "''A target enemy is required to cast this ability. '''Fiddlesticks''' does not need {{tip|sight}} of the target to tether itself to them.''"
       ],
-      "notes": "* ''Drain'' deals damage every {{fd|0.25}} seconds.\n* ''Drain'' has a brief [[channel]] time ({{fd|0.1}} seconds) on cast before activation.\n* ''Drain's'' channel will be interrupted if ''Fiddlesticks'' performs any other action, uses [[item]] actives, or is disabled.\n** Using [[summoner spell]]s (except {{si|Flash}} and {{si|Teleport}}) will not interrupt the channel.\n* ''Drain'' will not continue channeling through {{ai|Death Defied|Karthus}} or {{ai|Icathian Surprise|Kog'Maw}}.\n* ''Drain'' will continue channeling through [[Untargetability|untargetable]] abilities ({{ai|Playful|Fizz}}, {{ai|Sanguine Pool|Vladimir}}) so long as the target remains in tether range.\n* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.",
+      "notes": "* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.\n* [[File:Bountiful Harvest Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.\n{{ct|channel}}",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "80/90/100/110/120",
-      "cooldownBurn": "4/3.75/3.5/3.25/3",
+      "costBurn": "60/65/70/75/80",
+      "cooldownBurn": "9/8.5/8/7.5/7",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage per Second|{{ap|80 to 180}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|80*5 to 180*5}} {{as|(+ {{ap|45*5}}% AP)}}}}{{st|Heal Ratio|{{ap|60 to 80}}%|Heal per Second|{{ap|(60 to 80)/100*(80 to 180)}} {{as|(+ {{ap|(60 to 80)/100*45}}% AP)}}|Total Heal|{{ap|(60 to 80)/100*(80 to 180)*5}} {{as|(+ {{ap|(60 to 80)/100*45*5}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['400','525','650','775','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['225']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><ul><li><span class=\"blue\">Heal Ratio</span>: <span><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Heal per Second</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li><li><span class=\"blue\">Total Heal</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Damage per Tick|{{ap|60*0.25 to 180*0.25}} {{as|(+ {{fd|8.75}}% AP)}}|Last Tick of Damage|{{ap|60*0.25 to 180*0.25}} {{as|(+ {{fd|8.75}}% AP)}} {{as|(+ {{ap|12 to 22}}% of target's '''missing''' health)}}|Total Magic Damage|{{ap|60*2 to 180*2}} {{as|(+ 70% AP)}} {{as|(+ {{ap|12 to 22}}% of target's '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage per Tick</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span></span></li><li><span class=\"blue\">Last Tick of Damage</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                80,
-                105,
-                130,
-                155,
-                180
+                15,
+                22.5,
+                30,
+                37.5,
+                45
               ],
               [
-                400,
-                525,
-                650,
-                775,
-                900
+                15,
+                22.5,
+                30,
+                37.5,
+                45
               ],
               [
-                225
+                12,
+                14.5,
+                17,
+                19.5,
+                22
+              ],
+              [
+                120,
+                180,
+                240,
+                300,
+                360
               ],
               null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.45
+                "player_total_ap": 0.7000000000000001
               },
               {
-                "player_total_ap": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
+                "player_total_ap": 0.08750000000000001
+              },
+              {
+                "player_total_ap": 0.08750000000000001
+              },
+              {
+                "target_missing_hp": [
+                  0.12,
+                  0.145,
+                  0.17,
+                  0.195,
+                  0.22
                 ]
               },
               {
-                "player_total_ap": 6080100.45
-              },
-              {
-                "player_total_ap": 60801004.550000004
+                "target_missing_hp": []
               }
             ],
             "st_slices": [
-              "Heal Ratio",
-              "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "Heal per Second",
-              "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
-              "Total Heal",
-              "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
+              "Damage per Tick",
+              "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span>",
+              "Last Tick of Damage",
+              "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "Total Magic Damage",
+              "<spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": [
+                  15,
+                  22.5,
+                  30,
+                  37.5,
+                  45
+                ],
+                "player_total_ap": 0.08750000000000001
+              },
+              "title": "Damage per Tick",
+              "str": "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  15,
+                  22.5,
+                  30,
+                  37.5,
+                  45
+                ],
+                "player_total_ap": 0.08750000000000001
+              },
+              "title": "Last Tick of Damage",
+              "str": "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">8.75</span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  12,
+                  14.5,
+                  17,
+                  19.5,
+                  22
+                ],
+                "player_total_ap": 0.08750000000000001
+              },
+              "title": "Total Magic Damage",
+              "str": "<spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12','14.5','17','19.5','22']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "damage_type": "magic"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Heal Percentage|{{ap|30 to 50}}%|Total Heal per Non-Minion|{{ap|60*0.6|90*0.7|120*0.8|150*0.9|180*1}} {{as|(+ {{ap|35*0.6|35*0.7|35*0.8|35*0.9|35*1}}% AP)}} {{as|(+ {{ap|12*0.6|13.5*0.7|15*0.8|16.5*0.9|18*1}}% of target's '''missing''' health)}}|Total Heal per Minion|{{ap|60*0.5*2*0.25 to 180*0.5*2*0.25}} {{as|(+ {{ap|35*0.5*2*0.25}}% AP)}} {{as|(+ {{ap|12*0.5*2*0.25 to 18*0.5*2*0.25}}% of target's '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Heal Percentage</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Heal per Non-Minion</span>: <span><spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Total Heal per Minion</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ],
+              [
+                36,
+                63,
+                96,
+                135,
+                180
+              ],
+              [
+                21,
+                24.5,
+                28,
+                31.5,
+                35
+              ],
+              [
+                7.2,
+                9.45,
+                12,
+                14.85,
+                18
+              ],
+              [
+                15,
+                22.5,
+                30,
+                37.5,
+                45
+              ],
+              [
+                8.75
+              ],
+              null
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": [
+                  0.03,
+                  0.03375,
+                  0.0375,
+                  0.04125,
+                  0.045
+                ]
+              },
+              {
+                "target_missing_hp": []
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "target_missing_hp": []
+              }
+            ],
+            "st_slices": [
+              "Heal Percentage",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "Total Heal per Non-Minion",
+              "<spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "Total Heal per Minion",
+              "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>"
             ]
           },
           "subeffects": [
@@ -251,62 +527,69 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  80,
-                  105,
-                  130,
-                  155,
-                  180
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
                 ],
                 "player_total_ap": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
-                ]
+                  0.03,
+                  0.03375,
+                  0.0375,
+                  0.04125,
+                  0.045
+                ],
+                "target_missing_hp": []
               },
-              "title": "Heal Ratio",
-              "str": "<spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "title": "Heal Percentage",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "damage_type": "none"
             },
             {
               "index": 1,
               "ratios": {
                 "base_progression": [
-                  400,
-                  525,
-                  650,
-                  775,
-                  900
+                  36,
+                  63,
+                  96,
+                  135,
+                  180
                 ],
                 "player_total_ap": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
-                ]
+                  0.03,
+                  0.03375,
+                  0.0375,
+                  0.04125,
+                  0.045
+                ],
+                "target_missing_hp": []
               },
-              "title": "Heal per Second",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
+              "title": "Total Heal per Non-Minion",
+              "str": "<spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
               "damage_type": "none"
             },
             {
               "index": 2,
               "ratios": {
                 "base_progression": [
-                  225
+                  21,
+                  24.5,
+                  28,
+                  31.5,
+                  35
                 ],
                 "player_total_ap": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
-                ]
+                  0.03,
+                  0.03375,
+                  0.0375,
+                  0.04125,
+                  0.045
+                ],
+                "target_missing_hp": []
               },
-              "title": "Total Heal",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*(80 to 180)*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (60 to 80)/100*45*5\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
+              "title": "Total Heal per Minion",
+              "str": "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
               "damage_type": "none"
             }
           ]
@@ -314,28 +597,28 @@
       ]
     },
     "e1": {
-      "riotId": "FiddlesticksDarkWind",
-      "name": "Dark Wind",
+      "riotId": "FiddleSticksE",
+      "name": "Reap",
       "maxrank": 5,
       "cooldown": [
         10,
-        10,
-        10,
-        10,
-        10
+        9,
+        8,
+        7,
+        6
       ],
       "cost": [
-        70,
-        75,
-        80,
-        85,
-        90
+        40,
+        45,
+        50,
+        55,
+        60
       ],
       "costtype": "Mana",
-      "targeting": "[[Unit-targeted|Unit]] / [[Auto-targeted|Auto]]",
-      "target_range": 750,
+      "targeting": "Ground",
+      "target_range": 850,
       "image": {
-        "full": "FiddlesticksDarkWind.png",
+        "full": "FiddleSticksE.png",
         "sprite": "spell3.png",
         "group": "spell",
         "x": 384,
@@ -344,163 +627,70 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiddlesticks''' sends a crow to the target enemy that bounces to nearby enemies up to 5 times, prioritizing targets not yet hit or targets affected by ''{{ai|Drain|Fiddlesticks}}'', dealing {{as|magic damage}} with each bounce and {{tip|silence|silencing}} them for {{fd|1.25}} seconds once.",
-        "{{tip|Monster|Monsters}} take twice as much damage."
+        "{{sbc|Active:}} '''Fiddlesticks''' slashes all enemies in the target area with its scythe, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit for {{fd|1.25}} seconds.",
+        "Enemies hit in the center of the area are also {{tip|silence|silenced}} for {{fd|1.25}} seconds."
       ],
-      "notes": "* Applies {{tip|spell damage}} in a {{tip|area of effect}} range.\n* The ''crow'' will vanish if the target becomes {{tip|untargetable}} but will keep on bouncing if the target has died.",
+      "notes": "* [[File:Reap Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "10",
+      "costBurn": "40/45/50/55/60",
+      "cooldownBurn": "10/9/8/7/6",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage per Bounce|{{ap|60 to 140}} {{as|(+ 45% AP)}}|Total Single-Target Damage|{{ap|60*3 to 140*3}} {{as|(+ 135% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Bounce</span>: <span><spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}}}\n{{st|Slow|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                80,
-                100,
-                120,
-                140
+                70,
+                105,
+                140,
+                175,
+                210
               ],
               [
-                180,
-                240,
-                300,
-                360,
-                420
+                30,
+                35,
+                40,
+                45,
+                50
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.45
-              },
-              {
-                "player_total_ap": 1.35
+                "player_total_ap": 0.5
               }
             ],
             "st_slices": [
-              "Magic Damage per Bounce",
-              "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
-              "Total Single-Target Damage",
-              "<spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span>"
+              "Slow",
+              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
-                  60,
-                  80,
-                  100,
-                  120,
-                  140
+                "base_progression": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 0.5
               },
-              "title": "Magic Damage per Bounce",
-              "str": "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  180,
-                  240,
-                  300,
-                  360,
-                  420
-                ],
-                "player_total_ap": 0.45
-              },
-              "title": "Total Single-Target Damage",
-              "str": "<spell-span :list=\"['180','240','300','360','420']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 135% AP)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Monster Damage per Bounce|{{ap|60*2 to 140*2}} {{as|(+ 90% AP)}}|Monster Total Single-Target Damage|{{ap|60*6 to 140*6}} {{as|(+ 270% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Monster Damage per Bounce</span>: <span><spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Monster Total Single-Target Damage</span>: <span><spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                120,
-                160,
-                200,
-                240,
-                280
-              ],
-              [
-                360,
-                480,
-                600,
-                720,
-                840
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.9
-              },
-              {
-                "player_total_ap": 2.7
-              }
-            ],
-            "st_slices": [
-              "Monster Damage per Bounce",
-              "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
-              "Monster Total Single-Target Damage",
-              "<spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  120,
-                  160,
-                  200,
-                  240,
-                  280
-                ],
-                "player_total_ap": 0.9
-              },
-              "title": "Monster Damage per Bounce",
-              "str": "<spell-span :list=\"['120','160','200','240','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  360,
-                  480,
-                  600,
-                  720,
-                  840
-                ],
-                "player_total_ap": 0.9
-              },
-              "title": "Monster Total Single-Target Damage",
-              "str": "<spell-span :list=\"['360','480','600','720','840']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 270% AP)</span>",
-              "damage_type": "unknown"
+              "title": "Slow",
+              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "damage_type": "none"
             }
           ]
         }
       ]
     },
     "r1": {
-      "riotId": "Crowstorm",
+      "riotId": "FiddleSticksR",
       "name": "Crowstorm",
       "maxrank": 3,
       "cooldown": [
@@ -517,7 +707,7 @@
       "targeting": "Ground",
       "target_range": 800,
       "image": {
-        "full": "Crowstorm.png",
+        "full": "FiddleSticksR.png",
         "sprite": "spell3.png",
         "group": "spell",
         "x": 432,
@@ -526,27 +716,27 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} After {{tip|channels|channeling}} for {{fd|1.5}} seconds, '''Fiddlesticks''' {{tip|blinks}} to the target location with a murder of crows flying wildly around him for 5 seconds, dealing {{as|magic damage}} to nearby enemies each second."
+        "{{sbc|Active:}} After {{tip|channel|channeling}} for {{fd|1.5}} seconds, '''Fiddlesticks''' {{tip|blink|blinks}} to the target location with a murder of crows flying wildly around it for 5 seconds, dealing {{as|magic damage}} to nearby enemies every {{fd|0.25}} seconds."
       ],
-      "notes": "* ''Crowstorm'' applies a tick of damage every {{fd|0.5}} seconds.\n* {{tip|Ground|Grounding}} effects instantly {{tip|interrupt}} the channel and place the ability on full {{sti|cooldown|link=true}}.\n** {{tip|Root|Roots}} do not cancel the channel and allows ''Crowstorm'' to cast normally.\n* [[File:Crowstorm Surprise Party.png|30px|border|link=]] - {{csl|Fiddlesticks|Surprise Party}} has this special icon for this ability.",
+      "notes": "* {{tip|Root|Roots}} do not {{tip|interrupt}} the ability despite being a [[Channel#Movement Channels|movement channel]].\n* ''Crowstorm'', after it has been channeled, persists through {{tip|stasis}}.\n* [[File:Crowstorm Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "140/110/80",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage per Second|{{ap|125 to 325}} {{as|(+ 45% AP)}}|Total Magic Damage|{{ap|125*5 to 325*5}} {{as|(+ 225% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Second</span>: <span><spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Damage per Tick|{{ap|125*0.25 to 325*0.25}} {{as|(+ {{fd|11.25}}% AP)}}|Total Magic Damage|{{ap|125*5 to 325*5}} {{as|(+ 225% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Damage per Tick</span>: <span><spell-span :list=\"['31.25','43.75','56.25','68.75','81.25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">11.25</span>% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                125,
-                175,
-                225,
-                275,
-                325
+                31.25,
+                43.75,
+                56.25,
+                68.75,
+                81.25
               ],
               [
                 625,
@@ -558,15 +748,15 @@
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.45
+                "player_total_ap": 2.25
               },
               {
-                "player_total_ap": 2.25
+                "player_total_ap": 0.1125
               }
             ],
             "st_slices": [
-              "Magic Damage per Second",
-              "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
+              "Damage per Tick",
+              "<spell-span :list=\"['31.25','43.75','56.25','68.75','81.25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">11.25</span>% AP)</span>",
               "Total Magic Damage",
               "<spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span>"
             ]
@@ -576,17 +766,17 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  125,
-                  175,
-                  225,
-                  275,
-                  325
+                  31.25,
+                  43.75,
+                  56.25,
+                  68.75,
+                  81.25
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 2.25
               },
-              "title": "Magic Damage per Second",
-              "str": "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 45% AP)</span>",
-              "damage_type": "magic"
+              "title": "Damage per Tick",
+              "str": "<spell-span :list=\"['31.25','43.75','56.25','68.75','81.25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">11.25</span>% AP)</span>",
+              "damage_type": "unknown"
             },
             {
               "index": 1,
@@ -598,7 +788,7 @@
                   1375,
                   1625
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 2.25
               },
               "title": "Total Magic Damage",
               "str": "<spell-span :list=\"['625','875','1125','1375','1625']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 225% AP)</span>",

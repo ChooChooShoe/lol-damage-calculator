@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.16",
-  "changes": "9.11.1",
+  "changes": "10.11.1",
   "id": "Janna",
   "name": "Janna",
   "title": "the Storm's Fury",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Controller",
+  "herotype": "Support",
   "alttype": "Mage",
   "rangetype": "Ranged",
   "be_cost": 1350,
@@ -103,10 +103,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Janna''' summons a whirlwind at her current location which charges up over 3 seconds. Its range, speed, damage, and {{tip|airborne|knockup}} duration increase for each second it is left charging.",
-        "At the end of the duration, or upon reactivation, the whirlwind launches itself for {{fd|1.5}} seconds in the target direction, dealing {{as|magic damage}} to all enemies it passes through and {{tip|airborne|knocking them up}} for {{pp|7|type=seconds charged|0.5 to 1.25|0 to 3|formula=0.5+(0.125 per half second).}} seconds."
+        "{{sbc|Active:}} '''Janna''' summons a whirlwind at her current location which charges up over 3 seconds. Its range, speed, damage, and {{tip|airborne|knockup}} duration increase for each second it is left charging. ''Howling Gale'' can be recast after a short delay.",
+        "At the end of the duration, the whirlwind launches itself for {{fd|1.5}} seconds in the target direction, dealing {{as|magic damage}} to all enemies it passes through and {{tip|airborne|knocking them up}} for {{pp|7|type=seconds charged|0.5 to 1.25|0 to 3|formula=0.5+(0.125 per half second).}} seconds.",
+        "{{sbc|Recast:}} '''Janna''' launches the whirlwind early."
       ],
-      "notes": "* ''Howling Gale'' has no cast time and does not interrupt '''Janna's''' previous orders.\n* The storm does not interact with enemy units that stand on top of it while it is charging.",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* The storm does not interact with enemy units that stand on top of it while it is charging.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60/80/100/120/140",
@@ -281,18 +282,18 @@
           ]
         },
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|55 to 195}} {{as|(+ 50% AP)}} {{as|(+ {{pp|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
-          "str": "{{st|Magic Damage|<spell-span :list=\"['55','90','125','160','195']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span> <span class=\"ap\">(+ <HtmlTooltip class=\"blue link\">25% − 35% (based on level)<template #content>Values: 25, 35<br>At levels: 1, 10</template></HtmlTooltip> <span><a class=\"effect link\" title=\"<simple-tooltip class=\"capture-unknown\" dname=\"as\">movement speed</a>)\">Unknown value: as\">movement speed</a>)</simple-tooltip></span></span><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|55 to 175}} {{as|(+ 50% AP)}} {{as|(+ {{pp|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
+          "str": "{{st|Magic Damage|<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span> <span class=\"ap\">(+ <HtmlTooltip class=\"blue link\">25% − 35% (based on level)<template #content>Values: 25, 35<br>At levels: 1, 10</template></HtmlTooltip> <span><a class=\"effect link\" title=\"<simple-tooltip class=\"capture-unknown\" dname=\"as\">movement speed</a>)\">Unknown value: as\">movement speed</a>)</simple-tooltip></span></span><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 55,
-                90,
-                125,
-                160,
-                195
+                85,
+                115,
+                145,
+                175
               ],
               [
                 24,
@@ -324,10 +325,10 @@
               "ratios": {
                 "base_progression": [
                   55,
-                  90,
-                  125,
-                  160,
-                  195
+                  85,
+                  115,
+                  145,
+                  175
                 ],
                 "player_total_ap": 253525351.1
               },
@@ -358,7 +359,7 @@
         110
       ],
       "costtype": "mana",
-      "targeting": "[[Unit-targeted|Unit]] / [[Self-targeted|Self]]",
+      "targeting": "[[Unit-targeted|Unit]]",
       "target_range": 800,
       "image": {
         "full": "EyeOfTheStorm.png",
@@ -372,10 +373,10 @@
       "description": [
         "{{sbc|Active:}} '''Janna''' {{tip|shields}} the target allied champion or herself for 5 seconds, decaying over the duration after {{fd|0.75}} seconds.",
         "While the shield holds, her target gains {{sti|attack damage|{{as|'''bonus''' attack damage}}}}.",
-        "Each ability that {{tip|slow|slows}} or applies {{tip|airborne}} effects to an enemy champion reduces ''Eye of the Storm's'' cooldown by 20%, up to once per ability cast.",
+        "{{tip|slow|Slowing}} or applying an {{tip|airborne}} effect with an ability to an enemy champion reduces ''Eye of the Storm's'' cooldown by 20%, up to once per ability cast.",
         "''Eye of the Storm'' can be used on {{tip|turret|turrets}}, causing '''Janna''' to be credited for any {{tip|champion}} [[kill|kills]] it earns while the shield holds."
       ],
-      "notes": "* ''Eye of the Storm'' has no cast time and does not interrupt Janna's previous orders.\n* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''.",
+      "notes": "* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "70/80/90/100/110",
@@ -488,7 +489,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "[[Auto-targeted|Auto]] / [[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "ReapTheWhirlwind.png",
         "sprite": "spell4.png",
@@ -503,7 +504,7 @@
         "While channeling, she releases soothing winds that {{tip|heal}} nearby allies every half-second.",
         "Moving ends its effects immediately."
       ],
-      "notes": "* ''Monsoon'' can be used to pseudo-stun enemy champions pushed into a wall before the knockback travels its full distance.\n* {{tip|Spell shield}} will block the knockback.",
+      "notes": "* ''Monsoon'' can be used to pseudo-stun enemy champions pushed into a wall before the knockback travels its full distance.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

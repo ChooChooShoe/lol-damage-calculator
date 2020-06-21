@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.147",
-  "changes": "9.22.1",
+  "changes": "10.11.1",
   "id": "Syndra",
   "name": "Syndra",
   "title": "the Dark Sovereign",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Mage",
-  "alttype": "Controller",
+  "alttype": "Support",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -105,7 +105,7 @@
         "{{sbc|Active:}} After {{fd|0.6}} seconds, '''Syndra''' conjures a ''Dark Sphere'' at the target location, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies hit, which then remains for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Dark Spheres'' deal 25% '''bonus''' damage against [[champion]]s."
       ],
-      "notes": "* ''Dark Sphere'' has no cast time and does not interrupt '''Syndra's''' previous orders.\n* ''Dark Sphere'' can be conjured inside terrain, but can't be thrown there with {{ai|Force of Will|Syndra}}.",
+      "notes": "* ''Dark Sphere'' can be conjured inside terrain, but can't be thrown there with {{ai|Force of Will|Syndra}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "40/50/60/70/80",
@@ -223,132 +223,16 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "SyndraW",
-      "name": "Force of Will",
-      "maxrank": 5,
-      "cooldown": [
-        12,
-        11,
-        10,
-        9,
-        8
-      ],
-      "cost": [
-        60,
-        70,
-        80,
-        90,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Unit-targeted|Unit]] / [[Ground-targeted|Ground]]",
-      "target_range": "{{tt|925|Grab range}} / {{tt|950|Throw range}}",
-      "image": {
-        "full": "SyndraW.png",
-        "sprite": "spell11.png",
-        "group": "spell",
-        "x": 336,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|First Active:}} '''Syndra''' telekinetically grabs the nearest {{ai|Dark Sphere|Syndra}}, enemy {{tip|minion}} or non-epic {{tip|monster}} within 400 range from the target location for 5 seconds, or if not found it grabs the nearest '''Dark Sphere'''. If a '''Dark Sphere''' is grabbed, its duration is refreshed. If a minion or monster is grabbed, it is put in {{tip|stasis}}.",
-        "{{sbc|Second Active:}} '''Syndra''' throws the grabbed target to the designated area, granting {{tip|sight}} of the projectile's surroundings as they fall. Enemies struck take {{as|magic damage}} and are {{tip|slow|slowed}} for {{fd|1.5}} seconds.",
-        "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Force of Will'' deals {{tip|true damage|{{as|20% '''bonus''' true damage}}}}."
-      ],
-      "notes": "* ''Force of Will'' has no cast time and does not interrupt '''Syndra's''' previous orders.\n* '''Syndra''' ''cannot'' grab any of the following units:\n** {{ui|Baron Nashor}}\n** {{ui|Dragon}}\n** {{tip|Champion|Champions}}\n** {{tip|Stealthed trap|Traps}}\n*** {{ai|Jack in the Box|Shaco}} is the only exception.\n** [[Decoy|Decoys]]\n* Casting {{si|Teleport}} will cause '''Syndra''' to cancel ''Force of Will'' and drop anything she is holding.\n* Enemy {{tip|pet|pets}} that passively have an effect on their surroundings will continue to affect the area around them while they are being held. For example, {{ui|Tibbers}} will continue to inflict {{tip|damage over time|burn damage}} on surrounding units while in {{tip|stasis}}.\n* ''Force of Will'' has unique interactions when targeting the {{ui|Blue Sentinel}} and {{ui|Red Brambleback}}. Throwing the ''Blue Sentinel'' will refund {{sti|mana|{{as|10 mana}}}} to '''Syndra''' upon cast and will reduce the {{sti|cooldown}} of ''Force of Will'' by 1 second, while throwing ''Red Brambleback'' will apply the {{bi|Crest of Cinders}} burn to any affected units in the {{tip|area of effect}}.\n* Thrown {{ai|Dark Sphere|Syndra|spheres}} will be {{tip|knockdown|knocked down}} upon colliding with {{ai|Wind Wall|Yasuo}}.\n** This does not occur to other thrown enemy units.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "60/70/80/90/100",
-      "cooldownBurn": "12/11/10/9/8",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 70% AP)}}}}<!--\n-->{{st|Slow|{{ap|25 to 45}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                110,
-                150,
-                190,
-                230
-              ],
-              [
-                25,
-                30,
-                35,
-                40,
-                45
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  70,
-                  110,
-                  150,
-                  190,
-                  230
-                ],
-                "player_total_ap": 0.7000000000000001
-              },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Bonus True Damage|46 {{as|(+ 14% AP)}}|Total Mixed Damage|276 {{as|(+ 84% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus True Damage</span>: <span>46 <span class=\"ap\">(+ 14% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span>276 <span class=\"ap\">(+ 84% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.14
-              },
-              {
-                "player_total_ap": 0.84
-              }
-            ],
-            "st_slices": [
-              "Bonus True Damage",
-              "46 <span class=\"ap\">(+ 14% AP)</span>",
-              "Total Mixed Damage",
-              "276 <span class=\"ap\">(+ 84% AP)</span>"
-            ]
-          }
-        }
-      ]
-    },
     "e1": {
       "riotId": "SyndraE",
       "name": "Scatter the Weak",
       "maxrank": 5,
       "cooldown": [
+        18,
+        17,
         16,
         15,
-        14,
-        13,
-        12
+        14
       ],
       "cost": [
         50,
@@ -370,15 +254,15 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Syndra''' {{tip|airborne|knocks back}} all enemy units for 400 units and up to 800 units away from '''Syndra''', dealing {{as|magic damage}}.",
-        "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''', knocking back all enemy units they collide with for 100 units and {{tip|stun|stunning}} them for {{fd|1.5}} seconds, dealing ''Scatter the Weak's'' damage to enemies who weren't affected by the initial cast.",
+        "{{sbc|Active:}} '''Syndra''' {{tip|airborne|knocks back}} all enemies for 400 units and up to 800 units away from '''Syndra''', dealing {{as|magic damage}}.",
+        "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''', knocking back all enemies they collide with for 100 units and {{tip|stun|stunning}} and {{tip|sight|revealing}} them for {{fd|1.5}} seconds, and dealing ''Scatter the Weak's'' damage to enemies who weren't affected by the initial cast.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
       ],
-      "notes": "* Launched {{ai|Dark Sphere|Syndra|Dark Spheres}} that successfully strike an enemy will grant {{tip|sight}} of that enemy for the duration of the {{tip|stun}}.\n* ''Spheres'' are {{tip|knockdown|knocked down}} upon colliding with {{ai|Wind Wall|Yasuo}}.",
+      "notes": "* ''Scatter the Weak'' is blocked by the portion of {{ai|Wind Wall|Yasuo}} it collides with. ''Spheres'' thrown will stop upon colliding with the wall.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
-      "cooldownBurn": "16/15/14/13/12",
+      "cooldownBurn": "18/17/16/15/14",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}",
@@ -457,7 +341,7 @@
         "The {{ai|Dark Sphere|Syndra|Dark Spheres}} will then remain on the ground for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Unleashed Power's'' cast range is increased."
       ],
-      "notes": "* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the ''spheres'' apply their damage. She can walk away as soon as the casting has completed, as the ''spheres'' only begin dealing their damage after the casting time. \n* Each one of the ''sphere'' hits is considered a {{tip|single target}} spell, triggering {{ii|Muramana}} each time.\n* Casting ''Unleashed Power'' on a target that becomes {{tip|untargetable}} while the ''spheres'' are in flight will cause all ''spheres'' to deal no damage and be destroyed.\n* ''Spheres'' already in flight will still travel if '''Syndra's''' target dies, but any remaining ''sphere'' will not. However their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown. \n** Depending on how many ''spheres'' are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the ''sphere'' behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single ''sphere''.\n* ''Spheres'' are {{tip|knockdown|knocked down}} upon {{tip|projectile|interception}}.",
+      "notes": "* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the ''spheres'' apply their damage. She can walk away as soon as the casting has completed, as the ''spheres'' only begin dealing their damage after the casting time. \n* Each one of the ''sphere'' hits is considered a {{tip|single target}} spell, triggering {{iis|Muramana}} {{sbc|shock}} each time.\n* Casting ''Unleashed Power'' on a target that becomes {{tip|untargetable}} while the ''spheres'' are in flight will cause them to deal no damage.\n* ''Spheres'' already in flight will still travel if '''Syndra's''' target dies, but any remaining ''sphere'' will not. However, their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown. \n** Depending on how many ''spheres'' are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the ''sphere'' behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single ''sphere''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

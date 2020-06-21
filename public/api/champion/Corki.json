@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.25.21",
-  "changes": "10.1.1",
+  "changes": "10.7.1",
   "id": "Corki",
   "name": "Corki",
   "title": "the Daring Bombardier",
@@ -49,29 +49,6 @@
     "attackspeed": 0.638
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Hextech Munitions",
-      "maxrank": 0,
-      "targeting": "[[Passive]]",
-      "image": {
-        "full": "Corki_RapidReload.png",
-        "sprite": "passive0.png",
-        "group": "passive",
-        "x": 432,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate - Hextech Shrapnel Shells:}} '''Corki's''' [[basic attack]]s are permanently modified to deal {{as|20% AD}} {{tip|physical damage|{{as|physical damage}}}} and {{as|80% AD}} {{tip|magic damage|{{as|magic damage}}}}.",
-        "{{sbc|Innate - The Package:}} After 8 minutes elapse, ''{{ai|The Package|Corki}}'' is delivered to both corners of '''Corki's''' [[Spawn|fountain]], which he can pick up after {{ct|channel|channeling|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}} for 1 second. Doing so grants him one cast of {{ai|Special Delivery|Corki}} which must be cast before {{ai|Valkyrie|Corki}} within the next 60 seconds, as well as {{sti|ms|{{as|40% '''bonus''' movement speed}}}} [[out of combat]] prior to the ability being cast, after which ''{{ai|The Package|Corki}}'' goes on {{sti|cooldown}} before being delivered again."
-      ],
-      "notes": "* All players are alerted by Corki emitting a global siren/alarm sound upon picking up ''The Package''.\n* Triggering attacks will apply [[on-hit effect]]s normally.\n** {{nie|Spellblade}} damage is converted to magic damage. This effect will not be consumed if ''Hextech Munitions' ''magic damage is enough to kill the target.\n** The damage from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} is not affected by ''Hextech Munitions''.\n** Both components apply {{sti|life steal}} even though on-hit magic damage does not usually interact with it.\n** {{tip|critical strike|Critical strikes}} amplify both components' damage.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "PhosphorusBomb",
       "name": "Phosphorus Bomb",
@@ -162,170 +139,11 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "CarpetBomb",
-      "name": "Valkyrie",
-      "maxrank": 5,
-      "cooldown": [
-        20,
-        19,
-        18,
-        17,
-        16
-      ],
-      "cost": [
-        100,
-        100,
-        100,
-        100,
-        100
-      ],
-      "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": 600,
-      "image": {
-        "full": "CarpetBomb.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Corki''' {{tip|dashes}} to the target location, dropping bombs that leave up to 3 blazing patches along his path, depending on the distance traveled, lasting for 2 seconds.",
-        "These patches deal {{as|magic damage}} every {{fd|0.25}} seconds to enemies within."
-      ],
-      "notes": "* Applies {{tip|persistent damage}} in an {{tip|area of effect}} range.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "100",
-      "cooldownBurn": "20/19/18/17/16",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage Per Tick|{{ap|15 to 45}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|15*8 to 45*8}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                15,
-                22.5,
-                30,
-                37.5,
-                45
-              ],
-              [
-                120,
-                180,
-                240,
-                300,
-                360
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 0.8
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Per Tick",
-              "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
-              "Total Magic Damage",
-              "<spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  15,
-                  22.5,
-                  30,
-                  37.5,
-                  45
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Magic Damage Per Tick",
-              "str": "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  120,
-                  180,
-                  240,
-                  300,
-                  360
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['120','180','240','300','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "magic"
-            }
-          ]
-        }
-      ]
-    },
-    "w2": {
-      "riotId": "CarpetBomb",
-      "name": "Special Delivery",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": 1800,
-      "image": {
-        "full": "CarpetBomb.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Corki''' {{tip|dashes}} {{tip|unstoppably}} to the target location with extreme speed, {{tip|airborne|knocking aside}} all enemies hit 500 units and leaving behind a fire trail for 5 seconds.",
-        "Enemies knocked aside or within the trail are burned for {{fd|1.5}} seconds, refreshing while inside the trail, {{tip|slow|slowing}} them by 90% and dealing {{pp2|7.5 to 7.5 for 7; then + 1.25*x for 8; then + 2.5*x|formula=static 7.5 until lvl 7; then+1.25 until lvl 15, then+2.5|color=magic damage}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 6% AP)}} {{as|magic damage}} every {{fd|0.25}} seconds, for a maximum of {{pp2|7.5*20 to 7.5*20 for 7;then + 1.25*x*20 for 8;then +2.5*x*20|formula=static 150 until lvl 7; then+25 until lvl 15, then+50|color=magic damage}} {{as|(+ {{ap|50*20}}% '''bonus''' AD)}} {{as|(+ {{ap|6*20}}% AP)}} {{as|magic damage}}.",
-        "Casting ''Special Delivery'' instantly resets ''Valkyrie's'' {{sti|cooldown}}."
-      ],
-      "notes": "* Applies {{tip|persistent damage}} in an {{tip|area of effect}} range.",
-      "skillkey": "W",
-      "skillid": "w2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": []
-    },
     "e1": {
       "riotId": "GGun",
       "name": "Gatling Gun",
       "maxrank": 5,
       "cooldown": [
-        16,
-        16,
-        16,
-        16,
         16
       ],
       "cost": [
@@ -349,7 +167,7 @@
       "description": [
         "{{sbc|Active:}} '''Corki''' sprays bullets in a frontal cone for 4 seconds, dealing equal parts {{as|physical|physical damage}} and {{as|magic|magic damage}} damage every {{fd|0.25}} seconds to all enemies hit, and reducing the target's {{sti|lethality|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} each tick, stacking up to 8 times, lingering for 2 seconds."
       ],
-      "notes": "* Applies {{tip|persistent damage}} in an {{tip|area of effect}} range.\n* The direction of the gun firing changes depending on where '''Corki''' is facing.",
+      "notes": "* The direction of the gun firing changes depending on where '''Corki''' is facing.\n** '''Corki''' will turn to face in the direction of the cursor upon casting ''Gatling Gun''.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
@@ -438,137 +256,6 @@
               "title": "Total Resistance Reduction",
               "str": "<spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "MissileBarrage",
-      "name": "Missile Barrage",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        20,
-        20,
-        20
-      ],
-      "costtype": "mana + 1 Missile",
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": "{{tt|1300|Standard range}} / {{tt|1500|Enhanced range}}",
-      "image": {
-        "full": "MissileBarrage.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Corki''' periodically [[stock]]s a missile, up to a maximum of 7, and starts with 7 missiles every time he [[Death|respawns]].",
-        "{{sbc|Active:}} '''Corki''' fires a missile in the target direction that explodes upon the first enemy hit, dealing {{as|magic damage}} in an area.",
-        "Every third missile '''Corki''' fires is a ''{{ai|Big One|Corki}}'', dealing 100% increased damage with increased range and explosion radius."
-      ],
-      "notes": "* Once '''Corki''' has learned the ability, he receives a [[buff]] that automatically tracks the number of times he's used his ultimate since the last ''Big One''.\n** Since this information is represented as a buff, This information is available to both allies and enemies.\n* '''Corki''' retains progress towards ''The Big One'' when he [[death|dies]]\n* Once '''Corki''' has his ultimate, he has an indicator below his health bar that is only visible to him that shows when a ''Big One'' will be fired, how many missiles he has in reserve, and how many more missiles he can [[stock|store]].",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "20",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|90 to 160}} {{as|(+ {{ap|15 to 75}}% AD)}} {{as|(+ 20% AP)}}|Big One Magic Damage|{{ap|90*2 to 160*2}} {{as|(+ {{ap|30 to 150}}% AD)}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['90','107.5','125','142.5','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','30','45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Big One Magic Damage</span>: <span><spell-span :list=\"['180','215','250','285','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                90,
-                107.5,
-                125,
-                142.5,
-                160
-              ],
-              [
-                15,
-                30,
-                45,
-                60,
-                75
-              ],
-              [
-                180,
-                215,
-                250,
-                285,
-                320
-              ],
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "player_total_ad": [
-                  0.3,
-                  0.6,
-                  0.9,
-                  1.2,
-                  1.5
-                ]
-              },
-              {
-                "player_total_ad": []
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<spell-span :list=\"['90','107.5','125','142.5','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','30','45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-              "Big One Magic Damage",
-              "<spell-span :list=\"['180','215','250','285','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 40% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  90,
-                  107.5,
-                  125,
-                  142.5,
-                  160
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Magic Damage",
-              "str": "<spell-span :list=\"['90','107.5','125','142.5','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['15','30','45','60','75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  15,
-                  30,
-                  45,
-                  60,
-                  75
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Big One Magic Damage",
-              "str": "<spell-span :list=\"['180','215','250','285','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
             }
           ]
         }

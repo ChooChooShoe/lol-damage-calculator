@@ -1,6 +1,6 @@
 {
   "patch": "V6.16",
-  "changes": "9.21.1",
+  "changes": "10.12.1",
   "id": "Kled",
   "name": "Kled",
   "title": "the Cantankerous Cavalier",
@@ -51,7 +51,7 @@
   "skills": {
     "i1": {
       "riotId": "",
-      "name": "Skaarl the Cowardly Lizard",
+      "name": "Dismounted Skaarl the Cowardly Lizard",
       "maxrank": 0,
       "targeting": "Passive",
       "image": {
@@ -64,191 +64,18 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate}}: '''Kled''' rides his semi-trusty mount, '''Skaarl'''. While mounted, all damage dealt to the duo is suffered by '''Skaarl''', who has {{sti|health|{{as|{{pp|400+65*(x-1)*(0.7025+0.0175*(x-1))}} base health}}}} {{as|(+100% bonus health)}}. Percent-health effects consider '''Kled & Skaarl's''' combined maximum health.",
-        "Being reduced to {{as|{{sti|health|0 health}}}} causes '''Skaarl''' to flee, forcing '''Kled''' to {{ai|Skaarl the Cowardly Lizard 2||dismount}}, with all damage in excess of '''Skaarl's''' {{as|{{sti|health}}}} being ignored. Dismounting {{tip|cleanse|cleanses}} '''Kled''' of all {{tip|crowd control}} and briefly makes him {{tip|untargetable}}, as well as modifying his base stats and abilities."
+        "{{sbc|Innate:}} '''Kled''' is only vulnerable to {{tip|death}} while dismounted. '''Kled''' has {{sti|health|{{as|{{pp|{{ccd|Kled|hp_base}}+{{ccd|Kled|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} '''base''' health}}}}, which is not improved by sources of {{as|'''bonus''' health}}, as well as reduced {{as|'''base''' movement speed}}, 80% {{tip|basic attack}} damage against {{tip|champion|champions}}, and increased {{sti|attack range}}. Percent-health effects consider '''Kled & Skaarl's''' combined {{as|'''maximum''' health}}, meaning that an unmounted '''Kled''' is always considered to be ''low'' health.",
+        "'''Kled''' gains {{pp|100 to 185|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} when moving towards enemy {{tip|champions}} within {{tt|900|estimated}} range, as well as the ability to generate [[File: Skaarl the Cowardly Lizard 3.png|20px]] ''{{as|Courage|buzzword}}''.",
+        "{{sbc|Innate - Courage:}} '''Kled''' gains 15 {{as|Courage|buzzword}} when [[basic attack|basic attacking]] an enemy champion, 20 {{as|Courage|buzzword}} whenever an enemy champion he damaged dies within 3 seconds, 4 {{as|Courage|buzzword}} for {{tip|minion}} kills, and 5 {{as|Courage|buzzword}} when basic attacking a [[structures|structure]] or epic {{tip|monster}}. At 100 {{as|Courage|buzzword}}, '''Skaarl''' returns with {{sti|health|{{as|{{pp|4|key=%|50 to 80|1 to 16}} of '''Skaarl's''' '''maximum''' health}}}}. {{ai|Skaarl the Cowardly Lizard||''Mounting up''}} resets the {{sti|cooldowns}} of {{ai|Bear Trap on a Rope|Kled}} and {{ai|Jousting|Kled}}.",
+        "While at the allied [[Spawn|fountain]], 25 {{as|Courage|buzzword}} is generated every {{fd|0.25}} seconds. {{si|Recall|Recalling}} fully restores '''Skaarl's''' {{as|Courage|buzzword}} and health. If reuniting outside of base, '''Skaarl''' gets ''Frayed Nerves'', which prevents him from gaining {{as|Courage|buzzword}} for 30 seconds.",
+        "The current status of '''Kled's''' own health is preserved between subsequent dismounts. While mounted, {{tip|heal|healing}} will first affect '''Skaarl's''' health and will only restore '''Kled's''' health while '''Skaarl''' is at ''full'' health."
       ],
-      "notes": "* [[Decoy]]s are counted as champions for all of this ability's effects, other than the takedown one.\n* '''Kled's''' health is rounded up while '''Skaarl's''' is rounded down.\n* {{ii|Gargoyle Stoneplate}} can increase '''Kled's''' base health.\n* It is possible to get the '''Courage''' from base but have '''Kled''' and '''Skaarl''' reunite out of base.\n* It is possible for the [[Nexus Obelisk]] to not be able to bring '''Kled''' down from '''Skaarl''' for a few seconds, even if '''Skaarl''' has no health.\n* Health regeneration only regenerates '''Kled's''' or '''Skaarl's''' health, and not both's.",
+      "notes": "* [[Decoy]]s are counted as champions for all of this ability's effects, other than the takedown one.\n* '''Kled's''' {{as|health}} is rounded up while '''Skaarl's''' is rounded down.\n* {{ii|Gargoyle Stoneplate}} can increase '''Kled's''' {{as|'''base''' health}}.\n* It is possible to get the {{as|Courage|buzzword}} from base but have '''Kled''' and '''Skaarl''' reunite out of base.\n* It is possible for the [[Nexus Obelisk]] to not be able to bring '''Kled''' down from '''Skaarl''' for a few seconds, even if '''Skaarl''' has no health.\n* {{Pending for test}} {{ai|Wild Growth|Lulu}} and {{ii|Elixir of Iron}}",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
     },
     "q1": {
-      "riotId": "KledQ",
-      "name": "Beartrap on a Rope",
-      "maxrank": 5,
-      "cooldown": [
-        9,
-        8.5,
-        8,
-        7.5,
-        7
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": "{{pp|7|round=ceil|type=time active|800 to 650|0 to 1.75}}",
-      "image": {
-        "full": "KledQ.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Kled''' hurls a beartrap tied to a piece of rope in the target direction, dealing {{as|physical damage}} to all enemies it passes through.",
-        "{{tip|minion|Minions}} and small {{tip|monster|monsters}} take 50% increased damage. The bear trap stops at the first enemy {{tip|champion}} or large monster hit, attaching to them. While attached, they are {{tip|true sight|revealed}}.",
-        "If '''Kled''' remains for {{fd|1.75}} seconds within a slowly decreasing radius of his target, he {{tip|airborne|pulls}} them {{tt|100|Estimated}}-units towards him, dealing {{as|physical damage}}, {{tip|Grievous Wounds|grievously wounding}} them by 60% for 5 seconds, and {{tip|slow|slowing}} them for {{fd|1.5}} seconds.",
-        "''Can be cast while {{ai|Jousting|Kled}}.''"
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "costBurn": "0",
-      "cooldownBurn": "9/8.5/8/7.5/7",
-      "effects": [
-        {
-          "levelingtext": "{{st|Beartrap Physical Damage|{{ap|30 to 130}} {{as|(+ 60% '''bonus''' AD)}}|Minions and Small Monsters Damage|{{ap|30*1.5 to 130*1.5}} {{as|(+ 90% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Beartrap Physical Damage</span>: <span><spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minions and Small Monsters Damage</span>: <span><spell-span :list=\"['45','82.5','120','157.5','195']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                30,
-                55,
-                80,
-                105,
-                130
-              ],
-              [
-                45,
-                82.5,
-                120,
-                157.5,
-                195
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.6
-              },
-              {
-                "player_bonus_ad": 0.9
-              }
-            ],
-            "st_slices": [
-              "Beartrap Physical Damage",
-              "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "Minions and Small Monsters Damage",
-              "<spell-span :list=\"['45','82.5','120','157.5','195']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  30,
-                  55,
-                  80,
-                  105,
-                  130
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Beartrap Physical Damage",
-              "str": "<spell-span :list=\"['30','55','80','105','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  45,
-                  82.5,
-                  120,
-                  157.5,
-                  195
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Minions and Small Monsters Damage",
-              "str": "<spell-span :list=\"['45','82.5','120','157.5','195']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Yank Physical Damage|{{ap|60 to 260}} {{as|(+ 120% '''bonus''' AD)}}|Total Damage|{{ap|30+60 to 130+260}} {{as|(+ 180% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Yank Physical Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['90','165','240','315','390']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                60,
-                110,
-                160,
-                210,
-                260
-              ],
-              [
-                90,
-                165,
-                240,
-                315,
-                390
-              ],
-              [
-                40,
-                45,
-                50,
-                55,
-                60
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.2
-              },
-              {
-                "player_bonus_ad": 1.8
-              }
-            ],
-            "st_slices": [
-              "Slow",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  60,
-                  110,
-                  160,
-                  210,
-                  260
-                ],
-                "player_bonus_ad": 1.8
-              },
-              "title": "Slow",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "q2": {
       "riotId": "KledQ",
       "name": "Pocket Pistol",
       "maxrank": 5,
@@ -280,11 +107,11 @@
       "description": [
         "{{sbc|Passive:}} '''Kled''' periodically [[stock]]s an ammo charge, up to a maximum of 2. '''Kled''' will store ammo even while {{ai|Skaarl the Cowardly Lizard|Kled|mounted}}.",
         "{{sbc|Active:}} '''Kled''' sprays a cone of five {{as|pellets|buzzword2}} in the target direction, dealing {{as|physical damage}} while {{tip|dash|recoiling}} 250 units in the opposite direction.",
-        "{{as|Pellets|buzzword2}} collide into the first enemy they hit, and deal 20% damage per pellet beyond the first. Each {{as|pellet|buzzword2}} that hits an enemy champion or epic monster restores {{ai|Skaarl the Cowardly Lizard 3|Kled|Courage}}, by 5 and {{fd|2.5}} respectively."
+        "{{as|Pellets|buzzword2}} collide into the first enemy champion they hit, and deal 20% damage per pellet beyond the first. Each {{as|pellet|buzzword2}} that hits an enemy champion or epic monster restores {{ai|Skaarl the Cowardly Lizard 3|Kled|Courage}}, by 5 and {{fd|2.5}} respectively."
       ],
-      "notes": "* The knockback from ''Pocket Pistol'' can be used to pass through terrain.\n* Casting Q during Kled's dismounting animation will buffer ''Pocket Pistol'' to cast when Kled lands. Casting Q during Kled's remounting animation will fire ''Pocket Pistol'' normally.",
+      "notes": "* The backwards dash from ''Pocket Pistol'' can pass terrain.\n* ''Pocket Pistol'' can be cast while {{tip|ground|grounded}} or {{tip|root|rooted}} but '''Kled''' will not {{tip|dash}} backwards.",
       "skillkey": "Q",
-      "skillid": "q2",
+      "skillid": "q1",
       "costBurn": "1",
       "cooldownBurn": "3",
       "effects": [
@@ -483,14 +310,14 @@
     },
     "e1": {
       "riotId": "KledE",
-      "name": "Jousting",
+      "name": "Unmounted Jousting",
       "maxrank": 5,
       "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "cost": [
         0,
@@ -499,8 +326,6 @@
         0,
         0
       ],
-      "targeting": "Direction",
-      "target_range": "{{tt|550|first dash}} / {{tt|700|second dash, center to edge, estimated}}",
       "image": {
         "full": "KledE.png",
         "sprite": "spell6.png",
@@ -511,271 +336,14 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kled''' and '''Skaarl''' {{tip|dash}} in the target direction, dealing {{as|physical damage}} to all enemies struck and {{tip|airborne|pulling}} {{tip|minion|minions}} and small {{tip|monster|monsters}} towards him. This cannot cross terrain.",
-        "Upon hitting an enemy {{tip|champion}} or large monster '''Kled''' and '''Skaarl''' {{tip|dash}} a fixed {{tt|200|estimated}}-units through them, marking them for 3 seconds and gaining {{tip|true sight}} of them. At the end of the {{tip|dash}} '''Kled''' gains {{sti|ms|{{as|50% '''bonus''' movement speed}}}} for 1 second and the ability to ''{{tip|dash|joust}}'' through the marked target again. This subsequent pass can cross terrain.",
-        "The mark will remain even if the target dies."
+        "This ability is unusable while {{ai|Dismounted Skaarl the Cowardly Lizard|Kled|unmounted}}."
       ],
-      "notes": "* ''Jousting's'' second dash will end prematurely if '''Kled''' leaves the dash range or is dismounted.\n* If '''Kled''' re-casts the ability at its maximum range, it will go on cooldown without activating.",
+      "notes": "",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
-      "cooldownBurn": "14/13/12/11/10",
-      "effects": [
-        {
-          "levelingtext": "{{st|Physical Damage|{{ap|35|60|85|110|135}} {{as|(+ 60% '''bonus''' AD)}}|Total Damage|{{ap|70|120|170|220|270}} {{as|(+ 120% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                35,
-                60,
-                85,
-                110,
-                135
-              ],
-              [
-                70,
-                120,
-                170,
-                220,
-                270
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.6
-              },
-              {
-                "player_bonus_ad": 1.2
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "Total Damage",
-              "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  35,
-                  60,
-                  85,
-                  110,
-                  135
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Physical Damage",
-              "str": "<spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  70,
-                  120,
-                  170,
-                  220,
-                  270
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Total Damage",
-              "str": "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "KledR",
-      "name": "Chaaaaaaaarge!!!",
-      "maxrank": 3,
-      "cooldown": [
-        160,
-        140,
-        120
-      ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
-      "targeting": "Ground",
-      "target_range": "{{ap|3500 to 4500}}",
-      "image": {
-        "full": "KledR.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Kled''' and '''Skaarl''' charge towards the target location, automatically navigating terrain along the way, during which they're {{tip|pacify|pacified}} and immune to [[crowd control]].",
-        "While charging, the duo gain {{sti|ms|{{as|'''bonus''' movement speed}}}} and a {{tip|shield}} for every {{fd|0.25}} seconds of traveling, up to {{tt|{{as|950 '''total''' movement speed|ms}}|after movement speed soft caps}} over 3 seconds and {{pp|10|type=time traveling|key=%|label2=Shield Percentage|10 to 100|0 to 2.25|formula=('''maximum''' shield)/10*((time+0.25)/0.25). ''This is capped at 2.25 seconds of time active.''}} of the '''maximum''' shield amount over {{fd|2.25}} seconds respectively. The shield lasts for 2 seconds upon finishing the charge. The duo trails a directional draft in their wake, lasting 9 seconds. Allied champions following the draft gain ''Mr. Kled's Wild Ride''.",
-        "{{sbc|Mr. Kled's Wild Ride:}} The target gains {{tt|{{as|650 '''total''' movement speed|ms}}|after movement speed soft caps}}.",
-        "'''Skaarl''' {{tip|dash|homes}} in on the first enemy champion encountered, {{tip|airborne|knocking them back}} {{tt|100|Estimated}} units and dealing {{as|physical damage}}, increased by {{pp|26|type=time traveling|key=%|label2=Damage Increase|0 to 200|0 to 4|formula=8% increase per 0.16 seconds. ''This is capped at 4 seconds of time active.''}}."
-      ],
-      "notes": "* During the charge the duo gain:\n** (950{{minus}}({{tt|'''current''' movement speed|after movement speed soft caps}})){{divided by}}12{{times}}(time{{divided by}}{{fd|0.25}}) {{as|'''bonus''' movement speed}} \n* The bonus movement speed is not affected by [[movement speed|movement speed caps]].\n* The charge will not give any movement speed to '''Kled''' if he has more than {{tt|1440|Raw movement speed}} movement speed.\n* The trail will not give '''Kled''' and his allies any movement speed if they have more than {{tt|840|Raw movement speed}} movement speed.\n* Movement speed is granted merely by facing the direction of the draft.\n* Damaging '''Kled''' into dismount will cancel ''Chaaaaaaaarge!!!'' instantly.\n* Enemies gain partial vision of '''Kled''' when he charges nearby.\n* '''Kled''' will re-path if his current pathing is blocked by a newly created terrain (either player created or by the {{ui|Mountain Drake|Mountainous Rift}}).",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "0",
-      "cooldownBurn": "160/140/120",
-      "effects": [
-        {
-          "levelingtext": "{{st|Minimum Shield|{{ap|20 to 40}} {{as|(+ 30% '''bonus''' AD)}}|Maximum Shield|{{ap|200 to 400}} {{as|(+ 300% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Shield</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Shield</span>: <span><spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 300% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                20,
-                25,
-                30,
-                35,
-                40
-              ],
-              [
-                200,
-                250,
-                300,
-                350,
-                400
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.3
-              },
-              {
-                "player_bonus_ad": 3
-              }
-            ],
-            "st_slices": [
-              "Minimum Shield",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
-              "Maximum Shield",
-              "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 300% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  20,
-                  25,
-                  30,
-                  35,
-                  40
-                ],
-                "player_bonus_ad": 0.3
-              },
-              "title": "Minimum Shield",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  200,
-                  250,
-                  300,
-                  350,
-                  400
-                ],
-                "player_bonus_ad": 0.3
-              },
-              "title": "Maximum Shield",
-              "str": "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 300% '''bonus''' AD)</span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Minimum Physical Damage|{{as|{{ap|4 to 6}}% {{as|(+ 4% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Maximum Physical Damage|{{as|{{ap|4*3 to 6*3}}% {{as|(+ 12% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 4% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['12','13.5','15','16.5','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 12% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                4,
-                4.5,
-                5,
-                5.5,
-                6
-              ],
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 41
-              },
-              {
-                "player_bonus_ad": 121
-              },
-              {
-                "target_bonus_ad": [
-                  0.12,
-                  0.135,
-                  0.15,
-                  0.165,
-                  0.18
-                ]
-              },
-              {
-                "target_bonus_ad": []
-              }
-            ],
-            "st_slices": [
-              "Minimum Physical Damage",
-              "<span class=\"health\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 4% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "Maximum Physical Damage",
-              "<span class=\"health\"><spell-span :list=\"['12','13.5','15','16.5','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 12% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  4,
-                  4.5,
-                  5,
-                  5.5,
-                  6
-                ],
-                "player_bonus_ad": 121
-              },
-              "title": "Minimum Physical Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 4% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "player_bonus_ad": 121
-              },
-              "title": "Maximum Physical Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['12','13.5','15','16.5','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 12% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "physical"
-            }
-          ]
-        }
-      ]
+      "cooldownBurn": "0",
+      "effects": []
     }
   }
 }

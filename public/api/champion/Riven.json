@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.125",
-  "changes": "9.19.1",
+  "changes": "10.12.1",
   "id": "Riven",
   "name": "Riven",
   "title": "the Exile",
@@ -15,7 +15,7 @@
   },
   "resource": "None",
   "herotype": "Fighter",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -27,7 +27,7 @@
     "difficulty": 8
   },
   "stats": {
-    "hp": 558.48,
+    "hp": 560,
     "hpperlevel": 86,
     "mp": 0,
     "mpperlevel": 0,
@@ -37,7 +37,7 @@
     "spellblock": 32.1,
     "spellblockperlevel": 1.25,
     "attackrange": 125,
-    "hpregen": 7,
+    "hpregen": 8.5,
     "hpregenperlevel": 0.5,
     "mpregen": 0,
     "mpregenperlevel": 0,
@@ -64,10 +64,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Riven's''' blade gains a ''Charge'' for 6 seconds every time she uses an ability, stacking up to 3 times. '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{pp|6|key=%|25 to 50|1;6 to 18|displayformula = 25%+5% at level 6, then+5% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Innate:}} '''Riven''' gains a ''Charge'' for 6 seconds every time she uses an [[champion ability|ability]], stacking up to 3 times. '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{pp|6|key=%|25 to 50|1;6 to 18|displayformula = 25%+5% at level 6, then+5% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "''Runic Blade'' is affected by {{tip|critical strike}} modifiers."
       ],
-      "notes": "* ''Runic Blade's'' duration refreshes whenever ''Riven'' gains or consumes a stack.\n* The bonus damage applies {{sti|life steal|link=true}}.\n* ''Runic Blade'' does not affect structures and {{tip|ward|wards}} (charges are not consumed when attacking them).\n* ''Runic Blade'' can be {{ai|Counter Strike|Jax|dodged}}, {{ai|Spirit's Refuge|Shen|blocked}}, or {{tip|blind|missed}} (charges are not consumed).",
+      "notes": "* ''Runic Blade's'' duration refreshes whenever '''Riven''' gains or consumes a stack.\n* The bonus damage applies {{sti|life steal|link=true}}.\n* ''Runic Blade'' does not affect structures and {{tip|ward|wards}} (charges are not consumed when attacking them).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -86,8 +86,7 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
-      "target_range": 225,
+      "targeting": "[[Unit-targeted|Unit]]",
       "image": {
         "full": "RivenTriCleave.png",
         "sprite": "spell9.png",
@@ -98,12 +97,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} towards the target nearest to the cursor or in the direction she is currently facing, dealing {{as|physical damage}} to all enemies in front of her. ''Broken Wings'' can then be reactivated twice within the next 4 seconds, with the second cast refreshing the timer.",
-        "The third cast {{tip|airborne|knocks up}} and damages all enemies around '''Riven''' in an expanded radius. The third cast is also the only cast able to ''dash'' over terrain, and can do so longer than its normal range.",
-        "Each ''Broken Wings'' cast causes her next basic attack to occur more quickly. This is not considered a basic attack reset.",
-        "Targeted ''Broken Wings'' casts grant {{tip|sight}} of an area around '''Riven''' to the enemies."
+        "'''Riven''' can activate ''Broken Wings'' three times before the ability goes on cooldown. If '''Riven''' does not recast the ability within 4 seconds, the ability goes on cooldown.",
+        "Each of the three casts has '''Riven''' slash with her sword, dealing {{as|physical damage}} to all enemies struck, {{tip|Basic attack reset|resetting}} her basic attack timer, and ordering her to basic attack the target of ''Broken Wings'' if there are any.",
+        "{{sbc|First Cast:}} '''Riven''' {{tip|dash|dashes}} up to 225 units towards the target enemy or in the direction she is currently facing, affecting all enemies around the target area 100 units away. This cast cannot cross terrain.",
+        "{{sbc|Second Cast:}} '''Riven''' mimics the first cast's effects.",
+        "{{sbc|Third Cast:}} '''Riven''' mimics the first cast's effects in an expanded radius while also {{tip|airborne|knocking back}} all affected enemies 75 units over {{tt|{{fd|0.75}}|Estimated}} seconds. This cast can cross terrain."
       ],
-      "notes": "* Each cast triggers {{nie|Spellblade}} and counts as a charge for {{ai|Force Pulse|Kassadin}} and {{ii|Spellbinder}}.\n* The damage radius is centered 100 units in front of '''Riven'''.\n* The third cast also {{tip|airborne|knocks back}} enemies away from the epicenter by 75 units.\n* {{tip|Spell shield}} will only block the third cast.\n* Since it's not considered a [[basic attack]] reset, it does not add additional stacks of {{ri|Hail of Blades}}.",
+      "notes": "* Each cast counts as a single ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* {{tip|Spell shield}} will only block the third cast.\n* The basic attack reset is not considered one for {{ri|Hail of Blades}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -227,7 +227,7 @@
         0,
         0
       ],
-      "targeting": "[[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "RivenMartyr.png",
         "sprite": "spell9.png",
@@ -322,10 +322,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor, {{tip|shield|shielding}} herself for {{fd|1.5}} seconds. If she targets an enemy with '''Valor''', she briefly {{tip|sight|reveals}} herself and the area around her to the enemies.",
-        "''Other abilities can be cast during the dash and {{ai|Q|Riven}} may be cast during their cast time if they're used at the end or briefly after the dash.''"
+        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor (but not through terrain), {{tip|shield|shielding}} herself for {{fd|1.5}} seconds. If she targets an enemy with '''Valor''', she briefly {{tip|sight|reveals}} herself and the area around her to the enemies.{{bug|1}}",
+        "''Other abilities can be cast during the dash, and {{ai|Q|Riven}} may be cast during {{ai|W|Riven}} or {{ai|R|Riven}} cast times if they're used at the end or briefly after the dash.''{{bug|1}}"
       ],
-      "notes": "* ''Valor'' can be used to bypass player-created terrain ({{ai|Crystallize|Anivia}}, {{ai|Cataclysm|Jarvan IV}}) but not to go through walls.",
+      "notes": "* No additional notes.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -372,148 +372,6 @@
               "title": "Shield Strength",
               "str": "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "RivenFengShuiEngine",
-      "name": "Blade of the Exile",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        90,
-        60
-      ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
-      "image": {
-        "full": "RivenFengShuiEngine.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 48,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Riven''' empowers her sword for 15 seconds, gaining {{as|20% AD}} {{sti|attack damage|{{as|'''bonus''' attack damage}}}}, {{sti|range|75 '''bonus''' range}} on her basic attacks, increased range on {{ai|Broken Wings|Riven}} and {{ai|Ki Burst|Riven}}, and the ability to cast {{ai|Wind Slash|Riven}} once for the duration."
-      ],
-      "notes": "* There is a 1 second cooldown before ''Riven'' can cast ''Wind Slash'' after activating ''Blade of the Exile''.\n* The {{as|'''bonus''' AD}} is gained and determined on cast.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "costBurn": "0",
-      "cooldownBurn": "120/90/60",
-      "effects": []
-    },
-    "r2": {
-      "riotId": "RivenFengShuiEngine",
-      "name": "Wind Slash",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
-      "targeting": "Direction",
-      "image": {
-        "full": "RivenFengShuiEngine.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 48,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Riven''' unleashes a wave of energy in a cone, dealing {{as|physical damage}} to all enemies hit, increased by {{as|{{pp|9|type='''missing''' health|key=%|0 to 200|key1=%|0 to 75|formula=2.667% per 1% missing health. ''This is capped at 200% bonus damage at 75% missing health.''}}|health}}.",
-        "If ''Wind Slash'' hits an enemy, it will briefly grant {{tip|sight|vision}} of the area around '''Riven''' to the enemies."
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "R",
-      "skillid": "r2",
-      "costBurn": "0",
-      "cooldownBurn": "0",
-      "effects": [
-        {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|100 to 200}} {{as|(+ 60% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|100*3 to 200*3}} {{as|(+ 180% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                100,
-                125,
-                150,
-                175,
-                200
-              ],
-              [
-                300,
-                375,
-                450,
-                525,
-                600
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.6
-              },
-              {
-                "player_bonus_ad": 1.8
-              }
-            ],
-            "st_slices": [
-              "Minimum Physical Damage",
-              "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "Maximum Physical Damage",
-              "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  100,
-                  125,
-                  150,
-                  175,
-                  200
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  300,
-                  375,
-                  450,
-                  525,
-                  600
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 180% '''bonus''' AD)</span>",
-              "damage_type": "physical"
             }
           ]
         }

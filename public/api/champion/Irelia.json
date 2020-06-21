@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.105",
-  "changes": "9.15.1",
+  "changes": "10.10.1",
   "id": "Irelia",
   "name": "Irelia",
   "title": "the Blade Dancer",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Fighter",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -64,11 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Irelia''' gains 1 ''Ionian Fervor'' stack for every enemy [[champion]] hit by her [[Champion ability|abilities]], or if she hits at least one non-champion, stacking up to 5 times. ''Ionian Fervor'' lasts for 6 seconds, with basic attacks against champions and large and epic [[monsters]] refreshing the duration.",
+        "{{sbc|Innate:}} '''Irelia''' gains 1 ''Ionian Fervor'' stack for every enemy {{tip|champion}} hit by her [[Champion ability|abilities]], or if she hits at least one non-champion, stacking up to 5 times. ''Ionian Fervor'' lasts for 6 seconds, with basic attacks against enemy champions and large and epic {{tip|monster|monsters}} refreshing the duration.",
         "{{sbc|Ionian Fervor:}} '''Irelia''' gains {{as|{{pp|changedisplay=true|key=%|8 to 12|1;7;13}} {{sti|'''bonus''' attack speed}}}} per stack, up to {{as|{{pp|changedisplay=true|key=%|8*5 to 12*5|1;7;13}}|attack speed}}.",
-        "At maximum stacks, '''Irelia's''' basic attacks deal {{as|{{pp|15 to 66}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} on-hit."
+        "At maximum stacks, '''Irelia's''' [[basic attack]]s deal {{as|{{pp|15 to 66}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} [[on-hit]]."
       ],
-      "notes": "* No additional details.",
+      "notes": "* {{Pending for test}}: Parries ({{ai|Spirit's Refuge|Shen|block}}, {{ai|Counter Strike|Jax|dodge}}, and {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -106,9 +106,9 @@
       "description": [
         "{{sbc|Passive:}} Enemy champions and large monsters hit by {{ai|Flawless Duet|Irelia}} and {{ais|Vanguard's Edge|Irelia}} initial barrage are {{as|marked|buzzword}} for 5 seconds, consumed with ''Bladesurge''.",
         "{{sbc|Active:}} '''Irelia''' {{tip|dashes}} through the target enemy, dealing {{tip|physical damage|{{as|physical damage}}}}, applying [[on-hit effect]]s and {{tip|healing}} herself. ''Bladesurge'' deals increased damage to {{tip|minions}}.",
-        "''Bladesurge's'' {{sti|cooldown}} is refunded if the target was {{as|marked|buzzword}} or if it dies to or after ''Bladesurge'' has been cast."
+        "''Bladesurge's'' {{sti|cooldown}} is reduced to {{fd|0.2}} seconds if the target was {{as|marked|buzzword}}, or fully refunded if the target dies to or shortly after ''Bladesurge'' has completed."
       ],
-      "notes": "* ''Bladesurge'' will only allow '''Irelia''' to dash through walls if there is enough space for her on the other side.\n* Damage is not dealt to the target if ''Irelia'' is disrupted before she reaches their location.\n** But the damage cannot be dodged via instant displacement ({{ai|Urchin Strike|Fizz}}).\n** If the target dies within a very short time (~{{fd|0.5}} seconds) of performing ''Bladesurge'', its cooldown will still refresh.",
+      "notes": "* ''Bladesurge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* ''Bladesurge'' will only allow '''Irelia''' to dash through walls if there is enough space for her on the other side.\n* ''Bladesurge'' won't deal damage if '''Irelia''' is {{tip|interrupt|disrupted}} during the dash.\n** But the damage cannot be dodged via instant displacement (i.e - {{ai|Urchin Strike|Fizz}}).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "20",
@@ -212,7 +212,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "None / [[Direction]]",
+      "targeting": "[[Direction-targeted]]",
       "target_range": 825,
       "image": {
         "full": "IreliaW.png",
@@ -224,11 +224,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|First Cast:}} '''Irelia''' {{ct|windup|winds up|cast=false|items=false|move=false|consume=Disabled, but can still use trinkets|spells=true,false,false,false,recasts|interrupts=death}} for up to {{fd|1.5}} seconds, during which she reduces incoming {{as|physical damage}} by 50% {{as|(+ 7% per 100 AP)}}.",
-        "{{sbc|Second Cast:}} After a {{fd|0.07}}-second delay, '''Irelia''' swipes with her blades in the target direction, dealing {{as|physical damage}} to all enemies around her and in a line, increased by {{pp|11|key=%|type=channel time|0 to 100|0 to 0.75|formula=10% per 0.075 seconds. ''This is capped at 0.75 seconds.''}}.",
-        "The {{sbc|Second Cast}} activates automatically toward the cursor's direction at the end of the duration."
+        "{{sbc|Active:}} '''Irelia''' [[Channel#Unstoppable Channels|charges]] for up to {{fd|1.5}} seconds, during which she [[damage modifier|reduces]] incoming {{as|physical damage}} by 50% {{as|(+ 7% per 100 AP)}}. ''Defiant Dance'' can be recast at any time within its duration.",
+        "At the end of the duration, after a {{fd|0.07}}-second delay, '''Irelia''' swipes with her blades in the target direction, dealing {{as|physical damage}} to all enemies around her and in a line, increased by {{pp|11|key=%|type=channel time|0 to 100|0 to 0.75|formula=10% per 0.075 seconds. ''This is capped at 0.75 seconds.''}}.",
+        "{{sbc|Recast:}} '''Irelia''' swipes with her blades early."
       ],
-      "notes": "* Quick Casting utilizes hold-and-release for the two casts.\n* ''Defiant Dance'' reaches 100% physical damage reduction at {{as|{{fd|714.29}} AP}}.",
+      "notes": "* Quick Casting utilizes hold-and-release for the two casts.\n* ''Defiant Dance'' reaches 100% physical damage reduction at {{as|{{fd|714.29}} AP}}.\n{{ct|charge|cast=false|items=false|move=false|consume=Disabled, but can still use trinkets|spells=true,false,false,false,recasts|interrupts=death}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70/75/80/85/90",
@@ -347,28 +347,30 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Irelia''' sends a blade to the target location for up to {{fd|3.5}} seconds. After a {{fd|0.15}}-second delay, ''Flawless Duet'' may be recast to send another blade out, and does so automatically at '''Irelia's''' position if the first blade would expire, though not if she is {{tip|mute|muted}} or channeling {{ai|Defiant Dance|Irelia}} or {{si|Teleport}}.",
-        "Once both blades have been placed, they fly toward each other after a {{fd|0.25}}-second delay, dealing {{as|magic damage}} and {{tip|stun|stunning}} all enemies struck for {{fd|0.75}} seconds after converging."
+        "{{sbc|Active:}} '''Irelia''' sends a blade to the target location for {{fd|3.5}} seconds, after which '''Irelia''' sends out a second blade at her position, though not if she is {{tip|silence|silenced}} or channeling {{ai|Defiant Dance|Irelia}} or {{si|Teleport}}. ''Flawless Duet'' can be recast after {{fd|0.15}} seconds.",
+        "Once both blades have been placed, they fly toward each other after a {{fd|0.25}}-second delay, dealing {{as|magic damage}} and {{tip|stun|stunning}} all enemies struck for {{fd|0.75}} seconds after converging.",
+        "{{sbc|Recast:}} '''Irelia''' sends out the second blade early to the target area.",
+        "''Flawless Duet's recast can be used while affected by {{tip|crowd control}} and during {{ais|R|Irelia}} cast time.''"
       ],
-      "notes": "* '''Irelia''' can launch the second blade even if {{tip|silence|silenced}}.\n* {{ii|Sheen}} will proc on both casts.\n* The blades will not stun or deal damage if they do not converge (i.e {{cai|Wind Wall|Yasuo}}).",
+      "notes": "*Both casts count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger and it will be considered as an ability activation. This is the only ability with this interaction in the game.\n* The blades will not stun or deal damage if they do not converge (i.e {{cai|Wind Wall|Yasuo}}).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
       "cooldownBurn": "18/16.5/15/13.5/12",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 80% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                70,
-                110,
-                150,
-                190,
-                230
+                80,
+                125,
+                170,
+                215,
+                260
               ]
             ],
             "as_ratios": [
@@ -378,7 +380,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -386,16 +388,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  70,
-                  110,
-                  150,
-                  190,
-                  230
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
                 ],
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]

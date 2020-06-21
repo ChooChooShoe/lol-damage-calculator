@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.15",
-  "changes": "9.22.1",
+  "changes": "10.10.1",
   "id": "Taric",
   "name": "Taric",
   "title": "the Shield of Valoran",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Controller",
+  "herotype": "Support",
   "alttype": "Fighter",
   "rangetype": "Melee",
   "be_cost": 1350,
@@ -28,7 +28,7 @@
   },
   "stats": {
     "hp": 575,
-    "hpperlevel": 90,
+    "hpperlevel": 85,
     "mp": 300,
     "mpperlevel": 60,
     "movespeed": 340,
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} After casting an ability, '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{pp|25 to 93}} {{as|(+ 15% '''bonus''' armor)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by cooldown reduction.}}."
+        "{{sbc|Innate:}} After casting an ability, '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{as|{{pp|25 to 93}}|magic damage}} {{as|(+ 15% '''bonus''' armor)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by cooldown reduction.}}."
       ],
-      "notes": "* The attacks will apply {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Bravado's'' bonus damage.\n* The more cooldown reduction taric has the less bravado will reduce his cooldowns from 1 to 0.60 seconds (from 0% to 40% cooldown reduction).\n* The empowered attacks will not apply the bonus damage against structures but will reduce ''Taric's'' cooldowns.\n* The empowered basic attacks can be {{ai|Counter Strike|Jax|dodged}} or {{ai|Spirit's Refuge|Shen|blocked}} but will still reduce '''Taric's''' cooldowns.\n** Being {{tip|blind|blinded}} does not block ''Bravado's'' {{as|'''bonus''' magic damage}} or the {{tip|cooldown reduction}}.",
+      "notes": "* The bonus damage will not apply against {{tip|structures}}.\n* ''Bravado'' can be {{ai|Counter Strike|Jax|dodged}} and {{ai|Spirit's Refuge|Shen|blocked}} but it cannot {{tip|blind|miss}}. The cooldown reduction cannot be negated in any cases.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -90,7 +90,7 @@
         110
       ],
       "costtype": "Mana + all charges",
-      "targeting": "[[Aura]] / [[Auto-targeted|Auto]]",
+      "targeting": "None",
       "image": {
         "full": "TaricQ.png",
         "sprite": "spell12.png",
@@ -104,7 +104,7 @@
         "{{sbc|Passive:}} '''Taric''' stores a charge of ''Starlight's Touch'' periodically, up to a maximum at once. {{ai|Bravado|Taric}} empowered attacks grant one charge.",
         "{{sbc|Active:}} '''Taric''' {{tip|heals}} himself and all nearby allied champions for 30 {{as|(+ 20% AP)}} {{as|(+ 1% of Taric's '''maximum''' health)}} per stored charge at the time of cast, up to a maximum of 150 {{as|(+ 100% AP)}} {{as|(+ 5% of Taric's '''maximum''' health)}} at 5 charges."
       ],
-      "notes": "* No additional details.",
+      "notes": "* The healing will apply heal effects (such as {{ri|Summon Aery}}) prioritizing targets in '''Taric''''s circle, based on proximity to him, then in the {{ai|Bastion|Taric|Bastioned}} ally's circle, based on proximity to that ally (including it).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/80/90/100/110",
@@ -150,135 +150,6 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "TaricW",
-      "name": "Bastion",
-      "maxrank": 5,
-      "cooldown": [
-        15,
-        15,
-        15,
-        15,
-        15
-      ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Unit-targeted|Unit]]",
-      "target_range": 800,
-      "image": {
-        "full": "TaricW.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 144,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Taric''' gains {{sti|armor|{{as|'''bonus''' armor}}}} and links to his ally. While [[tether]]ed, the {{as|'''bonus''' armor}} and '''Taric's''' abilities are replicated on the ally, though the effects do not stack.",
-        "{{sbc|Active:}} '''Taric''' {{tip|shields}} himself and the target allied champion for {{fd|2.5}} seconds, blessing them with the ''Bastion'' link.",
-        "'''Taric''' can self-cast ''Bastion'' to shield himself, or to the nearest unlinked ally in range. Only one champion can be marked at a time, and selecting a new ally clears the previous mark."
-      ],
-      "notes": "* Linked allies will keep continuing {{ai|Bastion}}, {{ai|Dazzle}}, and {{ai|Cosmic Radiance}} even if '''Taric''' is not in {{tt|range|by death or 1300 units}}.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "60",
-      "cooldownBurn": "15",
-      "effects": [
-        {
-          "levelingtext": "{{st|Bonus Armor|{{as|{{ap|10|12.5|15|17.5|20}}% of '''Taric's''' armor}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span><span class=\"armor\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>Taric's</b> armor</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_armor": [
-                  0.1,
-                  0.125,
-                  0.15,
-                  0.175,
-                  0.2
-                ]
-              }
-            ],
-            "st_slices": [
-              "Bonus Armor",
-              "<span class=\"armor\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''Taric's''' armor</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "player_total_armor": [
-                  0.1,
-                  0.125,
-                  0.15,
-                  0.175,
-                  0.2
-                ]
-              },
-              "title": "Bonus Armor",
-              "str": "<span class=\"armor\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''Taric's''' armor</span>",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Shield Strength|{{as|{{ap|8|9|10|11|12}}% of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><span class=\"health\"><spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              null
-            ],
-            "as_ratios": [
-              {
-                "target_total_hp": [
-                  0.08,
-                  0.09,
-                  0.1,
-                  0.11,
-                  0.12
-                ]
-              }
-            ],
-            "st_slices": [
-              "Shield Strength",
-              "<span class=\"health\"><spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "target_total_hp": [
-                  0.08,
-                  0.09,
-                  0.1,
-                  0.11,
-                  0.12
-                ]
-              },
-              "title": "Shield Strength",
-              "str": "<span class=\"health\"><spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "TaricE",
       "name": "Dazzle",
@@ -312,7 +183,7 @@
       "description": [
         "{{sbc|Active:}} '''Taric''' projects a beam of starlight towards the target location, erupting after a 1 second delay, dealing {{as|magic damage}} to all enemies hit and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
       ],
-      "notes": "* ''Dazzle'' will aim toward Taric's cursor on-cast when firing from both his and his {{ai|Bastion 2|Taric|Bastion's}} positions.",
+      "notes": "* ''Dazzle'' will aim towards the target direction on-cast when firing from both his and his {{ai|Bastion 2|Taric|Bastion's}} positions.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60",
@@ -383,7 +254,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Aura]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "TaricR.png",
         "sprite": "spell12.png",

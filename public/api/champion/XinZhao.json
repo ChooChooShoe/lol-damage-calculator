@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.96",
-  "changes": "9.19.1",
+  "changes": "10.7.1",
   "id": "XinZhao",
   "name": "Xin Zhao",
   "title": "the Seneschal of Demacia",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Fighter",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
@@ -65,10 +65,10 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Xin Zhao''' gains a ''Determination I'' and ''Determination II'' stack for every {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-hit]], up to a maximum of two.",
-        "At two ''Determination I'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-hit]] consumes the stacks to {{tip|heal}} him for {{sti|health|{{pp|10 to 78|color=health}} {{as|(+ 10% AD)}} {{as|(+ 40% AP)}} {{as|health}}}}.",
+        "At two ''Determination I'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-hit]] consumes the stacks to {{tip|heal}} him for {{pp|10 to 112}} {{as|(+ 10% AD)}} {{as|(+ 40% AP)}}.",
         "At two ''Determination II'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-attack]] consumes the stacks to deal {{as|{{pp|4|key=%|15 to 45|1 to 16|displayformula=15%+10% every 5 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}."
       ],
-      "notes": "* The ''Determination II'' stacks are not visible on the champion's buff bar in-game.\n* Hitting one or more enemies with {{ai|Wind Becomes Lightning|Xin Zhao}} applies one stack per strike. The bonus damage applies to all enemies of one strike, but the healing only once.\n* If {{ii|Guinsoo's Rageblade}} would trigger when the ''Determination II'' stacks are at maximum, the bonus stack will instead overstack, and be consumed on the next ''Determination II'' usage.",
+      "notes": "* Applies {{tip|proc damage}} via basic attack through two ''Determination II'' stacks.\n* The ''Determination II'' stacks are not visible on the champion's buff bar in-game.\n* Hitting one or more enemies with {{ai|Wind Becomes Lightning|Xin Zhao}} applies one stack per strike. The bonus damage applies to all enemies of one strike, but the healing only once.\n* If {{ii|Guinsoo's Rageblade}} would trigger when the ''Determination II'' stacks are at maximum, the bonus stack will instead overstack, and be consumed on the next ''Determination II'' usage.\n* {{Pending for test}}: ''Determination's'' interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -92,7 +92,7 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "Self",
+      "targeting": "None",
       "image": {
         "full": "XinZhaoQ.png",
         "sprite": "spell14.png",
@@ -103,12 +103,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} For the next 5 seconds, '''Xin Zhao's''' next 3 basic attacks each deal {{as|'''bonus''' physical damage}} and reduce his other [[Champion ability|ability]] {{sti|cooldown|cooldowns}} by 1 second each.",
+        "{{sbc|Active:}} For the next 5 seconds, '''Xin Zhao's''' next 3 basic attacks [[on-attack]] become {{tip|unstoppable basic attack|unstoppable basic attacks}}, dealing {{as|'''bonus''' physical damage}} and reducing his other [[Champion ability|ability]] {{sti|cooldown|cooldowns}} by 1 second each.",
         "''Talon Strike'' is affected by {{tip|critical strike}} modifiers.",
         "The third basic attack {{tip|airborne|knocks up}} the target for {{fd|0.75}} seconds.",
-        "''Three Talon Strike'' resets '''Xin Zhao's''' basic attack timer."
+        "''Three Talon Strike'' {{tip|basic attack reset|resets}} '''Xin Zhao's''' basic attack timer."
       ],
-      "notes": "* ''Three Talon Strike'' has no cast time and does not interrupt '''Xin Zhao's''' previous orders.\n* {{tip|Spell shield}} will only block the third attack.\n* The enhanced attacks present input buffering during their wind-up animation (they are {{tip|unstoppable}} and '''Xin Zhao''' cannot be issued any commands until after it ends).",
+      "notes": "* {{tip|Spell shield}} will only block the third attack.\n* The enhanced attacks present input buffering during their wind-up animation ('''Xin Zhao''' cannot be issued any commands until after it ends).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "30",
@@ -221,7 +221,7 @@
       "description": [
         "{{sbc|Active:}} '''Xin Zhao''' performs two strikes over {{as|{{pp|type='''bonus''' attack speed|2|0.5;0.4|key1=%|0;140}}|attack speed}} seconds.",
         "The first deals {{as|physical damage}} to all enemies in an arc, and the second deals {{as|physical damage}} in a line, {{tip|slow|slowing}} all enemies hit by 50% for {{fd|1.5}} seconds.",
-        "Both strikes deal 50% reduced damage against [[minion]]s, benefit from {{fd|33.{{recurring|3}}}}% of '''Xin Zhao's''' {{stil|life steal}} and the duration of his other abilities is paused during the effect."
+        "Both strikes deal 50% reduced damage against {{tip|minion|minions}}, benefit from {{fd|33.{{recurring|3}}}}% of '''Xin Zhao's''' {{stil|life steal}} and the durations of his other abilities are paused during the effect."
       ],
       "notes": "* {{tip|Spell shield}} will block only a single instance of damage - either the thrust or the slash.",
       "skillkey": "W",
@@ -467,7 +467,7 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 600,
+      "target_range": 650,
       "image": {
         "full": "XinZhaoE.png",
         "sprite": "spell14.png",
@@ -478,10 +478,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xin Zhao''' {{tip|dashes}} to the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} to all nearby units and {{tip|slow|slowing}} them by 30% for {{fd|0.5}} seconds.",
+        "{{sbc|Active:}} '''Xin Zhao''' {{tip|dashes}} to the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies around it and {{tip|slow|slowing}} them by 30% for {{fd|0.5}} seconds.",
         "'''Xin Zhao''' then gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds."
       ],
-      "notes": "* No additional effect.",
+      "notes": "* No additional details.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
@@ -586,7 +586,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Auto-targeted|Auto]] / [[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "XinZhaoR.png",
         "sprite": "spell14.png",
@@ -597,11 +597,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive - Challenge:}} The last enemy champion targeted by '''Xin Zhao's''' [[basic attack]]s or {{ai|Audacious Charge|Xin Zhao}} is ''{{ai|Challenge|Xin Zhao|Challenged}}'' for 3 seconds.",
-        "{{sbc|Active - Awareness:}} After {{fd|0.35}} seconds, '''Xin Zhao''' sweeps around him, dealing {{as|physical damage}} to enemies hit, capped at 600 {{as|(+ 100% '''bonus''' AD)}} against [[monster]]s, while also {{tip|airborne|knocking back}} all non-''{{ai|Challenge|Xin Zhao|Challenged}}'' enemies hit.",
-        "For the next 3 seconds, '''Xin Zhao''' is {{tip|invulnerability|invulnerable}} against enemy {{tip|champion|champions}} more than 450-units away from him. His [[basic attack]]s and other [[champion ability|spell casts]] extend the duration by {{fd|0.3}} seconds."
+        "{{sbc|Passive - Challenge:}} The last enemy champion hit by '''Xin Zhao's''' [[basic attack]]s or {{ai|Audacious Charge|Xin Zhao}} is ''{{ai|Challenge|Xin Zhao|Challenged}}'' for 3 seconds.",
+        "{{sbc|Active:}} '''Xin Zhao''' sweeps his spear around him, dealing {{as|physical damage}} to enemies hit, capped at 600 {{as|(+ 100% '''bonus''' AD)}} against {{tip|monsters}}, while also {{tip|airborne|knocking back}} all non-''{{ai|Challenge|Xin Zhao|Challenged}}'' enemies hit.",
+        "For the next 3 seconds, '''Xin Zhao''' is {{tip|invulnerability|invulnerable}} against enemy {{tip|champion|champions}} more than 450-units away from him. His [[basic attack]]s and other [[champion ability|ability casts]] extend the duration by {{fd|0.3}} seconds."
       ],
-      "notes": "* {{tip|Pet|Pets}} do not deal damage to '''Xin Xhao''' during ''Crescent Strike'' if the enemy champion controlling them is not within the circle.\n* {{Pending for test}}: [[Decoy|Champion clones]] will deal damage to '''Xin Zhao''' if they attack {{tt|''in the circle''|The enemy champion which summoned the clone is not present within the circle in this case}}.",
+      "notes": "* {{tip|Pet|Pets}}, {{tip|stealthed trap|traps}}, [[ground-targeted|ground]] [[area of effect|AoEs]], {{tip|damage over time|DoTs}}, and delayed-damage skills (i.e - {{ai|Death Mark|Zed}}) will not damage '''Xin Zhao''' if the enemy champion source is outside the circle when the damage applies.\n* {{si|Flash}} can be used during the cast time and ''Crescent Guard'' will sweep at the new location.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

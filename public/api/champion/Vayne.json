@@ -1,6 +1,6 @@
 {
   "patch": "v1.0.0.118",
-  "changes": "9.19.1",
+  "changes": "10.11.1",
   "id": "Vayne",
   "name": "Vayne",
   "title": "the Night Hunter",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Marksman",
-  "alttype": "Slayer",
+  "alttype": "Assassin",
   "rangetype": "Ranged",
   "be_cost": 4800,
   "rp_cost": 880,
@@ -91,7 +91,7 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "Self",
+      "targeting": "Direction",
       "target_range": 300,
       "image": {
         "full": "VayneTumble.png",
@@ -104,17 +104,17 @@
       },
       "description": [
         "{{sbc|Active:}} '''Vayne''' {{tip|dash|dashes}} forward, though not through terrain, and her next [[basic attack]] within 7 seconds deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
-        "''Tumble'' resets '''Vayne's''' basic attack timer."
+        "''Tumble'' {{tip|basic attack reset|resets}} '''Vayne's''' basic attack timer."
       ],
-      "notes": "* The enhanced attack applies {{tip|on-hit}} effects, {{sti|life steal|link=true}}, affects {{tip|turret|turrets}} and can {{tip|critical strike|critically strike}} as normal. The bonus damage however cannot.\n* Although ''Tumble'' will reset the basic attack timer, '''Vayne''' cannot attack until the animation is complete.",
+      "notes": "* Although ''Tumble'' will reset the basic attack timer, '''Vayne''' cannot attack until the animation is complete.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "30",
       "cooldownBurn": "4/3.5/3/2.5/2",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|50 to 70}}% AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['50','55','60','65','70']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|60 to 80}}% AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -124,17 +124,17 @@
             "as_ratios": [
               {
                 "player_total_ad": [
-                  0.5,
-                  0.55,
                   0.6,
                   0.65,
-                  0.7
+                  0.7,
+                  0.75,
+                  0.8
                 ]
               }
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<span class=\"ad\"><spell-span :list=\"['50','55','60','65','70']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>"
+              "<span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>"
             ]
           },
           "subeffects": [
@@ -142,15 +142,15 @@
               "index": 0,
               "ratios": {
                 "player_total_ad": [
-                  0.5,
-                  0.55,
                   0.6,
                   0.65,
-                  0.7
+                  0.7,
+                  0.75,
+                  0.8
                 ]
               },
               "title": "Bonus Physical Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['50','55','60','65','70']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
+              "str": "<span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
               "damage_type": "physical"
             }
           ]
@@ -186,10 +186,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Vayne's''' [[basic attacks]] and {{ai|Condemn|Vayne}} apply a ''Silver Bolts'' stack for {{fd|3.5}} seconds, up to 3 times. Attacking a new enemy removes all stacks from the previous target.",
+        "{{sbc|Passive:}} '''Vayne's''' [[basic attacks]] and {{ai|Condemn|Vayne}} apply a stack of ''Silver Bolts'' for {{fd|3.5}} seconds, up to 3 times. Attacking a new enemy removes all stacks from the previous target.",
         "The third stack consumes them all to deal {{tip|true damage|{{as|'''bonus''' true damage}}}}, with a minimum threshold, and capped at 200 against {{tip|monster|monsters}}."
       ],
-      "notes": "* [[Stack]]s are not removed if '''Vayne''' switches to attacking a target immune to ''Silver Bolts'' ({{tip|turret|structures}}, {{tip|ward|wards}}).\n* ''Silver Bolts'' do not apply to additional targets with {{ii|Runaan's Hurricane}}.\n* The third attack consumes all stacks even if the target is {{tip|untargetable}}.\n* {{Pending for test}}: ''Silver Bolts' '' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects via basic attack.",
+      "notes": "* [[Stack]]s are not removed if '''Vayne''' switches to attacking a target immune to ''Silver Bolts'' ({{tip|turret|structures}}, {{tip|ward|wards}}).\n* ''Silver Bolts'' do not apply to additional targets with {{ii|Runaan's Hurricane}}.\n* The third attack consumes all stacks even if the target is in {{tip|stasis}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -278,7 +278,7 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 550,
+      "target_range": "{{tip|er|icononly = true}} 550",
       "image": {
         "full": "VayneCondemn.png",
         "sprite": "spell13.png",
@@ -289,10 +289,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Vayne''' fires a heavy bolt at the target unit, dealing {{as|physical damage}}, {{tip|airborne|knocking them back}} 475 units, and applying a {{ai|Silver Bolts|Vayne}} stack.",
-        "If the target collides with terrain, they take {{as|'''bonus''' physical damage}} and are {{tip|stun|stunned}} for {{ap|1.5}} seconds."
+        "{{sbc|Active:}} '''Vayne''' fires a heavy bolt at the target enemy, dealing {{as|physical damage}}, {{tip|airborne|knocking them back}} 475 units, and applying a {{ai|Silver Bolts|Vayne}} stack.",
+        "If the target collides with terrain, they take [[File:Critical strike icon.png|20px|link=]] {{tt|{{as|'''bonus''' physical damage}}|cosmetic critical strike}} and are {{tip|stun|stunned}} for {{ap|1.5}} seconds."
       ],
-      "notes": "* ''Condemn'' uses {{tip|edge range}} (same as '''Vayne's''' basic attacks).\n* ''Condemn's'' {{tip|airborne|displacement}} direction is determined when the {{tip|projectile}} hits (will follow the line both '''Vayne''' and her target draw at that specific moment).\n* ''Condemn's'' {{tip|stun}} duration starts when '''Vayne's''' target collides with a wall (they can be {{tip|immobilize|immobilized}} for up to 2 seconds depending on {{tip|airborne|displacement}} duration based on distance traveled).\n* {{sbc|Possible Bug:}} ''Condemn'' will not always {{tip|interrupt}} enemy {{tip|suppression}} on '''Vayne's''' allies (sometimes they remain affected even if the enemy champion responsible is displaced as far as outside ability range).\n* ''Condemn'' interacts with artificial terrain ({{ai|Crystallize|Anivia}}, {{ai|Emperor's Divide|Azir}}, {{cai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}}).",
+      "notes": "* ''Condemn's'' {{tip|airborne|displacement}} direction is determined when the {{tip|projectile}} hits (will follow the line both '''Vayne''' and her target draw at that specific moment).\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Vayne's''' position.\n* ''Condemn's'' {{tip|stun}} duration starts when '''Vayne's''' target collides with a wall (they can be {{tip|immobilize|immobilized}} for up to 2 seconds depending on {{tip|airborne|displacement}} duration based on distance traveled).\n* {{sbc|Possible Bug:}} ''Condemn'' will not always {{tip|interrupt}} enemy {{tip|suppression}} on '''Vayne's''' allies (sometimes they remain affected even if the enemy champion responsible is displaced as far as outside ability range).\n* ''Condemn'' interacts with artificial terrain ({{ai|Crystallize|Anivia}}, {{ai|Emperor's Divide|Azir}}, {{cai|Cataclysm|Jarvan IV}}, {{ai|Pillar of Ice|Trundle}}).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "90",
@@ -431,7 +431,7 @@
         80
       ],
       "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]] / [[Buff]]",
+      "targeting": "None",
       "image": {
         "full": "VayneInquisition.png",
         "sprite": "spell13.png",
@@ -442,11 +442,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} For a duration, '''Vayne''' gains {{as|'''bonus''' attack damage}} and triples {{ais|Night Hunter|Vayne}} bonus.",
-        "Additionally, {{ai|Tumble|Vayne}} gains {{tip|cooldown reduction}}, and casting it grants {{tip|invisibility}} for 1 second.",
-        "While active, whenever an enemy {{tip|champion}} damaged by '''Vayne''' dies within 3 seconds, ''Final Hour's'' duration is extended by 4 seconds, up to a maximum of the original duration."
+        "{{sbc|Active:}} '''Vayne''' arms herself with her crossbow, gaining {{as|'''bonus''' attack damage}} and tripling {{ais|Night Hunter|Vayne}} bonus for a duration.",
+        "Additionally, {{ai|Tumble|Vayne}} gains {{sti|cooldown reduction}}, and casting it grants '''Vayne''' {{tip|invisibility}} for 1 second. Attacking or casting {{ai|Condemn|Vayne}} breaks the stealth immediately.",
+        "While active, whenever an enemy {{tip|champion}} damaged by '''Vayne''' dies within 3 seconds, ''Final Hour's'' duration is extended by 4 seconds. ''Final Hour's'' duration cannot be increased beyond its original maximum duration."
       ],
-      "notes": "* ''Final Hour'' has no cast time and does not interrupt '''Vayne's''' previous orders.\n* ''Vayne's'' animations and basic attack projectiles change slightly during ''Final Hour''.\n* ''Tumble's'' {{tip|invisibility}} during {{ai|Final Hour|Vayne}} will end prematurely if '''Vayne''' performs any action other than movement while in stealth.",
+      "notes": "* ''Vayne's'' animations and basic attack projectiles change slightly during ''Final Hour''.\n* ''Tumble's'' visual effects can be seen by enemies upon '''Vayne''' becoming invisible.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "80",
@@ -543,44 +543,6 @@
               },
               "title": "Tumble Cooldown Reduction",
               "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Maximum Duration|{{ap|8*2 to 12*2}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Duration</span>: <span><spell-span :list=\"['16','18','20','22','24']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                16,
-                18,
-                20,
-                22,
-                24
-              ]
-            ],
-            "st_slices": [
-              "Maximum Duration",
-              "<spell-span :list=\"['16','18','20','22','24']\" :spellrankindex=\"spellrankindex\"></spell-span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  16,
-                  18,
-                  20,
-                  22,
-                  24
-                ]
-              },
-              "title": "Maximum Duration",
-              "str": "<spell-span :list=\"['16','18','20','22','24']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
             }
           ]

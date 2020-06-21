@@ -1,6 +1,6 @@
 {
   "patch": "V6.6",
-  "changes": "10.1.1",
+  "changes": "10.12.1",
   "id": "AurelionSol",
   "name": "Aurelion Sol",
   "title": "The Star Forger",
@@ -15,7 +15,7 @@
   },
   "resource": "Mana",
   "herotype": "Mage",
-  "alttype": "Fighter",
+  "alttype": "",
   "rangetype": "Ranged",
   "be_cost": 6300,
   "rp_cost": 975,
@@ -66,301 +66,11 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Aurelion Sol''' is constantly orbited by three ''Stars'', each doing a full circumference in {{fd|5.25}} seconds, and beyond them exists an {{as|Outer Limit|buzzword}} affecting his damaging [[Champion ability|abilities]].",
-        "The ''Stars'' deal {{pp2|10+2*x for 5; then + 3*x for 2; then + 6*x for 4; then + 10*x|formula=10+2 per level until lvl 5, then+3 until lvl 7, then+6 per level until lvl 11, then+10 per level}} {{as|(+ {{pp|type = [[File:Celestial Expansion.png|20px|border|link=]] Celestial Expansion's Rank|5|5 to 25}})|magic damage}} {{as|(+ 25% AP)}} {{tip|magic damage|{{As|magic damage}}}} and apply [[spell effects]] to enemies that come in contact with them, executing {{tip|minions}} below {{sti|health|{{as|25 health}}}}."
+        "The ''Stars'' deal {{as|{{pp2|10+2*x for 5; then + 3*x for 2; then + 6*x for 4; then + 10*x|formula=10+2 per level until lvl 5, then+3 until lvl 7, then+6 per level until lvl 11, then+10 per level}}|magic damage}} {{as|(+ {{pp|type = [[File:Celestial Expansion.png|20px|border|link=]] Celestial Expansion's Rank|5|5 to 25}})|magic damage}} {{as|(+ 25% AP)}} {{tip|magic damage|{{As|magic damage}}}} to enemies that come in contact with them as well as execute enemy {{tip|minions}} below {{sti|health|{{as|25 health}}}}."
       ],
-      "notes": "* '''Aurelion Sol's''' ''Stars'' have independent vision hitboxes, meaning that they may remain visible even while he is within a [[brush]], and must be in the brush themselves in order to be hidden. \n** In addition to not being considered to be projectiles for interception purposes, it is possible that his ''Stars'' are considered [[champion summoned units]].\n* An individual ''Star'' must complete at least one third of its orbit before it can damage the same target again. \n* In the event that an enemy orbits around '''Aurelion Sol''' at the same rate as his ''Stars'' without leaving their hitbox, they will take damage once every third of the way around.\n* {{tip|Stasis}} from friendly sources (allied {{ai|Tempered Fate|Bard}}, {{ii|Zhonya's Hourglass}}, etc.) does not disable ''Center of the Universe''.",
+      "notes": "* The ''Stars'' orbit counterclockwise around '''Aurelion Sol'''.\n* '''Aurelion Sol's''' ''Stars'' have independent {{tip|sight|vision}} hitboxes, meaning that they may remain visible even while he is within a {{tip|brush}}, and must be in the brush themselves in order to be hidden.\n** In addition to not being considered to be {{tip|projectile|projectiles}} for interception purposes, it is possible that his ''Stars'' are considered [[champion summoned units]].\n* An individual ''Star'' must complete at least one third of its orbit before it can damage the same target again. \n* In the event that an enemy orbits around '''Aurelion Sol''' at the same rate as his ''Stars'' without leaving their hitbox, they will take damage once every third of the way around.\n* {{tip|Stasis}} from friendly sources (allied {{ai|Tempered Fate|Bard}}, {{ii|Zhonya's Hourglass}}, etc) does not disable ''Center of the Universe''.",
       "skillkey": "I",
       "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "AurelionSolQ",
-      "name": "Starsurge",
-      "maxrank": 5,
-      "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
-      ],
-      "cost": [
-        60,
-        70,
-        80,
-        90,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "AurelionSolQ.png",
-        "sprite": "spell1.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Aurelion Sol''' fires the core of a newborn star in the target direction, which expands as long as it remains within the {{as|Outer Limit|buzzword}} and grants him {{sti|ms|{{as|20% '''bonus''' movement speed}}}}.",
-        "Upon traveling beyond the {{as|Outer Limit|buzzword}}, the core detonates, dealing {{as|magic damage}} to all enemies caught within and {{tip|stun|stunning}} them, increased by {{pp|13|key=%|type=time traveled|0;25;50;75;100 to 300|0;0.1875;0.375;0.5625;0.75 to 5}}. ''Starsurge'' can be recast after {{fd|0.25}} seconds.",
-        "{{sbc|Recast:}} '''Aurelion Sol''' detonates the core early.",
-        "If '''Aurelion Sol''' is faster than the missile, the missile speed will increase to keep up."
-      ],
-      "notes": "* So long as '''Aurelion Sol''' manages to keep Starsurge within the '''Outer Limit''', it will continue to expand until detonated or out of range, giving this ability the largest range and radius of any ability in the game.\n* Both instances count as ability activations for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Starsurge's'' size grows by {{fd|36.67}} units per second.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "costBurn": "60/70/80/90/100",
-      "cooldownBurn": "11/10/9/8/7",
-      "effects": [
-        {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 65% AP)}}}}{{st|Minimum Stun Duration|{{ap|0.55 to 0.75}}|Maximum Stun Duration|{{ap|2.2 to 3}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','110','150','190','230']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul><li><span class=\"blue\">Minimum Stun Duration</span>: <span><spell-span :list=\"['0.55','0.6','0.65','0.7','0.75']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Maximum Stun Duration</span>: <span><spell-span :list=\"['2.2','2.4','2.6','2.8','3']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                70,
-                110,
-                150,
-                190,
-                230
-              ],
-              [
-                0.55,
-                0.6,
-                0.65,
-                0.7,
-                0.75
-              ],
-              [
-                2.2,
-                2.4,
-                2.6,
-                2.8,
-                3
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.65
-              }
-            ],
-            "st_slices": [
-              "Minimum Stun Duration",
-              "<spell-span :list=\"['0.55','0.6','0.65','0.7','0.75']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "Maximum Stun Duration",
-              "<spell-span :list=\"['2.2','2.4','2.6','2.8','3']\" :spellrankindex=\"spellrankindex\"></spell-span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  70,
-                  110,
-                  150,
-                  190,
-                  230
-                ],
-                "player_total_ap": 0.65
-              },
-              "title": "Minimum Stun Duration",
-              "str": "<spell-span :list=\"['0.55','0.6','0.65','0.7','0.75']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  0.55,
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75
-                ],
-                "player_total_ap": 0.65
-              },
-              "title": "Maximum Stun Duration",
-              "str": "<spell-span :list=\"['2.2','2.4','2.6','2.8','3']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "AurelionSolW",
-      "name": "Celestial Expansion",
-      "maxrank": 5,
-      "cooldown": [
-        8,
-        6.5,
-        5,
-        3.5,
-        2
-      ],
-      "cost": [
-        70,
-        80,
-        90,
-        100,
-        110
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Self-targeted|Self]]",
-      "image": {
-        "full": "AurelionSolW.png",
-        "sprite": "spell1.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} The {{ai|Center of the Universe|Aurelion Sol|Stars'}} '''base''' [[damage]] is increased.",
-        "{{sbc|Active:}} '''Aurelion Sol''' [[File:Celestial Expansion 2.png|20px|link=|border]] pushes his {{ai|Center of the Universe|Aurelion Sol|Stars}} out to the {{as|Outer Limit|buzzword}}, rotating them at a high but decaying speed, and increasing their '''total''' damage by 40%.",
-        "Upon reactivating or after 3 seconds, the stars retract and grant '''Aurelion Sol''' {{as|40% '''bonus''' movement speed}}, decaying over {{fd|1.5}} seconds"
-      ],
-      "notes": "*''Celestial Expansion'' does not apply Muramana's ''Shock'' passive.\n* Due to being an extension of his innate, [[crowd control]] that inhibits the use of abilities will also disable ''Celestial Expansion'' and put it on cooldown.\n** Although {{tip|stasis}} from friendly sources ({{ai|Tempered Fate|Bard}}, {{ii|Zhonya's Hourglass}}, etc.) does not disable ''Celestial Expansion''.\n* Toggle-able abilities do not count as an ability activation for the purposes of effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* Toggle-able abilities heal for up to 25 health per second when purchasing {{ii|Rod of Ages}}.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "costBurn": "70/80/90/100/110",
-      "cooldownBurn": "8/6.5/5/3.5/2",
-      "effects": [
-        {
-          "levelingtext": "{{st|Bonus Damage|{{ap|5 to 25}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                5,
-                10,
-                15,
-                20,
-                25
-              ]
-            ],
-            "st_slices": [
-              "Bonus Damage",
-              "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  5,
-                  10,
-                  15,
-                  20,
-                  25
-                ]
-              },
-              "title": "Bonus Damage",
-              "str": "<spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
-              "damage_type": "unknown"
-            }
-          ]
-        },
-        {
-          "levelingtext": "{{st|Total Damage|{{pp2|(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x}} (+ {{ap|5*1.4 to 25*1.4}}) {{as|(+ {{ap|25*1.4}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Damage</span>: <span><simple-tooltip class=\"capture-unknown\" dname=\"pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x\">Unknown value: pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x</simple-tooltip> (+ <spell-span :list=\"['7','14','21','28','35']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ap\">(+ <spell-span :list=\"['35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                7,
-                14,
-                21,
-                28,
-                35
-              ],
-              null
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": [
-                  0.35
-                ]
-              }
-            ],
-            "st_slices": [
-              "Total Damage",
-              "<simple-tooltip class=\"capture-unknown\" dname=\"pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x\">Unknown value: pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x</simple-tooltip> (+ <spell-span :list=\"['7','14','21','28','35']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ap\">(+ <spell-span :list=\"['35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_damage": [
-                  7,
-                  14,
-                  21,
-                  28,
-                  35
-                ],
-                "player_total_ap": [
-                  0.35
-                ]
-              },
-              "title": "Total Damage",
-              "str": "<simple-tooltip class=\"capture-unknown\" dname=\"pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x\">Unknown value: pp2 (10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x</simple-tooltip> (+ <spell-span :list=\"['7','14','21','28','35']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ap\">(+ <spell-span :list=\"['35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
-              "damage_type": "unknown"
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "AurelionSolE",
-      "name": "Comet of Legend",
-      "maxrank": 5,
-      "cooldown": [
-        80,
-        75,
-        70,
-        65,
-        60
-      ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": "{{ap|5500 to 7500}}",
-      "image": {
-        "full": "AurelionSolE.png",
-        "sprite": "spell1.png",
-        "group": "spell",
-        "x": 96,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Aurelion Sol''' pulls in his {{ai|Center of the Universe|Aurelion Sol|Stars}} and {{tip|dash|takes flight}} in the chosen direction. While in flight '''Aurelion Sol''' is {{tip|ghosted}}, has {{tip|unobstructed vision}} and can ignore terrain collision.",
-        "If '''Aurelion Sol''' takes damage from {{tip|champions}} or {{tip|turrets}}, or is {{tip|immobilize|immobilized}}, ''Comet of Legend'' will instantly end. ''Comet of Legend'' can also be canceled by issuing a movement command or reactivating the ability after {{fd|1.5}} seconds.",
-        "''Comet of Legend'' cannot be activated for 4 seconds after '''Aurelion Sol''' has been damaged by a champion or turret."
-      ],
-      "notes": "* Effects that instantly cancel {{ai|Comet of Legend 2||Comet of Legend}}.\n** {{ii|Stopwatch}} and {{ii|Zhonya's Hourglass}}.\n** {{ii|Hextech Protobelt-01}}.\n** {{si|Flash}}.\n* Effects that can be activated during {{ai|Comet of Legend 2||Comet of Legend}} without cancelling it.\n** Every other item effect (including {{ii|Hextech GLP-800}}).\n** {{ai|Starsurge|Aurelion Sol}}.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "costBurn": "60",
-      "cooldownBurn": "80/75/70/65/60",
       "effects": []
     },
     "r1": {
@@ -390,9 +100,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Aurelion Sol''' exhales a wave of starfire in a line, dealing {{as|magic damage}} to all enemies hit, {{tip|slow|slowing}} for 2 seconds and {{tip|airborne|knocking targets back}} to the {{as|Outer Limit|buzzword}} if they are within."
+        "{{sbc|Active:}} '''Aurelion Sol''' exhales a wave of star fire in a line, dealing {{as|magic damage}} to all enemies hit, {{tip|slow|slowing}} them for 2 seconds and {{tip|airborne|knocking them back}} to the {{as|Outer Limit|buzzword}} if they are within.",
+        "'''''Aurelion Sol''' [[Channel#Unstoppable Channels|channels]] until the star fire reaches maximum range.''",
+        "''{{ai|W|Aurelion Sol}} can be cast during Voice of Light''."
       ],
-      "notes": "* If '''Aurelion Sol''' is {{tip|airborne|displaced}} while casting, ''Voice of Light'' fires from the updated location.",
+      "notes": "* ''Voice of Light'' is cast from wherever '''Aurelion Sol''' is at the end of the cast time.\n{{ct|cast}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

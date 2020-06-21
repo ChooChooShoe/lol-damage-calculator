@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.101",
-  "changes": "9.21.1",
+  "changes": "10.6.1",
   "id": "Sona",
   "name": "Sona",
   "title": "Maven of the Strings",
@@ -14,7 +14,7 @@
     "h": 48
   },
   "resource": "Mana",
-  "herotype": "Controller",
+  "herotype": "Support",
   "alttype": "Mage",
   "rangetype": "Ranged",
   "be_cost": 3150,
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Aura:}} '''Sona's''' basic [[Champion ability|abilities]] each generate a unique [[aura]] for 3 seconds that empowers her and all allied [[champion]]s who enter its radius, also incurring a {{fd|0.5}} seconds period during which she cannot cast her other basic abilities.",
-        "{{sbc|Power Chord:}} After casting 3 basic abilities, '''Sona's''' next [[basic attack]] deals {{pp2|20 to 90 for 8;90 to 240|formula=10+10 at each level up to 8 and+15 up to 18}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, with an additional effect depending on the last basic ability cast.",
-        "''Power Chord'' resets '''Sona's''' basic attack timer."
+        "{{sbc|Innate - Aura:}} '''Sona's''' basic [[Champion ability|abilities]] each generate a unique [[aura]] for 3 seconds that empowers her and all allied [[champion]]s who enter its radius, also incurring a {{fd|0.5}} seconds period during which she cannot cast her other basic abilities.",
+        "{{sbc|Innate - Power Chord:}} After casting 3 basic abilities, '''Sona's''' next [[basic attack]] deals {{as|{{pp2|20 to 90 for 8;90 to 240|formula=10+10 at each level up to 8 and+15 up to 18}}|magic damage}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}, with an additional effect depending on the last basic ability cast.",
+        "''Power Chord'' {{tip|basic attack reset|resets}} '''Sona's''' basic attack timer."
       ],
       "notes": "* '''Sona''' has a stack counter under her health-bar that is not visible to other champions.\n** When ''Power Chord'' is ready, Sona gains a ring around her. This ring will have a different color depending on the last ability used (''{{ai|Hymn of Valor|Sona|blue}}, {{ai|Aria of Perseverance|Sona|green}} or {{ai|Song of Celerity|Sona|purple}}'').\n** The effect does not change if abilities are used while the projectile is in motion.\n* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
       "skillkey": "I",
@@ -91,7 +91,7 @@
         95
       ],
       "costtype": "mana",
-      "targeting": "[[Aura]] / [[Auto-targeted|Auto]]",
+      "targeting": "[[Auto-targeted|Auto]]",
       "image": {
         "full": "SonaQ.png",
         "sprite": "spell11.png",
@@ -102,12 +102,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Sona''' sends out two bolts of sound that deal {{as|magic damage}} to the two nearest {{tip|sight|visible}} enemies, prioritizing champions.",
+        "{{sbc|Active:}} '''Sona''' sends out bolts of sound that deal {{as|magic damage}} to the two nearest {{tip|sight|visible}} enemies, prioritizing champions.",
         "{{sbc|Aura:}} '''Sona''' and tagged allied champions deal {{as|'''bonus''' magic damage}} on their next basic attack within 3 seconds.",
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
-        "{{sbc|{{ai|Power Chord|Sona}} – Staccato:}} ''Power Chord'' deals{{ft|{{pp2|20*1.4 to 90*1.4 for 8;90*1.4 to 240*1.4|formula=14+14 at each level up to 8 and+21 up to 18}} {{as|(+ 28% AP)}} '''total''' magic damage.|40% '''bonus''' magic damage.}}"
+        "{{sbc|{{ai|Power Chord|Sona}} – Staccato:}} ''Power Chord'' deals{{ft|{{as|{{pp2|20*1.4 to 90*1.4 for 8;90*1.4 to 240*1.4|formula=14+14 at each level up to 8 and+21 up to 18}}|magic damage}} {{as|(+ 28% AP)}} {{as|'''total''' magic damage}}.|{{as|40% '''bonus''' magic damage}}.}}"
       ],
-      "notes": "* ''Hymn of Valor'' deals {{tip|default damage}} in an {{tip|area of effect}} range. The granted aura [[buff]] applies {{tip|proc damage}}.\n** The bolts do not apply [[Ability effects|spell effects]].\n* Bolts hitting the same target twice only receive damage from one bolt.",
+      "notes": "* No additional notes.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "75/80/85/90/95",
@@ -221,7 +221,7 @@
         125
       ],
       "costtype": "mana",
-      "targeting": "[[Aura]] / [[Auto-targeted|Auto]]",
+      "targeting": "[[Auto-targeted|Auto]]",
       "image": {
         "full": "SonaW.png",
         "sprite": "spell11.png",
@@ -237,7 +237,7 @@
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
         "{{sbc|{{ai|Power Chord|Sona}} – Diminuendo:}} ''Power Chord'' reduces its target's size and damage output by 25% {{as|(+ 4% per 100 AP)}} for 3 seconds."
       ],
-      "notes": "* If no one is injured, ''Aria of Perseverance'' will target the closest allied champion.\n* {{Pending for test}}: While {{ai|Power Chord|Sona}} is activated, the [[damage modifier|damage reduction]] via basic attack is blocked by {{tip|spell shield|spell shields}}.",
+      "notes": "* If no one is injured, ''Aria of Perseverance'' will target the closest allied champion.\n* The visual projectile of ''Aria of Perseverance'' will follow an ally in stealth but will not reveal them.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "105/110/115/120/125",
@@ -351,7 +351,7 @@
         90
       ],
       "costtype": "mana",
-      "targeting": "[[Aura]]",
+      "targeting": "None",
       "image": {
         "full": "SonaE.png",
         "sprite": "spell11.png",
@@ -362,20 +362,20 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Sona''' gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds, extended to up to 7 seconds if she doesn't take damage.",
+        "{{sbc|Active:}} '''Sona''' gains {{as|20%|ms}} {{as|(+ 3% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds, extended to up to 7 seconds if she doesn't take damage.",
         "{{sbc|Aura:}} Tagged allied champions gain {{sti|ms|{{as|'''bonus''' movement speed}}}} for 3 seconds.",
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
         "{{sbc|{{ai|Power Chord|Sona}} – Tempo:}} ''Power Chord'' {{tip|slow|slows}} its target by 40% {{as|(+ 4% per 100 AP)}} for 2 seconds."
       ],
-      "notes": "* {{Pending for test}}: While {{ai|Power Chord|Sona}} is activated, the {{tip|slow}} via basic attack is negated by {{tip|spell shield|spell shields}}.",
+      "notes": "* No additional notes.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "90",
       "cooldownBurn": "12/10.8/9/7.2",
       "effects": [
         {
-          "levelingtext": "{{st|Self and Aura Bonus Movement Speed|{{ap|10 to 14}}% {{as|(+ 3% per 100 AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Self and Aura Bonus Movement Speed</span>: <span><spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 3% per 100 AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Aura Bonus Movement Speed|{{ap|10 to 14}}% {{as|(+ 3% per 100 AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Aura Bonus Movement Speed</span>: <span><spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 3% per 100 AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -394,7 +394,7 @@
               }
             ],
             "st_slices": [
-              "Self and Aura Bonus Movement Speed",
+              "Aura Bonus Movement Speed",
               "<spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 3% per 100 AP)</span>"
             ]
           },
@@ -411,7 +411,7 @@
                 ],
                 "player_total_ap": 31
               },
-              "title": "Self and Aura Bonus Movement Speed",
+              "title": "Aura Bonus Movement Speed",
               "str": "<spell-span :list=\"['10','11','12','13','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 3% per 100 AP)</span>",
               "damage_type": "none"
             }
@@ -447,7 +447,7 @@
       },
       "description": [
         "{{sbc|Passive:}} Reduces the '''base''' {{sti|cooldown}} of '''Sona's''' basic [[Champion ability|abilities]].",
-        "{{sbc|Active:}} After a {{fd|0.2}}-second delay, '''Sona''' plays an irresistible chord in the target direction, dealing {{as|magic damage}} to all enemy champions struck and {{tip|stun|stunning}} them for {{fd|1.5}} seconds."
+        "{{sbc|Active:}} '''Sona''' plays an irresistible chord in the target direction, dealing {{as|magic damage}} to all enemy champions struck and {{tip|stun|stunning}} them for {{fd|1.5}} seconds."
       ],
       "notes": "* {{sbc|Aesthetic:}} Enemies {{tip|stun|stunned}} by ''Crescendo'' are forced to [[dance]] and perform their moves 50% faster for its duration.",
       "skillkey": "R",
