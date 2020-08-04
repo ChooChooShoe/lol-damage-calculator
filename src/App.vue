@@ -124,4 +124,7 @@ export default {
   background-color: #121a1b;
   padding: 5px;
 }
+#app {
+  margin-top: 1rem;
+}
 </style>
