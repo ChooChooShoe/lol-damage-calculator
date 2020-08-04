@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.16",
-  "changes": "10.3.1",
+  "changes": "10.13.1",
   "id": "Malphite",
   "name": "Malphite",
   "title": "Shard of the Monolith",
@@ -8,7 +8,7 @@
     "full": "Malphite.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 0,
     "w": 48,
     "h": 48
@@ -58,16 +58,16 @@
         "full": "Malphite_GraniteShield.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate- Shard of the Monolith:}} '''Malphite's''' size scales with {{sti|armor|{{as|his '''total''' armor}}}} (before applying {{ais|Thunderclap|Malphite}} '''bonus''' armor), capped at {{as|{{tt|850|Estimated}} '''total''' armor}}.",
-        "{{sbc|Innate:}} '''Malphite''' {{tip|shields}} himself for {{sti|health|{{as|10% '''maximum''' health}}}}.\nThe shield lasts until it is broken, and refreshes if he has not taken damage in the last few seconds."
+        "{{sbc|Innate- Shard of the Monolith:}} '''Malphite''' gains increased percentage [[size]] equal to {{as|8% of his '''total''' armor}}, capped at 35% increased size at {{as|{{fd|{{#expr:35/0.08}}}} armor}}.",
+        "{{sbc|Innate:}} '''Malphite''' {{tip|shields}} himself for {{sti|health|{{as|10% of his '''maximum''' health}}}}.\nThe shield lasts until it is broken, and refreshes if he has not taken damage in the last few seconds."
       ],
-      "notes": "* ''Granite Shield'' does not refresh its cooldown from damage which was fully prevented by a {{tip|shield}} or {{tip|invulnerability}}.",
+      "notes": "* '''Malphite's''' increased size is affected by his base armor and growth, but also reduced by {{ii|Black Cleaver}}. His increased size does not consider {{ais|Thunderclap|Malphite}} '''bonus''' armor.\n** The bonus '''will''' become a size reduction if '''Malphite''' is dropped to ''negative'' armor values.\n* ''Granite Shield'' does not refresh its cooldown from damage that is mitigated by {{tip|shield|shields}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -92,20 +92,20 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 625,
+      "target_range": "{{tip|cr|icononly = true}} 625",
       "image": {
         "full": "SeismicShard.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Malphite''' sends a rock rolling to the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} to them upon impact, {{tip|slow|slowing}} them for 3 seconds and gaining {{sti|ms|{{as|'''bonus''' movement speed}}}} equal to the raw amount the target lost."
       ],
-      "notes": "* The rock spawns 100 units in front of '''Malphite'''.\n* '''Malphite''' will gain the bonus movement speed for the full duration as long as ''Seismic Shard'' impacts the target.\n* {{tip|Spell shield}} will block the damage and the slow but not the bonus movement speed gain.",
+      "notes": "* The rock spawns 100 units in front of '''Malphite'''.<!-- from his center or edge? -->\n* '''Malphite''' will gain the bonus movement speed for the full duration as long as ''Seismic Shard'' impacts the target.\n** Both a {{tip|buff}} shown in the hotbar and duration bar above the ability icon will indicate the remaining duration.\n* ''Seismic Shard's'' movement speed gain is entirely based off the target's current, and loss of, movement speed.\n** Targets that are already {{tip|slow|slowed}} by another effect will grant '''Malphite''' diminished movement speed.\n** {{tip|Slow resist|Slow-resistant}} and {{tip|slow-immune}} targets will reduce or nullify '''Malphite's''' gain.\n* {{tip|Spell shield}} will block the damage and the slow but not the bonus movement speed gain.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
@@ -169,10 +169,6 @@
       "name": "Thunderclap",
       "maxrank": 5,
       "cooldown": [
-        12,
-        12,
-        12,
-        12,
         12
       ],
       "cost": [
@@ -188,17 +184,17 @@
         "full": "Obduracy.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 336,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive:}} '''Malphite''' gains {{sti|armor|{{as|'''bonus''' armor}}}}, tripled while {{ai|Granite Shield|Malphite}} is active.",
-        "{{sbc|Active:}} '''Malphite's''' next basic attack within 6 seconds gains {{sti|50 '''bonus''' attack range}} and deals {{as|'''bonus''' physical damage on-hit}}. Additionally, for 5 seconds, '''Malphite's''' basic attacks also deal {{as|physical damage}} in a cone to units behind his target.",
+        "{{sbc|Active:}} '''Malphite's''' next {{tip|basic attack}} within 6 seconds gains {{sti|50 '''bonus''' attack range}} and deals {{as|'''bonus''' physical damage on-hit}}. It and other basic attacks for the next 5 seconds also trigger a cone [[on-hit]] dealing {{as|physical damage}} to all enemies hit in the direction of his target.",
         "''Thunderclap'' {{tip|basic attack reset|resets}} '''Malphite's''' basic attack timer."
       ],
-      "notes": "* {{Pending for test}}: Interaction with parrying ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind|miss}}).",
+      "notes": "* The passive '''will''' amplify [[Armor_penetration#Reducing_armor|''negative'' armor]], too, if '''Malphite's''' armor is dropped that low.\n* The empowered attack:\n** prevents '''Malphite''' from casting {{ai|Seismic Shard|Malphite}} and {{ai|Ground Slam|Malphite}} during its windup.\n** ''cannot'' have its {{tip|attack windup|windup}} canceled by new movement or attack commands, or casting {{ai|Unstoppable Force|Malphite}}.\n** ''can'' have its windup canceled by casting {{ii|Hextech Protobelt-01}}.\n** appears as a [[File:Critical_strike_icon.png|20px|link=]] [[Critical_strike#Cosmetic_critical_strikes|cosmetic critical strike]] against the target.\n* The cone starts from '''Malphite's''' location.\n** Unlike similar spells, it does not deal its damage separately to the primary target of the attack(s); if the target is outside the [[area of effect|Aoe]] when struck, it will not take the bonus damage.\n* {{Pending for test}}: Interaction with parrying effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "30/35/40/45/50",
@@ -387,23 +383,23 @@
         "full": "Landslide.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 96,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Malphite''' slams the ground, dealing {{as|magic damage}} to all nearby enemies and {{tip|cripple|crippling}} them for 3 seconds."
       ],
-      "notes": "* The {{tip|cripple}} [[Stacking#Stacks multiplicatively|stacks multiplicatively]] with other sources of [[Attack_speed#Decreasing_attack_speed|attack speed reductions]].",
+      "notes": "* The {{tip|cripple}} [[Stacking#Stacks multiplicatively|stacks multiplicatively]] with other sources of [[Attack_speed#Decreasing_attack_speed|attack speed reductions]].\n* ''Ground Slam'' will cast from wherever '''Malphite''' is at the end of the cast time.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
       "cooldownBurn": "7",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 60% AP)}} {{as|(+ 40% armor)}}}}<!--\n-->{{st|Cripple|{{ap|30 to 50}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"armor\">(+ 40% armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Cripple</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 60% AP)}} {{as|(+ 40% armor)}}}}{{st|Cripple|{{ap|30 to 50}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"armor\">(+ 40% armor)</span></span></li></ul><ul><li><span class=\"blue\">Cripple</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -474,13 +470,13 @@
       ],
       "costtype": "Mana",
       "targeting": "Ground",
-      "target_range": 1000,
+      "target_range": "{{tip|cr|icononly = true}} 1000",
       "image": {
         "full": "UFSlash.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 144,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -488,7 +484,7 @@
         "{{sbc|Active:}} '''Malphite''' {{tip|dashes}} {{tip|unstoppable|unstoppably}} to the target location and, upon impact, deals {{as|magic damage}} to all nearby enemies and {{tip|airborne|knocks them up}} for {{fd|1.5}} seconds.",
         "''Unstoppable Force will cast at max range if cast beyond that.''"
       ],
-      "notes": "* The dash speed increases if ''Unstoppable Force'' is cast in the middle of a wall with space on the other side.",
+      "notes": "* The dash speed can be up-to doubled if ''Unstoppable Force'' is targeted at the middle of a wall so that his destination ends up on the other side.\n** It will be decreased if his destination ends up closer to him than his target location.\n* If '''Malphite''' dies during his {{tip|dash}}, the ability cancels.\n** If the dash is interrupted without '''Malphite''' dying, for instance when he enters {{tip|resurrection}} during ''Unstoppable Force'', he halts and the ability instead affects enemies at the stopped location.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

@@ -1,6 +1,6 @@
 {
   "patch": "V9.10",
-  "changes": "10.3.1",
+  "changes": "10.15.1",
   "id": "Yuumi",
   "name": "Yuumi",
   "title": "the Magical Cat",
@@ -8,7 +8,7 @@
     "full": "Yuumi.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 96,
     "w": 48,
     "h": 48
@@ -58,16 +58,16 @@
         "full": "YuumiP.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Periodically, '''Yuumi's''' next [[basic attack]] against an enemy {{tip|champion}} becomes an {{tip|unstoppable basic attack}}, gains {{sti|range|50 '''bonus''' range}} and becomes a {{tip|projectile|non-projectile}}. This attack restores {{sti|mana|}}{{as|{{pp|50 to 160}}|mana}} {{as|mana}} and grants her a {{pp2|60+10*(x-1) for 3; then +15*x for 4; then +20*x for 7; then + 30*x}} {{as|(+ 30% AP)}} {{tip|shield}} that lasts until it is broken.",
-        "While {{ai|You and Me!|Yuumi|Attached}}, the shield transfers to her ''Anchor''."
+        "{{sbc|Innate:}} Periodically, '''Yuumi's''' next [[basic attack]] against an enemy {{tip|champion}} becomes {{tip|unstoppable basic attack|unstoppable}}, gains {{sti|range|50 '''bonus''' range}} and becomes a {{tip|projectile|non-projectile}}. This attack restores {{as|{{passive progression/deprecated version|25 to 100}}|mana}} {{as|(+ 8% '''maximum''' mana)}} {{sti|{{as|mana}}}} and grants her a {{pp|60+10*(x-1) for 3; then +15*x for 4; then +20*x for 7; then + 30*x}} {{as|(+ 30% AP)}} {{tip|shield}} that lasts until it is broken.",
+        "While {{ai|You and Me!|Yuumi|attached}}, the shield transfers to her ''Anchor''."
       ],
-      "notes": "* This ability will apply to a basic attack already in flight, but will not augment it into a non-projectile.\n* {{Pending for test}}: ''Bop 'n' Block's'' interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
+      "notes": "* This ability will apply to a basic attack already in flight, but will not augment it into a non-projectile.\n* ''Bop 'n' Block'' will not proc if the attack is {{tip|dodged}} or '''Yuumi''' misses the attack while {{tip|blind|blinded}}. It will proc even if the attack is {{tip|blocked}}.\n* Although the shield doesn't expire, it will never stack with itself.\n* Considering '''Yuumi's''' {{as|'''base''' mana}}, ''Bop 'n' Block's ''mana restore is increased by '''at least''' {{as|{{passive progression/deprecated version|({{ccd|Yuumi|mp_base}}+{{ccd|Yuumi|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))*0.08}}|mana}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -99,15 +99,15 @@
         "full": "YuumiQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Yuumi''' fires an errant missile in the target direction that deals {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
         "If the missile is in flight for 1 second, it deals increased {{as|magic damage}}, and {{tip|slow|slows}} enemy {{tip|champions}} struck by 20% for 1 second.",
-        "While {{ai|You and Me!|Yuumi|Attached}}, '''Yuumi''' instead directs the trajectory of the missile using the cursor for up to 2 seconds before fizzling, during which she and the ''Anchor'' can see the effective range. This cannot be done while channeling {{ai|Final Chapter|Yuumi}}."
+        "While {{ai|You and Me!|Yuumi|attached}}, '''Yuumi''' instead directs the trajectory of the missile using the cursor for up to 2 seconds before fizzling, during which she and the ''Anchor'' can see the effective range. This cannot be done while channeling {{ai|Final Chapter|Yuumi}}."
       ],
       "notes": "",
       "skillkey": "Q",
@@ -252,36 +252,37 @@
         "full": "YuumiW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Yuumi''' and her ''Anchor'' gain flat {{tip|Adaptive force|adaptive force}} plus a percentage of the ''Anchor's'' {{tip|Adaptive force|adaptive force}} and a percentage of their {{sti|{{as|'''bonus''' attack damage}}}} or {{sti|{{as|ability power}}}}, whichever is higher, as {{tip|Adaptive force|adaptive force}}. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
-        "{{sbc|Active:}} After a {{fd|0.25}}-second {{tip|channel}}, '''Yuumi''' {{tip|dashes}} to an {{tt|allied champion|The Anchor}} and {{tip|Attached|attaches}} to them. This dash is {{tip|interrupt|interrupted}} by {{tip|immobilize|immobilizing}} effects. While attached, '''Yuumi''' follows her ''Anchor's'' movement, becomes {{tip|untargetable}}, (except from {{tip|turrets}} and in-flight {{tip|projectile|projectiles}} [[unit-targeted|targeting]] her) and casts her spells from the ''Anchor's'' position. The cooldown starts ticking down upon attaching to the first ''Anchor''. ''You and Me!'' can be recast after {{fd|0.5}} seconds of the attachment.",
+        "{{sbc|Passive:}} The ''Anchor'' gains either a flat and percentage amount of their {{sti|{{as|'''bonus''' Attack Damage}}}} or a flat and percentage amount of their {{sti|{{as|Ability Power}}}}, based on whichever was initially higher. The percentage '''bonus''' of ''You and Me!'' also benefits of its flat '''bonus'''.",
+        "'''Yuumi''' then gains flat {{tip|adaptive force}} plus an amount based on a percentage of the ''Anchor's'' '''current''' {{as|'''bonus''' Attack Damage}} or {{as|Ability Power}}, whichever is higher. Additionally, '''Yuumi''' starts with a point in ''You and Me!'' and {{ai|Prowling Projectile|Yuumi}} instead has 6 ranks.",
+        "{{sbc|Active:}} After a {{fd|0.25}}-second {{tip|channel}}, '''Yuumi''' {{tip|dashes}} to the target {{tt|allied champion|The Anchor}} and {{tip|Attached|attaches}} to them. This dash is {{tip|interrupt|interrupted}} by {{tip|immobilize|immobilizing}} effects. While attached, '''Yuumi''' follows her ''Anchor's'' movement, becomes {{tip|untargetable}} (except from {{tip|turrets}} and in-flight {{tip|projectile|projectiles}} [[unit-targeted|targeting]] her), and casts her spells from the ''Anchor's'' position. The cooldown starts ticking down upon completing the {{tip|channel}}. ''You and Me!'' can be recast after {{fd|0.5}} seconds of the attachment.",
         "{{sbc|Recast:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies or under {{tt|certain circumstances|In the notes below}}. If recast without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash up to 250 units in the target direction, putting the ability on cooldown.",
         "''You and Me!'' is placed on a 5-second cooldown if '''Yuumi''' is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}}."
       ],
-      "notes": "* The ability name for the recast is ''Change of Plan''.\n*''You and Me!'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**{{ci|Kassadin}} cannot gain a stack for {{ai|Force Pulse|Kassadin}} while '''Yuumi''' is {{tip|untargetable}}.\n* '''Yuumi''' will automatically detach in specific circumstances:\n** When her ''Anchor'' starts a {{si|Teleport}} channel. \n** After the ''Anchor'' completes a {{si|Recall}} channel.\n** Entering {{tip|resurrection}}.\n** Her ''Anchor'' is sent to the {{ai|Realm of Death|Mordekaiser}}.\n** She is pulled by {{ai|Fate's Call|Kalista}}.\n* The {{tip|dash}} has a maximum following range. If her target is too far away before the attachment, the ''dash'' is interrupted and ''You and Me!'' goes on cooldown.\n* If '''Yuumi''' is hit by a delayed [[area of effect]] ability (e.g. {{ai|Chum the Waters|Fizz}}, {{ai|Last Embrace|Senna}}, {{ai|Time Bomb|Zilean}}) or is emitting an [[aura]] effect (e.g. {{ai|Wild Growth|Lulu}}, {{ii|Bami's Cinder}}) and she attaches to an ally, the effect occurs from the ''Anchor's'' position instead.\n** Delayed [[Single target|single-targeted]] abilities do not transfer to the ''Anchor'' (e.g. {{ai|Death Mark|Zed}}, {{ai|Umbral Trespass|Kayn}}).\n* Her {{tip|monster}} aggression transfers to the ''Anchor''.\n* Enemies gain an assist on '''Yuumi''' if they damaged the ''Anchor''.\n* '''Yuumi''' gains assists on champion {{tip|takedown|takedowns}} from her ''Anchor''.\n* '''Yuumi''' will also become {{tip|stealth|stealthed}} if her ''Anchor'' does, and can cast her own abilities without breaking the stealth.\n* '''Yuumi''' can channel the {{ii|Eye of the Herald}} while attached.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side; if '''Yuumi''' is on the red team, she will remain on the northeast. While channeling {{ai|Final Chapter|Yuumi}}, she will be behind her ''Anchor''.\n* '''Yuumi''' can dash to targetable {{tip|zombie state}} allies (currently only {{cai|Glory in Death|Sion}}), but she cannot stay attached for long.\n* '''Yuumi''' doesn't ''detach'' instantly when her ''Anchor'' dies. There's a small grace period in which she can recast ''You and Me!'' to attach to another champion without the {{tip|channel}}.\n* The [[Summoner|player's]] screen will briefly flash red if '''Yuumi''' is affected by a {{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect, or if she forcibly detaches from her ''Anchor''.\n* The ''Anchor's'' [[health bar]] will have a different frame to indicate the ''attached'' status:\n[[File: Yuumi Health Bar.png|200px|center]]\n* This following table refers for interactions while '''Yuumi''' is attached:\n{{ct|move=false|cast=true|attack=false|items=true, true, true, false|spells=true, false, false, false, false|interrupts=death}}",
+      "notes": "* The ability name for the recast is ''Change of Plan''.\n*''You and Me!'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**{{ci|Kassadin}} cannot gain a stack for {{ai|Force Pulse|Kassadin}} while '''Yuumi''' is {{tip|untargetable}}.\n* '''Yuumi''' will automatically detach in the following circumstances:\n** When her ''Anchor'' starts a {{si|Teleport}} channel. \n** After the ''Anchor'' completes a {{si|Recall}} channel.\n** Entering {{tip|resurrection}}.\n** Her ''Anchor'' is sent to the {{ai|Realm of Death|Mordekaiser}}.\n** She is pulled by {{ai|Fate's Call|Kalista}}.\n* The {{tip|dash}} has a maximum following range. If her target is too far away before the attachment, the ''dash'' is interrupted and ''You and Me!'' goes on cooldown.\n* While attached to the ''Anchor'', '''Yuumi''' is considered in being at her ''Anchor's'' position, regardless of where she is visually placed near them. For example, {{tip|turret}} shots will appear as if they were hitting the ''Anchor'', but in reality they're actually hitting '''Yuumi'''.\n* Her {{tip|monster}} aggression transfers to the ''Anchor''.\n* Enemies gain an assist on '''Yuumi''' if they damaged the ''Anchor''.\n* '''Yuumi''' gains assists on champion {{tip|takedown|takedowns}} from her ''Anchor''.\n* '''Yuumi''' will also become {{tip|stealth|stealthed}} if her ''Anchor'' does, and can cast her own abilities without breaking the stealth.\n* '''Yuumi''' can channel the {{ii|Eye of the Herald}} while attached.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side; if '''Yuumi''' is on the red team, she will remain on the northeast. While channeling {{ai|Final Chapter|Yuumi}}, she will be behind her ''Anchor''.\n* '''Yuumi''' can dash to targetable {{tip|zombie state}} allies (currently only {{cai|Glory in Death|Sion}}), but she cannot stay attached for long.\n* '''Yuumi''' doesn't ''detach'' instantly when her ''Anchor'' dies. There's a small grace period in which she can recast ''You and Me!'' to attach to another champion without the {{tip|channel}}.\n* The [[Summoner|player's]] screen will briefly flash red if '''Yuumi''' is affected by a {{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect, or if she forcibly detaches from her ''Anchor''.\n* The ''Anchor's'' [[health bar]] will have a different frame to indicate the ''attached'' status:\n[[File: Yuumi Health Bar.png|200px|center]]\n* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|move=false|cast=false|items=false, true|spells=true, false, false, false, false|interrupts=death, ground, root, silence}}\n* The following table refers for interactions while '''Yuumi''' is {{tip|attached}}:\n{{ct|move=false|cast=true|attack=false|items=true, true, true, false|spells=true, false, false, false, false|interrupts=death}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
       "cooldownBurn": "0",
       "effects": [
         {
-          "levelingtext": "{{st|Adaptive Force|{{ap|12 to 20}} (+ {{ap|12 to 20}}%)}}\n{{st|Attack Damage Adaptive Force|{{as|{{ap|12/0.6 to 20/0.6|round=2}}% '''bonus''' AD}}}}\n{{st|Ability Power Adaptive Force|{{as|{{ap|12 to 20}}% AP}}}}",
-          "str": "<ul><li><span class=\"blue\">Adaptive Force</span>: <span><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>%)</span></li></ul><br><ul><li><span class=\"blue\">Attack Damage Adaptive Force</span>: <span><span class=\"ad\"><spell-span :list=\"['20','23.33','26.67','30','33.33']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD</span></span></li></ul><br><ul><li><span class=\"blue\">Ability Power Adaptive Force</span>: <span><span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Attack Damage|{{ap|12*0.6 to 20*0.6}} {{as|(+ {{ap|12 to 20}}% '''bonus''' AD)}}}}\n{{st|Bonus Ability Power|{{ap|12 to 20}} {{as|(+ {{ap|12 to 20}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Damage</span>: <span><spell-span :list=\"['7.2','8.4','9.6','10.8','12']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Ability Power</span>: <span><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                12,
-                14,
-                16,
-                18,
-                20
+                7.2,
+                8.4,
+                9.6,
+                10.8,
+                12
               ],
               [
                 12,
@@ -291,17 +292,13 @@
                 20
               ],
               [
-                20,
-                23.33,
-                26.67,
-                30,
-                33.33
+                12,
+                14,
+                16,
+                18,
+                20
               ],
               null
-            ],
-            "st_slices": [
-              "Ability Power Adaptive Force",
-              "<span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span>"
             ],
             "as_ratios": [
               {
@@ -316,6 +313,70 @@
               {
                 "player_total_ap": []
               }
+            ],
+            "st_slices": [
+              "Bonus Ability Power",
+              "<spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_progression": [
+                  7.2,
+                  8.4,
+                  9.6,
+                  10.8,
+                  12
+                ],
+                "player_bonus_ad": [
+                  0.12,
+                  0.14,
+                  0.16,
+                  0.18,
+                  0.2
+                ],
+                "player_total_ap": []
+              },
+              "title": "Bonus Ability Power",
+              "str": "<spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "damage_type": "none"
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Adaptive Force|{{ap|12 to 20}}}}\n{{st|Adaptive Force per 100 '''bonus''' AD|{{ap|12/0.6 to 20/0.6|round=2}}}}\n{{st|Adaptive Force per 100 AP|{{ap|12 to 20}}}}",
+          "str": "<ul><li><span class=\"blue\">Adaptive Force</span>: <span><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Adaptive Force per 100 <b>bonus</b> AD</span>: <span><spell-span :list=\"['20','23.33','26.67','30','33.33']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Adaptive Force per 100 AP</span>: <span><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                12,
+                14,
+                16,
+                18,
+                20
+              ],
+              [
+                20,
+                23.33,
+                26.67,
+                30,
+                33.33
+              ],
+              [
+                12,
+                14,
+                16,
+                18,
+                20
+              ]
+            ],
+            "st_slices": [
+              "Adaptive Force per 100 AP",
+              "<spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>"
             ]
           },
           "subeffects": [
@@ -328,18 +389,10 @@
                   16,
                   18,
                   20
-                ],
-                "player_bonus_ad": [
-                  0.12,
-                  0.14,
-                  0.16,
-                  0.18,
-                  0.2
-                ],
-                "player_total_ap": []
+                ]
               },
-              "title": "Ability Power Adaptive Force",
-              "str": "<span class=\"ap\"><spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP</span>",
+              "title": "Adaptive Force per 100 AP",
+              "str": "<spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
             }
           ]
@@ -358,11 +411,12 @@
         8
       ],
       "cost": [
-        100,
-        115,
-        130,
-        145,
-        160
+        40,
+        45,
+        50,
+        55,
+        60,
+        15
       ],
       "costtype": "Mana",
       "targeting": "None",
@@ -370,19 +424,19 @@
         "full": "YuumiE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Yuumi''' {{tip|heals}} herself and gains {{as|15%|movement speed}} {{as|(+ 10% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed|ms}}}} and {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
-        "While {{ai|You and Me!|Yuumi|Attached}}, the ''Anchor'' is targeted by the ability instead."
+        "While {{ai|You and Me!|Yuumi|attached}}, the ''Anchor'' is affected by the ability instead."
       ],
-      "notes": "* No additional details.",
+      "notes": "* Considering '''Yuumi's''' {{as|'''base''' mana}}, ''Zoomies' ''mana cost is increased by '''at least''' {{as|{{passive progression/deprecated version|({{ccd|Yuumi|mp_base}}+{{ccd|Yuumi|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))*0.15}}|mana}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "100/115/130/145/160",
+      "costBurn": "40/45/50/55/60/15",
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
@@ -469,7 +523,7 @@
         "full": "YuumiR.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
@@ -477,7 +531,7 @@
       "description": [
         "{{sbc|Active:}} '''Yuumi''' and ''Book'' {{tip|channel}} for {{fd|3.5}} seconds, launching 7 waves in the target direction over the duration each dealing {{as|magic damage}}. Enemy {{tip|champions}} hit take only 50% damage from subsequent waves, and when struck with three waves, they are {{tip|root|rooted}} for {{fd|1.75}} seconds, this can only occur once per target."
       ],
-      "notes": "* While {{ai|You and Me!|Yuumi|attached}}, {{bi|Cloud Dragon Soul}} will not activate until '''Yuumi''' detaches.\n* {{tip|Spell shield}} will only block a single instance of damage.\n{{ct|channel|cast=[[File: Prowling Projectile.png|20px]] ''Prowling Projectile'' is disabled. [[File: You and Me!.png|20px]] ''You and Me!'' and [[File: Zoomies.png|20px]] ''Zoomies'' are usable.|attack=false|move=true|items=true,,,false|spells=true}}",
+      "notes": "* While {{ai|You and Me!|Yuumi|attached}}, {{bi|Cloud Dragon Soul}} will not activate until '''Yuumi''' detaches.\n* {{tip|Spell shield}} will only block a single instance of damage.\n* '''Yuumi's''' facing direction during the channel is considered to be in ''Final Chapter's'' target direction.\n** Using {{si|Hexflash}} during the channel will always cause '''Yuumi''' to {{tip|blink}} in the target direction of ''Final Chapter''.{{bug}}\n* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:\n{{ct|channel|cast={{ai|Prowling Projectile|Yuumi}} is disabled. {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} are usable.|attack=false|move=true|items=true,,,false|spells=true, true, true, false, true, true, true, true}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

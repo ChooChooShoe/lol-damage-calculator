@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "9.20.1",
+  "changes": "10.15.1",
   "id": "Nunu",
   "name": "Nunu & Willump",
   "title": "the Boy and His Yeti",
@@ -8,7 +8,7 @@
     "full": "Nunu.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 96,
     "w": 48,
     "h": 48
@@ -54,18 +54,19 @@
       "name": "Call of the Freljord",
       "maxrank": 0,
       "targeting": "Passive",
+      "target_range": 1500,
       "image": {
         "full": "NunuPassive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 96,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Nunu's''' and '''Willump's''' next instance of damage dealt to an enemy {{tip|champion}}, large {{tip|monster}} or {{tip|turrets|structure}} grants both '''Willump''' and the nearest allied champion ''Call of the Freljord'' for 4 seconds, prioritizing the ally with {{sti|{{as|'''highest''' attack speed}}}}.",
-        "{{sbc|Call of the Freljord:}} Targets gain {{sti|{{as|20% '''bonus''' attack speed}}}} and {{sti|ms|{{as|10% '''bonus''' movement speed}}}}. Additionally, '''Willump''' gains {{tip|splash damage}} on his [[basic attack]]s, dealing {{as|30% AD}} {{as|physical damage}} in a cone to enemies behind the target.",
+        "{{sbc|Innate:}} '''Nunu's''' and '''Willump's''' next instance of damage dealt to an enemy {{tip|champion}}, large {{tip|monster}} or {{tip|turrets|structure}} grants both '''Willump''' and the nearest allied champion within range ''Call of the Freljord'' for 4 seconds, prioritizing the ally with {{sti|{{as|'''highest''' attack speed}}}}.",
+        "{{sbc|Call of the Freljord:}} Targets gain {{sti|{{as|20% '''bonus''' attack speed}}}} and {{sti|ms|{{as|10% '''bonus''' movement speed}}}}. Additionally, '''Willump''' gains splash damage on his [[basic attack]]s, dealing {{as|30% AD}} {{as|physical damage}} in a cone to enemies behind the target.",
         "'''Nunu''' and '''Willump''' cannot trigger ''Call of the Freljord'' from the same enemy again for a time. Successive triggers of ''Call of the Freljord'' will stack the duration."
       ],
       "notes": "* The splash damage will critically strike when the basic attack does, but will not deal any bonus damage.",
@@ -93,12 +94,12 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 125,
+      "target_range": "{{tip|er|icononly = true}} 125",
       "image": {
         "full": "NunuQ.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
@@ -107,15 +108,15 @@
         "{{sbc|Active:}} '''Willump''' takes a bite out of the target enemy, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|healing}} himself. The heal is increased by 50% when below {{as|{{sti|health|50% of '''maximum''' health}}}}.",
         "Against {{tip|minions}} and {{tip|monsters}} he deals {{tip|true damage|{{as|true damage}}}} instead, and restores 25% more health."
       ],
-      "notes": "* Icon border glows when he is within the maximum healing threshold.\n* If the ability would deal lethal damage and the target is a minion or small-medium monster, it will instead perform an unique animation, {{tip|stun|stunning}} and {{tip|airborne|pulling}} them, and then deal the {{as|true damage}}.\n* {{tip|Spell shield|Spell shields}} will block the damage and the heal.",
+      "notes": "* Icon border glows when he is within the maximum healing threshold.\n* If the ability would deal lethal damage and the target is a minion or small-medium monster, it will instead perform an unique animation, {{tip|stun|stunning}} and {{tip|airborne|pulling}} them, and then deal the {{as|true damage}}.\n** This counts as an immobilization for triggering [[Immolate]].\n* {{tip|Spell shield|Spell shields}} will block the damage and the heal.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
-          "levelingtext": "{{st|Champion Damage|{{ap|60 to 220}} {{as|(+ 50% AP)}} {{as|(+ 5% '''bonus''' health)}}}}\n{{st|Base Healing from Champions|{{ap|75*0.8 to 215*0.8}} {{as|(+ 56% AP)}} {{as|(+ 8% '''bonus''' health)}}|Empowered Healing from Champions|{{ap|75*0.8*1.5 to 215*0.8*1.5}} {{as|(+ 84% AP)}} {{as|(+ 12% '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Champion Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 5% <b>bonus</b> health)</span></span></li></ul><br><ul><li><span class=\"blue\">Base Healing from Champions</span>: <span><spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 56% AP)</span> <span class=\"health\">(+ 8% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Empowered Healing from Champions</span>: <span><spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 84% AP)</span> <span class=\"health\">(+ 12% <b>bonus</b> health)</span></span></li></ul>",
+          "levelingtext": "{{st|Champion Damage|{{ap|60 to 220}} {{as|(+ 65% AP)}} {{as|(+ 5% '''bonus''' health)}}}}\n{{st|Base Healing from Champions|{{ap|75*0.8 to 215*0.8}} {{as|(+ {{ap|90*0.8}}% AP)}} {{as|(+ {{ap|10*0.8}}% '''bonus''' health)}}|Empowered Healing from Champions|{{ap|75*0.8*1.5 to 215*0.8*1.5}} {{as|(+ {{ap|90*0.8*1.5}}% AP)}} {{as|(+ {{ap|10*0.8*1.5}}% '''bonus''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Champion Damage</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span> <span class=\"health\">(+ 5% <b>bonus</b> health)</span></span></li></ul><br><ul><li><span class=\"blue\">Base Healing from Champions</span>: <span><spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['72']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['8']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Empowered Healing from Champions</span>: <span><spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['108']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,38 +136,50 @@
                 172
               ],
               [
+                72
+              ],
+              [
+                8
+              ],
+              [
                 90,
                 132,
                 174,
                 216,
                 258
-              ]
+              ],
+              [
+                108
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.5
+                "player_total_ap": 0.65
               },
               {
                 "player_bonus_hp": 0.05
               },
               {
-                "player_total_ap": 0.56
+                "player_total_ap": [
+                  0.12
+                ]
               },
               {
-                "player_bonus_hp": 0.08
+                "player_bonus_hp": []
               },
               {
-                "player_total_ap": 0.84
+                "player_total_ap": []
               },
               {
-                "player_bonus_hp": 0.12
+                "player_bonus_hp": []
               }
             ],
             "st_slices": [
               "Base Healing from Champions",
-              "<spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 56% AP)</span> <span class=\"health\">(+ 8% '''bonus''' health)</span>",
+              "<spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['72']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['8']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
               "Empowered Healing from Champions",
-              "<spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 84% AP)</span> <span class=\"health\">(+ 12% '''bonus''' health)</span>"
+              "<spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['108']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -180,11 +193,13 @@
                   180,
                   220
                 ],
-                "player_total_ap": 0.56,
+                "player_total_ap": [
+                  0.12
+                ],
                 "player_bonus_hp": 0.05
               },
               "title": "Base Healing from Champions",
-              "str": "<spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 56% AP)</span> <span class=\"health\">(+ 8% '''bonus''' health)</span>",
+              "str": "<spell-span :list=\"['60','88','116','144','172']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['72']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['8']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
               "damage_type": "none"
             },
             {
@@ -197,18 +212,20 @@
                   144,
                   172
                 ],
-                "player_total_ap": 0.56,
+                "player_total_ap": [
+                  0.12
+                ],
                 "player_bonus_hp": 0.05
               },
               "title": "Empowered Healing from Champions",
-              "str": "<spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 84% AP)</span> <span class=\"health\">(+ 12% '''bonus''' health)</span>",
+              "str": "<spell-span :list=\"['90','132','174','216','258']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['108']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['12']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Non-Champion Damage|{{ap|340 to 980}}}}\n{{st|Base Healing from Non-Champions|{{ap|75 to 215}} {{as|(+ 70% AP)}} {{as|(+ 10% '''bonus''' health)}}|Empowered Healing from Non-Champions|{{ap|75*1.5 to 215*1.5}} {{as|(+ 105% AP)}} {{as|(+ 15% '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Non-Champion Damage</span>: <span><spell-span :list=\"['340','500','660','820','980']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Base Healing from Non-Champions</span>: <span><spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Empowered Healing from Non-Champions</span>: <span><spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span> <span class=\"health\">(+ 15% <b>bonus</b> health)</span></span></li></ul>",
+          "levelingtext": "{{st|Non-Champion Damage|{{ap|340 to 980}}}}\n{{st|Base Healing from Non-Champions|{{ap|75 to 215}} {{as|(+ 90% AP)}} {{as|(+ 10% '''bonus''' health)}}|Empowered Healing from Non-Champions|{{ap|75*1.5 to 215*1.5}} {{as|(+ {{ap|90*1.5}}% AP)}} {{as|(+ {{ap|10*1.5}}% '''bonus''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Non-Champion Damage</span>: <span><spell-span :list=\"['340','500','660','820','980']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Base Healing from Non-Champions</span>: <span><spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Empowered Healing from Non-Champions</span>: <span><spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['135']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -233,27 +250,33 @@
                 217.5,
                 270,
                 322.5
-              ]
+              ],
+              [
+                135
+              ],
+              null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.7000000000000001
+                "player_total_ap": 0.9
               },
               {
                 "player_bonus_hp": 0.1
               },
               {
-                "player_total_ap": 1.05
+                "player_total_ap": [
+                  0.15
+                ]
               },
               {
-                "player_bonus_hp": 0.15
+                "player_bonus_hp": []
               }
             ],
             "st_slices": [
               "Base Healing from Non-Champions",
-              "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
+              "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
               "Empowered Healing from Non-Champions",
-              "<spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>"
+              "<spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['135']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -267,11 +290,11 @@
                   820,
                   980
                 ],
-                "player_total_ap": 0.7000000000000001,
+                "player_total_ap": 0.9,
                 "player_bonus_hp": 0.1
               },
               "title": "Base Healing from Non-Champions",
-              "str": "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
+              "str": "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
               "damage_type": "none"
             },
             {
@@ -284,11 +307,11 @@
                   180,
                   215
                 ],
-                "player_total_ap": 0.7000000000000001,
+                "player_total_ap": 0.9,
                 "player_bonus_hp": 0.1
               },
               "title": "Empowered Healing from Non-Champions",
-              "str": "<spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>",
+              "str": "<spell-span :list=\"['112.5','165','217.5','270','322.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['135']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['15']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
               "damage_type": "none"
             }
           ]
@@ -315,19 +338,19 @@
         "full": "NunuW.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Willump''' {{tip|cleanse|breaks free}} of active {{tip|slow|slowing}} effects, becomes {{tip|ghosted}}, and conjures a {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} that he {{tip|channel|begins rolling}} in the direction of the cursor for up to 10 seconds, increasing in power over 5 seconds, while automatically navigating his movement. Its size radius also increases to {{pp|3|changedisplay=true|type=charge time|75 to 200|0 to 5|formula= Increases by 62.5 units every 2.5 seconds}} units. He can steer with a {{tt|slow turn rate|See notes.}} that increases over time; changing direction resets the turn rate.",
-        "The duo is slowed by 50% for the first 1 second, but is {{tip|slow-immune}} and keeps all movement speed buffs at time of cast for the duration of the charge. After {{tt|a delay|See notes.}}, the duo gains {{sti|ms|{{tt|{{as|14 movement speed}}|Estimated}}}} every {{fd|0.25}} seconds, up to the greater value between {{ft|Total MS + {{pp|85 to 255}}|Total [[Movement_speed#Movement_speed_caps|Uncapped]] Flat MS + {{pp|85 to 255}}}} (''click to toggle''). The bonus movement speed from ''Biggest Snowball Ever!'' ignores the [[Movement_speed#Movement_speed_caps|movement speed cap]].",
-        "The snowball explodes upon colliding with an enemy {{tip|champion}}, {{tip|pet|large pet}}, medium-large {{tip|monster}} or terrain, dealing {{as|magic damage}} to surrounding enemies, increased by {{pp|6|type=charge time|key=%|0;0 to 400|0 to 5|displayformula=increases per frame after 1 second}}, {{tip|airborne|knocking them up}} for {{pp|6|type=charge time|0.5;0.5 to 0.75|0 to 5|displayformula=Increases per game tick after 1 second.}} seconds and subsequently {{tip|stun|stunning}} them for {{pp|12|type=charge time|0;0;0;0 to 0.5|0;1;2 to 5|displayformula=Increases per game tick after 2.33 seconds.}} seconds.",
+        "{{sbc|Active:}} '''Willump''' {{tip|cleanse|breaks free}} of active {{tip|slow|slowing}} effects, becomes {{tip|ghosted}}, gains a slightly larger field of view, and conjures a {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} that he {{tip|channel|begins rolling}} in the direction of the cursor for up to 10 seconds, increasing in power over 5 seconds, while automatically navigating his movement. Its size radius also increases to {{passive progression/deprecated version|3|changedisplay=true|type=charge time|75 to 200|0 to 5|formula= Increases by 62.5 units every 2.5 seconds}} units. He can steer with a {{tt|slow turn rate|See notes.}} that increases over time; changing direction resets the turn rate.",
+        "The duo is slowed by 50% for the first 1 second, but is {{tip|slow-immune}} and keeps all {{as|movement speed}} [[buff]]s at time of cast for the duration of the charge. After {{tt|a delay|See notes.}}, the duo gains {{sti|ms|{{tt|{{as|14 movement speed}}|Estimated}}}} every {{fd|0.25}} seconds, up to the greater value between {{ft|{{as|Total MS + {{passive progression/deprecated version|85 to 255}}|movement speed}}|{{as|Total|ms}} [[Movement_speed#Movement_speed_caps|Uncapped]] {{as|Flat MS + {{passive progression/deprecated version|85 to 255}}|movement speed}}}} (''click to toggle''). The {{as|'''bonus''' movement speed}} from ''Biggest Snowball Ever!'' ignores the [[Movement_speed#Movement_speed_caps|movement speed cap]].",
+        "The snowball explodes upon colliding with an enemy {{tip|champion}}, {{tip|pet|large pet}}, medium-large {{tip|monster}} or terrain, dealing {{as|magic damage}} to surrounding enemies, increased by {{passive progression/deprecated version|6|type=charge time|key=%|0;0 to 400|0 to 5|displayformula=increases per frame after 1 second}}, {{tip|airborne|knocking them up}} for {{passive progression/deprecated version|6|type=charge time|0.5;0.5 to 0.75|0 to 5|displayformula=Increases per game tick after 1 second.}} seconds and subsequently {{tip|stun|stunning}} them for {{passive progression/deprecated version|12|type=charge time|0;0;0;0 to 0.5|0;1;2 to 5|displayformula=Increases per game tick after 2.33 seconds.}} seconds.",
         "The snowball rolls over enemy {{tip|minion|minions}} and small monsters in its path dealing {{fd|33.3}}% of the damage as {{as|magic damage}}.",
-        "After 10 seconds, or if the duo is {{tip|interrupt|interrupted}}, they will let loose the snowball, sending it rolling forward for an additional {{pp|6|type=charge time|750;750 to 1750|0 to 5|displayformula=increases per frame after 1 second}} units during which it will not grow any larger and will explode upon colliding with an enemy unit. ''Biggest Snowball Ever!'' can be recast after {{fd|0.5}} seconds."
+        "After 10 seconds, or if the duo is {{tip|interrupt|interrupted}}, they will let loose the snowball, sending it rolling forward for an additional {{passive progression/deprecated version|6|type=charge time|750;750 to 1750|0 to 5|displayformula=increases per frame after 1 second}} units during which it will not grow any larger and will explode upon colliding with an enemy unit. ''Biggest Snowball Ever!'' can be recast after {{fd|0.5}} seconds."
       ],
-      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* ''Biggest Snowball Ever!'' is considered a [[Channel#Movement Channels|movement channel]], and so will be {{tip|interrupt|interrupted}} by {{tip|ground}} and {{tip|root}}.\n* There are 3 stages where the turn rate increases from the original one:\n** After turning for 1 second, the turn rate is increased to 175%.\n** After turning for 3 seconds, the turn rate is increased to 250%.\n** After turning for 6 seconds, the turn rate is increased to 325% where it caps.\n* The time threshold to begin gaining bonus movement speed may be bugged, as Flat Bonus MS increases the time while % Bonus MS decreases the time.\n** The formula appears to be (X ÷ 100) - Y, where:\n*** X = Total Flat MS after caps\n*** Y = {{fd|0.1}} per 1% %MS \n* The delay is not modified from its initially calculated value on-cast, even if additional movement speed is gained.\n* '''Nunu and Willump's''' movement speed always increases in increments of ~14, regardless of which total value he will reach. This takes 6 increments to reach the Total MS + 85, but may take more to reach the Uncapped Flat + 85. Due to flat bonuses increasing the time threshold, it is possible for the ability's effects to end before reaching the total uncapped movement speed. \n* If '''Nunu''' turns continuously he will create a {{tt|600|Estimated}} unit circle, increased with '''bonus''' movement speed, striking the same point up to 3 times, for a maximum of {{as|{{ap|180|225|270|315|360}}|magic damage}} {{as|(+ 300% AP)}} {{as|magic damage}}. The damage can be further increased by detonating the snowball, for a total of {{as|{{ap|360|450|540|630|720}}|magic damage}} {{as|(+450% AP)}} {{as|magic damage}}.\n* {{cai|Realm Warp|Ryze}} will only teleport '''Nunu and Willump''', leaving the {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} behind.\n* Hovering the cursor on the HUD (e.g [[Map (League of Legends)|mini map]] / champion portraits) does not affect the cast and steering of ''Biggest Snowball Ever!''.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within the same status effect, it will also be removed together with the ''slow'' upon activating ''Biggest Snowball Ever!''; e.g. {{cai|Wither|Nasus}}.\n{{ct|channel|attack=false|move=true|cast=Recasting the ability will interrupt it. All the other abilities are disabled|items=false|consume=false|spells=false}}",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* There are 3 stages where the turn rate increases from the original one:\n** After turning for 1 second, the turn rate is increased to 175%.\n** After turning for 3 seconds, the turn rate is increased to 250%.\n** After turning for 6 seconds, the turn rate is increased to 325% where it caps.\n* The time threshold to begin gaining bonus movement speed may be bugged, as Flat Bonus MS increases the time while % Bonus MS decreases the time.\n** The formula appears to be (X ÷ 100) - Y, where:\n*** X = Total Flat MS after caps\n*** Y = {{fd|0.1}} per 1% %MS \n* The delay is not modified from its initially calculated value on-cast, even if additional movement speed is gained.\n* '''Nunu and Willump's''' movement speed always increases in increments of ~14, regardless of which total value he will reach. This takes 6 increments to reach the Total MS + 85, but may take more to reach the Uncapped Flat + 85. Due to flat bonuses increasing the time threshold, it is possible for the ability's effects to end before reaching the total uncapped movement speed. \n* If '''Nunu''' turns continuously he will create a {{tt|600|Estimated}} unit circle, increased with '''bonus''' movement speed, striking the same point up to 3 times, for a maximum of {{as|{{ap|180|225|270|315|360}}|magic damage}} {{as|(+ 300% AP)}} {{as|magic damage}}. The damage can be further increased by detonating the snowball, for a total of {{as|{{ap|360|450|540|630|720}}|magic damage}} {{as|(+450% AP)}} {{as|magic damage}}.\n* {{cai|Realm Warp|Ryze}} will only teleport '''Nunu and Willump''', leaving the {{ccib|Biggest Snowball Ever! Minimap.png||snowball}} behind.\n* Hovering the cursor on the HUD (e.g [[Map (League of Legends)|mini map]] / champion portraits) does not affect the cast and steering of ''Biggest Snowball Ever!''.\n* If the {{tip|slow}} has a {{tip|cripple}} effect within the same status effect, it will also be removed together with the ''slow'' upon activating ''Biggest Snowball Ever!''; e.g. {{cai|Wither|Nasus}}.\n* The following table refers for interactions while '''Nunu & Willump''' are {{tip|channel|channeling}}:\n{{ct|channel|attack=false|move=Allowed, but cannot input movement commands.|cast=false|items=false|consume=false|spells=false|interrupts=death, ground, root, silence}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50/55/60/65/70",
@@ -513,7 +536,7 @@
         "full": "NunuE.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
@@ -522,9 +545,9 @@
         "{{sbc|Active:}} '''Nunu''' swiftly throws a volley of 3 snowballs in the target direction over {{fd|0.4}} seconds, each snowball shattering upon hitting an enemy, dealing {{as|magic damage}} to enemies in a cone.",
         "Enemies hit 3 times are {{tip|slow|slowed}} for 1 second. Champions and large monsters hit once are also ''Snowbound'' for 4 seconds, resetting on each hit. ''Snowball Barrage'' can be recast twice within 3 seconds at no additional cost.",
         "{{sbc|Recast:}} '''Nunu''' hurls another volley of snowballs, mimicking the first cast's effects. An enemy may only be {{tip|slow|slowed}} once for being hit by 3 snowballs.",
-        "After 3 seconds of the first cast, ''Snowbound'' enemies around '''Willump''' take {{as|magic damage}} and are {{tip|root|rooted}} for {{pp|0.5 to 1.5}} seconds."
+        "After 3 seconds of the first cast, ''Snowbound'' enemies around '''Willump''' take {{as|magic damage}} and are {{tip|root|rooted}} for {{passive progression/deprecated version|0.5 to 1.5}} seconds."
       ],
-      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** ''Snowbound'' consumption is not considered as an ability activation, nor does it proc {{ri|Conqueror}}.\n* '''Nunu''' can move while casting ''Snowball Barrage''.",
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** ''Snowbound'' consumption is not considered as an ability activation, nor does it proc {{ri|Conqueror}}.\n* The three snowballs are thrown independently from one another over the {{fd|0.4}} seconds and their direction is determined from '''Nunu & Willump's''' position at any given moment.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/55/60/65/70",
@@ -734,25 +757,25 @@
         "full": "NunuR.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nunu''' and '''Willump''' {{tip|channel|sap}} heat from the surrounding area for 3 seconds, {{tip|slow|slowing}} affected enemies by {{pp|13|type=channel time|key=%|0;50 to 95;95|0 to 3|displayformula=increases by 4.5% every 0.25 seconds. ''Starts at 0.25 seconds and finishes at 2.75 seconds''}}, as well as gaining a {{tip|shield}}. The affected area is hidden if the duo is not {{tip|sight|visible}} to the enemy team. ''Absolute Zero'' can be recast after {{fd|0.5}} seconds.",
-        "At the end of the duration, if the channel is {{tip|interrupt|interrupted}}, or the ability is recast, surrounding enemies take {{as|magic damage}}, reduced by {{pp|4|key=%|type=channel time|changedisplay=true|100 to 0|0 to 3}}. Once the channel ends, affected enemies will remain {{tip|slow|slowed}} for {{pp|13|type=channel time|0 to 3|0 to 3}} seconds and any remaining shield will decay over 3 seconds.",
+        "{{sbc|Active:}} '''Nunu''' and '''Willump''' {{tip|channel|channels}}, sapping heat from the surrounding area for 3 seconds, {{tip|slow|slowing}} affected enemies by {{passive progression/deprecated version|13|type=channel time|key=%|0;50 to 95;95|0 to 3|displayformula=increases by 4.5% every 0.25 seconds. ''Starts at 0.25 seconds and finishes at 2.75 seconds''}}, as well as gaining a {{tip|shield}}. The affected area is hidden if the duo is not {{tip|sight|visible}} to the enemy team. ''Absolute Zero'' can be recast after {{fd|0.5}} seconds.",
+        "At the end of the duration, or if the channel is {{tip|interrupt|interrupted}}, surrounding enemies take {{pp|key=%|type=channel time|changedisplay=true|0 to 100|0 to 3 by 1|formula=Increases the damage by 1% of its damage value every 0.03 seconds.}} of its damage as {{as|magic damage}}. Once the channel ends, affected enemies will remain {{tip|slow|slowed}} for {{passive progression/deprecated version|13|type=channel time|0 to 3|0 to 3}} seconds and any remaining shield will decay over 3 seconds.",
         "{{sbc|Recast:}} '''Nunu''' and '''Willump''' end the {{tip|channel}} early."
       ],
-      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n{{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,false}}",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}} and {{ai|Force Pulse|Kassadin}}.\n* While it's unlikely to happen normally, it is possible to deal zero damage with ''Absolute Zero'' if canceled as soon as started.\n* The following table refers for interactions while '''Nunu & Willump''' are {{tip|channel|channeling}}:\n{{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
       "cooldownBurn": "110/100/90",
       "effects": [
         {
-          "levelingtext": "{{st|Shield|{{ap|65 to 85}} {{as|(+ {{ap|30 to 50}}% '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> health)</span></span></li></ul>",
+          "levelingtext": "{{st|Shield|{{ap|65 to 85}} {{as|(+ 150% AP)}} {{as|(+ {{ap|30 to 50}}% '''bonus''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -768,6 +791,9 @@
             ],
             "as_ratios": [
               {
+                "player_total_ap": 1.5
+              },
+              {
                 "player_bonus_hp": [
                   0.3,
                   0.35,
@@ -779,7 +805,7 @@
             ],
             "st_slices": [
               "Shield",
-              "<spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>"
+              "<spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -793,6 +819,7 @@
                   80,
                   85
                 ],
+                "player_total_ap": 1.5,
                 "player_bonus_hp": [
                   0.3,
                   0.35,
@@ -802,14 +829,14 @@
                 ]
               },
               "title": "Shield",
-              "str": "<spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
+              "str": "<spell-span :list=\"['65','70','75','80','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' health)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Maximum Damage|{{ap|625 to 1275}} {{as|(+ 250% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['625','787.5','950','1112.5','1275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|625 to 1275}} {{as|(+ 250% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['625','787.5','950','1112.5','1275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -828,7 +855,7 @@
               }
             ],
             "st_slices": [
-              "Maximum Damage",
+              "Magic Damage",
               "<spell-span :list=\"['625','787.5','950','1112.5','1275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span>"
             ]
           },
@@ -845,9 +872,9 @@
                 ],
                 "player_total_ap": 2.5
               },
-              "title": "Maximum Damage",
+              "title": "Magic Damage",
               "str": "<spell-span :list=\"['625','787.5','950','1112.5','1275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 250% AP)</span>",
-              "damage_type": "unknown"
+              "damage_type": "magic"
             }
           ]
         }

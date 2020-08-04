@@ -65,7 +65,7 @@
       },
       "description": [
         "{{sbc|Innate:}} Periodically, upon taking {{tip|death|fatal damage}}, '''Anivia''' {{tip|dispel|dispels}} all {{tip|debuff|debuffs}} and transforms into '''Eggnivia''', while also recovering all of her {{as|{{sti|health}}}}.",
-        "'''Eggnivia''' cannot act but gains {{pp|5|showtype=true|-40 to 20|1;5;8;12;15|changedisplay=true}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}. After 6 seconds, if '''Eggnivia''' is still alive, '''Anivia''' is {{tip|resurrection|reborn}} with {{as|{{sti|health|'''Eggnivia's current''' health}}}}."
+        "'''Eggnivia''' cannot act but gains {{passive progression/deprecated version|5|showtype=true|-40 to 20|1;5;8;12;15|changedisplay=true}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}. After 6 seconds, if '''Eggnivia''' is still alive, '''Anivia''' is {{tip|resurrection|reborn}} with {{as|{{sti|health|'''Eggnivia's current''' health}}}}."
       ],
       "notes": "* Triggering ''Rebirth'' while being pulled by {{cai|Fear Beyond Death|Urgot}} will not execute '''Anivia'''.\n* Triggering ''Rebirth'' will break {{tip|tether|tethers}} on '''Anivia'''.\n* {{ii|Guardian Angel}} and {{ai|Chronoshift|Zilean}} will take precedence over ''Rebirth''.\n* While in egg form, '''Anivia''' is still classified as a champion.\n* If '''Anivia''' uses {{si|Teleport}} before she takes fatal damage, the channel is not interrupted and she will blink to her target in egg form.",
       "skillkey": "I",
@@ -103,8 +103,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Anivia''' launches a massive chunk of ice which flies toward the target location, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies it passes through by {{pp|4|changedisplay=true|key=%|20;20 to 40|0 to 3|type = [[File:Glacial Storm.png|20px|border|link=]] Glacial Storm's Rank|displayformula = 20%+(10%*(''Glacial Storm'' Rank-1))}} for 3 seconds. ''Flash Frost'' can be recast after the cast time.",
-        "{{sbc|Recast:}} '''Anivia''' shatters the orb, dealing the same {{as|magic damage}} to enemies within the detonation and {{tip|stun|stunning}} them.",
+        "{{sbc|Active:}} '''Anivia''' launches a massive chunk of ice which flies toward the target location, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} all enemies it passes through by {{passive progression/deprecated version|4|changedisplay=true|key=%|20;20 to 40|0 to 3|type = [[File:Glacial Storm.png|20px|border|link=]] Glacial Storm's Rank|displayformula = 20%+(10%*(''Glacial Storm'' Rank-1))}} for 3 seconds. ''Flash Frost'' can be recast after the cast time.",
+        "{{sbc|Recast:}} '''Anivia''' shatters the orb, dealing the same {{as|magic damage}} to enemies within the detonation and {{tip|stun|stunning}} them for a duration.",
         "At maximum [[range]] ''Flash Frost'' detonates automatically."
       ],
       "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Flash Frost'' can only proc {{ri|Conqueror}} once even if it damages the same target twice.",
@@ -324,7 +324,7 @@
       ],
       "costtype": "mana",
       "targeting": "Unit",
-      "target_range": 650,
+      "target_range": "{{tip|er|icononly = true}} 600",
       "image": {
         "full": "Frostbite.png",
         "sprite": "spell0.png",
@@ -335,17 +335,18 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Anivia''' blasts the target with a freezing wind, dealing {{as|magic damage}} that is [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} against targets {{tip|stun|stunned}} by {{ai|Flash Frost|Anivia}} or damaged by a fully formed {{ai|Glacial Storm|Anivia}} within the last 3 seconds."
+        "{{sbc|Active:}} '''Anivia''' blasts the target enemy with a freezing wind, dealing {{as|magic damage}}.",
+        "If the target was hit by {{ai|Flash Frost|Anivia}} or inside a fully formed {{ai|Glacial Storm|Anivia}} within the last 3 seconds, ''Frostbite's'' damage is [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}}."
       ],
-      "notes": "* The damage of ''Frostbite'' is calculated once it hits. If the target is no longer marked as recently stunned by {{ai|Flash Frost|Anivia}} or damaged by a fully formed {{ai|Glacial Storm|Anivia}} while ''Frostbite'' is in the air, it will deal standard damage.\n* ''Frostbite'' can deal double damage to {{ui|Dragon}} and {{ui|Baron Nashor}} if they were damaged by the second damage of {{ai|Flash Frost|Anivia}} or by a fully formed {{ai|Glacial Storm|Anivia}} a few seconds ago.\n* ''Frostbite'' has a different sound effect when it hits a target for double damage.",
+      "notes": "* The damage of ''Frostbite'' is calculated once it hits. If the target's mark from being hit by {{ai|Flash Frost|Anivia}} or a fully formed {{ai|Glacial Storm|Anivia}} wares off while the projectile is traveling, the damage is not doubled.\n* ''Frostbite'' has a different sound effect when it hits a target for double damage.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/60/70/80/90",
       "cooldownBurn": "4",
       "effects": [
         {
-          "levelingtext": "{{st|Magic damage|{{ap|50 to 150}} {{as|(+ 50% AP)}}|Enhanced Damage|{{ap|50*2 to 150*2}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic damage|{{ap|50 to 150}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -356,28 +357,16 @@
                 100,
                 125,
                 150
-              ],
-              [
-                100,
-                150,
-                200,
-                250,
-                300
               ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.5
-              },
-              {
-                "player_total_ap": 1
               }
             ],
             "st_slices": [
               "Magic damage",
-              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
-              "Enhanced Damage",
-              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -396,9 +385,37 @@
               "title": "Magic damage",
               "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
-            },
+            }
+          ]
+        },
+        {
+          "levelingtext": "{{st|Enhanced Damage|{{ap|50*2 to 150*2}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Enhanced Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "ratios": {},
+            "progression": [],
+            "ap_progressions": [
+              [
+                100,
+                150,
+                200,
+                250,
+                300
+              ]
+            ],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              "Enhanced Damage",
+              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+            ]
+          },
+          "subeffects": [
             {
-              "index": 1,
+              "index": 0,
               "ratios": {
                 "base_damage": [
                   100,
@@ -407,7 +424,7 @@
                   250,
                   300
                 ],
-                "player_total_ap": 0.5
+                "player_total_ap": 1
               },
               "title": "Enhanced Damage",
               "str": "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
@@ -444,12 +461,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Anivia''' calls forth a driving rain of ice and hail at the target location, dealing {{as|magic damage}} each second to enemies within, {{tip|slow|slowing}} them for 1 second. ''Glacial Storm'' can be recast after 1 second.",
+        "{{sbc|Active:}} '''Anivia''' calls forth a driving rain of ice and hail at the target location, dealing {{as|magic damage}} every {{fd|0.5}} seconds to enemies within, {{tip|slow|slowing}} them for 1 second. ''Glacial Storm'' can be recast after 1 second.",
         "The blizzard increases in size over {{fd|1.5}} seconds. At maximum size, enemies within the area take 300% damage and suffer a 50% stronger slow which lasts {{fd|1.5}} seconds.",
         "''Glacial Storm'' deactivates if she gets too far away or runs out of {{sti|{{as|mana}}}}. Additionally, ''Glacial Storm'' is deactivated by all forms of {{tip|interrupt|interrupting}} crowd control.",
         "{{sbc|Recast:}} '''Anivia''' deactivates ''Glacial Storm'', dealing one last tick of [[damage]]."
       ],
-      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Glacial Storm's'' slow leaves a trail that is visible even if the target is [[stealth]]ed.\n* ''Glacial Storm'' deals 3 half ticks at {{ap|200|267|333}} radius for a total of {{fd|1.5}} normal damage ticks before starts dealing empowered damage at 400 radius.\n* ''Glacial Storm'' heals '''Anivia''' 15 health upon cast and heals for up to 12 health per second when interacting with {{iis|Rod of Ages}} {{nie|Eternity}}.\n* {{tip|Stasis}} doesn't interrupt ''Glacial Storm''.\n** {{cai|Devour|Tahm Kench}} '''does''' interrupt (allied and enemy) ''Glacial Storm''.",
+      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Glacial Storm's'' slow leaves a trail that is visible even if the target is [[stealth]]ed.\n* ''Glacial Storm'' deals 3 half ticks at {{ap|200|267|333}} radius for a total of {{fd|1.5}} normal damage ticks before it starts dealing empowered damage at 400 radius.\n* ''Glacial Storm'' heals '''Anivia''' 15 health upon cast and heals for up to 12 health per second when interacting with {{iis|Rod of Ages}} {{nie|Eternity}}.\n* {{tip|Stasis}} doesn't interrupt ''Glacial Storm''.\n** {{cai|Devour|Tahm Kench}} '''does''' interrupt (allied and enemy) ''Glacial Storm''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "75",

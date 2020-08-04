@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.102",
-  "changes": "10.12.1",
+  "changes": "10.15.1",
   "id": "Swain",
   "name": "Swain",
   "title": "the Noxian Grand General",
@@ -8,7 +8,7 @@
     "full": "Swain.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 96,
     "w": 48,
     "h": 48
@@ -31,7 +31,7 @@
     "hpperlevel": 85,
     "mp": 468,
     "mpperlevel": 28.5,
-    "movespeed": 335,
+    "movespeed": 325,
     "armor": 22.72,
     "armorperlevel": 4,
     "spellblock": 30,
@@ -53,23 +53,24 @@
       "riotId": "",
       "name": "Ravenous Flock",
       "maxrank": 0,
+      "cooldown": 10,
       "targeting": "Unit",
       "target_range": 1125,
       "image": {
         "full": "Swain_P.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate - Ravenous:}} '''Swain''' can periodically target a nearby {{tip|immobilize|immobilized}} enemy {{tip|champion}} to rip out a {{as|Soul Fragment|buzzword3}} from them, dealing {{as|{{pp|20 to 105}}|magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|magic damage}}}} and {{tip|airborne|pulling}} them 290-units towards him. If the target would be brought past '''Swain''', they are instead {{tip|airborne|knocked back}} the excess distance.",
-        "Enemy champions also leave behind a {{as|Soul Fragment|buzzword3}} for 16 seconds upon [[death]], which can be harvested after 1 second if '''Swain''' is near them.",
-        "{{sbc|Innate - Flock:}} '''Swain's''' ravens bring nearby {{as|Soul Fragments|buzzword3}} to him, {{tip|healing}} him for {{as|{{pp|3|key=%|4 to 7|1 to 11}} of his '''maximum''' health}} and restoring {{as|{{pp|3|key=%|4 to 7|1 to 11}} of his '''maximum''' mana}}. Each {{as|Soul Fragment|buzzword3}} collected permanently increases his {{as|'''maximum''' health by 5}}."
+        "{{sbc|Innate - Ravenous:}} '''Swain''' can periodically target a nearby {{tip|immobilize|immobilized}} enemy {{tip|champion}} to rip out a {{as|Soul Fragment|buzzword3}} from them, dealing them {{as|{{passive progression/deprecated version|20 to 105}}|magic damage}} {{as|(+ 30% AP)}} {{tip|magic damage|{{as|magic damage}}}} and {{tip|airborne|pulling}} them 290-units towards him before a {{fd|0.25}}-second cast time. If the target would be brought past '''Swain''', they are instead {{tip|airborne|knocked back}} the excess distance.",
+        "Enemy champions also leave behind a {{as|Soul Fragment|buzzword3}} for 16 seconds upon {{tip|death}}, which can be harvested after 1 second if '''Swain''' is near them.",
+        "{{sbc|Innate - Flock:}} '''Swain's''' ravens bring nearby {{as|Soul Fragments|buzzword3}} to him, {{tip|healing}} him for {{as|{{passive progression/deprecated version|3|key=%|4 to 7|1 to 11}} of his '''maximum''' health}}. Each {{as|Soul Fragment|buzzword3}} collected permanently increases his {{as|'''maximum''' health by 5}}."
       ],
-      "notes": "* The crows carrying the souls will only be seen by the enemies if they have {{tip|sight|vision}} of '''Swain'''.\n* The pull will interrupt {{tip|channel|channels}} at the very beginning, but does not keep the target stunned for the rest of the movement.\n** {{tip|channel|Channels}} can be started successfully during the pull, provided the previous crowd control does not prevent them still.\n* {{Pending for test}}: {{tip|Spell shield}} interaction",
+      "notes": "* ''Ravenous Flock's'' {{tip|airborne|pull}} requires the target to be {{tip|immobilize|immobilized}} by an {{tt|enemy source|from the target's perspective}}.\n** Self-applied or allied-applied {{tip|immobilize|immobilizes}} do not allow ''Ravenous Flock'' to cast against the champion.\n** ''Ravenous Flock'' can be used against {{tip|cc-immune}} targets that are affected by an ongoing {{tip|immobilize|immobilization}}. This will apply the damage, but the target will be prevented from being {{tip|airborne|pulled}}.\n* The crows carrying the souls will only be seen by the enemies if they have {{tip|sight|vision}} of '''Swain'''.\n* The pull will interrupt {{tip|channel|channels}} at the very beginning, but does not keep the target stunned for the rest of the movement.\n** {{tip|channel|Channels}} can be started successfully during the pull, provided the previous crowd control does not prevent them still.\n* {{Pending for test}}: {{tip|Spell shield}} interaction",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -79,11 +80,11 @@
       "name": "Death's Hand",
       "maxrank": 5,
       "cooldown": [
-        10,
-        8.5,
-        7,
-        5.5,
-        4
+        9,
+        7.5,
+        6,
+        4.5,
+        3
       ],
       "cost": [
         65,
@@ -99,24 +100,23 @@
         "full": "SwainQ.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Swain''' unleashes five bolts of eldritch power in the target direction, dealing {{as|magic damage}} to all enemies in a cone. Enemies can be hit by multiple bolts, taking '''bonus''' [[damage]].",
-        "Bolts stop on impact with enemy champions."
+        "{{sbc|Active:}} '''Swain''' unleashes five bolts of eldritch power in the target direction, dealing {{as|magic damage}} to all enemies in a cone. Enemies can be hit by multiple bolts, taking {{as|'''bonus''' magic damage}}."
       ],
-      "notes": "* Death's Hand will still cast and deal damage if '''Swain''' dies during the cast time.",
+      "notes": "* ''Death's Hand'' will still cast and deal damage if '''Swain''' dies during the cast time.\n* ''Death's Hand'' will cast from wherever '''Swain''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65/70/75/80/85",
-      "cooldownBurn": "10/8.5/7/5.5/4",
+      "cooldownBurn": "9/7.5/6/4.5/3",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Damage Per Bolt|{{ap|15 to 35}}%|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)*4/100)}} {{as|(+ {{ap|40*(1+(15 to 35)*4/100)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Damage Per Bolt</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Magic Damage Per Bolt|{{ap|15 to 35}}%|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)*4/100)}} {{as|(+ {{ap|40*(1+(15 to 35)*4/100)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','75','95','115','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage Per Bolt</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -145,7 +145,7 @@
               }
             ],
             "st_slices": [
-              "Bonus Damage Per Bolt",
+              "Bonus Magic Damage Per Bolt",
               "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
               "Maximum Damage",
               "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
@@ -164,9 +164,9 @@
                 ],
                 "player_total_ap": 0.4
               },
-              "title": "Bonus Damage Per Bolt",
+              "title": "Bonus Magic Damage Per Bolt",
               "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "unknown"
+              "damage_type": "magic"
             },
             {
               "index": 1,
@@ -201,53 +201,53 @@
       ],
       "cost": [
         70,
-        85,
+        80,
+        90,
         100,
-        115,
-        130
+        110
       ],
       "costtype": "Mana",
       "targeting": "Ground",
-      "target_range": 3500,
+      "target_range": "{{ap|5500 to 7500}}",
       "image": {
         "full": "SwainW.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Swain''' summons a demonic eye at the target location, {{tip|sight|revealing}} it for 2 seconds, which explodes after {{fd|1.5}} seconds, dealing {{as|magic damage}} to all enemies hit, halved against {{tip|minions}}, and {{tip|slow|slowing}} them for {{fd|2.5}} seconds.",
-        "Enemy champions are {{tip|sight|revealed}} for an additional duration and have a {{as|Soul Fragment|buzzword3}} ripped from them."
+        "Enemy champions hit are also {{tip|sight|revealed}} for a duration and have a {{as|Soul Fragment|buzzword3}} ripped from them."
       ],
       "notes": "* Even if blocked by a {{tip|spell shield}}, '''Swain''' will still acquire the {{as|Soul Fragments|buzzword3}}.\n* ''Vision of Empire'' will also grant {{as|Soul Fragments|buzzword3}} from hitting {{tip|clone|clones}}.\n* ''Vision of Empire'' is visible and audible to enemies through the [[sight|fog of war]].",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70/85/100/115/130",
+      "costBurn": "70/80/90/100/110",
       "cooldownBurn": "22/21/20/19/18",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 70% AP)}}|Reduced Damage|{{ap|100/2 to 300/2}} {{as|(+ 35% AP)}}}}\n{{st|Slow Strength|{{ap|25 to 65}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow Strength</span>: <span><spell-span :list=\"['25','35','45','55','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 70% AP)}}|Reduced Damage|{{ap|80/2 to 240/2}} {{as|(+ 35% AP)}}}}\n{{st|Slow Strength|{{ap|25 to 65}}%}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow Strength</span>: <span><spell-span :list=\"['25','35','45','55','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                100,
-                150,
+                80,
+                120,
+                160,
                 200,
-                250,
-                300
+                240
               ],
               [
-                50,
-                75,
+                40,
+                60,
+                80,
                 100,
-                125,
-                150
+                120
               ],
               [
                 25,
@@ -275,11 +275,11 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  100,
-                  150,
+                  80,
+                  120,
+                  160,
                   200,
-                  250,
-                  300
+                  240
                 ],
                 "player_total_ap": 0.35000000000000003
               },
@@ -334,18 +334,18 @@
       "name": "Nevermove",
       "maxrank": 5,
       "cooldown": [
-        13,
-        12,
-        11,
         10,
-        9
+        10,
+        10,
+        10,
+        10
       ],
       "cost": [
-        60,
-        65,
-        70,
-        75,
-        80
+        50,
+        50,
+        50,
+        50,
+        50
       ],
       "costtype": "Mana",
       "targeting": "Direction",
@@ -354,7 +354,7 @@
         "full": "SwainE.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
@@ -363,11 +363,11 @@
         "{{sbc|Active:}} '''Swain''' launches a demonic wave in the target direction, dealing {{as|magic damage}} to enemies it passes through.",
         "Upon reaching its maximum distance, the wave returns to '''Swain''', detonating at the first enemy hit, dealing {{as|magic damage}} to all nearby enemies and {{tip|root|rooting}} them for {{fd|1.5}} seconds."
       ],
-      "notes": "* {{tip|Spell shield|Spell shields}} block either the pass-through or the detonation, not both.",
+      "notes": "* {{tip|Spell shield|Spell shields}} block either the pass-through or the detonation, not both.\n* ''Nevermove'' is always cast from the original casting position.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "60/65/70/75/80",
-      "cooldownBurn": "13/12/11/10/9",
+      "costBurn": "50",
+      "cooldownBurn": "10",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|35|70|105|140|175}} {{as|(+ 25% AP)}}}}",

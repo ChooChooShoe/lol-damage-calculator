@@ -384,13 +384,13 @@
         4
       ],
       "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
+        25,
+        35,
+        45,
+        55,
+        65
       ],
-      "costtype": "",
+      "costtype": "{{as|Health}}",
       "targeting": "None",
       "image": {
         "full": "Masochism.png",
@@ -403,43 +403,36 @@
       },
       "description": [
         "{{sbc|Passive:}} Taking {{as|magic damage}} or paying a {{sti|{{as|health cost}}}} increases '''Dr. Mundo's''' {{sti|mr|{{as|magic resistance by 3%}}}} for 2 seconds, stacking up to an amount.",
-        "{{sbc|Active:}} '''Dr. Mundo''' gains {{sti|{{as|'''bonus''' attack damage}}}} for 5 seconds, increased by {{as|{{pp|11|type='''missing''' health|key=%|key1=%|0 to 100|0 to 100|formula=1% per 1% of '''missing''' health}}|health}}.",
-        "Additionally, '''Dr. Mundo's''' next damaging [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Active:}} '''Dr. Mundo''' gains {{sti|{{as|'''bonus''' attack damage}}}} for 5 seconds, increased by an amount based on his {{as|percentage '''missing''' health|health}}.",
+        "Additionally, '''Dr. Mundo's''' next [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "''Masochism'' {{tip|basic attack reset|resets}} '''Dr. Mundo's''' basic attack timer."
       ],
-      "notes": "* ''Masochism's'' attack can be used even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Masochism's'' attack will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The attack damage bonus adjusts dynamically to '''Dr. Mundo's''' health.\n* ''Masochism'' does not apply to [[structures]]",
+      "notes": "* ''Masochism's'' attack can be used even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Masochism's'' attack will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The attack damage bonus adjusts dynamically to '''Dr. Mundo's''' health.\n* ''Masochism'' does not apply to [[structures]].",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "0",
+      "costBurn": "25/35/45/55/65",
       "cooldownBurn": "6/5.5/5/4.5/4",
       "effects": [
         {
-          "levelingtext": "{{st|Maximum Magic Resistance|{{ap|6 to 42}}%|Maximum Stacks|{{ap|6/3 to 42/3}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Magic Resistance</span>: <span><spell-span :list=\"['6','15','24','33','42']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Stacks</span>: <span><spell-span :list=\"['2','5','8','11','14']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Maximum Magic Resistance|{{ap|(2 to 11)*3 4|13*3}}%|Maximum Stacks|{{ap|2 to 11 4|13}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Magic Resistance</span>: <span><simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li><li><span class=\"blue\">Maximum Stacks</span>: <span><spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                6,
-                15,
-                24,
-                33,
-                42
-              ],
-              [
                 2,
                 5,
                 8,
                 11,
-                14
+                13
               ]
             ],
             "st_slices": [
               "Maximum Magic Resistance",
-              "<spell-span :list=\"['6','15','24','33','42']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
               "Maximum Stacks",
-              "<spell-span :list=\"['2','5','8','11','14']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span>"
             ]
           },
           "subeffects": [
@@ -447,37 +440,29 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  6,
-                  15,
-                  24,
-                  33,
-                  42
-                ]
-              },
-              "title": "Maximum Magic Resistance",
-              "str": "<spell-span :list=\"['6','15','24','33','42']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
                   2,
                   5,
                   8,
                   11,
-                  14
+                  13
                 ]
               },
+              "title": "Maximum Magic Resistance",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {},
               "title": "Maximum Stacks",
-              "str": "<spell-span :list=\"['2','5','8','11','14']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Minimum Bonus AD|{{as|{{ap|40 to 100}}|AD}}|Maximum Bonus AD|{{as|{{ap|40*2 to 100*2}}|AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "levelingtext": "{{st|Flat Bonus AD|{{as|{{ap|40 to 100}}|AD}}}}\n{{st|Maximum Missing Health Bonus AD|{{as|{{ap|20 to 80}}|AD}}|Maximum Bonus AD|{{as|{{ap|60 to 180}}|AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Flat Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Missing Health Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -489,27 +474,37 @@
                 85,
                 100
               ],
+              [
+                20,
+                35,
+                50,
+                65,
+                80
+              ],
               null
             ],
             "as_ratios": [
               {
                 "player_total_unknown": [
-                  0.8,
-                  1.1,
-                  1.4,
-                  1.7,
-                  2
+                  0.6,
+                  0.9,
+                  1.2,
+                  1.5,
+                  1.8
                 ]
+              },
+              {
+                "player_total_unknown": []
               },
               {
                 "player_total_unknown": []
               }
             ],
             "st_slices": [
-              "Minimum Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "Maximum Missing Health Bonus AD",
+              "<span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "Maximum Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
             ]
           },
           "subeffects": [
@@ -523,63 +518,48 @@
                   85,
                   100
                 ],
-                "player_total_unknown": [
-                  0.8,
-                  1.1,
-                  1.4,
-                  1.7,
-                  2
-                ]
+                "player_total_unknown": []
               },
-              "title": "Minimum Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "title": "Maximum Missing Health Bonus AD",
+              "str": "<span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "damage_type": "none"
             },
             {
               "index": 1,
               "ratios": {
-                "player_total_unknown": [
-                  0.8,
-                  1.1,
-                  1.4,
-                  1.7,
-                  2
-                ]
+                "base_progression": [
+                  20,
+                  35,
+                  50,
+                  65,
+                  80
+                ],
+                "player_total_unknown": []
               },
               "title": "Maximum Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Health Cost|{{as|{{ap|25 to 65}}|health}}}}{{st|Bonus Physical Damage|{{as|{{ap|3 to 5}}% of his '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Health Cost</span>: <span><span class=\"health\"><spell-span :list=\"['25','35','45','55','65']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>maximum</b> health</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|3 to 5}}% of his '''maximum''' health}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              [
-                25,
-                35,
-                45,
-                55,
-                65
-              ],
               null
             ],
             "as_ratios": [
               {
-                "player_total_unknown": [
+                "player_total_hp": [
                   0.03,
                   0.035,
                   0.04,
                   0.045,
                   0.05
                 ]
-              },
-              {
-                "player_total_hp": []
               }
             ],
             "st_slices": [
@@ -591,21 +571,13 @@
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
-                  25,
-                  35,
-                  45,
-                  55,
-                  65
-                ],
-                "player_total_unknown": [
+                "player_total_hp": [
                   0.03,
                   0.035,
                   0.04,
                   0.045,
                   0.05
-                ],
-                "player_total_hp": []
+                ]
               },
               "title": "Bonus Physical Damage",
               "str": "<span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>",

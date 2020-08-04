@@ -1,6 +1,6 @@
 {
   "patch": "V8.11",
-  "changes": "10.4.1",
+  "changes": "10.14.1",
   "id": "Pyke",
   "name": "Pyke",
   "title": "the Bloodharbor Ripper",
@@ -8,7 +8,7 @@
     "full": "Pyke.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 96,
     "w": 48,
     "h": 48
@@ -33,9 +33,9 @@
     "mpperlevel": 50,
     "movespeed": 330,
     "armor": 45,
-    "armorperlevel": 5,
+    "armorperlevel": 3.5,
     "spellblock": 32,
-    "spellblockperlevel": 1.5,
+    "spellblockperlevel": 1.25,
     "attackrange": 150,
     "hpregen": 7,
     "hpregenperlevel": 0.5,
@@ -58,17 +58,18 @@
         "full": "PykePassive.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}}}. '''Pyke''' also gains {{as|1 '''bonus''' movement speed}} while in the river.",
-        "'''Pyke''' also stores {{pp|key=%|25 to 50}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
-        "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount."
+        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}.|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}.}}",
+        "'''Pyke''' also stores {{passive progression/deprecated version|key=%|25 to 50}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
+        "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount.",
+        "{{sbc|Hidden innate:}} '''Pyke''' gains {{as|1 '''bonus''' movement speed}} while in the river."
       ],
-      "notes": "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.\n* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.\n*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.\n* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches the upper cap of {{as|60% of '''maximum''' health}} at {{pp|(0.6*({{ccd|Pyke|hp_base}}+{{ccd|Pyke|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.\n* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':\n{{stat table header|item}}{{Do for every item|item table row|p1n=2|p1v=pykehealth}}\n{{stat table footer}}",
+      "notes": "* Game elements that increase health based on the champion's health (e.g {{ii|Cinderhulk}}, {{iis|Gargoyle Stoneplate}}, {{ri|Overgrowth}}) will increase the health before getting converted by ''Gift of the Drowned Ones'', thus granting increased {{as|bonus AD}}.\n* {{ii|Spirit Visage}} and {{tip|Grievous Wounds}} take effect after ''Gift of the Drowned Ones's'' healing cap.\n*'''Pyke's''' ''Grey Health'' does not have a time limit, and will stay on his {{as|health bar}} until '''Pyke''' leaves enemy vision or dies.\n* Since '''Pyke's''' '''maximum''' health cannot be increased, ''Gift of the Drowned Ones'' reaches the upper cap of {{as|60% of '''maximum''' health}} at {{passive progression/deprecated version|(0.6*({{ccd|Pyke|hp_base}}+{{ccd|Pyke|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))-80)/8|color=ad}} {{as|'''bonus''' attack damage}}.\n* Amount of attack damage granted from list of items that grants health, converted with ''Gift of the Drowned Ones'':\n{{Item stat table|pykehealth}}",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -78,56 +79,56 @@
       "name": "Bone Skewer",
       "maxrank": 5,
       "cooldown": [
-        12,
-        11,
         10,
+        9.5,
         9,
+        8.5,
         8
       ],
       "cost": [
-        70,
-        70,
-        70,
-        70,
+        50,
+        55,
+        60,
+        65,
         70
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": "{{pp|type=channel time|7|400;400 to 1100|0;0.5 to 1|displayformula=400+(140 per 0.1 seconds, starting at 0.5 seconds). ''This is capped at 1 second.''}}",
+      "target_range": "{{passive progression/deprecated version|type=channel time|7|400;400 to 1100|0;0.5 to 1|displayformula=400+(140 per 0.1 seconds, starting at 0.5 seconds). ''This is capped at 1 second.''}}",
       "image": {
         "full": "PykeQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Pyke''' {{tip|channel|charges}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%. ''Bone Skewer'' can be recast at any time within its duration.",
-        "{{sbc|Recast:}} '''Pyke''' hurls his harpoon, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units {{tt|towards his direction|The pull can fling an enemy behind Pyke if the harpoon hits at close range}} and {{tip|slow|slowing}} them by 90% for 1 second.",
+        "{{sbc|Recast:}} '''Pyke''' {{tip|projectile|hurls}} his harpoon, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units {{tt|towards his direction|The pull can fling an enemy behind Pyke if the harpoon hits at close range}}, {{tip|slow|slowing}} them by 90% for 1 second, and briefly {{tip|sight|revealing}} them.",
         "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to instead thrust his harpoon, hitting the closest enemy unit, prioritizing enemy {{tip|champion|champions}}.",
         "If '''Pyke''' is {{tip|interrupt|interrupted}} during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full {{sti|cooldown}} but refunds {{sti|mana|{{as|half the mana cost}}}}."
       ],
-      "notes": "* {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} will only block the charged ability.\n* {{si|Flash}} can be used during the cast time and ''Bone Skewer'' will affect enemies at the new location.\n* '''Pyke''' can still use [[summoner spell]]s besides {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} while hurling the harpoon but he cannot perform any other action.\n{{ct|charge|cast=interrupts|items=false|consume=Disabled, but can use trinkets}}",
+      "notes": "* {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} will only block the charged ability.\n* {{si|Flash}} can be used during the cast time and ''Bone Skewer'' will affect enemies at the new location.\n* '''Pyke''' can still use [[summoner spell]]s besides {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} while hurling the harpoon but he cannot perform any other action.\n* The following table refers for interactions while '''Pyke''' is {{tip|channel|channeling}}:\n{{ct|charge|cast=interrupts|items=false|consume=Disabled, but can use trinkets}}",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "70",
-      "cooldownBurn": "12/11/10/9/8",
+      "costBurn": "50/55/60/65/70",
+      "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|75 to 275}} {{as|(+ 60% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|85 to 285}} {{as|(+ 60% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                75,
-                125,
-                175,
-                225,
-                275
+                85,
+                135,
+                185,
+                235,
+                285
               ]
             ],
             "as_ratios": [
@@ -137,7 +138,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -145,16 +146,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  75,
-                  125,
-                  175,
-                  225,
-                  275
+                  85,
+                  135,
+                  185,
+                  235,
+                  285
                 ],
                 "player_bonus_ad": 0.6
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -185,66 +186,21 @@
         "full": "PykeW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 336,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' submerges into water, entering {{tip|camouflage}} and gaining {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
+        "{{sbc|Active:}} '''Pyke''' submerges into water, entering {{tip|camouflage}} and gaining {{as|40% {{as|(+ {{fd|1.5}}% per 1 Lethality)}} '''bonus''' movement speed|ms}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
         "Attacking or casting abilities immediately ends {{tip|camouflage}}."
       ],
-      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of {{ai|Death from Below|Pyke}}.\n* The maximum amount of {{sti|{{as|'''bonus''' movement speed}}}} gained possible from all lethality sources is {{fd|154.5%}}.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|37.5%}}'''|25 × 0.015}} bonus MS\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|31.5%}}'''|21 × 0.015}} bonus MS\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''18%'''|12 × 0.015}} bonus MS\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS \n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|10.5%}}'''|7 × 0.015}} bonus MS\n**** {{tt|'''Total Increased Percent'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|37.5%}} + {{fd|31.5%}} + 27% + 18% + 15% + 15% + {{fd|10.5%}}'' = '''{{fd|154.5%}}''' bonus MS\n***** '''Total Bonus Movement Speed''': {{as|{{pp|type= ''Ghostwater Dive's'' level|5|key=%|key1=|40+154.5 to 60+154.5|1 to 5|formula= 35% MS + (5% MS × ''Ghostwater Dive's'' level) + 154.5% MS}}}}",
+      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of {{ai|Death from Below|Pyke}}.\n* The maximum amount of {{sti|{{as|'''bonus''' movement speed}}}} gained possible from all lethality sources is {{fd|154.5%}}.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|37.5%}}'''|25 × 0.015}} bonus MS\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|31.5%}}'''|21 × 0.015}} bonus MS\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''18%'''|12 × 0.015}} bonus MS\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS \n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|10.5%}}'''|7 × 0.015}} bonus MS\n**** {{tt|'''Total Increased Percent'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|37.5%}} + {{fd|31.5%}} + 27% + 18% + 15% + 15% + {{fd|10.5%}}'' = '''{{fd|154.5%}}''' bonus MS\n***** '''Total Bonus Movement Speed''': {{fd|154.5%}} + 40% = {{fd|194.5%}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
       "cooldownBurn": "12/11.5/11/10.5/10",
-      "effects": [
-        {
-          "levelingtext": "{{st|Bonus Movement Speed|{{ap|40 to 60}}% {{as|(+ {{fd|1.5}}% per 1 Lethality)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"lethality\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% per 1 Lethality)</span></span></li></ul>",
-          "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                40,
-                45,
-                50,
-                55,
-                60
-              ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_unknown": 0.0151
-              }
-            ],
-            "st_slices": [
-              "Bonus Movement Speed",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"lethality\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% per 1 Lethality)</span>"
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  40,
-                  45,
-                  50,
-                  55,
-                  60
-                ],
-                "player_total_unknown": 0.0151
-              },
-              "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"lethality\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% per 1 Lethality)</span>",
-              "damage_type": "none"
-            }
-          ]
-        }
-      ]
+      "effects": []
     },
     "e1": {
       "riotId": "PykeE",
@@ -271,8 +227,8 @@
         "full": "PykeE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 96,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -287,18 +243,18 @@
       "cooldownBurn": "15",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|105 to 225}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                95,
-                125,
-                155,
-                185,
-                215
+                105,
+                135,
+                165,
+                195,
+                225
               ]
             ],
             "as_ratios": [
@@ -308,7 +264,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -316,16 +272,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  95,
-                  125,
-                  155,
-                  185,
-                  215
+                  105,
+                  135,
+                  165,
+                  195,
+                  225
                 ],
                 "player_bonus_ad": 1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

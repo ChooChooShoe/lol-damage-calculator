@@ -1,6 +1,6 @@
 {
   "patch": "V7.8",
-  "changes": "10.6.1",
+  "changes": "10.15.1",
   "id": "Rakan",
   "name": "Rakan",
   "title": "The Charmer",
@@ -8,7 +8,7 @@
     "full": "Rakan.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 0,
     "w": 48,
     "h": 48
@@ -74,17 +74,17 @@
         "full": "RakanQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Rakan''' slings an enchanted feather forward, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
         "If the target was an enemy {{tip|champion}} or {{tip|monster|epic monster}}, an area is marked around '''Rakan'''.",
-        "After 3 seconds or if an ally champion comes within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allies for {{pp|18 to 120}} {{as|(+ 70% AP)}}."
+        "After 3 seconds or if an ally champion comes within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allies for {{passive progression/deprecated version|18 to 120}} {{as|(+ 70% AP)}}."
       ],
-      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* If the spell is blocked by a {{tip|spell shield}}, the damage will be blocked, but '''Rakan''' will still be affected by the heal component.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.",
+      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* {{tip|Spell shield}} will not prevent the marked area from being formed.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.\n* ''Gleaming Quill'' will cast from wherever '''Rakan''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -161,15 +161,16 @@
         "full": "RakanW.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Rakan''' {{tip|dashes}} to the target location.",
-        "After a {{fd|0.35}}-second delay, he leaps into the air, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} surrounding enemies for 1 second.",
-        "'''''Rakan''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during Grand Entrance.''"
+        "After a {{fd|0.35}}-second delay upon arrival, he leaps into the air, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} surrounding enemies for 1 second.",
+        "'''''Rakan''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during Grand Entrance.''",
+        "''Grand Entrance will cast at max range if cast beyond that.''"
       ],
       "notes": "* No additional details.",
       "skillkey": "W",
@@ -178,18 +179,18 @@
       "cooldownBurn": "18/16.5/15/13.5/12",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|70 to 290}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 70,
-                120,
-                170,
-                220,
-                270
+                125,
+                180,
+                235,
+                290
               ]
             ],
             "as_ratios": [
@@ -199,7 +200,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -208,15 +209,15 @@
               "ratios": {
                 "base_damage": [
                   70,
-                  120,
-                  170,
-                  220,
-                  270
+                  125,
+                  180,
+                  235,
+                  290
                 ],
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','120','170','220','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -243,17 +244,18 @@
         "full": "RakanR.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Rakan''' breaks into a captivating sprint for 4 seconds, gaining {{sti|ms|{{as|50% '''bonus''' movement speed}}}} and becoming {{tip|ghosted}} for the duration. During this time he deals {{as|magic damage}} to all enemy units he collides with, in addition to {{tip|charm|charming}} and {{tip|slow|slowing}} them by 75%. This may only occur once per unit.",
+        "{{sbc|Active:}} '''Rakan''' breaks into a captivating sprint for 4 seconds, gaining {{sti|ms|{{as|50% '''bonus''' movement speed}}}} and becoming {{tip|ghosted}} for the duration. During this time he deals {{as|magic damage}} to all enemy units he collides with, in addition to {{tip|charm|charming}} and {{tip|slow|slowing}} them by 75%. Colliding with an enemy {{tip|champion}} increases ''The Quickness' '' duration by {{fd|0.25}} seconds. This may only occur once per unit.",
         "When '''Rakan''' collides with his first enemy {{tip|champion}} he gains an additional {{sti|ms|{{as|100% '''bonus''' movement speed}}}}, which starts decaying after {{fd|0.5}} seconds by 20% every {{fd|0.5}} seconds.",
+        "During the first {{fd|0.5}} seconds of ''The Quickness'', '''Rakan''' is in [[Channel#Casting_Times|cast time]].",
         "''During The Quickness, '''Rakan''' cannot [[basic attack]] enemy champions if he did not charm them.''"
       ],
-      "notes": "* The spell duration is increased by {{fd|0.25}} seconds per enemy hit.\n* {{ai|Grand Entrance|Rakan}} can be buffered while ''The Quickness'' is active.\n{{ct|cast|attack=true|move=true|cast=[[File: Grand Entrance.png|20px|link=]] ''Grand Entrance'' is disabled. [[File: Gleaming Quill.png|20px|link=]] ''Gleaming Quill'' and [[File: Battle Dance.png|20px|link=]] ''Battle Dance'' are usable.|move=true|items=true|consume=true|spells=true,false,true,true,true}}",
+      "notes": "{{clr}}\n* The following table refers for interactions while '''Rakan''' is in cast time:\n{{ct|cast|attack=true|move=true|cast=[[File: Grand Entrance.png|20px|link=]] ''Grand Entrance'' is disabled but can still be buffered. [[File: Gleaming Quill.png|20px|link=]] ''Gleaming Quill'' and [[File: Battle Dance.png|20px|link=]] ''Battle Dance'' are usable.|move=true|items=true|consume=true|spells=true,false,true,true,true}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

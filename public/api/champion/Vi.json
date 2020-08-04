@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.153",
-  "changes": "10.8.1",
+  "changes": "10.13.1",
   "id": "Vi",
   "name": "Vi",
   "title": "the Piltover Enforcer",
@@ -8,7 +8,7 @@
     "full": "Vi.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "ViPassive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
@@ -78,10 +78,10 @@
       "maxrank": 5,
       "cooldown": [
         12,
-        11,
-        10,
+        10.5,
         9,
-        8
+        7.5,
+        6
       ],
       "cost": [
         50,
@@ -92,27 +92,27 @@
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": "{{pp|type=channel time|11|250 to 725|round1=3|0 to 1.25|formula=250+(47.5 per 0.125 seconds). ''This is capped at 1.25 seconds.''}}",
+      "target_range": "{{passive progression/deprecated version|type=channel time|11|250 to 715|round1=3|0 to 1.25|formula=250+(46.5 per 0.125 seconds). ''This is capped at 1.25 seconds.''}}",
       "image": {
         "full": "ViQ.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Vi''' {{tip|channel|charges}} for up to 4 seconds to increase ''Vault Breaker's'' {{sti|range}}, speed, and damage over {{fd|1.25}} seconds. While charging, '''Vi''' is {{tip|slow|slowed}} by 15%. ''Vault Breaker'' can be recast at any time within its duration.",
-        "{{sbc|Recast:}} '''Vi''' {{tip|dashes}} in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies she passes through, increased by {{pp|type=channel time|11|key=%|0 to 100|0 to 1.25|round1=3|formula=10% per 0.125 seconds. ''This is capped at 1.25 seconds.''}}.",
+        "{{sbc|Recast:}} '''Vi''' {{tip|dashes}} in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies she passes through, increased by {{passive progression/deprecated version|type=channel time|11|key=%|0 to 100|0 to 1.25|round1=3|formula=10% per 0.125 seconds. ''This is capped at 1.25 seconds.''}}.",
         "'''Vi''' stops upon colliding with an enemy champion, {{tip|airborne|knocking them back}} while other enemy units are instead {{tip|airborne|pulled}} towards her.",
         "''Vault Breaker'' will go on a 3-second {{sti|cooldown}} if '''Vi''' is {{tip|interrupt|interrupted}} during the channel or she dies."
       ],
-      "notes": "* '''Vi''' can still {{si|Flash}} during ''Vault Breaker's'' channel.",
+      "notes": "* Casting {{si|Flash}} while dashing will end it but enemies at the new location are affected.\n* The following table refers for interactions while '''Vi''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast=false|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts|interrupts=death, ground, root, silence}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/60/70/80/90",
-      "cooldownBurn": "12/11/10/9/8",
+      "cooldownBurn": "12/10.5/9/7.5/6",
       "effects": [
         {
           "levelingtext": "{{st|Minimum Physical Damage|{{ap|55 to 155}} {{as|(+ 70% '''bonus''' AD)}}|Maximum Damage|{{ap|55*2 to 155*2}} {{as|(+ 140% '''bonus''' AD)}}}}",
@@ -204,21 +204,21 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 800,
+      "target_range": "{{tip|cr|icononly = true}} 800",
       "image": {
         "full": "ViR.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Vi''' {{tip|dash|rushes}} {{tip|unstoppable|unstoppably}} to the target enemy {{tip|champion}} and {{tip|true sight|reveals}} them, dealing {{as|physical damage}} upon arrival and {{tip|airborne|knocking them up}} for {{fd|1.25}} seconds.",
-        "Enemies along the way are {{tip|airborne|knocked aside}} by 350 units and {{tip|stun|stunned}} for {{fd|0.75}} seconds and dealt the same damage."
+        "{{sbc|Active:}} '''Vi''' {{tip|true sight|reveals}} the target enemy {{tip|champion}} and {{tip|dash|rushes}} {{tip|unstoppable|unstoppably}} towards them, dealing {{as|physical damage}} and {{tip|airborne|knocking them up}} for {{fd|1.25}} seconds upon arrival.",
+        "Enemies along the way are dealt the same damage, {{tip|airborne|knocked aside}} by 350 units over {{fd|0.25}} seconds, and simultaneously {{tip|stun|stunned}} for {{fd|0.75}} seconds."
       ],
-      "notes": "* '''Vi''' is {{tip|unstoppable}} while {{tip|airborne|knocking them up}} as well but loses it afterwards.\n** She can't cast {{si|Flash}} during this.\n* While charging, '''Vi's''' {{tip|dash}} speed ramps up overtime to ensure the target cannot escape.\n* '''Vi''' will track targets that change locations, whether by {{tip|dash|dashing}}, {{tip|blink|blinking}}, or simple movement.\n** ''Assault and Battery'' has a maximum tether range, meaning it does not extensively follow targets that [[blink]] too far away ({{si|Teleport}}, {{si|Recall}}).\n*** If the target blinks to a far distance while '''Vi''' is dashing, she will stop prematurely but maintains the ''unstoppability'' for 7 seconds.{{Bug}}\n* If the target becomes {{tip|untargetable}} or either '''Vi''' or her target {{tip|death|dies}} during ''Assault and Battery's'' cast time, the ability will cancel. The {{sti|cooldown}} and {{sti|{{as|mana}}}} are refunded in this case.\n** However, if '''Vi''' is {{tip|dash|dashing}} and the target becomes ''untargetable'', she loses her {{tip|unstoppable|unstoppability}}, stops dashing, and instead walks towards the target {{tt|forcefully|movement commands are ignored}}. If she comes into contact with the target, she will apply the {{tip|airborne}} effect but no damage is dealt.\n* If '''Vi''' goes into {{tip|resurrection}} during ''Assault and Battery's'' cast time she will continue to {{tip|dash}} and apply the {{tip|airborne|knock up}} to her target but won't deal damage.\n** If '''Vi''' however goes into ''resurrection'' during the dash, she will stop, but will keep the ''unstoppability'' for another 3 seconds after ''reviving''.\n{{ct|attack=false|move=false|cast=E can be cast. Q is disabled.|items=false|consume=false|spells=true,true,false,false,true|interrupts=death|damage=false}}",
+      "notes": "* '''Vi''' can cast {{si|Flash}} to reposition herself during the {{tip|dash}} without ending the dash prematurely.\n* '''Vi''' is {{tip|unstoppable}} while {{tip|airborne|knocking up}} her primary target but loses it afterwards.\n** She cannot cast {{si|Flash}} during this part of the ability.\n* While charging, '''Vi's''' {{tip|dash}} speed ramps up overtime to ensure the target cannot escape.\n* '''Vi''' will track targets that change locations (e.g. by moving, {{tip|blink|blinking}}, {{tip|dash|dashing}}, or being {{tip|airborne|displaced}}).\n** ''Assault and Battery'' has a maximum tether range, meaning it does not extensively follow targets that blink too far away (e.g. {{si|Teleport}}, {{si|Recall}}).\n*** If the target blinks to a far distance while '''Vi''' is dashing, she will stop prematurely but maintain the ''unstoppability'' for 7 seconds.{{Bug}}\n* If the target becomes {{tip|untargetable}}, is too far away, or {{tip|death|dies}} during ''Assault and Battery's'' cast time, the ability will cancel. ''Assault and Battery'' does not go on {{sti|cooldown}} nor consume {{sti|{{as|mana}}}} in any of these cases.\n** However, if '''Vi''' is {{tip|dash|dashing}} and the target becomes ''untargetable'', she loses her {{tip|unstoppable|unstoppability}}, stops dashing, and instead walks towards the target {{tt|forcefully|movement commands are ignored}}. If she comes into contact with the target, she will apply the {{tip|airborne}} effect but no damage is dealt.\n* If '''Vi''' goes into {{tip|resurrection}} during ''Assault and Battery's'' cast time she will still initiate the {{tip|dash}} and apply the {{tip|airborne|knock up}} to her target but no damage is dealt.\n** If '''Vi''' however enters  ''resurrection'' during the dash, she will stop, but will keep the ''unstoppability'' for another 3 seconds after ''reviving''.\n* '''Vi''' will apply the ''knock up'' and damage even if she {{tip|death|dies}} while being in range of her target.\n* The following table refers for interactions while '''Vi''' is {{tip|dash|dashing}}:\n{{ct|attack=false|move=false|cast={{ai|Excessive Force|Vi}} is usable. {{ai|Vault Breaker|Vi}} is disabled.|items=false|consume=false|spells=true,true,false,false,true|interrupts=death}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100/125/150",

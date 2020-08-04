@@ -8,7 +8,7 @@
     "full": "Zac.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 96,
     "w": 48,
     "h": 48
@@ -70,18 +70,18 @@
         "full": "ZacQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and {{tip|tether|attaching}} it to the target for 2 seconds.",
-        "While his arm is attached, his next [[basic attack]] becomes an {{tip|unstoppable basic attack}}, having {{sti|range|200 range}} and being replaced by a second ''Stretching Strike'', dealing the same {{as|magic damage}} and {{tip|slow}}, but without being able to {{tip|critical strike|critically strike}}.",
+        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and {{tip|tether|attaching}} it to the target for 2 seconds and {{tip|true sight|revealing}} them for the same duration while the tether persists.",
+        "While his arm is attached, his next [[basic attack]] is replaced by a second ''Stretching Strike'' and gains {{sti|200 range}}, dealing the same {{as|magic damage}} and {{tip|slow}} after a {{fd|0.25}}-second cast time, but without being able to {{tip|critical strike|critically strike}}.",
         "If the two ''Stretching Strikes'' affect different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them towards each other for 300 range.",
-        "If the two targets are {{tt|near|700 range}} each other, they're instead slammed against each other, both taking the initial {{as|magic damage}} and applied the {{tip|slow}} again."
+        "If the two targets are {{tt|near|700 range}} each other, they're instead slammed against each other, both taking the initial {{as|magic damage}} and applied the {{tip|slow}} again and are also {{tip|stun|stunned}} for {{fd|0.25}} seconds."
       ],
-      "notes": "* {{tip|Spell shield|Spell shields}} will block a single instance of damage only.\n* If the {{tip|tether|attached}} target becomes {{tip|untargetable}} during the second ''Stretching Strike'' via basic attack, they are not {{tip|airborne|flinged}} nor {{tip|root|rooted}}. The target will still take damage however.\n* {{Pending for test}}: Parry interactions ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).\n* {{Pending for test}}: {{sti|Attack range}} modifiers ({{ii|Rapid Firecannon}}).",
+      "notes": "* {{tip|Spell shield|Spell shields}} will block a single instance of damage only.\n* If the {{tip|tether|attached}} target becomes {{tip|untargetable}} during the second ''Stretching Strike'' via basic attack, they are not {{tip|airborne|flinged}} nor {{tip|root|rooted}}. The target will still take damage however.\n* {{Pending for test}}: Parry interactions ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).\n* {{Pending for test}}: {{sti|Attack range}} modifiers ({{ii|Rapid Firecannon}}).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "8",
@@ -188,7 +188,7 @@
         "full": "ZacW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
@@ -305,17 +305,17 @@
         "full": "ZacE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Zac''' {{tip|channel|channels}} up to {{fd|4.5}} seconds, increasing ''Elastic Slingshot's'' {{sti|range}} over a cone in the target direction. ''Elastic Slingshot'' can be recast at any time within its duration.",
-        "Moving during the ''channel'' cancels it, refunding 50% of the cost and {{sti|cooldown}}.",
-        "{{sbc|Recast:}} '''Zac''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{pp|2|changedisplay=true|type=duration of the charge|0.5|1|0|X}} seconds."
+        "If '''Zac''' {{tt|cancels the channel|Details below}} himself, 50% of ''Elastic Slingshot's'' {{sti|{{as|health cost}}}} and {{sti|cooldown}} are refunded.",
+        "{{sbc|Recast:}} '''Zac''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{passive progression/deprecated version|2|changedisplay=true|type=duration of the charge|0.5|1|0|X}} seconds."
       ],
-      "notes": "* {{sbc|[[Quick cast]]ing:}} ''Elastic Slingshot's'' channel begins when the key is pressed and held, launching ''Zac'' towards the cursor when released.\n{{ct|channel|cast=Q and W interrupt. R recasts|items=interrupts,true,,false|spells=true,false,false,interrupts,recasts|interrupts = silence, death}}",
+      "notes": "* {{sbc|[[Quick cast]]ing:}} ''Elastic Slingshot's'' channel begins when the key is pressed and held, launching '''Zac''' towards the cursor when released.\n* The following table refers for interactions while '''Zac''' is {{tip|channel|channeling}}:\n{{ct|charge|move=Disabled for the first {{fd|0.9}} seconds, otherwise, interrupts.|attack=false|cast={{ai|Stretching Strikes|Zac}} and {{ai|Unstable Matter|Zac}} interrupt. {{ai|Let's Bounce!|Zac}} initiates the recast.|items=interrupts,true,,false|spells=true,false,false,interrupts,recasts|interrupts = silence, death, root, ground}}",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "4",
@@ -419,23 +419,23 @@
         0,
         0
       ],
-      "targeting": "Ground",
+      "targeting": "None",
       "image": {
         "full": "ZacR.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive:}} Increases {{ais|Cell Division|Zac}} healing from chunks.",
-        "{{sbc|Active:}} After a brief delay, '''Zac''' bounces 4 times over 3 seconds, gaining {{as|{{pp|7|type=duration|key=%|20 to 50|0 to 3}} {{sti|'''bonus''' movement speed}}}}, but becoming unable to declare basic attacks and use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
+        "{{sbc|Active:}} '''Zac''' bounces 4 times over 3 seconds, gaining {{as|{{passive progression/deprecated version|7|type=duration|key=%|20 to 50|0 to 3}} {{sti|'''bonus''' movement speed}}}}, but becoming unable to declare basic attacks and use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}} for the duration. There is a 1-second delay between each bounce.",
         "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} for 1 second and subsequently {{tip|slow|slowing}} them by 20% for the same duration.",
         "Enemies can be damaged by multiple bounces, with each beyond the first dealing 50% damage but not {{tip|airborne|displacing}} them."
       ],
-      "notes": "* {{tip|Spell shield}} only blocks a single instance of damage.",
+      "notes": "* {{tip|Spell shield}} only blocks a single instance of damage.\n* Entering {{tip|stasis}} will end ''Let's Bounce!'' prematurely.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

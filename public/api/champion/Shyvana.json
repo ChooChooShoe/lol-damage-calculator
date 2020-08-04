@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.128",
-  "changes": "10.1.1",
+  "changes": "10.14.1",
   "id": "Shyvana",
   "name": "Shyvana",
   "title": "the Half-Dragon",
@@ -8,7 +8,7 @@
     "full": "Shyvana.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "ShyvanaReinforcedScales.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 192,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
@@ -95,7 +95,7 @@
         "full": "ShyvanaDoubleAttack.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
@@ -103,11 +103,11 @@
       "description": [
         "{{sbc|Active:}} '''Shyvana's''' next [[basic attack]] within 6 seconds causes her to strike again after {{fd|0.25}} seconds, dealing {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
         "The second strike applies {{tip|on-hit}} and [[on-attack]] effects and is affected by {{tip|critical strike}} modifiers.",
-        "'''Shyvana's''' basic attacks against non-structures reduce ''Twin Bite's'' {{sti|cooldown}} by {{fd|0.5}} seconds [[on-hit]].",
+        "'''Shyvana's''' basic attacks reduce ''Twin Bite's'' {{sti|cooldown}} by {{fd|0.5}} seconds [[on-hit]].",
         "''Twin Bite'' {{tip|basic attack reset|resets}} '''Shyvana's''' basic attack timer.",
-        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} '''Shyvana''' instantly strikes all enemies in a cone in front of her twice, applying on-hit effects ''twice'' to each target hit. The second strike cannot {{tip|critical strike|critically strike}} on the primary target and doesn't trigger [[on-attack]] effects.{{bug|1}}"
+        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} '''Shyvana''' instantly basic attacks all enemies in a cone around her target before applying ''Twin Bite's'' effects to each of them. The basic attacks deal {{as|100% AD}} {{as|physical damage}}, affected by {{tip|critical strike}} modifiers, and apply [[on-hit]] effects to each target hit. The second strike cannot {{tip|critical strike|critically strike}} nor trigger [[on-attack]] effects, but it will still apply the [[on-hit]] effects."
       ],
-      "notes": "* {{ai|Dragon's Descent|Shyvana|Dragon Form's}} ''Twin Bite'' cannot apply {{iis|Tiamat}} {{nie|Cleave}} on each target hit because of {{nies|Cleave}} internal {{fd|0.05}} seconds interval during which it cannot be applied on a different target.",
+      "notes": "*''Dragon Form's'' ''Twin Bite'' cannot apply {{iis|Tiamat}} {{nie|Cleave}} on each target hit because of {{nies|Cleave}} internal {{fd|0.05}} seconds interval during which it cannot be applied on a different target.\n* Since the second strike applies after the ability goes on cooldown, it will reduce its own cooldown.\n* Unlike most [[on-hit]] effects, the one reducing the cooldown of ''Twin Bite'' also triggers against {{tip|turret|structures}}.\n* In ''Dragon Form'', ''Twin Bite'' consumes an additional stack of {{ri|Hail of Blades}}. {{bug}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -163,10 +163,6 @@
       "name": "Burnout",
       "maxrank": 5,
       "cooldown": [
-        12,
-        12,
-        12,
-        12,
         12
       ],
       "cost": [
@@ -181,7 +177,7 @@
         "full": "ShyvanaImmolationAura.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 144,
         "w": 48,
         "h": 48
@@ -192,7 +188,7 @@
         "{{sti|ms|{{as|'''Bonus''' movement speed}}}} decays linearly over the duration.",
         "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} ''Burnout'' has increased effect radius, scaling with {{ais|Dragon's Descent|Shyvana}} rank."
       ],
-      "notes": "* {{Pending for test}}: {{as|Magic damage}} on-hit's interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* {{Pending for test}}: {{as|Magic damage}} on-hit's interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -357,17 +353,17 @@
         "full": "ShyvanaFireball.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Shyvana''' unleashes a fireball in the target direction, dealing {{as|magic damage}} to all enemies hit. The fireball stops upon colliding with an enemy champion, marking them for 5 seconds.",
+        "{{sbc|Active:}} '''Shyvana''' unleashes a fireball in the target direction, dealing {{as|magic damage}} to all enemies hit and marking them for 5 seconds and stopping upon colliding with an enemy {{tip|champion}}.",
         "'''Shyvana's''' basic attacks against marked enemies deal {{as|{{fd|3.75}}% of target's '''maximum''' health}} {{as|'''bonus''' magic damage}}, capped at 150 against monsters.",
-        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} ''Flame Breath'' explodes upon hitting an enemy champion or reaching the target location, dealing increased {{as|magic damage}} to them and surrounding enemies (area radius scales with {{ais|Dragon's Descent|Shyvana}} rank) and scorching the earth for 4 seconds. Enemies standing on scorched earth take {{pp|13|60 to 120|6 to 18|formula = 60 + 5 per level|color=magic damage}} {{as|(+ 10% AD)}} {{as|(+ 20% AP)}} {{as|magic damage}} per second and are persistently marked."
+        "{{sbc|{{ai|Dragon's Descent|Shyvana|Dragon Form}}:}} ''Flame Breath'' explodes upon hitting an enemy champion or reaching the target location, dealing increased {{as|magic damage}} to them and surrounding enemies (area radius scales with {{ais|Dragon's Descent|Shyvana}} rank) and scorching the earth for 4 seconds. Enemies standing on scorched earth take {{passive progression/deprecated version|13|60 to 120|6 to 18|formula = 60 + 5 per level|color=magic damage}} {{as|(+ 10% AD)}} {{as|(+ 20% AP)}} {{as|magic damage}} per second."
       ],
-      "notes": "* The fireball applies {{tip|area damage}} and the triggering basic attacks deal {{tip|proc damage}}.\n** In ''Dragon Form'', the fiery explosion applies {{tip|area damage}} and the burning scorch deals {{tip|persistent area damage}} to all enemies within the area of effect\n* {{Pending for test}}: {{as|Magic damage}} on-hit's interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* The fireball applies {{tip|area damage}} and the triggering basic attacks deal {{tip|proc damage}}.\n** In ''Dragon Form'', the fiery explosion applies {{tip|area damage}} and the burning scorch deals {{tip|persistent area damage}} to all enemies within the area of effect.\n* ''Flame Breath'' will cast from wherever '''Shyvana''' is at the end of the cast time.\n* {{Pending for test}}: {{as|Magic damage}} on-hit's interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "0",
@@ -422,8 +418,8 @@
           ]
         },
         {
-          "levelingtext": "{{st|Empowered Magic Damage|{{pp|13|100 to 160|6 to 18|formula= 100+5 per level}} + <br>{{ap|60 to 220}} {{as|(+ 60% AD)}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Empowered Magic Damage</span>: <span><HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Empowered Magic Damage|{{passive progression/deprecated version|13|100 to 160|6 to 18|formula= 100+5 per level}} + <br>{{ap|60 to 220}} {{as|(+ 60% AD)}} {{as|(+ 100% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Empowered Magic Damage</span>: <span><simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level\">Unknown value: passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level</simple-tooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -446,7 +442,7 @@
             ],
             "st_slices": [
               "Empowered Magic Damage",
-              "<HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level\">Unknown value: passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level</simple-tooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -464,7 +460,7 @@
                 "player_total_ap": 1
               },
               "title": "Empowered Magic Damage",
-              "str": "<HtmlTooltip class=\"blue link\"> −  (based on level)<template #content>Values: 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160<br>At levels: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level\">Unknown value: passive progression/deprecated version 13 100 to 160 6 to 18 formula= 100+5 per level</simple-tooltip> + <br><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -490,17 +486,17 @@
         "full": "ShyvanaTransformCast.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive - Fury:}} ''Dragon's Descent'' has no cooldown or initial cost but can only be activated when '''Shyvana''' has {{tip|fury|{{as|100 Fury}}}}. '''Shyvana''' passively generates {{as|Fury}} per second while she is alive and in human form, {{as|2 Fury}} per basic attack [[on-hit]] in either form, and {{as|100 Fury}} when ''Dragon's Descent'' is first learned.",
-        "{{sbc|Active:}} '''Shyvana''' transforms into a ferocious dragon and {{tip|dashes}} {{tip|unstoppable|unstoppably}} to the target location, {{tip|airborne|carrying}} and dealing {{as|magic damage}} to all enemies she runs through.",
-        "'''Shyvana's''' dragon form grants her {{sti|health|{{as|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}}, and empowers her basic [[Champion ability|abilities]] at the cost of {{as|{{fd|2.5}} Fury}} per {{fd|0.5}} seconds, returning to human form once depleted."
+        "{{sbc|Active:}} '''Shyvana''' becomes {{tip|unstoppable}} and transforms into a ferocious dragon and {{tip|dashes}} to the target location, {{tip|airborne|carrying}} and dealing {{as|magic damage}} to all enemies she passes through.",
+        "'''Shyvana's''' dragon form grants her {{sti|health|{{as|'''bonus''' health}}}}, {{sti|range|'''bonus''' attack range}}, increased [[size]] and empowers her basic [[Champion ability|abilities]] at the cost of {{as|{{fd|2.5}} Fury}} per {{fd|0.5}} seconds, returning to human form once depleted."
       ],
-      "notes": "* ''Dragon's Descent'' has a {{ap|100/(1 to 2)|round=2}} seconds effective cooldown when not attacking.\n* {{bi|Cloudbringer's Grace}} grants {{pp|4|key=%|type=stacks|10 to 10*4}} increased {{tip|Fury}} generation, for an effective cooldown when non attacking of:\n** {{ap|100/((1 to 2)*1.1)|round=2}} with 1 {{bi|Cloudbringer's Grace|icononly=true}} stack.\n** {{ap|100/((1 to 2)*1.2)|round=2}} with 2 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n** {{ap|100/((1 to 2)*1.3)|round=2}} with 3 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n** {{ap|100/((1 to 2)*1.4)|round=2}} with 4 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n* ''Dragon's Descent'' has a {{ap|100/5}} seconds effective duration when not attacking, but can last indefinitely when attacking continuously with {{as|{{ap|2.5/2*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4))*2 4|round=2}}}}) attack speed|as}} (without counting {{ai|Q|Shyvana}}) or {{as|{{ap|2.5/(2*4/3)*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4)*4/3)*2 4|round=2}}}}) attack speed|as}} with {{ii|Guinsoo's Rageblade}}.",
+      "notes": "* '''Shyvana''' is {{tip|unstoppable}} {{tt|on-cast|before cast time}} and the immunity lasts until the {{tip|dash}} ends.\n* ''Dragon's Descent'' has a {{ap|100/(1 to 2)|round=2}} seconds effective cooldown when not attacking.\n* {{bi|Cloudbringer's Grace}} grants {{passive progression/deprecated version|4|key=%|type=stacks|10 to 10*4}} increased {{tip|Fury}} generation, for an effective cooldown when non attacking of:\n** {{ap|100/((1 to 2)*1.1)|round=2}} with 1 {{bi|Cloudbringer's Grace|icononly=true}} stack.\n** {{ap|100/((1 to 2)*1.2)|round=2}} with 2 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n** {{ap|100/((1 to 2)*1.3)|round=2}} with 3 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n** {{ap|100/((1 to 2)*1.4)|round=2}} with 4 {{bi|Cloudbringer's Grace|icononly=true}} stacks.\n* ''Dragon's Descent'' has a {{ap|100/5}} seconds effective duration when not attacking, but can last indefinitely when attacking continuously with {{as|{{ap|2.5/2*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4))*2 4|round=2}}}}) attack speed|as}} (without counting {{ai|Q|Shyvana}}) or {{as|{{ap|2.5/(2*4/3)*2}} ({{bi|Cloudbringer's Grace|{{ap|2.5/(2*(1.1 to 1.4)*4/3)*2 4|round=2}}}}) attack speed|as}} with {{ii|Guinsoo's Rageblade}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "2.5",
@@ -594,12 +590,19 @@
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Range|{{ap|50 to 80}}}}\n{{st|Bonus Health|{{as|{{ap|150 to 350}}|health}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Range</span>: <span><spell-span :list=\"['50','57.5','65','72.5','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"health\"><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Health|{{as|{{ap|150 to 350}}|health}}}}\n{{st|Bonus Range|{{ap|50 to 80}}}}\n{{st|Size Increase|{{ap|0|8.5|16}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"health\"><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Range</span>: <span><spell-span :list=\"['50','57.5','65','72.5','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Size Increase</span>: <span><spell-span :list=\"['0','8.5','16']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
+              [
+                150,
+                200,
+                250,
+                300,
+                350
+              ],
               [
                 50,
                 57.5,
@@ -609,20 +612,18 @@
               ],
               null
             ],
-            "st_slices": [
-              "Bonus Health",
-              "<span class=\"health\"><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
-            ],
             "as_ratios": [
               {
                 "player_total_unknown": [
-                  1.5,
-                  2,
-                  2.5,
-                  3,
-                  3.5
+                  0,
+                  0.085,
+                  0.16
                 ]
               }
+            ],
+            "st_slices": [
+              "Bonus Health",
+              "<span class=\"health\"><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
             ]
           },
           "subeffects": [
@@ -630,18 +631,16 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  50,
-                  57.5,
-                  65,
-                  72.5,
-                  80
+                  150,
+                  200,
+                  250,
+                  300,
+                  350
                 ],
                 "player_total_unknown": [
-                  1.5,
-                  2,
-                  2.5,
-                  3,
-                  3.5
+                  0,
+                  0.085,
+                  0.16
                 ]
               },
               "title": "Bonus Health",

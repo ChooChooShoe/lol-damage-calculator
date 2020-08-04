@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.123",
-  "changes": "9.7.1",
+  "changes": "10.15.1",
   "id": "Skarner",
   "name": "Skarner",
   "title": "the Crystal Vanguard",
@@ -8,7 +8,7 @@
     "full": "Skarner.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,19 +58,19 @@
         "full": "Skarner_Passive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Skarner's''' presence causes 6 ''Crystal Spires'' to appear at set points on the [[Summoner's Rift|battlefield]]:\n* One beside {{uis|Baron Nashor}} pit\n* One beside {{uis|Dragon}} pit\n* One nearby each buff {{tip|monster}}",
+        "{{sbc|Innate:}} '''Skarner's''' presence causes 6 ''Crystal Spires'' to appear at set points on the [[Summoner's Rift|battlefield]]:\n* One beside {{uis|Baron Nashor}} pit\n* One beside {{uis|Dragon}} pit\n* One nearby each buff {{tip|monster|monster's}} camp",
         "''Crystal Spires'' can be captured by {{tip|champions}} after {{tip|minion|minions}} have spawned by standing near them for 2 seconds. Once captured, ''Crystal Spires'' are owned until contested and the defending team can stand on the spire to prevent the opposing team from capturing it.",
         "''Crystal Spires'' grant {{g|30 gold}} split among its captors upon being captured, or {{g|15 gold}} if only a single champion participated in its capture, and provide {{tip|sight}} around them for {{fd|1.5}} seconds upon being captured, becoming unable to be recaptured for 15 seconds.",
-        "While within range of a ''Crystal Spire'' controlled by his team, or while an enemy is {{tip|stun|stunned}} with {{ai|Fracture|Skarner}} or {{tip|suppression|suppressed}} with {{ai|Impale|Skarner}}, '''Skarner''' gains ''Crystal Charge''.",
-        "{{sbc|Crystal Charge:}} '''Skarner''' gains {{pp|18|70|72|74|76|78|80|82|85|88|91|94|97|100|104|108|112|116|120|formula = 68 + 2 per level up to 7, + 3 per level up to 13, and + 4 per level|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{pp|18|key=%|43|48|53|58|63|68|73|80|87|94|101|108|115|124|133|142|151|160|formula = 38 + 5 per level up to 7, + 7 per level up to 13, and + 9 per level|color=as}} {{sti|{{as|'''bonus''' attack speed}}}} and restores {{sti|mana|{{as|2% '''maximum''' mana}}}} every second."
+        "'''Skarner''' gains ''Crystal Charge'' while within range of a ''Crystal Spire'' controlled by his team, for {{fd|1.25}} seconds after triggering {{ai|Crystal Venom|Skarner}}, or for {{fd|1.75}} seconds after stinging an enemy champion with {{ai|Impale|Skarner}}.",
+        "{{sbc|Crystal Charge:}} '''Skarner''' gains {{passive progression/deprecated version|18|70|72|74|76|78|80|82|85|88|91|94|97|100|104|108|112|116|120|formula = 68 + 2 per level up to 7, + 3 per level up to 13, and + 4 per level|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{passive progression/deprecated version|18|key=%|43|48|53|58|63|68|73|80|87|94|101|108|115|124|133|142|151|160|formula = 38 + 5 per level up to 7, + 7 per level up to 13, and + 9 per level|color=as}} {{sti|{{as|'''bonus''' attack speed}}}} and restores {{sti|mana|{{as|1% '''maximum''' mana}}}} every {{fd|0.5}} seconds."
       ],
-      "notes": "* No additional notes.",
+      "notes": "* ''Crystal Charge's'' duration refreshes if it was gained by an ability.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -87,11 +87,11 @@
         2.5
       ],
       "cost": [
-        10,
-        11,
-        12,
-        13,
-        14
+        15,
+        15,
+        15,
+        15,
+        15
       ],
       "costtype": "Mana",
       "targeting": "None",
@@ -99,25 +99,25 @@
         "full": "SkarnerVirulentSlash.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Skarner''' deals {{tip|physical damage|{{as|physical damage}}}} to all enemies in range.",
-        "If an enemy is hit, subsequent uses of ''Crystal Slash'' within 4 seconds deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}}.",
+        "{{sbc|Active:}} '''Skarner''' slashes around himself, dealing {{tip|physical damage|{{as|physical damage}}}} to all surrounding enemies.",
+        "If an enemy is hit, subsequent uses of ''Crystal Slash'' within 5 seconds deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}}.",
         "Basic attacks against non-structures reduce ''Crystal Slash's'' {{sti|cooldown}} by {{fd|0.25}} seconds, quadrupled to 1 against enemy champions."
       ],
-      "notes": "* {{tip|Spell shield}} will block the damage but will not prevent ''Skarner'' from triggering the bonus effect.",
+      "notes": "* {{tip|Spell shield}} will block the damage but will not prevent '''Skarner''' from triggering the bonus effect.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "10/11/12/13/14",
+      "costBurn": "15",
       "cooldownBurn": "3.5/3.25/3/2.75/2.5",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{as|{{ap|33 to 45}}% AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 15% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 15% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -126,79 +126,89 @@
             ],
             "as_ratios": [
               {
-                "player_total_ad": [
-                  0.33,
-                  0.36,
-                  0.39,
-                  0.42,
-                  0.45
+                "player_total_ad": 0.15
+              },
+              {
+                "target_total_hp": [
+                  0.01,
+                  0.015,
+                  0.02,
+                  0.025,
+                  0.03
                 ]
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>"
+              "<span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 15% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_ad": [
-                  0.33,
-                  0.36,
-                  0.39,
-                  0.42,
-                  0.45
+                "player_total_ad": 0.15,
+                "target_total_hp": [
+                  0.01,
+                  0.015,
+                  0.02,
+                  0.025,
+                  0.03
                 ]
               },
               "title": "Physical Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
+              "str": "<span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 15% AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{as|{{ap|33 to 45}}% AD}} {{as|(+ 30% AP)}}|Total Mixed Damage|{{as|{{ap|33*2 to 45*2}}% AD}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['66','72','78','84','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Magic Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 15% AD)}} {{as|(+ 30% AP)}}|Total Mixed Damage|{{as|{{ap|1*2 to 3*2}}% of target's '''maximum''' health}} {{as|(+ 30% AD)}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 15% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><span class=\"health\"><spell-span :list=\"['2','3','4','5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                33,
-                36,
-                39,
-                42,
-                45
+                1,
+                1.5,
+                2,
+                2.5,
+                3
               ],
               null
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.3
+                "player_total_ad": 0.15
               },
               {
                 "player_total_ap": 0.3
               },
               {
-                "player_total_ad": [
-                  0.66,
-                  0.72,
-                  0.78,
-                  0.84,
-                  0.9
+                "player_total_ad": 0.3
+              },
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "target_total_hp": [
+                  0.02,
+                  0.03,
+                  0.04,
+                  0.05,
+                  0.06
                 ]
               },
               {
-                "player_total_ad": []
+                "target_total_hp": []
               }
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 15% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "Total Mixed Damage",
-              "<span class=\"ad\"><spell-span :list=\"['66','72','78','84','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<span class=\"health\"><spell-span :list=\"['2','3','4','5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -206,25 +216,27 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  33,
-                  36,
-                  39,
-                  42,
-                  45
+                  1,
+                  1.5,
+                  2,
+                  2.5,
+                  3
                 ],
+                "player_total_ad": 0.3,
                 "player_total_ap": 0.3
               },
               "title": "Bonus Magic Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['33','36','39','42','45']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<span class=\"health\"><spell-span :list=\"['1','1.5','2','2.5','3']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 15% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             },
             {
               "index": 1,
               "ratios": {
+                "player_total_ad": 0.3,
                 "player_total_ap": 0.3
               },
               "title": "Total Mixed Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['66','72','78','84','90']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<span class=\"health\"><spell-span :list=\"['2','3','4','5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 30% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -255,8 +267,8 @@
         "full": "SkarnerExoskeleton.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 336,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -355,22 +367,22 @@
       ],
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 350,
+      "target_range": "{{tip|cr|icononly = true}} 350",
       "image": {
         "full": "SkarnerImpale.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 144,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Skarner''' {{tip|root|roots}} the target enemy {{tip|champion}} during the ability's cast time and attempts to impale them with his stinger. Upon successfully impaling the target, he deals them {{as|60% AD}} {{as|physical damage|physical damage}} and {{as|'''bonus''' magic damage|magic damage}}, and {{tip|suppression|suppresses}} them for {{fd|1.75}} seconds, during which he can drag his victim with himself. At the end of the duration, the target takes the same damage again.",
+        "{{sbc|Active:}} '''Skarner''' {{tip|root|roots}} the target enemy {{tip|champion}} during the ability's cast time and attempts to impale them with his stinger. Upon successfully impaling the target, he deals them {{as|60% AD}} {{as|physical damage|physical damage}} and {{as|'''bonus''' magic damage|magic damage}}, and {{tip|true sight|reveals}} and {{tip|suppression|suppresses}} them for {{fd|1.75}} seconds, during which he can drag his victim with himself. At the end of the duration, the target takes the same damage again.",
         "''Impale'' pierces through {{tip|unstoppable|unstoppability}}, dragging them out.{{tt|*|See details for more information.}}",
         "''During the ability '''Skarner''' is locked out from [[basic attack]]ing, casting {{ai|Fracture|Skarner}}, or using {{si|Flash}}.''"
       ],
-      "notes": "* The ''suppression'' will break if the target becomes {{tip|untargetable}} ({{ai|R|Bard}}, {{ai|R|Ryze}},{{ai|W|Tahm Kench}}).\n* The target will not take ''Impale's'' secondary damage if the ''suppression'' is removed ({{tip|cleanse}}).\n* ''Impale'' is canceled (but does not go on cooldown) if '''Skarner''' loses {{tip|sight}} of his target or if they move 800 units away from him (whether by being mid-dash, removing the {{tip|root}} and backing away, or '''Skarner''' being {{tip|airborne|displaced}}) during the cast time.\n** {{tip|Spell shield}} will not block the {{tip|root}}.\n* ''Impale'' applies {{tt|move block|A move block is a forced movement modifier usually applied by dash and airborne effects.}} on the target if they are not close to '''Skarner''', forcing them to move toward him. This move block is not part of a {{tip|airborne|displacement}} and because of this, {{tip|unstoppable|unstoppability}} cannot ignore the ability's effect. Such cases will be stopped with few exceptions:\n** {{cai|Bellows Breath|Ornn}} keep belching fire. The cast direction cannot be changed.\n** {{cai|Onslaught of Shadows|Hecarim}} will continue going forward and dealing damage for the full range, however '''Hecarim''' will be taken out and {{tip|fear|fleeing}} everyone around the area where he got impaled.\n** Similar to '''Hecarim''', {{cai|Unstoppable Force|Malphite}} stopped early, dealing damage and {{tip|airborne|knocking up}} targets around the area he is impaled.\n** {{cai|Assault and Battery|Vi}} cannot be interrupted, and she will continue marching toward the target during the {{tip|suppression}} but will be dragged back. When the effect ends, she will dash to the target as normal.\n*** Due the uniqueness of ''Assault and Battery'', '''Vi''' may be able to complete the ability during the {{tip|suppression}} if the target somehow gets close enough to her.\n** {{Pending for test}}: If {{ci|Jarvan IV}} is ''Impaled'' during {{ai|Cataclysm|Jarvan IV}}, he spawns/does not spawn impassable terrain around his target.\n** {{Pending for test}}: If {{ci|Rek'Sai}} is ''Impaled'' during {{ai|Void Rush|Rek'Sai}}, she will/will not {{tip|vanish}} into the ground.\n* While ''Impale's'' suppression is active, and for the purposes of direction-conditioned abilities ({{ai|Petrifying Gaze|Cassiopeia}}, {{ai|Mocking Shout|Tryndamere}}) '''Skarner''' is considered to be facing in the direction he is moving and not the one his model is facing.",
+      "notes": "* The target will not take ''Impale's'' secondary damage if the {{tip|suppression}} is removed.\n* If the target becomes {{tip|untargetable}}, dies, '''Skarner''' loses {{tip|sight}} of them, or they move 800 units away from him during the cast time, ''Impale'' cancels but does not go on {{sti|cooldown}} nor consume {{sti|{{as|mana}}}}.\n* {{tip|Spell shield}} will not block the {{tip|root}}.\n* ''Impale'' is special cased to end prematurely if the target is affected by {{ai|Devour|Tahm Kench}}, both for an ally and enemy {{ci|Tahm Kench}}.\n* ''Impale'' applies a small {{tip|airborne|displacement}} to the target every {{fd|0.25}} seconds whenever they are not close to '''Skarner'''. These displacements do '''not''' apply {{tip|airborne}} and are not {{tt|flagged as displacements|For instance, Mordekaiser R and Sett R do not force-move their target in the classic sense, but pretend to be displacements for interactions like these.}}, meaning that targets who are not {{tip|Cc-immune|immune}} to the {{tip|suppression}} are also never immune to the displacement, either. As a consqeuence, {{tip|unstoppable|unstoppability}} '''fails''' to ignore this movement. ''See the table below.''\n* While ''Impale'' is active, and for the purposes of direction-conditioned abilities, (e.g. {{ai|Petrifying Gaze|Cassiopeia}}, {{ai|Mocking Shout|Tryndamere}}) '''Skarner''' is considered to be facing in the direction he is moving and not the one his model is facing.\n{{Skarner Impale Unstoppability Interactions}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

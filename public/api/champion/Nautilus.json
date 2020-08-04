@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.134",
-  "changes": "10.3.1",
+  "changes": "10.13.1",
   "id": "Nautilus",
   "name": "Nautilus",
   "title": "the Titan of the Depths",
@@ -8,7 +8,7 @@
     "full": "Nautilus.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,16 +58,16 @@
         "full": "Nautilus_StaggeringBlow.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Nautilus's''' [[basic attack]]s deal {{pp|8 to 110}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|root}} his target for {{pp|4|changedisplay=true|0.75 to 1.5|1 to 16}} seconds.",
+        "{{sbc|Innate:}} '''Nautilus's''' [[basic attack]]s deal {{as|{{passive progression/deprecated version|8 to 110}}|physical damage}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|root}} his target for {{passive progression/deprecated version|4|changedisplay=true|0.75 to 1.5|1 to 16}} seconds.",
         "This effect cannot occur on the same target more than once every few seconds."
       ],
-      "notes": "* {{tip|Spell shield}} will block the {{tip|root}} but not the bonus damage.\n* {{Pending for test}}: ''Staggering Blow's'' interactions with {{ai|Counter Strike|Jax|dodging}}, {{ai|Spirit's Refuge|Shen|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* {{tip|Spell shield}} will block the {{tip|root}} but not the bonus damage.\n* {{Pending for test}}: ''Staggering Blow's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -97,17 +97,17 @@
         "full": "NautilusAnchorDrag.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nautilus''' hurls his anchor forward in a line, simultaneously {{tip|airborne|dragging}} the enemy hit towards him while {{tip|dash|dashing}} towards them within {{fd|0.9}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|root|rooting}} them for {{fd|0.1}} seconds.",
-        "If the anchor hits terrain, '''Nautilus''' dashes to the very end of its path, ''Dredge Line's'' {{sti|cooldown}} is reduced by 50% and refunds {{Sti|mana|{{as|half its mana cost}}}}.",
+        "{{sbc|Active:}} '''Nautilus''' hurls his anchor forward in a line. If it hits an enemy, it simultaneously {{tip|airborne|drags}} them towards '''Nautilus''' while he {{tip|dash|dashes}} towards them within {{fd|0.9}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|root|rooting}} them for {{fd|0.1}} seconds.",
+        "If the anchor hits terrain instead, '''Nautilus''' dashes to that location entirely and ''Dredge Line'' refunds 50% of its {{sti|cooldown}} and {{sti|mana|{{as|mana cost}}}}.",
         "'''''Nautilus''' is unable to move or attack while Dredge Line is in flight.''"
       ],
-      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executes them or attempts to affect them while they are {{tip|cc-immune|crowd control immune}} or {{tip|unstoppable}}.\n* ''Dredge Line'' will not {{tip|interrupt}} any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
+      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executed them or they negated the {{tip|airborne|displacement}}.\n* ''Dredge Line'' will not {{tip|interrupt}} any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling. Enemies hit will still be dealt damage. The {{tip|airborne|drag}} and {{tip|root}} are not applied if '''Nautilus''' did not initiate the dash.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -164,10 +164,6 @@
       "name": "Titan's Wrath",
       "maxrank": 5,
       "cooldown": [
-        12,
-        12,
-        12,
-        12,
         12
       ],
       "cost": [
@@ -183,8 +179,8 @@
         "full": "NautilusPiercingGaze.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 336,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -193,7 +189,7 @@
         "While the shield holds, his [[basic attack]]s deal {{as|'''bonus''' magic damage}} over 2 seconds to his target and all enemies around them.",
         "''Titan's Wrath'' {{tip|basic attack reset|resets}} '''Nautilus' ''' basic attack timer."
       ],
-      "notes": "* The first half of ''Titan's Wrath's'' damage is dealt [[on-hit]] (so long as the shield remains) while the rest is applied over the next second (regardless of '''Nautilus' ''' {{stil|attack speed}}).\n* '''Nautilus' ''' basic attacks use different animations while ''Titan's Wrath'' is active.\n** The damage over time will always apply when this animation plays (even if the shield fades during a basic attack).\n* ''Titan's Wrath'' does not deal bonus damage to structures.\n* {{pending for test}}: Interaction with {{ai|Counter Strike|Jax}}, {{ai|Spirit's Refuge|Shen}} and {{tip|blind}}.\n* {{tip|Spell shield}} will block the ability (but only a single application).",
+      "notes": "* The first half of ''Titan's Wrath's'' damage is dealt [[on-hit]] (so long as the shield remains) while the rest is applied over the next second (regardless of '''Nautilus' ''' {{stil|attack speed}}).\n* '''Nautilus' ''' basic attacks use different animations while ''Titan's Wrath'' is active.\n** The damage over time will always apply when this animation plays (even if the shield fades during a basic attack).\n* ''Titan's Wrath'' does not deal bonus damage to structures.\n* {{pending for test}}: Interaction with {{tip|dodge}}, {{tip|block}} and {{tip|blind}}.\n* {{tip|Spell shield}} will block the ability (but only a single application).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "80",
@@ -354,16 +350,16 @@
         "full": "NautilusSplashZone.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 96,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nautilus''' creates 3 waves of explosions that radiate from him, each dealing {{as|magic damage}} to all enemies hit and {{tip|slow|slowing}} them by an amount that decays over {{fd|1.5}} seconds.",
+        "{{sbc|Active:}} '''Nautilus''' creates 3 waves of explosions that radiate from him {{tt|over {{fd|0.561}} seconds|See notes}}, each dealing {{as|magic damage}} to all enemies hit and {{tip|slow|slowing}} them by an amount that decays over {{fd|1.5}} seconds.",
         "Enemies hit by subsequent waves beyond the first are dealt half damage."
       ],
-      "notes": "* ''Riptide's'' waves radiate only from the cast location rather than from '''Nautlius'''.\n* {{tip|Spell shield}} will block a single wave.",
+      "notes": "* {{tip|Spell shield}} will block a single wave.\n* ''Riptide'' will cast from wherever '''Nautilus''' is at the end of the cast time.\n* The first wave is centered around '''Nautilus''', while the second and third wave are centered at an offset of 25 units in front of '''Nautilus''' at the original cast location.\n** Because of this, there are a zone each in which you can be hit by only 1 wave, or all 3 waves, respectively, without moving.\n* The first wave happens at 0 seconds after the cast time ends, the second wave at {{fd|0.297}} seconds and the third wave at {{fd|0.561}} seconds.\n** The intended timing may be {{fd|0.25}} seconds for each delay, however these are the measured, effective times.\n* The ''explosions'' are only a visual effect. The first wave has 8, the seconds has 9, and the third wave has 10 explosions, equally distributed around the rings, starting with one explosion directly in '''Nautilus'''' facing direction on each.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/60/70/80/90",

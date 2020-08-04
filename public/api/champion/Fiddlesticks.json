@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "10.12.1",
+  "changes": "10.15.1",
   "id": "Fiddlesticks",
   "name": "Fiddlesticks",
   "title": "the Ancient Fear",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate - Scarecrow Effigy:}} '''Fiddlesticks''' begins the game with an exclusive {{ii|Scarecrow Effigy}}, which permanently occupies the [[Trinket item|trinket]] slot. '''Fiddlesticks''' can pretend to be an ''Effigy'', after standing still for 2 seconds, adjusting its body into a scarecrow and extending its arm out to expose its lantern. Its [[health bar]] is also hidden to enemies while idle, similarly to an ''Effigy''.",
+        "{{sbc|Innate - Scarecrow Effigy:}} '''Fiddlesticks''' begins the game with an exclusive {{ii|Scarecrow Effigy}}, which permanently occupies the [[Trinket item|trinket]] slot. '''Fiddlesticks''' can pretend to be an ''Effigy'', after standing still for 2 seconds, adjusting its body into a scarecrow and extending its arm out to expose its lantern. Its [[health bar]] is also hidden to enemies while idle, similarly to an ''Effigy''. However, casting {{ai|Crowstorm|Fiddlesticks}} will cancel it early.",
         "{{sbc|Innate - A Harmless Scarecrow:}} From [[Experience (champion)|level]] 6 onward, placing an {{tip|Effigy}} also summons a demonic eyeball at the location that grants {{tip|obscured vision}} of enemy units in the area for 6 seconds, which also {{tip|true sight|reveals}} and {{tip|disabled ward|disables}} enemy {{tip|ward|wards}} and {{tip|stealthed trap|stealthed traps}}."
       ],
       "notes": "* ''Effigies'' will mimic '''Fiddlesticks' ''' idle animations and have their [[health bar]] hidden until they fake an action.\n** If '''Fiddlesticks''' pretends to be an ''effigy'', the health bar stays hidden until the animation is interrupted or it takes damage. The health bar will come back into view immediately but will instantly vanish if '''Fiddlesticks''' remains idle the moment it stops taking damage.\n*** {{tip|Channel|Channeling}} a spell interrupts the pose and does not activate it either.\n**** The pose is special cased to only be interrupted by {{ais|Bountiful Harvest|Fiddlesticks}} cast once the tethers are applied.\n* Effigies are considered {{tip|clone|clones}}, but they are not valid targets to [[direction-targeted|direction]], [[ground-targeted|ground]], and [[auto-targeted]] abilities the moment they are placed, a short amount of time must elapse before they are targetable to them.\n* The trinket slot can still be temporarily replaced by {{ii|Eye of the Herald}}.\n* [[File:A Harmless Scarecrow Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
@@ -103,12 +103,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} While '''Fiddlesticks''' is [[combat status|out of combat]] for at least {{tt|{{fd|2.5}}|Estimated}} seconds and is unseen by any enemy champion, all enemy units are affected by ''Dread''. '''Fiddlesticks'''' next [[ability damage|damaging]] [[champion ability|ability]] against an enemy affected by ''Dread'' will {{tip|fear}} them. If '''Fiddlesticks''' casts {{ai|Bountiful Harvest|Fiddlesticks}} or {{ai|Reap|Fiddlesticks}} while pretending to be an {{ai|A Harmless Scarecrow|Fiddlesticks|Effigy}}, enemies hit will be {{tip|fear|feared}} as if it were unseen.",
-        "{{sbc|Active:}} '''Fiddlesticks''' hurls a crow at the target enemy. After a {{tt|0.4|Static}} second travel time, the target takes {{tip|magic damage|{{as|magic damage}}}} and is {{tip|fear|feared}} for a short duration. ''Terrify'' has a minimum damage threshold and is capped at 400 against {{tip|monster|monsters}}.",
-        "Enemies can only be {{tip|fear|feared}} by ''Terrify's'' passive once every few seconds. ''Terrify's'' active damage and minimum damage threshold are [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} if the target has recently been feared.",
-        "{{tip|fear|Feared}} enemies are {{tip|slow|slowed}} by 90%."
+        "{{sbc|Passive:}} While '''Fiddlesticks''' has been [[combat status|out of combat]] for at least {{tt|{{fd|2.5}} seconds|Estimated}} and is unseen by the enemy team, or is pretending to be an {{ai|A Harmless Scarecrow|Fiddlesticks|Effigy}}, '''Fiddlesticks'''' next damaging ability {{tip|fear|fears}} all targets struck.",
+        "Targets feared by '''Fiddlesticks''' are placed on a cooldown equal to ''Terrify's'' cooldown, during which they cannot be feared by it again.",
+        "{{sbc|Active:}} '''Fiddlesticks''' screeches at the target enemy, dealing {{as|magic damage}} and {{tip|fear|fearing}} them. This has a minimum damage threshold and is capped at 400 against {{tip|monster|monsters}}.",
+        "Against targets with a cooldown, ''Terrify'' instead will have its damage and minimum threshold doubled.",
+        "{{tip|minion|Minions}} are always feared if '''Fiddlesticks''' is not attacking them and there is no enemy champion in its view."
       ],
-      "notes": "* The fear-immunity timer is not refreshed by subsequent attempts to fear the target.\n* '''Fiddlesticks''' is considered \"seen\" if he is visible and is inside an enemy champion's {{tt|sight radius|1350 units}}. Vision from {{tip|minion|minions}}, {{tip|ward|wards}}, and {{tip|turret|turrets}} will not prevent '''Fiddlesticks''' from {{tip|flee|fearing}} if there are no nearby enemy champions.\n** There is no grace period after being seen or entering combat.\n** Vision from the enemy team will not prevent the fear from triggering versus neutral monsters, and vice versa. \n* The ''Dread'' aura does not currently communicate any information to '''Fiddlesticks''', its allies or its enemies. There is no indicator to say that '''Fiddlesticks''' is out of combat; and no indicator or debuff icon on affected enemies.\n** If the ''Dread'' aura is active, a visual indicator will circle around all enemy champions while '''Fiddlesticks''' is channeling {{ai|Crowstorm|Fiddlesticks}}. This is only visible to '''Fiddlesticks'''.\n* The fear immunity applies even if the target is {{tip|cc-immune|crowd control immune}}. It is not applied if it is blocked by {{tip|spell shield}}, the visual indicator is however.\n* [[File:Terrify Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
+      "notes": "* The fear-immunity timer is not refreshed by subsequent attempts to fear the target.\n* The {{tip|fear}} is applied {{tt|at the end of the cast time|0.363 seconds after the start of cast, due game tick rate}}, regardless of the target's distance or the missile landing.\n** The missile cannot be destroyed, either.\n* '''Fiddlesticks''' is considered \"seen\" if it is visible and is inside an enemy champion's {{tt|sight radius|1350 units}}. Vision from {{tip|minion|minions}}, {{tip|ward|wards}}, and {{tip|turret|turrets}} will not prevent '''Fiddlesticks''' from {{tip|flee|fearing}} if there are no nearby enemy champions.\n** There is a very brief grace period after being seen but not when entering combat.\n* {{tip|Monster|Monsters}} may be feared with the same condition as champions.\n** Vision from the enemy team will not prevent the fear from triggering versus neutral monsters, and vice versa. \n* The passive portion does not currently communicate any information to '''Fiddlesticks''', its allies nor its enemies. There is no indicator to say that '''Fiddlesticks''' is out of combat; and no indicator or debuff icon on affected enemies.\n** A visual indicator will circle around all enemy champions while '''Fiddlesticks''' is channeling {{ai|Crowstorm|Fiddlesticks}} if it is unseen. This is only visible to '''Fiddlesticks'''.\n* {{tip|Spell shield}} will not prevent the {{tip|fear}} from {{ai|Crowstorm|Fiddlesticks}}, but the first tick of damage from the [[damage over time|DoT]] is blocked.\n* The fear immunity applies even if the target is {{tip|cc-immune|crowd control immune}}. It is not applied if it is blocked by {{tip|spell shield}}, the visual indicator is however.\n* ''Terrify's'' doubled damage is a [[File:Critical_magic_strike_icon.png|20px|link=]] cosmetic critical strike.\n* [[File:Terrify Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65",
@@ -315,12 +316,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiddlesticks''' harvests the souls of all nearby enemies, {{tip|channel|channeling}} and {{tip|sight|revealing}} itself for up to 2 seconds and {{tip|tether|tethering}} itself to them. Tethered enemies are {{tip|true sight|revealed}} and dealt {{as|magic damage}} every {{fd|0.25}} seconds, with the last tick dealing additional {{as|magic damage}}. '''Total''' damage is reduced to 50% against {{tip|minions|minions}}.",
-        "'''Fiddlesticks''' {{tip|heals}} itself for a percentage of the {{tt|pre-mitigation damage|Damage dealt before modifiers}} dealt, reduced to 25% against minions.",
-        "The ability ends if all targets have died or broken their tethers. If the channel was not {{tt|interrupted|e.g. by Fiddlesticks or enemy crowd control effects}}, 60% of the remaining {{sti|cooldown}} is refunded.",
+        "{{sbc|Active:}} At the time of cast, '''Fiddlesticks''' {{tip|tether|tethers}} itself to all nearby enemies, then {{tip|channel|channels}} and {{tip|sight|reveals}} itself for up to 2 seconds, harvesting their souls.",
+        "During the channel, tethered enemies are {{tip|true sight|revealed}} and dealt {{as|magic damage}} every {{fd|0.25}} seconds, with the last tick dealing additional {{as|magic damage}}. '''Total''' damage is reduced to 50% against {{tip|minions|minions}}.",
+        "'''Fiddlesticks''' {{tip|heals}} itself for a percentage of the {{tt|pre-mitigation damage|Damage dealt before modifiers}} dealt, reduced to 15% against minions.",
+        "''Bountiful Harvest'' ends if all targets have died or broken their tethers. If the channel was not {{tt|interrupted|e.g. by Fiddlesticks or crowd control effects}}, 60% of the remaining {{sti|cooldown}} is refunded.",
         "''A target enemy is required to cast this ability. '''Fiddlesticks''' does not need {{tip|sight}} of the target to tether itself to them.''"
       ],
-      "notes": "* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.\n* [[File:Bountiful Harvest Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.\n{{ct|channel}}",
+      "notes": "* {{tip|Spell shield}} will block applying the tether but will not block damage from one already applied.\n* {{Pending for test}}: [[Spell effects]] ({{tip|persistent area damage}} or {{tip|persistent damage}}?)\n* [[File:Bountiful Harvest Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.\n* The following table refers for interactions while '''Fiddlesticks''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts, interrupts, interrupts}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "60/65/70/75/80",
@@ -447,8 +449,8 @@
           ]
         },
         {
-          "levelingtext": "{{st|Heal Percentage|{{ap|30 to 50}}%|Total Heal per Non-Minion|{{ap|60*0.6|90*0.7|120*0.8|150*0.9|180*1}} {{as|(+ {{ap|35*0.6|35*0.7|35*0.8|35*0.9|35*1}}% AP)}} {{as|(+ {{ap|12*0.6|13.5*0.7|15*0.8|16.5*0.9|18*1}}% of target's '''missing''' health)}}|Total Heal per Minion|{{ap|60*0.5*2*0.25 to 180*0.5*2*0.25}} {{as|(+ {{ap|35*0.5*2*0.25}}% AP)}} {{as|(+ {{ap|12*0.5*2*0.25 to 18*0.5*2*0.25}}% of target's '''missing''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal Percentage</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Heal per Non-Minion</span>: <span><spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Total Heal per Minion</span>: <span><spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li></ul>",
+          "levelingtext": "{{st|Heal Percentage|{{ap|30 to 50}}%|Total Heal per Non-Minion|{{ap|60*0.6|90*0.7|120*0.8|150*0.9|180*1}} {{as|(+ {{ap|35*0.6|35*0.7|35*0.8|35*0.9|35*1}}% AP)}} {{as|(+ {{ap|12*0.6|13.5*0.7|15*0.8|16.5*0.9|18*1}}% of target's '''missing''' health)}}|Total Heal per Minion|{{ap|60*0.5*2*0.15 to 180*0.5*2*0.15}} {{as|(+ {{ap|35*0.5*2*0.15}}% AP)}} {{as|(+ {{ap|12*0.5*2*0.15 to 18*0.5*2*0.15}}% of target's '''missing''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Heal Percentage</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Total Heal per Non-Minion</span>: <span><spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Total Heal per Minion</span>: <span><spell-span :list=\"['9','13.5','18','22.5','27']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['1.8','2.025','2.25','2.475','2.7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -482,25 +484,25 @@
                 18
               ],
               [
-                15,
+                9,
+                13.5,
+                18,
                 22.5,
-                30,
-                37.5,
-                45
+                27
               ],
               [
-                8.75
+                5.25
               ],
               null
             ],
             "as_ratios": [
               {
                 "player_total_ap": [
-                  0.03,
-                  0.03375,
-                  0.0375,
-                  0.04125,
-                  0.045
+                  0.018000000000000002,
+                  0.02025,
+                  0.0225,
+                  0.02475,
+                  0.027000000000000003
                 ]
               },
               {
@@ -519,7 +521,7 @@
               "Total Heal per Non-Minion",
               "<spell-span :list=\"['36','63','96','135','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['21','24.5','28','31.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['7.2','9.45','12','14.85','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
               "Total Heal per Minion",
-              "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>"
+              "<spell-span :list=\"['9','13.5','18','22.5','27']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['1.8','2.025','2.25','2.475','2.7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>"
             ]
           },
           "subeffects": [
@@ -534,11 +536,11 @@
                   50
                 ],
                 "player_total_ap": [
-                  0.03,
-                  0.03375,
-                  0.0375,
-                  0.04125,
-                  0.045
+                  0.018000000000000002,
+                  0.02025,
+                  0.0225,
+                  0.02475,
+                  0.027000000000000003
                 ],
                 "target_missing_hp": []
               },
@@ -557,11 +559,11 @@
                   180
                 ],
                 "player_total_ap": [
-                  0.03,
-                  0.03375,
-                  0.0375,
-                  0.04125,
-                  0.045
+                  0.018000000000000002,
+                  0.02025,
+                  0.0225,
+                  0.02475,
+                  0.027000000000000003
                 ],
                 "target_missing_hp": []
               },
@@ -580,16 +582,16 @@
                   35
                 ],
                 "player_total_ap": [
-                  0.03,
-                  0.03375,
-                  0.0375,
-                  0.04125,
-                  0.045
+                  0.018000000000000002,
+                  0.02025,
+                  0.0225,
+                  0.02475,
+                  0.027000000000000003
                 ],
                 "target_missing_hp": []
               },
               "title": "Total Heal per Minion",
-              "str": "<spell-span :list=\"['15','22.5','30','37.5','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['8.75']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['3','3.375','3.75','4.125','4.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
+              "str": "<spell-span :list=\"['9','13.5','18','22.5','27']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5.25']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span> <span class=\"health\">(+ <spell-span :list=\"['1.8','2.025','2.25','2.475','2.7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''missing''' health)</span>",
               "damage_type": "none"
             }
           ]
@@ -718,7 +720,7 @@
       "description": [
         "{{sbc|Active:}} After {{tip|channel|channeling}} for {{fd|1.5}} seconds, '''Fiddlesticks''' {{tip|blink|blinks}} to the target location with a murder of crows flying wildly around it for 5 seconds, dealing {{as|magic damage}} to nearby enemies every {{fd|0.25}} seconds."
       ],
-      "notes": "* {{tip|Root|Roots}} do not {{tip|interrupt}} the ability despite being a [[Channel#Movement Channels|movement channel]].\n* ''Crowstorm'', after it has been channeled, persists through {{tip|stasis}}.\n* [[File:Crowstorm Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.",
+      "notes": "* {{tip|Root|Roots}} do not {{tip|interrupt}} the ability despite being a [[Channel#Movement Channels|movement channel]].\n* ''Crowstorm'', after it has been channeled, persists through {{tip|stasis}}.\n* '''Fiddlesticks''' will always {{tip|blink}} to its intended location even if its position changes during the {{tip|channel}} without being interrupted (e.g. by {{ai|Realm Warp|Ryze}}).\n* [[File:Crowstorm Surprise Party.png|30px|border]] - {{csl|Fiddlesticks|Surprise Party}} has a special icon for this ability.\n* The following table refers for interactions while '''Fiddlesticks''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|cast=false|move=false|items=false, true|spells=true, false, false, false, false|interrupts=death, silence, ground}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

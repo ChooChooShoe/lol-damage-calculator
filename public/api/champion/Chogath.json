@@ -1,6 +1,6 @@
 {
   "patch": "June 26, 2009 Patch",
-  "changes": "10.9.1",
+  "changes": "10.14.1",
   "id": "Chogath",
   "name": "Cho'Gath",
   "title": "the Terror of the Void",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Whenever '''Cho'Gath''' kills an enemy unit or destroys an enemy [[structures|structure]], he {{tip|heals}} for {{pp|20 to 71}} and restores {{as|{{sti|mana|{{pp|3.5 to 7.75}} mana}}}}."
+        "{{sbc|Innate:}} Whenever '''Cho'Gath''' kills an enemy unit or destroys an enemy [[structures|structure]], he {{tip|heals}} for {{passive progression/deprecated version|20 to 71}} and restores {{as|{{sti|mana|{{passive progression/deprecated version|3.5 to 7.75}} mana}}}}."
       ],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -188,9 +188,9 @@
       },
       "description": [
         "{{sbc|Active:}} '''Cho'Gath''' roars in the target direction, dealing {{as|magic damage}} to enemies in a cone.",
-        "Enemy {{tip|champions}} hit are also {{tip|silence|silenced}} for a duration."
+        "Enemy {{tip|champions}} and {{ui|Rift Scuttler|Rift Scuttlers}} hit are also {{tip|silence|silenced}} for a duration."
       ],
-      "notes": "* ''Feral Scream'' makes '''Cho'Gath''' turn to face towards the cast direction.\n* ''Feral Scream'' is always cast from '''Cho'Gath's''' position.\n** He can cast {{si|Flash}} during the cast time and he will roar at the new location.\n* ''Feral Scream'' only silences champions, hence it does not remove {{uis|Rift Scuttler}} bonus resistances.",
+      "notes": "* ''Feral Scream'' makes '''Cho'Gath''' turn to face towards the cast direction.\n* ''Feral Scream'' is always cast from '''Cho'Gath's''' position.\n** He can cast {{si|Flash}} during the cast time and he will roar at the new location.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70/80/90/100/110",
@@ -444,9 +444,9 @@
       "description": [
         "{{sbc|Active:}} '''Cho'Gath''' attempts to eat the target enemy, dealing {{tip|true damage|{{as|true damage}}}}. Against non-[[champion]]s, the base damage is increased to 1000.",
         "If ''Feast'' kills its target, '''Cho'Gath''' gains a ''Feast'' [[stack]]. Only 6 stacks can be gained from non-epic {{tip|monster|monsters}} or {{tip|minion|minions}}.",
-        "Each stack grants {{as|{{sti|health|'''bonus''' health}}}} as well as {{sti|range|'''bonus''' attack range}} and increased size which can stack up to {{pp|type=Rank|3|17|13|10|1|2|3}} times, for a maximum {{sti|range|75 '''bonus''' attack range}}."
+        "Each stack of ''Feast'' grants '''Cho'Gath''' {{as|{{sti|health|'''bonus''' health}}}} as well as {{sti|range|'''bonus''' attack range}} and increased [[size]], capping at {{sti|range|75 '''bonus''' attack range}} and 100% increased size."
       ],
-      "notes": "* The maximum number of ''Feast'' stacks is 255, granting {{as|{{ap|(80 to 160)*255}} '''bonus''' health}}.\n* Each stack of ''Feast'' increases the damage by {{ap|8|12|16}}.\n* If an enemy {{tip|champion}} has health below the amount of {{as|true damage}} ''Feast'' deals, they will be marked for execution. This indicator does not consider {{tip|shield|shields}} or {{tip|invulnerability}}.\n[[File:Feast_Execute_Indicator.png|thumb|left|150px|This indicator is only visible to '''Cho'Gath'''.]]",
+      "notes": "* The increased size stacks additively with other size increases.\n* The maximum number of ''Feast'' stacks is 255, granting {{as|{{ap|(80 to 160)*255}} '''bonus''' health}}.\n* The bonus attack range and increase size cap at respectively {{ap|75/((60 to 100)/13)|round=2}} and {{ap|100/((60 to 100)/10)|round=2}} stacks, with the last stack being effective as the decimal part of the value (no decimal meaning 100% as effective).\n* Each stack of ''Feast'' increases the damage by {{ap|8|12|16}}.\n* If an enemy {{tip|champion}} has health below the amount of {{as|true damage}} ''Feast'' deals, they will be marked for execution. This indicator does not consider {{tip|shield|shields}} or {{tip|invulnerability}}.\n[[File:Feast_Execute_Indicator.png|thumb|left|150px|This indicator is only visible to '''Cho'Gath'''.]]",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -497,25 +497,20 @@
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Health Per Stack|{{as|{{ap|80|120|160}} '''bonus''' health}}}}{{st|Bonus Attack Range Per Stack|{{ap|4.5|6|7.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Health Per Stack</span>: <span><span class=\"health\"><spell-span :list=\"['80','120','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <b>bonus</b> health</span></span></li></ul><ul><li><span class=\"blue\">Bonus Attack Range Per Stack</span>: <span><spell-span :list=\"['4.5','6','7.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Health Per Stack|{{as|{{ap|80|120|160}} '''bonus''' health}}}}\n{{st|Bonus Attack Range Per Stack|{{ap|(60 to 100)/13|round=2}}}}\n{{st|Bonus Size Per Stack|{{ap|(60 to 100)/10}}%}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Health Per Stack</span>: <span><span class=\"health\"><spell-span :list=\"['80','120','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <b>bonus</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Range Per Stack</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip></span></li></ul><br><ul><li><span class=\"blue\">Bonus Size Per Stack</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              [
-                80,
-                120,
-                160
-              ],
               null
             ],
             "as_ratios": [
               {
                 "player_bonus_hp": [
-                  0.045,
-                  0.06,
-                  0.075
+                  0.8,
+                  1.2,
+                  1.6
                 ]
               }
             ],
@@ -528,15 +523,10 @@
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
-                  80,
-                  120,
-                  160
-                ],
                 "player_bonus_hp": [
-                  0.045,
-                  0.06,
-                  0.075
+                  0.8,
+                  1.2,
+                  1.6
                 ]
               },
               "title": "Bonus Health Per Stack",

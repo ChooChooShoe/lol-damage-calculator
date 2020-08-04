@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.139",
-  "changes": "10.12.1",
+  "changes": "10.14.1",
   "id": "Varus",
   "name": "Varus",
   "title": "the Arrow of Retribution",
@@ -8,7 +8,7 @@
     "full": "Varus.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 0,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "VarusPassive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
@@ -91,31 +91,31 @@
       ],
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": "{{pp|11|type=channel time|925 to 1625|0 to 2|displayformula=925{{plus}}(70 per 0.2 seconds). ''This is capped at 2 seconds.''}}",
+      "target_range": "{{passive progression/deprecated version|11|type=channel time|925 to 1625|0 to 2|displayformula=925{{plus}}(70 per 0.2 seconds). ''This is capped at 2 seconds.''}}",
       "image": {
         "full": "VarusQ.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Varus''' {{tip|channel|charges}} for up to 4 seconds to gradually increase ''Piercing Arrow's'' {{sti|range}} and damage over the next 2 seconds, during which he is {{tip|slow|slowed}} by 20%. ''Piercing Arrow'' can be recast at any time within its duration.",
-        "If the charge completes without reactivation, ''Piercing Arrow'' is cancelled, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
-        "{{sbc|Recast:}} '''Varus''' fires a piercing arrow dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies struck, which is increased by {{pp|11|type=Channel time|key=%|0 to 50|0 to 2|displayformula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}. The arrow's damage is reduced to {{pp|6|type=enemy hit|key=%|100 to 40;33|0 to 5|displayformula=100% - (15% per enemy hit). ''This is capped at a minimum of 33% damage.''}}.",
+        "If the charge completes without reactivation, ''Piercing Arrow'' is canceled, refunding 50% of its {{sti|mana|{{as|mana cost}}}}.",
+        "{{sbc|Recast:}} '''Varus''' fires a piercing arrow in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to all enemies struck, which is increased by {{passive progression/deprecated version|11|type=Channel time|key=%|0 to 50|0 to 2|displayformula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}. The arrow's damage is reduced to {{passive progression/deprecated version|6|type=enemy hit|key=%|100 to 40;33|0 to 5|displayformula=100% - (15% per enemy hit). ''This is capped at a minimum of 33% damage.''}}.",
         "Detonating {{ai|Blighted Quiver|Varus|Blight}} stacks on an enemy champion reduces ''Piercing Arrow's'' {{sti|cooldown}} by 3 seconds."
       ],
-      "notes": "* '''Varus''' can {{si|Flash}} during ''Piercing Arrow's'' channel.\n* The range of the spell will always be displayed, even as it increases.\n* Using {{si|Recall}} while charging ''Piercing Arrow'' will also cancel the cast.",
+      "notes": "* The range of the spell will always be displayed, even as it increases.\n* ''Piercing Arrow'' will cast from wherever '''Varus''' is at the end of the channel.\n* The following table refers for interactions while '''Varus''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast={{ai|Blighted Quiver|Varus}} is usable during the first {{fd|0.25}} seconds, otherwise, it's disabled. {{ai|Hail of Arrows|Varus}} and {{ai|Chain of Corruption|Varus}} are disabled. This ability recasts to end channel.|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
       "cooldownBurn": "18/16/14/12/10",
       "effects": [
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|15/1.5 to 235/1.5|round=2}} {{as|(+ 100% AD)}}|Minimum Fully Reduced Damage|{{ap|15/1.5*0.33 to 235/1.5*0.33|round=2}} {{as|(+ {{ap|100*0.33}}% AD)}}}}\n{{st|Maximum Physical Damage|{{ap|15 to 235}} {{as|(+ {{ap|100*1.5}}% AD)}}|Maximum Fully Reduced Damage|{{ap|15*0.33 to 235*0.33}} {{as|(+ {{ap|100*1.5*0.33}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['10','46.67','83.33','120','156.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li><li><span class=\"blue\">Minimum Fully Reduced Damage</span>: <span><spell-span :list=\"['3.3','15.4','27.5','39.6','51.7']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['33']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Maximum Fully Reduced Damage</span>: <span><spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['49.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|15/1.5 to 235/1.5|round=2}} {{as|(+ {{ap|125/1.5 to 145/1.5|round=2}}% AD)}}|Minimum Fully Reduced Damage|{{ap|15/1.5*0.33 to 235/1.5*0.33|round=2}} {{as|(+ {{ap|(125/1.5)*0.33 to (145/1.5)*0.33|round=2}}% AD)}}}}\n{{st|Maximum Physical Damage|{{ap|15 to 235}} {{as|(+ {{ap|125 to 145|round=2}}% AD)}}|Maximum Fully Reduced Damage|{{ap|15*0.33 to 235*0.33}} {{as|(+ {{ap|125*0.33 to 145*0.33|round=2}}% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['10','46.67','83.33','120','156.67']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['83.33','86.67','90','93.33','96.67']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Minimum Fully Reduced Damage</span>: <span><spell-span :list=\"['3.3','15.4','27.5','39.6','51.7']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['27.5','28.6','29.7','30.8','31.9']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['125','130','135','140','145']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Maximum Fully Reduced Damage</span>: <span><spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['41.25','42.9','44.55','46.2','47.85']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -128,6 +128,13 @@
                 156.67
               ],
               [
+                83.33,
+                86.67,
+                90,
+                93.33,
+                96.67
+              ],
+              [
                 3.3,
                 15.4,
                 27.5,
@@ -135,7 +142,11 @@
                 51.7
               ],
               [
-                33
+                27.5,
+                28.6,
+                29.7,
+                30.8,
+                31.9
               ],
               [
                 15,
@@ -145,7 +156,11 @@
                 235
               ],
               [
-                150
+                125,
+                130,
+                135,
+                140,
+                145
               ],
               [
                 4.95,
@@ -158,12 +173,16 @@
             ],
             "as_ratios": [
               {
-                "player_total_ad": 1
+                "player_total_ad": [
+                  0.4125,
+                  0.429,
+                  0.44549999999999995,
+                  0.462,
+                  0.47850000000000004
+                ]
               },
               {
-                "player_total_ad": [
-                  0.495
-                ]
+                "player_total_ad": []
               },
               {
                 "player_total_ad": []
@@ -174,9 +193,9 @@
             ],
             "st_slices": [
               "Maximum Physical Damage",
-              "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['125','130','135','140','145']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "Maximum Fully Reduced Damage",
-              "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['49.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+              "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['41.25','42.9','44.55','46.2','47.85']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -190,30 +209,26 @@
                   120,
                   156.67
                 ],
-                "player_total_ad": [
-                  0.495
-                ]
+                "player_total_ad": []
               },
               "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['150']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "str": "<spell-span :list=\"['15','70','125','180','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['125','130','135','140','145']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  3.3,
-                  15.4,
-                  27.5,
-                  39.6,
-                  51.7
+                  83.33,
+                  86.67,
+                  90,
+                  93.33,
+                  96.67
                 ],
-                "player_total_ad": [
-                  0.495
-                ]
+                "player_total_ad": []
               },
               "title": "Maximum Fully Reduced Damage",
-              "str": "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['49.5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "str": "<spell-span :list=\"['4.95','23.1','41.25','59.4','77.55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['41.25','42.9','44.55','46.2','47.85']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -239,7 +254,7 @@
         "full": "VarusW.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
@@ -247,11 +262,11 @@
       "description": [
         "{{sbc|Passive:}} '''Varus'''' [[basic attack]]s deal {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and apply ''Blight'' for 6 seconds, stacking up to 3 times.",
         "'''Varus'''' other abilities detonate ''Blight'' on enemies upon damaging them, dealing {{as|magic damage}} for each stack. This damage is capped at 360 against {{tip|monster|monsters}}.",
-        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} deals {{as|{{pp|5|key=%|changedisplay=true|6 to 14|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{pp|type=Piercing Arrow channel time|11|key=%|0 to 50|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{pp|5|key=%|changedisplay=true|6*1.5 to 14*1.5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' may be recast after 1 second and will go on a 1 second cooldown if it isn't used within {{fd|5.5}} seconds of its activation or immediately if '''Varus''' dies.",
+        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} deals {{as|{{passive progression/deprecated version|5|key=%|changedisplay=true|6 to 14|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{passive progression/deprecated version|type=Piercing Arrow channel time|11|key=%|0 to 50|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{passive progression/deprecated version|5|key=%|changedisplay=true|6*1.5 to 14*1.5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' may be recast after 1 second and will go on a 1 second cooldown if it isn't used within {{fd|5.5}} seconds of its activation or immediately if '''Varus''' dies.",
         "''Blighted Quiver'' can be cast during the first {{fd|0.25}} seconds of {{ais|Piercing Arrow|Varus}} charge. ''Blighted Quiver'' is placed on full cooldown even if the duration ends and the arrow is not fired or if the charge is {{tip|interrupt|interrupted}}.",
         "{{sbc|Recast:}} '''Varus''' cancels ''Blighted Quiver'' and puts it on a 1 second {{sti|cooldown}}."
       ],
-      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* Using the {{sbc|Active}} of ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}} or charging {{ii|Spellbinder}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{ai|Counter Strike|Jax|dodge}}, {{ai|Spirit's Refuge|Shen|block}}, {{tip|blind}}).",
+      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* Using the {{sbc|Active}} of ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}} or charging {{ii|Spellbinder}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -399,7 +414,7 @@
         "full": "VarusE.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
@@ -409,24 +424,24 @@
         "The area is desecrated for 4 seconds, {{tip|slow|slowing}} all enemies within and applying {{tip|Grievous Wounds}}.",
         "''Hail of Arrows will cast at max range if cast beyond that.''"
       ],
-      "notes": "* {{tip|Slow|Slows}} will linger for {{fd|0.25}} seconds after leaving the marked area.",
+      "notes": "* {{tip|Slow}} lingers for {{fd|0.25}} seconds after leaving the marked area.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "80",
       "cooldownBurn": "18/16/14/12/10",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|70|105|140|175|210}} {{as|(+ 60% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|50 to 210}} {{as|(+ 60% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                70,
-                105,
-                140,
-                175,
+                50,
+                90,
+                130,
+                170,
                 210
               ]
             ],
@@ -437,7 +452,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+              "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -445,22 +460,22 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  70,
-                  105,
-                  140,
-                  175,
+                  50,
+                  90,
+                  130,
+                  170,
                   210
                 ],
                 "player_bonus_ad": 0.6
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "str": "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Slow|{{ap|25|30|35|40|45}}%}}",
+          "levelingtext": "{{st|Slow|{{ap|25 to 45}}%}}",
           "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
           "vars": {
             "ratios": {},
@@ -504,8 +519,8 @@
       "name": "Chain of Corruption",
       "maxrank": 3,
       "cooldown": [
-        110,
-        90,
+        130,
+        100,
         70
       ],
       "cost": [
@@ -520,7 +535,7 @@
         "full": "VarusR.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
@@ -535,7 +550,7 @@
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
-      "cooldownBurn": "110/90/70",
+      "cooldownBurn": "130/100/70",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|150 to 250}} {{as|(+ 100% AP)}}}}",
