@@ -1,20 +1,20 @@
 <template>
-  <span>
-    <span class="editable-disp" :class="{ 'auto-width': autoWidth, 'is-read-only': readonly }" v-show="!editing" @focus="onFocus" tabindex="0">{{displayValue}}</span>
+  <td>
     <input
-      v-show="editing"
-      @blur="editing=false"
+      @focus="onFocus"
       ref="input"
       class="editable-input"
       type="number"
       step="1"
-      title
       :value="encode(value)"
       :readonly="readonly"
       :placeholder="placeholder"
-      @input="$emit('input', decode($event.target.value))"
+      @input="onInput"
     />
-  </span>
+    <i v-show="!validity" class="alert-icon" @mousemove="draw" @mouseout="hide">
+      <div ref="local" class="tooltipcontent simplebg" style="display:none;">{{validationMessage}}</div>
+    </i>
+  </td>
 </template>
 
 <script>
@@ -25,52 +25,65 @@ export default {
     readonly: Boolean,
     placeholder: String,
     autoWidth: Boolean,
+    min: {
+      type: Number,
+      default: 0,
+    },
+    max: {
+      type: Number,
+      default: Infinity,
+    },
   },
   name: "Editable",
   data: function () {
     return {
-      editing: false,
-      isValid: true,
-      invalidMsg: "",
+      validity: true,
+      validationMessage: "",
     };
   },
-  computed: {
-    ispercent: function () {
-      return this.format === "percent";
-    },
-    displayValue: function () {
-      return Math.round(this.encode(this.value) * 100) / 100;
-    },
-    iconclassComp: function () {
-      if (this.iconclass && this.iconclass !== null) return this.iconclass;
-      return this.labelclass + "-icon";
+  watch: {
+    value: {
+      // the callback will be called immediately after the start of the observation
+      immediate: true,
+      handler(value, _oldVal) {
+        if(isNaN(value)){
+          this.validationMessage = `The value '${value}' needs to be a number.`;
+          this.validity = false;
+        }
+        else if(!isFinite(value)){
+          this.validationMessage = `The value '${value}' is not a finite number.`;
+          this.validity = false;
+        }
+        else if (value < this.min) {
+          this.validationMessage = `The value '${value}' must be greater than or equal to ${this.min}.`;
+          this.validity = false;
+        } else if (value > this.max) {
+          this.validationMessage = `The value '${value}' must be less than or equal to ${this.max}.`;
+          this.validity = false;
+        } else this.validity = true;
+      },
     },
   },
   methods: {
+    draw: function (e) {
+      const style = `left:${e.clientX + 10}px;top:${e.clientY + 10}px;`;
+      this.$refs.local.setAttribute("style", style);
+    },
+    hide: function () {
+      this.$refs.local.setAttribute("style", `display:none;`);
+    },
     onFocus(ev) {
-      this.editing = true;
-      this.$nextTick(function () {
-        console.log(this.$refs);
-        this.$refs.input.focus();
-        this.$refs.input.select();
-      });
+      this.$refs.input.select();
+    },
+    onInput(ev) {
+      this.$emit("input", this.decode(ev.target.valueAsNumber));
     },
     encode(val) {
-      if (val < 0) {
-        this.isValid = false;
-        this.invalidMsg = "Value is negetive";
-      } else this.isValid = true;
-
-      if (this.ispercent === true) return +(Math.round(val + "e+12") + "e-10");
+      if (this.format === "percent") return +(Math.round(val + "e+12") + "e-10");
       return +(Math.round(val + "e+10") + "e-10");
     },
     decode(val) {
-      if (val < 0) {
-        this.isValid = false;
-        this.invalidMsg = "Value is negetive";
-      } else this.isValid = true;
-
-      if (this.ispercent === true) return parseFloat(val) / 100 || 0;
+      if (this.format === "percent") return parseFloat(val) / 100 || 0;
       return parseFloat(val) || 0;
     },
   },
@@ -78,9 +91,33 @@ export default {
 </script>
 
 <style>
+.tooltiplink {
+  border-bottom: whitesmoke 1px dotted;
+}
+.tooltiplink.help {
+  cursor: help;
+}
+.tooltiplink.link {
+  border: none;
+  cursor: pointer;
+}
+.tooltiplink.link:hover {
+  text-decoration: underline;
+}
+.tooltipcontent {
+  position: fixed;
+  z-index: 2500;
+}
+.tooltipcontent.simplebg {
+  background: #121a1b;
+  padding: 3px;
+  border: #9797fc solid 1px;
+  color: #eee;
+}
+
 .editable-disp {
   font-size: 0.9em;
-  line-height: 1.5em;
+  line-height: 1.3em;
   display: inline-block;
   color: #eeeeee;
   width: 8em;

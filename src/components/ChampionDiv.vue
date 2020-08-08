@@ -3,64 +3,7 @@
   <div class="column">
     <h2 class="title is-3">{{ username }}</h2>
     <ChampSearch v-model="champ"></ChampSearch>
-    <label class="label">Champion Level</label>
-    <div class="field">
-      <div class="control">
-        <input
-          type="number"
-          value="18"
-          v-model.number="level"
-          class="input"
-          placeholder="Set Champion Level"
-        />
-      </div>
-      <div class="control">
-        <div class="buttons">
-          <input
-            :class="{ 'is-primary': level == 1 }"
-            type="button"
-            class="button"
-            value="1"
-            @click="level = 1"
-          />
-          <input
-            :class="{ 'is-primary': level == 6 }"
-            type="button"
-            class="button"
-            value="6"
-            @click="level = 6"
-          />
-          <input
-            :class="{ 'is-primary': level == 9 }"
-            type="button"
-            class="button"
-            value="9"
-            @click="level = 9"
-          />
-          <input
-            :class="{ 'is-primary': level == 11 }"
-            type="button"
-            class="button"
-            value="11"
-            @click="level = 11"
-          />
-          <input
-            :class="{ 'is-primary': level == 16 }"
-            type="button"
-            class="button"
-            value="16"
-            @click="level = 16"
-          />
-          <input
-            :class="{ 'is-primary': level == 18 }"
-            type="button"
-            class="button"
-            value="18"
-            @click="level = 18"
-          />
-        </div>
-      </div>
-    </div>
+    <ChampLevelSelect v-model="level"></ChampLevelSelect>
 
     <!-- <label class="column column-50">
       Show Damage Stats
@@ -75,9 +18,9 @@
         <input type="checkbox" v-model="showDefence" />
         <div class="switch"></div>
       </label>
-    </label> -->
+    </label>-->
 
-    <table class="table is-fullwidth" v-if="showExtra || showDamage || showDefence">
+    <table class="table is-fullwidth" v-if="showExtra || showDamage || showDefence" style="margin-bottom: 0;">
       <thead>
         <tr>
           <th>Stats</th>
@@ -95,51 +38,27 @@
       <tbody>
         <tr v-if="showDamage">
           <th class="attack-damage">Attack Damage (AD)</th>
-          <td>
-            <Editable v-model="base_ad" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="bonus_ad"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_ad"></Editable>
-          </td>
+          <Editable v-model="base_ad" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="bonus_ad"></Editable>
+          <Editable v-model="total_ad"></Editable>
         </tr>
         <tr v-if="showDamage">
           <th class="ap">Ability Power (AP)</th>
-          <td>
-            <Editable :value="0" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_ap"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_ap"></Editable>
-          </td>
+          <Editable :value="0" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="total_ap"></Editable>
+          <Editable v-model="total_ap"></Editable>
         </tr>
         <tr v-if="showDefence">
           <th class="health">Health</th>
-          <td>
-            <Editable v-model="base_hp" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="bonus_hp"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_hp"></Editable>
-          </td>
+          <Editable v-model="base_hp" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="bonus_hp"></Editable>
+          <Editable v-model="total_hp"></Editable>
         </tr>
         <tr v-if="showDefence">
           <th class="armor">Armor</th>
-          <td>
-            <Editable v-model="base_armor" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="bonus_armor"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_armor"></Editable>
-          </td>
+          <Editable v-model="base_armor" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="bonus_armor"></Editable>
+          <Editable v-model="total_armor"></Editable>
         </tr>
         <tr v-if="showDefenceLevel  > 0">
           <td colspan="4">
@@ -147,12 +66,12 @@
               <li>
                 Will reduce
                 <span class="physical-damage">Physical Damage</span> taken by
-                <Editable
+                <EditableCollapse
                   class="ap"
                   :autoWidth="true"
                   format="percent"
                   v-model="percent_pysical_reduction"
-                ></Editable>%.
+                ></EditableCollapse>%.
               </li>
               <li>
                 Equivalent to having
@@ -166,15 +85,9 @@
         </tr>
         <tr v-if="showDefence">
           <th class="mr">Magic Res. (MR)</th>
-          <td>
-            <Editable v-model="base_mr" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="bonus_mr"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_mr"></Editable>
-          </td>
+          <Editable v-model="base_mr" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="bonus_mr"></Editable>
+          <Editable v-model="total_mr"></Editable>
         </tr>
         <tr>
           <td colspan="4">
@@ -182,7 +95,7 @@
               <li>
                 Will reduce
                 <span class="magic-damage">Magic Damage</span> taken by
-                <Editable class="ap" format="percent" v-model="percent_magic_reduction"></Editable>%.
+                <EditableCollapse class="ap" format="percent" v-model="percent_magic_reduction"></EditableCollapse>%.
               </li>
               <li>
                 Equivalent to having
@@ -194,15 +107,9 @@
         </tr>
         <tr v-if="showExtra">
           <th class="mana">Mana</th>
-          <td>
-            <Editable v-model="base_mana" :readonly="readonly_base_values"></Editable>
-          </td>
-          <td>
-            <Editable v-model="bonus_mana"></Editable>
-          </td>
-          <td>
-            <Editable v-model="total_mana"></Editable>
-          </td>
+          <Editable v-model="base_mana" :readonly="readonly_base_values"></Editable>
+          <Editable v-model="bonus_mana"></Editable>
+          <Editable v-model="total_mana"></Editable>
         </tr>
         <!-- <tr>
           <th>Movespeed</th>
@@ -245,37 +152,27 @@
     <table class="table is-fullwidth" v-if="showDamage">
       <thead>
         <tr>
-          <th>Stats 2</th>
+          <th>Item Stats</th>
           <th>Value</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th class="lethality">Lethality</th>
-          <td>
-            <Editable v-model="lethality"></Editable>
-          </td>
+          <Editable v-model="lethality"></Editable>
           <!-- <td><Editable v-model="flat_armorpen"></Editable></td> -->
         </tr>
         <tr>
           <th class="lethality">{{ rnd(percent_armorpen * 100) }}% Armor Penetration</th>
-          <td>
-            <Editable v-model="percent_armorpen" format="percent"></Editable>%
-          </td>
+          <Editable v-model="percent_armorpen" format="percent">%</Editable>
         </tr>
         <tr>
           <th class="magic">Flat Magic Pen.</th>
-          <td>
-            <Editable v-model="flat_magicpen"></Editable>
-          </td>
+          <Editable v-model="flat_magicpen"></Editable>
         </tr>
         <tr>
           <th class="magic">{{ rnd(percent_magicpen * 100) }}% Magic Pen.</th>
-          <td>
-            <span>
-              <Editable v-model="percent_magicpen" format="percent"></Editable>%
-            </span>
-          </td>
+          <Editable v-model="percent_magicpen" format="percent">%</Editable>
         </tr>
         <tr>
           <td colspan="2">
@@ -313,7 +210,6 @@
     </div>-->
 
     <div class="column" v-if="showDefence">
-
       <!-- <div class="tabs is-left is-toggle">
         <ul>
           <li :class=" { 'is-active': showDefenceLevel === 0 }">
@@ -326,30 +222,37 @@
             <a @click="showDefenceLevel  = 2">Show All</a>
           </li>
         </ul>
-      </div> -->
+      </div>-->
       <!-- <hr /> -->
 
-      <h3 class="health title is-4">Health</h3>
-      <div class="columns is-multiline">
-        <div class="column is-half">
-          <data-input v-model="base_hp" iconclass="health-icon" :readonly="true">Base</data-input>
-        </div>
-        <div class="column is-half">
-          <data-input v-model="bonus_hp" iconclass="health-icon">Bonus</data-input>
-        </div>
-        <div class="column is-half">
-          <data-input v-model="total_hp" iconclass="health-icon">Max</data-input>
-        </div>
-        <div class="column is-half">
-          <data-input v-model="total_shield" iconclass="health-icon">Shield</data-input>
-        </div>
-        <div class="column is-full">
-          <data-input v-model="current_hp" iconclass="health-icon">Current HP</data-input>
-        </div>
-        <div class="column is-full">
-          <data-input v-model="missing_hp" iconclass="health-icon">Missing HP</data-input>
-        </div>
-      </div>
+
+    <table class="table is-fullwidth" v-if="showDefence">
+      <thead>
+        <tr>
+          <th colspan="4" class="health">Health Breakdown</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="">Base</td>
+          <Editable v-model="base_hp" :readonly="true"></Editable>
+          <td class="">Bonus</td>
+          <Editable v-model="bonus_hp"></Editable>
+        </tr>
+        <tr>
+          <td class="">Max / Total</td>
+          <Editable v-model="total_hp"></Editable>
+          <td class="">Shield</td>
+          <Editable v-model="total_shield"></Editable>
+        </tr>
+        <tr>
+          <td class="">Current</td>
+          <Editable v-model="current_hp"></Editable>
+          <td class="">Missing</td>
+          <Editable v-model="missing_hp"></Editable>
+        </tr>
+      </tbody>
+    </table>
 
       <data-input class="is-hidden" v-model="total_hp" labelclass="health">Health</data-input>
       <ul v-if="showDefenceLevel  > 0">
@@ -395,7 +298,7 @@
           </span> after 60 seconds.
         </span>
         <hr />
-      </div> -->
+      </div>-->
       <!-- <data-input
         v-if="showDefenceLevel > 1"
         v-model="base_hpregen"
@@ -407,7 +310,7 @@
         <span class="health">{{ rnd(base_hpregen * 12) }} HP</span> after 60 seconds.
         <hr />
       </div>
-      <span v-if="info.resource === 'None'">* {{ info.name }} does not use any secondary resource.</span> -->
+      <span v-if="info.resource === 'None'">* {{ info.name }} does not use any secondary resource.</span>-->
     </div>
     <div class="buttons">
       <input
@@ -429,7 +332,9 @@ import DataInput from "./DataInput.vue";
 // import SimpleTooltip from "./SimpleTooltip.vue";
 import ItemInventory from "./ItemInventory.vue";
 import Editable from "./simple/Editable.vue";
+import EditableCollapse from "./simple/EditableCollapse.vue";
 import ChampSearch from "./simple/ChampSearch.vue";
+import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
 
 export default {
@@ -440,7 +345,9 @@ export default {
     // SimpleTooltip,
     ItemInventory,
     Editable,
+    EditableCollapse,
     ChampSearch,
+    ChampLevelSelect,
   },
   props: {
     userid: String,
@@ -522,6 +429,8 @@ export default {
         return this.total_hp - this.missing_hp;
       },
       set: function (current_hp) {
+        if(current_hp > this.total_hp)
+          this.total_hp = current_hp;
         this.missing_hp = this.total_hp - current_hp;
       },
     },
@@ -588,8 +497,8 @@ export default {
   },
   watch: {
     champ(champ, old) {
-      if(!this.championList[champ]) {
-        console.log('Invalid champ:',champ)
+      if (!this.championList[champ]) {
+        console.log("Invalid champ:", champ);
         champ = old;
         return;
       }
