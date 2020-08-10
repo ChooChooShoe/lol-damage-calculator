@@ -18,9 +18,11 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   props: {
-    value: Number,
+    value: [Number, Array],
+    index: Number,
     format: String,
     readonly: Boolean,
     placeholder: String,
@@ -45,16 +47,15 @@ export default {
     value: {
       // the callback will be called immediately after the start of the observation
       immediate: true,
-      handler(value, _oldVal) {
-        if(isNaN(value)){
+      handler(rawValue, _oldVal) {
+        const value = this.encode(rawValue);
+        if (isNaN(value)) {
           this.validationMessage = `The value '${value}' needs to be a number.`;
           this.validity = false;
-        }
-        else if(!isFinite(value)){
+        } else if (!isFinite(value)) {
           this.validationMessage = `The value '${value}' is not a finite number.`;
           this.validity = false;
-        }
-        else if (value < this.min) {
+        } else if (value < this.min) {
           this.validationMessage = `The value '${value}' must be greater than or equal to ${this.min}.`;
           this.validity = false;
         } else if (value > this.max) {
@@ -76,10 +77,21 @@ export default {
       this.$refs.input.select();
     },
     onInput(ev) {
-      this.$emit("input", this.decode(ev.target.valueAsNumber));
+      const decoded = this.decode(ev.target.valueAsNumber);
+      if (Array.isArray(this.value)) {
+        Vue.set(this.value, this.index, decoded);
+        // return this.value;
+        this.$emit("input", this.value);
+      } else {
+        this.$emit("input", decoded);
+      }
     },
     encode(val) {
-      if (this.format === "percent") return +(Math.round(val + "e+12") + "e-10");
+      if (Array.isArray(val)) {
+        val = val[this.index];
+      }
+      if (this.format === "percent")
+        return +(Math.round(val + "e+12") + "e-10");
       return +(Math.round(val + "e+10") + "e-10");
     },
     decode(val) {
@@ -141,7 +153,7 @@ export default {
   outline: none;
 }
 
-.editable-input {
+/* .editable-input {
   font-size: 0.9em;
   display: inline-block;
   width: 8em;
@@ -151,7 +163,7 @@ export default {
   padding: 0.25em;
   border: 1px solid #3a3f44;
   border-radius: 0.2em;
-}
+} */
 .editable-input:read-only {
   border-color: transparent;
   background-color: transparent;

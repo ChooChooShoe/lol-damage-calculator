@@ -1,95 +1,85 @@
 
 <template>
-  <div class="field is-horizontal">
-    <div class="field-label is-small">
-      <span>
-        {{ prefex }}
-        <span :class="color">{{ displayValue }} {{ sufex }}</span>
-      </span>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <div class="control">
-          <input
-            class="input block numinput"
-            type="number"
-            step="1"
-            title
-            :value="encode()"
-            v-on:input="$emit('input', decode($event.target.value))"
-          />
-          <!-- <span class="inline">{{ ispercent ? '%' : ' ' }}</span> -->
-          <span v-if="removable" class="inline">✕</span>
-        </div>
-      </div>
-      <div class="control" :class="[ isValid ? 'is-hidden' : '' ]">
-        <span class="tag is-warning is-light">{{ invalidMsg }}</span>
-      </div>
-    </div>
-  </div>
+  <tr>
+    <th>
+      <span :class="spell_ratios[item.key].color">{{ displayValue }}</span>
+    </th>
+    <Editable v-model="item.value" :format="item.ispercent ? 'percent' : ''" :index="index"></Editable>
+    <Editable :value="damagePreMitigationValue" :readonly="true"></Editable>
+  </tr>
 </template>
 
 <script>
 import Vue from "vue";
 import { spell_ratios } from "../../javascript/league_data";
+import Editable from "../simple/Editable.vue";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "SpellField",
-  props: ["value", "type", "ispercent", "spellrankindex"],
-  data: function() {
+  props: ["item", "index"],
+  data: function () {
     return {
       isValid: true,
-      invalidMsg: '',
+      invalidMsg: "",
+      spell_ratios: spell_ratios,
     };
   },
-  computed: {
-    prefex: function() {
-      return spell_ratios[this.type].prefex || "";
-    },
-    color: function() {
-      return spell_ratios[this.type].color || "";
-    },
-    sufex: function() {
-      return spell_ratios[this.type].sufex || "";
-    },
-    displayValue: function() {
-      let v = this.value;
-      let i = this.spellrankindex;
-      if (Array.isArray(v)) {
-        v = v[i];
-      }
-      if (this.ispercent === true) {
-        return `${v < 0 ? "" : "+"}${+(Math.round(v + "e+12") + "e-10")}%`;
-      } else return +(Math.round(v + "e+6") + "e-6");
-    },
-    removable: function() {
-      return false;
-    }
+  components: {
+    Editable,
   },
-  methods: {
-    encode() {
-      let v = this.value;
-      if (Array.isArray(this.value)) {
-        v = this.value[this.spellrankindex];
+  computed: {
+    prefex: function () {
+      return spell_ratios[this.item.key].prefex || "";
+    },
+    color: function () {
+      return spell_ratios[this.item.key].color || "";
+    },
+    sufex: function () {
+      return spell_ratios[this.item.key].sufex || "";
+    },
+    extra: function () {
+      return spell_ratios[this.item.key].extra || false;
+    },
+    removable: function () {
+      return false;
+    },
+    displayValue: function () {
+      let v = this.valueNumber;
+      if (!this.extra) {
+        return `( ${v < 0 ? "" : "+"}${+(Math.round(v + "e+12") + "e-10")}% ${
+          spell_ratios[this.item.key].sufex
+        })`;
+      } else return spell_ratios[this.item.key].prefex;
+    },
+    damagePreMitigationValue: function () {
+      const player = this.$app.player;
+      const target = this.$app.target;
+      const key = this.item.key;
+      const v = this.valueNumber;
+      if (key.startsWith("target")) {
+        let stat = target[key.substring(7)];
+        if (isNaN(stat)) {
+          console.log(`Stat for ratio ${key} missing for target`);
+          stat = 0;
+        }
+        return stat * v;
+      } else if (key.startsWith("player")) {
+        let stat = player[key.substring(7)];
+        if (isNaN(stat)) {
+          console.log(`Stat for ratio ${key} missing for player`);
+          stat = 0;
+        }
+        return stat * v;
+      } else return v;
+    },
+    valueNumber: function() {
+      let v = this.item.value;
+      if (Array.isArray(this.item.value)) {
+        v = this.item.value[this.index];
       }
-      if (this.ispercent) return +(Math.round(v + "e+12") + "e-10");
       return v;
     },
-    decode(val) {
-      let decoded = 0;
-      if (this.ispercent) decoded = parseFloat(val) / 100 || 0;
-      else decoded = parseFloat(val);
-
-      if (Array.isArray(this.value)) {
-        Vue.set(this.value, this.spellrankindex, decoded);
-        return this.value;
-      }
-      return decoded;
-    }
-  }
+  },
 };
 </script>
-
-<style scoped>
-</style>

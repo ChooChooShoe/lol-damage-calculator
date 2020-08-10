@@ -1,7 +1,7 @@
 <template>
-  <div class="sidebar column is-one-quarter">
-    <h1 class="title is-4">Damage Totals &amp; Outputs</h1>
-    <h2 class="subtitle is-5">Damage before Resistances</h2>
+  <div class="sidebar">
+    <h2>Damage Totals &amp; Output</h2>
+    <h3>Damage Pre-Mitigation</h3>
     <div class="damage-dealt-chart">
       <div class="magic-bg" :title="outPes[0] + ' Magic'" :style="outStyle[0]">{{ outPes[0] }}</div>
       <div class="physical-bg" :title="outPes[1]  +' Physical'" :style="outStyle[1]">{{ outPes[1] }}</div>
@@ -28,7 +28,7 @@
     </p>
 
     <hr />
-    <h2 class="subtitle is-5">Damage Dealt to Target</h2>
+    <h3>Damage Post-Mitigation</h3>
     <div class="damage-dealt-chart">
       <div class="magic-bg" :title="outPes[3] + ' Magic'" :style="outStyle[3]">{{ outPes[3] }}</div>
       <div class="physical-bg" :title="outPes[4]  +' Physical'" :style="outStyle[4]">{{ outPes[4] }}</div>
@@ -62,24 +62,15 @@
     </p>
     <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
     <hr />
-    <nav id="nav" class="flex navbar is-hidden">
-      <!-- <a class="inline" onclick="addNewSpellForm('magic')">
-        Add Magic Damage Spell
-      </a>
-      <a class="inline" onclick="addNewSpellForm('physical')">
-        Add Physical Damage Spell
-      </a>-->
+    <!-- <nav id="nav" class="flex navbar is-hidden">
       <a class="inline" @click="openSettings()">Settings...</a>
-      <!-- <a class="inline" onclick="load()">
-        Load...
-      </a>-->
       <div class="block version-select is-hidden">
         <span>League Patch:</span>
         <select id="version_select" oninput="setPatchVersion(this.value);">
           <option value>Loading Data...</option>
         </select>
       </div>
-    </nav>
+    </nav> -->
 
     <div class="buttons">
       <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
@@ -246,8 +237,10 @@ export default {
   z-index: 700;
   position: sticky;
   top: 0;
-  overflow: auto;
+  width: 30%;
+  background-color: #121a1b;
   float: right;
+  padding: .75rem;
 }
 .main {
   width: 70%;
@@ -258,7 +251,7 @@ export default {
 //     width: 100%;
 //   }
 // }
-@media (max-width: 769px) {
+@media (max-width: 775px) {
   .sidebar {
     position: inherit;
     width: 100%;

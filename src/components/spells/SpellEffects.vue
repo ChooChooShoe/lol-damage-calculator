@@ -48,14 +48,19 @@
       <div class="field column">
         <DamageTypeField v-model="damage_type"></DamageTypeField>
 
-        <SpellField
-          v-for="(item, key) in ratios"
-          :key="'ratio-'+key"
-          :type="item.key"
-          :spellrankindex="spellrankindex"
-          :ispercent="item.ispercent"
-          v-model="item.value"
-        ></SpellField>
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Ratio</th>
+              <th>Added Damage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <SpellField v-for="(item, key) in ratios" :key="key" :item="item" :index="spellrankindex"></SpellField>
+          </tbody>
+        </table>
+
         <hr />
         <AddRatioDropDown></AddRatioDropDown>
       </div>
@@ -81,32 +86,12 @@
           />
           time{{ repeat === 1 ? '' : 's' }}.
           <input
-            :active="repeat === 1"
+            v-for="(item, index) in [1,2,3,5,10]"
+            :key="index"
             type="button"
-            class="simple-btn"
-            value="1x"
-            @click="repeat = 1"
-          />
-          <input
-            :active="repeat === 2"
-            type="button"
-            class="simple-btn"
-            value="2x"
-            @click="repeat = 2"
-          />
-          <input
-            :active="repeat === 5"
-            type="button"
-            class="simple-btn"
-            value="5x"
-            @click="repeat = 5"
-          />
-          <input
-            :active="repeat === 10"
-            type="button"
-            class="simple-btn"
-            value="10x"
-            @click="repeat = 10"
+            :value=" item + 'x'"
+            @click="repeat = item"
+            :class="{ 'success': repeat == item }"
           />
         </label>
         <div v-if="repeat != 1" class="column">
@@ -130,13 +115,14 @@ import {
   calc_dmg_onhit,
   spell_ratios,
   DamageSource,
-  DamageType
+  DamageType,
 } from "../../javascript/league_data";
 import Vue from "vue";
 import MatchReplace from "../MatchReplace.vue";
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
+import Editable from "../simple/Editable.vue";
 
 export default {
   props: ["spell", "effect", "spellrankindex", "effectindex"],
@@ -145,28 +131,29 @@ export default {
     MatchReplace,
     SpellField,
     DamageTypeField,
-    AddRatioDropDown
+    AddRatioDropDown,
+    // Editable,
   },
-  data: function() {
+  data: function () {
     return {
       damage_type: this.effect.subeffects[0].damage_type,
       repeat: 1,
       subIndex: 0,
       ratios: {},
-      dmg_postmitigation: -1
+      dmg_postmitigation: -1,
     };
   },
   computed: {
-    doesDoDamage: function() {
+    doesDoDamage: function () {
       return ["magic", "physical", "true"].includes(this.damage_type);
     },
-    spell_ratios: function() {
+    spell_ratios: function () {
       return spell_ratios;
     },
-    edata: function() {
+    edata: function () {
       return this.effect.subeffects[this.subIndex];
     },
-    damage_type_user: function() {
+    damage_type_user: function () {
       switch (this.damage_type) {
         case "physical":
           return '<span class="ad">physical damage</span>';
@@ -178,14 +165,14 @@ export default {
           return '<span class="true">no damage</span>';
       }
     },
-    dmg_premitigation: function() {
+    dmg_premitigation: function () {
       return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     this.$app.damagingEffects.push(this);
   },
-  destroyed: function() {
+  destroyed: function () {
     const index = this.$app.damagingEffects.indexOf(this);
     if (index > -1) {
       this.$app.damagingEffects.splice(index, 1);
@@ -212,25 +199,25 @@ export default {
           newRatios[ratio] = {
             key: ratio,
             value: value,
-            ispercent: ispercent
+            ispercent: ispercent,
           };
         }
         this.ratios = newRatios;
-      }
-    }
+      },
+    },
   },
   methods: {
-    toggleSubIndex: function() {
+    toggleSubIndex: function () {
       this.subIndex = (this.subIndex + 1) % this.effect.subeffects.length;
     },
-    addRatio: function(ratio) {
+    addRatio: function (ratio) {
       Vue.set(this.ratios, ratio, {
         key: ratio,
         value: 0,
-        ispercent: true
+        ispercent: true,
       });
     },
-    removeEffect: function() {},
+    removeEffect: function () {},
     ratioValue(ratio) {
       if (this.ratios[ratio]) {
         const r = this.ratios[ratio];
@@ -241,7 +228,7 @@ export default {
       }
       return 0;
     },
-    calc_dmg_premitigation: function(player, target) {
+    calc_dmg_premitigation: function (player, target) {
       let damage = this.ratioValue("base_damage") || 0;
       for (const key in this.ratios) {
         if (key.startsWith("target")) {
@@ -261,10 +248,7 @@ export default {
         }
       }
       return damage;
-    }
-  }
+    },
+  },
 };
 </script>
-
-<style>
-</style>

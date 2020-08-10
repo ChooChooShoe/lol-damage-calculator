@@ -1,7 +1,7 @@
 
 <template>
-  <div class="column">
-    <h2 class="title is-3">{{ username }}</h2>
+  <div>
+    <h2>{{ username }}</h2>
     <ChampSearch v-model="champ"></ChampSearch>
     <ChampLevelSelect v-model="level"></ChampLevelSelect>
 
@@ -20,7 +20,7 @@
       </label>
     </label>-->
 
-    <table class="table is-fullwidth" v-if="showExtra || showDamage || showDefence" style="margin-bottom: 0;">
+    <table v-if="showExtra || showDamage || showDefence" style="margin-bottom: 0;">
       <thead>
         <tr>
           <th>Stats</th>
@@ -149,7 +149,7 @@
         </tr>-->
       </tbody>
     </table>
-    <table class="table is-fullwidth" v-if="showDamage">
+    <table v-if="showDamage">
       <thead>
         <tr>
           <th>Item Stats</th>
@@ -226,7 +226,7 @@
       <!-- <hr /> -->
 
 
-    <table class="table is-fullwidth" v-if="showDefence">
+    <table v-if="showDefence">
       <thead>
         <tr>
           <th colspan="4" class="health">Health Breakdown</th>
@@ -499,8 +499,8 @@ export default {
     champ(champ, old) {
       if (!this.championList[champ]) {
         console.log("Invalid champ:", champ);
-        champ = old;
-        return;
+        // champ = old;
+        // return;
       }
       window.localStorage.setItem("last_used_champ_" + this.userid, champ);
       if (this.isprimary === true) {
@@ -625,7 +625,7 @@ function update_user_stats(stats, user, lvl) {
 </script>
 
 <style>
-.table {
+table {
   background-color: transparent !important;
 }
 </style>

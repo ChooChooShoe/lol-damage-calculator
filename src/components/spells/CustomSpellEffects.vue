@@ -1,7 +1,7 @@
 <template>
   <div class="container float-clear spell-effect">
     <div>
-      <h4 class="title is-4">
+      <h3>
         Effect {{ (this.index + 10).toString(36).toUpperCase() }}
         <input
           name="remove_effect"
@@ -10,7 +10,7 @@
           value="Remove"
           @click="removeEffect()"
         />
-      </h4>
+      </h3>
       <div class="field column">
         <DamageTypeField v-model="damage_type"></DamageTypeField>
 
@@ -22,7 +22,7 @@
           :ispercent="item.ispercent"
           v-model="item.value"
         ></SpellField>
-        <hr>
+        <hr />
         <AddRatioDropDown></AddRatioDropDown>
       </div>
 
@@ -48,35 +48,15 @@
             class="simple-input"
           />
           time{{ repeat === 1 ? '' : 's' }}.
-          <input
-            :active="repeat === 1"
-            type="button"
-            class="simple-btn"
-            value="1x"
-            @click="repeat = 1"
-          />
-          <input
-            :active="repeat === 2"
-            type="button"
-            class="simple-btn"
-            value="2x"
-            @click="repeat = 2"
-          />
-          <input
-            :active="repeat === 5"
-            type="button"
-            class="simple-btn"
-            value="5x"
-            @click="repeat = 5"
-          />
-          <input
-            :active="repeat === 10"
-            type="button"
-            class="simple-btn"
-            value="10x"
-            @click="repeat = 10"
-          />
         </label>
+        <input
+          v-for="(item, index) in [1,2,3,5,10]"
+          :key="index"
+          type="button"
+          :value=" item + 'x'"
+          @click="repeat = item"
+          :class="{ 'success': repeat == item }"
+        />
         <div v-if="repeat != 1" class="column">
           In total, this effect deals {{Math.round(dmg_premitigation)}}
           <span
@@ -98,7 +78,7 @@ import {
   calc_dmg_onhit,
   spell_ratios,
   DamageSource,
-  DamageType
+  DamageType,
 } from "../../javascript/league_data";
 import Vue from "vue";
 import SpellField from "./SpellField.vue";
@@ -111,28 +91,28 @@ export default {
   components: {
     SpellField,
     DamageTypeField,
-    AddRatioDropDown
+    AddRatioDropDown,
   },
-  data: function() {
+  data: function () {
     return {
       damage_type: "magic",
       ratios: {
         base_damage: { key: "base_damage", value: 0, ispercent: false },
         player_total_ap: { key: "player_total_ap", value: 0, ispercent: true },
         player_total_ad: { key: "player_total_ad", value: 0, ispercent: true },
-        player_bonus_ad: { key: "player_bonus_ad", value: 0, ispercent: true }
+        player_bonus_ad: { key: "player_bonus_ad", value: 0, ispercent: true },
       },
-      repeat: 1
+      repeat: 1,
     };
   },
   computed: {
-    doesDoDamage: function() {
+    doesDoDamage: function () {
       return ["magic", "physical", "true"].includes(this.damage_type);
     },
-    spell_ratios: function() {
+    spell_ratios: function () {
       return spell_ratios;
     },
-    damage_type_user: function() {
+    damage_type_user: function () {
       switch (this.damage_type) {
         case "none":
           return '<span class="true">no damage</span>';
@@ -148,7 +128,7 @@ export default {
           return "";
       }
     },
-    dmg_onhit: function() {
+    dmg_onhit: function () {
       return this.calc_dmg_onhit(
         this.$app.player,
         this.$app.target,
@@ -156,10 +136,10 @@ export default {
         this.damage_type
       );
     },
-    dmg_premitigation: function() {
+    dmg_premitigation: function () {
       return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
     },
-    dmg_onhit_for_one: function() {
+    dmg_onhit_for_one: function () {
       return this.calc_dmg_onhit(
         this.$app.player,
         this.$app.target,
@@ -167,34 +147,34 @@ export default {
         this.damage_type
       );
     },
-    dmg_premitigation_for_one: function() {
+    dmg_premitigation_for_one: function () {
       return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     this.$app.damagingEffects.push(this);
   },
-  destroyed: function() {
+  destroyed: function () {
     const index = this.$app.damagingEffects.indexOf(this);
     if (index > -1) {
       this.$app.damagingEffects.splice(index, 1);
     }
   },
   methods: {
-    toggleSubIndex: function() {
+    toggleSubIndex: function () {
       this.subIndex = (this.subIndex + 1) % this.effect.subeffects.length;
     },
-    addRatio: function(ratio) {
+    addRatio: function (ratio) {
       Vue.set(this.ratios, ratio, {
         key: ratio,
         value: 0,
-        ispercent: true
+        ispercent: true,
       });
     },
-    removeEffect: function() {
+    removeEffect: function () {
       const idx = this.index;
       this.$parent.customEffects = this.$parent.customEffects.filter(
-        i => i !== idx
+        (i) => i !== idx
       );
     },
     ratioValue(ratio) {
@@ -207,7 +187,7 @@ export default {
       }
       return 0;
     },
-    calc_dmg_premitigation: function(player, target) {
+    calc_dmg_premitigation: function (player, target) {
       let damage = this.ratioValue("base_damage") || 0;
       for (const key in this.ratios) {
         if (key.startsWith("target")) {
@@ -228,6 +208,6 @@ export default {
       }
       return damage;
     },
-  }
+  },
 };
 </script>

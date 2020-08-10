@@ -1,6 +1,6 @@
 <template>
-  <div class="data_holder column is-full is-half-desktop">
-    <header class="title is-4">
+  <div class="data_holder c50">
+    <h3>
       {{ title }}
       <input
         name="remove_effect"
@@ -9,7 +9,7 @@
         value="Remove"
         @click="removeSelf()"
       />
-    </header>
+    </h3>
 
     <div class="field">
       <span class="field-label">Notes:</span>

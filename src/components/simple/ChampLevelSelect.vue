@@ -6,42 +6,42 @@
         <Editable :value="value" @input="onInput($event)" placeholder="Set Champion Level"></Editable>
         <span class="buttons">
           <input
-            :class="{ 'is-primary': value == 1 }"
+            :class="{ 'success': value == 1 }"
             type="button"
             class="button"
             value="1"
             @click="onInput(1)"
           />
           <input
-            :class="{ 'is-primary': value == 6 }"
+            :class="{ 'success': value == 6 }"
             type="button"
             class="button"
             value="6"
             @click="onInput(6)"
           />
           <input
-            :class="{ 'is-primary': value == 9 }"
+            :class="{ 'success': value == 9 }"
             type="button"
             class="button"
             value="9"
             @click="onInput(9)"
           />
           <input
-            :class="{ 'is-primary': value == 11 }"
+            :class="{ 'success': value == 11 }"
             type="button"
             class="button"
             value="11"
             @click="onInput(11)"
           />
           <input
-            :class="{ 'is-primary': value == 16 }"
+            :class="{ 'success': value == 16 }"
             type="button"
             class="button"
             value="16"
             @click="onInput(16)"
           />
           <input
-            :class="{ 'is-primary': value == 18 }"
+            :class="{ 'success': value == 18 }"
             type="button"
             class="button"
             value="18"
@@ -80,5 +80,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.buttons {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 </style>

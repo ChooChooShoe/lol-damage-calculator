@@ -3,9 +3,9 @@
     <SideBody :damagingEffects="damagingEffects" :player="player" :target="target"></SideBody>
 
     <!-- <SettingsModel ref="settings"></SettingsModel> -->
-    <div class="columns is-multiline">
-      <ChampionDiv class="data_holder column is-full is-half-desktop" userid="player" :isprimary="true"></ChampionDiv>
-      <ChampionDiv class="data_holder column is-full is-half-desktop" userid="target" :isprimary="false"></ChampionDiv>
+    <div class="flex main">
+      <ChampionDiv class="data_holder c50" userid="player" :isprimary="true"></ChampionDiv>
+      <ChampionDiv class="data_holder c50" userid="target" :isprimary="false"></ChampionDiv>
 
       <AADamageSource></AADamageSource>
       <ChampionSpellDamageSource
@@ -41,7 +41,7 @@ import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
 function loadLocalConfig() {
   console.log("loading config...");
   return {
-    shopEnabled: localStorage.getItem("shopEnabled") == "true"
+    shopEnabled: localStorage.getItem("shopEnabled") == "true",
   };
 }
 function saveLocalConfig(config) {
@@ -58,9 +58,9 @@ export default {
     // SettingsModel,
     // ShopModel,
     AADamageSource,
-    CustomDamageSource
+    CustomDamageSource,
   },
-  data: function() {
+  data: function () {
     return {
       currentSpells: [],
       customDamageSources: [],
@@ -72,14 +72,14 @@ export default {
       championList: {},
       itemData: [],
       globalToolTips: {},
-      config: loadLocalConfig()
+      config: loadLocalConfig(),
     };
   },
-  created: function() {
+  created: function () {
     Vue.prototype.$app = this;
     setupVue(this);
   },
-  mounted: function() {
+  mounted: function () {
     console.log("process.env", process.env);
   },
   watch: {
@@ -87,20 +87,20 @@ export default {
       handler(val, oldVal) {
         saveLocalConfig(val);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   computed: {
     shopEnabled() {
       return this.$app.config.shopEnabled;
     },
-    skillpoints_used: function() {
+    skillpoints_used: function () {
       let sum = 0;
       for (const x in this.damagingEffects) {
         sum += (this.damagingEffects[x].spellrankindex || 0) + 1;
       }
       return sum;
-    }
+    },
   },
   methods: {
     addCustomDamageSource() {
@@ -108,18 +108,15 @@ export default {
     },
     removeCustomDamageSource(index) {
       this.customDamageSources = this.customDamageSources.filter(
-        i => i !== index
+        (i) => i !== index
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 .data_holder {
-  /* width: 6000px; */
-  /* max-width: 50em; */
-  /* margin: 3.5px auto; */
   border: 1px solid #1e8ad6;
   background-color: #121a1b;
   padding: 5px;

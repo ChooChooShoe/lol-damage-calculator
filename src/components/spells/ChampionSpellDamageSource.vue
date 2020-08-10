@@ -1,58 +1,24 @@
 <template>
-  <div class="data_holder column is-full is-half-desktop">
+  <div class="data_holder c50">
     <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
-    <h2 class="title is-4">{{ spell.name }} ({{ spell.skillkey }})</h2>
+    <h3>{{ spell.name }} ({{ spell.skillkey }})</h3>
     <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
     <hr />
-    <div class="is-pulled-right" v-if="spell.maxrank > 0">
-      <span>Spell Rank ({{ spellrankindex + 1 }})</span>
+    <div style="float: right" v-if="spell.maxrank > 0">
+      <span>
+        Spell Rank (
+        <span class="spelleffect">{{ spellrankindex + 1 }}</span>
+        / {{spell.maxrank}} )
+      </span>
       <fieldset class="spellrank">
         <input
+          v-for="(_, index) in Array(spell.maxrank)"
+          :key="index"
           v-model.number="spellrankindex"
           type="radio"
           name="spellrank"
-          value="0"
-          title="Rank 1"
-        />
-        <input
-          v-if="spell.maxrank > 1"
-          v-model.number="spellrankindex"
-          type="radio"
-          name="spellrank"
-          value="1"
-          title="Rank 2"
-        />
-        <input
-          v-if="spell.maxrank > 2"
-          v-model.number="spellrankindex"
-          type="radio"
-          name="spellrank"
-          value="2"
-          title="Rank 3"
-        />
-        <input
-          v-if="spell.maxrank > 3"
-          v-model.number="spellrankindex"
-          type="radio"
-          name="spellrank"
-          value="3"
-          title="Rank 4"
-        />
-        <input
-          v-if="spell.maxrank > 4"
-          v-model.number="spellrankindex"
-          type="radio"
-          name="spellrank"
-          value="4"
-          title="Rank 5"
-        />
-        <input
-          v-if="spell.maxrank > 5"
-          v-model.number="spellrankindex"
-          type="radio"
-          name="spellrank"
-          value="5"
-          title="Rank 6"
+          :value="index"
+          :title="'Rank ' + (index+1)"
         />
       </fieldset>
     </div>
@@ -64,7 +30,8 @@
       </div>
       <div v-if="spell.cooldown">
         Cooldown:
-        <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span>seconds
+        <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span>
+        &nbsp;seconds
       </div>
       <div v-if="spell.cost">
         Cost:
@@ -128,10 +95,10 @@ export default {
     // SimpleTooltip,
     SpellNotes,
     SpellSpan,
-    CustomSpellEffects
+    CustomSpellEffects,
   },
   props: ["id", "spell", "champion"],
-  data: function() {
+  data: function () {
     return {
       spellrankindex: (this.spell.maxrank || 0) - 1,
       customEffects: [],
@@ -159,25 +126,24 @@ export default {
           this.spell.image.x +
           "px -" +
           this.spell.image.y +
-          "px"
+          "px",
       };
-    }
+    },
   },
   methods: {
-    addEffect: function() {
+    addEffect: function () {
       this.customEffects.push(this.lastEffectIndex++);
     },
-    matchReplace: function(text) {
+    matchReplace: function (text) {
       return quickMatchReplace(text);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 .spellrank {
   border: none;
-  /* float: left; */
 }
 
 .spellrank input {
@@ -213,7 +179,7 @@ export default {
 }
 
 .spelleffect {
-  color: #1e8ad6;
+  color: #8e7dad;
 }
 
 .capture-unknown {

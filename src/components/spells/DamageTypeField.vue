@@ -1,24 +1,26 @@
 <template>
-  <div class="field is-horizontal">
-    <div class="field-label is-normal">
+  <div>
+    <div>
       <label class="label">Damage Type</label>
     </div>
-    <div class="field-body tabs is-left is-toggle">
-      <ul>
-        <li :class=" { 'is-active': value === 'none' }">
-          <a @click="handleInput('none')">None</a>
-        </li>
-        <li :class=" { 'is-active': value === 'physical' }">
-          <a @click="handleInput('physical')" class="ad">Physical</a>
-        </li>
-        <li :class=" { 'is-active': value === 'magic' }">
-          <a @click="handleInput('magic')" class="ap">Magic</a>
-        </li>
-        <li :class=" { 'is-active': value === 'true' }">
-          <a @click="handleInput('true')">True</a>
-        </li>
-      </ul>
-    </div>
+    <ul class="tabs">
+      <button :class=" { 'success': value === 'none' }" @click="handleInput('none')">None</button>
+      <button
+        class="ad"
+        :class=" { 'success': value === 'physical' }"
+        @click="handleInput('physical')"
+      >Physical</button>
+      <button
+        class="ap"
+        :class=" { 'success': value === 'magic' }"
+        @click="handleInput('magic')"
+      >Magic</button>
+      <button
+        class="true"
+        :class=" { 'success': value === 'true' }"
+        @click="handleInput('true')"
+      >True</button>
+    </ul>
   </div>
 </template>
 
@@ -33,7 +35,18 @@ export default {
   methods: {
     handleInput(e) {
       this.$emit("input", e);
-    }
-  }
+    },
+  },
 };
 </script>
+<style lang="scss">
+.tabs {
+  display: flex;
+  align-items: stretch;
+  justify-content: left;
+}
+.tabs button {
+  border-width: 2px;
+  margin-bottom: 0;
+}
+</style>
