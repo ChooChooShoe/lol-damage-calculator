@@ -33,10 +33,7 @@
           />
         </label>
       </div>
-      <div
-        :class=" effect.subeffects.length > 1 ?'click' : ''"
-        @click="toggleSubIndex"
-      >
+      <div :class=" effect.subeffects.length > 1 ?'click' : ''" @click="toggleSubIndex">
         <h4 class="spelleffect">{{ edata.title }}</h4>
         <match-replace
           class="column effect-value"
@@ -45,8 +42,6 @@
         ></match-replace>
       </div>
       <div class="field column">
-        <DamageTypeField v-model="damage_type"></DamageTypeField>
-
         <table>
           <thead>
             <tr>
@@ -68,6 +63,11 @@
           <tfoot>
             <tr>
               <th colspan="4">
+                <AddRatioDropDown></AddRatioDropDown>
+              </th>
+            </tr>
+            <tr>
+              <th colspan="4">
                 <hr style="margin: 0.3rem 0;" />
               </th>
             </tr>
@@ -80,7 +80,8 @@
             </tr>
           </tfoot>
         </table>
-        <AddRatioDropDown></AddRatioDropDown>
+        <DamageTypeField v-model="damage_type"></DamageTypeField>
+        <hr style="margin: 0.5rem 0;" />
       </div>
 
       <div v-if="doesDoDamage">
@@ -107,6 +108,7 @@
             v-for="(item, index) in [1,2,3,5,10]"
             :key="index"
             type="button"
+            class="repeat"
             :value=" item + 'x'"
             @click="repeat = item"
             :class="{ 'success': repeat == item }"
@@ -292,7 +294,15 @@ export default {
 </script>
 
 <style lang="scss">
-input.simple-input {
+input[type='number'].simple-input {
   width: 6em;
+}
+input[type='button'].repeat {
+  border-width: 1px;
+  margin-bottom: 0;
+  height: 2.0em;
+  font-size: 0.9em;
+  padding: 0 0.5em;
+  margin: 0 0.2em;
 }
 </style>

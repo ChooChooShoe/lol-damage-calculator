@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div>
-      <label class="label">Damage Type</label>
-    </div>
     <ul class="tabs">
+      <label class="label">Damage Type:</label>
       <button :class=" { 'success': value === 'none' }" @click="handleInput('none')">None</button>
       <button
         class="ad"
@@ -46,7 +44,11 @@ export default {
   justify-content: left;
 }
 .tabs button {
-  border-width: 2px;
+  border-width: 1px;
   margin-bottom: 0;
+  height: 2.0em;
+  font-size: 0.9em;
+  padding: 0 0.5em;
+  margin: 0 0.2em;
 }
 </style>

@@ -313,14 +313,14 @@
       <span v-if="info.resource === 'None'">* {{ info.name }} does not use any secondary resource.</span>-->
     </div>
     <div class="buttons">
-      <input
-        class="button is-danger is-hidden"
+      <!-- <input
+        class="button error is-hidden"
         type="button"
         value="Reset All"
         @click="clear(true)"
-      />
-      <input class="button is-warning" type="button" value="Clear" @click="clear()" />
-      <input class="button is-info" type="button" value="Validate" />
+      /> -->
+      <input class="button error" type="button" value="Clear" @click="clear()" />
+      <input class="button info" type="button" value="Validate" />
     </div>
     <ItemInventory v-if="$app.config.shopEnabled" ref="inventory" :userid="userid"></ItemInventory>
   </div>

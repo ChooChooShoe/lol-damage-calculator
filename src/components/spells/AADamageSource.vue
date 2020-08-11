@@ -82,6 +82,7 @@
         :value=" item + 'x'"
         @click="repeat = item"
         :class="{ 'success': repeat == item }"
+        class="repeat"
       />
     </p>
     <p>
