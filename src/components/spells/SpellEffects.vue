@@ -1,6 +1,6 @@
 <template>
   <div class="container float-clear spell-effect">
-    <nav class="panel columns is-multiline">
+    <nav class="col">
       <div v-if="effect.subeffects.length > 1">
         <label>
           View A
@@ -34,11 +34,10 @@
         </label>
       </div>
       <div
-        class="column is-full"
         :class=" effect.subeffects.length > 1 ?'click' : ''"
         @click="toggleSubIndex"
       >
-        <span class="blue">{{ edata.title }}</span>
+        <h4 class="spelleffect">{{ edata.title }}</h4>
         <match-replace
           class="column effect-value"
           :text="edata.str"
@@ -53,15 +52,34 @@
             <tr>
               <th>Type</th>
               <th>Ratio</th>
-              <th>Added Damage</th>
+              <th>Pre-Damage</th>
+              <th>Post-Damage</th>
             </tr>
           </thead>
           <tbody>
-            <SpellField v-for="(item, key) in ratios" :key="key" :item="item" :index="spellrankindex"></SpellField>
+            <SpellField
+              v-for="(item, key) in ratios"
+              ref="spellfields"
+              :key="key"
+              :item="item"
+              :index="spellrankindex"
+            ></SpellField>
           </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="4">
+                <hr style="margin: 0.3rem 0;" />
+              </th>
+            </tr>
+            <tr>
+              <th style="text-align: center;" colspan="2">
+                <b>Total</b>
+              </th>
+              <Editable :value="dmg_premitigation" :readonly="true"></Editable>
+              <Editable :value="dmg_postmitigation" :readonly="true"></Editable>
+            </tr>
+          </tfoot>
         </table>
-
-        <hr />
         <AddRatioDropDown></AddRatioDropDown>
       </div>
 
@@ -132,7 +150,7 @@ export default {
     SpellField,
     DamageTypeField,
     AddRatioDropDown,
-    // Editable,
+    Editable,
   },
   data: function () {
     return {
@@ -140,7 +158,7 @@ export default {
       repeat: 1,
       subIndex: 0,
       ratios: {},
-      dmg_postmitigation: -1,
+      isMounted: false,
     };
   },
   computed: {
@@ -166,11 +184,31 @@ export default {
       }
     },
     dmg_premitigation: function () {
-      return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
+      if (!this.isMounted) return -1;
+      let total = 0;
+      for (const currentValue of this.$refs.spellfields) {
+        total += currentValue.damagePreValue;
+      }
+      return total;
+    },
+    dmg_postmitigation: function () {
+      return calc_dmg_onhit(
+        this.$app.player,
+        this.$app.target,
+        this.dmg_premitigation,
+        this.damage_type
+      );
+    },
+    dyanmic: function () {
+      return true;
+    },
+    damageSources: function () {
+      return [this];
     },
   },
   mounted: function () {
     this.$app.damagingEffects.push(this);
+    this.isMounted = true;
   },
   destroyed: function () {
     const index = this.$app.damagingEffects.indexOf(this);
@@ -252,3 +290,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+input.simple-input {
+  width: 6em;
+}
+</style>

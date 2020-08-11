@@ -2,31 +2,30 @@
 <template>
   <tr>
     <th>
-      <span :class="spell_ratios[item.key].color">{{ displayValue }}</span>
+      <span :class="color">{{ displayValue }}</span>
     </th>
     <Editable v-model="item.value" :format="item.ispercent ? 'percent' : ''" :index="index"></Editable>
-    <Editable :value="damagePreMitigationValue" :readonly="true"></Editable>
+    <EditableRO :value="damagePreValue"></EditableRO>
+    <EditableRO :value="damagePostValue"></EditableRO>
   </tr>
 </template>
 
 <script>
 import Vue from "vue";
-import { spell_ratios } from "../../javascript/league_data";
+import { spell_ratios, calc_dmg_onhit } from "../../javascript/league_data";
 import Editable from "../simple/Editable.vue";
+import EditableRO from "../simple/EditableRO.vue";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "SpellField",
   props: ["item", "index"],
   data: function () {
-    return {
-      isValid: true,
-      invalidMsg: "",
-      spell_ratios: spell_ratios,
-    };
+    return {};
   },
   components: {
     Editable,
+    EditableRO,
   },
   computed: {
     prefex: function () {
@@ -52,33 +51,34 @@ export default {
         })`;
       } else return spell_ratios[this.item.key].prefex;
     },
-    damagePreMitigationValue: function () {
+    damagePreValue: function () {
+      console.log('key',this.item.key)
+      const user = spell_ratios[this.item.key].user;
+      const stat = spell_ratios[this.item.key].stat;
+      // No user means base_damage or base_progression
+      if (!user) return this.valueNumber;
+      let statValue = this.$app[user][stat];
+      if (isNaN(statValue)) {
+        console.log(
+          `Stat ${stat} for ratio ${this.item.key} missing for ${user}`
+        );
+        statValue = 0;
+      }
+      return statValue * this.valueNumber;
+    },
+    damagePostValue: function () {
       const player = this.$app.player;
       const target = this.$app.target;
-      const key = this.item.key;
-      const v = this.valueNumber;
-      if (key.startsWith("target")) {
-        let stat = target[key.substring(7)];
-        if (isNaN(stat)) {
-          console.log(`Stat for ratio ${key} missing for target`);
-          stat = 0;
-        }
-        return stat * v;
-      } else if (key.startsWith("player")) {
-        let stat = player[key.substring(7)];
-        if (isNaN(stat)) {
-          console.log(`Stat for ratio ${key} missing for player`);
-          stat = 0;
-        }
-        return stat * v;
-      } else return v;
+      return calc_dmg_onhit(
+        player,
+        target,
+        this.damagePreValue,
+        this.$parent.damage_type
+      );
     },
-    valueNumber: function() {
-      let v = this.item.value;
-      if (Array.isArray(this.item.value)) {
-        v = this.item.value[this.index];
-      }
-      return v;
+    valueNumber: function () {
+      if (Array.isArray(this.item.value)) return this.item.value[this.index];
+      return this.item.value;
     },
   },
 };

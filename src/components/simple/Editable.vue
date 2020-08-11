@@ -2,16 +2,16 @@
   <td>
     <input
       @focus="onFocus"
-      ref="input"
+      @blur="onBlur"
       class="editable-input"
-      type="number"
+      type="text"
       step="1"
       :value="encode(value)"
       :readonly="readonly"
       :placeholder="placeholder"
       @input="onInput"
     />
-    <i v-show="!validity" class="alert-icon" @mousemove="draw" @mouseout="hide">
+    <i v-if="!validity" class="alert-icon" @mousemove="draw" @mouseout="hide">
       <div ref="local" class="tooltipcontent simplebg" style="display:none;">{{validationMessage}}</div>
     </i>
   </td>
@@ -21,7 +21,7 @@
 import Vue from "vue";
 export default {
   props: {
-    value: [Number, Array],
+    value: [Number, Array, String],
     index: Number,
     format: String,
     readonly: Boolean,
@@ -65,6 +65,16 @@ export default {
       },
     },
   },
+  computed: {
+    exactValue: function () {
+      return this.encode(this.value);
+    },
+    displayValue: function () {
+      const x = Math.round(this.exactValue * 100) / 100;
+      if (this.format === "percent") return String(x) + "%";
+      return x;
+    },
+  },
   methods: {
     draw: function (e) {
       const style = `left:${e.clientX + 10}px;top:${e.clientY + 10}px;`;
@@ -74,7 +84,13 @@ export default {
       this.$refs.local.setAttribute("style", `display:none;`);
     },
     onFocus(ev) {
-      this.$refs.input.select();
+      ev.target.type = "number";
+      ev.target.value = this.exactValue;
+      ev.target.select();
+    },
+    onBlur(ev) {
+      ev.target.type = "text";
+      ev.target.value = this.displayValue;
     },
     onInput(ev) {
       const decoded = this.decode(ev.target.valueAsNumber);

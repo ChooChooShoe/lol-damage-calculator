@@ -6,25 +6,30 @@
       <thead>
         <tr>
           <th>Damage Type</th>
-          <th>Base</th>
-          <th>On-hit</th>
+          <th>Pre-Damage</th>
+          <th>Post-Damage</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th class="ad">Physical</th>
+          <th class="ad">Basic Attack</th>
           <Editable v-model="attack_damage"></Editable>
+          <Editable :readonly="true" v-model="ds_ad.dmg_postmitigation"></Editable>
+        </tr>
+        <tr>
+          <th class="ad">On-Hit Physical</th>
           <Editable v-model="ds_ph.dmg_premitigation"></Editable>
+          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
         </tr>
         <tr>
-          <th class="ap">Magic</th>
-          <Editable :value="0" :readonly="true"></Editable>
+          <th class="ap">On-Hit Magic</th>
           <Editable v-model="ds_mg.dmg_premitigation"></Editable>
+          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
         </tr>
         <tr>
-          <th class="true">True</th>
-          <Editable :value="0" :readonly="true"></Editable>
+          <th class="true">On-Hit True</th>
           <Editable v-model="ds_tr.dmg_premitigation"></Editable>
+          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
         </tr>
       </tbody>
     </table>

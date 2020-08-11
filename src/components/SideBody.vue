@@ -70,7 +70,7 @@
           <option value>Loading Data...</option>
         </select>
       </div>
-    </nav> -->
+    </nav>-->
 
     <div class="buttons">
       <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
@@ -80,7 +80,7 @@
 
 <script>
 import numeral from "numeral";
-import { calc_dmg_onhit, DamageType } from "./../javascript/league_data"
+import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
 export default {
   name: "SideBody",
   props: ["damagingEffects", "player", "target"],
@@ -89,20 +89,20 @@ export default {
       // this.$app.$refs.shop.visable = false;
       this.$app.$refs.settings.visable = true;
     },
-    rnd: function(n, digits) {
+    rnd: function (n, digits) {
       if (n === undefined || isNaN(n)) n = 0;
       if (digits === undefined) digits = 0;
       return +n.toFixed(digits);
     },
-    percentf: function(value) {
+    percentf: function (value) {
       return numeral(value).format("0.00%");
     },
     addCustomDamageSource() {
       this.$app.addCustomDamageSource();
-    }
+    },
   },
   computed: {
-    outPes: function() {
+    outPes: function () {
       return [
         this.percentf(this.output.preMagicDmg / this.output.preTotalDmg),
         this.percentf(this.output.prePhysicalDmg / this.output.preTotalDmg),
@@ -110,10 +110,10 @@ export default {
 
         this.percentf(this.output.magicDmg / this.output.totalDmg),
         this.percentf(this.output.physicalDmg / this.output.totalDmg),
-        this.percentf(this.output.trueDmg / this.output.totalDmg)
+        this.percentf(this.output.trueDmg / this.output.totalDmg),
       ];
     },
-    outStyle: function() {
+    outStyle: function () {
       const t = this.output.preTotalDmg;
       const p1 = this.output.preMagicDmg / t;
       const p2 = this.output.prePhysicalDmg / t;
@@ -126,31 +126,31 @@ export default {
       return [
         {
           left: "0%",
-          width: this.percentf(p1)
+          width: this.percentf(p1),
         },
         {
           left: this.percentf(p1),
-          width: this.percentf(p2)
+          width: this.percentf(p2),
         },
         {
           left: this.percentf(p1 + p2),
-          width: this.percentf(p3)
+          width: this.percentf(p3),
         },
         {
           left: "0%",
-          width: this.percentf(p4)
+          width: this.percentf(p4),
         },
         {
           left: this.percentf(p4),
-          width: this.percentf(p5)
+          width: this.percentf(p5),
         },
         {
           left: this.percentf(p4 + p5),
-          width: this.percentf(p6)
-        }
+          width: this.percentf(p6),
+        },
       ];
     },
-    output: function() {
+    output: function () {
       console.log("Re-calc 4.0 start");
       const p = this.player;
       const t = this.target;
@@ -165,27 +165,32 @@ export default {
         status: "Unknown",
         overkill: 0,
         hpRemaining: 0,
-        hpRemainingPercent: 0
+        hpRemainingPercent: 0,
       };
       if (!p || !t) {
         console.log("Re-calc 4.0 failed, missing player and target.");
         return output;
       }
 
-      for (const spellEff of this.damagingEffects) {
+      for (const damagingEffect of this.damagingEffects) {
         // Use .damageSources for effects with more then one source.
-        let sources = spellEff.damageSources;
+        let sources = damagingEffect.damageSources;
         if (!sources) {
-          // Use spellEff as the source only if no .damageSources defined.
-          sources = [spellEff];
+          // Use damagingEffect as the source only if no .damageSources defined.
+          sources = [damagingEffect];
         }
 
         for (const damageSource of sources) {
-          const times_hit = Math.max(damageSource.repeat, 0)
+          const times_hit = Math.max(damageSource.repeat, 0);
           let pre = damageSource.dmg_premitigation;
-          let post = calc_dmg_onhit(p,t,pre,damageSource.damage_type);
-          damageSource.dmg_postmitigation = post;
-
+          let post;
+          // A dynamic damageSource has the dmg_postmitigation cauculated for us.
+          if (damageSource.dyanmic) post = damageSource.dmg_postmitigation;
+          else {
+            // non-dyanmic will have it set here.
+            post = calc_dmg_onhit(p, t, pre, damageSource.damage_type);
+            damageSource.dmg_postmitigation = post;
+          }
           pre = pre * times_hit;
           post = post * times_hit;
 
@@ -205,7 +210,11 @@ export default {
             case DamageType.UNKNOWN:
               continue;
             default:
-              console.log('Unknown Damage Type "',damageSource.damage_type,'" Caculations may be incorrect.')
+              console.log(
+                'Unknown Damage Type "',
+                damageSource.damage_type,
+                '" Caculations may be incorrect.'
+              );
               continue;
           }
           // Add totals if magic/phys/true damage
@@ -227,8 +236,8 @@ export default {
         output.overkill = "N/A";
       }
       return output;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -240,7 +249,7 @@ export default {
   width: 30%;
   background-color: #121a1b;
   float: right;
-  padding: .75rem;
+  padding: 0.75rem;
 }
 .main {
   width: 70%;
