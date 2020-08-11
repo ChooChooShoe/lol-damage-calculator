@@ -81,11 +81,30 @@ export default {
   },
   mounted: function () {
     console.log("process.env", process.env);
+    this.load(
+      window.localStorage.getItem("last_used_customDamageSources") || "{}"
+    );
+    this.lastCustomDamageSourcesIndex =
+      window.localStorage.getItem("last_used_lastCustomDamageSourcesIndex") ||
+      0;
   },
   watch: {
     config: {
       handler(val, oldVal) {
         saveLocalConfig(val);
+      },
+      deep: true,
+    },
+    customDamageSources: {
+      handler: function (val, oldVal) {
+        window.localStorage.setItem(
+          "last_used_customDamageSources",
+          JSON.stringify(val)
+        );
+        window.localStorage.setItem(
+          "last_used_lastCustomDamageSourcesIndex",
+          this.lastCustomDamageSourcesIndex
+        );
       },
       deep: true,
     },
@@ -103,6 +122,12 @@ export default {
     },
   },
   methods: {
+    load: function (json) {
+      const data = JSON.parse(json);
+      for (let key in data) {
+        this.customDamageSources[key] = data[key];
+      }
+    },
     addCustomDamageSource() {
       this.customDamageSources.push(this.lastCustomDamageSourcesIndex++);
     },

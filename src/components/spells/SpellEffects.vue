@@ -250,44 +250,13 @@ export default {
     toggleSubIndex: function () {
       this.subIndex = (this.subIndex + 1) % this.effect.subeffects.length;
     },
+    /// Used by child
     addRatio: function (ratio) {
       Vue.set(this.ratios, ratio, {
         key: ratio,
         value: 0,
         ispercent: true,
       });
-    },
-    removeEffect: function () {},
-    ratioValue(ratio) {
-      if (this.ratios[ratio]) {
-        const r = this.ratios[ratio];
-        if (Array.isArray(r.value)) {
-          return r.value[this.spellrankindex];
-        }
-        return r.value;
-      }
-      return 0;
-    },
-    calc_dmg_premitigation: function (player, target) {
-      let damage = this.ratioValue("base_damage") || 0;
-      for (const key in this.ratios) {
-        if (key.startsWith("target")) {
-          let stat = target[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for target`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        } else if (key.startsWith("player")) {
-          let stat = player[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for player`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        }
-      }
-      return damage;
     },
   },
 };

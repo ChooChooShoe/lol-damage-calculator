@@ -10,7 +10,10 @@
         @click="removeSelf()"
       />
     </h3>
-
+    <label>
+      Enabled
+      <input type="checkbox" v-model="enabled" />
+    </label>
     <div class="field">
       <span class="field-label">Notes:</span>
       <div class="field-body">
@@ -18,11 +21,7 @@
       </div>
     </div>
     <hr />
-    <CustomSpellEffects
-      v-for="i in customEffects"
-      :key="'CustomSpellEffects' + i"
-      :index="i"
-    ></CustomSpellEffects>
+    <CustomSpellEffects v-for="i in customEffects" :key="'CustomSpellEffects' + i" :index="i"></CustomSpellEffects>
 
     <input
       name="add_effect"
@@ -31,14 +30,13 @@
       value="Add Effect +"
       @click="addEffect()"
     />
-
   </div>
 </template>
 
 <script>
 // import MatchReplace from './MatchReplace.vue';
 // import SpellEffects from './spells/SpellEffects.vue';
-import CustomSpellEffects from './CustomSpellEffects.vue';
+import CustomSpellEffects from "./CustomSpellEffects.vue";
 // import SimpleTooltip from './SimpleTooltip.vue';
 // import SpellNotes from './SpellNotes.vue';
 // import SpellSpan from './SpellSpan.vue';
@@ -56,11 +54,12 @@ export default {
     CustomSpellEffects,
   },
   props: ["index"],
-  data: function() {
+  data: function () {
     return {
       title: "Custom Damage Source " + (this.index + 1),
       customEffects: [0],
-      lastEffectIndex: 1
+      lastEffectIndex: 1,
+      enabled: true,
     };
   },
   methods: {
@@ -69,7 +68,7 @@ export default {
     },
     removeSelf() {
       this.$parent.removeCustomDamageSource(this.index);
-    }
-  }
+    },
+  },
 };
 </script>

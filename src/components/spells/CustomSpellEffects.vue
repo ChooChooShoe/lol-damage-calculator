@@ -1,72 +1,88 @@
 <template>
-  <div class="container float-clear spell-effect">
-    <div>
-      <h3>
-        Effect {{ (this.index + 10).toString(36).toUpperCase() }}
-        <input
-          name="remove_effect"
-          class="button is-danger is-pulled-right"
-          type="button"
-          value="Remove"
-          @click="removeEffect()"
-        />
-      </h3>
-      <div class="field column">
-        <DamageTypeField v-model="damage_type"></DamageTypeField>
+  <div class="col">
+    <div class="field column">
+      <h4 class="spelleffect">Effect {{ (this.index + 10).toString(36).toUpperCase() }}</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Ratio</th>
+            <th>Pre-Damage</th>
+            <th>Post-Damage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <SpellField
+            v-for="(item, key) in ratios"
+            ref="spellfields"
+            :key="key"
+            :item="item"
+            :index="0"
+          ></SpellField>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              <AddRatioDropDown></AddRatioDropDown>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <hr style="margin: 0.3rem 0;" />
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: center;" colspan="2">
+              <b>Total</b>
+            </th>
+            <Editable :value="dmg_premitigation" :readonly="true"></Editable>
+            <Editable :value="dmg_postmitigation" :readonly="true"></Editable>
+          </tr>
+        </tfoot>
+      </table>
+      <DamageTypeField v-model="damage_type"></DamageTypeField>
+      <hr style="margin: 0.5rem 0;" />
+    </div>
 
-        <SpellField
-          v-for="(item, key) in ratios"
-          :key="'ratio-'+key"
-          :type="item.key"
-          :spellrankindex="0"
-          :ispercent="item.ispercent"
-          v-model="item.value"
-        ></SpellField>
-        <hr />
-        <AddRatioDropDown></AddRatioDropDown>
+    <div v-if="doesDoDamage">
+      <div class="column">
+        This effect will deal {{Math.round(dmg_premitigation)}}
+        <span v-html="damage_type_user"></span> before resistances
+        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+        <br />This damage will cause the target to
+        <span
+          class="spelleffect"
+        >lose {{Math.round(dmg_postmitigation)}} health</span>
+        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
       </div>
-
-      <div v-if="doesDoDamage">
-        <div class="column">
-          This effect will deal {{Math.round(dmg_premitigation_for_one)}}
-          <span
-            v-html="damage_type_user"
-          ></span> before resistances
-          <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
-          <br />This damage will cause the target to
-          <span
-            class="spelleffect"
-          >lose {{Math.round(dmg_onhit_for_one)}} health</span>
-          <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
-        </div>
-        <label class="column">
-          This effect will hit
-          <input
-            type="number"
-            value="1"
-            v-model.number="repeat"
-            class="simple-input"
-          />
-          time{{ repeat === 1 ? '' : 's' }}.
-        </label>
+      <label class="column">
+        This effect will hit
+        <input
+          type="number"
+          value="1"
+          v-model.number="repeat"
+          class="simple-input"
+        />
+        time{{ repeat === 1 ? '' : 's' }}.
         <input
           v-for="(item, index) in [1,2,3,5,10]"
           :key="index"
           type="button"
+          class="repeat"
           :value=" item + 'x'"
           @click="repeat = item"
           :class="{ 'success': repeat == item }"
         />
-        <div v-if="repeat != 1" class="column">
-          In total, this effect deals {{Math.round(dmg_premitigation)}}
-          <span
-            v-html="damage_type_user"
-          ></span> before resistances.
-          <br />This damage will cause the target to
-          <span
-            class="spelleffect"
-          >lose {{Math.round(dmg_onhit)}} health</span>.
-        </div>
+      </label>
+      <div v-if="repeat != 1" class="column">
+        In total, this effect deals {{Math.round(dmg_premitigation * repeat)}}
+        <span
+          v-html="damage_type_user"
+        ></span> before resistances.
+        <br />This damage will cause the target to
+        <span
+          class="spelleffect"
+        >lose {{Math.round(dmg_postmitigation * repeat)}} health</span>.
       </div>
     </div>
   </div>
@@ -84,6 +100,7 @@ import Vue from "vue";
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
+import Editable from "../simple/Editable.vue";
 
 export default {
   props: ["index"],
@@ -92,17 +109,19 @@ export default {
     SpellField,
     DamageTypeField,
     AddRatioDropDown,
+    Editable,
   },
   data: function () {
     return {
-      damage_type: "magic",
+      damage_type: DamageType.MAGIC,
+      repeat: 1,
       ratios: {
         base_damage: { key: "base_damage", value: 0, ispercent: false },
         player_total_ap: { key: "player_total_ap", value: 0, ispercent: true },
         player_total_ad: { key: "player_total_ad", value: 0, ispercent: true },
         player_bonus_ad: { key: "player_bonus_ad", value: 0, ispercent: true },
       },
-      repeat: 1,
+      isMounted: false,
     };
   },
   computed: {
@@ -114,10 +133,6 @@ export default {
     },
     damage_type_user: function () {
       switch (this.damage_type) {
-        case "none":
-          return '<span class="true">no damage</span>';
-        case "unknown":
-          return '<span class="mixed">unknown damage</span>';
         case "physical":
           return '<span class="ad">physical damage</span>';
         case "magic":
@@ -125,34 +140,35 @@ export default {
         case "true":
           return '<span class="true">true damage</span>';
         default:
-          return "";
+          return '<span class="true">no damage</span>';
       }
     },
-    dmg_onhit: function () {
-      return this.calc_dmg_onhit(
+    dmg_premitigation: function () {
+      if (!this.isMounted) return -1;
+      let total = 0;
+      for (const currentValue of this.$refs.spellfields) {
+        total += currentValue.damagePreValue;
+      }
+      return total;
+    },
+    dmg_postmitigation: function () {
+      return calc_dmg_onhit(
         this.$app.player,
         this.$app.target,
         this.dmg_premitigation,
         this.damage_type
       );
     },
-    dmg_premitigation: function () {
-      return this.dmg_premitigation_for_one * Math.max(0, this.repeat);
+    dyanmic: function () {
+      return true;
     },
-    dmg_onhit_for_one: function () {
-      return this.calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
-        this.dmg_premitigation_for_one,
-        this.damage_type
-      );
-    },
-    dmg_premitigation_for_one: function () {
-      return this.calc_dmg_premitigation(this.$app.player, this.$app.target);
+    damageSources: function () {
+      return [this];
     },
   },
   mounted: function () {
     this.$app.damagingEffects.push(this);
+    this.isMounted = true;
   },
   destroyed: function () {
     const index = this.$app.damagingEffects.indexOf(this);
@@ -161,9 +177,7 @@ export default {
     }
   },
   methods: {
-    toggleSubIndex: function () {
-      this.subIndex = (this.subIndex + 1) % this.effect.subeffects.length;
-    },
+    /// Used by child
     addRatio: function (ratio) {
       Vue.set(this.ratios, ratio, {
         key: ratio,
@@ -176,37 +190,6 @@ export default {
       this.$parent.customEffects = this.$parent.customEffects.filter(
         (i) => i !== idx
       );
-    },
-    ratioValue(ratio) {
-      if (this.ratios[ratio]) {
-        const r = this.ratios[ratio];
-        if (Array.isArray(r.value)) {
-          return r.value[0];
-        }
-        return r.value;
-      }
-      return 0;
-    },
-    calc_dmg_premitigation: function (player, target) {
-      let damage = this.ratioValue("base_damage") || 0;
-      for (const key in this.ratios) {
-        if (key.startsWith("target")) {
-          let stat = target[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for target`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        } else if (key.startsWith("player")) {
-          let stat = player[key.substring(7)];
-          if (isNaN(stat)) {
-            console.log(`Stat for ratio ${key} missing for player`);
-            stat = 0;
-          }
-          damage += stat * this.ratioValue(key);
-        }
-      }
-      return damage;
     },
   },
 };
