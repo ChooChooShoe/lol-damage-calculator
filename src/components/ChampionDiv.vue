@@ -176,17 +176,13 @@
         </tr>
         <tr>
           <td colspan="2">
-            <div class="field">
+            <div>
               <span>Has a Void Staff?&nbsp;</span>
-              <input
-                id="switchExample"
-                @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0"
-                type="checkbox"
-                name="switchExample"
-                class="switch"
-                checked="checked"
-              />
-              <label for="switchExample">
+              <label>
+                <input
+                  @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0"
+                  type="checkbox"
+                />
                 <span>{{ rnd(percent_magicpen * 100) }}% Magic Pen.</span>
               </label>
             </div>
@@ -225,34 +221,33 @@
       </div>-->
       <!-- <hr /> -->
 
-
-    <table v-if="showDefence">
-      <thead>
-        <tr>
-          <th colspan="4" class="health">Health Breakdown</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="">Base</td>
-          <Editable v-model="base_hp" :readonly="true"></Editable>
-          <td class="">Bonus</td>
-          <Editable v-model="bonus_hp"></Editable>
-        </tr>
-        <tr>
-          <td class="">Max / Total</td>
-          <Editable v-model="total_hp"></Editable>
-          <td class="">Shield</td>
-          <Editable v-model="total_shield"></Editable>
-        </tr>
-        <tr>
-          <td class="">Current</td>
-          <Editable v-model="current_hp"></Editable>
-          <td class="">Missing</td>
-          <Editable v-model="missing_hp"></Editable>
-        </tr>
-      </tbody>
-    </table>
+      <table v-if="showDefence">
+        <thead>
+          <tr>
+            <th colspan="4" class="health">Health Breakdown</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class>Base</td>
+            <Editable v-model="base_hp" :readonly="true"></Editable>
+            <td class>Bonus</td>
+            <Editable v-model="bonus_hp"></Editable>
+          </tr>
+          <tr>
+            <td class>Max / Total</td>
+            <Editable v-model="total_hp"></Editable>
+            <td class>Shield</td>
+            <Editable v-model="total_shield"></Editable>
+          </tr>
+          <tr>
+            <td class>Current</td>
+            <Editable v-model="current_hp"></Editable>
+            <td class>Missing</td>
+            <Editable v-model="missing_hp"></Editable>
+          </tr>
+        </tbody>
+      </table>
 
       <data-input class="is-hidden" v-model="total_hp" labelclass="health">Health</data-input>
       <ul v-if="showDefenceLevel  > 0">
@@ -318,7 +313,7 @@
         type="button"
         value="Reset All"
         @click="clear(true)"
-      /> -->
+      />-->
       <input class="button error" type="button" value="Clear" @click="clear()" />
       <input class="button info" type="button" value="Validate" />
     </div>
@@ -429,8 +424,7 @@ export default {
         return this.total_hp - this.missing_hp;
       },
       set: function (current_hp) {
-        if(current_hp > this.total_hp)
-          this.total_hp = current_hp;
+        if (current_hp > this.total_hp) this.total_hp = current_hp;
         this.missing_hp = this.total_hp - current_hp;
       },
     },

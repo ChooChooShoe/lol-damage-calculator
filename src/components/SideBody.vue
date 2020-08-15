@@ -246,13 +246,11 @@ export default {
   z-index: 700;
   position: sticky;
   top: 0;
-  width: 30%;
+  // height is 0 so it scrolls
+  height: 0;
   background-color: #121a1b;
-  float: right;
-  padding: 0.75rem;
-}
-.main {
-  width: 70%;
+  padding: 0.5rem;
+  grid-area: sidebar;
 }
 
 // @media (min-width: 769px) and (max-width: 1375px) {
@@ -263,9 +261,6 @@ export default {
 @media (max-width: 775px) {
   .sidebar {
     position: inherit;
-    width: 100%;
-  }
-  .main {
     width: 100%;
   }
 }
