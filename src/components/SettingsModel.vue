@@ -1,14 +1,20 @@
 <template>
-  <div
-    class="modal click"
-    :style=" visable ? '' : 'display: none;'"
-    @click="closeBg($event)"
-  >
-    <div class="content">
-      <header>
+  <div class="modal-window" @click="closeBg" id="settings">
+    <div>
+      <a @click="closeBg" title="Close" class="modal-close">Close</a>
+      <h1>Settings</h1>
+      <label class="opt">
+        Enable Shop (experimental)
+        <input type="checkbox" v-model="shopEnabled" />
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <!-- <header>
         <h2>Settings</h2>
       </header>
       <main>
+        <a class="close" href="#">Close</a>
         <label class="opt">
           Enable Shop (experimental)
           <input type="checkbox" v-model="shopEnabled">
@@ -16,9 +22,8 @@
         </label>
       </main>
       <footer>
-        <a class="inline button float-right" @click="visable = false">Close</a>
-      </footer>
-    </div>
+        <a class="close" href="#close"></a>
+    </footer>-->
   </div>
 </template>
 
@@ -27,9 +32,8 @@ import Vue from "vue";
 
 export default {
   name: "SettingsModel",
-  data: function() {
+  data: function () {
     return {
-      visable: false,
       shopEnabled: false,
     };
   },
@@ -37,106 +41,68 @@ export default {
     shopEnabled(newVal) {
       this.$app.config.shopEnabled = newVal;
       console.log("shopEnabled.", newVal, this.$app.config.shopEnabled);
-    }
+    },
   },
   methods: {
     closeBg(e) {
       if (e.currentTarget === e.target) {
-        this.visable = false;
+        this.$app.currentModel = null;
+        window.location.replace("#_");
+        history.replaceState({}, "", window.location.href.slice(0, -2));
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+<style lang="scss">
+.modal-window {
   position: fixed;
-  z-index: 1500;
-  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.content {
-  cursor: default;
-  max-width: 1380px;
-  min-width: 300px;
-  width: 100vw;
-  /* height: 100vh; */
-  position: relative;
-  background: #0c1617;
-  margin: auto;
-  padding: 0;
-  /* display: flex; */
-  /* flex-flow: row wrap; */
-  border: 3px solid rgb(115, 100, 45);
-  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
-  /* -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s; */
-  animation-name: animatetop;
-  animation-duration: 0.15s;
-}
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-
-  to {
-    top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  &:target {
+    visibility: visible;
     opacity: 1;
+    pointer-events: auto;
+  }
+  & > div {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: #282f2f;
+  }
+  header {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
   }
 }
 
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
   text-decoration: none;
-  cursor: pointer;
-}
-
-header {
-  max-height: 10vh;
-  padding: 3px 10px;
-  background-color: #4c4d49;
-}
-
-main {
-  min-height: 140px;
-  max-height: 80vh;
-  background: #0c1617;
-  color: #cfcfcf;
-}
-footer {
-  max-height: 10vh;
-  border-top: 2px solid gold;
-  padding: 1em;
-  margin: 0;
-}
-
-@media all and (min-width: 769px) {
-  .fixed-scroller {
-    height: 55vh;
-  }
-  .content {
-    width: 90vw;
-    /* height: 90vh; */
+  &:hover {
+    color: black;
   }
 }
 
@@ -185,6 +151,7 @@ footer {
   content: "✔";
   position: relative;
   left: 4px;
+  top: -3px;
   display: none;
   color: #fff;
 }

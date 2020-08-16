@@ -18,7 +18,7 @@
 
     <SideBody :damagingEffects="damagingEffects" :player="player" :target="target"></SideBody>
 
-    <!-- <SettingsModel ref="settings"></SettingsModel> -->
+    <SettingsModel ref="settings"></SettingsModel>
     <div class="flex main">
       <ChampionDiv class="data_holder c50" userid="player" :isprimary="true"></ChampionDiv>
       <ChampionDiv class="data_holder c50" userid="target" :isprimary="false"></ChampionDiv>
@@ -37,7 +37,9 @@
         <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
       </div>
     </div>
-    <!-- <ShopModel v-if="config.shopEnabled" ref="shop"></ShopModel> -->
+    <keep-alive>
+      <component :is="currentModel"></component>
+    </keep-alive>
     <notifications group="main" position="bottom left" :reverse="true" :speed="500" />
   </div>
 </template>
@@ -71,7 +73,7 @@ export default {
     SideBody,
     ChampionDiv,
     ChampionSpellDamageSource,
-    // SettingsModel,
+    SettingsModel,
     // ShopModel,
     AADamageSource,
     CustomDamageSource,
@@ -88,6 +90,7 @@ export default {
       championList: {},
       itemData: [],
       globalToolTips: {},
+      currentModel: null,
       config: loadLocalConfig(),
     };
   },

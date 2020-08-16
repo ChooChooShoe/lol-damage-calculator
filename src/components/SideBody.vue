@@ -62,24 +62,17 @@
     </p>
     <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
     <hr />
-    <!-- <nav id="nav" class="flex navbar is-hidden">
-      <a class="inline" @click="openSettings()">Settings...</a>
-      <div class="block version-select is-hidden">
-        <span>League Patch:</span>
-        <select id="version_select" oninput="setPatchVersion(this.value);">
-          <option value>Loading Data...</option>
-        </select>
-      </div>
-    </nav>-->
 
     <div class="buttons">
-      <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
+      <a class="button" href="#settings" >Settings...</a>
+      <button @click="addCustomDamageSource()">Add Custom Damage Source</button>
     </div>
   </div>
 </template>
 
 <script>
 import numeral from "numeral";
+// import SettingsModel from "./SettingsModel.vue"
 import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
 export default {
   name: "SideBody",
@@ -87,7 +80,7 @@ export default {
   methods: {
     openSettings() {
       // this.$app.$refs.shop.visable = false;
-      this.$app.$refs.settings.visable = true;
+      this.$app.currentModel = "SettingsModel";
     },
     rnd: function (n, digits) {
       if (n === undefined || isNaN(n)) n = 0;
