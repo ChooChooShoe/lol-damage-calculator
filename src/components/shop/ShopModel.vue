@@ -118,7 +118,7 @@ export default {
     Item,
     ItemTooltip,
     ShopItemInfo,
-    SimpleTooltip
+    // SimpleTooltip
   },
   data: function() {
     return {

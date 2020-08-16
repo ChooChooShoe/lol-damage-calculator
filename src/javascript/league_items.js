@@ -151,10 +151,10 @@ function take(key, value) {
   if (active === true)
     window.exportItems[key].active = true;
   for (const reuseKey of ['consumed', 'consumeOnFull', 'from', 'into', 'stacks', 'specialRecipe', 'inStore', 'hideFromAll', 'requiredChampion', 'requiredAlly']) {
-    if (value.hasOwnProperty(reuseKey)) {
-      window.exportItems[key][reuseKey] = value[reuseKey]
+    // if (value.hasOwnProperty(reuseKey)) {
+      // window.exportItems[key][reuseKey] = value[reuseKey]
 
-    }
+    // }
   }
   return stats;
 }

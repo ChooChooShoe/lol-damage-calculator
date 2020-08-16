@@ -325,7 +325,6 @@
 import DataInput from "./DataInput.vue";
 // import InlineInput from "./InlineInput.vue";
 // import SimpleTooltip from "./SimpleTooltip.vue";
-import ItemInventory from "./ItemInventory.vue";
 import Editable from "./simple/Editable.vue";
 import EditableCollapse from "./simple/EditableCollapse.vue";
 import ChampSearch from "./simple/ChampSearch.vue";
@@ -338,7 +337,7 @@ export default {
     DataInput,
     // InlineInput,
     // SimpleTooltip,
-    ItemInventory,
+    ItemInventory: () => import ("./ItemInventory.vue"),
     Editable,
     EditableCollapse,
     ChampSearch,

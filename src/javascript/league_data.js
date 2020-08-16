@@ -34,9 +34,9 @@ export function setupVue(vue) {
     fetchChampionList().then((championList) => {
         vue.$app.championList = championList;
     });
-    // fetchStaticItems((data) => {
-    //     vue.$app.itemData = data;
-    // });
+    fetchStaticItems((data) => {
+        vue.$app.itemData = data;
+    });
 }
 
 async function fetchChampionList() {

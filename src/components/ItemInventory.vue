@@ -54,14 +54,14 @@ import Vue from "vue";
 // import DataInput from "./DataInput.vue";
 
 export default {
-  name: "item-inventory",
+  name: "ItemInventory",
   components: {
     // DataInput,
   },
   props: ["userid"],
   data: function() {
     return {
-      items: [null, null, null, null, null, null],
+      items: ["1001", "1004", null, null, null, null],
       isShopOpen: false
     };
   },
@@ -116,5 +116,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>
