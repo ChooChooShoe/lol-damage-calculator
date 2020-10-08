@@ -1,29 +1,39 @@
 <template>
-  <div @click="showInfo()" @dblclick="buySelf()" @contextmenu.prevent="showInfo();buySelf();">
-    <SimpleTooltip :globalId="'item'+itemId" class="item item-container click">
-      <div class="item-img-left" :style="value.spriteStyle"></div>
-      <span class="item-name">{{ value.name }}</span>
-      <span class="gold">
-        <img src="../../assets/Gold.png">
-        {{ displayCost }}
-      </span>
-    </SimpleTooltip>
+  <div
+    @click="showInfo()"
+    @dblclick="buySelf()"
+    @contextmenu="showInfo();buySelf();"
+    @mousemove.passive="draw"
+    @mouseout.passive="hide"
+    class="item item-container"
+  >
+    <div class="item-img-left" :style="value.spriteStyle"></div>
+    <span class="item-name">{{ value.name }}</span>
+    <span class="gold">
+      <img src="../../assets/Gold.png" />
+      {{ displayCost }}
+    </span>
   </div>
 </template>
 
 <script>
-import SimpleTooltip from "../SimpleTooltip.vue";
+import { spriteBaseUri } from "../../javascript/league_data";
 
 export default {
   props: ["itemId", "value"],
-  name: "shop-item",
-  components: {
-    SimpleTooltip
-  },
+  name: "Item",
   computed: {
-    displayCost: function() {
-      const cost = this.value.gold.total;
+    displayCost: function () {
+      if (this.value.requiredBuffCurrencyName) {
+        if (this.value.requiredBuffCurrencyName === "GangplankBilgewaterToken")
+          return `${this.value.requiredBuffCurrencyCost}  Silver Serpents`;
+        return `${this.value.requiredBuffCurrencyCost} ${this.value.requiredBuffCurrencyName}`;
+      }
+      const cost = this.value.priceTotal;
       return cost === 0 ? "Free" : cost;
+    },
+    itemTipEl() {
+      return document.getElementById(`itemtip-${this.itemId}`);
     }
   },
   methods: {
@@ -32,62 +42,69 @@ export default {
     },
     buySelf() {
       this.$parent.buyItem(this.itemId);
-    }
-  }
+    },
+    draw(e) {
+      const style = `transform: translate(${e.clientX}px, ${e.clientY}px);`;
+      this.itemTipEl.setAttribute("style", style);
+    },
+    hide(e) {
+      this.itemTipEl.setAttribute("style", `display:none;`);
+    },
+  },
 };
 </script>
 
 <style>
 .item-container {
-    display: grid;
-    grid-template-columns: 62px auto;
-    text-align: left;
-    /* white-space: nowrap; */
-    /* line-height: 1em; */
-    width: 210px;
-    /* height: 62px; */
-    border: #60593c 1px solid;
-    padding: 3px;
-    margin: 3px;
-    color: #b4b4b4;
+  display: grid;
+  grid-template-columns: 62px auto;
+  text-align: left;
+  /* white-space: nowrap; */
+  /* line-height: 1em; */
+  width: 210px;
+  /* height: 62px; */
+  border: #60593c 1px solid;
+  padding: 3px;
+  margin: 3px;
+  color: #b4b4b4;
+	cursor: pointer;
 }
 
 .item-container.small {
-    display: block;
-    padding: 5px 5px 25px 5px;
-    /* margin: 5px 20px 5px 5px; */
-    width: 62px;
-    height: 62px;
-    text-align: center;
-    white-space: nowrap;
+  display: block;
+  padding: 5px 5px 25px 5px;
+  /* margin: 5px 20px 5px 5px; */
+  width: 62px;
+  height: 62px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .item-container.icon {
-    display: block;
-    padding: 0;
-    margin: 2px;
-    width: 55px;
-    height: 55px;
-    border: none;
+  display: block;
+  padding: 0;
+  margin: 2px;
+  width: 55px;
+  height: 55px;
+  border: none;
 }
 
-.item-container.icon>.item-name,
-.item-container.small>.item-name {
-    display: none;
+.item-container.icon > .item-name,
+.item-container.small > .item-name {
+  display: none;
 }
 
-.item-container.icon>.gold {
-    display: none;
+.item-container.icon > .gold {
+  display: none;
 }
-.item-container.small>.gold {
-    display: block;
-}
-
-.item-container.icon>.item-name,
-.item-container.small>.gold>img {
-    display: none;
+.item-container.small > .gold {
+  display: block;
 }
 
+.item-container.icon > .item-name,
+.item-container.small > .gold > img {
+  display: none;
+}
 
 .item a {
   color: #9c85ff;

@@ -78,10 +78,6 @@ export default {
   name: "SideBody",
   props: ["damagingEffects", "player", "target"],
   methods: {
-    openSettings() {
-      // this.$app.$refs.shop.visable = false;
-      this.$app.currentModel = "SettingsModel";
-    },
     rnd: function (n, digits) {
       if (n === undefined || isNaN(n)) n = 0;
       if (digits === undefined) digits = 0;

@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 
 // Vue.component('SettingsModel', () => import('./components/SettingsModel.vue'));
 
-Vue.component('ShopModel', () => import('./components/shop/ShopModel.vue'));
+// Vue.component('ShopController', () => import('./components/shop/ShopController.vue'));
 
 new Vue({
   render: h => h(App)

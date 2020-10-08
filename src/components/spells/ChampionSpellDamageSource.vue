@@ -116,17 +116,10 @@ export default {
       return quickMatchReplace(String(this.spell.target_range || ""));
     },
     imageStyle() {
+      const i = this.spell.image;
       return {
         float: "right",
-        background:
-          "url(" +
-          spriteBaseUri +
-          this.spell.image.sprite +
-          ") -" +
-          this.spell.image.x +
-          "px -" +
-          this.spell.image.y +
-          "px",
+        background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
       };
     },
   },

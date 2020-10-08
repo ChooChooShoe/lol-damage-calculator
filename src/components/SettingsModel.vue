@@ -46,7 +46,6 @@ export default {
   methods: {
     closeBg(e) {
       if (e.currentTarget === e.target) {
-        this.$app.currentModel = null;
         window.location.replace("#_");
         history.replaceState({}, "", window.location.href.slice(0, -2));
       }
@@ -57,6 +56,8 @@ export default {
 
 <style lang="scss">
 .modal-window {
+  height: 100%;
+  width: 100%;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.8);
   top: 0;

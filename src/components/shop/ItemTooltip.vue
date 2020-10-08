@@ -1,20 +1,20 @@
 <template>
-  <div class="tooltipcontent">
+  <div :id="`itemtip-${this.itemId}`" class="itemtip" style="display:none;">
     <div class="bg">
       <div class="header">
         <div class="itemspriteimage" :style="value.spriteStyle"></div>
         <span class="nameheader">{{ value.name }}</span>
-        <br>
-        <div class="inline">
-          <img class="intoimage inline" src="../../assets/Gold.png">
-          <span class="inline gold">{{ displayCost }}</span>
-        </div>
-        <div class="inline" v-if="value.gold.sell != value.gold.total">
-          <span>&nbsp;(</span>
-          <img class="intoimage inline" src="../../assets/Gold.png">
-          <span class="inline gold">{{ value.gold.sell }}</span>
-          <span>)</span>
-        </div>
+        <br />
+        <!-- <div class="inline">
+            <img class="intoimage inline" src="../../assets/Gold.png" />
+            <span class="inline gold">{{ displayCost }}</span>
+        </div>-->
+        <!-- <div class="inline" v-if="value.gold.sell != value.gold.total">
+            <span>&nbsp;(</span>
+            <img class="intoimage inline" src="../../assets/Gold.png" />
+            <span class="inline gold">{{ value.gold.sell }}</span>
+            <span>)</span>
+        </div>-->
       </div>
       <div class="item description" v-html="value.description"></div>
     </div>
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import ToolTip from "../SimpleTooltip.vue";
-
 export default {
   props: ["itemId", "value"],
   name: "ItemTooltip",
@@ -31,24 +29,27 @@ export default {
     return {};
   },
   computed: {
-    globalId() {
-      return "item" + this.itemId;
-    },
-    displayCost: function() {
-      const cost = this.value.gold.total;
+    displayCost: function () {
+      if (this.value.requiredBuffCurrencyName) {
+        if (this.value.requiredBuffCurrencyName === "GangplankBilgewaterToken")
+          return `${this.value.requiredBuffCurrencyCost}  Silver Serpents`;
+        return `${this.value.requiredBuffCurrencyCost} ${this.value.requiredBuffCurrencyName}`;
+      }
+      const cost = this.value.priceTotal;
       return cost === 0 ? "Free" : cost;
-    }
+    },
   },
-  mounted() {
-    this.$app.globalToolTips[this.globalId] = this.$el;
-  },
-  destroyed() {
-    this.$app.globalToolTips[this.globalId] = undefined;
-  }
 };
 </script>
 
-<style scoped>
+<style>
+.itemtip {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: max-content;
+}
 .itemspriteimage {
   float: left;
   border: 1px solid #aaa;

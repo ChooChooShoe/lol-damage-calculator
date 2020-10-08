@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { log } from "util";
 export default {
   props: ["dname", "globalId"],
   name: "simple-tooltip",
@@ -25,7 +24,7 @@ export default {
   },
   computed: {
     globalEl() {
-      return this.$app.globalToolTips[this.globalId];
+      return document.getElementById(this.globalId);
     }
   },
   destroyed() {

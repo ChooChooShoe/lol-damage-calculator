@@ -37,9 +37,7 @@
         <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
       </div>
     </div>
-    <keep-alive>
-      <component :is="currentModel"></component>
-    </keep-alive>
+    <component :is="'ShopController'"></component>
     <notifications group="main" position="bottom left" :reverse="true" :speed="500" />
   </div>
 </template>
@@ -49,7 +47,6 @@ import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
 import ChampionDiv from "./components/ChampionDiv";
-// import ShopModel from "./components/shop/ShopModel.vue";
 import { setupVue } from "./javascript/league_data.js";
 
 import AADamageSource from "./components/spells/AADamageSource.vue";
@@ -74,7 +71,7 @@ export default {
     ChampionDiv,
     ChampionSpellDamageSource,
     SettingsModel,
-    // ShopModel,
+    ShopController: () => import('./components/shop/ShopController.vue'),
     AADamageSource,
     CustomDamageSource,
   },
@@ -90,7 +87,7 @@ export default {
       championList: {},
       itemData: [],
       globalToolTips: {},
-      currentModel: null,
+      shopModel: null,
       config: loadLocalConfig(),
     };
   },

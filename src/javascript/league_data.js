@@ -34,7 +34,26 @@ export function setupVue(vue) {
     fetchChampionList().then((championList) => {
         vue.$app.championList = championList;
     });
-    fetchStaticItems((data) => {
+    fetchStaticItems().then((data) => {
+        for (const key in data) {
+            //Pre-compute sprite image as spriteStyle.
+            const i = data[key].image;
+            data[key].spriteStyle = {
+                background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
+                width: `${i.w}px`,
+                height: `${i.h}px`,
+            };
+            data[key].spriteStyleSmall = {
+                background: `url("${spriteBaseUri}small_${i.sprite}") -${i.x*0.75}px -${i.y*0.75}px`,
+                width: `${i.w*0.75}px`,
+                height: `${i.h*0.75}px`,
+            };
+            data[key].spriteStyleTiny = {
+                background: `url("${spriteBaseUri}tiny_${i.sprite}") -${i.x*0.5}px -${i.y*0.5}px`,
+                width: `${i.w*0.5}px`,
+                height: `${i.h*0.5}px`,
+            };
+        }
         vue.$app.itemData = data;
     });
 }
@@ -76,10 +95,15 @@ export async function fetchSingleChampFile(champId) {
 }
 const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
-export function fetchStaticItems(callback) {
+async function fetchStaticItems() {
+    const response = await fetch("./api/shop/rift_items.json");
+    return await response.json();
+}
+
+export function fetchStaticItems22222(callback) {
     // const url = `${cdn}/${version}/data/${locale}/item.json`;
     // const url = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json'
-    const url = './api/items.json';
+    const url = './api/shop/rift_items.json';
     console.log(`Fetching: ${url}`)
     fetch(url)
         .then(function (response) {
@@ -256,7 +280,7 @@ export function calc_dmg_onhit(player, target, dmg_premitigation, damage_type) {
         case DamageType.TRUE:
             return dmg_premitigation;
         default:
-            console.log('Unkown Damage Type',damage_type)
+            console.log('Unkown Damage Type', damage_type)
             return 0;
     }
 }
@@ -318,7 +342,7 @@ export const DamageType = {
  * A Single instance of damage.
  */
 export class DamageSource {
-    /** See DamageType */ 
+    /** See DamageType */
     damage_type = DamageType.MAGIC
     dmg_premitigation = -1
     dmg_postmitigation = -1
@@ -332,7 +356,7 @@ export class DamageSource {
         this.damage_type = damage_type;
         this.dmg_premitigation = amount;
     }
-    calc_dmg_onhit(player,target) {
+    calc_dmg_onhit(player, target) {
         return this.dmg_postmitigation
     }
 }

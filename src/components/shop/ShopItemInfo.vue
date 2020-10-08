@@ -25,16 +25,16 @@
           <img class="intoimage inline" src="../../assets/Gold.png">
           <span class="inline gold">{{ displayCost }}</span>
         </div>
-        <div class="inline" v-if="value.gold.sell != value.gold.total">
+        <!-- <div class="inline" v-if="value.gold.sell != value.gold.total">
           <span>&nbsp;(Sells for:</span>
           <img class="intoimage inline" src="../../assets/Gold.png">
           <span class="inline gold">{{ value.gold.sell }}</span>
           <span>)</span>
-        </div>
-        <div class="inline" v-if="value.gold.purchasable === false">
+        </div> -->
+        <!-- <div class="inline" v-if="value.gold.purchasable === false">
           <span>&nbsp;-&nbsp;</span>
           <span class="red">Not for Sale</span>
-        </div>
+        </div> -->
         <div class="inline" v-if="value.inStore === false">
           <span>&nbsp;-&nbsp;</span>
           <span class="red">Not In Store</span>
@@ -61,7 +61,7 @@
           </template>
           <div class="inline">
             <img class="intoimage inline" src="../../assets/Gold.png">
-            <h4 class="inline gold">{{ value.gold.base }}</h4>
+            <h4 class="inline gold">{{ value.price }}</h4>
           </div>
         </div>
       </div>
@@ -91,10 +91,15 @@ export default {
     };
   },
   computed: {
-    displayCost: function() {
-      const cost = this.value.gold.total;
+    displayCost: function () {
+      if (this.value.requiredBuffCurrencyName) {
+        if (this.value.requiredBuffCurrencyName === "GangplankBilgewaterToken")
+          return `${this.value.requiredBuffCurrencyCost}  Silver Serpents`;
+        return `${this.value.requiredBuffCurrencyCost} ${this.value.requiredBuffCurrencyName}`;
+      }
+      const cost = this.value.priceTotal;
       return cost === 0 ? "Free" : cost;
-    }
+    },
   },
   methods: {
     buySelf() {
@@ -107,7 +112,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .itemspriteimage {
   float: left;
   border: 1px solid #aaa;

@@ -2,88 +2,51 @@
 <template>
   <div class="item-section">
     <div class="item-grid-container">
-      <div class="item-inventory-1">
-        <img class="full-image" :src="image(0)" width="64" height="64">
-        <div>
-          <span>1</span>
-        </div>
-      </div>
-      <div class="item-inventory-2">
-        <img class="full-image" :src="image(1)" width="64" height="64">
-        <div>
-          <span>2</span>
-        </div>
-      </div>
-      <div class="item-inventory-3">
-        <img class="full-image" :src="image(2)" width="64" height="64">
-        <div>
-          <span>3</span>
-        </div>
-      </div>
-      <div class="item-inventory-4">
-        <img class="full-image" :src="image(3)" width="64" height="64">
-        <div>
-          <span>4</span>
-        </div>
-      </div>
-      <div class="item-inventory-5">
-        <img class="full-image" :src="image(4)" width="64" height="64">
-        <div>
-          <span>5</span>
-        </div>
-      </div>
-      <div class="item-inventory-6">
-        <img class="full-image" :src="image(5)" width="64" height="64">
-        <div>
-          <span>6</span>
-        </div>
+      <div v-for="(n,i) in 6" :key="i">
+        <img class="full-image" :src="image(i)" width="64" height="64" />
+        <span>{{n}}</span>
       </div>
     </div>
     <div class="itemcontrol-grid-container">
-      <input class="btn" type="button" value="Clear Items" @click="sellAllItems()">
-      <input class="btn hidden" type="button" value="Load Items">
-      <input class="btn hidden" type="button" value="Save Items">
-      <input class="btn open-shop-btn" type="button" value="Shop" @click="shop.open(userid)">
+      <input type="button" value="Clear Items" @click="sellAllItems()" />
+      <input type="button" value="Load Items" />
+      <input type="button" value="Save Items" />
+      <a class="button" href="#shop">Shop</a>
     </div>
     <div class="stats-total-6"></div>
   </div>
 </template>
 
 <script>
+const emptyImage = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 import Vue from "vue";
-// import DataInput from "./DataInput.vue";
 
 export default {
   name: "ItemInventory",
-  components: {
-    // DataInput,
-  },
   props: ["userid"],
-  data: function() {
+  data: function () {
     return {
       items: ["1001", "1004", null, null, null, null],
-      isShopOpen: false
     };
   },
   computed: {
-    shop() {
-      return this.$app.$refs.shop;
-    },
-    emptyImage() {
-      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-    },
-    username: function() {
+    username: function () {
       if (this.userid === "player") return "Player's Champion";
       return "Target's";
-    }
+    },
   },
   watch: {},
-  mounted: function() {},
+  mounted: function () {},
   methods: {
     image(index) {
       const d = this.itemdata(index);
-      if (d) return d.imageFull;
-      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      if (d) {
+        return (
+          "https://raw.communitydragon.org/latest/game/data/items/icons2d/" +
+          d.iconPath.toLowerCase()
+        );
+      }
+      return emptyImage;
     },
     itemdata(index) {
       const item = this.items[index];
@@ -111,10 +74,143 @@ export default {
       }
       console.log("Buying item:", itemId, "for slot", openIndex);
       this.$set(this.items, openIndex, itemId);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
+.item-section {
+  background-color: rgb(69, 73, 76);
+  border: 1px solid gold;
+  padding: 10px;
+  border-radius: 3px;
+  margin: auto;
+}
+
+.item-grid-container {
+  display: grid;
+  grid-row-gap: 5px;
+  grid-template-columns: auto auto auto;
+  float: left;
+  margin: auto;
+}
+
+.item-grid-container > div {
+  background-color: black;
+  border: 1px solid whitesmoke;
+  padding: 0;
+  margin: 3px;
+  width: 66px;
+  height: 66px;
+}
+
+.item-grid-container > div > span {
+  user-select: none;
+  display: block;
+  text-align: center;
+  text-anchor: middle;
+  font-size: 17px;
+  text-decoration-color: #121a1b;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  position: relative;
+  bottom: 28px;
+  right: 4px;
+}
+
+.item-grid-container > div > img {
+  zoom: 1;
+}
+
+.itemcontrol-grid-container {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.item-builds,
+.shop-grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.shop-search {
+  padding: 4px 6px;
+  border: 2px solid #aaa;
+  /* Gray border */
+  border-radius: 4px;
+  /* Rounded borders */
+  margin: 2px 0;
+  box-sizing: border-box;
+  font-variant-numeric: tabular-nums;
+  background-color: #121a1b;
+  color: white;
+  width: 100%;
+}
+
+.shop-search :focus {
+  border: 2px solid #2196f3;
+}
+
+.item-img-left {
+  grid-row-start: span 2;
+  border: 2px solid #aaa;
+  margin: 5px 20px 5px 5px;
+}
+
+.item-underline {
+  border-bottom: white 1px solid;
+}
+
+.item-tooltip-container {
+  display: table;
+  line-height: 1.25em;
+  white-space: normal;
+  width: 400px;
+  border: rgb(96, 89, 60) 2px solid;
+  padding: 5px;
+  background: rgb(12, 22, 23);
+  color: rgb(180, 180, 180);
+}
+
+.iteminfo-grid-container {
+  display: table;
+  line-height: 1.25em;
+  white-space: normal;
+  /* border: rgb(96, 89, 60) 2px solid; */
+  padding: 5px;
+  background: rgb(12, 22, 23);
+  color: rgb(180, 180, 180);
+}
+
+.buy-item-btn {
+  color: rgb(53, 145, 41);
+}
+
+.item-header {
+  height: 48px;
+  white-space: nowrap;
+  line-height: 48px;
+}
+
+.item-title {
+  font-size: 22px;
+  padding: 10px;
+  position: relative;
+  top: -25px;
+}
+
+.item-stats-table {
+  width: 100%;
+  font-size: 12px;
+}
+
+.item-description {
+  width: 100%;
+  font-size: 16px;
+}
 </style>
