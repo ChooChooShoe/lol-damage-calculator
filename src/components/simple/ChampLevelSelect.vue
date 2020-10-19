@@ -1,90 +1,61 @@
 <template>
   <div class="control">
-    <label class="label">Champion Level</label>
-    <div class="field">
-      <div class="control">
-        <Editable :value="value" @input="onInput($event)" placeholder="Set Champion Level"></Editable>
-        <span class="buttons">
-          <input
-            :class="{ 'success': value == 1 }"
-            type="button"
-            class="button"
-            value="1"
-            @click="onInput(1)"
-          />
-          <input
-            :class="{ 'success': value == 6 }"
-            type="button"
-            class="button"
-            value="6"
-            @click="onInput(6)"
-          />
-          <input
-            :class="{ 'success': value == 9 }"
-            type="button"
-            class="button"
-            value="9"
-            @click="onInput(9)"
-          />
-          <input
-            :class="{ 'success': value == 11 }"
-            type="button"
-            class="button"
-            value="11"
-            @click="onInput(11)"
-          />
-          <input
-            :class="{ 'success': value == 16 }"
-            type="button"
-            class="button"
-            value="16"
-            @click="onInput(16)"
-          />
-          <input
-            :class="{ 'success': value == 18 }"
-            type="button"
-            class="button"
-            value="18"
-            @click="onInput(18)"
-          />
-        </span>
+    <label class="label">
+      Champion Level
+      <input type="button" class="button lvlselect" :value="value" />
+      <div class="lvlselect-content">
+        <input
+          v-for="n in 18"
+          :key="n"
+          :class="{ success: value == n }"
+          type="button"
+          class="button lvlselect"
+          :value="n"
+          @click="onInput(n)"
+        />
       </div>
-    </div>
+    </label>
   </div>
 </template>
 
 <script>
-import Editable from "./Editable.vue";
-
 export default {
   props: {
     value: Number,
   },
   name: "ChampLevelSelect",
-  components: {
-    Editable,
-  },
-  data: function () {
-    return {};
-  },
-  computed: {
-    championList() {
-      return this.$app.championList;
-    },
-  },
   methods: {
     onInput(value) {
-      this.$emit("input", value);   
+      this.$emit("input", value);
     },
   },
 };
 </script>
 
-<style lang="scss">
-.buttons {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+<style>
+.label {
+  line-height: 2.5em;
+}
+.lvlselect-content {
+  display: none;
+  position: absolute;
+  background-color: #181818;
+  min-width: 160px;
+  max-width: 18em;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border: whitesmoke 1px solid;
+  padding: 0.3em 0.5em;
+  z-index: 10;
+}
+
+.lvlselect:focus ~ .lvlselect-content,
+.lvlselect-content:active {
+  display: block;
+}
+
+.lvlselect,
+.lvlselect-content > input {
+  width: 2.5em;
+  height: 2.5em;
 }
 </style>
