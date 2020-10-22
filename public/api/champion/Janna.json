@@ -65,7 +65,7 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Janna''' passively gains {{sti|ms|{{as|8% '''bonus''' movement speed}}}} and grants the same amount to nearby allied [[champion]]s moving towards her.",
-        "'''Janna's''' [[basic attack]]s and {{ai|Zephyr|Janna}} deal bonus [[on-hit]] {{as|magic damage}} equal to {{as|{{passive progression/deprecated version|2|key=%|25;35|1;10}} of her '''bonus''' {{sti|[[movement speed]]}}}}."
+        "'''Janna's''' [[basic attack]]s {{tip|on-hit}} and {{ai|Zephyr|Janna}} deal {{as|'''bonus''' magic damage}} equal to {{as|{{passive progression/deprecated version|2|key=%|25;35|1;10}} of her '''bonus''' movement speed}}."
       ],
       "notes": "* Considering '''Janna's''' base movement speed of {{ccd|Janna|ms}}, she actually has a starting movement speed of {{tt|{{fd|{{#expr:{{ccd|Janna|ms}}*1.08}}}}|{{ccd|Janna|ms}}{{times}}1.08}} thus granting {{passive progression/deprecated version|2|{{ccd|Janna|ms}}*0.08*0.25;{{ccd|Janna|ms}}*0.08*0.35|1;10}} bonus on-hit magic damage.",
       "skillkey": "I",
@@ -87,7 +87,7 @@
         140
       ],
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
       "target_range": "{{passive progression/deprecated version|7|type=seconds charged|1000 to 1000*1.75|0 to 3|formula=1000+(125 per half second).}}",
       "image": {
         "full": "HowlingGale.png",
@@ -111,7 +111,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Minimum Magic Damage|{{ap|60 to 160}} {{as|(+ 35% AP)}}}}<!--\n-->{{st|Bonus Magic Damage Per Second|{{ap|15 to 35}} {{as|(+ 10% AP)}}|Maximum Magic Damage|{{ap|60+15*3 to 160+35*3}} {{as|(+ 65% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage Per Second</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage Per Second</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[105,145,185,225,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -151,9 +151,9 @@
             ],
             "st_slices": [
               "Bonus Magic Damage Per Second",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
               "Maximum Magic Damage",
-              "<spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+              "<SpellSpan :list=\"[105,145,185,225,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
             ]
           },
           "subeffects": [
@@ -170,7 +170,7 @@
                 "player_total_ap": 0.1
               },
               "title": "Bonus Magic Damage Per Second",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span>",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -186,7 +186,7 @@
                 "player_total_ap": 0.1
               },
               "title": "Maximum Magic Damage",
-              "str": "<spell-span :list=\"['105','145','185','225','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "str": "<SpellSpan :list=\"[105,145,185,225,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -212,8 +212,8 @@
         90
       ],
       "costtype": "mana",
-      "targeting": "[[Unit-targeted|Unit]]",
-      "target_range": "{{tip|er|550}}",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|icononly = true}} 550",
       "image": {
         "full": "SowTheWind.png",
         "sprite": "spell4.png",
@@ -235,7 +235,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Movement Speed|{{ap|6 to 10}}% {{as|(+ 2% per 100 AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[6,7,8,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -255,7 +255,7 @@
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span>"
+              "<SpellSpan :list=\"[6,7,8,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>"
             ]
           },
           "subeffects": [
@@ -272,14 +272,14 @@
                 "player_total_ap": 21
               },
               "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['6','7','8','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span>",
+              "str": "<SpellSpan :list=\"[6,7,8,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|55 to 175}} {{as|(+ 50% AP)}} {{as|(+ {{passive progression/deprecated version|2|key=%|25;35|1;10}} {{sti|movement speed|[[movement speed|{{as|MS|movement speed}}]])}}}}}}\n{{st|Slow|{{ap|24 to 40}}% {{as|(+ 6% per 100 AP)}}}}",
-          "str": "{{st|Magic Damage|<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 2 key=% 25;35 1;10\">Unknown value: passive progression/deprecated version 2 key=% 25;35 1;10</simple-tooltip> <span><a class=\"effect link\" title=\"<simple-tooltip class=\"capture-unknown\" dname=\"as\">movement speed</a>)\">Unknown value: as\">movement speed</a>)</simple-tooltip></span></span><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span></span></li></ul>",
+          "str": "{{st|Magic Damage|<SpellSpan :list=\"[55,85,115,145,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 2 key=% 25;35 1;10\">Unknown value: passive progression/deprecated version 2 key=% 25;35 1;10</simple-tooltip> <span><a class=\"effect link\" title=\"<simple-tooltip class=\"capture-unknown\" dname=\"as\">movement speed</a>)\">Unknown value: as\">movement speed</a>)</simple-tooltip></span></span><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[24,28,32,36,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -312,7 +312,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span>"
+              "<SpellSpan :list=\"[24,28,32,36,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span>"
             ]
           },
           "subeffects": [
@@ -329,7 +329,7 @@
                 "player_total_ap": 22535110225351.1
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['24','28','32','36','40']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 6% per 100 AP)</span>",
+              "str": "<SpellSpan :list=\"[24,28,32,36,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -355,7 +355,7 @@
         110
       ],
       "costtype": "mana",
-      "targeting": "[[Unit-targeted|Unit]]",
+      "targeting": "Unit",
       "target_range": 800,
       "image": {
         "full": "EyeOfTheStorm.png",
@@ -369,7 +369,7 @@
       "description": [
         "{{sbc|Active:}} '''Janna''' {{tip|shields}} the target allied champion or herself for 5 seconds, decaying over the duration after {{fd|0.75}} seconds.",
         "While the shield holds, her target gains {{sti|attack damage|{{as|'''bonus''' attack damage}}}}.",
-        "{{tip|slow|Slowing}} or applying an {{tip|airborne}} effect with an ability to an enemy champion reduces ''Eye of the Storm's'' cooldown by 20%, up to once per ability cast.",
+        "{{tip|slow|Slowing}} or applying an {{tip|airborne}} effect with an [[champion ability|ability]] to at least one enemy champion reduces ''Eye of the Storm's'' cooldown by 20%. This can only occur once per cast.",
         "''Eye of the Storm'' can be used on {{tip|turret|turrets}}, causing '''Janna''' to be credited for any {{tip|champion}} [[kill|kills]] it earns while the shield holds."
       ],
       "notes": "* Allied turrets will benefit from the bonus attack damage when targeted by ''Eye of the Storm''.",
@@ -380,7 +380,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{ap|80 to 220}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -400,7 +400,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -417,53 +417,54 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus AD|{{as|{{ap|10 to 40}} {{as|(+ 10% AP)}}|AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[10,17.5,25,32.5,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                10,
+                17.5,
+                25,
+                32.5,
+                40
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.1
               },
               {
-                "player_total_ap": [
-                  0.1,
-                  0.175,
-                  0.25,
-                  0.325,
-                  0.4
-                ]
+                "player_total_ap": null
               }
             ],
             "st_slices": [
               "Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span>"
+              "<span class=\"AD\"><SpellSpan :list=\"[10,17.5,25,32.5,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_ap": [
-                  0.1,
-                  0.175,
-                  0.25,
-                  0.325,
-                  0.4
-                ]
+                "base_progression": [
+                  10,
+                  17.5,
+                  25,
+                  32.5,
+                  40
+                ],
+                "player_total_ap": null
               },
               "title": "Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['10','17.5','25','32.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span></span>",
+              "str": "<span class=\"AD\"><SpellSpan :list=\"[10,17.5,25,32.5,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span>",
               "damage_type": "none"
             }
           ]
@@ -485,7 +486,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "ReapTheWhirlwind.png",
         "sprite": "spell4.png",
@@ -496,8 +497,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Janna''' {{tip|channels}} for 3 seconds, {{tip|airborne|knocking back}} all nearby enemies over {{fd|0.5}} seconds up to 875 units (but not through terrain) based on their proximity to her.",
-        "While channeling, she releases soothing winds that {{tip|heal}} nearby allies every {{fd|0.5}} seconds."
+        "{{sbc|Active:}} '''Janna''' {{tip|channels}} for 3 seconds, {{tip|airborne|knocking back}} all nearby enemies at the time of cast to up to 875 units (but not through terrain) over {{fd|0.5}} seconds based on their proximity to her.",
+        "While channeling, '''Janna''' releases soothing winds that {{tip|heal}} nearby allies every {{fd|0.5}} seconds."
       ],
       "notes": "{{clr}}\n* The following table refers for interactions while '''Janna''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts}}",
       "skillkey": "R",
@@ -507,7 +508,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Heal Per Half Second|{{ap|50|75|100}} {{as|(+ 25% AP)}}|Total Heal|{{ap|300|450|600}} {{as|(+ 150% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal Per Half Second</span>: <span><spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Heal</span>: <span><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Heal Per Half Second</span>: <span><SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Heal</span>: <span><SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -533,9 +534,9 @@
             ],
             "st_slices": [
               "Heal Per Half Second",
-              "<spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "<SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "Total Heal",
-              "<spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+              "<SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
             ]
           },
           "subeffects": [
@@ -550,7 +551,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Heal Per Half Second",
-              "str": "<spell-span :list=\"['50','75','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -564,7 +565,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Total Heal",
-              "str": "<spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>",
               "damage_type": "none"
             }
           ]

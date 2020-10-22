@@ -1,6 +1,6 @@
 {
   "patch": "V5.23",
-  "changes": "10.8.1",
+  "changes": "10.20.1",
   "id": "Illaoi",
   "name": "Illaoi",
   "title": "the Kraken Priestess",
@@ -65,7 +65,7 @@
       },
       "description": [
         "{{sbc|Innate:}} Periodically, '''Illaoi''' spawns a {{as|Tentacle|buzzword2}} on a nearby impassable terrain if no other Tentacles are nearby. Tentacles fully spawn after a 2 second delay and are {{tip|untargetable}} in the meantime.",
-        "{{as|Tentacles|buzzword2}} deal {{as|{{passive progression/deprecated version|10 to 180}}|physical damage}} {{as|(+ 120% AD)}} {{as|(+ 40% AP)}} {{tip|Physical Damage|{{as|physical damage}}}} to all enemies struck when commanded to attack by her abilities. Each {{as|Tentacle|buzzword2}} also {{tip|heal|heals}} '''Illaoi''' for {{as|5% of her '''missing''' health}} if it hits at least one enemy {{tip|champion}}. ''See [[#Pets|Pet Details]] for more details.''"
+        "{{as|Tentacles|buzzword2}} deal {{as|{{passive progression/deprecated version|10 to 180}}|physical damage}} {{as|(+ 120% AD)}} {{as|(+ 40% AP)}} {{as|physical damage}} to all enemies struck when commanded to attack by her abilities. Each {{as|Tentacle|buzzword2}} also {{tip|heal|heals}} '''Illaoi''' for {{as|5% of her '''missing''' health}} if it hits at least one enemy {{tip|champion}}. ''See [[#Pets|Pet Details]] for more details.''"
       ],
       "notes": "* '''''{{as|Tentacles|buzzword2}}''''' do not spawn in the [[Nexus Obelisk|Nexus Obelisk's]] attack range and on ally invulnerable {{tip|turrets|structures}}.\n* Impassable terrain also includes player-made terrain and terrain that is passable by a team but not by the other, for example base gates.\n* The '''''{{as|Tentacle|buzzword2}}''''' will continue its spawn animation and be able to start an attack, after the animation ends, even if '''Illaoi''' or a '''''{{as|Vessel|buzzword3}}''''' are not nearby.\n* If '''Illaoi''' uses {{ai|Harsh Lesson|Illaoi}} during '''''{{as|Tentacles'|buzzword2}}''''' spawn animation, they won't attack but the SFX of the attack will still be heard.\n** If this happens, after the '''''{{as|Tentacle|buzzword2}}''''' finishes its spawn animation, it will be unable to start an attack for its remaining attack SFX.",
       "skillkey": "I",
@@ -114,7 +114,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Damage Increase|{{ap|10|15|20|25|30}}%}}",
-          "str": "<ul><li><span class=\"blue\">Damage Increase</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Damage Increase</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -129,7 +129,7 @@
             ],
             "st_slices": [
               "Damage Increase",
-              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -145,7 +145,7 @@
                 ]
               },
               "title": "Damage Increase",
-              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
@@ -167,7 +167,7 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "IllaoiW.png",
         "sprite": "spell4.png",
@@ -178,12 +178,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Illaoi's''' next [[basic attack]] within 6 seconds gains {{sti|range|225 '''bonus''' range}} and causes her to {{tip|dash|leap}} to her target if they're beyond her normal basic attack range.",
+        "{{sbc|Active:}} '''Illaoi's''' next [[basic attack]] within 6 seconds gains {{sti|range|225 '''bonus''' range}} and causes her to {{tip|dash|leap}} to her target's location if they're beyond her normal basic attack range.",
         "The attack deals {{as|'''bonus''' physical damage}}, with a minimum threshold, and capped at 300 against non-champions, and commands all {{as|Tentacles|buzzword2}} in range to attack her target. The minimum '''bonus''' damage can also be applied against {{tip|turrets}}.",
         "''Harsh Lesson'' {{tip|basic attack reset|resets}} '''Illaoi's''' basic attack timer.",
         "''Harsh Lesson can be activated during '''Illaoi's''' other abilities, other than while {{ai|E|Illaoi|pulling}} a {{as|Spirit|buzzword}}.''"
       ],
-      "notes": "* Since the attack applies both {{tip|on-hit}} effects and [[ability effects|spell effects]], it will trigger {{ii|Muramana}} twice.\n* The '''bonus''' damage doesn't apply {{sti|life steal|link=true}} {{tip|heal|healing}} but it does apply {{sti|spell vamp|link=true}}.\n* ''Harsh Lesson'' is made of two different abilities which are decided by '''Illaoi's''' range to the target, being either {{tip|melee}} or within {{tip|dash}} range.\n* The close range ability:\n** Is an {{tip|unstoppable basic attack}}.\n** Can be used while {{tip|ground|grounded}} or {{tip|root|rooted}}. If '''Illaoi''' attack commands and then casts ''Harsh Lesson'', she will use the close range ''Harsh Lesson'' even if the target is beyond her melee range.\n** Starting the attack before triggering {{iis|Guardian Angel}} passive and hitting while she's in it will not cause the '''''{{as|Tentacles|buzzword2}}''''' to slam.\n** Starting the attack before the target becomes {{tip|untargetable}} will still cause the '''''{{as|Tentacles|buzzword2}}''''' to slam the target.\n** Does trigger {{ri|Hail of Blades}}.\n** Triggers {{ii|Kircheis Shard|Energized}} effects [[on-hit]].\n** Using it at the same time with {{ii|Ravenous Hydra}} will perform an unusual dunk.\n** If the empowered attack duration ends during the attack animation, the attack won't be empowered.\n* The dash range ability:\n** Is not unstoppable, meaning effects that can interrupt the dash will cancel the attack and put the ability on cooldown. {{si|Flash}} and {{ii|Zhonya's Hourglass}} cannot be used during the dash.\n** Cannot be used while {{tip|ground|grounded}} or {{tip|root|rooted}} because '''Illaoi''' loses the {{sti|'''bonus''' attack range}}.\n** Starting the attack before the target becomes {{tip|untargetable}} will not make '''''{{as|Tentacles|buzzword2}}''''' slam.\n** Does not trigger {{ri|Hail of Blades}}.\n** Triggers {{ii|Kircheis Shard|Energized}} effects during the jump.\n** Having enough attack speed will perform an unusual dunk.\n** Having increased size will increase the range of her ''Harsh Lesson'' but the indicator range will not change.\n** If the empowered attack duration ends during the dash, the buff will linger until the attack has finished.\n* {{tip|spell shield|Spell shields}} will block the '''bonus''' damage but will not prevent the '''''{{as|Tentacle|buzzword2}}''''' slam, unless a dash range ''Harsh Lesson'' has been used, in which case the '''bonus''' damage is not blocked but the ''spell shield'' is still consumed.\n* Parries ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}) will block the damage and will not trigger {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams, with the exception of:\n** {{tip|Block}} when using a close range ''Harsh Lesson'', which triggers {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams.\n** {{tip|Blind}} when using a dash range ''Harsh Lesson'', which triggers {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams.\n* If the target dies at the moment ''Harsh Lesson'' hits the target, it will be consumed and put on cooldown, without making '''''{{as|Tentacles|buzzword2}}''''' slam.\n* The '''''{{as|Tentacle|buzzword2}}''''' attacking because of ''Harsh Lesson'' is considered to be part of it, and thus will not grant additional stacks of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} and [[Named item effect#|Tribute]].\n* Using it together with {{ii|Dead Man's Plate}} will grant an additional stack of {{ri|Conqueror}}.\n* ''Harsh Lesson's'' '''bonus''' damage applies before {{iis|Blade of the Ruined King}} damage.\n* ''Harsh Lesson'' triggers {{ri|Bone Plating}} and one of its plates with the same attack.\n* Attack moving while charging {{si|Hexflash}} will delay the attack.",
+      "notes": "* Since the attack applies both {{tip|on-hit}} effects and [[ability effects|spell effects]], it will trigger {{ii|Muramana}} twice.\n* The '''bonus''' damage doesn't apply {{sti|life steal|link=true}} {{tip|heal|healing}} but it does apply {{sti|spell vamp|link=true}}.\n* ''Harsh Lesson'' is made of two different abilities which are decided by '''Illaoi's''' range to the target, being either {{tip|melee}} or within {{tip|dash}} range.\n* The close range ability:\n** Is an {{tip|unstoppable basic attack}}.\n** Can be used while {{tip|ground|grounded}} or {{tip|root|rooted}}. If '''Illaoi''' attack commands and then casts ''Harsh Lesson'', she will use the close range ''Harsh Lesson'' even if the target is beyond her melee range.\n** Starting the attack before triggering {{iis|Guardian Angel}} passive and hitting while she's in it will not cause the '''''{{as|Tentacles|buzzword2}}''''' to slam.\n** Starting the attack before the target becomes {{tip|untargetable}} will still cause the '''''{{as|Tentacles|buzzword2}}''''' to slam the target.\n** Does trigger {{ri|Hail of Blades}}.\n** Triggers {{ii|Kircheis Shard|Energized}} effects [[on-hit]].\n** Using it at the same time with {{ii|Ravenous Hydra}} will perform an unusual dunk.\n** If the empowered attack duration ends during the attack animation, the attack won't be empowered.\n* The dash range ability:\n** Is not unstoppable, meaning effects that can interrupt the dash will cancel the attack and put the ability on cooldown. {{si|Flash}} and {{ii|Zhonya's Hourglass}} cannot be used during the dash.\n** Cannot be used while {{tip|ground|grounded}} or {{tip|root|rooted}} because '''Illaoi''' loses the {{sti|'''bonus''' attack range}}.\n** Starting the attack before the target becomes {{tip|untargetable}} will not make '''''{{as|Tentacles|buzzword2}}''''' slam.\n** Does not trigger {{ri|Hail of Blades}}.\n** Triggers {{ii|Kircheis Shard|Energized}} effects during the jump.\n** Having enough attack speed will perform an unusual dunk.\n** Having increased size will increase the range of her ''Harsh Lesson'' but the indicator range will not change.\n** If the empowered attack duration ends during the dash, the buff will linger until the attack has finished.\n* {{tip|spell shield|Spell shields}} will not prevent the '''''{{as|Tentacle|buzzword2}}''''' slam, unless a dash range ''Harsh Lesson'' has been used.\n* Parries ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}) will block the damage and will not trigger {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams, with the exception of:\n** {{tip|Block}} when using a close range ''Harsh Lesson'', which triggers {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams.\n** {{tip|Blind}} when using a dash range ''Harsh Lesson'', which triggers {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} slams.\n* If the target dies at the moment ''Harsh Lesson'' hits the target, it will be consumed and put on cooldown, without making '''''{{as|Tentacles|buzzword2}}''''' slam.\n* The '''''{{as|Tentacle|buzzword2}}''''' attacking because of ''Harsh Lesson'' is considered to be part of it, and thus will not grant additional stacks of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} and [[Named item effect#|Tribute]].\n* Using it together with {{ii|Dead Man's Plate}} will grant an additional stack of {{ri|Conqueror}}.\n* ''Harsh Lesson's'' '''bonus''' damage applies before {{iis|Blade of the Ruined King}} damage.\n* ''Harsh Lesson'' triggers {{ri|Bone Plating}} and one of its plates with the same attack.\n* Attack moving while charging {{si|Hexflash}} will delay the attack.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "30",
@@ -191,7 +191,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|3 to 5}}% {{as|(+ 2% per 100 AD)}} of target's '''maximum''' health|health}}}}\n{{st|Minimum Physical Damage|{{ap|20 to 60}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -203,25 +203,25 @@
                 4.5,
                 5
               ],
-              null
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ad": 21
               },
               {
-                "target_total_ad": [
-                  0.2,
-                  0.3,
-                  0.4,
-                  0.5,
-                  0.6
-                ]
+                "target_total_ad": null
               }
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -236,16 +236,10 @@
                   5
                 ],
                 "player_total_ad": 21,
-                "target_total_ad": [
-                  0.2,
-                  0.3,
-                  0.4,
-                  0.5,
-                  0.6
-                ]
+                "target_total_ad": null
               },
               "title": "Bonus Physical Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>",
               "damage_type": "physical"
             }
           ]
@@ -267,7 +261,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
+      "targeting": "Auto",
       "image": {
         "full": "IllaoiR.png",
         "sprite": "spell4.png",
@@ -278,10 +272,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Illaoi''' leaps into the air {{tip|unstoppable|unstoppably}} before slamming her idol into the ground, dealing {{as|physical damage}} to nearby enemies. For each enemy champion hit, a {{as|Tentacle|buzzword2}} is summoned for 8 seconds (up to a maximum of 6 summons).",
+        "{{sbc|Active:}} '''Illaoi''' gains {{tip|displacement immunity}} and leaps into the air for the cast time. She then slams her idol into the ground, dealing {{as|physical damage}} to nearby enemies. For each enemy champion hit, a {{as|Tentacle|buzzword2}} is summoned for 8 seconds (up to a maximum of 6 summons).",
         "For the duration, {{ais|Harsh Lesson|Illaoi}} {{sti|cooldown}} is halved, all {{as|Tentacles|buzzword2}} awakened by '''Illaoi''' are {{tip|untargetable}}, will not show their hitboxes, nor go dormant, and will take half the amount of time to make an attack."
       ],
-      "notes": "* {{si|Flash}} can be used during the cast time, with the ability being used at the new location.\n* {{tip|Clone|Clones}} also count as champions for the summoning of the '''''{{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}}'''''.\n* '''Illaoi''' spawns the '''''{{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}}''''' 725 range away from her, unless there's a natural wall blocking the way making the '''''{{as|Tentacle|buzzword2}}''''' spawn on it, based on:\n** The direction she's facing.\n*** She will always face at the nearest {{tip|sight|visible}} enemy champion, in ''Leap of Faith's'' range, the instant she leaps.\n*** If there's no enemy champion nearby, she faces in the direction of the cursor.\n*** {{si|Flash|Flashing}} mid-animation will change the spawning direction to where the cursor is pointed, regardless of the nearest enemy champion.\n** How many champions she hits.\n*** 1+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 0 degrees.\n*** 2+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 60 degrees.\n*** 3+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 300 degrees.\n*** 4+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 120 degrees.\n*** 5+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 240 degrees.\n*** 6+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 180 degrees.\n** If there are no walls nearby, spawning the last {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} will form a perfect hexagon.\n* {{tip|Spell shield|Spell shields}} will block the ability's damage but will not prevent '''''{{as|Tentacles|buzzword2}}''''' from spawning.\n* If '''Illaoi''' is near a '''''{{as|Tentacle|buzzword2}}''''' that is about to spawn, it will spawn buffed by ''Leap of Faith'' even if '''Illaoi''' is no longer nearby.\n* Going into {{tip|stasis}} (i.e - by {{tip|resurrection}}) during the leap will not stop the ability from dealing damage or spawning '''''{{as|Tentacles|buzzword2}}'''''.\n* Using ''{{ai|Harsh Lesson}}'' after '''Illaoi''' drops down will command '''''{{as|Tentacles|buzzword2}}''''' to instantly attack, regardless if they were already attacking. Their old attack will keep on going and will hit while the second attack is on its animation attack.\n* Using ''{{ai|Harsh Lesson}}'' an instant before ''Leap of Faith's'' buff finishes will delay the '''''{{as|Tentacle's|buzzword2}}''''' attack.",
+      "notes": "* ''Leap of Faith's'' effects are centered around '''Illaoi''' at the end of the cast time.\n** {{si|Flash}} can be used during the cast time to reposition her.\n* {{tip|Clone|Clones}} also count as champions for the summoning of the '''''{{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}}'''''.\n* '''Illaoi''' spawns the '''''{{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}}''''' 725 range away from her, unless there's a natural wall blocking the way making the '''''{{as|Tentacle|buzzword2}}''''' spawn on it, based on:\n** The direction she's facing.\n*** She will always face at the nearest {{tip|sight|visible}} enemy champion, in ''Leap of Faith's'' range, the instant she leaps.\n*** If there's no enemy champion nearby, she faces in the direction of the cursor.\n*** {{si|Flash|Flashing}} mid-animation will change the spawning direction to where the cursor is pointed, regardless of the nearest enemy champion.\n** How many champions she hits.\n*** 1+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 0 degrees.\n*** 2+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 60 degrees.\n*** 3+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 300 degrees.\n*** 4+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 120 degrees.\n*** 5+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 240 degrees.\n*** 6+ champions: one {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} at 180 degrees.\n** If there are no walls nearby, spawning the last {{ai|Prophet of an Elder God||{{as|Tentacle|buzzword2}}}} will form a perfect hexagon.\n* {{tip|Spell shield|Spell shields}} will block the ability's damage but will not prevent '''''{{as|Tentacles|buzzword2}}''''' from spawning.\n* If '''Illaoi''' is near a '''''{{as|Tentacle|buzzword2}}''''' that is about to spawn, it will spawn buffed by ''Leap of Faith'' even if '''Illaoi''' is no longer nearby.\n* Going into {{tip|stasis}} (i.e - by {{tip|resurrection}}) during the leap will not stop the ability from dealing damage or spawning '''''{{as|Tentacles|buzzword2}}'''''.\n* Using ''{{ai|Harsh Lesson}}'' after '''Illaoi''' drops down will command '''''{{as|Tentacles|buzzword2}}''''' to instantly attack, regardless if they were already attacking. Their old attack will keep on going and will hit while the second attack is on its animation attack.\n* Using ''{{ai|Harsh Lesson}}'' an instant before ''Leap of Faith's'' buff finishes will delay the '''''{{as|Tentacle's|buzzword2}}''''' attack.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -289,7 +283,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|150 to 350}} {{as|(+ 50% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -309,7 +303,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -326,7 +320,7 @@
                 "player_bonus_ad": 0.5
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

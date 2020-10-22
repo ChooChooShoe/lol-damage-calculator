@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.82",
-  "changes": "10.13.1",
+  "changes": "10.16.1",
   "id": "Kennen",
   "name": "Kennen",
   "title": "the Heart of the Tempest",
@@ -64,8 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Enemies hit by '''Kennen's''' [[Champion ability|abilities]] receive a {{as|Mark of the Storm|buzzword}} for 6 seconds, stacking up to 3 times. At three stacks, the marks consume themselves to {{tip|stun}} the target for {{fd|1.25}} seconds and restore {{sti|{{as|25 energy}}}}.",
-        "If the {{tip|stun}} is applied more than once within 6 seconds, its duration is reduced to {{fd|0.5}} seconds."
+        "{{sbc|Innate:}} '''Kennen's''' [[champion ability|abilities]] apply a [[stack]] of {{as|Mark of the Storm|buzzword}} to affected enemies for 6 seconds, stacking up to 3 times, with the duration refreshing upon applying the second stack. Upon applying 3 stacks to a target, the stacks are consumed to {{tip|stun}} them for {{fd|1.25}} seconds and restore {{sti|{{as|25 energy}}}}.",
+        "If the {{tip|stun}} is applied to a target more than once within 6 seconds, its duration is reduced to {{fd|0.5}} seconds."
       ],
       "notes": "* '''Kennen''' will still restore energy if the target dies from a third {{as|Mark of the Storm|buzzword}}.",
       "skillkey": "I",
@@ -103,7 +103,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kennen''' throws a charged shuriken in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits."
+        "{{sbc|Active:}} '''Kennen''' throws a charged shuriken in the target direction, dealing {{as|magic damage}} to the first enemy it hits."
       ],
       "notes": "* ''Thundering Shuriken'' is always cast from the original casting position.",
       "skillkey": "Q",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 75% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,115,155,195,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +133,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+              "<SpellSpan :list=\"[75,115,155,195,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,7 +150,7 @@
                 "player_total_ap": 0.75
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['75','115','155','195','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,115,155,195,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -187,11 +187,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} [[Basic attacks]] grant a stack of ''Electrical Surge'' [[on-attack]]. Upon reaching 4 stacks '''Kennen's''' next [[basic attack]] against non-{{tip|turrets|structures}} is empowered to deal {{as|'''bonus''' magic damage}}, apply a {{as|Mark of the Storm|buzzword}} and consume all stacks [[on-hit]].",
+        "{{sbc|Passive:}} [[Basic attacks]] grant a stack of ''Electrical Surge'' [[on-attack]], stacking up to 4 times. At 4 stacks, '''Kennen's''' next [[basic attack]] on-hit against non-{{tip|turrets|structures}} consumes all ''Electrical Surge'' stacks to deal {{as|'''bonus''' magic damage}} and apply a stack of {{as|Mark of the Storm|buzzword}} to the target.",
         "{{sbc|Active:}} '''Kennen''' sends out a surge of electricity to all nearby enemies afflicted by {{as|Mark of the Storm|buzzword}} or caught in {{ai|Slicing Maelstrom|Kennen}}, dealing {{as|magic damage}}.",
         "''Electrical Surge does not require {{tip|sight}} of targets to be cast.''"
       ],
-      "notes": "* The empowered basic attack applies {{tip|spell damage}}, while the electrical surge deals {{tip|area damage}}.\n* ''Electrical Surge's'' enhanced attack will be consumed and the bonus damage will not be applied if '''Kennen''' is {{tip|blind|blinded}}.\n** ''Electrical Surge's'' enhanced attack cannot be {{tip|dodge|dodged}} or {{tip|block|blocked}}.\n* {{ai|Wind Wall|Yasuo}} will destroy the enhanced attack but not consume it.",
+      "notes": "* The empowered basic attack applies {{tip|spell damage}}, while the electrical surge deals {{tip|area damage}}.\n* ''Electrical Surge's'' enhanced attack will be consumed and the bonus damage will not be applied if '''Kennen''' is {{tip|blind|blinded}}.\n** ''Electrical Surge's'' enhanced attack cannot be {{tip|dodge|dodged}} or {{tip|block|blocked}}.\n* ''Electrical Surge'' cannot be cast without marked targets nearby.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "40",
@@ -199,7 +199,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 50}} {{as|(+ {{ap|60 to 100}}% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -211,25 +211,25 @@
                 40,
                 50
               ],
-              null
+              [
+                60,
+                70,
+                80,
+                90,
+                100
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.2
               },
               {
-                "player_bonus_ad": [
-                  0.6,
-                  0.7,
-                  0.8,
-                  0.9,
-                  1
-                ]
+                "player_bonus_ad": 607080901
               }
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -244,23 +244,17 @@
                   50
                 ],
                 "player_total_ap": 0.2,
-                "player_bonus_ad": [
-                  0.6,
-                  0.7,
-                  0.8,
-                  0.9,
-                  1
-                ]
+                "player_bonus_ad": 607080901
               },
               "title": "Bonus Magic Damage",
-              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60 to 160}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -280,7 +274,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -297,7 +291,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -323,7 +317,7 @@
         80
       ],
       "costtype": "Energy",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "KennenLightningRush.png",
         "sprite": "spell6.png",
@@ -340,7 +334,7 @@
         "{{sbc|Recast:}} '''Kennen''' ends ''Lightning Rush'' early.",
         "''Lightning Rush's recast can be used while affected by {{tip|crowd control}}.''"
       ],
-      "notes": "* ''Lightning Rush'' will only damage any particular enemy once per cast.\n* ''Lightning Rush'' can grant '''Kennen''' an effective 230 bonus movement speed (assuming there are no modifiers involved).",
+      "notes": "* ''Lightning Rush'' will only damage any particular enemy once per cast.\n* ''Lightning Rush'' can grant '''Kennen''' an effective 230 bonus movement speed (assuming there are no modifiers involved).\n* '''Kennen's''' {{stil|attack range}} is reduced to -25 during ''Lightning Rush'', further reduced to -34 with {{ii|Rapid Firecannon}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "100/95/90/85/80",
@@ -348,7 +342,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}|Non-Champion Damage|{{ap|80/2 to 240/2}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -378,9 +372,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "Non-Champion Damage",
-              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -397,7 +391,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -413,14 +407,14 @@
                 "player_total_ap": 0.8
               },
               "title": "Non-Champion Damage",
-              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 80}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -435,7 +429,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -451,7 +445,7 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -472,7 +466,7 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "KennenShurikenStorm.png",
         "sprite": "spell6.png",
@@ -483,11 +477,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kennen''' summons ''Shuriken Storm'', a magical storm around himself for 3 seconds, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} and striking bolts of lightning down on all enemies within range every {{fd|0.5}} seconds, each dealing {{as|magic damage}}.",
+        "{{sbc|Active:}} '''Kennen''' summons ''Shuriken Storm'', a magical storm around himself for 3 seconds, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} and striking bolts of lightning down on all enemies within range every {{fd|0.5}} seconds, each bolt dealing {{as|magic damage}}.",
         "Each maelstrom hit applies a {{as|Mark of the Storm|buzzword}}, up to a maximum of 3.",
         "''Slicing Maelstrom'' deals 10% increased damage with each successive strike against a target, up to a maximum of 150% damage with one strike."
       ],
-      "notes": "* ''Slicing Maelstrom'' persists through {{tip|stasis}}.\n* {{si|Flash}} can be cast during the cast time.",
+      "notes": "* ''Slicing Maelstrom'' persists through {{tip|stasis}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",
@@ -495,7 +489,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Resistances|{{ap|20 to 60}}}}\n{{st|Magic Damage Per Bolt|{{ap|40|75|110}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Resistances</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Bolt</span>: <span><spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Resistances</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Bolt</span>: <span><SpellSpan :list=\"[40,75,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -520,7 +514,7 @@
             ],
             "st_slices": [
               "Magic Damage Per Bolt",
-              "<spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[40,75,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -537,14 +531,14 @@
                 "player_total_ap": 0.2
               },
               "title": "Magic Damage Per Bolt",
-              "str": "<spell-span :list=\"['40','75','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,75,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Total Single-Target Damage|{{ap|300|562.5|825}} {{as|(+ 150% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[300,562.5,825]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -562,7 +556,7 @@
             ],
             "st_slices": [
               "Total Single-Target Damage",
-              "<spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+              "<SpellSpan :list=\"[300,562.5,825]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
             ]
           },
           "subeffects": [
@@ -577,7 +571,7 @@
                 "player_total_ap": 1.5
               },
               "title": "Total Single-Target Damage",
-              "str": "<spell-span :list=\"['300','562.5','825']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,562.5,825]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>",
               "damage_type": "unknown"
             }
           ]

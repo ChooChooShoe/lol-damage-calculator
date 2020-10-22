@@ -8,7 +8,7 @@
     "full": "Thresh.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 0,
+    "x": 48,
     "y": 0,
     "w": 48,
     "h": 48
@@ -58,17 +58,17 @@
         "full": "Thresh_Passive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 0,
+        "x": 48,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} Enemy {{tip|champion|champions}}, large {{tip|minion|minions}} and large {{tip|monster|monsters}} that die near '''Thresh''' drop a ''Soul'' for 8 seconds. Epic monsters drop 2 ''Souls'' instead. Small minions and lesser monsters have a {{fd|33.{{recurring|33}}}}% chance to drop a ''Soul''.",
-        "'''Thresh''' autonomously collects ''Souls'' near him or his {{ai|Dark Passage|Thresh|lantern}}. ''Souls'' are visible to allies and only become visible to enemies if their team has {{tip|sight}} of '''Thresh'''.",
+        "'''Thresh''' autonomously collects ''Souls'' near him or a placed {{ai|Dark Passage|Thresh}}.",
         "Each collected ''Soul'' grants '''Thresh''' {{sti|ap|{{as|{{fd|0.75}} ability power}}}} and {{sti|armor|{{as|{{fd|0.75}} '''bonus''' armor}}}}."
       ],
-      "notes": "* ''Souls'' grants a small amount of {{tip|sight}} around itself.\n* The probability for ''souls'' dropping from small minions and monster on {{tip|Summoner's Rift}} starts at 33% but adjusts dynamically to match the expected quota of ''souls'' dropped (lowers if above, rises if below, remains if even). ''Souls'' collected are not considered when adjusting the probability.\n* The maximum amount of ''souls'' '''Thresh''' can collect is 999,999, granting him {{as|749,999 '''bonus''' ability power}} and {{as|749,999 '''bonus''' armor}} ({{fd|99.99}}% damage reduction, reduced to {{fd|99.98}}% when hit by {{ii|Last Whisper}}).\n* {{ci|Nunu|Nunu & Willump}} drop a soul each (sometimes the icy ghosts from {{iis|Twin Shadows}} active will drop one each after reaching their targets).",
+      "notes": "* ''Souls'' grant a small area of {{tip|sight}}.\n* ''Souls'' are visible to allies and only become visible to enemies if their team has {{tip|sight}} of '''Thresh'''.\n* The probability for ''souls'' dropping from small minions and monster on {{tip|Summoner's Rift}} starts at 33% but adjusts dynamically to match the expected quota of ''souls'' dropped (lowers if above, rises if below, remains if even). ''Souls'' collected are not considered when adjusting the probability.\n* The maximum amount of ''souls'' '''Thresh''' can collect is 999,999, granting him {{as|749,999 '''bonus''' ability power}} and {{as|749,999 '''bonus''' armor}} ({{fd|99.99}}% damage reduction, reduced to {{fd|99.98}}% when hit by {{ii|Last Whisper}}).\n* {{ci|Nunu|Nunu & Willump}} drop a soul each (sometimes the icy ghosts from {{iis|Twin Shadows}} active will drop one each after reaching their targets).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -92,19 +92,19 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 950,
       "image": {
         "full": "ThreshW.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Thresh''' throws his lantern to the target location for 6 seconds or until he moves too far away from it, {{tip|sight|revealing}} its surroundings.",
+        "{{sbc|Active:}} '''Thresh''' throws his lantern to the target location which lands after {{fd|0.5}} seconds, lasting for 6 seconds or until he moves too far away from it, {{tip|sight|revealing}} its surroundings.",
         "'''Thresh''' and the first allied champion to come near the lantern are granted a {{tip|shield}} for 4 seconds. An ally can select the lantern while in proximity of it, {{tip|dash|dashing}} to '''Thresh's''' current location and gaining the shield.",
         "An ally cannot select the lantern while {{tip|silence|silenced}}, {{tip|ground|grounded}} or {{tip|immobilize|immobilized}}."
       ],
@@ -116,7 +116,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{ap|60 to 220}} (+ 1 per {{ai|Damnation|Thresh|Soul}} collected)}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -131,7 +131,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)"
+              "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)"
             ]
           },
           "subeffects": [
@@ -147,7 +147,7 @@
                 ]
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['60','100','140','180','220']\" :spellrankindex=\"spellrankindex\"></spell-span> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)",
+              "str": "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)",
               "damage_type": "none"
             }
           ]
@@ -169,21 +169,22 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "none",
+      "targeting": "Auto",
       "image": {
         "full": "ThreshRPenta.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 336,
-        "y": 48,
+        "x": 48,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Thresh''' surrounds himself with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing {{as|magic damage}} to the target and {{tip|slow|slowing}} them by 99% for 2 seconds.",
-        "Enemy champions hitting any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second."
+        "{{sbc|Active:}} '''Thresh''' surrounds his location with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing {{as|magic damage}} to the target and {{tip|slow|slowing}} them by 99% for 2 seconds.",
+        "Enemy champions hitting any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second.",
+        "''Targets are immune to breaking a new wall for 1 second after breaking one.''"
       ],
-      "notes": "* ''The Box'' is always cast from the original casting position.",
+      "notes": "* ''The Box'' is always placed at the original cast location.\n* ''The Box'' always uses [[quick cast]], regardless of player settings. <!-- It used to be direction cast, and then have the box face the target direction. Dunno if this change was intentional but I won't assume a bug here ~Caenen-->\n** ''The Box'' always faces into the same direction (one of the walls is due North, and spreads West-East).\n*** The cast indicator does not show this behaviour.\n* The corners of ''The Box'' are placed 400 units around '''Thresh'''.\n** Each wall is 470.228 units long.\n** Each wall passes 323.607 units from the center of ''The Box'' at the closest approach (ignoring its width).\n** A pentagon has an angle of 72{{degree}} between each corner.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -191,7 +192,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|250|400|550}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['250','400','550']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -209,7 +210,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['250','400','550']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -224,7 +225,7 @@
                 "player_total_ap": 1
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['250','400','550']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]

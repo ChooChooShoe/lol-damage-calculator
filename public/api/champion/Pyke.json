@@ -1,6 +1,6 @@
 {
   "patch": "V8.11",
-  "changes": "10.14.1",
+  "changes": "10.18.1",
   "id": "Pyke",
   "name": "Pyke",
   "title": "the Bloodharbor Ripper",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{as|1 '''bonus''' attack damage}} {{as|per 14 '''bonus''' health}}.|{{as|({{fd|7.143}}% '''bonus''' health)}} {{as|'''bonus''' attack damage}}.}}",
+        "{{sbc|Innate:}} '''Pyke's''' {{sti|health|{{as|'''maximum''' health}}}} cannot increase except through [[Growth#Increasing_Statistics|growth (per level)]], instead he gains{{ft|{{sti|{{as|1 '''bonus''' attack damage}}}} {{as|per 14 '''bonus''' health}}.|{{as|({{fd|7.143}}% '''bonus''' health)}} {{sti|{{as|'''bonus''' attack damage}}}}.}}",
         "'''Pyke''' also stores {{passive progression/deprecated version|key=%|25 to 50}} of the damage he takes from enemy champions as ''Grey Health'' on his {{as|health bar}}, up to 80 {{as|(+ 800% '''bonus''' AD)}}, with an upper cap of {{as|60% of his '''maximum''' health}}.",
         "When '''Pyke''' is unseen by enemies, he rapidly consumes his ''Grey Health'' to {{tip|heal}} for the same amount.",
         "{{sbc|Hidden innate:}} '''Pyke''' gains {{as|1 '''bonus''' movement speed}} while in the river."
@@ -93,8 +93,8 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": "{{passive progression/deprecated version|type=channel time|7|400;400 to 1100|0;0.5 to 1|displayformula=400+(140 per 0.1 seconds, starting at 0.5 seconds). ''This is capped at 1 second.''}}",
+      "targeting": "[[Auto-targeted|Auto]] / [[Direction-targeted|Direction]]",
+      "target_range": "{{tip|er|icononly = true}} {{passive progression/deprecated version|type=channel time|8|400;400 to 1100|0;0.4 to 1|displayformula=400+(116.67 per 0.1 seconds, starting at 0.4 seconds). ''This is capped at 1 second.''}}",
       "image": {
         "full": "PykeQ.png",
         "sprite": "spell9.png",
@@ -105,12 +105,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' {{tip|channel|charges}} for up to 3 seconds, increasing ''Bone Skewer's'' range by up to 700 units while being {{tip|slow|slowed}} by 20%. ''Bone Skewer'' can be recast at any time within its duration.",
-        "{{sbc|Recast:}} '''Pyke''' {{tip|projectile|hurls}} his harpoon, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy struck, {{tip|airborne|pulling}} them a fixed 550 units {{tt|towards his direction|The pull can fling an enemy behind Pyke if the harpoon hits at close range}}, {{tip|slow|slowing}} them by 90% for 1 second, and briefly {{tip|sight|revealing}} them.",
-        "Releasing the ability within {{fd|0.5}} seconds causes '''Pyke''' to instead thrust his harpoon, hitting the closest enemy unit, prioritizing enemy {{tip|champion|champions}}.",
+        "{{sbc|Active:}} '''Pyke''' {{tip|channel|charges}} for up to 3 seconds, increasing ''Bone Skewer's'' range while being {{tip|slow|slowed}} by 20%. ''Bone Skewer'' can be recast at any time within its duration.",
+        "{{sbc|Recast:}} '''Pyke''' {{tip|projectile|hurls}} his harpoon in the target direction, dealing {{as|physical damage}} to the first enemy struck, {{tip|airborne|pulling}} them {{tt|towards his direction|The pull can fling an enemy behind Pyke if the harpoon hits at close range}}, {{tip|slow|slowing}} them by 90% for 1 second, and briefly {{tip|sight|revealing}} them.",
+        "Releasing the ability within {{fd|0.4}} seconds causes '''Pyke''' to instead thrust his blade in the target direction, dealing  the same damage to the closest enemy {{tip|champion}}, or closest enemy if no champion is hit.",
         "If '''Pyke''' is {{tip|interrupt|interrupted}} during the charge, or the charge completes without reactivation, ''Bone Skewer'' is cancelled and the ability is put on full {{sti|cooldown}} but refunds {{sti|mana|{{as|half the mana cost}}}}."
       ],
-      "notes": "* {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}} will only block the charged ability.\n* {{si|Flash}} can be used during the cast time and ''Bone Skewer'' will affect enemies at the new location.\n* '''Pyke''' can still use [[summoner spell]]s besides {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} while hurling the harpoon but he cannot perform any other action.\n* The following table refers for interactions while '''Pyke''' is {{tip|channel|channeling}}:\n{{ct|charge|cast=interrupts|items=false|consume=Disabled, but can use trinkets}}",
+      "notes": "* Only the charged version of ''Bone Skewer'' will be {{tip|projectile|intercepted}}.\n* {{si|Flash}} can be used during the cast time and ''Bone Skewer'' will affect enemies at the new location.\n* '''Pyke''' can still use [[summoner spell]]s besides {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} while hurling the harpoon but he cannot perform any other action.\n* The following table refers for interactions while '''Pyke''' is {{tip|channel|channeling}}:\n{{ct|charge|cast=interrupts|items=false|consume=Disabled, but can use trinkets}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/55/60/65/70",
@@ -118,7 +118,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|85 to 285}} {{as|(+ 60% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[85,135,185,235,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -138,7 +138,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[85,135,185,235,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -155,7 +155,7 @@
                 "player_bonus_ad": 0.6
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['85','135','185','235','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[85,135,185,235,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -181,7 +181,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "PykeW.png",
         "sprite": "spell9.png",
@@ -192,10 +192,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' submerges into water, entering {{tip|camouflage}} and gaining {{as|40% {{as|(+ {{fd|1.5}}% per 1 Lethality)}} '''bonus''' movement speed|ms}} that decays over 5 seconds. Enemies are notified if '''Pyke''' is within 1500 units of them.",
-        "Attacking or casting abilities immediately ends {{tip|camouflage}}."
+        "{{sbc|Active:}} '''Pyke''' submerges into water, entering {{tip|camouflage}} for 5 seconds and gaining {{as|40%|ms}} {{as|(+ {{fd|1.5}}% per 1 Lethality)}} {{sti|{{as|'''bonus''' movement speed}}}} that decays over the duration. Enemies are notified if '''Pyke''' is within 1500 units of them.",
+        "Attacking or casting abilities immediately ends ''Ghostwater Dive''."
       ],
-      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of {{ai|Death from Below|Pyke}}.\n* The maximum amount of {{sti|{{as|'''bonus''' movement speed}}}} gained possible from all lethality sources is {{fd|154.5%}}.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|37.5%}}'''|25 × 0.015}} bonus MS\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|31.5%}}'''|21 × 0.015}} bonus MS\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''18%'''|12 × 0.015}} bonus MS\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS \n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|10.5%}}'''|7 × 0.015}} bonus MS\n**** {{tt|'''Total Increased Percent'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|37.5%}} + {{fd|31.5%}} + 27% + 18% + 15% + 15% + {{fd|10.5%}}'' = '''{{fd|154.5%}}''' bonus MS\n***** '''Total Bonus Movement Speed''': {{fd|154.5%}} + 40% = {{fd|194.5%}}",
+      "notes": "* When '''Pyke''' is hidden nearby in his ''Ghostwater Dive'', sharks will circle underneath nearby enemies' feet and a sound will be played, changing based on the amount of health they have left.\n** Enemies will hear a disturbing deadly warning tone if their health bar is under the threshold of {{ai|Death from Below|Pyke}}.\n* The maximum amount of {{sti|{{as|'''bonus''' movement speed}}}} gained possible from all lethality sources is {{fd|154.5%}}. ''Last Updated: August 3rd, 2020.''\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|37.5%}}'''|25 × 0.015}} bonus MS\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|31.5%}}'''|21 × 0.015}} bonus MS\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''27%'''|18 × 0.015}} bonus MS while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''18%'''|12 × 0.015}} bonus MS\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''15%'''|10 × 0.015}} bonus MS \n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|10.5%}}'''|7 × 0.015}} bonus MS\n**** {{tt|'''Total Increased Percent'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|37.5%}} + {{fd|31.5%}} + 27% + 18% + 15% + 15% + {{fd|10.5%}}'' = '''{{fd|154.5%}}''' bonus MS\n***** '''Total Bonus Movement Speed''': {{fd|154.5%}} + 40% = {{fd|194.5%}}",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
@@ -221,7 +221,7 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "targeting": "Direction",
       "target_range": 550,
       "image": {
         "full": "PykeE.png",
@@ -233,10 +233,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}}, leaving behind a drowned phantom.",
-        "After 1 second, the phantom returns to '''Pyke''', {{tip|stun|stunning}} enemies it passes through for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds. Enemy {{tip|Champion|champions}} also take {{as|physical damage}}."
+        "{{sbc|Active:}} '''Pyke''' {{tip|dash|dashes}} a fixed distance in the target direction, leaving behind a ''Phantom'' for 1 second.",
+        "Afterwards, the ''Phantom'' returns to '''Pyke''', {{tip|stun|stunning}} enemies around it and those it passes through along the way for {{fd|1.25}} {{as|(+ {{fd|0.1}} per 10 Lethality)}} seconds. Enemy {{tip|Champion|champions}} also take {{as|physical damage}}."
       ],
-      "notes": "* The {{tip|dash}} distance can be extended to up to 900 units (estimated) when targeting across terrain.\n* The maximum increase in {{tip|stun}} duration possible from all lethality sources is {{fd|1.03}} seconds, with the base duration included for a total of {{fd|2.28}} seconds.\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|0.25}}'''|(25 ÷ 10) × 0.1}} seconds\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|0.21}}'''|(21 ÷ 10) × 0.1}} seconds\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''{{fd|0.12}}'''|(12 ÷ 10) × 0.1}} seconds\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|0.07}}'''|(7 ÷ 10) × 0.1}} seconds\n**** {{tt|'''Total Increased Duration'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|0.25}} + {{fd|0.21}} + {{fd|0.18}} + {{fd|0.12}} + {{fd|0.10}} + {{fd|0.10}} + {{fd|0.07}}'' = '''{{fd|1.03}}''' seconds\n***** '''Total Stun Duration''': ''{{fd|1.25}} + {{fd|1.03}}'' = '''{{fd|2.28}}''' seconds",
+      "notes": "* The {{tip|dash}} distance can be extended to up to 900 units (estimated) when targeting across terrain.\n* Like most [[missiles|projectiles]], the flying ''Phantom'' cannot hit targets whose {{tip|center range|center}} is behind the position it originates at or beyond the position it catches up to '''Pyke''' at, but the spell ''can'' hit targets behind its origin as long as their {{tip|edge range|hitbox radius}} overlaps with the original unit ''Phantom's'' 110-radius check at the end of its lifespan.\n* The maximum increase in {{tip|stun}} duration possible from all lethality sources is {{fd|1.03}} seconds, with the base duration included for a total of {{fd|2.28}} seconds. ''Last Updated: April 11, 2020.''\n** '''Relevant mathematics:'''\n*** {{ii|Youmuu's Wraithblade}}: '''+''' {{tt|'''{{fd|0.25}}'''|(25 ÷ 10) × 0.1}} seconds\n**** {{ii|Youmuu's Ghostblade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds\n*** {{ii|Duskblade of Draktharr}}: '''+''' {{tt|'''{{fd|0.21}}'''|(21 ÷ 10) × 0.1}} seconds\n*** {{ii|Sanguine Blade}}: '''+''' {{tt|'''{{fd|0.18}}'''|(18 ÷ 10) × 0.1}} seconds while {{sbc|Blood Pursuit}} is active\n**** '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds while inactive\n*** {{ii|Umbral Glaive}}: '''+''' {{tt|'''{{fd|0.12}}'''|(12 ÷ 10) × 0.1}} seconds\n*** {{ii|Edge of Night}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ii|Serrated Dirk}}: '''+''' {{tt|'''{{fd|0.10}}'''|(10 ÷ 10) × 0.1}} seconds\n*** {{ri|Sudden Impact}}: '''+''' {{tt|'''{{fd|0.07}}'''|(7 ÷ 10) × 0.1}} seconds\n**** {{tt|'''Total Increased Duration'''|Excluding Youmuu's Ghostblade and an inactive Sanguine Blade}}: ''{{fd|0.25}} + {{fd|0.21}} + {{fd|0.18}} + {{fd|0.12}} + {{fd|0.10}} + {{fd|0.10}} + {{fd|0.07}}'' = '''{{fd|1.03}}''' seconds\n***** '''Total Stun Duration''': ''{{fd|1.25}} + {{fd|1.03}}'' = '''{{fd|2.28}}''' seconds",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40",
@@ -244,7 +244,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|105 to 225}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[105,135,165,195,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -264,7 +264,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[105,135,165,195,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -281,7 +281,7 @@
                 "player_bonus_ad": 1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['105','135','165','195','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[105,135,165,195,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

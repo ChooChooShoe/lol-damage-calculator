@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.133",
-  "changes": "10.2.1",
+  "changes": "10.16.1",
   "id": "Ziggs",
   "name": "Ziggs",
   "title": "the Hexplosives Expert",
@@ -8,7 +8,7 @@
     "full": "Ziggs.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 96,
     "w": 48,
     "h": 48
@@ -58,13 +58,13 @@
         "full": "ZiggsPassiveReady.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Ziggs' ''' [[basic attack]] is periodically empowered to deal {{as|{{passive progression/deprecated version|18|20|24|28|32|36|40|48|56|64|72|80|88|100|112|124|136|148|160|formula = 16+4 per level up to 6, then+8 per level up to 12, and then+12 per level up to 18}}|magic damage}} {{as|(+ 50% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}},{{ft|increased by 150% against [[structures]].|increased to {{as|{{passive progression/deprecated version|18|50|60|70|80|90|100|120|140|160|180|200|220|250|280|310|340|370|400|formula = 40+10 per level up to 6, then+20 per level up to 12, and then+30 per level up to 18}}|magic damage}} {{as|(+ 125% AP)}} against [[structures]].}}",
+        "{{sbc|Innate:}} '''Ziggs' ''' [[basic attack]] is periodically empowered to deal {{as|{{passive progression/deprecated version|18|20|24|28|32|36|40|48|56|64|72|80|88|100|112|124|136|148|160|formula = 16+4 per level up to 6, then+8 per level up to 12, and then+12 per level up to 18}}|magic damage}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}},{{ft|increased by 150% against [[structures]].|increased to {{as|{{passive progression/deprecated version|18|50|60|70|80|90|100|120|140|160|180|200|220|250|280|310|340|370|400|formula = 40+10 per level up to 6, then+20 per level up to 12, and then+30 per level up to 18}}|magic damage}} {{as|(+ 125% AP)}} against [[structures]].}}",
         "'''Ziggs''' reduces ''Short Fuse's'' {{sti|cooldown}} by {{passive progression/deprecated version|3|showtype=true|4 to 6|1 to 13}} seconds whenever he uses an [[Champion ability|ability]]."
       ],
       "notes": "* {{Pending for test}}: ''Short Fuse's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
@@ -91,14 +91,14 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": "{{tt|850|Minimum cast range}} / {{tt|1400|Maximum cast range}}",
       "image": {
         "full": "ZiggsQ.png",
-        "sprite": "spell14.png",
+        "sprite": "spell15.png",
         "group": "spell",
-        "x": 384,
-        "y": 144,
+        "x": 96,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -107,7 +107,7 @@
         "The bomb's explosion deals {{as|magic damage}} to all nearby enemies.",
         "''Bouncing Bomb'' will cast at max range if cast beyond that."
       ],
-      "notes": "* ''Bouncing Bomb'' obeys game physics (can be thrown or bounce over units/terrain if there is sufficient air time).\n* ''Bouncing Bomb'' may go over enemies without exploding (will do so if it lands against walls).\n* {{tip|Spell shield}} can block both the bomb's impact and its explosion (blocking the former will not prevent the latter).\n* '''Ziggs''' will always throw the bomb from his position.",
+      "notes": "* ''Bouncing Bomb'' obeys game physics (can be thrown or bounce over units/terrain if there is sufficient air time).\n* ''Bouncing Bomb'' may go over enemies without exploding (will do so if it lands against walls).\n* {{tip|Spell shield}} can block both the bomb's impact and its explosion (blocking the former will block but not prevent the latter).\n* '''Ziggs''' will always throw the bomb from his position.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/55/60/65/70",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 65% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['85','130','175','220','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +135,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['85','130','175','220','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+              "<SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
             ]
           },
           "subeffects": [
@@ -152,7 +152,7 @@
                 "player_total_ap": 0.65
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['85','130','175','220','265']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "str": "<SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -178,14 +178,14 @@
         65
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
       "target_range": 1000,
       "image": {
         "full": "ZiggsW.png",
-        "sprite": "spell14.png",
+        "sprite": "spell15.png",
         "group": "spell",
-        "x": 432,
-        "y": 144,
+        "x": 144,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -196,7 +196,7 @@
         "{{sbc|Recast:}} '''Ziggs''' detonates ''Satchel Charge'' early. If recast while in flight, the ability will detonate immediately upon landing.",
         "'''Ziggs''' does not {{tip|dash}} if he is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}}."
       ],
-      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* ''Satchel Charge's'' distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it.\n* '''Ziggs''' will not ''dash'' from ''Satchel Charge's'' detonation while {{si|Teleport|teleporting}} but he will while {{si|Recall|recalling}}.",
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* ''Satchel Charge's'' distance increases with proximity to the charge, resulting in being knocked straight up when aligned directly on top of it.\n* '''Ziggs''' will not ''dash'' from ''Satchel Charge's'' detonation while {{si|Teleport|Teleporting}} but he will while {{si|Recall|Recalling}}.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "65",
@@ -204,7 +204,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -224,7 +224,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -241,50 +241,51 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Demolition Threshold|{{as|{{ap|25 to 35}}% of turret's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Demolition Threshold</span>: <span><span class=\"health\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of turret's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Demolition Threshold</span>: <span><span class=\"health\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of turret's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                25,
+                27.5,
+                30,
+                32.5,
+                35
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_hp": [
-                  0.25,
-                  0.275,
-                  0.3,
-                  0.325,
-                  0.35
-                ]
+                "player_total_hp": null
               }
             ],
             "st_slices": [
               "Demolition Threshold",
-              "<span class=\"health\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of turret's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of turret's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_hp": [
-                  0.25,
-                  0.275,
-                  0.3,
-                  0.325,
-                  0.35
-                ]
+                "base_progression": [
+                  25,
+                  27.5,
+                  30,
+                  32.5,
+                  35
+                ],
+                "player_total_hp": null
               },
               "title": "Demolition Threshold",
-              "str": "<span class=\"health\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>% of turret's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of turret's '''maximum''' health</span>",
               "damage_type": "none"
             }
           ]
@@ -310,13 +311,13 @@
         110
       ],
       "costtype": "mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 900,
       "image": {
         "full": "ZiggsE.png",
         "sprite": "spell15.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
@@ -333,7 +334,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Slow|{{ap|30 to 50}}%}}\n{{st|Magic Damage Per Mine|{{ap|40 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Additional Magic Damage|{{ap|40*0.4 to 180*0.4}} {{as|(+ 12% AP)}}|Total Single-Target Damage|{{ap|40*(1+0.4*10) to 180*(1+0.4*10)}} {{as|(+ 150% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Mine</span>: <span><spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><spell-span :list=\"['16','30','44','58','72']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['200','375','550','725','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Magic Damage Per Mine</span>: <span><SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><SpellSpan :list=\"[16,30,44,58,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 12% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[200,375,550,725,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -380,9 +381,9 @@
             ],
             "st_slices": [
               "Additional Magic Damage",
-              "<spell-span :list=\"['16','30','44','58','72']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span>",
+              "<SpellSpan :list=\"[16,30,44,58,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 12% AP)</span>",
               "Total Single-Target Damage",
-              "<spell-span :list=\"['200','375','550','725','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>"
+              "<SpellSpan :list=\"[200,375,550,725,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
             ]
           },
           "subeffects": [
@@ -399,7 +400,7 @@
                 "player_total_ap": 0.12
               },
               "title": "Additional Magic Damage",
-              "str": "<spell-span :list=\"['16','30','44','58','72']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 12% AP)</span>",
+              "str": "<SpellSpan :list=\"[16,30,44,58,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 12% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -415,7 +416,7 @@
                 "player_total_ap": 0.12
               },
               "title": "Total Single-Target Damage",
-              "str": "<spell-span :list=\"['200','375','550','725','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 150% AP)</span>",
+              "str": "<SpellSpan :list=\"[200,375,550,725,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -437,22 +438,22 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 5000,
       "image": {
         "full": "ZiggsR.png",
         "sprite": "spell15.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ziggs''' deploys his ultimate creation, the [[File:Mega Inferno Bomb Minimap.png|20px|link=]] ''Mega Inferno Bomb'', hurling it to the target area, granting {{tip|sight}} within a 350 unit radius as it travels.",
-        "Upon reaching the target area, it explodes, dealing {{as|magic damage}} to all enemies caught in the blast, increased by 50% in the epicenter."
+        "{{sbc|Active:}} '''Ziggs''' hurls a massive bomb at the target area, granting {{tip|sight}} within a 350 unit radius as it travels to its destination.",
+        "Upon reaching the location, it explodes, dealing {{as|magic damage}} to all enemies caught in the blast, increased by 50% in the epicenter."
       ],
-      "notes": "* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts from maximum range (reduced to 2 seconds when casting point blank).\n* {{pending for test}}: {{ai|Unbreakable|Braum}} can intercept the ability at a certain angle.",
+      "notes": "* Allies cannot see ''Mega Inferno Bomb's'' area indicator until shortly before the blast.\n* ''Mega Inferno Bomb'' takes {{fd|3.5}} seconds to land when ''Ziggs'' casts at maximum range (reduced to {{fd|1.65}} seconds when casting within {{tt|2000|Estimated}} units).\n** When cast within 2000 units, ''Mega Inferno Bomb'' has a fixed travel time. Beyond that, the travel time is equal to the cast distance divided by the now-fixed missile speed.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -460,7 +461,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|200 to 400}} {{as|(+ {{fd|73.3{{Recurring|3}}}}% AP)}}|Increased Damage|{{ap|200*1.5 to 400*1.5}} {{as|(+ 110% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Increased Damage</span>: <span><spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 110% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,250,300,350,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Increased Damage</span>: <span><SpellSpan :list=\"[300,375,450,525,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 110% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -490,9 +491,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+              "<SpellSpan :list=\"[200,250,300,350,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
               "Increased Damage",
-              "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 110% AP)</span>"
+              "<SpellSpan :list=\"[300,375,450,525,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 110% AP)</span>"
             ]
           },
           "subeffects": [
@@ -509,7 +510,7 @@
                 "player_total_ap": 1.1
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['200','250','300','350','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[200,250,300,350,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.3<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -525,7 +526,7 @@
                 "player_total_ap": 1.1
               },
               "title": "Increased Damage",
-              "str": "<spell-span :list=\"['300','375','450','525','600']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 110% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,375,450,525,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 110% AP)</span>",
               "damage_type": "unknown"
             }
           ]

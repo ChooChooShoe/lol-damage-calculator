@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.113",
-  "changes": "10.13.1",
+  "changes": "10.18.1",
   "id": "Nocturne",
   "name": "Nocturne",
   "title": "the Eternal Nightmare",
@@ -64,8 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Nocturne's''' [[basic attack]] is periodically enhanced, dealing {{as|{{sti|20% AD}}}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to his target and {{as|{{sti|120% AD}}}} {{as|physical damage}} to surrounding enemies, while also {{tip|healing}} himself for {{passive progression/deprecated version|15 to 40}} {{as|(+ 15% AP)}} per enemy hit.",
-        "''Umbra Blades's'' damage to the primary target can {{tip|critical strike|critically strike}} for {{as|{{critical damage||10}} {{sti|AD}}}} {{as|'''bonus''' physical damage}}.",
+        "{{sbc|Innate:}} '''Nocturne's''' [[basic attack]] is periodically enhanced, dealing {{as|20% AD}} {{as|'''bonus''' physical damage}} to his target and {{as|120% AD}} {{as|physical damage}} to surrounding enemies, while also {{tip|healing}} himself for {{passive progression/deprecated version|15 to 40}} {{as|(+ 15% AP)}} per enemy hit.",
+        "''Umbra Blades's'' damage to the primary target can {{tip|critical strike|critically strike}} for{{ft|{{as|220% (+ {{ii|Infinity Edge|icononly = true}} {{fd|27.5}}%) {{as|AD}} physical damage}}.|110% of the {{sti|{{as|critical damage}}}} of his basic attacks.}}",
         "Basic attacks reduce ''Umbra Blades' '' {{sti|cooldown}} by 1 second, increased to 3 seconds against {{tip|monsters}} and enemy {{tip|champions}}."
       ],
       "notes": "* Basic attacks against structures will reduce ''Umbra Blades' ''cooldown but will not trigger the {{tip|splash damage}}.\n* The enhanced attack will apply other [[on-hit effect]]s (only to main target) and can {{tip|critical strike|critically strike}} as normal.\n* {{Pending for test}}: ''Umbral Blade's'' interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
@@ -104,10 +104,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nocturne''' sends out a shadow blade in a line that leaves a ''Dusk Trail'' on its path, dealing {{as|physical damage}} to enemies it passes through and causing enemy {{tip|champion|champions}} hit to also leave a ''Dusk Trail'' behind their movement for 5 seconds.",
-        "While on the ''Dusk Trail'', '''Nocturne''' is {{tip|Ghosted|ghosted}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} and {{as|{{sti|'''bonus''' attack damage}}}}."
+        "{{sbc|Active:}} '''Nocturne''' sends out a shadow blade in a line in the target direction that leaves a ''Dusk Trail'' on its path, dealing {{as|physical damage}} to enemies it passes through and causing enemy {{tip|champion|champions}} hit to also leave a ''Dusk Trail'' behind their movement for 5 seconds.",
+        "While on the ''Dusk Trail'', '''Nocturne''' is {{tip|ghosted}} and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} and {{as|{{sti|'''bonus''' attack damage}}}}."
       ],
-      "notes": "* ''Duskbringer's Dusk Trail'' will expose the path of affected units until its duration ends. It is a form of {{tip|obscured vision}}; the trail indirectly reveals the location of units even in the fog of war, including those shrouded by {{tip|stealth}}.\n* {{tip|Spell shield}} will block the damage and also prevents the ''Dusk Trail'' from following the target.\n* The formed ''Dusk Trail'' does not disappear if ''Duskbringer'' is {{ai|Wind Wall|Yasuo|destroyed}}.\n* ''Duskbringer'' is always cast from the original casting position.",
+      "notes": "* ''Duskbringer's Dusk Trail'' will expose the path of affected units until its duration ends. It is a form of {{tip|obscured vision}}; the trail indirectly reveals the location of enemy units even in the fog of war, including those shrouded by {{tip|stealth}}.\n* {{tip|Spell shield}} will block the damage and also prevents the ''Dusk Trail'' from following the target.\n* The formed ''Dusk Trail'' does not disappear if ''Duskbringer'' is intercepted by {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}.\n* ''Duskbringer'' is always cast from the original casting position.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60/65/70/75/80",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical damage|{{ap|65 to 245}} {{as|(+ 75% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><SpellSpan :list=\"[65,110,155,200,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +135,7 @@
             ],
             "st_slices": [
               "Physical damage",
-              "<spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[65,110,155,200,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -152,14 +152,14 @@
                 "player_bonus_ad": 0.75
               },
               "title": "Physical damage",
-              "str": "<spell-span :list=\"['65','110','155','200','245']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[65,110,155,200,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Movement Speed|{{ap|15 to 35}}%}}<!--\n-->{{st|Bonus AD|{{as|{{ap|20 to 60}}|AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Movement Speed</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Movement Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -171,21 +171,21 @@
                 30,
                 35
               ],
-              null
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
             ],
             "st_slices": [
               "Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"AD\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
             ],
             "as_ratios": [
               {
-                "player_total_unknown": [
-                  0.2,
-                  0.3,
-                  0.4,
-                  0.5,
-                  0.6
-                ]
+                "player_total_unknown": 2030405060
               }
             ]
           },
@@ -200,16 +200,10 @@
                   30,
                   35
                 ],
-                "player_total_unknown": [
-                  0.2,
-                  0.3,
-                  0.4,
-                  0.5,
-                  0.6
-                ]
+                "player_total_unknown": 2030405060
               },
               "title": "Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"AD\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "none"
             }
           ]
@@ -235,7 +229,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "NocturneShroudofDarkness.png",
         "sprite": "spell8.png",
@@ -246,9 +240,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Nocturne''' empowers his blades, permanently gaining {{sti|{{as|'''bonus''' attack speed}}}}.",
+        "{{sbc|Passive:}} '''Nocturne''' permanently gains {{sti|{{as|'''bonus''' attack speed}}}}.",
         "{{sbc|Active:}} '''Nocturne''' gains a {{tip|spell shield}} for {{fd|1.5}} seconds.",
-        "Blocking an ability doubles ''Shroud of Darkness' ''passive {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds."
+        "Blocking an ability doubles ''Shroud of Darkness' ''passive {{as|'''bonus''' attack speed}} for 5 seconds."
       ],
       "notes": "* If ''Shroud of Darkness'' is active when '''Nocturne''' re-casts {{ai|Paranoia|Nocturne}} to dash to a target, it'll stay active until '''Nocturne''' reaches his target.",
       "skillkey": "W",
@@ -258,7 +252,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|30 to 50}}%|Maximum Bonus Attack Speed|{{ap|30*2 to 50*2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Maximum Bonus Attack Speed</span>: <span><spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Attack Speed</span>: <span><SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -280,9 +274,9 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "Maximum Bonus Attack Speed",
-              "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -298,7 +292,7 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             },
             {
@@ -313,7 +307,7 @@
                 ]
               },
               "title": "Maximum Bonus Attack Speed",
-              "str": "<spell-span :list=\"['60','70','80','90','100']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -352,8 +346,8 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Nocturne''' gains {{sti|ms|{{as|335 '''bonus''' movement speed}}}} when moving toward {{tip|flee|fleeing}} targets.",
-        "{{sbc|Active:}} '''Nocturne''' plants nightmares into his target's mind, dealing {{tip|magic damage|{{as|magic damage}}}} over 2 seconds and forming a {{tip|tether}} between him and his target.",
-        "If the target does not break the tether by moving out of range, they are made to {{tip|Flee|flee}} from '''Nocturne''' for a short duration while {{tip|slow|slowed}} by 90%."
+        "{{sbc|Active:}} '''Nocturne''' plants nightmares into the target enemy's mind, dealing {{as|magic damage}} to them over 2 seconds and forming a {{tip|tether}} between '''Nocturne''' and the target.",
+        "If the tether is not broken by the end of the duration, the target is made to {{tip|Flee|flee}} from '''Nocturne''' for a short duration while being {{tip|slow|slowed}} by 90%."
       ],
       "notes": "* {{tip|Spell shield}} will block the application of the tether but not the {{tip|flee|fear}} that occurs from one already present.",
       "skillkey": "E",
@@ -363,7 +357,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -383,7 +377,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -400,14 +394,14 @@
                 "player_total_ap": 1
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Fear Duration|{{ap|1.25 to 2.25}}}}",
-          "str": "<ul><li><span class=\"blue\">Fear Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Fear Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -422,7 +416,7 @@
             ],
             "st_slices": [
               "Fear Duration",
-              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -438,7 +432,7 @@
                 ]
               },
               "title": "Fear Duration",
-              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -460,7 +454,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "No Target (active) / [[Unit-targeted]] (recast)",
+      "targeting": "[[Auto-targeted|Auto]] / [[Unit-targeted|Unit]]",
       "target_range": "{{ap|2500|3250|4000}}",
       "image": {
         "full": "NocturneParanoia.png",
@@ -472,12 +466,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nocturne''' inflicts unstable terror upon all enemy champions (including {{tip|untargetable}} and dead ones), {{tip|nearsight|nearsighting}} them for 6 seconds, which reduces their {{tip|sight}} radius {{ft|to {{tt|1,030 units|Estimated}},|by {{tt|320 units|Estimated}},}} and granting him the ability to recast ''Paranoia'' for the duration at no delay.",
-        "{{sbc|Recast:}} '''Nocturne''' {{tip|dash|dashes}} {{tip|unstoppable|unstoppably}} to the target enemy {{tip|champion}}, dealing {{as|physical damage}} to them on arrival.",
+        "{{sbc|Active:}} '''Nocturne''' inflicts unstable terror upon all enemy champions (including {{tip|untargetable}} and dead ones), {{tip|nearsight|nearsighting}} them for 6 seconds, which reduces their {{tip|sight}} radius{{ft|to {{tt|1,030 units|Estimated}},|by {{tt|320 units|Estimated}},}}and granting him the ability to recast ''Paranoia'' for the duration at no delay.",
+        "{{sbc|Recast:}} '''Nocturne''' {{tip|dash|dashes}} with {{tip|displacement immunity}} to the target enemy {{tip|champion}}, dealing {{as|physical damage}} to them on arrival.",
         "If {{ai|Shroud of Darkness|Nocturne}} is active at the time of ''Paranoia's'' recast, its duration is maintained for the flight.",
         "''The nearsight persists through {{tip|death}}.''"
       ],
-      "notes": "* '''Nocturne''' can cast any of his [[champion ability|abilities]], [[summoner spell|summoner spells]], or [[active ability items|item actives]] during flight.\n** {{si|Flash}} will interrupt the dash while he is flying to his target.\n* ''Paranoia'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* '''Nocturne''' will track targets that change locations (moving, {{tip|dash|dashing}}, {{tip|blink|blinking}}) but not those that cover great distances ({{si|Recall|recalling}}, {{si|Teleport|teleporting}}) in which case he will travel to their most previous location.\n** There is a range limit in how far he can follow a moving target.\n* ''Paranoia's'' {{tip|nearsight}} will prevent an enemy {{ci|Shen}} or {{ci|Galio}} from using their ultimate abilities ({{ai|Stand United|Shen}} and {{ai|Hero's Entrance|Galio}}) on allies from afar.\n* Enemy {{tip|champion|champions}} affected by ''Paranoia'' cannot cast {{si|Teleport}} globally.\n* A [[spell indicator]] telegraphed to '''Nocturne''' and his allies will be placed on all enemy {{tip|champion|champions}} within range of ''Paranoia's'' recast while the ability is active. ''The following images display the indicator for the default [[skin]]:''\n[[File:Nocturne_Original_Paranoia_Indicator_Red.png|thumb|left|A glowing '''{{color|#8b0000|red silhouette}}''' of '''Nocturne's''' blades indicates an enemy champion can be targeted by ''Paranoia's'' recast.]]\n[[File:Nocturne Original Paranoia Indicator.png|thumb|left|A glowing '''{{color|#32CD32|green silhouette}}''' of '''Nocturne's''' blades signifies an enemy champion has been targeted by ''Paranoia's'' recast.]]",
+      "notes": "* '''Nocturne''' can cast any of his [[champion ability|abilities]], [[summoner spell|summoner spells]], or [[active ability items|item actives]] during flight.\n** Using a {{tip|dash}} or {{tip|blink}} ability will interrupt the flight.\n* ''Paranoia'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* '''Nocturne''' will track targets that change locations (e.g by simply moving, {{tip|dash|dashing}}, {{tip|blink|blinking}}) but not those that cover great distances (e.g. {{si|Recall}}, {{si|Teleport}}) in which case he will travel to their most previous location and not deal the damage.\n** There is a range limit in how far he can follow a moving target.\n* [[summoner|Players']] screens will turn a different color when ''Paranoia'' is cast, based on their perspective: blue for allies and red for enemies.\n* A [[spell indicator]] telegraphed to '''Nocturne''' and his allies will be placed on all enemy {{tip|champion|champions}} within range of ''Paranoia's'' recast while the ability is active. ''The following images display the indicator for the default [[skin]]:''\n[[File:Nocturne_Original_Paranoia_Indicator_Red.png|thumb|left|A glowing '''{{color|#8b0000|red silhouette}}''' of '''Nocturne's''' blades indicates an enemy champion can be targeted by ''Paranoia's'' recast.]]\n[[File:Nocturne Original Paranoia Indicator.png|thumb|left|A glowing '''{{color|#32CD32|green silhouette}}''' of '''Nocturne's''' blades signifies an enemy champion has been targeted by ''Paranoia's'' recast.]]",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -485,7 +479,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|150|275|400}} {{as|(+ 120% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[150,275,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -503,7 +497,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[150,275,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -518,7 +512,7 @@
                 "player_bonus_ad": 1.2
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['150','275','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[150,275,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

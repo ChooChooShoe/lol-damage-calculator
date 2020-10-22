@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "10.13.1",
+  "changes": "10.16.1",
   "id": "Jax",
   "name": "Jax",
   "title": "Grandmaster at Arms",
@@ -19,7 +19,7 @@
   "rangetype": "Melee",
   "be_cost": 1350,
   "rp_cost": 585,
-  "adaptivetype": "mixed",
+  "adaptivetype": "physical",
   "info": {
     "attack": 7,
     "defense": 5,
@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Relentless Assault",
       "maxrank": 0,
-      "targeting": "[[Passive]]",
+      "targeting": "Passive",
       "image": {
         "full": "Armsmaster_MasterOfArms.png",
         "sprite": "passive1.png",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Jax's''' [[basic attack]]s [[on-attack]] grant him {{sti|{{as|{{passive progression/deprecated version|6|key=%|3.5 to 11|1 to 16}} '''bonus''' attack speed}}}} for {{fd|2.5}} seconds, stacking up to 8 times for a maximum of {{sti|{{as|{{passive progression/deprecated version|6|key=%|28 to 88|1 to 16}} '''bonus''' attack speed}}}}.",
+        "{{sbc|Innate:}} '''Jax's''' [[basic attack]]s [[on-attack]] grant him a [[stack]] of ''Relentless Assault'' for {{fd|2.5}} seconds, stacking up to 8 times, with the duration refreshing on subsequent attacks. Each stack grants him {{sti|{{as|{{passive progression/deprecated version|6|key=%|3.5 to 11|1 to 16}} '''bonus''' attack speed}}}}, for a maximum of {{as|{{passive progression/deprecated version|6|key=%|28 to 88|1 to 16}} '''bonus''' attack speed}} at 8 stacks.",
         "[[Stack|Stacks]] are deducted one at a time every {{fd|0.25}} seconds after not attacking for {{fd|2.5}} seconds."
       ],
       "notes": "* No additional details.",
@@ -104,10 +104,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Jax''' {{tip|dashes}} to the target unit's location.",
-        "If his target is an enemy, he deals {{tip|physical damage|{{as|physical damage}}}} to them.",
+        "If the target is an enemy and they are in range upon arrival, '''Jax''' deals {{as|physical damage}} to them.",
         "'''''Jax''' will attempt to automatically basic attack his target at the end of the dash.''"
       ],
-      "notes": "* ''Leap Strike'' will damage the target enemy regardless of whether or not they remained where they were at the time of '''Jax's''' casting.\n* ''Leap Strike'' can be used on any targetable allied or enemy unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, [[jungle plants]], and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* {{tip|Spell shield}} will block the damage (including when {{ai|Empower|Jax|empowered}}) but will not prevent the dash.\n* The auto attack following the ability will not grant any stack of {{ri|Conqueror}} or {{ii|Spellthief's Edge}}.",
+      "notes": "* ''Leap Strike'' can be used on any targetable allied or enemy unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, [[jungle plants]], and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* {{tip|Spell shield}} will block the damage (including when {{ai|Empower|Jax|empowered}}) but will not prevent the dash.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|65 to 225}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['65','105','145','185','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[65,105,145,185,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -138,7 +138,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['65','105','145','185','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[65,105,145,185,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -156,7 +156,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['65','105','145','185','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[65,105,145,185,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "physical"
             }
           ]
@@ -182,7 +182,7 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "JaxEmpowerTwo.png",
         "sprite": "spell4.png",
@@ -193,7 +193,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Jax's''' next [[basic attack]] on non-{{tip|turrets|structures}} or {{ai|Leap Strike|Jax}} within 10 seconds deals {{tip|magic damage|{{as|'''bonus''' magic damage}}}}. If ''Empower'' is used on a basic attack, it will have {{sti|range|50 '''bonus''' range}}.",
+        "{{sbc|Active:}} '''Jax's''' next [[basic attack]] on non-{{tip|turrets|structures}} or {{ai|Leap Strike|Jax}} if used on an enemy within 10 seconds deals {{as|'''bonus''' magic damage}}. If ''Empower'' is used on a basic attack, it will gain {{sti|range|50 '''bonus''' range}}.",
         "''Empower'' {{tip|basic attack reset|resets}} '''Jax's''' basic attack timer."
       ],
       "notes": "* ''Empower's'' bonus damage will cause {{iis|Muramana}} to trigger twice with a single basic attack.\n* {{tip|Spell shield}} will only negate the bonus damage.",
@@ -204,7 +204,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 180}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -224,7 +224,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -241,7 +241,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['40','75','110','145','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -267,7 +267,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "JaxCounterStrike.png",
         "sprite": "spell4.png",
@@ -290,7 +290,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Minimum Physical Damage|{{ap|55 to 155}} {{as|(+ 50% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|55*2 to 155*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['110','160','210','260','310']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><SpellSpan :list=\"[55,80,105,130,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><SpellSpan :list=\"[110,160,210,260,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -320,9 +320,9 @@
             ],
             "st_slices": [
               "Minimum Physical Damage",
-              "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[55,80,105,130,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "Maximum Physical Damage",
-              "<spell-span :list=\"['110','160','210','260','310']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[110,160,210,260,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -339,7 +339,7 @@
                 "player_bonus_ad": 0.5
               },
               "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['55','80','105','130','155']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[55,80,105,130,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -355,7 +355,7 @@
                 "player_bonus_ad": 0.5
               },
               "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['110','160','210','260','310']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[110,160,210,260,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -375,7 +375,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "JaxRelentlessAssault.png",
         "sprite": "spell4.png",
@@ -386,10 +386,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Jax's''' [[basic attacks]] [[on-hit]] grant a stack for {{fd|2.5}} seconds. At 2 stacks, '''Jax's''' next basic attack on-hit deals {{as|'''bonus''' magic damage}}, consuming all stacks.",
+        "{{sbc|Passive:}} '''Jax's''' [[basic attacks]] [[on-hit]] grant a stack for {{fd|2.5}} seconds, stacking up to 2 times, and refreshing the duration on subsequent attacks. At 2 stacks, '''Jax's''' next basic attack on-hit consumes the stacks to deal {{as|'''bonus''' magic damage}}.",
         "{{sbc|Active:}} '''Jax''' gains '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}} for 8 seconds."
       ],
-      "notes": "* The {{as|'''bonus''' magic damage}} can be {{ai|Counter Strike|Jax|dodged}} and {{ai|Spirit's Refuge|Shen|blocked}} but it cannot {{tip|blind|miss}}.\n* The empowered attack does not activate against [[structures]] and [[ward]]s.\n* ''Grandmaster's Might's'' bonus resistances are calculated both on-cast and will update dynamically {{tt|every {{fd|0.25}}|on every 'update frame', the first update to adjust the stats again post-activation is therefore at a variable time ≤ 0.25 after cast, and all further ones in 0.25s intervals again}} seconds over the duration.\n* {{tip|Spell shield}} will only block the bonus damage from the third attack if it is {{ai|Empower|Jax|empowered}}.",
+      "notes": "* The {{as|'''bonus''' magic damage}} can be {{ai|Counter Strike|Jax|dodged}} and {{ai|Spirit's Refuge|Shen|blocked}} but it cannot {{tip|blind|miss}}.\n* The empowered attack at 2 stacks does not activate against [[structures]] and [[ward]]s, thus not consuming the stacks.\n* ''Grandmaster's Might's'' bonus resistances are calculated both on-cast and will update dynamically {{tt|every {{fd|0.25}}|on every 'update frame', the first update to adjust the stats again post-activation is therefore at a variable time ≤ 0.25 after cast, and all further ones in 0.25s intervals again}} seconds over the duration.\n* {{tip|Spell shield}} will only block the bonus damage from the third attack if it is {{ai|Empower|Jax|empowered}}.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -397,7 +397,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|100|140|180}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -415,7 +415,7 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<spell-span :list=\"['100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -430,14 +430,14 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic damage",
-              "str": "<spell-span :list=\"['100','140','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Armor|{{ap|30|50|70}} {{as|(+ 50% '''bonus''' AD)}}}}\n{{st|Bonus Magic Resistance|{{ap|30|50|70}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span><spell-span :list=\"['30','50','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><spell-span :list=\"['30','50','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span><SpellSpan :list=\"[30,50,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><SpellSpan :list=\"[30,50,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -463,7 +463,7 @@
             ],
             "st_slices": [
               "Bonus Magic Resistance",
-              "<spell-span :list=\"['30','50','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -479,7 +479,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Bonus Magic Resistance",
-              "str": "<spell-span :list=\"['30','50','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "none"
             }
           ]

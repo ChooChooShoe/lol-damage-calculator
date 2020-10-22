@@ -1,6 +1,6 @@
 {
   "patch": "V7.8",
-  "changes": "10.15.1",
+  "changes": "10.21.1",
   "id": "Rakan",
   "name": "Rakan",
   "title": "The Charmer",
@@ -68,7 +68,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 900,
       "image": {
         "full": "RakanQ.png",
@@ -80,11 +80,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Rakan''' slings an enchanted feather forward, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
+        "{{sbc|Active:}} '''Rakan''' slings an enchanted feather in the target direction, dealing {{as|magic damage}} to the first enemy hit.",
         "If the target was an enemy {{tip|champion}} or {{tip|monster|epic monster}}, an area is marked around '''Rakan'''.",
         "After 3 seconds or if an ally champion comes within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allies for {{passive progression/deprecated version|18 to 120}} {{as|(+ 70% AP)}}."
       ],
-      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* {{tip|Spell shield}} will not prevent the marked area from being formed.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.\n* ''Gleaming Quill'' will cast from wherever '''Rakan''' is at the end of the cast time.",
+      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* {{tip|Spell shield}} will not prevent the marked area from being formed.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.\n* ''Gleaming Quill'' will cast from wherever '''Rakan''' is at the end of the cast time.\n* The heal will trigger and affect '''Rakan''' even if he is {{tip|untargetable}}.\n** {{Pending for test}}: Allies",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -92,7 +92,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -112,7 +112,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -129,7 +129,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -155,7 +155,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 600,
       "image": {
         "full": "RakanW.png",
@@ -180,7 +180,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 290}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,125,180,235,290]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -200,7 +200,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[70,125,180,235,290]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -217,7 +217,7 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','125','180','235','290']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,125,180,235,290]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -239,7 +239,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "RakanR.png",
         "sprite": "spell9.png",
@@ -263,7 +263,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|100|200|300}} {{as|(+ 50% AP)}}}}\n{{st|Charm Duration|{{ap|1|1.25|1.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','200','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Charm Duration</span>: <span><spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,200,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -286,7 +286,7 @@
             ],
             "st_slices": [
               "Charm Duration",
-              "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -301,7 +301,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Charm Duration",
-              "str": "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]

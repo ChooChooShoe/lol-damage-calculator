@@ -104,8 +104,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kalista''' hurls a fast and narrow spear in the target direction, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy hit.",
-        "If ''Pierce'' kills its target, the spear continues onward, transferring all of the dead victim's {{ai|Rend|Kalista}} stacks to the next enemy it hits. This can repeat indefinitely until the spear reaches its maximum distance."
+        "{{sbc|Active:}} '''Kalista''' hurls a spear in the target direction that deals {{as|physical damage}} to the first enemy hit.",
+        "If ''Pierce'' kills its target the spear continues onward transferring all of the dead victim's {{ai|Rend|Kalista}} stacks to the next enemy it hits. This can repeat indefinitely until the spear reaches its maximum range."
       ],
       "notes": "* ''Pierce'' will cast from wherever '''Kalista''' is at the end of the cast time.",
       "skillkey": "Q",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|20 to 280}} {{as|(+ 100% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,85,150,215,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +135,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>"
+              "<SpellSpan :list=\"[20,85,150,215,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
             ]
           },
           "subeffects": [
@@ -152,7 +152,7 @@
                 "player_total_ad": 1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['20','85','150','215','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% AD)</span>",
+              "str": "<SpellSpan :list=\"[20,85,150,215,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -178,7 +178,7 @@
         0
       ],
       "costtype": "",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": "{{tt|1400|Minimum range}} / {{tt|5000|Maximum range}}",
       "image": {
         "full": "KalistaW.png",
@@ -191,11 +191,11 @@
       },
       "description": [
         "{{sbc|Passive - Soul-Marked:}} While '''Kalista''' and her {{ii|The Black Spear|Oathsworn}} are linked, their basic attacks and {{ai|Pierce|Kalista}} apply a ''Soul-Mark'' to their targets.",
-        "If both ''Soul-Marks'' are applied within 4 seconds, the target takes {{tip|magic damage|{{as|'''bonus''' magic damage}}}} (capped against non-champions), and cannot be ''Soul-Marked'' for 10 seconds. ''Soul-Mark'' deals 75 minimum damage to {{tip|minions}} and executes them if they're below {{as|{{sti|health|125 health}}}}. '''Kalista''' applies the damage {{tip|on-attack}} while the ''Oathsworn's'' damage occurs {{tip|on-hit}}.",
+        "If both ''Soul-Marks'' are applied within 4 seconds, the target takes {{as|'''bonus''' magic damage}} (capped against non-champions), and cannot be ''Soul-Marked'' for 10 seconds. ''Soul-Mark'' deals 75 minimum damage to {{tip|minions}} and executes them if they're below {{as|{{sti|health|125 health}}}}. '''Kalista''' applies the damage {{tip|on-attack}} while the ''Oathsworn's'' damage occurs {{tip|on-hit}}.",
         "{{sbc|Passive:}} '''Kalista''' periodically [[stock]]s a ''Sentinel'' charge, up to a maximum of 2.",
         "{{sbc|Active:}} '''Kalista''' summons a ''Sentinel'' to {{tip|sight|patrol}} along the area in the target direction."
       ],
-      "notes": "<!-- If pierce kills the target by soul-marked added damage, will it continue? -->\n* ''Soul-Marked's'' bonus damage is credited to '''Kalista''' and will benefit from both her {{sti|magic penetration|{{as|magic penetration}}}} and [[spell effects]].\n** If her {{ii|The Black Spear|Oathsworn}} ally scores a kill using ''Soul-Marked's'' bonus damage they will get a message stating 'Kill Secured' in place of the usual gold pop-up (the gold itself is credited to '''Kalista''').\n* The ''Sentinel's'' {{tip|sight}} reveal on enemy {{tip|champion|champions}} is accredited for [[assist|assists]] and potentially [[kill|kills]] (if they die shortly after being spotted).\n** It does not reveal {{tip|stealth|stealthed}} targets.\n* ''Sentinel'' will cast from wherever '''Kalista''' is at the end of the cast time.\n* {{Pending for test}}: ''Soul Mark's'' interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* ''Soul-Marked's'' bonus damage is credited to '''Kalista''' and will benefit from both her {{sti|magic penetration|{{as|magic penetration}}}} and [[spell effects]].\n** If her {{ii|The Black Spear|Oathsworn}} ally scores a kill using ''Soul-Marked's'' bonus damage they will get a message stating 'Kill Secured' in place of the usual gold pop-up (the gold itself is credited to '''Kalista''').\n* The ''Sentinel's'' {{tip|sight}} reveal on enemy {{tip|champion|champions}} is accredited for [[assist|assists]] and potentially [[kill|kills]] (if they die shortly after being spotted).\n** It does not reveal {{tip|stealth|stealthed}} targets.\n* ''Sentinel'' will cast from wherever '''Kalista''' is at the end of the cast time.\n* {{Pending for test}}: ''Soul Mark's'' interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).\n* {{pending for test}} If ''Pierce'' kills the target by ''Soul-Mark's'' additional damage, it will/will not continue.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -203,7 +203,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{as|{{ap|14 to 18}}% of target's '''maximum''' health}}|Maximum Non-Champion Damage|{{ap|100 to 200}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['14','15','16','17','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[14,15,16,17,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[100,125,150,175,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -215,24 +215,24 @@
                 17,
                 18
               ],
-              null
+              [
+                100,
+                125,
+                150,
+                175,
+                200
+              ]
             ],
             "as_ratios": [
               {
-                "target_total_hp": [
-                  1,
-                  1.25,
-                  1.5,
-                  1.75,
-                  2
-                ]
+                "target_total_hp": 14151617.18
               }
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<span class=\"health\"><spell-span :list=\"['14','15','16','17','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[14,15,16,17,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>",
               "Maximum Non-Champion Damage",
-              "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[100,125,150,175,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -246,31 +246,26 @@
                   17,
                   18
                 ],
-                "target_total_hp": [
-                  1,
-                  1.25,
-                  1.5,
-                  1.75,
-                  2
-                ]
+                "target_total_hp": 14151617.18
               },
               "title": "Bonus Magic Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['14','15','16','17','18']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[14,15,16,17,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>",
               "damage_type": "magic"
             },
             {
               "index": 1,
               "ratios": {
-                "target_total_hp": [
-                  1,
-                  1.25,
-                  1.5,
-                  1.75,
-                  2
-                ]
+                "base_damage": [
+                  100,
+                  125,
+                  150,
+                  175,
+                  200
+                ],
+                "target_total_hp": 14151617.18
               },
               "title": "Maximum Non-Champion Damage",
-              "str": "<spell-span :list=\"['100','125','150','175','200']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[100,125,150,175,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
@@ -307,12 +302,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Kalista's''' basic attacks on-hit and {{ai|Pierce|Kalista}} each lodge a spear in the target for 4 seconds, stacking up to 254 times.",
-        "{{sbc|Active:}} '''Kalista''' rips all lodged spears from nearby enemies, dealing {{as|physical damage}} and {{tip|slow|slowing}} them for 2 seconds. The damage is increased with additional spears, but with reduced efficiency. ''Rend'' deals 50% reduced damage against epic {{tip|monsters}}.",
-        "''Rend'' resets its {{sti|cooldown}} and refunds {{sti|{{as|mana}}}} if it kills at least one target within a very brief time.",
-        "''There must be at least one lodged spear nearby for Rend to be cast. In-flight spears at time of cast will empower to apply Rend's damage to their targets. If an empowered spear kills a target, Rend's refunds will still apply.''"
+        "{{sbc|Passive:}} '''Kalista's''' basic attacks {{tip|on-hit}} and {{ai|Pierce|Kalista}} lodge a spear into their target for 4 seconds, [[stack]]ing up to 254 times, with the duration refreshing on subsequent attacks and hits of {{ai|Pierce|Kalista}}.",
+        "{{sbc|Active:}} '''Kalista''' rips all lodged spears from valid nearby enemies, consuming their stacks to deal them {{as|physical damage}} and {{tip|slow}} them for 2 seconds. The damage is increased with additional spears, but with reduced efficiency. ''Rend'' deals 50% reduced damage against epic {{tip|monsters}}.",
+        "''Rend'' resets its {{sti|cooldown}} and refunds {{sti|{{as|mana}}}} if it [[kill]]s at least one target.",
+        "''There must be at least one valid target nearby for Rend to be cast.''",
+        "''Rend'' can be used during the dash of {{ai|Martial Poise|Kalista}} and the cast time of {{ai|Pierce|Kalista}}. In-flight spears and {{ai|Pierce|Kalista}} if in cast will be empowered to apply ''Rend's'' effects to their targets. These empowered spears can also trigger ''Rend's'' refund."
       ],
-      "notes": "* ''Rend'' at maximum stacks will deal a total of {{as|{{ap|(20 to 60)+(10+3*(x-1)+x*(x-1)/2)*253}}|physical damage}} {{as|(+ {{ap|60*(1+0.33*253)|60*(1+0.3958*253) to 60*(1+0.5833*253) 4}}% AD)}} {{as|physical damage}}.\n* The cooldown will not reset if the target is protected by {{tip|resurrection}} effects.\n* If ''Rend'' is used against {{ci|Sion}} under the effects of {{ai|Glory in Death|Sion}}, the cooldown will reset even if it does not kill him.\n* {{Pending for test}}: ''Rend's'' spear stack on-hit interaction with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* ''Rend'' at maximum stacks will deal a total of {{as|{{ap|(20 to 60)+(10+3*(x-1)+x*(x-1)/2)*253}}|physical damage}} {{as|(+ {{ap|60*(1+0.33*253)|60*(1+0.3958*253) to 60*(1+0.5833*253) 4}}% AD)}} {{as|physical damage}}.\n* ''Rend'' cannot activate on {{tip|untargetable}} enemies.\n* ''Rend'' applies its effects instantly on cast.\n* The cooldown will not reset if the target is protected by {{tip|resurrection}} effects.\n* If ''Rend'' is used against {{ci|Sion}} under the effects of {{ai|Glory in Death|Sion}}, the cooldown will reset even if it does not kill him.\n* A stack is not applied if the attack is {{tip|dodge|dodged}}, {{tip|block|blocked}} or missed while '''Kalista''' is {{tip|blind|blinded}}. \n* {{Pending for test}}: {{ai|Pierce|Kalista}} does not apply a stack of ''Rend'' if blocked by {{tip|spell shield}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30",
@@ -320,7 +316,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|20 to 60}} {{as|(+ 60% AD)}}|Damage per Additional Spear|{{ap|10+3*(x-1)+x*(x-1)/2}} {{as|(+ {{ap|60*0.33|60*0.3958 to 60*0.5833 4}}% AD)}}}}\n{{st|Slow|{{ap|10 to 42}}%}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span></span></li><li><span class=\"blue\">Damage per Additional Spear</span>: <span><simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['10','18','26','34','42']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span></span></li><li><span class=\"blue\">Damage per Additional Spear</span>: <span><simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[19.8,23.748,27.498,31.248,34.998]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[10,18,26,34,42]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -339,27 +335,27 @@
                 31.248,
                 34.998
               ],
-              null
+              [
+                10,
+                18,
+                26,
+                34,
+                42
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ad": 0.6
               },
               {
-                "player_total_ad": [
-                  0.1,
-                  0.18,
-                  0.26,
-                  0.34,
-                  0.42
-                ]
+                "player_total_ad": null
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span>",
+              "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
               "Damage per Additional Spear",
-              "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[19.8,23.748,27.498,31.248,34.998]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -376,7 +372,7 @@
                 "player_total_ad": 0.6
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 60% AD)</span>",
+              "str": "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -392,14 +388,14 @@
                 "player_total_ad": 0.6
               },
               "title": "Damage per Additional Spear",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['19.8','23.748','27.498','31.248','34.998']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap 10+3*(x-1)+x*(x-1)/2\">Error: SyntaxError: Unexpected token '*'</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[19.8,23.748,27.498,31.248,34.998]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Mana Refund|{{ap|10 to 30}}}}",
-          "str": "<ul><li><span class=\"blue\">Mana Refund</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Mana Refund</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -414,7 +410,7 @@
             ],
             "st_slices": [
               "Mana Refund",
-              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -430,7 +426,7 @@
                 ]
               },
               "title": "Mana Refund",
-              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -464,10 +460,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kalista''' invokes her {{ii|The Black Spear|link}}, retrieving her ''Oathsworn'' and {{tip|cleanse|cleansing}} them from all {{tip|crowd control}} while rendering them {{tip|invulnerable}}, {{tip|untargetable}}, {{tip|silence|silenced}}, and unable to move for 4 seconds.",
-        "'''Kalista's''' ''Oathsworn'' can {{tip|dash|emerge}} to a target location, stopping at the first enemy {{tip|champion}} hit, {{tip|airborne|knocking up}} all surrounding enemies and landing themselves at their {{sti|attack range|basic attack range}} relative to the target hit."
+        "{{sbc|Active:}} '''Kalista''' invokes her {{ii|The Black Spear|link}}, retrieving and dragging her ''Oathsworn'' to her over 1 second and {{tip|cleanse|cleansing}} them from all {{tip|crowd control}} while rendering them {{tip|invulnerable}} and {{tip|untargetable}} for 4 seconds.",
+        "'''Kalista's''' ''Oathsworn'' can {{tip|dash}} with {{tip|displacement immunity}} to a target location during this time, and automatically does so at the end of the duration, ending ''Fate's Call's'' effects and stopping at the first enemy {{tip|champion}} hit, {{tip|airborne|knocking up}} all surrounding enemies and landing themselves at their {{sti|attack range|basic attack range}} relative to the target hit.",
+        "''The Oathsworn {{tip|vanish|vanishes}} upon retrieval and remains so until they have emerged, and is also {{tip|silence|silenced}} and unable to perform movement or attack commands during the entire effect.''"
       ],
-      "notes": "* The following will defer ''Fate's Call's'' effects at the time of cast to the end of ''their duration'' if the ''Oathsworn'' is:\n** In [[Channel#Casting Times|cast time]].\n** {{tip|Channel|Channeling}} (with the exception of {{si|Recall}}).\n*** ''Fate's Call'' cannot be cast if it is one of a select few [[Channel#Movement Channels|movement channels]].\n** {{tip|Unstoppable}}.\n** Performing {{ai|Chaaaaaaaarge!!!|Kled}} or {{ai|Umbral Trespass|Kayn}}. {{tt|*|These abilities are special cased to not be invoked. This is not complete, others are pending for test.}}\n* ''Fate's Call'' will pull the ''Oathsworn'' even if they are {{tip|untargetable}}.\n* ''Fate's Call'' is disabled if the ''Oathsworn'' is {{tip|resurrection|resurrecting}}.\n* ''Fate's Call'' will not interrupt the ''Oathsworn'' if they are {{tip|dash|dashing}}, they are dragged once the dash ends.\n* ''Fate's Call'' can be used even if the ''Oathsworn'' is in a {{tip|zombie state}}.\n* The ''Oathsworn'' being held is represented by a light over '''Kalista's''' head.\n* '''Kalista's''' [[death]] does not cancel ''Fate's Call''.",
+      "notes": "* The following will defer ''Fate's Call's'' effects at the time of cast to the end of ''their duration'' if the ''Oathsworn'' is:\n** In a [[Channel#Casting Times|cast time]].\n** {{tip|Channel|Channeling}}.\n*** ''Fate's Call'' will not defer by the following channels: {{si|Recall}}, {{ai|Abyssal Voyage|Tahm Kench}} (first channel), {{ai|Defiant Dance|Irelia}}, {{ai|Realm Warp|Ryze}}, and {{ai|The Culling|Lucian}}.\n*** ''Fate's Call'' cannot be cast during the following channels: {{si|Teleport}}, {{ai|Abyssal Voyage|Tahm Kench}} (second channel), {{ai|Gate|Twisted Fate}}, {{ai|Grand Starfall|Pantheon}}, {{ai|Hero's Entrance|Galio}} and {{ai|Stand United|Shen}}.\n** {{tip|Displacement immune}}.\n** Performing {{ai|Chaaaaaaaarge!!!|Kled}}, {{ai|Stormbringer|Volibear}}, {{ai|The Darkin Scythe|Kayn|Transformation}}, or {{ai|Umbral Trespass|Kayn}}. {{tt|*|These abilities are special cased to not be invoked. This is not complete, others are pending for test.}}\n* ''Fate's Call'' will not drag the ''Oathsworn'' if they are {{tip|dash|dashing}} but they will be retrieved after 1 second regardless.\n* ''Fate's Call'' will pull the ''Oathsworn'' even if they are {{tip|untargetable}}.\n* ''Fate's Call'' is disabled if the ''Oathsworn'' is {{tip|resurrection|resurrecting}}.\n* ''Fate's Call'' can be used even if the ''Oathsworn'' is in a {{tip|zombie state}}.\n* The ''Oathsworn'' being held is represented by a light over '''Kalista's''' head.\n* '''Kalista's''' [[death]] does not cancel ''Fate's Call''.\n* ''Fate&#39;s Call'' cannot be cast without the ''Oathsworn'' nearby.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -475,7 +472,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Knockup Duration|{{ap|1.5|1.75|2}}}}",
-          "str": "<ul><li><span class=\"blue\">Knockup Duration</span>: <span><spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Knockup Duration</span>: <span><SpellSpan :list=\"[1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -488,7 +485,7 @@
             ],
             "st_slices": [
               "Knockup Duration",
-              "<spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -502,7 +499,7 @@
                 ]
               },
               "title": "Knockup Duration",
-              "str": "<spell-span :list=\"['1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]

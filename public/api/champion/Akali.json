@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.85",
-  "changes": "10.13.1",
+  "changes": "10.19.1",
   "id": "Akali",
   "name": "Akali",
   "title": "the Rogue Assassin",
@@ -19,7 +19,7 @@
   "rangetype": "Melee",
   "be_cost": 3150,
   "rp_cost": 790,
-  "adaptivetype": "mixed",
+  "adaptivetype": "physical",
   "info": {
     "attack": 5,
     "defense": 3,
@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Assassin's Mark",
       "maxrank": 0,
-      "targeting": "[[Passive]]",
+      "targeting": "Passive",
       "image": {
         "full": "Akali_P.png",
         "sprite": "passive0.png",
@@ -64,11 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Akali's''' [[ability damage]] against enemy {{tip|champions}} creates a ring around them for 4 seconds and grants her {{sti|ms|{{as|{{passive progression/deprecated version|4|key=%|40 to 70|1 to 16}} '''bonus''' movement speed}}}} for 2 seconds while moving away from them.",
-        "If '''Akali''' leaves the ring within its duration, she regains the {{sti|ms|{{as|'''bonus''' movement speed}}}} towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds.",
-        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack's {{sti|range}} is doubled, deals {{pp|39+3*(x-1) for 8;then +9*x for 5; then + 15*x|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 50% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} and restores {{sti|energy|{{as|{{passive progression/deprecated version|3|10 to 20|1;8;13}} energy}}}}."
+        "{{sbc|Innate:}} '''Akali's''' [[ability damage]] against enemy {{tip|champions}} creates a ring around them for 4 seconds and grants her {{as|{{passive progression/deprecated version|4|key=%|40 to 70|1 to 16}} {{sti|'''bonus''' movement speed}}}} for 2 seconds while moving away from them. Subsequent ability damage while a ring is active will only refresh its duration.",
+        "If '''Akali''' leaves the ring within its duration, she regains the {{as|'''bonus''' movement speed}} towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds.",
+        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack's {{sti|range}} is doubled, deals {{pp|39+3*(x-1) for 8;then +9*x for 5; then + 15*x|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}} and restores {{sti|energy|{{as|{{passive progression/deprecated version|3|10 to 20|1;8;13}} energy}}}}."
       ],
-      "notes": "* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35{{times}}2 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}0.35 (further increased by Rapid Firecannon)}}.\n* The ring will create around the last target hit of ''{{ai|Five Point Strike|Akali}}''.\n* Dealing ability damage to enemy champions while a ring is already active only refreshes its duration.\n* {{Pending for test}}: Empowered attack interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35{{times}}2 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}0.35 (further increased by Rapid Firecannon)}}.\n* The ring will create around the last target hit of ''{{ai|Five Point Strike|Akali}}''.\n* The empowered attack can be {{tip|dodge|dodged}}.\n** {{Pending for test}}: Empowered attack interaction with other ''parrying'' effects ({{tip|block}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -88,7 +88,7 @@
         100
       ],
       "costtype": "energy",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 500,
       "image": {
         "full": "AkaliQ.png",
@@ -100,8 +100,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Akali''' throws a flurry of kunais in the target direction, dealing {{as|magic damage}} to enemies hit. Enemies hit at maximum range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds.",
-        "At rank 5, ''Five Point Strike'' deals{{ft|{{as|25% '''bonus''' magic damage}}|{{as|{{ap|130*1.25}}|magic damage}} {{as|(+ {{ap|65*1.25}}% AD)}} {{as|(+ {{ap|65*1.25}}% AP)}} {{as|'''total''' magic damage}}}}to {{tip|minions}} and {{tip|monsters}}."
+        "{{sbc|Active:}} '''Akali''' unleashes a flurry of kunais in the target direction, dealing {{as|magic damage}} to enemies hit. Enemies hit at maximum range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds.",
+        "At rank 5, ''Five Point Strike'' deals{{ft|{{as|25% '''bonus''' magic damage}}|{{as|{{ap|130*1.25}}|magic damage}} {{as|(+ {{ap|65*1.25}}% AD)}} {{as|(+ {{ap|60*1.25}}% AP)}} {{as|'''total''' magic damage}}}}to {{tip|minions}} and {{tip|monsters}}."
       ],
       "notes": "* Cast location is determined at the end of cast time.",
       "skillkey": "Q",
@@ -110,18 +110,18 @@
       "cooldownBurn": "1.5",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|35 to 135}} {{as|(+ 65% AD)}} {{as|(+ 65% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 65% AD)}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                35,
-                60,
-                85,
-                110,
-                135
+                30,
+                55,
+                80,
+                105,
+                130
               ]
             ],
             "as_ratios": [
@@ -129,12 +129,12 @@
                 "player_total_ad": 0.65
               },
               {
-                "player_total_ap": 0.65
+                "player_total_ap": 0.6
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 65% AP)</span>"
+              "<SpellSpan :list=\"[30,55,80,105,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -142,17 +142,17 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  35,
-                  60,
-                  85,
-                  110,
-                  135
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
                 ],
                 "player_total_ad": 0.65,
-                "player_total_ap": 0.65
+                "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['35','60','85','110','135']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 65% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,55,80,105,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -173,7 +173,7 @@
         0,
         0
       ],
-      "targeting": "[[Ground-targeted|Ground]]",
+      "targeting": "Direction",
       "target_range": 250,
       "image": {
         "full": "AkaliW.png",
@@ -190,7 +190,7 @@
         "'''Akali's''' basic attacks and abilities will break the invisibility and prevent her from entering it for {{passive progression/deprecated version|5|type=minutes|changedisplay=true|round=3|1|0.9|0.825|0.725|0.625|1|8|11|20|30}} seconds, refreshing on subsequent attacks and casts.",
         "The {{ai|Shuriken Flip|Akali|marked}} section of ''Twilight Shroud's'' will linger for the mark's duration, even after the shroud ends."
       ],
-      "notes": "* It is possible for '''Akali''' to detonate the smoke bomb on the far side of terrain from her current location.\n* Both enemy and ally '''Akalis''' benefit from ''Twilight Shroud's'' effects.\n* The effects are applied before the cast time.",
+      "notes": "* '''Akali''' will also not gain the {{tip|invisibility}} if she is {{si|Recall|Recalling}}.\n* It is possible for '''Akali''' to detonate the smoke bomb on the far side of terrain from her current location.\n* The effects are applied before the cast time, and '''Akali''' can move during the cast time.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -198,7 +198,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Movement Speed|{{ap|30 to 50}}%}}\n{{st|Shroud Duration|{{ap|5 to 7}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Shroud Duration</span>: <span><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Shroud Duration</span>: <span><SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -220,7 +220,7 @@
             ],
             "st_slices": [
               "Shroud Duration",
-              "<spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -236,7 +236,7 @@
                 ]
               },
               "title": "Shroud Duration",
-              "str": "<spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -262,8 +262,8 @@
         30
       ],
       "costtype": "energy",
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": "{{tt|650|Mark range}}",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tip|er|icononly = true}} {{tt|825|Shuriken range}}",
       "image": {
         "full": "AkaliE.png",
         "sprite": "spell0.png",
@@ -274,11 +274,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Akali''' {{tip|dash|flips}} backward and fires a shuriken forward, stopping with the first enemy hit and dealing them {{tip|magic damage|{{as|magic damage}}}}.",
+        "{{sbc|Active:}} '''Akali''' {{tip|dash|flips}} in the opposite direction and fires a shuriken in the target direction that stops upon hitting an enemy, dealing them {{as|magic damage}}.",
         "The shuriken ''marks'' the enemy or the last {{ai|Twilight Shroud|Akali|smoke}} section hit for 3 seconds. While the target or smoke section is marked, '''Akali''' can reactivate ''Shuriken Flip''.",
-        "{{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} towards the marked target, consuming the mark, regardless of distance. Against enemies it deals the same {{as|magic damage}} upon arrival."
+        "{{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} towards the marked target or smoke section, consuming the mark, regardless of distance. Against enemies it deals the same {{as|magic damage}} upon arrival."
       ],
-      "notes": "* Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* Killing an enemy with the shuriken will still mark the last area of the {{ai|Twilight Shroud|Akali|shroud}} hit.\n{{ct|attack=false|move=false|cast={{ai|Five Point Strike|Akali}} and {{ai|Twilight Shroud|Akali}} are usable. {{ai|Shuriken Flip|Akali}} is disabled for 10 seconds and then interrupts. Both dashes of {{ai|Perfect Execution|Akali}} interrupt.|items=true,,,interrupts|spells=true,interrupts,true,true,false}}",
+      "notes": "* Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Suriken Flip'' does not interrupt '''Akali's''' previous move or attack orders.\n** The {{sbc|Recast}} does.\n* '''Akali''' will dash backwards up-to 400 units in a straight line. This dash can cross terrain if the end point is beyond it. If she would end the dash inside terrain, she will instead look for a location  in either direction left or right that is outside of terrain and dash there. If there is no such location, she will dash only up to the wall at her normal speed, ending the dash early.\n* The shuriken missile will fire from wherever '''Akali''' is at the end of the cast time (usually mid-dash), but always towards and reaching the location that was 825 units in front of her at the start of cast.\n* Killing an enemy with the shuriken will still mark the last area of the {{ai|Twilight Shroud|Akali|shroud}} hit.\n{{ct|attack=false|move=false|cast={{ai|Five Point Strike|Akali}} and {{ai|Twilight Shroud|Akali}} are usable. {{ai|Shuriken Flip|Akali}} is disabled for 10 seconds and then interrupts. Both dashes of {{ai|Perfect Execution|Akali}} interrupt.|items=true,,,interrupts|spells=true,interrupts,true,true,false}}",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30",
@@ -286,7 +286,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|50 to 190}} {{as|(+ 35% AD)}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -309,7 +309,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -327,14 +327,14 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 35% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Total Damage|{{ap|50*2 to 190*2}} {{as|(+ 70% AD)}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['100','170','240','310','380']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[100,170,240,310,380]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -357,7 +357,7 @@
             ],
             "st_slices": [
               "Total Damage",
-              "<spell-span :list=\"['100','170','240','310','380']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[100,170,240,310,380]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -375,7 +375,7 @@
                 "player_total_ap": 1
               },
               "title": "Total Damage",
-              "str": "<spell-span :list=\"['100','170','240','310','380']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,170,240,310,380]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -408,11 +408,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Akali''' {{tip|dash|dashes}} {{pp|675;675 to 825 by 25|type=distance from target|0;525 to 675}} units towards the target enemy champion, dealing {{as|physical damage}} to all enemies hit.",
+        "{{sbc|Active:}} '''Akali''' {{tip|dash|dashes}} {{pp|675;675 to 825 by 25|type=distance from target|0;525 to 675}} units towards the target enemy {{tip|champion}}, dealing {{as|physical damage}} to all enemies in her path.",
         "''Perfect Execution'' can be recast after a {{fd|2.5}} second {{tt|static cooldown|unaffected by cooldown reduction}} within 10 seconds of the first activation.",
-        "{{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} in the target direction, dealing {{as|magic damage}} to enemies hit, increased by {{as|{{passive progression/deprecated version|11|key=%|key1=%|type=target's '''missing''' health|0 to 200|0 to 70|displayformula=2.86% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|health}}."
+        "{{sbc|Recast:}} '''Akali''' {{tip|dash|dashes}} in the target direction, dealing {{as|magic damage}} to all enemies in her path, increased by {{as|{{passive progression/deprecated version|11|key=%|key1=%|type=target's '''missing''' health|0 to 200|0 to 70|displayformula=2.86% per 1% of target's '''missing''' health, capped at 70% '''missing''' health}}|health}}."
       ],
-      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* The second dash has a much higher dash speed than the first.\n* Casting {{si|Flash}} during either dashes will interrupt them, but '''Akali''' will deal damage to any enemies she comes in contact with at the new location.\n** Enemies already hit by ''Perfect Execution'' cannot be affected more than once.",
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* Casting {{si|Flash}} during either dashes will interrupt them, but '''Akali''' will deal damage to any enemies she comes in contact with at the new location.\n** Enemies already hit by either of ''Perfect Execution's'' casts cannot be affected more than once by the same cast.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",
@@ -420,7 +420,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|125 to 325}} {{as|(+ 50% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[125,175,225,275,325]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -440,7 +440,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[125,175,225,275,325]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -457,14 +457,14 @@
                 "player_bonus_ad": 0.5
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['125','175','225','275','325']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[125,175,225,275,325]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Minimum Magic Damage|{{ap|75 to 215}} {{as|(+ 30% AP)}}|Maximum Magic Damage|{{ap|75*3 to 215*3}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['225','330','435','540','645']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[75,110,145,180,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[225,330,435,540,645]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -494,9 +494,9 @@
             ],
             "st_slices": [
               "Minimum Magic Damage",
-              "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[75,110,145,180,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Maximum Magic Damage",
-              "<spell-span :list=\"['225','330','435','540','645']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[225,330,435,540,645]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -513,7 +513,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Minimum Magic Damage",
-              "str": "<spell-span :list=\"['75','110','145','180','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,110,145,180,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -529,7 +529,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Maximum Magic Damage",
-              "str": "<spell-span :list=\"['225','330','435','540','645']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[225,330,435,540,645]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "magic"
             }
           ]

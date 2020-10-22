@@ -478,13 +478,14 @@ const match_lookup = {
     const clean = /([^\d./*\-+()]+)/g;
     const list = [];
     const round = parseInt(options.round) || 3;
+    const maxrank = extra_data && extra_data.maxrank || 5;
 
     for (const param of slices) {
       const found = param.match(regex);
       if (found) {
         const start = parseFloat(eval(found[1]));
         const end = parseFloat(eval(found[2]));
-        const range = parseInt(found[3]) || extra_data?.maxrank || 5;
+        const range = parseInt(found[3]) || maxrank;
         const diff = (end - start) / (range - 1);
         for (let i = 0; i < range; i++) {
           list.push(+(start + diff * i).toFixed(round));

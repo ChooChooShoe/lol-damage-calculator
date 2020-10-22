@@ -64,8 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Master Yi''' gains a [[stack]] of ''Double Strike'' for every [[basic attack]] [[on-hit]] within 4 seconds of each other. At 3 stacks, '''Master Yi's''' next basic attack [[on-attack]] within 4 seconds consumes the stacks to strike twice, the second strike dealing {{as|50% AD}} {{tip|physical damage|{{As|physical damage}}}}.",
-        "The second strike applies [[on-attack]] and [[on-hit effect]]s at full effect and is affected by {{tip|critical strike}} modifiers.",
+        "{{sbc|Innate:}} '''Master Yi's''' [[basic attack]]s [[on-hit]] grant a [[stack]] of ''Double Strike'' for 4 seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks. At 3 stacks, '''Master Yi's''' next basic attack [[on-attack]] consumes the stacks to strike twice, the second strike dealing {{as|50% AD}} {{as|physical damage}}.",
+        "The second strike applies on-hit and on-attack effects at full effect and is affected by {{tip|critical strike}} modifiers.",
         "If '''Master Yi's''' primary target is killed before the second strike, he automatically attacks another enemy within 300 range.",
         "''The second strike can {{tip|critical strike|critically strike}} {{tip|turrets|structures}}.''"
       ],
@@ -105,13 +105,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Master Yi''' {{tip|vanish|vanishes}} and, after {{tt|{{fd|0.231}} seconds|0.2 seconds, but rounded up to the next game tick}}, marks his target and then moves to mark the nearest {{tip|sight|visible}} un-marked enemy within 600 units, recurring up to 3 times, once every {{tt|{{fd|0.231}} seconds|0.2 seconds, but rounded up to the next game tick}}.",
-        "Upon finishing marking, or if there are no other enemies in range, he {{tip|blinks|reappears}} after a {{tt|{{fd|0.165}} second|0.15 second, but rounded up to the next game tick}} delay in front of his target and deals {{as|physical damage}} to all marked enemies, increased against {{tip|monster|monsters}}. If his target [[death|dies]] during the delay, he will reappear at the cast location instead.",
+        "{{sbc|Active:}} '''Master Yi''' {{tip|vanish|vanishes}} and, after {{rutngt|0.2}}, marks the target enemy and then moves to mark the nearest {{tip|sight|visible}} un-marked enemy within 600 units, recurring up to 3 times, once every {{rutngt|0.2}}.",
+        "Upon finishing marking, or if there are no longer any targetable enemies, he {{tip|blinks|reappears}}{{ft|after {{rutngt|0.15}}|{{tt|{{fd|1.087}} seconds|effective time due to game ticks}} after the start of the cast with 4 bounces}}in front of his target's current location and deals {{as|physical damage}} to all marked enemies, increased against {{tip|monster|monsters}}. If his target {{tip|death|dies}} or gets too far away during the delay, he will reappear at the cast location instead.",
         "If there are no other un-marked enemies in range, he may strike the same enemies again, dealing {{fd|{{#var:l}}}}% damage instantly.",
         "''Alpha Strike's'' primary and lesser damage can {{tip|critically strike}} for {{as|{{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} and {{as|{{critical damage|{{#expr:60*{{#var:l}}/100}}|melee}} AD}} {{as|'''bonus''' physical damage}} respectively.",
         "Basic attacks reduce ''Alpha Strike's'' {{sti|cooldown}} by 1 second."
       ],
-      "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}} but not when '''Master Yi''' is {{tip|blind|blinded}}.\n* If the target becomes {{tip|untargetable}} during ''Alpha Strike's'' cast, the ability will not end, but will instead last as if it had kept bouncing around targets.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} around it. It will always grant vision around the primary target even if he doesn't bounce off it. This vision will not reveal through {{tip|brush|brushes}}.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to X units; If the target teleports a very long distance, it cannot be followed.\n* '''Master Yi''' can use [[summoner spell]]s with the exceptions of {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} during ''Alpha Strike''.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.{{bug}}\n* {{tip|Spell shield}} will only block a single instance of damage.\n* If '''Master Yi''' enters {{tip|resurrection}} during ''Alpha Strike'' and he is only focusing one target, the ability will only deal the reduced damage strikes and not the final tick of damage from reappearing. If he is striking multiple targets, ''Alpha Strike'' will deal its damage shortly after being ''resurrected''.{{bug}}",
+      "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}} but not when '''Master Yi''' is {{tip|blind|blinded}}.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} in a 600 radius around it for up-until {{rutngt|0.6}} <!-- this 0.6s after reappearing value is not confirmed as \"the one\", btw, might also be 0.625s after reappearing or 0.75s after last bounce --> after ''Alpha Strike'' ends, including across terrain, though not into {{tip|brush|brushes}}. It will always grant vision around the primary target even if he doesn't bounce off it.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to {{tt|2000|From Yi's location at start of cast}} units; If the target teleports a very long distance, it will not be followed.\n* '''Master Yi''' can use [[summoner spell]]s with the exceptions of {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} during ''Alpha Strike''.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.{{bug}}\n* {{tip|Spell shield}} will only block a single instance of damage.\n*If '''Master Yi''' {{tip|death|dies}} during ''Alpha Strike'' and he is only focusing one target, the ability will only deal the reduced damage strikes and not the final tick of damage from reappearing.\n** If he is striking multiple targets the damage will be dealt immediately when ''dying'', and if he ''dies'' before the bounce from the last target, ''Alpha Strike'' will deal reduced damage only to all units he already bounced from.{{bug}}\n* If '''Master Yi''' enters {{tip|resurrection}} during ''Alpha Strike'' and he is only focusing one target, the ability will deal the reduced damage strikes as normal and the final tick of damage after being ''resurrected''.\n** If he is striking multiple targets, ''Alpha Strike'' will ''sometimes'' deal the reduced damage from repeated bounces and the main damage after being ''resurrected'', and ''sometimes'' only the reduced damage, unrelated to the number of targets available.{{bug}}",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/55/60/65/70",
@@ -182,7 +182,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "Meditate.png",
         "sprite": "spell7.png",
@@ -206,7 +206,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Minimum Healing Per Half Second|{{ap|15 to 55}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Healing Per Half Second|{{ap|15*2 to 55*2}} {{as|(+ 25% AP)}}}}<!--\n-->{{st|Minimum Total Healing|{{ap|15*8 to 55*8}} {{as|(+ 100% AP)}}|Maximum Total Healing|{{ap|15*8*2 to 55*8*2}} {{as|(+ 200% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><spell-span :list=\"['15','25','35','45','55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Total Healing</span>: <span><spell-span :list=\"['120','200','280','360','440']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><spell-span :list=\"['240','400','560','720','880']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Total Healing</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><SpellSpan :list=\"[240,400,560,720,880]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -256,9 +256,9 @@
             ],
             "st_slices": [
               "Minimum Healing Per Half Second",
-              "<spell-span :list=\"['15','25','35','45','55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "<SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
               "Maximum Healing Per Half Second",
-              "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
             ]
           },
           "subeffects": [
@@ -275,7 +275,7 @@
                 "player_total_ap": 1
               },
               "title": "Minimum Healing Per Half Second",
-              "str": "<spell-span :list=\"['15','25','35','45','55']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -291,14 +291,14 @@
                 "player_total_ap": 1
               },
               "title": "Maximum Healing Per Half Second",
-              "str": "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Damage Reduction|{{ap|60 to 70}}%|Turret Damage Reduction|{{ap|60/2 to 70/2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Damage Reduction</span>: <span><spell-span :list=\"['60','62.5','65','67.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Turret Damage Reduction</span>: <span><spell-span :list=\"['30','31.25','32.5','33.75','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Turret Damage Reduction</span>: <span><SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -320,9 +320,9 @@
             ],
             "st_slices": [
               "Damage Reduction",
-              "<spell-span :list=\"['60','62.5','65','67.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "Turret Damage Reduction",
-              "<spell-span :list=\"['30','31.25','32.5','33.75','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -338,7 +338,7 @@
                 ]
               },
               "title": "Damage Reduction",
-              "str": "<spell-span :list=\"['60','62.5','65','67.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             },
             {
@@ -353,14 +353,14 @@
                 ]
               },
               "title": "Turret Damage Reduction",
-              "str": "<spell-span :list=\"['30','31.25','32.5','33.75','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Post-Channel Damage Reduction|{{ap|100-60 to 100-70}}%|Post-Channel Turret Damage Reduction|{{ap|100-60/2 to 100-70/2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -382,9 +382,9 @@
             ],
             "st_slices": [
               "Post-Channel Damage Reduction",
-              "<spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "Post-Channel Turret Damage Reduction",
-              "<spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -400,7 +400,7 @@
                 ]
               },
               "title": "Post-Channel Damage Reduction",
-              "str": "<spell-span :list=\"['40','37.5','35','32.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             },
             {
@@ -415,7 +415,7 @@
                 ]
               },
               "title": "Post-Channel Turret Damage Reduction",
-              "str": "<spell-span :list=\"['70','68.75','67.5','66.25','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
@@ -440,7 +440,7 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "WujuStyle.png",
         "sprite": "spell7.png",
@@ -451,7 +451,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Master Yi''' empowers his sword, causing his basic attacks to deal {{tip|true damage|{{as|'''bonus''' true damage}}}} for 5 seconds."
+        "{{sbc|Active:}} '''Master Yi''' empowers his sword, causing his basic attacks to deal {{sti|{{as|'''bonus''' true damage}}}} {{tip|on-hit}} for 5 seconds."
       ],
       "notes": "* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{tip|block|blocked}} but can be {{tip|dodge|dodged}} and/or missed if '''Master Yi''' is {{tip|blind|blinded}}.",
       "skillkey": "E",
@@ -461,47 +461,48 @@
       "effects": [
         {
           "levelingtext": "{{st|True Damage|{{as|{{ap|18 to 50}}|true damage}} {{as|(+ 35% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><spell-span :list=\"['18','26','34','42','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                18,
+                26,
+                34,
+                42,
+                50
+              ]
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": 0.35000000000000003
               },
               {
-                "player_total_unknown": [
-                  0.18,
-                  0.26,
-                  0.34,
-                  0.42,
-                  0.5
-                ]
+                "player_total_unknown": 1826344250
               }
             ],
             "st_slices": [
               "True Damage",
-              "<span class=\"true-damage\"><spell-span :list=\"['18','26','34','42','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>"
+              "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
+                "base_damage": [
+                  18,
+                  26,
+                  34,
+                  42,
+                  50
+                ],
                 "player_bonus_ad": 0.35000000000000003,
-                "player_total_unknown": [
-                  0.18,
-                  0.26,
-                  0.34,
-                  0.42,
-                  0.5
-                ]
+                "player_total_unknown": 1826344250
               },
               "title": "True Damage",
-              "str": "<span class=\"true-damage\"><spell-span :list=\"['18','26','34','42','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>",
+              "str": "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>",
               "damage_type": "true"
             }
           ]
@@ -521,7 +522,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "Highlander.png",
         "sprite": "spell7.png",
@@ -533,7 +534,7 @@
       },
       "description": [
         "{{sbc|Passive:}} Champion {{tip|takedown|takedowns}} reduce the '''current''' {{sti|cooldown}} of '''Master Yi's''' basic [[Champion ability|abilities]] by 70%.",
-        "{{sbc|Active:}} '''Master Yi''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and {{tip|cripple|cripples}}. For the next 7 seconds, he is {{tip|ghosted}}, gains {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|'''bonus''' movement speed}}}}, and becomes {{tip|slow-immune}} and immune to {{tip|cripple|cripples}}.",
+        "{{sbc|Active:}} '''Master Yi''' {{tip|cleanse|cleanses}} himself from all {{tip|slow|slows}} and {{tip|cripple|cripples}} and gains {{tip|ghosting}}, {{sti|{{as|'''bonus''' attack speed}}}}, {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{tip|slow-immune|slow immunity}}, and {{tip|cripple-immune|cripple immunity}} all for the next 7 seconds.",
         "While active, champion {{tip|takedown|takedowns}} extend the duration of ''Highlander'' by 7 seconds."
       ],
       "notes": "* There are two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
@@ -544,7 +545,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['25','35','45','55','65']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -566,7 +567,7 @@
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -582,7 +583,7 @@
                 ]
               },
               "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['35','40','45','50','55']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

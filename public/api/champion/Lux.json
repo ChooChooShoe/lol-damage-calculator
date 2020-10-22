@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.103",
-  "changes": "10.11.1",
+  "changes": "10.20.1",
   "id": "Lux",
   "name": "Lux",
   "title": "the Lady of Luminosity",
@@ -64,8 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Lux's''' damaging [[Champion ability|abilities]] mark enemies with light energy for 6 seconds.",
-        "'''Lux's''' [[basic attack]]s and {{ai|Final Spark|Lux}} consume the mark to deal {{as|{{passive progression/deprecated version|20 to 190}}|magic damage}} {{as|(+ 20% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}}."
+        "{{sbc|Innate:}} '''Lux's''' [[ability damage|damaging]] [[Champion ability|abilities]] mark enemies with light energy for 6 seconds.",
+        "'''Lux's''' [[basic attack]]s and {{ai|Final Spark|Lux}} consume the mark to deal {{as|{{passive progression/deprecated version|20 to 190}}|magic damage}} {{as|(+ 20% AP)}} {{as|'''bonus''' magic damage}}."
       ],
       "notes": "* {{tip|Spell shield}} prevents {{ai|Final Spark|Lux}} from igniting ''Illumination''.\n** The on-hit damage from ''Illumination'' via basic attack cannot be blocked by ''spell shield''.\n* {{Pending for test}}: Parry interactions ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "I",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +133,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,7 +150,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -170,14 +170,14 @@
       ],
       "cost": [
         60,
-        60,
-        60,
-        60,
-        60
+        65,
+        70,
+        75,
+        80
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": 1075,
+      "target_range": "{{tip|cr|icononly = true}}{{tt|*|circle check at end allows hitting edge of ally radius}} 1175",
       "image": {
         "full": "LuxPrismaticWave.png",
         "sprite": "spell7.png",
@@ -189,39 +189,39 @@
       },
       "description": [
         "{{sbc|Active:}} '''Lux''' launches her wand in the target direction which returns to her after reaching maximum range.",
-        "The outgoing wand {{tip|shield|shields}} '''Lux''' and all allied champions it touches for {{fd|2.5}} seconds.",
-        "The returning wand shields for the same amount and for the same duration, while also stacking with the outgoing shield and resetting its duration.",
+        "'''Lux''' and allied {{tip|champions}} touched by the outgoing wand are {{tip|shield|shielded}} for {{fd|2.5}} seconds.",
+        "Allied champions near the return location and those {{tt|touched by the returning wand|Including Lux, once the wand reaches her again}} are shielded for the same amount and for the same duration, stacking with the previous shield and resetting its remaining duration.",
         "''The shields can only stack up to 2 times. Additional shields will neither reset the duration nor strengthen it.''"
       ],
-      "notes": "* If '''Lux''' [[death|dies]] before her wand returns it will fizzle upon reaching maximum range.\n* '''Lux's''' wand decelerates on the way out and accelerates on the way back.\n* ''Prismatic Barrier'' is always cast from the original casting position.",
+      "notes": "* Like most [[missiles]], both of ''Primsatic Barrier'' cannot hit units whose {{tip|center range|center}} is beyond the missile range or behind its origin, even if their {{tip|edge range|hitbox radius}} overlaps.\n** At the return location, this behaviour is overridden by an additional center check with the same diameter as the missile width.\n* If '''Lux''' {{tip|death|dies}} before her wand returns it will fizzle upon reaching maximum range.\n* '''Lux's''' wand decelerates on the way out and accelerates on the way back.\n* ''Prismatic Barrier'' is always fired from the original casting position.\n* ''Prismatic Barrier'' is destroyed by {{ai|Wind Wall|Yasuo}} and {{ai|Blade Whirl|Samira}} but not {{ai|Unbreakable|Braum}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "60",
+      "costBurn": "60/65/70/75/80",
       "cooldownBurn": "14/13/12/11/10",
       "effects": [
         {
-          "levelingtext": "{{st|Shield Strength|{{ap|50 to 150}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Shield Strength|{{ap|45 to 125}} {{as|(+ 35% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                50,
-                75,
-                100,
-                125,
-                150
+                45,
+                65,
+                85,
+                105,
+                125
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.3
+                "player_total_ap": 0.35000000000000003
               }
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
             ]
           },
           "subeffects": [
@@ -229,43 +229,43 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  50,
-                  75,
-                  100,
-                  125,
-                  150
+                  45,
+                  65,
+                  85,
+                  105,
+                  125
                 ],
-                "player_total_ap": 0.3
+                "player_total_ap": 0.35000000000000003
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Maximum Shield|{{ap|50*2 to 150*2}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Shield</span>: <span><spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Maximum Shield|{{ap|45*2 to 125*2}} {{as|(+ 70% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Maximum Shield</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                100,
-                150,
-                200,
-                250,
-                300
+                90,
+                130,
+                170,
+                210,
+                250
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": 0.6
+                "player_total_ap": 0.7000000000000001
               }
             ],
             "st_slices": [
               "Maximum Shield",
-              "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -273,16 +273,16 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  100,
-                  150,
-                  200,
-                  250,
-                  300
+                  90,
+                  130,
+                  170,
+                  210,
+                  250
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.7000000000000001
               },
               "title": "Maximum Shield",
-              "str": "<spell-span :list=\"['100','150','200','250','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -308,7 +308,7 @@
         110
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
       "target_range": 1000,
       "image": {
         "full": "LuxLightStrikeKugel.png",
@@ -333,7 +333,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Slow|{{ap|25 to 45}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -348,7 +348,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -364,14 +364,14 @@
                 ]
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -391,7 +391,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -408,7 +408,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -442,7 +442,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lux''' fires a massive laser of light in a line that deals {{as|magic damage}} to all enemies hit, briefly {{tip|sight|revealing}} enemies as well as the surrounding area."
+        "{{sbc|Active:}} '''Lux''' fires a massive laser of light in a line in the target direction that deals {{as|magic damage}} to all enemies hit, briefly {{tip|sight|revealing}} enemies as well as the surrounding area."
       ],
       "notes": "* ''Final Spark'' is always fired from the original casting position.\n{{ct|cast|cast={{ai|Lucent Singularity|Lux}} can only be recast if it is present. {{ai|Light Binding|Lux}} and {{ai|Prismatic Barrier|Lux}} are disabled.}}",
       "skillkey": "R",
@@ -452,7 +452,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|300 to 500}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -472,7 +472,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -489,7 +489,7 @@
                 "player_total_ap": 1
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]

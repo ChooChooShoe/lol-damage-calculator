@@ -54,7 +54,7 @@
       "name": "Harrier",
       "maxrank": 0,
       "cooldown": "",
-      "targeting": "Auto",
+      "targeting": "Passive",
       "image": {
         "full": "Quinn_Passive.png",
         "sprite": "passive3.png",
@@ -65,11 +65,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''{{ci|Valor}}''' marks enemies hit by {{ai|Blinding Assault|Quinn}}, {{ai|Skystrike|Quinn}} or targeted by {{ai|Vault|Quinn}} as {{as|Vulnerable|gold}}, {{tip|sight|revealing}} them for 4 seconds. If no {{as|Vulnerable|gold}} target exists for 1 second, '''{{ci|Valor}}''' automatically marks a nearby visible enemy, but is not able to so again for {{pp|type=critical strike chance|color=critical chance|8*(0.99^((x-1)*10))|key1=%|0 to 100 by 10|formula=8*(0.99^critical strike chance %)}} seconds after the mark timed out, was consumed or was overwritten by another mark.",
-        "'''Quinn's''' next [[basic attack]] [[on-hit]] against a {{as|Vulnerable|gold}} target consumes the mark and deals {{passive progression/deprecated version|10 to 95|color=physical damage}} {{as|(+ {{passive progression/deprecated version|key=%|16 to 50}} AD)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Innate:}} '''{{ci|Valor}}''' marks enemies hit by {{ai|Blinding Assault|Quinn}}, {{ai|Skystrike|Quinn}} or targeted by {{ai|Vault|Quinn}} as {{as|Vulnerable|gold}}, {{tip|sight|revealing}} them for 4 seconds. If no {{as|Vulnerable|gold}} target exists for 1 second, '''{{ci|Valor}}''' automatically marks a nearby visible enemy, but is not able to do so again for {{pp|type=critical strike chance|color=critical chance|8*(0.99^((x-1)*10))|key1=%|0 to 100 by 10|formula=8*(0.99^critical strike chance %)}} seconds after the mark has timed out, was consumed or was overwritten by another mark.",
+        "'''Quinn's''' next [[basic attack]] [[on-hit]] against a {{as|Vulnerable|gold}} target consumes the mark to deal {{passive progression/deprecated version|10 to 95|color=physical damage}} {{as|(+ {{passive progression/deprecated version|key=%|16 to 50}} AD)}} {{as|'''bonus''' physical damage}}.",
         "While {{ai|Behind Enemy Lines|Quinn}} is active, ''Harrier'' is disabled and all {{as|Vulnerable|gold}} marks are removed."
       ],
-      "notes": "* ''Harrier's'' targeting priority:\n*# Last unit hit (if it was a small minion it appears to select a different target).\n*# Lowest-health enemy champion.\n*# Lowest-health enemy minion.\n* ''Harrier'' is consumed even if it is parried, the attack is negated in any case.",
+      "notes": "* If a mark applied by an ability is overwritten, consumed, or timed out, ''Harrier'' goes on a 1-second cooldown if it's not already on cooldown.\n* ''Harrier's'' targeting priority:\n*# Last unit hit (if it was a small minion it appears to select a different target).\n*# Lowest-health enemy champion.\n*# Lowest-health enemy minion.\n* ''Harrier'' is consumed even if it is parried, the attack is negated in any case.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -117,7 +117,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ {{ap|80 to 120}}% AD)}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -129,25 +129,25 @@
                 95,
                 120
               ],
-              null
+              [
+                80,
+                90,
+                100,
+                110,
+                120
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.5
               },
               {
-                "player_total_ad": [
-                  0.8,
-                  0.9,
-                  1,
-                  1.1,
-                  1.2
-                ]
+                "player_total_ad": 80901001101.2
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -162,16 +162,10 @@
                   120
                 ],
                 "player_total_ap": 0.5,
-                "player_total_ad": [
-                  0.8,
-                  0.9,
-                  1,
-                  1.1,
-                  1.2
-                ]
+                "player_total_ad": 80901001101.2
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "physical"
             }
           ]
@@ -196,7 +190,7 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "QuinnW.png",
         "sprite": "spell9.png",
@@ -219,7 +213,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 80}}%}}<!--\n-->{{st|Bonus Movement Speed|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -241,7 +235,7 @@
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -257,7 +251,7 @@
                 ]
               },
               "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -297,7 +291,7 @@
       "description": [
         "{{sbc|Active:}} '''Quinn''' {{tip|dashes}} to the target enemy unit, {{tip|airborne|knocking them back}}, dealing them {{as|physical damage}}, and {{tip|slow|slowing}} them by 50% which decays over {{fd|1.5}} seconds, before {{tip|dash|leaping back}} and landing 525 units away from them."
       ],
-      "notes": "* '''Quinn''' will automatically attempt to attack the target once she completes ''Vault''.\n* The target will turn to face the opposite direction after being {{tip|airborne|knocked back}}.\n* Unlike its constant cast range ''Vault's'' bounce's can vary to allow '''Quinn''' to close or to make a gap between herself and the target (depending on casting position) or even to jump through a wall (if there is enough landing room on the other side).\n* '''Quinn''' will track and follow the target if they move through {{tip|dash|dashes}} and {{tip|blink|blinks}}.\n** This will not occur if the target is travelling to a very far distance (e.g, {{si|Recall}}, {{si|Teleport}}, {{ai|Stand United|Shen}}).\n* ''Vault'' also interrupts {{tip|unstoppable basic attack|unstoppable basic attacks}} from affecting their target. {{bug|2}}",
+      "notes": "* '''Quinn''' will automatically attempt to attack the target once she completes ''Vault''.\n* The target will turn to face the opposite direction after being {{tip|airborne|knocked back}}.\n* Unlike its constant cast range ''Vault's'' bounce's can vary to allow '''Quinn''' to close or to make a gap between herself and the target (depending on casting position) or even to jump through a wall (if there is enough landing room on the other side).\n* '''Quinn''' will track and follow the target if they move through {{tip|dash|dashes}} and {{tip|blink|blinks}}.\n** This will not occur if the target is travelling to a very far distance (e.g, {{si|Recall}}, {{si|Teleport}}, {{ai|Stand United|Shen}}).\n* ''Vault'' also interrupts {{tip|unstoppable basic attack|unstoppable basic attacks}} from affecting their target.{{bug|2}}",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50",
@@ -305,7 +299,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical damage|{{ap|40 to 160}} {{as|(+ 20% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -325,7 +319,7 @@
             ],
             "st_slices": [
               "Physical damage",
-              "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -342,7 +336,7 @@
                 "player_bonus_ad": 0.2
               },
               "title": "Physical damage",
-              "str": "<spell-span :list=\"['40','70','100','130','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Mordekaiser's''' basic attacks deal {{as|40% AP}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} [[on-hit]].",
-        "Damaging basic abilities or basic attacks [[on-attack]] grant 1 stack per enemy champion or large monster hit, up to a maximum of 3. At 3 stacks, '''Mordekaiser''' gains ''Darkness Rise'' for 4 seconds. Further basic attacks and abilities against enemy champions and large monsters refresh the duration.",
-        "{{sbc|Darkness Rise:}} '''Mordekaiser''' deals {{ft|{{as|{{passive progression/deprecated version|5 to 15.2}}|magic damage}} {{as|(+ 30% AP)}} {{as|(+ {{passive progression/deprecated version|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} per second|{{as|{{passive progression/deprecated version|5*0.125 to 15.2*0.125}}|magic damage}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{passive progression/deprecated version|key=%|1*0.125 to 5*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}} to all nearby enemies and gains {{as|3% '''bonus''' movement speed}}. The damage against {{tip|monsters}} is capped at {{as|{{passive progression/deprecated version|28 to 164}}|magic damage}}."
+        "{{sbc|Innate:}} '''Mordekaiser's''' basic attacks deal {{as|40% AP}} {{as|'''bonus''' magic damage}} [[on-hit]].",
+        "Damaging [[basic attack]]s [[on-attack]] and basic [[champion ability|abilities]] grant '''Mordekaiser''' a [[stack]] for 4 seconds for every enemy {{tip|champion}} or large {{tip|monster}} hit, stacking up to 3 times. At 3 stacks, '''Mordekaiser''' gains ''Darkness Rise''. Subsequent damaging attacks and basic abilities against enemy champions and large monsters refresh the duration.",
+        "{{sbc|Darkness Rise:}} '''Mordekaiser''' deals {{ft|{{as|{{passive progression/deprecated version|5 to 15.2}}|magic damage}} {{as|(+ 30% AP)}} {{as|(+ {{passive progression/deprecated version|key=%|1 to 5}} of target's '''maximum''' health)}} {{as|magic damage}} per second|{{as|{{passive progression/deprecated version|5*0.125 to 15.2*0.125}}|magic damage}} {{as|(+ {{ap|30*0.125}}% AP)}} {{as|(+ {{passive progression/deprecated version|key=%|1*0.125 to 5*0.125}} of target's '''maximum''' health)}} {{as|magic damage}} every {{fd|0.125}} seconds}} to all nearby enemies and gains {{sti|{{as|3% '''bonus''' movement speed}}}}. The damage against monsters is capped at {{passive progression/deprecated version|28 to 164}}."
       ],
       "notes": "* '''Mordekaiser''' has a stack counter under his health-bar that is not visible to other champions.\n* ''Darkness Rise's'' damage doesn't refresh ''Darkness Rise's'' buff.\n* {{iis|Dead Man's Plate}} bonus damage gives one bonus stack for ''Darkness Rise'', even at 0 ''Momentum'' stacks.",
       "skillkey": "I",
@@ -105,15 +105,15 @@
       "description": [
         "{{sbc|Active:}} '''Mordekaiser''' smashes the area in the target direction, dealing {{as|magic damage}} to all enemies hit, [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|increased|cosmetic critical strike}} if it hits only one enemy."
       ],
-      "notes": "* Applies {{tip|spell damage}} if it hits one target and {{tip|area damage}} to multiple targets.\n* {{si|Flash}} can be used during the cast time and the ability will be cast from the new location.",
+      "notes": "* Applies {{tip|spell damage}} if it hits one target and {{tip|area damage}} to multiple targets.\n* ''Obliterate'' will cast from wherever '''Mordekaiser''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
       "cooldownBurn": "9/7.75/6.5/5.25/4",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{pp|5+4*(x-1) for 10; then + 10*x for 5; then +16*x}} (+ {{ap|75 to 155}}) {{as|(+ 60% AP)}}}}\n{{st|Damage Increase|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"pp 5+4*(x-1) for 10; then + 10*x for 5; then +16*x\">Error: SyntaxError: Unexpected number</simple-tooltip> (+ <spell-span :list=\"['75','95','115','135','155']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Damage Increase</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{pp|5+4*(x-1) for 10; then + 10*x for 5; then +16*x}} (+ {{ap|75 to 155}}) {{as|(+ 60% AP)}}}}\n{{st|Damage Increase|{{ap|20 to 40}}%|Maximum Bonus Damage|{{ap|(75 to 155)*(1.2 to 1.4)}} {{as|(+ {{ap|60*(1.2 to 1.4)}}% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><simple-tooltip class=\"red\" dname=\"pp 5+4*(x-1) for 10; then + 10*x for 5; then +16*x\">Error: SyntaxError: Unexpected number</simple-tooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Damage Increase</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -136,11 +136,16 @@
             "as_ratios": [
               {
                 "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": null
               }
             ],
             "st_slices": [
               "Damage Increase",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "Maximum Bonus Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -157,7 +162,23 @@
                 "player_total_ap": 0.6
               },
               "title": "Damage Increase",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_total_ap": 0.6
+              },
+              "title": "Maximum Bonus Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -182,7 +203,7 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": "{{tt|700|Maximum Cast Range}} / {{tt|900|Maximum range}}",
       "image": {
         "full": "MordekaiserE.png",
@@ -195,7 +216,7 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Mordekaiser''' gains {{sti|mpen|{{as|magic penetration}}}}.",
-        "{{sbc|Active:}} '''Mordekaiser''' grants {{tip|sight}} of the targeted area briefly and after {{fd|0.5}} seconds, {{tip|airborne|pulls}} all enemies within for 250 units, dealing them {{as|magic damage}}."
+        "{{sbc|Active:}} '''Mordekaiser''' grants {{tip|sight}} of the target area briefly and, after {{fd|0.5}} seconds, {{tip|airborne|pulls}} all enemies within for 250 units, dealing them {{as|magic damage}}."
       ],
       "notes": "* ''Death's Grasp'' will still {{tip|airborne|pull}} even if '''Mordekaiser''' {{tip|death|dies}}.\n* ''Death's Grasp'' is always cast from the original casting position.",
       "skillkey": "E",
@@ -205,7 +226,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Penetration|{{ap|5 to 15}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Penetration</span>: <span><spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Penetration</span>: <span><SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -220,7 +241,7 @@
             ],
             "st_slices": [
               "Magic Penetration",
-              "<spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -236,14 +257,14 @@
                 ]
               },
               "title": "Magic Penetration",
-              "str": "<spell-span :list=\"['5','7.5','10','12.5','15']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 140}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','95','110','125','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,95,110,125,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -263,7 +284,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','95','110','125','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[80,95,110,125,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -280,7 +301,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','95','110','125','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,95,110,125,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -313,12 +334,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Mordekaiser''' {{tip|slow|slows}} the targeted enemy {{tip|champion}} by 75% during the cast time. If the target is still in range and targetable by the end of the cast time they're {{tip|suppression|icononly=true}} banished together with '''Mordekaiser''' to the ''Death Realm'' for 7 seconds.",
-        "Units between realms see each other as spirits, considering each other dead and negating any interactions between the two. Only the target and '''Mordekaiser''' will enter the realm; other champions cannot follow them. Everything that occurs inside the ''Death Realm'' is hidden, and all non-champion [[pets]] still inside are destroyed at the end.",
-        "For the same duration, '''Mordekaiser''' also reduces the target's '''current''' {{sti|{{as|attack damage}}}}, {{sti|{{as|ability power}}}}, {{sti|{{as|'''total''' attack speed}}}}, {{sti|{{as|'''maximum''' health}}}}, {{sti|armor penetration|{{as|armor}}}}, {{sti|magic penetration|{{as|magic resist}}}}, and [[size]] by 10%, in addition to gaining them for himself. If '''Mordekaiser''' kills his target while inside, he keeps their partial stats until they respawn.",
+        "{{sbc|Active:}} '''Mordekaiser''' {{tip|slow|slows}} the target enemy {{tip|champion}} by 75% during the cast time. If the target is still in range and targetable by the end of the cast time they're {{tip|suppression|icononly=true}} {{tt|banished|Does not disable the target's actions}} together with '''Mordekaiser''' to the ''Death Realm'' for 7 seconds.",
+        "Units between realms see each other as spirits, considering each other dead and negating any interactions between the two. Only the target and '''Mordekaiser''' will enter the realm; other champions cannot follow them. Everything that occurs inside the ''Death Realm'' is hidden, and all non-champion [[pets]] still inside are killed at the end.",
+        "For the same duration, '''Mordekaiser''' also consumes the target's soul, reducing their '''current''' {{sti|{{as|attack damage}}}}, {{sti|{{as|ability power}}}}, {{sti|{{as|'''total''' attack speed}}}}, {{sti|{{as|'''maximum''' health}}}}, {{sti|armor penetration|{{as|armor}}}}, {{sti|magic penetration|{{as|magic resist}}}}, and [[size]] by 10%, in addition to gaining them for himself. If the target dies while inside, '''Mordekaiser''' keeps their partial stats until they respawn.",
         "If one of the two affected champions leave the ''Death Realm'', because of having died or having it dispelled, the other will do so as well, but the stats will remain stolen for the full duration."
       ],
-      "notes": "[[File:Realm_of_Death_ally_Spirit_screenshot.PNG|thumb|right|125px|'''Ally Spirit''']]\n[[File:Realm_of_Death_enemy_spirit_screenshot.PNG|thumb|right|125px|'''Enemy Spirit''']]\n* The ability will cancel and go on cooldown after the cast time if:\n** The target is {{tip|unstoppable}}, {{tip|cc-immune|crowd control immune}} or protected by a {{tip|spell shield}}.\n** '''Mordekaiser''' targets a {{tip|clone}} or {{cai|Glory in Death|Sion}}.\n* The ability will cancel but will not go on cooldown if:\n** '''Mordekaiser''' loses {{tip|sight}} of the target.\n** The target is too far away.\n** The target becomes {{tip|untargetable}}.\n** '''Mordekaiser''' or the target {{tip|death|dies}}.\n* {{tip|Spell shield}} will not block the initial {{tip|slow}}.\n* If the target's {{sti|health|link=true}} is lower than the amount that should be stolen, they will be brought down to 1 health. '''Mordekaiser''' will still get the usual amount of maximum health.\n* Unlike the other stats, '''Mordekaiser''' does not ''steal'' enemy total size; instead he gains 10% of his own size and reduces the enemy's size by 10% of theirs (all size modifiers stack additively).\n** '''Mordekaiser''' grows in size over {{fd|0.25}} seconds after successfully stealing his targets' stats, and shrinks over {{fd|0.25}} seconds after the buff runs out again. The target shrinks over {{fd|0.25}} seconds after their stats are stolen, but grows back to normal size instantly when the effect ends.\n* The transition in and out of the ''Death Realm'' doesn't interrupt {{tip|channel|channels}}.\n* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion|exception}}), but enemies that try to move out of the area will be displaced back inside.\n** {{tip|Dash|Dashes}}, {{tip|blink|blinks}}, {{tip|airborne|displacements}} and other forms of forced movement will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.\n* Multiple ''Death Realms'' (possible through a {{ai|Hijack|Sylas|hijacked}} ''Realm of Death'' or if multiple '''Mordekaisers''' are in the same match) spawned will exist in the same dimension, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.\n** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.\n** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knock back and damage secondary targets multiple times.\n* ''Realm of Death'' will not be dispelled if either of the two affected champions enter {{tip|resurrection}} after taking lethal damage. It is dispelled if the target enters a {{tip|zombie state}}.\n* ''Realm of Death'' can be dispelled (excluding death and duration) if:\n** The target uses a {{tip|cleanse|cleansing}} effect, with the exceptions of {{si|Cleanse}}, {{ii|Mikael's Crucible}}, and {{cis|Kled}} {{ai|Skaarl the Cowardly Lizard 2|Kled|Dismount}}.\n** '''Mordekaiser''' or the target cast another ''Realm of Death''. The affected champions will remain stuck for the duration of the new circle.\n* {{tip|Tether}} effects will break upon entering the dimension, unless it is between the two champions entering the dimension.\n* [[Structures]] exist in all realms at the same time. {{tip|Turret|Turrets}} will target normally as if all units were in the same realm.\n* The allied health, resource, and ultimate indicators (champion portraits located on the screen) will not update between realms as the [[Summoner|players]] have no {{tip|sight|vision}} of them.\n* ''Realm of Death's'' interactions with other elements/abilities:\n** {{tip|Brush|Brushes}} will maintain their presence between realms.\n** Switching realms detaches all {{tip|attached}} champions on either of the two champions entering the realm.\n** {{ai|The Hextech Ultimatum|Camille}}, catching a {{ai|Spinning Axe|Draven}}, {{ai|Timewinder|Ekko}}, {{ai|Null Zone|Malzahar}}, {{ai|Twisted Advance|Maokai}}, {{ai|Threaded Volley 2|Taliyah|Worked Grounds}}, {{ai|Gravity Field|Viktor}}, {{ai|Satchel Charge|Ziggs}}, {{ui|Rift Scuttler|Rift Scuttler's}} {{bi|Speed Shrine}}, {{ii|Statikk Shiv}} and gaining {{ii|Zeke's Convergence}} [[File:Harbinger of Frost icon.png|20px|border|link=File:Harbinger of Frost icon.png]] area of effect are exceptions and may still take effect between dimensions.\n** Effects such as {{ai|Requiem|Karthus}}, {{ai|Absolute Zero|Nunu}}, {{ai|Grand Starfall|Pantheon}} and {{ai|Final Spark|Lux}} will only deal damage to enemies of the dimension they're in at time of cast. Ending the channel or cast time while inside another dimension will not do damage to nearby enemies.\n** {{ai|Shuriken Flip|Akali}} may be re-cast inside the ''Death Realm'' even if its target is outside it, but {{ci|Akali}} will stop ''dashing'' upon colliding with the boundary.\n** {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} may not be re-cast while his victim is not in the same realm as him, but an already chained foe will still continue to be reeled in and executed. The {{tip|fear}} is cast in the realm Urgot is in.\n** {{ai|Void Shift|Malzahar}} dispels from ''Realm of Death's'' {{tip|slow}}, making it vulnerable to the ''Death Realm''.\n** {{ai|Clockwork Windup|Orianna|Ball}} will instantly return back to Orianna if she's sent to another dimension.\n** {{ii|Eye of the Herald}} and {{si|Teleport}} are disabled while in the ''Realm of Death''.\n** Controllable [[pets]] and [[decoy]]s can still be commanded between realms.\n** [[Jungle plants]] ({{ui|Blast Cone}}, {{ui|Honeyfruit}}, {{ui|Scryer's Bloom}}) will not take presence between realms.\n** {{pending for test}}:\n*** {{ci|Tahm Kench}} {{ai|Devour|Tahm Kench|Devours}} the target affected by ''Death Realm'' before it ends.\n** {{cai|Paranoia|Nocturne}} only applies {{tip|nearsight}} to enemy champions in the same dimension as him.\n*** The [[Summoner|player's]] screen will still change in color however.\n{{ct|cast}}",
+      "notes": "[[File:Realm_of_Death_ally_Spirit_screenshot.PNG|thumb|right|125px|'''Ally Spirit''']]\n[[File:Realm_of_Death_enemy_spirit_screenshot.PNG|thumb|right|125px|'''Enemy Spirit''']]\n* The ability will cancel and go on cooldown after the cast time if:\n** The target is {{tip|displacement immune}}, {{tip|cc-immune|crowd control immune}} or protected by a {{tip|spell shield}}.\n** '''Mordekaiser''' targets a {{tip|clone}} or {{cai|Glory in Death|Sion}}.\n* The ability will cancel but will not go on cooldown if:\n** '''Mordekaiser''' loses {{tip|sight}} of the target.\n** The target is too far away.\n** The target becomes {{tip|untargetable}}.\n** '''Mordekaiser''' or the target {{tip|death|dies}}.\n* {{tip|Spell shield}} will not block the initial {{tip|slow}}.\n* If the target's {{sti|health|link=true}} is lower than the amount that should be stolen, they will be brought down to 1 health. '''Mordekaiser''' will still get the usual amount of maximum health.\n* Unlike the other stats, '''Mordekaiser''' does not ''steal'' enemy total size; instead he gains 10% of his own size and reduces the enemy's size by 10% of theirs (all size modifiers stack additively).\n** '''Mordekaiser''' grows in size over {{fd|0.25}} seconds after successfully stealing his targets' stats, and shrinks over {{fd|0.25}} seconds after the buff runs out again. The target shrinks over {{fd|0.25}} seconds after their stats are stolen, but grows back to normal size instantly when the effect ends.\n* Entering or leaving the ''Death Realm'' will cause all targeted {{tip|projectile|projectiles}} to be {{tip|homing projectile destruction|destroyed}}.\n* The transition in and out of the ''Death Realm'' doesn't interrupt {{tip|channel|channels}}.\n* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion}} exception), and enemies that try to move out of the area will be displaced back inside.\n** {{tip|Dash|Dashes}}, {{tip|blink|blinks}}, {{tip|airborne|displacements}} and other forms of movement will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.\n* Multiple ''Death Realms'' (possible through a {{ai|Hijack|Sylas|hijacked}} ''Realm of Death'' or if multiple '''Mordekaisers''' are in the same match) spawned will exist in the same dimension, allowing champions to see and interact with champions bound to other circles. Champions are only affected by their boundaries and are not able to see the others.\n** {{cai|Devour|Tahm Kench}} can carry a target outside of their circle, but they will be displaced back inside once {{ai|Regurgitate|Tahm Kench|Regurgitated}}.\n** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until her circle ends. She can knock back and damage secondary targets multiple times.\n* ''Realm of Death'' will not be dispelled if either of the two affected champions enter {{tip|resurrection}} after taking lethal damage. It is dispelled if the target enters a {{tip|zombie state}}.\n* ''Realm of Death'' can be dispelled (excluding death and duration) if:\n** The target uses a {{tip|cleanse|cleansing}} effect, with the exceptions of {{si|Cleanse}}, {{ii|Mikael's Crucible}}, and {{cis|Kled}} {{ai|Skaarl the Cowardly Lizard 2|Kled|Dismount}}.\n*** {{cai|Soul Unbound|Yone}} recast is disabled while he is in the ''Realm of Death''.\n** '''Mordekaiser''' or the target cast another ''Realm of Death''. The affected champions will remain stuck for the duration of the new circle.\n* Any active {{tip|tether}} effects (both friendly and hostile ones) existing on either of the two champions entering the realm will be broken (unless the tether is between those two).\n* [[Structures]] exist in all realms at the same time. {{tip|Turret|Turrets}} will target normally as if all units were in the same realm.\n* The allied health, resource, and ultimate indicators (champion portraits located on the screen) will not update between realms as the [[Summoner|players]] have no {{tip|sight|vision}} of them.\n* ''Realm of Death's'' interactions with other elements/abilities:\n** {{tip|Brush|Brushes}} will maintain their presence between realms.\n** Switching realms detaches all {{tip|attached}} champions on either of the two champions entering the realm.\n** {{ai|The Hextech Ultimatum|Camille}}, catching a {{ai|Spinning Axe|Draven}}, {{ai|Timewinder|Ekko}}, {{ai|Parallel Convergence|Ekko}}, {{ai|Null Zone|Malzahar}}, {{ai|Twisted Advance|Maokai}}, {{ai|Pix, Faerie Companion|Lulu|Pix}}, {{ai|Threaded Volley 2|Taliyah|Worked Grounds}}, {{ai|Gravity Field|Viktor}}, {{ai|Satchel Charge|Ziggs}}, {{ui|Rift Scuttler|Rift Scuttler's}} {{bi|Speed Shrine}}, {{ii|Statikk Shiv}} and gaining {{ii|Zeke's Convergence}} [[File:Harbinger of Frost icon.png|20px|border|link=File:Harbinger of Frost icon.png]] area of effect are exceptions and may still take effect between dimensions ''if'' the conditions are valid.\n** Effects such as {{ai|Requiem|Karthus}}, {{ai|Absolute Zero|Nunu}}, {{ai|Grand Starfall|Pantheon}} and {{ai|Final Spark|Lux}} will only deal damage to enemies of the dimension they're in at time of cast. Ending the channel or cast time while inside another dimension will not do damage to nearby enemies.\n** {{cai|Lamb's Respite|Kindred}} is one of many area of effect abilities that will not take presence between realms.\n** {{ai|Shuriken Flip|Akali}} may be re-cast inside the ''Death Realm'' even if its target is outside it, but {{ci|Akali}} will stop ''dashing'' upon colliding with the boundary.\n** {{ai|Clean Cuts|Xayah|Feathers}} cannot be interacted with between realms by {{ci|Xayah}} ({{ai|Bladecaller|Xayah}} will not call feathers in the other realm towards her).\n** Any spawned terrain while in the ''Death Realm'' will remain inside until expired. They will not be destroyed.\n** {{ai|Weaver's Wall|Taliyah}} is interrupted both when {{ci|Taliyah}} enters the ''Realm of Death'' and leaves it.\n** {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} may not be re-cast while his victim is not in the same realm as him, but an already chained foe will still continue to be reeled in and executed. The {{tip|fear}} is cast in the realm Urgot is in.\n** {{ai|Void Shift|Malzahar}} dispels from ''Realm of Death's'' {{tip|slow}}, making it vulnerable to the ''Death Realm''.\n** {{ai|Clockwork Windup|Orianna|Ball}} will instantly return back to Orianna if she's sent to another dimension.\n** {{ii|Eye of the Herald}} and {{si|Teleport}} are disabled while in the ''Realm of Death''.\n** Controllable [[pets]] and [[decoy]]s can still be commanded between realms.\n** [[Jungle plants]] ({{ui|Blast Cone}}, {{ui|Honeyfruit}}, {{ui|Scryer's Bloom}}) will not take presence between realms.\n** {{cai|Paranoia|Nocturne}} only applies {{tip|nearsight}} to enemy champions in the same dimension as him.\n*** The [[Summoner|player's]] screen will still change in color however.\n{{ct|cast}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "0",

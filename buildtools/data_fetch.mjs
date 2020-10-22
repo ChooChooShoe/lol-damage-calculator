@@ -57,9 +57,9 @@ async function wikia_to_json(body) {
     // let indent = 0
     for (let line of raw.split('\n')) {
         const tline = line.trim();
-        if(line === '' || tline.startsWith('--'))
+        if (line === '' || tline.startsWith('--'))
             continue;
-        if(line.startsWith('return')) {
+        if (line.startsWith('return')) {
             results.push('{')
             continue;
         }
@@ -68,35 +68,34 @@ async function wikia_to_json(body) {
         // if(line.includes('}'))
         //     indent--;
         line = line
-            // //replaces [" and "] with "
-            .replace(/\["|"]/g,`"`)
-            // //replaces = with :
-            .replace(/=/g,`:`)
-            // //replaces [1] : with nothing if line has a { or is after a ', '
-            .replace(/, \[\d] : /g,`, `).replace(/{\[\d] : /g,`{`)
-            // //replaces { and } with [ and ] only if line has both
-            .replace(/{(.*)}/g,`[$1]`)
-
+            //replaces [" and "] with "
+            .replace(/\["|"]/g, `"`)
+            //replaces = with :
+            .replace(/=/g, `:`)
+            //replaces [1] : with nothing if line has a { or is after a ', '
+            .replace(/, \[\d] : /g, `, `).replace(/{\[\d] : /g, `{`)
+            //replaces { and } with [ and ] only if line has both
+            .replace(/{(.*)}/g, `[$1]`)
+            //replaces [12] : with "12" :
+            .replace(/\[(\d)+] : /g, `"$1" : `)
             ;
-            // Special case for Aphelios
-            line = line.replace(/\[(\d)] : /g,`"$1" : `)
         results.push(line);
     }
     const js = results.join('\n');
 
     // DEBUG --- test if the data is valid data.
-    // fs.promises.writeFile('./buildtools/testjson.json', js, function (err) {
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    //     console.log(`The file  was saved!`);
-    // });
+    fs.promises.writeFile('./buildtools/testjson.json', js, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(`The file  was saved!`);
+    });
 
     return JSON5.parse(js);
 
 }
 async function fetch_wikia(url) {
-    console.log('Fetching (wikia)',url);
+    console.log('Fetching (wikia)', url);
     const response = await fetch(url);
     const text = await response.text();
 
@@ -116,13 +115,13 @@ async function fetch_wikia(url) {
         if (isFirstLine) {
             // line === "{{{{{1<noinclude>|Ability data</noinclude>}}}|Terrashape|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}"
             const match = line.match(/noinclude>}}}\|([^|]*)\|/);
-            if(match) {
+            if (match) {
                 obj["name"] = match[1];
                 console.log("Setting name to", match[1]);
                 isFirstLine = false;
             } else {
                 obj["name"] = String(line);
-                console.log("Setting name to",line);
+                console.log("Setting name to", line);
                 isFirstLine = false;
             }
         } else {
@@ -172,7 +171,7 @@ async function doMergeData(riotChampPromise, wikiaChamp) {
 
     model.skills = {};
 
-    await createSkill('I', wikiaChamp.skill_i, riotChamp.passive,   true,  model);
+    await createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model);
     await createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model);
     await createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model);
     await createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model);
@@ -414,7 +413,7 @@ async function onRealmJsonResponse(body) {
     // Use the lateset version.
     version = body[0];
     // Cuts the last .1 off of ddragon patch versions to look like normal patches.
-    dispVersion = version.replace(/\.1$/,"")
+    dispVersion = version.replace(/\.1$/, "")
     lang = "en_US";
     console.log("Using ddragon version:", version);
 
@@ -431,12 +430,14 @@ async function onRealmJsonResponse(body) {
     const mod_data_url = `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`;
 
     console.log("Fetching (json): %s", championUrl);
-    console.log("Fetching (wikia-module): %s", mod_data_url);
-
     const responseDDragon = await fetch(championUrl);
+    console.log("Fetching (wikia-module): %s", mod_data_url);
     const responseWikia = await fetch(mod_data_url);
+    console.log("Parsing (responseDDragon)");
     const bodyDDragon = await responseDDragon.json();
+    console.log("Parsing (responseWikia)");
     const bodyWikia = await wikia_to_json(responseWikia)
+    console.log("Building Champion Json");
     return onChampionJsonResponse(bodyDDragon, bodyWikia);
 }
 
@@ -470,9 +471,9 @@ function onChampionJsonResponse(champ_json, fandom_data) {
         }
         // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
         const url = `${cdn}/${version}/data/${lang}/champion/${champ.id}.json`;
-        console.log('Fetching (ddragon)',url)
+        console.log('Fetching (ddragon)', url)
         const fullDataPromise = fetch(url).then((response) => response.json());
-        
+
         doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
             return saveFile(`./public/api/champion/${champ.id}.json`, data);
         });
@@ -508,7 +509,7 @@ async function createSkill(letter, skillNames, riotData, isPassive, champModel) 
         }
     }
 }
-function doMergeSkillData(){
+function doMergeSkillData() {
 
 }
 

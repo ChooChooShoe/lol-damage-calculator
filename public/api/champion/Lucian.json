@@ -1,6 +1,6 @@
 {
   "patch": "V3.10a",
-  "changes": "10.13.1",
+  "changes": "10.19.1",
   "id": "Lucian",
   "name": "Lucian",
   "title": "the Purifier",
@@ -44,7 +44,7 @@
     "crit": 0,
     "critperlevel": 0,
     "attackdamage": 64,
-    "attackdamageperlevel": 2.75,
+    "attackdamageperlevel": 2.3,
     "attackspeedperlevel": 3.3,
     "attackspeed": 0.638
   },
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} After using an ability, '''Lucian's''' next [[basic attack]] within 3 seconds shoots twice, the second shot dealing {{as|{{passive progression/deprecated version|showtype=true|key=%|50 to 60|1;7;13}} AD {{tip|physical damage|{{as|physical damage}}}}}}, increased to {{as|100% AD}} against {{tip|minion|minions}}.",
+        "{{sbc|Innate:}} After using an ability, '''Lucian's''' next [[basic attack]] within {{fd|3.5}} seconds shoots an additional shot after a short delay, which deals {{as|{{passive progression/deprecated version|showtype=true|key=%|50 to 60|1;7;13}} AD {{as|physical damage}}}}, increased to {{as|100% AD}} against {{tip|minion|minions}}.",
         "The second shot applies {{tip|on-hit|on-hits}} and [[on-attack]] effects at full effect and is affected by {{tip|critical strike}} modifiers.",
         "If '''Lucian's''' primary target is killed before the second shot can go off, he automatically shoots another enemy in range.",
         "''Lightslinger is not consumed and does not trigger the second basic attack if '''Lucian''' is {{tip|silence|silenced}}.''"
@@ -107,7 +107,7 @@
       "description": [
         "{{sbc|Active:}} '''Lucian''' fires a laser in the direction of the target enemy, dealing {{as|physical damage}} to all enemies hit in a line."
       ],
-      "notes": "* ''Piercing Light'' will attempt to lead the target if it is moving but does not adjust further during cast time (enemies can dodge the laser if they change their position by a sufficient amount during the cast time).",
+      "notes": "* ''Piercing Light'' will attempt to lead the target if it is moving but does not adjust further during cast time (enemies can dodge the laser if they change their position by a sufficient amount during the cast time).\n* ''Piercing Light's'' casts from the location '''Lucian''' was at at the start of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50/60/70/80/90",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|95 to 235}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['95','130','165','200','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[95,130,165,200,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -127,22 +127,22 @@
                 200,
                 235
               ],
-              null
+              [
+                60,
+                75,
+                90,
+                105,
+                120
+              ]
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": [
-                  0.6,
-                  0.75,
-                  0.9,
-                  1.05,
-                  1.2
-                ]
+                "player_bonus_ad": 6075901051.2
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['95','130','165','200','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[95,130,165,200,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -156,16 +156,10 @@
                   200,
                   235
                 ],
-                "player_bonus_ad": [
-                  0.6,
-                  0.75,
-                  0.9,
-                  1.05,
-                  1.2
-                ]
+                "player_bonus_ad": 6075901051.2
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['95','130','165','200','235']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['60','75','90','105','120']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[95,130,165,200,235]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -191,8 +185,8 @@
         0
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": "{{tt|425|maximum range}}",
+      "targeting": "Location",
+      "target_range": "{{tt|425|maximum range}} / {{tt|200|minimum range}}",
       "image": {
         "full": "LucianE.png",
         "sprite": "spell7.png",
@@ -208,7 +202,7 @@
         "''Relentless Pursuit'' {{tip|basic attack reset|resets}} '''Lucian's''' basic attack timer.",
         "''Relentless Pursuit'' can be cast during {{ai|The Culling|Lucian}} and other abilities can be cast during ''Relentless Pursuit''."
       ],
-      "notes": "* Additional on-hits during ''Lightslinger'' are not considered for the cooldown reduction (i.e {{ii|Runaan's Hurricane}}, {{ii|Guinsoo's Rageblade}}).",
+      "notes": "* Additional on-hits during ''Lightslinger'' are not considered for the cooldown reduction (i.e {{ii|Runaan's Hurricane}}, {{ii|Guinsoo's Rageblade}}).\n* Unlike some dashes, '''Lucian's''' dash speed does ''not'' scale with his {{as|movement speed}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40/30/20/10/0",
@@ -230,8 +224,8 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": 1200,
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tip|er|icononly = true}} {{tt|1200|pending for confirmation}} (with offset)",
       "image": {
         "full": "LucianR.png",
         "sprite": "spell7.png",
@@ -242,8 +236,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lucian''' rapidly {{tip|channel|fires}} shots in the target direction for 3 seconds, dealing {{as|physical damage}} to the first enemy they collide with. The damage is doubled against enemy {{tip|minion|minions}}. ''The Culling'' can be recast after 1 second.",
-        "While using ''The Culling'', '''Lucian''' always faces in the casted direction and is {{tip|ghosted}}.",
+        "{{sbc|Active:}} '''Lucian''' rapidly {{tip|channel|fires}} shots in the target direction for 3 seconds, dealing {{as|physical damage}} to the first enemy they collide with. The damage is doubled against enemy {{tip|minion|minions}}. ''The Culling'' can be recast after {{fd|0.75}} seconds.",
+        "While using ''The Culling'', '''Lucian''' always faces in the casted direction and is {{tip|ghosted}}, and he fires the shots in the target direction from his current position.",
         "{{sbc|Recast:}} '''Lucian''' ends ''The Culling'' early."
       ],
       "notes": "* '''Lucian''' can interact with {{ai|Dark Passage|Thresh}} or {{ai|Devour|Tahm Kench}} without {{tip|interrupt|interrupting}} ''The Culling''.\n* ''The Culling'' creates the shots at an offset of 35 units to the front plus 35 units towards each side of '''Lucian''' (sides alternating), instead of at his center, like most skillshot (missile) abilities.\n* Even though each bullet can only hit one target, it will not proc {{ii|Muramana}} since ''The Culling'' applies [[ability effects|spell effects]] as {{tip|persistent area damage}}.\n* The damage dealt by each bullet of ''The Culling'' is calculated when the bullet reaches a target, just like single missile abilities.\n* {{tip|Spell shield}} only blocks one instance of damage.\n* The following table refers for interactions while '''Lucian''' is {{tip|channel|channeling}}:\n{{ct|channel|cast={{ai|Relentless Pursuit|Lucian}} is usable. {{ai|Piercing Light|Lucian}} and {{ai|Ardent Blaze|Lucian}} are disabled. This ability recasts to end channel.|move=true|items=true,true,interrupts,true,true|attack=false|spells=true,true,true,false,false}}",
@@ -254,7 +248,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage Per Shot|{{ap|20 to 60}} {{as|(+ 25% AD)}} {{as|(+ 10% AP)}}|Total Non-Minion Damage|{{ap|(20 to 60)*(22 to 34)}} {{as|(+ {{ap|25*22 to 25*34}}% AD)}} {{as|(+ {{ap|10*22 to 10*34}}% AP)}}}}\n{{st|Minion Damage Per Shot|{{ap|20*2 to 60*2}} {{as|(+ 50% AD)}} {{as|(+ 20% AP)}}|Total Minion Damage|{{ap|(20*2 to 60*2)*(22 to 34)}} {{as|(+ {{ap|25*2*22 to 25*2*34}}% AD)}} {{as|(+ {{ap|10*2*22 to 10*2*34}}% AP)}}}}\n{{st|Shots Fired|{{ap|22 to 34}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage Per Shot</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Non-Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['550','625','700','775','850']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['220','250','280','310','340']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minion Damage Per Shot</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['1100','1250','1400','1550','1700']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['440','500','560','620','680']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Shots Fired</span>: <span><spell-span :list=\"['22','25','28','31','34']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage Per Shot</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Non-Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,625,700,775,850]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,250,280,310,340]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minion Damage Per Shot</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1250,1400,1550,1700]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,500,560,620,680]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Shots Fired</span>: <span><SpellSpan :list=\"[22,25,28,31,34]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -301,7 +295,13 @@
                 620,
                 680
               ],
-              null
+              [
+                22,
+                25,
+                28,
+                31,
+                34
+              ]
             ],
             "as_ratios": [
               {
@@ -317,29 +317,23 @@
                 "player_total_ap": 0.2
               },
               {
-                "player_total_ad": [
-                  0.22,
-                  0.25,
-                  0.28,
-                  0.31,
-                  0.34
-                ]
+                "player_total_ad": 5506257007758.5
               },
               {
-                "player_total_ap": []
+                "player_total_ap": 2202502803103.4
               },
               {
-                "player_total_ad": []
+                "player_total_ad": 110012501400155000
               },
               {
-                "player_total_ap": []
+                "player_total_ap": 4405005606206.8
               }
             ],
             "st_slices": [
               "Minion Damage Per Shot",
-              "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "Total Minion Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['1100','1250','1400','1550','1700']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['440','500','560','620','680']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1250,1400,1550,1700]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,500,560,620,680]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -357,7 +351,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Minion Damage Per Shot",
-              "str": "<spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -374,7 +368,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Total Minion Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <spell-span :list=\"['1100','1250','1400','1550','1700']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span> <span class=\"ap\">(+ <spell-span :list=\"['440','500','560','620','680']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1250,1400,1550,1700]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,500,560,620,680]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
               "damage_type": "unknown"
             }
           ]

@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.138",
-  "changes": "10.12.1",
+  "changes": "10.21.1",
   "id": "Hecarim",
   "name": "Hecarim",
   "title": "the Shadow of War",
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Hecarim''' gains {{as|{{passive progression/deprecated version|7|key=%|15 to 30|1;3 to 18|formula=15%+2.5% every 3 levels starting from level 3}} of his '''bonus''' {{sti|movement speed}}}} as {{as|'''bonus''' attack damage}}."
+        "{{sbc|Innate:}} '''Hecarim''' gains {{as|{{passive progression/deprecated version|7|key=%|15 to 30|1;3 to 18|formula=15%+2.5% every 3 levels starting from level 3}} of his {{sti|'''bonus''' movement speed}}}} as {{sti|{{as|'''bonus''' attack damage}}}}."
       ],
-      "notes": "* ''Warpath's'' bonus attack damage will adjust itself to any temporary movement speed [[buff|buffs]] and [[debuff]]s ''Hecarim'' is affected by ({{ii|Youmuu's Ghostblade}}, {{ai|Song of Celerity|Sona}}, {{si|Ghost}}, {{ii|Randuin's Omen}}, {{ai|Wither|Nasus}}).\n** Since this only affects bonus values ''Hecarim'' will not dip below his regular attack damage if he is slowed below his base movement speed.\n* The amount of movement speed scaling to bonus attack damage is refreshed every {{fd|0.25}} seconds.",
+      "notes": "* ''Warpath's'' '''bonus''' attack damage will adjust itself to any temporary movement speed [[buff|buffs]] and [[debuff]]s '''Hecarim''' is affected by ({{ii|Youmuu's Ghostblade}}, {{ai|Song of Celerity|Sona}}, {{si|Ghost}}, {{ii|Randuin's Omen}}, {{ai|Wither|Nasus}}).\n** Since this only affects '''bonus''' values '''Hecarim''' will not dip below his regular attack damage if he is {{tip|slow|slowed}} below his '''base''' movement speed.\n* The amount of movement speed scaling to '''bonus''' attack damage is refreshed every {{fd|0.25}} seconds.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -90,7 +90,7 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "HecarimRapidSlash.png",
         "sprite": "spell4.png",
@@ -101,8 +101,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Hecarim''' cleaves nearby enemies, dealing {{tip|physical damage|{{as|physical damage}}}}, reduced to 60% against [[minion]]s.",
-        "If '''Hecarim''' damages at least one enemy with ''Rampage'', its '''base''' {{sti|cooldown}} is reduced by 1 second and the damage is increased by 5% for 8 seconds, [[stack|stacking]] up to two times."
+        "{{sbc|Active:}} '''Hecarim''' cleaves nearby enemies, dealing {{as|physical damage}}, reduced to 60% against [[minion]]s.",
+        "If '''Hecarim''' damages at least one enemy with ''Rampage'', he gains a [[buff]] for 8 seconds, [[stack]]ing up to two times, with the duration refreshing on subsequent damaging hits. The buff increases the damage of ''Rampage'' by 5% and reduces the '''base''' cooldown by 1, up to a 10% damage increase and a reduction in 2 seconds of the '''base''' cooldown at two stacks."
       ],
       "notes": "* No additional notes.",
       "skillkey": "Q",
@@ -112,7 +112,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|60 to 228}} {{as|(+ 70% '''bonus''' AD)}}|Minion damage|{{ap|60*0.6 to 228*0.6}} {{as|(+ {{ap|70*0.6}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['60','102','144','186','228']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minion damage</span>: <span><spell-span :list=\"['36','61.2','86.4','111.6','136.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['42']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,102,144,186,228]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minion damage</span>: <span><SpellSpan :list=\"[36,61.2,86.4,111.6,136.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[42]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -131,23 +131,23 @@
                 111.6,
                 136.8
               ],
-              null
+              [
+                42
+              ]
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": 0.7000000000000001
               },
               {
-                "player_bonus_ad": [
-                  0.42
-                ]
+                "player_bonus_ad": 0.42
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['60','102','144','186','228']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[60,102,144,186,228]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
               "Minion damage",
-              "<spell-span :list=\"['36','61.2','86.4','111.6','136.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['42']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[36,61.2,86.4,111.6,136.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[42]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -164,7 +164,7 @@
                 "player_bonus_ad": 0.7000000000000001
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['60','102','144','186','228']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[60,102,144,186,228]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -180,14 +180,14 @@
                 "player_bonus_ad": 0.7000000000000001
               },
               "title": "Minion damage",
-              "str": "<spell-span :list=\"['36','61.2','86.4','111.6','136.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['42']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[36,61.2,86.4,111.6,136.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[42]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Maximum Damage|{{ap|60*1.1 to 228*1.1}} {{as|(+ {{ap|70*1.1}}% '''bonus''' AD)}}|Maximum Minion damage|{{ap|60*1.1*0.6 to 228*1.1*0.6}} {{as|(+ {{ap|70*1.1*0.6}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['66','112.2','158.4','204.6','250.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['77']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Minion damage</span>: <span><spell-span :list=\"['39.6','67.32','95.04','122.76','150.48']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['46.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[66,112.2,158.4,204.6,250.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[77]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Minion damage</span>: <span><SpellSpan :list=\"[39.6,67.32,95.04,122.76,150.48]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[46.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -209,23 +209,23 @@
                 122.76,
                 150.48
               ],
-              null
+              [
+                46.2
+              ]
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": [
-                  0.462
-                ]
+                "player_bonus_ad": 0.77
               },
               {
-                "player_bonus_ad": []
+                "player_bonus_ad": 0.462
               }
             ],
             "st_slices": [
               "Maximum Damage",
-              "<spell-span :list=\"['66','112.2','158.4','204.6','250.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['77']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[66,112.2,158.4,204.6,250.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[77]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "Maximum Minion damage",
-              "<spell-span :list=\"['39.6','67.32','95.04','122.76','150.48']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['46.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[39.6,67.32,95.04,122.76,150.48]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[46.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -239,12 +239,10 @@
                   204.6,
                   250.8
                 ],
-                "player_bonus_ad": [
-                  0.462
-                ]
+                "player_bonus_ad": 0.77
               },
               "title": "Maximum Damage",
-              "str": "<spell-span :list=\"['66','112.2','158.4','204.6','250.8']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['77']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[66,112.2,158.4,204.6,250.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[77]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -253,12 +251,10 @@
                 "base_damage": [
                   77
                 ],
-                "player_bonus_ad": [
-                  0.462
-                ]
+                "player_bonus_ad": 0.77
               },
               "title": "Maximum Minion damage",
-              "str": "<spell-span :list=\"['39.6','67.32','95.04','122.76','150.48']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['46.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[39.6,67.32,95.04,122.76,150.48]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[46.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -284,7 +280,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "HecarimW.png",
         "sprite": "spell4.png",
@@ -295,7 +291,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Hecarim''' surrounds himself with the spirit of dread for 4 seconds, dealing {{tip|magic damage|{{as|magic damage}}}} per second to all enemies within its reach.",
+        "{{sbc|Active:}} '''Hecarim''' surrounds himself with the spirit of dread for 4 seconds, dealing {{as|magic damage}} per second to all enemies within its reach.",
         "While ''Spirit of Dread'' is active, '''Hecarim''' is {{tip|heal|healed}} for 30% of the damage taken by enemies from any source within the area, capped from {{tip|minions}} and {{tip|monsters}}."
       ],
       "notes": "*The only restriction ''Spirit of Dread'' has for {{tip|heal|healing}} '''Hecarim''' is that the source must not be an enemy (damage from neutral monsters will count) and that enemies spending their own health to use abilities will not count.\n* The healing cap against minions accounts for every single one regardless of how many are present and/or affected by ''Spirit of Dread'' at the time of cast.",
@@ -306,7 +302,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Second|{{ap|20 to 60}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|20*4 to 60*4}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -336,9 +332,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Second",
-              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Total Magic Damage",
-              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -355,7 +351,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Magic Damage Per Second",
-              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -371,14 +367,14 @@
                 "player_total_ap": 0.2
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Capped Healing|{{ap|90 to 210}}}}",
-          "str": "<ul><li><span class=\"blue\">Capped Healing</span>: <span><spell-span :list=\"['90','120','150','180','210']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Capped Healing</span>: <span><SpellSpan :list=\"[90,120,150,180,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -393,7 +389,7 @@
             ],
             "st_slices": [
               "Capped Healing",
-              "<spell-span :list=\"['90','120','150','180','210']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[90,120,150,180,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -409,7 +405,7 @@
                 ]
               },
               "title": "Capped Healing",
-              "str": "<spell-span :list=\"['90','120','150','180','210']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[90,120,150,180,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -435,7 +431,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "HecarimRamp.png",
         "sprite": "spell4.png",
@@ -446,10 +442,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Hecarim''' becomes {{tip|ghosted}} and gains {{sti|ms|{{as|{{passive progression/deprecated version|13|type=time active|key=%|25 to 100|0 to 3|formula=6.125% '''bonus''' movement speed every 0.25 seconds. ''This is capped at 3 seconds.''}} '''bonus''' movement speed|ms}}}} for 4 seconds.",
-        "While in effect, '''Hecarim's''' next [[basic attack]] is empowered to gain {{passive progression/deprecated version|9|type=distance traveled|50 to 250|0 to 1200}} {{sti|range|'''bonus''' range}} and cause him to {{tip|dash}} towards the target's direction. If the target remains nearby during '''Hecarim's''' ''dash'', they're {{tip|airborne|knocked back}} {{passive progression/deprecated version|9|type=distance traveled|250 to 450|0 to 1200}} units and dealt {{as|modified physical damage}}, increased by {{passive progression/deprecated version|9|type=distance traveled|key=%|0 to 100|0 to 1200}}, ending the ability in the process.",
-        "''Devastating Charge'' {{tip|basic attack reset|resets}} '''Hecarim's ''' basic attack timer.",
-        "''Devastating Charge's'' duration is paused during {{ai|Onslaught of Shadows|Hecarim}}."
+        "{{sbc|Active:}} '''Hecarim''' becomes {{tip|ghosted}} and gains {{sti|ms|{{as|{{passive progression/deprecated version|13|type=time active|key=%|25 to 85|0 to 3|formula=5% '''bonus''' movement speed every 0.25 seconds. ''This is capped at 3 seconds.''}} '''bonus''' movement speed|ms}}}} for 4 seconds.",
+        "While in effect, '''Hecarim's''' next [[basic attack]] is empowered to gain {{passive progression/deprecated version|9|type=distance traveled|50 to 250|0 to 1200}} {{sti|range|'''bonus''' range}} and cause him to {{tip|dash}} towards the target's direction. If the target remains nearby during '''Hecarim's''' ''dash'', they're {{tip|airborne|knocked back}} {{passive progression/deprecated version|9|type=distance traveled|250 to 450|0 to 1200}} units, {{tip|stun|stunned}} for {{fd|0.25}} seconds, and dealt modified {{as|physical damage}}, increased by {{passive progression/deprecated version|9|type=distance traveled|key=%|0 to 100|0 to 1200}}, ending the ability in the process.",
+        "''Devastating Charge'' {{tip|basic attack reset|resets}} '''Hecarim's ''' basic attack timer and can {{tip|critically strike}} for {{as|{{critical damage|100}} AD}} {{as|'''bonus''' physical damage}}.",
+        "''Devastating Charge's duration is paused during {{ai|Onslaught of Shadows|Hecarim}}.''"
       ],
       "notes": "* '''Hecarim''' can cast any of his [[champion ability|abilities]] while {{tip|dash|dashing}}.\n** {{ai|Onslaught of Shadows|Hecarim}} will interrupt the dash.\n* The {{as|'''bonus''' movement speed}} {{tip|stacks multiplicatively}} with other sources.\n* The bonus attack range stacks additively with {{ii|Rapid Firecannon}}.\n* ''Devastating Charge'' will still apply its effects to the target even if the {{tip|dash}} is {{tip|interrupt|interrupted}}, but not if he goes into {{tip|resurrection}}.\n* ''Devastating Charge's'' damage will apply {{sti|life steal|link=true}} and will affect structures.\n* ''\"Distance traveled\"'' can be simple movement as well as {{tip|dash|dashing}} and {{tip|blink|blinking}}.\n* ''Devastating Charge's'' damage will not bypass {{tip|block}} or {{tip|dodge}} but the {{tip|airborne|knock back}} will still be applied.\n** ''Devastating Charge'' will still deal damage while {{tip|blind|blinded}}.\n* While {{tip|ground|grounded}} or {{tip|root|rooted}}, '''Hecarim''' loses the {{sti|'''bonus''' attack range}} from ''Devastating Charge''.\n** '''Hecarim''' will not use the empowered attack while {{tip|root|rooted}}.\n* The {{tip|dash}} does not follow targets. The target's position at the time of the enhanced attack is the direction '''Hecarim''' will leap to.",
       "skillkey": "E",
@@ -458,25 +454,25 @@
       "cooldownBurn": "20/19/18/17/16",
       "effects": [
         {
-          "levelingtext": "{{st|Minimum Physical Damage|{{ap|45 to 165}} {{as|(+ 50% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|45*2 to 165*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><spell-span :list=\"['90','150','210','270','330']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Minimum Physical Damage|{{ap|35 to 155}} {{as|(+ 50% '''bonus''' AD)}}|Maximum Physical Damage|{{ap|35*2 to 155*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Minimum Physical Damage</span>: <span><SpellSpan :list=\"[35,65,95,125,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Physical Damage</span>: <span><SpellSpan :list=\"[70,130,190,250,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                45,
-                75,
-                105,
-                135,
-                165
+                35,
+                65,
+                95,
+                125,
+                155
               ],
               [
-                90,
-                150,
-                210,
-                270,
-                330
+                70,
+                130,
+                190,
+                250,
+                310
               ]
             ],
             "as_ratios": [
@@ -489,9 +485,9 @@
             ],
             "st_slices": [
               "Minimum Physical Damage",
-              "<spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[35,65,95,125,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "Maximum Physical Damage",
-              "<spell-span :list=\"['90','150','210','270','330']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[70,130,190,250,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -499,32 +495,32 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  45,
-                  75,
-                  105,
-                  135,
-                  165
+                  35,
+                  65,
+                  95,
+                  125,
+                  155
                 ],
                 "player_bonus_ad": 0.5
               },
               "title": "Minimum Physical Damage",
-              "str": "<spell-span :list=\"['45','75','105','135','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[35,65,95,125,155]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  90,
-                  150,
-                  210,
-                  270,
-                  330
+                  70,
+                  130,
+                  190,
+                  250,
+                  310
                 ],
                 "player_bonus_ad": 0.5
               },
               "title": "Maximum Physical Damage",
-              "str": "<spell-span :list=\"['90','150','210','270','330']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[70,130,190,250,310]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -546,7 +542,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 1000,
       "image": {
         "full": "HecarimUlt.png",
@@ -558,7 +554,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Hecarim''' summons ''[[:File:Hecarim Onslaught of Shadows Render.png|spectral riders]]'' and {{tip|dashes}} {{tip|unstoppable|unstoppably}} in the target direction with them, dealing {{as|magic damage}} to all enemies in their path.",
+        "{{sbc|Active:}} '''Hecarim''' summons spectral riders and {{tip|dashes}} with {{tip|displacement immunity}} in the target direction with them, dealing {{as|magic damage}} to all enemies in their path.",
         "Enemies within range of where '''Hecarim''' stops are also made to {{tip|flee}} from him for {{passive progression/deprecated version|11|type=distance traveled|0.75 to 2|0 to 1000}} seconds, also gradually {{tip|slow|slowing}} them by up to 99% over the duration. ''The slow's strength cannot be reduced and is based on how far the affected units are from '''Hecarim''', having no slow at all from very close range.''",
         "The wave of ''spectral riders'' travels through ''Onslaught of Shadows's'' full length, regardless of where '''Hecarim''' himself stops."
       ],
@@ -570,7 +566,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -590,7 +586,7 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -607,7 +603,7 @@
                 "player_total_ap": 1
               },
               "title": "Magic damage",
-              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]

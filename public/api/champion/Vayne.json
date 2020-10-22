@@ -1,6 +1,6 @@
 {
   "patch": "v1.0.0.118",
-  "changes": "10.11.1",
+  "changes": "10.20.1",
   "id": "Vayne",
   "name": "Vayne",
   "title": "the Night Hunter",
@@ -8,8 +8,8 @@
     "full": "Vayne.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 432,
-    "y": 0,
+    "x": 0,
+    "y": 48,
     "w": 48,
     "h": 48
   },
@@ -58,8 +58,8 @@
         "full": "Vayne_NightHunter.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 432,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -97,16 +97,16 @@
         "full": "VayneTumble.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Vayne''' {{tip|dash|dashes}} forward, though not through terrain, and her next [[basic attack]] within 7 seconds deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Active:}} '''Vayne''' {{tip|dash|dashes}} in the target direction, though not through terrain, and her next [[basic attack]] within 7 seconds deals {{as|'''bonus''' physical damage}}.",
         "''Tumble'' {{tip|basic attack reset|resets}} '''Vayne's''' basic attack timer."
       ],
-      "notes": "* Although ''Tumble'' will reset the basic attack timer, '''Vayne''' cannot attack until the animation is complete.\n* '''Vayne''' can cast {{ai|Final Hour|Vayne}} during ''Tumble''. She does not become {{tip|invisible}} during the dash.",
+      "notes": "* The bonus damage applies {{sti|life steal|link=true}}.\n* Although ''Tumble'' will reset the basic attack timer, '''Vayne''' cannot attack until the animation is complete.\n* '''Vayne''' can cast {{ai|Final Hour|Vayne}} during ''Tumble''. She does not become {{tip|invisible}} during the dash.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "30",
@@ -114,43 +114,44 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|60 to 80}}% AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"ad\"><SpellSpan :list=\"[60,65,70,75,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                60,
+                65,
+                70,
+                75,
+                80
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_ad": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
-                ]
+                "player_total_ad": 60657075.800000004
               }
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>"
+              "<span class=\"ad\"><SpellSpan :list=\"[60,65,70,75,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_ad": [
-                  0.6,
-                  0.65,
-                  0.7,
-                  0.75,
-                  0.8
-                ]
+                "base_damage": [
+                  60,
+                  65,
+                  70,
+                  75,
+                  80
+                ],
+                "player_total_ad": 60657075.800000004
               },
               "title": "Bonus Physical Damage",
-              "str": "<span class=\"ad\"><spell-span :list=\"['60','65','70','75','80']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[60,65,70,75,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span>",
               "damage_type": "physical"
             }
           ]
@@ -180,14 +181,14 @@
         "full": "VayneSilveredBolts.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Vayne's''' [[basic attacks]] and {{ai|Condemn|Vayne}} apply a stack of ''Silver Bolts'' for {{fd|3.5}} seconds, up to 3 times. Attacking a new enemy removes all stacks from the previous target.",
-        "The third stack consumes them all to deal {{tip|true damage|{{as|'''bonus''' true damage}}}}, with a minimum threshold, and capped at 200 against {{tip|monster|monsters}}."
+        "{{sbc|Passive:}} '''Vayne's''' [[basic attacks]] and {{ai|Condemn|Vayne}} apply a [[stack]] of ''Silver Bolts'' for {{fd|3.5}} seconds, stacking up to to 3 times, with the duration refreshing upon applying the second stack. Attacking a new enemy removes all stacks from the previous target.",
+        "The third stack consumes them all to deal {{sti|true damage|{{as|'''bonus''' true damage}}}}, with a minimum threshold, and capped at 200 against {{tip|monster|monsters}}."
       ],
       "notes": "* [[Stack]]s are not removed if '''Vayne''' switches to attacking a target immune to ''Silver Bolts'' ({{tip|turret|structures}}, {{tip|ward|wards}}).\n* ''Silver Bolts'' do not apply to additional targets with {{ii|Runaan's Hurricane}}.\n* The third attack consumes all stacks even if the target is in {{tip|stasis}}.",
       "skillkey": "W",
@@ -197,7 +198,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus True Damage|{{as|{{ap|4 to 14}}% of target's '''maximum''' health}}}}<!--\n-->{{st|Minimum True Damage|{{as|{{ap|50 to 110}}|true damage}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus True Damage</span>: <span><span class=\"health\"><spell-span :list=\"['4','6.5','9','11.5','14']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum True Damage</span>: <span><span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus True Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[4,6.5,9,11.5,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[50,65,80,95,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -209,25 +210,25 @@
                 11.5,
                 14
               ],
-              null
+              [
+                50,
+                65,
+                80,
+                95,
+                110
+              ]
             ],
             "as_ratios": [
               {
-                "target_total_hp": [
-                  0.5,
-                  0.65,
-                  0.8,
-                  0.95,
-                  1.1
-                ]
+                "target_total_hp": null
               },
               {
-                "player_total_unknown": []
+                "player_total_unknown": 50658095110
               }
             ],
             "st_slices": [
               "Minimum True Damage",
-              "<span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"true-damage\"><SpellSpan :list=\"[50,65,80,95,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
             ]
           },
           "subeffects": [
@@ -241,17 +242,11 @@
                   11.5,
                   14
                 ],
-                "target_total_hp": [
-                  0.5,
-                  0.65,
-                  0.8,
-                  0.95,
-                  1.1
-                ],
-                "player_total_unknown": []
+                "target_total_hp": null,
+                "player_total_unknown": 50658095110
               },
               "title": "Minimum True Damage",
-              "str": "<span class=\"true-damage\"><spell-span :list=\"['50','65','80','95','110']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"true-damage\"><SpellSpan :list=\"[50,65,80,95,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "true"
             }
           ]
@@ -283,7 +278,7 @@
         "full": "VayneCondemn.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -300,7 +295,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 50% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -320,7 +315,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -337,14 +332,14 @@
                 "player_bonus_ad": 0.5
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['50','85','120','155','190']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[50,85,120,155,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Damage|{{ap|50*1.5 to 190*1.5}} {{as|(+ 75% '''bonus''' AD)}}|Total Damage|{{ap|50*2.5 to 190*2.5}} {{as|(+ 125% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['75','127.5','180','232.5','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['125','212.5','300','387.5','475']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 125% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[75,127.5,180,232.5,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[125,212.5,300,387.5,475]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 125% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -374,9 +369,9 @@
             ],
             "st_slices": [
               "Bonus Damage",
-              "<spell-span :list=\"['75','127.5','180','232.5','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[75,127.5,180,232.5,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
               "Total Damage",
-              "<spell-span :list=\"['125','212.5','300','387.5','475']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 125% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[125,212.5,300,387.5,475]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 125% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -393,7 +388,7 @@
                 "player_bonus_ad": 0.75
               },
               "title": "Bonus Damage",
-              "str": "<spell-span :list=\"['75','127.5','180','232.5','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[75,127.5,180,232.5,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -409,7 +404,7 @@
                 "player_bonus_ad": 0.75
               },
               "title": "Total Damage",
-              "str": "<spell-span :list=\"['125','212.5','300','387.5','475']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 125% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[125,212.5,300,387.5,475]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 125% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -431,20 +426,20 @@
         80
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "VayneInquisition.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Vayne''' arms herself with her crossbow, gaining {{as|'''bonus''' attack damage}} and tripling {{ais|Night Hunter|Vayne}} bonus for a duration.",
+        "{{sbc|Active:}} '''Vayne''' equips her crossbow, gaining {{sti|{{as|'''bonus''' attack damage}}}} and tripling {{ais|Night Hunter|Vayne}} bonus for a duration.",
         "Additionally, {{ai|Tumble|Vayne}} gains {{sti|cooldown reduction}}, and casting it grants '''Vayne''' {{tip|invisibility}} for 1 second. Attacking or casting {{ai|Condemn|Vayne}} breaks the stealth immediately.",
-        "While active, whenever an enemy {{tip|champion}} damaged by '''Vayne''' dies within 3 seconds, ''Final Hour's'' duration is extended by 4 seconds. ''Final Hour's'' duration cannot be increased beyond its original maximum duration."
+        "While active, {{tip|takedown|takedowns}} on enemy {{tip|champions}} within 3 seconds of being damaged by '''Vayne''' extend ''Final Hour's'' duration by 4 seconds, up to the original duration."
       ],
       "notes": "* '''Vayne's''' animations and basic attack projectiles change slightly during ''Final Hour''.\n* ''Tumble's'' visual effects can be seen by enemies upon '''Vayne''' becoming invisible.",
       "skillkey": "R",
@@ -453,8 +448,8 @@
       "cooldownBurn": "100/85/70",
       "effects": [
         {
-          "levelingtext": "{{st|Duration|{{ap|8 to 12}}}}\n{{st|Bonus AD|{{as|{{ap|25 to 55}}|AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['8','9','10','11','12']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['25','32.5','40','47.5','55']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "levelingtext": "{{st|Duration|{{ap|8 to 12}}}}\n{{st|Bonus AD|{{as|{{ap|35 to 65}}|AD}}}}",
+          "str": "<ul><li><span class=\"blue\">Duration</span>: <span><SpellSpan :list=\"[8,9,10,11,12]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -466,21 +461,21 @@
                 11,
                 12
               ],
-              null
+              [
+                35,
+                42.5,
+                50,
+                57.5,
+                65
+              ]
             ],
             "st_slices": [
               "Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['25','32.5','40','47.5','55']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"AD\"><SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
             ],
             "as_ratios": [
               {
-                "player_total_unknown": [
-                  0.25,
-                  0.325,
-                  0.4,
-                  0.475,
-                  0.55
-                ]
+                "player_total_unknown": null
               }
             ]
           },
@@ -495,23 +490,17 @@
                   11,
                   12
                 ],
-                "player_total_unknown": [
-                  0.25,
-                  0.325,
-                  0.4,
-                  0.475,
-                  0.55
-                ]
+                "player_total_unknown": null
               },
               "title": "Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['25','32.5','40','47.5','55']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"AD\"><SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Tumble Cooldown Reduction|{{ap|30 to 50}}%}}",
-          "str": "<ul><li><span class=\"blue\">Tumble Cooldown Reduction</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Tumble Cooldown Reduction</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -526,7 +515,7 @@
             ],
             "st_slices": [
               "Tumble Cooldown Reduction",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -542,7 +531,7 @@
                 ]
               },
               "title": "Tumble Cooldown Reduction",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

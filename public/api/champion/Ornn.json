@@ -80,7 +80,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}}  '''Ornn''' slams the ground, sending a fissure in the target direction that stops at maximum range or 200 units behind a hit enemy champion, dealing {{tip|physical damage|{{as|physical damage}}}} and {{tip|slow|slowing}} enemies hit by 40% for 2 seconds.",
+        "{{sbc|Active:}}  '''Ornn''' slams the ground, sending a fissure in the target direction that stops at maximum range or 200 units behind a hit enemy champion, dealing {{as|physical damage}} and {{tip|slow|slowing}} enemies hit by 40% for 2 seconds.",
         "After a {{fd|1.125}}-second delay, a magma pillar erupts at maximum range, {{tip|airborne|knocking aside}} enemies hit and lingering as impassible terrain for 4 seconds.",
         "''The pillar will not expire while '''Ornn''' is {{ai|Searing Charge|Ornn|charging}}.''"
       ],
@@ -92,7 +92,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 110% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -112,7 +112,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>"
+              "<SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span>"
             ]
           },
           "subeffects": [
@@ -129,7 +129,7 @@
                 "player_total_ad": 1.1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['20','45','70','95','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% AD)</span>",
+              "str": "<SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -155,7 +155,7 @@
         65
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 500,
       "image": {
         "full": "OrnnW.png",
@@ -167,11 +167,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ornn''' marches {{tip|Unstoppable|unstoppably}} in the target direction with 35% reduced {{sti|movement speed|{{as|movement speed}}}} for {{fd|0.75}} seconds.",
+        "{{sbc|Active:}} '''Ornn''' marches with {{tip|displacement immunity}} in the target direction with 35% reduced {{sti|movement speed|{{as|movement speed}}}} and being unable to act for {{fd|0.75}} seconds.",
         "Over the march he belches fire over a cone in front of him, dealing {{as|magic damage}} every {{fd|0.15}} seconds to enemies hit. The final bout of flame will apply {{tip|Brittle}} for 3 seconds.",
         "''Bellows Breath'' has a minimum damage threshold, which is also the damage dealt to {{tip|minion|minions}}. {{tip|Monster|Monsters}} take modified damage as well."
       ],
-      "notes": "* {{tip|Spell shield}} will negate the final instance of damage and prevents {{tip|Brittle}} from being applied.\n* '''Ornn''' can see the on-target VFX on targets that are being struck even while they are in the [[Sight|fog of war]].",
+      "notes": "* {{tip|Spell shield}} will negate the final instance of damage and prevents {{tip|Brittle}} from being applied.\n* '''Ornn''' can see the on-target VFX on targets that are being struck even while they are in the [[Sight|fog of war]].\n* '''Ornn''' places himself onto the ground and interrupts {{tip|airborne|displacements}} affecting him upon casting ''Bellow's Breath''.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "45/50/55/60/65",
@@ -179,7 +179,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Magic Damage|{{as|{{ap|12 to 16}}% of target's '''maximum''' health}}|Damage Per Instance|{{as|{{ap|12/5 to 16/5}}% of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Damage Per Instance</span>: <span><span class=\"health\"><spell-span :list=\"['2.4','2.6','2.8','3','3.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[12,13,14,15,16]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Damage Per Instance</span>: <span><span class=\"health\"><SpellSpan :list=\"[2.4,2.6,2.8,3,3.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -191,27 +191,27 @@
                 15,
                 16
               ],
-              null
+              [
+                2.4,
+                2.6,
+                2.8,
+                3,
+                3.2
+              ]
             ],
             "as_ratios": [
               {
-                "target_total_hp": [
-                  0.024,
-                  0.026000000000000002,
-                  0.027999999999999997,
-                  0.03,
-                  0.032
-                ]
+                "target_total_hp": 12131415.16
               },
               {
-                "target_total_hp": []
+                "target_total_hp": null
               }
             ],
             "st_slices": [
               "Total Magic Damage",
-              "<span class=\"health\"><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[12,13,14,15,16]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>",
               "Damage Per Instance",
-              "<span class=\"health\"><spell-span :list=\"['2.4','2.6','2.8','3','3.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[2.4,2.6,2.8,3,3.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -225,38 +225,33 @@
                   15,
                   16
                 ],
-                "target_total_hp": [
-                  0.024,
-                  0.026000000000000002,
-                  0.027999999999999997,
-                  0.03,
-                  0.032
-                ]
+                "target_total_hp": 12131415.16
               },
               "title": "Total Magic Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['12','13','14','15','16']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[12,13,14,15,16]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>",
               "damage_type": "magic"
             },
             {
               "index": 1,
               "ratios": {
-                "target_total_hp": [
-                  0.024,
-                  0.026000000000000002,
-                  0.027999999999999997,
-                  0.03,
-                  0.032
-                ]
+                "base_damage": [
+                  2.4,
+                  2.6,
+                  2.8,
+                  3,
+                  3.2
+                ],
+                "target_total_hp": 12131415.16
               },
               "title": "Damage Per Instance",
-              "str": "<span class=\"health\"><spell-span :list=\"['2.4','2.6','2.8','3','3.2']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[2.4,2.6,2.8,3,3.2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Total Minimum/Minion Damage|{{ap|80 to 280}}|Minimum/Minion Damage Per Instance|{{ap|80/5 to 280/5}}}}\n{{st|Total Monster Damage|{{ap|155 to 255}}|Monster Damage Per Instance|{{ap|155/5 to 255/5}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Minimum/Minion Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Minimum/Minion Damage Per Instance</span>: <span><spell-span :list=\"['16','26','36','46','56']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Total Monster Damage</span>: <span><spell-span :list=\"['155','180','205','230','255']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Monster Damage Per Instance</span>: <span><spell-span :list=\"['31','36','41','46','51']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Minimum/Minion Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Minimum/Minion Damage Per Instance</span>: <span><SpellSpan :list=\"[16,26,36,46,56]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Total Monster Damage</span>: <span><SpellSpan :list=\"[155,180,205,230,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Monster Damage Per Instance</span>: <span><SpellSpan :list=\"[31,36,41,46,51]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -292,9 +287,9 @@
             ],
             "st_slices": [
               "Total Monster Damage",
-              "<spell-span :list=\"['155','180','205','230','255']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "<SpellSpan :list=\"[155,180,205,230,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "Monster Damage Per Instance",
-              "<spell-span :list=\"['31','36','41','46','51']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[31,36,41,46,51]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -310,7 +305,7 @@
                 ]
               },
               "title": "Total Monster Damage",
-              "str": "<spell-span :list=\"['155','180','205','230','255']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[155,180,205,230,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             },
             {
@@ -325,7 +320,7 @@
                 ]
               },
               "title": "Monster Damage Per Instance",
-              "str": "<spell-span :list=\"['31','36','41','46','51']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[31,36,41,46,51]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
@@ -363,11 +358,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ornn''' {{tip|dash|charges}} forward, dealing {{as|physical damage}} to enemies he passes through, stopping upon colliding with terrain.",
+        "{{sbc|Active:}} '''Ornn''' {{tip|dash|charges}} a fixed distance in the target direction, dealing {{as|physical damage}} to enemies he passes through, stopping upon colliding with terrain.",
         "If '''Ornn''' collides with terrain while charging he creates a shockwave that deals the same damage and {{tip|airborne|knocks up}} and {{tip|stun|stuns}} enemies within for {{fd|1.25}} seconds. Enemies can only be damaged once by ''Searing Charge''.",
         "The shockwave destroys the pillar formed by {{ai|Volcanic Rupture|Ornn}} and partially destroys terrain created by enemy {{tip|champion|champions}}."
       ],
-      "notes": "* {{tip|Spell shield|Spell shields}} may only block one instance of damage.\n* {{tip|Unstoppable|Unstoppability}} prevents the {{tip|airborne|knock up}} as well as the {{tip|stun}} from being applied.\n* {{tip|Brittle}} enemies without {{tip|Tenacity}} of their own will be stunned for a total of {{fd|1.65}} seconds.",
+      "notes": "* {{tip|Spell shield|Spell shields}} may only block one instance of damage.\n* {{tip|Displacement immunity}} prevents the {{tip|airborne|knock up}} as well as the {{tip|stun}} from being applied.\n* {{tip|Brittle}} enemies without {{tip|Tenacity}} of their own will be {{tip|stun|stunned}} for a total of {{fd|1.625}} seconds.\n* '''Ornn''' will not initiate the {{tip|dash}} after the cast time if he's being {{tip|airborne|displaced}}.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "35/40/45/50/55",
@@ -375,7 +370,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|80|125|170|215|260}} {{as|(+ 40% '''bonus''' armor)}} {{as|(+ 40% '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 40% <b>bonus</b> armor)</span> <span class=\"magic-resist\">(+ 40% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 40% <b>bonus</b> armor)</span> <span class=\"magic-resist\">(+ 40% <b>bonus</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -398,7 +393,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 40% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 40% '''bonus''' magic resistance)</span>"
+              "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 40% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 40% '''bonus''' magic resistance)</span>"
             ]
           },
           "subeffects": [
@@ -416,7 +411,7 @@
                 "player_bonus_mr": 0.4
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 40% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 40% '''bonus''' magic resistance)</span>",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 40% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 40% '''bonus''' magic resistance)</span>",
               "damage_type": "physical"
             }
           ]
@@ -450,12 +445,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ornn''' sounds his horn over the cast time, after which an elemental is summoned at maximum range from the target direction that stampedes towards his casting position for {{tt|3000 range|estimated}} at increasing speed, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit for 2 seconds. The {{tip|slow}} scales with the distance traveled by the elemental, with a minimum of 10%.",
+        "{{sbc|Active:}} '''Ornn''' sounds his horn over the cast time, after which a lava elemental is summoned at maximum range from the target direction that stampedes towards his casting position for {{tt|3000 range|estimated}} at increasing speed, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit for 2 seconds. The {{tip|slow}} scales with the distance traveled by the elemental, with a minimum of 10%.",
         "'''Ornn''' can recast ''Call of the Forge God'' after a {{tt|{{fd|1.25}}|Includes the cast time}}-second delay.",
-        "{{sbc|Recast:}} '''Ornn''' {{tip|dash|dashes}} 300 units in the target direction (but not through terrain). If '''Ornn''' collides with the elemental, he headbutts it, sending it stampeding again in the new direction dealing the same {{as|magic damage}} and empowering it to {{tip|airborne|knock up}} enemies hit for 1 second, reduced to {{fd|0.5}} seconds after the first enemy {{tip|champion}} hit.",
+        "{{sbc|Recast:}} '''Ornn''' {{tip|dash|dashes}} 300 units in the target direction (but not through terrain). If '''Ornn''' collides with the elemental, he headbutts it, sending it stampeding again in the new direction dealing the same {{as|magic damage}} and empowering it to {{tip|airborne|knock up}} and {{tip|stun}} enemies hit for 1 second, reduced to {{fd|0.5}} seconds after the first enemy {{tip|champion}} hit.",
         "Each pass applies {{tip|Brittle}} to targets for 3 seconds and can affect enemies only once."
       ],
-      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Call of the Forge God'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* {{tip|Spell shield|Spell shields}} may only block one instance of damage.\n* ''Call of the Forge God'' is always cast from the original casting position.\n{{ct|cast}}",
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Call of the Forge God'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* {{tip|Brittle}} enemies without {{tip|Tenacity}} of their own will be {{tip|stun|stunned}} for a total of {{fd|1.3}} seconds.\n* {{tip|Spell shield|Spell shields}} may only block one instance of damage.\n* ''Call of the Forge God'' is always cast from the original casting position.\n{{ct|cast}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -463,7 +458,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|125|175|225}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|250|350|450}} {{as|(+ 40% AP)}}}}{{st|Maximum Slow|{{ap|40|60|80}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['125','175','225']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['250','350','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul><li><span class=\"blue\">Maximum Slow</span>: <span><spell-span :list=\"['40','60','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[125,175,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[250,350,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -494,7 +489,7 @@
             ],
             "st_slices": [
               "Maximum Slow",
-              "<spell-span :list=\"['40','60','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -509,7 +504,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Maximum Slow",
-              "str": "<spell-span :list=\"['40','60','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

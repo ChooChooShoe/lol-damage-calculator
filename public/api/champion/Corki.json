@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.25.21",
-  "changes": "10.7.1",
+  "changes": "10.21.1",
   "id": "Corki",
   "name": "Corki",
   "title": "the Daring Bombardier",
@@ -19,7 +19,7 @@
   "rangetype": "Ranged",
   "be_cost": 3150,
   "rp_cost": 790,
-  "adaptivetype": "mixed",
+  "adaptivetype": "physical",
   "info": {
     "attack": 8,
     "defense": 3,
@@ -68,7 +68,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "[[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 825,
       "image": {
         "full": "PhosphorusBomb.png",
@@ -80,7 +80,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Corki''' launches a bomb at the target area, exploding upon impact and dealing {{as|magic damage}} to enemies hit.",
+        "{{sbc|Active:}} '''Corki''' launches a bomb at the target area that explodes upon impact, dealing {{as|magic damage}} to enemies hit.",
         "The bomb also {{tip|sight|reveals}} the area and enemy {{tip|champions}} hit for 6 seconds."
       ],
       "notes": "* No additional details.",
@@ -90,8 +90,8 @@
       "cooldownBurn": "8",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['75','120','165','210','255']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 70% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -106,7 +106,7 @@
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": 0.5
+                "player_bonus_ad": 0.7000000000000001
               },
               {
                 "player_total_ap": 0.5
@@ -114,7 +114,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['75','120','165','210','255']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[75,120,165,210,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -128,11 +128,11 @@
                   210,
                   255
                 ],
-                "player_bonus_ad": 0.5,
+                "player_bonus_ad": 0.7000000000000001,
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['75','120','165','210','255']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,120,165,210,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -154,7 +154,7 @@
         50
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Auto",
       "image": {
         "full": "GGun.png",
         "sprite": "spell2.png",
@@ -165,7 +165,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Corki''' sprays bullets in a frontal cone for 4 seconds, dealing equal parts {{as|physical|physical damage}} and {{as|magic|magic damage}} damage every {{fd|0.25}} seconds to all enemies hit, and reducing the target's {{sti|lethality|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} with each tick, stacking up to 8 times, lingering for 2 seconds."
+        "{{sbc|Active:}} '''Corki''' sprays bullets in a frontal cone for 4 seconds, dealing equal parts {{as|physical|physical damage}} and {{as|magic|magic damage}} damage every {{fd|0.25}} seconds to all enemies hit, and reducing the targets' {{sti|lethality|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} with each tick, stacking up to 8 times and lasting for 2 seconds, which refreshes on subsequent ticks."
       ],
       "notes": "* The direction of the gun firing changes depending on where '''Corki''' is facing.\n** '''Corki''' will turn to face in the direction of the cursor upon casting ''Gatling Gun''.",
       "skillkey": "E",
@@ -175,7 +175,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Mixed Damage Per Tick|{{ap|120/16 to 320/16}} {{as|(+ 10% '''bonus''' AD)}}|Total Mixed Damage|{{ap|120 to 320}} {{as|(+ 160% '''bonus''' AD)}}}}{{st|Resistance Reduction Per Tick|{{ap|1 to 2.5}}|Total Resistance Reduction|{{ap|1*8 to 2.5*8}}}}",
-          "str": "<ul><li><span class=\"blue\">Mixed Damage Per Tick</span>: <span><spell-span :list=\"['7.5','10.625','13.75','16.875','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><spell-span :list=\"['120','170','220','270','320']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span></span></li></ul><ul><li><span class=\"blue\">Resistance Reduction Per Tick</span>: <span><spell-span :list=\"['1','1.375','1.75','2.125','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Total Resistance Reduction</span>: <span><spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Mixed Damage Per Tick</span>: <span><SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[120,170,220,270,320]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span></span></li></ul><ul><li><span class=\"blue\">Resistance Reduction Per Tick</span>: <span><SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Total Resistance Reduction</span>: <span><SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -219,9 +219,9 @@
             ],
             "st_slices": [
               "Resistance Reduction Per Tick",
-              "<spell-span :list=\"['1','1.375','1.75','2.125','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "Total Resistance Reduction",
-              "<spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -238,7 +238,7 @@
                 "player_bonus_ad": 0.1
               },
               "title": "Resistance Reduction Per Tick",
-              "str": "<spell-span :list=\"['1','1.375','1.75','2.125','2.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             },
             {
@@ -254,7 +254,7 @@
                 "player_bonus_ad": 0.1
               },
               "title": "Total Resistance Reduction",
-              "str": "<spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]

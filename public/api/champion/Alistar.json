@@ -53,7 +53,7 @@
       "riotId": "",
       "name": "Triumphant Roar",
       "maxrank": 0,
-      "targeting": "[[Passive]]",
+      "targeting": "Passive",
       "image": {
         "full": "Alistar_E.png",
         "sprite": "passive0.png",
@@ -65,10 +65,10 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Alistar''' gains a [[stack]] of ''Triumph'' for every enemy {{tip|champion}} he {{tip|stun|stuns}} or {{tip|airborne|displaces}} with {{ai|Pulverize|Alistar}}, {{ai|Headbutt|Alistar}}, or {{ai|Trample|Alistar}}, and every time an enemy {{tip|minion}} or non-epic {{tip|monster}} dies nearby.",
-        "At 7 ''Triumph'' stacks, '''Alistar''' consumes them and roars, {{tip|healing}} himself for {{passive progression/deprecated version|25 to 161}} and all nearby allied champions for {{ft|double the amount.|{{passive progression/deprecated version|25*2 to 161*2}}.}}",
+        "At 7 ''Triumph'' stacks, '''Alistar''' consumes them and roars, {{tip|healing}} himself for {{passive progression/deprecated version|25 to 161}} and all nearby allied champions for{{ft|double the amount.|{{passive progression/deprecated version|25*2 to 161*2}}.}}",
         "'''Alistar''' roars instantly if a nearby enemy champion or epic monster dies. Once ''Triumph'' stacks are consumed '''Alistar''' cannot roar again for a short duration, but can still gain stacks."
       ],
-      "notes": "* Healing occurs simultaneously for '''Alistar''' and his allies.\n** There is a VFX projectile (700 missile speed) that cannot be destroyed by {{ai|Wind Wall|Yasuo}} and is unrelated to the actual heal.\n* '''Alistar''' loses all ''Triumph'' stacks upon dying.",
+      "notes": "* '''Alistar''' does not gain stacks for unsuccessfully trying to apply {{tip|crowd control}}, for instance against a {{tip|cc-immune|crowd control immune}} target.\n* Healing occurs simultaneously for '''Alistar''' and his allies.\n** There is a VFX projectile (700 missile speed) that cannot be destroyed by {{ai|Wind Wall|Yasuo}} and is unrelated to the actual heal.\n* '''Alistar''' loses all ''Triumph'' stacks upon dying.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -92,7 +92,7 @@
         85
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "Pulverize.png",
         "sprite": "spell0.png",
@@ -103,9 +103,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' slams the ground beneath him, dealing {{tip|magic damage|{{as|magic damage}}}} to all nearby enemies and {{tip|stun|stunning}} and {{tip|airborne|knocking them up}} simultaneously for 1 second."
+        "{{sbc|Active:}} '''Alistar''' slams the ground beneath him, dealing {{as|magic damage}} to all nearby enemies and {{tip|stun|stunning}} and {{tip|airborne|knocking them up}} simultaneously for 1 second."
       ],
-      "notes": "* ''Pulverize'' can be activated during {{ai|Headbutt|Alistar}} to immediately cast on arrival.\n* Casting {{si|Flash}} during the cast time will affect enemies at the new location.",
+      "notes": "* ''Pulverize'' can be buffered during {{ai|Headbutt|Alistar}} to immediately cast when the dash ends.\n* ''Pulverize'' will cast from wherever '''Alistar''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65/70/75/80/85",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +133,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,7 +150,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -188,10 +188,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location. If the target is still within a certain radius when the dash ends uninterrupted, he deals them {{as|magic damage}} and {{tip|airborne|knocks them back}} in relation to his original location over {{fd|0.75 seconds}} whilst also {{tip|stun|stunning}} them for 1 second.",
+        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location. If the target is still within a certain radius when the dash ends uninterrupted, he deals them {{as|magic damage}} and {{tip|airborne|knocks them back}} a fixed distance over {{fd|0.75 seconds}} whilst also {{tip|stun|stunning}} them for 1 second.",
         "''The ability can be dodged if the target moves 400 units away.''"
       ],
-      "notes": "* The dash is speed depends on the inverse of the distance to the target:\n** If '''Alistar's''' [[size|radius]] overlaps with his target's, he will dash with {{as|1200 speed|movement speed}}.\n** If '''Alistar''' is further from his target than the previous condition, he will dash with (1200 * dash distance) / (dash distance - sum of radiuses).\n*** At maximum target range, against an enemy with a 65 radius (median of all champions), '''Alistar''' will dash with {{as|1544 speed|movement speed}} (reaching his target within {{tt|{{fd|0.429}} seconds|rounded to next game tick}}).\n*** Both the lower the dash distance and the larger '''Alistar''' and/or his target, the faster the dash becomes; This scales hyperbolically.\n* When ''Pulverize'' is buffered during the dash, the knockback distance is reduced to 200 units.\n* The CC duration of the ability can be reduced by up-to 25% {{stil|Tenacity}}, due to airborne not being reducible while the stun is.\n* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.\n* Casting {{si|Flash}} during the {{tip|dash}} will interrupt ''Headbutt''.",
+      "notes": "* The dash speed depends on the inverse of the distance to the target:\n** If '''Alistar's''' [[size|radius]] overlaps with his target's, he will dash with {{as|1200 speed|movement speed}}.\n** If '''Alistar''' is further from his target than the previous condition, he will dash with (1200 {{times}} dash distance) / (dash distance - sum of radiuses).\n*** At maximum target range, against an enemy with a 65 {{tip|gameplay radius}} (median of all champions), '''Alistar''' will dash with {{as|1544 speed|movement speed}} (reaching his target within {{tt|{{fd|0.429}} seconds|rounded to next game tick}}).\n*** Both the lower the dash distance and the larger '''Alistar''' and/or his target, the faster the dash becomes; this scales hyperbolically.\n* When {{ai|Pulverize|Alistar}} is buffered during the dash, the knockback distance is reduced to 200 units.\n* The CC duration of the ability can be reduced by up-to 25% {{stil|Tenacity}}, due to airborne not being reducible while the stun is.\n* The {{tip|airborne|knockback}} direction is in a straight line from '''Alistar's''' original location at start of cast and the enemy when '''Alistar's''' dash ends.\n* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "65/70/75/80/85",
@@ -199,7 +199,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|55 to 275}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['55','110','165','220','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,110,165,220,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -219,7 +219,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['55','110','165','220','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[55,110,165,220,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -236,7 +236,7 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['55','110','165','220','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[55,110,165,220,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -262,7 +262,7 @@
         90
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "AlistarE.png",
         "sprite": "spell0.png",
@@ -273,10 +273,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' becomes {{tip|ghosted}} and tramples the ground around him every {{fd|0.5}} seconds for 5 seconds, dealing {{as|magic damage}} to all nearby enemies and gaining a ''Trample'' stack every time the ability damages at least one enemy champion.",
+        "{{sbc|Active:}} '''Alistar''' becomes {{tip|ghosted}} and tramples the ground around him every {{fd|0.5}} seconds for 5 seconds, dealing {{as|magic damage}} to all nearby enemies and gaining a ''Trample'' [[stack]] every time the ability damages at least one enemy champion.",
         "At 5 ''Trample'' stacks, '''Alistar''' next {{tip|basic attack}} within 6 seconds deals {{as|{{passive progression/deprecated version|35 to 290}} '''bonus''' magic damage}} and applies a 1-second {{tip|stun}} on-hit to its target."
       ],
-      "notes": "* The {{tip|stun}} and '''bonus''' damage are blocked by {{tip|spell shield|spell shields}} but the base attack damage is not.\n* The attack bonus is consumed if the attack {{tip|blocked}}, but not if it is {{tip|dodged}} or missed while '''Alistar''' is {{tip|blind|blinded}}. In all cases, the attack's effects are negated as normal.\n* As it is an [[on-hit]] effect, the bonus damage and stun can be applied by {{iis|Guinsoo's Rageblade}} Phantom Hit.",
+      "notes": "* ''Trample'' deals {{tip|persistent area damage}} damage around '''Alistar''', while the bonus damage on the resulting attack is {{tip|proc damage}}.\n* The {{tip|stun}} and '''bonus''' damage are blocked by {{tip|spell shield|spell shields}} but the base attack damage is not.\n* The attack bonus is consumed if the attack {{tip|blocked}}, but not if it is {{tip|dodged}} or missed while '''Alistar''' is {{tip|blind|blinded}}. In all cases, the attack's effects are negated as normal.\n* As it is an [[on-hit]] effect, the bonus damage and stun can be applied by {{iis|Guinsoo's Rageblade}} Phantom Hit.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "50/60/70/80/90",
@@ -284,7 +284,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Tick|{{ap|8 to 20}} {{as|(+ 4% AP)}}|Total Magic Damage|{{ap|80 to 200}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 4% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 4% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -314,9 +314,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Tick",
-              "<spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 4% AP)</span>",
+              "<SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 4% AP)</span>",
               "Total Magic Damage",
-              "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -333,7 +333,7 @@
                 "player_total_ap": 0.04
               },
               "title": "Magic Damage Per Tick",
-              "str": "<spell-span :list=\"['8','11','14','17','20']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 4% AP)</span>",
+              "str": "<SpellSpan :list=\"[8,11,14,17,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 4% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -349,7 +349,7 @@
                 "player_total_ap": 0.04
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -371,7 +371,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "FerociousHowl.png",
         "sprite": "spell0.png",
@@ -392,7 +392,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Damage Reduction|{{ap|55|65|75}}%}}",
-          "str": "<ul><li><span class=\"blue\">Damage Reduction</span>: <span><spell-span :list=\"['55','65','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -405,7 +405,7 @@
             ],
             "st_slices": [
               "Damage Reduction",
-              "<spell-span :list=\"['55','65','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -419,7 +419,7 @@
                 ]
               },
               "title": "Damage Reduction",
-              "str": "<spell-span :list=\"['55','65','75']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]

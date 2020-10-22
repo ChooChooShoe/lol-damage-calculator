@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.131",
-  "changes": "10.15.1",
+  "changes": "10.19.1",
   "id": "Ahri",
   "name": "Ahri",
   "title": "the Nine-Tailed Fox",
@@ -37,7 +37,7 @@
     "spellblock": 30,
     "spellblockperlevel": 0.5,
     "attackrange": 550,
-    "hpregen": 6.5,
+    "hpregen": 5.5,
     "hpregenperlevel": 0.6,
     "mpregen": 8,
     "mpregenperlevel": 0.8,
@@ -51,9 +51,9 @@
   "skills": {
     "i1": {
       "riotId": "",
-      "name": "Vastayan Grace",
+      "name": "Essence Theft",
       "maxrank": 0,
-      "targeting": "[[Passive]]",
+      "targeting": "Passive",
       "image": {
         "full": "Ahri_SoulEater2.png",
         "sprite": "passive0.png",
@@ -64,7 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Whenever '''Ahri''' lands 2 ability hits against a champion within {{fd|1.5}} seconds, she gains {{sti|ms|{{as|20% '''bonus''' movement speed}}}} for 3 seconds. This effect cannot occur again every few seconds."
+        "{{sbc|Innate:}} Whenever '''Ahri''' hits an enemy with one of her abilities, she gains a [[stack]] of ''Essence Theft'', and can gain up to 3 stacks per ability cast.",
+        "Upon reaching 9 stacks, '''Ahri's''' next ability {{tip|heal|heals}} her for {{pp|3;5;9;18|1 to 16}} {{as|(+ 9% AP)}} for each enemy hit and consumes the stacks if at least one enemy is hit."
       ],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -91,7 +92,7 @@
       ],
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": 880,
+      "target_range": "{{tip|cr|icononly = true}} 880",
       "image": {
         "full": "AhriOrbofDeception.png",
         "sprite": "spell0.png",
@@ -102,11 +103,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Ahri''' gains an '''Essence Theft''' stack for each enemy hit by her abilities, up to a maximum of 3 per cast, and storing up to 9 at once.",
-        "{{sbc|Active:}} '''Ahri''' sends her orb in the target direction, dealing {{as|magic damage}} to all enemies it passes through. At maximum range, it homes back to '''Ahri''', dealing the same in {{as|true damage}}.",
-        "While '''Ahri''' has 9 stacks of [[File:Essence Theft.png|20px|link=]] '''Essence Theft''', ''Orb of Deception'' consumes the stacks to {{tip|heal}} '''Ahri''' for {{passive progression/deprecated version|4|3;5;9;18|1 to 16}} {{as|(+ 9% AP)}} for each enemy hit instead of generating more stacks."
+        "{{sbc|Active:}} '''Ahri''' sends her orb in the target direction, dealing {{as|magic damage}} to all enemies it passes through. At maximum range, it homes back to '''Ahri''', dealing the same in {{as|true damage}} to enemies hit on its way back."
       ],
-      "notes": "* ''Orb of Deception'' functions normally during flight regardless of '''Ahri's''' condition.\n* Each pass of the projectile can only damage an enemy once.\n* ''Orb of Deception'' will cast from wherever '''Ahri''' is at the end of the cast time.",
+      "notes": "* ''Orb of Deception'' will hit additional units around the return point in a small circle when the Orb turns around.\n* Each pass of the projectile can only damage an enemy once.\n* ''Orb of Deception'' will cast from wherever '''Ahri''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "65/70/75/80/85",
@@ -114,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Damage Per Pass|{{ap|40 to 140}} {{as|(+ 35% AP)}}|Total Mixed Damage|{{ap|40*2 to 140*2}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Damage Per Pass</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Damage Per Pass</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -144,9 +143,9 @@
             ],
             "st_slices": [
               "Damage Per Pass",
-              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "<SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "Total Mixed Damage",
-              "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -163,7 +162,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Damage Per Pass",
-              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -179,7 +178,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Total Mixed Damage",
-              "str": "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -205,7 +204,7 @@
         40
       ],
       "costtype": "mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "AhriFoxFire.png",
         "sprite": "spell0.png",
@@ -216,10 +215,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ahri''' summons three spectral flames which orbit her for up to 5 seconds.",
-        "Flames prioritize champions hit by {{ai|Charm|Ahri}}, then the target of '''Ahri's''' last basic attack within 3 seconds.",
-        "After {{fd|0.25}} seconds, each flame targets a {{tip|sight|visible}} prioritized enemy; or after {{fd|0.4}} seconds targets the closest visible enemy in range, prioritizing enemy {{tip|champion|champions}}, dealing {{as|magic damage}}.",
-        "Subsequent flames on a target deal 30% damage."
+        "{{sbc|Active:}} '''Ahri''' gains {{as|40% '''bonus''' movement speed}} that decays over {{fd|1.5}} seconds and summons three spectral flames which orbit her for up to 5 seconds.",
+        "After {{fd|0.25}} seconds, each flame targets a {{tip|sight|visible}} enemy, or after {{fd|0.4}} seconds targets the closest visible enemy in range, dealing {{as|magic damage}}. The damage is doubled against {{tip|minions}} below {{as|20% '''maximum''' health}}.",
+        "Subsequent flames on a single target deal 30% damage.",
+        "Flames prioritize enemy champions hit by {{ai|Charm|Ahri}}, then enemy {{tip|champion|champions}}, then low-health minions that can be killed with ''Fox-Fire'', and then the target of '''Ahri's''' last basic attack within 3 seconds."
       ],
       "notes": "* Each missile of ''Fox-Fire'' has its own shorter non-priority range.\n* Any unused ''Fox-Fires'' will fizzle upon death.",
       "skillkey": "W",
@@ -228,8 +227,8 @@
       "cooldownBurn": "9/8/7/6/5",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|40|65|90|115|140}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 30% AP)}}|Minion Damage|{{ap|40*2 to 140*2}} {{as|(+ 60% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -240,16 +239,28 @@
                 90,
                 115,
                 140
+              ],
+              [
+                80,
+                130,
+                180,
+                230,
+                280
               ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.6
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "Minion Damage",
+              "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -266,14 +277,30 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['40','65','90','115','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,65,90,115,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  80,
+                  130,
+                  180,
+                  230,
+                  280
+                ],
+                "player_total_ap": 0.3
+              },
+              "title": "Minion Damage",
+              "str": "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Additional Magic Damage|{{ap|12|19.5|27|34.5|42}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|64|104|144|184|224}} {{as|(+ 48% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span></span></li><li><span class=\"blue\">Total Single Target Damage</span>: <span><spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Additional Magic Damage|{{ap|40*0.3 to 140*0.3}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|40*1.6 to 140*1.6}} {{as|(+ 48% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><SpellSpan :list=\"[12,19.5,27,34.5,42]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 9% AP)</span></span></li><li><span class=\"blue\">Total Single Target Damage</span>: <span><SpellSpan :list=\"[64,104,144,184,224]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 48% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -303,9 +330,9 @@
             ],
             "st_slices": [
               "Additional Magic Damage",
-              "<spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span>",
+              "<SpellSpan :list=\"[12,19.5,27,34.5,42]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 9% AP)</span>",
               "Total Single Target Damage",
-              "<spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span>"
+              "<SpellSpan :list=\"[64,104,144,184,224]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 48% AP)</span>"
             ]
           },
           "subeffects": [
@@ -322,7 +349,7 @@
                 "player_total_ap": 0.09
               },
               "title": "Additional Magic Damage",
-              "str": "<spell-span :list=\"['12','19.5','27','34.5','42']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 9% AP)</span>",
+              "str": "<SpellSpan :list=\"[12,19.5,27,34.5,42]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 9% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -338,7 +365,7 @@
                 "player_total_ap": 0.09
               },
               "title": "Total Single Target Damage",
-              "str": "<spell-span :list=\"['64','104','144','184','224']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 48% AP)</span>",
+              "str": "<SpellSpan :list=\"[64,104,144,184,224]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 48% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -364,8 +391,8 @@
         70
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": 975,
+      "targeting": "Direction",
+      "target_range": "{{tip|cr|icononly = true}} 975",
       "image": {
         "full": "AhriSeduce.png",
         "sprite": "spell0.png",
@@ -376,7 +403,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ahri''' blows a kiss in the target direction that deals {{as|magic damage}} to the first enemy hit, {{tip|knockdown|knocking down}}, {{tip|charm|charming}} and {{tip|slow|slowing}} them by 65%.",
+        "{{sbc|Active:}} '''Ahri''' blows a kiss in the target direction that deals {{as|magic damage}} to the first enemy hit, {{tip|knockdown|knocking them down}} and {{tip|charm|charming}} and {{tip|slow|slowing}} them by 65%.",
         "An enemy hit by ''Charm'' is rendered vulnerable for 3 seconds, taking 20% '''bonus''' damage from '''Ahri's''' abilities."
       ],
       "notes": "* The damage amplification also affects the true damage portion of {{ai|Orb of Deception|Ahri}}.\n* ''Charm'' will cast from wherever '''Ahri''' is at the end of the cast time.",
@@ -387,7 +414,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}{{st|Charm Duration|{{ap|1.4 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul><li><span class=\"blue\">Charm Duration</span>: <span><spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -414,7 +441,7 @@
             ],
             "st_slices": [
               "Charm Duration",
-              "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -431,7 +458,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Charm Duration",
-              "str": "<spell-span :list=\"['1.4','1.55','1.7','1.85','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -453,7 +480,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 450,
       "image": {
         "full": "AhriTumble.png",
@@ -476,7 +503,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|60|90|120}} {{as|(+ 35% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,90,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -494,7 +521,7 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>"
+              "<SpellSpan :list=\"[60,90,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
             ]
           },
           "subeffects": [
@@ -509,14 +536,14 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Magic damage",
-              "str": "<spell-span :list=\"['60','90','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,90,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Maximum single target damage|{{ap|180|270|360}} {{as|(+ 105% AP)}}|Maximum damage|{{ap|540|810|1080}} {{as|(+ 315% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum single target damage</span>: <span><spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span></span></li><li><span class=\"blue\">Maximum damage</span>: <span><spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Maximum single target damage</span>: <span><SpellSpan :list=\"[180,270,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span></span></li><li><span class=\"blue\">Maximum damage</span>: <span><SpellSpan :list=\"[540,810,1080]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 315% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -542,9 +569,9 @@
             ],
             "st_slices": [
               "Maximum single target damage",
-              "<spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span>",
+              "<SpellSpan :list=\"[180,270,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span>",
               "Maximum damage",
-              "<spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span>"
+              "<SpellSpan :list=\"[540,810,1080]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 315% AP)</span>"
             ]
           },
           "subeffects": [
@@ -559,7 +586,7 @@
                 "player_total_ap": 1.05
               },
               "title": "Maximum single target damage",
-              "str": "<spell-span :list=\"['180','270','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 105% AP)</span>",
+              "str": "<SpellSpan :list=\"[180,270,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -573,7 +600,7 @@
                 "player_total_ap": 1.05
               },
               "title": "Maximum damage",
-              "str": "<spell-span :list=\"['540','810','1080']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 315% AP)</span>",
+              "str": "<SpellSpan :list=\"[540,810,1080]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 315% AP)</span>",
               "damage_type": "unknown"
             }
           ]

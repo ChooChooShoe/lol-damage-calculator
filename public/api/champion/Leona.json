@@ -65,7 +65,7 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Leona's''' [[champion ability|abilities]] mark enemies hit with ''Sunlight'' for {{fd|1.5}} seconds. Subsequent applications of ''Sunlight'' will refresh its duration.",
-        "Damage dealt by ally {{tip|champion|champions}} (other than herself) consumes ''Sunlight'', dealing {{tip|magic damage|icononly=true}} {{as|{{passive progression/deprecated version|25 to 144}}|magic damage}} {{tip|magic damage|noimg=true|{{as|'''bonus''' magic damage}}}}."
+        "Damage dealt to marked enemies by allied {{tip|champion|champions}} (excluding '''Leona''') consumes ''Sunlight'', dealing an additional {{as|{{passive progression/deprecated version|25 to 144}}|magic damage}} {{tip|magic damage|noimg=true|{{as|magic damage}}}}."
       ],
       "notes": "* ''Sunlight's'' mark damage is credited to the allied champion and not to '''Leona'''.\n** The damage will benefit from allies' {{sti|magic penetration|{{as|magic penetration}}}} and will apply any [[Ability effects|spell effects]] they have (including {{sti|spell vamp|link=true}}).\n* {{ci|Zyra}} has a hidden passive that grants her 10% increased size for {{tt|33 seconds|Estimated}} after having ''Sunlight'' applied to her.",
       "skillkey": "I",
@@ -87,7 +87,7 @@
         65
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "LeonaShieldOfDaybreak.png",
         "sprite": "spell6.png",
@@ -98,10 +98,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Leona''' illuminates her shield, causing her next [[basic attack]] within 6 seconds to gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' magic damage}} and {{tip|stun}} the target for 1 second after a {{fd|0.25}}-second cast time.",
-        "''Shield of Daybreak'' {{tip|basic attack reset|resets}} '''Leona's''' basic attack timer twice."
+        "{{sbc|Active:}} '''Leona''' illuminates her shield, causing her next [[basic attack]] within 6 seconds to have a {{fd|0.25}}-second cast time, gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' magic damage}} and {{tip|stun}} the target for 1 second.",
+        "''Shield of Daybreak'' {{tip|basic attack reset|resets}} '''Leona's''' basic attack timer."
       ],
-      "notes": "* ''Shield of Daybreak'' will cause {{iis|Muramana}} {{nie|Shock}} damage to trigger twice with a single basic attack.\n* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.\n** ''Shield of Daybreak's'' bonus damage will apply to {{tip|turret|turrets}} only and no other [[structures]].\n* {{Pending for test}}: ''Shield of Daybreak's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* ''Shield of Daybreak'' will cause {{iis|Muramana}} {{nie|Shock}} damage to trigger twice with a single basic attack.\n* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.\n** ''Shield of Daybreak's'' bonus damage will apply to {{tip|turret|turrets}} only and no other [[structures]].\n* {{Pending for test}}: ''Shield of Daybreak's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.\n* '''Leona's''' next attack after using the empowered attack will come out faster. This will not occur via {{tip|acquisition radius|auto-attacking}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "45/50/55/60/65",
@@ -109,7 +109,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 110}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,35,60,85,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -129,7 +129,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[10,35,60,85,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -146,7 +146,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Bonus Magic Damage",
-              "str": "<spell-span :list=\"['10','35','60','85','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,35,60,85,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -172,7 +172,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "LeonaSolarBarrier.png",
         "sprite": "spell6.png",
@@ -194,7 +194,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Flat Damage Reduction|{{ap|8 to 24}}}}\n{{st|Bonus Armor|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' armor)}}}}\n{{st|Bonus Magic Resistance|{{ap|20 to 40}} {{as|(+ 20% '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Flat Damage Reduction</span>: <span><spell-span :list=\"['8','12','16','20','24']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Armor</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 20% <b>bonus</b> armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Flat Damage Reduction</span>: <span><SpellSpan :list=\"[8,12,16,20,24]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus Armor</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 20% <b>bonus</b> armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 20% <b>bonus</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -231,7 +231,7 @@
             ],
             "st_slices": [
               "Bonus Magic Resistance",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>"
+              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>"
             ]
           },
           "subeffects": [
@@ -249,14 +249,14 @@
                 "player_bonus_mr": 0.2
               },
               "title": "Bonus Magic Resistance",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 20% '''bonus''' magic resistance)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -276,7 +276,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[60,95,130,165,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -293,7 +293,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,95,130,165,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -320,7 +320,7 @@
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": 875,
+      "target_range": "{{tip|cr|icononly = true}} 900",
       "image": {
         "full": "LeonaZenithBlade.png",
         "sprite": "spell6.png",
@@ -332,10 +332,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Leona''' projects a solar image of her sword in the target direction, dealing {{as|magic damage}} to all enemies hit.",
-        "If she hits an enemy champion, she will {{tip|dash}} to the last one struck and {{tip|root}} them for {{fd|0.5}} seconds.",
+        "If she hits at least one enemy champion, she will {{tip|dash}} 225 units behind the last one struck within 3000 range and {{tip|root}} them for {{fd|0.5}} seconds.",
         "'''''Leona''' is unable to move or attack while Zenith Blade is in flight.''"
       ],
-      "notes": "* '''Leona''' will be ordered to basic attack the target.\n* {{tip|Spell shield}} will block the ability but not the {{tip|dash}} if being the last target hit.\n* '''Leona''' will fail to {{tip|root}} or {{tip|dash}} to the target if it becomes {{tip|untargetable}} after being stuck.\n* ''Zenith Blade'' will cast from wherever '''Leona''' is at the end of the cast time.",
+      "notes": "* '''Leona''' will be ordered to basic attack the target.\n* {{tip|Spell shield}} will block the ability but not the {{tip|dash}} if being the last target hit.\n* '''Leona''' will fail to {{tip|root}} or {{tip|dash}} to the target if it becomes {{tip|untargetable}} after being struck or is not within 3000 range.\n* ''Zenith Blade'' will cast from wherever '''Leona''' is at the end of the cast time.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60",
@@ -343,7 +343,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|50 to 210}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,90,130,170,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -363,7 +363,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[50,90,130,170,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -380,7 +380,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['50','90','130','170','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,90,130,170,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -402,7 +402,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 1200,
       "image": {
         "full": "LeonaSolarFlare.png",
@@ -414,7 +414,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Leona''' calls down a beam of solar energy to the target location which strikes after a {{fd|0.625}} seconds delay, dealing {{as|magic damage}} to all enemies struck and granting {{tip|sight}} of the area in a 350 radius for {{fd|3.8}} seconds.",
+        "{{sbc|Active:}} '''Leona''' calls down a beam of solar energy to the target location which strikes after a {{fd|0.625}}-second delay, dealing {{as|magic damage}} to all enemies struck and granting {{tip|sight}} of the area in a 350 radius for {{fd|3.8}} seconds.",
         "Enemies hit are {{tip|slow|slowed}} by 80% for {{fd|1.5}} seconds, and also {{tip|stun|stunned}} for the same duration if hit by the epicenter."
       ],
       "notes": "* ''Solar Flare's'' visual effects are only visible to enemies if they have {{tip|sight}} of the area it was cast upon.",
@@ -425,7 +425,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|100|175|250}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,175,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -443,7 +443,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[100,175,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -458,7 +458,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['100','175','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,175,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]

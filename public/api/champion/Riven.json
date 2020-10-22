@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.125",
-  "changes": "10.15.1",
+  "changes": "10.18.1",
   "id": "Riven",
   "name": "Riven",
   "title": "the Exile",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Riven''' gains a ''Charge'' for 6 seconds every time she uses an [[champion ability|ability]], stacking up to 3 times. '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{passive progression/deprecated version|6|key=%|30 to 60|1;6 to 18|formula=30%+6% at level 6, then+6% every 3 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "{{sbc|Innate:}} '''Riven''' gains a ''Charge'' for 6 seconds every time she uses an [[champion ability|ability]], stacking up to 3 times and refreshing on subsequent ability casts. '''Riven's''' [[basic attack]]s consume a ''Charge'' to deal {{as|{{passive progression/deprecated version|6|key=%|30 to 60|1;6 to 18|formula=30%+6% at level 6, then+6% every 3 levels}} AD}} {{as|'''bonus''' physical damage}}.",
         "''Runic Blade'' is affected by {{tip|critical strike}} modifiers."
       ],
       "notes": "* {{tip|Critical strike}} is applied ''after'' the damage from ''Runic Blade'' is calculated.\n* ''Runic Blade's'' duration refreshes whenever '''Riven''' gains or consumes a stack.\n* The bonus damage applies {{sti|life steal|link=true}}.\n* ''Runic Blade'' charges are not consumed when attacking structures and {{tip|ward|wards}} and the extra damage is not applied.",
@@ -86,7 +86,7 @@
         0,
         0
       ],
-      "targeting": "[[Unit-targeted|Unit]]",
+      "targeting": "[[Unit-targeted|Unit]] / [[Auto-targeted|Auto]]",
       "image": {
         "full": "RivenTriCleave.png",
         "sprite": "spell10.png",
@@ -103,7 +103,7 @@
         "{{sbc|Second Cast:}} '''Riven''' mimics the first cast's effects.",
         "{{sbc|Third Cast:}} '''Riven''' mimics the first cast's effects in an expanded radius while also {{tip|airborne|knocking back}} all affected enemies 75 units over {{tt|{{fd|0.75}}|Estimated}} seconds. This cast can cross terrain."
       ],
-      "notes": "* Each cast counts as a single ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* {{tip|Spell shield}} will only block the third cast.\n* The basic attack reset is not considered one for {{ri|Hail of Blades}}.",
+      "notes": "* Each cast counts as a single ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* The basic attack reset is not considered one for {{ri|Hail of Blades}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "0",
@@ -111,7 +111,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|15 to 95}} {{as|(+ {{ap|45 to 65}}% AD)}}|Total Physical Damage|{{ap|15*3 to 95*3}} {{as|(+ {{ap|45*3 to 65*3}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[15,35,55,75,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45,50,55,60,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[45,105,165,225,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[135,150,165,180,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -137,27 +137,27 @@
                 225,
                 285
               ],
-              null
+              [
+                135,
+                150,
+                165,
+                180,
+                195
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_ad": [
-                  1.35,
-                  1.5,
-                  1.65,
-                  1.8,
-                  1.95
-                ]
+                "player_total_ad": 45505560.65
               },
               {
-                "player_total_ad": []
+                "player_total_ad": 1351501651801.95
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "<SpellSpan :list=\"[15,35,55,75,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45,50,55,60,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
               "Total Physical Damage",
-              "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>"
+              "<SpellSpan :list=\"[45,105,165,225,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[135,150,165,180,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -171,16 +171,10 @@
                   75,
                   95
                 ],
-                "player_total_ad": [
-                  1.35,
-                  1.5,
-                  1.65,
-                  1.8,
-                  1.95
-                ]
+                "player_total_ad": 45505560.65
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['15','35','55','75','95']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['45','50','55','60','65']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[15,35,55,75,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45,50,55,60,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -193,16 +187,10 @@
                   60,
                   65
                 ],
-                "player_total_ad": [
-                  1.35,
-                  1.5,
-                  1.65,
-                  1.8,
-                  1.95
-                ]
+                "player_total_ad": 45505560.65
               },
               "title": "Total Physical Damage",
-              "str": "<spell-span :list=\"['45','105','165','225','285']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['135','150','165','180','195']\" :spellrankindex=\"spellrankindex\"></spell-span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[45,105,165,225,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[135,150,165,180,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -227,7 +215,7 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "RivenMartyr.png",
         "sprite": "spell10.png",
@@ -238,9 +226,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven's''' sword emits a burst of runic energy that shocks nearby enemies, dealing {{as|physical damage}} and applying a {{tip|stun}} for {{fd|0.75}} seconds."
+        "{{sbc|Active:}} Before the cast time, '''Riven's''' sword emits a burst of runic energy that shocks nearby enemies, dealing {{as|physical damage}} and applying a {{tip|stun}} for {{fd|0.75}} seconds."
       ],
-      "notes": "* ''Ki Burst'' is always cast from the original casting position.\n* The effects are applied before the cast time.",
+      "notes": "* ''Ki Burst'' is always cast from the original casting position.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "0",
@@ -248,7 +236,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|55|85|115|145|175}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,85,115,145,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -268,7 +256,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[55,85,115,145,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -285,7 +273,7 @@
                 "player_bonus_ad": 1
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[55,85,115,145,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -310,7 +298,7 @@
         0,
         0
       ],
-      "targeting": "Direction",
+      "targeting": "Location",
       "target_range": 250,
       "image": {
         "full": "RivenFeint.png",
@@ -322,8 +310,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} in the direction of the cursor (but not through terrain) while {{tip|shield|shielding}} herself for {{fd|1.5}} seconds. If she targets an enemy with ''Valor'', she briefly {{tip|sight|reveals}} herself and the area around her to the enemies.{{bug|1}}",
-        "''Other abilities can be cast during the dash, and {{ai|Q|Riven}} may be cast during {{ai|W|Riven}} or {{ai|R|Riven}} cast times if they're used at the end or briefly after the dash.''{{bug|1}}"
+        "{{sbc|Active:}} '''Riven''' {{tip|dash|dashes}} to the target location (but not through terrain) while {{tip|shield|shielding}} herself for {{fd|1.5}} seconds.",
+        "''Other abilities can be cast during the dash, and {{ai|Q|Riven}} may be cast during {{ai|W|Riven}} or {{ai|R|Riven}} cast times if they're used at the end or briefly after the dash.''{{bug|1}}",
+        "''Valor will cast at max range if cast beyond that.''"
       ],
       "notes": "* No additional notes.",
       "skillkey": "E",
@@ -333,7 +322,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{ap|95|125|155|185|215}} {{as|(+ 100% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[95,125,155,185,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -353,7 +342,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[95,125,155,185,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -370,7 +359,7 @@
                 "player_bonus_ad": 1
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['95','125','155','185','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[95,125,155,185,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
               "damage_type": "none"
             }
           ]

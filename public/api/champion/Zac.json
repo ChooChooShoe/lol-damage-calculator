@@ -1,6 +1,6 @@
 {
   "patch": "V3.5",
-  "changes": "9.19.1",
+  "changes": "10.18.1",
   "id": "Zac",
   "name": "Zac",
   "title": "the Secret Weapon",
@@ -8,7 +8,7 @@
     "full": "Zac.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 96,
     "w": 48,
     "h": 48
@@ -70,16 +70,16 @@
         "full": "ZacQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and {{tip|tether|attaching}} it to the target for 2 seconds and {{tip|true sight|revealing}} them for the same duration while the tether persists.",
+        "{{sbc|Active:}} '''Zac''' stretches his left arm in the target direction, dealing {{as|magic damage}} and {{tip|slow|slowing}} the first enemy hit by 40% for {{fd|0.5}} seconds, and {{tip|tether|attaching}} it to the target for 2 seconds and {{tip|true sight|revealing}} them for the duration while the tether persists.",
         "While his arm is attached, his next [[basic attack]] is replaced by a second ''Stretching Strike'' and gains {{sti|200 range}}, dealing the same {{as|magic damage}} and {{tip|slow}} after a {{fd|0.25}}-second cast time, but without being able to {{tip|critical strike|critically strike}}.",
         "If the two ''Stretching Strikes'' affect different targets, he {{tip|root|roots}} both targets for {{tt|{{fd|0.5}}|Estimated}} seconds and then {{tip|airborne|flings}} them towards each other for 300 range.",
-        "If the two targets are {{tt|near|700 range}} each other, they're instead slammed against each other, both taking the initial {{as|magic damage}} and applied the {{tip|slow}} again and are also {{tip|stun|stunned}} for {{fd|0.25}} seconds."
+        "If the two targets are {{tt|near|700 range}} each other, they're instead slammed against each other, both taking the initial {{as|magic damage}} and applied the {{tip|slow}} again and also becoming {{tip|stun|stunned}} for {{fd|0.25}} seconds."
       ],
       "notes": "* {{tip|Spell shield|Spell shields}} will block a single instance of damage only.\n* If the {{tip|tether|attached}} target becomes {{tip|untargetable}} during the second ''Stretching Strike'' via basic attack, they are not {{tip|airborne|flinged}} nor {{tip|root|rooted}}. The target will still take damage however.\n* {{Pending for test}}: Parry interactions ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).\n* {{Pending for test}}: {{sti|Attack range}} modifiers ({{ii|Rapid Firecannon}}).",
       "skillkey": "Q",
@@ -89,7 +89,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 100}} {{as|(+ 30% AP)}} {{as|(+ {{fd|2.5}}% of '''Zac's''' '''maximum''' health)}}|Total Magic Damage|{{ap|40*2 to 100*2}} {{as|(+ 60% AP)}} {{as|(+ 5% of '''Zac's''' '''maximum''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of <b>Zac's</b> <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of <b>Zac's</b> <b>maximum</b> health)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,55,70,85,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of <b>Zac's</b> <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of <b>Zac's</b> <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -125,9 +125,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Zac's''' '''maximum''' health)</span>",
+              "<SpellSpan :list=\"[40,55,70,85,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Zac's''' '''maximum''' health)</span>",
               "Total Magic Damage",
-              "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of '''Zac's''' '''maximum''' health)</span>"
+              "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of '''Zac's''' '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -144,7 +144,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Zac's''' '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[40,55,70,85,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Zac's''' '''maximum''' health)</span>",
               "damage_type": "magic"
             },
             {
@@ -160,7 +160,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['80','110','140','170','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of '''Zac's''' '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"health\">(+ 5% of '''Zac's''' '''maximum''' health)</span>",
               "damage_type": "magic"
             }
           ]
@@ -182,19 +182,20 @@
         4
       ],
       "costtype": "{{as|Current Health|health}}",
-      "targeting": "None",
+      "targeting": "Auto",
       "target_range": 350,
       "image": {
         "full": "ZacW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}, and becoming {{tip|ghosted}} for 5 seconds against monsters hit.",
+        "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}.",
+        "'''Zac''' grants {{tip|ghost|ghosting}} to monsters hit for 5 seconds.",
         "''Unstable Matter's'' {{sti|cooldown}} is reduced by 1 second every time '''Zac''' picks up a {{ai|Cell Division|Zac}} chunk."
       ],
       "notes": "* No additional information.",
@@ -205,7 +206,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|25 to 85}} {{as|(+ {{ap|4 to 8}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}|Capped Damage|{{ap|225 to 285}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['25','40','55','70','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><spell-span :list=\"['225','240','255','270','285']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,40,55,70,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><SpellSpan :list=\"[225,240,255,270,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -224,27 +225,27 @@
                 7,
                 8
               ],
-              null
+              [
+                225,
+                240,
+                255,
+                270,
+                285
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 21
               },
               {
-                "target_total_ap": [
-                  2.25,
-                  2.4,
-                  2.55,
-                  2.7,
-                  2.85
-                ]
+                "target_total_ap": 4567821
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['25','40','55','70','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>",
+              "<SpellSpan :list=\"[25,40,55,70,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>",
               "Capped Damage",
-              "<spell-span :list=\"['225','240','255','270','285']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[225,240,255,270,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -261,7 +262,7 @@
                 "player_total_ap": 21
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['25','40','55','70','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['4','5','6','7','8']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[25,40,55,70,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>",
               "damage_type": "magic"
             },
             {
@@ -277,7 +278,7 @@
                 "player_total_ap": 21
               },
               "title": "Capped Damage",
-              "str": "<spell-span :list=\"['225','240','255','270','285']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[225,240,255,270,285]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
@@ -299,20 +300,20 @@
         4
       ],
       "costtype": "{{as|Current Health|health}}",
-      "targeting": "Ground",
+      "targeting": "[[Direction-targeted|Direction]] / [[Location-targeted|Location]]",
       "target_range": "{{ap|1200 to 1800}}",
       "image": {
         "full": "ZacE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Zac''' {{tip|channel|channels}} up to {{fd|4.5}} seconds, increasing ''Elastic Slingshot's'' {{sti|range}} over a cone in the target direction. ''Elastic Slingshot'' can be recast at any time within its duration.",
-        "If '''Zac''' {{tt|cancels the channel|Details below}} himself, 50% of ''Elastic Slingshot's'' {{sti|{{as|health cost}}}} and {{sti|cooldown}} are refunded.",
+        "{{sbc|Active:}} '''Zac''' {{tip|channel|charges}} up to {{fd|4.5}} seconds, increasing ''Elastic Slingshot's'' {{sti|range}} over a cone in the target direction. ''Elastic Slingshot'' can be recast at any time within its duration.",
+        "If '''Zac''' {{tt|cancels the channel|Details below}} himself, or the charge completes without reactivation, 50% of ''Elastic Slingshot's'' {{sti|{{as|health cost}}}} and {{sti|cooldown}} are refunded.",
         "{{sbc|Recast:}} '''Zac''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies on impact and {{tip|airborne|knocking them up}} for {{passive progression/deprecated version|2|changedisplay=true|type=duration of the charge|0.5|1|0|X}} seconds."
       ],
       "notes": "* {{sbc|[[Quick cast]]ing:}} ''Elastic Slingshot's'' channel begins when the key is pressed and held, launching '''Zac''' towards the cursor when released.\n* The following table refers for interactions while '''Zac''' is {{tip|channel|channeling}}:\n{{ct|charge|move=Disabled for the first {{fd|0.9}} seconds, otherwise, interrupts.|attack=false|cast={{ai|Stretching Strikes|Zac}} and {{ai|Unstable Matter|Zac}} interrupt. {{ai|Let's Bounce!|Zac}} initiates the recast.|items=interrupts,true,,false|spells=true,false,false,interrupts,recasts|interrupts = silence, death, root, ground}}",
@@ -323,7 +324,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Maximum Range Channel Duration|{{ap|0.9 to 1.3}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Range Channel Duration</span>: <span><spell-span :list=\"['0.9','1','1.1','1.2','1.3']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Maximum Range Channel Duration</span>: <span><SpellSpan :list=\"[0.9,1,1.1,1.2,1.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -338,7 +339,7 @@
             ],
             "st_slices": [
               "Maximum Range Channel Duration",
-              "<spell-span :list=\"['0.9','1','1.1','1.2','1.3']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[0.9,1,1.1,1.2,1.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -354,14 +355,14 @@
                 ]
               },
               "title": "Maximum Range Channel Duration",
-              "str": "<spell-span :list=\"['0.9','1','1.1','1.2','1.3']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[0.9,1,1.1,1.2,1.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60 to 260}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,110,160,210,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -381,7 +382,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[60,110,160,210,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -398,7 +399,7 @@
                 "player_total_ap": 0.9
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,110,160,210,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -419,12 +420,12 @@
         0,
         0
       ],
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "ZacR.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 144,
         "w": 48,
         "h": 48
@@ -443,50 +444,51 @@
       "effects": [
         {
           "levelingtext": "{{st|Chunk Healing|{{as|{{ap|5 to 7}}% of his '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Chunk Healing</span>: <span><span class=\"health\"><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Chunk Healing</span>: <span><span class=\"health\"><SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                5,
+                5.5,
+                6,
+                6.5,
+                7
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_hp": [
-                  0.05,
-                  0.055,
-                  0.06,
-                  0.065,
-                  0.07
-                ]
+                "player_total_hp": null
               }
             ],
             "st_slices": [
               "Chunk Healing",
-              "<span class=\"health\"><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his '''maximum''' health</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_hp": [
-                  0.05,
-                  0.055,
-                  0.06,
-                  0.065,
-                  0.07
-                ]
+                "base_progression": [
+                  5,
+                  5.5,
+                  6,
+                  6.5,
+                  7
+                ],
+                "player_total_hp": null
               },
               "title": "Chunk Healing",
-              "str": "<span class=\"health\"><spell-span :list=\"['5','5.5','6','6.5','7']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[5,5.5,6,6.5,7]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his '''maximum''' health</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['140','175','210','245','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['70','87.5','105','122.5','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><spell-span :list=\"['350','437.5','525','612.5','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[140,175,210,245,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[70,87.5,105,122.5,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[350,437.5,525,612.5,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -526,11 +528,11 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['140','175','210','245','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[140,175,210,245,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Reduced Damage",
-              "<spell-span :list=\"['70','87.5','105','122.5','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[70,87.5,105,122.5,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Maximum Single-Target Damage",
-              "<spell-span :list=\"['350','437.5','525','612.5','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[350,437.5,525,612.5,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -547,7 +549,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['140','175','210','245','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[140,175,210,245,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -563,7 +565,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Reduced Damage",
-              "str": "<spell-span :list=\"['70','87.5','105','122.5','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,87.5,105,122.5,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -579,7 +581,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Maximum Single-Target Damage",
-              "str": "<spell-span :list=\"['350','437.5','525','612.5','700']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[350,437.5,525,612.5,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "unknown"
             }
           ]

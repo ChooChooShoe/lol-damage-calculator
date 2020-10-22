@@ -1,6 +1,6 @@
 {
   "patch": "v0.9.22.7",
-  "changes": "10.6.1",
+  "changes": "10.20.1",
   "id": "Kassadin",
   "name": "Kassadin",
   "title": "the Void Walker",
@@ -105,7 +105,7 @@
         "{{sbc|Active:}} '''Kassadin''' fires an orb of void energy at the target enemy, dealing {{as|magic damage}} and {{tip|disrupt|disrupting}} their ongoing {{tip|channel|channels}}.",
         "The excess energy forms around '''Kassadin''', granting him a {{tip|shield}} that exclusively absorbs {{as|magic damage}} for {{fd|1.5}} seconds."
       ],
-      "notes": "* The {{tip|disrupt}} is 'wrapped' into a status effect that says {{tip|Silence|Silenced}} for {{fd|0.25}} seconds, but it does not actually ''silence''. It however makes sure that the ''disrupt'' is prevented by {{tip|Cc-immune|immunity to silences}}.",
+      "notes": "* The {{tip|disrupt}} is 'wrapped' into a status effect that says the target is {{tip|Silence|Silenced}} for {{fd|0.25}} seconds, but it does not actually ''silence''. It however makes sure that the ''disrupt'' is prevented by {{tip|Cc-immune|immunity to silences}}.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "70/75/80/85/90",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[65,95,125,155,185]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +133,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[65,95,125,155,185]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,23 +150,23 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['65','95','125','155','185']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[65,95,125,155,185]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Magic Shield|{{ap|60 to 160}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Shield</span>: <span><spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Shield|{{ap|40 to 160}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Shield</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                85,
-                110,
-                135,
+                40,
+                70,
+                100,
+                130,
                 160
               ]
             ],
@@ -177,7 +177,7 @@
             ],
             "st_slices": [
               "Magic Shield",
-              "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -185,16 +185,16 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  60,
-                  85,
-                  110,
-                  135,
+                  40,
+                  70,
+                  100,
+                  130,
                   160
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Magic Shield",
-              "str": "<spell-span :list=\"['60','85','110','135','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -216,7 +216,7 @@
         1
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "NetherBlade.png",
         "sprite": "spell5.png",
@@ -239,7 +239,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Increased Bonus Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|4 to 6}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 6*5}}% of '''missing''' mana}}}}",
-          "str": "<ul><li><span class=\"blue\">Increased Bonus Magic Damage</span>: <span><spell-span :list=\"['70','95','120','145','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li><li><span class=\"blue\">Mana Restored Against Champions</span>: <span><span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of <b>missing</b> mana</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Increased Bonus Magic Damage</span>: <span><SpellSpan :list=\"[70,95,120,145,170]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><SpellSpan :list=\"[4,4.5,5,5.5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of <b>missing</b> mana</span></span></li><li><span class=\"blue\">Mana Restored Against Champions</span>: <span><span class=\"mana\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of <b>missing</b> mana</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -258,30 +258,30 @@
                 5.5,
                 6
               ],
-              null
+              [
+                20,
+                22.5,
+                25,
+                27.5,
+                30
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.8
               },
               {
-                "player_total_mana": [
-                  0.2,
-                  0.225,
-                  0.25,
-                  0.275,
-                  0.3
-                ]
+                "player_total_mana": null
               },
               {
-                "player_total_mana": []
+                "player_total_mana": null
               }
             ],
             "st_slices": [
               "Mana Restored",
-              "<span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "<span class=\"mana\"><SpellSpan :list=\"[4,4.5,5,5.5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of '''missing''' mana</span>",
               "Mana Restored Against Champions",
-              "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>"
+              "<span class=\"mana\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of '''missing''' mana</span>"
             ]
           },
           "subeffects": [
@@ -296,16 +296,10 @@
                   170
                 ],
                 "player_total_ap": 0.8,
-                "player_total_mana": [
-                  0.2,
-                  0.225,
-                  0.25,
-                  0.275,
-                  0.3
-                ]
+                "player_total_mana": null
               },
               "title": "Mana Restored",
-              "str": "<span class=\"mana\"><spell-span :list=\"['4','4.5','5','5.5','6']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "str": "<span class=\"mana\"><SpellSpan :list=\"[4,4.5,5,5.5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of '''missing''' mana</span>",
               "damage_type": "none"
             },
             {
@@ -319,16 +313,10 @@
                   6
                 ],
                 "player_total_ap": 0.8,
-                "player_total_mana": [
-                  0.2,
-                  0.225,
-                  0.25,
-                  0.275,
-                  0.3
-                ]
+                "player_total_mana": null
               },
               "title": "Mana Restored Against Champions",
-              "str": "<span class=\"mana\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of '''missing''' mana</span>",
+              "str": "<span class=\"mana\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of '''missing''' mana</span>",
               "damage_type": "none"
             }
           ]
@@ -365,8 +353,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Kassadin''' gains a ''Void Energy'' stack each time a nearby champion, including himself, uses an [[Champion ability|ability]], up to 6. At 6 stacks, '''Kassadin''' gains the ability to cast ''Force Pulse''.",
-        "{{sbc|Active:}} '''Kassadin''' emits a pulse of void energy, dealing {{as|magic damage}} to all enemies in a cone in the target direction and {{tip|slow|slowing}} them for 1 second."
+        "{{sbc|Passive:}} '''Kassadin''' gains a ''Void Energy'' [[stack]] each time he or a nearby {{tip|champion}} uses an [[Champion ability|ability]], stacking up to 6 times. At 6 stacks, '''Kassadin''' gains the ability to cast ''Force Pulse''.",
+        "{{sbc|Active:}} '''Kassadin''' emits a pulse of void energy in the target direction, dealing {{as|magic damage}} to all enemies in a cone and {{tip|slow|slowing}} them for 1 second."
       ],
       "notes": "* {{tip|Untargetable}} champions do not grant stacks upon ability activations, unlike {{ii|Spellbinder}} that gains charges regardless.\n*[[Toggle|Toggle abilities]] do not count as ability activations and '''will not''' grant any ''Void Energy'' stacks for ''Force Pulse''.\n* ''Force Pulse'' will cast from wherever '''Kassadin''' is at the end of the cast time.",
       "skillkey": "E",
@@ -376,7 +364,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 180}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|50 to 90}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','105','130','155','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,105,130,155,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -403,7 +391,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -420,7 +408,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -443,7 +431,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 500,
       "image": {
         "full": "RiftWalk.png",
@@ -455,8 +443,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Kassadin''' {{tip|blinks}} to the target location, dealing {{as|magic damage}} to all nearby enemies on arrival.",
-        "Each subsequent ''Riftwalk'' within 15 seconds doubles its {{as|mana cost}} and increases its damage, stacking up to 4 times."
+        "{{sbc|Active:}} '''Kassadin''' {{tip|blinks}} to the target location and deals {{as|magic damage}} to all nearby enemies.",
+        "Each subsequent ''Riftwalk'' cast within 15 seconds doubles its {{sti|{{as|mana cost}}}} and increases its damage, [[stack]]ing up to 4 times."
       ],
       "notes": "* {{si|Flash}} can be used during the cast time, which causes '''Kassadin''' to perform ''Riftwalk'' from the new location.",
       "skillkey": "R",
@@ -466,7 +454,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 120}} {{as|(+ 40% AP)}} {{as|(+ 2% '''maximum''' mana)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% <b>maximum</b> mana)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% <b>maximum</b> mana)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -489,7 +477,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>"
+              "<SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>"
             ]
           },
           "subeffects": [
@@ -507,14 +495,14 @@
                 "player_total_mana": 0.02
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','90','100','110','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>",
+              "str": "<SpellSpan :list=\"[80,90,100,110,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"mana\">(+ 2% '''maximum''' mana)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Damage Per Stack|{{ap|40 to 60}} {{as|(+ 10% AP)}} {{as|(+ 1% '''maximum''' mana)}}|Maximum Magic Damage|{{ap|80+40*4 to 120+60*4}} {{as|(+ 80% AP)}} {{as|(+ 6% '''maximum''' mana)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% <b>maximum</b> mana)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% <b>maximum</b> mana)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage Per Stack</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% <b>maximum</b> mana)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[240,270,300,330,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% <b>maximum</b> mana)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -550,9 +538,9 @@
             ],
             "st_slices": [
               "Bonus Damage Per Stack",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
+              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
               "Maximum Magic Damage",
-              "<spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>"
+              "<SpellSpan :list=\"[240,270,300,330,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>"
             ]
           },
           "subeffects": [
@@ -570,7 +558,7 @@
                 "player_total_mana": 0.01
               },
               "title": "Bonus Damage Per Stack",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span> <span class=\"mana\">(+ 1% '''maximum''' mana)</span>",
               "damage_type": "unknown"
             },
             {
@@ -587,7 +575,7 @@
                 "player_total_mana": 0.01
               },
               "title": "Maximum Magic Damage",
-              "str": "<spell-span :list=\"['240','270','300','330','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>",
+              "str": "<SpellSpan :list=\"[240,270,300,330,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"mana\">(+ 6% '''maximum''' mana)</span>",
               "damage_type": "magic"
             }
           ]

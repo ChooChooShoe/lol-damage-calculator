@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.96",
-  "changes": "10.7.1",
+  "changes": "10.18.1",
   "id": "XinZhao",
   "name": "Xin Zhao",
   "title": "the Seneschal of Demacia",
@@ -8,8 +8,8 @@
     "full": "XinZhao.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 432,
-    "y": 48,
+    "x": 0,
+    "y": 96,
     "w": 48,
     "h": 48
   },
@@ -58,15 +58,15 @@
         "full": "XinZhaoP.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 432,
-        "y": 48,
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} '''Xin Zhao''' gains a ''Determination I'' and ''Determination II'' stack for every {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-hit]], up to a maximum of two.",
         "At two ''Determination I'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-hit]] consumes the stacks to {{tip|heal}} him for {{passive progression/deprecated version|10 to 112}} {{as|(+ 10% AD)}} {{as|(+ 40% AP)}}.",
-        "At two ''Determination II'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-attack]] consumes the stacks to deal {{as|{{passive progression/deprecated version|4|key=%|15 to 45|1 to 16|displayformula=15%+10% every 5 levels}} AD}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}}."
+        "At two ''Determination II'' stacks, '''Xin Zhao's''' next {{ai|Wind Becomes Lightning|Xin Zhao}} strike or basic attack [[on-attack]] consumes the stacks to deal {{as|{{passive progression/deprecated version|4|key=%|15 to 45|1 to 16|displayformula=15%+10% every 5 levels}} AD}} {{as|'''bonus''' physical damage}}."
       ],
       "notes": "* Applies {{tip|proc damage}} via basic attack through two ''Determination II'' stacks.\n* The ''Determination II'' stacks are not visible on the champion's buff bar in-game.\n* Hitting one or more enemies with {{ai|Wind Becomes Lightning|Xin Zhao}} applies one stack per strike. The bonus damage applies to all enemies of one strike, but the healing only once.\n* If {{ii|Guinsoo's Rageblade}} would trigger when the ''Determination II'' stacks are at maximum, the bonus stack will instead overstack, and be consumed on the next ''Determination II'' usage.\n* {{Pending for test}}: ''Determination's'' interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "I",
@@ -92,12 +92,12 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "XinZhaoQ.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 48,
         "w": 48,
         "h": 48
@@ -105,8 +105,7 @@
       "description": [
         "{{sbc|Active:}} '''Xin Zhao''' empowers his spear for 5 seconds, causing his next three basic attacks [[on-attack]] to become {{tip|unstoppable basic attack|unstoppable}}, deal {{as|'''bonus''' physical damage}} and reduce '''Xin Zhao's''' other [[Champion ability|abilities']] {{sti|cooldowns}} by 1 second each, as well as refresh ''Three Talon's Strike'' duration.",
         "The third basic attack {{tip|airborne|knocks up}} the target for {{fd|0.75}} seconds and consumes the buff.",
-        "''Three Talon Strike'' {{tip|basic attack reset|resets}} '''Xin Zhao's''' basic attack timer.",
-        "''Talon Strike'' is affected by {{tip|critical strike}} modifiers."
+        "''Three Talon Strike'' {{tip|basic attack reset|resets}} '''Xin Zhao's''' basic attack timer and is affected by {{tip|critical strike}} modifiers."
       ],
       "notes": "* {{tip|Spell shield}} will only block the third attack.\n* The enhanced attacks present input buffering during their wind-up animation ('''Xin Zhao''' cannot be issued any commands until after it ends).",
       "skillkey": "Q",
@@ -116,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{ap|20 to 52}} {{as|(+ 40% '''bonus''' AD)}}|Total Bonus Damage|{{ap|20*3 to 52*3}} {{as|(+ 120% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><spell-span :list=\"['60','84','108','132','156']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><SpellSpan :list=\"[60,84,108,132,156]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -146,9 +145,9 @@
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
               "Total Bonus Damage",
-              "<spell-span :list=\"['60','84','108','132','156']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[60,84,108,132,156]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -165,7 +164,7 @@
                 "player_bonus_ad": 0.4
               },
               "title": "Bonus Physical Damage",
-              "str": "<spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -181,7 +180,7 @@
                 "player_bonus_ad": 0.4
               },
               "title": "Total Bonus Damage",
-              "str": "<spell-span :list=\"['60','84','108','132','156']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[60,84,108,132,156]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -213,7 +212,7 @@
         "full": "XinZhaoW.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 48,
         "w": 48,
         "h": 48
@@ -231,7 +230,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Slash Damage|{{ap|30 to 70}} {{as|(+ 30% AD)}}|Slash Minion-Damage|{{ap|30/2 to 70/2}} {{as|(+ 15% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Slash Damage</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span></span></li><li><span class=\"blue\">Slash Minion-Damage</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 15% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Slash Damage</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% AD)</span></span></li><li><span class=\"blue\">Slash Minion-Damage</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 15% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -261,9 +260,9 @@
             ],
             "st_slices": [
               "Slash Damage",
-              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span>",
+              "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% AD)</span>",
               "Slash Minion-Damage",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 15% AD)</span>"
+              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 15% AD)</span>"
             ]
           },
           "subeffects": [
@@ -280,7 +279,7 @@
                 "player_total_ad": 0.3
               },
               "title": "Slash Damage",
-              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 30% AD)</span>",
+              "str": "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -296,46 +295,46 @@
                 "player_total_ad": 0.3
               },
               "title": "Slash Minion-Damage",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 15% AD)</span>",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 15% AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Thrust Damage|{{ap|30 to 170}} {{as|(+ 75% AD)}}|Thrust Minion-Damage|{{ap|30/2 to 170/2}} {{as|(+ {{fd|37.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Thrust Damage</span>: <span><spell-span :list=\"['30','65','100','135','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span></span></li><li><span class=\"blue\">Thrust Minion-Damage</span>: <span><spell-span :list=\"['15','32.5','50','67.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Thrust Damage|{{ap|40 to 180}} {{as|(+ 80% AD)}}|Thrust Minion-Damage|{{ap|40/2 to 180/2}} {{as|(+ 40% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Thrust Damage</span>: <span><SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span></span></li><li><span class=\"blue\">Thrust Minion-Damage</span>: <span><SpellSpan :list=\"[20,37.5,55,72.5,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                30,
-                65,
-                100,
-                135,
-                170
+                40,
+                75,
+                110,
+                145,
+                180
               ],
               [
-                15,
-                32.5,
-                50,
-                67.5,
-                85
+                20,
+                37.5,
+                55,
+                72.5,
+                90
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ad": 0.75
+                "player_total_ad": 0.8
               },
               {
-                "player_total_ad": 0.375
+                "player_total_ad": 0.4
               }
             ],
             "st_slices": [
               "Thrust Damage",
-              "<spell-span :list=\"['30','65','100','135','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span>",
+              "<SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>",
               "Thrust Minion-Damage",
-              "<spell-span :list=\"['15','32.5','50','67.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span>"
+              "<SpellSpan :list=\"[20,37.5,55,72.5,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span>"
             ]
           },
           "subeffects": [
@@ -343,71 +342,71 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  30,
-                  65,
-                  100,
-                  135,
-                  170
+                  40,
+                  75,
+                  110,
+                  145,
+                  180
                 ],
-                "player_total_ad": 0.75
+                "player_total_ad": 0.8
               },
               "title": "Thrust Damage",
-              "str": "<spell-span :list=\"['30','65','100','135','170']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 75% AD)</span>",
+              "str": "<SpellSpan :list=\"[40,75,110,145,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>",
               "damage_type": "unknown"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  15,
-                  32.5,
-                  50,
-                  67.5,
-                  85
+                  20,
+                  37.5,
+                  55,
+                  72.5,
+                  90
                 ],
-                "player_total_ad": 0.75
+                "player_total_ad": 0.8
               },
               "title": "Thrust Minion-Damage",
-              "str": "<spell-span :list=\"['15','32.5','50','67.5','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[20,37.5,55,72.5,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Max. Physical Damage|{{ap|30+30 to 70+170}} {{as|(+ 105% AD)}}|Max. Minion Damage|{{ap|(30+30)/2 to (70+170)/2}} {{as|(+ {{fd|52.5}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Max. Physical Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 105% AD)</span></span></li><li><span class=\"blue\">Max. Minion Damage</span>: <span><spell-span :list=\"['30','52.5','75','97.5','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">52.5</span>% AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Max. Physical Damage|{{ap|30+40 to 70+180}} {{as|(+ 110% AD)}}|Max. Minion Damage|{{ap|(30+40)/2 to (70+180)/2}} {{as|(+ 55% AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Max. Physical Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span></span></li><li><span class=\"blue\">Max. Minion Damage</span>: <span><SpellSpan :list=\"[35,57.5,80,102.5,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 55% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                105,
-                150,
-                195,
-                240
+                70,
+                115,
+                160,
+                205,
+                250
               ],
               [
-                30,
-                52.5,
-                75,
-                97.5,
-                120
+                35,
+                57.5,
+                80,
+                102.5,
+                125
               ]
             ],
             "as_ratios": [
               {
-                "player_total_ad": 1.05
+                "player_total_ad": 1.1
               },
               {
-                "player_total_ad": 0.525
+                "player_total_ad": 0.55
               }
             ],
             "st_slices": [
               "Max. Physical Damage",
-              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 105% AD)</span>",
+              "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span>",
               "Max. Minion Damage",
-              "<spell-span :list=\"['30','52.5','75','97.5','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">52.5</span>% AD)</span>"
+              "<SpellSpan :list=\"[35,57.5,80,102.5,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 55% AD)</span>"
             ]
           },
           "subeffects": [
@@ -415,32 +414,32 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  60,
-                  105,
-                  150,
-                  195,
-                  240
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
                 ],
-                "player_total_ad": 1.05
+                "player_total_ad": 1.1
               },
               "title": "Max. Physical Damage",
-              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 105% AD)</span>",
+              "str": "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% AD)</span>",
               "damage_type": "physical"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
-                  30,
-                  52.5,
-                  75,
-                  97.5,
-                  120
+                  35,
+                  57.5,
+                  80,
+                  102.5,
+                  125
                 ],
-                "player_total_ad": 1.05
+                "player_total_ad": 1.1
               },
               "title": "Max. Minion Damage",
-              "str": "<spell-span :list=\"['30','52.5','75','97.5','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">52.5</span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[35,57.5,80,102.5,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 55% AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -472,13 +471,13 @@
         "full": "XinZhaoE.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xin Zhao''' {{tip|dashes}} to the target enemy's location, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies around the primary target and {{tip|slow|slowing}} them by 30% for {{fd|0.5}} seconds.",
+        "{{sbc|Active:}} '''Xin Zhao''' {{tip|dashes}} to the target enemy's location, dealing {{as|magic damage}} to all enemies around the primary target and {{tip|slow|slowing}} them by 30% for {{fd|0.5}} seconds.",
         "'''Xin Zhao''' then gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.",
         "'''Xin Zhao''' cannot cast {{ai|Wind Becomes Lightning|Xin Zhao}} while dashing, but he may still buffer it. {{ai|Three Talon Strike|Xin Zhao}} and {{ai|Crescent Guard|Xin Zhao}} can both be cast during the dash."
       ],
@@ -490,7 +489,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|50 to 150}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -510,7 +509,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -527,14 +526,14 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['50','75','100','125','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -549,7 +548,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -565,7 +564,7 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -587,12 +586,12 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "XinZhaoR.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 48,
         "w": 48,
         "h": 48
@@ -600,9 +599,9 @@
       "description": [
         "{{sbc|Passive - Challenge:}} The last enemy champion hit by '''Xin Zhao's''' [[basic attack]]s or {{ai|Audacious Charge|Xin Zhao}} is ''{{ai|Challenge|Xin Zhao|Challenged}}'' for 3 seconds.",
         "{{sbc|Active:}} '''Xin Zhao''' sweeps his spear around him, dealing {{as|physical damage}} to enemies hit, capped at 600 {{as|(+ 100% '''bonus''' AD)}} against {{tip|monsters}}, while also {{tip|airborne|knocking back}} all non-''{{ai|Challenge|Xin Zhao|Challenged}}'' enemies hit.",
-        "For the next 3 seconds, '''Xin Zhao''' is {{tip|invulnerability|invulnerable}} against enemy {{tip|champion|champions}} more than 450-units away from him. His [[basic attack]]s and other [[champion ability|ability casts]] extend the duration by {{fd|0.3}} seconds."
+        "For the next 3 seconds, '''Xin Zhao''' is {{tip|invulnerability|invulnerable}} to enemy {{tip|champion|champions}} more than 450-units away from him. His [[basic attack]]s and other [[champion ability|ability casts]] extend the duration by {{fd|0.3}} seconds."
       ],
-      "notes": "* {{tip|Pet|Pets}}, {{tip|stealthed trap|traps}}, [[ground-targeted|ground]] [[area of effect|AoEs]], {{tip|damage over time|DoTs}}, and delayed-damage skills (i.e - {{ai|Death Mark|Zed}}) will not damage '''Xin Zhao''' if the enemy champion source is outside the circle when the damage applies.\n* {{si|Flash}} can be used during the cast time and ''Crescent Guard'' will sweep at the new location.",
+      "notes": "* {{tip|Pet|Pets}}, {{tip|stealthed trap|traps}}, [[ground-targeted|ground]] [[area of effect|AoEs]], {{tip|damage over time|DoTs}}, and delayed-damage skills (i.e - {{ai|Death Mark|Zed}}) will not damage '''Xin Zhao''' if the enemy champion source is outside the circle when the damage applies.\n* ''Crescent Guard'' will cast from wherever '''Xin Zhao''' is at the end of the cast time.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -610,7 +609,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|75 to 275}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 15% of target's '''current''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"health\">(+ 15% of target's <b>current</b> health)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"health\">(+ 15% of target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -633,7 +632,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"health\">(+ 15% of target's '''current''' health)</span>"
+              "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"health\">(+ 15% of target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
@@ -651,7 +650,7 @@
                 "target_current_hp": 0.15
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['75','125','175','225','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"health\">(+ 15% of target's '''current''' health)</span>",
+              "str": "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"health\">(+ 15% of target's '''current''' health)</span>",
               "damage_type": "physical"
             }
           ]

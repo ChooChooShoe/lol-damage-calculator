@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Both '''Lamb''' and '''Wolf''' mark targets to ''hunt''. Scoring a {{tip|takedown}} on a marked target permanently empowers '''Kindred's''' abilities, as well as granting '''Lamb''' {{passive progression/deprecated version|type=Marks|8|75|100|125|150|175|200|225|250|4|7|10|13|16|19|22|25|formula=+75 at 4 Marks, and +25 every 3 Marks thereafter, up to 250 bonus range at 25 Marks.}} {{sti|range|'''bonus''' range}} on her basic attacks and abilities.",
+        "{{sbc|Innate:}} Both '''Lamb''' and '''Wolf''' mark targets to ''hunt''. Scoring a {{tip|takedown}} on a marked target permanently empowers '''Kindred's''' abilities, as well as granting '''Lamb''' {{passive progression/deprecated version|type=Marks|8|75|100|125|150|175|200|225|250|4|7|10|13|16|19|22|25|formula=+75 at 4 Marks, and +25 every 3 Marks thereafter, up to 250 bonus range at 25 Marks.}} {{sti|range|'''bonus''' range}} on her basic attacks and {{ai|Mounting Dread|Kindred}}.",
         "{{sbc|Innate - Lamb:}} '''Lamb''' is offered a selection of enemy {{tip|champions}} to take down, which is hidden while {{tt|in combat with an enemy champion|6 seconds timer}}. Once selected, there's an 8 second delay before the ''Mark'' can be collected, and '''Lamb''' can change her target if the target hasn't died during a period of time. ''Targets successfully hunted cannot be targeted again for 4 minutes.''",
         "{{sbc|Innate - Wolf:}} Starting at {{sbc|3:15}}, '''Wolf''' periodically selects a {{tip|monster}} camp within the enemy's jungle based on '''Lamb's''' current ''Marks'' for 180 seconds:\n* {{sbc|0 :}} {{ui|Rift Scuttler}}\n* {{sbc|1 – 3:}} {{ui|Rift Scuttler}}, {{ui|Crimson Raptor}}, {{ui|Gromp}}\n* {{sbc|4 – 7:}} {{ui|Ancient Krug}}, {{ui|Blue Sentinel}}, {{ui|Greater Murk Wolf}}, or {{ui|Red Brambleback}}\n* {{sbc|8 + :}} {{ui|Rift Herald}} or {{ui|Baron Nashor}}, {{ui|Dragon}} or {{ui|Elder Dragon}}\n'''Wolf''' will select another monster camp 40 seconds after killing a marked monster. If an ally kills a hunted jungle monster within 6 seconds of '''Kindred''' damaging it, '''Kindred''' will still acquire the stack.\nThe marked camp is highlighted on the [[Map (League of Legends)|mini map]] to both teams. ''The mark is removed when the camp is cleared even if '''Kindred''' are not involved.''"
       ],
@@ -92,7 +92,7 @@
         35
       ],
       "costtype": "Mana",
-      "targeting": "Direction",
+      "targeting": "Location",
       "target_range": 340,
       "image": {
         "full": "KindredQ.png",
@@ -104,12 +104,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lamb''' {{tip|dashes}} in the target direction, gaining {{sti|attack speed|{{as|25%|attack speed}}}} {{as|(+ 5% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} {{as|'''bonus''' attack speed}} for 4 seconds while firing up to three arrows to nearby {{tip|sight|visible}} targets, dealing {{as|physical damage}}. '''Lamb's''' current attack target at any proximity will be prioritized by one of the arrows.",
+        "{{sbc|Active:}} '''Lamb''' {{tip|dashes}} toward the target location, gaining {{sti|attack speed|{{as|25%|attack speed}}}} {{as|(+ 5% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} {{as|'''bonus''' attack speed}} for 4 seconds and firing up to three arrows to nearby {{tip|sight|visible}} targets after dashing, each one dealing {{as|physical damage}}. '''Lamb's''' current attack target at any proximity will be prioritized by one of the arrows.",
         "Casting {{ai|Wolf's Frenzy|Kindred}} or using ''Dance of Arrows'' while inside its area will reduce this ability's {{sti|cooldown}} to an amount.",
         "'''Lamb''' can cast any of her [[champion ability|abilities]] during ''Dance of Arrows' '' dash.",
         "''Dance of Arrows'' {{tip|basic attack reset|resets}} '''Lamb's''' basic attack timer."
       ],
-      "notes": "* The dash distance can be extended to up to 400 units when dashing across terrain.\n* The cooldown will not be modified if it cannot be reduced (the current cooldown would have to be less than the reduction amount in this case).",
+      "notes": "* The dash does not have a fixed range, it can be directed by up to 340 units.\n* The dash distance can be extended to up to 400 units when dashing across terrain.\n* The cooldown will not be modified if it cannot be reduced (the current cooldown would have to be less than the reduction amount in this case).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "35",
@@ -117,7 +117,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|60|80|100|120|140}} {{as|(+ 65% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -137,7 +137,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[60,80,100,120,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -154,14 +154,14 @@
                 "player_bonus_ad": 0.65
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['60','80','100','120','140']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 65% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[60,80,100,120,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Static Cooldown|{{ap|4 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Static Cooldown</span>: <span><spell-span :list=\"['4','3.5','3','2.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Static Cooldown</span>: <span><SpellSpan :list=\"[4,3.5,3,2.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -176,7 +176,7 @@
             ],
             "st_slices": [
               "Static Cooldown",
-              "<spell-span :list=\"['4','3.5','3','2.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[4,3.5,3,2.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -192,7 +192,7 @@
                 ]
               },
               "title": "Static Cooldown",
-              "str": "<spell-span :list=\"['4','3.5','3','2.5','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[4,3.5,3,2.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -218,7 +218,7 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "[[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 500,
       "image": {
         "full": "KindredW.png",
@@ -243,7 +243,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|25 to 45}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ {{fd|1.5}}% {{as|(+ 1% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''current''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -269,7 +269,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>"
+              "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
@@ -288,7 +288,7 @@
                 "target_current_hp": 0.0151
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>",
+              "str": "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>",
               "damage_type": "magic"
             }
           ]
@@ -326,9 +326,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lamb''' marks the target enemy for 4 seconds and cripples them, {{tip|slow|slowing}} them by 50% for 1 second.",
-        "'''Lamb's''' attacks against the target refreshes the mark's duration. If she manages to [[basic attack]] the marked target twice, her third attack directs '''Wolf''' to pounce them, dealing {{as|'''bonus''' physical damage}} and consuming the mark, capped at 300 against {{tip|monster|monsters}}.",
-        "'''Wolf's''' pounce will {{tip|critically strike}} for {{as|{{critical damage|50|150}}|physical damage}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} against targets below {{as|{{as|{{passive progression/deprecated version|11|type=critical strike chance|key=%|key1=%|15 to 15+100/2|0 to 100|displayformula=15% (+ 0.5% per 1% critical strike chance). ''This is capped at 100% critical strike chance.''}}|health}} of their '''maximum''' health}}."
+        "{{sbc|Active:}} '''Lamb''' applies a mark to the target enemy for 4 seconds and cripples them, {{tip|slow|slowing}} them by 50% for 1 second.",
+        "'''Lamb's''' attacks against the target refreshes the mark's duration. If she manages to [[basic attack]] the marked target twice, her third attack directs '''Wolf''' to pounce them, consuming the mark to deal {{as|'''bonus''' physical damage}}, capped at 300 against {{tip|monster|monsters}}.",
+        "'''Wolf's''' pounce will {{tip|critically strike}} for {{as|{{critical damage|50|150}}|physical damage}} {{as|'''bonus''' physical damage}} against targets below {{as|{{as|{{passive progression/deprecated version|11|type=critical strike chance|key=%|key1=%|15 to 15+100/2|0 to 100|displayformula=15% (+ 0.5% per 1% critical strike chance). ''This is capped at 100% critical strike chance.''}}|health}} of their {{sti|'''maximum''' health}}}}."
       ],
       "notes": "* The '''bonus''' damage will not benefit from {{tip|critical strike|critical strikes}} unless the target is below the '''maximum''' health condition.",
       "skillkey": "E",
@@ -338,7 +338,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{ap|80 to 160}} {{as|(+ 80% '''bonus''' AD)}} {{as|(+ 8% {{as|(+ {{fd|0.5}}% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''missing''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><spell-span :list=\"['80','100','120','140','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>missing</b> health)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -364,7 +364,7 @@
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<spell-span :list=\"['80','100','120','140','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''missing''' health)</span>"
+              "<SpellSpan :list=\"[80,100,120,140,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''missing''' health)</span>"
             ]
           },
           "subeffects": [
@@ -383,7 +383,7 @@
                 "target_missing_hp": 0.805
               },
               "title": "Bonus Physical Damage",
-              "str": "<spell-span :list=\"['80','100','120','140','160']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 80% '''bonus''' AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''missing''' health)</span>",
+              "str": "<SpellSpan :list=\"[80,100,120,140,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span> <span class=\"health\">(+ 8% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''missing''' health)</span>",
               "damage_type": "physical"
             }
           ]
@@ -405,7 +405,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "KindredR.png",
         "sprite": "spell6.png",
@@ -416,10 +416,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds. All units inside the zone {{tip|invulnerability|cannot}} be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, but also cannot be healed for the remaining duration once they reach the threshold.",
-        "All units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
+        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds and enters a {{rutngt|0.25}} [[Channel#Casting Times|cast time]]. '''All''' units inside the zone cannot be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, and will become {{tip|invulnerable}} for the remaining duration when they reach or are at the threshold, during which they also cannot be {{tip|heal|healed}}, but can still {{sti|health regeneration|regenerate health|link=health regeneration}}.",
+        "All targetable units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
       ],
-      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* Any given unit's {{sti|health regeneration|link=true}} will still be active while inside ''Lamb's Respite''.\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n* [[Kill#Execute|Execution]] effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* The effects are applied before the cast time.",
+      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n* {{tip|Execute|Execution}} effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* {{tip|Health resource|Health costs}} will ignore ''Lamb's Respite's'' threshold.\n** The cost will not be paid if the caster is below the threshold.\n* ''Lamb's Respite'' has no effect on {{tip|zombie state}} units.\n* The effects are applied before the cast time.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -427,7 +427,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Heal|{{ap|250 to 400}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><spell-span :list=\"['250','287.5','325','362.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[250,287.5,325,362.5,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -442,7 +442,7 @@
             ],
             "st_slices": [
               "Heal",
-              "<spell-span :list=\"['250','287.5','325','362.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[250,287.5,325,362.5,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -458,7 +458,7 @@
                 ]
               },
               "title": "Heal",
-              "str": "<spell-span :list=\"['250','287.5','325','362.5','400']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[250,287.5,325,362.5,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]

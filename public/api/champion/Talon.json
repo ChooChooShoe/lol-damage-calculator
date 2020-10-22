@@ -8,7 +8,7 @@
     "full": "Talon.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 336,
+    "x": 384,
     "y": 96,
     "w": 48,
     "h": 48
@@ -58,16 +58,16 @@
         "full": "TalonP.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 336,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Talon's''' damaging [[champion ability|abilities]] ''wound'' enemy {{tip|champions}} and {{tip|monsters}}, lasting 6 seconds and [[stack]]ing up to 3 times. [[Basic attack]]s refresh the duration [[on-hit]].",
-        "'''Talon's''' next basic attack against a target with 3 ''wound'' stacks will consume them, causing the target to bleed for {{as|{{passive progression/deprecated version|75 to 245}}|physical damage}} {{as|(+ 200% '''bonus''' AD)}} {{tip|physical damage|{{as|physical damage}}}} over 2 seconds, with each tick occurring every {{fd|0.125}} seconds. The '''total''' damage is increased by 20% against monsters."
+        "{{sbc|Innate:}} '''Talon's''' damaging [[champion ability|abilities]] apply a ''wound'' [[stack]] for 6 seconds to enemy {{tip|champions}} and large {{tip|monsters}} hit, stacking up to 3 times, with the duration refreshing on [[basic attack]]s [[on-hit]] and subsequent damaging abilities.",
+        "'''Talon's''' next basic attack against a target with 3 ''wound'' stacks will consume the stacks to cause the target to bleed, dealing them {{as|{{passive progression/deprecated version|75 to 245}}|physical damage}} {{as|(+ 200% '''bonus''' AD)}} {{as|physical damage}} over 2 seconds, with each tick occurring every {{fd|0.125}} seconds. The '''total''' damage is increased by 20% against monsters."
       ],
-      "notes": "* {{Pending for test}}: Interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* {{Pending for test}}: Interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).\n* {{tip|Spell shield}} will only prevent stacks from being applied.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -97,13 +97,13 @@
         "full": "TalonQ.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Talon''' {{tip|dashes}} towards the target enemy, dealing {{as|physical damage}} on arrival. Casting the ability within 170 units of the target causes '''Talon''' to instead stab it and {{tip|critically strike}} for {{as|{{critical damage|50|100|melee}} '''bonus''' physical damage}}.",
+        "{{sbc|Active:}} '''Talon''' {{tip|dashes}} towards the target enemy, dealing {{as|physical damage}} on arrival. Casting the ability within 170 units of the target causes '''Talon''' to instead stab them and {{tip|critically strike}} for {{as|{{critical damage|50|100|melee}} '''bonus''' physical damage}}.",
         "If ''Noxian Diplomacy'' kills the target, '''Talon''' {{tip|heals}} for {{passive progression/deprecated version|10 to 70}} and 50% of its {{sti|cooldown}} is refunded.",
         "The stab version of ''Noxian Diplomacy'' {{tip|basic attack reset|resets}} '''Talon's''' basic attack timer and increases the {{sti|range}} of his next basic attack within 1 second by 75.",
         "''Noxian Diplomacy will cause '''Talon''' to automatically basic attack the target.''"
@@ -116,7 +116,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Dash Physical Damage|{{ap|65 to 165}} {{as|(+ 110% '''bonus''' AD)}}|Stab Physical Damage|{{ap|65*1.5 to 165*1.5}} {{as|(+ {{ap|110*1.5}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Dash Physical Damage</span>: <span><spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Stab Physical Damage</span>: <span><spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Dash Physical Damage</span>: <span><SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Stab Physical Damage</span>: <span><SpellSpan :list=\"[97.5,135,172.5,210,247.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[165]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,23 +135,23 @@
                 210,
                 247.5
               ],
-              null
+              [
+                165
+              ]
             ],
             "as_ratios": [
               {
                 "player_bonus_ad": 1.1
               },
               {
-                "player_bonus_ad": [
-                  1.65
-                ]
+                "player_bonus_ad": 1.6500000000000001
               }
             ],
             "st_slices": [
               "Dash Physical Damage",
-              "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
               "Stab Physical Damage",
-              "<spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[97.5,135,172.5,210,247.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[165]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -168,7 +168,7 @@
                 "player_bonus_ad": 1.1
               },
               "title": "Dash Physical Damage",
-              "str": "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -184,7 +184,7 @@
                 "player_bonus_ad": 1.1
               },
               "title": "Stab Physical Damage",
-              "str": "<spell-span :list=\"['97.5','135','172.5','210','247.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['165']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[97.5,135,172.5,210,247.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[165]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -216,14 +216,14 @@
         "full": "TalonW.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Talon''' sends out a volley of daggers, dealing {{as|physical damage}} to all enemies they pass through.",
-        "The daggers linger for {{fd|0.75}} seconds before flying back to '''Talon''', dealing {{as|physical damage}} to all enemies they pass through and {{tip|slow|slowing}} them for 1 second.",
+        "{{sbc|Active:}} '''Talon''' sends out a volley of daggers in the target direction, dealing {{as|physical damage}} to all enemies they pass through.",
+        "The daggers then linger for {{fd|0.75}} seconds before flying back to '''Talon''', dealing {{as|physical damage}} to all enemies they pass through and {{tip|slow|slowing}} them for 1 second.",
         "''The traveling and returning pass each cannot affect the same enemy more than once.''"
       ],
       "notes": "* If '''Talon''' dies while ''Rake'' is mid-air, the projectiles will still complete their travel.\n* ''Rake'' will cast from wherever '''Talon''' is at the end of the cast time.",
@@ -234,7 +234,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|45 to 105}} {{as|(+ 40% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[45,60,75,90,105]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -254,7 +254,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[45,60,75,90,105]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -271,14 +271,14 @@
                 "player_bonus_ad": 0.4
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['45','60','75','90','105']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[45,60,75,90,105]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 40% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Return Physical Damage|{{ap|45 to 125}} {{as|(+ 70% '''bonus''' AD)}}|Total Physical Damage|{{ap|45+45to 105+125}} {{as|(+ 110% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Return Physical Damage</span>: <span><spell-span :list=\"['45','65','85','105','125']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['45275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Return Physical Damage</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[45275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 110% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -311,7 +311,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -328,7 +328,7 @@
                 "player_bonus_ad": 1.1
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -353,13 +353,13 @@
         0,
         0
       ],
-      "targeting": "[[Direction-targeted]]",
+      "targeting": "Direction",
       "target_range": 725,
       "image": {
         "full": "TalonE.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 0,
         "w": 48,
         "h": 48
@@ -390,12 +390,12 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "TalonR.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
@@ -413,7 +413,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|90 to 180}} {{as|(+ 100% '''bonus''' AD)}}|Total Physical Damage|{{ap|90*2 to 180*2}} {{as|(+ 200% '''bonus''' AD)}}}}<!--\n-->{{st|Bonus Movement Speed|{{ap|40 to 70}}%}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['90','112.5','135','157.5','180']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><spell-span :list=\"['180','225','270','315','360']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,112.5,135,157.5,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[180,225,270,315,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[40,47.5,55,62.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -450,7 +450,7 @@
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,47.5,55,62.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -467,7 +467,7 @@
                 "player_bonus_ad": 2
               },
               "title": "Bonus Movement Speed",
-              "str": "<spell-span :list=\"['40','47.5','55','62.5','70']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,47.5,55,62.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

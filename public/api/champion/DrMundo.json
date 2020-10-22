@@ -19,7 +19,7 @@
   "rangetype": "Melee",
   "be_cost": 450,
   "rp_cost": 260,
-  "adaptivetype": "mixed",
+  "adaptivetype": "physical",
   "info": {
     "attack": 5,
     "defense": 7,
@@ -90,8 +90,8 @@
         90
       ],
       "costtype": "{{as|Health}}",
-      "targeting": "[[Direction-targeted|Direction]]",
-      "target_range": 975,
+      "targeting": "Direction",
+      "target_range": "{{tip|er|icononly = true}} 975",
       "image": {
         "full": "InfectedCleaverMissileCast.png",
         "sprite": "spell2.png",
@@ -102,7 +102,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Dr. Mundo''' hurls a cleaver in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy it hits and {{tip|slow|slowing}} it by 40% for 2 seconds.",
+        "{{sbc|Active:}} '''Dr. Mundo''' hurls a cleaver in the target direction, dealing {{as|magic damage}} to the first enemy it hits and {{tip|slow|slowing}} them by 40% for 2 seconds.",
         "''Infected Cleaver'' has a minimum damage threshold, and is capped against {{tip|minions}} and {{tip|monsters}}.",
         "If ''Infected Cleaver'' hits an enemy, '''Dr. Mundo''' {{tip|heal|heals}} for 40% of the {{sti|{{as|health cost}}}}, increased to 80% if it kills an enemy."
       ],
@@ -114,50 +114,51 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{as|{{ap|20 to 30}}% of target's '''current''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's <b>current</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>current</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                20,
+                22.5,
+                25,
+                27.5,
+                30
+              ]
             ],
             "as_ratios": [
               {
-                "target_current_hp": [
-                  0.2,
-                  0.225,
-                  0.25,
-                  0.275,
-                  0.3
-                ]
+                "target_current_hp": null
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<span class=\"health\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''current''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''current''' health</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "target_current_hp": [
-                  0.2,
-                  0.225,
-                  0.25,
-                  0.275,
-                  0.3
-                ]
+                "base_damage": [
+                  20,
+                  22.5,
+                  25,
+                  27.5,
+                  30
+                ],
+                "target_current_hp": null
               },
               "title": "Magic Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['20','22.5','25','27.5','30']\" :spellrankindex=\"spellrankindex\"></spell-span>% of target's '''current''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''current''' health</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Minimum Damage|{{ap|80 to 280}}|Capped Damage|{{ap|300 to 500}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Damage</span>: <span><spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Capped Damage</span>: <span><SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -179,9 +180,9 @@
             ],
             "st_slices": [
               "Minimum Damage",
-              "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "Capped Damage",
-              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -197,7 +198,7 @@
                 ]
               },
               "title": "Minimum Damage",
-              "str": "<spell-span :list=\"['80','130','180','230','280']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             },
             {
@@ -212,14 +213,14 @@
                 ]
               },
               "title": "Capped Damage",
-              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Health Refund On Hit|{{ap|50*0.4 to 90*0.4}}|Health Refund On Kill|{{ap|50*0.8 to 90*0.8}}}}",
-          "str": "<ul><li><span class=\"blue\">Health Refund On Hit</span>: <span><spell-span :list=\"['20','24','28','32','36']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Health Refund On Kill</span>: <span><spell-span :list=\"['40','48','56','64','72']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Health Refund On Hit</span>: <span><SpellSpan :list=\"[20,24,28,32,36]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Health Refund On Kill</span>: <span><SpellSpan :list=\"[40,48,56,64,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -241,9 +242,9 @@
             ],
             "st_slices": [
               "Health Refund On Hit",
-              "<spell-span :list=\"['20','24','28','32','36']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "<SpellSpan :list=\"[20,24,28,32,36]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "Health Refund On Kill",
-              "<spell-span :list=\"['40','48','56','64','72']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[40,48,56,64,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -259,7 +260,7 @@
                 ]
               },
               "title": "Health Refund On Hit",
-              "str": "<spell-span :list=\"['20','24','28','32','36']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[20,24,28,32,36]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             },
             {
@@ -274,7 +275,7 @@
                 ]
               },
               "title": "Health Refund On Kill",
-              "str": "<spell-span :list=\"['40','48','56','64','72']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[40,48,56,64,72]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -286,10 +287,6 @@
       "name": "Burning Agony",
       "maxrank": 5,
       "cooldown": [
-        4,
-        4,
-        4,
-        4,
         4
       ],
       "cost": [
@@ -300,7 +297,7 @@
         30
       ],
       "costtype": "{{as|Health Per Second|health}}",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "BurningAgony.png",
         "sprite": "spell2.png",
@@ -311,7 +308,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies and gaining 30% {{tip|Tenacity}}.",
+        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, gaining 30% {{tip|Tenacity}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies.",
         "''Burning Agony'' can be toggled off after {{fd|0.5}} seconds of toggling on.",
         "If '''Dr. Mundo's''' health falls below ''Burning Agony's'' {{sti|{{as|health cost}}}} while toggled on, the ability is toggled off automatically and put on a 1 second {{sti|cooldown}}."
       ],
@@ -323,7 +320,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40/4 to 100/4}} {{as|(+ {{ap|20/4}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[10,13.75,17.5,21.25,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -335,18 +332,18 @@
                 21.25,
                 25
               ],
-              null
+              [
+                5
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_ap": [
-                  0.05
-                ]
+                "player_total_ap": 0.05
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<SpellSpan :list=\"[10,13.75,17.5,21.25,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -360,12 +357,10 @@
                   21.25,
                   25
                 ],
-                "player_total_ap": [
-                  0.05
-                ]
+                "player_total_ap": 0.05
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['10','13.75','17.5','21.25','25']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['5']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,13.75,17.5,21.25,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -391,7 +386,7 @@
         65
       ],
       "costtype": "{{as|Health}}",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "Masochism.png",
         "sprite": "spell2.png",
@@ -404,7 +399,7 @@
       "description": [
         "{{sbc|Passive:}} Taking {{as|magic damage}} or paying a {{sti|{{as|health cost}}}} increases '''Dr. Mundo's''' {{sti|mr|{{as|magic resistance by 3%}}}} for 2 seconds, stacking up to an amount.",
         "{{sbc|Active:}} '''Dr. Mundo''' gains {{sti|{{as|'''bonus''' attack damage}}}} for 5 seconds, increased by an amount based on his {{as|percentage '''missing''' health|health}}.",
-        "Additionally, '''Dr. Mundo's''' next [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{tip|physical damage|{{as|'''bonus''' physical damage}}}}.",
+        "Additionally, '''Dr. Mundo's''' next [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{as|'''bonus''' physical damage}}.",
         "''Masochism'' {{tip|basic attack reset|resets}} '''Dr. Mundo's''' basic attack timer."
       ],
       "notes": "* ''Masochism's'' attack can be used even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Masochism's'' attack will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The attack damage bonus adjusts dynamically to '''Dr. Mundo's''' health.\n* ''Masochism'' does not apply to [[structures]].",
@@ -415,7 +410,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Maximum Magic Resistance|{{ap|(2 to 11)*3 4|13*3}}%|Maximum Stacks|{{ap|2 to 11 4|13}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Magic Resistance</span>: <span><simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li><li><span class=\"blue\">Maximum Stacks</span>: <span><spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Maximum Magic Resistance</span>: <span><simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li><li><span class=\"blue\">Maximum Stacks</span>: <span><SpellSpan :list=\"[2,5,8,11,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -432,7 +427,7 @@
               "Maximum Magic Resistance",
               "<simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
               "Maximum Stacks",
-              "<spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[2,5,8,11,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -455,14 +450,14 @@
               "index": 1,
               "ratios": {},
               "title": "Maximum Stacks",
-              "str": "<spell-span :list=\"['2','5','8','11','13']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[2,5,8,11,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Flat Bonus AD|{{as|{{ap|40 to 100}}|AD}}}}\n{{st|Maximum Missing Health Bonus AD|{{as|{{ap|20 to 80}}|AD}}|Maximum Bonus AD|{{as|{{ap|60 to 180}}|AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Flat Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['40','55','70','85','100']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Missing Health Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Flat Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[40,55,70,85,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Missing Health Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -481,30 +476,30 @@
                 65,
                 80
               ],
-              null
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_unknown": [
-                  0.6,
-                  0.9,
-                  1.2,
-                  1.5,
-                  1.8
-                ]
+                "player_total_unknown": 40557085100
               },
               {
-                "player_total_unknown": []
+                "player_total_unknown": 2035506580
               },
               {
-                "player_total_unknown": []
+                "player_total_unknown": 6090120150180
               }
             ],
             "st_slices": [
               "Maximum Missing Health Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "<span class=\"AD\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "Maximum Bonus AD",
-              "<span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"AD\"><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
             ]
           },
           "subeffects": [
@@ -518,10 +513,10 @@
                   85,
                   100
                 ],
-                "player_total_unknown": []
+                "player_total_unknown": 2035506580
               },
               "title": "Maximum Missing Health Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['20','35','50','65','80']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"AD\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "none"
             },
             {
@@ -534,53 +529,54 @@
                   65,
                   80
                 ],
-                "player_total_unknown": []
+                "player_total_unknown": 2035506580
               },
               "title": "Maximum Bonus AD",
-              "str": "<span class=\"AD\"><spell-span :list=\"['60','90','120','150','180']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"AD\"><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{as|{{ap|3 to 5}}% of his '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                3,
+                3.5,
+                4,
+                4.5,
+                5
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_hp": [
-                  0.03,
-                  0.035,
-                  0.04,
-                  0.045,
-                  0.05
-                ]
+                "player_total_hp": null
               }
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his '''maximum''' health</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_hp": [
-                  0.03,
-                  0.035,
-                  0.04,
-                  0.045,
-                  0.05
-                ]
+                "base_damage": [
+                  3,
+                  3.5,
+                  4,
+                  4.5,
+                  5
+                ],
+                "player_total_hp": null
               },
               "title": "Bonus Physical Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['3','3.5','4','4.5','5']\" :spellrankindex=\"spellrankindex\"></spell-span>% of his '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of his '''maximum''' health</span>",
               "damage_type": "physical"
             }
           ]
@@ -600,7 +596,7 @@
         25
       ],
       "costtype": "{{as|of current Health}}",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "Sadism.png",
         "sprite": "spell2.png",
@@ -621,7 +617,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Regeneration|{{as|{{ap|50 to 100}}% '''maximum''' health}}|Regeneration Per Second|{{as|{{ap|50/12 to 100/12|round=2}}% '''maximum''' health}}}}{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Total Regeneration</span>: <span><span class=\"health\"><spell-span :list=\"['50','62.5','75','87.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>maximum</b> health</span></span></li><li><span class=\"blue\">Regeneration Per Second</span>: <span><span class=\"health\"><spell-span :list=\"['4.17','5.21','6.25','7.29','8.33']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>maximum</b> health</span></span></li></ul><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Regeneration</span>: <span><span class=\"health\"><SpellSpan :list=\"[50,62.5,75,87.5,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>maximum</b> health</span></span></li><li><span class=\"blue\">Regeneration Per Second</span>: <span><span class=\"health\"><SpellSpan :list=\"[4.17,5.21,6.25,7.29,8.33]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>maximum</b> health</span></span></li></ul><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -640,27 +636,27 @@
                 7.29,
                 8.33
               ],
-              null
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_hp": [
-                  0.15,
-                  0.2,
-                  0.25,
-                  0.3,
-                  0.35
-                ]
+                "player_total_hp": null
               },
               {
-                "player_total_hp": []
+                "player_total_hp": null
               }
             ],
             "st_slices": [
               "Total Regeneration",
-              "<span class=\"health\"><spell-span :list=\"['50','62.5','75','87.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[50,62.5,75,87.5,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span>",
               "Regeneration Per Second",
-              "<span class=\"health\"><spell-span :list=\"['4.17','5.21','6.25','7.29','8.33']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[4.17,5.21,6.25,7.29,8.33]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -674,16 +670,10 @@
                   87.5,
                   100
                 ],
-                "player_total_hp": [
-                  0.15,
-                  0.2,
-                  0.25,
-                  0.3,
-                  0.35
-                ]
+                "player_total_hp": null
               },
               "title": "Total Regeneration",
-              "str": "<span class=\"health\"><spell-span :list=\"['50','62.5','75','87.5','100']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[50,62.5,75,87.5,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span>",
               "damage_type": "none"
             },
             {
@@ -696,16 +686,10 @@
                   7.29,
                   8.33
                 ],
-                "player_total_hp": [
-                  0.15,
-                  0.2,
-                  0.25,
-                  0.3,
-                  0.35
-                ]
+                "player_total_hp": null
               },
               "title": "Regeneration Per Second",
-              "str": "<span class=\"health\"><spell-span :list=\"['4.17','5.21','6.25','7.29','8.33']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[4.17,5.21,6.25,7.29,8.33]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span>",
               "damage_type": "none"
             }
           ]

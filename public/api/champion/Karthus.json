@@ -1,6 +1,6 @@
 {
   "patch": "June 12, 2009 Patch",
-  "changes": "10.15.1",
+  "changes": "10.20.1",
   "id": "Karthus",
   "name": "Karthus",
   "title": "the Deathsinger",
@@ -32,7 +32,7 @@
     "mp": 467,
     "mpperlevel": 30.5,
     "movespeed": 335,
-    "armor": 20.88,
+    "armor": 18,
     "armorperlevel": 3.5,
     "spellblock": 30,
     "spellblockperlevel": 0.5,
@@ -64,8 +64,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} Upon taking {{tip|death|fatal damage}}, '''Karthus''' {{tip|Zombie state|remains active}} for 7 seconds, rendering himself unable to move, [[basic attack]], cast [[summoner spell]]s, or use [[Active ability items|item actives]], but becoming {{tip|untargetable}} and {{tip|invulnerable}} for the duration as well as being able to use [[Champion ability|abilities]] at no cost.",
-        "If {{ai|Defile|Karthus}} has been learned, it will remain toggled on for ''Death Defied's'' entire duration at no mana cost."
+        "{{sbc|Innate:}} Upon taking {{tip|death|fatal damage}}, '''Karthus''' {{tip|Zombie state|remains active}} for 7 seconds, rendering himself unable to move, [[basic attack]], use [[summoner spell]]s, or [[Active ability items|activate items]], but becoming {{tip|untargetable}} and {{tip|cc-immune|immune to crowd control}} and preventing all incoming damage for the duration as well as being able to use [[Champion ability|abilities]] at no cost.",
+        "If {{ai|Defile|Karthus}} has been learned, it will remain toggled on for ''Death Defied's'' entire duration."
       ],
       "notes": "* Upon {{tip|Death}}, '''Karthus''' loses all {{tip|debuff|status effects}} (inherently including {{tip|crowd control}} effects) that do not inherently persist through death.\n** An example for a debuff that does persist through death is {{cai|Blaze|Brand}}.\n* ''Death Defied'' will always trigger after {{tip|resurrection}} effects.\n** ''Death Defied'' will still trigger if '''Karthus''' is killed by the {{tip|Nexus Obelisk}}.\n* At the start of ''Death Defied'', '''Karthus''' is set to {{sti|health|{{as|1 health}}}}.\n** '''Karthus''' can still regenerate his health over the duration, but he will always die at the end of it.\n* After ''Death Defied'' ends, the corpse of '''Karthus''' will retain [[unit collision]] despite being dead on the ground.\n* '''Karthus' ''' [[health bar|mana bar]] drains over the duration of ''Death Defied'' as an indicator of his time remaining in this state.",
       "skillkey": "I",
@@ -91,7 +91,7 @@
         44
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 875,
       "image": {
         "full": "KarthusLayWasteA1.png",
@@ -103,11 +103,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Karthus''' creates a blast at the target location, briefly {{tip|sight|revealing}} the area and detonating after a {{fd|0.5}}-second delay, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies within, [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} when hitting only one target.",
+        "{{sbc|Active:}} '''Karthus''' creates a blast at the target location, briefly {{tip|sight|revealing}} the area and detonating after a {{tt|{{rutngt|0.5}} to {{rutngt|0.75}} delay|See notes}}, dealing {{as|magic damage}} to all enemies within, [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} when hitting only one target.",
         "''Lay Waste's'' damage is reduced by 15% against {{tip|monster|monsters}}.",
         "''During {{ai|Death Defied|Karthus}}, Lay Waste will cast at maximum range if cast beyond that.''"
       ],
-      "notes": "* Applies {{tip|spell damage}} if it hits a single target and {{tip|area damage}} if it hits multiple targets.\n* ''Lay Waste'' plays a different sound effect and uses a [[Critical strike#Cosmetic critical strikes|cosmetic critical strike]] when it only hits one target.",
+      "notes": "* The delay between the cast and the detonation is inconsistent, but always matches up with the VFX.{{bug}}\n** This is almost certainly a bug. {{ais|Defile|Karthus}} ticks beyond the first and {{cai|Let's Bounce!|Zac}} have similar issues.\n* Applies {{tip|spell damage}} if it hits a single target and {{tip|area damage}} if it hits multiple targets.\n** ''Lay Waste'' also plays a different sound effect and uses a [[Critical strike#Cosmetic critical strikes|cosmetic critical strike]] when it only hits one target.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "20/26/32/38/44",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|50 to 130}} {{as|(+ 30% AP)}}|Enhanced Damage|{{ap|50*2 to 130*2}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage</span>: <span><spell-span :list=\"['100','140','180','220','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage</span>: <span><SpellSpan :list=\"[100,140,180,220,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -145,9 +145,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Enhanced Damage",
-              "<spell-span :list=\"['100','140','180','220','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[100,140,180,220,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -164,7 +164,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -180,14 +180,14 @@
                 "player_total_ap": 0.3
               },
               "title": "Enhanced Damage",
-              "str": "<spell-span :list=\"['100','140','180','220','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,140,180,220,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Monster Damage|{{ap|42.5 to 110.5}} {{as|(+ 25.5% AP)}}|Enhanced Monster Damage|{{ap|42.5*2 to 110.5*2}} {{as|(+ 51% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Monster Damage</span>: <span><spell-span :list=\"['42.5','59.5','76.5','93.5','110.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25.5% AP)</span></span></li><li><span class=\"blue\">Enhanced Monster Damage</span>: <span><spell-span :list=\"['85','119','153','187','221']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 51% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[42.5,59.5,76.5,93.5,110.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25.5% AP)</span></span></li><li><span class=\"blue\">Enhanced Monster Damage</span>: <span><SpellSpan :list=\"[85,119,153,187,221]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 51% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -217,9 +217,9 @@
             ],
             "st_slices": [
               "Monster Damage",
-              "<spell-span :list=\"['42.5','59.5','76.5','93.5','110.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25.5% AP)</span>",
+              "<SpellSpan :list=\"[42.5,59.5,76.5,93.5,110.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25.5% AP)</span>",
               "Enhanced Monster Damage",
-              "<spell-span :list=\"['85','119','153','187','221']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 51% AP)</span>"
+              "<SpellSpan :list=\"[85,119,153,187,221]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 51% AP)</span>"
             ]
           },
           "subeffects": [
@@ -236,7 +236,7 @@
                 "player_total_ap": 0.255
               },
               "title": "Monster Damage",
-              "str": "<spell-span :list=\"['42.5','59.5','76.5','93.5','110.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25.5% AP)</span>",
+              "str": "<SpellSpan :list=\"[42.5,59.5,76.5,93.5,110.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25.5% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -252,7 +252,7 @@
                 "player_total_ap": 0.255
               },
               "title": "Enhanced Monster Damage",
-              "str": "<spell-span :list=\"['85','119','153','187','221']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 51% AP)</span>",
+              "str": "<SpellSpan :list=\"[85,119,153,187,221]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 51% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -278,7 +278,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 1000,
       "image": {
         "full": "KarthusWallOfPain.png",
@@ -290,11 +290,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Karthus''' creates a passable wall of energy at the target location for 5 seconds, granting {{tip|sight}} around its pillars.",
+        "{{sbc|Active:}} '''Karthus''' summons a passable wall of energy at the target location perpendicular to his facing for 5 seconds, granting {{tip|sight}} around its pillars and center.",
         "For the duration, any enemy unit whose {{tip|gameplay radius}} touches it is both {{tip|slow|slowed}} for 4 seconds, decaying over its duration, and {{sti|magic penetration|{{as|loses 15% magic resistance}}}} for the same duration.",
         "''Each unit can only be affected once per cast.''"
       ],
-      "notes": "* The wall casts perpendicular to the line formed by '''Karthus' ''' location, and the cast location.",
+      "notes": "* No additional details.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70",
@@ -302,7 +302,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Wall Length|{{ap|800 to 1200}}}}",
-          "str": "<ul><li><span class=\"blue\">Wall Length</span>: <span><spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Wall Length</span>: <span><SpellSpan :list=\"[800,900,1000,1100,1200]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -317,7 +317,7 @@
             ],
             "st_slices": [
               "Wall Length",
-              "<spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[800,900,1000,1100,1200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -333,14 +333,14 @@
                 ]
               },
               "title": "Wall Length",
-              "str": "<spell-span :list=\"['800','900','1000','1100','1200']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[800,900,1000,1100,1200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Slow|{{ap|40 to 80}}%|Reduced Slow|{{ap|40/2 to 80/2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li><li><span class=\"blue\">Reduced Slow</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Reduced Slow</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -362,9 +362,9 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "Reduced Slow",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -380,7 +380,7 @@
                 ]
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['40','50','60','70','80']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             },
             {
@@ -395,7 +395,7 @@
                 ]
               },
               "title": "Reduced Slow",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -421,7 +421,7 @@
         78
       ],
       "costtype": "Mana per second",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "KarthusDefile.png",
         "sprite": "spell5.png",
@@ -444,50 +444,51 @@
       "effects": [
         {
           "levelingtext": "{{st|Mana Restored|{{as|{{ap|20 to 48}}|mana}}}}",
-          "str": "<ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><SpellSpan :list=\"[20,27,34,41,48]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
-              null
+              [
+                20,
+                27,
+                34,
+                41,
+                48
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_unknown": [
-                  0.2,
-                  0.27,
-                  0.34,
-                  0.41,
-                  0.48
-                ]
+                "player_total_unknown": 2027344148
               }
             ],
             "st_slices": [
               "Mana Restored",
-              "<span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span>"
+              "<span class=\"mana\"><SpellSpan :list=\"[20,27,34,41,48]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "player_total_unknown": [
-                  0.2,
-                  0.27,
-                  0.34,
-                  0.41,
-                  0.48
-                ]
+                "base_progression": [
+                  20,
+                  27,
+                  34,
+                  41,
+                  48
+                ],
+                "player_total_unknown": 2027344148
               },
               "title": "Mana Restored",
-              "str": "<span class=\"mana\"><spell-span :list=\"['20','27','34','41','48']\" :spellrankindex=\"spellrankindex\"></spell-span></span>",
+              "str": "<span class=\"mana\"><SpellSpan :list=\"[20,27,34,41,48]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage Per Tick|{{ap|30/4 to 110/4}} {{as|(+ 5% AP)}}|Damage Per Second|{{ap|30 to 110}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><spell-span :list=\"['7.5','12.5','17.5','22.5','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span></span></li><li><span class=\"blue\">Damage Per Second</span>: <span><spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[7.5,12.5,17.5,22.5,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 5% AP)</span></span></li><li><span class=\"blue\">Damage Per Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -517,9 +518,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Tick",
-              "<spell-span :list=\"['7.5','12.5','17.5','22.5','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span>",
+              "<SpellSpan :list=\"[7.5,12.5,17.5,22.5,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 5% AP)</span>",
               "Damage Per Second",
-              "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -536,7 +537,7 @@
                 "player_total_ap": 0.05
               },
               "title": "Magic Damage Per Tick",
-              "str": "<spell-span :list=\"['7.5','12.5','17.5','22.5','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 5% AP)</span>",
+              "str": "<SpellSpan :list=\"[7.5,12.5,17.5,22.5,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 5% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -552,7 +553,7 @@
                 "player_total_ap": 0.05
               },
               "title": "Damage Per Second",
-              "str": "<spell-span :list=\"['30','50','70','90','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -574,7 +575,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "KarthusFallenOne.png",
         "sprite": "spell5.png",
@@ -587,7 +588,7 @@
       "description": [
         "{{sbc|Active:}} '''Karthus''' {{tip|channel|channels}} for 3 seconds then deals {{as|magic damage}} to all targetable enemy {{tip|champions}} upon its completion."
       ],
-      "notes": "* ''Requiem's'' channel is telegraphed to all enemy champions by a beam of light that descends on all targets.\n** There is no visible beam if the enemy champion respawns during ''Requiem's'' channel, yet damage is applied normally.\n* ''Requiem'' will affect {{tip|clone|clones}}.\n* '''Karthus''' cannot cast ''Requiem'' if {{ais|Death Defied|Karthus}} duration is less than 3 seconds.\n* The damage will apply [[spell effects]] to targets in an order based on proximity to '''Karthus'''. Single target spell effects (such as {{ii|Luden's Echo}}) are thus triggered on the ''closest'' enemy champion.\n* The following table refers for interactions while '''Karthus''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|cast=false|items=false,true|move=false|spells=true,interrupts,false,false,false}}",
+      "notes": "* ''Requiem's'' channel is telegraphed to all enemy champions by a beam of light that descends on all targets, including if they are {{tip|untargetable}} or even {{tip|death|dead}}.\n** There is no visible beam if the enemy champion respawns during ''Requiem's'' channel, yet damage is applied normally.\n* ''Requiem'' will affect {{tip|clone|clones}}.\n* '''Karthus''' cannot cast ''Requiem'' once {{ais|Death Defied|Karthus}} remaining duration is less than {{tt|4|Estimated}} seconds.\n* The damage will apply [[spell effects]] to targets in an order based on proximity to '''Karthus'''. Single target spell effects (such as {{ii|Luden's Echo}}) are thus triggered on the ''closest'' enemy champion.\n* The following table refers for interactions while '''Karthus''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|cast=false|items=false,true|move=false|spells=true,interrupts,false,false,false}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -595,7 +596,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|200 to 500}} {{as|(+ 75% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,275,350,425,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -615,7 +616,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+              "<SpellSpan :list=\"[200,275,350,425,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
             ]
           },
           "subeffects": [
@@ -632,7 +633,7 @@
                 "player_total_ap": 0.75
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['200','275','350','425','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "str": "<SpellSpan :list=\"[200,275,350,425,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "magic"
             }
           ]

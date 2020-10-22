@@ -1,6 +1,6 @@
 {
   "patch": "May 1, 2009 Patch",
-  "changes": "10.12.1",
+  "changes": "10.20.1",
   "id": "Evelynn",
   "name": "Evelynn",
   "title": "Agony's Embrace",
@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} '''Evelynn''' gains ''Demon Shade'' after not performing actions that [[Stealth#Breaking_stealth|break stealth]] for 4 seconds. Taking damage from enemy {{tip|champion|champions}} or {{tip|turret|turrets}} ends ''Demon Shade'' immediately and puts it on a {{fd|1.5}} second {{tt|static cooldown|unaffected by cooldown reduction}}.",
         "{{sbc|Demon Shade:}} While below {{as|{{sti|health|{{passive progression/deprecated version|250 to 590}} {{as|(+ 250% AP)}} health}}}}, '''Evelynn''' {{tip|heal|heals}} herself for {{passive progression/deprecated version|15 to 75}} every second. From [[Experience (champion)|level]] 6 onward, ''Demon Shade'' also grants {{tip|camouflage}}."
       ],
-      "notes": "* ''Demon Shade'' is placed on a {{fd|1.5}} second cooldown upon [[death|respawning]].\n* ''Demon Shade'' activates even if '''Evelynn''' is {{si|Recall|Recalling}}.\n* Whenever ''Demon Shade'' activates, a puff of purple smoke will briefly appear around her.\n** She will be spotted by an enemy she has no vision of but ''Demon Shade's'' stealth will not break.\n[[File:Evelynn_Spotted.png|thumb|left|'''Evelynn''' being {{tip|sight|revealed}} in ''Demon Shade'' ''(post 6)''.]]",
+      "notes": "* ''Demon Shade'' is also placed on a {{fd|1.5}} second cooldown upon [[death|respawning]].\n* ''Demon Shade'' activates even if '''Evelynn''' is {{si|Recall|Recalling}}.\n* Whenever ''Demon Shade'' activates, a puff of purple smoke will briefly appear around her.\n[[File:Evelynn_Spotted.png|thumb|left|'''Evelynn''' being {{tip|sight|revealed}} in ''Demon Shade'' ''(post 6)''.]]",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -99,30 +99,30 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Evelynn''' launches a dart in the target direction, dealing {{tip|magic damage|{{as|magic damage}}}} to the first enemy hit.",
+        "{{sbc|Active:}} '''Evelynn''' launches a dart in the target direction, dealing {{as|magic damage}} to the first enemy hit.",
         "For the next 4 seconds, the enemy hit takes {{as|'''bonus''' magic damage}} from her next 3 [[basic attack]]s and abilities.",
         "''Hate Spike'' may be re-cast up to 3 times at no cost until the ability comes off cooldown.",
         "{{sbc|Recast:}} '''Evelynn''' unleashes a line of deadly spikes in the direction of her attack target if they are in range, dealing {{as|magic damage}} to all enemies struck. ''Hate Spike'' will first prioritize '''Evelynn's''' attack target, then the nearest enemy champion."
       ],
-      "notes": "* Each cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Hate Spike'' prioritizes:\n*# The last champion '''Evelynn''' hit\n*# The last non-champion '''Evelynn''' hit\n*# The lowest-health champion\n*# The lowest-health non-champion\n* The dart applies {{tip|spell damage}} and the spikes deal {{tip|area damage}}.\n* ''Hate Spike'' is always cast from the original casting position.\n* Recasts can be buffered up to {{fd|0.5}} seconds before becoming castable.",
+      "notes": "* Each cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Hate Spike'' prioritizes:\n*# The last champion '''Evelynn''' hit\n*# The last non-champion '''Evelynn''' hit\n*# The lowest-health champion\n*# The lowest-health non-champion\n* The dart applies {{tip|spell damage}} and the spikes deal {{tip|area damage}}.\n* ''Hate Spike'' is always cast from the original casting position.\n* Recasts can be buffered up to {{fd|0.5}} seconds before becoming castable.\n* ''Hate Spike'' cannot be recast without a valid target nearby.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "40/45/50/55/60",
       "cooldownBurn": "4",
       "effects": [
         {
-          "levelingtext": "{{st|Dart Damage|{{ap|30 to 50}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Dart Damage</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Dart Damage|{{ap|25 to 45}} {{as|(+ 30% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Dart Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
+                25,
                 30,
                 35,
                 40,
-                45,
-                50
+                45
               ]
             ],
             "as_ratios": [
@@ -132,7 +132,7 @@
             ],
             "st_slices": [
               "Dart Damage",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -140,23 +140,23 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
+                  25,
                   30,
                   35,
                   40,
-                  45,
-                  50
+                  45
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Dart Damage",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Damage|{{ap|10 to 50}} {{as|(+ 25% AP)}}|Total Bonus Damage|{{ap|10*3 to 50*3}} {{as|(+ 75% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Bonus Damage</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -186,9 +186,9 @@
             ],
             "st_slices": [
               "Bonus Damage",
-              "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "<SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "Total Bonus Damage",
-              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>"
+              "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
             ]
           },
           "subeffects": [
@@ -205,7 +205,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Bonus Damage",
-              "str": "<spell-span :list=\"['10','20','30','40','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,20,30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -221,38 +221,38 @@
                 "player_total_ap": 0.25
               },
               "title": "Total Bonus Damage",
-              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Spike Damage|{{ap|30 to 50}} {{as|(+ 30% AP)}}|Maximum Damage|{{ap|30*3 to 50*3}} {{as|(+ 90% AP)}}|Total Damage|{{ap|30*4+10*3 to 50*4+50*3}} {{as|(+ 195% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Spike Damage</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><spell-span :list=\"['90','105','120','135','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 195% AP)</span></span></li></ul>",
+          "levelingtext": "{{st|Spike Damage|{{ap|25 to 45}} {{as|(+ 30% AP)}}|Maximum Damage|{{ap|25*3 to 45*3}} {{as|(+ 90% AP)}}|Total Damage|{{ap|25*4+10*3 to 45*4+50*3}} {{as|(+ 195% AP)}}}}",
+          "str": "<ul><li><span class=\"blue\">Spike Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[75,90,105,120,135]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[130,180,230,280,330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 195% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
+                25,
                 30,
                 35,
                 40,
-                45,
-                50
+                45
               ],
               [
+                75,
                 90,
                 105,
                 120,
-                135,
-                150
+                135
               ],
               [
-                150,
-                200,
-                250,
-                300,
-                350
+                130,
+                180,
+                230,
+                280,
+                330
               ]
             ],
             "as_ratios": [
@@ -268,11 +268,11 @@
             ],
             "st_slices": [
               "Spike Damage",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Maximum Damage",
-              "<spell-span :list=\"['90','105','120','135','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "<SpellSpan :list=\"[75,90,105,120,135]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "Total Damage",
-              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 195% AP)</span>"
+              "<SpellSpan :list=\"[130,180,230,280,330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 195% AP)</span>"
             ]
           },
           "subeffects": [
@@ -280,48 +280,48 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
+                  25,
                   30,
                   35,
                   40,
-                  45,
-                  50
+                  45
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Spike Damage",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "unknown"
             },
             {
               "index": 1,
               "ratios": {
                 "base_damage": [
+                  75,
                   90,
                   105,
                   120,
-                  135,
-                  150
+                  135
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Maximum Damage",
-              "str": "<spell-span :list=\"['90','105','120','135','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,90,105,120,135]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "unknown"
             },
             {
               "index": 2,
               "ratios": {
                 "base_damage": [
-                  150,
-                  200,
-                  250,
-                  300,
-                  350
+                  130,
+                  180,
+                  230,
+                  280,
+                  330
                 ],
                 "player_total_ap": 0.3
               },
               "title": "Total Damage",
-              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 195% AP)</span>",
+              "str": "<SpellSpan :list=\"[130,180,230,280,330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 195% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -365,7 +365,7 @@
         "Against champions, the ''expunge'' also {{sti|magic penetration|{{as|reduces their magic resistance}}}} for 4 seconds.<br>Against monsters, the ''expunge'' deals {{as|'''bonus''' magic damage}} and the {{tip|charm}} lasts 2 seconds longer.",
         "''Casting Allure does not break {{ai|Demon Shade|Evelynn}}.''"
       ],
-      "notes": "* The mark fully forming signifies the {{fd|2.5}} seconds have elapsed, allowing the target to be ''expunged''.\n** An enemy champion cursed by ''Allure'' is alarmed of her presence and after the mark has fully formed, an arrow will appear next to them pointing towards '''Evelynn's''' direction. This is visible to both teams.\n* The {{stil|magic penetration}} will be applied to the attack or ability that triggers it.\n* ''Allure's'' mark application on a target cannot be blocked by {{tip|spell shield}}.|yvideo       = Evelynn - W",
+      "notes": "* The mark fully forming signifies the {{fd|2.5}} seconds have elapsed, meaning the {{tip|charm}} will be applied on the triggering attack or ability.\n** An enemy champion cursed by ''Allure'' is alarmed of her presence and after the mark has fully formed, an arrow will appear next to them pointing towards '''Evelynn's''' direction. This is visible to both teams.\n* The {{stil|magic penetration}} will be applied to the attack or ability that triggers it.\n* ''Allure's'' mark application on a target cannot be blocked by {{tip|spell shield}}.\n** The expunge will not occur if the ability is blocked by a spell shield. The mark does not trigger and will remain on the target in this case.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "60/70/80/90/100",
@@ -373,7 +373,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Disable Duration|{{ap|1 to 2}}|Monster Duration|{{ap|1+2 to 2+2}}}}",
-          "str": "<ul><li><span class=\"blue\">Disable Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li><li><span class=\"blue\">Monster Duration</span>: <span><spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Monster Duration</span>: <span><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -395,9 +395,9 @@
             ],
             "st_slices": [
               "Disable Duration",
-              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "Monster Duration",
-              "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -413,7 +413,7 @@
                 ]
               },
               "title": "Disable Duration",
-              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             },
             {
@@ -428,14 +428,14 @@
                 ]
               },
               "title": "Monster Duration",
-              "str": "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Resistance Reduction|{{as|{{ap|25 to 35}}%|magic resistance}}}}{{st|Bonus Magic Damage|{{ap|250 to 450}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Resistance Reduction</span>: <span><span class=\"magic-resistance\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['250','300','350','400','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Resistance Reduction</span>: <span><span class=\"magic-resistance\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></span></li></ul><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[250,300,350,400,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -447,25 +447,25 @@
                 32.5,
                 35
               ],
-              null
+              [
+                250,
+                300,
+                350,
+                400,
+                450
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.6
               },
               {
-                "player_total_unknown": [
-                  2.5,
-                  3,
-                  3.5,
-                  4,
-                  4.5
-                ]
+                "player_total_unknown": null
               }
             ],
             "st_slices": [
               "Magic Resistance Reduction",
-              "<span class=\"magic-resistance\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+              "<span class=\"magic-resistance\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
@@ -480,16 +480,10 @@
                   35
                 ],
                 "player_total_ap": 0.6,
-                "player_total_unknown": [
-                  2.5,
-                  3,
-                  3.5,
-                  4,
-                  4.5
-                ]
+                "player_total_unknown": null
               },
               "title": "Magic Resistance Reduction",
-              "str": "<span class=\"magic-resistance\"><spell-span :list=\"['25','27.5','30','32.5','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "str": "<span class=\"magic-resistance\"><SpellSpan :list=\"[25,27.5,30,32.5,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>",
               "damage_type": "none"
             }
           ]
@@ -522,7 +516,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Evelynn''' becomes {{tip|untargetable}} as she reveals her true form to all enemies in front of her, before {{tip|blink|blinking}} back 700 units.",
+        "{{sbc|Active:}} '''Evelynn''' becomes {{tip|untargetable}} as she reveals her true form to all enemies in front of her in the target direction, before {{tip|blink|blinking}} 700 units in the opposite direction and becoming targetable again.",
         "Enemies caught in her reveal are devastated, taking {{as|magic damage}}, with enemies below {{as|{{sti|health|30% of their '''maximum''' health}}}} receiving [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|140% '''bonus''' damage|cosmetic critical strike}}."
       ],
       "notes": "* ''Last Caress'' can be buffered during {{ai|Empowered Whiplash|Evelynn}}.\n* The casting input controls the direction ''Last Caress' '' damage is dealt from, with the movement automatically happening in the reverse direction.\n* Enemy {{tip|champion|champions}} below the {{as|maximum health}} threshold are {{Color|pink|'''marked'''}} for '''Evelynn''', indicating the bonus damage opportunity.\n* The screen will direct to '''Evelynn's''' position after she {{tip|blink|blinks}}.",
@@ -533,7 +527,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|125 to 375}} {{as|(+ 75% AP)}}|Empowered Damage|{{ap|125*2.4 to 375*2.4}} {{as|(+ {{ap|75*2.4}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['125','187.5','250','312.5','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Empowered Damage</span>: <span><spell-span :list=\"['300','450','600','750','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['180']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[125,187.5,250,312.5,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[300,450,600,750,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -552,23 +546,23 @@
                 750,
                 900
               ],
-              null
+              [
+                180
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.75
               },
               {
-                "player_total_ap": [
-                  1.8
-                ]
+                "player_total_ap": 1.8
               }
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['125','187.5','250','312.5','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "<SpellSpan :list=\"[125,187.5,250,312.5,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "Empowered Damage",
-              "<spell-span :list=\"['300','450','600','750','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['180']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<SpellSpan :list=\"[300,450,600,750,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -585,7 +579,7 @@
                 "player_total_ap": 0.75
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['125','187.5','250','312.5','375']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 75% AP)</span>",
+              "str": "<SpellSpan :list=\"[125,187.5,250,312.5,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -601,7 +595,7 @@
                 "player_total_ap": 0.75
               },
               "title": "Empowered Damage",
-              "str": "<spell-span :list=\"['300','450','600','750','900']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['180']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,450,600,750,900]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
               "damage_type": "unknown"
             }
           ]

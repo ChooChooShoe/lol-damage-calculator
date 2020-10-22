@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.86",
-  "changes": "10.15.1",
+  "changes": "10.18.1",
   "id": "Malzahar",
   "name": "Malzahar",
   "title": "the Prophet of the Void",
@@ -65,9 +65,9 @@
       },
       "description": [
         "{{sbc|Innate:}} '''Malzahar''' receives ''Void Shift'' if he hasn't taken non-{{tip|minion}} damage nor been affected by {{tip|crowd control}} in the last {{passive progression/deprecated version|4|30|24|18|12|1|6|11|16}} seconds.",
-        "''Void Shift'' phases out '''Malzahar''', making him {{tip|Cc-immune|immune to crowd control}} and taking 90% reduced damage, lingering for {{fd|0.25}} seconds after taking damage or blocking a {{tip|crowd control}} effect."
+        "''Void Shift'' phases out '''Malzahar''', making him {{tip|Cc-immune|immune to crowd control}} and causing him to take 90% reduced damage, lingering for {{fd|0.25}} seconds after taking damage or blocking a {{tip|crowd control}} effect."
       ],
-      "notes": "* '''Malzahar''' receives ''Void Shift'' upon respawning.\n* ''Void Shift'' will not mitigate {{tip|true damage}} but the buff will still be consumed.\n** It does not deactivate against the {{tip|Nexus Obelisk}}.\n* {{tip|Shield|Shields}} will take priority over ''Void Shift'', but the buff will still be consumed (does not reduce damage inflicted). ''Void Shift'' triggers even if the shield negated the damage entirely.\n** However, if '''Malzahar''' has a {{tip|spell shield}} and the {{tip|shield}} fully mitigates the damage, ''Void Shift'' does not trigger.{{bug}} The damage taken must be from an effect that cannot be negated by ''spell shields''.\n* {{tip|Spell shield|Spell shields}} take priority over ''Void Shift''. If the triggering hostile ability does not contain a {{tip|crowd control}} effect, both ''Void Shift'' and the ''spell shield'' break simultaneously.\n** Since ''spell shields'' are precedent over ''Void Shift'', applied {{tip|crowd control}} from effects that cannot be blocked by ''spell shields'' (i.e. {{ai|Wall of Pain|Karthus}}) will also ignore ''Void Shift'' despite its {{tip|cc-immune|crowd control immunity}}. The effect must not damage '''Malzahar''' for this event to take place.",
+      "notes": "* ''Void Shift'' will not resist allied {{tip|crowd control}} nor will it be deactivated by them.\n* '''Malzahar''' receives ''Void Shift'' upon respawning.\n* ''Void Shift'' will not mitigate {{tip|true damage}} but the buff will still be consumed.\n** It does not deactivate against the {{tip|Nexus Obelisk}}.\n* {{tip|Shield|Shields}} will take priority over ''Void Shift'', but the buff will still be consumed (does not reduce damage inflicted). ''Void Shift'' triggers even if the shield negated the damage entirely.\n** However, if '''Malzahar''' has a {{tip|spell shield}} and the {{tip|shield}} fully mitigates the damage, ''Void Shift'' does not trigger.{{bug}} The damage taken must be from an effect that cannot be negated by ''spell shields''.\n* {{tip|Spell shield|Spell shields}} take priority over ''Void Shift''. If the triggering hostile ability does not contain a {{tip|crowd control}} effect, both ''Void Shift'' and the ''spell shield'' break simultaneously.\n** Since ''spell shields'' are precedent over ''Void Shift'', applied {{tip|crowd control}} from effects that cannot be blocked by ''spell shields'' (i.e. {{ai|Wall of Pain|Karthus}}) will also ignore ''Void Shift'' despite its {{tip|cc-immune|crowd control immunity}}. The effect must not damage '''Malzahar''' for this event to take place.\n* ''Void Shift'' will specifically not deactivate if '''Malzahar''' eats {{ui|Honeyfruit}} or is within a hostile {{ii|Frozen Heart}} passive [[aura]].",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -91,7 +91,7 @@
         80
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": "{{tt|900|Cast range}}",
       "image": {
         "full": "MalzaharQ.png",
@@ -103,7 +103,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Malzahar''' opens two portals that are each 200 units {{tt|perpendicular|Relative to Malzahar's position}} from the target location, granting a small area of {{tip|sight}} around them. After a {{fd|0.4}}-seconds delay, all enemies between the portals take {{tip|magic damage|{{as|magic damage}}}} and are {{tip|silence|silenced}}."
+        "{{sbc|Active:}} '''Malzahar''' opens two portals that are each 200 units {{tt|perpendicular|Relative to Malzahar's position}} from the target location, granting a small area of {{tip|sight}} around them. After a {{fd|0.4}}-second delay, all enemies between the portals take {{as|magic damage}} and are {{tip|silence|silenced}} for a duration."
       ],
       "notes": "* No additional notes.",
       "skillkey": "Q",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}\n{{st|Silence Duration|{{ap|1 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','105','140','175','210']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Silence Duration</span>: <span><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Silence Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -140,7 +140,7 @@
             ],
             "st_slices": [
               "Silence Duration",
-              "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -157,7 +157,7 @@
                 "player_total_ap": 0.65
               },
               "title": "Silence Duration",
-              "str": "<spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -183,7 +183,7 @@
         60
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 150,
       "image": {
         "full": "MalzaharW.png",
@@ -207,7 +207,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Voidling Duration|{{ap|8|8|9|9|10}}}}",
-          "str": "<ul><li><span class=\"blue\">Voidling Duration</span>: <span><spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Voidling Duration</span>: <span><SpellSpan :list=\"[8,8,9,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -222,7 +222,7 @@
             ],
             "st_slices": [
               "Voidling Duration",
-              "<spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[8,8,9,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -238,14 +238,14 @@
                 ]
               },
               "title": "Voidling Duration",
-              "str": "<spell-span :list=\"['8','8','9','9','10']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[8,8,9,9,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{passive progression/deprecated version|5+3.5*(x-1)*(0.7025+0.0175*(x-1))|formula=5+3.5 growth}} (+ {{ap|12 to 20}}) {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>) <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -268,7 +268,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+              "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -286,7 +286,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Magic Damage",
-              "str": "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <spell-span :list=\"['12','14','16','18','20']\" :spellrankindex=\"spellrankindex\"></spell-span>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth\">Unknown value: passive progression/deprecated version 5+3.5*(x-1)*(0.7025+0.0175*(x-1)) formula=5+3.5 growth</simple-tooltip> (+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>) <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -335,7 +335,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Magic Damage|{{ap|80 to 220}} {{as|(+ 80% AP)}}|Magic Damage Per Half Second|{{ap|80/8 to 220/8}} {{as|(+ {{fd|10%}} AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><SpellSpan :list=\"[10,14.375,18.75,23.125,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -365,9 +365,9 @@
             ],
             "st_slices": [
               "Total Magic Damage",
-              "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "Magic Damage Per Half Second",
-              "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>"
+              "<SpellSpan :list=\"[10,14.375,18.75,23.125,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>"
             ]
           },
           "subeffects": [
@@ -384,7 +384,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['80','115','150','185','220']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -400,7 +400,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage Per Half Second",
-              "str": "<spell-span :list=\"['10','14.375','18.75','23.125','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>",
+              "str": "<SpellSpan :list=\"[10,14.375,18.75,23.125,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">10%</span> AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -435,11 +435,11 @@
       },
       "description": [
         "{{sbc|Active:}} '''Malzahar''' forms a {{tip|tether}} between him and the target enemy {{tip|champion}}, {{tip|knockdown|knocking them down}}. '''Malzahar''' then {{tip|channel|channels}} for {{fd|2.5}} seconds, {{tip|suppression|suppressing}} and {{tip|sight|revealing}} the target and dealing them {{as|magic damage}} every {{fd|0.25}} seconds.",
-        "''{{tip|cleanse|Cleansing}} effects will not remove the tether and '''Malzahar''' will continue to channel and deal damage.''",
+        "'''''Malzahar''' will continue to channel so long as the tether is not broken, even if the suppression is removed.''",
         "A ''Null Zone'' is opened beneath the target that lasts 5 seconds, dealing {{as|magic damage}} every {{fd|0.5}} seconds to all enemies within.",
         "''Null Zone will persist even if the ability is {{tt|interrupted|e.g. by Malzahar or crowd control effects}}.''"
       ],
-      "notes": "* Applies {{tip|persistent damage}} for the [[tether]] and {{tip|persistent area damage}} to enemies within the ''Null Zone''.\n* ''Nether Grasp'' and ''Null Zone'' count as two different abilities for effects such as {{ri|Electrocute}}.\n* The {{tip|channel}} ends early if the target leaves tether range.\n* '''Malzahar''' places himself onto the ground and interrupts {{tip|airborne|displacements}} affecting him upon starting the channel.\n* The following table refers for interactions while '''Malzahar''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=Disabled if attacking Nether Grasp target. Otherwise interrupts after {{fd|0.5}} seconds of channeling.|cast=interrupts|move=Interrupts only after {{fd|0.5}} seconds of channeling.|consume=true|items=interrupts,true,interrupts,false,interrupts|spells=true,interrupts,interrupts,interrupts}}",
+      "notes": "* Applies {{tip|persistent damage}} for the [[tether]] and {{tip|persistent area damage}} to enemies within the ''Null Zone''.\n* The tether will not break if the target enters a {{tip|zombie state}}.\n* ''Nether Grasp'' and ''Null Zone'' count as two different abilities for effects such as {{ri|Electrocute}}.\n* '''Malzahar''' places himself onto the ground and interrupts {{tip|airborne|displacements}} affecting him upon starting the channel.\n* The following table refers for interactions while '''Malzahar''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=Disabled if attacking Nether Grasp target. Otherwise interrupts after {{fd|0.5}} seconds of channeling.|cast=interrupts|move=Interrupts only after {{fd|0.5}} seconds of channeling.|consume=true|items=interrupts,true,interrupts,false,interrupts|spells=true,interrupts,interrupts,interrupts}}",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -447,7 +447,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Magic Damage|{{ap|125 to 275}} {{as|(+ 80% AP)}}|Damage Per Quarter-Second|{{ap|125/10 to 275/10}} {{as|(+ 8% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Damage Per Quarter-Second</span>: <span><spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[125,162.5,200,237.5,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Damage Per Quarter-Second</span>: <span><SpellSpan :list=\"[12.5,16.25,20,23.75,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 8% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -477,9 +477,9 @@
             ],
             "st_slices": [
               "Total Magic Damage",
-              "<spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "<SpellSpan :list=\"[125,162.5,200,237.5,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "Damage Per Quarter-Second",
-              "<spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span>"
+              "<SpellSpan :list=\"[12.5,16.25,20,23.75,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 8% AP)</span>"
             ]
           },
           "subeffects": [
@@ -496,7 +496,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['125','162.5','200','237.5','275']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[125,162.5,200,237.5,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -512,14 +512,14 @@
                 "player_total_ap": 0.8
               },
               "title": "Damage Per Quarter-Second",
-              "str": "<spell-span :list=\"['12.5','16.25','20','23.75','27.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 8% AP)</span>",
+              "str": "<SpellSpan :list=\"[12.5,16.25,20,23.75,27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 8% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Total Magic Damage|{{as|{{ap|10 to 20}}% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health}}|Damage Per Half-Second|{{as|{{ap|10/10 to 20/10}}% {{as|(+ {{fd|0.25}}% per 100 AP)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Damage Per Half-Second</span>: <span><span class=\"health\"><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[10,12.5,15,17.5,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Damage Per Half-Second</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -531,7 +531,13 @@
                 17.5,
                 20
               ],
-              null
+              [
+                1,
+                1.25,
+                1.5,
+                1.75,
+                2
+              ]
             ],
             "as_ratios": [
               {
@@ -541,23 +547,17 @@
                 "player_total_ap": 0.00251
               },
               {
-                "target_total_ap": [
-                  0.01,
-                  0.0125,
-                  0.015,
-                  0.0175,
-                  0.02
-                ]
+                "target_total_ap": null
               },
               {
-                "target_total_ap": []
+                "target_total_ap": null
               }
             ],
             "st_slices": [
               "Total Magic Damage",
-              "<span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[10,12.5,15,17.5,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
               "Damage Per Half-Second",
-              "<span class=\"health\"><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -574,16 +574,23 @@
                 "player_total_ap": 0.00251
               },
               "title": "Total Magic Damage",
-              "str": "<span class=\"health\"><spell-span :list=\"['10','12.5','15','17.5','20']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[10,12.5,15,17.5,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
               "damage_type": "magic"
             },
             {
               "index": 1,
               "ratios": {
+                "base_damage": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ],
                 "player_total_ap": 0.00251
               },
               "title": "Damage Per Half-Second",
-              "str": "<span class=\"health\"><spell-span :list=\"['1','1.25','1.5','1.75','2']\" :spellrankindex=\"spellrankindex\"></spell-span>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>% per 100 AP)</span> of target's '''maximum''' health</span>",
               "damage_type": "unknown"
             }
           ]

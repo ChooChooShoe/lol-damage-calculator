@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.136",
-  "changes": "10.2.1",
+  "changes": "10.20.1",
   "id": "Lulu",
   "name": "Lulu",
   "title": "the Fae Sorceress",
@@ -64,10 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Lulu''' is assisted by ''Pix'', a faerie, who fires a barrage of 3 bolts to her target every time she uses a [[basic attack]] against an enemy, dealing {{as|{{passive progression/deprecated version|5 to 39}}|magic damage}} {{as|(+ 5% AP)}} {{tip|magic damage|{{as|'''bonus''' magic damage}}}} with each bolt for a total of {{as|{{passive progression/deprecated version|5*3 to 39*3}}|magic damage}} {{as|(+ 15% AP)}} {{as|'''bonus''' magic damage}} per basic attack. The bolts can be intercepted by enemies in the way of '''Lulu's''' target.",
-        "Casting {{ai|Help, Pix!|Lulu}} on an ally champion transfers ''Pix's'' help to them for 6 seconds."
+        "{{sbc|Innate:}} '''Lulu''' is assisted by ''Pix'', a faerie, who fires a barrage of 3 bolts towards '''Lulu's''' target when she uses a [[basic attack]] {{tip|on-attack}}. Each bolt deals {{as|{{passive progression/deprecated version|5 to 39}}|magic damage}} {{as|(+ 5% AP)}} {{as|magic damage}} to '''Lulu's''' attack target or to the first enemy they collide with, for a total of {{as|{{passive progression/deprecated version|5*3 to 39*3}}|magic damage}} {{as|(+ 15% AP)}} {{as|magic damage}} on hitting a single enemy with all three bolts.",
+        "Casting {{ai|Help, Pix!|Lulu}} on an ally champion transfers ''Pix's'' help to them, causing him to fire the bolts dependent on their basic attacks.",
+        "''Pix'' returns to '''Lulu's''' side if the unit he's attached to exceeds her [[Pets#Leash range|leash range]]."
       ],
-      "notes": "* ''Pix's'' bolts do not fire alongside abilities that apply on-hit effects ({{ai|Mystic Shot|Ezreal}}, {{ai|Parrrley|Gangplank}}, {{ai|Infinite Duress|Warwick}}, {{ii|Runaan's Hurricane}}).\n* Each of ''Pix's'' attacks consume a stack of {{ii|Spellthief's Edge|Tribute}}.\n* ''Pix'' fires from his own location and not from the one the unit he's following is.\n* ''Pix's'' damage is counted towards the champion he is currently helping.",
+      "notes": "* ''Pix's'' bolts do not fire alongside abilities that apply {{tip|on-hit}} effects (e.g. {{ai|Mystic Shot|Ezreal}}, {{ai|Infinite Duress|Warwick}} {{ai|Parrrley|Gangplank}}, {{ii|Runaan's Hurricane}}).\n* ''Pix'' does not fire if the target dies.\n* ''Pix'' consumes one stack of {{iis|Spellthief's Edge}} {{nie|Tribute}}.\n* ''Pix'' fires from his own location and not from the unit he is following.\n* ''Pix's'' damage is counted towards the champion he is currently helping.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -104,7 +105,7 @@
       },
       "description": [
         "{{sbc|Active:}} '''Lulu''' and {{ai|Pix, Faerie Companion|Lulu|Pix}} each fire a magic bolt towards the target point, dealing {{as|magic damage}} to the first enemy they pass through, reduced to 70% against enemies thereafter, and {{tip|slow|slowing}} them by 80%, decaying over 2 seconds.",
-        "If an enemy is hit by both bolts, the second bolt will deal no damage if the first bolt dealt full damage to them, or 30% damage if the first bolt hit another unit before them. The second hit will refresh the {{tip|slow}}."
+        "If an enemy is hit by both bolts, the second bolt will deal no damage if the first bolt dealt full damage to them, or 30% damage if the first bolt hit another enemy before them. The second hit will refresh the {{tip|slow}}."
       ],
       "notes": "* ''Pix'' fires his bolt from wherever he is when '''Lulu''' casts ''Glitterlance''.\n** Depending on cursor position both bolts can either crossfire, fire in parallel, or in opposite directions.\n** '''Lulu's''' bolt will fire from wherever she is at the end of the cast time.",
       "skillkey": "Q",
@@ -114,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 50% AP)}}}}\n{{st|Reduced Damage|{{ap|80*0.7 to 260*0.7}} {{as|(+ 35% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Reduced Damage</span>: <span><spell-span :list=\"['56','87.5','119','150.5','182']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[56,87.5,119,150.5,182]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -144,7 +145,7 @@
             ],
             "st_slices": [
               "Reduced Damage",
-              "<spell-span :list=\"['56','87.5','119','150.5','182']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>"
+              "<SpellSpan :list=\"[56,87.5,119,150.5,182]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
             ]
           },
           "subeffects": [
@@ -161,7 +162,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Reduced Damage",
-              "str": "<spell-span :list=\"['56','87.5','119','150.5','182']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[56,87.5,119,150.5,182]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -187,7 +188,7 @@
         65
       ],
       "costtype": "Mana",
-      "targeting": "[[Unit-targeted|Unit]]",
+      "targeting": "Unit",
       "target_range": 650,
       "image": {
         "full": "LuluW.png",
@@ -201,7 +202,7 @@
       "description": [
         "{{sbc|Enemy Cast:}} '''Lulu''' launches a spell on the target enemy champion, {{tip|polymorph|polymorphing}} them into a harmless critter.",
         "The ''polymorphed'' target is also {{tip|disarm|disarmed}} and has their {{as|'''base''' movement speed}} reduced by {{as|60|ms}}.",
-        "{{sbc|Ally Cast:}} '''Lulu''' instantly casts erratic magic upon an ally champion or herself, giving the target {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|30%|ms}} {{as|(+ 5% per 100 AP)}} {{as|'''bonus''' movement speed}}}} for the next few seconds."
+        "{{sbc|Ally Cast:}} '''Lulu''' instantly casts erratic magic upon the target ally champion or herself, giving the target {{sti|{{as|'''bonus''' attack speed}}}} and {{sti|ms|{{as|30%|ms}} {{as|(+ 5% per 100 AP)}} {{as|'''bonus''' movement speed}}}} for the next few seconds."
       ],
       "notes": "* ''Whimsy's'' movement speed reduction is not affected by {{tip|slow resist}}.",
       "skillkey": "W",
@@ -211,7 +212,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Polymorph Duration|{{ap|1.25 to 2.25}}}}",
-          "str": "<ul><li><span class=\"blue\">Polymorph Duration</span>: <span><spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Polymorph Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -226,7 +227,7 @@
             ],
             "st_slices": [
               "Polymorph Duration",
-              "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -242,24 +243,24 @@
                 ]
               },
               "title": "Polymorph Duration",
-              "str": "<spell-span :list=\"['1.25','1.5','1.75','2','2.25']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|25 to 45}}%}}<!--\n-->{{st|Duration|{{ap|3 to 4}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['25','30','35','40','45']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 35}}%}}\n{{st|Duration|{{ap|3 to 4}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,23.75,27.5,31.25,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Duration</span>: <span><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                25,
-                30,
-                35,
-                40,
-                45
+                20,
+                23.75,
+                27.5,
+                31.25,
+                35
               ],
               [
                 3,
@@ -271,7 +272,7 @@
             ],
             "st_slices": [
               "Duration",
-              "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -279,15 +280,15 @@
               "index": 0,
               "ratios": {
                 "base_progression": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
+                  20,
+                  23.75,
+                  27.5,
+                  31.25,
+                  35
                 ]
               },
               "title": "Duration",
-              "str": "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -325,10 +326,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Enemy Cast:}} '''Lulu''' sends {{ai|Pix, Faerie Companion|Lulu|Pix}} to the target enemy, dealing {{as|magic damage}} and {{tip|true sight|revealing}} them for 4 seconds.",
-        "{{sbc|Ally Cast:}} '''Lulu''' sends {{ai|Pix, Faerie Companion|Lulu|Pix}} to the target ally, {{tip|shielding}} them for {{fd|2.5}} seconds if they are a {{tip|champion}}."
+        "{{sbc|Enemy Cast:}} '''Lulu''' sends {{ai|Pix, Faerie Companion|Lulu|Pix}} to the target enemy for 4 seconds, dealing {{as|magic damage}} and {{tip|true sight|revealing}} them for the same duration.",
+        "{{sbc|Ally Cast:}} '''Lulu''' sends {{ai|Pix, Faerie Companion|Lulu|Pix}} to the target ally for 6 seconds, {{tip|shielding}} them for {{fd|2.5}} seconds if they are a {{tip|champion}}."
       ],
-      "notes": "* ''Help, Pix!'' can be [[Self-targeted|self-cast]].\n* ''Pix'' will return to '''Lulu''' if the one he's following exceeds his [[Pets#leash range|leash range]] (2000 units).\n* {{tip|spell shield|Spell shield}} and {{ai|Riposte|Fiora}} will block the damage but '''Pix''' will still follow regardless.\n* ''Pix'' will continue to assist the target ally for the full duration even if the shield breaks (the same applies for the shield if the target ally leaves ''Pix's'' leash range).\n* ''Pix's'' {{ai|Glitterlance|Lulu}} bolt can be fired while he is away from '''Lulu''' from his location and towards the cursor (effectively extending {{ais|Glitterlance|Lulu}} range).",
+      "notes": "* ''Help, Pix!'' can be [[Self-targeted|self-cast]].\n* {{tip|spell shield|Spell shield}} and {{ai|Riposte|Fiora}} will block the damage but '''Pix''' will still follow regardless.\n* ''Pix'' will continue to assist the target ally for the full duration even if the shield breaks (the same applies for the shield if the target ally leaves ''Pix's'' leash range).\n* ''Pix's'' {{ai|Glitterlance|Lulu}} bolt can be fired while he is away from '''Lulu''' from his location and towards the cursor (effectively extending {{ais|Glitterlance|Lulu}} range).",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "60/65/70/75/80",
@@ -336,7 +337,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -356,7 +357,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -373,14 +374,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Shield Strength|{{ap|80 to 240}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -400,7 +401,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -417,7 +418,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['80','120','160','200','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -439,7 +440,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Unit-targeted|Unit]]",
+      "targeting": "Unit",
       "target_range": 900,
       "image": {
         "full": "LuluR.png",
@@ -452,7 +453,7 @@
       },
       "description": [
         "{{sbc|Active:}} '''Lulu''' enlarges the target allied {{tip|champion}} or herself for 7 seconds, granting them {{as|{{sti|health|'''bonus''' health}}}}, 40% increased [[size]] and an [[aura]] that {{tip|slow|slows}} nearby enemies for the duration. On-activation, nearby enemies around the target are also {{tip|airborne|knocked up}} for {{fd|0.75}} seconds.",
-        "''The slow persists for {{fd|0.25}} seconds after the enemy leaves range.''"
+        "''The slow persists for {{fd|0.25}} seconds after the enemy leaves range or Wild Growth ends.''"
       ],
       "notes": "* ''Wild Growth's'' {{sti|health|{{as|'''bonus''' health}}}} is not affected by {{tip|Grievous Wounds}} and its resulting health restoration will persist after the duration ends.\n* ''Wild Growth's'' size increase scales additively with other size increases.",
       "skillkey": "R",
@@ -462,7 +463,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Health|{{as|{{ap|300|450|600}}|hp}} {{as|(+ 50% AP)}}}}<!--\n-->{{st|Slow|{{ap|30|45|60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"hp\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','45','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"hp\"><SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,45,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -472,23 +473,23 @@
                 450,
                 600
               ],
-              null
+              [
+                30,
+                45,
+                60
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.5
               },
               {
-                "player_total_unknown": [
-                  0.3,
-                  0.45,
-                  0.6
-                ]
+                "player_total_unknown": 300450600
               }
             ],
             "st_slices": [
               "Bonus Health",
-              "<span class=\"hp\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<span class=\"hp\"><SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -501,14 +502,10 @@
                   600
                 ],
                 "player_total_ap": 0.5,
-                "player_total_unknown": [
-                  0.3,
-                  0.45,
-                  0.6
-                ]
+                "player_total_unknown": 300450600
               },
               "title": "Bonus Health",
-              "str": "<span class=\"hp\"><spell-span :list=\"['300','450','600']\" :spellrankindex=\"spellrankindex\"></spell-span></span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<span class=\"hp\"><SpellSpan :list=\"[300,450,600]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "none"
             }
           ]

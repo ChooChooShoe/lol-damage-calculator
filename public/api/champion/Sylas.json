@@ -1,6 +1,6 @@
 {
   "patch": "V9.2",
-  "changes": "10.14.1",
+  "changes": "10.20.1",
   "id": "Sylas",
   "name": "Sylas",
   "title": "the Unshackled",
@@ -8,7 +8,7 @@
     "full": "Sylas.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 144,
+    "x": 192,
     "y": 96,
     "w": 48,
     "h": 48
@@ -58,18 +58,18 @@
         "full": "SylasP.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 144,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Innate:}} Casting an [[champion ability|ability]] grants an ''Unshackled'' stack for 4 seconds, with the duration refreshing on subsequent ability uses. '''Sylas''' can have up to three ''Unshackled'' stacks at a time. While '''Sylas''' has stacks of ''Unshackled'', he gains {{as|{{sti|80% '''bonus''' attack speed}}}}.",
-        "{{sbc|Unshackled:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, becoming {{tip|unstoppable basic attack|unstoppable}}, dealing {{as|130% AD}} {{as|(+ 25% AP)}} {{tip|magic damage|{{as|magic damage}}}} to his primary target and {{as|40% AD}} {{as|(+ 20% AP)}} {{as|magic damage}} to nearby secondary targets and consuming an ''Unshackled'' stack.",
+        "{{sbc|Unshackled:}} '''Sylas' '''next basic attack is modified to whirl his chains around him, becoming {{tip|unstoppable basic attack|unstoppable}}, dealing {{as|130% AD}} {{as|(+ 25% AP)}} {{as|magic damage}} to his primary target and {{as|40% AD}} {{as|(+ 20% AP)}} {{as|magic damage}} to nearby secondary targets and consuming an ''Unshackled'' stack.",
         "Damage to secondary targets executes {{tip|minion|minions}} {{as|'''below''' 25 health}}.",
         "''The empowered attack applies [[on-hit effect]]s to the primary target but disables '''Sylas' '''{{tip|critical strike|critical strikes'}} '''bonus''' damage. [[Spell effects]] only apply when there are secondary targets.''{{bug}}"
       ],
-      "notes": "* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.\n* Hitting a target multiple times with ''Petricite Burst'' will not add additional stacks of {{ri|Electrocute}} or {{ri|Phase Rush}}.\n* ''Petricite Burst'' does not add stacks of {{ri|Press the Attack}} to the target.",
+      "notes": "* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.\n* Hitting a target multiple times with ''Petricite Burst'' will not add additional stacks of {{ri|Electrocute}} or {{ri|Phase Rush}}.\n* ''Petricite Burst'' does not add stacks of {{ri|Press the Attack}} to the target.\n* ''Petricite Burst'' can be {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Sylas''' is {{tip|blind|blinded}} as the primary target but not as a secondary target.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -93,14 +93,14 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 775,
       "image": {
         "full": "SylasQ.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 288,
-        "y": 96,
+        "x": 0,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -116,7 +116,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 40% AP)}}}}\n{{st|Slow|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['40','60','80','100','120']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -143,7 +143,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -160,14 +160,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Detonation Damage|{{ap|60 to 280}} {{as|(+ 80% AP)}}|Non-Champion Detonation Damage|{{ap|60*0.4 to 280*0.4}} {{as|(+ 32% AP)}}}}\n{{st|Maximum Champion Damage|{{ap|40+60 to 120+280}} {{as|(+ 120% AP)}}|Maximum Non-Champion Damage|{{ap|40+60*0.4 to 120+280*0.4}} {{as|(+ 72% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><spell-span :list=\"['60','115','170','225','280']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Detonation Damage</span>: <span><spell-span :list=\"['24','46','68','90','112']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 32% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Champion Damage</span>: <span><spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><spell-span :list=\"['64','106','148','190','232']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 72% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><SpellSpan :list=\"[60,115,170,225,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Detonation Damage</span>: <span><SpellSpan :list=\"[24,46,68,90,112]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 32% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -217,9 +217,9 @@
             ],
             "st_slices": [
               "Maximum Champion Damage",
-              "<spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "<SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
               "Maximum Non-Champion Damage",
-              "<spell-span :list=\"['64','106','148','190','232']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 72% AP)</span>"
+              "<SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>"
             ]
           },
           "subeffects": [
@@ -236,7 +236,7 @@
                 "player_total_ap": 0.32
               },
               "title": "Maximum Champion Damage",
-              "str": "<spell-span :list=\"['100','175','250','325','400']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -252,7 +252,7 @@
                 "player_total_ap": 0.32
               },
               "title": "Maximum Non-Champion Damage",
-              "str": "<spell-span :list=\"['64','106','148','190','232']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 72% AP)</span>",
+              "str": "<SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -283,16 +283,16 @@
         "full": "SylasW.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 336,
-        "y": 96,
+        "x": 48,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Sylas''' {{tip|dash|rushes}} at the target enemy with a powerful strike, dealing {{as|magic damage}}.",
+        "{{sbc|Active:}} '''Sylas''' {{tip|dash|dashes}} to the front of the target enemy's location and, upon arrival, he strikes them to deal {{as|magic damage}}.",
         "If ''Kingslayer'' damaged an enemy {{tip|champion}}, '''Sylas''' is also {{tip|heal|healed}}, increased by {{as|{{passive progression/deprecated version|11|type='''Sylas'''' '''missing''' health|key=%|0 to 100|key1=%|0 to 60|formula=1% per 0.6% of Sylas' '''missing''' health}}|health}}."
       ],
-      "notes": "* ''Kingslayer'' is able to make allied {{ci|Illaoi}} {{ai|Prophet of an Elder God|Illaoi|Tentacles}} slam (including those spawned by a hijacked {{ai|Leap of Faith|Illaoi}}).\n** The tentacle attacks will regenerate '''Sylas's''' {{as|health}} and give him the {{g}} for its kills.\n** ''Kingslayer'' is unable to queue up tentacle attacks (commanding them to attack while they're already attacking will not make them attack a second time).",
+      "notes": "* No additional details.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "70/80/90/100/110",
@@ -300,7 +300,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|65 to 205}} {{as|(+ 85% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -320,7 +320,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>"
+              "<SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
             ]
           },
           "subeffects": [
@@ -337,14 +337,14 @@
                 "player_total_ap": 0.85
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['65','100','135','170','205']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 85% AP)</span>",
+              "str": "<SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Heal|{{ap|30 to 150}} {{as|(+ 50% AP)}}|Maximum Heal|{{ap|30*2 to 150*2}} {{as|(+ {{ap|50*2}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['60','120','180','240','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -363,23 +363,23 @@
                 240,
                 300
               ],
-              null
+              [
+                100
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.5
               },
               {
-                "player_total_ap": [
-                  1
-                ]
+                "player_total_ap": 1
               }
             ],
             "st_slices": [
               "Heal",
-              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "Maximum Heal",
-              "<spell-span :list=\"['60','120','180','240','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -396,7 +396,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Heal",
-              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -412,7 +412,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Maximum Heal",
-              "str": "<spell-span :list=\"['60','120','180','240','300']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['100']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -425,8 +425,8 @@
       "maxrank": 3,
       "cooldown": [
         100,
-        80,
-        60
+        70,
+        40
       ],
       "cost": [
         75,
@@ -434,14 +434,14 @@
         75
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
+      "targeting": "[[Unit-targeted|Unit]] / Varied",
       "target_range": 950,
       "image": {
         "full": "SylasR.png",
         "sprite": "spell11.png",
         "group": "spell",
-        "x": 432,
-        "y": 96,
+        "x": 144,
+        "y": 144,
         "w": 48,
         "h": 48
       },
@@ -450,11 +450,11 @@
         "{{sbc|Recast:}} '''Sylas''' can cast his hijacked ultimate ability at no cost, scaling based on ''Hijack's'' rank and his own statistics.",
         "All ''Hijacked'' ultimates and abilities that do not scale with {{as|{{sti|ability power}}}} have their {{as|{{sti|attack damage}}}} ratios converted to {{as|ability power}} ratios, scaling with {{as|{{fd|0.6}}% AP}} per {{as|1% '''total''' AD}}, and {{as|{{fd|0.4}}% AP}} per {{as|1% '''bonus''' AD}} respectively."
       ],
-      "notes": "* If '''Sylas''' casts ''Hijack'' on a {{tip|clone}}, no ultimate is stolen and the ability will be placed on full cooldown.\n** This does not occur with {{cai|Glory in Death|Sion}}, since he is a {{tip|zombie state|zombie}} instead.\n* If the target {{tip|death|dies}}, becomes {{tip|untargetable}}, or '''Sylas''' loses {{tip|sight}} of them during ''Hijack's'' cast time, the ability cancels and does not go on cooldown or expend {{sti|{{as|mana}}}}.\n** If the same happens when casting an on-target stolen ability, the ability will instead cancel and go on cooldown.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: their passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' {{tip|mana}}, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of {{as|mana restoration}} will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** Upon transforming, a {{ai|Petricite Burst|Sylas}} stack will be deducted.\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones.\n*** If '''Sylas''' has both normal and transformed stacks, ''Petricite Burst'' will prioritize consuming '''Sylas''' stacks before the transformed ones.\n* Ultimates comply with {{tip|One for All}} rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked {{ai|Noxian Guillotine|Darius}}; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked {{ai|Unleashed Power|Syndra}} as well as producing 3 spheres that she can use.\n;Interactions\n* {{cai|Curse of the Sad Mummy|Amumu}} - Does not apply {{ai|Cursed Touch|Amumu}}.\n* {{cai|Moonlight Vigil|Aphelios}} - Based on the {{ai|The Hitman and the Seer|Aphelios|main weapon}} at the moment of steal. {{ai|Crescendum|Aphelios}} empowers his basic attacks temporarily.\n** {{ai|Calibrum|Aphelios}} does not apply marks.\n* {{cai|Pyroclasm|Brand}} - Does not apply stacks of {{ai|Blaze|Brand}}.\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' stacks on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not apply a stack of {{ai|Hemorrhage|Darius}}.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but {{ai|Duelist's Dance|Fiora|Vitals}} do not deal bonus damage.\n* {{cai|Hero's Entrance|Galio}} - Gives '''Sylas''' and allies {{ai|Shield of Durand 2|Galio|Shield of Durand's}} {{as|magic damage}} {{tip|shield}}.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate regardless of cast on {{ci|Gnar|Mini Gnar}} or {{ci|Mega Gnar}}.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{sti|cooldown}} of {{ai|Kingslayer|Sylas}}.\n* {{cai|Vanguard's Edge|Irelia}} - Applies marks of {{ai|Bladesurge|Irelia}}.\n* {{cai|Riftwalk|Kassadin}} - Only provides one use.\n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - Only castable with a {{ii|Black Spear|link}} (purchasable in the [[Shop]] for {{g|0 gold}}).\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form ({{ci|Shadow Assassin}}/{{ci|Rhaast}}).\n* {{cai|Void Assault|Kha'Zix}} - Can steal the ability's {{ai|Evolved Adaptive Cloaking|Kha'Zix|evolution}} bonus effects.\n* {{cai|Slicing Maelstrom|Kennen}} - Applies {{ai|Mark of the Storm|Kennen}}.\n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need {{ai|Skaarl the Cowardly Lizard|Kled|mount}} to cast.\n* {{cai|Living Artillery|Kog'Maw}} - Only provides one use.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of {{ci|LeBlanc|LeBlanc's}} last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Solar Flare|Leona}} - Does not apply {{ai|Sunlight|Leona}}.\n* {{cai|Lilting Lullaby|Lillia}} - All of his spells will apply {{ais|Dream-Laden Bough|Lillia}} mark but not the damage.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce basic ability cooldowns.\n* {{cai|Realm of Death|Mordekaiser}} - Can join the ''dimension'' of outgoing realms if cast in the proper range ''(does not extend their duration)''.\n* {{cai|Fury of the Sands|Nasus}} - Does not reduce {{sti|cooldown}} of {{ai|Chain Lash|Sylas}}.\n* {{cai|Command: Shockwave|Orianna}} - Cast on self without a {{ai|Clockwork Windup|Orianna|ball}}.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy ''Sylas'' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Void Rush|Rek'Sai}} - '''Sylas's''' attacks against enemy champions will apply a {{ai|Void Rush Mark|Rek'Sai|mark}} which can be used to cast ''Void Rush''.\n* {{cai|Unleashed Power|Syndra}} - Throws a minimum of 3 {{ai|Dark Sphere|Syndra|spheres}}, which are left on the ground afterwards and vanish after 6 seconds.\n* {{cai|Shadow Assault|Talon}} - Does not apply {{ai|Blade's End|Talon}}.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as {{tip|melee}}, and so will trigger effects such as {{ii|Tiamat}} versus all hit targets.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Chain of Corruption|Varus}} - Does not apply stacks of {{ai|Blighted Quiver|Varus|Blight}}.\n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - Can steal the ability's {{ai|Augment- Perfect Storm|Viktor|evolution}} bonus effects.\n* {{cai|Featherstorm|Xayah}} - {{ai|Clean Cuts|Xayah|Feathers}} do not interact with an ally or enemy {{ci|Xayah}}.\n* {{cai|Last Breath|Yasuo}} - {{tip|Critical strike|Critical strikes}} ignore 50% of the target's {{sti|{{as|'''bonus''' armor}}}} after activation.\n* {{cai|Death Mark|Zed}} - [[File:Zed's Shadow.png|20px|border]] ''Shadow'' does not mimic spells but can be reactivated to {{ai|Death Mark 2|Zed|swap}} places.\n* {{cai|Portal Jump|Zoe}} - '''Sylas''' can use his spells for the 1 second at the target location, but not during the jump.",
+      "notes": "* If '''Sylas''' casts ''Hijack'' on a {{tip|clone}}, no ultimate is stolen and the ability will be placed on full cooldown.\n** This does not occur with {{cai|Glory in Death|Sion}}, since he is a {{tip|zombie state|zombie}} instead.\n* If the target {{tip|death|dies}}, becomes {{tip|untargetable}}, or '''Sylas''' loses {{tip|sight}} of them during ''Hijack's'' cast time, the ability cancels and does not go on cooldown or expend {{sti|{{as|mana}}}}.\n** If the same happens when casting an on-target stolen ability, the ability will instead cancel and go on cooldown.\n* If ''Hijack'' is intercepted by {{cai|Unbreakable|Braum}}, '''Sylas''' will gain a copy {{ai|R|Braum}} instead and an on-target cooldown will be applied to him.\n** If {{ci|Braum}} has an on-target cooldown on him (by being previously ''Hijacked'') upon interception, no ultimate will be stolen.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: their passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' {{tip|mana}}, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of {{as|mana restoration}} will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** Upon transforming, a {{ai|Petricite Burst|Sylas}} stack will be deducted.\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones.\n*** If '''Sylas''' has both normal and transformed stacks, ''Petricite Burst'' will prioritize consuming '''Sylas''' stacks before the transformed ones.\n* Ultimates comply with {{tip|One for All}} rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked {{ai|Noxian Guillotine|Darius}}; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked {{ai|Unleashed Power|Syndra}} as well as producing 3 spheres that she can use.\n;Interactions\n* {{cai|Curse of the Sad Mummy|Amumu}} - Does not apply {{ai|Cursed Touch|Amumu}}.\n* {{cai|Moonlight Vigil|Aphelios}} - Based on the {{ai|The Hitman and the Seer|Aphelios|main weapon}} at the moment of steal. {{ai|Crescendum|Aphelios}} empowers his basic attacks temporarily.\n** {{ai|Calibrum|Aphelios}} does not apply marks.\n* {{cai|Pyroclasm|Brand}} - Does not apply stacks of {{ai|Blaze|Brand}}.\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' stacks on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not apply a stack of {{ai|Hemorrhage|Darius}}.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but {{ai|Duelist's Dance|Fiora|Vitals}} do not deal bonus damage.\n* {{cai|Hero's Entrance|Galio}} - Gives '''Sylas''' and allies {{ai|Shield of Durand 2|Galio|Shield of Durand's}} magic {{tip|shield}}.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate regardless of cast on {{ci|Gnar|Mini Gnar}} or {{ci|Mega Gnar}}.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities. The upgrade buff lasts until the ultimate can be stolen again.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{sti|cooldown}} of {{ai|Kingslayer|Sylas}}.\n* {{cai|Vanguard's Edge|Irelia}} - Applies marks of {{ai|Bladesurge|Irelia}}.\n* {{cai|Riftwalk|Kassadin}} - Only provides one use.\n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - Only castable with a {{ii|Black Spear|link}} (purchasable in the [[Shop]] for {{g|0 gold}}).\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form ({{ci|Shadow Assassin}}/{{ci|Rhaast}}).\n* {{cai|Void Assault|Kha'Zix}} - Can steal the ability's {{ai|Evolved Adaptive Cloaking|Kha'Zix|evolution}} bonus effects.\n* {{cai|Slicing Maelstrom|Kennen}} - Applies {{ai|Mark of the Storm|Kennen}}.\n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need {{ai|Skaarl the Cowardly Lizard|Kled|mount}} to cast.\n* {{cai|Living Artillery|Kog'Maw}} - Only provides one use.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of {{ci|LeBlanc|LeBlanc's}} last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Solar Flare|Leona}} - Does not apply {{ai|Sunlight|Leona}}.\n* {{cai|Lilting Lullaby|Lillia}} - '''Sylas's''' abilities apply {{ais|Dream-Laden Bough|Lillia}} mark but not the damage.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce basic ability cooldowns.\n* {{cai|Realm of Death|Mordekaiser}} - Can join the ''dimension'' of outgoing realms if cast in the proper range ''(does not extend their duration)''.\n* {{cai|Fury of the Sands|Nasus}} - Does not reduce {{sti|cooldown}} of {{ai|Chain Lash|Sylas}}.\n* {{cai|Command: Shockwave|Orianna}} - Cast on self without a {{ai|Clockwork Windup|Orianna|ball}}.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Void Rush|Rek'Sai}} - '''Sylas's''' attacks against enemy champions will apply a {{ai|Void Rush Mark|Rek'Sai|mark}} which can be used to cast the ability.\n* {{cai|Inferno Trigger|Samira}} - Can use without a {{ai|Daredevil Impulse|Samira|Grade}}.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy '''Sylas''' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws a minimum of 3 {{ai|Dark Sphere|Syndra|spheres}}, which are left on the ground afterwards and vanish after 6 seconds.\n* {{cai|Shadow Assault|Talon}} - Does not apply {{ai|Blade's End|Talon}}.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Buster Shot|Tristana}} - Always has 525 cast range as '''Sylas''' does not benefit from {{ais|Draw a Bead|Tristana}} per-level cast range increase.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as {{tip|melee}}, and so will trigger effects such as {{ii|Tiamat}} versus all hit targets.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Chain of Corruption|Varus}} - Does not apply stacks of {{ai|Blighted Quiver|Varus|Blight}}.\n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - Can steal the ability's {{ai|Augment- Perfect Storm|Viktor|evolution}} bonus effects.\n* {{cai|Featherstorm|Xayah}} - {{ai|Clean Cuts|Xayah|Feathers}} do not interact with an ally or enemy {{ci|Xayah}}.\n* {{cai|Last Breath|Yasuo}} - {{tip|Critical strike|Critical strikes}} ignore 50% of the target's {{sti|{{as|'''bonus''' armor}}}} after activation.\n* {{cai|Death Mark|Zed}} - [[File:Zed's Shadow.png|20px|border]] ''Shadow'' does not mimic spells but can be reactivated to {{ai|Death Mark 2|Zed|swap}} places.\n* {{cai|Let's Bounce!|Zac}} - Cannot declare attacks nor use any abilities nor while bouncing. Drops {{ai|Cell Division|Zac|chunks}} that can be interacted with but do not restore health to '''Sylas'''.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "75",
-      "cooldownBurn": "100/80/60",
+      "cooldownBurn": "100/70/40",
       "effects": []
     }
   }

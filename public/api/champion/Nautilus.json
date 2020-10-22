@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.134",
-  "changes": "10.13.1",
+  "changes": "10.19.1",
   "id": "Nautilus",
   "name": "Nautilus",
   "title": "the Titan of the Depths",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Nautilus's''' [[basic attack]]s deal {{as|{{passive progression/deprecated version|8 to 110}}|physical damage}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} and {{tip|root}} his target for {{passive progression/deprecated version|4|changedisplay=true|0.75 to 1.5|1 to 16}} seconds.",
+        "{{sbc|Innate:}} '''Nautilus's''' [[basic attack]]s deal {{as|{{passive progression/deprecated version|8 to 110}}|physical damage}} {{as|'''bonus''' physical damage}} and {{tip|root}} his target for {{passive progression/deprecated version|4|changedisplay=true|0.75 to 1.5|1 to 16}} seconds.",
         "This effect cannot occur on the same target more than once every few seconds."
       ],
       "notes": "* {{tip|Spell shield}} will block the {{tip|root}} but not the bonus damage.\n* {{Pending for test}}: ''Staggering Blow's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
@@ -103,11 +103,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Nautilus''' hurls his anchor forward in a line. If it hits an enemy, it simultaneously {{tip|airborne|drags}} them towards '''Nautilus''' while he {{tip|dash|dashes}} towards them within {{fd|0.9}} seconds, dealing {{tip|magic damage|{{as|magic damage}}}} and {{tip|root|rooting}} them for {{fd|0.1}} seconds.",
+        "{{sbc|Active:}} '''Nautilus''' hurls his anchor forward in a line in the target direction. If it hits an enemy, it simultaneously {{tip|airborne|drags}} them towards '''Nautilus''' while he {{tip|dash|dashes}} towards them within {{fd|0.9}} seconds, during which the target is {{tip|sight|revealed}}, and dealing {{as|magic damage}} and {{tip|root|rooting}} them for {{fd|0.1}} seconds.",
         "If the anchor hits terrain instead, '''Nautilus''' dashes to that location entirely and ''Dredge Line'' refunds 50% of its {{sti|cooldown}} and {{sti|mana|{{as|mana cost}}}}.",
         "'''''Nautilus''' is unable to move or attack while Dredge Line is in flight.''"
       ],
-      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executed them or they negated the {{tip|airborne|displacement}}.\n* ''Dredge Line'' will not {{tip|interrupt}} any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling. Enemies hit will still be dealt damage. The {{tip|airborne|drag}} and {{tip|root}} are not applied if '''Nautilus''' did not initiate the dash.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}}.",
+      "notes": "* ''Dredge Line'' can interact with player-created terrain ({{ai|Cataclysm|Jarvan IV}}, {{ai|Crystallize|Anivia}}, {{ai|Pillar of Ice|Trundle}}).\n* '''Nautilus''' will {{tip|dash}} all the way to the target's location if ''Dredge Line'' executed them or they negated the {{tip|airborne|displacement}}.\n* ''Dredge Line'' will not interrupt any movement commands '''Nautilus''' was issued pre-cast so long as their directions somewhat correlate (this is intentional to smooth out traveling/escaping).\n* {{tip|Spell shield}} will block the ability but '''Nautilus''' will still dash partway to the target.\n* The anchor projectile will stop if '''Nautilus''' dies while the projectile is traveling. Enemies hit will still be dealt damage. The {{tip|airborne|drag}} and {{tip|root}} are not applied if '''Nautilus''' did not initiate the dash.\n* '''Nautilus''' will attempt to [[basic attack]] his target at the end of the dash. This attack will not grant a stack of {{ri|Conqueror}}, {{ri|Electrocute}}, {{ri|Phase Rush}} or {{ii|Spellthief's Edge}} and sometimes will if used at close range (never granted if ''Dredge Line'' is hits an enemy at far range).",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -115,7 +115,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +135,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -152,7 +152,7 @@
                 "player_total_ap": 0.9
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['70','115','160','205','250']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -174,7 +174,7 @@
         80
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "NautilusPiercingGaze.png",
         "sprite": "spell8.png",
@@ -197,7 +197,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{ap|45 to 85}} {{as|(+ {{ap|9 to 13}}% '''maximum''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><spell-span :list=\"['45','55','65','75','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['9','10','11','12','13']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>maximum</b> health)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[45,55,65,75,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[9,10,11,12,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -209,22 +209,22 @@
                 75,
                 85
               ],
-              null
+              [
+                9,
+                10,
+                11,
+                12,
+                13
+              ]
             ],
             "as_ratios": [
               {
-                "player_total_hp": [
-                  0.09,
-                  0.1,
-                  0.11,
-                  0.12,
-                  0.13
-                ]
+                "player_total_hp": 9101112.13
               }
             ],
             "st_slices": [
               "Shield Strength",
-              "<spell-span :list=\"['45','55','65','75','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['9','10','11','12','13']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health)</span>"
+              "<SpellSpan :list=\"[45,55,65,75,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[9,10,11,12,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -238,23 +238,17 @@
                   75,
                   85
                 ],
-                "player_total_hp": [
-                  0.09,
-                  0.1,
-                  0.11,
-                  0.12,
-                  0.13
-                ]
+                "player_total_hp": 9101112.13
               },
               "title": "Shield Strength",
-              "str": "<spell-span :list=\"['45','55','65','75','85']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <spell-span :list=\"['9','10','11','12','13']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[45,55,65,75,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[9,10,11,12,13]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage Per Second|{{ap|15 to 35}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|30 to 70}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -284,9 +278,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Second",
-              "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Total Magic Damage",
-              "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -303,7 +297,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Magic Damage Per Second",
-              "str": "<spell-span :list=\"['15','20','25','30','35']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -319,7 +313,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['30','40','50','60','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -345,7 +339,7 @@
         90
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "NautilusSplashZone.png",
         "sprite": "spell8.png",
@@ -367,7 +361,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Wave|{{ap|55|85|115|145|175}} {{as|(+ 30% AP)}}}}<!--\n-->{{st|Slow|{{ap|30|35|40|45|50%}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><spell-span :list=\"['55','85','115','145','175']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[55,85,115,145,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -394,7 +388,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -411,14 +405,14 @@
                 "player_total_ap": 0.3
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['30','35','40','45','50']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Additional Magic Damage|{{ap|27.5|42.5|57.5|72.5|87.5}} {{as|(+ 15% AP)}}|Total Single-Target Damage|{{ap|110|170|230|290|350}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><spell-span :list=\"['27.5','42.5','57.5','72.5','87.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><spell-span :list=\"['110','170','230','290','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Additional Magic Damage</span>: <span><SpellSpan :list=\"[27.5,42.5,57.5,72.5,87.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[110,170,230,290,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -448,9 +442,9 @@
             ],
             "st_slices": [
               "Additional Magic Damage",
-              "<spell-span :list=\"['27.5','42.5','57.5','72.5','87.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "<SpellSpan :list=\"[27.5,42.5,57.5,72.5,87.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
               "Total Single-Target Damage",
-              "<spell-span :list=\"['110','170','230','290','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[110,170,230,290,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -467,7 +461,7 @@
                 "player_total_ap": 0.15
               },
               "title": "Additional Magic Damage",
-              "str": "<spell-span :list=\"['27.5','42.5','57.5','72.5','87.5']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 15% AP)</span>",
+              "str": "<SpellSpan :list=\"[27.5,42.5,57.5,72.5,87.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -483,7 +477,7 @@
                 "player_total_ap": 0.15
               },
               "title": "Total Single-Target Damage",
-              "str": "<spell-span :list=\"['110','170','230','290','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[110,170,230,290,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "unknown"
             }
           ]

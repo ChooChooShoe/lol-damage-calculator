@@ -1,6 +1,6 @@
 {
   "patch": "V4.7",
-  "changes": "10.13.1",
+  "changes": "10.20.1",
   "id": "Braum",
   "name": "Braum",
   "title": "the Heart of the Freljord",
@@ -17,8 +17,8 @@
   "herotype": "Support",
   "alttype": "Tank",
   "rangetype": "Melee",
-  "be_cost": 6300,
-  "rp_cost": 975,
+  "be_cost": 4800,
+  "rp_cost": 880,
   "adaptivetype": "magic",
   "info": {
     "attack": 3,
@@ -64,11 +64,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Braum's''' [[basic attack]]s and {{ai|Winter's Bite|Braum}} each apply ''Concussive Blows'' to his target for 4 seconds, stacking up to 4 times. Once the first stack has been applied, any allied [[champion|champion's]] basic attack on the target generates an additional stack.",
-        "At 4 stacks, ''Concussive Blows'' is consumed to {{tip|stun}} the target for {{passive progression/deprecated version|3|changedisplay=true|1.25 to 1.75|1 to 13}} seconds and deal {{as|{{passive progression/deprecated version|26 to 196}}|magic damage}} {{as|magic damage}}.",
-        "This effect cannot occur on the same target more than once every few seconds, but during this immunity period, affected targets instead take{{ft|20% of the trigger damage as {{as|'''bonus''' magic damage}}|{{as|{{passive progression/deprecated version|5.2 to 39.2}} magic damage}}}} from '''Braum's''' basic attacks and {{ai|Winter's Bite|Braum}}."
+        "{{sbc|Innate:}} '''Braum's''' [[basic attack]]s and {{ai|Winter's Bite|Braum}} each apply ''Concussive Blows'' to his target for 4 seconds, stacking up to 4 times, refreshing with each application. Once the first stack has been applied, any allied [[champion|champion's]] basic attack {{tip|on-hit}} on the target generates an additional stack.",
+        "Upon reaching 4 stacks on a target, ''Concussive Blows'' is consumed to {{tip|stun}} them for {{passive progression/deprecated version|3|changedisplay=true|1.25 to 1.75|1 to 13}} seconds and deal them {{as|{{passive progression/deprecated version|26 to 196}}|magic damage}} {{as|magic damage}}.",
+        "This effect cannot occur on the same target more than once every few seconds, but during this immunity period, affected targets instead take{{ft|20% of the trigger damage as {{as|'''bonus''' magic damage}}|{{as|{{passive progression/deprecated version|5.2 to 39.2}} '''bonus''' magic damage}}}} from '''Braum's''' basic attacks."
       ],
-      "notes": "* {{Pending for test}}: ''Concussive Blows' '' application via basic attack interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* ''Concussive Blows'' won't be applied if the attack is {{tip|dodge|dodged}} or {{tip|block|blocked}}.\n** {{Pending for test}}: ''Concussive Blows' '' application via basic attack interaction with {{tip|blind}}.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -85,14 +85,14 @@
         6
       ],
       "cost": [
+        45,
+        50,
         55,
         60,
-        65,
-        70,
-        75
+        65
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 1000,
       "image": {
         "full": "BraumQ.png",
@@ -106,25 +106,25 @@
       "description": [
         "{{sbc|Active:}} '''Braum''' propels ice from his shield in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|slow|slowing}} them by 70% decaying over 2 seconds."
       ],
-      "notes": "* {{si|Flash}} can be used during the cast time and ''Winter's Bite'' will fire from the new location.",
+      "notes": "* ''Winter's Bite'' will cast from wherever '''Braum''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "55/60/65/70/75",
+      "costBurn": "45/50/55/60/65",
       "cooldownBurn": "10/9/8/7/6",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 260}} {{as|(+ {{fd|2.5}}% of '''Braum's''' '''maximum''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of <b>Braum's</b> <b>maximum</b> health)</span></span></li></ul>",
+          "levelingtext": "{{st|Magic Damage|{{ap|75 to 275}} {{as|(+ {{fd|2.5}}% of '''Braum's''' '''maximum''' health)}}}}",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of <b>Braum's</b> <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
-                60,
-                110,
-                160,
-                210,
-                260
+                75,
+                125,
+                175,
+                225,
+                275
               ]
             ],
             "as_ratios": [
@@ -134,7 +134,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Braum's''' '''maximum''' health)</span>"
+              "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Braum's''' '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -142,16 +142,16 @@
               "index": 0,
               "ratios": {
                 "base_damage": [
-                  60,
-                  110,
-                  160,
-                  210,
-                  260
+                  75,
+                  125,
+                  175,
+                  225,
+                  275
                 ],
                 "player_total_hp": 0.025
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','110','160','210','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Braum's''' '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of '''Braum's''' '''maximum''' health)</span>",
               "damage_type": "magic"
             }
           ]
@@ -189,11 +189,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Braum''' {{tip|dashes}} to the target ally, positioning himself between them and the closest enemy champion, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} for 3 seconds. If his target is a {{tip|champion}}, they also receive '''bonus''' resistances.",
-        "'''Braum''' can target himself to instantly grant himself the '''bonus''' resistances.",
+        "{{sbc|Active:}} '''Braum''' {{tip|dashes}} to the target ally's location, positioning himself between their location and the closest enemy champion, and granting himself and the ally {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}} for 3 seconds.",
+        "''Stand Behind Me'' can be [[Self-targeted|self cast]] to instantly grant '''Braum''' the '''bonus''' resistances.",
         "{{ai|Unbreakable|Braum}} can be cast while {{tip|dash|dashing}}."
       ],
-      "notes": "* ''Stand Behind Me'' can also be used on allied {{tip|minions}}, but cannot be used on {{tip|ward|wards}}.",
+      "notes": "* ''Stand Behind Me'' can also be used on allied {{tip|minions}}, but cannot be used on {{tip|ward|wards}}.\n* If there are no nearby enemy champions, '''Braum''' will position himself on the far side of his target.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "40",
@@ -201,7 +201,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Self Bonus Armor|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' armor)}}|Self Bonus MR|{{ap|10 to 26}} {{as|(+ 36% '''bonus''' magic resistance)}}}}\n{{st|Ally Bonus Armor|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' armor)}}|Ally Bonus MR|{{ap|10 to 26}} {{as|(+ 12% '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Self Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 36% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Self Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 36% <b>bonus</b> magic resistance)</span></span></li></ul><br><ul><li><span class=\"blue\">Ally Bonus Armor</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Ally Bonus MR</span>: <span><spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Self Bonus Armor</span>: <span><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 36% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Self Bonus MR</span>: <span><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 36% <b>bonus</b> magic resistance)</span></span></li></ul><br><ul><li><span class=\"blue\">Ally Bonus Armor</span>: <span><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 12% <b>bonus</b> armor)</span></span></li><li><span class=\"blue\">Ally Bonus MR</span>: <span><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 12% <b>bonus</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -251,9 +251,9 @@
             ],
             "st_slices": [
               "Ally Bonus Armor",
-              "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
+              "<SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
               "Ally Bonus MR",
-              "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>"
+              "<SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>"
             ]
           },
           "subeffects": [
@@ -271,7 +271,7 @@
                 "player_bonus_mr": 0.36
               },
               "title": "Ally Bonus Armor",
-              "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
+              "str": "<SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 12% '''bonus''' armor)</span>",
               "damage_type": "none"
             },
             {
@@ -288,7 +288,7 @@
                 "player_bonus_mr": 0.36
               },
               "title": "Ally Bonus MR",
-              "str": "<spell-span :list=\"['10','14','18','22','26']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>",
+              "str": "<SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"magic-resist\">(+ 12% '''bonus''' magic resistance)</span>",
               "damage_type": "none"
             }
           ]
@@ -314,7 +314,7 @@
         50
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "image": {
         "full": "BraumE.png",
         "sprite": "spell1.png",
@@ -329,7 +329,7 @@
         "While his shield is raised, '''Braum''' also gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}} and is {{tip|ghosted}}.",
         "''Unbreakable'' has no effect on {{tip|turret}} shots."
       ],
-      "notes": "* {{sbc|Definitions}}\n** {{sbc|Incoming:}} Damage sources coming from somewhere facing the shield. Those coming from different sides are not affected.\n** {{sbc|Projectiles:}} Sped up entities not classified as a unit ({{tip|champions}}, {{tip|minions}}, {{tip|monsters}}, etc.)\n** {{sbc|Intercepting:}} A projectile hitting '''Braum''' because he is standing in front of the intended target. In addition to being redirected, an intercepted projectile is also destroyed '''after''' hitting '''Braum''' (although this is only applicable to pass-through projectiles).\n* Moving units are not intercepted under any circumstance, including {{tip|dash|dashes}}. [[Champion summoned units]] are not classified as units until they hit the ground (e.g. {{ai|Sapling Toss|Maokai}}) and thus will interact with ''Unbreakable'' whilst en route.\n* Projectiles whose effects trigger on collision will still trigger - dealing damage, applying [[debuff]]s, creating area of effects and marking the target as 'hit'.\n* Abilities that deal [[area of effect]] damage on-collision will only damage '''Braum'''.\n* If {{ai|Spinning Axe|Draven}} hits '''Braum''', regardless of if its the first hit on the damage reduction or not, it will '''always''' bounce back and not be destroyed. This happens even if '''Braum''' intercepts the attack for an ally though the axe will bounce back from '''Braum''' and not the intended target.\n* Projectile-based [[ground-targeted]] abilities that only occur upon successfully hitting the ground ({{ai|Miasma|Cassiopeia}}, {{ai|Aqua Prison|Nami}}, etc.) will apply their full effects to '''Braum''' but will be destroyed without affecting any other ally.\n* Projectiles that '''cannot''' hit '''Braum''' or his allies (such as an enemy {{ai|Prismatic Barrier|Lux}}) will not be intercepted.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?t=4464736&page=2#post46663454 Unbreakable's interaction with Lux's Prismatic Barrier]</ref>\n** {{cais|Starcall|Soraka}} ''Rejuvenation'' projectile is however blocked.\n* The '''damage reduction''' will affect any source of damage whose origin is in front of the shield. This includes:\n** All intercepted projectiles.\n** {{tip|Melee}} and non-projectile-based {{tip|ranged}} attacks.\n** Instantaneous [[direction-targeted]] abilities (e.g. {{ai|Arcanopulse|Xerath}}, {{ai|Final Spark|Lux}}, {{ai|Lifeform Disintegration Ray|Vel'Koz}}.)\n** Instantaneously-placed [[ground-targeted]] abilities (e.g. {{ai|Lay Waste|Karthus}}, {{ai|Pillar of Flame|Brand}}, {{ai|Rupture|Cho'Gath}}) relative to the ability's center and '''not''' the caster's.\n** Point-blank area-of-effects (e.g. {{ai|Ground Slam|Malphite}}, {{ai|Tantrum|Amumu}}, {{ai|Time Bomb|Zilean}} ''not'' targeted at '''Braum''')\n* Instantaneous targeted abilities (e.g. {{ai|Malefic Visions|Malzahar}}, {{ai|Transfusion|Vladimir}}, {{ai|Time Bomb|Zilean}} targeted at '''Braum''') and {{tip|AoE DoT}} (e.g. {{ai|Spirit Fire|Nasus}}, {{ai|Tormented Shadow|Morgana}}, {{ai|Poison Trail|Singed}}).\n* The damage reduction only benefits '''Braum'''.\n** If {{ai|Audacious Charge|Xin Zhao}} would path {{ci|Xin Zhao}} through ''Unbreakable'', only '''Braum''' will take reduced damage.\n* {{tip|Damage over time}} is calculated per tick but the full damage reduction will still only apply to a single tick.\n* If the damage mitigated by ''Unbreakable'' exceeds a minimum threshold it is represented with floating text similar to the damage mitigated by shields ('{{sbc|-X}}')\n** This floating text is always shown for the single fully-reduced damage source.\n* For the purposes of abilities like {{ai|Backstab|Shaco}}, '''Braum's''' facing direction is the direction he's moving in (''not the direction his face or the shield are looking in'').\n** This is a documented game engine limitation.\n* If '''Braum''' is protected by a {{tip|spell shield}}, both it and the one-time-use full damage reduction can be consumed by a single blockable spell.\n** The one-time-use full damage reduction will not be consumed if the damage source is nothing but {{tip|true damage}}.\n* ''Unbreakable'' will grant [[assist]] credit if the enemy whose projectile is blocked from is killed within 10 seconds.",
+      "notes": "* {{sbc|Definitions}}\n** {{sbc|Incoming:}} Damage sources coming from somewhere facing the shield. Those coming from different sides are not affected.\n** {{sbc|Projectiles:}} Sped up entities not classified as a unit ({{tip|champions}}, {{tip|minions}}, {{tip|monsters}}, etc.)\n** {{sbc|Intercepting:}} A projectile hitting '''Braum''' because he is standing in front of the intended target. In addition to being redirected, an intercepted projectile is also destroyed '''after''' hitting '''Braum''' (although this is only applicable to pass-through projectiles).\n* Moving units are not intercepted under any circumstance, including {{tip|dash|dashes}}. [[Champion summoned units]] are not classified as units until they hit the ground (e.g. {{ai|Sapling Toss|Maokai}}) and thus will interact with ''Unbreakable'' whilst en route.\n* Projectiles whose effects trigger on collision will still trigger - dealing damage, applying [[debuff]]s, creating area of effects and marking the target as 'hit'.\n* Abilities that deal [[area of effect]] damage on-collision will only damage '''Braum'''.\n* If {{ai|Spinning Axe|Draven}} hits '''Braum''', regardless of if its the first hit on the damage reduction or not, it will '''always''' bounce back and not be destroyed. This happens even if '''Braum''' intercepts the attack for an ally though the axe will bounce back from '''Braum''' and not the intended target.\n* Projectile-based [[ground-targeted]] abilities that only occur upon successfully hitting the ground ({{ai|Miasma|Cassiopeia}}, {{ai|Aqua Prison|Nami}}, etc.) will apply their full effects to '''Braum''' but will be destroyed without affecting any other ally.\n* Projectiles that '''cannot''' hit '''Braum''' or his allies (such as an enemy {{ai|Prismatic Barrier|Lux}}) will not be intercepted.<ref>[http://forums.na.leagueoflegends.com/board/showthread.php?t=4464736&page=2#post46663454 Unbreakable's interaction with Lux's Prismatic Barrier]</ref>\n** {{cais|Starcall|Soraka}} ''Rejuvenation'' projectile is however blocked.\n* The '''damage reduction''' will affect any source of damage whose origin is in front of the shield. This includes:\n** All intercepted projectiles.\n** {{tip|Melee}} and non-projectile-based {{tip|ranged}} attacks.\n** Instantaneous [[direction-targeted]] abilities (e.g. {{ai|Arcanopulse|Xerath}}, {{ai|Final Spark|Lux}}, {{ai|Lifeform Disintegration Ray|Vel'Koz}}.)\n** Instantaneously-placed [[ground-targeted]] abilities (e.g. {{ai|Lay Waste|Karthus}}, {{ai|Pillar of Flame|Brand}}, {{ai|Rupture|Cho'Gath}}) relative to the ability's center and '''not''' the caster's.\n** Point-blank area-of-effects (e.g. {{ai|Ground Slam|Malphite}}, {{ai|Tantrum|Amumu}}, {{ai|Time Bomb|Zilean}} ''not'' targeted at '''Braum''')\n** Instantaneous targeted abilities (e.g. {{ai|Malefic Visions|Malzahar}}, {{ai|Transfusion|Vladimir}}, {{ai|Time Bomb|Zilean}} targeted at '''Braum''') and {{tip|AoE DoT}} (e.g. {{ai|Spirit Fire|Nasus}}, {{ai|Tormented Shadow|Morgana}}, {{ai|Poison Trail|Singed}}).\n* The damage reduction only benefits '''Braum'''.\n** If {{ai|Audacious Charge|Xin Zhao}} would path {{ci|Xin Zhao}} through ''Unbreakable'', only '''Braum''' will take reduced damage.\n* {{tip|Damage over time}} is calculated per tick but the full damage reduction will still only apply to a single tick.\n* If the damage mitigated by ''Unbreakable'' exceeds a minimum threshold it is represented with floating text similar to the damage mitigated by shields ('{{sbc|-X}}')\n** This floating text is always shown for the single fully-reduced damage source.\n* For the purposes of abilities like {{ai|Backstab|Shaco}}, '''Braum's''' facing direction is the direction he's moving in (''not the direction his face or the shield are looking in'').\n** This is a documented game engine limitation.\n* If '''Braum''' is protected by a {{tip|spell shield}}, both it and the one-time-use full damage reduction can be consumed by a single blockable spell.\n** The one-time-use full damage reduction will not be consumed if the damage source is nothing but {{tip|true damage}}.\n* ''Unbreakable'' will grant [[assist]] credit if the enemy whose projectile is blocked from is killed within 10 seconds.\n<!-- {{Pending for test}}: First full damage reduction applies to all hit or only single hit instead if from instantaneous multi-hit instances attack (Graves basic attack has chance two apply two hits?) or spells (Renekton W, Swain Q, Ashe Q).  -->",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "30/35/40/45/50",
@@ -337,7 +337,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Damage reduction|{{ap|30 to 40}}%}}{{st|Duration|{{ap|3 to 4}}}}",
-          "str": "<ul><li><span class=\"blue\">Damage reduction</span>: <span><spell-span :list=\"['30','32.5','35','37.5','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><ul><li><span class=\"blue\">Duration</span>: <span><spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Damage reduction</span>: <span><SpellSpan :list=\"[30,32.5,35,37.5,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><ul><li><span class=\"blue\">Duration</span>: <span><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -359,7 +359,7 @@
             ],
             "st_slices": [
               "Duration",
-              "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -375,7 +375,7 @@
                 ]
               },
               "title": "Duration",
-              "str": "<spell-span :list=\"['3','3.25','3.5','3.75','4']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -397,7 +397,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 1250,
       "image": {
         "full": "BraumRWrapper.png",
@@ -421,7 +421,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|150 to 450}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['150','225','300','375','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,225,300,375,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -441,7 +441,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['150','225','300','375','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[150,225,300,375,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -458,14 +458,14 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['150','225','300','375','450']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,225,300,375,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Maximum Knockup Duration|{{ap|1 to 1.5 3}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Knockup Duration</span>: <span><spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Maximum Knockup Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -478,7 +478,7 @@
             ],
             "st_slices": [
               "Maximum Knockup Duration",
-              "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -492,14 +492,14 @@
                 ]
               },
               "title": "Maximum Knockup Duration",
-              "str": "<spell-span :list=\"['1','1.25','1.5']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.25,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -514,7 +514,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -530,7 +530,7 @@
                 ]
               },
               "title": "Slow",
-              "str": "<spell-span :list=\"['40','45','50','55','60']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

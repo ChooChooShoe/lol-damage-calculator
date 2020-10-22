@@ -1,6 +1,6 @@
 {
   "patch": "V5.5",
-  "changes": "10.12.1",
+  "changes": "10.16.1",
   "id": "Bard",
   "name": "Bard",
   "title": "the Wandering Caretaker",
@@ -80,10 +80,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Bard''' fires a burst of spirit energy in the target direction, dealing {{as|magic damage}} to the first enemy struck and briefly {{tip|slow|slowing}} them by 60%.",
+        "{{sbc|Active:}} '''Bard''' fires a burst of spirit energy in the target direction, dealing {{as|magic damage}} to the first enemy struck and {{tip|slow|slowing}} them by 60% for a duration.",
         "After ''Cosmic Binding'' hits an enemy, the energy continues behind them for {{tt|300 units|Estimated}}. If the burst hits terrain or a second enemy, it {{tip|stun|stuns}} both targets for the same duration, dealing the same {{as|magic damage}} to the second target as well."
       ],
-      "notes": "* {{tip|Spell shield|Spell shielding}} the ability as the first target will still have the energy pass through them, and, upon hitting a second target, only the second target will be stunned.\n** If the ability is only ''spell shielded'' by the second target, the first target will still be stunned.\n** {{Pending for test}}: The first target ''spell shields'' the stun only.\n* The {{tip|stun}} will apply even if the first target becomes {{tip|untargetable}}.\n* ''Cosmic Binding'' will take into account player-created terrain such as {{ai|Cataclysm|Jarvan IV}} and {{ai|Crystallize|Anivia}}.\n* The {{tip|stun}} is still applied even if the first or second target dies to the ability itself or before the projectile can bind them.\n* In {{tip|Summoner's Rift}}, the allied base entrance gates will not interact with ''Cosmic Binding'' as they are only considered terrain to the enemy.\n* ''Cosmic Binding'' does not grant {{tip|sight}} of enemies hit, but a hit can be seen and heard to indicate that at least one enemy is there.",
+      "notes": "* {{tip|Spell shield|Spell shielding}} the ability as the first target will still have the energy pass through them, and, upon hitting a second target, only the second target will be stunned.\n** If the ability is only ''spell shielded'' by the second target, the first target will still be stunned.\n** If the ability hit the first target and then they activate a ''spell shield'', the stun will not be blocked.\n* The {{tip|stun}} will apply even if the first target becomes {{tip|untargetable}}.\n* ''Cosmic Binding'' will take into account player-created terrain such as {{ai|Cataclysm|Jarvan IV}} and {{ai|Crystallize|Anivia}}.\n* The {{tip|stun}} is still applied even if the first or second target dies to the ability itself or before the projectile can bind them.\n* In {{tip|Summoner's Rift}}, the allied base entrance gates will not interact with ''Cosmic Binding'' as they are only considered terrain to the enemy.\n* ''Cosmic Binding'' does not grant {{tip|sight}} of enemies hit, but a hit can be seen and heard to indicate that at least one enemy is there.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "60",
@@ -91,7 +91,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 65% AP)}}}}{{st|Disable Duration|{{ap|1 to 1.8}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['80','125','170','215','260']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul><li><span class=\"blue\">Disable Duration</span>: <span><spell-span :list=\"['1','1.2','1.4','1.6','1.8']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -118,7 +118,7 @@
             ],
             "st_slices": [
               "Disable Duration",
-              "<spell-span :list=\"['1','1.2','1.4','1.6','1.8']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -135,7 +135,7 @@
                 "player_total_ap": 0.65
               },
               "title": "Disable Duration",
-              "str": "<spell-span :list=\"['1','1.2','1.4','1.6','1.8']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -161,7 +161,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "[[Ground-targeted|Ground]] / [[Unit-targeted|Unit]]",
+      "targeting": "[[Location-targeted|Location]] / [[Unit-targeted|Unit]]",
       "target_range": 800,
       "image": {
         "full": "BardW.png",
@@ -185,7 +185,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Minimum Heal|{{ap|30 to 150}} {{as|(+ 30% AP)}}|Maximum Heal|{{ap|55 to 215}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -215,9 +215,9 @@
             ],
             "st_slices": [
               "Minimum Heal",
-              "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Maximum Heal",
-              "<spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -234,7 +234,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Minimum Heal",
-              "str": "<spell-span :list=\"['30','60','90','120','150']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -250,7 +250,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Maximum Heal",
-              "str": "<spell-span :list=\"['55','95','135','175','215']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -276,7 +276,7 @@
         30
       ],
       "costtype": "Mana",
-      "targeting": "[[Unit-targeted]] (Terrain)",
+      "targeting": "Direction",
       "target_range": 900,
       "image": {
         "full": "BardE.png",
@@ -314,7 +314,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "Ground",
+      "targeting": "Location",
       "target_range": 3400,
       "image": {
         "full": "BardR.png",
@@ -326,10 +326,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Bard''' sends magical energy arcing to the target location, {{tip|sight|revealing}} the area before putting all units inside into {{tip|stasis}} for {{fd|2.5}} seconds upon impact.",
+        "{{sbc|Active:}} '''Bard''' sends magical energy arcing to the target location, {{tip|sight|revealing}} the area before putting all units inside into {{tip|stasis}} for {{fd|2.5}} seconds upon impact. Enemies hit are {{tip|sight|revealed}} for the duration.",
         "Despite normally being {{tip|cc-immune|crowd control immune}}, {{tip|monster|epic monsters}} and {{tip|turrets}} also enter {{tip|stasis}}."
       ],
-      "notes": "* ''Tempered Fate'' will affect all targetable {{tip|champions}}, {{tip|minions}}, {{tip|monster|monsters}}, {{tip|turret|turrets}}, {{tip|ward|wards}}, and [[jungle plants]].\n* ''Tempered Fate'' has no effect on {{tip|untargetable}} units or enemy champions that are {{tip|unstoppable}} or {{tip|cc-immune}}.\n** ''Tempered Fate'' cannot put an allied or enemy {{ui|Rift Herald}} into {{tip|stasis}} while she is winding up her leap attack and during her leap.\n** ''Tempered Fate'' has special interactions with allies that are ''cc-immune''. For example, it does not affect an allied {{ci|Olaf}} while he is in {{ai|Ragnarok|Olaf}} but it does to an ally with {{cai|Black Shield|Morgana}}.\n** ''Tempered Fate'' cannot put allies that are ''unstoppable'' into ''stasis''.\n* ''Tempered Fate'' grants {{tip|sight}} of all enemy units affected by the stasis.\n* All {{tip|champion|champions}} (including allies) during the {{tip|stasis}} are prohibited from activating {{tip|cleanse|cleansing}} effects for its duration.\n** It will not disable [[File: Quicksilver Sash item.png|20px|link=]] {{nie|Quicksilver}} and instead put it on a 3-second {{sti|cooldown}}.\n* ''Tempered Fate'' triggers [[combat status|in-combat]] effects such as drawing turret aggro and [[Monster#Monster_Behavior|monster aggression]], or applying {{ii|Elixir of Sorcery}} and {{ri|Sudden Impact}}.\n** {{ii|Elixir of Sorcery}} deals damage before the target is put into stasis.\n* If '''Bard''' dies while ''Tempered Fate'' is still casting, it will go on {{sti|cooldown}} and have no effect.\n* ''Tempered Fate's'' travel time varies between ~{{fd|0.65}} at point blank and ~{{fd|1.8}} at max range, resulting in an overall delay of ~{{fd|1.2}}-{{fd|2.4}} seconds including the cast time depending on distance covered.",
+      "notes": "* ''Tempered Fate'' will affect all ''targetable'' {{tip|champions}}, {{tip|minions}}, {{tip|monster|monsters}}, {{tip|turret|turrets}}, {{tip|ward|wards}}, and [[jungle plants]].\n* ''Tempered Fate'' has no effect on allied or enemy champions that have {{tip|displacement immunity}} or {{tip|cc-immune|crowd control immunity}}.\n** An allied {{cai|Riposte|Fiora}}, {{cai|Hero's Entrance|Galio}}, {{cai|Void Shift|Malzahar}}, or {{cai|Black Shield|Morgana}} will not resist ''Tempered Fate''.\n*** An allied {{cai|Unstoppable Onslaught|Sion}} will not resist ''Tempered Fate'' at the very start and end of its channel. It will otherwise resist it.\n** ''Tempered Fate'' cannot put an allied nor enemy {{ui|Rift Herald}} into {{tip|stasis}} while she is winding up her leap attack and during her leap.\n* All {{tip|champion|champions}} (including allies) during the {{tip|stasis}} are prohibited from activating {{tip|cleanse|cleansing}} effects for its duration.\n** It will not disable [[File: Quicksilver Sash item.png|20px|link=]] {{nie|Quicksilver}} and instead put it on a 3-second {{sti|cooldown}}.\n* ''Tempered Fate'' deals 0 damage ({{pending for test}}: damage type and sourcetype?), which triggers [[combat status|in-combat]] effects such as drawing turret aggro and [[Monster#Monster_Behavior|monster aggression]], {{ri|Sudden Impact}} or applying {{ii|Elixir of Sorcery}}.\n** {{ii|Elixir of Sorcery}} deals damage before the target is put into stasis.\n* If '''Bard''' dies while ''Tempered Fate'' is still casting, it will go on {{sti|cooldown}} and have no effect.\n* ''Tempered Fate's'' travel time varies between ~{{fd|0.65}} at point blank and ~{{fd|1.8}} at max range, resulting in an overall delay of ~{{fd|1.15}}-{{fd|2.3}} seconds including the cast time depending on distance covered.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",

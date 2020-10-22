@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.135",
-  "changes": "10.15.1",
+  "changes": "10.19.1",
   "id": "Fiora",
   "name": "Fiora",
   "title": "the Grand Duelist",
@@ -68,8 +68,8 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]] / [[Auto-targeted|Auto]]",
-      "target_range": 400,
+      "targeting": "Location",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|360|Maximum dash range}} / {{tt|50|Minimum dash range}} / {{tt|420|Stab range}}",
       "image": {
         "full": "FioraQ.png",
         "sprite": "spell3.png",
@@ -81,11 +81,11 @@
       },
       "description": [
         "{{sbc|Active:}} '''Fiora''' {{tip|dashes}} a short distance in the target direction then stabs a nearby enemy if one is present. ''Lunge'' can damage [[structures]] and {{tip|ward|wards}}. Stabbing an enemy reduces ''Lunge's'' {{sti|cooldown}} by 50%.",
-        "The stab deals {{tip|physical damage|{{as|physical damage}}}} and applies [[on-hit effect]]s.",
+        "The stab deals {{as|physical damage}} and applies [[on-hit effect]]s.",
         "''Lunge hits enemies regardless of having {{tip|sight}} of them or not.''",
-        "''Other abilities can be cast during the dash without cancelling it.''"
+        "'''''Fiora's''' other abilities can be cast during the dash without cancelling it.''"
       ],
-      "notes": "* ''Lunge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* The stab prioritizes in order of:\n** Enemy champion affected by {{ai|Grand Challenge|Fiora}}.\n** {{as|Vitals|buzzword}} facing '''Fiora'''.\n** Champions who would die to the strike.\n** The nearest champion.\n** Enemies that would die to the strike.\n** The closest enemy.\n** Structures\n** Wards.\n* '''Fiora''' does not stab if she is {{tip|interrupt|interrupted}} during ''Lunge''.\n* The [[dash]] '''can''' pass through walls.\n* Will land (priority order unchanged) even if '''Fiora''' dies.\n* ''Lunge's'' dash speed is affected by movement speed.",
+      "notes": "* ''Lunge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n** ''Lunge'' cannot {{tip|critically strike}}.\n* ''Lunge'' does not apply [[on-attack]] effects apart from certain exceptions.\n** It does apply {{nie|Energized}} as if it was an [[on-hit]] effect.\n** It does not stack {{ii|Guinsoo's Rageblade}} nor trigger Phantom Hit.\n* The stab prioritizes in order of:\n** Enemy champion affected by {{ai|Grand Challenge|Fiora}}.\n** {{as|Vitals|buzzword}} facing '''Fiora'''.\n** Champions who would die to the strike.\n** The nearest champion (based on {{tip|center range}}).\n** Enemies that would die to the strike.\n** The closest enemy.\n** Structures\n** Wards.\n* ''Lunge'' will not attempt to strike [[jungle plants]].\n* '''Fiora''' does not need {{tip|sight}} of a target to stab it.\n* '''Fiora''' does not stab if the {{tip|dash}} is {{tip|interrupt|interrupted}}.\n* '''Fiora''' cannot cast or buffer {{si|Flash}} during the dash.\n** '''Fiora''' can cast {{ii|Hextech Protobelt-01}} during the dash, potentinally interrupting it based on the timing, preventing the stab if it does.\n* The dash '''can''' pass through walls.\n* Will land (priority order unchanged) even if '''Fiora''' dies.\n* ''Lunge's'' dash speed is affected by movement speed.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "20/25/30/35/40",
@@ -93,7 +93,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|70 to 110}} {{as|(+ {{ap|95 to 115}}% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['95','100','105','110','115']\" :spellrankindex=\"spellrankindex\"></spell-span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,80,90,100,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -105,22 +105,22 @@
                 100,
                 110
               ],
-              null
+              [
+                95,
+                100,
+                105,
+                110,
+                115
+              ]
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": [
-                  0.95,
-                  1,
-                  1.05,
-                  1.1,
-                  1.15
-                ]
+                "player_bonus_ad": 951001051101.15
               }
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['95','100','105','110','115']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[70,80,90,100,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -134,16 +134,10 @@
                   100,
                   110
                 ],
-                "player_bonus_ad": [
-                  0.95,
-                  1,
-                  1.05,
-                  1.1,
-                  1.15
-                ]
+                "player_bonus_ad": 951001051101.15
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['70','80','90','100','110']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ <spell-span :list=\"['95','100','105','110','115']\" :spellrankindex=\"spellrankindex\"></spell-span>% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[70,80,90,100,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -170,7 +164,7 @@
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": 750,
+      "target_range": 900,
       "image": {
         "full": "FioraW.png",
         "sprite": "spell3.png",
@@ -181,11 +175,11 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fiora''' poises to strike in the target direction for {{fd|0.75}} seconds, during which she's unable to act but becomes {{tip|invulnerability|invulnerable}} to non-[[turret]] damage as well as gains {{tip|Cc-immune|crowd control immunity}} and {{tip|debuff}} immunity.",
-        "After the duration, '''Fiora''' stabs her sword forward, dealing {{tip|magic damage|{{as|magic damage}}}} to enemies in a line.",
+        "{{sbc|Active:}} '''Fiora''' poises to strike in the target direction for {{fd|0.75}} seconds, during which she's unable to act but parries any incoming sources of non-[[turret]] damage as well as gains {{tip|Cc-immune|crowd control immunity}} and {{tip|debuff}} immunity.",
+        "After the duration, '''Fiora''' sends a shock forward with her sword, dealing {{as|magic damage}} to enemies in a line.",
         "The first enemy champion struck is also {{tip|slow|slowed}} and {{tip|cripple|crippled}} by 50% for 2 seconds. If '''Fiora''' parries at least one {{tip|immobilize|immobilizing}} effect, ''Riposte'' {{tip|stun|stuns}} the target for the same duration instead."
       ],
-      "notes": "* {{tip|Immobilize|Immobilizing}} effects include those from {{ui|Blast Cone}} and {{tip|monster|epic monsters}}.\n* {{tip|Debuff}} immunity includes [[summoner spells]], such as {{si|Exhaust}} and {{si|Ignite}}, as well as [[damage over time]] and other effects.\n* {{tip|Spell shield|Spell shielding}} the ability will prevent ''Riposte's'' effects, but it will not prevent {{as|Vitals|buzzword}} from being triggered.\n* ''Riposte'' takes priority if '''Fiora''' is being protected by a {{tip|spell shield}}. It does not take priority if she has a source of {{tip|cc-immune|crowd control immunity}} other than her own (i.e. {{ai|Black Shield|Morgana}}).",
+      "notes": "* ''Riposte'' will not resist allied {{tip|crowd control}}.\n* ''Riposte'' does not resist {{tip|nearsight}}.\n* '''Fiora''' cannot be {{tip|execute|executed}} by {{cai|Death from Below|Pyke}} during ''Riposte'' but she can by {{bi|Aspect of the Dragon}}.\n* {{tip|Immobilize|Immobilizing}} effects include those from {{ui|Blast Cone}} (only if triggered by an enemy) and {{tip|monster|epic monsters}}.\n* {{tip|Debuff}} immunity includes [[summoner spells]], such as {{si|Exhaust}} and {{si|Ignite}}, as well as [[damage over time]] and other effects.\n* {{tip|Spell shield}} will also prevent {{as|Vitals|buzzword}} from being triggered.\n* ''Riposte'' takes priority if '''Fiora''' is being protected by a {{tip|spell shield}}. It does not take priority if she has a source of {{tip|cc-immune|crowd control immunity}} other than her own (i.e. {{ai|Black Shield|Morgana}}).\n* {{tip|Shield|Shields}} take priority over ''Riposte''.",
       "skillkey": "W",
       "skillid": "w1",
       "costBurn": "50",
@@ -193,7 +187,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|110 to 270}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['110','150','190','230','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[110,150,190,230,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -213,7 +207,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['110','150','190','230','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[110,150,190,230,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -230,7 +224,7 @@
                 "player_total_ap": 1
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['110','150','190','230','270']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[110,150,190,230,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -256,7 +250,7 @@
         40
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "FioraE.png",
         "sprite": "spell3.png",
@@ -268,10 +262,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Fiora's''' next two [[basic attack]]s [[on-attack]] within 4 seconds gain {{sti|range|25 '''bonus''' range}} and {{sti|{{as|'''bonus''' attack speed}}}}.",
-        "The first attack {{tip|slow|slows}} the target by 30% for 1 second but cannot {{as|critically strike|critical chance}}. The second attack will {{tip|critically strike}} for {{sti|critical damage modifiers|{{as|'''reduced''' critical damage}}}} (including to {{tip|turrets|structures}}).",
+        "The first attack {{tip|slow|slows}} the target by 30% for 1 second but cannot {{tip|critically strike}}. The second attack will {{tip|critically strike}} for {{sti|critical damage modifiers|{{as|'''reduced''' critical damage}}}} (including to {{tip|turrets|structures}}).",
         "''Bladework'' {{tip|basic attack reset|resets}} '''Fiora's''' basic attack timer."
       ],
-      "notes": "* {{ii|Infinity Edge}} is not affected by the critical damage reduction and will increase the damage as normally.\n* {{tip|Spell shield}} will only block the slow from the first hit.",
+      "notes": "* {{ii|Infinity Edge}} is not affected by the critical damage reduction and will increase the damage by 25% AD, instead of multiplying it by {{fd|112.5}}%.\n* {{tip|Spell shield}} will only block the slow from the first hit.\n* {{Pending for test}}: ''Bladework's'' interaction with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "E",
       "skillid": "e1",
       "costBurn": "40",
@@ -279,7 +273,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|50 to 90}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -294,7 +288,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -310,14 +304,14 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['50','60','70','80','90']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Critical damage|{{ap|160 to 200}}%}}",
-          "str": "<ul><li><span class=\"blue\">Critical damage</span>: <span><spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Critical damage</span>: <span><SpellSpan :list=\"[160,170,180,190,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -332,7 +326,7 @@
             ],
             "st_slices": [
               "Critical damage",
-              "<spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[160,170,180,190,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -348,7 +342,7 @@
                 ]
               },
               "title": "Critical damage",
-              "str": "<spell-span :list=\"['160','170','180','190','200']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[160,170,180,190,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]

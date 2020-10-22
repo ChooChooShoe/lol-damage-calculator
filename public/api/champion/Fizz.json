@@ -102,10 +102,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, dealing them {{tip|magic damage|{{as|magic damage}}}} plus {{as|100% AD}} {{as|physical damage}}.",
+        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, dealing them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} if they are in range upon arrival.",
         "''Urchin Strike'' applies [[on-hit effect]]s."
       ],
-      "notes": "* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* ''Urchin Strike'' does not deal damage if the target is not in range or is {{tip|untargetable}} before '''Fizz''' reaches them.\n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
+      "notes": "* ''Urchin Strike'' can only go through walls if the target is on the other side.\n* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.\n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
       "skillkey": "Q",
       "skillid": "q1",
       "costBurn": "50",
@@ -113,7 +113,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +133,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span>"
+              "<SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,7 +150,7 @@
                 "player_total_ap": 0.55
               },
               "title": "Bonus Magic Damage",
-              "str": "<spell-span :list=\"['10','25','40','55','70']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 55% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -176,7 +176,7 @@
         70
       ],
       "costtype": "Mana",
-      "targeting": "None",
+      "targeting": "Auto",
       "image": {
         "full": "FizzW.png",
         "sprite": "spell3.png",
@@ -189,7 +189,7 @@
       "description": [
         "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies [[on-hit]], dealing {{as|magic damage}} every {{fd|0.5}} seconds for 3 seconds, refreshing [[on-hit]].",
         "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] becomes {{tip|unstoppable basic attack|unstoppable}}, deals {{as|'''bonus''' magic damage}} and gains {{sti|range|50 '''bonus''' range}}.",
-        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks gain {{as|'''bonus''' on-hit magic damage}} for 5 seconds.",
+        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} on-hit for 5 seconds.",
         "''Seastone Trident'' {{tip|basic attack reset|resets}} '''Fizz's''' basic attack timer."
       ],
       "notes": "* {{Pending for test}}: ''Seastone Trident's '' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
@@ -200,7 +200,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}|Magic Damage per Tick|{{ap|20/6 to 60/6|round=2}} {{as|(+ {{ap|40/6|round=2}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Magic Damage per Tick</span>: <span><spell-span :list=\"['3.33','5','6.67','8.33','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['6.67']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Magic Damage per Tick</span>: <span><SpellSpan :list=\"[3.33,5,6.67,8.33,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[6.67]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -219,23 +219,23 @@
                 8.33,
                 10
               ],
-              null
+              [
+                6.67
+              ]
             ],
             "as_ratios": [
               {
                 "player_total_ap": 0.4
               },
               {
-                "player_total_ap": [
-                  0.0667
-                ]
+                "player_total_ap": 0.0667
               }
             ],
             "st_slices": [
               "Total Magic Damage",
-              "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Magic Damage per Tick",
-              "<spell-span :list=\"['3.33','5','6.67','8.33','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['6.67']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>"
+              "<SpellSpan :list=\"[3.33,5,6.67,8.33,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[6.67]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -252,7 +252,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Total Magic Damage",
-              "str": "<spell-span :list=\"['20','30','40','50','60']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -268,14 +268,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage per Tick",
-              "str": "<spell-span :list=\"['3.33','5','6.67','8.33','10']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ <spell-span :list=\"['6.67']\" :spellrankindex=\"spellrankindex\"></spell-span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[3.33,5,6.67,8.33,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[6.67]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -295,7 +295,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -312,14 +312,14 @@
                 "player_total_ap": 0.5
               },
               "title": "Bonus Magic Damage",
-              "str": "<spell-span :list=\"['50','70','90','110','130']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Mana Refunded|{{ap|20 to 52}}}}\n{{st|Bonus On-Hit Damage|{{ap|10 to 30}} {{as|(+ 35% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Mana Refunded</span>: <span><spell-span :list=\"['20','28','36','44','52']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul><br><ul><li><span class=\"blue\">Bonus On-Hit Damage</span>: <span><spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Mana Refunded</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus On-Hit Damage</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -346,7 +346,7 @@
             ],
             "st_slices": [
               "Bonus On-Hit Damage",
-              "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>"
+              "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
             ]
           },
           "subeffects": [
@@ -363,7 +363,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Bonus On-Hit Damage",
-              "str": "<spell-span :list=\"['10','15','20','25','30']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -385,7 +385,7 @@
         100
       ],
       "costtype": "Mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 1300,
       "image": {
         "full": "FizzR.png",
@@ -397,13 +397,13 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, {{tip|sight|revealing}} the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing {{as|magic damage}}, {{tip|airborne|knocking aside}} surrounding enemies and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knockback distance.",
-        "{{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knockback distance.",
-        "{{sbc|Chomper (455-910):}} 60% slow, 325 eruption radius and 250 unit knockback distance.",
-        "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knockback distance.",
-        "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of away."
+        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, {{tip|sight|revealing}} the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing {{as|magic damage}} to surrounding enemies, {{tip|airborne|knocking them back}} and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knock back distance.",
+        "{{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knock back distance.",
+        "{{sbc|Chomper (455-910):}} 60% slow, 325 eruption radius and 250 unit knock back distance.",
+        "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knock back distance.",
+        "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of knocked back."
       ],
-      "notes": "* ''Chum the Waters'' will stop its movement if {{tip|spell shield|spell shielded}} (does not attach) or upon colliding with {{cai|W|Yasuo}} (does not get destroyed).\n* ''Chum the Waters'' is cast from wherever '''Fizz''' is at the end of the cast time. Although the targeted area is not changed, unless the ability was cast beyond maximum range.\n* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is going to emerge. The countdown starts from 4 seconds and ends at the last second, though the numbers decrease twice as fast.",
+      "notes": "* ''Chum the Waters'' will stop its movement if the lure collides with an enemy champion with a {{tip|spell shield}} (does not attach) or upon colliding with {{ai|W|Yasuo}} (does not get destroyed).\n* ''Chum the Waters'' is cast from wherever '''Fizz''' is at the end of the cast time. Although the targeted area is not changed, unless the ability was cast beyond maximum range.\n* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is going to emerge. The countdown starts from 4 seconds and ends at the last second, though the numbers decrease twice as fast.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -411,7 +411,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Guppy Damage</span>: <span><spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Guppy Damage</span>: <span><SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -431,7 +431,7 @@
             ],
             "st_slices": [
               "Guppy Damage",
-              "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -448,14 +448,14 @@
                 "player_total_ap": 0.8
               },
               "title": "Guppy Damage",
-              "str": "<spell-span :list=\"['150','200','250','300','350']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,200,250,300,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Chomper Damage</span>: <span><spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Chomper Damage</span>: <span><SpellSpan :list=\"[225,275,325,375,425]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -475,7 +475,7 @@
             ],
             "st_slices": [
               "Chomper Damage",
-              "<spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[225,275,325,375,425]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -492,14 +492,14 @@
                 "player_total_ap": 1
               },
               "title": "Chomper Damage",
-              "str": "<spell-span :list=\"['225','275','325','375','425']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[225,275,325,375,425]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Gigalodon Damage|{{ap|300 to 500}} {{as|(+ 120% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Gigalodon Damage</span>: <span><spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Gigalodon Damage</span>: <span><SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -519,7 +519,7 @@
             ],
             "st_slices": [
               "Gigalodon Damage",
-              "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>"
+              "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>"
             ]
           },
           "subeffects": [
@@ -536,7 +536,7 @@
                 "player_total_ap": 1.2
               },
               "title": "Gigalodon Damage",
-              "str": "<spell-span :list=\"['300','350','400','450','500']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 120% AP)</span>",
+              "str": "<SpellSpan :list=\"[300,350,400,450,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
               "damage_type": "unknown"
             }
           ]

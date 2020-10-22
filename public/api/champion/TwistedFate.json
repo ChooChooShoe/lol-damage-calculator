@@ -1,6 +1,6 @@
 {
   "patch": "Alpha Week 2",
-  "changes": "10.15.1",
+  "changes": "10.19.1",
   "id": "TwistedFate",
   "name": "Twisted Fate",
   "title": "the Card Master",
@@ -8,7 +8,7 @@
     "full": "TwistedFate.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 0,
     "w": 48,
     "h": 48
@@ -31,7 +31,7 @@
     "hpperlevel": 94,
     "mp": 333,
     "mpperlevel": 19,
-    "movespeed": 335,
+    "movespeed": 330,
     "armor": 21,
     "armorperlevel": 3.15,
     "spellblock": 30,
@@ -58,13 +58,14 @@
         "full": "Cardmaster_SealFate.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 192,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Twisted Fate''' rolls his dice every time he kills an enemy, randomly gaining {{g|icononly=true}}{{passive progression/deprecated version|6|type=probability|1 to 6|key1=%|100*2/3/5 to 100*2/3/5;100/3|color=gold}}."
+        "{{sbc|Innate:}} Every time '''Twisted Fate''' kills an enemy, he gains {{g|icononly=true}}{{passive progression/deprecated version|6|type=probability|1 to 6|key1=%|100*2/3/5 to 100*2/3/5;100/3|color=gold}}.",
+        "''Since his dice is loaded, '''Twisted Fate''' has an increased chance of gaining {{g|6}}.''"
       ],
       "notes": "* The expected bonus gold gained per unit killed is {{g|4}}.",
       "skillkey": "I",
@@ -96,13 +97,13 @@
         "full": "WildCards.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Twisted Fate''' throws three cards in a cone, dealing {{tip|magic damage|{{as|magic damage}}}} to all enemies they pass through.",
+        "{{sbc|Active:}} '''Twisted Fate''' unleashes three cards in a cone in the target direction, dealing {{as|magic damage}} to all enemies they pass through.",
         "Enemies can only be damaged once by ''Wild Cards''."
       ],
       "notes": "* ''Wild Cards'' will cast from wherever '''Twisted Fate''' is at the end of the cast time.",
@@ -113,7 +114,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|60|105|150|195|240}} {{as|(+ 65% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +134,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>"
+              "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,7 +151,7 @@
                 "player_total_ap": 0.65
               },
               "title": "Magic Damage",
-              "str": "<spell-span :list=\"['60','105','150','195','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 65% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,105,150,195,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -180,15 +181,15 @@
         "full": "CardmasterStack.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive:}} '''Twisted Fate''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}.",
-        "'''Twisted Fate''' gains a ''Stacked Deck'' stack for every basic attack [[on-hit]], up to a maximum of three.",
-        "At 3 stacks, his next basic attack against {{tip|turrets|non-structures}} consumes the stacks [[on-hit]] to deal {{as|'''bonus''' magic damage}}."
+        "'''Twisted Fate''' gains a [[stack]] of ''Stacked Deck'' from basic attacks [[on-hit]], stacking up to 3 times.",
+        "At 3 stacks, his next basic attack on-hit against {{tip|turrets|non-structures}} consumes the stacks to deal {{as|'''bonus''' magic damage}}."
       ],
       "notes": "* ''Stacked Deck'' can be {{tip|dodged}} and/or missed if '''Twisted Fate''' is {{tip|blind|blinded}} (the enhanced attack is not consumed in either case) but cannot be {{tip|blocked}} (the enhanced attack is consumed and the bonus damage is still applied).",
       "skillkey": "E",
@@ -198,7 +199,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -213,7 +214,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%"
+              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -229,14 +230,14 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<spell-span :list=\"['20','25','30','35','40']\" :spellrankindex=\"spellrankindex\"></spell-span>%",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|65 to 165}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -256,7 +257,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -273,7 +274,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Bonus Magic Damage",
-              "str": "<spell-span :list=\"['65','90','115','140','165']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[65,90,115,140,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]

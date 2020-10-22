@@ -1,6 +1,6 @@
 {
   "patch": "V9.13",
-  "changes": "10.13.1",
+  "changes": "10.17.1",
   "id": "Qiyana",
   "name": "Qiyana",
   "title": "Empress of the Elements",
@@ -64,7 +64,7 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Qiyana's''' [[basic attack]]s and damaging [[ability|abilities]] deal {{as|{{passive progression/deprecated version|15 to 83}}|physical damage}} {{as|(+ 55% '''bonus''' AD)}} {{as|(+ 30% AP)}} {{tip|physical damage|{{as|'''bonus''' physical damage}}}} to all enemies hit.",
+        "{{sbc|Innate:}} '''Qiyana's''' [[basic attack]]s and damaging [[ability|abilities]] deal {{as|{{passive progression/deprecated version|15 to 83}}|physical damage}} {{as|(+ 55% '''bonus''' AD)}} {{as|(+ 30% AP)}} {{as|'''bonus''' physical damage}} to affected enemies.",
         "This effect cannot occur on the same target more than once every few seconds.",
         "''Royal Privilege's'' {{sti|cooldown}} is reset on all targets upon gathering or changing an {{ai|Terrashape|Qiyana|Element}}."
       ],
@@ -92,7 +92,7 @@
         45
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Ground-targeted|Ground]]",
+      "targeting": "Location",
       "target_range": 1100,
       "image": {
         "full": "QiyanaW.png",
@@ -104,8 +104,8 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} While holding an ''Element'', '''Qiyana''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}, {{sti|range|25 '''bonus''' attack range}}, {{tip|magic damage|{{as|'''bonus''' magic damage}}}} on her basic attacks and basic abilities, and [[Combat status|out-of-combat]] {{sti|ms|{{as|'''bonus''' movement speed}}}} while moving near the ''Element'' currently being held.",
-        "{{sbc|Active:}} '''Qiyana''' {{tip|dashes}} towards the target location while gathering an ''Element'' of the nearest {{cci|Terrashape Brush.png}} {{sbc|{{as|Brush}}}}, {{cci|Terrashape River.png}} {{sbc|{{as|River}}}} or {{cci|Terrashape Rock.png}} {{sbc|{{as|Terrain}}}} she targeted and enchants her blade.",
+        "{{sbc|Passive:}} While holding an ''Element'', '''Qiyana''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}, {{sti|range|25 '''bonus''' attack range}}, {{as|'''bonus''' magic damage}} on her basic attacks and basic abilities, and [[Combat status|out-of-combat]] {{sti|ms|{{as|'''bonus''' movement speed}}}} while moving near the ''Element'' currently being held.",
+        "{{sbc|Active:}} '''Qiyana''' {{tip|dashes}} towards the target location while gathering an ''Element'' of the nearest {{cci|Terrashape Brush.png}} {{sbc|{{as|Brush}}}}, {{cci|Terrashape River.png}} {{sbc|{{as|River}}}} or {{cci|Terrashape Rock.png}} {{sbc|{{as|Terrain}}}} she targeted, enchanting her blade.",
         "''A target Element is required to cast this ability''.",
         "Once ''Terrashape'' has been learned, '''Qiyana''' is automatically given the {{cci|Terrashape Rock.png}} {{sbc|{{as|Terrain}}}} element upon [[Death|respawning]]."
       ],
@@ -116,8 +116,8 @@
       "cooldownBurn": "7",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Attack Speed|{{ap|5 to 25}}%}}\n{{st|Bonus Magic Damage|{{ap|8 to 40}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|5 to 10}}%|ms}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><spell-span :list=\"['5','10','15','20','25']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><spell-span :list=\"['8','16','24','32','40']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><spell-span :list=\"['5','6.25','7.5','8.75','10']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span></span></li></ul>",
+          "levelingtext": "{{st|Bonus Attack Speed|{{ap|5 to 25}}%}}\n{{st|Bonus Magic Damage|{{ap|8 to 40}} {{as|(+ 10% '''bonus''' AD)}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{as|{{ap|5 to 10}}%|ms}}}}",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[5,10,15,20,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[8,16,24,32,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><span class=\"ms\"><SpellSpan :list=\"[5,6.25,7.5,8.75,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -136,28 +136,28 @@
                 32,
                 40
               ],
-              null
+              [
+                5,
+                6.25,
+                7.5,
+                8.75,
+                10
+              ]
             ],
             "as_ratios": [
               {
-                "player_bonus_ad": 0.2
+                "player_bonus_ad": 0.1
               },
               {
                 "player_total_ap": 0.3
               },
               {
-                "player_total_unknown": [
-                  0.05,
-                  0.0625,
-                  0.075,
-                  0.0875,
-                  0.1
-                ]
+                "player_total_unknown": null
               }
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<span class=\"ms\"><spell-span :list=\"['5','6.25','7.5','8.75','10']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>"
+              "<span class=\"ms\"><SpellSpan :list=\"[5,6.25,7.5,8.75,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
@@ -171,18 +171,12 @@
                   20,
                   25
                 ],
-                "player_bonus_ad": 0.2,
+                "player_bonus_ad": 0.1,
                 "player_total_ap": 0.3,
-                "player_total_unknown": [
-                  0.05,
-                  0.0625,
-                  0.075,
-                  0.0875,
-                  0.1
-                ]
+                "player_total_unknown": null
               },
               "title": "Bonus Movement Speed",
-              "str": "<span class=\"ms\"><spell-span :list=\"['5','6.25','7.5','8.75','10']\" :spellrankindex=\"spellrankindex\"></spell-span>%</span>",
+              "str": "<span class=\"ms\"><SpellSpan :list=\"[5,6.25,7.5,8.75,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>",
               "damage_type": "none"
             }
           ]
@@ -230,18 +224,18 @@
       "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|60 to 200}} {{as|(+ 70% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li></ul>",
+          "levelingtext": "{{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 70% '''bonus''' AD)}}}}",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 60,
-                95,
-                130,
-                165,
-                200
+                90,
+                120,
+                150,
+                180
               ]
             ],
             "as_ratios": [
@@ -251,7 +245,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -260,15 +254,15 @@
               "ratios": {
                 "base_damage": [
                   60,
-                  95,
-                  130,
-                  165,
-                  200
+                  90,
+                  120,
+                  150,
+                  180
                 ],
                 "player_bonus_ad": 0.7000000000000001
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['60','95','130','165','200']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
@@ -290,7 +284,7 @@
         100
       ],
       "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]]",
+      "targeting": "Direction",
       "target_range": 875,
       "image": {
         "full": "QiyanaR.png",
@@ -302,10 +296,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Qiyana''' sends a ''windblast'' in the target direction that {{tip|airborne|knocks back}} enemies. The ''windblast'' stops upon hitting {{as|terrain}}.",
-        "The ''windblast'' then creates an erupting shockwave across any {{sbc|{{as|River}}}} or {{sbc|{{as|Brush}}}} it passes through, as well as around the borders of {{as|terrain}} it reaches, dealing {{as|physical damage}}, with the percentage damage capped against {{tip|monster|monsters}} and {{tip|stun|stunning}} enemies for {{passive progression/deprecated version|2|changedisplay=true|type=proximity|1|0.5|0|X}} seconds."
+        "{{sbc|Active:}} '''Qiyana''' sends a ''windblast'' in the target direction that {{tip|airborne|knocks back}} enemies struck. The ''windblast'' stops upon hitting {{as|terrain}}.",
+        "The ''windblast'' then creates an erupting shockwave across any {{sbc|{{as|River}}}} or {{sbc|{{as|Brush}}}} it passes through, as well as around the borders of {{as|terrain}} it reaches, dealing {{as|physical damage}} to enemies in its path, with the percentage damage capped against {{tip|monster|monsters}} and {{tip|stun|stunning}} enemies hit for {{passive progression/deprecated version|2|changedisplay=true|type=proximity|1|0.5|0|X}} seconds."
       ],
-      "notes": "* The windblast needs only to reach near terrain to trigger the terrain shockwave.\n* Artificial terrain (e.g, {{cai|Crystallize|Anivia}}, {{cai|Weaver's Wall|Taliyah}}, {{cai|Pillar of Ice|Trundle}}) touching map terrain will be treated as a single piece of terrain, even when bridging two pieces of map terrain together; the shockwave will wrap around all connecting terrain. The shockwave's path is determined once it initially spreads; any expired terrain will be treated as if it were still there.\n* ''Supreme Display of Talent'' will cast from wherever '''Qiyana''' is at the end of the cast time.",
+      "notes": "* The windblast needs only to reach near terrain to trigger the terrain shockwave.\n* Artificial terrain (e.g, {{cai|Crystallize|Anivia}}, {{cai|Weaver's Wall|Taliyah}}, {{cai|Pillar of Ice|Trundle}}) touching map terrain will be treated as a single piece of terrain, even when bridging two pieces of map terrain together; the shockwave will wrap around all connecting terrain. The shockwave's path is determined once it initially spreads; any expired terrain will be treated as if it were still there.\n* {{tip|Projectile|Projectile-intercepting}} effects will block the windblast but not the shockwave.\n* ''Supreme Display of Talent'' will cast from wherever '''Qiyana''' is at the end of the cast time.",
       "skillkey": "R",
       "skillid": "r1",
       "costBurn": "100",
@@ -313,7 +307,7 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|100 to 240}} {{as|(+ 170% '''bonus''' AD)}} {{as|(+ 10% of target's '''maximum''' health)}}|Capped percentage damage|{{ap|500 to 1000}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><spell-span :list=\"['100','135','170','205','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% <b>bonus</b> AD)</span> <span class=\"health\">(+ 10% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped percentage damage</span>: <span><spell-span :list=\"['500','625','750','875','1000']\" :spellrankindex=\"spellrankindex\"></spell-span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[100,135,170,205,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 170% <b>bonus</b> AD)</span> <span class=\"health\">(+ 10% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped percentage damage</span>: <span><SpellSpan :list=\"[500,625,750,875,1000]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -343,9 +337,9 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<spell-span :list=\"['100','135','170','205','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% '''bonus''' AD)</span> <span class=\"health\">(+ 10% of target's '''maximum''' health)</span>",
+              "<SpellSpan :list=\"[100,135,170,205,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 170% '''bonus''' AD)</span> <span class=\"health\">(+ 10% of target's '''maximum''' health)</span>",
               "Capped percentage damage",
-              "<spell-span :list=\"['500','625','750','875','1000']\" :spellrankindex=\"spellrankindex\"></spell-span>"
+              "<SpellSpan :list=\"[500,625,750,875,1000]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -362,7 +356,7 @@
                 "player_bonus_ad": 1.7
               },
               "title": "Physical Damage",
-              "str": "<spell-span :list=\"['100','135','170','205','240']\" :spellrankindex=\"spellrankindex\"></spell-span> <span class=\"ad\">(+ 170% '''bonus''' AD)</span> <span class=\"health\">(+ 10% of target's '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[100,135,170,205,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 170% '''bonus''' AD)</span> <span class=\"health\">(+ 10% of target's '''maximum''' health)</span>",
               "damage_type": "physical"
             },
             {
@@ -378,7 +372,7 @@
                 "player_bonus_ad": 1.7
               },
               "title": "Capped percentage damage",
-              "str": "<spell-span :list=\"['500','625','750','875','1000']\" :spellrankindex=\"spellrankindex\"></spell-span>",
+              "str": "<SpellSpan :list=\"[500,625,750,875,1000]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
