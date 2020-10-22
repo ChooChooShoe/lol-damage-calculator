@@ -69,6 +69,7 @@
         "If the camp's large monster has already been slain, '''Ivern''' will ''free'' the camp upon completing the channel at no cost. Similarly, the {{as|grove|buzzword2}} will instantly mature if the large monster is slain.",
         "Starting at level 5, freeing the {{ui|Red Brambleback}} or the {{ui|Blue Sentinel}} leaves behind a ''sapling'' for 1 minute that can be picked up by an allied champion to gain the camp's buff, consuming it in the process. If at least one allied [[champion]] is nearby, '''Ivern''' can pick up the ''sapling'' to transfer it to the nearest one in range. If an ally kills either monster, they also leave behind a ''sapling'' that only '''Ivern''' can consume."
       ],
+      "leveling": [],
       "notes": "* Freeing a {{tip|Krugs}} camp will only give the {{g|gold}} and {{sti|experience|{{as|experience}}}} of the present ''Krugs'', i.e the {{ui|Ancient Krug}} and a ''Medium'' {{ui|Krug}}, for a total of {{sti|experience|{{passive progression/deprecated version|4|(55+15)*(1+0.25*(x^3-x)/60)|1 to 7|type=monster's level|changedisplay=true|formula=''This is capped at monster's level 7.''|color=experience}} experience}} instead of {{passive progression/deprecated version|8|55+15+15*2+10*6; 55+15+15*2+10*6; (55+15)*1.025+15*2+10*6; (55+15+15*2+10*6)*1.025; (55+15)*1.1+(15*2+10*6)*1.025; (55+15+15*2+10*6)*1.1; (55+15)*1.25+(15*2+10*6)*1.1; (55+15+15*2+10*6)*1.25|type=monster's level|displayformula=''This is capped at monster's level 7, but effectively capped at level 8 because of additional krugs spawning with one less level.''|color=experience}}, and {{g|75 gold}} instead of {{g|125}}.\n* ''Friend of the Forest'' can be used while '''Ivern''' or the camp is in combat and, once the {{as|grove|buzzword2}} is placed, {{si|Smite}} can be used to instantly claim the camp. {{tip|Interrupt|Interrupting}} '''Ivern's''' channel is the only way to contest jungle camps, short of killing the camp during the channel time.\n* ''Friend of the Forest'' will leave '''Ivern''' at {{as|1 health}} if cast with exactly the required amount. ''Friend of the Forest'' cannot be cast with less, unlike other abilities with health costs.\n* The following table refers for interactions while '''Ivern''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=interrupts|items=interrupts,true,,false|spells=true,interrupts,interrupts,interrupts,interrupts|interrupts=death, silence|damage=true}}",
       "skillkey": "I",
       "skillid": "i1",
@@ -85,13 +86,7 @@
         11,
         10
       ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
+      "cost": 60,
       "costtype": "Mana",
       "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
       "target_range": 1100,
@@ -109,15 +104,16 @@
         "'''Ivern''' and his allies can click on the target {{tip|root|rooted}} by ''Rootcaller'' to {{tip|dash}} to their location, with allies stopping at {{sti|their attack range}} and '''Ivern''' stopping at {{sti|range|125 range}} from the target.",
         "{{sbc|Recast:}} '''Ivern''' {{tip|dash|dashes}} to the target."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 70% AP)}}}}<!--\n-->{{st|Root Duration|{{ap|1.2 to 2}}}}"
+      ],
       "notes": "* ''Rootcaller'' will hit {{tip|monster|monsters}} but does not deal damage to them unless they were an epic monster.\n* '''Ivern's''' pull/attack range is determined when he dashes to the target - not from when he initially casts ''Rootcaller'' and throws the vine.\n* '''Ivern''' is not able to dash to the target unless they are within approximately 1200 range.\n** {{Pending for test}}: This also counts for allies.\n* ''Rootcaller'' {{tt|cannot be used|By either clicking on the target or Ivern recasts}} to {{tip|dash}} while {{tip|ground|grounded}} or {{tip|root|rooted}}. This applies to '''Ivern''' and his allies.\n* ''Rootcaller's'' dash does not follow targets, their position at the time of starting the dash is the location '''Ivern''' and his allies will stop from.\n* ''Rootcaller'' is always cast from the original casting position.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "60",
-      "cooldownBurn": "14/13/12/11/10",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 70% AP)}}}}<!--\n-->{{st|Root Duration|{{ap|1.2 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -143,15 +139,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "Root Duration",
-              "<SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\"></SpellSpan>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   125,
                   170,
@@ -160,8 +158,24 @@
                 ],
                 "player_total_ap": 0.7000000000000001
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  1.2,
+                  1.4,
+                  1.6,
+                  1.8,
+                  2
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
               "title": "Root Duration",
-              "str": "<SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[1.2,1.4,1.6,1.8,2]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -172,20 +186,8 @@
       "riotId": "IvernW",
       "name": "Brushmaker",
       "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        30,
-        30,
-        30,
-        30,
-        30
-      ],
+      "cooldown": 0,
+      "cost": 30,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": 1000,
@@ -204,15 +206,17 @@
         "{{sbc|Active:}} '''Ivern''' grows a patch of {{tip|brush}} at the target location for 30 seconds, {{tip|sight|revealing}} the area within and around it for 3 seconds. ''Brushmaker'' spawns more brush if used near terrain or other brush.",
         "{{tip|Brush}} grown in the line of {{tip|sight}} of enemy {{tip|turret|turrets}} will cause '''Ivern''' and allied units within the brush to be {{tip|expose|exposed}}."
       ],
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|30 to 60}} {{as|(+ 30% AP)}}}}"
+      ],
       "notes": "* The {{as|'''bonus''' magic damage}} applies to towers.\n* The {{as|'''bonus''' magic damage}} can be {{tip|block|blocked}} or {{tip|dodge|dodged}}.\n** {{Pending for test}}: Passive's interactions with {{tip|blind|blinding}} effects.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "30",
-      "cooldownBurn": "0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '0.5,0.5,0.5,0.5,0.5' as '0.5'",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|30 to 60}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -232,7 +236,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -249,7 +253,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -267,13 +271,7 @@
         9,
         8
       ],
-      "cost": [
-        70,
-        70,
-        70,
-        70,
-        70
-      ],
+      "cost": 70,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": 750,
@@ -290,15 +288,17 @@
         "{{sbc|Active:}} '''Ivern''' gifts a ''Triggerseed'' to the target allied champion, himself or {{ui|Daisy}}, {{tip|shielding}} the target for 2 seconds.",
         "At the end of its duration, ''Triggerseed'' bursts, dealing {{as|magic damage}} to all nearby enemies and {{tip|slow|slowing}} them for 2 seconds."
       ],
+      "leveling": [
+        "{{st|Shield|{{ap|80 to 220}} {{as|(+ 80% AP)}}}}",
+        "{{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Slow|{{ap|50 to 70}}%}}"
+      ],
       "notes": "* Placing ''Triggerseed'' on allied champions grants them all [[kill]] credits it causes.\n* {{Pending for test}}: The {{as|magic damage}} benefits from '''Ivern's''' {{sti|{{as|magic penetration}}}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "70",
-      "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
           "levelingtext": "{{st|Shield|{{ap|80 to 220}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -318,7 +318,7 @@
             ],
             "st_slices": [
               "Shield",
-              "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -335,14 +335,14 @@
                 "player_total_ap": 0.8
               },
               "title": "Shield",
-              "str": "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 80% AP)}}}}\n{{st|Slow|{{ap|50 to 70}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,95,120,145,170]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[50,55,60,65,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[50,55,60,65,70]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -368,15 +368,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "Slow",
-              "<SpellSpan :list=\"[50,55,60,65,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[50,55,60,65,70]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   70,
                   95,
                   120,
@@ -385,8 +387,24 @@
                 ],
                 "player_total_ap": 0.8
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  50,
+                  55,
+                  60,
+                  65,
+                  70
+                ],
+                "player_total_ap": 0.8
+              },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[50,55,60,65,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[50,55,60,65,70]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

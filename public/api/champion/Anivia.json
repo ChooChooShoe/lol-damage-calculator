@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} Periodically, upon taking {{tip|death|fatal damage}}, '''Anivia''' {{tip|dispel|dispels}} all {{tip|debuff|debuffs}} and transforms into '''Eggnivia''', while also recovering all of her {{as|{{sti|health}}}}.",
         "'''Eggnivia''' cannot act but gains {{passive progression/deprecated version|5|showtype=true|-40 to 20|1;5;8;12;15|changedisplay=true}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}. After 6 seconds, if '''Eggnivia''' is still alive, '''Anivia''' is {{tip|resurrection|reborn}} with {{as|'''Eggnivia's current''' health}}."
       ],
+      "leveling": [],
       "notes": "* Triggering ''Rebirth'' will break {{tip|tether|tethers}} on '''Anivia'''.\n* {{ii|Guardian Angel}} and {{ai|Chronoshift|Zilean}} will take precedence over ''Rebirth''.\n* While in egg form, '''Anivia''' is still classified as a champion.\n* If '''Anivia''' uses {{si|Teleport}} before she takes fatal damage, the channel is not interrupted and she will blink to her target in egg form.\n** All other {{tip|channel|channels}} will be interrupted upon triggering the passive.",
       "skillkey": "I",
       "skillid": "i1",
@@ -107,15 +108,17 @@
         "{{sbc|Recast:}} '''Anivia''' shatters the orb, dealing the same damage to enemies within the detonation and {{tip|stun|stunning}} them for a duration.",
         "At maximum [[range]] ''Flash Frost'' detonates automatically."
       ],
+      "leveling": [
+        "{{st|Magic damage|{{ap|60 to 160}} {{as|(+ 45% AP)}}|Total Damage|{{ap|60*2 to 160*2}} {{as|(+ 90% AP)}}}}",
+        "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}"
+      ],
       "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Flash Frost'' can only proc {{ri|Conqueror}} once even if it damages the same target twice.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "80/90/100/110/120",
-      "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|60 to 160}} {{as|(+ 45% AP)}}|Total Damage|{{ap|60*2 to 160*2}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[120,170,220,270,320]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -145,9 +148,9 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
               "Total Damage",
-              "<SpellSpan :list=\"[120,170,220,270,320]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -164,7 +167,7 @@
                 "player_total_ap": 0.45
               },
               "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -180,14 +183,14 @@
                 "player_total_ap": 0.45
               },
               "title": "Total Damage",
-              "str": "<SpellSpan :list=\"[120,170,220,270,320]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -202,7 +205,7 @@
             ],
             "st_slices": [
               "Stun Duration",
-              "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -218,7 +221,7 @@
                 ]
               },
               "title": "Stun Duration",
-              "str": "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -229,20 +232,8 @@
       "riotId": "Crystallize",
       "name": "Crystallize",
       "maxrank": 5,
-      "cooldown": [
-        17,
-        17,
-        17,
-        17,
-        17
-      ],
-      "cost": [
-        70,
-        70,
-        70,
-        70,
-        70
-      ],
+      "cooldown": 17,
+      "cost": 70,
       "costtype": "mana",
       "targeting": "Location",
       "target_range": 1000,
@@ -258,15 +249,16 @@
       "description": [
         "{{sbc|Active:}} '''Anivia''' summons a wall of ice at the target location perpendicular to her facing, {{tip|airborne|knocking}} all units away from it. The wall lingers as impassible terrain for 5 seconds."
       ],
+      "leveling": [
+        "{{st|Wall length|{{ap|400|500|600|700|800}}}}"
+      ],
       "notes": "* ''Crystallize's'' displacement triggers in-combat effects by dealing 0 {{tip|proc damage|proc}} {{tip|true damage}}, such as drawing turret aggro, {{ri|Sudden Impact}} and applying {{ii|Elixir of Sorcery}}.\n* '''Anivia''' is granted an assist if the wall touches an enemy champion.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70",
-      "cooldownBurn": "17",
       "effects": [
         {
           "levelingtext": "{{st|Wall length|{{ap|400|500|600|700|800}}}}",
-          "str": "<ul><li><span class=\"blue\">Wall length</span>: <span><SpellSpan :list=\"[400,500,600,700,800]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Wall length</span>: <span><SpellSpan :list=\"[400,500,600,700,800]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -281,7 +273,7 @@
             ],
             "st_slices": [
               "Wall length",
-              "<SpellSpan :list=\"[400,500,600,700,800]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[400,500,600,700,800]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -297,7 +289,7 @@
                 ]
               },
               "title": "Wall length",
-              "str": "<SpellSpan :list=\"[400,500,600,700,800]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[400,500,600,700,800]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -308,13 +300,7 @@
       "riotId": "Frostbite",
       "name": "Frostbite",
       "maxrank": 5,
-      "cooldown": [
-        4,
-        4,
-        4,
-        4,
-        4
-      ],
+      "cooldown": 4,
       "cost": [
         50,
         60,
@@ -338,15 +324,17 @@
         "{{sbc|Active:}} '''Anivia''' blasts the target enemy with a freezing wind, dealing {{as|magic damage}}.",
         "If the target was hit by {{ai|Flash Frost|Anivia}} or was inside a fully formed {{ai|Glacial Storm|Anivia}} within the last 3 seconds, ''Frostbite's'' damage is [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}}."
       ],
+      "leveling": [
+        "{{st|Magic damage|{{ap|50 to 150}} {{as|(+ 50% AP)}}}}",
+        "{{st|Enhanced Damage|{{ap|50*2 to 150*2}} {{as|(+ 100% AP)}}}}"
+      ],
       "notes": "* The damage of ''Frostbite'' is calculated once it hits. If the target's mark from being hit by {{ai|Flash Frost|Anivia}} or a fully formed {{ai|Glacial Storm|Anivia}} wares off while the projectile is traveling, the damage is not doubled.\n* ''Frostbite'' has a different sound effect when it hits a target for double damage.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50/60/70/80/90",
-      "cooldownBurn": "4",
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|50 to 150}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -366,7 +354,7 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -383,14 +371,14 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[50,75,100,125,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Enhanced Damage|{{ap|50*2 to 150*2}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Enhanced Damage</span>: <span><SpellSpan :list=\"[100,150,200,250,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Enhanced Damage</span>: <span><SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -410,7 +398,7 @@
             ],
             "st_slices": [
               "Enhanced Damage",
-              "<SpellSpan :list=\"[100,150,200,250,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -427,7 +415,7 @@
                 "player_total_ap": 1
               },
               "title": "Enhanced Damage",
-              "str": "<SpellSpan :list=\"[100,150,200,250,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -438,16 +426,8 @@
       "riotId": "GlacialStorm",
       "name": "Glacial Storm",
       "maxrank": 3,
-      "cooldown": [
-        6,
-        6,
-        6
-      ],
-      "cost": [
-        75,
-        75,
-        75
-      ],
+      "cooldown": 6,
+      "cost": 75,
       "costtype": "mana{{plus}}{{ap|40 to 60}} per second",
       "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
       "target_range": 750,
@@ -466,15 +446,16 @@
         "''Glacial Storm'' deactivates if '''Anivia''' gets too far away or she does not have the sufficient amount of {{sti|{{as|mana}}}} to pay for the ability's cost. Additionally, ''Glacial Storm'' will be deactivated by all forms of {{tip|interrupt|interrupting}} {{tip|crowd control}}.",
         "{{sbc|Recast:}} '''Anivia''' deactivates ''Glacial Storm'', dealing one last tick of [[damage]]."
       ],
+      "leveling": [
+        "{{st|Magic damage per second|{{ap|40 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Empowered damage per second|{{ap|40*3 to 80*3}} {{as|(+ {{fd|37.5}}% AP)}}}}<!--\n-->{{st|Slow|{{ap|20 to 40}}%|Empowered Slow|{{ap|20*1.5 to 40*1.5}}%}}"
+      ],
       "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Glacial Storm's'' slow leaves a trail that is visible even if the target is [[stealth]]ed.\n* ''Glacial Storm'' deals 3 half ticks at {{ap|200|267|333}} radius for a total of {{fd|1.5}} normal damage ticks before it starts dealing empowered damage at 400 radius.\n* ''Glacial Storm'' heals '''Anivia''' 15 health upon cast and heals for up to 12 health per second when interacting with {{iis|Rod of Ages}} {{nie|Eternity}}.\n* {{tip|Stasis}} doesn't interrupt ''Glacial Storm''.\n** {{cai|Devour|Tahm Kench}} '''does''' interrupt (allied and enemy) ''Glacial Storm''.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "75",
-      "cooldownBurn": "6",
       "effects": [
         {
           "levelingtext": "{{st|Magic damage per second|{{ap|40 to 80}} {{as|(+ {{fd|12.5}}% AP)}}|Empowered damage per second|{{ap|40*3 to 80*3}} {{as|(+ {{fd|37.5}}% AP)}}}}<!--\n-->{{st|Slow|{{ap|20 to 40}}%|Empowered Slow|{{ap|20*1.5 to 40*1.5}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage per second</span>: <span><SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Empowered damage per second</span>: <span><SpellSpan :list=\"[120,180,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Empowered Slow</span>: <span><SpellSpan :list=\"[30,45,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage per second</span>: <span><SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Empowered damage per second</span>: <span><SpellSpan :list=\"[120,180,240]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40]\"></SpellSpan>%</span></li><li><span class=\"blue\">Empowered Slow</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -509,39 +490,71 @@
               }
             ],
             "st_slices": [
+              "Slow",
+              "<SpellSpan :list=\"[20,30,40]\"></SpellSpan>%",
+              "Empowered Slow",
+              "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%",
               "Magic damage per second",
-              "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "<SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
               "Empowered damage per second",
-              "<SpellSpan :list=\"[120,180,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>"
+              "<SpellSpan :list=\"[120,180,240]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   40,
                   60,
                   80
                 ],
                 "player_total_ap": 0.125
               },
-              "title": "Magic damage per second",
-              "str": "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
-              "damage_type": "magic"
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[20,30,40]\"></SpellSpan>%",
+              "damage_type": "none"
             },
             {
               "index": 1,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   120,
                   180,
                   240
                 ],
                 "player_total_ap": 0.125
               },
+              "title": "Empowered Slow",
+              "str": "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40
+                ],
+                "player_total_ap": 0.125
+              },
+              "title": "Magic damage per second",
+              "str": "<SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_damage": [
+                  30,
+                  45,
+                  60
+                ],
+                "player_total_ap": 0.125
+              },
               "title": "Empowered damage per second",
-              "str": "<SpellSpan :list=\"[120,180,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[120,180,240]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>",
               "damage_type": "unknown"
             }
           ]

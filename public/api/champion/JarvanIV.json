@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} '''Jarvan IV's''' [[basic attack]]s against non-{{tip|turrets|structures}} deal {{as|8% of the target's {{sti|'''current''' health}}}} {{as|physical damage}}, with a minimum threshold of 20 damage and a maximum threshold of 400 damage against non-champions.",
         "This effect cannot occur on the same target more than once every few seconds."
       ],
+      "leveling": [],
       "notes": "* No additional notes.",
       "skillkey": "I",
       "skillid": "i1",
@@ -106,15 +107,16 @@
         "{{sbc|Active:}} '''Jarvan IV''' extends his lance in the target direction, dealing {{as|physical damage}} to all enemies and {{sti|armor penetration|{{as|reducing their armor}}}} for 3 seconds.",
         "If the lance connects with a deployed {{ai|Demacian Standard|Jarvan IV}}, '''Jarvan IV''' {{tip|dashes}} to its location, {{tip|airborne|knocking up}} nearby enemies along his path and at the destination for {{fd|0.75}} seconds."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|90 to 250}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Armor Reduction|{{as|{{ap|10 to 26}}% of target's armor}}}}"
+      ],
       "notes": "* The armor reduction is applied after the damage. The damage dealt does not benefit from it in this case.\n* ''Dragon Strike'' will still pull '''Jarvan IV''' to {{ai|Demacian Standard|Jarvan IV}} if he is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}} but he will remain as such when he reaches his destination (duration permitting).\n* {{si|Flash}} will interrupt the {{tip|dash}} to a {{ai|Demacian Standard|Jarvan IV}} but '''Jarvan IV''' will still {{tip|airborne|knock up}} and damage enemies he comes in contact with at the new location.\n** Casting ''Flash'' right before the ''dash'' begins will cause '''Jarvan IV''' to be pulled to the flag from the new position.\n** Enemies already hit by ''Dragon Strike'' cannot be affected more than once.\n* ''Dragon Strike'' is always cast from '''Jarvan IV's''' position. The lance will extend from wherever he is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "45/50/55/60/65",
-      "cooldownBurn": "10/9/8/7/6",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|90 to 250}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Armor Reduction|{{as|{{ap|10 to 26}}% of target's armor}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -143,26 +145,43 @@
               }
             ],
             "st_slices": [
+              "Physical Damage",
+              "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
               "Armor Reduction",
-              "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span>"
+              "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   90,
                   130,
                   170,
                   210,
                   250
                 ],
-                "player_bonus_ad": 1.2,
-                "target_total_armor": 10141822.26
+                "player_bonus_ad": 1.2
+              },
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  14,
+                  18,
+                  22,
+                  26
+                ],
+                "player_bonus_ad": 1.2
               },
               "title": "Armor Reduction",
-              "str": "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span>",
+              "str": "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span>",
               "damage_type": "none"
             }
           ]
@@ -173,20 +192,8 @@
       "riotId": "JarvanIVGoldenAegis",
       "name": "Golden Aegis",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        12,
-        12,
-        12,
-        12
-      ],
-      "cost": [
-        30,
-        30,
-        30,
-        30,
-        30
-      ],
+      "cooldown": 12,
+      "cost": 30,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -202,15 +209,17 @@
         "{{sbc|Active:}} '''Jarvan IV''' {{tip|slow|slows}} all nearby enemies for 2 seconds.",
         "'''Jarvan IV''' also {{tip|shields}} himself for 5 seconds, increased by {{as|{{fd|1.5}}% of his '''maximum''' health}} for each enemy {{tip|champion}} hit by ''Golden Aegis''."
       ],
+      "leveling": [
+        "{{st|Slow|{{ap|15|20|25|30|35}}%}}",
+        "{{st|Base Shield|{{ap|60|85|110|135|160}}}}"
+      ],
       "notes": "* No additional information.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "30",
-      "cooldownBurn": "12",
       "effects": [
         {
           "levelingtext": "{{st|Slow|{{ap|15|20|25|30|35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -225,7 +234,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -241,14 +250,14 @@
                 ]
               },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Base Shield|{{ap|60|85|110|135|160}}}}",
-          "str": "<ul><li><span class=\"blue\">Base Shield</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Base Shield</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -263,7 +272,7 @@
             ],
             "st_slices": [
               "Base Shield",
-              "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -279,7 +288,7 @@
                 ]
               },
               "title": "Base Shield",
-              "str": "<SpellSpan :list=\"[60,85,110,135,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -290,20 +299,8 @@
       "riotId": "JarvanIVDemacianStandard",
       "name": "Demacian Standard",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        12,
-        12,
-        12,
-        12
-      ],
-      "cost": [
-        55,
-        55,
-        55,
-        55,
-        55
-      ],
+      "cooldown": 12,
+      "cost": 55,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": 860,
@@ -322,15 +319,17 @@
         "The flag then remains for 8 seconds, granting {{tip|sight}} of its surroundings and providing an [[aura]] that grants ''Demacian Standard's'' passive {{as|'''bonus''' attack speed}} to '''Jarvan IV''' and all nearby allied champions.",
         "''Demacian Standard will cast at max range if cast beyond that.''"
       ],
+      "leveling": [
+        "{{st|Bonus Attack Speed|{{ap|20 to 30}}%}}",
+        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "* The attack speed granted from a deployed ''Demacian Standard'' {{tip|stacks additively}} with ''Demacian Standard's'' passive permanent bonus attack speed to '''Jarvan''', but it doesn't stack with the attack speed from other ''Demacian Standards''.\n* ''Demacian Standard'' can be targeted by allied abilities ({{si|Teleport}}, {{ai|Safeguard|Lee Sin}}). The target type is the same as a {{tip|minion}}.\n* ''Demacian Standard'' is {{tip|untargetable}} to enemies.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "55",
-      "cooldownBurn": "12",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|20 to 30}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -345,7 +344,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -361,14 +360,14 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<SpellSpan :list=\"[20,22.5,25,27.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -388,7 +387,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -405,7 +404,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -421,11 +420,7 @@
         105,
         90
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": 650,
@@ -443,15 +438,16 @@
         "Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them {{tip|airborne}}. The terrain lasts for {{fd|3.5}} seconds and grants {{tip|sight}} of the inside and surrounding area. ''Cataclysm'' can be recast after 1 second.",
         "{{sbc|Recast:}} '''Jarvan IV''' destroys the terrain created by ''Cataclysm''."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|200 to 450}} {{as|(+ 150% '''bonus''' AD)}}}}"
+      ],
       "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Cataclysm'' will not deal damage, generate terrain, nor refund its cooldown if '''Jarvan IV''' is killed while {{tip|dash|leaping}}.\n* {{ai|Searing Charge|Ornn}} will not destroy the whole ring but only the part that {{ci|Ornn}} collides with.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/105/90",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|200 to 450}} {{as|(+ 150% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,325,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -469,7 +465,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[200,325,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -484,7 +480,7 @@
                 "player_bonus_ad": 1.5
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[200,325,450]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]

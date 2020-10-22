@@ -1,45 +1,40 @@
 
 <template>
-  <span v-html="calchtml()"></span>
+  <span v-if="Array.isArray(list)">
+    <template v-for="(x, i) in list">
+      {{ i != 0 ? "/" : "" }}
+      <span
+        :key="i"
+        :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
+        class="ss-click"
+        @click="rootspell.spellrankindex = i"
+      >
+        {{ x }}
+      </span>
+    </template>
+  </span>
+  <span v-else class="spelleffect ss-click">
+    {{ list }}
+  </span>
 </template>
 
 <script>
-import { quickMatchReplace } from "../javascript/matchreplace";
-
 // A SpellSpan
 // ex. 15 / 14 / 13 / 12 / 11
 export default {
   name: "SpellSpan",
   props: {
-    list: Array,
-    spellrankindex: Number,
-    maxrank: Number,
+    list: [Array, Number],
   },
-  computed: {
-    final() {
-      let last = undefined;
-      let final = [];
-      for (let i = 0; i < this.list.length; i++) {
-        if (i === this.spellrankindex) {
-          if (last === this.list[i]) {
-            final.pop();
-          }
-          final.push(`<span class="spelleffect">${this.list[i]}</span>`);
-        } else if (last !== this.list[i]) {
-          final.push(this.list[i]);
-        }
-        last = this.list[i];
-      }
-      return final.join(" / ");
-    }
-  },
-  methods: {
-    calchtml: function() {
-      return quickMatchReplace(this.final);
-    }
-  }
+  inject: ["rootspell"],
 };
 </script>
 
-<style scoped>
+<style>
+.ss-click {
+  cursor: pointer;
+}
+.ss-click:hover {
+  color: yellow;
+}
 </style>

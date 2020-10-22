@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} Each of '''Syndra's''' [[Champion ability|abilities]] gain an additional effect at maximum rank."
       ],
+      "leveling": [],
       "notes": "* The earliest possible champion level required for ''Transcendent'' to take effect is level 9, as this is the lowest level at which a basic ability can reach rank 5.\n* '''Syndra's''' abilities gain additional visual effects when they reach rank 5. Her spells will also gain a red colored tint outlining the VFX.\n** {{ai|Dark Sphere|Syndra}} will cause fractures to appear in the earth when it is used.\n** {{ai|Scatter the Weak|Syndra}} gains a wider cone.",
       "skillkey": "I",
       "skillid": "i1",
@@ -75,13 +76,7 @@
       "riotId": "SyndraQ",
       "name": "Dark Sphere",
       "maxrank": 5,
-      "cooldown": [
-        4,
-        4,
-        4,
-        4,
-        4
-      ],
+      "cooldown": 4,
       "cost": [
         60,
         65,
@@ -105,15 +100,17 @@
         "{{sbc|Active:}} After {{fd|0.6}} seconds, '''Syndra''' conjures a ''Dark Sphere'' at the target location, dealing {{as|magic damage}} to all enemies hit, which then remains for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Dark Sphere'' deals 25% '''bonus''' damage against [[champion]]s."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}",
+        "{{st|Bonus Damage|{{ap|210*0.25}} {{as|(+ {{ap|65*0.25}}% AP)}}|Total Damage|{{ap|210*1.25}} {{as|(+ {{ap|65*1.25}}% AP)}}}}"
+      ],
       "notes": "* ''Dark Sphere'' can be conjured inside terrain, but cannot be thrown there with {{ai|Force of Will|Syndra}}.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "60/65/70/75/80",
-      "cooldownBurn": "4",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -133,7 +130,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
+              "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
             ]
           },
           "subeffects": [
@@ -150,14 +147,14 @@
                 "player_total_ap": 0.65
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Damage|{{ap|210*0.25}} {{as|(+ {{ap|65*0.25}}% AP)}}|Total Damage|{{ap|210*1.25}} {{as|(+ {{ap|65*1.25}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[262.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[52.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[262.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -185,9 +182,9 @@
             ],
             "st_slices": [
               "Bonus Damage",
-              "<SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "<SpellSpan :list=\"[52.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\"></SpellSpan>% AP)</span>",
               "Total Damage",
-              "<SpellSpan :list=\"[262.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
+              "<SpellSpan :list=\"[262.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -200,7 +197,7 @@
                 "player_total_ap": 0.1625
               },
               "title": "Bonus Damage",
-              "str": "<SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[52.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\"></SpellSpan>% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -212,7 +209,7 @@
                 "player_total_ap": 0.1625
               },
               "title": "Total Damage",
-              "str": "<SpellSpan :list=\"[262.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[262.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\"></SpellSpan>% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -230,13 +227,7 @@
         15,
         14
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": "{{tip|er|icononly = true}} 700 / {{tt|800|Dark Spheres}}",
@@ -254,15 +245,16 @@
         "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''' based on proximity, knocking back all enemies they collide with for 100 units and {{tip|stun|stunning}} and {{tip|sight|revealing}} them for {{fd|1.5}} seconds, and dealing ''Scatter the Weak's'' damage if they were not affected by the initial cast.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}"
+      ],
       "notes": "* ''Scatter the Weak'' is blocked by the portion of {{ai|Wind Wall|Yasuo}} it collides with. ''Spheres'' thrown will stop upon colliding with the wall.\n* Enemies and spheres will be knocked into the direction directly away from '''Syndra''', and the knock back has no dispersion.\n* Conjuring a {{ai|Dark Sphere|Syndra}} at max range or close to or inside the edge of ''Scatter the Weak's'' [[Area_of_effect#Conic|conic-area of effect]] will knock back the ''sphere'' immediately once it has formed. This considers the ''sphere's'' center.{{bug}}\n* ''Scatter the Weak'' will knock back ''Spheres'' even farther if they are inside terrain, up until they reach open space. If the terrain they're inside in cannot be surpassed, the ''Spheres'' will be knocked in the opposite direction.\n* ''Scatter the Weak'' will cast from wherever '''Syndra''' is at the end of the cast time.\n* Once ''Scatter the Weak'' has been learned, an arrow directly in front of every {{ai|Dark Sphere|Syndra}} will appear to signify the direction the ''sphere'' will be knocked towards, each one corresponding to '''Syndra's''' position. This is only visible to '''Syndra'''.\n[[File:Dark_Sphere_directional_arrows.png|center|250px]]",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50",
-      "cooldownBurn": "18/17/16/15/14",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -282,7 +274,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -299,7 +291,7 @@
                 "player_total_ap": 0.6
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[85,130,175,220,265]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -315,11 +307,7 @@
         100,
         80
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": "{{tip|cr|icononly = true}} {{tt|675|Standard range}} / {{tt|750|Enhanced range}}",
@@ -337,15 +325,16 @@
         "The {{ai|Dark Sphere|Syndra|Dark Spheres}} will then remain on the ground for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Unleashed Power's'' cast range is increased."
       ],
+      "leveling": [
+        "{{st|Magic Damage per Sphere|{{ap|90 to 190}} {{as|(+ 20% AP)}}}}<!--\n-->{{st|Minimum Damage|{{ap|90*3 to 190*3}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|90*7 to 190*7}} {{as|(+ 140% AP)}}}}"
+      ],
       "notes": "* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the ''spheres'' apply their damage. She can walk away as soon as the casting has completed, as the ''spheres'' only begin dealing their damage after the casting time. \n* Each one of the ''sphere'' hits is considered a {{tip|single target}} spell, triggering {{iis|Muramana}} {{sbc|shock}} each time.\n* Casting ''Unleashed Power'' on a target that becomes {{tip|untargetable}} while the ''spheres'' are in flight will cause them to deal no damage.\n* ''Spheres'' already in flight will still travel if '''Syndra's''' target dies, but any remaining ''sphere'' will not. However, their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown. \n** Depending on how many ''spheres'' are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the ''sphere'' behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single ''sphere''.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/100/80",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage per Sphere|{{ap|90 to 190}} {{as|(+ 20% AP)}}}}<!--\n-->{{st|Minimum Damage|{{ap|90*3 to 190*3}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|90*7 to 190*7}} {{as|(+ 140% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage per Sphere</span>: <span><SpellSpan :list=\"[90,140,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[270,420,570]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[630,980,1330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage per Sphere</span>: <span><SpellSpan :list=\"[90,140,190]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[270,420,570]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[630,980,1330]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -378,10 +367,12 @@
               }
             ],
             "st_slices": [
+              "Magic Damage per Sphere",
+              "<SpellSpan :list=\"[90,140,190]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Minimum Damage",
-              "<SpellSpan :list=\"[270,420,570]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "<SpellSpan :list=\"[270,420,570]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "Maximum Damage",
-              "<SpellSpan :list=\"[630,980,1330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
+              "<SpellSpan :list=\"[630,980,1330]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
             ]
           },
           "subeffects": [
@@ -393,11 +384,11 @@
                   140,
                   190
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.2
               },
-              "title": "Minimum Damage",
-              "str": "<SpellSpan :list=\"[270,420,570]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "unknown"
+              "title": "Magic Damage per Sphere",
+              "str": "<SpellSpan :list=\"[90,140,190]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
             },
             {
               "index": 1,
@@ -407,10 +398,24 @@
                   420,
                   570
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.2
+              },
+              "title": "Minimum Damage",
+              "str": "<SpellSpan :list=\"[270,420,570]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  630,
+                  980,
+                  1330
+                ],
+                "player_total_ap": 0.2
               },
               "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[630,980,1330]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>",
+              "str": "<SpellSpan :list=\"[630,980,1330]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>",
               "damage_type": "unknown"
             }
           ]

@@ -1,14 +1,24 @@
 <template>
   <div class="data_holder c50">
-    <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
-    <h3>{{ spell.name }} ({{ spell.skillkey }}) - <a target="_blank" :href="wikiHref">View on Wiki</a></h3>
-    <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
+    <img
+      class="spell-image"
+      :style="imageStyle"
+      :width="spell.image.w"
+      :height="spell.image.h"
+    />
+    <h3>
+      {{ spell.name }} ({{ spell.skillkey }}) -
+      <a target="_blank" :href="wikiHref">View on Wiki</a>
+    </h3>
+    <match-replace
+      :text="'<p>' + spell.description.join('</p><p>') + '</p>'"
+    ></match-replace>
     <hr />
     <div style="float: right" v-if="spell.maxrank > 0">
       <span>
         Spell Rank (
         <span class="spelleffect">{{ spellrankindex + 1 }}</span>
-        / {{spell.maxrank}} )
+        / {{ spell.maxrank }} )
       </span>
       <fieldset class="spellrank">
         <input
@@ -18,7 +28,7 @@
           type="radio"
           name="spellrank"
           :value="index"
-          :title="'Rank ' + (index+1)"
+          :title="'Rank ' + (index + 1)"
         />
       </fieldset>
     </div>
@@ -30,12 +40,12 @@
       </div>
       <div v-if="spell.cooldown">
         Cooldown:
-        <SpellSpan :list="spell.cooldown" :spellrankindex="spellrankindex"></SpellSpan>
+        <SpellSpan :list="spell.cooldown"></SpellSpan>
         &nbsp;seconds
       </div>
       <div v-if="spell.cost">
         Cost:
-        <SpellSpan :list="spell.cost" :spellrankindex="spellrankindex"></SpellSpan>&nbsp;
+        <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
         <span v-html="costtype"></span>
       </div>
       <div v-if="spell.target_range">
@@ -56,11 +66,12 @@
       :spell="spell"
       :effect="item"
       :effectindex="index"
-      :spellrankindex="spellrankindex"
+      :spellrank="spellrankindex"
+      v-on:spellrank="spellrankindex = $event"
     ></spell-effects>
 
     <CustomSpellEffects
-      v-for="(item) in customEffects"
+      v-for="item in customEffects"
       :key="'CustomSpellEffects' + item"
       :index="item"
     ></CustomSpellEffects>
@@ -78,6 +89,7 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue'
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 import CustomSpellEffects from "./CustomSpellEffects.vue";
@@ -105,10 +117,16 @@ export default {
       lastEffectIndex: 0,
     };
   },
+  provide () {
+    return {
+      // rootspell is a ref to the active damagesource.
+      rootspell: this
+    }
+  },
   computed: {
     wikiHref() {
-      const champ = this.champion.replace(/ /g,"_");
-      const spell = this.spell.name.replace(/ /g,"_");
+      const champ = this.champion.replace(/ /g, "_");
+      const spell = this.spell.name.replace(/ /g, "_");
       return `https://leagueoflegends.fandom.com/wiki/${champ}#${spell}`;
     },
     costtype() {

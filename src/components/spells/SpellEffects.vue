@@ -1,7 +1,7 @@
 <template>
   <div class="container float-clear spell-effect">
     <nav class="col">
-      <div v-if="effect.subeffects.length > 1">
+      <!-- <div v-if="effect.subeffects.length > 1">
         <label>
           View A
           <input
@@ -32,13 +32,12 @@
             title="Switch to C"
           />
         </label>
-      </div>
+      </div> -->
       <div :class=" effect.subeffects.length > 1 ?'click' : ''" @click="toggleSubIndex">
         <h4 class="spelleffect">{{ edata.title }}</h4>
         <match-replace
           class="column effect-value"
-          :text="edata.str"
-          :spellrankindex="spellrankindex"
+          :text="effect.str"
         ></match-replace>
       </div>
       <div class="field column">
@@ -57,7 +56,7 @@
               ref="spellfields"
               :key="key"
               :item="item"
-              :index="spellrankindex"
+              :index="spellrank"
             ></SpellField>
           </tbody>
           <tfoot>
@@ -145,7 +144,7 @@ import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 
 export default {
-  props: ["spell", "effect", "spellrankindex", "effectindex"],
+  props: ["spell", "effect", "spellrank", "effectindex"],
   name: "spell-effects",
   components: {
     MatchReplace,

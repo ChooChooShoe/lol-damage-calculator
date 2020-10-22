@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} Periodically, '''Yuumi's''' next [[basic attack]] against an enemy {{tip|champion}} becomes {{tip|unstoppable basic attack|unstoppable}}, gains {{sti|range|50 '''bonus''' range}} and becomes a {{tip|projectile|non-projectile}}. This attack restores {{as|{{passive progression/deprecated version|25 to 100}}|mana}} {{as|(+ 8% '''maximum''' mana)}} {{sti|{{as|mana}}}} and grants her a {{pp|60+10*(x-1) for 3; then +15*x for 4; then +20*x for 7; then + 30*x}} {{as|(+ 30% AP)}} {{tip|shield}} that lasts until it is broken.",
         "While {{ai|You and Me!|Yuumi|attached}}, the shield transfers to her ''Anchor''."
       ],
+      "leveling": [],
       "notes": "* This ability will apply to a basic attack already in flight, but will not augment it into a non-projectile.\n* ''Bop 'n' Block'' will not proc if the attack is {{tip|dodged}} or '''Yuumi''' misses the attack while {{tip|blind|blinded}}. It will proc even if the attack is {{tip|blocked}}.\n* Although the shield doesn't expire, it will never stack with itself.\n* Considering '''Yuumi's''' {{as|'''base''' mana}}, ''Bop 'n' Block's ''mana restore is increased by '''at least''' {{as|{{passive progression/deprecated version|({{ccd|Yuumi|mp_base}}+{{ccd|Yuumi|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))*0.08}}|mana}}.",
       "skillkey": "I",
       "skillid": "i1",
@@ -84,14 +85,7 @@
         7.5,
         6
       ],
-      "cost": [
-        90,
-        90,
-        90,
-        90,
-        90,
-        90
-      ],
+      "cost": 90,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 1150,
@@ -109,15 +103,17 @@
         "If the missile is in flight for 1 second, it deals increased {{as|magic damage}}, and {{tip|slow|slows}} enemy {{tip|champions}} struck by 20% for 1 second.",
         "While {{ai|You and Me!|Yuumi|attached}}, '''Yuumi''' instead directs the trajectory of the missile using the cursor for up to 2 seconds before fizzling, during which she and the ''Anchor'' can see the effective range. This cannot be done while channeling {{ai|Final Chapter|Yuumi}}."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|40 to 190 6}} {{as|(+ 30% AP)}}}}",
+        "{{st|Empowered Damage|{{ap|45 to 245 6}} {{as|(+ 40% AP)}} {{as|(+ {{ap|2 to 8 6}}% of the target's '''current''' health)}}}}"
+      ],
       "notes": "* ''Prowling Projectile'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "90",
-      "cooldownBurn": "13.5/12/10.5/9/7.5/6",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 190 6}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -138,7 +134,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[40,70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -156,14 +152,14 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[40,70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Empowered Damage|{{ap|45 to 245 6}} {{as|(+ 40% AP)}} {{as|(+ {{ap|2 to 8 6}}% of the target's '''current''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[45,85,125,165,205,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of the target's <b>current</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -195,7 +191,7 @@
             ],
             "st_slices": [
               "Empowered Damage",
-              "<SpellSpan :list=\"[45,85,125,165,205,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of the target's '''current''' health)</span>"
+              "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
@@ -214,7 +210,7 @@
                 "target_current_hp": null
               },
               "title": "Empowered Damage",
-              "str": "<SpellSpan :list=\"[45,85,125,165,205,245]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of the target's '''current''' health)</span>",
+              "str": "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -225,20 +221,8 @@
       "riotId": "YuumiW",
       "name": "You and Me!",
       "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cooldown": 0,
+      "cost": 0,
       "targeting": "[[Unit-targeted|Unit]] / [[Direction-targeted|Direction]]",
       "target_range": 700,
       "image": {
@@ -257,15 +241,17 @@
         "'''''Yuumi''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during the dash.''",
         "{{sbc|Recast:}} '''Yuumi''' can switch her ''Anchor'' at no cooldown, and will ''detach'' automatically if her ''Anchor'' dies or under {{tt|certain circumstances|In the notes below}}. If recast without a valid target, '''Yuumi''' will ''detach'' from her ''Anchor'' and dash 250 units in the target direction, putting the ability on cooldown."
       ],
+      "leveling": [
+        "{{st|Bonus Attack Damage|{{ap|12*0.6 to 20*0.6}} {{as|(+ {{ap|12 to 20}}% '''bonus''' AD)}}}}\n{{st|Bonus Ability Power|{{ap|12 to 20}} {{as|(+ {{ap|12 to 20}}% AP)}}}}",
+        "{{st|Adaptive Force|{{ap|12 to 20}}}}\n{{st|Adaptive Force per 100 '''bonus''' AD|{{ap|12/0.6 to 20/0.6|round=2}}}}\n{{st|Adaptive Force per 100 AP|{{ap|12 to 20}}}}"
+      ],
       "notes": "* The ability name for the recast is ''Change of Plan''.\n*''You and Me!'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**{{ci|Kassadin}} cannot gain a stack for {{ai|Force Pulse|Kassadin}} while '''Yuumi''' is {{tip|untargetable}}.\n* '''Yuumi''' can channel the {{ii|Eye of the Herald}} while attached.\n* The {{as|ability power}} multiplier is '''{{tip|stacks additively|additive}}''' with other {{as|ability power}} multipliers, like from {{ii|Rabadon's Deathcap}} or {{bi|Dragon Slayer|Infernal Might}}. \n* The {{as|'''bonus''' attack damage}} multiplier is '''{{tip|stacks additively|additive}}''' with other sources of {{as|'''bonus''' attack damage}} multipliers, like from {{ai|Unseen Predator|Rengar}} and is '''{{tip|stacks multiplicatively|multiplicative}}''' with {{as|'''total''' attack damage}} multipliers, like from {{ai|Whisper|Jhin}} or {{bi|Dragon Slayer|Infernal Might}}.\n* '''Yuumi''' will automatically detach in the following circumstances:\n** When her ''Anchor'' starts a {{si|Teleport}} channel.\n** After the ''Anchor'' completes a {{si|Recall}} channel.\n** Entering {{tip|resurrection}}.\n** Her ''Anchor'' is sent to the {{ai|Realm of Death|Mordekaiser}}.\n** She is pulled by {{ai|Fate's Call|Kalista}}.\n* The {{tip|dash}} has a maximum following range. If her target is too far away before the attachment, the ''dash'' is interrupted and ''You and Me!'' goes on cooldown.\n* While attached to the ''Anchor'', '''Yuumi''' is considered in being at her ''Anchor's'' position, regardless of where she is visually placed near them. For example, {{tip|turret}} shots will appear as if they were hitting the ''Anchor'', but in reality they're actually hitting '''Yuumi'''.\n* Her {{tip|monster}} aggression transfers to the ''Anchor''.\n* Enemies gain an assist on '''Yuumi''' if they damaged the ''Anchor''.\n* '''Yuumi''' gains assists on champion {{tip|takedown|takedowns}} from her ''Anchor''.\n* '''Yuumi''' will also {{tip|vanish}} if her ''Anchor'' does.\n* '''Yuumi''' will also become {{tip|stealth|stealthed}} if her ''Anchor'' does, and can cast her own abilities without breaking the stealth.\n* If '''Yuumi''' is on the blue team, she will remain attached on the southwest side; if '''Yuumi''' is on the red team, she will remain on the northeast. While channeling {{ai|Final Chapter|Yuumi}}, she will be behind her ''Anchor''.\n* '''Yuumi''' can dash to targetable {{tip|zombie state}} allies (currently only {{cai|Glory in Death|Sion}}), but she cannot stay attached for long.\n* '''Yuumi''' doesn't ''detach'' instantly when her ''Anchor'' dies. There's a small grace period in which she can recast ''You and Me!'' to attach to another champion without the {{tip|channel}}.\n* The [[Summoner|player's]] screen will briefly flash red if '''Yuumi''' is affected by a {{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect, or if she forcibly detaches from her ''Anchor''.\n* The ''Anchor's'' [[health bar]] will have a different frame to indicate the ''attached'' status:\n[[File: Yuumi Health Bar.png|200px|center]]\n* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|move=false|cast=false|items=false, true|spells=true, false, false, false, false|interrupts=death, ground, root, silence}}\n* The following table refers for interactions while '''Yuumi''' is {{tip|attached}}:\n{{ct|move=false|cast=true|attack=false|items=true, true, true, false|spells=true, false, false, false, false|interrupts=death}}",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "0",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Damage|{{ap|12*0.6 to 20*0.6}} {{as|(+ {{ap|12 to 20}}% '''bonus''' AD)}}}}\n{{st|Bonus Ability Power|{{ap|12 to 20}} {{as|(+ {{ap|12 to 20}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Damage</span>: <span><SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Ability Power</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Damage</span>: <span><SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Ability Power</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -308,33 +294,50 @@
               }
             ],
             "st_slices": [
+              "Bonus Attack Damage",
+              "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>",
               "Bonus Ability Power",
-              "<SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
+              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   7.2,
                   8.4,
                   9.6,
                   10.8,
                   12
                 ],
-                "player_bonus_ad": 12141618.200000001,
-                "player_total_ap": 12141618.200000001
+                "player_bonus_ad": 12141618.200000001
+              },
+              "title": "Bonus Attack Damage",
+              "str": "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ],
+                "player_bonus_ad": 12141618.200000001
               },
               "title": "Bonus Ability Power",
-              "str": "<SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Adaptive Force|{{ap|12 to 20}}}}\n{{st|Adaptive Force per 100 '''bonus''' AD|{{ap|12/0.6 to 20/0.6|round=2}}}}\n{{st|Adaptive Force per 100 AP|{{ap|12 to 20}}}}",
-          "str": "<ul><li><span class=\"blue\">Adaptive Force</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Adaptive Force per 100 <b>bonus</b> AD</span>: <span><SpellSpan :list=\"[20,23.33,26.67,30,33.33]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Adaptive Force per 100 AP</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Adaptive Force</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Adaptive Force per 100 <b>bonus</b> AD</span>: <span><SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Adaptive Force per 100 AP</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -362,8 +365,12 @@
               ]
             ],
             "st_slices": [
+              "Adaptive Force",
+              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
+              "Adaptive Force per 100 '''bonus''' AD",
+              "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>",
               "Adaptive Force per 100 AP",
-              "<SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -378,8 +385,38 @@
                   20
                 ]
               },
+              "title": "Adaptive Force",
+              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  23.33,
+                  26.67,
+                  30,
+                  33.33
+                ]
+              },
+              "title": "Adaptive Force per 100 '''bonus''' AD",
+              "str": "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ]
+              },
               "title": "Adaptive Force per 100 AP",
-              "str": "<SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -420,15 +457,17 @@
         "{{sbc|Active:}} '''Yuumi''' {{tip|heals}} herself and gains {{as|15%|movement speed}} {{as|(+ 10% per 100 AP)}} {{sti|ms|{{as|'''bonus''' movement speed|ms}}}} and {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
         "While {{ai|You and Me!|Yuumi|attached}}, the ''Anchor'' is affected by the ability instead."
       ],
+      "leveling": [
+        "{{st|Heal|{{ap|70 to 210}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Attack Speed|{{as|{{ap|25 to 45}}%|as}}}}"
+      ],
       "notes": "* Considering '''Yuumi's''' {{as|'''base''' mana}}, ''Zoomies' ''mana cost is increased by '''at least''' {{as|{{passive progression/deprecated version|({{ccd|Yuumi|mp_base}}+{{ccd|Yuumi|mp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))*0.15}}|mana}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "40/45/50/55/60/15",
-      "cooldownBurn": "12/11/10/9/8",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{ap|40 to 60}} {{as|(+ 15% '''maximum''' mana)}} as 40/45/50/55/60/15 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "levelingtext": "{{st|Heal|{{ap|70 to 210}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Attack Speed|{{as|{{ap|25 to 45}}%|as}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -457,8 +496,10 @@
               }
             ],
             "st_slices": [
+              "Heal",
+              "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Bonus Attack Speed",
-              "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>"
+              "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
@@ -472,11 +513,26 @@
                   175,
                   210
                 ],
-                "player_total_ap": 0.4,
-                "player_total_unknown": 25303540.45
+                "player_total_ap": 0.4
+              },
+              "title": "Heal",
+              "str": "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ],
+                "player_total_ap": 0.4
               },
               "title": "Bonus Attack Speed",
-              "str": "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>",
+              "str": "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>",
               "damage_type": "none"
             }
           ]
@@ -492,11 +548,7 @@
         110,
         90
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 1100,
@@ -512,15 +564,16 @@
       "description": [
         "{{sbc|Active:}} '''Yuumi''' and ''Book'' {{tip|channel}} for {{fd|3.5}} seconds, launching 7 waves in the target direction over the duration, each dealing {{as|magic damage}} to all enemies hit in their path. Enemy {{tip|champions}} hit take only 50% damage from subsequent waves, and when struck with three waves, they are {{tip|root|rooted}} for {{fd|1.75}} seconds, this can only occur once per target."
       ],
+      "leveling": [
+        "{{st|Magic Damage Per Wave|{{ap|60 to 100}} {{as|(+ 20% AP)}}|Reduced Damage Per Wave|{{ap|60*0.5 to 100*0.5}} {{as|(+ 10% AP)}}|Maximum Champion Damage|{{ap|60*4 to 100*4}} {{as|(+ 80% AP)}}|Maximum Non-Champion Damage|{{ap|60*7 to 100*7}} {{as|(+ 140% AP)}}}}"
+      ],
       "notes": "* While {{ai|You and Me!|Yuumi|attached}}, {{bi|Cloud Dragon Soul}} will not activate until '''Yuumi''' detaches.\n* {{tip|Spell shield}} will only block a single instance of damage.\n* '''Yuumi's''' facing direction during the channel is considered to be in ''Final Chapter's'' target direction.\n** Using {{si|Hexflash}} during the channel will always cause '''Yuumi''' to {{tip|blink}} in the target direction of ''Final Chapter''.{{bug}}\n* The following table refers for interactions while '''Yuumi''' is {{tip|channel|channeling}}:\n{{ct|channel|cast={{ai|Prowling Projectile|Yuumi}} is disabled. {{ai|You and Me!|Yuumi}} and {{ai|Zoomies|Yuumi}} are usable.|attack=false|move=true|items=true,,,false|spells=true, true, true, false, true, true, true, true}}",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "130/110/90",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Wave|{{ap|60 to 100}} {{as|(+ 20% AP)}}|Reduced Damage Per Wave|{{ap|60*0.5 to 100*0.5}} {{as|(+ 10% AP)}}|Maximum Champion Damage|{{ap|60*4 to 100*4}} {{as|(+ 80% AP)}}|Maximum Non-Champion Damage|{{ap|60*7 to 100*7}} {{as|(+ 140% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[60,80,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Reduced Damage Per Wave</span>: <span><SpellSpan :list=\"[30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[240,320,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[420,560,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Reduced Damage Per Wave</span>: <span><SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -562,13 +615,13 @@
             ],
             "st_slices": [
               "Magic Damage Per Wave",
-              "<SpellSpan :list=\"[60,80,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Reduced Damage Per Wave",
-              "<SpellSpan :list=\"[30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+              "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
               "Maximum Champion Damage",
-              "<SpellSpan :list=\"[240,320,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "Maximum Non-Champion Damage",
-              "<SpellSpan :list=\"[420,560,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
+              "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
             ]
           },
           "subeffects": [
@@ -583,7 +636,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Magic Damage Per Wave",
-              "str": "<SpellSpan :list=\"[60,80,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -597,7 +650,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Reduced Damage Per Wave",
-              "str": "<SpellSpan :list=\"[30,40,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -611,7 +664,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Maximum Champion Damage",
-              "str": "<SpellSpan :list=\"[240,320,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -625,7 +678,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Maximum Non-Champion Damage",
-              "str": "<SpellSpan :list=\"[420,560,700]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>",
+              "str": "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>",
               "damage_type": "unknown"
             }
           ]

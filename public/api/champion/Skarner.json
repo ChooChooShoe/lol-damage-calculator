@@ -70,6 +70,7 @@
         "'''Skarner''' gains ''Crystal Charge'' while within range of a ''Crystal Spire'' controlled by his team, for {{fd|1.25}} seconds after triggering {{ai|Crystal Venom|Skarner}}, or for {{fd|1.75}} seconds after stinging an enemy champion with {{ai|Impale|Skarner}}.",
         "{{sbc|Crystal Charge:}} '''Skarner''' gains {{passive progression/deprecated version|18|70|72|74|76|78|80|82|85|88|91|94|97|100|104|108|112|116|120|formula = 68 + 2 per level up to 7, + 3 per level up to 13, and + 4 per level|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{passive progression/deprecated version|18|key=%|43|48|53|58|63|68|73|80|87|94|101|108|115|124|133|142|151|160|formula = 38 + 5 per level up to 7, + 7 per level up to 13, and + 9 per level|color=as}} {{sti|{{as|'''bonus''' attack speed}}}} and restores {{sti|mana|{{as|1% '''maximum''' mana}}}} every {{fd|0.5}} seconds."
       ],
+      "leveling": [],
       "notes": "* ''Crystal Charge's'' duration refreshes if it was gained by an ability.",
       "skillkey": "I",
       "skillid": "i1",
@@ -86,13 +87,7 @@
         2.75,
         2.5
       ],
-      "cost": [
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
+      "cost": 10,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -109,15 +104,17 @@
         "If an enemy is hit, subsequent uses of ''Crystal Slash'' within 5 seconds deal {{as|'''bonus''' magic damage}}.",
         "Basic attacks against non-structures reduce ''Crystal Slash's'' {{sti|cooldown}} by {{fd|0.25}} seconds, quadrupled to 1 against enemy champions."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}}}}",
+        "{{st|Bonus Magic Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}} {{as|(+ 30% AP)}}|Total Mixed Damage|{{as|{{ap|1*2 to 3*2}}% of target's '''maximum''' health}} {{as|(+ 40% AD)}} {{as|(+ 30% AP)}}}}"
+      ],
       "notes": "* {{tip|Spell shield}} will block the damage but will not prevent '''Skarner''' from triggering the bonus effect.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "10",
-      "cooldownBurn": "3.5/3.25/3/2.75/2.5",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 20% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 20% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -140,7 +137,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span>"
             ]
           },
           "subeffects": [
@@ -158,14 +155,14 @@
                 "target_total_hp": null
               },
               "title": "Physical Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{as|{{ap|1 to 3}}% of target's '''maximum''' health}} {{as|(+ 20% AD)}} {{as|(+ 30% AP)}}|Total Mixed Damage|{{as|{{ap|1*2 to 3*2}}% of target's '''maximum''' health}} {{as|(+ 40% AD)}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -207,9 +204,9 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "Total Mixed Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -227,7 +224,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Bonus Magic Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2,2.5,3]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 20% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -244,7 +241,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Total Mixed Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[2,3,4,5,6]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ 40% AD)</span> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -262,13 +259,7 @@
         11.5,
         11
       ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
+      "cost": 60,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -283,15 +274,16 @@
       "description": [
         "{{sbc|Active:}} '''Skarner''' crystallizes himself, gaining a {{tip|shield}} for up to 6 seconds and initial {{sti|ms|{{as|'''bonus''' movement speed}}}} that accelerates by 100% over 3 seconds while the shield holds."
       ],
+      "leveling": [
+        "{{st|Shield Strength|{{as|{{ap|10 to 14}}% '''maximum''' health}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Initial Bonus Movement Speed|{{ap|8 to 16}}%|Maximum Bonus Movement Speed|{{ap|8*2 to 16*2}}%}}"
+      ],
       "notes": "* No additional notes.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "60",
-      "cooldownBurn": "13/12.5/12/11.5/11",
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{as|{{ap|10 to 14}}% '''maximum''' health}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Initial Bonus Movement Speed|{{ap|8 to 16}}%|Maximum Bonus Movement Speed|{{ap|8*2 to 16*2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>maximum</b> health</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Initial Bonus Movement Speed</span>: <span><SpellSpan :list=\"[8,10,12,14,16]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Movement Speed</span>: <span><SpellSpan :list=\"[16,20,24,28,32]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% <b>maximum</b> health</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Initial Bonus Movement Speed</span>: <span><SpellSpan :list=\"[8,10,12,14,16]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Movement Speed</span>: <span><SpellSpan :list=\"[16,20,24,28,32]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -327,8 +319,12 @@
               }
             ],
             "st_slices": [
+              "Initial Bonus Movement Speed",
+              "<SpellSpan :list=\"[8,10,12,14,16]\"></SpellSpan>%",
+              "Maximum Bonus Movement Speed",
+              "<SpellSpan :list=\"[16,20,24,28,32]\"></SpellSpan>%",
               "Shield Strength",
-              "<span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% '''maximum''' health</span> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -342,11 +338,42 @@
                   13,
                   14
                 ],
-                "player_total_ap": 0.8,
-                "player_total_hp": 10111213.14
+                "player_total_ap": 0.8
+              },
+              "title": "Initial Bonus Movement Speed",
+              "str": "<SpellSpan :list=\"[8,10,12,14,16]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  8,
+                  10,
+                  12,
+                  14,
+                  16
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Maximum Bonus Movement Speed",
+              "str": "<SpellSpan :list=\"[16,20,24,28,32]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  16,
+                  20,
+                  24,
+                  28,
+                  32
+                ],
+                "player_total_ap": 0.8
               },
               "title": "Shield Strength",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''maximum''' health</span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% '''maximum''' health</span> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -362,11 +389,7 @@
         100,
         80
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": "{{tip|cr|icononly = true}} 350",
@@ -384,15 +407,16 @@
         "''Impale'' pierces through {{tip|displacement immunity}}, dragging them out.{{tt|*|See details for more information.}}",
         "''During the ability '''Skarner''' is locked out from [[basic attack]]ing, casting {{ai|Fracture|Skarner}}, or using {{si|Flash}}.''"
       ],
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|20 to 100}}  {{as|(+ 50% AP)}}|Total Mixed Damage|{{ap|20*2 to 100*2}}  {{as|(+ 120% AD)}} {{as|(+ 100% AP)}}}}"
+      ],
       "notes": "* The target will not take ''Impale's'' secondary damage if the {{tip|suppression}} is removed.\n* If the target becomes {{tip|untargetable}}, dies, '''Skarner''' loses {{tip|sight}} of them, or they move 800 units away from him during the cast time, ''Impale'' cancels but does not go on {{sti|cooldown}} nor consume {{sti|{{as|mana}}}}.\n* {{tip|Spell shield}} will not block the {{tip|root}}.\n* ''Impale'' is special cased to end prematurely if the target is affected by {{ai|Devour|Tahm Kench}}, both for an ally and enemy {{ci|Tahm Kench}} or if '''Skarner''' is teleported by {{ai|Realm Warp|Ryze}}.\n** ''Impale'' will not end prematurely if '''Skarner''' enters {{tip|resurrection}}.\n* ''Impale'' applies a small displacement to the target every {{fd|0.25}} seconds whenever they are not close to '''Skarner'''. These displacements do '''not''' apply {{tip|airborne}} and are not {{tt|flagged as displacements|For instance, Mordekaiser R and Sett R do not force-move their target in the classic sense, but pretend to be displacements for interactions like these.}}, meaning that targets who are not {{tip|Cc-immune|immune}} to the {{tip|suppression}} are also never immune to the displacement, either. As a consequence, {{tip|displacement immunity}} '''fails''' to ignore this movement. ''See the table below.''\n* While ''Impale'' is active, and for the purposes of direction-conditioned abilities, (e.g. {{ai|Petrifying Gaze|Cassiopeia}}, {{ai|Mocking Shout|Tryndamere}}) '''Skarner''' is considered to be facing in the direction he is moving and not the one his model is facing.\n{{Skarner Impale Unstoppability Interactions}}",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/100/80",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|20 to 100}}  {{as|(+ 50% AP)}}|Total Mixed Damage|{{ap|20*2 to 100*2}}  {{as|(+ 120% AD)}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[20,60,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[40,120,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[20,60,100]\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[40,120,200]\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -421,9 +445,9 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<SpellSpan :list=\"[20,60,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span>",
+              "<SpellSpan :list=\"[20,60,100]\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span>",
               "Total Mixed Damage",
-              "<SpellSpan :list=\"[40,120,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[40,120,200]\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -439,7 +463,7 @@
                 "player_total_ad": 1.2
               },
               "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[20,60,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[20,60,100]\"></SpellSpan>  <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -454,7 +478,7 @@
                 "player_total_ad": 1.2
               },
               "title": "Total Mixed Damage",
-              "str": "<SpellSpan :list=\"[40,120,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,120,200]\"></SpellSpan>  <span class=\"ad\">(+ 120% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "unknown"
             }
           ]

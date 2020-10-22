@@ -68,6 +68,7 @@
         "{{sbc|Innate:}} '''Galio's''' next [[basic attack]] becomes {{tip|unstoppable basic attack|unstoppable}} and deals {{passive progression/deprecated version|15 to 200|color=magic damage}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}} {{as|(+ 60% '''bonus''' magic resistance)}} {{as|'''total''' magic damage}} to its target and all enemies around it.",
         "''Colossal Smash'' can {{tip|critical strike|critically strike}}, dealing {{as|{{critical damage|100|melee}} AD}} {{as|'''bonus''' magic damage}} to all targets hit."
       ],
+      "leveling": [],
       "notes": "* {{ii|Sheen|Spellblade}} will also get converted to magic damage but will deal its damage only to the primary target.",
       "skillkey": "I",
       "skillid": "i1",
@@ -107,15 +108,17 @@
         "{{sbc|Active:}} '''Galio''' creates two windblasts 250 units to either side of him that arc out before converging to the target area, dealing {{as|magic damage}} to all enemies they pass through.",
         "When the blasts meet, the gusts form a tornado that persists for 2 seconds and slowly moves forward, dealing {{as|magic damage}} every {{fd|0.5}} seconds to every enemy within, with the target's health ratio capped at 150 damage against {{tip|monsters}}."
       ],
+      "leveling": [
+        "{{st|Gust Magic Damage|{{ap|70 to 210}} {{as|(+ 75% AP)}}}}",
+        "{{st|Tornado Magic Damage Per Tick|{{as|2% {{as|(+ {{fd|0.6{{recurring|6}}%}} per 100 AP)}} of target's '''maximum''' health}}|Total Tornado Magic Damage|{{as|8% {{as|(+ {{fd|2.6{{Recurring|6}}}}% per 100 AP)}} of target's '''maximum''' health}}}}"
+      ],
       "notes": "* Deals {{tip|area damage}} on the gust and applies {{tip|persistent area damage}} for the tornado. \n* {{tip|Spell shield}} will block the gusts damage but not the tornado's.\n* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block each windblast individually.\n** The tornado will not form if only one windblast reaches the target location.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "12/11.5/11/10.5/10",
       "effects": [
         {
           "levelingtext": "{{st|Gust Magic Damage|{{ap|70 to 210}} {{as|(+ 75% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Gust Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Gust Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +138,7 @@
             ],
             "st_slices": [
               "Gust Magic Damage",
-              "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
+              "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
             ]
           },
           "subeffects": [
@@ -152,14 +155,14 @@
                 "player_total_ap": 0.75
               },
               "title": "Gust Magic Damage",
-              "str": "<SpellSpan :list=\"[70,105,140,175,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Tornado Magic Damage Per Tick|{{as|2% {{as|(+ {{fd|0.6{{recurring|6}}%}} per 100 AP)}} of target's '''maximum''' health}}|Total Tornado Magic Damage|{{as|8% {{as|(+ {{fd|2.6{{Recurring|6}}}}% per 100 AP)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Tornado Magic Damage Per Tick</span>: <span><span class=\"health\">2% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.6<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip>%</span> per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Tornado Magic Damage</span>: <span><span class=\"health\">8% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.6<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 6\">Unknown value: Recurring 6</simple-tooltip></span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Tornado Magic Damage Per Tick</span>: <span><span class=\"health\">2% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.6<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip>%</span> per 100 AP)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Total Tornado Magic Damage</span>: <span><span class=\"health\">8% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.6<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 6\">Unknown value: Recurring 6</simple-tooltip></span>% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -198,13 +201,7 @@
         9,
         8
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": 650,
@@ -221,15 +218,16 @@
         "{{sbc|Active:}} '''Galio''' {{tip|lunge|steps}} backwards in the opposite direction and, after the cast time, he {{tip|dash|dashes}} to the target location, though not through terrain, until he collides with an enemy champion.",
         "'''Galio''' deals {{as|magic damage}} to all enemies hit in his path, reduced by 50% against non-champions, and {{tip|airborne|knocks them up}} for {{fd|0.75}} seconds."
       ],
+      "leveling": [
+        "{{st|Champion Magic Damage|{{ap|90 to 250}} {{as|(+ 90% AP)}}|Non-Champion Magic Damage|{{ap|90/2 to 250/2}} {{as|(+ 45% AP)}}}}"
+      ],
       "notes": "* '''Galio''' can cast movement effects during the ability, and buffers all other active effects.\n* '''Galio''' will initiate the {{tip|dash}} even if his step backwards is {{tip|knockdown|knocked down}}.\n* '''Galio's''' second dash will always dash the distance of the target direction. Having the step backwards cut short has no effect on the total distance gained.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50",
-      "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
           "levelingtext": "{{st|Champion Magic Damage|{{ap|90 to 250}} {{as|(+ 90% AP)}}|Non-Champion Magic Damage|{{ap|90/2 to 250/2}} {{as|(+ 45% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Champion Magic Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Non-Champion Magic Damage</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Champion Magic Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li><li><span class=\"blue\">Non-Champion Magic Damage</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -259,9 +257,9 @@
             ],
             "st_slices": [
               "Champion Magic Damage",
-              "<SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
+              "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "Non-Champion Magic Damage",
-              "<SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
+              "<SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
             ]
           },
           "subeffects": [
@@ -278,7 +276,7 @@
                 "player_total_ap": 0.9
               },
               "title": "Champion Magic Damage",
-              "str": "<SpellSpan :list=\"[90,130,170,210,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -294,7 +292,7 @@
                 "player_total_ap": 0.9
               },
               "title": "Non-Champion Magic Damage",
-              "str": "<SpellSpan :list=\"[45,65,85,105,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "str": "<SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -310,11 +308,7 @@
         180,
         160
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": "{{tip|cr|icononly = true}} {{ap|4000|4750|5500}}",
@@ -331,15 +325,16 @@
         "{{sbc|Active:}} '''Galio''' designates the target allied {{tip|champion|champion's}} location at the time of cast as his landing spot, resetting {{ais|Shield of Durand 2|Galio|Shield of Durand}} passive magic {{tip|shield}} for himself and additionally granting it to all allied champions in the area he casted it at for 5 seconds, and {{tip|channels}} for {{fd|2.75}} seconds.",
         "After {{fd|1.25}} seconds of the activation, '''Galio''' becomes {{tip|untargetable}} and {{tip|cc-immune|crowd control immune}} then leaps into the air for {{tt|{{fd|0.85 seconds}}|Estimated}} before {{tip|dash|dashing}} to the location over {{tt|{{fd|0.25 seconds}}|Estimated}}, after which he lands and becomes targetable again, retaining the immunity for {{tt|{{fd|0.4 seconds}}|Estimated}} and dealing {{as|magic damage}} to all nearby enemies on impact as well as {{tip|airborne|knocking them back}} 100 units over {{fd|0.75}} seconds."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 70% AP)}}}}"
+      ],
       "notes": "* ''Hero's Entrance'' does not resist allied {{tip|crowd control}}.\n* '''Galio''' cannot cast ''Hero's Entrance'' on allies he cannot {{tip|sight|see}} while {{tip|Nearsight|nearsighted}}.\n* '''Galio''' will still cause an impact to occur at the destination even if he is unable to travel the full distance with the dash (e.g. by {{ais|The Hextech Ultimatum|Camille}} and {{ais|Realm of Death|Mordekaiser}} borders and terrain). '''Galio''' will dash as far as he can go, and thus, does not end the dash prematurely.\n* '''Galio''' will always dash 100 units minimum, and dash ''over'' his target's location if they are less than 100 units away from him.\n* The following table refers for interactions while '''Galio''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|cast=false|move=false|items=false, true|spells=true, false, false, false, false|interrupts=death, root, silence, ground}}\n* ''Hero's Entrance's'' channel can only be {{tip|interrupt|interrupted}} by {{tip|crowd control}} in the first {{fd|1.25}} seconds.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "200/180/160",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -357,7 +352,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -372,7 +367,7 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]

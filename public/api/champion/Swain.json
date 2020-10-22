@@ -70,6 +70,7 @@
         "Enemy champions also leave behind a {{as|Soul Fragment|buzzword3}} for 16 seconds upon their {{tip|death}}, which can be harvested after 1 second if '''Swain''' is near them.",
         "{{sbc|Innate - Flock:}} '''Swain's''' ravens bring nearby {{as|Soul Fragments|buzzword3}} to him, {{tip|healing}} him for {{as|{{passive progression/deprecated version|3|key=%|4 to 7|1 to 11}} of his '''maximum''' health}}. Each {{as|Soul Fragment|buzzword3}} collected permanently increases his {{as|'''maximum''' health by 5}}."
       ],
+      "leveling": [],
       "notes": "* ''Ravenous Flock's'' {{tip|airborne|pull}} requires the target to be {{tip|immobilize|immobilized}} by an {{tt|enemy source|from the target's perspective}}.\n** Self-applied or allied-applied {{tip|immobilize|immobilizes}} do not allow ''Ravenous Flock'' to cast against the champion. Those applied by the ''neutral'' team (e.g. {{uis|Dragon}} initial knock back) '''can''' be targeted.\n** ''Ravenous Flock'' can be used against {{tip|cc-immune}} or {{tip|displacement immune}} targets that are affected by an ongoing {{tip|immobilize|immobilization}}. This will apply the damage, but the target will be prevented from being {{tip|airborne|pulled}}.\n* The crows carrying the souls will only be seen by the enemies if they have {{tip|sight|vision}} of '''Swain'''.\n* The pull will interrupt {{tip|channel|channels}} at the very beginning, but does not keep the target stunned for the rest of the movement.\n** {{tip|channel|Channels}} can be started successfully during the pull, provided the previous crowd control does not prevent them still.",
       "skillkey": "I",
       "skillid": "i1",
@@ -108,15 +109,16 @@
       "description": [
         "{{sbc|Active:}} '''Swain''' unleashes five bolts of eldritch power in the target direction, dealing {{as|magic damage}} to all enemies in a cone. Enemies can be hit by multiple bolts, taking {{as|'''bonus''' magic damage}}."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Magic Damage Per Bolt|{{ap|15 to 35}}%|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)*4/100)}} {{as|(+ {{ap|40*(1+(15 to 35)*4/100)}}% AP)}}}}"
+      ],
       "notes": "* ''Death's Hand'' will still cast and deal damage if '''Swain''' dies during the cast time.\n* ''Death's Hand'' will cast from wherever '''Swain''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "65/70/75/80/85",
-      "cooldownBurn": "9/7.5/6/4.5/3",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|55 to 135}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Magic Damage Per Bolt|{{ap|15 to 35}}%|Maximum Damage|{{ap|(55 to 135)*(1+(15 to 35)*4/100)}} {{as|(+ {{ap|40*(1+(15 to 35)*4/100)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,75,95,115,135]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage Per Bolt</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage Per Bolt</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -145,8 +147,10 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Bonus Magic Damage Per Bolt",
-              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%",
               "Maximum Damage",
               "<simple-tooltip class=\"red\" dname=\"ap (55 to 135)*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 40*(1+(15 to 35)*4/100)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
             ]
@@ -164,8 +168,8 @@
                 ],
                 "player_total_ap": 0.4
               },
-              "title": "Bonus Magic Damage Per Bolt",
-              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -178,6 +182,15 @@
                   30,
                   35
                 ],
+                "player_total_ap": 0.4
+              },
+              "title": "Bonus Magic Damage Per Bolt",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%",
+              "damage_type": "magic"
+            },
+            {
+              "index": 2,
+              "ratios": {
                 "player_total_ap": 0.4
               },
               "title": "Maximum Damage",
@@ -222,15 +235,17 @@
         "{{sbc|Active:}} '''Swain''' summons a demonic eye at the target location, {{tip|sight|revealing}} it for 2 seconds, which explodes after {{fd|1.5}} seconds, dealing {{as|magic damage}} to all enemies hit, halved against {{tip|minions}}, and {{tip|slow|slowing}} them for {{fd|2.5}} seconds.",
         "Enemy champions hit are also {{tip|sight|revealed}} for a duration and have a {{as|Soul Fragment|buzzword3}} ripped from them."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 70% AP)}}|Reduced Damage|{{ap|80/2 to 240/2}} {{as|(+ 35% AP)}}}}\n{{st|Slow Strength|{{ap|25 to 65}}%}}",
+        "{{st|Reveal Duration|{{ap|4 to 8}}}}"
+      ],
       "notes": "* {{tip|Spell shield}} does not prevent '''Swain''' from ripping a {{as|Soul Fragment|buzzword3}}.\n* ''Vision of Empire'' will also grant {{as|Soul Fragments|buzzword3}} from hitting {{tip|clone|clones}}.\n* ''Vision of Empire'' is visible and audible to enemies through the [[sight|fog of war]].",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70/80/90/100/110",
-      "cooldownBurn": "22/21/20/19/18",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 70% AP)}}|Reduced Damage|{{ap|80/2 to 240/2}} {{as|(+ 35% AP)}}}}\n{{st|Slow Strength|{{ap|25 to 65}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow Strength</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow Strength</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -266,32 +281,68 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "Reduced Damage",
+              "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "Slow Strength",
-              "<SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   120,
                   160,
                   200,
                   240
                 ],
-                "player_total_ap": 0.35000000000000003
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
+              "title": "Reduced Damage",
+              "str": "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  35,
+                  45,
+                  55,
+                  65
+                ],
+                "player_total_ap": 0.7000000000000001
               },
               "title": "Slow Strength",
-              "str": "<SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Reveal Duration|{{ap|4 to 8}}}}",
-          "str": "<ul><li><span class=\"blue\">Reveal Duration</span>: <span><SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reveal Duration</span>: <span><SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -306,7 +357,7 @@
             ],
             "st_slices": [
               "Reveal Duration",
-              "<SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -322,7 +373,7 @@
                 ]
               },
               "title": "Reveal Duration",
-              "str": "<SpellSpan :list=\"[4,5,6,7,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -333,20 +384,8 @@
       "riotId": "SwainE",
       "name": "Nevermove",
       "maxrank": 5,
-      "cooldown": [
-        10,
-        10,
-        10,
-        10,
-        10
-      ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cooldown": 10,
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 850,
@@ -363,15 +402,17 @@
         "{{sbc|Active:}} '''Swain''' launches a demonic wave in the target direction, dealing {{as|magic damage}} to enemies it passes through.",
         "Upon reaching its maximum distance, the wave returns to '''Swain''', detonating at the first enemy hit, dealing {{as|magic damage}} to all nearby enemies and {{tip|root|rooting}} them for {{fd|1.5}} seconds."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|35|70|105|140|175}} {{as|(+ 25% AP)}}}}",
+        "{{st|Detonation Damage|{{ap|35|45|55|65|75}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|70|115|160|205|250}} {{as|(+ 50% AP)}}}}"
+      ],
       "notes": "* {{tip|Spell shield|Spell shields}} block either the pass-through or the detonation, not both.\n* ''Nevermove'' is always cast from the original casting position.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50",
-      "cooldownBurn": "10",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|35|70|105|140|175}} {{as|(+ 25% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[35,70,105,140,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[35,70,105,140,175]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -391,7 +432,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[35,70,105,140,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+              "<SpellSpan :list=\"[35,70,105,140,175]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
             ]
           },
           "subeffects": [
@@ -408,14 +449,14 @@
                 "player_total_ap": 0.25
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[35,70,105,140,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[35,70,105,140,175]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Detonation Damage|{{ap|35|45|55|65|75}} {{as|(+ 25% AP)}}|Maximum Damage|{{ap|70|115|160|205|250}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><SpellSpan :list=\"[35,45,55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Detonation Damage</span>: <span><SpellSpan :list=\"[35,45,55,65,75]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -445,9 +486,9 @@
             ],
             "st_slices": [
               "Detonation Damage",
-              "<SpellSpan :list=\"[35,45,55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "<SpellSpan :list=\"[35,45,55,65,75]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "Maximum Damage",
-              "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -464,7 +505,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Detonation Damage",
-              "str": "<SpellSpan :list=\"[35,45,55,65,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[35,45,55,65,75]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -480,7 +521,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[70,115,160,205,250]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "unknown"
             }
           ]

@@ -494,7 +494,7 @@ const match_lookup = {
         vars.ap_progressions = [];
       vars.ap_progressions.push(list);
     }
-    return `<SpellSpan :list="[${list}]" :spellrankindex="spellrankindex"></SpellSpan>`;
+    return `<SpellSpan :list="[${list}]"></SpellSpan>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
   'as': function (capture, slices, vars, options) {
@@ -581,8 +581,13 @@ const match_lookup = {
     for (let i = 0; i < slices.length; i += 2) {
       rets.push(`<li><span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span></li>`);
     }
-    vars.st_slices = slices;
-    return `<ul>${rets.join('')}</ul>`;
+    if(vars){
+      if(vars.st_slices)
+        vars.st_slices = vars.st_slices.concat(slices);
+      else 
+        vars.st_slices = slices;
+    }
+    return `<ul class="st">${rets.join('')}</ul>`;
   },
   // MATH OPERATORS:
   'plus': function (_capture, _parms, _vars) {

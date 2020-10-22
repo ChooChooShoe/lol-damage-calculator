@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Vladimir''' gains {{as|({{fd|{{#var:cp1}}}}% '''bonus''' health)}} as {{sti|ap|{{as|ability power}}}} and {{as|({{#var:cp2}}% AP)}} as {{sti|health|{{as|'''bonus''' health}}}}. These two bonuses do not stack with each other."
       ],
+      "leveling": [],
       "notes": "* ''Crimson Pact's'' '''bonus''' ability power stacks multiplicatively with other sources of {{as|% ability power}} but its '''bonus''' health stacks additively with other sources of {{as|'''bonus''' health}}. Examples on how they calculate below:\n**Case 1: With {{ii|Rabadon's Deathcap}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|From Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP enhanced by Rabadon's Deathcap.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}/10000}}}}% '''bonus''' health}}|Though these 2 bonuses do not stack with each other and it's Crimson Pact's bonus AP that enhanced by Rabadon's Deathcap, the enhanced part of AP is credited to Rabadon's Deathcap, not Crimson Pact, thus still counted as resource for Crimson Pact's bonus health.}}) {{as|'''bonus''' health}}.\n**Case 2: With {{ii|Cinderhulk}} you get a total of {{tt|{{as|({{fd|{{#expr:{{#var:cp1}}*(1+{{#var:ch}}/100)}}}}% '''bonus''' health)}}|Crimson Pact's bonus AP comes from bonus health, thus indirectly enhanced by Cinderhulk.}} {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#var:cp2}}% AP}}|From Crimson Pact}} + {{tt|{{as|{{#var:ch}}% '''bonus''' health}}|From Cinderhulk.}}) {{as|'''bonus''' health}}.\n**Case 3: With {{ii|Rabadon's Deathcap}} + {{ii|Cinderhulk}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|Same with case 1, from Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)*(1+{{#var:ch}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Rabadon's Deathcap and Cinderhulk, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Same with case 1, won't stack with other sources of bonus health (Cinderhulk).}} + {{tt|{{as|{{fd|{{#expr:{{#var:ch}}+{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}*(1+{{#var:ch}}/100)/10000}}}}% '''bonus''' health}}|Crimson Pact's bonus AP indirectly enhanced by Cinderhulk (refer case 2), then multiplicatively enhanced again by Rabadon's Deathcap. The enhanced part that's credited to Rabadon's Deathcap then enhances Crimson Pact's bonus health (refer case 1). Finally, add the simple bonus health from Cinderhulk.}}) {{as|'''bonus''' health}}.",
       "skillkey": "I",
       "skillid": "i1",
@@ -101,15 +102,17 @@
         "Enemies who stand upon the pool are {{tip|slow|slowed}} by 40% and dealt {{as|magic damage}} every half second. '''Vladimir''' {{tip|heals}} himself for 15% of the damage dealt by ''Sanguine Pool''.",
         "'''''Vladimir''' cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If {{ai|Tides of Blood|Charge}} is charging at the time of Sanguine Pool's activation, that ability may be recast.''"
       ],
+      "leveling": [
+        "{{st|Magic Damage Per Half-Second|{{ap|20 to 75}} {{as|(+ {{fd|2.5}}% '''bonus''' health)}}|Maximum Magic Damage|{{ap|20*4 to 75*4}} {{as|(+ 10% '''bonus''' health)}}}}"
+      ],
       "notes": "* The first tick damages immediately so the final one occurs {{fd|0.5}} seconds before '''Vladimir''' becomes targetable again.\n* The {{tip|slow}} ends immediately once affected enemies get out of range.\n* '''Vladimir''' can still use [[summoner spell|summoner spells]] and [[Active ability items|item actives]] during ''Sanguine Pool''.\n* While unable to attack, '''Vladimir''' can still input attack commands - causing him to follow his attack target. \n** '''Vladimir's''' attack range is reduced to 0 while pooled - causing him to attempt to move underneath his attack target.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "20",
-      "cooldownBurn": "28/25/22/19/16",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|20%|health}} as 20 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Half-Second|{{ap|20 to 75}} {{as|(+ {{fd|2.5}}% '''bonus''' health)}}|Maximum Magic Damage|{{ap|20*4 to 75*4}} {{as|(+ 10% '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Half-Second</span>: <span><SpellSpan :list=\"[20,33.75,47.5,61.25,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Half-Second</span>: <span><SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -139,9 +142,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Half-Second",
-              "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% '''bonus''' health)</span>",
+              "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% '''bonus''' health)</span>",
               "Maximum Magic Damage",
-              "<SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
+              "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -158,7 +161,7 @@
                 "player_bonus_hp": 0.1
               },
               "title": "Magic Damage Per Half-Second",
-              "str": "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% '''bonus''' health)</span>",
+              "str": "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% '''bonus''' health)</span>",
               "damage_type": "magic"
             },
             {
@@ -174,7 +177,7 @@
                 "player_bonus_hp": 0.1
               },
               "title": "Maximum Magic Damage",
-              "str": "<SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
+              "str": "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
               "damage_type": "magic"
             }
           ]
@@ -218,15 +221,18 @@
         "''Enemies can intercept multiple bolts, but may only be damaged once.''",
         "''If '''Vladimir''' is below {{as|12% of his '''maximum''' health}} Tides of Blood will not cost any {{as|health}}, but will still increase in damage.''"
       ],
+      "leveling": [
+        "{{st|Minimum Magic Damage|{{ap|30 to 90}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} {{as|(+ 35% AP)}}|Maximum Magic Damage|{{ap|60 to 180}} {{as|(+ 6% '''maximum''' health)}} {{as|(+ 80% AP)}}}}",
+        "{{st|Slow|{{ap|40 to 60}}%}}"
+      ],
       "notes": "* The spell indicator shows 11 equally spaced missile indicators when hovering the ability in the HUD, however the spell actually casts 15 equally spaced missiles.\n* The {{as|health}} cost may still drop '''Vladimir''' below the specified amount if he is above it. This is verified for every tick of {{as|health}} cost, i.e if the first tick drops him below it, the next ones will stop affecting him if he remains below it.\n* The following table refers for interactions while '''Vladimir''' is {{tip|channel|channeling}}:\n{{ct|charge|cast={{ai|Sanguine Pool|Vladimir}} is usable. {{ai|Transfusion|Vladimir}} and {{ai|Hemoplague|Vladimir}} both interrupt after {{fd|0.25}} seconds.|items=interrupts,true,interrupts,false,interrupts|spells=true,true,interrupts,interrupts,interrupts}}",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "2/3.5/5/6.5/8/1",
-      "cooldownBurn": "13/11/9/7/5",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|2 to 8|0 to 0.75 by 0.25|key=%|type=charge time|label1=seconds|color=health}} as 2/3.5/5/6.5/8/1 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "levelingtext": "{{st|Minimum Magic Damage|{{ap|30 to 90}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} {{as|(+ 35% AP)}}|Maximum Magic Damage|{{ap|60 to 180}} {{as|(+ 6% '''maximum''' health)}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <b>maximum</b> health)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <b>maximum</b> health)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -262,9 +268,9 @@
             ],
             "st_slices": [
               "Minimum Magic Damage",
-              "<SpellSpan :list=\"[30,45,60,75,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% '''maximum''' health)</span> <span class=\"ap\">(+ 35% AP)</span>",
+              "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% '''maximum''' health)</span> <span class=\"ap\">(+ 35% AP)</span>",
               "Maximum Magic Damage",
-              "<SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -282,7 +288,7 @@
                 "player_total_hp": 0.06
               },
               "title": "Minimum Magic Damage",
-              "str": "<SpellSpan :list=\"[30,45,60,75,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% '''maximum''' health)</span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% '''maximum''' health)</span> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -299,14 +305,14 @@
                 "player_total_hp": 0.06
               },
               "title": "Maximum Magic Damage",
-              "str": "<SpellSpan :list=\"[60,90,120,150,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Slow|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -321,7 +327,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -337,7 +343,7 @@
                 ]
               },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -353,11 +359,7 @@
         135,
         120
       ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Location",
       "target_range": 625,
       "image": {
@@ -373,15 +375,17 @@
         "{{sbc|Active:}} '''Vladimir''' infects all enemies in the target area with a virulent plague, [[damage modifier|increasing]] the damage they take from all sources by 10% for 4 seconds, after which all infected enemies take {{as|magic damage}}.",
         "The detonation brings the blood from enemy {{tip|champions|champions}} hit to '''Vladimir''' after 0.4 seconds, {{tip|heal|healing}} him for the {{tt|pre-mitigation damage|Damage calculated before modifiers}} dealt against them once the blood reaches him, reduced to 50% after the first."
       ],
+      "leveling": [
+        "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}",
+        "{{st|Maximum Heal|{{ap|150*(1+0.5*4) to 350*(1+0.5*4)}} {{as|(+ {{ap|70*(1+0.5*4)}}% AP)}}}}"
+      ],
       "notes": "* ''Hemoplague'' will amplify almost all sources and types of damage (including damage from neutral monsters but excluding {{tip|true damage|{{as|true damage}}}}, with percent modifiers stacking multiplicatively).\n** ''Hemoplague'' amplifies itself for an actual {{ap|150*1.1 to 350*1.1}} {{as|(+ {{fd|77}}% AP)}} damage.\n* ''Hemoplague's'' modifier to incoming damage stacks additively with {{cai|Unbreakable Will|Alistar}} for a total reduction of 45/55/65%.{{tt|*|this might be unintended}}\n* {{tip|Spell shield}} does not negate the detonation.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "0",
-      "cooldownBurn": "150/135/120",
       "effects": [
         {
           "levelingtext": "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -399,7 +403,7 @@
             ],
             "st_slices": [
               "Magic damage",
-              "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -414,14 +418,14 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Maximum Heal|{{ap|150*(1+0.5*4) to 350*(1+0.5*4)}} {{as|(+ {{ap|70*(1+0.5*4)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[450,750,1050]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[450,750,1050]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -442,7 +446,7 @@
             ],
             "st_slices": [
               "Maximum Heal",
-              "<SpellSpan :list=\"[450,750,1050]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
+              "<SpellSpan :list=\"[450,750,1050]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -457,7 +461,7 @@
                 "player_total_ap": 2.1
               },
               "title": "Maximum Heal",
-              "str": "<SpellSpan :list=\"[450,750,1050]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[450,750,1050]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\"></SpellSpan>% AP)</span>",
               "damage_type": "none"
             }
           ]

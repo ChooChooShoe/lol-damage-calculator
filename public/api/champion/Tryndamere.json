@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} '''Tryndamere''' gains {{tip|fury|{{as|5 Fury}}}} each time he lands a [[basic attack]], and {{as|10 Fury}} on {{tip|critical strike|critical strikes}} and each time he kills an enemy. After not dealing or receiving damage for 8 seconds, '''Tryndamere''' loses {{as|5 Fury}} per second.",
         "'''Tryndamere''' gains {{sti|critical strike chance|{{as|{{passive progression/deprecated version|4|changedisplay=true|key=%|0.35 to 0.5|1;6;11;16}} critical strike chance}}}} per point of {{as|Fury}}, up to a maximum of {{as|{{passive progression/deprecated version|4|changedisplay=true|key=%|35 to 50|1;6;11;16}} critical strike chance}}."
       ],
+      "leveling": [],
       "notes": "* Attacks against structures will not grant bonus '''Fury''', but will still reset the timer on '''Fury''' decay.",
       "skillkey": "I",
       "skillid": "i1",
@@ -76,13 +77,7 @@
       "riotId": "TryndamereQ",
       "name": "Bloodlust",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        12,
-        12,
-        12,
-        12
-      ],
+      "cooldown": 12,
       "cost": [
         100
       ],
@@ -101,15 +96,18 @@
         "{{sbc|Passive:}} '''Tryndamere''' permanently gains {{sti|{{as|'''bonus''' attack damage}}}}, and gains additional {{as|'''bonus''' attack damage}} per {{as|{{sti|health|1% of his '''missing''' health}}}}.",
         "{{sbc|Active:}} '''Tryndamere''' consumes all of his {{tip|fury|{{as|Fury}}}} and {{tip|heals}} himself, increased for every point of {{as|Fury}} consumed."
       ],
+      "leveling": [
+        "{{st|Bonus AD|{{as|{{ap|5 to 25}} AD}}|Bonus AD Per Missing Health|{{as|{{ap|0.15 to 0.35}} AD}}|Maximum Bonus AD|{{as|{{ap|5+0.15*100 to 25+0.35*100}} AD}}}}",
+        "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 30% AP)}}|Heal Per Fury|{{ap|0.5 to 2.3}} {{as|(+ {{fd|1.2}}% AP)}}|Maximum Heal|{{ap|30+0.5*100 to 70+2.3*100}} {{as|(+ 150% AP)}}}}"
+      ],
       "notes": "* ''Bloodlust'' can still be activated even if Tryndamere does not have any '''Fury'''.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "100",
-      "cooldownBurn": "12",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|100%|Fury}} as 100 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "levelingtext": "{{st|Bonus AD|{{as|{{ap|5 to 25}} AD}}|Bonus AD Per Missing Health|{{as|{{ap|0.15 to 0.35}} AD}}|Maximum Bonus AD|{{as|{{ap|5+0.15*100 to 25+0.35*100}} AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span></span></li><li><span class=\"blue\">Bonus AD Per Missing Health</span>: <span><span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\"></SpellSpan> AD</span></span></li><li><span class=\"blue\">Bonus AD Per Missing Health</span>: <span><span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\"></SpellSpan> AD</span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> AD</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -149,11 +147,11 @@
             ],
             "st_slices": [
               "Bonus AD",
-              "<span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "<span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\"></SpellSpan> AD</span>",
               "Bonus AD Per Missing Health",
-              "<span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "<span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\"></SpellSpan> AD</span>",
               "Maximum Bonus AD",
-              "<span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>"
+              "<span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> AD</span>"
             ]
           },
           "subeffects": [
@@ -170,7 +168,7 @@
                 "player_total_ad": 510152025
               },
               "title": "Bonus AD",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[5,10,15,20,25]\"></SpellSpan> AD</span>",
               "damage_type": "none"
             },
             {
@@ -186,7 +184,7 @@
                 "player_total_ad": 510152025
               },
               "title": "Bonus AD Per Missing Health",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[0.15,0.2,0.25,0.3,0.35]\"></SpellSpan> AD</span>",
               "damage_type": "none"
             },
             {
@@ -202,14 +200,14 @@
                 "player_total_ad": 510152025
               },
               "title": "Maximum Bonus AD",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> AD</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Minimum Heal|{{ap|30 to 70}} {{as|(+ 30% AP)}}|Heal Per Fury|{{ap|0.5 to 2.3}} {{as|(+ {{fd|1.2}}% AP)}}|Maximum Heal|{{ap|30+0.5*100 to 70+2.3*100}} {{as|(+ 150% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Heal Per Fury</span>: <span><SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Heal Per Fury</span>: <span><SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -249,11 +247,11 @@
             ],
             "st_slices": [
               "Minimum Heal",
-              "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Heal Per Fury",
-              "<SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
+              "<SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
               "Maximum Heal",
-              "<SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
+              "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
             ]
           },
           "subeffects": [
@@ -270,7 +268,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Minimum Heal",
-              "str": "<SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -286,7 +284,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Heal Per Fury",
-              "str": "<SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[0.5,0.95,1.4,1.85,2.3]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.2</span>% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -302,7 +300,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Maximum Heal",
-              "str": "<SpellSpan :list=\"[80,135,190,245,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -313,20 +311,8 @@
       "riotId": "TryndamereW",
       "name": "Mocking Shout",
       "maxrank": 5,
-      "cooldown": [
-        14,
-        14,
-        14,
-        14,
-        14
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cooldown": 14,
+      "cost": 0,
       "targeting": "Auto",
       "image": {
         "full": "TryndamereW.png",
@@ -341,15 +327,17 @@
         "{{sbc|Active:}} '''Tryndamere''' reduces the {{sti|{{as|attack damage}}}} of all nearby enemy {{tip|champion|champions}} for 4 seconds.",
         "Targets who have their backs turned to him are also {{tip|slow|slowed}} for the duration."
       ],
+      "leveling": [
+        "{{st|AD Reduction|{{as|{{ap|20|35|50|65|80}} AD}}}}",
+        "{{st|Slow|{{ap|30|37.5|45|52.5|60}}%}}"
+      ],
       "notes": "* ''Mocking Shout'' can be cast even if '''Tryndamere''' does not have {{tip|sight}} of targets.\n** This can be utilized to scout for nearby enemy champions that are not {{tip|sight|visible}} because of the [[fog of war]] and provides pseudo [[stealth]] detection of enemy champions.\n*''Mocking Shout'' very briefly {{tip|sight|reveals}} '''Tryndamere''' if he uses it while in the fog of war to enemies.\n* ''Mocking Shout'' cannot be cast without a valid target nearby.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "14",
       "effects": [
         {
           "levelingtext": "{{st|AD Reduction|{{as|{{ap|20|35|50|65|80}} AD}}}}",
-          "str": "<ul><li><span class=\"blue\">AD Reduction</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">AD Reduction</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> AD</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -369,7 +357,7 @@
             ],
             "st_slices": [
               "AD Reduction",
-              "<span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>"
+              "<span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> AD</span>"
             ]
           },
           "subeffects": [
@@ -386,14 +374,14 @@
                 "player_total_ad": 2035506580
               },
               "title": "AD Reduction",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> AD</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Slow|{{ap|30|37.5|45|52.5|60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -408,7 +396,7 @@
             ],
             "st_slices": [
               "Slow",
-              "<SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -424,7 +412,7 @@
                 ]
               },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[30,37.5,45,52.5,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[30,37.5,45,52.5,60]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -442,13 +430,7 @@
         9,
         8
       ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Location",
       "target_range": 660,
       "image": {
@@ -464,15 +446,16 @@
         "{{sbc|Active:}} '''Tryndamere''' {{tip|dashes}} to the target location, dealing {{as|physical damage}} to enemies in his path and gaining {{tip|fury|{{as|2 Fury}}}} per enemy hit.",
         "''Spinning Slash's'' {{sti|cooldown}} is reduced by 1 second whenever '''Tryndamere's''' basic attacks {{tip|critical strike|critically strike}} {{tip|on-hit}}, increased to 2 seconds against {{tip|champions}}."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|80 to 200}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "* {{si|Flash}} will interrupt the {{tip|dash}} but ''Spinning Slash'' will deal damage to enemies at the new location instantly.\n** Enemies already hit by ''Spinning Slash'' cannot be damaged more than once.\n* {{Pending for test}}: Cooldown reduction on {{tip|critical strike}} interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|80 to 200}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -495,7 +478,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -513,7 +496,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "physical"
             }
           ]
@@ -529,11 +512,7 @@
         100,
         90
       ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Auto",
       "image": {
         "full": "UndyingRage.png",
@@ -548,15 +527,16 @@
         "{{sbc|Active:}} '''Tryndamere''' instantly gains {{tip|fury|{{as|Fury}}}} and becomes [[Death#Ways_to_prevent_dying_by_not_losing_health|immune]] to {{tip|death}} for 5 seconds, during which his {{sti|{{as|health}}}} cannot fall below a certain amount.",
         "''Undying Rage can be used when affected by {{tip|crowd control}}.''"
       ],
+      "leveling": [
+        "{{st|Fury Gained|{{as|{{ap|50|75|100}}|Fury}}}}\n{{st|Minimum Health|{{ap|30|50|70}}}}"
+      ],
       "notes": "* Drain-type effects such as {{sti|life steal|link=true}} and {{sti|spell vamp|link=true}} are applied '''before''' the damage reduction of ''Undying Rage'' takes place. As such, these attacks will heal as if the full damage was dealt, despite being unable to bring '''Tryndamere''' below a minimal health amount.\n* '''Tryndamere''' will be reduced to 1 health from [[Kill#Execute|executing]] effects (e.g, {{ai|Death from Below|Pyke}}, {{ai|Fear Beyond Death|Urgot}}) despite ''Undying Rage''.\n** He does not ignore {{tip|raw damage|internal raw damage}}, which is a type of [[damage]] solely dealt by the {{tip|Nexus Obelisk}}.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "0",
-      "cooldownBurn": "110/100/90",
       "effects": [
         {
           "levelingtext": "{{st|Fury Gained|{{as|{{ap|50|75|100}}|Fury}}}}\n{{st|Minimum Health|{{ap|30|50|70}}}}",
-          "str": "<ul><li><span class=\"blue\">Fury Gained</span>: <span><span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Health</span>: <span><SpellSpan :list=\"[30,50,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Fury Gained</span>: <span><span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\"></SpellSpan></span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minimum Health</span>: <span><SpellSpan :list=\"[30,50,70]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -578,8 +558,10 @@
               }
             ],
             "st_slices": [
+              "Minimum Health",
+              "<SpellSpan :list=\"[30,50,70]\"></SpellSpan>",
               "Fury Gained",
-              "<span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>"
+              "<span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\"></SpellSpan></span>"
             ]
           },
           "subeffects": [
@@ -593,8 +575,22 @@
                 ],
                 "player_total_unknown": 5075100
               },
+              "title": "Minimum Health",
+              "str": "<SpellSpan :list=\"[30,50,70]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  50,
+                  70
+                ],
+                "player_total_unknown": 5075100
+              },
               "title": "Fury Gained",
-              "str": "<span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span>",
+              "str": "<span class=\"Fury\"><SpellSpan :list=\"[50,75,100]\"></SpellSpan></span>",
               "damage_type": "none"
             }
           ]

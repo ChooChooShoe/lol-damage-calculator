@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} Upon taking {{tip|death|fatal damage}}, '''Kog'Maw''' {{tip|Zombie state|remains active}} for 4 seconds, becoming unable to [[basic attack]], cast [[champion ability|abilities]], use [[summoner spell]]s or [[active ability items|activate items]] while being {{tip|invulnerability|invulnerable}}, {{tip|untargetable}}, and {{tip|cc-immune|immune to crowd control}} and gaining up to {{sti|ms|{{as|40% '''bonus''' movement speed}}}} over the duration. At the end of the duration he explodes, dealing {{as|{{passive progression/deprecated version|125 to 550}} {{sti|true damage}}}} to all nearby enemies."
       ],
+      "leveling": [],
       "notes": "* Upon {{tip|Death}}, '''Kog'Maw''' loses all {{tip|debuff|status effects}} (inherently including {{tip|crowd control}} effects) that do not inherently persist through death.\n** An example for a debuff that does persist through death is {{cai|Blaze|Brand}}.\n* {{tip|Resurrection}} will take precedence over ''Icathian Surprise''.\n* After ''Icathian Surprise'' ends, the corpse of '''Kog'Maw''' will retain [[unit collision]] for the duration of his death animation.\n* ''Icathian Surprise'' will still trigger if '''Kog'Maw''' is killed by the {{tip|Nexus Obelisk}}.\n* If '''Kog'Maw''' has an auto attack in the air at the same time that he's moving while he dies, as long as the auto hits the target after ''Icathian Surprise'' has started '''Kog'Maw''' will be able to auto once during ''Icathian Surprise''.\n* '''Kog'Maw's''' usable [[summoner spell]]s will go on 5 second cooldowns upon becoming a zombie.",
       "skillkey": "I",
       "skillid": "i1",
@@ -75,20 +76,8 @@
       "riotId": "KogMawQ",
       "name": "Caustic Spittle",
       "maxrank": 5,
-      "cooldown": [
-        8,
-        8,
-        8,
-        8,
-        8
-      ],
-      "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
+      "cooldown": 8,
+      "cost": 40,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 1130,
@@ -105,15 +94,17 @@
         "{{sbc|Passive:}} '''Kog'Maw''' gains {{sti|{{as|'''bonus''' attack speed}}}}.",
         "{{sbc|Active:}} '''Kog'Maw''' launches a corrosive ball of spit in the target direction, dealing {{as|magic damage}} to the first enemy it hits and reducing their {{sti|armor penetration|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} for 4 seconds."
       ],
+      "leveling": [
+        "{{st|Bonus Attack Speed|{{ap|15 to 35}}%}}",
+        "{{st|Magic Damage|{{ap|90 to 290}} {{as|(+ 70% AP)}}}}\n{{st|Resistances Reduction|{{ap|20 to 28}}%}}"
+      ],
       "notes": "* ''Caustic Spittle'' is always cast from the original casting position.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "40",
-      "cooldownBurn": "8",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -128,7 +119,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -144,14 +135,14 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|90 to 290}} {{as|(+ 70% AP)}}}}\n{{st|Resistances Reduction|{{ap|20 to 28}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[90,140,190,240,290]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Resistances Reduction</span>: <span><SpellSpan :list=\"[20,22,24,26,28]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[90,140,190,240,290]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Resistances Reduction</span>: <span><SpellSpan :list=\"[20,22,24,26,28]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -177,15 +168,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[90,140,190,240,290]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "Resistances Reduction",
-              "<SpellSpan :list=\"[20,22,24,26,28]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[20,22,24,26,28]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   90,
                   140,
                   190,
@@ -194,8 +187,24 @@
                 ],
                 "player_total_ap": 0.7000000000000001
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[90,140,190,240,290]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  22,
+                  24,
+                  26,
+                  28
+                ],
+                "player_total_ap": 0.7000000000000001
+              },
               "title": "Resistances Reduction",
-              "str": "<SpellSpan :list=\"[20,22,24,26,28]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[20,22,24,26,28]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -209,13 +218,7 @@
       "cooldown": [
         17
       ],
-      "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
+      "cost": 40,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -230,15 +233,16 @@
       "description": [
         "{{sbc|Active:}} For the next 8 seconds, '''Kog'Maw's''' [[basic attack]]s gain {{sti|range|'''bonus''' range}} and deal {{as|'''bonus''' magic damage}} [[On-hit effect|on-hit]] against non-{{tip|turrets|structures}}, capped at 100 against {{tip|minion|minions}} and {{tip|monster|monsters}}."
       ],
+      "leveling": [
+        "{{st|Bonus Range|{{ap|130 to 210}}}}\n{{st|Bonus Magic Damage|{{as|{{ap|3 to 6}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}}}"
+      ],
       "notes": "* No additional notes.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "40",
-      "cooldownBurn": "17",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Range|{{ap|130 to 210}}}}\n{{st|Bonus Magic Damage|{{as|{{ap|3 to 6}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[130,150,170,190,210]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -267,26 +271,43 @@
               }
             ],
             "st_slices": [
+              "Bonus Range",
+              "<SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan>",
               "Bonus Magic Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   130,
                   150,
                   170,
                   190,
                   210
                 ],
-                "player_total_ap": 11,
-                "target_total_ap": null
+                "player_total_ap": 11
+              },
+              "title": "Bonus Range",
+              "str": "<SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  3,
+                  3.75,
+                  4.5,
+                  5.25,
+                  6
+                ],
+                "player_total_ap": 11
               },
               "title": "Bonus Magic Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.75,4.5,5.25,6]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>",
               "damage_type": "magic"
             }
           ]
@@ -297,13 +318,7 @@
       "riotId": "KogMawVoidOoze",
       "name": "Void Ooze",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        12,
-        12,
-        12,
-        12
-      ],
+      "cooldown": 12,
       "cost": [
         80,
         90,
@@ -327,15 +342,16 @@
         "{{sbc|Active:}} '''Kog'Maw''' spews a ball of ooze in the target direction, dealing {{as|magic damage}} to enemies hit.",
         "The ooze lingers for 4 seconds, {{tip|slow|slowing}} all enemies within the area every {{fd|0.25}} seconds."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% AP)}}}}\n{{st|Slow|{{ap|20 to 52}}%}}"
+      ],
       "notes": "* ''Void Ooze'' is always cast from the original casting position.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "80/90/100/110/120",
-      "cooldownBurn": "12",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% AP)}}}}\n{{st|Slow|{{ap|20 to 52}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -361,15 +377,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "Slow",
-              "<SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   75,
                   120,
                   165,
@@ -378,8 +396,24 @@
                 ],
                 "player_total_ap": 0.5
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  28,
+                  36,
+                  44,
+                  52
+                ],
+                "player_total_ap": 0.5
+              },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[20,28,36,44,52]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -416,15 +450,17 @@
         "{{sbc|Active:}} '''Kog'Maw''' launches a ball of acid into the air that drops after {{fd|0.6}} seconds at the target location, dealing {{as|magic damage}}, increased by {{as|{{passive progression/deprecated version|type=target's '''missing''' health|11|key=%|0 to 50|key1=%|0 to 60|formula=0.833% per 1% of target's '''missing''' health. ''This is capped at 50% increase at 60% '''missing''' health.''}}|health}}, and {{tip|sight|revealing}} enemies hit for 2 seconds.",
         "''Living Artillery's'' damage is [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|doubled|cosmetic critical strike}} against enemies below {{as|{{sti|health|40% '''maximum''' health}}}}. Each subsequent ''Living Artillery'' within the next 8 seconds costs an additional {{sti|{{as|40 mana}}}}, capping at {{as|400|mana}} per cast."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|100 to 180}} {{as|(+ 65% '''bonus''' AD)}} {{as|(+ 35% AP)}}|Increased Magic Damage|{{ap|100*1.5 to 180*1.5}} {{as|(+ {{fd|97.5}}% '''bonus''' AD)}} {{as|(+ {{ap|35*1.5}}% AP)}}|Maximum Magic Damage|{{ap|100*2 to 180*2}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ {{ap|35*2}}% AP)}}}}"
+      ],
       "notes": "* On cast ''Living Artillery'' grants slight {{tip|sight}} of the target area.\n* ''Living Artillery'' will not reveal {{tip|stealth|stealthed}} champions.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "10/400/760",
-      "cooldownBurn": "2/1.5/1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{passive progression/deprecated version|type=casts|10|40 to 400|1 to 9;10+}} as 10/400/760 and riot's value 40,40,40 as 40",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|100 to 180}} {{as|(+ 65% '''bonus''' AD)}} {{as|(+ 35% AP)}}|Increased Magic Damage|{{ap|100*1.5 to 180*1.5}} {{as|(+ {{fd|97.5}}% '''bonus''' AD)}} {{as|(+ {{ap|35*1.5}}% AP)}}|Maximum Magic Damage|{{ap|100*2 to 180*2}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ {{ap|35*2}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Increased Magic Damage</span>: <span><SpellSpan :list=\"[150,210,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[200,280,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Increased Magic Damage</span>: <span><SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -473,11 +509,11 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
+              "<SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
               "Increased Magic Damage",
-              "<SpellSpan :list=\"[150,210,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "<SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span>",
               "Maximum Magic Damage",
-              "<SpellSpan :list=\"[200,280,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
+              "<SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -493,7 +529,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[100,140,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -508,7 +544,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Increased Magic Damage",
-              "str": "<SpellSpan :list=\"[150,210,270]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -521,7 +557,7 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Maximum Magic Damage",
-              "str": "<SpellSpan :list=\"[200,280,360]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span>",
               "damage_type": "magic"
             }
           ]

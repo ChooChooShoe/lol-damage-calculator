@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Lillia's''' [[champion ability|abilities]] apply ''Dream Dust'', dealing {{as|5% of the target's {{sti|'''maximum''' health}}}} as {{as|magic damage}} over 3 seconds, capped at {{passive progression/deprecated version|40 to 100}} damage against {{tip|monster|monsters}}."
       ],
+      "leveling": [],
       "notes": "* {{ais|Lilting Lullaby|Lillia}} application does not apply ''Dream Dust'', but its triggering damage does.\n* ''Dream Dust'' is applied even if the target takes no damage from an ability, e.g. by being {{tip|shield|shielded}} or {{tip|invulnerability|invulnerable}}, but not when the ability hit is prevented in the first place (e.g. {{tip|spell shield}}).",
       "skillkey": "I",
       "skillid": "i1",
@@ -82,13 +83,7 @@
         11,
         10
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": "{{tt|500|Range for center of AoE}} / {{tt|350|Maximum dash range}}",
@@ -105,15 +100,17 @@
         "{{sbc|Active:}} '''Lillia''' {{tip|dash|dashes}} to 150 units in front of the target area over {{tt|{{fd|0.759}} seconds|0.75 seconds, but rounded to the next game tick}}, though not through terrain, and deals {{as|magic damage}} in an area around the target spot. Enemies hit within the center are dealt [[File:Critical_magic_strike_icon.png|20px|link=]] {{tt|200% increased damage|Cosmetic critical strike}}.",
         "''Watch Out! Eep!'' deals 50% damage to {{tip|minions}}."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 30% AP)}}|Maximum Damage|{{ap|70*3 to 130*3}} {{as|(+ 90% AP)}}}}",
+        "{{st|Minion Damage|{{ap|35 to 65}} {{as|(+ 15% AP)}}|Maximum Minion Damage|{{ap|35*3 to 65*3}} {{as|(+ 45% AP)}}}}"
+      ],
       "notes": "* '''Lillia''' dashes to her target location over {{tt|{{fd|0.627}} to {{fd|0.759}} seconds|0.6 to 0.75 seconds, but rounded to the next game tick}}, but cannot move before the strike goes off at {{fd|0.759}} seconds, regardless.\n* '''Lillia''' can hop over the edges of certain walls despite the ability being unable to traverse terrain.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "50",
-      "cooldownBurn": "14/13/12/11/10",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 130}} {{as|(+ 30% AP)}}|Maximum Damage|{{ap|70*3 to 130*3}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,85,100,115,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[210,255,300,345,390]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[210,255,300,345,390]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -143,9 +140,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[70,85,100,115,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Maximum Damage",
-              "<SpellSpan :list=\"[210,255,300,345,390]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[210,255,300,345,390]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -162,7 +159,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[70,85,100,115,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -178,14 +175,14 @@
                 "player_total_ap": 0.3
               },
               "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[210,255,300,345,390]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[210,255,300,345,390]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Minion Damage|{{ap|35 to 65}} {{as|(+ 15% AP)}}|Maximum Minion Damage|{{ap|35*3 to 65*3}} {{as|(+ 45% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Maximum Minion Damage</span>: <span><SpellSpan :list=\"[105,127.5,150,172.5,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[35,42.5,50,57.5,65]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span></span></li><li><span class=\"blue\">Maximum Minion Damage</span>: <span><SpellSpan :list=\"[105,127.5,150,172.5,195]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -215,9 +212,9 @@
             ],
             "st_slices": [
               "Minion Damage",
-              "<SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
+              "<SpellSpan :list=\"[35,42.5,50,57.5,65]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
               "Maximum Minion Damage",
-              "<SpellSpan :list=\"[105,127.5,150,172.5,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
+              "<SpellSpan :list=\"[105,127.5,150,172.5,195]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
             ]
           },
           "subeffects": [
@@ -234,7 +231,7 @@
                 "player_total_ap": 0.15
               },
               "title": "Minion Damage",
-              "str": "<SpellSpan :list=\"[35,42.5,50,57.5,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
+              "str": "<SpellSpan :list=\"[35,42.5,50,57.5,65]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -250,7 +247,7 @@
                 "player_total_ap": 0.15
               },
               "title": "Maximum Minion Damage",
-              "str": "<SpellSpan :list=\"[105,127.5,150,172.5,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "str": "<SpellSpan :list=\"[105,127.5,150,172.5,195]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -261,20 +258,8 @@
       "riotId": "LilliaE",
       "name": "Swirlseed",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        12,
-        12,
-        12,
-        12
-      ],
-      "cost": [
-        70,
-        70,
-        70,
-        70,
-        70
-      ],
+      "cooldown": 12,
+      "cost": 70,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": "{{tt|700|Lob range}} / {{tt|Global|Roll range}}",
@@ -291,15 +276,16 @@
         "{{sbc|Active:}} '''Lillia''' lobs a seed at the target area that rolls forward indefinitely. The seed detonates upon colliding with an enemy or terrain upon landing or while rolling, dealing {{as|magic damage}} to enemies in a cone, {{tip|slow|slowing}} them for 3 seconds and {{tip|sight|revealing}} them for 2 seconds.",
         "''Swirlseed'' will cast at max range if cast beyond that. The spot at which the seed will last collide with terrain is highlighted to '''Lillia''' while it is rolling."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 150}} {{as|(+ 40% AP)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}"
+      ],
       "notes": "* ''Swirlseed's'' origin is determined from '''Lillia's''' position at the start of cast, the rolling direction is determined from '''Lillia's''' position at the end of cast (when the projectile is created, not when the seed starts rolling).\n* {{tip|Spell shield}} does not prevent the seed from detonating thus striking nearby targets.\n* {{tip|Projectile|Projectile destroying effects}} will still make the rolling seed detonate upon colliding with them, but not when the initial arcing missile is destroyed.\n** If {{cai|Unbreakable|Braum}} blocks the initial projectile, it is destroyed and deals 0 damage to him, as well as not triggering the cone-shaped area of effect.\n[[File: Swirlseed collision indicator.png|175px|thumb|left|Collision indicator]]",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "70",
-      "cooldownBurn": "12",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 150}} {{as|(+ 40% AP)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,90,110,130,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,90,110,130,150]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -325,15 +311,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[70,90,110,130,150]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Slow",
-              "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   70,
                   90,
                   110,
@@ -342,8 +330,24 @@
                 ],
                 "player_total_ap": 0.4
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[70,90,110,130,150]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ],
+                "player_total_ap": 0.4
+              },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[25,30,35,40,45]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -359,11 +363,7 @@
         110,
         90
       ],
-      "cost": [
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -379,15 +379,17 @@
         "{{sbc|Active:}} '''Lillia''' casts a magical lullaby over all targetable enemy {{tip|champions}} affected by {{ai|Dream-Laden Bough|Lillia|Dream Dust}}, rendering them {{tip|drowsy}} for {{fd|1.5}} seconds, which {{tip|slows}} them by 25% to 50% (increasing over the duration), after which they fall {{tip|asleep}} for a few seconds.",
         "The next non-{{tip|persistent damage|persistent}} non-{{tip|minion}} damage taken by the {{tip|sleep|sleeping}} targets consumes the debuff to deal additional {{as|magic damage}}."
       ],
+      "leveling": [
+        "{{st|Sleep Duration|{{ap|2 to 3}}}}",
+        "{{st|Magic Damage|{{ap|100 to 200}} {{as|(+ 30% AP)}}}}"
+      ],
       "notes": "* The {{tip|sleep}} debuff is named ''Shhh.. They're Asleep''.\n* '''Lillia''' can move during ''Lilting Lullaby's'' cast time.\n* The additional {{as|magic damage}} dealt is accredited to '''Lillia''' and benefits from her {{sti|{{as|magic penetration}}}}.\n* ''Lilting Lullaby'' does not apply to targets that become invalid (whether by becoming {{tip|untargetable}} or {{tip|death|dying}}) during the cast time or while the projectile is traveling (which takes approximately {{fd|0.3}} seconds to reach the target). There is no compensation if none of the intended targets were affected by the ability.\n* ''Lilting Lullaby's'' application does not trigger aggro from {{tip|turret|turrets}}, only its triggering damage does.\n** {{ai|Dream-Laden Bough|Lillia|Dream Dust's}} persistent damage will still cause '''Lillia''' to trigger turret aggro, unless she casts ''Lilting Lullaby'' right before it runs out.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "50",
-      "cooldownBurn": "130/110/90",
       "effects": [
         {
           "levelingtext": "{{st|Sleep Duration|{{ap|2 to 3}}}}",
-          "str": "<ul><li><span class=\"blue\">Sleep Duration</span>: <span><SpellSpan :list=\"[2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Sleep Duration</span>: <span><SpellSpan :list=\"[2,2.5,3]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -400,7 +402,7 @@
             ],
             "st_slices": [
               "Sleep Duration",
-              "<SpellSpan :list=\"[2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[2,2.5,3]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -414,14 +416,14 @@
                 ]
               },
               "title": "Sleep Duration",
-              "str": "<SpellSpan :list=\"[2,2.5,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[2,2.5,3]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|100 to 200}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,150,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,150,200]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -439,7 +441,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[100,150,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[100,150,200]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -454,7 +456,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[100,150,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[100,150,200]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             }
           ]

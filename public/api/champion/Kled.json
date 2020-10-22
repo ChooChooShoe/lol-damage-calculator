@@ -70,6 +70,7 @@
         "While at the allied [[Spawn|fountain]], 25 {{as|Courage|buzzword}} is generated every {{fd|0.25}} seconds. {{si|Recall|Recalling}} fully restores '''Skaarl's''' {{as|Courage|buzzword}} and health. If reuniting outside of base, '''Skaarl''' gets ''Frayed Nerves'', which prevents him from gaining {{as|Courage|buzzword}} for 30 seconds.",
         "The current status of '''Kled's''' own health is preserved between subsequent dismounts. While mounted, {{tip|heal|healing}} will first affect '''Skaarl's''' health and will only restore '''Kled's''' health while '''Skaarl''' is at ''full'' health."
       ],
+      "leveling": [],
       "notes": "* [[Decoy]]s are counted as champions for all of this ability's effects, other than the takedown one.\n* '''Kled's''' {{as|health}} is rounded up while '''Skaarl's''' is rounded down.\n* {{ii|Gargoyle Stoneplate}} can increase '''Kled's''' {{as|'''base''' health}}.\n* It is possible to get the {{as|Courage|buzzword}} from base but have '''Kled''' and '''Skaarl''' reunite out of base.\n* It is possible for the [[Nexus Obelisk]] to not be able to bring '''Kled''' down from '''Skaarl''' for a few seconds, even if '''Skaarl''' has no health.\n* {{Pending for test}} {{ai|Wild Growth|Lulu}} and {{ii|Elixir of Iron}}",
       "skillkey": "I",
       "skillid": "i1",
@@ -79,20 +80,8 @@
       "riotId": "KledQ",
       "name": "Pocket Pistol",
       "maxrank": 5,
-      "cooldown": [
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "cost": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
+      "cooldown": 3,
+      "cost": 1,
       "costtype": "Charge",
       "targeting": "Direction",
       "image": {
@@ -109,15 +98,18 @@
         "{{sbc|Active:}} '''Kled''' sprays a cone of five ''pellets'' in the target direction, dealing {{as|physical damage}} while {{tip|dash|recoiling}} 250 units in the opposite direction.",
         "''Pellets'' collide into the first enemy champion they hit, and deal 20% damage per pellet beyond the first. Each ''pellet'' that hits an enemy champion or epic monster restores {{ai|Skaarl the Cowardly Lizard 3|Kled|Courage}}, by 5 and {{fd|2.5}} respectively."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|35 to 95}} {{as|(+ 80% '''bonus''' AD)}}|Maximum Damage|{{ap|35*1.8 to 95*1.8}} {{as|(+ 144% '''bonus''' AD)}}}}"
+      ],
       "notes": "* The backwards dash from ''Pocket Pistol'' can pass terrain.\n* ''Pocket Pistol'' can be cast while {{tip|ground|grounded}} or {{tip|root|rooted}} but '''Kled''' will not {{tip|dash}} backwards.\n* ''Pocket Pistol'' will cast from wherever '''Kled''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "1",
-      "cooldownBurn": "3",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  1 as 1 and riot's value 0,0,0,0,0 as 0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '3' as '3' and riot's value '11,10,9,8,7' as '11/10/9/8/7'",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|35 to 95}} {{as|(+ 80% '''bonus''' AD)}}|Maximum Damage|{{ap|35*1.8 to 95*1.8}} {{as|(+ 144% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[63,90,117,144,171]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 144% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[63,90,117,144,171]\"></SpellSpan> <span class=\"ad\">(+ 144% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -147,9 +139,9 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
               "Maximum Damage",
-              "<SpellSpan :list=\"[63,90,117,144,171]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 144% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[63,90,117,144,171]\"></SpellSpan> <span class=\"ad\">(+ 144% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -166,7 +158,7 @@
                 "player_bonus_ad": 0.8
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -182,7 +174,7 @@
                 "player_bonus_ad": 0.8
               },
               "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[63,90,117,144,171]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 144% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[63,90,117,144,171]\"></SpellSpan> <span class=\"ad\">(+ 144% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -200,13 +192,7 @@
         9.5,
         8
       ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Passive",
       "image": {
         "full": "KledW.png",
@@ -221,15 +207,16 @@
         "{{sbc|Passive:}} '''Kled''' periodically enters a frenzy that grants him {{sti|attack speed|{{as|150% '''bonus''' attack speed}}}} on his next 4 basic attacks within 4 seconds after the first, with the final attack dealing {{as|'''bonus''' physical damage}}, capped against {{tip|monster|monsters}}.",
         "''{{tip|Turrets}} are only affected by the base damage.''"
       ],
+      "leveling": [
+        "{{st|Bonus Physical Damage|{{ap|20 to 60}} {{as|(+ {{ap|4.5 to 6.5}}% {{as|(+ 5% per 100 '''bonus''' AD)}} of target's '''maximum''' health)}}|Maximum Damage Against Monsters|{{ap|220 to 260}}}}"
+      ],
       "notes": "* The bonus damage applies {{sti|life steal|link=true}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "14/12.5/11/9.5/8",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Physical Damage|{{ap|20 to 60}} {{as|(+ {{ap|4.5 to 6.5}}% {{as|(+ 5% per 100 '''bonus''' AD)}} of target's '''maximum''' health)}}|Maximum Damage Against Monsters|{{ap|220 to 260}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage Against Monsters</span>: <span><SpellSpan :list=\"[220,230,240,250,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage Against Monsters</span>: <span><SpellSpan :list=\"[220,230,240,250,260]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -266,9 +253,9 @@
             ],
             "st_slices": [
               "Bonus Physical Damage",
-              "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 '''bonus''' AD)</span> of target's '''maximum''' health)</span>",
+              "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 '''bonus''' AD)</span> of target's '''maximum''' health)</span>",
               "Maximum Damage Against Monsters",
-              "<SpellSpan :list=\"[220,230,240,250,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[220,230,240,250,260]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -285,7 +272,7 @@
                 "player_bonus_ad": 51
               },
               "title": "Bonus Physical Damage",
-              "str": "<SpellSpan :list=\"[20,30,40,50,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 '''bonus''' AD)</span> of target's '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 '''bonus''' AD)</span> of target's '''maximum''' health)</span>",
               "damage_type": "physical"
             },
             {
@@ -301,7 +288,7 @@
                 "player_bonus_ad": 51
               },
               "title": "Maximum Damage Against Monsters",
-              "str": "<SpellSpan :list=\"[220,230,240,250,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[220,230,240,250,260]\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
@@ -312,20 +299,8 @@
       "riotId": "KledE",
       "name": "Unmounted Jousting",
       "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cooldown": 0,
+      "cost": 0,
       "targeting": "N/A",
       "image": {
         "full": "KledE.png",
@@ -339,11 +314,11 @@
       "description": [
         "This ability is unusable while {{ai|Dismounted Skaarl the Cowardly Lizard|Kled|unmounted}}."
       ],
+      "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '14,13,12,11,10' as '14/13/12/11/10'",
       "effects": []
     }
   }

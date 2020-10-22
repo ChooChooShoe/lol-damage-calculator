@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} After using an ability, '''Lee Sin's''' next 2 [[basic attack]]s within 3 seconds gain {{sti|attack speed|{{as|40% '''bonus''' attack speed}}}}, returning {{sti|energy|{{as|{{passive progression/deprecated version|3|20 to 40|1 to 13}} energy}}}} on the first attack and {{ft|half of that|{{sti|energy|{{as|{{passive progression/deprecated version|3|10 to 20|1 to 13}} energy}}}}}} on the second."
       ],
+      "leveling": [],
       "notes": "* ''Flurry'' will still restore energy even if the attacks are {{tip|dodge|dodged}}, {{tip|block|blocked}}, or {{tip|blind|missed}}.",
       "skillkey": "I",
       "skillid": "i1",
@@ -80,11 +81,7 @@
         85,
         60
       ],
-      "cost": [
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Unit",
       "target_range": 375,
       "image": {
@@ -100,15 +97,17 @@
         "{{sbc|Active:}} '''Lee Sin''' {{tip|root|roots}} the target enemy champion during the cast time after which he roundhouse kicks them, dealing {{as|physical damage}} and {{tip|airborne|knocking them back}} 1200 units over 1 second.",
         "Enemies that collide with the displaced enemy receive {{as|'''bonus''' physical damage}} and are {{tip|airborne|knocked up}} for 1 second."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}}}}",
+        "{{st|Collision Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}} {{as|(+ {{ap|12 to 18}}% of kicked target's '''bonus''' health)}}}}"
+      ],
       "notes": "* Applies {{tip|spell damage}} to the primary target and {{tip|area damage}} to secondary targets.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Lee Sin's''' position.\n* If the target of ''Dragon Rage'' {{tip|death|dies}} initially on the first hit there will be no displacement of any kind.\n* The {{tip|airborne|displacement's}} direction is decided at the moment of impact and not by '''Lee Sin''' and his target's relative locations on-cast (the only way for '''Lee Sin''' to control where his target is displaced is by using {{si|Flash}} before the cast time of ''Dragon's Rage'' ends).\n** The collision damage buff of the target remains for the normal duration even if its trajectory is {{tip|airborne|displaced}} by another source (i.e - {{ai|Headbutt|Alistar}}).\n* The ability will only go on {{sti|cooldown}} after performing the kick.\n** Because of this, if {{ri|Electrocute}} triggers from the {{tip|root}} and [[kill|kills]] the enemy, the ability will not go on cooldown.\n** If the target becomes {{tip|untargetable}}, leaves {{tip|sight}}, or dies before the cast time completes, ''Dragon's Rage'' cancels but does not go on cooldown.\n* If the {{tip|airborne|knock back}} ends normally and is not interrupted early, the target may still knock other enemies for a brief period after they reach their destination.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "0",
-      "cooldownBurn": "110/85/60",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -126,7 +125,7 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -141,14 +140,14 @@
                 "player_bonus_ad": 2
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Collision Damage|{{ap|175 to 625}} {{as|(+ 200% '''bonus''' AD)}} {{as|(+ {{ap|12 to 18}}% of kicked target's '''bonus''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Collision Damage</span>: <span><SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of kicked target's <b>bonus</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Collision Damage</span>: <span><SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\"></SpellSpan>% of kicked target's <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -174,7 +173,7 @@
             ],
             "st_slices": [
               "Collision Damage",
-              "<SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of kicked target's '''bonus''' health)</span>"
+              "<SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\"></SpellSpan>% of kicked target's '''bonus''' health)</span>"
             ]
           },
           "subeffects": [
@@ -190,7 +189,7 @@
                 "target_bonus_hp": 1215.18
               },
               "title": "Collision Damage",
-              "str": "<SpellSpan :list=\"[175,400,625]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of kicked target's '''bonus''' health)</span>",
+              "str": "<SpellSpan :list=\"[175,400,625]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[12,15,18]\"></SpellSpan>% of kicked target's '''bonus''' health)</span>",
               "damage_type": "unknown"
             }
           ]

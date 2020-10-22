@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} '''Amumu's''' [[basic attack]]s and {{ai|Curse of the Sad Mummy|Amumu}} apply a {{as|Curse|buzzword}} for 3 seconds, refreshing on subsequent applications and {{ai|Despair|Amumu}}.",
         "{{as|Cursed|buzzword}} targets receive {{tip|true damage|{{as|10% '''bonus''' true damage}}}} from all incoming {{tt|pre-mitigation|Damage calculated before modifiers}} {{as|magic damage}}."
       ],
+      "leveling": [],
       "notes": "* If the triggering basic attack from '''Amumu''' applies {{tip|on-hit}} {{as|magic damage}}, the {{as|Curse|buzzword}} will be applied before the {{as|magic damage}}.\n* The {{as|Curse|buzzword}} application from {{ai|Curse of the Sad Mummy|Amumu}} applies after the {{as|magic damage}}.\n* Neutral units / enemies affected by the ''Curse'' can receive bonus damage from the opposing team of '''Amumu''' / neutral units, but the damage will be credited to '''Amumu'''.\n* The application of the {{as|Curse|buzzword}} on {{ai|Curse of the Sad Mummy|Amumu}} is negated if the ability is blocked by a {{tip|spell shield}}.",
       "skillkey": "I",
       "skillid": "i1",
@@ -106,15 +107,16 @@
         "{{sbc|Active:}} '''Amumu''' tosses a bandage in the target direction that {{tip|stun|stuns}} the first enemy it hits for 1 second, dealing {{as|magic damage}} and {{tip|dash|pulling}} him to them.",
         "'' '''Amumu''' follows his target for up to 2000 units from the cast position.''"
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}"
+      ],
       "notes": "* ''Bandage Toss'' will always be directed towards the target's location even if '''Amumu''' moves while it is in flight.\n* {{tip|Immobilize|Immobilizing}} effects will not prevent '''Amumu''' from commencing the {{tip|dash}}.\n* ''Bandage Toss'' does not fizzle on '''Amumu's''' {{tip|death}}, and can still stun and damage enemies.\n* '''Amumu''' is still able to {{tip|dash}} even if ''Bandage Toss'' is blocked by {{tip|spell shield}}.\n* '''Amumu''' will be ordered to [[basic attack]] the target at the end of the dash.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 280}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,7 +136,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -151,7 +153,7 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,130,180,230,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -162,20 +164,8 @@
       "riotId": "AuraofDespair",
       "name": "Despair",
       "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "cost": [
-        8,
-        8,
-        8,
-        8,
-        8
-      ],
+      "cooldown": 0,
+      "cost": 8,
       "costtype": "mana per second",
       "targeting": "Auto",
       "image": {
@@ -190,15 +180,17 @@
       "description": [
         "{{sbc|Toggle:}} '''Amumu''' cries a continuous pool of tears, dealing {{as|magic damage}} every {{fd|0.5}} seconds to nearby enemies."
       ],
+      "leveling": [
+        "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
+      ],
       "notes": "* Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n* Despite the rounding in ''Despair's'' tooltip, it will deal increased damage for every point of {{tt|ability power|+0.005% per 1 AP}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "8",
-      "cooldownBurn": "0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '1,1,1,1,1' as '1'",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Half Second|{{ap|5 to 15}} {{as|(+ {{ap|0.5 to 1}}% {{as|(+ {{fd|0.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -228,7 +220,7 @@
             ],
             "st_slices": [
               "Magic Damage Per Half Second",
-              "<SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
+              "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -246,7 +238,7 @@
                 "target_total_ap": null
               },
               "title": "Magic Damage Per Half Second",
-              "str": "<SpellSpan :list=\"[5,7.5,10,12.5,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>",
+              "str": "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[0.5,0.625,0.75,0.875,1]\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>",
               "damage_type": "magic"
             }
           ]
@@ -264,13 +256,7 @@
         7,
         6
       ],
-      "cost": [
-        35,
-        35,
-        35,
-        35,
-        35
-      ],
+      "cost": 35,
       "costtype": "mana",
       "targeting": "Auto",
       "image": {
@@ -287,15 +273,17 @@
         "{{sbc|Active:}} '''Amumu''' releases his anger, dealing {{as|magic damage}} to nearby enemies.",
         "''Tantrum's'' {{sti|cooldown}} is reduced by {{fd|0.5}} seconds every time '''Amumu''' is hit by a basic attack."
       ],
+      "leveling": [
+        "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% '''bonus''' magic resistance)}}}}",
+        "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 50% AP)}}}}"
+      ],
       "notes": "* A {{tip|basic attack}}'s {{tip|basic damage}} and each [[on-hit]] effect are all separate damage instances, and may be reduced each if they deal {{as|physical damage}}.\n* {{tip|Turret}} attacks count as basic attacks.\n* ''Tantrum's'' cooldown reduction will trigger multiple times for effects such as {{ai|Double Strike|Master Yi}}.\n** {{Pending for test}}: The cooldown is not reduced if the attack is {{tip|dodged}}, {{tip|blocked}}, or missed if '''Amumu''' is {{tip|blind|blinded}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "35",
-      "cooldownBurn": "10/9/8/7/6",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage Reduction|{{ap|2 to 10}} {{as|(+ 3% '''bonus''' armor)}} {{as|(+ 3% '''bonus''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage Reduction</span>: <span><SpellSpan :list=\"[2,4,6,8,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 3% <b>bonus</b> armor)</span> <span class=\"magic-resist\">(+ 3% <b>bonus</b> magic resistance)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Reduction</span>: <span><SpellSpan :list=\"[2,4,6,8,10]\"></SpellSpan> <span class=\"armor\">(+ 3% <b>bonus</b> armor)</span> <span class=\"magic-resist\">(+ 3% <b>bonus</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -318,7 +306,7 @@
             ],
             "st_slices": [
               "Physical Damage Reduction",
-              "<SpellSpan :list=\"[2,4,6,8,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>"
+              "<SpellSpan :list=\"[2,4,6,8,10]\"></SpellSpan> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>"
             ]
           },
           "subeffects": [
@@ -336,14 +324,14 @@
                 "player_bonus_mr": 0.03
               },
               "title": "Physical Damage Reduction",
-              "str": "<SpellSpan :list=\"[2,4,6,8,10]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>",
+              "str": "<SpellSpan :list=\"[2,4,6,8,10]\"></SpellSpan> <span class=\"armor\">(+ 3% '''bonus''' armor)</span> <span class=\"magic-resist\">(+ 3% '''bonus''' magic resistance)</span>",
               "damage_type": "physical"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -363,7 +351,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[75,100,125,150,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -380,7 +368,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[75,100,125,150,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -415,15 +403,16 @@
       "description": [
         "{{sbc|Active:}} '''Amumu''' entangles surrounding enemy units in bandages, {{tip|knockdown|knocking them down}}, {{tip|root|rooting}} and {{tip|disarm|disarming}} them for 2 seconds, while also dealing them {{as|magic damage}}."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "* ''Curse of the Sad Mummy'' will cast from wherever '''Amumu''' is at the end of the cast time.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100/150/200",
-      "cooldownBurn": "150/125/100",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -441,7 +430,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -456,7 +445,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]

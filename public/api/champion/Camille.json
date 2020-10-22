@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} Periodically, '''Camille's''' next [[basic attack]] against enemy champions is enhanced to {{tip|shield}} her for {{sti|{{as|20% of her '''maximum''' health}}}} for 2 seconds from either exclusively {{tip|physical damage|{{as|physical damage}}}} or {{tip|magic damage|{{as|magic damage}}}}, based on which type the target has previously dealt most of against champions as well as on '''Camille's''' '''current''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}}."
       ],
+      "leveling": [],
       "notes": "* The shield-typing is determined based on the '''total''' damage the target has dealt to champions that game (as a percentage) versus '''Camille's''' '''current''' {{sti|{{as|armor}}}} and {{sti|{{as|magic resistance}}}}.\n** For example, with little '''bonus''' resistances '''Camille''' would likely gain the most obvious shield-typing - i.e. [[Shield#Physical shields|physical shield]] versus champions primarily dealing {{as|physical damage}} and [[Shield#Magic shields|magic shield]] versus champions primarily dealing {{as|magic damage}}. However, if she has a sufficient amount of {{as|armor}} against a champion dealing both alternates of {{as|physical damage}} and {{as|magic damage}}, she will receive a magic shield as the {{as|physical damage}} threat is already being mitigated by her {{as|armor}}, and vice versa.\n* The type of shield that will be granted to '''Camille''' when she attacks any one enemy champion is shown as an icon beneath their [[health bar]]: {{as|orange|physical damage}} for physical shield and {{as|blue|magic damage}} for magic shield.",
       "skillkey": "I",
       "skillid": "i1",
@@ -106,15 +107,17 @@
         "Non-epic monsters take 50% damage from ''Tactical Sweep''.",
         "''Other abilities can be cast during the animation without cancelling it.''"
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|70 to 190}} {{as|(+ 60% '''bonus''' AD)}}|Non-Epic Monster Damage|{{ap|70/2 to 190/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
+        "{{st|Outer Cone Bonus Damage|{{as|{{ap|6 to 8}}% {{as|(+ {{fd|3.{{recurring|3}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Bonus Non-Epic Monster Damage|{{as|{{ap|6/2 to 8/2}}% {{as|(+ {{fd|1.{{recurring|6}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}"
+      ],
       "notes": "* '''Camille''' can move during the delay, but the hitbox and '''Camille's''' model are fixed to the initial target direction.\n** '''Camille's''' facing-direction, for effects such as {{ai|Petrifying Gaze|Cassiopeia}}, is the direction she is moving, and not the direction the model is facing.\n* The 50% damage reduction against non-epic monsters applies after the cap. Because of this the actual cap against non-epic monsters is 150 damage.\n* Using the active of {{ii|Tiamat}} / {{ii|Ravenous Hydra}} will cancel the animation, but the sweep will still strike and '''Camille''' is still unable to basic attack.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "15/13.5/12/10.5/9",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|70 to 190}} {{as|(+ 60% '''bonus''' AD)}}|Non-Epic Monster Damage|{{ap|70/2 to 190/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Non-Epic Monster Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Non-Epic Monster Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -144,9 +147,9 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
               "Non-Epic Monster Damage",
-              "<SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
+              "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -163,7 +166,7 @@
                 "player_bonus_ad": 0.6
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -179,14 +182,14 @@
                 "player_bonus_ad": 0.6
               },
               "title": "Non-Epic Monster Damage",
-              "str": "<SpellSpan :list=\"[35,50,65,80,95]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
+              "str": "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Outer Cone Bonus Damage|{{as|{{ap|6 to 8}}% {{as|(+ {{fd|3.{{recurring|3}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Bonus Non-Epic Monster Damage|{{as|{{ap|6/2 to 8/2}}% {{as|(+ {{fd|1.{{recurring|6}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}",
-          "str": "<ul><li><span class=\"blue\">Outer Cone Bonus Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Bonus Non-Epic Monster Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Outer Cone Bonus Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Bonus Non-Epic Monster Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -222,9 +225,9 @@
             ],
             "st_slices": [
               "Outer Cone Bonus Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
+              "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
               "Bonus Non-Epic Monster Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
             ]
           },
           "subeffects": [
@@ -241,7 +244,7 @@
                 "player_bonus_ap": 0.01661
               },
               "title": "Outer Cone Bonus Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
               "damage_type": "unknown"
             },
             {
@@ -257,7 +260,7 @@
                 "player_bonus_ap": 0.01661
               },
               "title": "Bonus Non-Epic Monster Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
               "damage_type": "unknown"
             }
           ]
@@ -273,11 +276,7 @@
         115,
         90
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": 475,
@@ -296,15 +295,17 @@
         "The target cannot escape the zone through any means. While within the zone, '''Camille's''' basic attacks deal {{as|'''bonus''' magic damage}}.",
         "''The Hextech Ultimatum'' ends automatically within 1 second if '''Camille''' leaves the area or dies."
       ],
+      "leveling": [
+        "{{st|Zone Duration|{{ap|2.5|3.25|4}}}}",
+        "{{st|Bonus Magic Damage|{{ap|5|10|15}} {{as|(+ {{ap|4|6|8}}% of target's '''current''' health)}}}}"
+      ],
       "notes": "* The {{tip|disrupt}} is 'wrapped' into a status effect that says the target is {{tip|Silence|Silenced}} for {{fd|0.4}} seconds, but it does not actually ''silence''. It however makes sure that the ''disrupt'' is prevented by {{tip|Cc-immune|immunity to silences}}.\n* '''Camille''' will attempt to basic attack the target upon landing.\n* The ability will cancel and go on {{sti|cooldown}} and expend {{sti|{{as|mana}}}} if the target {{tip|death|dies}} or becomes {{tip|untargetable}} during the dash.\n* '''Camille''' will follow targets that change locations (e.g. {{tip|airborne|displacements}}, {{tip|blink|blinks}}, {{tip|dash|dashes}}) but not those that exceed the range limit, in which case ''The Hextech Ultimatum'' is cancelled and goes on {{sti|cooldown}} and expends {{sti|{{as|mana}}}}.\n* {{tip|Airborne|Knockaway}} speed is 1000.\n* If the target manages to be outside of the boundaries, they will immediately be pulled back towards the center of the hexagon.\n* The boundaries are not considered terrain ({{ai|Unstoppable Onslaught|Sion}} exception), and enemies that try to move out of the area will be displaced back inside.\n** {{tip|Dash|Dashes}}, {{tip|blink|blinks}}, {{tip|airborne|displacements}}, and other forms of movement will cap their effect range to the boundary. Targets will stop at the boundary even after it expired.\n** {{cai|Chronobreak|Ekko}} will still deal damage at the hologram's location.\n** An active {{ai|Assault and Battery|Vi}} on a target outside the perimeter will cause {{ci|Vi}} to continue her charge until ''The Hextech Ultimatum'' ends. She can knockback and damage secondary targets multiple times.\n** If the target {{tip|attached|attaches}} to a unit, they will only be displaced back inside once they detach. ''The Hextech Ultimatum'' does not end nor break the bind to the victim. \n*** {{cai|Umbral Trespass|Kayn}} allows him to cast it even if his target is outside the area, dashing through the borders and attaching despite being unable to escape.\n*** {{cai|You and Me!|Yuumi}} allows her to bypass the borders if the unit she attaches to leaves the area.\n*** {{cai|The Show Stopper|Sett}} does not allow him to pass through the borders and the dash will end prematurely when he encounters them.\n**** If the target of {{ai|The Show Stopper|Sett}} is also the target of ''The Hextech Ultimatum'', they can go through the borders while attached to him.\n* If '''Camille''' enters {{tip|resurrection}} during the initial cast, the {{tip|dash}} is stopped and the zone is formed immediately.\n** ''The Hextech Ultimatum'' ends if the target enters ''resurrection'', but not if '''Camille''' does.\n* ''The Hextech Ultimatum'' ends immediately if the target is dragged by {{ai|Fear Beyond Death 2|Urgot|Fear Beyond Death}} or eaten by {{ai|Devour|Tahm Kench}}.\n* The following table refers for interactions while '''Camille''' is dashing.\n{{ct|attack=false|cast=false|move=false|items=false|consume=false|spells=false|interrupts=death}}",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "140/115/90",
       "effects": [
         {
           "levelingtext": "{{st|Zone Duration|{{ap|2.5|3.25|4}}}}",
-          "str": "<ul><li><span class=\"blue\">Zone Duration</span>: <span><SpellSpan :list=\"[2.5,3.25,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Zone Duration</span>: <span><SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -317,7 +318,7 @@
             ],
             "st_slices": [
               "Zone Duration",
-              "<SpellSpan :list=\"[2.5,3.25,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -331,14 +332,14 @@
                 ]
               },
               "title": "Zone Duration",
-              "str": "<SpellSpan :list=\"[2.5,3.25,4]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|5|10|15}} {{as|(+ {{ap|4|6|8}}% of target's '''current''' health)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[5,10,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>current</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -361,7 +362,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<SpellSpan :list=\"[5,10,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''current''' health)</span>"
+              "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
@@ -376,7 +377,7 @@
                 "target_current_hp": 4.68
               },
               "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[5,10,15]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''current''' health)</span>",
+              "str": "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>",
               "damage_type": "magic"
             }
           ]

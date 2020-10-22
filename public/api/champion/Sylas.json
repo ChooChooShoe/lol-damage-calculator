@@ -69,6 +69,7 @@
         "Damage to secondary targets executes {{tip|minion|minions}} {{as|'''below''' 25 health}}.",
         "''The empowered attack applies [[on-hit effect]]s to the primary target but disables '''Sylas' '''{{tip|critical strike|critical strikes'}} '''bonus''' damage. [[Spell effects]] only apply when there are secondary targets.''{{bug}}"
       ],
+      "leveling": [],
       "notes": "* {{ii|Sheen|Spellblade}} damage will get converted to magic damage but will deal its damage only to the primary target.\n* Hitting a target multiple times with ''Petricite Burst'' will not add additional stacks of {{ri|Electrocute}} or {{ri|Phase Rush}}.\n* ''Petricite Burst'' does not add stacks of {{ri|Press the Attack}} to the target.\n* ''Petricite Burst'' can be {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Sylas''' is {{tip|blind|blinded}} as the primary target but not as a secondary target.",
       "skillkey": "I",
       "skillid": "i1",
@@ -108,15 +109,17 @@
         "{{sbc|Active:}} '''Sylas''' lashes out two lines that converge to the target location and extend beyond it up to a maximum range, dealing {{as|magic damage}} and {{tip|slow|slowing}} enemies hit for {{fd|1.5}} seconds.",
         "After a {{fd|0.6}}-second delay, the chains' intersection detonates, dealing {{as|magic damage}} to enemies within. Against {{tip|minions}} and {{tip|monsters}} the detonation deals 60% reduced damage."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 40% AP)}}}}\n{{st|Slow|{{ap|15 to 35}}%}}",
+        "{{st|Detonation Damage|{{ap|60 to 280}} {{as|(+ 80% AP)}}|Non-Champion Detonation Damage|{{ap|60*0.4 to 280*0.4}} {{as|(+ 32% AP)}}}}\n{{st|Maximum Champion Damage|{{ap|40+60 to 120+280}} {{as|(+ 120% AP)}}|Maximum Non-Champion Damage|{{ap|40+60*0.4 to 120+280*0.4}} {{as|(+ 72% AP)}}}}"
+      ],
       "notes": "* ''Chain Lash'' is always cast from the original casting position.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "10/9/8/7/6",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 40% AP)}}}}\n{{st|Slow|{{ap|15 to 35}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -142,15 +145,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Slow",
-              "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   40,
                   60,
                   80,
@@ -159,15 +164,31 @@
                 ],
                 "player_total_ap": 0.4
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  15,
+                  20,
+                  25,
+                  30,
+                  35
+                ],
+                "player_total_ap": 0.4
+              },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[15,20,25,30,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Detonation Damage|{{ap|60 to 280}} {{as|(+ 80% AP)}}|Non-Champion Detonation Damage|{{ap|60*0.4 to 280*0.4}} {{as|(+ 32% AP)}}}}\n{{st|Maximum Champion Damage|{{ap|40+60 to 120+280}} {{as|(+ 120% AP)}}|Maximum Non-Champion Damage|{{ap|40+60*0.4 to 120+280*0.4}} {{as|(+ 72% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Detonation Damage</span>: <span><SpellSpan :list=\"[60,115,170,225,280]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Detonation Damage</span>: <span><SpellSpan :list=\"[24,46,68,90,112]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 32% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Detonation Damage</span>: <span><SpellSpan :list=\"[60,115,170,225,280]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Non-Champion Detonation Damage</span>: <span><SpellSpan :list=\"[24,46,68,90,112]\"></SpellSpan> <span class=\"ap\">(+ 32% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[100,175,250,325,400]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[64,106,148,190,232]\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -216,10 +237,14 @@
               }
             ],
             "st_slices": [
+              "Detonation Damage",
+              "<SpellSpan :list=\"[60,115,170,225,280]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "Non-Champion Detonation Damage",
+              "<SpellSpan :list=\"[24,46,68,90,112]\"></SpellSpan> <span class=\"ap\">(+ 32% AP)</span>",
               "Maximum Champion Damage",
-              "<SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+              "<SpellSpan :list=\"[100,175,250,325,400]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
               "Maximum Non-Champion Damage",
-              "<SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>"
+              "<SpellSpan :list=\"[64,106,148,190,232]\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>"
             ]
           },
           "subeffects": [
@@ -233,10 +258,10 @@
                   225,
                   280
                 ],
-                "player_total_ap": 0.32
+                "player_total_ap": 0.8
               },
-              "title": "Maximum Champion Damage",
-              "str": "<SpellSpan :list=\"[100,175,250,325,400]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+              "title": "Detonation Damage",
+              "str": "<SpellSpan :list=\"[60,115,170,225,280]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -249,10 +274,42 @@
                   90,
                   112
                 ],
-                "player_total_ap": 0.32
+                "player_total_ap": 0.8
+              },
+              "title": "Non-Champion Detonation Damage",
+              "str": "<SpellSpan :list=\"[24,46,68,90,112]\"></SpellSpan> <span class=\"ap\">(+ 32% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  100,
+                  175,
+                  250,
+                  325,
+                  400
+                ],
+                "player_total_ap": 0.8
+              },
+              "title": "Maximum Champion Damage",
+              "str": "<SpellSpan :list=\"[100,175,250,325,400]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_damage": [
+                  64,
+                  106,
+                  148,
+                  190,
+                  232
+                ],
+                "player_total_ap": 0.8
               },
               "title": "Maximum Non-Champion Damage",
-              "str": "<SpellSpan :list=\"[64,106,148,190,232]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>",
+              "str": "<SpellSpan :list=\"[64,106,148,190,232]\"></SpellSpan> <span class=\"ap\">(+ 72% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -292,15 +349,17 @@
         "{{sbc|Active:}} '''Sylas''' {{tip|dash|dashes}} to the front of the target enemy's location and, upon arrival, he strikes them to deal {{as|magic damage}}.",
         "If ''Kingslayer'' damaged an enemy {{tip|champion}}, '''Sylas''' is also {{tip|heal|healed}}, increased by {{as|{{passive progression/deprecated version|11|type='''Sylas'''' '''missing''' health|key=%|0 to 100|key1=%|0 to 60|formula=1% per 0.6% of Sylas' '''missing''' health}}|health}}."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|65 to 205}} {{as|(+ 85% AP)}}}}",
+        "{{st|Heal|{{ap|30 to 150}} {{as|(+ 50% AP)}}|Maximum Heal|{{ap|30*2 to 150*2}} {{as|(+ {{ap|50*2}}% AP)}}}}"
+      ],
       "notes": "* No additional details.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70/80/90/100/110",
-      "cooldownBurn": "13/11.5/10/8.5/7",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|65 to 205}} {{as|(+ 85% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -320,7 +379,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
+              "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
             ]
           },
           "subeffects": [
@@ -337,14 +396,14 @@
                 "player_total_ap": 0.85
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[65,100,135,170,205]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>",
+              "str": "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Heal|{{ap|30 to 150}} {{as|(+ 50% AP)}}|Maximum Heal|{{ap|30*2 to 150*2}} {{as|(+ {{ap|50*2}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[60,120,180,240,300]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -377,9 +436,9 @@
             ],
             "st_slices": [
               "Heal",
-              "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "Maximum Heal",
-              "<SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>"
+              "<SpellSpan :list=\"[60,120,180,240,300]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -396,7 +455,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Heal",
-              "str": "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -412,7 +471,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Maximum Heal",
-              "str": "<SpellSpan :list=\"[60,120,180,240,300]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,120,180,240,300]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100]\"></SpellSpan>% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -428,11 +487,7 @@
         70,
         40
       ],
-      "cost": [
-        75,
-        75,
-        75
-      ],
+      "cost": 75,
       "costtype": "Mana",
       "targeting": "[[Unit-targeted|Unit]] / Varied",
       "target_range": 950,
@@ -450,11 +505,10 @@
         "{{sbc|Recast:}} '''Sylas''' can cast his hijacked ultimate ability at no cost, scaling based on ''Hijack's'' rank and his own statistics.",
         "All ''Hijacked'' ultimates and abilities that do not scale with {{as|{{sti|ability power}}}} have their {{as|{{sti|attack damage}}}} ratios converted to {{as|ability power}} ratios, scaling with {{as|{{fd|0.6}}% AP}} per {{as|1% '''total''' AD}}, and {{as|{{fd|0.4}}% AP}} per {{as|1% '''bonus''' AD}} respectively."
       ],
+      "leveling": [],
       "notes": "* If '''Sylas''' casts ''Hijack'' on a {{tip|clone}}, no ultimate is stolen and the ability will be placed on full cooldown.\n** This does not occur with {{cai|Glory in Death|Sion}}, since he is a {{tip|zombie state|zombie}} instead.\n* If the target {{tip|death|dies}}, becomes {{tip|untargetable}}, or '''Sylas''' loses {{tip|sight}} of them during ''Hijack's'' cast time, the ability cancels and does not go on cooldown or expend {{sti|{{as|mana}}}}.\n** If the same happens when casting an on-target stolen ability, the ability will instead cancel and go on cooldown.\n* If ''Hijack'' is intercepted by {{cai|Unbreakable|Braum}}, '''Sylas''' will gain a copy {{ai|R|Braum}} instead and an on-target cooldown will be applied to him.\n** If {{ci|Braum}} has an on-target cooldown on him (by being previously ''Hijacked'') upon interception, no ultimate will be stolen.\n* Since the copied ability scales based on ''Hijack's'' rank, abilities can be copied regardless of their rank.\n* ''Hijack'' will copy all components of the ability: their passives and actives as well as recast effects. ''Hijack'' will not trigger the effects of other abilities unless absolutely necessary. \n* Shape-shifting ultimates will transform '''Sylas''' into the target's alternate form, replacing his basic abilities and '''base''' stats. Namely: {{ai|Aspect of the Cougar|Nidalee|Cougar Form}}, {{ai|Spider Form|Elise}}, {{ai|Transform Mercury Cannon|Jayce|Cannon Form}} and {{ai|Dragon's Descent|Shyvana|Dragon Form}}.\n** ''Dragon's Descent'' refreshes '''Sylas's''' {{tip|mana}}, depleting it and regenerating it at the same rate ''Shyvana's'' {{tip|fury}} would. Other sources of {{as|mana restoration}} will extend the duration as well. At the end of the effect, '''Sylas''' gains his previous mana. \n** Permanent transformations last for ~5 minutes or until toggled off. \n** The alternate abilities of transforming champions will cost mana and scale with the ranks as appropriate for the ability (e.g. ranks in R for Nidalee and ranks in Q/W/E for Jayce/Elise).\n** Upon transforming, a {{ai|Petricite Burst|Sylas}} stack will be deducted.\n** {{ai|Petricite Burst|Sylas}} stacks will still be gained from abilities cast in alternate forms, but the stacks are gained independently from the normal ones.\n*** If '''Sylas''' has both normal and transformed stacks, ''Petricite Burst'' will prioritize consuming '''Sylas''' stacks before the transformed ones.\n* Ultimates comply with {{tip|One for All}} rules if an ally is playing the hijacked champion. For example, an allied {{cai|Hemorrhage|Darius}} stacks will increase the damage of the hijacked {{ai|Noxian Guillotine|Darius}}; or an allied {{cai|Dark Sphere|Syndra}} will add extra damage to hijacked {{ai|Unleashed Power|Syndra}} as well as producing 3 spheres that she can use.\n;Interactions\n* {{cai|Curse of the Sad Mummy|Amumu}} - Does not apply {{ai|Cursed Touch|Amumu}}.\n* {{cai|Moonlight Vigil|Aphelios}} - Based on the {{ai|The Hitman and the Seer|Aphelios|main weapon}} at the moment of steal. {{ai|Crescendum|Aphelios}} empowers his basic attacks temporarily.\n** {{ai|Calibrum|Aphelios}} does not apply marks.\n* {{cai|Pyroclasm|Brand}} - Does not apply stacks of {{ai|Blaze|Brand}}.\n* {{cai|Feast|Cho'Gath}} - Gains permanent ''Feast'' stacks on-kill.\n* {{cai|Missile Barrage|Corki}} - Gains max charges. \n* {{cai|Noxian Guillotine|Darius}} - Does not apply a stack of {{ai|Hemorrhage|Darius}}.\n* {{cai|Grand Challenge|Fiora}} - Gains movement speed in the effect and can trigger the area healing, but {{ai|Duelist's Dance|Fiora|Vitals}} do not deal bonus damage.\n* {{cai|Hero's Entrance|Galio}} - Gives '''Sylas''' and allies {{ai|Shield of Durand 2|Galio|Shield of Durand's}} magic {{tip|shield}}.\n* {{cai|Cannon Barrage|Gangplank}} - Does not steal cannon upgrades.\n* {{cai|GNAR!|Gnar}} - Gains a usable ultimate regardless of cast on {{ci|Gnar|Mini Gnar}} or {{ci|Mega Gnar}}.\n* {{cai|UPGRADE!!!|Heimerdinger}} - '''Sylas's''' basic abilities are replaced with ''Heimerdinger's'' empowered abilities. The upgrade buff lasts until the ultimate can be stolen again.\n* {{cai|Leap of Faith|Illaoi}} - Does not reduce {{sti|cooldown}} of {{ai|Kingslayer|Sylas}}.\n* {{cai|Vanguard's Edge|Irelia}} - Applies marks of {{ai|Bladesurge|Irelia}}.\n* {{cai|Riftwalk|Kassadin}} - Only provides one use.\n* {{cai|Killer Instinct|Kai'Sa}} - '''Sylas'''' basic attacks, {{ai|Abduct|Sylas}} and nearby allies' {{tip|immobilize|immobilizations}} apply stacks of {{ai|Second Skin|Kai'Sa|Plasma}}, up to 4. '''Sylas''' is unable to apply the 5th stack necessary to expunge the stacks.\n* {{cai|Fate's Call|Kalista}} - Only castable with a {{ii|Black Spear|link}} (purchasable in the [[Shop]] for {{g|0 gold}}).\n* {{cai|Mantra|Karma}} - '''Sylas's''' basic abilities are replaced with ''Karma's'' empowered abilities.\n* {{cai|Umbral Trespass|Kayn}} - Based on current form ({{ci|Shadow Assassin}}/{{ci|Rhaast}}).\n* {{cai|Void Assault|Kha'Zix}} - Can steal the ability's {{ai|Evolved Adaptive Cloaking|Kha'Zix|evolution}} bonus effects.\n* {{cai|Slicing Maelstrom|Kennen}} - Applies {{ai|Mark of the Storm|Kennen}}.\n* {{cai|Chaaaaaaaarge!!!|Kled}} - Does not need {{ai|Skaarl the Cowardly Lizard|Kled|mount}} to cast.\n* {{cai|Living Artillery|Kog'Maw}} - Only provides one use.\n* {{cai|Mimic|LeBlanc}} - Uses the empowered version of {{ci|LeBlanc|LeBlanc's}} last cast basic ability. If she has not cast any spells, {{ai|Mimic Sigil of Malice|LeBlanc}} is copied.\n* {{cai|Solar Flare|Leona}} - Does not apply {{ai|Sunlight|Leona}}.\n* {{cai|Lilting Lullaby|Lillia}} - '''Sylas's''' abilities apply {{ais|Dream-Laden Bough|Lillia}} mark but not the damage.\n* {{cai|Highlander|Master Yi}} - Kills do not reduce basic ability cooldowns.\n* {{cai|Realm of Death|Mordekaiser}} - Can join the ''dimension'' of outgoing realms if cast in the proper range ''(does not extend their duration)''.\n* {{cai|Fury of the Sands|Nasus}} - Does not reduce {{sti|cooldown}} of {{ai|Chain Lash|Sylas}}.\n* {{cai|Command: Shockwave|Orianna}} - Cast on self without a {{ai|Clockwork Windup|Orianna|ball}}.\n* {{cai|Thrill of the Hunt|Rengar}} - '''Sylas''' will gain {{ai|Unseen Predator|Rengar}} on his next attack.\n* {{cai|Void Rush|Rek'Sai}} - '''Sylas's''' attacks against enemy champions will apply a {{ai|Void Rush Mark|Rek'Sai|mark}} which can be used to cast the ability.\n* {{cai|Inferno Trigger|Samira}} - Can use without a {{ai|Daredevil Impulse|Samira|Grade}}.\n* {{cai|Hijack|Sylas}} - Steals the ability that the enemy '''Sylas''' has stolen. Cannot be targeted if no ability has been stolen.\n* {{cai|Unleashed Power|Syndra}} - Throws a minimum of 3 {{ai|Dark Sphere|Syndra|spheres}}, which are left on the ground afterwards and vanish after 6 seconds.\n* {{cai|Shadow Assault|Talon}} - Does not apply {{ai|Blade's End|Talon}}.\n* {{cai|Noxious Trap|Teemo}} - Gains max charges.\n* {{cai|Buster Shot|Tristana}} - Always has 525 cast range as '''Sylas''' does not benefit from {{ais|Draw a Bead|Tristana}} per-level cast range increase.\n* {{cai|Spray and Pray|Twitch}} - Gains 300 attack range and his attacks produce missiles that travel 850 range. These attacks are classified as {{tip|melee}}, and so will trigger effects such as {{ii|Tiamat}} versus all hit targets.\n* {{ci|Udyr}} - Steals {{ai|Phoenix Stance|Udyr}}. Lasts for 2 empowered attacks. \n* {{cai|Chain of Corruption|Varus}} - Does not apply stacks of {{ai|Blighted Quiver|Varus|Blight}}.\n* {{cai|Final Hour|Vayne}} - Gains the {{as|AD}} and {{as|MS}} bonuses. Additionally, '''Sylas''' gains {{tip|invisibility}} when he casts {{ai|Chain Lash|Sylas}}. \n* {{cai|Life Form Disintegration Ray|Vel'Koz}} - Does not apply {{ai|Organic Deconstruction|Vel'Koz}}.\n* {{cai|Chaos Storm|Viktor}} - Can steal the ability's {{ai|Augment- Perfect Storm|Viktor|evolution}} bonus effects.\n* {{cai|Featherstorm|Xayah}} - {{ai|Clean Cuts|Xayah|Feathers}} do not interact with an ally or enemy {{ci|Xayah}}.\n* {{cai|Last Breath|Yasuo}} - {{tip|Critical strike|Critical strikes}} ignore 50% of the target's {{sti|{{as|'''bonus''' armor}}}} after activation.\n* {{cai|Death Mark|Zed}} - [[File:Zed's Shadow.png|20px|border]] ''Shadow'' does not mimic spells but can be reactivated to {{ai|Death Mark 2|Zed|swap}} places.\n* {{cai|Let's Bounce!|Zac}} - Cannot declare attacks nor use any abilities nor while bouncing. Drops {{ai|Cell Division|Zac|chunks}} that can be interacted with but do not restore health to '''Sylas'''.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "75",
-      "cooldownBurn": "100/70/40",
       "effects": []
     }
   }

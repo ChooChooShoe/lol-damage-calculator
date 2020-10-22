@@ -68,6 +68,7 @@
         "{{sbc|Innate - Power Chord:}} After casting 3 basic abilities, '''Sona's''' next [[basic attack]] becomes {{tip|unstoppable basic attack|unstoppable}}, deals {{as|{{pp|20 to 90 for 8;90 to 240|formula=10+10 at each level up to 8 and+15 up to 18}}|magic damage}} {{as|(+ 20% AP)}} {{as|'''bonus''' magic damage}} and applies an additional effect depending on the last basic ability cast.",
         "''Power Chord'' {{tip|basic attack reset|resets}} '''Sona's''' basic attack timer."
       ],
+      "leveling": [],
       "notes": "* '''Sona''' has a stack counter under her health-bar that is not visible to other champions.\n** When ''Power Chord'' is ready, Sona gains a ring around her. This ring will have a different color depending on the last ability used (''{{ai|Hymn of Valor|Sona|blue}}, {{ai|Aria of Perseverance|Sona|green}} or {{ai|Song of Celerity|Sona|purple}}'').\n** The effect does not change if abilities are used while the projectile is in motion.\n* The triggering attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.",
       "skillkey": "I",
       "skillid": "i1",
@@ -107,15 +108,18 @@
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
         "{{sbc|{{ai|Power Chord|Sona}} – Staccato:}} ''Power Chord'' deals{{ft|{{as|40% '''bonus''' magic damage}}.|{{as|{{pp|20*1.4 to 90*1.4 for 8;90*1.4 to 240*1.4|formula=14+14 at each level up to 8 and+21 up to 18}}|magic damage}} {{as|(+ 28% AP)}} {{as|'''total''' magic damage}}.}}"
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|40 to 160}} {{as|(+ 40% AP)}}}}",
+        "{{st|Bonus Magic Damage|{{ap|10 to 30}} {{as|(+ 20% AP)}}}}"
+      ],
       "notes": "* No additional notes.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "75/80/85/90/95",
-      "cooldownBurn": "8/7.2/6/4.8",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|8|7.2|6|4.8}}|Based on Crescendo's rank}}' as '8/7.2/6/4.8' and riot's value '8,8,8,8,8' as '8'",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 160}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +139,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -152,14 +156,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[40,70,100,130,160]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 30}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -179,7 +183,7 @@
             ],
             "st_slices": [
               "Bonus Magic Damage",
-              "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -196,7 +200,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -237,15 +241,18 @@
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
         "{{sbc|{{ai|Power Chord|Sona}} – Diminuendo:}} ''Power Chord'' reduces its target's [[size]] by 8% and damage output by 25% {{as|(+ 4% per 100 AP)}} for 3 seconds."
       ],
+      "leveling": [
+        "{{st|Heal|{{ap|30|50|70|90|110}} {{as|(+ 20% AP)}}}}",
+        "{{st|Shield Strength|{{ap|25|50|75|100|125}} {{as|(+ 30% AP)}}}}"
+      ],
       "notes": "* If no one is injured, ''Aria of Perseverance'' will target the closest allied champion.\n* The visual projectile of ''Aria of Perseverance'' will follow an ally in stealth but will not reveal them.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "105/110/115/120/125",
-      "cooldownBurn": "10/9/7.5/6",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|10|9|7.5|6}}|Based on Crescendo's rank}}' as '10/9/7.5/6' and riot's value '10,10,10,10,10' as '10'",
       "effects": [
         {
           "levelingtext": "{{st|Heal|{{ap|30|50|70|90|110}} {{as|(+ 20% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -265,7 +272,7 @@
             ],
             "st_slices": [
               "Heal",
-              "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
@@ -282,14 +289,14 @@
                 "player_total_ap": 0.2
               },
               "title": "Heal",
-              "str": "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Shield Strength|{{ap|25|50|75|100|125}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[25,50,75,100,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -309,7 +316,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<SpellSpan :list=\"[25,50,75,100,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -326,7 +333,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Shield Strength",
-              "str": "<SpellSpan :list=\"[25,50,75,100,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -343,13 +350,7 @@
         9,
         7.2
       ],
-      "cost": [
-        90,
-        90,
-        90,
-        90,
-        90
-      ],
+      "cost": 90,
       "costtype": "mana",
       "targeting": "Auto",
       "image": {
@@ -367,15 +368,17 @@
         "Granting an ally (other than herself) the aura refunds {{as|30 mana}} per cast.",
         "{{sbc|{{ai|Power Chord|Sona}} – Tempo:}} ''Power Chord'' {{tip|slow|slows}} its target by 40% {{as|(+ 4% per 100 AP)}} for 2 seconds, capped at a maximum of 99%."
       ],
+      "leveling": [
+        "{{st|Aura Bonus Movement Speed|{{ap|10 to 14}}% {{as|(+ 2% per 100 AP)}}}}"
+      ],
       "notes": "* To achieve a 99% {{tip|slow}} with the empowered attack via {{ai|Power Chord|Sona}}, it would require at least {{as|1475 AP}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "90",
-      "cooldownBurn": "12/10.8/9/7.2",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|12|10.8|9|7.2}}|Based on Crescendo's rank}}' as '12/10.8/9/7.2' and riot's value '12,12,12,12,12' as '12'",
       "effects": [
         {
           "levelingtext": "{{st|Aura Bonus Movement Speed|{{ap|10 to 14}}% {{as|(+ 2% per 100 AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Aura Bonus Movement Speed</span>: <span><SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Aura Bonus Movement Speed</span>: <span><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -395,7 +398,7 @@
             ],
             "st_slices": [
               "Aura Bonus Movement Speed",
-              "<SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>"
+              "<SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>"
             ]
           },
           "subeffects": [
@@ -412,7 +415,7 @@
                 "player_total_ap": 21
               },
               "title": "Aura Bonus Movement Speed",
-              "str": "<SpellSpan :list=\"[10,11,12,13,14]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>",
+              "str": "<SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -428,11 +431,7 @@
         120,
         100
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "mana",
       "targeting": "Direction",
       "target_range": 900,
@@ -449,15 +448,17 @@
         "{{sbc|Passive:}} Reduces the '''base''' {{sti|cooldown}} of '''Sona's''' basic [[Champion ability|abilities]].",
         "{{sbc|Active:}} '''Sona''' plays an irresistible chord in the target direction, dealing {{as|magic damage}} to all enemy champions struck and {{tip|stun|stunning}} them for {{fd|1.5}} seconds."
       ],
+      "leveling": [
+        "{{st|Basic Ability Base Cooldown Reduction|{{ap|10|25|40}}%}}",
+        "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 50% AP)}}}}"
+      ],
       "notes": "* Aesthetically, enemies {{tip|stun|stunned}} by ''Crescendo'' are forced to [[dance]] and perform their moves 50% faster for the duration.\n* ''Crescendo'' is always cast from the original casting position.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "140/120/100",
       "effects": [
         {
           "levelingtext": "{{st|Basic Ability Base Cooldown Reduction|{{ap|10|25|40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Basic Ability Base Cooldown Reduction</span>: <span><SpellSpan :list=\"[10,25,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Basic Ability Base Cooldown Reduction</span>: <span><SpellSpan :list=\"[10,25,40]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -470,7 +471,7 @@
             ],
             "st_slices": [
               "Basic Ability Base Cooldown Reduction",
-              "<SpellSpan :list=\"[10,25,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[10,25,40]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -484,14 +485,14 @@
                 ]
               },
               "title": "Basic Ability Base Cooldown Reduction",
-              "str": "<SpellSpan :list=\"[10,25,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[10,25,40]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|150|250|350}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -509,7 +510,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -524,7 +525,7 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]

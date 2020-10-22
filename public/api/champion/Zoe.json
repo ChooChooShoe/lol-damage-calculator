@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Zoe's''' next [[basic attack]] or {{ai|Spell Thief|Zoe}} bubble within 5 seconds becomes {{tip|projectile|non-projectile}} and deals {{passive progression/deprecated version|16;20;24;28;32;36;42;48;54;60;66;74;82;90 to 130|color=magic damage}} {{as|(+ 20% AP)}} {{as|'''bonus''' magic damage}}."
       ],
+      "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "I",
       "skillid": "i1",
@@ -78,13 +79,7 @@
       "cooldown": [
         0.25
       ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "costtype": "No cost",
       "targeting": "Varied",
       "image": {
@@ -103,15 +98,17 @@
         "{{sbc|Passive - Wheeeee:}} Casting ''Spell Thief'' or one of '''Zoe's''' own summoner spells grants her {{sti|ms|{{As|'''bonus''' movement speed}}}} for the next few seconds, and summons three bubbles that orbit her for the next 10 seconds.",
         "If '''Zoe''' is not affected by [[Crowd control#Loss of Control|total crowd control]] she hurls one bubble at a time at the nearest enemy in range, prioritizing her attack target, dealing {{as|magic damage}} with each bubble."
       ],
+      "leveling": [
+        "{{st|Bonus Movement Speed|{{ap|30|40|50|60|70}}%}}<!--\n-->{{st|Bonus Movement Speed Duration|{{ap|2|2.25|2.5|2.75|3}}}}",
+        "{{st|Magic Damage Per Orb|{{ap|25|35|45|55|65}} {{as|(+ {{fd|13.{{Recurring|3}}}}% AP)}}|Total Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 40% AP)}}}}"
+      ],
       "notes": "* Mimics the details of the mimicked active.\n* Minions that can drop ''{{as|Spell Shards|armor}}'' are marked with a tied cosmic balloon that floats above them.\n** Minions do not drop a shard for {{ii|Hextech Gunblade}} or {{si|Teleport}}.\n* '''Zoe''' utilizes an attack-like animation whenever one of the bubbles hurls itself at an enemy, making it look as if she can attack while moving.\n* '''Zoe''' cannot steal [[Consumable item|consumables]], [[trinket]]s, [[Item#Classification|component]] items, or items that create deployable or persistent effects. Some actives are excluded for balance purposes. The following list was last checked November 8th<ref>[https://www.youtube.com/watch?v=I4u0eOkzQHs Spell Thief list]</ref>:\n{{Zoe Spell Thief list}}",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "0.25",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Movement Speed|{{ap|30|40|50|60|70}}%}}<!--\n-->{{st|Bonus Movement Speed Duration|{{ap|2|2.25|2.5|2.75|3}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed Duration</span>: <span><SpellSpan :list=\"[2,2.25,2.5,2.75,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed Duration</span>: <span><SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -132,8 +129,10 @@
               ]
             ],
             "st_slices": [
+              "Bonus Movement Speed",
+              "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
               "Bonus Movement Speed Duration",
-              "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -148,15 +147,30 @@
                   70
                 ]
               },
+              "title": "Bonus Movement Speed",
+              "str": "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  2,
+                  2.25,
+                  2.5,
+                  2.75,
+                  3
+                ]
+              },
               "title": "Bonus Movement Speed Duration",
-              "str": "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage Per Orb|{{ap|25|35|45|55|65}} {{as|(+ {{fd|13.{{Recurring|3}}}}% AP)}}|Total Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Orb</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Orb</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -186,9 +200,9 @@
             ],
             "st_slices": [
               "Magic Damage Per Orb",
-              "<SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+              "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
               "Total Magic Damage",
-              "<SpellSpan :list=\"[75,105,135,165,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -205,7 +219,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage Per Orb",
-              "str": "<SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -221,7 +235,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[75,105,135,165,195]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -239,13 +253,7 @@
         15.5,
         14
       ],
-      "cost": [
-        80,
-        80,
-        80,
-        80,
-        80
-      ],
+      "cost": 80,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 800,
@@ -263,15 +271,17 @@
         "The ''bubble'' deals {{as|magic damage}} on contact with an enemy and renders them {{tip|drowsy}} for {{fd|1.4}} seconds, which gradually {{tip|slow|slows}} them, after which they fall {{tip|sleep|asleep}} for {{fd|2.25}} seconds. '''Zoe''' will gain {{tip|obscured vision}} of the target while they're {{tip|sleep|asleep}} if they are not {{tip|sight|visible}}.",
         "The next non-{{tip|persistent damage|persistent}} non-{{tip|minion}} damage taken by the {{tip|sleep|sleeping}} target consumes the debuff to deal {{sti|true damage|{{as|'''bonus''' true damage}}}} equal to the {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt, capped at ''Sleepy Trouble Bubble's'' damage. The '''bonus''' damage is dealt before the triggering damage."
       ],
+      "leveling": [
+        "{{st|Maximum Slow|{{ap|10 to 30}}%}}\n{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}",
+        "{{st|Maximum Mixed Damage|{{ap|120 to 440}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "* If exceptionally close to terrain, the ball will pass through without detection and will still be able to pass through a second piece of terrain - although it sacrifices any range its already used going through the first piece.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "80",
-      "cooldownBurn": "20/18.5/17/15.5/14",
       "effects": [
         {
           "levelingtext": "{{st|Maximum Slow|{{ap|10 to 30}}%}}\n{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -297,15 +307,17 @@
               }
             ],
             "st_slices": [
+              "Maximum Slow",
+              "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%",
               "Magic Damage",
-              "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   10,
                   15,
                   20,
@@ -314,15 +326,31 @@
                 ],
                 "player_total_ap": 0.4
               },
+              "title": "Maximum Slow",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.4
+              },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Maximum Mixed Damage|{{ap|120 to 440}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Maximum Mixed Damage</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Mixed Damage</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -342,7 +370,7 @@
             ],
             "st_slices": [
               "Maximum Mixed Damage",
-              "<SpellSpan :list=\"[120,200,280,360,440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -359,7 +387,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Maximum Mixed Damage",
-              "str": "<SpellSpan :list=\"[120,200,280,360,440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -375,11 +403,7 @@
         8,
         5
       ],
-      "cost": [
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 575,
@@ -396,11 +420,10 @@
         "{{sbc|Active:}} '''Zoe''' dives into a portal that she opens beneath her, {{tip|blink|blinking}} a fixed distance in the target direction for {{fd|0.75}} seconds, during which she sets her {{as|movement speed}} to a {{as|static 0|ms}} and has {{tip|unobstructed vision}}. After 1 second, she blinks back to her cast location.",
         "'''Zoe''' is unable to basic attack and cast her abilities and movement spells for {{fd|0.75}} seconds after casting ''Portal Jump'' and for {{fd|0.5}} seconds after blinking back."
       ],
+      "leveling": [],
       "notes": "* '''Zoe''' will always blink back, regardless of the circumstances.\n* '''Zoe''' can attack and cast abilities and movement spells at the target location for {{fd|0.5}} seconds after she is able to use them again.\n* Upon reaching her destination, '''Zoe''' will either raspberry at the nearest enemy champion, or lick an ice cream cone when there are no enemy champions in {{tip|sight}}.\n* '''Zoe''''s return position is shifted slightly in the target direction from her cast location.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "50",
-      "cooldownBurn": "11/8/5",
       "effects": []
     }
   }

@@ -68,6 +68,7 @@
         "'''Thresh''' autonomously collects ''Souls'' near him or a placed {{ai|Dark Passage|Thresh}}.",
         "Each collected ''Soul'' grants '''Thresh''' {{sti|ap|{{as|{{fd|0.75}} ability power}}}} and {{sti|armor|{{as|{{fd|0.75}} '''bonus''' armor}}}}."
       ],
+      "leveling": [],
       "notes": "* ''Souls'' grant a small area of {{tip|sight}}.\n* ''Souls'' are visible to allies and only become visible to enemies if their team has {{tip|sight}} of '''Thresh'''.\n* The probability for ''souls'' dropping from small minions and monster on {{tip|Summoner's Rift}} starts at 33% but adjusts dynamically to match the expected quota of ''souls'' dropped (lowers if above, rises if below, remains if even). ''Souls'' collected are not considered when adjusting the probability.\n* The maximum amount of ''souls'' '''Thresh''' can collect is 999,999, granting him {{as|749,999 '''bonus''' ability power}} and {{as|749,999 '''bonus''' armor}} ({{fd|99.99}}% damage reduction, reduced to {{fd|99.98}}% when hit by {{ii|Last Whisper}}).\n* {{ci|Nunu|Nunu & Willump}} drop a soul each (sometimes the icy ghosts from {{iis|Twin Shadows}} active will drop one each after reaching their targets).",
       "skillkey": "I",
       "skillid": "i1",
@@ -108,15 +109,16 @@
         "'''Thresh''' and the first allied champion to come near the lantern are granted a {{tip|shield}} for 4 seconds. An ally can select the lantern while in proximity of it, {{tip|dash|dashing}} to '''Thresh's''' current location and gaining the shield.",
         "An ally cannot select the lantern while {{tip|silence|silenced}}, {{tip|ground|grounded}} or {{tip|immobilize|immobilized}}."
       ],
+      "leveling": [
+        "{{st|Shield Strength|{{ap|60 to 220}} (+ 1 per {{ai|Damnation|Thresh|Soul}} collected)}}"
+      ],
       "notes": "* Allies can pick up the lantern through thin walls if its grab radius allows it.\n* '''Thresh''' cannot grab the lantern but can {{tip|shield}} himself if he is near it.\n* The lantern is considered a unit and can be targeted by an allied {{si|Teleport}}, {{ai|Leap Strike|Jax}}, {{ai|Shunpo|Katarina}}, and {{ai|Safeguard|Lee Sin}}.\n** It is {{tip|untargetable}} to enemies.\n* The lantern's duration and maximum leash range are each displayed as a circle on the ground.\n* ''Dark Passage'' is special cased to trigger {{ri|Guardian}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "22/20.5/19/17.5/16",
       "effects": [
         {
           "levelingtext": "{{st|Shield Strength|{{ap|60 to 220}} (+ 1 per {{ai|Damnation|Thresh|Soul}} collected)}}",
-          "str": "<ul><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -131,7 +133,7 @@
             ],
             "st_slices": [
               "Shield Strength",
-              "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)"
+              "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)"
             ]
           },
           "subeffects": [
@@ -147,7 +149,7 @@
                 ]
               },
               "title": "Shield Strength",
-              "str": "<SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)",
+              "str": "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> (+ 1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected)",
               "damage_type": "none"
             }
           ]
@@ -163,11 +165,7 @@
         120,
         100
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -184,15 +182,16 @@
         "Enemy champions hitting any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second.",
         "''Targets are immune to breaking a new wall for 1 second after breaking one.''"
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|250|400|550}} {{as|(+ 100% AP)}}}}"
+      ],
       "notes": "* ''The Box'' is always placed at the original cast location.\n* ''The Box'' always uses [[quick cast]], regardless of player settings. <!-- It used to be direction cast, and then have the box face the target direction. Dunno if this change was intentional but I won't assume a bug here ~Caenen-->\n** ''The Box'' always faces into the same direction (one of the walls is due North, and spreads West-East).\n*** The cast indicator does not show this behaviour.\n* The corners of ''The Box'' are placed 400 units around '''Thresh'''.\n** Each wall is 470.228 units long.\n** Each wall passes 323.607 units from the center of ''The Box'' at the closest approach (ignoring its width).\n** A pentagon has an angle of 72{{degree}} between each corner.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "140/120/100",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|250|400|550}} {{as|(+ 100% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -210,7 +209,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              "<SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
@@ -225,7 +224,7 @@
                 "player_total_ap": 1
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[250,400,550]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "str": "<SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "magic"
             }
           ]

@@ -244,6 +244,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
         target_range: skilldata.target_range,
         image: riotSpell.image,
         description: skilldata.description || [],
+        leveling: skilldata.leveling || [],
         // riotDescription: riotSpell.description,
         notes: skilldata.notes || "",
 
@@ -258,40 +259,34 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
     if (!is_passive) {
         let old_val = (skilldata.cost || '0').toString();
         let value = old_val;
-        let list;
 
         if (value.includes('{{')) {
-            list = burnify(value, skillout.maxrank);
+            const list = burnify(value, skillout.maxrank);
             value = list.join('/');
+            skillout.cost = list;
         } else {
-            value = Number(old_val) || 0;
-            list = [value, value, value, value, value, value];
-            list.length = skillout.maxrank;
+            // Cost does not sacle with level.
+            skillout.cost = +parseFloat(value).toFixed(3);
         }
         if (value != riotSpell['costBurn'])
-            console.warn(`cost is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cost']} burn ${riotSpell['costBurn']}`)
-
-        skillout.costBurn = String(value);
-        skillout.cost = list;
+            skillout.cost_warn = (`Wiki's and Riot's mana costs do not match: Wiki's value  ${old_val} as ${value} and riot's value ${riotSpell['cost']} as ${riotSpell['costBurn']}`)
     }
     if (!is_passive) {
         let old_val = (skilldata.cooldown || '0').toString();
         let value = old_val;
-        let list;
 
         if (value.includes('{{')) {
-            list = burnify(value, skillout.maxrank);
+            // Cooldown sacles with level.
+            const list = burnify(value, skillout.maxrank);
             value = list.join('/');
+            skillout.cooldown = list;
         } else {
-            value = Number(old_val) || 0;
-            list = [value, value, value, value, value, value];
-            list.length = skillout.maxrank;
+            // Cooldown does not sacle with level.
+            skillout.cooldown = +parseFloat(value).toFixed(3);
         }
         if (value != riotSpell['cooldownBurn'])
-            console.warn(`cooldown is not matching riots: value ${old_val} as ${value} to riot ${riotSpell['cooldown']} burn ${riotSpell['cooldownBurn']}`)
+            skillout.cooldown_warn = `Wiki's and Riot's cooldowns do not match: Wiki's value '${old_val}' as '${value}' and riot's value '${riotSpell['cooldown']}' as '${riotSpell['cooldownBurn']}'`;
 
-        skillout.cooldownBurn = String(value);
-        skillout.cooldown = list;
     }
 
     skillout.effects = [];

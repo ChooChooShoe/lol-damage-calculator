@@ -18,7 +18,7 @@ export default {
   },
   //spellrankindex is need for child spell-spans to bind to.
   // text is what is match replaced.
-  props: ["spellrankindex", "text", "value"],
+  props: ["spellrank", "text", "value"],
   data: function() {
     return {
       templateRender: null
@@ -67,6 +67,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

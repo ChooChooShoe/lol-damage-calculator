@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} '''Vel'Koz's''' [[Champion ability|abilities]] apply a ''Deconstruction'' [[stack]] for 7 seconds, stacking up to 3 times. [[Basic attack]]s [[on-hit]] and further applications refresh the duration.",
         "The third stack consumes them all to deal {{as|{{passive progression/deprecated version|33 to 169}}|true damage}} {{as|(+ 50% AP)}} {{sti|true damage|{{as|'''bonus''' true damage}}}}."
       ],
+      "leveling": [],
       "notes": "* No additional notes.",
       "skillkey": "I",
       "skillid": "i1",
@@ -76,13 +77,7 @@
       "riotId": "VelkozW",
       "name": "Void Rift",
       "maxrank": 5,
-      "cooldown": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cooldown": 0,
       "cost": [
         50,
         55,
@@ -107,15 +102,18 @@
         "{{sbc|Active:}} '''Vel'Koz''' opens a rift to the void that cuts through the ground in a line in the target direction over 1 second, dealing {{as|magic damage}} to enemies hit and leaving behind a trail.",
         "After {{fd|0.75}} seconds, the trail detonates, dealing {{as|magic damage}} to enemies within and granting {{tip|sight}} of the surrounding area for {{fd|0.25}} seconds."
       ],
+      "leveling": [
+        "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}",
+        "{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Total Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}"
+      ],
       "notes": "* {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block the rift from forming over them, but they will not destroy the trail that was created before it.\n* {{tip|Spell shield}} only blocks one instance of damage.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '1.5,1.5,1.5,1.5,1.5' as '1.5'",
       "effects": [
         {
           "levelingtext": "{{st|Initial Magic Damage|{{ap|30 to 110}} {{as|(+ 15% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Initial Magic Damage</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Initial Magic Damage</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -135,7 +133,7 @@
             ],
             "st_slices": [
               "Initial Magic Damage",
-              "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>"
             ]
           },
           "subeffects": [
@@ -152,14 +150,14 @@
                 "player_total_ap": 0.15
               },
               "title": "Initial Magic Damage",
-              "str": "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 15% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Detonation Magic Damage|{{ap|45 to 165}} {{as|(+ 25% AP)}}|Total Damage|{{ap|30+45 to 110+165}} {{as|(+ 40% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Detonation Magic Damage</span>: <span><SpellSpan :list=\"[45,75,105,135,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Detonation Magic Damage</span>: <span><SpellSpan :list=\"[45,75,105,135,165]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -189,9 +187,9 @@
             ],
             "st_slices": [
               "Detonation Magic Damage",
-              "<SpellSpan :list=\"[45,75,105,135,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "<SpellSpan :list=\"[45,75,105,135,165]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "Total Damage",
-              "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -208,7 +206,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Detonation Magic Damage",
-              "str": "<SpellSpan :list=\"[45,75,105,135,165]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[45,75,105,135,165]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -224,7 +222,7 @@
                 "player_total_ap": 0.25
               },
               "title": "Total Damage",
-              "str": "<SpellSpan :list=\"[75,125,175,225,275]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -264,15 +262,16 @@
       "description": [
         "{{sbc|Active:}} '''Vel'Koz''' hurls a disruptive anomaly that reaches the target location after {{fd|0.75}} seconds, briefly providing {{tip|sight}}, dealing {{as|magic damage}} and {{tip|airborne|knocking up}} and {{tip|stun|stunning}} enemies in the area for {{fd|0.75}} seconds. If the area is created close to '''Vel'Koz''', enemies hit are also slightly {{tip|airborne|knocked back}} in the direction of the cast."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}"
+      ],
       "notes": "* The required proximity for the {{tip|airborne|knock back}} is relative to '''Vel'Koz's''' position when casting and not his current one.\n* Although considered to be a projectile, {{ai|Unbreakable|Braum}} and {{ai|Wind Wall|Yasuo}} will block ''Tectonic Disruption'', but will not destroy it ''visually''.\n* The area of effect indicator appears at the start of the cast time.\n** It will persist even if the cast cancels (e.g. '''Vel'Koz''' dies before cast time completes) despite the projectile not firing.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "16/15/14/13/12",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 190}} {{as|(+ 30% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -292,7 +291,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
@@ -309,7 +308,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[70,100,130,160,190]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "magic"
             }
           ]

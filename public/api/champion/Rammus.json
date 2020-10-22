@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Rammus' ''' [[basic attack]]s deal {{as|10|magic damage}} {{as|(+ 10% armor)}} {{as|'''bonus''' magic damage}}, increased to {{as|15|magic damage}} {{as|(+ 15% armor)}} while {{ai|Defensive Ball Curl|Rammus}} is active."
       ],
+      "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "I",
       "skillid": "i1",
@@ -82,13 +83,7 @@
         8.5,
         6
       ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
+      "cost": 60,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -105,15 +100,16 @@
         "'''Rammus''' stops rolling upon colliding with an enemy, {{tip|airborne|knocking back}} all nearby enemies 100 units over {{tt|{{fd|0.75}} seconds|Estimated}}, dealing them {{as|magic damage}}, and {{tip|slow|slowing}} them for 1 second. ''Powerball'' can be recast after 1 second.",
         "{{sbc|Recast:}} '''Rammus''' ends the {{tip|channel}} early."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ 100% AP)}}}}\n{{st|Slow|{{ap|40 to 80}}%}}"
+      ],
       "notes": "* The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n** If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Powerball'' will still collide with enemies if '''Rammus''' is {{tip|ghosted}}.\n* For the purpose of moving closer to an enemy when right clicking them, ''Powerball'' also reduces '''Rammus'''' attack range to 0 for the duration.\n** Because ''Powerball'' uses {{tip|center range}}, '''Rammus''' may still find himself not ''automatically'' colliding with targets with a [[Size#.7B.7Btip.7CChampions.7D.7D|radius]] of 135 units or larger. Instead, the player has to right click a destination that causes '''Rammus''' to attempt to roll close by the large enemy.\n* ''Powerball'' will trigger {{nie|Mana Charge}} twice (upon activation and when ending it prematurely).\n* ''Powerball'' is not a [[Channel#Movement Channels|movement channel]], and so will not be {{tip|interrupt|interrupted}} by {{tip|root}} and {{tip|ground}}.\n* The following table refers for interactions while '''Rammus''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|move=true|cast={{ai|Powerball|Rammus}} interrupts. {{ai|Frenzying Taunt|Rammus}} is disabled. {{ai|Tremors|Rammus}} is usable. This ability recasts to end channel.|items=interrupts,true,,false|spells=true,true,interrupts,interrupts,interrupts}}",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "60",
-      "cooldownBurn": "16/13.5/11/8.5/6",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|100 to 240}} {{as|(+ 100% AP)}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,135,170,205,240]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,135,170,205,240]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -139,15 +135,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[100,135,170,205,240]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "Slow",
-              "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   100,
                   135,
                   170,
@@ -156,8 +154,24 @@
                 ],
                 "player_total_ap": 1
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[100,135,170,205,240]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  40,
+                  50,
+                  60,
+                  70,
+                  80
+                ],
+                "player_total_ap": 1
+              },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[40,50,60,70,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -171,13 +185,7 @@
       "cooldown": [
         6
       ],
-      "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
+      "cost": 40,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -193,15 +201,16 @@
         "{{sbc|Active:}} '''Rammus''' drops into a defensive stance for 6 seconds, gaining {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, becoming {{tip|slow|slowed}} by 30%, increasing {{ais|Spiked Shell|Rammus}} damage by 50%, and applying it to enemies whenever they land a basic attack [[on-hit]] to '''Rammus'''. ''Defensive Ball Curl'' can be recast after 1 second.",
         "{{sbc|Recast:}} '''Rammus''' ends ''Defensive Ball Curl'' early."
       ],
+      "leveling": [
+        "{{st|Bonus Armor|30 {{as|(+ {{ap|60 to 100}}% '''total''' armor)}}}}\n{{st|Bonus Magic Resistance|10 {{as|(+ {{ap|30 to 50}}% '''total''' magic resistance)}}}}"
+      ],
       "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**Deactivating the ability manually does not.\n* ''Defensive Ball Curl'' ends immediately if {{ai|Powerball|Rammus}} is cast.\n* ''Defensive Ball Curl'' will return damage from attacks and/or abilities that apply [[on-hit effect]]s ({{ai|Mystic Shot|Ezreal}}) as well as from {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} (will not return damage from [[turret]]s, {{ai|H-28G Evolution Turret|Heimerdinger}}, or {{ai|Jack in the Box|Shaco}}).\n* The resistance scaling will factor from all other sources, including ''Defensive Ball Curl's'' flat bonus. This will recalculate over the duration.\n* The {{tip|slow}} is reduced by {{tip|slow resist}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "40",
-      "cooldownBurn": "6",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Armor|30 {{as|(+ {{ap|60 to 100}}% '''total''' armor)}}}}\n{{st|Bonus Magic Resistance|10 {{as|(+ {{ap|30 to 50}}% '''total''' magic resistance)}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Armor</span>: <span>30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>total</b> armor)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Magic Resistance</span>: <span>10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% <b>total</b> magic resistance)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Armor</span>: <span>30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\"></SpellSpan>% <b>total</b> armor)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Resistance</span>: <span>10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>% <b>total</b> magic resistance)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -230,8 +239,10 @@
               }
             ],
             "st_slices": [
+              "Bonus Armor",
+              "30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\"></SpellSpan>% '''total''' armor)</span>",
               "Bonus Magic Resistance",
-              "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''total''' magic resistance)</span>"
+              "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>% '''total''' magic resistance)</span>"
             ]
           },
           "subeffects": [
@@ -245,11 +256,26 @@
                   90,
                   100
                 ],
-                "player_total_armor": 607080901,
-                "player_total_mr": 30354045.5
+                "player_total_armor": 607080901
+              },
+              "title": "Bonus Armor",
+              "str": "30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\"></SpellSpan>% '''total''' armor)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ],
+                "player_total_armor": 607080901
               },
               "title": "Bonus Magic Resistance",
-              "str": "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% '''total''' magic resistance)</span>",
+              "str": "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>% '''total''' magic resistance)</span>",
               "damage_type": "none"
             }
           ]
@@ -267,13 +293,7 @@
         10.5,
         10
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": "{{tip|cr|icononly = true}} 325",
@@ -290,15 +310,16 @@
         "{{sbc|Active:}} '''Rammus''' {{tip|taunt|taunts}} the target enemy {{tip|champion}} or {{tip|monster}}, gaining {{sti|{{as|'''bonus''' attack speed}}}} for the duration.",
         "While {{ai|Powerball|Rammus}}, {{ai|Defensive Ball Curl|Rammus}} or {{ai|Tremors|Rammus}} is active, the {{sti|{{as|'''bonus''' attack speed}}}} duration refreshes."
       ],
+      "leveling": [
+        "{{st|Effect Duration|{{ap|1.25 to 2.25}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}"
+      ],
       "notes": "* ''Frenzying Taunt'', despite being usable on {{tip|monster|monsters}}, does not force them to attack '''Rammus'''. He does not draw aggro since the ability does not deal damage.\n* The bonus attack speed's duration is separate from the {{tip|taunt|taunt's}} duration.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50",
-      "cooldownBurn": "12/11.5/11/10.5/10",
       "effects": [
         {
           "levelingtext": "{{st|Effect Duration|{{ap|1.25 to 2.25}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 40}}%}}",
-          "str": "<ul><li><span class=\"blue\">Effect Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Effect Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -319,8 +340,10 @@
               ]
             ],
             "st_slices": [
+              "Effect Duration",
+              "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\"></SpellSpan>",
               "Bonus Attack Speed",
-              "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -335,8 +358,23 @@
                   2.25
                 ]
               },
+              "title": "Effect Duration",
+              "str": "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              },
               "title": "Bonus Attack Speed",
-              "str": "<SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -352,11 +390,7 @@
         80,
         60
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -372,15 +406,17 @@
         "{{sbc|Active:}} '''Rammus''' creates an earthquake around himself for 8 seconds, {{tip|slow|slowing}} and dealing {{as|magic damage}} each second to nearby enemies for the duration. Structures receive double damage.",
         "The {{tip|slow}} persists for {{fd|1.5}} seconds and stacks up to 8 times."
       ],
+      "leveling": [
+        "{{st|Magic Damage Per Second|{{ap|30 to 90}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|30*8 to 90*8}} {{as|(+ 160% AP)}}}}\n{{st|Structure Magic Damage Per Second|{{ap|30*2 to 90*2}} {{as|(+ 40% AP)}}|Structure Total Magic Damage|{{ap|30*2*8 to 90*2*8}} {{as|(+ 320% AP)}}}}",
+        "{{st|Slow|{{ap|8 to 12}}%|Maximum Slow|{{ap|8*8 to 12*8}}%}}"
+      ],
       "notes": "* {{tip|Spell shield}} only prevents one tick of the ability.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "100/80/60",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage Per Second|{{ap|30 to 90}} {{as|(+ 20% AP)}}|Total Magic Damage|{{ap|30*8 to 90*8}} {{as|(+ 160% AP)}}}}\n{{st|Structure Magic Damage Per Second|{{ap|30*2 to 90*2}} {{as|(+ 40% AP)}}|Structure Total Magic Damage|{{ap|30*2*8 to 90*2*8}} {{as|(+ 320% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage Per Second</span>: <span><SpellSpan :list=\"[30,60,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[240,480,720]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 160% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Structure Magic Damage Per Second</span>: <span><SpellSpan :list=\"[60,120,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Structure Total Magic Damage</span>: <span><SpellSpan :list=\"[480,960,1440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Second</span>: <span><SpellSpan :list=\"[30,60,90]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[240,480,720]\"></SpellSpan> <span class=\"ap\">(+ 160% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Structure Magic Damage Per Second</span>: <span><SpellSpan :list=\"[60,120,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Structure Total Magic Damage</span>: <span><SpellSpan :list=\"[480,960,1440]\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -421,10 +457,14 @@
               }
             ],
             "st_slices": [
+              "Magic Damage Per Second",
+              "<SpellSpan :list=\"[30,60,90]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "Total Magic Damage",
+              "<SpellSpan :list=\"[240,480,720]\"></SpellSpan> <span class=\"ap\">(+ 160% AP)</span>",
               "Structure Magic Damage Per Second",
-              "<SpellSpan :list=\"[60,120,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[60,120,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Structure Total Magic Damage",
-              "<SpellSpan :list=\"[480,960,1440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span>"
+              "<SpellSpan :list=\"[480,960,1440]\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span>"
             ]
           },
           "subeffects": [
@@ -436,10 +476,10 @@
                   60,
                   90
                 ],
-                "player_total_ap": 1.6
+                "player_total_ap": 0.2
               },
-              "title": "Structure Magic Damage Per Second",
-              "str": "<SpellSpan :list=\"[60,120,180]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "title": "Magic Damage Per Second",
+              "str": "<SpellSpan :list=\"[30,60,90]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -450,17 +490,45 @@
                   480,
                   720
                 ],
-                "player_total_ap": 1.6
+                "player_total_ap": 0.2
+              },
+              "title": "Total Magic Damage",
+              "str": "<SpellSpan :list=\"[240,480,720]\"></SpellSpan> <span class=\"ap\">(+ 160% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  120,
+                  180
+                ],
+                "player_total_ap": 0.2
+              },
+              "title": "Structure Magic Damage Per Second",
+              "str": "<SpellSpan :list=\"[60,120,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_damage": [
+                  480,
+                  960,
+                  1440
+                ],
+                "player_total_ap": 0.2
               },
               "title": "Structure Total Magic Damage",
-              "str": "<SpellSpan :list=\"[480,960,1440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span>",
+              "str": "<SpellSpan :list=\"[480,960,1440]\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Slow|{{ap|8 to 12}}%|Maximum Slow|{{ap|8*8 to 12*8}}%}}",
-          "str": "<ul><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[8,10,12]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[64,80,96]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[8,10,12]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[64,80,96]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -478,9 +546,9 @@
             ],
             "st_slices": [
               "Slow",
-              "<SpellSpan :list=\"[8,10,12]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "<SpellSpan :list=\"[8,10,12]\"></SpellSpan>%",
               "Maximum Slow",
-              "<SpellSpan :list=\"[64,80,96]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[64,80,96]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -494,7 +562,7 @@
                 ]
               },
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[8,10,12]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[8,10,12]\"></SpellSpan>%",
               "damage_type": "none"
             },
             {
@@ -507,7 +575,7 @@
                 ]
               },
               "title": "Maximum Slow",
-              "str": "<SpellSpan :list=\"[64,80,96]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[64,80,96]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

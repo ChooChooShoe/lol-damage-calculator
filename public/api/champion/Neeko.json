@@ -68,6 +68,7 @@
         "While disguised, '''Neeko''' can use basic attacks while keeping her form. Taking damage from enemy champions, or casting either {{ai|Blooming Burst|Neeko}} or {{ai|Tangle-Barbs|Neeko}} or leaping by {{ai|Pop Blossom|Neeko}} breaks the illusion and puts ''Inherent Glamour'' on {{sti|cooldown}}.",
         "When disguised, '''Neeko''' can select herself to deactivate her disguise, putting ''Inherent Glamour'' on a 2-second {{sti|cooldown}}."
       ],
+      "leveling": [],
       "notes": "* '''Neeko''' will copy aesthetics as well as superficial mechanical [[Champion statistic|Statistics]]. She will fake a number of readings:\n** [[Health|Health bar]] (original's current amount becomes her apparent maximum)\n** [[Manaless|Secondary resource]] - e.g. {{as|mana}}, {{as|energy}} or none at all (original's current amount becomes her apparent maximum)\n** [[Champion statistic|Stats]]\n** [[Buff|Buffs]] and [[Debuff|debuffs]] with their respective icons and VFX/SFX (there are exceptions)\n** Kill feed icon\n* A number of attributes she actually adopts are:\n** Default transformation toggle (non-innate)\n** Voice lines\n** Character interactions (jokes, taunts, dances, laughs, toggle effects), as well as their {{si|Recall}} animation\n*** '''Neeko''' can copy {{cis|Samira}} taunt animation but she will not actually throw the coin via the {{ai|Taunt|Samira|image = Samira splash coin.png}} ability.\n** Base movement speed\n** Attack range (will not adopt longer [[Range|attack range]])\n** [[Size]] (Only size modifiers or also base champion size?{{Pending for test}})",
       "skillkey": "I",
       "skillid": "i1",
@@ -77,13 +78,7 @@
       "riotId": "NeekoQ",
       "name": "Blooming Burst",
       "maxrank": 5,
-      "cooldown": [
-        7,
-        7,
-        7,
-        7,
-        7
-      ],
+      "cooldown": 7,
       "cost": [
         50,
         60,
@@ -106,15 +101,17 @@
         "{{sbc|Active:}} '''Neeko''' propels a seed at the target location that deals {{as|magic damage}} to enemies in the area.",
         "If the seed [[kill]]s an enemy or [[damage]]s a champion or large {{tip|monster}}, it will bloom again after a {{fd|0.75}}-second delay to deal {{as|magic damage}}. This can happen up-to twice per ''Blooming Burst''."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 50% AP)}}}}",
+        "{{st|Second and Third Bloom Damage|{{ap|40 to 120}} {{as|(+ 20% AP)}}|Total Maximum Damage|{{ap|80+40*2 to 260+120*2}} {{as|(+ 90% AP)}}}}"
+      ],
       "notes": "* {{tip|Spell shield}} blocks only one instance of damage.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "50/60/70/80/90",
-      "cooldownBurn": "7",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 50% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,7 +131,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
             ]
           },
           "subeffects": [
@@ -151,14 +148,14 @@
                 "player_total_ap": 0.5
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Second and Third Bloom Damage|{{ap|40 to 120}} {{as|(+ 20% AP)}}|Total Maximum Damage|{{ap|80+40*2 to 260+120*2}} {{as|(+ 90% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Second and Third Bloom Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Maximum Damage</span>: <span><SpellSpan :list=\"[160,245,330,415,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Second and Third Bloom Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Maximum Damage</span>: <span><SpellSpan :list=\"[160,245,330,415,500]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -188,9 +185,9 @@
             ],
             "st_slices": [
               "Second and Third Bloom Damage",
-              "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "Total Maximum Damage",
-              "<SpellSpan :list=\"[160,245,330,415,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
+              "<SpellSpan :list=\"[160,245,330,415,500]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
             ]
           },
           "subeffects": [
@@ -207,7 +204,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Second and Third Bloom Damage",
-              "str": "<SpellSpan :list=\"[40,60,80,100,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "str": "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -223,7 +220,7 @@
                 "player_total_ap": 0.2
               },
               "title": "Total Maximum Damage",
-              "str": "<SpellSpan :list=\"[160,245,330,415,500]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
+              "str": "<SpellSpan :list=\"[160,245,330,415,500]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -241,13 +238,7 @@
         17,
         16
       ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "costtype": "",
       "targeting": "Direction",
       "image": {
@@ -264,15 +255,17 @@
         "{{sbc|Active:}} '''Neeko''' becomes {{tip|invisibility|invisible}} for {{fd|0.5}} seconds, sending a temporary {{tip|clone}} of her {{ai|Inherent Glamour|Neeko|current form}} sprinting in the target direction for 3 seconds and up to 900 units away until it encounters terrain, at which it stops and remains idle. The clone is {{tip|untargetable}} to allies and for the first {{fd|0.5}} seconds of its lifespan to enemies.",
         "Both '''Neeko''' and the clone gain {{as|'''bonus''' movement speed}} for 3 seconds."
       ],
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 60% AP)}}}}\n{{st|Passive Movement Speed|{{as|{{ap|10 to 30}}%|ms}}}}",
+        "{{st|Active Movement Speed|{{as|{{ap|20 to 40}}%|ms}}}}"
+      ],
       "notes": "* Both '''Neeko''' and the clone use the same running animation.\n* The clone can still be targeted by allied {{tip|auto-targeted}} effects (e.g. {{si|Heal}}, {{ai|Celestial Blessing|Kayle}}).",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "0",
-      "cooldownBurn": "20/19/18/17/16",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 60% AP)}}}}\n{{st|Passive Movement Speed|{{as|{{ap|10 to 30}}%|ms}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Passive Movement Speed</span>: <span><span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Passive Movement Speed</span>: <span><span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -301,33 +294,50 @@
               }
             ],
             "st_slices": [
+              "Bonus Magic Damage",
+              "<SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "Passive Movement Speed",
-              "<span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>"
+              "<span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   50,
                   70,
                   90,
                   110,
                   130
                 ],
-                "player_total_ap": 0.6,
-                "player_total_unknown": 10152025.3
+                "player_total_ap": 0.6
+              },
+              "title": "Bonus Magic Damage",
+              "str": "<SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "player_total_ap": 0.6
               },
               "title": "Passive Movement Speed",
-              "str": "<span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>",
+              "str": "<span class=\"ms\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Active Movement Speed|{{as|{{ap|20 to 40}}%|ms}}}}",
-          "str": "<ul><li><span class=\"blue\">Active Movement Speed</span>: <span><span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Active Movement Speed</span>: <span><span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -347,7 +357,7 @@
             ],
             "st_slices": [
               "Active Movement Speed",
-              "<span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>"
+              "<span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
@@ -364,7 +374,7 @@
                 "player_total_unknown": 20253035.400000002
               },
               "title": "Active Movement Speed",
-              "str": "<span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span>",
+              "str": "<span class=\"ms\"><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span>",
               "damage_type": "none"
             }
           ]
@@ -404,15 +414,17 @@
         "{{sbc|Active:}} '''Neeko''' slings a magical spiral in the target direction, dealing {{as|magic damage}} and {{tip|root|rooting}} enemies it passes through.",
         "If ''Tangle-Barbs'' hits at least one enemy, it thereafter grows in size and speed, with the root duration increased."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 220}} {{as|(+ 60% AP)}}}}\n{{st|Root Duration|{{ap|0.7 to 1.5}}}}",
+        "{{st|Empowered Root Duration|{{ap|1.8 to 3}}}}"
+      ],
       "notes": "* ''Tangle-Barbs'' will cast from wherever '''Neeko''' is at the end of the cast time.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "60/65/70/75/80",
-      "cooldownBurn": "12/11.5/11/10.5/10",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 220}} {{as|(+ 60% AP)}}}}\n{{st|Root Duration|{{ap|0.7 to 1.5}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -438,15 +450,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "Root Duration",
-              "<SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\"></SpellSpan>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   115,
                   150,
@@ -455,15 +469,31 @@
                 ],
                 "player_total_ap": 0.6
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  0.7,
+                  0.9,
+                  1.1,
+                  1.3,
+                  1.5
+                ],
+                "player_total_ap": 0.6
+              },
               "title": "Root Duration",
-              "str": "<SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[0.7,0.9,1.1,1.3,1.5]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Empowered Root Duration|{{ap|1.8 to 3}}}}",
-          "str": "<ul><li><span class=\"blue\">Empowered Root Duration</span>: <span><SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered Root Duration</span>: <span><SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -478,7 +508,7 @@
             ],
             "st_slices": [
               "Empowered Root Duration",
-              "<SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -494,7 +524,7 @@
                 ]
               },
               "title": "Empowered Root Duration",
-              "str": "<SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[1.8,2.1,2.4,2.7,3]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -508,11 +538,7 @@
       "cooldown": [
         90
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -529,15 +555,17 @@
         "After winding up, the cast time begins and '''Neeko''' leaps into the air over the duration, gaining a {{tip|shield}} for 2 seconds that is increased for each enemy {{tip|champion}} that is nearby at the time of leaping.",
         "When the cast time ends, '''Neeko''' lands to burst out the energy, dealing {{as|magic damage}} to enemies in the area and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
       ],
+      "leveling": [
+        "{{st|Shield|{{ap|75 to 125}} {{as|(+ 75% AP)}}}}\n{{st|Bonus Shield Per Champion|{{ap|40 to 80}} {{as|(+ 40% AP)}}|Total Shield vs. 5 Champions|{{ap|75+(40*5) to 125+(80*5)}} {{as|(+ {{#expr:75+(40*5)}}% AP)}}}}",
+        "{{st|Magic Damage|{{ap|200 to 650}} {{as|(+ 130% AP)}}}}"
+      ],
       "notes": "'''Ability details:'''\n* The wind up uses a special bar similar to cast bars to represent when ''Pop Blossom's'' cast time will start.\n** The wind up has no special interactions.\n** During ''Pop Blossom's'' cast time, unlike for most [[cast time]]s, '''all''' active items and {{si|Flash}} are disabled.\n* The highlighted area is fixed around '''Neeko'''.\n* {{ai|Shapesplitter|Neeko}} clones disappear when ''Pop Blossom's'' cast time starts.\n* The shield amount considers {{tip|clone|clones}} as well.\n* ''Pop Blossom'' will burst from wherever '''Neeko''' is at the end of the cast time.\n'''Interactions:'''\n* On-cast effects are applied on activation.\n* {{tip|Stasis}} will not cancel ''Pop Blossom''.\n** ''Pop Blossom'' is the only ability in the game that can start its cast time during ''stasis''.\n* Note that the shield is not actually capped versus 5 enemy champions - if the ability hits additional clones or {{tip|hexakill|champions}}, the ability will grant additional stacks of bonus shield.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "90",
       "effects": [
         {
           "levelingtext": "{{st|Shield|{{ap|75 to 125}} {{as|(+ 75% AP)}}}}\n{{st|Bonus Shield Per Champion|{{ap|40 to 80}} {{as|(+ 40% AP)}}|Total Shield vs. 5 Champions|{{ap|75+(40*5) to 125+(80*5)}} {{as|(+ {{#expr:75+(40*5)}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[75,100,125]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Shield Per Champion</span>: <span><SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Shield vs. 5 Champions</span>: <span><SpellSpan :list=\"[275,400,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Shield Per Champion</span>: <span><SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Shield vs. 5 Champions</span>: <span><SpellSpan :list=\"[275,400,525]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -570,10 +598,12 @@
               }
             ],
             "st_slices": [
+              "Shield",
+              "<SpellSpan :list=\"[75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "Bonus Shield Per Champion",
-              "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Total Shield vs. 5 Champions",
-              "<SpellSpan :list=\"[275,400,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>"
+              "<SpellSpan :list=\"[275,400,525]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -585,10 +615,10 @@
                   100,
                   125
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.75
               },
-              "title": "Bonus Shield Per Champion",
-              "str": "<SpellSpan :list=\"[40,60,80]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "title": "Shield",
+              "str": "<SpellSpan :list=\"[75,100,125]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -599,17 +629,31 @@
                   60,
                   80
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.75
+              },
+              "title": "Bonus Shield Per Champion",
+              "str": "<SpellSpan :list=\"[40,60,80]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  275,
+                  400,
+                  525
+                ],
+                "player_total_ap": 0.75
               },
               "title": "Total Shield vs. 5 Champions",
-              "str": "<SpellSpan :list=\"[275,400,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>",
+              "str": "<SpellSpan :list=\"[275,400,525]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"capture-unknown\" dname=\"#expr:75+(40*5)\">Unknown value: #expr:75+(40*5)</simple-tooltip>% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Magic Damage|{{ap|200 to 650}} {{as|(+ 130% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,425,650]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,425,650]\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -627,7 +671,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[200,425,650]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span>"
+              "<SpellSpan :list=\"[200,425,650]\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span>"
             ]
           },
           "subeffects": [
@@ -642,7 +686,7 @@
                 "player_total_ap": 1.3
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[200,425,650]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span>",
+              "str": "<SpellSpan :list=\"[200,425,650]\"></SpellSpan> <span class=\"ap\">(+ 130% AP)</span>",
               "damage_type": "magic"
             }
           ]

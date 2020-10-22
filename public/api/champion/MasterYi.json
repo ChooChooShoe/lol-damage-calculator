@@ -69,6 +69,7 @@
         "If '''Master Yi's''' primary target is killed before the second strike, he automatically attacks another enemy within 300 range.",
         "''The second strike can {{tip|critical strike|critically strike}} {{tip|turrets|structures}}.''"
       ],
+      "leveling": [],
       "notes": "* Since ''Double Strike'' resets the counter on-attack and the second strike applies on-hit effects, the second strike is able to add a stack for the next ''Double Strike'' activation.\n* If ''Double Strike's'' target becomes {{tip|untargetable}} shortly after the triggering attack, it will still occur and deal its effects as usual.",
       "skillkey": "I",
       "skillid": "i1",
@@ -111,15 +112,17 @@
         "''Alpha Strike's'' primary and lesser damage can {{tip|critically strike}} for {{as|{{critical damage|60|melee}} AD}} {{as|'''bonus''' physical damage}} and {{as|{{critical damage|{{#expr:60*{{#var:l}}/100}}|melee}} AD}} {{as|'''bonus''' physical damage}} respectively.",
         "Basic attacks reduce ''Alpha Strike's'' {{sti|cooldown}} by 1 second."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Bonus Damage|{{ap|{{#var:m1}} to {{#var:m5}}}}}}",
+        "{{st|Reduced Damage|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Reduced Monster Damage|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}"
+      ],
       "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}} but not when '''Master Yi''' is {{tip|blind|blinded}}.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} in a 600 radius around it for up-until {{rutngt|0.6}} <!-- this 0.6s after reappearing value is not confirmed as \"the one\", btw, might also be 0.625s after reappearing or 0.75s after last bounce --> after ''Alpha Strike'' ends, including across terrain, though not into {{tip|brush|brushes}}. It will always grant vision around the primary target even if he doesn't bounce off it.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to {{tt|2000|From Yi's location at start of cast}} units; If the target teleports a very long distance, it will not be followed.\n* '''Master Yi''' can use [[summoner spell]]s with the exceptions of {{si|Flash}}, {{si|Teleport}}, {{si|Hexflash}}, and {{si|Mark}} / {{si|Dash}} during ''Alpha Strike''.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.{{bug}}\n* {{tip|Spell shield}} will only block a single instance of damage.\n*If '''Master Yi''' {{tip|death|dies}} during ''Alpha Strike'' and he is only focusing one target, the ability will only deal the reduced damage strikes and not the final tick of damage from reappearing.\n** If he is striking multiple targets the damage will be dealt immediately when ''dying'', and if he ''dies'' before the bounce from the last target, ''Alpha Strike'' will deal reduced damage only to all units he already bounced from.{{bug}}\n* If '''Master Yi''' enters {{tip|resurrection}} during ''Alpha Strike'' and he is only focusing one target, the ability will deal the reduced damage strikes as normal and the final tick of damage after being ''resurrected''.\n** If he is striking multiple targets, ''Alpha Strike'' will ''sometimes'' deal the reduced damage from repeated bounces and the main damage after being ''resurrected'', and ''sometimes'' only the reduced damage, unrelated to the number of targets available.{{bug}}",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "50/55/60/65/70",
-      "cooldownBurn": "18/17/16/15/14",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Bonus Damage|{{ap|{{#var:m1}} to {{#var:m5}}}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,11 +137,11 @@
             ],
             "st_slices": [
               "Physical Damage",
-              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Damage",
-              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Bonus Damage",
-              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -148,7 +151,7 @@
                 "base_damage": []
               },
               "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "damage_type": "physical"
             },
             {
@@ -157,7 +160,7 @@
                 "base_damage": []
               },
               "title": "Monster Damage",
-              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -166,14 +169,14 @@
                 "base_damage": []
               },
               "title": "Monster Bonus Damage",
-              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Reduced Damage|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Reduced Monster Damage|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -192,10 +195,14 @@
               {}
             ],
             "st_slices": [
+              "Reduced Damage",
+              "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+              "Reduced Monster Damage",
+              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
               "Maximum Single-Target Damage",
-              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
               "Max Monster Single-Target Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -204,8 +211,8 @@
               "ratios": {
                 "base_damage": []
               },
-              "title": "Maximum Single-Target Damage",
-              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "title": "Reduced Damage",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
               "damage_type": "unknown"
             },
             {
@@ -213,8 +220,26 @@
               "ratios": {
                 "base_damage": []
               },
+              "title": "Reduced Monster Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Maximum Single-Target Damage",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_damage": []
+              },
               "title": "Max Monster Single-Target Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -228,13 +253,7 @@
       "cooldown": [
         28
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -252,15 +271,18 @@
         "After the channel ends, '''Master Yi''' reduces incoming damage for another {{fd|0.25}} seconds, with lesser effectiveness against non-turret damage but greater effectiveness vs turret damage. {{bug|1}}<!-- Yes it scales down with ranks as of current patch contact AnataBakka or Teh 2020-04-20 -->",
         "''Meditate'' {{tip|basic attack reset|resets}} '''Master Yi's''' basic attack timer."
       ],
+      "leveling": [
+        "{{st|Minimum Healing Per Half Second|{{ap|15 to 55}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Healing Per Half Second|{{ap|15*2 to 55*2}} {{as|(+ 25% AP)}}}}<!--\n-->{{st|Minimum Total Healing|{{ap|15*8 to 55*8}} {{as|(+ 100% AP)}}|Maximum Total Healing|{{ap|15*8*2 to 55*8*2}} {{as|(+ 200% AP)}}}}",
+        "{{st|Damage Reduction|{{ap|60 to 70}}%|Turret Damage Reduction|{{ap|60/2 to 70/2}}%}}",
+        "{{st|Post-Channel Damage Reduction|{{ap|100-60 to 100-70}}%|Post-Channel Turret Damage Reduction|{{ap|100-60/2 to 100-70/2}}%}}"
+      ],
       "notes": "* ''Meditate's'' healing amount updates dynamically as he heals himself, making '''Master Yi''' heal for less as his '''current''' health increases.\n* The following table refers for interactions while '''Master Yi''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts}}",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "50",
-      "cooldownBurn": "28",
       "effects": [
         {
           "levelingtext": "{{st|Minimum Healing Per Half Second|{{ap|15 to 55}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Healing Per Half Second|{{ap|15*2 to 55*2}} {{as|(+ 25% AP)}}}}<!--\n-->{{st|Minimum Total Healing|{{ap|15*8 to 55*8}} {{as|(+ 100% AP)}}|Maximum Total Healing|{{ap|15*8*2 to 55*8*2}} {{as|(+ 200% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Minimum Total Healing</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><SpellSpan :list=\"[240,400,560,720,880]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minimum Total Healing</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -309,10 +331,14 @@
               }
             ],
             "st_slices": [
+              "Minimum Total Healing",
+              "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "Maximum Total Healing",
+              "<SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>",
               "Minimum Healing Per Half Second",
-              "<SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "<SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
               "Maximum Healing Per Half Second",
-              "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+              "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
             ]
           },
           "subeffects": [
@@ -326,10 +352,10 @@
                   45,
                   55
                 ],
-                "player_total_ap": 1
+                "player_total_ap": 0.25
               },
-              "title": "Minimum Healing Per Half Second",
-              "str": "<SpellSpan :list=\"[15,25,35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "title": "Minimum Total Healing",
+              "str": "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -342,17 +368,49 @@
                   90,
                   110
                 ],
-                "player_total_ap": 1
+                "player_total_ap": 0.25
+              },
+              "title": "Maximum Total Healing",
+              "str": "<SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  120,
+                  200,
+                  280,
+                  360,
+                  440
+                ],
+                "player_total_ap": 0.25
+              },
+              "title": "Minimum Healing Per Half Second",
+              "str": "<SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_progression": [
+                  240,
+                  400,
+                  560,
+                  720,
+                  880
+                ],
+                "player_total_ap": 0.25
               },
               "title": "Maximum Healing Per Half Second",
-              "str": "<SpellSpan :list=\"[30,50,70,90,110]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Damage Reduction|{{ap|60 to 70}}%|Turret Damage Reduction|{{ap|60/2 to 70/2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Turret Damage Reduction</span>: <span><SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%</span></li><li><span class=\"blue\">Turret Damage Reduction</span>: <span><SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -374,9 +432,9 @@
             ],
             "st_slices": [
               "Damage Reduction",
-              "<SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "<SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%",
               "Turret Damage Reduction",
-              "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -392,7 +450,7 @@
                 ]
               },
               "title": "Damage Reduction",
-              "str": "<SpellSpan :list=\"[60,62.5,65,67.5,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%",
               "damage_type": "unknown"
             },
             {
@@ -407,14 +465,14 @@
                 ]
               },
               "title": "Turret Damage Reduction",
-              "str": "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Post-Channel Damage Reduction|{{ap|100-60 to 100-70}}%|Post-Channel Turret Damage Reduction|{{ap|100-60/2 to 100-70/2}}%}}",
-          "str": "<ul><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -436,9 +494,9 @@
             ],
             "st_slices": [
               "Post-Channel Damage Reduction",
-              "<SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "<SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%",
               "Post-Channel Turret Damage Reduction",
-              "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -454,7 +512,7 @@
                 ]
               },
               "title": "Post-Channel Damage Reduction",
-              "str": "<SpellSpan :list=\"[40,37.5,35,32.5,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%",
               "damage_type": "unknown"
             },
             {
@@ -469,7 +527,7 @@
                 ]
               },
               "title": "Post-Channel Turret Damage Reduction",
-              "str": "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
@@ -487,13 +545,7 @@
         15,
         14
       ],
-      "cost": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
+      "cost": 0,
       "targeting": "Auto",
       "image": {
         "full": "WujuStyle.png",
@@ -507,15 +559,16 @@
       "description": [
         "{{sbc|Active:}} '''Master Yi''' empowers his sword, causing his basic attacks to deal {{sti|{{as|'''bonus''' true damage}}}} {{tip|on-hit}} for 5 seconds."
       ],
+      "leveling": [
+        "{{st|True Damage|{{as|{{ap|18 to 50}}|true damage}} {{as|(+ 35% '''bonus''' AD)}}}}"
+      ],
       "notes": "* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{tip|block|blocked}} but can be {{tip|dodge|dodged}} and/or missed if '''Master Yi''' is {{tip|blind|blinded}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "0",
-      "cooldownBurn": "18/17/16/15/14",
       "effects": [
         {
           "levelingtext": "{{st|True Damage|{{as|{{ap|18 to 50}}|true damage}} {{as|(+ 35% '''bonus''' AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\"></SpellSpan></span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -538,7 +591,7 @@
             ],
             "st_slices": [
               "True Damage",
-              "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>"
+              "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -556,7 +609,7 @@
                 "player_total_unknown": 1826344250
               },
               "title": "True Damage",
-              "str": "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>",
+              "str": "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>",
               "damage_type": "true"
             }
           ]
@@ -570,11 +623,7 @@
       "cooldown": [
         85
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -591,15 +640,16 @@
         "{{sbc|Active:}} '''Master Yi''' {{tip|cleanse|cleanses}} himself from all {{tip|slow|slows}} and {{tip|cripple|cripples}} and gains {{tip|ghosting}}, {{sti|{{as|'''bonus''' attack speed}}}}, {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{tip|slow-immune|slow immunity}}, and {{tip|cripple-immune|cripple immunity}} all for the next 7 seconds.",
         "While active, champion {{tip|takedown|takedowns}} extend the duration of ''Highlander'' by 7 seconds."
       ],
+      "leveling": [
+        "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}"
+      ],
       "notes": "* There are two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "85",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,45,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,45,65]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,45,55]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -616,8 +666,10 @@
               ]
             ],
             "st_slices": [
+              "Bonus Attack Speed",
+              "<SpellSpan :list=\"[25,45,65]\"></SpellSpan>%",
               "Bonus Movement Speed",
-              "<SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[35,45,55]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -630,8 +682,21 @@
                   65
                 ]
               },
+              "title": "Bonus Attack Speed",
+              "str": "<SpellSpan :list=\"[25,45,65]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  35,
+                  45,
+                  55
+                ]
+              },
               "title": "Bonus Movement Speed",
-              "str": "<SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[35,45,55]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

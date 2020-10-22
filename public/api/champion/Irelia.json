@@ -68,6 +68,7 @@
         "{{sbc|Ionian Fervor:}} '''Irelia''' gains {{as|{{passive progression/deprecated version|changedisplay=true|key=%|8 to 16|1;7;13}} {{sti|'''bonus''' attack speed}}}} per stack, up to {{as|{{passive progression/deprecated version|changedisplay=true|key=%|8*5 to 16*5|1;7;13}}|attack speed}}.",
         "At maximum stacks, '''Irelia's''' [[basic attack]]s deal {{as|{{passive progression/deprecated version|15 to 66}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{as|'''bonus''' magic damage}} [[on-hit]]."
       ],
+      "leveling": [],
       "notes": "* {{Pending for test}}: Parry interactions ({{tip|block}}, {{tip|dodge}}, and {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
@@ -84,13 +85,7 @@
         9,
         8
       ],
-      "cost": [
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
+      "cost": 20,
       "costtype": "Mana",
       "targeting": "Unit",
       "target_range": 600,
@@ -108,15 +103,16 @@
         "{{sbc|Active:}} '''Irelia''' {{tip|dashes}} through the target enemy's location, dealing {{as|physical damage}}, applying [[on-hit effect]]s and {{tip|healing}} herself. ''Bladesurge'' deals increased damage to {{tip|minions}}.",
         "''Bladesurge's'' {{sti|cooldown}} is reduced to {{fd|0.2}} seconds upon consuming a {{as|mark|buzzword}}, and resets if the target dies to or shortly after ''Bladesurge'' has completed."
       ],
+      "leveling": [
+        "{{st|Physical Damage|{{ap|5 to 85}} {{as|(+ 60% AD)}}|Minion Bonus Damage|{{ap|55 to 135}}|Minion Total Damage|{{ap|5+55 to 85+135}} {{as|(+ 60% AD)}}}}\n{{st|Heal|{{as|{{ap|12 to 20}}% AD}}}}"
+      ],
       "notes": "* ''Bladesurge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* If the target dies to ''Bladesurge'' and was also {{as|marked|buzzword}}, the cooldown is still fully refunded.\n* ''Bladesurge'' will only allow '''Irelia''' to dash through walls if there is enough space for her on the other side.\n* ''Bladesurge'' won't deal damage if the {{tip|dash}} is {{tip|interrupt|interrupted}}.\n** But the damage cannot be dodged via instant displacement (i.e - {{ai|Urchin Strike|Fizz}}).",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "20",
-      "cooldownBurn": "12/11/10/9/8",
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|5 to 85}} {{as|(+ 60% AD)}}|Minion Bonus Damage|{{ap|55 to 135}}|Minion Total Damage|{{ap|5+55 to 85+135}} {{as|(+ 60% AD)}}}}\n{{st|Heal|{{as|{{ap|12 to 20}}% AD}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[5,25,45,65,85]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span></span></li><li><span class=\"blue\">Minion Bonus Damage</span>: <span><SpellSpan :list=\"[55,75,95,115,135]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li><li><span class=\"blue\">Minion Total Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Heal</span>: <span><span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[5,25,45,65,85]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span></span></li><li><span class=\"blue\">Minion Bonus Damage</span>: <span><SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan></span></li><li><span class=\"blue\">Minion Total Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AD</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -162,25 +158,79 @@
               }
             ],
             "st_slices": [
+              "Physical Damage",
+              "<SpellSpan :list=\"[5,25,45,65,85]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
+              "Minion Bonus Damage",
+              "<SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan>",
+              "Minion Total Damage",
+              "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
               "Heal",
-              "<span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span>"
+              "<span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AD</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   5,
                   25,
                   45,
                   65,
                   85
                 ],
-                "player_total_ad": 12141618.200000001
+                "player_total_ad": 0.6
+              },
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[5,25,45,65,85]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  55,
+                  75,
+                  95,
+                  115,
+                  135
+                ],
+                "player_total_ad": 0.6
+              },
+              "title": "Minion Bonus Damage",
+              "str": "<SpellSpan :list=\"[55,75,95,115,135]\"></SpellSpan>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ad": 0.6
+              },
+              "title": "Minion Total Damage",
+              "str": "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 3,
+              "ratios": {
+                "base_progression": [
+                  12,
+                  14,
+                  16,
+                  18,
+                  20
+                ],
+                "player_total_ad": 0.6
               },
               "title": "Heal",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD</span>",
+              "str": "<span class=\"ad\"><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AD</span>",
               "damage_type": "none"
             }
           ]
@@ -223,15 +273,16 @@
         "{{sbc|Recast:}} '''Irelia''' swipes with her blades early.",
         "''Defiant Dance's recast can be used while affected by {{tip|crowd control}}.''"
       ],
+      "leveling": [
+        "{{st|Minimum Damage|{{ap|10 to 70}} {{as|(+ 50% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|10*2 to 70*2}} {{as|(+ 100% AD)}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "* Quick Casting utilizes hold-and-release for the two casts.\n* ''Defiant Dance'' reaches 100% physical damage reduction at {{as|{{fd|714.29}} AP}}.\n* The swipe will cast from wherever '''Irelia''' is at the end of the cast time.\n* The following table refers for interactions while '''Irelia''' is {{tip|channel|channeling}}:\n{{ct|charge|cast=false|items=false|move=false|consume=Disabled, but can still use trinkets|spells=true,false,false,false,recasts|interrupts=death}}",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "20/18/16/14/12",
       "effects": [
         {
           "levelingtext": "{{st|Minimum Damage|{{ap|10 to 70}} {{as|(+ 50% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|10*2 to 70*2}} {{as|(+ 100% AD)}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[20,50,80,110,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[20,50,80,110,140]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -267,9 +318,9 @@
             ],
             "st_slices": [
               "Minimum Damage",
-              "<SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
               "Maximum Damage",
-              "<SpellSpan :list=\"[20,50,80,110,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[20,50,80,110,140]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -287,7 +338,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Minimum Damage",
-              "str": "<SpellSpan :list=\"[10,25,40,55,70]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "unknown"
             },
             {
@@ -304,7 +355,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[20,50,80,110,140]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[20,50,80,110,140]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "unknown"
             }
           ]
@@ -322,13 +373,7 @@
         13.5,
         12
       ],
-      "cost": [
-        50,
-        50,
-        50,
-        50,
-        50
-      ],
+      "cost": 50,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": 775,
@@ -347,15 +392,16 @@
         "{{sbc|Recast:}} '''Irelia''' sends out the second blade early to the target location.",
         "''Flawless Duet's recast can be used while affected by {{tip|crowd control}} and during {{ais|R|Irelia}} cast time.''"
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 80% AP)}}}}"
+      ],
       "notes": "*Both casts count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}}, charging {{ii|Spellbinder}}, and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger and it will be considered as an ability activation. This is the only ability with this interaction in the game.\n* The blades will not stun nor deal damage if they do not converge (i.e {{cai|Wind Wall|Yasuo}}).\n* '''Irelia''' can recast ''Flawless Duet'' during {{sis|Hexflash}} channel without interrupting it.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "50",
-      "cooldownBurn": "18/16.5/15/13.5/12",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -375,7 +421,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -392,7 +438,7 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
@@ -408,11 +454,7 @@
         120,
         100
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 1000,
@@ -430,15 +472,17 @@
         "After expanding, the blades drop on the ground, knocking all enemy units away from them, though not rendering them {{tip|airborne}}, and forming a spade-shaped perimeter around the enemy champion hit for {{fd|2.5}} seconds. Enemies that pass through the blades are dealt {{as|magic damage}} and are {{tip|slow|slowed}} by 90% for {{fd|1.5}} seconds.",
         "''The perimeter will point at the same angle '''Irelia''' cast it from, but based on the target's center.''"
       ],
+      "leveling": [
+        "{{st|Barrage Damage|{{ap|125 to 375}} {{as|(+ 70% AP)}}}}",
+        "{{st|Perimeter Damage|{{ap|125 to 375}} {{as|(+ 70% AP)}}}}"
+      ],
       "notes": "* Enemies that cross the perimeter are '''not''' {{as|marked|buzzword}} for {{ai|Bladesurge|Irelia}}.\n* ''Vanguard's Edge'' will fire from '''Irelia's''' location at the end of the cast time.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "140/120/100",
       "effects": [
         {
           "levelingtext": "{{st|Barrage Damage|{{ap|125 to 375}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Barrage Damage</span>: <span><SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Barrage Damage</span>: <span><SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -456,7 +500,7 @@
             ],
             "st_slices": [
               "Barrage Damage",
-              "<SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -471,14 +515,14 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Barrage Damage",
-              "str": "<SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "unknown"
             }
           ]
         },
         {
           "levelingtext": "{{st|Perimeter Damage|{{ap|125 to 375}} {{as|(+ 70% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Perimeter Damage</span>: <span><SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Perimeter Damage</span>: <span><SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -496,7 +540,7 @@
             ],
             "st_slices": [
               "Perimeter Damage",
-              "<SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
@@ -511,7 +555,7 @@
                 "player_total_ap": 0.7000000000000001
               },
               "title": "Perimeter Damage",
-              "str": "<SpellSpan :list=\"[125,250,375]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "str": "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
               "damage_type": "unknown"
             }
           ]

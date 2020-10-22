@@ -67,6 +67,7 @@
         "{{sbc|Innate:}} '''Wukong''' gains {{as|{{passive progression/deprecated version|5 to 9}} {{sti|'''bonus''' armor}}}} and [[Health regeneration|regenerates]] {{as|{{fd|0.5}}% of his '''maximum''' health}} per 5 seconds.",
         "These effects are increased by 50% for 5 seconds whenever '''Wukong''' or his {{ai|Warrior Trickster|Wukong|clone}} damage an enemy {{tip|champion}} or {{tip|monster}}. Bonuses [[stack]] up to 10 times to a maximum of {{as|{{passive progression/deprecated version|5*(1+0.5*10) to 9*(1+0.5*10)}} '''bonus''' armor}} and {{as|3% '''maximum''' health}} regeneration."
       ],
+      "leveling": [],
       "notes": "* No additional details",
       "skillkey": "I",
       "skillid": "i1",
@@ -83,13 +84,7 @@
         7.5,
         7
       ],
-      "cost": [
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
+      "cost": 40,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -107,15 +102,16 @@
         "''Crushing Blow'' {{tip|basic attack reset|resets}} '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone's}} basic attack timer.",
         "''Other abilities can be used during the attack's animation.''"
       ],
+      "leveling": [
+        "{{st|Bonus Range|{{ap|75 to 175}}}}\n{{st|Bonus Physical Damage|{{ap|20 to 120}} {{as|(+ 50% '''bonus''' AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}"
+      ],
       "notes": "* ''Crushing Blow'' triggers on {{tip|turret|structures}} and {{tip|ward|wards}} but the armor reduction is not applied.\n* Pressing ''S'' will cancel the animation and the attack will still land, but '''Wukong''' will not be able to move until it lands.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "40",
-      "cooldownBurn": "9/8.5/8/7.5/7",
       "effects": [
         {
           "levelingtext": "{{st|Bonus Range|{{ap|75 to 175}}}}\n{{st|Bonus Physical Damage|{{ap|20 to 120}} {{as|(+ 50% '''bonus''' AD)}}}}\n{{st|Armor Reduction|{{as|{{ap|10 to 30}}% of target's armor}}}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul><br><ul><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>% of target's armor</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -151,8 +147,12 @@
               }
             ],
             "st_slices": [
+              "Bonus Range",
+              "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan>",
+              "Bonus Physical Damage",
+              "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
               "Armor Reduction",
-              "<span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span>"
+              "<span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>% of target's armor</span>"
             ]
           },
           "subeffects": [
@@ -166,11 +166,42 @@
                   150,
                   175
                 ],
-                "player_bonus_ad": 0.5,
-                "target_total_armor": 10152025.3
+                "player_bonus_ad": 0.5
+              },
+              "title": "Bonus Range",
+              "str": "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": [
+                  20,
+                  45,
+                  70,
+                  95,
+                  120
+                ],
+                "player_bonus_ad": 0.5
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_progression": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "player_bonus_ad": 0.5
               },
               "title": "Armor Reduction",
-              "str": "<span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's armor</span>",
+              "str": "<span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>% of target's armor</span>",
               "damage_type": "none"
             }
           ]
@@ -213,15 +244,16 @@
         "The clone deals reduced outgoing damage.",
         "'''Wukong''' can cast any of his [[champion ability|abilities]] during ''Warrior Trickster's'' dash."
       ],
+      "leveling": [
+        "{{st|Clone Damage|{{ap|35 to 55}}%}}"
+      ],
       "notes": "* Casting ''Warrior Trickster'' during an ability's effects will transfer them to the clone.\n* {{tip|Turret}} shots instantly kill the clone.\n* The clone is immune to {{tip|stasis}} and {{ui|Blast Cone}}.\n* The clone can still be targeted by allied {{tip|auto-targeted}} effects (e.g. {{si|Heal}}, {{ai|Celestial Blessing|Kayle}}).",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "80/70/60/50/40",
-      "cooldownBurn": "20/19/18/17/16",
       "effects": [
         {
           "levelingtext": "{{st|Clone Damage|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Clone Damage</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Clone Damage</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -236,7 +268,7 @@
             ],
             "st_slices": [
               "Clone Damage",
-              "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -252,7 +284,7 @@
                 ]
               },
               "title": "Clone Damage",
-              "str": "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%",
               "damage_type": "unknown"
             }
           ]
@@ -294,15 +326,17 @@
         "Upon hitting his target, '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone}} gain {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.",
         "'''Wukong''' cannot cast {{ai|Warrior Trickster|Wukong}} nor {{ai|Cyclone|Wukong}} while dashing, but he may still buffer them. {{ai|Crushing Blow|Wukong}} can be used."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 80% AP)}}}}",
+        "{{st|Bonus Attack Speed|{{ap|40 to 60}}%}}"
+      ],
       "notes": "* ''Nimbus Strike'' has an offset distance of 75 units from the target dashed to.\n* The ability applies a stack of {{ri|Electrocute}} / {{ri|Phase Rush}} even if the target is {{tip|untargetable}}.\n* The created ''clones'' are considered champions for {{ii|Turret Plating|Turret Plating's}} {{g|gold}} sharing.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "30/35/40/45/50",
-      "cooldownBurn": "10/9.5/9/8.5/8",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -322,7 +356,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -339,14 +373,14 @@
                 "player_total_ap": 0.8
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,110,140,170,200]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|40 to 60}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -361,7 +395,7 @@
             ],
             "st_slices": [
               "Bonus Attack Speed",
-              "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -377,7 +411,7 @@
                 ]
               },
               "title": "Bonus Attack Speed",
-              "str": "<SpellSpan :list=\"[40,45,50,55,60]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -393,11 +427,7 @@
         105,
         90
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "mana",
       "targeting": "Auto",
       "image": {
@@ -416,15 +446,16 @@
         "{{ais|Nimbus Strike|Wukong}} {{as|'''bonus''' attack speed}} duration is continuously refreshed while spinning.",
         "''Cyclone's'' damage is capped at {{passive progression/deprecated version|3|200 to 600|6;11;16}} per second against {{tip|monsters}}."
       ],
+      "leveling": [
+        "{{st|Damage Per Tick|{{as|{{ap|4/4 to 8/4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110/4}}% AD)}} |Total Damage|{{as|{{ap|4*4 to 8*4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110*4}}% AD)}}}}"
+      ],
       "notes": "* ''Cyclone'' is special cased to grant stacks of {{ri|Conqueror}} for each tick of damage.\n* Casting {{ai|Crushing Blow|Wukong}} will cancel ''Cyclone'' for both '''Wukong''' and his clone. {{ai|Warrior Trickster|Wukong}} and {{ai|Nimbus Strike|Wukong}} will only interrupt '''Wukong's''' ''Cyclone''.\n* ''Cyclone's'' remaining duration always stays the same even after the clone replicated the ability.\n* During ''Cyclone'', '''Wukong''' and his clone's {{sti|attack ranges}} are reduced by 125.\n* {{tip|Spell shield}} will block one instance of damage.\n** Blocking the {{tip|airborne|knock up}} will still grant immunity to it from either of ''Cyclone's'' casts.\n{{ct|attack=false|move=true|cast=Other abilities are disabled for the first {{fd|0.3}} seconds, casting them afterwards interrupts.|items=true|consume=true|spells=true,true,true,false,true|interrupts=death}}",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "120/105/90",
       "effects": [
         {
           "levelingtext": "{{st|Damage Per Tick|{{as|{{ap|4/4 to 8/4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110/4}}% AD)}} |Total Damage|{{as|{{ap|4*4 to 8*4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110*4}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Damage Per Tick</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> </span></li><li><span class=\"blue\">Total Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[16,24,32]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Per Tick</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span> </span></li><li><span class=\"blue\">Total Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -462,9 +493,9 @@
             ],
             "st_slices": [
               "Damage Per Tick",
-              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> ",
+              "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span> ",
               "Total Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>"
+              "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span>"
             ]
           },
           "subeffects": [
@@ -480,7 +511,7 @@
                 "player_total_ad": 0.275
               },
               "title": "Damage Per Tick",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span> ",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span> ",
               "damage_type": "unknown"
             },
             {
@@ -493,7 +524,7 @@
                 "player_total_ad": 0.275
               },
               "title": "Total Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span>",
               "damage_type": "unknown"
             }
           ]

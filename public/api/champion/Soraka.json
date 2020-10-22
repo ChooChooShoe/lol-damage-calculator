@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Soraka''' gains {{sti|ms|{{as|70% '''bonus''' movement speed}}}} when moving towards allied [[champion]]s below {{as|{{sti|health|40% of their '''maximum''' health}}}}."
       ],
+      "leveling": [],
       "notes": "* '''Soraka''' will be able to recognize champions under the health threshold for the sake of both ''Salvation'' and {{ai|Wish|Soraka}}.\n* The movement speed of ''Salvation'' only applies when '''Soraka''' is facing in the direction of her low-health ally, even if her line of {{tip|sight}} is obstructed by terrain. Merely pathing towards their location will not necessarily grant her the buff.\n** A line of arrows points to allied targets, similar to that displayed by {{cai|Dark Passage|Thresh}} or {{cai|Last Breath|Yasuo}}, indicating the direction in which she can gain the bonus movement speed.",
       "skillkey": "I",
       "skillid": "i1",
@@ -106,15 +107,17 @@
         "Hitting at least one enemy {{tip|champion}} returns the star dust toward '''Soraka''', granting her ''Rejuvenation'' for {{fd|2.5}} seconds, {{tip|heal|healing}} her every {{fd|0.5}} seconds and granting her {{sti|ms|{{as|'''bonus''' movement speed}}}}, decaying over the duration.",
         "While '''Soraka''' is ''Rejuvenated'' she can ''Rejuvenate'' other allies with {{ai|Astral Infusion|Soraka}}, granting them the same effects for the same duration."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|85 to 225}} {{as|(+ 35% AP)}}}}",
+        "{{st|Total Self-Heal|{{ap|50 to 90}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{ap|15 to 25}}%}}"
+      ],
       "notes": "* ''Starcall'' counts as hitting even if it gets blocked by {{tip|spell shield}} or {{ai|Riposte|Fiora}}, granting ''Rejuvenation''.\n* {{cai|Wind Wall|Yasuo}} and {{cai|Unbreakable|Braum}} can block the ''Rejuvenation'' projectile.\n* ''Rejuvenation'' heals over 12 ticks, with the first 4 each healing for about 15% of the heal, the next 4 ticks for about {{fd|5.5}}% each, and the last 4 for about {{fd|4.5}}% each.\n* ''Rejuvenation'' won't be granted and '''Soraka''' won't be able to make use of the health cost reduction on {{ai|Astral Infusion|Soraka}} until the projectile gets to her, but she is able to ''Rejuvenate'' allies as soon as the target is hit.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "45/50/55/60/65",
-      "cooldownBurn": "8/7/6/5/4",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|85 to 225}} {{as|(+ 35% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,120,155,190,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,120,155,190,225]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -134,7 +137,7 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[85,120,155,190,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
+              "<SpellSpan :list=\"[85,120,155,190,225]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
             ]
           },
           "subeffects": [
@@ -151,14 +154,14 @@
                 "player_total_ap": 0.35000000000000003
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[85,120,155,190,225]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
+              "str": "<SpellSpan :list=\"[85,120,155,190,225]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Total Self-Heal|{{ap|50 to 90}} {{as|(+ 30% AP)}}}}\n{{st|Bonus Movement Speed|{{ap|15 to 25}}%}}",
-          "str": "<ul><li><span class=\"blue\">Total Self-Heal</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,17.5,20,22.5,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Self-Heal</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,17.5,20,22.5,25]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -184,8 +187,10 @@
               }
             ],
             "st_slices": [
+              "Total Self-Heal",
+              "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Bonus Movement Speed",
-              "<SpellSpan :list=\"[15,17.5,20,22.5,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[15,17.5,20,22.5,25]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -201,8 +206,24 @@
                 ],
                 "player_total_ap": 0.3
               },
+              "title": "Total Self-Heal",
+              "str": "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  15,
+                  17.5,
+                  20,
+                  22.5,
+                  25
+                ],
+                "player_total_ap": 0.3
+              },
               "title": "Bonus Movement Speed",
-              "str": "<SpellSpan :list=\"[15,17.5,20,22.5,25]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[15,17.5,20,22.5,25]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -240,15 +261,18 @@
         "If cast while {{ai|Starcall|Soraka|Rejuvenated}}, the health cost will be reduced by a percentage.",
         "''Astral Infusion'' cannot be cast if '''Soraka''' is {{as|{{sti|health|below 5% of her '''maximum''' health}}}}."
       ],
+      "leveling": [
+        "{{st|Heal|{{ap|80 to 220}} {{as|(+ 60% AP)}}}}",
+        "{{st|Health Cost Reduction|{{ap|80 to 100}}%}}"
+      ],
       "notes": "* ''Astral Infusion'' can also be targeted on allied {{tip|clone|decoys}}.\n* ''Astral Infusion'' can be cast even if '''Soraka''' doesn't have the sufficient amount of health to pay for the health cost while above {{as|{{sti|health|5% of her '''maximum''' health}}}}.\n** As with all abilities with health costs, ''Astral Infusion'' will not reduce '''Soraka's''' health below {{as|1|hp}}.\n* {{ii|Spirit Visage}} will only increase the health donated to allies if the target ally possesses it, although owning it ''will'' boost the heal that '''Soraka''' receives from {{ai|Starcall|Soraka}} and {{ai|Wish|Soraka}}.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "10",
-      "cooldownBurn": "6/5/4/3/2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|10%|health}} as 10 and riot's value 40,45,50,55,60 as 40/45/50/55/60",
       "effects": [
         {
           "levelingtext": "{{st|Heal|{{ap|80 to 220}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -268,7 +292,7 @@
             ],
             "st_slices": [
               "Heal",
-              "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -285,14 +309,14 @@
                 "player_total_ap": 0.6
               },
               "title": "Heal",
-              "str": "<SpellSpan :list=\"[80,115,150,185,220]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "none"
             }
           ]
         },
         {
           "levelingtext": "{{st|Health Cost Reduction|{{ap|80 to 100}}%}}",
-          "str": "<ul><li><span class=\"blue\">Health Cost Reduction</span>: <span><SpellSpan :list=\"[80,85,90,95,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Health Cost Reduction</span>: <span><SpellSpan :list=\"[80,85,90,95,100]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -307,7 +331,7 @@
             ],
             "st_slices": [
               "Health Cost Reduction",
-              "<SpellSpan :list=\"[80,85,90,95,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[80,85,90,95,100]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -323,7 +347,7 @@
                 ]
               },
               "title": "Health Cost Reduction",
-              "str": "<SpellSpan :list=\"[80,85,90,95,100]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[80,85,90,95,100]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -364,15 +388,17 @@
         "{{sbc|Active:}} '''Soraka''' creates a celestial zone at the target location, dealing {{as|magic damage}} to enemy champions that were inside it upon creation. The zone then persists for {{fd|1.5}} seconds, {{tip|silence|silencing}} all enemy champions within it every {{fd|0.25}} seconds.",
         "After the duration, the zone detonates, dealing the same {{as|magic damage}} to all enemy champions within and briefly {{tip|root|rooting}} them."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 40% AP)}}|Total Magic Damage|{{ap|70*2 to 170*2}} {{as|(+ 80% AP)}}}}",
+        "{{st|Root Duration|{{ap|1 to 2}}}}"
+      ],
       "notes": "* ''Equinox's'' persistent {{tip|silence}} is removed by {{tip|cleanse|cleanses}} but does not grant immunity to it; leaving the area and coming back inside applies the ''silence debuff'' regardless.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "70/75/80/85/90",
-      "cooldownBurn": "20/19/18/17/16",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 40% AP)}}|Total Magic Damage|{{ap|70*2 to 170*2}} {{as|(+ 80% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,95,120,145,170]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[140,190,240,290,340]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[140,190,240,290,340]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -402,9 +428,9 @@
             ],
             "st_slices": [
               "Magic Damage",
-              "<SpellSpan :list=\"[70,95,120,145,170]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "<SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "Total Magic Damage",
-              "<SpellSpan :list=\"[140,190,240,290,340]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              "<SpellSpan :list=\"[140,190,240,290,340]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
@@ -421,7 +447,7 @@
                 "player_total_ap": 0.4
               },
               "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[70,95,120,145,170]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "str": "<SpellSpan :list=\"[70,95,120,145,170]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
               "damage_type": "magic"
             },
             {
@@ -437,14 +463,14 @@
                 "player_total_ap": 0.4
               },
               "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[140,190,240,290,340]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+              "str": "<SpellSpan :list=\"[140,190,240,290,340]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
               "damage_type": "magic"
             }
           ]
         },
         {
           "levelingtext": "{{st|Root Duration|{{ap|1 to 2}}}}",
-          "str": "<ul><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -459,7 +485,7 @@
             ],
             "st_slices": [
               "Root Duration",
-              "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -475,7 +501,7 @@
                 ]
               },
               "title": "Root Duration",
-              "str": "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -491,11 +517,7 @@
         145,
         130
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Auto",
       "image": {
@@ -510,15 +532,16 @@
       "description": [
         "{{sbc|Active:}} '''Soraka''' calls upon the stars, instantly {{tip|healing}} all allied champions, and herself, which is increased by 50% on targets below {{as|{{sti|health|40% of their '''maximum''' health}}}}."
       ],
+      "leveling": [
+        "{{st|Heal|{{ap|150|250|350}} {{as|(+ 55% AP)}}|Enhanced Heal|{{ap|225|375|525}} {{as|(+ {{fd|82.5}}% AP)}}}}"
+      ],
       "notes": "* {{tip|Untargetable|Untargetability}} does not invalidate the targeting of the heal.\n* ''Wish'' will not credit '''Soraka''' for [[assist]]ing in a [[kill|champion kill]] if the target ally is at full health.\n* ''Wish'' will apply heal effects (such as {{ri|Summon Aery}}) prioritizing targets based on the ''Spawn ID'', which is the order in which units were added to an ongoing game. For {{tip|champions}}, this is the order they appear in from left to right in the loading screen.\n* ''Wish's'' effects occur before the cast time.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "160/145/130",
       "effects": [
         {
           "levelingtext": "{{st|Heal|{{ap|150|250|350}} {{as|(+ 55% AP)}}|Enhanced Heal|{{ap|225|375|525}} {{as|(+ {{fd|82.5}}% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li><li><span class=\"blue\">Enhanced Heal</span>: <span><SpellSpan :list=\"[225,375,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li><li><span class=\"blue\">Enhanced Heal</span>: <span><SpellSpan :list=\"[225,375,525]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -544,9 +567,9 @@
             ],
             "st_slices": [
               "Heal",
-              "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
+              "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
               "Enhanced Heal",
-              "<SpellSpan :list=\"[225,375,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span>"
+              "<SpellSpan :list=\"[225,375,525]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -561,7 +584,7 @@
                 "player_total_ap": 0.55
               },
               "title": "Heal",
-              "str": "<SpellSpan :list=\"[150,250,350]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -575,7 +598,7 @@
                 "player_total_ap": 0.55
               },
               "title": "Enhanced Heal",
-              "str": "<SpellSpan :list=\"[225,375,525]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span>",
+              "str": "<SpellSpan :list=\"[225,375,525]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">82.5</span>% AP)</span>",
               "damage_type": "none"
             }
           ]

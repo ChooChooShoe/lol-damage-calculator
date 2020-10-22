@@ -60,13 +60,7 @@
         8,
         7
       ],
-      "cost": [
-        60,
-        60,
-        60,
-        60,
-        60
-      ],
+      "cost": 60,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 850,
@@ -83,15 +77,16 @@
         "{{sbc|Active:}} '''Bard''' fires a burst of spirit energy in the target direction, dealing {{as|magic damage}} to the first enemy struck and {{tip|slow|slowing}} them by 60% for a duration.",
         "After ''Cosmic Binding'' hits an enemy, the energy continues behind them for {{tt|300 units|Estimated}}. If the burst hits terrain or a second enemy, it {{tip|stun|stuns}} both targets for the same duration, dealing the same {{as|magic damage}} to the second target as well."
       ],
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 65% AP)}}}}{{st|Disable Duration|{{ap|1 to 1.8}}}}"
+      ],
       "notes": "* {{tip|Spell shield|Spell shielding}} the ability as the first target will still have the energy pass through them, and, upon hitting a second target, only the second target will be stunned.\n** If the ability is only ''spell shielded'' by the second target, the first target will still be stunned.\n** If the ability hit the first target and then they activate a ''spell shield'', the stun will not be blocked.\n* The {{tip|stun}} will apply even if the first target becomes {{tip|untargetable}}.\n* ''Cosmic Binding'' will take into account player-created terrain such as {{ai|Cataclysm|Jarvan IV}} and {{ai|Crystallize|Anivia}}.\n* The {{tip|stun}} is still applied even if the first or second target dies to the ability itself or before the projectile can bind them.\n* In {{tip|Summoner's Rift}}, the allied base entrance gates will not interact with ''Cosmic Binding'' as they are only considered terrain to the enemy.\n* ''Cosmic Binding'' does not grant {{tip|sight}} of enemies hit, but a hit can be seen and heard to indicate that at least one enemy is there.",
       "skillkey": "Q",
       "skillid": "q1",
-      "costBurn": "60",
-      "cooldownBurn": "11/10/9/8/7",
       "effects": [
         {
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 65% AP)}}}}{{st|Disable Duration|{{ap|1 to 1.8}}}}",
-          "str": "<ul><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -117,15 +112,17 @@
               }
             ],
             "st_slices": [
+              "Magic Damage",
+              "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
               "Disable Duration",
-              "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
+              "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   125,
                   170,
@@ -134,8 +131,24 @@
                 ],
                 "player_total_ap": 0.65
               },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_progression": [
+                  1,
+                  1.2,
+                  1.4,
+                  1.6,
+                  1.8
+                ],
+                "player_total_ap": 0.65
+              },
               "title": "Disable Duration",
-              "str": "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "str": "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]
@@ -146,20 +159,8 @@
       "riotId": "BardW",
       "name": "Caretaker's Shrine",
       "maxrank": 5,
-      "cooldown": [
-        14,
-        14,
-        14,
-        14,
-        14
-      ],
-      "cost": [
-        70,
-        70,
-        70,
-        70,
-        70
-      ],
+      "cooldown": 14,
+      "cost": 70,
       "costtype": "Mana",
       "targeting": "[[Location-targeted|Location]] / [[Unit-targeted|Unit]]",
       "target_range": 800,
@@ -177,15 +178,16 @@
         "If the champion was an ally or '''Bard''' himself, they are {{tip|heal|healed}} for an amount based on the shrine's power and gain {{sti|ms|{{as|30% '''bonus''' movement speed}}}} that decays over {{fd|1.5}} seconds.",
         "If the champion was an enemy, the shrine is destroyed."
       ],
+      "leveling": [
+        "{{st|Minimum Heal|{{ap|30 to 150}} {{as|(+ 30% AP)}}|Maximum Heal|{{ap|55 to 215}} {{as|(+ 60% AP)}}}}"
+      ],
       "notes": "* ''Caretaker's Shrine'' can be cast directly on an ally and it will be treated as a [[unit-targeted]] ability for effects such as {{ri|Guardian}}.\n** If '''Bard''' has 3 ''shrines'' on the map and creates a new one that is cast directly on himself or an ally, the oldest shrine will not be destroyed. This is because the ''shrine'' is used as an actual targeted heal on himself or someone else, and not a permanent shrine, so the other 3 may stay.\n** The [[spell indicator]] of ''Caretaker's Shrine'' shows the area in which it can be used as a targeted heal. After a shrine has been placed on the ground its activation area becomes smaller: allies or enemies have to step directly on the shrine to use it or destroy it.\n* Leveling up ''Caretaker's Shrine'' will update the healing of existing shrines.",
       "skillkey": "W",
       "skillid": "w1",
-      "costBurn": "70",
-      "cooldownBurn": "14",
       "effects": [
         {
           "levelingtext": "{{st|Minimum Heal|{{ap|30 to 150}} {{as|(+ 30% AP)}}|Maximum Heal|{{ap|55 to 215}} {{as|(+ 60% AP)}}}}",
-          "str": "<ul><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
@@ -215,9 +217,9 @@
             ],
             "st_slices": [
               "Minimum Heal",
-              "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "Maximum Heal",
-              "<SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -234,7 +236,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Minimum Heal",
-              "str": "<SpellSpan :list=\"[30,60,90,120,150]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+              "str": "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
             },
             {
@@ -250,7 +252,7 @@
                 "player_total_ap": 0.3
               },
               "title": "Maximum Heal",
-              "str": "<SpellSpan :list=\"[55,95,135,175,215]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "str": "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -268,13 +270,7 @@
         17.5,
         16
       ],
-      "cost": [
-        30,
-        30,
-        30,
-        30,
-        30
-      ],
+      "cost": 30,
       "costtype": "Mana",
       "targeting": "Direction",
       "target_range": 900,
@@ -292,11 +288,10 @@
         "Both allies and enemies can {{tip|dash|pass}} through the corridor by clicking on it or its exit, with allies and '''Bard''' travelling at {{fd|33.{{Recurring|3}}}}% increased speed.",
         "''All units are {{tip|sight|revealed}} while taking Magical Journey.''"
       ],
+      "leveling": [],
       "notes": "* Terrain also includes [[structures]].\n* ''Magical Journey's'' tunnel has a max range of 2600 units (about two screens long)<ref>[http://boards.na.leagueoflegends.com/en/c/gameplay-balance/Ev3qQR4G-bard-qa?show=flat&comment=00dc0001/ Bard Q&A comment by Rabid Llama]</ref>.\n* ''Magical Journey'' will score assists for '''Bard''' if an ally that uses it scores a [[kill]] or [[assist]] shortly after.\n* ''Magical Journey'' cannot be taken while {{tip|ground|grounded}} or {{tip|root|rooted}}. '''Bard''' can still cast the ability.\n* There is no limit to how many times a given instance of ''Magical Journey'' may be used.\n* ''Magical Journey'' cannot interact with player-created terrain due to its short lifespan.<ref>[http://boards.na.leagueoflegends.com/en/c/gameplay-balance/Ev3qQR4G-bard-qa?show=flat&comment=001f0000/ Bard Q&A comment by Rabid Llama]</ref>\n* Any abilities that continue during normal movement, such as [[area of effect|point blank area of effects]] and various forms of {{tip|stealth}}, will continue during the travel within ''Magical Journey''.\n* If a champion's {{tip|dash}} is {{tip|interrupt|interrupted}} while inside terrain using ''Magical Journey'', they will be immediately displaced out to the nearest open space, but are not rendered {{tip|airborne}}.\n* Taking ''Magical Journey'' is considered a {{tip|dash}}, and so will interact with effects such as {{ri|Sudden Impact}} and {{tip|knockdown}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "costBurn": "30",
-      "cooldownBurn": "22/20.5/19/17.5/16",
       "effects": []
     },
     "r1": {
@@ -308,11 +303,7 @@
         95,
         80
       ],
-      "cost": [
-        100,
-        100,
-        100
-      ],
+      "cost": 100,
       "costtype": "Mana",
       "targeting": "Location",
       "target_range": 3400,
@@ -329,11 +320,10 @@
         "{{sbc|Active:}} '''Bard''' sends magical energy arcing to the target location, {{tip|sight|revealing}} the area before putting all units inside into {{tip|stasis}} for {{fd|2.5}} seconds upon impact. Enemies hit are {{tip|sight|revealed}} for the duration.",
         "Despite normally being {{tip|cc-immune|crowd control immune}}, {{tip|monster|epic monsters}} and {{tip|turrets}} also enter {{tip|stasis}}."
       ],
+      "leveling": [],
       "notes": "* ''Tempered Fate'' will affect all ''targetable'' {{tip|champions}}, {{tip|minions}}, {{tip|monster|monsters}}, {{tip|turret|turrets}}, {{tip|ward|wards}}, and [[jungle plants]].\n* ''Tempered Fate'' has no effect on allied or enemy champions that have {{tip|displacement immunity}} or {{tip|cc-immune|crowd control immunity}}.\n** An allied {{cai|Riposte|Fiora}}, {{cai|Hero's Entrance|Galio}}, {{cai|Void Shift|Malzahar}}, or {{cai|Black Shield|Morgana}} will not resist ''Tempered Fate''.\n*** An allied {{cai|Unstoppable Onslaught|Sion}} will not resist ''Tempered Fate'' at the very start and end of its channel. It will otherwise resist it.\n** ''Tempered Fate'' cannot put an allied nor enemy {{ui|Rift Herald}} into {{tip|stasis}} while she is winding up her leap attack and during her leap.\n* All {{tip|champion|champions}} (including allies) during the {{tip|stasis}} are prohibited from activating {{tip|cleanse|cleansing}} effects for its duration.\n** It will not disable [[File: Quicksilver Sash item.png|20px|link=]] {{nie|Quicksilver}} and instead put it on a 3-second {{sti|cooldown}}.\n* ''Tempered Fate'' deals 0 damage ({{pending for test}}: damage type and sourcetype?), which triggers [[combat status|in-combat]] effects such as drawing turret aggro and [[Monster#Monster_Behavior|monster aggression]], {{ri|Sudden Impact}} or applying {{ii|Elixir of Sorcery}}.\n** {{ii|Elixir of Sorcery}} deals damage before the target is put into stasis.\n* If '''Bard''' dies while ''Tempered Fate'' is still casting, it will go on {{sti|cooldown}} and have no effect.\n* ''Tempered Fate's'' travel time varies between ~{{fd|0.65}} at point blank and ~{{fd|1.8}} at max range, resulting in an overall delay of ~{{fd|1.15}}-{{fd|2.3}} seconds including the cast time depending on distance covered.",
       "skillkey": "R",
       "skillid": "r1",
-      "costBurn": "100",
-      "cooldownBurn": "110/95/80",
       "effects": []
     }
   }
