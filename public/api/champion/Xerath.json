@@ -139,9 +139,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   40,
                   45,
                   50,
@@ -149,12 +149,9 @@
                   60
                 ]
               },
-              "title": [
-                "Mana Refunded",
-                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Mana Refunded",
+              "str": "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>",
+              "damage_type": "unknown"
             }
           ]
         },
@@ -185,9 +182,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   120,
                   160,
@@ -196,12 +193,9 @@
                 ],
                 "player_total_ap": 0.75
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -276,9 +270,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   60,
                   90,
                   120,
@@ -287,12 +281,9 @@
                 ],
                 "player_total_ap": 0.6
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         },
@@ -302,7 +293,13 @@
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 1.0002
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
               }
             ],
             "st_slices": [
@@ -326,37 +323,42 @@
               [
                 100.02
               ],
-              [
-                60,
-                65,
-                70,
-                75,
-                80
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  100.02,
-                  150.03,
-                  200.04,
-                  250.05,
-                  300.06
-                ],
-                "player_total_ap": 1.0002
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
               },
-              "title": [
-                "Enhanced Slow",
-                "<SpellSpan :list=\"[60,65,70,75,80]\"></SpellSpan>%"
-              ],
-              "str": [
-                "Enhanced Damage",
-                "<SpellSpan :list=\"[100.02,150.03,200.04,250.05,300.06]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span>"
-              ],
+              "title": "Enhanced Slow",
+              "str": "<SpellSpan :list=\"[60,65,70,75,80]\"></SpellSpan>%",
               "damage_type": "none"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "base_damage": [
+                  100.02
+                ],
+                "player_total_ap": [
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75,
+                  0.8
+                ]
+              },
+              "title": "Enhanced Damage",
+              "str": "<SpellSpan :list=\"[100.02,150.03,200.04,250.05,300.06]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -429,9 +431,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   110,
                   140,
@@ -440,12 +442,9 @@
                 ],
                 "player_total_ap": 0.45
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -508,20 +507,17 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   3,
                   4,
                   5
                 ]
               },
-              "title": [
-                "Number of Barrages",
-                "<SpellSpan :list=\"[3,4,5]\"></SpellSpan>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Number of Barrages",
+              "str": "<SpellSpan :list=\"[3,4,5]\"></SpellSpan>",
+              "damage_type": "unknown"
             }
           ]
         },
@@ -534,7 +530,11 @@
                 "player_total_ap": 0.45
               },
               {
-                "player_total_ap": 1351802.25
+                "player_total_ap": [
+                  1.35,
+                  1.8,
+                  2.25
+                ]
               }
             ],
             "st_slices": [
@@ -551,32 +551,27 @@
                 250,
                 300
               ],
-              [
-                135,
-                180,
-                225
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   200,
                   250,
                   300
                 ],
-                "player_total_ap": 1351802.25
+                "player_total_ap": [
+                  1.35,
+                  1.8,
+                  2.25
+                ]
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
-                "Total Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (200 to 300)*(3 to 5)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <SpellSpan :list=\"[135,180,225]\"></SpellSpan>% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }

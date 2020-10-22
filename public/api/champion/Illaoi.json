@@ -137,9 +137,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   10,
                   15,
                   20,
@@ -147,12 +147,9 @@
                   30
                 ]
               },
-              "title": [
-                "Damage Increase",
-                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Damage Increase",
+              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -199,7 +196,13 @@
                 "player_total_ad": 21
               },
               {
-                "target_total_ad": null
+                "target_total_ad": [
+                  0.2,
+                  0.3,
+                  0.4,
+                  0.5,
+                  0.6
+                ]
               }
             ],
             "st_slices": [
@@ -220,38 +223,34 @@
                 4.5,
                 5
               ],
-              [
-                20,
-                30,
-                40,
-                50,
-                60
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   3,
                   3.5,
                   4,
                   4.5,
                   5
                 ],
-                "player_total_ad": 21,
-                "target_total_ad": null
+                "player_total_ad": 21
               },
-              "title": [
-                "Minimum Physical Damage",
-                "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>"
-              ],
-              "str": [
-                "Bonus Physical Damage",
-                "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>"
-              ],
-              "damage_type": "none"
+              "title": "Minimum Physical Damage",
+              "str": "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>",
+              "damage_type": "physical"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_ad": 21
+              },
+              "title": "Bonus Physical Damage",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ad\">(+ 2% per 100 AD)</span> of target's '''maximum''' health</span>",
+              "damage_type": "physical"
             }
           ]
         }
@@ -314,21 +313,18 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   150,
                   250,
                   350
                 ],
                 "player_bonus_ad": 0.5
               },
-              "title": [
-                "Physical Damage",
-                "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
+              "damage_type": "physical"
             }
           ]
         }

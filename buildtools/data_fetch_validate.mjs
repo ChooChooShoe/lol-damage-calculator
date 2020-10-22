@@ -34,56 +34,63 @@ function validateChamp(filepath, file, champObj) {
         validateSkill(champObj, champObj.skills[i], i);
     }
 }
+const keyword_to_damage_type = {
+    magic: "magic",
+    true: "true",
+    physical: "physical",
+    none: "none",
+    slow: "none",
+    heal: "none",
+    shield: "none",
+    minion: "none",
+    speed: "none",
+}
 
+function matchDamageType(text) {
+    for (const key in keyword_to_damage_type) {
+        if (text.indexOf(key) > -1 ) {
+            return keyword_to_damage_type[key];
+        }
+    }
+    return 'unknown'
+}
 function validateSkill(champObj, skilldata, index) {
 
     skilldata.effects = [];
     for (let leveling_index in skilldata.leveling) {
         let effect = {}
         effect.levelingtext = skilldata.leveling[leveling_index];
+        skilldata.effects[leveling_index] = effect;
         // console.log('\n\n')
         let x = matchReplaceSpellEffects(effect.levelingtext, false, skilldata);
         effect.str = x.str;
         effect.vars = x.vars;
 
-        if (x.vars.ap_progressions.length > 0) {
-            effect.subeffects = [];
-            const subeffCount = x.vars.st_slices.length / 2;
-            const as_ratios_per = x.vars.as_ratios ? (x.vars.as_ratios.length / subeffCount) : 0;
-            for (let subindex = 0; subindex < subeffCount; subindex++) {
-                const subeff = {
-                    index: subindex,
-                    ratios: {},
-                    title: x.vars.st_slices[subindex * 2] || '',
-                    str: x.vars.st_slices[subindex * 2 + 1] || '',
-                }
-                var damageing = true;
-                if (subeff.title.indexOf('amage') === -1) {
-                    // console.log(subeff.title + " ====> " + subeff.base_progression);
-                    subeff.damage_type = 'none';
-                    damageing = false;
-                } else if (subeff.title.indexOf('agic') > -1) {
-                    subeff.damage_type = 'magic';
-                } else if (subeff.title.indexOf('rue') > -1) {
-                    subeff.damage_type = 'true';
-                } else if (subeff.title.indexOf('hysical') > -1) {
-                    subeff.damage_type = 'physical';
-                } else {
-                    subeff.damage_type = 'unknown';
-                }
-                if (damageing) {
-                    subeff.ratios.base_damage = x.vars.ap_progressions[subindex];
-                } else {
-                    subeff.ratios.base_progression = x.vars.ap_progressions[subindex];
-                }
-                for (let ratio_index = 0; ratio_index < as_ratios_per; ratio_index++) {
-                    for (const r in x.vars.as_ratios[ratio_index])
-                        subeff.ratios[r] = x.vars.as_ratios[ratio_index][r];
+        if (x.vars.ap_progressions.length == 0) continue;
+        effect.subeffects = [];
+        // as_ratios are deivded evenly between st_slices
+        const as_ratios_per_st = (x.vars.as_ratios.length / x.vars.st_slices.length) || 0;
+        for (const subindex in x.vars.st_slices) {
+            const title = x.vars.st_slices[subindex][0] || '';
+            const damage_type = matchDamageType(title.toLowerCase());
+            let ratios = {}
+            
+            if (damage_type != 'none') {
+                ratios.base_damage = x.vars.ap_progressions[subindex];
+            } 
+            for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
+                for (const r in x.vars.as_ratios[ratio_index])
+                    ratios[r] = x.vars.as_ratios[ratio_index][r];
 
-                }
-                effect.subeffects[subindex] = subeff;
+            }
+
+            effect.subeffects[subindex]  = {
+                index: subindex,
+                ratios: ratios,
+                title: title,
+                str: x.vars.st_slices[subindex][1] || '',
+                damage_type: damage_type,
             }
         }
-        skilldata.effects[leveling_index] = effect;
     }
 }

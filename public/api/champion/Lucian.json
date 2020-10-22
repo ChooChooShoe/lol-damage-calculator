@@ -121,7 +121,13 @@
           "vars": {
             "as_ratios": [
               {
-                "player_bonus_ad": 6075901051.2
+                "player_bonus_ad": [
+                  0.6,
+                  0.75,
+                  0.9,
+                  1.05,
+                  1.2
+                ]
               }
             ],
             "st_slices": [
@@ -138,34 +144,31 @@
                 200,
                 235
               ],
-              [
-                60,
-                75,
-                90,
-                105,
-                120
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   95,
                   130,
                   165,
                   200,
                   235
                 ],
-                "player_bonus_ad": 6075901051.2
+                "player_bonus_ad": [
+                  0.6,
+                  0.75,
+                  0.9,
+                  1.05,
+                  1.2
+                ]
               },
-              "title": [
-                "Physical Damage",
-                "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>",
+              "damage_type": "physical"
             }
           ]
         }
@@ -265,16 +268,20 @@
                 "player_total_ap": 0.2
               },
               {
-                "player_total_ad": 5507008.5
+                "player_total_ad": [
+                  0.22,
+                  0.28,
+                  0.34
+                ]
               },
               {
-                "player_total_ap": 2202803.4
+                "player_total_ap": []
               },
               {
-                "player_total_ad": 1100140017
+                "player_total_ad": []
               },
               {
-                "player_total_ap": 4405606.8
+                "player_total_ap": []
               }
             ],
             "st_slices": [
@@ -326,55 +333,48 @@
                 560,
                 680
               ],
-              [
-                22,
-                28,
-                34
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   20,
                   40,
                   60
                 ],
-                "player_total_ad": 5507008.5,
-                "player_total_ap": 2202803.4
+                "player_total_ad": 0.5,
+                "player_total_ap": 0.1
               },
-              "title": [
-                "Shots Fired",
-                "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>"
-              ],
-              "str": [
-                "Physical Damage Per Shot",
-                "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
-                "Total Non-Minion Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span>"
-              ],
-              "damage_type": "none"
+              "title": "Shots Fired",
+              "str": "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>",
+              "damage_type": "unknown"
             },
             {
-              "index": 1,
+              "index": "1",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   550,
                   700,
                   850
                 ],
-                "player_total_ad": 5507008.5,
-                "player_total_ap": 2202803.4
+                "player_total_ad": 0.5,
+                "player_total_ap": 0.1
               },
-              "title": [
-                "Minion Damage Per Shot",
-                "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-                "Total Minion Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span>"
-              ],
-              "str": "",
+              "title": "Physical Damage Per Shot",
+              "str": "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": "2",
+              "ratios": {
+                "player_total_ad": 0.5,
+                "player_total_ap": 0.1
+              },
+              "title": "Minion Damage Per Shot",
+              "str": "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
               "damage_type": "none"
             }
           ]

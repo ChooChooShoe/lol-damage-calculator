@@ -310,25 +310,25 @@ export function default_stats() {
 }
 
 export const spell_ratios = {
-    base_damage: { user: '', prefex: "Base Damage", color: "", sufex: "", extra: true, },
-    base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, },
-    player_total_ap: { user: 'player', stat: 'total_ap', prefex: '', color: "ap", sufex: "AP" },
-    player_total_ad: { user: 'player', stat: 'total_ad', prefex: '', color: "ad", sufex: "AD" },
-    player_bonus_ad: { user: 'player', stat: 'bonus_ad', prefex: '', color: "ad", sufex: "Bonus AD" },
-    player_total_hp: { user: 'player', stat: 'total_hp', prefex: '', color: "health", sufex: "Max Health" },
-    player_bonus_hp: { user: 'player', stat: 'bonus_hp', prefex: '', color: "health", sufex: "Bonus Health" },
-    player_missing_hp: { user: 'player', stat: 'missing_hp', prefex: '', color: "health", sufex: "Missing Health" },
-    target_total_hp: { user: 'target', stat: 'total_hp', prefex: '', color: "health", sufex: "Target's Max Health" },
-    target_bonus_hp: { user: 'target', stat: 'bonus_hp', prefex: '', color: "health", sufex: "Target's Bonus Health" },
-    target_current_hp: { user: 'target', stat: 'current_hp', prefex: '', color: "health", sufex: "Target's Current Health" },
-    target_missing_hp: { user: 'target', stat: 'missing_hp', prefex: '', color: "health", sufex: "Target's Missing Health" },
-    player_bonus_armor: { user: 'player', stat: 'bonus_armor', prefex: '', color: "armor", sufex: "Bonus Armor" },
-    player_total_armor: { user: 'player', stat: 'total_armor', prefex: '', color: "armor", sufex: "Armor" },
-    player_bonus_mr: { user: 'player', stat: 'bonus_mr', prefex: '', color: "mr", sufex: "Bonus Magic Resistance" },
-    player_total_mr: { user: 'player', stat: 'total_mr', prefex: '', color: "mr", sufex: "Magic Resistance" },
+    base_damage: { user: '', prefex: "Base Damage", color: "", sufex: "", extra: true, flat: true, html: "" },
+    base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: ""},
+    player_total_ap: { user: 'player', stat: 'total_ap', prefex: '', color: "ap", sufex: "AP", html: "AP" },
+    player_total_ad: { user: 'player', stat: 'total_ad', prefex: '', color: "ad", sufex: "AD", html: "AD" },
+    player_bonus_ad: { user: 'player', stat: 'bonus_ad', prefex: '', color: "ad", sufex: "Bonus AD", html: "<b>bonus</b> AD" },
+    player_total_hp: { user: 'player', stat: 'total_hp', prefex: '', color: "health", sufex: "Max Health", html: "<b>Max</b> health" },
+    player_bonus_hp: { user: 'player', stat: 'bonus_hp', prefex: '', color: "health", sufex: "Bonus Health", html: "<b>bonus</b> health" },
+    player_missing_hp: { user: 'player', stat: 'missing_hp', prefex: '', color: "health", sufex: "Missing Health", html: "of champ's <b>missing</b> health" },
+    target_total_hp: { user: 'target', stat: 'total_hp', prefex: '', color: "health", sufex: "Target's Max Health", html: "of target's <b>Max</b> health" },
+    target_bonus_hp: { user: 'target', stat: 'bonus_hp', prefex: '', color: "health", sufex: "Target's Bonus Health", html: "of target's <b>bonus</b> health" },
+    target_current_hp: { user: 'target', stat: 'current_hp', prefex: '', color: "health", sufex: "Target's Current Health", html: "of target's <b>current</b> health" },
+    target_missing_hp: { user: 'target', stat: 'missing_hp', prefex: '', color: "health", sufex: "Target's Missing Health", html: "of target's <b>missing</b> health" },
+    player_bonus_armor: { user: 'player', stat: 'bonus_armor', prefex: '', color: "armor", sufex: "Bonus Armor", html: "<b>bonus</b> Armor" },
+    player_total_armor: { user: 'player', stat: 'total_armor', prefex: '', color: "armor", sufex: "Armor", html: "<b>total</b> Armor" },
+    player_bonus_mr: { user: 'player', stat: 'bonus_mr', prefex: '', color: "mr", sufex: "Bonus Magic Resistance", html: "<b>bonus</b> MR" },
+    player_total_mr: { user: 'player', stat: 'total_mr', prefex: '', color: "mr", sufex: "Magic Resistance", html: "<b>total</b> MR" },
 
     // Note these ratios should not exist....
-    target_total_ap: { user: 'target', stat: 'total_ap', prefex: '', color: "true", sufex: "Total ???" },
+    target_total_ap: { user: 'target', stat: 'total_ap', prefex: '', color: "true", sufex: "Total ???", html: "<b>total</b> ???" },
 };
 
 export const DamageType = {

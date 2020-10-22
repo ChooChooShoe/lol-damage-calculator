@@ -133,9 +133,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   75,
                   130,
                   185,
@@ -144,12 +144,9 @@
                 ],
                 "player_total_ap": 0.5
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -202,10 +199,12 @@
                 "player_total_ap": 0.5
               },
               {
-                "player_total_ap": 0.21
+                "player_total_ap": [
+                  0.35
+                ]
               },
               {
-                "player_total_ap": 0.35000000000000003
+                "player_total_ap": []
               }
             ],
             "st_slices": [
@@ -240,37 +239,30 @@
                 190,
                 230
               ],
-              [
-                35
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  60,
-                  85,
-                  110,
-                  135,
-                  160
-                ],
-                "player_total_ap": 0.35000000000000003
+                "player_total_ap": 0.5
               },
-              "title": [
-                "Heal",
-                "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-                "Minimum Heal",
-                "<simple-tooltip class=\"red\" dname=\"ap (60 to 160)*(1-0.15*2)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <SpellSpan :list=\"[21]\"></SpellSpan>% AP)</span>"
-              ],
-              "str": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
-                "Minimum Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (70 to 230)*(1-0.15*2)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <SpellSpan :list=\"[35]\"></SpellSpan>% AP)</span>"
-              ],
+              "title": "Heal",
+              "str": "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
               "damage_type": "none"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "base_damage": [
+                  21
+                ],
+                "player_total_ap": 0.5
+              },
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -364,27 +356,28 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   25,
                   40,
                   55,
                   70,
                   85
                 ],
-                "player_total_ap": 51
+                "player_total_ap": 0.6
               },
-              "title": [
-                "Bonus Magic Damage Per Hit",
-                "<SpellSpan :list=\"[25,40,55,70,85]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-                "Total Bonus Magic Damage",
-                "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
-              ],
-              "str": [
-                "Slow",
-                "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan> <span class=\"ap\">(+ 5% per 100 AP)</span>"
-              ],
+              "title": "Bonus Magic Damage Per Hit",
+              "str": "<SpellSpan :list=\"[25,40,55,70,85]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_ap": 0.6
+              },
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan> <span class=\"ap\">(+ 5% per 100 AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -457,23 +450,26 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   150,
                   250,
                   350
                 ],
                 "player_total_ap": 0.6
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
-              ],
-              "str": [
-                "Slow",
-                "<SpellSpan :list=\"[50,60,70]\"></SpellSpan>"
-              ],
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_ap": 0.6
+              },
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[50,60,70]\"></SpellSpan>",
               "damage_type": "none"
             }
           ]

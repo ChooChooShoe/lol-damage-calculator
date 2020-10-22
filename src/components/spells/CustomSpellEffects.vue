@@ -1,7 +1,9 @@
 <template>
   <div class="col">
     <div class="field column">
-      <h4 class="spelleffect">Effect {{ (this.index + 10).toString(36).toUpperCase() }}</h4>
+      <h4 class="spelleffect">
+        Effect {{ (this.index + 10).toString(36).toUpperCase() }}
+      </h4>
       <table>
         <thead>
           <tr>
@@ -28,11 +30,11 @@
           </tr>
           <tr>
             <th colspan="4">
-              <hr style="margin: 0.3rem 0;" />
+              <hr style="margin: 0.3rem 0" />
             </th>
           </tr>
           <tr>
-            <th style="text-align: center;" colspan="2">
+            <th style="text-align: center" colspan="2">
               <b>Total</b>
             </th>
             <Editable :value="dmg_premitigation" :readonly="true"></Editable>
@@ -41,19 +43,20 @@
         </tfoot>
       </table>
       <DamageTypeField v-model="damage_type"></DamageTypeField>
-      <hr style="margin: 0.5rem 0;" />
+      <hr style="margin: 0.5rem 0" />
     </div>
 
     <div v-if="doesDoDamage">
       <div class="column">
-        This effect will deal {{Math.round(dmg_premitigation)}}
-        <span v-html="damage_type_user"></span> before resistances
-        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
-        <br />This damage will cause the target to
-        <span
-          class="spelleffect"
-        >lose {{Math.round(dmg_postmitigation)}} health</span>
-        <span class="gold">{{ repeat === 1 ? '' : ' per hit' }}</span>.
+        Before resistances, this effect will deal
+        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{
+          repeat === 1 ? "" : " per hit"
+        }}</span
+        >. <br />This target will take {{ Math.round(dmg_postmitigation) }}
+        <span v-html="damage_type_user"></span> after reductions<span
+          class="gold"
+          >{{ repeat === 1 ? "" : " per hit" }}</span
+        >.
       </div>
       <label class="column">
         This effect will hit
@@ -63,26 +66,25 @@
           v-model.number="repeat"
           class="simple-input"
         />
-        time{{ repeat === 1 ? '' : 's' }}.
+        time{{ repeat === 1 ? "" : "s" }}.
         <input
-          v-for="(item, index) in [1,2,3,5,10]"
+          v-for="(item, index) in [1, 2, 3, 5, 10]"
           :key="index"
           type="button"
           class="repeat"
-          :value=" item + 'x'"
+          :value="item + 'x'"
           @click="repeat = item"
-          :class="{ 'success': repeat == item }"
+          :class="{ success: repeat == item }"
         />
       </label>
       <div v-if="repeat != 1" class="column">
-        In total, this effect deals {{Math.round(dmg_premitigation * repeat)}}
-        <span
-          v-html="damage_type_user"
-        ></span> before resistances.
-        <br />This damage will cause the target to
-        <span
-          class="spelleffect"
-        >lose {{Math.round(dmg_postmitigation * repeat)}} health</span>.
+        In total, this effect deals
+        {{ Math.round(dmg_premitigation * repeat) }}
+        <span v-html="damage_type_user"></span> before resistances. <br />This
+        damage will cause the target to
+        <span class="spelleffect"
+          >lose {{ Math.round(dmg_postmitigation * repeat) }} health</span
+        >.
       </div>
     </div>
   </div>

@@ -141,9 +141,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   0,
                   5,
                   10,
@@ -152,12 +152,9 @@
                 ],
                 "player_total_ad": 1
               },
-              "title": [
-                "Physical Damage",
-                "<SpellSpan :list=\"[0,5,10,15,20]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[0,5,10,15,20]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>",
+              "damage_type": "physical"
             }
           ]
         }
@@ -237,9 +234,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   20,
                   35,
                   50,
@@ -248,14 +245,9 @@
                 ],
                 "player_bonus_ad": 1.6
               },
-              "title": [
-                "Slash Damage",
-                "<SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
-                "Total Damage",
-                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Slash Damage",
+              "str": "<SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -335,9 +327,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   50,
                   60,
                   70,
@@ -346,14 +338,17 @@
                 ],
                 "player_bonus_ad": 0.2
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>"
-              ],
-              "str": [
-                "Attack Speed",
-                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%"
-              ],
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_bonus_ad": 0.2
+              },
+              "title": "Attack Speed",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -407,10 +402,12 @@
                 "player_total_ad": 5
               },
               {
-                "player_total_ad": 0.125
+                "player_total_ad": [
+                  1.25
+                ]
               },
               {
-                "player_total_ad": 1.25
+                "player_total_ad": []
               }
             ],
             "st_slices": [
@@ -449,34 +446,23 @@
                 25,
                 50
               ],
-              [
-                125
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   0,
                   10,
                   20
                 ],
-                "player_total_ad": 1.25
+                "player_total_ad": []
               },
-              "title": [
-                "Physical Damage Per Shot",
-                "<SpellSpan :list=\"[0,10,20]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>",
-                "Total Damage Per Target",
-                "<SpellSpan :list=\"[0,100,200]\"></SpellSpan> <span class=\"ad\">(+ 500% AD)</span>",
-                "Minion Damage Per Shot",
-                "<SpellSpan :list=\"[0,2.5,5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12.5]\"></SpellSpan>% AD)</span>",
-                "Total Damage Per Minion",
-                "<SpellSpan :list=\"[0,25,50]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[125]\"></SpellSpan>% AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Physical Damage Per Shot",
+              "str": "<SpellSpan :list=\"[0,10,20]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>",
+              "damage_type": "physical"
             }
           ]
         }

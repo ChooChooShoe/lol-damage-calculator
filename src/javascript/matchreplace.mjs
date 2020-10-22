@@ -506,7 +506,7 @@ const match_lookup = {
     cssClass = cssClass.replace(' ', '-');
 
     let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    if (test.includes('SpellSpan') && vars.ap_progressions.length > 0) {
+    if (inner.includes('SpellSpan') && vars.ap_progressions.length > 0) {
       const idx = vars.ap_progressions.length - 1;
       console.log("herherhehrheh\n", test, "\nvars", vars, "\nold_num", num);
       // ratios = vars.as_ratios[vars.as_ratios.length - 1];

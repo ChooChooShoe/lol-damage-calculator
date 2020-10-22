@@ -146,20 +146,13 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": []
+                "base_damage": []
               },
-              "title": [
-                "Physical Damage",
-                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
-                "Monster Damage",
-                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
-                "Monster Bonus Damage",
-                "<SpellSpan :list=\"[]\"></SpellSpan>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "damage_type": "physical"
             }
           ]
         },
@@ -168,10 +161,18 @@
           "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
-              {},
-              {},
-              {},
-              {}
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              }
             ],
             "st_slices": [
               [
@@ -193,28 +194,29 @@
               [],
               [],
               [],
-              []
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": []
+                "base_damage": [],
+                "player_total_ad": []
               },
-              "title": [
-                "Reduced Damage",
-                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
-                "Reduced Monster Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
-              ],
-              "str": [
-                "Maximum Single-Target Damage",
-                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
-                "Max Monster Single-Target Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
-              ],
-              "damage_type": "none"
+              "title": "Reduced Damage",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "base_damage": [],
+                "player_total_ad": []
+              },
+              "title": "Maximum Single-Target Damage",
+              "str": "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -319,29 +321,21 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  15,
-                  25,
-                  35,
-                  45,
-                  55
-                ],
-                "player_total_ap": 0.125
+                "player_total_ap": 1
               },
-              "title": [
-                "Minimum Total Healing",
-                "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
-                "Maximum Total Healing",
-                "<SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>"
-              ],
-              "str": [
-                "Minimum Healing Per Half Second",
-                "<SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
-                "Maximum Healing Per Half Second",
-                "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
-              ],
+              "title": "Minimum Total Healing",
+              "str": "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "none"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_ap": 1
+              },
+              "title": "Minimum Healing Per Half Second",
+              "str": "<SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
               "damage_type": "none"
             }
           ]
@@ -378,9 +372,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   60,
                   62.5,
                   65,
@@ -388,14 +382,9 @@
                   70
                 ]
               },
-              "title": [
-                "Damage Reduction",
-                "<SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%",
-                "Turret Damage Reduction",
-                "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Damage Reduction",
+              "str": "<SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%",
+              "damage_type": "unknown"
             }
           ]
         },
@@ -431,9 +420,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   40,
                   37.5,
                   35,
@@ -441,14 +430,9 @@
                   30
                 ]
               },
-              "title": [
-                "Post-Channel Damage Reduction",
-                "<SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%",
-                "Post-Channel Turret Damage Reduction",
-                "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Post-Channel Damage Reduction",
+              "str": "<SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -495,7 +479,13 @@
                 "player_bonus_ad": 0.35000000000000003
               },
               {
-                "player_total_unknown": 1826344250
+                "player_total_unknown": [
+                  0.18,
+                  0.26,
+                  0.34,
+                  0.42,
+                  0.5
+                ]
               }
             ],
             "st_slices": [
@@ -505,35 +495,25 @@
               ]
             ],
             "ap_progressions": [
-              [
-                18,
-                26,
-                34,
-                42,
-                50
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  18,
-                  26,
-                  34,
-                  42,
-                  50
-                ],
                 "player_bonus_ad": 0.35000000000000003,
-                "player_total_unknown": 1826344250
+                "player_total_unknown": [
+                  0.18,
+                  0.26,
+                  0.34,
+                  0.42,
+                  0.5
+                ]
               },
-              "title": [
-                "True Damage",
-                "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "True Damage",
+              "str": "<span class=\"true-damage\"><SpellSpan :list=\"[18,26,34,42,50]\"></SpellSpan></span> <span class=\"ad\">(+ 35% '''bonus''' AD)</span>",
+              "damage_type": "true"
             }
           ]
         }
@@ -600,22 +580,17 @@
           },
           "subeffects": [
             {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  25,
-                  45,
-                  65
-                ]
-              },
-              "title": [
-                "Bonus Attack Speed",
-                "<SpellSpan :list=\"[25,45,65]\"></SpellSpan>%"
-              ],
-              "str": [
-                "Bonus Movement Speed",
-                "<SpellSpan :list=\"[35,45,55]\"></SpellSpan>%"
-              ],
+              "index": "0",
+              "ratios": {},
+              "title": "Bonus Attack Speed",
+              "str": "<SpellSpan :list=\"[25,45,65]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": "1",
+              "ratios": {},
+              "title": "Bonus Movement Speed",
+              "str": "<SpellSpan :list=\"[35,45,55]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

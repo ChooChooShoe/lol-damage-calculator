@@ -127,9 +127,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   80,
                   135,
                   190,
@@ -138,12 +138,9 @@
                 ],
                 "player_total_ap": 1
               },
-              "title": [
-                "Magic damage",
-                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic damage",
+              "str": "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -218,9 +215,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   75,
                   125,
                   175,
@@ -229,12 +226,9 @@
                 ],
                 "player_total_ap": 0.7000000000000001
               },
-              "title": [
-                "Magic damage",
-                "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Magic damage",
+              "str": "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         },
@@ -261,9 +255,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   1.6,
                   1.7,
                   1.8,
@@ -271,12 +265,9 @@
                   2
                 ]
               },
-              "title": [
-                "Silence Duration",
-                "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "Silence Duration",
+              "str": "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>",
+              "damage_type": "unknown"
             }
           ]
         }
@@ -379,30 +370,31 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  22,
-                  37,
-                  52,
-                  67,
-                  82
+                "player_total_ap": 0.9,
+                "player_total_unknown": 0.005
+              },
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%",
+              "damage_type": "none"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "base_damage": [
+                  66,
+                  111,
+                  156,
+                  201,
+                  246
                 ],
                 "player_total_ap": 0.9,
-                "player_total_unknown": 0.015,
-                "target_total_hp": 0.915
+                "player_total_unknown": 0.005
               },
-              "title": [
-                "Slow",
-                "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%"
-              ],
-              "str": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
-                "Maximum Damage",
-                "<SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
-              ],
-              "damage_type": "none"
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -467,9 +459,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   300,
                   475,
                   650
@@ -477,12 +469,9 @@
                 "player_total_ap": 0.5,
                 "player_bonus_hp": 0.1
               },
-              "title": [
-                "True Damage to Champions",
-                "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
-              ],
-              "str": "",
-              "damage_type": "none"
+              "title": "True Damage to Champions",
+              "str": "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
+              "damage_type": "true"
             }
           ]
         },
@@ -492,7 +481,11 @@
           "vars": {
             "as_ratios": [
               {
-                "player_bonus_hp": 80120160
+                "player_bonus_hp": [
+                  0.8,
+                  1.2,
+                  1.6
+                ]
               }
             ],
             "st_slices": [
@@ -510,44 +503,47 @@
               ]
             ],
             "ap_progressions": [
-              [
-                80,
-                120,
-                160
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
-                  80,
-                  120,
-                  160
-                ],
-                "player_bonus_hp": 80120160
+                "player_bonus_hp": [
+                  0.8,
+                  1.2,
+                  1.6
+                ]
               },
-              "title": [
-                "Bonus Attack Range Per Stack",
-                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>"
-              ],
-              "str": [
-                "Bonus Size Per Stack",
-                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%"
-              ],
-              "damage_type": "none"
+              "title": "Bonus Attack Range Per Stack",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>",
+              "damage_type": "unknown"
             },
             {
-              "index": 1,
+              "index": "1",
               "ratios": {
-                "player_bonus_hp": 80120160
+                "player_bonus_hp": [
+                  0.8,
+                  1.2,
+                  1.6
+                ]
               },
-              "title": [
-                "Bonus Health Per Stack",
-                "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>"
-              ],
-              "str": "",
+              "title": "Bonus Size Per Stack",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
+              "damage_type": "unknown"
+            },
+            {
+              "index": "2",
+              "ratios": {
+                "player_bonus_hp": [
+                  0.8,
+                  1.2,
+                  1.6
+                ]
+              },
+              "title": "Bonus Health Per Stack",
+              "str": "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>",
               "damage_type": "none"
             }
           ]

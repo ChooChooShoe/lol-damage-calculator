@@ -145,9 +145,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   100,
                   135,
                   170,
@@ -156,14 +156,17 @@
                 ],
                 "player_total_ap": 1
               },
-              "title": [
-                "Magic Damage",
-                "<SpellSpan :list=\"[100,135,170,205,240]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ],
-              "str": [
-                "Slow",
-                "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
-              ],
+              "title": "Magic Damage",
+              "str": "<SpellSpan :list=\"[100,135,170,205,240]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_ap": 1
+              },
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -206,10 +209,16 @@
           "vars": {
             "as_ratios": [
               {
-                "player_total_armor": 607080901
+                "player_total_armor": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
               },
               {
-                "player_total_mr": 30354045.5
+                "player_total_mr": []
               }
             ],
             "st_slices": [
@@ -230,38 +239,46 @@
                 90,
                 100
               ],
-              [
-                30,
-                35,
-                40,
-                45,
-                50
-              ]
+              null
             ]
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   60,
                   70,
                   80,
                   90,
                   100
                 ],
-                "player_total_armor": 607080901,
-                "player_total_mr": 30354045.5
+                "player_total_armor": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
               },
-              "title": [
-                "Bonus Armor",
-                "30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\"></SpellSpan>% '''total''' armor)</span>"
-              ],
-              "str": [
-                "Bonus Magic Resistance",
-                "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>% '''total''' magic resistance)</span>"
-              ],
-              "damage_type": "none"
+              "title": "Bonus Armor",
+              "str": "30 <span class=\"armor\">(+ <SpellSpan :list=\"[60,70,80,90,100]\"></SpellSpan>% '''total''' armor)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "player_total_armor": [
+                  0.3,
+                  0.35,
+                  0.4,
+                  0.45,
+                  0.5
+                ]
+              },
+              "title": "Bonus Magic Resistance",
+              "str": "10 <span class=\"magic-resist\">(+ <SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>% '''total''' magic resistance)</span>",
+              "damage_type": "magic"
             }
           ]
         }
@@ -336,9 +353,9 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   1.25,
                   1.5,
                   1.75,
@@ -346,14 +363,15 @@
                   2.25
                 ]
               },
-              "title": [
-                "Effect Duration",
-                "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\"></SpellSpan>"
-              ],
-              "str": [
-                "Bonus Attack Speed",
-                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%"
-              ],
+              "title": "Effect Duration",
+              "str": "<SpellSpan :list=\"[1.25,1.5,1.75,2,2.25]\"></SpellSpan>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": "1",
+              "ratios": {},
+              "title": "Bonus Attack Speed",
+              "str": "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
@@ -450,28 +468,32 @@
           },
           "subeffects": [
             {
-              "index": 0,
+              "index": "0",
               "ratios": {
-                "base_progression": [
+                "base_damage": [
                   30,
                   60,
                   90
                 ],
-                "player_total_ap": 3.2
+                "player_total_ap": 1.6
               },
-              "title": [
-                "Magic Damage Per Second",
-                "<SpellSpan :list=\"[30,60,90]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-                "Total Magic Damage",
-                "<SpellSpan :list=\"[240,480,720]\"></SpellSpan> <span class=\"ap\">(+ 160% AP)</span>"
-              ],
-              "str": [
-                "Structure Magic Damage Per Second",
-                "<SpellSpan :list=\"[60,120,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-                "Structure Total Magic Damage",
-                "<SpellSpan :list=\"[480,960,1440]\"></SpellSpan> <span class=\"ap\">(+ 320% AP)</span>"
-              ],
-              "damage_type": "none"
+              "title": "Magic Damage Per Second",
+              "str": "<SpellSpan :list=\"[30,60,90]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+              "damage_type": "magic"
+            },
+            {
+              "index": "1",
+              "ratios": {
+                "base_damage": [
+                  240,
+                  480,
+                  720
+                ],
+                "player_total_ap": 1.6
+              },
+              "title": "Structure Magic Damage Per Second",
+              "str": "<SpellSpan :list=\"[60,120,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+              "damage_type": "magic"
             }
           ]
         },
@@ -503,21 +525,10 @@
           },
           "subeffects": [
             {
-              "index": 0,
-              "ratios": {
-                "base_progression": [
-                  8,
-                  10,
-                  12
-                ]
-              },
-              "title": [
-                "Slow",
-                "<SpellSpan :list=\"[8,10,12]\"></SpellSpan>%",
-                "Maximum Slow",
-                "<SpellSpan :list=\"[64,80,96]\"></SpellSpan>%"
-              ],
-              "str": "",
+              "index": "0",
+              "ratios": {},
+              "title": "Slow",
+              "str": "<SpellSpan :list=\"[8,10,12]\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]
