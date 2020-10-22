@@ -5,9 +5,16 @@
 
 <script>
 import { quickMatchReplace } from "../javascript/matchreplace";
+
+// A SpellSpan
+// ex. 15 / 14 / 13 / 12 / 11
 export default {
-  name: "spell-span",
-  props: ["list", "spellrankindex"],
+  name: "SpellSpan",
+  props: {
+    list: Array,
+    spellrankindex: Number,
+    maxrank: Number,
+  },
   computed: {
     final() {
       let last = undefined;

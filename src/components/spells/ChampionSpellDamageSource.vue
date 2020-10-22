@@ -1,7 +1,7 @@
 <template>
   <div class="data_holder c50">
     <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
-    <h3>{{ spell.name }} ({{ spell.skillkey }})</h3>
+    <h3>{{ spell.name }} ({{ spell.skillkey }}) - <a target="_blank" :href="wikiHref">View on Wiki</a></h3>
     <match-replace :text="'<p>' + spell.description.join('</p><p>') + '</p>'"></match-replace>
     <hr />
     <div style="float: right" v-if="spell.maxrank > 0">
@@ -30,12 +30,12 @@
       </div>
       <div v-if="spell.cooldown">
         Cooldown:
-        <spell-span :list="spell.cooldown" :spellrankindex="spellrankindex"></spell-span>
+        <SpellSpan :list="spell.cooldown" :spellrankindex="spellrankindex"></SpellSpan>
         &nbsp;seconds
       </div>
       <div v-if="spell.cost">
         Cost:
-        <spell-span :list="spell.cost" :spellrankindex="spellrankindex"></spell-span>&nbsp;
+        <SpellSpan :list="spell.cost" :spellrankindex="spellrankindex"></SpellSpan>&nbsp;
         <span v-html="costtype"></span>
       </div>
       <div v-if="spell.target_range">
@@ -106,6 +106,11 @@ export default {
     };
   },
   computed: {
+    wikiHref() {
+      const champ = this.champion.replace(/ /g,"_");
+      const spell = this.spell.name.replace(/ /g,"_");
+      return `https://leagueoflegends.fandom.com/wiki/${champ}#${spell}`;
+    },
     costtype() {
       return quickMatchReplace(this.spell.costtype || "Mana");
     },

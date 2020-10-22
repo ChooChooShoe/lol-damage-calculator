@@ -21,7 +21,7 @@
     <SettingsModel ref="settings"></SettingsModel>
     <div class="flex main">
       <ChampionDiv class="data_holder c50" userid="player" :isprimary="true"></ChampionDiv>
-      <ChampionDiv class="data_holder c50" userid="target" :isprimary="false"></ChampionDiv>
+      <TargetDiv class="data_holder c50" userid="target" :isprimary="false"></TargetDiv>
 
       <AADamageSource></AADamageSource>
       <ChampionSpellDamageSource
@@ -47,6 +47,7 @@ import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
 import ChampionDiv from "./components/ChampionDiv";
+import TargetDiv from "./components/TargetDiv";
 import { setupVue } from "./javascript/league_data.js";
 
 import AADamageSource from "./components/spells/AADamageSource.vue";
@@ -69,6 +70,7 @@ export default {
   components: {
     SideBody,
     ChampionDiv,
+    TargetDiv,
     ChampionSpellDamageSource,
     SettingsModel,
     ShopController: () => import('./components/shop/ShopController.vue'),

@@ -299,7 +299,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
     for (let effectindex in skilldata.leveling) {
         let effect = {}
         effect.levelingtext = skilldata.leveling[effectindex];
-        let x = matchReplaceSpellEffects(effect.levelingtext, false);
+        let x = matchReplaceSpellEffects(effect.levelingtext, false, skilldata);
         effect.str = x.str;
         effect.vars = x.vars;
 

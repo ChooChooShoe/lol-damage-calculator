@@ -10,6 +10,60 @@ function define_keyword(word) {
   let body = 'Description for keyword ' + word;
   return `<div><h4>${word}<hr></h4><p>${body}</p></div>`;
 }
+const keywordcolor = {
+  "health": "#1F995C",
+  "hp": "#1F995C",
+  "attack damage": "orange",
+  "attack's damage": "orange",
+  "ad": "orange",
+  "physical damage": "#FF8C34",
+  "pd": "#FF8C34",
+  "ability power": "#7A6DFF",
+  "ap": "#7A6DFF",
+  "magic damage": "#00B0F0",
+  "md": "#00B0F0",
+  "true damage": "#F9966B",
+  "td": "#F9966B",
+  "armor": "yellow",
+  "armor penetration": "tomato",
+  "lethality": "tomato",
+  "magic resist": "deeppink",
+  "mr": "deeppink",
+  "resist": "deeppink",
+  "magic penetration": "turquoise",
+  "mana": "#0099CC",
+  "energy": "yellow",
+  "critical strike chance": "#E56013",
+  "critical chance": "#E56013",
+  "critical strike damage": "#944B00",
+  "critical damage": "#944B00",
+  "crit": "#944B00",
+  "movement speed": "#F5EE99",
+  "ms": "#F5EE99",
+  "xp": "#883FD1",
+  "gold": "#FFD700",
+  "siphoning strike": "#5C58C9",
+  "soul": "#5C58C9",
+  "buzzword3": "#E34D4C",
+  "buzzword2": "#56C456",
+  "buzzword": "#AF1AAF",
+  "mist": "#26DFB0",
+  "wild": "#A01D7A",
+  "placed": "#883FD1",
+  "attack speed": "orangered",
+  "as": "orangered",
+  "fury": "#FA6533",
+  "river": "#43D9FB",
+  "terrain": "#B36F21",
+  "brush": "#96FB97",
+  "life point": "#56C456",
+  "main": "#CA2697",
+  "off-hand": "#E34D4C",
+  "sweetspot": "#E34D4C",
+  "exalted": "#FF7F00",
+  "steel": "#748DD0",
+  "azakana": "#E2103F"
+}
 
 const keyword_lookup = {
   __: {
@@ -128,7 +182,7 @@ Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br>`
   },
 }
 
-export function quickMatchReplace(text) {
+export function quickMatchReplace(text, extra_data = null) {
   // Matches [[ thing ]] captures thing
   text = text.replace(/\[\[([^[]*)\]\]/g, function (match, capture) {
     const parms = capture.split('|');
@@ -153,7 +207,7 @@ export function quickMatchReplace(text) {
             slices.push(par);
           }
         }
-        return inner_fn(capture, slices, {}, options);
+        return inner_fn(capture, slices, null, options, extra_data);
       } catch (e) {
         return `<span class="red">${capture.replace(/\|/g, ' ')}"</span>`;
       }
@@ -163,7 +217,7 @@ export function quickMatchReplace(text) {
     }
   });
 }
-export default function matchReplaceSpellEffects(text, quick = false) {
+export default function matchReplaceSpellEffects(text, quick = false, extra_data = null) {
   text = (text || '').toString();
   if (quick === true) {
     return quickMatchReplace(text);
@@ -200,7 +254,7 @@ export default function matchReplaceSpellEffects(text, quick = false) {
               }
             }
             needed = true;
-            return inner_fn(capture, slices, vars, options);
+            return inner_fn(capture, slices, vars, options, extra_data);
           } catch (e) {
             // Vue.notify({
             //   group: "main",
@@ -416,9 +470,10 @@ const match_lookup = {
   },
 
   // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
-  'ap': function (_capture, slices, vars, options) {
+  'ap': function (_capture, slices, vars, options, extra_data) {
     // Ezreal W example
     // {{st|Magic Damage| {{ap|80 to 300}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ {{ap|70 to 90}}% AP)}} }}
+    // {{ap|60 to 200 2}} or {{ap|10 to 40}}
     const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
     const clean = /([^\d./*\-+()]+)/g;
     const list = [];
@@ -429,7 +484,7 @@ const match_lookup = {
       if (found) {
         const start = parseFloat(eval(found[1]));
         const end = parseFloat(eval(found[2]));
-        const range = parseInt(found[3]) || 5;
+        const range = parseInt(found[3]) || extra_data?.maxrank || 5;
         const diff = (end - start) / (range - 1);
         for (let i = 0; i < range; i++) {
           list.push(+(start + diff * i).toFixed(round));
@@ -441,10 +496,12 @@ const match_lookup = {
     // if (!vars.base_damage)
     //   vars.base_damage = list;
     // vars.progression = list;
-    if (!vars.ap_progressions)
-      vars.ap_progressions = [];
-    vars.ap_progressions.push(list);
-    return `<spell-span :list="['${list.join("','")}']" :spellrankindex="spellrankindex"></spell-span>`;
+    if(vars) {
+      if (!vars.ap_progressions)
+        vars.ap_progressions = [];
+      vars.ap_progressions.push(list);
+    }
+    return `<SpellSpan :list="[${list}]" :spellrankindex="spellrankindex"></SpellSpan>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
   'as': function (capture, slices, vars, options) {
@@ -461,18 +518,18 @@ const match_lookup = {
     cssClass = cssClass.replace(' ', '-');
 
     let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    if (test.includes('spell-span') && vars.ap_progressions.length > 0){
-      const idx = vars.ap_progressions.length -1;
-      console.log("herherhehrheh\n",test,"\nvars",vars,"\nold_num",num);
+    if (test.includes('SpellSpan') && vars.ap_progressions.length > 0) {
+      const idx = vars.ap_progressions.length - 1;
+      console.log("herherhehrheh\n", test, "\nvars", vars, "\nold_num", num);
       // ratios = vars.as_ratios[vars.as_ratios.length - 1];
       let list = [];
-      if(vars.ap_progressions[idx])
+      if (vars.ap_progressions[idx])
         for (const x of vars.ap_progressions[idx]) {
           list.push(Number(x) / 100);
         }
       num = list;
       vars.ap_progressions[idx] = undefined;
-      console.log("okay\n",test,"\nvars",vars,"\nold_num",num);
+      console.log("okay\n", test, "\nvars", vars, "\nold_num", num);
     }
     if (num !== null) {
       const isBonus = inner.includes('bonus');
@@ -502,15 +559,15 @@ const match_lookup = {
     return `<span class="${cssClass}">${inner}</span>`;
   },
   // sbc (or Small bold capitals): {{sbc|<Text>}}
-  'sbc': function (capture, _parms, _vars) {
-    return `<span style="font-weight:bold; font-size:89%; text-transform:uppercase;">${capture.slice(4)}</span>`;
+  'sbc': function (_capture, slices, _vars, _options) {
+    return `<span class="sbc">${slices[0]}</span>`;
   },
 
   //pp18 (or Passive progression from level 1 to 18): {{pp18|<Val1>|<Val2>|<...>|<Val17>|<Val18>}}
 
   //ft (or Flip text): {{ft|<Element 1>|<Element 2>}}
-  'ft': function (capture, slices, _vars) {
-    return `<span>${slices[0]} (${slices[1]})</span>`;
+  'ft': function (_capture, slices, _vars, options) {
+    return `<label class="ft"><input type="checkbox"><span class="flipText1">「&nbsp;${slices[0] || options.text1}&nbsp;」</span><span class="flipText2">「&nbsp;${slices[1] || options.text2}&nbsp;」</span></label>`;
   },
 
   'g': function (_capture, slices, _vars) {

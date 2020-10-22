@@ -1,40 +1,31 @@
 <template>
-  <div class="dropdown" :class="{ 'is-active': isActive > 0 }">
-    <div class="dropdown-trigger">
-      <button class="button" @click="isActive = 2">
-        <span>Add Ratio</span>
-        <span class="icon is-small">
-          <i :class="{ 'my-angle-up': isActive > 0, 'my-angle-down': isActive < 1 }"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <template v-for="(r,i) in spell_ratios">
-          <div
-            :key="i"
-            v-if="!r.extra && $parent.ratios[i] === undefined"
-            @click="$parent.addRatio(i)"
-            class="dropdown-item"
-          >
-            <a
-              :class="r.color"
-            >{{ r.prefex }} {{ r.sufex }} {{ r.ispercent == false ? 'Ratio' : ''}}</a>
-          </div>
-          <!-- <hr :key="'hr'+i" class="dropdown-divider" /> -->
-        </template>
+  <DropdownSelect label="" value="Add Ratio">
+    <template v-for="(r, i) in spell_ratios">
+      <div
+        :key="i"
+        v-if="!r.extra && $parent.ratios[i] === undefined"
+        @click="$parent.addRatio(i)"
+        class="dropdown-item"
+      >
+        <a :class="r.color"
+          >{{ r.prefex }} {{ r.sufex }}
+          {{ r.ispercent == false ? "Ratio" : "" }}</a
+        >
       </div>
-    </div>
-  </div>
+      <!-- <hr :key="'hr'+i" class="dropdown-divider" /> -->
+    </template>
+  </DropdownSelect>
 </template>
 
 <script>
 import Vue from "vue";
 import { spell_ratios } from "../../javascript/league_data";
+import DropdownSelect from "../simple/DropdownSelect";
 
 export default {
   name: "AddRatioDropDown",
   props: ["value"],
+  components: { DropdownSelect },
   data() {
     return {
       isActive: false,
@@ -49,15 +40,6 @@ export default {
     handleInput(e) {
       this.$emit("input", e);
     },
-    onClick: function (ev) {
-      this.isActive--;
-    },
-  },
-  mounted: function () {
-    document.addEventListener("click", this.onClick);
-  },
-  beforeDestroy: function () {
-    document.removeEventListener("click", this.onClick);
   },
 };
 </script>
@@ -81,14 +63,7 @@ export default {
   top: 100%;
   z-index: 20;
 }
-.dropdown-content {
-  background-color: #282f2f;
-  border-radius: 0.4em;
-  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
-    0 0 0 1px rgba(10, 10, 10, 0.02);
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-}
+
 .dropdown-item {
   color: #fff;
   display: block;
@@ -98,6 +73,11 @@ export default {
   position: relative;
   cursor: pointer;
 }
+
+.dropdown-item:hover {
+  background-color: #282f2f;
+}
+
 i.my-angle-down {
   border: solid seashell;
   border-width: 0 3px 3px 0;

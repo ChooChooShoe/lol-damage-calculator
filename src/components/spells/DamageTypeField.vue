@@ -1,34 +1,41 @@
 <template>
-  <div>
-    <ul class="tabs">
-      <label class="label">Damage Type:</label>
-      <button :class=" { 'success': value === 'none' }" @click="handleInput('none')">None</button>
-      <button
-        class="ad"
-        :class=" { 'success': value === 'physical' }"
-        @click="handleInput('physical')"
-      >Physical</button>
-      <button
-        class="ap"
-        :class=" { 'success': value === 'magic' }"
-        @click="handleInput('magic')"
-      >Magic</button>
-      <button
-        class="true"
-        :class=" { 'success': value === 'true' }"
-        @click="handleInput('true')"
-      >True</button>
-    </ul>
-  </div>
+  <DropdownSelect label="Damage Type" class="dtfield" :class="value" :value="value">
+    <button :class="{ success: value === 'none' }" @click="handleInput('none')">
+      None
+    </button>
+    <button
+      class="ad"
+      :class="{ success: value === 'physical' }"
+      @click="handleInput('physical')"
+    >
+      Physical
+    </button>
+    <button
+      class="ap"
+      :class="{ success: value === 'magic' }"
+      @click="handleInput('magic')"
+    >
+      Magic
+    </button>
+    <button
+      class="true"
+      :class="{ success: value === 'true' }"
+      @click="handleInput('true')"
+    >
+      True
+    </button>
+  </DropdownSelect>
 </template>
 
 <script>
 import Vue from "vue";
 import { spell_ratios } from "../../javascript/league_data";
+import DropdownSelect from "../simple/DropdownSelect";
 
 export default {
   name: "DamageTypeField",
   props: ["value"],
+  components: { DropdownSelect },
   computed: {},
   methods: {
     handleInput(e) {
@@ -37,18 +44,12 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-.tabs {
-  display: flex;
-  align-items: stretch;
-  justify-content: left;
+<style>
+/* .dtfield .true{
+  color:black;
 }
-.tabs button {
-  border-width: 1px;
-  margin-bottom: 0;
-  height: 2.0em;
-  font-size: 0.9em;
-  padding: 0 0.5em;
-  margin: 0 0.2em;
-}
+.dtfield input {
+  width: 2.5em; 
+  height: 2.5em;
+} */
 </style>
