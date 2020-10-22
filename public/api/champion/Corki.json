@@ -88,17 +88,6 @@
           "levelingtext": "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 70% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                75,
-                120,
-                165,
-                210,
-                255
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_ad": 0.7000000000000001
@@ -108,15 +97,26 @@
               }
             ],
             "st_slices": [
-              "Magic Damage",
-              "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                120,
+                165,
+                210,
+                255
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   75,
                   120,
                   165,
@@ -126,9 +126,12 @@
                 "player_bonus_ad": 0.7000000000000001,
                 "player_total_ap": 0.5
               },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -167,8 +170,28 @@
           "levelingtext": "{{st|Mixed Damage Per Tick|{{ap|120/16 to 320/16}} {{as|(+ 10% '''bonus''' AD)}}|Total Mixed Damage|{{ap|120 to 320}} {{as|(+ 160% '''bonus''' AD)}}}}{{st|Resistance Reduction Per Tick|{{ap|1 to 2.5}}|Total Resistance Reduction|{{ap|1*8 to 2.5*8}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Mixed Damage Per Tick</span>: <span><SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Resistance Reduction Per Tick</span>: <span><SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan></span></li><li><span class=\"blue\">Total Resistance Reduction</span>: <span><SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.1
+              },
+              {
+                "player_bonus_ad": 1.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Mixed Damage Per Tick",
+                "<SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% '''bonus''' AD)</span>",
+                "Total Mixed Damage",
+                "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>"
+              ],
+              [
+                "Resistance Reduction Per Tick",
+                "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan>",
+                "Total Resistance Reduction",
+                "<SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 7.5,
@@ -198,89 +221,33 @@
                 17,
                 20
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.1
-              },
-              {
-                "player_bonus_ad": 1.6
-              }
-            ],
-            "st_slices": [
-              "Mixed Damage Per Tick",
-              "<SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% '''bonus''' AD)</span>",
-              "Total Mixed Damage",
-              "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>",
-              "Resistance Reduction Per Tick",
-              "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan>",
-              "Total Resistance Reduction",
-              "<SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   7.5,
                   10.625,
                   13.75,
                   16.875,
                   20
                 ],
-                "player_bonus_ad": 0.1
+                "player_bonus_ad": 1.6
               },
-              "title": "Mixed Damage Per Tick",
-              "str": "<SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  120,
-                  170,
-                  220,
-                  270,
-                  320
-                ],
-                "player_bonus_ad": 0.1
-              },
-              "title": "Total Mixed Damage",
-              "str": "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_progression": [
-                  1,
-                  1.375,
-                  1.75,
-                  2.125,
-                  2.5
-                ],
-                "player_bonus_ad": 0.1
-              },
-              "title": "Resistance Reduction Per Tick",
-              "str": "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan>",
-              "damage_type": "none"
-            },
-            {
-              "index": 3,
-              "ratios": {
-                "base_progression": [
-                  8,
-                  11,
-                  14,
-                  17,
-                  20
-                ],
-                "player_bonus_ad": 0.1
-              },
-              "title": "Total Resistance Reduction",
-              "str": "<SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan>",
+              "title": [
+                "Mixed Damage Per Tick",
+                "<SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% '''bonus''' AD)</span>",
+                "Total Mixed Damage",
+                "<SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>"
+              ],
+              "str": [
+                "Resistance Reduction Per Tick",
+                "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan>",
+                "Total Resistance Reduction",
+                "<SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan>"
+              ],
               "damage_type": "none"
             }
           ]

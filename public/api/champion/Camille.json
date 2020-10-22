@@ -119,8 +119,22 @@
           "levelingtext": "{{st|Physical Damage|{{ap|70 to 190}} {{as|(+ 60% '''bonus''' AD)}}|Non-Epic Monster Damage|{{ap|70/2 to 190/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Non-Epic Monster Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.6
+              },
+              {
+                "player_bonus_ad": 0.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+                "Non-Epic Monster Damage",
+                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 70,
@@ -136,54 +150,29 @@
                 80,
                 95
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.6
-              },
-              {
-                "player_bonus_ad": 0.3
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "Non-Epic Monster Damage",
-              "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   70,
                   100,
                   130,
                   160,
                   190
                 ],
-                "player_bonus_ad": 0.6
+                "player_bonus_ad": 0.3
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  35,
-                  50,
-                  65,
-                  80,
-                  95
-                ],
-                "player_bonus_ad": 0.6
-              },
-              "title": "Non-Epic Monster Damage",
-              "str": "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
+                "Non-Epic Monster Damage",
+                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% '''bonus''' AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -191,24 +180,6 @@
           "levelingtext": "{{st|Outer Cone Bonus Damage|{{as|{{ap|6 to 8}}% {{as|(+ {{fd|3.{{recurring|3}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Bonus Non-Epic Monster Damage|{{as|{{ap|6/2 to 8/2}}% {{as|(+ {{fd|1.{{recurring|6}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Outer Cone Bonus Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Bonus Non-Epic Monster Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                6,
-                6.5,
-                7,
-                7.5,
-                8
-              ],
-              [
-                3,
-                3.25,
-                3.5,
-                3.75,
-                4
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_ap": 0.03331
@@ -224,44 +195,52 @@
               }
             ],
             "st_slices": [
-              "Outer Cone Bonus Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "Bonus Non-Epic Monster Damage",
-              "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
+              [
+                "Outer Cone Bonus Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
+                "Bonus Non-Epic Monster Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                6,
+                6.5,
+                7,
+                7.5,
+                8
+              ],
+              [
+                3,
+                3.25,
+                3.5,
+                3.75,
+                4
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   6,
                   6.5,
                   7,
                   7.5,
                   8
                 ],
-                "player_bonus_ap": 0.01661
+                "player_bonus_ap": 0.01661,
+                "target_bonus_ap": null
               },
-              "title": "Outer Cone Bonus Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  3,
-                  3.25,
-                  3.5,
-                  3.75,
-                  4
-                ],
-                "player_bonus_ap": 0.01661
-              },
-              "title": "Bonus Non-Epic Monster Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Outer Cone Bonus Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
+                "Bonus Non-Epic Monster Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -307,18 +286,19 @@
           "levelingtext": "{{st|Zone Duration|{{ap|2.5|3.25|4}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Zone Duration</span>: <span><SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Zone Duration",
+                "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 2.5,
                 3.25,
                 4
               ]
-            ],
-            "st_slices": [
-              "Zone Duration",
-              "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -331,8 +311,11 @@
                   4
                 ]
               },
-              "title": "Zone Duration",
-              "str": "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>",
+              "title": [
+                "Zone Duration",
+                "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -341,8 +324,17 @@
           "levelingtext": "{{st|Bonus Magic Damage|{{ap|5|10|15}} {{as|(+ {{ap|4|6|8}}% of target's '''current''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "target_current_hp": 4.68
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 5,
@@ -354,31 +346,25 @@
                 6,
                 8
               ]
-            ],
-            "as_ratios": [
-              {
-                "target_current_hp": 4.68
-              }
-            ],
-            "st_slices": [
-              "Bonus Magic Damage",
-              "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   5,
                   10,
                   15
                 ],
                 "target_current_hp": 4.68
               },
-              "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

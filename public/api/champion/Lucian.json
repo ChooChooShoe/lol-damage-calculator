@@ -119,8 +119,17 @@
           "levelingtext": "{{st|Physical Damage|{{ap|95 to 235}} {{as|(+ {{ap|60 to 120}}% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 6075901051.2
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 95,
@@ -136,22 +145,13 @@
                 105,
                 120
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 6075901051.2
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   95,
                   130,
                   165,
@@ -160,9 +160,12 @@
                 ],
                 "player_bonus_ad": 6075901051.2
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[95,130,165,200,235]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[60,75,90,105,120]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -248,8 +251,50 @@
           "levelingtext": "{{st|Physical Damage Per Shot|{{ap|20 to 60}} {{as|(+ 25% AD)}} {{as|(+ 10% AP)}}|Total Non-Minion Damage|{{ap|(20 to 60)*(22 to 34)}} {{as|(+ {{ap|25*22 to 25*34}}% AD)}} {{as|(+ {{ap|10*22 to 10*34}}% AP)}}}}\n{{st|Minion Damage Per Shot|{{ap|20*2 to 60*2}} {{as|(+ 50% AD)}} {{as|(+ 20% AP)}}|Total Minion Damage|{{ap|(20*2 to 60*2)*(22 to 34)}} {{as|(+ {{ap|25*2*22 to 25*2*34}}% AD)}} {{as|(+ {{ap|10*2*22 to 10*2*34}}% AP)}}}}\n{{st|Shots Fired|{{ap|22 to 34}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Per Shot</span>: <span><SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Non-Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minion Damage Per Shot</span>: <span><SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Shots Fired</span>: <span><SpellSpan :list=\"[22,28,34]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.25
+              },
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ad": 0.5
+              },
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ad": 5507008.5
+              },
+              {
+                "player_total_ap": 2202803.4
+              },
+              {
+                "player_total_ad": 1100140017
+              },
+              {
+                "player_total_ap": 4405606.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Shots Fired",
+                "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>"
+              ],
+              [
+                "Physical Damage Per Shot",
+                "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
+                "Total Non-Minion Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span>"
+              ],
+              [
+                "Minion Damage Per Shot",
+                "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+                "Total Minion Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 20,
@@ -286,44 +331,6 @@
                 28,
                 34
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 0.25
-              },
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ad": 0.5
-              },
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ad": 5507008.5
-              },
-              {
-                "player_total_ap": 2202803.4
-              },
-              {
-                "player_total_ad": 1100140017
-              },
-              {
-                "player_total_ap": 4405606.8
-              }
-            ],
-            "st_slices": [
-              "Shots Fired",
-              "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>",
-              "Physical Damage Per Shot",
-              "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
-              "Total Non-Minion Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span>",
-              "Minion Damage Per Shot",
-              "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-              "Total Minion Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
@@ -335,72 +342,40 @@
                   40,
                   60
                 ],
-                "player_total_ad": 0.25,
-                "player_total_ap": 0.1
+                "player_total_ad": 5507008.5,
+                "player_total_ap": 2202803.4
               },
-              "title": "Shots Fired",
-              "str": "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>",
+              "title": [
+                "Shots Fired",
+                "<SpellSpan :list=\"[22,28,34]\"></SpellSpan>"
+              ],
+              "str": [
+                "Physical Damage Per Shot",
+                "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
+                "Total Non-Minion Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span>"
+              ],
               "damage_type": "none"
             },
             {
               "index": 1,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   550,
                   700,
                   850
                 ],
-                "player_total_ad": 0.25,
-                "player_total_ap": 0.1
+                "player_total_ad": 5507008.5,
+                "player_total_ap": 2202803.4
               },
-              "title": "Physical Damage Per Shot",
-              "str": "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ad\">(+ 25% AD)</span> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  220,
-                  280,
-                  340
-                ],
-                "player_total_ad": 0.25,
-                "player_total_ap": 0.1
-              },
-              "title": "Total Non-Minion Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (20 to 60)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[550,700,850]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[220,280,340]\"></SpellSpan>% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 3,
-              "ratios": {
-                "base_damage": [
-                  40,
-                  80,
-                  120
-                ],
-                "player_total_ad": 0.25,
-                "player_total_ap": 0.1
-              },
-              "title": "Minion Damage Per Shot",
-              "str": "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 4,
-              "ratios": {
-                "base_damage": [
-                  1100,
-                  1400,
-                  1700
-                ],
-                "player_total_ad": 0.25,
-                "player_total_ap": 0.1
-              },
-              "title": "Total Minion Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Minion Damage Per Shot",
+                "<SpellSpan :list=\"[40,80,120]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
+                "Total Minion Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (20*2 to 60*2)*(22 to 34)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[1100,1400,1700]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[440,560,680]\"></SpellSpan>% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

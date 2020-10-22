@@ -117,8 +117,21 @@
           "levelingtext": "{{st|Physical Damage|{{ap|10|60|110|160|210}} {{as|(+ 160% AD)}}}}<!--\n-->{{st|Slow|{{ap|30|40|50|60|70}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 1.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%"
+              ]
+            ],
             "ap_progressions": [
               [
                 10,
@@ -134,24 +147,13 @@
                 60,
                 70
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 1.6
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span>",
-              "Slow",
-              "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   10,
                   60,
                   110,
@@ -160,24 +162,14 @@
                 ],
                 "player_total_ad": 1.6
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  30,
-                  40,
-                  50,
-                  60,
-                  70
-                ],
-                "player_total_ad": 1.6
-              },
-              "title": "Slow",
-              "str": "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span>"
+              ],
+              "str": [
+                "Slow",
+                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%"
+              ],
               "damage_type": "none"
             }
           ]
@@ -223,8 +215,28 @@
           "levelingtext": "{{st|Max. Physical Damage|{{ap|250 to 450}} {{as|(+ 150% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}|Min. Physical Damage|{{ap|(250 to 450)*0.1}} {{as|(+ {{ap|150*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Max. Physical Damage</span>: <span><SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Min. Physical Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.5
+              },
+              {
+                "target_missing_hp": 2530.35
+              },
+              {
+                "player_bonus_ad": 0.15
+              },
+              {
+                "target_missing_hp": 2530.35
+              }
+            ],
+            "st_slices": [
+              [
+                "Max. Physical Damage",
+                "<SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
+                "Min. Physical Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 250,
@@ -244,58 +256,28 @@
                 30,
                 35
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.5
-              },
-              {
-                "target_missing_hp": 2530.35
-              },
-              {
-                "player_bonus_ad": 0.15
-              },
-              {
-                "target_missing_hp": 2530.35
-              }
-            ],
-            "st_slices": [
-              "Max. Physical Damage",
-              "<SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
-              "Min. Physical Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   250,
                   350,
                   450
                 ],
-                "player_bonus_ad": 1.5,
+                "player_bonus_ad": 0.15,
                 "target_missing_hp": 2530.35
               },
-              "title": "Max. Physical Damage",
-              "str": "<SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  25,
-                  30,
-                  35
-                ],
-                "player_bonus_ad": 1.5,
-                "target_missing_hp": 2530.35
-              },
-              "title": "Min. Physical Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Max. Physical Damage",
+                "<SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
+                "Min. Physical Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -303,16 +285,6 @@
           "levelingtext": "{{st|Max. Secondary Damage|{{ap|(250 to 450)*0.8}} {{as|(+ {{ap|150*0.8}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}|Min. Secondary Damage|{{ap|(250 to 450)*0.8*0.1}} {{as|(+ {{ap|150*0.8*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Max. Secondary Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Min. Secondary Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                120
-              ],
-              [
-                12
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_ad": 1.2
@@ -328,38 +300,40 @@
               }
             ],
             "st_slices": [
-              "Max. Secondary Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
-              "Min. Secondary Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>"
+              [
+                "Max. Secondary Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
+                "Min. Secondary Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                120
+              ],
+              [
+                12
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   120
                 ],
-                "player_bonus_ad": 1.2,
+                "player_bonus_ad": 0.12,
                 "target_total_ap": 253.508
               },
-              "title": "Max. Secondary Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  12
-                ],
-                "player_bonus_ad": 1.2,
-                "target_total_ap": 253.508
-              },
-              "title": "Min. Secondary Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Max. Secondary Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
+                "Min. Secondary Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

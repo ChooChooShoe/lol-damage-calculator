@@ -90,8 +90,17 @@
           "levelingtext": "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 20,
@@ -100,22 +109,13 @@
                 95,
                 120
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 1
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   20,
                   45,
                   70,
@@ -124,9 +124,12 @@
                 ],
                 "player_total_ad": 1
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -134,8 +137,15 @@
           "levelingtext": "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Gold Plunder</span>: <span><span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span></span></li><li><span class=\"blue\">Silver Serpent Plunder</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Gold Plunder",
+                "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
+                "Silver Serpent Plunder",
+                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 3,
@@ -151,12 +161,6 @@
                 7,
                 8
               ]
-            ],
-            "st_slices": [
-              "Gold Plunder",
-              "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
-              "Silver Serpent Plunder",
-              "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -171,23 +175,13 @@
                   7
                 ]
               },
-              "title": "Gold Plunder",
-              "str": "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  4,
-                  5,
-                  6,
-                  7,
-                  8
-                ]
-              },
-              "title": "Silver Serpent Plunder",
-              "str": "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>",
+              "title": [
+                "Gold Plunder",
+                "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
+                "Silver Serpent Plunder",
+                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -237,17 +231,6 @@
           "levelingtext": "{{st|Heal|{{ap|50 to 150}} {{as|(+ 90% AP)}} {{as|(+ 15% '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% <b>missing</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                50,
-                75,
-                100,
-                125,
-                150
-              ]
-            ],
             "as_ratios": [
               {
                 "player_total_ap": 0.9
@@ -257,8 +240,19 @@
               }
             ],
             "st_slices": [
-              "Heal",
-              "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>"
+              [
+                "Heal",
+                "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                50,
+                75,
+                100,
+                125,
+                150
+              ]
             ]
           },
           "subeffects": [
@@ -275,8 +269,11 @@
                 "player_total_ap": 0.9,
                 "player_missing_hp": 0.15
               },
-              "title": "Heal",
-              "str": "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>",
+              "title": [
+                "Heal",
+                "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 15% '''missing''' health)</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -320,8 +317,17 @@
           "levelingtext": "{{st|Bonus Physical Damage|{{ap|80 to 180}}}}\n{{st|Slow|{{ap|40 to 80}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Physical Damage",
+                "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
+              ]
+            ],
             "ap_progressions": [
               [
                 80,
@@ -337,19 +343,13 @@
                 70,
                 80
               ]
-            ],
-            "st_slices": [
-              "Bonus Physical Damage",
-              "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan>",
-              "Slow",
-              "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   80,
                   105,
                   130,
@@ -357,23 +357,14 @@
                   180
                 ]
               },
-              "title": "Bonus Physical Damage",
-              "str": "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  40,
-                  50,
-                  60,
-                  70,
-                  80
-                ]
-              },
-              "title": "Slow",
-              "str": "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%",
+              "title": [
+                "Bonus Physical Damage",
+                "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan>"
+              ],
+              "str": [
+                "Slow",
+                "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
+              ],
               "damage_type": "none"
             }
           ]
@@ -421,8 +412,22 @@
           "levelingtext": "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Cluster</span>: <span><SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage Per Wave",
+                "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Magic Damage Per Cluster",
+                "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 40,
@@ -434,50 +439,27 @@
                 210,
                 300
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 0.3
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Per Wave",
-              "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "Magic Damage Per Cluster",
-              "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   40,
                   70,
                   100
                 ],
-                "player_total_ap": 0.1
+                "player_total_ap": 0.3
               },
-              "title": "Magic Damage Per Wave",
-              "str": "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  120,
-                  210,
-                  300
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Magic Damage Per Cluster",
-              "str": "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage Per Wave",
+                "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Magic Damage Per Cluster",
+                "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -485,8 +467,27 @@
           "levelingtext": "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage with<br><i>Fire at Will</i></span>: <span><SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span></span></li><li><span class=\"blue\">Maximum Mixed Total Damage with<br><i>Fire at Will</i> and <i>Death's Daughter</i></span>: <span><SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.2
+              },
+              {
+                "player_total_ap": 1.8
+              },
+              {
+                "player_total_ap": 2.1
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+                "Total Magic Damage with<br>''Fire at Will''",
+                "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
+                "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
+                "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 480,
@@ -503,69 +504,29 @@
                 1470,
                 2100
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 1.2
-              },
-              {
-                "player_total_ap": 1.8
-              },
-              {
-                "player_total_ap": 2.1
-              }
-            ],
-            "st_slices": [
-              "Total Magic Damage",
-              "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
-              "Total Magic Damage with<br>''Fire at Will''",
-              "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
-              "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
-              "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   480,
                   840,
                   1200
                 ],
-                "player_total_ap": 1.2
+                "player_total_ap": 2.1
               },
-              "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  720,
-                  1260,
-                  1800
-                ],
-                "player_total_ap": 1.2
-              },
-              "title": "Total Magic Damage with<br>''Fire at Will''",
-              "str": "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  840,
-                  1470,
-                  2100
-                ],
-                "player_total_ap": 1.2
-              },
-              "title": "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
-              "str": "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+                "Total Magic Damage with<br>''Fire at Will''",
+                "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
+                "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
+                "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

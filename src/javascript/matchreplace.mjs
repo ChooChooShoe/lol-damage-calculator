@@ -223,7 +223,7 @@ export default function matchReplaceSpellEffects(text, quick = false, extra_data
     return quickMatchReplace(text);
   }
   let needed = false;
-  let vars = { ratios: {}, progression: [] }
+  let vars = { as_ratios: [], st_slices: [], ap_progressions: [] }
   text = text.replace(/<!--\n-->/g, '<br>');
   text = text.replace(/\n/g, '<br>');
   // Matches [[ thing ]] captures thing
@@ -486,14 +486,9 @@ const match_lookup = {
     const maxrank = extra_data && extra_data.maxrank || 5;
 
     const list = numberExpand(slices, maxrank, round);
-    // if (!vars.base_damage)
-    //   vars.base_damage = list;
-    // vars.progression = list;
-    if (vars) {
-      if (!vars.ap_progressions)
-        vars.ap_progressions = [];
-      vars.ap_progressions.push(list);
-    }
+
+    // add to vars if enabled.
+    if (vars) vars.ap_progressions.push(list);
     return `<SpellSpan :list="[${list}]"></SpellSpan>`;
   },
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
@@ -544,11 +539,7 @@ const match_lookup = {
       const final_ratio_key = `${a}_${b ? (b + '_') : ''}${c}`;
       ratios[final_ratio_key] = num;
     }
-    if (!vars.as_ratios)
-      vars.as_ratios = [];
-    vars.as_ratios.push(ratios);
-    // vars.as_ratios = ratios;
-    // vars.ratios = ratios;
+    if (vars) vars.as_ratios.push(ratios);
     return `<span class="${cssClass}">${inner}</span>`;
   },
   // sbc (or Small bold capitals): {{sbc|<Text>}}
@@ -581,12 +572,7 @@ const match_lookup = {
     for (let i = 0; i < slices.length; i += 2) {
       rets.push(`<li><span class="blue">${slices[i]}</span>: <span>${slices[i + 1]}</span></li>`);
     }
-    if(vars){
-      if(vars.st_slices)
-        vars.st_slices = vars.st_slices.concat(slices);
-      else 
-        vars.st_slices = slices;
-    }
+    if (vars) vars.st_slices.push(slices);
     return `<ul class="st">${rets.join('')}</ul>`;
   },
   // MATH OPERATORS:

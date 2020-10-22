@@ -88,8 +88,21 @@
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 65% AP)}}}}{{st|Disable Duration|{{ap|1 to 1.8}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
+              ],
+              [
+                "Disable Duration",
+                "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 80,
@@ -105,24 +118,13 @@
                 1.6,
                 1.8
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.65
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
-              "Disable Duration",
-              "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   80,
                   125,
                   170,
@@ -131,24 +133,14 @@
                 ],
                 "player_total_ap": 0.65
               },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  1,
-                  1.2,
-                  1.4,
-                  1.6,
-                  1.8
-                ],
-                "player_total_ap": 0.65
-              },
-              "title": "Disable Duration",
-              "str": "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>",
+              "title": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
+              ],
+              "str": [
+                "Disable Duration",
+                "<SpellSpan :list=\"[1,1.2,1.4,1.6,1.8]\"></SpellSpan>"
+              ],
               "damage_type": "none"
             }
           ]
@@ -189,8 +181,22 @@
           "levelingtext": "{{st|Minimum Heal|{{ap|30 to 150}} {{as|(+ 30% AP)}}|Maximum Heal|{{ap|55 to 215}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Minimum Heal",
+                "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+                "Maximum Heal",
+                "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 30,
@@ -206,20 +212,6 @@
                 175,
                 215
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              },
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              "Minimum Heal",
-              "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "Maximum Heal",
-              "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
@@ -233,26 +225,15 @@
                   120,
                   150
                 ],
-                "player_total_ap": 0.3
+                "player_total_ap": 0.6
               },
-              "title": "Minimum Heal",
-              "str": "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  55,
-                  95,
-                  135,
-                  175,
-                  215
-                ],
-                "player_total_ap": 0.3
-              },
-              "title": "Maximum Heal",
-              "str": "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
+              "title": [
+                "Minimum Heal",
+                "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
+                "Maximum Heal",
+                "<SpellSpan :list=\"[55,95,135,175,215]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]

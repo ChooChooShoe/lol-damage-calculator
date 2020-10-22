@@ -111,8 +111,26 @@
           "levelingtext": "{{st|Magic Damage|{{pp|5+4*(x-1) for 10; then + 10*x for 5; then +16*x}} (+ {{ap|75 to 155}}) {{as|(+ 60% AP)}}}}\n{{st|Damage Increase|{{ap|20 to 40}}%|Maximum Bonus Damage|{{ap|(75 to 155)*(1.2 to 1.4)}} {{as|(+ {{ap|60*(1.2 to 1.4)}}% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><HtmlTooltip class=\"blue link\">5+4*(x-1) for 10; then + 10*x for 5; then +16*xundefined −  (based on level)<template #content>Values: 50<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Damage Increase</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": null
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<HtmlTooltip class=\"blue link\">5+4*(x-1) for 10; then + 10*x for 5; then +16*xundefined −  (based on level)<template #content>Values: 50<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              [
+                "Damage Increase",
+                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
+                "Maximum Bonus Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 75,
@@ -128,65 +146,32 @@
                 35,
                 40
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.6
-              },
-              {
-                "player_total_ap": null
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<HtmlTooltip class=\"blue link\">5+4*(x-1) for 10; then + 10*x for 5; then +16*xundefined −  (based on level)<template #content>Values: 50<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span>",
-              "Damage Increase",
-              "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
-              "Maximum Bonus Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   75,
                   95,
                   115,
                   135,
                   155
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": null
               },
-              "title": "Magic Damage",
-              "str": "<HtmlTooltip class=\"blue link\">5+4*(x-1) for 10; then + 10*x for 5; then +16*xundefined −  (based on level)<template #content>Values: 50<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  20,
-                  25,
-                  30,
-                  35,
-                  40
-                ],
-                "player_total_ap": 0.6
-              },
-              "title": "Damage Increase",
-              "str": "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "player_total_ap": 0.6
-              },
-              "title": "Maximum Bonus Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Magic Damage",
+                "<HtmlTooltip class=\"blue link\">5+4*(x-1) for 10; then + 10*x for 5; then +16*xundefined −  (based on level)<template #content>Values: 50<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[75,95,115,135,155]\"></SpellSpan>) <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              "str": [
+                "Damage Increase",
+                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
+                "Maximum Bonus Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (75 to 155)*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap 60*(1.2 to 1.4)\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% AP)</span>"
+              ],
+              "damage_type": "none"
             }
           ]
         }
@@ -231,8 +216,13 @@
           "levelingtext": "{{st|Magic Penetration|{{ap|5 to 15}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Penetration</span>: <span><SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Magic Penetration",
+                "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan>%"
+              ]
+            ],
             "ap_progressions": [
               [
                 5,
@@ -241,10 +231,6 @@
                 12.5,
                 15
               ]
-            ],
-            "st_slices": [
-              "Magic Penetration",
-              "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -259,8 +245,11 @@
                   15
                 ]
               },
-              "title": "Magic Penetration",
-              "str": "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan>%",
+              "title": [
+                "Magic Penetration",
+                "<SpellSpan :list=\"[5,7.5,10,12.5,15]\"></SpellSpan>%"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -269,8 +258,17 @@
           "levelingtext": "{{st|Magic Damage|{{ap|80 to 140}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,95,110,125,140]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,95,110,125,140]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 80,
@@ -279,22 +277,13 @@
                 125,
                 140
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<SpellSpan :list=\"[80,95,110,125,140]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   80,
                   95,
                   110,
@@ -303,9 +292,12 @@
                 ],
                 "player_total_ap": 0.6
               },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,95,110,125,140]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,95,110,125,140]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

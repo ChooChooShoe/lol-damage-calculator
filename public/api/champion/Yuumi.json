@@ -115,8 +115,17 @@
           "levelingtext": "{{st|Magic Damage|{{ap|40 to 190 6}} {{as|(+ 30% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 40,
@@ -126,22 +135,13 @@
                 160,
                 190
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              }
-            ],
-            "st_slices": [
-              "Magic Damage",
-              "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   40,
                   70,
                   100,
@@ -151,9 +151,12 @@
                 ],
                 "player_total_ap": 0.3
               },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[40,70,100,130,160,190]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -161,8 +164,20 @@
           "levelingtext": "{{st|Empowered Damage|{{ap|45 to 245 6}} {{as|(+ 40% AP)}} {{as|(+ {{ap|2 to 8 6}}% of the target's '''current''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "target_current_hp": null
+              }
+            ],
+            "st_slices": [
+              [
+                "Empowered Damage",
+                "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 45,
@@ -180,25 +195,13 @@
                 6.8,
                 8
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "target_current_hp": null
-              }
-            ],
-            "st_slices": [
-              "Empowered Damage",
-              "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   45,
                   85,
                   125,
@@ -209,9 +212,12 @@
                 "player_total_ap": 0.4,
                 "target_current_hp": null
               },
-              "title": "Empowered Damage",
-              "str": "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Empowered Damage",
+                "<SpellSpan :list=\"[45,85,125,165,205,245]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2,3.2,4.4,5.6,6.8,8]\"></SpellSpan>% of the target's '''current''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -253,8 +259,24 @@
           "levelingtext": "{{st|Bonus Attack Damage|{{ap|12*0.6 to 20*0.6}} {{as|(+ {{ap|12 to 20}}% '''bonus''' AD)}}}}\n{{st|Bonus Ability Power|{{ap|12 to 20}} {{as|(+ {{ap|12 to 20}}% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Damage</span>: <span><SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Ability Power</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 12141618.200000001
+              },
+              {
+                "player_total_ap": 12141618.200000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Attack Damage",
+                "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ],
+              [
+                "Bonus Ability Power",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 7.2,
@@ -284,53 +306,30 @@
                 18,
                 20
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 12141618.200000001
-              },
-              {
-                "player_total_ap": 12141618.200000001
-              }
-            ],
-            "st_slices": [
-              "Bonus Attack Damage",
-              "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>",
-              "Bonus Ability Power",
-              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   7.2,
                   8.4,
                   9.6,
                   10.8,
                   12
                 ],
-                "player_bonus_ad": 12141618.200000001
+                "player_bonus_ad": 12141618.200000001,
+                "player_total_ap": 12141618.200000001
               },
-              "title": "Bonus Attack Damage",
-              "str": "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  12,
-                  14,
-                  16,
-                  18,
-                  20
-                ],
-                "player_bonus_ad": 12141618.200000001
-              },
-              "title": "Bonus Ability Power",
-              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>",
+              "title": [
+                "Bonus Attack Damage",
+                "<SpellSpan :list=\"[7.2,8.4,9.6,10.8,12]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ],
+              "str": [
+                "Bonus Ability Power",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>% AP)</span>"
+              ],
               "damage_type": "none"
             }
           ]
@@ -339,8 +338,21 @@
           "levelingtext": "{{st|Adaptive Force|{{ap|12 to 20}}}}\n{{st|Adaptive Force per 100 '''bonus''' AD|{{ap|12/0.6 to 20/0.6|round=2}}}}\n{{st|Adaptive Force per 100 AP|{{ap|12 to 20}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Adaptive Force</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Adaptive Force per 100 <b>bonus</b> AD</span>: <span><SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Adaptive Force per 100 AP</span>: <span><SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Adaptive Force",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
+              ],
+              [
+                "Adaptive Force per 100 '''bonus''' AD",
+                "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>"
+              ],
+              [
+                "Adaptive Force per 100 AP",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 12,
@@ -363,14 +375,6 @@
                 18,
                 20
               ]
-            ],
-            "st_slices": [
-              "Adaptive Force",
-              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
-              "Adaptive Force per 100 '''bonus''' AD",
-              "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>",
-              "Adaptive Force per 100 AP",
-              "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -385,8 +389,14 @@
                   20
                 ]
               },
-              "title": "Adaptive Force",
-              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
+              "title": [
+                "Adaptive Force",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
+              ],
+              "str": [
+                "Adaptive Force per 100 '''bonus''' AD",
+                "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>"
+              ],
               "damage_type": "none"
             },
             {
@@ -400,23 +410,11 @@
                   33.33
                 ]
               },
-              "title": "Adaptive Force per 100 '''bonus''' AD",
-              "str": "<SpellSpan :list=\"[20,23.33,26.67,30,33.33]\"></SpellSpan>",
-              "damage_type": "none"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_progression": [
-                  12,
-                  14,
-                  16,
-                  18,
-                  20
-                ]
-              },
-              "title": "Adaptive Force per 100 AP",
-              "str": "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>",
+              "title": [
+                "Adaptive Force per 100 AP",
+                "<SpellSpan :list=\"[12,14,16,18,20]\"></SpellSpan>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -469,8 +467,24 @@
           "levelingtext": "{{st|Heal|{{ap|70 to 210}} {{as|(+ 40% AP)}}}}\n{{st|Bonus Attack Speed|{{as|{{ap|25 to 45}}%|as}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_unknown": 25303540.45
+              }
+            ],
+            "st_slices": [
+              [
+                "Heal",
+                "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ],
+              [
+                "Bonus Attack Speed",
+                "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 70,
@@ -486,20 +500,6 @@
                 40,
                 45
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "player_total_unknown": 25303540.45
-              }
-            ],
-            "st_slices": [
-              "Heal",
-              "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "Bonus Attack Speed",
-              "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>"
             ]
           },
           "subeffects": [
@@ -513,26 +513,17 @@
                   175,
                   210
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.4,
+                "player_total_unknown": 25303540.45
               },
-              "title": "Heal",
-              "str": "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Bonus Attack Speed",
-              "str": "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>",
+              "title": [
+                "Heal",
+                "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ],
+              "str": [
+                "Bonus Attack Speed",
+                "<span class=\"as\"><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span>"
+              ],
               "damage_type": "none"
             }
           ]
@@ -575,8 +566,32 @@
           "levelingtext": "{{st|Magic Damage Per Wave|{{ap|60 to 100}} {{as|(+ 20% AP)}}|Reduced Damage Per Wave|{{ap|60*0.5 to 100*0.5}} {{as|(+ 10% AP)}}|Maximum Champion Damage|{{ap|60*4 to 100*4}} {{as|(+ 80% AP)}}|Maximum Non-Champion Damage|{{ap|60*7 to 100*7}} {{as|(+ 140% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Reduced Damage Per Wave</span>: <span><SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Maximum Champion Damage</span>: <span><SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Damage</span>: <span><SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 1.4000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage Per Wave",
+                "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+                "Reduced Damage Per Wave",
+                "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Maximum Champion Damage",
+                "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+                "Maximum Non-Champion Damage",
+                "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 60,
@@ -598,88 +613,31 @@
                 560,
                 700
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 0.8
-              },
-              {
-                "player_total_ap": 1.4000000000000001
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Per Wave",
-              "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-              "Reduced Damage Per Wave",
-              "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "Maximum Champion Damage",
-              "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "Maximum Non-Champion Damage",
-              "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   60,
                   80,
                   100
                 ],
-                "player_total_ap": 0.2
+                "player_total_ap": 1.4000000000000001
               },
-              "title": "Magic Damage Per Wave",
-              "str": "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  30,
-                  40,
-                  50
-                ],
-                "player_total_ap": 0.2
-              },
-              "title": "Reduced Damage Per Wave",
-              "str": "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  240,
-                  320,
-                  400
-                ],
-                "player_total_ap": 0.2
-              },
-              "title": "Maximum Champion Damage",
-              "str": "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 3,
-              "ratios": {
-                "base_damage": [
-                  420,
-                  560,
-                  700
-                ],
-                "player_total_ap": 0.2
-              },
-              "title": "Maximum Non-Champion Damage",
-              "str": "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Magic Damage Per Wave",
+                "<SpellSpan :list=\"[60,80,100]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+                "Reduced Damage Per Wave",
+                "<SpellSpan :list=\"[30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Maximum Champion Damage",
+                "<SpellSpan :list=\"[240,320,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+                "Maximum Non-Champion Damage",
+                "<SpellSpan :list=\"[420,560,700]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

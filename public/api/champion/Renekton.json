@@ -109,8 +109,40 @@
           "levelingtext": "{{st|Physical Damage|{{ap|65 to 205}} {{as|(+ 80% '''bonus''' AD)}}|Enhanced Physical Damage|{{ap|100 to 300}} {{as|(+ 120% '''bonus''' AD)}}}}\n{{st|Healing Cap|{{ap|50 to 150}}|Enhanced Healing Cap|{{ap|200 to 600}}}}\n{{st|Non-Champion Healing|{{ap|3 to 9}} {{as|(+ 4% '''bonus''' AD)}}|Enhanced Non-Champion Healing|{{ap|9 to 27}} {{as|(+ 12% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Physical Damage</span>: <span><SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Healing Cap</span>: <span><SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan></span></li><li><span class=\"blue\">Enhanced Healing Cap</span>: <span><SpellSpan :list=\"[200,300,400,500,600]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Non-Champion Healing</span>: <span><SpellSpan :list=\"[3,4.5,6,7.5,9]\"></SpellSpan> <span class=\"ad\">(+ 4% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Non-Champion Healing</span>: <span><SpellSpan :list=\"[9,13.5,18,22.5,27]\"></SpellSpan> <span class=\"ad\">(+ 12% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.8
+              },
+              {
+                "player_bonus_ad": 1.2
+              },
+              {
+                "player_bonus_ad": 0.04
+              },
+              {
+                "player_bonus_ad": 0.12
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+                "Enhanced Physical Damage",
+                "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+              ],
+              [
+                "Healing Cap",
+                "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan>",
+                "Enhanced Healing Cap",
+                "<SpellSpan :list=\"[200,300,400,500,600]\"></SpellSpan>"
+              ],
+              [
+                "Non-Champion Healing",
+                "<SpellSpan :list=\"[3,4.5,6,7.5,9]\"></SpellSpan> <span class=\"ad\">(+ 4% '''bonus''' AD)</span>",
+                "Enhanced Non-Champion Healing",
+                "<SpellSpan :list=\"[9,13.5,18,22.5,27]\"></SpellSpan> <span class=\"ad\">(+ 12% '''bonus''' AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 65,
@@ -154,131 +186,54 @@
                 22.5,
                 27
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.8
-              },
-              {
-                "player_bonus_ad": 1.2
-              },
-              {
-                "player_bonus_ad": 0.04
-              },
-              {
-                "player_bonus_ad": 0.12
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
-              "Enhanced Physical Damage",
-              "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
-              "Healing Cap",
-              "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan>",
-              "Enhanced Healing Cap",
-              "<SpellSpan :list=\"[200,300,400,500,600]\"></SpellSpan>",
-              "Non-Champion Healing",
-              "<SpellSpan :list=\"[3,4.5,6,7.5,9]\"></SpellSpan> <span class=\"ad\">(+ 4% '''bonus''' AD)</span>",
-              "Enhanced Non-Champion Healing",
-              "<SpellSpan :list=\"[9,13.5,18,22.5,27]\"></SpellSpan> <span class=\"ad\">(+ 12% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   65,
                   100,
                   135,
                   170,
                   205
                 ],
-                "player_bonus_ad": 0.8
+                "player_bonus_ad": 0.04
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[65,100,135,170,205]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+                "Enhanced Physical Damage",
+                "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+              ],
+              "str": [
+                "Healing Cap",
+                "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan>",
+                "Enhanced Healing Cap",
+                "<SpellSpan :list=\"[200,300,400,500,600]\"></SpellSpan>"
+              ],
+              "damage_type": "none"
             },
             {
               "index": 1,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   100,
                   150,
                   200,
                   250,
                   300
                 ],
-                "player_bonus_ad": 0.8
+                "player_bonus_ad": 0.04
               },
-              "title": "Enhanced Physical Damage",
-              "str": "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_progression": [
-                  50,
-                  75,
-                  100,
-                  125,
-                  150
-                ],
-                "player_bonus_ad": 0.8
-              },
-              "title": "Healing Cap",
-              "str": "<SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan>",
-              "damage_type": "none"
-            },
-            {
-              "index": 3,
-              "ratios": {
-                "base_progression": [
-                  200,
-                  300,
-                  400,
-                  500,
-                  600
-                ],
-                "player_bonus_ad": 0.8
-              },
-              "title": "Enhanced Healing Cap",
-              "str": "<SpellSpan :list=\"[200,300,400,500,600]\"></SpellSpan>",
-              "damage_type": "none"
-            },
-            {
-              "index": 4,
-              "ratios": {
-                "base_progression": [
-                  3,
-                  4.5,
-                  6,
-                  7.5,
-                  9
-                ],
-                "player_bonus_ad": 0.8
-              },
-              "title": "Non-Champion Healing",
-              "str": "<SpellSpan :list=\"[3,4.5,6,7.5,9]\"></SpellSpan> <span class=\"ad\">(+ 4% '''bonus''' AD)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 5,
-              "ratios": {
-                "base_progression": [
-                  9,
-                  13.5,
-                  18,
-                  22.5,
-                  27
-                ],
-                "player_bonus_ad": 0.8
-              },
-              "title": "Enhanced Non-Champion Healing",
-              "str": "<SpellSpan :list=\"[9,13.5,18,22.5,27]\"></SpellSpan> <span class=\"ad\">(+ 12% '''bonus''' AD)</span>",
+              "title": [
+                "Non-Champion Healing",
+                "<SpellSpan :list=\"[3,4.5,6,7.5,9]\"></SpellSpan> <span class=\"ad\">(+ 4% '''bonus''' AD)</span>",
+                "Enhanced Non-Champion Healing",
+                "<SpellSpan :list=\"[9,13.5,18,22.5,27]\"></SpellSpan> <span class=\"ad\">(+ 12% '''bonus''' AD)</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -287,8 +242,22 @@
           "levelingtext": "{{st|Champion Healing|{{ap|12 to 36}} {{as|(+ 16% '''bonus''' AD)}}|Enhanced Champion Healing|{{ap|36 to 108}} {{as|(+ 48% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Champion Healing</span>: <span><SpellSpan :list=\"[12,18,24,30,36]\"></SpellSpan> <span class=\"ad\">(+ 16% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Enhanced Champion Healing</span>: <span><SpellSpan :list=\"[36,54,72,90,108]\"></SpellSpan> <span class=\"ad\">(+ 48% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.16
+              },
+              {
+                "player_bonus_ad": 0.48
+              }
+            ],
+            "st_slices": [
+              [
+                "Champion Healing",
+                "<SpellSpan :list=\"[12,18,24,30,36]\"></SpellSpan> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
+                "Enhanced Champion Healing",
+                "<SpellSpan :list=\"[36,54,72,90,108]\"></SpellSpan> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 12,
@@ -304,20 +273,6 @@
                 90,
                 108
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.16
-              },
-              {
-                "player_bonus_ad": 0.48
-              }
-            ],
-            "st_slices": [
-              "Champion Healing",
-              "<SpellSpan :list=\"[12,18,24,30,36]\"></SpellSpan> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
-              "Enhanced Champion Healing",
-              "<SpellSpan :list=\"[36,54,72,90,108]\"></SpellSpan> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
@@ -331,26 +286,15 @@
                   30,
                   36
                 ],
-                "player_bonus_ad": 0.16
+                "player_bonus_ad": 0.48
               },
-              "title": "Champion Healing",
-              "str": "<SpellSpan :list=\"[12,18,24,30,36]\"></SpellSpan> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  36,
-                  54,
-                  72,
-                  90,
-                  108
-                ],
-                "player_bonus_ad": 0.16
-              },
-              "title": "Enhanced Champion Healing",
-              "str": "<SpellSpan :list=\"[36,54,72,90,108]\"></SpellSpan> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>",
+              "title": [
+                "Champion Healing",
+                "<SpellSpan :list=\"[12,18,24,30,36]\"></SpellSpan> <span class=\"ad\">(+ 16% '''bonus''' AD)</span>",
+                "Enhanced Champion Healing",
+                "<SpellSpan :list=\"[36,54,72,90,108]\"></SpellSpan> <span class=\"ad\">(+ 48% '''bonus''' AD)</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -396,8 +340,22 @@
           "levelingtext": "{{st|Total Physical Damage|{{ap|5*2 to 45*2}} {{as|(+ 150% AD)}}|Physical Damage Per Hit|{{ap|5 to 45}} {{as|(+ 75% AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[10,30,50,70,90]\"></SpellSpan> <span class=\"ad\">(+ 150% AD)</span></span></li><li><span class=\"blue\">Physical Damage Per Hit</span>: <span><SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 1.5
+              },
+              {
+                "player_total_ad": 0.75
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Physical Damage",
+                "<SpellSpan :list=\"[10,30,50,70,90]\"></SpellSpan> <span class=\"ad\">(+ 150% AD)</span>",
+                "Physical Damage Per Hit",
+                "<SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 10,
@@ -413,54 +371,29 @@
                 35,
                 45
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 1.5
-              },
-              {
-                "player_total_ad": 0.75
-              }
-            ],
-            "st_slices": [
-              "Total Physical Damage",
-              "<SpellSpan :list=\"[10,30,50,70,90]\"></SpellSpan> <span class=\"ad\">(+ 150% AD)</span>",
-              "Physical Damage Per Hit",
-              "<SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   10,
                   30,
                   50,
                   70,
                   90
                 ],
-                "player_total_ad": 1.5
+                "player_total_ad": 0.75
               },
-              "title": "Total Physical Damage",
-              "str": "<SpellSpan :list=\"[10,30,50,70,90]\"></SpellSpan> <span class=\"ad\">(+ 150% AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  5,
-                  15,
-                  25,
-                  35,
-                  45
-                ],
-                "player_total_ad": 1.5
-              },
-              "title": "Physical Damage Per Hit",
-              "str": "<SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Total Physical Damage",
+                "<SpellSpan :list=\"[10,30,50,70,90]\"></SpellSpan> <span class=\"ad\">(+ 150% AD)</span>",
+                "Physical Damage Per Hit",
+                "<SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -468,8 +401,17 @@
           "levelingtext": "{{st|Total Enhanced Damage|{{ap|5*3 to 45*3}} {{as|(+ 225% AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Total Enhanced Damage</span>: <span><SpellSpan :list=\"[15,45,75,105,135]\"></SpellSpan> <span class=\"ad\">(+ 225% AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 2.25
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Enhanced Damage",
+                "<SpellSpan :list=\"[15,45,75,105,135]\"></SpellSpan> <span class=\"ad\">(+ 225% AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 15,
@@ -478,22 +420,13 @@
                 105,
                 135
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 2.25
-              }
-            ],
-            "st_slices": [
-              "Total Enhanced Damage",
-              "<SpellSpan :list=\"[15,45,75,105,135]\"></SpellSpan> <span class=\"ad\">(+ 225% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   15,
                   45,
                   75,
@@ -502,9 +435,12 @@
                 ],
                 "player_total_ad": 2.25
               },
-              "title": "Total Enhanced Damage",
-              "str": "<SpellSpan :list=\"[15,45,75,105,135]\"></SpellSpan> <span class=\"ad\">(+ 225% AD)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Total Enhanced Damage",
+                "<SpellSpan :list=\"[15,45,75,105,135]\"></SpellSpan> <span class=\"ad\">(+ 225% AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -544,23 +480,23 @@
           "levelingtext": "{{st|Bonus Health|{{as|{{ap|250 to 750}}|hp}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Health</span>: <span><span class=\"hp\"><SpellSpan :list=\"[250,500,750]\"></SpellSpan></span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                250,
-                500,
-                750
-              ]
-            ],
             "as_ratios": [
               {
                 "player_total_unknown": 250500750
               }
             ],
             "st_slices": [
-              "Bonus Health",
-              "<span class=\"hp\"><SpellSpan :list=\"[250,500,750]\"></SpellSpan></span>"
+              [
+                "Bonus Health",
+                "<span class=\"hp\"><SpellSpan :list=\"[250,500,750]\"></SpellSpan></span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                250,
+                500,
+                750
+              ]
             ]
           },
           "subeffects": [
@@ -574,8 +510,11 @@
                 ],
                 "player_total_unknown": 250500750
               },
-              "title": "Bonus Health",
-              "str": "<span class=\"hp\"><SpellSpan :list=\"[250,500,750]\"></SpellSpan></span>",
+              "title": [
+                "Bonus Health",
+                "<span class=\"hp\"><SpellSpan :list=\"[250,500,750]\"></SpellSpan></span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -584,8 +523,22 @@
           "levelingtext": "{{st|Magic Damage Per Half Second|{{ap|20 to 60}} {{as|(+ 10% AP)}}|Total Magic Damage|{{ap|20*30 to 60*30}} {{as|(+ 300% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Half Second</span>: <span><SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[600,1200,1800]\"></SpellSpan> <span class=\"ap\">(+ 300% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 3
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage Per Half Second",
+                "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[600,1200,1800]\"></SpellSpan> <span class=\"ap\">(+ 300% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 20,
@@ -597,50 +550,27 @@
                 1200,
                 1800
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 3
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Per Half Second",
-              "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "Total Magic Damage",
-              "<SpellSpan :list=\"[600,1200,1800]\"></SpellSpan> <span class=\"ap\">(+ 300% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   20,
                   40,
                   60
                 ],
-                "player_total_ap": 0.1
+                "player_total_ap": 3
               },
-              "title": "Magic Damage Per Half Second",
-              "str": "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  600,
-                  1200,
-                  1800
-                ],
-                "player_total_ap": 0.1
-              },
-              "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[600,1200,1800]\"></SpellSpan> <span class=\"ap\">(+ 300% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage Per Half Second",
+                "<SpellSpan :list=\"[20,40,60]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[600,1200,1800]\"></SpellSpan> <span class=\"ap\">(+ 300% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

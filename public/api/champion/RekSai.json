@@ -110,8 +110,20 @@
           "levelingtext": "{{st|Physical Damage|{{ap|100 to 400}} {{as|(+ 175% '''bonus''' AD)}} {{as|(+ {{ap|20 to 30}}% of target's '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[100,250,400]\"></SpellSpan> <span class=\"ad\">(+ 175% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.75
+              },
+              {
+                "target_missing_hp": 2025.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[100,250,400]\"></SpellSpan> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 100,
@@ -123,25 +135,13 @@
                 25,
                 30
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.75
-              },
-              {
-                "target_missing_hp": 2025.3
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[100,250,400]\"></SpellSpan> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   100,
                   250,
                   400
@@ -149,9 +149,12 @@
                 "player_bonus_ad": 1.75,
                 "target_missing_hp": 2025.3
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[100,250,400]\"></SpellSpan> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[100,250,400]\"></SpellSpan> <span class=\"ad\">(+ 175% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

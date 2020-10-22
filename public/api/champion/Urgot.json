@@ -111,8 +111,21 @@
           "levelingtext": "{{st|Physical Damage|{{ap|25 to 205}} {{as|(+ 70% AD)}}}}\n{{st|Slow|{{ap|45 to 65}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[25,70,115,160,205]\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[25,70,115,160,205]\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%"
+              ]
+            ],
             "ap_progressions": [
               [
                 25,
@@ -128,24 +141,13 @@
                 60,
                 65
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[25,70,115,160,205]\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span>",
-              "Slow",
-              "<SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   25,
                   70,
                   115,
@@ -154,24 +156,14 @@
                 ],
                 "player_total_ad": 0.7000000000000001
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[25,70,115,160,205]\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  45,
-                  50,
-                  55,
-                  60,
-                  65
-                ],
-                "player_total_ad": 0.7000000000000001
-              },
-              "title": "Slow",
-              "str": "<SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%",
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[25,70,115,160,205]\"></SpellSpan> <span class=\"ad\">(+ 70% AD)</span>"
+              ],
+              "str": [
+                "Slow",
+                "<SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%"
+              ],
               "damage_type": "none"
             }
           ]
@@ -225,8 +217,17 @@
           "levelingtext": "{{st|Modified Damage|12 {{as|(+ {{ap|20 to 36}}% AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Modified Damage</span>: <span>12 <span class=\"ad\">(+ <SpellSpan :list=\"[20,24,28,32,36]\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 20242832.36
+              }
+            ],
+            "st_slices": [
+              [
+                "Modified Damage",
+                "12 <span class=\"ad\">(+ <SpellSpan :list=\"[20,24,28,32,36]\"></SpellSpan>% AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 20,
@@ -235,22 +236,13 @@
                 32,
                 36
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 20242832.36
-              }
-            ],
-            "st_slices": [
-              "Modified Damage",
-              "12 <span class=\"ad\">(+ <SpellSpan :list=\"[20,24,28,32,36]\"></SpellSpan>% AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   20,
                   24,
                   28,
@@ -259,9 +251,12 @@
                 ],
                 "player_total_ad": 20242832.36
               },
-              "title": "Modified Damage",
-              "str": "12 <span class=\"ad\">(+ <SpellSpan :list=\"[20,24,28,32,36]\"></SpellSpan>% AD)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Modified Damage",
+                "12 <span class=\"ad\">(+ <SpellSpan :list=\"[20,24,28,32,36]\"></SpellSpan>% AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -314,17 +309,6 @@
           "levelingtext": "{{st|Shield Strength|{{ap|60 to 140}} {{as|(+ 150% '''bonus''' AD)}} {{as|(+ 15% '''bonus''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span> <span class=\"health\">(+ 15% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                60,
-                80,
-                100,
-                120,
-                140
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_ad": 1.5
@@ -334,8 +318,19 @@
               }
             ],
             "st_slices": [
-              "Shield Strength",
-              "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>"
+              [
+                "Shield Strength",
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ]
             ]
           },
           "subeffects": [
@@ -352,8 +347,11 @@
                 "player_bonus_ad": 1.5,
                 "player_bonus_hp": 0.15
               },
-              "title": "Shield Strength",
-              "str": "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>",
+              "title": [
+                "Shield Strength",
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ 15% '''bonus''' health)</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -362,8 +360,17 @@
           "levelingtext": "{{st|Physical Damage|{{ap|90 to 210}} {{as|(+ 100% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,120,150,180,210]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[90,120,150,180,210]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 90,
@@ -372,22 +379,13 @@
                 180,
                 210
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[90,120,150,180,210]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   90,
                   120,
                   150,
@@ -396,9 +394,12 @@
                 ],
                 "player_bonus_ad": 1
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[90,120,150,180,210]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[90,120,150,180,210]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -444,39 +445,42 @@
           "levelingtext": "{{st|Physical Damage|{{ap|100 to 350}} {{as|(+ 50% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[100,225,350]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                100,
-                225,
-                350
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_ad": 0.5
               }
             ],
             "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[100,225,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[100,225,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                100,
+                225,
+                350
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   100,
                   225,
                   350
                 ],
                 "player_bonus_ad": 0.5
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[100,225,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[100,225,350]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

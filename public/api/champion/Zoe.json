@@ -110,8 +110,17 @@
           "levelingtext": "{{st|Bonus Movement Speed|{{ap|30|40|50|60|70}}%}}<!--\n-->{{st|Bonus Movement Speed Duration|{{ap|2|2.25|2.5|2.75|3}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed Duration</span>: <span><SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%"
+              ],
+              [
+                "Bonus Movement Speed Duration",
+                "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 30,
@@ -127,12 +136,6 @@
                 2.75,
                 3
               ]
-            ],
-            "st_slices": [
-              "Bonus Movement Speed",
-              "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
-              "Bonus Movement Speed Duration",
-              "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -147,23 +150,14 @@
                   70
                 ]
               },
-              "title": "Bonus Movement Speed",
-              "str": "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  2,
-                  2.25,
-                  2.5,
-                  2.75,
-                  3
-                ]
-              },
-              "title": "Bonus Movement Speed Duration",
-              "str": "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>",
+              "title": [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%"
+              ],
+              "str": [
+                "Bonus Movement Speed Duration",
+                "<SpellSpan :list=\"[2,2.25,2.5,2.75,3]\"></SpellSpan>"
+              ],
               "damage_type": "none"
             }
           ]
@@ -172,8 +166,22 @@
           "levelingtext": "{{st|Magic Damage Per Orb|{{ap|25|35|45|55|65}} {{as|(+ {{fd|13.{{Recurring|3}}}}% AP)}}|Total Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 40% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Orb</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.1333
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage Per Orb",
+                "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 25,
@@ -189,54 +197,29 @@
                 165,
                 195
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "player_total_ap": 0.1333
-              }
-            ],
-            "st_slices": [
-              "Magic Damage Per Orb",
-              "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
-              "Total Magic Damage",
-              "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   25,
                   35,
                   45,
                   55,
                   65
                 ],
-                "player_total_ap": 0.4
+                "player_total_ap": 0.1333
               },
-              "title": "Magic Damage Per Orb",
-              "str": "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  75,
-                  105,
-                  135,
-                  165,
-                  195
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic Damage Per Orb",
+                "<SpellSpan :list=\"[25,35,45,55,65]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">13.<simple-tooltip class=\"capture-unknown\" dname=\"Recurring 3\">Unknown value: Recurring 3</simple-tooltip></span>% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -283,8 +266,21 @@
           "levelingtext": "{{st|Maximum Slow|{{ap|10 to 30}}%}}\n{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 40% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              [
+                "Maximum Slow",
+                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%"
+              ],
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 10,
@@ -300,17 +296,6 @@
                 180,
                 220
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              }
-            ],
-            "st_slices": [
-              "Maximum Slow",
-              "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%",
-              "Magic Damage",
-              "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
             ]
           },
           "subeffects": [
@@ -326,25 +311,15 @@
                 ],
                 "player_total_ap": 0.4
               },
-              "title": "Maximum Slow",
-              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%",
+              "title": [
+                "Maximum Slow",
+                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%"
+              ],
+              "str": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ],
               "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  60,
-                  100,
-                  140,
-                  180,
-                  220
-                ],
-                "player_total_ap": 0.4
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
             }
           ]
         },
@@ -352,8 +327,17 @@
           "levelingtext": "{{st|Maximum Mixed Damage|{{ap|120 to 440}} {{as|(+ 80% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Mixed Damage</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Maximum Mixed Damage",
+                "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 120,
@@ -362,22 +346,13 @@
                 360,
                 440
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.8
-              }
-            ],
-            "st_slices": [
-              "Maximum Mixed Damage",
-              "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   120,
                   200,
                   280,
@@ -386,9 +361,12 @@
                 ],
                 "player_total_ap": 0.8
               },
-              "title": "Maximum Mixed Damage",
-              "str": "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Maximum Mixed Damage",
+                "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }

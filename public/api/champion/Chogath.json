@@ -104,8 +104,17 @@
           "levelingtext": "{{st|Magic damage|{{ap|80 to 300}} {{as|(+ 100% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic damage",
+                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 80,
@@ -114,22 +123,13 @@
                 245,
                 300
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              "Magic damage",
-              "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   80,
                   135,
                   190,
@@ -138,9 +138,12 @@
                 ],
                 "player_total_ap": 1
               },
-              "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic damage",
+                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -192,8 +195,17 @@
           "levelingtext": "{{st|Magic damage|{{ap|75|125|175|225|275}} {{as|(+ 70% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic damage",
+                "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 75,
@@ -202,22 +214,13 @@
                 225,
                 275
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              "Magic damage",
-              "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   75,
                   125,
                   175,
@@ -226,9 +229,12 @@
                 ],
                 "player_total_ap": 0.7000000000000001
               },
-              "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
-              "damage_type": "magic"
+              "title": [
+                "Magic damage",
+                "<SpellSpan :list=\"[75,125,175,225,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -236,8 +242,13 @@
           "levelingtext": "{{st|Silence Duration|{{ap|1.6|1.7|1.8|1.9|2}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Silence Duration</span>: <span><SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Silence Duration",
+                "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 1.6,
@@ -246,10 +257,6 @@
                 1.9,
                 2
               ]
-            ],
-            "st_slices": [
-              "Silence Duration",
-              "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -264,8 +271,11 @@
                   2
                 ]
               },
-              "title": "Silence Duration",
-              "str": "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>",
+              "title": [
+                "Silence Duration",
+                "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -311,8 +321,38 @@
           "levelingtext": "{{st|Magic Damage|{{ap|22 to 82}} {{as|(+ 30% AP)}} {{as|(+ 3% {{as|(+ {{fd|0.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}|Maximum Damage|{{ap|22*3 to 82*3}} {{as|(+ 90% AP)}} {{as|(+ 9% {{as|(+ {{fd|1.5%}} per {{ai|Feast|Cho'Gath}} stack)|buzzword}} of target's '''maximum''' health)}}}}{{st|Slow|{{ap|30 to 50}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's <b>maximum</b> health)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_total_unknown": 0.005
+              },
+              {
+                "player_total_unknown": 0.015
+              },
+              {
+                "target_total_hp": 0.305
+              },
+              {
+                "target_total_hp": 0.915
+              }
+            ],
+            "st_slices": [
+              [
+                "Slow",
+                "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%"
+              ],
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+                "Maximum Damage",
+                "<SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 22,
@@ -335,34 +375,6 @@
                 45,
                 50
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              },
-              {
-                "player_total_ap": 0.9
-              },
-              {
-                "player_total_unknown": 0.005
-              },
-              {
-                "player_total_unknown": 0.015
-              },
-              {
-                "target_total_hp": 0.305
-              },
-              {
-                "target_total_hp": 0.915
-              }
-            ],
-            "st_slices": [
-              "Slow",
-              "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%",
-              "Magic Damage",
-              "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
-              "Maximum Damage",
-              "<SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
             ]
           },
           "subeffects": [
@@ -376,43 +388,21 @@
                   67,
                   82
                 ],
-                "player_total_ap": 0.9
+                "player_total_ap": 0.9,
+                "player_total_unknown": 0.015,
+                "target_total_hp": 0.915
               },
-              "title": "Slow",
-              "str": "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%",
+              "title": [
+                "Slow",
+                "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%"
+              ],
+              "str": [
+                "Magic Damage",
+                "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
+                "Maximum Damage",
+                "<SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>"
+              ],
               "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  66,
-                  111,
-                  156,
-                  201,
-                  246
-                ],
-                "player_total_ap": 0.9
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[22,37,52,67,82]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 3% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
-              "damage_type": "magic"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  30,
-                  35,
-                  40,
-                  45,
-                  50
-                ],
-                "player_total_ap": 0.9
-              },
-              "title": "Maximum Damage",
-              "str": "<SpellSpan :list=\"[66,111,156,201,246]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span> <span class=\"health\">(+ 9% <span class=\"buzzword\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5%</span> per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Cho'Gath\">Feast<template #content>Feast</template></HtmlTooltip> stack)</span> of target's '''maximum''' health)</span>",
-              "damage_type": "unknown"
             }
           ]
         }
@@ -453,15 +443,6 @@
           "levelingtext": "{{st|True Damage to Champions|{{ap|300|475|650}} {{as|(+ 50% AP)}} {{as|(+ 10% '''bonus''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage to Champions</span>: <span><SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                300,
-                475,
-                650
-              ]
-            ],
             "as_ratios": [
               {
                 "player_total_ap": 0.5
@@ -471,15 +452,24 @@
               }
             ],
             "st_slices": [
-              "True Damage to Champions",
-              "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
+              [
+                "True Damage to Champions",
+                "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                300,
+                475,
+                650
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   300,
                   475,
                   650
@@ -487,9 +477,12 @@
                 "player_total_ap": 0.5,
                 "player_bonus_hp": 0.1
               },
-              "title": "True Damage to Champions",
-              "str": "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>",
-              "damage_type": "true"
+              "title": [
+                "True Damage to Champions",
+                "<SpellSpan :list=\"[300,475,650]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         },
@@ -497,27 +490,31 @@
           "levelingtext": "{{st|Bonus Health Per Stack|{{as|{{ap|80|120|160}} '''bonus''' health}}}}\n{{st|Bonus Attack Range Per Stack|{{ap|(60 to 100)/13|round=2}}}}\n{{st|Bonus Size Per Stack|{{ap|(60 to 100)/10}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Health Per Stack</span>: <span><span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> <b>bonus</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Range Per Stack</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Size Per Stack</span>: <span><simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
-            "ap_progressions": [
-              [
-                80,
-                120,
-                160
-              ]
-            ],
             "as_ratios": [
               {
                 "player_bonus_hp": 80120160
               }
             ],
             "st_slices": [
-              "Bonus Attack Range Per Stack",
-              "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>",
-              "Bonus Size Per Stack",
-              "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
-              "Bonus Health Per Stack",
-              "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>"
+              [
+                "Bonus Attack Range Per Stack",
+                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>"
+              ],
+              [
+                "Bonus Size Per Stack",
+                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%"
+              ],
+              [
+                "Bonus Health Per Stack",
+                "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160
+              ]
             ]
           },
           "subeffects": [
@@ -531,8 +528,14 @@
                 ],
                 "player_bonus_hp": 80120160
               },
-              "title": "Bonus Attack Range Per Stack",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>",
+              "title": [
+                "Bonus Attack Range Per Stack",
+                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/13 round=2\">Error: SyntaxError: Unexpected end of input</simple-tooltip>"
+              ],
+              "str": [
+                "Bonus Size Per Stack",
+                "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%"
+              ],
               "damage_type": "none"
             },
             {
@@ -540,17 +543,11 @@
               "ratios": {
                 "player_bonus_hp": 80120160
               },
-              "title": "Bonus Size Per Stack",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (60 to 100)/10\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "player_bonus_hp": 80120160
-              },
-              "title": "Bonus Health Per Stack",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>",
+              "title": [
+                "Bonus Health Per Stack",
+                "<span class=\"health\"><SpellSpan :list=\"[80,120,160]\"></SpellSpan> '''bonus''' health</span>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]

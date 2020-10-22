@@ -111,8 +111,36 @@
           "levelingtext": "{{st|Physical Damage|{{ap|35 to 95}} {{as|(+ {{ap|70 to 130}}% AD)}} {{as|(+ 50% AP)}}|Champion Maximum Damage|{{ap|35*2 to 95*2}} {{as|(+ {{ap|70*2 to 130*2}}% AD)}} {{as|(+ 100% AP)}}|Minimum Damage|{{ap|35*0.4 to 95*0.4}} {{as|(+ {{ap|70*0.4 to 130*0.4}}% AD)}} {{as|(+ 20% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Champion Maximum Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[140,170,200,230,260]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[14,20,26,32,38]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[28,34,40,46,52]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 1
+              },
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ad": 70851001151.3
+              },
+              {
+                "player_total_ad": 1401702002302.6
+              },
+              {
+                "player_total_ad": 28344046.52
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+                "Champion Maximum Damage",
+                "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[140,170,200,230,260]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+                "Minimum Damage",
+                "<SpellSpan :list=\"[14,20,26,32,38]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[28,34,40,46,52]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 35,
@@ -156,84 +184,32 @@
                 46,
                 52
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              },
-              {
-                "player_total_ap": 1
-              },
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ad": 70851001151.3
-              },
-              {
-                "player_total_ad": 1401702002302.6
-              },
-              {
-                "player_total_ad": 28344046.52
-              }
-            ],
-            "st_slices": [
-              "Physical Damage",
-              "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
-              "Champion Maximum Damage",
-              "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[140,170,200,230,260]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
-              "Minimum Damage",
-              "<SpellSpan :list=\"[14,20,26,32,38]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[28,34,40,46,52]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   35,
                   50,
                   65,
                   80,
                   95
                 ],
-                "player_total_ap": 1
+                "player_total_ap": 0.2,
+                "player_total_ad": 28344046.52
               },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "physical"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_damage": [
-                  70,
-                  85,
-                  100,
-                  115,
-                  130
-                ],
-                "player_total_ap": 1
-              },
-              "title": "Champion Maximum Damage",
-              "str": "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[140,170,200,230,260]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
-              "damage_type": "unknown"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_damage": [
-                  70,
-                  100,
-                  130,
-                  160,
-                  190
-                ],
-                "player_total_ap": 1
-              },
-              "title": "Minimum Damage",
-              "str": "<SpellSpan :list=\"[14,20,26,32,38]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[28,34,40,46,52]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Physical Damage",
+                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[70,85,100,115,130]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
+                "Champion Maximum Damage",
+                "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[140,170,200,230,260]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+                "Minimum Damage",
+                "<SpellSpan :list=\"[14,20,26,32,38]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[28,34,40,46,52]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ 20% AP)</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -279,8 +255,17 @@
           "levelingtext": "{{st|Bounce Damage|{{as|{{ap|30 to 70}}% AD}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bounce Damage</span>: <span><span class=\"ad\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>% AD</span></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [
+              {
+                "player_total_ad": 30405060.7
+              }
+            ],
+            "st_slices": [
+              [
+                "Bounce Damage",
+                "<span class=\"ad\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>% AD</span>"
+              ]
+            ],
             "ap_progressions": [
               [
                 30,
@@ -289,22 +274,13 @@
                 60,
                 70
               ]
-            ],
-            "as_ratios": [
-              {
-                "player_total_ad": 30405060.7
-              }
-            ],
-            "st_slices": [
-              "Bounce Damage",
-              "<span class=\"ad\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>% AD</span>"
             ]
           },
           "subeffects": [
             {
               "index": 0,
               "ratios": {
-                "base_damage": [
+                "base_progression": [
                   30,
                   40,
                   50,
@@ -313,9 +289,12 @@
                 ],
                 "player_total_ad": 30405060.7
               },
-              "title": "Bounce Damage",
-              "str": "<span class=\"ad\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>% AD</span>",
-              "damage_type": "unknown"
+              "title": [
+                "Bounce Damage",
+                "<span class=\"ad\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>% AD</span>"
+              ],
+              "str": "",
+              "damage_type": "none"
             }
           ]
         }
@@ -358,8 +337,13 @@
           "levelingtext": "{{st|Mana Restored|{{ap|110 to 150}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Mana Restored</span>: <span><SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Mana Restored",
+                "<SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 110,
@@ -368,10 +352,6 @@
                 140,
                 150
               ]
-            ],
-            "st_slices": [
-              "Mana Restored",
-              "<SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -386,8 +366,11 @@
                   150
                 ]
               },
-              "title": "Mana Restored",
-              "str": "<SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>",
+              "title": [
+                "Mana Restored",
+                "<SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -432,18 +415,19 @@
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|30|45|60}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
+              ]
+            ],
             "ap_progressions": [
               [
                 30,
                 45,
                 60
               ]
-            ],
-            "st_slices": [
-              "Bonus Attack Speed",
-              "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -456,8 +440,11 @@
                   60
                 ]
               },
-              "title": "Bonus Attack Speed",
-              "str": "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%",
+              "title": [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
+              ],
+              "str": "",
               "damage_type": "none"
             }
           ]
@@ -466,8 +453,19 @@
           "levelingtext": "{{st|Initial Movement Speed|{{ap|40 to 60}}%|Minimum Movement Speed|{{ap|40/2 to 60/2}}%}}\n{{st|Initial Movement Speed Duration|{{ap|2 to 4}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Initial Movement Speed</span>: <span><SpellSpan :list=\"[40,50,60]\"></SpellSpan>%</span></li><li><span class=\"blue\">Minimum Movement Speed</span>: <span><SpellSpan :list=\"[20,25,30]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Initial Movement Speed Duration</span>: <span><SpellSpan :list=\"[2,3,4]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "ratios": {},
-            "progression": [],
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Initial Movement Speed",
+                "<SpellSpan :list=\"[40,50,60]\"></SpellSpan>%",
+                "Minimum Movement Speed",
+                "<SpellSpan :list=\"[20,25,30]\"></SpellSpan>%"
+              ],
+              [
+                "Initial Movement Speed Duration",
+                "<SpellSpan :list=\"[2,3,4]\"></SpellSpan>"
+              ]
+            ],
             "ap_progressions": [
               [
                 40,
@@ -484,14 +482,6 @@
                 3,
                 4
               ]
-            ],
-            "st_slices": [
-              "Initial Movement Speed",
-              "<SpellSpan :list=\"[40,50,60]\"></SpellSpan>%",
-              "Minimum Movement Speed",
-              "<SpellSpan :list=\"[20,25,30]\"></SpellSpan>%",
-              "Initial Movement Speed Duration",
-              "<SpellSpan :list=\"[2,3,4]\"></SpellSpan>"
             ]
           },
           "subeffects": [
@@ -504,34 +494,16 @@
                   60
                 ]
               },
-              "title": "Initial Movement Speed",
-              "str": "<SpellSpan :list=\"[40,50,60]\"></SpellSpan>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 1,
-              "ratios": {
-                "base_progression": [
-                  20,
-                  25,
-                  30
-                ]
-              },
-              "title": "Minimum Movement Speed",
-              "str": "<SpellSpan :list=\"[20,25,30]\"></SpellSpan>%",
-              "damage_type": "none"
-            },
-            {
-              "index": 2,
-              "ratios": {
-                "base_progression": [
-                  2,
-                  3,
-                  4
-                ]
-              },
-              "title": "Initial Movement Speed Duration",
-              "str": "<SpellSpan :list=\"[2,3,4]\"></SpellSpan>",
+              "title": [
+                "Initial Movement Speed",
+                "<SpellSpan :list=\"[40,50,60]\"></SpellSpan>%",
+                "Minimum Movement Speed",
+                "<SpellSpan :list=\"[20,25,30]\"></SpellSpan>%"
+              ],
+              "str": [
+                "Initial Movement Speed Duration",
+                "<SpellSpan :list=\"[2,3,4]\"></SpellSpan>"
+              ],
               "damage_type": "none"
             }
           ]
