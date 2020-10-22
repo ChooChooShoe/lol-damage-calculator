@@ -2,7 +2,7 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
 import he from 'he';
-import matchReplaceSpellEffects from '../src/javascript/matchreplace.mjs';
+import {default as matchReplaceSpellEffects, numberExpand} from '../src/javascript/matchreplace.mjs';
 import JSON5 from 'json5';
 
 const noReedoHrefs = new Set();
@@ -77,7 +77,7 @@ async function wikia_to_json(body) {
             //replaces { and } with [ and ] only if line has both
             .replace(/{(.*)}/g, `[$1]`)
             //replaces [12] : with "12" :
-            .replace(/\[(\d)+] : /g, `"$1" : `)
+            .replace(/\[(\d+)] : /g, `"$1" : `)
             ;
         results.push(line);
     }
@@ -298,7 +298,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
     for (let effectindex in skilldata.leveling) {
         let effect = {}
         effect.levelingtext = skilldata.leveling[effectindex];
-        let x = matchReplaceSpellEffects(effect.levelingtext, false, skilldata);
+        let x = matchReplaceSpellEffects(effect.levelingtext, false, skillout);
         effect.str = x.str;
         effect.vars = x.vars;
 
@@ -358,37 +358,7 @@ function stackData(obj, toStack) {
 }
 
 function burnify(param, forceRange, round) {
-    // from matchreplace.js
-    const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
-    const clean = /([^\d./*\-+()]+)/g;
-    const list = [];
-    round = parseInt(round) || 3;
-
-    for (const p of param.split('|').slice(1)) {
-        const found = p.match(regex);
-        if (found) {
-            const start = parseFloat(eval(found[1]));
-            const end = parseFloat(eval(found[2]));
-            const range = forceRange || parseInt(found[3]) || 5;
-            const diff = (end - start) / (range - 1 - list.length);
-            for (let i = list.length; i < range; i++) {
-                list.push(+(start + diff * i).toFixed(round));
-            }
-        } else {
-            try {
-
-                let num = eval(p.replace(clean, ''));
-                if (!isNaN(num))
-                    list.push(+parseFloat(num).toFixed(round));
-            } catch (msg) {
-                console.warn(msg);
-            }
-        }
-    }
-    // from matchreplace.js
-
-    console.info(`burnify for value ${param} => output is ${list}`)
-    return list;
+    return numberExpand(param.split('|').slice(1), forceRange, round);
 }
 
 let noRepeatDesc = new Set();

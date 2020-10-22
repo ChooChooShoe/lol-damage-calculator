@@ -119,51 +119,105 @@
       "effects": [
         {
           "levelingtext": "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}|Monster Bonus Damage|{{ap|{{#var:m1}} to {{#var:m5}}}}}}",
-          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
+            "ap_progressions": [
+              [],
+              [],
+              []
+            ],
             "as_ratios": [
               {},
               {}
             ],
             "st_slices": [
               "Physical Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in postfix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
               "Monster Bonus Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip> to <simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>"
+              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>"
             ]
-          }
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Physical Damage",
+              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "damage_type": "physical"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Monster Damage",
+              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 2,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Monster Bonus Damage",
+              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>",
+              "damage_type": "unknown"
+            }
+          ]
         },
         {
           "levelingtext": "{{st|Reduced Damage|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Reduced Monster Damage|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}}}\n{{st|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}",
-          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span></span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul><br><ul><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
+            "ap_progressions": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              []
+            ],
             "as_ratios": [
-              {
-                "player_total_ap": 1
-              },
-              {
-                "player_total_ap": 1
-              },
-              {
-                "player_total_ap": 110.03
-              },
-              {
-                "player_total_ap": 110.03
-              }
+              {},
+              {},
+              {},
+              {}
             ],
             "st_slices": [
               "Maximum Single-Target Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap 0*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to <simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>",
+              "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
               "Max Monster Single-Target Damage",
-              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <simple-tooltip class=\"red\" dname=\"ap <simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid left-hand side expression in prefix operation</simple-tooltip>% AD)</span>"
+              "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>"
             ]
-          }
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Maximum Single-Target Damage",
+              "str": "<SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
+            },
+            {
+              "index": 1,
+              "ratios": {
+                "base_damage": []
+              },
+              "title": "Max Monster Single-Target Damage",
+              "str": "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\" :spellrankindex=\"spellrankindex\"></SpellSpan>% AD)</span>",
+              "damage_type": "unknown"
+            }
+          ]
         }
       ]
     },
@@ -545,29 +599,25 @@
       "effects": [
         {
           "levelingtext": "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}",
-          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,35,45,55,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,45,65]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul><br><ul><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "ratios": {},
             "progression": [],
             "ap_progressions": [
               [
                 25,
-                35,
                 45,
-                55,
                 65
               ],
               [
                 35,
-                40,
                 45,
-                50,
                 55
               ]
             ],
             "st_slices": [
               "Bonus Movement Speed",
-              "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
+              "<SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%"
             ]
           },
           "subeffects": [
@@ -576,14 +626,12 @@
               "ratios": {
                 "base_progression": [
                   25,
-                  35,
                   45,
-                  55,
                   65
                 ]
               },
               "title": "Bonus Movement Speed",
-              "str": "<SpellSpan :list=\"[35,40,45,50,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
+              "str": "<SpellSpan :list=\"[35,45,55]\" :spellrankindex=\"spellrankindex\"></SpellSpan>%",
               "damage_type": "none"
             }
           ]

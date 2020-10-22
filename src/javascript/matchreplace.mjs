@@ -295,24 +295,32 @@ export default function matchReplaceSpellEffects(text, quick = false, extra_data
     vars: vars
   };
 }
-function numberExpand(param, forceRange, round) {
+// Expands numbers for pp or ap.
+// ex. 100 to 500 => [100,200,300,400,500]
+export function numberExpand(slices, maxrank, round) {
   const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
   const clean = /([^\d./*\-+()]+)/g;
   const list = [];
   round = parseInt(round) || 3;
 
-  for (const p of param.split(';')) {
+  for (const p of slices) {
     const found = p.match(regex);
     if (found) {
       const start = parseFloat(eval(found[1]));
       const end = parseFloat(eval(found[2]));
-      const range = forceRange || parseInt(found[3]) || 5;
+      const range = parseInt(found[3]) || maxrank || 5;
       const diff = (end - start) / (range - 1 - list.length);
       for (let i = list.length; i < range; i++) {
         list.push(+(start + diff * i).toFixed(round));
       }
     } else {
-      list.push(+parseFloat(eval(p.replace(clean, ''))).toFixed(round));
+      try {
+        let num = eval(p.replace(clean, ''));
+        if (!isNaN(num))
+          list.push(+parseFloat(num).toFixed(round));
+      } catch (msg) {
+        console.warn(msg);
+      }
     }
   }
   return list;
@@ -449,7 +457,7 @@ const match_lookup = {
     if (slices.length === 1) {
       let range = slices[0].split(' to ');
       const display = [range[0] + options.key || '', range[1] + options.key || '',];
-      let top = numberExpand(slices[0], 18);
+      let top = numberExpand(slices[0].split(';'), 18);
       const bot = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
       console.log('Match pp=result=', top);
       return `<HtmlTooltip class="blue link">${display[0]} − ${display[1]} (based on level)<template #content>Values: ${top.join(', ')}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
@@ -457,9 +465,9 @@ const match_lookup = {
     else if (slices.length === 3) {
       let range = Number(slices[0]);
       // let setting = slices[1];
-      let top = numberExpand(slices[1], range);
+      let top = numberExpand(slices[1].split(';'), range);
       const display = [top[0] + options.key || '', top[top.length - 1] + options.key || '',];
-      let bot = numberExpand(slices[2], range);
+      let bot = numberExpand(slices[2].split(';'), range);
       console.log('Match pp=result-top-bot=', top, bot);
       return `<HtmlTooltip class="blue link">${display[0]} − ${display[1]} (based on level)<template #content>Values: ${top.join(', ')}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
     } else {
@@ -474,30 +482,14 @@ const match_lookup = {
     // Ezreal W example
     // {{st|Magic Damage| {{ap|80 to 300}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ {{ap|70 to 90}}% AP)}} }}
     // {{ap|60 to 200 2}} or {{ap|10 to 40}}
-    const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
-    const clean = /([^\d./*\-+()]+)/g;
-    const list = [];
     const round = parseInt(options.round) || 3;
     const maxrank = extra_data && extra_data.maxrank || 5;
 
-    for (const param of slices) {
-      const found = param.match(regex);
-      if (found) {
-        const start = parseFloat(eval(found[1]));
-        const end = parseFloat(eval(found[2]));
-        const range = parseInt(found[3]) || maxrank;
-        const diff = (end - start) / (range - 1);
-        for (let i = 0; i < range; i++) {
-          list.push(+(start + diff * i).toFixed(round));
-        }
-      } else {
-        list.push(+parseFloat(eval(param.replace(clean, ''))).toFixed(round));
-      }
-    }
+    const list = numberExpand(slices, maxrank, round);
     // if (!vars.base_damage)
     //   vars.base_damage = list;
     // vars.progression = list;
-    if(vars) {
+    if (vars) {
       if (!vars.ap_progressions)
         vars.ap_progressions = [];
       vars.ap_progressions.push(list);
