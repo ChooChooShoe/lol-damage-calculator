@@ -1,8 +1,8 @@
 <script>
 import matchReplaceSpellEffects from "../javascript/matchreplace";
-import Vue from "vue";
+
 import SimpleTooltip from "./SimpleTooltip.vue";
-import HtmlTooltip from "./HtmlTooltip";
+import HtmlTooltip from "./HtmlTooltip.vue";
 import SpellSpan from "./SpellSpan.vue";
 import NoWiki from "./NoWiki.vue";
 import Ref from "./Ref.vue";

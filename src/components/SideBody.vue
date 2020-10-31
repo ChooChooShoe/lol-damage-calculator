@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebody">
     <h2>Damage Totals &amp; Output</h2>
     <h3>Damage Pre-Mitigation</h3>
     <div class="damage-dealt-chart">
@@ -87,7 +87,7 @@ export default {
       return numeral(value).format("0.00%");
     },
     addCustomDamageSource() {
-      this.$app.addCustomDamageSource();
+      this.$root.addCustomDamageSource();
     },
   },
   computed: {
@@ -230,23 +230,21 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.sidebar {
-  z-index: 700;
+<style>
+.sidebody {
+  margin: 0;
+  padding: 0 0.5rem;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  // height is 0 so it scrolls
-  height: 0;
   background-color: #121a1b;
-  padding: 0.5rem;
-  grid-area: sidebar;
 }
 
-// @media (min-width: 769px) and (max-width: 1375px) {
+/* // @media (min-width: 769px) and (max-width: 1375px) {
 //   .sidebar .fill > * {
 //     width: 100%;
 //   }
-// }
+// } */
 @media (max-width: 775px) {
   .sidebar {
     position: inherit;

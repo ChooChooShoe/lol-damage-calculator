@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="data_holder c50">
     <h2>{{ username }}</h2>
     <ChampSearch v-model="champ"></ChampSearch>
     <ChampLevelSelect v-model="level"></ChampLevelSelect>
@@ -20,12 +20,17 @@
       </label>
     </label>-->
 
-    <table v-if="showExtra || showDamage || showDefence" style="margin-bottom: 0;">
+    <table
+      v-if="showExtra || showDamage || showDefence"
+      style="margin-bottom: 0"
+    >
       <thead>
         <tr>
           <th>Stats</th>
           <th>
-            <abbr :title="'Base stats for a level ' + level + ' ' + info.name">Base</abbr>
+            <abbr :title="'Base stats for a level ' + level + ' ' + info.name"
+              >Base</abbr
+            >
           </th>
           <th>
             <abbr title="Stats gained from items and abilities">Bonus</abbr>
@@ -38,7 +43,10 @@
       <tbody>
         <tr v-if="showDamage">
           <th class="attack-damage">Attack Damage (AD)</th>
-          <Editable v-model="base_ad" :readonly="readonly_base_values"></Editable>
+          <Editable
+            v-model="base_ad"
+            :readonly="readonly_base_values"
+          ></Editable>
           <Editable v-model="bonus_ad"></Editable>
           <Editable v-model="total_ad"></Editable>
         </tr>
@@ -50,17 +58,23 @@
         </tr>
         <tr v-if="showDefence">
           <th class="health">Health</th>
-          <Editable v-model="base_hp" :readonly="readonly_base_values"></Editable>
+          <Editable
+            v-model="base_hp"
+            :readonly="readonly_base_values"
+          ></Editable>
           <Editable v-model="bonus_hp"></Editable>
           <Editable v-model="total_hp"></Editable>
         </tr>
         <tr v-if="showDefence">
           <th class="armor">Armor</th>
-          <Editable v-model="base_armor" :readonly="readonly_base_values"></Editable>
+          <Editable
+            v-model="base_armor"
+            :readonly="readonly_base_values"
+          ></Editable>
           <Editable v-model="bonus_armor"></Editable>
           <Editable v-model="total_armor"></Editable>
         </tr>
-        <tr v-if="showDefenceLevel  > 0">
+        <tr v-if="showDefenceLevel > 0">
           <td colspan="4">
             <ul>
               <li>
@@ -71,31 +85,40 @@
                   :autoWidth="true"
                   format="percent"
                   v-model="percent_pysical_reduction"
-                ></EditableCollapse>%.
+                ></EditableCollapse
+                >%.
               </li>
               <li>
                 Equivalent to having
-                <span
-                  class="health"
-                >{{ Math.ceil(eff_physical_hp) }} Effective HP</span> vs.
-                <span class="physical-damage">Physical Damage</span>.
+                <span class="health"
+                  >{{ Math.ceil(eff_physical_hp) }} Effective HP</span
+                >
+                vs. <span class="physical-damage">Physical Damage</span>.
               </li>
             </ul>
           </td>
         </tr>
         <tr v-if="showDefence">
           <th class="mr">Magic Res. (MR)</th>
-          <Editable v-model="base_mr" :readonly="readonly_base_values"></Editable>
+          <Editable
+            v-model="base_mr"
+            :readonly="readonly_base_values"
+          ></Editable>
           <Editable v-model="bonus_mr"></Editable>
           <Editable v-model="total_mr"></Editable>
         </tr>
         <tr>
           <td colspan="4">
-            <ul v-if="showDefenceLevel  > 0">
+            <ul v-if="showDefenceLevel > 0">
               <li>
                 Will reduce
                 <span class="magic-damage">Magic Damage</span> taken by
-                <EditableCollapse class="ap" format="percent" v-model="percent_magic_reduction"></EditableCollapse>%.
+                <EditableCollapse
+                  class="ap"
+                  format="percent"
+                  v-model="percent_magic_reduction"
+                ></EditableCollapse
+                >%.
               </li>
               <li>
                 Equivalent to having
@@ -107,7 +130,10 @@
         </tr>
         <tr v-if="showExtra">
           <th class="mana">Mana</th>
-          <Editable v-model="base_mana" :readonly="readonly_base_values"></Editable>
+          <Editable
+            v-model="base_mana"
+            :readonly="readonly_base_values"
+          ></Editable>
           <Editable v-model="bonus_mana"></Editable>
           <Editable v-model="total_mana"></Editable>
         </tr>
@@ -163,7 +189,9 @@
           <!-- <td><Editable v-model="flat_armorpen"></Editable></td> -->
         </tr>
         <tr>
-          <th class="lethality">{{ rnd(percent_armorpen * 100) }}% Armor Penetration</th>
+          <th class="lethality">
+            {{ rnd(percent_armorpen * 100) }}% Armor Penetration
+          </th>
           <Editable v-model="percent_armorpen" format="percent">%</Editable>
         </tr>
         <tr>
@@ -249,15 +277,18 @@
         </tbody>
       </table>
 
-      <data-input class="is-hidden" v-model="total_hp" labelclass="health">Health</data-input>
-      <ul v-if="showDefenceLevel  > 0">
+      <data-input class="is-hidden" v-model="total_hp" labelclass="health"
+        >Health</data-input
+      >
+      <ul v-if="showDefenceLevel > 0">
         <li>
           {{ rnd(base_hp) }}
           <b>base</b>
           HP + {{ rnd(bonus_hp) }}
           <b>bonus</b>
           HP =
-          {{ rnd(total_hp) }} max HP - {{ rnd(missing_hp) }} missing HP = {{ rnd(current_hp) }} current HP
+          {{ rnd(total_hp) }} max HP - {{ rnd(missing_hp) }} missing HP =
+          {{ rnd(current_hp) }} current HP
         </li>
         <hr />
       </ul>
@@ -314,10 +345,19 @@
         value="Reset All"
         @click="clear(true)"
       />-->
-      <input class="button error" type="button" value="Clear" @click="clear()" />
+      <input
+        class="button error"
+        type="button"
+        value="Clear"
+        @click="clear()"
+      />
       <input class="button info" type="button" value="Validate" />
     </div>
-    <ItemInventory v-if="$app.config.shopEnabled" ref="inventory" :userid="userid"></ItemInventory>
+    <ItemInventory
+      v-if="$root.config.shopEnabled"
+      ref="inventory"
+      :userid="userid"
+    ></ItemInventory>
   </div>
 </template>
 
@@ -337,7 +377,7 @@ export default {
     DataInput,
     // InlineInput,
     // SimpleTooltip,
-    ItemInventory: () => import ("./ItemInventory.vue"),
+    ItemInventory: () => import("./ItemInventory.vue"),
     Editable,
     EditableCollapse,
     ChampSearch,
@@ -345,15 +385,14 @@ export default {
   },
   props: {
     userid: String,
-    isprimary: Boolean,
   },
   data: function () {
     return {
-      showDamage: this.userid === "player",
-      showDefence: this.userid === "target",
+      showDamage: "player" === "player",
+      showDefence: "player" === "target",
       showExtra: false,
-      showDamageLevel: this.userid === "player" ? 1 : 0,
-      showDefenceLevel: this.userid === "target" ? 1 : 0,
+      showDamageLevel: "player" === "player" ? 1 : 0,
+      showDefenceLevel: "player" === "target" ? 1 : 0,
       readonly_base_values: true,
       champ: "",
       level: 18,
@@ -404,10 +443,10 @@ export default {
   },
   computed: {
     championList() {
-      return this.$app.championList;
+      return this.$root.championList;
     },
     username: function () {
-      if (this.userid === "player") return "Player's Champion";
+      if ("player" === "player") return "Player's Champion";
       return "Target's";
     },
     flat_armorpen: {
@@ -495,44 +534,35 @@ export default {
         // champ = old;
         // return;
       }
-      window.localStorage.setItem("last_used_champ_" + this.userid, champ);
-      if (this.isprimary === true) {
-        this.$notify({
-          group: "main",
-          title: "Loading Champion " + champ + "…",
-          type: "info",
-        });
-        const vue = this.$root.$app;
-        fetchSingleChampFile(champ).then((model) => {
-          // Removes all the last champions spells.
-          vue.currentSpells.length = 0;
-          vue.currentChamp = null;
-          let newList = [];
-          for (const skillkey in model.skills) {
-            let value = model.skills[skillkey];
-            newList.push({
-              key: skillkey,
-              value: value,
-            });
-          }
-          vue.currentChamp = model.id;
-          vue.currentSpells = newList;
-          // sellAllItems();
-          //TODO buy default items
-          this.$notify({
-            group: "main",
-            title: "Loading Done.",
-            type: "info",
+      window.localStorage.setItem("last_used_champ_" + "player", champ);
+      this.$notify({
+        group: "main",
+        title: "Loading Champion " + champ + "…",
+        type: "info",
+      });
+      const vue = this.$root.$root;
+      fetchSingleChampFile(champ).then((model) => {
+        // Removes all the last champions spells.
+        vue.currentSpells.length = 0;
+        vue.currentChamp = null;
+        let newList = [];
+        for (const skillkey in model.skills) {
+          let value = model.skills[skillkey];
+          newList.push({
+            key: skillkey,
+            value: value,
           });
-        });
-      } else {
+        }
+        vue.currentChamp = model.id;
+        vue.currentSpells = newList;
+        // sellAllItems();
+        //TODO buy default items
         this.$notify({
           group: "main",
-          title: "Loading Target " + champ + "…",
+          title: "Loading Done.",
           type: "info",
-          text: "",
         });
-      }
+      });
     },
     stats(stats, _old) {
       update_user_stats(stats, this, this.level);
@@ -543,7 +573,7 @@ export default {
     $data: {
       handler: function (val, oldVal) {
         window.localStorage.setItem(
-          "last_used_data_" + this.userid,
+          "last_used_data_" + "player",
           JSON.stringify(val)
         );
       },
@@ -551,13 +581,13 @@ export default {
     },
   },
   created() {
-    this.$app[this.userid] = this;
+    this.$root["player"] = this;
   },
   mounted: function () {
     this.champ =
-      window.localStorage.getItem("last_used_champ_" + this.userid) || "";
+      window.localStorage.getItem("last_used_champ_" + "player") || "";
     this.load(
-      window.localStorage.getItem("last_used_data_" + this.userid) || "{}"
+      window.localStorage.getItem("last_used_data_" + "player") || "{}"
     );
   },
   methods: {

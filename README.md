@@ -7,37 +7,31 @@ This is a personal project for me and a firend to make a fully featured league o
 ## Project setup
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```bash
-npm run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## To publish on github pages
 
 ```bash
-npm run deploy
-```
-
-### Run your tests
-
-```bash
-npm run test
+yarn deploy
 ```
 
 ### Lints and fixes files
 
 ```bash
-npm run lint
+yarn lint
 ```
 
 ### Customize configuration

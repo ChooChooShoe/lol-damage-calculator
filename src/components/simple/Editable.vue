@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+
 export default {
   props: {
     value: [Number, Array, String],

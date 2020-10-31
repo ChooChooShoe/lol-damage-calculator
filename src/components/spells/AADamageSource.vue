@@ -125,11 +125,11 @@ export default {
     };
   },
   mounted: function () {
-    this.$app.damagingEffects.push(this);
+    this.$root.damagingEffects.push(this);
 
     // Sets this.ds_ad.dmg_premitigation to always be player.total_ad
     // TODO: Kalista
-    let x = this.$app.player;
+    let x = this.$root.player;
     Object.defineProperty(this.ds_ad, "dmg_premitigation", {
       get() {
         return x.total_ad;
@@ -137,9 +137,9 @@ export default {
     });
   },
   destroyed: function () {
-    const index = this.$app.damagingEffects.indexOf(this);
+    const index = this.$root.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$app.damagingEffects.splice(index, 1);
+      this.$root.damagingEffects.splice(index, 1);
     }
   },
   watch: {
@@ -153,10 +153,10 @@ export default {
   computed: {
     attack_damage: {
       get() {
-        return this.$app.player.total_ad;
+        return this.$root.player.total_ad;
       },
       set(value) {
-        this.$app.player.total_ad = value;
+        this.$root.player.total_ad = value;
       },
     },
     damageSources() {

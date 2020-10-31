@@ -1,10 +1,9 @@
 
 <template>
   <span v-if="index == 0" :class="color">
-    <template v-for="(x, i) in item.value">
+    <template v-for="(x, i) in item.value" :key="i">
       {{ i != 0 ? "/" : "" }}
       <span
-        :key="i"
         :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
         class="ss-click"
         @click="rootspell.spellrankindex = i"
@@ -17,10 +16,9 @@
   </span>
   <span v-else-if="Array.isArray(item.value)" :class="color">
     (+
-    <template v-for="(x, i) in item.value">
+    <template v-for="(x, i) in item.value" :key="i">
       {{ i != 0 ? "/" : "" }}
       <span
-        :key="i"
         :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
         class="ss-click"
         @click="rootspell.spellrankindex = i"
@@ -35,7 +33,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+
 import { spell_ratios } from "../../javascript/league_data";
 
 export default {

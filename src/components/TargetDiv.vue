@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="data_holder c50">
     <h2>Target Data</h2>
     <ChampSearch v-model="champ"></ChampSearch>
     <ChampLevelSelect v-model="level"></ChampLevelSelect>
@@ -179,10 +179,6 @@ export default {
     ChampSearch,
     ChampLevelSelect,
   },
-  props: {
-    userid: String,
-    isprimary: Boolean,
-  },
   data: function () {
     return {
       showDamage: false,
@@ -239,7 +235,7 @@ export default {
   },
   computed: {
     championList() {
-      return this.$app.championList;
+      return this.$root.championList;
     },
     flat_armorpen: {
       get: function () {
@@ -328,44 +324,13 @@ export default {
         // champ = old;
         // return;
       }
-      window.localStorage.setItem("last_used_champ_" + this.userid, champ);
-      if (this.isprimary === true) {
-        this.$notify({
-          group: "main",
-          title: "Loading Champion " + champ + "…",
-          type: "info",
-        });
-        const vue = this.$root.$app;
-        fetchSingleChampFile(champ).then((model) => {
-          // Removes all the last champions spells.
-          vue.currentSpells.length = 0;
-          vue.currentChamp = null;
-          let newList = [];
-          for (const skillkey in model.skills) {
-            let value = model.skills[skillkey];
-            newList.push({
-              key: skillkey,
-              value: value,
-            });
-          }
-          vue.currentChamp = model.id;
-          vue.currentSpells = newList;
-          // sellAllItems();
-          //TODO buy default items
-          this.$notify({
-            group: "main",
-            title: "Loading Done.",
-            type: "info",
-          });
-        });
-      } else {
-        this.$notify({
-          group: "main",
-          title: "Loading Target " + champ + "…",
-          type: "info",
-          text: "",
-        });
-      }
+      window.localStorage.setItem("last_used_champ_" + "target", champ);
+      this.$notify({
+        group: "main",
+        title: "Loading Target " + champ + "…",
+        type: "info",
+        text: "",
+      });
     },
     stats(stats, _old) {
       update_user_stats(stats, this, this.level);
@@ -376,7 +341,7 @@ export default {
     $data: {
       handler: function (val, oldVal) {
         window.localStorage.setItem(
-          "last_used_data_" + this.userid,
+          "last_used_data_" + "target",
           JSON.stringify(val)
         );
       },
@@ -384,13 +349,13 @@ export default {
     },
   },
   created() {
-    this.$app[this.userid] = this;
+    this.$root["target"] = this;
   },
   mounted: function () {
     this.champ =
-      window.localStorage.getItem("last_used_champ_" + this.userid) || "";
+      window.localStorage.getItem("last_used_champ_" + "target") || "";
     this.load(
-      window.localStorage.getItem("last_used_data_" + this.userid) || "{}"
+      window.localStorage.getItem("last_used_data_" + "target") || "{}"
     );
   },
   methods: {

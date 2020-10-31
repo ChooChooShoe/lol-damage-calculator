@@ -18,9 +18,8 @@
 </template>
 
 <script>
-import Vue from "vue";
 import { spell_ratios } from "../../javascript/league_data";
-import DropdownSelect from "../simple/DropdownSelect";
+import DropdownSelect from "../simple/DropdownSelect.vue";
 
 export default {
   name: "AddRatioDropDown",

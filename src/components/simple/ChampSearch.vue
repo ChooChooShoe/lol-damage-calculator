@@ -11,8 +11,8 @@
       />
     </div>
     <datalist id="ice-cream-flavors">
-      <template v-for="item in championList">
-        <option :key="item.id" :value="item.name"></option>
+      <template v-for="item in championList" :key="item.id">
+        <option :value="item.name"></option>
       </template>
     </datalist>
   </div>
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     championList() {
-      return this.$app.championList;
+      return this.$root.championList;
     },
     disp() {
       if (this.championList[this.value])

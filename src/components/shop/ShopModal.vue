@@ -16,13 +16,17 @@
       <div class="side">
         <div class="fixed-scroller">
           <div class="shop-grid-container">
-            <template v-for="(key) in visibleItems">
-              <Item :key="key" :itemId="key" :value="$app.itemData[key]"></Item>
+            <template v-for="key in visibleItems" :key="key">
+              <Item :itemId="key" :value="$root.itemData[key]"></Item>
             </template>
           </div>
         </div>
       </div>
-      <ShopItemInfo class="main" :itemId="selectedItem" :value="$app.itemData[selectedItem]"></ShopItemInfo>
+      <ShopItemInfo
+        class="main"
+        :itemId="selectedItem"
+        :value="$root.itemData[selectedItem]"
+      ></ShopItemInfo>
 
       <!-- <div class="right">Right</div> -->
       <div class="footer">Footer</div>
@@ -90,10 +94,10 @@
 </template>
 
 <script>
-import Vue from "vue";
+
 import Item from "./Item.vue";
 import SimpleTooltip from "../SimpleTooltip.vue";
-import ShopItemInfo from "./ShopItemInfo";
+import ShopItemInfo from "./ShopItemInfo.vue";
 // import DataInput from "./DataInput.vue";
 import league_items from "../../javascript/league_items.js";
 
@@ -117,7 +121,7 @@ export default {
   },
   computed: {
     inventory() {
-      return this.$app[this.userid].$refs.inventory;
+      return this.$root[this.userid].$refs.inventory;
     },
     items() {
       if (this.inventory) return this.inventory.items;
@@ -149,7 +153,7 @@ export default {
       };
     },
     visibleItems() {
-      const itemData = this.$app.itemData;
+      const itemData = this.$root.itemData;
       const searchTerm = this.search.toLowerCase();
       const ret = [];
       const first = [];
@@ -217,7 +221,7 @@ export default {
     itemdata(index) {
       const item = this.items[index];
       if (item) {
-        const data = this.$app.itemData[item];
+        const data = this.$root.itemData[item];
         if (data) return data;
       }
       return null;
@@ -232,7 +236,7 @@ export default {
       this.inventory.buyItem(itemId);
     },
     filterShop() {
-      // const itemData = this.$app.itemData;
+      // const itemData = this.$root.itemData;
       // const searchTerm = this.$refs.search.value.toLowerCase();
       // const mapfilter = this.$refs.mapfilter.value;
       // let newvisibleItems = [];
@@ -274,7 +278,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .fixed-scroller {
   overflow-y: scroll;
   height: 65vh;

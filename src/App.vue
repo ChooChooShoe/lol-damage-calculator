@@ -1,58 +1,70 @@
 <template>
-  <div id="app">
-    <header>
-      <h1 class="title">
-        League of Legends Damage Calcuator: {{ VUE_APP_VERSION }} for lol patch
-        {{ VUE_APP_LOL_PATCH_VERSION }}
-      </h1>
-      <p class="subtitle">
-        With Data from
-        <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">
-          League
-          of Legends Wiki
-        </a> - Made by
-        <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> - View
-        <a href="https://github.com/ChooChooShoe/choochooshoe.github.io">source on GitHub</a>
-      </p>
-    </header>
+  <header>
+    <h1 class="title">
+      League of Legends Damage Calcuator: {{ appVersion }} for lol patch
+      {{ lolPatchVersion }}
+    </h1>
+    <p class="subtitle">
+      With Data from
+      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">
+        League of Legends Wiki
+      </a>
+      - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> -
+      View
+      <a href="https://github.com/ChooChooShoe/choochooshoe.github.io">
+        source on GitHub
+      </a>
+    </p>
+  </header>
+  <SettingsModel ref="settings"></SettingsModel>
 
-    <SideBody :damagingEffects="damagingEffects" :player="player" :target="target"></SideBody>
-
-    <SettingsModel ref="settings"></SettingsModel>
-    <div class="flex main">
-      <ChampionDiv class="data_holder c50" userid="player" :isprimary="true"></ChampionDiv>
-      <TargetDiv class="data_holder c50" userid="target" :isprimary="false"></TargetDiv>
-
-      <AADamageSource></AADamageSource>
-      <ChampionSpellDamageSource
-        v-for="obj in currentSpells"
-        :key="currentChamp+obj.key"
-        :id="obj.key"
-        :spell="obj.value"
-        :champion="currentChamp"
-      ></ChampionSpellDamageSource>
-
-      <CustomDamageSource v-for="i in customDamageSources" :key="'CustomDamageSource'+i" :index="i"></CustomDamageSource>
-      <div class="buttons">
-        <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
-      </div>
-    </div>
-    <component :is="'ShopController'"></component>
-    <notifications group="main" position="bottom left" :reverse="true" :speed="500" />
+  <div class="sidebar">
+    <SideBody
+      :damagingEffects="damagingEffects"
+      :player="player"
+      :target="target"
+    ></SideBody>
   </div>
+
+  <div class="flex main">
+    <ChampionDiv></ChampionDiv>
+    <TargetDiv></TargetDiv>
+
+    <AADamageSource></AADamageSource>
+    <ChampionSpellDamageSource
+      v-for="obj in currentSpells"
+      :key="currentChamp + obj.key"
+      :id="obj.key"
+      :spell="obj.value"
+      :champion="currentChamp"
+    ></ChampionSpellDamageSource>
+
+    <CustomDamageSource
+      v-for="i in customDamageSources"
+      :key="'CustomDamageSource' + i"
+      :index="i"
+    ></CustomDamageSource>
+  </div>
+  <footer>
+    <div class="buttons">
+      <button class="button is-info" @click="addCustomDamageSource()">
+        Add Custom Damage Source
+      </button>
+    </div>
+  </footer>
 </template>
 
 <script>
-import Vue from "vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
-import ChampionDiv from "./components/ChampionDiv";
-import TargetDiv from "./components/TargetDiv";
-import { setupVue } from "./javascript/league_data.js";
-
+import ChampionDiv from "./components/ChampionDiv.vue";
+import TargetDiv from "./components/TargetDiv.vue";
 import AADamageSource from "./components/spells/AADamageSource.vue";
 import ChampionSpellDamageSource from "./components/spells/ChampionSpellDamageSource.vue";
 import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
+
+import { setupVue } from "./javascript/league_data.js";
+import { ref, reactive } from "vue";
 
 function loadLocalConfig() {
   console.log("loading config...");
@@ -66,19 +78,34 @@ function saveLocalConfig(config) {
 }
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     SideBody,
     ChampionDiv,
     TargetDiv,
     ChampionSpellDamageSource,
     SettingsModel,
-    ShopController: () => import('./components/shop/ShopController.vue'),
+    // ShopController: () => import("./components/shop/ShopController.vue"),
     AADamageSource,
     CustomDamageSource,
   },
-  data: function () {
+
+  setup(props) {
+    console.log("process.env", process.env);
+    let championList = ref({});
+    let itemData = ref([]);
+    const readersNumber = ref(0);
+    const book = reactive({ title: "Vue 3 Guide" });
+
+    setupVue(championList, itemData);
+
+    // expose to template
     return {
+      readersNumber,
+      book,
+      appVersion: "0.9.0",
+      lolPatchVersion: "10.2.0",
+
       currentSpells: [],
       customDamageSources: [],
       lastCustomDamageSourcesIndex: 0,
@@ -86,26 +113,22 @@ export default {
       damagingEffects: [],
       player: null,
       target: null,
-      championList: {},
-      itemData: [],
+      championList,
+      itemData,
       globalToolTips: {},
       shopModel: null,
       config: loadLocalConfig(),
     };
   },
-  created: function () {
-    Vue.prototype.$app = this;
-    setupVue(this);
-  },
-  mounted: function () {
-    console.log("process.env", process.env);
-    this.load(
-      window.localStorage.getItem("last_used_customDamageSources") || "{}"
-    );
-    this.lastCustomDamageSourcesIndex =
-      window.localStorage.getItem("last_used_lastCustomDamageSourcesIndex") ||
-      0;
-  },
+  // mounted: function () {
+  //   console.log("process.env", process.env);
+  //   this.load(
+  //     window.localStorage.getItem("last_used_customDamageSources") || "{}"
+  //   );
+  //   this.lastCustomDamageSourcesIndex =
+  //     window.localStorage.getItem("last_used_lastCustomDamageSourcesIndex") ||
+  //     0;
+  // },
   watch: {
     config: {
       handler(val, oldVal) {
@@ -147,7 +170,7 @@ export default {
       return process.env.VUE_APP_VERSION;
     },
     shopEnabled() {
-      return this.$app.config.shopEnabled;
+      return this.$root.config.shopEnabled;
     },
     skillpoints_used: function () {
       let sum = 0;
@@ -196,10 +219,19 @@ export default {
   grid-template-areas:
     "header header"
     "main sidebar"
-    "footer sidebar";
+    "footer footer";
 }
 #app > header {
   border-bottom: #45a049 solid 2px;
   grid-area: header;
+}
+#app > .main {
+  grid-area: main;
+}
+#app > .sidebar {
+  grid-area: sidebar;
+}
+#app > footer {
+  grid-area: footer;
 }
 </style>

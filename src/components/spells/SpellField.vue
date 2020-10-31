@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+
 import { spell_ratios, calc_dmg_onhit } from "../../javascript/league_data";
 import Editable from "../simple/Editable.vue";
 import EditableRO from "../simple/EditableRO.vue";
@@ -57,7 +57,7 @@ export default {
       const stat = spell_ratios[this.item.key].stat;
       // No user means base_damage or base_progression
       if (!user) return this.valueNumber;
-      let statValue = this.$app[user][stat];
+      let statValue = this.$root[user][stat];
       if (isNaN(statValue)) {
         console.log(
           `Stat ${stat} for ratio ${this.item.key} missing for ${user}`
@@ -67,8 +67,8 @@ export default {
       return statValue * this.valueNumber;
     },
     damagePostValue: function () {
-      const player = this.$app.player;
-      const target = this.$app.target;
+      const player = this.$root.player;
+      const target = this.$root.target;
       return calc_dmg_onhit(
         player,
         target,

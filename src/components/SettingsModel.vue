@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Vue from "vue";
+
 
 export default {
   name: "SettingsModel",
@@ -39,8 +39,8 @@ export default {
   },
   watch: {
     shopEnabled(newVal) {
-      this.$app.config.shopEnabled = newVal;
-      console.log("shopEnabled.", newVal, this.$app.config.shopEnabled);
+      this.$root.config.shopEnabled = newVal;
+      console.log("shopEnabled.", newVal, this.$root.config.shopEnabled);
     },
   },
   methods: {
@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .modal-window {
   height: 100%;
   width: 100%;

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import DropdownSelect from "./DropdownSelect";
+import DropdownSelect from "./DropdownSelect.vue";
 export default {
   props: {
     value: Number,

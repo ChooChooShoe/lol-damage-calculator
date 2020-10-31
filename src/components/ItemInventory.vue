@@ -19,7 +19,7 @@
 
 <script>
 const emptyImage = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-import Vue from "vue";
+
 
 export default {
   name: "ItemInventory",
@@ -51,7 +51,7 @@ export default {
     itemdata(index) {
       const item = this.items[index];
       if (item) {
-        const data = this.$app.itemData[item];
+        const data = this.$root.itemData[item];
         if (data) return data;
       }
       return null;

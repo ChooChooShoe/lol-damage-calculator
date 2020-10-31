@@ -3,16 +3,16 @@
   <div id="shop-controller">
     <ShopModal></ShopModal>
     <div id="itemtips" ref="itemtips">
-      <template v-for="(val,key) in $app.itemData">
-        <ItemTooltip :key="key" :itemId="key" :value="val"></ItemTooltip>
+      <template v-for="(val, key) in $root.itemData" :key="key">
+        <ItemTooltip :itemId="key" :value="val"></ItemTooltip>
       </template>
     </div>
   </div>
 </template>
 
 <script>
-import ShopModal from "./ShopModal";
-import ItemTooltip from "./ItemTooltip";
+import ShopModal from "./ShopModal.vue";
+import ItemTooltip from "./ItemTooltip.vue";
 
 export default {
   name: "ShopController",

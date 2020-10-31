@@ -1,10 +1,9 @@
 
 <template>
   <span v-if="Array.isArray(list)">
-    <template v-for="(x, i) in list">
+    <template v-for="(x, i) in list" :key="i">
       {{ i != 0 ? "/" : "" }}
       <span
-        :key="i"
         :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
         class="ss-click"
         @click="rootspell.spellrankindex = i"

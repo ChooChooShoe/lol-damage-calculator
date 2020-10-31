@@ -30,9 +30,9 @@ export const locale = process.env.VUE_APP_LANG;
 export const version = process.env.VUE_APP_DDRAGON_VERSION;
 export const spriteBaseUri = `${cdn}/${version}/img/sprite/`;
 
-export function setupVue(vue) {
-    fetchChampionList().then((championList) => {
-        vue.$app.championList = championList;
+export function setupVue(championList, itemData ) {
+    fetchChampionList().then((ret) => {
+        championList.value = ret;
     });
     fetchStaticItems().then((data) => {
         for (const key in data) {
@@ -54,7 +54,7 @@ export function setupVue(vue) {
                 height: `${i.h*0.5}px`,
             };
         }
-        vue.$app.itemData = data;
+        itemData.value = data;
     });
 }
 

@@ -62,7 +62,6 @@
         This effect will hit
         <input
           type="number"
-          value="1"
           v-model.number="repeat"
           class="simple-input"
         />
@@ -98,7 +97,7 @@ import {
   DamageSource,
   DamageType,
 } from "../../javascript/league_data";
-import Vue from "vue";
+
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
@@ -155,8 +154,8 @@ export default {
     },
     dmg_postmitigation: function () {
       return calc_dmg_onhit(
-        this.$app.player,
-        this.$app.target,
+        this.$root.player,
+        this.$root.target,
         this.dmg_premitigation,
         this.damage_type
       );
@@ -169,13 +168,13 @@ export default {
     },
   },
   mounted: function () {
-    this.$app.damagingEffects.push(this);
+    this.$root.damagingEffects.push(this);
     this.isMounted = true;
   },
   destroyed: function () {
-    const index = this.$app.damagingEffects.indexOf(this);
+    const index = this.$root.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$app.damagingEffects.splice(index, 1);
+      this.$root.damagingEffects.splice(index, 1);
     }
   },
   methods: {
