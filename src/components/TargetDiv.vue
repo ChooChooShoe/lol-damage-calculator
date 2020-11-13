@@ -2,8 +2,8 @@
 <template>
   <div class="data_holder c50">
     <h2>Target Data</h2>
-    <ChampSearch v-model="champ"></ChampSearch>
-    <ChampLevelSelect v-model="level"></ChampLevelSelect>
+    <ChampSearch v-model:champ="champ"></ChampSearch>
+    <ChampLevelSelect v-model:level="level"></ChampLevelSelect>
 
     <table
       v-if="showExtra || showDamage || showDefence"
@@ -37,7 +37,7 @@
         </tr>
         <tr v-if="showDamage">
           <th class="ap">Ability Power (AP)</th>
-          <Editable :value="0" :readonly="readonly_base_values"></Editable>
+          <Editable :modelValue="0" :readonly="readonly_base_values"></Editable>
           <Editable v-model="total_ap"></Editable>
           <Editable v-model="total_ap"></Editable>
         </tr>
@@ -319,18 +319,13 @@ export default {
   },
   watch: {
     champ(champ, old) {
-      if (!this.championList[champ]) {
-        console.log("Invalid champ:", champ);
-        // champ = old;
-        // return;
-      }
-      window.localStorage.setItem("last_used_champ_" + "target", champ);
-      this.$notify({
-        group: "main",
-        title: "Loading Target " + champ + "…",
-        type: "info",
-        text: "",
-      });
+      window.localStorage.setItem("last_used_champ_target", champ);
+      // this.$notify({
+      //   group: "main",
+      //   title: "Loading Target " + champ + "…",
+      //   type: "info",
+      //   text: "",
+      // });
     },
     stats(stats, _old) {
       update_user_stats(stats, this, this.level);

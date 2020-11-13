@@ -23,7 +23,7 @@ import DropdownSelect from "../simple/DropdownSelect.vue";
 
 export default {
   name: "AddRatioDropDown",
-  props: ["value"],
+  props: ["modelValue"],
   components: { DropdownSelect },
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     handleInput(e) {
-      this.$emit("input", e);
+      this.$emit('update:modelValue', e);
     },
   },
 };

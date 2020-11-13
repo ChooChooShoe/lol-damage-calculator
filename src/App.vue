@@ -41,7 +41,7 @@
 
     <CustomDamageSource
       v-for="i in customDamageSources"
-      :key="'CustomDamageSource' + i"
+      :key="i"
       :index="i"
     ></CustomDamageSource>
   </div>
@@ -52,6 +52,11 @@
       </button>
     </div>
   </footer>
+  <datalist id="list-of-champions">
+    <template v-for="item in championList" :key="item.id">
+      <option :value="item.name"></option>
+    </template>
+  </datalist>
 </template>
 
 <script>
@@ -89,6 +94,20 @@ export default {
     AADamageSource,
     CustomDamageSource,
   },
+  data() {
+    return {
+      currentSpells: [],
+      customDamageSources: [],
+      lastCustomDamageSourcesIndex: 0,
+      currentChamp: "None",
+      damagingEffects: [],
+      player: null,
+      target: null,
+      globalToolTips: {},
+      shopModel: null,
+      config: loadLocalConfig(),
+    };
+  },
 
   setup(props) {
     console.log("process.env", process.env);
@@ -105,19 +124,8 @@ export default {
       book,
       appVersion: "0.9.0",
       lolPatchVersion: "10.2.0",
-
-      currentSpells: [],
-      customDamageSources: [],
-      lastCustomDamageSourcesIndex: 0,
-      currentChamp: "None",
-      damagingEffects: [],
-      player: null,
-      target: null,
       championList,
       itemData,
-      globalToolTips: {},
-      shopModel: null,
-      config: loadLocalConfig(),
     };
   },
   // mounted: function () {

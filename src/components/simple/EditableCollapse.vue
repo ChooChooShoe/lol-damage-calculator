@@ -9,10 +9,10 @@
       type="number"
       step="1"
       title
-      :value="encode(value)"
+      :value="encode(modelValue)"
       :readonly="readonly"
       :placeholder="placeholder"
-      @input="$emit('input', decode($event.target.value))"
+      @input="$emit('update:modelValue', decode($event.target.value))"
     />
   </span>
 </template>
@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    value: Number,
+    modelValue: Number,
     format: String,
     readonly: Boolean,
     placeholder: String,
@@ -39,7 +39,7 @@ export default {
       return this.format === "percent";
     },
     displayValue: function () {
-      return Math.round(this.encode(this.value) * 100) / 100;
+      return Math.round(this.encode(this.modelValue) * 100) / 100;
     },
     iconclassComp: function () {
       if (this.iconclass && this.iconclass !== null) return this.iconclass;

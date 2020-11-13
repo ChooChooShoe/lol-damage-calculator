@@ -6,7 +6,7 @@
       class="editable-input"
       type="text"
       step="1"
-      :value="encode(value)"
+      :value="encode(modelValue)"
       :readonly="readonly"
       :placeholder="placeholder"
       @input="onInput"
@@ -21,7 +21,7 @@
 
 export default {
   props: {
-    value: [Number, Array, String],
+    modelValue: [Number, Array, String],
     index: Number,
     format: String,
     readonly: Boolean,
@@ -44,22 +44,22 @@ export default {
     };
   },
   watch: {
-    value: {
+    modelValue: {
       // the callback will be called immediately after the start of the observation
       immediate: true,
       handler(rawValue, _oldVal) {
-        const value = this.encode(rawValue);
-        if (isNaN(value)) {
-          this.validationMessage = `The value '${value}' needs to be a number.`;
+        const v = this.encode(rawValue);
+        if (isNaN(v)) {
+          this.validationMessage = `The value '${v}' needs to be a number.`;
           this.validity = false;
-        } else if (!isFinite(value)) {
-          this.validationMessage = `The value '${value}' is not a finite number.`;
+        } else if (!isFinite(v)) {
+          this.validationMessage = `The value '${v}' is not a finite number.`;
           this.validity = false;
-        } else if (value < this.min) {
-          this.validationMessage = `The value '${value}' must be greater than or equal to ${this.min}.`;
+        } else if (v < this.min) {
+          this.validationMessage = `The value '${v}' must be greater than or equal to ${this.min}.`;
           this.validity = false;
-        } else if (value > this.max) {
-          this.validationMessage = `The value '${value}' must be less than or equal to ${this.max}.`;
+        } else if (v > this.max) {
+          this.validationMessage = `The value '${v}' must be less than or equal to ${this.max}.`;
           this.validity = false;
         } else this.validity = true;
       },
@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     exactValue: function () {
-      return this.encode(this.value);
+      return this.encode(this.modelValue);
     },
     displayValue: function () {
       const x = Math.round(this.exactValue * 100) / 100;
@@ -94,12 +94,12 @@ export default {
     },
     onInput(ev) {
       const decoded = this.decode(ev.target.valueAsNumber);
-      if (Array.isArray(this.value)) {
-        Vue.set(this.value, this.index, decoded);
+      if (Array.isArray(this.modelValue)) {
+        this.modelValue[this.index] = decoded;
         // return this.value;
-        this.$emit("input", this.value);
+        this.$emit('update:modelValue', this.modelValue);
       } else {
-        this.$emit("input", decoded);
+        this.$emit('update:modelValue', decoded);
       }
     },
     encode(val) {

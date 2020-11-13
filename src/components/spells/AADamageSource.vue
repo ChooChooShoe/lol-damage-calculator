@@ -136,7 +136,7 @@ export default {
       },
     });
   },
-  destroyed: function () {
+  unmounted: function () {
     const index = this.$root.damagingEffects.indexOf(this);
     if (index > -1) {
       this.$root.damagingEffects.splice(index, 1);

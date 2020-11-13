@@ -5,8 +5,6 @@ import he from 'he';
 import {default as matchReplaceSpellEffects, numberExpand} from '../src/javascript/matchreplace.mjs';
 import JSON5 from 'json5';
 
-const noReedoHrefs = new Set();
-
 /**
  * From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
  * @param body string?
@@ -24,36 +22,6 @@ async function wikia_to_json(body) {
         return null;
     }
     let results = [];
-
-    // DIFRENT WAY OF CONVERTING TO JSON
-    // let state = 'start'
-    // for (let i = 0; i < raw.length; i++) {
-    //     let v = raw[i];
-    //     switch (state) {
-    //         case 'start':
-    //             if(v == '-' && raw[i+1] == '-') {
-    //                 i = raw.indexOf('\n',i)
-    //                 continue;
-    //             } else {
-    //                 i = raw.indexOf('{',i)
-    //                 state = 'obj'
-    //                 break;
-    //             }
-    //         case 'obj':
-    //             if(v.match(/[\W]/)) {
-    //                 break
-    //             } else {
-    //                 i = raw.indexOf('{',i)
-    //                 state = 'obj'
-    //                 break;
-    //             }
-    //             break;
-    //         default:
-    //             continue;
-    //     }
-    //     results.push(raw[i]);
-    // }
-
     // let indent = 0
     for (let line of raw.split('\n')) {
         const tline = line.trim();
@@ -186,34 +154,6 @@ function buildChangesField(changes) {
     else
         return '' + nums[0] + '.' + nums[1] + '.' + nums[2];
 }
-function default_export(champ) {
-    return {
-        "id": champ["id"], // "RekSai"
-        "key": champ["key"], // "421"
-        "name": champ["name"], // "Rek'Sai"
-        "title": champ["title"], // "the Void Burrower"
-        "image": champ["image"],
-        "skins": champ['skins'],
-        "lore": champ['lore'],
-        "blurb": champ['blurb'],
-        "allytips": champ['allytips'],
-        "enemytips": champ['enemytips'],
-        "tags": champ["tags"], //["Fighter"],
-        "partype": champ["partype"], // "Battlefury"
-        "info": champ["info"],
-        "stats": champ["stats"],
-        "riot_spells": champ.spells, // renamed 
-        "riot_passive": { // renamed 
-            "name": champ["passive"]["name"],
-            "description": champ["passive"]["description"],
-            "image": champ["passive"]["image"],
-        },
-        "riot_recommended": champ['recommended'], // renamed 
-        wikia_champ: null,
-        skills: {},
-    }
-}
-
 function autoCast(s) {
     if (s === null || s == undefined)
         return null;
@@ -290,55 +230,64 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
     }
 
     skillout.effects = [];
-    for (let effectindex in skilldata.leveling) {
+    for (let leveling_index in skillout.leveling) {
         let effect = {}
-        effect.levelingtext = skilldata.leveling[effectindex];
+        effect.levelingtext = skillout.leveling[leveling_index];
+        skillout.effects[leveling_index] = effect;
+        // console.log('\n\n')
         let x = matchReplaceSpellEffects(effect.levelingtext, false, skillout);
         effect.str = x.str;
         effect.vars = x.vars;
 
-        if (x.vars.ap_progressions) {
-            effect.subeffects = [];
-            const subeffCount = x.vars.st_slices.length / 2;
-            const as_ratios_per = x.vars.as_ratios ? (x.vars.as_ratios.length / subeffCount) : 0;
-            for (let subindex = 0; subindex < subeffCount; subindex++) {
-                const subeff = {
-                    index: subindex,
-                    ratios: {},
-                    title: x.vars.st_slices[subindex * 2] || '',
-                    str: x.vars.st_slices[subindex * 2 + 1] || '',
-                }
-                var damageing = true;
-                if (subeff.title.indexOf('amage') === -1) {
-                    console.log(subeff.title + " ====> " + subeff.base_progression);
-                    subeff.damage_type = 'none';
-                    damageing = false;
-                } else if (subeff.title.indexOf('agic') > -1) {
-                    subeff.damage_type = 'magic';
-                } else if (subeff.title.indexOf('rue') > -1) {
-                    subeff.damage_type = 'true';
-                } else if (subeff.title.indexOf('hysical') > -1) {
-                    subeff.damage_type = 'physical';
-                } else {
-                    subeff.damage_type = 'unknown';
-                }
-                if (damageing) {
-                    subeff.ratios.base_damage = x.vars.ap_progressions[subindex];
-                } else {
-                    subeff.ratios.base_progression = x.vars.ap_progressions[subindex];
-                }
-                for (let ratio_index = 0; ratio_index < as_ratios_per; ratio_index++) {
-                    for (const r in x.vars.as_ratios[ratio_index])
-                        subeff.ratios[r] = x.vars.as_ratios[ratio_index][r];
+        if (x.vars.ap_progressions.length == 0) continue;
+        effect.subeffects = [];
+        // as_ratios are deivded evenly between st_slices
+        const as_ratios_per_st = (x.vars.as_ratios.length / x.vars.st_slices.length) || 0;
+        for (const subindex in x.vars.st_slices) {
+            const title = x.vars.st_slices[subindex][0] || '';
+            const damage_type = matchDamageType(title.toLowerCase());
+            let ratios = {}
+            
+            if (damage_type != 'none') {
+                ratios.base_damage = x.vars.ap_progressions[subindex];
+            } 
+            for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
+                for (const r in x.vars.as_ratios[ratio_index])
+                    ratios[r] = x.vars.as_ratios[ratio_index][r];
 
-                }
-                effect.subeffects[subindex] = subeff;
+            }
+
+            effect.subeffects[subindex]  = {
+                index: subindex,
+                ratios: ratios,
+                title: title,
+                str: x.vars.st_slices[subindex][1] || '',
+                damage_type: damage_type,
             }
         }
-        skillout.effects[effectindex] = effect;
     }
     return skillout;
 }
+const keyword_to_damage_type = {
+    magic: "magic",
+    true: "true",
+    physical: "physical",
+    none: "none",
+    slow: "none",
+    heal: "none",
+    shield: "none",
+    minion: "none",
+    speed: "none",
+}
+function matchDamageType(text) {
+    for (const key in keyword_to_damage_type) {
+        if (text.indexOf(key) > -1 ) {
+            return keyword_to_damage_type[key];
+        }
+    }
+    return 'unknown'
+}
+
 /// Takes each string in toStack array are stakcs 1-5 elements into one array of the orijonal name for the given obj.
 function stackData(obj, toStack) {
     for (const stackIter of toStack) {
@@ -474,11 +423,6 @@ async function createSkill(letter, skillNames, riotData, isPassive, champModel) 
         }
     }
 }
-function doMergeSkillData() {
-
-}
-
-
 console.log('Hello');
 
 fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })

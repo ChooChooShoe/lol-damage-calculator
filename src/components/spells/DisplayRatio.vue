@@ -33,7 +33,6 @@
 </template>
 
 <script>
-
 import { spell_ratios } from "../../javascript/league_data";
 
 export default {
@@ -44,6 +43,15 @@ export default {
     index: Number,
   },
   inject: ["rootspell"],
+  setup(props) {
+    const ratiodata = spell_ratios[props.item.key];
+    return {
+      flat: ratiodata.flat || false,
+      color: ratiodata.color || "",
+      html: ratiodata.html || "",
+      extra: ratiodata.extra || false,
+    };
+  },
   methods: {
     displayValueArray: function (v) {
       if (this.flat) return `${+v.toFixed(3)}`;
@@ -52,20 +60,6 @@ export default {
     displayValue: function (v) {
       if (this.flat) return `(+ ${+v.toFixed(3)} ${this.html})`;
       return `(+ ${+(v * 100).toFixed(3)}% ${this.html})`;
-    },
-  },
-  computed: {
-    flat: function () {
-      return spell_ratios[this.item.key].flat || false;
-    },
-    color: function () {
-      return spell_ratios[this.item.key].color || "";
-    },
-    html: function () {
-      return spell_ratios[this.item.key].html || "";
-    },
-    extra: function () {
-      return spell_ratios[this.item.key].extra || false;
     },
   },
 };

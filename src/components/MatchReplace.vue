@@ -18,7 +18,7 @@ export default {
   },
   //spellrankindex is need for child spell-spans to bind to.
   // text is what is match replaced.
-  props: ["spellrank", "text", "value"],
+  props: ["spellrank", "text", "modelValue"],
   data: function() {
     return {
       templateRender: null
@@ -26,9 +26,10 @@ export default {
   },
   computed: {
     template: function() {
+      return null;
       const text = this.text || this.$slots.default || "";
       const replaced = matchReplaceSpellEffects(text.toString());
-      this.$emit("input", replaced.vars);
+      this.$emit('update:modelValue', replaced.vars);
       return `<div>${replaced.str}</div>`;
     }
   },
@@ -37,6 +38,7 @@ export default {
     template: {
       immediate: true, // makes the watcher fire on first render, too.
       handler() {
+        return null;
         var res = Vue.compile(this.template);
 
         this.templateRender = res.render;
@@ -58,6 +60,7 @@ export default {
     }
   },
   render(h) {
+    return null;
     if (!this.templateRender) {
       return h("div", "loading...");
     } else {

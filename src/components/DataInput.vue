@@ -16,10 +16,10 @@
             title
             :name="dname"
             :id="dname"
-            :value="encode(value)"
+            :value="encode(modelValue)"
             :readonly="readonly"
             :placeholder="placeholder"
-            v-on:input="$emit('input', decode($event.target.value))"
+            @input="$emit('update:modelValue', decode($event.target.value))"
           />
           <span class="icon is-small is-left">
             <i :class="[ iconclassComp ]"></i>
@@ -37,7 +37,7 @@
 <script>
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
-  props: ["dname", "value", "ispercent", "labelclass", "iconclass", "readonly", "placeholder"],
+  props: ["dname", "modelValue", "ispercent", "labelclass", "iconclass", "readonly", "placeholder"],
   name: "data-input",
   data: function() {
     return {
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     displayValue: function() {
-      return this.encode(this.value);
+      return this.encode(this.modelValue);
     },
     iconclassComp: function() {
       if(this.iconclass && this.iconclass !== null)

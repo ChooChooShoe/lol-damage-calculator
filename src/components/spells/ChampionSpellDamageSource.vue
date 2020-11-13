@@ -10,9 +10,9 @@
       {{ spell.name }} ({{ spell.skillkey }}) -
       <a target="_blank" :href="wikiHref">View on Wiki</a>
     </h3>
-    <match-replace
+    <!-- <match-replace
       :text="'<p>' + spell.description.join('</p><p>') + '</p>'"
-    ></match-replace>
+    ></match-replace> -->
     <hr />
     <div style="float: right" v-if="spell.maxrank > 0">
       <span>
@@ -60,15 +60,15 @@
     </div>
 
     <hr />
-    <spell-effects
+    <SpellEffects
       v-for="(item, index) in spell.effects"
-      :key="'spell-effects-' + index"
+      :key="index"
       :spell="spell"
       :effect="item"
       :effectindex="index"
       :spellrank="spellrankindex"
       v-on:spellrank="spellrankindex = $event"
-    ></spell-effects>
+    ></SpellEffects>
 
     <CustomSpellEffects
       v-for="item in customEffects"
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 import CustomSpellEffects from "./CustomSpellEffects.vue";
@@ -117,11 +117,11 @@ export default {
       lastEffectIndex: 0,
     };
   },
-  provide () {
+  provide() {
     return {
       // rootspell is a ref to the active damagesource.
-      rootspell: this
-    }
+      rootspell: this,
+    };
   },
   computed: {
     wikiHref() {

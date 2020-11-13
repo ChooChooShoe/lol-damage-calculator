@@ -1,25 +1,25 @@
 <template>
-  <DropdownSelect label="Damage Type" class="dtfield" :class="value" :value="value">
-    <button :class="{ success: value === 'none' }" @click="handleInput('none')">
+  <DropdownSelect label="Damage Type" class="dtfield" :class="modelValue" :value="modelValue">
+    <button :class="{ success: modelValue === 'none' }" @click="handleInput('none')">
       None
     </button>
     <button
       class="ad"
-      :class="{ success: value === 'physical' }"
+      :class="{ success: modelValue === 'physical' }"
       @click="handleInput('physical')"
     >
       Physical
     </button>
     <button
       class="ap"
-      :class="{ success: value === 'magic' }"
+      :class="{ success: modelValue === 'magic' }"
       @click="handleInput('magic')"
     >
       Magic
     </button>
     <button
       class="true"
-      :class="{ success: value === 'true' }"
+      :class="{ success: modelValue === 'true' }"
       @click="handleInput('true')"
     >
       True
@@ -33,12 +33,12 @@ import DropdownSelect from "../simple/DropdownSelect.vue";
 
 export default {
   name: "DamageTypeField",
-  props: ["value"],
+  props: ["modelValue"],
   components: { DropdownSelect },
   computed: {},
   methods: {
     handleInput(e) {
-      this.$emit("input", e);
+      this.$emit('update:modelValue', e);
     },
   },
 };

@@ -2,16 +2,19 @@
 <template>
   <tr>
     <th>
-      <span :class="color">{{ displayValue }}</span>
+      <span :class="color">{{ prefex }}{{ sufex }}</span>
     </th>
-    <Editable v-model="item.value" :format="item.ispercent ? 'percent' : ''" :index="index"></Editable>
-    <EditableRO :value="damagePreValue"></EditableRO>
-    <EditableRO :value="damagePostValue"></EditableRO>
+    <Editable
+      v-model="item.value"
+      :format="item.ispercent ? 'percent' : ''"
+      :index="rootspell.spellrankindex"
+    ></Editable>
+    <EditableRO :modelValue="damagePreValue"></EditableRO>
+    <EditableRO :modelValue="damagePostValue"></EditableRO>
   </tr>
 </template>
 
 <script>
-
 import { spell_ratios, calc_dmg_onhit } from "../../javascript/league_data";
 import Editable from "../simple/Editable.vue";
 import EditableRO from "../simple/EditableRO.vue";
@@ -19,40 +22,44 @@ import EditableRO from "../simple/EditableRO.vue";
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "SpellField",
-  props: ["item", "index"],
-  data: function () {
-    return {};
+  props: {
+    item: Object,
+    index: Number,
+    spellrank: Number,
   },
+  inject: ["rootspell"],
   components: {
     Editable,
     EditableRO,
   },
+  setup(props) {
+    const ratiodata = spell_ratios[props.item.key];
+    return {
+      item: props.item,
+      spellrank: props.spellrank,
+      prefex: ratiodata.prefex || "",
+      color: ratiodata.color || "",
+      sufex: ratiodata.sufex || "",
+      extra: ratiodata.extra || false,
+      removable: false,
+    };
+  },
   computed: {
-    prefex: function () {
-      return spell_ratios[this.item.key].prefex || "";
-    },
-    color: function () {
-      return spell_ratios[this.item.key].color || "";
-    },
-    sufex: function () {
-      return spell_ratios[this.item.key].sufex || "";
-    },
-    extra: function () {
-      return spell_ratios[this.item.key].extra || false;
-    },
-    removable: function () {
-      return false;
+    valueNumber: function () {
+      return Array.isArray(this.item.value)
+        ? this.item.value[this.spellrank]
+        : this.item.value;
     },
     displayValue: function () {
-      let v = this.valueNumber;
-      if (!this.extra) {
-        return `( ${v < 0 ? "" : "+"}${+(Math.round(v + "e+12") + "e-10")}% ${
-          spell_ratios[this.item.key].sufex
-        })`;
-      } else return spell_ratios[this.item.key].prefex;
+      return this.extra || false
+        ? this.prefex
+        : `( ${this.valueNumber < 0 ? "" : "+"}${+(
+            Math.round(this.valueNumber + "e+12") + "e-10"
+          )}% ${this.sufex})`;
     },
+
     damagePreValue: function () {
-      console.log('key',this.item.key)
+      console.log("damagePreValuekey", this.item.key);
       const user = spell_ratios[this.item.key].user;
       const stat = spell_ratios[this.item.key].stat;
       // No user means base_damage or base_progression
@@ -67,18 +74,12 @@ export default {
       return statValue * this.valueNumber;
     },
     damagePostValue: function () {
-      const player = this.$root.player;
-      const target = this.$root.target;
       return calc_dmg_onhit(
-        player,
-        target,
+        this.$root.player,
+        this.$root.target,
         this.damagePreValue,
         this.$parent.damage_type
       );
-    },
-    valueNumber: function () {
-      if (Array.isArray(this.item.value)) return this.item.value[this.index];
-      return this.item.value;
     },
   },
 };

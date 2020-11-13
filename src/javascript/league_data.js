@@ -25,9 +25,11 @@
 
 // const runesReforgedUri = `${baseUrl}/runesReforged.json`;
 
-export const cdn = process.env.VUE_APP_DDRAGON_CDN;
-export const locale = process.env.VUE_APP_LANG;
-export const version = process.env.VUE_APP_DDRAGON_VERSION;
+import versionJson from "/src/api/version.json"
+export const cdn = versionJson.cdn;
+export const locale = versionJson.l;
+export const version = versionJson.v;
+export const displayVersion = versionJson.dv;
 export const spriteBaseUri = `${cdn}/${version}/img/sprite/`;
 
 export function setupVue(championList, itemData ) {
@@ -73,14 +75,14 @@ export async function fetchSingleChampFile(champId) {
     if (!champId)
         return console.log("Can't fetchSingleChampFile() 'champId' is not set", champId);
 
-    // const url = `${cdn}/${version}/data/${lang}/champion/${championName}.json`;
-    const url = `./api/champion/${champId}.json`;
-
     // Check cache first
     if (champId in singleChampFileCache) {
         console.log('Returning singleChampFileCache', champId)
         return singleChampFileCache[champId];
     }
+
+    // const url = `${cdn}/${version}/data/${lang}/champion/${championName}.json`;
+    const url = `./api/champion/${champId}.json`;
 
     // TODO error checking
     console.log(`Fetching: ${url}`);
@@ -310,7 +312,7 @@ export function default_stats() {
 }
 
 export const spell_ratios = {
-    base_damage: { user: '', prefex: "Base Damage", color: "", sufex: "", extra: true, flat: true, html: "" },
+    base_damage: { user: '', prefex: "Base", color: "", sufex: "", extra: true, flat: true, html: "" },
     base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: ""},
     player_total_ap: { user: 'player', stat: 'total_ap', prefex: '', color: "ap", sufex: "AP", html: "AP" },
     player_total_ad: { user: 'player', stat: 'total_ad', prefex: '', color: "ad", sufex: "AD", html: "AD" },

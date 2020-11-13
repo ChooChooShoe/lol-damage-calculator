@@ -27,7 +27,7 @@ export default {
       return document.getElementById(this.globalId);
     }
   },
-  destroyed() {
+  unmounted() {
     if (this.globalEl) this.globalEl.setAttribute("style", `display:none;`);
   },
   methods: {

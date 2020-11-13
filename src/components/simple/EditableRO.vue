@@ -14,7 +14,7 @@
 <script>
 export default {
   props: {
-    value: [Number, Array],
+    modelValue: [Number, Array],
     index: Number,
     format: String,
   },
@@ -26,8 +26,8 @@ export default {
       return x;
     },
     exactValue: function () {
-      let val = this.value;
-      if (Array.isArray(this.value)) {
+      let val = this.modelValue;
+      if (Array.isArray(this.modelValue)) {
         val = val[this.index];
       }
       if (this.format === "percent")

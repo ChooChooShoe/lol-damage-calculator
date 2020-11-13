@@ -1,13 +1,13 @@
 <template>
-  <DropdownSelect label="Champion Level" class="lvlselect" :value="value">
+  <DropdownSelect label="Champion Level" class="lvlselect" :value="level">
     <input
       v-for="n in 18"
       :key="n"
-      :class="{ success: value == n }"
+      :class="{ success: level == n }"
       type="button"
       class="button lvlselect"
       :value="n"
-      @click="onInput(n)"
+      @click="$emit('update:level', n)"
   /></DropdownSelect>
 </template>
 
@@ -15,15 +15,10 @@
 import DropdownSelect from "./DropdownSelect.vue";
 export default {
   props: {
-    value: Number,
+    level: Number,
   },
   name: "ChampLevelSelect",
   components: { DropdownSelect },
-  methods: {
-    onInput(value) {
-      this.$emit("input", value);
-    },
-  },
 };
 </script>
 

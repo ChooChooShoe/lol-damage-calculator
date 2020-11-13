@@ -2,57 +2,11 @@
   <div class="sidebody">
     <h2>Damage Totals &amp; Output</h2>
     <h3>Damage Pre-Mitigation</h3>
-    <div class="damage-dealt-chart">
-      <div class="magic-bg" :title="outPes[0] + ' Magic'" :style="outStyle[0]">{{ outPes[0] }}</div>
-      <div class="physical-bg" :title="outPes[1]  +' Physical'" :style="outStyle[1]">{{ outPes[1] }}</div>
-      <div class="true-bg" :title="outPes[2]  +' True'" :style="outStyle[2]">{{ outPes[2] }}</div>
-    </div>
-    <p>
-      {{ rnd(output.preMagicDmg) }}
-      <span class="magic-damage">Magic Damage</span>
-      dealt. {{ percentf(output.preMagicDmg / output.preTotalDmg) }}
-    </p>
-    <p>
-      {{ rnd(output.prePhysicalDmg) }}
-      <span class="physical-damage">Physical Damage</span>
-      dealt. {{ percentf(output.prePhysicalDmg / output.preTotalDmg) }}
-    </p>
-    <p>
-      {{ rnd(output.trueDmg) }}
-      <span class="true-damage">True Damage</span>
-      dealt. {{ percentf(output.trueDmg / output.preTotalDmg) }}
-    </p>
-    <p style="font-weight: bold;">
-      <span>Total Damage</span>
-      dealt: {{ rnd(output.preTotalDmg) }}
-    </p>
+    <DamageBlock :output="output" :isPre="true"></DamageBlock>
 
     <hr />
     <h3>Damage Post-Mitigation</h3>
-    <div class="damage-dealt-chart">
-      <div class="magic-bg" :title="outPes[3] + ' Magic'" :style="outStyle[3]">{{ outPes[3] }}</div>
-      <div class="physical-bg" :title="outPes[4]  +' Physical'" :style="outStyle[4]">{{ outPes[4] }}</div>
-      <div class="true-bg" :title="outPes[5]  +' True'" :style="outStyle[5]">{{ outPes[5] }}</div>
-    </div>
-    <p>
-      {{ rnd(output.magicDmg) }}
-      <span class="magic-damage">Magic Damage</span>
-      dealt. {{ percentf(output.magicDmg / output.totalDmg) }}
-    </p>
-    <p>
-      {{ rnd(output.physicalDmg) }}
-      <span class="physical-damage">Physical Damage</span>
-      dealt. {{ percentf(output.physicalDmg / output.totalDmg) }}
-    </p>
-    <p>
-      {{ rnd(output.trueDmg) }}
-      <span class="true-damage">True Damage</span>
-      dealt. {{ percentf(output.trueDmg / output.totalDmg) }}
-    </p>
-    <p style="font-weight: bold;">
-      <span>Total Damage</span>
-      dealt: {{ rnd(output.totalDmg) }}
-    </p>
+    <DamageBlock :output="output" :isPre="false"></DamageBlock>
     <hr />
     <h3>Target Status: {{ output.status }}</h3>
     <p>Overkill Damage: {{ output.overkill }}</p>
@@ -64,7 +18,7 @@
     <hr />
 
     <div class="buttons">
-      <a class="button" href="#settings" >Settings...</a>
+      <a class="button" href="#settings">Settings...</a>
       <button @click="addCustomDamageSource()">Add Custom Damage Source</button>
     </div>
   </div>
@@ -74,9 +28,11 @@
 import numeral from "numeral";
 // import SettingsModel from "./SettingsModel.vue"
 import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
+import DamageBlock from "./sidebar/DamageBlock.vue";
 export default {
   name: "SideBody",
   props: ["damagingEffects", "player", "target"],
+  components: { DamageBlock },
   methods: {
     rnd: function (n, digits) {
       if (n === undefined || isNaN(n)) n = 0;
@@ -250,35 +206,5 @@ export default {
     position: inherit;
     width: 100%;
   }
-}
-
-.damage-dealt-chart {
-  position: relative;
-  height: 32px + 2px;
-  border: #1e8ad6 1px solid;
-}
-
-.damage-dealt-chart > div {
-  position: absolute;
-  text-align: center;
-  height: 32px;
-  line-height: 32px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: clip;
-}
-
-.true-bg {
-  background-color: #f9966b;
-}
-
-.physical-bg {
-  background-color: #bc6032;
-  color: whitesmoke;
-}
-
-.magic-bg {
-  background-color: teal;
-  color: black;
 }
 </style>

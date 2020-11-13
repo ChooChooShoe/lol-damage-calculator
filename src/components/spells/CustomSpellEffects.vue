@@ -16,7 +16,7 @@
         <tbody>
           <SpellField
             v-for="(item, key) in ratios"
-            ref="spellfields"
+              :ref="spellFieldRefs.push(this)"
             :key="key"
             :item="item"
             :index="0"
@@ -37,8 +37,8 @@
             <th style="text-align: center" colspan="2">
               <b>Total</b>
             </th>
-            <Editable :value="dmg_premitigation" :readonly="true"></Editable>
-            <Editable :value="dmg_postmitigation" :readonly="true"></Editable>
+            <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
+            <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
           </tr>
         </tfoot>
       </table>
@@ -123,6 +123,7 @@ export default {
         player_bonus_ad: { key: "player_bonus_ad", value: 0, ispercent: true },
       },
       isMounted: false,
+      spellFieldRefs: []
     };
   },
   computed: {
@@ -147,7 +148,7 @@ export default {
     dmg_premitigation: function () {
       if (!this.isMounted) return -1;
       let total = 0;
-      for (const currentValue of this.$refs.spellfields) {
+      for (const currentValue of this.spellFieldRefs) {
         total += currentValue.damagePreValue;
       }
       return total;
@@ -171,7 +172,7 @@ export default {
     this.$root.damagingEffects.push(this);
     this.isMounted = true;
   },
-  destroyed: function () {
+  unmounted: function () {
     const index = this.$root.damagingEffects.indexOf(this);
     if (index > -1) {
       this.$root.damagingEffects.splice(index, 1);

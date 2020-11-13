@@ -60,30 +60,26 @@
           </thead>
           <tbody>
             <SpellField
-              v-for="(item, key) in ratios"
-              ref="spellfields"
+              v-for="(item, key, i) in ratios"
+              :ref="el => { if (el) spellFieldRefs[i] = el }"
               :key="key"
               :item="item"
-              :index="spellrank"
+              :index="i"
+              :spellrank="spellrank"
             ></SpellField>
-          </tbody>
-          <tfoot>
             <tr>
               <th colspan="4">
                 <AddRatioDropDown></AddRatioDropDown>
               </th>
             </tr>
-            <tr>
-              <th colspan="4">
-                <hr style="margin: 0.3rem 0" />
-              </th>
-            </tr>
-            <tr>
+          </tbody>
+          <tfoot>
+            <tr class="spelleff--totals">
               <th style="text-align: center" colspan="2">
                 <b>Total</b>
               </th>
-              <Editable :value="dmg_premitigation" :readonly="true"></Editable>
-              <Editable :value="dmg_postmitigation" :readonly="true"></Editable>
+              <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
+              <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
             </tr>
           </tfoot>
         </table>
@@ -150,7 +146,7 @@ import DisplayRatio from "./DisplayRatio.vue";
 
 export default {
   props: ["spell", "effect", "spellrank", "effectindex"],
-  name: "spell-effects",
+  name: "SpellEffects",
   components: {
     SpellField,
     DamageTypeField,
@@ -165,6 +161,7 @@ export default {
       subIndex: 0,
       ratios: {},
       isMounted: false,
+      spellFieldRefs: []
     };
   },
   computed: {
@@ -180,21 +177,20 @@ export default {
     damage_type_user: function () {
       switch (this.damage_type) {
         case "physical":
-          return '<span class="ad">physical damage</span>';
+          return '<span class="physical-damage">physical damage</span>';
         case "magic":
-          return '<span class="ap">magic damage</span>';
+          return '<span class="magic-damage">magic damage</span>';
         case "true":
-          return '<span class="true">true damage</span>';
+          return '<span class="true-damage">true damage</span>';
         default:
-          return '<span class="true">no damage</span>';
+          return '<span class="true-damage">no damage</span>';
       }
     },
-    dmg_premitigation: function () {
-      if (!this.isMounted) return -1;
+    dmg_premitigation () {
       let total = 0;
-      for (const currentValue of this.$refs.spellfields) {
-        total += currentValue.damagePreValue;
-      }
+      // for (const currentValue of this.spellFieldRefs) {
+      //   total += currentValue.damagePreValue;
+      // }
       return total;
     },
     dmg_postmitigation: function () {
@@ -216,11 +212,14 @@ export default {
     this.$root.damagingEffects.push(this);
     this.isMounted = true;
   },
-  destroyed: function () {
+  unmounted: function () {
     const index = this.$root.damagingEffects.indexOf(this);
     if (index > -1) {
       this.$root.damagingEffects.splice(index, 1);
     }
+  },
+  beforeUpdate() {
+    this.spellFieldRefs = []
   },
   watch: {
     edata: {
@@ -270,5 +269,8 @@ input[type="button"].repeat {
   font-size: 0.9em;
   padding: 0 0.5em;
   margin: 0 0.2em;
+}
+.spelleff--totals {
+  border-top: aqua 1px solid;
 }
 </style>

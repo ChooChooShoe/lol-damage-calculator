@@ -7,21 +7,16 @@
         :value="disp"
         @focus="onFocus"
         @change="onInput($event.target.value)"
-        list="ice-cream-flavors"
+        list="list-of-champions"
       />
     </div>
-    <datalist id="ice-cream-flavors">
-      <template v-for="item in championList" :key="item.id">
-        <option :value="item.name"></option>
-      </template>
-    </datalist>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    value: String,
+    champ: String,
   },
   name: "ChampSearch",
   data: function () {
@@ -33,23 +28,23 @@ export default {
       return this.$root.championList;
     },
     disp() {
-      if (this.championList[this.value])
-        return this.championList[this.value].name;
-      return this.value;
+      if (this.championList[this.champ])
+        return this.championList[this.champ].name;
+      return this.champ;
     },
   },
   methods: {
     onInput(value) {
       if (this.championList[value]) {
         console.log("Selected Exact match:", value);
-        this.$emit("input", value);
+        this.$emit('update:champ', value);
         this.didChange = true;
       } else {
         for (const key in this.championList) {
           const el = this.championList[key];
           if (el.name.toLowerCase().includes(value.toLowerCase())) {
             console.log("Selected champ", el.name, "id", el.id);
-            this.$emit("input", el.id);
+            this.$emit('update:champ', el.id);
             this.didChange = true;
             break;
           }

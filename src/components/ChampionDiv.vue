@@ -2,8 +2,8 @@
 <template>
   <div class="data_holder c50">
     <h2>{{ username }}</h2>
-    <ChampSearch v-model="champ"></ChampSearch>
-    <ChampLevelSelect v-model="level"></ChampLevelSelect>
+    <ChampSearch v-model:champ="champ"></ChampSearch>
+    <ChampLevelSelect v-model:level="level"></ChampLevelSelect>
 
     <!-- <label class="column column-50">
       Show Damage Stats
@@ -52,7 +52,7 @@
         </tr>
         <tr v-if="showDamage">
           <th class="ap">Ability Power (AP)</th>
-          <Editable :value="0" :readonly="readonly_base_values"></Editable>
+          <Editable :modelValue="0" :readonly="readonly_base_values"></Editable>
           <Editable v-model="total_ap"></Editable>
           <Editable v-model="total_ap"></Editable>
         </tr>
@@ -529,22 +529,18 @@ export default {
   },
   watch: {
     champ(champ, old) {
-      if (!this.championList[champ]) {
-        console.log("Invalid champ:", champ);
-        // champ = old;
-        // return;
-      }
-      window.localStorage.setItem("last_used_champ_" + "player", champ);
-      this.$notify({
-        group: "main",
-        title: "Loading Champion " + champ + "…",
-        type: "info",
-      });
-      const vue = this.$root.$root;
+      window.localStorage.setItem("last_used_champ_player", champ);
+      // this.$notify({
+      //   group: "main",
+      //   title: "Loading Champion " + champ + "…",
+      //   type: "info",
+      // });
+      const vue = this.$root;
       fetchSingleChampFile(champ).then((model) => {
         // Removes all the last champions spells.
+        console.log('fetchSingleChampFile vue',vue)
         vue.currentSpells.length = 0;
-        vue.currentChamp = null;
+        vue.currentChamp = "None";
         let newList = [];
         for (const skillkey in model.skills) {
           let value = model.skills[skillkey];
@@ -557,11 +553,11 @@ export default {
         vue.currentSpells = newList;
         // sellAllItems();
         //TODO buy default items
-        this.$notify({
-          group: "main",
-          title: "Loading Done.",
-          type: "info",
-        });
+        // this.$notify({
+        //   group: "main",
+        //   title: "Loading Done.",
+        //   type: "info",
+        // });
       });
     },
     stats(stats, _old) {
