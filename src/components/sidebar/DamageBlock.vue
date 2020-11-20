@@ -60,11 +60,11 @@ export default {
       const physicalDmg = isPre
         ? output.value.prePhysicalDmg
         : output.value.physicalDmg;
-      const trueDmg = output.value.totalDmg;
+      const trueDmg = output.value.trueDmg;
 
       const mRatio = percentf(magicDmg / totalDmg);
       const pRatio = percentf(physicalDmg / totalDmg);
-      const mpRatio = percentf(magicDmg / totalDmg + physicalDmg / totalDmg);
+      const mpRatio = percentf((magicDmg / totalDmg) + (physicalDmg / totalDmg));
       const tRatio = percentf(trueDmg / totalDmg);
 
       return {
