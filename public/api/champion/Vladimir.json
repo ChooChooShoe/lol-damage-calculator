@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.97",
-  "changes": "10.20.1",
+  "changes": "10.23.1",
   "id": "Vladimir",
   "name": "Vladimir",
   "title": "the Crimson Reaper",
@@ -8,7 +8,7 @@
     "full": "Vladimir.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 240,
+    "x": 288,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "VladimirP.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 240,
+        "x": 288,
         "y": 48,
         "w": 48,
         "h": 48
@@ -66,6 +66,7 @@
       "description": [
         "{{sbc|Innate:}} '''Vladimir''' gains {{as|({{fd|{{#var:cp1}}}}% '''bonus''' health)}} as {{sti|ap|{{as|ability power}}}} and {{as|({{#var:cp2}}% AP)}} as {{sti|health|{{as|'''bonus''' health}}}}. These two bonuses do not stack with each other."
       ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Vladimir</b> gains <span class=\"health\">(<span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:cp1\">Unknown value: #var:cp1</simple-tooltip></span>% <b>bonus</b> health)</span> as <span><span class=\"ability-power\">ability power</span></span> and <span class=\"ap\">(<simple-tooltip class=\"capture-unknown\" dname=\"#var:cp2\">Unknown value: #var:cp2</simple-tooltip>% AP)</span> as <span><span class=\"health\"><b>bonus</b> health</span></span>. These two bonuses do not stack with each other.",
       "leveling": [],
       "notes": "* ''Crimson Pact's'' '''bonus''' ability power stacks multiplicatively with other sources of {{as|% ability power}} but its '''bonus''' health stacks additively with other sources of {{as|'''bonus''' health}}. Examples on how they calculate below:\n**Case 1: With {{ii|Rabadon's Deathcap}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|From Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP enhanced by Rabadon's Deathcap.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}/10000}}}}% '''bonus''' health}}|Though these 2 bonuses do not stack with each other and it's Crimson Pact's bonus AP that enhanced by Rabadon's Deathcap, the enhanced part of AP is credited to Rabadon's Deathcap, not Crimson Pact, thus still counted as resource for Crimson Pact's bonus health.}}) {{as|'''bonus''' health}}.\n**Case 2: With {{ii|Cinderhulk}} you get a total of {{tt|{{as|({{fd|{{#expr:{{#var:cp1}}*(1+{{#var:ch}}/100)}}}}% '''bonus''' health)}}|Crimson Pact's bonus AP comes from bonus health, thus indirectly enhanced by Cinderhulk.}} {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#var:cp2}}% AP}}|From Crimson Pact}} + {{tt|{{as|{{#var:ch}}% '''bonus''' health}}|From Cinderhulk.}}) {{as|'''bonus''' health}}.\n**Case 3: With {{ii|Rabadon's Deathcap}} + {{ii|Cinderhulk}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|Same with case 1, from Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)*(1+{{#var:ch}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Rabadon's Deathcap and Cinderhulk, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Same with case 1, won't stack with other sources of bonus health (Cinderhulk).}} + {{tt|{{as|{{fd|{{#expr:{{#var:ch}}+{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}*(1+{{#var:ch}}/100)/10000}}}}% '''bonus''' health}}|Crimson Pact's bonus AP indirectly enhanced by Cinderhulk (refer case 2), then multiplicatively enhanced again by Rabadon's Deathcap. The enhanced part that's credited to Rabadon's Deathcap then enhances Crimson Pact's bonus health (refer case 1). Finally, add the simple bonus health from Cinderhulk.}}) {{as|'''bonus''' health}}.",
       "skillkey": "I",
@@ -92,7 +93,7 @@
         "full": "VladimirSanguinePool.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 144,
         "w": 48,
         "h": 48
@@ -102,6 +103,7 @@
         "Enemies who stand upon the pool are {{tip|slow|slowed}} by 40% and dealt {{as|magic damage}} every half second. '''Vladimir''' {{tip|heals}} himself for 15% of the damage dealt by ''Sanguine Pool''.",
         "'''''Vladimir''' cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If {{ai|Tides of Blood|Charge}} is charging at the time of Sanguine Pool's activation, that ability may be recast.''"
       ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> sinks into a pool of blood, gaining <span><span class=\"movement-speed\"><span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% <b>bonus</b> movement speed</span></span> which decays exponentially over 1 second and becoming <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> for 2 seconds.Enemies who stand upon the pool are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 40% and dealt <span class=\"magic-damage\">magic damage</span> every half second. <b>Vladimir</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself for 15% of the damage dealt by <i>Sanguine Pool</i>.<b><i>Vladimir</b> cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Charge\">Tides of Blood<template #content>Tides of Blood</template></HtmlTooltip> is charging at the time of Sanguine Pool's activation, that ability may be recast.</i>",
       "leveling": [
         "{{st|Magic Damage Per Half-Second|{{ap|20 to 75}} {{as|(+ {{fd|2.5}}% '''bonus''' health)}}|Maximum Magic Damage|{{ap|20*4 to 75*4}} {{as|(+ 10% '''bonus''' health)}}}}"
       ],
@@ -191,10 +193,10 @@
       "targeting": "Auto",
       "image": {
         "full": "VladimirE.png",
-        "sprite": "spell13.png",
+        "sprite": "spell14.png",
         "group": "spell",
-        "x": 288,
-        "y": 144,
+        "x": 0,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -205,6 +207,7 @@
         "''Enemies can intercept multiple bolts, but may only be damaged once.''",
         "''If '''Vladimir''' is below {{as|12% of his '''maximum''' health}} Tides of Blood will not cost any {{as|health}}, but will still increase in damage.''"
       ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> himself by 20% if he <i>charges</i> for more than 1 second. <i>Tides of Blood</i> can be recast at any time within its duration. If <b>Vladimir</b> finishes charging or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>, he automatically initiates the recast.<span class=\"sbc\">Recast:</span> <b>Vladimir</b> unleashes a nova of 15 blood bolts, each of which collide with the first enemy they hit, dealing them <span class=\"magic-damage\">magic damage</span> that is increased based on how long <i>Tides of Blood</i> was charged, up to the first second.If <i>Tides of Blood</i> was charged for at least 1 second, enemies hit are also <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<i>Enemies can intercept multiple bolts, but may only be damaged once.</i><i>If <b>Vladimir</b> is below <span class=\"health\">12% of his <b>maximum</b> health</span> Tides of Blood will not cost any <span class=\"health\">health</span>, but will still increase in damage.</i>",
       "leveling": [
         "{{st|Minimum Magic Damage|{{ap|30 to 90}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} {{as|(+ 35% AP)}}|Maximum Magic Damage|{{ap|60 to 180}} {{as|(+ 6% '''maximum''' health)}} {{as|(+ 80% AP)}}}}",
         "{{st|Slow|{{ap|40 to 60}}%}}"
@@ -324,10 +327,10 @@
       "target_range": 625,
       "image": {
         "full": "VladimirHemoplague.png",
-        "sprite": "spell13.png",
+        "sprite": "spell14.png",
         "group": "spell",
-        "x": 336,
-        "y": 144,
+        "x": 48,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -335,6 +338,7 @@
         "{{sbc|Active:}} '''Vladimir''' infects all enemies in the target area with a virulent plague, [[damage modifier|increasing]] the damage they take from all sources by 10% for 4 seconds, after which all infected enemies take {{as|magic damage}}.",
         "The detonation brings the blood from enemy {{tip|champions|champions}} hit to '''Vladimir''' after 0.4 seconds, {{tip|heal|healing}} him for the {{tt|pre-mitigation damage|Damage calculated before modifiers}} dealt against them once the blood reaches him, reduced to 50% after the first."
       ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> infects all enemies in the target area with a virulent plague, <a class=\"effect link\" title=\"increasing\">damage modifier</a> the damage they take from all sources by 10% for 4 seconds, after which all infected enemies take <span class=\"magic-damage\">magic damage</span>.The detonation brings the blood from enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> hit to <b>Vladimir</b> after 0.4 seconds, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> him for the <span class=\"title-tooltip\" title=\"Damage calculated before modifiers\">pre-mitigation damage</span> dealt against them once the blood reaches him, reduced to 50% after the first.",
       "leveling": [
         "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}",
         "{{st|Maximum Heal|{{ap|150*(1+0.5*4) to 350*(1+0.5*4)}} {{as|(+ {{ap|70*(1+0.5*4)}}% AP)}}}}"

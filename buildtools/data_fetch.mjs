@@ -170,6 +170,14 @@ function autoCast(s) {
         return false;
     return s;
 }
+function makeDescriptionHtml(skillout) {
+    let html = "";
+    for (const line of skillout.description) {
+        let x = matchReplaceSpellEffects(line, false, skillout);
+        html = html.concat(x.str);
+    }
+    return html;
+}
 
 function buildSkill(skilldata, riotSpell, is_passive, model) {
     stackData(skilldata, ["description", "leveling"]);
@@ -184,6 +192,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
         target_range: skilldata.target_range,
         image: riotSpell.image,
         description: skilldata.description || [],
+        descriptionHtml: null,
         leveling: skilldata.leveling || [],
         // riotDescription: riotSpell.description,
         notes: skilldata.notes || "",
@@ -192,6 +201,9 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
         skillid: skilldata.skillid,
 
     };
+
+    skillout.descriptionHtml = makeDescriptionHtml(skillout);
+
     if (skilldata.name !== riotSpell.name)
         console.log("Name mismatch wikia: [" + skilldata.name + "] and riot: [" + riotSpell.name + "]");
 
@@ -228,6 +240,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
             skillout.cooldown_warn = `Wiki's and Riot's cooldowns do not match: Wiki's value '${old_val}' as '${value}' and riot's value '${riotSpell['cooldown']}' as '${riotSpell['cooldownBurn']}'`;
 
     }
+
 
     skillout.effects = [];
     for (let leveling_index in skillout.leveling) {

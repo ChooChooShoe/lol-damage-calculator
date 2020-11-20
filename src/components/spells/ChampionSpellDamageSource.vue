@@ -1,5 +1,5 @@
 <template>
-  <div class="data_holder c50">
+  <div class="data_holder c50 ChampionSpellDamageSource">
     <img
       class="spell-image"
       :style="imageStyle"
@@ -10,9 +10,7 @@
       {{ spell.name }} ({{ spell.skillkey }}) -
       <a target="_blank" :href="wikiHref">View on Wiki</a>
     </h3>
-    <!-- <match-replace
-      :text="'<p>' + spell.description.join('</p><p>') + '</p>'"
-    ></match-replace> -->
+    <div v-html="spell.descriptionHtml" ></div>
     <hr />
     <div style="float: right" v-if="spell.maxrank > 0">
       <span>
@@ -34,10 +32,10 @@
     </div>
 
     <div>
-      <div v-if="spell.customlabel">
+      <!-- <div v-if="spell.customlabel">
         <span v-html="matchReplace(spell.customlabel)"></span>:
         <span class="blue" v-html="matchReplace(spell.custominfo)"></span>
-      </div>
+      </div> -->
       <div v-if="spell.cooldown">
         Cooldown:
         <SpellSpan :list="spell.cooldown"></SpellSpan>
@@ -48,15 +46,15 @@
         <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
         <span v-html="costtype"></span>
       </div>
-      <div v-if="spell.target_range">
+      <!-- <div v-if="spell.target_range">
         Target Range:
         <span class="blue" v-html="targetRange"></span>
-      </div>
+      </div> -->
       <!-- <div v-if="spell.effect_range">Effect Range: <span class="blue" v-html="matchReplace(spell.effect_range)"></span></div> -->
-      <div v-if="spell.targeting">
+      <!-- <div v-if="spell.targeting">
         Targeting:
         <span class="blue" v-html="targeting"></span>
-      </div>
+      </div> -->
     </div>
 
     <hr />
