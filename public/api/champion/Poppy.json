@@ -83,7 +83,7 @@
         "{{sbc|Active:}} '''Poppy''' smashes the ground in front of her in the target direction, dealing {{as|physical damage}} to all enemies struck. Against {{tip|monsters}}, the damage based on their {{as|'''maximum''' health}} is capped.",
         "The impacted ground becomes unstable, {{tip|slow|slowing}} enemies within before erupting after 1 second, dealing the same {{as|physical damage}} to all enemies in the area."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> smashes the ground in front of her in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies struck. Against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>, the damage based on their <span class=\"health\"><b>maximum</b> health</span> is capped.The impacted ground becomes unstable, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies within before erupting after 1 second, dealing the same <span class=\"physical-damage\">physical damage</span> to all enemies in the area.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> smashes the ground in front of her in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies struck. Against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>, the damage based on their <span class=\"health\"><b>maximum</b> health</span> is capped.<br />The impacted ground becomes unstable, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies within before erupting after 1 second, dealing the same <span class=\"physical-damage\">physical damage</span> to all enemies in the area.",
       "leveling": [
         "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Maximum Initial Monster Damage|{{ap|40+50 to 120+170}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|(40+50)*2 to (120+170)*2}} {{as|(+ 180% '''bonus''' AD)}}}}",
         "{{st|Slow|{{ap|20 to 40}}%}}"
@@ -93,7 +93,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Initial Physical Damage|{{ap|40 to 120}} {{as|(+ 90% '''bonus''' AD)}} {{as|(+ 8% of target's '''maximum''' health)}}|Total Physical Damage|{{ap|40*2 to 120*2}} {{as|(+ 180% '''bonus''' AD)}} {{as|(+ 16% of target's '''maximum''' health)}}}}\n{{st|Maximum Initial Monster Damage|{{ap|40+50 to 120+170}} {{as|(+ 90% '''bonus''' AD)}}|Maximum Monster Damage|{{ap|(40+50)*2 to (120+170)*2}} {{as|(+ 180% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Initial Physical Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span> <span class=\"health\">(+ 8% of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span> <span class=\"health\">(+ 16% of target's <b>maximum</b> health)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Initial Monster Damage</span>: <span><SpellSpan :list=\"[90,140,190,240,290]\"></SpellSpan> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Monster Damage</span>: <span><SpellSpan :list=\"[180,280,380,480,580]\"></SpellSpan> <span class=\"ad\">(+ 180% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -163,7 +162,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Initial Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   40,
@@ -174,13 +175,12 @@
                 ],
                 "player_bonus_ad": 1.8,
                 "target_total_hp": 0.08
-              },
-              "title": "Initial Physical Damage",
-              "str": "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ad\">(+ 90% '''bonus''' AD)</span> <span class=\"health\">(+ 8% of target's '''maximum''' health)</span>",
-              "damage_type": "physical"
+              }
             },
             {
-              "index": "1",
+              "index": 1,
+              "title": "Maximum Initial Monster Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   80,
@@ -191,15 +191,11 @@
                 ],
                 "player_bonus_ad": 1.8,
                 "target_total_hp": 0.08
-              },
-              "title": "Maximum Initial Monster Damage",
-              "str": "<SpellSpan :list=\"[90,140,190,240,290]\"></SpellSpan> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Slow|{{ap|20 to 40}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -221,11 +217,18 @@
           },
           "subeffects": [
             {
-              "index": "0",
-              "ratios": {},
+              "index": 0,
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%",
-              "damage_type": "none"
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ]
+              }
             }
           ]
         }
@@ -259,7 +262,7 @@
         "{{sbc|Active:}} '''Poppy''' {{tip|dashes}} to the target enemy's location and, if they are in range upon arrival, she deals them {{as|physical damage}} and {{tip|airborne|carries}} them along with her for up to 300 units.",
         "If the target collides with terrain, she deals them the same {{as|physical damage}} again and {{tip|stun|stuns}} them."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy's location and, if they are in range upon arrival, she deals them <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">carries<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them along with her for up to 300 units.If the target collides with terrain, she deals them the same <span class=\"physical-damage\">physical damage</span> again and <HtmlTooltip class=\"blue link\">stuns<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy's location and, if they are in range upon arrival, she deals them <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">carries<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them along with her for up to 300 units.<br />If the target collides with terrain, she deals them the same <span class=\"physical-damage\">physical damage</span> again and <HtmlTooltip class=\"blue link\">stuns<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them.",
       "leveling": [
         "{{st|Initial Physical Damage|{{ap|60 to 140}} {{as|(+ 50% '''bonus''' AD)}}|Total Physical Damage|{{ap|60*2 to 140*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
         "{{st|Stun Duration|{{ap|1.6 to 2}}}}"
@@ -269,7 +272,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Initial Physical Damage|{{ap|60 to 140}} {{as|(+ 50% '''bonus''' AD)}}|Total Physical Damage|{{ap|60*2 to 140*2}} {{as|(+ 100% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Initial Physical Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Physical Damage</span>: <span><SpellSpan :list=\"[120,160,200,240,280]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -307,7 +309,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Initial Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   60,
@@ -317,15 +321,11 @@
                   140
                 ],
                 "player_bonus_ad": 1
-              },
-              "title": "Initial Physical Damage",
-              "str": "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Stun Duration|{{ap|1.6 to 2}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -347,7 +347,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Stun Duration",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   1.6,
@@ -356,10 +358,7 @@
                   1.9,
                   2
                 ]
-              },
-              "title": "Stun Duration",
-              "str": "<SpellSpan :list=\"[1.6,1.7,1.8,1.9,2]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -394,7 +393,7 @@
         "If '''Poppy''' is {{tip|interrupt|interrupted}} during the charge, or the charge completes without reactivation, ''Keeper's Verdict'' is canceled and the ability is put on a 30-second {{sti|cooldown}}.",
         "Enemies knocked {{tip|airborne}} are {{tip|sight|revealed}} and are rendered {{tip|untargetable}} while being displaced if '''Poppy''' charged ''Keeper's Verdict'' for more than {{fd|0.5}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channels<hr></h4><p>Description for keyword channels</p></div></template></HtmlTooltip> for up to 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> herself by 15% and increasing <i>Keeper's Verdict's</i> range and <HtmlTooltip class=\"blue link\">knock back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> distance over the duration. <i>Keeper's Verdict</i> can be recast at any time within its duration.<span class=\"sbc\">Recast:</span> <b>Poppy</b> smashes the ground, sending out a shockwave that travels in the target direction until it collides with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, causing a hammer to erupt in the process. Enemies within the shockwave's path or struck by the hammer's eruption are dealt <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">knocked back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> a massive distance towards the enemy team's <a class=\"effect link\" title=\"fountain\">Spawn</a>.Releasing the ability within <span class=\"title-tooltip\" title=\"undefined\"><span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds</span> of the activation ends the charge to instead launch the hammer upwards, dealing 50% damage and <HtmlTooltip class=\"blue link\">knocking up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all enemies around <b>Poppy</b> for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.If <b>Poppy</b> is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> during the charge, or the charge completes without reactivation, <i>Keeper's Verdict</i> is canceled and the ability is put on a 30-second <span>cooldown</span>.Enemies knocked <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and are rendered <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> while being displaced if <b>Poppy</b> charged <i>Keeper's Verdict</i> for more than <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Poppy</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channels<hr></h4><p>Description for keyword channels</p></div></template></HtmlTooltip> for up to 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> herself by 15% and increasing <i>Keeper's Verdict's</i> range and <HtmlTooltip class=\"blue link\">knock back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> distance over the duration. <i>Keeper's Verdict</i> can be recast at any time within its duration.<br /><span class=\"sbc\">Recast:</span> <b>Poppy</b> smashes the ground, sending out a shockwave that travels in the target direction until it collides with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, causing a hammer to erupt in the process. Enemies within the shockwave's path or struck by the hammer's eruption are dealt <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">knocked back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> a massive distance towards the enemy team's <a class=\"effect link\" title=\"fountain\">Spawn</a>.<br />Releasing the ability within <span class=\"title-tooltip\" title=\"undefined\"><span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds</span> of the activation ends the charge to instead launch the hammer upwards, dealing 50% damage and <HtmlTooltip class=\"blue link\">knocking up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all enemies around <b>Poppy</b> for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.<br />If <b>Poppy</b> is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> during the charge, or the charge completes without reactivation, <i>Keeper's Verdict</i> is canceled and the ability is put on a 30-second <span>cooldown</span>.<br />Enemies knocked <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and are rendered <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> while being displaced if <b>Poppy</b> charged <i>Keeper's Verdict</i> for more than <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.",
       "leveling": [
         "{{st|Physical Damage|{{ap|200|300|400}} {{as|(+ 90% '''bonus''' AD)}}}}",
         "{{st|Reduced Physical Damage|{{ap|100|150|200}} {{as|(+ 45% '''bonus''' AD)}}}}"
@@ -404,7 +403,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|200|300|400}} {{as|(+ 90% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -428,7 +426,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   200,
@@ -436,15 +436,11 @@
                   400
                 ],
                 "player_bonus_ad": 0.9
-              },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Reduced Physical Damage|{{ap|100|150|200}} {{as|(+ 45% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Physical Damage</span>: <span><SpellSpan :list=\"[100,150,200]\"></SpellSpan> <span class=\"ad\">(+ 45% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -468,7 +464,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Reduced Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   100,
@@ -476,10 +474,7 @@
                   200
                 ],
                 "player_bonus_ad": 0.45
-              },
-              "title": "Reduced Physical Damage",
-              "str": "<SpellSpan :list=\"[100,150,200]\"></SpellSpan> <span class=\"ad\">(+ 45% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              }
             }
           ]
         }

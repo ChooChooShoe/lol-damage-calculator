@@ -8,7 +8,7 @@
     "full": "Syndra.png",
     "sprite": "champion3.png",
     "group": "champion",
-    "x": 288,
+    "x": 336,
     "y": 96,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "SyndraPassive.png",
         "sprite": "passive3.png",
         "group": "passive",
-        "x": 288,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
@@ -90,10 +90,10 @@
       "target_range": 800,
       "image": {
         "full": "SyndraQ.png",
-        "sprite": "spell11.png",
+        "sprite": "spell12.png",
         "group": "spell",
-        "x": 384,
-        "y": 144,
+        "x": 96,
+        "y": 0,
         "w": 48,
         "h": 48
       },
@@ -101,17 +101,16 @@
         "{{sbc|Active:}} After {{fd|0.6}} seconds, '''Syndra''' conjures a ''Dark Sphere'' at the target location, dealing {{as|magic damage}} to all enemies hit, which then remains for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Dark Sphere'' deals 25% '''bonus''' damage against [[champion]]s."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> After <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, <b>Syndra</b> conjures a <i>Dark Sphere</i> at the target location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit, which then remains for 6 seconds.<span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Dark Sphere</i> deals 25% <b>bonus</b> damage against <a class=\"effect link\" title=\"champion\">champion</a>s.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> After <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, <b>Syndra</b> conjures a <i>Dark Sphere</i> at the target location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit, which then remains for 6 seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Dark Sphere</i> deals 25% <b>bonus</b> damage against <a class=\"effect link\" title=\"champion\">champion</a>s.",
       "leveling": [
         "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}",
         "{{st|Bonus Damage|{{ap|210*0.25}} {{as|(+ {{ap|65*0.25}}% AP)}}|Total Damage|{{ap|210*1.25}} {{as|(+ {{ap|65*1.25}}% AP)}}}}"
       ],
-      "notes": "* ''Dark Sphere'' can be conjured inside terrain, but cannot be thrown there with {{ai|Force of Will|Syndra}}.",
+      "notes": "* ''Dark Sphere'' can be conjured inside terrain, but cannot be thrown there with {{ai|Force of Will|Syndra}}.\n* There is no limit as to how many ''Dark Spheres'' can be active at a time.",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 65% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -137,7 +136,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   70,
@@ -147,15 +148,11 @@
                   210
                 ],
                 "player_total_ap": 0.65
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Damage|{{ap|210*0.25}} {{as|(+ {{ap|65*0.25}}% AP)}}|Total Damage|{{ap|210*1.25}} {{as|(+ {{ap|65*1.25}}% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[52.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[262.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[81.25]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -191,16 +188,15 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Bonus Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   52.5
                 ],
                 "player_total_ap": []
-              },
-              "title": "Bonus Damage",
-              "str": "<SpellSpan :list=\"[52.5]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[16.25]\"></SpellSpan>% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -225,7 +221,7 @@
         "full": "SyndraE.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 0,
         "w": 48,
         "h": 48
@@ -235,7 +231,7 @@
         "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''' based on proximity, knocking back all enemies they collide with for 100 units and {{tip|stun|stunning}} and {{tip|sight|revealing}} them for {{fd|1.5}} seconds, and dealing ''Scatter the Weak's'' damage if they were not affected by the initial cast.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> <HtmlTooltip class=\"blue link\">knocks back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all enemies in a cone in the target direction for 400 units and up to 800 units away from her based on proximity, dealing <span class=\"magic-damage\">magic damage</span>.<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> can also be knocked back for 1000 units and up to 1300 units away from <b>Syndra</b> based on proximity, knocking back all enemies they collide with for 100 units and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and dealing <i>Scatter the Weak's</i> damage if they were not affected by the initial cast.<span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Scatter the Weak's</i> area of effect is 50% wider.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> <HtmlTooltip class=\"blue link\">knocks back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all enemies in a cone in the target direction for 400 units and up to 800 units away from her based on proximity, dealing <span class=\"magic-damage\">magic damage</span>.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> can also be knocked back for 1000 units and up to 1300 units away from <b>Syndra</b> based on proximity, knocking back all enemies they collide with for 100 units and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and dealing <i>Scatter the Weak's</i> damage if they were not affected by the initial cast.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Scatter the Weak's</i> area of effect is 50% wider.",
       "leveling": [
         "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}"
       ],
@@ -244,7 +240,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -270,7 +265,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   85,
@@ -280,10 +277,7 @@
                   265
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -306,26 +300,25 @@
         "full": "SyndraR.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Syndra''' grabs up to 4 {{tt|nearby|3000 range, approximated}} {{ai|Dark Sphere|Syndra|Dark Spheres}} and the three orbiting around her and hurls them at the target enemy {{tip|champion}}, dealing {{as|magic damage}} per sphere.",
+        "{{sbc|Active:}} '''Syndra''' grabs up to 4 {{tt|nearby|3000 range, approximated}} {{ai|Dark Sphere|Syndra|Dark Spheres}} that were last spawned and the three orbiting around her and hurls them at the target enemy {{tip|champion}}, dealing {{as|magic damage}} per sphere.",
         "The {{ai|Dark Sphere|Syndra|Dark Spheres}} will then remain on the ground for 6 seconds.",
         "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Unleashed Power's'' cast range is increased."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> grabs up to 4 <span class=\"title-tooltip\" title=\"3000 range, approximated\">nearby</span> <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> and the three orbiting around her and hurls them at the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, dealing <span class=\"magic-damage\">magic damage</span> per sphere.The <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> will then remain on the ground for 6 seconds.<span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Unleashed Power's</i> cast range is increased.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> grabs up to 4 <span class=\"title-tooltip\" title=\"3000 range, approximated\">nearby</span> <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> that were last spawned and the three orbiting around her and hurls them at the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, dealing <span class=\"magic-damage\">magic damage</span> per sphere.<br />The <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> will then remain on the ground for 6 seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Unleashed Power's</i> cast range is increased.",
       "leveling": [
         "{{st|Magic Damage per Sphere|{{ap|90 to 190}} {{as|(+ 20% AP)}}}}<!--\n-->{{st|Minimum Damage|{{ap|90*3 to 190*3}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|90*7 to 190*7}} {{as|(+ 140% AP)}}}}"
       ],
-      "notes": "* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the ''spheres'' apply their damage. She can walk away as soon as the casting has completed, as the ''spheres'' only begin dealing their damage after the casting time. \n* Each one of the ''sphere'' hits is considered a {{tip|single target}} spell, triggering {{iis|Muramana}} {{sbc|shock}} each time.\n* Casting ''Unleashed Power'' on a target that becomes {{tip|untargetable}} while the ''spheres'' are in flight will cause them to deal no damage.\n* ''Spheres'' already in flight will still travel if '''Syndra's''' target dies, but any remaining ''sphere'' will not. However, their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown. \n** Depending on how many ''spheres'' are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the ''sphere'' behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single ''sphere''.",
+      "notes": "* ''Unleashed Power'' has a brief cast time before it activates, but '''Syndra''' does not have to remain in place while the ''spheres'' apply their damage. She can walk away as soon as the casting has completed, as the ''spheres'' only begin dealing their damage after the casting time.\n* Casting ''Unleashed Power'' on a target that becomes {{tip|untargetable}} while the ''spheres'' are in flight will cause them to deal no damage.\n* ''Spheres'' already in flight will still travel if '''Syndra's''' target dies, but any remaining ''sphere'' will not. However, their duration will still get reset.\n* A ''Dark Sphere'' summoned very shortly before ''Unleashed Power'' '''will''' be used as one of the spheres that get thrown. \n** Depending on how many ''spheres'' are on the map and how far away the enemy is upon casting ''Unleashed Power'' it is possible that '''Syndra''' would conjure the ''sphere'' behind her as if she was going to throw it, but she won't.\n* {{tip|Spell shield}} will only block the damage of a single ''sphere''.",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage per Sphere|{{ap|90 to 190}} {{as|(+ 20% AP)}}}}<!--\n-->{{st|Minimum Damage|{{ap|90*3 to 190*3}} {{as|(+ 60% AP)}}|Maximum Damage|{{ap|90*7 to 190*7}} {{as|(+ 140% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage per Sphere</span>: <span><SpellSpan :list=\"[90,140,190]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[270,420,570]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[630,980,1330]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -371,7 +364,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage per Sphere",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   90,
@@ -379,13 +374,12 @@
                   190
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Magic Damage per Sphere",
-              "str": "<SpellSpan :list=\"[90,140,190]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-              "damage_type": "magic"
+              }
             },
             {
-              "index": "1",
+              "index": 1,
+              "title": "Minimum Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   270,
@@ -393,10 +387,7 @@
                   570
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Minimum Damage",
-              "str": "<SpellSpan :list=\"[270,420,570]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }

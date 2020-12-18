@@ -8,7 +8,7 @@
     "full": "Veigar.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 96,
+    "x": 144,
     "y": 48,
     "w": 48,
     "h": 48
@@ -58,7 +58,7 @@
         "full": "VeigarEntropy.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 96,
+        "x": 144,
         "y": 48,
         "w": 48,
         "h": 48
@@ -67,9 +67,9 @@
         "{{sbc|Innate:}} '''Veigar''' gains a [[stack]] of ''Phenomenal Evil'' whenever he hits an enemy {{tip|champion}} with an ability, and 5 stacks whenever he scores a champion {{tip|takedown}}.",
         "'''Veigar''' gains {{sti|AP|{{as|1 ability power}}}} for every stack of ''Phenomenal Evil''."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Veigar</b> gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Phenomenal Evil</i> whenever he hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> with an ability, and 5 stacks whenever he scores a champion <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>.<b>Veigar</b> gains <span><span class=\"ability-power\">1 ability power</span></span> for every stack of <i>Phenomenal Evil</i>.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Veigar</b> gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Phenomenal Evil</i> whenever he hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> with an ability, and 5 stacks whenever he scores a champion <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>.<br /><b>Veigar</b> gains <span><span class=\"ability-power\">1 ability power</span></span> for every stack of <i>Phenomenal Evil</i>.",
       "leveling": [],
-      "notes": "* The two effects stack, granting 6 stacks for each enemy champion taken down by an ability, 7 with {{ai|Baleful Strike|Veigar}}.\n* The abilities do not have to deal damage nor affect the target to gain a stack.",
+      "notes": "* The two effects stack, granting 6 stacks for each enemy champion taken down by an ability, 7 with {{ai|Baleful Strike|Veigar}}.\n* '''Veigar's''' abilities do not have to deal damage nor affect their targets to grant a stack.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -99,7 +99,7 @@
         "full": "VeigarBalefulStrike.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
@@ -108,7 +108,7 @@
         "{{sbc|Passive:}} Killing an enemy unit with ''Baleful Strike'' grants 1 stack of {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}, doubled against large {{tip|minion|minions}} and {{tip|monster|monsters}}.",
         "{{sbc|Active:}} '''Veigar''' unleashes a bolt of dark energy in the target direction, dealing {{as|magic damage}} to the first two enemies hit."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Killing an enemy unit with <i>Baleful Strike</i> grants 1 stack of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Veigar\">Phenomenal Evil<template #content>Phenomenal Evil Power</template></HtmlTooltip>, doubled against large <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.<span class=\"sbc\">Active:</span> <b>Veigar</b> unleashes a bolt of dark energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first two enemies hit.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Killing an enemy unit with <i>Baleful Strike</i> grants 1 stack of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Veigar\">Phenomenal Evil<template #content>Phenomenal Evil Power</template></HtmlTooltip>, doubled against large <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Veigar</b> unleashes a bolt of dark energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first two enemies hit.",
       "leveling": [
         "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 60% AP)}}}}"
       ],
@@ -117,7 +117,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -143,7 +142,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   80,
@@ -153,10 +154,7 @@
                   240
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -168,7 +166,10 @@
       "maxrank": 5,
       "cooldown": [
         20,
-        21
+        300,
+        600,
+        900,
+        1200
       ],
       "cost": [
         60,
@@ -184,7 +185,7 @@
         "full": "VeigarDarkMatter.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 96,
         "w": 48,
         "h": 48
@@ -193,17 +194,16 @@
         "{{sbc|Active:}} '''Veigar''' calls a mass of dark matter to fall from the sky which lands after a 1 second delay to the target location, dealing {{as|magic damage}} to all enemies hit.",
         "''Dark Matter's'' {{sti|cooldown}} is reduced by a percentage, scaling with {{ai|Phenomenal Evil Power|Veigar|Phenomenal Evil}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Veigar</b> calls a mass of dark matter to fall from the sky which lands after a 1 second delay to the target location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit.<i>Dark Matter's</i> <span>cooldown</span> is reduced by a percentage, scaling with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Veigar\">Phenomenal Evil<template #content>Phenomenal Evil Power</template></HtmlTooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Veigar</b> calls a mass of dark matter to fall from the sky which lands after a 1 second delay to the target location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit.<br /><i>Dark Matter's</i> <span>cooldown</span> is reduced by a percentage, scaling with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Veigar\">Phenomenal Evil<template #content>Phenomenal Evil Power</template></HtmlTooltip>.",
       "leveling": [
         "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 100% AP)}}}}"
       ],
       "notes": "* ''Dark Matter'' grants {{tip|sight}} of the area during the delay.",
       "skillkey": "W",
       "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{passive progression/deprecated version|type=[[File:Phenomenal_Evil_Power.png|20px|link=Veigar#Phenomenal_Evil_Power]] [[Veigar#Phenomenal_Evil_Power|Phenomenal Evil]] stacks|21|8*0.9^(x-1);...;0|50*(x-1);...;∞|formula=8*0.9^N. ''N{{equals}}Number of times that 50 Phenomenal Evil stacks are earned.''}}' as '20/21' and riot's value '0,0,0,0,0' as '0'",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{pp|type=[[File:Phenomenal_Evil_Power.png|20px|link=Veigar#Phenomenal_Evil_Power]] [[Veigar#Phenomenal_Evil_Power|Phenomenal Evil]] stacks|8*0.9^(x-1);...;0|0 to 900 for 19;...;∞|formula=8 * 0.9^N. ''N{{equals}}Number of times that 50 Phenomenal Evil stacks are earned.''}}' as '20/300/600/900/1200' and riot's value '0,0,0,0,0' as '0'",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 100% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -229,7 +229,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   100,
@@ -239,10 +241,7 @@
                   300
                 ],
                 "player_total_ap": 1
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[100,150,200,250,300]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -273,7 +272,7 @@
         "full": "VeigarEventHorizon.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
@@ -290,7 +289,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Stun Duration|{{ap|1.5 to 2.5}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.5,1.75,2,2.25,2.5]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -312,7 +310,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Stun Duration",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   1.5,
@@ -321,10 +321,7 @@
                   2.25,
                   2.5
                 ]
-              },
-              "title": "Stun Duration",
-              "str": "<SpellSpan :list=\"[1.5,1.75,2,2.25,2.5]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -347,15 +344,15 @@
         "full": "VeigarR.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Veigar''' blasts the target enemy champion with primordial energy, dealing {{as|magic damage}} to them, increased by {{as|{{passive progression/deprecated version|type=target's '''missing''' health|11|key=%|0 to 100|key1=%|0 to 100*2/3|displayformula=1.5% per 1% of target's '''missing''' health. ''This is capped at 66.66% '''missing''' health.''}}|health}}."
+        "{{sbc|Active:}} '''Veigar''' blasts the target enemy champion with primordial energy, dealing {{as|magic damage}} to them, increased by {{as|{{pp|type=target's '''missing''' health|key=%|0 to 100 for 11|key1=%|0 to 100*2/3|formula=1.5% per 1% of target's '''missing''' health. ''This is capped at 66.66% '''missing''' health.''}}|health}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Veigar</b> blasts the target enemy champion with primordial energy, dealing <span class=\"magic-damage\">magic damage</span> to them, increased by <span class=\"health\"><simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version type=target's <b>missing</b> health 11 key=% 0 to 100 key1=% 0 to 100*2/3 displayformula=1.5% per 1% of target's <b>missing</b> health. <i>This is capped at 66.66% <b>missing</b> health.</i>\">Unknown value: passive progression/deprecated version type=target's <b>missing</b> health 11 key=% 0 to 100 key1=% 0 to 100*2/3 displayformula=1.5% per 1% of target's <b>missing</b> health. <i>This is capped at 66.66% <b>missing</b> health.</i></simple-tooltip></span>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Veigar</b> blasts the target enemy champion with primordial energy, dealing <span class=\"magic-damage\">magic damage</span> to them, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100*2/3 ‒ undefined</span></span>.",
       "leveling": [
         "{{st|Minimum Damage|{{ap|175 to 325}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|175*2 to 325*2}} {{as|(+ 150% AP)}}}}"
       ],
@@ -364,7 +361,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Minimum Damage|{{ap|175 to 325}} {{as|(+ 75% AP)}}|Maximum Damage|{{ap|175*2 to 325*2}} {{as|(+ 150% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[175,250,325]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[350,500,650]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -398,7 +394,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Minimum Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   175,
@@ -406,10 +404,7 @@
                   325
                 ],
                 "player_total_ap": 1.5
-              },
-              "title": "Minimum Damage",
-              "str": "<SpellSpan :list=\"[175,250,325]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }

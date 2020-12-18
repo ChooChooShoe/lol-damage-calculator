@@ -77,7 +77,7 @@
         "{{sbc|Active:}} '''Corki''' launches a bomb at the target area that explodes upon impact, dealing {{as|magic damage}} to enemies hit.",
         "The bomb also {{tip|sight|reveals}} the area and enemy {{tip|champions}} hit for 6 seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Corki</b> launches a bomb at the target area that explodes upon impact, dealing <span class=\"magic-damage\">magic damage</span> to enemies hit.The bomb also <HtmlTooltip class=\"blue link\">reveals<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the area and enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> hit for 6 seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Corki</b> launches a bomb at the target area that explodes upon impact, dealing <span class=\"magic-damage\">magic damage</span> to enemies hit.<br />The bomb also <HtmlTooltip class=\"blue link\">reveals<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the area and enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> hit for 6 seconds.",
       "leveling": [
         "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 70% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}"
       ],
@@ -86,7 +86,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 70% '''bonus''' AD)}} {{as|(+ 50% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -115,7 +114,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   75,
@@ -126,10 +127,7 @@
                 ],
                 "player_bonus_ad": 0.7000000000000001,
                 "player_total_ap": 0.5
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -166,7 +164,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Mixed Damage Per Tick|{{ap|120/16 to 320/16}} {{as|(+ 10% '''bonus''' AD)}}|Total Mixed Damage|{{ap|120 to 320}} {{as|(+ 160% '''bonus''' AD)}}}}{{st|Resistance Reduction Per Tick|{{ap|1 to 2.5}}|Total Resistance Reduction|{{ap|1*8 to 2.5*8}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Mixed Damage Per Tick</span>: <span><SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[120,170,220,270,320]\"></SpellSpan> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Resistance Reduction Per Tick</span>: <span><SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan></span></li><li><span class=\"blue\">Total Resistance Reduction</span>: <span><SpellSpan :list=\"[8,11,14,17,20]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -224,7 +221,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Mixed Damage Per Tick",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   7.5,
@@ -234,13 +233,12 @@
                   20
                 ],
                 "player_bonus_ad": 0.1
-              },
-              "title": "Mixed Damage Per Tick",
-              "str": "<SpellSpan :list=\"[7.5,10.625,13.75,16.875,20]\"></SpellSpan> <span class=\"ad\">(+ 10% '''bonus''' AD)</span>",
-              "damage_type": "unknown"
+              }
             },
             {
-              "index": "1",
+              "index": 1,
+              "title": "Resistance Reduction Per Tick",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   120,
@@ -250,10 +248,7 @@
                   320
                 ],
                 "player_bonus_ad": 0.1
-              },
-              "title": "Resistance Reduction Per Tick",
-              "str": "<SpellSpan :list=\"[1,1.375,1.75,2.125,2.5]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }

@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} Whenever an enemy {{tip|champion}}, {{tip|monster|epic monster}}, {{tip|turret}} or [[inhibitor]] dies within 3 seconds of being damaged by '''Jinx''', she gains {{sti|ms|{{as|175% '''bonus''' movement speed}}}} which decays over 6 seconds.",
         "Additionally, she gains {{sti|{{as|15% '''total''' attack speed}}}} and is allowed to exceed the {{tt|attack speed cap|normally 2.5 attacks per second}} for the same duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Whenever an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">epic monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> or <a class=\"effect link\" title=\"inhibitor\">inhibitor</a> dies within 3 seconds of being damaged by <b>Jinx</b>, she gains <span><span class=\"movement-speed\">175% <b>bonus</b> movement speed</span></span> which decays over 6 seconds.Additionally, she gains <span><span class=\"attack-speed\">15% <b>total</b> attack speed</span></span> and is allowed to exceed the <span class=\"title-tooltip\" title=\"normally 2.5 attacks per second\">attack speed cap</span> for the same duration.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Whenever an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">epic monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> or <a class=\"effect link\" title=\"inhibitor\">inhibitor</a> dies within 3 seconds of being damaged by <b>Jinx</b>, she gains <span><span class=\"movement-speed\">175% <b>bonus</b> movement speed</span></span> which decays over 6 seconds.<br />Additionally, she gains <span><span class=\"attack-speed\">15% <b>total</b> attack speed</span></span> and is allowed to exceed the <span class=\"title-tooltip\" title=\"normally 2.5 attacks per second\">attack speed cap</span> for the same duration.",
       "leveling": [],
       "notes": "* '''Jinx's''' ''attack speed cap'' is increased to {{fd|90.0}} for the duration, however this value is already beyond the technical limit for attack speed.\n* '''Jinx''' will ''get excited'' from killing a {{ui|Rift Herald}} summoned by the enemy team with the {{ii|Eye of the Herald}} as well.",
       "skillkey": "I",
@@ -116,7 +116,6 @@
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|10|60|110|160|210}} {{as|(+ 160% AD)}}}}<!--\n-->{{st|Slow|{{ap|30|40|50|60|70}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -153,7 +152,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   10,
@@ -163,19 +164,22 @@
                   210
                 ],
                 "player_total_ad": 1.6
-              },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[10,60,110,160,210]\"></SpellSpan> <span class=\"ad\">(+ 160% AD)</span>",
-              "damage_type": "physical"
+              }
             },
             {
-              "index": "1",
-              "ratios": {
-                "player_total_ad": 1.6
-              },
+              "index": 1,
               "title": "Slow",
-              "str": "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan>%",
-              "damage_type": "none"
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  40,
+                  50,
+                  60,
+                  70
+                ],
+                "player_total_ad": 1.6
+              }
             }
           ]
         }
@@ -205,10 +209,10 @@
       },
       "description": [
         "{{sbc|Active:}} '''Jinx''' fires a rocket in the target direction, granting {{tt|brief {{tip|sight}} of the area it flies through|cannot see into brush or through terrain}}. The rocket explodes upon colliding with an enemy champion, dealing {{as|physical damage}} to the champion and all enemies {{tt|in an area around them|centered on the initial target}} and {{tt|{{tip|sight|revealing}} the area around them|can see into brush and through terrain}} for 2 seconds.",
-        "The rocket deals {{passive progression/deprecated version|16|type=distance traveled|key=%|10 to 100|0 to 1500|formula=10% (+6% per 100 units travelled, up to +90%).}} damage based on travel distance, the {{as|'''bonus''' damage based on '''missing''' health}} is retained.",
+        "The rocket deals {{pp|type=distance traveled|key=%|10 to 100 for 16|0 to 1500|formula=10% (+6% per 100 units travelled, up to +90%).}} damage based on travel distance, the {{as|'''bonus''' damage based on '''missing''' health}} is retained.",
         "Enemies surrounding the main target take 80% damage. {{as|'''Bonus''' damage from '''missing''' health}} is based on each unit's own {{as|'''missing''' health}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jinx</b> fires a rocket in the target direction, granting <span class=\"title-tooltip\" title=\"cannot see into brush or through terrain\">brief <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area it flies through</span>. The rocket explodes upon colliding with an enemy champion, dealing <span class=\"physical-damage\">physical damage</span> to the champion and all enemies <span class=\"title-tooltip\" title=\"centered on the initial target\">in an area around them</span> and <span class=\"title-tooltip\" title=\"can see into brush and through terrain\"><HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the area around them</span> for 2 seconds.The rocket deals <simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 16 type=distance traveled key=% 10 to 100 0 to 1500 formula=10% (+6% per 100 units travelled, up to +90%).\">Unknown value: passive progression/deprecated version 16 type=distance traveled key=% 10 to 100 0 to 1500 formula=10% (+6% per 100 units travelled, up to +90%).</simple-tooltip> damage based on travel distance, the <span class=\"health\"><b>bonus</b> damage based on <b>missing</b> health</span> is retained.Enemies surrounding the main target take 80% damage. <span class=\"health\"><b>Bonus</b> damage from <b>missing</b> health</span> is based on each unit's own <span class=\"health\"><b>missing</b> health</span>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jinx</b> fires a rocket in the target direction, granting <span class=\"title-tooltip\" title=\"cannot see into brush or through terrain\">brief <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area it flies through</span>. The rocket explodes upon colliding with an enemy champion, dealing <span class=\"physical-damage\">physical damage</span> to the champion and all enemies <span class=\"title-tooltip\" title=\"centered on the initial target\">in an area around them</span> and <span class=\"title-tooltip\" title=\"can see into brush and through terrain\"><HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the area around them</span> for 2 seconds.<br />The rocket deals <span class=\"title-tooltip\" title=\"\">0 to 1500 ‒ undefined</span> damage based on travel distance, the <span class=\"health\"><b>bonus</b> damage based on <b>missing</b> health</span> is retained.<br />Enemies surrounding the main target take 80% damage. <span class=\"health\"><b>Bonus</b> damage from <b>missing</b> health</span> is based on each unit's own <span class=\"health\"><b>missing</b> health</span>.",
       "leveling": [
         "{{st|Max. Physical Damage|{{ap|250 to 450}} {{as|(+ 150% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}|Min. Physical Damage|{{ap|(250 to 450)*0.1}} {{as|(+ {{ap|150*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}}}",
         "{{st|Max. Secondary Damage|{{ap|(250 to 450)*0.8}} {{as|(+ {{ap|150*0.8}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}|Min. Secondary Damage|{{ap|(250 to 450)*0.8*0.1}} {{as|(+ {{ap|150*0.8*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}}}"
@@ -218,7 +222,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Max. Physical Damage|{{ap|250 to 450}} {{as|(+ 150% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}|Min. Physical Damage|{{ap|(250 to 450)*0.1}} {{as|(+ {{ap|150*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|25 to 35}}% of target's '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Max. Physical Damage</span>: <span><SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Min. Physical Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[15]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -266,7 +269,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Max. Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   250,
@@ -275,15 +280,11 @@
                 ],
                 "player_bonus_ad": [],
                 "target_missing_hp": []
-              },
-              "title": "Max. Physical Damage",
-              "str": "<SpellSpan :list=\"[250,350,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[25,30,35]\"></SpellSpan>% of target's '''missing''' health)</span>",
-              "damage_type": "physical"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Max. Secondary Damage|{{ap|(250 to 450)*0.8}} {{as|(+ {{ap|150*0.8}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}|Min. Secondary Damage|{{ap|(250 to 450)*0.8*0.1}} {{as|(+ {{ap|150*0.8*0.1}}% '''bonus''' AD)}} {{as|(+ {{ap|(25 to 35)*0.8}}% of target's '''missing''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Max. Secondary Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's <b>missing</b> health)</span></span></li><li><span class=\"blue\">Min. Secondary Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8*0.1\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[12]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -293,13 +294,13 @@
                 ]
               },
               {
-                "target_total_ap": 253.508
+                "target_missing_ap": 253.508
               },
               {
                 "player_bonus_ad": []
               },
               {
-                "target_total_ap": 253.508
+                "target_missing_ap": 253.508
               }
             ],
             "st_slices": [
@@ -319,17 +320,16 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Max. Secondary Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   120
                 ],
                 "player_bonus_ad": [],
-                "target_total_ap": 253.508
-              },
-              "title": "Max. Secondary Damage",
-              "str": "<simple-tooltip class=\"red\" dname=\"ap (250 to 450)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[120]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <simple-tooltip class=\"red\" dname=\"ap (25 to 35)*0.8\">Error: SyntaxError: Unexpected end of input</simple-tooltip>% of target's '''missing''' health)</span>",
-              "damage_type": "unknown"
+                "target_missing_ap": 253.508
+              }
             }
           ]
         }

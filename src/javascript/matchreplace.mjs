@@ -494,52 +494,35 @@ const match_lookup = {
   // as (or Ability scaling): {{as|<(+ X% stat)>}} or {{as|<(+ X% stat)>|<stat>}}
   'as': function (capture, slices, vars, options) {
     // console.log('as Ability scaling =', capture, slices);
-
     const inner = slices[0];
     const stat = slices[1];
     const test = inner.toLowerCase();
-    let ratios = {};
 
-    let cssClass = stat || list_of_colors.find(c => {
+    const cssClass = (stat || list_of_colors.find(c => {
       return test.includes(c)
-    }) || 'ad';
-    cssClass = cssClass.replace(' ', '-');
+    }) || 'ad').replace(' ', '-');
 
-    let num = numeral(test.replace(/[^\d%.,]/g, '')).value();
-    if (inner.includes('SpellSpan') && vars.ap_progressions.length > 0) {
-      const idx = vars.ap_progressions.length - 1;
-      console.log("herherhehrheh\n", test, "\nvars", vars, "\nold_num", num);
-      // ratios = vars.as_ratios[vars.as_ratios.length - 1];
-      let list = [];
-      if (vars.ap_progressions[idx])
-        for (const x of vars.ap_progressions[idx]) {
-          list.push(Number(x) / 100);
+    if (vars) {
+      let value = null;
+      // if number is a list or ap scaling value
+      if (inner.includes('SpellSpan') && vars.ap_progressions.length > 0) {
+        const idx = vars.ap_progressions.length - 1;
+        const deviser = test.indexOf('%') > -1 ? 100 : 1;
+        value = [];
+        if (vars.ap_progressions[idx]) {
+          for (const x of vars.ap_progressions[idx]) {
+            value.push(Number(x) / deviser);
+          }
+          // remove from ap_progressions
+          vars.ap_progressions[idx] = undefined;
         }
-      num = list;
-      vars.ap_progressions[idx] = undefined;
-      console.log("okay\n", test, "\nvars", vars, "\nold_num", num);
-    }
-    if (num !== null) {
-      const isBonus = inner.includes('bonus');
-      const isTarget = inner.includes('target');
-      let a = isTarget ? 'target' : 'player';
-      let b = isBonus ? 'bonus' : 'total';
-      let c = 'unknown';
-
-      if (test.includes('ap')) c = 'ap';
-      else if (test.includes('ad')) c = 'ad';
-      else if (test.includes('mana')) c = 'mana';
-      else if (test.includes('armor')) c = 'armor';
-      else if (test.includes('mr') || test.includes('resist')) c = 'mr';
-      else if (test.includes('health') || test.includes('hp')) {
-        c = 'hp';
-        if (test.includes('missing')) b = 'missing';
-        else if (test.includes('current')) b = 'current';
       }
-      const final_ratio_key = `${a}_${b ? (b + '_') : ''}${c}`;
-      ratios[final_ratio_key] = num;
+      else
+        value = numeral(test.replace(/[^\d%.,]/g, '')).value();
+      let ratios = {};
+      ratios[matchRatioKey(test)] = value;
+      vars.as_ratios.push(ratios);
     }
-    if (vars) vars.as_ratios.push(ratios);
     return `<span class="${cssClass}">${inner}</span>`;
   },
   // sbc (or Small bold capitals): {{sbc|<Text>}}
@@ -628,3 +611,35 @@ const match_lookup = {
     return '<span class="critical-strike">(+ IE 25%)</span>';
   },
 };
+
+
+const keyword_to_ratio_type = {
+  bonus: "bonus",
+  total: "total",
+  max: "total",
+  missing: "missing",
+  current: "current",
+}
+const keyword_to_ratio_value = {
+  ap: "ap",
+  ad: "ad",
+  attack: "ad",
+  armor: "armor",
+  mr: "mr",
+  health: "hp",
+  hp: "hp",
+  mana: "mana",
+  ability: "ap",
+}
+function table_check(table, text, fallback) {
+  for (const key in table)
+    if (text.indexOf(key) > -1) return table[key];
+  return fallback;
+}
+
+function matchRatioKey(text) {
+  const user = text.includes('target') ? 'target' : 'player';
+  const ratioType = table_check(keyword_to_ratio_type, text, 'total')
+  const ratioValue = table_check(keyword_to_ratio_value, text, 'mana')
+  return `${user}_${ratioType}_${ratioValue}`;
+}

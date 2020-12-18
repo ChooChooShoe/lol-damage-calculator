@@ -33,7 +33,7 @@ export default {
     EditableRO,
   },
   setup(props) {
-    const ratiodata = spell_ratios[props.item.key];
+    const ratiodata = spell_ratios[props.item.key] || {};
     return {
       item: props.item,
       spellrank: props.spellrank,

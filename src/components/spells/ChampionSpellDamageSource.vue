@@ -10,7 +10,7 @@
       {{ spell.name }} ({{ spell.skillkey }}) -
       <a target="_blank" :href="wikiHref">View on Wiki</a>
     </h3>
-    <div v-html="spell.descriptionHtml" ></div>
+    <div v-html="spell.descriptionHtml"></div>
     <hr />
     <div style="float: right" v-if="spell.maxrank > 0">
       <span>
@@ -58,15 +58,18 @@
     </div>
 
     <hr />
-    <SpellEffects
-      v-for="(item, index) in spell.effects"
-      :key="index"
-      :spell="spell"
-      :effect="item"
-      :effectindex="index"
-      :spellrank="spellrankindex"
-      v-on:spellrank="spellrankindex = $event"
-    ></SpellEffects>
+
+    <template v-for="(eff, effIndex) in spell.effects" :key="effIndex">
+      <SpellEffects
+        v-for="(item, index) in eff.subeffects"
+        :key="index"
+        :spell="spell"
+        :effect="item"
+        :effectindex="index"
+        :spellrank="spellrankindex"
+        v-on:spellrank="spellrankindex = $event"
+      ></SpellEffects>
+    </template>
 
     <CustomSpellEffects
       v-for="item in customEffects"
@@ -82,7 +85,7 @@
       @click="addEffect()"
     />
 
-    <spell-notes :spell="spell" :id="id"></spell-notes>
+    <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
   </div>
 </template>
 
@@ -198,11 +201,5 @@ export default {
 
 .capture-unknown {
   color: #a52323;
-}
-
-.spell-effect {
-  border: #1e8ad6 solid 1px;
-  margin-bottom: 5px;
-  padding: 0;
 }
 </style>

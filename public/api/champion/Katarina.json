@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.25.21",
-  "changes": "10.23.1",
+  "changes": "10.24.1",
   "id": "Katarina",
   "name": "Katarina",
   "title": "the Sinister Blade",
@@ -77,7 +77,7 @@
         "The {{as|Dagger|buzzword}} then lands on the ground 350 units opposite from where it struck the target.",
         "''The {{as|Dagger|buzzword}} bounces to targets regardless of having {{tip|sight}} of them or not.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> throws a <span class=\"buzzword\">Dagger</span> at the target enemy that bounces to up to 2 nearby enemies, dealing <span class=\"magic-damage\">magic damage</span> to each target.The <span class=\"buzzword\">Dagger</span> then lands on the ground 350 units opposite from where it struck the target.<i>The <span class=\"buzzword\">Dagger</span> bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> throws a <span class=\"buzzword\">Dagger</span> at the target enemy that bounces to up to 2 nearby enemies, dealing <span class=\"magic-damage\">magic damage</span> to each target.<br />The <span class=\"buzzword\">Dagger</span> then lands on the ground 350 units opposite from where it struck the target.<br /><i>The <span class=\"buzzword\">Dagger</span> bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
       "leveling": [
         "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
       ],
@@ -86,7 +86,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -112,7 +111,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   75,
@@ -122,10 +123,7 @@
                   195
                 ],
                 "player_total_ap": 0.3
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -165,7 +163,6 @@
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Movement speed|{{ap|50|60|70|80|90}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement speed</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -187,11 +184,10 @@
           },
           "subeffects": [
             {
-              "index": "0",
-              "ratios": {},
+              "index": 0,
               "title": "Bonus Movement speed",
-              "str": "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>%",
-              "damage_type": "none"
+              "damage_type": "none",
+              "ratios": {}
             }
           ]
         }
@@ -210,7 +206,7 @@
       ],
       "cost": 0,
       "targeting": "[[Location-targeted|Location]] / [[Unit-targeted|Unit]]",
-      "target_range": "{{tt|725|Normal cast.}} / {{tt|775|Cast on daggers.}}",
+      "target_range": "{{tt|725|Normal cast}} / {{tt|775|Cast on daggers}}",
       "image": {
         "full": "KatarinaEWrapper.png",
         "sprite": "spell5.png",
@@ -221,20 +217,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Katarina''' instantly {{tip|blinks}} to the target location around the target non-{{tip|ward}} unit or {{as|Dagger|buzzword}}, dealing {{as|magic damage}} to the nearest enemy in range and applying {{tip|on-hit}} effects to them.",
+        "{{sbc|Active:}} '''Katarina''' instantly {{tip|blinks}} to the target location around the target non-{{tip|ward}} unit or {{as|Dagger|buzzword}}, dealing {{as|magic damage}} to the nearest enemy in range and applying {{tip|on-hit}} effects at 100% effectiveness.",
         "''Shunpo'' {{tip|basic attack reset|resets}} '''Katarina's''' basic attack timer.",
         "''Upon blinking, '''Katarina''' remains unable to act via a cast time for {{fd|0.15}} seconds.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> instantly <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> to the target location around the target non-<HtmlTooltip class=\"blue link\">ward<template #content><div><h4>ward<hr></h4><p>Description for keyword ward</p></div></template></HtmlTooltip> unit or <span class=\"buzzword\">Dagger</span>, dealing <span class=\"magic-damage\">magic damage</span> to the nearest enemy in range and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects to them.<i>Shunpo</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Katarina's</b> basic attack timer.<i>Upon blinking, <b>Katarina</b> remains unable to act via a cast time for <span style=\"font-variant-numeric: tabular-nums;\">0.15</span> seconds.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> instantly <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> to the target location around the target non-<HtmlTooltip class=\"blue link\">ward<template #content><div><h4>ward<hr></h4><p>Description for keyword ward</p></div></template></HtmlTooltip> unit or <span class=\"buzzword\">Dagger</span>, dealing <span class=\"magic-damage\">magic damage</span> to the nearest enemy in range and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><i>Shunpo</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Katarina's</b> basic attack timer.<br /><i>Upon blinking, <b>Katarina</b> remains unable to act via a cast time for <span style=\"font-variant-numeric: tabular-nums;\">0.15</span> seconds.</i>",
       "leveling": [
         "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ 50% AD)}} {{as|(+ 25% AP)}}}}"
       ],
-      "notes": "* If '''Katarina''' ''Shunpo's'' on an ally, any attack command she is given during its cast time will be negated, and every movement command will be delayed by 1 second (starting at the start of the cast time).\n* ''Shunpo'' should be an instant ability but it has extra logic to consider which makes it have a short cast time before blinking.\n* {{si|Flash}} can be used during cast time but it will not cancel the blink.\n* If the target is very close to a wall and '''Katarina''' targets ''Shunpo'' behind the target, she can blink over the wall.\n* ''Shunpo'' will not deal damage nor apply on-hit effects if {{tip|blocked}} and will still deal damage but not apply on-hit effects if {{tip|dodged}}. It cannot be missed while '''Katarina''' is {{tip|blind|blinded}}.\n{{ct|cast}}",
+      "notes": "* If '''Katarina''' ''Shunpo's'' on an ally, any attack command she is given during its cast time will be negated, and every movement command will be delayed by 1 second (starting at the start of the cast time).\n* ''Shunpo'' should be an instant ability but it has extra logic to consider which makes it have a short cast time before blinking.\n* {{si|Flash}} can be used during cast time but it will not cancel the blink.\n* If the target is very close to a wall and '''Katarina''' targets ''Shunpo'' behind the target, she can blink over the wall.\n* ''Shunpo''  will still deal damage but not apply on-hit effects if {{tip|dodged}}. It cannot be {{tip|block|blocked}} nor can it be missed while '''Katarina''' is {{tip|blind|blinded}}.\n{{ct|cast}}",
       "skillkey": "E",
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ 50% AD)}} {{as|(+ 25% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[15,30,45,60,75]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -263,7 +258,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   15,
@@ -274,10 +271,7 @@
                 ],
                 "player_total_ad": 0.5,
                 "player_total_ap": 0.25
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[15,30,45,60,75]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 25% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -304,27 +298,38 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Katarina''' {{tip|channel|channels}} for {{fd|2.5}} seconds, rapidly spinning in place to throw a dagger every {{fd|0.166}} seconds to up to 3 nearby enemy {{tip|champion|champions}}. Each dagger deals {{as|magic damage}} and {{as|15% '''bonus''' AD}} {{as|(+ {{fd|9.9%}} attack speed)}} {{as|physical damage}},  applies {{tip|on-hit}} effects at 25% effectivenes, and inflicts 60% {{tip|Grievous Wounds}} on the target for 3 seconds.",
+        "{{sbc|Active:}} '''Katarina''' {{tip|channel|channels}} for {{fd|2.5}} seconds, rapidly spinning in place to throw a dagger every {{fd|0.166}} seconds to up to 3 nearby enemy {{tip|champion|champions}}. Each dagger deals {{as|physical damage}} and {{as|magic damage}}, applies {{tip|on-hit}} effects at 25% effectiveness, and inflicts 60% {{tip|Grievous Wounds}} on the target for 3 seconds.",
         "''A nearby enemy champion is required to cast this ability. '''Katarina''' does not need to have {{tip|sight}} of the target to hit them, and she will prioritize the closest ones.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, rapidly spinning in place to throw a dagger every <span style=\"font-variant-numeric: tabular-nums;\">0.166</span> seconds to up to 3 nearby enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>. Each dagger deals <span class=\"magic-damage\">magic damage</span> and <span class=\"ad\">15% <b>bonus</b> AD</span> <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">9.9%</span> attack speed)</span> <span class=\"physical-damage\">physical damage</span>,  applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 25% effectivenes, and inflicts 60% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip> on the target for 3 seconds.<i>A nearby enemy champion is required to cast this ability. <b>Katarina</b> does not need to have <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the target to hit them, and she will prioritize the closest ones.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, rapidly spinning in place to throw a dagger every <span style=\"font-variant-numeric: tabular-nums;\">0.166</span> seconds to up to 3 nearby enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>. Each dagger deals <span class=\"physical-damage\">physical damage</span> and <span class=\"magic-damage\">magic damage</span>, applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 25% effectiveness, and inflicts 60% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip> on the target for 3 seconds.<br /><i>A nearby enemy champion is required to cast this ability. <b>Katarina</b> does not need to have <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the target to hit them, and she will prioritize the closest ones.</i>",
       "leveling": [
-        "{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 19% AP)}}|Maximum Single-Target Magic Damage|{{ap|25*15 to 50*15}} {{as|(+ 285% AP)}}}}"
+        "{{st|Physical Damage Per Dagger|{{as|15% '''bonus''' AD}} {{as|(+ {{fd|9.9}}% attack speed)}}|Maximum Single-Target Physical Damage|{{as|225% '''bonus''' AD}} {{as|(+ {{fd|148.5}}% attack speed)}}}}{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 19% AP)}}|Maximum Single-Target Magic Damage|{{ap|25*15 to 50*15}} {{as|(+ 285% AP)}}}}"
       ],
-      "notes": "* ''Death Lotus'' will not end if there are no enemies that remain in range.\n* {{tip|Spell shield}} will block and be consumed by only one dagger.\n* ''Death Lotus'' can deal up to {{as|225% '''bonus''' AD}} {{as|(+ {{fd|148.5}}% attack speed)}} {{as|physical damage}} to a single target.\n* ''Death Lotus's'' daggers will still deal physical damage but not deal magic damage nor apply on-hit effects if {{tip|blocked}}. They cannot be {{tip|dodged}} nor missed while '''Katarina''' is {{tip|blind|blinded}}.\n* The following table refers for interactions while '''Katarina''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=interrupts|move=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|attack=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|items=interrupts,true,,false,false,melee|spells=true,interrupts,interrupts,false,false}}",
+      "notes": "* ''Death Lotus'' will not end if there are no enemies that remain in range.\n* {{tip|Spell shield}} will block and be consumed by only one dagger.\n* The following table refers for interactions while '''Katarina''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=interrupts|move=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|attack=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|items=interrupts,true,,false,false,melee|spells=true,interrupts,interrupts,false,false}}",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 19% AP)}}|Maximum Single-Target Magic Damage|{{ap|25*15 to 50*15}} {{as|(+ 285% AP)}}}}",
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Dagger</span>: <span><SpellSpan :list=\"[25,37.5,50]\"></SpellSpan> <span class=\"ap\">(+ 19% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Magic Damage</span>: <span><SpellSpan :list=\"[375,562.5,750]\"></SpellSpan> <span class=\"ap\">(+ 285% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Per Dagger</span>: <span><span class=\"ad\">15% <b>bonus</b> AD</span> <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">9.9</span>% attack speed)</span></span></li><li><span class=\"blue\">Maximum Single-Target Physical Damage</span>: <span><span class=\"ad\">225% <b>bonus</b> AD</span> <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">148.5</span>% attack speed)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Dagger</span>: <span><SpellSpan :list=\"[25,37.5,50]\"></SpellSpan> <span class=\"ap\">(+ 19% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Magic Damage</span>: <span><SpellSpan :list=\"[375,562.5,750]\"></SpellSpan> <span class=\"ap\">(+ 285% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
+              {
+                "player_bonus_ad": 0.15
+              },
+              {
+                "player_bonus_ad": 2.25
+              },
               {
                 "player_total_ap": 0.19
               },
               {
                 "player_total_ap": 2.85
+              },
+              {
+                "player_total_ad": 0.099
+              },
+              {
+                "player_total_ad": 1.485
               }
             ],
             "st_slices": [
@@ -333,6 +338,12 @@
                 "<SpellSpan :list=\"[25,37.5,50]\"></SpellSpan> <span class=\"ap\">(+ 19% AP)</span>",
                 "Maximum Single-Target Magic Damage",
                 "<SpellSpan :list=\"[375,562.5,750]\"></SpellSpan> <span class=\"ap\">(+ 285% AP)</span>"
+              ],
+              [
+                "Physical Damage Per Dagger",
+                "<span class=\"ad\">15% '''bonus''' AD</span> <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">9.9</span>% attack speed)</span>",
+                "Maximum Single-Target Physical Damage",
+                "<span class=\"ad\">225% '''bonus''' AD</span> <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">148.5</span>% attack speed)</span>"
               ]
             ],
             "ap_progressions": [
@@ -350,18 +361,32 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage Per Dagger",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   25,
                   37.5,
                   50
                 ],
-                "player_total_ap": 2.85
-              },
-              "title": "Magic Damage Per Dagger",
-              "str": "<SpellSpan :list=\"[25,37.5,50]\"></SpellSpan> <span class=\"ap\">(+ 19% AP)</span>",
-              "damage_type": "magic"
+                "player_bonus_ad": 2.25,
+                "player_total_ap": 0.19
+              }
+            },
+            {
+              "index": 1,
+              "title": "Physical Damage Per Dagger",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  375,
+                  562.5,
+                  750
+                ],
+                "player_bonus_ad": 2.25,
+                "player_total_ap": 0.19
+              }
             }
           ]
         }

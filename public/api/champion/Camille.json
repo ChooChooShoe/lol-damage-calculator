@@ -108,7 +108,7 @@
         "Non-epic monsters take 50% damage from ''Tactical Sweep''.",
         "''Other abilities can be cast during the animation without cancelling it.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Camille</b> sweeps her leg to deal <span class=\"physical-damage\">physical damage</span> to all enemies in a cone in the target direction after a <span style=\"font-variant-numeric: tabular-nums;\">1.1</span>-second delay, during which she's <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> and is unable to declare basic attacks.Enemies hit by the outer half of the cone take <span class=\"physical-damage\"><b>bonus</b> physical damage</span> and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 80% that decays over 2 seconds, capped at 300 damage against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>. <b>Camille</b> is <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>healing<hr></h4><p>Description for keyword healing</p></div></template></HtmlTooltip> for 100% of the <i>flat</i> <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation</span> damage dealt against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> in the outer half.Non-epic monsters take 50% damage from <i>Tactical Sweep</i>.<i>Other abilities can be cast during the animation without cancelling it.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Camille</b> sweeps her leg to deal <span class=\"physical-damage\">physical damage</span> to all enemies in a cone in the target direction after a <span style=\"font-variant-numeric: tabular-nums;\">1.1</span>-second delay, during which she's <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> and is unable to declare basic attacks.<br />Enemies hit by the outer half of the cone take <span class=\"physical-damage\"><b>bonus</b> physical damage</span> and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 80% that decays over 2 seconds, capped at 300 damage against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>. <b>Camille</b> is <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>healing<hr></h4><p>Description for keyword healing</p></div></template></HtmlTooltip> for 100% of the <i>flat</i> <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation</span> damage dealt against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> in the outer half.<br />Non-epic monsters take 50% damage from <i>Tactical Sweep</i>.<br /><i>Other abilities can be cast during the animation without cancelling it.</i>",
       "leveling": [
         "{{st|Physical Damage|{{ap|70 to 190}} {{as|(+ 60% '''bonus''' AD)}}|Non-Epic Monster Damage|{{ap|70/2 to 190/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
         "{{st|Outer Cone Bonus Damage|{{as|{{ap|6 to 8}}% {{as|(+ {{fd|3.{{recurring|3}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Bonus Non-Epic Monster Damage|{{as|{{ap|6/2 to 8/2}}% {{as|(+ {{fd|1.{{recurring|6}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}"
@@ -118,7 +118,6 @@
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Physical Damage|{{ap|70 to 190}} {{as|(+ 60% '''bonus''' AD)}}|Non-Epic Monster Damage|{{ap|70/2 to 190/2}} {{as|(+ 30% '''bonus''' AD)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Non-Epic Monster Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -156,7 +155,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
                   70,
@@ -166,15 +167,11 @@
                   190
                 ],
                 "player_bonus_ad": 0.3
-              },
-              "title": "Physical Damage",
-              "str": "<SpellSpan :list=\"[70,100,130,160,190]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>",
-              "damage_type": "physical"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Outer Cone Bonus Damage|{{as|{{ap|6 to 8}}% {{as|(+ {{fd|3.{{recurring|3}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}|Bonus Non-Epic Monster Damage|{{as|{{ap|6/2 to 8/2}}% {{as|(+ {{fd|1.{{recurring|6}}}}% per 100 '''bonus''' AD)}} of target's '''maximum''' health}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Outer Cone Bonus Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Bonus Non-Epic Monster Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 6\">Unknown value: recurring 6</simple-tooltip></span>% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -218,7 +215,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Outer Cone Bonus Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   6,
@@ -229,10 +228,7 @@
                 ],
                 "player_bonus_ap": 0.01661,
                 "target_bonus_ap": []
-              },
-              "title": "Outer Cone Bonus Damage",
-              "str": "<span class=\"health\"><SpellSpan :list=\"[6,6.5,7,7.5,8]\"></SpellSpan>% <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">3.<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 '''bonus''' AD)</span> of target's '''maximum''' health</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -266,7 +262,7 @@
         "The target cannot escape the zone through any means. While within the zone, '''Camille's''' basic attacks deal {{as|'''bonus''' magic damage}}.",
         "''The Hextech Ultimatum'' ends automatically within 1 second if '''Camille''' leaves the area or dies."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Camille</b> becomes <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> towards the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> over <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, <HtmlTooltip class=\"blue link\">disrupting<template #content><div><h4>Disrupt / Interrupt<hr></h4><p>Interrupts channeled and charged abilities. Like a silence but unit still cast abilites.</p></div></template></HtmlTooltip> their ongoing <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip>.When <b>Camille</b> lands, she becomes targetable again and creates a hexagonal zone around her current location for a duration, <HtmlTooltip class=\"blue link\">knocking away<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all other nearby enemies on impact.The target cannot escape the zone through any means. While within the zone, <b>Camille's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.<i>The Hextech Ultimatum</i> ends automatically within 1 second if <b>Camille</b> leaves the area or dies.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Camille</b> becomes <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> towards the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> over <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, <HtmlTooltip class=\"blue link\">disrupting<template #content><div><h4>Disrupt / Interrupt<hr></h4><p>Interrupts channeled and charged abilities. Like a silence but unit still cast abilites.</p></div></template></HtmlTooltip> their ongoing <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip>.<br />When <b>Camille</b> lands, she becomes targetable again and creates a hexagonal zone around her current location for a duration, <HtmlTooltip class=\"blue link\">knocking away<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> all other nearby enemies on impact.<br />The target cannot escape the zone through any means. While within the zone, <b>Camille's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.<br /><i>The Hextech Ultimatum</i> ends automatically within 1 second if <b>Camille</b> leaves the area or dies.",
       "leveling": [
         "{{st|Zone Duration|{{ap|2.5|3.25|4}}}}",
         "{{st|Bonus Magic Damage|{{ap|5|10|15}} {{as|(+ {{ap|4|6|8}}% of target's '''current''' health)}}}}"
@@ -276,7 +272,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Zone Duration|{{ap|2.5|3.25|4}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Zone Duration</span>: <span><SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -296,22 +291,20 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Zone Duration",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   2.5,
                   3.25,
                   4
                 ]
-              },
-              "title": "Zone Duration",
-              "str": "<SpellSpan :list=\"[2.5,3.25,4]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{ap|5|10|15}} {{as|(+ {{ap|4|6|8}}% of target's '''current''' health)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's <b>current</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -340,7 +333,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   5,
@@ -352,10 +347,7 @@
                   0.06,
                   0.08
                 ]
-              },
-              "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[5,10,15]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,6,8]\"></SpellSpan>% of target's '''current''' health)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }

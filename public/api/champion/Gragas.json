@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.72",
-  "changes": "10.17.1",
+  "changes": "10.25.1",
   "id": "Gragas",
   "name": "Gragas",
   "title": "the Rabble Rouser",
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Gragas''' periodically {{tip|heals}} for {{as|{{sti|health|6% of his '''maximum''' health}}}} upon using an [[Champion ability|ability]]."
+        "{{sbc|Innate:}} '''Gragas''' periodically {{tip|heals}} for {{as|{{sti|health|8% of his '''maximum''' health}}}} upon using an [[Champion ability|ability]]."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Gragas</b> periodically <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> for <span class=\"health\"><span>6% of his <b>maximum</b> health</span></span> upon using an <a class=\"effect link\" title=\"ability\">Champion ability</a>.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Gragas</b> periodically <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> for <span class=\"health\"><span>8% of his <b>maximum</b> health</span></span> upon using an <a class=\"effect link\" title=\"ability\">Champion ability</a>.",
       "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -102,7 +102,7 @@
         "''Body Slam's'' {{sti|cooldown}} is reduced by 3 seconds if '''Gragas''' hits an enemy.",
         "{{ai|Barrel Roll|Gragas}} and {{ai|Explosive Cask|Gragas}} can be cast during the {{tip|dash|charge}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> forward, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon colliding with one as well as <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for 1 second.<i>Body Slam's</i> <span>cooldown</span> is reduced by 3 seconds if <b>Gragas</b> hits an enemy.<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gragas\">Barrel Roll<template #content>Barrel Roll</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gragas\">Explosive Cask<template #content>Explosive Cask</template></HtmlTooltip> can be cast during the <HtmlTooltip class=\"blue link\">charge<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> forward, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon colliding with one as well as <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for 1 second.<br /><i>Body Slam's</i> <span>cooldown</span> is reduced by 3 seconds if <b>Gragas</b> hits an enemy.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gragas\">Barrel Roll<template #content>Barrel Roll</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gragas\">Explosive Cask<template #content>Explosive Cask</template></HtmlTooltip> can be cast during the <HtmlTooltip class=\"blue link\">charge<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip>.",
       "leveling": [
         "{{st|Magic Damage|{{ap|80|130|180|230|280}} {{as|(+ 60% AP)}}}}"
       ],
@@ -111,7 +111,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|80|130|180|230|280}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -137,7 +136,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   80,
@@ -147,10 +148,7 @@
                   280
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -190,7 +188,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|200 to 400}} {{as|(+ 80% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -214,7 +211,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   200,
@@ -222,10 +221,7 @@
                   400
                 ],
                 "player_total_ap": 0.8
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }

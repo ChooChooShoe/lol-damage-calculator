@@ -80,9 +80,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to fly to the target location and remain there, dealing {{as|magic damage}} to all enemies it passes through, reduced to {{passive progression/deprecated version|7|key=%|100 to 40|type=enemies hit}}."
+        "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to fly to the target location and remain there, dealing {{as|magic damage}} to all enemies it passes through, reduced to {{pp|key=%|100 to 40 for 7|type=enemies hit}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Orianna</b> commands <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> to fly to the target location and remain there, dealing <span class=\"magic-damage\">magic damage</span> to all enemies it passes through, reduced to <simple-tooltip class=\"capture-unknown\" dname=\"passive progression/deprecated version 7 key=% 100 to 40 type=enemies hit\">Unknown value: passive progression/deprecated version 7 key=% 100 to 40 type=enemies hit</simple-tooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Orianna</b> commands <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> to fly to the target location and remain there, dealing <span class=\"magic-damage\">magic damage</span> to all enemies it passes through, reduced to <HtmlTooltip class=\"blue link\">100% − 40 for 7% (based on level)<template #content>Values: 100, 96.471, 92.941, 89.412, 85.882, 82.353, 78.824, 75.294, 71.765, 68.235, 64.706, 61.176, 57.647, 54.118, 50.588, 47.059, 43.529, 40<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>.",
       "leveling": [
         "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 50% AP)}}|Minimum Damage|{{ap|60*0.4 to 180*0.4}} {{as|(+ 20% AP)}}}}"
       ],
@@ -91,7 +91,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 50% AP)}}|Minimum Damage|{{ap|60*0.4 to 180*0.4}} {{as|(+ 20% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[24,36,48,60,72]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -129,7 +128,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   60,
@@ -139,10 +140,7 @@
                   180
                 ],
                 "player_total_ap": 0.2
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -175,7 +173,7 @@
         "{{sbc|Active:}} '''Orianna''' commands {{ai|Clockwork Windup|Orianna|The Ball}} to emit an electric pulse around its current location, dealing {{as|magic damage}} to all enemies around it and leaving an electric field on the area for 3 seconds.",
         "'''Orianna''' and her allies gain {{sti|ms|{{as|'''bonus''' movement speed}}}} upon stepping on the field. Enemies, in turn, are {{tip|slow|slowed}} for the same amount, decaying over 2 seconds after leaving the field."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Orianna</b> commands <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> to emit an electric pulse around its current location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies around it and leaving an electric field on the area for 3 seconds.<b>Orianna</b> and her allies gain <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> upon stepping on the field. Enemies, in turn, are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> for the same amount, decaying over 2 seconds after leaving the field.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Orianna</b> commands <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> to emit an electric pulse around its current location, dealing <span class=\"magic-damage\">magic damage</span> to all enemies around it and leaving an electric field on the area for 3 seconds.<br /><b>Orianna</b> and her allies gain <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> upon stepping on the field. Enemies, in turn, are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> for the same amount, decaying over 2 seconds after leaving the field.",
       "leveling": [
         "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 70% AP)}}}}",
         "{{st|Movement Speed Modifier|{{ap|30 to 50}}%}}"
@@ -185,7 +183,6 @@
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 70% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -211,7 +208,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   60,
@@ -221,15 +220,11 @@
                   240
                 ],
                 "player_total_ap": 0.7000000000000001
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Movement Speed Modifier|{{ap|30 to 50}}%}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Movement Speed Modifier</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -251,11 +246,18 @@
           },
           "subeffects": [
             {
-              "index": "0",
-              "ratios": {},
+              "index": 0,
               "title": "Movement Speed Modifier",
-              "str": "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%",
-              "damage_type": "none"
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              }
             }
           ]
         }
@@ -283,7 +285,7 @@
         "{{sbc|Passive:}} {{ai|Clockwork Windup|Orianna|The Ball}} grants whomever it is attached to '''bonus''' {{sti|armor|{{as|armor}}}} and {{sti|mr|{{as|magic resistance}}}}.",
         "{{sbc|Active:}} '''Orianna''' commands ''The Ball'' to fly to the target allied {{tip|champion}} or herself and attach itself to her target, dealing {{as|magic damage}} to all enemies it passes through and {{tip|shield|shielding}} the target on arrival for {{fd|2.5}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> grants whomever it is attached to <b>bonus</b> <span><span class=\"armor\">armor</span></span> and <span><span class=\"magic-resist\">magic resistance</span></span>.<span class=\"sbc\">Active:</span> <b>Orianna</b> commands <i>The Ball</i> to fly to the target allied <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or herself and attach itself to her target, dealing <span class=\"magic-damage\">magic damage</span> to all enemies it passes through and <HtmlTooltip class=\"blue link\">shielding<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> the target on arrival for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Orianna\">The Ball<template #content>Clockwork Windup</template></HtmlTooltip> grants whomever it is attached to <b>bonus</b> <span><span class=\"armor\">armor</span></span> and <span><span class=\"magic-resist\">magic resistance</span></span>.<br /><span class=\"sbc\">Active:</span> <b>Orianna</b> commands <i>The Ball</i> to fly to the target allied <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or herself and attach itself to her target, dealing <span class=\"magic-damage\">magic damage</span> to all enemies it passes through and <HtmlTooltip class=\"blue link\">shielding<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> the target on arrival for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
       "leveling": [
         "{{st|Bonus Resistances|{{ap|10 to 30}}}}",
         "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 50% AP)}}}}"
@@ -293,7 +295,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Resistances|{{ap|10 to 30}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Resistances</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
@@ -315,7 +316,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Bonus Resistances",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   10,
@@ -324,15 +327,11 @@
                   25,
                   30
                 ]
-              },
-              "title": "Bonus Resistances",
-              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 30% AP)}}}}\n{{st|Shield Strength|{{ap|60 to 220}} {{as|(+ 50% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -372,7 +371,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   60,
@@ -382,19 +383,22 @@
                   180
                 ],
                 "player_total_ap": 0.3
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
+              }
             },
             {
-              "index": "1",
-              "ratios": {
-                "player_total_ap": 0.3
-              },
+              "index": 1,
               "title": "Shield Strength",
-              "str": "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "none"
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.3
+              }
             }
           ]
         }
@@ -433,7 +437,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|200 to 350}} {{as|(+ 80% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,275,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -457,7 +460,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   200,
@@ -465,10 +470,7 @@
                   350
                 ],
                 "player_total_ap": 0.8
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[200,275,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }

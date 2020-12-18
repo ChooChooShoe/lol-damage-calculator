@@ -67,7 +67,7 @@
         "{{sbc|Innate:}} Whenever '''Ahri''' hits an enemy with one of her abilities, she gains a [[stack]] of ''Essence Theft'', and can gain up to 3 stacks per ability cast.",
         "Upon reaching 9 stacks, '''Ahri's''' next ability {{tip|heal|heals}} her for {{pp|3;5;9;18|1 to 16}} {{as|(+ 9% AP)}} for each enemy hit and consumes the stacks if at least one enemy is hit."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Whenever <b>Ahri</b> hits an enemy with one of her abilities, she gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Essence Theft</i>, and can gain up to 3 stacks per ability cast.Upon reaching 9 stacks, <b>Ahri's</b> next ability <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> her for <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span class=\"ap\">(+ 9% AP)</span> for each enemy hit and consumes the stacks if at least one enemy is hit.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Whenever <b>Ahri</b> hits an enemy with one of her abilities, she gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Essence Theft</i>, and can gain up to 3 stacks per ability cast.<br />Upon reaching 9 stacks, <b>Ahri's</b> next ability <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> her for <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span class=\"ap\">(+ 9% AP)</span> for each enemy hit and consumes the stacks if at least one enemy is hit.",
       "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -88,7 +88,7 @@
       ],
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 880",
+      "target_range": "{{tip|cr|icononly = true}} 900",
       "image": {
         "full": "AhriOrbofDeception.png",
         "sprite": "spell0.png",
@@ -105,12 +105,11 @@
       "leveling": [
         "{{st|Damage Per Pass|{{ap|40 to 140}} {{as|(+ 35% AP)}}|Total Mixed Damage|{{ap|40*2 to 140*2}} {{as|(+ 70% AP)}}}}"
       ],
-      "notes": "* ''Orb of Deception'' will hit additional units around the return point in a small circle when the Orb turns around.\n* Each pass of the projectile can only damage an enemy once.\n* ''Orb of Deception'' will cast from wherever '''Ahri''' is at the end of the cast time.",
+      "notes": "* ''Orb of Deception'' will hit additional units around the return point in a small circle when the Orb turns around.\n** This applies both the initial and return missile's damage, but the initial missile's damage only if the unit wasn't hit by the initial missile already.\n* Each pass of the projectile can only damage an enemy once.\n* ''Orb of Deception'' will cast from wherever '''Ahri''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Damage Per Pass|{{ap|40 to 140}} {{as|(+ 35% AP)}}|Total Mixed Damage|{{ap|40*2 to 140*2}} {{as|(+ 70% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Per Pass</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Total Mixed Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -148,7 +147,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Damage Per Pass",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   40,
@@ -158,10 +159,7 @@
                   140
                 ],
                 "player_total_ap": 0.7000000000000001
-              },
-              "title": "Damage Per Pass",
-              "str": "<SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -196,7 +194,7 @@
         "Subsequent flames on a single target deal 30% damage.",
         "Flames prioritize enemy champions hit by {{ai|Charm|Ahri}}, then enemy {{tip|champion|champions}}, then minions that would die to ''Fox-Fire's'' damage, and then the target of '''Ahri's''' last basic attack within 3 seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> gains <span><span class=\"movement-speed\">40% <b>bonus</b> movement speed</span></span> that decays over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds and summons three spectral flames which orbit her for up to 5 seconds.After <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds, each flame targets a <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy, or after <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds targets the closest visible enemy in range, dealing <span class=\"magic-damage\">magic damage</span>. The damage is doubled against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> below <span><span class=\"health\">20% <b>maximum</b> health</span></span>.Subsequent flames on a single target deal 30% damage.Flames prioritize enemy champions hit by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ahri\">Charm<template #content>Charm</template></HtmlTooltip>, then enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, then minions that would die to <i>Fox-Fire's</i> damage, and then the target of <b>Ahri's</b> last basic attack within 3 seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> gains <span><span class=\"movement-speed\">40% <b>bonus</b> movement speed</span></span> that decays over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds and summons three spectral flames which orbit her for up to 5 seconds.<br />After <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds, each flame targets a <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy, or after <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds targets the closest visible enemy in range, dealing <span class=\"magic-damage\">magic damage</span>. The damage is doubled against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> below <span><span class=\"health\">20% <b>maximum</b> health</span></span>.<br />Subsequent flames on a single target deal 30% damage.<br />Flames prioritize enemy champions hit by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ahri\">Charm<template #content>Charm</template></HtmlTooltip>, then enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, then minions that would die to <i>Fox-Fire's</i> damage, and then the target of <b>Ahri's</b> last basic attack within 3 seconds.",
       "leveling": [
         "{{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 30% AP)}}|Minion Damage|{{ap|40*2 to 140*2}} {{as|(+ 60% AP)}}}}",
         "{{st|Additional Magic Damage|{{ap|40*0.3 to 140*0.3}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|40*1.6 to 140*1.6}} {{as|(+ 48% AP)}}}}"
@@ -206,7 +204,6 @@
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 30% AP)}}|Minion Damage|{{ap|40*2 to 140*2}} {{as|(+ 60% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -244,7 +241,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   40,
@@ -254,15 +253,11 @@
                   140
                 ],
                 "player_total_ap": 0.6
-              },
-              "title": "Magic Damage",
-              "str": "<SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Additional Magic Damage|{{ap|40*0.3 to 140*0.3}} {{as|(+ 9% AP)}}|Total Single Target Damage|{{ap|40*1.6 to 140*1.6}} {{as|(+ 48% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Additional Magic Damage</span>: <span><SpellSpan :list=\"[12,19.5,27,34.5,42]\"></SpellSpan> <span class=\"ap\">(+ 9% AP)</span></span></li><li><span class=\"blue\">Total Single Target Damage</span>: <span><SpellSpan :list=\"[64,104,144,184,224]\"></SpellSpan> <span class=\"ap\">(+ 48% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -300,7 +295,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Additional Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   12,
@@ -310,10 +307,7 @@
                   42
                 ],
                 "player_total_ap": 0.48
-              },
-              "title": "Additional Magic Damage",
-              "str": "<SpellSpan :list=\"[12,19.5,27,34.5,42]\"></SpellSpan> <span class=\"ap\">(+ 9% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -327,7 +321,7 @@
       "cost": 70,
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 975",
+      "target_range": "{{tip|cr|icononly = true}} 1000",
       "image": {
         "full": "AhriSeduce.png",
         "sprite": "spell0.png",
@@ -338,10 +332,10 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ahri''' blows a kiss in the target direction that deals {{as|magic damage}} to the first enemy hit, {{tip|knockdown|knocking them down}} and {{tip|charm|charming}} and {{tip|slow|slowing}} them by 65%.",
+        "{{sbc|Active:}} '''Ahri''' blows a kiss in the target direction that deals {{as|magic damage}} to the first enemy hit, {{tip|knockdown|knocking them down}} and {{tip|charm|charming}} them for a duration, during which they are {{tip|slow|slowed}} by 65%.",
         "An enemy hit by ''Charm'' is rendered vulnerable for 3 seconds, taking 20% '''bonus''' damage from '''Ahri's''' abilities."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> blows a kiss in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first enemy hit, <HtmlTooltip class=\"blue link\">knocking them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">charming<template #content><div><h4>Charm<hr></h4><p></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 65%.An enemy hit by <i>Charm</i> is rendered vulnerable for 3 seconds, taking 20% <b>bonus</b> damage from <b>Ahri's</b> abilities.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> blows a kiss in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first enemy hit, <HtmlTooltip class=\"blue link\">knocking them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">charming<template #content><div><h4>Charm<hr></h4><p></p></div></template></HtmlTooltip> them for a duration, during which they are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 65%.<br />An enemy hit by <i>Charm</i> is rendered vulnerable for 3 seconds, taking 20% <b>bonus</b> damage from <b>Ahri's</b> abilities.",
       "leveling": [
         "{{st|Magic damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}{{st|Charm Duration|{{ap|1.4 to 2}}}}"
       ],
@@ -350,7 +344,6 @@
       "skillid": "e1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic damage|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}{{st|Charm Duration|{{ap|1.4 to 2}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -387,7 +380,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   60,
@@ -397,13 +392,12 @@
                   180
                 ],
                 "player_total_ap": 0.4
-              },
-              "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
+              }
             },
             {
-              "index": "1",
+              "index": 1,
+              "title": "Charm Duration",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   1.4,
@@ -413,10 +407,7 @@
                   2
                 ],
                 "player_total_ap": 0.4
-              },
-              "title": "Charm Duration",
-              "str": "<SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -448,7 +439,7 @@
         "{{sbc|Active:}} '''Ahri''' {{tip|dashes}} to the target location and then fires energy bolts to up to 3 {{tip|sight|visible}} targets, dealing {{as|magic damage}}. ''Spirit Rush'' can be recast twice more at a 1 second {{tt|static cooldown|unaffected by cooldown reduction}} between casts within 10 seconds of the activation at no additional cost.",
         "{{sbc|Recast:}} '''Ahri''' {{tip|dashes}}, mimicking the first cast's effects."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location and then fires energy bolts to up to 3 <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> targets, dealing <span class=\"magic-damage\">magic damage</span>. <i>Spirit Rush</i> can be recast twice more at a 1 second <span class=\"title-tooltip\" title=\"unaffected by cooldown reduction\">static cooldown</span> between casts within 10 seconds of the activation at no additional cost.<span class=\"sbc\">Recast:</span> <b>Ahri</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip>, mimicking the first cast's effects.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ahri</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location and then fires energy bolts to up to 3 <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> targets, dealing <span class=\"magic-damage\">magic damage</span>. <i>Spirit Rush</i> can be recast twice more at a 1 second <span class=\"title-tooltip\" title=\"unaffected by cooldown reduction\">static cooldown</span> between casts within 10 seconds of the activation at no additional cost.<br /><span class=\"sbc\">Recast:</span> <b>Ahri</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip>, mimicking the first cast's effects.",
       "leveling": [
         "{{st|Magic damage|{{ap|60|90|120}} {{as|(+ 35% AP)}}}}",
         "{{st|Maximum single target damage|{{ap|180|270|360}} {{as|(+ 105% AP)}}|Maximum damage|{{ap|540|810|1080}} {{as|(+ 315% AP)}}}}"
@@ -458,7 +449,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Magic damage|{{ap|60|90|120}} {{as|(+ 35% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[60,90,120]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -482,7 +472,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Magic damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   60,
@@ -490,15 +482,11 @@
                   120
                 ],
                 "player_total_ap": 0.35000000000000003
-              },
-              "title": "Magic damage",
-              "str": "<SpellSpan :list=\"[60,90,120]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Maximum single target damage|{{ap|180|270|360}} {{as|(+ 105% AP)}}|Maximum damage|{{ap|540|810|1080}} {{as|(+ 315% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum single target damage</span>: <span><SpellSpan :list=\"[180,270,360]\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span></span></li><li><span class=\"blue\">Maximum damage</span>: <span><SpellSpan :list=\"[540,810,1080]\"></SpellSpan> <span class=\"ap\">(+ 315% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -532,7 +520,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Maximum single target damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   180,
@@ -540,10 +530,7 @@
                   360
                 ],
                 "player_total_ap": 3.15
-              },
-              "title": "Maximum single target damage",
-              "str": "<SpellSpan :list=\"[180,270,360]\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }

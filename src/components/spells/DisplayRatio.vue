@@ -44,7 +44,7 @@ export default {
   },
   inject: ["rootspell"],
   setup(props) {
-    const ratiodata = spell_ratios[props.item.key];
+    const ratiodata = spell_ratios[props.item.key] || {};
     return {
       flat: ratiodata.flat || false,
       color: ratiodata.color || "",

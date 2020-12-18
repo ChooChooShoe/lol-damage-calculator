@@ -171,12 +171,12 @@ function autoCast(s) {
     return s;
 }
 function makeDescriptionHtml(skillout) {
-    let html = "";
+    let html = [];
     for (const line of skillout.description) {
         let x = matchReplaceSpellEffects(line, false, skillout);
-        html = html.concat(x.str);
+        html.push(x.str);
     }
-    return html;
+    return html.join('<br />');
 }
 
 function buildSkill(skilldata, riotSpell, is_passive, model) {
@@ -245,37 +245,38 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
     skillout.effects = [];
     for (let leveling_index in skillout.leveling) {
         let effect = {}
-        effect.levelingtext = skillout.leveling[leveling_index];
         skillout.effects[leveling_index] = effect;
-        // console.log('\n\n')
-        let x = matchReplaceSpellEffects(effect.levelingtext, false, skillout);
+        const levelingtext = skillout.leveling[leveling_index];
+        // effect.levelingtext = levelingtext;
+        let x = matchReplaceSpellEffects(levelingtext, false, skillout);
         effect.str = x.str;
         effect.vars = x.vars;
 
-        if (x.vars.ap_progressions.length == 0) continue;
+        // if (x.vars.ap_progressions.length == 0) continue;
         effect.subeffects = [];
         // as_ratios are deivded evenly between st_slices
         const as_ratios_per_st = (x.vars.as_ratios.length / x.vars.st_slices.length) || 0;
         for (const subindex in x.vars.st_slices) {
             const title = x.vars.st_slices[subindex][0] || '';
-            const damage_type = matchDamageType(title.toLowerCase());
+            let damage_type = matchDamageType(title.toLowerCase());
+            if (damage_type == 'none')
+                damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
             let ratios = {}
-            
+
             if (damage_type != 'none') {
                 ratios.base_damage = x.vars.ap_progressions[subindex];
-            } 
+            }
             for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
                 for (const r in x.vars.as_ratios[ratio_index])
                     ratios[r] = x.vars.as_ratios[ratio_index][r];
-
             }
 
-            effect.subeffects[subindex]  = {
-                index: subindex,
-                ratios: ratios,
+            effect.subeffects[subindex] = {
+                index: parseInt(subindex),
                 title: title,
-                str: x.vars.st_slices[subindex][1] || '',
                 damage_type: damage_type,
+                ratios: ratios,
+                // str: x.vars.st_slices[subindex][1] || '',
             }
         }
     }

@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.129",
-  "changes": "10.23.1",
+  "changes": "10.25.1",
   "id": "Fizz",
   "name": "Fizz",
   "title": "the Tidal Trickster",
@@ -30,7 +30,7 @@
     "hp": 570,
     "hpperlevel": 98,
     "mp": 317.2,
-    "mpperlevel": 57,
+    "mpperlevel": 37,
     "movespeed": 335,
     "armor": 22.412,
     "armorperlevel": 3.4,
@@ -64,9 +64,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Fizz''' is permanently {{tip|ghosted}}, and takes 4 {{as|(+ 1% AP)}} reduced {{tt|pre-mitigation damage|Damage calculated before modifiers}} from every instance of damage, up to a maximum of 50% reduction."
+        "{{sbc|Innate:}} '''Fizz''' is permanently {{tip|ghosted}}, and takes 4 {{as|(+ 1% AP)}} {{tip|Damage reduction|reduced}} {{tt|pre-mitigation damage|Damage calculated before modifiers}} from every instance of damage, up to a maximum of 50% reduction."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Fizz</b> is permanently <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip>, and takes 4 <span class=\"ap\">(+ 1% AP)</span> reduced <span class=\"title-tooltip\" title=\"Damage calculated before modifiers\">pre-mitigation damage</span> from every instance of damage, up to a maximum of 50% reduction.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Fizz</b> is permanently <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip>, and takes 4 <span class=\"ap\">(+ 1% AP)</span> <HtmlTooltip class=\"blue link\">reduced<template #content><div><h4>Damage reduction<hr></h4><p>Description for keyword Damage reduction</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"Damage calculated before modifiers\">pre-mitigation damage</span> from every instance of damage, up to a maximum of 50% reduction.",
       "leveling": [],
       "notes": "* No additional notes.",
       "skillkey": "I",
@@ -98,10 +98,9 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, dealing them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} if they are in range upon arrival.",
-        "''Urchin Strike'' applies [[on-hit effect]]s."
+        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, and if they are in range upon arrival, he deals them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance towards the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> if they are in range upon arrival.<i>Urchin Strike</i> applies <a class=\"effect link\" title=\"on-hit effect\">on-hit effect</a>s.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance towards the target enemy, and if they are in range upon arrival, he deals them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.",
       "leveling": [
         "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}"
       ],
@@ -110,7 +109,6 @@
       "skillid": "q1",
       "effects": [
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -136,7 +134,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   10,
@@ -146,10 +146,7 @@
                   70
                 ],
                 "player_total_ap": 0.55
-              },
-              "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         }
@@ -186,22 +183,21 @@
       },
       "description": [
         "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies [[on-hit]], dealing {{as|magic damage}} every {{fd|0.5}} seconds for 3 seconds, refreshing [[on-hit]].",
-        "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] becomes {{tip|unstoppable basic attack|unstoppable}}, deals {{as|'''bonus''' magic damage}} and gains {{sti|range|50 '''bonus''' range}}.",
-        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} on-hit for 5 seconds.",
+        "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] within 4 seconds becomes {{tip|unstoppable basic attack|unstoppable}}, deals {{as|'''bonus''' magic damage}} and gains {{sti|range|50 '''bonus''' range}}.",
+        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} on-hit for the next 5 seconds.",
         "''Seastone Trident'' {{tip|basic attack reset|resets}} '''Fizz's''' basic attack timer."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Fizz's</b> basic attacks rend enemies <a class=\"effect link\" title=\"on-hit\">on-hit</a>, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds for 3 seconds, refreshing <a class=\"effect link\" title=\"on-hit\">on-hit</a>.<span class=\"sbc\">Active:</span> <b>Fizz's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> becomes <HtmlTooltip class=\"blue link\">unstoppable<template #content><div><h4>unstoppable basic attack<hr></h4><p>Description for keyword unstoppable basic attack</p></div></template></HtmlTooltip>, deals <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and gains <span>50 <b>bonus</b> range</span>.If <i>Seastone Trident</i> kills its target, its <span>cooldown</span> is reduced to 1 second and refunds <span><span class=\"mana\">mana</span></span>. Otherwise, if <i>Seastone Trident</i> doesn't kill its target, <b>Fizz's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> on-hit for 5 seconds.<i>Seastone Trident</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Fizz's</b> basic attack timer.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Fizz's</b> basic attacks rend enemies <a class=\"effect link\" title=\"on-hit\">on-hit</a>, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds for 3 seconds, refreshing <a class=\"effect link\" title=\"on-hit\">on-hit</a>.<br /><span class=\"sbc\">Active:</span> <b>Fizz's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 4 seconds becomes <HtmlTooltip class=\"blue link\">unstoppable<template #content><div><h4>unstoppable basic attack<hr></h4><p>Description for keyword unstoppable basic attack</p></div></template></HtmlTooltip>, deals <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and gains <span>50 <b>bonus</b> range</span>.<br />If <i>Seastone Trident</i> kills its target, its <span>cooldown</span> is reduced to 1 second and refunds <span><span class=\"mana\">mana</span></span>. Otherwise, if <i>Seastone Trident</i> doesn't kill its target, <b>Fizz's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> on-hit for the next 5 seconds.<br /><i>Seastone Trident</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Fizz's</b> basic attack timer.",
       "leveling": [
         "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}|Magic Damage per Tick|{{ap|20/6 to 60/6|round=2}} {{as|(+ {{ap|40/6|round=2}}% AP)}}}}",
         "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
         "{{st|Mana Refunded|{{ap|20 to 52}}}}\n{{st|Bonus On-Hit Damage|{{ap|10 to 30}} {{as|(+ 35% AP)}}}}"
       ],
-      "notes": "* {{Pending for test}}: ''Seastone Trident's '' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* Applies {{tip|spell damage}} on the empowered attack, {{tip|persistent damage}} on the damage over time effect, and {{tip|proc damage}} on the bonus damage on-hit.\n* {{Pending for test}}: ''Seastone Trident's '' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
         {
-          "levelingtext": "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}|Magic Damage per Tick|{{ap|20/6 to 60/6|round=2}} {{as|(+ {{ap|40/6|round=2}}% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Magic Damage per Tick</span>: <span><SpellSpan :list=\"[3.33,5,6.67,8.33,10]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[6.67]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -242,7 +238,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Total Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   20,
@@ -254,15 +252,11 @@
                 "player_total_ap": [
                   0.0667
                 ]
-              },
-              "title": "Total Magic Damage",
-              "str": "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -288,7 +282,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
                   50,
@@ -298,15 +294,11 @@
                   130
                 ],
                 "player_total_ap": 0.5
-              },
-              "title": "Bonus Magic Damage",
-              "str": "<SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
-              "damage_type": "magic"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Mana Refunded|{{ap|20 to 52}}}}\n{{st|Bonus On-Hit Damage|{{ap|10 to 30}} {{as|(+ 35% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Mana Refunded</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus On-Hit Damage</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -343,7 +335,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Mana Refunded",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   20,
@@ -353,13 +347,12 @@
                   52
                 ],
                 "player_total_ap": 0.35000000000000003
-              },
-              "title": "Mana Refunded",
-              "str": "<SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>",
-              "damage_type": "unknown"
+              }
             },
             {
-              "index": "1",
+              "index": 1,
+              "title": "Bonus On-Hit Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   10,
@@ -369,10 +362,7 @@
                   30
                 ],
                 "player_total_ap": 0.35000000000000003
-              },
-              "title": "Bonus On-Hit Damage",
-              "str": "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
@@ -407,7 +397,7 @@
         "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knock back distance.",
         "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of knocked back."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> throws down a lure at the target location that attracts a shark, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing <span class=\"magic-damage\">magic damage</span> to surrounding enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knock back distance.<span class=\"sbc\">Guppy (<455):</span> 40% slow, 200 eruption radius and 150 unit knock back distance.<span class=\"sbc\">Chomper (455-910):</span> 60% slow, 325 eruption radius and 250 unit knock back distance.<span class=\"sbc\">Gigalodon (>910):</span> 80% slow, 450 eruption radius and 350 unit knock back distance.Enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for the duration and <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 1 second instead of knocked back.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> throws down a lure at the target location that attracts a shark, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing <span class=\"magic-damage\">magic damage</span> to surrounding enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knock back distance.<br /><span class=\"sbc\">Guppy (<455):</span> 40% slow, 200 eruption radius and 150 unit knock back distance.<br /><span class=\"sbc\">Chomper (455-910):</span> 60% slow, 325 eruption radius and 250 unit knock back distance.<br /><span class=\"sbc\">Gigalodon (>910):</span> 80% slow, 450 eruption radius and 350 unit knock back distance.<br />Enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for the duration and <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 1 second instead of knocked back.",
       "leveling": [
         "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
         "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
@@ -418,7 +408,6 @@
       "skillid": "r1",
       "effects": [
         {
-          "levelingtext": "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Guppy Damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -442,7 +431,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Guppy Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   150,
@@ -450,15 +441,11 @@
                   350
                 ],
                 "player_total_ap": 0.8
-              },
-              "title": "Guppy Damage",
-              "str": "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Chomper Damage</span>: <span><SpellSpan :list=\"[225,325,425]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -482,7 +469,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Chomper Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   225,
@@ -490,15 +479,11 @@
                   425
                 ],
                 "player_total_ap": 1
-              },
-              "title": "Chomper Damage",
-              "str": "<SpellSpan :list=\"[225,325,425]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         },
         {
-          "levelingtext": "{{st|Gigalodon Damage|{{ap|300 to 500}} {{as|(+ 120% AP)}}}}",
           "str": "<ul class=\"st\"><li><span class=\"blue\">Gigalodon Damage</span>: <span><SpellSpan :list=\"[300,400,500]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
@@ -522,7 +507,9 @@
           },
           "subeffects": [
             {
-              "index": "0",
+              "index": 0,
+              "title": "Gigalodon Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   300,
@@ -530,10 +517,7 @@
                   500
                 ],
                 "player_total_ap": 1.2
-              },
-              "title": "Gigalodon Damage",
-              "str": "<SpellSpan :list=\"[300,400,500]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
-              "damage_type": "unknown"
+              }
             }
           ]
         }
