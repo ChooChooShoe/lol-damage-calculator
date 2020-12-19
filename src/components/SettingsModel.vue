@@ -69,12 +69,13 @@ export default {
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s;
-  &:target {
+}
+  .modal-window:target {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
   }
-  & > div {
+  .modal-window > div {
     width: 400px;
     position: absolute;
     top: 50%;
@@ -90,7 +91,6 @@ export default {
     font-size: 150%;
     margin: 0 0 15px;
   }
-}
 
 .modal-close {
   color: #aaa;
@@ -102,10 +102,10 @@ export default {
   top: 0;
   width: 70px;
   text-decoration: none;
-  &:hover {
+}
+  .modal-close:hover {
     color: black;
   }
-}
 
 .opt {
   display: block;

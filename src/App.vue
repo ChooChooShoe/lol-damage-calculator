@@ -110,7 +110,7 @@ export default {
   },
 
   setup(props) {
-    console.log("process.env", process.env);
+    // console.log("process.env", process.env);
     let championList = ref({});
     let itemData = ref([]);
     const readersNumber = ref(0);
