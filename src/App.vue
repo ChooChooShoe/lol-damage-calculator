@@ -27,8 +27,8 @@
   </div>
 
   <div class="flex main">
-    <ChampionDiv></ChampionDiv>
-    <TargetDiv></TargetDiv>
+    <ChampObj> <ChampionDiv></ChampionDiv></ChampObj>
+    <ChampObj> <TargetDiv></TargetDiv></ChampObj>
 
     <AADamageSource></AADamageSource>
     <ChampionSpellDamageSource
@@ -69,7 +69,9 @@ import ChampionSpellDamageSource from "./components/spells/ChampionSpellDamageSo
 import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
 
 import { setupVue } from "./javascript/league_data.js";
-import { ref, reactive } from "vue";
+import { ref, reactive, provide } from "vue";
+
+import ChampObj from "./components/ChampObj.vue";
 
 function loadLocalConfig() {
   console.log("loading config...");
@@ -93,6 +95,7 @@ export default {
     // ShopController: () => import("./components/shop/ShopController.vue"),
     AADamageSource,
     CustomDamageSource,
+    ChampObj,
   },
   data() {
     return {
@@ -117,6 +120,8 @@ export default {
     const book = reactive({ title: "Vue 3 Guide" });
 
     setupVue(championList, itemData);
+
+    provide("championList", championList);
 
     // expose to template
     return {

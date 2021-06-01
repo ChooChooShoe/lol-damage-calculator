@@ -32,7 +32,7 @@ export const version = versionJson.v;
 export const displayVersion = versionJson.dv;
 export const spriteBaseUri = `${cdn}/${version}/img/sprite/`;
 
-export function setupVue(championList, itemData ) {
+export function setupVue(championList, itemData) {
     fetchChampionList().then((ret) => {
         championList.value = ret;
     });
@@ -46,14 +46,14 @@ export function setupVue(championList, itemData ) {
                 height: `${i.h}px`,
             };
             data[key].spriteStyleSmall = {
-                background: `url("${spriteBaseUri}small_${i.sprite}") -${i.x*0.75}px -${i.y*0.75}px`,
-                width: `${i.w*0.75}px`,
-                height: `${i.h*0.75}px`,
+                background: `url("${spriteBaseUri}small_${i.sprite}") -${i.x * 0.75}px -${i.y * 0.75}px`,
+                width: `${i.w * 0.75}px`,
+                height: `${i.h * 0.75}px`,
             };
             data[key].spriteStyleTiny = {
-                background: `url("${spriteBaseUri}tiny_${i.sprite}") -${i.x*0.5}px -${i.y*0.5}px`,
-                width: `${i.w*0.5}px`,
-                height: `${i.h*0.5}px`,
+                background: `url("${spriteBaseUri}tiny_${i.sprite}") -${i.x * 0.5}px -${i.y * 0.5}px`,
+                width: `${i.w * 0.5}px`,
+                height: `${i.h * 0.5}px`,
             };
         }
         itemData.value = data;
@@ -313,7 +313,7 @@ export function default_stats() {
 
 export const spell_ratios = {
     base_damage: { user: '', prefex: "Base", color: "", sufex: "", extra: true, flat: true, html: "" },
-    base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: ""},
+    base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: "" },
     player_total_ap: { user: 'player', stat: 'total_ap', prefex: '', color: "ap", sufex: "AP", html: "AP" },
     player_total_ad: { user: 'player', stat: 'total_ad', prefex: '', color: "ad", sufex: "AD", html: "AD" },
     player_bonus_ad: { user: 'player', stat: 'bonus_ad', prefex: '', color: "ad", sufex: "Bonus AD", html: "<b>bonus</b> AD" },
@@ -362,3 +362,123 @@ export class DamageSource {
         return this.dmg_postmitigation
     }
 }
+
+// import { computed } from "vue";
+
+// export const ChampObj = {
+//     id: "",
+//     name: "",
+//     level: 18,
+//     flat_mr_reduction:0,
+//     percent_mr_reduction : 0,
+//     percent_magicpen : 0,
+//     flat_magicpen : 0,
+//     flat_armor_reduction : 0,
+//     percent_armor_reduction : 0,
+//     percent_armorpen : 0,
+//     percent_bonus_armorpen :0,
+//     lethality: 0,
+
+//     flat_armorpen: computed({
+//       get: () => this.lethality * (0.6 + (0.4 * this.level) / 18),
+//       set: val => {
+//           this.lethality = Math.round((45 * flat_armorpen) / (this.level + 27));
+//       }
+//     })
+
+//     get_current_hp: () => { return this.total_hp - this.missing_hp },
+//     set_current_hp: (current_hp) => {
+//         if (current_hp > this.total_hp) this.total_hp = current_hp;
+//         this.missing_hp = this.total_hp - current_hp;
+//     },
+
+//     critdamage : 1.75,
+//     lifesteal : 0,
+//     spellvamp : 0,
+//     missing_hp : 0,
+//     total_shield : 0,
+
+//     total_ap : 0,
+
+//     base_ad : 0,
+//     bonus_ad : 0,
+//     get_total_ad: () => { return this.base_ad + this.bonus_ad; },
+//     set_total_ad: (total) => { this.bonus_ad = total - this.base_ad; },
+    
+//     base_hp : 0,
+//     bonus_hp : 0,
+//     get_total_hp: () => { return this.base_hp + this.bonus_hp; },
+//     set_total_hp: (total) => { this.bonus_hp = total - this.base_hp; },
+//     base_mana : 0,
+//     bonus_mana : 0,
+//     get_total_mana: () => { return this.base_mana + this.bonus_mana; },
+//     set_total_mana: (total) => { this.bonus_mana = total - this.base_mana; },
+//     base_movespeed : 0,
+//     bonus_movespeed : 0,
+//     get_total_movespeed: () => { return this.base_movespeed + this.bonus_movespeed; },
+//     set_total_movespeed: (total) => { this.bonus_movespeed = total - this.base_movespeed; },
+//     base_armor : 0,
+//     bonus_armor : 0,
+//     get_total_armor: () => { return this.base_armor + this.bonus_armor; },
+//     set_total_armor: (total) => { this.bonus_armor = total - this.base_armor; },
+//     base_mr : 0,
+//     bonus_mr : 0,
+//     get_total_mr: () => { return this.base_mr + this.bonus_mr; },
+//     set_total_mr: (total) => { this.bonus_mr = total - this.base_mr; },
+//     base_attackrange : 0,
+//     bonus_attackrange : 0,
+//     get_total_attackrange: () => { return this.base_attackrange + this.bonus_attackrange; },
+//     set_total_attackrange: (total) => { this.bonus_attackrange = total - this.base_attackrange; },
+//     base_hpregen : 0,
+//     bonus_hpregen : 0,
+//     get_total_hpregen: () => { return this.base_hpregen + this.bonus_hpregen; },
+//     set_total_hpregen: (total) => { this.bonus_hpregen = total - this.base_hpregen; },
+//     base_manaregen : 0,
+//     bonus_manaregen : 0,
+//     get_total_manaregen: () => { return this.base_manaregen + this.bonus_manaregen; },
+//     set_total_manaregen: (total) => { this.bonus_manaregen = total - this.base_manaregen; },
+//     base_critchance : 0,
+//     bonus_critchance : 0,
+//     get_total_critchance: () => { return this.base_critchance + this.bonus_critchance; },
+//     set_total_critchance: (total) => { this.bonus_critchance = total - this.base_critchance; },
+
+//     base_attackspeed : 0,
+//     bonus_attackspeed : 0,
+//     get_total_attackspeed: () => { return this.base_attackspeed * (1 +  (this.bonus_attackspeed / 100.0)); },
+//     set_total_attackspeed: (total) => { this.bonus_attackspeed = ((total / this.base_attackspeed) - 1) * 100.0; },
+
+
+//     update_base_stats: (obj, stats, lvl) => {
+//         console.log("update_base_stats")
+//         obj.level = Math.max(Math.min(lvl, 18), 0);
+//         obj.base_ad = stats.attackdamage + growth(stats.attackdamageperlevel) || 0;
+//         obj.base_hp = stats.hp + growth(stats.hpperlevel) || 0;
+//         obj.base_mana = stats.mp + growth(stats.mpperlevel) || 0;
+//         obj.base_movespeed = stats.movespeed || 0;
+//         obj.base_armor = stats.armor + growth(stats.armorperlevel) || 0;
+//         obj.base_mr = stats.spellblock + growth(stats.spellblockperlevel) || 0;
+//         obj.base_attackrange = stats.attackrange || 0;
+//         obj.base_hpregen = stats.hpregen + growth(stats.hpregenperlevel) || 0;
+//         obj.base_manaregen = stats.mpregen + growth(stats.mpregenperlevel) || 0;
+//         obj.base_critchance = stats.crit + growth(stats.critperlevel) || 0;
+
+//         obj.base_attackspeed = stats.attackspeed || 0;
+//         obj.bonus_attackspeed = growth(stats.attackspeedperlevel) || 0;
+//     },
+// }
+
+// function growth(perlevel) {
+//     const level = 14;
+//     return perlevel * (level - 1) * (0.7025 + 0.0175 * (level - 1));
+// }
+
+// function _make_champ_data_class() {
+//     let str = "";
+//     for (const basic_stat of ['ad', 'ap', 'hp', 'mana', 'movespeed', 'armor', 'mr', 'attackrange', 'hpregen', 'manaregen', 'critchance', 'attackspeed']) {
+//         str += `    base_${basic_stat} = 0,\n`;
+//         str += `    bonus_${basic_stat} = 0,\n`;
+//         str += `    get_total_${basic_stat}() { return this.base_${basic_stat} + this.bonus_${basic_stat}; },\n`;
+//         str += `    set_total_${basic_stat}(total) { this.bonus_${basic_stat} = total - this.base_${basic_stat}; },\n`;
+//     }
+//     console.log("_make_champ_data_class\n\n" + str);
+// }
