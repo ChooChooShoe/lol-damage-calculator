@@ -2,7 +2,7 @@
   <div class="dd-control">
     <label class="dd-label">
       {{ label }}
-      <input type="button" class="button dd-select" :value="value" />
+      <button type="button" class="button dd-select" v-html="value"> </button>
       <div class="dd-content">
         <slot></slot>
       </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ["label", "value"],
+  props: ["label", "value", "suffix"],
   name: "DropdownSelect",
 };
 </script>

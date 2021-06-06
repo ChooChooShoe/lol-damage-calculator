@@ -1,363 +1,149 @@
 
 <template>
   <div class="data_holder c50">
+    <!-- <EditBtn v-model="editMode"></EditBtn> -->
     <h2>{{ username }}</h2>
-    <ChampSearch v-model:champ="champ"></ChampSearch>
-    <ChampLevelSelect v-model:level="level"></ChampLevelSelect>
+    <ChampSearch v-model:champ="obj.champ"></ChampSearch>
+    <ChampLevelSelect v-model:level="obj.level"></ChampLevelSelect>
+    <div class="data_holder__grid">
+      <span v-if="showDamage" class="attack-damage">AD</span>
+      <BlockStat v-if="showDamage" stat="ad" v-model:base="obj.base_ad" v-model:bonus="obj.bonus_ad" v-model:total="obj.total_ad" title="Attack Damage">
+        Increases the amount of damage you deal with Attacks and AD scaling Spells.
+      </BlockStat>
+      <span v-if="showDamage" class="ap">AP</span>
+      <BlockStat v-if="showDamage" stat="ap" v-model:total="obj.total_ap" title="Ability Power"> Increases the amount of damage you deal with AP scaling Spells. </BlockStat>
 
-    <!-- <label class="column column-50">
-      Show Damage Stats
-      <label class="switch-wrap">
-        <input type="checkbox" v-model="showDamage" />
-        <div class="switch"></div>
-      </label>
-    </label>
-    <label class="column column-50 flex">
-      Show Defensive Stats
-      <label class="switch-wrap">
-        <input type="checkbox" v-model="showDefence" />
-        <div class="switch"></div>
-      </label>
-    </label>-->
+      <span v-if="showDefence" class="armor">Armor</span>
+      <BlockStat v-if="showDefence" stat="armor" v-model:base="obj.base_armor" v-model:bonus="obj.bonus_armor" v-model:total="obj.total_armor" title="Armor">
+        <template v-slot:default>Reduces the amount of damage taken from <span class="physical-damage">physical damage sources</span> </template>
+        <template v-slot:footer>
+          <p>
+            You take <span class="total">{{ rnd(obj.percent_pysical_reduction * 100) }}</span
+            >% reduced <span class="pysical-damage">pysical damage</span>
+          </p>
+        </template>
+      </BlockStat>
 
-    <table
-      v-if="showExtra || showDamage || showDefence"
-      style="margin-bottom: 0"
-    >
-      <thead>
-        <tr>
-          <th>Stats</th>
-          <th>
-            <abbr :title="'Base stats for a level ' + level + ' ' + info.name"
-              >Base</abbr
-            >
-          </th>
-          <th>
-            <abbr title="Stats gained from items and abilities">Bonus</abbr>
-          </th>
-          <th>
-            <abbr title="Base + Bonus = Total">Total</abbr>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-if="showDamage">
-          <th class="attack-damage">Attack Damage (AD)</th>
-          <Editable
-            v-model="base_ad"
-            :readonly="readonly_base_values"
-          ></Editable>
-          <Editable v-model="bonus_ad"></Editable>
-          <Editable v-model="total_ad"></Editable>
-        </tr>
-        <tr v-if="showDamage">
-          <th class="ap">Ability Power (AP)</th>
-          <Editable :modelValue="0" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="total_ap"></Editable>
-          <Editable v-model="total_ap"></Editable>
-        </tr>
-        <tr v-if="showDefence">
-          <th class="health">Health</th>
-          <Editable
-            v-model="base_hp"
-            :readonly="readonly_base_values"
-          ></Editable>
-          <Editable v-model="bonus_hp"></Editable>
-          <Editable v-model="total_hp"></Editable>
-        </tr>
-        <tr v-if="showDefence">
-          <th class="armor">Armor</th>
-          <Editable
-            v-model="base_armor"
-            :readonly="readonly_base_values"
-          ></Editable>
-          <Editable v-model="bonus_armor"></Editable>
-          <Editable v-model="total_armor"></Editable>
-        </tr>
-        <tr v-if="showDefenceLevel > 0">
-          <td colspan="4">
-            <ul>
-              <li>
-                Will reduce
-                <span class="physical-damage">Physical Damage</span> taken by
-                <EditableCollapse
-                  class="ap"
-                  :autoWidth="true"
-                  format="percent"
-                  v-model="percent_pysical_reduction"
-                ></EditableCollapse
-                >%.
-              </li>
-              <li>
-                Equivalent to having
-                <span class="health"
-                  >{{ Math.ceil(eff_physical_hp) }} Effective HP</span
-                >
-                vs. <span class="physical-damage">Physical Damage</span>.
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr v-if="showDefence">
-          <th class="mr">Magic Res. (MR)</th>
-          <Editable
-            v-model="base_mr"
-            :readonly="readonly_base_values"
-          ></Editable>
-          <Editable v-model="bonus_mr"></Editable>
-          <Editable v-model="total_mr"></Editable>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <ul v-if="showDefenceLevel > 0">
-              <li>
-                Will reduce
-                <span class="magic-damage">Magic Damage</span> taken by
-                <EditableCollapse
-                  class="ap"
-                  format="percent"
-                  v-model="percent_magic_reduction"
-                ></EditableCollapse
-                >%.
-              </li>
-              <li>
-                Equivalent to having
-                <span class="health">{{ Math.ceil(eff_magic_hp) }} HP</span> vs.
-                <span class="magic-damage">Magic Damage</span>.
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr v-if="showExtra">
-          <th class="mana">Mana</th>
-          <Editable
-            v-model="base_mana"
-            :readonly="readonly_base_values"
-          ></Editable>
-          <Editable v-model="bonus_mana"></Editable>
-          <Editable v-model="total_mana"></Editable>
-        </tr>
-        <!-- <tr>
-          <th>Movespeed</th>
-          <td>{{base_movespeed }}</td>
-          <td>{{bonus_movespeed }}</td>
-          <td>{{total_movespeed }}</td>
-        </tr>-->
-        <!-- <tr>
-          <th>Attack Range</th>
-          <td>{{base_attackrange}}</td>
-          <td>{{bonus_attackrange}}</td>
-          <td>{{total_attackrange }}</td>
-        </tr>-->
-        <!-- <tr>
-          <th>Health Regen.</th>
-          <td>{{base_hpregen }}</td>
-          <td>{{bonus_hpregen }}</td>
-          <td>{{total_hpregen }}</td>
-        </tr>-->
-        <!-- <tr>
-          <th>Mana Regen.</th>
-          <td>{{base_manaregen }}</td>
-          <td>{{bonus_manaregen }}</td>
-          <td>{{total_manaregen }}</td>
-        </tr>-->
-        <!-- <tr>
-          <th>Crit Chance</th>
-          <td>{{base_critchance }}</td>
-          <td>{{bonus_critchance }}</td>
-          <td>{{total_critchance }}</td>
-        </tr>-->
-        <!-- <tr>
-          <th>Attackspeed</th>
-          <td>{{base_attackspeed}}</td>
-          <td>{{bonus_attackspeed}}</td>
-          <td>{{total_attackspeed }}</td>
-        </tr>-->
-      </tbody>
-    </table>
-    <table v-if="showDamage">
-      <thead>
-        <tr>
-          <th>Item Stats</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="lethality">Lethality</th>
-          <Editable v-model="lethality"></Editable>
-          <!-- <td><Editable v-model="flat_armorpen"></Editable></td> -->
-        </tr>
-        <tr>
-          <th class="lethality">
-            {{ rnd(percent_armorpen * 100) }}% Armor Penetration
-          </th>
-          <Editable v-model="percent_armorpen" format="percent">%</Editable>
-        </tr>
-        <tr>
-          <th class="magic">Flat Magic Pen.</th>
-          <Editable v-model="flat_magicpen"></Editable>
-        </tr>
-        <tr>
-          <th class="magic">{{ rnd(percent_magicpen * 100) }}% Magic Pen.</th>
-          <Editable v-model="percent_magicpen" format="percent">%</Editable>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <div>
-              <span>Has a Void Staff?&nbsp;</span>
-              <label>
-                <input
-                  @change="percent_magicpen = $event.target.checked ? 0.4 : 0.0"
-                  type="checkbox"
-                />
-                <span>{{ rnd(percent_magicpen * 100) }}% Magic Pen.</span>
-              </label>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <span v-if="showDefence" class="mr">MR</span>
+      <BlockStat v-if="showDefence" stat="mr" v-model:base="obj.base_mr" v-model:bonus="obj.bonus_mr" v-model:total="obj.total_mr" title="Magic Resist">
+        <template v-slot:default> Reduces the amount of damage taken from <span class="magic-damage">magical damage sources</span> </template>
+        <template v-slot:footer>
+          <p>
+            You take <span class="total">{{ rnd(obj.percent_magic_reduction * 100) }}</span
+            >% reduced <span class="magic-damage">magic damage</span>
+          </p>
+        </template>
+      </BlockStat>
 
-    <!-- <div class="tabs is-left is-toggle">
-      <ul>
-        <li :class=" { 'is-active': showDamageLevel === 0 }">
-          <a @click="showDamageLevel  = 0">Show Less</a>
-        </li>
-        <li :class=" { 'is-active': showDamageLevel === 1 }">
-          <a @click="showDamageLevel  = 1">Show More</a>
-        </li>
-        <li :class=" { 'is-active': showDamageLevel === 2 }">
-          <a @click="showDamageLevel  = 2">Show All</a>
-        </li>
-      </ul>
-    </div>-->
+      <span v-if="showExtra" class="attack-speed">AS</span>
+      <BlockStat v-if="showExtra" :hideBase="true" v-model:total="obj.bonus_attackspeed" title="Attack Speed">
+        <template v-slot:default> Attack Speed does not affect calculations</template>
+        <template v-slot:footer>
+          <p>
+            Bonus Attack Speed: <b class="total">{{ rnd(obj.bonus_attackspeed) }}</b
+            >%
+          </p>
+          <p>
+            Current attacks per second: <b class="bonus">{{ rnd(obj.total_attackspeed * 1000) / 1000 }}</b>
+          </p>
+          <p>
+            Ratio: <b class="base">{{ obj.base_attackspeed }}</b>
+          </p>
+        </template>
+      </BlockStat>
 
-    <div class="column" v-if="showDefence">
-      <!-- <div class="tabs is-left is-toggle">
-        <ul>
-          <li :class=" { 'is-active': showDefenceLevel === 0 }">
-            <a @click="showDefenceLevel  = 0">Show Less</a>
-          </li>
-          <li :class=" { 'is-active': showDefenceLevel === 1 }">
-            <a @click="showDefenceLevel  = 1">Show More</a>
-          </li>
-          <li :class=" { 'is-active': showDefenceLevel === 2 }">
-            <a @click="showDefenceLevel  = 2">Show All</a>
-          </li>
-        </ul>
-      </div>-->
-      <!-- <hr /> -->
+      <span v-if="showExtra" class="mana">Haste</span>
+      <BlockStat v-if="showExtra" stat="ability_haste" v-model:total="obj.ability_haste" title="Ability Haste">
+        <template v-slot:default> Ability Haste does not affect calculations</template>
+        <template v-slot:footer>
+          <p>
+            Equivalent to having <b class="total">{{ rnd(obj.cdr * 100) }}</b
+            >% cooldown reduction.
+          </p>
+        </template>
+      </BlockStat>
 
-      <table v-if="showDefence">
-        <thead>
-          <tr>
-            <th colspan="4" class="health">Health Breakdown</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class>Base</td>
-            <Editable v-model="base_hp" :readonly="true"></Editable>
-            <td class>Bonus</td>
-            <Editable v-model="bonus_hp"></Editable>
-          </tr>
-          <tr>
-            <td class>Max / Total</td>
-            <Editable v-model="total_hp"></Editable>
-            <td class>Shield</td>
-            <Editable v-model="total_shield"></Editable>
-          </tr>
-          <tr>
-            <td class>Current</td>
-            <Editable v-model="current_hp"></Editable>
-            <td class>Missing</td>
-            <Editable v-model="missing_hp"></Editable>
-          </tr>
-        </tbody>
-      </table>
+      <span v-if="showExtra" class="crit-chance">Crit</span>
+      <BlockStat v-if="showExtra" :hideBase="true" v-model:total="obj.total_critchance" title="Crit Strike Chance">
+        <template v-slot:default> Crit Strike Chance does not affect calculations</template>
+        <template v-slot:footer>
+          <p>
+            Current Crit Strike Chance: <b class="total">{{ obj.total_critchance }}</b
+            >% (<b class="base">{{ obj.base_critchance }}</b
+            >% base + <b class="bonus">{{ obj.bonus_critchance }}</b
+            >% bonus)
+          </p>
+          <p>
+            Current Crit Strike Damage: <b class="total">{{ obj.total_critdamage }}</b
+            >% (<b class="base">{{ obj.base_critdamage }}</b
+            >% base + <b class="bonus">{{ obj.bonus_critdamage }}</b
+            >% bonus)
+          </p>
+        </template>
+      </BlockStat>
 
-      <data-input class="is-hidden" v-model="total_hp" labelclass="health"
-        >Health</data-input
-      >
-      <ul v-if="showDefenceLevel > 0">
-        <li>
-          {{ rnd(base_hp) }}
-          <b>base</b>
-          HP + {{ rnd(bonus_hp) }}
-          <b>bonus</b>
-          HP =
-          {{ rnd(total_hp) }} max HP - {{ rnd(missing_hp) }} missing HP =
-          {{ rnd(current_hp) }} current HP
-        </li>
-        <hr />
-      </ul>
+      <span v-if="showExtra" class="ms">Speed</span>
+      <BlockStat v-if="showExtra" :hideBase="true" v-model:base="obj.base_movespeed" v-model:bonus="obj.bonus_movespeed" v-model:total="obj.total_movespeed" title="Move Speed">
+        <template v-slot:default> Movespeed does not affect calculations</template>
+        <template v-slot:footer>
+          <p>
+            Current Move Speed: <b class="total">{{ obj.total_movespeed }}</b> (<b class="base">{{ obj.base_movespeed }}</b> base +
+            <b class="bonus">{{ obj.bonus_movespeed }}</b> bonus) units per second.
+          </p>
+        </template>
+      </BlockStat>
 
-      <!-- <div v-if="info.resource == 'Mana' && showDefenceLevel  > 1">
-        <data-input v-model="total_mana" labelclass="mana">Mana</data-input>
-        <ul>
-          <li>
-            {{ rnd(base_mana) }} Base
-            <span class="mana">Mana</span>
-            + {{ rnd(bonus_mana) }} Bonus
-            <span class="mana">Mana</span>
-            = {{ rnd(total_mana) }} Total
-            <span class="mana">Mana</span>
-          </li>
-        </ul>
+      <span v-if="showDamage" class="magic-damage">MPen</span>
+      <BlockStat v-if="showDamage" v-model:total="obj.flat_magicpen" title="Flat Magic Penetration">
+        Flat Magic Penetration is from Sorcerer Shoes, Luden's Tempest, etc.
+      </BlockStat>
+      <span v-if="showDamage" class="magic-damage">%MPen</span>
+      <BlockStat suffix="%" v-if="showDamage" v-model:total="obj.percent_magicpen" title="Percent Magic Penetration"> Percent Magic Penetration is from Void Staff. </BlockStat>
 
-        <hr />
-        <data-input
-          v-if="info.resource == 'Mana'"
-          labelclass="mana-regeneration"
-          v-model="base_manaregen"
-        >{{info.resource}} Regeneration (per 5)</data-input>
-        <span v-if="info.resource == 'Mana'">
-          &#8226; This is
-          <span class="mana">
-            {{ (base_manaregen / 5).toFixed(1) }}
-            {{info.resource}}
-          </span> after 1 second and
-          <span class="mana">
-            {{ rnd(base_manaregen * 12) }}
-            {{info.resource}}
-          </span> after 60 seconds.
-        </span>
-        <hr />
-      </div>-->
-      <!-- <data-input
-        v-if="showDefenceLevel > 1"
-        v-model="base_hpregen"
-        labelclass="health-regeneration"
-      >Health Regeneration (per 5)</data-input>
-      <div v-if="showDefenceLevel > 1">
-        This is
-        <span class="health">{{ (base_hpregen / 5).toFixed(1) }} HP</span> after 1 second and
-        <span class="health">{{ rnd(base_hpregen * 12) }} HP</span> after 60 seconds.
-        <hr />
-      </div>
-      <span v-if="info.resource === 'None'">* {{ info.name }} does not use any secondary resource.</span>-->
+      <span v-if="showDamage" class="lethality">Lethality</span>
+      <BlockStat v-if="showDamage" v-model:total="obj.lethality" title="Lethality">
+        <template v-slot:default> Lethality is from all the assassin items.<br />Lethality sacales based on champion level.</template>
+        <template v-slot:footer>
+          <p>
+            Equivalent to having <b class="total">{{ rnd(obj.flat_armorpen) }}</b> Flat Armor Penetration at level {{ obj.level }}.
+          </p>
+        </template>
+      </BlockStat>
+      <span v-if="showDamage" class="physical-damage">%Pen</span>
+      <BlockStat suffix="%" v-if="showDamage" v-model:total="obj.percent_armorpen" title="Percent Armor Penetration">
+        Percent Armor Penetration is from Lord Dominik's Regards.
+      </BlockStat>
+
+      <span v-if="showExtra" class="mana" title="Mana per 5 seconds"><span class="title--underline">MP5</span></span>
+      <BlockStat v-if="showExtra" v-model:base="obj.base_manaregen" v-model:bonus="obj.bonus_manaregen" v-model:total="obj.total_manaregen" title="Mana Regeneration">
+        MP5 does not affect calculations
+      </BlockStat>
+      <span v-if="showExtra" class="health" title="Health Regen per 5 seconds"><span class="title--underline">HP5</span></span>
+      <BlockStat v-if="showExtra" v-model:base="obj.base_hpregen" v-model:bonus="obj.bonus_hpregen" v-model:total="obj.total_hpregen" title="Health Regeneration">
+        HP5 does not affect calculations
+      </BlockStat>
     </div>
     <div class="buttons">
-      <!-- <input
-        class="button error is-hidden"
-        type="button"
-        value="Reset All"
-        @click="clear(true)"
-      />-->
-      <input
-        class="button error"
-        type="button"
-        value="Clear"
-        @click="clear()"
-      />
-      <input class="button info" type="button" value="Validate" />
+      <input class="clear--button button" type="button" value="Clear" @click="clear()" />
+
+      <label class="switch button">
+        <input type="checkbox" v-model="showDamage" />
+        <span class="switch--text">Show Offensive</span>
+      </label>
+      <label class="switch button">
+        <input type="checkbox" v-model="showDefence" />
+        <span class="switch--text">Show Defensive</span>
+      </label>
+      <label class="switch button">
+        <input type="checkbox" v-model="showExtra" />
+        <span class="switch--text">Show Extras</span>
+      </label>
     </div>
-    <ItemInventory
+    <!-- <ItemInventory
       v-if="$root.config.shopEnabled"
       ref="inventory"
-      :userid="userid"
-    ></ItemInventory>
+      userid="player"
+    ></ItemInventory> -->
   </div>
 </template>
 
@@ -370,6 +156,9 @@ import EditableCollapse from "./simple/EditableCollapse.vue";
 import ChampSearch from "./simple/ChampSearch.vue";
 import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
+import BlockStat from "./simple/BlockStat.vue";
+import EditBtn from "./simple/EditBtn.vue";
+import { toRefs, inject, ref, computed, watchEffect } from "vue";
 
 export default {
   name: "ChampionDiv",
@@ -382,269 +171,85 @@ export default {
     EditableCollapse,
     ChampSearch,
     ChampLevelSelect,
+    EditBtn,
+    BlockStat,
   },
   props: {
-    userid: String,
+    mode: String,
   },
-  data: function () {
+  setup(props) {
+    const { mode } = toRefs(props);
+    const rootData = inject("RootData");
+    const obj = inject("ChampObj");
+    // const vue = this.$root;
+    if(!obj.champ) {
+      console.log("Loading Champ from storage")
+      obj.champ = window.localStorage.getItem(`sv_champ_${mode.value}`) || "";
+    }
+
+    watchEffect(() => {
+      window.localStorage.setItem(`sv_champ_${mode.value}`, obj.champ);
+      if (mode.value === "player") {
+        fetchSingleChampFile(obj.champ).then((model) => {
+          if (!model) return;
+          rootData.activeChampionModel = model;
+          // rootData.currentSpells = Object.values(model.skills);
+          // sellAllItems();
+          //TODO buy default items
+          // this.$notify({
+          //   group: "main",
+          //   title: "Loading Done.",
+          //   type: "info",
+          // });
+        });
+      }
+    });
     return {
-      showDamage: "player" === "player",
-      showDefence: "player" === "target",
-      showExtra: false,
-      showDamageLevel: "player" === "player" ? 1 : 0,
-      showDefenceLevel: "player" === "target" ? 1 : 0,
+      obj,
+      mode,
+      showDamage: ref(mode.value === "player"),
+      showDefence: ref(mode.value === "target"),
+      showExtra: ref(false),
+      showBreakdown: ref(true),
       readonly_base_values: true,
-      champ: "",
-      level: 18,
-
-      flat_mr_reduction: 0,
-      percent_mr_reduction: 0,
-      percent_magicpen: 0,
-      flat_magicpen: 0,
-
-      flat_armor_reduction: 0,
-      percent_armor_reduction: 0,
-      percent_armorpen: 0,
-      percent_bonus_armorpen: 0,
-      lethality: 0,
-
-      base_ad: 0,
-      base_hp: 0,
-      base_mana: 0,
-      base_movespeed: 0,
-      base_armor: 0,
-      base_mr: 0,
-      base_attackrange: 0,
-      base_hpregen: 0,
-      base_manaregen: 0,
-      base_critchance: 0,
-      base_attackspeed: 0,
-
-      bonus_ad: 0,
-      bonus_hp: 0,
-      bonus_mana: 0,
-      bonus_movespeed: 0,
-      bonus_armor: 0,
-      bonus_mr: 0,
-      bonus_attackrange: 0,
-      bonus_hpregen: 0,
-      bonus_manaregen: 0,
-      bonus_critchance: 0,
-      bonus_attackspeed: 0,
-
-      total_ap: 0,
-      critdamage: 2,
-      lifesteal: 0,
-      spellvamp: 0,
-      missing_hp: 0,
-
-      total_shield: 0,
+      editMode: ref(true),
+      username: mode.value === "player" ? "Attacking Champion" : "Target Data",
     };
-  },
-  computed: {
-    championList() {
-      return this.$root.championList;
-    },
-    username: function () {
-      if ("player" === "player") return "Player's Champion";
-      return "Target's";
-    },
-    flat_armorpen: {
-      get: function () {
-        return this.lethality * (0.6 + (0.4 * this.level) / 18);
-      },
-      set: function (flat_armorpen) {
-        this.lethality = Math.round((45 * flat_armorpen) / (this.level + 27));
-      },
-    },
-    current_hp: {
-      get: function () {
-        return this.total_hp - this.missing_hp;
-      },
-      set: function (current_hp) {
-        if (current_hp > this.total_hp) this.total_hp = current_hp;
-        this.missing_hp = this.total_hp - current_hp;
-      },
-    },
-    total_ad: makeTotal("ad"),
-    total_hp: makeTotal("hp"),
-    total_mana: makeTotal("mana"),
-    total_movespeed: makeTotal("movespeed"),
-    total_armor: makeTotal("armor"),
-    total_mr: makeTotal("mr"),
-    total_attackrange: makeTotal("attackrange"),
-    total_hpregen: makeTotal("hpregen"),
-    total_manaregen: makeTotal("manaregen"),
-    total_critchance: makeTotal("critchance"),
-    total_attackspeed: makeTotal("attackspeed"),
-    stats: function () {
-      if (this.championList[this.champ])
-        return this.championList[this.champ].stats;
-      return default_stats();
-    },
-    info: function () {
-      return this.championList[this.champ] || {};
-    },
-    percent_pysical_reduction: {
-      get: function () {
-        if (this.total_armor < 0)
-          // Damage is amplified.
-          return -1 + 100.0 / (100.0 - this.total_armor);
-        //Normal damage reduction.
-        else return 1.0 - 100.0 / (100.0 + this.total_armor);
-      },
-      set: function (val) {
-        this.total_armor = 100 / (-val + 1.0) - 100;
-      },
-    },
-    eff_physical_hp: {
-      get: function () {
-        if (this.total_armor < 0)
-          return (1 + this.total_armor / 100.0) * this.total_hp;
-        else return (1 + this.total_armor / 100.0) * this.total_hp;
-      },
-      set: function (val) {
-        console.log("eff_physical_hp =>", val);
-      },
-    },
-    percent_magic_reduction: {
-      get: function () {
-        if (this.total_mr < 0) return -1 + 100.0 / (100.0 - this.total_mr);
-        else return 1.0 - 100.0 / (100.0 + this.total_mr);
-      },
-      set: function (val) {
-        console.log("percent_magic_reduction =>", val);
-      },
-    },
-    eff_magic_hp: {
-      get: function () {
-        if (this.total_mr < 0)
-          return (1 + this.total_mr / 100.0) * this.total_hp;
-        else return (1 + this.total_mr / 100.0) * this.total_hp;
-      },
-      set: function (val) {
-        console.log("eff_magic_hp =>", val);
-      },
-    },
-  },
-  watch: {
-    champ(champ, old) {
-      window.localStorage.setItem("last_used_champ_player", champ);
-      // this.$notify({
-      //   group: "main",
-      //   title: "Loading Champion " + champ + "…",
-      //   type: "info",
-      // });
-      const vue = this.$root;
-      fetchSingleChampFile(champ).then((model) => {
-        // Removes all the last champions spells.
-        console.log('fetchSingleChampFile vue',vue)
-        vue.currentSpells.length = 0;
-        vue.currentChamp = "None";
-        let newList = [];
-        for (const skillkey in model.skills) {
-          let value = model.skills[skillkey];
-          newList.push({
-            key: skillkey,
-            value: value,
-          });
-        }
-        vue.currentChamp = model.id;
-        vue.currentSpells = newList;
-        // sellAllItems();
-        //TODO buy default items
-        // this.$notify({
-        //   group: "main",
-        //   title: "Loading Done.",
-        //   type: "info",
-        // });
-      });
-    },
-    stats(stats, _old) {
-      update_user_stats(stats, this, this.level);
-    },
-    level(level, _old) {
-      update_user_stats(this.stats, this, level);
-    },
-    $data: {
-      handler: function (val, oldVal) {
-        window.localStorage.setItem(
-          "last_used_data_" + "player",
-          JSON.stringify(val)
-        );
-      },
-      deep: true,
-    },
-  },
-  created() {
-    this.$root["player"] = this;
-  },
-  mounted: function () {
-    this.champ =
-      window.localStorage.getItem("last_used_champ_" + "player") || "";
-    this.load(
-      window.localStorage.getItem("last_used_data_" + "player") || "{}"
-    );
   },
   methods: {
     load: function (json) {
-      const data = JSON.parse(json);
-      for (let key in data) {
-        this[key] = data[key];
-      }
+      console.log("load(json)");
     },
     save: function () {
-      return JSON.stringify(this.$data);
+      console.log("save(json)");
     },
-    clear: function (andChamp = false) {
-      const lastChamp = this.champ;
-      Object.assign(this.$data, this.$options.data.call(this));
-      if (!andChamp) this.champ = lastChamp;
+    clear: function () {
+      this.obj.clearStats = true;
     },
-    rnd: function (n, digits) {
-      if (n === undefined || isNaN(n)) n = 0;
-      if (digits === undefined) digits = 0;
-      return +n.toFixed(digits);
+    rnd: function (n) {
+      return Math.round(n);
     },
   },
 };
-
-function calcStat(lvl, base, growth) {
-  return base + growth * (lvl - 1) * (0.7025 + 0.0175 * (lvl - 1));
-}
-
-function makeTotal(stat) {
-  return {
-    get: function () {
-      return this["base_" + stat] + this["bonus_" + stat];
-    },
-    set: function (total_val) {
-      this["bonus_" + stat] = total_val - this["base_" + stat];
-    },
-  };
-}
-
-function update_user_stats(stats, user, lvl) {
-  user.base_ad = calcStat(lvl, stats.attackdamage, stats.attackdamageperlevel);
-  user.base_hp = calcStat(lvl, stats.hp, stats.hpperlevel);
-  user.base_mana = calcStat(lvl, stats.mp, stats.mpperlevel);
-  user.base_movespeed = stats.movespeed;
-  user.base_armor = calcStat(lvl, stats.armor, stats.armorperlevel);
-  user.base_mr = calcStat(lvl, stats.spellblock, stats.spellblockperlevel);
-  user.base_attackrange = stats.attackrange;
-  user.base_hpregen = calcStat(lvl, stats.hpregen, stats.hpregenperlevel);
-  user.base_manaregen = calcStat(lvl, stats.mpregen, stats.mpregenperlevel);
-  user.base_critchance = calcStat(lvl, stats.crit, stats.critperlevel);
-  user.base_attackspeed = calcStat(
-    lvl,
-    stats.attackspeed,
-    stats.attackspeedperlevel
-  );
-}
 </script>
 
 <style>
 table {
   background-color: transparent !important;
+}
+.data_holder__grid {
+  display: grid;
+  grid-template-columns: 10% auto 28px 10% auto 28px;
+}
+.clear--button:hover,
+.clear--button:focus {
+  background-color: rgb(202, 0, 0) !important;
+}
+.switch--text {
+  margin: 0 0 0 0.5em;
+}
+
+input:checked + .switch--text {
+  color: #9ebbf0;
 }
 </style>

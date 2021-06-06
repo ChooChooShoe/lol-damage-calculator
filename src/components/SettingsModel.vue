@@ -39,8 +39,8 @@ export default {
   },
   watch: {
     shopEnabled(newVal) {
-      this.$root.config.shopEnabled = newVal;
-      console.log("shopEnabled.", newVal, this.$root.config.shopEnabled);
+      this.$root.data.config.shopEnabled = newVal;
+      console.log("shopEnabled.", newVal, this.$root.data.config.shopEnabled);
     },
   },
   methods: {

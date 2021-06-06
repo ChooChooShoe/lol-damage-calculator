@@ -3,11 +3,13 @@
 </template>
 
 <script>
-import { reactive, inject, watchEffect, computed, provide } from "vue";
+import { reactive, inject, watchEffect, computed, provide, toRefs } from "vue";
+import { CORE_STATS } from "../javascript/league_data";
 
 export default {
-  setup() {
+  setup(props, context) {
     let obj = reactive({
+      clearStats: false,
       champ: "",
       level: 18,
       flat_mr_reduction: 0,
@@ -20,13 +22,14 @@ export default {
       percent_bonus_armorpen: 0,
       lethality: 0,
 
-      critdamage: 1.75,
       lifesteal: 0,
       spellvamp: 0,
       missing_hp: 0,
       total_shield: 0,
       total_ap: 0,
+      ability_haste: 0,
     });
+    context.emit("update:obj", obj);
 
     obj.flat_armorpen = computed({
       get: () => obj.lethality * (0.6 + (0.4 * obj.level) / 18),
@@ -43,7 +46,7 @@ export default {
       },
     });
 
-    obj.base_attackspeed = 0.625;
+    obj.base_attackspeed = 0.625; // non-riot 
     obj.bonus_attackspeed = 0;
     obj.total_attackspeed = computed({
       get: () => obj.base_attackspeed * (1 + obj.bonus_attackspeed / 100.0),
@@ -52,18 +55,7 @@ export default {
       },
     });
 
-    for (const stat of [
-      "ad",
-      "hp",
-      "mana",
-      "movespeed",
-      "armor",
-      "mr",
-      "attackrange",
-      "hpregen",
-      "manaregen",
-      "critchance",
-    ]) {
+    for (const stat of CORE_STATS) {
       obj[`base_${stat}`] = 0;
       obj[`bonus_${stat}`] = 0;
       obj[`total_${stat}`] = computed({
@@ -78,15 +70,41 @@ export default {
     const championList = inject("championList");
     // auto gets stats when champ changes
     const stats = computed(() => {
-      if (championList.value[obj.champ])
-        return championList.value[obj.champ].stats;
+      if (championList.value[obj.champ]) return championList.value[obj.champ].stats;
       return {};
     });
 
     // auto updates base stats when the level or champion changes
     watchEffect(() => {
+      console.log('Stats Update watchEffect()')
       const level = Math.max(Math.min(obj.level, 18), 0);
       const bs = stats.value;
+
+      // Set clearStats to true will remove bonus_ stats
+      if (obj.clearStats) {
+        obj.clearStats = false;
+        for (const stat of CORE_STATS) {
+          obj[`bonus_${stat}`] = 0;
+        }
+        
+        obj.flat_mr_reduction = 0;
+        obj.percent_mr_reduction = 0;
+        obj.percent_magicpen = 0;
+        obj.flat_magicpen = 0;
+        
+        obj.flat_armor_reduction = 0;
+        obj.percent_armor_reduction = 0;
+        obj.percent_armorpen = 0;
+        obj.percent_bonus_armorpen = 0;
+        obj.lethality = 0;
+
+        obj.lifesteal = 0;
+        obj.spellvamp = 0;
+        obj.missing_hp = 0;
+        obj.total_shield = 0;
+        obj.total_ap = 0;
+        obj.ability_haste = 0;
+      }
 
       const growth = (perlevel) => {
         return perlevel * (level - 1) * (0.7025 + 0.0175 * (level - 1));
@@ -101,13 +119,27 @@ export default {
       obj.base_attackrange = bs.attackrange || 0;
       obj.base_hpregen = bs.hpregen + growth(bs.hpregenperlevel) || 0;
       obj.base_manaregen = bs.mpregen + growth(bs.mpregenperlevel) || 0;
-      obj.base_critchance = bs.crit + growth(bs.critperlevel) || 0;
+      // Always 0 in stats
+      // obj.base_critchance = bs.crit + growth(bs.critperlevel) || 0;
+      obj.base_critchance = 0;
+      // Not a riot base state
+      obj.base_critdamage = 175;
 
+      // non-core stats
       obj.base_attackspeed = bs.attackspeed || 0;
       obj.bonus_attackspeed = growth(bs.attackspeedperlevel) || 0;
     });
 
     // Other non-direct stats
+    obj.cdr = computed({
+      get: () => {  
+        return obj.ability_haste / (obj.ability_haste + 100)
+      },
+      set: (val) => {
+        if (val > 0.9999) val = 0.9999;
+        obj.ability_haste = 100 / (-val + 1.0) - 100;
+      },
+    });
     obj.percent_pysical_reduction = computed({
       get: () => {
         if (obj.total_armor < 0.0)
@@ -136,12 +168,12 @@ export default {
       },
     });
     obj.eff_magic_hp = computed({
-      get: () => (1 + this.obj.total_mr / 100.0) * this.obj.total_hp,
+      get: () => (1 + obj.total_mr / 100.0) * obj.total_hp,
       set: (val) => {},
     });
 
     provide("ChampObj", obj);
-    return { obj, stats };
+    // return { obj, stats };
   },
 };
 </script>

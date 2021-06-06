@@ -36,6 +36,7 @@ export function setupVue(championList, itemData) {
     fetchChampionList().then((ret) => {
         championList.value = ret;
     });
+    return;
     fetchStaticItems().then((data) => {
         for (const key in data) {
             //Pre-compute sprite image as spriteStyle.
@@ -60,12 +61,13 @@ export function setupVue(championList, itemData) {
     });
 }
 
+import ChampionList from "/src/api/ChampionList.json";
 async function fetchChampionList() {
     /// Get the latest version from /realms/na.json
-    const response = await fetch("./api/ChampionList.json");
-    const body = await response.json();
+    // const response = await fetch("./api/ChampionList.json");
+    // const body = await response.json();
     let championList = { None: { name: "  -- None --  ", id: "" } }
-    Object.assign(championList, body);
+    Object.assign(championList, ChampionList);
     return championList;
 }
 
@@ -311,6 +313,23 @@ export function default_stats() {
     }
 }
 
+export const CORE_STATS = [
+    "ad",
+    "hp",
+    "mana",
+    "movespeed",
+    "armor",
+    "mr",
+    "attackrange",
+    "hpregen",
+    "manaregen",
+    "critchance",
+    //non-riot
+    "critdamage",
+];
+
+export const
+    default_spell_ratios = { user: '', stat: 'default', prefex: 'Default', color: "ap", sufex: "Default", html: "Default" };
 export const spell_ratios = {
     base_damage: { user: '', prefex: "Base", color: "", sufex: "", extra: true, flat: true, html: "" },
     base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: "" },
@@ -392,7 +411,6 @@ export class DamageSource {
 //         this.missing_hp = this.total_hp - current_hp;
 //     },
 
-//     critdamage : 1.75,
 //     lifesteal : 0,
 //     spellvamp : 0,
 //     missing_hp : 0,
@@ -404,7 +422,7 @@ export class DamageSource {
 //     bonus_ad : 0,
 //     get_total_ad: () => { return this.base_ad + this.bonus_ad; },
 //     set_total_ad: (total) => { this.bonus_ad = total - this.base_ad; },
-    
+
 //     base_hp : 0,
 //     bonus_hp : 0,
 //     get_total_hp: () => { return this.base_hp + this.bonus_hp; },

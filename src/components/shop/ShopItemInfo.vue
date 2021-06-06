@@ -4,8 +4,8 @@
       <span>Builds Into:</span>
       <div class="gradient"></div>
       <div class="flex flex-row">
-        <template v-for="(key) in value.into">
-          <SimpleTooltip :key="key" :globalId="'item'+key">
+        <template v-for="(key) in value.into" :key="key">
+          <SimpleTooltip :globalId="'item'+key">
             <img
               class="intoimage click"
               :style="$root.itemData[key].spriteStyle"

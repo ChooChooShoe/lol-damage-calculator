@@ -1,66 +1,45 @@
 
 <template>
-  <span v-if="index == 0" :class="color">
-    <template v-for="(x, i) in item.value" :key="i">
-      {{ i != 0 ? "/" : "" }}
-      <span
-        :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
-        class="ss-click"
-        @click="rootspell.spellrankindex = i"
-      >
-        {{ displayValueArray(x) }}
-      </span>
-    </template>
-    {{ flat ? "" : "% " }}
-    <span v-html="html"></span>
+  <SpellSpan v-if="index === 0" :class="data.color" :list="list"> </SpellSpan>
+  <span v-else :class="data.color">
+    (+ <SpellSpan :list="innerList" :class="data.color"> </SpellSpan>
+    {{ data.flat ? "" : "% " }}
+    <span v-html="data.html"></span>)
   </span>
-  <span v-else-if="Array.isArray(item.value)" :class="color">
-    (+
-    <template v-for="(x, i) in item.value" :key="i">
-      {{ i != 0 ? "/" : "" }}
-      <span
-        :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
-        class="ss-click"
-        @click="rootspell.spellrankindex = i"
-      >
-        {{ displayValueArray(x) }}
-      </span>
-    </template>
-    {{ flat ? "" : "% " }}
-    <span v-html="html"></span>)
-  </span>
-  <span v-else :class="color" v-html="displayValue(item.value)"></span>
+  <!-- <span v-else :class="data.color"> (+ {{ displayValueArray(list) }}{{ flat ? "" : "% " }} <span v-html="data.html"></span>) </span> -->
 </template>
 
 <script>
-import { spell_ratios } from "../../javascript/league_data";
+import { computed, inject, toRefs } from "vue";
+import { spell_ratios, default_spell_ratios } from "../../javascript/league_data";
+import SpellSpan from "../SpellSpan.vue";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
   name: "DisplayRatio",
   props: {
-    item: Object,
+    ratioKey: String,
+    list: [Array, Number],
     index: Number,
   },
-  inject: ["rootspell"],
+  components: { SpellSpan },
   setup(props) {
-    const ratiodata = spell_ratios[props.item.key] || {};
-    return {
-      flat: ratiodata.flat || false,
-      color: ratiodata.color || "",
-      html: ratiodata.html || "",
-      extra: ratiodata.extra || false,
-    };
-  },
-  methods: {
-    displayValueArray: function (v) {
-      if (this.flat) return `${+v.toFixed(3)}`;
+    const { index, ratioKey, list } = toRefs(props);
+    const data = computed(() => spell_ratios[ratioKey.value] || default_spell_ratios);
+    const displayValueArray = function (v) {
+      if (data.value.flat) return `${+v.toFixed(3)}`;
       return `${+(v * 100).toFixed(3)}`;
-    },
-    displayValue: function (v) {
-      if (this.flat) return `(+ ${+v.toFixed(3)} ${this.html})`;
-      return `(+ ${+(v * 100).toFixed(3)}% ${this.html})`;
-    },
+    };
+    return {
+      rootspell: inject("rootspell"),
+      data,
+      innerList: computed(() => {
+        if (Array.isArray(list.value)) {
+          return list.value.map(displayValueArray);
+        }
+        return displayValueArray(list.value);
+      }),
+    };
   },
 };
 </script>

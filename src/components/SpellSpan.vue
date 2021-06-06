@@ -2,12 +2,8 @@
 <template>
   <span v-if="Array.isArray(list)">
     <template v-for="(x, i) in list" :key="i">
-      {{ i != 0 ? "/" : "" }}
-      <span
-        :class="rootspell.spellrankindex == i ? 'spelleffect' : ''"
-        class="ss-click"
-        @click="rootspell.spellrankindex = i"
-      >
+      {{ i != 0 ? " / " : "" }}
+      <span :class="{ spelleffect: rootspell.value.rankindex == i }" class="ss-click" @click="rootspell.value.rankindex = i">
         {{ x }}
       </span>
     </template>
@@ -23,7 +19,7 @@
 export default {
   name: "SpellSpan",
   props: {
-    list: [Array, Number],
+    list: [Array, Number, String],
   },
   inject: ["rootspell"],
 };

@@ -1,27 +1,16 @@
 <template>
   <div class="container float-clear spell-effect">
     <div>
-      <button
-        class="spelleff--edit float-right"
-        :class="{ active: editMode }"
-        @click="editMode = !editMode"
-      >
-        Edit
-      </button>
+      <EditBtn v-model="editMode"></EditBtn>
 
-      <h4 class="spelleffect">{{ edata.title }}</h4>
+      <h4 class="spelleffect">{{ effect.title }}</h4>
       <div>
-        <DisplayRatio
-          v-for="(item, key, i) in ratios"
-          :key="key"
-          :item="item"
-          :index="i"
-        >
-        </DisplayRatio>
+        <DisplayRatio v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :list="obj.value" :index="index"> </DisplayRatio>
+
+        <DamageTypeField v-model="damage_type"></DamageTypeField>
       </div>
     </div>
     <div class="spelleff--content" :class="{ active: editMode }">
-      <DamageTypeField v-model="damage_type"></DamageTypeField>
       <div class="field column" v-if="doesDoDamage">
         <table>
           <thead>
@@ -33,18 +22,7 @@
             </tr>
           </thead>
           <tbody>
-            <SpellField
-              v-for="(item, key, i) in ratios"
-              :ref="
-                (el) => {
-                  if (el) spellFieldRefs[i] = el;
-                }
-              "
-              :key="key"
-              :item="item"
-              :index="i"
-              :spellrank="spellrank"
-            ></SpellField>
+            <SpellField v-for="(item, key) in ratios" :key="key" :item="item"></SpellField>
             <tr>
               <th colspan="4">
                 <AddRatioDropDown></AddRatioDropDown>
@@ -56,14 +34,8 @@
               <th style="text-align: center" colspan="2">
                 <b>Total</b>
               </th>
-              <Editable
-                :modelValue="dmg_premitigation"
-                :readonly="true"
-              ></Editable>
-              <Editable
-                :modelValue="dmg_postmitigation"
-                :readonly="true"
-              ></Editable>
+              <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
+              <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
             </tr>
           </tfoot>
         </table>
@@ -73,13 +45,10 @@
       <hr />
       <div class="column">
         Before resistances, this effect will deal
-        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{
+        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span
+        >. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user"></span> after reductions<span class="gold">{{
           repeat === 1 ? "" : " per hit"
         }}</span
-        >. <br />This target will take {{ Math.round(dmg_postmitigation) }}
-        <span v-html="damage_type_user"></span> after reductions<span
-          class="gold"
-          >{{ repeat === 1 ? "" : " per hit" }}</span
         >.
       </div>
       <label class="column">
@@ -99,33 +68,47 @@
       <div v-if="repeat != 1" class="column">
         In total, this effect deals
         {{ Math.round(dmg_premitigation * repeat) }}
-        <span v-html="damage_type_user"></span> before resistances. <br />This
-        damage will cause the target to
-        <span class="spelleffect"
-          >lose {{ Math.round(dmg_postmitigation * repeat) }} health</span
-        >.
+        <span v-html="damage_type_user"></span> before resistances. <br />This damage will cause the target to
+        <span class="spelleffect">lose {{ Math.round(dmg_postmitigation * repeat) }} health</span>.
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import numeral from "numeral";
-import {
-  calc_dmg_onhit,
-  spell_ratios,
-  DamageSource,
-  DamageType,
-} from "../../javascript/league_data";
+import { calc_dmg_onhit, spell_ratios, CORE_STATS, DamageSource, DamageType } from "../../javascript/league_data";
 
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 import DisplayRatio from "./DisplayRatio.vue";
+import EditBtn from "../simple/EditBtn.vue";
+import { computed, inject, provide, reactive, ref, toRefs, watchEffect } from "vue";
+
+const CORE_RATIOS = [
+  "player_total_ap",
+  "player_total_ad",
+  "player_bonus_ad",
+  "player_total_hp",
+  "player_bonus_hp",
+  "player_missing_hp",
+  "target_total_hp",
+  "target_bonus_hp",
+  "target_current_hp",
+  "target_missing_hp",
+  "player_bonus_armor",
+  "player_total_armor",
+  "player_bonus_mr",
+  "player_total_mr",
+  "target_total_ap",
+];
 
 export default {
-  props: ["spell", "effect", "spellrank", "effectindex"],
+  props: {
+    effect: Object,
+    effectindex: Number,
+  },
   name: "SpellEffects",
   components: {
     SpellField,
@@ -133,28 +116,89 @@ export default {
     AddRatioDropDown,
     Editable,
     DisplayRatio,
+    EditBtn,
   },
-  data: function () {
+  setup(props) {
+    const { effect, effectindex } = toRefs(props);
+    const rootspell = inject("rootspell");
+    const rootData = inject("RootData");
+
+    const damage_type = ref("magic");
+
+    const makeRatio = (name, value) => {
+      console.log("makeRatio()", name, value);
+      const i = name.indexOf("_");
+      const user = name.slice(0, i);
+      const stat = name.slice(i + 1);
+
+      let ispercent = user !== "base";
+
+      const valueNumber = computed(() => {
+        return Array.isArray(value) ? value[rootspell.value.rankindex] : value;
+      });
+      const damagePreValue = computed(() => {
+        // No user means base_damage or base_progression
+        if (user !== "player" && user !== "target") return valueNumber.value;
+
+        let statValue = rootData[user][stat];
+        if (isNaN(statValue)) {
+          console.warn(`Stat ${stat} for ratio ${name} missing for ${user}`);
+          statValue = 0;
+        }
+        return statValue * valueNumber.value;
+      });
+      return reactive({
+        key: name,
+        value: value,
+        ispercent: ispercent,
+        valueNumber,
+        damagePreValue,
+        damagePostValue: computed(() => calc_dmg_onhit(rootData.player, rootData.target, damagePreValue.value, damage_type.value)),
+      });
+    };
+    const ratios = reactive({});
+
+    watchEffect(() => {
+      // let newRatios = reactive({});
+      // convets effect's ratios to our ratios type.
+      for (const ratio in effect.value.ratios) {
+        ratios[ratio] = makeRatio(ratio, effect.value.ratios[ratio]);
+      }
+      console.log("computed() ratios", ratios);
+      // return newRatios;
+    });
+    watchEffect(() => {
+      // auto updates values when effect
+      damage_type.value = effect.value.damage_type;
+
+      // if(clear) {
+
+      // }
+    });
+
+    const dmg_premitigation = computed(() => {
+      let total = 0;
+      for (const r in ratios) {
+        total += ratios[r].damagePreValue || 0;
+      }
+      return total;
+    });
+
     return {
-      damage_type: this.effect.damage_type,
-      repeat: 1,
-      subIndex: 0,
-      ratios: {},
-      isMounted: false,
-      spellFieldRefs: [],
-      editMode: false,
+      repeat: ref(1),
+      editMode: ref(false),
+      ratios,
+      doesDoDamage: computed(() => ["magic", "physical", "true"].includes(damage_type.value)),
+      dmg_premitigation,
+      dmg_postmitigation: computed(() => {
+        console.log("dmg_postmitigation")
+        return calc_dmg_onhit(rootData.player, rootData.target, dmg_premitigation.value, damage_type.value);
+      }),
+      damage_type,
+      spell_ratios: spell_ratios,
     };
   },
   computed: {
-    doesDoDamage: function () {
-      return ["magic", "physical", "true"].includes(this.damage_type);
-    },
-    spell_ratios: function () {
-      return spell_ratios;
-    },
-    edata: function () {
-      return this.effect;
-    },
     damage_type_user: function () {
       switch (this.damage_type) {
         case "physical":
@@ -167,21 +211,6 @@ export default {
           return '<span class="true-damage">no damage</span>';
       }
     },
-    dmg_premitigation() {
-      let total = 0;
-      // for (const currentValue of this.spellFieldRefs) {
-      //   total += currentValue.damagePreValue;
-      // }
-      return total;
-    },
-    dmg_postmitigation: function () {
-      return calc_dmg_onhit(
-        this.$root.player,
-        this.$root.target,
-        this.dmg_premitigation,
-        this.damage_type
-      );
-    },
     dyanmic: function () {
       return true;
     },
@@ -190,38 +219,13 @@ export default {
     },
   },
   mounted: function () {
-    this.$root.damagingEffects.push(this);
-    this.isMounted = true;
+    this.$root.data.damagingEffects.push(this);
   },
   unmounted: function () {
-    const index = this.$root.damagingEffects.indexOf(this);
+    const index = this.$root.data.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$root.damagingEffects.splice(index, 1);
+      this.$root.data.damagingEffects.splice(index, 1);
     }
-  },
-  beforeUpdate() {
-    this.spellFieldRefs = [];
-  },
-  watch: {
-    edata: {
-      immediate: true,
-      handler() {
-        let newRatios = {};
-        for (const ratio in this.edata.ratios) {
-          const value = this.edata.ratios[ratio];
-
-          let ispercent = true;
-          if (ratio === "base_damage" || ratio === "base_progression")
-            ispercent = false;
-          newRatios[ratio] = {
-            key: ratio,
-            value: value,
-            ispercent: ispercent,
-          };
-        }
-        this.ratios = newRatios;
-      },
-    },
   },
   methods: {
     /// Used by child

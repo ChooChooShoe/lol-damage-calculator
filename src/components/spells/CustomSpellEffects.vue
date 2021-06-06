@@ -155,8 +155,8 @@ export default {
     },
     dmg_postmitigation: function () {
       return calc_dmg_onhit(
-        this.$root.player,
-        this.$root.target,
+        this.$root.data.player,
+        this.$root.data.target,
         this.dmg_premitigation,
         this.damage_type
       );
@@ -169,7 +169,7 @@ export default {
     },
   },
   mounted: function () {
-    this.$root.damagingEffects.push(this);
+    this.$root.data.damagingEffects.push(this);
     this.isMounted = true;
   },
   unmounted: function () {

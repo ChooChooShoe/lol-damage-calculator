@@ -1,11 +1,6 @@
 <template>
   <div class="data_holder c50 ChampionSpellDamageSource">
-    <img
-      class="spell-image"
-      :style="imageStyle"
-      :width="spell.image.w"
-      :height="spell.image.h"
-    />
+    <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
     <h3>
       {{ spell.name }} ({{ spell.skillkey }}) -
       <a target="_blank" :href="wikiHref">View on Wiki</a>
@@ -15,14 +10,14 @@
     <div style="float: right" v-if="spell.maxrank > 0">
       <span>
         Spell Rank (
-        <span class="spelleffect">{{ spellrankindex + 1 }}</span>
+        <span class="spelleffect">{{ spell.rankindex + 1 }}</span>
         / {{ spell.maxrank }} )
       </span>
       <fieldset class="spellrank">
         <input
           v-for="(_, index) in Array(spell.maxrank)"
           :key="index"
-          v-model.number="spellrankindex"
+          v-model.number="spell.rankindex"
           type="radio"
           name="spellrank"
           :value="index"
@@ -59,38 +54,26 @@
 
     <hr />
 
-    <template v-for="(eff, effIndex) in spell.effects" :key="effIndex">
+    <!-- spell.effects and spell.effects[].subeffects are flattened into SpellEffects -->
+    <template v-for="(root_effect, root_index) in spell.effects" :key="root_index">
       <SpellEffects
-        v-for="(item, index) in eff.subeffects"
-        :key="index"
-        :spell="spell"
-        :effect="item"
-        :effectindex="index"
-        :spellrank="spellrankindex"
-        v-on:spellrank="spellrankindex = $event"
+        v-for="(sub_effect, sub_index) in root_effect.subeffects"
+        :key="root_index + 'x' + sub_index"
+        :effect="sub_effect"
+        :effectindex="sub_index"
       ></SpellEffects>
     </template>
 
-    <CustomSpellEffects
-      v-for="item in customEffects"
-      :key="'CustomSpellEffects' + item"
-      :index="item"
-    ></CustomSpellEffects>
+    <CustomSpellEffects v-for="item in customEffects" :key="'CustomSpellEffects' + item" :index="item"></CustomSpellEffects>
 
-    <input
-      name="add_effect"
-      type="button"
-      class="button is-primary"
-      value="Add Effect +"
-      @click="addEffect()"
-    />
+    <input name="add_effect" type="button" class="button is-primary" value="Add Effect +" @click="addEffect()" />
 
     <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
   </div>
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 import CustomSpellEffects from "./CustomSpellEffects.vue";
@@ -110,50 +93,49 @@ export default {
     SpellSpan,
     CustomSpellEffects,
   },
-  props: ["id", "spell", "champion"],
-  data: function () {
-    return {
-      spellrankindex: (this.spell.maxrank || 0) - 1,
-      customEffects: [],
-      lastEffectIndex: 0,
+  props: {
+    spell: Object,
+    champion: String,
+  },
+  setup(props) {
+    const { spell, champion } = toRefs(props);
+    let obj = reactive({
+      clearStats: false,
+      champ: "",
+    });
+
+    spell.value.rankindex = ref(0);
+    const customEffects = ref([]);
+    const lastEffectIndex = ref(0);
+
+    watchEffect(() => {
+      spell.value.rankindex = (spell.value.maxrank || 1) - 1;
+    });
+    provide("rootspell", spell);
+
+    return {obj,
+      costtype: computed(() => quickMatchReplace(spell.value.costtype || "Mana")),
+      targeting: computed(() => quickMatchReplace(spell.value.targeting || "")),
+      targetRange: computed(() => quickMatchReplace(String(spell.value.target_range || ""))),
+      imageStyle: computed(() => {
+        const i = spell.value.image;
+        return {
+          float: "right",
+          background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
+        };
+      }),
+      wikiHref: computed(() => {
+        const champName = champion.value.replace(/ /g, "_");
+        const spellName = spell.value.name.replace(/ /g, "_");
+        return `https://leagueoflegends.fandom.com/wiki/${champName}#${spellName}`;
+      }),
+      matchReplace: quickMatchReplace,
+      customEffects,
+      addEffect: () => {
+        customEffects.value.push(lastEffectIndex.value);
+        lastEffectIndex.value = lastEffectIndex.value + 1;
+      },
     };
-  },
-  provide() {
-    return {
-      // rootspell is a ref to the active damagesource.
-      rootspell: this,
-    };
-  },
-  computed: {
-    wikiHref() {
-      const champ = this.champion.replace(/ /g, "_");
-      const spell = this.spell.name.replace(/ /g, "_");
-      return `https://leagueoflegends.fandom.com/wiki/${champ}#${spell}`;
-    },
-    costtype() {
-      return quickMatchReplace(this.spell.costtype || "Mana");
-    },
-    targeting() {
-      return quickMatchReplace(this.spell.targeting || "");
-    },
-    targetRange() {
-      return quickMatchReplace(String(this.spell.target_range || ""));
-    },
-    imageStyle() {
-      const i = this.spell.image;
-      return {
-        float: "right",
-        background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
-      };
-    },
-  },
-  methods: {
-    addEffect: function () {
-      this.customEffects.push(this.lastEffectIndex++);
-    },
-    matchReplace: function (text) {
-      return quickMatchReplace(text);
-    },
   },
 };
 </script>
@@ -164,8 +146,6 @@ export default {
 }
 
 .spellrank input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   display: inline-block;
   position: relative;

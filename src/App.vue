@@ -6,50 +6,29 @@
     </h1>
     <p class="subtitle">
       With Data from
-      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">
-        League of Legends Wiki
-      </a>
-      - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> -
-      View
-      <a href="https://github.com/ChooChooShoe/choochooshoe.github.io">
-        source on GitHub
-      </a>
+      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki"> League of Legends Wiki </a>
+      - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> - View
+      <a href="https://github.com/ChooChooShoe/choochooshoe.github.io"> source on GitHub </a>
     </p>
   </header>
   <SettingsModel ref="settings"></SettingsModel>
 
   <div class="sidebar">
-    <SideBody
-      :damagingEffects="damagingEffects"
-      :player="player"
-      :target="target"
-    ></SideBody>
+    <SideBody :damagingEffects="data.damagingEffects" :player="data.player" :target="data.target"></SideBody>
   </div>
 
   <div class="flex main">
-    <ChampObj> <ChampionDiv></ChampionDiv></ChampObj>
-    <ChampObj> <TargetDiv></TargetDiv></ChampObj>
+    <ChampObj @update:obj="data.player = $event"> <ChampionDiv mode="player"></ChampionDiv></ChampObj>
+    <ChampObj @update:obj="data.target = $event"> <ChampionDiv mode="target"></ChampionDiv></ChampObj>
 
     <AADamageSource></AADamageSource>
-    <ChampionSpellDamageSource
-      v-for="obj in currentSpells"
-      :key="currentChamp + obj.key"
-      :id="obj.key"
-      :spell="obj.value"
-      :champion="currentChamp"
-    ></ChampionSpellDamageSource>
+    <ChampionSpellDamageSource v-for="spellObj in activeSpells" :key="spellObj.skillid" :spell="spellObj" :champion="data.activeChampionModel.id"></ChampionSpellDamageSource>
 
-    <CustomDamageSource
-      v-for="i in customDamageSources"
-      :key="i"
-      :index="i"
-    ></CustomDamageSource>
+    <CustomDamageSource v-for="i in customDamageSources" :key="i" :index="i"></CustomDamageSource>
   </div>
   <footer>
     <div class="buttons">
-      <button class="button is-info" @click="addCustomDamageSource()">
-        Add Custom Damage Source
-      </button>
+      <button class="button is-info" @click="addCustomDamageSource()">Add Custom Damage Source</button>
     </div>
   </footer>
   <datalist id="list-of-champions">
@@ -69,7 +48,7 @@ import ChampionSpellDamageSource from "./components/spells/ChampionSpellDamageSo
 import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
 
 import { setupVue } from "./javascript/league_data.js";
-import { ref, reactive, provide } from "vue";
+import { ref, reactive, provide, computed } from "vue";
 
 import ChampObj from "./components/ChampObj.vue";
 
@@ -81,7 +60,7 @@ function loadLocalConfig() {
 }
 function saveLocalConfig(config) {
   console.log("saving config...");
-  localStorage.setItem("shopEnabled", config.shopEnabled);
+  localStorage.setItem("shopEnabled", data.config.shopEnabled);
 }
 
 export default {
@@ -97,40 +76,36 @@ export default {
     CustomDamageSource,
     ChampObj,
   },
-  data() {
-    return {
-      currentSpells: [],
-      customDamageSources: [],
-      lastCustomDamageSourcesIndex: 0,
-      currentChamp: "None",
+  setup(props) {
+    // console.log("process.env", process.env);
+    let championList = ref({});
+    let itemData = ref([]);
+
+    let data = reactive({
+      activeChampionModel: null,
       damagingEffects: [],
       player: null,
       target: null,
       globalToolTips: {},
       shopModel: null,
       config: loadLocalConfig(),
-    };
-  },
-
-  setup(props) {
-    // console.log("process.env", process.env);
-    let championList = ref({});
-    let itemData = ref([]);
-    const readersNumber = ref(0);
-    const book = reactive({ title: "Vue 3 Guide" });
+    });
 
     setupVue(championList, itemData);
 
+    provide("RootData", data);
     provide("championList", championList);
 
     // expose to template
     return {
-      readersNumber,
-      book,
       appVersion: "0.9.0",
       lolPatchVersion: "10.2.0",
       championList,
       itemData,
+      data,
+      lastCustomDamageSourcesIndex: ref(0),
+      customDamageSources: ref([]),
+      activeSpells: computed(() => (data.activeChampionModel ? Object.values(data.activeChampionModel.skills) : [])),
     };
   },
   // mounted: function () {
@@ -151,14 +126,8 @@ export default {
     },
     customDamageSources: {
       handler: function (val, oldVal) {
-        window.localStorage.setItem(
-          "last_used_customDamageSources",
-          JSON.stringify(val)
-        );
-        window.localStorage.setItem(
-          "last_used_lastCustomDamageSourcesIndex",
-          this.lastCustomDamageSourcesIndex
-        );
+        window.localStorage.setItem("last_used_customDamageSources", JSON.stringify(val));
+        window.localStorage.setItem("last_used_lastCustomDamageSourcesIndex", this.lastCustomDamageSourcesIndex);
       },
       deep: true,
     },
@@ -183,12 +152,12 @@ export default {
       return process.env.VUE_APP_VERSION;
     },
     shopEnabled() {
-      return this.$root.config.shopEnabled;
+      return this.data.config.shopEnabled;
     },
     skillpoints_used: function () {
       let sum = 0;
-      for (const x in this.damagingEffects) {
-        sum += (this.damagingEffects[x].spellrankindex || 0) + 1;
+      for (const x in this.data.damagingEffects) {
+        sum += (this.data.damagingEffects[x].spellrankindex || 0) + 1;
       }
       return sum;
     },
@@ -204,9 +173,7 @@ export default {
       this.customDamageSources.push(this.lastCustomDamageSourcesIndex++);
     },
     removeCustomDamageSource(index) {
-      this.customDamageSources = this.customDamageSources.filter(
-        (i) => i !== index
-      );
+      this.customDamageSources = this.customDamageSources.filter((i) => i !== index);
     },
   },
 };
