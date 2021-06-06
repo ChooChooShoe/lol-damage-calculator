@@ -49,76 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "r1": {
-      "riotId": "FerociousHowl",
-      "name": "Unbreakable Will",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        120,
-        100,
-        80,
-        0
-      ],
-      "cost": 100,
-      "costtype": "mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "FerociousHowl.png",
-        "sprite": "spell0.png",
-        "group": "spell",
-        "x": 432,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Alistar''' {{tip|cleanse|cleanses}} himself of all {{tip|crowd control}}. For the next 7 seconds, '''Alistar''' {{tip|Damage reduction|reduces}} incoming damage received."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Alistar</b> <HtmlTooltip class=\"blue link\">cleanses<template #content><div><h4>cleanse<hr></h4><p>Description for keyword cleanse</p></div></template></HtmlTooltip> himself of all <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip>. For the next 7 seconds, <b>Alistar</b> <HtmlTooltip class=\"blue link\">reduces<template #content><div><h4>Damage reduction<hr></h4><p>Description for keyword Damage reduction</p></div></template></HtmlTooltip> incoming damage received.",
-      "leveling": [
-        "{{st|Damage Reduction|{{ap|55|65|75}}%}}"
-      ],
-      "notes": "* {{tip|True damage}} cannot be reduced by any means and will deal full damage to '''Alistar''' during ''Unbreakable Will''.\n* ''Unbreakable Will's'' modifier to incoming damage stacks additively with {{cai|Hemoplague|Vladimir}} for a total reduction of 45/55/65%.{{tt|*|this might be unintended}}",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120|100|80}}|Starts on cast}}' as '0/120/100/80/0' and riot's value '120,100,80' as '120/100/80'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[55,65,75]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Damage Reduction",
-                "<SpellSpan :list=\"[55,65,75]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                55,
-                65,
-                75
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Damage Reduction",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  55,
-                  65,
-                  75
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Triumphant Roar",
@@ -229,6 +159,91 @@
         }
       ]
     },
+    "w1": {
+      "riotId": "Headbutt",
+      "name": "Headbutt",
+      "maxrank": 5,
+      "cooldown": [
+        14,
+        13,
+        12,
+        11,
+        10
+      ],
+      "cost": [
+        65,
+        70,
+        75,
+        80,
+        85
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|650|Target range}}",
+      "image": {
+        "full": "Headbutt.png",
+        "sprite": "spell0.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location and, if the target is within 400 units upon arrival, he deals them {{as|magic damage}} and {{tip|airborne|knocks them back}} {{tt|700 units|200 units when combined with Pulverize}} over {{fd|0.5 seconds}} while also {{tip|stun|stunning}} them for {{fd|0.75}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Alistar</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy's location and, if the target is within 400 units upon arrival, he deals them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">knocks them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"200 units when combined with Pulverize\">700 units</span> over <span style=\"font-variant-numeric: tabular-nums;\">0.5 seconds</span> while also <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|55 to 275}} {{as|(+ 70% AP)}}}}"
+      ],
+      "notes": "* The dash speed depends on the inverse of the distance to the target:\n** If '''Alistar's''' [[size|radius]] overlaps with his target's, he will dash with {{as|1200 speed|movement speed}}.\n** If '''Alistar''' is further from his target than the previous condition, he will dash with (1200 {{times}} dash distance) / (dash distance - sum of radiuses).\n*** At maximum target range, against an enemy with a 65 {{tip|gameplay radius}} (median of all champions), '''Alistar''' will dash with {{as|1544 speed|movement speed}} (reaching his target within {{tt|{{fd|0.429}} seconds|rounded to next game tick}}).\n*** Both the lower the dash distance and the larger '''Alistar''' and/or his target, the faster the dash becomes; this scales hyperbolically.\n* When {{ai|Pulverize|Alistar}} is buffered during the dash, the knockback distance is reduced to 200 units.\n* The CC duration of the ability can be reduced by up-to 25% {{stil|Tenacity}}, due to airborne not being reducible while the stun is.\n* The {{tip|airborne|knockback}} direction is in a straight line from '''Alistar's''' original location at start of cast and the enemy when '''Alistar's''' dash ends.\n* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.\n* '''Alistar's''' {{stil|attack range}} is reduced{{ft|to -375|by 500}}during ''Headbutt'', to prevent him from being able to attack the target when he completes the dash.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                110,
+                165,
+                220,
+                275
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  55,
+                  110,
+                  165,
+                  220,
+                  275
+                ],
+                "player_total_ap": 0.7000000000000001
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "AlistarE",
       "name": "Trample",
@@ -328,85 +343,70 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "Headbutt",
-      "name": "Headbutt",
-      "maxrank": 5,
+    "r1": {
+      "riotId": "FerociousHowl",
+      "name": "Unbreakable Will",
+      "maxrank": 3,
       "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
-      ],
-      "cost": [
-        65,
-        70,
-        75,
+        0,
+        120,
+        100,
         80,
-        85
+        0
       ],
+      "cost": 100,
       "costtype": "mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} {{tt|650|Target range}}",
+      "targeting": "Auto",
       "image": {
-        "full": "Headbutt.png",
+        "full": "FerociousHowl.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 336,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Alistar''' {{tip|dashes}} to the target enemy's location and, if the target is within 400 units upon arrival, he deals them {{as|magic damage}} and {{tip|airborne|knocks them back}} {{tt|700 units|200 units when combined with Pulverize}} over {{fd|0.5 seconds}} while also {{tip|stun|stunning}} them for {{fd|0.75}} seconds."
+        "{{sbc|Active:}} '''Alistar''' {{tip|cleanse|cleanses}} himself of all {{tip|crowd control}}. For the next 7 seconds, '''Alistar''' {{tip|Damage reduction|reduces}} incoming damage received."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Alistar</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy's location and, if the target is within 400 units upon arrival, he deals them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">knocks them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"200 units when combined with Pulverize\">700 units</span> over <span style=\"font-variant-numeric: tabular-nums;\">0.5 seconds</span> while also <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Alistar</b> <HtmlTooltip class=\"blue link\">cleanses<template #content><div><h4>cleanse<hr></h4><p>Description for keyword cleanse</p></div></template></HtmlTooltip> himself of all <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip>. For the next 7 seconds, <b>Alistar</b> <HtmlTooltip class=\"blue link\">reduces<template #content><div><h4>Damage reduction<hr></h4><p>Description for keyword Damage reduction</p></div></template></HtmlTooltip> incoming damage received.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|55 to 275}} {{as|(+ 70% AP)}}}}"
+        "{{st|Damage Reduction|{{ap|55|65|75}}%}}"
       ],
-      "notes": "* The dash speed depends on the inverse of the distance to the target:\n** If '''Alistar's''' [[size|radius]] overlaps with his target's, he will dash with {{as|1200 speed|movement speed}}.\n** If '''Alistar''' is further from his target than the previous condition, he will dash with (1200 {{times}} dash distance) / (dash distance - sum of radiuses).\n*** At maximum target range, against an enemy with a 65 {{tip|gameplay radius}} (median of all champions), '''Alistar''' will dash with {{as|1544 speed|movement speed}} (reaching his target within {{tt|{{fd|0.429}} seconds|rounded to next game tick}}).\n*** Both the lower the dash distance and the larger '''Alistar''' and/or his target, the faster the dash becomes; this scales hyperbolically.\n* When {{ai|Pulverize|Alistar}} is buffered during the dash, the knockback distance is reduced to 200 units.\n* The CC duration of the ability can be reduced by up-to 25% {{stil|Tenacity}}, due to airborne not being reducible while the stun is.\n* The {{tip|airborne|knockback}} direction is in a straight line from '''Alistar's''' original location at start of cast and the enemy when '''Alistar's''' dash ends.\n* ''Headbutt'' can knock enemies through terrain. The {{tip|airborne|knockback}} stops short on walls that cannot be surpassed but the disable duration is not changed.\n* The [[spell indicator]] for this ability also displays the direction for the knock back relative to '''Alistar's''' position.\n* '''Alistar's''' {{stil|attack range}} is reduced{{ft|to -375|by 500}}during ''Headbutt'', to prevent him from being able to attack the target when he completes the dash.",
-      "skillkey": "W",
-      "skillid": "w1",
+      "notes": "* {{tip|True damage}} cannot be reduced by any means and will deal full damage to '''Alistar''' during ''Unbreakable Will''.\n* ''Unbreakable Will's'' modifier to incoming damage stacks additively with {{cai|Hemoplague|Vladimir}} for a total reduction of 45/55/65%.{{tt|*|this might be unintended}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120|100|80}}|Starts on cast}}' as '0/120/100/80/0' and riot's value '120,100,80' as '120/100/80'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[55,65,75]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              }
-            ],
+            "as_ratios": [],
             "st_slices": [
               [
-                "Magic Damage",
-                "<SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+                "Damage Reduction",
+                "<SpellSpan :list=\"[55,65,75]\"></SpellSpan>%"
               ]
             ],
             "ap_progressions": [
               [
                 55,
-                110,
-                165,
-                220,
-                275
+                65,
+                75
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
+              "title": "Damage Reduction",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   55,
-                  110,
-                  165,
-                  220,
-                  275
-                ],
-                "player_total_ap": 0.7000000000000001
+                  65,
+                  75
+                ]
               }
             }
           ]

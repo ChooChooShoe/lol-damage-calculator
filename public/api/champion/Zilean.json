@@ -49,172 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "r1": {
-      "riotId": "ChronoShift",
-      "name": "Chronoshift",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        90,
-        60
-      ],
-      "cost": [
-        125,
-        150,
-        175
-      ],
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": 900,
-      "image": {
-        "full": "ChronoShift.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Zilean''' places a protective time rune on the target allied {{tip|champion}} or himself for 5 seconds.",
-        "If the target takes {{tip|death|fatal damage}} in the duration, they enter {{tip|resurrection}} for 3 seconds, during which they are in {{tip|stasis (buff)|stasis}}, and are afterwards {{tip|heal|healed}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> places a protective time rune on the target allied <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or himself for 5 seconds.<br />If the target takes <HtmlTooltip class=\"blue link\">fatal damage<template #content><div><h4>death<hr></h4><p>Description for keyword death</p></div></template></HtmlTooltip> in the duration, they enter <HtmlTooltip class=\"blue link\">resurrection<template #content><div><h4>resurrection<hr></h4><p>Description for keyword resurrection</p></div></template></HtmlTooltip> for 3 seconds, during which they are in <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>stasis (buff)<hr></h4><p>Description for keyword stasis (buff)</p></div></template></HtmlTooltip>, and are afterwards <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Heal|{{ap|600 to 1100}} {{as|(+ 200% AP)}}}}"
-      ],
-      "notes": "* ''Chronoshift's'' {{tip|untargetability}} from the {{tip|stasis (buff)|stasis}} does not {{tip|homing projectile destruction|destroy}} in-flight {{tip|projectiles}}.\n* ''Chronoshift'' cannot target {{tip|clone|clones}}.\n* ''Chronoshift'' takes priority over all other {{tip|resurrection}} effects as well as all {{tip|zombie state}} effects.\n* ''Chronoshift'' does not activate if the target is killed by the {{tip|Nexus Obelisk}}.\n* While in {{tip|stasis (buff)|stasis}}, the target's [[health regeneration]] is set to 0.\n* The target's screen will have a white tint.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[600,850,1100]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 2
-              }
-            ],
-            "st_slices": [
-              [
-                "Heal",
-                "<SpellSpan :list=\"[600,850,1100]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                600,
-                850,
-                1100
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Heal",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 2
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "ZileanW",
-      "name": "Rewind",
-      "maxrank": 5,
-      "cooldown": [
-        14,
-        12,
-        10,
-        8,
-        6
-      ],
-      "cost": 35,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "ZileanW.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 144,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Zilean''' reduces {{ais|Time Bomb|Zilean}} and {{ais|Time Warp|Zilean}} {{sti|cooldown|cooldowns}} by 10 seconds each."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> reduces <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zilean\">Time Bomb's<template #content>Time Bomb</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zilean\">Time Warp's<template #content>Time Warp</template></HtmlTooltip> <span>cooldowns</span> by 10 seconds each.",
-      "leveling": [],
-      "notes": "* ''Rewind'' can only be cast when either of his basic abilities are on {{sti|cooldown}}.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": []
-    },
-    "e1": {
-      "riotId": "TimeWarp",
-      "name": "Time Warp",
-      "maxrank": 5,
-      "cooldown": 15,
-      "cost": 50,
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|er|icononly = true}} 550",
-      "image": {
-        "full": "TimeWarp.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 192,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Zilean''' bends time around the target champion, {{tip|slow|slowing}} them for {{fd|2.5}} seconds if they are an enemy or granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for the same duration if they are an ally or himself."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> bends time around the target champion, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds if they are an enemy or granting them <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for the same duration if they are an ally or himself.",
-      "leveling": [
-        "{{st|Movement Speed Modifier|{{ap|40 to 85 4|99}}%}}"
-      ],
-      "notes": "* No additional notes.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Movement Speed Modifier</span>: <span><SpellSpan :list=\"[40,55,70,85,99]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Movement Speed Modifier",
-                "<SpellSpan :list=\"[40,55,70,85,99]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                55,
-                70,
-                85,
-                99
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Movement Speed Modifier",
-              "damage_type": "none",
-              "ratios": {}
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Time in a Bottle",
@@ -361,6 +195,172 @@
                   1.4,
                   1.5
                 ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "ZileanW",
+      "name": "Rewind",
+      "maxrank": 5,
+      "cooldown": [
+        14,
+        12,
+        10,
+        8,
+        6
+      ],
+      "cost": 35,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "ZileanW.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Zilean''' reduces {{ais|Time Bomb|Zilean}} and {{ais|Time Warp|Zilean}} {{sti|cooldown|cooldowns}} by 10 seconds each."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> reduces <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zilean\">Time Bomb's<template #content>Time Bomb</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zilean\">Time Warp's<template #content>Time Warp</template></HtmlTooltip> <span>cooldowns</span> by 10 seconds each.",
+      "leveling": [],
+      "notes": "* ''Rewind'' can only be cast when either of his basic abilities are on {{sti|cooldown}}.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": []
+    },
+    "e1": {
+      "riotId": "TimeWarp",
+      "name": "Time Warp",
+      "maxrank": 5,
+      "cooldown": 15,
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|icononly = true}} 550",
+      "image": {
+        "full": "TimeWarp.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Zilean''' bends time around the target champion, {{tip|slow|slowing}} them for {{fd|2.5}} seconds if they are an enemy or granting them {{sti|ms|{{as|'''bonus''' movement speed}}}} for the same duration if they are an ally or himself."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> bends time around the target champion, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds if they are an enemy or granting them <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for the same duration if they are an ally or himself.",
+      "leveling": [
+        "{{st|Movement Speed Modifier|{{ap|40 to 85 4|99}}%}}"
+      ],
+      "notes": "* No additional notes.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Movement Speed Modifier</span>: <span><SpellSpan :list=\"[40,55,70,85,99]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Movement Speed Modifier",
+                "<SpellSpan :list=\"[40,55,70,85,99]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                55,
+                70,
+                85,
+                99
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Movement Speed Modifier",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "ChronoShift",
+      "name": "Chronoshift",
+      "maxrank": 3,
+      "cooldown": [
+        120,
+        90,
+        60
+      ],
+      "cost": [
+        125,
+        150,
+        175
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 900,
+      "image": {
+        "full": "ChronoShift.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Zilean''' places a protective time rune on the target allied {{tip|champion}} or himself for 5 seconds.",
+        "If the target takes {{tip|death|fatal damage}} in the duration, they enter {{tip|resurrection}} for 3 seconds, during which they are in {{tip|stasis (buff)|stasis}}, and are afterwards {{tip|heal|healed}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zilean</b> places a protective time rune on the target allied <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or himself for 5 seconds.<br />If the target takes <HtmlTooltip class=\"blue link\">fatal damage<template #content><div><h4>death<hr></h4><p>Description for keyword death</p></div></template></HtmlTooltip> in the duration, they enter <HtmlTooltip class=\"blue link\">resurrection<template #content><div><h4>resurrection<hr></h4><p>Description for keyword resurrection</p></div></template></HtmlTooltip> for 3 seconds, during which they are in <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>stasis (buff)<hr></h4><p>Description for keyword stasis (buff)</p></div></template></HtmlTooltip>, and are afterwards <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Heal|{{ap|600 to 1100}} {{as|(+ 200% AP)}}}}"
+      ],
+      "notes": "* ''Chronoshift's'' {{tip|untargetability}} from the {{tip|stasis (buff)|stasis}} does not {{tip|homing projectile destruction|destroy}} in-flight {{tip|projectiles}}.\n* ''Chronoshift'' cannot target {{tip|clone|clones}}.\n* ''Chronoshift'' takes priority over all other {{tip|resurrection}} effects as well as all {{tip|zombie state}} effects.\n* ''Chronoshift'' does not activate if the target is killed by the {{tip|Nexus Obelisk}}.\n* While in {{tip|stasis (buff)|stasis}}, the target's [[health regeneration]] is set to 0.\n* The target's screen will have a white tint.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[600,850,1100]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 2
+              }
+            ],
+            "st_slices": [
+              [
+                "Heal",
+                "<SpellSpan :list=\"[600,850,1100]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                600,
+                850,
+                1100
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Heal",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 2
               }
             }
           ]

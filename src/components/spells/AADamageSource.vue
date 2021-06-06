@@ -116,7 +116,7 @@ export default {
     return {
       customEffects: [0],
       lastEffectIndex: 1,
-      repeat: 0,
+      repeat: 1,
       ratios: {},
       ds_ad: new DamageSource(DamageType.PHYSICAL, 0),
       ds_ph: new DamageSource(DamageType.PHYSICAL, 0),

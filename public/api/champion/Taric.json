@@ -49,6 +49,104 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Bravado",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Taric_Passive.png",
+        "sprite": "passive4.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{as|{{pp|25 to 93}}|magic damage}} {{as|(+ 15% '''bonus''' armor)}} {{as|'''bonus''' magic damage}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by ability haste}}, as well as refreshing ''Bravado's'' duration on the first attack."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Taric's</b> next two <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds gain <span><span class=\"attack-speed\">100% <b>total</b> attack speed</span></span>, each dealing <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">25undefined − 93undefined (based on level)<template #content>Values: 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85, 89, 93<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"armor\">(+ 15% <b>bonus</b> armor)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and reducing the <span>cooldowns</span> of his basic abilities by <span class=\"title-tooltip\" title=\"Affected by ability haste\">1 second</span>, as well as refreshing <i>Bravado's</i> duration on the first attack.",
+      "leveling": [],
+      "notes": "* The bonus damage will not apply against {{tip|structures}}.\n* ''Bravado'' can be {{tip|dodged}} and {{tip|blocked}} but it cannot miss if '''Taric''' is {{tip|blind|blinded}}. The cooldown reduction cannot be negated in any cases.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "TaricQ",
+      "name": "Starlight's Touch",
+      "maxrank": 5,
+      "cooldown": 3,
+      "cost": [
+        70,
+        75,
+        80,
+        85,
+        90
+      ],
+      "costtype": "Mana + all charges",
+      "targeting": "Auto",
+      "image": {
+        "full": "TaricQ.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Taric''' stores a charge of ''Starlight's Touch'' periodically, up to a maximum at once. {{ais|Bravado|Taric}} empowered attacks grant one charge.",
+        "{{sbc|Active:}} '''Taric''' {{tip|heals}} himself and all nearby allied champions for 30 {{as|(+ 20% AP)}} {{as|(+ 1% of Taric's '''maximum''' health)}} per stored charge at the time of cast, up to a maximum of 150 {{as|(+ 100% AP)}} {{as|(+ 5% of Taric's '''maximum''' health)}} at 5 charges."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Taric</b> stores a charge of <i>Starlight's Touch</i> periodically, up to a maximum at once. <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Taric\">Bravado's<template #content>Bravado</template></HtmlTooltip> empowered attacks grant one charge.<br /><span class=\"sbc\">Active:</span> <b>Taric</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself and all nearby allied champions for 30 <span class=\"ap\">(+ 20% AP)</span> <span class=\"health\">(+ 1% of Taric's <b>maximum</b> health)</span> per stored charge at the time of cast, up to a maximum of 150 <span class=\"ap\">(+ 100% AP)</span> <span class=\"health\">(+ 5% of Taric's <b>maximum</b> health)</span> at 5 charges.",
+      "leveling": [
+        "{{st|Maximum Charges|{{ap|1 to 5}}}}"
+      ],
+      "notes": "* The healing will apply heal effects (such as {{ri|Summon Aery}}) prioritizing targets in '''Taric's''' circle, based on proximity to him, then in the {{ai|Bastion|Taric|Bastioned}} ally's circle, based on proximity to that ally (including it).",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Charges</span>: <span><SpellSpan :list=\"[1,2,3,4,5]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Maximum Charges",
+                "<SpellSpan :list=\"[1,2,3,4,5]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Maximum Charges",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "TaricW",
       "name": "Bastion",
@@ -165,135 +263,6 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "TaricR",
-      "name": "Cosmic Radiance",
-      "maxrank": 3,
-      "cooldown": [
-        180,
-        150,
-        120
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "TaricR.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Taric''' calls down a star from above that descends to him over {{fd|2.5}} seconds. Afterwards, '''Taric''' and all nearby allied {{tip|champions}} become {{tip|invulnerable}} for {{fd|2.5}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Taric</b> calls down a star from above that descends to him over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. Afterwards, <b>Taric</b> and all nearby allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
-      "leveling": [],
-      "notes": "* ''Cosmic Radiance'' has no effect on {{tip|untargetable}} allies.\n** It will affect the primary unit (the one the star is falling down on) even if they are untargetable.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "TaricQ",
-      "name": "Starlight's Touch",
-      "maxrank": 5,
-      "cooldown": 3,
-      "cost": [
-        70,
-        75,
-        80,
-        85,
-        90
-      ],
-      "costtype": "Mana + all charges",
-      "targeting": "Auto",
-      "image": {
-        "full": "TaricQ.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 96,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Taric''' stores a charge of ''Starlight's Touch'' periodically, up to a maximum at once. {{ais|Bravado|Taric}} empowered attacks grant one charge.",
-        "{{sbc|Active:}} '''Taric''' {{tip|heals}} himself and all nearby allied champions for 30 {{as|(+ 20% AP)}} {{as|(+ 1% of Taric's '''maximum''' health)}} per stored charge at the time of cast, up to a maximum of 150 {{as|(+ 100% AP)}} {{as|(+ 5% of Taric's '''maximum''' health)}} at 5 charges."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Taric</b> stores a charge of <i>Starlight's Touch</i> periodically, up to a maximum at once. <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Taric\">Bravado's<template #content>Bravado</template></HtmlTooltip> empowered attacks grant one charge.<br /><span class=\"sbc\">Active:</span> <b>Taric</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself and all nearby allied champions for 30 <span class=\"ap\">(+ 20% AP)</span> <span class=\"health\">(+ 1% of Taric's <b>maximum</b> health)</span> per stored charge at the time of cast, up to a maximum of 150 <span class=\"ap\">(+ 100% AP)</span> <span class=\"health\">(+ 5% of Taric's <b>maximum</b> health)</span> at 5 charges.",
-      "leveling": [
-        "{{st|Maximum Charges|{{ap|1 to 5}}}}"
-      ],
-      "notes": "* The healing will apply heal effects (such as {{ri|Summon Aery}}) prioritizing targets in '''Taric's''' circle, based on proximity to him, then in the {{ai|Bastion|Taric|Bastioned}} ally's circle, based on proximity to that ally (including it).",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Charges</span>: <span><SpellSpan :list=\"[1,2,3,4,5]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Maximum Charges",
-                "<SpellSpan :list=\"[1,2,3,4,5]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                1,
-                2,
-                3,
-                4,
-                5
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Maximum Charges",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  1,
-                  2,
-                  3,
-                  4,
-                  5
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Bravado",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Taric_Passive.png",
-        "sprite": "passive4.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{as|{{pp|25 to 93}}|magic damage}} {{as|(+ 15% '''bonus''' armor)}} {{as|'''bonus''' magic damage}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by ability haste}}, as well as refreshing ''Bravado's'' duration on the first attack."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Taric's</b> next two <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds gain <span><span class=\"attack-speed\">100% <b>total</b> attack speed</span></span>, each dealing <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">25undefined − 93undefined (based on level)<template #content>Values: 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85, 89, 93<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"armor\">(+ 15% <b>bonus</b> armor)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and reducing the <span>cooldowns</span> of his basic abilities by <span class=\"title-tooltip\" title=\"Affected by ability haste\">1 second</span>, as well as refreshing <i>Bravado's</i> duration on the first attack.",
-      "leveling": [],
-      "notes": "* The bonus damage will not apply against {{tip|structures}}.\n* ''Bravado'' can be {{tip|dodged}} and {{tip|blocked}} but it cannot miss if '''Taric''' is {{tip|blind|blinded}}. The cooldown reduction cannot be negated in any cases.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "e1": {
       "riotId": "TaricE",
       "name": "Dazzle",
@@ -375,6 +344,37 @@
           ]
         }
       ]
+    },
+    "r1": {
+      "riotId": "TaricR",
+      "name": "Cosmic Radiance",
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        150,
+        120
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "TaricR.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Taric''' calls down a star from above that descends to him over {{fd|2.5}} seconds. Afterwards, '''Taric''' and all nearby allied {{tip|champions}} become {{tip|invulnerable}} for {{fd|2.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Taric</b> calls down a star from above that descends to him over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. Afterwards, <b>Taric</b> and all nearby allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
+      "leveling": [],
+      "notes": "* ''Cosmic Radiance'' has no effect on {{tip|untargetable}} allies.\n** It will affect the primary unit (the one the star is falling down on) even if they are untargetable.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": []
     }
   }
 }

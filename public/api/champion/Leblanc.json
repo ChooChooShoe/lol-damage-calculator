@@ -49,6 +49,32 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Mirror Image",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "LeBlancP.png",
+        "sprite": "passive2.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} When '''LeBlanc''' is damaged to {{sti|health|{{as|40% '''maximum''' health}}}}, she creates a controllable {{tip|clone}} of herself, after which they both instantly become {{tip|invisibility|invisible}} for 1 second.",
+        "The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of '''LeBlanc''' decided the moment it spawns.",
+        "''Mirror Image'' can only occur once every few seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> When <b>LeBlanc</b> is damaged to <span><span class=\"health\">40% <b>maximum</b> health</span></span>, she creates a controllable <HtmlTooltip class=\"blue link\">clone<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of herself, after which they both instantly become <HtmlTooltip class=\"blue link\">invisible<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second.<br />The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of <b>LeBlanc</b> decided the moment it spawns.<br /><i>Mirror Image</i> can only occur once every few seconds.",
+      "leveling": [],
+      "notes": "* The {{tip|clone}} has a [[Pets#Leash ranges|leash range]].",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
     "q1": {
       "riotId": "LeblancQ",
       "name": "Sigil of Malice",
@@ -166,6 +192,94 @@
                   330
                 ],
                 "player_total_ap": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "LeblancW",
+      "name": "Distortion",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        15.333,
+        12.667,
+        10,
+        7.333,
+        0
+      ],
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tt|600|Dash range}} / {{tt|Global|Recast radius}}",
+      "image": {
+        "full": "LeblancW.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''LeBlanc''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. ''Distortion'' can be recast after {{fd|0.2}} seconds of the dash ending for its duration.",
+        "{{sbc|Recast:}} '''LeBlanc''' {{tip|blink|blinks}} to ''Distortion's'' return pad, regardless of range."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. <i>Distortion</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.2</span> seconds of the dash ending for its duration.<br /><span class=\"sbc\">Recast:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to <i>Distortion's</i> return pad, regardless of range.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* ''Distortion'' will be buffered and cast as soon as the cooldown ends if the player attempts to cast it within {{fd|0.5}} seconds of the cooldown ending.\n** The {{sbc|recast}} will be buffered and cast as soon as it becomes available if the player attempts to cast it within {{fd|0.3}} seconds of it becoming available to cast.\n*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Recasting the ability does not.\n**{{ai|Mimic Distortion|LeBlanc}} has the same properties.\n* ''Distortion'' and {{ai|Mimic Distortion|LeBlanc}} have independent return pads and '''LeBlanc''' can travel to both while they are active.\n* ''Distortion'''s dash speed is unaffected by '''LeBlanc's''' movement speed.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 10}}|Starts on cast}}' as '0/15.333/12.667/10/7.333/0' and riot's value '18,16,14,12,10' as '18/16/14/12/10'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                115,
+                155,
+                195,
+                235
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  75,
+                  115,
+                  155,
+                  195,
+                  235
+                ],
+                "player_total_ap": 0.6
               }
             }
           ]
@@ -301,94 +415,6 @@
                   240
                 ],
                 "player_total_ap": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "LeblancW",
-      "name": "Distortion",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        15.333,
-        12.667,
-        10,
-        7.333,
-        0
-      ],
-      "cost": [
-        60,
-        70,
-        80,
-        90,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
-      "target_range": "{{tt|600|Dash range}} / {{tt|Global|Recast radius}}",
-      "image": {
-        "full": "LeblancW.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 144,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''LeBlanc''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. ''Distortion'' can be recast after {{fd|0.2}} seconds of the dash ending for its duration.",
-        "{{sbc|Recast:}} '''LeBlanc''' {{tip|blink|blinks}} to ''Distortion's'' return pad, regardless of range."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. <i>Distortion</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.2</span> seconds of the dash ending for its duration.<br /><span class=\"sbc\">Recast:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to <i>Distortion's</i> return pad, regardless of range.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 60% AP)}}}}"
-      ],
-      "notes": "* ''Distortion'' will be buffered and cast as soon as the cooldown ends if the player attempts to cast it within {{fd|0.5}} seconds of the cooldown ending.\n** The {{sbc|recast}} will be buffered and cast as soon as it becomes available if the player attempts to cast it within {{fd|0.3}} seconds of it becoming available to cast.\n*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Recasting the ability does not.\n**{{ai|Mimic Distortion|LeBlanc}} has the same properties.\n* ''Distortion'' and {{ai|Mimic Distortion|LeBlanc}} have independent return pads and '''LeBlanc''' can travel to both while they are active.\n* ''Distortion'''s dash speed is unaffected by '''LeBlanc's''' movement speed.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 10}}|Starts on cast}}' as '0/15.333/12.667/10/7.333/0' and riot's value '18,16,14,12,10' as '18/16/14/12/10'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                75,
-                115,
-                155,
-                195,
-                235
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  75,
-                  115,
-                  155,
-                  195,
-                  235
-                ],
-                "player_total_ap": 0.6
               }
             }
           ]
@@ -586,32 +612,6 @@
           ]
         }
       ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Mirror Image",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "LeBlancP.png",
-        "sprite": "passive2.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} When '''LeBlanc''' is damaged to {{sti|health|{{as|40% '''maximum''' health}}}}, she creates a controllable {{tip|clone}} of herself, after which they both instantly become {{tip|invisibility|invisible}} for 1 second.",
-        "The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of '''LeBlanc''' decided the moment it spawns.",
-        "''Mirror Image'' can only occur once every few seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> When <b>LeBlanc</b> is damaged to <span><span class=\"health\">40% <b>maximum</b> health</span></span>, she creates a controllable <HtmlTooltip class=\"blue link\">clone<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of herself, after which they both instantly become <HtmlTooltip class=\"blue link\">invisible<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second.<br />The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of <b>LeBlanc</b> decided the moment it spawns.<br /><i>Mirror Image</i> can only occur once every few seconds.",
-      "leveling": [],
-      "notes": "* The {{tip|clone}} has a [[Pets#Leash ranges|leash range]].",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
     }
   }
 }

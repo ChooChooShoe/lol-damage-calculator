@@ -75,6 +75,86 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "KatarinaQ",
+      "name": "Bouncing Blade",
+      "maxrank": 5,
+      "cooldown": [
+        11,
+        10,
+        9,
+        8,
+        7
+      ],
+      "cost": 0,
+      "targeting": "Unit",
+      "target_range": 625,
+      "image": {
+        "full": "KatarinaQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 0,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Katarina''' throws a {{as|Dagger|buzzword}} at the target enemy that upon arrival bounces to up to 2 nearby enemies, dealing {{as|magic damage}} to each target.",
+        "The {{as|Dagger|buzzword}} then lands onto the ground after 1 second, 350 units opposite from where it struck its last target.",
+        "''The {{as|Dagger|buzzword}} bounces to targets regardless of having {{tip|sight}} of them or not.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> throws a <span class=\"buzzword\">Dagger</span> at the target enemy that upon arrival bounces to up to 2 nearby enemies, dealing <span class=\"magic-damage\">magic damage</span> to each target.<br />The <span class=\"buzzword\">Dagger</span> then lands onto the ground after 1 second, 350 units opposite from where it struck its last target.<br /><i>The <span class=\"buzzword\">Dagger</span> bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
+      ],
+      "notes": "* ''Bouncing Blade'' will not be destroyed in-flight if the target dies before reaching them but it will on {{tip|clone|clones}} that expire.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                105,
+                135,
+                165,
+                195
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  75,
+                  105,
+                  135,
+                  165,
+                  195
+                ],
+                "player_total_ap": 0.3
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "KatarinaW",
       "name": "Preparation",
@@ -217,86 +297,6 @@
                 ],
                 "player_total_ad": 0.5,
                 "player_total_ap": 0.25
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "KatarinaQ",
-      "name": "Bouncing Blade",
-      "maxrank": 5,
-      "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
-      ],
-      "cost": 0,
-      "targeting": "Unit",
-      "target_range": 625,
-      "image": {
-        "full": "KatarinaQ.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 0,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Katarina''' throws a {{as|Dagger|buzzword}} at the target enemy that upon arrival bounces to up to 2 nearby enemies, dealing {{as|magic damage}} to each target.",
-        "The {{as|Dagger|buzzword}} then lands onto the ground after 1 second, 350 units opposite from where it struck its last target.",
-        "''The {{as|Dagger|buzzword}} bounces to targets regardless of having {{tip|sight}} of them or not.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Katarina</b> throws a <span class=\"buzzword\">Dagger</span> at the target enemy that upon arrival bounces to up to 2 nearby enemies, dealing <span class=\"magic-damage\">magic damage</span> to each target.<br />The <span class=\"buzzword\">Dagger</span> then lands onto the ground after 1 second, 350 units opposite from where it struck its last target.<br /><i>The <span class=\"buzzword\">Dagger</span> bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
-      ],
-      "notes": "* ''Bouncing Blade'' will not be destroyed in-flight if the target dies before reaching them but it will on {{tip|clone|clones}} that expire.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                75,
-                105,
-                135,
-                165,
-                195
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  75,
-                  105,
-                  135,
-                  165,
-                  195
-                ],
-                "player_total_ap": 0.3
               }
             }
           ]

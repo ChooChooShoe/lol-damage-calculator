@@ -49,90 +49,6 @@
     "attackspeed": 0.635
   },
   "skills": {
-    "e1": {
-      "riotId": "RakanE",
-      "name": "Battle Dance",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        20,
-        18,
-        16,
-        14,
-        12,
-        0
-      ],
-      "cost": [
-        60,
-        70,
-        80,
-        90,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{ap|{{tt|700|Standard range}}|{{tt|1000|Enhanced range}}}}",
-      "image": {
-        "full": "RakanE.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 384,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Rakan''' {{tip|shield|shields}} the target allied champion for 3 seconds and then {{tip|dash|dashes}} to and around them. ''Battle Dance'' can be recast within 5 seconds at no additional cost.",
-        "{{sbc|Recast:}} '''Rakan''' mimics the first cast's effects.",
-        "'''''Rakan''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during Battle Dance.''",
-        "''If {{ci|Xayah}} is the target, Battle Dance can be cast from an increased range.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> the target allied champion for 3 seconds and then <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to and around them. <i>Battle Dance</i> can be recast within 5 seconds at no additional cost.<br /><span class=\"sbc\">Recast:</span> <b>Rakan</b> mimics the first cast's effects.<br /><b><i>Rakan</b> will be <HtmlTooltip class=\"blue link\">knocked down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> by any <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> crowd control during Battle Dance.</i><br /><i>If <span class=\"chamption-name\" data-champkey=\"Xayah\">Xayah</span> is the target, Battle Dance can be cast from an increased range.</i>",
-      "leveling": [
-        "{{st|Shield Strength|{{ap|40|65|90|115|140}} {{as|(+ 80% AP)}}}}"
-      ],
-      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The shields do not stack if ''Battle Dance'' is cast on the same target twice. Only the duration and shield amount is refreshed.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|20|18|16|14|12}}|Starts on cast}}' as '0/20/18/16/14/12/0' and riot's value '0,0,0,0,0' as '0'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.8
-              }
-            ],
-            "st_slices": [
-              [
-                "Shield Strength",
-                "<SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                65,
-                90,
-                115,
-                140
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Shield Strength",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.8
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Fey Feathers",
@@ -160,73 +76,66 @@
       "skillid": "i1",
       "effects": []
     },
-    "r1": {
-      "riotId": "RakanR",
-      "name": "The Quickness",
-      "maxrank": 3,
+    "q1": {
+      "riotId": "RakanQ",
+      "name": "Gleaming Quill",
+      "maxrank": 5,
       "cooldown": [
         0,
-        130,
-        110,
-        90,
+        10.667,
+        9.333,
+        8,
+        6.667,
         0
       ],
-      "cost": 100,
+      "cost": 60,
       "costtype": "Mana",
-      "targeting": "Auto",
+      "targeting": "Direction",
+      "target_range": 900,
       "image": {
-        "full": "RakanR.png",
+        "full": "RakanQ.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 432,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Rakan''' breaks into a captivating sprint for 4 seconds, gaining {{sti|ms|{{as|75% '''bonus''' movement speed}}}} and becoming {{tip|ghosted}} for the duration.",
-        "While ''The Quickness'' is active, '''Rakan''' also deals {{as|magic damage}} to all enemies he comes into contact with and {{tip|charm|charms}} them for a duration, during which they are {{tip|slow|slowed}} by 75%. This cannot affect the same enemy more than once. Colliding with an enemy {{tip|champion}} increases ''The Quickness' '' duration by {{fd|0.25}} seconds. This may only occur once per champion.",
-        "When '''Rakan''' collides with his first enemy {{tip|champion}}, he gains an additional {{sti|ms|{{as|75% '''bonus''' movement speed}}}}, which starts decaying after {{fd|0.5}} seconds by 20% every {{fd|0.5}} seconds and then by 15% after decaying by 60% over {{fd|1.5}} seconds.",
-        "During the first {{fd|0.5}} seconds of ''The Quickness'', '''Rakan''' is in [[Channel#Casting_Times|cast time]].",
-        "''During The Quickness, '''Rakan''' cannot [[basic attack]] enemy champions if he did not collide with them, unless the attack command was inputted before the ability was activated.''"
+        "{{sbc|Active:}} '''Rakan''' slings an enchanted feather in the target direction, dealing {{as|magic damage}} to the first enemy hit.",
+        "If the target was an enemy {{tip|champion}} or epic {{tip|monster}}, an area is marked around '''Rakan'''.",
+        "After 3 seconds or if an ally champion enters within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allied champions for {{pp|18 to 120}} {{as|(+ 70% AP)}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> breaks into a captivating sprint for 4 seconds, gaining <span><span class=\"movement-speed\">75% <b>bonus</b> movement speed</span></span> and becoming <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> for the duration.<br />While <i>The Quickness</i> is active, <b>Rakan</b> also deals <span class=\"magic-damage\">magic damage</span> to all enemies he comes into contact with and <HtmlTooltip class=\"blue link\">charms<template #content><div><h4>Charm<hr></h4><p></p></div></template></HtmlTooltip> them for a duration, during which they are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 75%. This cannot affect the same enemy more than once. Colliding with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> increases <i>The Quickness' </i> duration by <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds. This may only occur once per champion.<br />When <b>Rakan</b> collides with his first enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, he gains an additional <span><span class=\"movement-speed\">75% <b>bonus</b> movement speed</span></span>, which starts decaying after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds by 20% every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds and then by 15% after decaying by 60% over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />During the first <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds of <i>The Quickness</i>, <b>Rakan</b> is in <a class=\"effect link\" title=\"cast time\">Channel#Casting_Times</a>.<br /><i>During The Quickness, <b>Rakan</b> cannot <a class=\"effect link\" title=\"basic attack\">basic attack</a> enemy champions if he did not collide with them, unless the attack command was inputted before the ability was activated.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> slings an enchanted feather in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy hit.<br />If the target was an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, an area is marked around <b>Rakan</b>.<br />After 3 seconds or if an ally champion enters within the marked area, <b>Rakan</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself and surrounding allied champions for <HtmlTooltip class=\"blue link\">18undefined − 120undefined (based on level)<template #content>Values: 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 70% AP)</span>.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|100|200|300}} {{as|(+ 50% AP)}}}}\n{{st|Charm Duration|{{ap|1|1.25|1.5}}}}"
+        "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}"
       ],
-      "notes": "{{clr}}\n* The following table refers for interactions while '''Rakan''' is in cast time:\n{{ct|cast|attack=true|cast=[[File: Grand Entrance.png|20px|link=]] ''Grand Entrance'' is disabled but can still be buffered. [[File: Gleaming Quill.png|20px|link=]] ''Gleaming Quill'' and [[File: Battle Dance.png|20px|link=]] ''Battle Dance'' are usable.|move=true|items=true|consume=true|spells=true,false,true,true,true}}",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|130|110|90}}|Starts on cast}}' as '0/130/110/90/0' and riot's value '130,110,90' as '130/110/90'",
+      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* {{tip|Spell shield}} will not prevent the marked area from being formed.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.\n* ''Gleaming Quill'' will cast from wherever '''Rakan''' is at the end of the cast time.\n* The heal will trigger and affect '''Rakan''' even if he is {{tip|untargetable}}.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|12 to 8}}|Starts once the projectile vanishes}}' as '0/10.667/9.333/8/6.667/0' and riot's value '0,0,0,0,0' as '0'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.5
+                "player_total_ap": 0.6
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
-              ],
-              [
-                "Charm Duration",
-                "<SpellSpan :list=\"[1,1.25,1.5]\"></SpellSpan>"
+                "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                100,
-                200,
-                300
-              ],
-              [
-                1,
-                1.25,
-                1.5
+                70,
+                115,
+                160,
+                205,
+                250
               ]
             ]
           },
@@ -237,24 +146,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  100,
-                  200,
-                  300
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
                 ],
-                "player_total_ap": 0.5
-              }
-            },
-            {
-              "index": 1,
-              "title": "Charm Duration",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  1,
-                  1.25,
-                  1.5
-                ],
-                "player_total_ap": 0.5
+                "player_total_ap": 0.6
               }
             }
           ]
@@ -351,66 +249,157 @@
         }
       ]
     },
-    "q1": {
-      "riotId": "RakanQ",
-      "name": "Gleaming Quill",
+    "e1": {
+      "riotId": "RakanE",
+      "name": "Battle Dance",
       "maxrank": 5,
       "cooldown": [
         0,
-        10.667,
-        9.333,
-        8,
-        6.667,
+        20,
+        18,
+        16,
+        14,
+        12,
         0
       ],
-      "cost": 60,
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
       "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": 900,
+      "targeting": "Unit",
+      "target_range": "{{ap|{{tt|700|Standard range}}|{{tt|1000|Enhanced range}}}}",
       "image": {
-        "full": "RakanQ.png",
+        "full": "RakanE.png",
         "sprite": "spell9.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Rakan''' slings an enchanted feather in the target direction, dealing {{as|magic damage}} to the first enemy hit.",
-        "If the target was an enemy {{tip|champion}} or epic {{tip|monster}}, an area is marked around '''Rakan'''.",
-        "After 3 seconds or if an ally champion enters within the marked area, '''Rakan''' {{tip|heals}} himself and surrounding allied champions for {{pp|18 to 120}} {{as|(+ 70% AP)}}."
+        "{{sbc|Active:}} '''Rakan''' {{tip|shield|shields}} the target allied champion for 3 seconds and then {{tip|dash|dashes}} to and around them. ''Battle Dance'' can be recast within 5 seconds at no additional cost.",
+        "{{sbc|Recast:}} '''Rakan''' mimics the first cast's effects.",
+        "'''''Rakan''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during Battle Dance.''",
+        "''If {{ci|Xayah}} is the target, Battle Dance can be cast from an increased range.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> slings an enchanted feather in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy hit.<br />If the target was an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, an area is marked around <b>Rakan</b>.<br />After 3 seconds or if an ally champion enters within the marked area, <b>Rakan</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself and surrounding allied champions for <HtmlTooltip class=\"blue link\">18undefined − 120undefined (based on level)<template #content>Values: 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 70% AP)</span>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> the target allied champion for 3 seconds and then <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to and around them. <i>Battle Dance</i> can be recast within 5 seconds at no additional cost.<br /><span class=\"sbc\">Recast:</span> <b>Rakan</b> mimics the first cast's effects.<br /><b><i>Rakan</b> will be <HtmlTooltip class=\"blue link\">knocked down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> by any <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> crowd control during Battle Dance.</i><br /><i>If <span class=\"chamption-name\" data-champkey=\"Xayah\">Xayah</span> is the target, Battle Dance can be cast from an increased range.</i>",
       "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 250}} {{as|(+ 60% AP)}}}}"
+        "{{st|Shield Strength|{{ap|40|65|90|115|140}} {{as|(+ 80% AP)}}}}"
       ],
-      "notes": "* The trigger radius is slightly smaller than the heal radius.\n* {{tip|Spell shield}} will not prevent the marked area from being formed.\n* The heal can activate immediately after the projectile hits the target, before the healing return animation completes.\n* ''Gleaming Quill'' will cast from wherever '''Rakan''' is at the end of the cast time.\n* The heal will trigger and affect '''Rakan''' even if he is {{tip|untargetable}}.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|12 to 8}}|Starts once the projectile vanishes}}' as '0/10.667/9.333/8/6.667/0' and riot's value '0,0,0,0,0' as '0'",
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The shields do not stack if ''Battle Dance'' is cast on the same target twice. Only the duration and shield amount is refreshed.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|20|18|16|14|12}}|Starts on cast}}' as '0/20/18/16/14/12/0' and riot's value '0,0,0,0,0' as '0'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.6
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Shield Strength",
+                "<SpellSpan :list=\"[40,65,90,115,140]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                65,
+                90,
+                115,
+                140
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Shield Strength",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "RakanR",
+      "name": "The Quickness",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        130,
+        110,
+        90,
+        0
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "RakanR.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Rakan''' breaks into a captivating sprint for 4 seconds, gaining {{sti|ms|{{as|75% '''bonus''' movement speed}}}} and becoming {{tip|ghosted}} for the duration.",
+        "While ''The Quickness'' is active, '''Rakan''' also deals {{as|magic damage}} to all enemies he comes into contact with and {{tip|charm|charms}} them for a duration, during which they are {{tip|slow|slowed}} by 75%. This cannot affect the same enemy more than once. Colliding with an enemy {{tip|champion}} increases ''The Quickness' '' duration by {{fd|0.25}} seconds. This may only occur once per champion.",
+        "When '''Rakan''' collides with his first enemy {{tip|champion}}, he gains an additional {{sti|ms|{{as|75% '''bonus''' movement speed}}}}, which starts decaying after {{fd|0.5}} seconds by 20% every {{fd|0.5}} seconds and then by 15% after decaying by 60% over {{fd|1.5}} seconds.",
+        "During the first {{fd|0.5}} seconds of ''The Quickness'', '''Rakan''' is in [[Channel#Casting_Times|cast time]].",
+        "''During The Quickness, '''Rakan''' cannot [[basic attack]] enemy champions if he did not collide with them, unless the attack command was inputted before the ability was activated.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rakan</b> breaks into a captivating sprint for 4 seconds, gaining <span><span class=\"movement-speed\">75% <b>bonus</b> movement speed</span></span> and becoming <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> for the duration.<br />While <i>The Quickness</i> is active, <b>Rakan</b> also deals <span class=\"magic-damage\">magic damage</span> to all enemies he comes into contact with and <HtmlTooltip class=\"blue link\">charms<template #content><div><h4>Charm<hr></h4><p></p></div></template></HtmlTooltip> them for a duration, during which they are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 75%. This cannot affect the same enemy more than once. Colliding with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> increases <i>The Quickness' </i> duration by <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds. This may only occur once per champion.<br />When <b>Rakan</b> collides with his first enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, he gains an additional <span><span class=\"movement-speed\">75% <b>bonus</b> movement speed</span></span>, which starts decaying after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds by 20% every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds and then by 15% after decaying by 60% over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />During the first <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds of <i>The Quickness</i>, <b>Rakan</b> is in <a class=\"effect link\" title=\"cast time\">Channel#Casting_Times</a>.<br /><i>During The Quickness, <b>Rakan</b> cannot <a class=\"effect link\" title=\"basic attack\">basic attack</a> enemy champions if he did not collide with them, unless the attack command was inputted before the ability was activated.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|100|200|300}} {{as|(+ 50% AP)}}}}\n{{st|Charm Duration|{{ap|1|1.25|1.5}}}}"
+      ],
+      "notes": "{{clr}}\n* The following table refers for interactions while '''Rakan''' is in cast time:\n{{ct|cast|attack=true|cast=[[File: Grand Entrance.png|20px|link=]] ''Grand Entrance'' is disabled but can still be buffered. [[File: Gleaming Quill.png|20px|link=]] ''Gleaming Quill'' and [[File: Battle Dance.png|20px|link=]] ''Battle Dance'' are usable.|move=true|items=true|consume=true|spells=true,false,true,true,true}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|130|110|90}}|Starts on cast}}' as '0/130/110/90/0' and riot's value '130,110,90' as '130/110/90'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+                "<SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ],
+              [
+                "Charm Duration",
+                "<SpellSpan :list=\"[1,1.25,1.5]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
               [
-                70,
-                115,
-                160,
-                205,
-                250
+                100,
+                200,
+                300
+              ],
+              [
+                1,
+                1.25,
+                1.5
               ]
             ]
           },
@@ -421,13 +410,24 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  70,
-                  115,
-                  160,
-                  205,
-                  250
+                  100,
+                  200,
+                  300
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.5
+              }
+            },
+            {
+              "index": 1,
+              "title": "Charm Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  1,
+                  1.25,
+                  1.5
+                ],
+                "player_total_ap": 0.5
               }
             }
           ]

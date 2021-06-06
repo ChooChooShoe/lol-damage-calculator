@@ -49,6 +49,30 @@
     "attackspeed": 0.658
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Hextech Capacitor",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Jayce_Passive.png",
+        "sprite": "passive1.png",
+        "group": "passive",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} Each time '''Jayce''' switches between {{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}}}} and {{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}}}} he gains {{sti|ms|{{as|40 '''bonus''' movement speed}}}} and {{tip|ghosting}} for {{fd|1.25}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Each time <b>Jayce</b> switches between <span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Hammer Stance<template #content>Transform Mercury Hammer</template></HtmlTooltip></span> and <span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Cannon Stance<template #content>Transform Mercury Cannon</template></HtmlTooltip></span> he gains <span><span class=\"movement-speed\">40 <b>bonus</b> movement speed</span></span> and <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghosting<hr></h4><p>Description for keyword ghosting</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.25</span> seconds.",
+      "leveling": [],
+      "notes": "* No additional details.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
     "q1": {
       "riotId": "JayceToTheSkies",
       "name": "To the Skies!",
@@ -153,6 +177,103 @@
                   55
                 ],
                 "player_bonus_ad": 1.2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q2": {
+      "riotId": "JayceToTheSkies",
+      "name": "Shock Blast",
+      "maxrank": 6,
+      "cooldown": 8,
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "JayceToTheSkies.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 384,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jayce''' fires an orb of electricity in the target direction, detonating upon hitting an enemy or reaching the end of its path to deal {{as|physical damage}} to it and other enemies within the area and briefly grant {{tip|sight}} of the area.",
+        "If the orb passes through {{ai|Acceleration Gate|Jayce}}, it supercharges, instantly increasing its speed and remaining distance and causing the subsequent blast to be larger and deal 40% increased damage."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> fires an orb of electricity in the target direction, detonating upon hitting an enemy or reaching the end of its path to deal <span class=\"physical-damage\">physical damage</span> to it and other enemies within the area and briefly grant <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area.<br />If the orb passes through <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Acceleration Gate<template #content>Acceleration Gate</template></HtmlTooltip>, it supercharges, instantly increasing its speed and remaining distance and causing the subsequent blast to be larger and deal 40% increased damage.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|55 to 330 6}} {{as|(+ 120% '''bonus''' AD)}}|{{ai|Acceleration Gate|Jayce|Accelerated}} Damage|{{ap|55*1.4 to 330*1.4 6}} {{as|(+ 168% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Shock Blast'' will fire from wherever '''Jayce''' is at the end of the cast time.\n* Upon touching {{ai|Acceleration Gate|Jayce}}, the enhanced missile gains its remaining range equal to [ 1600 units - travelled distance of the standard missile ].\n** This means that the range of the enhanced ''Shock Blast'' is always the same, regardless of how early or late it interacted with ''Acceleration Gate''.\n** Supercharging the ''Shock Blast'' as soon as possible, however, will improve its average speed significantly. \n*** For this, '''Jayce''' must stand inside or very close to the ''Acceleration Gate'', or place it very close to himself right after ''Shock Blast's'' cast time.\n* ''Shock Blast's'' effect radius is centered around the location of the missile as it collides.\n** ''Shock Blast'' will '''always''' damage the enemy it collided with, even if it is so large that it is outside the effect radius.\n* The non-enhanced ''Shock Blast'' detonation has a slightly smaller sight radius than the radius in which it deals damage.{{bug|2}}",
+      "skillkey": "Q",
+      "skillid": "q2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{ap|55 to 80 6}} as 55/60/65/70/75/80 and riot's value 40,40,40,40,40,40 as 40",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '8' as '8' and riot's value '16,14,12,10,8,6' as '16/14/12/10/8/6'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,110,165,220,275,330]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage</span>: <span><SpellSpan :list=\"[77,154,231,308,385,462]\"></SpellSpan> <span class=\"ad\">(+ 168% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.2
+              },
+              {
+                "player_bonus_ad": 1.68
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[55,110,165,220,275,330]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
+                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage",
+                "<SpellSpan :list=\"[77,154,231,308,385,462]\"></SpellSpan> <span class=\"ad\">(+ 168% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                110,
+                165,
+                220,
+                275,
+                330
+              ],
+              [
+                77,
+                154,
+                231,
+                308,
+                385,
+                462
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  55,
+                  110,
+                  165,
+                  220,
+                  275,
+                  330
+                ],
+                "player_bonus_ad": 1.68
               }
             }
           ]
@@ -295,56 +416,84 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "JayceStanceHtG",
-      "name": "Transform Mercury Cannon",
-      "maxrank": 1,
-      "cooldown": 6,
-      "cost": 0,
+    "w2": {
+      "riotId": "JayceStaticField",
+      "name": "Hyper Charge",
+      "maxrank": 6,
+      "cooldown": [
+        0,
+        11,
+        9,
+        7,
+        5,
+        3,
+        0
+      ],
+      "cost": 40,
+      "costtype": "Mana",
       "targeting": "Auto",
       "image": {
-        "full": "JayceStanceHtG.png",
-        "sprite": "spell5.png",
+        "full": "JayceStaticField.png",
+        "sprite": "spell4.png",
         "group": "spell",
-        "x": 48,
-        "y": 0,
+        "x": 432,
+        "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Jayce''' transforms the {{ai|Transform Mercury Hammer|Jayce|Mercury Hammer}} into the [[File: Transform Mercury Cannon.png|20px|link=]] ''Mercury Cannon'', receiving access to its [[champion ability|abilities]], becoming {{tip|ranged}} with {{sti|500 attack range}}, and empowering his next [[basic attack]] to reduce the target's {{sti|armor penetration|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} by {{pp|key=%|10 to 25 for 4|1 to 16}} for 5 seconds.",
-        "{{Data Jayce/Transform Mercury Hammer|pst2|description2}}"
+        "{{sbc|Active:}} '''Jayce''' gains {{sti|attack speed|{{as|300% '''bonus''' attack speed}}}} on his next 3 [[basic attack]]s within 4 seconds, with each one dealing modified damage.",
+        "''Hyper Charge'' {{tip|basic attack reset|resets}} '''Jayce's''' basic attack timer, and the modified damage is affected by {{tip|critical strike|critical strike}} modifiers."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> transforms the <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Mercury Hammer<template #content>Transform Mercury Hammer</template></HtmlTooltip> into the <a class=\"effect link\" title=\"20px\">File: Transform Mercury Cannon.png</a> <i>Mercury Cannon</i>, receiving access to its <a class=\"effect link\" title=\"abilities\">champion ability</a>, becoming <HtmlTooltip class=\"blue link\">ranged<template #content><div><h4>ranged<hr></h4><p>Description for keyword ranged</p></div></template></HtmlTooltip> with <span>500 attack range</span>, and empowering his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> to reduce the target's <span><span class=\"armor\">armor</span></span> and <span><span class=\"magic-resist\">magic resistance</span></span> by <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> for 5 seconds.<br /><simple-tooltip class=\"capture-unknown\" dname=\"Data Jayce/Transform Mercury Hammer pst2 description2\">Unknown value: Data Jayce/Transform Mercury Hammer pst2 description2</simple-tooltip>",
-      "leveling": [],
-      "notes": "*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The resistance reduction does not apply to structures.\n* Both ''Transform'' on-hit effects have no set duration and will only be consumed when ''Jayce'' either lands a basic attack or switches stances.\n* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).\n* ''Transform's'' on-hit effects will not proc on wards.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": []
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Hextech Capacitor",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Jayce_Passive.png",
-        "sprite": "passive1.png",
-        "group": "passive",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} Each time '''Jayce''' switches between {{sbc|{{ai|Transform Mercury Hammer|Jayce|Hammer Stance}}}} and {{sbc|{{ai|Transform Mercury Cannon|Jayce|Cannon Stance}}}} he gains {{sti|ms|{{as|40 '''bonus''' movement speed}}}} and {{tip|ghosting}} for {{fd|1.25}} seconds."
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> gains <span><span class=\"attack-speed\">300% <b>bonus</b> attack speed</span></span> on his next 3 <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds, with each one dealing modified damage.<br /><i>Hyper Charge</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Jayce's</b> basic attack timer, and the modified damage is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> modifiers.",
+      "leveling": [
+        "{{st|Damage Modifier|{{ap|70 to 110 6}}%}}"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Each time <b>Jayce</b> switches between <span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Hammer Stance<template #content>Transform Mercury Hammer</template></HtmlTooltip></span> and <span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Cannon Stance<template #content>Transform Mercury Cannon</template></HtmlTooltip></span> he gains <span><span class=\"movement-speed\">40 <b>bonus</b> movement speed</span></span> and <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghosting<hr></h4><p>Description for keyword ghosting</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.25</span> seconds.",
-      "leveling": [],
-      "notes": "* No additional details.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
+      "notes": "* The last basic attack is checked [[on-hit]] rather than [[on-attack]].\n** If {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}} hit the target before the basic attack does, the basic attack damage will not be modified.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|13 to 5 6}}|Starts post-effect}}' as '0/11/9/7/5/3/0' and riot's value '10,10,10,10,10,10' as '10'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Modifier</span>: <span><SpellSpan :list=\"[70,78,86,94,102,110]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Damage Modifier",
+                "<SpellSpan :list=\"[70,78,86,94,102,110]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                78,
+                86,
+                94,
+                102,
+                110
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage Modifier",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  78,
+                  86,
+                  94,
+                  102,
+                  110
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     "e1": {
       "riotId": "JayceThunderingBlow",
@@ -449,209 +598,6 @@
         }
       ]
     },
-    "r2": {
-      "riotId": "JayceStanceHtG",
-      "name": "Transform Mercury Hammer",
-      "maxrank": 1,
-      "cooldown": 6,
-      "cost": 0,
-      "targeting": "Auto",
-      "image": {
-        "full": "JayceStanceHtG.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 48,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jayce''' transforms the {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}} into the [[File: Transform Mercury Hammer.png|20px|link=]] ''Mercury Hammer'', receiving access to its [[champion ability|abilities]], becoming {{tip|melee}} with {{sti|125 attack range}}, gaining {{pp|5 to 35 for 4|1 to 16}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, and empowering his next basic attack to deal {{as|{{pp|25 to 145 for 4|1 to 16}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{as|'''bonus''' magic damage}}.",
-        "'''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic [[Champion ability|abilities]] each have 6 ranks."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> transforms the <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Mercury Cannon<template #content>Transform Mercury Cannon</template></HtmlTooltip> into the <a class=\"effect link\" title=\"20px\">File: Transform Mercury Hammer.png</a> <i>Mercury Hammer</i>, receiving access to its <a class=\"effect link\" title=\"abilities\">champion ability</a>, becoming <HtmlTooltip class=\"blue link\">melee<template #content><div><h4>melee<hr></h4><p>Description for keyword melee</p></div></template></HtmlTooltip> with <span>125 attack range</span>, gaining <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><span class=\"armor\"><b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\"><b>bonus</b> magic resistance</span></span>, and empowering his next basic attack to deal <span class=\"magic-damage\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span></span> <span class=\"ad\">(+ 25% <b>bonus</b> AD)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.<br /><b>Jayce</b> begins the game with <i>Transform</i> but cannot increase its rank. Instead, his basic <a class=\"effect link\" title=\"abilities\">Champion ability</a> each have 6 ranks.",
-      "leveling": [],
-      "notes": "*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).\n* The ''Mercury Hammer's'' bonus damage can affect structures.\n* Both ''Transform'' on-hit effects have no set duration and will only be consumed when '''Jayce''' either lands a basic attack or switches stances.\n* ''Transform's'' on-hit effects will not proc on wards.",
-      "skillkey": "R",
-      "skillid": "r2",
-      "effects": []
-    },
-    "w2": {
-      "riotId": "JayceStaticField",
-      "name": "Hyper Charge",
-      "maxrank": 6,
-      "cooldown": [
-        0,
-        11,
-        9,
-        7,
-        5,
-        3,
-        0
-      ],
-      "cost": 40,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "JayceStaticField.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 432,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jayce''' gains {{sti|attack speed|{{as|300% '''bonus''' attack speed}}}} on his next 3 [[basic attack]]s within 4 seconds, with each one dealing modified damage.",
-        "''Hyper Charge'' {{tip|basic attack reset|resets}} '''Jayce's''' basic attack timer, and the modified damage is affected by {{tip|critical strike|critical strike}} modifiers."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> gains <span><span class=\"attack-speed\">300% <b>bonus</b> attack speed</span></span> on his next 3 <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds, with each one dealing modified damage.<br /><i>Hyper Charge</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Jayce's</b> basic attack timer, and the modified damage is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> modifiers.",
-      "leveling": [
-        "{{st|Damage Modifier|{{ap|70 to 110 6}}%}}"
-      ],
-      "notes": "* The last basic attack is checked [[on-hit]] rather than [[on-attack]].\n** If {{ii|Runaan's Hurricane}} or {{ii|Guinsoo's Rageblade}} hit the target before the basic attack does, the basic attack damage will not be modified.",
-      "skillkey": "W",
-      "skillid": "w2",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|13 to 5 6}}|Starts post-effect}}' as '0/11/9/7/5/3/0' and riot's value '10,10,10,10,10,10' as '10'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Modifier</span>: <span><SpellSpan :list=\"[70,78,86,94,102,110]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Damage Modifier",
-                "<SpellSpan :list=\"[70,78,86,94,102,110]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                70,
-                78,
-                86,
-                94,
-                102,
-                110
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Damage Modifier",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  70,
-                  78,
-                  86,
-                  94,
-                  102,
-                  110
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q2": {
-      "riotId": "JayceToTheSkies",
-      "name": "Shock Blast",
-      "maxrank": 6,
-      "cooldown": 8,
-      "cost": [
-        55,
-        60,
-        65,
-        70,
-        75,
-        80
-      ],
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "JayceToTheSkies.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 384,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jayce''' fires an orb of electricity in the target direction, detonating upon hitting an enemy or reaching the end of its path to deal {{as|physical damage}} to it and other enemies within the area and briefly grant {{tip|sight}} of the area.",
-        "If the orb passes through {{ai|Acceleration Gate|Jayce}}, it supercharges, instantly increasing its speed and remaining distance and causing the subsequent blast to be larger and deal 40% increased damage."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> fires an orb of electricity in the target direction, detonating upon hitting an enemy or reaching the end of its path to deal <span class=\"physical-damage\">physical damage</span> to it and other enemies within the area and briefly grant <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area.<br />If the orb passes through <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Acceleration Gate<template #content>Acceleration Gate</template></HtmlTooltip>, it supercharges, instantly increasing its speed and remaining distance and causing the subsequent blast to be larger and deal 40% increased damage.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55 to 330 6}} {{as|(+ 120% '''bonus''' AD)}}|{{ai|Acceleration Gate|Jayce|Accelerated}} Damage|{{ap|55*1.4 to 330*1.4 6}} {{as|(+ 168% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* ''Shock Blast'' will fire from wherever '''Jayce''' is at the end of the cast time.\n* Upon touching {{ai|Acceleration Gate|Jayce}}, the enhanced missile gains its remaining range equal to [ 1600 units - travelled distance of the standard missile ].\n** This means that the range of the enhanced ''Shock Blast'' is always the same, regardless of how early or late it interacted with ''Acceleration Gate''.\n** Supercharging the ''Shock Blast'' as soon as possible, however, will improve its average speed significantly. \n*** For this, '''Jayce''' must stand inside or very close to the ''Acceleration Gate'', or place it very close to himself right after ''Shock Blast's'' cast time.\n* ''Shock Blast's'' effect radius is centered around the location of the missile as it collides.\n** ''Shock Blast'' will '''always''' damage the enemy it collided with, even if it is so large that it is outside the effect radius.\n* The non-enhanced ''Shock Blast'' detonation has a slightly smaller sight radius than the radius in which it deals damage.{{bug|2}}",
-      "skillkey": "Q",
-      "skillid": "q2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{ap|55 to 80 6}} as 55/60/65/70/75/80 and riot's value 40,40,40,40,40,40 as 40",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '8' as '8' and riot's value '16,14,12,10,8,6' as '16/14/12/10/8/6'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,110,165,220,275,330]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage</span>: <span><SpellSpan :list=\"[77,154,231,308,385,462]\"></SpellSpan> <span class=\"ad\">(+ 168% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.2
-              },
-              {
-                "player_bonus_ad": 1.68
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[55,110,165,220,275,330]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>",
-                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Accelerated<template #content>Acceleration Gate</template></HtmlTooltip> Damage",
-                "<SpellSpan :list=\"[77,154,231,308,385,462]\"></SpellSpan> <span class=\"ad\">(+ 168% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                55,
-                110,
-                165,
-                220,
-                275,
-                330
-              ],
-              [
-                77,
-                154,
-                231,
-                308,
-                385,
-                462
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  55,
-                  110,
-                  165,
-                  220,
-                  275,
-                  330
-                ],
-                "player_bonus_ad": 1.68
-              }
-            }
-          ]
-        }
-      ]
-    },
     "e2": {
       "riotId": "JayceThunderingBlow",
       "name": "Acceleration Gate",
@@ -714,6 +660,60 @@
           ]
         }
       ]
+    },
+    "r1": {
+      "riotId": "JayceStanceHtG",
+      "name": "Transform Mercury Cannon",
+      "maxrank": 1,
+      "cooldown": 6,
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "JayceStanceHtG.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 48,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jayce''' transforms the {{ai|Transform Mercury Hammer|Jayce|Mercury Hammer}} into the [[File: Transform Mercury Cannon.png|20px|link=]] ''Mercury Cannon'', receiving access to its [[champion ability|abilities]], becoming {{tip|ranged}} with {{sti|500 attack range}}, and empowering his next [[basic attack]] to reduce the target's {{sti|armor penetration|{{as|armor}}}} and {{sti|magic penetration|{{as|magic resistance}}}} by {{pp|key=%|10 to 25 for 4|1 to 16}} for 5 seconds.",
+        "{{Data Jayce/Transform Mercury Hammer|pst2|description2}}"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> transforms the <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Mercury Hammer<template #content>Transform Mercury Hammer</template></HtmlTooltip> into the <a class=\"effect link\" title=\"20px\">File: Transform Mercury Cannon.png</a> <i>Mercury Cannon</i>, receiving access to its <a class=\"effect link\" title=\"abilities\">champion ability</a>, becoming <HtmlTooltip class=\"blue link\">ranged<template #content><div><h4>ranged<hr></h4><p>Description for keyword ranged</p></div></template></HtmlTooltip> with <span>500 attack range</span>, and empowering his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> to reduce the target's <span><span class=\"armor\">armor</span></span> and <span><span class=\"magic-resist\">magic resistance</span></span> by <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> for 5 seconds.<br /><simple-tooltip class=\"capture-unknown\" dname=\"Data Jayce/Transform Mercury Hammer pst2 description2\">Unknown value: Data Jayce/Transform Mercury Hammer pst2 description2</simple-tooltip>",
+      "leveling": [],
+      "notes": "*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The resistance reduction does not apply to structures.\n* Both ''Transform'' on-hit effects have no set duration and will only be consumed when ''Jayce'' either lands a basic attack or switches stances.\n* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).\n* ''Transform's'' on-hit effects will not proc on wards.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": []
+    },
+    "r2": {
+      "riotId": "JayceStanceHtG",
+      "name": "Transform Mercury Hammer",
+      "maxrank": 1,
+      "cooldown": 6,
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "JayceStanceHtG.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 48,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jayce''' transforms the {{ai|Transform Mercury Cannon|Jayce|Mercury Cannon}} into the [[File: Transform Mercury Hammer.png|20px|link=]] ''Mercury Hammer'', receiving access to its [[champion ability|abilities]], becoming {{tip|melee}} with {{sti|125 attack range}}, gaining {{pp|5 to 35 for 4|1 to 16}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}, and empowering his next basic attack to deal {{as|{{pp|25 to 145 for 4|1 to 16}}|magic damage}} {{as|(+ 25% '''bonus''' AD)}} {{as|'''bonus''' magic damage}}.",
+        "'''Jayce''' begins the game with ''Transform'' but cannot increase its rank. Instead, his basic [[Champion ability|abilities]] each have 6 ranks."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jayce</b> transforms the <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jayce\">Mercury Cannon<template #content>Transform Mercury Cannon</template></HtmlTooltip> into the <a class=\"effect link\" title=\"20px\">File: Transform Mercury Hammer.png</a> <i>Mercury Hammer</i>, receiving access to its <a class=\"effect link\" title=\"abilities\">champion ability</a>, becoming <HtmlTooltip class=\"blue link\">melee<template #content><div><h4>melee<hr></h4><p>Description for keyword melee</p></div></template></HtmlTooltip> with <span>125 attack range</span>, gaining <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><span class=\"armor\"><b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\"><b>bonus</b> magic resistance</span></span>, and empowering his next basic attack to deal <span class=\"magic-damage\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span></span> <span class=\"ad\">(+ 25% <b>bonus</b> AD)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.<br /><b>Jayce</b> begins the game with <i>Transform</i> but cannot increase its rank. Instead, his basic <a class=\"effect link\" title=\"abilities\">Champion ability</a> each have 6 ranks.",
+      "leveling": [],
+      "notes": "*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The enhanced attack will not be consumed if it is parried ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}, and {{ai|Riposte|Fiora}}).\n* The ''Mercury Hammer's'' bonus damage can affect structures.\n* Both ''Transform'' on-hit effects have no set duration and will only be consumed when '''Jayce''' either lands a basic attack or switches stances.\n* ''Transform's'' on-hit effects will not proc on wards.",
+      "skillkey": "R",
+      "skillid": "r2",
+      "effects": []
     }
   }
 }

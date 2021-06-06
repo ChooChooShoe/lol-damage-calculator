@@ -49,73 +49,89 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "r1": {
-      "riotId": "BrandR",
-      "name": "Pyroclasm",
-      "maxrank": 3,
-      "cooldown": [
-        105,
-        90,
-        75
-      ],
-      "cost": 100,
-      "costtype": "mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly=true}} 750",
+    "i1": {
+      "riotId": "",
+      "name": "Blaze",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "BrandR.png",
+        "full": "BrandP.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Brand's''' [[champion ability|abilities]] apply a [[stack]] of ''Ablaze'' to affected enemies for 4 seconds, stacking up to 3 times, with the duration refreshing on further applications. Subsequent abilities used against a target with ''Ablaze'' are empowered. Enemies afflicted with ''Ablaze'' are dealt{{ft|{{as|3% of their '''maximum''' health}} over {{fd|3.25}} seconds|{{as|1% of their '''maximum''' health}} every {{fd|1.08{{recurring|3}}}} seconds over {{fd|3.25}} seconds}}as {{as|magic damage}}. ''Ablaze'' deals 120% damage per tick to {{tip|monsters}}, capped at 80.",
+        "Killing an enemy afflicted with ''Ablaze'' restores {{as|{{pp|20 to 40 for 7|1;3 to 18}} {{sti|mana}}}}.",
+        "Upon applying 3 stacks of ''Ablaze'' to large {{tip|monster|monsters}} or enemy {{tip|champion|champions}}, the fire becomes unstable, forming an area around the target that grants {{tip|sight}} within its radius and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt {{as|{{pp|key=%|10 to 14 for 17|1 to 17}} of their '''maximum''' health}} {{as|(+ 2% per 100 AP)}} as {{as|magic damage}} and applied a stack of ''Ablaze''. ''The explosion will still occur if the target dies to the ability applying the third stack or during the delay.''",
+        "'''Brand''' cannot stack ''Ablaze'' more than once on enemies who have exploded in the last 4 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Brand's</b> <a class=\"effect link\" title=\"abilities\">champion ability</a> apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Ablaze</i> to affected enemies for 4 seconds, stacking up to 3 times, with the duration refreshing on further applications. Subsequent abilities used against a target with <i>Ablaze</i> are empowered. Enemies afflicted with <i>Ablaze</i> are dealt<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\">3% of their <b>maximum</b> health</span> over <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"health\">1% of their <b>maximum</b> health</span> every <span style=\"font-variant-numeric: tabular-nums;\">1.08<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span> seconds over <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds&nbsp;」</span></label>as <span class=\"magic-damage\">magic damage</span>. <i>Ablaze</i> deals 120% damage per tick to <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>, capped at 80.<br />Killing an enemy afflicted with <i>Ablaze</i> restores <span class=\"mana\"><span class=\"title-tooltip\" title=\"\">1;3 to 18 ‒ undefined</span> <span>mana</span></span>.<br />Upon applying 3 stacks of <i>Ablaze</i> to large <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> or enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, the fire becomes unstable, forming an area around the target that grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> within its radius and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 17 ‒ undefined</span> of their <b>maximum</b> health</span> <span class=\"ap\">(+ 2% per 100 AP)</span> as <span class=\"magic-damage\">magic damage</span> and applied a stack of <i>Ablaze</i>. <i>The explosion will still occur if the target dies to the ability applying the third stack or during the delay.</i><br /><b>Brand</b> cannot stack <i>Ablaze</i> more than once on enemies who have exploded in the last 4 seconds.",
+      "leveling": [],
+      "notes": "* ''Ablaze'' is a debuff that persists through [[death]].\n* The explosion is not considered a tether effect and will not affect {{tip|untargetable}} targets, even if the explosion originated from them.\n* Each stack deals the damage individually and will always consider the time it was applied for deciding when the ticks will be applied, even when the duration refreshes.\n** At sub-optimal applied times, 2 stacks will deal a minimum of {{as|6% '''maximum''' health}} damage over 4 seconds, but will deal {{as|7% '''maximum''' health}} at optimal applied times.\n** Against small-medium units 3 stacks will deal a minimum of {{as|9% '''maximum''' health}} at sub-optimal times, but {{as|11% '''maximum''' health}} at optimal times. If these stacks are further {{tt|refreshed|By ablazing a target that's already at 3 stacks}} at optimal times they can deal up to {{as|12% '''maximum''' health}} over 4 seconds.\n* The burn is {{tip|persistent damage}} and the explosion is {{tip|area damage}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "BrandQ",
+      "name": "Sear",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": 50,
+      "costtype": "mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "BrandQ.png",
         "sprite": "spell1.png",
         "group": "spell",
-        "x": 432,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Brand''' launches a fireball at the target enemy that bounces between nearby enemies and '''Brand''' up to four times, dealing {{as|magic damage}} to enemies each time.",
-        "If ''Pyroclasm's'' current target becomes invalid, it selects a new target at its remaining bounces. The fireball will bounce to '''Brand''' even if he becomes an invalid target while it is currently on a target or is in flight towards him. If there are no nearby valid targets, the fireball fizzles.",
-        "''Pyroclasm prioritizes enemy champions, then '''Brand''', then any valid bounce target.''",
-        "''The fireball bounces to targets regardless of having {{tip|sight}} of them or not.''",
-        "{{sbc|{{ai|Blaze|Brand|Ablaze}}:}} ''Pyroclasm'' {{tip|slow|slows}} enemies hit for {{fd|0.25}} seconds. This can affect the same enemy more than once."
+        "{{sbc|Active:}} '''Brand''' launches a fireball in the target direction that deals {{as|magic damage}} to the first enemy it hits.",
+        "{{sbc|{{ai|Blaze|Brand|Ablaze}}:}} The target is also {{tip|stun|stunned}} for {{fd|1.5}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Brand</b> launches a fireball at the target enemy that bounces between nearby enemies and <b>Brand</b> up to four times, dealing <span class=\"magic-damage\">magic damage</span> to enemies each time.<br />If <i>Pyroclasm's</i> current target becomes invalid, it selects a new target at its remaining bounces. The fireball will bounce to <b>Brand</b> even if he becomes an invalid target while it is currently on a target or is in flight towards him. If there are no nearby valid targets, the fireball fizzles.<br /><i>Pyroclasm prioritizes enemy champions, then <b>Brand</b>, then any valid bounce target.</i><br /><i>The fireball bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i><br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Brand\">Ablaze<template #content>Blaze</template></HtmlTooltip>:</span> <i>Pyroclasm</i> <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies hit for <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds. This can affect the same enemy more than once.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Brand</b> launches a fireball in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first enemy it hits.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Brand\">Ablaze<template #content>Blaze</template></HtmlTooltip>:</span> The target is also <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 25% AP)}}|Total Single-Target Damage|{{ap|100*3 to 300*3}} {{as|(+ 75% AP)}}}}",
-        "{{st|Slow|{{ap|30 to 60}}%}}"
+        "{{st|Magic Damage|{{ap|80|110|140|170|200}} {{as|(+ 55% AP)}}}}"
       ],
-      "notes": "* The fireball may only bounce to valid targets, including '''Brand'''.\n* The fireball does not grant {{tip|sight}} of {{tip|stealth|stealthed}} enemies and those in fog of war but it can expose their position.\n* If the initial cast target uses {{tip|spell shield}}, ''Pyroclasm'' will not bounce. If the bounce is blocked by an enemy's ''spell shield'' it will not deal any damage, but it will keep on bouncing.\n* If the target becomes {{tip|untargetable}}, dies, or '''Brand''' loses {{tip|sight}} of them during the cast time, ''Pyroclasm'' is cancelled but its {{sti|cooldown}} and {{sti|{{as|mana}}}} are refunded.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "* With an ability haste value of {{ap|(<!--cooldown-->(8 to 6)/(<!--passive duration-->4-<!--cast time-->0.25+<!--range-->1100/<!--speed-->1600)-1)*100|round=ceil}}<!--minimum is reached when first hit is from maximum range and second from minimum--> to {{ap|((8 to 6)/(4-0.25-1100/1600)-1)*100|round=ceil}}<!--when first is at minimum and second at maximum--> based on the ranges of applications from the target, it is possible to apply the stun without having to use other abilities. ''Sear'' will apply before the duration of the pre-applied {{ai|Blaze|Brand}} times out.\n** The needed ability haste value if you remained at the same range from the target for both casts would be {{ap|((8 to 6)/(4-0.25)-1)*100|round=ceil}}.\n* ''Sear'' will cast from wherever '''Brand''' is at the end of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.25
-              },
-              {
-                "player_total_ap": 0.75
+                "player_total_ap": 0.55
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
-                "Total Single-Target Damage",
-                "<SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
+                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                100,
-                200,
-                300
-              ],
-              [
-                300,
-                600,
-                900
+                80,
+                110,
+                140,
+                170,
+                200
               ]
             ]
           },
@@ -126,44 +142,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  100,
-                  200,
-                  300
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
                 ],
-                "player_total_ap": 0.75
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Slow",
-                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                30,
-                45,
-                60
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Slow",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  30,
-                  45,
-                  60
-                ]
+                "player_total_ap": 0.55
               }
             }
           ]
@@ -386,89 +371,73 @@
         }
       ]
     },
-    "i1": {
-      "riotId": "",
-      "name": "Blaze",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "BrandP.png",
-        "sprite": "passive0.png",
-        "group": "passive",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Brand's''' [[champion ability|abilities]] apply a [[stack]] of ''Ablaze'' to affected enemies for 4 seconds, stacking up to 3 times, with the duration refreshing on further applications. Subsequent abilities used against a target with ''Ablaze'' are empowered. Enemies afflicted with ''Ablaze'' are dealt{{ft|{{as|3% of their '''maximum''' health}} over {{fd|3.25}} seconds|{{as|1% of their '''maximum''' health}} every {{fd|1.08{{recurring|3}}}} seconds over {{fd|3.25}} seconds}}as {{as|magic damage}}. ''Ablaze'' deals 120% damage per tick to {{tip|monsters}}, capped at 80.",
-        "Killing an enemy afflicted with ''Ablaze'' restores {{as|{{pp|20 to 40 for 7|1;3 to 18}} {{sti|mana}}}}.",
-        "Upon applying 3 stacks of ''Ablaze'' to large {{tip|monster|monsters}} or enemy {{tip|champion|champions}}, the fire becomes unstable, forming an area around the target that grants {{tip|sight}} within its radius and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt {{as|{{pp|key=%|10 to 14 for 17|1 to 17}} of their '''maximum''' health}} {{as|(+ 2% per 100 AP)}} as {{as|magic damage}} and applied a stack of ''Ablaze''. ''The explosion will still occur if the target dies to the ability applying the third stack or during the delay.''",
-        "'''Brand''' cannot stack ''Ablaze'' more than once on enemies who have exploded in the last 4 seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Brand's</b> <a class=\"effect link\" title=\"abilities\">champion ability</a> apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Ablaze</i> to affected enemies for 4 seconds, stacking up to 3 times, with the duration refreshing on further applications. Subsequent abilities used against a target with <i>Ablaze</i> are empowered. Enemies afflicted with <i>Ablaze</i> are dealt<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\">3% of their <b>maximum</b> health</span> over <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"health\">1% of their <b>maximum</b> health</span> every <span style=\"font-variant-numeric: tabular-nums;\">1.08<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span> seconds over <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds&nbsp;」</span></label>as <span class=\"magic-damage\">magic damage</span>. <i>Ablaze</i> deals 120% damage per tick to <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>, capped at 80.<br />Killing an enemy afflicted with <i>Ablaze</i> restores <span class=\"mana\"><span class=\"title-tooltip\" title=\"\">1;3 to 18 ‒ undefined</span> <span>mana</span></span>.<br />Upon applying 3 stacks of <i>Ablaze</i> to large <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> or enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, the fire becomes unstable, forming an area around the target that grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> within its radius and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 17 ‒ undefined</span> of their <b>maximum</b> health</span> <span class=\"ap\">(+ 2% per 100 AP)</span> as <span class=\"magic-damage\">magic damage</span> and applied a stack of <i>Ablaze</i>. <i>The explosion will still occur if the target dies to the ability applying the third stack or during the delay.</i><br /><b>Brand</b> cannot stack <i>Ablaze</i> more than once on enemies who have exploded in the last 4 seconds.",
-      "leveling": [],
-      "notes": "* ''Ablaze'' is a debuff that persists through [[death]].\n* The explosion is not considered a tether effect and will not affect {{tip|untargetable}} targets, even if the explosion originated from them.\n* Each stack deals the damage individually and will always consider the time it was applied for deciding when the ticks will be applied, even when the duration refreshes.\n** At sub-optimal applied times, 2 stacks will deal a minimum of {{as|6% '''maximum''' health}} damage over 4 seconds, but will deal {{as|7% '''maximum''' health}} at optimal applied times.\n** Against small-medium units 3 stacks will deal a minimum of {{as|9% '''maximum''' health}} at sub-optimal times, but {{as|11% '''maximum''' health}} at optimal times. If these stacks are further {{tt|refreshed|By ablazing a target that's already at 3 stacks}} at optimal times they can deal up to {{as|12% '''maximum''' health}} over 4 seconds.\n* The burn is {{tip|persistent damage}} and the explosion is {{tip|area damage}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "BrandQ",
-      "name": "Sear",
-      "maxrank": 5,
+    "r1": {
+      "riotId": "BrandR",
+      "name": "Pyroclasm",
+      "maxrank": 3,
       "cooldown": [
-        8,
-        7.5,
-        7,
-        6.5,
-        6
+        105,
+        90,
+        75
       ],
-      "cost": 50,
+      "cost": 100,
       "costtype": "mana",
-      "targeting": "Direction",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly=true}} 750",
       "image": {
-        "full": "BrandQ.png",
+        "full": "BrandR.png",
         "sprite": "spell1.png",
         "group": "spell",
-        "x": 288,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Brand''' launches a fireball in the target direction that deals {{as|magic damage}} to the first enemy it hits.",
-        "{{sbc|{{ai|Blaze|Brand|Ablaze}}:}} The target is also {{tip|stun|stunned}} for {{fd|1.5}} seconds."
+        "{{sbc|Active:}} '''Brand''' launches a fireball at the target enemy that bounces between nearby enemies and '''Brand''' up to four times, dealing {{as|magic damage}} to enemies each time.",
+        "If ''Pyroclasm's'' current target becomes invalid, it selects a new target at its remaining bounces. The fireball will bounce to '''Brand''' even if he becomes an invalid target while it is currently on a target or is in flight towards him. If there are no nearby valid targets, the fireball fizzles.",
+        "''Pyroclasm prioritizes enemy champions, then '''Brand''', then any valid bounce target.''",
+        "''The fireball bounces to targets regardless of having {{tip|sight}} of them or not.''",
+        "{{sbc|{{ai|Blaze|Brand|Ablaze}}:}} ''Pyroclasm'' {{tip|slow|slows}} enemies hit for {{fd|0.25}} seconds. This can affect the same enemy more than once."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Brand</b> launches a fireball in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first enemy it hits.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Brand\">Ablaze<template #content>Blaze</template></HtmlTooltip>:</span> The target is also <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Brand</b> launches a fireball at the target enemy that bounces between nearby enemies and <b>Brand</b> up to four times, dealing <span class=\"magic-damage\">magic damage</span> to enemies each time.<br />If <i>Pyroclasm's</i> current target becomes invalid, it selects a new target at its remaining bounces. The fireball will bounce to <b>Brand</b> even if he becomes an invalid target while it is currently on a target or is in flight towards him. If there are no nearby valid targets, the fireball fizzles.<br /><i>Pyroclasm prioritizes enemy champions, then <b>Brand</b>, then any valid bounce target.</i><br /><i>The fireball bounces to targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i><br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Brand\">Ablaze<template #content>Blaze</template></HtmlTooltip>:</span> <i>Pyroclasm</i> <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies hit for <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds. This can affect the same enemy more than once.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|80|110|140|170|200}} {{as|(+ 55% AP)}}}}"
+        "{{st|Magic Damage|{{ap|100 to 300}} {{as|(+ 25% AP)}}|Total Single-Target Damage|{{ap|100*3 to 300*3}} {{as|(+ 75% AP)}}}}",
+        "{{st|Slow|{{ap|30 to 60}}%}}"
       ],
-      "notes": "* With an ability haste value of {{ap|(<!--cooldown-->(8 to 6)/(<!--passive duration-->4-<!--cast time-->0.25+<!--range-->1100/<!--speed-->1600)-1)*100|round=ceil}}<!--minimum is reached when first hit is from maximum range and second from minimum--> to {{ap|((8 to 6)/(4-0.25-1100/1600)-1)*100|round=ceil}}<!--when first is at minimum and second at maximum--> based on the ranges of applications from the target, it is possible to apply the stun without having to use other abilities. ''Sear'' will apply before the duration of the pre-applied {{ai|Blaze|Brand}} times out.\n** The needed ability haste value if you remained at the same range from the target for both casts would be {{ap|((8 to 6)/(4-0.25)-1)*100|round=ceil}}.\n* ''Sear'' will cast from wherever '''Brand''' is at the end of the cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "* The fireball may only bounce to valid targets, including '''Brand'''.\n* The fireball does not grant {{tip|sight}} of {{tip|stealth|stealthed}} enemies and those in fog of war but it can expose their position.\n* If the initial cast target uses {{tip|spell shield}}, ''Pyroclasm'' will not bounce. If the bounce is blocked by an enemy's ''spell shield'' it will not deal any damage, but it will keep on bouncing.\n* If the target becomes {{tip|untargetable}}, dies, or '''Brand''' loses {{tip|sight}} of them during the cast time, ''Pyroclasm'' is cancelled but its {{sti|cooldown}} and {{sti|{{as|mana}}}} are refunded.",
+      "skillkey": "R",
+      "skillid": "r1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.55
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 0.75
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>"
+                "<SpellSpan :list=\"[100,200,300]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>",
+                "Total Single-Target Damage",
+                "<SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                80,
-                110,
-                140,
-                170,
-                200
+                100,
+                200,
+                300
+              ],
+              [
+                300,
+                600,
+                900
               ]
             ]
           },
@@ -479,13 +448,44 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  80,
-                  110,
-                  140,
-                  170,
-                  200
+                  100,
+                  200,
+                  300
                 ],
-                "player_total_ap": 0.55
+                "player_total_ap": 0.75
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Slow",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                45,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  45,
+                  60
+                ]
               }
             }
           ]

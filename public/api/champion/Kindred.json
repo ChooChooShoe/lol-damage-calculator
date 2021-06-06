@@ -49,69 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "r1": {
-      "riotId": "KindredR",
-      "name": "Lamb's Respite",
-      "maxrank": 3,
-      "cooldown": [
-        180,
-        150,
-        120
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "KindredR.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds and enters a {{rutngt|0.25}} [[Channel#Casting Times|cast time]]. '''All''' units inside the zone cannot be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, and will become {{tip|invulnerable}} for the remaining duration when they reach or are at the threshold, during which they also cannot be {{tip|heal|healed}}, but can still {{sti|health regeneration|regenerate health|link=health regeneration}}.",
-        "All targetable units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> blesses the ground under herself for 4 seconds and enters a <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.25\">Unknown value: rutngt 0.25</simple-tooltip> <a class=\"effect link\" title=\"cast time\">Channel#Casting Times</a>. <b>All</b> units inside the zone cannot be <a class=\"effect link\" title=\"reduced\">Death#Ways_to_prevent_dying_by_not_losing_health</a> below <span class=\"health\"><span>10% of their <b>maximum</b> health</span></span>, and will become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for the remaining duration when they reach or are at the threshold, during which they also cannot be <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>, but can still <span>regenerate health</span>.<br />All targetable units within the zone are <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> immediately when the blessing ends.",
-      "leveling": [
-        "{{st|Heal|{{ap|250 to 400}}}}"
-      ],
-      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n** It will specifically not affect champions that are {{tip|resurrection|resurrecting}} from {{ii|Guardian Angel}}.\n* {{tip|Execute|Execution}} effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* {{tip|Health resource|Health costs}} will ignore ''Lamb's Respite's'' threshold.\n** The cost will not be paid if the caster is below the threshold.\n* ''Lamb's Respite'' has no effect on {{tip|zombie state}} units.\n* The effects are applied before the cast time.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0 as 0",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[250,325,400]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Heal",
-                "<SpellSpan :list=\"[250,325,400]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                250,
-                325,
-                400
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Heal",
-              "damage_type": "none",
-              "ratios": {}
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Mark of the Kindred",
@@ -138,6 +75,121 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "q1": {
+      "riotId": "KindredQ",
+      "name": "Dance of Arrows",
+      "maxrank": 5,
+      "cooldown": 8,
+      "cost": 35,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": "{{tt|350|Dash range}}",
+      "image": {
+        "full": "KindredQ.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lamb''' {{tip|dashes}} toward the target location, gaining {{sti|attack speed|{{as|25%|attack speed}}}} {{as|(+ 15% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} {{as|'''bonus''' attack speed}} for 4 seconds.",
+        "After dashing, '''Lamb''' fires up to three arrows at nearby {{tip|sight|visible}} targets, each one dealing {{as|physical damage}} upon their arrival. '''Lamb's''' current attack target at any proximity will be prioritized by one of the arrows.",
+        "Casting {{ai|Wolf's Frenzy|Kindred}} or using ''Dance of Arrows'' while inside its area will reduce this ability's {{sti|cooldown}} to an amount.",
+        "'''Lamb''' can cast any of her [[champion ability|abilities]] during ''Dance of Arrows' '' dash.",
+        "''Dance of Arrows'' {{tip|basic attack reset|resets}} '''Lamb's''' basic attack timer."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> toward the target location, gaining <span><span class=\"attack-speed\">25%</span></span> <span class=\"buzzword\">(+ 15% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> <span class=\"attack-speed\"><b>bonus</b> attack speed</span> for 4 seconds.<br />After dashing, <b>Lamb</b> fires up to three arrows at nearby <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> targets, each one dealing <span class=\"physical-damage\">physical damage</span> upon their arrival. <b>Lamb's</b> current attack target at any proximity will be prioritized by one of the arrows.<br />Casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Wolf's Frenzy<template #content>Wolf's Frenzy</template></HtmlTooltip> or using <i>Dance of Arrows</i> while inside its area will reduce this ability's <span>cooldown</span> to an amount.<br /><b>Lamb</b> can cast any of her <a class=\"effect link\" title=\"abilities\">champion ability</a> during <i>Dance of Arrows' </i> dash.<br /><i>Dance of Arrows</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Lamb's</b> basic attack timer.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 160}} {{as|(+ 75% '''bonus''' AD)}}}}",
+        "{{st|Static Cooldown|{{ap|4 to 2}}}}"
+      ],
+      "notes": "* The dash does not have a fixed range, it can be directed by up to 340 units.\n* The dash distance can be extended to up to 400 units when dashing across terrain.\n* The cooldown will not be modified if it cannot be reduced (the current cooldown would have to be less than the reduction amount in this case).",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.75
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_bonus_ad": 0.75
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Static Cooldown</span>: <span><SpellSpan :list=\"[4,3.5,3,2.5,2]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Static Cooldown",
+                "<SpellSpan :list=\"[4,3.5,3,2.5,2]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                4,
+                3.5,
+                3,
+                2.5,
+                2
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Static Cooldown",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  4,
+                  3.5,
+                  3,
+                  2.5,
+                  2
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     "w1": {
       "riotId": "KindredW",
@@ -260,121 +312,6 @@
         }
       ]
     },
-    "q1": {
-      "riotId": "KindredQ",
-      "name": "Dance of Arrows",
-      "maxrank": 5,
-      "cooldown": 8,
-      "cost": 35,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": "{{tt|350|Dash range}}",
-      "image": {
-        "full": "KindredQ.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lamb''' {{tip|dashes}} toward the target location, gaining {{sti|attack speed|{{as|25%|attack speed}}}} {{as|(+ 15% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} {{as|'''bonus''' attack speed}} for 4 seconds.",
-        "After dashing, '''Lamb''' fires up to three arrows at nearby {{tip|sight|visible}} targets, each one dealing {{as|physical damage}} upon their arrival. '''Lamb's''' current attack target at any proximity will be prioritized by one of the arrows.",
-        "Casting {{ai|Wolf's Frenzy|Kindred}} or using ''Dance of Arrows'' while inside its area will reduce this ability's {{sti|cooldown}} to an amount.",
-        "'''Lamb''' can cast any of her [[champion ability|abilities]] during ''Dance of Arrows' '' dash.",
-        "''Dance of Arrows'' {{tip|basic attack reset|resets}} '''Lamb's''' basic attack timer."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> toward the target location, gaining <span><span class=\"attack-speed\">25%</span></span> <span class=\"buzzword\">(+ 15% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> <span class=\"attack-speed\"><b>bonus</b> attack speed</span> for 4 seconds.<br />After dashing, <b>Lamb</b> fires up to three arrows at nearby <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> targets, each one dealing <span class=\"physical-damage\">physical damage</span> upon their arrival. <b>Lamb's</b> current attack target at any proximity will be prioritized by one of the arrows.<br />Casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Wolf's Frenzy<template #content>Wolf's Frenzy</template></HtmlTooltip> or using <i>Dance of Arrows</i> while inside its area will reduce this ability's <span>cooldown</span> to an amount.<br /><b>Lamb</b> can cast any of her <a class=\"effect link\" title=\"abilities\">champion ability</a> during <i>Dance of Arrows' </i> dash.<br /><i>Dance of Arrows</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Lamb's</b> basic attack timer.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|60 to 160}} {{as|(+ 75% '''bonus''' AD)}}}}",
-        "{{st|Static Cooldown|{{ap|4 to 2}}}}"
-      ],
-      "notes": "* The dash does not have a fixed range, it can be directed by up to 340 units.\n* The dash distance can be extended to up to 400 units when dashing across terrain.\n* The cooldown will not be modified if it cannot be reduced (the current cooldown would have to be less than the reduction amount in this case).",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.75
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                85,
-                110,
-                135,
-                160
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  85,
-                  110,
-                  135,
-                  160
-                ],
-                "player_bonus_ad": 0.75
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Static Cooldown</span>: <span><SpellSpan :list=\"[4,3.5,3,2.5,2]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Static Cooldown",
-                "<SpellSpan :list=\"[4,3.5,3,2.5,2]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                4,
-                3.5,
-                3,
-                2.5,
-                2
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Static Cooldown",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  4,
-                  3.5,
-                  3,
-                  2.5,
-                  2
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "KindredEWrapper",
       "name": "Mounting Dread",
@@ -460,6 +397,69 @@
                 "player_total_ap": 0.005,
                 "target_missing_hp": 0.805
               }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "KindredR",
+      "name": "Lamb's Respite",
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        150,
+        120
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "KindredR.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds and enters a {{rutngt|0.25}} [[Channel#Casting Times|cast time]]. '''All''' units inside the zone cannot be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, and will become {{tip|invulnerable}} for the remaining duration when they reach or are at the threshold, during which they also cannot be {{tip|heal|healed}}, but can still {{sti|health regeneration|regenerate health|link=health regeneration}}.",
+        "All targetable units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> blesses the ground under herself for 4 seconds and enters a <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.25\">Unknown value: rutngt 0.25</simple-tooltip> <a class=\"effect link\" title=\"cast time\">Channel#Casting Times</a>. <b>All</b> units inside the zone cannot be <a class=\"effect link\" title=\"reduced\">Death#Ways_to_prevent_dying_by_not_losing_health</a> below <span class=\"health\"><span>10% of their <b>maximum</b> health</span></span>, and will become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for the remaining duration when they reach or are at the threshold, during which they also cannot be <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>, but can still <span>regenerate health</span>.<br />All targetable units within the zone are <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> immediately when the blessing ends.",
+      "leveling": [
+        "{{st|Heal|{{ap|250 to 400}}}}"
+      ],
+      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n** It will specifically not affect champions that are {{tip|resurrection|resurrecting}} from {{ii|Guardian Angel}}.\n* {{tip|Execute|Execution}} effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* {{tip|Health resource|Health costs}} will ignore ''Lamb's Respite's'' threshold.\n** The cost will not be paid if the caster is below the threshold.\n* ''Lamb's Respite'' has no effect on {{tip|zombie state}} units.\n* The effects are applied before the cast time.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[250,325,400]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Heal",
+                "<SpellSpan :list=\"[250,325,400]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                250,
+                325,
+                400
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Heal",
+              "damage_type": "none",
+              "ratios": {}
             }
           ]
         }

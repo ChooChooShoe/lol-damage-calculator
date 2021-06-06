@@ -49,6 +49,117 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Assassin's Mark",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Akali_P.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Akali's''' damaging [[champion ability|abilities]] against enemy {{tip|champions}} will mark a ring around them for 4 seconds, granting her {{as|{{pp|key=%|30 to 60 for 4|1 to 16}} {{sti|'''bonus''' movement speed}}}} for 2 seconds while moving away from them. Subsequent damaging abilities against enemy champions while a ring is active will only refresh its duration.",
+        "If '''Akali''' leaves the ring within its duration, she regains the {{as|'''bonus''' movement speed}} while moving towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds, during which she cannot create another ring.",
+        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack's {{sti|range}} is doubled and deals {{pp|29+3*(x-1) for 8;then +9*x for 5; then + 15*x|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 40% AP)}} {{as|'''bonus''' magic damage}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Akali's</b> damaging <a class=\"effect link\" title=\"abilities\">champion ability</a> against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> will mark a ring around them for 4 seconds, granting her <span class=\"movement-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span> for 2 seconds while moving away from them. Subsequent damaging abilities against enemy champions while a ring is active will only refresh its duration.<br />If <b>Akali</b> leaves the ring within its duration, she regains the <span class=\"movement-speed\"><b>bonus</b> movement speed</span> while moving towards enemy champions for 2 seconds and gains <i>Swinging Kama</i> for 4 seconds, during which she cannot create another ring.<br /><span class=\"sbc\">Swinging Kama:</span> <b>Akali's</b> next basic attack's <span>range</span> is doubled and deals <HtmlTooltip class=\"blue link\">29+3*(x-1) for 8;then +9*x for 5; then + 15*xundefined −  (based on level)<template #content>Values: 0, 45, 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.",
+      "leveling": [],
+      "notes": "* Enemies cannot see the ring, but can see the empower effect.\n* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35{{times}}2 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}0.35 (further increased by Rapid Firecannon)}}.\n* The ring will create around the last target hit by ''{{ai|Five Point Strike|Akali}}''.\n* The empowered attack can be {{tip|dodge|dodged}} and {{tip|block|blocked}}.\n** {{Pending for test}}: Interaction with {{tip|blind}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "AkaliQ",
+      "name": "Five Point Strike",
+      "maxrank": 5,
+      "cooldown": [
+        1.5
+      ],
+      "cost": [
+        130,
+        115,
+        100,
+        85,
+        70
+      ],
+      "costtype": "energy",
+      "targeting": "Direction",
+      "target_range": 500,
+      "image": {
+        "full": "AkaliQ.png",
+        "sprite": "spell0.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Akali''' unleashes kunais in a cone in the target direction, dealing {{as|magic damage}} to enemies hit. Targets at maximum range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Akali</b> unleashes kunais in a cone in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies hit. Targets at maximum range are also <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 50% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 65% AD)}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* Cast location is determined at the end of cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0.65
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                55,
+                80,
+                105,
+                130
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
+                ],
+                "player_total_ad": 0.65,
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "AkaliW",
       "name": "Twilight Shroud",
@@ -134,91 +245,6 @@
                   6.5,
                   7
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "AkaliQ",
-      "name": "Five Point Strike",
-      "maxrank": 5,
-      "cooldown": [
-        1.5
-      ],
-      "cost": [
-        130,
-        115,
-        100,
-        85,
-        70
-      ],
-      "costtype": "energy",
-      "targeting": "Direction",
-      "target_range": 500,
-      "image": {
-        "full": "AkaliQ.png",
-        "sprite": "spell0.png",
-        "group": "spell",
-        "x": 96,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Akali''' unleashes kunais in a cone in the target direction, dealing {{as|magic damage}} to enemies hit. Targets at maximum range are also {{tip|slow|slowed}} by 50% for {{fd|0.5}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Akali</b> unleashes kunais in a cone in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies hit. Targets at maximum range are also <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 50% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 65% AD)}} {{as|(+ 60% AP)}}}}"
-      ],
-      "notes": "* Cast location is determined at the end of cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ad": 0.65
-              },
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 65% AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                30,
-                55,
-                80,
-                105,
-                130
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  30,
-                  55,
-                  80,
-                  105,
-                  130
-                ],
-                "player_total_ad": 0.65,
-                "player_total_ap": 0.6
               }
             }
           ]
@@ -382,32 +408,6 @@
           ]
         }
       ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Assassin's Mark",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Akali_P.png",
-        "sprite": "passive0.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Akali's''' damaging [[champion ability|abilities]] against enemy {{tip|champions}} will mark a ring around them for 4 seconds, granting her {{as|{{pp|key=%|30 to 60 for 4|1 to 16}} {{sti|'''bonus''' movement speed}}}} for 2 seconds while moving away from them. Subsequent damaging abilities against enemy champions while a ring is active will only refresh its duration.",
-        "If '''Akali''' leaves the ring within its duration, she regains the {{as|'''bonus''' movement speed}} while moving towards enemy champions for 2 seconds and gains ''Swinging Kama'' for 4 seconds, during which she cannot create another ring.",
-        "{{sbc|Swinging Kama:}} '''Akali's''' next basic attack's {{sti|range}} is doubled and deals {{pp|29+3*(x-1) for 8;then +9*x for 5; then + 15*x|color=magic damage}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ 40% AP)}} {{as|'''bonus''' magic damage}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Akali's</b> damaging <a class=\"effect link\" title=\"abilities\">champion ability</a> against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> will mark a ring around them for 4 seconds, granting her <span class=\"movement-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span> for 2 seconds while moving away from them. Subsequent damaging abilities against enemy champions while a ring is active will only refresh its duration.<br />If <b>Akali</b> leaves the ring within its duration, she regains the <span class=\"movement-speed\"><b>bonus</b> movement speed</span> while moving towards enemy champions for 2 seconds and gains <i>Swinging Kama</i> for 4 seconds, during which she cannot create another ring.<br /><span class=\"sbc\">Swinging Kama:</span> <b>Akali's</b> next basic attack's <span>range</span> is doubled and deals <HtmlTooltip class=\"blue link\">29+3*(x-1) for 8;then +9*x for 5; then + 15*xundefined −  (based on level)<template #content>Values: 0, 45, 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 40% AP)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.",
-      "leveling": [],
-      "notes": "* Enemies cannot see the ring, but can see the empower effect.\n* ''Swinging Kama'' gives a static '''bonus''' range which doesn't change if '''Akali's''' range changes during it (i.e {{ii|Rapid Firecannon}}):\n** If ''Rapid Firecannon'' fully charges within ''Swinging Kama''<nowiki>'</nowiki>s duration, '''Akali's''' total range increases to {{tt|337.5|125{{times}}2{{times}}1.35}}.\n** If ''Rapid Firecannon'' fully charges before gaining ''Swinging Kama'', '''Akali's''' total range is increased to {{tt|395|125{{times}}1.35{{times}}2 + 125{{times}}1.35 (which is the bonus range Swinging Kama gives){{times}}0.35 (further increased by Rapid Firecannon)}}.\n* The ring will create around the last target hit by ''{{ai|Five Point Strike|Akali}}''.\n* The empowered attack can be {{tip|dodge|dodged}} and {{tip|block|blocked}}.\n** {{Pending for test}}: Interaction with {{tip|blind}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
     },
     "r1": {
       "riotId": "AkaliR",

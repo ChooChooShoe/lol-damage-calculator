@@ -49,351 +49,30 @@
     "attackspeed": 0.651
   },
   "skills": {
-    "e1": {
-      "riotId": "AatroxE",
-      "name": "Umbral Dash",
-      "maxrank": 5,
-      "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "cost": 0,
-      "targeting": "Location",
-      "target_range": "{{tt|75|Minimum dash distance}} / {{tt|300|Maximum dash distance}} / {{tt|500|Maximum increased dash distance across terrain}}",
+    "i1": {
+      "riotId": "",
+      "name": "Deathbringer Stance",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "AatroxE.png",
-        "sprite": "spell0.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
+        "full": "Aatrox_Passive.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 0,
+        "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Aatrox''' {{tip|heals}} for a percentage of the non-{{tip|persistent damage|persistent}} {{tt|post-mitigation damage|Damage calculated after modifiers}} he deals against enemy champions, increased during {{ai|World Ender|Aatrox}}.",
-        "{{sbc|Active:}} '''Aatrox''' {{tip|dash|dashes}} in the target direction.",
-        "''Umbral Dash'' {{tip|basic attack reset|resets}} '''Aatrox's''' basic attack timer.",
-        "''Umbral Dash'' can be cast during his other abilities without cancelling them, and vice versa.",
-        "''Umbral Dash'' may cast across terrain with an increased dash range. This may upscale his dash speed so that the dash takes the same total time as the standard maximum-range dash."
+        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next [[basic attack]] {{tip|on-attack}} to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the {{sti|target's '''maximum''' health}}}} as {{as|'''bonus''' physical damage}}, capped at 100 against {{tip|monsters}}.<br/> '''Aatrox''' {{tip|heal|heals}} for 100% of the {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt, reduced to 25% against {{tip|minions}}.",
+        "Whenever '''Aatrox''' hits at least one enemy {{tip|champion}} or large {{tip|monster}} with a basic attack {{tip|on-hit}} or an [[champion ability|ability]], the {{sti|cooldown}} of ''Deathbringer Stance'' is {{sti|ah|reduced}} by 2 seconds, increased by an additional 2 seconds if he hits with the {{as|Sweetspot|sweetspot}} of {{ai|The Darkin Blade|Aatrox}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> for a percentage of the non-<HtmlTooltip class=\"blue link\">persistent<template #content><div><h4>persistent damage<hr></h4><p>Description for keyword persistent damage</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation damage</span> he deals against enemy champions, increased during <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction.<br /><i>Umbral Dash</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Aatrox's</b> basic attack timer.<br /><i>Umbral Dash</i> can be cast during his other abilities without cancelling them, and vice versa.<br /><i>Umbral Dash</i> may cast across terrain with an increased dash range. This may upscale his dash speed so that the dash takes the same total time as the standard maximum-range dash.",
-      "leveling": [
-        "{{st|Healing|{{ap|20 to 30}}%|{{ai|World Ender|Aatrox}} Increased Healing|{{ap|26 to 50}}%}}"
-      ],
-      "notes": "* The {{tip|dash}} distance can be extended to up-to 500 units when targeting across terrain. It will only extend for the distance needed to cross the wall.\n* If ''Umbral Dash'' is cast in the same direction '''Aatrox''' is moving, he will be unable to buffer commands that require him to move. {{bug|1}}\n* '''Aatrox's''' model darkens for {{fd|1.5}} seconds upon casting ''Umbral Dash'', which is a remnant from a buff he received before it got removed.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Healing</span>: <span><SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%</span></li><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip> Increased Healing</span>: <span><SpellSpan :list=\"[26,32,38,44,50]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Healing",
-                "<SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%",
-                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip> Increased Healing",
-                "<SpellSpan :list=\"[26,32,38,44,50]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                20,
-                22.5,
-                25,
-                27.5,
-                30
-              ],
-              [
-                26,
-                32,
-                38,
-                44,
-                50
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Healing",
-              "damage_type": "none",
-              "ratios": {}
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "AatroxW",
-      "name": "Infernal Chains",
-      "maxrank": 5,
-      "cooldown": [
-        26,
-        23,
-        20,
-        17,
-        14
-      ],
-      "cost": 0,
-      "targeting": "Direction",
-      "image": {
-        "full": "AatroxW.png",
-        "sprite": "spell0.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Aatrox''' sends a chain in the target direction that deals {{as|physical damage}} to the first enemy hit, doubled against {{tip|minions}}, and {{tip|slow|slowing}} them by 25% for {{fd|1.5}} seconds.",
-        "If ''Infernal Chains'' hits an enemy {{tip|champion}} or large {{tip|monster}}, they are {{tip|true sight|revealed}} and are {{tip|tether|tethered}} to the impact area. If the tethered enemy is still in the area after {{fd|1.5}} seconds, they are {{tip|airborne|dragged}} to the center and take the same damage again."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aatrox</b> sends a chain in the target direction that deals <span class=\"physical-damage\">physical damage</span> to the first enemy hit, doubled against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>, and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 25% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />If <i>Infernal Chains</i> hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or large <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and are <HtmlTooltip class=\"blue link\">tethered<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> to the impact area. If the tethered enemy is still in the area after <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, they are <HtmlTooltip class=\"blue link\">dragged<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> to the center and take the same damage again.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|30 to 70}} {{as|(+ 40% AD)}}|Minion Damage|{{ap|30*2 to 70*2}} {{as|(+ 80% AD)}}}}",
-        "{{st|Total Damage|{{ap|30*2 to 70*2}} {{as|(+ 80% AD)}}}}"
-      ],
-      "notes": "* The impact area is oriented relative to '''Aatrox's''' position when the projectile hits, not where the projectile originated from.\n* The location that the target is dragged to is not at the target's original location, but slightly closer towards '''Aatrox's''' position when the zone expires.\n* There's a small delay in checking if the target is in or outside the ''Infernal Chains'' area. Because of this it is still possible to drag the target if they leave the zone at the last instant.\n* {{tip|Spell shield}} will block the chain's application and initial damage but not the aftereffects of one already applied.\n* ''Infernal Chains'' will fire from where '''Aatrox''' is at the end of the cast time.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span></span></li><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ad": 0.4
-              },
-              {
-                "player_total_ad": 0.8
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span>",
-                "Minion Damage",
-                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                30,
-                40,
-                50,
-                60,
-                70
-              ],
-              [
-                60,
-                80,
-                100,
-                120,
-                140
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  30,
-                  40,
-                  50,
-                  60,
-                  70
-                ],
-                "player_total_ad": 0.8
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ad": 0.8
-              }
-            ],
-            "st_slices": [
-              [
-                "Total Damage",
-                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                80,
-                100,
-                120,
-                140
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Total Damage",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  80,
-                  100,
-                  120,
-                  140
-                ],
-                "player_total_ad": 0.8
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "AatroxR",
-      "name": "World Ender",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        80,
-        40,
-        0
-      ],
-      "cost": 0,
-      "targeting": "Auto",
-      "target_range": "",
-      "image": {
-        "full": "AatroxR.png",
-        "sprite": "spell0.png",
-        "group": "spell",
-        "x": 336,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form, causing all nearby enemy {{tip|minions}} and {{tip|monster|monsters}} to {{tip|flee}} from him for 3 seconds, during which they are rapidly {{tip|slow|slowed}} by up to 99% over the duration. For the next 10 seconds, '''Aatrox''' gains {{tip|ghosting}} and {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds.",
-        "While transformed, '''Aatrox''' gains {{as|{{sti|'''bonus''' attack damage}}}} and 5% increased [[size]], and receives increased {{tip|heal|self-healing}} from all sources.",
-        "With each enemy {{tip|champion}} {{tip|takedown}}, ''World Ender's'' duration is extended by 5 seconds, refreshing its effects, up to the original amount."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aatrox</b> unleashes his true demonic form, causing all nearby enemy <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for 3 seconds, during which they are rapidly <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by up to 99% over the duration. For the next 10 seconds, <b>Aatrox</b> gains <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghosting<hr></h4><p>Description for keyword ghosting</p></div></template></HtmlTooltip> and <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>, decaying by 10% of the <b>current bonus</b> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.<br />While transformed, <b>Aatrox</b> gains <span class=\"attack-damage\"><span><b>bonus</b> attack damage</span></span> and 5% increased <a class=\"effect link\" title=\"size\">size</a>, and receives increased <HtmlTooltip class=\"blue link\">self-healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> from all sources.<br />With each enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>, <i>World Ender's</i> duration is extended by 5 seconds, refreshing its effects, up to the original amount.",
-      "leveling": [
-        "{{st|Bonus Movement Speed|{{ap|60 to 100}}%}}",
-        "{{st|Bonus AD|{{as|{{ap|20 to 40}}% AD}}}}\n{{st|Increased Healing|{{ap|30 to 60}}%}}"
-      ],
-      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.\n* ''World Ender'' persists through {{tip|resurrection}} effects.\n* ''World Ender'' will cast from wherever '''Aatrox''' is at the end of the cast time.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120 to 80}}|Starts on cast}}' as '0/80/40/0' and riot's value '120,100,80' as '120/100/80'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[60,80,100]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Bonus Movement Speed",
-                "<SpellSpan :list=\"[60,80,100]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                80,
-                100
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Movement Speed",
-              "damage_type": "true",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  80,
-                  100
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,30,40]\"></SpellSpan>% AD</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Increased Healing</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ad": [
-                  0.3,
-                  0.45,
-                  0.6
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Increased Healing",
-                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
-              ],
-              [
-                "Bonus AD",
-                "<span class=\"ad\"><SpellSpan :list=\"[20,30,40]\"></SpellSpan>% AD</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                20,
-                30,
-                40
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Increased Healing",
-              "damage_type": "true",
-              "ratios": {
-                "base_damage": [
-                  20,
-                  30,
-                  40
-                ],
-                "player_total_ad": [
-                  0.3,
-                  0.45,
-                  0.6
-                ]
-              }
-            },
-            {
-              "index": 1,
-              "title": "Bonus AD",
-              "damage_type": "unknown",
-              "ratios": {
-                "player_total_ad": [
-                  0.3,
-                  0.45,
-                  0.6
-                ]
-              }
-            }
-          ]
-        }
-      ]
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Aatrox</b> periodically empowers his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> to gain <span>50 <b>bonus</b> range</span> and deal <span class=\"health\"><HtmlTooltip class=\"blue link\">5% − 12% (based on level)<template #content>Values: 5, 5.412, 5.824, 6.235, 6.647, 7.059, 7.471, 7.882, 8.294, 8.706, 9.118, 9.529, 9.941, 10.353, 10.765, 11.176, 11.588, 12<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> of the <span>target's <b>maximum</b> health</span></span> as <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, capped at 100 against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br/> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of the <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation damage</span> dealt, reduced to 25% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Whenever <b>Aatrox</b> hits at least one enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or large <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> with a basic attack <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> or an <a class=\"effect link\" title=\"ability\">champion ability</a>, the <span>cooldown</span> of <i>Deathbringer Stance</i> is <span>reduced</span> by 2 seconds, increased by an additional 2 seconds if he hits with the <span class=\"sweetspot\">Sweetspot</span> of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">The Darkin Blade<template #content>The Darkin Blade</template></HtmlTooltip>.",
+      "leveling": [],
+      "notes": "* The empowered attack does not trigger on {{tip|turret|structures}}, {{tip|ward|wards}}, nor [[jungle plants]].\n* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n** Pressing {{sbc|CTRL + 5}} switches stances controllably.\n* If ''Deathbringer Stance'' becomes available during a standard attack's windup, it will not be consumed or trigger the '''bonus''' damage.\n* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Deathbringer Stance's'' cooldown will still be reduced.\n* This ability goes on cooldown on death and refreshes upon respawn.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
     },
     "q1": {
       "riotId": "AatroxQ",
@@ -642,30 +321,351 @@
         }
       ]
     },
-    "i1": {
-      "riotId": "",
-      "name": "Deathbringer Stance",
-      "maxrank": 0,
-      "targeting": "Passive",
+    "w1": {
+      "riotId": "AatroxW",
+      "name": "Infernal Chains",
+      "maxrank": 5,
+      "cooldown": [
+        26,
+        23,
+        20,
+        17,
+        14
+      ],
+      "cost": 0,
+      "targeting": "Direction",
       "image": {
-        "full": "Aatrox_Passive.png",
-        "sprite": "passive0.png",
-        "group": "passive",
-        "x": 0,
-        "y": 0,
+        "full": "AatroxW.png",
+        "sprite": "spell0.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Aatrox''' periodically empowers his next [[basic attack]] {{tip|on-attack}} to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the {{sti|target's '''maximum''' health}}}} as {{as|'''bonus''' physical damage}}, capped at 100 against {{tip|monsters}}.<br/> '''Aatrox''' {{tip|heal|heals}} for 100% of the {{tt|post-mitigation damage|Damage calculated after modifiers}} dealt, reduced to 25% against {{tip|minions}}.",
-        "Whenever '''Aatrox''' hits at least one enemy {{tip|champion}} or large {{tip|monster}} with a basic attack {{tip|on-hit}} or an [[champion ability|ability]], the {{sti|cooldown}} of ''Deathbringer Stance'' is {{sti|ah|reduced}} by 2 seconds, increased by an additional 2 seconds if he hits with the {{as|Sweetspot|sweetspot}} of {{ai|The Darkin Blade|Aatrox}}."
+        "{{sbc|Active:}} '''Aatrox''' sends a chain in the target direction that deals {{as|physical damage}} to the first enemy hit, doubled against {{tip|minions}}, and {{tip|slow|slowing}} them by 25% for {{fd|1.5}} seconds.",
+        "If ''Infernal Chains'' hits an enemy {{tip|champion}} or large {{tip|monster}}, they are {{tip|true sight|revealed}} and are {{tip|tether|tethered}} to the impact area. If the tethered enemy is still in the area after {{fd|1.5}} seconds, they are {{tip|airborne|dragged}} to the center and take the same damage again."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Aatrox</b> periodically empowers his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> to gain <span>50 <b>bonus</b> range</span> and deal <span class=\"health\"><HtmlTooltip class=\"blue link\">5% − 12% (based on level)<template #content>Values: 5, 5.412, 5.824, 6.235, 6.647, 7.059, 7.471, 7.882, 8.294, 8.706, 9.118, 9.529, 9.941, 10.353, 10.765, 11.176, 11.588, 12<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> of the <span>target's <b>maximum</b> health</span></span> as <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, capped at 100 against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br/> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of the <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation damage</span> dealt, reduced to 25% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Whenever <b>Aatrox</b> hits at least one enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or large <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> with a basic attack <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> or an <a class=\"effect link\" title=\"ability\">champion ability</a>, the <span>cooldown</span> of <i>Deathbringer Stance</i> is <span>reduced</span> by 2 seconds, increased by an additional 2 seconds if he hits with the <span class=\"sweetspot\">Sweetspot</span> of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">The Darkin Blade<template #content>The Darkin Blade</template></HtmlTooltip>.",
-      "leveling": [],
-      "notes": "* The empowered attack does not trigger on {{tip|turret|structures}}, {{tip|ward|wards}}, nor [[jungle plants]].\n* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.\n** Pressing {{sbc|CTRL + 5}} switches stances controllably.\n* If ''Deathbringer Stance'' becomes available during a standard attack's windup, it will not be consumed or trigger the '''bonus''' damage.\n* Even if the ability hit is {{tip|spell shield|spell shielded}} ''Deathbringer Stance's'' cooldown will still be reduced.\n* This ability goes on cooldown on death and refreshes upon respawn.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aatrox</b> sends a chain in the target direction that deals <span class=\"physical-damage\">physical damage</span> to the first enemy hit, doubled against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>, and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 25% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />If <i>Infernal Chains</i> hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or large <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and are <HtmlTooltip class=\"blue link\">tethered<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> to the impact area. If the tethered enemy is still in the area after <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, they are <HtmlTooltip class=\"blue link\">dragged<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> to the center and take the same damage again.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|30 to 70}} {{as|(+ 40% AD)}}|Minion Damage|{{ap|30*2 to 70*2}} {{as|(+ 80% AD)}}}}",
+        "{{st|Total Damage|{{ap|30*2 to 70*2}} {{as|(+ 80% AD)}}}}"
+      ],
+      "notes": "* The impact area is oriented relative to '''Aatrox's''' position when the projectile hits, not where the projectile originated from.\n* The location that the target is dragged to is not at the target's original location, but slightly closer towards '''Aatrox's''' position when the zone expires.\n* There's a small delay in checking if the target is in or outside the ''Infernal Chains'' area. Because of this it is still possible to drag the target if they leave the zone at the last instant.\n* {{tip|Spell shield}} will block the chain's application and initial damage but not the aftereffects of one already applied.\n* ''Infernal Chains'' will fire from where '''Aatrox''' is at the end of the cast time.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span></span></li><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0.4
+              },
+              {
+                "player_total_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan> <span class=\"ad\">(+ 40% AD)</span>",
+                "Minion Damage",
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                40,
+                50,
+                60,
+                70
+              ],
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  40,
+                  50,
+                  60,
+                  70
+                ],
+                "player_total_ad": 0.8
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Damage",
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ad\">(+ 80% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Total Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  80,
+                  100,
+                  120,
+                  140
+                ],
+                "player_total_ad": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "AatroxE",
+      "name": "Umbral Dash",
+      "maxrank": 5,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": 0,
+      "targeting": "Location",
+      "target_range": "{{tt|75|Minimum dash distance}} / {{tt|300|Maximum dash distance}} / {{tt|500|Maximum increased dash distance across terrain}}",
+      "image": {
+        "full": "AatroxE.png",
+        "sprite": "spell0.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Aatrox''' {{tip|heals}} for a percentage of the non-{{tip|persistent damage|persistent}} {{tt|post-mitigation damage|Damage calculated after modifiers}} he deals against enemy champions, increased during {{ai|World Ender|Aatrox}}.",
+        "{{sbc|Active:}} '''Aatrox''' {{tip|dash|dashes}} in the target direction.",
+        "''Umbral Dash'' {{tip|basic attack reset|resets}} '''Aatrox's''' basic attack timer.",
+        "''Umbral Dash'' can be cast during his other abilities without cancelling them, and vice versa.",
+        "''Umbral Dash'' may cast across terrain with an increased dash range. This may upscale his dash speed so that the dash takes the same total time as the standard maximum-range dash."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> for a percentage of the non-<HtmlTooltip class=\"blue link\">persistent<template #content><div><h4>persistent damage<hr></h4><p>Description for keyword persistent damage</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation damage</span> he deals against enemy champions, increased during <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Aatrox</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction.<br /><i>Umbral Dash</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Aatrox's</b> basic attack timer.<br /><i>Umbral Dash</i> can be cast during his other abilities without cancelling them, and vice versa.<br /><i>Umbral Dash</i> may cast across terrain with an increased dash range. This may upscale his dash speed so that the dash takes the same total time as the standard maximum-range dash.",
+      "leveling": [
+        "{{st|Healing|{{ap|20 to 30}}%|{{ai|World Ender|Aatrox}} Increased Healing|{{ap|26 to 50}}%}}"
+      ],
+      "notes": "* The {{tip|dash}} distance can be extended to up-to 500 units when targeting across terrain. It will only extend for the distance needed to cross the wall.\n* If ''Umbral Dash'' is cast in the same direction '''Aatrox''' is moving, he will be unable to buffer commands that require him to move. {{bug|1}}\n* '''Aatrox's''' model darkens for {{fd|1.5}} seconds upon casting ''Umbral Dash'', which is a remnant from a buff he received before it got removed.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Healing</span>: <span><SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%</span></li><li><span class=\"blue\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip> Increased Healing</span>: <span><SpellSpan :list=\"[26,32,38,44,50]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Healing",
+                "<SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>%",
+                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Aatrox\">World Ender<template #content>World Ender</template></HtmlTooltip> Increased Healing",
+                "<SpellSpan :list=\"[26,32,38,44,50]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                22.5,
+                25,
+                27.5,
+                30
+              ],
+              [
+                26,
+                32,
+                38,
+                44,
+                50
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Healing",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "AatroxR",
+      "name": "World Ender",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        80,
+        40,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "target_range": "",
+      "image": {
+        "full": "AatroxR.png",
+        "sprite": "spell0.png",
+        "group": "spell",
+        "x": 336,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aatrox''' unleashes his true demonic form, causing all nearby enemy {{tip|minions}} and {{tip|monster|monsters}} to {{tip|flee}} from him for 3 seconds, during which they are rapidly {{tip|slow|slowed}} by up to 99% over the duration. For the next 10 seconds, '''Aatrox''' gains {{tip|ghosting}} and {{sti|{{as|'''bonus''' movement speed}}}}, decaying by 10% of the '''current bonus''' every {{fd|0.25}} seconds.",
+        "While transformed, '''Aatrox''' gains {{as|{{sti|'''bonus''' attack damage}}}} and 5% increased [[size]], and receives increased {{tip|heal|self-healing}} from all sources.",
+        "With each enemy {{tip|champion}} {{tip|takedown}}, ''World Ender's'' duration is extended by 5 seconds, refreshing its effects, up to the original amount."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aatrox</b> unleashes his true demonic form, causing all nearby enemy <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for 3 seconds, during which they are rapidly <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by up to 99% over the duration. For the next 10 seconds, <b>Aatrox</b> gains <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghosting<hr></h4><p>Description for keyword ghosting</p></div></template></HtmlTooltip> and <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>, decaying by 10% of the <b>current bonus</b> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.<br />While transformed, <b>Aatrox</b> gains <span class=\"attack-damage\"><span><b>bonus</b> attack damage</span></span> and 5% increased <a class=\"effect link\" title=\"size\">size</a>, and receives increased <HtmlTooltip class=\"blue link\">self-healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> from all sources.<br />With each enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>, <i>World Ender's</i> duration is extended by 5 seconds, refreshing its effects, up to the original amount.",
+      "leveling": [
+        "{{st|Bonus Movement Speed|{{ap|60 to 100}}%}}",
+        "{{st|Bonus AD|{{as|{{ap|20 to 40}}% AD}}}}\n{{st|Increased Healing|{{ap|30 to 60}}%}}"
+      ],
+      "notes": "* His resource bar indicates the remaining duration of ''World Ender''.\n* ''World Ender'' persists through {{tip|resurrection}} effects.\n* ''World Ender'' will cast from wherever '''Aatrox''' is at the end of the cast time.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120 to 80}}|Starts on cast}}' as '0/80/40/0' and riot's value '120,100,80' as '120/100/80'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[60,80,100]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[60,80,100]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Movement Speed",
+              "damage_type": "true",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  80,
+                  100
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"ad\"><SpellSpan :list=\"[20,30,40]\"></SpellSpan>% AD</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Increased Healing</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  0.3,
+                  0.45,
+                  0.6
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Increased Healing",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
+              ],
+              [
+                "Bonus AD",
+                "<span class=\"ad\"><SpellSpan :list=\"[20,30,40]\"></SpellSpan>% AD</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Increased Healing",
+              "damage_type": "true",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40
+                ],
+                "player_total_ad": [
+                  0.3,
+                  0.45,
+                  0.6
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Bonus AD",
+              "damage_type": "unknown",
+              "ratios": {
+                "player_total_ad": [
+                  0.3,
+                  0.45,
+                  0.6
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

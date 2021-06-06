@@ -49,6 +49,211 @@
     "attackspeed": 0.651
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Contempt for the Weak",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "shadowninja_P.png",
+        "sprite": "passive5.png",
+        "group": "passive",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Zed's''' [[basic attack]]s against targets {{sti|health|{{as|below 50% of their '''maximum''' health}}}} deal {{as|{{pp|key=%|6 to 10 for 3|1;7;17}} of the target's '''maximum''' health}} as {{as|'''bonus''' magic damage}}, capped at 300 against epic {{tip|monsters}}.",
+        "''Contempt for the Weak'' can only affect enemy champions once every few seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Zed's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s against targets <span><span class=\"health\">below 50% of their <b>maximum</b> health</span></span> deal <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1;7;17 ‒ undefined</span> of the target's <b>maximum</b> health</span> as <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, capped at 300 against epic <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br /><i>Contempt for the Weak</i> can only affect enemy champions once every few seconds.",
+      "leveling": [],
+      "notes": "* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect [[structures]].\n* ''Contempt for the Weak'' is not consumed when {{tip|dodged}} or {{tip|blind|missed}}, but it is consumed when {{tip|blocked}}.\n* ''Contempt for the Weak'' considers the target's health upon landing the attack, not when it's declared.\n** If the target falls below the threshold while '''Zed''' is winding up the attack, ''Contempt for the Weak'' applies, and vice versa.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "ZedQ",
+      "name": "Razor Shuriken",
+      "maxrank": 5,
+      "cooldown": 6,
+      "cost": [
+        75,
+        70,
+        65,
+        60,
+        55
+      ],
+      "costtype": "energy",
+      "targeting": "Direction",
+      "target_range": "{{tip|cr|icononly = true}} 925",
+      "image": {
+        "full": "ZedQ.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' throw their spinning blades toward the target location. Each blade deals {{as|physical damage}} to all enemies struck in their path, reduced to 60% against units beyond the first."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zed</b> and his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> throw their spinning blades toward the target location. Each blade deals <span class=\"physical-damage\">physical damage</span> to all enemies struck in their path, reduced to 60% against units beyond the first.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 100% '''bonus''' AD)}}|Secondary Damage|{{ap|80*0.6 to 220*0.6}} {{as|(+ 60% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* {{tip|Spell shield}} only blocks the damage from one ''Razor Shuriken'' even if two hit at the same time.\n** ''Shurikens'' blocked by {{tip|spell shield}} still count as being hit for the reduced pass-through damage.\n* If '''Zed''' buffers an attack command during ''Razor Shuriken's'' cast time the attack will perform slower than if '''Zed''' had attacked after the cast time.\n** The same does not happen if '''Zed''' recasts {{ai|Living Shadow 2|Zed|Living Shadow}} during ''Razor Shuriken's'' cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Secondary Damage</span>: <span><SpellSpan :list=\"[48,69,90,111,132]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "player_bonus_ad": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+                "Secondary Damage",
+                "<SpellSpan :list=\"[48,69,90,111,132]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ],
+              [
+                48,
+                69,
+                90,
+                111,
+                132
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_bonus_ad": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "ZedW",
+      "name": "Living Shadow",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        18,
+        16,
+        14,
+        12,
+        0
+      ],
+      "cost": [
+        40,
+        35,
+        30,
+        25,
+        20
+      ],
+      "costtype": "energy",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
+      "target_range": 650,
+      "image": {
+        "full": "ZedW.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Zed''' restores {{sti|{{as|energy}}}} whenever he and one of his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' or multiple [[File:Zed's Shadow.png|20px|border]] ''Shadows'' hit a mimicked ability on the same target. This may only occur once per cast ability.",
+        "{{sbc|Active:}} '''Zed's''' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' dashes to the target location, remaining in place for 5 seconds and being able to mimic {{ai|Razor Shuriken|Zed}} and {{ai|Shadow Slash|Zed}} while in range. ''Living Shadow'' can be recast at any time while the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is dashing or within its duration.",
+        "{{sbc|Recast:}} While in range of each other, '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadow'' {{tip|blink}} to their respective locations, swapping places. If ''Living Shadow'' was recast while the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is dashing, the recast will instead occur once it has been placed.",
+        "''If an ability is cast while the [[File:Zed's Shadow.png|20px|border]] Shadow is dashing, the [[File:Zed's Shadow.png|20px|border]] Shadow will cast that ability once it has been placed.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Zed</b> restores <span><span class=\"energy\">energy</span></span> whenever he and one of his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> or multiple <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> hit a mimicked ability on the same target. This may only occur once per cast ability.<br /><span class=\"sbc\">Active:</span> <b>Zed's</b> <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> dashes to the target location, remaining in place for 5 seconds and being able to mimic <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zed\">Razor Shuriken<template #content>Razor Shuriken</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zed\">Shadow Slash<template #content>Shadow Slash</template></HtmlTooltip> while in range. <i>Living Shadow</i> can be recast at any time while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> is dashing or within its duration.<br /><span class=\"sbc\">Recast:</span> While in range of each other, <b>Zed</b> and his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to their respective locations, swapping places. If <i>Living Shadow</i> was recast while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> is dashing, the recast will instead occur once it has been placed.<br /><i>If an ability is cast while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> Shadow is dashing, the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> Shadow will cast that ability once it has been placed.</i>",
+      "leveling": [
+        "{{st|Energy Restored|{{as|{{ap|30 to 50}}|energy}}}}"
+      ],
+      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* Mimicked abilities count as separate casts when they both hit the same target (e.g. for the purposes of {{ri|Electrocute}}, {{ri|Phase Rush}}, {{ii|Eclipse}}, etc).\n* The {{tip|energy}} refund is not granted if the mimicked ability is blocked by a {{tip|spell shield}}.\n* ''Living Shadow'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* [[File:Zed's Shadow.png|20px|border]] ''Shadows'' grant {{tip|sight}} of their surroundings (700 radius) and they are {{tip|untargetable}}.\n* If ''Living Shadow'' is recast during {{ai|Q|Zed}}, '''Zed''' will instantly release the shuriken from his original position while still remaining in cast time, and the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' will release the shuriken based on '''Zed's''' remaining cast time.{{bug|1}}\n* The [[File:Zed's Shadow.png|20px|border]] ''Shadow'' will cast {{ai|E|Zed}} independently of being in {{ais|Q|Zed}} cast time or not.{{bug|2}}\n* '''Zed''' will swap places with the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' by all means if he buffers ''Living Shadow's'' recast during its dash.{{bug|2}}\n** ''Living Shadow'' cannot be recast while '''Zed''' is marking his target with {{ai|R|Zed}}, but may still be recast if it was buffered.{{bug|1}}\n* If '''Zed''' casts ''Living Shadow'' while a non-''{{ai|Death Mark 2|Zed|Death Mark}} Shadow'' is already present, the previous ''Shadow'' will instantly disappear.\n* [[File:Zed's Shadow.png|20px|border]] ''Shadows'' will not disappear when '''Zed''' dies.{{bug}}\n* '''Zed''' always has an ''arrow'' next to him pointing in the direction of his [[File:Zed's Shadow.png|20px|border]] ''Shadows''. It has three different colors, each one symbolizes important information about the specific ''Shadow.'' They are only visible to '''Zed'''.\n[[File:Multiple_Shadows_with_Arrows.png|thumb|250px|center|Two arrows point toward their corresponding [[File:Zed's Shadow.png|20px|border]] '''Shadows'''.]]\n{{clear}}\n[[File:Shadow_(Green_Arrow).png|thumb|250px|center|A {{Color|Green|'''green arrow'''}} ({{Color|Blue|'''blue'''}} in colorblind mode) means the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' can be swapped places with.]]\n{{clear}}\n[[File:Shadow_(Yellow_Arrow).png|thumb|250px|center|A {{Color|Yellow|'''yellow arrow'''}} signifies the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' is about to disappear.]]\n{{clear}}\n[[File:Shadow_(Red_Arrow).png|thumb|250px|center|A {{Color|Red|'''red arrow'''}} ({{Color|Orange|'''orange'''}} in colorblind mode) indicates the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' is unable to be swapped places with.]]",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|20 to 14}}|Starts on cast}}' as '0/18/16/14/12/0' and riot's value '20,18.5,17,15.5,14' as '20/18.5/17/15.5/14'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Energy Restored</span>: <span><span class=\"energy\"><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan></span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_mana": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Energy Restored",
+                "<span class=\"energy\"><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan></span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Energy Restored",
+              "damage_type": "unknown",
+              "ratios": {
+                "player_total_mana": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "ZedE",
       "name": "Shadow Slash",
@@ -170,211 +375,6 @@
                   35,
                   40
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "ZedW",
-      "name": "Living Shadow",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        18,
-        16,
-        14,
-        12,
-        0
-      ],
-      "cost": [
-        40,
-        35,
-        30,
-        25,
-        20
-      ],
-      "costtype": "energy",
-      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
-      "target_range": 650,
-      "image": {
-        "full": "ZedW.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Zed''' restores {{sti|{{as|energy}}}} whenever he and one of his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' or multiple [[File:Zed's Shadow.png|20px|border]] ''Shadows'' hit a mimicked ability on the same target. This may only occur once per cast ability.",
-        "{{sbc|Active:}} '''Zed's''' [[File:Zed's Shadow.png|20px|border]] ''Shadow'' dashes to the target location, remaining in place for 5 seconds and being able to mimic {{ai|Razor Shuriken|Zed}} and {{ai|Shadow Slash|Zed}} while in range. ''Living Shadow'' can be recast at any time while the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is dashing or within its duration.",
-        "{{sbc|Recast:}} While in range of each other, '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadow'' {{tip|blink}} to their respective locations, swapping places. If ''Living Shadow'' was recast while the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' is dashing, the recast will instead occur once it has been placed.",
-        "''If an ability is cast while the [[File:Zed's Shadow.png|20px|border]] Shadow is dashing, the [[File:Zed's Shadow.png|20px|border]] Shadow will cast that ability once it has been placed.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Zed</b> restores <span><span class=\"energy\">energy</span></span> whenever he and one of his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> or multiple <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> hit a mimicked ability on the same target. This may only occur once per cast ability.<br /><span class=\"sbc\">Active:</span> <b>Zed's</b> <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> dashes to the target location, remaining in place for 5 seconds and being able to mimic <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zed\">Razor Shuriken<template #content>Razor Shuriken</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zed\">Shadow Slash<template #content>Shadow Slash</template></HtmlTooltip> while in range. <i>Living Shadow</i> can be recast at any time while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> is dashing or within its duration.<br /><span class=\"sbc\">Recast:</span> While in range of each other, <b>Zed</b> and his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to their respective locations, swapping places. If <i>Living Shadow</i> was recast while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadow</i> is dashing, the recast will instead occur once it has been placed.<br /><i>If an ability is cast while the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> Shadow is dashing, the <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> Shadow will cast that ability once it has been placed.</i>",
-      "leveling": [
-        "{{st|Energy Restored|{{as|{{ap|30 to 50}}|energy}}}}"
-      ],
-      "notes": "*Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* Mimicked abilities count as separate casts when they both hit the same target (e.g. for the purposes of {{ri|Electrocute}}, {{ri|Phase Rush}}, {{ii|Eclipse}}, etc).\n* The {{tip|energy}} refund is not granted if the mimicked ability is blocked by a {{tip|spell shield}}.\n* ''Living Shadow'' cannot be recast while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* [[File:Zed's Shadow.png|20px|border]] ''Shadows'' grant {{tip|sight}} of their surroundings (700 radius) and they are {{tip|untargetable}}.\n* If ''Living Shadow'' is recast during {{ai|Q|Zed}}, '''Zed''' will instantly release the shuriken from his original position while still remaining in cast time, and the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' will release the shuriken based on '''Zed's''' remaining cast time.{{bug|1}}\n* The [[File:Zed's Shadow.png|20px|border]] ''Shadow'' will cast {{ai|E|Zed}} independently of being in {{ais|Q|Zed}} cast time or not.{{bug|2}}\n* '''Zed''' will swap places with the [[File:Zed's Shadow.png|20px|border]] ''Shadow'' by all means if he buffers ''Living Shadow's'' recast during its dash.{{bug|2}}\n** ''Living Shadow'' cannot be recast while '''Zed''' is marking his target with {{ai|R|Zed}}, but may still be recast if it was buffered.{{bug|1}}\n* If '''Zed''' casts ''Living Shadow'' while a non-''{{ai|Death Mark 2|Zed|Death Mark}} Shadow'' is already present, the previous ''Shadow'' will instantly disappear.\n* [[File:Zed's Shadow.png|20px|border]] ''Shadows'' will not disappear when '''Zed''' dies.{{bug}}\n* '''Zed''' always has an ''arrow'' next to him pointing in the direction of his [[File:Zed's Shadow.png|20px|border]] ''Shadows''. It has three different colors, each one symbolizes important information about the specific ''Shadow.'' They are only visible to '''Zed'''.\n[[File:Multiple_Shadows_with_Arrows.png|thumb|250px|center|Two arrows point toward their corresponding [[File:Zed's Shadow.png|20px|border]] '''Shadows'''.]]\n{{clear}}\n[[File:Shadow_(Green_Arrow).png|thumb|250px|center|A {{Color|Green|'''green arrow'''}} ({{Color|Blue|'''blue'''}} in colorblind mode) means the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' can be swapped places with.]]\n{{clear}}\n[[File:Shadow_(Yellow_Arrow).png|thumb|250px|center|A {{Color|Yellow|'''yellow arrow'''}} signifies the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' is about to disappear.]]\n{{clear}}\n[[File:Shadow_(Red_Arrow).png|thumb|250px|center|A {{Color|Red|'''red arrow'''}} ({{Color|Orange|'''orange'''}} in colorblind mode) indicates the [[File:Zed's Shadow.png|20px|border]] '''Shadow''' is unable to be swapped places with.]]",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|20 to 14}}|Starts on cast}}' as '0/18/16/14/12/0' and riot's value '20,18.5,17,15.5,14' as '20/18.5/17/15.5/14'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Energy Restored</span>: <span><span class=\"energy\"><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan></span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_mana": [
-                  30,
-                  35,
-                  40,
-                  45,
-                  50
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Energy Restored",
-                "<span class=\"energy\"><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan></span>"
-              ]
-            ],
-            "ap_progressions": [
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Energy Restored",
-              "damage_type": "unknown",
-              "ratios": {
-                "player_total_mana": [
-                  30,
-                  35,
-                  40,
-                  45,
-                  50
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Contempt for the Weak",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "shadowninja_P.png",
-        "sprite": "passive5.png",
-        "group": "passive",
-        "x": 0,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Zed's''' [[basic attack]]s against targets {{sti|health|{{as|below 50% of their '''maximum''' health}}}} deal {{as|{{pp|key=%|6 to 10 for 3|1;7;17}} of the target's '''maximum''' health}} as {{as|'''bonus''' magic damage}}, capped at 300 against epic {{tip|monsters}}.",
-        "''Contempt for the Weak'' can only affect enemy champions once every few seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Zed's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s against targets <span><span class=\"health\">below 50% of their <b>maximum</b> health</span></span> deal <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1;7;17 ‒ undefined</span> of the target's <b>maximum</b> health</span> as <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, capped at 300 against epic <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br /><i>Contempt for the Weak</i> can only affect enemy champions once every few seconds.",
-      "leveling": [],
-      "notes": "* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect [[structures]].\n* ''Contempt for the Weak'' is not consumed when {{tip|dodged}} or {{tip|blind|missed}}, but it is consumed when {{tip|blocked}}.\n* ''Contempt for the Weak'' considers the target's health upon landing the attack, not when it's declared.\n** If the target falls below the threshold while '''Zed''' is winding up the attack, ''Contempt for the Weak'' applies, and vice versa.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "ZedQ",
-      "name": "Razor Shuriken",
-      "maxrank": 5,
-      "cooldown": 6,
-      "cost": [
-        75,
-        70,
-        65,
-        60,
-        55
-      ],
-      "costtype": "energy",
-      "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 925",
-      "image": {
-        "full": "ZedQ.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Zed''' and his [[File:Zed's Shadow.png|20px|border]] ''Shadows'' throw their spinning blades toward the target location. Each blade deals {{as|physical damage}} to all enemies struck in their path, reduced to 60% against units beyond the first."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zed</b> and his <a class=\"effect link\" title=\"20px\">File:Zed's Shadow.png</a> <i>Shadows</i> throw their spinning blades toward the target location. Each blade deals <span class=\"physical-damage\">physical damage</span> to all enemies struck in their path, reduced to 60% against units beyond the first.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 100% '''bonus''' AD)}}|Secondary Damage|{{ap|80*0.6 to 220*0.6}} {{as|(+ 60% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* {{tip|Spell shield}} only blocks the damage from one ''Razor Shuriken'' even if two hit at the same time.\n** ''Shurikens'' blocked by {{tip|spell shield}} still count as being hit for the reduced pass-through damage.\n* If '''Zed''' buffers an attack command during ''Razor Shuriken's'' cast time the attack will perform slower than if '''Zed''' had attacked after the cast time.\n** The same does not happen if '''Zed''' recasts {{ai|Living Shadow 2|Zed|Living Shadow}} during ''Razor Shuriken's'' cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Secondary Damage</span>: <span><SpellSpan :list=\"[48,69,90,111,132]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1
-              },
-              {
-                "player_bonus_ad": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
-                "Secondary Damage",
-                "<SpellSpan :list=\"[48,69,90,111,132]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                80,
-                115,
-                150,
-                185,
-                220
-              ],
-              [
-                48,
-                69,
-                90,
-                111,
-                132
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  80,
-                  115,
-                  150,
-                  185,
-                  220
-                ],
-                "player_bonus_ad": 0.6
               }
             }
           ]

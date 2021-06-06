@@ -78,6 +78,144 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "RellQ",
+      "name": "Shattering Strike",
+      "maxrank": 5,
+      "cooldown": [
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "cost": 50,
+      "costtype": "mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "RellQ.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 384,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Rell''' thrusts her lance in the target direction, completely destroying damage-mitigating {{tip|shield|shields}} of enemies hit before dealing them {{as|magic damage}}, reduced to 50% against enemies beyond the first. The first enemy hit is also afflicted with {{ai|Break the Mold|Rell}}.",
+        "If '''Rell''' is tethered with {{ai|Attract and Repel|Rell}}, she and the bound ally {{tip|heal}} for each enemy champion hit."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rell</b> thrusts her lance in the target direction, completely destroying damage-mitigating <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> of enemies hit before dealing them <span class=\"magic-damage\">magic damage</span>, reduced to 50% against enemies beyond the first. The first enemy hit is also afflicted with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Break the Mold<template #content>Break the Mold</template></HtmlTooltip>.<br />If <b>Rell</b> is tethered with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Attract and Repel<template #content>Attract and Repel</template></HtmlTooltip>, she and the bound ally <HtmlTooltip class=\"blue link\">heal<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for each enemy champion hit.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}|Secondary Damage|{{ap|70*0.5 to 210*0.5}} {{as|(+ 25% AP)}}}}",
+        "{{st|Heal Per Champion|{{ap|10 to 30}} {{as|(+ 30% AP)}} {{as|(+ 5% of '''missing''' health)}}}}"
+      ],
+      "notes": "* ''Shattering Strike'' will cast from wherever '''Rell''' is at the end of the cast time.\n* '''Rell''' is {{tip|lockout|locked out}} of moving, attacking, and casting any other ability except {{ai|Attract and Repel|Rell}} for {{fd|0.35}} seconds after ''Shattering Strike'' is cast.\n** Casting {{ai|Attract and Repel|Rell}} will cancel ''Shattering Strike''. The ability will not go on cooldown but will still expend {{as|mana}}.{{bug|2}}\n* ''Shattering Strike'', while binded to an ally, will grant the {{tip|heal}} from hitting {{tip|clone|clones}} as well.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Secondary Damage</span>: <span><SpellSpan :list=\"[35,52.5,70,87.5,105]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 0.25
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+                "Secondary Damage",
+                "<SpellSpan :list=\"[35,52.5,70,87.5,105]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                105,
+                140,
+                175,
+                210
+              ],
+              [
+                35,
+                52.5,
+                70,
+                87.5,
+                105
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  105,
+                  140,
+                  175,
+                  210
+                ],
+                "player_total_ap": 0.25
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal Per Champion</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 5% of <b>missing</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_missing_hp": 0.05
+              }
+            ],
+            "st_slices": [
+              [
+                "Heal Per Champion",
+                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 5% of '''missing''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Heal Per Champion",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ],
+                "player_total_ap": 0.3,
+                "player_missing_hp": 0.05
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "RellW_Dismount",
       "name": "Ferromancy: Crash Down",
@@ -148,6 +286,164 @@
                   210
                 ],
                 "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w2": {
+      "riotId": "RellW_Dismount",
+      "name": "Ferromancy: Mount Up",
+      "maxrank": 5,
+      "cooldown": 13,
+      "cost": 0,
+      "targeting": "Auto",
+      "target_range": "",
+      "image": {
+        "full": "RellW_Dismount.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} While dismounted, '''Rell''' gains {{sti|{{as|10% '''bonus''' armor}}}} and {{sti|{{as|10% '''bonus''' magic resistance}}}} and a {{tip|shield}} that lasts until destroyed or casting {{ai|Ferromancy: Mount Up|Rell}}, but her {{as|'''base''' movement speed}} is modified to {{as|250|ms}}.",
+        "{{sbc|Active:}} '''Rell''' transforms her armor into a mount, gaining {{as|15% '''bonus''' movement speed}} for {{fd|3.5}} seconds, increased to an amount when moving towards enemy champions.",
+        "Additionally, '''Rell's''' next basic attack during this time gains {{sti|100 '''bonus''' attack range}} and consumes the effect to have a {{fd|0.2}}-second cast time during which she {{tip|dash|charges}} at the target's location, at end of the dash or upon premature collision dealing them {{as|'''bonus''' magic damage}}, {{tip|stun|stunning}} them for 1 second, and {{tip|airborne|flinging}} them 150 units over herself.",
+        "''Ferromancy: Mount Up'' {{tip|basic attack reset|resets}} '''Rell's''' basic attack timer.",
+        "While mounted, she gains the ability to cast {{ai|Ferromancy: Crash Down|Rell}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> While dismounted, <b>Rell</b> gains <span><span class=\"armor\">10% <b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\">10% <b>bonus</b> magic resistance</span></span> and a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> that lasts until destroyed or casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Ferromancy: Mount Up<template #content>Ferromancy: Mount Up</template></HtmlTooltip>, but her <span class=\"movement-speed\"><b>base</b> movement speed</span> is modified to <span class=\"ms\">250</span>.<br /><span class=\"sbc\">Active:</span> <b>Rell</b> transforms her armor into a mount, gaining <span class=\"movement-speed\">15% <b>bonus</b> movement speed</span> for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds, increased to an amount when moving towards enemy champions.<br />Additionally, <b>Rell's</b> next basic attack during this time gains <span>100 <b>bonus</b> attack range</span> and consumes the effect to have a <span style=\"font-variant-numeric: tabular-nums;\">0.2</span>-second cast time during which she <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> at the target's location, at end of the dash or upon premature collision dealing them <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for 1 second, and <HtmlTooltip class=\"blue link\">flinging<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them 150 units over herself.<br /><i>Ferromancy: Mount Up</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Rell's</b> basic attack timer.<br />While mounted, she gains the ability to cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Ferromancy: Crash Down<template #content>Ferromancy: Crash Down</template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Shield|{{ap|40 to 160}} {{as|(+ 13% of '''maximum''' health)}}}}",
+        "{{st|Increased Movement Speed|{{ap|25 to 45}}%}}",
+        "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 40% AP)}}}}"
+      ],
+      "notes": "* '''Rell''' will always respawn and start the game as mounted.\n* The basic attack reset is not considered one for {{ri|Hail of Blades}}.\n* '''Rell''' can use the empowered attack even while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* The {{tip|dash}} can be {{tip|knockdown|knocked down}} but the attack's effects will still be applied.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 40,40,40,40,40 as 40",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"health\">(+ 13% of <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_hp": 0.13
+              }
+            ],
+            "st_slices": [
+              [
+                "Shield",
+                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"health\">(+ 13% of '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                70,
+                100,
+                130,
+                160
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Shield",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  70,
+                  100,
+                  130,
+                  160
+                ],
+                "player_total_hp": 0.13
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Increased Movement Speed</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Increased Movement Speed",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                25,
+                30,
+                35,
+                40,
+                45
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Increased Movement Speed",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                25,
+                40,
+                55,
+                70
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  25,
+                  40,
+                  55,
+                  70
+                ],
+                "player_total_ap": 0.4
               }
             }
           ]
@@ -315,302 +611,6 @@
                   35
                 ],
                 "player_total_ap": 0.1375
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "RellQ",
-      "name": "Shattering Strike",
-      "maxrank": 5,
-      "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "cost": 50,
-      "costtype": "mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "RellQ.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 384,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Rell''' thrusts her lance in the target direction, completely destroying damage-mitigating {{tip|shield|shields}} of enemies hit before dealing them {{as|magic damage}}, reduced to 50% against enemies beyond the first. The first enemy hit is also afflicted with {{ai|Break the Mold|Rell}}.",
-        "If '''Rell''' is tethered with {{ai|Attract and Repel|Rell}}, she and the bound ally {{tip|heal}} for each enemy champion hit."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rell</b> thrusts her lance in the target direction, completely destroying damage-mitigating <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> of enemies hit before dealing them <span class=\"magic-damage\">magic damage</span>, reduced to 50% against enemies beyond the first. The first enemy hit is also afflicted with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Break the Mold<template #content>Break the Mold</template></HtmlTooltip>.<br />If <b>Rell</b> is tethered with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Attract and Repel<template #content>Attract and Repel</template></HtmlTooltip>, she and the bound ally <HtmlTooltip class=\"blue link\">heal<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for each enemy champion hit.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 50% AP)}}|Secondary Damage|{{ap|70*0.5 to 210*0.5}} {{as|(+ 25% AP)}}}}",
-        "{{st|Heal Per Champion|{{ap|10 to 30}} {{as|(+ 30% AP)}} {{as|(+ 5% of '''missing''' health)}}}}"
-      ],
-      "notes": "* ''Shattering Strike'' will cast from wherever '''Rell''' is at the end of the cast time.\n* '''Rell''' is {{tip|lockout|locked out}} of moving, attacking, and casting any other ability except {{ai|Attract and Repel|Rell}} for {{fd|0.35}} seconds after ''Shattering Strike'' is cast.\n** Casting {{ai|Attract and Repel|Rell}} will cancel ''Shattering Strike''. The ability will not go on cooldown but will still expend {{as|mana}}.{{bug|2}}\n* ''Shattering Strike'', while binded to an ally, will grant the {{tip|heal}} from hitting {{tip|clone|clones}} as well.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Secondary Damage</span>: <span><SpellSpan :list=\"[35,52.5,70,87.5,105]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              },
-              {
-                "player_total_ap": 0.25
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[70,105,140,175,210]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
-                "Secondary Damage",
-                "<SpellSpan :list=\"[35,52.5,70,87.5,105]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                70,
-                105,
-                140,
-                175,
-                210
-              ],
-              [
-                35,
-                52.5,
-                70,
-                87.5,
-                105
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  70,
-                  105,
-                  140,
-                  175,
-                  210
-                ],
-                "player_total_ap": 0.25
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal Per Champion</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 5% of <b>missing</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              },
-              {
-                "player_missing_hp": 0.05
-              }
-            ],
-            "st_slices": [
-              [
-                "Heal Per Champion",
-                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"health\">(+ 5% of '''missing''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                10,
-                15,
-                20,
-                25,
-                30
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Heal Per Champion",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  10,
-                  15,
-                  20,
-                  25,
-                  30
-                ],
-                "player_total_ap": 0.3,
-                "player_missing_hp": 0.05
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w2": {
-      "riotId": "RellW_Dismount",
-      "name": "Ferromancy: Mount Up",
-      "maxrank": 5,
-      "cooldown": 13,
-      "cost": 0,
-      "targeting": "Auto",
-      "target_range": "",
-      "image": {
-        "full": "RellW_Dismount.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 432,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} While dismounted, '''Rell''' gains {{sti|{{as|10% '''bonus''' armor}}}} and {{sti|{{as|10% '''bonus''' magic resistance}}}} and a {{tip|shield}} that lasts until destroyed or casting {{ai|Ferromancy: Mount Up|Rell}}, but her {{as|'''base''' movement speed}} is modified to {{as|250|ms}}.",
-        "{{sbc|Active:}} '''Rell''' transforms her armor into a mount, gaining {{as|15% '''bonus''' movement speed}} for {{fd|3.5}} seconds, increased to an amount when moving towards enemy champions.",
-        "Additionally, '''Rell's''' next basic attack during this time gains {{sti|100 '''bonus''' attack range}} and consumes the effect to have a {{fd|0.2}}-second cast time during which she {{tip|dash|charges}} at the target's location, at end of the dash or upon premature collision dealing them {{as|'''bonus''' magic damage}}, {{tip|stun|stunning}} them for 1 second, and {{tip|airborne|flinging}} them 150 units over herself.",
-        "''Ferromancy: Mount Up'' {{tip|basic attack reset|resets}} '''Rell's''' basic attack timer.",
-        "While mounted, she gains the ability to cast {{ai|Ferromancy: Crash Down|Rell}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> While dismounted, <b>Rell</b> gains <span><span class=\"armor\">10% <b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\">10% <b>bonus</b> magic resistance</span></span> and a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> that lasts until destroyed or casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Ferromancy: Mount Up<template #content>Ferromancy: Mount Up</template></HtmlTooltip>, but her <span class=\"movement-speed\"><b>base</b> movement speed</span> is modified to <span class=\"ms\">250</span>.<br /><span class=\"sbc\">Active:</span> <b>Rell</b> transforms her armor into a mount, gaining <span class=\"movement-speed\">15% <b>bonus</b> movement speed</span> for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds, increased to an amount when moving towards enemy champions.<br />Additionally, <b>Rell's</b> next basic attack during this time gains <span>100 <b>bonus</b> attack range</span> and consumes the effect to have a <span style=\"font-variant-numeric: tabular-nums;\">0.2</span>-second cast time during which she <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> at the target's location, at end of the dash or upon premature collision dealing them <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for 1 second, and <HtmlTooltip class=\"blue link\">flinging<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them 150 units over herself.<br /><i>Ferromancy: Mount Up</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Rell's</b> basic attack timer.<br />While mounted, she gains the ability to cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rell\">Ferromancy: Crash Down<template #content>Ferromancy: Crash Down</template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Shield|{{ap|40 to 160}} {{as|(+ 13% of '''maximum''' health)}}}}",
-        "{{st|Increased Movement Speed|{{ap|25 to 45}}%}}",
-        "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 40% AP)}}}}"
-      ],
-      "notes": "* '''Rell''' will always respawn and start the game as mounted.\n* The basic attack reset is not considered one for {{ri|Hail of Blades}}.\n* '''Rell''' can use the empowered attack even while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* The {{tip|dash}} can be {{tip|knockdown|knocked down}} but the attack's effects will still be applied.",
-      "skillkey": "W",
-      "skillid": "w2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 40,40,40,40,40 as 40",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"health\">(+ 13% of <b>maximum</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_hp": 0.13
-              }
-            ],
-            "st_slices": [
-              [
-                "Shield",
-                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"health\">(+ 13% of '''maximum''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                70,
-                100,
-                130,
-                160
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Shield",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  40,
-                  70,
-                  100,
-                  130,
-                  160
-                ],
-                "player_total_hp": 0.13
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Increased Movement Speed</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Increased Movement Speed",
-                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                25,
-                30,
-                35,
-                40,
-                45
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Increased Movement Speed",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage",
-                "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                10,
-                25,
-                40,
-                55,
-                70
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  10,
-                  25,
-                  40,
-                  55,
-                  70
-                ],
-                "player_total_ap": 0.4
               }
             }
           ]

@@ -73,6 +73,85 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "NamiQ",
+      "name": "Aqua Prison",
+      "maxrank": 5,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": 60,
+      "costtype": "mana",
+      "targeting": "Location",
+      "target_range": 875,
+      "image": {
+        "full": "NamiQ.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 288,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nami''' sends a bubble towards the target location that lands after 1 second, dealing {{as|magic damage}} to all enemies within the area and {{tip|sight|revealing}} and {{tip|suspension|suspending}} them for {{fd|1.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nami</b> sends a bubble towards the target location that lands after 1 second, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">suspending<template #content><div><h4>Suspension: Airborne Stun<hr></h4><p>Unit is Airborne and Stuned for the duration of the suspension. Unit isunable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\n    Interrupts all channeled and charged abilities<br>\n    Duration reduced by <b>Tenacity</b>.<br>\n    Resisted by Spell and Crowd Control Immunity.<br>\n    Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75|130|185|240|295}} {{as|(+ 50% AP)}}}}"
+      ],
+      "notes": "* ''Aqua Prison'' provides the status effect that allows {{ai|Last Breath|Yasuo}} to be cast.<ref>[http://www.reddit.com/r/leagueoflegends/comments/1s0gkx/were_the_yasuo_team_ama/cdsp1op Yasuo Reddit AMA]</ref>\n* An enemy unit with {{as|{{fd|185.14}} or less movement speed}} ({{as|325|ms}} affected by a {{fd|53.8}}% slow, due to the low-end movement speed soft cap) would find it impossible to escape ''Aqua Prison's'' area of effect.\n** As a result it might be necessary to have another source of {{tip|crowd control}} in order for ''Aqua Prison'' to land. A fully-ranked {{ai|Tidecaller's Blessing|Nami}} with {{as|376 AP}} would be able to {{tip|slow}} for the amount above.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                130,
+                185,
+                240,
+                295
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  75,
+                  130,
+                  185,
+                  240,
+                  295
+                ],
+                "player_total_ap": 0.5
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "NamiW",
       "name": "Ebb and Flow",
@@ -309,85 +388,6 @@
                   255
                 ],
                 "player_total_ap": 0.6
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "NamiQ",
-      "name": "Aqua Prison",
-      "maxrank": 5,
-      "cooldown": [
-        12,
-        11,
-        10,
-        9,
-        8
-      ],
-      "cost": 60,
-      "costtype": "mana",
-      "targeting": "Location",
-      "target_range": 875,
-      "image": {
-        "full": "NamiQ.png",
-        "sprite": "spell8.png",
-        "group": "spell",
-        "x": 288,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Nami''' sends a bubble towards the target location that lands after 1 second, dealing {{as|magic damage}} to all enemies within the area and {{tip|sight|revealing}} and {{tip|suspension|suspending}} them for {{fd|1.5}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nami</b> sends a bubble towards the target location that lands after 1 second, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">suspending<template #content><div><h4>Suspension: Airborne Stun<hr></h4><p>Unit is Airborne and Stuned for the duration of the suspension. Unit isunable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\n    Interrupts all channeled and charged abilities<br>\n    Duration reduced by <b>Tenacity</b>.<br>\n    Resisted by Spell and Crowd Control Immunity.<br>\n    Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75|130|185|240|295}} {{as|(+ 50% AP)}}}}"
-      ],
-      "notes": "* ''Aqua Prison'' provides the status effect that allows {{ai|Last Breath|Yasuo}} to be cast.<ref>[http://www.reddit.com/r/leagueoflegends/comments/1s0gkx/were_the_yasuo_team_ama/cdsp1op Yasuo Reddit AMA]</ref>\n* An enemy unit with {{as|{{fd|185.14}} or less movement speed}} ({{as|325|ms}} affected by a {{fd|53.8}}% slow, due to the low-end movement speed soft cap) would find it impossible to escape ''Aqua Prison's'' area of effect.\n** As a result it might be necessary to have another source of {{tip|crowd control}} in order for ''Aqua Prison'' to land. A fully-ranked {{ai|Tidecaller's Blessing|Nami}} with {{as|376 AP}} would be able to {{tip|slow}} for the amount above.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[75,130,185,240,295]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                75,
-                130,
-                185,
-                240,
-                295
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  75,
-                  130,
-                  185,
-                  240,
-                  295
-                ],
-                "player_total_ap": 0.5
               }
             }
           ]

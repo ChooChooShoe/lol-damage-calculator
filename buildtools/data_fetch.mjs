@@ -141,13 +141,13 @@ async function doMergeData(riotChampPromise, wikiaChamp) {
 
     model.skills = {};
 
-    const i = createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model).catch(err => { console.error(err) });
-    const q = createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
-    const w = createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
-    const e = createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
-    const r = createSkill('R', wikiaChamp.skill_r, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
+    //Done in order.
+    await createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model).catch(err => { console.error(err) });
+    await createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
+    await createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
+    await createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
+    await createSkill('R', wikiaChamp.skill_r, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
 
-    await Promise.all([i, q, w, e, r]);
     return model;
 }
 function buildChangesField(changes) {

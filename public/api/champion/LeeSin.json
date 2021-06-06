@@ -49,6 +49,339 @@
     "attackspeed": 0.651
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Flurry",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "LeeSinPassive.png",
+        "sprite": "passive2.png",
+        "group": "passive",
+        "x": 144,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Lee Sin's''' next 2 [[basic attack]]s within 3 seconds gain {{sti|attack speed|{{as|40% '''bonus''' attack speed}}}} and restore {{sti|{{as|energy}}}}.",
+        "The first attack restores {{as|{{pp|20 to 40 for 3|1 to 13}} energy}} and the second attack restores{{ft|half of that amount.|{{as|{{pp|10 to 20 for 3|1 to 13}} energy}}.}}"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Lee Sin's</b> next 2 <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 3 seconds gain <span><span class=\"attack-speed\">40% <b>bonus</b> attack speed</span></span> and restore <span><span class=\"energy\">energy</span></span>.<br />The first attack restores <span class=\"energy\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> energy</span> and the second attack restores<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;half of that amount.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"energy\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> energy</span>.&nbsp;」</span></label>",
+      "leveling": [],
+      "notes": "* ''Flurry'' will still restore energy even if the attacks are {{tip|block|blocked}} or missed while '''Lee Sin''' is {{tip|blind|blinded}}, but not {{tip|dodge|dodged}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "BlindMonkQOne",
+      "name": "Sonic Wave",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        8.667,
+        7.333,
+        6,
+        4.667,
+        0
+      ],
+      "cost": 50,
+      "costtype": "Energy",
+      "targeting": "Direction",
+      "target_range": "{{tip|cr|icononly = true}} 1200",
+      "image": {
+        "full": "BlindMonkQOne.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 288,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lee Sin''' fires a sonic blast in the target direction, dealing {{as|physical damage}} to the first enemy it hits and marking them for 3 seconds, during which they are {{tip|true sight|revealed}}.",
+        "While the target is marked, '''Lee Sin''' can cast {{ai|Resonating Strike|Lee Sin}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> fires a sonic blast in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to the first enemy it hits and marking them for 3 seconds, during which they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip>.<br />While the target is marked, <b>Lee Sin</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Resonating Strike<template #content>Resonating Strike</template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|55 to 155}} {{as|(+ 100% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Sonic Wave'' will cast from wherever '''Lee Sin''' is at the start of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|10 to 6}}|Starts on first cast}}' as '0/8.667/7.333/6/4.667/0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                80,
+                105,
+                130,
+                155
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  55,
+                  80,
+                  105,
+                  130,
+                  155
+                ],
+                "player_bonus_ad": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q2": {
+      "riotId": "BlindMonkQOne",
+      "name": "Resonating Strike",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 30,
+      "costtype": "Energy",
+      "targeting": "Auto",
+      "image": {
+        "full": "BlindMonkQOne.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 288,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the nearby enemy marked by {{ai|Sonic Wave|Lee Sin}}, consuming the mark upon arrival to deal them {{as|physical damage}}, increased by {{as|{{pp|key=%|type=target's '''missing''' health|0 to 100 for 11|0 to 100|key1=%|formula=1% per 1% of target's '''missing''' health}}|health}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the nearby enemy marked by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Sonic Wave<template #content>Sonic Wave</template></HtmlTooltip>, consuming the mark upon arrival to deal them <span class=\"physical-damage\">physical damage</span>, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span>.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|55 to 155}} {{as|(+ 100% '''bonus''' AD)}}|Maximum Damage|{{ap|55*2 to 155*2}} {{as|(+ 200% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* '''Lee Sin''' will track the target if they change locations.\n** He will dash to the target's previous location without consuming the mark if the target is too far away or moves beyond the maximum tracking distance (2000 units).\n* '''Lee Sin''' will attempt to place himself on top of the target upon arrival.\n** The damage dealt by ''Resonating Strike'' can be negated if the target {{tip|blink|blinks}}. Sometimes, '''Lee Sin''' will end the dash at their last location but appear on top of the target after a short delay.\n** Originally, '''Lee Sin''' would land 50 units in front of his target. Since there are no patch notes where this is noted to have changed, landing on top of his target may be a bug.\n* '''Lee Sin''' will continue dashing even if the target dies or becomes {{tip|untargetable}}, but he will not deal damage.\n* ''Resonating Strike'' cannot be cast without the marked target nearby.\n* If ''Resonating Strike'' interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).\n{{ct|attack=false|move=false|cast= [[File: Safeguard.png|20px|link=]] ''Safeguard'', [[File: Iron Will.png|20px|link=]] ''Iron Will'', and [[File: Cripple.png|20px|link=]] ''Cripple'' can be cast. [[File: Tempest.png|20px|link=]] ''Tempest'' and [[File: Dragon's Rage.png|20px|link=]] ''Dragon's Rage'' are disabled.|items=true,,,interrupts,interrupts, false,false,false,melee|consume=true|spells=true,interrupts, true, false|interrupts=death}}",
+      "skillkey": "Q",
+      "skillid": "q2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[110,160,210,260,310]\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "player_bonus_ad": 2
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
+                "Maximum Damage",
+                "<SpellSpan :list=\"[110,160,210,260,310]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                80,
+                105,
+                130,
+                155
+              ],
+              [
+                110,
+                160,
+                210,
+                260,
+                310
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  55,
+                  80,
+                  105,
+                  130,
+                  155
+                ],
+                "player_bonus_ad": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "BlindMonkWOne",
+      "name": "Safeguard",
+      "maxrank": 5,
+      "cooldown": [
+        12,
+        0
+      ],
+      "cost": 50,
+      "costtype": "Energy",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 700",
+      "image": {
+        "full": "BlindMonkWOne.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the target allied unit's location. If the ally is a {{tip|champion}}, both they and '''Lee Sin''' are granted a {{tip|shield}} for 2 seconds upon his arrival and ''Safeguard's'' {{sti|cooldown}} is halved. '''Lee Sin''' can [[self-targeted|self-cast]] ''Safeguard'' to shield himself.",
+        "If ''Safeguard'' is used, '''Lee Sin''' can cast {{ai|Iron Will|Lee Sin}} within the next 3 seconds at no delay."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target allied unit's location. If the ally is a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, both they and <b>Lee Sin</b> are granted a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> for 2 seconds upon his arrival and <i>Safeguard's</i> <span>cooldown</span> is halved. <b>Lee Sin</b> can <a class=\"effect link\" title=\"self-cast\">self-targeted</a> <i>Safeguard</i> to shield himself.<br />If <i>Safeguard</i> is used, <b>Lee Sin</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Iron Will<template #content>Iron Will</template></HtmlTooltip> within the next 3 seconds at no delay.",
+      "leveling": [
+        "{{st|Shield|{{ap|55 to 275}} {{as|(+ 80% AP)}}}}"
+      ],
+      "notes": "* '''Lee Sin''' cannot self-cast ''Safeguard'' even while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* ''Safeguard'' can be used on any targetable allied unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* If no unit is directly targeted, ''Safeguard'' will search for wards in a 100 radius to target.\n** This aids '''Lee Sin''' in performing the dash to a ward he just placed.<!--because-->\n* ''Safeguard'' will not grant its {{tip|shield}} if the dash is interrupted.\n** If the dash overrides or is overridden by {{ai|Resonating Strike|Lee Sin}}, he will grant the shield immediately rather than on arrival.\n* If ''Safeguard's'' dash interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|12|Starts on first cast}}' as '12/0' and riot's value '12,12,12,12,12' as '12'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Shield",
+                "<SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                110,
+                165,
+                220,
+                275
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Shield",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w2": {
+      "riotId": "BlindMonkWOne",
+      "name": "Iron Will",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 30,
+      "costtype": "Energy",
+      "targeting": "Auto",
+      "image": {
+        "full": "BlindMonkWOne.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lee Sin''' gains {{sti|'''bonus''' [[life steal]]}} and {{sti|'''bonus''' [[spell vamp]]}} for 4 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> gains <span><b>bonus</b> <a class=\"effect link\" title=\"life steal\">life steal</a></span> and <span><b>bonus</b> <a class=\"effect link\" title=\"spell vamp\">spell vamp</a></span> for 4 seconds.",
+      "leveling": [
+        "{{st|Bonus Drain|{{ap|10 to 30}}%}}"
+      ],
+      "notes": "* No additional details.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '12,12,12,12,12' as '12'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Drain</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Drain",
+                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                15,
+                20,
+                25,
+                30
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Drain",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  15,
+                  20,
+                  25,
+                  30
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "BlindMonkEOne",
       "name": "Tempest",
@@ -126,72 +459,62 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "BlindMonkWOne",
-      "name": "Safeguard",
+    "e2": {
+      "riotId": "BlindMonkEOne",
+      "name": "Cripple",
       "maxrank": 5,
-      "cooldown": [
-        12,
-        0
-      ],
-      "cost": 50,
-      "costtype": "Energy",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 700",
+      "cooldown": 0,
+      "cost": 30,
+      "costtype": "energy",
+      "targeting": "Auto",
       "image": {
-        "full": "BlindMonkWOne.png",
+        "full": "BlindMonkEOne.png",
         "sprite": "spell6.png",
         "group": "spell",
-        "x": 336,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the target allied unit's location. If the ally is a {{tip|champion}}, both they and '''Lee Sin''' are granted a {{tip|shield}} for 2 seconds upon his arrival and ''Safeguard's'' {{sti|cooldown}} is halved. '''Lee Sin''' can [[self-targeted|self-cast]] ''Safeguard'' to shield himself.",
-        "If ''Safeguard'' is used, '''Lee Sin''' can cast {{ai|Iron Will|Lee Sin}} within the next 3 seconds at no delay."
+        "{{sbc|Active:}} '''Lee Sin''' sends a wave at each nearby enemy marked by {{ai|Tempest|Lee Sin}}, which {{tip|slow|slows}} them for 4 seconds, decaying over the duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target allied unit's location. If the ally is a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, both they and <b>Lee Sin</b> are granted a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> for 2 seconds upon his arrival and <i>Safeguard's</i> <span>cooldown</span> is halved. <b>Lee Sin</b> can <a class=\"effect link\" title=\"self-cast\">self-targeted</a> <i>Safeguard</i> to shield himself.<br />If <i>Safeguard</i> is used, <b>Lee Sin</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Iron Will<template #content>Iron Will</template></HtmlTooltip> within the next 3 seconds at no delay.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> sends a wave at each nearby enemy marked by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Tempest<template #content>Tempest</template></HtmlTooltip>, which <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 4 seconds, decaying over the duration.",
       "leveling": [
-        "{{st|Shield|{{ap|55 to 275}} {{as|(+ 80% AP)}}}}"
+        "{{st|Slow|{{ap|20 to 60}}%}}"
       ],
-      "notes": "* '''Lee Sin''' cannot self-cast ''Safeguard'' even while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* ''Safeguard'' can be used on any targetable allied unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* If no unit is directly targeted, ''Safeguard'' will search for wards in a 100 radius to target.\n** This aids '''Lee Sin''' in performing the dash to a ward he just placed.<!--because-->\n* ''Safeguard'' will not grant its {{tip|shield}} if the dash is interrupted.\n** If the dash overrides or is overridden by {{ai|Resonating Strike|Lee Sin}}, he will grant the shield immediately rather than on arrival.\n* If ''Safeguard's'' dash interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|12|Starts on first cast}}' as '12/0' and riot's value '12,12,12,12,12' as '12'",
+      "notes": "* ''Tempest's'' reveal is not removed when '''Lee Sin''' casts ''Cripple''.\n* ''Cripple'' cannot be cast without a marked target within 550 range.\n* The missiles '''Lee Sin''' sends out are nowadays missing their visual effects.{{bug}}",
+      "skillkey": "E",
+      "skillid": "e2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '9,9,9,9,9' as '9'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield</span>: <span><SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.8
-              }
-            ],
+            "as_ratios": [],
             "st_slices": [
               [
-                "Shield",
-                "<SpellSpan :list=\"[55,110,165,220,275]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+                "Slow",
+                "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%"
               ]
             ],
             "ap_progressions": [
               [
-                55,
-                110,
-                165,
-                220,
-                275
+                20,
+                30,
+                40,
+                50,
+                60
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Shield",
+              "title": "Slow",
               "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.8
-              }
+              "ratios": {}
             }
           ]
         }
@@ -316,329 +639,6 @@
                   0.15,
                   0.18
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "BlindMonkQOne",
-      "name": "Sonic Wave",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        8.667,
-        7.333,
-        6,
-        4.667,
-        0
-      ],
-      "cost": 50,
-      "costtype": "Energy",
-      "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 1200",
-      "image": {
-        "full": "BlindMonkQOne.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 288,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lee Sin''' fires a sonic blast in the target direction, dealing {{as|physical damage}} to the first enemy it hits and marking them for 3 seconds, during which they are {{tip|true sight|revealed}}.",
-        "While the target is marked, '''Lee Sin''' can cast {{ai|Resonating Strike|Lee Sin}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> fires a sonic blast in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to the first enemy it hits and marking them for 3 seconds, during which they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip>.<br />While the target is marked, <b>Lee Sin</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Resonating Strike<template #content>Resonating Strike</template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55 to 155}} {{as|(+ 100% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* ''Sonic Wave'' will cast from wherever '''Lee Sin''' is at the start of the cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|10 to 6}}|Starts on first cast}}' as '0/8.667/7.333/6/4.667/0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                55,
-                80,
-                105,
-                130,
-                155
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  55,
-                  80,
-                  105,
-                  130,
-                  155
-                ],
-                "player_bonus_ad": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Flurry",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "LeeSinPassive.png",
-        "sprite": "passive2.png",
-        "group": "passive",
-        "x": 144,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Lee Sin's''' next 2 [[basic attack]]s within 3 seconds gain {{sti|attack speed|{{as|40% '''bonus''' attack speed}}}} and restore {{sti|{{as|energy}}}}.",
-        "The first attack restores {{as|{{pp|20 to 40 for 3|1 to 13}} energy}} and the second attack restores{{ft|half of that amount.|{{as|{{pp|10 to 20 for 3|1 to 13}} energy}}.}}"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Lee Sin's</b> next 2 <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 3 seconds gain <span><span class=\"attack-speed\">40% <b>bonus</b> attack speed</span></span> and restore <span><span class=\"energy\">energy</span></span>.<br />The first attack restores <span class=\"energy\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> energy</span> and the second attack restores<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;half of that amount.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"energy\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> energy</span>.&nbsp;」</span></label>",
-      "leveling": [],
-      "notes": "* ''Flurry'' will still restore energy even if the attacks are {{tip|block|blocked}} or missed while '''Lee Sin''' is {{tip|blind|blinded}}, but not {{tip|dodge|dodged}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "e2": {
-      "riotId": "BlindMonkEOne",
-      "name": "Cripple",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 30,
-      "costtype": "energy",
-      "targeting": "Auto",
-      "image": {
-        "full": "BlindMonkEOne.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 384,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lee Sin''' sends a wave at each nearby enemy marked by {{ai|Tempest|Lee Sin}}, which {{tip|slow|slows}} them for 4 seconds, decaying over the duration."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> sends a wave at each nearby enemy marked by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Tempest<template #content>Tempest</template></HtmlTooltip>, which <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 4 seconds, decaying over the duration.",
-      "leveling": [
-        "{{st|Slow|{{ap|20 to 60}}%}}"
-      ],
-      "notes": "* ''Tempest's'' reveal is not removed when '''Lee Sin''' casts ''Cripple''.\n* ''Cripple'' cannot be cast without a marked target within 550 range.\n* The missiles '''Lee Sin''' sends out are nowadays missing their visual effects.{{bug}}",
-      "skillkey": "E",
-      "skillid": "e2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '9,9,9,9,9' as '9'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Slow",
-                "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                20,
-                30,
-                40,
-                50,
-                60
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Slow",
-              "damage_type": "none",
-              "ratios": {}
-            }
-          ]
-        }
-      ]
-    },
-    "w2": {
-      "riotId": "BlindMonkWOne",
-      "name": "Iron Will",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 30,
-      "costtype": "Energy",
-      "targeting": "Auto",
-      "image": {
-        "full": "BlindMonkWOne.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 336,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lee Sin''' gains {{sti|'''bonus''' [[life steal]]}} and {{sti|'''bonus''' [[spell vamp]]}} for 4 seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> gains <span><b>bonus</b> <a class=\"effect link\" title=\"life steal\">life steal</a></span> and <span><b>bonus</b> <a class=\"effect link\" title=\"spell vamp\">spell vamp</a></span> for 4 seconds.",
-      "leveling": [
-        "{{st|Bonus Drain|{{ap|10 to 30}}%}}"
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "W",
-      "skillid": "w2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '12,12,12,12,12' as '12'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Drain</span>: <span><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Bonus Drain",
-                "<SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                10,
-                15,
-                20,
-                25,
-                30
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Drain",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  10,
-                  15,
-                  20,
-                  25,
-                  30
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q2": {
-      "riotId": "BlindMonkQOne",
-      "name": "Resonating Strike",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 30,
-      "costtype": "Energy",
-      "targeting": "Auto",
-      "image": {
-        "full": "BlindMonkQOne.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 288,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lee Sin''' {{tip|dashes}} to the nearby enemy marked by {{ai|Sonic Wave|Lee Sin}}, consuming the mark upon arrival to deal them {{as|physical damage}}, increased by {{as|{{pp|key=%|type=target's '''missing''' health|0 to 100 for 11|0 to 100|key1=%|formula=1% per 1% of target's '''missing''' health}}|health}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lee Sin</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the nearby enemy marked by <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lee Sin\">Sonic Wave<template #content>Sonic Wave</template></HtmlTooltip>, consuming the mark upon arrival to deal them <span class=\"physical-damage\">physical damage</span>, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span>.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|55 to 155}} {{as|(+ 100% '''bonus''' AD)}}|Maximum Damage|{{ap|55*2 to 155*2}} {{as|(+ 200% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* '''Lee Sin''' will track the target if they change locations.\n** He will dash to the target's previous location without consuming the mark if the target is too far away or moves beyond the maximum tracking distance (2000 units).\n* '''Lee Sin''' will attempt to place himself on top of the target upon arrival.\n** The damage dealt by ''Resonating Strike'' can be negated if the target {{tip|blink|blinks}}. Sometimes, '''Lee Sin''' will end the dash at their last location but appear on top of the target after a short delay.\n** Originally, '''Lee Sin''' would land 50 units in front of his target. Since there are no patch notes where this is noted to have changed, landing on top of his target may be a bug.\n* '''Lee Sin''' will continue dashing even if the target dies or becomes {{tip|untargetable}}, but he will not deal damage.\n* ''Resonating Strike'' cannot be cast without the marked target nearby.\n* If ''Resonating Strike'' interrupts another dash, {{ai|Tempest|Lee Sin}} and {{ai|Dragon's Rage|Lee Sin}} can be cast during it (both otherwise cannot be cast).\n{{ct|attack=false|move=false|cast= [[File: Safeguard.png|20px|link=]] ''Safeguard'', [[File: Iron Will.png|20px|link=]] ''Iron Will'', and [[File: Cripple.png|20px|link=]] ''Cripple'' can be cast. [[File: Tempest.png|20px|link=]] ''Tempest'' and [[File: Dragon's Rage.png|20px|link=]] ''Dragon's Rage'' are disabled.|items=true,,,interrupts,interrupts, false,false,false,melee|consume=true|spells=true,interrupts, true, false|interrupts=death}}",
-      "skillkey": "Q",
-      "skillid": "q2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  30 as 30 and riot's value 50,50,50,50,50 as 50",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><SpellSpan :list=\"[110,160,210,260,310]\"></SpellSpan> <span class=\"ad\">(+ 200% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1
-              },
-              {
-                "player_bonus_ad": 2
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[55,80,105,130,155]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>",
-                "Maximum Damage",
-                "<SpellSpan :list=\"[110,160,210,260,310]\"></SpellSpan> <span class=\"ad\">(+ 200% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                55,
-                80,
-                105,
-                130,
-                155
-              ],
-              [
-                110,
-                160,
-                210,
-                260,
-                310
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  55,
-                  80,
-                  105,
-                  130,
-                  155
-                ],
-                "player_bonus_ad": 2
               }
             }
           ]

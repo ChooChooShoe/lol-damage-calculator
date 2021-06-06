@@ -49,88 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "r1": {
-      "riotId": "GarenR",
-      "name": "Demacian Justice",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        100,
-        80
-      ],
-      "cost": 0,
-      "targeting": "Unit",
-      "target_range": 400,
-      "image": {
-        "full": "GarenR.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 432,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Garen''' calls upon the might of ''Demacia'' onto the target enemy {{tip|champion}}, dealing them {{sti|{{as|true damage}}}}.",
-        "The target is {{tip|true sight|revealed}} for 1 second starting from the beginning of the cast time."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Garen</b> calls upon the might of <i>Demacia</i> onto the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, dealing them <span><span class=\"true-damage\">true damage</span></span>.<br />The target is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for 1 second starting from the beginning of the cast time.",
-      "leveling": [
-        "{{st|True Damage|{{ap|150 to 450}} {{as|(+ {{ap|20 to 30}}% of target's '''missing''' health)}}}}"
-      ],
-      "notes": "* ''Demacian Justice'' is cancelled and does not go on {{sti|cooldown}} under the following circumstances:\n** The target becomes {{tip|untargetable}}.\n** The target leaves {{tip|sight}} [[range]] while '''Garen''' is {{tip|nearsight|nearsighted}}.\n** The target is too far away.\n** The target dies.\n* The target will die if they're at least under {{as|{{ap|(20 to 30)/(1+(20 to 30)/100)|round=2}}% '''maximum''' health}} + {{as|{{ap|(150 to 450)/(1+(20 to 30)/100)|round=2}} '''flat''' health}} on top of that. This does not count effects that mitigate [[true damage]], such as {{tip|shield|shields}}.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "target_missing_hp": [
-                  0.2,
-                  0.25,
-                  0.3
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "True Damage",
-                "<SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                150,
-                300,
-                450
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "True Damage",
-              "damage_type": "true",
-              "ratios": {
-                "base_damage": [
-                  150,
-                  300,
-                  450
-                ],
-                "target_missing_hp": [
-                  0.2,
-                  0.25,
-                  0.3
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Perseverance",
@@ -155,6 +73,121 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "q1": {
+      "riotId": "GarenQ",
+      "name": "Decisive Strike",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "GarenQ.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 288,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Garen''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for a few seconds.",
+        "Additionally, '''Garen's''' next [[basic attack]] within {{fd|4.5}} seconds has an {{tip|uncancelable windup}}, {{tip|lunge|lunges}} at the target, deals {{as|'''bonus''' physical damage}}, and {{tip|silence|silences}} the target for {{fd|1.5}} seconds.",
+        "''Decisive Strike'' {{tip|basic attack reset|resets}} '''Garen's''' basic attack timer."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Garen</b> <HtmlTooltip class=\"blue link\">cleanses<template #content><div><h4>cleanse<hr></h4><p>Description for keyword cleanse</p></div></template></HtmlTooltip> himself of all <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and gains <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> for a few seconds.<br />Additionally, <b>Garen's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within <span style=\"font-variant-numeric: tabular-nums;\">4.5</span> seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">lunges<template #content><div><h4>lunge<hr></h4><p>Description for keyword lunge</p></div></template></HtmlTooltip> at the target, deals <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, and <HtmlTooltip class=\"blue link\">silences<template #content><div><h4>Slence<hr></h4><p>Cannot cast abilities, activate items, or use summoner <b>Flash</b> and <b>Teleport</b>.<br><br>Interrupts channeled and charged abilities. (Except: Lucian's The Culling)<br>Duration reduced by <b>Tenacity</b></p></div></template></HtmlTooltip> the target for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><i>Decisive Strike</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Garen's</b> basic attack timer.",
+      "leveling": [
+        "{{st|Movement Speed Duration|{{ap|1 to 3.6}}}}",
+        "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ 50% AD)}}}}"
+      ],
+      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage does not).\n** The bonus damage will also apply {{sti|life steal}}.\n** The bonus damage is applied to [[structures]].\n* ''Decisive Strike'' locks '''Garen''' out of using basic attacks for a short period of time. This is shortened with {{stil|attack speed}}.\n* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.\n* ''Decisive Strike'' will not prevent the reapplication of {{tip|slow|slows}} (e.g. the persistent slow from {{ai|Pillar of Ice|Trundle}} will be immediately reapplied after removal if '''Garen''' is still within its [[area of effect]]).\n* {{tip|Spell shield}} will only negate the {{tip|silence}}.\n* ''Decisive Strike's'' {{tip|lunge}} can pass very thin terrain and will otherwise not be able to. In any case, '''Garen''' will still hit his target.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|8|Starts post-effect}}' as '8/0' and riot's value '8,8,8,8,8' as '8'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Movement Speed Duration</span>: <span><SpellSpan :list=\"[1,1.65,2.3,2.95,3.6]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Movement Speed Duration",
+                "<SpellSpan :list=\"[1,1.65,2.3,2.95,3.6]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                1,
+                1.65,
+                2.3,
+                2.95,
+                3.6
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Movement Speed Duration",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  1,
+                  1.65,
+                  2.3,
+                  2.95,
+                  3.6
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Physical Damage",
+                "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                60,
+                90,
+                120,
+                150
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  60,
+                  90,
+                  120,
+                  150
+                ],
+                "player_total_ad": 0.5
+              }
+            }
+          ]
+        }
+      ]
     },
     "w1": {
       "riotId": "GarenW",
@@ -410,115 +443,82 @@
         }
       ]
     },
-    "q1": {
-      "riotId": "GarenQ",
-      "name": "Decisive Strike",
-      "maxrank": 5,
+    "r1": {
+      "riotId": "GarenR",
+      "name": "Demacian Justice",
+      "maxrank": 3,
       "cooldown": [
-        8,
-        0
+        120,
+        100,
+        80
       ],
       "cost": 0,
-      "targeting": "Auto",
+      "targeting": "Unit",
+      "target_range": 400,
       "image": {
-        "full": "GarenQ.png",
+        "full": "GarenR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 288,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Garen''' {{tip|cleanse|cleanses}} himself of all {{tip|slow|slows}} and gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for a few seconds.",
-        "Additionally, '''Garen's''' next [[basic attack]] within {{fd|4.5}} seconds has an {{tip|uncancelable windup}}, {{tip|lunge|lunges}} at the target, deals {{as|'''bonus''' physical damage}}, and {{tip|silence|silences}} the target for {{fd|1.5}} seconds.",
-        "''Decisive Strike'' {{tip|basic attack reset|resets}} '''Garen's''' basic attack timer."
+        "{{sbc|Active:}} '''Garen''' calls upon the might of ''Demacia'' onto the target enemy {{tip|champion}}, dealing them {{sti|{{as|true damage}}}}.",
+        "The target is {{tip|true sight|revealed}} for 1 second starting from the beginning of the cast time."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Garen</b> <HtmlTooltip class=\"blue link\">cleanses<template #content><div><h4>cleanse<hr></h4><p>Description for keyword cleanse</p></div></template></HtmlTooltip> himself of all <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and gains <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> for a few seconds.<br />Additionally, <b>Garen's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within <span style=\"font-variant-numeric: tabular-nums;\">4.5</span> seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">lunges<template #content><div><h4>lunge<hr></h4><p>Description for keyword lunge</p></div></template></HtmlTooltip> at the target, deals <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, and <HtmlTooltip class=\"blue link\">silences<template #content><div><h4>Slence<hr></h4><p>Cannot cast abilities, activate items, or use summoner <b>Flash</b> and <b>Teleport</b>.<br><br>Interrupts channeled and charged abilities. (Except: Lucian's The Culling)<br>Duration reduced by <b>Tenacity</b></p></div></template></HtmlTooltip> the target for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><i>Decisive Strike</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Garen's</b> basic attack timer.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Garen</b> calls upon the might of <i>Demacia</i> onto the target enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, dealing them <span><span class=\"true-damage\">true damage</span></span>.<br />The target is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for 1 second starting from the beginning of the cast time.",
       "leveling": [
-        "{{st|Movement Speed Duration|{{ap|1 to 3.6}}}}",
-        "{{st|Bonus Physical Damage|{{ap|30 to 150}} {{as|(+ 50% AD)}}}}"
+        "{{st|True Damage|{{ap|150 to 450}} {{as|(+ {{ap|20 to 30}}% of target's '''missing''' health)}}}}"
       ],
-      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage does not).\n** The bonus damage will also apply {{sti|life steal}}.\n** The bonus damage is applied to [[structures]].\n* ''Decisive Strike'' locks '''Garen''' out of using basic attacks for a short period of time. This is shortened with {{stil|attack speed}}.\n* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.\n* ''Decisive Strike'' will not prevent the reapplication of {{tip|slow|slows}} (e.g. the persistent slow from {{ai|Pillar of Ice|Trundle}} will be immediately reapplied after removal if '''Garen''' is still within its [[area of effect]]).\n* {{tip|Spell shield}} will only negate the {{tip|silence}}.\n* ''Decisive Strike's'' {{tip|lunge}} can pass very thin terrain and will otherwise not be able to. In any case, '''Garen''' will still hit his target.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|8|Starts post-effect}}' as '8/0' and riot's value '8,8,8,8,8' as '8'",
+      "notes": "* ''Demacian Justice'' is cancelled and does not go on {{sti|cooldown}} under the following circumstances:\n** The target becomes {{tip|untargetable}}.\n** The target leaves {{tip|sight}} [[range]] while '''Garen''' is {{tip|nearsight|nearsighted}}.\n** The target is too far away.\n** The target dies.\n* The target will die if they're at least under {{as|{{ap|(20 to 30)/(1+(20 to 30)/100)|round=2}}% '''maximum''' health}} + {{as|{{ap|(150 to 450)/(1+(20 to 30)/100)|round=2}} '''flat''' health}} on top of that. This does not count effects that mitigate [[true damage]], such as {{tip|shield|shields}}.",
+      "skillkey": "R",
+      "skillid": "r1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Movement Speed Duration</span>: <span><SpellSpan :list=\"[1,1.65,2.3,2.95,3.6]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Movement Speed Duration",
-                "<SpellSpan :list=\"[1,1.65,2.3,2.95,3.6]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                1,
-                1.65,
-                2.3,
-                2.95,
-                3.6
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Movement Speed Duration",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  1,
-                  1.65,
-                  2.3,
-                  2.95,
-                  3.6
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's <b>missing</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ad": 0.5
+                "target_missing_hp": [
+                  0.2,
+                  0.25,
+                  0.3
+                ]
               }
             ],
             "st_slices": [
               [
-                "Bonus Physical Damage",
-                "<SpellSpan :list=\"[30,60,90,120,150]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>"
+                "True Damage",
+                "<SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[20,25,30]\"></SpellSpan>% of target's '''missing''' health)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                30,
-                60,
-                90,
-                120,
-                150
-              ]
+                150,
+                300,
+                450
+              ],
+              null
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Bonus Physical Damage",
-              "damage_type": "physical",
+              "title": "True Damage",
+              "damage_type": "true",
               "ratios": {
                 "base_damage": [
-                  30,
-                  60,
-                  90,
-                  120,
-                  150
+                  150,
+                  300,
+                  450
                 ],
-                "player_total_ad": 0.5
+                "target_missing_hp": [
+                  0.2,
+                  0.25,
+                  0.3
+                ]
               }
             }
           ]

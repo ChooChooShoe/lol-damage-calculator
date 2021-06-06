@@ -73,266 +73,6 @@
       "skillid": "i1",
       "effects": []
     },
-    "e1": {
-      "riotId": "VarusE",
-      "name": "Hail of Arrows",
-      "maxrank": 5,
-      "cooldown": [
-        18,
-        16,
-        14,
-        12,
-        10
-      ],
-      "cost": 80,
-      "costtype": "mana",
-      "targeting": "Location",
-      "target_range": 925,
-      "image": {
-        "full": "VarusE.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 192,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Varus''' fires a hail of arrows at the target location which lands after {{fd|0.5}} seconds, dealing {{as|physical damage}} to all enemies within the area.",
-        "The area then becomes desecrated for 4 seconds, {{tip|slow|slowing}} all enemies within and inflicting them with 40% {{tip|Grievous Wounds}}.",
-        "''Hail of Arrows will cast at max range if cast beyond that.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> fires a hail of arrows at the target location which lands after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, dealing <span class=\"physical-damage\">physical damage</span> to all enemies within the area.<br />The area then becomes desecrated for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within and inflicting them with 40% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip>.<br /><i>Hail of Arrows will cast at max range if cast beyond that.</i>",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|60 to 220}} {{as|(+ 60% '''bonus''' AD)}}}}",
-        "{{st|Slow|{{ap|25 to 45}}%}}"
-      ],
-      "notes": "* {{tip|Slow}} lingers for {{fd|0.25}} seconds after leaving the marked area.\n* ''Hail of Arrows'' consumes {{ai|Blighted Quiver|Varus}} stacks for bonus damage a second time after ~{{fd|0.3}} seconds of hitting, allowing stacks applied during this time to be triggered.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                100,
-                140,
-                180,
-                220
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  100,
-                  140,
-                  180,
-                  220
-                ],
-                "player_bonus_ad": 0.6
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Slow",
-                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                25,
-                30,
-                35,
-                40,
-                45
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Slow",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "VarusW",
-      "name": "Blighted Quiver",
-      "maxrank": 5,
-      "cooldown": [
-        40,
-        0
-      ],
-      "cost": 0,
-      "targeting": "Auto",
-      "image": {
-        "full": "VarusW.png",
-        "sprite": "spell13.png",
-        "group": "spell",
-        "x": 144,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Varus'''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and apply a [[stack]] of ''Blight'' for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.",
-        "'''Varus' ''' other abilities consume stacks of ''Blight'' on enemies upon damaging them to deal {{as|'''bonus''' magic damage}} and, if they are a {{tip|champion}} or epic {{tip|monster}}, reduce his basic abilities' cooldowns by 12% of the '''maximum''' cooldown for each stack on the target, up to 36% per target. The '''bonus''' damage is capped at 360 against monsters.",
-        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} within {{fd|5.5}} seconds deals {{as|{{pp|key=%|changedisplay=true|6 to 14 for 5|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{pp|type=Piercing Arrow's channel time|key=%|0 to 80 for 11|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{pp|key=%|changedisplay=true|6*1.8 to 14*1.8 for 5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' can be recast after 1 second for its duration, and does so automatically when its duration ends or '''Varus''' dies within the duration.",
-        "''Blighted Quiver'' can be cast during the first {{fd|0.25}} seconds of {{ais|Piercing Arrow|Varus}} charge. ''Blighted Quiver'' is placed on full cooldown even if the charge completes without reactivation or is {{tip|interrupt|interrupted}}.",
-        "{{sbc|Recast:}} '''Varus''' cancels ''Blighted Quiver'' and places it on a 1 second {{sti|cooldown}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Varus</b>' <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Blight</i> for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.<br /><b>Varus' </b> other abilities consume stacks of <i>Blight</i> on enemies upon damaging them to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and, if they are a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, reduce his basic abilities' cooldowns by 12% of the <b>maximum</b> cooldown for each stack on the target, up to 36% per target. The <b>bonus</b> damage is capped at 360 against monsters.<br /><span class=\"sbc\">Active:</span> <b>Varus</b>' next <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip> within <span style=\"font-variant-numeric: tabular-nums;\">5.5</span> seconds deals <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, increased by <span class=\"title-tooltip\" title=\"\">0 to 2 ‒ undefined</span>, for a maximum of <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span>. This damage is capped at 360 against monsters. If <b>Varus</b> is not charging <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip>, <i>Blighted Quiver</i> can be recast after 1 second for its duration, and does so automatically when its duration ends or <b>Varus</b> dies within the duration.<br /><i>Blighted Quiver</i> can be cast during the first <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow's<template #content>Piercing Arrow</template></HtmlTooltip> charge. <i>Blighted Quiver</i> is placed on full cooldown even if the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> cancels <i>Blighted Quiver</i> and places it on a 1 second <span>cooldown</span>.",
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|7 to 11}} {{as|(+ 25% AP)}}}}",
-        "{{st|Bonus Magic Damage per Stack|{{as|{{ap|3 to 5}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health|health)}}|Maximum Bonus Magic Damage|{{as|{{ap|9 to 15}}% {{as|(+ 6% per 100 AP)}} of the target's '''maximum''' health|health)}}}}"
-      ],
-      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|40|Starts after the effect is used with Piercing Arrow}}' as '40/0' and riot's value '40,40,40,40,40' as '40'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[7,8,9,10,11]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.25
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage",
-                "<SpellSpan :list=\"[7,8,9,10,11]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                7,
-                8,
-                9,
-                10,
-                11
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  7,
-                  8,
-                  9,
-                  10,
-                  11
-                ],
-                "player_total_ap": 0.25
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage per Stack</span>: <span><span class=\"health)\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Bonus Magic Damage</span>: <span><span class=\"health)\"><SpellSpan :list=\"[9,10.5,12,13.5,15]\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 21
-              },
-              {
-                "player_total_ap": 61
-              },
-              {
-                "target_total_ap": [
-                  0.09,
-                  0.105,
-                  0.12,
-                  0.135,
-                  0.15
-                ]
-              },
-              {
-                "target_total_ap": []
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage per Stack",
-                "<span class=\"health)\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's '''maximum''' health</span>",
-                "Maximum Bonus Magic Damage",
-                "<span class=\"health)\"><SpellSpan :list=\"[9,10.5,12,13.5,15]\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                3,
-                3.5,
-                4,
-                4.5,
-                5
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage per Stack",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  3,
-                  3.5,
-                  4,
-                  4.5,
-                  5
-                ],
-                "player_total_ap": 61,
-                "target_total_ap": []
-              }
-            }
-          ]
-        }
-      ]
-    },
     "q1": {
       "riotId": "VarusQ",
       "name": "Piercing Arrow",
@@ -496,6 +236,266 @@
                   96.67
                 ],
                 "player_total_ad": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "VarusW",
+      "name": "Blighted Quiver",
+      "maxrank": 5,
+      "cooldown": [
+        40,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "VarusW.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Varus'''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and apply a [[stack]] of ''Blight'' for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.",
+        "'''Varus' ''' other abilities consume stacks of ''Blight'' on enemies upon damaging them to deal {{as|'''bonus''' magic damage}} and, if they are a {{tip|champion}} or epic {{tip|monster}}, reduce his basic abilities' cooldowns by 12% of the '''maximum''' cooldown for each stack on the target, up to 36% per target. The '''bonus''' damage is capped at 360 against monsters.",
+        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} within {{fd|5.5}} seconds deals {{as|{{pp|key=%|changedisplay=true|6 to 14 for 5|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{pp|type=Piercing Arrow's channel time|key=%|0 to 80 for 11|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{pp|key=%|changedisplay=true|6*1.8 to 14*1.8 for 5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' can be recast after 1 second for its duration, and does so automatically when its duration ends or '''Varus''' dies within the duration.",
+        "''Blighted Quiver'' can be cast during the first {{fd|0.25}} seconds of {{ais|Piercing Arrow|Varus}} charge. ''Blighted Quiver'' is placed on full cooldown even if the charge completes without reactivation or is {{tip|interrupt|interrupted}}.",
+        "{{sbc|Recast:}} '''Varus''' cancels ''Blighted Quiver'' and places it on a 1 second {{sti|cooldown}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Varus</b>' <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Blight</i> for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.<br /><b>Varus' </b> other abilities consume stacks of <i>Blight</i> on enemies upon damaging them to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and, if they are a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, reduce his basic abilities' cooldowns by 12% of the <b>maximum</b> cooldown for each stack on the target, up to 36% per target. The <b>bonus</b> damage is capped at 360 against monsters.<br /><span class=\"sbc\">Active:</span> <b>Varus</b>' next <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip> within <span style=\"font-variant-numeric: tabular-nums;\">5.5</span> seconds deals <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, increased by <span class=\"title-tooltip\" title=\"\">0 to 2 ‒ undefined</span>, for a maximum of <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span>. This damage is capped at 360 against monsters. If <b>Varus</b> is not charging <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip>, <i>Blighted Quiver</i> can be recast after 1 second for its duration, and does so automatically when its duration ends or <b>Varus</b> dies within the duration.<br /><i>Blighted Quiver</i> can be cast during the first <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow's<template #content>Piercing Arrow</template></HtmlTooltip> charge. <i>Blighted Quiver</i> is placed on full cooldown even if the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> cancels <i>Blighted Quiver</i> and places it on a 1 second <span>cooldown</span>.",
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|7 to 11}} {{as|(+ 25% AP)}}}}",
+        "{{st|Bonus Magic Damage per Stack|{{as|{{ap|3 to 5}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health|health)}}|Maximum Bonus Magic Damage|{{as|{{ap|9 to 15}}% {{as|(+ 6% per 100 AP)}} of the target's '''maximum''' health|health)}}}}"
+      ],
+      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|40|Starts after the effect is used with Piercing Arrow}}' as '40/0' and riot's value '40,40,40,40,40' as '40'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[7,8,9,10,11]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.25
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[7,8,9,10,11]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                7,
+                8,
+                9,
+                10,
+                11
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  7,
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "player_total_ap": 0.25
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage per Stack</span>: <span><span class=\"health)\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li><li><span class=\"blue\">Maximum Bonus Magic Damage</span>: <span><span class=\"health)\"><SpellSpan :list=\"[9,10.5,12,13.5,15]\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's <b>maximum</b> health</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 21
+              },
+              {
+                "player_total_ap": 61
+              },
+              {
+                "target_total_ap": [
+                  0.09,
+                  0.105,
+                  0.12,
+                  0.135,
+                  0.15
+                ]
+              },
+              {
+                "target_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage per Stack",
+                "<span class=\"health)\"><SpellSpan :list=\"[3,3.5,4,4.5,5]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of the target's '''maximum''' health</span>",
+                "Maximum Bonus Magic Damage",
+                "<span class=\"health)\"><SpellSpan :list=\"[9,10.5,12,13.5,15]\"></SpellSpan>% <span class=\"ap\">(+ 6% per 100 AP)</span> of the target's '''maximum''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                3,
+                3.5,
+                4,
+                4.5,
+                5
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage per Stack",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  3,
+                  3.5,
+                  4,
+                  4.5,
+                  5
+                ],
+                "player_total_ap": 61,
+                "target_total_ap": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "VarusE",
+      "name": "Hail of Arrows",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        16,
+        14,
+        12,
+        10
+      ],
+      "cost": 80,
+      "costtype": "mana",
+      "targeting": "Location",
+      "target_range": 925,
+      "image": {
+        "full": "VarusE.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Varus''' fires a hail of arrows at the target location which lands after {{fd|0.5}} seconds, dealing {{as|physical damage}} to all enemies within the area.",
+        "The area then becomes desecrated for 4 seconds, {{tip|slow|slowing}} all enemies within and inflicting them with 40% {{tip|Grievous Wounds}}.",
+        "''Hail of Arrows will cast at max range if cast beyond that.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> fires a hail of arrows at the target location which lands after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, dealing <span class=\"physical-damage\">physical damage</span> to all enemies within the area.<br />The area then becomes desecrated for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within and inflicting them with 40% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip>.<br /><i>Hail of Arrows will cast at max range if cast beyond that.</i>",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 220}} {{as|(+ 60% '''bonus''' AD)}}}}",
+        "{{st|Slow|{{ap|25 to 45}}%}}"
+      ],
+      "notes": "* {{tip|Slow}} lingers for {{fd|0.25}} seconds after leaving the marked area.\n* ''Hail of Arrows'' consumes {{ai|Blighted Quiver|Varus}} stacks for bonus damage a second time after ~{{fd|0.3}} seconds of hitting, allowing stacks applied during this time to be triggered.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ad\">(+ 60% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_bonus_ad": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Slow",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                25,
+                30,
+                35,
+                40,
+                45
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Slow",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ]
               }
             }
           ]

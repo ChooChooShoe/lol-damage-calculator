@@ -49,374 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "e1": {
-      "riotId": "GnarE",
-      "name": "Hop",
-      "maxrank": 5,
-      "cooldown": [
-        22,
-        19.5,
-        17,
-        14.5,
-        12
-      ],
-      "cost": 0,
-      "targeting": "Location",
-      "target_range": 475,
-      "image": {
-        "full": "GnarE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to the target location, and upon arrival gains {{sti|{{as|'''bonus''' attack speed}}}} for 6 seconds.",
-        "If '''Gnar''' lands on a unit he will {{tip|dash|bounce}} 500 units further in the same direction.",
-        "Landing on an enemy deals them {{as|physical damage}} and {{tip|slow|slows}} them by 80% for {{fd|0.5}} seconds.",
-        "'''Gnar''' will not bounce if he is {{tip|immobilize|immobilized}} during the first leap."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to the target location, and upon arrival gains <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 6 seconds.<br />If <b>Gnar</b> lands on a unit he will <HtmlTooltip class=\"blue link\">bounce<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> 500 units further in the same direction.<br />Landing on an enemy deals them <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 80% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br /><b>Gnar</b> will not bounce if he is <HtmlTooltip class=\"blue link\">immobilized<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> during the first leap.",
-      "leveling": [
-        "{{st|Attack Speed|{{ap|40 to 60}}%}}",
-        "{{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 6% '''maximum''' health)}}}}"
-      ],
-      "notes": "* ''Hop'' does not allow '''Gnar''' to bounce off wards.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Attack Speed",
-                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                45,
-                50,
-                55,
-                60
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Attack Speed",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  40,
-                  45,
-                  50,
-                  55,
-                  60
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[50,85,120,155,190]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_hp": 0.06
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[50,85,120,155,190]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                50,
-                85,
-                120,
-                155,
-                190
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  50,
-                  85,
-                  120,
-                  155,
-                  190
-                ],
-                "player_total_hp": 0.06
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "GnarR",
-      "name": "GNAR!",
-      "maxrank": 3,
-      "cooldown": [
-        90,
-        60,
-        30
-      ],
-      "cost": 0,
-      "targeting": "Direction",
-      "image": {
-        "full": "GnarR.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 144,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|{{ci|Gnar|Mini Gnar}} - Passive:}}{{ais|Hyper|Gnar}} {{sti|ms|{{as|'''bonus''' movement speed}}}} is increased.",
-        "{{sbc|{{ci|Mega Gnar}} - Active:}} '''Gnar''' thrusts his arms in the target direction, {{tip|airborne|knocking away}} nearby enemies up to 590 units in that direction and afterwards dealing them {{as|physical damage}}, as well as {{tip|slow|slowing}} them by 45% after a {{fd|0.4}}-second delay.",
-        "Enemies that collide with terrain take {{ccs|50% increased damage|physical}} instantly and are {{tip|stun|stunned}} instead of {{tip|slow|slowed}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\"><span class=\"chamption-name\" data-champkey=\"Gnar\">Mini Gnar</span> - Passive:</span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gnar\">Hyper's<template #content>Hyper</template></HtmlTooltip> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> is increased.<br /><span class=\"sbc\"><span class=\"chamption-name\" data-champkey=\"Mega Gnar\">Mega Gnar</span> - Active:</span> <b>Gnar</b> thrusts his arms in the target direction, <HtmlTooltip class=\"blue link\">knocking away<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> nearby enemies up to 590 units in that direction and afterwards dealing them <span class=\"physical-damage\">physical damage</span>, as well as <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 45% after a <span style=\"font-variant-numeric: tabular-nums;\">0.4</span>-second delay.<br />Enemies that collide with terrain take <simple-tooltip class=\"capture-unknown\" dname=\"ccs 50% increased damage physical\">Unknown value: ccs 50% increased damage physical</simple-tooltip> instantly and are <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> instead of <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Hyper Movement Speed|{{ap|40 to 80}}%}}",
-        "{{st|Physical Damage|{{ap|200 to 400}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 100% AP)}}|Increased Damage|{{ap|200*1.5 to 400*1.5}} {{as|(+ 75% '''bonus''' AD)}} {{as|(+ 150% AP)}}}}",
-        "{{st|Disable Duration|{{ap|1.25 to 1.75}}}}"
-      ],
-      "notes": "* ''GNAR!'' can interact with [[Terrain#Player-Generated|player-generated terrain]].",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Hyper Movement Speed</span>: <span><SpellSpan :list=\"[40,60,80]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Hyper Movement Speed",
-                "<SpellSpan :list=\"[40,60,80]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                60,
-                80
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Hyper Movement Speed",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  40,
-                  60,
-                  80
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Increased Damage</span>: <span><SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.5
-              },
-              {
-                "player_total_ap": 1
-              },
-              {
-                "player_bonus_ad": 0.75
-              },
-              {
-                "player_total_ap": 1.5
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
-                "Increased Damage",
-                "<SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span> <span class=\"ap\">(+ 150% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                200,
-                300,
-                400
-              ],
-              [
-                300,
-                450,
-                600
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  200,
-                  300,
-                  400
-                ],
-                "player_bonus_ad": 0.75,
-                "player_total_ap": 1.5
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Disable Duration",
-                "<SpellSpan :list=\"[1.25,1.5,1.75]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                1.25,
-                1.5,
-                1.75
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Disable Duration",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  1.25,
-                  1.5,
-                  1.75
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "GnarW",
-      "name": "Hyper",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "GnarW.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 48,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Gnar's''' [[basic attack]]s and [[champion ability|abilities]] apply a [[stack]] of ''Hyper'' to affected enemies for {{fd|3.5}} seconds, stacking up to 3 times, with the duration refreshing upon applying the second stack.",
-        "Upon applying 3 stacks to a target, the stacks are consumed to deal {{as|'''bonus''' magic damage}} and grant '''Gnar''' {{pp|type = [[File:GNAR!.png|20px|border]] GNAR!'s rank|key=%|20 to 80 for 4|0 to 3|formula = 20% + 20% per GNAR!'s rank|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds. The damage is capped at 300 {{as|(+ 100% AP)}} against {{tip|monster|monsters}}.",
-        "'''Gnar''' gains ''Hyper's'' {{sti|ms|{{as|'''bonus''' movement speed}}}} when he leaves {{ci|Mega Gnar|Mega}} form."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Gnar's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s and <a class=\"effect link\" title=\"abilities\">champion ability</a> apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Hyper</i> to affected enemies for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds, stacking up to 3 times, with the duration refreshing upon applying the second stack.<br />Upon applying 3 stacks to a target, the stacks are consumed to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and grant <b>Gnar</b> <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> that decays over 3 seconds. The damage is capped at 300 <span class=\"ap\">(+ 100% AP)</span> against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.<br /><b>Gnar</b> gains <i>Hyper's</i> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> when he leaves <span class=\"chamption-name\" data-champkey=\"Mega Gnar\">Mega</span> form.",
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|0 to 40}} {{as|(+ {{ap|6 to 14}}% of target's '''maximum''' health)}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* The bonus movement speed's duration refreshes whenever '''Gnar''' would receive it (by hitting a target three times again).",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '7,7,7,7,7' as '7'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[0,10,20,30,40]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[6,8,10,12,14]\"></SpellSpan>% of target's <b>maximum</b> health)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              },
-              {
-                "target_total_hp": [
-                  0.06,
-                  0.08,
-                  0.1,
-                  0.12,
-                  0.14
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage",
-                "<SpellSpan :list=\"[0,10,20,30,40]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[6,8,10,12,14]\"></SpellSpan>% of target's '''maximum''' health)</span> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                0,
-                10,
-                20,
-                30,
-                40
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  0,
-                  10,
-                  20,
-                  30,
-                  40
-                ],
-                "player_total_ap": 1,
-                "target_total_hp": [
-                  0.06,
-                  0.08,
-                  0.1,
-                  0.12,
-                  0.14
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Rage Gene",
@@ -596,155 +228,6 @@
         }
       ]
     },
-    "e2": {
-      "riotId": "GnarE",
-      "name": "Crunch",
-      "maxrank": 5,
-      "cooldown": [
-        2,
-        0
-      ],
-      "cost": 0,
-      "targeting": "Location",
-      "target_range": 675,
-      "image": {
-        "full": "GnarE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 96,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to the target location and deals {{as|physical damage}} to nearby enemies upon impact. After a {{fd|0.25}}-second delay, additional enemies in a larger radius also take the same damage.",
-        "If ''Crunch'' is used to transform, '''Gnar''' will still be able to {{tip|dash|bounce}} as per {{ai|Hop|Gnar}}. ''Crunch's'' area of effect is dealt in both areas, though enemies can only be damaged once.",
-        "Enemies '''Gnar''' lands directly on top of are affected by ''Hop's'' {{tip|slow}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to the target location and deals <span class=\"physical-damage\">physical damage</span> to nearby enemies upon impact. After a <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>-second delay, additional enemies in a larger radius also take the same damage.<br />If <i>Crunch</i> is used to transform, <b>Gnar</b> will still be able to <HtmlTooltip class=\"blue link\">bounce<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> as per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gnar\">Hop<template #content>Hop</template></HtmlTooltip>. <i>Crunch's</i> area of effect is dealt in both areas, though enemies can only be damaged once.<br />Enemies <b>Gnar</b> lands directly on top of are affected by <i>Hop's</i> <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 6% '''maximum''' health)}}}}"
-      ],
-      "notes": "* '''Gnar''' is locked out of using any other abilities during ''Crunch'', but he can still transform mid-air if he reaches 100 ''{{ai|Rage Gene|Gnar|Rage}}'' during the {{tip|dash|jump}} of {{ai|Hop|Gnar}}.",
-      "skillkey": "E",
-      "skillid": "e2",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{Data Gnar/Hop|pst2|cooldown}}' as '2/0' and riot's value '22,19.5,17,14.5,12' as '22/19.5/17/14.5/12'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_hp": 0.06
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                80,
-                115,
-                150,
-                185,
-                220
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  80,
-                  115,
-                  150,
-                  185,
-                  220
-                ],
-                "player_total_hp": 0.06
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w2": {
-      "riotId": "GnarW",
-      "name": "Wallop",
-      "maxrank": 5,
-      "cooldown": 7,
-      "cost": 0,
-      "targeting": "Direction",
-      "image": {
-        "full": "GnarW.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 48,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Gnar''' slams his arm down in the target direction, dealing {{as|physical damage}} to all enemies struck within the area and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> slams his arm down in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies struck within the area and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.25</span> seconds.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|25 to 145}} {{as|(+ 100% AD)}}}}"
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "W",
-      "skillid": "w2",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[25,55,85,115,145]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ad": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[25,55,85,115,145]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                25,
-                55,
-                85,
-                115,
-                145
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  25,
-                  55,
-                  85,
-                  115,
-                  145
-                ],
-                "player_total_ad": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
     "q2": {
       "riotId": "GnarQ",
       "name": "Boulder Toss",
@@ -841,6 +324,523 @@
                   50
                 ],
                 "player_total_ad": 1.4000000000000001
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "GnarW",
+      "name": "Hyper",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "GnarW.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 48,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Gnar's''' [[basic attack]]s and [[champion ability|abilities]] apply a [[stack]] of ''Hyper'' to affected enemies for {{fd|3.5}} seconds, stacking up to 3 times, with the duration refreshing upon applying the second stack.",
+        "Upon applying 3 stacks to a target, the stacks are consumed to deal {{as|'''bonus''' magic damage}} and grant '''Gnar''' {{pp|type = [[File:GNAR!.png|20px|border]] GNAR!'s rank|key=%|20 to 80 for 4|0 to 3|formula = 20% + 20% per GNAR!'s rank|color=ms}} {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays over 3 seconds. The damage is capped at 300 {{as|(+ 100% AP)}} against {{tip|monster|monsters}}.",
+        "'''Gnar''' gains ''Hyper's'' {{sti|ms|{{as|'''bonus''' movement speed}}}} when he leaves {{ci|Mega Gnar|Mega}} form."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Gnar's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s and <a class=\"effect link\" title=\"abilities\">champion ability</a> apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Hyper</i> to affected enemies for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds, stacking up to 3 times, with the duration refreshing upon applying the second stack.<br />Upon applying 3 stacks to a target, the stacks are consumed to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and grant <b>Gnar</b> <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> that decays over 3 seconds. The damage is capped at 300 <span class=\"ap\">(+ 100% AP)</span> against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.<br /><b>Gnar</b> gains <i>Hyper's</i> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> when he leaves <span class=\"chamption-name\" data-champkey=\"Mega Gnar\">Mega</span> form.",
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|0 to 40}} {{as|(+ {{ap|6 to 14}}% of target's '''maximum''' health)}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* The bonus movement speed's duration refreshes whenever '''Gnar''' would receive it (by hitting a target three times again).",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '7,7,7,7,7' as '7'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[0,10,20,30,40]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[6,8,10,12,14]\"></SpellSpan>% of target's <b>maximum</b> health)</span> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              },
+              {
+                "target_total_hp": [
+                  0.06,
+                  0.08,
+                  0.1,
+                  0.12,
+                  0.14
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[0,10,20,30,40]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[6,8,10,12,14]\"></SpellSpan>% of target's '''maximum''' health)</span> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                0,
+                10,
+                20,
+                30,
+                40
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  0,
+                  10,
+                  20,
+                  30,
+                  40
+                ],
+                "player_total_ap": 1,
+                "target_total_hp": [
+                  0.06,
+                  0.08,
+                  0.1,
+                  0.12,
+                  0.14
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w2": {
+      "riotId": "GnarW",
+      "name": "Wallop",
+      "maxrank": 5,
+      "cooldown": 7,
+      "cost": 0,
+      "targeting": "Direction",
+      "image": {
+        "full": "GnarW.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 48,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Gnar''' slams his arm down in the target direction, dealing {{as|physical damage}} to all enemies struck within the area and {{tip|stun|stunning}} them for {{fd|1.25}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> slams his arm down in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies struck within the area and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.25</span> seconds.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|25 to 145}} {{as|(+ 100% AD)}}}}"
+      ],
+      "notes": "* No additional details.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[25,55,85,115,145]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[25,55,85,115,145]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                25,
+                55,
+                85,
+                115,
+                145
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  55,
+                  85,
+                  115,
+                  145
+                ],
+                "player_total_ad": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "GnarE",
+      "name": "Hop",
+      "maxrank": 5,
+      "cooldown": [
+        22,
+        19.5,
+        17,
+        14.5,
+        12
+      ],
+      "cost": 0,
+      "targeting": "Location",
+      "target_range": 475,
+      "image": {
+        "full": "GnarE.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to the target location, and upon arrival gains {{sti|{{as|'''bonus''' attack speed}}}} for 6 seconds.",
+        "If '''Gnar''' lands on a unit he will {{tip|dash|bounce}} 500 units further in the same direction.",
+        "Landing on an enemy deals them {{as|physical damage}} and {{tip|slow|slows}} them by 80% for {{fd|0.5}} seconds.",
+        "'''Gnar''' will not bounce if he is {{tip|immobilize|immobilized}} during the first leap."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to the target location, and upon arrival gains <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 6 seconds.<br />If <b>Gnar</b> lands on a unit he will <HtmlTooltip class=\"blue link\">bounce<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> 500 units further in the same direction.<br />Landing on an enemy deals them <span class=\"physical-damage\">physical damage</span> and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 80% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br /><b>Gnar</b> will not bounce if he is <HtmlTooltip class=\"blue link\">immobilized<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> during the first leap.",
+      "leveling": [
+        "{{st|Attack Speed|{{ap|40 to 60}}%}}",
+        "{{st|Physical Damage|{{ap|50 to 190}} {{as|(+ 6% '''maximum''' health)}}}}"
+      ],
+      "notes": "* ''Hop'' does not allow '''Gnar''' to bounce off wards.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Attack Speed",
+                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Attack Speed",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  45,
+                  50,
+                  55,
+                  60
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[50,85,120,155,190]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_hp": 0.06
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[50,85,120,155,190]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                50,
+                85,
+                120,
+                155,
+                190
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  50,
+                  85,
+                  120,
+                  155,
+                  190
+                ],
+                "player_total_hp": 0.06
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e2": {
+      "riotId": "GnarE",
+      "name": "Crunch",
+      "maxrank": 5,
+      "cooldown": [
+        2,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Location",
+      "target_range": 675,
+      "image": {
+        "full": "GnarE.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Gnar''' {{tip|dash|leaps}} to the target location and deals {{as|physical damage}} to nearby enemies upon impact. After a {{fd|0.25}}-second delay, additional enemies in a larger radius also take the same damage.",
+        "If ''Crunch'' is used to transform, '''Gnar''' will still be able to {{tip|dash|bounce}} as per {{ai|Hop|Gnar}}. ''Crunch's'' area of effect is dealt in both areas, though enemies can only be damaged once.",
+        "Enemies '''Gnar''' lands directly on top of are affected by ''Hop's'' {{tip|slow}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gnar</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to the target location and deals <span class=\"physical-damage\">physical damage</span> to nearby enemies upon impact. After a <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>-second delay, additional enemies in a larger radius also take the same damage.<br />If <i>Crunch</i> is used to transform, <b>Gnar</b> will still be able to <HtmlTooltip class=\"blue link\">bounce<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> as per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gnar\">Hop<template #content>Hop</template></HtmlTooltip>. <i>Crunch's</i> area of effect is dealt in both areas, though enemies can only be damaged once.<br />Enemies <b>Gnar</b> lands directly on top of are affected by <i>Hop's</i> <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|80 to 220}} {{as|(+ 6% '''maximum''' health)}}}}"
+      ],
+      "notes": "* '''Gnar''' is locked out of using any other abilities during ''Crunch'', but he can still transform mid-air if he reaches 100 ''{{ai|Rage Gene|Gnar|Rage}}'' during the {{tip|dash|jump}} of {{ai|Hop|Gnar}}.",
+      "skillkey": "E",
+      "skillid": "e2",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{Data Gnar/Hop|pst2|cooldown}}' as '2/0' and riot's value '22,19.5,17,14.5,12' as '22/19.5/17/14.5/12'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_hp": 0.06
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[80,115,150,185,220]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                115,
+                150,
+                185,
+                220
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  115,
+                  150,
+                  185,
+                  220
+                ],
+                "player_total_hp": 0.06
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "GnarR",
+      "name": "GNAR!",
+      "maxrank": 3,
+      "cooldown": [
+        90,
+        60,
+        30
+      ],
+      "cost": 0,
+      "targeting": "Direction",
+      "image": {
+        "full": "GnarR.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|{{ci|Gnar|Mini Gnar}} - Passive:}}{{ais|Hyper|Gnar}} {{sti|ms|{{as|'''bonus''' movement speed}}}} is increased.",
+        "{{sbc|{{ci|Mega Gnar}} - Active:}} '''Gnar''' thrusts his arms in the target direction, {{tip|airborne|knocking away}} nearby enemies up to 590 units in that direction and afterwards dealing them {{as|physical damage}}, as well as {{tip|slow|slowing}} them by 45% after a {{fd|0.4}}-second delay.",
+        "Enemies that collide with terrain take {{ccs|50% increased damage|physical}} instantly and are {{tip|stun|stunned}} instead of {{tip|slow|slowed}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\"><span class=\"chamption-name\" data-champkey=\"Gnar\">Mini Gnar</span> - Passive:</span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gnar\">Hyper's<template #content>Hyper</template></HtmlTooltip> <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> is increased.<br /><span class=\"sbc\"><span class=\"chamption-name\" data-champkey=\"Mega Gnar\">Mega Gnar</span> - Active:</span> <b>Gnar</b> thrusts his arms in the target direction, <HtmlTooltip class=\"blue link\">knocking away<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> nearby enemies up to 590 units in that direction and afterwards dealing them <span class=\"physical-damage\">physical damage</span>, as well as <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 45% after a <span style=\"font-variant-numeric: tabular-nums;\">0.4</span>-second delay.<br />Enemies that collide with terrain take <simple-tooltip class=\"capture-unknown\" dname=\"ccs 50% increased damage physical\">Unknown value: ccs 50% increased damage physical</simple-tooltip> instantly and are <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> instead of <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Hyper Movement Speed|{{ap|40 to 80}}%}}",
+        "{{st|Physical Damage|{{ap|200 to 400}} {{as|(+ 50% '''bonus''' AD)}} {{as|(+ 100% AP)}}|Increased Damage|{{ap|200*1.5 to 400*1.5}} {{as|(+ 75% '''bonus''' AD)}} {{as|(+ 150% AP)}}}}",
+        "{{st|Disable Duration|{{ap|1.25 to 1.75}}}}"
+      ],
+      "notes": "* ''GNAR!'' can interact with [[Terrain#Player-Generated|player-generated terrain]].",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Hyper Movement Speed</span>: <span><SpellSpan :list=\"[40,60,80]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Hyper Movement Speed",
+                "<SpellSpan :list=\"[40,60,80]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Hyper Movement Speed",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Increased Damage</span>: <span><SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.5
+              },
+              {
+                "player_total_ap": 1
+              },
+              {
+                "player_bonus_ad": 0.75
+              },
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ad\">(+ 50% '''bonus''' AD)</span> <span class=\"ap\">(+ 100% AP)</span>",
+                "Increased Damage",
+                "<SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span> <span class=\"ap\">(+ 150% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                200,
+                300,
+                400
+              ],
+              [
+                300,
+                450,
+                600
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  200,
+                  300,
+                  400
+                ],
+                "player_bonus_ad": 0.75,
+                "player_total_ap": 1.5
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Disable Duration</span>: <span><SpellSpan :list=\"[1.25,1.5,1.75]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Disable Duration",
+                "<SpellSpan :list=\"[1.25,1.5,1.75]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                1.25,
+                1.5,
+                1.75
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Disable Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  1.25,
+                  1.5,
+                  1.75
+                ]
               }
             }
           ]

@@ -49,148 +49,154 @@
     "attackspeed": 0.658
   },
   "skills": {
-    "r1": {
-      "riotId": "GangplankR",
-      "name": "Cannon Barrage",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        140,
-        100,
-        0
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": "Global",
+    "i1": {
+      "riotId": "",
+      "name": "Trial by Fire",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "GangplankR.png",
+        "full": "Gangplank_Passive.png",
+        "sprite": "passive1.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing them{{ft|{{pp|55/10 to 225/10|color=true damage}} {{as|(+ 10% '''bonus''' AD)}} {{sti|{{as|'''bonus''' true damage}}}} every {{fd|0.25}} seconds over {{fd|2.5}} seconds.|{{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{sti|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds.}} {{tip|turret|Turrets}} receive 50% reduced damage.",
+        "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Every time a {{ai|Powder Keg|Gangplank}} explodes, the {{sti|cooldown}} for ''Trial by Fire'' resets and '''Gangplank''' gains its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
+        "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} nor {{ai|Powder Keg|Gangplank}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Gangplank</b> periodically empowers his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> to burn the target, dealing them<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<HtmlTooltip class=\"blue link\">55/10undefined − 225/10undefined (based on level)<template #content>Values: 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span> <span><span class=\"true-damage\"><b>bonus</b> true damage</span></span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<HtmlTooltip class=\"blue link\">55undefined − 225undefined (based on level)<template #content>Values: 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215, 225<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span><span class=\"true-damage\"><b>bonus</b> true damage</span></span> over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.&nbsp;」</span></label> <HtmlTooltip class=\"blue link\">Turrets<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> receive 50% reduced damage.<br />If <b>Gangplank</b> successfully hits a target with <i>Trial by Fire</i>, he gains <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> for 2 seconds. Every time a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Powder Keg<template #content>Powder Keg</template></HtmlTooltip> explodes, the <span>cooldown</span> for <i>Trial by Fire</i> resets and <b>Gangplank</b> gains its <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>.<br /><i>Trial by Fire</i> cannot be applied with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Parrrley<template #content>Parrrley</template></HtmlTooltip> nor <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Powder Keg<template #content>Powder Keg</template></HtmlTooltip>.",
+      "leveling": [],
+      "notes": "* Unlike most [[damage over time]] debuffs, reapplying ''Trial by Fire'' before a previous application has run out will stack the full damage, instead of just refreshing the duration.\n* {{Pending for test}}: Interaction with ''parries'' ({{tip|dodge}}, {{tip|block}}, and {{tip|blind}}).\n** If the attack is {{tip|dodge|dodged}}, the effect is not applied nor does ''Trial by Fire'' go on cooldown.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "GangplankQWrapper",
+      "name": "Parrrley",
+      "maxrank": 5,
+      "cooldown": 5,
+      "cost": [
+        60,
+        55,
+        50,
+        45,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 625",
+      "image": {
+        "full": "GangplankQWrapper.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 240,
+        "x": 96,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Gangplank''' shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting {{tip|sight}} of the area for the duration. Each wave deals {{as|magic damage}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
-        "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
-        "{{sbc|{{ii|Death's Daughter}}:}} An initial cannonball lands in the center of the barrage, dealing a cluster's worth of {{as|true damage}} to all enemies within the impact and {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.",
-        "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
-        "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration."
+        "{{sbc|Active:}} '''Gangplank''' shoots the target enemy with his pistol, dealing them {{as|physical damage}} upon the bullet's arrival and applying {{tip|on-hit}} and {{tip|on-attack}} effects at 100% effectiveness.",
+        "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|75|100}} AD}} {{as|'''bonus''' physical damage}}.",
+        "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gangplank</b> shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area for the duration. Each wave deals <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 30% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br /><b>Gangplank</b> can purchase upgrades for his ship in the store at the cost of 500 <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> each, which improve <i>Cannon Barrage</i>:<br /><span class=\"sbc\"><simple-tooltip dname=\"Death's Daughter\">The item: Death's Daughter</simple-tooltip>:</span> An initial cannonball lands in the center of the barrage, dealing a cluster's worth of <span class=\"true-damage\">true damage</span> to all enemies within the impact and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 60% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><span class=\"sbc\"><simple-tooltip dname=\"Raise Morale\">The item: Raise Morale</simple-tooltip>:</span> The barrage grants allies <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> while they are inside the area, persisting for 2 seconds after leaving it.<br /><span class=\"sbc\"><simple-tooltip dname=\"Fire at Will\">The item: Fire at Will</simple-tooltip>:</span> <i>Cannon Barrage</i> fires<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;6 additional waves&nbsp;」</span><span class=\"flipText2\">「&nbsp;2 additional clusters&nbsp;」</span></label> over its duration.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gangplank</b> shoots the target enemy with his pistol, dealing them <span class=\"physical-damage\">physical damage</span> upon the bullet's arrival and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><i>Parrrley</i> can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"ad\"><span class=\"critical-strike\">(+ IE 25%)</span> AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span>.<br />If <i>Parrrley</i> kills the target, <b>Gangplank</b> plunders <simple-tooltip class=\"capture-unknown\" dname=\"gold gold\">Unknown value: gold gold</simple-tooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip>, the latter of which can be spent to upgrade <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Cannon Barrage<template #content>Cannon Barrage</template></HtmlTooltip>.",
       "leveling": [
-        "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
-        "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}"
+        "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
+        "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}"
       ],
-      "notes": "* ''Cannon Barrage's'' slow lingers for {{fd|0.25}} seconds after affected enemies leave the target area.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|180 to 140}}|Starts on cast}}' as '0/140/100/0' and riot's value '180,160,140' as '180/160/140'",
+      "notes": "* ''Parrrley'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ai|Powder Keg|Gangplank|Powder Kegs}} when activated by ''Parrrley''.",
+      "skillkey": "Q",
+      "skillid": "q1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Cluster</span>: <span><SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.1
-              },
-              {
-                "player_total_ap": 0.3
+                "player_total_ad": 1
               }
             ],
             "st_slices": [
               [
-                "Magic Damage Per Wave",
-                "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
-                "Magic Damage Per Cluster",
-                "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+                "Physical Damage",
+                "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                40,
+                20,
+                45,
                 70,
-                100
-              ],
-              [
-                120,
-                210,
-                300
+                95,
+                120
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Magic Damage Per Wave",
-              "damage_type": "magic",
+              "title": "Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
-                  40,
+                  20,
+                  45,
                   70,
-                  100
+                  95,
+                  120
                 ],
-                "player_total_ap": 0.3
+                "player_total_ad": 1
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage with<br><i>Fire at Will</i></span>: <span><SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span></span></li><li><span class=\"blue\">Maximum Mixed Total Damage with<br><i>Fire at Will</i> and <i>Death's Daughter</i></span>: <span><SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Gold Plunder</span>: <span><span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span></span></li><li><span class=\"blue\">Silver Serpent Plunder</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1.2
-              },
-              {
-                "player_total_ap": 1.8
-              },
-              {
-                "player_total_ap": 2.1
-              }
-            ],
+            "as_ratios": [],
             "st_slices": [
               [
-                "Total Magic Damage",
-                "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
-                "Total Magic Damage with<br>''Fire at Will''",
-                "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
-                "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
-                "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>"
+                "Gold Plunder",
+                "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
+                "Silver Serpent Plunder",
+                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
               [
-                480,
-                840,
-                1200
+                3,
+                4,
+                5,
+                6,
+                7
               ],
               [
-                720,
-                1260,
-                1800
-              ],
-              [
-                840,
-                1470,
-                2100
+                4,
+                5,
+                6,
+                7,
+                8
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Total Magic Damage",
-              "damage_type": "magic",
+              "title": "Gold Plunder",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  480,
-                  840,
-                  1200
-                ],
-                "player_total_ap": 2.1
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
               }
             }
           ]
@@ -376,154 +382,148 @@
         }
       ]
     },
-    "i1": {
-      "riotId": "",
-      "name": "Trial by Fire",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Gangplank_Passive.png",
-        "sprite": "passive1.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Gangplank''' periodically empowers his next [[basic attack]] to burn the target, dealing them{{ft|{{pp|55/10 to 225/10|color=true damage}} {{as|(+ 10% '''bonus''' AD)}} {{sti|{{as|'''bonus''' true damage}}}} every {{fd|0.25}} seconds over {{fd|2.5}} seconds.|{{pp|55 to 225|color=true damage}} {{as|(+ 100% '''bonus''' AD)}} {{sti|{{as|'''bonus''' true damage}}}} over {{fd|2.5}} seconds.}} {{tip|turret|Turrets}} receive 50% reduced damage.",
-        "If '''Gangplank''' successfully hits a target with ''Trial by Fire'', he gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds. Every time a {{ai|Powder Keg|Gangplank}} explodes, the {{sti|cooldown}} for ''Trial by Fire'' resets and '''Gangplank''' gains its {{sti|ms|{{as|'''bonus''' movement speed}}}}.",
-        "''Trial by Fire'' cannot be applied with {{ai|Parrrley|Gangplank}} nor {{ai|Powder Keg|Gangplank}}."
+    "r1": {
+      "riotId": "GangplankR",
+      "name": "Cannon Barrage",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        140,
+        100,
+        0
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Gangplank</b> periodically empowers his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> to burn the target, dealing them<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<HtmlTooltip class=\"blue link\">55/10undefined − 225/10undefined (based on level)<template #content>Values: 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 21.5, 22.5<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 10% <b>bonus</b> AD)</span> <span><span class=\"true-damage\"><b>bonus</b> true damage</span></span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<HtmlTooltip class=\"blue link\">55undefined − 225undefined (based on level)<template #content>Values: 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205, 215, 225<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span><span class=\"true-damage\"><b>bonus</b> true damage</span></span> over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.&nbsp;」</span></label> <HtmlTooltip class=\"blue link\">Turrets<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> receive 50% reduced damage.<br />If <b>Gangplank</b> successfully hits a target with <i>Trial by Fire</i>, he gains <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> for 2 seconds. Every time a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Powder Keg<template #content>Powder Keg</template></HtmlTooltip> explodes, the <span>cooldown</span> for <i>Trial by Fire</i> resets and <b>Gangplank</b> gains its <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>.<br /><i>Trial by Fire</i> cannot be applied with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Parrrley<template #content>Parrrley</template></HtmlTooltip> nor <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Powder Keg<template #content>Powder Keg</template></HtmlTooltip>.",
-      "leveling": [],
-      "notes": "* Unlike most [[damage over time]] debuffs, reapplying ''Trial by Fire'' before a previous application has run out will stack the full damage, instead of just refreshing the duration.\n* {{Pending for test}}: Interaction with ''parries'' ({{tip|dodge}}, {{tip|block}}, and {{tip|blind}}).\n** If the attack is {{tip|dodge|dodged}}, the effect is not applied nor does ''Trial by Fire'' go on cooldown.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "GangplankQWrapper",
-      "name": "Parrrley",
-      "maxrank": 5,
-      "cooldown": 5,
-      "cost": [
-        60,
-        55,
-        50,
-        45,
-        40
-      ],
+      "cost": 100,
       "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 625",
+      "targeting": "Location",
+      "target_range": "Global",
       "image": {
-        "full": "GangplankQWrapper.png",
+        "full": "GangplankR.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 96,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Gangplank''' shoots the target enemy with his pistol, dealing them {{as|physical damage}} upon the bullet's arrival and applying {{tip|on-hit}} and {{tip|on-attack}} effects at 100% effectiveness.",
-        "''Parrrley'' can {{tip|critically strike}} for {{as|{{critical damage|75|100}} AD}} {{as|'''bonus''' physical damage}}.",
-        "If ''Parrrley'' kills the target, '''Gangplank''' plunders {{gold|gold}} and {{ai|Silver Serpents|Gangplank}}, the latter of which can be spent to upgrade {{ai|Cannon Barrage|Gangplank}}."
+        "{{sbc|Active:}} '''Gangplank''' shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting {{tip|sight}} of the area for the duration. Each wave deals {{as|magic damage}} to all enemies within the area and {{tip|slow|slows}} them by 30% for {{fd|0.5}} seconds.",
+        "'''Gangplank''' can purchase upgrades for his ship in the store at the cost of 500 {{ai|Silver Serpents|Gangplank}} each, which improve ''Cannon Barrage'':",
+        "{{sbc|{{ii|Death's Daughter}}:}} An initial cannonball lands in the center of the barrage, dealing a cluster's worth of {{as|true damage}} to all enemies within the impact and {{tip|slow|slowing}} them by 60% for {{fd|1.5}} seconds.",
+        "{{sbc|{{ii|Raise Morale}}:}} The barrage grants allies {{sti|ms|{{as|30% '''bonus''' movement speed}}}} while they are inside the area, persisting for 2 seconds after leaving it.",
+        "{{sbc|{{ii|Fire at Will}}:}} ''Cannon Barrage'' fires{{ft|6 additional waves|2 additional clusters}} over its duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gangplank</b> shoots the target enemy with his pistol, dealing them <span class=\"physical-damage\">physical damage</span> upon the bullet's arrival and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><i>Parrrley</i> can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"ad\"><span class=\"critical-strike\">(+ IE 25%)</span> AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span>.<br />If <i>Parrrley</i> kills the target, <b>Gangplank</b> plunders <simple-tooltip class=\"capture-unknown\" dname=\"gold gold\">Unknown value: gold gold</simple-tooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip>, the latter of which can be spent to upgrade <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Cannon Barrage<template #content>Cannon Barrage</template></HtmlTooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gangplank</b> shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area for the duration. Each wave deals <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 30% for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br /><b>Gangplank</b> can purchase upgrades for his ship in the store at the cost of 500 <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> each, which improve <i>Cannon Barrage</i>:<br /><span class=\"sbc\"><simple-tooltip dname=\"Death's Daughter\">The item: Death's Daughter</simple-tooltip>:</span> An initial cannonball lands in the center of the barrage, dealing a cluster's worth of <span class=\"true-damage\">true damage</span> to all enemies within the impact and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 60% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><span class=\"sbc\"><simple-tooltip dname=\"Raise Morale\">The item: Raise Morale</simple-tooltip>:</span> The barrage grants allies <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> while they are inside the area, persisting for 2 seconds after leaving it.<br /><span class=\"sbc\"><simple-tooltip dname=\"Fire at Will\">The item: Fire at Will</simple-tooltip>:</span> <i>Cannon Barrage</i> fires<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;6 additional waves&nbsp;」</span><span class=\"flipText2\">「&nbsp;2 additional clusters&nbsp;」</span></label> over its duration.",
       "leveling": [
-        "{{st|Physical Damage|{{ap|20 to 120}} {{as|(+ 100% AD)}}}}",
-        "{{st|Gold Plunder|{{g|{{ap|3 to 7}}}}|Silver Serpent Plunder|{{ai|Silver Serpents|Gangplank|icononly=yes}} {{ap|4 to 8}}}}"
+        "{{st|Magic Damage Per Wave|{{ap|40 to 100}} {{as|(+ 10% AP)}}|Magic Damage Per Cluster|{{ap|40*3 to 100*3}} {{as|(+ 30% AP)}}}}",
+        "{{st|Total Magic Damage|{{ap|40*12 to 100*12}} {{as|(+ 120% AP)}}|Total Magic Damage with<br>''Fire at Will''|{{ap|40*18 to 100*18}} {{as|(+ 180% AP)}}|Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''|{{ap|40*21 to 100*21}} {{as|(+ 210% AP)}}}}"
       ],
-      "notes": "* ''Parrrley'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* {{tip|On-hit}} effects that deal area of effect damage will allow ''Parrrley'' to plunder from every enemy killed. This includes enemies killed by '''Gangplank's''' {{ai|Powder Keg|Gangplank|Powder Kegs}} when activated by ''Parrrley''.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "* ''Cannon Barrage's'' slow lingers for {{fd|0.25}} seconds after affected enemies leave the target area.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|180 to 140}}|Starts on cast}}' as '0/140/100/0' and riot's value '180,160,140' as '180/160/140'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Wave</span>: <span><SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span></span></li><li><span class=\"blue\">Magic Damage Per Cluster</span>: <span><SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ad": 1
+                "player_total_ap": 0.1
+              },
+              {
+                "player_total_ap": 0.3
               }
             ],
             "st_slices": [
               [
-                "Physical Damage",
-                "<SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span>"
+                "Magic Damage Per Wave",
+                "<SpellSpan :list=\"[40,70,100]\"></SpellSpan> <span class=\"ap\">(+ 10% AP)</span>",
+                "Magic Damage Per Cluster",
+                "<SpellSpan :list=\"[120,210,300]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                20,
-                45,
+                40,
                 70,
-                95,
-                120
+                100
+              ],
+              [
+                120,
+                210,
+                300
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
+              "title": "Magic Damage Per Wave",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  20,
-                  45,
+                  40,
                   70,
-                  95,
-                  120
+                  100
                 ],
-                "player_total_ad": 1
+                "player_total_ap": 0.3
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Gold Plunder</span>: <span><span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span></span></li><li><span class=\"blue\">Silver Serpent Plunder</span>: <span><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage with<br><i>Fire at Will</i></span>: <span><SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span></span></li><li><span class=\"blue\">Maximum Mixed Total Damage with<br><i>Fire at Will</i> and <i>Death's Daughter</i></span>: <span><SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span></span></li></ul>",
           "vars": {
-            "as_ratios": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 1.2
+              },
+              {
+                "player_total_ap": 1.8
+              },
+              {
+                "player_total_ap": 2.1
+              }
+            ],
             "st_slices": [
               [
-                "Gold Plunder",
-                "<span class=\"gold\"> <img src=\"/images/Gold.png\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan></span>",
-                "Silver Serpent Plunder",
-                "<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Gangplank\">Silver Serpents<template #content>Silver Serpents</template></HtmlTooltip> <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>"
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[480,840,1200]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>",
+                "Total Magic Damage with<br>''Fire at Will''",
+                "<SpellSpan :list=\"[720,1260,1800]\"></SpellSpan> <span class=\"ap\">(+ 180% AP)</span>",
+                "Maximum Mixed Total Damage with<br>''Fire at Will'' and ''Death's Daughter''",
+                "<SpellSpan :list=\"[840,1470,2100]\"></SpellSpan> <span class=\"ap\">(+ 210% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                3,
-                4,
-                5,
-                6,
-                7
+                480,
+                840,
+                1200
               ],
               [
-                4,
-                5,
-                6,
-                7,
-                8
+                720,
+                1260,
+                1800
+              ],
+              [
+                840,
+                1470,
+                2100
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Gold Plunder",
-              "damage_type": "unknown",
+              "title": "Total Magic Damage",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  3,
-                  4,
-                  5,
-                  6,
-                  7
-                ]
+                  480,
+                  840,
+                  1200
+                ],
+                "player_total_ap": 2.1
               }
             }
           ]

@@ -74,6 +74,84 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "LuxLightBinding",
+      "name": "Light Binding",
+      "maxrank": 5,
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "LuxLightBinding.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lux''' releases a sphere of light in the target direction that deals {{as|magic damage}} to the first two enemies hit and {{tip|root|roots}} them for 2 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> releases a sphere of light in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first two enemies hit and <HtmlTooltip class=\"blue link\">roots<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for 2 seconds.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* Targets immune to the {{tip|root}} still count towards ''Light Binding's'' two-target limit.\n* ''Light Binding'' will cast from wherever '''Lux''' is at the end of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                125,
+                170,
+                215,
+                260
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
+                ],
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "LuxPrismaticWave",
       "name": "Prismatic Barrier",
@@ -285,84 +363,6 @@
                   260
                 ],
                 "player_total_ap": 0.65
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "LuxLightBinding",
-      "name": "Light Binding",
-      "maxrank": 5,
-      "cooldown": [
-        11,
-        10.5,
-        10,
-        9.5,
-        9
-      ],
-      "cost": 50,
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "LuxLightBinding.png",
-        "sprite": "spell7.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lux''' releases a sphere of light in the target direction that deals {{as|magic damage}} to the first two enemies hit and {{tip|root|roots}} them for 2 seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> releases a sphere of light in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first two enemies hit and <HtmlTooltip class=\"blue link\">roots<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for 2 seconds.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}"
-      ],
-      "notes": "* Targets immune to the {{tip|root}} still count towards ''Light Binding's'' two-target limit.\n* ''Light Binding'' will cast from wherever '''Lux''' is at the end of the cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                80,
-                125,
-                170,
-                215,
-                260
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  80,
-                  125,
-                  170,
-                  215,
-                  260
-                ],
-                "player_total_ap": 0.6
               }
             }
           ]

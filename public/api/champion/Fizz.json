@@ -73,6 +73,86 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "FizzQ",
+      "name": "Urchin Strike",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 550",
+      "image": {
+        "full": "FizzQ.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still {{tt|within 200 units|of their original location, estimated}} when the dash ends, he deals them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness.",
+        "'''Fizz''' can cast {{ai|Seastone Trident|Fizz}} and {{ai|Chum the Waters|Fizz}} during ''Urchin Strike'', but not {{ai|Playful|Fizz}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still <span class=\"title-tooltip\" title=\"of their original location, estimated\">within 200 units</span> when the dash ends, he deals them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Fizz</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Seastone Trident<template #content>Seastone Trident</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Chum the Waters<template #content>Chum the Waters</template></HtmlTooltip> during <i>Urchin Strike</i>, but not <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful<template #content>Playful</template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}"
+      ],
+      "notes": "* ''Urchin Strike'' can only go through walls if the target is on the other side.\n* '''Fizz''' will be automatically ordered to [[basic attack]] the target after ''Urchin Strike''.\n* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.\n* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.55
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                25,
+                40,
+                55,
+                70
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  25,
+                  40,
+                  55,
+                  70
+                ],
+                "player_total_ap": 0.55
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "FizzW",
       "name": "Seastone Trident",
@@ -291,86 +371,6 @@
         }
       ]
     },
-    "q1": {
-      "riotId": "FizzQ",
-      "name": "Urchin Strike",
-      "maxrank": 5,
-      "cooldown": [
-        8,
-        7.5,
-        7,
-        6.5,
-        6
-      ],
-      "cost": 50,
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 550",
-      "image": {
-        "full": "FizzQ.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still {{tt|within 200 units|of their original location, estimated}} when the dash ends, he deals them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness.",
-        "'''Fizz''' can cast {{ai|Seastone Trident|Fizz}} and {{ai|Chum the Waters|Fizz}} during ''Urchin Strike'', but not {{ai|Playful|Fizz}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still <span class=\"title-tooltip\" title=\"of their original location, estimated\">within 200 units</span> when the dash ends, he deals them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Fizz</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Seastone Trident<template #content>Seastone Trident</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Chum the Waters<template #content>Chum the Waters</template></HtmlTooltip> during <i>Urchin Strike</i>, but not <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful<template #content>Playful</template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}"
-      ],
-      "notes": "* ''Urchin Strike'' can only go through walls if the target is on the other side.\n* '''Fizz''' will be automatically ordered to [[basic attack]] the target after ''Urchin Strike''.\n* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.\n* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.55
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage",
-                "<SpellSpan :list=\"[10,25,40,55,70]\"></SpellSpan> <span class=\"ap\">(+ 55% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                10,
-                25,
-                40,
-                55,
-                70
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  10,
-                  25,
-                  40,
-                  55,
-                  70
-                ],
-                "player_total_ap": 0.55
-              }
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "FizzE",
       "name": "Playful",
@@ -484,6 +484,36 @@
           ]
         }
       ]
+    },
+    "e2": {
+      "riotId": "FizzE",
+      "name": "Trickster",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Location",
+      "target_range": 270,
+      "image": {
+        "full": "FizzE.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Fizz''' dismounts from his trident and {{tip|dash|dashes}} toward the target location in quick succession. Upon landing, he deals {{as|magic damage|magic damage}} to nearby enemies. The damage dealt is the same as {{ais|Playful|Fizz}}, but in a smaller radius, and without applying the {{tip|slow}}.",
+        "Both {{ais|Playful|Fizz}} and ''Trickster's'' {{tip|dash|dashes}} may be directed separately."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> dismounts from his trident and <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> toward the target location in quick succession. Upon landing, he deals <span class=\"magic-damage\">magic damage</span> to nearby enemies. The damage dealt is the same as <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful's<template #content>Playful</template></HtmlTooltip>, but in a smaller radius, and without applying the <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Both <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful's<template #content>Playful</template></HtmlTooltip> and <i>Trickster's</i> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> may be directed separately.",
+      "leveling": [],
+      "notes": "* ''Trickster'' does not count as an ability activation.\n* '''Fizz''' is {{tip|untargetable}} during ''Trickster's'' dash as well.\n* The splash occurs immediately if '''Fizz''' encounters terrain that cannot be dashed through (he has to be particularly close to the wall).",
+      "skillkey": "E",
+      "skillid": "e2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 90,95,100,105,110 as 90/95/100/105/110",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '16,14.5,13,11.5,10' as '16/14.5/13/11.5/10'",
+      "effects": []
     },
     "r1": {
       "riotId": "FizzR",
@@ -639,36 +669,6 @@
           ]
         }
       ]
-    },
-    "e2": {
-      "riotId": "FizzE",
-      "name": "Trickster",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 0,
-      "targeting": "Location",
-      "target_range": 270,
-      "image": {
-        "full": "FizzE.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fizz''' dismounts from his trident and {{tip|dash|dashes}} toward the target location in quick succession. Upon landing, he deals {{as|magic damage|magic damage}} to nearby enemies. The damage dealt is the same as {{ais|Playful|Fizz}}, but in a smaller radius, and without applying the {{tip|slow}}.",
-        "Both {{ais|Playful|Fizz}} and ''Trickster's'' {{tip|dash|dashes}} may be directed separately."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> dismounts from his trident and <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> toward the target location in quick succession. Upon landing, he deals <span class=\"magic-damage\">magic damage</span> to nearby enemies. The damage dealt is the same as <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful's<template #content>Playful</template></HtmlTooltip>, but in a smaller radius, and without applying the <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Both <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful's<template #content>Playful</template></HtmlTooltip> and <i>Trickster's</i> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> may be directed separately.",
-      "leveling": [],
-      "notes": "* ''Trickster'' does not count as an ability activation.\n* '''Fizz''' is {{tip|untargetable}} during ''Trickster's'' dash as well.\n* The splash occurs immediately if '''Fizz''' encounters terrain that cannot be dashed through (he has to be particularly close to the wall).",
-      "skillkey": "E",
-      "skillid": "e2",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 90,95,100,105,110 as 90/95/100/105/110",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '16,14.5,13,11.5,10' as '16/14.5/13/11.5/10'",
-      "effects": []
     }
   }
 }

@@ -75,6 +75,365 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "RumbleFlameThrower",
+      "name": "Flamespitter",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        8.667,
+        7.333,
+        6,
+        4.667,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "RumbleFlameThrower.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Rumble''' activates his flamethrower for 3 seconds, gaining 20 {{tip|Heat}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to all enemies in a cone in front of him, reduced against {{tip|minions}}.",
+        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Flamespitter's'' [[damage]] is increased by 50%."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rumble</b> activates his flamethrower for 3 seconds, gaining 20 <HtmlTooltip class=\"blue link\">Heat<template #content><div><h4>Heat<hr></h4><p>Description for keyword Heat</p></div></template></HtmlTooltip> and dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to all enemies in a cone in front of him, reduced against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rumble\">Danger Zone<template #content>Junkyard Titan 2</template></HtmlTooltip>:</span> <i>Flamespitter's</i> <a class=\"effect link\" title=\"damage\">damage</a> is increased by 50%.",
+      "leveling": [
+        "{{st|Total Magic Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AP)}}|Damage Per Tick|{{ap|{{#var:b1}}/12 to {{#var:b5}}/12|round=3}} {{as|(+ {{ap|{{#var:r}}/12|round=2}}% AP)}}}}\n{{st|Minion Damage Percentage|{{ap|{{#var:m1}} to {{#var:m5}}}}%|Total Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)}} {{as|(+ {{ap|{{#var:r}}*({{#var:m1}}/100) to {{#var:r}}*({{#var:m5}}/100)}}% AP)}}|Minion Damage Per Tick|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)/12|round=3}} {{as|(+ {{ap|({{#var:r}}*{{#var:m1}}/100 to {{#var:r}}*{{#var:m5}}/100)/12|round=3}}% AP)}}}}",
+        "{{st|Total Enhanced Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b5}}*1.5}} {{as|(+ {{ap|{{#var:r}}*1.5}}% AP)}}|Enhanced Damage Per Tick|{{ap|{{#var:b1}}*1.5/12 to {{#var:b5}}*1.5/12}} {{as|(+ {{ap|{{#var:r}}*1.5/12}}% AP)}}}}\n{{st|Total Enhanced Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)*1.5}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100*1.5 to {{#var:r}}*{{#var:m5}}/100*1.5}}% AP)}}|Minion Damage Per Tick|{{ap|(({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100))/12*1.5|round=4}} {{as|(+ {{ap|({{#var:r}}*{{#var:m1}}/100)/12*1.5 to ({{#var:r}}*{{#var:m5}}/100)/12*1.5}}% AP)}}}}"
+      ],
+      "notes": "* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|10 to 6}}|Starts on cast}}' as '0/8.667/7.333/6/4.667/0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minion Damage Percentage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan>%</span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Minion Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": null
+              },
+              {
+                "player_total_ap": [
+                  0
+                ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span>",
+                "Damage Per Tick",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
+              ],
+              [
+                "Minion Damage Percentage",
+                "<SpellSpan :list=\"[0]\"></SpellSpan>%",
+                "Total Minion Damage",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
+                "Minion Damage Per Tick",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Total Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  0
+                ],
+                "player_total_ap": [
+                  0
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Minion Damage Percentage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  0
+                ],
+                "player_total_ap": [
+                  0
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Enhanced Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Total Enhanced Minion Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Minion Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100)/12*1.5 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100)/12*1.5\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": [
+                  0
+                ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_total_ap": null
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Enhanced Damage",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
+                "Enhanced Damage Per Tick",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
+              ],
+              [
+                "Total Enhanced Minion Damage",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
+                "Minion Damage Per Tick",
+                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100)/12*1.5 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100)/12*1.5\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Total Enhanced Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  0
+                ],
+                "player_total_ap": []
+              }
+            },
+            {
+              "index": 1,
+              "title": "Total Enhanced Minion Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  0
+                ],
+                "player_total_ap": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "RumbleShield",
+      "name": "Scrap Shield",
+      "maxrank": 5,
+      "cooldown": 6,
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "RumbleShield.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Rumble''' {{tip|shield|shields}} himself for {{fd|1.5}} seconds, gaining 20 {{tip|Heat}}.",
+        "'''Rumble''' additionally gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{tt|1 to {{fd|1.32}} seconds.|See notes}}",
+        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Scrap Shield's'' shield strength and bonus movement speed are increased by 50%."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rumble</b> <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> himself for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, gaining 20 <HtmlTooltip class=\"blue link\">Heat<template #content><div><h4>Heat<hr></h4><p>Description for keyword Heat</p></div></template></HtmlTooltip>.<br /><b>Rumble</b> additionally gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for <span class=\"title-tooltip\" title=\"See notes\">1 to <span style=\"font-variant-numeric: tabular-nums;\">1.32</span> seconds.</span><br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rumble\">Danger Zone<template #content>Junkyard Titan 2</template></HtmlTooltip>:</span> <i>Scrap Shield's</i> shield strength and bonus movement speed are increased by 50%.",
+      "leveling": [
+        "{{st|Shield Strength|{{ap|60 to 200}} {{as|(+ 50% AP)}}}}",
+        "{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}",
+        "{{st|Enhanced Shield Strength|{{ap|60*1.5 to 200*1.5}} {{as|(+ 75% AP)}}}}\n{{st|Enhanced Bonus Movement Speed|{{ap|15*1.5 to 35*1.5}}%}}"
+      ],
+      "notes": "* The movement speed buff is supposed to last for 1 second, but due to a bug may last {{rutngt|0.25}} longer.\n** Like most buffs, the stat bonus is already only gained at the next stat update (every {{rutngt|0.25}}). Despite this, the duration still inconsistent.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Shield Strength",
+                "<SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                95,
+                130,
+                165,
+                200
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Shield Strength",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Movement Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Enhanced Shield Strength</span>: <span><SpellSpan :list=\"[90,142.5,195,247.5,300]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Enhanced Bonus Movement Speed</span>: <span><SpellSpan :list=\"[22.5,30,37.5,45,52.5]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              [
+                "Enhanced Shield Strength",
+                "<SpellSpan :list=\"[90,142.5,195,247.5,300]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
+              ],
+              [
+                "Enhanced Bonus Movement Speed",
+                "<SpellSpan :list=\"[22.5,30,37.5,45,52.5]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                90,
+                142.5,
+                195,
+                247.5,
+                300
+              ],
+              [
+                22.5,
+                30,
+                37.5,
+                45,
+                52.5
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Enhanced Shield Strength",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.75
+              }
+            },
+            {
+              "index": 1,
+              "title": "Enhanced Bonus Movement Speed",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.75
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "RumbleGrenade",
       "name": "Electro Harpoon",
@@ -400,365 +759,6 @@
                 "player_total_ap": [
                   0.35
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "RumbleShield",
-      "name": "Scrap Shield",
-      "maxrank": 5,
-      "cooldown": 6,
-      "cost": 0,
-      "targeting": "Auto",
-      "image": {
-        "full": "RumbleShield.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Rumble''' {{tip|shield|shields}} himself for {{fd|1.5}} seconds, gaining 20 {{tip|Heat}}.",
-        "'''Rumble''' additionally gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for {{tt|1 to {{fd|1.32}} seconds.|See notes}}",
-        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Scrap Shield's'' shield strength and bonus movement speed are increased by 50%."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rumble</b> <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> himself for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, gaining 20 <HtmlTooltip class=\"blue link\">Heat<template #content><div><h4>Heat<hr></h4><p>Description for keyword Heat</p></div></template></HtmlTooltip>.<br /><b>Rumble</b> additionally gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for <span class=\"title-tooltip\" title=\"See notes\">1 to <span style=\"font-variant-numeric: tabular-nums;\">1.32</span> seconds.</span><br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rumble\">Danger Zone<template #content>Junkyard Titan 2</template></HtmlTooltip>:</span> <i>Scrap Shield's</i> shield strength and bonus movement speed are increased by 50%.",
-      "leveling": [
-        "{{st|Shield Strength|{{ap|60 to 200}} {{as|(+ 50% AP)}}}}",
-        "{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}",
-        "{{st|Enhanced Shield Strength|{{ap|60*1.5 to 200*1.5}} {{as|(+ 75% AP)}}}}\n{{st|Enhanced Bonus Movement Speed|{{ap|15*1.5 to 35*1.5}}%}}"
-      ],
-      "notes": "* The movement speed buff is supposed to last for 1 second, but due to a bug may last {{rutngt|0.25}} longer.\n** Like most buffs, the stat bonus is already only gained at the next stat update (every {{rutngt|0.25}}). Despite this, the duration still inconsistent.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              }
-            ],
-            "st_slices": [
-              [
-                "Shield Strength",
-                "<SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                95,
-                130,
-                165,
-                200
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Shield Strength",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.5
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Bonus Movement Speed",
-                "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                15,
-                20,
-                25,
-                30,
-                35
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Movement Speed",
-              "damage_type": "none",
-              "ratios": {}
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Enhanced Shield Strength</span>: <span><SpellSpan :list=\"[90,142.5,195,247.5,300]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Enhanced Bonus Movement Speed</span>: <span><SpellSpan :list=\"[22.5,30,37.5,45,52.5]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.75
-              }
-            ],
-            "st_slices": [
-              [
-                "Enhanced Shield Strength",
-                "<SpellSpan :list=\"[90,142.5,195,247.5,300]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
-              ],
-              [
-                "Enhanced Bonus Movement Speed",
-                "<SpellSpan :list=\"[22.5,30,37.5,45,52.5]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                90,
-                142.5,
-                195,
-                247.5,
-                300
-              ],
-              [
-                22.5,
-                30,
-                37.5,
-                45,
-                52.5
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Enhanced Shield Strength",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.75
-              }
-            },
-            {
-              "index": 1,
-              "title": "Enhanced Bonus Movement Speed",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.75
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "RumbleFlameThrower",
-      "name": "Flamespitter",
-      "maxrank": 5,
-      "cooldown": [
-        0,
-        8.667,
-        7.333,
-        6,
-        4.667,
-        0
-      ],
-      "cost": 0,
-      "targeting": "Auto",
-      "image": {
-        "full": "RumbleFlameThrower.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 192,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Rumble''' activates his flamethrower for 3 seconds, gaining 20 {{tip|Heat}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to all enemies in a cone in front of him, reduced against {{tip|minions}}.",
-        "{{sbc|{{ai|Junkyard Titan 2|Rumble|Danger Zone}}:}} ''Flamespitter's'' [[damage]] is increased by 50%."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Rumble</b> activates his flamethrower for 3 seconds, gaining 20 <HtmlTooltip class=\"blue link\">Heat<template #content><div><h4>Heat<hr></h4><p>Description for keyword Heat</p></div></template></HtmlTooltip> and dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to all enemies in a cone in front of him, reduced against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Rumble\">Danger Zone<template #content>Junkyard Titan 2</template></HtmlTooltip>:</span> <i>Flamespitter's</i> <a class=\"effect link\" title=\"damage\">damage</a> is increased by 50%.",
-      "leveling": [
-        "{{st|Total Magic Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AP)}}|Damage Per Tick|{{ap|{{#var:b1}}/12 to {{#var:b5}}/12|round=3}} {{as|(+ {{ap|{{#var:r}}/12|round=2}}% AP)}}}}\n{{st|Minion Damage Percentage|{{ap|{{#var:m1}} to {{#var:m5}}}}%|Total Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)}} {{as|(+ {{ap|{{#var:r}}*({{#var:m1}}/100) to {{#var:r}}*({{#var:m5}}/100)}}% AP)}}|Minion Damage Per Tick|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)/12|round=3}} {{as|(+ {{ap|({{#var:r}}*{{#var:m1}}/100 to {{#var:r}}*{{#var:m5}}/100)/12|round=3}}% AP)}}}}",
-        "{{st|Total Enhanced Damage|{{ap|{{#var:b1}}*1.5 to {{#var:b5}}*1.5}} {{as|(+ {{ap|{{#var:r}}*1.5}}% AP)}}|Enhanced Damage Per Tick|{{ap|{{#var:b1}}*1.5/12 to {{#var:b5}}*1.5/12}} {{as|(+ {{ap|{{#var:r}}*1.5/12}}% AP)}}}}\n{{st|Total Enhanced Minion Damage|{{ap|({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100)*1.5}} {{as|(+ {{ap|{{#var:r}}*{{#var:m1}}/100*1.5 to {{#var:r}}*{{#var:m5}}/100*1.5}}% AP)}}|Minion Damage Per Tick|{{ap|(({{#var:b1}} to {{#var:b5}})*({{#var:m1}}/100 to {{#var:m5}}/100))/12*1.5|round=4}} {{as|(+ {{ap|({{#var:r}}*{{#var:m1}}/100)/12*1.5 to ({{#var:r}}*{{#var:m5}}/100)/12*1.5}}% AP)}}}}"
-      ],
-      "notes": "* '''Rumble''' will instantly turn to face the cursor if he is not moving when ''Flamespitter'' is cast.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|10 to 6}}|Starts on cast}}' as '0/8.667/7.333/6/4.667/0' and riot's value '10,9,8,7,6' as '10/9/8/7/6'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span></span></li><li><span class=\"blue\">Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minion Damage Percentage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan>%</span></li><li><span class=\"blue\">Total Minion Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Minion Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": null
-              },
-              {
-                "player_total_ap": [
-                  0
-                ]
-              },
-              {
-                "player_total_ap": []
-              },
-              {
-                "player_total_ap": []
-              }
-            ],
-            "st_slices": [
-              [
-                "Total Magic Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AP)</span>",
-                "Damage Per Tick",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
-              ],
-              [
-                "Minion Damage Percentage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan>%",
-                "Total Minion Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
-                "Minion Damage Per Tick",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Total Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  0
-                ],
-                "player_total_ap": [
-                  0
-                ]
-              }
-            },
-            {
-              "index": 1,
-              "title": "Minion Damage Percentage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  0
-                ],
-                "player_total_ap": [
-                  0
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Enhanced Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Enhanced Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Total Enhanced Minion Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Minion Damage Per Tick</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100)/12*1.5 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100)/12*1.5\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": [
-                  0
-                ]
-              },
-              {
-                "player_total_ap": []
-              },
-              {
-                "player_total_ap": []
-              },
-              {
-                "player_total_ap": null
-              }
-            ],
-            "st_slices": [
-              [
-                "Total Enhanced Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
-                "Enhanced Damage Per Tick",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>"
-              ],
-              [
-                "Total Enhanced Minion Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AP)</span>",
-                "Minion Damage Per Tick",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ap\">(+ <simple-tooltip class=\"red\" dname=\"ap (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>/100)/12*1.5 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip>*<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>/100)/12*1.5\">Error: SyntaxError: Invalid regular expression flags</simple-tooltip>% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Total Enhanced Damage",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  0
-                ],
-                "player_total_ap": []
-              }
-            },
-            {
-              "index": 1,
-              "title": "Total Enhanced Minion Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  0
-                ],
-                "player_total_ap": []
               }
             }
           ]

@@ -49,245 +49,6 @@
     "attackspeed": 0.736
   },
   "skills": {
-    "w1": {
-      "riotId": "ZacW",
-      "name": "Unstable Matter",
-      "maxrank": 5,
-      "cooldown": 5,
-      "cost": [
-        4,
-        0
-      ],
-      "costtype": "{{as|Current Health|health}}",
-      "targeting": "Auto",
-      "target_range": "{{tip|cr|icononly = true}} 350",
-      "image": {
-        "full": "ZacW.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}.",
-        "'''Zac''' grants {{tip|ghost|ghosting}} to monsters hit for 5 seconds.",
-        "''Unstable Matter's'' {{sti|cooldown}} is reduced by 1 second every time '''Zac''' picks up a {{ai|Cell Division|Zac}} chunk."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zac's</b> body explodes outward, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies, capped against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br /><b>Zac</b> grants <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghost<hr></h4><p>Description for keyword ghost</p></div></template></HtmlTooltip> to monsters hit for 5 seconds.<br /><i>Unstable Matter's</i> <span>cooldown</span> is reduced by 1 second every time <b>Zac</b> picks up a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Cell Division<template #content>Cell Division</template></HtmlTooltip> chunk.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|35 to 95}} {{as|(+ {{ap|4 to 8}}% {{as|(+ 4% per 100 AP)}} of target's '''maximum''' health)}}|Capped Damage|{{ap|225 to 285}}}}"
-      ],
-      "notes": "* No additional information.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|4%|health}} as 4/0 and riot's value 0,0,0,0,0 as 0",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><SpellSpan :list=\"[225,240,255,270,285]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 41
-              },
-              {
-                "target_total_ap": [
-                  2.25,
-                  2.4,
-                  2.55,
-                  2.7,
-                  2.85
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's '''maximum''' health)</span>",
-                "Capped Damage",
-                "<SpellSpan :list=\"[225,240,255,270,285]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                35,
-                50,
-                65,
-                80,
-                95
-              ],
-              [
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  35,
-                  50,
-                  65,
-                  80,
-                  95
-                ],
-                "player_total_ap": 41,
-                "target_total_ap": [
-                  2.25,
-                  2.4,
-                  2.55,
-                  2.7,
-                  2.85
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "ZacR",
-      "name": "Let's Bounce!",
-      "maxrank": 3,
-      "cooldown": [
-        0,
-        100,
-        70,
-        0
-      ],
-      "cost": 0,
-      "targeting": "Auto",
-      "image": {
-        "full": "ZacR.png",
-        "sprite": "spell15.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} Increases {{ais|Cell Division|Zac}} healing from chunks.",
-        "{{sbc|Active:}} '''Zac''' bounces after the cast time, then bounces 3 additional times each second over 3 seconds, during which he also gains {{as|{{pp|type=duration|key=%|20 to 50 for 7|0 to 3}} {{sti|'''bonus''' movement speed}}}} but becomes unable to declare basic attacks and use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}}.",
-        "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} over 1 second and {{tip|slow|slowing}} them by 20% for the same duration.",
-        "Enemies can be hit by multiple bounces, but ones beyond the first deal 50% damage to them and do not apply the {{tip|airborne|knock back}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Increases <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Cell Division's<template #content>Cell Division</template></HtmlTooltip> healing from chunks.<br /><span class=\"sbc\">Active:</span> <b>Zac</b> bounces after the cast time, then bounces 3 additional times each second over 3 seconds, during which he also gains <span class=\"movement-speed\"><span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span> but becomes unable to declare basic attacks and use <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Stretching Strikes<template #content>Stretching Strikes</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Elastic Slingshot<template #content>Elastic Slingshot</template></HtmlTooltip>.<br />Each bounce deals <span class=\"magic-damage\">magic damage</span> to all nearby enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> over 1 second and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 20% for the same duration.<br />Enemies can be hit by multiple bounces, but ones beyond the first deal 50% damage to them and do not apply the <HtmlTooltip class=\"blue link\">knock back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Chunk Healing|{{as|{{ap|5 to 7}}% of his '''maximum''' health}}}}",
-        "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* {{tip|Spell shield}} only blocks a single instance of damage.\n* Entering {{tip|stasis (buff)|stasis}} will end ''Let's Bounce!'' prematurely.\n* While ''Let's Bounce!'' is active '''Zac''' consumes ''Chunks'' withing {{tip|cr|icononly = true}} 300 range.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|130 to 100}}|Starts on-cast}}' as '0/100/70/0' and riot's value '130,115,100' as '130/115/100'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Chunk Healing</span>: <span><span class=\"health\"><SpellSpan :list=\"[5,6,7]\"></SpellSpan>% of his <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_hp": [
-                  0.05,
-                  0.06,
-                  0.07
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Chunk Healing",
-                "<span class=\"health\"><SpellSpan :list=\"[5,6,7]\"></SpellSpan>% of his '''maximum''' health</span>"
-              ]
-            ],
-            "ap_progressions": [
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Chunk Healing",
-              "damage_type": "magic",
-              "ratios": {
-                "player_total_hp": [
-                  0.05,
-                  0.06,
-                  0.07
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[140,210,280]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[70,105,140]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[350,525,700]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.4
-              },
-              {
-                "player_total_ap": 0.2
-              },
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[140,210,280]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
-                "Reduced Damage",
-                "<SpellSpan :list=\"[70,105,140]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
-                "Maximum Single-Target Damage",
-                "<SpellSpan :list=\"[350,525,700]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                140,
-                210,
-                280
-              ],
-              [
-                70,
-                105,
-                140
-              ],
-              [
-                350,
-                525,
-                700
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  140,
-                  210,
-                  280
-                ],
-                "player_total_ap": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Cell Division",
@@ -424,6 +185,111 @@
         }
       ]
     },
+    "w1": {
+      "riotId": "ZacW",
+      "name": "Unstable Matter",
+      "maxrank": 5,
+      "cooldown": 5,
+      "cost": [
+        4,
+        0
+      ],
+      "costtype": "{{as|Current Health|health}}",
+      "targeting": "Auto",
+      "target_range": "{{tip|cr|icononly = true}} 350",
+      "image": {
+        "full": "ZacW.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Zac's''' body explodes outward, dealing {{as|magic damage}} to all nearby enemies, capped against {{tip|minions}} and {{tip|monsters}}.",
+        "'''Zac''' grants {{tip|ghost|ghosting}} to monsters hit for 5 seconds.",
+        "''Unstable Matter's'' {{sti|cooldown}} is reduced by 1 second every time '''Zac''' picks up a {{ai|Cell Division|Zac}} chunk."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Zac's</b> body explodes outward, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies, capped against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br /><b>Zac</b> grants <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghost<hr></h4><p>Description for keyword ghost</p></div></template></HtmlTooltip> to monsters hit for 5 seconds.<br /><i>Unstable Matter's</i> <span>cooldown</span> is reduced by 1 second every time <b>Zac</b> picks up a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Cell Division<template #content>Cell Division</template></HtmlTooltip> chunk.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|35 to 95}} {{as|(+ {{ap|4 to 8}}% {{as|(+ 4% per 100 AP)}} of target's '''maximum''' health)}}|Capped Damage|{{ap|225 to 285}}}}"
+      ],
+      "notes": "* No additional information.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|4%|health}} as 4/0 and riot's value 0,0,0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Capped Damage</span>: <span><SpellSpan :list=\"[225,240,255,270,285]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 41
+              },
+              {
+                "target_total_ap": [
+                  2.25,
+                  2.4,
+                  2.55,
+                  2.7,
+                  2.85
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[35,50,65,80,95]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4,5,6,7,8]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span> of target's '''maximum''' health)</span>",
+                "Capped Damage",
+                "<SpellSpan :list=\"[225,240,255,270,285]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                35,
+                50,
+                65,
+                80,
+                95
+              ],
+              [
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  35,
+                  50,
+                  65,
+                  80,
+                  95
+                ],
+                "player_total_ap": 41,
+                "target_total_ap": [
+                  2.25,
+                  2.4,
+                  2.55,
+                  2.7,
+                  2.85
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "ZacE",
       "name": "Elastic Slingshot",
@@ -543,6 +409,140 @@
                   260
                 ],
                 "player_total_ap": 0.9
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "ZacR",
+      "name": "Let's Bounce!",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        100,
+        70,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "ZacR.png",
+        "sprite": "spell15.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} Increases {{ais|Cell Division|Zac}} healing from chunks.",
+        "{{sbc|Active:}} '''Zac''' bounces after the cast time, then bounces 3 additional times each second over 3 seconds, during which he also gains {{as|{{pp|type=duration|key=%|20 to 50 for 7|0 to 3}} {{sti|'''bonus''' movement speed}}}} but becomes unable to declare basic attacks and use {{ai|Stretching Strikes|Zac}} and {{ai|Elastic Slingshot|Zac}}.",
+        "Each bounce deals {{as|magic damage}} to all nearby enemies, {{tip|airborne|knocking them back}} over 1 second and {{tip|slow|slowing}} them by 20% for the same duration.",
+        "Enemies can be hit by multiple bounces, but ones beyond the first deal 50% damage to them and do not apply the {{tip|airborne|knock back}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Increases <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Cell Division's<template #content>Cell Division</template></HtmlTooltip> healing from chunks.<br /><span class=\"sbc\">Active:</span> <b>Zac</b> bounces after the cast time, then bounces 3 additional times each second over 3 seconds, during which he also gains <span class=\"movement-speed\"><span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span> but becomes unable to declare basic attacks and use <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Stretching Strikes<template #content>Stretching Strikes</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Zac\">Elastic Slingshot<template #content>Elastic Slingshot</template></HtmlTooltip>.<br />Each bounce deals <span class=\"magic-damage\">magic damage</span> to all nearby enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> over 1 second and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 20% for the same duration.<br />Enemies can be hit by multiple bounces, but ones beyond the first deal 50% damage to them and do not apply the <HtmlTooltip class=\"blue link\">knock back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Chunk Healing|{{as|{{ap|5 to 7}}% of his '''maximum''' health}}}}",
+        "{{st|Magic Damage|{{ap|140 to 280}} {{as|(+ 40% AP)}}|Reduced Damage|{{ap|140/2 to 280/2}} {{as|(+ 20% AP)}}|Maximum Single-Target Damage|{{ap|140*2.5 to 280*2.5}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* {{tip|Spell shield}} only blocks a single instance of damage.\n* Entering {{tip|stasis (buff)|stasis}} will end ''Let's Bounce!'' prematurely.\n* While ''Let's Bounce!'' is active '''Zac''' consumes ''Chunks'' withing {{tip|cr|icononly = true}} 300 range.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|130 to 100}}|Starts on-cast}}' as '0/100/70/0' and riot's value '130,115,100' as '130/115/100'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Chunk Healing</span>: <span><span class=\"health\"><SpellSpan :list=\"[5,6,7]\"></SpellSpan>% of his <b>maximum</b> health</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_hp": [
+                  0.05,
+                  0.06,
+                  0.07
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Chunk Healing",
+                "<span class=\"health\"><SpellSpan :list=\"[5,6,7]\"></SpellSpan>% of his '''maximum''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Chunk Healing",
+              "damage_type": "magic",
+              "ratios": {
+                "player_total_hp": [
+                  0.05,
+                  0.06,
+                  0.07
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[140,210,280]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[70,105,140]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[350,525,700]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.2
+              },
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[140,210,280]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+                "Reduced Damage",
+                "<SpellSpan :list=\"[70,105,140]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>",
+                "Maximum Single-Target Damage",
+                "<SpellSpan :list=\"[350,525,700]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                140,
+                210,
+                280
+              ],
+              [
+                70,
+                105,
+                140
+              ],
+              [
+                350,
+                525,
+                700
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  140,
+                  210,
+                  280
+                ],
+                "player_total_ap": 1
               }
             }
           ]

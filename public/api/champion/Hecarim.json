@@ -73,6 +73,102 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "HecarimRapidSlash",
+      "name": "Rampage",
+      "maxrank": 5,
+      "cooldown": 4,
+      "cost": [
+        28,
+        31,
+        34,
+        37,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "HecarimRapidSlash.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 288,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Hecarim''' cleaves his glaive around himself, dealing {{as|physical damage}} to nearby enemies, reduced to 60% against {{tip|minions}}.",
+        "If '''Hecarim''' damages at least one enemy with ''Rampage'', he gains a [[buff]] for 8 seconds, [[stack]]ing up to two times, with the duration refreshing on subsequent damaging hits. The buff increases the damage of ''Rampage'' by 2% {{as|(+ 3% of 100 '''bonus''' AD)}} and reduces the '''base''' cooldown by 1, up to a 4% {{as|(+ 6% of 100 '''bonus''' AD)}} damage increase and a reduction in 2 seconds of the '''base''' cooldown at two stacks."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Hecarim</b> cleaves his glaive around himself, dealing <span class=\"physical-damage\">physical damage</span> to nearby enemies, reduced to 60% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />If <b>Hecarim</b> damages at least one enemy with <i>Rampage</i>, he gains a <a class=\"effect link\" title=\"buff\">buff</a> for 8 seconds, <a class=\"effect link\" title=\"stack\">stack</a>ing up to two times, with the duration refreshing on subsequent damaging hits. The buff increases the damage of <i>Rampage</i> by 2% <span class=\"ad\">(+ 3% of 100 <b>bonus</b> AD)</span> and reduces the <b>base</b> cooldown by 1, up to a 4% <span class=\"ad\">(+ 6% of 100 <b>bonus</b> AD)</span> damage increase and a reduction in 2 seconds of the <b>base</b> cooldown at two stacks.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 208}} {{as|(+ 75% '''bonus''' AD)}}|Minion damage|{{ap|60*0.6 to 208*0.6}} {{as|(+ {{ap|75*0.6}}% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* No additional notes.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,97,134,171,208]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minion damage</span>: <span><SpellSpan :list=\"[36,58.2,80.4,102.6,124.8]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.75
+              },
+              {
+                "player_bonus_ad": [
+                  0.45
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,97,134,171,208]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
+                "Minion damage",
+                "<SpellSpan :list=\"[36,58.2,80.4,102.6,124.8]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                97,
+                134,
+                171,
+                208
+              ],
+              [
+                36,
+                58.2,
+                80.4,
+                102.6,
+                124.8
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  97,
+                  134,
+                  171,
+                  208
+                ],
+                "player_bonus_ad": [
+                  0.45
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "HecarimW",
       "name": "Spirit of Dread",
@@ -210,177 +306,6 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "HecarimUlt",
-      "name": "Onslaught of Shadows",
-      "maxrank": 3,
-      "cooldown": [
-        140,
-        120,
-        100
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 1000,
-      "image": {
-        "full": "HecarimUlt.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 432,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Hecarim''' summons spectral riders and {{tip|dashes}} with {{tip|displacement immunity}} in the target direction with them, dealing {{as|magic damage}} to and {{tip|sight|revealing}} all enemies in their path for {{fd|2.5}} seconds.",
-        "Enemies within range of where '''Hecarim''' stops are also made to {{tip|flee}} from him for {{pp|type=distance traveled|0.75 to 2 for 11|0 to 1000}} seconds, also gradually {{tip|slow|slowing}} them by up to 99% over the duration. ''The slow's strength cannot be reduced and is based on how far the affected units are from '''Hecarim''', having no slow at all from very close range.''",
-        "The wave of ''spectral riders'' travels through ''Onslaught of Shadows's'' full length, regardless of where '''Hecarim''' himself stops."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Hecarim</b> summons spectral riders and <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> in the target direction with them, dealing <span class=\"magic-damage\">magic damage</span> to and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> all enemies in their path for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Enemies within range of where <b>Hecarim</b> stops are also made to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for <span class=\"title-tooltip\" title=\"\">0 to 1000 ‒ undefined</span> seconds, also gradually <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by up to 99% over the duration. <i>The slow's strength cannot be reduced and is based on how far the affected units are from <b>Hecarim</b>, having no slow at all from very close range.</i><br />The wave of <i>spectral riders</i> travels through <i>Onslaught of Shadows's</i> full length, regardless of where <b>Hecarim</b> himself stops.",
-      "leveling": [
-        "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic damage",
-                "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                150,
-                250,
-                350
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  150,
-                  250,
-                  350
-                ],
-                "player_total_ap": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "HecarimRapidSlash",
-      "name": "Rampage",
-      "maxrank": 5,
-      "cooldown": 4,
-      "cost": [
-        28,
-        31,
-        34,
-        37,
-        40
-      ],
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "HecarimRapidSlash.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 288,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Hecarim''' cleaves his glaive around himself, dealing {{as|physical damage}} to nearby enemies, reduced to 60% against {{tip|minions}}.",
-        "If '''Hecarim''' damages at least one enemy with ''Rampage'', he gains a [[buff]] for 8 seconds, [[stack]]ing up to two times, with the duration refreshing on subsequent damaging hits. The buff increases the damage of ''Rampage'' by 2% {{as|(+ 3% of 100 '''bonus''' AD)}} and reduces the '''base''' cooldown by 1, up to a 4% {{as|(+ 6% of 100 '''bonus''' AD)}} damage increase and a reduction in 2 seconds of the '''base''' cooldown at two stacks."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Hecarim</b> cleaves his glaive around himself, dealing <span class=\"physical-damage\">physical damage</span> to nearby enemies, reduced to 60% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />If <b>Hecarim</b> damages at least one enemy with <i>Rampage</i>, he gains a <a class=\"effect link\" title=\"buff\">buff</a> for 8 seconds, <a class=\"effect link\" title=\"stack\">stack</a>ing up to two times, with the duration refreshing on subsequent damaging hits. The buff increases the damage of <i>Rampage</i> by 2% <span class=\"ad\">(+ 3% of 100 <b>bonus</b> AD)</span> and reduces the <b>base</b> cooldown by 1, up to a 4% <span class=\"ad\">(+ 6% of 100 <b>bonus</b> AD)</span> damage increase and a reduction in 2 seconds of the <b>base</b> cooldown at two stacks.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|60 to 208}} {{as|(+ 75% '''bonus''' AD)}}|Minion damage|{{ap|60*0.6 to 208*0.6}} {{as|(+ {{ap|75*0.6}}% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* No additional notes.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,97,134,171,208]\"></SpellSpan> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Minion damage</span>: <span><SpellSpan :list=\"[36,58.2,80.4,102.6,124.8]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.75
-              },
-              {
-                "player_bonus_ad": [
-                  0.45
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[60,97,134,171,208]\"></SpellSpan> <span class=\"ad\">(+ 75% '''bonus''' AD)</span>",
-                "Minion damage",
-                "<SpellSpan :list=\"[36,58.2,80.4,102.6,124.8]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[45]\"></SpellSpan>% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                97,
-                134,
-                171,
-                208
-              ],
-              [
-                36,
-                58.2,
-                80.4,
-                102.6,
-                124.8
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  97,
-                  134,
-                  171,
-                  208
-                ],
-                "player_bonus_ad": [
-                  0.45
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "HecarimRamp",
       "name": "Devastating Charge",
@@ -475,6 +400,81 @@
                 "player_bonus_ad": [
                   1.1
                 ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "HecarimUlt",
+      "name": "Onslaught of Shadows",
+      "maxrank": 3,
+      "cooldown": [
+        140,
+        120,
+        100
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 1000,
+      "image": {
+        "full": "HecarimUlt.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 432,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Hecarim''' summons spectral riders and {{tip|dashes}} with {{tip|displacement immunity}} in the target direction with them, dealing {{as|magic damage}} to and {{tip|sight|revealing}} all enemies in their path for {{fd|2.5}} seconds.",
+        "Enemies within range of where '''Hecarim''' stops are also made to {{tip|flee}} from him for {{pp|type=distance traveled|0.75 to 2 for 11|0 to 1000}} seconds, also gradually {{tip|slow|slowing}} them by up to 99% over the duration. ''The slow's strength cannot be reduced and is based on how far the affected units are from '''Hecarim''', having no slow at all from very close range.''",
+        "The wave of ''spectral riders'' travels through ''Onslaught of Shadows's'' full length, regardless of where '''Hecarim''' himself stops."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Hecarim</b> summons spectral riders and <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> in the target direction with them, dealing <span class=\"magic-damage\">magic damage</span> to and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> all enemies in their path for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Enemies within range of where <b>Hecarim</b> stops are also made to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for <span class=\"title-tooltip\" title=\"\">0 to 1000 ‒ undefined</span> seconds, also gradually <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by up to 99% over the duration. <i>The slow's strength cannot be reduced and is based on how far the affected units are from <b>Hecarim</b>, having no slow at all from very close range.</i><br />The wave of <i>spectral riders</i> travels through <i>Onslaught of Shadows's</i> full length, regardless of where <b>Hecarim</b> himself stops.",
+      "leveling": [
+        "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* No additional details.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic damage",
+                "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                150,
+                250,
+                350
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  250,
+                  350
+                ],
+                "player_total_ap": 1
               }
             }
           ]

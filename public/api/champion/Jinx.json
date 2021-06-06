@@ -49,86 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "e1": {
-      "riotId": "JinxE",
-      "name": "Flame Chompers!",
-      "maxrank": 5,
-      "cooldown": [
-        24,
-        20.5,
-        17,
-        13.5,
-        10
-      ],
-      "cost": 90,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 900,
-      "image": {
-        "full": "JinxE.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 384,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jinx''' tosses out 3 ''Chompers'' at the target location that land after {{fd|0.4}} seconds in a perpendicular line, arming after {{fd|0.5}} seconds and exploding after 5 seconds, dealing {{as|magic damage}} to all enemies within a small area.",
-        "A ''Chomper'' prematurely explodes on contact with an enemy {{tip|champion|champion}}, {{tip|knockdown|knocking them down}} and {{tip|root|rooting}} them for {{fd|1.5}} seconds. An enemy champion can only set off and be damaged by one ''Chomper''."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jinx</b> tosses out 3 <i>Chompers</i> at the target location that land after <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds in a perpendicular line, arming after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds and exploding after 5 seconds, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within a small area.<br />A <i>Chomper</i> prematurely explodes on contact with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">knocking them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds. An enemy champion can only set off and be damaged by one <i>Chomper</i>.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* ''Chompers'' will halt when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.\n* {{tip|Spell shield}} does not negate the explosion.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                70,
-                120,
-                170,
-                220,
-                270
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  70,
-                  120,
-                  170,
-                  220,
-                  270
-                ],
-                "player_total_ap": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
     "i1": {
       "riotId": "",
       "name": "Get Excited!",
@@ -153,6 +73,115 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "q1": {
+      "riotId": "JinxQ",
+      "name": "Switcheroo!",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 20,
+      "costtype": "Mana per attack with {{ai|Switcheroo!|Jinx|Fishbones}}",
+      "targeting": "Auto",
+      "image": {
+        "full": "JinxQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 288,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Toggle:}} '''Jinx''' switches between {{cci|Pow-Pow.png|Jinx#Pow-Pow|Pow-Pow}}, her minigun, and {{cci|Fishbones.png|Jinx#Fishbones|Fishbones}}, her rocket launcher.",
+        "{{sbc|Pow-Pow:}} {{tip|basic attack|Basic attacks}} with '''Pow-Pow''' grant '''Jinx''' a [[stack]] of ''{{ai|Rev'd up}}'' for {{fd|2.5}} seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks with '''Pow-Pow'''. ''Rev'd up'' grants {{sti|{{as|'''bonus''' attack speed}}}}, with the first stack being twice as potent as the others. Stacks decay one at a time as they time-out.",
+        "{{sbc|Fishbones:}} Basic attacks with '''Fishbones''' cost {{sti|{{as|mana}}}} {{tip|on-attack}} to deal {{as|110% AD}} {{as|'''modified''' physical damage}} to the primary target as well as all secondary targets in an area around them. The damage is affected by {{tip|critical strike}} modifiers. While using '''Fishbones''',  '''Jinx''' gains {{sti|range|'''bonus''' range}} but loses {{sti|{{as|10% of her '''bonus''' attack speed}}}}.",
+        "Attacks with '''Fishbones''' will not refresh the stack timer on ''Rev'd up'' and only the first attack after switching to it will benefit from ''Rev'd up's'' {{as|'''bonus''' attack speed}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Toggle:</span> <b>Jinx</b> switches between <simple-tooltip class=\"capture-unknown\" dname=\"cci Pow-Pow.png Jinx#Pow-Pow Pow-Pow\">Unknown value: cci Pow-Pow.png Jinx#Pow-Pow Pow-Pow</simple-tooltip>, her minigun, and <simple-tooltip class=\"capture-unknown\" dname=\"cci Fishbones.png Jinx#Fishbones Fishbones\">Unknown value: cci Fishbones.png Jinx#Fishbones Fishbones</simple-tooltip>, her rocket launcher.<br /><span class=\"sbc\">Pow-Pow:</span> <HtmlTooltip class=\"blue link\">Basic attacks<template #content><div><h4>basic attack<hr></h4><p>Description for keyword basic attack</p></div></template></HtmlTooltip> with <b>Pow-Pow</b> grant <b>Jinx</b> a <a class=\"effect link\" title=\"stack\">stack</a> of <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Rev'd up<template #content>Rev'd up</template></HtmlTooltip></i> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks with <b>Pow-Pow</b>. <i>Rev'd up</i> grants <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span>, with the first stack being twice as potent as the others. Stacks decay one at a time as they time-out.<br /><span class=\"sbc\">Fishbones:</span> Basic attacks with <b>Fishbones</b> cost <span><span class=\"mana\">mana</span></span> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> to deal <span class=\"ad\">110% AD</span> <span class=\"physical-damage\"><b>modified</b> physical damage</span> to the primary target as well as all secondary targets in an area around them. The damage is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> modifiers. While using <b>Fishbones</b>,  <b>Jinx</b> gains <span><b>bonus</b> range</span> but loses <span><span class=\"attack-speed\">10% of her <b>bonus</b> attack speed</span></span>.<br />Attacks with <b>Fishbones</b> will not refresh the stack timer on <i>Rev'd up</i> and only the first attack after switching to it will benefit from <i>Rev'd up's</i> <span class=\"attack-speed\"><b>bonus</b> attack speed</span>.",
+      "leveling": [
+        "{{st|Maximum Attack Speed|{{ap|30 to 130}}%}}",
+        "{{st|Bonus Range|{{ap|100 to 200}}}}"
+      ],
+      "notes": "* Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* '''Jinx's''' first attack after switching to {{ai|Fishbones||''Fishbones''}} can be triggered after {{fd|0.4}} seconds, instead of using the attack timer.\n* Despite '''Jinx''' starting the game using {{ai|Pow-Pow||''Pow-Pow''}} she doesn't receive any bonus attack speed until ''Switcheroo!'' has been learned.\n* {{ai|Fishbones||''Fishbones''}} splash damage affects structures (minions will target '''Jinx''') but does not affect targets if '''Jinx's''' attacks are {{tip|block|blocked}}, {{tip|dodge|dodged}}, or {{tip|blind|missed}}.\n* With {{ii|Runaan's Hurricane}} {{ai|Pow-Pow||''Pow-Pow''}} generates one stack per enemy hit.\n* Each of {{iis|Runaan's Hurricane}} additional bolts apply {{ai|Fishbones||Fishbones'}} splash damage, which stacks with each other.\n* Both weapons deal {{tip|basic damage}} to their primary target (this includes the increased damage of {{ai|Fishbones||''Fishbones''}}), which applies {{sti|life steal}} based on the damage dealt (post-mitigation) as usual.\n* The splash damage of {{ai|Fishbones||''Fishbones''}} is based on the pre-mitigation damage done to the primary target (which includes critical strikes), and is not considered {{as|'''modified''' physical damage}}. It deals {{tip|default damage}}: It doesn't apply {{sti|life steal}} or [[on-hit effect]]s.\n** {{ai|Fishbones||''Fishbones''}} damage: {{as|{{#expr:100+10}}% AD}} (100% + 10%).\n** {{ai|Fishbones||''Fishbones''}} critical strike damage: {{as|{{fd|{{#expr:(100+10)*1.75}}}}% AD}} ((100% + 10%){{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} critical strike damage with {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:(100+10)*2.1}}}}% AD}} ((100% + 10%){{times}}{{fd|2.1}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} damage: {{as|{{#expr:(100+10)*0.4}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} critical strike damage: {{as|{{fd|{{#expr:(100+10)*0.4*1.75}}}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}{{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} critical strike damage with {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:(100+10)*0.4*2.1}}}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}{{times}}{{fd|2.1}}).\n** {{ai|Fishbones||''Fishbones''}} potential damage on stacked enemies with {{ii|Runaan's Hurricane}}: {{as|{{fd|{{#expr:(100+10)+(100+10)*0.4*2}}}}% AD}} (110% + 44% + 44%).\n** {{ai|Fishbones||''Fishbones''}} potential critical strike damage on stacked enemies with {{ii|Runaan's Hurricane}}: {{as|{{fd|{{#expr:((100+10)+(100+10)*0.4*2)*1.75}}}}% AD}} ((110% + 44% + 44%){{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} potential critical strike damage on stacked enemies with {{ii|Runaan's Hurricane}} and {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:((100+10)+(100+10)*0.4*2)*2.1}}}}% AD}} ((110% + 44% + 44%){{times}}{{fd|2.1}}).",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '0.9,0.9,0.9,0.9,0.9' as '0.9'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Attack Speed</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Maximum Attack Speed",
+                "<SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                55,
+                80,
+                105,
+                130
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Maximum Attack Speed",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Range",
+                "<SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                100,
+                125,
+                150,
+                175,
+                200
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Range",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  100,
+                  125,
+                  150,
+                  175,
+                  200
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     "w1": {
       "riotId": "JinxW",
@@ -259,6 +288,86 @@
                   70
                 ],
                 "player_total_ad": 1.6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "JinxE",
+      "name": "Flame Chompers!",
+      "maxrank": 5,
+      "cooldown": [
+        24,
+        20.5,
+        17,
+        13.5,
+        10
+      ],
+      "cost": 90,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 900,
+      "image": {
+        "full": "JinxE.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 384,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jinx''' tosses out 3 ''Chompers'' at the target location that land after {{fd|0.4}} seconds in a perpendicular line, arming after {{fd|0.5}} seconds and exploding after 5 seconds, dealing {{as|magic damage}} to all enemies within a small area.",
+        "A ''Chomper'' prematurely explodes on contact with an enemy {{tip|champion|champion}}, {{tip|knockdown|knocking them down}} and {{tip|root|rooting}} them for {{fd|1.5}} seconds. An enemy champion can only set off and be damaged by one ''Chomper''."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jinx</b> tosses out 3 <i>Chompers</i> at the target location that land after <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds in a perpendicular line, arming after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds and exploding after 5 seconds, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within a small area.<br />A <i>Chomper</i> prematurely explodes on contact with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">knocking them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds. An enemy champion can only set off and be damaged by one <i>Chomper</i>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* ''Chompers'' will halt when encountering {{ai|Wind Wall|Yasuo}} and {{ai|Unbreakable|Braum}}.\n* {{tip|Spell shield}} does not negate the explosion.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                120,
+                170,
+                220,
+                270
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  120,
+                  170,
+                  220,
+                  270
+                ],
+                "player_total_ap": 1
               }
             }
           ]
@@ -409,115 +518,6 @@
                 ],
                 "player_bonus_ad": [],
                 "target_missing_ap": 253.508
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "JinxQ",
-      "name": "Switcheroo!",
-      "maxrank": 5,
-      "cooldown": 0,
-      "cost": 20,
-      "costtype": "Mana per attack with {{ai|Switcheroo!|Jinx|Fishbones}}",
-      "targeting": "Auto",
-      "image": {
-        "full": "JinxQ.png",
-        "sprite": "spell5.png",
-        "group": "spell",
-        "x": 288,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Toggle:}} '''Jinx''' switches between {{cci|Pow-Pow.png|Jinx#Pow-Pow|Pow-Pow}}, her minigun, and {{cci|Fishbones.png|Jinx#Fishbones|Fishbones}}, her rocket launcher.",
-        "{{sbc|Pow-Pow:}} {{tip|basic attack|Basic attacks}} with '''Pow-Pow''' grant '''Jinx''' a [[stack]] of ''{{ai|Rev'd up}}'' for {{fd|2.5}} seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks with '''Pow-Pow'''. ''Rev'd up'' grants {{sti|{{as|'''bonus''' attack speed}}}}, with the first stack being twice as potent as the others. Stacks decay one at a time as they time-out.",
-        "{{sbc|Fishbones:}} Basic attacks with '''Fishbones''' cost {{sti|{{as|mana}}}} {{tip|on-attack}} to deal {{as|110% AD}} {{as|'''modified''' physical damage}} to the primary target as well as all secondary targets in an area around them. The damage is affected by {{tip|critical strike}} modifiers. While using '''Fishbones''',  '''Jinx''' gains {{sti|range|'''bonus''' range}} but loses {{sti|{{as|10% of her '''bonus''' attack speed}}}}.",
-        "Attacks with '''Fishbones''' will not refresh the stack timer on ''Rev'd up'' and only the first attack after switching to it will benefit from ''Rev'd up's'' {{as|'''bonus''' attack speed}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Toggle:</span> <b>Jinx</b> switches between <simple-tooltip class=\"capture-unknown\" dname=\"cci Pow-Pow.png Jinx#Pow-Pow Pow-Pow\">Unknown value: cci Pow-Pow.png Jinx#Pow-Pow Pow-Pow</simple-tooltip>, her minigun, and <simple-tooltip class=\"capture-unknown\" dname=\"cci Fishbones.png Jinx#Fishbones Fishbones\">Unknown value: cci Fishbones.png Jinx#Fishbones Fishbones</simple-tooltip>, her rocket launcher.<br /><span class=\"sbc\">Pow-Pow:</span> <HtmlTooltip class=\"blue link\">Basic attacks<template #content><div><h4>basic attack<hr></h4><p>Description for keyword basic attack</p></div></template></HtmlTooltip> with <b>Pow-Pow</b> grant <b>Jinx</b> a <a class=\"effect link\" title=\"stack\">stack</a> of <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Rev'd up<template #content>Rev'd up</template></HtmlTooltip></i> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks with <b>Pow-Pow</b>. <i>Rev'd up</i> grants <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span>, with the first stack being twice as potent as the others. Stacks decay one at a time as they time-out.<br /><span class=\"sbc\">Fishbones:</span> Basic attacks with <b>Fishbones</b> cost <span><span class=\"mana\">mana</span></span> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> to deal <span class=\"ad\">110% AD</span> <span class=\"physical-damage\"><b>modified</b> physical damage</span> to the primary target as well as all secondary targets in an area around them. The damage is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> modifiers. While using <b>Fishbones</b>,  <b>Jinx</b> gains <span><b>bonus</b> range</span> but loses <span><span class=\"attack-speed\">10% of her <b>bonus</b> attack speed</span></span>.<br />Attacks with <b>Fishbones</b> will not refresh the stack timer on <i>Rev'd up</i> and only the first attack after switching to it will benefit from <i>Rev'd up's</i> <span class=\"attack-speed\"><b>bonus</b> attack speed</span>.",
-      "leveling": [
-        "{{st|Maximum Attack Speed|{{ap|30 to 130}}%}}",
-        "{{st|Bonus Range|{{ap|100 to 200}}}}"
-      ],
-      "notes": "* Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* '''Jinx's''' first attack after switching to {{ai|Fishbones||''Fishbones''}} can be triggered after {{fd|0.4}} seconds, instead of using the attack timer.\n* Despite '''Jinx''' starting the game using {{ai|Pow-Pow||''Pow-Pow''}} she doesn't receive any bonus attack speed until ''Switcheroo!'' has been learned.\n* {{ai|Fishbones||''Fishbones''}} splash damage affects structures (minions will target '''Jinx''') but does not affect targets if '''Jinx's''' attacks are {{tip|block|blocked}}, {{tip|dodge|dodged}}, or {{tip|blind|missed}}.\n* With {{ii|Runaan's Hurricane}} {{ai|Pow-Pow||''Pow-Pow''}} generates one stack per enemy hit.\n* Each of {{iis|Runaan's Hurricane}} additional bolts apply {{ai|Fishbones||Fishbones'}} splash damage, which stacks with each other.\n* Both weapons deal {{tip|basic damage}} to their primary target (this includes the increased damage of {{ai|Fishbones||''Fishbones''}}), which applies {{sti|life steal}} based on the damage dealt (post-mitigation) as usual.\n* The splash damage of {{ai|Fishbones||''Fishbones''}} is based on the pre-mitigation damage done to the primary target (which includes critical strikes), and is not considered {{as|'''modified''' physical damage}}. It deals {{tip|default damage}}: It doesn't apply {{sti|life steal}} or [[on-hit effect]]s.\n** {{ai|Fishbones||''Fishbones''}} damage: {{as|{{#expr:100+10}}% AD}} (100% + 10%).\n** {{ai|Fishbones||''Fishbones''}} critical strike damage: {{as|{{fd|{{#expr:(100+10)*1.75}}}}% AD}} ((100% + 10%){{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} critical strike damage with {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:(100+10)*2.1}}}}% AD}} ((100% + 10%){{times}}{{fd|2.1}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} damage: {{as|{{#expr:(100+10)*0.4}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} critical strike damage: {{as|{{fd|{{#expr:(100+10)*0.4*1.75}}}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}{{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} {{ii|Runaan's Hurricane|bolt}} critical strike damage with {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:(100+10)*0.4*2.1}}}}% AD}} ((100% + 10%){{times}}{{ii|Runaan's Hurricane|{{fd|0.4}}}}{{times}}{{fd|2.1}}).\n** {{ai|Fishbones||''Fishbones''}} potential damage on stacked enemies with {{ii|Runaan's Hurricane}}: {{as|{{fd|{{#expr:(100+10)+(100+10)*0.4*2}}}}% AD}} (110% + 44% + 44%).\n** {{ai|Fishbones||''Fishbones''}} potential critical strike damage on stacked enemies with {{ii|Runaan's Hurricane}}: {{as|{{fd|{{#expr:((100+10)+(100+10)*0.4*2)*1.75}}}}% AD}} ((110% + 44% + 44%){{times}}{{fd|1.75}}).\n** {{ai|Fishbones||''Fishbones''}} potential critical strike damage on stacked enemies with {{ii|Runaan's Hurricane}} and {{ii|Infinity Edge}}: {{as|{{fd|{{#expr:((100+10)+(100+10)*0.4*2)*2.1}}}}% AD}} ((110% + 44% + 44%){{times}}{{fd|2.1}}).",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '0.9,0.9,0.9,0.9,0.9' as '0.9'",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Attack Speed</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Maximum Attack Speed",
-                "<SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                30,
-                55,
-                80,
-                105,
-                130
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Maximum Attack Speed",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  30,
-                  55,
-                  80,
-                  105,
-                  130
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Bonus Range",
-                "<SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                100,
-                125,
-                150,
-                175,
-                200
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Range",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  100,
-                  125,
-                  150,
-                  175,
-                  200
-                ]
               }
             }
           ]

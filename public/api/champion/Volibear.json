@@ -49,96 +49,31 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "e1": {
-      "riotId": "VolibearE",
-      "name": "Sky Splitter",
-      "maxrank": 5,
-      "cooldown": 15,
-      "cost": 60,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 1200,
+    "i1": {
+      "riotId": "",
+      "name": "The Relentless Storm",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "VolibearE.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 288,
-        "y": 48,
+        "full": "Volibear_Icon_P.png",
+        "sprite": "passive4.png",
+        "group": "passive",
+        "x": 0,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Volibear''' summons a lightning bolt to strike at the target location after a 2-second delay. If '''Volibear''' is within the lightning strike, he {{tip|shields}} himself for {{as|15% of his '''maximum''' health}} {{as|(+ 80% AP)}} for 3 seconds.",
-        "The lightning bolt deals {{as|magic damage}} to all enemies struck within the area, capped at 750 against non-champions, {{tip|slow|slows}} them by 40% for 2 seconds, and grants {{tip|sight}} of the area for 1 second."
+        "{{sbc|Innate:}} '''Volibear''' gains a [[stack]] of ''The Relentless Storm'' for 6 seconds whenever he damages at least one enemy with a [[basic attack]] or [[champion ability|ability]], stacking up to 5 times, with the duration refreshing on subsequent damaging attacks and abilities. At 5 stacks, '''Volibear''' gains ''Lightning Claws''.",
+        "{{sbc|The Relentless Storm:}} '''Volibear''' gains {{sti|attack speed|{{as|5%|attack speed}} {{as|(+ 4% per 100 AP)}} {{as|'''bonus''' attack speed}}}} per stack, up to {{as|25%|attack speed}} {{as|(+ 20% per 100 AP)}}.",
+        "{{sbc|Lightning Claws:}} '''Volibear's''' claws ignite with lightning, causing his basic attacks {{tip|on-hit}} to deal {{as|{{pp|10+1*x for 3; then + 2*x for 3; then + 3*x for 7; then + 4*x|formula=10+1 per level until lvl 3, then+2 until lvl 6, then+3 per level until lvl 13, then+4 per level}} {{as|(+ 40% AP)}} '''bonus''' magic damage|magic damage}} to the target and the closest {{tip|sight|visible}} enemy within 450 units of the target, chaining up to 4 subsequent targets."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Volibear</b> summons a lightning bolt to strike at the target location after a 2-second delay. If <b>Volibear</b> is within the lightning strike, he <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>Shields<hr></h4><p><b>Shields</b> are temporay health.</p></div></template></HtmlTooltip> himself for <span class=\"health\">15% of his <b>maximum</b> health</span> <span class=\"ap\">(+ 80% AP)</span> for 3 seconds.<br />The lightning bolt deals <span class=\"magic-damage\">magic damage</span> to all enemies struck within the area, capped at 750 against non-champions, <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 40% for 2 seconds, and grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area for 1 second.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 80% AP)}} {{as|(+ {{ap|11 to 15}}% of target's '''maximum''' health)}}}}"
-      ],
-      "notes": "* Enemies cannot see the location of the cast for the first second, but they can already tell that the spell is underway by noticing '''Volibear's''' cast animation.\n* '''Volibear''' will receive the {{tip|shield}} even if he is {{tip|untargetable}}.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[11,12,13,14,15]\"></SpellSpan>% of target's <b>maximum</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.8
-              },
-              {
-                "target_total_hp": [
-                  0.11,
-                  0.12,
-                  0.13,
-                  0.14,
-                  0.15
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[11,12,13,14,15]\"></SpellSpan>% of target's '''maximum''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                80,
-                110,
-                140,
-                170,
-                200
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  80,
-                  110,
-                  140,
-                  170,
-                  200
-                ],
-                "player_total_ap": 0.8,
-                "target_total_hp": [
-                  0.11,
-                  0.12,
-                  0.13,
-                  0.14,
-                  0.15
-                ]
-              }
-            }
-          ]
-        }
-      ]
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Volibear</b> gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>The Relentless Storm</i> for 6 seconds whenever he damages at least one enemy with a <a class=\"effect link\" title=\"basic attack\">basic attack</a> or <a class=\"effect link\" title=\"ability\">champion ability</a>, stacking up to 5 times, with the duration refreshing on subsequent damaging attacks and abilities. At 5 stacks, <b>Volibear</b> gains <i>Lightning Claws</i>.<br /><span class=\"sbc\">The Relentless Storm:</span> <b>Volibear</b> gains <span><span class=\"attack-speed\">5%</span> <span class=\"ap\">(+ 4% per 100 AP)</span> <span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> per stack, up to <span class=\"attack-speed\">25%</span> <span class=\"ap\">(+ 20% per 100 AP)</span>.<br /><span class=\"sbc\">Lightning Claws:</span> <b>Volibear's</b> claws ignite with lightning, causing his basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> to deal <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">10+1*x for 3; then + 2*x for 3; then + 3*x for 7; then + 4*xundefined −  (based on level)<template #content>Values: 13, 6, 21, 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 40% AP)</span> <b>bonus</b> magic damage</span> to the target and the closest <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy within 450 units of the target, chaining up to 4 subsequent targets.",
+      "leveling": [],
+      "notes": "* '''Volibear's''' spikes visually grow as ''The Relentless Storm'' stacks.\n* ''Lightning Claws'' has no effect on [[structures]] and {{tip|ward|wards}}.\n* While at four stacks, the next attack or ability on-hit reaching the fifth stack will be empowered by ''Lightning Claws''.\n* A stack of ''The Relentless Storm'' is not gained if the attack is {{tip|dodged}} and/or missed if '''Volibear''' is {{tip|blind|blinded}}. A stack is granted even if the attack is {{tip|blocked}}. In all cases, ''Lightning Claws'' will not apply (on-hit damage is parried and the bounce is prevented).\n** Since {{ai|Frenzied Maul|Volibear}} cannot be missed while '''Volibear''' is {{tip|blind|blinded}}, gaining stacks from ''The Relentless Storm'' and applying ''Lighting Claws'' from the ability will not be prevented from that parry effect.\n* '''Volibear''' has a hidden passive that grants him {{as|1 armor}} for every enemy {{ci|Zilean}} within 800 range of him.\n** Likewise, {{ci|Zilean}} gains {{as|1 ability power}} for every nearby '''Volibear'''.\n** Neither '''Volibear''' nor {{ci|Zilean}} need {{tip|sight}} of one another to gain these bonuses.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
     },
     "q1": {
       "riotId": "VolibearQ",
@@ -439,31 +374,96 @@
         }
       ]
     },
-    "i1": {
-      "riotId": "",
-      "name": "The Relentless Storm",
-      "maxrank": 0,
-      "targeting": "Passive",
+    "e1": {
+      "riotId": "VolibearE",
+      "name": "Sky Splitter",
+      "maxrank": 5,
+      "cooldown": 15,
+      "cost": 60,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 1200,
       "image": {
-        "full": "Volibear_Icon_P.png",
-        "sprite": "passive4.png",
-        "group": "passive",
-        "x": 0,
-        "y": 96,
+        "full": "VolibearE.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Volibear''' gains a [[stack]] of ''The Relentless Storm'' for 6 seconds whenever he damages at least one enemy with a [[basic attack]] or [[champion ability|ability]], stacking up to 5 times, with the duration refreshing on subsequent damaging attacks and abilities. At 5 stacks, '''Volibear''' gains ''Lightning Claws''.",
-        "{{sbc|The Relentless Storm:}} '''Volibear''' gains {{sti|attack speed|{{as|5%|attack speed}} {{as|(+ 4% per 100 AP)}} {{as|'''bonus''' attack speed}}}} per stack, up to {{as|25%|attack speed}} {{as|(+ 20% per 100 AP)}}.",
-        "{{sbc|Lightning Claws:}} '''Volibear's''' claws ignite with lightning, causing his basic attacks {{tip|on-hit}} to deal {{as|{{pp|10+1*x for 3; then + 2*x for 3; then + 3*x for 7; then + 4*x|formula=10+1 per level until lvl 3, then+2 until lvl 6, then+3 per level until lvl 13, then+4 per level}} {{as|(+ 40% AP)}} '''bonus''' magic damage|magic damage}} to the target and the closest {{tip|sight|visible}} enemy within 450 units of the target, chaining up to 4 subsequent targets."
+        "{{sbc|Active:}} '''Volibear''' summons a lightning bolt to strike at the target location after a 2-second delay. If '''Volibear''' is within the lightning strike, he {{tip|shields}} himself for {{as|15% of his '''maximum''' health}} {{as|(+ 80% AP)}} for 3 seconds.",
+        "The lightning bolt deals {{as|magic damage}} to all enemies struck within the area, capped at 750 against non-champions, {{tip|slow|slows}} them by 40% for 2 seconds, and grants {{tip|sight}} of the area for 1 second."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Volibear</b> gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>The Relentless Storm</i> for 6 seconds whenever he damages at least one enemy with a <a class=\"effect link\" title=\"basic attack\">basic attack</a> or <a class=\"effect link\" title=\"ability\">champion ability</a>, stacking up to 5 times, with the duration refreshing on subsequent damaging attacks and abilities. At 5 stacks, <b>Volibear</b> gains <i>Lightning Claws</i>.<br /><span class=\"sbc\">The Relentless Storm:</span> <b>Volibear</b> gains <span><span class=\"attack-speed\">5%</span> <span class=\"ap\">(+ 4% per 100 AP)</span> <span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> per stack, up to <span class=\"attack-speed\">25%</span> <span class=\"ap\">(+ 20% per 100 AP)</span>.<br /><span class=\"sbc\">Lightning Claws:</span> <b>Volibear's</b> claws ignite with lightning, causing his basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> to deal <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">10+1*x for 3; then + 2*x for 3; then + 3*x for 7; then + 4*xundefined −  (based on level)<template #content>Values: 13, 6, 21, 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ap\">(+ 40% AP)</span> <b>bonus</b> magic damage</span> to the target and the closest <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy within 450 units of the target, chaining up to 4 subsequent targets.",
-      "leveling": [],
-      "notes": "* '''Volibear's''' spikes visually grow as ''The Relentless Storm'' stacks.\n* ''Lightning Claws'' has no effect on [[structures]] and {{tip|ward|wards}}.\n* While at four stacks, the next attack or ability on-hit reaching the fifth stack will be empowered by ''Lightning Claws''.\n* A stack of ''The Relentless Storm'' is not gained if the attack is {{tip|dodged}} and/or missed if '''Volibear''' is {{tip|blind|blinded}}. A stack is granted even if the attack is {{tip|blocked}}. In all cases, ''Lightning Claws'' will not apply (on-hit damage is parried and the bounce is prevented).\n** Since {{ai|Frenzied Maul|Volibear}} cannot be missed while '''Volibear''' is {{tip|blind|blinded}}, gaining stacks from ''The Relentless Storm'' and applying ''Lighting Claws'' from the ability will not be prevented from that parry effect.\n* '''Volibear''' has a hidden passive that grants him {{as|1 armor}} for every enemy {{ci|Zilean}} within 800 range of him.\n** Likewise, {{ci|Zilean}} gains {{as|1 ability power}} for every nearby '''Volibear'''.\n** Neither '''Volibear''' nor {{ci|Zilean}} need {{tip|sight}} of one another to gain these bonuses.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Volibear</b> summons a lightning bolt to strike at the target location after a 2-second delay. If <b>Volibear</b> is within the lightning strike, he <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>Shields<hr></h4><p><b>Shields</b> are temporay health.</p></div></template></HtmlTooltip> himself for <span class=\"health\">15% of his <b>maximum</b> health</span> <span class=\"ap\">(+ 80% AP)</span> for 3 seconds.<br />The lightning bolt deals <span class=\"magic-damage\">magic damage</span> to all enemies struck within the area, capped at 750 against non-champions, <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 40% for 2 seconds, and grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area for 1 second.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 80% AP)}} {{as|(+ {{ap|11 to 15}}% of target's '''maximum''' health)}}}}"
+      ],
+      "notes": "* Enemies cannot see the location of the cast for the first second, but they can already tell that the spell is underway by noticing '''Volibear's''' cast animation.\n* '''Volibear''' will receive the {{tip|shield}} even if he is {{tip|untargetable}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[11,12,13,14,15]\"></SpellSpan>% of target's <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "target_total_hp": [
+                  0.11,
+                  0.12,
+                  0.13,
+                  0.14,
+                  0.15
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span> <span class=\"health\">(+ <SpellSpan :list=\"[11,12,13,14,15]\"></SpellSpan>% of target's '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                110,
+                140,
+                170,
+                200
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  110,
+                  140,
+                  170,
+                  200
+                ],
+                "player_total_ap": 0.8,
+                "target_total_hp": [
+                  0.11,
+                  0.12,
+                  0.13,
+                  0.14,
+                  0.15
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     "r1": {
       "riotId": "VolibearR",

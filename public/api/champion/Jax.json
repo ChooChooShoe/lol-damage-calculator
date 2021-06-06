@@ -49,6 +49,116 @@
     "attackspeed": 0.638
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Relentless Assault",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Armsmaster_MasterOfArms.png",
+        "sprite": "passive1.png",
+        "group": "passive",
+        "x": 240,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Jax's''' [[basic attack]]s {{tip|on-attack}} grant him a [[stack]] of ''Relentless Assault'' for {{fd|2.5}} seconds, stacking up to 8 times, with the duration refreshing on subsequent attacks. Each stack grants him {{as|{{pp|key=%|3.5 to 11 for 6|1 to 16}} {{sti|'''bonus''' attack speed}}|attack speed}}, for a maximum of {{as|{{pp|key=%|28 to 88 for 6|1 to 16}}|attack speed}} at 8 stacks.",
+        "[[Stack|Stacks]] are deducted one at a time every {{fd|0.25}} seconds after the duration ends."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Jax's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> grant him a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Relentless Assault</i> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, stacking up to 8 times, with the duration refreshing on subsequent attacks. Each stack grants him <span class=\"attack-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><b>bonus</b> attack speed</span></span>, for a maximum of <span class=\"attack-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span></span> at 8 stacks.<br /><a class=\"effect link\" title=\"Stacks\">Stack</a> are deducted one at a time every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds after the duration ends.",
+      "leveling": [],
+      "notes": "* No additional details.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "JaxLeapStrike",
+      "name": "Leap Strike",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": 65,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 700,
+      "image": {
+        "full": "JaxLeapStrike.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jax''' {{tip|dashes}} to the target unit's location.",
+        "If the target is an enemy and they are in range upon arrival, '''Jax''' deals them {{as|physical damage}}.",
+        "'''''Jax''' will attempt to automatically basic attack his target at the end of the dash.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jax</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target unit's location.<br />If the target is an enemy and they are in range upon arrival, <b>Jax</b> deals them <span class=\"physical-damage\">physical damage</span>.<br /><b><i>Jax</b> will attempt to automatically basic attack his target at the end of the dash.</i>",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|65 to 225}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* ''Leap Strike'' can be used on any targetable allied or enemy unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, [[jungle plants]], and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* {{tip|Spell shield}} will block the damage (including when {{ai|Empower|Jax|empowered}}) but will not prevent the dash.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[65,105,145,185,225]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[65,105,145,185,225]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                65,
+                105,
+                145,
+                185,
+                225
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  65,
+                  105,
+                  145,
+                  185,
+                  225
+                ],
+                "player_bonus_ad": 1,
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
     "w1": {
       "riotId": "JaxEmpowerTwo",
       "name": "Empower",
@@ -229,31 +339,6 @@
         }
       ]
     },
-    "i1": {
-      "riotId": "",
-      "name": "Relentless Assault",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Armsmaster_MasterOfArms.png",
-        "sprite": "passive1.png",
-        "group": "passive",
-        "x": 240,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Jax's''' [[basic attack]]s {{tip|on-attack}} grant him a [[stack]] of ''Relentless Assault'' for {{fd|2.5}} seconds, stacking up to 8 times, with the duration refreshing on subsequent attacks. Each stack grants him {{as|{{pp|key=%|3.5 to 11 for 6|1 to 16}} {{sti|'''bonus''' attack speed}}|attack speed}}, for a maximum of {{as|{{pp|key=%|28 to 88 for 6|1 to 16}}|attack speed}} at 8 stacks.",
-        "[[Stack|Stacks]] are deducted one at a time every {{fd|0.25}} seconds after the duration ends."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Jax's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> grant him a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Relentless Assault</i> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, stacking up to 8 times, with the duration refreshing on subsequent attacks. Each stack grants him <span class=\"attack-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> <span><b>bonus</b> attack speed</span></span>, for a maximum of <span class=\"attack-speed\"><span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span></span> at 8 stacks.<br /><a class=\"effect link\" title=\"Stacks\">Stack</a> are deducted one at a time every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds after the duration ends.",
-      "leveling": [],
-      "notes": "* No additional details.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "r1": {
       "riotId": "JaxRelentlessAssault",
       "name": "Grandmaster's Might",
@@ -385,91 +470,6 @@
                   70
                 ],
                 "player_bonus_ad": 0.5
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "JaxLeapStrike",
-      "name": "Leap Strike",
-      "maxrank": 5,
-      "cooldown": [
-        8,
-        7.5,
-        7,
-        6.5,
-        6
-      ],
-      "cost": 65,
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": 700,
-      "image": {
-        "full": "JaxLeapStrike.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 192,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jax''' {{tip|dashes}} to the target unit's location.",
-        "If the target is an enemy and they are in range upon arrival, '''Jax''' deals them {{as|physical damage}}.",
-        "'''''Jax''' will attempt to automatically basic attack his target at the end of the dash.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jax</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target unit's location.<br />If the target is an enemy and they are in range upon arrival, <b>Jax</b> deals them <span class=\"physical-damage\">physical damage</span>.<br /><b><i>Jax</b> will attempt to automatically basic attack his target at the end of the dash.</i>",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|65 to 225}} {{as|(+ 100% '''bonus''' AD)}} {{as|(+ 60% AP)}}}}"
-      ],
-      "notes": "* ''Leap Strike'' can be used on any targetable allied or enemy unit excluding [[structures]].\n** This includes {{tip|champions}}, {{tip|minions}}, {{tip|ward|wards}}, [[jungle plants]], and [[champion summoned units]] (e.g. {{ai|Noxious Trap|Teemo}}, {{ai|Demacian Standard|Jarvan IV}}, {{ai|Dark Passage|Thresh}}).\n* {{tip|Spell shield}} will block the damage (including when {{ai|Empower|Jax|empowered}}) but will not prevent the dash.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[65,105,145,185,225]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1
-              },
-              {
-                "player_total_ap": 0.6
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[65,105,145,185,225]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                65,
-                105,
-                145,
-                185,
-                225
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  65,
-                  105,
-                  145,
-                  185,
-                  225
-                ],
-                "player_bonus_ad": 1,
-                "player_total_ap": 0.6
               }
             }
           ]

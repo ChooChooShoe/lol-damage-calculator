@@ -49,6 +49,32 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Pit Grit",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Sett_P.Sett.png",
+        "sprite": "passive3.png",
+        "group": "passive",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate - Heavy Hands:}} '''Sett's''' basic attacks alternate between a {{as|Left Punch|armor}} and a {{as|Right Punch|buzzword3}} {{tip|on-attack}}. '''Sett''' begins attacking with a {{as|Left Punch|armor}}, and will reset back to it after 2 seconds of not performing a {{as|Right Punch|buzzword3}}.",
+        "'''Sett's''' {{as|Right Punch|buzzword3}} gains {{sti|range|50 '''bonus''' range}}, unless {{ai|Knuckle Down|Sett}} is active, attacks at 8 times the {{as|Left Punch's|armor}} {{as|attack speed}}, and deals {{as|{{pp|5 to 90}}|physical damage}} {{as|(+ 50% '''bonus''' AD)}} {{as|'''bonus''' physical damage}}.",
+        "{{sbc|Innate - Heart of the Half-Beast:}} '''Sett''' {{sti|health regeneration|link=true|regenerates}} an additional {{ft|{{as|{{pp|0.25;0.5;1;2|1 to 16 for 4}} health}} per second for every {{as|5% of his {{sti|'''missing''' health}}}}.|up-to {{as|{{pp|4.75;9.5;19;38|1 to 16 for 4}} health}} per second (maximum reached at {{sti|95% '''missing''' health}}).}}"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate - Heavy Hands:</span> <b>Sett's</b> basic attacks alternate between a <span class=\"armor\">Left Punch</span> and a <span class=\"buzzword3\">Right Punch</span> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip>. <b>Sett</b> begins attacking with a <span class=\"armor\">Left Punch</span>, and will reset back to it after 2 seconds of not performing a <span class=\"buzzword3\">Right Punch</span>.<br /><b>Sett's</b> <span class=\"buzzword3\">Right Punch</span> gains <span>50 <b>bonus</b> range</span>, unless <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Sett\">Knuckle Down<template #content>Knuckle Down</template></HtmlTooltip> is active, attacks at 8 times the <span class=\"armor\">Left Punch's</span> <span class=\"attack-speed\">attack speed</span>, and deals <span class=\"physical-damage\"><HtmlTooltip class=\"blue link\">5undefined − 90undefined (based on level)<template #content>Values: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span>.<br /><span class=\"sbc\">Innate - Heart of the Half-Beast:</span> <b>Sett</b> <span>regenerates</span> an additional <label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 16 for 4 ‒ undefined</span> health</span> per second for every <span class=\"health\">5% of his <span><b>missing</b> health</span></span>.&nbsp;」</span><span class=\"flipText2\">「&nbsp;up-to <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 16 for 4 ‒ undefined</span> health</span> per second (maximum reached at <span>95% <b>missing</b> health</span>).&nbsp;」</span></label>",
+      "leveling": [],
+      "notes": "* {{Pending for test}}: The {{as|Right Punch|buzzword3}} does not grant {{as|{{sti|'''bonus''' attack speed}}}}, rather its windup is sped up and fixed at {{ft|{{fd|12.5%}} of the previous {{as|Left Punch's|armor}} windup time.|800% of the previous {{as|Left Punch's|armor}} windup speed.}}\n** The windup is thus unaffected by {{tip|cripple|cripples}} and attack speed buffs that were not already active for the {{as|Left Punch's|armor}}.\n* The bonus physical damage from the {{as|Right Punch|buzzword3}} benefits from {{stil|life steal}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
     "q1": {
       "riotId": "SettQ",
       "name": "Knuckle Down",
@@ -155,6 +181,88 @@
                 ],
                 "player_total_ad": [],
                 "target_total_ad": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "SettW",
+      "name": "Haymaker",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        16.5,
+        15,
+        13.5,
+        12
+      ],
+      "cost": 100,
+      "costtype": "Current Grit",
+      "targeting": "Direction",
+      "target_range": "{{tt|790|Estimated}}",
+      "image": {
+        "full": "SettW.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 432,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Sett''' stores 100% of {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} taken as ''Grit'' on his resource bar, up to {{as|50% of his {{sti|'''maximum''' health}}}}. Each instance of stored ''Grit'' decays by 30% every second after 4 seconds.",
+        "{{sbc|Active:}} '''Sett''' immediately gains a {{tip|shield}} equal to his expended ''Grit'' for 3 seconds, decaying after {{fd|0.75}} seconds, and charges up a strike over the cast time.",
+        "After the cast time, he unleashes a blast in a cone in the target direction, dealing {{as|physical damage}} to enemies within the area, and {{ccs|{{as|true damage}}|true}} instead to all those in the center."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Sett</b> stores 100% of <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> taken as <i>Grit</i> on his resource bar, up to <span class=\"health\">50% of his <span><b>maximum</b> health</span></span>. Each instance of stored <i>Grit</i> decays by 30% every second after 4 seconds.<br /><span class=\"sbc\">Active:</span> <b>Sett</b> immediately gains a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> equal to his expended <i>Grit</i> for 3 seconds, decaying after <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, and charges up a strike over the cast time.<br />After the cast time, he unleashes a blast in a cone in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to enemies within the area, and <simple-tooltip class=\"capture-unknown\" dname=\"ccs <span class=\"true-damage\">true damage</span> true\">Unknown value: ccs <span class=\"true-damage\">true damage</span> true</simple-tooltip> instead to all those in the center.",
+      "leveling": [
+        "{{st|Damage|{{ap|80 to 160}} (+ 25% {{as|(+ 20% per 100 '''bonus''' AD)}} of expended ''Grit'')}}"
+      ],
+      "notes": "* The shield is created immediately and will decay after the blast delay. \n** The buff for the shield is named ''Down But Not Out''.\n* '''Sett''' does not store {{as|Grit|gold}} from damage that was mitigated by {{tip|shield|shields}}.\n* ''Haymaker'' will cast from wherever '''Sett''' is at the end of the cast time.\n* '''Sett''' will turn towards the target direction at the start of the cast time.\n* {{si|Flash}} can be used during ''Haymaker'''s cast time\n* '''Sett''' will glow when attaining 90% {{as|Grit|gold}}. Casting ''Haymaker'' at this amount has a different visual and audio effect.\n[[File:90%_Grit_Sett.png|thumb|left|'''Sett''' will turn {{color|#FFDF00|'''golden'''}} ''(base skin)''.]]",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> (+ 25% <span class=\"ad\">(+ 20% per 100 <b>bonus</b> AD)</span> of expended <i>Grit</i>)</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 201
+              }
+            ],
+            "st_slices": [
+              [
+                "Damage",
+                "<SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> (+ 25% <span class=\"ad\">(+ 20% per 100 '''bonus''' AD)</span> of expended ''Grit'')"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                100,
+                120,
+                140,
+                160
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  100,
+                  120,
+                  140,
+                  160
+                ],
+                "player_bonus_ad": 201
               }
             }
           ]
@@ -340,114 +448,6 @@
           ]
         }
       ]
-    },
-    "w1": {
-      "riotId": "SettW",
-      "name": "Haymaker",
-      "maxrank": 5,
-      "cooldown": [
-        18,
-        16.5,
-        15,
-        13.5,
-        12
-      ],
-      "cost": 100,
-      "costtype": "Current Grit",
-      "targeting": "Direction",
-      "target_range": "{{tt|790|Estimated}}",
-      "image": {
-        "full": "SettW.png",
-        "sprite": "spell10.png",
-        "group": "spell",
-        "x": 432,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} '''Sett''' stores 100% of {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} taken as ''Grit'' on his resource bar, up to {{as|50% of his {{sti|'''maximum''' health}}}}. Each instance of stored ''Grit'' decays by 30% every second after 4 seconds.",
-        "{{sbc|Active:}} '''Sett''' immediately gains a {{tip|shield}} equal to his expended ''Grit'' for 3 seconds, decaying after {{fd|0.75}} seconds, and charges up a strike over the cast time.",
-        "After the cast time, he unleashes a blast in a cone in the target direction, dealing {{as|physical damage}} to enemies within the area, and {{ccs|{{as|true damage}}|true}} instead to all those in the center."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Sett</b> stores 100% of <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> taken as <i>Grit</i> on his resource bar, up to <span class=\"health\">50% of his <span><b>maximum</b> health</span></span>. Each instance of stored <i>Grit</i> decays by 30% every second after 4 seconds.<br /><span class=\"sbc\">Active:</span> <b>Sett</b> immediately gains a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> equal to his expended <i>Grit</i> for 3 seconds, decaying after <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, and charges up a strike over the cast time.<br />After the cast time, he unleashes a blast in a cone in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to enemies within the area, and <simple-tooltip class=\"capture-unknown\" dname=\"ccs <span class=\"true-damage\">true damage</span> true\">Unknown value: ccs <span class=\"true-damage\">true damage</span> true</simple-tooltip> instead to all those in the center.",
-      "leveling": [
-        "{{st|Damage|{{ap|80 to 160}} (+ 25% {{as|(+ 20% per 100 '''bonus''' AD)}} of expended ''Grit'')}}"
-      ],
-      "notes": "* The shield is created immediately and will decay after the blast delay. \n** The buff for the shield is named ''Down But Not Out''.\n* '''Sett''' does not store {{as|Grit|gold}} from damage that was mitigated by {{tip|shield|shields}}.\n* ''Haymaker'' will cast from wherever '''Sett''' is at the end of the cast time.\n* '''Sett''' will turn towards the target direction at the start of the cast time.\n* {{si|Flash}} can be used during ''Haymaker'''s cast time\n* '''Sett''' will glow when attaining 90% {{as|Grit|gold}}. Casting ''Haymaker'' at this amount has a different visual and audio effect.\n[[File:90%_Grit_Sett.png|thumb|left|'''Sett''' will turn {{color|#FFDF00|'''golden'''}} ''(base skin)''.]]",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0,0,0 as 0",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> (+ 25% <span class=\"ad\">(+ 20% per 100 <b>bonus</b> AD)</span> of expended <i>Grit</i>)</span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 201
-              }
-            ],
-            "st_slices": [
-              [
-                "Damage",
-                "<SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> (+ 25% <span class=\"ad\">(+ 20% per 100 '''bonus''' AD)</span> of expended ''Grit'')"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                80,
-                100,
-                120,
-                140,
-                160
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Damage",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  80,
-                  100,
-                  120,
-                  140,
-                  160
-                ],
-                "player_bonus_ad": 201
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "i1": {
-      "riotId": "",
-      "name": "Pit Grit",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Sett_P.Sett.png",
-        "sprite": "passive3.png",
-        "group": "passive",
-        "x": 288,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate - Heavy Hands:}} '''Sett's''' basic attacks alternate between a {{as|Left Punch|armor}} and a {{as|Right Punch|buzzword3}} {{tip|on-attack}}. '''Sett''' begins attacking with a {{as|Left Punch|armor}}, and will reset back to it after 2 seconds of not performing a {{as|Right Punch|buzzword3}}.",
-        "'''Sett's''' {{as|Right Punch|buzzword3}} gains {{sti|range|50 '''bonus''' range}}, unless {{ai|Knuckle Down|Sett}} is active, attacks at 8 times the {{as|Left Punch's|armor}} {{as|attack speed}}, and deals {{as|{{pp|5 to 90}}|physical damage}} {{as|(+ 50% '''bonus''' AD)}} {{as|'''bonus''' physical damage}}.",
-        "{{sbc|Innate - Heart of the Half-Beast:}} '''Sett''' {{sti|health regeneration|link=true|regenerates}} an additional {{ft|{{as|{{pp|0.25;0.5;1;2|1 to 16 for 4}} health}} per second for every {{as|5% of his {{sti|'''missing''' health}}}}.|up-to {{as|{{pp|4.75;9.5;19;38|1 to 16 for 4}} health}} per second (maximum reached at {{sti|95% '''missing''' health}}).}}"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate - Heavy Hands:</span> <b>Sett's</b> basic attacks alternate between a <span class=\"armor\">Left Punch</span> and a <span class=\"buzzword3\">Right Punch</span> <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip>. <b>Sett</b> begins attacking with a <span class=\"armor\">Left Punch</span>, and will reset back to it after 2 seconds of not performing a <span class=\"buzzword3\">Right Punch</span>.<br /><b>Sett's</b> <span class=\"buzzword3\">Right Punch</span> gains <span>50 <b>bonus</b> range</span>, unless <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Sett\">Knuckle Down<template #content>Knuckle Down</template></HtmlTooltip> is active, attacks at 8 times the <span class=\"armor\">Left Punch's</span> <span class=\"attack-speed\">attack speed</span>, and deals <span class=\"physical-damage\"><HtmlTooltip class=\"blue link\">5undefined − 90undefined (based on level)<template #content>Values: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span>.<br /><span class=\"sbc\">Innate - Heart of the Half-Beast:</span> <b>Sett</b> <span>regenerates</span> an additional <label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 16 for 4 ‒ undefined</span> health</span> per second for every <span class=\"health\">5% of his <span><b>missing</b> health</span></span>.&nbsp;」</span><span class=\"flipText2\">「&nbsp;up-to <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 16 for 4 ‒ undefined</span> health</span> per second (maximum reached at <span>95% <b>missing</b> health</span>).&nbsp;」</span></label>",
-      "leveling": [],
-      "notes": "* {{Pending for test}}: The {{as|Right Punch|buzzword3}} does not grant {{as|{{sti|'''bonus''' attack speed}}}}, rather its windup is sped up and fixed at {{ft|{{fd|12.5%}} of the previous {{as|Left Punch's|armor}} windup time.|800% of the previous {{as|Left Punch's|armor}} windup speed.}}\n** The windup is thus unaffected by {{tip|cripple|cripples}} and attack speed buffs that were not already active for the {{as|Left Punch's|armor}}.\n* The bonus physical damage from the {{as|Right Punch|buzzword3}} benefits from {{stil|life steal}}.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
     }
   }
 }

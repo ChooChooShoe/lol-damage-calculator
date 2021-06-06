@@ -74,6 +74,188 @@
       "skillid": "i1",
       "effects": []
     },
+    "q1": {
+      "riotId": "FioraQ",
+      "name": "Lunge",
+      "maxrank": 5,
+      "cooldown": [
+        13,
+        11.25,
+        9.5,
+        7.75,
+        6
+      ],
+      "cost": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ],
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": "{{tt|360|Maximum dash range}} / {{tt|50|Minimum dash range}}",
+      "image": {
+        "full": "FioraQ.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Fiora''' {{tip|dashes}} a short distance in the target direction and then stabs a nearby enemy. ''Lunge'' can hit [[structures]] and {{tip|ward|wards}}. Stabbing a target reduces ''Lunge's'' {{sti|cooldown}} by 50%.",
+        "The stab deals {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness.",
+        "'''Fiora''' can cast any of her abilities while {{tip|dash|dashing}}.",
+        "''Lunge hits enemies regardless of whether '''Fiora''' has {{tip|sight}} of them.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fiora</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a short distance in the target direction and then stabs a nearby enemy. <i>Lunge</i> can hit <a class=\"effect link\" title=\"structures\">structures</a> and <HtmlTooltip class=\"blue link\">wards<template #content><div><h4>ward<hr></h4><p>Description for keyword ward</p></div></template></HtmlTooltip>. Stabbing a target reduces <i>Lunge's</i> <span>cooldown</span> by 50%.<br />The stab deals <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Fiora</b> can cast any of her abilities while <HtmlTooltip class=\"blue link\">dashing<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip>.<br /><i>Lunge hits enemies regardless of whether <b>Fiora</b> has <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them.</i>",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|70 to 110}} {{as|(+ {{ap|95 to 115}}% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Lunge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n** ''Lunge'' cannot {{tip|critically strike}}.\n* ''Lunge'' does not apply [[on-attack]] effects apart from certain exceptions.\n** It does apply {{nie|Energized}} as if it was an [[on-hit]] effect.\n** It does not stack {{ii|Guinsoo's Rageblade}} nor trigger Phantom Hit.\n* The stab prioritizes in order of:\n** Enemy champion affected by {{ai|Grand Challenge|Fiora}}.\n** {{as|Vitals|buzzword}} facing '''Fiora'''.\n** Champions who would die to the strike.\n** The nearest champion.\n** Enemies that would die to the strike.\n** The closest enemy.\n** Structures\n** Wards.\n* ''Lunge'' will not attempt to strike [[jungle plants]].\n* '''Fiora''' does not stab if the {{tip|dash}} is {{tip|interrupt|interrupted}}.\n* '''Fiora''' cannot cast or buffer {{si|Flash}} during the dash.\n** '''Fiora''' can cast {{ii|Hextech Rocketbelt}} during the dash, potentinally interrupting it based on the timing, preventing the stab if it does.\n* The dash '''can''' pass through walls.\n* Will land (priority order unchanged) even if '''Fiora''' dies.\n* ''Lunge's'' dash speed is affected by movement speed.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,80,90,100,110]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.95,
+                  1,
+                  1.05,
+                  1.1,
+                  1.15
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[70,80,90,100,110]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                80,
+                90,
+                100,
+                110
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  80,
+                  90,
+                  100,
+                  110
+                ],
+                "player_bonus_ad": [
+                  0.95,
+                  1,
+                  1.05,
+                  1.1,
+                  1.15
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "FioraW",
+      "name": "Riposte",
+      "maxrank": 5,
+      "cooldown": [
+        24,
+        22,
+        20,
+        18,
+        16
+      ],
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 900,
+      "image": {
+        "full": "FioraW.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Fiora''' enters a defensive stance for {{fd|0.75}} seconds, becoming {{tip|lockout|unable to act}} but preventing the application of all non-{{tip|turret}} damage to her and gaining {{tip|debuff}} immunity and {{tip|cc-immune|crowd control immunity}}.",
+        "Additionally, over the first {{fd|0.6}} seconds of the duration, '''Fiora''' poises to strike, after which she sends a shock with her sword in a line in the target direction, dealing {{as|magic damage}} to all enemies hit until colliding with an enemy champion.",
+        "The enemy champion struck is also {{tip|slow|slowed}} and {{tip|cripple|crippled}} by 50% for 2 seconds. If ''Riposte'' negates at least one {{tt|hostile|belonging to an enemy source}} {{tip|immobilize|immobilizing}} effect, '''Fiora''' {{tip|stun|stuns}} the target for the same duration instead."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fiora</b> enters a defensive stance for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, becoming <HtmlTooltip class=\"blue link\">unable to act<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> but preventing the application of all non-<HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> damage to her and gaining <HtmlTooltip class=\"blue link\">debuff<template #content><div><h4>debuff<hr></h4><p>Description for keyword debuff</p></div></template></HtmlTooltip> immunity and <HtmlTooltip class=\"blue link\">crowd control immunity<template #content><div><h4>cc-immune<hr></h4><p>Description for keyword cc-immune</p></div></template></HtmlTooltip>.<br />Additionally, over the first <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds of the duration, <b>Fiora</b> poises to strike, after which she sends a shock with her sword in a line in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit until colliding with an enemy champion.<br />The enemy champion struck is also <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">crippled<template #content><div><h4>Cripple: Attack Speed Reduction<hr></h4><p>Unit's attack speed is reduced for the duration.</p></div></template></HtmlTooltip> by 50% for 2 seconds. If <i>Riposte</i> negates at least one <span class=\"title-tooltip\" title=\"belonging to an enemy source\">hostile</span> <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> effect, <b>Fiora</b> <HtmlTooltip class=\"blue link\">stuns<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> the target for the same duration instead.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|110 to 270}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* ''Riposte'' is not {{tip|invulnerability}} but instead reduces any damage to her by 100% late into the damage event. Because of this, it interacts differently with effects triggered from damage:\n** {{stil|Life steal}} and {{tip|Heal|Healing}} based on damage dealt (Vamp) will still have effect even if the damage is ultimately ignored by ''Riposte''.\n** {{tip|Shield|Shields}} will absorb damage before ''Riposte'' takes effect.\n** '''Fiora''' cannot be {{tip|execute|executed}} by {{cai|Death from Below|Pyke}} during ''Riposte'' but she can by {{bi|Aspect of the Dragon}}.\n* ''Riposte'' will not negate allied {{tip|crowd control}}.\n* ''Riposte'' will not negate {{tip|nearsight}}.\n* {{tip|Immobilize|Immobilizing}} effects include those from {{ui|Blast Cone}} (only if triggered by an enemy) and {{tip|monster|epic monsters}}.\n* {{tip|Debuff}} immunity includes [[summoner spells]], such as {{si|Exhaust}} and {{si|Ignite}}, as well as [[damage over time]] and other effects.\n* ''Riposte'' is and is not prioritized over certain effects:\n** ''Riposte'' will block effects before {{tip|spell shield|spell shields}}.\n** {{ai|Black Shield|Morgana}} will negate {{tip|crowd control}} before ''Riposte''.\n*** ''Riposte'' will not be able to apply its {{tip|stun}}, as it requires ''Riposte'' to negate the {{tip|immobilize}} and not any other external source to do so.\n* {{tip|Spell shield}} will also prevent {{as|Vitals|buzzword}} from being triggered by ''Riposte''.\n* The following table refers for interactions while '''Fiora''' is performing ''Riposte'':\n{{ct|move=false|attack=false|cast=false|items=false|consume=false|spells=true,false,false,false|interrupts=death}}",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[110,150,190,230,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[110,150,190,230,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                110,
+                150,
+                190,
+                230,
+                270
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  110,
+                  150,
+                  190,
+                  230,
+                  270
+                ],
+                "player_total_ap": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "FioraE",
       "name": "Bladework",
@@ -175,87 +357,6 @@
                   190,
                   200
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "FioraW",
-      "name": "Riposte",
-      "maxrank": 5,
-      "cooldown": [
-        24,
-        22,
-        20,
-        18,
-        16
-      ],
-      "cost": 50,
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": 900,
-      "image": {
-        "full": "FioraW.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fiora''' enters a defensive stance for {{fd|0.75}} seconds, becoming {{tip|lockout|unable to act}} but preventing the application of all non-{{tip|turret}} damage to her and gaining {{tip|debuff}} immunity and {{tip|cc-immune|crowd control immunity}}.",
-        "Additionally, over the first {{fd|0.6}} seconds of the duration, '''Fiora''' poises to strike, after which she sends a shock with her sword in a line in the target direction, dealing {{as|magic damage}} to all enemies hit until colliding with an enemy champion.",
-        "The enemy champion struck is also {{tip|slow|slowed}} and {{tip|cripple|crippled}} by 50% for 2 seconds. If ''Riposte'' negates at least one {{tt|hostile|belonging to an enemy source}} {{tip|immobilize|immobilizing}} effect, '''Fiora''' {{tip|stun|stuns}} the target for the same duration instead."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fiora</b> enters a defensive stance for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, becoming <HtmlTooltip class=\"blue link\">unable to act<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> but preventing the application of all non-<HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> damage to her and gaining <HtmlTooltip class=\"blue link\">debuff<template #content><div><h4>debuff<hr></h4><p>Description for keyword debuff</p></div></template></HtmlTooltip> immunity and <HtmlTooltip class=\"blue link\">crowd control immunity<template #content><div><h4>cc-immune<hr></h4><p>Description for keyword cc-immune</p></div></template></HtmlTooltip>.<br />Additionally, over the first <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds of the duration, <b>Fiora</b> poises to strike, after which she sends a shock with her sword in a line in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit until colliding with an enemy champion.<br />The enemy champion struck is also <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">crippled<template #content><div><h4>Cripple: Attack Speed Reduction<hr></h4><p>Unit's attack speed is reduced for the duration.</p></div></template></HtmlTooltip> by 50% for 2 seconds. If <i>Riposte</i> negates at least one <span class=\"title-tooltip\" title=\"belonging to an enemy source\">hostile</span> <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> effect, <b>Fiora</b> <HtmlTooltip class=\"blue link\">stuns<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> the target for the same duration instead.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|110 to 270}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* ''Riposte'' is not {{tip|invulnerability}} but instead reduces any damage to her by 100% late into the damage event. Because of this, it interacts differently with effects triggered from damage:\n** {{stil|Life steal}} and {{tip|Heal|Healing}} based on damage dealt (Vamp) will still have effect even if the damage is ultimately ignored by ''Riposte''.\n** {{tip|Shield|Shields}} will absorb damage before ''Riposte'' takes effect.\n** '''Fiora''' cannot be {{tip|execute|executed}} by {{cai|Death from Below|Pyke}} during ''Riposte'' but she can by {{bi|Aspect of the Dragon}}.\n* ''Riposte'' will not negate allied {{tip|crowd control}}.\n* ''Riposte'' will not negate {{tip|nearsight}}.\n* {{tip|Immobilize|Immobilizing}} effects include those from {{ui|Blast Cone}} (only if triggered by an enemy) and {{tip|monster|epic monsters}}.\n* {{tip|Debuff}} immunity includes [[summoner spells]], such as {{si|Exhaust}} and {{si|Ignite}}, as well as [[damage over time]] and other effects.\n* ''Riposte'' is and is not prioritized over certain effects:\n** ''Riposte'' will block effects before {{tip|spell shield|spell shields}}.\n** {{ai|Black Shield|Morgana}} will negate {{tip|crowd control}} before ''Riposte''.\n*** ''Riposte'' will not be able to apply its {{tip|stun}}, as it requires ''Riposte'' to negate the {{tip|immobilize}} and not any other external source to do so.\n* {{tip|Spell shield}} will also prevent {{as|Vitals|buzzword}} from being triggered by ''Riposte''.\n* The following table refers for interactions while '''Fiora''' is performing ''Riposte'':\n{{ct|move=false|attack=false|cast=false|items=false|consume=false|spells=true,false,false,false|interrupts=death}}",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[110,150,190,230,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[110,150,190,230,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                110,
-                150,
-                190,
-                230,
-                270
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  110,
-                  150,
-                  190,
-                  230,
-                  270
-                ],
-                "player_total_ap": 1
               }
             }
           ]
@@ -366,107 +467,6 @@
               "damage_type": "none",
               "ratios": {
                 "player_bonus_ad": 3
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "q1": {
-      "riotId": "FioraQ",
-      "name": "Lunge",
-      "maxrank": 5,
-      "cooldown": [
-        13,
-        11.25,
-        9.5,
-        7.75,
-        6
-      ],
-      "cost": [
-        20,
-        25,
-        30,
-        35,
-        40
-      ],
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": "{{tt|360|Maximum dash range}} / {{tt|50|Minimum dash range}}",
-      "image": {
-        "full": "FioraQ.png",
-        "sprite": "spell3.png",
-        "group": "spell",
-        "x": 0,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Fiora''' {{tip|dashes}} a short distance in the target direction and then stabs a nearby enemy. ''Lunge'' can hit [[structures]] and {{tip|ward|wards}}. Stabbing a target reduces ''Lunge's'' {{sti|cooldown}} by 50%.",
-        "The stab deals {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness.",
-        "'''Fiora''' can cast any of her abilities while {{tip|dash|dashing}}.",
-        "''Lunge hits enemies regardless of whether '''Fiora''' has {{tip|sight}} of them.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fiora</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a short distance in the target direction and then stabs a nearby enemy. <i>Lunge</i> can hit <a class=\"effect link\" title=\"structures\">structures</a> and <HtmlTooltip class=\"blue link\">wards<template #content><div><h4>ward<hr></h4><p>Description for keyword ward</p></div></template></HtmlTooltip>. Stabbing a target reduces <i>Lunge's</i> <span>cooldown</span> by 50%.<br />The stab deals <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Fiora</b> can cast any of her abilities while <HtmlTooltip class=\"blue link\">dashing<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip>.<br /><i>Lunge hits enemies regardless of whether <b>Fiora</b> has <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them.</i>",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|70 to 110}} {{as|(+ {{ap|95 to 115}}% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* ''Lunge'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n** ''Lunge'' cannot {{tip|critically strike}}.\n* ''Lunge'' does not apply [[on-attack]] effects apart from certain exceptions.\n** It does apply {{nie|Energized}} as if it was an [[on-hit]] effect.\n** It does not stack {{ii|Guinsoo's Rageblade}} nor trigger Phantom Hit.\n* The stab prioritizes in order of:\n** Enemy champion affected by {{ai|Grand Challenge|Fiora}}.\n** {{as|Vitals|buzzword}} facing '''Fiora'''.\n** Champions who would die to the strike.\n** The nearest champion.\n** Enemies that would die to the strike.\n** The closest enemy.\n** Structures\n** Wards.\n* ''Lunge'' will not attempt to strike [[jungle plants]].\n* '''Fiora''' does not stab if the {{tip|dash}} is {{tip|interrupt|interrupted}}.\n* '''Fiora''' cannot cast or buffer {{si|Flash}} during the dash.\n** '''Fiora''' can cast {{ii|Hextech Rocketbelt}} during the dash, potentinally interrupting it based on the timing, preventing the stab if it does.\n* The dash '''can''' pass through walls.\n* Will land (priority order unchanged) even if '''Fiora''' dies.\n* ''Lunge's'' dash speed is affected by movement speed.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[70,80,90,100,110]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": [
-                  0.95,
-                  1,
-                  1.05,
-                  1.1,
-                  1.15
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[70,80,90,100,110]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[95,100,105,110,115]\"></SpellSpan>% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                70,
-                80,
-                90,
-                100,
-                110
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  70,
-                  80,
-                  90,
-                  100,
-                  110
-                ],
-                "player_bonus_ad": [
-                  0.95,
-                  1,
-                  1.05,
-                  1.1,
-                  1.15
-                ]
               }
             }
           ]
