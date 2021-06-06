@@ -49,172 +49,154 @@
     "attackspeed": 0.638
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Eternal Hunger",
-      "maxrank": 0,
-      "targeting": "Passive",
+    "e1": {
+      "riotId": "WarwickE",
+      "name": "Primal Howl",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        13.667,
+        12.333,
+        11,
+        9.667,
+        0
+      ],
+      "cost": 40,
+      "costtype": "Mana",
+      "targeting": "Auto",
       "image": {
-        "full": "WarwickP.png",
-        "sprite": "passive4.png",
-        "group": "passive",
+        "full": "WarwickE.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Warwick''' gains {{tip|damage reduction}} for up to {{fd|2.5}} seconds. ''Primal Howl'' can be recast after 1 second, and does so automatically after its duration.",
+        "{{sbc|Recast:}} '''Warwick''' howls, ending ''Primal Howl's'' effects and causing all nearby enemies to {{tip|flee}} from him for 1 second, during which they are {{tip|slow|slowed}} by 90%.",
+        "Starting {{ais|Infinite Duress|Warwick}} channel while ''Primal Howl'' is active will initiate the recast without ending the damage reduction buff prematurely."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> gains <HtmlTooltip class=\"blue link\">damage reduction<template #content><div><h4>damage reduction<hr></h4><p>Description for keyword damage reduction</p></div></template></HtmlTooltip> for up to <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. <i>Primal Howl</i> can be recast after 1 second, and does so automatically after its duration.<br /><span class=\"sbc\">Recast:</span> <b>Warwick</b> howls, ending <i>Primal Howl's</i> effects and causing all nearby enemies to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for 1 second, during which they are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 90%.<br />Starting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Warwick\">Infinite Duress's<template #content>Infinite Duress</template></HtmlTooltip> channel while <i>Primal Howl</i> is active will initiate the recast without ending the damage reduction buff prematurely.",
+      "leveling": [
+        "{{st|Damage Reduction|{{ap|35 to 55}}%}}"
+      ],
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* The recast's howling animation has a {{fd|0.5}}-second {{tip|lockout}} time.\n** This will also cancel '''Warwick's''' basic attack.\n** '''Warwick''' cannot attack or cast abilities during the animation, instead the last input will be buffered to play after it ends.\n* '''Warwick''' will automatically recast if he enters {{tip|resurrection}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|15 to 11}}|Starts post-effect}}' as '0/13.667/12.333/11/9.667/0' and riot's value '15,14,13,12,11' as '15/14/13/12/11'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Damage Reduction",
+                "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                35,
+                40,
+                45,
+                50,
+                55
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage Reduction",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  35,
+                  40,
+                  45,
+                  50,
+                  55
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "WarwickR",
+      "name": "Infinite Duress",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        70,
+        30,
+        0
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "WarwickR.png",
+        "sprite": "spell14.png",
+        "group": "spell",
         "x": 48,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Warwick''' deals {{as|{{pp|12 to 46}} {{as|(+ 15% '''bonus''' AD)}} {{as|(+ 10% AP)}}|magic damage}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}.",
-        "While below {{as|{{sti|health|50% '''maximum''' health}}}}, '''Warwick''' also {{tip|heal|heals}} for 100% of the {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} dealt by ''Eternal Hunger'', increased to 250% while below {{as|25% '''maximum''' health}}."
+        "{{sbc|Active:}} '''Warwick''' {{tip|dash|leaps}} in the target direction, during which he is {{tip|cc-immune|immune to crowd control}}.",
+        "If '''Warwick''' collides with an enemy {{tip|champion}}, he stops and {{tip|knockdown|knocks them down}} and {{tip|channel|channels}} for up to {{fd|1.5}} seconds, {{tip|suppression|suppressing}} them, {{tip|true sight|revealing}} them, and dealing them {{as|magic damage}} every {{fd|0.25}} seconds.",
+        "'''Warwick''' is {{tip|heal|healed}} for 100% of all {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} he deals to the target during ''Infinite Duress''.",
+        "''Infinite Duress'' applies {{tip|on-hit}} and {{tip|on-attack}} effects 3 times, and {{stil|life steal}} at 100% effectiveness."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Warwick</b> deals <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">12undefined − 46undefined (based on level)<template #content>Values: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 15% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 10% AP)</span></span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>.<br />While below <span class=\"health\"><span>50% <b>maximum</b> health</span></span>, <b>Warwick</b> also <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of the <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> dealt by <i>Eternal Hunger</i>, increased to 250% while below <span class=\"health\">25% <b>maximum</b> health</span>.",
-      "leveling": [],
-      "notes": "* The enhanced attack will apply other on-hit effects and can {{tip|critical strike|critically strike}} as normal (the '''bonus''' damage cannot).\n* ''Eternal Hunger'' does not affect structures.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "WarwickQ",
-      "name": "Jaws of the Beast",
-      "maxrank": 5,
-      "cooldown": [
-        6
-      ],
-      "cost": [
-        50,
-        60,
-        70,
-        80,
-        90
-      ],
-      "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 350",
-      "image": {
-        "full": "WarwickQ.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 384,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Warwick''' {{tip|lunge|lunges}} at the target enemy, biting them after {{rutngt|0.2475}} to deal them {{as|120% AD}} {{as|(100% AP)}} {{as|magic damage}} and {{as|'''bonus''' magic damage}} equal to a {{as|percentage of the target's '''maximum''' health}}. The '''bonus''' damage is capped against {{tip|monsters}}. '''Warwick''' {{tip|heal|heals}} for a portion of the {{tt|post-mitigation damage|Damage calculated after resistances and most modifiers.}} dealt by the ability.",
-        "''Jaws of the Beast'' applies {{tip|on-hit}} and {{tip|on-attack}} effects, and {{stil|life steal}} at 100% effectiveness.",
-        "{{sbc|Hold:}} ''Jaws of the Beast'' can be held where '''Warwick''' performs the bite as usual and then begins to {{tip|channel|charge}}, during which he {{tip|dash|leaps}} behind the target and sticks to them, following their position anywhere on the map. The charge lasts for {{fd|0.5 seconds}}, but extended if the target is under the effect of a {{tip|dash}} or a {{tip|airborne|displacement}}.",
-        "'''Warwick''' is {{tip|displacement immune|immune to displacements}} during ''Jaws of the Beast's'' animation. Additionally, if the target dies prior to him reaching them, the {{sti|cooldown}} is refunded, unless the ability was held."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> <HtmlTooltip class=\"blue link\">lunges<template #content><div><h4>lunge<hr></h4><p>Description for keyword lunge</p></div></template></HtmlTooltip> at the target enemy, biting them after <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.2475\">Unknown value: rutngt 0.2475</simple-tooltip> to deal them <span class=\"ad\">120% AD</span> <span class=\"ap\">(100% AP)</span> <span class=\"magic-damage\">magic damage</span> and <span class=\"magic-damage\"><b>bonus</b> magic damage</span> equal to a <span class=\"health\">percentage of the target's <b>maximum</b> health</span>. The <b>bonus</b> damage is capped against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>. <b>Warwick</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for a portion of the <span class=\"title-tooltip\" title=\"Damage calculated after resistances and most modifiers.\">post-mitigation damage</span> dealt by the ability.<br /><i>Jaws of the Beast</i> applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects, and <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at 100% effectiveness.<br /><span class=\"sbc\">Hold:</span> <i>Jaws of the Beast</i> can be held where <b>Warwick</b> performs the bite as usual and then begins to <HtmlTooltip class=\"blue link\">charge<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip>, during which he <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> behind the target and sticks to them, following their position anywhere on the map. The charge lasts for <span style=\"font-variant-numeric: tabular-nums;\">0.5 seconds</span>, but extended if the target is under the effect of a <HtmlTooltip class=\"blue link\">dash<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> or a <HtmlTooltip class=\"blue link\">displacement<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>.<br /><b>Warwick</b> is <HtmlTooltip class=\"blue link\">immune to displacements<template #content><div><h4>displacement immune<hr></h4><p>Description for keyword displacement immune</p></div></template></HtmlTooltip> during <i>Jaws of the Beast's</i> animation. Additionally, if the target dies prior to him reaching them, the <span>cooldown</span> is refunded, unless the ability was held.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction, during which he is <HtmlTooltip class=\"blue link\">immune to crowd control<template #content><div><h4>cc-immune<hr></h4><p>Description for keyword cc-immune</p></div></template></HtmlTooltip>.<br />If <b>Warwick</b> collides with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, he stops and <HtmlTooltip class=\"blue link\">knocks them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, <HtmlTooltip class=\"blue link\">suppressing<template #content><div><h4><hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use <b>any</b> summoner spells for the duration.<br><br>\n    Interrupts all channeled and charged abilities<br>\n    Duration is <b>not</b> reduced by <b>Tenacity</b>.<br>\n    Resisted by Spell and Crowd Control Immunity.<br>\n    Removed by <b>Quicksilver</b><br></p></div></template></HtmlTooltip> them, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> them, and dealing them <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.<br /><b>Warwick</b> is <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of all <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> he deals to the target during <i>Infinite Duress</i>.<br /><i>Infinite Duress</i> applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects 3 times, and <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at 100% effectiveness.",
       "leveling": [
-        "{{st|Bonus Magic Damage|{{as|{{ap|6 to 10}}% of target's '''maximum''' health}}}}\n{{st|Capped Bonus Damage|{{ap|100 to 200}}}}\n{{st|Healing Percentage|{{ap|30 to 90}}%}}"
+        "{{st|Total Magic Damage|{{ap|175 to 525}} {{as|(+ 167% '''bonus''' AD)}}}}"
       ],
-      "notes": "'''Details'''\n* ''Jaws of the Beast'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* As mentioned, ''Jaws of the Beast's'' heal is calculated only from its own damage dealt. Additional damage effects, such as {{tip|on-hit|on-hits}}, are not.\n* If casted beforehand, both the damage and the heal occurs even after '''Warwick's''' {{tip|death}}, or during {{tip|resurrection}}.\n* It has been special cased so '''Warwick''' will specifically not follow an enemy's {{si|Recall}}, or {{ci|Sion}} when reviving from {{ai|I|Sion}} (before dealing damage).\n* ''Jaws of the Beast's'' channel cannot be initiated while {{tip|ground|grounded}} or {{tip|root|rooted}}. '''Warwick''' can only use the normal cast.\n** The channel will '''not''' be interrupted by either of the two effects, despite the lock-on being a [[Channel#Movement Channels|movement channel]].\n* The bite always occurs after the same delay, however the time spent lunging does not, which depends based on the range ''Jaw of the Beast'' was cast away from the target, up to a lunge duration of {{fd|0.5}} seconds.\n** The lunge duration does not affect the {{tip|lockout}} timer on, which is the same as the bite's delay.\n** '''Warwick's''' lunge always places him to his attack range to the center of his target.\n* '''Warwick's''' dash will place him up to the edge of his attack range from the target.\n'''Interactions & Other'''\n* In order to hit the cap, the target monster needs to have at least {{as|{{ap|(100 to 200)/((6 to 10)/100)|round=ceil}} health}}.\n* ''Jaws of the Beast'' is the only ability in the game that combines {{tip|channel|channeling}} with {{tip|displacement immune|displacement immunity}}. Every {{tip|interrupt|interrupting}} crowd control effect that is not resisted by the displacement immunity will prematurely stop the {{tip|dash}}.\n** The bite can still occur if cast before the crowd control application, but '''Warwick''' cannot start channeling.\n** Abilities that apply both {{tip|stun}} and {{tip|airborne}} at the same time cause '''Warwick''' to ignore the displacement, but prematurely stop the channel and the dash.\n** The only exception to this is {{cai|I|Sion}}.\n* '''Warwick''' will follow enemies that move via {{tip|attach|attachment}} effects but the lock-on will '''not''' be extended.\n* While ''Jaws of the Beast'' does not use Quick Casting by default, click-and-hold is comparable to the input required to use {{ai|Bone Skewer|Pyke}} or {{ai|Comet Spear|Pantheon}}. It does not accept two-click input (e.g. First Cast and Recast) that abilities like {{ai|Piercing Arrow|Varus}} or {{ai|Decimating Smash|Sion}} use in Standard Casting.\n* '''Warwick''' will attempt to basic attack the target after a short delay.\n* The following table refers for interactions while '''Warwick''' is {{tip|channel|channeling}}:\n{{ct|charge|attack = false|cast = {{ai|Primal Howl|Warwick}} is usable. {{ai|Blood Hunt|Warwick}} and {{ai|Infinite Duress|Warwick}} are disabled.|move=false|spells=true,interrupts,interrupts,interrupts,interrupts|items=interrupts,true,interrupts,false,interrupts,melee|consume=true}}\n'''Known Issues'''\n* ''Jaws of the Beast'' will also refund its {{sti|cooldown}} if it kills the target after being held for exactly its bite delay. {{bug|1|Started in patch 10.1}}\n* The ability can be shortly cast on a dead target, with the ability going on cooldown.{{bug|1|Started in patch 10.1}}",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "* ''Infinite Duress'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* The minimum range of the ability is 275 units, based on the minimum movement speed that a champion can have (110) while still being able to move. The \"base\" range of this ability is {{fd|837.5}} because of his 335 base movement speed.\n** Considering movement speed soft caps, with {{ai|Blood Hunt|Warwick}}, this range increases to {{ap|(335*1.35*0.8+83)*2.5|(335*1.4*0.8+83)*2.5|(335*1.45*0.8+83)*2.5|(335*1.5*0.5+230)*2.5|(335*1.55*0.5+230)*2.5}}, further increased to {{ap|(335*(1+0.35*2.5)*0.5+230)*2.5|(335*(1+0.4*2.5)*0.5+230)*2.5|(335*(1+0.45*2.5)*0.5+230)*2.5|(335*(1+0.5*2.5)*0.5+230)*2.5|(335*(1+0.55*2.5)*0.5+230)*2.5}} against enemy champions {{as|below 20% health}}.\n* The ability deals a total of 9 damage instances that are done in cycles of 3 hits every {{fd|0.5}} seconds, each divided in two instances. The first instance deals 2 hits and triggers the {{tip|on-hit}} and {{tip|on-attack}} effects once, while the second instance deals the remaining last hit.\n* If '''Warwick''' does not collide with a champion, he will slide a {{tt|fixed distance|estimated 150 units}} past the maximum range during which he is no longer crowd control immune and unable to declare basic attacks or cast movement abilities, including {{si|Flash}}, but being able to cast {{ai|Jaws of the Beast|Warwick}} and {{ai|Blood Hunt|Warwick}}, with the former also interrupting the slide.\n** '''Warwick''' is able to cast {{ai|Primal Howl|Warwick}} at any time during the dash.\n* The dash will be interrupted instantly if an enemy champion {{tip|blink|blinks}} in close proximity of '''Warwick'''.{{bug}}\n* Activating {{ii|Stopwatch}} / {{ii|Zhonya's Hourglass}} during the dash interrupts it.\n* Each hit counts as a separate hit for effects such as {{ri|Electrocute}} and {{iis|Eclipse}} {{nie|Ever Rising Moon}}.\n* '''Warwick''' gains the {{tip|cc-immune|cc-immunity}} at the start of the cast time.\n* {{tip|Cleanse|Cleansing}} the {{tip|suppression}} does not interrupt the {{tip|channel}} and '''Warwick''' will continue to strike but not deal any damage.\n** ''Infinite Duress'' is special cased to have its channel interrupted by {{ai|Fate's Call|Kalista}} and {{ai|Devour|Tahm Kench}} if they affect '''Warwick's''' target.\n* If the target is {{tip|cc-immune|crowd control immune}} or protected by {{tip|spell shield}} upon collision, '''Warwick''' will not start the {{tip|channel}}.\n* If the target is in a {{tip|zombie state}}, '''Warwick''' will stop the channel after ~{{fd|0.5}} seconds of hitting them.\n* ''Infinite Duress'' covers '''Warwick's''' hitbox, meaning he will collide with enemy champions that are particularly close to him.\n* The following table refers for interactions while '''Warwick''' is {{tip|channel|channeling}}:\n{{ct|channel|move=false|cast=false|attack=false|items=false, true|spells=true, false, false, false, false}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|110 to 70}}|Starts on cast}}' as '0/70/30/0' and riot's value '110,90,70' as '110/90/70'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,7,8,9,10]\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Capped Bonus Damage</span>: <span><SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Healing Percentage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[175,350,525]\"></SpellSpan> <span class=\"ad\">(+ 167% <b>bonus</b> AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "target_total_hp": [
-                  0.3,
-                  0.45,
-                  0.6,
-                  0.75,
-                  0.9
-                ]
+                "player_bonus_ad": 1.67
               }
             ],
             "st_slices": [
               [
-                "Capped Bonus Damage",
-                "<SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>"
-              ],
-              [
-                "Healing Percentage",
-                "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan>%"
-              ],
-              [
-                "Bonus Magic Damage",
-                "<span class=\"health\"><SpellSpan :list=\"[6,7,8,9,10]\"></SpellSpan>% of target's '''maximum''' health</span>"
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[175,350,525]\"></SpellSpan> <span class=\"ad\">(+ 167% '''bonus''' AD)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                6,
-                7,
-                8,
-                9,
-                10
-              ],
-              [
-                100,
-                125,
-                150,
                 175,
-                200
-              ],
-              null
+                350,
+                525
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Capped Bonus Damage",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  6,
-                  7,
-                  8,
-                  9,
-                  10
-                ],
-                "target_total_hp": [
-                  0.3,
-                  0.45,
-                  0.6,
-                  0.75,
-                  0.9
-                ]
-              }
-            },
-            {
-              "index": 1,
-              "title": "Healing Percentage",
+              "title": "Total Magic Damage",
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  100,
-                  125,
-                  150,
                   175,
-                  200
+                  350,
+                  525
                 ],
-                "target_total_hp": [
-                  0.3,
-                  0.45,
-                  0.6,
-                  0.75,
-                  0.9
-                ]
-              }
-            },
-            {
-              "index": 2,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "target_total_hp": [
-                  0.3,
-                  0.45,
-                  0.6,
-                  0.75,
-                  0.9
-                ]
+                "player_bonus_ad": 1.67
               }
             }
           ]
@@ -338,150 +320,174 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "WarwickE",
-      "name": "Primal Howl",
-      "maxrank": 5,
-      "cooldown": [
-        15,
-        14,
-        13,
-        12,
-        11
-      ],
-      "cost": 40,
-      "costtype": "Mana",
-      "targeting": "Auto",
+    "i1": {
+      "riotId": "",
+      "name": "Eternal Hunger",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "WarwickE.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Warwick''' gains {{tip|damage reduction}} for up to {{fd|2.5}} seconds. ''Primal Howl'' can be recast after 1 second, and does so automatically after its duration.",
-        "{{sbc|Recast:}} '''Warwick''' howls, ending ''Primal Howl's'' effects and causing all nearby enemies to {{tip|flee}} from him for 1 second, during which they are {{tip|slow|slowed}} by 90%.",
-        "Starting {{ais|Infinite Duress|Warwick}} channel while ''Primal Howl'' is active will initiate the recast without ending the damage reduction buff prematurely."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> gains <HtmlTooltip class=\"blue link\">damage reduction<template #content><div><h4>damage reduction<hr></h4><p>Description for keyword damage reduction</p></div></template></HtmlTooltip> for up to <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. <i>Primal Howl</i> can be recast after 1 second, and does so automatically after its duration.<br /><span class=\"sbc\">Recast:</span> <b>Warwick</b> howls, ending <i>Primal Howl's</i> effects and causing all nearby enemies to <HtmlTooltip class=\"blue link\">flee<template #content><div><h4>Fear<hr></h4><p>Spooky</p></div></template></HtmlTooltip> from him for 1 second, during which they are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 90%.<br />Starting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Warwick\">Infinite Duress's<template #content>Infinite Duress</template></HtmlTooltip> channel while <i>Primal Howl</i> is active will initiate the recast without ending the damage reduction buff prematurely.",
-      "leveling": [
-        "{{st|Damage Reduction|{{ap|35 to 55}}%}}"
-      ],
-      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* The recast's howling animation has a {{fd|0.5}}-second {{tip|lockout}} time.\n** This will also cancel '''Warwick's''' basic attack.\n** '''Warwick''' cannot attack or cast abilities during the animation, instead the last input will be buffered to play after it ends.\n* '''Warwick''' will automatically recast if he enters {{tip|resurrection}}.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Damage Reduction",
-                "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                35,
-                40,
-                45,
-                50,
-                55
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Damage Reduction",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  35,
-                  40,
-                  45,
-                  50,
-                  55
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "WarwickR",
-      "name": "Infinite Duress",
-      "maxrank": 3,
-      "cooldown": [
-        110,
-        90,
-        70
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "WarwickR.png",
-        "sprite": "spell14.png",
-        "group": "spell",
+        "full": "WarwickP.png",
+        "sprite": "passive4.png",
+        "group": "passive",
         "x": 48,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Warwick''' {{tip|dash|leaps}} in the target direction, during which he is {{tip|cc-immune|immune to crowd control}}.",
-        "If '''Warwick''' collides with an enemy {{tip|champion}}, he stops and {{tip|knockdown|knocks them down}} and {{tip|channel|channels}} for up to {{fd|1.5}} seconds, {{tip|suppression|suppressing}} them, {{tip|true sight|revealing}} them, and dealing them {{as|magic damage}} every {{fd|0.25}} seconds.",
-        "'''Warwick''' is {{tip|heal|healed}} for 100% of all {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} he deals to the target during ''Infinite Duress''.",
-        "''Infinite Duress'' applies {{tip|on-hit}} and {{tip|on-attack}} effects 3 times, and {{stil|life steal}} at 100% effectiveness."
+        "{{sbc|Innate:}} '''Warwick''' deals {{as|{{pp|12 to 46}} {{as|(+ 15% '''bonus''' AD)}} {{as|(+ 10% AP)}}|magic damage}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}.",
+        "While below {{as|{{sti|health|50% '''maximum''' health}}}}, '''Warwick''' also {{tip|heal|heals}} for 100% of the {{tt|post-mitigation damage|Damage calculated after resistances and modifiers.}} dealt by ''Eternal Hunger'', increased to 250% while below {{as|25% '''maximum''' health}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction, during which he is <HtmlTooltip class=\"blue link\">immune to crowd control<template #content><div><h4>cc-immune<hr></h4><p>Description for keyword cc-immune</p></div></template></HtmlTooltip>.<br />If <b>Warwick</b> collides with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, he stops and <HtmlTooltip class=\"blue link\">knocks them down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, <HtmlTooltip class=\"blue link\">suppressing<template #content><div><h4><hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use <b>any</b> summoner spells for the duration.<br><br>\n    Interrupts all channeled and charged abilities<br>\n    Duration is <b>not</b> reduced by <b>Tenacity</b>.<br>\n    Resisted by Spell and Crowd Control Immunity.<br>\n    Removed by <b>Quicksilver</b><br></p></div></template></HtmlTooltip> them, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> them, and dealing them <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.<br /><b>Warwick</b> is <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of all <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> he deals to the target during <i>Infinite Duress</i>.<br /><i>Infinite Duress</i> applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects 3 times, and <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at 100% effectiveness.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Warwick</b> deals <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">12undefined − 46undefined (based on level)<template #content>Values: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 15% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 10% AP)</span></span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>.<br />While below <span class=\"health\"><span>50% <b>maximum</b> health</span></span>, <b>Warwick</b> also <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of the <span class=\"title-tooltip\" title=\"Damage calculated after resistances and modifiers.\">post-mitigation damage</span> dealt by <i>Eternal Hunger</i>, increased to 250% while below <span class=\"health\">25% <b>maximum</b> health</span>.",
+      "leveling": [],
+      "notes": "* The enhanced attack will apply other on-hit effects and can {{tip|critical strike|critically strike}} as normal (the '''bonus''' damage cannot).\n* ''Eternal Hunger'' does not affect structures.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "WarwickQ",
+      "name": "Jaws of the Beast",
+      "maxrank": 5,
+      "cooldown": [
+        6,
+        0
+      ],
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 350",
+      "image": {
+        "full": "WarwickQ.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Warwick''' {{tip|lunge|lunges}} at the target enemy, biting them after {{rutngt|0.2475}} to deal them {{as|120% AD}} {{as|(100% AP)}} {{as|magic damage}} and {{as|'''bonus''' magic damage}} equal to a {{as|percentage of the target's '''maximum''' health}}. The '''bonus''' damage is capped against {{tip|monsters}}. '''Warwick''' {{tip|heal|heals}} for a portion of the {{tt|post-mitigation damage|Damage calculated after resistances and most modifiers.}} dealt by the ability.",
+        "''Jaws of the Beast'' applies {{tip|on-hit}} and {{tip|on-attack}} effects, and {{stil|life steal}} at 100% effectiveness.",
+        "{{sbc|Hold:}} ''Jaws of the Beast'' can be held where '''Warwick''' performs the bite as usual and then begins to {{tip|channel|charge}}, during which he {{tip|dash|leaps}} behind the target and sticks to them, following their position anywhere on the map. The charge lasts for {{fd|0.5 seconds}}, but extended if the target is under the effect of a {{tip|dash}} or a {{tip|airborne|displacement}}.",
+        "'''Warwick''' is {{tip|displacement immune|immune to displacements}} during ''Jaws of the Beast's'' animation. Additionally, if the target dies prior to him reaching them, the {{sti|cooldown}} is refunded, unless the ability was held."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Warwick</b> <HtmlTooltip class=\"blue link\">lunges<template #content><div><h4>lunge<hr></h4><p>Description for keyword lunge</p></div></template></HtmlTooltip> at the target enemy, biting them after <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.2475\">Unknown value: rutngt 0.2475</simple-tooltip> to deal them <span class=\"ad\">120% AD</span> <span class=\"ap\">(100% AP)</span> <span class=\"magic-damage\">magic damage</span> and <span class=\"magic-damage\"><b>bonus</b> magic damage</span> equal to a <span class=\"health\">percentage of the target's <b>maximum</b> health</span>. The <b>bonus</b> damage is capped against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>. <b>Warwick</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for a portion of the <span class=\"title-tooltip\" title=\"Damage calculated after resistances and most modifiers.\">post-mitigation damage</span> dealt by the ability.<br /><i>Jaws of the Beast</i> applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects, and <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at 100% effectiveness.<br /><span class=\"sbc\">Hold:</span> <i>Jaws of the Beast</i> can be held where <b>Warwick</b> performs the bite as usual and then begins to <HtmlTooltip class=\"blue link\">charge<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip>, during which he <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> behind the target and sticks to them, following their position anywhere on the map. The charge lasts for <span style=\"font-variant-numeric: tabular-nums;\">0.5 seconds</span>, but extended if the target is under the effect of a <HtmlTooltip class=\"blue link\">dash<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> or a <HtmlTooltip class=\"blue link\">displacement<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>.<br /><b>Warwick</b> is <HtmlTooltip class=\"blue link\">immune to displacements<template #content><div><h4>displacement immune<hr></h4><p>Description for keyword displacement immune</p></div></template></HtmlTooltip> during <i>Jaws of the Beast's</i> animation. Additionally, if the target dies prior to him reaching them, the <span>cooldown</span> is refunded, unless the ability was held.",
       "leveling": [
-        "{{st|Total Magic Damage|{{ap|175 to 525}} {{as|(+ 167% '''bonus''' AD)}}}}"
+        "{{st|Bonus Magic Damage|{{as|{{ap|6 to 10}}% of target's '''maximum''' health}}}}\n{{st|Capped Bonus Damage|{{ap|100 to 200}}}}\n{{st|Healing Percentage|{{ap|30 to 90}}%}}"
       ],
-      "notes": "* ''Infinite Duress'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* The minimum range of the ability is 275 units, based on the minimum movement speed that a champion can have (110) while still being able to move. The \"base\" range of this ability is {{fd|837.5}} because of his 335 base movement speed.\n** Considering movement speed soft caps, with {{ai|Blood Hunt|Warwick}}, this range increases to {{ap|(335*1.35*0.8+83)*2.5|(335*1.4*0.8+83)*2.5|(335*1.45*0.8+83)*2.5|(335*1.5*0.5+230)*2.5|(335*1.55*0.5+230)*2.5}}, further increased to {{ap|(335*(1+0.35*2.5)*0.5+230)*2.5|(335*(1+0.4*2.5)*0.5+230)*2.5|(335*(1+0.45*2.5)*0.5+230)*2.5|(335*(1+0.5*2.5)*0.5+230)*2.5|(335*(1+0.55*2.5)*0.5+230)*2.5}} against enemy champions {{as|below 20% health}}.\n* The ability deals a total of 9 damage instances that are done in cycles of 3 hits every {{fd|0.5}} seconds, each divided in two instances. The first instance deals 2 hits and triggers the {{tip|on-hit}} and {{tip|on-attack}} effects once, while the second instance deals the remaining last hit.\n* If '''Warwick''' does not collide with a champion, he will slide a {{tt|fixed distance|estimated 150 units}} past the maximum range during which he is no longer crowd control immune and unable to declare basic attacks or cast movement abilities, including {{si|Flash}}, but being able to cast {{ai|Jaws of the Beast|Warwick}} and {{ai|Blood Hunt|Warwick}}, with the former also interrupting the slide.\n** '''Warwick''' is able to cast {{ai|Primal Howl|Warwick}} at any time during the dash.\n* The dash will be interrupted instantly if an enemy champion {{tip|blink|blinks}} in close proximity of '''Warwick'''.{{bug}}\n* Activating {{ii|Stopwatch}} / {{ii|Zhonya's Hourglass}} during the dash interrupts it.\n* Each hit counts as a separate hit for effects such as {{ri|Electrocute}} and {{iis|Eclipse}} {{nie|Ever Rising Moon}}.\n* '''Warwick''' gains the {{tip|cc-immune|cc-immunity}} at the start of the cast time.\n* {{tip|Cleanse|Cleansing}} the {{tip|suppression}} does not interrupt the {{tip|channel}} and '''Warwick''' will continue to strike but not deal any damage.\n** ''Infinite Duress'' is special cased to have its channel interrupted by {{ai|Fate's Call|Kalista}} and {{ai|Devour|Tahm Kench}} if they affect '''Warwick's''' target.\n* If the target is {{tip|cc-immune|crowd control immune}} or protected by {{tip|spell shield}} upon collision, '''Warwick''' will not start the {{tip|channel}}.\n* If the target is in a {{tip|zombie state}}, '''Warwick''' will stop the channel after ~{{fd|0.5}} seconds of hitting them.\n* ''Infinite Duress'' covers '''Warwick's''' hitbox, meaning he will collide with enemy champions that are particularly close to him.\n* The following table refers for interactions while '''Warwick''' is {{tip|channel|channeling}}:\n{{ct|channel|move=false|cast=false|attack=false|items=false, true|spells=true, false, false, false, false}}",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "'''Details'''\n* ''Jaws of the Beast'' deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* As mentioned, ''Jaws of the Beast's'' heal is calculated only from its own damage dealt. Additional damage effects, such as {{tip|on-hit|on-hits}}, are not.\n* If casted beforehand, both the damage and the heal occurs even after '''Warwick's''' {{tip|death}}, or during {{tip|resurrection}}.\n* It has been special cased so '''Warwick''' will specifically not follow an enemy's {{si|Recall}}, or {{ci|Sion}} when reviving from {{ai|I|Sion}} (before dealing damage).\n* ''Jaws of the Beast's'' channel cannot be initiated while {{tip|ground|grounded}} or {{tip|root|rooted}}. '''Warwick''' can only use the normal cast.\n** The channel will '''not''' be interrupted by either of the two effects, despite the lock-on being a [[Channel#Movement Channels|movement channel]].\n* The bite always occurs after the same delay, however the time spent lunging does not, which depends based on the range ''Jaw of the Beast'' was cast away from the target, up to a lunge duration of {{fd|0.5}} seconds.\n** The lunge duration does not affect the {{tip|lockout}} timer on, which is the same as the bite's delay.\n** '''Warwick's''' lunge always places him to his attack range to the center of his target.\n* '''Warwick's''' dash will place him up to the edge of his attack range from the target.\n'''Interactions & Other'''\n* In order to hit the cap, the target monster needs to have at least {{as|{{ap|(100 to 200)/((6 to 10)/100)|round=ceil}} health}}.\n* ''Jaws of the Beast'' is the only ability in the game that combines {{tip|channel|channeling}} with {{tip|displacement immune|displacement immunity}}. Every {{tip|interrupt|interrupting}} crowd control effect that is not resisted by the displacement immunity will prematurely stop the {{tip|dash}}.\n** The bite can still occur if cast before the crowd control application, but '''Warwick''' cannot start channeling.\n** Abilities that apply both {{tip|stun}} and {{tip|airborne}} at the same time cause '''Warwick''' to ignore the displacement, but prematurely stop the channel and the dash.\n** The only exception to this is {{cai|I|Sion}}.\n* '''Warwick''' will follow enemies that move via {{tip|attach|attachment}} effects but the lock-on will '''not''' be extended.\n* While ''Jaws of the Beast'' does not use Quick Casting by default, click-and-hold is comparable to the input required to use {{ai|Bone Skewer|Pyke}} or {{ai|Comet Spear|Pantheon}}. It does not accept two-click input (e.g. First Cast and Recast) that abilities like {{ai|Piercing Arrow|Varus}} or {{ai|Decimating Smash|Sion}} use in Standard Casting.\n* '''Warwick''' will attempt to basic attack the target after a short delay.\n* The following table refers for interactions while '''Warwick''' is {{tip|channel|channeling}}:\n{{ct|charge|attack = false|cast = {{ai|Primal Howl|Warwick}} is usable. {{ai|Blood Hunt|Warwick}} and {{ai|Infinite Duress|Warwick}} are disabled.|move=false|spells=true,interrupts,interrupts,interrupts,interrupts|items=interrupts,true,interrupts,false,interrupts,melee|consume=true}}\n'''Known Issues'''\n* ''Jaws of the Beast'' will also refund its {{sti|cooldown}} if it kills the target after being held for exactly its bite delay. {{bug|1|Started in patch 10.1}}\n* The ability can be shortly cast on a dead target, with the ability going on cooldown.{{bug|1|Started in patch 10.1}}",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|6|Starts post-effect}}' as '6/0' and riot's value '6,6,6,6,6' as '6'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[175,350,525]\"></SpellSpan> <span class=\"ad\">(+ 167% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[6,7,8,9,10]\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Capped Bonus Damage</span>: <span><SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Healing Percentage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_bonus_ad": 1.67
+                "target_total_hp": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
               }
             ],
             "st_slices": [
               [
-                "Total Magic Damage",
-                "<SpellSpan :list=\"[175,350,525]\"></SpellSpan> <span class=\"ad\">(+ 167% '''bonus''' AD)</span>"
+                "Capped Bonus Damage",
+                "<SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>"
+              ],
+              [
+                "Healing Percentage",
+                "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan>%"
+              ],
+              [
+                "Bonus Magic Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[6,7,8,9,10]\"></SpellSpan>% of target's '''maximum''' health</span>"
               ]
             ],
             "ap_progressions": [
               [
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                100,
+                125,
+                150,
                 175,
-                350,
-                525
-              ]
+                200
+              ],
+              null
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Total Magic Damage",
+              "title": "Capped Bonus Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  6,
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "target_total_hp": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Healing Percentage",
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
+                  100,
+                  125,
+                  150,
                   175,
-                  350,
-                  525
+                  200
                 ],
-                "player_bonus_ad": 1.67
+                "target_total_hp": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "target_total_hp": [
+                  0.3,
+                  0.45,
+                  0.6,
+                  0.75,
+                  0.9
+                ]
               }
             }
           ]

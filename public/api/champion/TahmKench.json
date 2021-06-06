@@ -49,31 +49,6 @@
     "attackspeed": 0.658
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "An Acquired Taste",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "TahmKench_P.png",
-        "sprite": "passive3.png",
-        "group": "passive",
-        "x": 432,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s deal {{as|4% of his '''maximum''' health}} as {{as|'''bonus''' magic damage}}. Against enemy {{tip|champion|champions}} they also apply ''An Acquired Taste'' [[stack]] for 5 seconds, stacking up to 3 times, with the duration refreshing on {{ai|Tongue Lash|Tahm Kench}} and subsequent attacks. The stacks decay once every {{fd|0.67}} seconds when the duration ends.",
-        "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with 3 stacks."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Tahm Kench's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"health\">4% of his <b>maximum</b> health</span> as <span class=\"magic-damage\"><b>bonus</b> magic damage</span>. Against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> they also apply <i>An Acquired Taste</i> <a class=\"effect link\" title=\"stack\">stack</a> for 5 seconds, stacking up to 3 times, with the duration refreshing on <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Tongue Lash<template #content>Tongue Lash</template></HtmlTooltip> and subsequent attacks. The stacks decay once every <span style=\"font-variant-numeric: tabular-nums;\">0.67</span> seconds when the duration ends.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Tongue Lash<template #content>Tongue Lash</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Devour<template #content>Devour</template></HtmlTooltip> gain additional effects against enemies with 3 stacks.",
-      "leveling": [],
-      "notes": "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, ''An Acquired Taste's'' damage can be acquired in a different way: {{as|{{pp|4/100*({{ccd|Tahm Kench|hp_base}}+{{ccd|Tahm Kench|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}}|magic damage}} {{as|(+ 4% '''bonus''' health)}} {{as|magic damage}}.\n* The passive bonus damage applies to turrets.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "TahmKenchQ",
       "name": "Tongue Lash",
@@ -180,7 +155,8 @@
       "name": "Thick Skin",
       "maxrank": 5,
       "cooldown": [
-        3
+        3,
+        0
       ],
       "cost": 0,
       "targeting": "Auto",
@@ -205,6 +181,7 @@
       "notes": "* ''Thick Skin'' shield value and ''Grey Health'' percentage heal are both boosted by effects that increase heal and shield power. This means '''Tahm Kench''' can technically heal more than the normal amount of ''Grey Health'' and get a shield bigger than his maximum health.\n** At level 18 '''Tahm Kench''' would need {{ap|(1/0.65-1)*100|round=1}}% {{sti|heal power}} to heal for 100% of the damage he takes, reduced to {{ap|(1/(0.65*1.1)-1.05)*100|round=1}}% with {{ri|Revitalize}}, {{ap|(1/(0.65*1.25)-1)*100|round=1}}% with {{ii|Spirit Visage}}, and {{ap|(1/(0.65*1.1*1.25)-1.05)*100|round=1}}% with both.\n* ''Grey Health'' converts all post-mitigation damage, ''Thick Skin'' effectively grants ''Tahm Kench'' a form of {{as|true damage}} mitigation.\n* ''Grey Health'' can temporarily exceed 100% of his missing health when '''Tahm Kench''' {{tt|heals through other means|Any other source of healing besides Thick Skin}} with a ''Grey Health'' bar at 100%. In that case he will keep the higher ''Grey Health'' value for a few moments until it updates and removes the amount that he healed.",
       "skillkey": "E",
       "skillid": "e1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|3|Start on shield destruction or expiration}}' as '3/0' and riot's value '3,3,3,3,3' as '3'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Damage into Grey Health</span>: <span><SpellSpan :list=\"[45,50,55,60,65]\"></SpellSpan>%</span></li></ul>",
@@ -232,6 +209,225 @@
               "title": "Damage into Grey Health",
               "damage_type": "none",
               "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "TahmKenchNewR",
+      "name": "Abyssal Voyage",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        120,
+        100,
+        0
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": "{{ap|2500 to 8500}}",
+      "image": {
+        "full": "TahmKenchNewR.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Tahm Kench''' {{tip|channels}} for up to 6 seconds, highlighting the path to his intended destination to allied champions while opening his maw to offer up to one of them the chance to come with him. ''Abyssal Voyage'' can be recast after {{fd|0.25}} seconds during the channel. If an ally has climbed in, they immediately become {{tip|untargetable}} and '''Tahm Kench''' automatically begins a {{fd|1.65}}-second {{tip|channel}} that, when completed, renders '''Tahm Kench''' also {{tip|untargetable}} and causes him and his ally to {{tip|blink}} to the target location, both becoming unable to perform actions for 1 second and afterwards becoming targetable again.",
+        "{{sbc|Recast:}} '''Tahm Kench''' manually begins the channel to {{tip|blink}} to the target location. Allies can still join him while they have the chance during this time.",
+        "''Abyssal Voyage'' is put on a 10 second {{sti|cooldown}} if the second channel is not started or is {{tip|interrupt|interrupted}}.",
+        "''Allies must be [[combat status|out of combat]] with enemy champions and cannot be affected by their {{tip|crowd control}} effects within the last 5 seconds to come with '''Tahm Kench'''. Abyssal Voyage cannot be cast while {{ai|Devour|Tahm Kench}} is active.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Tahm Kench</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channels<hr></h4><p>Description for keyword channels</p></div></template></HtmlTooltip> for up to 6 seconds, highlighting the path to his intended destination to allied champions while opening his maw to offer up to one of them the chance to come with him. <i>Abyssal Voyage</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds during the channel. If an ally has climbed in, they immediately become <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <b>Tahm Kench</b> automatically begins a <span style=\"font-variant-numeric: tabular-nums;\">1.65</span>-second <HtmlTooltip class=\"blue link\">channel<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> that, when completed, renders <b>Tahm Kench</b> also <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and causes him and his ally to <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to the target location, both becoming unable to perform actions for 1 second and afterwards becoming targetable again.<br /><span class=\"sbc\">Recast:</span> <b>Tahm Kench</b> manually begins the channel to <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to the target location. Allies can still join him while they have the chance during this time.<br /><i>Abyssal Voyage</i> is put on a 10 second <span>cooldown</span> if the second channel is not started or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>.<br /><i>Allies must be <a class=\"effect link\" title=\"out of combat\">combat status</a> with enemy champions and cannot be affected by their <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip> effects within the last 5 seconds to come with <b>Tahm Kench</b>. Abyssal Voyage cannot be cast while <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Devour<template #content>Devour</template></HtmlTooltip> is active.</i>",
+      "leveling": [],
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Recasting the ability does not.\n* ''Abyssal Voyage'', upon recast, will alert '''Tahm Kench's''' arrival to nearby enemies and allies with a [[ping]].\n* The following table refers for interactions while '''Tahm Kench''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=false|spells=false|attack=Interrupts the initial channel. Is disabled on the second.|move=Interrupts the initial channel. Is disabled on the second.|consume=false|items=false|interrupts=death, ground, root, silence|damage=true}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|140 to 120}}|Starts upon initiating the second channel}}' as '0/120/100/0' and riot's value '140,130,120' as '140/130/120'",
+      "effects": []
+    },
+    "w1": {
+      "riotId": "TahmKenchW",
+      "name": "Devour",
+      "maxrank": 5,
+      "cooldown": [
+        20,
+        0
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|icononly = true}} 250",
+      "image": {
+        "full": "TahmKenchW.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Tahm Kench''' swallows the target enemy {{tip|minion}}, non-epic {{tip|monster}} or allied {{tip|champion}} for up to 4 seconds. Swallowed units are rendered {{tip|vanish|vanished}} and cannot perform any actions. If the target is an ally, they become {{tip|displacement immune}} while swallowed. If the target is an enemy, they are instantly {{tip|stun|stunned}} for {{fd|0.5}} seconds and {{tip|suppression|suppressed}} for the cast time and while swallowed.",
+        "'''Tahm Kench''' can swallow a target enemy champion for up to 2 seconds if they have three {{ai|An Acquired Taste|Tahm Kench}} stacks, doing so consumes all of them. If '''Tahm Kench''' swallows a champion, he becomes unable to cast movement spells and is {{tip|slow|slowed}} by 95% for the duration.",
+        "Swallowing an enemy refunds 50% of ''Devour's'' {{sti|cooldown}} and {{sti|{{as|mana cost}}}}.",
+        "After 1 second, ''Devour'' can be recast into {{ai|Regurgitate|Tahm Kench}} while '''Tahm Kench's''' belly is full, and automatically does so at the end of the duration. Allied champions can exit at will by inputting a movement command after the same delay, unless they're {{tip|immobilize|immobilized}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Tahm Kench</b> swallows the target enemy <HtmlTooltip class=\"blue link\">minion<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip>, non-epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> or allied <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> for up to 4 seconds. Swallowed units are rendered <HtmlTooltip class=\"blue link\">vanished<template #content><div><h4>vanish<hr></h4><p>Description for keyword vanish</p></div></template></HtmlTooltip> and cannot perform any actions. If the target is an ally, they become <HtmlTooltip class=\"blue link\">displacement immune<template #content><div><h4>displacement immune<hr></h4><p>Description for keyword displacement immune</p></div></template></HtmlTooltip> while swallowed. If the target is an enemy, they are instantly <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds and <HtmlTooltip class=\"blue link\">suppressed<template #content><div><h4><hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use <b>any</b> summoner spells for the duration.<br><br>\n    Interrupts all channeled and charged abilities<br>\n    Duration is <b>not</b> reduced by <b>Tenacity</b>.<br>\n    Resisted by Spell and Crowd Control Immunity.<br>\n    Removed by <b>Quicksilver</b><br></p></div></template></HtmlTooltip> for the cast time and while swallowed.<br /><b>Tahm Kench</b> can swallow a target enemy champion for up to 2 seconds if they have three <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">An Acquired Taste<template #content>An Acquired Taste</template></HtmlTooltip> stacks, doing so consumes all of them. If <b>Tahm Kench</b> swallows a champion, he becomes unable to cast movement spells and is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 95% for the duration.<br />Swallowing an enemy refunds 50% of <i>Devour's</i> <span>cooldown</span> and <span><span class=\"mana\">mana cost</span></span>.<br />After 1 second, <i>Devour</i> can be recast into <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Regurgitate<template #content>Regurgitate</template></HtmlTooltip> while <b>Tahm Kench's</b> belly is full, and automatically does so at the end of the duration. Allied champions can exit at will by inputting a movement command after the same delay, unless they're <HtmlTooltip class=\"blue link\">immobilized<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip>.",
+      "leveling": [],
+      "notes": "* ''Devour'' does not destroy in-flight {{tip|projectile|projectiles}} for enemy targets.\n* ''Devour'' renders enemies {{tip|untargetable}} once they are inside '''Tahm Kench's''' belly. Allies become ''untargetable'' on-cast.\n*''Devour'' counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability early for {{ai|Regurgitate|Tahm Kench}} does not.\n* If the displacement of the target entering '''Tahm Kench's''' belly is interrupted, the target is swallowed immediately.\n* ''Devour's'' initial {{tip|suppression}} is separate from the one that lasts while swallowed.\n** {{tip|Cleanse|Cleansing}} the initial one will also remove the displacement of entering the belly.\n* ''Devour'' will remove {{tip|airborne}} effects from the target upon entering '''Tahm Kench's''' belly.\n* Swallowed non-champions cannot be reduced below {{sti|{{as|1 health}}}}.\n* ''Devour'' cannot be used on allies that are {{tip|channel|channeling}}.\n* ''Devour'' cannot be cast on units that are {{tip|displacement immune}}.\n* ''Devour'' cannot be cast on {{ai|A Harmless Scarecrow|Fiddlesticks|Effigies}}.\n* ''Devour's'' cast will cancel if the target becomes {{tip|displacement immune}} during the cast time. The cooldown will be refunded if this occurs.\n** The same also happens if they become {{tip|cc-immune|immune to crowd control}}, although the cooldown is not refunded.\n* The swallowed target will become free if '''Tahm Kench''' enters or leaves the {{ai|Realm of Death|Mordekaiser}} or is teleported by {{ai|Realm Warp|Ryze}}.\n* '''Tahm Kench''' cannot channel {{si|Recall}} during ''Devour''.\n* Swallowed enemy champions will receive ''Regurgitate's'' damage regardless of how they leave '''Tahm Kench's''' belly.\n* ''Devour'' is canceled if the target dies or enters the {{ai|Realm of Death|Mordekaiser}} during the cast time. It does not go on {{sti|cooldown}} nor expend {{sti|{{as|mana}}}}.\n* The {{tip|slow|self-slow}} is affected by {{tip|slow resist}}.\n* ''Devour'' will prioritize champions over other units.\n** If champions stay on top of each other it will prioritize those who stay beneath.\n* ''Devour'' cannot be used on {{tip|zombie state|post-death forms}} such as {{ai|Glory in Death|Sion}} or on targets that are already being devoured by another '''Tahm Kench'''.\n* ''Devour'' cannot be cast on {{cai|Cell Division|Zac|bloblets}}.\n* ''Devour'' will not end persistent area-of-effect abilities early (e.g. {{ai|Crowstorm|Fiddlesticks}}, {{ai|Slicing Maelstrom|Kennen}}, {{ai|Inferno Trigger|Samira}}) nor non-channeled ones (e.g. {{ai|Center of the Universe|Aurelion Sol}}).",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|20|Starts post effect}}' as '20/0' and riot's value '20,20,20,20,20' as '20'",
+      "effects": []
+    },
+    "i1": {
+      "riotId": "",
+      "name": "An Acquired Taste",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "TahmKench_P.png",
+        "sprite": "passive3.png",
+        "group": "passive",
+        "x": 432,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Tahm Kench's''' [[basic attack]]s deal {{as|4% of his '''maximum''' health}} as {{as|'''bonus''' magic damage}}. Against enemy {{tip|champion|champions}} they also apply ''An Acquired Taste'' [[stack]] for 5 seconds, stacking up to 3 times, with the duration refreshing on {{ai|Tongue Lash|Tahm Kench}} and subsequent attacks. The stacks decay once every {{fd|0.67}} seconds when the duration ends.",
+        "{{ai|Tongue Lash|Tahm Kench}} and {{ai|Devour|Tahm Kench}} gain additional effects against enemies with 3 stacks."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Tahm Kench's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"health\">4% of his <b>maximum</b> health</span> as <span class=\"magic-damage\"><b>bonus</b> magic damage</span>. Against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> they also apply <i>An Acquired Taste</i> <a class=\"effect link\" title=\"stack\">stack</a> for 5 seconds, stacking up to 3 times, with the duration refreshing on <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Tongue Lash<template #content>Tongue Lash</template></HtmlTooltip> and subsequent attacks. The stacks decay once every <span style=\"font-variant-numeric: tabular-nums;\">0.67</span> seconds when the duration ends.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Tongue Lash<template #content>Tongue Lash</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Tahm Kench\">Devour<template #content>Devour</template></HtmlTooltip> gain additional effects against enemies with 3 stacks.",
+      "leveling": [],
+      "notes": "* By calculating ''An Acquired Taste's'' base damage, using '''Tahm Kench's''' base health, ''An Acquired Taste's'' damage can be acquired in a different way: {{as|{{pp|4/100*({{ccd|Tahm Kench|hp_base}}+{{ccd|Tahm Kench|hp_lvl}}*(x-1)*(0.7025+0.0175*(x-1)))}}|magic damage}} {{as|(+ 4% '''bonus''' health)}} {{as|magic damage}}.\n* The passive bonus damage applies to turrets.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "w2": {
+      "riotId": "TahmKenchW",
+      "name": "Regurgitate",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Direction",
+      "target_range": "{{tt|150|Enemy Champion}} / {{tt|250|Allied Champion}} / {{tt|650|Non-Champion}}",
+      "image": {
+        "full": "TahmKenchW.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Tahm Kench''' {{tip|dash|regurgitates}} the swallowed target a fixed distance in the target direction. If they are an enemy they also take {{as|magic damage}}, capped at 500 against monsters.",
+        "Minions and non-epic monsters that are spat forth can collide with an enemy or terrain to deal {{as|magic damage}} to all enemies around them and themselves before taking ''Regurgitate's'' damage."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Tahm Kench</b> <HtmlTooltip class=\"blue link\">regurgitates<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> the swallowed target a fixed distance in the target direction. If they are an enemy they also take <span class=\"magic-damage\">magic damage</span>, capped at 500 against monsters.<br />Minions and non-epic monsters that are spat forth can collide with an enemy or terrain to deal <span class=\"magic-damage\">magic damage</span> to all enemies around them and themselves before taking <i>Regurgitate's</i> damage.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 11% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}}}",
+        "{{st|Projectile Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* Applies {{tip|spell damage}} if the swallowed target was an enemy champion and deals {{tip|area damage}} if the swallowed target was a non-champion.\n* ''Regurgitate'' does not count as an ability activation.\n* ''Regurgitate'' can send allies to the other side of small walls.\n* If ''Regurgitate'' was cast automatically, '''Tahm Kench''' will spit the target in his facing direction.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 100,100,100,100,100 as 100",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '20,20,20,20,20' as '20'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"health\">(+ 11% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 21
+              },
+              {
+                "target_total_ap": 1121
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"health\">(+ 11% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_total_ap": 21,
+                "target_total_ap": 1121
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Projectile Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Projectile Damage",
+                "<SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                105,
+                150,
+                195,
+                240
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Projectile Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  105,
+                  150,
+                  195,
+                  240
+                ],
+                "player_total_ap": 0.6
+              }
             }
           ]
         }

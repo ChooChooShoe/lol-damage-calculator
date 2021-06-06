@@ -157,6 +157,419 @@
           ]
         }
       ]
+    },
+    "e1": {
+      "riotId": "KaisaE",
+      "name": "Supercharge",
+      "maxrank": 5,
+      "cooldown": [
+        16,
+        15,
+        14,
+        13,
+        12
+      ],
+      "cost": 30,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "target_range": "",
+      "image": {
+        "full": "KaisaE.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kai'Sa''' charges for the duration of the cast time, during which she is still allowed to move, becomes {{tip|ghosted}} and gains {{sti|ms|{{As|'''bonus''' movement speed}}}}, increased by {{as|{{pp|type='''bonus''' attack speed|key=%|0 to 100 for 11|key1=%|0 to 100|formula=1% per 1% '''bonus''' attack speed.}}|as}}.",
+        "After charging up, '''Kai'Sa''' gains {{sti|as|{{as|'''bonus''' attack speed}}}} and her {{tip|attack windup|basic attack windup}} percentage is reduced to {{fd|6.44%}} for 4 seconds.",
+        "''Supercharge's'' {{sti|cooldown}} is reduced by {{fd|0.5}} seconds {{tip|on-attack}}.",
+        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|as|{{as|{{pp|round=ceil|key=%|100-{{ccd|Kai'Sa|as_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} attack speed}}}} from [[items]] to upgrade – ''Supercharge'' grants {{tip|invisibility}} for {{fd|0.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kai'Sa</b> charges for the duration of the cast time, during which she is still allowed to move, becomes <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> and gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>, increased by <span class=\"as\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span>.<br />After charging up, <b>Kai'Sa</b> gains <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> and her <HtmlTooltip class=\"blue link\">basic attack windup<template #content><div><h4>attack windup<hr></h4><p>Description for keyword attack windup</p></div></template></HtmlTooltip> percentage is reduced to <span style=\"font-variant-numeric: tabular-nums;\">6.44%</span> for 4 seconds.<br /><i>Supercharge's</i> <span>cooldown</span> is reduced by <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kai'Sa\">Living Weapon<template #content>Second Skin</template></HtmlTooltip>:</span> Requires <span><span class=\"ap\"><HtmlTooltip class=\"blue link\">100-<simple-tooltip class=\"capture-unknown\" dname=\"ccd Kai'Sa as_lvl\">Unknown value: ccd Kai'Sa as_lvl</simple-tooltip>*(x-1)*(0.7025+0.0175*(x-1))% − undefined% (based on level)<template #content>Values: 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> attack speed</span></span> from <a class=\"effect link\" title=\"items\">items</a> to upgrade – <i>Supercharge</i> grants <HtmlTooltip class=\"blue link\">invisibility<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.",
+      "leveling": [
+        "{{st|Minimum Movement Speed|{{ap|55|60|65|70|75}}%|Maximum Movement Speed|{{ap|110|120|130|140|150}}%}}",
+        "{{st|Bonus Attack Speed|{{ap|40 to 80}}%}}"
+      ],
+      "notes": "* Her attack commands during this time are switched to movement commands instead. Upon finishing the charge and if an attack command was issued, '''Kai'Sa''' will continue walking toward her target.\n** '''Kai'Sa''' behaves normally if attack move click was issued not on a target during the cast time, stopping at attack range of the closest target and starts attacking when charged up.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Movement Speed</span>: <span><SpellSpan :list=\"[55,60,65,70,75]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Movement Speed</span>: <span><SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Minimum Movement Speed",
+                "<SpellSpan :list=\"[55,60,65,70,75]\"></SpellSpan>%",
+                "Maximum Movement Speed",
+                "<SpellSpan :list=\"[110,120,130,140,150]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                60,
+                65,
+                70,
+                75
+              ],
+              [
+                110,
+                120,
+                130,
+                140,
+                150
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Minimum Movement Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                50,
+                60,
+                70,
+                80
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "KaisaQ",
+      "name": "Icathian Rain",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": 55,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "target_range": 600,
+      "image": {
+        "full": "KaisaQ.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kai'Sa''' releases a swarm of 6 missiles that evenly distributes among nearby {{tip|sight|visible}} enemies, each one hitting their target after {{fd|0.4}} seconds and dealing {{as|physical damage}}. {{tip|Minions}} below {{sti|health|{{as|35% health}}}} take double damage.",
+        "Non-minions take 25% damage from missiles beyond their first.",
+        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|{{as|{{pp|round=ceil|100-{{ccd|Kai'Sa|dam_lvl}}*(x-1)*(0.7025+0.0175*(x-1))}} attack damage}}}} from [[items]] to upgrade – ''Icathian Rain'' instead fires 12 missiles.",
+        "''A nearby enemy is required to cast this ability.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kai'Sa</b> releases a swarm of 6 missiles that evenly distributes among nearby <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemies, each one hitting their target after <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds and dealing <span class=\"physical-damage\">physical damage</span>. <HtmlTooltip class=\"blue link\">Minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> below <span><span class=\"health\">35% health</span></span> take double damage.<br />Non-minions take 25% damage from missiles beyond their first.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kai'Sa\">Living Weapon<template #content>Second Skin</template></HtmlTooltip>:</span> Requires <span><span class=\"attack-damage\"><HtmlTooltip class=\"blue link\">100-<simple-tooltip class=\"capture-unknown\" dname=\"ccd Kai'Sa dam_lvl\">Unknown value: ccd Kai'Sa dam_lvl</simple-tooltip>*(x-1)*(0.7025+0.0175*(x-1))undefined −  (based on level)<template #content>Values: 0<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> attack damage</span></span> from <a class=\"effect link\" title=\"items\">items</a> to upgrade – <i>Icathian Rain</i> instead fires 12 missiles.<br /><i>A nearby enemy is required to cast this ability.</i>",
+      "leveling": [
+        "{{st|Physical Damage Per Missile|{{ap|40 to 100}} {{as|(+ 40% '''bonus''' AD)}} {{as|(+ 25% AP)}}}}",
+        "{{st|Reduced Damage Per Missile|{{ap|40*0.25 to 100*0.25}} {{as|(+ {{ap|40*0.25}}% '''bonus''' AD)}} {{as|(+ {{ap|25*0.25}}% AP)}}|Total Single-Target Damage|{{ap|40*(1+0.25*5) to 100*(1+0.25*5)}} {{as|(+ {{ap|40*(1+0.25*5)}}% '''bonus''' AD)}} {{as|(+ {{ap|25*(1+0.25*5)}}% AP)}}}}",
+        "{{st|Total Evolved Single-Target Damage|{{ap|40*(1+0.25*11) to 100*(1+0.25*11)}} {{as|(+ {{ap|40*(1+0.25*11)}}% '''bonus''' AD)}} {{as|(+ {{ap|25*(1+0.25*11)}}% AP)}}}}"
+      ],
+      "notes": "* The first missile on a target applies {{tip|area damage}}, while the rest on the same target apply {{tip|persistent area damage}}.\n* {{tip|Spell shield|Spell shields}} only block the damage from a single missile.\n* ''Icathian Rain'' acquires its targets upon cast. Moving will not change its targets.\n* Charging {{ai|Supercharge|Kai'Sa}} will not stop the missiles from firing.\n* It takes 1 second for all missiles to fire at a single target.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Per Missile</span>: <span><SpellSpan :list=\"[40,55,70,85,100]\"></SpellSpan> <span class=\"ad\">(+ 40% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.4
+              },
+              {
+                "player_total_ap": 0.25
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage Per Missile",
+                "<SpellSpan :list=\"[40,55,70,85,100]\"></SpellSpan> <span class=\"ad\">(+ 40% '''bonus''' AD)</span> <span class=\"ap\">(+ 25% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                55,
+                70,
+                85,
+                100
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage Per Missile",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  55,
+                  70,
+                  85,
+                  100
+                ],
+                "player_bonus_ad": 0.4,
+                "player_total_ap": 0.25
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage Per Missile</span>: <span><SpellSpan :list=\"[10,13.75,17.5,21.25,25]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[10]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[6.25]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Total Single-Target Damage</span>: <span><SpellSpan :list=\"[90,123.75,157.5,191.25,225]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[90]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[56.25]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.5625
+                ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_bonus_ad": []
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Reduced Damage Per Missile",
+                "<SpellSpan :list=\"[10,13.75,17.5,21.25,25]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[10]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[6.25]\"></SpellSpan>% AP)</span>",
+                "Total Single-Target Damage",
+                "<SpellSpan :list=\"[90,123.75,157.5,191.25,225]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[90]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[56.25]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                13.75,
+                17.5,
+                21.25,
+                25
+              ],
+              [
+                10
+              ],
+              [
+                6.25
+              ],
+              [
+                90,
+                123.75,
+                157.5,
+                191.25,
+                225
+              ],
+              [
+                90
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Reduced Damage Per Missile",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  13.75,
+                  17.5,
+                  21.25,
+                  25
+                ],
+                "player_bonus_ad": [],
+                "player_total_ap": []
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Evolved Single-Target Damage</span>: <span><SpellSpan :list=\"[150,206.25,262.5,318.75,375]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[150]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[93.75]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  0.9375
+                ]
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Evolved Single-Target Damage",
+                "<SpellSpan :list=\"[150,206.25,262.5,318.75,375]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[150]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[93.75]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                150,
+                206.25,
+                262.5,
+                318.75,
+                375
+              ],
+              [
+                150
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Total Evolved Single-Target Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  206.25,
+                  262.5,
+                  318.75,
+                  375
+                ],
+                "player_bonus_ad": [
+                  0.9375
+                ],
+                "player_total_ap": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "KaisaW",
+      "name": "Void Seeker",
+      "maxrank": 5,
+      "cooldown": [
+        22,
+        20,
+        18,
+        16,
+        14
+      ],
+      "cost": [
+        55,
+        60,
+        65,
+        70,
+        75
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 3000,
+      "image": {
+        "full": "KaisaW.png",
+        "sprite": "spell5.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kai'Sa''' fires a void blast in the target direction, granting {{tip|sight}} of its surroundings as it travels and stopping at the first enemy hit, dealing them {{as|magic damage}}, {{tip|true sight|revealing}} them for 4 seconds and applying {{as|2 Plasma|buzzword}}.",
+        "{{sbc|{{ai|Second Skin|Kai'Sa|Living Weapon}}:}} Requires {{sti|{{as|100 ability power}}}} from [[items]] to upgrade – ''Void Seeker'' applies {{as|3 Plasma|buzzword}} instead and refunds 70% of its {{sti|cooldown}} if it hits an enemy {{tip|champion}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kai'Sa</b> fires a void blast in the target direction, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of its surroundings as it travels and stopping at the first enemy hit, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> them for 4 seconds and applying <span class=\"buzzword\">2 Plasma</span>.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kai'Sa\">Living Weapon<template #content>Second Skin</template></HtmlTooltip>:</span> Requires <span><span class=\"ability-power\">100 ability power</span></span> from <a class=\"effect link\" title=\"items\">items</a> to upgrade – <i>Void Seeker</i> applies <span class=\"buzzword\">3 Plasma</span> instead and refunds 70% of its <span>cooldown</span> if it hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|30 to 130}} {{as|(+ 130% AD)}} {{as|(+ 70% AP)}}}}"
+      ],
+      "notes": "* If the stacks detonate {{as|Plasma|buzzword}}, any remaining stacks are reapplied afterwards.\n* ''Void Seeker'' also deals ''Second Skin's'' damage based on {{as|Plasma|buzzword}} stacks on the target.\n** This increases ''Void Seeker's'' damage by ''Second Skin's'' base damage per level, plus at least {{as|{{fd|22.5}}% AP}} ({{tt|10%|0 stack Plasma AP ratio}} + {{tt|{{fd|12.5}}%|1 stack Plasma AP ratio}}) if the target was hit while at 0 stacks, and up to {{as|{{fd|37.5}}% AP}} ({{tt|{{fd|17.5}}%|3 stacks Plasma AP ratio}} + {{tt|20%|4 stacks Plasma AP ratio}}) if the target was hit at 3 stacks.\n** When evolved, the AP ratio increases by at least {{as|{{fd|37.5}}% AP}} ({{tt|10%|0 stack Plasma AP ratio}} + {{tt|{{fd|12.5}}%|1 stack Plasma AP ratio}} + {{tt|15%|2 stacks Plasma AP ratio}}), and up to {{as|{{fd|52.5}}% AP}} ({{tt|15%|2 stacks Plasma AP ratio}} + {{tt|{{fd|17.5}}%|3 stacks Plasma AP ratio}} + {{tt|20%|4 stacks Plasma AP ratio}}).\n* ''Void Seeker'' is cast from wherever '''Kai'Sa''' is at the end of the cast time.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 130% AD)</span> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 1.3
+              },
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[30,55,80,105,130]\"></SpellSpan> <span class=\"ad\">(+ 130% AD)</span> <span class=\"ap\">(+ 70% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                55,
+                80,
+                105,
+                130
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  55,
+                  80,
+                  105,
+                  130
+                ],
+                "player_total_ad": 1.3,
+                "player_total_ap": 0.7000000000000001
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

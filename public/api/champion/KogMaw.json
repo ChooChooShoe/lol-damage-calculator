@@ -49,6 +49,336 @@
     "attackspeed": 0.665
   },
   "skills": {
+    "w1": {
+      "riotId": "KogMawBioArcaneBarrage",
+      "name": "Bio-Arcane Barrage",
+      "maxrank": 5,
+      "cooldown": [
+        17,
+        0
+      ],
+      "cost": 40,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "KogMawBioArcaneBarrage.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kog'Maw''' empowers his [[basic attack]]s for the next 8 seconds, gaining {{sti|range|'''bonus''' attack range}} and dealing {{as|'''bonus''' magic damage}} {{tip|on-hit}}, capped at 100 against {{tip|minion|minions}} and {{tip|monster|monsters}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> empowers his <a class=\"effect link\" title=\"basic attack\">basic attack</a>s for the next 8 seconds, gaining <span><b>bonus</b> attack range</span> and dealing <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>, capped at 100 against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Bonus Attack Range|{{ap|130 to 210}}}}\n{{st|Bonus Magic Damage|{{as|{{ap|3 to 7}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}}}"
+      ],
+      "notes": "* ''Bio-Arcane Barrage'' does not apply to [[structure]]s.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|17|Starts on cast}}' as '17/0' and riot's value '17,17,17,17,17' as '17'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Range</span>: <span><SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 11
+              },
+              {
+                "target_total_ap": [
+                  0.03,
+                  0.04,
+                  0.05,
+                  0.06,
+                  0.07
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Attack Range",
+                "<SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan>"
+              ],
+              [
+                "Bonus Magic Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                130,
+                150,
+                170,
+                190,
+                210
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Range",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  130,
+                  150,
+                  170,
+                  190,
+                  210
+                ],
+                "player_total_ap": 11
+              }
+            },
+            {
+              "index": 1,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "player_total_ap": 11
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "KogMawLivingArtillery",
+      "name": "Living Artillery",
+      "maxrank": 3,
+      "cooldown": [
+        2,
+        1.5,
+        1
+      ],
+      "cost": [
+        0,
+        400,
+        760
+      ],
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": "{{ap|1300 to 1800}}",
+      "image": {
+        "full": "KogMawLivingArtillery.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 48,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kog'Maw''' launches a ball of acid into the air that drops to the target location after {{fd|0.6}} seconds, granting {{tip|sight}} of the area before dealing {{as|magic damage}} to enemies within upon impact, increased by {{as|{{pp|type=target's '''missing''' health|key=%|0 to 50 for 11|key1=%|0 to 60|formula=0.833% per 1% of target's '''missing''' health. ''This is capped at 50% increase at 60% '''missing''' health.''}}|health}}, and {{tip|sight|revealing}} them for 2 seconds.",
+        "''Living Artillery's'' damage is {{ccs|doubled|magic}} against enemies below {{as|{{sti|health|40% '''maximum''' health}}}}. Each subsequent cast of ''Living Artillery'' within the next 8 seconds costs an additional {{sti|{{as|40 mana}}}}, capping at {{as|400|mana}} per cast, and refreshing the duration per cast."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> launches a ball of acid into the air that drops to the target location after <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area before dealing <span class=\"magic-damage\">magic damage</span> to enemies within upon impact, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 60 ‒ undefined</span></span>, and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for 2 seconds.<br /><i>Living Artillery's</i> damage is <simple-tooltip class=\"capture-unknown\" dname=\"ccs doubled magic\">Unknown value: ccs doubled magic</simple-tooltip> against enemies below <span class=\"health\"><span>40% <b>maximum</b> health</span></span>. Each subsequent cast of <i>Living Artillery</i> within the next 8 seconds costs an additional <span><span class=\"mana\">40 mana</span></span>, capping at <span class=\"mana\">400</span> per cast, and refreshing the duration per cast.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|100 to 180}} {{as|(+ 65% '''bonus''' AD)}} {{as|(+ 35% AP)}}|Increased Magic Damage|{{ap|100*1.5 to 180*1.5}} {{as|(+ {{fd|97.5}}% '''bonus''' AD)}} {{as|(+ {{ap|35*1.5}}% AP)}}|Maximum Magic Damage|{{ap|100*2 to 180*2}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ {{ap|35*2}}% AP)}}}}"
+      ],
+      "notes": "* ''Living Artillery'' will not reveal {{tip|stealth|stealthed}} champions.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|type=casts|40 to 400 for 10|1 to 9;10+}} as 0/400/760 and riot's value 40,40,40 as 40",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Increased Magic Damage</span>: <span><SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.65
+              },
+              {
+                "player_total_ap": 0.35000000000000003
+              },
+              {
+                "player_bonus_ad": 1.3
+              },
+              {
+                "player_bonus_ad": 0.975
+              },
+              {
+                "player_total_ap": [
+                  0.7
+                ]
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
+                "Increased Magic Damage",
+                "<SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span>",
+                "Maximum Magic Damage",
+                "<SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                100,
+                140,
+                180
+              ],
+              [
+                150,
+                210,
+                270
+              ],
+              [
+                52.5
+              ],
+              [
+                200,
+                280,
+                360
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  100,
+                  140,
+                  180
+                ],
+                "player_bonus_ad": 0.975,
+                "player_total_ap": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "KogMawVoidOoze",
+      "name": "Void Ooze",
+      "maxrank": 5,
+      "cooldown": 12,
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "KogMawVoidOoze.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Kog'Maw''' spews a ball of ooze in the target direction, dealing {{as|magic damage}} to enemies within its path.",
+        "A field of ooze is created along the ball's path for 4 seconds, {{tip|slow|slowing}} all enemies within every {{fd|0.25}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> spews a ball of ooze in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies within its path.<br />A field of ooze is created along the ball's path for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% AP)}}}}",
+        "{{st|Slow|{{ap|20 to 52}}%}}"
+      ],
+      "notes": "* ''Void Ooze'' is always fired from the original cast location.\n* {{pending for test}}: The missile leaves a blob of ooze on the ground every 125 units traveled.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                120,
+                165,
+                210,
+                255
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  75,
+                  120,
+                  165,
+                  210,
+                  255
+                ],
+                "player_total_ap": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Slow",
+                "<SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                28,
+                36,
+                44,
+                52
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  28,
+                  36,
+                  44,
+                  52
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Icathian Surprise",
@@ -204,334 +534,6 @@
                   33
                 ],
                 "player_total_ap": 0.7000000000000001
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "KogMawBioArcaneBarrage",
-      "name": "Bio-Arcane Barrage",
-      "maxrank": 5,
-      "cooldown": [
-        17
-      ],
-      "cost": 40,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "KogMawBioArcaneBarrage.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 432,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Kog'Maw''' empowers his [[basic attack]]s for the next 8 seconds, gaining {{sti|range|'''bonus''' attack range}} and dealing {{as|'''bonus''' magic damage}} {{tip|on-hit}}, capped at 100 against {{tip|minion|minions}} and {{tip|monster|monsters}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> empowers his <a class=\"effect link\" title=\"basic attack\">basic attack</a>s for the next 8 seconds, gaining <span><b>bonus</b> attack range</span> and dealing <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>, capped at 100 against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Bonus Attack Range|{{ap|130 to 210}}}}\n{{st|Bonus Magic Damage|{{as|{{ap|3 to 7}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health}}}}"
-      ],
-      "notes": "* ''Bio-Arcane Barrage'' does not apply to [[structure]]s.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Range</span>: <span><SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 11
-              },
-              {
-                "target_total_ap": [
-                  0.03,
-                  0.04,
-                  0.05,
-                  0.06,
-                  0.07
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Attack Range",
-                "<SpellSpan :list=\"[130,150,170,190,210]\"></SpellSpan>"
-              ],
-              [
-                "Bonus Magic Damage",
-                "<span class=\"health\"><SpellSpan :list=\"[3,4,5,6,7]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                130,
-                150,
-                170,
-                190,
-                210
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Attack Range",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  130,
-                  150,
-                  170,
-                  190,
-                  210
-                ],
-                "player_total_ap": 11
-              }
-            },
-            {
-              "index": 1,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "player_total_ap": 11
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "KogMawVoidOoze",
-      "name": "Void Ooze",
-      "maxrank": 5,
-      "cooldown": 12,
-      "cost": [
-        60,
-        70,
-        80,
-        90,
-        100
-      ],
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "KogMawVoidOoze.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Kog'Maw''' spews a ball of ooze in the target direction, dealing {{as|magic damage}} to enemies within its path.",
-        "A field of ooze is created along the ball's path for 4 seconds, {{tip|slow|slowing}} all enemies within every {{fd|0.25}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> spews a ball of ooze in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies within its path.<br />A field of ooze is created along the ball's path for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75 to 255}} {{as|(+ 50% AP)}}}}",
-        "{{st|Slow|{{ap|20 to 52}}%}}"
-      ],
-      "notes": "* ''Void Ooze'' is always fired from the original cast location.\n* {{pending for test}}: The missile leaves a blob of ooze on the ground every 125 units traveled.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.5
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[75,120,165,210,255]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                75,
-                120,
-                165,
-                210,
-                255
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  75,
-                  120,
-                  165,
-                  210,
-                  255
-                ],
-                "player_total_ap": 0.5
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Slow",
-                "<SpellSpan :list=\"[20,28,36,44,52]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                20,
-                28,
-                36,
-                44,
-                52
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Slow",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  20,
-                  28,
-                  36,
-                  44,
-                  52
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "KogMawLivingArtillery",
-      "name": "Living Artillery",
-      "maxrank": 3,
-      "cooldown": [
-        2,
-        1.5,
-        1
-      ],
-      "cost": [
-        40,
-        220,
-        400
-      ],
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": "{{ap|1300 to 1800}}",
-      "image": {
-        "full": "KogMawLivingArtillery.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 48,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Kog'Maw''' launches a ball of acid into the air that drops to the target location after {{fd|0.6}} seconds, granting {{tip|sight}} of the area before dealing {{as|magic damage}} to enemies within upon impact, increased by {{as|{{pp|type=target's '''missing''' health|key=%|0 to 50 for 11|key1=%|0 to 60|formula=0.833% per 1% of target's '''missing''' health. ''This is capped at 50% increase at 60% '''missing''' health.''}}|health}}, and {{tip|sight|revealing}} them for 2 seconds.",
-        "''Living Artillery's'' damage is {{ccs|doubled|magic}} against enemies below {{as|{{sti|health|40% '''maximum''' health}}}}. Each subsequent cast of ''Living Artillery'' within the next 8 seconds costs an additional {{sti|{{as|40 mana}}}}, capping at {{as|400|mana}} per cast, and refreshing the duration per cast."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kog'Maw</b> launches a ball of acid into the air that drops to the target location after <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area before dealing <span class=\"magic-damage\">magic damage</span> to enemies within upon impact, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 60 ‒ undefined</span></span>, and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for 2 seconds.<br /><i>Living Artillery's</i> damage is <simple-tooltip class=\"capture-unknown\" dname=\"ccs doubled magic\">Unknown value: ccs doubled magic</simple-tooltip> against enemies below <span class=\"health\"><span>40% <b>maximum</b> health</span></span>. Each subsequent cast of <i>Living Artillery</i> within the next 8 seconds costs an additional <span><span class=\"mana\">40 mana</span></span>, capping at <span class=\"mana\">400</span> per cast, and refreshing the duration per cast.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|100 to 180}} {{as|(+ 65% '''bonus''' AD)}} {{as|(+ 35% AP)}}|Increased Magic Damage|{{ap|100*1.5 to 180*1.5}} {{as|(+ {{fd|97.5}}% '''bonus''' AD)}} {{as|(+ {{ap|35*1.5}}% AP)}}|Maximum Magic Damage|{{ap|100*2 to 180*2}} {{as|(+ 130% '''bonus''' AD)}} {{as|(+ {{ap|35*2}}% AP)}}}}"
-      ],
-      "notes": "* ''Living Artillery'' will not reveal {{tip|stealth|stealthed}} champions.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|type=casts|40 to 400 for 10|1 to 9;10+}} as 40/220/400 and riot's value 40,40,40 as 40",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% <b>bonus</b> AD)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Increased Magic Damage</span>: <span><SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.65
-              },
-              {
-                "player_total_ap": 0.35000000000000003
-              },
-              {
-                "player_bonus_ad": 1.3
-              },
-              {
-                "player_bonus_ad": 0.975
-              },
-              {
-                "player_total_ap": [
-                  0.7
-                ]
-              },
-              {
-                "player_total_ap": []
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[100,140,180]\"></SpellSpan> <span class=\"ad\">(+ 65% '''bonus''' AD)</span> <span class=\"ap\">(+ 35% AP)</span>",
-                "Increased Magic Damage",
-                "<SpellSpan :list=\"[150,210,270]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">97.5</span>% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[52.5]\"></SpellSpan>% AP)</span>",
-                "Maximum Magic Damage",
-                "<SpellSpan :list=\"[200,280,360]\"></SpellSpan> <span class=\"ad\">(+ 130% '''bonus''' AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[70]\"></SpellSpan>% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                100,
-                140,
-                180
-              ],
-              [
-                150,
-                210,
-                270
-              ],
-              [
-                52.5
-              ],
-              [
-                200,
-                280,
-                360
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  100,
-                  140,
-                  180
-                ],
-                "player_bonus_ad": 0.975,
-                "player_total_ap": []
               }
             }
           ]

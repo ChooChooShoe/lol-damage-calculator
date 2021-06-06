@@ -74,113 +74,6 @@
       "skillid": "i1",
       "effects": []
     },
-    "q1": {
-      "riotId": "JarvanIVDragonStrike",
-      "name": "Dragon Strike",
-      "maxrank": 5,
-      "cooldown": [
-        10,
-        9,
-        8,
-        7,
-        6
-      ],
-      "cost": [
-        45,
-        50,
-        55,
-        60,
-        65
-      ],
-      "costtype": "Mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "JarvanIVDragonStrike.png",
-        "sprite": "spell4.png",
-        "group": "spell",
-        "x": 0,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Jarvan IV''' extends his lance in the target direction, dealing {{as|physical damage}} to enemies hit and {{sti|armor penetration|{{as|reducing their armor}}}} for 3 seconds.",
-        "If the lance connects with a deployed {{ai|Demacian Standard|Jarvan IV}} (65 {{tip|gameplay radius}}), '''Jarvan IV''' {{tip|dashes}} to its location, {{tip|airborne|knocking up}} nearby enemies around him along his path for {{fd|0.75}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jarvan IV</b> extends his lance in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to enemies hit and <span><span class=\"armor\">reducing their armor</span></span> for 3 seconds.<br />If the lance connects with a deployed <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jarvan IV\">Demacian Standard<template #content>Demacian Standard</template></HtmlTooltip> (65 <HtmlTooltip class=\"blue link\">gameplay radius<template #content><div><h4>gameplay radius<hr></h4><p>Description for keyword gameplay radius</p></div></template></HtmlTooltip>), <b>Jarvan IV</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to its location, <HtmlTooltip class=\"blue link\">knocking up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> nearby enemies around him along his path for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|90 to 250}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Armor Reduction|{{as|{{ap|10 to 26}}% of target's armor}}}}"
-      ],
-      "notes": "* The armor reduction is applied after the damage. The damage dealt does not benefit from it in this case.\n* ''Dragon Strike's'' area of effect always extends from '''Jarvan IV's''' position after the cast time.\n* ''Dragon Strike'' will still pull '''Jarvan IV''' to {{ai|Demacian Standard|Jarvan IV}} if he is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}} but he will remain as such when he reaches his destination (duration permitting).\n* {{si|Flash}} will interrupt the {{tip|dash}} to a {{ai|Demacian Standard|Jarvan IV}} but '''Jarvan IV''' will still {{tip|airborne|knock up}} and damage enemies he comes in contact with at the new location.\n** Casting ''Flash'' right before the ''dash'' begins will cause '''Jarvan IV''' to be pulled to the flag from the new position.\n** Enemies already hit by ''Dragon Strike'' cannot be affected more than once.\n* The {{tip|airborne|knockup}} also slightly moves the target, landing 50-100 units in a random direction.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 1.2
-              },
-              {
-                "target_total_armor": [
-                  0.1,
-                  0.14,
-                  0.18,
-                  0.22,
-                  0.26
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
-              ],
-              [
-                "Armor Reduction",
-                "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                90,
-                130,
-                170,
-                210,
-                250
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  90,
-                  130,
-                  170,
-                  210,
-                  250
-                ],
-                "player_bonus_ad": 1.2
-              }
-            },
-            {
-              "index": 1,
-              "title": "Armor Reduction",
-              "damage_type": "unknown",
-              "ratios": {
-                "player_bonus_ad": 1.2
-              }
-            }
-          ]
-        }
-      ]
-    },
     "w1": {
       "riotId": "JarvanIVGoldenAegis",
       "name": "Golden Aegis",
@@ -266,6 +159,83 @@
               "title": "Base Shield",
               "damage_type": "none",
               "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "JarvanIVCataclysm",
+      "name": "Cataclysm",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        90,
+        60,
+        0
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 650",
+      "image": {
+        "full": "JarvanIVCataclysm.png",
+        "sprite": "spell4.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Jarvan IV''' {{tip|dash|leaps}} with {{tip|displacement immunity}} to the target enemy champion's location over {{fd|0.35}} seconds and deals {{as|physical damage}} to all nearby enemies upon arrival.",
+        "Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them {{tip|airborne}}. The terrain lasts for {{fd|3.5}} seconds and grants {{tip|sight}} of the area. ''Cataclysm'' can be recast after 1 second.",
+        "{{sbc|Recast:}} '''Jarvan IV''' destroys the terrain created by ''Cataclysm''."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jarvan IV</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> to the target enemy champion's location over <span style=\"font-variant-numeric: tabular-nums;\">0.35</span> seconds and deals <span class=\"physical-damage\">physical damage</span> to all nearby enemies upon arrival.<br />Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>. The terrain lasts for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds and grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area. <i>Cataclysm</i> can be recast after 1 second.<br /><span class=\"sbc\">Recast:</span> <b>Jarvan IV</b> destroys the terrain created by <i>Cataclysm</i>.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|200 to 450}} {{as|(+ 150% '''bonus''' AD)}}}}"
+      ],
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Cataclysm'' will not deal damage, generate terrain, nor refund its cooldown if '''Jarvan IV''' is killed while {{tip|dash|leaping}}.\n* The perimeter is made up of 24 units with 95 {{tip|pathing radius}}, 65 {{tip|gameplay radius}} and 1350 {{tip|sight}} radius each. Only every other unit is rendered visible.\n* {{ai|Searing Charge|Ornn}} will not destroy the whole ring but only the part that {{ci|Ornn}} collides with.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120 to 90}}|Starts after terrain disappears}}' as '0/90/60/0' and riot's value '120,105,90' as '120/105/90'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 1.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                200,
+                325,
+                450
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  200,
+                  325,
+                  450
+                ],
+                "player_bonus_ad": 1.5
+              }
             }
           ]
         }
@@ -385,61 +355,83 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "JarvanIVCataclysm",
-      "name": "Cataclysm",
-      "maxrank": 3,
+    "q1": {
+      "riotId": "JarvanIVDragonStrike",
+      "name": "Dragon Strike",
+      "maxrank": 5,
       "cooldown": [
-        120,
-        105,
-        90
+        10,
+        9,
+        8,
+        7,
+        6
       ],
-      "cost": 100,
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
       "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 650",
+      "targeting": "Direction",
       "image": {
-        "full": "JarvanIVCataclysm.png",
+        "full": "JarvanIVDragonStrike.png",
         "sprite": "spell4.png",
         "group": "spell",
-        "x": 144,
+        "x": 0,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Jarvan IV''' {{tip|dash|leaps}} with {{tip|displacement immunity}} to the target enemy champion's location over {{fd|0.35}} seconds and deals {{as|physical damage}} to all nearby enemies upon arrival.",
-        "Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them {{tip|airborne}}. The terrain lasts for {{fd|3.5}} seconds and grants {{tip|sight}} of the area. ''Cataclysm'' can be recast after 1 second.",
-        "{{sbc|Recast:}} '''Jarvan IV''' destroys the terrain created by ''Cataclysm''."
+        "{{sbc|Active:}} '''Jarvan IV''' extends his lance in the target direction, dealing {{as|physical damage}} to enemies hit and {{sti|armor penetration|{{as|reducing their armor}}}} for 3 seconds.",
+        "If the lance connects with a deployed {{ai|Demacian Standard|Jarvan IV}} (65 {{tip|gameplay radius}}), '''Jarvan IV''' {{tip|dashes}} to its location, {{tip|airborne|knocking up}} nearby enemies around him along his path for {{fd|0.75}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jarvan IV</b> <HtmlTooltip class=\"blue link\">leaps<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> with <HtmlTooltip class=\"blue link\">displacement immunity<template #content><div><h4>displacement immunity<hr></h4><p>Description for keyword displacement immunity</p></div></template></HtmlTooltip> to the target enemy champion's location over <span style=\"font-variant-numeric: tabular-nums;\">0.35</span> seconds and deals <span class=\"physical-damage\">physical damage</span> to all nearby enemies upon arrival.<br />Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>. The terrain lasts for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds and grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area. <i>Cataclysm</i> can be recast after 1 second.<br /><span class=\"sbc\">Recast:</span> <b>Jarvan IV</b> destroys the terrain created by <i>Cataclysm</i>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Jarvan IV</b> extends his lance in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to enemies hit and <span><span class=\"armor\">reducing their armor</span></span> for 3 seconds.<br />If the lance connects with a deployed <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Jarvan IV\">Demacian Standard<template #content>Demacian Standard</template></HtmlTooltip> (65 <HtmlTooltip class=\"blue link\">gameplay radius<template #content><div><h4>gameplay radius<hr></h4><p>Description for keyword gameplay radius</p></div></template></HtmlTooltip>), <b>Jarvan IV</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to its location, <HtmlTooltip class=\"blue link\">knocking up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> nearby enemies around him along his path for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds.",
       "leveling": [
-        "{{st|Physical Damage|{{ap|200 to 450}} {{as|(+ 150% '''bonus''' AD)}}}}"
+        "{{st|Physical Damage|{{ap|90 to 250}} {{as|(+ 120% '''bonus''' AD)}}}}{{st|Armor Reduction|{{as|{{ap|10 to 26}}% of target's armor}}}}"
       ],
-      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Cataclysm'' will not deal damage, generate terrain, nor refund its cooldown if '''Jarvan IV''' is killed while {{tip|dash|leaping}}.\n* The perimeter is made up of 24 units with 95 {{tip|pathing radius}}, 65 {{tip|gameplay radius}} and 1350 {{tip|sight}} radius each. Only every other unit is rendered visible.\n* {{ai|Searing Charge|Ornn}} will not destroy the whole ring but only the part that {{ci|Ornn}} collides with.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "* The armor reduction is applied after the damage. The damage dealt does not benefit from it in this case.\n* ''Dragon Strike's'' area of effect always extends from '''Jarvan IV's''' position after the cast time.\n* ''Dragon Strike'' will still pull '''Jarvan IV''' to {{ai|Demacian Standard|Jarvan IV}} if he is {{tip|immobilize|immobilized}} or {{tip|ground|grounded}} but he will remain as such when he reaches his destination (duration permitting).\n* {{si|Flash}} will interrupt the {{tip|dash}} to a {{ai|Demacian Standard|Jarvan IV}} but '''Jarvan IV''' will still {{tip|airborne|knock up}} and damage enemies he comes in contact with at the new location.\n** Casting ''Flash'' right before the ''dash'' begins will cause '''Jarvan IV''' to be pulled to the flag from the new position.\n** Enemies already hit by ''Dragon Strike'' cannot be affected more than once.\n* The {{tip|airborne|knockup}} also slightly moves the target, landing 50-100 units in a random direction.",
+      "skillkey": "Q",
+      "skillid": "q1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% <b>bonus</b> AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% <b>bonus</b> AD)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_bonus_ad": 1.5
+                "player_bonus_ad": 1.2
+              },
+              {
+                "target_total_armor": [
+                  0.1,
+                  0.14,
+                  0.18,
+                  0.22,
+                  0.26
+                ]
               }
             ],
             "st_slices": [
               [
                 "Physical Damage",
-                "<SpellSpan :list=\"[200,325,450]\"></SpellSpan> <span class=\"ad\">(+ 150% '''bonus''' AD)</span>"
+                "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ad\">(+ 120% '''bonus''' AD)</span>"
+              ],
+              [
+                "Armor Reduction",
+                "<span class=\"armor\"><SpellSpan :list=\"[10,14,18,22,26]\"></SpellSpan>% of target's armor</span>"
               ]
             ],
             "ap_progressions": [
               [
-                200,
-                325,
-                450
-              ]
+                90,
+                130,
+                170,
+                210,
+                250
+              ],
+              null
             ]
           },
           "subeffects": [
@@ -449,11 +441,21 @@
               "damage_type": "physical",
               "ratios": {
                 "base_damage": [
-                  200,
-                  325,
-                  450
+                  90,
+                  130,
+                  170,
+                  210,
+                  250
                 ],
-                "player_bonus_ad": 1.5
+                "player_bonus_ad": 1.2
+              }
+            },
+            {
+              "index": 1,
+              "title": "Armor Reduction",
+              "damage_type": "unknown",
+              "ratios": {
+                "player_bonus_ad": 1.2
               }
             }
           ]

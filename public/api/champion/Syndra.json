@@ -49,6 +49,87 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "e1": {
+      "riotId": "SyndraE",
+      "name": "Scatter the Weak",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "{{tip|er|icononly = true}} 700 / {{tt|800|Dark Spheres}}",
+      "image": {
+        "full": "SyndraE.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 384,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Syndra''' propels a force in a cone in the target direction, dealing {{as|magic damage}} to enemies within its path and {{tip|airborne|knocking them back}} for 400 units and up to 800 units away from '''Syndra''' based on proximity.",
+        "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''' based on proximity, knocking back all enemies they collide with for 100 units and {{tip|stun|stunning}} and {{tip|sight|revealing}} them for {{fd|1.5}} seconds, and dealing ''Scatter the Weak's'' damage if they were not damaged by the initial cast.",
+        "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> propels a force in a cone in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies within its path and <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 400 units and up to 800 units away from <b>Syndra</b> based on proximity.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> can also be knocked back for 1000 units and up to 1300 units away from <b>Syndra</b> based on proximity, knocking back all enemies they collide with for 100 units and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and dealing <i>Scatter the Weak's</i> damage if they were not damaged by the initial cast.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Scatter the Weak's</i> area of effect is 50% wider.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* ''Scatter the Weak'' is blocked by the portion of {{ai|Wind Wall|Yasuo}} it collides with. ''Spheres'' thrown will stop upon colliding with the wall.\n* Enemies and spheres will be knocked into the direction directly away from '''Syndra''', and the knock back has no dispersion.\n* Conjuring a {{ai|Dark Sphere|Syndra}} at max range or close to or inside the edge of ''Scatter the Weak's'' [[Area_of_effect#Conic|conic-area of effect]] will knock back the ''sphere'' immediately once it has formed. This considers the ''sphere's'' center.{{bug}}\n* ''Scatter the Weak'' will knock back ''Spheres'' even farther if they are inside terrain, up until they reach open space. If the terrain they're inside in cannot be surpassed, the ''Spheres'' will be knocked in the opposite direction.\n* ''Scatter the Weak'' will delay the expiration of a ''Sphere'' until after it finishes being knocked back.\n* ''Scatter the Weak'' will cast from wherever '''Syndra''' is at the end of the cast time.\n* Once ''Scatter the Weak'' has been learned, an arrow directly in front of every {{ai|Dark Sphere|Syndra}} will appear to signify the direction the ''sphere'' will be knocked towards, each one corresponding to '''Syndra's''' position. This is only visible to '''Syndra'''.\n[[File:Dark_Sphere_directional_arrows.png|center|250px]]",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                85,
+                130,
+                175,
+                220,
+                265
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  85,
+                  130,
+                  175,
+                  220,
+                  265
+                ],
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Transcendent",
@@ -202,64 +283,83 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "SyndraE",
-      "name": "Scatter the Weak",
+    "w1": {
+      "riotId": "SyndraW",
+      "name": "Force of Will",
       "maxrank": 5,
       "cooldown": [
-        18,
-        17,
-        16,
-        15,
-        14
+        0,
+        10.667,
+        9.333,
+        8,
+        6.667,
+        0
       ],
-      "cost": 50,
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
       "costtype": "Mana",
-      "targeting": "Direction",
-      "target_range": "{{tip|er|icononly = true}} 700 / {{tt|800|Dark Spheres}}",
+      "targeting": "[[Unit-targeted|Unit]] / [[Location-targeted|Location]]",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|925|Grab range}} / {{tt|950|Throw range}}",
       "image": {
-        "full": "SyndraE.png",
+        "full": "SyndraW.png",
         "sprite": "spell12.png",
         "group": "spell",
-        "x": 384,
+        "x": 336,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Syndra''' propels a force in a cone in the target direction, dealing {{as|magic damage}} to enemies within its path and {{tip|airborne|knocking them back}} for 400 units and up to 800 units away from '''Syndra''' based on proximity.",
-        "{{ai|Dark Sphere|Syndra|Dark Spheres}} can also be knocked back for 1000 units and up to 1300 units away from '''Syndra''' based on proximity, knocking back all enemies they collide with for 100 units and {{tip|stun|stunning}} and {{tip|sight|revealing}} them for {{fd|1.5}} seconds, and dealing ''Scatter the Weak's'' damage if they were not damaged by the initial cast.",
-        "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Scatter the Weak's'' area of effect is 50% wider."
+        "{{sbc|Active:}} '''Syndra''' telekinetically grabs the nearest {{ai|Dark Sphere|Syndra}}, enemy {{tip|minion}} or non-epic {{tip|monster}} within 400 range from the target location for 5 seconds, or if not found she grabs the nearest ''Dark Sphere''. If a ''Dark Sphere'' is grabbed, its duration is refreshed; if a minion or monster is grabbed, it is put in {{tip|stasis}}. ''Force of Will'' can be recast at any time while the target is grabbed.",
+        "{{sbc|Recast:}} '''Syndra''' throws the grabbed target towards the target location, granting {{tip|sight}} of their surroundings as they fall and dealing them {{as|magic damage}} as well as to enemies within the impact area and {{tip|slow|slowing}} all of them for {{fd|1.5}} seconds.",
+        "{{sbc|{{ai|Transcendent|Syndra}} Bonus:}} ''Force of Will'' deals{{ft|{{sti|{{as|20% '''bonus''' true damage}}}}.|{{as|46|true damage}} {{as|(+ 14% AP)}} {{as|'''bonus''' true damage}}.}}"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> propels a force in a cone in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies within its path and <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 400 units and up to 800 units away from <b>Syndra</b> based on proximity.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Spheres<template #content>Dark Sphere</template></HtmlTooltip> can also be knocked back for 1000 units and up to 1300 units away from <b>Syndra</b> based on proximity, knocking back all enemies they collide with for 100 units and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and dealing <i>Scatter the Weak's</i> damage if they were not damaged by the initial cast.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Scatter the Weak's</i> area of effect is 50% wider.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Syndra</b> telekinetically grabs the nearest <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Dark Sphere<template #content>Dark Sphere</template></HtmlTooltip>, enemy <HtmlTooltip class=\"blue link\">minion<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> or non-epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> within 400 range from the target location for 5 seconds, or if not found she grabs the nearest <i>Dark Sphere</i>. If a <i>Dark Sphere</i> is grabbed, its duration is refreshed; if a minion or monster is grabbed, it is put in <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>Stasis<hr></h4><p>When in a stasis, Unit is invunerable and untargetable.</p></div></template></HtmlTooltip>. <i>Force of Will</i> can be recast at any time while the target is grabbed.<br /><span class=\"sbc\">Recast:</span> <b>Syndra</b> throws the grabbed target towards the target location, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of their surroundings as they fall and dealing them <span class=\"magic-damage\">magic damage</span> as well as to enemies within the impact area and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all of them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Syndra\">Transcendent<template #content>Transcendent</template></HtmlTooltip> Bonus:</span> <i>Force of Will</i> deals<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span><span class=\"true-damage\">20% <b>bonus</b> true damage</span></span>.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"true-damage\">46</span> <span class=\"ap\">(+ 14% AP)</span> <span class=\"true-damage\"><b>bonus</b> true damage</span>.&nbsp;」</span></label>",
       "leveling": [
-        "{{st|Magic Damage|{{ap|85 to 265}} {{as|(+ 60% AP)}}}}"
+        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 70% AP)}}}}<!--\n-->{{st|Slow|{{ap|25 to 45}}%}}"
       ],
-      "notes": "* ''Scatter the Weak'' is blocked by the portion of {{ai|Wind Wall|Yasuo}} it collides with. ''Spheres'' thrown will stop upon colliding with the wall.\n* Enemies and spheres will be knocked into the direction directly away from '''Syndra''', and the knock back has no dispersion.\n* Conjuring a {{ai|Dark Sphere|Syndra}} at max range or close to or inside the edge of ''Scatter the Weak's'' [[Area_of_effect#Conic|conic-area of effect]] will knock back the ''sphere'' immediately once it has formed. This considers the ''sphere's'' center.{{bug}}\n* ''Scatter the Weak'' will knock back ''Spheres'' even farther if they are inside terrain, up until they reach open space. If the terrain they're inside in cannot be surpassed, the ''Spheres'' will be knocked in the opposite direction.\n* ''Scatter the Weak'' will delay the expiration of a ''Sphere'' until after it finishes being knocked back.\n* ''Scatter the Weak'' will cast from wherever '''Syndra''' is at the end of the cast time.\n* Once ''Scatter the Weak'' has been learned, an arrow directly in front of every {{ai|Dark Sphere|Syndra}} will appear to signify the direction the ''sphere'' will be knocked towards, each one corresponding to '''Syndra's''' position. This is only visible to '''Syndra'''.\n[[File:Dark_Sphere_directional_arrows.png|center|250px]]",
-      "skillkey": "E",
-      "skillid": "e1",
+      "notes": "* The initial cast does not count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does.\n* If the ability is not recast within the duration, '''Syndra''' will release the unit or ''Dark Sphere'' that she is holding.\n* ''Force of Will'' does not destroy in-flight {{tip|projectile|projectiles}} for the {{tip|minion}} or {{tip|monster}} grabbed.\n* ''Force of Will'' {{tip|cleanse|cleanses}} the target {{tip|minion}} or {{tip|monster}} grabbed from all {{tip|crowd control}}.\n* '''Syndra''' can grab {{tip|pet|pets}}, such as {{cai|Jack in the Box|Shaco}}.\n* Casting {{si|Teleport}} or {{si|Recall}} will cause '''Syndra''' to cancel ''Force of Will'' autonomously and drop anything she is holding.\n* Grabbing prioritizes ''Dark Spheres''.\n* Once upgraded to maximum rank ''Force of Will'' gains a total damage increase of (20 + {{as|enemy's MR}}{{Divided by}}5)%.\n* Enemy {{tip|pet|pets}} that passively have an effect on their surroundings will continue to affect the area around them while they are being held. For example, {{cai|Summon: Tibbers|Annie|Tibbers}} will continue to inflict burn damage on surrounding units while being held.\n* Grabbing a {{ai|Dark Sphere|Syndra}} will cause the duration on it to refresh, but only on the first cast, not when it is thrown.\n* {{ai|Devour|Tahm Kench}} will cancel ''Force of Will'' if they affect the same target. ''Force of Will'' will go on full cooldown.\n* ''Force of Will'' has additional effects when targeting the {{ui|Blue Sentinel}} and {{ui|Red Brambleback}}. Throwing the former will refund 10 {{tip|mana}} to '''Syndra''' upon cast and will reduce the {{sti|cooldown}} of ''Force of Will'' by 1 second, while throwing the latter will apply the {{bi|Crest of Cinders}} burn to any affected units in the [[area of effect]].",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|12 to 8}}|Starts post-effect}}' as '0/10.667/9.333/8/6.667/0' and riot's value '12,11,10,9,8' as '12/11/10/9/8'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.6
+                "player_total_ap": 0.7000000000000001
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[85,130,175,220,265]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
               ]
             ],
             "ap_progressions": [
               [
-                85,
-                130,
-                175,
-                220,
-                265
+                70,
+                110,
+                150,
+                190,
+                230
+              ],
+              [
+                25,
+                30,
+                35,
+                40,
+                45
               ]
             ]
           },
@@ -270,13 +370,28 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  85,
-                  130,
-                  175,
-                  220,
-                  265
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.7000000000000001
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ],
+                "player_total_ap": 0.7000000000000001
               }
             }
           ]

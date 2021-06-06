@@ -73,6 +73,125 @@
       "skillid": "i1",
       "effects": []
     },
+    "r1": {
+      "riotId": "MorganaR",
+      "name": "Soul Shackles",
+      "maxrank": 3,
+      "cooldown": [
+        120,
+        110,
+        100
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "MorganaR.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 240,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Morgana''' latches chains of energy onto nearby enemy champions over the cast time, dealing them {{as|magic damage}} and forming a {{tip|tether}} between '''Morgana''' and each target for 3 seconds, during which the targets are {{tip|true sight|revealed}} and {{tip|slow|slowed}} by 20%.",
+        "'''Morgana''' gains {{sti|{{as|'''bonus''' movement speed}}}} when moving towards enemies tethered to her.",
+        "If the tethers are not broken by the end of their duration, the tethered targets are dealt the same {{as|magic damage}} again and are {{tip|true sight|revealed}} and {{tip|stun|stunned}} for {{fd|1.5}} seconds.",
+        "''A nearby enemy champion is required to cast this ability, and targets do not have to be {{tip|sight|visible}} to be affected.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Morgana</b> latches chains of energy onto nearby enemy champions over the cast time, dealing them <span class=\"magic-damage\">magic damage</span> and forming a <HtmlTooltip class=\"blue link\">tether<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> between <b>Morgana</b> and each target for 3 seconds, during which the targets are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 20%.<br /><b>Morgana</b> gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> when moving towards enemies tethered to her.<br />If the tethers are not broken by the end of their duration, the tethered targets are dealt the same <span class=\"magic-damage\">magic damage</span> again and are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><i>A nearby enemy champion is required to cast this ability, and targets do not have to be <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> to be affected.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 70% AP)}}|Total Magic Damage|{{ap|150*2 to 300*2}} {{as|(+ 140% AP)}}}}",
+        "{{st|Bonus Movement Speed|{{ap|5 to 55}}%}}"
+      ],
+      "notes": "* {{tip|Spell shield}} will block the tether's application and initial damage but not the aftereffects of one already applied.\n* '''Morgana''' will turn to face southeast upon casting ''Soul Shackles''.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,225,300]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              },
+              {
+                "player_total_ap": 1.4000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[150,225,300]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                150,
+                225,
+                300
+              ],
+              [
+                300,
+                450,
+                600
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  225,
+                  300
+                ],
+                "player_total_ap": 1.4000000000000001
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[5,30,55]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[5,30,55]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                5,
+                30,
+                55
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Movement Speed",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  5,
+                  30,
+                  55
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "q1": {
       "riotId": "MorganaQ",
       "name": "Dark Binding",
@@ -384,125 +503,6 @@
                   300
                 ],
                 "player_total_ap": 0.7000000000000001
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "MorganaR",
-      "name": "Soul Shackles",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        110,
-        100
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "MorganaR.png",
-        "sprite": "spell8.png",
-        "group": "spell",
-        "x": 240,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Morgana''' latches chains of energy onto nearby enemy champions over the cast time, dealing them {{as|magic damage}} and forming a {{tip|tether}} between '''Morgana''' and each target for 3 seconds, during which the targets are {{tip|true sight|revealed}} and {{tip|slow|slowed}} by 20%.",
-        "'''Morgana''' gains {{sti|{{as|'''bonus''' movement speed}}}} when moving towards enemies tethered to her.",
-        "If the tethers are not broken by the end of their duration, the tethered targets are dealt the same {{as|magic damage}} again and are {{tip|true sight|revealed}} and {{tip|stun|stunned}} for {{fd|1.5}} seconds.",
-        "''A nearby enemy champion is required to cast this ability, and targets do not have to be {{tip|sight|visible}} to be affected.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Morgana</b> latches chains of energy onto nearby enemy champions over the cast time, dealing them <span class=\"magic-damage\">magic damage</span> and forming a <HtmlTooltip class=\"blue link\">tether<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> between <b>Morgana</b> and each target for 3 seconds, during which the targets are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 20%.<br /><b>Morgana</b> gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> when moving towards enemies tethered to her.<br />If the tethers are not broken by the end of their duration, the tethered targets are dealt the same <span class=\"magic-damage\">magic damage</span> again and are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><i>A nearby enemy champion is required to cast this ability, and targets do not have to be <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> to be affected.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|150 to 300}} {{as|(+ 70% AP)}}|Total Magic Damage|{{ap|150*2 to 300*2}} {{as|(+ 140% AP)}}}}",
-        "{{st|Bonus Movement Speed|{{ap|5 to 55}}%}}"
-      ],
-      "notes": "* {{tip|Spell shield}} will block the tether's application and initial damage but not the aftereffects of one already applied.\n* '''Morgana''' will turn to face southeast upon casting ''Soul Shackles''.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,225,300]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              },
-              {
-                "player_total_ap": 1.4000000000000001
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[150,225,300]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
-                "Total Magic Damage",
-                "<SpellSpan :list=\"[300,450,600]\"></SpellSpan> <span class=\"ap\">(+ 140% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                150,
-                225,
-                300
-              ],
-              [
-                300,
-                450,
-                600
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  150,
-                  225,
-                  300
-                ],
-                "player_total_ap": 1.4000000000000001
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[5,30,55]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Bonus Movement Speed",
-                "<SpellSpan :list=\"[5,30,55]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                5,
-                30,
-                55
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Movement Speed",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  5,
-                  30,
-                  55
-                ]
               }
             }
           ]

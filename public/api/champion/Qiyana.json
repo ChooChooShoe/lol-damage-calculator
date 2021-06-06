@@ -49,6 +49,178 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "q1": {
+      "riotId": "QiyanaQ",
+      "name": "Edge of Ixtal",
+      "maxrank": 5,
+      "cooldown": 7,
+      "cost": 35,
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 650,
+      "image": {
+        "full": "QiyanaQ.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Qiyana''' slashes forward in the target direction, dealing {{as|physical damage}} to enemies in a line, reduced to 75% damage against targets beyond the first.",
+        "Upon gathering an element with {{ai|Terrashape|Qiyana}}, ''Edge of Ixtal'' is upgraded to ''Elemental Wrath'' and its {{sti|cooldown}} is reset."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Qiyana</b> slashes forward in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to enemies in a line, reduced to 75% damage against targets beyond the first.<br />Upon gathering an element with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Qiyana\">Terrashape<template #content>Terrashape</template></HtmlTooltip>, <i>Edge of Ixtal</i> is upgraded to <i>Elemental Wrath</i> and its <span>cooldown</span> is reset.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 160}} {{as|(+ 90% '''bonus''' AD)}}|Reduced Damage|{{ap|60*0.75 to 160*0.75}} {{as|(+ {{fd|67.5}}% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Edge of Ixtal'' will cast from wherever '''Qiyana''' is at the end of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[45,63.75,82.5,101.25,120]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">67.5</span>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.9
+              },
+              {
+                "player_bonus_ad": 0.675
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+                "Reduced Damage",
+                "<SpellSpan :list=\"[45,63.75,82.5,101.25,120]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\">67.5</span>% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ],
+              [
+                45,
+                63.75,
+                82.5,
+                101.25,
+                120
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_bonus_ad": 0.675
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "QiyanaE",
+      "name": "Audacity",
+      "maxrank": 5,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "mana",
+      "targeting": "Unit",
+      "target_range": 650,
+      "image": {
+        "full": "QiyanaE.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Qiyana''' {{tip|dash|dashes}} a fixed distance towards the target enemy, dealing them {{as|physical damage}} if they are still in range upon arrival.",
+        "'''Qiyana''' can cast any of her abilities during ''Audacity''. Casting {{ai|Edge of Ixtal|Qiyana}} while ''Audacity'' is targeting a champion will autonomously aim at them."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Qiyana</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> a fixed distance towards the target enemy, dealing them <span class=\"physical-damage\">physical damage</span> if they are still in range upon arrival.<br /><b>Qiyana</b> can cast any of her abilities during <i>Audacity</i>. Casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Qiyana\">Edge of Ixtal<template #content>Edge of Ixtal</template></HtmlTooltip> while <i>Audacity</i> is targeting a champion will autonomously aim at them.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 70% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Audacity'' only damages targets if within 250 range at the end of the dash.\n* {{ai|Terrashape|Qiyana}} will interrupt ''Audacity's'' dash.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                90,
+                120,
+                150,
+                180
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
+                ],
+                "player_bonus_ad": 0.7000000000000001
+              }
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Royal Privilege",
@@ -208,92 +380,6 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "QiyanaE",
-      "name": "Audacity",
-      "maxrank": 5,
-      "cooldown": [
-        12,
-        11,
-        10,
-        9,
-        8
-      ],
-      "cost": [
-        40,
-        45,
-        50,
-        55,
-        60
-      ],
-      "costtype": "mana",
-      "targeting": "Unit",
-      "target_range": 650,
-      "image": {
-        "full": "QiyanaE.png",
-        "sprite": "spell9.png",
-        "group": "spell",
-        "x": 0,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Qiyana''' {{tip|dash|dashes}} a fixed distance towards the target enemy, dealing them {{as|physical damage}} if they are still in range upon arrival.",
-        "'''Qiyana''' can cast any of her abilities during ''Audacity''. Casting {{ai|Edge of Ixtal|Qiyana}} while ''Audacity'' is targeting a champion will autonomously aim at them."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Qiyana</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> a fixed distance towards the target enemy, dealing them <span class=\"physical-damage\">physical damage</span> if they are still in range upon arrival.<br /><b>Qiyana</b> can cast any of her abilities during <i>Audacity</i>. Casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Qiyana\">Edge of Ixtal<template #content>Edge of Ixtal</template></HtmlTooltip> while <i>Audacity</i> is targeting a champion will autonomously aim at them.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|60 to 180}} {{as|(+ 70% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* ''Audacity'' only damages targets if within 250 range at the end of the dash.\n* {{ai|Terrashape|Qiyana}} will interrupt ''Audacity's'' dash.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ad\">(+ 70% <b>bonus</b> AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              [
-                "Physical Damage",
-                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ad\">(+ 70% '''bonus''' AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                60,
-                90,
-                120,
-                150,
-                180
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  60,
-                  90,
-                  120,
-                  150,
-                  180
-                ],
-                "player_bonus_ad": 0.7000000000000001
-              }
-            }
-          ]
-        }
-      ]
-    },
     "r1": {
       "riotId": "QiyanaR",
       "name": "Supreme Display of Talent",
@@ -383,6 +469,177 @@
                   1000
                 ],
                 "player_bonus_ad": 1.7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q2": {
+      "riotId": "QiyanaQ",
+      "name": "Elemental Wrath",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Direction",
+      "target_range": 710,
+      "image": {
+        "full": "QiyanaQ.png",
+        "sprite": "spell9.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Qiyana''' consumes her current ''Element'' and {{tip|projectile|hurls}} her blade in the target direction, detonating in a line upon colliding with an enemy or reaching maximum range, and triggering a bonus effect based on the consumed ''Element''.",
+        "Enemies struck by the blade are dealt {{as|physical damage}}, reduced to 75% against subsequent units beyond the closest.",
+        "{{cci|Terrashape Brush.png}} {{sbc|{{as|Brush}}:}} The blade raises a ''grass trail'' behind '''Qiyana''' that travels forth, lasting for {{fd|3.5}} seconds and granting '''Qiyana''' {{tip|invisibility}} and {{sti|ms|{{as|20% '''bonus''' movement speed}}}} until she attacks, casts an ability other than {{ai|Terrashape|Qiyana}}, or exits the trail.",
+        "{{cci|Terrashape River.png}} {{sbc|{{as|River}}:}} {{tip|root|Roots}} enemies hit for {{fd|0.5}} seconds, then {{tip|slow|slows}} them by 20% for 1 second.",
+        "{{cci|Terrashape Rock.png}} {{sbc|{{as|Terrain}}:}} Enemies hit while below {{sti|{{as|50% of their '''maximum''' health}}}} are dealt {{ccs|'''bonus''' damage|physical}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Qiyana</b> consumes her current <i>Element</i> and <HtmlTooltip class=\"blue link\">hurls<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip> her blade in the target direction, detonating in a line upon colliding with an enemy or reaching maximum range, and triggering a bonus effect based on the consumed <i>Element</i>.<br />Enemies struck by the blade are dealt <span class=\"physical-damage\">physical damage</span>, reduced to 75% against subsequent units beyond the closest.<br /><simple-tooltip class=\"capture-unknown\" dname=\"cci Terrashape Brush.png\">Unknown value: cci Terrashape Brush.png</simple-tooltip> <span class=\"sbc\"><span class=\"ad\">Brush</span>:</span> The blade raises a <i>grass trail</i> behind <b>Qiyana</b> that travels forth, lasting for <span style=\"font-variant-numeric: tabular-nums;\">3.5</span> seconds and granting <b>Qiyana</b> <HtmlTooltip class=\"blue link\">invisibility<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> and <span><span class=\"movement-speed\">20% <b>bonus</b> movement speed</span></span> until she attacks, casts an ability other than <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Qiyana\">Terrashape<template #content>Terrashape</template></HtmlTooltip>, or exits the trail.<br /><simple-tooltip class=\"capture-unknown\" dname=\"cci Terrashape River.png\">Unknown value: cci Terrashape River.png</simple-tooltip> <span class=\"sbc\"><span class=\"ad\">River</span>:</span> <HtmlTooltip class=\"blue link\">Roots<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> enemies hit for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, then <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 20% for 1 second.<br /><simple-tooltip class=\"capture-unknown\" dname=\"cci Terrashape Rock.png\">Unknown value: cci Terrashape Rock.png</simple-tooltip> <span class=\"sbc\"><span class=\"ad\">Terrain</span>:</span> Enemies hit while below <span><span class=\"health\">50% of their <b>maximum</b> health</span></span> are dealt <simple-tooltip class=\"capture-unknown\" dname=\"ccs <b>bonus</b> damage physical\">Unknown value: ccs <b>bonus</b> damage physical</simple-tooltip>.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|60 to 160}} {{as|(+ 90% '''bonus''' AD)}}|Reduced Damage|{{ap|60*0.75 to 160*0.75}} {{as|(+ {{ap|90*0.75}}% '''bonus''' AD)}}}}",
+        "{{st|Bonus Damage|{{ap|60*0.6 to 160*0.6}} {{as|(+ {{ap|90*0.6}}% '''bonus''' AD)}}|Total Damage|{{ap|60*1.6 to 160*1.6}} {{as|(+ {{ap|90*1.6}}% '''bonus''' AD)}}|Total Damage to targets beyond the first|{{ap|60*(0.75+0.6) to 160*(0.75+0.6)}} {{as|(+ {{ap|90*(0.75+0.6)}}% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Elemental Wrath'' will cast from wherever '''Qiyana''' is at the end of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 35,35,35,35,35 as 35",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '7,7,7,7,7' as '7'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 90% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[45,63.75,82.5,101.25,120]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[67.5]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.9
+              },
+              {
+                "player_bonus_ad": [
+                  0.675
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[60,85,110,135,160]\"></SpellSpan> <span class=\"ad\">(+ 90% '''bonus''' AD)</span>",
+                "Reduced Damage",
+                "<SpellSpan :list=\"[45,63.75,82.5,101.25,120]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[67.5]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                85,
+                110,
+                135,
+                160
+              ],
+              [
+                45,
+                63.75,
+                82.5,
+                101.25,
+                120
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  85,
+                  110,
+                  135,
+                  160
+                ],
+                "player_bonus_ad": [
+                  0.675
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[36,51,66,81,96]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[54]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[96,136,176,216,256]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[144]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage to targets beyond the first</span>: <span><SpellSpan :list=\"[81,114.75,148.5,182.25,216]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[121.5]\"></SpellSpan>% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": [
+                  1.215
+                ]
+              },
+              {
+                "player_bonus_ad": []
+              },
+              {
+                "player_bonus_ad": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Damage",
+                "<SpellSpan :list=\"[36,51,66,81,96]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[54]\"></SpellSpan>% '''bonus''' AD)</span>",
+                "Total Damage",
+                "<SpellSpan :list=\"[96,136,176,216,256]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[144]\"></SpellSpan>% '''bonus''' AD)</span>",
+                "Total Damage to targets beyond the first",
+                "<SpellSpan :list=\"[81,114.75,148.5,182.25,216]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[121.5]\"></SpellSpan>% '''bonus''' AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                36,
+                51,
+                66,
+                81,
+                96
+              ],
+              [
+                54
+              ],
+              [
+                96,
+                136,
+                176,
+                216,
+                256
+              ],
+              [
+                144
+              ],
+              [
+                81,
+                114.75,
+                148.5,
+                182.25,
+                216
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  36,
+                  51,
+                  66,
+                  81,
+                  96
+                ],
+                "player_bonus_ad": []
               }
             }
           ]

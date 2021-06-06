@@ -49,6 +49,339 @@
     "attackspeed": 0.638
   },
   "skills": {
+    "w1": {
+      "riotId": "Bushwhack",
+      "name": "Bushwhack",
+      "maxrank": 5,
+      "cooldown": [
+        13,
+        12,
+        11,
+        10,
+        9
+      ],
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 900,
+      "image": {
+        "full": "Bushwhack.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' lays a trap at the target location which becomes {{tip|stealthed trap|stealthed}} after arming over {{fd|1.5}} seconds, lasting for up to 120 seconds and granting {{tip|sight}} within its radius. The trap will spring upon contact with an enemy, dealing them {{as|magic damage}} per second over 4 seconds.",
+        "Traps have {{as|{{sti|health|6 '''maximum''' health}}}} and can only be damaged by champion [[basic attacks]] (2 hit points from {{tip|ranged}} and 3 hit points from {{tip|melee}}). Up to a maximum of {{pp|4 to 10 for 4|1 to 16}} traps may be active at once."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> lays a trap at the target location which becomes <HtmlTooltip class=\"blue link\">stealthed<template #content><div><h4>stealthed trap<hr></h4><p>Description for keyword stealthed trap</p></div></template></HtmlTooltip> after arming over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, lasting for up to 120 seconds and granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> within its radius. The trap will spring upon contact with an enemy, dealing them <span class=\"magic-damage\">magic damage</span> per second over 4 seconds.<br />Traps have <span class=\"health\"><span>6 <b>maximum</b> health</span></span> and can only be damaged by champion <a class=\"effect link\" title=\"basic attacks\">basic attacks</a> (2 hit points from <HtmlTooltip class=\"blue link\">ranged<template #content><div><h4>ranged<hr></h4><p>Description for keyword ranged</p></div></template></HtmlTooltip> and 3 hit points from <HtmlTooltip class=\"blue link\">melee<template #content><div><h4>melee<hr></h4><p>Description for keyword melee</p></div></template></HtmlTooltip>). Up to a maximum of <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> traps may be active at once.",
+      "leveling": [
+        "{{st|Magic Damage Per Tick|{{ap|10 to 50}} {{as|(+ 5% AP)}}|Total Magic Damage|{{ap|10*4 to 50*4}} {{as|(+ 20% AP)}}}}"
+      ],
+      "notes": "* No additional notes.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[10,20,30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 5% AP)</span></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[40,80,120,160,200]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.05
+              },
+              {
+                "player_total_ap": 0.2
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage Per Tick",
+                "<SpellSpan :list=\"[10,20,30,40,50]\"></SpellSpan> <span class=\"ap\">(+ 5% AP)</span>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[40,80,120,160,200]\"></SpellSpan> <span class=\"ap\">(+ 20% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                20,
+                30,
+                40,
+                50
+              ],
+              [
+                40,
+                80,
+                120,
+                160,
+                200
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage Per Tick",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  20,
+                  30,
+                  40,
+                  50
+                ],
+                "player_total_ap": 0.2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "JavelinToss",
+      "name": "Javelin Toss",
+      "maxrank": 5,
+      "cooldown": 6,
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": 1500,
+      "image": {
+        "full": "JavelinToss.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' hurls a javelin in a line in the target direction, dealing {{as|magic damage}} to the first enemy it hits, increased based on distance traveled."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> hurls a javelin in a line in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy it hits, increased based on distance traveled.",
+      "leveling": [
+        "{{st|Minimum Magic Damage|{{ap|70 to 150}} {{as|(+ 50% AP)}}|Maximum Magic Damage|{{ap|210 to 450}} {{as|(+ 150% AP)}}}}"
+      ],
+      "notes": "* ''Javelin Toss'' will fire from wherever '''Nidalee''' was at the start of the cast time.\n* The damage amplification is based on the distance from '''Nidalee's''' location at the ''end'' of the cast time to the struck target.\n** {{Pending for test}}: distance to missile termination location or target center?",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[70,90,110,130,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[210,270,330,390,450]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              },
+              {
+                "player_total_ap": 1.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Minimum Magic Damage",
+                "<SpellSpan :list=\"[70,90,110,130,150]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>",
+                "Maximum Magic Damage",
+                "<SpellSpan :list=\"[210,270,330,390,450]\"></SpellSpan> <span class=\"ap\">(+ 150% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                90,
+                110,
+                130,
+                150
+              ],
+              [
+                210,
+                270,
+                330,
+                390,
+                450
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Minimum Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  90,
+                  110,
+                  130,
+                  150
+                ],
+                "player_total_ap": 1.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "PrimalSurge",
+      "name": "Primal Surge",
+      "maxrank": 5,
+      "cooldown": 12,
+      "cost": [
+        50,
+        60,
+        70,
+        80,
+        90
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": 600,
+      "image": {
+        "full": "PrimalSurge.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' evokes the spirit of the cougar, {{tip|healing}} the target allied champion or herself, increased by {{as|{{pp|label1=target's '''missing''' health|label=Heal increase|key=%|0 to 100 for 11|key1=%|0 to 100|formula=1% per 1% of target's '''missing''' health}}|health}}, and granting the target {{sti|{{as|'''bonus''' attack speed}}}} for 7 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> evokes the spirit of the cougar, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>healing<hr></h4><p>Description for keyword healing</p></div></template></HtmlTooltip> the target allied champion or herself, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span>, and granting the target <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 7 seconds.",
+      "leveling": [
+        "{{st|Minimum Heal|{{ap|35 to 115}} {{as|(+ {{fd|32.5}}% AP)}}|Maximum Heal|{{ap|35*2 to 115*2}} {{as|(+ 65% AP)}}}}<!--\n-->{{st|Bonus Attack Speed|{{ap|20 to 60}}%}}"
+      ],
+      "notes": "* The {{as|'''bonus''' attack speed}} will persist through {{ai|Aspect of the Cougar 2|Nidalee|Cougar Form}} if '''Nidalee''' uses ''Primal Surge'' on herself.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Heal</span>: <span><SpellSpan :list=\"[35,55,75,95,115]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">32.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              },
+              {
+                "player_total_ap": 0.325
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan>%"
+              ],
+              [
+                "Minimum Heal",
+                "<SpellSpan :list=\"[35,55,75,95,115]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">32.5</span>% AP)</span>",
+                "Maximum Heal",
+                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                35,
+                55,
+                75,
+                95,
+                115
+              ],
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ],
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Speed",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.65
+              }
+            },
+            {
+              "index": 1,
+              "title": "Minimum Heal",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 0.65
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "AspectOfTheCougar",
+      "name": "Aspect of the Cougar",
+      "maxrank": 4,
+      "cooldown": 3,
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "AspectOfTheCougar.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' transforms herself into a cougar, gaining {{tip|melee}} attacks with {{sti|range|125 range}} as well as new [[Champion ability|abilities]].",
+        "{{sbc|Active:}} '''Nidalee''' transforms herself into a human, gaining {{tip|ranged}} attacks with 525 {{sti|range}} as well as new [[Champion ability|abilities]].",
+        "Triggering {{ai|Prowl|Nidalee|Hunt}} resets ''Aspect of the Cougar's'' {{sti|cooldown}} if '''Nidalee''' is in human form.",
+        "'''Nidalee''' begins with one rank in ''Aspect of the Cougar'' and can increase it at levels 6, 11, and 16."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> transforms herself into a cougar, gaining <HtmlTooltip class=\"blue link\">melee<template #content><div><h4>melee<hr></h4><p>Description for keyword melee</p></div></template></HtmlTooltip> attacks with <span>125 range</span> as well as new <a class=\"effect link\" title=\"abilities\">Champion ability</a>.<br /><span class=\"sbc\">Active:</span> <b>Nidalee</b> transforms herself into a human, gaining <HtmlTooltip class=\"blue link\">ranged<template #content><div><h4>ranged<hr></h4><p>Description for keyword ranged</p></div></template></HtmlTooltip> attacks with 525 <span>range</span> as well as new <a class=\"effect link\" title=\"abilities\">Champion ability</a>.<br />Triggering <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Nidalee\">Hunt<template #content>Prowl</template></HtmlTooltip> resets <i>Aspect of the Cougar's</i> <span>cooldown</span> if <b>Nidalee</b> is in human form.<br /><b>Nidalee</b> begins with one rank in <i>Aspect of the Cougar</i> and can increase it at levels 6, 11, and 16.",
+      "leveling": [
+        "{{sbc|Cougar form's abilities rank up when ''{{ai|Aspect of the Cougar}}'' does}}"
+      ],
+      "notes": "*Transformations do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<span class=\"sbc\">Cougar form's abilities rank up when <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar<template #content>Aspect of the Cougar</template></HtmlTooltip></i> does</span>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [],
+            "ap_progressions": []
+          },
+          "subeffects": []
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Prowl",
@@ -74,6 +407,395 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "e2": {
+      "riotId": "PrimalSurge",
+      "name": "Swipe",
+      "maxrank": 5,
+      "cooldown": 6,
+      "cost": 0,
+      "targeting": "Direction",
+      "image": {
+        "full": "PrimalSurge.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 192,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' slashes her claws in an arc in the target direction, dealing {{as|magic damage}} to all enemies within the area."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> slashes her claws in an arc in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area.",
+      "leveling": [
+        "{{sbc|''{{ai|Swipe}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Magic Damage|{{ap|80 to 260 4}} {{as|(+ 45% AP)}}}}"
+      ],
+      "notes": "* ''Swipe'' will fire from wherever '''Nidalee''' was at the start of the cast time.\n** The visual effects will be seen from her position if she moves however.{{bug}}",
+      "skillkey": "E",
+      "skillid": "e2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 50,60,70,80,90 as 50/60/70/80/90",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '6' as '6' and riot's value '12,12,12,12,12' as '12'",
+      "effects": [
+        {
+          "str": "<span class=\"sbc\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Swipe<template #content>Swipe</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,140,200,260]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.45
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,140,200,260]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                140,
+                200,
+                260
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  140,
+                  200,
+                  260
+                ],
+                "player_total_ap": 0.45
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q2": {
+      "riotId": "JavelinToss",
+      "name": "Takedown",
+      "maxrank": 5,
+      "cooldown": [
+        6,
+        0
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "JavelinToss.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee's''' next [[basic attack]] within 10 seconds has an {{tip|uncancelable windup}}, gains {{sti|range|75 '''bonus''' range}} and is modified to deal {{as|magic damage}}, increased by an amount for every {{as|1% of target's '''missing''' health}}. The minimum damage can also be applied against {{tip|turret|turrets}}.",
+        "{{sbc|''{{ai|Prowl||Hunt}}'' Bonus:}} ''Takedown'' deals {{ccs|40% increased damage|magic}} to ''Hunted'' targets.",
+        "''Takedown'' {{tip|basic attack reset|resets}} '''Nidalee's''' basic attack timer. Other damage converted to {{as|magic damage}} by ''Takedown'' are not increased by ''Takedown's'' respective effects."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 10 seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, gains <span>75 <b>bonus</b> range</span> and is modified to deal <span class=\"magic-damage\">magic damage</span>, increased by an amount for every <span class=\"health\">1% of target's <b>missing</b> health</span>. The minimum damage can also be applied against <HtmlTooltip class=\"blue link\">turrets<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Hunt<template #content>Prowl</template></HtmlTooltip></i> Bonus:</span> <i>Takedown</i> deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs 40% increased damage magic\">Unknown value: ccs 40% increased damage magic</simple-tooltip> to <i>Hunted</i> targets.<br /><i>Takedown</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Nidalee's</b> basic attack timer. Other damage converted to <span class=\"magic-damage\">magic damage</span> by <i>Takedown</i> are not increased by <i>Takedown's</i> respective effects.",
+      "leveling": [
+        "{{sbc|''{{ai|Takedown}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Minimum Magic Damage|{{ap|5 to 80 4}} {{as|(+ 75% AD)}} {{as|(+ 40% AP)}}|Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75)) 4}} {{as|(+ {{ap|75*(1+1) to 75*(1+1.75) 4}}% AD)}} {{as|(+ {{ap|40*(1+1) to 40*(1+1.75) 4}}% AP)}}}}\n{{st|Bonus Damage|{{ap|1 to 1.75 4}}%|Maximum Bonus Damage|{{ap|1*100 to 1.75*100 4}}%}}",
+        "{{st|''{{ai|Prowl}}''-Enhanced Minimum Damage|{{ap|5*1.4 to 80*1.4 4}} {{as|(+ {{ap|75*1.4}}% AD)}} {{as|(+ {{ap|40*1.4}}% AP)}}|''{{ai|Prowl}}''-Enhanced Maximum Damage|{{ap|(5 to 80)*(1+(1 to 1.75))*1.4 4}} {{as|(+ {{ap|75*(1+1)*1.4 to 75*(1+1.75)*1.4 4}}% AD)}} {{as|(+ {{ap|40*(1+1)*1.4 to 40*(1+1.75)*1.4 4}}% AP)}}}}"
+      ],
+      "notes": "* ''Takedown's'' attack deals {{tip|basic damage}}, but also triggers spell effects by dealing an additional 0 {{tip|spell damage}}.\n* Increased damage to ''{{ai|Prowl||Hunted}}'' targets is displayed as a {{ccs|cosmetic critical strike|magic|tip=false|link=true}}: Unless '''Nidalee''' has critical strike chance and the attack rolled a {{tip|critical strike}} naturally, it is unaffected by critical damage modifiers.\n* {{tip|basic attack|Basic attacks}} enhanced by ''Takedown'' convert {{nie|Spellblade}} damage from physical to magic, if it was not already magic. Their damage is however not increased by ''Takedown''.\n* ''Takedown's'' damage will apply {{stil|life steal}}.\n* {{pending for test}} - Parry interactions ({{tip|dodge}}, {{tip|block}} and {{tip|blind}}).",
+      "skillkey": "Q",
+      "skillid": "q2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 50,55,60,65,70 as 50/55/60/65/70",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|6|Starts post-effect}}' as '6/0' and riot's value '6,6,6,6,6' as '6'",
+      "effects": [
+        {
+          "str": "<span class=\"sbc\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Takedown<template #content>Takedown</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul class=\"st\"><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[5,30,55,80]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[150,168.75,187.5,206.25]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[80,90,100,110]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Bonus Damage</span>: <span><SpellSpan :list=\"[100,125,150,175]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0.75
+              },
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ad": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75
+                ]
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Damage",
+                "<SpellSpan :list=\"[1,1.25,1.5,1.75]\"></SpellSpan>%",
+                "Maximum Bonus Damage",
+                "<SpellSpan :list=\"[100,125,150,175]\"></SpellSpan>%"
+              ],
+              [
+                "Minimum Magic Damage",
+                "<SpellSpan :list=\"[5,30,55,80]\"></SpellSpan> <span class=\"ad\">(+ 75% AD)</span> <span class=\"ap\">(+ 40% AP)</span>",
+                "Maximum Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75)) 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[150,168.75,187.5,206.25]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[80,90,100,110]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                5,
+                30,
+                55,
+                80
+              ],
+              [
+                150,
+                168.75,
+                187.5,
+                206.25
+              ],
+              [
+                80,
+                90,
+                100,
+                110
+              ],
+              [
+                1,
+                1.25,
+                1.5,
+                1.75
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  5,
+                  30,
+                  55,
+                  80
+                ],
+                "player_total_ad": 0.75,
+                "player_total_ap": 0.4
+              }
+            },
+            {
+              "index": 1,
+              "title": "Minimum Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  168.75,
+                  187.5,
+                  206.25
+                ],
+                "player_total_ad": 0.75,
+                "player_total_ap": 0.4
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Minimum Damage</span>: <span><SpellSpan :list=\"[7,42,77,112]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[105]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[56]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip></i>-Enhanced Maximum Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[210,236.25,262.5,288.75]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[112,126,140,154]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": [
+                  1.12,
+                  1.26,
+                  1.4,
+                  1.54
+                ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ap": []
+              }
+            ],
+            "st_slices": [
+              [
+                "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
+                "<SpellSpan :list=\"[7,42,77,112]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[105]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[56]\"></SpellSpan>% AP)</span>",
+                "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Maximum Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (5 to 80)*(1+(1 to 1.75))*1.4 4\">Error: SyntaxError: Unexpected end of input</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[210,236.25,262.5,288.75]\"></SpellSpan>% AD)</span> <span class=\"ap\">(+ <SpellSpan :list=\"[112,126,140,154]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                7,
+                42,
+                77,
+                112
+              ],
+              [
+                105
+              ],
+              [
+                56
+              ],
+              [
+                210,
+                236.25,
+                262.5,
+                288.75
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "''<HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Prowl<template #content>Prowl</template></HtmlTooltip>''-Enhanced Minimum Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  7,
+                  42,
+                  77,
+                  112
+                ],
+                "player_total_ad": [],
+                "player_total_ap": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w2": {
+      "riotId": "Bushwhack",
+      "name": "Pounce",
+      "maxrank": 5,
+      "cooldown": [
+        6,
+        0
+      ],
+      "cost": 0,
+      "targeting": "[[Direction-targeted|Direction]] / [[Location-targeted|Location]] / [[Unit-targeted|Unit]]",
+      "target_range": "{{tt|375|Standard range}} / {{tt|750|Enhanced range}}",
+      "image": {
+        "full": "Bushwhack.png",
+        "sprite": "spell8.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Nidalee''' {{tip|dash|dashes}} a fixed distance in the target direction, dealing {{as|magic damage}} to nearby enemies upon arrival.",
+        "{{sbc|''{{ai|Prowl||Hunt}}'' Bonus:}} '''Nidalee''' can perform ''Pounce'' from an increased range on a ''Hunted'' enemy closest to the cursor. '''Nidalee''' can ''Pounce'' to a target location near a ''Hunted'' enemy if she is close to the ''Hunted'' enemy.",
+        "[[Kill]]ing an enemy while in ''Cougar Form'' or using ''Pounce's'' ''Hunt'' bonus reduces ''Pounce's'' remaining {{sti|cooldown}} to a value. This has no effect if the remaining cooldown is already lower than that value.",
+        "''Pounce'' will cast at max range if cast beyond that."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Nidalee</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> a fixed distance in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to nearby enemies upon arrival.<br /><span class=\"sbc\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Hunt<template #content>Prowl</template></HtmlTooltip></i> Bonus:</span> <b>Nidalee</b> can perform <i>Pounce</i> from an increased range on a <i>Hunted</i> enemy closest to the cursor. <b>Nidalee</b> can <i>Pounce</i> to a target location near a <i>Hunted</i> enemy if she is close to the <i>Hunted</i> enemy.<br /><a class=\"effect link\" title=\"Kill\">Kill</a>ing an enemy while in <i>Cougar Form</i> or using <i>Pounce's</i> <i>Hunt</i> bonus reduces <i>Pounce's</i> remaining <span>cooldown</span> to a value. This has no effect if the remaining cooldown is already lower than that value.<br /><i>Pounce</i> will cast at max range if cast beyond that.",
+      "leveling": [
+        "{{sbc|''{{ai|Pounce}}'' scales with ''{{ais|Aspect of the Cougar}}'' rank}}\n{{st|Magic Damage|{{ap|60 to 210 4}} {{as|(+ 30% AP)}}}}",
+        "{{st|Reduced Cooldown|{{tt|{{ap|3 to 1.5 4}}|Affected by ability haste}}}}"
+      ],
+      "notes": "* '''Pounce''' will not receive the reduced cooldown if the target becomes ''Hunted'' mid-air.\n* '''Pounce''' without a '''Hunted''' target will have a fixed distance and use [[Direction-targeted|direction-targeting]].\n* '''Pounce''' in the direction of a '''Hunted''' target that is inside of normal ability range will use [[Location-targeted|location-targeting]] and place '''Nidalee''' at the target location.\n* '''Pounce''' on a '''Hunted''' target that is out of normal ability range will use [[Unit-targeted|unit-targeting]] and place '''Nidalee''' on the side of the target that the target is facing.",
+      "skillkey": "W",
+      "skillid": "w2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 40,45,50,55,60 as 40/45/50/55/60",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|6|Starts on cast}}' as '6/0' and riot's value '13,12,11,10,9' as '13/12/11/10/9'",
+      "effects": [
+        {
+          "str": "<span class=\"sbc\"><i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Pounce<template #content>Pounce</template></HtmlTooltip></i> scales with <i><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"undefined\">Aspect of the Cougar's<template #content>Aspect of the Cougar</template></HtmlTooltip></i> rank</span><br><ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,110,160,210]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,110,160,210]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                110,
+                160,
+                210
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  110,
+                  160,
+                  210
+                ],
+                "player_total_ap": 0.3
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Cooldown</span>: <span><span class=\"title-tooltip\" title=\"Affected by ability haste\"><SpellSpan :list=\"[3,2.5,2,1.5]\"></SpellSpan></span></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Reduced Cooldown",
+                "<span class=\"title-tooltip\" title=\"Affected by ability haste\"><SpellSpan :list=\"[3,2.5,2,1.5]\"></SpellSpan></span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                3,
+                2.5,
+                2,
+                1.5
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Reduced Cooldown",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  3,
+                  2.5,
+                  2,
+                  1.5
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

@@ -74,107 +74,67 @@
       "skillid": "i1",
       "effects": []
     },
-    "q1": {
-      "riotId": "XerathArcanopulseChargeUp",
-      "name": "Arcanopulse",
+    "e1": {
+      "riotId": "XerathMageSpear",
+      "name": "Shocking Orb",
       "maxrank": 5,
       "cooldown": [
-        9,
-        8,
-        7,
-        6,
-        5
+        13,
+        12.5,
+        12,
+        11.5,
+        11
       ],
       "cost": [
-        80,
-        90,
-        100,
-        110,
-        120
+        60,
+        65,
+        70,
+        75,
+        80
       ],
       "costtype": "mana",
       "targeting": "Direction",
       "image": {
-        "full": "XerathArcanopulseChargeUp.png",
+        "full": "XerathMageSpear.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 288,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over the first {{fd|1.5}} to {{fd|1.75}} seconds of the channel while being {{tip|slow|slowed}} by {{pp|key=%|type=channel time|0;10;15;20;25;30;35;40|0 to 1.75|formula=10% after 0 to 0.25 seconds, then {{plus}}5% per 0.25 seconds channeled, capped at 40%}}. ''Arcanopulse'' can be recast at any time within its duration.",
-        "If the charge completes without reactivation or is {{tip|interrupt|interrupted}}, ''Arcanopulse'' is cancelled, refunding {{sti|mana|{{as|half of its mana cost}}}}.",
-        "{{sbc|Recast:}} After a delay of {{rutngt|0.5}}, '''Xerath''' fires a beam of energy in the target direction, dealing {{as|magic damage}} to all enemies within the area."
+        "{{sbc|Active:}} '''Xerath''' fires an orb of energy in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|stun|stunning}} them for {{pp|type=distance the orb traveled|0.5 to 2 for 11|0 to 1050|formula=0.5+(0.15 per 105 units). ''This is capped at 1050 units traveled.''}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 3 seconds to increase <i>Arcanopulse's</i> <span>range</span> over the first <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> to <span style=\"font-variant-numeric: tabular-nums;\">1.75</span> seconds of the channel while being <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by <span class=\"title-tooltip\" title=\"\">0 to 1.75 ‒ undefined</span>. <i>Arcanopulse</i> can be recast at any time within its duration.<br />If the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>, <i>Arcanopulse</i> is cancelled, refunding <span><span class=\"mana\">half of its mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> After a delay of <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.5\">Unknown value: rutngt 0.5</simple-tooltip>, <b>Xerath</b> fires a beam of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> fires an orb of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy hit and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span class=\"title-tooltip\" title=\"\">0 to 1050 ‒ undefined</span> seconds.",
       "leveling": [
-        "{{st|Mana Refunded|{{ap|40 to 60}}}}",
-        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 85% AP)}}}}"
+        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 45% AP)}}}}"
       ],
-      "notes": "* The onset of ''Arcanopulse's'' self-{{tip|slow}} and first range increase is at a random interval of 0 to {{fd|0.25}} seconds. The real time to maximum self-slow and range is thus {{fd|1.5}} to {{fd|1.75}} seconds.\n* The rectangle hitbox's minimum range is {{tip|er|icononly = true}} 0, right through '''Xerath's''' center.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast=false|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "* ''Shocking Orb'' will cast from wherever '''Xerath''' is at the end of the cast time.",
+      "skillkey": "E",
+      "skillid": "e1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Mana Refunded</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Mana Refunded",
-                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                40,
-                45,
-                50,
-                55,
-                60
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Mana Refunded",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  40,
-                  45,
-                  50,
-                  55,
-                  60
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.85
+                "player_total_ap": 0.45
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
+                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                70,
+                80,
                 110,
-                150,
-                190,
-                230
+                140,
+                170,
+                200
               ]
             ]
           },
@@ -185,13 +145,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  70,
+                  80,
                   110,
-                  150,
-                  190,
-                  230
+                  140,
+                  170,
+                  200
                 ],
-                "player_total_ap": 0.85
+                "player_total_ap": 0.45
               }
             }
           ]
@@ -364,67 +324,109 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "XerathMageSpear",
-      "name": "Shocking Orb",
+    "q1": {
+      "riotId": "XerathArcanopulseChargeUp",
+      "name": "Arcanopulse",
       "maxrank": 5,
       "cooldown": [
-        13,
-        12.5,
-        12,
-        11.5,
-        11
+        0,
+        7.667,
+        6.333,
+        5,
+        3.667,
+        0
       ],
       "cost": [
-        60,
-        65,
-        70,
-        75,
-        80
+        80,
+        90,
+        100,
+        110,
+        120
       ],
       "costtype": "mana",
       "targeting": "Direction",
       "image": {
-        "full": "XerathMageSpear.png",
+        "full": "XerathArcanopulseChargeUp.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 384,
+        "x": 288,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' fires an orb of energy in the target direction, dealing {{as|magic damage}} to the first enemy hit and {{tip|stun|stunning}} them for {{pp|type=distance the orb traveled|0.5 to 2 for 11|0 to 1050|formula=0.5+(0.15 per 105 units). ''This is capped at 1050 units traveled.''}} seconds."
+        "{{sbc|Active:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over the first {{fd|1.5}} to {{fd|1.75}} seconds of the channel while being {{tip|slow|slowed}} by {{pp|key=%|type=channel time|0;10;15;20;25;30;35;40|0 to 1.75|formula=10% after 0 to 0.25 seconds, then {{plus}}5% per 0.25 seconds channeled, capped at 40%}}. ''Arcanopulse'' can be recast at any time within its duration.",
+        "If the charge completes without reactivation or is {{tip|interrupt|interrupted}}, ''Arcanopulse'' is cancelled, refunding {{sti|mana|{{as|half of its mana cost}}}}.",
+        "{{sbc|Recast:}} After a delay of {{rutngt|0.5}}, '''Xerath''' fires a beam of energy in the target direction, dealing {{as|magic damage}} to all enemies within the area."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> fires an orb of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy hit and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span class=\"title-tooltip\" title=\"\">0 to 1050 ‒ undefined</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 3 seconds to increase <i>Arcanopulse's</i> <span>range</span> over the first <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> to <span style=\"font-variant-numeric: tabular-nums;\">1.75</span> seconds of the channel while being <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by <span class=\"title-tooltip\" title=\"\">0 to 1.75 ‒ undefined</span>. <i>Arcanopulse</i> can be recast at any time within its duration.<br />If the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>, <i>Arcanopulse</i> is cancelled, refunding <span><span class=\"mana\">half of its mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> After a delay of <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.5\">Unknown value: rutngt 0.5</simple-tooltip>, <b>Xerath</b> fires a beam of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 45% AP)}}}}"
+        "{{st|Mana Refunded|{{ap|40 to 60}}}}",
+        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 85% AP)}}}}"
       ],
-      "notes": "* ''Shocking Orb'' will cast from wherever '''Xerath''' is at the end of the cast time.",
-      "skillkey": "E",
-      "skillid": "e1",
+      "notes": "* The onset of ''Arcanopulse's'' self-{{tip|slow}} and first range increase is at a random interval of 0 to {{fd|0.25}} seconds. The real time to maximum self-slow and range is thus {{fd|1.5}} to {{fd|1.75}} seconds.\n* The rectangle hitbox's minimum range is {{tip|er|icononly = true}} 0, right through '''Xerath's''' center.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast=false|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|9 to 5}}|Starts post-effect}}' as '0/7.667/6.333/5/3.667/0' and riot's value '9,8,7,6,5' as '9/8/7/6/5'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Mana Refunded</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Mana Refunded",
+                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Mana Refunded",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  45,
+                  50,
+                  55,
+                  60
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.45
+                "player_total_ap": 0.85
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>"
+                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                80,
+                70,
                 110,
-                140,
-                170,
-                200
+                150,
+                190,
+                230
               ]
             ]
           },
@@ -435,13 +437,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  80,
+                  70,
                   110,
-                  140,
-                  170,
-                  200
+                  150,
+                  190,
+                  230
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 0.85
               }
             }
           ]
@@ -453,9 +455,10 @@
       "name": "Rite of the Arcane",
       "maxrank": 3,
       "cooldown": [
-        130,
-        115,
-        100
+        0,
+        100,
+        70,
+        0
       ],
       "cost": 100,
       "costtype": "mana",
@@ -484,6 +487,7 @@
       "notes": "* '''Xerath''' also gains {{as|{{sti|5000 '''bonus''' attack range}}}} while {{tip|channel|channeling}}, for a total of {{as|{{sti|attack range|5525}}}}.{{bug|2}}\n** While attacking during the channel is not possible, the bonus may persist{{ft|for up-to {{rutngt|0.25}}|until the next stat update}}after the end of the channel, allowing '''Xerath''' to sucessfully issue a single basic attack at this range if he does so quickly enough.\n* Each cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The recast is named ''Arcane Barrage''.\n* A circular indicator will be displayed at the target location to signify that the area will be blasted.\n* A circle indicating the ability's maximum range forms on the map over 1 second (starting small and rapidly expanding to the maximum range over the delay) for the channel's duration.\n** The maximum-range indicator is visible to both allies and enemies and is color coded for friendly (blue) or hostile (red).\n* ''Rite of the Arcane'' uses a [[Champion ability|barrage system]] so that it can be recast multiple times within a given period at no additional cost.\n* '''Xerath''' will turn to face toward the direction of the target location after using a recast.\n* '''Xerath''' gains a wider field of view during ''Rite of the Arcane''.\n* '''Xerath''' can use {{ai|Dark Passage|Thresh}} while channeling.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=false|attack=interrupts|move=Disabled for the first {{fd|1.25}} seconds, otherwise, interrupts.|items=interrupts,true,,false|spells=true, false, interrupts, interrupts, false}}\n* {{si|Teleport}} is disabled for the first {{fd|1.25}} seconds of the channel.",
       "skillkey": "R",
       "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|130 to 100}}|Starts post-effect}}' as '0/100/70/0' and riot's value '130,115,100' as '130/115/100'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Number of Recasts</span>: <span><SpellSpan :list=\"[3,4,5]\"></SpellSpan></span></li></ul>",

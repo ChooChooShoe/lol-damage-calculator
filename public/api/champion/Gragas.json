@@ -73,6 +73,215 @@
       "skillid": "i1",
       "effects": []
     },
+    "r1": {
+      "riotId": "GragasR",
+      "name": "Explosive Cask",
+      "maxrank": 3,
+      "cooldown": [
+        120,
+        100,
+        80
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 1000,
+      "image": {
+        "full": "GragasR.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 336,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Gragas''' hurls a cask that travels to the target location over {{fd|0.55}} seconds and explodes on impact, dealing {{as|magic damage}} to all enemies within the area and {{tip|airborne|knocking them back}} 900 units, though not through terrain, from the epicenter of the explosion, as well as briefly granting {{tip|sight}} of the area."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> hurls a cask that travels to the target location over <span style=\"font-variant-numeric: tabular-nums;\">0.55</span> seconds and explodes on impact, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> 900 units, though not through terrain, from the epicenter of the explosion, as well as briefly granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|200 to 400}} {{as|(+ 80% AP)}}}}"
+      ],
+      "notes": "* The cask will prematurely explode upon colliding with {{ai|Blade Whirl|Samira}} or {{ai|Wind Wall|Yasuo}}.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                200,
+                300,
+                400
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  200,
+                  300,
+                  400
+                ],
+                "player_total_ap": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "GragasW",
+      "name": "Drunken Rage",
+      "maxrank": 5,
+      "cooldown": [
+        5,
+        0
+      ],
+      "cost": 30,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "GragasW.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Gragas''' {{tip|channel|channels}} for {{fd|0.75}} seconds, drinking out of his brew, and gains {{tip|damage reduction}} for {{fd|2.5}} seconds.",
+        "Upon completing the channel, '''Gragas' ''' next [[basic attack]] within 5 seconds has an {{tip|uncancelable windup}}, gains {{sti|range|50 '''bonus''' range}} and deals {{as|'''bonus''' magic damage}} to the target and nearby enemies, capped at 300 against {{tip|monsters}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, drinking out of his brew, and gains <HtmlTooltip class=\"blue link\">damage reduction<template #content><div><h4>damage reduction<hr></h4><p>Description for keyword damage reduction</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Upon completing the channel, <b>Gragas' </b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 5 seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, gains <span>50 <b>bonus</b> range</span> and deals <span class=\"magic-damage\"><b>bonus</b> magic damage</span> to the target and nearby enemies, capped at 300 against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Damage Reduction|{{ap|10 to 18}}% {{as|(+ 4% per 100 AP)}}}}",
+        "{{st|Bonus Magic Damage|{{ap|20 to 140}} {{as|(+ 7% of target's '''maximum''' health)}} {{as|(+ 60% AP)}}|Maximum Damage to Monsters|{{ap|320 to 440}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* The following table refers for interactions while '''Gragas''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|cast=false|items=false,true|move=true|spells=true,true,false,false,false}}",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|5|Starts post-effect}}' as '5/0' and riot's value '5,5,5,5,5' as '5'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[10,12,14,16,18]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 41
+              }
+            ],
+            "st_slices": [
+              [
+                "Damage Reduction",
+                "<SpellSpan :list=\"[10,12,14,16,18]\"></SpellSpan>% <span class=\"ap\">(+ 4% per 100 AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                12,
+                14,
+                16,
+                18
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage Reduction",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  12,
+                  14,
+                  16,
+                  18
+                ],
+                "player_total_ap": 41
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[20,50,80,110,140]\"></SpellSpan> <span class=\"health\">(+ 7% of target's <b>maximum</b> health)</span> <span class=\"ap\">(+ 60% AP)</span></span></li><li><span class=\"blue\">Maximum Damage to Monsters</span>: <span><SpellSpan :list=\"[320,350,380,410,440]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "target_total_hp": 0.07
+              },
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[20,50,80,110,140]\"></SpellSpan> <span class=\"health\">(+ 7% of target's '''maximum''' health)</span> <span class=\"ap\">(+ 60% AP)</span>",
+                "Maximum Damage to Monsters",
+                "<SpellSpan :list=\"[320,350,380,410,440]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                50,
+                80,
+                110,
+                140
+              ],
+              [
+                320,
+                350,
+                380,
+                410,
+                440
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  50,
+                  80,
+                  110,
+                  140
+                ],
+                "target_total_hp": 0.07,
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "GragasE",
       "name": "Body Slam",
@@ -154,58 +363,123 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "GragasR",
-      "name": "Explosive Cask",
-      "maxrank": 3,
+    "q1": {
+      "riotId": "GragasQ",
+      "name": "Barrel Roll",
+      "maxrank": 5,
       "cooldown": [
-        120,
-        100,
-        80
+        0,
+        9.667,
+        8.333,
+        7,
+        5.667,
+        0
       ],
-      "cost": 100,
+      "cost": 80,
       "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 1000,
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
+      "target_range": 850,
       "image": {
-        "full": "GragasR.png",
+        "full": "GragasQ.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 336,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Gragas''' hurls a cask that travels to the target location over {{fd|0.55}} seconds and explodes on impact, dealing {{as|magic damage}} to all enemies within the area and {{tip|airborne|knocking them back}} 900 units, though not through terrain, from the epicenter of the explosion, as well as briefly granting {{tip|sight}} of the area."
+        "{{sbc|Active:}} '''Gragas''' rolls a cask to the target location, lasting for 4 seconds, granting {{tip|sight}} of the area, and fermenting over 2 seconds, during which it increases its [[damage]] and {{tip|slow}} strength, up to a maximum of {{ccs|150% damage|magic}}. ''Barrel Roll'' can be recast at any time within its duration after the cask has fully travelled, and does so automatically after its duration ends.",
+        "{{sbc|Recast:}} '''Gragas''' detonates the cask, dealing {{as|magic damage}} to all surrounding enemies, reduced by 30% against {{tip|minion|minions}}, and {{tip|slow|slowing}} them for 2 seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> hurls a cask that travels to the target location over <span style=\"font-variant-numeric: tabular-nums;\">0.55</span> seconds and explodes on impact, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area and <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> 900 units, though not through terrain, from the epicenter of the explosion, as well as briefly granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Gragas</b> rolls a cask to the target location, lasting for 4 seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area, and fermenting over 2 seconds, during which it increases its <a class=\"effect link\" title=\"damage\">damage</a> and <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> strength, up to a maximum of <simple-tooltip class=\"capture-unknown\" dname=\"ccs 150% damage magic\">Unknown value: ccs 150% damage magic</simple-tooltip>. <i>Barrel Roll</i> can be recast at any time within its duration after the cask has fully travelled, and does so automatically after its duration ends.<br /><span class=\"sbc\">Recast:</span> <b>Gragas</b> detonates the cask, dealing <span class=\"magic-damage\">magic damage</span> to all surrounding enemies, reduced by 30% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip>, and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|200 to 400}} {{as|(+ 80% AP)}}}}"
+        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 70% AP)}}|Maximum Magic Damage|{{ap|80*1.5 to 240*1.5}} {{as|(+ 105% AP)}}}}\n{{st|Minion Damage|{{ap|80*0.7 to 240*0.7}} {{as|(+ 49% AP)}}|Maximum Minion Damage|{{ap|80*1.5*0.7 to 240*1.5*0.7}} {{as|(+ {{fd|73.5}}% AP)}}}}\n{{st|Slow|{{ap|40 to 60}}%|Maximum Slow|{{ap|40*1.5 to 60*1.5}}%}}"
       ],
-      "notes": "* The cask will prematurely explode upon colliding with {{ai|Blade Whirl|Samira}} or {{ai|Wind Wall|Yasuo}}.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Deactivating the ability manually does not.\n* The cask ignores unit and terrain collision therefore it will only stop once it reaches the target location.\n** On arrival the cask will begin to glow ever brighter as it ferments until it turns bright red.\n* ''Barrel Roll'' has an internal cooldown while traveling so that '''Gragas''' may only make it explode on arrival.\n* The charge-up countdown will only start once the cask stops rolling.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|11 to 7}}|Starts on cast}}' as '0/9.667/8.333/7/5.667/0' and riot's value '11,10,9,8,7' as '11/10/9/8/7'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[120,180,240,300,360]\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minion Damage</span>: <span><SpellSpan :list=\"[56,84,112,140,168]\"></SpellSpan> <span class=\"ap\">(+ 49% AP)</span></span></li><li><span class=\"blue\">Maximum Minion Damage</span>: <span><SpellSpan :list=\"[84,126,168,210,252]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li><li><span class=\"blue\">Maximum Slow</span>: <span><SpellSpan :list=\"[60,67.5,75,82.5,90]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.8
+                "player_total_ap": 0.7000000000000001
+              },
+              {
+                "player_total_ap": 1.05
+              },
+              {
+                "player_total_ap": 0.49
+              },
+              {
+                "player_total_ap": 0.735
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[200,300,400]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+                "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>",
+                "Maximum Magic Damage",
+                "<SpellSpan :list=\"[120,180,240,300,360]\"></SpellSpan> <span class=\"ap\">(+ 105% AP)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%",
+                "Maximum Slow",
+                "<SpellSpan :list=\"[60,67.5,75,82.5,90]\"></SpellSpan>%"
+              ],
+              [
+                "Minion Damage",
+                "<SpellSpan :list=\"[56,84,112,140,168]\"></SpellSpan> <span class=\"ap\">(+ 49% AP)</span>",
+                "Maximum Minion Damage",
+                "<SpellSpan :list=\"[84,126,168,210,252]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">73.5</span>% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
+                80,
+                120,
+                160,
                 200,
+                240
+              ],
+              [
+                120,
+                180,
+                240,
                 300,
-                400
+                360
+              ],
+              [
+                56,
+                84,
+                112,
+                140,
+                168
+              ],
+              [
+                84,
+                126,
+                168,
+                210,
+                252
+              ],
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ],
+              [
+                60,
+                67.5,
+                75,
+                82.5,
+                90
               ]
             ]
           },
@@ -216,11 +490,43 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
+                  80,
+                  120,
+                  160,
                   200,
-                  300,
-                  400
+                  240
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 1.05
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  120,
+                  180,
+                  240,
+                  300,
+                  360
+                ],
+                "player_total_ap": 1.05
+              }
+            },
+            {
+              "index": 2,
+              "title": "Minion Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  56,
+                  84,
+                  112,
+                  140,
+                  168
+                ],
+                "player_total_ap": 1.05
               }
             }
           ]

@@ -49,6 +49,97 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "e1": {
+      "riotId": "RyzeE",
+      "name": "Spell Flux",
+      "maxrank": 5,
+      "cooldown": [
+        3.25,
+        3,
+        2.75,
+        2.5,
+        2.25
+      ],
+      "cost": [
+        40,
+        55,
+        70,
+        85,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|icononly = true}} 550",
+      "image": {
+        "full": "RyzeE.png",
+        "sprite": "spell10.png",
+        "group": "spell",
+        "x": 0,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Ryze''' hurls an orb of runic energy at the target enemy, dealing them {{as|magic damage}}.",
+        "''Spell Flux'' marks the primary target and all enemies near them with ''Flux'' for 3 seconds. '''Ryze's''' basic abilities against enemies with ''Flux'' consume the mark to become empowered.",
+        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Spell Flux'' spreads further."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> hurls an orb of runic energy at the target enemy, dealing them <span class=\"magic-damage\">magic damage</span>.<br /><i>Spell Flux</i> marks the primary target and all enemies near them with <i>Flux</i> for 3 seconds. <b>Ryze's</b> basic abilities against enemies with <i>Flux</i> consume the mark to become empowered.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Spell Flux</i> spreads further.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 140}} {{as|(+ 30% AP)}} {{as|(+ 2% '''bonus''' mana)}}}}"
+      ],
+      "notes": "* ''Spell Flux's'' second cast on a target will apply a new ''Flux'' debuff as well as triggering the previous one (effectively refreshing the duration).\n* {{pending for test}} bounce range {{tip|er|icononly = true}} to-edge or {{tip|cr|icononly = true}} to-center?\n** Game data notes additional range checks of 400 (bounce range) and 500 (Q damage bounce range) against 'large' enemies.\n* ''Spell Flux'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% <b>bonus</b> mana)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.3
+              },
+              {
+                "player_bonus_mana": 0.02
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% '''bonus''' mana)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                80,
+                100,
+                120,
+                140
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  80,
+                  100,
+                  120,
+                  140
+                ],
+                "player_total_ap": 0.3,
+                "player_bonus_mana": 0.02
+              }
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Arcane Mastery",
@@ -163,73 +254,69 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "RyzeE",
-      "name": "Spell Flux",
+    "q1": {
+      "riotId": "RyzeQWrapper",
+      "name": "Overload",
       "maxrank": 5,
-      "cooldown": [
-        3.25,
-        3,
-        2.75,
-        2.5,
-        2.25
-      ],
+      "cooldown": 6,
       "cost": [
         40,
-        55,
-        70,
-        85,
-        100
+        38,
+        36,
+        34,
+        32
       ],
       "costtype": "Mana",
-      "targeting": "Unit",
-      "target_range": "{{tip|er|icononly = true}} 550",
+      "targeting": "Direction",
+      "target_range": "{{tip|cr|icononly = true}} 1000",
       "image": {
-        "full": "RyzeE.png",
+        "full": "RyzeQWrapper.png",
         "sprite": "spell10.png",
         "group": "spell",
-        "x": 0,
-        "y": 96,
+        "x": 384,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Ryze''' hurls an orb of runic energy at the target enemy, dealing them {{as|magic damage}}.",
-        "''Spell Flux'' marks the primary target and all enemies near them with ''Flux'' for 3 seconds. '''Ryze's''' basic abilities against enemies with ''Flux'' consume the mark to become empowered.",
-        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Spell Flux'' spreads further."
+        "{{sbc|Passive:}} '''Ryze's''' other basic abilities reset {{sti|cdr|''Overload's'' cooldown}} and charge a {{ai|Overload 3||Rune}} for 4 seconds, up to 2.",
+        "{{sbc|Active:}} '''Ryze''' unleashes a runic blast in the target direction, dealing {{as|magic damage}} to the first enemy struck and consuming all of his {{ai|Overload 5||Runes}}.",
+        "If '''Ryze''' consumes 2 Runes, he gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 2 seconds.",
+        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Overload'' deals {{pp|type=[[File:Realm Warp.png|20px|border]] Realm Warp's rank|key=%|10 to 100 for 4|0 to 3}} {{ccs|increased damage|magic}}, and spreads to all nearby enemies marked with ''Flux''."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> hurls an orb of runic energy at the target enemy, dealing them <span class=\"magic-damage\">magic damage</span>.<br /><i>Spell Flux</i> marks the primary target and all enemies near them with <i>Flux</i> for 3 seconds. <b>Ryze's</b> basic abilities against enemies with <i>Flux</i> consume the mark to become empowered.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Spell Flux</i> spreads further.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Ryze's</b> other basic abilities reset <span><i>Overload's</i> cooldown</span> and charge a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Rune<template #content>Overload 3</template></HtmlTooltip> for 4 seconds, up to 2.<br /><span class=\"sbc\">Active:</span> <b>Ryze</b> unleashes a runic blast in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy struck and consuming all of his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Runes<template #content>Overload 5</template></HtmlTooltip>.<br />If <b>Ryze</b> consumes 2 Runes, he gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for 2 seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Overload</i> deals <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <simple-tooltip class=\"capture-unknown\" dname=\"ccs increased damage magic\">Unknown value: ccs increased damage magic</simple-tooltip>, and spreads to all nearby enemies marked with <i>Flux</i>.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 140}} {{as|(+ 30% AP)}} {{as|(+ 2% '''bonus''' mana)}}}}"
+        "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 45% AP)}} {{as|(+ 3% '''bonus''' mana)}}}}",
+        "{{st|Bonus Movement Speed|{{ap|28 to 44}}%}}"
       ],
-      "notes": "* ''Spell Flux's'' second cast on a target will apply a new ''Flux'' debuff as well as triggering the previous one (effectively refreshing the duration).\n* {{pending for test}} bounce range {{tip|er|icononly = true}} to-edge or {{tip|cr|icononly = true}} to-center?\n** Game data notes additional range checks of 400 (bounce range) and 500 (Q damage bounce range) against 'large' enemies.\n* ''Spell Flux'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.",
-      "skillkey": "E",
-      "skillid": "e1",
+      "notes": "* Applies {{tip|spell damage}} to the primary target and {{tip|area damage}} to secondary targets affected by {{ai|Spell Flux|Ryze|Flux}}.\n* ''Overload'' will fire from wherever '''Ryze''' was at the start of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% <b>bonus</b> mana)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span> <span class=\"mana\">(+ 3% <b>bonus</b> mana)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.3
+                "player_total_ap": 0.45
               },
               {
-                "player_bonus_mana": 0.02
+                "player_bonus_mana": 0.03
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% '''bonus''' mana)</span>"
+                "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span> <span class=\"mana\">(+ 3% '''bonus''' mana)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                60,
-                80,
+                75,
                 100,
-                120,
-                140
+                125,
+                150,
+                175
               ]
             ]
           },
@@ -240,14 +327,51 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  60,
-                  80,
+                  75,
                   100,
-                  120,
-                  140
+                  125,
+                  150,
+                  175
                 ],
-                "player_total_ap": 0.3,
-                "player_bonus_mana": 0.02
+                "player_total_ap": 0.45,
+                "player_bonus_mana": 0.03
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[28,32,36,40,44]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[28,32,36,40,44]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                28,
+                32,
+                36,
+                40,
+                44
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Movement Speed",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  28,
+                  32,
+                  36,
+                  40,
+                  44
+                ]
               }
             }
           ]

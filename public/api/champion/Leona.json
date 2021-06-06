@@ -74,97 +74,17 @@
       "skillid": "i1",
       "effects": []
     },
-    "q1": {
-      "riotId": "LeonaShieldOfDaybreak",
-      "name": "Shield of Daybreak",
-      "maxrank": 5,
-      "cooldown": [
-        5
-      ],
-      "cost": [
-        45,
-        50,
-        55,
-        60,
-        65
-      ],
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "LeonaShieldOfDaybreak.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 0,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Leona''' illuminates her shield, causing her next [[basic attack]] within 6 seconds to have a {{fd|0.25}}-second cast time, gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' magic damage}} and {{tip|stun}} the target for 1 second.",
-        "''Shield of Daybreak'' {{tip|basic attack reset|resets}} '''Leona's''' basic attack timer."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Leona</b> illuminates her shield, causing her next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 6 seconds to have a <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>-second cast time, gain <span>50 <b>bonus</b> range</span>, deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and <HtmlTooltip class=\"blue link\">stun<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> the target for 1 second.<br /><i>Shield of Daybreak</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Leona's</b> basic attack timer.",
-      "leveling": [
-        "{{st|Bonus Magic Damage|{{ap|10 to 110}} {{as|(+ 30% AP)}}}}"
-      ],
-      "notes": "* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.\n** ''Shield of Daybreak's'' bonus damage will apply to {{tip|turret|turrets}} only and no other [[structures]].\n* {{Pending for test}}: ''Shield of Daybreak's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.\n* ''Shield of Daybreak's'' attack does not put '''Leona's''' basic attack on cooldown.{{bug|2}}\n** This effectively performs a second {{tip|basic attack reset|attack reset}}.\n** This is unlike other empowered attacks (including those which, similar to ''Shield of Daybreak'', use a more unconventional spell cast rather than an attack override).\n** '''Leona''' will wait out ''Shield of Daybreak's'' wind-down before automatically attacking, anyway. The player must issue the next attack themselves to gain the full benefit of the second reset.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,35,60,85,110]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.3
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Magic Damage",
-                "<SpellSpan :list=\"[10,35,60,85,110]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                10,
-                35,
-                60,
-                85,
-                110
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  10,
-                  35,
-                  60,
-                  85,
-                  110
-                ],
-                "player_total_ap": 0.3
-              }
-            }
-          ]
-        }
-      ]
-    },
     "w1": {
       "riotId": "LeonaSolarBarrier",
       "name": "Eclipse",
       "maxrank": 5,
       "cooldown": [
-        14,
-        13,
-        12,
-        11,
-        10
+        0,
+        12.667,
+        11.333,
+        10,
+        8.667,
+        0
       ],
       "cost": 60,
       "costtype": "Mana",
@@ -190,6 +110,7 @@
       "notes": "* Neither the cast nor detonation of ''Eclipse'' interrupts any of '''Leona's''' previous orders or ongoing attack windups.\n* The resistance scaling will factor from all other sources, excluding ''Eclipse's'' flat bonus. This will recalculate over the duration.\n* {{tip|Spell shield}} will block the damage but ''Eclipse's'' extended duration will not be prevented.",
       "skillkey": "W",
       "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|14 to 10}}|Starts on-cast}}' as '0/12.667/11.333/10/8.667/0' and riot's value '14,13,12,11,10' as '14/13/12/11/10'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Flat Damage Reduction</span>: <span><SpellSpan :list=\"[8,12,16,20,24]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Armor</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"armor\">(+ 20% <b>bonus</b> armor)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Magic Resistance</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"magic-resist\">(+ 20% <b>bonus</b> magic resistance)</span></span></li></ul>",
@@ -332,6 +253,80 @@
         }
       ]
     },
+    "r1": {
+      "riotId": "LeonaSolarFlare",
+      "name": "Solar Flare",
+      "maxrank": 3,
+      "cooldown": [
+        90,
+        75,
+        60
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 1200,
+      "image": {
+        "full": "LeonaSolarFlare.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Leona''' calls down a beam of solar energy which strikes upon the target location after {{fd|0.625}} seconds, granting {{tip|sight}} of the area before impact and for another 3 seconds afterwards. Enemies within the area are dealt {{as|magic damage}} upon impact.",
+        "Enemies struck are {{tip|slow|slowed}} by 80% for {{fd|1.5}} seconds, and are also {{tip|stun|stunned}} for the same duration if they are hit by the epicenter."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Leona</b> calls down a beam of solar energy which strikes upon the target location after <span style=\"font-variant-numeric: tabular-nums;\">0.625</span> seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area before impact and for another 3 seconds afterwards. Enemies within the area are dealt <span class=\"magic-damage\">magic damage</span> upon impact.<br />Enemies struck are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 80% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and are also <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for the same duration if they are hit by the epicenter.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|100|175|250}} {{as|(+ 80% AP)}}}}"
+      ],
+      "notes": "* ''Solar Flare's'' visual effects are only visible to enemies if they have {{tip|sight}} of the area it was cast upon.\n* The cast indicator shows 300 radius for the [[area of effect]] and 120 radius for the epicenter, however the actual hitbox radii are larger than those values.\n* The revealed radius is not obstructed by [[terrain]] or {{tip|brush}}.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,175,250]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.8
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[100,175,250]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                100,
+                175,
+                250
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  100,
+                  175,
+                  250
+                ],
+                "player_total_ap": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "LeonaZenithBlade",
       "name": "Zenith Blade",
@@ -413,74 +408,83 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "LeonaSolarFlare",
-      "name": "Solar Flare",
-      "maxrank": 3,
+    "q1": {
+      "riotId": "LeonaShieldOfDaybreak",
+      "name": "Shield of Daybreak",
+      "maxrank": 5,
       "cooldown": [
-        90,
-        75,
-        60
+        5,
+        0
       ],
-      "cost": 100,
+      "cost": [
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
       "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 1200,
+      "targeting": "Auto",
       "image": {
-        "full": "LeonaSolarFlare.png",
+        "full": "LeonaShieldOfDaybreak.png",
         "sprite": "spell6.png",
         "group": "spell",
-        "x": 144,
+        "x": 0,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Leona''' calls down a beam of solar energy which strikes upon the target location after {{fd|0.625}} seconds, granting {{tip|sight}} of the area before impact and for another 3 seconds afterwards. Enemies within the area are dealt {{as|magic damage}} upon impact.",
-        "Enemies struck are {{tip|slow|slowed}} by 80% for {{fd|1.5}} seconds, and are also {{tip|stun|stunned}} for the same duration if they are hit by the epicenter."
+        "{{sbc|Active:}} '''Leona''' illuminates her shield, causing her next [[basic attack]] within 6 seconds to have a {{fd|0.25}}-second cast time, gain {{sti|range|50 '''bonus''' range}}, deal {{as|'''bonus''' magic damage}} and {{tip|stun}} the target for 1 second.",
+        "''Shield of Daybreak'' {{tip|basic attack reset|resets}} '''Leona's''' basic attack timer."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Leona</b> calls down a beam of solar energy which strikes upon the target location after <span style=\"font-variant-numeric: tabular-nums;\">0.625</span> seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area before impact and for another 3 seconds afterwards. Enemies within the area are dealt <span class=\"magic-damage\">magic damage</span> upon impact.<br />Enemies struck are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 80% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and are also <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> for the same duration if they are hit by the epicenter.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Leona</b> illuminates her shield, causing her next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 6 seconds to have a <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>-second cast time, gain <span>50 <b>bonus</b> range</span>, deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and <HtmlTooltip class=\"blue link\">stun<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> the target for 1 second.<br /><i>Shield of Daybreak</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Leona's</b> basic attack timer.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|100|175|250}} {{as|(+ 80% AP)}}}}"
+        "{{st|Bonus Magic Damage|{{ap|10 to 110}} {{as|(+ 30% AP)}}}}"
       ],
-      "notes": "* ''Solar Flare's'' visual effects are only visible to enemies if they have {{tip|sight}} of the area it was cast upon.\n* The cast indicator shows 300 radius for the [[area of effect]] and 120 radius for the epicenter, however the actual hitbox radii are larger than those values.\n* The revealed radius is not obstructed by [[terrain]] or {{tip|brush}}.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "* The enhanced attack will apply other {{tip|on-hit}} effects and can {{tip|critical strike|critically strike}} as normal.\n** {{tip|critical strike|Critical strikes}} do not interact with ''Shield of Daybreak's'' bonus damage.\n** ''Shield of Daybreak's'' bonus damage will apply to {{tip|turret|turrets}} only and no other [[structures]].\n* {{Pending for test}}: ''Shield of Daybreak's'' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.\n* ''Shield of Daybreak's'' attack does not put '''Leona's''' basic attack on cooldown.{{bug|2}}\n** This effectively performs a second {{tip|basic attack reset|attack reset}}.\n** This is unlike other empowered attacks (including those which, similar to ''Shield of Daybreak'', use a more unconventional spell cast rather than an attack override).\n** '''Leona''' will wait out ''Shield of Daybreak's'' wind-down before automatically attacking, anyway. The player must issue the next attack themselves to gain the full benefit of the second reset.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|5|Starts post-effect}}' as '5/0' and riot's value '5,5,5,5,5' as '5'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[100,175,250]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[10,35,60,85,110]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.8
+                "player_total_ap": 0.3
               }
             ],
             "st_slices": [
               [
-                "Magic Damage",
-                "<SpellSpan :list=\"[100,175,250]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[10,35,60,85,110]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                100,
-                175,
-                250
+                10,
+                35,
+                60,
+                85,
+                110
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Magic Damage",
+              "title": "Bonus Magic Damage",
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  100,
-                  175,
-                  250
+                  10,
+                  35,
+                  60,
+                  85,
+                  110
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 0.3
               }
             }
           ]

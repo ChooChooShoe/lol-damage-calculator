@@ -85,7 +85,8 @@
         16
       ],
       "cost": [
-        20
+        20,
+        0
       ],
       "costtype": "{{as|current health}}",
       "targeting": "Auto",
@@ -110,7 +111,7 @@
       "notes": "* The first tick damages immediately so the final one occurs {{fd|0.5}} seconds before '''Vladimir''' becomes targetable again.\n* The {{tip|slow}} ends immediately once affected enemies get out of range.\n* '''Vladimir''' can still use [[summoner spell|summoner spells]] and [[Active ability items|item actives]] during ''Sanguine Pool''.\n* While unable to attack, '''Vladimir''' can still input attack commands - causing him to follow his attack target. \n** '''Vladimir's''' {{stil|attack range}} is reduced{{ft|to 0|by 450}}while pooled - causing him to attempt to move right up to his attack target.",
       "skillkey": "W",
       "skillid": "w1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|20%|health}} as 20 and riot's value 0,0,0,0,0 as 0",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|20%|health}} as 20/0 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li></ul>",
@@ -173,11 +174,12 @@
       "name": "Tides of Blood",
       "maxrank": 5,
       "cooldown": [
-        13,
-        11,
-        9,
-        7,
-        5
+        0,
+        10.333,
+        7.667,
+        5,
+        2.333,
+        0
       ],
       "cost": [
         2,
@@ -185,7 +187,10 @@
         5,
         6.5,
         8,
-        1
+        0,
+        0,
+        1,
+        0
       ],
       "costtype": "{{as|maximum health}}",
       "targeting": "Auto",
@@ -213,7 +218,8 @@
       "notes": "* The spell indicator shows 11 equally spaced missile indicators when hovering the ability in the HUD, however the spell actually casts 15 equally spaced missiles.\n* The {{as|health}} cost may still drop '''Vladimir''' below the specified amount if he is above it. This is verified for every tick of {{as|health}} cost, i.e if the first tick drops him below it, the next ones will stop affecting him if he remains below it.\n* The following table refers for interactions while '''Vladimir''' is {{tip|channel|channeling}}:\n{{ct|charge|cast={{ai|Sanguine Pool|Vladimir}} is usable. {{ai|Transfusion|Vladimir}} and {{ai|Hemoplague|Vladimir}} both interrupt after {{fd|0.25}} seconds.|items=interrupts,true,interrupts,false,interrupts|spells=true,true,interrupts,interrupts,interrupts}}",
       "skillkey": "E",
       "skillid": "e1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|2 to 8|0 to 0.75 by 0.25|key=%|type=charge time|label1=seconds|color=health}} as 2/3.5/5/6.5/8/1 and riot's value 0,0,0,0,0 as 0",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|2 to 8|0 to 0.75 by 0.25|key=%|type=charge time|label1=seconds|color=health}} as 2/3.5/5/6.5/8/0/0/1/0 and riot's value 0,0,0,0,0 as 0",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|13 to 5}}|Starts on cast}}' as '0/10.333/7.667/5/2.333/0' and riot's value '13,11,9,7,5' as '13/11/9/7/5'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <b>maximum</b> health)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
@@ -309,6 +315,158 @@
                   55,
                   60
                 ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "VladimirQ",
+      "name": "Transfusion",
+      "maxrank": 5,
+      "cooldown": [
+        9,
+        7.9,
+        6.8,
+        5.7,
+        4.6
+      ],
+      "cost": 0,
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 600",
+      "image": {
+        "full": "VladimirQ.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Vladimir''' drains blood from the target enemy, dealing them {{as|magic damage}} and {{tip|heal|healing}} himself.",
+        "Each cast of ''Transfusion'' generates a stack of {{tip|Fury|Bloodthirst}} over its {{sti|cooldown}}, which is displayed in his secondary resource bar. At 2 stacks, '''Vladimir''' gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}} for {{fd|0.5}} seconds, and ''Crimson Rush'' while the {{tip|Fury|Bloodthirst}} depletes over {{fd|2.5}} seconds. The {{tip|Fury|Bloodthirst}} depletes 75% slower during {{ai|Tides of Blood|Vladimir}}, {{ai|Sanguine Pool|Vladimir}} or {{tip|stasis (buff)|stasis}}.",
+        "{{sbc|Crimson Rush:}} The next cast of ''Transfusion'' deals {{ccs|85% increased damage|magic}} and heals for an '''additional''' {{pp|30 to 200}} {{as|(+ 5% {{as|(+ 4% per 100 AP)}} '''missing''' health)}}, reduced to 35% against {{tip|minions}}, consuming all {{tip|Fury|Bloodthirst}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> drains blood from the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> himself.<br />Each cast of <i>Transfusion</i> generates a stack of <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> over its <span>cooldown</span>, which is displayed in his secondary resource bar. At 2 stacks, <b>Vladimir</b> gains <span><span class=\"movement-speed\">10% <b>bonus</b> movement speed</span></span> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, and <i>Crimson Rush</i> while the <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. The <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes 75% slower during <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Vladimir\">Tides of Blood<template #content>Tides of Blood</template></HtmlTooltip>, <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Vladimir\">Sanguine Pool<template #content>Sanguine Pool</template></HtmlTooltip> or <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>stasis (buff)<hr></h4><p>Description for keyword stasis (buff)</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Crimson Rush:</span> The next cast of <i>Transfusion</i> deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs 85% increased damage magic\">Unknown value: ccs 85% increased damage magic</simple-tooltip> and heals for an <b>additional</b> <HtmlTooltip class=\"blue link\">30undefined − 200undefined (based on level)<template #content>Values: 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"health\">(+ 5% <span class=\"ap\">(+ 4% per 100 AP)</span> <b>missing</b> health)</span>, reduced to 35% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>, consuming all <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 160}} {{as|(+ 60% AP)}}}}\n{{st|Heal|{{ap|20 to 40}} {{as|(+ 35% AP)}}}}",
+        "{{st|Empowered Damage|{{ap|80*1.85 to 160*1.85}} {{as|(+ 111% AP)}}}}"
+      ],
+      "notes": "* Even thought the healing effect is visualized as a projectile, the healing itself triggers instantly.\n* ''Vladimir's'' resource bar changes colors depending on ''Bloodthirst's'' charge-up.\n*# <span style=\"color:white\">White</span> while generating the first stack and while at 1 stack (there is no time-out period).\n*# <span style=\"color:orange\">Orange</span> while generating the second stack.\n*# <span style=\"color:red\">Red</span> while ''Crimson Rush'' is active (''Bloodthirst'' will deplete over {{fd|2.5}} seconds once triggered).\n** Each stack generates over-time (''Transfusion's'' cooldown).\n* '''Vladimir''' can cast {{ai|Hemoplague|Vladimir}} during ''Transfusion's'' cast time.\n* The {{tip|Fury|Bloodthirst}} depletes normally while under {{tip|resurrection}} effects.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              },
+              {
+                "player_total_ap": 0.35000000000000003
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              [
+                "Heal",
+                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                100,
+                120,
+                140,
+                160
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  100,
+                  120,
+                  140,
+                  160
+                ],
+                "player_total_ap": 0.6
+              }
+            },
+            {
+              "index": 1,
+              "title": "Heal",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[148,185,222,259,296]\"></SpellSpan> <span class=\"ap\">(+ 111% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1.11
+              }
+            ],
+            "st_slices": [
+              [
+                "Empowered Damage",
+                "<SpellSpan :list=\"[148,185,222,259,296]\"></SpellSpan> <span class=\"ap\">(+ 111% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                148,
+                185,
+                222,
+                259,
+                296
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Empowered Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  148,
+                  185,
+                  222,
+                  259,
+                  296
+                ],
+                "player_total_ap": 1.11
               }
             }
           ]

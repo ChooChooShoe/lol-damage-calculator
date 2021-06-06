@@ -49,127 +49,89 @@
     "attackspeed": 0.694
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Berserker Rage",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Olaf_Passive.png",
-        "sprite": "passive2.png",
-        "group": "passive",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} '''Olaf''' gains {{as|{{as|{{pp|type='''missing''' health|key=%|0 to 75 for 11|key1=%|0 to 100|formula=0.75% per 1% missing health}}|health}} {{sti|'''bonus''' attack speed}}|attack speed}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Olaf</b> gains <span class=\"attack-speed\"><span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span> <span><b>bonus</b> attack speed</span></span>.",
-      "leveling": [],
-      "notes": "* No additional details.",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "OlafAxeThrowCast",
-      "name": "Undertow",
+    "e1": {
+      "riotId": "OlafRecklessStrike",
+      "name": "Reckless Swing",
       "maxrank": 5,
       "cooldown": [
+        11,
+        10,
+        9,
+        8,
         7
       ],
-      "cost": 60,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": "{{tip|cr|icononly = true}} {{tt|310|Minimum missile range, estimated}} / {{tt|1000|Maximum missile range}}",
+      "cost": [
+        0,
+        39,
+        57,
+        75,
+        93,
+        15,
+        0
+      ],
+      "costtype": "{{as|Health}}",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 325",
       "image": {
-        "full": "OlafAxeThrowCast.png",
+        "full": "OlafRecklessStrike.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 192,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Olaf''' throws an axe to the target location, dealing {{as|physical damage}} to all enemies it passes through and {{tip|slow|slowing}} them for {{pp|type=distance traveled|1.5 to 2.5 for 9|400 to 1000|formula=1.5+(0.125 per 75 units traveled)}} seconds.",
-        "'''Olaf''' grants {{tip|ghost|ghosting}} to {{tip|monster|monsters}} hit for 6 seconds.",
-        "The axe impacts at the target location, briefly grants {{tip|sight}} of its immediate surroundings and remains there for a duration equal to the {{sti|cooldown}}. '''Olaf''' reduces the cooldown of ''Undertow'' by {{fd|4.5}} seconds upon retrieving the axe by walking within pickup distance of it."
+        "{{sbc|Active:}} '''Olaf''' strikes thunder onto the target enemy, dealing them {{sti|{{as|true damage}}}}.",
+        "''Reckless Swing'' {{tip|heals}} '''Olaf''' for {{as|{{sti|health|its health cost}}}} if it kills its target and its {{sti|cooldown}} is reduced by 1 second every time '''Olaf''' lands a [[basic attack]]."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Olaf</b> throws an axe to the target location, dealing <span class=\"physical-damage\">physical damage</span> to all enemies it passes through and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for <span class=\"title-tooltip\" title=\"\">400 to 1000 ‒ undefined</span> seconds.<br /><b>Olaf</b> grants <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghost<hr></h4><p>Description for keyword ghost</p></div></template></HtmlTooltip> to <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> hit for 6 seconds.<br />The axe impacts at the target location, briefly grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of its immediate surroundings and remains there for a duration equal to the <span>cooldown</span>. <b>Olaf</b> reduces the cooldown of <i>Undertow</i> by <span style=\"font-variant-numeric: tabular-nums;\">4.5</span> seconds upon retrieving the axe by walking within pickup distance of it.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Olaf</b> strikes thunder onto the target enemy, dealing them <span><span class=\"true-damage\">true damage</span></span>.<br /><i>Reckless Swing</i> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> <b>Olaf</b> for <span class=\"health\"><span>its health cost</span></span> if it kills its target and its <span>cooldown</span> is reduced by 1 second every time <b>Olaf</b> lands a <a class=\"effect link\" title=\"basic attack\">basic attack</a>.",
       "leveling": [
-        "{{st|Physical Damage|{{ap|80 to 260}} {{as|(+ 100% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}"
+        "{{st|True Damage|{{ap|70 to 250}} {{as|(+ 50% AD)}}}}"
       ],
-      "notes": "* ''Undertow'' may hit additional targets upon landing, but not targets already struck in-flight.\n** The axe will land approximately 50 units further than ''Undertow's'' target range if cast below maximum range.\n* The axe is stopped prematurely upon encountering {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}, remaining on the ground upon collision.\n* The timer for how long an axe stays on the ground does not begin until it has landed, thus it is possible to throw another axe before retrieving the first.\n* '''Olaf''' cannot pick up an enemy '''Olaf's''' axe on the ground.\n* ''Undertow'' will fire from wherever '''Olaf''' was at the start of the cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "* The health cost is equal to 30% of the '''total''' damage dealt by the ability.\n* ''Reckless Swing'' can be cast even if '''Olaf''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Reckless Swing'' will not reduce '''Olaf's''' health below {{as|1|hp}}.\n* ''Reckless Swing's'' health refund is considered {{tip|heal|healing}} therefore it is affected by {{ai|Vicious Strikes|Olaf}} and {{ii|Spirit Visage}}.\n* If the target becomes {{tip|untargetable}}, dies, or '''Olaf''' loses {{tip|sight}} of them during the cast time, ''Reckless Swing'' cancels and its {{sti|cooldown}} and {{sti|{{as|health cost}}}} are not consumed.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|21 to 75}} {{as|(+ 15% AD)}}|health}} as 0/39/57/75/93/15/0 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_bonus_ad": 1
+                "player_total_ad": 0.5
               }
             ],
             "st_slices": [
               [
-                "Physical Damage",
-                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
-              ],
-              [
-                "Slow",
-                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
+                "True Damage",
+                "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                80,
-                125,
-                170,
-                215,
-                260
-              ],
-              [
-                25,
-                30,
-                35,
-                40,
-                45
+                70,
+                115,
+                160,
+                205,
+                250
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Physical Damage",
-              "damage_type": "physical",
+              "title": "True Damage",
+              "damage_type": "true",
               "ratios": {
                 "base_damage": [
-                  80,
-                  125,
-                  170,
-                  215,
-                  260
+                  70,
+                  115,
+                  160,
+                  205,
+                  250
                 ],
-                "player_bonus_ad": 1
-              }
-            },
-            {
-              "index": 1,
-              "title": "Slow",
-              "damage_type": "physical",
-              "ratios": {
-                "base_damage": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
-                ],
-                "player_bonus_ad": 1
+                "player_total_ad": 0.5
               }
             }
           ]
@@ -261,88 +223,129 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "OlafRecklessStrike",
-      "name": "Reckless Swing",
+    "i1": {
+      "riotId": "",
+      "name": "Berserker Rage",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Olaf_Passive.png",
+        "sprite": "passive2.png",
+        "group": "passive",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Olaf''' gains {{as|{{as|{{pp|type='''missing''' health|key=%|0 to 75 for 11|key1=%|0 to 100|formula=0.75% per 1% missing health}}|health}} {{sti|'''bonus''' attack speed}}|attack speed}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Olaf</b> gains <span class=\"attack-speed\"><span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span> <span><b>bonus</b> attack speed</span></span>.",
+      "leveling": [],
+      "notes": "* No additional details.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "OlafAxeThrowCast",
+      "name": "Undertow",
       "maxrank": 5,
       "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
+        7,
+        0
       ],
-      "cost": [
-        21,
-        34.5,
-        48,
-        61.5,
-        75,
-        15
-      ],
-      "costtype": "{{as|Health}}",
-      "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 325",
+      "cost": 60,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|310|Minimum missile range, estimated}} / {{tt|1000|Maximum missile range}}",
       "image": {
-        "full": "OlafRecklessStrike.png",
+        "full": "OlafAxeThrowCast.png",
         "sprite": "spell8.png",
         "group": "spell",
-        "x": 288,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Olaf''' strikes thunder onto the target enemy, dealing them {{sti|{{as|true damage}}}}.",
-        "''Reckless Swing'' {{tip|heals}} '''Olaf''' for {{as|{{sti|health|its health cost}}}} if it kills its target and its {{sti|cooldown}} is reduced by 1 second every time '''Olaf''' lands a [[basic attack]]."
+        "{{sbc|Active:}} '''Olaf''' throws an axe to the target location, dealing {{as|physical damage}} to all enemies it passes through and {{tip|slow|slowing}} them for {{pp|type=distance traveled|1.5 to 2.5 for 9|400 to 1000|formula=1.5+(0.125 per 75 units traveled)}} seconds.",
+        "'''Olaf''' grants {{tip|ghost|ghosting}} to {{tip|monster|monsters}} hit for 6 seconds.",
+        "The axe impacts at the target location, briefly grants {{tip|sight}} of its immediate surroundings and remains there for a duration equal to the {{sti|cooldown}}. '''Olaf''' reduces the cooldown of ''Undertow'' by {{fd|4.5}} seconds upon retrieving the axe by walking within pickup distance of it."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Olaf</b> strikes thunder onto the target enemy, dealing them <span><span class=\"true-damage\">true damage</span></span>.<br /><i>Reckless Swing</i> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> <b>Olaf</b> for <span class=\"health\"><span>its health cost</span></span> if it kills its target and its <span>cooldown</span> is reduced by 1 second every time <b>Olaf</b> lands a <a class=\"effect link\" title=\"basic attack\">basic attack</a>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Olaf</b> throws an axe to the target location, dealing <span class=\"physical-damage\">physical damage</span> to all enemies it passes through and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for <span class=\"title-tooltip\" title=\"\">400 to 1000 ‒ undefined</span> seconds.<br /><b>Olaf</b> grants <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghost<hr></h4><p>Description for keyword ghost</p></div></template></HtmlTooltip> to <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> hit for 6 seconds.<br />The axe impacts at the target location, briefly grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of its immediate surroundings and remains there for a duration equal to the <span>cooldown</span>. <b>Olaf</b> reduces the cooldown of <i>Undertow</i> by <span style=\"font-variant-numeric: tabular-nums;\">4.5</span> seconds upon retrieving the axe by walking within pickup distance of it.",
       "leveling": [
-        "{{st|True Damage|{{ap|70 to 250}} {{as|(+ 50% AD)}}}}"
+        "{{st|Physical Damage|{{ap|80 to 260}} {{as|(+ 100% '''bonus''' AD)}}}}\n{{st|Slow|{{ap|25 to 45}}%}}"
       ],
-      "notes": "* The health cost is equal to 30% of the '''total''' damage dealt by the ability.\n* ''Reckless Swing'' can be cast even if '''Olaf''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Reckless Swing'' will not reduce '''Olaf's''' health below {{as|1|hp}}.\n* ''Reckless Swing's'' health refund is considered {{tip|heal|healing}} therefore it is affected by {{ai|Vicious Strikes|Olaf}} and {{ii|Spirit Visage}}.\n* If the target becomes {{tip|untargetable}}, dies, or '''Olaf''' loses {{tip|sight}} of them during the cast time, ''Reckless Swing'' cancels and its {{sti|cooldown}} and {{sti|{{as|health cost}}}} are not consumed.",
-      "skillkey": "E",
-      "skillid": "e1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|21 to 75}} {{as|(+ 15% AD)}}|health}} as 21/34.5/48/61.5/75/15 and riot's value 0,0,0,0,0 as 0",
+      "notes": "* ''Undertow'' may hit additional targets upon landing, but not targets already struck in-flight.\n** The axe will land approximately 50 units further than ''Undertow's'' target range if cast below maximum range.\n* The axe is stopped prematurely upon encountering {{ai|Wind Wall|Yasuo}} or {{ai|Unbreakable|Braum}}, remaining on the ground upon collision.\n* The timer for how long an axe stays on the ground does not begin until it has landed, thus it is possible to throw another axe before retrieving the first.\n* '''Olaf''' cannot pick up an enemy '''Olaf's''' axe on the ground.\n* ''Undertow'' will fire from wherever '''Olaf''' was at the start of the cast time.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|7|Starts on cast}}' as '7/0' and riot's value '7,7,7,7,7' as '7'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ad\">(+ 100% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ad": 0.5
+                "player_bonus_ad": 1
               }
             ],
             "st_slices": [
               [
-                "True Damage",
-                "<SpellSpan :list=\"[70,115,160,205,250]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span>"
+                "Physical Damage",
+                "<SpellSpan :list=\"[80,125,170,215,260]\"></SpellSpan> <span class=\"ad\">(+ 100% '''bonus''' AD)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>%"
               ]
             ],
             "ap_progressions": [
               [
-                70,
-                115,
-                160,
-                205,
-                250
+                80,
+                125,
+                170,
+                215,
+                260
+              ],
+              [
+                25,
+                30,
+                35,
+                40,
+                45
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "True Damage",
-              "damage_type": "true",
+              "title": "Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
-                  70,
-                  115,
-                  160,
-                  205,
-                  250
+                  80,
+                  125,
+                  170,
+                  215,
+                  260
                 ],
-                "player_total_ad": 0.5
+                "player_bonus_ad": 1
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ],
+                "player_bonus_ad": 1
               }
             }
           ]
@@ -354,9 +357,11 @@
       "name": "Ragnarok",
       "maxrank": 3,
       "cooldown": [
+        0,
         100,
         90,
-        80
+        80,
+        0
       ],
       "cost": 0,
       "costtype": "",
@@ -382,6 +387,7 @@
       "notes": "* ''Ragnarok'' removes the underlying {{tip|stun}} from {{tip|airborne}} effects, but not the forced displacement, which requires him to use a {{tip|blink}} or {{tip|dash}} ability to override it.\n* ''Ragnarok'' does not bypass self or ally applied effects, unless otherwise stated. Some examples include {{ii|Zhonya's Hourglass}}, {{ii|Guardian Angel}}, and {{ai|Fate's Call|Kalista}}.\n** He prevents both ally and enemy {{ci|Bard}} from putting him in {{tip|stasis}} with {{ai|Tempered Fate|Bard}}.\n** The ability will remain for its full duration regardless.\n** He cannot be knocked {{tip|airborne}} by the {{ui|Blast Cone}} regardless of ally or enemy.\n* ''Ragnarok'' does not negate any {{tip|debuff|debuffs}} other than {{tip|crowd control}} from being applied unless absolutely necessary.\n* The {{as|'''bonus''' attack damage}} updates dynamically over the duration; Increases or reductions in {{as|attack damage}} after the effect has been applied will still be amplified.\n* The {{as|30% attack damage}} scaling amplifies the flat {{as|attack damage '''bonus'''}} aswell.",
       "skillkey": "R",
       "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|100|90|80}}|Starts on cast}}' as '0/100/90/80/0' and riot's value '100,90,80' as '100/90/80'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Resistances</span>: <span><SpellSpan :list=\"[20,30,40]\"></SpellSpan></span></li></ul>",

@@ -147,6 +147,110 @@
         }
       ]
     },
+    "q1": {
+      "riotId": "TwitchHideInShadows",
+      "name": "Ambush",
+      "maxrank": 5,
+      "cooldown": [
+        16,
+        0
+      ],
+      "cost": 40,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "TwitchHideInShadows.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} After a 1 second delay, '''Twitch''' becomes {{tip|camouflage|camouflaged}} for a duration. Attacking or casting {{ai|Venom Cask|Twitch}} or {{ai|Contaminate|Twitch}} breaks the stealth immediately.",
+        "While stealthed, '''Twitch''' gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}}, increased to {{as|30%|ms}} when he moves toward enemy {{tip|champions}} within a 1000-range radius who cannot see him.",
+        "Upon breaking stealth '''Twitch''' gains {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds.",
+        "''Ambush's'' {{sti|cooldown}} is reset if an enemy champion dies while afflicted with {{ai|Deadly Venom|Twitch}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> After a 1 second delay, <b>Twitch</b> becomes <HtmlTooltip class=\"blue link\">camouflaged<template #content><div><h4>camouflage<hr></h4><p>Description for keyword camouflage</p></div></template></HtmlTooltip> for a duration. Attacking or casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Twitch\">Venom Cask<template #content>Venom Cask</template></HtmlTooltip> or <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Twitch\">Contaminate<template #content>Contaminate</template></HtmlTooltip> breaks the stealth immediately.<br />While stealthed, <b>Twitch</b> gains <span><span class=\"movement-speed\">10% <b>bonus</b> movement speed</span></span>, increased to <span class=\"ms\">30%</span> when he moves toward enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> within a 1000-range radius who cannot see him.<br />Upon breaking stealth <b>Twitch</b> gains <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 5 seconds.<br /><i>Ambush's</i> <span>cooldown</span> is reset if an enemy champion dies while afflicted with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Twitch\">Deadly Venom<template #content>Deadly Venom</template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Stealth Duration|{{ap|10 to 14}}}}",
+        "{{st|Bonus Attack Speed|{{ap|40 to 60}}%}}"
+      ],
+      "notes": "* Entering stealth cancels '''Twitch's''' current basic attack.\n* ''Ambush'' follows the same rules as stealth but he can still perform actions normally before entering {{tip|camouflage}}. Activating {{si|Recall}} during the 1-second delay allows him to {{tip|channel}} it while stealthed.\n* If '''Twitch''' enters {{tip|stasis}} during the delay, he will gain the {{tip|camouflage}} after the stasis ends.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|16|Starts post-effect}}' as '16/0' and riot's value '16,16,16,16,16' as '16'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Stealth Duration</span>: <span><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Stealth Duration",
+                "<SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                11,
+                12,
+                13,
+                14
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Stealth Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  11,
+                  12,
+                  13,
+                  14
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[40,45,50,55,60]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                45,
+                50,
+                55,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
     "e1": {
       "riotId": "TwitchExpunge",
       "name": "Contaminate",
@@ -312,7 +416,8 @@
       "name": "Spray and Pray",
       "maxrank": 3,
       "cooldown": [
-        90
+        90,
+        0
       ],
       "cost": 100,
       "costtype": "Mana",
@@ -338,6 +443,7 @@
       "notes": "* ''Spray and Pray'' allows '''Twitch''' to outrange {{tip|turret|turrets}} by 50 units, allowing him to hit them without them returning fire.\n* There is a brief delay before the ''bolts'' reach targets at range due to finite missile speed, allowing even the primary target to physically dodge the attack.\n* The ''bolt'' projectiles will naturally pass through terrain and enemy structures (the latter will be damaged by ''bolts'' even if they are not directly targeted).\n* If '''Twitch''' is {{tip|blind|blinded}} before winding up the attack, the hits will ''miss'' against '''all''' targets.\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} interacts with ''Spray and Pray's'' {{sti|'''bonus''' attack range}} but not with the modified missile effect (the secondary bolts will not have pass-through effects).\n* Whenever the ''bolts'' penetrate a target, a small elongated cloud appears at the location, which's VFX and SFX '''can''' be seen and heard inside the Fog of War.\n* The ''bolts<nowiki>'</nowiki>'' travel distance scales with the fully value of '''Twitch's''' {{sti|range|attack range}} increases such as {{ii|Rapid Firecannon}}, but not with size increases (which only increase his effective attack range, thereby the target range).\n* (Outdated as of [[V10.13]], now can hit everything with edge range, except for turrets) The {{tip|cr|icononly = true}} center of a unit must be within the maximum travel distance of the ''bolt'' missile, and in front of the spawn location ('''Twitch's''' {{tip|cr|icononly = true}} center) for the ''bolt'' to be able to hit them.\n** Other than this condition, the ''bolt'' missile has to only touch (pass within its half width of 60 units) the {{tip|er|icononly = true}} edge of the unit's radius.\n** This is standard behaviour for ''linear skillshots''.",
       "skillkey": "R",
       "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|90|Starts on cast}}' as '90/0' and riot's value '90,90,90' as '90'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[30,45,60]\"></SpellSpan></span></span></li></ul>",

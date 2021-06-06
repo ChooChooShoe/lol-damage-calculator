@@ -49,191 +49,160 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Rebirth",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "Anivia_P.png",
-        "sprite": "passive0.png",
-        "group": "passive",
-        "x": 240,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} Periodically, upon taking {{tip|death|fatal damage}}, '''Anivia''' enters {{tip|resurrection}} for 6 seconds and restores all of her {{sti|{{as|health}}}}.",
-        "While in resurrection, '''Anivia''' is {{tip|lockout|unable to act}} and gains {{pp|-40 to 20 for 5|1;5;8;12;15|changedisplay=true}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}.",
-        "If '''Anivia''' remains alive by the end of the duration, she is revived with her {{as|'''current''' health}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Periodically, upon taking <HtmlTooltip class=\"blue link\">fatal damage<template #content><div><h4>death<hr></h4><p>Description for keyword death</p></div></template></HtmlTooltip>, <b>Anivia</b> enters <HtmlTooltip class=\"blue link\">resurrection<template #content><div><h4>resurrection<hr></h4><p>Description for keyword resurrection</p></div></template></HtmlTooltip> for 6 seconds and restores all of her <span><span class=\"health\">health</span></span>.<br />While in resurrection, <b>Anivia</b> is <HtmlTooltip class=\"blue link\">unable to act<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> and gains <span class=\"title-tooltip\" title=\"\">1;5;8;12;15 ‒ undefined</span> <span><span class=\"armor\"><b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\"><b>bonus</b> magic resistance</span></span>.<br />If <b>Anivia</b> remains alive by the end of the duration, she is revived with her <span class=\"health\"><b>current</b> health</span>.",
-      "leveling": [],
-      "notes": "* Triggering ''Rebirth'' will break {{tip|tether|tethers}} on '''Anivia'''.\n* {{ai|Chronoshift|Zilean}} and {{ii|Guardian Angel}} will take priority over ''Rebirth''.\n* If ''Rebirth'' triggers while '''Anivia''' is channeling {{si|Teleport}}, her channel won't be interrupted.\n** All other {{tip|channel|channels}} will be interrupted upon triggering ''Rebirth''.\n* The following refers for interactions while '''Anivia''' is resurrecting:\n{{ct|move=false|cast=false|attack=false|items=false|consume=false|spells=false|interrupts=death}}",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
-    "q1": {
-      "riotId": "FlashFrost",
-      "name": "Flash Frost",
-      "maxrank": 5,
+    "r1": {
+      "riotId": "GlacialStorm",
+      "name": "Glacial Storm",
+      "maxrank": 3,
       "cooldown": [
-        11,
-        10,
-        9,
-        8,
-        7
+        0,
+        2,
+        0,
+        0
       ],
-      "cost": [
-        80,
-        85,
-        90,
-        95,
-        100
-      ],
-      "costtype": "mana",
-      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "cost": 60,
+      "costtype": "mana{{plus}}{{ap|35 to 55 3}} per second",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
+      "target_range": 750,
       "image": {
-        "full": "FlashFrost.png",
+        "full": "GlacialStorm.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 192,
+        "x": 336,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Anivia''' launches a chunk of ice in the target direction that deals {{as|magic damage}} to enemies hit and {{tip|slow|slows}} them by {{pp|changedisplay=true|key=%|20;20 to 40 for 3|0 to 3|type = [[File:Glacial Storm.png|20px|border|link=]] Glacial Storm's Rank|formula = 20%+(10%*(''Glacial Storm'' Rank-1))}} for 3 seconds.",
-        "''Flash Frost'' can be recast after while the ice is in flight, and does so automatically at maximum range.",
-        "{{sbc|Recast:}} The ice shatters, dealing {{as|magic damage}} and {{tip|stun|stunning}} nearby enemies for a duration, as well as refreshing the {{tip|slow}}."
+        "{{sbc|Active:}} '''Anivia''' calls forth a driving rain of ice and hail at the target location, dealing {{as|magic damage}} every {{fd|0.5}} seconds to enemies within and {{tip|slow|slowing}} them for 1 second, refreshing every {{fd|0.5}} seconds while inside. ''Glacial Storm'' can be recast after 1 second, and does so automatically if '''Anivia''' goes too far away from the storm, becomes unable to pay the {{sti|{{as|mana}}}} cost, or is affected by any form of {{tip|interrupt|interrupting}} {{tip|crowd control}}.",
+        "The blizzard increases in size over {{fd|1.5}} seconds. At maximum size, ''Glacial Storm's'' damage is increased by 200% and the effectiveness of its slow is increased by 50%, which also instead lasts {{fd|1.5}} seconds and refreshes every {{fd|0.25}} seconds while inside.",
+        "{{sbc|Recast:}} '''Anivia''' deactivates ''Glacial Storm'', dealing one last tick of [[damage]]."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Anivia</b> launches a chunk of ice in the target direction that deals <span class=\"magic-damage\">magic damage</span> to enemies hit and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> for 3 seconds.<br /><i>Flash Frost</i> can be recast after while the ice is in flight, and does so automatically at maximum range.<br /><span class=\"sbc\">Recast:</span> The ice shatters, dealing <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> nearby enemies for a duration, as well as refreshing the <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Anivia</b> calls forth a driving rain of ice and hail at the target location, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds to enemies within and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 1 second, refreshing every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds while inside. <i>Glacial Storm</i> can be recast after 1 second, and does so automatically if <b>Anivia</b> goes too far away from the storm, becomes unable to pay the <span><span class=\"mana\">mana</span></span> cost, or is affected by any form of <HtmlTooltip class=\"blue link\">interrupting<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip>.<br />The blizzard increases in size over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds. At maximum size, <i>Glacial Storm's</i> damage is increased by 200% and the effectiveness of its slow is increased by 50%, which also instead lasts <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds and refreshes every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds while inside.<br /><span class=\"sbc\">Recast:</span> <b>Anivia</b> deactivates <i>Glacial Storm</i>, dealing one last tick of <a class=\"effect link\" title=\"damage\">damage</a>.",
       "leveling": [
-        "{{st|Pass through damage|{{ap|50 to 130}} {{as|(+ 25% AP)}}}}\n{{st|Explosion Damage|{{ap|60 to 200}} {{as|(+ 45% AP)}}|Total Damage|{{ap|50+60 to 130+200}} {{as|(+ 70% AP)}}}}",
-        "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}"
+        "{{st|Magic damage per tick|{{ap|30 to 60}} {{as|(+ {{fd|12.5}}% AP)}}}}\n{{st|Slow|{{ap|20 to 40}}%}}",
+        "{{st|Empowered damage per tick|{{ap|30*3 to 60*3}} {{as|(+ {{fd|37.5}}% AP)}}}}\n{{st|Empowered Slow|{{ap|20*1.5 to 40*1.5}}%}}"
       ],
-      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n** If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Flash Frost'' can only proc {{ri|Conqueror}} once even if it damages the same target twice.\n* ''Flash Frost'' will fire from wherever '''Anivia''' was at the start of the cast time.\n* {{tip|Spell shield}} can only prevent either the collision hit or recast from affecting the target.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Glacial Storm's'' slow leaves a trail that is visible even if the target is [[stealth]]ed.\n* ''Glacial Storm'' deals 3 half ticks at {{ap|200|267|333}} radius for a total of {{fd|1.5}} normal damage ticks before it starts dealing empowered damage at 400 radius.\n* {{tip|Stasis (buff)|Stasis}} via {{ii|Stopwatch}} / {{ii|Zhonya's Hourglass}} doesn't interrupt ''Glacial Storm''.\n** {{cai|Devour|Tahm Kench}} '''does''' interrupt (allied and enemy) ''Glacial Storm''.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|4 to 2}}|Starts after storm disappears}}' as '0/2/0/0' and riot's value '4,3,2' as '4/3/2'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Pass through damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Explosion Damage</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[110,165,220,275,330]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage per tick</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.25
-              },
-              {
-                "player_total_ap": 0.45
-              },
-              {
-                "player_total_ap": 0.7000000000000001
+                "player_total_ap": 0.125
               }
             ],
             "st_slices": [
               [
-                "Pass through damage",
-                "<SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+                "Slow",
+                "<SpellSpan :list=\"[20,30,40]\"></SpellSpan>%"
               ],
               [
-                "Explosion Damage",
-                "<SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
-                "Total Damage",
-                "<SpellSpan :list=\"[110,165,220,275,330]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+                "Magic damage per tick",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                50,
-                70,
-                90,
-                110,
-                130
+                30,
+                45,
+                60
               ],
               [
-                60,
-                95,
-                130,
-                165,
-                200
-              ],
-              [
-                110,
-                165,
-                220,
-                275,
-                330
+                20,
+                30,
+                40
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Pass through damage",
-              "damage_type": "unknown",
+              "title": "Slow",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  50,
-                  70,
-                  90,
-                  110,
-                  130
+                  30,
+                  45,
+                  60
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 0.125
               }
             },
             {
               "index": 1,
-              "title": "Explosion Damage",
-              "damage_type": "unknown",
+              "title": "Magic damage per tick",
+              "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  60,
-                  95,
-                  130,
-                  165,
-                  200
+                  20,
+                  30,
+                  40
                 ],
-                "player_total_ap": 0.45
+                "player_total_ap": 0.125
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered damage per tick</span>: <span><SpellSpan :list=\"[90,135,180]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Empowered Slow</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
           "vars": {
-            "as_ratios": [],
+            "as_ratios": [
+              {
+                "player_total_ap": 0.375
+              }
+            ],
             "st_slices": [
               [
-                "Stun Duration",
-                "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan>"
+                "Empowered Slow",
+                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
+              ],
+              [
+                "Empowered damage per tick",
+                "<SpellSpan :list=\"[90,135,180]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                1.1,
-                1.2,
-                1.3,
-                1.4,
-                1.5
+                90,
+                135,
+                180
+              ],
+              [
+                30,
+                45,
+                60
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Stun Duration",
+              "title": "Empowered Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  90,
+                  135,
+                  180
+                ],
+                "player_total_ap": 0.375
+              }
+            },
+            {
+              "index": 1,
+              "title": "Empowered damage per tick",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  1.1,
-                  1.2,
-                  1.3,
-                  1.4,
-                  1.5
-                ]
+                  30,
+                  45,
+                  60
+                ],
+                "player_total_ap": 0.375
               }
             }
           ]
@@ -452,158 +421,193 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "GlacialStorm",
-      "name": "Glacial Storm",
-      "maxrank": 3,
-      "cooldown": [
-        4,
-        3,
-        2
-      ],
-      "cost": 60,
-      "costtype": "mana{{plus}}{{ap|35 to 55 3}} per second",
-      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
-      "target_range": 750,
+    "i1": {
+      "riotId": "",
+      "name": "Rebirth",
+      "maxrank": 0,
+      "targeting": "Passive",
       "image": {
-        "full": "GlacialStorm.png",
+        "full": "Anivia_P.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 240,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} Periodically, upon taking {{tip|death|fatal damage}}, '''Anivia''' enters {{tip|resurrection}} for 6 seconds and restores all of her {{sti|{{as|health}}}}.",
+        "While in resurrection, '''Anivia''' is {{tip|lockout|unable to act}} and gains {{pp|-40 to 20 for 5|1;5;8;12;15|changedisplay=true}} {{sti|armor|{{as|'''bonus''' armor}}}} and {{sti|mr|{{as|'''bonus''' magic resistance}}}}.",
+        "If '''Anivia''' remains alive by the end of the duration, she is revived with her {{as|'''current''' health}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Periodically, upon taking <HtmlTooltip class=\"blue link\">fatal damage<template #content><div><h4>death<hr></h4><p>Description for keyword death</p></div></template></HtmlTooltip>, <b>Anivia</b> enters <HtmlTooltip class=\"blue link\">resurrection<template #content><div><h4>resurrection<hr></h4><p>Description for keyword resurrection</p></div></template></HtmlTooltip> for 6 seconds and restores all of her <span><span class=\"health\">health</span></span>.<br />While in resurrection, <b>Anivia</b> is <HtmlTooltip class=\"blue link\">unable to act<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> and gains <span class=\"title-tooltip\" title=\"\">1;5;8;12;15 ‒ undefined</span> <span><span class=\"armor\"><b>bonus</b> armor</span></span> and <span><span class=\"magic-resist\"><b>bonus</b> magic resistance</span></span>.<br />If <b>Anivia</b> remains alive by the end of the duration, she is revived with her <span class=\"health\"><b>current</b> health</span>.",
+      "leveling": [],
+      "notes": "* Triggering ''Rebirth'' will break {{tip|tether|tethers}} on '''Anivia'''.\n* {{ai|Chronoshift|Zilean}} and {{ii|Guardian Angel}} will take priority over ''Rebirth''.\n* If ''Rebirth'' triggers while '''Anivia''' is channeling {{si|Teleport}}, her channel won't be interrupted.\n** All other {{tip|channel|channels}} will be interrupted upon triggering ''Rebirth''.\n* The following refers for interactions while '''Anivia''' is resurrecting:\n{{ct|move=false|cast=false|attack=false|items=false|consume=false|spells=false|interrupts=death}}",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "FlashFrost",
+      "name": "Flash Frost",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        9.667,
+        8.333,
+        7,
+        5.667,
+        0
+      ],
+      "cost": [
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "costtype": "mana",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "image": {
+        "full": "FlashFrost.png",
         "sprite": "spell0.png",
         "group": "spell",
-        "x": 336,
+        "x": 192,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Anivia''' calls forth a driving rain of ice and hail at the target location, dealing {{as|magic damage}} every {{fd|0.5}} seconds to enemies within and {{tip|slow|slowing}} them for 1 second, refreshing every {{fd|0.5}} seconds while inside. ''Glacial Storm'' can be recast after 1 second, and does so automatically if '''Anivia''' goes too far away from the storm, becomes unable to pay the {{sti|{{as|mana}}}} cost, or is affected by any form of {{tip|interrupt|interrupting}} {{tip|crowd control}}.",
-        "The blizzard increases in size over {{fd|1.5}} seconds. At maximum size, ''Glacial Storm's'' damage is increased by 200% and the effectiveness of its slow is increased by 50%, which also instead lasts {{fd|1.5}} seconds and refreshes every {{fd|0.25}} seconds while inside.",
-        "{{sbc|Recast:}} '''Anivia''' deactivates ''Glacial Storm'', dealing one last tick of [[damage]]."
+        "{{sbc|Active:}} '''Anivia''' launches a chunk of ice in the target direction that deals {{as|magic damage}} to enemies hit and {{tip|slow|slows}} them by {{pp|changedisplay=true|key=%|20;20 to 40 for 3|0 to 3|type = [[File:Glacial Storm.png|20px|border|link=]] Glacial Storm's Rank|formula = 20%+(10%*(''Glacial Storm'' Rank-1))}} for 3 seconds.",
+        "''Flash Frost'' can be recast after while the ice is in flight, and does so automatically at maximum range.",
+        "{{sbc|Recast:}} The ice shatters, dealing {{as|magic damage}} and {{tip|stun|stunning}} nearby enemies for a duration, as well as refreshing the {{tip|slow}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Anivia</b> calls forth a driving rain of ice and hail at the target location, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds to enemies within and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 1 second, refreshing every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds while inside. <i>Glacial Storm</i> can be recast after 1 second, and does so automatically if <b>Anivia</b> goes too far away from the storm, becomes unable to pay the <span><span class=\"mana\">mana</span></span> cost, or is affected by any form of <HtmlTooltip class=\"blue link\">interrupting<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip>.<br />The blizzard increases in size over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds. At maximum size, <i>Glacial Storm's</i> damage is increased by 200% and the effectiveness of its slow is increased by 50%, which also instead lasts <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds and refreshes every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds while inside.<br /><span class=\"sbc\">Recast:</span> <b>Anivia</b> deactivates <i>Glacial Storm</i>, dealing one last tick of <a class=\"effect link\" title=\"damage\">damage</a>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Anivia</b> launches a chunk of ice in the target direction that deals <span class=\"magic-damage\">magic damage</span> to enemies hit and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> for 3 seconds.<br /><i>Flash Frost</i> can be recast after while the ice is in flight, and does so automatically at maximum range.<br /><span class=\"sbc\">Recast:</span> The ice shatters, dealing <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> nearby enemies for a duration, as well as refreshing the <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.",
       "leveling": [
-        "{{st|Magic damage per tick|{{ap|30 to 60}} {{as|(+ {{fd|12.5}}% AP)}}}}\n{{st|Slow|{{ap|20 to 40}}%}}",
-        "{{st|Empowered damage per tick|{{ap|30*3 to 60*3}} {{as|(+ {{fd|37.5}}% AP)}}}}\n{{st|Empowered Slow|{{ap|20*1.5 to 40*1.5}}%}}"
+        "{{st|Pass through damage|{{ap|50 to 130}} {{as|(+ 25% AP)}}}}\n{{st|Explosion Damage|{{ap|60 to 200}} {{as|(+ 45% AP)}}|Total Damage|{{ap|50+60 to 130+200}} {{as|(+ 70% AP)}}}}",
+        "{{st|Stun Duration|{{ap|1.1 to 1.5}}}}"
       ],
-      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Glacial Storm's'' slow leaves a trail that is visible even if the target is [[stealth]]ed.\n* ''Glacial Storm'' deals 3 half ticks at {{ap|200|267|333}} radius for a total of {{fd|1.5}} normal damage ticks before it starts dealing empowered damage at 400 radius.\n* {{tip|Stasis (buff)|Stasis}} via {{ii|Stopwatch}} / {{ii|Zhonya's Hourglass}} doesn't interrupt ''Glacial Storm''.\n** {{cai|Devour|Tahm Kench}} '''does''' interrupt (allied and enemy) ''Glacial Storm''.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "*The initial cast and the manual recast count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n** If the ability is not manually recasted, the secondary effect will trigger without being considered as an ability activation.\n* ''Flash Frost'' can only proc {{ri|Conqueror}} once even if it damages the same target twice.\n* ''Flash Frost'' will fire from wherever '''Anivia''' was at the start of the cast time.\n* {{tip|Spell shield}} can only prevent either the collision hit or recast from affecting the target.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|11 to 7}}|Starts post-effect}}' as '0/9.667/8.333/7/5.667/0' and riot's value '11,10,9,8,7' as '11/10/9/8/7'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage per tick</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,30,40]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Pass through damage</span>: <span><SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Explosion Damage</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[110,165,220,275,330]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.125
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 0.45
+              },
+              {
+                "player_total_ap": 0.7000000000000001
               }
             ],
             "st_slices": [
               [
-                "Slow",
-                "<SpellSpan :list=\"[20,30,40]\"></SpellSpan>%"
+                "Pass through damage",
+                "<SpellSpan :list=\"[50,70,90,110,130]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
               ],
               [
-                "Magic damage per tick",
-                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>"
+                "Explosion Damage",
+                "<SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span>",
+                "Total Damage",
+                "<SpellSpan :list=\"[110,165,220,275,330]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                30,
-                45,
-                60
+                50,
+                70,
+                90,
+                110,
+                130
               ],
               [
-                20,
-                30,
-                40
+                60,
+                95,
+                130,
+                165,
+                200
+              ],
+              [
+                110,
+                165,
+                220,
+                275,
+                330
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Slow",
-              "damage_type": "magic",
+              "title": "Pass through damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  30,
-                  45,
-                  60
+                  50,
+                  70,
+                  90,
+                  110,
+                  130
                 ],
-                "player_total_ap": 0.125
+                "player_total_ap": 0.45
               }
             },
             {
               "index": 1,
-              "title": "Magic damage per tick",
-              "damage_type": "magic",
+              "title": "Explosion Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  20,
-                  30,
-                  40
+                  60,
+                  95,
+                  130,
+                  165,
+                  200
                 ],
-                "player_total_ap": 0.125
+                "player_total_ap": 0.45
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered damage per tick</span>: <span><SpellSpan :list=\"[90,135,180]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Empowered Slow</span>: <span><SpellSpan :list=\"[30,45,60]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan></span></li></ul>",
           "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.375
-              }
-            ],
+            "as_ratios": [],
             "st_slices": [
               [
-                "Empowered Slow",
-                "<SpellSpan :list=\"[30,45,60]\"></SpellSpan>%"
-              ],
-              [
-                "Empowered damage per tick",
-                "<SpellSpan :list=\"[90,135,180]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% AP)</span>"
+                "Stun Duration",
+                "<SpellSpan :list=\"[1.1,1.2,1.3,1.4,1.5]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
               [
-                90,
-                135,
-                180
-              ],
-              [
-                30,
-                45,
-                60
+                1.1,
+                1.2,
+                1.3,
+                1.4,
+                1.5
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Empowered Slow",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  90,
-                  135,
-                  180
-                ],
-                "player_total_ap": 0.375
-              }
-            },
-            {
-              "index": 1,
-              "title": "Empowered damage per tick",
+              "title": "Stun Duration",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  30,
-                  45,
-                  60
-                ],
-                "player_total_ap": 0.375
+                  1.1,
+                  1.2,
+                  1.3,
+                  1.4,
+                  1.5
+                ]
               }
             }
           ]

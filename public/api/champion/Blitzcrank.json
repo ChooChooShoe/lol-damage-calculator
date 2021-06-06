@@ -73,85 +73,6 @@
       "skillid": "i1",
       "effects": []
     },
-    "q1": {
-      "riotId": "RocketGrab",
-      "name": "Rocket Grab",
-      "maxrank": 5,
-      "cooldown": [
-        20,
-        19,
-        18,
-        17,
-        16
-      ],
-      "cost": 100,
-      "costtype": "mana",
-      "targeting": "Direction",
-      "image": {
-        "full": "RocketGrab.png",
-        "sprite": "spell1.png",
-        "group": "spell",
-        "x": 96,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Blitzcrank''' fires the right hand in the target direction that catches the first enemy hit, dealing them {{as|magic damage}}, {{tip|stun|stunning}} them for {{fd|0.65 seconds}}, and {{tip|airborne|pulling}} them towards '''Blitzcrank'''.",
-        "'''''Blitzcrank''' is unable to move or attack while Rocket Grab is in flight.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> fires the right hand in the target direction that catches the first enemy hit, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.65 seconds</span>, and <HtmlTooltip class=\"blue link\">pulling<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them towards <b>Blitzcrank</b>.<br /><b><i>Blitzcrank</b> is unable to move or attack while Rocket Grab is in flight.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* ''Rocket Grab's'' range is composed of a missile with 1080 range, and a smaller center-range area check at the end (colloqially known as a 'lollipop').\n** The area check is currently half as long as it is supposed to be, reducing the intended 1150 range of the ability to 1115 range. \n*** Hitting an enemy with this area check only also fails to play the ability's hit SFX. This makes it possible to easily distingush whether the target was picked up by the missile collision or 'lollipop'.\n** Targets [[size|larger than 95 units in radius]] can be hit by a different edge-range circle check at the end of the missile.\n* The target is {{tip|sight|revealed}} while it is being {{tip|airborne|pulled}}.\n* The {{tip|airborne}} debuff lasts for up-to 1 second but will end prematurely when the target's movement stops, while the stun will persist (if duration permits).\n* If the target is {{tip|displacement immune}}, the {{tip|stun}} will still be applied. Only the following displacement is tagged as a knock back and subsequently prevented.\n* The target's destination lies 75 units in front of '''Blitzcrank'''. \n** If the target is closer than this, the effect will still move them to this location.\n** If this location would be inside static terrain, the target's destination will end up on '''Blitzcrank's''' side, even if that means pulling them right on top of him.\n*** This can occasionally fail.\n* '''Blitzcrank''' will be ordered to [[basic attack]] the target once the target arrives.\n* If '''Blitzcrank''' is {{tip|airborne|displaced}} during the grab, the target will still be pulled to the old location.\n** However if '''Blitzcrank''' is displaced by specifically {{ai|Fate's Call|Kalista}}, the target will be pulled to the new location.\n* If the target dies to ''Rocket Grab's'' damage, they will not be pulled.",
-      "skillkey": "Q",
-      "skillid": "q1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                70,
-                120,
-                170,
-                220,
-                270
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  70,
-                  120,
-                  170,
-                  220,
-                  270
-                ],
-                "player_total_ap": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
     "w1": {
       "riotId": "Overdrive",
       "name": "Overdrive",
@@ -234,11 +155,13 @@
       "name": "Power Fist",
       "maxrank": 5,
       "cooldown": [
+        0,
         9,
         8,
         7,
         6,
-        5
+        5,
+        0
       ],
       "cost": 25,
       "costtype": "mana",
@@ -261,6 +184,7 @@
       "notes": "* The {{tip|airborne|knockup}} is applied even if the attack is {{tip|dodge|dodged}} or {{tip|blind|missed}}.\n** It is not applied if it is {{tip|block|blocked}}.\n* {{tip|Spell shield}} prevents the {{tip|airborne|knockup}} but not the damage.\n* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.\n* The target is displaced a short distance during the {{tip|airborne|knockup}} in a random direction.",
       "skillkey": "E",
       "skillid": "e1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|9|8|7|6|5}}|Starts post-effect}}' as '0/9/8/7/6/5/0' and riot's value '9,8,7,6,5' as '9/8/7/6/5'",
       "effects": []
     },
     "r1": {
@@ -367,6 +291,85 @@
                   250,
                   375,
                   500
+                ],
+                "player_total_ap": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "q1": {
+      "riotId": "RocketGrab",
+      "name": "Rocket Grab",
+      "maxrank": 5,
+      "cooldown": [
+        20,
+        19,
+        18,
+        17,
+        16
+      ],
+      "cost": 100,
+      "costtype": "mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "RocketGrab.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 96,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Blitzcrank''' fires the right hand in the target direction that catches the first enemy hit, dealing them {{as|magic damage}}, {{tip|stun|stunning}} them for {{fd|0.65 seconds}}, and {{tip|airborne|pulling}} them towards '''Blitzcrank'''.",
+        "'''''Blitzcrank''' is unable to move or attack while Rocket Grab is in flight.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> fires the right hand in the target direction that catches the first enemy hit, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.65 seconds</span>, and <HtmlTooltip class=\"blue link\">pulling<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them towards <b>Blitzcrank</b>.<br /><b><i>Blitzcrank</b> is unable to move or attack while Rocket Grab is in flight.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* ''Rocket Grab's'' range is composed of a missile with 1080 range, and a smaller center-range area check at the end (colloqially known as a 'lollipop').\n** The area check is currently half as long as it is supposed to be, reducing the intended 1150 range of the ability to 1115 range. \n*** Hitting an enemy with this area check only also fails to play the ability's hit SFX. This makes it possible to easily distingush whether the target was picked up by the missile collision or 'lollipop'.\n** Targets [[size|larger than 95 units in radius]] can be hit by a different edge-range circle check at the end of the missile.\n* The target is {{tip|sight|revealed}} while it is being {{tip|airborne|pulled}}.\n* The {{tip|airborne}} debuff lasts for up-to 1 second but will end prematurely when the target's movement stops, while the stun will persist (if duration permits).\n* If the target is {{tip|displacement immune}}, the {{tip|stun}} will still be applied. Only the following displacement is tagged as a knock back and subsequently prevented.\n* The target's destination lies 75 units in front of '''Blitzcrank'''. \n** If the target is closer than this, the effect will still move them to this location.\n** If this location would be inside static terrain, the target's destination will end up on '''Blitzcrank's''' side, even if that means pulling them right on top of him.\n*** This can occasionally fail.\n* '''Blitzcrank''' will be ordered to [[basic attack]] the target once the target arrives.\n* If '''Blitzcrank''' is {{tip|airborne|displaced}} during the grab, the target will still be pulled to the old location.\n** However if '''Blitzcrank''' is displaced by specifically {{ai|Fate's Call|Kalista}}, the target will be pulled to the new location.\n* If the target dies to ''Rocket Grab's'' damage, they will not be pulled.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                120,
+                170,
+                220,
+                270
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  120,
+                  170,
+                  220,
+                  270
                 ],
                 "player_total_ap": 1
               }

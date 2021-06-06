@@ -49,28 +49,151 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Bravado",
-      "maxrank": 0,
-      "targeting": "Passive",
+    "w1": {
+      "riotId": "TaricW",
+      "name": "Bastion",
+      "maxrank": 5,
+      "cooldown": 15,
+      "cost": 60,
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} 800",
       "image": {
-        "full": "Taric_Passive.png",
-        "sprite": "passive4.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
+        "full": "TaricW.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{as|{{pp|25 to 93}}|magic damage}} {{as|(+ 15% '''bonus''' armor)}} {{as|'''bonus''' magic damage}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by ability haste}}, as well as refreshing ''Bravado's'' duration on the first attack."
+        "{{sbc|Passive:}} '''Taric''' gains {{sti|armor|{{as|'''bonus''' armor}}}} and forms a {{tip|tether}} between him and the ally bound by ''Bastion''. While the tether persists, the ally also gains the {{as|'''bonus''' armor}} and '''Taric's''' abilities are mimicked to them, though the effects do not stack.",
+        "{{sbc|Active:}} '''Taric''' {{tip|shields}} himself and the target allied champion for {{fd|2.5}} seconds, binding them with ''Bastion''.",
+        "'''Taric''' can [[self-targeted|self-cast]] to shield himself; if he is untethered, this will instead target the nearest ally. Only one ally can be bound at a time, and selecting a new ally overrides the previous bind."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Taric's</b> next two <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds gain <span><span class=\"attack-speed\">100% <b>total</b> attack speed</span></span>, each dealing <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">25undefined − 93undefined (based on level)<template #content>Values: 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85, 89, 93<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"armor\">(+ 15% <b>bonus</b> armor)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and reducing the <span>cooldowns</span> of his basic abilities by <span class=\"title-tooltip\" title=\"Affected by ability haste\">1 second</span>, as well as refreshing <i>Bravado's</i> duration on the first attack.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Taric</b> gains <span><span class=\"armor\"><b>bonus</b> armor</span></span> and forms a <HtmlTooltip class=\"blue link\">tether<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> between him and the ally bound by <i>Bastion</i>. While the tether persists, the ally also gains the <span class=\"armor\"><b>bonus</b> armor</span> and <b>Taric's</b> abilities are mimicked to them, though the effects do not stack.<br /><span class=\"sbc\">Active:</span> <b>Taric</b> <HtmlTooltip class=\"blue link\">shields<template #content><div><h4>Shields<hr></h4><p><b>Shields</b> are temporay health.</p></div></template></HtmlTooltip> himself and the target allied champion for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, binding them with <i>Bastion</i>.<br /><b>Taric</b> can <a class=\"effect link\" title=\"self-cast\">self-targeted</a> to shield himself; if he is untethered, this will instead target the nearest ally. Only one ally can be bound at a time, and selecting a new ally overrides the previous bind.",
+      "leveling": [
+        "{{st|Bonus Armor|{{as|{{ap|10 to 14}}% of '''Taric's''' armor}}}}",
+        "{{st|Shield Strength|{{as|{{ap|8|9|10|11|12}}% of target's '''maximum''' health}}}}"
+      ],
+      "notes": "* The mimicked abilities will still complete even if '''Taric''' dies or leaves range.\n* Abilities are not mimicked to the bound ally if they are {{tip|vanish|vanished}} via {{ai|Alpha Strike|Master Yi}}, {{ai|Hallucinate|Shaco}}, {{ai|Rappel|Elise}}, or {{ai|Void Rush|Rek'Sai}}.\n** Mimicked abilities will also cancel if they vanish as above.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Armor</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% of <b>Taric's</b> armor</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_armor": [
+                  0.1,
+                  0.11,
+                  0.12,
+                  0.13,
+                  0.14
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Armor",
+                "<span class=\"armor\"><SpellSpan :list=\"[10,11,12,13,14]\"></SpellSpan>% of '''Taric's''' armor</span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Armor",
+              "damage_type": "unknown",
+              "ratios": {
+                "player_total_armor": [
+                  0.1,
+                  0.11,
+                  0.12,
+                  0.13,
+                  0.14
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><span class=\"health\"><SpellSpan :list=\"[8,9,10,11,12]\"></SpellSpan>% of target's <b>maximum</b> health</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "target_total_hp": [
+                  0.08,
+                  0.09,
+                  0.1,
+                  0.11,
+                  0.12
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Shield Strength",
+                "<span class=\"health\"><SpellSpan :list=\"[8,9,10,11,12]\"></SpellSpan>% of target's '''maximum''' health</span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Shield Strength",
+              "damage_type": "none",
+              "ratios": {
+                "target_total_hp": [
+                  0.08,
+                  0.09,
+                  0.1,
+                  0.11,
+                  0.12
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "TaricR",
+      "name": "Cosmic Radiance",
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        150,
+        120
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "TaricR.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Taric''' calls down a star from above that descends to him over {{fd|2.5}} seconds. Afterwards, '''Taric''' and all nearby allied {{tip|champions}} become {{tip|invulnerable}} for {{fd|2.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Taric</b> calls down a star from above that descends to him over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. Afterwards, <b>Taric</b> and all nearby allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
       "leveling": [],
-      "notes": "* The bonus damage will not apply against {{tip|structures}}.\n* ''Bravado'' can be {{tip|dodged}} and {{tip|blocked}} but it cannot miss if '''Taric''' is {{tip|blind|blinded}}. The cooldown reduction cannot be negated in any cases.",
-      "skillkey": "I",
-      "skillid": "i1",
+      "notes": "* ''Cosmic Radiance'' has no effect on {{tip|untargetable}} allies.\n** It will affect the primary unit (the one the star is falling down on) even if they are untargetable.",
+      "skillkey": "R",
+      "skillid": "r1",
       "effects": []
     },
     "q1": {
@@ -146,6 +269,30 @@
           ]
         }
       ]
+    },
+    "i1": {
+      "riotId": "",
+      "name": "Bravado",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Taric_Passive.png",
+        "sprite": "passive4.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} After casting an [[champion ability|ability]], '''Taric's''' next two [[basic attack]]s within 4 seconds gain {{sti|as|{{as|100% '''total''' attack speed}}}}, each dealing {{as|{{pp|25 to 93}}|magic damage}} {{as|(+ 15% '''bonus''' armor)}} {{as|'''bonus''' magic damage}} and reducing the {{sti|cooldown|cooldowns}} of his basic abilities by {{tt|1 second|Affected by ability haste}}, as well as refreshing ''Bravado's'' duration on the first attack."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> After casting an <a class=\"effect link\" title=\"ability\">champion ability</a>, <b>Taric's</b> next two <a class=\"effect link\" title=\"basic attack\">basic attack</a>s within 4 seconds gain <span><span class=\"attack-speed\">100% <b>total</b> attack speed</span></span>, each dealing <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">25undefined − 93undefined (based on level)<template #content>Values: 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85, 89, 93<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"armor\">(+ 15% <b>bonus</b> armor)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and reducing the <span>cooldowns</span> of his basic abilities by <span class=\"title-tooltip\" title=\"Affected by ability haste\">1 second</span>, as well as refreshing <i>Bravado's</i> duration on the first attack.",
+      "leveling": [],
+      "notes": "* The bonus damage will not apply against {{tip|structures}}.\n* ''Bravado'' can be {{tip|dodged}} and {{tip|blocked}} but it cannot miss if '''Taric''' is {{tip|blind|blinded}}. The cooldown reduction cannot be negated in any cases.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
     },
     "e1": {
       "riotId": "TaricE",
@@ -228,37 +375,6 @@
           ]
         }
       ]
-    },
-    "r1": {
-      "riotId": "TaricR",
-      "name": "Cosmic Radiance",
-      "maxrank": 3,
-      "cooldown": [
-        180,
-        150,
-        120
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "TaricR.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Taric''' calls down a star from above that descends to him over {{fd|2.5}} seconds. Afterwards, '''Taric''' and all nearby allied {{tip|champions}} become {{tip|invulnerable}} for {{fd|2.5}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Taric</b> calls down a star from above that descends to him over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. Afterwards, <b>Taric</b> and all nearby allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.",
-      "leveling": [],
-      "notes": "* ''Cosmic Radiance'' has no effect on {{tip|untargetable}} allies.\n** It will affect the primary unit (the one the star is falling down on) even if they are untargetable.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": []
     }
   }
 }

@@ -74,12 +74,186 @@
       "skillid": "i1",
       "effects": []
     },
+    "e1": {
+      "riotId": "EvelynnE",
+      "name": "Whiplash",
+      "maxrank": 5,
+      "cooldown": 8,
+      "cost": [
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "target_range": "{{tip|er|icononly = true}} 210",
+      "image": {
+        "full": "EvelynnE.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Evelynn''' whips the target enemy with her lashers, dealing them {{as|magic damage}} and applying {{tip|on-hit}} effects at 100% effectiveness.",
+        "'''Evelynn''' also gains {{sti|ms|{{as|30% '''bonus''' movement speed}}}} for 2 seconds.",
+        "Gaining {{ai|Demon Shade|Evelynn}} resets ''Whiplash's'' {{sti|cooldown}} and {{ai|Empowered Whiplash|Evelynn|empowers}} its next cast."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Evelynn</b> whips the target enemy with her lashers, dealing them <span class=\"magic-damage\">magic damage</span> and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Evelynn</b> also gains <span><span class=\"movement-speed\">30% <b>bonus</b> movement speed</span></span> for 2 seconds.<br />Gaining <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Evelynn\">Demon Shade<template #content>Demon Shade</template></HtmlTooltip> resets <i>Whiplash's</i> <span>cooldown</span> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Evelynn\">empowers<template #content>Empowered Whiplash</template></HtmlTooltip> its next cast.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|55 to 115}} {{as|(+ 3% {{as|(+ {{fd|1.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
+      ],
+      "notes": "* ''Whiplash'' can be {{tip|dodged}} and {{tip|blocked}} but may not miss if '''Evelynn''' is {{tip|blind|blinded}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[55,70,85,100,115]\"></SpellSpan> <span class=\"health\">(+ 3% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.0151
+              },
+              {
+                "target_total_ap": 0.31510000000000005
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[55,70,85,100,115]\"></SpellSpan> <span class=\"health\">(+ 3% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                55,
+                70,
+                85,
+                100,
+                115
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  55,
+                  70,
+                  85,
+                  100,
+                  115
+                ],
+                "player_total_ap": 0.0151,
+                "target_total_ap": 0.31510000000000005
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "EvelynnR",
+      "name": "Last Caress",
+      "maxrank": 3,
+      "cooldown": [
+        140,
+        110,
+        80
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "EvelynnR.png",
+        "sprite": "spell3.png",
+        "group": "spell",
+        "x": 48,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Evelynn''' becomes {{tip|untargetable}} as she reveals her true form to all enemies in front of her in the target direction, before {{tip|blink|blinking}} 700 units in the opposite direction and becoming targetable again.",
+        "Enemies caught in her reveal are devastated, taking {{as|magic damage}}, with enemies below {{as|{{sti|health|30% of their '''maximum''' health}}}} receiving {{ccs|140% '''bonus''' damage|magic}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Evelynn</b> becomes <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> as she reveals her true form to all enemies in front of her in the target direction, before <HtmlTooltip class=\"blue link\">blinking<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> 700 units in the opposite direction and becoming targetable again.<br />Enemies caught in her reveal are devastated, taking <span class=\"magic-damage\">magic damage</span>, with enemies below <span class=\"health\"><span>30% of their <b>maximum</b> health</span></span> receiving <simple-tooltip class=\"capture-unknown\" dname=\"ccs 140% <b>bonus</b> damage magic\">Unknown value: ccs 140% <b>bonus</b> damage magic</simple-tooltip>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|125 to 375}} {{as|(+ 75% AP)}}|Empowered Damage|{{ap|125*2.4 to 375*2.4}} {{as|(+ {{ap|75*2.4}}% AP)}}}}"
+      ],
+      "notes": "* ''Last Caress'' can be buffered during {{ai|Empowered Whiplash|Evelynn}}.\n* The casting input controls the direction ''Last Caress' '' damage is dealt from, with the movement automatically happening in the reverse direction.\n* Enemy {{tip|champion|champions}} below the {{as|maximum health}} threshold are {{Color|pink|'''marked'''}} for '''Evelynn''', indicating the bonus damage opportunity.\n* The screen will direct to '''Evelynn's''' position after she {{tip|blink|blinks}}.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              },
+              {
+                "player_total_ap": [
+                  1.8
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
+                "Empowered Damage",
+                "<SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                125,
+                250,
+                375
+              ],
+              [
+                300,
+                600,
+                900
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  125,
+                  250,
+                  375
+                ],
+                "player_total_ap": [
+                  1.8
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "q1": {
       "riotId": "EvelynnQ",
       "name": "Hate Spike",
       "maxrank": 5,
       "cooldown": [
-        4
+        4,
+        0
       ],
       "cost": [
         40,
@@ -116,6 +290,7 @@
       "notes": "* Each cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Hate Spike'' prioritizes:\n*# The last champion '''Evelynn''' hit\n*# The last non-champion '''Evelynn''' hit\n*# The lowest-health champion\n*# The lowest-health non-champion\n* The dart applies {{tip|spell damage}} and the spikes deal {{tip|area damage}}.\n* ''Hate Spike'' will fire from wherever '''Evelynn''' was at the start of the cast time.\n* Recasts can be buffered up to {{fd|0.5}} seconds before becoming castable.",
       "skillkey": "Q",
       "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|4|Starts on-cast}}' as '4/0' and riot's value '4,4,4,4,4' as '4'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Dart Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
@@ -286,11 +461,12 @@
       "name": "Allure",
       "maxrank": 5,
       "cooldown": [
-        15,
-        14,
-        13,
-        12,
-        11
+        0,
+        13.667,
+        12.333,
+        11,
+        9.667,
+        0
       ],
       "cost": [
         60,
@@ -326,6 +502,7 @@
       "notes": "* The mark fully forming signifies the {{fd|2.5}} seconds have elapsed, meaning the {{tip|charm}} will be applied on the triggering attack or ability.\n** An enemy champion cursed by ''Allure'' is alarmed of her presence and after the mark has fully formed, an arrow will appear next to them pointing towards '''Evelynn's''' direction. This is visible to both teams.\n* The {{stil|magic penetration}} will be applied to the attack or ability that triggers it.\n* ''Allure's'' mark application on a target cannot be blocked by {{tip|spell shield}}.\n** The expunge will not occur if the ability is blocked by a spell shield. The mark does not trigger and will remain on the target in this case.",
       "skillkey": "W",
       "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|15 to 11}}|Starts after the mark ends}}' as '0/13.667/12.333/11/9.667/0' and riot's value '15,14,13,12,11' as '15/14/13/12/11'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Charm Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan></span></li><li><span class=\"blue\">Monster Duration</span>: <span><SpellSpan :list=\"[3,3.25,3.5,3.75,4]\"></SpellSpan></span></li></ul>",
@@ -439,88 +616,78 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "EvelynnR",
-      "name": "Last Caress",
-      "maxrank": 3,
-      "cooldown": [
-        140,
-        110,
-        80
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Direction",
+    "e2": {
+      "riotId": "EvelynnE",
+      "name": "Empowered Whiplash",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Unit",
       "image": {
-        "full": "EvelynnR.png",
+        "full": "EvelynnE.png",
         "sprite": "spell3.png",
         "group": "spell",
-        "x": 48,
+        "x": 0,
         "y": 0,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Evelynn''' becomes {{tip|untargetable}} as she reveals her true form to all enemies in front of her in the target direction, before {{tip|blink|blinking}} 700 units in the opposite direction and becoming targetable again.",
-        "Enemies caught in her reveal are devastated, taking {{as|magic damage}}, with enemies below {{as|{{sti|health|30% of their '''maximum''' health}}}} receiving {{ccs|140% '''bonus''' damage|magic}}."
+        "{{sbc|Active:}} '''Evelynn''' {{tip|dash|dashes}} toward the target enemy, dealing {{ccs|increased damage|magic}} to them upon completion as well as to all enemies within her path. ''On-hit effects are only applied to the primary target.''",
+        "''The {{as|'''percentile''' health}} damage deals a minimum of 25 and is capped at 450 against {{tip|monsters}}.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Evelynn</b> becomes <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> as she reveals her true form to all enemies in front of her in the target direction, before <HtmlTooltip class=\"blue link\">blinking<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> 700 units in the opposite direction and becoming targetable again.<br />Enemies caught in her reveal are devastated, taking <span class=\"magic-damage\">magic damage</span>, with enemies below <span class=\"health\"><span>30% of their <b>maximum</b> health</span></span> receiving <simple-tooltip class=\"capture-unknown\" dname=\"ccs 140% <b>bonus</b> damage magic\">Unknown value: ccs 140% <b>bonus</b> damage magic</simple-tooltip>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Evelynn</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> toward the target enemy, dealing <simple-tooltip class=\"capture-unknown\" dname=\"ccs increased damage magic\">Unknown value: ccs increased damage magic</simple-tooltip> to them upon completion as well as to all enemies within her path. <i>On-hit effects are only applied to the primary target.</i><br /><i>The <span class=\"health\"><b>percentile</b> health</span> damage deals a minimum of 25 and is capped at 450 against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.</i>",
       "leveling": [
-        "{{st|Magic Damage|{{ap|125 to 375}} {{as|(+ 75% AP)}}|Empowered Damage|{{ap|125*2.4 to 375*2.4}} {{as|(+ {{ap|75*2.4}}% AP)}}}}"
+        "{{st|Empowered Magic Damage|{{ap|75 to 175}} {{as|(+ 4% {{as|(+ {{fd|2.5}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
       ],
-      "notes": "* ''Last Caress'' can be buffered during {{ai|Empowered Whiplash|Evelynn}}.\n* The casting input controls the direction ''Last Caress' '' damage is dealt from, with the movement automatically happening in the reverse direction.\n* Enemy {{tip|champion|champions}} below the {{as|maximum health}} threshold are {{Color|pink|'''marked'''}} for '''Evelynn''', indicating the bonus damage opportunity.\n* The screen will direct to '''Evelynn's''' position after she {{tip|blink|blinks}}.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "notes": "* '''Evelynn''' will track the target if they change locations.\n** She will dash to the target's previous location if the target is too far away or moves beyond the maximum tracking distance.\n* There is no time-out period on ''Empowered Whiplash''.\n* ''Empowered Whiplash'' can be {{tip|blocked}} but cannot be {{tip|dodged}} and/or missed if '''Evelynn''' is {{tip|blind|blinded}}.",
+      "skillkey": "E",
+      "skillid": "e2",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  0 as 0 and riot's value 40,45,50,55,60 as 40/45/50/55/60",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '8,8,8,8,8' as '8'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li><li><span class=\"blue\">Empowered Damage</span>: <span><SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Empowered Magic Damage</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"health\">(+ 4% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.75
+                "player_total_ap": 0.025099999999999997
               },
               {
-                "player_total_ap": [
-                  1.8
-                ]
+                "target_total_ap": 0.4251
               }
             ],
             "st_slices": [
               [
-                "Magic Damage",
-                "<SpellSpan :list=\"[125,250,375]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>",
-                "Empowered Damage",
-                "<SpellSpan :list=\"[300,600,900]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[180]\"></SpellSpan>% AP)</span>"
+                "Empowered Magic Damage",
+                "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"health\">(+ 4% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
               ]
             ],
             "ap_progressions": [
               [
+                75,
+                100,
                 125,
-                250,
-                375
-              ],
-              [
-                300,
-                600,
-                900
-              ],
-              null
+                150,
+                175
+              ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Magic Damage",
+              "title": "Empowered Magic Damage",
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
+                  75,
+                  100,
                   125,
-                  250,
-                  375
+                  150,
+                  175
                 ],
-                "player_total_ap": [
-                  1.8
-                ]
+                "player_total_ap": 0.025099999999999997,
+                "target_total_ap": 0.4251
               }
             }
           ]

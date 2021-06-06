@@ -2,7 +2,7 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
 import he from 'he';
-import {default as matchReplaceSpellEffects, numberExpand} from '../src/javascript/matchreplace.mjs';
+import { default as matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
 import JSON5 from 'json5';
 
 /**
@@ -141,12 +141,13 @@ async function doMergeData(riotChampPromise, wikiaChamp) {
 
     model.skills = {};
 
-    await createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model);
-    await createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model);
-    await createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model);
-    await createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model);
-    await createSkill('R', wikiaChamp.skill_r, riotChamp.spells[3], false, model);
+    const i = createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model).catch(err => { console.error(err) });
+    const q = createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
+    const w = createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
+    const e = createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
+    const r = createSkill('R', wikiaChamp.skill_r, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
 
+    await Promise.all([i, q, w, e, r]);
     return model;
 }
 function buildChangesField(changes) {
@@ -297,7 +298,7 @@ const keyword_to_damage_type = {
 }
 function matchDamageType(text) {
     for (const key in keyword_to_damage_type) {
-        if (text.indexOf(key) > -1 ) {
+        if (text.indexOf(key) > -1) {
             return keyword_to_damage_type[key];
         }
     }
@@ -384,6 +385,7 @@ async function onChampionJsonResponse(champ_json, fandom_data) {
     console.assert(champ_json.format === 'standAloneComplex');
     console.assert(champ_json.version === version);
     let returnData = {};
+    let promises = []
     for (const keyid in champ_json.data) {
         const champ = champ_json.data[keyid];
         // if (champ.id !== 'Syndra') continue;
@@ -405,17 +407,20 @@ async function onChampionJsonResponse(champ_json, fandom_data) {
         console.log('Fetching (ddragon)', url)
         const fullDataPromise = fetch(url).then((response) => response.json());
 
-        await doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
+        promises.push(doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
             return saveFile(`./public/api/champion/${champ.id}.json`, data);
-        });
+        }));
     }
+    console.log("Awaiting all Promises");
+    await Promise.all(promises);
+    console.log("freeze data");
     Object.freeze(returnData);
     saveFile('./public/api/ChampionList.json', returnData);
     return returnData;
 }
 async function createSkill(letter, skillNames, riotData, isPassive, champModel) {
-    if (!skillNames) return;
-    const skillsplit = skillNames.toString().split(";")
+    // if (!skillNames) return;
+    const skillsplit = skillNames;//.toString().split(";")
     for (let skillnum = 0; skillnum < skillsplit.length; skillnum++) {
         console.log('Creating skill', letter, skillnum);
         const element = skillsplit[skillnum];
@@ -445,6 +450,6 @@ console.log('Hello');
 fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
 
 //https://ddragon.leagueoflegends.com/realms/na.json
-fetch("https://ddragon.leagueoflegends.com/api/versions.json")
+await fetch("https://ddragon.leagueoflegends.com/api/versions.json")
     .then((response) => { return response.json(); })
     .then(onRealmJsonResponse);

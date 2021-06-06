@@ -314,12 +314,16 @@ export function numberExpand(slices, maxrank, round) {
         list.push(+(start + diff * i).toFixed(round));
       }
     } else {
+      const cleaned = p.replace(clean, '')
       try {
-        let num = eval(p.replace(clean, ''));
+        let num = eval(cleaned);
         if (!isNaN(num))
           list.push(+parseFloat(num).toFixed(round));
+        else
+          list.push(0);
       } catch (msg) {
-        console.warn(msg);
+        console.warn("Error because of eval(", cleaned, ")\n", msg);
+        list.push(0);
       }
     }
   }

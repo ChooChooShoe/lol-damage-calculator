@@ -49,32 +49,6 @@
     "attackspeed": 0.625
   },
   "skills": {
-    "i1": {
-      "riotId": "",
-      "name": "Mirror Image",
-      "maxrank": 0,
-      "targeting": "Passive",
-      "image": {
-        "full": "LeBlancP.png",
-        "sprite": "passive2.png",
-        "group": "passive",
-        "x": 96,
-        "y": 0,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Innate:}} When '''LeBlanc''' is damaged to {{sti|health|{{as|40% '''maximum''' health}}}}, she creates a controllable {{tip|clone}} of herself, after which they both instantly become {{tip|invisibility|invisible}} for 1 second.",
-        "The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of '''LeBlanc''' decided the moment it spawns.",
-        "''Mirror Image'' can only occur once every few seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> When <b>LeBlanc</b> is damaged to <span><span class=\"health\">40% <b>maximum</b> health</span></span>, she creates a controllable <HtmlTooltip class=\"blue link\">clone<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of herself, after which they both instantly become <HtmlTooltip class=\"blue link\">invisible<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second.<br />The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of <b>LeBlanc</b> decided the moment it spawns.<br /><i>Mirror Image</i> can only occur once every few seconds.",
-      "leveling": [],
-      "notes": "* The {{tip|clone}} has a [[Pets#Leash ranges|leash range]].",
-      "skillkey": "I",
-      "skillid": "i1",
-      "effects": []
-    },
     "q1": {
       "riotId": "LeblancQ",
       "name": "Sigil of Malice",
@@ -332,6 +306,312 @@
           ]
         }
       ]
+    },
+    "w1": {
+      "riotId": "LeblancW",
+      "name": "Distortion",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        15.333,
+        12.667,
+        10,
+        7.333,
+        0
+      ],
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tt|600|Dash range}} / {{tt|Global|Recast radius}}",
+      "image": {
+        "full": "LeblancW.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 144,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''LeBlanc''' {{tip|dashes}} to the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. ''Distortion'' can be recast after {{fd|0.2}} seconds of the dash ending for its duration.",
+        "{{sbc|Recast:}} '''LeBlanc''' {{tip|blink|blinks}} to ''Distortion's'' return pad, regardless of range."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds. <i>Distortion</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.2</span> seconds of the dash ending for its duration.<br /><span class=\"sbc\">Recast:</span> <b>LeBlanc</b> <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to <i>Distortion's</i> return pad, regardless of range.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 235}} {{as|(+ 60% AP)}}}}"
+      ],
+      "notes": "* ''Distortion'' will be buffered and cast as soon as the cooldown ends if the player attempts to cast it within {{fd|0.5}} seconds of the cooldown ending.\n** The {{sbc|recast}} will be buffered and cast as soon as it becomes available if the player attempts to cast it within {{fd|0.3}} seconds of it becoming available to cast.\n*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Recasting the ability does not.\n**{{ai|Mimic Distortion|LeBlanc}} has the same properties.\n* ''Distortion'' and {{ai|Mimic Distortion|LeBlanc}} have independent return pads and '''LeBlanc''' can travel to both while they are active.\n* ''Distortion'''s dash speed is unaffected by '''LeBlanc's''' movement speed.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 10}}|Starts on cast}}' as '0/15.333/12.667/10/7.333/0' and riot's value '18,16,14,12,10' as '18/16/14/12/10'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[75,115,155,195,235]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                75,
+                115,
+                155,
+                195,
+                235
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  75,
+                  115,
+                  155,
+                  195,
+                  235
+                ],
+                "player_total_ap": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "LeblancR",
+      "name": "Mimic",
+      "maxrank": 3,
+      "cooldown": [
+        60,
+        45,
+        30
+      ],
+      "cost": 0,
+      "targeting": "Varied",
+      "image": {
+        "full": "LeblancR.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''LeBlanc''' casts a mimicked version of her most recently used basic ability, applying the same effects and dealing modified {{as|magic damage}}.",
+        "{{sbc|{{ai|Mimic Sigil of Malice|LeBlanc}}:}} Deals modified damage and double damage upon triggering the mark.",
+        "{{sbc|{{ai|Mimic Distortion|LeBlanc}}:}} Deals modified damage.",
+        "{{sbc|{{ai|Mimic Ethereal Chains|LeBlanc}}:}} Deals modified damage and double damage upon rooting."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>LeBlanc</b> casts a mimicked version of her most recently used basic ability, applying the same effects and dealing modified <span class=\"magic-damage\">magic damage</span>.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"LeBlanc\">Mimic Sigil of Malice<template #content>Mimic Sigil of Malice</template></HtmlTooltip>:</span> Deals modified damage and double damage upon triggering the mark.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"LeBlanc\">Mimic Distortion<template #content>Mimic Distortion</template></HtmlTooltip>:</span> Deals modified damage.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"LeBlanc\">Mimic Ethereal Chains<template #content>Mimic Ethereal Chains</template></HtmlTooltip>:</span> Deals modified damage and double damage upon rooting.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 40% AP)}}|Mark Damage|{{ap|70*2 to 210*2}} {{as|(+ 80% AP)}}|Total Damage|{{ap|70*3 to 210*3}} {{as|(+ 120% AP)}}}}",
+        "{{st|Magic Damage|{{ap|150 to 450}} {{as|(+ 75% AP)}}}}",
+        "{{st|Magic Damage|{{ap|70 to 210}} {{as|(+ 40% AP)}}|Root Damage|{{ap|70*2 to 210*2}} {{as|(+ 80% AP)}}|Total Damage|{{ap|70*3 to 210*3}} {{as|(+ 120% AP)}}}}"
+      ],
+      "notes": "* ''Mimic'' will default to {{ai|Mimic Sigil of Malice|LeBlanc}} if ''LeBlanc'' ranks up ''Mimic'' without having used any abilities beforehand (even if she has not yet learned {{ai|Sigil of Malice|LeBlanc}}).\n* Both {{ai|Mimic Ethereal Chains|LeBlanc}} and {{ai|Mimic Sigil of Malice|LeBlanc}} will apply damage twice if the original ability's condition to do so is met.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,140,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Mark Damage</span>: <span><SpellSpan :list=\"[140,280,420]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[210,420,630]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 1.2
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,140,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+                "Mark Damage",
+                "<SpellSpan :list=\"[140,280,420]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+                "Total Damage",
+                "<SpellSpan :list=\"[210,420,630]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                140,
+                210
+              ],
+              [
+                140,
+                280,
+                420
+              ],
+              [
+                210,
+                420,
+                630
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  140,
+                  210
+                ],
+                "player_total_ap": 1.2
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.75
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[150,300,450]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                150,
+                300,
+                450
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  300,
+                  450
+                ],
+                "player_total_ap": 0.75
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,140,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li><li><span class=\"blue\">Root Damage</span>: <span><SpellSpan :list=\"[140,280,420]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[210,420,630]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              },
+              {
+                "player_total_ap": 0.8
+              },
+              {
+                "player_total_ap": 1.2
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,140,210]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>",
+                "Root Damage",
+                "<SpellSpan :list=\"[140,280,420]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>",
+                "Total Damage",
+                "<SpellSpan :list=\"[210,420,630]\"></SpellSpan> <span class=\"ap\">(+ 120% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                140,
+                210
+              ],
+              [
+                140,
+                280,
+                420
+              ],
+              [
+                210,
+                420,
+                630
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  140,
+                  210
+                ],
+                "player_total_ap": 1.2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "i1": {
+      "riotId": "",
+      "name": "Mirror Image",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "LeBlancP.png",
+        "sprite": "passive2.png",
+        "group": "passive",
+        "x": 96,
+        "y": 0,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} When '''LeBlanc''' is damaged to {{sti|health|{{as|40% '''maximum''' health}}}}, she creates a controllable {{tip|clone}} of herself, after which they both instantly become {{tip|invisibility|invisible}} for 1 second.",
+        "The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of '''LeBlanc''' decided the moment it spawns.",
+        "''Mirror Image'' can only occur once every few seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> When <b>LeBlanc</b> is damaged to <span><span class=\"health\">40% <b>maximum</b> health</span></span>, she creates a controllable <HtmlTooltip class=\"blue link\">clone<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of herself, after which they both instantly become <HtmlTooltip class=\"blue link\">invisible<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second.<br />The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of <b>LeBlanc</b> decided the moment it spawns.<br /><i>Mirror Image</i> can only occur once every few seconds.",
+      "leveling": [],
+      "notes": "* The {{tip|clone}} has a [[Pets#Leash ranges|leash range]].",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
     }
   }
 }

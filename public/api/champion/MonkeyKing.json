@@ -74,16 +74,203 @@
       "skillid": "i1",
       "effects": []
     },
+    "w1": {
+      "riotId": "MonkeyKingDecoy",
+      "name": "Warrior Trickster",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        18.667,
+        17.333,
+        16,
+        14.667,
+        0
+      ],
+      "cost": [
+        80,
+        70,
+        60,
+        50,
+        40
+      ],
+      "costtype": "mana",
+      "targeting": "Direction",
+      "target_range": 300,
+      "image": {
+        "full": "MonkeyKingDecoy.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Wukong''' {{tip|dash|dashes}} in the target direction, though not through terrain, while entering {{tip|invisibility}} for 1 second and leaving behind a {{tip|clone|decoy}} of himself at his casting position for {{fd|3.25}} seconds.",
+        "The clone is {{tip|untargetable}} to allies and can [[basic attack]] autonomously, prioritizing the last enemy '''Wukong''' damaged. It can also gain the effects of {{ai|Crushing Blow|Wukong}}, {{ais|Nimbus Strike|Wukong}} {{as|'''bonus''' attack speed}}, and {{ai|Cyclone|Wukong}} whenever '''Wukong''' does.",
+        "The clone deals reduced outgoing damage.",
+        "'''Wukong''' can cast any of his [[champion ability|abilities]] during ''Warrior Trickster's'' dash."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Wukong</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction, though not through terrain, while entering <HtmlTooltip class=\"blue link\">invisibility<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second and leaving behind a <HtmlTooltip class=\"blue link\">decoy<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of himself at his casting position for <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds.<br />The clone is <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> to allies and can <a class=\"effect link\" title=\"basic attack\">basic attack</a> autonomously, prioritizing the last enemy <b>Wukong</b> damaged. It can also gain the effects of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Crushing Blow<template #content>Crushing Blow</template></HtmlTooltip>, <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Nimbus Strike's<template #content>Nimbus Strike</template></HtmlTooltip> <span class=\"attack-speed\"><b>bonus</b> attack speed</span>, and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Cyclone<template #content>Cyclone</template></HtmlTooltip> whenever <b>Wukong</b> does.<br />The clone deals reduced outgoing damage.<br /><b>Wukong</b> can cast any of his <a class=\"effect link\" title=\"abilities\">champion ability</a> during <i>Warrior Trickster's</i> dash.",
+      "leveling": [
+        "{{st|Clone Damage|{{ap|35 to 55}}%}}"
+      ],
+      "notes": "* Casting ''Warrior Trickster'' during an ability's effects will transfer them to the clone.\n* {{tip|Turret}} shots instantly kill the clone.\n* The clone is immune to {{tip|stasis}} and {{ui|Blast Cone}}.\n* The clone can still be targeted by allied {{tip|auto-targeted}} effects (e.g. {{si|Heal}}, {{ai|Celestial Blessing|Kayle}}).",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|20 to 16}}|Starts on cast}}' as '0/18.667/17.333/16/14.667/0' and riot's value '20,19,18,17,16' as '20/19/18/17/16'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Clone Damage</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Clone Damage",
+                "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                35,
+                40,
+                45,
+                50,
+                55
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Clone Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  35,
+                  40,
+                  45,
+                  50,
+                  55
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "MonkeyKingSpinToWin",
+      "name": "Cyclone",
+      "maxrank": 3,
+      "cooldown": [
+        0,
+        90,
+        60,
+        0
+      ],
+      "cost": 100,
+      "costtype": "mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "MonkeyKingSpinToWin.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 336,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone}} spin their staffs around for up to 2 seconds, becoming {{tip|ghosted}}, gaining {{sti|ms|{{as|20% '''bonus''' movement speed|ms}}}}, and dealing {{as|physical damage}} every {{fd|0.25}} seconds to nearby enemies. Enemies affected by an active ''Cyclone'' for the first time are {{tip|airborne|knocked up}} for {{fd|0.6}} seconds. ''Cyclone'' can be canceled by casting another [[champion ability|ability]] or recasting after {{fd|0.5}} seconds. ''Cyclone'' can be recast within 8 seconds of the first cast after 1 second.",
+        "{{sbc|Recast:}} '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone}} spin their staffs a second time, mimicking the first cast's effects. If recast while spinning, '''Wukong''' stops spinning early instead; '''Wukong''' can still spin a second time after stopping his first spin early, and can end his second spin early as well.",
+        "The clone's ''Cyclone'' will not {{tip|airborne|knock up}} enemies who were already hit by '''Wukong's''' active ''Cyclone''.",
+        "{{ais|Nimbus Strike|Wukong}} {{as|'''bonus''' attack speed}} duration is continuously refreshed while spinning.",
+        "''Cyclone's'' damage is capped at {{pp|200 to 600 for 3|6;11;16}} per second against {{tip|monsters}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Wukong</b> and his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">clone<template #content>Warrior Trickster</template></HtmlTooltip> spin their staffs around for up to 2 seconds, becoming <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip>, gaining <span><span class=\"ms\">20% <b>bonus</b> movement speed</span></span>, and dealing <span class=\"physical-damage\">physical damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to nearby enemies. Enemies affected by an active <i>Cyclone</i> for the first time are <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds. <i>Cyclone</i> can be canceled by casting another <a class=\"effect link\" title=\"ability\">champion ability</a> or recasting after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds. <i>Cyclone</i> can be recast within 8 seconds of the first cast after 1 second.<br /><span class=\"sbc\">Recast:</span> <b>Wukong</b> and his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">clone<template #content>Warrior Trickster</template></HtmlTooltip> spin their staffs a second time, mimicking the first cast's effects. If recast while spinning, <b>Wukong</b> stops spinning early instead; <b>Wukong</b> can still spin a second time after stopping his first spin early, and can end his second spin early as well.<br />The clone's <i>Cyclone</i> will not <HtmlTooltip class=\"blue link\">knock up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> enemies who were already hit by <b>Wukong's</b> active <i>Cyclone</i>.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Nimbus Strike's<template #content>Nimbus Strike</template></HtmlTooltip> <span class=\"attack-speed\"><b>bonus</b> attack speed</span> duration is continuously refreshed while spinning.<br /><i>Cyclone's</i> damage is capped at <span class=\"title-tooltip\" title=\"\">6;11;16 ‒ undefined</span> per second against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Damage Per Tick|{{as|{{ap|4/4 to 8/4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110/4}}% AD)}}|Total Damage|{{as|{{ap|4*4 to 8*4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110*4}}% AD)}}}}"
+      ],
+      "notes": "* ''Cyclone'' is special cased to grant stacks of {{ri|Conqueror}} for each tick of damage.\n* Casting {{ai|Crushing Blow|Wukong}} will cancel ''Cyclone'' for both '''Wukong''' and his clone. {{ai|Warrior Trickster|Wukong}} and {{ai|Nimbus Strike|Wukong}} will only interrupt '''Wukong's''' ''Cyclone''.\n* ''Cyclone's'' remaining duration always stays the same even after the clone replicated the ability.\n* During ''Cyclone'', '''Wukong''' and his clone's {{sti|attack ranges|link=range}} are reduced {{ft|to 50|by 125}}.\n* {{tip|Spell shield}} will block one instance of damage.\n** Blocking the {{tip|airborne|knock up}} will still grant immunity to it from either of ''Cyclone's'' casts.\n{{ct|attack=false|move=true|cast=Other abilities are disabled for the first {{fd|0.3}} seconds, casting them afterwards interrupts.|items=true|consume=true|spells=true,true,true,false,true|interrupts=death}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|120 to 90}}|Starts post-effect}}' as '0/90/60/0' and riot's value '120,105,90' as '120/105/90'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Per Tick</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "target_total_hp": [
+                  4.4
+                ]
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "target_total_hp": []
+              },
+              {
+                "player_total_ad": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Damage Per Tick",
+                "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span>",
+                "Total Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                1,
+                1.5,
+                2
+              ],
+              [
+                27.5
+              ],
+              [
+                16,
+                24,
+                32
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage Per Tick",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  1,
+                  1.5,
+                  2
+                ],
+                "target_total_hp": [],
+                "player_total_ad": []
+              }
+            }
+          ]
+        }
+      ]
+    },
     "q1": {
       "riotId": "MonkeyKingDoubleAttack",
       "name": "Crushing Blow",
       "maxrank": 5,
       "cooldown": [
-        9,
-        8.5,
-        8,
-        7.5,
-        7
+        0,
+        8.333,
+        7.667,
+        7,
+        6.333,
+        0
       ],
       "cost": 40,
       "costtype": "Mana",
@@ -110,6 +297,7 @@
       "notes": "* ''Crushing Blow'' triggers on {{tip|turret|structures}} and {{tip|ward|wards}} but the armor reduction is not applied.\n* Pressing ''S'' will cancel the animation and the attack will still land, but '''Wukong''' will not be able to move until it lands.",
       "skillkey": "Q",
       "skillid": "q1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|9 to 7}}|Starts post-effect}}' as '0/8.333/7.667/7/6.333/0' and riot's value '9,8.5,8,7.5,7' as '9/8.5/8/7.5/7'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Range</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,45,70,95,120]\"></SpellSpan> <span class=\"ad\">(+ 50% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Armor Reduction</span>: <span><span class=\"armor\"><SpellSpan :list=\"[10,15,20,25,30]\"></SpellSpan>% of target's armor</span></span></li></ul>",
@@ -197,89 +385,6 @@
               "damage_type": "unknown",
               "ratios": {
                 "player_bonus_ad": 0.5
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "MonkeyKingDecoy",
-      "name": "Warrior Trickster",
-      "maxrank": 5,
-      "cooldown": [
-        20,
-        19,
-        18,
-        17,
-        16
-      ],
-      "cost": [
-        80,
-        70,
-        60,
-        50,
-        40
-      ],
-      "costtype": "mana",
-      "targeting": "Direction",
-      "target_range": 300,
-      "image": {
-        "full": "MonkeyKingDecoy.png",
-        "sprite": "spell7.png",
-        "group": "spell",
-        "x": 240,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Wukong''' {{tip|dash|dashes}} in the target direction, though not through terrain, while entering {{tip|invisibility}} for 1 second and leaving behind a {{tip|clone|decoy}} of himself at his casting position for {{fd|3.25}} seconds.",
-        "The clone is {{tip|untargetable}} to allies and can [[basic attack]] autonomously, prioritizing the last enemy '''Wukong''' damaged. It can also gain the effects of {{ai|Crushing Blow|Wukong}}, {{ais|Nimbus Strike|Wukong}} {{as|'''bonus''' attack speed}}, and {{ai|Cyclone|Wukong}} whenever '''Wukong''' does.",
-        "The clone deals reduced outgoing damage.",
-        "'''Wukong''' can cast any of his [[champion ability|abilities]] during ''Warrior Trickster's'' dash."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Wukong</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction, though not through terrain, while entering <HtmlTooltip class=\"blue link\">invisibility<template #content><div><h4>invisibility<hr></h4><p>Description for keyword invisibility</p></div></template></HtmlTooltip> for 1 second and leaving behind a <HtmlTooltip class=\"blue link\">decoy<template #content><div><h4>clone<hr></h4><p>Description for keyword clone</p></div></template></HtmlTooltip> of himself at his casting position for <span style=\"font-variant-numeric: tabular-nums;\">3.25</span> seconds.<br />The clone is <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> to allies and can <a class=\"effect link\" title=\"basic attack\">basic attack</a> autonomously, prioritizing the last enemy <b>Wukong</b> damaged. It can also gain the effects of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Crushing Blow<template #content>Crushing Blow</template></HtmlTooltip>, <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Nimbus Strike's<template #content>Nimbus Strike</template></HtmlTooltip> <span class=\"attack-speed\"><b>bonus</b> attack speed</span>, and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Cyclone<template #content>Cyclone</template></HtmlTooltip> whenever <b>Wukong</b> does.<br />The clone deals reduced outgoing damage.<br /><b>Wukong</b> can cast any of his <a class=\"effect link\" title=\"abilities\">champion ability</a> during <i>Warrior Trickster's</i> dash.",
-      "leveling": [
-        "{{st|Clone Damage|{{ap|35 to 55}}%}}"
-      ],
-      "notes": "* Casting ''Warrior Trickster'' during an ability's effects will transfer them to the clone.\n* {{tip|Turret}} shots instantly kill the clone.\n* The clone is immune to {{tip|stasis}} and {{ui|Blast Cone}}.\n* The clone can still be targeted by allied {{tip|auto-targeted}} effects (e.g. {{si|Heal}}, {{ai|Celestial Blessing|Kayle}}).",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Clone Damage</span>: <span><SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%</span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Clone Damage",
-                "<SpellSpan :list=\"[35,40,45,50,55]\"></SpellSpan>%"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                35,
-                40,
-                45,
-                50,
-                55
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Clone Damage",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  35,
-                  40,
-                  45,
-                  50,
-                  55
-                ]
               }
             }
           ]
@@ -405,105 +510,6 @@
                   55,
                   60
                 ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "MonkeyKingSpinToWin",
-      "name": "Cyclone",
-      "maxrank": 3,
-      "cooldown": [
-        120,
-        105,
-        90
-      ],
-      "cost": 100,
-      "costtype": "mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "MonkeyKingSpinToWin.png",
-        "sprite": "spell7.png",
-        "group": "spell",
-        "x": 336,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone}} spin their staffs around for up to 2 seconds, becoming {{tip|ghosted}}, gaining {{sti|ms|{{as|20% '''bonus''' movement speed|ms}}}}, and dealing {{as|physical damage}} every {{fd|0.25}} seconds to nearby enemies. Enemies affected by an active ''Cyclone'' for the first time are {{tip|airborne|knocked up}} for {{fd|0.6}} seconds. ''Cyclone'' can be canceled by casting another [[champion ability|ability]] or recasting after {{fd|0.5}} seconds. ''Cyclone'' can be recast within 8 seconds of the first cast after 1 second.",
-        "{{sbc|Recast:}} '''Wukong''' and his {{ai|Warrior Trickster|Wukong|clone}} spin their staffs a second time, mimicking the first cast's effects. If recast while spinning, '''Wukong''' stops spinning early instead; '''Wukong''' can still spin a second time after stopping his first spin early, and can end his second spin early as well.",
-        "The clone's ''Cyclone'' will not {{tip|airborne|knock up}} enemies who were already hit by '''Wukong's''' active ''Cyclone''.",
-        "{{ais|Nimbus Strike|Wukong}} {{as|'''bonus''' attack speed}} duration is continuously refreshed while spinning.",
-        "''Cyclone's'' damage is capped at {{pp|200 to 600 for 3|6;11;16}} per second against {{tip|monsters}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Wukong</b> and his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">clone<template #content>Warrior Trickster</template></HtmlTooltip> spin their staffs around for up to 2 seconds, becoming <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip>, gaining <span><span class=\"ms\">20% <b>bonus</b> movement speed</span></span>, and dealing <span class=\"physical-damage\">physical damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to nearby enemies. Enemies affected by an active <i>Cyclone</i> for the first time are <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.6</span> seconds. <i>Cyclone</i> can be canceled by casting another <a class=\"effect link\" title=\"ability\">champion ability</a> or recasting after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds. <i>Cyclone</i> can be recast within 8 seconds of the first cast after 1 second.<br /><span class=\"sbc\">Recast:</span> <b>Wukong</b> and his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">clone<template #content>Warrior Trickster</template></HtmlTooltip> spin their staffs a second time, mimicking the first cast's effects. If recast while spinning, <b>Wukong</b> stops spinning early instead; <b>Wukong</b> can still spin a second time after stopping his first spin early, and can end his second spin early as well.<br />The clone's <i>Cyclone</i> will not <HtmlTooltip class=\"blue link\">knock up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> enemies who were already hit by <b>Wukong's</b> active <i>Cyclone</i>.<br /><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Wukong\">Nimbus Strike's<template #content>Nimbus Strike</template></HtmlTooltip> <span class=\"attack-speed\"><b>bonus</b> attack speed</span> duration is continuously refreshed while spinning.<br /><i>Cyclone's</i> damage is capped at <span class=\"title-tooltip\" title=\"\">6;11;16 ‒ undefined</span> per second against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Damage Per Tick|{{as|{{ap|4/4 to 8/4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110/4}}% AD)}}|Total Damage|{{as|{{ap|4*4 to 8*4}}% of target's '''maximum''' health}} {{as|(+ {{ap|110*4}}% AD)}}}}"
-      ],
-      "notes": "* ''Cyclone'' is special cased to grant stacks of {{ri|Conqueror}} for each tick of damage.\n* Casting {{ai|Crushing Blow|Wukong}} will cancel ''Cyclone'' for both '''Wukong''' and his clone. {{ai|Warrior Trickster|Wukong}} and {{ai|Nimbus Strike|Wukong}} will only interrupt '''Wukong's''' ''Cyclone''.\n* ''Cyclone's'' remaining duration always stays the same even after the clone replicated the ability.\n* During ''Cyclone'', '''Wukong''' and his clone's {{sti|attack ranges|link=range}} are reduced {{ft|to 50|by 125}}.\n* {{tip|Spell shield}} will block one instance of damage.\n** Blocking the {{tip|airborne|knock up}} will still grant immunity to it from either of ''Cyclone's'' casts.\n{{ct|attack=false|move=true|cast=Other abilities are disabled for the first {{fd|0.3}} seconds, casting them afterwards interrupts.|items=true|consume=true|spells=true,true,true,false,true|interrupts=death}}",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Per Tick</span>: <span><span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's <b>maximum</b> health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "target_total_hp": [
-                  4.4
-                ]
-              },
-              {
-                "player_total_ad": []
-              },
-              {
-                "target_total_hp": []
-              },
-              {
-                "player_total_ad": []
-              }
-            ],
-            "st_slices": [
-              [
-                "Damage Per Tick",
-                "<span class=\"health\"><SpellSpan :list=\"[1,1.5,2]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[27.5]\"></SpellSpan>% AD)</span>",
-                "Total Damage",
-                "<span class=\"health\"><SpellSpan :list=\"[16,24,32]\"></SpellSpan>% of target's '''maximum''' health</span> <span class=\"ad\">(+ <SpellSpan :list=\"[440]\"></SpellSpan>% AD)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                1,
-                1.5,
-                2
-              ],
-              [
-                27.5
-              ],
-              [
-                16,
-                24,
-                32
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Damage Per Tick",
-              "damage_type": "unknown",
-              "ratios": {
-                "base_damage": [
-                  1,
-                  1.5,
-                  2
-                ],
-                "target_total_hp": [],
-                "player_total_ad": []
               }
             }
           ]

@@ -49,6 +49,69 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "r1": {
+      "riotId": "KindredR",
+      "name": "Lamb's Respite",
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        150,
+        120
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "KindredR.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 144,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds and enters a {{rutngt|0.25}} [[Channel#Casting Times|cast time]]. '''All''' units inside the zone cannot be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, and will become {{tip|invulnerable}} for the remaining duration when they reach or are at the threshold, during which they also cannot be {{tip|heal|healed}}, but can still {{sti|health regeneration|regenerate health|link=health regeneration}}.",
+        "All targetable units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> blesses the ground under herself for 4 seconds and enters a <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.25\">Unknown value: rutngt 0.25</simple-tooltip> <a class=\"effect link\" title=\"cast time\">Channel#Casting Times</a>. <b>All</b> units inside the zone cannot be <a class=\"effect link\" title=\"reduced\">Death#Ways_to_prevent_dying_by_not_losing_health</a> below <span class=\"health\"><span>10% of their <b>maximum</b> health</span></span>, and will become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for the remaining duration when they reach or are at the threshold, during which they also cannot be <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>, but can still <span>regenerate health</span>.<br />All targetable units within the zone are <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> immediately when the blessing ends.",
+      "leveling": [
+        "{{st|Heal|{{ap|250 to 400}}}}"
+      ],
+      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n** It will specifically not affect champions that are {{tip|resurrection|resurrecting}} from {{ii|Guardian Angel}}.\n* {{tip|Execute|Execution}} effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* {{tip|Health resource|Health costs}} will ignore ''Lamb's Respite's'' threshold.\n** The cost will not be paid if the caster is below the threshold.\n* ''Lamb's Respite'' has no effect on {{tip|zombie state}} units.\n* The effects are applied before the cast time.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[250,325,400]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Heal",
+                "<SpellSpan :list=\"[250,325,400]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                250,
+                325,
+                400
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Heal",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Mark of the Kindred",
@@ -75,6 +138,127 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "w1": {
+      "riotId": "KindredW",
+      "name": "Wolf's Frenzy",
+      "maxrank": 5,
+      "cooldown": [
+        0,
+        16.667,
+        15.333,
+        14,
+        12.667,
+        0
+      ],
+      "cost": 40,
+      "costtype": "Mana",
+      "targeting": "Location",
+      "target_range": 500,
+      "image": {
+        "full": "KindredW.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 48,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} As '''Kindred''' move and attack, they build up to 100 stacks of ''Hunter's Vigor''. At full stacks, '''Lamb's''' next basic attack {{tip|heals}} her for up to {{pp|49 to 100}}, based on {{as|'''Kindred's''' '''missing''' health}}.",
+        "{{sbc|Active:}} '''Wolf''' {{tip|dashes}} to the target location and claims the surrounding area as his territory for the next {{fd|8.5}} seconds, separating from '''Lamb'''. '''Wolf''' [[Champion summoned units|autonomously]] attacks enemies within the area, prioritizing '''Lamb's''' attack target.",
+        "'''Wolf's''' basic attacks deal {{as|magic damage}} and scale with {{as|25% of '''Kindred's bonus''' attack speed}}. Against [[monster]]s, '''Wolf''' deals 50% increased damage and his attacks {{tip|slow}} the target by 50% for 2 seconds.",
+        "''Wolf's Frenzy'' ends immediately if '''Lamb''' leaves the area or dies."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> As <b>Kindred</b> move and attack, they build up to 100 stacks of <i>Hunter's Vigor</i>. At full stacks, <b>Lamb's</b> next basic attack <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> her for up to <HtmlTooltip class=\"blue link\">49undefined − 100undefined (based on level)<template #content>Values: 49, 52, 55, 58, 61, 64, 67, 70, 73, 76, 79, 82, 85, 88, 91, 94, 97, 100<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>, based on <span class=\"health\"><b>Kindred's</b> <b>missing</b> health</span>.<br /><span class=\"sbc\">Active:</span> <b>Wolf</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location and claims the surrounding area as his territory for the next <span style=\"font-variant-numeric: tabular-nums;\">8.5</span> seconds, separating from <b>Lamb</b>. <b>Wolf</b> <a class=\"effect link\" title=\"autonomously\">Champion summoned units</a> attacks enemies within the area, prioritizing <b>Lamb's</b> attack target.<br /><b>Wolf's</b> basic attacks deal <span class=\"magic-damage\">magic damage</span> and scale with <span class=\"attack-speed\">25% of <b>Kindred's bonus</b> attack speed</span>. Against <a class=\"effect link\" title=\"monster\">monster</a>s, <b>Wolf</b> deals 50% increased damage and his attacks <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> the target by 50% for 2 seconds.<br /><i>Wolf's Frenzy</i> ends immediately if <b>Lamb</b> leaves the area or dies.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|25 to 45}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ {{fd|1.5}}% {{as|(+ 1% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''current''' health)}}|Monster Damage|{{ap|25*1.5 to 45*1.5}} {{as|(+ {{ap|20*1.5}}% '''bonus''' AD)}} {{as|(+ {{ap|1.5*1.5}}% {{as|(+ {{ap|1*1.5}}% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''current''' health)}}}}"
+      ],
+      "notes": "* '''Wolf''' is {{tip|untargetable}} and {{tip|ghosted}} but he cannot move through terrain other than the initial dash on activation. \n* '''Wolf''' is not able to re-target {{ui|Rift Scuttler}} if he loses {{tip|sight}} of her while he's attacking it.\n* ''Wolf's Frenzy'' does not end if '''Lamb''' enters {{tip|resurrection}}.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 14}}|From when the ability is cast}}' as '0/16.667/15.333/14/12.667/0' and riot's value '18,17,16,15,14' as '18/17/16/15/14'",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[37.5,45,52.5,60,67.5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[30]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2.25]\"></SpellSpan>% <span class=\"buzzword\">(+ <SpellSpan :list=\"[1.5]\"></SpellSpan>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.2
+              },
+              {
+                "player_total_ap": 0.01
+              },
+              {
+                "player_bonus_ad": [
+                  0.015
+                ]
+              },
+              {
+                "player_total_ap": []
+              },
+              {
+                "target_current_hp": 0.0151
+              },
+              {
+                "target_current_hp": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>",
+                "Monster Damage",
+                "<SpellSpan :list=\"[37.5,45,52.5,60,67.5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[30]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2.25]\"></SpellSpan>% <span class=\"buzzword\">(+ <SpellSpan :list=\"[1.5]\"></SpellSpan>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                25,
+                30,
+                35,
+                40,
+                45
+              ],
+              [
+                37.5,
+                45,
+                52.5,
+                60,
+                67.5
+              ],
+              [
+                30
+              ],
+              [
+                2.25
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  25,
+                  30,
+                  35,
+                  40,
+                  45
+                ],
+                "player_bonus_ad": [
+                  0.015
+                ],
+                "player_total_ap": [],
+                "target_current_hp": []
+              }
+            }
+          ]
+        }
+      ]
     },
     "q1": {
       "riotId": "KindredQ",
@@ -191,125 +375,6 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "KindredW",
-      "name": "Wolf's Frenzy",
-      "maxrank": 5,
-      "cooldown": [
-        18,
-        17,
-        16,
-        15,
-        14
-      ],
-      "cost": 40,
-      "costtype": "Mana",
-      "targeting": "Location",
-      "target_range": 500,
-      "image": {
-        "full": "KindredW.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 48,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} As '''Kindred''' move and attack, they build up to 100 stacks of ''Hunter's Vigor''. At full stacks, '''Lamb's''' next basic attack {{tip|heals}} her for up to {{pp|49 to 100}}, based on {{as|'''Kindred's''' '''missing''' health}}.",
-        "{{sbc|Active:}} '''Wolf''' {{tip|dashes}} to the target location and claims the surrounding area as his territory for the next {{fd|8.5}} seconds, separating from '''Lamb'''. '''Wolf''' [[Champion summoned units|autonomously]] attacks enemies within the area, prioritizing '''Lamb's''' attack target.",
-        "'''Wolf's''' basic attacks deal {{as|magic damage}} and scale with {{as|25% of '''Kindred's bonus''' attack speed}}. Against [[monster]]s, '''Wolf''' deals 50% increased damage and his attacks {{tip|slow}} the target by 50% for 2 seconds.",
-        "''Wolf's Frenzy'' ends immediately if '''Lamb''' leaves the area or dies."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> As <b>Kindred</b> move and attack, they build up to 100 stacks of <i>Hunter's Vigor</i>. At full stacks, <b>Lamb's</b> next basic attack <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> her for up to <HtmlTooltip class=\"blue link\">49undefined − 100undefined (based on level)<template #content>Values: 49, 52, 55, 58, 61, 64, 67, 70, 73, 76, 79, 82, 85, 88, 91, 94, 97, 100<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip>, based on <span class=\"health\"><b>Kindred's</b> <b>missing</b> health</span>.<br /><span class=\"sbc\">Active:</span> <b>Wolf</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target location and claims the surrounding area as his territory for the next <span style=\"font-variant-numeric: tabular-nums;\">8.5</span> seconds, separating from <b>Lamb</b>. <b>Wolf</b> <a class=\"effect link\" title=\"autonomously\">Champion summoned units</a> attacks enemies within the area, prioritizing <b>Lamb's</b> attack target.<br /><b>Wolf's</b> basic attacks deal <span class=\"magic-damage\">magic damage</span> and scale with <span class=\"attack-speed\">25% of <b>Kindred's bonus</b> attack speed</span>. Against <a class=\"effect link\" title=\"monster\">monster</a>s, <b>Wolf</b> deals 50% increased damage and his attacks <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> the target by 50% for 2 seconds.<br /><i>Wolf's Frenzy</i> ends immediately if <b>Lamb</b> leaves the area or dies.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|25 to 45}} {{as|(+ 20% '''bonus''' AD)}} {{as|(+ {{fd|1.5}}% {{as|(+ 1% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''current''' health)}}|Monster Damage|{{ap|25*1.5 to 45*1.5}} {{as|(+ {{ap|20*1.5}}% '''bonus''' AD)}} {{as|(+ {{ap|1.5*1.5}}% {{as|(+ {{ap|1*1.5}}% per {{ai|Mark of the Kindred|Kindred|Mark}})|buzzword}} of target's '''current''' health)}}}}"
-      ],
-      "notes": "* '''Wolf''' is {{tip|untargetable}} and {{tip|ghosted}} but he cannot move through terrain other than the initial dash on activation. \n* '''Wolf''' is not able to re-target {{ui|Rift Scuttler}} if he loses {{tip|sight}} of her while he's attacking it.\n* ''Wolf's Frenzy'' does not end if '''Lamb''' enters {{tip|resurrection}}.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[37.5,45,52.5,60,67.5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[30]\"></SpellSpan>% <b>bonus</b> AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2.25]\"></SpellSpan>% <span class=\"buzzword\">(+ <SpellSpan :list=\"[1.5]\"></SpellSpan>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's <b>current</b> health)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_bonus_ad": 0.2
-              },
-              {
-                "player_total_ap": 0.01
-              },
-              {
-                "player_bonus_ad": [
-                  0.015
-                ]
-              },
-              {
-                "player_total_ap": []
-              },
-              {
-                "target_current_hp": 0.0151
-              },
-              {
-                "target_current_hp": []
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <span class=\"buzzword\">(+ 1% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>",
-                "Monster Damage",
-                "<SpellSpan :list=\"[37.5,45,52.5,60,67.5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[30]\"></SpellSpan>% '''bonus''' AD)</span> <span class=\"health\">(+ <SpellSpan :list=\"[2.25]\"></SpellSpan>% <span class=\"buzzword\">(+ <SpellSpan :list=\"[1.5]\"></SpellSpan>% per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Kindred\">Mark<template #content>Mark of the Kindred</template></HtmlTooltip>)</span> of target's '''current''' health)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                25,
-                30,
-                35,
-                40,
-                45
-              ],
-              [
-                37.5,
-                45,
-                52.5,
-                60,
-                67.5
-              ],
-              [
-                30
-              ],
-              [
-                2.25
-              ],
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  25,
-                  30,
-                  35,
-                  40,
-                  45
-                ],
-                "player_bonus_ad": [
-                  0.015
-                ],
-                "player_total_ap": [],
-                "target_current_hp": []
-              }
-            }
-          ]
-        }
-      ]
-    },
     "e1": {
       "riotId": "KindredEWrapper",
       "name": "Mounting Dread",
@@ -395,69 +460,6 @@
                 "player_total_ap": 0.005,
                 "target_missing_hp": 0.805
               }
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "KindredR",
-      "name": "Lamb's Respite",
-      "maxrank": 3,
-      "cooldown": [
-        180,
-        150,
-        120
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "KindredR.png",
-        "sprite": "spell6.png",
-        "group": "spell",
-        "x": 144,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Lamb''' blesses the ground under herself for 4 seconds and enters a {{rutngt|0.25}} [[Channel#Casting Times|cast time]]. '''All''' units inside the zone cannot be [[Death#Ways_to_prevent_dying_by_not_losing_health|reduced]] below {{as|{{sti|health|10% of their '''maximum''' health}}}}, and will become {{tip|invulnerable}} for the remaining duration when they reach or are at the threshold, during which they also cannot be {{tip|heal|healed}}, but can still {{sti|health regeneration|regenerate health|link=health regeneration}}.",
-        "All targetable units within the zone are {{tip|heal|healed}} immediately when the blessing ends."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lamb</b> blesses the ground under herself for 4 seconds and enters a <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.25\">Unknown value: rutngt 0.25</simple-tooltip> <a class=\"effect link\" title=\"cast time\">Channel#Casting Times</a>. <b>All</b> units inside the zone cannot be <a class=\"effect link\" title=\"reduced\">Death#Ways_to_prevent_dying_by_not_losing_health</a> below <span class=\"health\"><span>10% of their <b>maximum</b> health</span></span>, and will become <HtmlTooltip class=\"blue link\">invulnerable<template #content><div><h4>invulnerable<hr></h4><p>Description for keyword invulnerable</p></div></template></HtmlTooltip> for the remaining duration when they reach or are at the threshold, during which they also cannot be <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip>, but can still <span>regenerate health</span>.<br />All targetable units within the zone are <HtmlTooltip class=\"blue link\">healed<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> immediately when the blessing ends.",
-      "leveling": [
-        "{{st|Heal|{{ap|250 to 400}}}}"
-      ],
-      "notes": "* ''Lamb's Respite'' will affect all {{tip|champions}}, {{tip|minions}}, and {{tip|monsters}}, but not {{tip|ward|wards}}, {{tip|turret|turrets}}, or [[jungle plants]].\n* ''Lamb's Respite'' will affect {{tip|untargetable}} units but does not grant them the {{tip|heal}} at the end of the blessing.\n** It will specifically not affect champions that are {{tip|resurrection|resurrecting}} from {{ii|Guardian Angel}}.\n* {{tip|Execute|Execution}} effects will bypass ''Lamb's Respite'' threshold and leave the unit at {{as|1 health}}. This does not occur if the unit ''is at the threshold'', as they are {{tip|invulnerable}}.\n* {{tip|Health resource|Health costs}} will ignore ''Lamb's Respite's'' threshold.\n** The cost will not be paid if the caster is below the threshold.\n* ''Lamb's Respite'' has no effect on {{tip|zombie state}} units.\n* The effects are applied before the cast time.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  100 as 100 and riot's value 0,0,0 as 0",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[250,325,400]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Heal",
-                "<SpellSpan :list=\"[250,325,400]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                250,
-                325,
-                400
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Heal",
-              "damage_type": "none",
-              "ratios": {}
             }
           ]
         }

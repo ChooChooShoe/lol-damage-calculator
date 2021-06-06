@@ -49,6 +49,243 @@
     "attackspeed": 0.625
   },
   "skills": {
+    "r1": {
+      "riotId": "ThreshRPenta",
+      "name": "The Box",
+      "maxrank": 3,
+      "cooldown": [
+        140,
+        120,
+        100
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "ThreshRPenta.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Thresh''' surrounds his location with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them by 99% for 2 seconds.",
+        "Enemy champions breaking any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second.",
+        "''Targets are immune to breaking a new wall for 1 second after breaking one.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Thresh</b> surrounds his location with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 99% for 2 seconds.<br />Enemy champions breaking any wall beyond the first take no damage and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> for only 1 second.<br /><i>Targets are immune to breaking a new wall for 1 second after breaking one.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|250|400|550}} {{as|(+ 100% AP)}}}}"
+      ],
+      "notes": "* ''The Box'' is always placed at the original cast location.\n* ''The Box'' always uses [[quick cast]], regardless of player settings. <!-- It used to be direction cast, and then have the box face the target direction. Dunno if this change was intentional but I won't assume a bug here ~Caenen-->\n** ''The Box'' always faces into the same direction (one of the walls is due North, and spreads West-East).\n*** The cast indicator does not show this behavior.\n* The corners of ''The Box'' are placed 400 units around '''Thresh'''.\n** Each wall is {{fd|470.228}} units long.\n** Each wall passes {{fd|323.607}} units from the center of ''The Box'' at the closest approach (ignoring its width).\n** A pentagon has an angle of 72{{degree}} between each corner.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 1
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                250,
+                400,
+                550
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  250,
+                  400,
+                  550
+                ],
+                "player_total_ap": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "ThreshE",
+      "name": "Flay",
+      "maxrank": 5,
+      "cooldown": [
+        11,
+        10.5,
+        10,
+        9.5,
+        9
+      ],
+      "cost": [
+        60,
+        65,
+        70,
+        75,
+        80
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|400|behind}} / {{tip|er|icononly = true}} {{tt|400|front}}",
+      "image": {
+        "full": "ThreshE.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Thresh's''' basic attacks deal {{as|'''bonus''' magic damage}}, with the {{sti|{{as|AD}}}} ratio increasing based on the time spent not basic attacking enemies, up to 10 seconds.",
+        "{{sbc|Active:}} '''Thresh''' sweeps his chain around him and in a broad line in the target direction, dealing {{as|magic damage}} to enemies within the area, {{tip|airborne|knocking}} them 200 units toward the chain's direction, and afterwards {{tip|slow|slowing}} them for 1 second."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Thresh's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, with the <span><span class=\"ad\">AD</span></span> ratio increasing based on the time spent not basic attacking enemies, up to 10 seconds.<br /><span class=\"sbc\">Active:</span> <b>Thresh</b> sweeps his chain around him and in a broad line in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to enemies within the area, <HtmlTooltip class=\"blue link\">knocking<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them 200 units toward the chain's direction, and afterwards <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 1 second.",
+      "leveling": [
+        "{{st|Minimum Bonus Magic Damage|1 per {{ai|Damnation|Thresh|Soul}} collected {{as|(+ 0% AD)}}}}\n{{st|Maximum Bonus Magic Damage|1 per {{ai|Damnation|Thresh|Soul}} collected {{as|(+ {{ap|100 to 200}}% AD)}}}}",
+        "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 40% AP)}}}}{{st|Slow|{{ap|20 to 40}}%}}"
+      ],
+      "notes": "* Applies {{tip|area damage}} on the ability and deals {{tip|proc damage}} on the enhanced basic attack.\n*''Flay's'' passive's buff icon changes colors depending on charge level:\n** {{ai|Flay 2||0 - 50%}}\n** {{ai|Flay 3||50 - 75%}}\n** {{ai|Flay 4||75% - 100%}}\n** {{ai|Flay 5||100%}} \n** At 100%, ''Thresh's'' scythe will glow green and a sound effect will play.\n* {{iis|Runaan's Hurricane}} {{nie|Wind's Fury}} will apply ''Flay's'' passive to each enemy hit, with the secondary targets taking minimum damage (charge resets upon hitting the primary target).\n* The enhanced attack applies other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal (the bonus damage cannot) but does not affect structures or [[ward]]s (hitting them does not consume the bonus damage or reset the charge).\n* ''Flay's'' passive enhanced attack can be {{tip|dodged}} (the enhanced attack is not consumed and the charge is not reset) and {{tip|blocked}} (the enhanced attack is consumed and the charge is reset).\n** {{Pending for test}}: Enhanced attack's interactions with {{tip|blind|blinding}} effects (regarding both bonus damage and charge reset).",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Bonus Magic Damage</span>: <span>1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ 0% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Bonus Magic Damage</span>: <span>1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ <SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 0
+              },
+              {
+                "player_total_ad": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Minimum Bonus Magic Damage",
+                "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ 0% AD)</span>"
+              ],
+              [
+                "Maximum Bonus Magic Damage",
+                "1 per <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">Soul<template #content>Damnation</template></HtmlTooltip> collected <span class=\"ad\">(+ <SpellSpan :list=\"[100,125,150,175,200]\"></SpellSpan>% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Minimum Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "player_total_ad": 0
+              }
+            },
+            {
+              "index": 1,
+              "title": "Maximum Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "player_total_ad": 0
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[65,95,125,155,185]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.4
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[65,95,125,155,185]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                65,
+                95,
+                125,
+                155,
+                185
+              ],
+              [
+                20,
+                25,
+                30,
+                35,
+                40
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  65,
+                  95,
+                  125,
+                  155,
+                  185
+                ],
+                "player_total_ap": 0.4
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  25,
+                  30,
+                  35,
+                  40
+                ],
+                "player_total_ap": 0.4
+              }
+            }
+          ]
+        }
+      ]
+    },
     "i1": {
       "riotId": "",
       "name": "Damnation",
@@ -74,6 +311,88 @@
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
+    },
+    "q1": {
+      "riotId": "ThreshQ",
+      "name": "Death Sentence",
+      "maxrank": 5,
+      "cooldown": [
+        20,
+        18,
+        16,
+        14,
+        12
+      ],
+      "cost": 70,
+      "costtype": "Mana",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tip|cr|icononly = true}} 1100 / {{tip|er|icononly = true}} 1040",
+      "image": {
+        "full": "ThreshQ.png",
+        "sprite": "spell12.png",
+        "group": "spell",
+        "x": 0,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Thresh''' throws out his scythe in the target direction, becoming unable to move or attack while it is in flight.",
+        "The scythe catches the first enemy it hits, dealing them {{as|magic damage}}, {{tip|stun|stunning}} them for {{fd|1.5}} seconds, and ''hooking'' the target for {{fd|1.5}} seconds, during which the target is {{tip|true sight|revealed}} and '''Thresh''' is unable to declare basic attacks. Hitting an enemy reduces the {{sti|cooldown}} of ''Death Sentence'' by 3 seconds and {{tip|slow|slows}} '''Thresh''' by 20% for 1 second.",
+        "While the target is {{tip|stun|stunned}}, '''Thresh''' tugs at his scythe's chain twice over {{fd|0.8}} seconds, {{tip|airborne|pulling}} the target a short distance towards himself with each tug. After {{fd|0.5}} seconds of hitting an enemy or instantly after hitting a {{tip|minion}} or {{tip|monster}}, '''Thresh''' can recast the ability to cast ''Deathly Leap'' while the target is ''hooked'', doing so will cause him to stop tugging.",
+        "{{sbc|Recast:}} '''Thresh''' {{tip|dash|dashes}} to the ''hooked'' enemy within range, becoming able to attack again upon arrival. '''Thresh''' can cast any of his [[champion ability|abilities]] while in flight with the exception of {{ai|The Box|Thresh}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Thresh</b> throws out his scythe in the target direction, becoming unable to move or attack while it is in flight.<br />The scythe catches the first enemy it hits, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, and <i>hooking</i> the target for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, during which the target is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <b>Thresh</b> is unable to declare basic attacks. Hitting an enemy reduces the <span>cooldown</span> of <i>Death Sentence</i> by 3 seconds and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> <b>Thresh</b> by 20% for 1 second.<br />While the target is <HtmlTooltip class=\"blue link\">stunned<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip>, <b>Thresh</b> tugs at his scythe's chain twice over <span style=\"font-variant-numeric: tabular-nums;\">0.8</span> seconds, <HtmlTooltip class=\"blue link\">pulling<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> the target a short distance towards himself with each tug. After <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds of hitting an enemy or instantly after hitting a <HtmlTooltip class=\"blue link\">minion<template #content><div><h4>minion<hr></h4><p>Description for keyword minion</p></div></template></HtmlTooltip> or <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, <b>Thresh</b> can recast the ability to cast <i>Deathly Leap</i> while the target is <i>hooked</i>, doing so will cause him to stop tugging.<br /><span class=\"sbc\">Recast:</span> <b>Thresh</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> to the <i>hooked</i> enemy within range, becoming able to attack again upon arrival. <b>Thresh</b> can cast any of his <a class=\"effect link\" title=\"abilities\">champion ability</a> while in flight with the exception of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Thresh\">The Box<template #content>The Box</template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 240}} {{as|(+ 50% AP)}}}}"
+      ],
+      "notes": "* '''Thresh''' will track the target if they change locations.\n** He will dash to the target's previous location if the target is too far away or moves beyond the maximum tracking distance.\n* '''Thresh''' will turn his facing direction towards the cast direction only after ''Death Sentence's'' cast is complete.\n** If '''Thresh''' is facing '''more''' than 90{{degree}} away from the cast direction in either direction, he will turn to face ''exactly'' 90{{degree}} away from the cast direction over the cast time, then turn towards the cast direction when the missile is fired.\n** If '''Thresh''' is facing '''less''' than 90{{degree}} away from the cast direction, he will keep his facing direction until the missile is fired.\n** [http://web.archive.org/web/0/http://na.leagueoflegends.com/board/showthread.php?p=33837947#post33837947 This prevents the enemy from knowing where exactly '''Thresh''' is aiming at before the cast animation is complete.]\n*''Death Sentence'' triggers on-cast effects (such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}) once at the start of the cast, and once at the end of the cast. It may trigger on-cast effects a third time when casting ''Deathly Leap''.\n** This is because a separate spell is cast to prevent '''Thresh''' from facing towards the target direction immediately, which is (incorrectly) flagged to trigger on-cast effects.{{bug}}\n* ''Deathly Leap'' has a maximum cast range. If '''Thresh''' or his victim move too far away from one another, ''Death Sentence'' will show its cooldown prematurely, preventing ''Deathly Leap'' from being cast.\n** This behaves similarly to a tether range.\n** If '''Thresh''' is already outside the maximum range when the scythe lands and the ''hook'' is created, ''Death Sentence'' will not be on cooldown{{bug}}, however actually casting ''Deathly Leap'' will cause it to fizzle unless '''Thresh''' has walked into range again.\n* While {{tip|ground|grounded}} or {{tip|root|rooted}} ''Death Sentence'' cannot be recast.\n* Only ''Death Sentence's'' first chain tug puts the target {{tip|airborne}}. Outside the first ~{{fd|0.3}} seconds, the target is only stunned.{{bug}}\n* ''Death Sentence'' will not {{tip|stun}} enemies that are {{tip|displacement immune}} or {{tip|cc-immune}} but the target will still be ''hooked'' and '''Thresh''' is still granted the ability to recast for his dash.\n* '''Thresh''' will not tug at all if the {{tip|stun}} is not active on the target or if he used the recast.\n* {{tip|Spell shield}} will block all of ''Death Sentence's'' effects, including the ''hook'' as well as prevent the cooldown reduction.\n* ''Death Sentence's'' {{tip|stun}} duration is affected by {{tip|tenacity}} but the ''hook'' will always persist for {{fd|1.5}} seconds, unless the target uses a {{tip|cleanse|cleansing}} effect, in which case the ''hook'' is removed.\n** ''Death Sentence's'' {{tip|stun}} will persist even if '''Thresh''' dies before the duration ends. The tug will not occur as '''Thresh''' is not alive.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                80,
+                120,
+                160,
+                200,
+                240
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  120,
+                  160,
+                  200,
+                  240
+                ],
+                "player_total_ap": 0.5
+              }
+            }
+          ]
+        }
+      ]
     },
     "w1": {
       "riotId": "ThreshW",
@@ -144,80 +463,6 @@
               "title": "Shield Strength",
               "damage_type": "none",
               "ratios": {}
-            }
-          ]
-        }
-      ]
-    },
-    "r1": {
-      "riotId": "ThreshRPenta",
-      "name": "The Box",
-      "maxrank": 3,
-      "cooldown": [
-        140,
-        120,
-        100
-      ],
-      "cost": 100,
-      "costtype": "Mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "ThreshRPenta.png",
-        "sprite": "spell12.png",
-        "group": "spell",
-        "x": 144,
-        "y": 144,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Active:}} '''Thresh''' surrounds his location with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them by 99% for 2 seconds.",
-        "Enemy champions breaking any wall beyond the first take no damage and are {{tip|slow|slowed}} for only 1 second.",
-        "''Targets are immune to breaking a new wall for 1 second after breaking one.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Thresh</b> surrounds his location with a pentagon of spectral walls, each one lasting for up to 5 seconds. Walls break upon contact with an enemy champion, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 99% for 2 seconds.<br />Enemy champions breaking any wall beyond the first take no damage and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> for only 1 second.<br /><i>Targets are immune to breaking a new wall for 1 second after breaking one.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|250|400|550}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* ''The Box'' is always placed at the original cast location.\n* ''The Box'' always uses [[quick cast]], regardless of player settings. <!-- It used to be direction cast, and then have the box face the target direction. Dunno if this change was intentional but I won't assume a bug here ~Caenen-->\n** ''The Box'' always faces into the same direction (one of the walls is due North, and spreads West-East).\n*** The cast indicator does not show this behavior.\n* The corners of ''The Box'' are placed 400 units around '''Thresh'''.\n** Each wall is {{fd|470.228}} units long.\n** Each wall passes {{fd|323.607}} units from the center of ''The Box'' at the closest approach (ignoring its width).\n** A pentagon has an angle of 72{{degree}} between each corner.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 1
-              }
-            ],
-            "st_slices": [
-              [
-                "Magic Damage",
-                "<SpellSpan :list=\"[250,400,550]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                250,
-                400,
-                550
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Magic Damage",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  250,
-                  400,
-                  550
-                ],
-                "player_total_ap": 1
-              }
             }
           ]
         }
