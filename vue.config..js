@@ -45,7 +45,7 @@ MinifyJSONPlugin.prototype.apply = function (compiler) {
 };
 
 process.env.VUE_APP_VERSION = "v0.2.0";
-const versionJson = require('./public/api/version.json');
+const versionJson = import('./src/api/version.json');
 process.env.VUE_APP_DDRAGON_VERSION = versionJson.v;
 process.env.VUE_APP_LOL_PATCH_VERSION = versionJson.dv;
 process.env.VUE_APP_LANG = versionJson.l;

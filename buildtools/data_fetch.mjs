@@ -352,7 +352,7 @@ async function onRealmJsonResponse(body) {
     const championUrl = `${cdn}/${version}/data/${lang}/champion.json`;
 
 
-    saveFile(`./public/api/version.json`, {
+    saveFile(`./src/api/version.json`, {
         v: version,
         dv: dispVersion,
         l: lang,
@@ -415,7 +415,7 @@ async function onChampionJsonResponse(champ_json, fandom_data) {
     await Promise.all(promises);
     console.log("freeze data");
     Object.freeze(returnData);
-    saveFile('./public/api/ChampionList.json', returnData);
+    saveFile('./src/api/ChampionList.json', returnData);
     return returnData;
 }
 async function createSkill(letter, skillNames, riotData, isPassive, champModel) {
