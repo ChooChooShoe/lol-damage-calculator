@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.139",
-  "changes": "10.24.1",
+  "changes": "11.7.1",
   "id": "Varus",
   "name": "Varus",
   "title": "the Arrow of Retribution",
@@ -8,7 +8,7 @@
     "full": "Varus.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 48,
     "w": 48,
     "h": 48
@@ -30,7 +30,7 @@
     "hp": 530,
     "hpperlevel": 91,
     "mp": 360,
-    "mpperlevel": 33,
+    "mpperlevel": 40,
     "movespeed": 330,
     "armor": 27,
     "armorperlevel": 3.4,
@@ -44,7 +44,7 @@
     "crit": 0,
     "critperlevel": 0,
     "attackdamage": 61,
-    "attackdamageperlevel": 3,
+    "attackdamageperlevel": 3.4,
     "attackspeedperlevel": 4,
     "attackspeed": 0.658
   },
@@ -58,15 +58,15 @@
         "full": "VarusPassive.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 48,
+        "x": 96,
         "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Varus''' gains 40% {{as|(+ 30% '''bonus''' attack speed)}} {{sti|as|'''bonus''' attack speed}} for 5 seconds upon an enemy champion {{tip|takedown}}, and 20% {{as|(+ 15% '''bonus''' attack speed)}} '''bonus''' attack speed on non-champion kills."
+        "{{sbc|Innate:}} '''Varus''' gains 20% {{as|(+ 15% '''bonus''' attack speed)}} '''bonus''' attack speed for 5 seconds on non-champion kills, increased to 40% {{as|(+ 30% '''bonus''' attack speed)}} on champion {{tip|takedown|takedowns}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Varus</b> gains 40% <span class=\"attack-speed\">(+ 30% <b>bonus</b> attack speed)</span> <span><b>bonus</b> attack speed</span> for 5 seconds upon an enemy champion <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>, and 20% <span class=\"attack-speed\">(+ 15% <b>bonus</b> attack speed)</span> <b>bonus</b> attack speed on non-champion kills.",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Varus</b> gains 20% <span class=\"attack-speed\">(+ 15% <b>bonus</b> attack speed)</span> <b>bonus</b> attack speed for 5 seconds on non-champion kills, increased to 40% <span class=\"attack-speed\">(+ 30% <b>bonus</b> attack speed)</span> on champion <HtmlTooltip class=\"blue link\">takedowns<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip>.",
       "leveling": [],
       "notes": "* No additional details.",
       "skillkey": "I",
@@ -78,41 +78,40 @@
       "name": "Piercing Arrow",
       "maxrank": 5,
       "cooldown": [
-        18,
         16,
-        14,
-        12,
+        14.5,
+        13,
+        11.5,
         10
       ],
       "cost": [
+        65,
         70,
         75,
         80,
-        85,
-        90
+        85
       ],
       "costtype": "mana",
       "targeting": "[[Auto-targeted|Auto]] / [[Direction-targeted|Direction]]",
-      "target_range": "{{pp|type=channel time|925 to 1625 for 11|0 to 2|formula=925{{plus}}(70 per 0.2 seconds). ''This is capped at 2 seconds.''}}",
       "image": {
         "full": "VarusQ.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Varus''' {{tip|channel|charges}} for up to 4 seconds to gradually increase ''Piercing Arrow's'' {{sti|range}} and damage while being {{tip|slow|slowed}} by 20%. ''Piercing Arrow'' can be recast at any time within its duration.",
+        "{{sbc|Active:}} '''Varus''' {{tip|channel|charges}} while being {{tip|slow|slowed}} by 20% for up to 4 seconds to increase ''Piercing Arrow's'' {{sti|range}} and damage over the first {{fd|1.25}} seconds of the channel. ''Piercing Arrow'' can be recast at any time within its duration.",
         "If the charge completes without reactivation, ''Piercing Arrow'' is canceled, refunding 50% of its {{sti|mana|{{as|mana cost}}}}.",
-        "{{sbc|Recast:}} '''Varus''' fires a piercing arrow in the target direction, dealing {{as|physical damage}} to all enemies struck. The arrow's damage and any {{ai|Blighted Quiver|Varus|Blight}} stacks detonated are increased by {{pp|type=channel time|key=%|0 to 50 for 11|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, arrow damage is reduced by {{pp|type=enemies hit|key=%|0 to 60 for 5;67|0 to 5|formula=0% + (15% per enemy hit). ''This is capped at a maximum of 67%.''}}."
+        "{{sbc|Recast:}} '''Varus''' fires a piercing arrow in the target direction, dealing {{as|physical damage}} to all enemies within its path. The damage of the arrow as well as any detonated {{ai|Blighted Quiver|Varus|Blight}} stacks are increased by {{pp|type=channel time|key=%|0 to 50 for 6|0 to 1.25|formula=2% per 0.05 seconds. ''This is capped at 1.25 seconds.''}}, and the arrow's damage is reduced by {{pp|type=enemies hit|key=%|0 to 60 for 5;67|0 to 5|formula=0% + (15% per enemy hit). ''This is capped at a maximum of 67%.''}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 4 seconds to gradually increase <i>Piercing Arrow's</i> <span>range</span> and damage while being <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 20%. <i>Piercing Arrow</i> can be recast at any time within its duration.<br />If the charge completes without reactivation, <i>Piercing Arrow</i> is canceled, refunding 50% of its <span><span class=\"mana\">mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> fires a piercing arrow in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies struck. The arrow's damage and any <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Blight<template #content>Blighted Quiver</template></HtmlTooltip> stacks detonated are increased by <span class=\"title-tooltip\" title=\"\">0 to 2 ‒ undefined</span>, arrow damage is reduced by <span class=\"title-tooltip\" title=\"\">0 to 5 ‒ undefined</span>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> while being <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 20% for up to 4 seconds to increase <i>Piercing Arrow's</i> <span>range</span> and damage over the first <span style=\"font-variant-numeric: tabular-nums;\">1.25</span> seconds of the channel. <i>Piercing Arrow</i> can be recast at any time within its duration.<br />If the charge completes without reactivation, <i>Piercing Arrow</i> is canceled, refunding 50% of its <span><span class=\"mana\">mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> fires a piercing arrow in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to all enemies within its path. The damage of the arrow as well as any detonated <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Blight<template #content>Blighted Quiver</template></HtmlTooltip> stacks are increased by <span class=\"title-tooltip\" title=\"\">0 to 1.25 ‒ undefined</span>, and the arrow's damage is reduced by <span class=\"title-tooltip\" title=\"\">0 to 5 ‒ undefined</span>.",
       "leveling": [
         "{{st|Minimum Physical Damage|{{ap|15/1.5 to 235/1.5|round=2}} {{as|(+ {{ap|125/1.5 to 145/1.5|round=2}}% AD)}}|Minimum Fully Reduced Damage|{{ap|15/1.5*0.33 to 235/1.5*0.33|round=2}} {{as|(+ {{ap|(125/1.5)*0.33 to (145/1.5)*0.33|round=2}}% AD)}}}}\n{{st|Maximum Physical Damage|{{ap|15 to 235}} {{as|(+ {{ap|125 to 145|round=2}}% AD)}}|Maximum Fully Reduced Damage|{{ap|15*0.33 to 235*0.33}} {{as|(+ {{ap|125*0.33 to 145*0.33|round=2}}% AD)}}}}"
       ],
-      "notes": "* The range of the spell will always be displayed, even as it increases.\n* ''Piercing Arrow'' will cast from wherever '''Varus''' is at the end of the channel.\n* ''Piercing Arrow's'' damage will display a {{ccs|cosmetic critical strike|physical|link=true|tip=false}} when fully charged.\n* The following table refers for interactions while '''Varus''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast={{ai|Blighted Quiver|Varus}} is usable during the first {{fd|0.25}} seconds, otherwise, it's disabled. {{ai|Hail of Arrows|Varus}} and {{ai|Chain of Corruption|Varus}} are disabled. This ability recasts to end channel.|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
+      "notes": "* The arrow missile range is 825 to 1525; The range increases by 140 per {{fd|0.25}} seconds for the first {{fd|1.25}} seconds. Upon reaching its maximum range, it also strikes additional targets in a {{tip|er|icononly = true}} 70 radius, rounding off the struck area.\n* The indicator for the range of the spell will be displayed for the entire channel.\n* ''Piercing Arrow'' will cast from wherever '''Varus''' is at the end of the channel.\n* ''Piercing Arrow's'' damage will display a {{ccs|cosmetic critical strike|physical|link=true|tip=false}} when fully charged.\n* The following table refers for interactions while '''Varus''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast={{ai|Blighted Quiver|Varus}} is usable during the first {{fd|0.25}} seconds, otherwise, it's disabled. {{ai|Hail of Arrows|Varus}} and {{ai|Chain of Corruption|Varus}} are disabled. This ability recasts to end channel.|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
@@ -254,24 +253,24 @@
         "full": "VarusW.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Varus'''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and apply a [[stack]] of ''Blight'' for 6 seconds, stacking up to 3 times, refreshing on subsequent attacks.",
-        "'''Varus' ''' other abilities consume stacks of ''Blight'' on enemies upon damaging them to deal {{as|'''bonus''' magic damage}} and, if they are a {{tip|champion}} or {{tip|monster|epic monster}}, reduce his basic abilities' cooldowns by 12% of the '''maximum''' cooldown for each stack on the target, up to 36% per target. The '''bonus''' damage is capped at 360 against monsters.",
-        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} deals {{as|{{pp|key=%|changedisplay=true|6 to 14 for 5|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{pp|type=Piercing Arrow's channel time|key=%|0 to 50 for 11|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{pp|key=%|changedisplay=true|6*1.5 to 14*1.5 for 5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' may be recast after 1 second and will go on a 1 second cooldown if it isn't used within {{fd|5.5}} seconds of its activation or immediately if '''Varus''' dies.",
+        "{{sbc|Passive:}} '''Varus'''' [[basic attack]]s deal {{as|'''bonus''' magic damage}} and apply a [[stack]] of ''Blight'' for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.",
+        "'''Varus' ''' other abilities consume stacks of ''Blight'' on enemies upon damaging them to deal {{as|'''bonus''' magic damage}} and, if they are a {{tip|champion}} or epic {{tip|monster}}, reduce his basic abilities' cooldowns by 12% of the '''maximum''' cooldown for each stack on the target, up to 36% per target. The '''bonus''' damage is capped at 360 against monsters.",
+        "{{sbc|Active:}} '''Varus'''' next {{ai|Piercing Arrow|Varus}} within {{fd|5.5}} seconds deals {{as|{{pp|key=%|changedisplay=true|6 to 14 for 5|1 to 13}} of the target's '''missing''' health}} {{as|'''bonus''' magic damage}}, increased by {{pp|type=Piercing Arrow's channel time|key=%|0 to 80 for 11|0 to 2|formula=5% per 0.2 seconds. ''This is capped at 2 seconds.''}}, for a maximum of {{as|{{pp|key=%|changedisplay=true|6*1.8 to 14*1.8 for 5|1 to 13}} of the target's '''missing''' health}}. This damage is capped at 360 against monsters. If '''Varus''' is not charging {{ai|Piercing Arrow|Varus}}, ''Blighted Quiver'' can be recast after 1 second for its duration, and does so automatically when its duration ends or '''Varus''' dies within the duration.",
         "''Blighted Quiver'' can be cast during the first {{fd|0.25}} seconds of {{ais|Piercing Arrow|Varus}} charge. ''Blighted Quiver'' is placed on full cooldown even if the charge completes without reactivation or is {{tip|interrupt|interrupted}}.",
-        "{{sbc|Recast:}} '''Varus''' cancels ''Blighted Quiver'' and puts it on a 1 second {{sti|cooldown}}."
+        "{{sbc|Recast:}} '''Varus''' cancels ''Blighted Quiver'' and places it on a 1 second {{sti|cooldown}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Varus</b>' <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Blight</i> for 6 seconds, stacking up to 3 times, refreshing on subsequent attacks.<br /><b>Varus' </b> other abilities consume stacks of <i>Blight</i> on enemies upon damaging them to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and, if they are a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or <HtmlTooltip class=\"blue link\">epic monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, reduce his basic abilities' cooldowns by 12% of the <b>maximum</b> cooldown for each stack on the target, up to 36% per target. The <b>bonus</b> damage is capped at 360 against monsters.<br /><span class=\"sbc\">Active:</span> <b>Varus</b>' next <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip> deals <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, increased by <span class=\"title-tooltip\" title=\"\">0 to 2 ‒ undefined</span>, for a maximum of <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span>. This damage is capped at 360 against monsters. If <b>Varus</b> is not charging <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip>, <i>Blighted Quiver</i> may be recast after 1 second and will go on a 1 second cooldown if it isn't used within <span style=\"font-variant-numeric: tabular-nums;\">5.5</span> seconds of its activation or immediately if <b>Varus</b> dies.<br /><i>Blighted Quiver</i> can be cast during the first <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow's<template #content>Piercing Arrow</template></HtmlTooltip> charge. <i>Blighted Quiver</i> is placed on full cooldown even if the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> cancels <i>Blighted Quiver</i> and puts it on a 1 second <span>cooldown</span>.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Varus</b>' <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and apply a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Blight</i> for 6 seconds, stacking up to 3 times, refreshing on subsequent applications.<br /><b>Varus' </b> other abilities consume stacks of <i>Blight</i> on enemies upon damaging them to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and, if they are a <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> or epic <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, reduce his basic abilities' cooldowns by 12% of the <b>maximum</b> cooldown for each stack on the target, up to 36% per target. The <b>bonus</b> damage is capped at 360 against monsters.<br /><span class=\"sbc\">Active:</span> <b>Varus</b>' next <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip> within <span style=\"font-variant-numeric: tabular-nums;\">5.5</span> seconds deals <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, increased by <span class=\"title-tooltip\" title=\"\">0 to 2 ‒ undefined</span>, for a maximum of <span class=\"health\"><span class=\"title-tooltip\" title=\"\">1 to 13 ‒ undefined</span> of the target's <b>missing</b> health</span>. This damage is capped at 360 against monsters. If <b>Varus</b> is not charging <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow<template #content>Piercing Arrow</template></HtmlTooltip>, <i>Blighted Quiver</i> can be recast after 1 second for its duration, and does so automatically when its duration ends or <b>Varus</b> dies within the duration.<br /><i>Blighted Quiver</i> can be cast during the first <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Piercing Arrow's<template #content>Piercing Arrow</template></HtmlTooltip> charge. <i>Blighted Quiver</i> is placed on full cooldown even if the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast:</span> <b>Varus</b> cancels <i>Blighted Quiver</i> and places it on a 1 second <span>cooldown</span>.",
       "leveling": [
         "{{st|Bonus Magic Damage|{{ap|7 to 11}} {{as|(+ 25% AP)}}}}",
         "{{st|Bonus Magic Damage per Stack|{{as|{{ap|3 to 5}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health|health)}}|Maximum Bonus Magic Damage|{{as|{{ap|9 to 15}}% {{as|(+ 6% per 100 AP)}} of the target's '''maximum''' health|health)}}}}"
       ],
-      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* {{tip|Spell shield}} will not block the {{tip|on-hit}} damage but will block the consuming damage if the target is hit by his abilities.\n* ''Blighted Quiver's'' active damage is dealt after the damage of {{ai|Piercing Arrow|Varus}}.\n* ''Blighted Quiver'' does not count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{Pending for test}}: ''Blighted Quiver's'' on-hit interaction with ''parrying'' effects ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
@@ -399,22 +398,22 @@
         "full": "VarusE.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Varus''' fires a hail of arrows at the target location, dealing {{as|physical damage}} to all enemies hit on impact.",
-        "The area is desecrated for 4 seconds, {{tip|slow|slowing}} all enemies within and inflicting them with 40% {{tip|Grievous Wounds}}.",
+        "{{sbc|Active:}} '''Varus''' fires a hail of arrows at the target location which lands after {{fd|0.5}} seconds, dealing {{as|physical damage}} to all enemies within the area.",
+        "The area then becomes desecrated for 4 seconds, {{tip|slow|slowing}} all enemies within and inflicting them with 40% {{tip|Grievous Wounds}}.",
         "''Hail of Arrows will cast at max range if cast beyond that.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> fires a hail of arrows at the target location, dealing <span class=\"physical-damage\">physical damage</span> to all enemies hit on impact.<br />The area is desecrated for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within and inflicting them with 40% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip>.<br /><i>Hail of Arrows will cast at max range if cast beyond that.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> fires a hail of arrows at the target location which lands after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, dealing <span class=\"physical-damage\">physical damage</span> to all enemies within the area.<br />The area then becomes desecrated for 4 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> all enemies within and inflicting them with 40% <HtmlTooltip class=\"blue link\">Grievous Wounds<template #content><div><h4>Grievous Wounds<hr></h4><p>Description for keyword Grievous Wounds</p></div></template></HtmlTooltip>.<br /><i>Hail of Arrows will cast at max range if cast beyond that.</i>",
       "leveling": [
         "{{st|Physical Damage|{{ap|60 to 220}} {{as|(+ 60% '''bonus''' AD)}}}}",
         "{{st|Slow|{{ap|25 to 45}}%}}"
       ],
-      "notes": "* {{tip|Slow}} lingers for {{fd|0.25}} seconds after leaving the marked area.",
+      "notes": "* {{tip|Slow}} lingers for {{fd|0.25}} seconds after leaving the marked area.\n* ''Hail of Arrows'' consumes {{ai|Blighted Quiver|Varus}} stacks for bonus damage a second time after ~{{fd|0.3}} seconds of hitting, allowing stacks applied during this time to be triggered.",
       "skillkey": "E",
       "skillid": "e1",
       "effects": [
@@ -504,34 +503,32 @@
       "name": "Chain of Corruption",
       "maxrank": 3,
       "cooldown": [
-        120,
-        90,
+        100,
+        80,
         60
       ],
       "cost": 100,
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": 1075,
       "image": {
         "full": "VarusR.png",
         "sprite": "spell13.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Varus''' flings out a tendril of corruption in the target direction that infects the first enemy champion hit, dealing {{as|magic damage}} and {{tip|sight|revealing}} and {{tip|root|rooting}} them for 2 seconds while inflicting them with full stacks of {{ai|Blighted Quiver|Varus|Blight}} over {{fd|1.5}} seconds.",
-        "On impact, the tendril seeks out nearby enemy champions for 2 seconds, after which they are also infected. Tendrils will continue to spread until there are no champions in range that have not already been affected.",
-        "''Chain of Corruption'' will attempt to spread even if the first target dies or becomes free of the {{tip|root}}.",
+        "{{sbc|Active:}} '''Varus''' flings out a tendril of corruption in the target direction that infects the first enemy champion hit, dealing them {{as|magic damage}} and {{tip|root|rooting}} them for 2 seconds, during which they are {{tip|sight|revealed}} and inflicted with full stacks of {{ai|Blighted Quiver|Varus|Blight}} over the first {{fd|1.5}} seconds.",
+        "Upon impact, the tendril roots into the ground from which it seeks out other nearby enemy {{tip|champions}}. If they do not leave the tether's range within 2 seconds, it infects them as well. Tendrils will spread from them again until there are no champions in range that have not already been infected.",
         "''The tendril seeks targets regardless of having {{tip|sight}} of them or not.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> flings out a tendril of corruption in the target direction that infects the first enemy champion hit, dealing <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for 2 seconds while inflicting them with full stacks of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Blight<template #content>Blighted Quiver</template></HtmlTooltip> over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />On impact, the tendril seeks out nearby enemy champions for 2 seconds, after which they are also infected. Tendrils will continue to spread until there are no champions in range that have not already been affected.<br /><i>Chain of Corruption</i> will attempt to spread even if the first target dies or becomes free of the <HtmlTooltip class=\"blue link\">root<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip>.<br /><i>The tendril seeks targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Varus</b> flings out a tendril of corruption in the target direction that infects the first enemy champion hit, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for 2 seconds, during which they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> and inflicted with full stacks of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Varus\">Blight<template #content>Blighted Quiver</template></HtmlTooltip> over the first <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br />Upon impact, the tendril roots into the ground from which it seeks out other nearby enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip>. If they do not leave the tether's range within 2 seconds, it infects them as well. Tendrils will spread from them again until there are no champions in range that have not already been infected.<br /><i>The tendril seeks targets regardless of having <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of them or not.</i>",
       "leveling": [
         "{{st|Magic Damage|{{ap|150 to 250}} {{as|(+ 100% AP)}}}}"
       ],
-      "notes": "* Enemy champions can be targeted again by the corruption's tether if they were not infected the previous time, even if they were targeted and got out of range.\n* ''Chain of Corruption'' will not infect {{tip|cc-immune}} targets or those protected by {{tip|spell shield|spell shields}} (but will still seek them).\n* '''Varus''' will turn to face the target direction at the start of the cast.\n* The tendril cannot seek enemy champions that are {{tip|untargetable}}.\n* ''Chain of Corruption'' will cast from wherever '''Varus''' is at the end of the cast time.\n* Consuming the ''Blight's'' stacks applied by ''Chain of Corruption'' will deal bonus magic damage based on {{ais|Blighted Quiver|Varus}} rank. If the ability hasn't been ranked yet, the three ''Blight'' stacks will still be applied but they will be considered to be at rank 0, dealing {{as|{{fd|1.25}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health}} per stack.",
+      "notes": "* Enemy champions can be targeted again by the corruption's tether if they were not infected the previous time, even if they were targeted and got out of range.\n* ''Chain of Corruption'' will not infect {{tip|cc-immune|crowd control immune}} targets or those protected by {{tip|spell shield|spell shields}} (but will still seek them).\n* '''Varus''' will turn to face the target direction at the start of the cast.\n* The tendril cannot seek enemy champions that are {{tip|untargetable}}.\n* ''Chain of Corruption'' will cast from wherever '''Varus''' is at the end of the cast time.\n* Consuming the ''Blight's'' stacks applied by ''Chain of Corruption'' will deal bonus magic damage based on {{ais|Blighted Quiver|Varus}} rank. If the ability hasn't been ranked yet, the three ''Blight'' stacks will still be applied but they will be considered to be at rank 0, dealing {{as|{{fd|1.25}}% {{as|(+ 2% per 100 AP)}} of the target's '''maximum''' health}} per stack.",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [

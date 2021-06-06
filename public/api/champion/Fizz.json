@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.129",
-  "changes": "10.25.1",
+  "changes": "11.10.1",
   "id": "Fizz",
   "name": "Fizz",
   "title": "the Tidal Trickster",
@@ -29,12 +29,12 @@
   "stats": {
     "hp": 570,
     "hpperlevel": 98,
-    "mp": 317.2,
+    "mp": 317,
     "mpperlevel": 37,
     "movespeed": 335,
-    "armor": 22.412,
+    "armor": 22,
     "armorperlevel": 3.4,
-    "spellblock": 32.1,
+    "spellblock": 32,
     "spellblockperlevel": 1.25,
     "attackrange": 175,
     "hpregen": 8,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 58.04,
+    "attackdamage": 58,
     "attackdamageperlevel": 3,
     "attackspeedperlevel": 3.1,
     "attackspeed": 0.658
@@ -87,7 +87,7 @@
       "cost": 50,
       "costtype": "Mana",
       "targeting": "Unit",
-      "target_range": 550,
+      "target_range": "{{tip|cr|icononly = true}} 550",
       "image": {
         "full": "FizzQ.png",
         "sprite": "spell3.png",
@@ -98,13 +98,14 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance towards the target enemy, and if they are in range upon arrival, he deals them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness."
+        "{{sbc|Active:}} '''Fizz''' {{tip|dashes}} a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still {{tt|within 200 units|of their original location, estimated}} when the dash ends, he deals them {{as|magic damage}} plus {{as|100% AD}} {{as|physical damage}} and applies {{tip|on-hit}} effects at 100% effectiveness.",
+        "'''Fizz''' can cast {{ai|Seastone Trident|Fizz}} and {{ai|Chum the Waters|Fizz}} during ''Urchin Strike'', but not {{ai|Playful|Fizz}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance towards the target enemy, and if they are in range upon arrival, he deals them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> a fixed distance in the direction of the target enemy, and upon colliding with them or if they are still <span class=\"title-tooltip\" title=\"of their original location, estimated\">within 200 units</span> when the dash ends, he deals them <span class=\"magic-damage\">magic damage</span> plus <span class=\"ad\">100% AD</span> <span class=\"physical-damage\">physical damage</span> and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness.<br /><b>Fizz</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Seastone Trident<template #content>Seastone Trident</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Chum the Waters<template #content>Chum the Waters</template></HtmlTooltip> during <i>Urchin Strike</i>, but not <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Fizz\">Playful<template #content>Playful</template></HtmlTooltip>.",
       "leveling": [
         "{{st|Bonus Magic Damage|{{ap|10 to 70}} {{as|(+ 55% AP)}}}}"
       ],
-      "notes": "* ''Urchin Strike'' can only go through walls if the target is on the other side.\n* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.\n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
+      "notes": "* ''Urchin Strike'' can only go through walls if the target is on the other side.\n* '''Fizz''' will be automatically ordered to [[basic attack]] the target after ''Urchin Strike''.\n* ''Urchin Strike'' does not deal damage if the target is {{tip|untargetable}}.\n* The physical portion of the effect deals {{tip|basic damage}}, while the magic portion of the effect deals {{tip|proc damage}}. \n* {{stil|Life steal}} applies only on the physical damage component. {{stil|Spell vamp}} applies to both the physical damage and bonus magic damage.",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
@@ -182,12 +183,12 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies [[on-hit]], dealing {{as|magic damage}} every {{fd|0.5}} seconds for 3 seconds, refreshing [[on-hit]].",
-        "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] within 4 seconds becomes {{tip|unstoppable basic attack|unstoppable}}, deals {{as|'''bonus''' magic damage}} and gains {{sti|range|50 '''bonus''' range}}.",
-        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} on-hit for the next 5 seconds.",
+        "{{sbc|Passive:}} '''Fizz's''' basic attacks rend enemies {{tip|on-hit}}, dealing {{as|magic damage}} every {{fd|0.5}} seconds over 3 seconds, refreshing {{tip|on-hit}}.",
+        "{{sbc|Active:}} '''Fizz's''' next [[basic attack]] within 4 seconds has an {{tip|uncancelable windup}}, deals {{as|'''bonus''' magic damage}} and gains {{sti|range|50 '''bonus''' range}}.",
+        "If ''Seastone Trident'' kills its target, its {{sti|cooldown}} is reduced to 1 second and refunds {{sti|{{as|mana}}}}. Otherwise, if ''Seastone Trident'' doesn't kill its target, '''Fizz's''' basic attacks deal {{as|'''bonus''' magic damage}} {{tip|on-hit}} for the next 5 seconds.",
         "''Seastone Trident'' {{tip|basic attack reset|resets}} '''Fizz's''' basic attack timer."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Fizz's</b> basic attacks rend enemies <a class=\"effect link\" title=\"on-hit\">on-hit</a>, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds for 3 seconds, refreshing <a class=\"effect link\" title=\"on-hit\">on-hit</a>.<br /><span class=\"sbc\">Active:</span> <b>Fizz's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 4 seconds becomes <HtmlTooltip class=\"blue link\">unstoppable<template #content><div><h4>unstoppable basic attack<hr></h4><p>Description for keyword unstoppable basic attack</p></div></template></HtmlTooltip>, deals <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and gains <span>50 <b>bonus</b> range</span>.<br />If <i>Seastone Trident</i> kills its target, its <span>cooldown</span> is reduced to 1 second and refunds <span><span class=\"mana\">mana</span></span>. Otherwise, if <i>Seastone Trident</i> doesn't kill its target, <b>Fizz's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> on-hit for the next 5 seconds.<br /><i>Seastone Trident</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Fizz's</b> basic attack timer.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Fizz's</b> basic attacks rend enemies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds over 3 seconds, refreshing <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Fizz's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 4 seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, deals <span class=\"magic-damage\"><b>bonus</b> magic damage</span> and gains <span>50 <b>bonus</b> range</span>.<br />If <i>Seastone Trident</i> kills its target, its <span>cooldown</span> is reduced to 1 second and refunds <span><span class=\"mana\">mana</span></span>. Otherwise, if <i>Seastone Trident</i> doesn't kill its target, <b>Fizz's</b> basic attacks deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> for the next 5 seconds.<br /><i>Seastone Trident</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Fizz's</b> basic attack timer.",
       "leveling": [
         "{{st|Total Magic Damage|{{ap|20 to 60}} {{as|(+ 40% AP)}}|Magic Damage per Tick|{{ap|20/6 to 60/6|round=2}} {{as|(+ {{ap|40/6|round=2}}% AP)}}}}",
         "{{st|Bonus Magic Damage|{{ap|50 to 130}} {{as|(+ 50% AP)}}}}",
@@ -391,19 +392,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, {{tip|sight|revealing}} the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing {{as|magic damage}} to surrounding enemies, {{tip|airborne|knocking them back}} and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knock back distance.",
+        "{{sbc|Active:}} '''Fizz''' throws down a lure at the target location that attracts a shark, granting {{tip|sight}} of the area before emerging and chomping at the lure after 2 seconds, dealing {{as|magic damage}} to surrounding enemies, {{tip|airborne|knocking them back}} and {{tip|slow|slowing}} them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted; increasing ''Chum the Waters' '' damage, slow, eruption radius and knock back distance.",
         "{{sbc|Guppy (<455):}} 40% slow, 200 eruption radius and 150 unit knock back distance.",
         "{{sbc|Chomper (455-910):}} 60% slow, 325 eruption radius and 250 unit knock back distance.",
         "{{sbc|Gigalodon (>910):}} 80% slow, 450 eruption radius and 350 unit knock back distance.",
-        "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and {{tip|airborne|knocked up}} for 1 second instead of knocked back."
+        "Enemy {{tip|champion|champions}} can intercept the lure while it is in flight, which attaches to them upon contact and causes the shark to emerge at their position after the same delay. The lure's holder is {{tip|slow|slowed}} and {{tip|true sight|revealed}} for the duration and afterwards is impacted by the eruption but is {{tip|airborne|knocked up}} for 1 second instead of knocked back."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> throws down a lure at the target location that attracts a shark, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the affected area before emerging and letting out a crushing bite at the lure after 2 seconds, dealing <span class=\"magic-damage\">magic damage</span> to surrounding enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted, increasing its damage, slow, eruption radius and knock back distance.<br /><span class=\"sbc\">Guppy (<455):</span> 40% slow, 200 eruption radius and 150 unit knock back distance.<br /><span class=\"sbc\">Chomper (455-910):</span> 60% slow, 325 eruption radius and 250 unit knock back distance.<br /><span class=\"sbc\">Gigalodon (>910):</span> 80% slow, 450 eruption radius and 350 unit knock back distance.<br />Enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> can intercept the lure while it is in flight, which attaches to them and causes the shark to emerge at their position. The lure's holder is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for the duration and <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 1 second instead of knocked back.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Fizz</b> throws down a lure at the target location that attracts a shark, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area before emerging and chomping at the lure after 2 seconds, dealing <span class=\"magic-damage\">magic damage</span> to surrounding enemies, <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted; increasing <i>Chum the Waters' </i> damage, slow, eruption radius and knock back distance.<br /><span class=\"sbc\">Guppy (<455):</span> 40% slow, 200 eruption radius and 150 unit knock back distance.<br /><span class=\"sbc\">Chomper (455-910):</span> 60% slow, 325 eruption radius and 250 unit knock back distance.<br /><span class=\"sbc\">Gigalodon (>910):</span> 80% slow, 450 eruption radius and 350 unit knock back distance.<br />Enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> can intercept the lure while it is in flight, which attaches to them upon contact and causes the shark to emerge at their position after the same delay. The lure's holder is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> for the duration and afterwards is impacted by the eruption but is <HtmlTooltip class=\"blue link\">knocked up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for 1 second instead of knocked back.",
       "leveling": [
         "{{st|Guppy Damage|{{ap|150 to 350}} {{as|(+ 80% AP)}}}}",
         "{{st|Chomper Damage|{{ap|225 to 425}} {{as|(+ 100% AP)}}}}",
         "{{st|Gigalodon Damage|{{ap|300 to 500}} {{as|(+ 120% AP)}}}}"
       ],
-      "notes": "* ''Chum the Waters'' will stop its movement if the lure collides with an enemy champion with a {{tip|spell shield}} (does not attach) or upon colliding with {{ai|W|Yasuo}} (does not get destroyed).\n* ''Chum the Waters'' is cast from wherever '''Fizz''' is at the end of the cast time. Although the targeted area is not changed, unless the ability was cast beyond maximum range.\n* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is going to emerge. The countdown starts from 4 seconds and ends at the last second, though the numbers decrease twice as fast.",
+      "notes": "* ''Chum the Waters'' will stop its movement if the lure collides with an enemy champion with a {{tip|spell shield}} (does not attach) or upon colliding with {{ai|W|Yasuo}} (does not get destroyed).\n* ''Chum the Waters'' is cast from wherever '''Fizz''' is at the end of the cast time. The targeted area does not change unless the ability was cast beyond maximum range.\n* If the lure attaches to an enemy champion, a countdown will appear at their position to signify when the shark is about to emerge. The countdown begins from 4 seconds. However, the numbers decrease twice as fast.",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [

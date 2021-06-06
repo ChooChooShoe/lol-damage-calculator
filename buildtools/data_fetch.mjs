@@ -46,6 +46,8 @@ async function wikia_to_json(body) {
             .replace(/{(.*)}/g, `[$1]`)
             //replaces [12] : with "12" :
             .replace(/\[(\d+)] : /g, `"$1" : `)
+            //replaces -- with //
+            .replace(/--/g, "//")
             ;
         results.push(line);
     }
@@ -107,9 +109,9 @@ async function fetch_wikia(url) {
 async function doMergeData(riotChampPromise, wikiaChamp) {
     const rcr = await riotChampPromise;
     const riotChamp = rcr.data[Object.keys(rcr.data)[0]];
-    console.log("File got (wikia) ", wikiaChamp.name);
-    console.assert(riotChamp.id === wikiaChamp.id);
-    console.assert(riotChamp.name === wikiaChamp.name);
+    console.log("File got (wikia) ", wikiaChamp.apiname);
+    // console.assert(riotChamp.key === wikiaChamp.id);
+    console.assert(riotChamp.id === wikiaChamp.apiname);
     const model = {
         patch: wikiaChamp.patch || "",
         changes: buildChangesField(wikiaChamp.changes || "V0.0"),
@@ -322,6 +324,7 @@ function burnify(param, forceRange, round) {
 let noRepeatDesc = new Set();
 
 function saveFile(path, data) {
+    console.log(`Saving file '${path}'...`);
     return fs.promises.writeFile(path, JSON.stringify(data, null, 2), function (err) {
         if (err) {
             return console.log(err);
@@ -366,7 +369,7 @@ async function onRealmJsonResponse(body) {
     console.log("Parsing (responseWikia)");
     const bodyWikia = await wikia_to_json(responseWikia)
     console.log("Building Champion Json");
-    return onChampionJsonResponse(bodyDDragon, bodyWikia);
+    return await onChampionJsonResponse(bodyDDragon, bodyWikia);
 }
 
 /**
@@ -375,7 +378,7 @@ async function onRealmJsonResponse(body) {
  * @param champ_json JSON Object
  * @param fandom_data JSON Object
  */
-function onChampionJsonResponse(champ_json, fandom_data) {
+async function onChampionJsonResponse(champ_json, fandom_data) {
     // console.log('fandom_data',fandom_data)
     console.assert(champ_json.type === 'champion');
     console.assert(champ_json.format === 'standAloneComplex');
@@ -402,7 +405,7 @@ function onChampionJsonResponse(champ_json, fandom_data) {
         console.log('Fetching (ddragon)', url)
         const fullDataPromise = fetch(url).then((response) => response.json());
 
-        doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
+        await doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
             return saveFile(`./public/api/champion/${champ.id}.json`, data);
         });
     }

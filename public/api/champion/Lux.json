@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.103",
-  "changes": "10.20.1",
+  "changes": "11.11.1",
   "id": "Lux",
   "name": "Lux",
   "title": "the Lady of Luminosity",
@@ -8,7 +8,7 @@
     "full": "Lux.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 384,
+    "x": 432,
     "y": 0,
     "w": 48,
     "h": 48
@@ -32,7 +32,7 @@
     "mp": 480,
     "mpperlevel": 23.5,
     "movespeed": 330,
-    "armor": 18.72,
+    "armor": 19,
     "armorperlevel": 4,
     "spellblock": 30,
     "spellblockperlevel": 0.5,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 53.54,
+    "attackdamage": 54,
     "attackdamageperlevel": 3.3,
     "attackspeedperlevel": 1,
     "attackspeed": 0.669
@@ -58,7 +58,7 @@
         "full": "LuxIlluminatingFraulein.png",
         "sprite": "passive2.png",
         "group": "passive",
-        "x": 384,
+        "x": 432,
         "y": 0,
         "w": 48,
         "h": 48
@@ -69,7 +69,7 @@
       ],
       "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Lux's</b> damaging <a class=\"effect link\" title=\"abilities\">Champion ability</a> mark enemies with light energy for 6 seconds.<br /><b>Lux's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Lux\">Final Spark<template #content>Final Spark</template></HtmlTooltip> consume the mark to deal <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">20undefined − 190undefined (based on level)<template #content>Values: 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"ap\">(+ 20% AP)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.",
       "leveling": [],
-      "notes": "* {{tip|Spell shield}} prevents {{ai|Final Spark|Lux}} from igniting ''Illumination''.\n** The on-hit damage from ''Illumination'' via basic attack cannot be blocked by ''spell shield''.\n* {{Pending for test}}: Parry interactions ({{tip|dodge}}, {{tip|block}}, {{tip|blind}}).",
+      "notes": "* {{tip|Spell shield}} prevents {{ai|Final Spark|Lux}} from igniting ''Illumination''.\n** The on-hit damage from ''Illumination'' via basic attack cannot be blocked by ''spell shield''.\n* ''Illumination's'' trigger from a basic attack can be {{tip|blocked}} (bonus damage is negated and the mark will still be consumed).\n* {{Pending for test}}: Parry interactions ({{tip|dodge}}, {{tip|blind}}).",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -88,13 +88,12 @@
       "cost": 50,
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 1300",
       "image": {
         "full": "LuxLightBinding.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 288,
-        "y": 0,
+        "x": 0,
+        "y": 48,
         "w": 48,
         "h": 48
       },
@@ -105,7 +104,7 @@
       "leveling": [
         "{{st|Magic Damage|{{ap|80 to 260}} {{as|(+ 60% AP)}}}}"
       ],
-      "notes": "* Targets protected by a {{tip|spell shield}} or are {{tip|cc-immune|crowd control immune}} count towards ''Light Binding's'' two-target limit.\n* ''Light Binding'' will cast from wherever '''Lux''' is at the end of the cast time.",
+      "notes": "* Targets immune to the {{tip|root}} still count towards ''Light Binding's'' two-target limit.\n* ''Light Binding'' will cast from wherever '''Lux''' is at the end of the cast time.",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
@@ -173,43 +172,44 @@
       ],
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}}{{tt|*|circle check at end allows hitting edge of ally radius}} 1175",
       "image": {
         "full": "LuxPrismaticWave.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 336,
-        "y": 0,
+        "x": 48,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Lux''' launches her wand in the target direction which returns to her after reaching maximum range.",
-        "'''Lux''' and allied {{tip|champions}} touched by the outgoing wand are {{tip|shield|shielded}} for {{fd|2.5}} seconds.",
-        "Allied champions near the return location and those {{tt|touched by the returning wand|Including Lux, once the wand reaches her again}} are shielded for the same amount and for the same duration, stacking with the previous shield and resetting its remaining duration.",
-        "''The shields can only stack up to 2 times. Additional shields will neither reset the duration nor strengthen it.''"
+        "The wand grants a {{tip|shield}} to all allied {{tip|champions}} it passes through for {{fd|2.5}} seconds while it is outgoing and returning. '''Lux''' also receives the shield upon releasing the wand and upon its return. The shield can stack up to 2 times, stacking with the previous shield and refreshing its duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> launches her wand in the target direction which returns to her after reaching maximum range.<br /><b>Lux</b> and allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> touched by the outgoing wand are <HtmlTooltip class=\"blue link\">shielded<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Allied champions near the return location and those <span class=\"title-tooltip\" title=\"Including Lux, once the wand reaches her again\">touched by the returning wand</span> are shielded for the same amount and for the same duration, stacking with the previous shield and resetting its remaining duration.<br /><i>The shields can only stack up to 2 times. Additional shields will neither reset the duration nor strengthen it.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> launches her wand in the target direction which returns to her after reaching maximum range.<br />The wand grants a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> to all allied <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> it passes through for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds while it is outgoing and returning. <b>Lux</b> also receives the shield upon releasing the wand and upon its return. The shield can stack up to 2 times, stacking with the previous shield and refreshing its duration.",
       "leveling": [
-        "{{st|Shield Strength|{{ap|45 to 125}} {{as|(+ 35% AP)}}}}",
-        "{{st|Maximum Shield|{{ap|45*2 to 125*2}} {{as|(+ 70% AP)}}}}"
+        "{{st|Shield Strength|{{ap|45 to 125}} {{as|(+ 35% AP)}}|Maximum Shield|{{ap|45*2 to 125*2}} {{as|(+ 70% AP)}}}}"
       ],
-      "notes": "* Like most [[missiles]], both of ''Primsatic Barrier'' cannot hit units whose {{tip|center range|center}} is beyond the missile range or behind its origin, even if their {{tip|edge range|hitbox radius}} overlaps.\n** At the return location, this behaviour is overridden by an additional center check with the same diameter as the missile width.\n* If '''Lux''' {{tip|death|dies}} before her wand returns it will fizzle upon reaching maximum range.\n* '''Lux's''' wand decelerates on the way out and accelerates on the way back.\n* ''Prismatic Barrier'' is always fired from the original casting position.\n* ''Prismatic Barrier'' is destroyed by {{ai|Wind Wall|Yasuo}} and {{ai|Blade Whirl|Samira}} but not {{ai|Unbreakable|Braum}}.",
+      "notes": "* Each pass of the wand grants a shield to each target once.\n* ''Prismatic Barrier'' may only stack up to 2 times. Subsequent instances of passing through the wand have no effect on the shield's strength nor duration.\n* The shield will also be granted to allies near the wand's return location.\n* Both passes of ''Prismatic Barrier'' cannot hit units whose {{tip|center range|center}} is beyond the missile range or behind its origin, even if their {{tip|edge range|hitbox radius}} overlaps.\n** At the return location, this behaviour is overridden by an additional center check with the same diameter as the missile width.\n* If '''Lux''' {{tip|death|dies}} before her wand returns it will fizzle upon reaching maximum range.\n* '''Lux's''' wand decelerates on the way out and accelerates on the way back.\n* ''Prismatic Barrier'' will fire from wherever '''Lux''' was at the start of the cast time.\n* ''Prismatic Barrier'' is destroyed by {{ai|Wind Wall|Yasuo}} and {{ai|Blade Whirl|Samira}} but not {{ai|Unbreakable|Braum}}.",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Shield Strength</span>: <span><SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Maximum Shield</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
                 "player_total_ap": 0.35000000000000003
+              },
+              {
+                "player_total_ap": 0.7000000000000001
               }
             ],
             "st_slices": [
               [
                 "Shield Strength",
-                "<SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>"
+                "<SpellSpan :list=\"[45,65,85,105,125]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span>",
+                "Maximum Shield",
+                "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
               ]
             ],
             "ap_progressions": [
@@ -219,35 +219,7 @@
                 85,
                 105,
                 125
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Shield Strength",
-              "damage_type": "none",
-              "ratios": {
-                "player_total_ap": 0.35000000000000003
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Shield</span>: <span><SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_ap": 0.7000000000000001
-              }
-            ],
-            "st_slices": [
-              [
-                "Maximum Shield",
-                "<SpellSpan :list=\"[90,130,170,210,250]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
-              ]
-            ],
-            "ap_progressions": [
+              ],
               [
                 90,
                 130,
@@ -260,7 +232,7 @@
           "subeffects": [
             {
               "index": 0,
-              "title": "Maximum Shield",
+              "title": "Shield Strength",
               "damage_type": "none",
               "ratios": {
                 "player_total_ap": 0.7000000000000001
@@ -290,28 +262,27 @@
       ],
       "costtype": "Mana",
       "targeting": "[[Location-targeted|Location]] / [[Auto-targeted|Auto]]",
-      "target_range": "{{tip|cr|icononly = true}} 1100",
+      "target_range": 1100,
       "image": {
         "full": "LuxLightStrikeKugel.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 384,
-        "y": 0,
+        "x": 96,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lux''' sends an anomaly of twisted light to the target location for up to 5 seconds, {{tip|slow|slowing}} enemies within the area and granting {{tip|sight}} of it. ''Lucent Singularity'' can be recast at no delay.",
-        "At the end of the duration or if ''Lucent Singularity'' is reactivated, the area detonates, dealing {{as|magic damage}}.",
-        "{{sbc|Recast:}} '''Lux''' detonates ''Lucent Singularity'' early. If recast while in flight, the ability will detonate on arrival.",
-        "''The slow lingers for 1 second after leaving the area. Enemies hit by Lucent Singularity are slowed for 1 second.''"
+        "{{sbc|Active:}} '''Lux''' sends an anomaly of twisted light to the target location for up to 5 seconds, granting {{tip|sight}} of the area and {{tip|slow|slowing}} enemies within. ''Lucent Singularity'' can be recast at any time while it is in flight or within its duration, and does so automatically after its duration ends.",
+        "{{sbc|Recast:}} '''Lux''' detonates the anomaly, dealing {{as|magic damage}} to all enemies within. If ''Lucent Singularity'' was recast while in flight, it will detonate upon arrival.",
+        "''The slow lingers for 1 second after leaving the area. Enemies hit by Lucent Singularity's detonation are also slowed by the same amount for 1 second.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> sends an anomaly of twisted light to the target location for up to 5 seconds, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies within the area and granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of it. <i>Lucent Singularity</i> can be recast at no delay.<br />At the end of the duration or if <i>Lucent Singularity</i> is reactivated, the area detonates, dealing <span class=\"magic-damage\">magic damage</span>.<br /><span class=\"sbc\">Recast:</span> <b>Lux</b> detonates <i>Lucent Singularity</i> early. If recast while in flight, the ability will detonate on arrival.<br /><i>The slow lingers for 1 second after leaving the area. Enemies hit by Lucent Singularity are slowed for 1 second.</i>",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> sends an anomaly of twisted light to the target location for up to 5 seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> enemies within. <i>Lucent Singularity</i> can be recast at any time while it is in flight or within its duration, and does so automatically after its duration ends.<br /><span class=\"sbc\">Recast:</span> <b>Lux</b> detonates the anomaly, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within. If <i>Lucent Singularity</i> was recast while in flight, it will detonate upon arrival.<br /><i>The slow lingers for 1 second after leaving the area. Enemies hit by Lucent Singularity's detonation are also slowed by the same amount for 1 second.</i>",
       "leveling": [
         "{{st|Slow|{{ap|25 to 45}}%}}",
-        "{{st|Magic Damage|{{ap|60 to 240}} {{as|(+ 60% AP)}}}}"
+        "{{st|Magic Damage|{{ap|60 to 260}} {{as|(+ 65% AP)}}}}"
       ],
-      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* ''Lucent Singularity'' grants {{tip|sight}} while also in flight.",
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* ''Lucent Singularity'' grants {{tip|sight}} while also in flight.",
       "skillkey": "E",
       "skillid": "e1",
       "effects": [
@@ -353,26 +324,26 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,110,160,210,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.6
+                "player_total_ap": 0.65
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[60,105,150,195,240]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+                "<SpellSpan :list=\"[60,110,160,210,260]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
                 60,
-                105,
-                150,
-                195,
-                240
+                110,
+                160,
+                210,
+                260
               ]
             ]
           },
@@ -384,12 +355,12 @@
               "ratios": {
                 "base_damage": [
                   60,
-                  105,
-                  150,
-                  195,
-                  240
+                  110,
+                  160,
+                  210,
+                  260
                 ],
-                "player_total_ap": 0.6
+                "player_total_ap": 0.65
               }
             }
           ]
@@ -397,7 +368,7 @@
       ]
     },
     "r1": {
-      "riotId": "LuxMaliceCannon",
+      "riotId": "LuxR",
       "name": "Final Spark",
       "maxrank": 3,
       "cooldown": [
@@ -408,24 +379,23 @@
       "cost": 100,
       "costtype": "Mana",
       "targeting": "Direction",
-      "target_range": 3400,
       "image": {
-        "full": "LuxMaliceCannon.png",
+        "full": "LuxR.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 432,
-        "y": 0,
+        "x": 144,
+        "y": 48,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Lux''' fires a massive laser of light in a line in the target direction that deals {{as|magic damage}} to all enemies hit, briefly {{tip|sight|revealing}} enemies as well as the surrounding area."
+        "{{sbc|Active:}} '''Lux''' fires a massive laser of light in a line in the target direction that deals {{as|magic damage}} to all enemies hit and briefly {{tip|sight|reveals}} them as well as grants {{tip|sight}} of the surrounding area."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> fires a massive laser of light in a line in the target direction that deals <span class=\"magic-damage\">magic damage</span> to all enemies hit, briefly <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemies as well as the surrounding area.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Lux</b> fires a massive laser of light in a line in the target direction that deals <span class=\"magic-damage\">magic damage</span> to all enemies hit and briefly <HtmlTooltip class=\"blue link\">reveals<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them as well as grants <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the surrounding area.",
       "leveling": [
         "{{st|Magic Damage|{{ap|300 to 500}} {{as|(+ 100% AP)}}}}"
       ],
-      "notes": "* ''Final Spark'' is always fired from the original casting position.\n{{ct|cast|cast={{ai|Lucent Singularity|Lux}} can only be recast if it is present. {{ai|Light Binding|Lux}} and {{ai|Prismatic Barrier|Lux}} are disabled.}}",
+      "notes": "* ''Final Spark'' will fire from wherever '''Lux''' was at the start of the cast time.\n{{ct|cast|cast={{ai|Lucent Singularity|Lux}} can only be recast if it is present. {{ai|Light Binding|Lux}} and {{ai|Prismatic Barrier|Lux}} are disabled.}}",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [

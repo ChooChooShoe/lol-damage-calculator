@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.111",
-  "changes": "10.20.1",
+  "changes": "11.2.1",
   "id": "Maokai",
   "name": "Maokai",
   "title": "the Twisted Treant",
@@ -8,7 +8,7 @@
     "full": "Maokai.png",
     "sprite": "champion2.png",
     "group": "champion",
-    "x": 48,
+    "x": 96,
     "y": 48,
     "w": 48,
     "h": 48
@@ -34,7 +34,7 @@
     "movespeed": 335,
     "armor": 39,
     "armorperlevel": 4,
-    "spellblock": 32.1,
+    "spellblock": 32,
     "spellblockperlevel": 1.25,
     "attackrange": 125,
     "hpregen": 5,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0.6,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 63.54,
+    "attackdamage": 64,
     "attackdamageperlevel": 3.3,
     "attackspeedperlevel": 2.125,
     "attackspeed": 0.8
@@ -68,8 +68,8 @@
         "full": "MaokaiQ.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 96,
+        "y": 96,
         "w": 48,
         "h": 48
       },
@@ -148,19 +148,19 @@
         "full": "MaokaiW.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 144,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Maokai''' {{tip|dashes}} to the target enemy while being {{tip|untargetable}}, dealing {{as|magic damage}} on arrival and {{tip|root|rooting}} them for a duration."
+        "{{sbc|Active:}} '''Maokai''' {{tip|dashes}} to the target enemy while being {{tip|untargetable}}, dealing them {{as|magic damage}} and {{tip|root|rooting}} them for a duration upon arrival."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy while being <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip>, dealing <span class=\"magic-damage\">magic damage</span> on arrival and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for a duration.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dashes<hr></h4><p>Description for keyword dashes</p></div></template></HtmlTooltip> to the target enemy while being <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip>, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">rooting<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for a duration upon arrival.",
       "leveling": [
         "{{st|Magic Damage|{{ap|70 to 170}} {{as|(+ 40% AP)}}}}\n{{st|Root Duration|{{ap|1 to 1.4}}}}"
       ],
-      "notes": "* ''Twisted Advance'' will not deal its damage nor apply the {{tip|root}} if the target is {{tip|untargetable}}.\n* '''Maokai''' will follow any {{tip|dash|dashes}} or {{tip|blink|blinks}} the target performs.\n** He will dash to their original location if they {{tip|blink}} to a very far distance (e.g, {{si|Recall}}, {{si|Teleport}}, {{ai|Gate|Twisted Fate}}, {{ai|Stand United|Shen}}).\n** There is a range limit in how far he can follow a moving target.",
+      "notes": "* '''Maokai''' will track the target if they change locations.\n** He will dash to the target's previous location without applying ''Twisted Advance's'' effects if the target is too far away or moves beyond the maximum tracking distance.\n** He will stop dashing if the target is too far away the moment the dash begins.\n* ''Twisted Advance'' will fail to deal damage and apply the {{tip|root}} if the target is {{tip|untargetable}} upon arrival.",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
@@ -241,10 +241,10 @@
       "cooldown": 10,
       "cost": [
         60,
-        65,
         70,
-        75,
-        80
+        80,
+        90,
+        100
       ],
       "costtype": "Mana",
       "targeting": "Location",
@@ -253,31 +253,31 @@
         "full": "MaokaiE.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 0,
+        "x": 192,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Maokai''' {{tip|projectile|flings}} a ''Sapling'' to the target location, {{tip|sight|revealing}} {{tt|the area|can see across terrain from the center, but not into bush}} in a small radius.",
-        "Once landed, ''Saplings'' have a 475 sight radius and remain stationary for 30 seconds or until they react to the first nearby visible enemy, chasing them for up to {{fd|2.5}} seconds, exploding upon colliding with any enemy or at the end of its duration, dealing {{as|magic damage}} to all nearby enemies upon detonation, capped at 300 against non-champions, and {{tip|slow|slowing}} them by 35% for 2 seconds.",
-        "''Saplings'' placed in a {{tip|brush}} instead have a 30 {{as|(+ {{fd|2.5}}% '''bonus''' health)}} second duration and additionally {{tip|sight|reveal}} struck targets for 2 seconds, dealing a total of 200% damage to them over the duration, capped at 600 against non-champions."
+        "{{sbc|Active:}} '''Maokai''' {{tip|projectile|flings}} a ''Sapling'' to the target location, granting {{tip|sight}} of the {{tt|area|can see across terrain from the center, but not into bush}}.",
+        "Once landed, ''Saplings'' remain stationary for 30 seconds or until they react to the first nearby visible enemy, chasing them for up to {{fd|2.5}} seconds. ''Saplings'' explode upon colliding with an enemy or when they expire, dealing {{as|magic damage}} to all nearby enemies upon detonation, capped at 300 against non-champions, and {{tip|slow|slowing}} them by 35% for 2 seconds.",
+        "''Saplings'' placed in a {{tip|brush}} instead last 30 {{as|(+ {{fd|2.5}}% '''bonus''' health)}} seconds and deal double damage to struck targets over 3 instances as well as {{tip|sight|revealing}} them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each {{fd|0.75}} seconds thereafter. The '''total''' damage is capped at 600 against non-champions."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> <HtmlTooltip class=\"blue link\">flings<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip> a <i>Sapling</i> to the target location, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> <span class=\"title-tooltip\" title=\"can see across terrain from the center, but not into bush\">the area</span> in a small radius.<br />Once landed, <i>Saplings</i> have a 475 sight radius and remain stationary for 30 seconds or until they react to the first nearby visible enemy, chasing them for up to <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds, exploding upon colliding with any enemy or at the end of its duration, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon detonation, capped at 300 against non-champions, and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 35% for 2 seconds.<br /><i>Saplings</i> placed in a <HtmlTooltip class=\"blue link\">brush<template #content><div><h4>brush<hr></h4><p>Description for keyword brush</p></div></template></HtmlTooltip> instead have a 30 <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span> second duration and additionally <HtmlTooltip class=\"blue link\">reveal<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> struck targets for 2 seconds, dealing a total of 200% damage to them over the duration, capped at 600 against non-champions.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> <HtmlTooltip class=\"blue link\">flings<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip> a <i>Sapling</i> to the target location, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the <span class=\"title-tooltip\" title=\"can see across terrain from the center, but not into bush\">area</span>.<br />Once landed, <i>Saplings</i> remain stationary for 30 seconds or until they react to the first nearby visible enemy, chasing them for up to <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. <i>Saplings</i> explode upon colliding with an enemy or when they expire, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon detonation, capped at 300 against non-champions, and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 35% for 2 seconds.<br /><i>Saplings</i> placed in a <HtmlTooltip class=\"blue link\">brush<template #content><div><h4>brush<hr></h4><p>Description for keyword brush</p></div></template></HtmlTooltip> instead last 30 <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span> seconds and deal double damage to struck targets over 3 instances as well as <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds thereafter. The <b>total</b> damage is capped at 600 against non-champions.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|25|50|75|100|125}} {{as|(+ {{ap|7|7.25|7.5|7.75|8}}% {{as|(+ 1% per 100 AP)}} of target's '''maximum''' health)}}}}",
-        "{{st|Increased Magic Damage|{{ap|50|100|150|200|250}} {{as|(+ {{ap|14|14.5|15|15.5|16}}% {{as|(+ 2% per 100 AP)}} of target's '''maximum''' health)}}}}"
+        "{{st|Magic Damage|{{ap|25|50|75|100|125}} {{as|(+ {{ap|7|7.25|7.5|7.75|8}}% {{as|(+ 0.8% per 100 AP)}} of target's '''maximum''' health)}}}}",
+        "{{st|Total Increased Damage|{{ap|50|100|150|200|250}} {{as|(+ {{ap|14|14.5|15|15.5|16}}% {{as|(+ 1.6% per 100 AP)}} of target's '''maximum''' health)}}|Increased Damage Per Tick|{{ap|50/3|100/3|150/3|200/3|250/3|round=2}} {{as|(+ {{ap|14/3|14.5/3|15/3|15.5/3|16/3|round=2}}% {{as|(+ {{fd|0.5{{recurring|3}}}}% per 100 AP)}} of target's '''maximum''' health)}}}}"
       ],
-      "notes": "* Applies {{tip|area damage}} from a normal ''Sapling'' and deals {{tip|persistent damage}} to enemies hit by an empowered ''Sapling''.\n* ''Saplings'' have a base [[movement speed]] of 400, increased based on '''Maokai's''' [[boots]]:\n** {{ii|Boots}}: 425\n** {{ii|Berserker's Greaves}}, {{ii|Ionian Boots of Lucidity}}, {{ii|Mercury's Treads}}, {{ii|Plated Steelcaps}} and {{ii|Sorcerer's Shoes}}: 445\n** {{ii|Boots of Swiftness}} and {{ii|Mobility Boots}}: 460\n* ''Sapling Toss'' grants {{tip|sight}} of the target location even while the ''Sapling'' is in flight.\n* The ''Saplings'' will continue to chase their target even if they lose {{tip|sight}} of them (but they do not prioritize champions so they will chase the first target they encounter).\n* ''Saplings'' will appear on the map as minions despite being untargetable and invulnerable.\n* ''Saplings'' cannot stack on top of each other (they will move a short distance away from one another if they are aimed at the same location).\n* {{tip|Spell shield}} does not negate the damage from an empowered ''Sapling''.\n* The damage of empowered ''Saplings'' is equally split into chunks of {{fd|66.7}}% of the normal ''Sapling'' damage every second, once immediately, and then at the 1 and 2 second mark.\n* {{Pending for test}}: {{ai|Unbreakable|Braum}} interaction with a flying ''Sapling''.\n* ''Saplings'' attack {{ui|Baron Nashor}} always at the same two points, no matter where they were placed.[[File:Sapling Toss Baron_Nashor.png|center|200px]]",
+      "notes": "* Applies {{tip|area damage}} from a normal ''Sapling'' and deals {{tip|persistent damage}} to enemies hit by an empowered ''Sapling''.\n* ''Saplings'' have a base [[movement speed]] of 400, increased based on '''Maokai's''' [[boots]]:\n** {{ii|Boots}}: 425\n** {{ii|Berserker's Greaves}}, {{ii|Ionian Boots of Lucidity}}, {{ii|Mercury's Treads}}, {{ii|Plated Steelcaps}} and {{ii|Sorcerer's Shoes}}: 445\n** {{ii|Boots of Swiftness}} and {{ii|Mobility Boots}}: 460\n* ''Sapling Toss'' grants {{tip|sight}} of the target location even while the ''Sapling'' is in flight.\n* The ''Saplings'' will continue to chase their target even if they lose {{tip|sight}} of them (but they do not prioritize champions so they will chase the first target they encounter).\n* ''Saplings'' will appear on the map as minions despite being untargetable and invulnerable.\n* ''Saplings'' cannot stack on top of each other (they will move a short distance away from one another if they are aimed at the same location).\n* {{tip|Spell shield}} does not negate the damage from an empowered ''Sapling''.\n* The damage of empowered ''Saplings'' is equally split into chunks of {{fd|66.7}}% of the normal ''Sapling'' damage every second, once immediately, and then at the 1 and 2 second mark.\n* The ''Sapling'' will stop its movement upon colliding with {{ai|Unbreakable|Braum}}.\n* ''Saplings'' attack {{ui|Baron Nashor}} always at the same two points, no matter where they were placed.[[File:Sapling Toss Baron_Nashor.png|center|200px]]",
       "skillkey": "E",
       "skillid": "e1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[7,7.25,7.5,7.75,8]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[7,7.25,7.5,7.75,8]\"></SpellSpan>% <span class=\"ap\">(+ 0.8% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 11
+                "player_total_ap": 0.008100000000000001
               },
               {
                 "target_total_ap": [
@@ -292,7 +292,7 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[7,7.25,7.5,7.75,8]\"></SpellSpan>% <span class=\"ap\">(+ 1% per 100 AP)</span> of target's '''maximum''' health)</span>"
+                "<SpellSpan :list=\"[25,50,75,100,125]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[7,7.25,7.5,7.75,8]\"></SpellSpan>% <span class=\"ap\">(+ 0.8% per 100 AP)</span> of target's '''maximum''' health)</span>"
               ]
             ],
             "ap_progressions": [
@@ -319,7 +319,7 @@
                   100,
                   125
                 ],
-                "player_total_ap": 11,
+                "player_total_ap": 0.008100000000000001,
                 "target_total_ap": [
                   0.07,
                   0.0725,
@@ -332,26 +332,34 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Increased Magic Damage</span>: <span><SpellSpan :list=\"[50,100,150,200,250]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[14,14.5,15,15.5,16]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Increased Damage</span>: <span><SpellSpan :list=\"[50,100,150,200,250]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[14,14.5,15,15.5,16]\"></SpellSpan>% <span class=\"ap\">(+ 1.6% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Increased Damage Per Tick</span>: <span><SpellSpan :list=\"[16.67,33.33,50,66.67,83.33]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.67,4.83,5,5.17,5.33]\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 AP)</span> of target's <b>maximum</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 21
+                "player_total_ap": 0.0161
               },
               {
                 "target_total_ap": [
-                  0.14,
-                  0.145,
-                  0.15,
-                  0.155,
-                  0.16
+                  0.0467,
+                  0.0483,
+                  0.05,
+                  0.051699999999999996,
+                  0.0533
                 ]
+              },
+              {
+                "player_total_ap": 0.005331000000000001
+              },
+              {
+                "target_total_ap": []
               }
             ],
             "st_slices": [
               [
-                "Increased Magic Damage",
-                "<SpellSpan :list=\"[50,100,150,200,250]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[14,14.5,15,15.5,16]\"></SpellSpan>% <span class=\"ap\">(+ 2% per 100 AP)</span> of target's '''maximum''' health)</span>"
+                "Total Increased Damage",
+                "<SpellSpan :list=\"[50,100,150,200,250]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[14,14.5,15,15.5,16]\"></SpellSpan>% <span class=\"ap\">(+ 1.6% per 100 AP)</span> of target's '''maximum''' health)</span>",
+                "Increased Damage Per Tick",
+                "<SpellSpan :list=\"[16.67,33.33,50,66.67,83.33]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.67,4.83,5,5.17,5.33]\"></SpellSpan>% <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">0.5<simple-tooltip class=\"capture-unknown\" dname=\"recurring 3\">Unknown value: recurring 3</simple-tooltip></span>% per 100 AP)</span> of target's '''maximum''' health)</span>"
               ]
             ],
             "ap_progressions": [
@@ -362,14 +370,28 @@
                 200,
                 250
               ],
+              [
+                14,
+                14.5,
+                15,
+                15.5,
+                16
+              ],
+              [
+                16.67,
+                33.33,
+                50,
+                66.67,
+                83.33
+              ],
               null
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Increased Magic Damage",
-              "damage_type": "magic",
+              "title": "Total Increased Damage",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   50,
@@ -378,14 +400,8 @@
                   200,
                   250
                 ],
-                "player_total_ap": 21,
-                "target_total_ap": [
-                  0.14,
-                  0.145,
-                  0.15,
-                  0.155,
-                  0.16
-                ]
+                "player_total_ap": 0.005331000000000001,
+                "target_total_ap": []
               }
             }
           ]
@@ -409,20 +425,20 @@
         "full": "MaokaiR.png",
         "sprite": "spell7.png",
         "group": "spell",
-        "x": 48,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Maokai''' summons a colossal wall of 5 thorny brambles that slowly advances in the target direction, accelerating over time, each stopping when they collide with an enemy {{tip|champion}}.",
-        "Each bramble deals {{as|magic damage}} and {{tip|root|roots}} enemies for {{pp|type=distance traveled|0.8 to 2.6|0 to 1000 by 100|formula=Starts at 0.8 seconds and increases up to 2.6 seconds over 1000 units traveled}} seconds."
+        "Each bramble deals {{as|magic damage}} to enemies caught within and {{tip|root|roots}} them for {{pp|type=distance traveled|0.8 to 2.6|0 to 1000 by 100|formula=Starts at 0.8 seconds and increases up to 2.6 seconds over 1000 units traveled}} seconds."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> summons a colossal wall of 5 thorny brambles that slowly advances in the target direction, accelerating over time, each stopping when they collide with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>.<br />Each bramble deals <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">roots<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> enemies for <span class=\"title-tooltip\" title=\"\">0 to 1000 by 100 ‒ undefined</span> seconds.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Maokai</b> summons a colossal wall of 5 thorny brambles that slowly advances in the target direction, accelerating over time, each stopping when they collide with an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>.<br />Each bramble deals <span class=\"magic-damage\">magic damage</span> to enemies caught within and <HtmlTooltip class=\"blue link\">roots<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> them for <span class=\"title-tooltip\" title=\"\">0 to 1000 by 100 ‒ undefined</span> seconds.",
       "leveling": [
         "{{st|Magic Damage|{{ap|150|225|300}} {{as|(+ 75% AP)}}}}"
       ],
-      "notes": "* Any one enemy champion can be affected by ''Nature's Grasp'' more than once; they can be damaged and rooted by other brambles even after already colliding with one.\n* The brambles are made up of 4 {{tip|projectile|missiles}} each which trail 100 units behind one another. The front missile carries the visual effect. When colliding with a champion, all missiles of one bramble are destroyed simultaneously.\n** Missiles destroyed by other means such as {{cai|Blade Whirl|Samira}} may not destroy their fellows from the same branch, resulting in one or more invisible missiles that may still collide.{{bug}}\n* ''Nature's Grasp'' will fire based on Maokai's location at the start of the cast time.",
+      "notes": "* Any one enemy champion can be affected by ''Nature's Grasp'' more than once; they can be damaged and rooted by other brambles even after already colliding with one.\n* The brambles are made up of 4 {{tip|projectile|missiles}} each which trail 100 units behind one another. The front missile carries the visual effect. When colliding with a champion, all missiles of one bramble are destroyed simultaneously.\n** Missiles destroyed by other means such as {{cai|Blade Whirl|Samira}} may not destroy their fellows from the same branch, resulting in one or more invisible missiles that may still collide.{{bug}}\n* ''Nature's Grasp'' will fire based on '''Maokai's''' location at the start of the cast time.",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [

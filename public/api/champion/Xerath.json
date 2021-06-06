@@ -1,6 +1,6 @@
 {
   "patch": "V1.0.0.126",
-  "changes": "10.9.1",
+  "changes": "11.9.1",
   "id": "Xerath",
   "name": "Xerath",
   "title": "the Magus Ascendant",
@@ -8,7 +8,7 @@
     "full": "Xerath.png",
     "sprite": "champion4.png",
     "group": "champion",
-    "x": 48,
+    "x": 144,
     "y": 96,
     "w": 48,
     "h": 48
@@ -32,7 +32,7 @@
     "mp": 459,
     "mpperlevel": 22,
     "movespeed": 340,
-    "armor": 21.88,
+    "armor": 22,
     "armorperlevel": 3.5,
     "spellblock": 30,
     "spellblockperlevel": 0.5,
@@ -43,7 +43,7 @@
     "mpregenperlevel": 0.8,
     "crit": 0,
     "critperlevel": 0,
-    "attackdamage": 54.7,
+    "attackdamage": 55,
     "attackdamageperlevel": 3,
     "attackspeedperlevel": 1.36,
     "attackspeed": 0.625
@@ -58,7 +58,7 @@
         "full": "Xerath_Passive1.png",
         "sprite": "passive4.png",
         "group": "passive",
-        "x": 48,
+        "x": 144,
         "y": 96,
         "w": 48,
         "h": 48
@@ -69,7 +69,7 @@
       ],
       "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Xerath</b> periodically empowers his next <a class=\"effect link\" title=\"basic attack\">basic attack</a> to restore <HtmlTooltip class=\"blue link\">30;33;36;42;48;54;63;72;81;90;102;114;126;138;150;165;180;195undefined −  (based on level)<template #content>Values: 30, 33, 36, 42, 48, 54, 63, 72, 81, 90, 102, 114, 126, 138, 150, 165, 180, 195<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span><span class=\"mana\">mana</span></span>, doubled to <HtmlTooltip class=\"blue link\">60;66;72;84;96;108;126;144;162;180;204;228;252;276;300;330;360;390undefined −  (based on level)<template #content>Values: 60, 66, 72, 84, 96, 108, 126, 144, 162, 180, 204, 228, 252, 276, 300, 330, 360, 390<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> against enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip>.<br /><i>Mana Surge</i> does not trigger if <b>Xerath</b> would restore above his <span class=\"mana\"><b>maximum</b> mana</span>.",
       "leveling": [],
-      "notes": "* ''Mana Surge'' does not occur against [[Structure|structures]].\n* {{Pending for test}}: ''Mana Surge's '' interactions with {{tip|dodge|dodging}}, {{tip|block|blocking}}, and {{tip|blind|blinding}} effects.",
+      "notes": "* ''Mana Surge'' does not occur against [[Structure|structures]].\n* ''Mana Surge'' will trigger even if the attack is {{tip|blocked}}.\n* {{Pending for test}}: ''Mana Surge's '' interactions with {{tip|dodge|dodging}}, and {{tip|blind|blinding}} effects.",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
@@ -93,28 +93,27 @@
         120
       ],
       "costtype": "mana",
-      "targeting": "[[Auto-targeted|Auto]] / [[Direction-targeted|Direction]]",
-      "target_range": "<!--{{tip|?r|icononly = true}} -->{{pp|type=channel time|750;815;880;945;1010;1075;1140;1205;1270;1335;1400|0;0.15;0.3;0.45;0.6;0.75;0.9;1.05;1.2;1.35;1.5|formula=750{{plus}}(65 per 0.15 seconds). ''This is capped at 1.5 seconds.''}}",
+      "targeting": "Direction",
       "image": {
         "full": "XerathArcanopulseChargeUp.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 384,
-        "y": 48,
+        "x": 288,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} while being gradually {{tip|slow|slowed}} over the duration, by up to 50%. ''Arcanopulse'' can be recast at any time within its duration.",
-        "If the charge completes without reactivation, ''Arcanopulse'' is cancelled, refunding {{sti|mana|{{as|half of the mana cost}}}}.",
-        "{{sbc|Recast:}} After a {{fd|0.5}}-second delay, '''Xerath''' fires a beam of energy in the target direction, dealing {{as|magic damage}} to all enemies hit."
+        "{{sbc|Active:}} '''Xerath''' {{tip|channel|charges}} for up to 3 seconds to increase ''Arcanopulse's'' {{sti|range}} over the first {{fd|1.5}} to {{fd|1.75}} seconds of the channel while being {{tip|slow|slowed}} by {{pp|key=%|type=channel time|0;10;15;20;25;30;35;40|0 to 1.75|formula=10% after 0 to 0.25 seconds, then {{plus}}5% per 0.25 seconds channeled, capped at 40%}}. ''Arcanopulse'' can be recast at any time within its duration.",
+        "If the charge completes without reactivation or is {{tip|interrupt|interrupted}}, ''Arcanopulse'' is cancelled, refunding {{sti|mana|{{as|half of its mana cost}}}}.",
+        "{{sbc|Recast:}} After a delay of {{rutngt|0.5}}, '''Xerath''' fires a beam of energy in the target direction, dealing {{as|magic damage}} to all enemies within the area."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 3 seconds to increase <i>Arcanopulse's</i> <span>range</span> while being gradually <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> over the duration, by up to 50%. <i>Arcanopulse</i> can be recast at any time within its duration.<br />If the charge completes without reactivation, <i>Arcanopulse</i> is cancelled, refunding <span><span class=\"mana\">half of the mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> After a <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>-second delay, <b>Xerath</b> fires a beam of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies hit.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> <HtmlTooltip class=\"blue link\">charges<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 3 seconds to increase <i>Arcanopulse's</i> <span>range</span> over the first <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> to <span style=\"font-variant-numeric: tabular-nums;\">1.75</span> seconds of the channel while being <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by <span class=\"title-tooltip\" title=\"\">0 to 1.75 ‒ undefined</span>. <i>Arcanopulse</i> can be recast at any time within its duration.<br />If the charge completes without reactivation or is <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip>, <i>Arcanopulse</i> is cancelled, refunding <span><span class=\"mana\">half of its mana cost</span></span>.<br /><span class=\"sbc\">Recast:</span> After a delay of <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.5\">Unknown value: rutngt 0.5</simple-tooltip>, <b>Xerath</b> fires a beam of energy in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies within the area.",
       "leveling": [
-        "{{st|Mana Refunded|{{ap|40|45|50|55|60}}}}",
-        "{{st|Magic Damage|{{ap|80|120|160|200|240}} {{as|(+ 75% AP)}}}}"
+        "{{st|Mana Refunded|{{ap|40 to 60}}}}",
+        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 85% AP)}}}}"
       ],
-      "notes": "* ''Arcanopulse'' will always fire from the original recasting position.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast=false|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
+      "notes": "* The onset of ''Arcanopulse's'' self-{{tip|slow}} and first range increase is at a random interval of 0 to {{fd|0.25}} seconds. The real time to maximum self-slow and range is thus {{fd|1.5}} to {{fd|1.75}} seconds.\n* The rectangle hitbox's minimum range is {{tip|er|icononly = true}} 0, right through '''Xerath's''' center.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|charge|attack=false|move=true|cast=false|items=false|consume=Disabled, but can still use trinkets.|spells=true, true, false, false, recasts}}",
       "skillkey": "Q",
       "skillid": "q1",
       "effects": [
@@ -156,26 +155,26 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.75
+                "player_total_ap": 0.85
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[80,120,160,200,240]\"></SpellSpan> <span class=\"ap\">(+ 75% AP)</span>"
+                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                80,
-                120,
-                160,
-                200,
-                240
+                70,
+                110,
+                150,
+                190,
+                230
               ]
             ]
           },
@@ -186,13 +185,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  80,
-                  120,
-                  160,
-                  200,
-                  240
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
                 ],
-                "player_total_ap": 0.75
+                "player_total_ap": 0.85
               }
             }
           ]
@@ -224,26 +223,26 @@
         "full": "XerathArcaneBarrage2.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 432,
-        "y": 48,
+        "x": 336,
+        "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target location which strikes after a {{fd|0.5}}-second delay, {{tip|sight|revealing}} the area, and dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
-        "Enemies in the center of the blast take {{fd|66.7}}% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying down to 25% over the duration."
+        "{{sbc|Active:}} '''Xerath''' calls down a blast of arcane energy upon the target location which strikes after {{rutngt|0.5}}, granting {{tip|sight}} of the area briefly and dealing {{as|magic damage}} to all enemies within and {{tip|slow|slowing}} them by 25% for {{fd|2.5}} seconds.",
+        "Enemies in the center of the blast take {{fd|66.7}}% increased [[damage]] and are {{tip|slow|slowed}} by a greater amount, decaying to 25% over the duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> calls down a blast of arcane energy upon the target location which strikes after a <span style=\"font-variant-numeric: tabular-nums;\">0.5</span>-second delay, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> the area, and dealing <span class=\"magic-damage\">magic damage</span> to all enemies within and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 25% for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Enemies in the center of the blast take <span style=\"font-variant-numeric: tabular-nums;\">66.7</span>% increased <a class=\"effect link\" title=\"damage\">damage</a> and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by a greater amount, decaying down to 25% over the duration.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> calls down a blast of arcane energy upon the target location which strikes after <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.5\">Unknown value: rutngt 0.5</simple-tooltip>, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area briefly and dealing <span class=\"magic-damage\">magic damage</span> to all enemies within and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 25% for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />Enemies in the center of the blast take <span style=\"font-variant-numeric: tabular-nums;\">66.7</span>% increased <a class=\"effect link\" title=\"damage\">damage</a> and are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by a greater amount, decaying to 25% over the duration.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 180}} {{as|(+ 60% AP)}}}}",
-        "{{st|Enhanced Damage|{{ap|60*1.667 to 180*1.667}} {{as|(+ {{ap|60*1.667}}% AP)}}}}\n{{st|Enhanced Slow|{{ap|60 to 80}}%}}"
+        "{{st|Magic Damage|{{ap|60 to 200}} {{as|(+ 60% AP)}}}}",
+        "{{st|Enhanced Damage|{{ap|60*1.667 to 200*1.667}} {{as|(+ {{ap|60*1.667}}% AP)}}}}\n{{st|Enhanced Slow|{{ap|60 to 80}}%}}"
       ],
-      "notes": "* No additional notes.",
+      "notes": "* '''Xerath's''' location gets {{tip|sight|revealed}} to the enemy (450 radius for 4.5 seconds) if ''Eye of Destruction's'' cast location is within 100 units of a valid enemy at the start of the cast time due to something related to targeting types.{{bug}}\n* '''Eye of Destruction''''s [[targeting]] indicator appears on the player's [[mini-map]], despite the ability not having the longer range of others with this quality.\n** This is likely a remnant from a version of the ability tested on the [[PBE]] for '''Xerath''''s [[V4.2]] [[Champion updates|Rework]], that had a longer range.{{Citation needed}}",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -253,16 +252,16 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
+                "<SpellSpan :list=\"[60,95,130,165,200]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
                 60,
-                90,
-                120,
-                150,
-                180
+                95,
+                130,
+                165,
+                200
               ]
             ]
           },
@@ -274,10 +273,10 @@
               "ratios": {
                 "base_damage": [
                   60,
-                  90,
-                  120,
-                  150,
-                  180
+                  95,
+                  130,
+                  165,
+                  200
                 ],
                 "player_total_ap": 0.6
               }
@@ -285,7 +284,7 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Enhanced Damage</span>: <span><SpellSpan :list=\"[100.02,150.03,200.04,250.05,300.06]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Enhanced Slow</span>: <span><SpellSpan :list=\"[60,65,70,75,80]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Enhanced Damage</span>: <span><SpellSpan :list=\"[100.02,158.365,216.71,275.055,333.4]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Enhanced Slow</span>: <span><SpellSpan :list=\"[60,65,70,75,80]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -305,16 +304,16 @@
               ],
               [
                 "Enhanced Damage",
-                "<SpellSpan :list=\"[100.02,150.03,200.04,250.05,300.06]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span>"
+                "<SpellSpan :list=\"[100.02,158.365,216.71,275.055,333.4]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[100.02]\"></SpellSpan>% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
                 100.02,
-                150.03,
-                200.04,
-                250.05,
-                300.06
+                158.365,
+                216.71,
+                275.055,
+                333.4
               ],
               [
                 100.02
@@ -330,10 +329,10 @@
               "ratios": {
                 "base_damage": [
                   100.02,
-                  150.03,
-                  200.04,
-                  250.05,
-                  300.06
+                  158.365,
+                  216.71,
+                  275.055,
+                  333.4
                 ],
                 "player_total_ap": [
                   0.6,
@@ -385,12 +384,11 @@
       ],
       "costtype": "mana",
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 1125",
       "image": {
         "full": "XerathMageSpear.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 0,
+        "x": 384,
         "y": 96,
         "w": 48,
         "h": 48
@@ -467,33 +465,33 @@
         "full": "XerathLocusOfPower2.png",
         "sprite": "spell14.png",
         "group": "spell",
-        "x": 48,
+        "x": 432,
         "y": 96,
         "w": 48,
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Xerath''' unleashes his true power, {{tip|channel|channeling}} and {{tip|sight|revealing}} himself for up to 10 seconds, during which he gains a wider field of view, though not a larger {{tip|sight|vision}} range and, after {{fd|0.5}} seconds, is granted the ability to recast ''Rite of the Arcane'' to send a barrage multiple times within its duration.",
-        "{{sbc|Recast:}} '''Xerath''' launches a blast of arcane energy to the target location which strikes after {{rutngt|0.6}}, dealing {{as|magic damage}} and briefly granting {{tip|sight}} of the area. Each cast has a {{tt|static cooldown|Unaffected by cooldown reduction}} of {{fd|0.8}} seconds.",
+        "{{sbc|Active:}} '''Xerath''' {{tip|channel|channels}} for up to 10 seconds, unleashing his true power, {{tip|sight|revealing}} himself and gaining the ability to recast ''Rite of the Arcane'' multiple times after {{fd|0.5}} seconds within its duration.",
+        "{{sbc|Recast:}} '''Xerath''' launches a blast of arcane energy to the target location which strikes after {{rutngt|0.6}}, briefly granting {{tip|sight}} of the area and dealing {{as|magic damage}} to enemies within. Each cast has a {{tt|static cooldown|Unaffected by ability haste}} of {{fd|0.5}} seconds.",
         "If none of the recasts were used and ''Rite of the Arcane's'' channel times out or '''Xerath''' manually interrupts it, half of the ability's {{sti|cooldown}} is refunded.",
         "''Rite of the Arcane's'' recast will cast at max range if cast beyond that."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> unleashes his true power, <HtmlTooltip class=\"blue link\">channeling<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> himself for up to 10 seconds, during which he gains a wider field of view, though not a larger <HtmlTooltip class=\"blue link\">vision<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> range and, after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, is granted the ability to recast <i>Rite of the Arcane</i> to send a barrage multiple times within its duration.<br /><span class=\"sbc\">Recast:</span> <b>Xerath</b> launches a blast of arcane energy to the target location which strikes after <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.6\">Unknown value: rutngt 0.6</simple-tooltip>, dealing <span class=\"magic-damage\">magic damage</span> and briefly granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area. Each cast has a <span class=\"title-tooltip\" title=\"Unaffected by cooldown reduction\">static cooldown</span> of <span style=\"font-variant-numeric: tabular-nums;\">0.8</span> seconds.<br />If none of the recasts were used and <i>Rite of the Arcane's</i> channel times out or <b>Xerath</b> manually interrupts it, half of the ability's <span>cooldown</span> is refunded.<br /><i>Rite of the Arcane's</i> recast will cast at max range if cast beyond that.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Xerath</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for up to 10 seconds, unleashing his true power, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> himself and gaining the ability to recast <i>Rite of the Arcane</i> multiple times after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds within its duration.<br /><span class=\"sbc\">Recast:</span> <b>Xerath</b> launches a blast of arcane energy to the target location which strikes after <simple-tooltip class=\"capture-unknown\" dname=\"rutngt 0.6\">Unknown value: rutngt 0.6</simple-tooltip>, briefly granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area and dealing <span class=\"magic-damage\">magic damage</span> to enemies within. Each cast has a <span class=\"title-tooltip\" title=\"Unaffected by ability haste\">static cooldown</span> of <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br />If none of the recasts were used and <i>Rite of the Arcane's</i> channel times out or <b>Xerath</b> manually interrupts it, half of the ability's <span>cooldown</span> is refunded.<br /><i>Rite of the Arcane's</i> recast will cast at max range if cast beyond that.",
       "leveling": [
-        "{{st|Number of Barrages|{{ap|3 to 5}}}}",
+        "{{st|Number of Recasts|{{ap|3 to 5}}}}",
         "{{st|Magic Damage|{{ap|200 to 300}} {{as|(+ 45% AP)}}|Total Damage|{{ap|(200 to 300)*(3 to 5)}} {{as|(+ {{ap|45*3 to 45*5}}% AP)}}}}"
       ],
-      "notes": "* '''Xerath''' also gains {{as|{{sti|5000 '''bonus''' attack range}}}} while {{tip|channel|channeling}}, for a total of {{as|{{sti|attack range|5525}}}}.{{bug|2}}\n** While attacking during the channel is not possible, the bonus may persist{{ft|for up-to {{fd|0.25}} seconds|until the next stat update}}after the end of the channel, allowing '''Xerath''' to sucessfully issue a single basic attack at this range if he does so quickly enough.\n* Each cast counts as an ability activation for the purposes of on-cast effects such as {{nie|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The recast is named ''Arcane Barrage''.\n* A circular indicator will be displayed at the target location to signify that the area will be blasted.\n* A circle indicating the ability's maximum range forms on the map over 1 second (starting small and rapidly expanding to the maximum range over the delay) for the channel's duration.\n** The maximum-range indicator is visible to both allies and enemies and is color coded for friendly (blue) or hostile (red).\n* ''Rite of the Arcane'' uses a [[Champion ability|barrage system]] so that it can be recast multiple times within a given period at no additional cost.\n* '''Xerath''' will turn to face toward the direction of the target location after using a recast.\n* '''Xerath''' can use {{ai|Dark Passage|Thresh}} while channeling.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=false|attack=interrupts|move=Disabled for the first {{fd|1.25}} seconds, otherwise, interrupts.|items=interrupts,true,,false|spells=true, false, interrupts, interrupts, false}}\n* {{si|Teleport}} is disabled for the first {{fd|1.25}} seconds of the channel.",
+      "notes": "* '''Xerath''' also gains {{as|{{sti|5000 '''bonus''' attack range}}}} while {{tip|channel|channeling}}, for a total of {{as|{{sti|attack range|5525}}}}.{{bug|2}}\n** While attacking during the channel is not possible, the bonus may persist{{ft|for up-to {{rutngt|0.25}}|until the next stat update}}after the end of the channel, allowing '''Xerath''' to sucessfully issue a single basic attack at this range if he does so quickly enough.\n* Each cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* The recast is named ''Arcane Barrage''.\n* A circular indicator will be displayed at the target location to signify that the area will be blasted.\n* A circle indicating the ability's maximum range forms on the map over 1 second (starting small and rapidly expanding to the maximum range over the delay) for the channel's duration.\n** The maximum-range indicator is visible to both allies and enemies and is color coded for friendly (blue) or hostile (red).\n* ''Rite of the Arcane'' uses a [[Champion ability|barrage system]] so that it can be recast multiple times within a given period at no additional cost.\n* '''Xerath''' will turn to face toward the direction of the target location after using a recast.\n* '''Xerath''' gains a wider field of view during ''Rite of the Arcane''.\n* '''Xerath''' can use {{ai|Dark Passage|Thresh}} while channeling.\n* The following table refers for interactions while '''Xerath''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=false|attack=interrupts|move=Disabled for the first {{fd|1.25}} seconds, otherwise, interrupts.|items=interrupts,true,,false|spells=true, false, interrupts, interrupts, false}}\n* {{si|Teleport}} is disabled for the first {{fd|1.25}} seconds of the channel.",
       "skillkey": "R",
       "skillid": "r1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Number of Barrages</span>: <span><SpellSpan :list=\"[3,4,5]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Number of Recasts</span>: <span><SpellSpan :list=\"[3,4,5]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
             "st_slices": [
               [
-                "Number of Barrages",
+                "Number of Recasts",
                 "<SpellSpan :list=\"[3,4,5]\"></SpellSpan>"
               ]
             ],
@@ -508,7 +506,7 @@
           "subeffects": [
             {
               "index": 0,
-              "title": "Number of Barrages",
+              "title": "Number of Recasts",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
