@@ -339,12 +339,12 @@
       },
       "description": [
         "{{sbc|Active:}} '''Karma''' exerts her will over the target enemy champion or {{tip|monster}}, dealing them {{as|magic damage}} and forming a {{tip|tether}} between '''Karma''' and the target for 2 seconds, during which the target is {{tip|true sight|revealed}}.",
-        "If the tether is not broken by the end of its duration, the target is dealt the same {{as|magic damage}} again and is {{tip|true sight|revealed}} and {{tip|root|rooted}} for a duration."
+        "If the tether is not broken by the end of its duration, the target is dealt the same {{as|magic damage}} again and is {{tip|root|rooted}} for a duration, during which they are {{tip|true sight|revealed}}."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Karma</b> exerts her will over the target enemy champion or <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, dealing them <span class=\"magic-damage\">magic damage</span> and forming a <HtmlTooltip class=\"blue link\">tether<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> between <b>Karma</b> and the target for 2 seconds, during which the target is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip>.<br />If the tether is not broken by the end of its duration, the target is dealt the same <span class=\"magic-damage\">magic damage</span> again and is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">rooted<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> for a duration.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Karma</b> exerts her will over the target enemy champion or <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>, dealing them <span class=\"magic-damage\">magic damage</span> and forming a <HtmlTooltip class=\"blue link\">tether<template #content><div><h4>tether<hr></h4><p>Description for keyword tether</p></div></template></HtmlTooltip> between <b>Karma</b> and the target for 2 seconds, during which the target is <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip>.<br />If the tether is not broken by the end of its duration, the target is dealt the same <span class=\"magic-damage\">magic damage</span> again and is <HtmlTooltip class=\"blue link\">rooted<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> for a duration, during which they are <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip>.",
       "leveling": [
         "{{st|Magic Damage|{{ap|40 to 140}} {{as|(+ 45% AP)}}}}",
-        "{{st|Total Magic Damage|{{ap|40*2 to 140*2}} {{as|(+ 90% AP)}}}}\n{{st|Root and Reveal Duration|{{ap|1.4 to 2}}}}"
+        "{{st|Total Magic Damage|{{ap|40*2 to 140*2}} {{as|(+ 90% AP)}}}}\n{{st|Root Duration|{{ap|1.4 to 2}}}}"
       ],
       "notes": "* {{tip|Spell shield}} will block the tether's application and damage but not the aftereffects of one already applied.",
       "skillkey": "W",
@@ -393,7 +393,7 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Root and Reveal Duration</span>: <span><SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Root Duration</span>: <span><SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -406,7 +406,7 @@
                 "<SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan> <span class=\"ap\">(+ 90% AP)</span>"
               ],
               [
-                "Root and Reveal Duration",
+                "Root Duration",
                 "<SpellSpan :list=\"[1.4,1.55,1.7,1.85,2]\"></SpellSpan>"
               ]
             ],
@@ -445,7 +445,7 @@
             },
             {
               "index": 1,
-              "title": "Root and Reveal Duration",
+              "title": "Root Duration",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
@@ -773,11 +773,10 @@
       "name": "Mantra",
       "maxrank": 4,
       "cooldown": [
-        0,
-        37,
-        34,
-        31,
-        0
+        40,
+        38,
+        36,
+        34
       ],
       "cost": 0,
       "targeting": "Auto",
@@ -800,7 +799,6 @@
       "notes": "*''Mantra'' counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Mantra's'' bonus effects are added on top of '''Karma's''' basic abilities.",
       "skillkey": "R",
       "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|40 to 34 4}}|Starts on cast}}' as '0/37/34/31/0' and riot's value '40,38,36,34' as '40/38/36/34'",
       "effects": []
     }
   }

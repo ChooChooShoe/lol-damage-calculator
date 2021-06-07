@@ -81,12 +81,11 @@
       "name": "Alpha Strike",
       "maxrank": 5,
       "cooldown": [
-        0,
-        17.333,
-        16.667,
-        16,
-        15.333,
-        0
+        18,
+        17.5,
+        17,
+        16.5,
+        16
       ],
       "cost": [
         50,
@@ -122,10 +121,9 @@
       "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}} but not when '''Master Yi''' is {{tip|blind|blinded}}.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} in a 600 radius around it for up-until {{rutngt|0.6}} <!-- this 0.6s after reappearing value is not confirmed as \"the one\", btw, might also be 0.625s after reappearing or 0.75s after last bounce --> after ''Alpha Strike'' ends, including across terrain, though not into {{tip|brush|brushes}}. It will always grant vision around the primary target even if he doesn't bounce off it.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to {{tt|2000|From Yi's location at start of cast}} units; If the target teleports a very long distance, it will not be followed.\n* If the primary target becomes {{tip|untargetable}} and there are no other nearby valid targets, ''Alpha Strike'' will end prematurely and will not deal the damage occurring after '''Master Yi's''' reappearance.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.{{bug}}\n* {{tip|Spell shield}} will only block a single instance of damage.\n*If '''Master Yi''' {{tip|death|dies}} during ''Alpha Strike'' and he is only focusing one target, the ability will only deal the reduced damage strikes and not the final tick of damage from reappearing.\n** If he is striking multiple targets the damage will be dealt immediately when ''dying'', and if he ''dies'' before the bounce from the last target, ''Alpha Strike'' will deal reduced damage only to all units he already bounced from.{{bug}}\n* If '''Master Yi''' enters {{tip|resurrection}} during ''Alpha Strike'' and he is only focusing one target, the ability will deal the reduced damage strikes as normal and the final tick of damage after being ''resurrected''.\n** If he is striking multiple targets, ''Alpha Strike'' will ''sometimes'' deal the reduced damage from repeated bounces and the main damage after being ''resurrected'', and ''sometimes'' only the reduced damage, unrelated to the number of targets available.{{bug}}\n* The following table refers for interactions while '''Master Yi''' is performing ''Alpha Strike'':\n{{ct|attack=false|move=false|cast=false|items=false|consume=false|spells=true,false,false,false,false|interrupts=death}}",
       "skillkey": "Q",
       "skillid": "q1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 16}}|Starts on cast}}' as '0/17.333/16.667/16/15.333/0' and riot's value '18,17.5,17,16.5,16' as '18/17.5/17/16.5/16'",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li><li><span class=\"blue\">Monster Bonus Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -138,23 +136,17 @@
             "st_slices": [
               [
                 "Physical Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
                 "Monster Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>",
                 "Monster Bonus Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan>"
+                "<SpellSpan :list=\"[]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ]
+              [],
+              [],
+              []
             ]
           },
           "subeffects": [
@@ -163,22 +155,18 @@
               "title": "Physical Damage",
               "damage_type": "physical",
               "ratios": {
-                "base_damage": [
-                  0
-                ],
+                "base_damage": [],
                 "player_total_ap": null
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Reduced Monster Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ad": [
-                  0
-                ]
+                "player_total_ad": []
               },
               {
                 "player_total_ad": []
@@ -193,33 +181,23 @@
             "st_slices": [
               [
                 "Reduced Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span>",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
                 "Reduced Monster Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span>"
+                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
               ],
               [
                 "Maximum Single-Target Damage",
-                "<SpellSpan :list=\"[0]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span>",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
                 "Max Monster Single-Target Damage",
-                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[0]\"></SpellSpan>% AD)</span>"
+                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
               ]
             ],
             "ap_progressions": [
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
-              [
-                0
-              ],
+              [],
+              [],
+              [],
+              [],
+              [],
               null
             ]
           },
@@ -229,9 +207,7 @@
               "title": "Reduced Damage",
               "damage_type": "unknown",
               "ratios": {
-                "base_damage": [
-                  0
-                ],
+                "base_damage": [],
                 "player_total_ad": []
               }
             },
@@ -240,9 +216,7 @@
               "title": "Maximum Single-Target Damage",
               "damage_type": "unknown",
               "ratios": {
-                "base_damage": [
-                  0
-                ],
+                "base_damage": [],
                 "player_total_ad": []
               }
             }
@@ -255,8 +229,7 @@
       "name": "Meditate",
       "maxrank": 5,
       "cooldown": [
-        28,
-        0
+        28
       ],
       "cost": 50,
       "costtype": "Mana",
@@ -285,7 +258,6 @@
       "notes": "* ''Meditate's'' healing amount updates dynamically as he heals himself, making '''Master Yi''' heal for less as his '''current''' health increases.\n* The following table refers for interactions while '''Master Yi''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts}}",
       "skillkey": "W",
       "skillid": "w1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|28|Starts on cast}}' as '28/0' and riot's value '28,28,28,28,28' as '28'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Minimum Total Healing</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
@@ -467,12 +439,11 @@
       "name": "Wuju Style",
       "maxrank": 5,
       "cooldown": [
-        0,
-        16.667,
-        15.333,
-        14,
-        12.667,
-        0
+        18,
+        17,
+        16,
+        15,
+        14
       ],
       "cost": 0,
       "targeting": "Auto",
@@ -495,7 +466,6 @@
       "notes": "* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{tip|block|blocked}} but can be {{tip|dodge|dodged}} and/or missed if '''Master Yi''' is {{tip|blind|blinded}}.",
       "skillkey": "E",
       "skillid": "e1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|{{ap|18 to 14}}|Starts on-cast}}' as '0/16.667/15.333/14/12.667/0' and riot's value '18,17,16,15,14' as '18/17/16/15/14'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[30,40,50,60,70]\"></SpellSpan></span> <span class=\"ad\">(+ 35% <b>bonus</b> AD)</span></span></li></ul>",
@@ -549,8 +519,7 @@
       "name": "Highlander",
       "maxrank": 3,
       "cooldown": [
-        85,
-        0
+        85
       ],
       "cost": 100,
       "costtype": "Mana",
@@ -576,7 +545,6 @@
       "notes": "* There are two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
       "skillkey": "R",
       "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '{{tt|85|Starts on cast}}' as '85/0' and riot's value '85,85,85' as '85'",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,45,65]\"></SpellSpan>%</span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,45,55]\"></SpellSpan>%</span></li></ul>",

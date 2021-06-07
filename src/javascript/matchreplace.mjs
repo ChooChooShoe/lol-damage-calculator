@@ -319,11 +319,11 @@ export function numberExpand(slices, maxrank, round) {
         let num = eval(cleaned);
         if (!isNaN(num))
           list.push(+parseFloat(num).toFixed(round));
-        else
-          list.push(0);
+        // else
+          // list.push(0);
       } catch (msg) {
         console.warn("Error because of eval(", cleaned, ")\n", msg);
-        list.push(0);
+        // list.push(0);
       }
     }
   }
