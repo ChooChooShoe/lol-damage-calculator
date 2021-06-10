@@ -1,6 +1,6 @@
 {
   "patch": "V0.9.22.16",
-  "changes": "11.9.1",
+  "changes": "11.12.1",
   "id": "DrMundo",
   "name": "Dr. Mundo",
   "title": "the Madman of Zaun",
@@ -32,7 +32,7 @@
     "mp": 0,
     "mpperlevel": 0,
     "movespeed": 345,
-    "armor": 36,
+    "armor": 32,
     "armorperlevel": 3,
     "spellblock": 32,
     "spellblockperlevel": 1.25,
@@ -44,18 +44,18 @@
     "crit": 0,
     "critperlevel": 0,
     "attackdamage": 61,
-    "attackdamageperlevel": 3,
-    "attackspeedperlevel": 2.8,
-    "attackspeed": 0.721
+    "attackdamageperlevel": 4.2,
+    "attackspeedperlevel": 3.3,
+    "attackspeed": 0.67
   },
   "skills": {
     "i1": {
       "riotId": "",
-      "name": "Adrenaline Rush",
+      "name": "Goes Where He Pleases",
       "maxrank": 0,
       "targeting": "Passive",
       "image": {
-        "full": "DrMundo_Passive.png",
+        "full": "DrMundo_P.Dr_Mundo_VGU.png",
         "sprite": "passive0.png",
         "group": "passive",
         "x": 144,
@@ -64,32 +64,31 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Innate:}} '''Dr. Mundo''' [[Health regeneration|regenerates]]{{ft|{{as|{{sti|health|{{fd|2.5}}% of his '''maximum''' health}}}} every 5 seconds.|{{as|{{sti|health|{{fd|0.5}}% of his '''maximum''' health}}}} each second.}}"
+        "{{sbc|Innate:}} '''Dr. Mundo''' {{stil|health regeneration|regenerates}} an additional{{ft|{{as|2% of his '''maximum''' health}} every 5 seconds.|{{as|{{fd|0.4}}% of his '''maximum''' health}} each second.}}",
+        "{{sbc|Passive:}} Periodically, '''Dr. Mundo''' gains a buff that grants him immunity to the {{tip|immobilize|immobilizing}} effects of the next hostile immobilizing spell to affect him. Upon resisting one, '''Dr. Mundo''' pays a {{as|health cost}} equal to {{as|7% of his '''current''' health}} and propels a canister that lands 525 units in the general direction of its source, remaining on the ground for 7 seconds.",
+        "'''Dr. Mundo''' can move near the canister to consume it, {{tip|heal|healing}} himself for {{as|8% of his '''maximum''' health}} and reducing the {{sti|cooldown}} of ''Goes Where He Pleases'' by 15 seconds. Enemy {{tip|champion|champions}} can move near it to destroy it.",
+        "''Goes Where He Pleases' ''cooldown resets upon [[respawn|respawning]]."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Dr. Mundo</b> <a class=\"effect link\" title=\"regenerates\">Health regeneration</a><label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\"><span><span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% of his <b>maximum</b> health</span></span> every 5 seconds.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"health\"><span><span style=\"font-variant-numeric: tabular-nums;\">0.5</span>% of his <b>maximum</b> health</span></span> each second.&nbsp;」</span></label>",
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Dr. Mundo</b> <simple-tooltip class=\"capture-unknown\" dname=\"stil health regeneration regenerates\">Unknown value: stil health regeneration regenerates</simple-tooltip> an additional<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;<span class=\"health\">2% of his <b>maximum</b> health</span> every 5 seconds.&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"health\"><span style=\"font-variant-numeric: tabular-nums;\">0.4</span>% of his <b>maximum</b> health</span> each second.&nbsp;」</span></label><br /><span class=\"sbc\">Passive:</span> Periodically, <b>Dr. Mundo</b> gains a buff that grants him immunity to the <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> effects of the next hostile immobilizing spell to affect him. Upon resisting one, <b>Dr. Mundo</b> pays a <span class=\"health\">health cost</span> equal to <span class=\"health\">7% of his <b>current</b> health</span> and propels a canister that lands 525 units in the general direction of its source, remaining on the ground for 7 seconds.<br /><b>Dr. Mundo</b> can move near the canister to consume it, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> himself for <span class=\"health\">8% of his <b>maximum</b> health</span> and reducing the <span>cooldown</span> of <i>Goes Where He Pleases</i> by 15 seconds. Enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> can move near it to destroy it.<br /><i>Goes Where He Pleases' </i>cooldown resets upon <a class=\"effect link\" title=\"respawning\">respawn</a>.",
       "leveling": [],
-      "notes": "* ''Adrenaline Rush'' is not affected by {{ri|Revitalize}} as it is considered as [[health regeneration]].",
+      "notes": "* Upon being triggered by a hostile {{tip|immobilize|immobilizing}} effects, ''Goes Where He Pleases'' will also grant '''Dr. Mundo''' immunity to additional immobilizing effects from the same {{tip|cast instance}}.\n** Abilities where non-immobilizing effects and damage are nested into immobilizing ones will have them also prevented. Non-immobilizing effects and damage applied separately (the vast majority of cases) are not prevented.\n* {{tip|Spell shield}} and {{ai|Black Shield|Morgana}} take priority over ''Goes Where He Pleases''.\n* ''Goes Where He Pleases'' will not trigger against nor resist {{cais|R|Rell}} {{tip|kinematics|ongoing kinematic effect}}.\n** It will trigger against and prevent the ability's initial {{tip|airborne|displacement}}, but even in that case, not prevent the continous effect.\n* ''Goes Where He Pleases'' is special cased to also trigger against the {{tip|slow}} from {{ai|Realm of Death|Mordekaiser}}.\n** ''Goes Where He Pleases'' will not resist {{ai|Realm of Death|Mordekaiser}}.{{bug}}",
       "skillkey": "I",
       "skillid": "i1",
       "effects": []
     },
     "q1": {
-      "riotId": "InfectedCleaverMissileCast",
-      "name": "Infected Cleaver",
+      "riotId": "DrMundoQ",
+      "name": "Infected Bonesaw",
       "maxrank": 5,
       "cooldown": 4,
       "cost": [
-        50,
-        60,
-        70,
-        80,
-        90
+        50
       ],
       "costtype": "{{as|Health}}",
       "targeting": "Direction",
       "target_range": "{{tip|cr|icononly = true}} 1050 / {{tip|er|icononly = true}} 990",
       "image": {
-        "full": "InfectedCleaverMissileCast.png",
+        "full": "DrMundoQ.png",
         "sprite": "spell2.png",
         "group": "spell",
         "x": 288,
@@ -98,20 +97,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Dr. Mundo''' hurls a cleaver in the target direction, dealing {{as|magic damage}} to the first enemy it hits and {{tip|slow|slowing}} them by 40% for 2 seconds.",
-        "''Infected Cleaver'' has a minimum damage threshold, and is capped against {{tip|minions}} and {{tip|monsters}}.",
-        "If ''Infected Cleaver'' hits an enemy, '''Dr. Mundo''' {{tip|heal|heals}} for 50% of the {{sti|{{as|health cost}}}}, increased to 100% if he hits a champion or kills an enemy."
+        "{{sbc|Active:}} '''Dr. Mundo''' throws an infected bonesaw in the target direction that deals {{as|magic damage}} to the first enemy hit and {{tip|slow|slows}} them by 40% for 2 seconds.",
+        "''Infected Bonesaw'' has a minimum damage threshold, and is capped against {{tip|monsters}}.",
+        "If the bonesaw hits an enemy {{tip|champion}}, '''Dr. Mundo''' {{tip|heals}} for 100% of the {{as|health cost}}, reduced to 50% if a non-champion is hit."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> hurls a cleaver in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy it hits and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 40% for 2 seconds.<br /><i>Infected Cleaver</i> has a minimum damage threshold, and is capped against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br />If <i>Infected Cleaver</i> hits an enemy, <b>Dr. Mundo</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 50% of the <span><span class=\"health\">health cost</span></span>, increased to 100% if he hits a champion or kills an enemy.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> throws an infected bonesaw in the target direction that deals <span class=\"magic-damage\">magic damage</span> to the first enemy hit and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 40% for 2 seconds.<br /><i>Infected Bonesaw</i> has a minimum damage threshold, and is capped against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br />If the bonesaw hits an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>, <b>Dr. Mundo</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> for 100% of the <span class=\"health\">health cost</span>, reduced to 50% if a non-champion is hit.",
       "leveling": [
         "{{st|Magic Damage|{{as|{{ap|20 to 30}}% of target's '''current''' health}}}}",
-        "{{st|Minimum Damage|{{ap|80 to 280}}|Capped Non-Champion Damage|{{ap|100 to 500}}}}",
-        "{{st|Heal|{{ap|50/2 to 90/2}}|Maximum Heal|{{ap|50 to 90}}}}"
+        "{{st|Minimum Damage|{{ap|80 to 300}}}}\n{{st|Capped Monster Damage|{{ap|150 to 450}}}}"
       ],
-      "notes": "* ''Infected Cleaver'' can be cast even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Infected Cleaver'' will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* ''Infected Cleaver'' will be thrown from where '''Dr. Mundo''' was at the start of the cast time.\n* {{tip|Spell shield}} blocking the ability's effects on the enemy does not prevent '''Dr. Mundo''' from receiving the health cost refund.",
+      "notes": "* ''Infected Bonesaw'' will be thrown from where '''Dr. Mundo''' was at the start of the cast time.\n* {{pending for test}} {{tip|Spell shield}} blocking the ability's effects on the enemy does not prevent '''Dr. Mundo''' from receiving the health cost refund.",
       "skillkey": "Q",
       "skillid": "q1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|50 to 90}}|health}} as 50/60/70/80/90 and riot's value 0,0,0,0,0 as 0",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|50|health}} as 50 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[20,22.5,25,27.5,30]\"></SpellSpan>% of target's <b>current</b> health</span></span></li></ul>",
@@ -155,31 +153,33 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan></span></li><li><span class=\"blue\">Capped Non-Champion Damage</span>: <span><SpellSpan :list=\"[100,200,300,400,500]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Capped Monster Damage</span>: <span><SpellSpan :list=\"[150,225,300,375,450]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
             "st_slices": [
               [
                 "Minimum Damage",
-                "<SpellSpan :list=\"[80,130,180,230,280]\"></SpellSpan>",
-                "Capped Non-Champion Damage",
-                "<SpellSpan :list=\"[100,200,300,400,500]\"></SpellSpan>"
+                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan>"
+              ],
+              [
+                "Capped Monster Damage",
+                "<SpellSpan :list=\"[150,225,300,375,450]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
               [
                 80,
-                130,
-                180,
-                230,
-                280
+                135,
+                190,
+                245,
+                300
               ],
               [
-                100,
-                200,
+                150,
+                225,
                 300,
-                400,
-                500
+                375,
+                450
               ]
             ]
           },
@@ -191,28 +191,256 @@
               "ratios": {
                 "base_damage": [
                   80,
-                  130,
-                  180,
-                  230,
-                  280
+                  135,
+                  190,
+                  245,
+                  300
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Capped Monster Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  225,
+                  300,
+                  375,
+                  450
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "DrMundoW",
+      "name": "Heart Zapper",
+      "maxrank": 5,
+      "cooldown": [
+        17,
+        16.5,
+        16,
+        15.5,
+        15
+      ],
+      "cost": [
+        5
+      ],
+      "costtype": "{{as|current health}}",
+      "targeting": "Auto",
+      "image": {
+        "full": "DrMundoW.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 336,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Dr. Mundo''' charges up a defibrillator for 4 seconds, dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies and storing a portion of the {{tt|post-mitigation|Damage calculated after modifiers}} damage he takes.",
+        "''Heart Zapper'' can be recast after 1 second within the duration, and does so automatically after the duration.",
+        "{{sbc|Recast:}} '''Dr. Mundo''' detonates the defibrillator, dealing {{as|magic damage}} to nearby enemies. If at least one enemy {{tip|champion}} is hit, he {{tip|heal|heals}} for 100% of all the damage stored, reduced to 50% if no champion is hit."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> charges up a defibrillator for 4 seconds, dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to nearby enemies and storing a portion of the <span class=\"title-tooltip\" title=\"Damage calculated after modifiers\">post-mitigation</span> damage he takes.<br /><i>Heart Zapper</i> can be recast after 1 second within the duration, and does so automatically after the duration.<br /><span class=\"sbc\">Recast:</span> <b>Dr. Mundo</b> detonates the defibrillator, dealing <span class=\"magic-damage\">magic damage</span> to nearby enemies. If at least one enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> is hit, he <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for 100% of all the damage stored, reduced to 50% if no champion is hit.",
+      "leveling": [
+        "{{st|Magic Damage per Tick|{{ap|5 to 20}}|Total Magic Damage|{{ap|5*16 to 20*16}}}}\n{{st|Damage Stored|{{ap|25 to 45}}% of damage taken}}",
+        "{{st|Magic Damage|{{ap|20 to 80}} {{as|(+ 7% '''bonus''' health)}}}}"
+      ],
+      "notes": "* The charge up applies {{tip|persistent area damage}} and the detonation deals {{tip|area damage}}.\n* {{tip|Spell shield}} will only block the detonation.\n* ''Heart Zapper'' will occasionally deal an additional tick of damage.{{bug}}\n* ''Heart Zapper'' and its recast will buffer and cast at the end of {{ais|Infected Bonesaw|Dr. Mundo}} cast time if attempted to cast during it.\n** As with all buffering of this type, another input such as a movement command can override the buffering of the spell again.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|5%|health}} as 5 and riot's value 0,0,0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage per Tick</span>: <span><SpellSpan :list=\"[5,8.75,12.5,16.25,20]\"></SpellSpan></span></li><li><span class=\"blue\">Total Magic Damage</span>: <span><SpellSpan :list=\"[80,140,200,260,320]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Damage Stored</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>% of damage taken</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Magic Damage per Tick",
+                "<SpellSpan :list=\"[5,8.75,12.5,16.25,20]\"></SpellSpan>",
+                "Total Magic Damage",
+                "<SpellSpan :list=\"[80,140,200,260,320]\"></SpellSpan>"
+              ],
+              [
+                "Damage Stored",
+                "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>% of damage taken"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                5,
+                8.75,
+                12.5,
+                16.25,
+                20
+              ],
+              [
+                80,
+                140,
+                200,
+                260,
+                320
+              ],
+              [
+                25,
+                30,
+                35,
+                40,
+                45
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage per Tick",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  5,
+                  8.75,
+                  12.5,
+                  16.25,
+                  20
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Damage Stored",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  80,
+                  140,
+                  200,
+                  260,
+                  320
                 ]
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"health\">(+ 7% <b>bonus</b> health)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_hp": 0.07
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"health\">(+ 7% '''bonus''' health)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                35,
+                50,
+                65,
+                80
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  35,
+                  50,
+                  65,
+                  80
+                ],
+                "player_bonus_hp": 0.07
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "DrMundoE",
+      "name": "Blunt Force Trauma",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "costtype": "{{as|Health}}",
+      "targeting": "Auto",
+      "image": {
+        "full": "DrMundoE.png",
+        "sprite": "spell2.png",
+        "group": "spell",
+        "x": 384,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Dr. Mundo''' gains {{as|'''bonus''' attack damage}}, plus an additional amount based on his {{as|'''missing''' health}}, reaching maximum value at {{as|70% '''missing''' health}}.",
+        "{{sbc|Active:}} '''Dr. Mundo's''' next basic attack within 4 seconds is empowered to have an {{tip|uncancelable windup}}, gain {{sti|50 '''bonus''' range}}, and deal {{as|'''bonus''' physical damage}}, increased by {{pp|key=%|key1=%|type='''missing''' health|0 to 60 for 11|0 to 40|color=health|formula=1.5% per 1% of '''missing''' health, capped at 40% '''missing''' health}}. If the target dies, their corpse is sent flying away in a line, causing all enemies it passes through to take {{as|100% AD}} plus ''Blunt Force Trauma's'' minimum '''bonus''' damage.",
+        "''Blunt Force Trauma'' as well as the triggering {{as|attack's damage}} is increased to 140% against {{tip|minions}} and non-epic {{tip|monsters}}.",
+        "''Blunt Force Trauma'' {{tip|basic attack reset|resets}} '''Dr. Mundo's''' basic attack timer."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Dr. Mundo</b> gains <span class=\"attack-damage\"><b>bonus</b> attack damage</span>, plus an additional amount based on his <span class=\"health\"><b>missing</b> health</span>, reaching maximum value at <span class=\"health\">70% <b>missing</b> health</span>.<br /><span class=\"sbc\">Active:</span> <b>Dr. Mundo's</b> next basic attack within 4 seconds is empowered to have an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, gain <span>50 <b>bonus</b> range</span>, and deal <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, increased by <span class=\"title-tooltip\" title=\"\">0 to 40 ‒ undefined</span>. If the target dies, their corpse is sent flying away in a line, causing all enemies it passes through to take <span class=\"ad\">100% AD</span> plus <i>Blunt Force Trauma's</i> minimum <b>bonus</b> damage.<br /><i>Blunt Force Trauma</i> as well as the triggering <span class=\"ad\">attack's damage</span> is increased to 140% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and non-epic <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monsters<hr></h4><p>Description for keyword monsters</p></div></template></HtmlTooltip>.<br /><i>Blunt Force Trauma</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Dr. Mundo's</b> basic attack timer.",
+      "leveling": [
+        "{{st|Bonus AD|{{ap|15 to 35}}}}\n{{st|Maximum Additional Bonus AD|{{ap|25 to 45}}|Maximum Total Bonus AD|{{ap|15+25 to 35+45}}}}",
+        "{{st|Minimum Bonus Physical Damage|{{ap|5 to 45}} {{as|(+ 7% '''bonus''' health)}}|Maximum Bonus Physical Damage|{{ap|5*1.6 to 45*1.6}} {{as|(+ {{ap|7*1.6}}% '''bonus''' health)}}}}",
+        "{{st|Minimum Non-Champion Bonus Damage|{{ap|5*1.4 to 45*1.4}} {{as|(+ {{ap|7*1.4}}% '''bonus''' health)}}|Maximum Non-Champion Bonus Damage|{{ap|5*1.6*1.4 to 45*1.6*1.4}} {{as|(+ {{ap|7*1.6*1.4}}% '''bonus''' health)}}}}"
+      ],
+      "notes": "* ''Blunt Force Trauma's'' attack deals {{tip|basic damage}}, while the target's body being shoved deals {{tip|area damage}} to enemies it passes through.\n* ''Blunt Force Trauma's'' attack works against [[structures]], consuming the buff and dealing its full damage.\n* ''Blunt Force Trauma'' cannot knock back {{tip|wards}}, [[structures]] or epic {{tip|monsters}} it kills, nor champions that enter a {{tip|zombie state}} upon dying.\n* The damage of the enemy's corpse colliding with enemies does not benefit from ''Blunt Force Trauma's'' attack {{tip|critical strike|critically striking}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|10 to 50}}|health}} as 10/20/30/40/50 and riot's value 0,0,0,0,0 as 0",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus AD</span>: <span><SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Additional Bonus AD</span>: <span><SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan></span></li><li><span class=\"blue\">Maximum Total Bonus AD</span>: <span><SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan></span></li></ul>",
           "vars": {
             "as_ratios": [],
             "st_slices": [
               [
-                "Heal",
+                "Bonus AD",
+                "<SpellSpan :list=\"[15,20,25,30,35]\"></SpellSpan>"
+              ],
+              [
+                "Maximum Additional Bonus AD",
                 "<SpellSpan :list=\"[25,30,35,40,45]\"></SpellSpan>",
-                "Maximum Heal",
-                "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>"
+                "Maximum Total Bonus AD",
+                "<SpellSpan :list=\"[40,50,60,70,80]\"></SpellSpan>"
               ]
             ],
             "ap_progressions": [
+              [
+                15,
+                20,
+                25,
+                30,
+                35
+              ],
               [
                 25,
                 30,
@@ -221,19 +449,33 @@
                 45
               ],
               [
+                40,
                 50,
                 60,
                 70,
-                80,
-                90
+                80
               ]
             ]
           },
           "subeffects": [
             {
               "index": 0,
-              "title": "Heal",
-              "damage_type": "magic",
+              "title": "Bonus AD",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  15,
+                  20,
+                  25,
+                  30,
+                  35
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "title": "Maximum Additional Bonus AD",
+              "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
                   25,
@@ -245,71 +487,42 @@
               }
             }
           ]
-        }
-      ]
-    },
-    "w1": {
-      "riotId": "BurningAgony",
-      "name": "Burning Agony",
-      "maxrank": 5,
-      "cooldown": [
-        4
-      ],
-      "cost": [
-        10,
-        15,
-        20,
-        25,
-        30
-      ],
-      "costtype": "{{as|Health Per Second|health}}",
-      "targeting": "Auto",
-      "image": {
-        "full": "BurningAgony.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 336,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Toggle:}} '''Dr. Mundo''' sets himself on fire, gaining 30% {{tip|tenacity}} and dealing {{as|magic damage}} every {{fd|0.25}} seconds to nearby enemies.",
-        "''Burning Agony'' can be toggled off after {{fd|0.5}} seconds of toggling on.",
-        "If '''Dr. Mundo's''' health falls below ''Burning Agony's'' {{sti|{{as|health cost}}}} while toggled on, the ability is toggled off automatically and put on a 1 second {{sti|cooldown}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Toggle:</span> <b>Dr. Mundo</b> sets himself on fire, gaining 30% <HtmlTooltip class=\"blue link\">tenacity<template #content><div><h4>tenacity<hr></h4><p>Description for keyword tenacity</p></div></template></HtmlTooltip> and dealing <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds to nearby enemies.<br /><i>Burning Agony</i> can be toggled off after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds of toggling on.<br />If <b>Dr. Mundo's</b> health falls below <i>Burning Agony's</i> <span><span class=\"health\">health cost</span></span> while toggled on, the ability is toggled off automatically and put on a 1 second <span>cooldown</span>.",
-      "leveling": [
-        "{{st|Magic Damage Per Tick|{{ap|40/4 to 100/4}} {{as|(+ {{ap|20/4}}% AP)}}}}"
-      ],
-      "notes": "*Toggle abilities do not count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* ''Burning Agony'' can be cast even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Burning Agony'' will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The {{tip|Tenacity}} increase {{tip|stacks additively}} with the ''tenacity reduction'' from {{tip|Brittle}}, but multiplicatively with other sources.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|10 to 30}}|health}} as 10/15/20/25/30 and riot's value 0,0,0,0,0 as 0",
-      "effects": [
+        },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[10,13.75,17.5,21.25,25]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[5]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Bonus Physical Damage</span>: <span><SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"health\">(+ 7% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Bonus Physical Damage</span>: <span><SpellSpan :list=\"[8,24,40,56,72]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[11.2]\"></SpellSpan>% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": [
-                  0.05
+                "player_bonus_hp": 0.07
+              },
+              {
+                "player_bonus_hp": [
+                  0.11199999999999999
                 ]
               }
             ],
             "st_slices": [
               [
-                "Magic Damage Per Tick",
-                "<SpellSpan :list=\"[10,13.75,17.5,21.25,25]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[5]\"></SpellSpan>% AP)</span>"
+                "Minimum Bonus Physical Damage",
+                "<SpellSpan :list=\"[5,15,25,35,45]\"></SpellSpan> <span class=\"health\">(+ 7% '''bonus''' health)</span>",
+                "Maximum Bonus Physical Damage",
+                "<SpellSpan :list=\"[8,24,40,56,72]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[11.2]\"></SpellSpan>% '''bonus''' health)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                10,
-                13.75,
-                17.5,
-                21.25,
-                25
+                5,
+                15,
+                25,
+                35,
+                45
+              ],
+              [
+                8,
+                24,
+                40,
+                56,
+                72
               ],
               null
             ]
@@ -317,156 +530,61 @@
           "subeffects": [
             {
               "index": 0,
-              "title": "Magic Damage Per Tick",
-              "damage_type": "magic",
+              "title": "Minimum Bonus Physical Damage",
+              "damage_type": "physical",
               "ratios": {
                 "base_damage": [
-                  10,
-                  13.75,
-                  17.5,
-                  21.25,
-                  25
-                ],
-                "player_total_ap": [
-                  0.05
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "e1": {
-      "riotId": "Masochism",
-      "name": "Masochism",
-      "maxrank": 5,
-      "cooldown": [
-        6,
-        5.5,
-        5,
-        4.5,
-        4
-      ],
-      "cost": [
-        25,
-        35,
-        45,
-        55,
-        65
-      ],
-      "costtype": "{{as|Health}}",
-      "targeting": "Auto",
-      "image": {
-        "full": "Masochism.png",
-        "sprite": "spell2.png",
-        "group": "spell",
-        "x": 384,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
-      "description": [
-        "{{sbc|Passive:}} Taking {{as|magic damage}} or paying a {{sti|{{as|health cost}}}} increases '''Dr. Mundo's''' {{sti|mr|{{as|magic resistance by 3%}}}} for 2 seconds, stacking up to an amount.",
-        "{{sbc|Active:}} '''Dr. Mundo''' gains {{sti|{{as|'''bonus''' attack damage}}}} for 5 seconds, increased by an amount based on his {{as|percentage '''missing''' health|health}}.",
-        "Additionally, '''Dr. Mundo's''' next [[basic attack]] within the duration will cost health, but gains {{sti|range|25 '''bonus''' range}} and deals {{as|'''bonus''' physical damage}}.",
-        "''Masochism'' {{tip|basic attack reset|resets}} '''Dr. Mundo's''' basic attack timer."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Taking <span class=\"magic-damage\">magic damage</span> or paying a <span><span class=\"health\">health cost</span></span> increases <b>Dr. Mundo's</b> <span><span class=\"magic-resist\">magic resistance by 3%</span></span> for 2 seconds, stacking up to an amount.<br /><span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> gains <span><span class=\"attack-damage\"><b>bonus</b> attack damage</span></span> for 5 seconds, increased by an amount based on his <span class=\"health\">percentage <b>missing</b> health</span>.<br />Additionally, <b>Dr. Mundo's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within the duration will cost health, but gains <span>25 <b>bonus</b> range</span> and deals <span class=\"physical-damage\"><b>bonus</b> physical damage</span>.<br /><i>Masochism</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Dr. Mundo's</b> basic attack timer.",
-      "leveling": [
-        "{{st|Maximum Magic Resistance|{{ap|(2 to 11)*3 4|13*3}}%|Maximum Stacks|{{ap|2 to 11 4|13}}}}",
-        "{{st|Flat Bonus AD|{{as|{{ap|30 to 90}}|AD}}}}\n{{st|Maximum Missing Health Bonus AD|{{as|{{ap|20 to 80}}|AD}}|Maximum Bonus AD|{{as|{{ap|50 to 170}}|AD}}}}",
-        "{{st|Bonus Physical Damage|{{as|{{ap|4 to 6}}% of his '''maximum''' health}}}}"
-      ],
-      "notes": "* ''Masochism's'' attack can be used even if '''Dr. Mundo''' doesn't have the sufficient amount of health to pay for the health cost.\n** As with all abilities with health costs, ''Masochism's'' attack will not reduce '''Dr. Mundo's''' health below {{as|1|hp}}.\n* The attack damage bonus is evaluated when the attack hits and thus adjusts to changes in '''Dr. Mundo's''' health.\n* ''Masochism'' does not apply to [[structures]].",
-      "skillkey": "E",
-      "skillid": "e1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|{{ap|25 to 65}}|health}} as 25/35/45/55/65 and riot's value 0,0,0,0,0 as 0",
-      "effects": [
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum Magic Resistance</span>: <span><simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%</span></li><li><span class=\"blue\">Maximum Stacks</span>: <span><SpellSpan :list=\"[2,5,8,11,13]\"></SpellSpan></span></li></ul>",
-          "vars": {
-            "as_ratios": [],
-            "st_slices": [
-              [
-                "Maximum Magic Resistance",
-                "<simple-tooltip class=\"red\" dname=\"ap (2 to 11)*3 4 13*3\">Error: SyntaxError: Unexpected end of input</simple-tooltip>%",
-                "Maximum Stacks",
-                "<SpellSpan :list=\"[2,5,8,11,13]\"></SpellSpan>"
-              ]
-            ],
-            "ap_progressions": [
-              [
-                2,
-                5,
-                8,
-                11,
-                13
-              ]
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Maximum Magic Resistance",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  2,
                   5,
-                  8,
-                  11,
-                  13
+                  15,
+                  25,
+                  35,
+                  45
+                ],
+                "player_bonus_hp": [
+                  0.11199999999999999
                 ]
               }
             }
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Flat Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan></span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Maximum Missing Health Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan></span></span></li><li><span class=\"blue\">Maximum Bonus AD</span>: <span><span class=\"AD\"><SpellSpan :list=\"[50,80,110,140,170]\"></SpellSpan></span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Non-Champion Bonus Damage</span>: <span><SpellSpan :list=\"[7,21,35,49,63]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[9.8]\"></SpellSpan>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Non-Champion Bonus Damage</span>: <span><SpellSpan :list=\"[11.2,33.6,56,78.4,100.8]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[15.68]\"></SpellSpan>% <b>bonus</b> health)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_mana": [
-                  50,
-                  80,
-                  110,
-                  140,
-                  170
+                "player_bonus_hp": [
+                  0.1568
                 ]
               },
               {
-                "player_total_mana": []
-              },
-              {
-                "player_total_mana": []
+                "player_bonus_hp": []
               }
             ],
             "st_slices": [
               [
-                "Flat Bonus AD",
-                "<span class=\"AD\"><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan></span>"
-              ],
-              [
-                "Maximum Missing Health Bonus AD",
-                "<span class=\"AD\"><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan></span>",
-                "Maximum Bonus AD",
-                "<span class=\"AD\"><SpellSpan :list=\"[50,80,110,140,170]\"></SpellSpan></span>"
+                "Minimum Non-Champion Bonus Damage",
+                "<SpellSpan :list=\"[7,21,35,49,63]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[9.8]\"></SpellSpan>% '''bonus''' health)</span>",
+                "Maximum Non-Champion Bonus Damage",
+                "<SpellSpan :list=\"[11.2,33.6,56,78.4,100.8]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[15.68]\"></SpellSpan>% '''bonus''' health)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                30,
-                45,
-                60,
-                75,
-                90
+                7,
+                21,
+                35,
+                49,
+                63
               ],
               [
-                20,
-                35,
-                50,
-                65,
-                80
+                9.8
+              ],
+              [
+                11.2,
+                33.6,
+                56,
+                78.4,
+                100.8
               ],
               null
             ]
@@ -474,73 +592,17 @@
           "subeffects": [
             {
               "index": 0,
-              "title": "Flat Bonus AD",
+              "title": "Minimum Non-Champion Bonus Damage",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  30,
-                  45,
-                  60,
-                  75,
-                  90
-                ],
-                "player_total_mana": []
-              }
-            },
-            {
-              "index": 1,
-              "title": "Maximum Missing Health Bonus AD",
-              "damage_type": "magic",
-              "ratios": {
-                "base_damage": [
-                  20,
+                  7,
+                  21,
                   35,
-                  50,
-                  65,
-                  80
+                  49,
+                  63
                 ],
-                "player_total_mana": []
-              }
-            }
-          ]
-        },
-        {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[4,4.5,5,5.5,6]\"></SpellSpan>% of his <b>maximum</b> health</span></span></li></ul>",
-          "vars": {
-            "as_ratios": [
-              {
-                "player_total_hp": [
-                  0.04,
-                  0.045,
-                  0.05,
-                  0.055,
-                  0.06
-                ]
-              }
-            ],
-            "st_slices": [
-              [
-                "Bonus Physical Damage",
-                "<span class=\"health\"><SpellSpan :list=\"[4,4.5,5,5.5,6]\"></SpellSpan>% of his '''maximum''' health</span>"
-              ]
-            ],
-            "ap_progressions": [
-              null
-            ]
-          },
-          "subeffects": [
-            {
-              "index": 0,
-              "title": "Bonus Physical Damage",
-              "damage_type": "physical",
-              "ratios": {
-                "player_total_hp": [
-                  0.04,
-                  0.045,
-                  0.05,
-                  0.055,
-                  0.06
-                ]
+                "player_bonus_hp": []
               }
             }
           ]
@@ -548,21 +610,18 @@
       ]
     },
     "r1": {
-      "riotId": "Sadism",
-      "name": "Sadism",
+      "riotId": "DrMundoR",
+      "name": "Maximum Dosage",
       "maxrank": 3,
       "cooldown": [
         110,
         100,
         90
       ],
-      "cost": [
-        25
-      ],
-      "costtype": "{{as|of current Health}}",
+      "cost": 0,
       "targeting": "Auto",
       "image": {
-        "full": "Sadism.png",
+        "full": "DrMundoR.png",
         "sprite": "spell2.png",
         "group": "spell",
         "x": 432,
@@ -571,19 +630,19 @@
         "h": 48
       },
       "description": [
-        "{{sbc|Active:}} '''Dr. Mundo''' {{sti|health regeneration|regenerates}} {{as|health}} over 12 seconds and gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for the duration."
+        "{{sbc|Active:}} '''Dr. Mundo''' injects himself with chemicals, {{tip|heal|healing}} for {{as|20% of his '''missing''' health}}.",
+        "For the next 10 seconds, he gains {{sti|{{as|'''bonus''' attack damage}}}} and {{sti|ms|{{as|'''bonus''' movement speed}}}}, in addition to {{sti|health regeneration|regenerating}} {{as|health}} over the duration."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> <span>regenerates</span> <span class=\"health\">health</span> over 12 seconds and gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for the duration.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Dr. Mundo</b> injects himself with chemicals, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> for <span class=\"health\">20% of his <b>missing</b> health</span>.<br />For the next 10 seconds, he gains <span><span class=\"attack-damage\"><b>bonus</b> attack damage</span></span> and <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>, in addition to <span>regenerating</span> <span class=\"health\">health</span> over the duration.",
       "leveling": [
-        "{{st|Total Regeneration|{{as|{{ap|60 to 110}}% '''maximum''' health}}|Regeneration Per Second|{{as|{{ap|60/12 to 110/12|round=2}}% '''maximum''' health}}}}\n{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}"
+        "{{st|Total Health Regeneration|{{as|{{ap|20 to 70}}% '''maximum''' health}}|Regeneration per Second|{{as|{{ap|20/10 to 70/10}}% '''maximum''' health}}}}\n{{st|Bonus Attack Damage|{{as|{{ap|4 to 7}}% '''bonus''' health}}}}\n{{st|Bonus Movement Speed|{{ap|15 to 35}}%}}"
       ],
-      "notes": "* ''Sadism'' adjusts dynamically to '''Dr. Mundo's''' {{as|'''maximum''' health}}.\n* ''Sadism'' will continue its effect through {{tip|resurrection}}.\n* ''Sadism'' is not affected by {{ri|Revitalize}} as it is considered [[health regeneration]].\n* Taking into account {{tip|Grievous Wounds}}, ''Sadism'' will {{tip|heal}} for a total of {{as|{{ap|60*0.6 to 110*0.6}}% of '''maximum''' health}} at a 40% reduction and for a total of {{as|{{ap|60*0.4 to 110*0.4}}% of '''maximum''' health}} at a 60% reduction.",
+      "notes": "* The health regeneration granted by ''Maximum Dosage'' adjusts dynamically to '''Dr. Mundo's''' {{as|'''maximum''' health}}.\n* ''Maximum Dosage'' will end prematurely upon entering {{tip|resurrection}}.\n* {{pending for test}} ''Maximum Dosage'' continuous effect is not affected by {{ri|Revitalize}} as it is [[health regeneration]].\n** The immediate heal does benefit from {{ri|Revitalize}}.\n* Apart from visually expanding '''Dr. Mundo's''' body, ''Maximum Dosage'' does '''not''' grant increased [[size]].",
       "skillkey": "R",
       "skillid": "r1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|25%|health}} as 25 and riot's value 0,0,0 as 0",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Regeneration</span>: <span><span class=\"health\"><SpellSpan :list=\"[60,85,110]\"></SpellSpan>% <b>maximum</b> health</span></span></li><li><span class=\"blue\">Regeneration Per Second</span>: <span><span class=\"health\"><SpellSpan :list=\"[5,7.08,9.17]\"></SpellSpan>% <b>maximum</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,25,35]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Health Regeneration</span>: <span><span class=\"health\"><SpellSpan :list=\"[20,45,70]\"></SpellSpan>% <b>maximum</b> health</span></span></li><li><span class=\"blue\">Regeneration per Second</span>: <span><span class=\"health\"><SpellSpan :list=\"[2,4.5,7]\"></SpellSpan>% <b>maximum</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Attack Damage</span>: <span><span class=\"health\"><SpellSpan :list=\"[4,5.5,7]\"></SpellSpan>% <b>bonus</b> health</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[15,25,35]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -595,6 +654,9 @@
               },
               {
                 "player_total_hp": []
+              },
+              {
+                "player_bonus_hp": []
               }
             ],
             "st_slices": [
@@ -603,22 +665,31 @@
                 "<SpellSpan :list=\"[15,25,35]\"></SpellSpan>%"
               ],
               [
-                "Total Regeneration",
-                "<span class=\"health\"><SpellSpan :list=\"[60,85,110]\"></SpellSpan>% '''maximum''' health</span>",
-                "Regeneration Per Second",
-                "<span class=\"health\"><SpellSpan :list=\"[5,7.08,9.17]\"></SpellSpan>% '''maximum''' health</span>"
+                "Total Health Regeneration",
+                "<span class=\"health\"><SpellSpan :list=\"[20,45,70]\"></SpellSpan>% '''maximum''' health</span>",
+                "Regeneration per Second",
+                "<span class=\"health\"><SpellSpan :list=\"[2,4.5,7]\"></SpellSpan>% '''maximum''' health</span>"
+              ],
+              [
+                "Bonus Attack Damage",
+                "<span class=\"health\"><SpellSpan :list=\"[4,5.5,7]\"></SpellSpan>% '''bonus''' health</span>"
               ]
             ],
             "ap_progressions": [
               [
-                60,
-                85,
-                110
+                20,
+                45,
+                70
               ],
               [
-                5,
-                7.08,
-                9.17
+                2,
+                4.5,
+                7
+              ],
+              [
+                4,
+                5.5,
+                7
               ],
               null
             ]
@@ -638,13 +709,25 @@
             },
             {
               "index": 1,
-              "title": "Total Regeneration",
+              "title": "Total Health Regeneration",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_hp": [
+                  0.15,
+                  0.25,
+                  0.35
+                ]
+              }
+            },
+            {
+              "index": 2,
+              "title": "Bonus Attack Damage",
               "damage_type": "unknown",
               "ratios": {
                 "base_damage": [
-                  5,
-                  7.08,
-                  9.17
+                  4,
+                  5.5,
+                  7
                 ],
                 "player_total_hp": [
                   0.15,

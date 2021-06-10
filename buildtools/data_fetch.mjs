@@ -58,7 +58,7 @@ async function wikia_to_json(body) {
         if (err) {
             return console.log(err);
         }
-        console.log(`The file  was saved!`);
+        console.log(`The file ./buildtools/testjson.json was saved!`);
     });
 
     return JSON5.parse(js);
@@ -413,8 +413,8 @@ async function onChampionJsonResponse(champ_json, fandom_data) {
     }
     console.log("Awaiting all Promises");
     await Promise.all(promises);
-    console.log("freeze data");
-    Object.freeze(returnData);
+    // console.log("freeze data");
+    // Object.freeze(returnData);
     saveFile('./src/api/ChampionList.json', returnData);
     return returnData;
 }

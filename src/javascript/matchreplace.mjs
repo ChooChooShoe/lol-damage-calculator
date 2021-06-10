@@ -331,6 +331,10 @@ export function numberExpand(slices, maxrank, round) {
 }
 
 const match_lookup = {
+  'rutngt': function (_capture, slices, vars, options, extra_data) {
+    const num = Math.ceil(parseFloat(slices[0]) / 0.033) * 0.033;
+    return `<span class="chamption-name" title="${slices[0]} seconds, but rounded up to the next game tick.">${num}</span>`;
+  },
   // ci (or Champion icon): {{ci|<Champion>|<Custom name>}}
   'ci': function (_capture, parms, _vars) {
     if (parms.length === 2)
@@ -614,6 +618,7 @@ const match_lookup = {
   'critical damage': function (_capture, _parms, _vars) {
     return '<span class="critical-strike">(+ IE 25%)</span>';
   },
+  
 };
 
 
