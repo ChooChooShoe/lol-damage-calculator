@@ -218,78 +218,76 @@ export function quickMatchReplace(text, extra_data = null) {
   });
 }
 export default function matchReplaceSpellEffects(text, quick = false, extra_data = null) {
-  text = (text || '').toString();
-  if (quick === true) {
-    return quickMatchReplace(text);
-  }
-  let needed = false;
+  // const slices = [];
   let vars = { as_ratios: [], st_slices: [], ap_progressions: [] }
-  text = text.replace(/<!--\n-->/g, '<br>');
-  text = text.replace(/\n/g, '<br>');
-  // Matches [[ thing ]] captures thing
-  text = text.replace(/\[\[([^[]*)\]\]/g, function (match, capture) {
+
+  // for <!--\n-->
+  text = text.replace(/<!--\\n-->/g, '<br>');
+  // for <!-- COMMENT -->
+  text = text.replace(/<!--[^>]*-->/g, '');
+
+  // for bold/italics
+  text = text.replace(/'''''(.*?)'''''/g, '<b><i>$1</i></b>');
+  text = text.replace(/'''(.*?)'''/g, '<b>$1</b>');
+  text = text.replace(/''(.*?)''/g, '<i>$1</i>');
+
+  // for <noinclude>Ability data</noinclude>
+  text = text.replace(/<noinclude>[^>]*<\/noinclude>/g, '')
+
+  // for [[ thing ]] captures thing
+  text = text.replace(/\[\[([^[]*)\]\]/g, function (_match, capture) {
     const parms = capture.split('|');
     const link = parms[0];
     const tile = parms[1] || parms[0];
     return `<a class="effect link" title="${tile}">${link}</a>`
   });
-  for (let i = 0; i < 15; i++) {
-    if (text.includes('{{'))
-      text = text.replace(/{{([^{}]*)}}/g, function (match, capture) {
-        // console.log('match:', match)
-        const parms = capture.split('|');
-        const tag = parms[0].toLowerCase();
-        if (tag in match_lookup) {
-          const inner_fn = match_lookup[tag];
-          try {
-            const slices = [];
-            const options = {};
-            for (const par of parms.slice(1)) {
-              const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
-              if (capture) {
-                options[capture[1]] = capture[2];
-                console.log('MatchReplace: for tag', tag, 'options were found', options);
-              } else {
-                slices.push(par);
-              }
-            }
-            needed = true;
-            return inner_fn(capture, slices, vars, options, extra_data);
-          } catch (e) {
-            // Vue.notify({
-            //   group: "main",
-            //   title: "Error: Unknown Error.",
-            //   text: capture,
-            //   type: "error"
-            // });
-            console.log(`Error for spell effect '${match}'`);
-            console.log(e);
-            capture = capture.replace(/\|/g, ' ')
-            needed = true;
-            return `<simple-tooltip class="red" dname="${capture}">Error: ${e}</simple-tooltip>`;
-          }
-        } else {
-          // Vue.notify({
-          //   group: "main",
-          //   title: "Warn: Unknown spell effect.",
-          //   text: capture,
-          //   type: "warn"
-          // });
-          console.log(`Unknown spell effect '${match}'`);
-          capture = capture.replace(/\|/g, ' ')
-          needed = true;
-          return `<simple-tooltip class="capture-unknown" dname="${capture}">Unknown value: ${capture}</simple-tooltip>`;
-        }
-      });
-    else
-      break;
+  // for {{{2|}}} replaced with 2
+  const varIterLength = (text.match(/{{{/g) || []).length;
+  for (let i = 0; i < varIterLength; i++) {
+    text = text.replace(/{{{([^{}]*)}}}/g, function (match, capture) {
+      // slices.push(capture.split('|'))
+      return capture.split('|').join('');
+    });
   }
 
-  text = text.replace(/'''''(.*?)'''''/g, '<b><i>$1</i></b>');
-  text = text.replace(/'''(.*?)'''/g, '<b>$1</b>');
-  text = text.replace(/''(.*?)''/g, '<i>$1</i>');
-  if (!needed)
-    console.log('WARNING: Match Replacing was not needed: ', text, quick)
+  // for {{ap|10 to 100}}
+  const iterLength = (text.match(/{{/g) || []).length;
+  for (let i = 0; i < iterLength; i++) {
+    text = text.replace(/{{([^{}]*)}}/g, function (match, capture) {
+      // slices.push(capture.split('|'))
+      const parms = capture.split('|');
+      const tag = parms[0].toLowerCase();
+      const inner_fn = match_lookup[tag];
+      if (!inner_fn) {
+        console.log(`Unknown spell effect ${tag} for ${capture}`);
+        capture = capture.replace(/\|/g, ' / ')
+        // needed = true;
+        return `<simple-tooltip class="capture-unknown" dname="${capture}">Unknown value: ${capture}</simple-tooltip>`;
+      }
+      // console.log(`Known spell effect ${tag} for ${capture}`);
+      try {
+        const slices = [];
+        const options = {};
+        for (const par of parms.slice(1)) {
+            const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
+            if (capture) {
+                options[capture[1]] = capture[2];
+                console.log('MatchReplace: for tag', tag, 'options were found', options);
+            } else {
+                slices.push(par);
+            }
+        }
+        // needed = true;
+        return inner_fn(capture, slices, vars, options, extra_data);
+      } catch (e) {
+        console.log(`Error for spell effect '${match}'`);
+        console.log(e);
+        capture = capture.replace(/\|/g, ' ')
+        // needed = true;
+        return `<simple-tooltip class="red" dname="${capture}">Error: ${e}</simple-tooltip>`;
+      }
+    });
+  }
   return {
     str: text,
     vars: vars
@@ -301,7 +299,7 @@ export function numberExpand(slices, maxrank, round) {
   const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
   const clean = /([^\d./*\-+()]+)/g;
   const list = [];
-  round = parseInt(round) || 3;
+  const fractionDigits = parseInt(round) || 3;
 
   for (const p of slices) {
     const found = p.match(regex);
@@ -311,18 +309,18 @@ export function numberExpand(slices, maxrank, round) {
       const range = parseInt(found[3]) || maxrank || 5;
       const diff = (end - start) / (range - 1 - list.length);
       for (let i = list.length; i < range; i++) {
-        list.push(+(start + diff * i).toFixed(round));
+        list.push(+(start + diff * i).toFixed(fractionDigits));
       }
     } else {
       const cleaned = p.replace(clean, '')
       try {
         let num = eval(cleaned);
         if (!isNaN(num))
-          list.push(+parseFloat(num).toFixed(round));
+          list.push(+parseFloat(num).toFixed(fractionDigits));
         // else
-          // list.push(0);
+        // list.push(0);
       } catch (msg) {
-        console.warn("Error because of eval(", cleaned, ")\n", msg);
+        console.log("Error because of eval(", cleaned, ")");
         // list.push(0);
       }
     }
@@ -369,16 +367,14 @@ const match_lookup = {
   'ai': function (_capture, slices, _vars) {
     const abilty = slices[0];
     const champ = slices[1];
-    let display = slices[0];
-    if (slices.length == 3)
-      display = slices[2];
-    return `<HtmlTooltip class="champion-ability blue link" data-champkey="${champ}">${display}<template #content>${abilty}</template></HtmlTooltip>`;
+    let display = slices[2] || abilty;
+    return `<span class="ai">${champ}'s ${display}</span>`;
   },
   // ais (or Ability icon with possessive apostrophes): {{ais|<Ability>|<Champion>}}
   'ais': function (_capture, slices, _vars) {
     let abilty = slices[0];
     let champ = slices[1];
-    return `<HtmlTooltip class="champion-ability blue link" data-champkey="${champ}">${abilty}'s<template #content>${abilty}</template></HtmlTooltip>`;
+    return `<span class="ais">${champ}'s ${abilty}</span>`;
   },
 
   // bi (or Buff icon): {{bi|<Buff>|<Custom name>}}
@@ -618,7 +614,7 @@ const match_lookup = {
   'critical damage': function (_capture, _parms, _vars) {
     return '<span class="critical-strike">(+ IE 25%)</span>';
   },
-  
+
 };
 
 
@@ -649,6 +645,6 @@ function table_check(table, text, fallback) {
 function matchRatioKey(text) {
   const user = text.includes('target') ? 'target' : 'player';
   const ratioType = table_check(keyword_to_ratio_type, text, 'total')
-  const ratioValue = table_check(keyword_to_ratio_value, text, 'mana')
+  const ratioValue = table_check(keyword_to_ratio_value, text, text.toLowerCase())
   return `${user}_${ratioType}_${ratioValue}`;
 }

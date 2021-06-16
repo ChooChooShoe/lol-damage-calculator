@@ -1,6 +1,7 @@
 {
   "name": "choochooshoe.github.io",
   "version": "0.3.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build --assetsDir bin",
@@ -8,7 +9,9 @@
     "deploy": "deploy.sh",
     "fetch": "node --experimental-modules ./buildtools/data_fetch.mjs > ./data_fetch_results.log",
     "data_fetch_validate": "node --experimental-modules ./buildtools/data_fetch_validate.mjs",
-    "fetch_items": "node --experimental-modules ./buildtools/items_fetch.mjs"
+    "fetch_items": "node --experimental-modules ./buildtools/items_fetch.mjs",
+    "test_token": "node --experimental-modules ./buildtools/tokenizer.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "numeral": "^2.0.6",
@@ -20,8 +23,13 @@
     "@vue/compiler-sfc": "^3.0.5",
     "fs": "0.0.1-security",
     "he": "^1.2.0",
+    "jest": "^27.0.4",
     "json5": "^2.1.3",
+    "moo": "^0.5.1",
     "node-fetch": "^2.6.1",
     "vite": "^2.3.5"
+  },
+  "jest": {
+    "transform": {}
   }
 }

@@ -1,9 +1,39 @@
 {
-  "patch": "V10.19",
-  "changes": "11.6.1",
   "id": "Samira",
+  "key": 360,
   "name": "Samira",
   "title": "the Desert Rose",
+  "resource": "Mana",
+  "stats": {
+    "hp_base": 530,
+    "hp_lvl": 88,
+    "mp_base": 348.88,
+    "mp_lvl": 38,
+    "arm_base": 26,
+    "arm_lvl": 3,
+    "mr_base": 30,
+    "mr_lvl": 0.5,
+    "hp5_base": 3.25,
+    "hp5_lvl": 0.55,
+    "mp5_base": 8.18,
+    "mp5_lvl": 0.7,
+    "dam_base": 57,
+    "dam_lvl": 3,
+    "as_base": 0.658,
+    "as_ratio": 0.658,
+    "as_lvl": 3.3,
+    "range": 500,
+    "ms": 335,
+    "acquisition_radius": 800,
+    "selection_radius": 100,
+    "pathing_radius": 40.68,
+    "gameplay_radius": 65,
+    "attack_delay_offset": -0.150000006,
+    "missile_speed": 2800
+  },
+  "rangetype": "Ranged",
+  "positions": [],
+  "adaptivetype": "Physical",
   "image": {
     "full": "Samira.png",
     "sprite": "champion3.png",
@@ -13,48 +43,66 @@
     "w": 48,
     "h": 48
   },
-  "resource": "Mana",
   "herotype": "Marksman",
   "alttype": "",
-  "rangetype": "Ranged",
-  "be_cost": 6300,
-  "rp_cost": 975,
-  "adaptivetype": "physical",
-  "info": {
-    "attack": 8,
-    "defense": 5,
-    "magic": 3,
-    "difficulty": 6
-  },
-  "stats": {
-    "hp": 530,
-    "hpperlevel": 88,
-    "mp": 348.88,
-    "mpperlevel": 38,
-    "movespeed": 335,
-    "armor": 26,
-    "armorperlevel": 3,
-    "spellblock": 30,
-    "spellblockperlevel": 0.5,
-    "attackrange": 500,
-    "hpregen": 3.25,
-    "hpregenperlevel": 0.55,
-    "mpregen": 8.18,
-    "mpregenperlevel": 0.7,
-    "crit": 0,
-    "critperlevel": 0,
-    "attackdamage": 57,
-    "attackdamageperlevel": 3,
-    "attackspeedperlevel": 3.3,
-    "attackspeed": 0.658
-  },
-  "skills": {
-    "i1": {
-      "riotId": "",
+  "date": "2020-09-21",
+  "patch": "V10.19",
+  "changes": "11.6.1",
+  "be": 6300,
+  "rp": 975,
+  "skill_i": [
+    "Daredevil Impulse"
+  ],
+  "skill_q": [
+    "Flair"
+  ],
+  "skill_w": [
+    "Blade Whirl"
+  ],
+  "skill_e": [
+    "Wild Rush"
+  ],
+  "skill_r": [
+    "Inferno Trigger"
+  ],
+  "skill_names": [
+    "Daredevil Impulse",
+    "Flair",
+    "Blade Whirl",
+    "Wild Rush",
+    "Inferno Trigger",
+    "Taunt"
+  ],
+  "skills": [
+    {
       "name": "Daredevil Impulse",
-      "maxrank": 0,
-      "targeting": "Passive",
+      "skill": "P",
       "target_range": "{{pp|650 to 960|1;4;8;12;16|formula=650 + 77.5 every breakpoint, capped at 960. Maximum range to dash from.}}",
+      "cost": 0,
+      "ontargetcdstatic": "{{tt|10|Empowered attack}}",
+      "icon": [
+        "Samira Style.gif",
+        "Daredevil Impulse.png"
+      ],
+      "blurb": "{{ci|Samira}} builds a combo by hitting attacks or abilities unique from the previous hit. Samira's attacks in {{tip|melee}} range deal additional {{tip|magic damage|{{as|magic damage}}}}. Samira's attacks against enemies affected by {{tip|immobilize|Immobilizing}} effects {{tip|airborne|knock them up}}.",
+      "description": [
+        "{{sbc|Innate - Style:}} '''Samira's''' damaging [[basic attack]]s and [[champion ability|abilities]] against at least one enemy {{tip|champion}} different from the previous damaging hit made against champions grant her a ''Style'' [[stack]] for 6 seconds, stacking up to 6 times. The duration {{tt|refreshes|Does not have to be unique from previous hit to refresh duration}} on subsequent damaging attacks and abilities against enemy champions.",
+        "'''Samira''' gains {{as|{{pp|3.5*(x-1) for 7|0 to 6|key=%|label1=''Style'' stacks}} {{sti|'''bonus''' movement speed}}|ms}}.",
+        "{{sbc|Innate:}} '''Samira's''' basic attacks against targets in {{tip|er|icononly = true}} 200 range use her blade, becoming {{tip|projectile|non-projectile}}. Basic attacks {{tip|on-hit}} with the blade and {{ai|Blade Whirl|Samira}}, {{ai|Wild Rush|Samira}}, and the slash and explosives of {{ai|Flair|Samira}} deal {{as|{{pp|2 to 19}} {{as|(+ {{pp|3.5 to 10.5|key=%}} AD)}} '''bonus''' magic damage|magic damage}}, increased by {{as|{{pp|0 to 100 by 10|0 to 100 by 10|key=%|key1=%|label1=target's '''missing''' health}}|health}}.",
+        "Whenever '''Samira''' uses a basic attack against an {{tip|immobilize|immobilized}} target, the attack is empowered to have an {{tip|uncancelable windup}}, be modified to deal the {{as|attack's damage}} over 6 strikes in {{fd|0.5}} seconds, and cause '''Samira''' to {{tip|dash}} into her {{sti|attack range}} from the target if they are nearby, though not through terrain. If the target is a {{tip|monster}} or is {{tip|airborne}}, the attack also {{tip|airborne|knocks them up}} for {{fd|0.5}} seconds.",
+        "The empowered attack {{tip|basic attack reset|resets}} '''Samira's''' basic attack timer, is affected by {{tip|critically strike|critical strike}} modifiers, applies {{tip|on-hit}} effects only once, and cannot occur on the same target more than once every few seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate - Style:</span> <b>Samira's</b> damaging <a class=\"effect link\" title=\"basic attack\">basic attack</a>s and <a class=\"effect link\" title=\"abilities\">champion ability</a> against at least one enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> different from the previous damaging hit made against champions grant her a <i>Style</i> <a class=\"effect link\" title=\"stack\">stack</a> for 6 seconds, stacking up to 6 times. The duration <span class=\"title-tooltip\" title=\"Does not have to be unique from previous hit to refresh duration\">refreshes</span> on subsequent damaging attacks and abilities against enemy champions.<br /><b>Samira</b> gains <span class=\"ms\"><span class=\"title-tooltip\" title=\"\">0 to 6 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span>.<br /><span class=\"sbc\">Innate:</span> <b>Samira's</b> basic attacks against targets in <HtmlTooltip class=\"blue link\">er<template #content><div><h4>er<hr></h4><p>Description for keyword er</p></div></template></HtmlTooltip> 200 range use her blade, becoming <HtmlTooltip class=\"blue link\">non-projectile<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip>. Basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> with the blade and <span class=\"ai\">Samira's Blade Whirl</span>, <span class=\"ai\">Samira's Wild Rush</span>, and the slash and explosives of <span class=\"ai\">Samira's Flair</span> deal <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">2undefined − 19undefined (based on level)<template #content>Values: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ <HtmlTooltip class=\"blue link\">3.5% − 10.5% (based on level)<template #content>Values: 3.5, 3.912, 4.324, 4.735, 5.147, 5.559, 5.971, 6.382, 6.794, 7.206, 7.618, 8.029, 8.441, 8.853, 9.265, 9.676, 10.088, 10.5<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> AD)</span> <b>bonus</b> magic damage</span>, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 by 10 ‒ undefined</span></span>.<br />Whenever <b>Samira</b> uses a basic attack against an <HtmlTooltip class=\"blue link\">immobilized<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> target, the attack is empowered to have an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, be modified to deal the <span class=\"ad\">attack's damage</span> over 6 strikes in <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, and cause <b>Samira</b> to <HtmlTooltip class=\"blue link\">dash<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> into her <span>attack range</span> from the target if they are nearby, though not through terrain. If the target is a <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> or is <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>, the attack also <HtmlTooltip class=\"blue link\">knocks them up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br />The empowered attack <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Samira's</b> basic attack timer, is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> modifiers, applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects only once, and cannot occur on the same target more than once every few seconds.",
+      "leveling": [],
+      "targeting": "Passive",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "special",
+      "spellshield": "special",
+      "projectile": "special",
+      "callforhelp": "",
+      "notes": "* The stack count is represented by the grades [[File:Samira Rank E.png|20px|border|link=]] [[File:Samira Rank D.png|20px|border|link=]] [[File:Samira Rank C.png|20px|border|link=]] [[File:Samira Rank B.png|20px|border|link=]] [[File:Samira Rank A.png|20px|border|link=]] [[File:Samira Rank S.png|20px|border|link=]] to the left of her [[health bar]] for '''Samira''' herself, and a stack counter underneath the bar that is visible to all players.\n* The empowered attack can trigger on {{tip|immobilize|immobilizes}} from both ally and enemy sources.\n** Self-applied or allied-applied {{tip|immobilize|immobilizes}} from the enemy '''will''' count for the empowered attack to trigger.{{bug|2}}\n** Those applied by the ''neutral'' team (e.g. {{uis|Dragon}} initial knock back) '''can''' be targeted.\n** It cannot trigger against enemies knocked {{tip|airborne}} by a {{ui|Blast Cone}} triggered by anyone.{{bug|2}}\n* The empowered attack's interaction with [[Crowd control#Immunity|immunities to crowd control]]:\n** It ''will not'' trigger against {{tip|displacement immune}} targets. If the empowered attack had already gone off, the knock up will ''not'' be resisted, thus interrupting the target's actions.{{bug|2}}\n** It ''will'' trigger against {{tip|cc-immune|crowd control immune}} targets.\n*** The knock up will however be partially resisted against {{ai|Black Shield|Morgana}}; only the disabling portion (airborne debuff) will be negated but not the displacement (forced movement).{{bug|2}}\n*** The knock up will be resisted by {{ai|Riposte|Fiora}}, but the ability does not trigger its on-{{tip|immobilize|immobilization}} effect.{{bug|2}}\n* The empowered attack will not apply the knock up against {{tip|suspension|suspended}} enemies.\n* The empowered attack will only apply the knock up if the target is still {{tip|immobilize|immobilized}} or {{tip|airborne}} upon being hit. It will not apply if they are no longer disabled when hit.\n* The empowered attack cannot be used against a target with a {{tip|spell shield}}.\n* The application of the knock up can occur on any of the missiles of the empowered attack if it had not already occurred on the first missile.\n** A missile that is parried by {{ai|Riposte|Fiora}} or is {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Samira''' is {{tip|blind|blinded}} '''cannot''' apply the knock up.\n* While {{tip|ground|grounded}} or {{tip|root|rooted}}, '''Samira''' cannot {{tip|dash}} into range to use the empowered attack. She can only use it if her target is within her {{sti|attack range}} while under this condition.\n* The on-target cooldown will apply even if the empowered attack is parried.\n* The empowered attack rolls {{tip|critical strike}} for each shot of the flurry.\n* The {{as|'''bonus''' magic damage}} dealt with the blade is {{tip|default damage}}. The empowered attack is first 1 instance of {{tip|basic damage}} and then 5 instances of {{tip|default damage}}.\n** The bonus damage does not apply to [[structures]].\n* The empowered attack is unaffected by {{stil|attack speed}} modifiers.\n* {{iis|Guinsoo's Rageblade}} ''Phantom Hit'' and {{iis|Runaan's Hurricane}} bolts will not apply the {{as|'''bonus''' magic damage}}, since it is {{tip|on-hit}} of specifically the melee attack casts.\n* Attacks with the gun and blade do not count as different attacks for stacking ''Style''.\n* Basic attacks using the blade are still classified as {{tip|ranged}}.\n* The melee attack's range condition is unaffected by {{stil|attack range}} modifiers (e.g. {{ii|Rapid Firecannon}}).\n** Blade range is calculated edge-to-edge just like basic attack ranges are, hence both '''Samira''' gaining bonus [[size]] or her target increases the total distance at which '''Samira''' can attack them with the blade.\n* Since the {{tip|airborne|knock up}} requires an exterior source to {{tip|immobilize}} the enemy, {{ri|Aftershock}} will be swapped with {{ri|Grasp of the Undying}} for '''Samira''' at the start of the game.\n* Since {{ais|R|Samira}} cooldown is static, {{ri|Ultimate Hunter}} will be swapped with {{ri|Ravenous Hunter}} for '''Samira''' at the start of the game.\n* Abilities blocked by {{tip|spell shield|spell shields}} will still grant '''Samira''' ''Style'' stacks.\n* '''Samira''' still gains ''Style'' stacks from damaging attacks and abilities landed against {{tip|clone|clones}}.",
+      "maxrank": 0,
       "image": {
         "full": "SamiraP.Samira.png",
         "sprite": "passive3.png",
@@ -64,24 +112,21 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Innate - Style:}} '''Samira's''' damaging [[basic attack]]s and [[champion ability|abilities]] against at least one enemy {{tip|champion}} different from the previous damaging hit made against champions grant her a ''Style'' [[stack]] for 6 seconds, stacking up to 6 times. The duration {{tt|refreshes|Does not have to be unique from previous hit to refresh duration}} on subsequent damaging attacks and abilities against enemy champions.",
-        "'''Samira''' gains {{as|{{pp|3.5*(x-1) for 7|0 to 6|key=%|label1=''Style'' stacks}} {{sti|'''bonus''' movement speed}}|ms}}.",
-        "{{sbc|Innate:}} '''Samira's''' basic attacks against targets in {{tip|er|icononly = true}} 200 range use her blade, becoming {{tip|projectile|non-projectile}}. Basic attacks {{tip|on-hit}} with the blade and {{ai|Blade Whirl|Samira}}, {{ai|Wild Rush|Samira}}, and the slash and explosives of {{ai|Flair|Samira}} deal {{as|{{pp|2 to 19}} {{as|(+ {{pp|3.5 to 10.5|key=%}} AD)}} '''bonus''' magic damage|magic damage}}, increased by {{as|{{pp|0 to 100 by 10|0 to 100 by 10|key=%|key1=%|label1=target's '''missing''' health}}|health}}.",
-        "Whenever '''Samira''' uses a basic attack against an {{tip|immobilize|immobilized}} target, the attack is empowered to have an {{tip|uncancelable windup}}, be modified to deal the {{as|attack's damage}} over 6 strikes in {{fd|0.5}} seconds, and cause '''Samira''' to {{tip|dash}} into her {{sti|attack range}} from the target if they are nearby, though not through terrain. If the target is a {{tip|monster}} or is {{tip|airborne}}, the attack also {{tip|airborne|knocks them up}} for {{fd|0.5}} seconds.",
-        "The empowered attack {{tip|basic attack reset|resets}} '''Samira's''' basic attack timer, is affected by {{tip|critically strike|critical strike}} modifiers, applies {{tip|on-hit}} effects only once, and cannot occur on the same target more than once every few seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate - Style:</span> <b>Samira's</b> damaging <a class=\"effect link\" title=\"basic attack\">basic attack</a>s and <a class=\"effect link\" title=\"abilities\">champion ability</a> against at least one enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> different from the previous damaging hit made against champions grant her a <i>Style</i> <a class=\"effect link\" title=\"stack\">stack</a> for 6 seconds, stacking up to 6 times. The duration <span class=\"title-tooltip\" title=\"Does not have to be unique from previous hit to refresh duration\">refreshes</span> on subsequent damaging attacks and abilities against enemy champions.<br /><b>Samira</b> gains <span class=\"ms\"><span class=\"title-tooltip\" title=\"\">0 to 6 ‒ undefined</span> <span><b>bonus</b> movement speed</span></span>.<br /><span class=\"sbc\">Innate:</span> <b>Samira's</b> basic attacks against targets in <HtmlTooltip class=\"blue link\">er<template #content><div><h4>er<hr></h4><p>Description for keyword er</p></div></template></HtmlTooltip> 200 range use her blade, becoming <HtmlTooltip class=\"blue link\">non-projectile<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip>. Basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> with the blade and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Blade Whirl<template #content>Blade Whirl</template></HtmlTooltip>, <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Wild Rush<template #content>Wild Rush</template></HtmlTooltip>, and the slash and explosives of <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Flair<template #content>Flair</template></HtmlTooltip> deal <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">2undefined − 19undefined (based on level)<template #content>Values: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ <HtmlTooltip class=\"blue link\">3.5% − 10.5% (based on level)<template #content>Values: 3.5, 3.912, 4.324, 4.735, 5.147, 5.559, 5.971, 6.382, 6.794, 7.206, 7.618, 8.029, 8.441, 8.853, 9.265, 9.676, 10.088, 10.5<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> AD)</span> <b>bonus</b> magic damage</span>, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 by 10 ‒ undefined</span></span>.<br />Whenever <b>Samira</b> uses a basic attack against an <HtmlTooltip class=\"blue link\">immobilized<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> target, the attack is empowered to have an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, be modified to deal the <span class=\"ad\">attack's damage</span> over 6 strikes in <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, and cause <b>Samira</b> to <HtmlTooltip class=\"blue link\">dash<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> into her <span>attack range</span> from the target if they are nearby, though not through terrain. If the target is a <HtmlTooltip class=\"blue link\">monster<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> or is <HtmlTooltip class=\"blue link\">airborne<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip>, the attack also <HtmlTooltip class=\"blue link\">knocks them up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds.<br />The empowered attack <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Samira's</b> basic attack timer, is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> modifiers, applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects only once, and cannot occur on the same target more than once every few seconds.",
-      "leveling": [],
-      "notes": "* The stack count is represented by the grades [[File:Samira Rank E.png|20px|border|link=]] [[File:Samira Rank D.png|20px|border|link=]] [[File:Samira Rank C.png|20px|border|link=]] [[File:Samira Rank B.png|20px|border|link=]] [[File:Samira Rank A.png|20px|border|link=]] [[File:Samira Rank S.png|20px|border|link=]] to the left of her [[health bar]] for '''Samira''' herself, and a stack counter underneath the bar that is visible to all players.\n* The empowered attack can trigger on {{tip|immobilize|immobilizes}} from both ally and enemy sources.\n** Self-applied or allied-applied {{tip|immobilize|immobilizes}} from the enemy '''will''' count for the empowered attack to trigger.{{bug|2}}\n** Those applied by the ''neutral'' team (e.g. {{uis|Dragon}} initial knock back) '''can''' be targeted.\n** It cannot trigger against enemies knocked {{tip|airborne}} by a {{ui|Blast Cone}} triggered by anyone.{{bug|2}}\n* The empowered attack's interaction with [[Crowd control#Immunity|immunities to crowd control]]:\n** It ''will not'' trigger against {{tip|displacement immune}} targets. If the empowered attack had already gone off, the knock up will ''not'' be resisted, thus interrupting the target's actions.{{bug|2}}\n** It ''will'' trigger against {{tip|cc-immune|crowd control immune}} targets.\n*** The knock up will however be partially resisted against {{ai|Black Shield|Morgana}}; only the disabling portion (airborne debuff) will be negated but not the displacement (forced movement).{{bug|2}}\n*** The knock up will be resisted by {{ai|Riposte|Fiora}}, but the ability does not trigger its on-{{tip|immobilize|immobilization}} effect.{{bug|2}}\n* The empowered attack will not apply the knock up against {{tip|suspension|suspended}} enemies.\n* The empowered attack will only apply the knock up if the target is still {{tip|immobilize|immobilized}} or {{tip|airborne}} upon being hit. It will not apply if they are no longer disabled when hit.\n* The empowered attack cannot be used against a target with a {{tip|spell shield}}.\n* The application of the knock up can occur on any of the missiles of the empowered attack if it had not already occurred on the first missile.\n** A missile that is parried by {{ai|Riposte|Fiora}} or is {{tip|dodge|dodged}}, {{tip|block|blocked}}, or missed while '''Samira''' is {{tip|blind|blinded}} '''cannot''' apply the knock up.\n* While {{tip|ground|grounded}} or {{tip|root|rooted}}, '''Samira''' cannot {{tip|dash}} into range to use the empowered attack. She can only use it if her target is within her {{sti|attack range}} while under this condition.\n* The on-target cooldown will apply even if the empowered attack is parried.\n* The empowered attack rolls {{tip|critical strike}} for each shot of the flurry.\n* The {{as|'''bonus''' magic damage}} dealt with the blade is {{tip|default damage}}. The empowered attack is first 1 instance of {{tip|basic damage}} and then 5 instances of {{tip|default damage}}.\n** The bonus damage does not apply to [[structures]].\n* The empowered attack is unaffected by {{stil|attack speed}} modifiers.\n* {{iis|Guinsoo's Rageblade}} ''Phantom Hit'' and {{iis|Runaan's Hurricane}} bolts will not apply the {{as|'''bonus''' magic damage}}, since it is {{tip|on-hit}} of specifically the melee attack casts.\n* Attacks with the gun and blade do not count as different attacks for stacking ''Style''.\n* Basic attacks using the blade are still classified as {{tip|ranged}}.\n* The melee attack's range condition is unaffected by {{stil|attack range}} modifiers (e.g. {{ii|Rapid Firecannon}}).\n** Blade range is calculated edge-to-edge just like basic attack ranges are, hence both '''Samira''' gaining bonus [[size]] or her target increases the total distance at which '''Samira''' can attack them with the blade.\n* Since the {{tip|airborne|knock up}} requires an exterior source to {{tip|immobilize}} the enemy, {{ri|Aftershock}} will be swapped with {{ri|Grasp of the Undying}} for '''Samira''' at the start of the game.\n* Since {{ais|R|Samira}} cooldown is static, {{ri|Ultimate Hunter}} will be swapped with {{ri|Ravenous Hunter}} for '''Samira''' at the start of the game.\n* Abilities blocked by {{tip|spell shield|spell shields}} will still grant '''Samira''' ''Style'' stacks.\n* '''Samira''' still gains ''Style'' stacks from damaging attacks and abilities landed against {{tip|clone|clones}}.",
-      "skillkey": "I",
-      "skillid": "i1",
+      "skillkey": "X",
+      "skillid": "X1",
       "effects": []
     },
-    "q1": {
-      "riotId": "SamiraQ",
+    {
       "name": "Flair",
-      "maxrank": 5,
+      "skill": "Q",
+      "range": "{{tip|cr|icononly = true}} {{tt|950|Gun shot missile range}} / {{tip|cr|icononly = true}} {{tt|400|Cone range strictly forward, cone origin is X units behind Samira}}",
+      "target_range": "{{tip|er|icononly = true}} {{tt|340|Blade targeting check length}}",
+      "width": "{{tip|er|icononly = true}} {{tt|120|Gun shot}} / {{tt|130|Blade targeting check width}}",
+      "angle": "{{tip|cr|icononly = true}} {{tt|X{{degree}}|Cone angle, cone origin is X units behind Samira}}",
+      "speed": "{{tt|2600|Gun}}",
+      "cast_time": "{{fd|0.25}}",
+      "cost": 30,
+      "costtype": "Mana",
       "cooldown": [
         6,
         5,
@@ -89,10 +134,29 @@
         3,
         2
       ],
-      "cost": 30,
-      "costtype": "Mana",
+      "icon": [
+        "Flair.png"
+      ],
+      "blurb": "{{ci|Samira}} fires a shot, dealing {{tip|physical damage|{{as|physical damage}}}} to the first enemy hit.\nIf this ability is cast towards an enemy in melee range, Samira will instead slash with her sword, dealing {{as|physical damage}}.",
+      "description": [
+        "{{sbc|Active:}} '''Samira''' fires a shot in the target direction, dealing {{as|physical damage}} to the first enemy it hits.",
+        "If a targetable enemy is in front of '''Samira''' at the time of starting the cast, she will slash with her blade in a cone instead, dealing the same damage to all enemies within.",
+        "Casting ''Flair'' during {{ai|Wild Rush|Samira}} will cause '''Samira''' to deploy explosives along her path which detonate upon the end of the dash, dealing the same damage to enemies within the covered distance. This can be done while performing {{ai|Blade Whirl|Samira}} or {{ai|Inferno Trigger|Samira}} despite ''Flair'' being disabled during them.{{bug|2}}",
+        "''Flair'' can {{tip|critically strike}} for {{as|{{critical damage|25|100}} '''bonus''' physical damage}} and both the shot and slash {{tip|applies lifesteal|apply}} {{stil|life steal}} at {{fd|66.6}}% effectiveness."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> fires a shot in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to the first enemy it hits.<br />If a targetable enemy is in front of <b>Samira</b> at the time of starting the cast, she will slash with her blade in a cone instead, dealing the same damage to all enemies within.<br />Casting <i>Flair</i> during <span class=\"ai\">Samira's Wild Rush</span> will cause <b>Samira</b> to deploy explosives along her path which detonate upon the end of the dash, dealing the same damage to enemies within the covered distance. This can be done while performing <span class=\"ai\">Samira's Blade Whirl</span> or <span class=\"ai\">Samira's Inferno Trigger</span> despite <i>Flair</i> being disabled during them.<simple-tooltip class=\"capture-unknown\" dname=\"bug / 2\">Unknown value: bug / 2</simple-tooltip><br /><i>Flair</i> can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"physical-damage\"><span class=\"critical-strike\">(+ IE 25%)</span> <b>bonus</b> physical damage</span> and both the shot and slash <HtmlTooltip class=\"blue link\">apply<template #content><div><h4>applies lifesteal<hr></h4><p>Description for keyword applies lifesteal</p></div></template></HtmlTooltip> <simple-tooltip class=\"capture-unknown\" dname=\"stil / life steal\">Unknown value: stil / life steal</simple-tooltip> at <span style=\"font-variant-numeric: tabular-nums;\">66.6</span>% effectiveness.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|0 to 20}} {{as|(+ {{ap|80 to 120}}% AD)}}}}"
+      ],
       "targeting": "Direction",
-      "target_range": "{{tip|er|icononly = true}} {{tt|340|Blade targeting check length}}",
+      "affects": "Self, Enemies",
+      "damagetype": "Physical",
+      "spelleffects": "special",
+      "spellshield": true,
+      "projectile": "special",
+      "callforhelp": "",
+      "notes": "* Applies {{tip|spell damage}} on the shot and {{tip|area damage}} on the slash and explosives.\n** {{stil|Life steal}} will always benefit from the damage dealt at {{fd|66.6}}% effectiveness and does not take into account of the ability's [[spell effects]], whereas on the other hand for {{tip|omnivamp}} does, and it will modify the {{tip|healing}} accordingly.\n* The slash and explosives roll their {{tip|critical strike}} against each target individually.\n* The shot and the slash do not count as different abilities for stacking {{ai|Daredevil Impulse|Samira|Style}}.\n* The explosives do not benefit from {{stil|life steal}}.\n* '''Samira's''' next attack after using ''Flair'' will occasionally come out faster.{{bug|2}}\n* '''Samira''' can use {{ai|Wild Rush|Samira}} during ''Flair's'' cast time.\n* ''Flair'' will fire or slash from wherever '''Samira''' is at the end of the cast time.\n** '''Samira''' will always slash in her facing direction, and she will turn to face the target direction only once at the start of the cast time.\n* ''Flair'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* Only the shot will be destroyed by {{tip|projectile|projectile-intercepting}} effects.\n* The explosive placement is illustrated in {{ai|Wild Rush|Samira}} regardless of whether ''Flair'' is available.\n** The VFX always covers the the full dash's distance even if {{ai|Wild Rush|Samira}} is interrupted mid-dash.",
+      "maxrank": 5,
       "image": {
         "full": "SamiraQ.png",
         "sprite": "spell10.png",
@@ -102,19 +166,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Samira''' fires a shot in the target direction, dealing {{as|physical damage}} to the first enemy it hits.",
-        "If a targetable enemy is in front of '''Samira''' at the time of starting the cast, she will slash with her blade in a cone instead, dealing the same damage to all enemies within.",
-        "Casting ''Flair'' during {{ai|Wild Rush|Samira}} will cause '''Samira''' to deploy explosives along her path which detonate upon the end of the dash, dealing the same damage to enemies within the covered distance. This can be done while performing {{ai|Blade Whirl|Samira}} or {{ai|Inferno Trigger|Samira}} despite ''Flair'' being disabled during them.{{bug|2}}",
-        "''Flair'' can {{tip|critically strike}} for {{as|{{critical damage|25|100}} '''bonus''' physical damage}} and both the shot and slash {{tip|applies lifesteal|apply}} {{stil|life steal}} at {{fd|66.6}}% effectiveness."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> fires a shot in the target direction, dealing <span class=\"physical-damage\">physical damage</span> to the first enemy it hits.<br />If a targetable enemy is in front of <b>Samira</b> at the time of starting the cast, she will slash with her blade in a cone instead, dealing the same damage to all enemies within.<br />Casting <i>Flair</i> during <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Wild Rush<template #content>Wild Rush</template></HtmlTooltip> will cause <b>Samira</b> to deploy explosives along her path which detonate upon the end of the dash, dealing the same damage to enemies within the covered distance. This can be done while performing <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Blade Whirl<template #content>Blade Whirl</template></HtmlTooltip> or <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Inferno Trigger<template #content>Inferno Trigger</template></HtmlTooltip> despite <i>Flair</i> being disabled during them.<simple-tooltip class=\"capture-unknown\" dname=\"bug 2\">Unknown value: bug 2</simple-tooltip><br /><i>Flair</i> can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"physical-damage\"><span class=\"critical-strike\">(+ IE 25%)</span> <b>bonus</b> physical damage</span> and both the shot and slash <HtmlTooltip class=\"blue link\">apply<template #content><div><h4>applies lifesteal<hr></h4><p>Description for keyword applies lifesteal</p></div></template></HtmlTooltip> <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at <span style=\"font-variant-numeric: tabular-nums;\">66.6</span>% effectiveness.",
-      "leveling": [
-        "{{st|Physical Damage|{{ap|0 to 20}} {{as|(+ {{ap|80 to 120}}% AD)}}}}"
-      ],
-      "notes": "* Applies {{tip|spell damage}} on the shot and {{tip|area damage}} on the slash and explosives.\n** {{stil|Life steal}} will always benefit from the damage dealt at {{fd|66.6}}% effectiveness and does not take into account of the ability's [[spell effects]], whereas on the other hand for {{tip|omnivamp}} does, and it will modify the {{tip|healing}} accordingly.\n* The slash and explosives roll their {{tip|critical strike}} against each target individually.\n* The shot and the slash do not count as different abilities for stacking {{ai|Daredevil Impulse|Samira|Style}}.\n* The explosives do not benefit from {{stil|life steal}}.\n* '''Samira's''' next attack after using ''Flair'' will occasionally come out faster.{{bug|2}}\n* '''Samira''' can use {{ai|Wild Rush|Samira}} during ''Flair's'' cast time.\n* ''Flair'' will fire or slash from wherever '''Samira''' is at the end of the cast time.\n** '''Samira''' will always slash in her facing direction, and she will turn to face the target direction only once at the start of the cast time.\n* ''Flair'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* Only the shot will be destroyed by {{tip|projectile|projectile-intercepting}} effects.\n* The explosive placement is illustrated in {{ai|Wild Rush|Samira}} regardless of whether ''Flair'' is available.\n** The VFX always covers the the full dash's distance even if {{ai|Wild Rush|Samira}} is interrupted mid-dash.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "skillkey": "X",
+      "skillid": "X2",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[0,5,10,15,20]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[80,90,100,110,120]\"></SpellSpan>% AD)</span></span></li></ul>",
@@ -173,10 +226,15 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "SamiraW",
+    {
       "name": "Blade Whirl",
-      "maxrank": 5,
+      "skill": "W",
+      "effect_radius": "{{tip|er|icononly = true}} 325",
+      "width": "",
+      "speed": "",
+      "cast_time": "{{fd|0.1}}",
+      "cost": 60,
+      "costtype": "Mana",
       "cooldown": [
         30,
         28,
@@ -184,9 +242,29 @@
         24,
         22
       ],
-      "cost": 60,
-      "costtype": "Mana",
+      "icon": [
+        "Blade Whirl.png"
+      ],
+      "blurb": "{{ci|Samira}} slashes around her for 1 second, damaging enemies twice for {{as|physical damage}} each and destroying any enemy {{tip|projectile|missiles}} that enter the area.",
+      "description": [
+        "{{sbc|Active:}} '''Samira''' spins her blades around herself over {{fd|0.75}} seconds, destroying all hostile non-{{tip|turret}} {{tip|projectile|projectiles}} that enter or are created within the area for the duration.",
+        "'''Samira''' slashes twice during ''Blade Whirl'', each one dealing {{as|physical damage}} to all nearby enemies. The first slash occurs immediately and the second one occurs at the end of the duration.",
+        "'''''Samira''' cannot attack nor cast {{ai|Flair|Samira}} during Blade Whirl. Casting {{ai|Inferno Trigger|Samira}} will end Blade Whirl early.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> spins her blades around herself over <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, destroying all hostile non-<HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">projectiles<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip> that enter or are created within the area for the duration.<br /><b>Samira</b> slashes twice during <i>Blade Whirl</i>, each one dealing <span class=\"physical-damage\">physical damage</span> to all nearby enemies. The first slash occurs immediately and the second one occurs at the end of the duration.<br /><b><i>Samira</b> cannot attack nor cast <span class=\"ai\">Samira's Flair</span> during Blade Whirl. Casting <span class=\"ai\">Samira's Inferno Trigger</span> will end Blade Whirl early.</i>",
+      "leveling": [
+        "{{st|Slash Damage|{{ap|20 to 80}} {{as|(+ 80% '''bonus''' AD)}}|Total Damage|{{ap|20*2 to 80*2}} {{as|(+ 160% '''bonus''' AD)}}}}"
+      ],
       "targeting": "Auto",
+      "affects": "Enemies",
+      "damagetype": "Physical",
+      "spelleffects": "aoe",
+      "spellshield": true,
+      "projectile": "",
+      "callforhelp": "",
+      "notes": "* {{tip|Spell shield}} will block the damage from one slash.\n* While the ability has a cast time - the cast time has no effect on the ability's usability. All effects begin immediately and '''Samira''' can move throughout. \n* ''Blade Whirl'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* Both slashes count as the same ability for stacking {{ai|Daredevil Impulse|Samira|Style}}.\n* The effect ending early includes the second slash not being performed, if applicable.  \n* Entering {{tip|stasis (buff)|stasis}} will also end ''Blade Whirl'' early.\n** Other item actives and channeling {{si|Teleport}} or {{si|Recall}} will ''not'' end the effect early.\n* '''Samira''' can ignore the lockout for {{ai|Flair|Samira}} and basic attacks if she uses {{ai|Wild Rush|Samira}} and queues up {{ai|Flair|Samira}} and/or a basic attack at the start of it.{{bug}}",
+      "flavorsound": "{{sm2|Samira_Original_W_5.ogg|''\"Don't think so.\"''}}",
+      "maxrank": 5,
       "image": {
         "full": "SamiraW.png",
         "sprite": "spell10.png",
@@ -196,18 +274,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Samira''' spins her blades around herself over {{fd|0.75}} seconds, destroying all hostile non-{{tip|turret}} {{tip|projectile|projectiles}} that enter or are created within the area for the duration.",
-        "'''Samira''' slashes twice during ''Blade Whirl'', each one dealing {{as|physical damage}} to all nearby enemies. The first slash occurs immediately and the second one occurs at the end of the duration.",
-        "'''''Samira''' cannot attack nor cast {{ai|Flair|Samira}} during Blade Whirl. Casting {{ai|Inferno Trigger|Samira}} will end Blade Whirl early.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> spins her blades around herself over <span style=\"font-variant-numeric: tabular-nums;\">0.75</span> seconds, destroying all hostile non-<HtmlTooltip class=\"blue link\">turret<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">projectiles<template #content><div><h4>projectile<hr></h4><p>Description for keyword projectile</p></div></template></HtmlTooltip> that enter or are created within the area for the duration.<br /><b>Samira</b> slashes twice during <i>Blade Whirl</i>, each one dealing <span class=\"physical-damage\">physical damage</span> to all nearby enemies. The first slash occurs immediately and the second one occurs at the end of the duration.<br /><b><i>Samira</b> cannot attack nor cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Flair<template #content>Flair</template></HtmlTooltip> during Blade Whirl. Casting <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Inferno Trigger<template #content>Inferno Trigger</template></HtmlTooltip> will end Blade Whirl early.</i>",
-      "leveling": [
-        "{{st|Slash Damage|{{ap|20 to 80}} {{as|(+ 80% '''bonus''' AD)}}|Total Damage|{{ap|20*2 to 80*2}} {{as|(+ 160% '''bonus''' AD)}}}}"
-      ],
-      "notes": "* {{tip|Spell shield}} will block the damage from one slash.\n* While the ability has a cast time - the cast time has no effect on the ability's usability. All effects begin immediately and '''Samira''' can move throughout. \n* ''Blade Whirl'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* Both slashes count as the same ability for stacking {{ai|Daredevil Impulse|Samira|Style}}.\n* The effect ending early includes the second slash not being performed, if applicable.  \n* Entering {{tip|stasis (buff)|stasis}} will also end ''Blade Whirl'' early.\n** Other item actives and channeling {{si|Teleport}} or {{si|Recall}} will ''not'' end the effect early.\n* '''Samira''' can ignore the lockout for {{ai|Flair|Samira}} and basic attacks if she uses {{ai|Wild Rush|Samira}} and queues up {{ai|Flair|Samira}} and/or a basic attack at the start of it.{{bug}}",
-      "skillkey": "W",
-      "skillid": "w1",
+      "skillkey": "X",
+      "skillid": "X3",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Slash Damage</span>: <span><SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span></span></li><li><span class=\"blue\">Total Damage</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span></span></li></ul>",
@@ -223,9 +291,9 @@
             "st_slices": [
               [
                 "Slash Damage",
-                "<SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"ad\">(+ 80% '''bonus''' AD)</span>",
+                "<SpellSpan :list=\"[20,35,50,65,80]\"></SpellSpan> <span class=\"ad\">(+ 80% <b>bonus</b> AD)</span>",
                 "Total Damage",
-                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ad\">(+ 160% '''bonus''' AD)</span>"
+                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ad\">(+ 160% <b>bonus</b> AD)</span>"
               ]
             ],
             "ap_progressions": [
@@ -265,10 +333,16 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "SamiraE",
+    {
       "name": "Wild Rush",
-      "maxrank": 5,
+      "skill": "E",
+      "range": "{{tt|650|Dash distance}} / {{tip|er|icononly = true}} {{tt|800|Dash hitbox length}} / {{tip|er|icononly = true}} {{tt|-150|Dash hitbox behind Samira}}",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|600|Cast range}}",
+      "width": "{{tip|er|icononly = true}} 300",
+      "speed": 1600,
+      "cast_time": "none",
+      "cost": 40,
+      "costtype": "Mana",
       "cooldown": [
         20,
         18,
@@ -276,10 +350,27 @@
         14,
         12
       ],
-      "cost": 40,
-      "costtype": "Mana",
+      "icon": [
+        "Wild Rush.png"
+      ],
+      "blurb": "{{ci|Samira}} dashes through an enemy or ally, slashing enemies she passes through dealing {{as|magic damage}} and gaining {{sti|Attack Speed}} for 3 seconds.",
+      "description": [
+        "{{sbc|Active:}} '''Samira''' {{tip|dash|dashes}} in the direction of the target enemy or enemy {{tip|turret|structure}}, slashing all enemies within her path to deal them {{as|magic damage}} and gain {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
+        "{{tip|Takedown|Takedowns}} on enemy {{tip|champions}} reset ''Wild Rush's'' {{sti|cooldown}}.",
+        "'''''Samira''' can cast {{ai|Flair|Samira}} or {{ai|Inferno Trigger|Samira}} during Wild Rush. Using {{ai|Blade Whirl|Samira}} will buffer it to cast at the end of the dash.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the direction of the target enemy or enemy <HtmlTooltip class=\"blue link\">structure<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip>, slashing all enemies within her path to deal them <span class=\"magic-damage\">magic damage</span> and gain <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 3 seconds.<br /><HtmlTooltip class=\"blue link\">Takedowns<template #content><div><h4>Takedown<hr></h4><p>Description for keyword Takedown</p></div></template></HtmlTooltip> on enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> reset <i>Wild Rush's</i> <span>cooldown</span>.<br /><b><i>Samira</b> can cast <span class=\"ai\">Samira's Flair</span> or <span class=\"ai\">Samira's Inferno Trigger</span> during Wild Rush. Using <span class=\"ai\">Samira's Blade Whirl</span> will buffer it to cast at the end of the dash.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|50 to 90}} {{as|(+ 20% '''bonus''' AD)}}}}\n{{st|Attack Speed|{{ap|20 to 40}}%}}"
+      ],
       "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} {{tt|600|Cast range}}",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "aoe",
+      "spellshield": true,
+      "callforhelp": true,
+      "notes": "* ''Wild Rush'' does not deal its damage to turrets.\n* ''Wild Rush'' prioritizes targeting champions over turrets.\n* ''Wild Rush'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* {{ai|Inferno Trigger|Samira}} will be buffered to cast at the end of the dash if {{ai|Flair|Samira}} was cast during the dash.\n* Casting {{si|Flash}} during ''Wild Rush'' will interrupt the dash but deal damage to nearby enemies at the location.\n** If {{ai|Flair|Samira}} was cast during this time, an explosive will also be placed at that location.\n* ''Wild Rush'' will also reset if '''Samira''' kills or gets assist credit on a {{tip|clone}} that dies (to hostiles).{{bug|2}}",
+      "maxrank": 5,
       "image": {
         "full": "SamiraE.png",
         "sprite": "spell10.png",
@@ -289,21 +380,11 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Samira''' {{tip|dash|dashes}} in the direction of the target enemy or enemy {{tip|turret|structure}}, slashing all enemies within her path to deal them {{as|magic damage}} and gain {{sti|{{as|'''bonus''' attack speed}}}} for 3 seconds.",
-        "{{tip|Takedown|Takedowns}} on enemy {{tip|champions}} reset ''Wild Rush's'' {{sti|cooldown}}.",
-        "'''''Samira''' can cast {{ai|Flair|Samira}} or {{ai|Inferno Trigger|Samira}} during Wild Rush. Using {{ai|Blade Whirl|Samira}} will buffer it to cast at the end of the dash.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> <HtmlTooltip class=\"blue link\">dashes<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the direction of the target enemy or enemy <HtmlTooltip class=\"blue link\">structure<template #content><div><h4>turret<hr></h4><p>Description for keyword turret</p></div></template></HtmlTooltip>, slashing all enemies within her path to deal them <span class=\"magic-damage\">magic damage</span> and gain <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 3 seconds.<br /><HtmlTooltip class=\"blue link\">Takedowns<template #content><div><h4>Takedown<hr></h4><p>Description for keyword Takedown</p></div></template></HtmlTooltip> on enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> reset <i>Wild Rush's</i> <span>cooldown</span>.<br /><b><i>Samira</b> can cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Flair<template #content>Flair</template></HtmlTooltip> or <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Inferno Trigger<template #content>Inferno Trigger</template></HtmlTooltip> during Wild Rush. Using <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Blade Whirl<template #content>Blade Whirl</template></HtmlTooltip> will buffer it to cast at the end of the dash.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|50 to 90}} {{as|(+ 20% '''bonus''' AD)}}}}\n{{st|Attack Speed|{{ap|20 to 40}}%}}"
-      ],
-      "notes": "* ''Wild Rush'' does not deal its damage to turrets.\n* ''Wild Rush'' prioritizes targeting champions over turrets.\n* ''Wild Rush'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.\n* {{ai|Inferno Trigger|Samira}} will be buffered to cast at the end of the dash if {{ai|Flair|Samira}} was cast during the dash.\n* Casting {{si|Flash}} during ''Wild Rush'' will interrupt the dash but deal damage to nearby enemies at the location.\n** If {{ai|Flair|Samira}} was cast during this time, an explosive will also be placed at that location.\n* ''Wild Rush'' will also reset if '''Samira''' kills or gets assist credit on a {{tip|clone}} that dies (to hostiles).{{bug|2}}",
-      "skillkey": "E",
-      "skillid": "e1",
+      "skillkey": "X",
+      "skillid": "X4",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Attack Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Attack Speed</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -313,7 +394,7 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% '''bonus''' AD)</span>"
+                "<SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan> <span class=\"ad\">(+ 20% <b>bonus</b> AD)</span>"
               ],
               [
                 "Attack Speed",
@@ -372,18 +453,43 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "SamiraR",
+    {
       "name": "Inferno Trigger",
-      "maxrank": 3,
-      "cooldown": 0,
+      "skill": "R",
+      "effect_radius": "{{tip|cr|icononly = true}} 600",
+      "cast_time": "none",
       "cost": [
         100,
         50,
         0
       ],
       "costtype": "Mana",
+      "static": "{{tt|8|Starts on cast}}",
+      "cooldown": 0,
+      "icon": [
+        "Samira Rank S.png",
+        "Inferno Trigger 2.png"
+      ],
+      "blurb": "{{sbc|Active:}} {{ci|Samira}} unleashes a torrent of shots from her weapons, wildly shooting all enemies surrounding her 10 times over 2 seconds, each shot dealing {{as|physical damage}} and applying {{sti|lifesteal}}. Each shot can also {{tip|critically strike}}.\nSamira can only use this ability if her current ''Style'' rating is S.",
+      "description": [
+        "{{sbc|Active:}} '''Samira''' unleashes a torrent of shots from her weapons for {{rutngt|2.25}}, '''reducing''' her {{as|movement speed}} by {{as|30%|ms}} and rapidly shooting at all nearby enemies over {{rutngt|2}} at sporadic times in {{tt|{{fd|0.2}}-second intervals|on average; total of 5 intervals of 0.231 and 5 of 0.198 seconds}} each, dealing {{as|physical damage}} with each shot, reduced by 75% against {{tip|minions}}.",
+        "Each shot can {{tip|critically strike}} for {{as|{{critical damage|75|100}} '''bonus''' physical damage}} and {{tip|applies lifesteal|applies}} {{stil|life steal}} at {{fd|66.6}}% effectiveness.",
+        "''Inferno Trigger cannot be cast unless at maximum [[File:Samira Rank S.png|20px|border|link=]] {{ai|Daredevil Impulse|Samira|Style}} stacks (6), and all stacks will be consumed at the end of the effect. A nearby {{tip|sight|visible}} enemy is required to cast this ability, and targets do not have to be visible to be shot at.''",
+        "'''''Samira''' cannot attack nor cast {{ai|Flair|Samira}} and {{ai|Blade Whirl|Samira}} during Inferno Trigger, but she can still move. Inferno Trigger will end prematurely by all forms of {{tip|interrupt|interrupting}} {{tip|crowd control}} as well as {{tip|disarm}}.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> unleashes a torrent of shots from her weapons for <span class=\"chamption-name\" title=\"2.25 seconds, but rounded up to the next game tick.\">2.277</span>, <b>reducing</b> her <span class=\"movement-speed\">movement speed</span> by <span class=\"ms\">30%</span> and rapidly shooting at all nearby enemies over <span class=\"chamption-name\" title=\"2 seconds, but rounded up to the next game tick.\">2.013</span> at sporadic times in <span class=\"title-tooltip\" title=\"on average; total of 5 intervals of 0.231 and 5 of 0.198 seconds\"><span style=\"font-variant-numeric: tabular-nums;\">0.2</span>-second intervals</span> each, dealing <span class=\"physical-damage\">physical damage</span> with each shot, reduced by 75% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Each shot can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"physical-damage\"><span class=\"critical-strike\">(+ IE 25%)</span> <b>bonus</b> physical damage</span> and <HtmlTooltip class=\"blue link\">applies<template #content><div><h4>applies lifesteal<hr></h4><p>Description for keyword applies lifesteal</p></div></template></HtmlTooltip> <simple-tooltip class=\"capture-unknown\" dname=\"stil / life steal\">Unknown value: stil / life steal</simple-tooltip> at <span style=\"font-variant-numeric: tabular-nums;\">66.6</span>% effectiveness.<br /><i>Inferno Trigger cannot be cast unless at maximum <a class=\"effect link\" title=\"20px\">File:Samira Rank S.png</a> <span class=\"ai\">Samira's Style</span> stacks (6), and all stacks will be consumed at the end of the effect. A nearby <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy is required to cast this ability, and targets do not have to be visible to be shot at.</i><br /><b><i>Samira</b> cannot attack nor cast <span class=\"ai\">Samira's Flair</span> and <span class=\"ai\">Samira's Blade Whirl</span> during Inferno Trigger, but she can still move. Inferno Trigger will end prematurely by all forms of <HtmlTooltip class=\"blue link\">interrupting<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip> as well as <HtmlTooltip class=\"blue link\">disarm<template #content><div><h4>Disarm<hr></h4><p>A unit that is disarmed is unable to declare basic attacks.</p></div></template></HtmlTooltip>.</i>",
+      "leveling": [
+        "{{st|Physical Damage Per Shot|{{ap|0 to 20}} {{as|(+ 50% AD)}}|Total Damage Per Target|{{ap|0*10 to 20*10}} {{as|(+ 500% AD)}}|Minion Damage Per Shot|{{ap|0*0.25 to 20*0.25}} {{as|(+ {{ap|50*0.25}}% AD)}}|Total Damage Per Minion|{{ap|0*0.25*10 to 20*0.25*10}} {{as|(+ {{ap|50*0.25*10}}% AD)}}}}"
+      ],
       "targeting": "Auto",
+      "affects": "Enemies",
+      "damagetype": "Physical",
+      "spelleffects": "aoedot",
+      "spellshield": "special",
+      "projectile": true,
+      "notes": "* '''Samira's''' facing direction remains as it had been or, if she is moving, towards that direction during ''Inferno Trigger''.\n* The {{stil|movement speed}} reduction stacks additively with other {{as|movement speed}} bonuses. \n** It is a negative bonus, not a {{tip|slow}}, and is thus not reduced by {{tip|slow resist}}.\n* ''Inferno Trigger's'' area of effect is fixed around '''Samira'''.\n* {{tip|Spell shield}} will block the damage of one shot.\n* ''Inferno Trigger'' will not end if there are no enemies that remain in range.\n* ''Inferno Trigger'' can be buffered {{fd|0.5}} seconds before it becomes unsealed or off cooldown.\n* The shots roll {{tip|critical strike}} against each target individually.\n* The bottom of the [[Summoner|player's]] screen will have a fiery visual effect while '''Samira''' is at ''S'' rank and ''Inferno Trigger'' has at least one rank.",
+      "flavorsound": "{{sm2|Samira_Original_R_1.ogg|''\"Showtime!\"''}}",
+      "maxrank": 3,
       "image": {
         "full": "SamiraR.png",
         "sprite": "spell10.png",
@@ -393,20 +499,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Samira''' unleashes a torrent of shots from her weapons for {{rutngt|2.25}}, '''reducing''' her {{as|movement speed}} by {{as|30%|ms}} and rapidly shooting at all nearby enemies over {{rutngt|2}} at sporadic times in {{tt|{{fd|0.2}}-second intervals|on average; total of 5 intervals of 0.231 and 5 of 0.198 seconds}} each, dealing {{as|physical damage}} with each shot, reduced by 75% against {{tip|minions}}.",
-        "Each shot can {{tip|critically strike}} for {{as|{{critical damage|75|100}} '''bonus''' physical damage}} and {{tip|applies lifesteal|applies}} {{stil|life steal}} at {{fd|66.6}}% effectiveness.",
-        "''Inferno Trigger cannot be cast unless at maximum [[File:Samira Rank S.png|20px|border|link=]] {{ai|Daredevil Impulse|Samira|Style}} stacks (6), and all stacks will be consumed at the end of the effect. A nearby {{tip|sight|visible}} enemy is required to cast this ability, and targets do not have to be visible to be shot at.''",
-        "'''''Samira''' cannot attack nor cast {{ai|Flair|Samira}} and {{ai|Blade Whirl|Samira}} during Inferno Trigger, but she can still move. Inferno Trigger will end prematurely by all forms of {{tip|interrupt|interrupting}} {{tip|crowd control}} as well as {{tip|disarm}}.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Samira</b> unleashes a torrent of shots from her weapons for <span class=\"chamption-name\" title=\"2.25 seconds, but rounded up to the next game tick.\">2.277</span>, <b>reducing</b> her <span class=\"movement-speed\">movement speed</span> by <span class=\"ms\">30%</span> and rapidly shooting at all nearby enemies over <span class=\"chamption-name\" title=\"2 seconds, but rounded up to the next game tick.\">2.013</span> at sporadic times in <span class=\"title-tooltip\" title=\"on average; total of 5 intervals of 0.231 and 5 of 0.198 seconds\"><span style=\"font-variant-numeric: tabular-nums;\">0.2</span>-second intervals</span> each, dealing <span class=\"physical-damage\">physical damage</span> with each shot, reduced by 75% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>.<br />Each shot can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"physical-damage\"><span class=\"critical-strike\">(+ IE 25%)</span> <b>bonus</b> physical damage</span> and <HtmlTooltip class=\"blue link\">applies<template #content><div><h4>applies lifesteal<hr></h4><p>Description for keyword applies lifesteal</p></div></template></HtmlTooltip> <simple-tooltip class=\"capture-unknown\" dname=\"stil life steal\">Unknown value: stil life steal</simple-tooltip> at <span style=\"font-variant-numeric: tabular-nums;\">66.6</span>% effectiveness.<br /><i>Inferno Trigger cannot be cast unless at maximum <a class=\"effect link\" title=\"20px\">File:Samira Rank S.png</a> <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Style<template #content>Daredevil Impulse</template></HtmlTooltip> stacks (6), and all stacks will be consumed at the end of the effect. A nearby <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy is required to cast this ability, and targets do not have to be visible to be shot at.</i><br /><b><i>Samira</b> cannot attack nor cast <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Flair<template #content>Flair</template></HtmlTooltip> and <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Samira\">Blade Whirl<template #content>Blade Whirl</template></HtmlTooltip> during Inferno Trigger, but she can still move. Inferno Trigger will end prematurely by all forms of <HtmlTooltip class=\"blue link\">interrupting<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip> as well as <HtmlTooltip class=\"blue link\">disarm<template #content><div><h4>Disarm<hr></h4><p>A unit that is disarmed is unable to declare basic attacks.</p></div></template></HtmlTooltip>.</i>",
-      "leveling": [
-        "{{st|Physical Damage Per Shot|{{ap|0 to 20}} {{as|(+ 50% AD)}}|Total Damage Per Target|{{ap|0*10 to 20*10}} {{as|(+ 500% AD)}}|Minion Damage Per Shot|{{ap|0*0.25 to 20*0.25}} {{as|(+ {{ap|50*0.25}}% AD)}}|Total Damage Per Minion|{{ap|0*0.25*10 to 20*0.25*10}} {{as|(+ {{ap|50*0.25*10}}% AD)}}}}"
-      ],
-      "notes": "* '''Samira's''' facing direction remains as it had been or, if she is moving, towards that direction during ''Inferno Trigger''.\n* The {{stil|movement speed}} reduction stacks additively with other {{as|movement speed}} bonuses. \n** It is a negative bonus, not a {{tip|slow}}, and is thus not reduced by {{tip|slow resist}}.\n* ''Inferno Trigger's'' area of effect is fixed around '''Samira'''.\n* {{tip|Spell shield}} will block the damage of one shot.\n* ''Inferno Trigger'' will not end if there are no enemies that remain in range.\n* ''Inferno Trigger'' can be buffered {{fd|0.5}} seconds before it becomes unsealed or off cooldown.\n* The shots roll {{tip|critical strike}} against each target individually.\n* The bottom of the [[Summoner|player's]] screen will have a fiery visual effect while '''Samira''' is at ''S'' rank and ''Inferno Trigger'' has at least one rank.",
-      "skillkey": "R",
-      "skillid": "r1",
-      "cooldown_warn": "Wiki's and Riot's cooldowns do not match: Wiki's value '0' as '0' and riot's value '8,8,8' as '8'",
+      "skillkey": "X",
+      "skillid": "X5",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Per Shot</span>: <span><SpellSpan :list=\"[0,10,20]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span></span></li><li><span class=\"blue\">Total Damage Per Target</span>: <span><SpellSpan :list=\"[0,100,200]\"></SpellSpan> <span class=\"ad\">(+ 500% AD)</span></span></li><li><span class=\"blue\">Minion Damage Per Shot</span>: <span><SpellSpan :list=\"[0,2.5,5]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[12.5]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Total Damage Per Minion</span>: <span><SpellSpan :list=\"[0,25,50]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[125]\"></SpellSpan>% AD)</span></span></li></ul>",
@@ -483,6 +577,45 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Taunt",
+      "disp_name": "/taunt",
+      "skill": "CTRL+2",
+      "range": "{{tip|cr|icononly = true}} 950 / {{tip|er|icononly = true}} 890",
+      "width": "{{tip|er|icononly = true}} 120",
+      "speed": 1400,
+      "cast_time": "",
+      "cost": 0,
+      "costtype": "",
+      "static": "",
+      "cooldown": 0,
+      "icon": [
+        "Samira_splash_coin.png <!-- Use Samira_splash_coin.png when calling ability info on other pages -->"
+      ],
+      "blurb": "",
+      "description": [
+        "'''Samira's''' [[Emoting|taunt]] {{tip|lockout|prevents}} her from inputting attack commands and casting non-movement abilities, and she may only interrupt it herself with a movement command. After 3 seconds without interruption, she will toss a [[File:Samira_splash_coin.png|20px|link=]] coin in the direction she is facing.",
+        "If she has at least {{g|1}}, the coin deals {{ccs|{{sti|{{as|1 true damage}}}}|true}} to the first enemy champion hit, triggering {{ai|Daredevil Impulse|Samira}} but granting them {{g|1}} of '''Samira's''' [[gold]].",
+        "If cast within {{tt|1100|Estimated, pending for test}} range of a {{tip|sight|visible}} enemy champion, '''Samira''' will turn to face towards the closest one to perform the animation.",
+        "'''Samira's''' ''Taunt'' can target and hit dead enemy champions, granting them {{g|1}} but not triggering other effects."
+      ],
+      "descriptionHtml": "<b>Samira's</b> <a class=\"effect link\" title=\"taunt\">Emoting</a> <HtmlTooltip class=\"blue link\">prevents<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> her from inputting attack commands and casting non-movement abilities, and she may only interrupt it herself with a movement command. After 3 seconds without interruption, she will toss a <a class=\"effect link\" title=\"20px\">File:Samira_splash_coin.png</a> coin in the direction she is facing.<br />If she has at least <span class=\"gold\"> <img src=\"/images/Gold.png\">1</span>, the coin deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs / <span><span class=\"true-damage\">1 true damage</span></span> / true\">Unknown value: ccs / <span><span class=\"true-damage\">1 true damage</span></span> / true</simple-tooltip> to the first enemy champion hit, triggering <span class=\"ai\">Samira's Daredevil Impulse</span> but granting them <span class=\"gold\"> <img src=\"/images/Gold.png\">1</span> of <b>Samira's</b> <a class=\"effect link\" title=\"gold\">gold</a>.<br />If cast within <span class=\"title-tooltip\" title=\"Estimated, pending for test\">1100</span> range of a <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy champion, <b>Samira</b> will turn to face towards the closest one to perform the animation.<br /><b>Samira's</b> <i>Taunt</i> can target and hit dead enemy champions, granting them <span class=\"gold\"> <img src=\"/images/Gold.png\">1</span> but not triggering other effects.",
+      "leveling": [],
+      "targeting": "Auto <!-- Missile says Location-targeted, but actually doesn't take any targeting input -->",
+      "affects": "unknown",
+      "damagetype": true,
+      "spelleffects": "Spell",
+      "spellshield": true,
+      "projectile": true,
+      "callforhelp": "",
+      "notes": "* '''Samira''' must have at least {{g|1}} to weaponize her Taunt animation. \n* Using her ''Taunt'' does '''not''' count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{si|Flash}} and {{ai|Wild Rush|Samira}} can be cast during her ''Taunt'', but neither interrupt the effect.{{bug}}\n** If Samira's facing direction is changed before the coin is fired (e.g. by casting {{ai|Wild Rush|Samira}}), she will still turn toward her initial ''facing direction'' to toss the coin. Note: ''facing direction'', not toward the location of the target.",
+      "flavorsound": "{{sm2|Samira_Original_Taunt_2.ogg|''\"Buy something nice. On me.\"''}}",
+      "maxrank": 0,
+      "skillkey": "X",
+      "skillid": "X6",
+      "effects": []
     }
-  }
+  ],
+  "skillsMismatch": true
 }

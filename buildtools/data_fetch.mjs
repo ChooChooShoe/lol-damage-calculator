@@ -6,36 +6,34 @@ import { default as matchReplaceSpellEffects, numberExpand } from '../src/javasc
 import JSON5 from 'json5';
 
 /**
- * From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
- * @param body string?
+ * Fetches in a wiki data page and returns the textarea content inside.
+ * @param {RequestInfo} url 
+ * @returns string
  */
-async function wikia_to_json(body) {
-    const text = await body.text();
-    const content = text.match(/<textarea[^>]*>([\s\S]*)<\/textarea>/m);
-    if (!content) {
-        console.warn("Missing data. No data found");
-        return null;
-    }
-    const raw = he.decode(content[1]);
-    if (raw.length < 3) {
-        console.warn("Missing data. Data length is less then 3");
-        return null;
-    }
+ async function fetch_wiki(url) {
+    console.log("Fetching (wiki):", url);
+    return fetch(url)
+        .then(response => response.text())
+        .then(text => text.match(/<textarea[^>]*>([^]*)<\/textarea>/m))
+        .then(content => he.decode(content[1]));
+}
+
+async function fetch_mod_data() {
+    const modDataUrl = `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`;
+    console.log("Fetching (wikia-module): %s", modDataUrl);
+    const raw = await fetch_wiki(modDataUrl);
+
+    // Converts Lua data to json data.
     let results = [];
-    // let indent = 0
     for (let line of raw.split('\n')) {
         const tline = line.trim();
-        if (line === '' || tline.startsWith('--'))
+        if (tline === '' || tline.startsWith('--'))
             continue;
-        if (line.startsWith('return')) {
+        if (tline.startsWith('return')) {
             results.push('{')
             continue;
         }
-        // if(line.includes('{'))
-        //     indent++;
-        // if(line.includes('}'))
-        //     indent--;
-        line = line
+        results.push(tline
             //replaces [" and "] with "
             .replace(/\["|"]/g, `"`)
             //replaces = with :
@@ -48,63 +46,31 @@ async function wikia_to_json(body) {
             .replace(/\[(\d+)] : /g, `"$1" : `)
             //replaces -- with //
             .replace(/--/g, "//")
-            ;
-        results.push(line);
+        );
     }
-    const js = results.join('\n');
-
-    // DEBUG --- test if the data is valid data.
-    fs.promises.writeFile('./buildtools/testjson.json', js, function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(`The file ./buildtools/testjson.json was saved!`);
-    });
-
-    return JSON5.parse(js);
-
+    // return parsed JSON as a javascript object.
+    return JSON5.parse(results.join(''));
 }
-async function fetch_wikia(url) {
-    console.log('Fetching (wikia)', url);
-    const response = await fetch(url);
-    const text = await response.text();
 
-    const content = text.match(/<textarea[^>]*>([\s\S]*)<\/textarea>/m);
-    if (!content)
-        return null;
-    const raw = he.decode(content[1]);
+export async function make_wiki_skill_model(champ_name, skill_name) {
+    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name}/${skill_name.replace(/ /g, '_')}?action=edit`;
+    const raw = await fetch_wiki(skillDataUrl);
 
-    if (raw.length < 3) {
-        console.warn("Missing data. No data found");
-        return null;
-    }
-    let obj = new Object();
-    const dataSplit = raw.trim().slice(2, raw.length - 3).split("\n|");
-    let isFirstLine = true;
-    for (const line of dataSplit) {
-        if (isFirstLine) {
-            // line === "{{{{{1<noinclude>|Ability data</noinclude>}}}|Terrashape|{{{2|}}}|{{{3|}}}|{{{4|}}}|{{{5|}}}"
-            const match = line.match(/noinclude>}}}\|([^|]*)\|/);
-            if (match) {
-                obj["name"] = match[1];
-                console.log("Setting name to", match[1]);
-                isFirstLine = false;
-            } else {
-                obj["name"] = String(line);
-                console.log("Setting name to", line);
-                isFirstLine = false;
-            }
-        } else {
-            const parts = line.split('=');
-            let key = parts[0].trim().replace(/ /g, '_');
-            let value = parts.slice(1).join('=').trim();
-            obj[key] = autoCast(value);
-            // console.log("key", key, ", value", value)
-        }
+    let obj = { name: skill_name };
+    // Trims {{ and \n}}  splits lines and create an iterator
+    const splitIter = raw.trim().slice(2, -3).split("\n|")[Symbol.iterator]();
+
+    // skip first line
+    splitIter.next();
+
+    for (const line of splitIter) {
+        const index = line.indexOf('=');
+        let key = line.slice(0, index).trim();
+        let value = line.slice(index + 1).trim();
+        obj[key] = autoCast(value);
     }
     return obj;
 }
-
 
 async function doMergeData(riotChampPromise, wikiaChamp) {
     const rcr = await riotChampPromise;
@@ -359,18 +325,10 @@ async function onRealmJsonResponse(body) {
         cdn: cdn,
     });
 
-    const mod_data_url = `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`;
-
     console.log("Fetching (json): %s", championUrl);
-    const responseDDragon = await fetch(championUrl);
-    console.log("Fetching (wikia-module): %s", mod_data_url);
-    const responseWikia = await fetch(mod_data_url);
-    console.log("Parsing (responseDDragon)");
-    const bodyDDragon = await responseDDragon.json();
-    console.log("Parsing (responseWikia)");
-    const bodyWikia = await wikia_to_json(responseWikia)
+    const champ_json = fetch(championUrl).then(response => response.json()) ;
     console.log("Building Champion Json");
-    return await onChampionJsonResponse(bodyDDragon, bodyWikia);
+    return onChampionJsonResponse(await champ_json, await fetch_mod_data());
 }
 
 /**
@@ -380,7 +338,6 @@ async function onRealmJsonResponse(body) {
  * @param fandom_data JSON Object
  */
 async function onChampionJsonResponse(champ_json, fandom_data) {
-    // console.log('fandom_data',fandom_data)
     console.assert(champ_json.type === 'champion');
     console.assert(champ_json.format === 'standAloneComplex');
     console.assert(champ_json.version === version);
@@ -425,9 +382,7 @@ async function createSkill(letter, skillNames, riotData, isPassive, champModel) 
         console.log('Creating skill', letter, skillnum);
         const element = skillsplit[skillnum];
         const skill_name = element.trim().replace(/ /g, "_")
-        const url = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champModel.name}/${skill_name}?action=edit`
-        console.log('Fetching (skill)', url);
-        const model = await fetch_wikia(url);
+        const model = await make_wiki_skill_model(champModel.name, skill_name);
 
         let valid = false;
         if (model && model.description) {

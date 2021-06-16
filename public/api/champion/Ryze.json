@@ -1,9 +1,45 @@
 {
-  "patch": "Alpha Week 2",
-  "changes": "11.11.1",
   "id": "Ryze",
+  "key": 13,
   "name": "Ryze",
   "title": "the Rune Mage",
+  "resource": "Mana",
+  "stats": {
+    "hp_base": 575,
+    "hp_lvl": 110,
+    "mp_base": 300,
+    "mp_lvl": 70,
+    "arm_base": 22,
+    "arm_lvl": 3,
+    "mr_base": 36,
+    "mr_lvl": 0.5,
+    "hp5_base": 8,
+    "hp5_lvl": 0.8,
+    "mp5_base": 8,
+    "mp5_lvl": 1,
+    "dam_base": 58,
+    "dam_lvl": 3,
+    "as_base": 0.625,
+    "as_lvl": 2.112,
+    "range": 550,
+    "ms": 340,
+    "acquisition_radius": 575,
+    "selection_radius": 120,
+    "pathing_radius": 35,
+    "as_ratio": 0.625,
+    "attack_delay_offset": -0.100000001490116,
+    "missile_speed": 2400,
+    "aram_dmg_dealt": 1.08,
+    "aram_dmg_taken": 0.9,
+    "ofa_dmg_dealt": 1.03,
+    "urf_dmg_dealt": 1.05,
+    "urf_dmg_taken": 0.95
+  },
+  "rangetype": "Ranged",
+  "positions": [
+    "Middle"
+  ],
+  "adaptivetype": "Magic",
   "image": {
     "full": "Ryze.png",
     "sprite": "champion3.png",
@@ -13,47 +49,59 @@
     "w": 48,
     "h": 48
   },
-  "resource": "Mana",
   "herotype": "Mage",
   "alttype": "Fighter",
-  "rangetype": "Ranged",
-  "be_cost": 450,
-  "rp_cost": 260,
-  "adaptivetype": "magic",
-  "info": {
-    "attack": 2,
-    "defense": 2,
-    "magic": 10,
-    "difficulty": 7
-  },
-  "stats": {
-    "hp": 575,
-    "hpperlevel": 110,
-    "mp": 300,
-    "mpperlevel": 70,
-    "movespeed": 340,
-    "armor": 22,
-    "armorperlevel": 3,
-    "spellblock": 36,
-    "spellblockperlevel": 0.5,
-    "attackrange": 550,
-    "hpregen": 8,
-    "hpregenperlevel": 0.8,
-    "mpregen": 8,
-    "mpregenperlevel": 1,
-    "crit": 0,
-    "critperlevel": 0,
-    "attackdamage": 58,
-    "attackdamageperlevel": 3,
-    "attackspeedperlevel": 2.112,
-    "attackspeed": 0.625
-  },
-  "skills": {
-    "i1": {
-      "riotId": "",
+  "date": "2009-02-21",
+  "patch": "Alpha Week 2",
+  "changes": "11.11.1",
+  "be": 450,
+  "rp": 260,
+  "skill_i": [
+    "Arcane Mastery"
+  ],
+  "skill_q": [
+    "Overload",
+    "Overload 2",
+    "Overload 3",
+    "Overload 4",
+    "Overload 5"
+  ],
+  "skill_w": [
+    "Rune Prison"
+  ],
+  "skill_e": [
+    "Spell Flux"
+  ],
+  "skill_r": [
+    "Realm Warp"
+  ],
+  "skill_names": [
+    "Arcane Mastery",
+    "Overload",
+    "Rune Prison",
+    "Spell Flux",
+    "Realm Warp"
+  ],
+  "skills": [
+    {
       "name": "Arcane Mastery",
-      "maxrank": 0,
+      "skill": "P",
+      "cost": 0,
+      "icon": [
+        "Arcane Mastery.png"
+      ],
+      "blurb": "Ryze's spells deal extra damage based on his Bonus Mana, and he gains a percentage increase to his maximum Mana based on his Ability Power.",
+      "description": [
+        "{{sbc|Innate:}} '''Ryze''' gains {{as|({{#var:am}}% per 100 AP)}} {{as|{{sti|mana|'''bonus''' mana}}}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Ryze</b> gains <span class=\"ap\">(<simple-tooltip class=\"capture-unknown\" dname=\"#var:am\">Unknown value: #var:am</simple-tooltip>% per 100 AP)</span> <span class=\"mana\"><span><b>bonus</b> mana</span></span>.",
+      "leveling": [],
       "targeting": "Passive",
+      "affects": "Self",
+      "damagetype": "None",
+      "spelleffects": "none",
+      "notes": "* ''The following information is outdated since [[V10.23]]:''\n* ''Arcane Mastery'' stacks [[Recursion|recursively]] with {{ii|Seraph's Embrace}} and multiplicatively with other sources of {{as|% ability power}}. Examples on how they calculate below:\n** Case 1: With {{ii|Rabadon's Deathcap}}, a total of ({{as|{{#var:rd}}% AP}}) {{as|'''bonus''' ability power}} and ({{as|({{#expr:{{#var:am}}*(1+{{#var:rd}}/100)}}% AP)}}{{as|% mana}}) {{as|'''bonus''' mana}} is gained.\n** Case 2: With {{ii|Seraph's Embrace}} a total of (({{#var:se}} + {{as|{{#expr:{{#var:se}}*{{#var:am}}/100}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000}}% mana}}) {{as|'''bonus''' ability power}} and (({{as|{{#expr:{{#var:se}}*{{#var:am}}/100}}% mana}} + {{as|{{#var:am}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000}}% mana}}) {{as|'''bonus''' mana}} is gained.\n** Case 3: With {{ii|Rabadon's Deathcap}} + {{ii|Seraph's Embrace}} a total of (({{#expr:{{#var:se}}*(1+{{#var:rd}}/100)}} + {{as|{{#expr:{{#var:se}}*{{#var:am}}/100*(1+{{#var:rd}}/100)}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000*(1+{{#var:rd}}/100)}}% mana}}) {{as|'''bonus''' ability power}} and (({{as|{{#expr:{{#var:se}}*{{#var:am}}/100*(1+{{#var:rd}}/100)}}% mana}} + {{as|{{#expr:{{#var:am}}*(1+{{#var:rd}}/100)}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000*(1+{{#var:rd}}/100)}}% mana}}) {{as|'''bonus''' mana}} is gained.",
+      "maxrank": 0,
       "image": {
         "full": "Ryze_P.png",
         "sprite": "passive3.png",
@@ -63,21 +111,17 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Innate:}} '''Ryze''' gains {{as|({{#var:am}}% per 100 AP)}} {{as|{{sti|mana|'''bonus''' mana}}}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Ryze</b> gains <span class=\"ap\">(<simple-tooltip class=\"capture-unknown\" dname=\"#var:am\">Unknown value: #var:am</simple-tooltip>% per 100 AP)</span> <span class=\"mana\"><span><b>bonus</b> mana</span></span>.",
-      "leveling": [],
-      "notes": "* ''The following information is outdated since [[V10.23]]:''\n* ''Arcane Mastery'' stacks [[Recursion|recursively]] with {{ii|Seraph's Embrace}} and multiplicatively with other sources of {{as|% ability power}}. Examples on how they calculate below:\n** Case 1: With {{ii|Rabadon's Deathcap}}, a total of ({{as|{{#var:rd}}% AP}}) {{as|'''bonus''' ability power}} and ({{as|({{#expr:{{#var:am}}*(1+{{#var:rd}}/100)}}% AP)}}{{as|% mana}}) {{as|'''bonus''' mana}} is gained.\n** Case 2: With {{ii|Seraph's Embrace}} a total of (({{#var:se}} + {{as|{{#expr:{{#var:se}}*{{#var:am}}/100}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000}}% mana}}) {{as|'''bonus''' ability power}} and (({{as|{{#expr:{{#var:se}}*{{#var:am}}/100}}% mana}} + {{as|{{#var:am}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000}}% mana}}) {{as|'''bonus''' mana}} is gained.\n** Case 3: With {{ii|Rabadon's Deathcap}} + {{ii|Seraph's Embrace}} a total of (({{#expr:{{#var:se}}*(1+{{#var:rd}}/100)}} + {{as|{{#expr:{{#var:se}}*{{#var:am}}/100*(1+{{#var:rd}}/100)}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000*(1+{{#var:rd}}/100)}}% mana}}) {{as|'''bonus''' ability power}} and (({{as|{{#expr:{{#var:se}}*{{#var:am}}/100*(1+{{#var:rd}}/100)}}% mana}} + {{as|{{#expr:{{#var:am}}*(1+{{#var:rd}}/100)}}% AP}}){{as|% mana}}){{divided by}}(1 - {{as|{{#expr:{{#var:se}}*{{#var:am}}/10000*(1+{{#var:rd}}/100)}}% mana}}) {{as|'''bonus''' mana}} is gained.",
-      "skillkey": "I",
-      "skillid": "i1",
+      "skillkey": "X",
+      "skillid": "X1",
       "effects": []
     },
-    "q1": {
-      "riotId": "RyzeQWrapper",
+    {
       "name": "Overload",
-      "maxrank": 5,
-      "cooldown": 6,
+      "skill": "Q",
+      "target_range": "{{tip|cr|icononly = true}} 1000",
+      "width": "{{tip|er|icononly = true}} 110",
+      "speed": 1700,
+      "cast_time": "{{fd|0.25}}",
       "cost": [
         40,
         38,
@@ -86,8 +130,32 @@
         32
       ],
       "costtype": "Mana",
+      "cooldown": 6,
+      "icon": [
+        "Overload 5.png",
+        "Overload.png",
+        "Overload 4.png"
+      ],
+      "blurb": "Passively, Ryze's other damaging spells reset Overload and begin to charge a Rune that can be used to empower Overload. On cast, Ryze throws a charge of pure energy in a line, dealing damage to the first enemy struck. If a Rune is fully charged, Ryze also gains Movement Speed.",
+      "description": [
+        "{{sbc|Passive:}} '''Ryze's''' other basic abilities reset {{sti|cdr|''Overload's'' cooldown}} and charge a {{ai|Overload 3||Rune}} for 4 seconds, up to 2.",
+        "{{sbc|Active:}} '''Ryze''' unleashes a runic blast in the target direction, dealing {{as|magic damage}} to the first enemy struck and consuming all of his {{ai|Overload 5||Runes}}.",
+        "If '''Ryze''' consumes 2 Runes, he gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 2 seconds.",
+        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Overload'' deals {{pp|type=[[File:Realm Warp.png|20px|border]] Realm Warp's rank|key=%|10 to 100 for 4|0 to 3}} {{ccs|increased damage|magic}}, and spreads to all nearby enemies marked with ''Flux''."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Ryze's</b> other basic abilities reset <span><i>Overload's</i> cooldown</span> and charge a <span class=\"ai\">'s Rune</span> for 4 seconds, up to 2.<br /><span class=\"sbc\">Active:</span> <b>Ryze</b> unleashes a runic blast in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy struck and consuming all of his <span class=\"ai\">'s Runes</span>.<br />If <b>Ryze</b> consumes 2 Runes, he gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for 2 seconds.<br /><span class=\"sbc\"><span class=\"ai\">Ryze's Flux:</span></span> <i>Overload</i> deals <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <simple-tooltip class=\"capture-unknown\" dname=\"ccs / increased damage / magic\">Unknown value: ccs / increased damage / magic</simple-tooltip>, and spreads to all nearby enemies marked with <i>Flux</i>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 45% AP)}} {{as|(+ 3% '''bonus''' mana)}}}}",
+        "{{st|Bonus Movement Speed|{{ap|28 to 44}}%}}"
+      ],
       "targeting": "Direction",
-      "target_range": "{{tip|cr|icononly = true}} 1000",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Special",
+      "spellshield": true,
+      "projectile": true,
+      "notes": "* Applies {{tip|spell damage}} to the primary target and {{tip|area damage}} to secondary targets affected by {{ai|Spell Flux|Ryze|Flux}}.\n* ''Overload'' will fire from wherever '''Ryze''' was at the start of the cast time.",
+      "maxrank": 5,
       "image": {
         "full": "RyzeQWrapper.png",
         "sprite": "spell10.png",
@@ -97,20 +165,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Passive:}} '''Ryze's''' other basic abilities reset {{sti|cdr|''Overload's'' cooldown}} and charge a {{ai|Overload 3||Rune}} for 4 seconds, up to 2.",
-        "{{sbc|Active:}} '''Ryze''' unleashes a runic blast in the target direction, dealing {{as|magic damage}} to the first enemy struck and consuming all of his {{ai|Overload 5||Runes}}.",
-        "If '''Ryze''' consumes 2 Runes, he gains {{sti|ms|{{as|'''bonus''' movement speed}}}} for 2 seconds.",
-        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Overload'' deals {{pp|type=[[File:Realm Warp.png|20px|border]] Realm Warp's rank|key=%|10 to 100 for 4|0 to 3}} {{ccs|increased damage|magic}}, and spreads to all nearby enemies marked with ''Flux''."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Ryze's</b> other basic abilities reset <span><i>Overload's</i> cooldown</span> and charge a <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Rune<template #content>Overload 3</template></HtmlTooltip> for 4 seconds, up to 2.<br /><span class=\"sbc\">Active:</span> <b>Ryze</b> unleashes a runic blast in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to the first enemy struck and consuming all of his <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"\">Runes<template #content>Overload 5</template></HtmlTooltip>.<br />If <b>Ryze</b> consumes 2 Runes, he gains <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> for 2 seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Overload</i> deals <span class=\"title-tooltip\" title=\"\">0 to 3 ‒ undefined</span> <simple-tooltip class=\"capture-unknown\" dname=\"ccs increased damage magic\">Unknown value: ccs increased damage magic</simple-tooltip>, and spreads to all nearby enemies marked with <i>Flux</i>.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|75 to 175}} {{as|(+ 45% AP)}} {{as|(+ 3% '''bonus''' mana)}}}}",
-        "{{st|Bonus Movement Speed|{{ap|28 to 44}}%}}"
-      ],
-      "notes": "* Applies {{tip|spell damage}} to the primary target and {{tip|area damage}} to secondary targets affected by {{ai|Spell Flux|Ryze|Flux}}.\n* ''Overload'' will fire from wherever '''Ryze''' was at the start of the cast time.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "skillkey": "X",
+      "skillid": "X2",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span> <span class=\"mana\">(+ 3% <b>bonus</b> mana)</span></span></li></ul>",
@@ -126,7 +182,7 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span> <span class=\"mana\">(+ 3% '''bonus''' mana)</span>"
+                "<SpellSpan :list=\"[75,100,125,150,175]\"></SpellSpan> <span class=\"ap\">(+ 45% AP)</span> <span class=\"mana\">(+ 3% <b>bonus</b> mana)</span>"
               ]
             ],
             "ap_progressions": [
@@ -197,17 +253,11 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "RyzeW",
+    {
       "name": "Rune Prison",
-      "maxrank": 5,
-      "cooldown": [
-        13,
-        12,
-        11,
-        10,
-        9
-      ],
+      "skill": "W",
+      "target_range": "{{tip|er|icononly = true}} 550",
+      "cast_time": "{{fd|0.25}}",
       "cost": [
         40,
         55,
@@ -216,8 +266,34 @@
         100
       ],
       "costtype": "Mana",
+      "cooldown": [
+        13,
+        12,
+        11,
+        10,
+        9
+      ],
+      "icon": [
+        "Rune Prison.png"
+      ],
+      "blurb": "Ryze traps a target enemy unit in a cage of runes, damaging them and preventing them from moving.",
+      "description": [
+        "{{sbc|Active:}} '''Ryze''' imprisons the target enemy, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them by 35% for {{fd|1.5}} seconds.",
+        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Rune Prison's'' {{tip|slow}} is converted to a {{tip|root}} for the same duration."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> imprisons the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 35% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><span class=\"sbc\"><span class=\"ai\">Ryze's Flux:</span></span> <i>Rune Prison's</i> <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> is converted to a <HtmlTooltip class=\"blue link\">root<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> for the same duration.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 60% AP)}} {{as|(+ 4% '''bonus''' mana)}}}}"
+      ],
       "targeting": "Unit",
-      "target_range": "{{tip|er|icononly = true}} 550",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Single target",
+      "spellshield": true,
+      "projectile": "",
+      "callforhelp": true,
+      "notes": "* No additional details.",
+      "maxrank": 5,
       "image": {
         "full": "RyzeW.png",
         "sprite": "spell10.png",
@@ -227,17 +303,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Ryze''' imprisons the target enemy, dealing them {{as|magic damage}} and {{tip|slow|slowing}} them by 35% for {{fd|1.5}} seconds.",
-        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Rune Prison's'' {{tip|slow}} is converted to a {{tip|root}} for the same duration."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> imprisons the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them by 35% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Rune Prison's</i> <HtmlTooltip class=\"blue link\">slow<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> is converted to a <HtmlTooltip class=\"blue link\">root<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip> for the same duration.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 200}} {{as|(+ 60% AP)}} {{as|(+ 4% '''bonus''' mana)}}}}"
-      ],
-      "notes": "* No additional details.",
-      "skillkey": "W",
-      "skillid": "w1",
+      "skillkey": "X",
+      "skillid": "X3",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"mana\">(+ 4% <b>bonus</b> mana)</span></span></li></ul>",
@@ -253,7 +320,7 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"mana\">(+ 4% '''bonus''' mana)</span>"
+                "<SpellSpan :list=\"[80,110,140,170,200]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span> <span class=\"mana\">(+ 4% <b>bonus</b> mana)</span>"
               ]
             ],
             "ap_progressions": [
@@ -287,17 +354,12 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "RyzeE",
+    {
       "name": "Spell Flux",
-      "maxrank": 5,
-      "cooldown": [
-        3.25,
-        3,
-        2.75,
-        2.5,
-        2.25
-      ],
+      "skill": "E",
+      "target_range": "{{tip|er|icononly = true}} 550",
+      "effect_radius": "{{tt|350|Bounce range}}",
+      "cast_time": "{{fd|0.25}}",
       "cost": [
         40,
         55,
@@ -306,8 +368,35 @@
         100
       ],
       "costtype": "Mana",
+      "cooldown": [
+        3.25,
+        3,
+        2.75,
+        2.5,
+        2.25
+      ],
+      "icon": [
+        "Spell Flux.png"
+      ],
+      "blurb": "Ryze releases an orb of pure magical power that damages an enemy and debuffs them. Ryze's spells have additional effects against the debuffed enemy.",
+      "description": [
+        "{{sbc|Active:}} '''Ryze''' hurls an orb of runic energy at the target enemy, dealing them {{as|magic damage}}.",
+        "''Spell Flux'' marks the primary target and all enemies near them with ''Flux'' for 3 seconds. '''Ryze's''' basic abilities against enemies with ''Flux'' consume the mark to become empowered.",
+        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Spell Flux'' spreads further."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> hurls an orb of runic energy at the target enemy, dealing them <span class=\"magic-damage\">magic damage</span>.<br /><i>Spell Flux</i> marks the primary target and all enemies near them with <i>Flux</i> for 3 seconds. <b>Ryze's</b> basic abilities against enemies with <i>Flux</i> consume the mark to become empowered.<br /><span class=\"sbc\"><span class=\"ai\">Ryze's Flux:</span></span> <i>Spell Flux</i> spreads further.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 140}} {{as|(+ 30% AP)}} {{as|(+ 2% '''bonus''' mana)}}}}"
+      ],
       "targeting": "Unit",
-      "target_range": "{{tip|er|icononly = true}} 550",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "spell",
+      "spellshield": true,
+      "projectile": true,
+      "callforhelp": true,
+      "notes": "* ''Spell Flux's'' second cast on a target will apply a new ''Flux'' debuff as well as triggering the previous one (effectively refreshing the duration).\n* {{pending for test}} bounce range {{tip|er|icononly = true}} to-edge or {{tip|cr|icononly = true}} to-center?\n** Game data notes additional range checks of 400 (bounce range) and 500 (Q damage bounce range) against 'large' enemies.\n* ''Spell Flux'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.",
+      "maxrank": 5,
       "image": {
         "full": "RyzeE.png",
         "sprite": "spell10.png",
@@ -317,18 +406,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Ryze''' hurls an orb of runic energy at the target enemy, dealing them {{as|magic damage}}.",
-        "''Spell Flux'' marks the primary target and all enemies near them with ''Flux'' for 3 seconds. '''Ryze's''' basic abilities against enemies with ''Flux'' consume the mark to become empowered.",
-        "{{sbc|{{ai|Spell Flux|Ryze|Flux:}}}} ''Spell Flux'' spreads further."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Ryze</b> hurls an orb of runic energy at the target enemy, dealing them <span class=\"magic-damage\">magic damage</span>.<br /><i>Spell Flux</i> marks the primary target and all enemies near them with <i>Flux</i> for 3 seconds. <b>Ryze's</b> basic abilities against enemies with <i>Flux</i> consume the mark to become empowered.<br /><span class=\"sbc\"><HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Flux:<template #content>Spell Flux</template></HtmlTooltip></span> <i>Spell Flux</i> spreads further.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|60 to 140}} {{as|(+ 30% AP)}} {{as|(+ 2% '''bonus''' mana)}}}}"
-      ],
-      "notes": "* ''Spell Flux's'' second cast on a target will apply a new ''Flux'' debuff as well as triggering the previous one (effectively refreshing the duration).\n* {{pending for test}} bounce range {{tip|er|icononly = true}} to-edge or {{tip|cr|icononly = true}} to-center?\n** Game data notes additional range checks of 400 (bounce range) and 500 (Q damage bounce range) against 'large' enemies.\n* ''Spell Flux'' can be buffered {{fd|0.5}} seconds before it comes off cooldown.",
-      "skillkey": "E",
-      "skillid": "e1",
+      "skillkey": "X",
+      "skillid": "X4",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% <b>bonus</b> mana)</span></span></li></ul>",
@@ -344,7 +423,7 @@
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% '''bonus''' mana)</span>"
+                "<SpellSpan :list=\"[60,80,100,120,140]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span> <span class=\"mana\">(+ 2% <b>bonus</b> mana)</span>"
               ]
             ],
             "ap_progressions": [
@@ -378,19 +457,40 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "RyzeR",
+    {
       "name": "Realm Warp",
-      "maxrank": 3,
+      "skill": "R",
+      "target_range": "{{tt|1000|Minimum range}} / {{tt|3000|Maximum range}}",
+      "effect_radius": 475,
+      "cast_time": "none",
+      "cost": 100,
+      "costtype": "Mana",
       "cooldown": [
         210,
         180,
         150
       ],
-      "cost": 100,
-      "costtype": "Mana",
+      "icon": [
+        "Realm Warp.png"
+      ],
+      "blurb": "Ryze creates a portal to a nearby location. After a few seconds, allies standing near the portal are teleported to the target location.",
+      "description": [
+        "{{sbc|Passive:}} Increases {{ais|Overload|Ryze}} damage against targets marked with {{ai|Spell Flux|Ryze}}.",
+        "{{sbc|Active:}} '''Ryze''' opens a portal on the ground at his current location and {{tip|channel|channels}} for 2 seconds, then all allied units within the portal {{tip|blink}} to the target location upon completion and become {{tip|root|rooted}}, {{tip|disarm|disarmed}}, {{tip|silence|silenced}} and {{tip|untargetable}} for {{tt|{{fd|0.75}}|Approximated}} seconds.",
+        "''Realm Warp'' casts at maximum range if cast beyond that."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Increases <span class=\"ais\">Ryze's Overload</span> damage against targets marked with <span class=\"ai\">Ryze's Spell Flux</span>.<br /><span class=\"sbc\">Active:</span> <b>Ryze</b> opens a portal on the ground at his current location and <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for 2 seconds, then all allied units within the portal <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to the target location upon completion and become <HtmlTooltip class=\"blue link\">rooted<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">disarmed<template #content><div><h4>Disarm<hr></h4><p>A unit that is disarmed is unable to declare basic attacks.</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">silenced<template #content><div><h4>Slence<hr></h4><p>Cannot cast abilities, activate items, or use summoner <b>Flash</b> and <b>Teleport</b>.<br><br>Interrupts channeled and charged abilities. (Except: Lucian's The Culling)<br>Duration reduced by <b>Tenacity</b></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> for <span class=\"title-tooltip\" title=\"Approximated\"><span style=\"font-variant-numeric: tabular-nums;\">0.75</span></span> seconds.<br /><i>Realm Warp</i> casts at maximum range if cast beyond that.",
+      "leveling": [
+        "{{st|Bonus Overload Damage|{{ap|40 to 100}}%}}"
+      ],
       "targeting": "Location",
-      "target_range": "{{tt|1000|Minimum range}} / {{tt|3000|Maximum range}}",
+      "affects": "Allies",
+      "damagetype": "None",
+      "spelleffects": "none",
+      "spellshield": "",
+      "notes": "* ''Realm Warp'' will try to predict whether an ally is trying to run out of it or not and will not teleport allies that are very near the edge and move click outside of it.\n* Blinked units retain the same relative positions to one another upon arrival.\n* ''Realm Warp'' will affect {{tip|untargetable}} units.\n* '''Ryze''' will not teleport if he exits the area, but the teleport will still occur for other allies so long as he isn't {{tip|interrupt|interrupted}}.\n* Allies will teleport regardless of being affected by {{tip|crowd control}} or not.\n* Allied {{tip|stasis (buff)|stasis}} effects will '''not''' interrupt ''Realm Warp's'' channel - excluding {{ii|Zhonya's Hourglass}} and {{ii|Stopwatch}} - like the passive of {{ii|Guardian Angel}} or an allied {{cai|Tempered Fate|Bard}}.\n** A hostile {{cai|Tempered Fate|Bard}} will interrupt the channel.\n** ''Realm Warp'' will not cancel if '''Ryze''' enters {{tip|resurrection}}.\n* ''Realm Warp'' will not silence allies ''while'' they are {{tip|channel|channeling}}, in order to not interrupt them.\n** Allies whose channel is interruptable can thus cast other spells during the period, provided they are not movement spells (since they remain rooted).\n* Whether ''Realm Warp's'' teleports champions {{tip|channel|channeling}} certain abilities is handled mostly case-by-case:\n** The following will prevent the caster from being teleported: {{si|Teleport}}, {{si|Recall}}, {{ai|Ace in the Hole|Caitlyn}}, {{ai|Curtain Call|Jhin}}, {{ai|Umbral Trespass|Kayn}}{{tt|*|Kayn is prevented from being teleported during the dash into and attached sections}},  and {{ai|Rite of the Arcane|Xerath}}.\n** The following do not prevent the caster from being teleported and are '''not''' interrupted: {{ai|Absolute Zero|Nunu}}, {{ai|Aegis Assault|Pantheon}}, {{ai|Bullet Time|Miss Fortune}}{{tt|*|The cast pivots of the separate lines remain the same, thus thinning or spreading the area after the teleport.}}, {{ai|Comet Spear|Pantheon}}, {{ai|Crowstorm|Fiddlesticks}}{{tt|*|When Fiddlesticks' channel resolves, he will blink the full distance to his own target location regardless of how far away Ryze has taken him.}}, {{ai|Decimating Smash|Sion}}, {{ai|Grand Starfall|Pantheon}}, {{ai|Requiem|Karthus}}, {{ai|Stormbringer|Volibear}}, {{ai|Unstoppable Onslaught|Sion}}, {{ai|Vault Breaker|Vi}}, {{si|Hexflash}}, and {{uis|Rift Herald}} windup/leap.\n** The following do not prevent the caster from being teleported but '''are''' interrupted: {{ai|Biggest Snowball Ever!|Nunu}}\n** ''These lists are not complete.''\n* ''Realm Warp'' will also not teleport {{tip|displacement immune}} allies.\n* ''Realm Warp'' will still teleport allies in a {{tip|zombie state}}.\n* ''Realm Warp'' will not teleport allies affected by another ally's ''Realm Warp'' first.\n* If no {{tip|champion|champions}} but one or more {{tip|minion|minions}} are teleported, ''Realm Warp'' will not teleport the minion closest to its center, and furthermore {{tt|shuffles the positions of the other teleported minions|Minions are teleported to the position the next-inner minion was intended to go to, and the intended position of the last minion is never being teleported to}}.{{bug}}\n** If a champion is present, the innermost minion is teleported on top the outermost champion's new position, and the remaining minions are teleported to their proper intended positions.{{bug}}\n{{ct|channel|attack=true|move=true|cast=true|items=true,,interrupts|spells=true|interrupts=silence,root,revival-false, ground}}",
+      "flavorsound": "{{sm2|Ryze.spellR3.ogg|''\"Come. The runes beckon.\"''}}",
+      "maxrank": 3,
       "image": {
         "full": "RyzeR.png",
         "sprite": "spell10.png",
@@ -400,18 +500,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Passive:}} Increases {{ais|Overload|Ryze}} damage against targets marked with {{ai|Spell Flux|Ryze}}.",
-        "{{sbc|Active:}} '''Ryze''' opens a portal on the ground at his current location and {{tip|channel|channels}} for 2 seconds, then all allied units within the portal {{tip|blink}} to the target location upon completion and become {{tip|root|rooted}}, {{tip|disarm|disarmed}}, {{tip|silence|silenced}} and {{tip|untargetable}} for {{tt|{{fd|0.75}}|Approximated}} seconds.",
-        "''Realm Warp'' casts at maximum range if cast beyond that."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Increases <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Overload's<template #content>Overload</template></HtmlTooltip> damage against targets marked with <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Ryze\">Spell Flux<template #content>Spell Flux</template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Ryze</b> opens a portal on the ground at his current location and <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for 2 seconds, then all allied units within the portal <HtmlTooltip class=\"blue link\">blink<template #content><div><h4>blink<hr></h4><p>Description for keyword blink</p></div></template></HtmlTooltip> to the target location upon completion and become <HtmlTooltip class=\"blue link\">rooted<template #content><div><h4>Root / Snare / Binding<hr></h4><p>Unit is unable to control movement, use a mobility spells (dash and blink) or use summoner <b>Flash</b> and <b>Teleport</b> for the duration.</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">disarmed<template #content><div><h4>Disarm<hr></h4><p>A unit that is disarmed is unable to declare basic attacks.</p></div></template></HtmlTooltip>, <HtmlTooltip class=\"blue link\">silenced<template #content><div><h4>Slence<hr></h4><p>Cannot cast abilities, activate items, or use summoner <b>Flash</b> and <b>Teleport</b>.<br><br>Interrupts channeled and charged abilities. (Except: Lucian's The Culling)<br>Duration reduced by <b>Tenacity</b></p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> for <span class=\"title-tooltip\" title=\"Approximated\"><span style=\"font-variant-numeric: tabular-nums;\">0.75</span></span> seconds.<br /><i>Realm Warp</i> casts at maximum range if cast beyond that.",
-      "leveling": [
-        "{{st|Bonus Overload Damage|{{ap|40 to 100}}%}}"
-      ],
-      "notes": "* ''Realm Warp'' will try to predict whether an ally is trying to run out of it or not and will not teleport allies that are very near the edge and move click outside of it.\n* Blinked units retain the same relative positions to one another upon arrival.\n* ''Realm Warp'' will affect {{tip|untargetable}} units.\n* '''Ryze''' will not teleport if he exits the area, but the teleport will still occur for other allies so long as he isn't {{tip|interrupt|interrupted}}.\n* Allies will teleport regardless of being affected by {{tip|crowd control}} or not.\n* Allied {{tip|stasis (buff)|stasis}} effects will '''not''' interrupt ''Realm Warp's'' channel - excluding {{ii|Zhonya's Hourglass}} and {{ii|Stopwatch}} - like the passive of {{ii|Guardian Angel}} or an allied {{cai|Tempered Fate|Bard}}.\n** A hostile {{cai|Tempered Fate|Bard}} will interrupt the channel.\n** ''Realm Warp'' will not cancel if '''Ryze''' enters {{tip|resurrection}}.\n* ''Realm Warp'' will not silence allies ''while'' they are {{tip|channel|channeling}}, in order to not interrupt them.\n** Allies whose channel is interruptable can thus cast other spells during the period, provided they are not movement spells (since they remain rooted).\n* Whether ''Realm Warp's'' teleports champions {{tip|channel|channeling}} certain abilities is handled mostly case-by-case:\n** The following will prevent the caster from being teleported: {{si|Teleport}}, {{si|Recall}}, {{ai|Ace in the Hole|Caitlyn}}, {{ai|Curtain Call|Jhin}}, {{ai|Umbral Trespass|Kayn}}{{tt|*|Kayn is prevented from being teleported during the dash into and attached sections}},  and {{ai|Rite of the Arcane|Xerath}}.\n** The following do not prevent the caster from being teleported and are '''not''' interrupted: {{ai|Absolute Zero|Nunu}}, {{ai|Aegis Assault|Pantheon}}, {{ai|Bullet Time|Miss Fortune}}{{tt|*|The cast pivots of the separate lines remain the same, thus thinning or spreading the area after the teleport.}}, {{ai|Comet Spear|Pantheon}}, {{ai|Crowstorm|Fiddlesticks}}{{tt|*|When Fiddlesticks' channel resolves, he will blink the full distance to his own target location regardless of how far away Ryze has taken him.}}, {{ai|Decimating Smash|Sion}}, {{ai|Grand Starfall|Pantheon}}, {{ai|Requiem|Karthus}}, {{ai|Stormbringer|Volibear}}, {{ai|Unstoppable Onslaught|Sion}}, {{ai|Vault Breaker|Vi}}, {{si|Hexflash}}, and {{uis|Rift Herald}} windup/leap.\n** The following do not prevent the caster from being teleported but '''are''' interrupted: {{ai|Biggest Snowball Ever!|Nunu}}\n** ''These lists are not complete.''\n* ''Realm Warp'' will also not teleport {{tip|displacement immune}} allies.\n* ''Realm Warp'' will still teleport allies in a {{tip|zombie state}}.\n* ''Realm Warp'' will not teleport allies affected by another ally's ''Realm Warp'' first.\n* If no {{tip|champion|champions}} but one or more {{tip|minion|minions}} are teleported, ''Realm Warp'' will not teleport the minion closest to its center, and furthermore {{tt|shuffles the positions of the other teleported minions|Minions are teleported to the position the next-inner minion was intended to go to, and the intended position of the last minion is never being teleported to}}.{{bug}}\n** If a champion is present, the innermost minion is teleported on top the outermost champion's new position, and the remaining minions are teleported to their proper intended positions.{{bug}}\n{{ct|channel|attack=true|move=true|cast=true|items=true,,interrupts|spells=true|interrupts=silence,root,revival-false, ground}}",
-      "skillkey": "R",
-      "skillid": "r1",
+      "skillkey": "X",
+      "skillid": "X5",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Overload Damage</span>: <span><SpellSpan :list=\"[40,70,100]\"></SpellSpan>%</span></li></ul>",
@@ -448,5 +538,6 @@
         }
       ]
     }
-  }
+  ],
+  "skillsMismatch": true
 }

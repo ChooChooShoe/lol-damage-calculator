@@ -1,9 +1,46 @@
 {
-  "patch": "V1.0.0.97",
-  "changes": "11.10.1",
   "id": "Vladimir",
+  "key": 8,
   "name": "Vladimir",
   "title": "the Crimson Reaper",
+  "resource": "Bloodthirst",
+  "stats": {
+    "hp_base": 537,
+    "hp_lvl": 96,
+    "mp_base": 2,
+    "mp_lvl": 0,
+    "arm_base": 23,
+    "arm_lvl": 3.3,
+    "mr_base": 30,
+    "mr_lvl": 0.5,
+    "hp5_base": 7,
+    "hp5_lvl": 0.6,
+    "mp5_base": 0,
+    "mp5_lvl": 0,
+    "dam_base": 55,
+    "dam_lvl": 3,
+    "as_base": 0.658,
+    "as_lvl": 2,
+    "range": 450,
+    "ms": 330,
+    "acquisition_radius": 600,
+    "selection_radius": 120,
+    "pathing_radius": 35,
+    "as_ratio": 0.657999992370605,
+    "attack_cast_time": 0.300000011920928,
+    "attack_total_time": 1.51999998092651,
+    "attack_delay_offset": -0.0721089988946914,
+    "missile_speed": 1600,
+    "urf_dmg_dealt": 0.95,
+    "urf_dmg_taken": 1.05,
+    "urf_healing": 0.95
+  },
+  "rangetype": "Ranged",
+  "positions": [
+    "Top",
+    "Middle"
+  ],
+  "adaptivetype": "Magic",
   "image": {
     "full": "Vladimir.png",
     "sprite": "champion4.png",
@@ -13,47 +50,58 @@
     "w": 48,
     "h": 48
   },
-  "resource": "Crimson Rush",
   "herotype": "Mage",
   "alttype": "",
-  "rangetype": "Ranged",
-  "be_cost": 3150,
-  "rp_cost": 790,
-  "adaptivetype": "magic",
-  "info": {
-    "attack": 2,
-    "defense": 6,
-    "magic": 8,
-    "difficulty": 7
-  },
-  "stats": {
-    "hp": 537,
-    "hpperlevel": 96,
-    "mp": 2,
-    "mpperlevel": 0,
-    "movespeed": 330,
-    "armor": 23,
-    "armorperlevel": 3.3,
-    "spellblock": 30,
-    "spellblockperlevel": 0.5,
-    "attackrange": 450,
-    "hpregen": 7,
-    "hpregenperlevel": 0.6,
-    "mpregen": 0,
-    "mpregenperlevel": 0,
-    "crit": 0,
-    "critperlevel": 0,
-    "attackdamage": 55,
-    "attackdamageperlevel": 3,
-    "attackspeedperlevel": 2,
-    "attackspeed": 0.658
-  },
-  "skills": {
-    "i1": {
-      "riotId": "",
+  "date": "2010-07-27",
+  "patch": "V1.0.0.97",
+  "changes": "11.10.1",
+  "be": 3150,
+  "rp": 790,
+  "skill_i": [
+    "Crimson Pact"
+  ],
+  "skill_q": [
+    "Transfusion",
+    "Crimson Rush"
+  ],
+  "skill_w": [
+    "Sanguine Pool"
+  ],
+  "skill_e": [
+    "Tides of Blood"
+  ],
+  "skill_r": [
+    "Hemoplague"
+  ],
+  "skill_names": [
+    "Crimson Pact",
+    "Transfusion",
+    "Sanguine Pool",
+    "Tides of Blood",
+    "Hemoplague"
+  ],
+  "skills": [
+    {
       "name": "Crimson Pact",
-      "maxrank": 0,
+      "skill": "P",
+      "cost": 0,
+      "icon": [
+        "Crimson Pact.png"
+      ],
+      "blurb": "Every 40 points of bonus Health gives Vladimir 1 Ability Power and every 1 point of Ability Power gives Vladimir 1.4 bonus Health (does not stack with itself).",
+      "description": [
+        "{{sbc|Innate:}} '''Vladimir''' gains {{as|({{fd|{{#var:cp1}}}}% '''bonus''' health)}} as {{sti|ap|{{as|ability power}}}} and {{as|({{#var:cp2}}% AP)}} as {{sti|health|{{as|'''bonus''' health}}}}. These two bonuses do not stack with each other."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Vladimir</b> gains <span class=\"health\">(<span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:cp1\">Unknown value: #var:cp1</simple-tooltip></span>% <b>bonus</b> health)</span> as <span><span class=\"ability-power\">ability power</span></span> and <span class=\"ap\">(<simple-tooltip class=\"capture-unknown\" dname=\"#var:cp2\">Unknown value: #var:cp2</simple-tooltip>% AP)</span> as <span><span class=\"health\"><b>bonus</b> health</span></span>. These two bonuses do not stack with each other.",
+      "leveling": [],
       "targeting": "Passive",
+      "affects": "Self",
+      "damagetype": "None",
+      "spelleffects": "none",
+      "spellshield": "",
+      "projectile": "",
+      "notes": "* ''Crimson Pact'' only affects '''Vladimir's''' {{as|'''maximum''' health}} and will not increase '''Vladimir's''' {{as|'''current''' health}} to prevent '''Vladimir''' from restoring health whenever his {{as|AP}} fluctuates.\n** '''Vladimir's''' {{as|'''current''' health}} can decrease to match his {{as|'''maximum''' health}} if ''Crimson Pact's'' {{as|'''bonus''' health}} is lost.\n* ''Crimson Pact's'' '''bonus''' ability power {{tip|stacks multiplicatively}} with other sources of {{as|% ability power}} but its '''bonus''' health {{tip|stacks additively}} with other sources of {{as|'''bonus''' health}}. Examples on how they calculate below:\n** Case 1: With {{ii|Rabadon's Deathcap}} you get a total of ({{tt|{{as|{{fd|{{#var:rd}}}}% AP}}|From Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP enhanced by Rabadon's Deathcap.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}/10000}}}}% '''bonus''' health}}|Though these 2 bonuses do not stack with each other and it's Crimson Pact's bonus AP that enhanced by Rabadon's Deathcap, the enhanced part of AP is credited to Rabadon's Deathcap, not Crimson Pact, thus still counted as resource for Crimson Pact's bonus health.}}) {{as|'''bonus''' health}}.\n** Case 2: With {{ii|Vigilant Wardstone}} you get a total of ({{tt|{{as|{{fd|{{#var:vw1}}}}% AP}}|From Vigilant Wardstone.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:vw1}}/100)*(1+{{#var:vw2}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Vigilant Wardstone's effects, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+{{#var:vw1}}/100)}}}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Vigilant Wardstone's AP multiplier, but not bonus HP multiplier (HP stacking is additive).}} + {{tt|{{as|{{fd|{{#expr:{{#var:vw2}}+{{#var:cp1}}*{{#var:vw1}}*{{#var:cp2}}*(1+{{#var:vw2}}/100)/10000}}}}% '''bonus''' health}}|Wardstone's AP multiplier affects Crimsom Pact's AP from bonus HP, previously enhanced by Wardstone's HP multiplier. Resulting additional AP is then converted to HP by Crimson Pact, and added to Wardstone's HP multiplier.}}) {{as|'''bonus''' health}}.\n** Case 3: With both {{ii|Rabadon's Deathcap}} and {{ii|Vigilant Wardstone}} you get a total of ({{tt|{{as|{{fd|{{#expr:{{#var:vw1}}+{{#var:rd}}}}}}% AP}}|From Rabadon's Deathcap and Vigilant Wardstone, stacked additively.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+({{#var:vw1}}+{{#var:rd}})/100)*(1+{{#var:vw2}}/100)}}}}% '''bonus''' health}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+({{#var:vw1}}+{{#var:rd}})/100)}}}}% AP}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}} + {{tt|{{as|{{fd|{{#expr:{{#var:vw2}}+{{#var:cp1}}*({{#var:vw1}}+{{#var:rd}})*{{#var:cp2}}*(1+{{#var:vw2}}/100)/10000}}}}% '''bonus''' health}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}}) {{as|'''bonus''' health}}.\n<!--** With {{ii|Cinderhulk}} you get a total of {{tt|{{as|({{fd|{{#expr:{{#var:cp1}}*(1+{{#var:ch}}/100)}}}}% '''bonus''' health)}}|Crimson Pact's bonus AP comes from bonus health, thus indirectly enhanced by Cinderhulk.}} {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#var:cp2}}% AP}}|From Crimson Pact}} + {{tt|{{as|{{#var:ch}}% '''bonus''' health}}|From Cinderhulk.}}) {{as|'''bonus''' health}}.\n<!--** With {{ii|Rabadon's Deathcap}} + {{ii|Cinderhulk}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|Same with case 1, from Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)*(1+{{#var:ch}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Rabadon's Deathcap and Cinderhulk, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Same with case 1, won't stack with other sources of bonus health (Cinderhulk).}} + {{tt|{{as|{{fd|{{#expr:{{#var:ch}}+{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}*(1+{{#var:ch}}/100)/10000}}}}% '''bonus''' health}}|Crimson Pact's bonus AP indirectly enhanced by Cinderhulk (refer case 2), then multiplicatively enhanced again by Rabadon's Deathcap. The enhanced part that's credited to Rabadon's Deathcap then enhances Crimson Pact's bonus health (refer case 1). Finally, add the simple bonus health from Cinderhulk.}}) {{as|'''bonus''' health}}.\n-->",
+      "maxrank": 0,
       "image": {
         "full": "VladimirP.png",
         "sprite": "passive4.png",
@@ -63,20 +111,16 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Innate:}} '''Vladimir''' gains {{as|({{fd|{{#var:cp1}}}}% '''bonus''' health)}} as {{sti|ap|{{as|ability power}}}} and {{as|({{#var:cp2}}% AP)}} as {{sti|health|{{as|'''bonus''' health}}}}. These two bonuses do not stack with each other."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Vladimir</b> gains <span class=\"health\">(<span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:cp1\">Unknown value: #var:cp1</simple-tooltip></span>% <b>bonus</b> health)</span> as <span><span class=\"ability-power\">ability power</span></span> and <span class=\"ap\">(<simple-tooltip class=\"capture-unknown\" dname=\"#var:cp2\">Unknown value: #var:cp2</simple-tooltip>% AP)</span> as <span><span class=\"health\"><b>bonus</b> health</span></span>. These two bonuses do not stack with each other.",
-      "leveling": [],
-      "notes": "* ''Crimson Pact'' only affects '''Vladimir's''' {{as|'''maximum''' health}} and will not increase '''Vladimir's''' {{as|'''current''' health}} to prevent '''Vladimir''' from restoring health whenever his {{as|AP}} fluctuates.\n** '''Vladimir's''' {{as|'''current''' health}} can decrease to match his {{as|'''maximum''' health}} if ''Crimson Pact's'' {{as|'''bonus''' health}} is lost.\n* ''Crimson Pact's'' '''bonus''' ability power {{tip|stacks multiplicatively}} with other sources of {{as|% ability power}} but its '''bonus''' health {{tip|stacks additively}} with other sources of {{as|'''bonus''' health}}. Examples on how they calculate below:\n** Case 1: With {{ii|Rabadon's Deathcap}} you get a total of ({{tt|{{as|{{fd|{{#var:rd}}}}% AP}}|From Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP enhanced by Rabadon's Deathcap.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}/10000}}}}% '''bonus''' health}}|Though these 2 bonuses do not stack with each other and it's Crimson Pact's bonus AP that enhanced by Rabadon's Deathcap, the enhanced part of AP is credited to Rabadon's Deathcap, not Crimson Pact, thus still counted as resource for Crimson Pact's bonus health.}}) {{as|'''bonus''' health}}.\n** Case 2: With {{ii|Vigilant Wardstone}} you get a total of ({{tt|{{as|{{fd|{{#var:vw1}}}}% AP}}|From Vigilant Wardstone.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:vw1}}/100)*(1+{{#var:vw2}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Vigilant Wardstone's effects, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+{{#var:vw1}}/100)}}}}% AP}}|Crimson Pact's bonus health comes from AP, thus indirectly enhanced by Vigilant Wardstone's AP multiplier, but not bonus HP multiplier (HP stacking is additive).}} + {{tt|{{as|{{fd|{{#expr:{{#var:vw2}}+{{#var:cp1}}*{{#var:vw1}}*{{#var:cp2}}*(1+{{#var:vw2}}/100)/10000}}}}% '''bonus''' health}}|Wardstone's AP multiplier affects Crimsom Pact's AP from bonus HP, previously enhanced by Wardstone's HP multiplier. Resulting additional AP is then converted to HP by Crimson Pact, and added to Wardstone's HP multiplier.}}) {{as|'''bonus''' health}}.\n** Case 3: With both {{ii|Rabadon's Deathcap}} and {{ii|Vigilant Wardstone}} you get a total of ({{tt|{{as|{{fd|{{#expr:{{#var:vw1}}+{{#var:rd}}}}}}% AP}}|From Rabadon's Deathcap and Vigilant Wardstone, stacked additively.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+({{#var:vw1}}+{{#var:rd}})/100)*(1+{{#var:vw2}}/100)}}}}% '''bonus''' health}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{fd|{{#expr:{{#var:cp2}}*(1+({{#var:vw1}}+{{#var:rd}})/100)}}}}% AP}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}} + {{tt|{{as|{{fd|{{#expr:{{#var:vw2}}+{{#var:cp1}}*({{#var:vw1}}+{{#var:rd}})*{{#var:cp2}}*(1+{{#var:vw2}}/100)/10000}}}}% '''bonus''' health}}|Same sequence as Case 2, but with Rabadon's and Wardstone's AP multipliers stacked additively.}}) {{as|'''bonus''' health}}.\n<!--** With {{ii|Cinderhulk}} you get a total of {{tt|{{as|({{fd|{{#expr:{{#var:cp1}}*(1+{{#var:ch}}/100)}}}}% '''bonus''' health)}}|Crimson Pact's bonus AP comes from bonus health, thus indirectly enhanced by Cinderhulk.}} {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#var:cp2}}% AP}}|From Crimson Pact}} + {{tt|{{as|{{#var:ch}}% '''bonus''' health}}|From Cinderhulk.}}) {{as|'''bonus''' health}}.\n<!--** With {{ii|Rabadon's Deathcap}} + {{ii|Cinderhulk}} you get a total of ({{tt|{{as|{{#var:rd}}% AP}}|Same with case 1, from Rabadon's Deathcap.}} + {{tt|{{as|{{fd|{{#expr:{{#var:cp1}}*(1+{{#var:rd}}/100)*(1+{{#var:ch}}/100)}}}}% '''bonus''' health}}|Crimson Pact's bonus AP comes from bonus health, thus enhanced by both Rabadon's Deathcap and Cinderhulk, multiplicatively.}}) {{as|'''bonus''' ability power}} and ({{tt|{{as|{{#expr:{{#var:cp2}}*(1+{{#var:rd}}/100)}}% AP}}|Same with case 1, won't stack with other sources of bonus health (Cinderhulk).}} + {{tt|{{as|{{fd|{{#expr:{{#var:ch}}+{{#var:cp1}}*{{#var:rd}}*{{#var:cp2}}*(1+{{#var:ch}}/100)/10000}}}}% '''bonus''' health}}|Crimson Pact's bonus AP indirectly enhanced by Cinderhulk (refer case 2), then multiplicatively enhanced again by Rabadon's Deathcap. The enhanced part that's credited to Rabadon's Deathcap then enhances Crimson Pact's bonus health (refer case 1). Finally, add the simple bonus health from Cinderhulk.}}) {{as|'''bonus''' health}}.\n-->",
-      "skillkey": "I",
-      "skillid": "i1",
+      "skillkey": "X",
+      "skillid": "X1",
       "effects": []
     },
-    "q1": {
-      "riotId": "VladimirQ",
+    {
       "name": "Transfusion",
-      "maxrank": 5,
+      "skill": "Q",
+      "target_range": "{{tip|cr|icononly = true}} 600",
+      "cast_time": "{{fd|0.25}}",
+      "cost": 0,
       "cooldown": [
         9,
         7.9,
@@ -84,9 +128,30 @@
         5.7,
         4.6
       ],
-      "cost": 0,
+      "icon": [
+        "Transfusion.png",
+        "Crimson Rush.png"
+      ],
+      "blurb": "Vladimir steals life from the target enemy. When Vladimir's resource is full, Transfusion will benefit from massively increased damage and healing for a brief time.",
+      "description": [
+        "{{sbc|Active:}} '''Vladimir''' drains blood from the target enemy, dealing them {{as|magic damage}} and {{tip|heal|healing}} himself.",
+        "Each cast of ''Transfusion'' generates a stack of {{tip|Fury|Bloodthirst}} over its {{sti|cooldown}}, which is displayed in his secondary resource bar. At 2 stacks, '''Vladimir''' gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}} for {{fd|0.5}} seconds, and ''Crimson Rush'' while the {{tip|Fury|Bloodthirst}} depletes over {{fd|2.5}} seconds. The {{tip|Fury|Bloodthirst}} depletes 75% slower during {{ai|Tides of Blood|Vladimir}}, {{ai|Sanguine Pool|Vladimir}} or {{tip|stasis (buff)|stasis}}.",
+        "{{sbc|Crimson Rush:}} The next cast of ''Transfusion'' deals {{ccs|85% increased damage|magic}} and heals for an '''additional''' {{pp|30 to 200}} {{as|(+ 5% {{as|(+ 4% per 100 AP)}} '''missing''' health)}}, reduced to 35% against {{tip|minions}}, consuming all {{tip|Fury|Bloodthirst}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> drains blood from the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> himself.<br />Each cast of <i>Transfusion</i> generates a stack of <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> over its <span>cooldown</span>, which is displayed in his secondary resource bar. At 2 stacks, <b>Vladimir</b> gains <span><span class=\"movement-speed\">10% <b>bonus</b> movement speed</span></span> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, and <i>Crimson Rush</i> while the <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. The <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes 75% slower during <span class=\"ai\">Vladimir's Tides of Blood</span>, <span class=\"ai\">Vladimir's Sanguine Pool</span> or <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>stasis (buff)<hr></h4><p>Description for keyword stasis (buff)</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Crimson Rush:</span> The next cast of <i>Transfusion</i> deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs / 85% increased damage / magic\">Unknown value: ccs / 85% increased damage / magic</simple-tooltip> and heals for an <b>additional</b> <HtmlTooltip class=\"blue link\">30undefined − 200undefined (based on level)<template #content>Values: 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"health\">(+ 5% <span class=\"ap\">(+ 4% per 100 AP)</span> <b>missing</b> health)</span>, reduced to 35% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>, consuming all <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|80 to 160}} {{as|(+ 60% AP)}}}}\n{{st|Heal|{{ap|20 to 40}} {{as|(+ 35% AP)}}}}",
+        "{{st|Empowered Damage|{{ap|80*1.85 to 160*1.85}} {{as|(+ 111% AP)}}}}"
+      ],
       "targeting": "Unit",
-      "target_range": "{{tip|cr|icononly = true}} 600",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Single target",
+      "spellshield": true,
+      "projectile": false,
+      "callforhelp": true,
+      "notes": "* Even thought the healing effect is visualized as a projectile, the healing itself triggers instantly.\n* ''Vladimir's'' resource bar changes colors depending on ''Bloodthirst's'' charge-up.\n*# <span style=\"color:white\">White</span> while generating the first stack and while at 1 stack (there is no time-out period).\n*# <span style=\"color:orange\">Orange</span> while generating the second stack.\n*# <span style=\"color:red\">Red</span> while ''Crimson Rush'' is active (''Bloodthirst'' will deplete over {{fd|2.5}} seconds once triggered).\n** Each stack generates over-time (''Transfusion's'' cooldown).\n* '''Vladimir''' can cast {{ai|Hemoplague|Vladimir}} during ''Transfusion's'' cast time.\n* The {{tip|Fury|Bloodthirst}} depletes normally while under {{tip|resurrection}} effects.",
+      "maxrank": 5,
       "image": {
         "full": "VladimirQ.png",
         "sprite": "spell14.png",
@@ -96,22 +161,11 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Vladimir''' drains blood from the target enemy, dealing them {{as|magic damage}} and {{tip|heal|healing}} himself.",
-        "Each cast of ''Transfusion'' generates a stack of {{tip|Fury|Bloodthirst}} over its {{sti|cooldown}}, which is displayed in his secondary resource bar. At 2 stacks, '''Vladimir''' gains {{sti|ms|{{as|10% '''bonus''' movement speed}}}} for {{fd|0.5}} seconds, and ''Crimson Rush'' while the {{tip|Fury|Bloodthirst}} depletes over {{fd|2.5}} seconds. The {{tip|Fury|Bloodthirst}} depletes 75% slower during {{ai|Tides of Blood|Vladimir}}, {{ai|Sanguine Pool|Vladimir}} or {{tip|stasis (buff)|stasis}}.",
-        "{{sbc|Crimson Rush:}} The next cast of ''Transfusion'' deals {{ccs|85% increased damage|magic}} and heals for an '''additional''' {{pp|30 to 200}} {{as|(+ 5% {{as|(+ 4% per 100 AP)}} '''missing''' health)}}, reduced to 35% against {{tip|minions}}, consuming all {{tip|Fury|Bloodthirst}}."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> drains blood from the target enemy, dealing them <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> himself.<br />Each cast of <i>Transfusion</i> generates a stack of <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> over its <span>cooldown</span>, which is displayed in his secondary resource bar. At 2 stacks, <b>Vladimir</b> gains <span><span class=\"movement-speed\">10% <b>bonus</b> movement speed</span></span> for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, and <i>Crimson Rush</i> while the <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes over <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds. The <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip> depletes 75% slower during <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Vladimir\">Tides of Blood<template #content>Tides of Blood</template></HtmlTooltip>, <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Vladimir\">Sanguine Pool<template #content>Sanguine Pool</template></HtmlTooltip> or <HtmlTooltip class=\"blue link\">stasis<template #content><div><h4>stasis (buff)<hr></h4><p>Description for keyword stasis (buff)</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Crimson Rush:</span> The next cast of <i>Transfusion</i> deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs 85% increased damage magic\">Unknown value: ccs 85% increased damage magic</simple-tooltip> and heals for an <b>additional</b> <HtmlTooltip class=\"blue link\">30undefined − 200undefined (based on level)<template #content>Values: 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"health\">(+ 5% <span class=\"ap\">(+ 4% per 100 AP)</span> <b>missing</b> health)</span>, reduced to 35% against <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip>, consuming all <HtmlTooltip class=\"blue link\">Bloodthirst<template #content><div><h4>Fury<hr></h4><p>Description for keyword Fury</p></div></template></HtmlTooltip>.",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 160}} {{as|(+ 60% AP)}}}}\n{{st|Heal|{{ap|20 to 40}} {{as|(+ 35% AP)}}}}",
-        "{{st|Empowered Damage|{{ap|80*1.85 to 160*1.85}} {{as|(+ 111% AP)}}}}"
-      ],
-      "notes": "* Even thought the healing effect is visualized as a projectile, the healing itself triggers instantly.\n* ''Vladimir's'' resource bar changes colors depending on ''Bloodthirst's'' charge-up.\n*# <span style=\"color:white\">White</span> while generating the first stack and while at 1 stack (there is no time-out period).\n*# <span style=\"color:orange\">Orange</span> while generating the second stack.\n*# <span style=\"color:red\">Red</span> while ''Crimson Rush'' is active (''Bloodthirst'' will deplete over {{fd|2.5}} seconds once triggered).\n** Each stack generates over-time (''Transfusion's'' cooldown).\n* '''Vladimir''' can cast {{ai|Hemoplague|Vladimir}} during ''Transfusion's'' cast time.\n* The {{tip|Fury|Bloodthirst}} depletes normally while under {{tip|resurrection}} effects.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "skillkey": "X",
+      "skillid": "X2",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,100,120,140,160]\"></SpellSpan> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[20,25,30,35,40]\"></SpellSpan> <span class=\"ap\">(+ 35% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -225,10 +279,15 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "VladimirSanguinePool",
+    {
       "name": "Sanguine Pool",
-      "maxrank": 5,
+      "skill": "W",
+      "effect_radius": "{{tip|cr|icononly = true}} 350",
+      "cast_time": "none",
+      "cost": [
+        20
+      ],
+      "costtype": "{{as|current health}}",
       "cooldown": [
         28,
         25,
@@ -236,11 +295,27 @@
         19,
         16
       ],
-      "cost": [
-        20
+      "icon": [
+        "Sanguine Pool.png"
       ],
-      "costtype": "{{as|current health}}",
+      "blurb": "Vladimir sinks into a pool of blood, becoming untargetable for 2 seconds. Additionally, enemies on the pool are slowed and Vladimir siphons life from them.",
+      "description": [
+        "{{sbc|Active:}} '''Vladimir''' sinks into a pool of blood, gaining {{sti|ms|{{as|{{fd|37.5}}% '''bonus''' movement speed}}}} which decays exponentially over 1 second and becoming {{tip|untargetable}} and {{tip|ghosted}} for 2 seconds.",
+        "Enemies inside the pool are {{tip|slow|slowed}} by 40% and dealt {{as|magic damage}} every {{fd|0.5}} seconds over the duration. '''Vladimir''' {{tip|heals}} himself for 15% of the {{tt|pre-mitigation damage|Damage calculated before modifiers}} dealt by ''Sanguine Pool''.",
+        "'''''Vladimir''' cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If {{ai|Tides of Blood|Vladimir}} is charging at the time of Sanguine Pool's activation, that ability may still be recast.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> sinks into a pool of blood, gaining <span><span class=\"movement-speed\"><span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% <b>bonus</b> movement speed</span></span> which decays exponentially over 1 second and becoming <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> for 2 seconds.<br />Enemies inside the pool are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 40% and dealt <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds over the duration. <b>Vladimir</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself for 15% of the <span class=\"title-tooltip\" title=\"Damage calculated before modifiers\">pre-mitigation damage</span> dealt by <i>Sanguine Pool</i>.<br /><b><i>Vladimir</b> cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If <span class=\"ai\">Vladimir's Tides of Blood</span> is charging at the time of Sanguine Pool's activation, that ability may still be recast.</i>",
+      "leveling": [
+        "{{st|Magic Damage Per Tick|{{ap|20 to 75}} {{as|(+ {{fd|2.5}}% '''bonus''' health)}}|Maximum Magic Damage|{{ap|20*4 to 75*4}} {{as|(+ 10% '''bonus''' health)}}}}"
+      ],
       "targeting": "Auto",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "aoedot",
+      "spellshield": "",
+      "projectile": "",
+      "notes": "* The first tick damages immediately so the final one occurs {{fd|0.5}} seconds before '''Vladimir''' becomes targetable again.\n* The {{tip|slow}} ends immediately once affected enemies get out of range.\n* '''Vladimir''' can still use [[summoner spell|summoner spells]] and [[Active ability items|item actives]] during ''Sanguine Pool''.\n* While unable to attack, '''Vladimir''' can still input attack commands - causing him to follow his attack target. \n** '''Vladimir's''' {{stil|attack range}} is reduced{{ft|to 0|by 450}}while pooled - causing him to attempt to move right up to his attack target.",
+      "maxrank": 5,
       "image": {
         "full": "VladimirSanguinePool.png",
         "sprite": "spell14.png",
@@ -250,19 +325,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Vladimir''' sinks into a pool of blood, gaining {{sti|ms|{{as|{{fd|37.5}}% '''bonus''' movement speed}}}} which decays exponentially over 1 second and becoming {{tip|untargetable}} and {{tip|ghosted}} for 2 seconds.",
-        "Enemies inside the pool are {{tip|slow|slowed}} by 40% and dealt {{as|magic damage}} every {{fd|0.5}} seconds over the duration. '''Vladimir''' {{tip|heals}} himself for 15% of the {{tt|pre-mitigation damage|Damage calculated before modifiers}} dealt by ''Sanguine Pool''.",
-        "'''''Vladimir''' cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If {{ai|Tides of Blood|Vladimir}} is charging at the time of Sanguine Pool's activation, that ability may still be recast.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> sinks into a pool of blood, gaining <span><span class=\"movement-speed\"><span style=\"font-variant-numeric: tabular-nums;\">37.5</span>% <b>bonus</b> movement speed</span></span> which decays exponentially over 1 second and becoming <HtmlTooltip class=\"blue link\">untargetable<template #content><div><h4>untargetable<hr></h4><p>Description for keyword untargetable</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">ghosted<template #content><div><h4>ghosted<hr></h4><p>Description for keyword ghosted</p></div></template></HtmlTooltip> for 2 seconds.<br />Enemies inside the pool are <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 40% and dealt <span class=\"magic-damage\">magic damage</span> every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds over the duration. <b>Vladimir</b> <HtmlTooltip class=\"blue link\">heals<template #content><div><h4>heals<hr></h4><p>Description for keyword heals</p></div></template></HtmlTooltip> himself for 15% of the <span class=\"title-tooltip\" title=\"Damage calculated before modifiers\">pre-mitigation damage</span> dealt by <i>Sanguine Pool</i>.<br /><b><i>Vladimir</b> cannot use basic attacks or abilities during Sanguine Pool, but is still able to move. If <HtmlTooltip class=\"champion-ability blue link\" data-champkey=\"Vladimir\">Tides of Blood<template #content>Tides of Blood</template></HtmlTooltip> is charging at the time of Sanguine Pool's activation, that ability may still be recast.</i>",
-      "leveling": [
-        "{{st|Magic Damage Per Tick|{{ap|20 to 75}} {{as|(+ {{fd|2.5}}% '''bonus''' health)}}|Maximum Magic Damage|{{ap|20*4 to 75*4}} {{as|(+ 10% '''bonus''' health)}}}}"
-      ],
-      "notes": "* The first tick damages immediately so the final one occurs {{fd|0.5}} seconds before '''Vladimir''' becomes targetable again.\n* The {{tip|slow}} ends immediately once affected enemies get out of range.\n* '''Vladimir''' can still use [[summoner spell|summoner spells]] and [[Active ability items|item actives]] during ''Sanguine Pool''.\n* While unable to attack, '''Vladimir''' can still input attack commands - causing him to follow his attack target. \n** '''Vladimir's''' {{stil|attack range}} is reduced{{ft|to 0|by 450}}while pooled - causing him to attempt to move right up to his attack target.",
-      "skillkey": "W",
-      "skillid": "w1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{as|20%|health}} as 20 and riot's value 0,0,0,0,0 as 0",
+      "skillkey": "X",
+      "skillid": "X3",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Tick</span>: <span><SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% <b>bonus</b> health)</span></span></li></ul>",
@@ -278,9 +342,9 @@
             "st_slices": [
               [
                 "Magic Damage Per Tick",
-                "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% '''bonus''' health)</span>",
+                "<SpellSpan :list=\"[20,33.75,47.5,61.25,75]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">2.5</span>% <b>bonus</b> health)</span>",
                 "Maximum Magic Damage",
-                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% '''bonus''' health)</span>"
+                "<SpellSpan :list=\"[80,135,190,245,300]\"></SpellSpan> <span class=\"health\">(+ 10% <b>bonus</b> health)</span>"
               ]
             ],
             "ap_progressions": [
@@ -320,17 +384,13 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "VladimirE",
+    {
       "name": "Tides of Blood",
-      "maxrank": 5,
-      "cooldown": [
-        13,
-        11,
-        9,
-        7,
-        5
-      ],
+      "skill": "E",
+      "effect_radius": "{{tip|er|icononly = true}} {{tt|600|range of each blood missile}}",
+      "width": "{{tip|er|icononly = true}} {{tt|120|width of each blood missile}}",
+      "speed": "{{tt|4000|speed of every blood missile}}",
+      "cast_time": "none",
       "cost": [
         2,
         3.5,
@@ -340,16 +400,17 @@
         1
       ],
       "costtype": "{{as|maximum health}}",
-      "targeting": "Auto",
-      "image": {
-        "full": "VladimirE.png",
-        "sprite": "spell14.png",
-        "group": "spell",
-        "x": 96,
-        "y": 48,
-        "w": 48,
-        "h": 48
-      },
+      "cooldown": [
+        13,
+        11,
+        9,
+        7,
+        5
+      ],
+      "icon": [
+        "Tides of Blood.png"
+      ],
+      "blurb": "Vladimir pays his own health to charge up a reservoir of blood which, when released, deals damage in the area around him but can be blocked by enemy units.",
       "description": [
         "{{sbc|Active:}} '''Vladimir''' {{tip|channel|charges}} for up to {{fd|1.5}} seconds, {{tip|slow|slowing}} himself by 20% if he ''charges'' for more than 1 second. ''Tides of Blood'' can be recast at any time within its duration. If '''Vladimir''' finishes charging or is {{tip|interrupt|interrupted}}, he automatically initiates the recast.",
         "{{sbc|Recast:}} '''Vladimir''' unleashes a nova of 15 blood bolts, each of which collide with the first enemy they hit, dealing them {{as|magic damage}} that is increased based on how long ''Tides of Blood'' was charged, up to the first second.",
@@ -362,10 +423,25 @@
         "{{st|Minimum Magic Damage|{{ap|30 to 90}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} {{as|(+ 35% AP)}}|Maximum Magic Damage|{{ap|60 to 180}} {{as|(+ 6% '''maximum''' health)}} {{as|(+ 80% AP)}}}}",
         "{{st|Slow|{{ap|40 to 60}}%}}"
       ],
+      "targeting": "Auto",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "spellaoe",
+      "spellshield": true,
+      "projectile": true,
       "notes": "* The spell indicator shows 11 equally spaced missile indicators when hovering the ability in the HUD, however the spell actually casts 15 equally spaced missiles.\n* The {{as|health}} cost may still drop '''Vladimir''' below the specified amount if he is above it. This is verified for every tick of {{as|health}} cost, i.e if the first tick drops him below it, the next ones will stop affecting him if he remains below it.\n* The following table refers for interactions while '''Vladimir''' is {{tip|channel|channeling}}:\n{{ct|charge|cast={{ai|Sanguine Pool|Vladimir}} is usable. {{ai|Transfusion|Vladimir}} and {{ai|Hemoplague|Vladimir}} both interrupt after {{fd|0.25}} seconds.|items=interrupts,true,interrupts,false,interrupts|spells=true,true,interrupts,interrupts,interrupts}}",
-      "skillkey": "E",
-      "skillid": "e1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  {{pp|2 to 8|0 to 0.75 by 0.25|key=%|type=charge time|label1=seconds|color=health}} as 2/3.5/5/6.5/8/1 and riot's value 0,0,0,0,0 as 0",
+      "maxrank": 5,
+      "image": {
+        "full": "VladimirE.png",
+        "sprite": "spell14.png",
+        "group": "spell",
+        "x": 96,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "skillkey": "X",
+      "skillid": "X4",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Magic Damage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <b>maximum</b> health)</span> <span class=\"ap\">(+ 35% AP)</span></span></li><li><span class=\"blue\">Maximum Magic Damage</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span> <span class=\"ap\">(+ 80% AP)</span></span></li></ul>",
@@ -387,9 +463,9 @@
             "st_slices": [
               [
                 "Minimum Magic Damage",
-                "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% '''maximum''' health)</span> <span class=\"ap\">(+ 35% AP)</span>",
+                "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"health\">(+ <span style=\"font-variant-numeric: tabular-nums;\">1.5</span>% <b>maximum</b> health)</span> <span class=\"ap\">(+ 35% AP)</span>",
                 "Maximum Magic Damage",
-                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% '''maximum''' health)</span> <span class=\"ap\">(+ 80% AP)</span>"
+                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"health\">(+ 6% <b>maximum</b> health)</span> <span class=\"ap\">(+ 80% AP)</span>"
               ]
             ],
             "ap_progressions": [
@@ -467,14 +543,34 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "VladimirHemoplague",
+    {
       "name": "Hemoplague",
-      "maxrank": 3,
-      "cooldown": 120,
-      "cost": 0,
-      "targeting": "Location",
+      "skill": "R",
       "target_range": 625,
+      "effect_radius": "{{tip|cr|icononly = true}} 375",
+      "cast_time": "none",
+      "cost": 0,
+      "cooldown": 120,
+      "icon": [
+        "Hemoplague.png"
+      ],
+      "blurb": "Vladimir infects an area with a virulent plague. Affected enemies take increased damage for the duration. After a few seconds, Hemoplague deals magic damage to infected enemies and heals Vladimir for each enemy Champion hit.",
+      "description": [
+        "{{sbc|Active:}} '''Vladimir''' spreads a virulent plague at the target location, infecting all enemies within the area at the time of cast for 4 seconds, which [[damage modifier|increases]] the damage they take from all sources by 10% for the duration.",
+        "After the duration, the infection bursts, dealing {{as|magic damage}} to all infected targets and bringing the blood from all infected enemy {{tip|champions|champions}} to '''Vladimir''' over {{fd|0.4}} seconds for him to harvest, {{tip|heal|healing}} him, reduced by 50% for each subsequent champion."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> spreads a virulent plague at the target location, infecting all enemies within the area at the time of cast for 4 seconds, which <a class=\"effect link\" title=\"increases\">damage modifier</a> the damage they take from all sources by 10% for the duration.<br />After the duration, the infection bursts, dealing <span class=\"magic-damage\">magic damage</span> to all infected targets and bringing the blood from all infected enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> to <b>Vladimir</b> over <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds for him to harvest, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> him, reduced by 50% for each subsequent champion.",
+      "leveling": [
+        "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}\n{{st|Heal|{{ap|150 to 350}} {{as|(+ 70% AP)}}|Reduced Heal|{{ap|150/2 to 350/2}} {{as|(+ {{ap|70/2}}% AP)}}|Maximum Heal|{{ap|150*(1+0.5*4) to 350*(1+0.5*4)}} {{as|(+ {{ap|70*(1+0.5*4)}}% AP)}}}}"
+      ],
+      "targeting": "Location",
+      "affects": "Self, Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Area of effect",
+      "spellshield": "special",
+      "projectile": false,
+      "notes": "* ''Hemoplague'' will amplify almost all sources and types of damage (including damage from neutral monsters but excluding {{tip|true damage|{{as|true damage}}}}, with percent modifiers stacking multiplicatively).\n** ''Hemoplague'' amplifies itself for an actual {{ap|150*1.1 to 350*1.1}} {{as|(+ {{fd|77}}% AP)}} damage.\n* ''Hemoplague's'' modifier to incoming damage stacks additively with {{cai|Unbreakable Will|Alistar}} for a total reduction of 45/55/65%.{{tt|*|this might be unintended}}\n* {{tip|Spell shield}} does not negate the detonation.",
+      "maxrank": 3,
       "image": {
         "full": "VladimirHemoplague.png",
         "sprite": "spell14.png",
@@ -484,20 +580,11 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Vladimir''' spreads a virulent plague at the target location, infecting all enemies within the area at the time of cast for 4 seconds, which [[damage modifier|increases]] the damage they take from all sources by 10% for the duration.",
-        "After the duration, the infection bursts, dealing {{as|magic damage}} to all infected targets and bringing the blood from all infected enemy {{tip|champions|champions}} to '''Vladimir''' over {{fd|0.4}} seconds for him to harvest, {{tip|heal|healing}} him, reduced by 50% for each subsequent champion."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Vladimir</b> spreads a virulent plague at the target location, infecting all enemies within the area at the time of cast for 4 seconds, which <a class=\"effect link\" title=\"increases\">damage modifier</a> the damage they take from all sources by 10% for the duration.<br />After the duration, the infection bursts, dealing <span class=\"magic-damage\">magic damage</span> to all infected targets and bringing the blood from all infected enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> to <b>Vladimir</b> over <span style=\"font-variant-numeric: tabular-nums;\">0.4</span> seconds for him to harvest, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>Healing<hr></h4><p><b>Healing</b> restores some of the user or the target's <span class=\"health\">current health</span> directly.<br><br>Healing can be reduced by <b>Grievous Wounds</b>.</p></div></template></HtmlTooltip> him, reduced by 50% for each subsequent champion.",
-      "leveling": [
-        "{{st|Magic damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}\n{{st|Heal|{{ap|150 to 350}} {{as|(+ 70% AP)}}|Reduced Heal|{{ap|150/2 to 350/2}} {{as|(+ {{ap|70/2}}% AP)}}|Maximum Heal|{{ap|150*(1+0.5*4) to 350*(1+0.5*4)}} {{as|(+ {{ap|70*(1+0.5*4)}}% AP)}}}}"
-      ],
-      "notes": "* ''Hemoplague'' will amplify almost all sources and types of damage (including damage from neutral monsters but excluding {{tip|true damage|{{as|true damage}}}}, with percent modifiers stacking multiplicatively).\n** ''Hemoplague'' amplifies itself for an actual {{ap|150*1.1 to 350*1.1}} {{as|(+ {{fd|77}}% AP)}} damage.\n* ''Hemoplague's'' modifier to incoming damage stacks additively with {{cai|Unbreakable Will|Alistar}} for a total reduction of 45/55/65%.{{tt|*|this might be unintended}}\n* {{tip|Spell shield}} does not negate the detonation.",
-      "skillkey": "R",
-      "skillid": "r1",
+      "skillkey": "X",
+      "skillid": "X5",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><br><ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Heal</span>: <span><SpellSpan :list=\"[75,125,175]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[35]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[450,750,1050]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Heal</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li><li><span class=\"blue\">Reduced Heal</span>: <span><SpellSpan :list=\"[75,125,175]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[35]\"></SpellSpan>% AP)</span></span></li><li><span class=\"blue\">Maximum Heal</span>: <span><SpellSpan :list=\"[450,750,1050]\"></SpellSpan> <span class=\"ap\">(+ <SpellSpan :list=\"[210]\"></SpellSpan>% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
@@ -587,5 +674,6 @@
         }
       ]
     }
-  }
+  ],
+  "skillsMismatch": true
 }

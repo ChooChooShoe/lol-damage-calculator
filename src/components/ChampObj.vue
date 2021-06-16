@@ -110,15 +110,15 @@ export default {
         return perlevel * (level - 1) * (0.7025 + 0.0175 * (level - 1));
       };
 
-      obj.base_ad = bs.attackdamage + growth(bs.attackdamageperlevel) || 0;
-      obj.base_hp = bs.hp + growth(bs.hpperlevel) || 0;
-      obj.base_mana = bs.mp + growth(bs.mpperlevel) || 0;
-      obj.base_movespeed = bs.movespeed || 0;
-      obj.base_armor = bs.armor + growth(bs.armorperlevel) || 0;
-      obj.base_mr = bs.spellblock + growth(bs.spellblockperlevel) || 0;
-      obj.base_attackrange = bs.attackrange || 0;
-      obj.base_hpregen = bs.hpregen + growth(bs.hpregenperlevel) || 0;
-      obj.base_manaregen = bs.mpregen + growth(bs.mpregenperlevel) || 0;
+      obj.base_ad = bs.dam_base + growth(bs.dam_lvl) || 0;
+      obj.base_hp = bs.hp_base + growth(bs.hp_lvl) || 0;
+      obj.base_mana = bs.mp_base + growth(bs.mp_lvl) || 0;
+      obj.base_movespeed = bs.ms || 0;
+      obj.base_armor = bs.arm_base + growth(bs.arm_lvl) || 0;
+      obj.base_mr = bs.mr_base + growth(bs.mr_lvl) || 0;
+      obj.base_attackrange = bs.range || 0;
+      obj.base_hpregen = bs.hp5_base + growth(bs.hp5_lvl) || 0;
+      obj.base_manaregen = bs.mp5_base + growth(bs.mp5_lvl) || 0;
       // Always 0 in stats
       // obj.base_critchance = bs.crit + growth(bs.critperlevel) || 0;
       obj.base_critchance = 0;
@@ -126,8 +126,21 @@ export default {
       obj.base_critdamage = 175;
 
       // non-core stats
-      obj.base_attackspeed = bs.attackspeed || 0;
-      obj.bonus_attackspeed = growth(bs.attackspeedperlevel) || 0;
+      obj.base_attackspeed = bs.as_base || 0;
+      obj.bonus_attackspeed = growth(bs.as_lvl) || 0;
+      
+      // wiki only stats
+      // "selection_radius": 120,
+      // "pathing_radius": 35,
+      // "attack_cast_time": 0.230000004172325,
+      // "attack_total_time": 1.5,
+      // "aram_dmg_dealt": 1.1,
+      // "aram_dmg_taken": 0.85,
+      // "nb_dmg_taken": 0.95,
+      // "ofa_dmg_dealt": 1.05,
+      // "ofa_dmg_taken": 0.95,
+      // "urf_dmg_dealt": 1.05,
+      // "urf_dmg_taken": 0.95
     });
 
     // Other non-direct stats

@@ -1,9 +1,42 @@
 {
-  "patch": "V0.9.22.16",
-  "changes": "11.1.1",
   "id": "Blitzcrank",
+  "key": 53,
   "name": "Blitzcrank",
   "title": "the Great Steam Golem",
+  "resource": "Mana",
+  "stats": {
+    "hp_base": 583,
+    "hp_lvl": 95,
+    "mp_base": 267,
+    "mp_lvl": 40,
+    "arm_base": 37,
+    "arm_lvl": 3.5,
+    "mr_base": 32,
+    "mr_lvl": 1.25,
+    "hp5_base": 8.5,
+    "hp5_lvl": 0.75,
+    "mp5_base": 8.5,
+    "mp5_lvl": 0.8,
+    "dam_base": 62,
+    "dam_lvl": 3.5,
+    "as_base": 0.625,
+    "as_lvl": 1.13,
+    "range": 125,
+    "ms": 325,
+    "acquisition_radius": 600,
+    "selection_radius": 165,
+    "pathing_radius": 50,
+    "gameplay_radius": 80,
+    "as_ratio": 0.625,
+    "attack_delay_offset": -0.0299999993294477,
+    "ofa_dmg_dealt": 1.06,
+    "ofa_dmg_taken": 0.97
+  },
+  "rangetype": "Melee",
+  "positions": [
+    "Support"
+  ],
+  "adaptivetype": "Magic",
   "image": {
     "full": "Blitzcrank.png",
     "sprite": "champion0.png",
@@ -13,47 +46,57 @@
     "w": 48,
     "h": 48
   },
-  "resource": "Mana",
   "herotype": "Tank",
   "alttype": "Fighter",
-  "rangetype": "Melee",
-  "be_cost": 3150,
-  "rp_cost": 790,
-  "adaptivetype": "magic",
-  "info": {
-    "attack": 4,
-    "defense": 8,
-    "magic": 5,
-    "difficulty": 4
-  },
-  "stats": {
-    "hp": 583,
-    "hpperlevel": 95,
-    "mp": 267,
-    "mpperlevel": 40,
-    "movespeed": 325,
-    "armor": 37,
-    "armorperlevel": 3.5,
-    "spellblock": 32,
-    "spellblockperlevel": 1.25,
-    "attackrange": 125,
-    "hpregen": 8.5,
-    "hpregenperlevel": 0.75,
-    "mpregen": 8.5,
-    "mpregenperlevel": 0.8,
-    "crit": 0,
-    "critperlevel": 0,
-    "attackdamage": 62,
-    "attackdamageperlevel": 3.5,
-    "attackspeedperlevel": 1.13,
-    "attackspeed": 0.625
-  },
-  "skills": {
-    "i1": {
-      "riotId": "",
+  "date": "2009-09-02",
+  "patch": "V0.9.22.16",
+  "changes": "11.1.1",
+  "be": 3150,
+  "rp": 790,
+  "skill_i": [
+    "Mana Barrier"
+  ],
+  "skill_q": [
+    "Rocket Grab"
+  ],
+  "skill_w": [
+    "Overdrive"
+  ],
+  "skill_e": [
+    "Power Fist"
+  ],
+  "skill_r": [
+    "Static Field"
+  ],
+  "skill_names": [
+    "Mana Barrier",
+    "Rocket Grab",
+    "Overdrive",
+    "Power Fist",
+    "Static Field"
+  ],
+  "skills": [
+    {
       "name": "Mana Barrier",
-      "maxrank": 0,
+      "skill": "P",
+      "cost": 0,
+      "static": "{{tt|90|Starts immediately when the shield is gained}}",
+      "icon": [
+        "Mana Barrier.png"
+      ],
+      "blurb": "{{sbc|Innate:}} Periodically, when {{ci|Blitzcrank}} gets to {{as|low-health}}, ''Mana Barrier'' generates a {{tip|shield}} that scales with {{sti|mana|{{as|maximum mana}}}}.",
+      "description": [
+        "{{sbc|Innate:}} Periodically, when '''Blitzcrank''' is damaged to {{as|{{sti|health|30% '''maximum''' health}}}}, a {{tip|shield}} is first generated that is equal to {{sti|mana|{{as|30% of '''maximum''' mana|mana}}}}, lasting up to 10 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Periodically, when <b>Blitzcrank</b> is damaged to <span class=\"health\"><span>30% <b>maximum</b> health</span></span>, a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> is first generated that is equal to <span><span class=\"mana\">30% of <b>maximum</b> mana</span></span>, lasting up to 10 seconds.",
+      "leveling": [],
       "targeting": "Passive",
+      "affects": "Self",
+      "damagetype": "None",
+      "spelleffects": "Shield",
+      "spellshield": "",
+      "notes": "* The shield will absorb the portion of incoming damage that would reduce health past 30%.\n* ''Mana Barrier's'' interactions with other {{tip|shield}} effects that trigger before taking damage that would reduce below 30% health:\n** ''Mana Barrier'' will trigger simultaneously with the {{nie|Lifeline}} effect from {{ii|Hexdrinker}}, {{ii|Maw of Malmortius}}, or {{ii|Immortal Shieldbow}} if '''Blitzcrank''' takes damage while above 30% health, and trigger before them when he takes damage while below 30% health.\n*** ''Mana Barrier'' will always trigger simultaneously with the {{nie|Lifeline}} effect from {{ii|Sterak's Gage}} if '''Blitzcrank''' takes damage while above or below 30% health.\n** ''Mana Barrier'' will trigger after {{ri|Nullifying Orb}} if '''Blitzcrank''' takes damage while above 30% health, and trigger simultaneously with it while below 30% health.",
+      "maxrank": 0,
       "image": {
         "full": "Blitzcrank_ManaBarrier.png",
         "sprite": "passive0.png",
@@ -63,20 +106,19 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Innate:}} Periodically, when '''Blitzcrank''' is damaged to {{as|{{sti|health|30% '''maximum''' health}}}}, a {{tip|shield}} is first generated that is equal to {{sti|mana|{{as|30% of '''maximum''' mana|mana}}}}, lasting up to 10 seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Periodically, when <b>Blitzcrank</b> is damaged to <span class=\"health\"><span>30% <b>maximum</b> health</span></span>, a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> is first generated that is equal to <span><span class=\"mana\">30% of <b>maximum</b> mana</span></span>, lasting up to 10 seconds.",
-      "leveling": [],
-      "notes": "* The shield will absorb the portion of incoming damage that would reduce health past 30%.\n* ''Mana Barrier's'' interactions with other {{tip|shield}} effects that trigger before taking damage that would reduce below 30% health:\n** ''Mana Barrier'' will trigger simultaneously with the {{nie|Lifeline}} effect from {{ii|Hexdrinker}}, {{ii|Maw of Malmortius}}, or {{ii|Immortal Shieldbow}} if '''Blitzcrank''' takes damage while above 30% health, and trigger before them when he takes damage while below 30% health.\n*** ''Mana Barrier'' will always trigger simultaneously with the {{nie|Lifeline}} effect from {{ii|Sterak's Gage}} if '''Blitzcrank''' takes damage while above or below 30% health.\n** ''Mana Barrier'' will trigger after {{ri|Nullifying Orb}} if '''Blitzcrank''' takes damage while above 30% health, and trigger simultaneously with it while below 30% health.",
-      "skillkey": "I",
-      "skillid": "i1",
+      "skillkey": "X",
+      "skillid": "X1",
       "effects": []
     },
-    "q1": {
-      "riotId": "RocketGrab",
+    {
       "name": "Rocket Grab",
-      "maxrank": 5,
+      "skill": "Q",
+      "range": "{{tip|cr|icononly = true}} {{tt|1115|Missile + circle check combined range. Supposed to be 1150, but currently bugged}} / {{tip|er|icononly = true}} {{tt|1020|Maximum range via other check}}",
+      "width": "{{tip|er|icononly = true}} 140",
+      "speed": "{{tt|1800|Missile speed}} / {{tt|1800|Displacement speed}}",
+      "cast_time": "{{fd|0.25}}",
+      "cost": 100,
+      "costtype": "mana",
       "cooldown": [
         20,
         19,
@@ -84,9 +126,26 @@
         17,
         16
       ],
-      "cost": 100,
-      "costtype": "mana",
+      "icon": [
+        "Rocket Grab.png"
+      ],
+      "blurb": "{{sbc|Active:}} {{ci|Blitzcrank}} fires the right hand which deals {{as|magic damage}} and {{tip|stun|stuns}} the first enemy hit. The target is also {{tip|airborne|pulled}} towards '''Blitzcrank'''.",
+      "description": [
+        "{{sbc|Active:}} '''Blitzcrank''' fires the right hand in the target direction that catches the first enemy hit, dealing them {{as|magic damage}}, {{tip|stun|stunning}} them for {{fd|0.65 seconds}}, and {{tip|airborne|pulling}} them towards '''Blitzcrank'''.",
+        "'''''Blitzcrank''' is unable to move or attack while Rocket Grab is in flight.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> fires the right hand in the target direction that catches the first enemy hit, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.65 seconds</span>, and <HtmlTooltip class=\"blue link\">pulling<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them towards <b>Blitzcrank</b>.<br /><b><i>Blitzcrank</b> is unable to move or attack while Rocket Grab is in flight.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
+      ],
       "targeting": "Direction",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "spell",
+      "spellshield": true,
+      "projectile": true,
+      "notes": "* ''Rocket Grab's'' range is composed of a missile with 1080 range, and a smaller center-range area check at the end (colloqially known as a 'lollipop').\n** The area check is currently half as long as it is supposed to be, reducing the intended 1150 range of the ability to 1115 range. \n*** Hitting an enemy with this area check only also fails to play the ability's hit SFX. This makes it possible to easily distingush whether the target was picked up by the missile collision or 'lollipop'.\n** Targets [[size|larger than 95 units in radius]] can be hit by a different edge-range circle check at the end of the missile.\n* The target is {{tip|sight|revealed}} while it is being {{tip|airborne|pulled}}.\n* The {{tip|airborne}} debuff lasts for up-to 1 second but will end prematurely when the target's movement stops, while the stun will persist (if duration permits).\n* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.\n* The target's destination lies 75 units in front of '''Blitzcrank'''. \n** If the target is closer than this, the effect will still move them to this location.\n** If this location would be inside static terrain, the target's destination will end up on '''Blitzcrank's''' side, even if that means pulling them right on top of him.\n*** This can occasionally fail.\n* '''Blitzcrank''' will be ordered to [[basic attack]] the target once the target arrives.\n* If '''Blitzcrank''' is {{tip|airborne|displaced}} during the grab, the target will still be pulled to the old location.\n** However if '''Blitzcrank''' is displaced by specifically {{ai|Fate's Call|Kalista}}, the target will be pulled to the new location.\n* If the target dies to ''Rocket Grab's'' damage, they will not be pulled.",
+      "maxrank": 5,
       "image": {
         "full": "RocketGrab.png",
         "sprite": "spell1.png",
@@ -96,17 +155,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Blitzcrank''' fires the right hand in the target direction that catches the first enemy hit, dealing them {{as|magic damage}}, {{tip|stun|stunning}} them for {{fd|0.65 seconds}}, and {{tip|airborne|pulling}} them towards '''Blitzcrank'''.",
-        "'''''Blitzcrank''' is unable to move or attack while Rocket Grab is in flight.''"
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> fires the right hand in the target direction that catches the first enemy hit, dealing them <span class=\"magic-damage\">magic damage</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.65 seconds</span>, and <HtmlTooltip class=\"blue link\">pulling<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> them towards <b>Blitzcrank</b>.<br /><b><i>Blitzcrank</b> is unable to move or attack while Rocket Grab is in flight.</i>",
-      "leveling": [
-        "{{st|Magic Damage|{{ap|70 to 270}} {{as|(+ 100% AP)}}}}"
-      ],
-      "notes": "* ''Rocket Grab's'' range is composed of a missile with 1080 range, and a smaller center-range area check at the end (colloqially known as a 'lollipop').\n** The area check is currently half as long as it is supposed to be, reducing the intended 1150 range of the ability to 1115 range. \n*** Hitting an enemy with this area check only also fails to play the ability's hit SFX. This makes it possible to easily distingush whether the target was picked up by the missile collision or 'lollipop'.\n** Targets [[size|larger than 95 units in radius]] can be hit by a different edge-range circle check at the end of the missile.\n* The target is {{tip|sight|revealed}} while it is being {{tip|airborne|pulled}}.\n* The {{tip|airborne}} debuff lasts for up-to 1 second but will end prematurely when the target's movement stops, while the stun will persist (if duration permits).\n* {{tip|Displacement immunity}} will not resist the application of the {{tip|stun}}.\n* The target's destination lies 75 units in front of '''Blitzcrank'''. \n** If the target is closer than this, the effect will still move them to this location.\n** If this location would be inside static terrain, the target's destination will end up on '''Blitzcrank's''' side, even if that means pulling them right on top of him.\n*** This can occasionally fail.\n* '''Blitzcrank''' will be ordered to [[basic attack]] the target once the target arrives.\n* If '''Blitzcrank''' is {{tip|airborne|displaced}} during the grab, the target will still be pulled to the old location.\n** However if '''Blitzcrank''' is displaced by specifically {{ai|Fate's Call|Kalista}}, the target will be pulled to the new location.\n* If the target dies to ''Rocket Grab's'' damage, they will not be pulled.",
-      "skillkey": "Q",
-      "skillid": "q1",
+      "skillkey": "X",
+      "skillid": "X2",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,120,170,220,270]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li></ul>",
@@ -152,14 +202,31 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "Overdrive",
+    {
       "name": "Overdrive",
-      "maxrank": 5,
-      "cooldown": 15,
+      "skill": "W",
+      "cast_time": "none",
       "cost": 75,
       "costtype": "mana",
+      "cooldown": 15,
+      "icon": [
+        "Overdrive.png"
+      ],
+      "blurb": "{{sbc|Active:}} {{ci|Blitzcrank}} shifts into overdrive, gaining {{sti|{{as|'''bonus''' attack speed}}}} and a burst of {{sti|ms|{{as|movement speed}}}}.\nWhen the effect ends, '''Blitzcrank''' is briefly {{tip|slow|slowed}}.",
+      "description": [
+        "{{sbc|Active:}} '''Blitzcrank''' shifts into overdrive, gaining {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds and {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays to 10% over the first {{fd|2.5}} seconds.",
+        "When ''Overdrive'' ends, '''Blitzcrank''' is {{tip|slow|slowed}} by 30% for {{fd|1.5}} seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> shifts into overdrive, gaining <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 5 seconds and <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> that decays to 10% over the first <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />When <i>Overdrive</i> ends, <b>Blitzcrank</b> is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 30% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
+      "leveling": [
+        "{{st|Attack Speed|{{ap|30|38|46|54|62%}}}}{{st|Movement Speed|{{ap|70|75|80|85|90%}}}}"
+      ],
       "targeting": "Auto",
+      "affects": "Self",
+      "damagetype": "None",
+      "spelleffects": "none",
+      "notes": "* The self-slow is affected by {{tip|slow resist}} and {{tip|Tenacity}}.",
+      "maxrank": 5,
       "image": {
         "full": "Overdrive.png",
         "sprite": "spell1.png",
@@ -169,17 +236,8 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Blitzcrank''' shifts into overdrive, gaining {{sti|{{as|'''bonus''' attack speed}}}} for 5 seconds and {{sti|ms|{{as|'''bonus''' movement speed}}}} that decays to 10% over the first {{fd|2.5}} seconds.",
-        "When ''Overdrive'' ends, '''Blitzcrank''' is {{tip|slow|slowed}} by 30% for {{fd|1.5}} seconds."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank</b> shifts into overdrive, gaining <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span> for 5 seconds and <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span> that decays to 10% over the first <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br />When <i>Overdrive</i> ends, <b>Blitzcrank</b> is <HtmlTooltip class=\"blue link\">slowed<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> by 30% for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
-      "leveling": [
-        "{{st|Attack Speed|{{ap|30|38|46|54|62%}}}}{{st|Movement Speed|{{ap|70|75|80|85|90%}}}}"
-      ],
-      "notes": "* The self-slow is affected by {{tip|slow resist}} and {{tip|Tenacity}}.",
-      "skillkey": "W",
-      "skillid": "w1",
+      "skillkey": "X",
+      "skillid": "X3",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Attack Speed</span>: <span><SpellSpan :list=\"[30,38,46,54,62]\"></SpellSpan></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Movement Speed</span>: <span><SpellSpan :list=\"[70,75,80,85,90]\"></SpellSpan></span></li></ul>",
@@ -229,10 +287,12 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "PowerFist",
+    {
       "name": "Power Fist",
-      "maxrank": 5,
+      "skill": "E",
+      "cast_time": "none",
+      "cost": 25,
+      "costtype": "mana",
       "cooldown": [
         9,
         8,
@@ -240,9 +300,23 @@
         6,
         5
       ],
-      "cost": 25,
-      "costtype": "mana",
+      "icon": [
+        "Power Fist.png"
+      ],
+      "blurb": "{{sbc|Active:}} {{ci|Blitzcrank}} charges up a fist to make the next {{tip|basic damage|basic attack}} deal double damage and {{tip|airborne|knock up}} the target into the air.",
+      "description": [
+        "{{sbc|Active:}} '''Blitzcrank's''' next [[basic attack]] within 5 seconds has an {{tip|uncancelable windup}}, deals {{as|100% AD}} {{as|'''bonus''' physical damage}} and {{tip|airborne|knocks up}} the target for 1 second.",
+        "''Power Fist'' {{tip|basic attack reset|resets}} '''Blitzcrank's''' basic attack timer."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 5 seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, deals <span class=\"ad\">100% AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span> and <HtmlTooltip class=\"blue link\">knocks up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> the target for 1 second.<br /><i>Power Fist</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Blitzcrank's</b> basic attack timer.",
+      "leveling": [],
       "targeting": "Auto",
+      "affects": "Enemy, Structure",
+      "damagetype": "Physical",
+      "spelleffects": "default",
+      "spellshield": "special",
+      "notes": "* The {{tip|airborne|knockup}} is applied even if the attack is {{tip|dodge|dodged}} or {{tip|blind|missed}}.\n** It is not applied if it is {{tip|block|blocked}}.\n* {{tip|Spell shield}} prevents the {{tip|airborne|knockup}} but not the damage.\n* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.\n* The target is displaced a short distance during the {{tip|airborne|knockup}} in a random direction.",
+      "maxrank": 5,
       "image": {
         "full": "PowerFist.png",
         "sprite": "spell1.png",
@@ -252,38 +326,26 @@
         "w": 48,
         "h": 48
       },
-      "description": [
-        "{{sbc|Active:}} '''Blitzcrank's''' next [[basic attack]] within 5 seconds has an {{tip|uncancelable windup}}, deals {{as|100% AD}} {{as|'''bonus''' physical damage}} and {{tip|airborne|knocks up}} the target for 1 second.",
-        "''Power Fist'' {{tip|basic attack reset|resets}} '''Blitzcrank's''' basic attack timer."
-      ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Blitzcrank's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 5 seconds has an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, deals <span class=\"ad\">100% AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span> and <HtmlTooltip class=\"blue link\">knocks up<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> the target for 1 second.<br /><i>Power Fist</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Blitzcrank's</b> basic attack timer.",
-      "leveling": [],
-      "notes": "* The {{tip|airborne|knockup}} is applied even if the attack is {{tip|dodge|dodged}} or {{tip|blind|missed}}.\n** It is not applied if it is {{tip|block|blocked}}.\n* {{tip|Spell shield}} prevents the {{tip|airborne|knockup}} but not the damage.\n* The enhanced attack will still complete and hit the target even if they become {{tip|untargetable}} during the {{tip|attack windup|attack's windup}}.\n* The target is displaced a short distance during the {{tip|airborne|knockup}} in a random direction.",
-      "skillkey": "E",
-      "skillid": "e1",
+      "skillkey": "X",
+      "skillid": "X4",
       "effects": []
     },
-    "r1": {
-      "riotId": "StaticField",
+    {
       "name": "Static Field",
-      "maxrank": 3,
+      "skill": "R",
+      "effect_radius": "{{tip|cr|icononly = true}} 600",
+      "cast_time": "{{fd|0.25}}",
+      "cost": 100,
+      "costtype": "mana",
       "cooldown": [
         60,
         40,
         20
       ],
-      "cost": 100,
-      "costtype": "mana",
-      "targeting": "Auto",
-      "image": {
-        "full": "StaticField.png",
-        "sprite": "spell1.png",
-        "group": "spell",
-        "x": 240,
-        "y": 96,
-        "w": 48,
-        "h": 48
-      },
+      "icon": [
+        "Static Field.png"
+      ],
+      "blurb": "{{sbc|Passive:}} While ''Static Field'' is available, {{cis|Blitzcrank}} basic attacks apply a stack of ''Static Field''.\n{{sbc|Active:}} '''Blitzcrank''' detonates a powerful static charge that destroys {{tip|shield|shields}}, deals {{as|magic damage}}, and {{tip|silence|silences}} nearby enemies.",
       "description": [
         "{{sbc|Passive:}} While ''Static Field'' is available, '''Blitzcrank's''' basic attacks [[on-hit]] apply a [[stack]], stacking up to 3 times. After every 1 second, 1 stack is consumed to deal {{as|magic damage}}.",
         "{{sbc|Active:}} '''Blitzcrank''' detonates a static field, completely destroying damage-mitigating {{tip|shield|shields}} of nearby enemies before dealing them {{as|magic damage}} and {{tip|silence|silencing}} them for {{fd|0.5}} seconds."
@@ -293,9 +355,24 @@
         "{{st|Bolt Magic Damage|{{ap|50 to 150}} {{as|(+ 30% AP)}}}}",
         "{{st|Detonation Magic Damage|{{ap|250 to 500}} {{as|(+ 100% AP)}}}}"
       ],
+      "targeting": "Auto",
+      "affects": "Enemies",
+      "damagetype": "Magic",
+      "spelleffects": "Special",
+      "spellshield": true,
       "notes": "* '''Blitzcrank's''' attacks do not have to deal damage to apply the mark.\n* The mark will be consumed even if the target becomes {{tip|untargetable}}.\n* The lightning bolts deal {{tip|spell damage}} while the static field applies {{tip|area damage}}.\n* Even if ''Static Field'' is blocked by a {{tip|spell shield}}, it will still destroy any existing damage {{tip|shield|shields}} on the target.\n* ''Static Field'' will occur from wherever '''Blitzcrank''' was at the start of the cast time.\n** The visual effects will appear from wherever '''Blitzcrank''' is at the end of the cast time.{{bug}}",
-      "skillkey": "R",
-      "skillid": "r1",
+      "maxrank": 3,
+      "image": {
+        "full": "StaticField.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "skillkey": "X",
+      "skillid": "X5",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bolt Magic Damage</span>: <span><SpellSpan :list=\"[50,100,150]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
@@ -375,5 +452,6 @@
         }
       ]
     }
-  }
+  ],
+  "skillsMismatch": true
 }
