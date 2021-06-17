@@ -332,6 +332,8 @@ function buildSkill(riotSpell, wiki, model) {
             let damage_type = matchDamageType(title.toLowerCase());
             if (damage_type == 'none')
                 damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
+            if (damage_type == 'unknown')
+                damage_type = matchDamageType(skillout.damagetype || '');
             let ratios = {}
 
             if (damage_type != 'none') {
@@ -354,6 +356,7 @@ function buildSkill(riotSpell, wiki, model) {
     return skillout;
 }
 function matchDamageType(text) {
+    text = text.toString();
     const keyword_to_damage_type = {
         magic: "magic",
         true: "true",

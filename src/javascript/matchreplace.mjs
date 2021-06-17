@@ -542,7 +542,7 @@ const match_lookup = {
   },
 
   'g': function (_capture, slices, _vars) {
-    return `<span class="gold"> <img src="/images/Gold.png">${slices[0]}</span>`;
+    return `<span class="gold"> <img src="./src/assets/Gold.png">${slices[0]}</span>`;
   },
 
   'nie': function (_capture, slices, _vars) {
