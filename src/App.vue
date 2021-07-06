@@ -1,14 +1,14 @@
 <template>
   <header>
     <h1 class="title">
-      League of Legends Damage Calcuator: {{ appVersion }} for lol patch
+      League of Legends Damage Calculator: version {{ appVersion }} for LoL patch
       {{ lolPatchVersion }}
     </h1>
     <p class="subtitle">
       With Data from
       <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki"> League of Legends Wiki </a>
       - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> - View
-      <a href="https://github.com/ChooChooShoe/choochooshoe.github.io"> source on GitHub </a>
+      <a href="https://github.com/ChooChooShoe/lol-damage-calculator"> source on GitHub </a>
     </p>
   </header>
   <SettingsModel ref="settings"></SettingsModel>
@@ -51,6 +51,8 @@ import { setupVue } from "./javascript/league_data.js";
 import { ref, reactive, provide, computed } from "vue";
 
 import ChampObj from "./components/ChampObj.vue";
+
+import { dv } from "./api/version.json";
 
 function loadLocalConfig() {
   console.log("loading config...");
@@ -98,8 +100,8 @@ export default {
 
     // expose to template
     return {
-      appVersion: "0.9.0",
-      lolPatchVersion: "10.2.0",
+      appVersion: "4.0",
+      lolPatchVersion: dv,
       championList,
       itemData,
       data,

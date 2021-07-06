@@ -405,7 +405,7 @@ function makeDescriptionHtml(skillout) {
     return html.join('<br />');
 }
 
-const fix_apiname = { GnarBig: "Gnar"}
+const fix_apiname = { GnarBig: "Gnar" }
 
 
 console.log('Hello');
@@ -414,7 +414,51 @@ fs.mkdirSync('./src/api/', { recursive: true }, (err) => { if (err && err.code !
 
 fs.mkdirSync('./public/api/champion', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
 
-//https://ddragon.leagueoflegends.com/realms/na.json
-await fetch("https://ddragon.leagueoflegends.com/api/versions.json")
-    .then(response => { return response.json(); })
-    .then(onVersionResponse);
+
+const x = `{{st|Magic Damage|{{ap|40 to 160}} {{as|(+ 4% {{as|(+ 3% per 100 AP)}} of target's '''current''' health)|health}}|Max. Monster Total Damage|{{ap|115 to 355}}}}`;
+const skillout = {effects: []};
+
+for (const [leveling_index, levelingtext] of [x].entries()) {
+    const effect = {}
+    skillout.effects[leveling_index] = effect;
+    // effect.levelingtext = levelingtext;
+    let x = matchReplaceSpellEffects(levelingtext, false, skillout);
+    effect.str = x.str;
+    effect.vars = x.vars;
+
+    // if (x.vars.ap_progressions.length == 0) continue;
+    effect.subeffects = [];
+    // as_ratios are deivded evenly between st_slices
+    const as_ratios_per_st = (x.vars.as_ratios.length / x.vars.st_slices.length) || 0;
+    for (const subindex in x.vars.st_slices) {
+        const title = x.vars.st_slices[subindex][0] || '';
+        let damage_type = matchDamageType(title.toLowerCase());
+        if (damage_type == 'none')
+            damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
+        if (damage_type == 'unknown')
+            damage_type = matchDamageType(skillout.damagetype || '');
+        let ratios = {}
+
+        if (damage_type != 'none') {
+            ratios.base_damage = x.vars.ap_progressions[subindex];
+        }
+        for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
+            for (const r in x.vars.as_ratios[ratio_index])
+                ratios[r] = x.vars.as_ratios[ratio_index][r];
+        }
+
+        effect.subeffects[subindex] = {
+            index: parseInt(subindex),
+            title: title,
+            damage_type: damage_type,
+            ratios: ratios,
+            // str: x.vars.st_slices[subindex][1] || '',
+        }
+    }
+}
+
+if (false)
+    //https://ddragon.leagueoflegends.com/realms/na.json
+    await fetch("https://ddragon.leagueoflegends.com/api/versions.json")
+        .then(response => { return response.json(); })
+        .then(onVersionResponse);
