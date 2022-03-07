@@ -12,6 +12,9 @@
     <h1>ItemBuilder</h1>
     <h1>Inventory</h1>
     <ItemInventory :inv="inventory1" @sellItem="sellItem"></ItemInventory>
+    
+    <h1>ShopItemInfo</h1>
+    <ShopItemInfo :itemId="selectedItem" @showInfo="showInfo" @buyItem="buyItem" @sellItem="sellItem"></ShopItemInfo>
     <h1>Items</h1>
     <div>
       <span>Filter Items: </span>
@@ -23,7 +26,7 @@
     <div class="itembox" :data-filter="itemFilter">
       <div class="item itembox__header" :data-category="key" v-for="(x, key) in itemCategories" :key="key">{{ x }}</div>
 
-      <Item :data-category="x.category" :data-maps="x.maps" display="icon" @buyItem="buyItem" @showInfo="showInfo" v-for="x in items" :key="x.id" :value="x"> </Item>
+      <Item :data-maps="x.maps" display="icon" @buyItem="buyItem" @showInfo="showInfo" v-for="x in items" :key="x.id" :value="x"> </Item>
     </div>
   </div>
 </template>
@@ -33,9 +36,9 @@ import { reactive, ref } from "vue";
 
 import items from "/src/api/items/items.json";
 import ItemInventory from "./components/ItemInventory.vue";
+import ShopItemInfo from "./components/ShopItemInfo.vue";
 import Item from "./components/Item.vue";
 
-// import { ref, reactive, provide, computed } from "vue";
 
 // import ChampObj from "./components/ChampObj.vue";
 /* eslint-disable-next-line */
@@ -50,6 +53,8 @@ const appVersion = "0.1.0";
 // }
 // console.log("tags", Object.keys(tags));
 let itemFilter = ref("SR,HA");
+const selectedItem = ref(1001);
+
 console.log("ItemBuilder setup");
 
 const itemCategories = {
@@ -71,6 +76,7 @@ const inventory1 = reactive(Array(6));
 
 const buyItem = (itemId) => {
   console.log("buyItem", itemId);
+  selectedItem.value = itemId;
   let openIndex = 0;
   for (; openIndex < inventory1.length; openIndex++) {
     if (!inventory1[openIndex]) break;
@@ -83,6 +89,7 @@ const buyItem = (itemId) => {
 };
 const showInfo = (itemId) => {
   console.log("showItemInfo", itemId);
+  selectedItem.value = itemId;
 };
 const sellItem = (index) => {
   inventory1[index] = undefined;
@@ -102,47 +109,47 @@ const sellItem = (index) => {
   overflow: hidden;
   margin: 0.5rem 0.5rem;
 }
-.item[data-category="championitems"] {
+.itembox>.item[data-category="championitems"] {
   order: 110;
 }
-.item[data-category="distributives"] {
+.itembox>.item[data-category="distributives"] {
   order: 32;
 }
-.item[data-category="starters"] {
+.itembox>.item[data-category="starters"] {
   order: 10;
 }
-.item[data-category="consumables"] {
+.itembox>.item[data-category="consumables"] {
   order: 20;
 }
-.item[data-category="boots"] {
+.itembox>.item[data-category="boots"] {
   order: 50;
 }
-.item[data-category="basics"] {
+.itembox>.item[data-category="basics"] {
   order: 60;
 }
-.item[data-category="epics"] {
+.itembox>.item[data-category="epics"] {
   order: 70;
 }
-.item[data-category="legendaries"] {
+.itembox>.item[data-category="legendaries"] {
   order: 80;
 }
-.item[data-category="mythics"] {
+.itembox>.item[data-category="mythics"] {
   order: 90;
 }
-.item[data-category="ornnitems"] {
+.itembox>.item[data-category="ornnitems"] {
   order: 100;
 }
-.item[data-category="trinkets"] {
+.itembox>.item[data-category="trinkets"] {
   order: 30;
 }
-.item[data-category="minionturretitems"] {
+.itembox>.item[data-category="minionturretitems"] {
   order: 120;
 }
-.itembox[data-filter="HA"] .item[data-maps="SR"] {
+.itembox[data-filter="HA"]>.item[data-maps="SR"] {
   opacity: 0.1;
   pointer-events: none;
 }
-.itembox[data-filter="SR"] .item[data-maps="HA"] {
+.itembox[data-filter="SR"]>.item[data-maps="HA"] {
   opacity: 0.1;
   pointer-events: none;
 }

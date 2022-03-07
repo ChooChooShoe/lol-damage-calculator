@@ -209,7 +209,7 @@ function takeRiftItem(a, b, c) {
         if (typedata.includes("Minion"))
             s.push("Minion")
         // GeneratedTip test - not on wiki
-        if (a.description.startsWith('GeneratedTip') || a.description === "")
+        if (a.description?.startsWith('GeneratedTip') || a.description === "")
             s.push("GeneratedTip")
 
         if (typedata.includes("Basic") && !typedata.includes("Basic Trinket"))
@@ -296,7 +296,7 @@ function takeRiftItem(a, b, c) {
     let colloq = (b.colloq || ";");
     if (colloq.indexOf(';') !== 0)
         colloq = ";" + colloq;
-    const iconPath = "https://raw.communitydragon.org/latest/game/assets/items/icons2d" + a.iconPath.slice(a.iconPath.lastIndexOf("/")).toLowerCase();
+    const iconPath = a.iconPath ? "https://raw.communitydragon.org/latest/game/assets/items/icons2d" + a.iconPath.slice(a.iconPath.lastIndexOf("/")).toLowerCase() : '';
     return {
         "id": a.id,
         "name": check('name'),
@@ -317,7 +317,7 @@ function takeRiftItem(a, b, c) {
         "price": check_val('price', a.price, b.gold.base),
         "priceTotal": check_val('priceTotal', a.priceTotal, b.gold.total),
         "sellPrice": b.gold.sell || 0,
-        "purchasable": b.gold.purchasable || 0,
+        "purchasable": b.gold.purchasable || false,
         "iconPath": iconPath,
         "spriteStyle": b.image ?
             `background: url('${spriteBaseUri}${b?.image?.sprite}') -${b?.image?.x}px -${b?.image?.y}px; width:${b?.image?.w}px; height:${b?.image?.h}px;`
@@ -359,24 +359,25 @@ function onItemsJsonResponse(riotJson, cdragonItems, wikiItems) {
             "22": false
         },
     }
-    const wiki_by_id = {}
-    for (const [key, value] of Object.entries(wikiItems)) {
-        wiki_by_id[value.id] = value;
+    const cdragon_by_id = {}
+    for (const [key, value] of Object.entries(cdragonItems)) {
+        cdragon_by_id[value.id] = value;
     }
 
-    for (const item_obj of cdragonItems) {
-        let riotItem = riotItems[item_obj.id];
+    for (const [key, wikiItem] of Object.entries(wikiItems)) {
+        if(!wikiItem.id) continue;
+        let riotItem = riotItems[wikiItem.id];
         if (!riotItem) {
-            console.log(`Item ${item_obj.name} (${item_obj.id}) is missing RiotData`)
+            console.log(`Item ${key} (${wikiItem.id}) is missing RiotData`)
             riotItem = defaultRiotItem;
         }
-        let wikiItem = wiki_by_id[item_obj.id];
-        if (!wikiItem) {
-            console.log(`Item ${item_obj.name} (${item_obj.id}) is missing WikiData`)
-            wikiItem = {};
-        } else
-            fix_wiki_links(wikiItem, wikiItems);
-        allItems[item_obj.id] = takeRiftItem(item_obj, riotItem, wikiItem);
+        let item_obj = cdragon_by_id[wikiItem.id];
+        if (!item_obj) {
+            console.log(`Item ${key} (${wikiItem.id}) is missing CDragonData`)
+            item_obj = {};
+        }
+        fix_wiki_links(wikiItem, wikiItems);
+        allItems[wikiItem.id] = takeRiftItem(item_obj, riotItem, wikiItem);
     }
     saveFile('./src/api/items/items.json', allItems);
 }

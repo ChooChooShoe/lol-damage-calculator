@@ -9,9 +9,8 @@
     </span>
     <div v-html="value.description"></div>
   </div>
-  <div v-else class="item item-icon" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
+  <div v-else :data-category="value.category" class="item item-icon" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
     <div class="item__img" :style="spriteStyle"></div>
-    <div class="item__overlay" :class="value.requiredAlly"></div>
     <div class="item__tooltipinfo">
       <div class="item__img" :style="spriteStyle"></div>
       <span class="item__name" v-html="value.name"></span>
@@ -34,7 +33,7 @@ const props = defineProps({
   display: String,
 });
 
-defineEmits(['showInfo', 'buyItem'])
+defineEmits(["showInfo", "buyItem"]);
 
 let displayCost = props.value.priceTotal === 0 ? "Free" : `${props.value.priceTotal}`;
 
@@ -92,10 +91,14 @@ let spriteStyle = props.value.spriteStyle;
   z-index: 140;
 }
 .item__name {
-  font-size: 14pt;
+  white-space: nowrap;
+  font-weight: 300;
+  font-size: 1.8rem;
+  color: #efefef;
 }
 .item__id {
-  display: inline;
+  font-size: 1.2rem;
+  color: #b9b9b9;
 }
 .item-container {
   display: grid;
@@ -112,18 +115,30 @@ let spriteStyle = props.value.spriteStyle;
   cursor: pointer;
 }
 
-.item__overlay.Ornn {
-    height: 48px;
-    position: relative;
-    top: -48px;
-    background: url('./bordertreatmentornn.png');
-    background-size: contain;
+.item__img {
+  display: inline-block;
 }
-.item__overlay.Mythic {
-    height: 48px;
-    position: relative;
-    top: -48px;
-    background: url('./bordertreatmentmythic.png');
-    background-size: contain;
+
+.item[data-category='ornnitems'] .item__img::after {
+  content: "";
+  position: relative;
+  top: -2px;
+  left: -2px;
+  width: 52px;
+  height: 52px;
+  display: block;
+  background: url("./bordertreatmentornn.png") 0 0;
+  background-size: contain;
+}
+.item[data-category='mythics'] .item__img::after {
+  content: "";
+  position: relative;
+  top: -2px;
+  left: -2px;
+  width: 52px;
+  height: 52px;
+  display: block;
+  background: url("./bordertreatmentmythic.png") 0 0;
+  background-size: contain;
 }
 </style>
