@@ -1,6 +1,9 @@
 <template>
-  <div v-if="display === 'full'" class="item item-block" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
-    <div class="item__img" :style="spriteStyle"></div>
+  <div v-if="!value" data-category="missing" class="item item-icon">
+    <div class="item__img emptyimage"></div>
+  </div>
+  <div v-else-if="display === 'full'" class="item item-block" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
+    <div class="item__img" :style="value.spriteStyle"></div>
     <span class="item__name" v-html="value.name"></span>
     <span class="item__id">&nbsp;({{ value.id }})</span>
     <span class="gold">
@@ -9,10 +12,17 @@
     </span>
     <div v-html="value.description"></div>
   </div>
-  <div v-else :data-category="value.category" class="item item-icon" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
-    <div class="item__img" :style="spriteStyle"></div>
+  <div
+    v-else
+    :data-category="value.category"
+    class="item item-icon"
+    @click="$emit('showInfo', value.id)"
+    @dblclick="$emit('buyItem', value.id)"
+    @contextmenu="$emit('buyItem', value.id)"
+  >
+    <div class="item__img" :style="value.spriteStyle"></div>
     <div class="item__tooltipinfo">
-      <div class="item__img" :style="spriteStyle"></div>
+      <div class="item__img" :style="value.spriteStyle"></div>
       <span class="item__name" v-html="value.name"></span>
       <span class="item__id">&nbsp;({{ value.id }})</span>
       <span class="gold">
@@ -25,7 +35,6 @@
 </template>
 
 <script setup>
-import { spriteBaseUri } from "../../javascript/league_data";
 // import items from "/src/api/items/items.json";
 
 const props = defineProps({
@@ -35,20 +44,17 @@ const props = defineProps({
 
 defineEmits(["showInfo", "buyItem"]);
 
-let displayCost = props.value.priceTotal === 0 ? "Free" : `${props.value.priceTotal}`;
+let displayCost = "Free";
 
-if (props.value.requiredBuffCurrencyCost) {
-  if (props.value.requiredBuffCurrencyName === "GangplankBilgewaterToken") displayCost = `${props.value.requiredBuffCurrencyCost} Silver Serpents`;
-  else displayCost = `${props.value.requiredBuffCurrencyCost} ${props.value.requiredBuffCurrencyName}`;
+// props.value may be undefined if the item does not exist.
+if (props.value) {
+  if (props.value.priceTotal) displayCost = `${props.value.priceTotal}`;
+
+  if (props.value.requiredBuffCurrencyCost) {
+    if (props.value.requiredBuffCurrencyName === "GangplankBilgewaterToken") displayCost = `${props.value.requiredBuffCurrencyCost} Silver Serpents`;
+    else displayCost = `${props.value.requiredBuffCurrencyCost} ${props.value.requiredBuffCurrencyName}`;
+  }
 }
-
-let spriteStyle = props.value.spriteStyle;
-// if(image.)
-// let spriteStyle = `background: url('${spriteBaseUri}${props.value.image.sprite}') -${props.value.image.x}px -${props.value.image.y}px; width:${props.value.image.w}px; height:${props.value.image.h}px;`;
-
-// const showName = props.value.image.full == "1001.png" && props.value.id !== 1001;
-
-// console.log("Item", props.value);
 </script>
 
 <style>
@@ -61,6 +67,7 @@ let spriteStyle = props.value.spriteStyle;
   border: 2px #644e23 solid;
   box-sizing: content-box;
   background-color: #000000;
+  font-size: 1rem;
 }
 .item-block {
   display: block;
@@ -119,7 +126,7 @@ let spriteStyle = props.value.spriteStyle;
   display: inline-block;
 }
 
-.item[data-category='ornnitems'] .item__img::after {
+.item[data-category="ornnitems"] > .item__img::after {
   content: "";
   position: relative;
   top: -2px;
@@ -130,7 +137,7 @@ let spriteStyle = props.value.spriteStyle;
   background: url("./bordertreatmentornn.png") 0 0;
   background-size: contain;
 }
-.item[data-category='mythics'] .item__img::after {
+.item[data-category="mythics"] > .item__img::after {
   content: "";
   position: relative;
   top: -2px;
@@ -140,5 +147,10 @@ let spriteStyle = props.value.spriteStyle;
   display: block;
   background: url("./bordertreatmentmythic.png") 0 0;
   background-size: contain;
+}
+.emptyimage {
+  background: url("data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=") -0px 0px;
+  width: 48px;
+  height: 48px;
 }
 </style>

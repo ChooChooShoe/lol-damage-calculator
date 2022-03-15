@@ -8,12 +8,11 @@
       <a href="https://github.com/ChooChooShoe/lol-damage-calculator"> source on GitHub </a>
     </p>
   </header>
-  <div class="main-full">
-    <h1>ItemBuilder</h1>
-    <h1>Inventory</h1>
+  <div class="main-full itembuilder">
+    <span class="itembuilder__title">Inventory</span>
+    <span class="itembuilder__title">ShopItemInfo</span>
     <ItemInventory :inv="inventory1" @sellItem="sellItem"></ItemInventory>
-    
-    <h1>ShopItemInfo</h1>
+
     <ShopItemInfo :itemId="selectedItem" @showInfo="showInfo" @buyItem="buyItem" @sellItem="sellItem"></ShopItemInfo>
     <h1>Items</h1>
     <div>
@@ -38,7 +37,6 @@ import items from "/src/api/items/items.json";
 import ItemInventory from "./components/ItemInventory.vue";
 import ShopItemInfo from "./components/ShopItemInfo.vue";
 import Item from "./components/Item.vue";
-
 
 // import ChampObj from "./components/ChampObj.vue";
 /* eslint-disable-next-line */
@@ -72,18 +70,23 @@ const itemCategories = {
   minionturretitems: "Minion and Turret items",
 };
 
-const inventory1 = reactive(Array(6));
+const inventory1 = reactive([null, null, null, 3340, null, null, null]);
 
 const buyItem = (itemId) => {
-  console.log("buyItem", itemId);
+  const item = items[itemId];
+  if (!item) return;
   selectedItem.value = itemId;
-  let openIndex = 0;
-  for (; openIndex < inventory1.length; openIndex++) {
-    if (!inventory1[openIndex]) break;
-  }
-  if (openIndex > 5) {
-    openIndex = 5;
-  }
+
+  let openIndex = 6;
+  if (item.type.includes("Basic Trinket")) openIndex = 3;
+  else
+    for (const i of [0, 1, 2, 4, 5]) {
+      if(!inventory1[i]) {
+        openIndex = i;
+        break;
+      }
+    }
+
   console.log("Buying item:", itemId, "for index", openIndex);
   inventory1[openIndex] = itemId;
 };
@@ -101,55 +104,71 @@ const sellItem = (index) => {
   grid-area: 2 / 1 / span 1 / span 2;
   line-height: 1.25;
 }
+.itembuilder {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: baseline;
+  overflow: hidden;
+}
+.itembuilder > * {
+  flex: 2 1 50%;
+}
+.itembuilder > .item-section {
+  /* flex: 1 1 0; */
+}
+.itembuilder__title {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
 .itembox {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   overflow: hidden;
-  margin: 0.5rem 0.5rem;
 }
-.itembox>.item[data-category="championitems"] {
+.itembox > .item[data-category="championitems"] {
   order: 110;
 }
-.itembox>.item[data-category="distributives"] {
+.itembox > .item[data-category="distributives"] {
   order: 32;
 }
-.itembox>.item[data-category="starters"] {
+.itembox > .item[data-category="starters"] {
   order: 10;
 }
-.itembox>.item[data-category="consumables"] {
+.itembox > .item[data-category="consumables"] {
   order: 20;
 }
-.itembox>.item[data-category="boots"] {
+.itembox > .item[data-category="boots"] {
   order: 50;
 }
-.itembox>.item[data-category="basics"] {
+.itembox > .item[data-category="basics"] {
   order: 60;
 }
-.itembox>.item[data-category="epics"] {
+.itembox > .item[data-category="epics"] {
   order: 70;
 }
-.itembox>.item[data-category="legendaries"] {
+.itembox > .item[data-category="legendaries"] {
   order: 80;
 }
-.itembox>.item[data-category="mythics"] {
+.itembox > .item[data-category="mythics"] {
   order: 90;
 }
-.itembox>.item[data-category="ornnitems"] {
+.itembox > .item[data-category="ornnitems"] {
   order: 100;
 }
-.itembox>.item[data-category="trinkets"] {
+.itembox > .item[data-category="trinkets"] {
   order: 30;
 }
-.itembox>.item[data-category="minionturretitems"] {
+.itembox > .item[data-category="minionturretitems"] {
   order: 120;
 }
-.itembox[data-filter="HA"]>.item[data-maps="SR"] {
+.itembox[data-filter="HA"] > .item[data-maps="SR"] {
   opacity: 0.1;
   pointer-events: none;
 }
-.itembox[data-filter="SR"]>.item[data-maps="HA"] {
+.itembox[data-filter="SR"] > .item[data-maps="HA"] {
   opacity: 0.1;
   pointer-events: none;
 }

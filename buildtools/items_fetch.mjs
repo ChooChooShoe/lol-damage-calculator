@@ -3,6 +3,7 @@ import fs from 'fs';
 import he from 'he';
 import fetch from 'node-fetch';
 import JSON5 from 'json5';
+import parser from 'luaparse';
 
 // import lua2js from 'lua2js';
 let spriteBaseUri = ``;
@@ -19,43 +20,42 @@ async function fetch_wiki(url) {
         .then(text => text.match(/<textarea[^>]*>([^]*)<\/textarea>/m))
         .then(content => he.decode(content[1]))
         .then(raw => {
-            // Converts Lua data to json data.
-            let results = [];
-            for (let line of raw.split('\n')) {
-                const tline = line.trim();
-                if (tline === '' || tline.startsWith('--'))
-                    continue;
-                if (tline.startsWith('return')) {
-                    results.push('{')
-                    continue;
+            var ast = parser.parse(raw);
+
+            console.assert(ast.body[0]?.type === "ReturnStatement")
+            console.assert(ast.body[0].arguments[0]?.type === "TableConstructorExpression")
+
+            let x = {};
+            function re_make_obj(obj, table) {
+                for (const tk of table) {
+                    // console.assert(tk?.type === "TableKey")
+                    // console.log(tk.key.raw);
+                    // console.log(tk.value.fields);
+                    if (tk.value.type === "TableConstructorExpression") {
+                        let inner = tk.value.fields[0]?.type === "TableValue" ? [] : {}
+                        obj[tk.key.value || tk.key.raw.slice(1, -1)] = inner;
+                        re_make_obj(inner, tk.value.fields);
+                    } else {
+                        if (tk.type === "TableKey")
+                            obj[tk.key.value || tk.key.raw.slice(1, -1)] = tk.value.value || tk.value.raw.slice(1, -1);
+
+                        if (tk.type === "TableValue")
+                            obj[Object.keys(obj).length] = tk.value.value || tk.value.raw.slice(1, -1);
+                    }
                 }
-                results.push(tline
-                    //replaces [" and "] with "
-                    .replace(/\["|"]/g, `"`)
-                    //replaces = with :
-                    .replace(/=/g, `:`)
-                    //replaces [1] : with nothing if line has a { or is after a ', '
-                    .replace(/, \[\d] : /g, `, `).replace(/{\[\d] : /g, `{`)
-                    //replaces { and } with [ and ] only if line has both
-                    .replace(/{(.*)}/g, `[$1]`)
-                    //replaces [12] : with "12" :
-                    .replace(/\[(\d+)] : /g, `"$1" : `)
-                    //replaces -- with //
-                    .replace(/--/g, "//")
-                );
             }
-            // return parsed JSON as a javascript object.
-            return JSON5.parse(results.join(''));
+            re_make_obj(x, ast.body[0].arguments[0].fields)
+            return x;
         });
 }
 function fix_wiki_links(item, allItems) {
     for (const [key, value] of Object.entries(item)) {
-        if (typeof value === "string" && value.startsWith(':>')) {
+        if (typeof value === "string" && value.startsWith('=>')) {
             item[key] = allItems[value.slice(2)][key];
         }
         if (typeof value === "object") {
             for (const [key2, value2] of Object.entries(value)) {
-                if (typeof value2 === "string" && value2.startsWith(':>')) {
+                if (typeof value2 === "string" && value2.startsWith('=>')) {
                     item[key][key2] = allItems[value2.slice(2)][key][key2];
                 }
             }
@@ -271,6 +271,18 @@ function takeRiftItem(a, b, c) {
             return "minionturretitems"
         return "unsorted"
     }
+    function make_stats() {
+        const ret = c.stats || {};
+        for (const key of ['spec', 'spec2']) {
+            if (ret[key])
+                // Matches [[ thing ]] captures thing
+                ret[key] = ret[key].replace(/\[\[([^[]*)\]\]/g, function (_, capture) {
+                    const parms = capture.split('|');
+                    return `${parms[parms.length - 1]}`
+                });
+        }
+        return ret;
+    }
     // if (b.description) b.description = b.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
     // if (a.description) a.description = a.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
 
@@ -327,7 +339,7 @@ function takeRiftItem(a, b, c) {
         "depth": b.depth || 0,
         "limit": c.limit || "",
         "menu": c.menu || {},
-        "stats": c.stats || {},
+        "stats": make_stats(),
         "effects": c.effects || {},
         "type": get_type(),
         "category": get_category(),
@@ -365,7 +377,7 @@ function onItemsJsonResponse(riotJson, cdragonItems, wikiItems) {
     }
 
     for (const [key, wikiItem] of Object.entries(wikiItems)) {
-        if(!wikiItem.id) continue;
+        if (!wikiItem.id) continue;
         let riotItem = riotItems[wikiItem.id];
         if (!riotItem) {
             console.log(`Item ${key} (${wikiItem.id}) is missing RiotData`)

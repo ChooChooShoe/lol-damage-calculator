@@ -1,37 +1,40 @@
 
 <template>
   <div class="item-section">
-    <input :value="inv.toString()" />
-    <div class="item-grid-container">
-      <div v-for="(n, i) in 6" :key="i">
-        <img class="full-image" :src="image(i)" width="64" height="64" />
-        <span>{{ n }}</span>
-      </div>
+    <div class="inv__itemgrid">
+      <Item :data-number="1" display="icon" :value="item(0)"> </Item>
+      <Item :data-number="2" display="icon" :value="item(1)"> </Item>
+      <Item :data-number="3" display="icon" :value="item(2)"> </Item>
+      <Item class="inv__trinket" :data-number="4" display="icon" :value="item(3)"> </Item>
+      <Item :data-number="5" display="icon" :value="item(4)"> </Item>
+      <Item :data-number="6" display="icon" :value="item(5)"> </Item>
+      <Item :data-number="7" display="icon" :value="item(6)"> </Item>
     </div>
-    <div class="itemcontrol-grid-container">
+    <div class="inv__buttons">
       <input type="button" value="Clear Items" @click="sellAll" />
       <input type="button" value="Load Items" />
       <input type="button" value="Save Items" />
       <a class="button" href="#shop">Shop</a>
     </div>
-    <div class="stats-total-6"></div>
+    <StatsDiv :stats="statsTotal"></StatsDiv>
+    <ActivesDiv :stats="activeTotal"></ActivesDiv>
+    <PassivesDiv :stats="passiveTotal"></PassivesDiv>
   </div>
 </template>
 
 <script setup>
+import { computed } from "vue";
 import items from "/src/api/items/items.json";
-
-const emptyImage = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+import StatsDiv from "./StatsDiv.vue";
+import ActivesDiv from "./ActivesDiv.vue";
+import PassivesDiv from "./PassivesDiv.vue";
+import Item from "./Item.vue";
 
 const props = defineProps({ inv: Array });
 const emit = defineEmits(["sellItem"]);
 
-const image = (index) => {
-  const d = items[props.inv[index]];
-  if (d) {
-    return d.iconPath;
-  }
-  return emptyImage;
+const item = (index) => {
+  return items[props.inv[index]];
 };
 const sellAll = () => {
   console.log("Selling all");
@@ -39,6 +42,70 @@ const sellAll = () => {
     if (value) emit("sellItem", i);
   }
 };
+
+///TEST
+// const ret = { stats: {}, spec: [] };
+// for (const item of Object.values(items)) {
+//   if (!item || !item.stats) continue;
+//   for (const [stat, val] of Object.entries(item.stats)) {
+//     if (stat.startsWith("spec")) {
+//       ret.spec.push(val);
+//     } else ret.stats[stat] = (ret.stats[stat] || 0) + val;
+//   }
+// }
+// console.log(ret);
+///TEST
+// const ret = { effects: {}, spec: [] };
+// for (const item of Object.values(items)) {
+//   if (!item || !item.effects) continue;
+//   for (const [stat, val] of Object.entries(item.effects)) {
+//     if (!ret.effects[stat]) {
+//       ret.effects[stat] = [];
+//     }
+//     ret.effects[stat].push(val);
+//   }
+// }
+// console.log(ret);
+///TEST
+
+const statsTotal = computed(() => {
+  const ret = { stats: {}, spec: [] };
+  for (const index in props.inv) {
+    const item = items[props.inv[index]];
+    if (!item || !item.stats) continue;
+    for (const [stat, val] of Object.entries(item.stats)) {
+      if (stat.startsWith("spec")) {
+        // spec and spec2 are unique.
+        if (!ret.spec.includes(val)) ret.spec.push(val);
+      } else ret.stats[stat] = (ret.stats[stat] || 0) + val;
+    }
+  }
+  return ret;
+});
+const passiveTotal = computed(() => {
+  const passiveTotal = [];
+  for (const index in props.inv) {
+    const item = items[props.inv[index]];
+    if (!item) continue;
+    if (item.effects.pass) passiveTotal.push(item.effects.pass);
+    if (item.effects.pass2) passiveTotal.push(item.effects.pass2);
+    if (item.effects.pass3) passiveTotal.push(item.effects.pass3);
+    if (item.effects.pass4) passiveTotal.push(item.effects.pass4);
+    if (item.effects.pass5) passiveTotal.push(item.effects.pass5);
+    if (item.effects.pass6) passiveTotal.push(item.effects.pass6);
+  }
+  return passiveTotal;
+});
+const activeTotal = computed(() => {
+  const activeTotal = [];
+  for (const index in props.inv) {
+    const item = items[props.inv[index]];
+    if (!item) continue;
+    if (item.effects.act) activeTotal.push(item.effects.act);
+    if (item.effects.act2) activeTotal.push(item.effects.act2);
+  }
+  return activeTotal;
+});
 </script>
 
 <style>
@@ -46,50 +113,31 @@ const sellAll = () => {
   background-color: rgb(69, 73, 76);
   border: 1px solid gold;
   padding: 10px;
-  border-radius: 3px;
-  margin: auto;
+  /* border-radius: 3px; */
+  /* margin: auto; */
+}
+.inv__trinket {
+  transform: scale(90%) translate(-2px, 2px);
 }
 
-.item-grid-container {
-  display: grid;
-  grid-row-gap: 5px;
-  grid-template-columns: auto auto auto;
-  float: left;
-  margin: auto;
+.inv__itemgrid {
+  display: inline-block;
+  overflow: visible;
+  width: calc(56px * 4);
 }
 
-.item-grid-container > div {
-  background-color: black;
-  border: 1px solid whitesmoke;
-  padding: 0;
-  margin: 3px;
-  width: 66px;
-  height: 66px;
-}
-
-.item-grid-container > div > span {
-  user-select: none;
-  display: block;
-  text-align: center;
-  text-anchor: middle;
+.item[data-number]::before {
+  content: attr(data-number);
+  position: absolute;
+  z-index: 3;
+  margin: 34px 0 0 -3px;
   font-size: 17px;
   text-decoration-color: #121a1b;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  position: relative;
-  bottom: 28px;
-  right: 4px;
 }
-
-.item-grid-container > div > img {
-  zoom: 1;
-}
-
-.itemcontrol-grid-container {
-  display: grid;
-  grid-template-columns: auto;
+.inv__buttons {
+  display: inline-block;
+  width: calc(56px * 4);
 }
 
 .item-builds,

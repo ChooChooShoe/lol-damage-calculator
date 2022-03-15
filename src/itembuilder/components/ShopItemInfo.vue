@@ -1,53 +1,46 @@
 <template>
   <div v-if="value" class="item shopinfo" :data-category="value.category">
-    <div class="into">
-      <span>Builds Into:</span>
-      <div class="gradient"></div>
-      <div class="itembox">
-        <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" v-for="x in value.to" :key="x" :value="items[x]"> </Item>
-      </div>
+    <div class="shopinfo__block">
+      <span class="shopinfo__title">Builds Into:</span>
+      <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" v-for="x in value.to" :key="x" :value="items[x]"> </Item>
     </div>
-    <div class="others">
-      <div class="header">
-        <div class="item__img" :style="value.spriteStyle"></div>
-        <span class="item__name" v-html="value.name"></span>
-        <span class="item__id">&nbsp;({{ value.id }})</span>
-        <input type="button" value="BUY" class="buy" @click="buySelf()" />
-        <img class="intoimage inline" src="../../assets/Gold.png" />
-        <span class="inline gold">{{ displayCost }}</span>
-        <!-- <div class="inline" v-if="value.gold.sell != value.gold.total">
+    <div class="shopinfo__underline"></div>
+
+    <div class="header item" :data-category="value.category">
+      <div class="item__img" :style="value.spriteStyle"></div>
+      <span class="item__name" v-html="value.name"></span>
+      <span class="item__id">&nbsp;({{ value.id }})</span>
+      <input type="button" value="BUY" class="buy" @click="$emit('buyItem', value.id)" />
+      <img class="intoimage inline" src="../../assets/Gold.png" />
+      <span class="inline gold">{{ displayCost }}</span>
+      <!-- <div class="inline" v-if="value.gold.sell != value.gold.total">
           <span>&nbsp;(Sells for:</span>
           <img class="intoimage inline" src="../../assets/Gold.png">
           <span class="inline gold">{{ value.gold.sell }}</span>
           <span>)</span>
         </div> -->
-        <div class="inline" v-if="!value.purchasable">
-          <span>&nbsp;-&nbsp;</span>
-          <span class="red">Not for Sale</span>
-        </div>
-        <div class="inline" v-if="!value.inStore">
-          <span>&nbsp;-&nbsp;</span>
-          <span class="red">Not In Store</span>
-        </div>
+      <div class="inline" v-if="!value.purchasable">
+        <span>&nbsp;-&nbsp;</span>
+        <span class="red">Not for Sale</span>
+      </div>
+      <div class="inline" v-if="!value.inStore">
+        <span>&nbsp;-&nbsp;</span>
+        <span class="red">Not In Store</span>
       </div>
 
-      <div class="item-underline"></div>
+      <div class="shopinfo__underline"></div>
       <h4 v-if="value.requiredAlly">Required Ally: {{ value.requiredAlly }}</h4>
       <h4 v-if="value.requiredChampion">Required Champion: {{ value.requiredChampion }}</h4>
       <div class="item description" v-html="value.description"></div>
-      <div class="item-underline"></div>
-      <div class="from">
-        <span>Recipe:</span>
-        <div class="flex flex-row">
-          <template v-for="x in value.from || [value.specialRecipe]" :key="x">
-            <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" :value="items[x]"> </Item>
-            <span>+</span>
-          </template>
-          <div class="inline">
-            <img class="intoimage inline" src="../../assets/Gold.png" />
-            <h4 class="inline gold">{{ value.price }}</h4>
-          </div>
-        </div>
+      <div class="shopinfo__underline"></div>
+      <div class="shopinfo__block">
+        <span class="shopinfo__title">Recipe:</span>
+        <template v-for="(x, i) in value.from" :key="i">
+          <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" :value="items[x]"> </Item>
+          <span>+</span>
+        </template>
+        <img src="../../assets/Gold.png" />
+        <span class="gold">{{ value.price }}</span>
       </div>
       <div class="item-tags">
         <span>Tags:&nbsp;</span>
@@ -59,7 +52,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineProps, computed } from "vue";
+import { reactive, ref, computed } from "vue";
 import SimpleTooltip from "../../components/SimpleTooltip.vue";
 import Item from "./Item.vue";
 import items from "/src/api/items/items.json";
@@ -81,51 +74,44 @@ const displayCost = computed(() => (value.value.priceTotal === 0 ? "Free" : valu
   border: 2px solid #aaa;
   margin: 5px;
 }
-.intoimage {
-  /* border: 1px solid #aaa; */
-  margin: 3px;
-  /* box-sizing: content-box; */
-  display: block;
-}
 .header {
   min-height: 60px;
   /* font-size: 1.4rem; */
   line-height: 1.2;
   color: #efefef;
-}
-.into {
-  min-height: 90px;
-  max-height: 90px;
-  position: relative;
-}
-.into:hover {
-  max-height: 4000px;
-}
-.gradient {
-  background-image: linear-gradient(#0c161700, #0c1617b4);
-  position: absolute;
-  top: 72px;
-  height: 18px;
-  width: 100%;
-}
-.into:hover .gradient {
-  height: 0;
-  width: 0;
+  /* display: inline-block; */
+  /* padding: 0; */
+  /* margin: 2px; */
+  /* width: 48px; */
+  /* height: 48px; */
+  /* border: 2px #644e23 solid; */
+  /* box-sizing: content-box; */
+  /* background-color: #000000; */
 }
 .inline {
   display: inline;
-}
-.others {
-  background: #0c1617;
-  position: relative;
 }
 .shopinfo {
   height: 100%;
   position: relative;
 }
+.shopinfo__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+}
+.shopinfo__title {
+  flex: 1 0 100%;
+}
 .description {
   margin: 7px;
   max-height: 50vh;
   overflow: auto;
+}
+.shopinfo__underline {
+  border-bottom: white 1px solid;
+  margin: 0.5em 0;
 }
 </style>
