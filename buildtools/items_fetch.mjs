@@ -4,6 +4,7 @@ import he from 'he';
 import fetch from 'node-fetch';
 import JSON5 from 'json5';
 import parser from 'luaparse';
+import { wikiToHTML } from "./../src/javascript/matchreplace.mjs";
 
 // import lua2js from 'lua2js';
 let spriteBaseUri = ``;
@@ -36,11 +37,16 @@ async function fetch_wiki(url) {
                         obj[tk.key.value || tk.key.raw.slice(1, -1)] = inner;
                         re_make_obj(inner, tk.value.fields);
                     } else {
-                        if (tk.type === "TableKey")
-                            obj[tk.key.value || tk.key.raw.slice(1, -1)] = tk.value.value || tk.value.raw.slice(1, -1);
+                        let v = tk.value.value || tk.value.raw.slice(1, -1);
+                        if (typeof v === "string") v = wikiToHTML(v);
 
-                        if (tk.type === "TableValue")
-                            obj[Object.keys(obj).length] = tk.value.value || tk.value.raw.slice(1, -1);
+                        if (tk.type === "TableKey")
+                            obj[tk.key.value || tk.key.raw.slice(1, -1)] = v;
+
+                        else if (tk.type === "TableValue") {
+                            if (typeof v === "string") v = wikiToHTML(v);
+                            obj[Object.keys(obj).length] = v;
+                        }
                     }
                 }
             }

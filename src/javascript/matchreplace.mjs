@@ -648,3 +648,91 @@ function matchRatioKey(text) {
   const ratioValue = table_check(keyword_to_ratio_value, text, text.toLowerCase())
   return `${user}_${ratioType}_${ratioValue}`;
 }
+
+
+import moo from 'moo';
+export function wikiToHTML(text) {
+  // for <!--\n-->
+  text = text.replace(/<!--\\n-->/g, '<br>');
+  // for <!-- COMMENT -->
+  text = text.replace(/<!--[^>]*-->/g, '');
+  // for bold/italics
+  text = text.replace(/'''''(.*?)'''''/g, '<b><i>$1</i></b>');
+  text = text.replace(/'''(.*?)'''/g, '<b>$1</b>');
+  text = text.replace(/''(.*?)''/g, '<i>$1</i>');
+  // for <noinclude>Ability data</noinclude>
+  text = text.replace(/<noinclude>[^>]*<\/noinclude>/g, '')
+
+  const lexer = moo.compile({
+    lbrace: '{{',
+    rbrace: '}}',
+    lsq: '[[',
+    rsq: ']]',
+    string: { match: /[^\n{}\[\]]+/, value: s => s },
+    NL: { match: /\n/, lineBreaks: true },
+  })
+
+
+  lexer.reset(text);
+  return re_template(lexer, 0, null);
+}
+/// Recursively solve a template.
+function re_template(lexer, indent = 0, expected_end = null) {
+  let text = "";
+  for (const next of lexer) {
+    switch (next.type) {
+      case "lbrace":
+        const inner_text = re_template(lexer, indent + 1, "rbrace")
+        text += transformText(inner_text);
+        break;
+      case "rbrace": // This template is done, return now.
+        console.assert("rbrace" === expected_end)
+        return text;
+      case "lsq":
+        const it = re_template(lexer, indent + 1, "rsq")
+        const p = it.split('|');
+        text += `<a class='wiki__link' title="${p[1] || p[0]}">${p[0]}</a>`;
+        break;
+      case "rsq": // This template is done, return now.
+        console.assert("rsq" === expected_end)
+        return text;
+      default:
+        // For NL, WS, or other text.
+        text += next.value;
+        break;
+    }
+  }
+  console.assert(null === expected_end)
+  return text;
+}
+function transformText(capture) {
+  const vars = { as_ratios: [], st_slices: [], ap_progressions: [] }
+  const extra_data = null;
+
+  const parms = capture.split('|');
+  const tag = parms[0].toLowerCase();
+  const inner_fn = match_lookup[tag];
+  if (!inner_fn) {
+    console.log(`Unknown spell effect "${tag}" for "${capture}"`);
+    return `<a class='wiki__link red' title="Unknown value: ${tag}">${capture}</a>`
+  }
+  console.log(`Known spell effect ${tag} for ${capture}`);
+  try {
+    const slices = [];
+    const options = {};
+    for (const par of parms.slice(1)) {
+      const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
+      if (capture) {
+        options[capture[1]] = capture[2];
+        console.log('MatchReplace: for tag', tag, 'options were found', options);
+      } else {
+        slices.push(par);
+      }
+    }
+    return inner_fn(capture, slices, vars, options, extra_data);
+  } catch (e) {
+    console.log(`Error for spell effect '${capture}'`);
+    console.log(e);
+    return `<a class='wiki__link red' title="Error: ${e}">${capture}</a>`
+  }
+}
