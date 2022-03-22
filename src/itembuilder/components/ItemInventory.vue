@@ -12,13 +12,33 @@
     </div>
     <div class="inv__buttons">
       <input type="button" value="Clear Items" @click="sellAll" />
-      <input type="button" value="Load Items" />
+      <input type="button" value="Buy All Items" @click="inv = Object.keys(items)" />
       <input type="button" value="Save Items" />
       <a class="button" href="#shop">Shop</a>
     </div>
     <StatsDiv :stats="statsTotal"></StatsDiv>
-    <ActivesDiv :stats="activeTotal"></ActivesDiv>
-    <PassivesDiv :stats="passiveTotal"></PassivesDiv>
+
+    <div class="statsdiv">
+      <div v-for="(k, v) in activeTotal" :key="v">
+        <span class="unique" v-if="k.unique">Active - </span>
+        <span>{{ k.name }}: </span>
+        <span v-html="k.description"></span>
+      </div>
+    </div>
+    <div class="statsdiv">
+      <div v-for="(k, v) in passiveTotal" :key="v">
+        <span class="unique" v-if="k.unique">Passive - </span>
+        <span>{{ k.name }}: </span>
+        <span v-html="k.description"></span>
+      </div>
+    </div>
+
+    <h2>Limits:</h2>
+    <div v-for="(k, v) in collect('limit')" :key="v" v-html="k"></div>
+    <h2>types:</h2>
+    <div v-for="(k, v) in collect('type')" :key="v" v-html="k"></div>
+    <!-- <h2>category:</h2> -->
+    <!-- <div v-for="(k, v) in collect('category')" :key="v" v-html="k"></div> -->
   </div>
 </template>
 
@@ -26,8 +46,6 @@
 import { computed } from "vue";
 import items from "/src/api/items/items.json";
 import StatsDiv from "./StatsDiv.vue";
-import ActivesDiv from "./ActivesDiv.vue";
-import PassivesDiv from "./PassivesDiv.vue";
 import Item from "./Item.vue";
 
 const props = defineProps({ inv: Array });
@@ -68,6 +86,26 @@ const sellAll = () => {
 // console.log(ret);
 ///TEST
 
+const collect = (key) => {
+  const coll = [];
+  for (const index in props.inv) {
+    const item = items[props.inv[index]];
+    if (!item) continue;
+    if (item[key]) coll.push(item[key]);
+  }
+  return coll;
+};
+
+const limitsTotal = computed(() => {
+  const limitsTotal = [];
+  for (const index in props.inv) {
+    const item = items[props.inv[index]];
+    if (!item) continue;
+    if (item.limit) limitsTotal.push(item.limit);
+  }
+  return limitsTotal;
+});
+
 const statsTotal = computed(() => {
   const ret = { stats: {}, spec: [] };
   for (const index in props.inv) {
@@ -94,7 +132,10 @@ const passiveTotal = computed(() => {
     if (item.effects.pass5) passiveTotal.push(item.effects.pass5);
     if (item.effects.pass6) passiveTotal.push(item.effects.pass6);
   }
-  return passiveTotal;
+  var seen = {};
+  return passiveTotal.filter(function (item) {
+    return seen.hasOwnProperty(item.description) ? false : (seen[item.description] = true);
+  });
 });
 const activeTotal = computed(() => {
   const activeTotal = [];
@@ -104,7 +145,10 @@ const activeTotal = computed(() => {
     if (item.effects.act) activeTotal.push(item.effects.act);
     if (item.effects.act2) activeTotal.push(item.effects.act2);
   }
-  return activeTotal;
+  var seen = {};
+  return activeTotal.filter(function (item) {
+    return seen.hasOwnProperty(item.description) ? false : (seen[item.description] = true);
+  });
 });
 </script>
 

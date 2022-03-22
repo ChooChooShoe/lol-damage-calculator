@@ -391,12 +391,12 @@ const match_lookup = {
 
   // ii (or Item icon): {{ii|<Item>|<Custom name>}}
   'ii': function (_capture, slices, _vars) {
-    return `<simple-tooltip dname="${slices[1] || slices[0]}">The item: ${slices[0]}</simple-tooltip>`;
+    return `<simple-tooltip dname='The item: ${slices[1] || slices[0]}'>${slices[0]}</simple-tooltip>`;
   },
 
   // iis (or Item icon with possessive apostrophes): {{iis|<Item>}}
   'iis': function (_capture, slices, _vars) {
-    return `<simple-tooltip dname="${slices[1] || slices[0]}'s">The item: ${slices[0]}</simple-tooltip>`;
+    return `<simple-tooltip dname="The item: ${slices[1] || slices[0]}'s">${slices[0]}</simple-tooltip>`;
   },
 
   // mi6 (or Mastery icon Season 2016): {{mi6|<Mastery>|<Custom name>}}
@@ -460,7 +460,7 @@ const match_lookup = {
     console.log('Match pp=', capture, '==>', slices, 'opt', options);
     if (slices.length === 1) {
       let range = slices[0].split(' to ');
-      const display = [range[0] + options.key || '', range[1] + options.key || '',];
+      const display = [range[0] + (options.key || ''), range[1] +( options.key || ''),];
       let top = numberExpand(slices[0].split(';'), 18);
       const bot = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
       console.log('Match pp=result=', top);
@@ -470,7 +470,7 @@ const match_lookup = {
       let range = Number(slices[0]);
       // let setting = slices[1];
       let top = numberExpand(slices[1].split(';'), range);
-      const display = [top[0] + options.key || '', top[top.length - 1] + options.key || '',];
+      const display = [top[0] + (options.key || ''), top[top.length - 1] + (options.key || ''),];
       let bot = numberExpand(slices[2].split(';'), range);
       console.log('Match pp=result-top-bot=', top, bot);
       return `<HtmlTooltip class="blue link">${display[0]} − ${display[1]} (based on level)<template #content>Values: ${top.join(', ')}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
@@ -691,7 +691,7 @@ function re_template(lexer, indent = 0, expected_end = null) {
       case "lsq":
         const it = re_template(lexer, indent + 1, "rsq")
         const p = it.split('|');
-        text += `<a class='wiki__link' title="${p[1] || p[0]}">${p[0]}</a>`;
+        text += `<a href='https://leagueoflegends.fandom.com/wiki/${p[0]}' class='wiki__link'>${p[1] || p[0]}</a>`;
         break;
       case "rsq": // This template is done, return now.
         console.assert("rsq" === expected_end)
@@ -714,7 +714,7 @@ function transformText(capture) {
   const inner_fn = match_lookup[tag];
   if (!inner_fn) {
     console.log(`Unknown spell effect "${tag}" for "${capture}"`);
-    return `<a class='wiki__link red' title="Unknown value: ${tag}">${capture}</a>`
+    return `<span class='wiki__link red' title="Unknown value: ${tag}">${capture}</span>`
   }
   console.log(`Known spell effect ${tag} for ${capture}`);
   try {
@@ -733,6 +733,6 @@ function transformText(capture) {
   } catch (e) {
     console.log(`Error for spell effect '${capture}'`);
     console.log(e);
-    return `<a class='wiki__link red' title="Error: ${e}">${capture}</a>`
+    return `<span class='wiki__link red' title="Error: ${e}">${capture}</span>`
   }
 }

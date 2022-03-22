@@ -9,6 +9,7 @@
     </p>
   </header>
   <div class="main-full itembuilder">
+    <ChampionDiv value="player"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>
     <span class="itembuilder__title">ShopItemInfo</span>
     <ItemInventory :inv="inventory1" @sellItem="sellItem"></ItemInventory>
@@ -34,6 +35,7 @@
 import { reactive, ref } from "vue";
 
 import items from "/src/api/items/items.json";
+import ChampionDiv from "./components/ChampionStats.vue";
 import ItemInventory from "./components/ItemInventory.vue";
 import ShopItemInfo from "./components/ShopItemInfo.vue";
 import Item from "./components/Item.vue";

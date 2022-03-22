@@ -1,0 +1,496 @@
+{
+  "patch": "V6.6",
+  "changes": "11.21.1",
+  "id": "AurelionSol",
+  "name": "Aurelion Sol",
+  "title": "The Star Forger",
+  "image": {
+    "full": "AurelionSol.png",
+    "sprite": "champion0.png",
+    "group": "champion",
+    "x": 0,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "resource": "Mana",
+  "herotype": "Mage",
+  "alttype": "",
+  "rangetype": "Ranged",
+  "be_cost": 6300,
+  "rp_cost": 975,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 2,
+    "defense": 3,
+    "magic": 8,
+    "difficulty": 7
+  },
+  "stats": {
+    "hp": 575,
+    "hpperlevel": 92,
+    "mp": 350,
+    "mpperlevel": 50,
+    "movespeed": 325,
+    "armor": 19,
+    "armorperlevel": 3.6,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 550,
+    "hpregen": 7,
+    "hpregenperlevel": 0.6,
+    "mpregen": 6,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 57,
+    "attackdamageperlevel": 3.2,
+    "attackspeedperlevel": 1.36,
+    "attackspeed": 0.625
+  },
+  "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Center_of_the_Universe",
+      "maxrank": 0,
+      "cooldown": "{{tt|1|The time within which the same star cannot damage the same target twice.}}",
+      "targeting": "Passive",
+      "image": {
+        "full": "AurelionSol_Passive.png",
+        "sprite": "passive0.png",
+        "group": "passive",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Aurelion Sol''' is constantly orbited by three ''Stars'', each doing a full circumference in {{fd|5.25}} seconds, and beyond them exists an {{as|Outer Limit|buzzword}} affecting his damaging [[Champion ability|abilities]].",
+        "Each ''Star'' deals {{as|{{pp|10+2*x for 5; then + 3*x for 2; then + 6*x for 4; then + 10*x|formula=10 + 2 per level until lvl 5, then + 3 until lvl 7, then + 6 per level until lvl 11, then + 10 per level}}|magic damage}} {{as|(+ {{pp|type = [[File:Celestial Expansion.png|20px|border|link=]] Celestial Expansion's Rank|5 to 25 for 5}}|magic damage}} {{as|(+ 25% AP)}} {{as|magic damage}} to enemies that come into contact with them as well as executes enemy {{tip|minions}} that have less than {{sti|health|{{as|25 health}}}}, including if they are brought to or below that threshold."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Aurelion Sol</b> is constantly orbited by three <i>Stars</i>, each doing a full circumference in <span style=\"font-variant-numeric: tabular-nums;\">5.25</span> seconds, and beyond them exists an <span class=\"buzzword\">Outer Limit</span> affecting his damaging <a class=\"effect link\" title=\"abilities\">Champion ability</a>.<br />Each <i>Star</i> deals <span class=\"magic-damage\"><HtmlTooltip class=\"blue link\">10+2*x for 5; then + 3*x for 2; then + 6*x for 4; then + 10*xundefined −  (based on level)<template #content>Values: 20, 6, 24<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"magic-damage\">(+ <HtmlTooltip class=\"blue link\">5undefined − 25 for 5undefined (based on level)<template #content>Values: 5, 6.176, 7.353, 8.529, 9.706, 10.882, 12.059, 13.235, 14.412, 15.588, 16.765, 17.941, 19.118, 20.294, 21.471, 22.647, 23.824, 25<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip></span> <span class=\"ap\">(+ 25% AP)</span> <span class=\"magic-damage\">magic damage</span> to enemies that come into contact with them as well as executes enemy <HtmlTooltip class=\"blue link\">minions<template #content><div><h4>Lane Minions<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> that have less than <span><span class=\"health\">25 health</span></span>, including if they are brought to or below that threshold.",
+      "leveling": [],
+      "notes": "* The ''Stars'' orbit counterclockwise around '''Aurelion Sol'''.\n* '''Aurelion Sol's''' ''Stars'' have independent {{tip|sight|vision}} hitboxes, meaning that they may remain visible even while he is within a {{tip|brush}}, and must be in the brush themselves in order to be hidden.\n* An individual ''Star'' must complete at least one third of its orbit before it can damage the same target again. \n* In the event that an enemy orbits around '''Aurelion Sol''' at the same rate as his ''Stars'' without leaving their hitbox, they will take damage once every third of the way around.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "AurelionSolQ",
+      "name": "Starsurge",
+      "maxrank": 5,
+      "cooldown": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "image": {
+        "full": "AurelionSolQ.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aurelion Sol''' fires a star in the target direction that expands as long as it remains within the {{as|Outer Limit|buzzword}}, which grants him {{sti|ms|{{as|20% '''bonus''' movement speed}}}} while active. If he moves faster than the star, the speed of the star will increase to keep up.",
+        "''Starsurge'' can be recast after {{fd|0.25}} seconds while the star is active, and does so automatically when the star travels beyond the {{as|Outer Limit|buzzword}}.",
+        "{{sbc|Recast:}} The star detonates, dealing {{as|magic damage}} to nearby enemies and {{tip|stun|stunning}} them for a duration, this duration increased by {{pp|key=%|type=time traveled|0;25;50;75;100 to 300 for 9|0;0.1875;0.375;0.5625;0.75 to 5}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aurelion Sol</b> fires a star in the target direction that expands as long as it remains within the <span class=\"buzzword\">Outer Limit</span>, which grants him <span><span class=\"movement-speed\">20% <b>bonus</b> movement speed</span></span> while active. If he moves faster than the star, the speed of the star will increase to keep up.<br /><i>Starsurge</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds while the star is active, and does so automatically when the star travels beyond the <span class=\"buzzword\">Outer Limit</span>.<br /><span class=\"sbc\">Recast:</span> The star detonates, dealing <span class=\"magic-damage\">magic damage</span> to nearby enemies and <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for a duration, this duration increased by <span class=\"title-tooltip\" title=\"\">0;0.1875;0.375;0.5625;0.75 to 5 ‒ undefined</span>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|70 to 230}} {{as|(+ 65% AP)}}}}{{st|Minimum Stun Duration|{{ap|0.55 to 0.75}}|Maximum Stun Duration|{{ap|2.2 to 3}}}}"
+      ],
+      "notes": "*The initial cast count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Detonating the ability manually does not.\n* So long as '''Aurelion Sol''' manages to keep ''Starsurge'' within the {{as|Outer Limit|buzzword}}, it will continue to expand until detonated or out of range.\n* ''Starsurge's'' size grows by {{fd|36.67}} units per second.",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Minimum Stun Duration</span>: <span><SpellSpan :list=\"[0.55,0.6,0.65,0.7,0.75]\"></SpellSpan></span></li><li><span class=\"blue\">Maximum Stun Duration</span>: <span><SpellSpan :list=\"[2.2,2.4,2.6,2.8,3]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.65
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[70,110,150,190,230]\"></SpellSpan> <span class=\"ap\">(+ 65% AP)</span>"
+              ],
+              [
+                "Minimum Stun Duration",
+                "<SpellSpan :list=\"[0.55,0.6,0.65,0.7,0.75]\"></SpellSpan>",
+                "Maximum Stun Duration",
+                "<SpellSpan :list=\"[2.2,2.4,2.6,2.8,3]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                70,
+                110,
+                150,
+                190,
+                230
+              ],
+              [
+                0.55,
+                0.6,
+                0.65,
+                0.7,
+                0.75
+              ],
+              [
+                2.2,
+                2.4,
+                2.6,
+                2.8,
+                3
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  70,
+                  110,
+                  150,
+                  190,
+                  230
+                ],
+                "player_total_ap": 0.65
+              }
+            },
+            {
+              "index": 1,
+              "title": "Minimum Stun Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  0.55,
+                  0.6,
+                  0.65,
+                  0.7,
+                  0.75
+                ],
+                "player_total_ap": 0.65
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "AurelionSolW",
+      "name": "Celestial_Expansion",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        6.5,
+        5,
+        3.5,
+        2
+      ],
+      "cost": [
+        70,
+        80,
+        90,
+        100,
+        110
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "AurelionSolW.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 336,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} The {{ais|Center of the Universe|Aurelion Sol|}} '''base''' damage is increased.",
+        "{{sbc|Active:}} '''Aurelion Sol''' expands his {{ai|Center of the Universe|Aurelion Sol|Stars}} to the {{as|Outer Limit|buzzword}} for 3 seconds, rotating them at a high but decaying speed, and increasing their '''total''' damage by 40%.",
+        "''Celestial Expansion'' can be recast after 1 second within the duration, and does so automatically after the duration or casting {{ai|Comet of Legend|Aurelion Sol}}.",
+        "{{sbc|Recast:}} '''Aurelion Sol''' commands the stars to retract, granting him {{as|40% '''bonus''' movement speed}} that decays over {{fd|1.5}} seconds.",
+        "''Celestial Expansion's recast can be used while affected by {{tip|cast-inhibiting crowd control}}.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> The <span class=\"ais\">Aurelion Sol's Center of the Universe</span> <b>base</b> damage is increased.<br /><span class=\"sbc\">Active:</span> <b>Aurelion Sol</b> expands his <span class=\"ai\">Aurelion Sol's Stars</span> to the <span class=\"buzzword\">Outer Limit</span> for 3 seconds, rotating them at a high but decaying speed, and increasing their <b>total</b> damage by 40%.<br /><i>Celestial Expansion</i> can be recast after 1 second within the duration, and does so automatically after the duration or casting <span class=\"ai\">Aurelion Sol's Comet of Legend</span>.<br /><span class=\"sbc\">Recast:</span> <b>Aurelion Sol</b> commands the stars to retract, granting him <span class=\"movement-speed\">40% <b>bonus</b> movement speed</span> that decays over <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.<br /><i>Celestial Expansion's recast can be used while affected by <HtmlTooltip class=\"blue link\">cast-inhibiting crowd control<template #content><div><h4>cast-inhibiting crowd control<hr></h4><p>Description for keyword cast-inhibiting crowd control</p></div></template></HtmlTooltip>.</i>",
+      "leveling": [
+        "{{st|Bonus Damage|{{ap|5 to 25}}}}",
+        "{{st|Total Damage|{{pp|(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*x}} (+ {{ap|5*1.4 to 25*1.4}}) {{as|(+ {{ap|25*1.4}}% AP)}}}}"
+      ],
+      "notes": "* The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n** Deactivating the ability manually does not.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Damage</span>: <span><SpellSpan :list=\"[5,10,15,20,25]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Damage",
+                "<SpellSpan :list=\"[5,10,15,20,25]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                5,
+                10,
+                15,
+                20,
+                25
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  5,
+                  10,
+                  15,
+                  20,
+                  25
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Total Damage</span>: <span><HtmlTooltip class=\"blue link\">(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*xundefined −  (based on level)<template #content>Values: 8.4, 33.6<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[7,14,21,28,35]\"></SpellSpan>) <span class=\"ap\">(+ <SpellSpan :list=\"[35]\"></SpellSpan>% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": [
+                  0.35
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Total Damage",
+                "<HtmlTooltip class=\"blue link\">(10+2*x)*1.4 for 5; then + 3*1.4*x for 2; then + 6*1.4*x for 4; then + 10*1.4*xundefined −  (based on level)<template #content>Values: 8.4, 33.6<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> (+ <SpellSpan :list=\"[7,14,21,28,35]\"></SpellSpan>) <span class=\"ap\">(+ <SpellSpan :list=\"[35]\"></SpellSpan>% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                7,
+                14,
+                21,
+                28,
+                35
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Total Damage",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  7,
+                  14,
+                  21,
+                  28,
+                  35
+                ],
+                "player_total_ap": [
+                  0.35
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "AurelionSolE",
+      "name": "Comet_of_Legend",
+      "maxrank": 5,
+      "cooldown": [
+        80,
+        75,
+        70,
+        65,
+        60
+      ],
+      "cost": 60,
+      "costtype": "Mana",
+      "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "image": {
+        "full": "AurelionSolE.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aurelion Sol''' pulls in his {{ai|Center of the Universe|Aurelion Sol|stars}} and takes flight, {{tip|dash|dashing}} in the target direction. While in flight, '''Aurelion Sol''' has {{tip|unobstructed vision}} and sets his {{as|movement speed}} to a {{tt|static amount|Cannot be modified}}.",
+        "'''''Aurelion Sol''' will be {{tip|knockdown|knocked down}} by any {{tip|immobilize|immobilizing}} crowd control during the dash.''",
+        "''Comet of Legend'' can be recast after {{fd|1.5}} seconds during flight, and automatically does so at maximum range or upon taking damage from enemy {{tip|champions}} or {{tip|turrets}}.",
+        "{{sbc|Recast:}} '''Aurelion Sol''' ends ''Comet of Legend'' early.",
+        "If damage is taken while ''Comet of Legend'' is not active, it is placed on a 4-second {{sti|{{tt|static cooldown|Unaffected by ability haste}}}}. '''Aurelion Sol''' will be {{tip|sight|revealed}} while he is inside [[terrain]] and is in the line of sight of nearby enemies"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aurelion Sol</b> pulls in his <span class=\"ai\">Aurelion Sol's stars</span> and takes flight, <HtmlTooltip class=\"blue link\">dashing<template #content><div><h4>dash<hr></h4><p>Description for keyword dash</p></div></template></HtmlTooltip> in the target direction. While in flight, <b>Aurelion Sol</b> has <HtmlTooltip class=\"blue link\">unobstructed vision<template #content><div><h4>unobstructed vision<hr></h4><p>Description for keyword unobstructed vision</p></div></template></HtmlTooltip> and sets his <span class=\"movement-speed\">movement speed</span> to a <span class=\"title-tooltip\" title=\"Cannot be modified\">static amount</span>.<br /><b><i>Aurelion Sol</b> will be <HtmlTooltip class=\"blue link\">knocked down<template #content><div><h4>Knockdown<hr></h4><p>Only affects <b>Airborne</b> or <i>dashing</i> units. Target unit is stopped and placed on the ground. Instantaneous</p></div></template></HtmlTooltip> by any <HtmlTooltip class=\"blue link\">immobilizing<template #content><div><h4>immobilize<hr></h4><p>Description for keyword immobilize</p></div></template></HtmlTooltip> crowd control during the dash.</i><br /><i>Comet of Legend</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds during flight, and automatically does so at maximum range or upon taking damage from enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> or <HtmlTooltip class=\"blue link\">turrets<template #content><div><h4>turrets<hr></h4><p>Description for keyword turrets</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast:</span> <b>Aurelion Sol</b> ends <i>Comet of Legend</i> early.<br />If damage is taken while <i>Comet of Legend</i> is not active, it is placed on a 4-second <span><span class=\"title-tooltip\" title=\"Unaffected by ability haste\">static cooldown</span></span>. <b>Aurelion Sol</b> will be <HtmlTooltip class=\"blue link\">revealed<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> while he is inside <a class=\"effect link\" title=\"terrain\">terrain</a> and is in the line of sight of nearby enemies",
+      "leveling": [
+        "{{st|Static Movement Speed|{{ap|600 to 800}}}}"
+      ],
+      "notes": "[[File:Comet_of_Legend_max_range_indicator.png|150px|thumb|right|Max range indicator]]\n* The spot at which the flight will reach maximum range is highlighted to '''Aurelion Sol'''.\n* The following table refers to interactions during ''Comet of Legend'':\n{{ct|attack=Disabled for the first {{fd|1.5}} seconds, interrupts afterwards.|move=Disabled for the first {{fd|1.5}} seconds, interrupts afterwards.|cast={{ai|Starsurge|Aurelion Sol}} is usable. {{ai|Celestial Expansion|Aurelion Sol}} and {{ai|Voice of Light|Aurelion Sol}} are disabled.|items=true,,interrupts,interrupts,interrupts,,interrupts,interrupts|spells=true, interrupts, interrupts, interrupts, false, true, interrupts|interrupts=death, root|damage=true}}",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Static Movement Speed</span>: <span><SpellSpan :list=\"[600,650,700,750,800]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Static Movement Speed",
+                "<SpellSpan :list=\"[600,650,700,750,800]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                600,
+                650,
+                700,
+                750,
+                800
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Static Movement Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "AurelionSolR",
+      "name": "Voice_of_Light",
+      "maxrank": 3,
+      "cooldown": [
+        110,
+        90,
+        70
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "AurelionSolR.png",
+        "sprite": "spell1.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Aurelion Sol''' exhales a telegraphed wave of star fire in the target direction, granting {{tip|sight}} of the area for 2 seconds from the start of the cast time, dealing {{as|magic damage}} to enemies within its path, {{tip|slow|slowing}} them for 2 seconds and, if they are within the {{as|Outer Limit|buzzword}}, {{tip|stun|stunning}} them for {{fd|0.125}} seconds and {{tip|airborne|knocking them back}} to it.",
+        "'''''Aurelion Sol''' {{tip|channel|channels}} over {{fd|0.3}} seconds until the star fire reaches maximum range. Voice of Light cannot be {{tip|interrupt|interrupted}} by {{tip|crowd control}}.''",
+        "{{ai|W|Aurelion Sol}} can be cast during ''Voice of Light''."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Aurelion Sol</b> exhales a telegraphed wave of star fire in the target direction, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of the area for 2 seconds from the start of the cast time, dealing <span class=\"magic-damage\">magic damage</span> to enemies within its path, <HtmlTooltip class=\"blue link\">slowing<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 2 seconds and, if they are within the <span class=\"buzzword\">Outer Limit</span>, <HtmlTooltip class=\"blue link\">stunning<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">0.125</span> seconds and <HtmlTooltip class=\"blue link\">knocking them back<template #content><div><h4>airborne<hr></h4><p>Description for keyword airborne</p></div></template></HtmlTooltip> to it.<br /><b><i>Aurelion Sol</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> over <span style=\"font-variant-numeric: tabular-nums;\">0.3</span> seconds until the star fire reaches maximum range. Voice of Light cannot be <HtmlTooltip class=\"blue link\">interrupted<template #content><div><h4>interrupt<hr></h4><p>Description for keyword interrupt</p></div></template></HtmlTooltip> by <HtmlTooltip class=\"blue link\">crowd control<template #content><div><h4>Crowd Control (CC)<hr></h4><p><b>Crowd Control</b> or CC are spells effects the prevent enemny movement, spell casting, or something.</p></div></template></HtmlTooltip>.</i><br /><span class=\"ai\">Aurelion Sol's W</span> can be cast during <i>Voice of Light</i>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|150 to 350}} {{as|(+ 70% AP)}}}}{{st|Slow|{{ap|40 to 60}}%}}"
+      ],
+      "notes": "{{Effect at cast time end}}\n** The displacement will begin as soon as the target is hit.\n* '''Aurelion Sol''' will {{tip|sight|reveal}} himself during the channel if there is an enemy champion near the area.\n* {{tip|Displacement immunity}} will also resist the application of the {{tip|stun}}.\n{{ct|cast}}",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[40,50,60]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[150,250,350]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[40,50,60]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                150,
+                250,
+                350
+              ],
+              [
+                40,
+                50,
+                60
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  150,
+                  250,
+                  350
+                ],
+                "player_total_ap": 0.7000000000000001
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  50,
+                  60
+                ],
+                "player_total_ap": 0.7000000000000001
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

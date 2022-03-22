@@ -1,0 +1,604 @@
+{
+  "patch": "Alpha Week 2",
+  "changes": "12.5.1",
+  "id": "MasterYi",
+  "name": "Master Yi",
+  "title": "the Wuju Bladesman",
+  "image": {
+    "full": "MasterYi.png",
+    "sprite": "champion2.png",
+    "group": "champion",
+    "x": 192,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "resource": "Mana",
+  "herotype": "Assassin",
+  "alttype": "Fighter",
+  "rangetype": "Melee",
+  "be_cost": 450,
+  "rp_cost": 260,
+  "adaptivetype": "physical",
+  "info": {
+    "attack": 10,
+    "defense": 4,
+    "magic": 2,
+    "difficulty": 4
+  },
+  "stats": {
+    "hp": 599,
+    "hpperlevel": 92,
+    "mp": 251,
+    "mpperlevel": 42,
+    "movespeed": 355,
+    "armor": 33,
+    "armorperlevel": 3,
+    "spellblock": 32,
+    "spellblockperlevel": 1.25,
+    "attackrange": 125,
+    "hpregen": 7.5,
+    "hpregenperlevel": 0.65,
+    "mpregen": 7.26,
+    "mpregenperlevel": 0.45,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 66,
+    "attackdamageperlevel": 3,
+    "attackspeedperlevel": 2,
+    "attackspeed": 0.679
+  },
+  "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Double_Strike",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "MasterYi_Passive1.png",
+        "sprite": "passive2.png",
+        "group": "passive",
+        "x": 192,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} '''Master Yi's''' [[basic attack]]s {{tip|on-hit}} grant a [[stack]] of ''Double Strike'' for 4 seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks. At 3 stacks, '''Master Yi's''' next basic attack {{tip|on-hit}} consumes the stacks to strike twice, the second strike dealing {{as|50% AD}} {{as|physical damage}}.",
+        "The second strike applies {{tip|on-hit}} and {{tip|on-attack}} effects at 100% effectiveness and is affected by {{tip|critical strike}} modifiers.",
+        "If '''Master Yi's''' primary target is killed before the second strike, he automatically attacks another enemy within 300 range.",
+        "''The second strike can {{tip|critical strike|critically strike}} {{tip|turrets|structures}}.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> <b>Master Yi's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> grant a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Double Strike</i> for 4 seconds, stacking up to 3 times, with the duration refreshing on subsequent attacks. At 3 stacks, <b>Master Yi's</b> next basic attack <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> consumes the stacks to strike twice, the second strike dealing <span class=\"ad\">50% AD</span> <span class=\"physical-damage\">physical damage</span>.<br />The second strike applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">on-attack<template #content><div><h4>on-attack<hr></h4><p>Description for keyword on-attack</p></div></template></HtmlTooltip> effects at 100% effectiveness and is affected by <HtmlTooltip class=\"blue link\">critical strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> modifiers.<br />If <b>Master Yi's</b> primary target is killed before the second strike, he automatically attacks another enemy within 300 range.<br /><i>The second strike can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip> <HtmlTooltip class=\"blue link\">structures<template #content><div><h4>turrets<hr></h4><p>Description for keyword turrets</p></div></template></HtmlTooltip>.</i>",
+      "leveling": [],
+      "notes": "* Since ''Double Strike'' resets the counter on-attack and the second strike applies on-hit effects, the second strike is able to add a stack for the next ''Double Strike'' activation.\n* If ''Double Strike's'' target becomes {{tip|untargetable}} shortly after the triggering attack, it will still occur and deal its effects as usual.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "AlphaStrike",
+      "name": "Alpha_Strike",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        17.5,
+        17,
+        16.5,
+        16
+      ],
+      "cost": [
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "costtype": "Mana",
+      "targeting": "Unit",
+      "image": {
+        "full": "AlphaStrike.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 96,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Master Yi''' {{tip|vanish|vanishes}} and becomes {{tip|lockout|unable to act}} and, after {{rutngt|0.2}}, marks the target enemy and then moves to mark the nearest {{tip|sight|visible}} un-marked enemy within 600 units, recurring up to 3 times, once every {{rutngt|0.2}}.",
+        "Upon finishing marking, or if there are no other valid targets, he {{tip|blinks|reappears}} and becomes able to act again{{ft|after {{rutngt|0.15}}|{{tt|{{fd|1.087}} seconds|effective time due to game ticks}} after the start of the cast with 4 bounces}}{{tt|in front of the target|75 units before the target in their current facing direction}}, and deals {{as|physical damage}} to all marked enemies and applies {{tip|on-hit}} effects at 75% effectiveness. If the primary target {{tip|death|dies}} or is too far away during the delay, he will reappear at the cast location instead. ''Alpha Strike'' deals '''bonus''' damage to {{tip|monster|monsters}} per hit.",
+        "If there are no other nearby enemies that have not been marked, '''Master Yi''' may strike the same enemies again with each one dealing {{fd|{{#var:l}}}}% damage and applying {{tip|on-hit}} effects at {{fd|18.75}}% effectiveness.",
+        "''Alpha Strike's'' primary and lesser damage can {{tip|critically strike}} for {{as|{{critical damage|17.5}} AD}} {{as|'''bonus''' physical damage}} and {{as|{{critical damage|{{#expr:17.5*{{#var:l}}/100}}}} AD}} {{as|'''bonus''' physical damage}} respectively.",
+        "Basic attacks {{tip|on-hit}} reduce ''Alpha Strike's'' {{sti|cooldown}} by {{tt|1|Reduced with ability haste}} second. Each time ''Alpha Strike'' hits a target, the durations of {{ai|Wuju Style|Master Yi}} and {{ai|Highlander|Master Yi}} are refreshed by their '''current''' duration. ''Alpha Strike'' does not trigger its cooldown reduction nor grant a stack of {{ai|Double Strike|Master Yi}} when applying on-hit effects."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Master Yi</b> <HtmlTooltip class=\"blue link\">vanishes<template #content><div><h4>vanish<hr></h4><p>Description for keyword vanish</p></div></template></HtmlTooltip> and becomes <HtmlTooltip class=\"blue link\">unable to act<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> and, after <span class=\"chamption-name\" title=\"0.2 seconds, but rounded up to the next game tick.\">0.231</span>, marks the target enemy and then moves to mark the nearest <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> un-marked enemy within 600 units, recurring up to 3 times, once every <span class=\"chamption-name\" title=\"0.2 seconds, but rounded up to the next game tick.\">0.231</span>.<br />Upon finishing marking, or if there are no other valid targets, he <HtmlTooltip class=\"blue link\">reappears<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> and becomes able to act again<label class=\"ft\"><input type=\"checkbox\"><span class=\"flipText1\">「&nbsp;after <span class=\"chamption-name\" title=\"0.15 seconds, but rounded up to the next game tick.\">0.165</span>&nbsp;」</span><span class=\"flipText2\">「&nbsp;<span class=\"title-tooltip\" title=\"effective time due to game ticks\"><span style=\"font-variant-numeric: tabular-nums;\">1.087</span> seconds</span> after the start of the cast with 4 bounces&nbsp;」</span></label><span class=\"title-tooltip\" title=\"75 units before the target in their current facing direction\">in front of the target</span>, and deals <span class=\"physical-damage\">physical damage</span> to all marked enemies and applies <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 75% effectiveness. If the primary target <HtmlTooltip class=\"blue link\">dies<template #content><div><h4>death<hr></h4><p>Description for keyword death</p></div></template></HtmlTooltip> or is too far away during the delay, he will reappear at the cast location instead. <i>Alpha Strike</i> deals <b>bonus</b> damage to <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip> per hit.<br />If there are no other nearby enemies that have not been marked, <b>Master Yi</b> may strike the same enemies again with each one dealing <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip></span>% damage and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at <span style=\"font-variant-numeric: tabular-nums;\">18.75</span>% effectiveness.<br /><i>Alpha Strike's</i> primary and lesser damage can <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critically strike<hr></h4><p>Description for keyword critically strike</p></div></template></HtmlTooltip> for <span class=\"ad\"><span class=\"critical-strike\">(+ IE 25%)</span> AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span> and <span class=\"ad\"><span class=\"critical-strike\">(+ IE 25%)</span> AD</span> <span class=\"physical-damage\"><b>bonus</b> physical damage</span> respectively.<br />Basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> reduce <i>Alpha Strike's</i> <span>cooldown</span> by <span class=\"title-tooltip\" title=\"Reduced with ability haste\">1</span> second. Each time <i>Alpha Strike</i> hits a target, the durations of <span class=\"ai\">Master Yi's Wuju Style</span> and <span class=\"ai\">Master Yi's Highlander</span> are refreshed by their <b>current</b> duration. <i>Alpha Strike</i> does not trigger its cooldown reduction nor grant a stack of <span class=\"ai\">Master Yi's Double Strike</span> when applying on-hit effects.",
+      "leveling": [
+        "{{st|Physical Damage|{{ap|{{#var:b1}} to {{#var:b5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}}}\n{{st|Monster Bonus Damage per hit|{{ap|{{#var:m1}} to {{#var:m5}}}}|Monster Total Damage|{{ap|{{#var:b1}}+{{#var:m1}} to {{#var:b5}}+{{#var:m5}}}} {{as|(+ {{fd|{{#var:r}}}}% AD)}}}}",
+        "{{st|Reduced Damage per hit|{{ap|{{#var:b1}}*{{#var:l}}/100 to {{#var:b5}}*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Maximum Single-Target Damage|{{ap|{{#var:b1}}*(1+{{#var:l}}/100*3) to {{#var:b5}}*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}\n{{st|Reduced Monster Damage per hit|{{ap|({{#var:b1}}+{{#var:m1}})*{{#var:l}}/100 to ({{#var:b5}}+{{#var:m5}})*{{#var:l}}/100}} {{as|(+ {{ap|{{#var:r}}*{{#var:l}}/100}}% AD)}}|Max Monster Single-Target Damage|{{ap|({{#var:b1}}+{{#var:m1}})*(1+{{#var:l}}/100*3) to ({{#var:b5}}+{{#var:m5}})*(1+{{#var:l}}/100*3)}} {{as|(+ {{ap|{{#var:r}}*(1+{{#var:l}}/100*3)}}% AD)}}}}"
+      ],
+      "notes": "* ''Alpha Strike's'' primary damage applies after '''Master Yi''' reappears.\n* ''Alpha Strike's'' {{sti|cooldown reduction}} applies on {{tip|turret|structures}}.\n* When '''Master Yi''' bounces from a unit it will grant {{tip|sight|vision}} in a 600 radius around it for up-until {{rutngt|0.6}} <!-- this 0.6s after reappearing value is not confirmed as \"the one\", btw, might also be 0.625s after reappearing or 0.75s after last bounce --> after ''Alpha Strike'' ends, including across terrain, though not into {{tip|brush|brushes}}. It will always grant vision around the primary target even if he doesn't bounce off it.\n* ''Alpha Strike's'' damage is calculated the moment the mark is placed. Because of this it is possible to inflict differing amounts of damage if '''Master Yi''' changes his {{as|AD}} in the middle of ''Alpha Strike''.\n* '''Master Yi''' will follow all his primary target's movements.\n** ''Alpha Strike'' can only follow up-to {{tt|2000|From Yi's location at start of cast}} units; If the target teleports a very long distance, it will not be followed.\n* If the primary target becomes {{tip|untargetable}} and there are no other nearby valid targets, ''Alpha Strike'' will end prematurely and will not deal the damage occurring after '''Master Yi's''' reappearance.\n* If the primary target is a champion '''Master Yi''' will automatically attack it once ''Alpha Strike'' ends, and thus '''Master Yi''' will not be able to buffer other abilities.{{bug}}\n* {{tip|Spell shield}} will only block a single instance of damage.\n* On-hit damage applied by ''Alpha Strike'' will be negated by {{tip|dodge}} and {{tip|block}}, but not while '''Master Yi''' is {{tip|blind|blinded}}.\n** ''Alpha Strike's'' own damage will not be negated.\n*If '''Master Yi''' {{tip|death|dies}} during ''Alpha Strike'' and he is only focusing one target, the ability will only deal the reduced damage strikes and not the final tick of damage from reappearing.\n** If he is striking multiple targets the damage will be dealt immediately when ''dying'', and if he ''dies'' before the bounce from the last target, ''Alpha Strike'' will deal reduced damage only to all units he already bounced from.{{bug}}\n* If '''Master Yi''' enters {{tip|resurrection}} during ''Alpha Strike'' and he is only focusing one target, the ability will deal the reduced damage strikes as normal and the final tick of damage after being ''resurrected''.\n** If he is striking multiple targets, ''Alpha Strike'' will ''sometimes'' deal the reduced damage from repeated bounces and the main damage after being ''resurrected'', and ''sometimes'' only the reduced damage, unrelated to the number of targets available.{{bug}}\n* The following table refers for interactions while '''Master Yi''' is performing ''Alpha Strike'':\n{{ct|attack=false|move=false|cast={{ai|Wuju Style|Master Yi}} and {{ai|Highlander|Master Yi}} are usable. {{ai|Meditate|Master Yi}} is disabled.|items=false|consume=false|spells=true,false,false,false,false|interrupts=death}}",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Monster Bonus Damage per hit</span>: <span><SpellSpan :list=\"[]\"></SpellSpan></span></li><li><span class=\"blue\">Monster Total Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": null
+              },
+              {
+                "player_total_ap": null
+              }
+            ],
+            "st_slices": [
+              [
+                "Physical Damage",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>"
+              ],
+              [
+                "Monster Bonus Damage per hit",
+                "<SpellSpan :list=\"[]\"></SpellSpan>",
+                "Monster Total Damage",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <span style=\"font-variant-numeric: tabular-nums;\"><simple-tooltip class=\"capture-unknown\" dname=\"#var:r\">Unknown value: #var:r</simple-tooltip></span>% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [],
+              [],
+              []
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [],
+                "player_total_ap": null
+              }
+            },
+            {
+              "index": 1,
+              "title": "Monster Bonus Damage per hit",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [],
+                "player_total_ap": null
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Reduced Damage per hit</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Maximum Single-Target Damage</span>: <span><SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Reduced Monster Damage per hit</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li><li><span class=\"blue\">Max Monster Single-Target Damage</span>: <span><simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              },
+              {
+                "player_total_ad": []
+              }
+            ],
+            "st_slices": [
+              [
+                "Reduced Damage per hit",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+                "Maximum Single-Target Damage",
+                "<SpellSpan :list=\"[]\"></SpellSpan> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
+              ],
+              [
+                "Reduced Monster Damage per hit",
+                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100 to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>",
+                "Max Monster Single-Target Damage",
+                "<simple-tooltip class=\"red\" dname=\"ap (0+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m1\">Unknown value: #var:m1</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3) to (<simple-tooltip class=\"capture-unknown\" dname=\"#var:b5\">Unknown value: #var:b5</simple-tooltip>+<simple-tooltip class=\"capture-unknown\" dname=\"#var:m5\">Unknown value: #var:m5</simple-tooltip>)*(1+<simple-tooltip class=\"capture-unknown\" dname=\"#var:l\">Unknown value: #var:l</simple-tooltip>/100*3)\">Error: SyntaxError: Invalid regular expression: missing /</simple-tooltip> <span class=\"ad\">(+ <SpellSpan :list=\"[]\"></SpellSpan>% AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [],
+              [],
+              [],
+              [],
+              [],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Reduced Damage per hit",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [],
+                "player_total_ad": []
+              }
+            },
+            {
+              "index": 1,
+              "title": "Reduced Monster Damage per hit",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [],
+                "player_total_ad": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "Meditate",
+      "name": "Meditate",
+      "maxrank": 5,
+      "cooldown": [
+        28
+      ],
+      "cost": 50,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "Meditate.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 144,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Master Yi''' {{tip|channels}} for up to 4 seconds, {{tip|healing}} himself every {{fd|0.5}} seconds, increased by {{as|{{pp|type='''missing''' health|key=%|0 to 100 for 11|key1=%|0 to 100|formula=1% per 1% missing health}}|health}}.",
+        "While channeling, '''Master Yi''' gains {{tip|damage reduction}}, halved against {{tip|Turret|turrets}}, pauses {{ais|Wuju Style|Master Yi}} and {{ais|Highlander|Master Yi}} duration, and gains one stack of {{ai|Double Strike|Master Yi}} per second.",
+        "If the channel is cancelled, '''Master Yi''' reduces incoming damage for another {{fd|0.25}} seconds, with lesser effectiveness against non-turret damage but greater effectiveness vs turret damage. {{bug|1}}<!-- Yes it scales down with ranks as of current patch contact AnataBakka or Teh 2020-04-20 -->",
+        "''Meditate'' {{tip|basic attack reset|resets}} '''Master Yi's''' basic attack timer."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Master Yi</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channels<hr></h4><p>Description for keyword channels</p></div></template></HtmlTooltip> for up to 4 seconds, <HtmlTooltip class=\"blue link\">healing<template #content><div><h4>healing<hr></h4><p>Description for keyword healing</p></div></template></HtmlTooltip> himself every <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds, increased by <span class=\"health\"><span class=\"title-tooltip\" title=\"\">0 to 100 ‒ undefined</span></span>.<br />While channeling, <b>Master Yi</b> gains <HtmlTooltip class=\"blue link\">damage reduction<template #content><div><h4>damage reduction<hr></h4><p>Description for keyword damage reduction</p></div></template></HtmlTooltip>, halved against <HtmlTooltip class=\"blue link\">turrets<template #content><div><h4>Turret<hr></h4><p>Description for keyword Turret</p></div></template></HtmlTooltip>, pauses <span class=\"ais\">Master Yi's Wuju Style</span> and <span class=\"ais\">Master Yi's Highlander</span> duration, and gains one stack of <span class=\"ai\">Master Yi's Double Strike</span> per second.<br />If the channel is cancelled, <b>Master Yi</b> reduces incoming damage for another <span style=\"font-variant-numeric: tabular-nums;\">0.25</span> seconds, with lesser effectiveness against non-turret damage but greater effectiveness vs turret damage. <simple-tooltip class=\"capture-unknown\" dname=\"bug / 1\">Unknown value: bug / 1</simple-tooltip><br /><i>Meditate</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Master Yi's</b> basic attack timer.",
+      "leveling": [
+        "{{st|Minimum Healing Per Half Second|{{ap|15 to 55}} {{as|(+ {{fd|12.5}}% AP)}}|Maximum Healing Per Half Second|{{ap|15*2 to 55*2}} {{as|(+ 25% AP)}}}}<!--\n-->{{st|Minimum Total Healing|{{ap|15*8 to 55*8}} {{as|(+ 100% AP)}}|Maximum Total Healing|{{ap|15*8*2 to 55*8*2}} {{as|(+ 200% AP)}}}}",
+        "{{st|Damage Reduction|{{ap|60 to 70}}%|Turret Damage Reduction|{{ap|60/2 to 70/2}}%}}",
+        "{{st|Post-Channel Damage Reduction|{{ap|100-60 to 100-70}}%|Post-Channel Turret Damage Reduction|{{ap|100-60/2 to 100-70/2}}%}}"
+      ],
+      "notes": "* ''Meditate's'' healing amount updates dynamically as he heals himself, making '''Master Yi''' heal for less as his '''current''' health increases.\n* The following table refers for interactions while '''Master Yi''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=interrupts|cast=interrupts|move=interrupts|items=interrupts,true,,false|spells=true, interrupts, interrupts, interrupts, interrupts}}",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Minimum Healing Per Half Second</span>: <span><SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span></span></li><li><span class=\"blue\">Maximum Healing Per Half Second</span>: <span><SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Minimum Total Healing</span>: <span><SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span></span></li><li><span class=\"blue\">Maximum Total Healing</span>: <span><SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.25
+              },
+              {
+                "player_total_ap": 1
+              },
+              {
+                "player_total_ap": 2
+              },
+              {
+                "player_total_ap": 0.125
+              }
+            ],
+            "st_slices": [
+              [
+                "Minimum Total Healing",
+                "<SpellSpan :list=\"[120,200,280,360,440]\"></SpellSpan> <span class=\"ap\">(+ 100% AP)</span>",
+                "Maximum Total Healing",
+                "<SpellSpan :list=\"[240,400,560,720,880]\"></SpellSpan> <span class=\"ap\">(+ 200% AP)</span>"
+              ],
+              [
+                "Minimum Healing Per Half Second",
+                "<SpellSpan :list=\"[15,25,35,45,55]\"></SpellSpan> <span class=\"ap\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.5</span>% AP)</span>",
+                "Maximum Healing Per Half Second",
+                "<SpellSpan :list=\"[30,50,70,90,110]\"></SpellSpan> <span class=\"ap\">(+ 25% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                15,
+                25,
+                35,
+                45,
+                55
+              ],
+              [
+                30,
+                50,
+                70,
+                90,
+                110
+              ],
+              [
+                120,
+                200,
+                280,
+                360,
+                440
+              ],
+              [
+                240,
+                400,
+                560,
+                720,
+                880
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Minimum Total Healing",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 1
+              }
+            },
+            {
+              "index": 1,
+              "title": "Minimum Healing Per Half Second",
+              "damage_type": "none",
+              "ratios": {
+                "player_total_ap": 1
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Damage Reduction</span>: <span><SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%</span></li><li><span class=\"blue\">Turret Damage Reduction</span>: <span><SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Damage Reduction",
+                "<SpellSpan :list=\"[60,62.5,65,67.5,70]\"></SpellSpan>%",
+                "Turret Damage Reduction",
+                "<SpellSpan :list=\"[30,31.25,32.5,33.75,35]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                62.5,
+                65,
+                67.5,
+                70
+              ],
+              [
+                30,
+                31.25,
+                32.5,
+                33.75,
+                35
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Damage Reduction",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  62.5,
+                  65,
+                  67.5,
+                  70
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Post-Channel Damage Reduction</span>: <span><SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%</span></li><li><span class=\"blue\">Post-Channel Turret Damage Reduction</span>: <span><SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Post-Channel Damage Reduction",
+                "<SpellSpan :list=\"[40,37.5,35,32.5,30]\"></SpellSpan>%",
+                "Post-Channel Turret Damage Reduction",
+                "<SpellSpan :list=\"[70,68.75,67.5,66.25,65]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                37.5,
+                35,
+                32.5,
+                30
+              ],
+              [
+                70,
+                68.75,
+                67.5,
+                66.25,
+                65
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Post-Channel Damage Reduction",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  37.5,
+                  35,
+                  32.5,
+                  30
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "WujuStyle",
+      "name": "Wuju_Style",
+      "maxrank": 5,
+      "cooldown": [
+        18,
+        17,
+        16,
+        15,
+        14
+      ],
+      "cost": 0,
+      "targeting": "Auto",
+      "image": {
+        "full": "WujuStyle.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 192,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Master Yi''' empowers his sword, causing his basic attacks to deal {{sti|{{as|'''bonus''' true damage}}}} {{tip|on-hit}} for 5 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Master Yi</b> empowers his sword, causing his basic attacks to deal <span><span class=\"true-damage\"><b>bonus</b> true damage</span></span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> for 5 seconds.",
+      "leveling": [
+        "{{st|True Damage|{{as|{{ap|30 to 62}}|true damage}} {{as|(+ 30% '''bonus''' AD)}}}}"
+      ],
+      "notes": "* ''Wuju Style'' can be cast during {{ai|Alpha Strike|Master Yi}}.\n* ''Wuju Style'' can't be cast while it is already active.\n* ''Wuju Style's'' bonus true damage does not interact with {{tip|critical strike|critical strikes}} nor does it affect structures.\n* ''Wuju Style's'' bonus true damage cannot be {{tip|block|blocked}} but can be {{tip|dodge|dodged}} and/or missed if '''Master Yi''' is {{tip|blind|blinded}}.",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">True Damage</span>: <span><span class=\"true-damage\"><SpellSpan :list=\"[30,38,46,54,62]\"></SpellSpan></span> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 0.3
+              },
+              {
+                "player_total_<spellspan :list=\"[30,38,46,54,62]\"></spellspan>": [
+                  30,
+                  38,
+                  46,
+                  54,
+                  62
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "True Damage",
+                "<span class=\"true-damage\"><SpellSpan :list=\"[30,38,46,54,62]\"></SpellSpan></span> <span class=\"ad\">(+ 30% <b>bonus</b> AD)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "True Damage",
+              "damage_type": "true",
+              "ratios": {
+                "player_bonus_ad": 0.3,
+                "player_total_<spellspan :list=\"[30,38,46,54,62]\"></spellspan>": [
+                  30,
+                  38,
+                  46,
+                  54,
+                  62
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "Highlander",
+      "name": "Highlander",
+      "maxrank": 3,
+      "cooldown": [
+        85
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "Highlander.png",
+        "sprite": "spell7.png",
+        "group": "spell",
+        "x": 240,
+        "y": 144,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} Scoring a {{tip|takedown}} against an enemy {{tip|champion}} reduces the '''current''' {{sti|cooldown|cooldowns}} of '''Master Yi's''' basic [[Champion ability|abilities]] by 70%.",
+        "{{sbc|Active:}} '''Master Yi''' {{tip|cleanse|cleanses}} himself from all {{tip|slow|slows}} and {{tip|cripple|cripples}} and gains {{tip|ghosting}}, {{sti|{{as|'''bonus''' attack speed}}}}, {{sti|ms|{{as|'''bonus''' movement speed}}}}, {{tip|slow-immune|slow immunity}}, and {{tip|cripple-immune|cripple immunity}} all for the next 7 seconds.",
+        "While active, scoring a {{tip|takedown}} against an enemy champion extends ''Highlander's'' duration by 7 seconds."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> Scoring a <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip> against an enemy <HtmlTooltip class=\"blue link\">champion<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> reduces the <b>current</b> <span>cooldowns</span> of <b>Master Yi's</b> basic <a class=\"effect link\" title=\"abilities\">Champion ability</a> by 70%.<br /><span class=\"sbc\">Active:</span> <b>Master Yi</b> <HtmlTooltip class=\"blue link\">cleanses<template #content><div><h4>cleanse<hr></h4><p>Description for keyword cleanse</p></div></template></HtmlTooltip> himself from all <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> and <HtmlTooltip class=\"blue link\">cripples<template #content><div><h4>Cripple: Attack Speed Reduction<hr></h4><p>Unit's attack speed is reduced for the duration.</p></div></template></HtmlTooltip> and gains <HtmlTooltip class=\"blue link\">ghosting<template #content><div><h4>ghosting<hr></h4><p>Description for keyword ghosting</p></div></template></HtmlTooltip>, <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span>, <span><span class=\"movement-speed\"><b>bonus</b> movement speed</span></span>, <HtmlTooltip class=\"blue link\">slow immunity<template #content><div><h4>slow-immune<hr></h4><p>Description for keyword slow-immune</p></div></template></HtmlTooltip>, and <HtmlTooltip class=\"blue link\">cripple immunity<template #content><div><h4>cripple-immune<hr></h4><p>Description for keyword cripple-immune</p></div></template></HtmlTooltip> all for the next 7 seconds.<br />While active, scoring a <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip> against an enemy champion extends <i>Highlander's</i> duration by 7 seconds.",
+      "leveling": [
+        "{{st|Bonus Attack Speed|{{ap|25 to 65}}%}}\n{{st|Bonus Movement Speed|{{ap|35 to 55}}%}}"
+      ],
+      "notes": "* ''Highlander'' can be cast during {{ai|Alpha Strike|Master Yi}}.\n* There are two situations that can happen if '''Master Yi''' uses ''Highlander'' while ''Highlander's'' buff is active.\n** If the buff's duration is under 7 seconds, the buff refreshes to 7 seconds.\n** If the buff's duration is above 7 seconds nothing happens.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[25,45,65]\"></SpellSpan>%</span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Bonus Movement Speed</span>: <span><SpellSpan :list=\"[35,45,55]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[25,45,65]\"></SpellSpan>%"
+              ],
+              [
+                "Bonus Movement Speed",
+                "<SpellSpan :list=\"[35,45,55]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                25,
+                45,
+                65
+              ],
+              [
+                35,
+                45,
+                55
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Speed",
+              "damage_type": "none",
+              "ratios": {}
+            },
+            {
+              "index": 1,
+              "title": "Bonus Movement Speed",
+              "damage_type": "none",
+              "ratios": {}
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

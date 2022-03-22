@@ -1,0 +1,595 @@
+{
+  "patch": "Alpha Week 2",
+  "changes": "12.3.1",
+  "id": "TwistedFate",
+  "name": "Twisted Fate",
+  "title": "the Card Master",
+  "image": {
+    "full": "TwistedFate.png",
+    "sprite": "champion4.png",
+    "group": "champion",
+    "x": 0,
+    "y": 48,
+    "w": 48,
+    "h": 48
+  },
+  "resource": "Mana",
+  "herotype": "Mage",
+  "alttype": "",
+  "rangetype": "Ranged",
+  "be_cost": 1350,
+  "rp_cost": 585,
+  "adaptivetype": "magic",
+  "info": {
+    "attack": 6,
+    "defense": 2,
+    "magic": 6,
+    "difficulty": 9
+  },
+  "stats": {
+    "hp": 534,
+    "hpperlevel": 94,
+    "mp": 333,
+    "mpperlevel": 39,
+    "movespeed": 330,
+    "armor": 21,
+    "armorperlevel": 3.15,
+    "spellblock": 30,
+    "spellblockperlevel": 0.5,
+    "attackrange": 525,
+    "hpregen": 5.5,
+    "hpregenperlevel": 0.6,
+    "mpregen": 8,
+    "mpregenperlevel": 0.8,
+    "crit": 0,
+    "critperlevel": 0,
+    "attackdamage": 52,
+    "attackdamageperlevel": 3.3,
+    "attackspeedperlevel": 3.22,
+    "attackspeed": 0.651
+  },
+  "skills": {
+    "i1": {
+      "riotId": "",
+      "name": "Loaded_Dice",
+      "maxrank": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "Cardmaster_SealFate.png",
+        "sprite": "passive4.png",
+        "group": "passive",
+        "x": 0,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Innate:}} Every time '''Twisted Fate''' kills an enemy, he gains {{g|icononly=true}}{{pp|type=probability|1 to 6 for 6|key1=%|100*2/3/5 to 100*2/3/5;100/3|color=gold}}.",
+        "''Since his dice are loaded, '''Twisted Fate''' has an increased chance of gaining {{g|6}}.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Innate:</span> Every time <b>Twisted Fate</b> kills an enemy, he gains <span class=\"gold\"> <img src=\"./src/assets/Gold.png\">undefined</span><span class=\"title-tooltip\" title=\"\">100*2/3/5 to 100*2/3/5;100/3 ‒ undefined</span>.<br /><i>Since his dice are loaded, <b>Twisted Fate</b> has an increased chance of gaining <span class=\"gold\"> <img src=\"./src/assets/Gold.png\">6</span>.</i>",
+      "leveling": [],
+      "notes": "* The expected bonus gold gained per unit killed is {{g|4}}.",
+      "skillkey": "I",
+      "skillid": "i1",
+      "effects": []
+    },
+    "q1": {
+      "riotId": "WildCards",
+      "name": "Wild_Cards",
+      "maxrank": 5,
+      "cooldown": 6,
+      "cost": [
+        60,
+        70,
+        80,
+        90,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Direction",
+      "image": {
+        "full": "WildCards.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 288,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Twisted Fate''' unleashes three cards in a cone in the target direction, dealing {{as|magic damage}} to all enemies they pass through.",
+        "Enemies can only be damaged once by ''Wild Cards''."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Twisted Fate</b> unleashes three cards in a cone in the target direction, dealing <span class=\"magic-damage\">magic damage</span> to all enemies they pass through.<br />Enemies can only be damaged once by <i>Wild Cards</i>.",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|60 to 220}} {{as|(+ 70% AP)}}}}"
+      ],
+      "notes": "{{Effect at cast time end}}",
+      "skillkey": "Q",
+      "skillid": "q1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.7000000000000001
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[60,100,140,180,220]\"></SpellSpan> <span class=\"ap\">(+ 70% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                60,
+                100,
+                140,
+                180,
+                220
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  60,
+                  100,
+                  140,
+                  180,
+                  220
+                ],
+                "player_total_ap": 0.7000000000000001
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "w1": {
+      "riotId": "PickACard",
+      "name": "Pick_a_Card",
+      "maxrank": 5,
+      "cooldown": [
+        8,
+        7.5,
+        7,
+        6.5,
+        6
+      ],
+      "cost": [
+        40,
+        55,
+        70,
+        85,
+        100
+      ],
+      "costtype": "Mana",
+      "targeting": "Auto",
+      "image": {
+        "full": "PickACard.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 336,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Twisted Fate''' cycles through {{ai|Blue Card|Twisted Fate|icononly=true}}{{ai|Red Card|Twisted Fate|icononly=true}}{{ai|Gold Card|Twisted Fate|icononly=true}} three cards for 6 seconds, hovering each for {{fd|0.5}} seconds at a time. ''Pick a Card'' can be recast for the duration, and doing so chooses the current card hovered, empowering '''Twisted Fate's''' next [[basic attack]] within 6 seconds to have a {{fd|0.25}}-second cast time, deal {{as|modified magic damage}}, and apply an additional effect based on the card selected, though not being able to {{tip|critical strike|critically strike}}.",
+        "{{sbc|Recast - {{ai|Blue Card|Twisted Fate}}:}} Restores {{sti|{{as|mana}}}}.",
+        "{{sbc|Recast - {{ai|Red Card|Twisted Fate}}:}} Deals {{as|magic damage}} to all enemies around the target and {{tip|slow|slows}} them for {{fd|2.5}} seconds.",
+        "{{sbc|Recast - {{ai|Gold Card|Twisted Fate}}:}} {{tip|stun|Stuns}} the target for a duration.",
+        "''Pick a Card's recast can be used while affected by {{tip|cast-inhibiting crowd control}}.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Twisted Fate</b> cycles through <span class=\"ai\">Twisted Fate's Blue Card</span><span class=\"ai\">Twisted Fate's Red Card</span><span class=\"ai\">Twisted Fate's Gold Card</span> three cards for 6 seconds, hovering each for <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds at a time. <i>Pick a Card</i> can be recast for the duration, and doing so chooses the current card hovered, empowering <b>Twisted Fate's</b> next <a class=\"effect link\" title=\"basic attack\">basic attack</a> within 6 seconds to have a <span style=\"font-variant-numeric: tabular-nums;\">0.25</span>-second cast time, deal <span class=\"magic-damage\">modified magic damage</span>, and apply an additional effect based on the card selected, though not being able to <HtmlTooltip class=\"blue link\">critically strike<template #content><div><h4>critical strike<hr></h4><p>Description for keyword critical strike</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Recast - <span class=\"ai\">Twisted Fate's Blue Card</span>:</span> Restores <span><span class=\"mana\">mana</span></span>.<br /><span class=\"sbc\">Recast - <span class=\"ai\">Twisted Fate's Red Card</span>:</span> Deals <span class=\"magic-damage\">magic damage</span> to all enemies around the target and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for <span style=\"font-variant-numeric: tabular-nums;\">2.5</span> seconds.<br /><span class=\"sbc\">Recast - <span class=\"ai\">Twisted Fate's Gold Card</span>:</span> <HtmlTooltip class=\"blue link\">Stuns<template #content><div><h4>Stun<hr></h4><p>Unit is unable to control its movement, declare attacks, cast abilities, activate items, or use the summoner <b>Flash</b> and <b>Teleport</b> for the duration.<br><br>\nInterrupts all channeled and charged abilities<br>\nDuration reduced by <b>Tenacity</b>.<br>\nResisted by Spell and Crowd Control Immunity.<br>\nRemoved by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br></p></div></template></HtmlTooltip> the target for a duration.<br /><i>Pick a Card's recast can be used while affected by <HtmlTooltip class=\"blue link\">cast-inhibiting crowd control<template #content><div><h4>cast-inhibiting crowd control<hr></h4><p>Description for keyword cast-inhibiting crowd control</p></div></template></HtmlTooltip>.</i>",
+      "leveling": [
+        "{{st|Magic Damage|{{ap|40 to 120}} {{as|(+ 100% AD)}} {{as|(+ 90% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|50 to 150}}|mana}}}}",
+        "{{st|Magic Damage|{{ap|30 to 90}} {{as|(+ 100% AD)}} {{as|(+ 60% AP)}}}}\n{{st|Slow|{{ap|30 to 50}}%}}",
+        "{{st|Magic Damage|{{ap|15 to 45}} {{as|(+ 100% AD)}} {{as|(+ 50% AP)}}}}\n{{st|Stun Duration|{{ap|1 to 2}}}}"
+      ],
+      "notes": "*The initial cast counts as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n**Recasting the ability does not.\n* The enhanced attack triggers against {{tip|turret|turrets}} but not [[jungle plants]] and {{tip|ward|wards}}. It will not trigger against any other [[structures]].\n* The first card shown is random but the order always remains the same ({{ai|Blue Card|Twisted Fate}}, {{ai|Red Card|Twisted Fate}}, {{ai|Gold Card|Twisted Fate}}, repeat).\n** Upon activation, an indicator visible to allies and enemies appears above '''Twisted Fate''' to show him shuffling his deck of cards while remaining in the same order, the card he can choose at every moment glows over the others. The selected card is specified for the duration of the enhanced attack.\n* {{pending for test}} The interval until the next card is hovered is {{rutngt|0.5}} every time, instead of some times {{fd|0.528}} and other times {{fd|0.495}}.\n* If the target becomes {{tip|untargetable}}, {{tip|death|dies}}, or is too far away during the empowered attack's cast time, it is cancelled but not consumed.",
+      "skillkey": "W",
+      "skillid": "w1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 90% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Mana Restored</span>: <span><span class=\"mana\"><SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan></span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.9
+              },
+              {
+                "player_total_<spellspan :list=\"[50,75,100,125,150]\"></spellspan>": [
+                  50,
+                  75,
+                  100,
+                  125,
+                  150
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[40,60,80,100,120]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 90% AP)</span>"
+              ],
+              [
+                "Mana Restored",
+                "<span class=\"mana\"><SpellSpan :list=\"[50,75,100,125,150]\"></SpellSpan></span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                40,
+                60,
+                80,
+                100,
+                120
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  40,
+                  60,
+                  80,
+                  100,
+                  120
+                ],
+                "player_total_ad": 1,
+                "player_total_ap": 0.9
+              }
+            },
+            {
+              "index": 1,
+              "title": "Mana Restored",
+              "damage_type": "unknown",
+              "ratios": {
+                "player_total_ad": 1,
+                "player_total_ap": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 60% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.6
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[30,45,60,75,90]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 60% AP)</span>"
+              ],
+              [
+                "Slow",
+                "<SpellSpan :list=\"[30,35,40,45,50]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                30,
+                45,
+                60,
+                75,
+                90
+              ],
+              [
+                30,
+                35,
+                40,
+                45,
+                50
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  45,
+                  60,
+                  75,
+                  90
+                ],
+                "player_total_ad": 1
+              }
+            },
+            {
+              "index": 1,
+              "title": "Slow",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  30,
+                  35,
+                  40,
+                  45,
+                  50
+                ],
+                "player_total_ad": 1
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[15,22.5,30,37.5,45]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Stun Duration</span>: <span><SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ad": 1
+              },
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Magic Damage",
+                "<SpellSpan :list=\"[15,22.5,30,37.5,45]\"></SpellSpan> <span class=\"ad\">(+ 100% AD)</span> <span class=\"ap\">(+ 50% AP)</span>"
+              ],
+              [
+                "Stun Duration",
+                "<SpellSpan :list=\"[1,1.25,1.5,1.75,2]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                15,
+                22.5,
+                30,
+                37.5,
+                45
+              ],
+              [
+                1,
+                1.25,
+                1.5,
+                1.75,
+                2
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  15,
+                  22.5,
+                  30,
+                  37.5,
+                  45
+                ],
+                "player_total_ad": 1
+              }
+            },
+            {
+              "index": 1,
+              "title": "Stun Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  1,
+                  1.25,
+                  1.5,
+                  1.75,
+                  2
+                ],
+                "player_total_ad": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "e1": {
+      "riotId": "CardmasterStack",
+      "name": "Stacked_Deck",
+      "maxrank": 5,
+      "cooldown": 0,
+      "cost": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "CardmasterStack.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 384,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Twisted Fate''' gains {{sti|as|{{as|'''bonus''' attack speed}}}}.",
+        "'''Twisted Fate''' also gains a [[stack]] of ''Stacked Deck'' from basic attacks {{tip|on-hit}}, stacking up to 3 times.",
+        "At 3 stacks, his next basic attack consumes all stacks to deal {{as|'''bonus''' magic damage}}."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Twisted Fate</b> gains <span><span class=\"attack-speed\"><b>bonus</b> attack speed</span></span>.<br /><b>Twisted Fate</b> also gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Stacked Deck</i> from basic attacks <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>, stacking up to 3 times.<br />At 3 stacks, his next basic attack consumes all stacks to deal <span class=\"magic-damage\"><b>bonus</b> magic damage</span>.",
+      "leveling": [
+        "{{st|Bonus Attack Speed|{{ap|10 to 40}}%}}",
+        "{{st|Bonus Magic Damage|{{ap|65 to 165}} {{as|(+ 50% AP)}}}}"
+      ],
+      "notes": "* ''Stacked Deck's'' enhanced attack does not apply to [[structure]]s nor will it be consumed against them.\n* ''Stacked Deck'' can be {{tip|dodged}} and/or missed if '''Twisted Fate''' is {{tip|blind|blinded}} (the on-hit effect is not consumed in either case) but cannot be {{tip|blocked}} (the enhanced attack is consumed and the bonus damage is still applied).",
+      "skillkey": "E",
+      "skillid": "e1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Attack Speed</span>: <span><SpellSpan :list=\"[10,17.5,25,32.5,40]\"></SpellSpan>%</span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Bonus Attack Speed",
+                "<SpellSpan :list=\"[10,17.5,25,32.5,40]\"></SpellSpan>%"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                10,
+                17.5,
+                25,
+                32.5,
+                40
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Attack Speed",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  10,
+                  17.5,
+                  25,
+                  32.5,
+                  40
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Magic Damage</span>: <span><SpellSpan :list=\"[65,90,115,140,165]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_total_ap": 0.5
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Magic Damage",
+                "<SpellSpan :list=\"[65,90,115,140,165]\"></SpellSpan> <span class=\"ap\">(+ 50% AP)</span>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                65,
+                90,
+                115,
+                140,
+                165
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Magic Damage",
+              "damage_type": "magic",
+              "ratios": {
+                "base_damage": [
+                  65,
+                  90,
+                  115,
+                  140,
+                  165
+                ],
+                "player_total_ap": 0.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "r1": {
+      "riotId": "Destiny",
+      "name": "Destiny",
+      "maxrank": 3,
+      "cooldown": [
+        180,
+        150,
+        120
+      ],
+      "cost": 100,
+      "costtype": "Mana",
+      "targeting": "[[Auto-targeted|Auto]] / [[Location-targeted|Location]]",
+      "image": {
+        "full": "Destiny.png",
+        "sprite": "spell13.png",
+        "group": "spell",
+        "x": 432,
+        "y": 48,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Active:}} '''Twisted Fate''' summons an eyeball above each and all targetable enemy {{tip|champion|champions}} for a few seconds, {{tip|true sight|revealing}} them for the duration. ''Destiny'' can be recast after {{fd|0.5}} seconds for its duration.",
+        "{{sbc|Recast:}} '''Twisted Fate''' {{tip|channel|channels}} for {{fd|1.5}} seconds, then {{tip|blinks}} to the target location upon completion, {{tip|homing projectile destruction|destroying}} all {{tip|projectiles}} targeting him in the process."
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Twisted Fate</b> summons an eyeball above each and all targetable enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip> for a few seconds, <HtmlTooltip class=\"blue link\">revealing<template #content><div><h4>true sight<hr></h4><p>Description for keyword true sight</p></div></template></HtmlTooltip> them for the duration. <i>Destiny</i> can be recast after <span style=\"font-variant-numeric: tabular-nums;\">0.5</span> seconds for its duration.<br /><span class=\"sbc\">Recast:</span> <b>Twisted Fate</b> <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds, then <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> to the target location upon completion, <HtmlTooltip class=\"blue link\">destroying<template #content><div><h4>homing projectile destruction<hr></h4><p>Description for keyword homing projectile destruction</p></div></template></HtmlTooltip> all <HtmlTooltip class=\"blue link\">projectiles<template #content><div><h4>projectiles<hr></h4><p>Description for keyword projectiles</p></div></template></HtmlTooltip> targeting him in the process.",
+      "leveling": [
+        "{{st|Duration|{{ap|6 to 10}}}}"
+      ],
+      "notes": "*The second cast's name is ''Gate''.\n*Both casts count as ability activations for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* '''Twisted Fate''' cannot recast ''Destiny'' while {{tip|ground|grounded}} or {{tip|root|rooted}}.\n* The {{tip|nearsight}} from {{ai|Paranoia|Nocturne}} will overpower the {{tip|true sight|reveal}} from ''Destiny'' regardless of which one was cast first (enemy champions can still be revealed by ''Destiny'' after ''Paranoia'' ends if durations permit).\n* Using the recast will inform allies with a [[ping]].\n** Both allies and enemies can see an indicator at the targeted location of where '''Twisted Fate''' will appear.\n* The following table refers for interactions while '''Twisted Fate''' is {{tip|channel|channeling}}:\n{{ct|channel|attack=false|move=false|cast={{ai|Pick a Card|Twisted Fate}} is usable. {{ai|Wild Cards|Twisted Fate}} is disabled.|items=true,,interrupts,false,false,false,false,false,melee|spells=false|interrupts=death, ground, root, silence}}\n* Trying to cast a disabled active will buffer it to cast at the completion of the channel.",
+      "skillkey": "R",
+      "skillid": "r1",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Duration</span>: <span><SpellSpan :list=\"[6,8,10]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [],
+            "st_slices": [
+              [
+                "Duration",
+                "<SpellSpan :list=\"[6,8,10]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                6,
+                8,
+                10
+              ]
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Duration",
+              "damage_type": "unknown",
+              "ratios": {
+                "base_damage": [
+                  6,
+                  8,
+                  10
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
