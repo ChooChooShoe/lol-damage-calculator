@@ -60,7 +60,7 @@ export default {
 
     const displayValue = computed(() => {
       const x = Math.round(total.value * 100) / 100;
-      if (suffix) return String(x) + suffix.value;
+      if (suffix && suffix.value) return String(x) + suffix.value;
       return String(x);
     });
     onMounted(() => {

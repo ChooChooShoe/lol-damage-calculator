@@ -404,7 +404,6 @@ console.log('Hello from Item Fetch');
 
 fs.mkdirSync('./src/api/items/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
 
-const cdragonItemsUrl = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json"
 
 // const responseDDragon = await fetch(championUrl);
 // const responseWikia = await fetch(mod_data_url);
@@ -439,14 +438,13 @@ async function onVersionsJsonResponse(body) {
     const ddragonItemUrl = `${cdn}/${version}/data/${lang}/item.json`;
 
     console.log("Fetching (DDragon): %s", ddragonItemUrl);
+    const bodyDDragon = fetch(ddragonItemUrl).then(response => response.json());
+
+    const cdragonItemsUrl = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json"
     console.log("Fetching (CDragon): %s", cdragonItemsUrl);
+    const bodyCDragon = fetch(cdragonItemsUrl).then(response => response.json());
+    const wikiBody = fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ItemData/data?action=edit`);
 
-    const responseDDragon = await fetch(ddragonItemUrl);
-    const responseCDragon = await fetch(cdragonItemsUrl);
-    const wikiBody = await fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ItemData/data?action=edit`);
 
-    const bodyDDragon = await responseDDragon.json();
-    const bodyCDragon = await responseCDragon.json();
-
-    return onItemsJsonResponse(bodyDDragon, bodyCDragon, wikiBody);
+    return onItemsJsonResponse(await bodyDDragon, await bodyCDragon, await wikiBody);
 }

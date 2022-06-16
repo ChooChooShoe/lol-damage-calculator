@@ -1,6 +1,6 @@
 {
   "patch": "v0.9.22.7",
-  "changes": "11.24.1",
+  "changes": "12.11.1",
   "id": "Kassadin",
   "name": "Kassadin",
   "title": "the Void Walker",
@@ -8,7 +8,7 @@
     "full": "Kassadin.png",
     "sprite": "champion1.png",
     "group": "champion",
-    "x": 192,
+    "x": 240,
     "y": 96,
     "w": 48,
     "h": 48
@@ -27,15 +27,15 @@
     "difficulty": 8
   },
   "stats": {
-    "hp": 576,
-    "hpperlevel": 105,
+    "hp": 646,
+    "hpperlevel": 119,
     "mp": 400,
     "mpperlevel": 87,
     "movespeed": 335,
     "armor": 19,
-    "armorperlevel": 2.8,
+    "armorperlevel": 4,
     "spellblock": 30,
-    "spellblockperlevel": 0.5,
+    "spellblockperlevel": 1.3,
     "attackrange": 150,
     "hpregen": 6,
     "hpregenperlevel": 0.5,
@@ -58,7 +58,7 @@
         "full": "Kassadin_Passive.png",
         "sprite": "passive1.png",
         "group": "passive",
-        "x": 192,
+        "x": 240,
         "y": 96,
         "w": 48,
         "h": 48
@@ -97,7 +97,7 @@
         "full": "NullLance.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 96,
+        "x": 288,
         "y": 144,
         "w": 48,
         "h": 48
@@ -109,7 +109,7 @@
       "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kassadin</b> fires an orb of void energy at the target enemy that deals <span class=\"magic-damage\">magic damage</span> and <HtmlTooltip class=\"blue link\">disrupts<template #content><div><h4>Disrupt / Interrupt<hr></h4><p>Interrupts channeled and charged abilities. Like a silence but unit still cast abilites.</p></div></template></HtmlTooltip> their ongoing <HtmlTooltip class=\"blue link\">channels<template #content><div><h4>channel<hr></h4><p>Description for keyword channel</p></div></template></HtmlTooltip>.<br />He then gains a <HtmlTooltip class=\"blue link\">shield<template #content><div><h4>shield<hr></h4><p>Description for keyword shield</p></div></template></HtmlTooltip> that absorbs <span class=\"magic-damage\">magic damage</span> for <span style=\"font-variant-numeric: tabular-nums;\">1.5</span> seconds.",
       "leveling": [
         "{{st|Magic Damage|{{ap|65 to 185}} {{as|(+ 70% AP)}}}}",
-        "{{st|Magic Shield|{{ap|40 to 160}} {{as|(+ 30% AP)}}}}"
+        "{{st|Magic Shield|{{ap|60 to 180}} {{as|(+ 40% AP)}}}}"
       ],
       "notes": "* The {{tip|disrupt}} is 'wrapped' into a status effect that says the target is {{tip|Silence|Silenced}} for {{fd|0.25}} seconds, but it does not actually ''silence''. It however makes sure that the ''disrupt'' is prevented by {{tip|Cc-immune|immunity to silences}}.\n{{Unit-targeted cancel conditions}}",
       "skillkey": "Q",
@@ -158,26 +158,26 @@
           ]
         },
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Shield</span>: <span><SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Shield</span>: <span><SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span></span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.3
+                "player_total_ap": 0.4
               }
             ],
             "st_slices": [
               [
                 "Magic Shield",
-                "<SpellSpan :list=\"[40,70,100,130,160]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span>"
+                "<SpellSpan :list=\"[60,90,120,150,180]\"></SpellSpan> <span class=\"ap\">(+ 40% AP)</span>"
               ]
             ],
             "ap_progressions": [
               [
-                40,
-                70,
-                100,
-                130,
-                160
+                60,
+                90,
+                120,
+                150,
+                180
               ]
             ]
           },
@@ -188,13 +188,13 @@
               "damage_type": "magic",
               "ratios": {
                 "base_damage": [
-                  40,
-                  70,
-                  100,
-                  130,
-                  160
+                  60,
+                  90,
+                  120,
+                  150,
+                  180
                 ],
-                "player_total_ap": 0.3
+                "player_total_ap": 0.4
               }
             }
           ]
@@ -215,21 +215,21 @@
         "full": "NetherBlade.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 144,
+        "x": 336,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Passive:}} '''Kassadin's''' [[basic attack]]s deal {{as|20|magic damage}} {{as|(+ 10% AP)}} {{as|'''bonus''' magic damage}} {{tip|on-hit}}.",
-        "{{sbc|Active:}} '''Kassadin''' empowers his blade, causing his next basic attack within the next 5 seconds to have an {{tip|uncancelable windup}}, gain {{sti|range|50 '''bonus''' range}}, deal increased {{as|'''bonus''' magic damage}}, and restore {{sti|{{as|mana}}}}, with the restoration amount quintupled against {{tip|champion|champions}}.",
+        "{{sbc|Active:}} '''Kassadin''' empowers his blade, causing his next basic attack within the next 5 seconds to have an {{tip|uncancellable windup}}, gain {{sti|range|50 '''bonus''' range}}, deal increased {{as|'''bonus''' magic damage}}, and restore {{sti|{{as|mana}}}}, with the restoration amount quintupled against {{tip|champion|champions}}.",
         "''Nether Blade'' {{tip|basic attack reset|resets}} '''Kassadin's''' basic attack timer."
       ],
-      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Kassadin's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\">20</span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Kassadin</b> empowers his blade, causing his next basic attack within the next 5 seconds to have an <HtmlTooltip class=\"blue link\">uncancelable windup<template #content><div><h4>uncancelable windup<hr></h4><p>Description for keyword uncancelable windup</p></div></template></HtmlTooltip>, gain <span>50 <b>bonus</b> range</span>, deal increased <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, and restore <span><span class=\"mana\">mana</span></span>, with the restoration amount quintupled against <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>.<br /><i>Nether Blade</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Kassadin's</b> basic attack timer.",
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Kassadin's</b> <a class=\"effect link\" title=\"basic attack\">basic attack</a>s deal <span class=\"magic-damage\">20</span> <span class=\"ap\">(+ 10% AP)</span> <span class=\"magic-damage\"><b>bonus</b> magic damage</span> <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip>.<br /><span class=\"sbc\">Active:</span> <b>Kassadin</b> empowers his blade, causing his next basic attack within the next 5 seconds to have an <HtmlTooltip class=\"blue link\">uncancellable windup<template #content><div><h4>uncancellable windup<hr></h4><p>Description for keyword uncancellable windup</p></div></template></HtmlTooltip>, gain <span>50 <b>bonus</b> range</span>, deal increased <span class=\"magic-damage\"><b>bonus</b> magic damage</span>, and restore <span><span class=\"mana\">mana</span></span>, with the restoration amount quintupled against <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champion<hr></h4><p>Description for keyword champion</p></div></template></HtmlTooltip>.<br /><i>Nether Blade</i> <HtmlTooltip class=\"blue link\">resets<template #content><div><h4>basic attack reset<hr></h4><p>Description for keyword basic attack reset</p></div></template></HtmlTooltip> <b>Kassadin's</b> basic attack timer.",
       "leveling": [
         "{{st|Increased Bonus Magic Damage|{{ap|50 to 150}} {{as|(+ 80% AP)}}}}\n{{st|Mana Restored|{{as|{{ap|4 to 6}}% of '''missing''' mana}}|Mana Restored Against Champions|{{as|{{ap|4*5 to 6*5}}% of '''missing''' mana}}}}"
       ],
-      "notes": "* The passive damage applies {{tip|proc damage}} and the active damage applies {{tip|spell damage}}.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Nether Blade'' will not grant mana if the attack is {{tip|dodge|dodged}} or if it {{tip|blind|misses}}, but will do so if the attack is {{tip|block|blocked}}. In all cases the damage is parried.\n* The ''passive'' damage will affect [[structures]] but the ''active'' one will not (the enhanced attack is not consumed).\n* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one.",
+      "notes": "* The passive damage applies {{tip|proc damage}} and the active damage applies {{tip|spell damage}}.\n* The enhanced attack will apply other [[on-hit effect]]s and can {{tip|critical strike|critically strike}} as normal.\n* ''Nether Blade'' will not grant mana if the attack is {{tip|dodge|dodged}} or if it {{tip|blind|misses}}, but will do so if the attack is {{tip|block|blocked}}. In all cases the damage is parried.\n* {{tip|Spell shield}} will block the ''active'' damage but not the ''passive'' one.\n* The passive '''bonus''' damage applies to structures.\n* The empowered attack will trigger but not be consumed nor apply its effects against [[structures]].",
       "skillkey": "W",
       "skillid": "w1",
       "effects": [
@@ -350,7 +350,7 @@
         "full": "ForcePulse.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 192,
+        "x": 384,
         "y": 144,
         "w": 48,
         "h": 48
@@ -361,24 +361,24 @@
       ],
       "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Kassadin</b> gains a <a class=\"effect link\" title=\"stack\">stack</a> of <i>Void Energy</i> each time he or a nearby champion uses an <a class=\"effect link\" title=\"ability\">Champion ability</a>, which stacks up to 6 times.<br /><span class=\"sbc\">Active:</span> <b>Kassadin</b> emits a pulse of void energy in a cone in the target direction that deals <span class=\"magic-damage\">magic damage</span> to enemies and <HtmlTooltip class=\"blue link\">slows<template #content><div><h4>Slow<hr></h4><p>A unit that is <i>slowed</i> has reduced movement speed for the duration.<br><br>Duration reduced by <b>Tenacity</b>.<br>Strength is reduced by <b>Slow resist</b>.</p></div></template></HtmlTooltip> them for 1 second.",
       "leveling": [
-        "{{st|Magic Damage|{{ap|80 to 180}} {{as|(+ 80% AP)}}}}<!--\n-->{{st|Slow|{{ap|50 to 90}}%}}"
+        "{{st|Magic Damage|{{ap|80 to 180}} {{as|(+ 85% AP)}}}}\n{{st|Slow|{{ap|50 to 90}}%}}"
       ],
       "notes": "* {{tip|Untargetable}} champions do not grant stacks upon ability activations.\n*[[Toggle|Toggle abilities]] and transformation abilities do not count as ability activations and '''will not''' grant any ''Void Energy'' stacks for ''Force Pulse''.\n{{Effect at cast time end}}",
       "skillkey": "E",
       "skillid": "e1",
       "effects": [
         {
-          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span></span></li></ul><ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>%</span></li></ul>",
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Slow</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>%</span></li></ul>",
           "vars": {
             "as_ratios": [
               {
-                "player_total_ap": 0.8
+                "player_total_ap": 0.85
               }
             ],
             "st_slices": [
               [
                 "Magic Damage",
-                "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan> <span class=\"ap\">(+ 80% AP)</span>"
+                "<SpellSpan :list=\"[80,105,130,155,180]\"></SpellSpan> <span class=\"ap\">(+ 85% AP)</span>"
               ],
               [
                 "Slow",
@@ -415,7 +415,7 @@
                   155,
                   180
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 0.85
               }
             },
             {
@@ -430,7 +430,7 @@
                   80,
                   90
                 ],
-                "player_total_ap": 0.8
+                "player_total_ap": 0.85
               }
             }
           ]
@@ -458,16 +458,17 @@
         "full": "RiftWalk.png",
         "sprite": "spell5.png",
         "group": "spell",
-        "x": 240,
+        "x": 432,
         "y": 144,
         "w": 48,
         "h": 48
       },
       "description": [
         "{{sbc|Active:}} '''Kassadin''' {{tip|blinks}} toward the target location, dealing {{as|magic damage}} to all nearby enemies upon arrival. He then gains a stack of ''Riftwalk'' that lasts 15 seconds, which refreshes on subsequent casts and stacks up to 4 times.",
-        "{{sbc|Riftwalk:}} For each stack, ''Riftwalk'' gains '''bonus''' damage at an increased {{sti|{{as|mana cost}}}}."
+        "{{sbc|Riftwalk:}} For each stack, ''Riftwalk'' gains '''bonus''' damage at an increased {{sti|{{as|mana cost}}}}.",
+        "''Riftwalk will cast at max range if cast beyond that.''"
       ],
-      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kassadin</b> <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> toward the target location, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon arrival. He then gains a stack of <i>Riftwalk</i> that lasts 15 seconds, which refreshes on subsequent casts and stacks up to 4 times.<br /><span class=\"sbc\">Riftwalk:</span> For each stack, <i>Riftwalk</i> gains <b>bonus</b> damage at an increased <span><span class=\"mana\">mana cost</span></span>.",
+      "descriptionHtml": "<span class=\"sbc\">Active:</span> <b>Kassadin</b> <HtmlTooltip class=\"blue link\">blinks<template #content><div><h4>blinks<hr></h4><p>Description for keyword blinks</p></div></template></HtmlTooltip> toward the target location, dealing <span class=\"magic-damage\">magic damage</span> to all nearby enemies upon arrival. He then gains a stack of <i>Riftwalk</i> that lasts 15 seconds, which refreshes on subsequent casts and stacks up to 4 times.<br /><span class=\"sbc\">Riftwalk:</span> For each stack, <i>Riftwalk</i> gains <b>bonus</b> damage at an increased <span><span class=\"mana\">mana cost</span></span>.<br /><i>Riftwalk will cast at max range if cast beyond that.</i>",
       "leveling": [
         "{{st|Magic Damage|{{ap|80 to 120}} {{as|(+ 40% AP)}} {{as|(+ 2% '''maximum''' mana)}}}}",
         "{{st|Bonus Damage Per Stack|{{ap|40 to 60}} {{as|(+ 10% AP)}} {{as|(+ 1% '''maximum''' mana)}}|Maximum Magic Damage|{{ap|80+40*4 to 120+60*4}} {{as|(+ 80% AP)}} {{as|(+ 6% '''maximum''' mana)}}}}"

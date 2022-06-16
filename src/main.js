@@ -27,7 +27,7 @@ function updatePath(newPath) {
         });
         else app.mount("#app");
     }
-}
+}z
 window.addEventListener('hashchange', () => {
     updatePath(window.location.hash);
 })

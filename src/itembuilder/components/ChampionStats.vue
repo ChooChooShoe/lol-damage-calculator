@@ -4,7 +4,7 @@
     <!-- <EditBtn v-model="editMode"></EditBtn> -->
     <h2>{{ username }}</h2>
       <span v-if="showDamage" class="ap">AP</span>
-      <BlockStat v-if="showDamage" stat="ap" v-model:total="obj.total_ap" title="Ability Power"> Increases the amount of damage you deal with AP scaling Spells. </BlockStat>
+      <!-- <BlockStat v-if="showDamage" stat="ap" v-model:total="obj.total_ap" title="Ability Power"> Increases the amount of damage you deal with AP scaling Spells. </BlockStat> -->
 
   </div>
 </template>
