@@ -1,6 +1,4 @@
 {
-  "patch": "V0.9.22.15",
-  "changes": "12.10.1",
   "id": "Gangplank",
   "name": "Gangplank",
   "title": "the Saltwater Scourge",
@@ -13,41 +11,56 @@
     "w": 48,
     "h": 48
   },
-  "resource": "Mana",
   "herotype": "Fighter",
-  "alttype": "",
-  "rangetype": "Melee",
-  "be_cost": 3150,
-  "rp_cost": 790,
-  "adaptivetype": "physical",
-  "info": {
-    "attack": 7,
-    "defense": 6,
-    "magic": 4,
-    "difficulty": 9
-  },
+  "resource": "Mana",
   "stats": {
-    "hp": 640,
-    "hpperlevel": 104,
-    "mp": 280,
-    "mpperlevel": 60,
-    "movespeed": 345,
-    "armor": 35,
-    "armorperlevel": 4.2,
-    "spellblock": 32,
-    "spellblockperlevel": 2.05,
-    "attackrange": 125,
-    "hpregen": 6,
-    "hpregenperlevel": 0.6,
-    "mpregen": 7.5,
-    "mpregenperlevel": 0.7,
-    "crit": 0,
-    "critperlevel": 0,
-    "attackdamage": 64,
-    "attackdamageperlevel": 4,
-    "attackspeedperlevel": 3.2,
-    "attackspeed": 0.658
+    "hp_base": 640,
+    "hp_lvl": 104,
+    "mp_base": 280,
+    "mp_lvl": 60,
+    "arm_base": 35,
+    "arm_lvl": 4.2,
+    "mr_base": 32,
+    "mr_lvl": 2.05,
+    "hp5_base": 6,
+    "hp5_lvl": 0.6,
+    "mp5_base": 7.5,
+    "mp5_lvl": 0.7,
+    "dam_base": 64,
+    "dam_lvl": 4,
+    "as_base": 0.658,
+    "as_lvl": 3.2,
+    "range": 125,
+    "ms": 345,
+    "acquisition_radius": 400,
+    "selection_radius": 85,
+    "pathing_radius": 35,
+    "as_ratio": 0.69,
+    "attack_cast_time": 0.25,
+    "attack_total_time": 1.51999998092651,
+    "aram_dmg_dealt": 1.05,
+    "aram_dmg_taken": 0.95,
+    "nb_dmg_dealt": 1.05,
+    "nb_dmg_taken": 0.95,
+    "ofa_dmg_dealt": 1.05,
+    "ofa_dmg_taken": 0.9
   },
+  "rangetype": "Melee",
+  "date": "2009-08-19",
+  "patch": "V0.9.22.15",
+  "changes": "12.10.1",
+  "role": [
+    "Specialist"
+  ],
+  "positions": [
+    "Top"
+  ],
+  "op_positions": [
+    "Top"
+  ],
+  "adaptivetype": "Physical",
+  "be": 3150,
+  "rp": 790,
   "skills": {
     "i1": {
       "riotId": "",
@@ -369,7 +382,6 @@
       "notes": "* The triggering attack's damage can include {{ai|Parrrley|Gangplank}}'s base damage and {{tip|Spellblade}}.\n* When triggered with critical strike, ''Spellblade'' and the bonus damage to champions are added after the calculations, meaning that these effects are not increased by 25%.\n* The total damage can be easily calculated with this formula:<br>{aDMG * [1.75 ({{ii|Infinity Edge|+ 0.35}})] * 1.25} + sDMG + cDMG<br>Where:\n** aDMG = Triggering attack's damage\n** sDMG = Spellblade's damage\n** cDMG = Bonus damage to champions\n* Kegs have special interactions with {{tip|Spellblade}}:\n** If the keg destroying attack was empowered with ''Spellblade'', its damage will be added to the explosions' damage.\n** If the keg was not destroyed, it will consume the effect and the keg will store the damage it would have dealt. If the storing keg is the initial detonation of the chain, it will add its damage to the explosions' damage as it was triggered with ''Spellblade''.\n** If the storing keg was attacked with a new instance of ''Spellblade'', it will override the previously stored damage (if different).\n** Damage can only be stored if ''Spellblade'' was consumed by '''Gangplank''.\n** The stored damage is static and will not change if '''Gangplank's''' '''base''' attack damage or ability power (see below) changes. \n* Specific {{tip|Spellblade}} item interactions:\n** {{ii|Trinity Force}}: Attacking kegs or dealing damage to champions with the explosion does not increase the {{as|base attack damage}}.\n** {{ii|Divine Sunderer}}: Explosions always apply the minimum damage of this item and does not apply the heal.\n** {{ii|Lich Bane}}: The {{as|magic damage}} will be added to the explosions' damage, but will be dealt as {{as|physical damage}}.\n** {{ii|Essence Reaver}}: Consuming the effect on kegs will restore {{as|mana}}. Explosions does not trigger this.\n* Placed barrels do '''not''' grant {{tip|sight|vision}} until they explode, but they are revealed to '''Gangplank'''.\n** If '''Gangplank''' loses allied vision, for instance due to {{tip|nearsight}}, he will also lose vision on his barrels temporarily.\n** Barrels prematurely grant {{tip|sight}} of their explosion radius (including across terrain and into bushes) if {{ai|Parrrley|Gangplank}} or a lit fuse is travelling towards them.\n*** This area reveal happens even if {{ai|Parrrley|Gangplank}} is not going to make it explode.\n* An exploding ''Powder Keg'' will splash {{ais|Parrrley|Gangplank}} '''bonus''' damage, and will also be modified if the attack {{tip|critical strike|critically strikes}}.\n* Attacks against ''Powder Kegs'' will apply [[on-hit]] effects (such as {{iis|Tiamat}} {{nie|Cleave}}), but {{tip|proc damage}} against the barrel itself is reduced to 0.\n** Damage from [[on-hit]] effects will '''not''' increase the damage of the explosion.\n** {{tip|Spellblade}} is a {{tt|special-cased exception|Since late Season 9 - previously, Spellblade worked simply because it would add to the attack's damage directly}}.\n* {{iis|Dead Man's Plate}} {{nie|Crushing Blow}} will not trigger from ''Powder Kegs'' destroyed from '''Gangplank''', even with {{ai|Parrrley|Gangplank}}.\n* '''Gangplank''' stocks ''Powder Kegs'' even if the ability hasn't been learned yet.\n** This is due to the recharge rate at level 1 being set the same as level 0.\n** While at maximum charges, ranking up the ability to rank 3 or 5 grants the remaining charge immediately regardless of the recharge timer.",
       "skillkey": "E",
       "skillid": "e1",
-      "cost_warn": "Wiki's and Riot's mana costs do not match: Wiki's value  1 as 1 and riot's value 0,0,0,0,0 as 0",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Maximum charges</span>: <span><SpellSpan :list=\"[3,3,4,4,5]\"></SpellSpan></span></li></ul>",

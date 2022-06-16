@@ -5,17 +5,19 @@ import he from 'he';
 import { default as matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
 import JSON5 from 'json5';
 
+const SKIP_RIOTDATA_FOR_STATS = true;
+const DEBUG = true;
 /**
  * Fetches in a wiki data page and returns the textarea content inside.
  * @param {RequestInfo} url 
  * @returns string
  */
- async function fetch_wiki(url) {
+async function fetch_wiki(url) {
     console.log("Fetching (wiki):", url);
     return fetch(url)
         .then(response => response.text())
         .then(text => text.match(/<textarea[^>]*>([^]*)<\/textarea>/m))
-        .then(content => he.decode(content[1]));
+        .then(content => content ? he.decode(content[1]) : "");
 }
 
 async function fetch_mod_data() {
@@ -72,39 +74,13 @@ export async function make_wiki_skill_model(champ_name, skill_name) {
     return obj;
 }
 
-async function doMergeData(riotChampPromise, wikiaChamp) {
+async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     const rcr = await riotChampPromise;
-    const riotChamp = rcr.data[Object.keys(rcr.data)[0]];
-    console.log("File got (wikia) ", wikiaChamp.apiname);
-    // console.assert(riotChamp.key === wikiaChamp.id);
-    console.assert(riotChamp.id === wikiaChamp.apiname);
-    const model = {
-        patch: wikiaChamp.patch || "",
-        changes: buildChangesField(wikiaChamp.changes || "V0.0"),
-        id: riotChamp.id,
-        // key: riotChamp.key,
-        name: riotChamp.name,
-        // fullname: wikiaChamp.fullname,
-        title: riotChamp.title,
-        image: riotChamp.image,
-        // skins: riotChamp["skins"],
-        // lore: riotChamp["lore"],
-        // blurb: riotChamp["blurb"],
-        // allytips: riotChamp["allytips"],
-        // enemytips: riotChamp["enemytips"], 
-        // tags: riotChamp.tags,
-        resource: riotChamp.partype,  // renamed to resource
-        herotype: wikiaChamp.herotype || "",  // fix Zoe
-        alttype: wikiaChamp.alttype || "",
-        rangetype: wikiaChamp.rangetype || "Ranged",
-        be_cost: wikiaChamp.be || 0,
-        rp_cost: wikiaChamp.rp || 0,
-        adaptivetype: wikiaChamp.adaptivetype.split(',')[0].toLowerCase(),
-        info: riotChamp.info,
-        stats: riotChamp.stats,
-
-    };
-
+    const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : {spells:[]};
+    console.log("File got (wikia) ", wikiaChamp.name);
+    ChampionListEntry.image = riotChamp.image
+    // Clone ChampionListEntry so skills are not added back to it.
+    const model = Object.assign({}, ChampionListEntry);
     model.skills = {};
 
     //Done in order.
@@ -173,10 +149,6 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
 
     skillout.descriptionHtml = makeDescriptionHtml(skillout);
 
-    if (skilldata.name !== riotSpell.name)
-        console.log("Name mismatch wikia: [" + skilldata.name + "] and riot: [" + riotSpell.name + "]");
-
-
     if (!is_passive) {
         let old_val = (skilldata.cost || '0').toString();
         let value = old_val;
@@ -189,8 +161,6 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
             // Cost does not sacle with level.
             skillout.cost = +parseFloat(value).toFixed(3);
         }
-        if (value != riotSpell['costBurn'])
-            skillout.cost_warn = (`Wiki's and Riot's mana costs do not match: Wiki's value  ${old_val} as ${value} and riot's value ${riotSpell['cost']} as ${riotSpell['costBurn']}`)
     }
     if (!is_passive) {
         let old_val = (skilldata.cooldown || '0').toString();
@@ -205,9 +175,6 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
             // Cooldown does not sacle with level.
             skillout.cooldown = +parseFloat(value).toFixed(3);
         }
-        if (value != riotSpell['cooldownBurn'])
-            skillout.cooldown_warn = `Wiki's and Riot's cooldowns do not match: Wiki's value '${old_val}' as '${value}' and riot's value '${riotSpell['cooldown']}' as '${riotSpell['cooldownBurn']}'`;
-
     }
 
 
@@ -315,9 +282,6 @@ async function onRealmJsonResponse(body) {
     lang = "en_US";
     console.log("Using ddragon version:", version);
 
-    const championUrl = `${cdn}/${version}/data/${lang}/champion.json`;
-
-
     saveFile(`./src/api/version.json`, {
         v: version,
         dv: dispVersion,
@@ -325,55 +289,84 @@ async function onRealmJsonResponse(body) {
         cdn: cdn,
     });
 
-    console.log("Fetching (json): %s", championUrl);
-    const champ_json = fetch(championUrl).then(response => response.json()) ;
-    console.log("Building Champion Json");
-    return onChampionJsonResponse(await champ_json, await fetch_mod_data());
+
+    console.log("Building Champion Json (No Riot Data)");
+    return makeChampionList(await fetch_mod_data());
 }
 
 /**
- * From https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion.json
- * and From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
- * @param champ_json JSON Object
- * @param fandom_data JSON Object
+ * From https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit
+ * @param ModuleChampionData JSON Object
  */
-async function onChampionJsonResponse(champ_json, fandom_data) {
-    console.assert(champ_json.type === 'champion');
-    console.assert(champ_json.format === 'standAloneComplex');
-    console.assert(champ_json.version === version);
-    let returnData = {};
+async function makeChampionList(ModuleChampionData) {
+    let ChampionList = {};
     let promises = []
-    for (const keyid in champ_json.data) {
-        const champ = champ_json.data[keyid];
-        // if (champ.id !== 'Syndra') continue;
-        returnData[keyid] = {
-            // version: champ.version, // ddragon version
-            id: champ.id, // Ex. "RekSai"
-            // key: champ.key, // Ex. "421"
-            name: champ.name,
-            title: champ.title, // Ex. "the Void Burrower"
-            // blurb: champ.blurb,
-            // info: champ.info,
-            // image: champ.image,
-            // tags: champ.tags, // ["Fighter", "Tank"],
-            resource: champ.partype, // Renamed 
-            stats: champ.stats
+    for (const [champ, data] of Object.entries(ModuleChampionData)) {
+        ChampionList[champ] = {
+            id: data.apiname  === "GnarBig" ? "Gnar" : data.apiname,
+            name: champ,  // Ex. Rammus
+            //id: data.id, // Ex. 33,
+            //apiname: data.apiname, // Ex.  'Rammus',
+            title: data.title, // Ex.  'the Armordillo',
+            image: null,
+            // attack: data.attack, // Ex.  4,
+            // defense: data.defense, // Ex.  10,
+            // magic: data.magic, // Ex.  5,
+            // difficulty: data.difficulty, // Ex.  1,
+            herotype: data.herotype, // Ex.  'Tank',
+            alttype: data.alttype, // Ex.  'Fighter',
+            resource: data.resource, // Ex.  'Mana',
+            stats: data.stats,
+            rangetype: data.rangetype, // Ex.  'Melee',
+            date: data.date, // Ex.  '2009-07-10',
+            patch: data.patch, // Ex.  'July 10, 2009 Patch',
+            changes: buildChangesField(data.changes || "V0.0"), // Ex.  'V12.10',
+            role: data.role, // Ex.  ['Vanguard'],
+            positions: data.positions, // Ex.  ['Jungle'],
+            op_positions: data.op_positions, // Ex.  ['Jungle'],
+            // damage: data.damage, // Ex.  2,
+            // toughness: data.toughness, // Ex.  3,
+            // control: data.control, // Ex.  3,
+            // mobility: data.mobility, // Ex.  2,
+            // utility: data.utility, // Ex.  1,
+            // style: data.style, // Ex.  65,
+            adaptivetype: data.adaptivetype, // Ex.  'Physical',
+            be: data.be, // Ex.  1350,
+            rp: data.rp, // Ex.  585,
+            // skill_i: ['Spiked Shell'],
+            // skill_q: ['Powerball'],
+            // skill_w: ['Defensive Ball Curl'],
+            // skill_e: ['Frenzying Taunt'],
+            // skill_r: ['Soaring Slam'],
+            // skills: {
+            //     '1': 'Spiked Shell',
+            //     '2': 'Powerball',
+            //     '3': 'Defensive Ball Curl',
+            //     '4': 'Frenzying Taunt',
+            //     '5': 'Soaring Slam'
+            // }
         }
         // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
-        const url = `${cdn}/${version}/data/${lang}/champion/${champ.id}.json`;
+        const url = `${cdn}/${version}/data/${lang}/champion/${ChampionList[champ].id}.json`;
         console.log('Fetching (ddragon)', url)
-        const fullDataPromise = fetch(url).then((response) => response.json());
-
-        promises.push(doMergeData(fullDataPromise, fandom_data[champ.name]).then((data) => {
-            return saveFile(`./public/api/champion/${champ.id}.json`, data);
+        const fullDataPromise = fetch(url).then((response) => {
+            if (response.ok) return response.json();
+            console.error(url, "url is invalid")
+            // TODO fix GnarBig
+            return null;
+        });
+        promises.push(doMergeData(fullDataPromise, data, ChampionList[champ]).then((merged_data) => {
+            return saveFile(`./public/api/champion/${champ}.json`, merged_data);
         }));
     }
     console.log("Awaiting all Promises");
     await Promise.all(promises);
     // console.log("freeze data");
     // Object.freeze(returnData);
-    saveFile('./src/api/ChampionList.json', returnData);
-    return returnData;
+    const sorted = Object.entries(ChampionList).sort((a, b) => a[1].name > b[1].name ? 1 : -1)
+
+    saveFile('./src/api/ChampionList.json', Object.fromEntries(sorted));
+    return ChampionList;
 }
 async function createSkill(letter, skillNames, riotData, isPassive, champModel) {
     // if (!skillNames) return;
@@ -387,7 +380,7 @@ async function createSkill(letter, skillNames, riotData, isPassive, champModel) 
         let valid = false;
         if (model && model.description) {
             if (noRepeatDesc.has(model.description)) {
-                console.warn('Description is the same as one before. Skipping', skill_name, model.description)
+                console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description)
             } else {
                 noRepeatDesc.add(model.description);
                 valid = true;
