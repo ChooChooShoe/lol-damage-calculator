@@ -1,60 +1,32 @@
 <template>
-  <div class="control">
+  <div class="control champsearch">
     <div class="select">
-      <input
-        class="input champsearch"
-        ref="input"
-        :value="disp"
-        @focus="onFocus"
-        @change="onInput($event.target.value)"
-        list="list-of-champions"
-      />
+      <input class="input champsearch" ref="input" :value="champ" @focus="onFocus" @focusout="unFocus" @change="onInput($event.target.value)" list="list-of-champions" />
     </div>
   </div>
 </template>
 
 <script>
+import championList from "/src/api/ChampionList.json";
+
 export default {
   props: {
     champ: String,
+    mode: String,
   },
   name: "ChampSearch",
-  data: function () {
-    return {
-    };
-  },
-  computed: {
-    championList() {
-      return this.$root.championList;
-    },
-    disp() {
-      if (this.championList[this.champ])
-        return this.championList[this.champ].name;
-      return this.champ;
-    },
-  },
   methods: {
     onInput(value) {
-      if (this.championList[value]) {
-        console.log("Selected Exact match:", value);
-        this.$emit('update:champ', value);
-        this.didChange = true;
-      } else {
-        for (const key in this.championList) {
-          const el = this.championList[key];
-          if (el.name.toLowerCase().includes(value.toLowerCase())) {
-            console.log("Selected champ", el.name, "id", el.id);
-            this.$emit('update:champ', el.id);
-            this.didChange = true;
-            break;
-          }
-        }
-      }
+      const route = { params: {} };
+      route.params[this.mode] = value;
+      this.$router.push(route);
       this.$refs.input.blur();
     },
     onFocus(ev) {
-    //   this.oldValue = this.$refs.input.value;
       this.$refs.input.value = "";
+    },
+    unFocus(ev) {
+      this.$refs.input.value = this.champ;
     },
   },
 };

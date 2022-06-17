@@ -1,14 +1,15 @@
 <template>
-  <div class="container float-clear spell-effect">
+  <div class="float-clear spelleffect__div">
     <div>
       <EditBtn v-model="editMode"></EditBtn>
 
-      <h4 class="spelleffect">{{ effect.title }}</h4>
-      <div>
+      <span class="spelleffect__title" v-html="effect.title"></span>
+      <span class="spelleffect__title">: </span>
+      <span>
         <DisplayRatio v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :list="obj.value" :index="index"> </DisplayRatio>
 
         <DamageTypeField v-model="damage_type"></DamageTypeField>
-      </div>
+      </span>
     </div>
     <div class="spelleff--content" :class="{ active: editMode }">
       <div class="field column" v-if="doesDoDamage">
@@ -108,6 +109,7 @@ export default {
   props: {
     effect: Object,
     effectindex: Number,
+    damagingEffects: Object
   },
   name: "SpellEffects",
   components: {
@@ -126,7 +128,6 @@ export default {
     const damage_type = ref("magic");
 
     const makeRatio = (name, value) => {
-      console.log("makeRatio()", name, value);
       const i = name.indexOf("_");
       const user = name.slice(0, i);
       const stat = name.slice(i + 1);
@@ -136,11 +137,13 @@ export default {
       const valueNumber = computed(() => {
         return Array.isArray(value) ? value[rootspell.value.rankindex] : value;
       });
+      console.log("makeRatio()", name, value, "split",user,stat, valueNumber.value);
+
       const damagePreValue = computed(() => {
         // No user means base_damage or base_progression
         if (user !== "player" && user !== "target") return valueNumber.value;
 
-        let statValue = rootData[user][stat];
+        let statValue = rootData[user].value[stat];
         if (isNaN(statValue)) {
           console.warn(`Stat ${stat} for ratio ${name} missing for ${user}`);
           statValue = 0;
@@ -153,7 +156,7 @@ export default {
         ispercent: ispercent,
         valueNumber,
         damagePreValue,
-        damagePostValue: computed(() => calc_dmg_onhit(rootData.player, rootData.target, damagePreValue.value, damage_type.value)),
+        damagePostValue: computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value)),
       });
     };
     const ratios = reactive({});
@@ -191,8 +194,8 @@ export default {
       doesDoDamage: computed(() => ["magic", "physical", "true"].includes(damage_type.value)),
       dmg_premitigation,
       dmg_postmitigation: computed(() => {
-        console.log("dmg_postmitigation")
-        return calc_dmg_onhit(rootData.player, rootData.target, dmg_premitigation.value, damage_type.value);
+        console.log("dmg_postmitigation");
+        return calc_dmg_onhit(rootData.player.value, rootData.target.value, dmg_premitigation.value, damage_type.value);
       }),
       damage_type,
       spell_ratios: spell_ratios,
@@ -219,12 +222,12 @@ export default {
     },
   },
   mounted: function () {
-    this.$root.data.damagingEffects.push(this);
+    this.damagingEffects.push(this);
   },
   unmounted: function () {
-    const index = this.$root.data.damagingEffects.indexOf(this);
+    const index = this.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$root.data.damagingEffects.splice(index, 1);
+      this.damagingEffects.splice(index, 1);
     }
   },
   methods: {
@@ -255,12 +258,15 @@ input[type="button"].repeat {
 .spelleff--totals {
   border-top: aqua 1px solid;
 }
-.spell-effect {
-  border: #1e8ad6 solid 1px;
-  margin-bottom: 5px;
-  padding: 5px;
+.spelleffect__div {
+  border-bottom: #282f2f solid 1px;
+  margin-bottom: 0.4em;
+  /* padding:  0.2em; */
 }
 
+.spelleffect__title {
+  color: #8e7dad;
+}
 .spelleff--edit:before {
   content: "\25bc";
   color: #ddd;

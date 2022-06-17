@@ -2,8 +2,8 @@
 <template>
   <span v-if="Array.isArray(list)">
     <template v-for="(x, i) in list" :key="i">
-      {{ i != 0 ? " / " : "" }}
-      <span :class="{ spelleffect: rootspell.value.rankindex == i }" class="ss-click" @click="rootspell.value.rankindex = i">
+      <span v-if="i != 0" class="ss-noclick">/</span>
+      <span :class="{ spelleffect: rootspell.rankindex == i }" class="ss-click" @click="rootspell.rankindex = i">
         {{ x }}
       </span>
     </template>
@@ -28,6 +28,12 @@ export default {
 <style>
 .ss-click {
   cursor: pointer;
+  padding: 0.5em;
+  margin: -0.5em;
+}
+.ss-noclick {
+  pointer-events: none;
+  margin: 0.33em;
 }
 .ss-click:hover {
   color: yellow;

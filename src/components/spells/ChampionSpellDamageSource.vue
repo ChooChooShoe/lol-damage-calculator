@@ -1,13 +1,33 @@
 <template>
-  <div class="data_holder c50 ChampionSpellDamageSource">
-    <img class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h" />
-    <h3>
-      {{ spell.name }} ({{ spell.skillkey }}) -
-      <a target="_blank" :href="wikiHref">View on Wiki</a>
-    </h3>
-    <div v-html="spell.descriptionHtml"></div>
-    <hr />
-    <div style="float: right" v-if="spell.maxrank > 0">
+  <div class="data_holder col fill ChampionSpellDamageSource">
+    <span class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h"></span>
+
+    <span class="ds__title">{{ spell.name }} ({{ multispells ? spell.skillid.toUpperCase() : spell.skillkey.toUpperCase() }})</span>
+    <DropdownSelect class="spellrank2" v-if="spell.maxrank > 0" label="Rank" :value="spell.rankindex + 1">
+      <input
+        v-for="(_, index) in Array(spell.maxrank)"
+        :class="{ success: spell.rankindex === index }"
+        :key="index"
+        @click="() => (spell.rankindex = index)"
+        type="button"
+        :value="index + 1"
+        :title="'Rank ' + (index + 1)"
+      />
+    </DropdownSelect>
+    <span class="ds__data" v-if="spell.cooldown">
+      Cooldown:
+      <SpellSpan :list="spell.cooldown"></SpellSpan>
+    </span>
+    <span class="ds__data" v-if="spell.cost">
+      Cost:
+      <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
+      <span v-html="costtype"></span>
+    </span>
+    <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
+
+    <div class="ds__description" tabindex="0" v-html="spell.descriptionHtml"></div>
+
+    <!-- <div v-if="spell.maxrank > 0">
       <span>
         Spell Rank (
         <span class="spelleffect">{{ spell.rankindex + 1 }}</span>
@@ -24,23 +44,13 @@
           :title="'Rank ' + (index + 1)"
         />
       </fieldset>
-    </div>
+    </div> -->
 
     <div>
       <!-- <div v-if="spell.customlabel">
         <span v-html="matchReplace(spell.customlabel)"></span>:
         <span class="blue" v-html="matchReplace(spell.custominfo)"></span>
       </div> -->
-      <div v-if="spell.cooldown">
-        Cooldown:
-        <SpellSpan :list="spell.cooldown"></SpellSpan>
-        &nbsp;seconds
-      </div>
-      <div v-if="spell.cost">
-        Cost:
-        <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
-        <span v-html="costtype"></span>
-      </div>
       <!-- <div v-if="spell.target_range">
         Target Range:
         <span class="blue" v-html="targetRange"></span>
@@ -61,10 +71,11 @@
         :key="root_index + 'x' + sub_index"
         :effect="sub_effect"
         :effectindex="sub_index"
+        :damagingEffects="damagingEffects"
       ></SpellEffects>
     </template>
 
-    <CustomSpellEffects v-for="item in customEffects" :key="'CustomSpellEffects' + item" :index="item"></CustomSpellEffects>
+    <CustomSpellEffects v-for="item in customEffects" :key="'CustomSpellEffects' + item" :index="item" :damagingEffects="damagingEffects"></CustomSpellEffects>
 
     <input name="add_effect" type="button" class="button is-primary" value="Add Effect +" @click="addEffect()" />
 
@@ -82,6 +93,7 @@ import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
 import { quickMatchReplace } from "../../javascript/matchreplace";
 import { spriteBaseUri } from "../../javascript/league_data";
+import DropdownSelect from "../simple/DropdownSelect.vue";
 
 export default {
   name: "ChampionSpellDamageSource",
@@ -92,10 +104,13 @@ export default {
     SpellNotes,
     SpellSpan,
     CustomSpellEffects,
+    DropdownSelect,
   },
   props: {
     spell: Object,
     champion: String,
+    damagingEffects: Object,
+    multispells: Boolean,
   },
   setup(props) {
     const { spell, champion } = toRefs(props);
@@ -113,21 +128,21 @@ export default {
     });
     provide("rootspell", spell);
 
-    return {obj,
+    return {
+      obj,
       costtype: computed(() => quickMatchReplace(spell.value.costtype || "Mana")),
       targeting: computed(() => quickMatchReplace(spell.value.targeting || "")),
       targetRange: computed(() => quickMatchReplace(String(spell.value.target_range || ""))),
       imageStyle: computed(() => {
         const i = spell.value.image;
         return {
-          float: "right",
           background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
         };
       }),
       wikiHref: computed(() => {
-        const champName = champion.value.replace(/ /g, "_");
-        const spellName = spell.value.name.replace(/ /g, "_");
-        return `https://leagueoflegends.fandom.com/wiki/${champName}#${spellName}`;
+        const champName = champion.value?.replace(/ /g, "_");
+        const spellName = spell.value?.name.replace(/ /g, "_");
+        return `https://leagueoflegends.fandom.com/wiki/${champName}/LoL#${spellName}`;
       }),
       matchReplace: quickMatchReplace,
       customEffects,
@@ -141,7 +156,50 @@ export default {
 </script>
 
 <style>
+.ChampionSpellDamageSource {
+}
+
+.spell-image {
+  display: inline;
+  padding: 0;
+  margin: 0.2rem 1rem 0.2rem 0.2rem;
+  border-style: none;
+  float: left;
+  width: 48px;
+  height: 48px;
+}
+.ds__title {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-right: 1rem;
+}
+.ds__data {
+  margin-right: 1em;
+}
+
+.ds__description {
+  width: 55vw;
+  height: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #00000000;
+}
+.ds__description:hover {
+  border: 1px solid #1e8ad6;
+  cursor: pointer;
+}
+.ds__description:focus {
+  cursor: auto;
+  width: auto;
+  height: auto;
+  white-space: normal;
+  text-overflow: clip;
+  line-break: auto;
+}
+
 .spellrank {
+  display: inline-block;
   border: none;
 }
 
@@ -151,8 +209,9 @@ export default {
   position: relative;
   background-color: #aaa700;
   color: #eee;
-  height: 24px;
-  width: 24px;
+  height: 18px;
+  width: 18px;
+  margin: 0.1rem;
   border: 0;
   border-radius: 50px;
   cursor: pointer;
@@ -167,6 +226,14 @@ export default {
   background: #f1f1f1;
 }
 
+.dd-content:hover input {
+  background-color: #9c9700 !important;
+  color: #eee;
+}
+.dd-content input:hover ~ input {
+  background-color: #282f2f !important;
+  color: #eee;
+}
 .cost-container [data-active="true"] {
   color: #1e8ad6;
 }

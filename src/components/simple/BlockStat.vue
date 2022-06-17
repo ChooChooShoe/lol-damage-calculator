@@ -55,7 +55,7 @@ export default {
     const { base, bonus, total, suffix } = toRefs(props);
     const local = ref(null);
     const input = ref(null);
-    const hasBase = !!base && !!bonus;
+    const hasBase = !!(base.value);
     let statname = `Attack Damage`;
 
     const displayValue = computed(() => {

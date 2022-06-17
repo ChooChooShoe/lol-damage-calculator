@@ -24,12 +24,12 @@
         <tr>
           <th class="ap">On-Hit Magic</th>
           <Editable v-model="ds_mg.dmg_premitigation"></Editable>
-          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
+          <Editable :readonly="true" v-model="ds_mg.dmg_postmitigation"></Editable>
         </tr>
         <tr>
           <th class="true">On-Hit True</th>
           <Editable v-model="ds_tr.dmg_premitigation"></Editable>
-          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
+          <Editable :readonly="true" v-model="ds_tr.dmg_postmitigation"></Editable>
         </tr>
       </tbody>
     </table>
@@ -111,7 +111,7 @@ export default {
     Editable,
     EditableCollapse,
   },
-  props: ["index"],
+  props: ["damagingEffects", "player", "target"],
   data: function () {
     return {
       customEffects: [0],
@@ -125,11 +125,11 @@ export default {
     };
   },
   mounted: function () {
-    this.$root.data.damagingEffects.push(this);
+    this.damagingEffects.push(this);
 
     // Sets this.ds_ad.dmg_premitigation to always be player.total_ad
     // TODO: Kalista
-    let x = this.$root.data.player;
+    let x = this.player;
     Object.defineProperty(this.ds_ad, "dmg_premitigation", {
       get() {
         return x.total_ad;
@@ -137,9 +137,9 @@ export default {
     });
   },
   unmounted: function () {
-    const index = this.$root.data.damagingEffects.indexOf(this);
+    const index = this.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$root.data.damagingEffects.splice(index, 1);
+      this.damagingEffects.splice(index, 1);
     }
   },
   watch: {
@@ -153,10 +153,10 @@ export default {
   computed: {
     attack_damage: {
       get() {
-        return this.$root.data.player.total_ad;
+        return this.player.total_ad;
       },
       set(value) {
-        this.$root.data.player.total_ad = value;
+        this.player.total_ad = value;
       },
     },
     damageSources() {

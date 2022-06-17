@@ -91,7 +91,6 @@ export async function fetchSingleChampFile(champId) {
     const response = await fetch(url);
     const model = await response.json();
 
-    console.assert(model.id === champId);
     // Add to Cache
     singleChampFileCache[champId] = model;
     // return model in promise

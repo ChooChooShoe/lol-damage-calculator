@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import championList from "/src/api/ChampionList.json";
 import { reactive, inject, watchEffect, computed, provide, toRefs } from "vue";
 import { CORE_STATS } from "../javascript/league_data";
 
@@ -67,10 +68,9 @@ export default {
     }
 
     // get championList from App
-    const championList = inject("championList");
     // auto gets stats when champ changes
     const stats = computed(() => {
-      if (championList.value[obj.champ]) return championList.value[obj.champ].stats;
+      if (championList[obj.champ]) return championList[obj.champ].stats;
       return {};
     });
 

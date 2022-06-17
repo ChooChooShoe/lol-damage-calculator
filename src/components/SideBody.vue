@@ -190,10 +190,15 @@ export default {
 .sidebody {
   margin: 0;
   padding: 0 0.5rem;
-  position: -webkit-sticky;
+  margin: 0;
   position: sticky;
   top: 0;
+  right: 0;
   background-color: #121a1b;
+  z-index: 100;
+  width: 30%;
+  min-width: 260px;
+  float: right;
 }
 
 /* // @media (min-width: 769px) and (max-width: 1375px) {

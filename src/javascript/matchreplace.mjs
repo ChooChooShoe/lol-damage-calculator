@@ -484,6 +484,7 @@ const match_lookup = {
   // ap (or Ability progression): {{ap|<Value1>|<Value2>|<...>|<Value6>}}
   'ap': function (_capture, slices, vars, options, extra_data) {
     // Ezreal W example
+    // {{ap|55*1.4 to 330*1.4 6}} 
     // {{st|Magic Damage| {{ap|80 to 300}} {{as|(+ 60% '''bonus''' AD)}} {{as|(+ {{ap|70 to 90}}% AP)}} }}
     // {{ap|60 to 200 2}} or {{ap|10 to 40}}
     const round = parseInt(options.round) || 3;

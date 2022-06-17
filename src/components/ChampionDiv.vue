@@ -3,7 +3,7 @@
   <div class="data_holder c50">
     <!-- <EditBtn v-model="editMode"></EditBtn> -->
     <h2>{{ username }}</h2>
-    <ChampSearch v-model:champ="obj.champ"></ChampSearch>
+    <ChampSearch :champ="obj.champ" :mode="mode"></ChampSearch>
     <ChampLevelSelect v-model:level="obj.level"></ChampLevelSelect>
     <div class="data_holder__grid">
       <span v-if="showDamage" class="attack-damage">AD</span>
@@ -11,14 +11,14 @@
         Increases the amount of damage you deal with Attacks and AD scaling Spells.
       </BlockStat>
       <span v-if="showDamage" class="ap">AP</span>
-      <BlockStat v-if="showDamage" stat="ap" v-model:total="obj.total_ap" title="Ability Power"> Increases the amount of damage you deal with AP scaling Spells. </BlockStat>
+      <BlockStat v-if="showDamage" stat="ap" v-model:total="obj.total_ap" title="Ability Power">Increases the amount of damage you deal with AP scaling Spells.</BlockStat>
 
       <span v-if="showDefence" class="armor">Armor</span>
       <BlockStat v-if="showDefence" stat="armor" v-model:base="obj.base_armor" v-model:bonus="obj.bonus_armor" v-model:total="obj.total_armor" title="Armor">
         <template v-slot:default>Reduces the amount of damage taken from <span class="physical-damage">physical damage sources</span> </template>
         <template v-slot:footer>
           <p>
-            You take <span class="total">{{ rnd(obj.percent_pysical_reduction * 100) }}</span
+            You take <span class="total">{{ Math.round(obj.percent_pysical_reduction * 100) }}</span
             >% reduced <span class="pysical-damage">pysical damage</span>
           </p>
         </template>
@@ -29,7 +29,7 @@
         <template v-slot:default> Reduces the amount of damage taken from <span class="magic-damage">magical damage sources</span> </template>
         <template v-slot:footer>
           <p>
-            You take <span class="total">{{ rnd(obj.percent_magic_reduction * 100) }}</span
+            You take <span class="total">{{ Math.round(obj.percent_magic_reduction * 100) }}</span
             >% reduced <span class="magic-damage">magic damage</span>
           </p>
         </template>
@@ -40,11 +40,11 @@
         <template v-slot:default> Attack Speed does not affect calculations</template>
         <template v-slot:footer>
           <p>
-            Bonus Attack Speed: <b class="total">{{ rnd(obj.bonus_attackspeed) }}</b
+            Bonus Attack Speed: <b class="total">{{ Math.round(obj.bonus_attackspeed) }}</b
             >%
           </p>
           <p>
-            Current attacks per second: <b class="bonus">{{ rnd(obj.total_attackspeed * 1000) / 1000 }}</b>
+            Current attacks per second: <b class="bonus">{{ Math.round(obj.total_attackspeed * 1000) / 1000 }}</b>
           </p>
           <p>
             Ratio: <b class="base">{{ obj.base_attackspeed }}</b>
@@ -57,7 +57,7 @@
         <template v-slot:default> Ability Haste does not affect calculations</template>
         <template v-slot:footer>
           <p>
-            Equivalent to having <b class="total">{{ rnd(obj.cdr * 100) }}</b
+            Equivalent to having <b class="total">{{ Math.round(obj.cdr * 100) }}</b
             >% cooldown reduction.
           </p>
         </template>
@@ -105,7 +105,7 @@
         <template v-slot:default> Lethality is from all the assassin items.<br />Lethality sacales based on champion level.</template>
         <template v-slot:footer>
           <p>
-            Equivalent to having <b class="total">{{ rnd(obj.flat_armorpen) }}</b> Flat Armor Penetration at level {{ obj.level }}.
+            Equivalent to having <b class="total">{{ Math.round(obj.flat_armorpen) }}</b> Flat Armor Penetration at level {{ obj.level }}.
           </p>
         </template>
       </BlockStat>
@@ -124,7 +124,7 @@
       </BlockStat>
     </div>
     <div class="buttons">
-      <input class="clear--button button" type="button" value="Clear" @click="clear()" />
+      <input class="clear--button button" type="button" value="Clear" @click="obj.clearStats = true" />
 
       <label class="switch button">
         <input type="checkbox" v-model="showDamage" />
@@ -139,15 +139,10 @@
         <span class="switch--text">Show Extras</span>
       </label>
     </div>
-    <!-- <ItemInventory
-      v-if="$root.config.shopEnabled"
-      ref="inventory"
-      userid="player"
-    ></ItemInventory> -->
   </div>
 </template>
 
-<script>
+<script setup>
 import DataInput from "./DataInput.vue";
 // import InlineInput from "./InlineInput.vue";
 // import SimpleTooltip from "./SimpleTooltip.vue";
@@ -158,79 +153,34 @@ import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
 import BlockStat from "./simple/BlockStat.vue";
 import EditBtn from "./simple/EditBtn.vue";
-import { toRefs, inject, ref, computed, watchEffect } from "vue";
+import { toRefs, inject, ref, computed, watchEffect, defineEmits, defineProps } from "vue";
 
-export default {
-  name: "ChampionDiv",
-  components: {
-    DataInput,
-    // InlineInput,
-    // SimpleTooltip,
-    ItemInventory: () => import("./ItemInventory.vue"),
-    Editable,
-    EditableCollapse,
-    ChampSearch,
-    ChampLevelSelect,
-    EditBtn,
-    BlockStat,
-  },
-  props: {
-    mode: String,
-  },
-  setup(props) {
-    const { mode } = toRefs(props);
-    const rootData = inject("RootData");
-    const obj = inject("ChampObj");
-    // const vue = this.$root;
-    if(!obj.champ) {
-      console.log("Loading Champ from storage")
-      obj.champ = window.localStorage.getItem(`sv_champ_${mode.value}`) || "";
-    }
+const props = defineProps({ mode: String, modelValue: String });
 
-    watchEffect(() => {
-      window.localStorage.setItem(`sv_champ_${mode.value}`, obj.champ);
-      if (mode.value === "player") {
-        fetchSingleChampFile(obj.champ).then((model) => {
-          if (!model) return;
-          rootData.activeChampionModel = model;
-          // rootData.currentSpells = Object.values(model.skills);
-          // sellAllItems();
-          //TODO buy default items
-          // this.$notify({
-          //   group: "main",
-          //   title: "Loading Done.",
-          //   type: "info",
-          // });
-        });
-      }
+const { mode } = toRefs(props);
+const emit = defineEmits(["update:activeChampionModel"]);
+const obj = inject("ChampObj");
+if (!obj.champ) {
+  console.log("Loading Champ from storage");
+  obj.champ = window.localStorage.getItem(`sv_champ_${mode.value}`) || "";
+}
+
+watchEffect(() => {
+  if (mode.value === "player") {
+    fetchSingleChampFile(obj.champ).then((model) => {
+      emit("update:activeChampionModel", model);
     });
-    return {
-      obj,
-      mode,
-      showDamage: ref(mode.value === "player"),
-      showDefence: ref(mode.value === "target"),
-      showExtra: ref(false),
-      showBreakdown: ref(true),
-      readonly_base_values: true,
-      editMode: ref(true),
-      username: mode.value === "player" ? "Attacking Champion" : "Target Data",
-    };
-  },
-  methods: {
-    load: function (json) {
-      console.log("load(json)");
-    },
-    save: function () {
-      console.log("save(json)");
-    },
-    clear: function () {
-      this.obj.clearStats = true;
-    },
-    rnd: function (n) {
-      return Math.round(n);
-    },
-  },
-};
+  }
+});
+
+const showDamage = ref(mode.value === "player");
+const showDefence = ref(mode.value === "target");
+const showExtra = ref(false);
+const showBreakdown = ref(true);
+const readonly_base_values = true;
+const editMode = ref(true);
+const username = mode.value === "player" ? "Attacking Champion" : "Target Data";
+
 </script>
 
 <style>

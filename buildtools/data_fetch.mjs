@@ -71,6 +71,8 @@ export async function make_wiki_skill_model(champ_name, skill_name) {
         let value = line.slice(index + 1).trim();
         obj[key] = autoCast(value);
     }
+    // FIX for all names having _ 
+    obj.name = skill_name.replace(/_/g, ' ');
     return obj;
 }
 
@@ -195,8 +197,12 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
         for (const subindex in x.vars.st_slices) {
             const title = x.vars.st_slices[subindex][0] || '';
             let damage_type = matchDamageType(title.toLowerCase());
-            if (damage_type == 'none')
+            if (damage_type === 'none' || damage_type === 'unknown')
                 damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
+            if (damage_type === 'unknown') {
+                console.log("[WARN] Using adaptivetype as damage_type for skill",title);
+                damage_type = model.adaptivetype;
+            }
             let ratios = {}
 
             if (damage_type != 'none') {
@@ -224,8 +230,8 @@ const keyword_to_damage_type = {
     physical: "physical",
     none: "none",
     slow: "none",
-    heal: "none",
-    shield: "none",
+    heal: "heal",
+    shield: "shield",
     minion: "none",
     speed: "none",
 }
@@ -333,11 +339,11 @@ async function makeChampionList(ModuleChampionData) {
             adaptivetype: data.adaptivetype, // Ex.  'Physical',
             be: data.be, // Ex.  1350,
             rp: data.rp, // Ex.  585,
-            // skill_i: ['Spiked Shell'],
-            // skill_q: ['Powerball'],
-            // skill_w: ['Defensive Ball Curl'],
-            // skill_e: ['Frenzying Taunt'],
-            // skill_r: ['Soaring Slam'],
+            // skill_i: data.skill_i,// Ex.: ['Spiked Shell'],
+            // skill_q: data.skill_q,// Ex.: ['Powerball'],
+            // skill_w: data.skill_w,// Ex.: ['Defensive Ball Curl'],
+            // skill_e: data.skill_e,// Ex.: ['Frenzying Taunt'],
+            // skill_r: data.skill_r,// Ex.: ['Soaring Slam'],
             // skills: {
             //     '1': 'Spiked Shell',
             //     '2': 'Powerball',

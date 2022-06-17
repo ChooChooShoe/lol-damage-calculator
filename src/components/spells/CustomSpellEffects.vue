@@ -90,7 +90,6 @@
 </template>
 
 <script>
-import numeral from "numeral";
 import {
   calc_dmg_onhit,
   spell_ratios,
@@ -104,7 +103,7 @@ import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 
 export default {
-  props: ["index"],
+  props: ["index", "damagingEffects"],
   name: "CustomSpellEffects",
   components: {
     SpellField,
@@ -169,13 +168,13 @@ export default {
     },
   },
   mounted: function () {
-    this.$root.data.damagingEffects.push(this);
+    this.damagingEffects.push(this);
     this.isMounted = true;
   },
   unmounted: function () {
-    const index = this.$root.damagingEffects.indexOf(this);
+    const index = this.damagingEffects.indexOf(this);
     if (index > -1) {
-      this.$root.damagingEffects.splice(index, 1);
+      this.damagingEffects.splice(index, 1);
     }
   },
   methods: {
