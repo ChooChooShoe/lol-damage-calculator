@@ -21,7 +21,7 @@
       </div>
     </div>
     <hr />
-    <CustomSpellEffects v-for="i in customEffects" :key="'CustomSpellEffects' + i" :index="i"></CustomSpellEffects>
+    <SpellEffects v-for="i in customEffects" :key="'SpellEffects' + i" :index="i"></SpellEffects>
 
     <input
       name="add_effect"
@@ -35,8 +35,7 @@
 
 <script>
 // import MatchReplace from './MatchReplace.vue';
-// import SpellEffects from './spells/SpellEffects.vue';
-import CustomSpellEffects from "./CustomSpellEffects.vue";
+import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from './SimpleTooltip.vue';
 // import SpellNotes from './SpellNotes.vue';
 // import SpellSpan from './SpellSpan.vue';
@@ -47,11 +46,10 @@ export default {
   name: "CustomDamageSource",
   components: {
     // MatchReplace,
-    // SpellEffects,
+    SpellEffects,
     // SimpleTooltip,
     // SpellNotes,
     // SpellSpan,
-    CustomSpellEffects,
   },
   props: ["index"],
   data: function () {

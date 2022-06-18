@@ -330,8 +330,8 @@ export const CORE_STATS = [
 export const
     default_spell_ratios = { user: '', stat: 'default', prefex: 'Default', color: "ap", sufex: "Default", html: "Default" };
 export const spell_ratios = {
-    base_damage: { user: '', prefex: "Base", color: "", sufex: "", extra: true, flat: true, html: "" },
-    base_progression: { user: '', prefex: "Unknown", color: "", sufex: "", extra: true, flat: true, html: "" },
+    base_damage: { user: '', prefex: "Base", color: "base_damage", sufex: "", extra: true, flat: true, html: "" },
+    base_progression: { user: '', prefex: "Unknown", color: "base_damage", sufex: "", extra: true, flat: true, html: "" },
     player_total_ap: { user: 'player', stat: 'total_ap', prefex: '', color: "ap", sufex: "AP", html: "AP" },
     player_total_ad: { user: 'player', stat: 'total_ad', prefex: '', color: "ad", sufex: "AD", html: "AD" },
     player_bonus_ad: { user: 'player', stat: 'bonus_ad', prefex: '', color: "ad", sufex: "Bonus AD", html: "<b>bonus</b> AD" },

@@ -8,7 +8,7 @@
       </span>
     </template>
   </span>
-  <span v-else class="spelleffect ss-click">
+  <span v-else class="spelleffect">
     {{ list }}
   </span>
 </template>

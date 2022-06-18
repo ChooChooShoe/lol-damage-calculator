@@ -3,8 +3,8 @@
     <template v-for="(r, i) in spell_ratios">
       <div
         :key="i"
-        v-if="!r.extra && $parent.ratios[i] === undefined"
-        @click="$parent.addRatio(i)"
+        v-if="!r.extra && ratios[i] === undefined"
+        @click="$emit('addRatio', i)"
         class="dropdown-item"
       >
         <a :class="r.color"
@@ -23,7 +23,7 @@ import DropdownSelect from "../simple/DropdownSelect.vue";
 
 export default {
   name: "AddRatioDropDown",
-  props: ["modelValue"],
+  props: ["modelValue", "ratios"],
   components: { DropdownSelect },
   data() {
     return {

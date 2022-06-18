@@ -6,7 +6,7 @@
       class="editable-input"
       type="text"
       step="1"
-      :value="encode(modelValue)"
+      :value="displayValue"
       :readonly="readonly"
       :placeholder="placeholder"
       @input="onInput"
@@ -39,6 +39,7 @@ export default {
   name: "Editable",
   data: function () {
     return {
+      editing: false,
       validity: true,
       validationMessage: "",
     };
@@ -71,7 +72,7 @@ export default {
     },
     displayValue: function () {
       const x = Math.round(this.exactValue * 100) / 100;
-      if (this.format === "percent") return String(x) + "%";
+      if (this.format === "percent" && !this.editing) return String(x) + "%";
       return x;
     },
   },
@@ -84,11 +85,13 @@ export default {
       this.$refs.local.setAttribute("style", `display:none;`);
     },
     onFocus(ev) {
+      this.editing = true;
+      ev.target.value = "this.exactValue";
       ev.target.type = "number";
-      ev.target.value = this.exactValue;
       ev.target.select();
     },
     onBlur(ev) {
+      this.editing = false;
       ev.target.type = "text";
       ev.target.value = this.displayValue;
     },

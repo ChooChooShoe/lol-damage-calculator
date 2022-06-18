@@ -88,7 +88,6 @@ import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
 import SpellImage from "../../timeline/SpellImage.vue";
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
-import CustomSpellEffects from "./CustomSpellEffects.vue";
 // import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
@@ -105,7 +104,6 @@ export default {
     // SimpleTooltip,
     SpellNotes,
     SpellSpan,
-    CustomSpellEffects,
     DropdownSelect,
     SpellImage,
   },

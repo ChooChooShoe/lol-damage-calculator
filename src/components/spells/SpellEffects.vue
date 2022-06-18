@@ -10,39 +10,33 @@
 
         <DamageTypeField v-model="damage_type"></DamageTypeField>
       </span>
+      <br />
+      <span class="ad">Pre-Mitigation: </span>
+      <DisplayRatioDamage v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :damageValue="obj.damagePreValue" :index="index"> </DisplayRatioDamage>
+      <span class="spelleffect__total"> = </span>
+      <span class="spelleffect__total">{{ Math.round(dmg_premitigation) }}</span>
+      <span class="spelleffect__total">&nbsp;</span>
+      <template v-if="repeat !== 1">
+        <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
+        <span class="spelleffect__total">{{ Math.round(dmg_premitigation * repeat) }}</span>
+        <span class="spelleffect__total">&nbsp;</span>
+      </template>
+      <!-- <span v-html="damage_type_user(damage_type)"></span> -->
+      <br />
+      <span class="ap">Post-Mitigation: </span>
+      <DisplayRatioDamage v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :damageValue="Math.round(obj.damagePostValue)" :index="index"> </DisplayRatioDamage>
+      <span class="spelleffect__total"> = </span>
+      <span class="spelleffect__total">{{ Math.round(dmg_postmitigation) }}</span>
+      <span class="spelleffect__total">&nbsp;</span>
+      <template v-if="repeat !== 1">
+        <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
+        <span class="spelleffect__total">{{ Math.round(dmg_postmitigation * repeat) }}</span>
+        <span class="spelleffect__total">&nbsp;</span>
+      </template>
+      <span v-html="damage_type_user(damage_type)"></span>
+      <br />
     </div>
     <div class="spelleff--content" :class="{ active: editMode }">
-      <div class="field column" v-if="doesDoDamage">
-        <table>
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Ratio</th>
-              <th>Pre-Damage</th>
-              <th>Post-Damage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <SpellField v-for="(item, key) in ratios" :key="key" :item="item"></SpellField>
-            <tr>
-              <th colspan="4">
-                <AddRatioDropDown></AddRatioDropDown>
-              </th>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="spelleff--totals">
-              <th style="text-align: center" colspan="2">
-                <b>Total</b>
-              </th>
-              <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
-              <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    <div v-if="doesDoDamage">
       <hr />
       <div class="column">
         Before resistances, this effect will deal
@@ -72,6 +66,43 @@
         <span v-html="damage_type_user(damage_type)"></span> before resistances. <br />This damage will cause the target to
         <span class="spelleffect">lose {{ Math.round(dmg_postmitigation * repeat) }} health</span>.
       </div>
+
+      <div class="field column spelleff__innercontent">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Base Damage / Ratio</th>
+              <th>Pre-Damage</th>
+              <th>Post-Damage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <SpellField v-for="(item, key) in ratios" :key="key" :item="item"></SpellField>
+            <tr>
+              <th colspan="4">
+                <AddRatioDropDown
+                  :ratios="ratios"
+                  @addRatio="
+                    (x) => {
+                      ratios[x] = makeRatio(x, 1);
+                    }
+                  "
+                ></AddRatioDropDown>
+              </th>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="spelleff--totals">
+              <th style="text-align: center" colspan="2">
+                <b>Total</b>
+              </th>
+              <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
+              <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -85,6 +116,7 @@ import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 import DisplayRatio from "./DisplayRatio.vue";
+import DisplayRatioDamage from "./DisplayRatioDamage.vue";
 import EditBtn from "../simple/EditBtn.vue";
 import { computed, inject, onMounted, onUnmounted, provide, reactive, ref, toRefs, watchEffect } from "vue";
 
@@ -204,17 +236,6 @@ damageSource.postIsManual = false;
 damageSource.damage_type = damage_type;
 damageSource.dmg_premitigation = dmg_premitigation;
 damageSource.dmg_postmitigation = dmg_postmitigation;
-
-// methods: {
-//   /// Used by child
-//   addRatio: function (ratio) {
-//     Vue.set(this.ratios, ratio, {
-//       key: ratio,
-//       value: 0,
-//       ispercent: true,
-//     });
-//   },
-// },
 </script>
 
 <style>
@@ -240,6 +261,16 @@ input[type="button"].repeat {
 
 .spelleffect__title {
   color: #8e7dad;
+}
+.spelleffect__total {
+  font-weight: bold;
+  font-size: 110%;
+}
+.spelleffect__repeat {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 110%;
+  color: yellow;
 }
 .spelleff--edit:before {
   content: "\25bc";
