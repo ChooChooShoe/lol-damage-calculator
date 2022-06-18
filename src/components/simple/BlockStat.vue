@@ -1,14 +1,14 @@
 <template>
   <div class="blockstat" :class="[totalClass, bonusClass]">
-    <input ref="input" @focus="onFocus" @blur="onBlur" class="blockstat__-input total" type="text" :value="total" @input="$emit('update:total', $event.target.valueAsNumber)" />
+    <NumInput ref="input" class="blockstat__-input total" :mode="mode" :modelValue="total" @update:modelValue="x => $emit('update:total', x)"> </NumInput>
 
-    <div ref="local" class="blockstat__tooltipcontent simplebg" style="display: none">
+    <div ref="local" class="blockstat__tooltipcontent simplebg">
       <p v-html="title"></p>
       <hr />
       <p><slot name="default"></slot></p>
       <hr />
       <p v-if="!hideBase">
-        Current {{ title }}: <b class="total">{{ rnd(total) }}</b
+        Current {{ title }}: <b class="total">{{ input?.displayValue }}</b
         >{{ suffix }}
         <span v-if="hasBase">
           (<b class="base">{{ rnd(base) }}</b
@@ -30,6 +30,7 @@
 
 <script>
 import { computed, inject, onMounted, ref, toRefs } from "vue";
+import NumInput from "./NumInput.vue";
 export default {
   props: {
     base: Number,
@@ -37,8 +38,7 @@ export default {
     total: Number,
     title: String,
     stat: String,
-
-    format: String,
+    mode: String,
     readonly: Boolean,
     suffix: String,
     hideBase: Boolean,
@@ -55,17 +55,8 @@ export default {
     const { base, bonus, total, suffix } = toRefs(props);
     const local = ref(null);
     const input = ref(null);
-    const hasBase = !!(base.value);
+    const hasBase = base.value;
     let statname = `Attack Damage`;
-
-    const displayValue = computed(() => {
-      const x = Math.round(total.value * 100) / 100;
-      if (suffix && suffix.value) return String(x) + suffix.value;
-      return String(x);
-    });
-    onMounted(() => {
-      input.value.value = displayValue.value;
-    });
     return {
       local,
       input,
@@ -77,34 +68,15 @@ export default {
       rnd: (val) => Math.round(val),
       hasBase,
       totalClass: computed(() => {
-        if (hasBase) return bonus.value < -0.5 ? "total-lowerd" : total.value > base.value + 0.5 ? "total-bonus" : "";
-        else return total.value < -0.5 ? "total-lowerd" : total.value > 0.5 ? "total-bonus" : "";
+        if (hasBase) return bonus.value < -0.005 ? "total-lowerd" : total.value > base.value + 0.005 ? "total-bonus" : "";
+        else return total.value < -0.005 ? "total-lowerd" : total.value > 0.005 ? "total-bonus" : "";
       }),
       bonusClass: computed(() => {
         return hasBase && bonus.value < -0.5 ? "bonus-lowerd" : "";
       }),
-      displayValue,
     };
   },
   methods: {
-    draw: function (e) {
-      const style = `left:${e.clientX + 10}px;top:${e.clientY + 25}px;`;
-      this.$refs.local.setAttribute("style", "display:block");
-    },
-    hide: function () {
-      this.$refs.local.setAttribute("style", `display:none;`);
-    },
-    onFocus(ev) {
-      ev.target.type = "number";
-      ev.target.value = this.total;
-      ev.target.select();
-      this.draw(ev);
-    },
-    onBlur(ev) {
-      ev.target.type = "text";
-      ev.target.value = this.displayValue;
-      this.hide(ev);
-    },
     clearStat() {
       if (this.hasBase) {
         this.$emit("update:bonus", 0);
@@ -113,6 +85,7 @@ export default {
       }
     },
   },
+  components: { NumInput },
 };
 </script>
 
@@ -155,11 +128,17 @@ export default {
   color: #c02b2b;
 }
 
+.blockstat__-input:focus-within+ 
+.blockstat__tooltipcontent{
+  display: block;
+
+}
 .blockstat__tooltipcontent {
+  display: none;
   position: absolute;
   top: unset;
   left: unset;
-  width: 550px;
+  max-width: 550px;
   z-index: 500;
 }
 .blockstat__tooltipcontent.simplebg {

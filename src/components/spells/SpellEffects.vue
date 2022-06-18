@@ -48,7 +48,7 @@
       </div>
       <label class="column">
         This effect will hit
-        <input type="number" v-model.number="repeat" class="simple-input" />
+        <NumInput v-model="repeat" class="collapse"></NumInput>
         time{{ repeat === 1 ? "" : "s" }}.
         <input
           v-for="(item, index) in [1, 2, 3, 5, 10]"
@@ -97,8 +97,8 @@
               <th style="text-align: center" colspan="2">
                 <b>Total</b>
               </th>
-              <Editable :modelValue="dmg_premitigation" :readonly="true"></Editable>
-              <Editable :modelValue="dmg_postmitigation" :readonly="true"></Editable>
+              <td><NumInput :modelValue="dmg_premitigation" :readonly="true"></NumInput></td>
+              <td><NumInput :modelValue="dmg_postmitigation" :readonly="true"></NumInput></td>
             </tr>
           </tfoot>
         </table>
@@ -114,11 +114,11 @@ import { damage_type_user } from "./SpellHelper";
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
-import Editable from "../simple/Editable.vue";
 import DisplayRatio from "./DisplayRatio.vue";
 import DisplayRatioDamage from "./DisplayRatioDamage.vue";
 import EditBtn from "../simple/EditBtn.vue";
 import { computed, inject, onMounted, onUnmounted, provide, reactive, ref, toRefs, watchEffect } from "vue";
+import NumInput from "../simple/NumInput.vue";
 
 const CORE_RATIOS = [
   "player_total_ap",

@@ -4,17 +4,16 @@
     <th>
       <span :class="color">{{ prefex }}{{ sufex }}</span>
     </th>
-    <Editable v-model="item.value" :format="item.ispercent ? 'percent' : ''" :index="spellrank"></Editable>
-    <EditableRO :modelValue="item.damagePreValue"></EditableRO>
-    <EditableRO :modelValue="item.damagePostValue"></EditableRO>
+    <td><NumInput v-model="item.value" :format="item.ispercent ? 'percent' : ''" :index="spellrank"></NumInput></td>
+    <td><NumInput :readonly="true" :modelValue="item.damagePreValue"></NumInput></td>
+    <td><NumInput :readonly="true" :modelValue="item.damagePostValue"></NumInput></td>
   </tr>
 </template>
 
 <script>
 import { computed, inject, toRefs } from "vue";
 import { spell_ratios, calc_dmg_onhit } from "../../javascript/league_data";
-import Editable from "../simple/Editable.vue";
-import EditableRO from "../simple/EditableRO.vue";
+import NumInput from "../simple/NumInput.vue";
 
 export default {
   //id, label_text, classColor, removeable=true, editable=true, fullsize=false
@@ -23,9 +22,8 @@ export default {
     item: Object,
   },
   components: {
-    Editable,
-    EditableRO,
-  },
+    NumInput
+},
   setup(props) {
     const { item } = toRefs(props);
     const ratiodata = spell_ratios[props.item.key] || {};

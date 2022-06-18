@@ -98,7 +98,7 @@
         Flat Magic Penetration is from Sorcerer Shoes, Luden's Tempest, etc.
       </BlockStat>
       <span v-if="showDamage" class="magic-damage">%MPen</span>
-      <BlockStat suffix="%" v-if="showDamage" v-model:total="obj.percent_magicpen" title="Percent Magic Penetration"> Percent Magic Penetration is from Void Staff. </BlockStat>
+      <BlockStat mode="percent" v-if="showDamage" v-model:total="obj.percent_magicpen" title="Percent Magic Penetration"> Percent Magic Penetration is from Void Staff. </BlockStat>
 
       <span v-if="showDamage" class="lethality">Lethality</span>
       <BlockStat v-if="showDamage" v-model:total="obj.lethality" title="Lethality">
@@ -110,7 +110,7 @@
         </template>
       </BlockStat>
       <span v-if="showDamage" class="physical-damage">%Pen</span>
-      <BlockStat suffix="%" v-if="showDamage" v-model:total="obj.percent_armorpen" title="Percent Armor Penetration">
+      <BlockStat mode="percent" v-if="showDamage" v-model:total="obj.percent_armorpen" title="Percent Armor Penetration">
         Percent Armor Penetration is from Lord Dominik's Regards.
       </BlockStat>
 
@@ -146,8 +146,6 @@
 import DataInput from "./DataInput.vue";
 // import InlineInput from "./InlineInput.vue";
 // import SimpleTooltip from "./SimpleTooltip.vue";
-import Editable from "./simple/Editable.vue";
-import EditableCollapse from "./simple/EditableCollapse.vue";
 import ChampSearch from "./simple/ChampSearch.vue";
 import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";

@@ -23,87 +23,87 @@
       <tbody>
         <tr v-if="showDamage">
           <th class="attack-damage">Attack Damage (AD)</th>
-          <Editable v-model="obj.base_ad" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_ad"></Editable>
-          <Editable v-model="obj.total_ad"></Editable>
+          <td><NumInput v-model="obj.base_ad" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_ad"></NumInput></td>
+          <td><NumInput v-model="obj.total_ad"></NumInput></td>
         </tr>
         <tr v-if="showDamage">
           <th class="ap">Ability Power (AP)</th>
-          <Editable :modelValue="0" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.total_ap"></Editable>
-          <Editable v-model="obj.total_ap"></Editable>
+          <td><NumInput :modelValue="0" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.total_ap"></NumInput></td>
+          <td><NumInput v-model="obj.total_ap"></NumInput></td>
         </tr>
         <tr v-if="showDefence">
           <th class="health">Health</th>
-          <Editable v-model="obj.base_hp" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_hp"></Editable>
-          <Editable v-model="obj.total_hp"></Editable>
+          <td><NumInput v-model="obj.base_hp" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_hp"></NumInput></td>
+          <td><NumInput v-model="obj.total_hp"></NumInput></td>
         </tr>
         <tr v-if="showDefence">
           <th class="armor">Armor</th>
-          <Editable v-model="obj.base_armor" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_armor"></Editable>
-          <Editable v-model="obj.total_armor"></Editable>
+          <td><NumInput v-model="obj.base_armor" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_armor"></NumInput></td>
+          <td><NumInput v-model="obj.total_armor"></NumInput></td>
         </tr>
         <tr v-if="showDefence">
           <th class="mr">Magic Res. (MR)</th>
-          <Editable v-model="obj.base_mr" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_mr"></Editable>
-          <Editable v-model="obj.total_mr"></Editable>
+          <td><NumInput v-model="obj.base_mr" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_mr"></NumInput></td>
+          <td><NumInput v-model="obj.total_mr"></NumInput></td>
         </tr>
         <tr v-if="showExtra">
           <th class="mana">Mana</th>
-          <Editable v-model="obj.base_mana" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_mana"></Editable>
-          <Editable v-model="obj.total_mana"></Editable>
+          <td><NumInput v-model="obj.base_mana" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_mana"></NumInput></td>
+          <td><NumInput v-model="obj.total_mana"></NumInput></td>
         </tr>
         <tr v-if="showExtra">
           <th class="movespeed">Movespeed</th>
-          <Editable v-model="obj.base_movespeed" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_movespeed"></Editable>
-          <Editable v-model="obj.total_movespeed"></Editable>
+          <td><NumInput v-model="obj.base_movespeed" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_movespeed"></NumInput></td>
+          <td><NumInput v-model="obj.total_movespeed"></NumInput></td>
         </tr>
         <tr v-if="showExtra">
           <th class="attack-damage">Attack Range</th>
-          <Editable v-model="obj.base_attackrange" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_attackrange"></Editable>
-          <Editable v-model="obj.total_attackrange"></Editable>
+          <td><NumInput v-model="obj.base_attackrange" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_attackrange"></NumInput></td>
+          <td><NumInput v-model="obj.total_attackrange"></NumInput></td>
         </tr>
         <tr v-if="showExtra">
           <th class="hp">Health Regen.</th>
-          <Editable v-model="obj.base_hpregen" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_hpregen"></Editable>
-          <Editable v-model="obj.total_hpregen"></Editable>
+          <td><NumInput v-model="obj.base_hpregen" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_hpregen"></NumInput></td>
+          <td><NumInput v-model="obj.total_hpregen"></NumInput></td>
         </tr>
         <tr v-if="showExtra">
           <th class="mana">Mana Regen.</th>
-          <Editable v-model="obj.base_manaregen" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_manaregen"></Editable>
-          <Editable v-model="obj.total_manaregen"></Editable>
+          <td><NumInput v-model="obj.base_manaregen" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_manaregen"></NumInput></td>
+          <td><NumInput v-model="obj.total_manaregen"></NumInput></td>
         </tr>
         <tr v-if="showDamage && showExtra">
           <th class="crit">Crit Chance</th>
-          <Editable v-model="obj.base_critchance" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_critchance"></Editable>
-          <Editable v-model="obj.total_critchance"></Editable>
+          <td><NumInput v-model="obj.base_critchance" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_critchance"></NumInput></td>
+          <td><NumInput v-model="obj.total_critchance"></NumInput></td>
         </tr>
         <tr v-if="showDamage && showExtra">
           <th class="crit">Critical Strike Damage</th>
-          <Editable v-model="obj.base_critdamage" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_critdamage"></Editable>
-          <Editable v-model="obj.total_critdamage"></Editable>
+          <td><NumInput v-model="obj.base_critdamage" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_critdamage"></NumInput></td>
+          <td><NumInput v-model="obj.total_critdamage"></NumInput></td>
         </tr>
         <tr v-if="showDamage">
           <th class="mana">Attackspeed</th>
-          <Editable v-model="obj.base_attackspeed" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.bonus_attackspeed"></Editable>
-          <Editable v-model="obj.total_attackspeed"></Editable>
+          <td><NumInput v-model="obj.base_attackspeed" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.bonus_attackspeed"></NumInput></td>
+          <td><NumInput v-model="obj.total_attackspeed"></NumInput></td>
         </tr>
         <tr v-if="showDamage && showExtra">
           <th class="mana">Lifesteal</th>
-          <Editable :modelValue="0" :readonly="readonly_base_values"></Editable>
-          <Editable v-model="obj.lifesteal"></Editable>
-          <Editable v-model="obj.lifesteal"></Editable>
+          <td><NumInput :modelValue="0" :readonly="readonly_base_values"></NumInput></td>
+          <td><NumInput v-model="obj.lifesteal"></NumInput></td>
+          <td><NumInput v-model="obj.lifesteal"></NumInput></td>
         </tr>
       </tbody>
     </table>
@@ -117,21 +117,21 @@
         <tbody>
           <tr>
             <td class>Base</td>
-            <Editable v-model="obj.base_hp" :readonly="true"></Editable>
+            <td><NumInput v-model="obj.base_hp" :readonly="true"></NumInput></td>
             <td class>Bonus</td>
-            <Editable v-model="obj.bonus_hp"></Editable>
+            <td><NumInput v-model="obj.bonus_hp"></NumInput></td>
           </tr>
           <tr>
             <td class>Max / Total</td>
-            <Editable v-model="obj.total_hp"></Editable>
+            <td><NumInput v-model="obj.total_hp"></NumInput></td>
             <td class>Shield</td>
-            <Editable v-model="obj.total_shield"></Editable>
+            <td><NumInput v-model="obj.total_shield"></NumInput></td>
           </tr>
           <tr>
             <td class>Current</td>
-            <Editable v-model="obj.current_hp"></Editable>
+            <td><NumInput v-model="obj.current_hp"></NumInput></td>
             <td class>Missing</td>
-            <Editable v-model="obj.missing_hp"></Editable>
+            <td><NumInput v-model="obj.missing_hp"></NumInput></td>
           </tr>
         </tbody>
       </table>
@@ -139,7 +139,7 @@
       <p>
         <span class="armor">{{ Math.ceil(obj.total_armor) }} <b>total</b> armor</span>
         reduces incoming <span class="physical-damage">physical damage</span> by
-        <EditableCollapse class="ap" :autoWidth="true" format="percent" v-model="obj.percent_pysical_reduction"></EditableCollapse>%. <br />
+        <NumInput class="ap collapse" :autoWidth="true" format="percent" v-model="obj.percent_pysical_reduction"></NumInput>%. <br />
         It takes
         <span class="physical-damage">{{ Math.ceil(obj.eff_physical_hp) }} physical damage</span>
         to kill this target from only
@@ -149,7 +149,7 @@
         <span class="mr">{{ Math.ceil(obj.total_mr) }} <b>total</b> magic resistance</span>
         reduces incoming
         <span class="magic-damage">magic damage</span> by
-        <EditableCollapse class="ap" :autoWidth="true" format="percent" v-model="obj.percent_magic_reduction"></EditableCollapse>%.<br />
+        <NumInput class="ap collapse" :autoWidth="true" format="percent" v-model="obj.percent_magic_reduction"></NumInput>%.<br />
         It takes
         <span class="magic-damage">{{ Math.ceil(obj.eff_magic_hp) }} magic damage</span>
         to kill this target from only
@@ -167,20 +167,20 @@
       <tbody>
         <tr>
           <th class="lethality">Lethality</th>
-          <Editable v-model="obj.lethality"></Editable>
-          <!-- <td><Editable v-model="obj.flat_armorpen"></Editable></td> -->
+          <td><NumInput v-model="obj.lethality"></NumInput></td>
+          <!-- <td><td><NumInput v-model="obj.flat_armorpen"></NumInput></td></td> -->
         </tr>
         <tr>
           <th class="lethality">{{ rnd(obj.percent_armorpen * 100) }}% Armor Penetration</th>
-          <Editable v-model="obj.percent_armorpen" format="percent">%</Editable>
+          <td><NumInput v-model="obj.percent_armorpen" format="percent">%</NumInput></td>
         </tr>
         <tr>
           <th class="magic">Flat Magic Pen.</th>
-          <Editable v-model="obj.flat_magicpen"></Editable>
+          <td><NumInput v-model="obj.flat_magicpen"></NumInput></td>
         </tr>
         <tr>
           <th class="magic">{{ rnd(obj.percent_magicpen * 100) }}% Magic Pen.</th>
-          <Editable v-model="obj.percent_magicpen" format="percent">%</Editable>
+          <td><NumInput v-model="obj.percent_magicpen" format="percent">%</NumInput></td>
         </tr>
         <tr>
           <td colspan="2">
@@ -222,23 +222,21 @@
 // import DataInput from "./DataInput.vue";
 // import InlineInput from "./InlineInput.vue";
 // import SimpleTooltip from "./SimpleTooltip.vue";
-import Editable from "./simple/Editable.vue";
-import EditableCollapse from "./simple/EditableCollapse.vue";
 import ChampSearch from "./simple/ChampSearch.vue";
 import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
 import EditBtn from "./simple/EditBtn.vue";
 import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
 import { reactive, inject, ref, computed } from "vue";
+import NumInput from "./simple/NumInput.vue";
 
 export default {
   name: "TargetDev",
   components: {
-    Editable,
-    EditableCollapse,
     ChampSearch,
     ChampLevelSelect,
     EditBtn,
-  },
+    NumInput
+},
   setup() {
     const obj = inject("ChampObj");
 

@@ -13,23 +13,23 @@
       <tbody>
         <tr>
           <th class="ad">Basic Attack</th>
-          <Editable v-model="attack_damage"></Editable>
-          <Editable :readonly="true" v-model="ds_ad.dmg_postmitigation"></Editable>
+          <td><NumInput v-model="attack_damage"></NumInput></td>
+          <td><NumInput :readonly="true" v-model="ds_ad.dmg_postmitigation"></NumInput></td>
         </tr>
         <tr>
           <th class="ad">On-Hit Physical</th>
-          <Editable v-model="ds_ph.dmg_premitigation"></Editable>
-          <Editable :readonly="true" v-model="ds_ph.dmg_postmitigation"></Editable>
+          <td><NumInput v-model="ds_ph.dmg_premitigation"></NumInput></td>
+          <td><NumInput :readonly="true" v-model="ds_ph.dmg_postmitigation"></NumInput></td>
         </tr>
         <tr>
           <th class="ap">On-Hit Magic</th>
-          <Editable v-model="ds_mg.dmg_premitigation"></Editable>
-          <Editable :readonly="true" v-model="ds_mg.dmg_postmitigation"></Editable>
+          <td><NumInput v-model="ds_mg.dmg_premitigation"></NumInput></td>
+          <td><NumInput :readonly="true" v-model="ds_mg.dmg_postmitigation"></NumInput></td>
         </tr>
         <tr>
           <th class="true">On-Hit True</th>
-          <Editable v-model="ds_tr.dmg_premitigation"></Editable>
-          <Editable :readonly="true" v-model="ds_tr.dmg_postmitigation"></Editable>
+          <td><NumInput v-model="ds_tr.dmg_premitigation"></NumInput></td>
+          <td><NumInput :readonly="true" v-model="ds_tr.dmg_postmitigation"></NumInput></td>
         </tr>
       </tbody>
     </table>
@@ -70,7 +70,7 @@
     <p>
       <label>
         <span>AA&nbsp;</span>
-        <EditableCollapse v-model="repeat"></EditableCollapse>
+        <NumInput class="collapse" v-model="repeat"></NumInput>
         <span>&nbsp;time</span>
         <span v-if=" repeat != 1">s</span>
         <span>.&nbsp;</span>
@@ -102,15 +102,13 @@
 
 <script>
 import { DamageSource, DamageType } from "../../javascript/league_data";
-import Editable from "../simple/Editable.vue";
-import EditableCollapse from "../simple/EditableCollapse.vue";
+import NumInput from "../simple/NumInput.vue";
 
 export default {
   name: "AADamageSource",
   components: {
-    Editable,
-    EditableCollapse,
-  },
+    NumInput,
+},
   props: ["damageSources", "player", "target"],
   data: function () {
     return {
