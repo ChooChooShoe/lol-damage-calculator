@@ -53,7 +53,7 @@
           repeat === 1 ? "" : " per hit"
         }}</span
         >. <br />This target will take {{ Math.round(dmg_postmitigation) }}
-        <span v-html="damage_type_user"></span> after reductions<span
+        <span v-html="damage_type_user(damage_type)"></span> after reductions<span
           class="gold"
           >{{ repeat === 1 ? "" : " per hit" }}</span
         >.
@@ -79,7 +79,7 @@
       <div v-if="repeat != 1" class="column">
         In total, this effect deals
         {{ Math.round(dmg_premitigation * repeat) }}
-        <span v-html="damage_type_user"></span> before resistances. <br />This
+        <span v-html="damage_type_user(damage_type)"></span> before resistances. <br />This
         damage will cause the target to
         <span class="spelleffect"
           >lose {{ Math.round(dmg_postmitigation * repeat) }} health</span
@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import { damage_type_user } from "./SpellHelper";
 import {
   calc_dmg_onhit,
   spell_ratios,
@@ -103,7 +104,7 @@ import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 
 export default {
-  props: ["index", "damagingEffects"],
+  props: ["index", "damageSources"],
   name: "CustomSpellEffects",
   components: {
     SpellField,
@@ -132,18 +133,6 @@ export default {
     spell_ratios: function () {
       return spell_ratios;
     },
-    damage_type_user: function () {
-      switch (this.damage_type) {
-        case "physical":
-          return '<span class="ad">physical damage</span>';
-        case "magic":
-          return '<span class="ap">magic damage</span>';
-        case "true":
-          return '<span class="true">true damage</span>';
-        default:
-          return '<span class="true">no damage</span>';
-      }
-    },
     dmg_premitigation: function () {
       if (!this.isMounted) return -1;
       let total = 0;
@@ -167,15 +156,12 @@ export default {
       return [this];
     },
   },
-  mounted: function () {
-    this.damagingEffects.push(this);
+  mounted: function () {  
+    this.damageSources[this] = [this];
     this.isMounted = true;
   },
   unmounted: function () {
-    const index = this.damagingEffects.indexOf(this);
-    if (index > -1) {
-      this.damagingEffects.splice(index, 1);
-    }
+    delete this.damageSources[this];
   },
   methods: {
     /// Used by child

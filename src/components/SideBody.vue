@@ -25,13 +25,12 @@
 </template>
 
 <script>
-import numeral from "numeral";
 // import SettingsModel from "./SettingsModel.vue"
 import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
 import DamageBlock from "./sidebar/DamageBlock.vue";
 export default {
   name: "SideBody",
-  props: ["damagingEffects", "player", "target"],
+  props: ["damageSources", "player", "target"],
   components: { DamageBlock },
   methods: {
     rnd: function (n, digits) {
@@ -40,7 +39,7 @@ export default {
       return +n.toFixed(digits);
     },
     percentf: function (value) {
-      return parseFloat(value).toFixed(2)+"%";
+      return parseFloat(value).toFixed(2) + "%";
     },
     addCustomDamageSource() {
       this.$root.addCustomDamageSource();
@@ -96,7 +95,6 @@ export default {
       ];
     },
     output: function () {
-      console.log("Re-calc 4.0 start");
       const p = this.player;
       const t = this.target;
       let output = {
@@ -116,30 +114,23 @@ export default {
         console.log("Re-calc 4.0 failed, missing player and target.");
         return output;
       }
-
-      for (const damagingEffect of this.damagingEffects) {
-        // Use .damageSources for effects with more then one source.
-        let sources = damagingEffect.damageSources;
-        if (!sources) {
-          // Use damagingEffect as the source only if no .damageSources defined.
-          sources = [damagingEffect];
-        }
-
-        for (const damageSource of sources) {
-          const times_hit = Math.max(damageSource.repeat, 0);
-          let pre = damageSource.dmg_premitigation;
-          let post;
-          // A dynamic damageSource has the dmg_postmitigation cauculated for us.
-          if (damageSource.dyanmic) post = damageSource.dmg_postmitigation;
-          else {
-            // non-dyanmic will have it set here.
-            post = calc_dmg_onhit(p, t, pre, damageSource.damage_type);
-            damageSource.dmg_postmitigation = post;
+      console.log("Re-calc 4.0 start",p,t,this.damageSources);
+      
+      for (const [key, sourceArray] of Object.entries(this.damageSources)) {
+        console.log("Calc for", key, "effecis is", sourceArray);
+        for (const source of sourceArray) {
+          const times_hit = Math.max(source.repeat, 0) || 0;
+          let pre = source.dmg_premitigation;
+          let post = source.dmg_postmitigation;
+          // A postIsManual damageSource has the dmg_postmitigation cauculated for us.
+          if (source.postIsManual) {
+            post = calc_dmg_onhit(p, t, pre, source.damage_type);
+            source.dmg_postmitigation = post;
           }
           pre = pre * times_hit;
           post = post * times_hit;
 
-          switch (damageSource.damage_type) {
+          switch (source.damage_type) {
             case DamageType.PHYSICAL:
               output.prePhysicalDmg += pre;
               output.physicalDmg += post;
@@ -155,11 +146,7 @@ export default {
             case DamageType.UNKNOWN:
               continue;
             default:
-              console.log(
-                'Unknown Damage Type "',
-                damageSource.damage_type,
-                '" Caculations may be incorrect.'
-              );
+              console.log('Unknown Damage Type "', source.damage_type, '" Caculations may be incorrect.');
               continue;
           }
           // Add totals if magic/phys/true damage

@@ -1,6 +1,6 @@
 <template>
   <div class="data_holder col fill">
-    <div class="ds__description" tabindex="0"> List of Spells</div>
+    <div class="ds__title" tabindex="0">Click to toggle</div>
 
     <div>
       <div class="ttam__toggle">
@@ -9,7 +9,10 @@
       </div>
       <div class="ttam__toggle" v-for="spell in activeChampionModel?.skills" :key="spell.skillkey">
         <SpellImage :image="spell.image"></SpellImage>
-        <span class="ttam__toggletitle" :title="spell.name">{{ spell.skillkey }}</span>
+        <label class="ttam__toggletitle" :title="spell.name">
+          {{ spell.skillkey }}
+          <input class="hidden" type="checkbox" :value="true" />
+        </label>
       </div>
     </div>
 
@@ -33,7 +36,6 @@ const activeChampionModel = inject("activeChampionModel");
 <style>
 .ttam__toggle {
   position: relative;
-  cursor: pointer;
   display: inline-block;
   user-select: none;
   border: transparent 1px solid;
@@ -43,7 +45,11 @@ const activeChampionModel = inject("activeChampionModel");
 .ttam__toggle:hover {
   border-color: darkorange;
 }
+.ttam__toggle>input:checked {
+  border-color: #5b2381;
+}
 .ttam__toggletitle {
+  cursor: pointer;
   position: absolute;
   left: 0;
   bottom: 3px;

@@ -47,7 +47,7 @@
       <div class="column">
         Before resistances, this effect will deal
         {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span
-        >. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user"></span> after reductions<span class="gold">{{
+        >. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user(damage_type)"></span> after reductions<span class="gold">{{
           repeat === 1 ? "" : " per hit"
         }}</span
         >.
@@ -69,23 +69,24 @@
       <div v-if="repeat != 1" class="column">
         In total, this effect deals
         {{ Math.round(dmg_premitigation * repeat) }}
-        <span v-html="damage_type_user"></span> before resistances. <br />This damage will cause the target to
+        <span v-html="damage_type_user(damage_type)"></span> before resistances. <br />This damage will cause the target to
         <span class="spelleffect">lose {{ Math.round(dmg_postmitigation * repeat) }} health</span>.
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { calc_dmg_onhit, spell_ratios, CORE_STATS, DamageSource, DamageType } from "../../javascript/league_data";
 
+import { damage_type_user } from "./SpellHelper";
 import SpellField from "./SpellField.vue";
 import DamageTypeField from "./DamageTypeField.vue";
 import AddRatioDropDown from "./AddRatioDropDown.vue";
 import Editable from "../simple/Editable.vue";
 import DisplayRatio from "./DisplayRatio.vue";
 import EditBtn from "../simple/EditBtn.vue";
-import { computed, inject, provide, reactive, ref, toRefs, watchEffect } from "vue";
+import { computed, inject, onMounted, onUnmounted, provide, reactive, ref, toRefs, watchEffect } from "vue";
 
 const CORE_RATIOS = [
   "player_total_ap",
@@ -104,143 +105,116 @@ const CORE_RATIOS = [
   "player_total_mr",
   "target_total_ap",
 ];
+const { effect, effectindex, pkey, custom } = defineProps({
+  effect: Object,
+  effectindex: Number,
+  pkey: String,
+  custom: Boolean,
+});
 
-export default {
-  props: {
-    effect: Object,
-    effectindex: Number,
-    damagingEffects: Object
-  },
-  name: "SpellEffects",
-  components: {
-    SpellField,
-    DamageTypeField,
-    AddRatioDropDown,
-    Editable,
-    DisplayRatio,
-    EditBtn,
-  },
-  setup(props) {
-    const { effect, effectindex } = toRefs(props);
-    const rootspell = inject("rootspell");
-    const rootData = inject("RootData");
+const rootspell = inject("rootspell");
+const rootData = inject("RootData");
+const damage_type = ref("magic");
 
-    const damage_type = ref("magic");
+const damageSource = new DamageSource();
 
-    const makeRatio = (name, value) => {
-      const i = name.indexOf("_");
-      const user = name.slice(0, i);
-      const stat = name.slice(i + 1);
+const makeRatio = (name, value) => {
+  const i = name.indexOf("_");
+  const user = name.slice(0, i);
+  const stat = name.slice(i + 1);
 
-      let ispercent = user !== "base";
+  let ispercent = user !== "base";
 
-      const valueNumber = computed(() => {
-        return Array.isArray(value) ? value[rootspell.value.rankindex] : value;
-      });
-      console.log("makeRatio()", name, value, "split",user,stat, valueNumber.value);
+  const valueNumber = computed(() => {
+    return Array.isArray(value) ? value[rootspell.value.rankindex] : value;
+  });
+  console.log("makeRatio()", name, value, "split", user, stat, valueNumber.value);
 
-      const damagePreValue = computed(() => {
-        // No user means base_damage or base_progression
-        if (user !== "player" && user !== "target") return valueNumber.value;
+  const damagePreValue = computed(() => {
+    // No user means base_damage or base_progression
+    if (user !== "player" && user !== "target") return valueNumber.value;
 
-        let statValue = rootData[user].value[stat];
-        if (isNaN(statValue)) {
-          console.warn(`Stat ${stat} for ratio ${name} missing for ${user}`);
-          statValue = 0;
-        }
-        return statValue * valueNumber.value;
-      });
-      return reactive({
-        key: name,
-        value: value,
-        ispercent: ispercent,
-        valueNumber,
-        damagePreValue,
-        damagePostValue: computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value)),
-      });
-    };
-    const ratios = reactive({});
-
-    watchEffect(() => {
-      // let newRatios = reactive({});
-      // convets effect's ratios to our ratios type.
-      for (const ratio in effect.value.ratios) {
-        ratios[ratio] = makeRatio(ratio, effect.value.ratios[ratio]);
-      }
-      console.log("computed() ratios", ratios);
-      // return newRatios;
-    });
-    watchEffect(() => {
-      // auto updates values when effect
-      damage_type.value = effect.value.damage_type;
-
-      // if(clear) {
-
-      // }
-    });
-
-    const dmg_premitigation = computed(() => {
-      let total = 0;
-      for (const r in ratios) {
-        total += ratios[r].damagePreValue || 0;
-      }
-      return total;
-    });
-
-    return {
-      repeat: ref(1),
-      editMode: ref(false),
-      ratios,
-      doesDoDamage: computed(() => ["magic", "physical", "true"].includes(damage_type.value)),
-      dmg_premitigation,
-      dmg_postmitigation: computed(() => {
-        console.log("dmg_postmitigation");
-        return calc_dmg_onhit(rootData.player.value, rootData.target.value, dmg_premitigation.value, damage_type.value);
-      }),
-      damage_type,
-      spell_ratios: spell_ratios,
-    };
-  },
-  computed: {
-    damage_type_user: function () {
-      switch (this.damage_type) {
-        case "physical":
-          return '<span class="physical-damage">physical damage</span>';
-        case "magic":
-          return '<span class="magic-damage">magic damage</span>';
-        case "true":
-          return '<span class="true-damage">true damage</span>';
-        default:
-          return '<span class="true-damage">no damage</span>';
-      }
-    },
-    dyanmic: function () {
-      return true;
-    },
-    damageSources: function () {
-      return [this];
-    },
-  },
-  mounted: function () {
-    this.damagingEffects.push(this);
-  },
-  unmounted: function () {
-    const index = this.damagingEffects.indexOf(this);
-    if (index > -1) {
-      this.damagingEffects.splice(index, 1);
+    let statValue = rootData[user].value[stat];
+    if (isNaN(statValue)) {
+      console.warn(`Stat ${stat} for ratio ${name} missing for ${user}`);
+      statValue = 0;
     }
-  },
-  methods: {
-    /// Used by child
-    addRatio: function (ratio) {
-      Vue.set(this.ratios, ratio, {
-        key: ratio,
-        value: 0,
-        ispercent: true,
-      });
-    },
-  },
+    return statValue * valueNumber.value;
+  });
+  return reactive({
+    key: name,
+    value: value,
+    ispercent: ispercent,
+    valueNumber,
+    damagePreValue,
+    damagePostValue: computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value)),
+  });
 };
+const ratios = reactive({});
+defineExpose({
+  ratios,
+});
+
+watchEffect(() => {
+  // let newRatios = reactive({});
+  // convets effect's ratios to our ratios type.
+  for (const ratio in effect.ratios) {
+    ratios[ratio] = makeRatio(ratio, effect.ratios[ratio]);
+  }
+  console.log("computed() ratios", ratios, effect.ratios);
+  // return newRatios;
+});
+watchEffect(() => {
+  // auto updates values when effect
+  damage_type.value = effect.damage_type;
+
+  // if(clear) {
+
+  // }
+});
+
+const dmg_premitigation = computed(() => {
+  let total = 0;
+  for (const r in ratios) {
+    total += ratios[r].damagePreValue || 0;
+  }
+  return total;
+});
+
+const damageSources = inject("damageSources");
+onMounted(() => {
+  console.log("mount", pkey);
+  damageSources.value[pkey] = [damageSource];
+});
+onUnmounted(() => {
+  console.log("UNMOUNT SpellEffect", pkey);
+  delete damageSources.value[pkey];
+});
+
+const repeat = ref(1);
+const editMode = ref(false);
+const doesDoDamage = computed(() => ["magic", "physical", "true"].includes(damage_type.value));
+// dmg_premitigation;
+const dmg_postmitigation = computed(() => {
+  console.log("dmg_postmitigation");
+  return calc_dmg_onhit(rootData.player.value, rootData.target.value, dmg_premitigation.value, damage_type.value);
+});
+damageSource.repeat = repeat;
+damageSource.postIsManual = false;
+damageSource.damage_type = damage_type;
+damageSource.dmg_premitigation = dmg_premitigation;
+damageSource.dmg_postmitigation = dmg_postmitigation;
+
+// methods: {
+//   /// Used by child
+//   addRatio: function (ratio) {
+//     Vue.set(this.ratios, ratio, {
+//       key: ratio,
+//       value: 0,
+//       ispercent: true,
+//     });
+//   },
+// },
 </script>
 
 <style>

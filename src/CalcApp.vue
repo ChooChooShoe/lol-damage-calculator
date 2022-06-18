@@ -1,24 +1,23 @@
 <template>
   <!-- <SettingsModel ref="settings"></SettingsModel> -->
 
-  <SideBody :damagingEffects="damagingEffects" :player="player" :target="target"></SideBody>
+  <SideBody :damageSources="damageSources" :player="player" :target="target"></SideBody>
 
   <div class="flex main">
     <ChampObj @update:obj="player = $event"> <ChampionDiv mode="player" @update:activeChampionModel="(m) => (activeChampionModel = m)"></ChampionDiv></ChampObj>
     <ChampObj @update:obj="target = $event"> <ChampionDiv mode="target"></ChampionDiv></ChampObj>
 
     <TimelineAddMenu></TimelineAddMenu>
-    <AADamageSource class="hidden" :damagingEffects="damagingEffects" :player="player" :target="target"></AADamageSource>
+    <AADamageSource :damageSources="damageSources" :player="player" :target="target"></AADamageSource>
     <ChampionSpellDamageSource
       v-for="spellObj in activeSpells"
       :key="spellObj.skillkey"
       :spell="spellObj"
       :multispells="spellObj.skillkey.length > 1"
       :champion="player.champ"
-      :damagingEffects="damagingEffects"
     ></ChampionSpellDamageSource>
 
-    <CustomDamageSource v-for="i in customDamageSources" :key="i" :index="i"></CustomDamageSource>
+    <CustomDamageSource v-for="(ds, idx) in customDamageSources" :key="idx" :index="idx"></CustomDamageSource>
   </div>
   <!-- <footer>
     <div class="buttons">
@@ -71,14 +70,18 @@ const validateName = (value) => {
 const player = ref({});
 const target = ref({});
 const activeChampionModel = ref({});
-const damagingEffects = ref([]);
+
+const aaDamageSources = ref({});
+const champDamageSources = ref({});
+
+const damageSources = ref({});
 
 provide("player", player);
 provide("target", target);
 provide("activeChampionModel", activeChampionModel);
-provide("damagingEffects", damagingEffects);
+provide("damageSources", damageSources);
 
-provide("RootData", { player, target, damagingEffects });
+provide("RootData", { player, target, damageSources });
 
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);
@@ -87,8 +90,8 @@ const activeSpells = computed(() => Object.values(activeChampionModel?.value?.sk
 
 const skillpoints_used = () => {
   let sum = 0;
-  for (const x in this.data.damagingEffects) {
-    sum += (this.data.damagingEffects[x].spellrankindex || 0) + 1;
+  for (const x in this.data.damageSources) {
+    sum += (this.data.damageSources[x].spellrankindex || 0) + 1;
   }
   return sum;
 };

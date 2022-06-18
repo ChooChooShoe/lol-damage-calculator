@@ -111,7 +111,7 @@ export default {
     Editable,
     EditableCollapse,
   },
-  props: ["damagingEffects", "player", "target"],
+  props: ["damageSources", "player", "target"],
   data: function () {
     return {
       customEffects: [0],
@@ -125,8 +125,6 @@ export default {
     };
   },
   mounted: function () {
-    this.damagingEffects.push(this);
-
     // Sets this.ds_ad.dmg_premitigation to always be player.total_ad
     // TODO: Kalista
     let x = this.player;
@@ -135,12 +133,11 @@ export default {
         return x.total_ad;
       },
     });
+    this.damageSources.AA = [this.ds_ad, this.ds_ph, this.ds_mg, this.ds_tr];
   },
   unmounted: function () {
-    const index = this.damagingEffects.indexOf(this);
-    if (index > -1) {
-      this.damagingEffects.splice(index, 1);
-    }
+    console.log("UNMOUNT AADamageSource")
+    delete this.damageSources.AA;
   },
   watch: {
     repeat: function (val, old) {
@@ -158,25 +155,6 @@ export default {
       set(value) {
         this.player.total_ad = value;
       },
-    },
-    damageSources() {
-      return [this.ds_ad, this.ds_ph, this.ds_mg, this.ds_tr];
-    },
-    damage_type_user: function () {
-      switch (this.damage_type) {
-        case "none":
-          return '<span class="true">no damage</span>';
-        case "unknown":
-          return '<span class="mixed">unknown damage</span>';
-        case "physical":
-          return '<span class="ad">physical damage</span>';
-        case "magic":
-          return '<span class="ap">magic damage</span>';
-        case "true":
-          return '<span class="true">true damage</span>';
-        default:
-          return "";
-      }
     },
   },
 };

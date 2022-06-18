@@ -367,6 +367,7 @@ export class DamageSource {
     dmg_premitigation = -1
     dmg_postmitigation = -1
     repeat = 1
+    postIsManual = true
 
     /**
      * @param {string} damage_type One of 'physical', 'magic', 'true', or 'none'

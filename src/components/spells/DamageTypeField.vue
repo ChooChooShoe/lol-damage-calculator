@@ -1,5 +1,5 @@
 <template>
-  <DropdownSelect suffix="damage" class="dtfield" :class="modelValue" :value="displayValue">
+  <DropdownSelect suffix="damage" class="dtfield" :class="modelValue" :value="damage_type_user(modelValue)">
     <button :class="{ success: modelValue === 'none' }" @click="$emit('update:modelValue', 'none')">None</button>
     <button class="ad" :class="{ success: modelValue === 'physical' }" @click="$emit('update:modelValue', 'physical')">Physical</button>
     <button class="ap" :class="{ success: modelValue === 'magic' }" @click="$emit('update:modelValue', 'magic')">Magic</button>
@@ -7,38 +7,12 @@
   </DropdownSelect>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup>
 import DropdownSelect from "../simple/DropdownSelect.vue";
-
-export default {
-  name: "DamageTypeField",
-  props: { modelValue: String },
-  components: { DropdownSelect },
-  setup(props) {
-    return {
-      displayValue: computed(() => {
-        switch (props.modelValue) {
-          case "physical":
-            return `<span class="ad">physical damage</span>`;
-          case "magic":
-            return `<span class="ap">magic damage</span>`;
-          case "true":
-            return `<span class="true">true damage</span>`;
-          case "heal":
-            return `<span class="shield">healing</span>`
-          case "shield":
-            return `<span class="shield">shielding</span>`
-          case "unknown":
-            return `<span class="true">unknown damage</span>`
-          default:
-            return `<span class="true">non-damaging ability</span>`;
-        }
-      }),
-    };
-  },
-};
+import { damage_type_user } from "./SpellHelper";
+defineProps(["modelValue"]);
 </script>
+
 <style>
 .dtfield {
   display: inline-block;

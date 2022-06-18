@@ -68,14 +68,14 @@
     <template v-for="(root_effect, root_index) in spell.effects" :key="root_index">
       <SpellEffects
         v-for="(sub_effect, sub_index) in root_effect.subeffects"
-        :key="root_index + 'x' + sub_index"
+        :key="`${root_index}_${sub_index}`"
+        :pkey="`${spell.skillkey}_${root_index}_${sub_index}`"
         :effect="sub_effect"
         :effectindex="sub_index"
-        :damagingEffects="damagingEffects"
       ></SpellEffects>
     </template>
 
-    <CustomSpellEffects v-for="item in customEffects" :key="'CustomSpellEffects' + item" :index="item" :damagingEffects="damagingEffects"></CustomSpellEffects>
+    <SpellEffects v-for="(item, idx) in customEffects" :custom="true" :key="idx" :pkey="`${spell.skillkey}_c_${idx}`" :effect="item" :effectindex="idx"></SpellEffects>
 
     <input name="add_effect" type="button" class="button is-primary" value="Add Effect +" @click="addEffect()" />
 
@@ -95,6 +95,7 @@ import SpellSpan from ".././SpellSpan.vue";
 import { quickMatchReplace } from "../../javascript/matchreplace";
 import { spriteBaseUri } from "../../javascript/league_data";
 import DropdownSelect from "../simple/DropdownSelect.vue";
+import championList from "/src/api/ChampionList.json";
 
 export default {
   name: "ChampionSpellDamageSource",
@@ -111,7 +112,6 @@ export default {
   props: {
     spell: Object,
     champion: String,
-    damagingEffects: Object,
     multispells: Boolean,
   },
   setup(props) {
@@ -149,8 +149,17 @@ export default {
       matchReplace: quickMatchReplace,
       customEffects,
       addEffect: () => {
-        customEffects.value.push(lastEffectIndex.value);
-        lastEffectIndex.value = lastEffectIndex.value + 1;
+        customEffects.value.push({
+          index: 0,
+          title: "Custom Damage " + (customEffects.value.length + 10).toString(36).toUpperCase(),
+          damage_type: "magic",
+          ratios: {
+            base_damage: [70,90,110,130,150],
+            player_total_ap: 1,
+            player_total_ad: 1,
+            player_bonus_ad: 0.5,
+          },
+        });
       },
     };
   },
