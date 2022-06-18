@@ -55,7 +55,7 @@ async function fetch_mod_data() {
 }
 
 export async function make_wiki_skill_model(champ_name, skill_name) {
-    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name}/${skill_name.replace(/ /g, '_')}?action=edit`;
+    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name.trim().replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
     const raw = await fetch_wiki(skillDataUrl);
 
     let obj = { name: skill_name };
@@ -71,15 +71,13 @@ export async function make_wiki_skill_model(champ_name, skill_name) {
         let value = line.slice(index + 1).trim();
         obj[key] = autoCast(value);
     }
-    // FIX for all names having _ 
-    obj.name = skill_name.replace(/_/g, ' ');
     return obj;
 }
 
 async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     const rcr = await riotChampPromise;
-    const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : {spells:[]};
-    console.log("File got (wikia) ", wikiaChamp.name);
+    const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : { spells: [] };
+    console.log("File got (wikia) ", wikiaChamp.apiname);
     ChampionListEntry.image = riotChamp.image
     // Clone ChampionListEntry so skills are not added back to it.
     const model = Object.assign({}, ChampionListEntry);
@@ -126,33 +124,36 @@ function makeDescriptionHtml(skillout) {
     return html.join('<br />');
 }
 
-function buildSkill(skilldata, riotSpell, is_passive, model) {
-    stackData(skilldata, ["description", "leveling"]);
+function buildSkill(model, riotData, is_passive, champModel) {
+    stackData(model, ["description", "leveling"]);
     const skillout = {
-        riotId: riotSpell.id || '',
-        name: skilldata.name || riotSpell.name,
-        maxrank: riotSpell.maxrank || 0,
-        cooldown: skilldata.cooldown,
-        cost: skilldata.cost,
-        costtype: skilldata.costtype,
-        targeting: skilldata.targeting,
-        target_range: skilldata.target_range,
-        image: riotSpell.image,
-        description: skilldata.description || [],
+        // riotId: riotSpell.id || '',
+        name: model.name || riotData.name,
+        maxrank: riotData.maxrank || 0,
+        cooldown: model.cooldown,
+        cost: model.cost,
+        costtype: model.costtype,
+        targeting: model.targeting,
+        target_range: model.target_range,
+        image: riotData.image,
+        description: model.description || [],
         descriptionHtml: null,
-        leveling: skilldata.leveling || [],
+        leveling: model.leveling || [],
         // riotDescription: riotSpell.description,
-        notes: skilldata.notes || "",
+        notes: model.notes || "",
 
-        skillkey: skilldata.skillkey,
-        skillid: skilldata.skillid,
+        //TODO FIX THIS MESS
+        skillletter: model.skillletter,
+        skillkey: model.skillkey,
+        skillid: model.skillid,
+        skillwiki: model.skill,
 
     };
 
     skillout.descriptionHtml = makeDescriptionHtml(skillout);
 
     if (!is_passive) {
-        let old_val = (skilldata.cost || '0').toString();
+        let old_val = (model.cost || '0').toString();
         let value = old_val;
 
         if (value.includes('{{')) {
@@ -165,7 +166,7 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
         }
     }
     if (!is_passive) {
-        let old_val = (skilldata.cooldown || '0').toString();
+        let old_val = (model.cooldown || '0').toString();
         let value = old_val;
 
         if (value.includes('{{')) {
@@ -200,8 +201,8 @@ function buildSkill(skilldata, riotSpell, is_passive, model) {
             if (damage_type === 'none' || damage_type === 'unknown')
                 damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
             if (damage_type === 'unknown') {
-                console.log("[WARN] Using adaptivetype as damage_type for skill",title);
-                damage_type = model.adaptivetype;
+                console.log("[WARN] Using adaptivetype as damage_type for skill", title);
+                damage_type = champModel.adaptivetype;
             }
             let ratios = {}
 
@@ -309,7 +310,7 @@ async function makeChampionList(ModuleChampionData) {
     let promises = []
     for (const [champ, data] of Object.entries(ModuleChampionData)) {
         ChampionList[champ] = {
-            id: data.apiname  === "GnarBig" ? "Gnar" : data.apiname,
+            id: data.apiname === "GnarBig" ? "Gnar" : data.apiname,
             name: champ,  // Ex. Rammus
             //id: data.id, // Ex. 33,
             //apiname: data.apiname, // Ex.  'Rammus',
@@ -375,28 +376,30 @@ async function makeChampionList(ModuleChampionData) {
     return ChampionList;
 }
 async function createSkill(letter, skillNames, riotData, isPassive, champModel) {
-    // if (!skillNames) return;
-    const skillsplit = skillNames;//.toString().split(";")
-    for (let skillnum = 0; skillnum < skillsplit.length; skillnum++) {
-        console.log('Creating skill', letter, skillnum);
-        const element = skillsplit[skillnum];
-        const skill_name = element.trim().replace(/ /g, "_")
-        const model = await make_wiki_skill_model(champModel.name, skill_name);
+    const skills = Object.values(skillNames);
+    let skill_id = 0;
+    for (const skill_name of skills) {
+        skill_id++;
+        const skill_key = letter.toUpperCase() + (skills.length > 1 ? skill_id : '');
+        console.log(`Creating skill ${skill_name} (${skill_key})`);
 
-        let valid = false;
-        if (model && model.description) {
-            if (noRepeatDesc.has(model.description)) {
-                console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description)
+        await make_wiki_skill_model(champModel.name, skill_name).then((model) => {
+            if (model && model.description) {
+                if (noRepeatDesc.has(model.description)) {
+                    console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description);
+                    return;
+                } else {
+                    noRepeatDesc.add(model.description);
+                }
             } else {
-                noRepeatDesc.add(model.description);
-                valid = true;
+                console.log(`[WARN] Invalid Skill ${skill_name} (${skill_key}) no model description`);
+                return;
             }
-        }
-        if (valid) {
-            model.skillkey = letter.toUpperCase();
-            model.skillid = letter.toLowerCase() + (skillnum + 1).toString();
-            champModel.skills[model.skillid] = buildSkill(model, riotData, isPassive, champModel);
-        }
+            model.skillletter = letter.toUpperCase();
+            model.skillkey = skill_key;
+            model.skillid = skill_id;
+            champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
+        });
     }
 }
 console.log('Hello');

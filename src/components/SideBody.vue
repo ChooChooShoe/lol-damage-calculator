@@ -40,7 +40,7 @@ export default {
       return +n.toFixed(digits);
     },
     percentf: function (value) {
-      return numeral(value).format("0.00%");
+      return parseFloat(value).toFixed(2)+"%";
     },
     addCustomDamageSource() {
       this.$root.addCustomDamageSource();
@@ -188,28 +188,20 @@ export default {
 
 <style>
 .sidebody {
-  margin: 0;
-  padding: 0 0.5rem;
-  margin: 0;
+  margin: 0.4rem;
   position: sticky;
   top: 0;
   right: 0;
   background-color: #121a1b;
   z-index: 100;
-  width: 30%;
-  min-width: 260px;
+  width: 20em;
   float: right;
 }
-
-/* // @media (min-width: 769px) and (max-width: 1375px) {
-//   .sidebar .fill > * {
-//     width: 100%;
-//   }
-// } */
-@media (max-width: 775px) {
-  .sidebar {
+@media (max-width: 40em) {
+  .sidebody {
     position: inherit;
-    width: 100%;
+    width: auto;
+    float: none;
   }
 }
 </style>

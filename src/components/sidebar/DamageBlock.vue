@@ -41,7 +41,6 @@
 </template>
 <script>
 import { h, ref, reactive, toRefs, watchEffect, computed } from "vue";
-import numeral from "numeral";
 
 export default {
   name: "DamageBlock",
@@ -51,7 +50,7 @@ export default {
     const isPre = props.isPre;
 
     const percentf = (value) => {
-      return numeral(value).format("0.00%");
+      return parseFloat(value < 1 ? value * 100 : value).toFixed(2)+"%";
     };
 
     const d = computed(() => {

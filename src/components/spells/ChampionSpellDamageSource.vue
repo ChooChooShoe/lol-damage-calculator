@@ -1,8 +1,8 @@
 <template>
   <div class="data_holder col fill ChampionSpellDamageSource">
-    <span class="spell-image" :style="imageStyle" :width="spell.image.w" :height="spell.image.h"></span>
+    <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage>
 
-    <span class="ds__title">{{ spell.name }} ({{ multispells ? spell.skillid.toUpperCase() : spell.skillkey.toUpperCase() }})</span>
+    <span class="ds__title">{{ spell.name }} ({{ spell.skillkey }})</span>
     <DropdownSelect class="spellrank2" v-if="spell.maxrank > 0" label="Rank" :value="spell.rankindex + 1">
       <input
         v-for="(_, index) in Array(spell.maxrank)"
@@ -85,6 +85,7 @@
 
 <script>
 import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
+import SpellImage from "../../timeline/SpellImage.vue";
 import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 import CustomSpellEffects from "./CustomSpellEffects.vue";
@@ -105,6 +106,7 @@ export default {
     SpellSpan,
     CustomSpellEffects,
     DropdownSelect,
+    SpellImage,
   },
   props: {
     spell: Object,
@@ -159,14 +161,9 @@ export default {
 .ChampionSpellDamageSource {
 }
 
-.spell-image {
-  display: inline;
-  padding: 0;
+.ds__spellimage {
   margin: 0.2rem 1rem 0.2rem 0.2rem;
-  border-style: none;
   float: left;
-  width: 48px;
-  height: 48px;
 }
 .ds__title {
   font-size: 1.2em;

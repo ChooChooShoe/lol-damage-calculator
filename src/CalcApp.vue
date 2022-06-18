@@ -7,12 +7,13 @@
     <ChampObj @update:obj="player = $event"> <ChampionDiv mode="player" @update:activeChampionModel="(m) => (activeChampionModel = m)"></ChampionDiv></ChampObj>
     <ChampObj @update:obj="target = $event"> <ChampionDiv mode="target"></ChampionDiv></ChampObj>
 
-    <AADamageSource :damagingEffects="damagingEffects" :player="player" :target="target"></AADamageSource>
+    <TimelineAddMenu></TimelineAddMenu>
+    <AADamageSource class="hidden" :damagingEffects="damagingEffects" :player="player" :target="target"></AADamageSource>
     <ChampionSpellDamageSource
       v-for="spellObj in activeSpells"
-      :key="spellObj.skillid"
+      :key="spellObj.skillkey"
       :spell="spellObj"
-      :multispells="activeSpells.reduce((s, x) => s + (x.skillkey === spellObj.skillkey), 0) > 1"
+      :multispells="spellObj.skillkey.length > 1"
       :champion="player.champ"
       :damagingEffects="damagingEffects"
     ></ChampionSpellDamageSource>
@@ -28,6 +29,7 @@
 
 <script setup>
 import championList from "/src/api/ChampionList.json";
+import TimelineAddMenu from "./timeline/TimelineAddMenu.vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
 import ChampionDiv from "./components/ChampionDiv.vue";
@@ -70,6 +72,11 @@ const player = ref({});
 const target = ref({});
 const activeChampionModel = ref({});
 const damagingEffects = ref([]);
+
+provide("player", player);
+provide("target", target);
+provide("activeChampionModel", activeChampionModel);
+provide("damagingEffects", damagingEffects);
 
 provide("RootData", { player, target, damagingEffects });
 

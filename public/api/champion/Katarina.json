@@ -61,8 +61,7 @@
   "be": 3150,
   "rp": 790,
   "skills": {
-    "i1": {
-      "riotId": "",
+    "I1": {
       "name": "Voracity",
       "maxrank": 0,
       "targeting": "Passive",
@@ -83,12 +82,13 @@
       "descriptionHtml": "<span class=\"sbc\">Innate:</span> Scoring a champion <HtmlTooltip class=\"blue link\">takedown<template #content><div><h4>takedown<hr></h4><p>Description for keyword takedown</p></div></template></HtmlTooltip> within 3 seconds of damaging them <span>reduces</span> the <b>current</b> cooldowns of <b>Katarina's</b> <a class=\"effect link\" title=\"abilities\">champion ability</a> by 15 seconds.<br /><span class=\"sbc\">Innate - Sinister Steel:</span> Whenever <b>Katarina</b> retrieves a <span class=\"buzzword\">Dagger</span>, she uses it to slash around herself, dealing <HtmlTooltip class=\"blue link\">68;72;77;82;89;96;103;112;121;131;142;154;166;180;194;208;224;240 − undefined (based on level)<template #content>Values: 68, 72, 77, 82, 89, 96, 103, 112, 121, 131, 142, 154, 166, 180, 194, 208, 224, 240<br>At levels: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18</template></HtmlTooltip> <span class=\"ad\">(+ 75% <b>bonus</b> AD)</span> <span class=\"ap\">(+ <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span> AP)</span> <span class=\"magic-damage\">magic damage</span> to nearby enemies and applying <HtmlTooltip class=\"blue link\">on-hit<template #content><div><h4>on-hit<hr></h4><p>Description for keyword on-hit</p></div></template></HtmlTooltip> effects at 100% effectiveness to enemy <HtmlTooltip class=\"blue link\">champions<template #content><div><h4>champions<hr></h4><p>Description for keyword champions</p></div></template></HtmlTooltip> hit, as well as <span>reducing</span> <i><span class=\"ai\">Katarina's Shunpo's</span></i> <b>total</b> cooldown by <span class=\"title-tooltip\" title=\"\">1 to 16 ‒ undefined</span>.<br /><span class=\"buzzword\">Daggers</span> will disappear after being on the ground for 4 seconds, granting <HtmlTooltip class=\"blue link\">sight<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> of their radius.",
       "leveling": [],
       "notes": "* ''Voracity's'' cooldown reduction will still take effect even after '''Katarina''' dies.\n* The {{as|Dagger's|buzzword}} area of effect indicator is displayed even before it lands, although '''Katarina''' may not slash until it has. This can be targeted by {{ai|Shunpo|Katarina}}.\n* {{as|Daggers|buzzword}} will still deal damage but not apply on-hit effects if {{tip|dodged}}. They cannot be {{tip|block|blocked}} nor can they be missed while '''Katarina''' is {{tip|blind|blinded}}.\n* Single-use on-hit effects, such as {{tip|Spellblade}}, will apply to the closest target to '''Katarina''' when she uses a {{as|Dagger|buzzword}}.",
-      "skillkey": "I",
-      "skillid": "i1",
+      "skillletter": "I",
+      "skillkey": "I1",
+      "skillid": 1,
+      "skillwiki": "I",
       "effects": []
     },
-    "q1": {
-      "riotId": "KatarinaQ",
+    "Q": {
       "name": "Bouncing Blade",
       "maxrank": 5,
       "cooldown": [
@@ -119,8 +119,10 @@
         "{{st|Magic Damage|{{ap|75|105|135|165|195}} {{as|(+ 30% AP)}}}}"
       ],
       "notes": "* ''Bouncing Blade'' will not be destroyed in-flight if the target dies before reaching them but it will on {{tip|clone|clones}} that expire.\n* If the {{as|Dagger|buzzword}}'s intended landing position is inside terrain it will instead land at the closest spot that isn't inside terrain.\n{{Unit-targeted cancel conditions}}",
+      "skillletter": "Q",
       "skillkey": "Q",
-      "skillid": "q1",
+      "skillid": 1,
+      "skillwiki": "Q",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[75,105,135,165,195]\"></SpellSpan> <span class=\"ap\">(+ 30% AP)</span></span></li></ul>",
@@ -166,8 +168,7 @@
         }
       ]
     },
-    "w1": {
-      "riotId": "KatarinaW",
+    "W": {
       "name": "Preparation",
       "maxrank": 5,
       "cooldown": [
@@ -196,8 +197,10 @@
         "{{st|Bonus Movement speed|{{ap|50|60|70|80|90}}%}}"
       ],
       "notes": "* No additional details.",
+      "skillletter": "W",
       "skillkey": "W",
-      "skillid": "w1",
+      "skillid": 1,
+      "skillwiki": "W",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Movement speed</span>: <span><SpellSpan :list=\"[50,60,70,80,90]\"></SpellSpan>%</span></li></ul>",
@@ -230,8 +233,7 @@
         }
       ]
     },
-    "e1": {
-      "riotId": "KatarinaEWrapper",
+    "E": {
       "name": "Shunpo",
       "maxrank": 5,
       "cooldown": [
@@ -262,8 +264,10 @@
         "{{st|Magic Damage|{{ap|15 to 75}} {{as|(+ 50% AD)}} {{as|(+ 25% AP)}}}}"
       ],
       "notes": "* ''Shunpo'' can be used on any unit except [[structures]] and {{tip|wards}}.\n* ''Shunpo'' can be cast on {{as|Daggers|buzzword}} that haven't landed yet.\n* If '''Katarina''' ''Shunpo's'' on an ally, any attack command she is given during its cast time will be negated, and every movement command will be delayed by 1 second (starting at the start of the cast time).\n* ''Shunpo'' should be an instant ability but it has extra logic to consider which makes it have a short cast time before blinking.\n* {{si|Flash}} can be used during cast time but it will not cancel the blink.\n* If the target is very close to a wall and '''Katarina''' targets ''Shunpo'' behind the target, she can blink over the wall.\n* ''Shunpo''  will still deal damage but not apply on-hit effects if {{tip|dodged}}. It cannot be {{tip|block|blocked}} nor can it be missed while '''Katarina''' is {{tip|blind|blinded}}.\n* ''Shunpo'' does not require the enemy to be within targeting range to damage them. It only requires them to be within the max range around a unit that ''Shunpo'' allows them to blink to.\n{{ct|cast}}",
+      "skillletter": "E",
       "skillkey": "E",
-      "skillid": "e1",
+      "skillid": 1,
+      "skillwiki": "E",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Magic Damage</span>: <span><SpellSpan :list=\"[15,30,45,60,75]\"></SpellSpan> <span class=\"ad\">(+ 50% AD)</span> <span class=\"ap\">(+ 25% AP)</span></span></li></ul>",
@@ -313,8 +317,7 @@
         }
       ]
     },
-    "r1": {
-      "riotId": "KatarinaR",
+    "R": {
       "name": "Death Lotus",
       "maxrank": 3,
       "cooldown": [
@@ -342,8 +345,10 @@
         "{{st|Physical Damage Per Dagger|{{as|16% {{as|(+ {{fd|12.8}}% per {{fd|1.0}} '''total''' attack speed)}} '''bonus''' AD}}|Maximum Single-Target Physical Damage|{{as|240% {{as|(+ 192% per {{fd|1.0}} '''total''' attack speed)}} '''bonus''' AD}}}}\n{{st|Magic Damage Per Dagger|{{ap|25 to 50}} {{as|(+ 19% AP)}}|Maximum Single-Target Magic Damage|{{ap|25*15 to 50*15}} {{as|(+ 285% AP)}}}}\n{{st|On-Attack/On-Hit Effectiveness|{{ap|25 to 35}}%}}"
       ],
       "notes": "* An alternate way of writing the formula for the '''bonus AD''' ratio is {{as|16%|attack damage}} {{times}} (1 + {{as|0.8 '''total''' attack speed}}) {{as|'''bonus''' AD}}.\n** At level 6, '''Katarina''' has a minimum of {{fd|0.729}} attack speed (bar potential reduction from {{tip|cripple|attack speed slows}}).\n*** The minimum physical damage per dagger is {{as|25.33% bonus AD}}.\n* In ''addition'' to already revealing herself, '''Katarina''' will {{tip|sight|reveal}} her location (450 radius) for {{fd|4.5}} seconds every time she throws a dagger at an enemy while the enemy team does not otherwise have vision of her.{{bug}}\n** Because of this, the vision on '''Katarina's''' location will persist for up-to {{fd|4.5}} seconds after the channel ends.\n* ''Death Lotus'' will not end if no enemies remain in range.\n* {{tip|Spell shield}} will block and be consumed by only one dagger.\n* Each dagger counts as a separate hit for effects such as {{ri|Conqueror}}, {{ri|Electrocute}}, and {{iis|Eclipse}} {{nie|Ever Rising Moon}}.\n* The following table refers for interactions while '''Katarina''' is {{tip|channel|channeling}}:\n{{ct|channel|cast=interrupts|move=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|attack=Disabled in the first and last {{fd|0.25}} seconds of channel, otherwise, interrupts.|items=interrupts,true,,false,,false,false,false,melee|spells=true,interrupts,interrupts,false,false}}\n* Trying to cast a disabled active (excluding {{ii|Hextech Rocketbelt}}) will buffer it to cast at the completion of the channel.",
+      "skillletter": "R",
       "skillkey": "R",
-      "skillid": "r1",
+      "skillid": 1,
+      "skillwiki": "R",
       "effects": [
         {
           "str": "<ul class=\"st\"><li><span class=\"blue\">Physical Damage Per Dagger</span>: <span><span class=\"ad\">16% <span class=\"attack-speed\">(+ <span style=\"font-variant-numeric: tabular-nums;\">12.8</span>% per <span style=\"font-variant-numeric: tabular-nums;\">1.0</span> <b>total</b> attack speed)</span> <b>bonus</b> AD</span></span></li><li><span class=\"blue\">Maximum Single-Target Physical Damage</span>: <span><span class=\"ad\">240% <span class=\"attack-speed\">(+ 192% per <span style=\"font-variant-numeric: tabular-nums;\">1.0</span> <b>total</b> attack speed)</span> <b>bonus</b> AD</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">Magic Damage Per Dagger</span>: <span><SpellSpan :list=\"[25,37.5,50]\"></SpellSpan> <span class=\"ap\">(+ 19% AP)</span></span></li><li><span class=\"blue\">Maximum Single-Target Magic Damage</span>: <span><SpellSpan :list=\"[375,562.5,750]\"></SpellSpan> <span class=\"ap\">(+ 285% AP)</span></span></li></ul>\n<ul class=\"st\"><li><span class=\"blue\">On-Attack/On-Hit Effectiveness</span>: <span><SpellSpan :list=\"[25,30,35]\"></SpellSpan>%</span></li></ul>",

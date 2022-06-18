@@ -65,10 +65,4 @@ const appVersion = "4.0";
 .main__header {
   border-bottom: #45a049 solid 2px;
 }
-.data_holder {
-  border-right: 1px solid #1e8ad6;
-  border-bottom: 1px solid #1e8ad6;
-  background-color: #121a1b;
-  padding: 5px;
-}
 </style>
