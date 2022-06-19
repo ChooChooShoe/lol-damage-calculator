@@ -29,8 +29,8 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     if (wikiaChamp.name === "Mega Gnar")
         wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
 
-    if(wikiaChamp.name === "Elise")
-        wikiaChamp.skill_r = ["Spider Form / Human Form" ]
+    if (wikiaChamp.name === "Elise")
+        wikiaChamp.skill_r = ["Spider Form / Human Form"]
     // Remove extra skills.
     // if (wikiaChamp.name === "Gnar")
     // wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
@@ -71,7 +71,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
         if (x.length > 0) {
             if (x[0].indexOf('2') === -1) {
                 console.log("[SKILL] Extra Skills", key, x, "for", wikiaChamp.apiname, ':', Object.values(wikiaChamp.skills), "vs", wikiaChamp.skill_i, wikiaChamp.skill_q, wikiaChamp.skill_w, wikiaChamp.skill_e, wikiaChamp.skill_r)
-                
+
             }
             // Add all anyway.
             merged_skills[key.toUpperCase()] = merged_skills[key.toUpperCase()].concat(x);
@@ -79,41 +79,37 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     }
 
     //Done in order.
-    if(merged_skills.A.length > 0)
-        await createSkill('A', merged_skills.A, {}, false, model).catch(err => { console.error(err) });
-    
-    await createSkill('I', merged_skills.I, riotChamp.passive, true, model).catch(err => { console.error(err) });
-    await createSkill('Q', merged_skills.Q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
-    await createSkill('W', merged_skills.W, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
-    await createSkill('E', merged_skills.E, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
-    await createSkill('R', merged_skills.R, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
+    if (merged_skills.A.length > 0)
+        await fetchSkills('A', merged_skills.A, {}, false, model).catch(err => { console.error(err) });
+
+    await fetchSkills('I', merged_skills.I, riotChamp.passive, true, model).catch(err => { console.error(err) });
+    await fetchSkills('Q', merged_skills.Q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
+    await fetchSkills('W', merged_skills.W, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
+    await fetchSkills('E', merged_skills.E, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
+    await fetchSkills('R', merged_skills.R, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
 
     return model;
 }
-async function createSkill(letter, skills, riotData, isPassive, champModel) {
-    let skill_id = 0;
+async function fetchSkills(letter, skills, riotData, isPassive, champModel) {
+    const final_skills = {};
     for (const skill_name of skills) {
+        const { url, model } = await make_wiki_skill_model(champModel.name, skill_name)
+        // Use the fist model for each url.
+        if (url in final_skills) {
+            console.log(`[WARN] Skill ${skill_name} had it's url redirected to another skill ${url}`);
+            continue;
+        };
+        if (model) final_skills[url] = model;
+    }
+    let skill_id = 0;
+    const multi = Object.values(final_skills).length > 1
+    for (const model of Object.values(final_skills)) {
         skill_id++;
-        const skill_key = letter.toUpperCase() + (skills.length > 1 ? skill_id : '');
-        console.log(`Creating skill ${skill_name} (${skill_key})`);
-
-        await make_wiki_skill_model(champModel.name, skill_name).then((model) => {
-            if (model && model.description) {
-                if (noRepeatDesc.has(champModel.name+model.description)) {
-                    console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description);
-                    return;
-                } else {
-                    noRepeatDesc.add(champModel.name+model.description);
-                }
-            } else {
-                console.log(`[WARN] Invalid Skill ${skill_name} (${skill_key}) no model description`);
-                return;
-            }
-            model.skillletter = letter.toUpperCase();
-            model.skillkey = skill_key;
-            model.skillid = skill_id;
-            champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
-        });
+        const skill_key = letter.toUpperCase() + (multi ? skill_id : '');
+        model.skillletter = letter.toUpperCase();
+        model.skillkey = skill_key;
+        model.skillid = skill_id;
+        champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
     }
 }
 
@@ -137,14 +133,14 @@ function buildSkill(model, riotData, is_passive, champModel) {
     stackData(model, ["description", "leveling"]);
     const skillout = {
         // riotId: riotSpell.id || '',
-        name: model.name || riotData.name,
-        maxrank: riotData.maxrank || 0,
+        name: model.name || riotData?.name,
+        maxrank: riotData?.maxrank || 0,
         cooldown: model.cooldown,
         cost: model.cost,
         costtype: model.costtype,
         targeting: model.targeting,
         target_range: model.target_range,
-        image: riotData.image,
+        image: riotData?.image || {},
         description: model.description || [],
         descriptionHtml: null,
         leveling: model.leveling || [],

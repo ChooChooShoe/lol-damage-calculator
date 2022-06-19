@@ -18,17 +18,16 @@ if (DEBUG) {
  */
 export async function fetch_wiki(url) {
     console.log("Fetching (wiki):", url);
-
-    return fetch(url)
-        .then(response => {
-            if (response.redirected)
-                console.info('[ERROR] Page redirected', url, 'to', response.url);
-            return response.text()
-        }).then(text => text.match(/<textarea[^>]*>([^]*)<\/textarea>/m))
-        .then(content => content ? he.decode(content[1]) : "")
-        .catch(error => {
-            console.error('[ERROR] fetch_wiki_json', url, error);
-        });
+    const response = await fetch(url);
+    if (response.redirected)
+        console.info('[WARN] Page redirected', url, 'to', response.url);
+    const text = (await response.text()).match(/<textarea[^>]*>([^]*)<\/textarea>/m);
+    if (text) {
+        const decoded = he.decode(text[1]);
+        return { text: decoded, response }
+    }
+    console.info('[ERROR] Page had no content', response.url);
+    return { text: null, response }
 }
 
 export async function fetch_mod_data() {
@@ -36,7 +35,7 @@ export async function fetch_mod_data() {
 
     // Converts Lua data to json data.
     let results = [];
-    for (let line of raw.split('\n')) {
+    for (let line of raw.text.split('\n')) {
         const tline = line.trim();
         if (tline === '' || tline.startsWith('--'))
             continue;
@@ -84,12 +83,14 @@ if (DEBUG) {
 
 
 export async function make_wiki_skill_model(champ_name, skill_name) {
-    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name.trim().replace(/ /g, '_').replace('_&_Willump','')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
+    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name.trim().replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
     const raw = await fetch_wiki(skillDataUrl);
+    if (!raw.text)
+        return { url: decodeURI(raw.response.url), model: null };
 
-    let obj = { name: skill_name };
+    let obj = { name: skill_name, url: decodeURI(raw.response.url), redirected: raw.response.redirected };
     // Trims {{ and \n}}  splits lines and create an iterator
-    const splitIter = raw.trim().slice(2, -3).split("\n|")[Symbol.iterator]();
+    const splitIter = raw.text.trim().slice(2, -3).split("\n|")[Symbol.iterator]();
 
     // skip first line
     splitIter.next();
@@ -104,7 +105,7 @@ export async function make_wiki_skill_model(champ_name, skill_name) {
         fs.mkdirSync(`./.debug/${champ_name}`, { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
         await saveFile(`./.debug/${champ_name}/${skill_name.replace(':', '_').replace('/', '_')}.json`, obj);
     }
-    return obj;
+    return { url: decodeURI(raw.response.url), model: obj };
 }
 function autoCast(s) {
     if (s === null || s === undefined)
