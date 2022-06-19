@@ -1,119 +1,128 @@
 
 import fs from 'fs';
 import fetch from 'node-fetch';
-import he from 'he';
 import { default as matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
-import JSON5 from 'json5';
+
+import { make_wiki_skill_model, fetch_mod_data, saveFile } from './fetch_utils.mjs';
 
 const SKIP_RIOTDATA_FOR_STATS = true;
 const DEBUG = true;
-/**
- * Fetches in a wiki data page and returns the textarea content inside.
- * @param {RequestInfo} url 
- * @returns string
- */
-async function fetch_wiki(url) {
-    console.log("Fetching (wiki):", url);
-    return fetch(url)
-        .then(response => response.text())
-        .then(text => text.match(/<textarea[^>]*>([^]*)<\/textarea>/m))
-        .then(content => content ? he.decode(content[1]) : "");
-}
-
-async function fetch_mod_data() {
-    const modDataUrl = `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`;
-    console.log("Fetching (wikia-module): %s", modDataUrl);
-    const raw = await fetch_wiki(modDataUrl);
-
-    // Converts Lua data to json data.
-    let results = [];
-    for (let line of raw.split('\n')) {
-        const tline = line.trim();
-        if (tline === '' || tline.startsWith('--'))
-            continue;
-        if (tline.startsWith('return')) {
-            results.push('{')
-            continue;
-        }
-        results.push(tline
-            //replaces [" and "] with "
-            .replace(/\["|"]/g, `"`)
-            //replaces = with :
-            .replace(/=/g, `:`)
-            //replaces [1] : with nothing if line has a { or is after a ', '
-            .replace(/, \[\d] : /g, `, `).replace(/{\[\d] : /g, `{`)
-            //replaces { and } with [ and ] only if line has both
-            .replace(/{(.*)}/g, `[$1]`)
-            //replaces [12] : with "12" :
-            .replace(/\[(\d+)] : /g, `"$1" : `)
-            //replaces -- with //
-            .replace(/--/g, "//")
-        );
-    }
-    // return parsed JSON as a javascript object.
-    return JSON5.parse(results.join(''));
-}
-
-export async function make_wiki_skill_model(champ_name, skill_name) {
-    const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name.trim().replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
-    const raw = await fetch_wiki(skillDataUrl);
-
-    let obj = { name: skill_name };
-    // Trims {{ and \n}}  splits lines and create an iterator
-    const splitIter = raw.trim().slice(2, -3).split("\n|")[Symbol.iterator]();
-
-    // skip first line
-    splitIter.next();
-
-    for (const line of splitIter) {
-        const index = line.indexOf('=');
-        let key = line.slice(0, index).trim();
-        let value = line.slice(index + 1).trim();
-        obj[key] = autoCast(value);
-    }
-    return obj;
-}
 
 async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     const rcr = await riotChampPromise;
     const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : { spells: [] };
-    console.log("File got (wikia) ", wikiaChamp.apiname);
+    console.log("File got (wikia) ", wikiaChamp.name, wikiaChamp.apiname);
     ChampionListEntry.image = riotChamp.image
     // Clone ChampionListEntry so skills are not added back to it.
     const model = Object.assign({}, ChampionListEntry);
     model.skills = {};
 
+    // Missing skills in wiki data.
+    if (wikiaChamp.name === "Kled & Skaarl")
+        wikiaChamp.skills = { "1": "Skaarl the Cowardly Lizard", "2": "Bear Trap on a Rope", "3": "Violent Tendencies", "4": "Jousting", "5": "Chaaaaaaaarge!!!" };
+
+    // Remove extra skills.
+    if (wikiaChamp.name === "Kled")
+        wikiaChamp.skills = { "1": "Dismounted Skaarl the Cowardly Lizard", "2": "Pocket Pistol", "3": "Violent Tendencies", "4": "Unmounted Jousting", "5": "Unmounted Chaaaaaaaarge!!!" }
+
+    // Missing skills in wiki data.
+    if (wikiaChamp.name === "Mega Gnar")
+        wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
+
+    if(wikiaChamp.name === "Elise")
+        wikiaChamp.skill_r = ["Spider Form / Human Form" ]
+    // Remove extra skills.
+    // if (wikiaChamp.name === "Gnar")
+    // wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
+
+
+    const named_skills = {
+        i: Object.values(wikiaChamp.skill_i) || [],
+        q: Object.values(wikiaChamp.skill_q) || [],
+        w: Object.values(wikiaChamp.skill_w) || [],
+        e: Object.values(wikiaChamp.skill_e) || [],
+        r: Object.values(wikiaChamp.skill_r) || []
+    };
+
+    const merged_skills = { A: [], I: [], Q: [], W: [], E: [], R: [] };
+
+    if (!wikiaChamp.skills)
+        return console.log("[SKILL] not found for", wikiaChamp);
+
+    outer: for (const x of Object.values(wikiaChamp.skills)) {
+        for (const key of ['i', 'q', 'w', 'e', 'r']) {
+            const index = named_skills[key].indexOf(x);
+            if (index > -1) {
+                named_skills[key].splice(index, 1);
+                merged_skills[key.toUpperCase()].push(x);
+                continue outer;
+            }
+        }
+        // For Senna, Jhin and Samira
+        if (x === 'Basic Attack' || x === 'Taunt') {
+            merged_skills.A.push(x);
+            continue outer;
+        }
+        // Fallthrough
+        console.log("[SKILL] Could not be found in QWER", x, "for", wikiaChamp.apiname, ':', Object.values(wikiaChamp.skills), "vs", wikiaChamp.skill_i, wikiaChamp.skill_q, wikiaChamp.skill_w, wikiaChamp.skill_e, wikiaChamp.skill_r)
+    }
+    for (const key of ['i', 'q', 'w', 'e', 'r']) {
+        const x = named_skills[key];
+        if (x.length > 0) {
+            if (x[0].indexOf('2') === -1) {
+                console.log("[SKILL] Extra Skills", key, x, "for", wikiaChamp.apiname, ':', Object.values(wikiaChamp.skills), "vs", wikiaChamp.skill_i, wikiaChamp.skill_q, wikiaChamp.skill_w, wikiaChamp.skill_e, wikiaChamp.skill_r)
+                
+            }
+            // Add all anyway.
+            merged_skills[key.toUpperCase()] = merged_skills[key.toUpperCase()].concat(x);
+        }
+    }
+
     //Done in order.
-    await createSkill('I', wikiaChamp.skill_i, riotChamp.passive, true, model).catch(err => { console.error(err) });
-    await createSkill('Q', wikiaChamp.skill_q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
-    await createSkill('W', wikiaChamp.skill_w, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
-    await createSkill('E', wikiaChamp.skill_e, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
-    await createSkill('R', wikiaChamp.skill_r, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
+    if(merged_skills.A.length > 0)
+        await createSkill('A', merged_skills.A, {}, false, model).catch(err => { console.error(err) });
+    
+    await createSkill('I', merged_skills.I, riotChamp.passive, true, model).catch(err => { console.error(err) });
+    await createSkill('Q', merged_skills.Q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
+    await createSkill('W', merged_skills.W, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
+    await createSkill('E', merged_skills.E, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
+    await createSkill('R', merged_skills.R, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
 
     return model;
 }
+async function createSkill(letter, skills, riotData, isPassive, champModel) {
+    let skill_id = 0;
+    for (const skill_name of skills) {
+        skill_id++;
+        const skill_key = letter.toUpperCase() + (skills.length > 1 ? skill_id : '');
+        console.log(`Creating skill ${skill_name} (${skill_key})`);
+
+        await make_wiki_skill_model(champModel.name, skill_name).then((model) => {
+            if (model && model.description) {
+                if (noRepeatDesc.has(champModel.name+model.description)) {
+                    console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description);
+                    return;
+                } else {
+                    noRepeatDesc.add(champModel.name+model.description);
+                }
+            } else {
+                console.log(`[WARN] Invalid Skill ${skill_name} (${skill_key}) no model description`);
+                return;
+            }
+            model.skillletter = letter.toUpperCase();
+            model.skillkey = skill_key;
+            model.skillid = skill_id;
+            champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
+        });
+    }
+}
+
 function buildChangesField(changes) {
     let nums = changes.replace('V', '').replace('b', '.2').split('.')
     if (nums.length == 2)
         return '' + nums[0] + '.' + nums[1] + '.1';
     else
         return '' + nums[0] + '.' + nums[1] + '.' + nums[2];
-}
-function autoCast(s) {
-    if (s === null || s == undefined)
-        return null;
-    s = s.toString().trim();
-    if (s === '')
-        return '';
-    if (!isNaN(Number(s)))
-        return Number(s);
-    if (parseFloat(s))
-        return parseFloat(s)
-    if (s === "true" || s === "True")
-        return true;
-    if (s === "false" || s === "False")
-        return false;
-    return s;
 }
 function makeDescriptionHtml(skillout) {
     let html = [];
@@ -264,16 +273,6 @@ function burnify(param, forceRange, round) {
 
 let noRepeatDesc = new Set();
 
-function saveFile(path, data) {
-    console.log(`Saving file '${path}'...`);
-    return fs.promises.writeFile(path, JSON.stringify(data, null, 2), function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(`The file '${path}' was saved!`);
-    });
-}
-
 let cdn = "", lang = "", version = "", dispVersion = "";
 
 /**
@@ -309,6 +308,7 @@ async function makeChampionList(ModuleChampionData) {
     let ChampionList = {};
     let promises = []
     for (const [champ, data] of Object.entries(ModuleChampionData)) {
+        data.name = champ;
         ChampionList[champ] = {
             id: data.apiname === "GnarBig" ? "Gnar" : data.apiname,
             name: champ,  // Ex. Rammus
@@ -374,33 +374,6 @@ async function makeChampionList(ModuleChampionData) {
 
     saveFile('./src/api/ChampionList.json', Object.fromEntries(sorted));
     return ChampionList;
-}
-async function createSkill(letter, skillNames, riotData, isPassive, champModel) {
-    const skills = Object.values(skillNames);
-    let skill_id = 0;
-    for (const skill_name of skills) {
-        skill_id++;
-        const skill_key = letter.toUpperCase() + (skills.length > 1 ? skill_id : '');
-        console.log(`Creating skill ${skill_name} (${skill_key})`);
-
-        await make_wiki_skill_model(champModel.name, skill_name).then((model) => {
-            if (model && model.description) {
-                if (noRepeatDesc.has(model.description)) {
-                    console.log('[WARN] Description is the same as one before. Skipping', skill_name, model.description);
-                    return;
-                } else {
-                    noRepeatDesc.add(model.description);
-                }
-            } else {
-                console.log(`[WARN] Invalid Skill ${skill_name} (${skill_key}) no model description`);
-                return;
-            }
-            model.skillletter = letter.toUpperCase();
-            model.skillkey = skill_key;
-            model.skillid = skill_id;
-            champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
-        });
-    }
 }
 console.log('Hello');
 

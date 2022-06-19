@@ -56,10 +56,33 @@
   "be": 6300,
   "rp": 975,
   "skills": {
+    "A": {
+      "name": "Taunt",
+      "maxrank": 0,
+      "cooldown": 0,
+      "cost": 0,
+      "costtype": "",
+      "targeting": "Auto <!-- Missile says Location-targeted, but actually doesn't take any targeting input -->",
+      "description": [
+        "'''Samira's''' [[Emoting|taunt]] {{tip|lockout|prevents}} her from inputting attack commands and casting non-movement abilities, and she may only interrupt it herself with a movement command. After 3 seconds without interruption, she will toss a [[File:Samira_splash_coin.png|20px|link=]] coin in the direction she is facing.",
+        "If she has at least {{g|1}}, the coin deals {{ccs|{{sti|{{as|1 true damage}}}}|true}} to the first enemy champion hit, triggering {{ai|Daredevil Impulse|Samira}} but granting them {{g|1}} of '''Samira's''' [[gold]].",
+        "If cast within 1200 units of a {{tip|sight|visible}} enemy champion, '''Samira''' will turn to face towards the closest one to perform the animation.",
+        "'''Samira's''' ''Taunt'' can target and hit dead enemy champions, granting them {{g|1}} but not triggering other effects."
+      ],
+      "descriptionHtml": "<b>Samira's</b> <a class=\"effect link\" title=\"taunt\">Emoting</a> <HtmlTooltip class=\"blue link\">prevents<template #content><div><h4>lockout<hr></h4><p>Description for keyword lockout</p></div></template></HtmlTooltip> her from inputting attack commands and casting non-movement abilities, and she may only interrupt it herself with a movement command. After 3 seconds without interruption, she will toss a <a class=\"effect link\" title=\"20px\">File:Samira_splash_coin.png</a> coin in the direction she is facing.<br />If she has at least <span class=\"gold\"> <img src=\"./src/assets/Gold.png\">1</span>, the coin deals <simple-tooltip class=\"capture-unknown\" dname=\"ccs / <span><span class=\"true-damage\">1 true damage</span></span> / true\">Unknown value: ccs / <span><span class=\"true-damage\">1 true damage</span></span> / true</simple-tooltip> to the first enemy champion hit, triggering <span class=\"ai\">Samira's Daredevil Impulse</span> but granting them <span class=\"gold\"> <img src=\"./src/assets/Gold.png\">1</span> of <b>Samira's</b> <a class=\"effect link\" title=\"gold\">gold</a>.<br />If cast within 1200 units of a <HtmlTooltip class=\"blue link\">visible<template #content><div><h4>sight<hr></h4><p>Description for keyword sight</p></div></template></HtmlTooltip> enemy champion, <b>Samira</b> will turn to face towards the closest one to perform the animation.<br /><b>Samira's</b> <i>Taunt</i> can target and hit dead enemy champions, granting them <span class=\"gold\"> <img src=\"./src/assets/Gold.png\">1</span> but not triggering other effects.",
+      "leveling": [],
+      "notes": "* '''Samira''' must have at least {{g|1}} to weaponize her Taunt animation. \n* Using her ''Taunt'' does '''not''' count as an ability activation for the purposes of on-cast effects such as {{tip|Spellblade}} and stacking {{ai|Force Pulse|Kassadin}}.\n* {{si|Flash}} and {{ai|Wild Rush|Samira}} can be cast during her ''Taunt'', but neither interrupt the effect.{{bug}}\n** If Samira's facing direction is changed before the coin is fired (e.g. by casting {{ai|Wild Rush|Samira}}), she will still turn toward her initial ''facing direction'' to toss the coin. Note: ''facing direction'', not toward the location of the target.",
+      "skillletter": "A",
+      "skillkey": "A",
+      "skillid": 1,
+      "skillwiki": "CTRL+2",
+      "effects": []
+    },
     "I1": {
       "name": "Daredevil Impulse",
       "maxrank": 0,
       "targeting": "Passive",
+      "target_range": "{{pp|650 to 960|1;4;8;12;16|formula=650 + 77.5 every breakpoint, capped at 960. Maximum range to dash from.}}",
       "image": {
         "full": "SamiraP.png",
         "sprite": "passive3.png",
@@ -98,6 +121,7 @@
       "cost": 30,
       "costtype": "Mana",
       "targeting": "Direction",
+      "target_range": "{{tip|er|icononly = true}} {{tt|340|Blade targeting check length}}",
       "image": {
         "full": "SamiraQ.png",
         "sprite": "spell10.png",
@@ -286,6 +310,7 @@
       "cost": 40,
       "costtype": "Mana",
       "targeting": "Unit",
+      "target_range": "{{tip|cr|icononly = true}} {{tt|600|Cast range}}",
       "image": {
         "full": "SamiraE.png",
         "sprite": "spell10.png",

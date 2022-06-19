@@ -4,6 +4,7 @@ import * as VueRouter from 'vue-router';
 import App from './App.vue';
 import CalcApp from './CalcApp.vue';
 const ItemBuilder = () => import("./itembuilder/ItemBuilder.vue");
+const DataView = () => import("./dataview/DataView.vue");
 import './index.css'
 import './wikistyles.css'
 import './icons.css'
@@ -14,6 +15,7 @@ const routes = [
   { path: '/', redirect: `/c/${localStorage.getItem('sv_champ_player')}/vs/${localStorage.getItem('sv_champ_target')}` },
   { path: '/c/:player?/vs/:target?', component: CalcApp },
   { path: '/itembuilder', component: ItemBuilder },
+  { path: '/dataview', component: DataView },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 

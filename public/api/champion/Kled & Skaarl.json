@@ -259,6 +259,112 @@
         }
       ]
     },
+    "W": {
+      "name": "Violent Tendencies",
+      "maxrank": 5,
+      "cooldown": [
+        12,
+        10.5,
+        9,
+        7.5,
+        6
+      ],
+      "cost": 0,
+      "targeting": "Passive",
+      "image": {
+        "full": "KledW.png",
+        "sprite": "spell6.png",
+        "group": "spell",
+        "x": 240,
+        "y": 96,
+        "w": 48,
+        "h": 48
+      },
+      "description": [
+        "{{sbc|Passive:}} '''Kled''' periodically gains ''Violent Tendencies'', which starts expiring upon his next basic attack.",
+        "{{sbc|Violent Tendencies:}} '''Kled''' gains {{sti|attack speed|{{as|150% '''bonus''' attack speed}}}} on his next 4 basic attacks within 4 seconds. The final attack deals {{as|'''bonus''' physical damage}}, capped against {{tip|monster|monsters}}.",
+        "''{{tip|Turrets}} are only affected by the base damage.''"
+      ],
+      "descriptionHtml": "<span class=\"sbc\">Passive:</span> <b>Kled</b> periodically gains <i>Violent Tendencies</i>, which starts expiring upon his next basic attack.<br /><span class=\"sbc\">Violent Tendencies:</span> <b>Kled</b> gains <span><span class=\"attack-speed\">150% <b>bonus</b> attack speed</span></span> on his next 4 basic attacks within 4 seconds. The final attack deals <span class=\"physical-damage\"><b>bonus</b> physical damage</span>, capped against <HtmlTooltip class=\"blue link\">monsters<template #content><div><h4>monster<hr></h4><p>Description for keyword monster</p></div></template></HtmlTooltip>.<br /><i><HtmlTooltip class=\"blue link\">Turrets<template #content><div><h4>Turrets<hr></h4><p>Description for keyword Turrets</p></div></template></HtmlTooltip> are only affected by the base damage.</i>",
+      "leveling": [
+        "{{st|Bonus Physical Damage|{{ap|20 to 60}} {{as|(+ {{ap|4.5 to 6.5}}% {{as|(+ 5% per 100 '''bonus''' AD)}} of target's '''maximum''' health)}}|Maximum Damage Against Monsters|{{ap|220 to 260}}}}"
+      ],
+      "notes": "* The bonus damage applies {{sti|life steal|link=true}}.\n* Attacking a [[jungle plants|plant]] will not activate the effect.\n** This is intentional to prevent '''Kled''' from \"wasting\" the cooldown.",
+      "skillletter": "W",
+      "skillkey": "W",
+      "skillid": 1,
+      "skillwiki": "W",
+      "effects": [
+        {
+          "str": "<ul class=\"st\"><li><span class=\"blue\">Bonus Physical Damage</span>: <span><SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health)</span></span></li><li><span class=\"blue\">Maximum Damage Against Monsters</span>: <span><SpellSpan :list=\"[220,230,240,250,260]\"></SpellSpan></span></li></ul>",
+          "vars": {
+            "as_ratios": [
+              {
+                "player_bonus_ad": 51
+              },
+              {
+                "target_bonus_ad": [
+                  2.2,
+                  2.3,
+                  2.4,
+                  2.5,
+                  2.6
+                ]
+              }
+            ],
+            "st_slices": [
+              [
+                "Bonus Physical Damage",
+                "<SpellSpan :list=\"[20,30,40,50,60]\"></SpellSpan> <span class=\"health\">(+ <SpellSpan :list=\"[4.5,5,5.5,6,6.5]\"></SpellSpan>% <span class=\"ad\">(+ 5% per 100 <b>bonus</b> AD)</span> of target's <b>maximum</b> health)</span>",
+                "Maximum Damage Against Monsters",
+                "<SpellSpan :list=\"[220,230,240,250,260]\"></SpellSpan>"
+              ]
+            ],
+            "ap_progressions": [
+              [
+                20,
+                30,
+                40,
+                50,
+                60
+              ],
+              [
+                4.5,
+                5,
+                5.5,
+                6,
+                6.5
+              ],
+              null
+            ]
+          },
+          "subeffects": [
+            {
+              "index": 0,
+              "title": "Bonus Physical Damage",
+              "damage_type": "physical",
+              "ratios": {
+                "base_damage": [
+                  20,
+                  30,
+                  40,
+                  50,
+                  60
+                ],
+                "player_bonus_ad": 51,
+                "target_bonus_ad": [
+                  2.2,
+                  2.3,
+                  2.4,
+                  2.5,
+                  2.6
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     "E1": {
       "name": "Jousting",
       "maxrank": 5,
@@ -271,6 +377,7 @@
       ],
       "cost": 0,
       "targeting": "[[Direction-targeted|Direction]] / [[Auto-targeted|Auto]]",
+      "target_range": "{{tt|550|first dash}} / {{tt|700|second dash, center to edge, estimated}}",
       "image": {
         "full": "KledE.png",
         "sprite": "spell6.png",
@@ -363,6 +470,7 @@
       ],
       "cost": 0,
       "targeting": "Location",
+      "target_range": "{{ap|3500 to 4500}}",
       "image": {
         "full": "KledR.png",
         "sprite": "spell6.png",
