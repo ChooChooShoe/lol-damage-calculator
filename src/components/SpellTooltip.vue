@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import matchReplaceSpellEffects from '../javascript/matchreplace';
+import {matchReplaceSpellEffects} from '../javascript/matchreplace';
 export default {
   name: 'spell-tooltip',
   props: ['spell', 'spellrankindex'],
@@ -13,7 +13,7 @@ export default {
     calchtml: function () {
       // console.log(form.spellDao.tooltip.split(/(\W)/));
       const defaultTooltipHtml = '<p>' + this.spell.description.join('</p><p>') + '</p>';
-      let ret = matchReplaceSpellEffects(defaultTooltipHtml, false);
+      let ret = matchReplaceSpellEffects(defaultTooltipHtml, null);
       return ret.str;
     },
   }

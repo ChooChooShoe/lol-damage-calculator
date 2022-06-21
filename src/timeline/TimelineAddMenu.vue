@@ -27,7 +27,6 @@
 <script setup>
 import SpellImage from "./SpellImage.vue";
 
-import championList from "/src/api/ChampionList.json";
 import { ref, reactive, provide, computed, inject } from "vue";
 
 const activeChampionModel = inject("activeChampionModel");

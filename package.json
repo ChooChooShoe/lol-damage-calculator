@@ -7,8 +7,8 @@
     "build": "vite build --assetsDir bin",
     "serve": "vite preview",
     "deploy": "deploy.sh",
-    "fetch": "node --experimental-modules ./buildtools/data_fetch.mjs > ./buildtools/data_fetch_results.log",
-    "data_fetch_validate": "node --experimental-modules ./buildtools/data_fetch_validate.mjs",
+    "fetch": "node --experimental-modules --experimental-json-modules  ./buildtools/wiki_rip.mjs > ./buildtools/data_fetch_results.log",
+    "data_fetch_validate": "node --experimental-modules ./buildtools/data_fetch_validate.mjs > ./buildtools/data_fetch_validate_results.log",
     "fetch_items": "node --experimental-modules ./buildtools/items_fetch.mjs > ./buildtools/items_fetch_results.log",
     "test_token": "node --experimental-modules ./buildtools/tokenizer.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
@@ -24,11 +24,15 @@
     "@types/json5": "^2.2.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.31",
+    "cheerio": "^1.0.0-rc.11",
     "he": "^1.2.0",
     "jest": "^28.1.0",
+    "jsdom": "^20.0.0",
     "json5": "^2.2.1",
     "moo": "^0.5.1",
     "node-fetch": "^3.2.5",
+    "parenthesis": "^3.1.8",
+    "typescript": "^4.7.4",
     "vite": "^2.9.9"
   },
   "jest": {

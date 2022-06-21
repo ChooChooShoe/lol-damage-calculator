@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import championList from "/src/api/ChampionList.json";
+import championList from "/src/api/ChampionListComplete.json";
 import { reactive, inject, watchEffect, computed, provide, toRefs } from "vue";
 import { CORE_STATS } from "../javascript/league_data";
 

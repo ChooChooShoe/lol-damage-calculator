@@ -1,31 +1,5 @@
-// ITEM TEST
-// import { test_item } from './league_items.js';
+import versionJson from "./../api/version.json"
 
-// see also: https://ddragon.leagueoflegends.com/realms/na.json
-// const baseUrl = `${cdn}/${version}/data/${locale}`;
-// Profile Icons
-// const profileIconUri = `${baseUrl}/profileicon.json`;
-// Champions: 
-// const championUri = `${baseUrl}/champion.json`;
-// Individual Champions: 
-// http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion/Aatrox.json 
-
-// Champion Full: 
-// const championFullUri = `${baseUrl}/championFull.json`;
-// Items: 
-// const itemUri = `${baseUrl}/item.json`;
-// Summoner Spells: 
-// const summonerUri = `${baseUrl}/summoner.json`;
-// const languageUri = `${baseUrl}/language.json`;
-// const mapUri = `${baseUrl}/map.json`;
-
-// const championImg = `${cdn}/${version}/img/champion/Aatrox.png`;
-// const itemImg = `${cdn}/${version}/img/item/1001.png`;
-// const spriteImg = `${cdn}/${version}/img/sprite/1001.png`;
-
-// const runesReforgedUri = `${baseUrl}/runesReforged.json`;
-
-import versionJson from "/src/api/version.json"
 export const cdn = versionJson.cdn;
 export const locale = versionJson.l;
 export const version = versionJson.v;
@@ -61,40 +35,22 @@ export function setupVue(championList, itemData) {
     });
 }
 
-import ChampionList from "/src/api/ChampionList.json";
+import ChampionListComplete from "./../api/ChampionListComplete.json";
 async function fetchChampionList() {
     /// Get the latest version from /realms/na.json
     // const response = await fetch("./api/ChampionList.json");
     // const body = await response.json();
     let championList = { None: { name: "  -- None --  ", id: "" } }
-    Object.assign(championList, ChampionList);
+    Object.assign(championList, ChampionListComplete);
     return championList;
 }
 
 const singleChampFileCache = {};
 
 export async function fetchSingleChampFile(champId) {
-    if (!champId)
-        return console.log("Can't fetchSingleChampFile() 'champId' is not set", champId);
-
-    // Check cache first
-    if (champId in singleChampFileCache) {
-        console.log('Returning singleChampFileCache', champId)
-        return singleChampFileCache[champId];
-    }
-
-    // const url = `${cdn}/${version}/data/${lang}/champion/${championName}.json`;
-    const url = `./api/champion/${champId}.json`;
-
-    // TODO error checking
-    console.log(`Fetching: ${url}`);
-    const response = await fetch(url);
-    const model = await response.json();
-
-    // Add to Cache
-    singleChampFileCache[champId] = model;
-    // return model in promise
-    return model;
+    if (champId in ChampionListComplete)
+        return ChampionListComplete[champId];
+    return null;
 }
 const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
@@ -382,121 +338,35 @@ export class DamageSource {
     }
 }
 
-// import { computed } from "vue";
 
-// export const ChampObj = {
-//     id: "",
-//     name: "",
-//     level: 18,
-//     flat_mr_reduction:0,
-//     percent_mr_reduction : 0,
-//     percent_magicpen : 0,
-//     flat_magicpen : 0,
-//     flat_armor_reduction : 0,
-//     percent_armor_reduction : 0,
-//     percent_armorpen : 0,
-//     percent_bonus_armorpen :0,
-//     lethality: 0,
+const keyword_to_player_stat = {
+    ap: "ap",
+    ad: "ad",
+    attack: "ad",
+    armor: "armor",
+    mr: "mr",
+    'magic resist': "mr",
+    health: "hp",
+    hp: "hp",
+    mana: "mana",
+    ability: "ap",
+    mark: "mark",
+    stack: "stack",
+};
+const keyword_to_type = {
+    total: "total",
+    bonus: "bonus",
+    base: "base",
+};
+function table_check(table, text, fallback) {
+    for (const key in table) if (text.indexOf(key) > -1) return table[key];
+    console.log("Uknown rato",text,"defualting",fallback)
+    return fallback;
+}
 
-//     flat_armorpen: computed({
-//       get: () => this.lethality * (0.6 + (0.4 * this.level) / 18),
-//       set: val => {
-//           this.lethality = Math.round((45 * flat_armorpen) / (this.level + 27));
-//       }
-//     })
-
-//     get_current_hp: () => { return this.total_hp - this.missing_hp },
-//     set_current_hp: (current_hp) => {
-//         if (current_hp > this.total_hp) this.total_hp = current_hp;
-//         this.missing_hp = this.total_hp - current_hp;
-//     },
-
-//     lifesteal : 0,
-//     spellvamp : 0,
-//     missing_hp : 0,
-//     total_shield : 0,
-
-//     total_ap : 0,
-
-//     base_ad : 0,
-//     bonus_ad : 0,
-//     get_total_ad: () => { return this.base_ad + this.bonus_ad; },
-//     set_total_ad: (total) => { this.bonus_ad = total - this.base_ad; },
-
-//     base_hp : 0,
-//     bonus_hp : 0,
-//     get_total_hp: () => { return this.base_hp + this.bonus_hp; },
-//     set_total_hp: (total) => { this.bonus_hp = total - this.base_hp; },
-//     base_mana : 0,
-//     bonus_mana : 0,
-//     get_total_mana: () => { return this.base_mana + this.bonus_mana; },
-//     set_total_mana: (total) => { this.bonus_mana = total - this.base_mana; },
-//     base_movespeed : 0,
-//     bonus_movespeed : 0,
-//     get_total_movespeed: () => { return this.base_movespeed + this.bonus_movespeed; },
-//     set_total_movespeed: (total) => { this.bonus_movespeed = total - this.base_movespeed; },
-//     base_armor : 0,
-//     bonus_armor : 0,
-//     get_total_armor: () => { return this.base_armor + this.bonus_armor; },
-//     set_total_armor: (total) => { this.bonus_armor = total - this.base_armor; },
-//     base_mr : 0,
-//     bonus_mr : 0,
-//     get_total_mr: () => { return this.base_mr + this.bonus_mr; },
-//     set_total_mr: (total) => { this.bonus_mr = total - this.base_mr; },
-//     base_attackrange : 0,
-//     bonus_attackrange : 0,
-//     get_total_attackrange: () => { return this.base_attackrange + this.bonus_attackrange; },
-//     set_total_attackrange: (total) => { this.bonus_attackrange = total - this.base_attackrange; },
-//     base_hpregen : 0,
-//     bonus_hpregen : 0,
-//     get_total_hpregen: () => { return this.base_hpregen + this.bonus_hpregen; },
-//     set_total_hpregen: (total) => { this.bonus_hpregen = total - this.base_hpregen; },
-//     base_manaregen : 0,
-//     bonus_manaregen : 0,
-//     get_total_manaregen: () => { return this.base_manaregen + this.bonus_manaregen; },
-//     set_total_manaregen: (total) => { this.bonus_manaregen = total - this.base_manaregen; },
-//     base_critchance : 0,
-//     bonus_critchance : 0,
-//     get_total_critchance: () => { return this.base_critchance + this.bonus_critchance; },
-//     set_total_critchance: (total) => { this.bonus_critchance = total - this.base_critchance; },
-
-//     base_attackspeed : 0,
-//     bonus_attackspeed : 0,
-//     get_total_attackspeed: () => { return this.base_attackspeed * (1 +  (this.bonus_attackspeed / 100.0)); },
-//     set_total_attackspeed: (total) => { this.bonus_attackspeed = ((total / this.base_attackspeed) - 1) * 100.0; },
-
-
-//     update_base_stats: (obj, stats, lvl) => {
-//         console.log("update_base_stats")
-//         obj.level = Math.max(Math.min(lvl, 18), 0);
-//         obj.base_ad = stats.attackdamage + growth(stats.attackdamageperlevel) || 0;
-//         obj.base_hp = stats.hp + growth(stats.hpperlevel) || 0;
-//         obj.base_mana = stats.mp + growth(stats.mpperlevel) || 0;
-//         obj.base_movespeed = stats.movespeed || 0;
-//         obj.base_armor = stats.armor + growth(stats.armorperlevel) || 0;
-//         obj.base_mr = stats.spellblock + growth(stats.spellblockperlevel) || 0;
-//         obj.base_attackrange = stats.attackrange || 0;
-//         obj.base_hpregen = stats.hpregen + growth(stats.hpregenperlevel) || 0;
-//         obj.base_manaregen = stats.mpregen + growth(stats.mpregenperlevel) || 0;
-//         obj.base_critchance = stats.crit + growth(stats.critperlevel) || 0;
-
-//         obj.base_attackspeed = stats.attackspeed || 0;
-//         obj.bonus_attackspeed = growth(stats.attackspeedperlevel) || 0;
-//     },
-// }
-
-// function growth(perlevel) {
-//     const level = 14;
-//     return perlevel * (level - 1) * (0.7025 + 0.0175 * (level - 1));
-// }
-
-// function _make_champ_data_class() {
-//     let str = "";
-//     for (const basic_stat of ['ad', 'ap', 'hp', 'mana', 'movespeed', 'armor', 'mr', 'attackrange', 'hpregen', 'manaregen', 'critchance', 'attackspeed']) {
-//         str += `    base_${basic_stat} = 0,\n`;
-//         str += `    bonus_${basic_stat} = 0,\n`;
-//         str += `    get_total_${basic_stat}() { return this.base_${basic_stat} + this.bonus_${basic_stat}; },\n`;
-//         str += `    set_total_${basic_stat}(total) { this.bonus_${basic_stat} = total - this.base_${basic_stat}; },\n`;
-//     }
-//     console.log("_make_champ_data_class\n\n" + str);
-// }
+export function ratio_to_player_stat(stat) {
+    stat = stat.toLowerCase();
+    const player_stat = table_check(keyword_to_player_stat, stat, "default");
+    const type = table_check(keyword_to_type, stat, "total");
+    return `${type}_${player_stat}`;
+}

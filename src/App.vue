@@ -19,8 +19,8 @@
     </p> -->
   </footer>
   <datalist id="list-of-champions">
-    <template v-for="item in championList" :key="item.name">
-      <option :value="item.name"></option>
+    <template v-for="item in Object.keys(championList)" :key="item">
+      <option :value="item"></option>
     </template>
   </datalist>
 </template>
@@ -28,7 +28,7 @@
 <script setup>
 import { ref, reactive, provide, computed } from "vue";
 import { dv } from "./api/version.json";
-import championList from "/src/api/ChampionList.json";
+import championList from "/src/api/ChampionListComplete.json";
 
 function loadLocalConfig() {
   console.log("loading config...");

@@ -1,7 +1,7 @@
 
 import fs from 'fs';
 import fetch from 'node-fetch';
-import { default as matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
+import { matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
 
 import { make_wiki_skill_model, fetch_mod_data, saveFile } from './fetch_utils.mjs';
 
@@ -123,36 +123,75 @@ function buildChangesField(changes) {
 function makeDescriptionHtml(skillout) {
     let html = [];
     for (const line of skillout.description) {
-        let x = matchReplaceSpellEffects(line, false, skillout);
+        let x = matchReplaceSpellEffects(line, skillout);
         html.push(x.str);
     }
     return html.join('<br />');
 }
 
 function buildSkill(model, riotData, is_passive, champModel) {
-    stackData(model, ["description", "leveling"]);
+    stackData(model, ["description", "leveling", "blurb", "icon"]);
     const skillout = {
         // riotId: riotSpell.id || '',
         name: model.name || riotData?.name,
+        // disp_name: model.disp_name || model.name,
+        champion: model.champion !== champModel.name ? model.champion : undefined,
+        // skill: model.skill,
         maxrank: riotData?.maxrank || 0,
+
         cooldown: model.cooldown,
         cost: model.cost,
         costtype: model.costtype,
         targeting: model.targeting,
+        range: model.range,
         target_range: model.target_range,
         image: riotData?.image || {},
+        attack_range: model.attack_range,
+        travel_distance: model.travel_distance,
+        collision_radius: model.collision_radius,
+        effect_radius: model.effect_radius,
+        width: model.width,
+        angle: model.angle,
+        inner_radius: model.inner_radius,
+        tether_radius: model.tether_radius,
+        speed: model.speed,
+        cast_time: model.cast_time,
+        static: model.static,
+        ontargetcd: model.ontargetcd,
+        ontargetcdstatic: model.ontargetcdstatic,
+        recharge: model.recharge,
+        rechargestatic: model.rechargestatic,
+        customlabel: model.customlabel,
+        custominfo: model.custominfo,
+        // icon: model.icon,
+        // blurb: model.blurb,
         description: model.description || [],
         descriptionHtml: null,
         leveling: model.leveling || [],
         // riotDescription: riotSpell.description,
+        affects: model.affects,
+        damagetype: model.damagetype,
+        spelleffects: model.spelleffects,
+        onhiteffects: model.onhiteffects,
+        occurrence: model.occurrence,
+        spellshield: model.spellshield,
+        projectile: model.projectile,
+        callforhelp: model.callforhelp,
+        additional: model.additional,
         notes: model.notes || "",
+        // flavorsound: model.flavorsound,
+        // video: model.video,
+        // video2: model.video2,
+        // yvideo: model.yvideo,
+        // yvideo2: model.yvideo2,
+
 
         //TODO FIX THIS MESS
         skillletter: model.skillletter,
         skillkey: model.skillkey,
         skillid: model.skillid,
         skillwiki: model.skill,
-
+        effects: []
     };
 
     skillout.descriptionHtml = makeDescriptionHtml(skillout);
@@ -185,14 +224,13 @@ function buildSkill(model, riotData, is_passive, champModel) {
         }
     }
 
-
-    skillout.effects = [];
     for (let leveling_index in skillout.leveling) {
         let effect = {}
         skillout.effects[leveling_index] = effect;
         const levelingtext = skillout.leveling[leveling_index];
         // effect.levelingtext = levelingtext;
-        let x = matchReplaceSpellEffects(levelingtext, false, skillout);
+        let x = matchReplaceSpellEffects(levelingtext, skillout);
+        effect.raw = levelingtext;
         effect.str = x.str;
         effect.vars = x.vars;
 

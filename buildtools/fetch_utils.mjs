@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import he from 'he';
 import JSON5 from 'json5';
 
-const DEBUG = true;
+const DEBUG = false;
 
 if (DEBUG) {
     fs.rmSync('./.debug/', { recursive: true, force: true });

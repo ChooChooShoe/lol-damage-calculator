@@ -1,5 +1,5 @@
 <script>
-import matchReplaceSpellEffects from "../javascript/matchreplace";
+import {matchReplaceSpellEffects} from "../javascript/matchreplace";
 
 import SimpleTooltip from "./SimpleTooltip.vue";
 import HtmlTooltip from "./HtmlTooltip.vue";

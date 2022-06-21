@@ -3,8 +3,7 @@
     <div>
       <EditBtn v-model="editMode"></EditBtn>
 
-      <span class="spelleffect__title" v-html="effect.title"></span>
-      <span class="spelleffect__title">: </span>
+      <span class="spelleffect__title" v-html="effect.name"></span>
       <span>
         <DisplayRatio v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :list="obj.value" :index="index"> </DisplayRatio>
 
@@ -85,7 +84,7 @@
                   :ratios="ratios"
                   @addRatio="
                     (x) => {
-                      ratios[x] = makeRatio(x, 1);
+                      ratios[x] = makeRatio(x, x, { stat: x, values: 1 });
                     }
                   "
                 ></AddRatioDropDown>
@@ -137,6 +136,7 @@ const CORE_RATIOS = [
   "player_total_mr",
   "target_total_ap",
 ];
+
 const { effect, effectindex, pkey, custom } = defineProps({
   effect: Object,
   effectindex: Number,
@@ -150,32 +150,30 @@ const damage_type = ref("magic");
 
 const damageSource = new DamageSource();
 
-const makeRatio = (name, value) => {
-  const i = name.indexOf("_");
-  const user = name.slice(0, i);
-  const stat = name.slice(i + 1);
+const makeRatio = (key, { values, user, stat, apply, sub_ratios, stat_raw }) => {
+  // const user = stat.indexOf("target") > -1 ? "target" : "player";
+  // const stat = stat;
 
-  let ispercent = user !== "base";
+  let ispercent = stat.indexOf("%") > -1;
 
   const valueNumber = computed(() => {
-    return Array.isArray(value) ? value[rootspell.value.rankindex] : value;
+    return Array.isArray(values) ? values[rootspell.value.rankindex] : values;
   });
-  console.log("makeRatio()", name, value, "split", user, stat, valueNumber.value);
+  console.log("makeRatio()", values, "split", user, stat, valueNumber.value);
 
   const damagePreValue = computed(() => {
-    // No user means base_damage or base_progression
-    if (user !== "player" && user !== "target") return valueNumber.value;
+    if (apply === "flat") return valueNumber.value;
 
     let statValue = rootData[user].value[stat];
     if (isNaN(statValue)) {
-      console.warn(`Stat ${stat} for ratio ${name} missing for ${user}`);
+      console.warn(`Stat ${stat} for ratio ${key} ${stat_raw} missing for ${user}`);
       statValue = 0;
     }
     return statValue * valueNumber.value;
   });
   return reactive({
-    key: name,
-    value: value,
+    key,
+    value: values,
     ispercent: ispercent,
     valueNumber,
     damagePreValue,
@@ -190,15 +188,16 @@ defineExpose({
 watchEffect(() => {
   // let newRatios = reactive({});
   // convets effect's ratios to our ratios type.
-  for (const ratio in effect.ratios) {
-    ratios[ratio] = makeRatio(ratio, effect.ratios[ratio]);
+  for (const [idx, ratio] of Object.entries(effect.ratio_obj)) {
+    const key = `${ratio.user}_${ratio.stat}`
+    ratios[key] = makeRatio(key, ratio);
   }
-  console.log("computed() ratios", ratios, effect.ratios);
-  // return newRatios;
+  console.log("computed() ratios", ratios, effect.ratio_obj);
 });
 watchEffect(() => {
   // auto updates values when effect
-  damage_type.value = effect.damage_type;
+  // damage_type.value = effect.damage_type;
+  damage_type.value = "magic";
 
   // if(clear) {
 

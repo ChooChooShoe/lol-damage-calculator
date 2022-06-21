@@ -10,10 +10,9 @@
     <TimelineAddMenu></TimelineAddMenu>
     <AADamageSource :damageSources="damageSources" :player="player" :target="target"></AADamageSource>
     <ChampionSpellDamageSource
-      v-for="spellObj in activeSpells"
-      :key="spellObj.skillkey"
+      v-for="spellObj in Object.values(activeChampionModel?.skills || {})"
+      :key="spellObj.name"
       :spell="spellObj"
-      :multispells="spellObj.skillkey.length > 1"
       :champion="player.champ"
     ></ChampionSpellDamageSource>
 
@@ -27,7 +26,7 @@
 </template>
 
 <script setup>
-import championList from "/src/api/ChampionList.json";
+import championList from "/src/api/ChampionListComplete.json";
 import TimelineAddMenu from "./timeline/TimelineAddMenu.vue";
 import SideBody from "./components/SideBody.vue";
 import SettingsModel from "./components/SettingsModel.vue";
@@ -86,7 +85,6 @@ provide("RootData", { player, target, damageSources });
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);
 const customDamageSources = ref([]);
-const activeSpells = computed(() => Object.values(activeChampionModel?.value?.skills || {}));
 
 const skillpoints_used = () => {
   let sum = 0;

@@ -183,48 +183,21 @@ Removed by <b>Cleanse</b>, <b>Quicksilver</b>, <b>Mikael's Crucible</b><br>`
 }
 
 export function quickMatchReplace(text, extra_data = null) {
-  // Matches [[ thing ]] captures thing
-  text = text.replace(/\[\[([^[]*)\]\]/g, function (match, capture) {
-    const parms = capture.split('|');
-    const link = parms[0];
-    const tile = parms[1] || parms[0];
-    return `<a class="effect link" title="${tile}">${link}</a>`
-  });
-  return text.replace(/{{([^{}]*)}}/g, function (match, capture) {
-    const parms = capture.split('|');
-    const tag = parms[0].toLowerCase();
-    if (tag in match_lookup) {
-      const inner_fn = match_lookup[tag];
-      try {
-        const slices = [];
-        const options = {};
-        for (const par of parms.slice(1)) {
-          const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
-          if (capture) {
-            options[capture[1]] = capture[2];
-            console.log('MatchReplace: for tag', tag, 'options were found', options);
-          } else {
-            slices.push(par);
-          }
-        }
-        return inner_fn(capture, slices, null, options, extra_data);
-      } catch (e) {
-        return `<span class="red">${capture.replace(/\|/g, ' ')}"</span>`;
-      }
-    } else {
-      console.log(`Unknown spell effect '${match}'`);
-      return `<span class="red">${capture.replace(/\|/g, ' ')}"</span>`;
-    }
-  });
+  return matchReplaceSpellEffects(text, extra_data, { quick: true }).str;
 }
-export default function matchReplaceSpellEffects(text, quick = false, extra_data = null) {
+
+const COMMENT = /<!--[\S\s]*?-->/g
+const INNER_BRACE = /{{([^{}]*)}}/g
+const EQUAL_SPLIT = /^([A-z0-9\s]+)=(.*)/
+
+export function matchReplaceSpellEffects(text, extra_data = {}, config = {}) {
   // const slices = [];
   let vars = { as_ratios: [], st_slices: [], ap_progressions: [] }
 
   // for <!--\n-->
-  text = text.replace(/<!--\\n-->/g, '<br>');
+  // text = text.replace(/<!--\\n-->/g, '<br>');
   // for <!-- COMMENT -->
-  text = text.replace(/<!--[^>]*-->/g, '');
+  text = text.replace(COMMENT, '');
 
   // for bold/italics
   text = text.replace(/'''''(.*?)'''''/g, '<b><i>$1</i></b>');
@@ -250,42 +223,54 @@ export default function matchReplaceSpellEffects(text, quick = false, extra_data
     });
   }
 
-  // for {{ap|10 to 100}}
-  const iterLength = (text.match(/{{/g) || []).length;
-  for (let i = 0; i < iterLength; i++) {
-    text = text.replace(/{{([^{}]*)}}/g, function (match, capture) {
-      // slices.push(capture.split('|'))
-      const parms = capture.split('|');
-      const tag = parms[0].toLowerCase();
+  let looping = true;
+  while (looping) {
+    looping = false;
+    text = text.replace(INNER_BRACE, (_match, capture, _offset, _fulltext) => {
+      looping = true;
+      const split = capture.split('|');
+      const tag = split[0].toLowerCase();
+
+      if (tag.startsWith('#')) {
+        const conditional_split = tag.split(':');
+        const conditional_tag = conditional_split[0].toLowerCase();
+
+        const conditional_fn = varsmatch_lookup[conditional_tag];
+
+        if (!conditional_fn) {
+          console.log(`Unknown conditional_fn ${conditional_tag} for ${capture}`);
+          return `<${conditional_tag}>${conditional_split.slice(1).join()}</${conditional_tag}>`
+        }
+
+        const res = conditional_fn({ capture, slices: conditional_split.slice(1), options: {}, vars, extra_data });
+        // const res = var_fn(capture, positional_argument, vars, named_parameters, extra_data);
+        console.log('[conditional] Invoke ', tag, 'params', capture, conditional_split, "res", res);
+        return res;
+      }
+
       const inner_fn = match_lookup[tag];
+
       if (!inner_fn) {
         console.log(`Unknown spell effect ${tag} for ${capture}`);
-        capture = capture.replace(/\|/g, ' / ')
-        // needed = true;
-        return `<simple-tooltip class="capture-unknown" dname="${capture}">Unknown value: ${capture}</simple-tooltip>`;
+        return `<${tag}>${split.slice(1).join()}</${tag}>`
       }
-      // console.log(`Known spell effect ${tag} for ${capture}`);
-      try {
-        const slices = [];
-        const options = {};
-        for (const par of parms.slice(1)) {
-            const capture = par.match(/^([A-z0-9]+) ?=(.*)/)
-            if (capture) {
-                options[capture[1]] = capture[2];
-                console.log('MatchReplace: for tag', tag, 'options were found', options);
-            } else {
-                slices.push(par);
-            }
-        }
-        // needed = true;
-        return inner_fn(capture, slices, vars, options, extra_data);
-      } catch (e) {
-        console.log(`Error for spell effect '${match}'`);
-        console.log(e);
-        capture = capture.replace(/\|/g, ' ')
-        // needed = true;
-        return `<simple-tooltip class="red" dname="${capture}">Error: ${e}</simple-tooltip>`;
+      const positional_argument = [];
+      const named_parameters = {};
+      for (const par of split.slice(1)) {
+        const has_eq = par.match(EQUAL_SPLIT)
+        if (has_eq) named_parameters[has_eq[1]] = has_eq[2];
+        else positional_argument.push(par);
       }
+
+      // const ret = inner_fn({ capture, slices: positional_argument, options: named_parameters, vars, extra_data });
+      const res = inner_fn(capture, positional_argument, vars, named_parameters, extra_data);
+
+      console.log('Invoke', tag, 'params', capture, positional_argument, named_parameters, "res", res);
+
+
+      if (config.notext) return "";
+      return res;
+
     });
   }
   return {
@@ -293,38 +278,70 @@ export default function matchReplaceSpellEffects(text, quick = false, extra_data
     vars: vars
   };
 }
+function eval2(obj) {
+  if (obj.indexOf('(') === 0 && obj.charAt(obj.length - 1) !== ')')
+    obj = obj.slice(1);
+  return Function('let x = 99999; return (' + obj + ')')();
+}
+function x_to_y(found, list, parRange, round) {
+  const start = parseFloat(eval2(found[1]));
+  const end = parseFloat(eval2(found[2]));
+  const range = parseInt(found[3]) || parRange;
+  const diff = (end - start) / (range - 1 - list.length);
+  for (let i = list.length; i < range; i++) {
+    const answer = +(start + diff * i)
+    if (round === 'ceil')
+      list.push(+Math.ceil(answer));
+    else if ((round === 'false' || round === false))
+      list.push(+answer);
+    else
+      list.push(+answer.toFixed(parseInt(round) || 3));
+  }
+}
+
+const X_TO_Y = /\((.*?) to ([^to]*?)( [123456]+)?\)/g
+const regex = /([\d./*\-+x]+) to ([\d./*\-+x]+)( [\d]+)?/g;
+const clean = /([^\d./*\-+()x]+)/g;
 // Expands numbers for pp or ap.
 // ex. 100 to 500 => [100,200,300,400,500]
 export function numberExpand(slices, maxrank, round) {
-  const regex = /([\d./*\-+()]+) to ([\d./*\-+()]+)( [\d]+)?/;
-  const clean = /([^\d./*\-+()]+)/g;
   const list = [];
+  // numbers; ; ceil; false
   const fractionDigits = parseInt(round) || 3;
 
-  for (const p of slices) {
-    const found = p.match(regex);
-    if (found) {
-      const start = parseFloat(eval(found[1]));
-      const end = parseFloat(eval(found[2]));
-      const range = parseInt(found[3]) || maxrank || 5;
-      const diff = (end - start) / (range - 1 - list.length);
-      for (let i = list.length; i < range; i++) {
-        list.push(+(start + diff * i).toFixed(fractionDigits));
+  try {
+    for (const p of slices) {
+      if (p.indexOf('for') > -1 || p.indexOf('then') > -1) {
+        console.log("[ERROR] Invoke numberExpand because of 'for' or 'then' keyword", slices, p);
+        break;
       }
-    } else {
-      const cleaned = p.replace(clean, '')
-      try {
-        let num = eval(cleaned);
+      const found = [...`(${p})`.matchAll(X_TO_Y)];
+      if (found.length === 2) {
+        const lists = [[], []]
+        x_to_y(found[0], lists[0], maxrank, round);
+        x_to_y(found[1], lists[1], maxrank, round);
+        for (let k in lists[0]) {
+          const str = p.replace(found[0][0], lists[0][k]).replace(found[1][0], lists[1][k]);
+          list.push(eval2(str));
+        }
+      }
+      else if (found.length === 1) {
+        x_to_y(found[0], list, maxrank, round)
+      } else {
+        // const cleaned = p.replace(clean, '')
+        let cleaned = p.replace(/%/, '/100')
+        let num = eval2(cleaned);
         if (!isNaN(num))
           list.push(+parseFloat(num).toFixed(fractionDigits));
-        // else
-        // list.push(0);
-      } catch (msg) {
-        console.log("Error because of eval(", cleaned, ")");
-        // list.push(0);
+        else list.push(69420);
+
       }
     }
+  } catch (msg) {
+    console.log("[ERROR] Invoke numberExpand because of eval", slices, maxrank, round, msg);
+    // list.push(69900);
   }
+  console.log('Invoke numberExpand params', slices, maxrank, round, "res", list);
   return list;
 }
 
@@ -460,7 +477,7 @@ const match_lookup = {
     console.log('Match pp=', capture, '==>', slices, 'opt', options);
     if (slices.length === 1) {
       let range = slices[0].split(' to ');
-      const display = [range[0] + (options.key || ''), range[1] +( options.key || ''),];
+      const display = [range[0] + (options.key || ''), range[1] + (options.key || ''),];
       let top = numberExpand(slices[0].split(';'), 18);
       const bot = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
       console.log('Match pp=result=', top);
@@ -618,7 +635,12 @@ const match_lookup = {
 
 };
 
-
+const varsmatch_lookup = {
+  "#var": ({ capture, slices, options, vars, extra_data }) => {
+    const x = extra_data?.conditional_var ? extra_data?.conditional_var[slices] : undefined;
+    if (x) return x; else return '0';
+  }
+}
 const keyword_to_ratio_type = {
   bonus: "bonus",
   total: "total",
