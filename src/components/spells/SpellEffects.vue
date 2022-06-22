@@ -180,7 +180,7 @@ const makeRatio = (key, { values, user, stat, apply, sub_ratios, stat_raw }) => 
     damagePostValue: computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value)),
   });
 };
-const ratios = reactive({});
+const ratios = effect;
 defineExpose({
   ratios,
 });
@@ -188,11 +188,11 @@ defineExpose({
 watchEffect(() => {
   // let newRatios = reactive({});
   // convets effect's ratios to our ratios type.
-  for (const [idx, ratio] of Object.entries(effect.ratio_obj)) {
-    const key = `${ratio.user}_${ratio.stat}`
-    ratios[key] = makeRatio(key, ratio);
-  }
-  console.log("computed() ratios", ratios, effect.ratio_obj);
+  // for (const [idx, ratio] of Object.entries(effect.ratio_obj)) {
+  //   const key = `${ratio.user}_${ratio.stat}`;
+  //   ratios[key] = makeRatio(key, ratio);
+  // }
+  // console.log("computed() ratios", ratios, effect.ratio_obj);
 });
 watchEffect(() => {
   // auto updates values when effect

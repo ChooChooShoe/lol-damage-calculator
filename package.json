@@ -1,11 +1,11 @@
 {
   "name": "choochooshoe.github.io",
+  "private": true,
   "version": "0.4.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --assetsDir bin",
-    "serve": "vite preview",
+    "build": "vue-tsc --noEmit && vite build --assetsDir bin",
+    "preview": "vite preview",
     "deploy": "deploy.sh",
     "fetch": "node --experimental-modules --experimental-json-modules  ./buildtools/wiki_rip.mjs > ./buildtools/data_fetch_results.log",
     "data_fetch_validate": "node --experimental-modules ./buildtools/data_fetch_validate.mjs > ./buildtools/data_fetch_validate_results.log",
@@ -14,13 +14,13 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
-    "lua2js": "0.0.11",
-    "luaparse": "^0.3.1",
     "numeral": "^2.0.6",
     "vue": "^3.2.31",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "lua2js": "0.0.11",
+    "luaparse": "^0.3.1",
     "@types/json5": "^2.2.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.31",
@@ -33,7 +33,8 @@
     "node-fetch": "^3.2.5",
     "parenthesis": "^3.1.8",
     "typescript": "^4.7.4",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.7"
   },
   "jest": {
     "transform": {}

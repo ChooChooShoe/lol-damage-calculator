@@ -5,7 +5,7 @@ import { fetch_mod_data, saveFile } from './fetch_utils.mjs';
 import parenthesis from 'parenthesis';
 
 
-const DEBUG = true;
+const DEBUG = false;
 
 console.log('Hello');
 
@@ -17,10 +17,15 @@ const keyword_to_player_stat = {
   attack: "ad",
   armor: "armor",
   mr: "mr",
+  'magic res': "mr",
+  'critical strike chance': 'critical_strike_chance',
+  'life steal': 'life_steal',
   health: "hp",
   hp: "hp",
   mana: "mana",
   ability: "ap",
+  mark: "stack",
+  stack: "stack"
 };
 const keyword_to_type = {
   maximum: "maximum",

@@ -25,10 +25,10 @@
   </datalist>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, provide, computed } from "vue";
 import { dv } from "./api/version.json";
-import championList from "/src/api/ChampionListComplete.json";
+import championList from "./api/ChampionListComplete.json";
 
 function loadLocalConfig() {
   console.log("loading config...");
@@ -36,10 +36,10 @@ function loadLocalConfig() {
     shopEnabled: localStorage.getItem("shopEnabled") == "true",
   };
 }
-function saveLocalConfig(config) {
-  console.log("saving config...");
-  localStorage.setItem("shopEnabled", config.shopEnabled);
-}
+// function saveLocalConfig(config) {
+//   console.log("saving config...");
+//   localStorage.setItem("shopEnabled", config.shopEnabled);
+// }
 
 const globalToolTips = ref({});
 const config = ref(loadLocalConfig());
