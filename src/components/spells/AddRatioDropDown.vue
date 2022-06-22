@@ -1,46 +1,25 @@
 <template>
   <DropdownSelect label="" value="Add Ratio">
-    <template v-for="(r, i) in spell_ratios">
-      <div
-        :key="i"
-        v-if="!r.extra && ratios[i] === undefined"
-        @click="$emit('addRatio', i)"
-        class="dropdown-item"
-      >
-        <a :class="r.color"
-          >{{ r.prefex }} {{ r.sufex }}
-          {{ r.ispercent == false ? "Ratio" : "" }}</a
-        >
+    <template v-for="(r, i) in stat_to_display" :key="i">
+      <div  @click="$emit('addRatio', r)" class="dropdown-item">
+        <a :class="r.color">{{ r.prefex }} {{ r.sufex }}
+          {{ r.ispercent == false ? "Ratio" : "" }}</a>
+          <span v-html="r.html"></span>
       </div>
       <!-- <hr :key="'hr'+i" class="dropdown-divider" /> -->
     </template>
   </DropdownSelect>
 </template>
 
-<script>
-import { spell_ratios } from "../../javascript/league_data";
+<script setup lang="ts">
+import { stat_to_display } from './ratios_info';
+
 import DropdownSelect from "../simple/DropdownSelect.vue";
 
-export default {
-  name: "AddRatioDropDown",
-  props: ["modelValue", "ratios"],
-  components: { DropdownSelect },
-  data() {
-    return {
-      isActive: false,
-    };
-  },
-  computed: {
-    spell_ratios() {
-      return spell_ratios;
-    },
-  },
-  methods: {
-    handleInput(e) {
-      this.$emit('update:modelValue', e);
-    },
-  },
-};
+const emit = defineEmits<{
+  (e: 'addRatio', x: any): void
+}>()
+
 </script>
 
 <style>
@@ -49,10 +28,12 @@ export default {
   position: relative;
   vertical-align: top;
 }
+
 .dropdown.is-active .dropdown-menu,
 .dropdown.is-hoverable:hover .dropdown-menu {
   display: block;
 }
+
 .dropdown-menu {
   display: none;
   left: 0;
@@ -84,6 +65,7 @@ i.my-angle-down {
   padding: 3px;
   transform: translate(0, -2px) rotate(45deg);
 }
+
 i.my-angle-up {
   border: solid seashell;
   border-width: 0 3px 3px 0;

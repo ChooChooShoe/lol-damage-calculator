@@ -3,15 +3,15 @@
     <div>
       <EditBtn v-model="editMode"></EditBtn>
 
-      <span class="spelleffect__title" v-html="effect.name"></span>
+      <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
       <span>
-        <DisplayRatio v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :list="obj.value" :index="index"> </DisplayRatio>
+        <RecursiveRatioDisplay :val="ratios" display="value"> </RecursiveRatioDisplay>
 
         <DamageTypeField v-model="damage_type"></DamageTypeField>
       </span>
       <br />
       <span class="ad">Pre-Mitigation: </span>
-      <DisplayRatioDamage v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :damageValue="obj.damagePreValue" :index="index"> </DisplayRatioDamage>
+      <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
       <span class="spelleffect__total"> = </span>
       <span class="spelleffect__total">{{ Math.round(dmg_premitigation) }}</span>
       <span class="spelleffect__total">&nbsp;</span>
@@ -23,7 +23,7 @@
       <!-- <span v-html="damage_type_user(damage_type)"></span> -->
       <br />
       <span class="ap">Post-Mitigation: </span>
-      <DisplayRatioDamage v-for="(obj, key, index) in ratios" :key="key" :ratioKey="key" :damageValue="Math.round(obj.damagePostValue)" :index="index"> </DisplayRatioDamage>
+      <RecursiveRatioDisplay :val="ratios" display="dmg_postmitigation"> </RecursiveRatioDisplay>
       <span class="spelleffect__total"> = </span>
       <span class="spelleffect__total">{{ Math.round(dmg_postmitigation) }}</span>
       <span class="spelleffect__total">&nbsp;</span>
@@ -39,25 +39,15 @@
       <hr />
       <div class="column">
         Before resistances, this effect will deal
-        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span
-        >. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user(damage_type)"></span> after reductions<span class="gold">{{
-          repeat === 1 ? "" : " per hit"
-        }}</span
-        >.
+        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span>. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user(damage_type)"></span> after reductions<span class="gold">{{
+            repeat === 1 ? "" : " per hit"
+        }}</span>.
       </div>
       <label class="column">
         This effect will hit
         <NumInput v-model="repeat" class="collapse"></NumInput>
         time{{ repeat === 1 ? "" : "s" }}.
-        <input
-          v-for="(item, index) in [1, 2, 3, 5, 10]"
-          :key="index"
-          type="button"
-          class="repeat"
-          :value="item + 'x'"
-          @click="repeat = item"
-          :class="{ success: repeat == item }"
-        />
+        <input v-for="(item, index) in [1, 2, 3, 5, 10]" :key="index" type="button" class="repeat" :value="item + 'x'" @click="repeat = item" :class="{ success: repeat == item }" />
       </label>
       <div v-if="repeat != 1" class="column">
         In total, this effect deals
@@ -77,17 +67,10 @@
             </tr>
           </thead>
           <tbody>
-            <SpellField v-for="(item, key) in ratios" :key="key" :item="item"></SpellField>
+            <SpellField :val="ratios"></SpellField>
             <tr>
               <th colspan="4">
-                <AddRatioDropDown
-                  :ratios="ratios"
-                  @addRatio="
-                    (x) => {
-                      ratios[x] = makeRatio(x, x, { stat: x, values: 1 });
-                    }
-                  "
-                ></AddRatioDropDown>
+                <AddRatioDropDown :ratios="ratios" @addRatio="addRatio"></AddRatioDropDown>
               </th>
             </tr>
           </tbody>
@@ -96,8 +79,12 @@
               <th style="text-align: center" colspan="2">
                 <b>Total</b>
               </th>
-              <td><NumInput :modelValue="dmg_premitigation" :readonly="true"></NumInput></td>
-              <td><NumInput :modelValue="dmg_postmitigation" :readonly="true"></NumInput></td>
+              <td>
+                <NumInput :modelValue="dmg_premitigation" :readonly="true"></NumInput>
+              </td>
+              <td>
+                <NumInput :modelValue="dmg_postmitigation" :readonly="true"></NumInput>
+              </td>
             </tr>
           </tfoot>
         </table>
@@ -106,7 +93,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { calc_dmg_onhit, spell_ratios, CORE_STATS, DamageSource, DamageType } from "../../javascript/league_data";
 
 import { damage_type_user } from "./SpellHelper";
@@ -116,8 +103,10 @@ import AddRatioDropDown from "./AddRatioDropDown.vue";
 import DisplayRatio from "./DisplayRatio.vue";
 import DisplayRatioDamage from "./DisplayRatioDamage.vue";
 import EditBtn from "../simple/EditBtn.vue";
-import { computed, inject, onMounted, onUnmounted, provide, reactive, ref, toRefs, watchEffect } from "vue";
+import { computed, inject, onMounted, onUnmounted, provide, reactive, Ref, ref, toRefs, watchEffect } from "vue";
 import NumInput from "../simple/NumInput.vue";
+import RecursiveRatioDisplay from "./RecursiveRatioDisplay.vue";
+import { RatioObj, RatioObjComputed, RatioRootObj, stat_to_display } from "./ratios_info";
 
 const CORE_RATIOS = [
   "player_total_ap",
@@ -137,53 +126,17 @@ const CORE_RATIOS = [
   "target_total_ap",
 ];
 
-const { effect, effectindex, pkey, custom } = defineProps({
-  effect: Object,
+const { effect, effectindex, pkey, custom } = defineProps<{
+  effect: RatioRootObj,
   effectindex: Number,
   pkey: String,
   custom: Boolean,
-});
+}>()
 
-const rootspell = inject("rootspell");
-const rootData = inject("RootData");
+const rootData = inject<any>("RootData") || {};
+const rootspell = inject<any>("rootspell");
 const damage_type = ref("magic");
-
-const damageSource = new DamageSource();
-
-const makeRatio = (key, { values, user, stat, apply, sub_ratios, stat_raw }) => {
-  // const user = stat.indexOf("target") > -1 ? "target" : "player";
-  // const stat = stat;
-
-  let ispercent = stat.indexOf("%") > -1;
-
-  const valueNumber = computed(() => {
-    return Array.isArray(values) ? values[rootspell.value.rankindex] : values;
-  });
-  console.log("makeRatio()", values, "split", user, stat, valueNumber.value);
-
-  const damagePreValue = computed(() => {
-    if (apply === "flat") return valueNumber.value;
-
-    let statValue = rootData[user].value[stat];
-    if (isNaN(statValue)) {
-      console.warn(`Stat ${stat} for ratio ${key} ${stat_raw} missing for ${user}`);
-      statValue = 0;
-    }
-    return statValue * valueNumber.value;
-  });
-  return reactive({
-    key,
-    value: values,
-    ispercent: ispercent,
-    valueNumber,
-    damagePreValue,
-    damagePostValue: computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value)),
-  });
-};
-const ratios = effect;
-defineExpose({
-  ratios,
-});
+const damageSource = new DamageSource('magic', 8);
 
 watchEffect(() => {
   // let newRatios = reactive({});
@@ -204,43 +157,105 @@ watchEffect(() => {
   // }
 });
 
-const dmg_premitigation = computed(() => {
-  let total = 0;
-  for (const r in ratios) {
-    total += ratios[r].damagePreValue || 0;
+
+
+function makeRatio(val: RatioObj): RatioObj & RatioObjComputed {
+  const damageValue = computed(() => Array.isArray(val.values) ? val.values[rootspell?.value?.rankindex || 0] : val.values);
+  const damagePreValue = computed((): number => {
+    let value = damageValue.value;
+    if (val.apply === 'flat')
+      return value;
+    if (val.apply === 'percent')
+      value = value / 100;
+
+    let statValue = rootData[val.user].value[val.stat];
+    if (isNaN(statValue)) {
+      console.warn(`Stat ${val.stat} for ratio ${val} missing for ${rootData.player}`);
+      statValue = 0;
+    }
+    return statValue * value;
+  });
+  const damagePostValue = computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value))
+  const sub_calcs: Array<RatioObj & RatioObjComputed> = [];
+  if (val.sub_ratios) {
+    for (let r of val.sub_ratios) {
+      sub_calcs.push(makeRatio(r));
+    }
   }
-  return total;
+
+  const damagePreTotal = computed((): number => {
+    let value = damagePreValue.value;
+    for (const r of sub_calcs) {
+      value = value + (r.damagePreValue?.value || 0);
+    }
+    return value;
+  });
+  const damagePostTotal = computed(() => {
+    let value = damagePostValue.value;
+    for (const r of sub_calcs) {
+      value = value + (r.damagePostValue?.value || 0);
+    }
+    return value;
+  })
+  return Object.assign(val, {
+    damageValue,
+    damagePreValue,
+    damagePostValue,
+    damagePreTotal,
+    damagePostTotal,
+    sub_calcs
+  });
+}
+const ratios = makeRatio(effect);
+defineExpose({
+  ratios,
 });
 
-const damageSources = inject("damageSources");
+
+
+function addRatio(x: string) {
+  const made = makeRatio({
+    values: 1,
+    user: 'player',
+    stat: x,
+    apply: 'percent',
+    stat_raw: 'CUSTOM'
+  });
+  ratios.sub_ratios?.push(made);
+  ratios.sub_calcs.push(made);
+}
+
+const damageSources = inject<Ref<any>>("damageSources");
 onMounted(() => {
   console.log("mount", pkey);
-  damageSources.value[pkey] = [damageSource];
+  if (damageSources) damageSources.value[pkey] = [damageSource];
 });
 onUnmounted(() => {
   console.log("UNMOUNT SpellEffect", pkey);
-  delete damageSources.value[pkey];
+  if (damageSources) delete damageSources.value[pkey];
 });
 
 const repeat = ref(1);
 const editMode = ref(false);
 const doesDoDamage = computed(() => ["magic", "physical", "true"].includes(damage_type.value));
-// dmg_premitigation;
-const dmg_postmitigation = computed(() => {
-  console.log("dmg_postmitigation");
-  return calc_dmg_onhit(rootData.player.value, rootData.target.value, dmg_premitigation.value, damage_type.value);
-});
-damageSource.repeat = repeat;
-damageSource.postIsManual = false;
-damageSource.damage_type = damage_type;
-damageSource.dmg_premitigation = dmg_premitigation;
-damageSource.dmg_postmitigation = dmg_postmitigation;
+
+const dmg_premitigation = effect.damagePreTotal;
+const dmg_postmitigation = effect.damagePostValue;
+
+
+// damageSource.repeat = repeat;
+// damageSource.postIsManual = false;
+// damageSource.damage_type = damage_type;
+// damageSource.dmg_premitigation = dmg_premitigation;
+// damageSource.dmg_postmitigation = dmg_postmitigation;
+const index = 0;
 </script>
 
 <style>
 input[type="number"].simple-input {
   width: 6em;
 }
+
 input[type="button"].repeat {
   border-width: 1px;
   margin-bottom: 0;
@@ -249,9 +264,11 @@ input[type="button"].repeat {
   padding: 0 0.5em;
   margin: 0 0.2em;
 }
+
 .spelleff--totals {
   border-top: aqua 1px solid;
 }
+
 .spelleffect__div {
   border-bottom: #282f2f solid 1px;
   margin-bottom: 0.4em;
@@ -261,16 +278,19 @@ input[type="button"].repeat {
 .spelleffect__title {
   color: #8e7dad;
 }
+
 .spelleffect__total {
   font-weight: bold;
   font-size: 110%;
 }
+
 .spelleffect__repeat {
   font-weight: bold;
   font-style: italic;
   font-size: 110%;
   color: yellow;
 }
+
 .spelleff--edit:before {
   content: "\25bc";
   color: #ddd;

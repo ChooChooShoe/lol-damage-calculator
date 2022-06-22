@@ -24,8 +24,9 @@ const keyword_to_player_stat = {
   hp: "hp",
   mana: "mana",
   ability: "ap",
-  mark: "stack",
-  stack: "stack"
+  mark: "kindred_mark",
+  stack: "feast_stack",
+  nasus_stack: "stack",
 };
 const keyword_to_type = {
   maximum: "maximum",
@@ -40,6 +41,7 @@ function table_check(table, text, fallback) {
 }
 
 function ratio_to_player_stat(stat) {
+  if(!stat) return "base";
   stat = stat.toLowerCase();
   const player_stat = table_check(keyword_to_player_stat, stat, "default");
   const type = table_check(keyword_to_type, stat, "total");
@@ -128,7 +130,7 @@ function fetch_ddragon(champ_id) {
 }
 
 function levelingToArray(leveling) {
-  return leveling.split('/').map(x => Number(x.trim()) || x);
+  return leveling.split('/').map(x => Number(x.trim()) || x.trim());
 }
 function arrOrNum(arr) {
   if (arr.length === 1) return arr[0];
@@ -234,17 +236,15 @@ function makeRatioObj(root) {
   //remove the () and + before.
   let s = fulltext.replace(/[()+]/g, '').split('%');
   let ispercent = s.length > 1;
-  let values = levelingToArray(s[0]);
+  let values = arrOrNum(levelingToArray(s[0]));
   let stat_raw = s.slice(1, s.length).join('%');
 
   const per = stat_raw.includes('per');
-  const apply = per ? "per100" : ispercent ? 'percent' : "flat";
+  const per_100 = stat_raw.includes('100');
+  const is_text = typeof values === 'string';
+  const apply = is_text ? 'text' : (per && per_100) ? 'per100' : per ? "per" : ispercent ? 'percent' : "flat";
   const user = apply === "flat" ? undefined : stat_raw.indexOf("target") > -1 ? "target" : "player";
-  let stat = "base";
-  // if has a perscent...
-  if (stat_raw) {
-    values = values.map(x => x / 100);
-    stat = ratio_to_player_stat(stat_raw);
-  }
-  return { values: arrOrNum(values), user, stat, apply, stat_raw: fulltext, sub_ratios: sub_ratios.length === 0 ? undefined : sub_ratios };
+  
+  let stat = ratio_to_player_stat(stat_raw);
+  return { values, user, stat, apply, stat_raw: fulltext, sub_ratios: sub_ratios.length === 0 ? undefined : sub_ratios };
 }

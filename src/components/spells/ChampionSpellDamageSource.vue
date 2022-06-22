@@ -4,15 +4,7 @@
 
     <span class="ds__title">{{ spell.display_name }} ({{ spell.name.toUpperCase() }})</span>
     <DropdownSelect class="spellrank2" v-if="spell.maxrank > 0" label="Rank" :value="spell.rankindex + 1">
-      <input
-        v-for="(_, index) in Array(spell.maxrank)"
-        :class="{ success: spell.rankindex === index }"
-        :key="index"
-        @click="() => (spell.rankindex = index)"
-        type="button"
-        :value="index + 1"
-        :title="'Rank ' + (index + 1)"
-      />
+      <input v-for="(_, index) in Array(spell.maxrank)" :class="{ success: spell.rankindex === index }" :key="index" @click="() => (spell.rankindex = index)" type="button" :value="index + 1" :title="'Rank ' + (index + 1)" />
     </DropdownSelect>
     <span class="ds__data" v-if="spell.cooldown">
       Cooldown:
@@ -25,7 +17,9 @@
     </span>
     <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
-    <div class="ds__description" tabindex="0" v-html="spell.descriptionHtml"></div>
+    <div class="ds__description" tabindex="0">
+      <div v-for="x in spell.desciption" v-html="x"></div>
+    </div>
 
     <!-- <div v-if="spell.maxrank > 0">
       <span>
@@ -154,18 +148,19 @@ export default {
 </script>
 
 <style>
-.ChampionSpellDamageSource {
-}
+.ChampionSpellDamageSource {}
 
 .ds__spellimage {
   margin: 0.2rem 1rem 0.2rem 0.2rem;
   float: left;
 }
+
 .ds__title {
   font-size: 1.2em;
   font-weight: normal;
   margin-right: 1rem;
 }
+
 .ds__data {
   margin-right: 1em;
 }
@@ -178,10 +173,12 @@ export default {
   text-overflow: ellipsis;
   border: 1px solid #00000000;
 }
+
 .ds__description:hover {
   border: 1px solid #1e8ad6;
   cursor: pointer;
 }
+
 .ds__description:focus {
   cursor: auto;
   width: auto;
@@ -215,7 +212,7 @@ export default {
   background: #fff700;
 }
 
-.spellrank input:checked ~ input {
+.spellrank input:checked~input {
   background: #f1f1f1;
 }
 
@@ -223,10 +220,12 @@ export default {
   background-color: #9c9700 !important;
   color: #eee;
 }
-.dd-content input:hover ~ input {
+
+.dd-content input:hover~input {
   background-color: #282f2f !important;
   color: #eee;
 }
+
 .cost-container [data-active="true"] {
   color: #1e8ad6;
 }

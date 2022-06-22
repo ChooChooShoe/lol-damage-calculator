@@ -31,7 +31,6 @@ const props = defineProps({
   index: Number,
   readonly: Boolean,
 });
-console.log("modelValue", props);
 
 const emit = defineEmits(["update:modelValue"]);
 
