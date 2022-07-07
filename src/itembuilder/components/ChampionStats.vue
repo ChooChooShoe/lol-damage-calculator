@@ -32,7 +32,7 @@ function save () {
   console.log("save(json)");
 };
 function clear () {
-  this.obj.clearStats = true;
+  this.obj.clearStats();
 };
 function rnd(n) {
   return Math.round(n);

@@ -18,8 +18,7 @@
         <template v-slot:default>Reduces the amount of damage taken from <span class="physical-damage">physical damage sources</span> </template>
         <template v-slot:footer>
           <p>
-            You take <span class="total">{{ Math.round(obj.percent_pysical_reduction * 100) }}</span
-            >% reduced <span class="pysical-damage">pysical damage</span>
+            You take <span class="total">{{ Math.round(obj.percent_pysical_reduction * 100) }}</span>% reduced <span class="pysical-damage">pysical damage</span>
           </p>
         </template>
       </BlockStat>
@@ -29,8 +28,7 @@
         <template v-slot:default> Reduces the amount of damage taken from <span class="magic-damage">magical damage sources</span> </template>
         <template v-slot:footer>
           <p>
-            You take <span class="total">{{ Math.round(obj.percent_magic_reduction * 100) }}</span
-            >% reduced <span class="magic-damage">magic damage</span>
+            You take <span class="total">{{ Math.round(obj.percent_magic_reduction * 100) }}</span>% reduced <span class="magic-damage">magic damage</span>
           </p>
         </template>
       </BlockStat>
@@ -40,8 +38,7 @@
         <template v-slot:default> Attack Speed does not affect calculations</template>
         <template v-slot:footer>
           <p>
-            Bonus Attack Speed: <b class="total">{{ Math.round(obj.bonus_attackspeed) }}</b
-            >%
+            Bonus Attack Speed: <b class="total">{{ Math.round(obj.bonus_attackspeed) }}</b>%
           </p>
           <p>
             Current attacks per second: <b class="bonus">{{ Math.round(obj.total_attackspeed * 1000) / 1000 }}</b>
@@ -57,8 +54,7 @@
         <template v-slot:default> Ability Haste does not affect calculations</template>
         <template v-slot:footer>
           <p>
-            Equivalent to having <b class="total">{{ Math.round(obj.cdr * 100) }}</b
-            >% cooldown reduction.
+            Equivalent to having <b class="total">{{ Math.round(obj.cdr * 100) }}</b>% cooldown reduction.
           </p>
         </template>
       </BlockStat>
@@ -68,16 +64,10 @@
         <template v-slot:default> Crit Strike Chance does not affect calculations</template>
         <template v-slot:footer>
           <p>
-            Current Crit Strike Chance: <b class="total">{{ obj.total_critchance }}</b
-            >% (<b class="base">{{ obj.base_critchance }}</b
-            >% base + <b class="bonus">{{ obj.bonus_critchance }}</b
-            >% bonus)
+            Current Crit Strike Chance: <b class="total">{{ obj.total_critchance }}</b>% (<b class="base">{{ obj.base_critchance }}</b>% base + <b class="bonus">{{ obj.bonus_critchance }}</b>% bonus)
           </p>
           <p>
-            Current Crit Strike Damage: <b class="total">{{ obj.total_critdamage }}</b
-            >% (<b class="base">{{ obj.base_critdamage }}</b
-            >% base + <b class="bonus">{{ obj.bonus_critdamage }}</b
-            >% bonus)
+            Current Crit Strike Damage: <b class="total">{{ obj.total_critdamage }}</b>% (<b class="base">{{ obj.base_critdamage }}</b>% base + <b class="bonus">{{ obj.bonus_critdamage }}</b>% bonus)
           </p>
         </template>
       </BlockStat>
@@ -124,7 +114,7 @@
       </BlockStat>
     </div>
     <div class="buttons">
-      <input class="clear--button button" type="button" value="Clear" @click="obj.clearStats = true" />
+      <input class="clear--button button" type="button" value="Clear" @click="obj.clearStats()" />
 
       <label class="switch button">
         <input type="checkbox" v-model="showDamage" />
@@ -142,42 +132,27 @@
   </div>
 </template>
 
-<script setup>
-import DataInput from "./DataInput.vue";
-// import InlineInput from "./InlineInput.vue";
-// import SimpleTooltip from "./SimpleTooltip.vue";
+<script setup lang="ts">
 import ChampSearch from "./simple/ChampSearch.vue";
 import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
-import { fetchSingleChampFile, default_stats } from "../javascript/league_data";
 import BlockStat from "./simple/BlockStat.vue";
-import EditBtn from "./simple/EditBtn.vue";
-import { toRefs, inject, ref, computed, watchEffect, defineEmits, defineProps } from "vue";
+import { ref, defineProps } from "vue";
+import { ChampObjModel } from "../model/ChampObj";
 
-const props = defineProps({ mode: String, modelValue: String });
+const props = defineProps<{ mode: string, obj: ChampObjModel }>()
 
-const { mode } = toRefs(props);
-const emit = defineEmits(["update:activeChampionModel"]);
-const obj = inject("ChampObj");
-if (!obj.champ) {
-  console.log("Loading Champ from storage");
-  obj.champ = window.localStorage.getItem(`sv_champ_${mode.value}`) || "";
+if (!props.obj.champ) {
+  console.log("Loading Champ from storage",props.mode);
+  props.obj.champ = window.localStorage.getItem(`sv_champ_${props.mode}`) || "";
 }
 
-watchEffect(() => {
-  if (mode.value === "player") {
-    fetchSingleChampFile(obj.champ).then((model) => {
-      emit("update:activeChampionModel", model);
-    });
-  }
-});
-
-const showDamage = ref(mode.value === "player");
-const showDefence = ref(mode.value === "target");
+const showDamage = ref(props.mode === "player");
+const showDefence = ref(props.mode === "target");
 const showExtra = ref(false);
 const showBreakdown = ref(true);
 const readonly_base_values = true;
 const editMode = ref(true);
-const username = mode.value === "player" ? "Attacking Champion" : "Target Data";
+const username = props.mode === "player" ? "Attacking Champion" : "Target Data";
 
 </script>
 
@@ -185,19 +160,22 @@ const username = mode.value === "player" ? "Attacking Champion" : "Target Data";
 table {
   background-color: transparent !important;
 }
+
 .data_holder__grid {
   display: grid;
   grid-template-columns: 10% auto 28px 10% auto 28px;
 }
+
 .clear--button:hover,
 .clear--button:focus {
   background-color: rgb(202, 0, 0) !important;
 }
+
 .switch--text {
   margin: 0 0 0 0.5em;
 }
 
-input:checked + .switch--text {
+input:checked+.switch--text {
   color: #9ebbf0;
 }
 </style>

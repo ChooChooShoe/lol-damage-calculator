@@ -128,9 +128,9 @@ const CORE_RATIOS = [
 
 const { effect, effectindex, pkey, custom } = defineProps<{
   effect: RatioRootObj,
-  effectindex: Number,
-  pkey: String,
-  custom: Boolean,
+  effectindex: number,
+  pkey: string,
+  custom: boolean,
 }>()
 
 const rootData = inject<any>("RootData") || {};
@@ -163,19 +163,19 @@ function makeRatio(val: RatioObj): RatioObj & RatioObjComputed {
   const damageValue = computed(() => Array.isArray(val.values) ? val.values[rootspell?.value?.rankindex || 0] : val.values);
   const damagePreValue = computed((): number => {
     let value = damageValue.value;
-    if (val.apply === 'flat')
-      return value;
     if (val.apply === 'percent')
       value = value / 100;
 
-    let statValue = rootData[val.user].value[val.stat];
+    if (val.stat === 'base')
+      return value;
+    let statValue = rootData[val.user][val.stat];
     if (isNaN(statValue)) {
       console.warn(`Stat ${val.stat} for ratio ${val} missing for ${rootData.player}`);
       statValue = 0;
     }
     return statValue * value;
   });
-  const damagePostValue = computed(() => calc_dmg_onhit(rootData.player.value, rootData.target.value, damagePreValue.value, damage_type.value))
+  const damagePostValue = computed(() => calc_dmg_onhit(rootData.player, rootData.target, damagePreValue.value, damage_type.value))
   const sub_calcs: Array<RatioObj & RatioObjComputed> = [];
   if (val.sub_ratios) {
     for (let r of val.sub_ratios) {
@@ -224,23 +224,22 @@ function addRatio(x: string) {
   ratios.sub_ratios?.push(made);
   ratios.sub_calcs.push(made);
 }
+interface DamageSources { [key: string]: DamageSource[] }
+const damageSources = inject<Ref<DamageSources>>("damageSources")?.value;
 
-const damageSources = inject<Ref<any>>("damageSources");
 onMounted(() => {
-  console.log("mount", pkey);
-  if (damageSources) damageSources.value[pkey] = [damageSource];
+  if (damageSources) damageSources[pkey] = [damageSource];
 });
 onUnmounted(() => {
-  console.log("UNMOUNT SpellEffect", pkey);
-  if (damageSources) delete damageSources.value[pkey];
+  if (damageSources) delete damageSources[pkey];
 });
 
 const repeat = ref(1);
 const editMode = ref(false);
 const doesDoDamage = computed(() => ["magic", "physical", "true"].includes(damage_type.value));
 
-const dmg_premitigation = effect.damagePreTotal;
-const dmg_postmitigation = effect.damagePostValue;
+const dmg_premitigation = ratios.damagePreTotal;
+const dmg_postmitigation = ratios.damagePostValue;
 
 
 // damageSource.repeat = repeat;

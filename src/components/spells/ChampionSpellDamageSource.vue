@@ -13,12 +13,12 @@
     <span class="ds__data" v-if="spell.cost">
       Cost:
       <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
-      <span v-html="costtype"></span>
+      <!-- <span v-html="costtype"></span> -->
     </span>
     <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
     <div class="ds__description" tabindex="0">
-      <div v-for="x in spell.desciption" v-html="x"></div>
+      <p v-for="x in spell.desciption" v-html="x"></p>
     </div>
 
     <!-- <div v-if="spell.maxrank > 0">
@@ -68,7 +68,7 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
 import SpellImage from "../../timeline/SpellImage.vue";
 import MatchReplace from ".././MatchReplace.vue";
@@ -76,75 +76,56 @@ import SpellEffects from "./SpellEffects.vue";
 // import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
-import { quickMatchReplace } from "../../javascript/matchreplace";
+// import { quickMatchReplace } from "../../javascript/matchreplace";
 import { spriteBaseUri } from "../../javascript/league_data";
 import DropdownSelect from "../simple/DropdownSelect.vue";
+import { SkillJson } from "../../model/ChampObj";
 
-export default {
-  name: "ChampionSpellDamageSource",
-  components: {
-    MatchReplace,
-    SpellEffects,
-    // SimpleTooltip,
-    SpellNotes,
-    SpellSpan,
-    DropdownSelect,
-    SpellImage,
-  },
-  props: {
-    spell: Object,
-    champion: String,
-  },
-  setup(props) {
-    const { spell, champion } = toRefs(props);
-    let obj = reactive({
-      clearStats: false,
-      champ: "",
-    });
+const props = defineProps<{
+  spell: SkillJson,
+  champion: string,
+}>()
 
-    spell.value.rankindex = ref(0);
-    const customEffects = ref([]);
-    const lastEffectIndex = ref(0);
+let obj = reactive({
+  champ: null,
+});
 
-    watchEffect(() => {
-      spell.value.rankindex = (spell.value.maxrank || 1) - 1;
-    });
-    provide("rootspell", spell);
+props.spell.rankindex = ref(0);
+const customEffects = ref([]);
+const lastEffectIndex = ref(0);
 
-    return {
-      obj,
-      costtype: computed(() => quickMatchReplace(spell.value.costtype || "Mana")),
-      targeting: computed(() => quickMatchReplace(spell.value.targeting || "")),
-      targetRange: computed(() => quickMatchReplace(String(spell.value.target_range || ""))),
-      imageStyle: computed(() => {
-        const i = spell.value.image;
-        return {
-          background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
-        };
-      }),
-      wikiHref: computed(() => {
-        const champName = champion.value?.replace(/ /g, "_");
-        const spellName = spell.value?.name.replace(/ /g, "_");
-        return `https://leagueoflegends.fandom.com/wiki/${champName}/LoL#${spellName}`;
-      }),
-      matchReplace: quickMatchReplace,
-      customEffects,
-      addEffect: () => {
-        customEffects.value.push({
-          index: 0,
-          title: "Custom Damage " + (customEffects.value.length + 10).toString(36).toUpperCase(),
-          damage_type: "magic",
-          ratios: {
-            base_damage: [70, 90, 110, 130, 150],
-            player_total_ap: 1,
-            player_total_ad: 1,
-            player_bonus_ad: 0.5,
-          },
-        });
-      },
-    };
-  },
+watchEffect(() => {
+  props.spell.rankindex = (props.spell.maxrank || 1) - 1;
+});
+provide("rootspell", props.spell);
+
+const imageStyle = computed(() => {
+  const i = props.spell.image;
+  return {
+    background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
+  };
+});
+
+const wikiHref = computed(() => {
+  const champName = props.champion?.replace(/ /g, "_");
+  const spellName = props.spell?.name.replace(/ /g, "_");
+  return `https://leagueoflegends.fandom.com/wiki/${champName}/LoL#${spellName}`;
+});
+
+const addEffect = () => {
+  // customEffects.value.push({
+  //   index: 0,
+  //   title: "Custom Damage " + (customEffects.value.length + 10).toString(36).toUpperCase(),
+  //   damage_type: "magic",
+  //   ratios: {
+  //     base_damage: [70, 90, 110, 130, 150],
+  //     player_total_ap: 1,
+  //     player_total_ad: 1,
+  //     player_bonus_ad: 0.5,
+  //   },
+  // });
 };
+
 </script>
 
 <style>

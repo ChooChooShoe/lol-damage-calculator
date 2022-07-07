@@ -6,14 +6,17 @@
     <div class="FullModel">
       <RecusiveView :val="ChampionList[champion]"></RecusiveView>
     </div>
+    <div class="Skills">
+      <!-- <RecusiveView :val="ChampionListSkills[champion]"></RecusiveView> -->
+    </div>
   </div>
 </template>
 
 <script setup>
 import { computed, reactive, ref } from "vue";
-import ChampionList from "/src/api/ChampionListComplete.json";
+import ChampionList from "/src/api/ChampionList.json";
+// import ChampionListSkills from "/src/api/ChampionListSkills.json";
 
-// import ChampObj from "./components/ChampObj.vue";
 import { dv as displayVersion } from "/src/api/version.json";
 import ChampSearch from "../components/simple/ChampSearch.vue";
 import RecusiveView from "./RecusiveView.vue";

@@ -164,7 +164,7 @@ export default {
       } else {
         output.status = "Alive";
         output.hpRemaining = hp_diff;
-        output.hpRemainingPercent = hp_diff / t.total_hp;
+        output.hpRemainingPercent = hp_diff / t.maximum_hp;
         output.overkill = "N/A";
       }
       return output;

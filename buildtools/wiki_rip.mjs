@@ -4,6 +4,8 @@ import { JSDOM } from 'jsdom';
 import { fetch_mod_data, saveFile } from './fetch_utils.mjs';
 import parenthesis from 'parenthesis';
 
+// TODO rcp-fe-lol-champion-statistics
+// https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
 
 const DEBUG = false;
 
@@ -31,6 +33,8 @@ const keyword_to_player_stat = {
 const keyword_to_type = {
   maximum: "maximum",
   missing: "missing",
+  lost: "missing",
+  current: "current",
   total: "total",
   bonus: "bonus",
   base: "base",
@@ -40,12 +44,16 @@ function table_check(table, text, fallback) {
   return fallback;
 }
 
+const known_stats = ["base_hp", "bonus_hp", "maximum_hp", "missing_hp", "current_hp", "total_shield", "total_ap", "base_attackspeed", "bonus_attackspeed", "total_attackspeed", "base_ad", "bonus_ad", "total_ad", "base_mana", "bonus_mana", "total_mana", "base_movespeed", "bonus_movespeed", "total_movespeed", "base_armor", "bonus_armor", "total_armor", "base_mr", "bonus_mr", "total_mr", "base_attackrange", "bonus_attackrange", "total_attackrange", "base_hpregen", "bonus_hpregen", "total_hpregen", "base_manaregen", "bonus_manaregen", "total_manaregen", "base_critchance", "bonus_critchance", "total_critchance", "base_critdamage", "bonus_critdamage", "total_critdamage",];
 function ratio_to_player_stat(stat) {
-  if(!stat) return "base";
+  if (!stat) return "base";
   stat = stat.toLowerCase();
   const player_stat = table_check(keyword_to_player_stat, stat, "default");
   const type = table_check(keyword_to_type, stat, "total");
-  return `${type}_${player_stat}`;
+  let x = `${type}_${player_stat}`;
+
+  if (!(x in known_stats)) console.log("[WARN] Stat is not known", x, 'for', stat);
+  return x;
 }
 
 let realms = { v: "", l: "en_US", cdn: "https://ddragon.leagueoflegends.com/cdn" }
@@ -70,28 +78,31 @@ if (DEBUG) {
 }
 async function makeChampionList(ModuleChampionData) {
   let ChampionList = {};
+  let SkillList = {};
   let promises = []
   // const ChampionModule = await fetch_mod_data();
   for (const [champ, data] of Object.entries(ModuleChampionData)) {
-    ChampionList[champ] = { name: champ, image: null, maxtrank: 0 };
+    ChampionList[champ] = { name: champ, image: null };
     Object.assign(ChampionList[champ], data)
-    promises.push(fetch_live_wiki(champ).then(async (model) => {
+    promises.push(fetch_live_wiki_skills(champ).then(async (skills_model) => {
+      SkillList[champ] = skills_model;
       const riot = await fetch_ddragon(data.apiname);
-      Object.assign(ChampionList[champ], mergeModels(model, riot))
+      Object.assign(ChampionList[champ], mergeModels(skills_model, riot))
     }).catch(e => console.log(e)));
   }
   console.log("Awaiting all Promises");
   await Promise.all(promises);
   if (DEBUG) saveFile('./src/api/ChampionListComplete_DEBUG.json', ChampionList);
-  else saveFile('./src/api/ChampionListComplete.json', ChampionList);
+  else {
+    saveFile('./src/api/ChampionListSkills.json', SkillList)
+    saveFile('./src/api/ChampionList.json', ChampionList)
+  };
   console.log("Goodbye");
 }
 
-function mergeModels(model, riot) {
-  if (!riot) return model;
-  if (!model) return model;
+function mergeModels(skills, riot) {
+  if (!riot) return {};
 
-  model.image = riot.image;
   const data = {
     spell_images: {
       i: riot.passive.image || {},
@@ -108,16 +119,16 @@ function mergeModels(model, riot) {
       r: riot.spells[3].maxrank || 3,
     }
   }
-  for (const [skillkey, skill] of Object.entries(model.skills)) {
+  for (const [skillkey, skill] of Object.entries(skills.skills)) {
     // for skills like q1 q2
     let key = skillkey.charAt(0);
     skill.maxrank = data.spell_maxranks[key];
     skill.image = data.spell_images[key];
   }
-  return model;
+  return { image: riot.image };
 }
 
-function fetch_ddragon(champ_id) {
+async function fetch_ddragon(champ_id) {
   // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
   const url = `${realms.cdn}/${realms.v}/data/${realms.l}/champion/${champ_id}.json`;
   console.log('Fetching (ddragon)', url)
@@ -142,7 +153,7 @@ function arrOrNum(arr) {
  * @param {string} champ_name 
  * @returns string
  */
-export async function fetch_live_wiki(champ_name) {
+export async function fetch_live_wiki_skills(champ_name) {
   const url = `https://leagueoflegends.fandom.com/wiki/${champ_name.trim().replace(/ /g, '_')}/LoL`
   const response = await fetch(url);
   const dom = new JSDOM(await response.text())
@@ -173,7 +184,7 @@ export async function fetch_live_wiki(champ_name) {
 
     let header = div.querySelector('.champion-ability__header');
     skills[name].display_name = header.querySelector('h3').textContent;
-    skills[name].headerraw = header.textContent;
+    // skills[name].headerraw = header.textContent;
     let headvals = header.textContent.trim().split(/[\n\t]+/);
     headvals[0] = "header_name";
     for (let i = 0; i < headvals.length; i += 2) {
@@ -194,7 +205,7 @@ export async function fetch_live_wiki(champ_name) {
     // model.skill[name].notes = null; 
 
     skills[name].img = [...div.querySelectorAll('img')].map(x => x.outerHTML);
-    skills[name].desciption = [...div.querySelectorAll('p')].map(x => x.outerHTML);
+    skills[name].desciption = [...div.querySelectorAll('p')].map(x => x.innerHTML);
 
     skills[name].leveling = [...div.querySelectorAll('.skill_leveling')]
       .map(x => [x.querySelectorAll('dt'), x.querySelectorAll('dd')])
@@ -244,7 +255,7 @@ function makeRatioObj(root) {
   const is_text = typeof values === 'string';
   const apply = is_text ? 'text' : (per && per_100) ? 'per100' : per ? "per" : ispercent ? 'percent' : "flat";
   const user = apply === "flat" ? undefined : stat_raw.indexOf("target") > -1 ? "target" : "player";
-  
+
   let stat = ratio_to_player_stat(stat_raw);
   return { values, user, stat, apply, stat_raw: fulltext, sub_ratios: sub_ratios.length === 0 ? undefined : sub_ratios };
 }

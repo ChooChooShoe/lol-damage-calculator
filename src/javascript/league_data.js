@@ -6,52 +6,6 @@ export const version = versionJson.v;
 export const displayVersion = versionJson.dv;
 export const spriteBaseUri = `${cdn}/${version}/img/sprite/`;
 
-export function setupVue(championList, itemData) {
-    fetchChampionList().then((ret) => {
-        championList.value = ret;
-    });
-    return;
-    fetchStaticItems().then((data) => {
-        for (const key in data) {
-            //Pre-compute sprite image as spriteStyle.
-            const i = data[key].image;
-            data[key].spriteStyle = {
-                background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
-                width: `${i.w}px`,
-                height: `${i.h}px`,
-            };
-            data[key].spriteStyleSmall = {
-                background: `url("${spriteBaseUri}small_${i.sprite}") -${i.x * 0.75}px -${i.y * 0.75}px`,
-                width: `${i.w * 0.75}px`,
-                height: `${i.h * 0.75}px`,
-            };
-            data[key].spriteStyleTiny = {
-                background: `url("${spriteBaseUri}tiny_${i.sprite}") -${i.x * 0.5}px -${i.y * 0.5}px`,
-                width: `${i.w * 0.5}px`,
-                height: `${i.h * 0.5}px`,
-            };
-        }
-        itemData.value = data;
-    });
-}
-
-import ChampionListComplete from "./../api/ChampionListComplete.json";
-async function fetchChampionList() {
-    /// Get the latest version from /realms/na.json
-    // const response = await fetch("./api/ChampionList.json");
-    // const body = await response.json();
-    let championList = { None: { name: "  -- None --  ", id: "" } }
-    Object.assign(championList, ChampionListComplete);
-    return championList;
-}
-
-const singleChampFileCache = {};
-
-export async function fetchSingleChampFile(champId) {
-    if (champId in ChampionListComplete)
-        return ChampionListComplete[champId];
-    return null;
-}
 const known_event_items = ["3631", "3634", "3635", "3642", "3643", "3645", "3647", "3648",];
 
 async function fetchStaticItems() {
@@ -360,7 +314,7 @@ const keyword_to_type = {
 };
 function table_check(table, text, fallback) {
     for (const key in table) if (text.indexOf(key) > -1) return table[key];
-    console.log("Uknown rato",text,"defualting",fallback)
+    console.log("Uknown rato", text, "defualting", fallback)
     return fallback;
 }
 

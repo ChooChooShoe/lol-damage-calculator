@@ -7,10 +7,10 @@
         <SpellImage iconPath="/src/assets/icons/Attack_damage_icon.png"></SpellImage>
         <span class="ttam__toggletitle">AA</span>
       </div>
-      <div class="ttam__toggle" v-for="spell in activeChampionModel?.skills" :key="spell.skillkey">
+      <div class="ttam__toggle" v-for="spell of props.skills" :key="spell.name">
         <SpellImage :image="spell.image"></SpellImage>
-        <label class="ttam__toggletitle" :title="spell.name">
-          {{ spell.skillkey }}
+        <label class="ttam__toggletitle" :title="spell.display_name">
+          {{ spell.name }}
           <input class="hidden" type="checkbox" :value="true" />
         </label>
       </div>
@@ -24,12 +24,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ChampionSkills } from "../model/ChampObj";
 import SpellImage from "./SpellImage.vue";
+const props = defineProps<{ skills: ChampionSkills | undefined }>();
+console.log('SpellImage', JSON.stringify(props,null,4));
 
-import { ref, reactive, provide, computed, inject } from "vue";
-
-const activeChampionModel = inject("activeChampionModel");
 </script>
 
 <style>
@@ -41,12 +41,15 @@ const activeChampionModel = inject("activeChampionModel");
   width: 50px;
   height: 50px;
 }
+
 .ttam__toggle:hover {
   border-color: darkorange;
 }
+
 .ttam__toggle>input:checked {
   border-color: #5b2381;
 }
+
 .ttam__toggletitle {
   cursor: pointer;
   position: absolute;

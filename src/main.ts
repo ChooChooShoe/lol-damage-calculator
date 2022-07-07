@@ -1,15 +1,14 @@
-import * as Vue from 'vue/dist/vue.esm-bundler'
+import * as Vue from 'vue'
 import * as VueRouter from 'vue-router';
 // import Root from './Root.vue'
 import App from './App.vue';
-import CalcApp from './CalcApp.vue';
+const CalcApp = () => import('./CalcApp.vue');
+const NotFound = () => import('./NotFound.vue');
 const ItemBuilder = () => import("./itembuilder/ItemBuilder.vue");
 const DataView = () => import("./dataview/DataView.vue");
 import './index.css'
 import './wikistyles.css'
 import './icons.css'
-
-const NotFound = { template: '<div>404 Not Found: {{ $route.path }}</div><router-link to="/">Go to Home</router-link>' }
 
 const routes = [
   { path: '/', redirect: `/c/${localStorage.getItem('sv_champ_player')}/vs/${localStorage.getItem('sv_champ_target')}` },
