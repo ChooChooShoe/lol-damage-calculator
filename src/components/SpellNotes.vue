@@ -7,18 +7,14 @@
       <span class="blue" style="user-select: none;cursor: pointer;">[{{ isopen ? 'Hide' : 'Show'}}]</span>
     </label>
     <div class="collapsible-content" ref="content" :style="calcheight">
-      <match-replace :text="text"></match-replace>
+      <span v-html="text"></span>
     </div>
   </div>
 </template>
 
 <script>
-import MatchReplace from "./MatchReplace.vue";
 export default {
   name: "spell-notes",
-  components: {
-    MatchReplace
-  },
   props: ["spell", "id"],
   data: function() {
     return {

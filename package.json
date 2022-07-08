@@ -2,6 +2,7 @@
   "name": "choochooshoe.github.io",
   "private": true,
   "version": "0.4.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build --assetsDir bin",
@@ -12,32 +13,25 @@
     "data_fetch_validate": "node --experimental-modules ./buildtools/data_fetch_validate.mjs > ./buildtools/data_fetch_validate_results.log",
     "fetch_items": "node --experimental-modules ./buildtools/items_fetch.mjs > ./buildtools/items_fetch_results.log",
     "test_token": "node --experimental-modules ./buildtools/tokenizer.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "fetch_champions": "tsc --build ./dev && node ./build/dev/fetch_champions.js > ./dev/fetch_champions.log",
+    "build_items": "tsc --build ./dev && node ./build/dev/build_items.js > ./dev/build_items.log"
   },
   "dependencies": {
-    "numeral": "^2.0.6",
-    "vue": "^3.2.31",
-    "vue-router": "^4.0.16"
+    "vue": "^3.2.37",
+    "moo": "^0.5.1",
+    "vue-router": "^4.1.1"
   },
   "devDependencies": {
-    "lua2js": "0.0.11",
-    "luaparse": "^0.3.1",
-    "@types/json5": "^2.2.0",
     "@vitejs/plugin-vue": "^2.3.3",
-    "@vue/compiler-sfc": "^3.2.31",
-    "cheerio": "^1.0.0-rc.11",
-    "he": "^1.2.0",
-    "jest": "^28.1.0",
+    "@vue/compiler-sfc": "3.2.37",
+    "@types/jsdom": "^16.2.14",
     "jsdom": "^20.0.0",
     "json5": "^2.2.1",
-    "moo": "^0.5.1",
-    "node-fetch": "^3.2.5",
+    "node-fetch": "^3.2.6",
     "parenthesis": "^3.1.8",
     "typescript": "^4.7.4",
-    "vite": "^2.9.9",
-    "vue-tsc": "^0.34.7"
-  },
-  "jest": {
-    "transform": {}
+    "vite": "^2.9.13",
+    "vue-tsc": "^0.38.3"
   }
 }

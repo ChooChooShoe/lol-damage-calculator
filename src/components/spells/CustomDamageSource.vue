@@ -34,18 +34,15 @@
 </template>
 
 <script>
-// import MatchReplace from './MatchReplace.vue';
 import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from './SimpleTooltip.vue';
 // import SpellNotes from './SpellNotes.vue';
 // import SpellSpan from './SpellSpan.vue';
-// import {quickMatchReplace} from '../javascript/matchreplace';
 // import { spriteBaseUri } from '../javascript/league_data';
 
 export default {
   name: "CustomDamageSource",
   components: {
-    // MatchReplace,
     SpellEffects,
     // SimpleTooltip,
     // SpellNotes,

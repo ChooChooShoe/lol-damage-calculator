@@ -71,12 +71,10 @@
 <script setup lang="ts">
 import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
 import SpellImage from "../../timeline/SpellImage.vue";
-import MatchReplace from ".././MatchReplace.vue";
 import SpellEffects from "./SpellEffects.vue";
 // import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
-// import { quickMatchReplace } from "../../javascript/matchreplace";
 import { spriteBaseUri } from "../../javascript/league_data";
 import DropdownSelect from "../simple/DropdownSelect.vue";
 import { SkillJson } from "../../model/ChampObj";

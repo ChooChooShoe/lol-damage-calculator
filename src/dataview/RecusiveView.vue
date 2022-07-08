@@ -14,7 +14,7 @@
       <RecusiveView :val="v"></RecusiveView>
       }
     </p>
-    <p v-else-if="(k && k.indexOf && k.indexOf('Html') != -1 )|| (v && v.indexOf && v.indexOf('<') === 0)">
+    <p v-else-if="(k && k.indexOf && k.indexOf('Html') != -1 )|| (v && v.indexOf && v.indexOf('<') >= 0)">
       <span class="key">{{ k }}:</span> <span class="val html-val" v-html="v"></span>
     </p>
     <p v-else>

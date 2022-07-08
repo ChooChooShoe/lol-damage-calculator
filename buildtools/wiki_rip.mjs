@@ -82,6 +82,8 @@ async function makeChampionList(ModuleChampionData) {
   let promises = []
   // const ChampionModule = await fetch_mod_data();
   for (const [champ, data] of Object.entries(ModuleChampionData)) {
+    if (data.date === 'Upcoming') continue;
+
     ChampionList[champ] = { name: champ, image: null };
     Object.assign(ChampionList[champ], data)
     promises.push(fetch_live_wiki_skills(champ).then(async (skills_model) => {
@@ -141,6 +143,7 @@ async function fetch_ddragon(champ_id) {
 }
 
 function levelingToArray(leveling) {
+  if (!leveling) return [];
   return leveling.split('/').map(x => Number(x.trim()) || x.trim());
 }
 function arrOrNum(arr) {
@@ -158,40 +161,45 @@ export async function fetch_live_wiki_skills(champ_name) {
   const response = await fetch(url);
   const dom = new JSDOM(await response.text())
   const document = dom.window.document;
+  //[...document.querySelectorAll('.tabber')[1].children].slice(2)[1].querySelectorAll('aside')
 
-  let all_skills_div = ['i', 'q', 'w', 'e', 'r'].flatMap(key => {
-    const div = document.querySelector(`.skill_${key === 'i' ? 'innate' : key}`);
-    if (!div) {
-      console.log("skill missing div for", champ_name, key);
-      return [];
-    }
-    const infobox = div.nextElementSibling.nextElementSibling.querySelectorAll('.portable-infobox');
+  const skill_name_counts = {};
+
+  let all_skills_div = [...document.querySelectorAll(`.skill`)].flatMap(div => {
+    const skill_name = div.className.replaceAll(/skill/g, '').replaceAll(/[_\s]/g, '')
+    const infoTabs = [...div.nextElementSibling.nextElementSibling.querySelector('.tabber').children].slice(2);
     const subs = div.querySelectorAll('.ability-info-container');
+    const header_aside = div.querySelectorAll('aside');
 
-    if (subs.length > infobox.length)
-      console.log("[WARN] Spell", champ_name, key, "has uneven divs and infoboxes lengths", subs.length, infobox.length)
+    if (subs.length > infoTabs.length)
+      console.log("[WARN] Spell", champ_name, div, "has uneven divs and infoboxes lengths", subs.length, infoTabs.length)
 
     return Object.entries(subs).map(([idx, subspell]) => {
-      // if no sub skills. name is just key
-      const name = subs.length === 1 ? key : `${key}${+idx + 1}`
-      return { name, div: subspell, infobox: infobox[idx] }
+      let skill_idx = 1;
+      if (skill_name in skill_name_counts) {
+        skill_name_counts[skill_name]++;
+        skill_idx = skill_name_counts[skill_name];
+      } else {
+        skill_name_counts[skill_name] = 1;
+      }
+      return { skill_name, skill_idx, div: subspell, header_aside: header_aside.item(idx), infobox: infoTabs[idx].querySelector('aside') }
     });
   });
   let skills = {};
-  for (const { name, div, infobox } of all_skills_div) {
+  for (const { skill_name, skill_idx, div, header_aside, infobox } of all_skills_div) {
     if (!div) continue;
-    skills[name] = { name };
+    // Rename first name if multiple
+    const name = skill_name_counts[skill_name] > 1 ? `${skill_name}${skill_idx}` : skill_name;
+    skills[name] = {};
 
     let header = div.querySelector('.champion-ability__header');
     skills[name].display_name = header.querySelector('h3').textContent;
-    // skills[name].headerraw = header.textContent;
-    let headvals = header.textContent.trim().split(/[\n\t]+/);
-    headvals[0] = "header_name";
-    for (let i = 0; i < headvals.length; i += 2) {
-      let key = headvals[i + 0].replace(' ', '_').replace(':', '').toLowerCase();
-      skills[name][key] = arrOrNum(levelingToArray(headvals[i + 1]));
-    }
 
+    for (const child of header_aside.children) {
+      let z = child.getAttribute('data-source');
+      let key = z.replaceAll(/ /g, '_');
+      skills[name][key] = arrOrNum(levelingToArray(child.querySelector('div')));
+    }
     // Not found on page _Data required.
     // model.skill[name].cooldown_tooltip = null; 
     skills[name].targeting = infobox?.querySelector(`div[data-source="targeting"]`)?.querySelector(`a`)?.textContent;
@@ -204,7 +212,10 @@ export async function fetch_live_wiki_skills(champ_name) {
     skills[name].knockdown = infobox?.querySelector(`div[data-source="knockdown"]`)?.textContent;
     // model.skill[name].notes = null; 
 
-    skills[name].img = [...div.querySelectorAll('img')].map(x => x.outerHTML);
+    skills[name].img = [...div.querySelectorAll('img')].map(x => x.outerHTML).map((s) => {
+      if (s.includes('/revision')) return s.split('/revision')[0];
+      return s;
+    });
     skills[name].desciption = [...div.querySelectorAll('p')].map(x => x.innerHTML);
 
     skills[name].leveling = [...div.querySelectorAll('.skill_leveling')]
