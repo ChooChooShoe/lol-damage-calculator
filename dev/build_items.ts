@@ -1,23 +1,27 @@
-import { fetchAndSaveRealms, saveFile } from "./fetch_utils.js";
+import { fetchAndSaveRealms, fetch_wiki, saveFile, wiki_Module_to_JSON } from "./fetch_utils.js";
 import fs from 'fs/promises';
 import { Image } from "../src/api/DataTypes.js";
+import fetch from "node-fetch";
 
 const USE_FIXED_REALMS = true;
 const ITEMS_TO_ITEM_ARRAYS = false;
 const ITEMS_MISSMATCH_TEST = false;
+const DEBUG = true;
+
 console.log('Building data for items.json');
 let spriteBaseUri = "null";
 main();
 async function main() {
 
-    //const cd_url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json"
-    //console.log("Fetching (CommunityDragon):", cd_url);
-    //const bodyCDragon = fetch(cd_url).then(response => response.json());
-    // const wikiBody = fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`);
+    const cd_url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json"
+    console.log("Fetching (CommunityDragon):", cd_url);
+    const bodyCDragon = fetch(cd_url).then(response => response.json());
+    const wikiBody = fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`).then(x => wiki_Module_to_JSON(x.text));
 
+    if (DEBUG) await saveFile("./.debug/Module_ItemData.json", await wikiBody);
 
-    const bodyCDragon = fs.readFile('./src/api/items/cdragonItems.json').then(x => JSON.parse(x.toString()));
-    const wikiBody = fs.readFile('./src/api/items/wikiItems.json').then(x => JSON.parse(x.toString()));
+    // const bodyCDragon = fs.readFile('./src/api/items/cdragonItems.json').then(x => JSON.parse(x.toString()));
+    // const wikiBody = fs.readFile('./src/api/items/wikiItems.json').then(x => JSON.parse(x.toString()));
 
 
 
@@ -32,11 +36,11 @@ async function main() {
     spriteBaseUri = `${realms.cdn}/${realms.v}/img/sprite/`;
     const dd_url = `${realms.cdn}/${realms.v}/data/${realms.l}/item.json`;
     console.log("Fetching (DataDragon): %s", dd_url);
-    // const bodyDDragon = fetch(dd_url).then(response => response.json());
-    const bodyDDragon = fs.readFile('./src/api/items/riotJson.json').then(x => JSON.parse(x.toString()));
+    const bodyDDragon = fetch(dd_url).then(response => response.json());
+    // const bodyDDragon = fs.readFile('./src/api/items/riotJson.json').then(x => JSON.parse(x.toString()));
 
 
-    const model = await onItemsJsonResponse(await bodyDDragon, await bodyCDragon, await wikiBody);
+    const model = await onItemsJsonResponse(await bodyDDragon as { data: { [x: string]: RiotItemEntry; }; }, await bodyCDragon as ArrayLike<CDragonItemEntry>, await wikiBody);
 
     await saveFile('./src/api/items/items.json', model)
     console.log("Goodbye");
@@ -63,7 +67,8 @@ async function main() {
     // console.log("Awaiting all Promises");
     // await Promise.all(promises);
 
-} async function onItemsJsonResponse(riotJson: { data: { [x: string]: RiotItemEntry; } }, cdragonItems: ArrayLike<CDragonItemEntry>, wikiItems: { [s: string]: WikiItemEntry; }) {
+} 
+async function onItemsJsonResponse(riotJson: { data: { [x: string]: RiotItemEntry; } }, cdragonItems: ArrayLike<CDragonItemEntry>, wikiItems: { [s: string]: WikiItemEntry; }) {
     const riotItems = riotJson.data;
     console.log("Length of riotItems", Object.keys(riotItems).length, " vs ", cdragonItems.length, " vs ", Object.keys(wikiItems).length);
 
@@ -94,7 +99,7 @@ async function main() {
     // Lookup values for wiki data. Fix for "=>OrnnItem" entries
     function lookup_crawl(entry: { [x: string]: any; }, root: { [x: string]: any; }, tree: string[]): void {
         for (const [key, val] of Object.entries(entry)) {
-            if (typeof val === 'string' && val.startsWith('=>')) {
+            if (typeof val === 'string' && (val.startsWith('=>') || val.startsWith(':>'))) {
                 let lookup = root[val.slice(2)];
                 for (const branch of tree) lookup = lookup[branch];
 
@@ -475,8 +480,8 @@ interface WikiItemEntry {
     };
     effects?: {
         act?: WikiItemEffect;
+        act2?: WikiItemEffect;
         aura?: WikiItemEffect;
-        aura2?: WikiItemEffect;
         consume?: WikiItemEffect;
         mythic?: WikiItemEffect | string;
         pass?: WikiItemEffect;
@@ -527,6 +532,7 @@ interface WikiItemEntry {
         msflat?: number; // (5) [45, 25, 60, 115, '=>Boots']
         omnivamp?: number; // (5) [12, 7, 8, 5, 10]
         spec?: string; // "+25% <a href='https://leagueoflegends.fandom.com/wiki/slow resist' class='wiki__link'>slow resist</a>"
+        spec2?: string;
     };
     recipe: string[];
     buy: number;

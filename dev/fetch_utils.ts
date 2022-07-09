@@ -54,12 +54,10 @@ export async function fetch_wiki(url: RequestInfo) {
     return { text: "", response }
 }
 
-export async function fetch_Module_ChampionData(): Promise<{ [key: string]: WikiModuleChamptionData }> {
-    const raw = await fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`);
-
+export async function wiki_Module_to_JSON(text: string): Promise<any> {
     // Converts Lua data to json data.
     let results: string[] = [];
-    for (let line of raw.text.split('\n')) {
+    for (let line of text.split('\n')) {
         const tline = line.trim();
         if (tline === '' || tline.startsWith('--'))
             continue;
@@ -83,7 +81,13 @@ export async function fetch_Module_ChampionData(): Promise<{ [key: string]: Wiki
         );
     }
     // return parsed JSON as a javascript object.
-    let x = JSON5.parse(results.join(''));
+    return JSON5.parse(results.join(''))
+}
+
+export async function fetch_Module_ChampionData(): Promise<{ [key: string]: WikiModuleChamptionData }> {
+    const raw = await fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`);
+
+    let x = wiki_Module_to_JSON(raw.text);
     if (DEBUG) await saveFile("./.debug/Module_ChampionData.json", x);
     return x;
 }
