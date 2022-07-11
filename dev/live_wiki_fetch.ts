@@ -80,39 +80,6 @@ export interface NeededRiotValues {
   spells: { image: Image; maxrank: number; }[];
 }
 
-export function mergeModels(skills_model: ChampionListSkills, riot: NeededRiotValues): { image: Image; } {
-
-  // Default Image so all champs have one.
-  if (!riot) return { image: { full: "Aatrox.png", sprite: "champion0.png", group: "champion", x: 0, y: 0, w: 48, h: 48 } }
-
-  const data = {
-    spell_images: {
-      i: riot.passive.image || {},
-      q: riot.spells[0].image || {},
-      w: riot.spells[1].image || {},
-      e: riot.spells[2].image || {},
-      r: riot.spells[3].image || {},
-    },
-    spell_maxranks: {
-      i: undefined,
-      q: riot.spells[0].maxrank || 5,
-      w: riot.spells[1].maxrank || 5,
-      e: riot.spells[2].maxrank || 5,
-      r: riot.spells[3].maxrank || 3,
-    }
-  }
-  for (const [skillkey, skill] of Object.entries(skills_model.skills)) {
-    // for skills like q1 q2 and innate
-    let key = skillkey.charAt(0).toLocaleLowerCase();
-    const wiki_maxrank = Array.isArray(skill.leveling[0]?.values) ? skill.leveling[0].values.length : undefined;
-    if (wiki_maxrank !== data.spell_maxranks[key] && key !== 'i')
-      console.log('[WARN] Spell maxrank missmatch wikis', wiki_maxrank, 'not the same as riots', data.spell_maxranks[key]);
-    skill.maxrank = data.spell_maxranks[key];
-    skill.image = data.spell_images[key];
-  }
-  return { image: riot.image };
-}
-
 export async function fetch_ddragon(realms: { cdn: string; v: string; l: string; }, champ_id: string): Promise<{ [s: string]: any }> {
   // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
   const url = `${realms.cdn}/${realms.v}/data/${realms.l}/champion/${champ_id}.json`;
@@ -154,7 +121,7 @@ const known_skill_names = {
  * @param {string} champ_name 
  * @returns string
  */
-export async function fetch_live_wiki_skills(champ_name: string): Promise<ChampionListSkills> {
+export async function fetch_live_wiki_skills(champ_name: string, riot: NeededRiotValues): Promise<ChampionListSkills> {
   const url = `https://leagueoflegends.fandom.com/wiki/${champ_name.trim().replace(/ /g, '_')}/LoL`
   const response = await fetch(url);
   const dom = new JSDOM(await response.text())
@@ -193,11 +160,30 @@ export async function fetch_live_wiki_skills(champ_name: string): Promise<Champi
     });
   }).flat(1);
   let skills: { [key: string]: SkillModel } = {};
+
+
+  const riot_data = {
+    spell_images: {
+      i: riot.passive.image || {},
+      q: riot.spells[0].image || {},
+      w: riot.spells[1].image || {},
+      e: riot.spells[2].image || {},
+      r: riot.spells[3].image || {},
+    },
+    spell_maxranks: {
+      i: undefined,
+      q: riot.spells[0].maxrank || 5,
+      w: riot.spells[1].maxrank || 5,
+      e: riot.spells[2].maxrank || 5,
+      r: riot.spells[3].maxrank || 3,
+    }
+  }
+
   for (const { skill_name, skill_idx, main_div, header_aside, infobox } of all_skills_div) {
     if (!main_div) continue;
     // Rename first name if multiple
     const name = skill_name_counts[skill_name] > 1 ? `${skill_name}${skill_idx}` : skill_name;
-    skills[name] = new SkillObj(name, main_div, header_aside, infobox);
+    skills[name] = new SkillObj(name, main_div, header_aside, infobox, riot_data);
   }
   return { skills };
 }
@@ -220,8 +206,25 @@ class SkillObj {
   desciption: string[];
   leveling: RootRatio[];
 
-  constructor(name: string, main_div: Element, header_aside: Element, infobox: Element) {
+  constructor(name: string, main_div: Element, header_aside: Element, infobox: Element, riot: {
+    spell_images: {
+      i: Image;
+      q: Image;
+      w: Image;
+      e: Image;
+      r: Image;
+    };
+    spell_maxranks: {
+      i: undefined;
+      q: number;
+      w: number;
+      e: number;
+      r: number;
+    };
+  }) {
     this.name = name;
+    this.maxrank = riot.spell_maxranks[name.charAt(0).toLocaleLowerCase()];
+    this.image = riot.spell_images[name.charAt(0).toLocaleLowerCase()];
     let header = main_div.querySelector('.champion-ability__header');
     this.display_name = header?.querySelector('h3')?.textContent || "";
 
@@ -295,6 +298,6 @@ function makeRatioObj(root: parenthesis.ArrayTree): SubRatio {
 
   let stat = ratio_to_player_stat(stat_raw);
   console.log(`[INFO] Stat line ${fulltext} became { ${values}, ${user}, ${stat}, ${apply}, sub_ratios[${sub_ratios.length}] }`);
-  
+
   return { values, user, stat, apply, stat_raw: fulltext, sub_ratios: sub_ratios.length === 0 ? undefined : sub_ratios };
 }

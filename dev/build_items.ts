@@ -18,7 +18,6 @@ async function main() {
     const bodyCDragon = fetch(cd_url).then(response => response.json());
     const wikiBody = fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`).then(x => wiki_Module_to_JSON(x.text));
 
-    if (DEBUG) await saveFile("./.debug/Module_ItemData.json", await wikiBody);
 
     // const bodyCDragon = fs.readFile('./src/api/items/cdragonItems.json').then(x => JSON.parse(x.toString()));
     // const wikiBody = fs.readFile('./src/api/items/wikiItems.json').then(x => JSON.parse(x.toString()));
@@ -44,30 +43,7 @@ async function main() {
 
     await saveFile('./src/api/items/items.json', model)
     console.log("Goodbye");
-
-    // const ModuleChampionDataFile = fetch_Module_ChampionData();
-
-    // makeChampionList(ModuleChampionData);
-
-    // let ItemsRootObj = {};
-    // let SkillList = {};
-    // let promises: Array<Promise<void>> = []
-    // // const ChampionModule = await fetch_mod_data();
-    // for (const [champ, champlist_model] of Object.entries(await ModuleChampionDataFile)) {
-    //     if (champlist_model.date === 'Upcoming') continue;
-
-    //     ItemsRootObj[champ] = { name: champ, image: null };
-    //     Object.assign(ItemsRootObj[champ], champlist_model)
-    //     promises.push(fetch_live_wiki_skills(champ).then(async (live_model) => {
-    //         SkillList[champ] = live_model;
-    //         const riot = await fetch_ddragon(await realms, champlist_model.apiname);
-    //         Object.assign(ItemsRootObj[champ], mergeModels(live_model, riot as NeededRiotValues))
-    //     }).catch(e => console.log(e)));
-    // }
-    // console.log("Awaiting all Promises");
-    // await Promise.all(promises);
-
-} 
+}
 async function onItemsJsonResponse(riotJson: { data: { [x: string]: RiotItemEntry; } }, cdragonItems: ArrayLike<CDragonItemEntry>, wikiItems: { [s: string]: WikiItemEntry; }) {
     const riotItems = riotJson.data;
     console.log("Length of riotItems", Object.keys(riotItems).length, " vs ", cdragonItems.length, " vs ", Object.keys(wikiItems).length);
@@ -195,6 +171,17 @@ async function onItemsJsonResponse(riotJson: { data: { [x: string]: RiotItemEntr
         lookup_crawl(wikiItem, wikiItems, []);
         allItems[wikiItem.id] = takeRiftItem(item_obj, riotItem, wikiItem);
     }
+    
+    if (DEBUG) {
+
+        const xxx:any = [];
+        for (const [key, value] of Object.entries(wikiItems)) {
+            value.effects = undefined;
+            xxx.push(Object.assign({name:key}, value))
+        }
+        await saveFile("./.debug/Module_ItemData.json", xxx);
+    }
+
     return allItems
 
 }

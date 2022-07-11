@@ -2,12 +2,10 @@ import * as fs from 'fs';
 import fetch, { RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
-import { WikiModuleChamptionData } from '../src/api/DataTypes';
 
 const DEBUG = false;
 
 if (DEBUG) {
-    fs.rmSync('./.debug/', { recursive: true, force: true });
     mkdir(`./.debug/`);
     fetch_Module_ChampionData();
 }
@@ -84,11 +82,14 @@ export async function wiki_Module_to_JSON(text: string): Promise<any> {
     return JSON5.parse(results.join(''))
 }
 
-export async function fetch_Module_ChampionData(): Promise<{ [key: string]: WikiModuleChamptionData }> {
+export async function fetch_Module_ChampionData(): Promise<{ [key: string]: any }> {
     const raw = await fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`);
 
     let x = wiki_Module_to_JSON(raw.text);
-    if (DEBUG) await saveFile("./.debug/Module_ChampionData.json", x);
+    
+    if (DEBUG) {
+        await saveFile("./.debug/Module_ChampionData.json", await x)
+    };
     return x;
 }
 
