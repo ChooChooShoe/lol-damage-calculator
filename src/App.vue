@@ -43,7 +43,7 @@ function loadLocalConfig() {
 
 const globalToolTips = ref({});
 const config = ref(loadLocalConfig());
-const appVersion = "4.0";
+const appVersion = "4.01";
 </script>
 
 <style>
