@@ -19,10 +19,11 @@
 
 <script setup lang="ts">
 import { inject } from "vue";
+import { SubRatio } from "../../api/DataTypes";
 import NumInput from "../simple/NumInput.vue";
-import { RatioObj, RatioObjComputed, stat_to_display } from "./ratios_info";
+import { RatioObjComputed, stat_to_display } from "./ratios_info";
 
-const { val } = defineProps<{ val: RatioObj & RatioObjComputed }>()
-const data = stat_to_display[val.stat];
+const { val } = defineProps<{ val: SubRatio & RatioObjComputed }>()
+const data = stat_to_display[val.stat] || {};
 const rootspell = inject("rootspell");
 </script>

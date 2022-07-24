@@ -1,35 +1,39 @@
 <template>
-  <span :class="data.color">{{ recursive ? ' (+' : '' }}
-    <SpellSpan :class="data.color" :list="values"></SpellSpan>{{ applyDisplay }}
-    <RecursiveRatioDisplay :recursive="true" :display="display" :val="v" :key="k" v-for="(v, k) in val.sub_calcs"> </RecursiveRatioDisplay>{{ val.user === 'target' && display == 'value' ? "of target's " : ''
-    }}<span v-if="data.html && display == 'value'" v-html="data.html"></span>{{
-    recursive ? ')' : ''
-}}
+  <span :class="data.color" :title="val.stat || 'base'">
+    {{ recursive ? '(+' : '' }}
+    <SpellSpan :class="data.color" :list="values"></SpellSpan>{{ dispPre }}
+    <RecursiveRatioDisplay :recursive="true" :display="display" :val="v" :key="k" v-for="(v, k) in val.sub_calcs">
+    </RecursiveRatioDisplay>
+    {{ dispPost }}
+    <!-- <span v-if="data.html && display == 'value'" v-html="data.html"></span> -->
+    {{ recursive ? ') ' : '' }}
   </span>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, inject } from 'vue'
-import { stat_to_display, default_spell_ratios, RatioObj, RatioObjComputed } from './ratios_info';
+import { stat_to_display, default_spell_ratios, RatioObjComputed } from './ratios_info';
 import SpellSpan from '../SpellSpan.vue';
+import { SubRatio } from '../../api/DataTypes';
 
-const { val, recursive, display } = defineProps<{ val: RatioObj&RatioObjComputed, recursive?: boolean | undefined, display: string }>()
+const props = defineProps<{ val: SubRatio & RatioObjComputed, recursive?: boolean | undefined, display: string }>()
 
-const applyDisplay = computed(() => {
-  if (display !== 'value') return '';
-  switch (val.apply) {
-    case 'percent': return '%'
-    case 'per': return '% per'
-    case 'per100': return '% per 100'
-  }
+const dispPre = computed(() => {
+  if (props.display !== 'value') return '';
+  return props.val.units.slice(0,1);
 });
-const data = computed(() => stat_to_display[val.stat] || default_spell_ratios);
+const dispPost = computed(() => {
+  if (props.display !== 'value') return '';
+  return props.val.units.slice(1);
+  // return props.val.units.slice(1).replace('bonus', '<i>bonus</i>');
+});
+const data = computed(() => stat_to_display[props.val.stat || 'base'] || default_spell_ratios);
 
 const values = computed(() => {
-  switch (display) {
-    case 'value': return val.values;
-    case 'dmg_premitigation': return Math.round(val.damagePostValue);
-    case 'dmg_postmitigation': return Math.round(val.damagePostValue);
+  switch (props.display) {
+    case 'value': return props.val.values;
+    case 'dmg_premitigation': return Math.round(props.val.damagePostValue);
+    case 'dmg_postmitigation': return Math.round(props.val.damagePostValue);
     default: return 0;
   }
 });

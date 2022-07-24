@@ -49,14 +49,47 @@ export interface RootRatio extends SubRatio {
   raw: string;
 }
 export interface SubRatio {
-  values: ScaleValue
-  user: 'player' | 'target' | 'none';
+  values: RatioValue;
+  units: string;
   stat: string;
-  apply: 'text' | 'per100' | "per" | 'percent' | "flat",
-  stat_raw: string;
+  user: "none" | "player" | "target";
+  apply: "based_on_level" | "flat" | "percent" | "stat";
+  fulltext: string;
   sub_ratios?: SubRatio[];
 }
-export type ScaleValue = string | number | (string | number)[];
+export type RatioValue = number | number[];
+export type ScaleValue = number | (number | string)[] | string;
+
+export enum RatioUnits {
+  Ad = "AD",
+  Ap = "AP",
+  Armor = "armor",
+  BonusHealth = "bonus health",
+  Bonusad = "bonus AD",
+  ChunksOfIce = "chunks of ice",
+  Empty = "",
+  MaximumHealth = "maximum health",
+  MissingHealth = "missing health",
+  OfDamageDealt = "of damage dealt",
+  OfDamageTaken = "of damage taken",
+  OfHisMaximumHealth = "of his maximum health",
+  OfMaximumHealth = "of maximum health",
+  OfMissingHealth = "of missing health",
+  OfMissingMana = "of missing mana",
+  OfTargetSArmor = "of target's armor",
+  OfTargetSCurrentHealth = "of target's current health",
+  OfTargetSMaximumHealth = "of target's maximum health",
+  OfTargetSMissingHealth = "of target's missing health",
+  OfTaricSArmor = "of Taric's armor",
+  OfTheTargetSMaximumHealth = "of the target's maximum health",
+  OfTurretSMaximumHealth = "of turret's maximum health",
+  PerSoulCollected = "per  Soul collected",
+  Soldiers = "soldiers",
+  Units = "×",
+  UnitsUnits = "units",
+  X23 = "x23",
+}
+
 
 export interface WikiModuleChamptionData {
   // 1  : string        // champion name (must be unique)

@@ -1,4 +1,5 @@
 import { ComputedRef } from "vue";
+import { SubRatio } from "../../api/DataTypes";
 
 export const
     default_spell_ratios: RatioData = { prefex: 'Default', color: "ap", sufex: "Default", html: "Default" };
@@ -26,7 +27,7 @@ export const stat_to_display: { [key: string]: RatioData } = {
     total_hp: { html: 'health', color: "hp" },
     maximum_hp: { html: 'maximum health', color: "hp" },
     bonus_hp: { html: '<i>bonus</i> health', color: "hp" },
-    base_hp: { html: '<b>base</ib> health', color: "hp" },
+    base_hp: { html: '<b>base</b> health', color: "hp" },
     missing_hp: { html: '<i>missing</i> health', color: "hp" },
     current_hp: { html: '<b>current</ib> health', color: "hp" },
     total_mana: { html: "Mana", color: "mana" },
@@ -57,26 +58,11 @@ let x = {
     target_total_ap: { user: 'target', stat: 'total_ap', prefex: '', color: "true", sufex: "Total ???", html: "<b>total</b> ???" },
 };
 
-
-export interface RatioRootObj extends RatioObj {
-    name: string,
-    raw: string,
-}
-
 export interface RatioObjComputed {
     damageValue: ComputedRef<number>,
     damagePreValue: ComputedRef<number>,
     damagePostValue: ComputedRef<number>,
     damagePreTotal: ComputedRef<number>,
     damagePostTotal: ComputedRef<number>,
-    sub_calcs: Array<RatioObj & RatioObjComputed>
-}
-
-export interface RatioObj {
-    values: Array<number> | number,
-    user: string,
-    stat: string,
-    apply: string,
-    stat_raw?: string,
-    sub_ratios?: Array<RatioObj>
+    sub_calcs: Array<SubRatio & RatioObjComputed>
 }

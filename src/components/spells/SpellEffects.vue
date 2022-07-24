@@ -106,7 +106,8 @@ import EditBtn from "../simple/EditBtn.vue";
 import { computed, inject, onMounted, onUnmounted, provide, reactive, Ref, ref, toRefs, watchEffect } from "vue";
 import NumInput from "../simple/NumInput.vue";
 import RecursiveRatioDisplay from "./RecursiveRatioDisplay.vue";
-import { RatioObj, RatioObjComputed, RatioRootObj, stat_to_display } from "./ratios_info";
+import { RatioObjComputed, stat_to_display } from "./ratios_info";
+import { RootRatio, SubRatio } from "../../api/DataTypes";
 
 const CORE_RATIOS = [
   "player_total_ap",
@@ -127,7 +128,7 @@ const CORE_RATIOS = [
 ];
 
 const { effect, effectindex, pkey, custom } = defineProps<{
-  effect: RatioRootObj,
+  effect: RootRatio,
   effectindex: number,
   pkey: string,
   custom: boolean,
@@ -159,24 +160,24 @@ watchEffect(() => {
 
 
 
-function makeRatio(val: RatioObj): RatioObj & RatioObjComputed {
+function makeRatio(val: SubRatio): SubRatio & RatioObjComputed {
   const damageValue = computed(() => Array.isArray(val.values) ? val.values[rootspell?.value?.rankindex || 0] : val.values);
   const damagePreValue = computed((): number => {
     let value = damageValue.value;
     if (val.apply === 'percent')
       value = value / 100;
 
-    if (val.stat === 'base')
+    if (val.apply === 'flat' || val.user === 'none')
       return value;
-    let statValue = rootData[val.user][val.stat];
+    let statValue = rootData[val.user][val.units];
     if (isNaN(statValue)) {
-      console.warn(`Stat ${val.stat} for ratio ${val} missing for ${rootData.player}`);
+      console.warn(`Stat ${val.units} for ratio ${val} missing for ${rootData.player}`);
       statValue = 0;
     }
     return statValue * value;
   });
   const damagePostValue = computed(() => calc_dmg_onhit(rootData.player, rootData.target, damagePreValue.value, damage_type.value))
-  const sub_calcs: Array<RatioObj & RatioObjComputed> = [];
+  const sub_calcs: Array<SubRatio & RatioObjComputed> = [];
   if (val.sub_ratios) {
     for (let r of val.sub_ratios) {
       sub_calcs.push(makeRatio(r));
@@ -218,8 +219,9 @@ function addRatio(x: string) {
     values: 1,
     user: 'player',
     stat: x,
+    units: x,
     apply: 'percent',
-    stat_raw: 'CUSTOM'
+    fulltext: 'CUSTOM'
   });
   ratios.sub_ratios?.push(made);
   ratios.sub_calcs.push(made);

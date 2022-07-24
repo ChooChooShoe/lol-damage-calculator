@@ -217,13 +217,13 @@ function statsGen(): string {
     return s.join('\n')
 }
 
-export interface FullChampJson {
-    skills: ChampionSkills,
-}
+// export interface FullChampJson {
+//     skills: ChampionSkills,
+// }
 
-export interface ChampionSkills {
-    [key: string]: SkillJson,
-}
+// export interface ChampionSkills {
+//     [key: string]: SkillJson,
+// }
 
 export interface Image {
     full: string;
@@ -235,75 +235,66 @@ export interface Image {
     h: number;
 }
 
+// export interface Leveling {
+//     name: string;
+//     raw: string;
+//     values: number | number[];
+//     stat: string;
+//     apply: string;
+//     stat_raw: string;
+//     sub_ratios: SubRatio[];
+// }
 
-export interface SubRatio {
-    values: number | number[];
-    user: string;
-    stat: string;
-    apply: string;
-    stat_raw: string;
-}
-
-export interface Leveling {
-    name: string;
-    raw: string;
-    values: number | number[];
-    stat: string;
-    apply: string;
-    stat_raw: string;
-    sub_ratios: SubRatio[];
-}
-
-export interface SkillJson {
-    name: string;
-    display_name: string;
-    header_name: string;
-    targeting: string;
-    damagetype: string;
-    spelleffects?: string;
-    projectile?: string;
-    img: string[];
-    desciption: string[];
-    leveling: Leveling[];
-    image: Image;
-    maxrank: number;
-    [key: string]: any,
-}
-export interface SkillJsonExt extends SkillJson {
-    effect_radius: number | number[];
-    range: number[] | number | string;
-    width: number;
-    cast_time: number;
-    cost: string;
-    cooldown: number[];
-    spellshield: string;
-    target_range: number;
-    collision_radius: number;
-    speed: number;
-    static_cooldown: any[];
-    recharge: number;
-    grounded: string;
-    knockdown: string;
-    angle: string;
-    outer_limit: number;
-    pillar_radius: number;
-    inner_radius: number;
-    target_immunity: number;
-    sight_reduction: number;
-    tether_radius: string;
-    detection_radius: number;
-    barrage_cooldown: number;
-    // "static_ball's sight": number[];
-    impassable_perimeter: string;
-    // on-terrain_cooldown: number[];
-    leash_range: number[];
-    // per-leg_cooldown: any[];
-    disable_time: number;
-    side_length: number;
-    // on-target_cooldown: string;
-    size_radius: string;
-    // per-direction_cooldown: number[];
-}
+// export interface SkillJson {
+//     name: string;
+//     display_name: string;
+//     header_name: string;
+//     targeting: string;
+//     damagetype: string;
+//     spelleffects?: string;
+//     projectile?: string;
+//     img: string[];
+//     desciption: string[];
+//     leveling: Leveling[];
+//     image: Image;
+//     maxrank: number;
+//     [key: string]: any,
+// }
+// export interface SkillJsonExt extends SkillJson {
+//     effect_radius: number | number[];
+//     range: number[] | number | string;
+//     width: number;
+//     cast_time: number;
+//     cost: string;
+//     cooldown: number[];
+//     spellshield: string;
+//     target_range: number;
+//     collision_radius: number;
+//     speed: number;
+//     static_cooldown: any[];
+//     recharge: number;
+//     grounded: string;
+//     knockdown: string;
+//     angle: string;
+//     outer_limit: number;
+//     pillar_radius: number;
+//     inner_radius: number;
+//     target_immunity: number;
+//     sight_reduction: number;
+//     tether_radius: string;
+//     detection_radius: number;
+//     barrage_cooldown: number;
+//     // "static_ball's sight": number[];
+//     impassable_perimeter: string;
+//     // on-terrain_cooldown: number[];
+//     leash_range: number[];
+//     // per-leg_cooldown: any[];
+//     disable_time: number;
+//     side_length: number;
+//     // on-target_cooldown: string;
+//     size_radius: string;
+//     // per-direction_cooldown: number[];
+// }
 
 export interface BaseStatsObj {
     hp_base: number,

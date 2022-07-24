@@ -17,7 +17,7 @@
     </span>
     <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
-    <div class="ds__description" tabindex="0">
+    <div class="ds__description" tabindex="0" @load="load">
       <p v-for="x in spell.desciption" v-html="x"></p>
     </div>
 
@@ -124,6 +124,9 @@ const addEffect = () => {
   // });
 };
 
+function load(event:any) {
+  console.log("load", event);
+}
 </script>
 
 <style>
@@ -144,10 +147,13 @@ const addEffect = () => {
   margin-right: 1em;
 }
 
+.ds__description p{
+  margin: 0;
+}
+
 .ds__description {
-  width: 55vw;
-  height: 1.5em;
-  white-space: nowrap;
+  height: 1.8em;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   border: 1px solid #00000000;
