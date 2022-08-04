@@ -33,6 +33,15 @@ export function saveFile(path: fs.PathLike | fs.promises.FileHandle, data: any):
     return fs.promises.writeFile(path, JSON.stringify(data || {}, null, 2));
 }
 
+export async function saveFileBlob(path: fs.PathLike | fs.promises.FileHandle, blob: Blob): Promise<void> {
+    console.log(`Saving file (BLOB) '${path}'...`);
+    const x = await blob.arrayBuffer();
+    return fs.promises.writeFile(path, Buffer.from(x));
+}
+export function fileExists(path: fs.PathLike): boolean {
+    return fs.existsSync(path);
+}
+
 /**
  * Fetches in a wiki data page and returns the textarea content as json object.
  * @param {RequestInfo} url 
@@ -86,7 +95,7 @@ export async function fetch_Module_ChampionData(): Promise<{ [key: string]: any 
     const raw = await fetch_wiki(`https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`);
 
     let x = wiki_Module_to_JSON(raw.text);
-    
+
     if (DEBUG) {
         await saveFile("./.debug/Module_ChampionData.json", await x)
     };

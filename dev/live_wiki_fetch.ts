@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import parenthesis from 'parenthesis';
 import { ChampionListSkills, Image, RootRatio, ScaleValue, SkillModel, SubRatio } from "../src/api/DataTypes.js";
-import { saveFile } from './fetch_utils.js';
+import { fileExists, saveFile, saveFileBlob } from './fetch_utils.js';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
@@ -137,11 +137,13 @@ export async function fetch_live_wiki_skills(champ_name: string, riot: NeededRio
   const response = await fetch(url);
   const dom = new JSDOM(await response.text())
   const document = dom.window.document;
+
   //[...document.querySelectorAll('.tabber')[1].children].slice(2)[1].querySelectorAll('aside')
 
   const skill_name_counts: { [s: string]: number } = {};
   const skill_divs = document.querySelectorAll(`.skill`);
   const all_skills_div = Array.from(skill_divs, (div, _idx) => {
+    fix_wiki_img(div);
     const skill_name = known_skill_names[div.classList[1] as keyof typeof known_skill_names] || 'X';
     //Finds main body for all sub skills.
     const subs = div.querySelectorAll('.ability-info-container');
@@ -195,6 +197,16 @@ export async function fetch_live_wiki_skills(champ_name: string, riot: NeededRio
   return { skills };
 }
 
+class WikiSkillRaw {
+  skill_name: string;
+  skill_idx: number;
+  main_div: Element;
+  header_aside: Element;
+  infobox: Element;
+  constructor() {
+    
+  }
+}
 
 class SkillObj {
   name: string;
@@ -1895,4 +1907,29 @@ function numberExpandOnLevel(values: string): number[] {
     list.push(+answer.toFixed(2) || i);
   }
   return list;
+}
+
+const lazyimg_cache: { [key: string]: string } = {};
+function fix_wiki_img(document: ParentNode) {
+  for (const img of document.querySelectorAll<HTMLImageElement>('img.lazyload')) {
+    if (img.dataset.src && img.dataset.imageKey) {
+      img.src = '/wiki/images/' + img.dataset.imageKey;
+      const file_path = decodeURI('./public/wiki/images/' + img.dataset.imageKey);
+      if (!(img.dataset.imageKey in lazyimg_cache)) {
+        lazyimg_cache[img.dataset.imageKey] = img.dataset.src
+        console.log(`Found Image: { imageName: '${img.dataset.imageName}', imageKey: '${img.dataset.imageKey}', src: '${img.dataset.src}' }`);
+        if (!fileExists(file_path)) {
+          fetch(img.dataset.src).then(res => res.blob()).then(blob => saveFileBlob(file_path, blob));
+        } else {
+          console.log(`Skipping fetch for image ${img.dataset.imageKey}`);
+
+        }
+      }
+      img.dataset.imageKey = undefined;
+      img.dataset.imageName = undefined;
+      img.dataset.src = undefined;
+      img.loading = 'lazy';
+
+    }
+  }
 }

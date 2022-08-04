@@ -65,4 +65,8 @@ const appVersion = "4.01";
 .main__header {
   border-bottom: #45a049 solid 2px;
 }
+
+img.lazyload {
+  vertical-align: middle;
+}
 </style>

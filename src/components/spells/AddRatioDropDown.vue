@@ -6,7 +6,7 @@
           {{ r.ispercent == false ? "Ratio" : "" }}</a>
           <span v-html="r.html"></span>
       </div>
-      <!-- <hr :key="'hr'+i" class="dropdown-divider" /> -->
+      <!-- <hr class="dropdown-divider" /> -->
     </template>
   </DropdownSelect>
 </template>
