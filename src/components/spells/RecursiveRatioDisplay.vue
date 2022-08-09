@@ -16,15 +16,15 @@ import { stat_to_display, default_spell_ratios, RatioObjComputed } from './ratio
 import SpellSpan from '../SpellSpan.vue';
 import { SubRatio } from '../../api/DataTypes';
 
-const props = defineProps<{ val: SubRatio & RatioObjComputed, recursive?: boolean | undefined, display: string }>()
+const props = defineProps<{ val: SubRatio & RatioObjComputed, recursive?: boolean | undefined, display: 'value' | 'dmg_premitigation' | 'dmg_postmitigation' }>()
 
 const dispPre = computed(() => {
-  if (props.display !== 'value') return '';
-  return props.val.units.slice(0,1);
+  if (props.display === 'value') return props.val.apply || '';
+  return '';
 });
 const dispPost = computed(() => {
-  if (props.display !== 'value') return '';
-  return props.val.units.slice(1);
+  if (props.display === 'value') return props.val.units;
+  return '';
   // return props.val.units.slice(1).replace('bonus', '<i>bonus</i>');
 });
 const data = computed(() => stat_to_display[props.val.stat || 'base'] || default_spell_ratios);

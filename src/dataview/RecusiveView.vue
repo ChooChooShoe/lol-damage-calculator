@@ -29,7 +29,7 @@ import SpellSpan from "../components/SpellSpan.vue";
 import { provide, reactive } from "@vue/runtime-core";
 const props = defineProps({ val: Object });
 
-provide("rootspell", reactive({ rankindex: 0 }));
+provide("rankindex", ref(0));
 </script>
 
 <style>

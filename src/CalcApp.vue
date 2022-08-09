@@ -7,11 +7,11 @@
     <ChampionDiv mode="player" :obj="player"></ChampionDiv>
     <ChampionDiv mode="target" :obj="target"></ChampionDiv>
 
-    <TimelineAddMenu :skills="activeChampionModel?.skills"></TimelineAddMenu>
-    <AADamageSource :damageSources="damageSources" :player="player" :target="target"></AADamageSource>
-    <ChampionSpellDamageSource v-for="spellObj in Object.values(activeChampionModel?.skills || {})" :key="spellObj.name" :spell="spellObj" :champion="player.champ" v-if="player.champ"></ChampionSpellDamageSource>
+    <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
+    <!-- <AADamageSource :damageSources="damageSources" :player="player" :target="target"></AADamageSource> -->
+    <ChampionSpellDamageSource v-for="(spellObj, idx) in activeChampionModel.skills" :key="spellObj.name" :spell="spellObj" :champion="player.champ" v-if="player.champ" :idx="`skill_${idx}`"></ChampionSpellDamageSource>
 
-    <CustomDamageSource v-for="(ds, idx) in customDamageSources" :key="idx" :index="idx"></CustomDamageSource>
+    <CustomDamageSource v-for="(ds, idx) in customDamageSources" :key="idx" :index="idx" ></CustomDamageSource>
   </div>
   <!-- <footer>
     <div class="buttons">
@@ -32,11 +32,9 @@ import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
 import { ref, reactive, provide, computed, Ref, watchPostEffect, watchEffect } from "vue";
 import { onBeforeRouteUpdate, useRouter, useRoute, RouteLocationNormalizedLoaded } from "vue-router";
 
-import { ChampionName, ChampObjModel, FullChampJson, SkillJson } from "./model/ChampObj";
+import { ChampionName, ChampObjModel } from "./model/ChampObj";
 import { DamageSource } from "./javascript/league_data";
-
-// import ChampionListSkills from "./api/ChampionListSkills.json";
-
+import { ChampionListSkills, SkillModel } from "./api/DataTypes";
 
 const router = useRouter();
 
@@ -75,12 +73,16 @@ const player = reactive<ChampObjModel>(new ChampObjModel('player', n.player));
 const target = reactive<ChampObjModel>(new ChampObjModel('target', n.target));
 
 // const activeChampionModel = computed(() => ChampionListSkills[player.champ as keyof typeof ChampionListSkills])
-const activeChampionModel = ref<FullChampJson | null>(null);
+const activeChampionModel = reactive<ChampionListSkills>({ skills: {} });
 
 watchEffect(async () => {
-  const champ = player.champ as keyof typeof ChampionListSkills;
+  const champ = player.champ;
   const ChampionListSkills = (await import("./api/ChampionListSkills.json")).default;
-  activeChampionModel.value = ChampionListSkills[champ] as FullChampJson || null;
+  if (champ in ChampionListSkills) {
+    activeChampionModel.skills = ChampionListSkills[champ].skills;
+  } else {
+    activeChampionModel.skills = {};
+  }
 })
 
 
@@ -93,8 +95,6 @@ provide("player", player);
 provide("target", target);
 provide("damageSources", damageSources);
 
-provide("RootData", { player, target, damageSources });
-
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);
 const customDamageSources = ref([]);
@@ -102,7 +102,7 @@ const customDamageSources = ref([]);
 const skillpoints_used = () => {
   let sum = 0;
   for (const x in damageSources) {
-    sum += (damageSources[x].spellrankindex || 0) + 1;
+    // sum += (damageSources.value[x].spellrankindex || 0) + 1;
   }
   return sum;
 };

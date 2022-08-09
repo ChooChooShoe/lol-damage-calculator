@@ -7,7 +7,7 @@
         <SpellImage iconPath="/src/assets/icons/Attack_damage_icon.png"></SpellImage>
         <span class="ttam__toggletitle">AA</span>
       </div>
-      <div class="ttam__toggle" v-for="spell of props.skills" :key="spell.name">
+      <div class="ttam__toggle" v-for="spell of models" :key="spell.name">
         <SpellImage :image="spell.image"></SpellImage>
         <label class="ttam__toggletitle" :title="spell.display_name">
           {{ spell.name }}
@@ -25,10 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { ChampionSkills } from "../model/ChampObj";
+import { SkillModel } from "../api/DataTypes";
 import SpellImage from "./SpellImage.vue";
-const props = defineProps<{ skills: ChampionSkills | undefined }>();
-console.log('SpellImage', JSON.stringify(props,null,4));
+const props = defineProps<{ models: { [key: string]: SkillModel } }>();
 
 </script>
 

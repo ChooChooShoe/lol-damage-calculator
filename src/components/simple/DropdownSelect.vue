@@ -19,7 +19,7 @@ const selected = ref(false);
 
 const props = defineProps<{
   label: string,
-  value: string | undefined,
+  value?: any,
 }>();
 function click(event: MouseEvent) {
   selected.value = true;

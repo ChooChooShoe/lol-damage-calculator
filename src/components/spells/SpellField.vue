@@ -5,7 +5,7 @@
       <span v-html="data.html"></span>
     </th>
     <td>
-      <NumInput v-model="val.damageValue" :format="val.apply" :index="rootspell.rankindex"></NumInput>
+      <NumInput v-model="val.damageValue" :format="val.apply" :index="rankindex"></NumInput>
     </td>
     <td>
       <NumInput :readonly="true" :modelValue="val.damagePreValue"></NumInput>
@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, Ref } from "vue";
 import { SubRatio } from "../../api/DataTypes";
 import NumInput from "../simple/NumInput.vue";
 import { RatioObjComputed, stat_to_display } from "./ratios_info";
 
 const { val } = defineProps<{ val: SubRatio & RatioObjComputed }>()
 const data = stat_to_display[val.stat] || {};
-const rootspell = inject("rootspell");
+const rankindex = inject<Ref<number>>("rankindex")!;
 </script>

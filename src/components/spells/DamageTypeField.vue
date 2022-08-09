@@ -1,5 +1,5 @@
 <template>
-  <DropdownSelect suffix="damage" class="dtfield" :class="modelValue">
+  <DropdownSelect label="" suffix="damage" class="dtfield" :class="modelValue">
     <template v-slot:value>
       <span v-if="modelValue  === 'physical'" class="ad">physical damage</span>
       <span v-else-if="modelValue  === 'magic'" class="ap">magic damage</span>

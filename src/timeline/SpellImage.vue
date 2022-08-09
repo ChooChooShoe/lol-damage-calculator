@@ -20,7 +20,9 @@ const style = computed(() => {
       return `background: url('${cdn}/${v}/img/sprite/tiny_${props.image.sprite}') -${props.image.x * 0.5}px -${props.image.y * 0.5}px;`
     return `background: url('${cdn}/${v}/img/sprite/${props.image.sprite}') -${props.image.x}px -${props.image.y}px;`
   }
-  return `background: url('${props.iconPath}') 0px 0px; background-size:contain;`;
+  if (props.iconPath)
+    return `background: url('${props.iconPath}') 0px 0px; background-size:contain;`;
+  return `background: transparent; background-size:contain;`
 });
 </script>
 

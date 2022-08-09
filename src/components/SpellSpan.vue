@@ -3,7 +3,7 @@
   <span v-if="Array.isArray(list)">
     <template v-for="(x, i) in list" :key="i">
       <span v-if="i != 0" class="ss-noclick">/</span>
-      <span :class="{ spelleffect: rootspell.rankindex == i }" class="ss-click" @click="rootspell.rankindex = i">
+      <span :class="{ spelleffect: rankindex == i }" class="ss-click" @click="rankindex = i">
         {{ x }}
       </span>
     </template>
@@ -21,7 +21,7 @@ export default {
   props: {
     list: [Array, Number, String],
   },
-  inject: ["rootspell"],
+  inject: ["rankindex"],
 };
 </script>
 

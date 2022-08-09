@@ -22,7 +22,6 @@ const displayValueArray = function (v) {
   if (data.value.flat) return `${+v.toFixed(3)}`;
   return `${+(v * 100).toFixed(3)}`;
 };
-const rootspell = inject("rootspell");
 const innerList = computed(() => {
   return displayValueArray(damageValue);
 });

@@ -1,39 +1,32 @@
 <template>
   <div class="float-clear spelleffect__div">
+    <EditBtn class="spelleffect__editbtn" v-model="editMode"></EditBtn>
+    <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
+    <span>
+      <RecursiveRatioDisplay :val="ratios" display="value"> </RecursiveRatioDisplay>
+      <DamageTypeField v-model="damage_type"></DamageTypeField>
+    </span>
+
+    <span class="ad spelleffect__title">Pre-Mitigation: </span>
     <div>
-      <EditBtn v-model="editMode"></EditBtn>
-
-      <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
-      <span>
-        <RecursiveRatioDisplay :val="ratios" display="value"> </RecursiveRatioDisplay>
-
-        <DamageTypeField v-model="damage_type"></DamageTypeField>
-      </span>
-      <br />
-      <span class="ad">Pre-Mitigation: </span>
       <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
-      <span class="spelleffect__total"> = </span>
-      <span class="spelleffect__total">{{ Math.round(dmg_premitigation) }}</span>
-      <span class="spelleffect__total">&nbsp;</span>
+      <span class="spelleffect__total">{{ ` = ${Math.round(dmg_premitigation)} ` }}</span>
       <template v-if="repeat !== 1">
         <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
         <span class="spelleffect__total">{{ Math.round(dmg_premitigation * repeat) }}</span>
         <span class="spelleffect__total">&nbsp;</span>
       </template>
-      <!-- <span v-html="damage_type_user(damage_type)"></span> -->
-      <br />
-      <span class="ap">Post-Mitigation: </span>
+    </div>
+    <span class="ap spelleffect__title">Post-Mitigation: </span>
+    <div>
       <RecursiveRatioDisplay :val="ratios" display="dmg_postmitigation"> </RecursiveRatioDisplay>
-      <span class="spelleffect__total"> = </span>
-      <span class="spelleffect__total">{{ Math.round(dmg_postmitigation) }}</span>
-      <span class="spelleffect__total">&nbsp;</span>
+      <span class="spelleffect__total">{{ ` = ${Math.round(dmg_postmitigation)} ` }}</span>
       <template v-if="repeat !== 1">
         <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
         <span class="spelleffect__total">{{ Math.round(dmg_postmitigation * repeat) }}</span>
         <span class="spelleffect__total">&nbsp;</span>
       </template>
       <span v-html="damage_type_user(damage_type)"></span>
-      <br />
     </div>
     <div class="spelleff--content" :class="{ active: editMode }">
       <hr />
@@ -108,6 +101,8 @@ import NumInput from "../simple/NumInput.vue";
 import RecursiveRatioDisplay from "./RecursiveRatioDisplay.vue";
 import { RatioObjComputed, stat_to_display } from "./ratios_info";
 import { RootRatio, SubRatio } from "../../api/DataTypes";
+import { RefUnwrapBailTypes } from "@vue/reactivity";
+import { ChampObjModel } from "../../model/ChampObj";
 
 const CORE_RATIOS = [
   "player_total_ap",
@@ -134,8 +129,10 @@ const { effect, effectindex, pkey, custom } = defineProps<{
   custom: boolean,
 }>()
 
-const rootData = inject<any>("RootData") || {};
-const rootspell = inject<any>("rootspell");
+const rootData = { player: inject<ChampObjModel>("player")!, target: inject<ChampObjModel>("target")! };
+
+
+const rankindex = inject<Ref<number>>("rankindex")!;
 const damage_type = ref("magic");
 const damageSource = new DamageSource('magic', 8);
 
@@ -161,18 +158,19 @@ watchEffect(() => {
 
 
 function makeRatio(val: SubRatio): SubRatio & RatioObjComputed {
-  const damageValue = computed(() => Array.isArray(val.values) ? val.values[rootspell?.value?.rankindex || 0] : val.values);
+  const damageValue = computed(() => Array.isArray(val.values) ? val.values[rankindex.value] : val.values);
   const damagePreValue = computed((): number => {
     let value = damageValue.value;
-    if (val.apply === 'percent')
+    if (val.apply === '%')
       value = value / 100;
 
-    if (val.apply === 'flat' || val.user === 'none')
+    if (val.units === '' || val.units === 'percent' || val.user === 'none')
       return value;
-    let statValue = rootData[val.user][val.units];
+    const user = val.user === 'target' ? rootData.target : rootData.player;
+    const statValue = Number(user[val.stat as keyof typeof user]);
     if (isNaN(statValue)) {
-      console.warn(`Stat ${val.units} for ratio ${val} missing for ${rootData.player}`);
-      statValue = 0;
+      console.warn('StatMissing', val.units, 'for ratio', val, 'missing for obj', user);
+      return 0;
     }
     return statValue * value;
   });
@@ -211,8 +209,6 @@ const ratios = makeRatio(effect);
 defineExpose({
   ratios,
 });
-
-
 
 function addRatio(x: string) {
   const made = makeRatio({
@@ -273,11 +269,22 @@ input[type="button"].repeat {
 .spelleffect__div {
   border-bottom: #282f2f solid 1px;
   margin-bottom: 0.4em;
-  /* padding:  0.2em; */
+  display: grid;
+  justify-content: left;
+  align-items: baseline;
+  grid-template-columns: fit-content(0) 1fr auto;
+  column-gap: 0.5rem;
 }
 
 .spelleffect__title {
   color: #8e7dad;
+  white-space: nowrap;
+  justify-self: end;
+}
+
+.spelleffect__editbtn {
+  grid-row: 1 / 4;
+  grid-column: 3;
 }
 
 .spelleffect__total {
@@ -311,8 +318,10 @@ input[type="button"].repeat {
 .spelleff--content {
   max-height: 0;
   overflow: hidden;
+  color: unset;
   margin: 0;
   padding: 0;
   transition: max-height 0.2s ease-out;
+  grid-column: span 3;
 }
 </style>

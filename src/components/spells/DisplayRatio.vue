@@ -31,7 +31,6 @@ export default {
       return `${+(v * 100).toFixed(3)}`;
     };
     return {
-      rootspell: inject("rootspell"),
       data,
       innerList: computed(() => {
         if (Array.isArray(list.value)) {

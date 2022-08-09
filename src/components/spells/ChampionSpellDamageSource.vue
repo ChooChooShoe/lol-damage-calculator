@@ -1,25 +1,25 @@
 <template>
   <div class="data_holder col fill ChampionSpellDamageSource">
-    <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage>
+    <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
 
     <span class="ds__title">{{ spell.display_name }} ({{ spell.name.toUpperCase() }})</span>
-    <DropdownSelect class="spellrank2" v-if="spell.maxrank > 0" label="Rank" :value="spell.rankindex + 1">
-      <input v-for="(_, index) in Array(spell.maxrank)" :class="{ success: spell.rankindex === index }" :key="index" @click="() => (spell.rankindex = index)" type="button" :value="index + 1" :title="'Rank ' + (index + 1)" />
+    <DropdownSelect class="spellrank2" v-if="spell.maxrank && spell.maxrank > 0" label="Rank" :value="String(rankindex + 1)">
+      <input v-for="(_, index) in Array(spell.maxrank || 5)" :class="{ success: rankindex === index }" :key="index" @click="rankindex = index" type="button" :value="index + 1" :title="'Rank ' + (index + 1)" />
     </DropdownSelect>
-    <span class="ds__data" v-if="spell.cooldown">
+    <!-- <span class="ds__data" v-if="spell.cooldown">
       Cooldown:
       <SpellSpan :list="spell.cooldown"></SpellSpan>
-    </span>
-    <span class="ds__data" v-if="spell.cost">
+    </span> -->
+    <!-- <span class="ds__data" v-if="spell.cost">
       Cost:
       <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
-      <!-- <span v-html="costtype"></span> -->
-    </span>
+      <span v-html="costtype"></span>
+    </span> -->
     <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
-    <div class="ds__description" tabindex="0" @load="load">
+    <!-- <div class="ds__description" tabindex="0" @load="load">
       <p v-for="x in spell.desciption" v-html="x"></p>
-    </div>
+    </div> -->
 
     <!-- <div v-if="spell.maxrank > 0">
       <span>
@@ -58,9 +58,9 @@
 
     <hr />
 
-    <SpellEffects v-for="(value, idx) in spell.leveling" :custom="false" :key="value.name" :pkey="`${spell.name}_${value.name}`" :effect="value" :effectindex="idx"></SpellEffects>
+    <SubSkillList :custom="false" :subskills="spell.subskills" :idx="idx"></SubSkillList>
 
-    <SpellEffects v-for="(item, idx) in customEffects" :custom="true" :key="idx" :pkey="`${spell.name}_c${idx}`" :effect="item" :effectindex="idx"></SpellEffects>
+    <SubSkillList :custom="true" :subskills="customEffects" :idx="'c' + idx"></SubSkillList>
 
     <input name="add_effect" type="button" class="button is-primary" value="Add Effect +" @click="addEffect()" />
 
@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRefs, watchEffect, provide, reactive } from "vue";
+import { ref, computed, toRefs, watchEffect, provide, reactive, Ref } from "vue";
 import SpellImage from "../../timeline/SpellImage.vue";
 import SpellEffects from "./SpellEffects.vue";
 // import SimpleTooltip from ".././SimpleTooltip.vue";
@@ -77,28 +77,29 @@ import SpellNotes from ".././SpellNotes.vue";
 import SpellSpan from ".././SpellSpan.vue";
 import { spriteBaseUri } from "../../javascript/league_data";
 import DropdownSelect from "../simple/DropdownSelect.vue";
-import { SkillJson } from "../../model/ChampObj";
+import { SkillModel } from "../../api/DataTypes";
+import SubSkillList from "./SubSkillList.vue";
 
+interface ReactSkill {
+  rankindex: Ref<number>
+}
 const props = defineProps<{
-  spell: SkillJson,
+  spell: SkillModel,
   champion: string,
+  idx: string,
 }>()
 
-let obj = reactive({
-  champ: null,
-});
-
-props.spell.rankindex = ref(0);
+const rankindex = ref(0);
 const customEffects = ref([]);
 const lastEffectIndex = ref(0);
 
 watchEffect(() => {
-  props.spell.rankindex = (props.spell.maxrank || 1) - 1;
+  rankindex.value = (props.spell.maxrank || 1) - 1;
 });
-provide("rootspell", props.spell);
+provide("rankindex", rankindex);
 
 const imageStyle = computed(() => {
-  const i = props.spell.image;
+  const i = props.spell.image!;
   return {
     background: `url("${spriteBaseUri}${i.sprite}") -${i.x}px -${i.y}px`,
   };
@@ -124,7 +125,7 @@ const addEffect = () => {
   // });
 };
 
-function load(event:any) {
+function load(event: any) {
   console.log("load", event);
 }
 </script>
@@ -147,7 +148,7 @@ function load(event:any) {
   margin-right: 1em;
 }
 
-.ds__description p{
+.ds__description p {
   margin: 0;
 }
 
