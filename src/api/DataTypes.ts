@@ -33,14 +33,14 @@ export interface SkillModel {
   display_name: string;
   maxrank: number | undefined;
   image: Image | undefined;
-  targeting: string | undefined;
+  targeting: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector'  | undefined;
   affects: string | undefined;
-  damagetype: string;
-  spelleffects: string | undefined;
-  spellshield: 'Blocked' | "Not Blocked" | "See Notes" | "Missing";
-  projectile: string | undefined;
-  grounded: string | undefined;
-  knockdown: string | undefined;
+  damagetype: ("Physical" | "Magic" | "True")[];
+  spelleffects: 'Proc' | 'Area' | 'Spell' | 'See Notes' | 'Basic' | 'Default' | 'AOE DOT' | 'DOT' | 'Pet' | 'Non-Damaging' | undefined;
+  spellshield: 'Blocked' | "Not Blocked" | "See Notes" | "Missing" | undefined;
+  projectile: 'Blocked' | "See Notes" | undefined;
+  grounded: 'Disabled' | "See Notes" | 'Not Disabled' | undefined;
+  knockdown: 'Interrupted' | "See Notes" | 'Not Interrupted' | undefined;
   subskills: SubSkill[];
 }
 export interface SubSkill {

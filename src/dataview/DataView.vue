@@ -1,25 +1,51 @@
 <template>
   <div class="main-full dataview">
     <label>DEBUG: <input v-model="debug" type="checkbox" /></label><br />
-    <label>RAW WIKI: <input v-model="rawWiki" type="text" /></label><br />
-    <ChampSearch class="select" mode="emit" v-model:champ="champion"> </ChampSearch>
-    <div class="FullModel">
-      <RecusiveView :val="ChampionList[champion]"></RecusiveView>
+    <label>RAW WIKI: <input v-model="rawWiki" type="text" /></label>
+    <label>SET?: <input v-model="rawWikiSet" type="checkbox" /></label><br />
+    <div class="FullModel" v-if="rawWiki">
+      <template v-for="(r, k) in listOfSearch">
+        <RecusiveView :val="{ [rawWiki]: r }" filter=""></RecusiveView>
+      </template>
     </div>
-    <div class="FullModel">
-      <RecusiveView :val="ChampionListSkills[champion]"></RecusiveView>
+    <ChampSearch class="select" mode="emit" v-model:champ="champion"> </ChampSearch>
+
+    <label>
+      Toggle Champ View
+      <input type="checkbox" v-model="toggleChampView">
+    </label>
+    <div class="FullModel" v-if="toggleChampView">
+      <RecusiveView :val="ChampionList[champion]" filter=""></RecusiveView>
+    </div>
+    <label>
+      Toggle Skills View
+      <input type="checkbox" v-model="toggleSkillsView">
+    </label>
+    <div class="FullModel" v-if="toggleSkillsView">
+      <RecusiveView :val="ChampionListSkills[champion]" filter=""></RecusiveView>
+    </div>
+    <label>
+      Toggle Skills View
+      <input type="checkbox" v-model="toggleRatiosView">
+    </label>
+    <div class="FullModel" v-if="toggleRatiosView">
+      <template v-for="r in listOfRatios">
+        <span class="key" :title="r.raw">{{ r.name }}</span>
+        <RecursiveRatioDisplay display="value" :val="r" :recursive="false"></RecursiveRatioDisplay>
+        <br />
+      </template>
     </div>
   </div>
 </template>
 
-<script setup>
-import { computed, reactive, ref } from "vue";
-import ChampionList from "/src/api/ChampionList.json";
-import ChampionListSkills from "/src/api/ChampionListSkills.json";
+<script setup lang="ts">
+import { computed, provide, reactive, ref } from "vue";
+import ChampionList from "../api/ChampionList.json";
+import ChampionListSkills from "../api//ChampionListSkills.json";
 
-import { dv as displayVersion } from "/src/api/version.json";
 import ChampSearch from "../components/simple/ChampSearch.vue";
 import RecusiveView from "./RecusiveView.vue";
+import RecursiveRatioDisplay from "../components/spells/RecursiveRatioDisplay.vue";
 const appVersion = "0.1.0";
 // const tags = {};
 // for (const x in items) {
@@ -31,6 +57,32 @@ const appVersion = "0.1.0";
 let champion = ref("Azir");
 const debug = ref(false);
 const rawWiki = ref("");
+const toggleSkillsView = ref(false);
+const toggleChampView = ref(false);
+const toggleRatiosView = ref(true);
+const rawWikiSet = ref(true);
+// const listOfRatios = Object.values(ChampionListSkills).flatMap(x => Object.values(x.skills).flatMap(y => y.subskills).flatMap(z => z.leveling));
+
+const listOfRatios = findAll("leveling", ChampionListSkills).flat();
+
+const listOfSearch = computed(() => {
+  if (rawWikiSet.value) return new Set(findAll(rawWiki.value, ChampionListSkills).flat())
+  else return findAll(rawWiki.value, ChampionListSkills).flat()
+});
+
+provide('rankindex', ref(1));
+
+function findAll<T>(key: string, obj: object): T[] {
+  const arr: T[] = [];
+  findAllR(key, obj, arr)
+  return arr;
+}
+function findAllR<T>(key: string, obj: object, arr: T[]) {
+  for (const [k, v] of Object.entries(obj)) {
+    if (k === key) arr.push(v as T);
+    else if (v && typeof v === 'object') findAllR(key, v, arr);
+  }
+}
 
 // const FullDataCache = ref({});
 

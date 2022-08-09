@@ -2,7 +2,7 @@
   <span :class="data.color" :title="val.stat || 'base'">
     {{ recursive ? '(+' : '' }}
     <SpellSpan :class="data.color" :list="values"></SpellSpan>{{ dispPre }}
-    <RecursiveRatioDisplay :recursive="true" :display="display" :val="v" :key="k" v-for="(v, k) in val.sub_calcs">
+    <RecursiveRatioDisplay :recursive="true" :display="display" :val="v" :key="v.stat" v-for="(v, k) in (val.sub_calcs || val.sub_ratios)">
     </RecursiveRatioDisplay>
     {{ dispPost }}
     <!-- <span v-if="data.html && display == 'value'" v-html="data.html"></span> -->

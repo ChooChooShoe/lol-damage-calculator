@@ -129,14 +129,14 @@ class SkillObj implements SkillModel {
   display_name: string;
   maxrank: number | undefined;
   image: Image | undefined;
-  targeting: string | undefined;
+  targeting: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector' | undefined;
   affects: string | undefined;
-  damagetype: string;
-  spelleffects: string | undefined;
-  spellshield: 'Blocked' | "Not Blocked" | "See Notes" | "Missing";
-  projectile: string | undefined;
-  grounded: string | undefined;
-  knockdown: string | undefined;
+  damagetype: ("Physical" | "Magic" | "True")[];
+  spelleffects: 'Proc' | 'Area' | 'Spell' | 'See Notes' | 'Basic' | 'Default' | 'AOE DOT' | 'DOT' | 'Pet' | 'Non-Damaging' | undefined;
+  spellshield: 'Blocked' | "Not Blocked" | "See Notes" | "Missing" | undefined;
+  projectile: 'Blocked' | "See Notes" | undefined;
+  grounded: 'Disabled' | "See Notes" | 'Not Disabled' | undefined;
+  knockdown: 'Interrupted' | "See Notes" | 'Not Interrupted' | undefined;
   subskills: { img?: string; desciption: string; leveling: RootRatio[]; }[];
 
   constructor(name: string, main_div: HTMLElement, header_aside: HTMLElement, infobox: HTMLElement, riot: {
@@ -155,6 +155,16 @@ class SkillObj implements SkillModel {
       r: number;
     };
   }) {
+    function mutate_val<T>(src: string, table: any, fallback: T): T {
+      return mutate(infobox?.querySelector(`div[data-source="${src}"]`)?.textContent || "", table, fallback);
+    }
+    function mutate<T>(text: string, table: any, fallback: T): T {
+      for (const i of table) {
+        if (text.includes(i)) return i as T;
+      }
+      return fallback;
+    }
+
     this.name = name;
     this.maxrank = riot.spell_maxranks[name.charAt(0).toLocaleLowerCase()];
     this.image = riot.spell_images[name.charAt(0).toLocaleLowerCase()];
@@ -168,14 +178,15 @@ class SkillObj implements SkillModel {
     }
     // Not found on page _Data required.
     // model.skill[name].cooldown_tooltip = null; 
-    this.targeting = infobox?.querySelector(`div[data-source="targeting"]`)?.querySelector(`a`)?.textContent || undefined;
+    this.targeting = mutate(infobox?.querySelector(`div[data-source="targeting"]`)?.querySelector(`a`)?.textContent || "", valid_targeting, undefined);
     this.affects = infobox?.querySelector(`div[data-source="affects"]`)?.textContent || undefined;
-    this.damagetype = infobox?.querySelector(`div[data-source="damagetype"]`)?.textContent || "MissingDamage";
-    this.spelleffects = infobox?.querySelector(`div[data-source="spelleffects"]`)?.textContent || undefined;
-    this.spellshield = infobox?.querySelector(`div[data-source="spellshield"]`)?.textContent as typeof SkillObj.prototype.spellshield || "Missing";
-    this.projectile = infobox?.querySelector(`div[data-source="projectile"]`)?.textContent || undefined;
-    this.grounded = infobox?.querySelector(`div[data-source="grounded"]`)?.textContent || undefined;
-    this.knockdown = infobox?.querySelector(`div[data-source="knockdown"]`)?.textContent || undefined;
+    this.damagetype = mutate_damagetype(infobox?.querySelector(`div[data-source="damagetype"]`)?.textContent || "");
+
+    this.spelleffects = mutate_val("spelleffects", valid_spelleffects, undefined);
+    this.spellshield = mutate_val("spellshield", valid_spellshield, undefined);
+    this.projectile =  mutate_val("projectile", valid_projectile, undefined);
+    this.grounded =  mutate_val("grounded", valid_grounded, undefined);
+    this.knockdown =  mutate_val("knockdown", valid_knockdown, undefined);
     // model.skill[name].notes = null; 
 
     // this.img = [...main_div.querySelectorAll('img')].map(img => img.src)
@@ -243,3 +254,17 @@ function fix_wiki_img(document: ParentNode) {
     }
   }
 }
+function mutate_damagetype(damagetype: string): ("Physical" | "Magic" | "True")[] {
+  const res: ('Physical' | 'Magic' | 'True')[] = [];
+  if (damagetype.includes('Physical')) res.push('Physical');
+  if (damagetype.includes('Magic')) res.push('Magic');
+  if (damagetype.includes('True')) res.push('True');
+  return res;
+}
+const valid_targeting = ['Passice', 'Direction', 'Location', 'Auto', 'Unit', 'Vector']
+const valid_spelleffects = ['Proc', 'Area', 'Spell', 'See Notes', 'Basic', 'Default', 'AOE DOT', 'DOT', 'Pet', 'Non-Damaging']
+const valid_spellshield = ['Blocked', "Not Blocked", "See Notes", "Missing"]
+const valid_projectile = ['Blocked', "See Notes"]
+const valid_grounded = ['Disabled', "See Notes", 'Not Disabled']
+const valid_knockdown = ['Interrupted', "See Notes", 'Not Interrupted']
+

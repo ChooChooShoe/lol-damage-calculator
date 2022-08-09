@@ -262,11 +262,11 @@ export const spell_ratios = {
 };
 
 export const DamageType = {
-    PHYSICAL: 'physical',
-    MAGIC: 'magic',
-    TRUE: 'true',
-    NONE: 'none',
-    UNKNOWN: 'unknown'
+    PHYSICAL: 'Physical',
+    MAGIC: 'Magic',
+    TRUE: 'True',
+    NONE: 'None',
+    UNKNOWN: 'Unknown'
 }
 /**
  * A Single instance of damage.

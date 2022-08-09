@@ -97,6 +97,7 @@ watchEffect(() => {
   rankindex.value = (props.spell.maxrank || 1) - 1;
 });
 provide("rankindex", rankindex);
+provide("skillbase", props.spell);
 
 const imageStyle = computed(() => {
   const i = props.spell.image!;
@@ -115,7 +116,7 @@ const addEffect = () => {
   // customEffects.value.push({
   //   index: 0,
   //   title: "Custom Damage " + (customEffects.value.length + 10).toString(36).toUpperCase(),
-  //   damage_type: "magic",
+  //   damage_type: "Magic",
   //   ratios: {
   //     base_damage: [70, 90, 110, 130, 150],
   //     player_total_ap: 1,

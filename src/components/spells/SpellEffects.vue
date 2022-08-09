@@ -100,7 +100,7 @@ import { computed, inject, onMounted, onUnmounted, provide, reactive, Ref, ref, 
 import NumInput from "../simple/NumInput.vue";
 import RecursiveRatioDisplay from "./RecursiveRatioDisplay.vue";
 import { RatioObjComputed, stat_to_display } from "./ratios_info";
-import { RootRatio, SubRatio } from "../../api/DataTypes";
+import { RootRatio, SkillModel, SubRatio } from "../../api/DataTypes";
 import { RefUnwrapBailTypes } from "@vue/reactivity";
 import { ChampObjModel } from "../../model/ChampObj";
 
@@ -133,8 +133,10 @@ const rootData = { player: inject<ChampObjModel>("player")!, target: inject<Cham
 
 
 const rankindex = inject<Ref<number>>("rankindex")!;
-const damage_type = ref("magic");
-const damageSource = new DamageSource('magic', 8);
+const damage_type = ref("Magic");
+const damageSource = new DamageSource('Magic', 8);
+
+const skillbase = inject<SkillModel>('skillbase');
 
 watchEffect(() => {
   // let newRatios = reactive({});
@@ -148,7 +150,7 @@ watchEffect(() => {
 watchEffect(() => {
   // auto updates values when effect
   // damage_type.value = effect.damage_type;
-  damage_type.value = "magic";
+  damage_type.value = skillbase?.damagetype[0] || 'None';
 
   // if(clear) {
 
@@ -216,8 +218,8 @@ function addRatio(x: string) {
     user: 'player',
     stat: x,
     units: x,
-    apply: 'percent',
-    fulltext: 'CUSTOM'
+    apply: '%',
+    // fulltext: 'CUSTOM'
   });
   ratios.sub_ratios?.push(made);
   ratios.sub_calcs.push(made);
