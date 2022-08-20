@@ -203,10 +203,11 @@ function level_to_ratio(fulltext: string): {
 
 function numberExpandOnLevel(values: string): number[] {
   const list: number[] = [];
-  const found = values.match(/([\d.]+) − ([\d.]+)/g);
+  //Ex. 'Damaging basic attacks and ability damage deal 10 − 45'
+  const found = values.match(/([\d.]+) − ([\d.]+)/);
   if (!found) return []
-  const start = Number(found[0]);
-  const end = Number(found[1]);
+  const start = Number(found[1]);
+  const end = Number(found[2]);
   const range = 18;
   const diff = (end - start) / (range - 1);
   for (let i = 0; i < range; i++) {
