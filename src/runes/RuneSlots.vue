@@ -1,15 +1,20 @@
 <template>
-    <template v-for="p in runeslot.perks.map(pid => perks[String(pid) as keyof typeof perks])" :key="p.id">
-        <SinglePerk :is-key-stone="runeslot.type ==='kKeyStone'" :name="p.name" :iconPath="p.iconPath" :tooltip="p.longDesc" :data-selected="selection ? selection === p.id : 'none'" @click="$emit('update:selection', p.id)"></SinglePerk>
-    </template>
+    <div>
+        <template v-for="(p, idx) in runeslot.perks.map(pid => perk(pid))" :key="p.id">
+            <SinglePerk :is-key-stone="runeslot.slotLabel === ''" :name="p.name" :iconPath="p.iconPath" :tooltip="p.longDesc" :data-selected="selection ? selection === p.id : 'none'" @click="$emit('update:selection', p.id)"></SinglePerk>
+
+            <SubSkillList :subskills="p.root_ratios" :idx="'rune_' + String(idx)" :custom="false"></SubSkillList>
+        </template>
+    </div>
 </template>
 
 <script setup lang="ts">
-import perks from './perks.json';
+import { perk } from './perks';
 import SinglePerk from './SinglePerk.vue';
+import SpellEffects from '../components/spells/SpellEffects.vue';
+import SubSkillList from '../components/spells/SubSkillList.vue';
 const props = defineProps<{
     runeslot: {
-        type: string | 'kKeyStone' | 'kMixedRegularSplashable' | 'kStatMod',
         slotLabel: string,
         perks: number[]
     },
@@ -20,6 +25,7 @@ defineEmits(['update:selection'])
 <style>
 .RunePath>* {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 </style>

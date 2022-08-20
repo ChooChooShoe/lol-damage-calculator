@@ -18,7 +18,7 @@
     <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
     <!-- <div class="ds__description" tabindex="0" @load="load">
-      <p v-for="x in spell.desciption" v-html="x"></p>
+      <p v-for="x in spell.description" v-html="x"></p>
     </div> -->
 
     <!-- <div v-if="spell.maxrank > 0">

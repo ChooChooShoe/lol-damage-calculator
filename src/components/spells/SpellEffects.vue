@@ -28,7 +28,7 @@
       </template>
       <span v-html="damage_type_user(damage_type)"></span>
     </div>
-    <div class="spelleff--content" :class="{ active: editMode }">
+    <div class="spelleff--content" :class="{ active: editMode }" v-if="editMode">
       <hr />
       <div class="column">
         Before resistances, this effect will deal

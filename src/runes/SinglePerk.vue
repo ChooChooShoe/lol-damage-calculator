@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import SpellEffects from '../components/spells/SpellEffects.vue';
 const props = defineProps<{ iconPath: string, name: string, tooltip: string, isPath?: boolean, isKeyStone?: boolean }>();
 </script>
 <style>

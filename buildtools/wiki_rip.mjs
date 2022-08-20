@@ -216,7 +216,7 @@ export async function fetch_live_wiki_skills(champ_name) {
       if (s.includes('/revision')) return s.split('/revision')[0];
       return s;
     });
-    skills[name].desciption = [...div.querySelectorAll('p')].map(x => x.innerHTML);
+    skills[name].description = [...div.querySelectorAll('p')].map(x => x.innerHTML);
 
     skills[name].leveling = [...div.querySelectorAll('.skill_leveling')]
       .map(x => [x.querySelectorAll('dt'), x.querySelectorAll('dd')])

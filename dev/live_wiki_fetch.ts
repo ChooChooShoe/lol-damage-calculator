@@ -137,7 +137,7 @@ class SkillObj implements SkillModel {
   projectile: 'Blocked' | "See Notes" | undefined;
   grounded: 'Disabled' | "See Notes" | 'Not Disabled' | undefined;
   knockdown: 'Interrupted' | "See Notes" | 'Not Interrupted' | undefined;
-  subskills: { img?: string; desciption: string; leveling: RootRatio[]; }[];
+  subskills: { img?: string; description: string; leveling: RootRatio[]; }[];
 
   constructor(name: string, main_div: HTMLElement, header_aside: HTMLElement, infobox: HTMLElement, riot: {
     spell_images: {
@@ -191,7 +191,7 @@ class SkillObj implements SkillModel {
 
     // this.img = [...main_div.querySelectorAll('img')].map(img => img.src)
     // this.img = [];
-    // this.desciption = [];
+    // this.description = [];
 
     this.subskills = [];
 
@@ -201,7 +201,7 @@ class SkillObj implements SkillModel {
       //If an odd about of table divs, just skip it. See Aatrox "World Ender"
       if (!div_2) continue;
 
-      const desciption = div_2.querySelector('p')?.innerHTML || '';
+      const description = div_2.querySelector('p')?.innerHTML || '';
 
       const dt_list = [...div_2.querySelectorAll('dt')].map(x => x.textContent || "");
       const dd_list = [...div_2.querySelectorAll('dd')].map(x => x.textContent || "");
@@ -214,7 +214,7 @@ class SkillObj implements SkillModel {
         let ratio_root = { name: dt_list[idx], raw: fulltext };
         leveling.push(Object.assign(ratio_root, makeRatioObj(root)));
       }
-      this.subskills.push({ img, desciption, leveling });
+      this.subskills.push({ img, description, leveling });
     }
 
     // this.leveling = [...main_div.querySelectorAll('.skill_leveling')]
@@ -235,7 +235,7 @@ class SkillObj implements SkillModel {
 }
 
 const lazyimg_cache: { [key: string]: string } = {};
-function fix_wiki_img(document: ParentNode) {
+export function fix_wiki_img(document: ParentNode) {
   for (const img of document.querySelectorAll<HTMLImageElement>('img.lazyload')) {
     if (img.dataset.src && img.dataset.imageKey) {
       img.loading = 'lazy';

@@ -1,37 +1,31 @@
 <template>
     <div class="RunePath" v-if="path && path.slots">
-        <div v-for="(x, idx) in path.slots.filter(x => x.type === 'kMixedRegularSplashable')">
-            <RuneSlots :runeslot="x" :selection="secondarySelections[idx]" @update:selection="val => updateSecondary(val, idx)"></RuneSlots>
-        </div>
-
-
-        <div>
-            <RuneSlots :runeslot="path.slots[4]" :selection="statPerks.offense" @update:selection="val => statPerks.offense = val"></RuneSlots>
-        </div>
-        <div>
-            <RuneSlots :runeslot="path.slots[5]" :selection="statPerks.flex" @update:selection="val => statPerks.flex = val"></RuneSlots>
-        </div>
-        <div>
-            <RuneSlots :runeslot="path.slots[6]" :selection="statPerks.defense" @update:selection="val => statPerks.defense = val"></RuneSlots>
-        </div>
+        <RuneSlots :runeslot="path.slots.Mixed1" :selection="selections[0]" @update:selection="val => updateSecondary(val, 0)"></RuneSlots>
+        <RuneSlots :runeslot="path.slots.Mixed2" :selection="selections[1]" @update:selection="val => updateSecondary(val, 1)"></RuneSlots>
+        <RuneSlots :runeslot="path.slots.Mixed3" :selection="selections[2]" @update:selection="val => updateSecondary(val, 2)"></RuneSlots>
+        <RuneSlots class="StatsModBox" :runeslot="{ slotLabel: 'Offense', perks: [5008, 5005, 5007] }" :selection="statPerks.offense" @update:selection="val => statPerks.offense = val"></RuneSlots>
+        <RuneSlots class="StatsModBox" :runeslot="{ slotLabel: 'Flex', perks: [5008, 5002, 5003] }" :selection="statPerks.flex" @update:selection="val => statPerks.flex = val"></RuneSlots>
+        <RuneSlots class="StatsModBox" :runeslot="{ slotLabel: 'Defense', perks: [5001, 5002, 5003] }" :selection="statPerks.defense" @update:selection="val => statPerks.defense = val"></RuneSlots>
+    </div>
+    <div class="RunePath" v-else>
+        Select Secondary Rune Path
     </div>
 </template>
-
 <script setup lang="ts">
 import { computed, ref } from '@vue/reactivity';
-import perkstyles from './perkstyles.json';
 import SinglePerk from './SinglePerk.vue';
 import RuneSlots from './RuneSlots.vue';
 import SinglePath from './SinglePath.vue';
+import { tryGetPerkStyle } from './perks';
 
 const props = defineProps<{
-    pathid: number, selections: number[], statPerks: {
+    pathId: number, selections: number[], statPerks: {
         defense: number,
         flex: number,
         offense: number
     }
 }>()
-const path = computed(() => perkstyles[String(props.pathid) as keyof typeof perkstyles]);
+const path = computed(() => tryGetPerkStyle(props.pathId));
 
 const secondarySelections = ref([0, 0, 0]);
 const secondaryIdx: number[] = [];
@@ -57,8 +51,8 @@ function updateSecondary(id: number, idx: number) {
 }
 </script>
 <style>
-.RunePath>* {
-    display: flex;
-    justify-content: space-evenly;
+.StatsModBox {
+    justify-items: center;
+
 }
 </style>

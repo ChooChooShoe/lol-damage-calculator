@@ -1,39 +1,41 @@
 <template>
     <template v-if="shortMode">
-        <SpellImage v-if="subskill.img" :iconPath="subskill.img"></SpellImage>
-        <i v-else></i>
-        <p v-html="subskill.desciption" class="subskill__desciption shortmode"></p>
+        <SpellImage v-if="img" :iconPath="img"></SpellImage>
+        <span v-else></span>
+        <p v-html="description" class="subskill__desciption shortmode"></p>
     </template>
     <template v-else>
         <div class="subskill__img ttam__toggle">
-            <SpellImage :iconPath="subskill.img"></SpellImage>
+            <SpellImage :iconPath="img"></SpellImage>
             <label class="ttam__toggletitle" title="Click to enable/disable" v-if="!shortMode">
                 {{ String.fromCharCode(65 + idx) }}
                 <input type="checkbox" v-model="active" />
             </label>
         </div>
-        <p v-html="subskill.desciption" class="subskill__desciption" :class="{ cliptext: !active, shortMode }" @click="active = true"></p>
+        <p v-html="description" class="subskill__desciption" :class="{ cliptext: !active, shortMode }" @click="active = true"></p>
         <div class="subskill__effects" v-if="active">
-            <SpellEffects v-for="(value, leveling_idx) in subskill.leveling" :custom="custom" :key="leveling_idx" :pkey="`${idx}_${leveling_idx}`" :effect="value" :effectindex="leveling_idx"></SpellEffects>
+            <SpellEffects v-for="(value, leveling_idx) in leveling" :custom="custom" :key="leveling_idx" :pkey="`${idx}_${leveling_idx}`" :effect="value" :effectindex="leveling_idx"></SpellEffects>
         </div>
         <i v-else></i>
     </template>
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SubSkill } from '../../api/DataTypes.js';
+import { RootRatio, SubSkill } from '../../api/DataTypes.js';
 import SpellEffects from './SpellEffects.vue';
 import SpellImage from '../../timeline/SpellImage.vue';
 
 
 const props = defineProps<{
-    subskill: SubSkill,
+    img?: string,
+    description: string,
+    leveling: RootRatio[],
     custom: boolean,
     idx: string
 }>();
 
-const shortMode = computed(() => (props.subskill.desciption.length < 3000) && props.subskill.leveling.length == 0);
-const active = ref(props.subskill.leveling.length > 0);
+const shortMode = computed(() => (props.description.length < 3000) && props.leveling.length === 0);
+const active = ref(props.leveling.length > 0);
 </script>
 <style>
 .subskill__img {

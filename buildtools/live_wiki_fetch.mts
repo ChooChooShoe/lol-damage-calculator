@@ -231,7 +231,7 @@ class SkillObj {
   grounded: string | undefined;
   knockdown: string | undefined;
   img: string[];
-  desciption: string[];
+  description: string[];
   leveling: RootRatio[];
 
   constructor(name: string, div: Element, header_aside: Element, infobox: Element) {
@@ -259,7 +259,7 @@ class SkillObj {
       if (s.includes('/revision')) return s.split('/revision')[0];
       return s;
     });
-    this.desciption = [...div.querySelectorAll('p')].map(x => x.innerHTML);
+    this.description = [...div.querySelectorAll('p')].map(x => x.innerHTML);
 
     this.leveling = [...div.querySelectorAll('.skill_leveling')]
       .map(x => [x.querySelectorAll('dt'), x.querySelectorAll('dd')])

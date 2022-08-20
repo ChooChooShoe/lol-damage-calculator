@@ -254,7 +254,7 @@ export interface Image {
 //     spelleffects?: string;
 //     projectile?: string;
 //     img: string[];
-//     desciption: string[];
+//     description: string[];
 //     leveling: Leveling[];
 //     image: Image;
 //     maxrank: number;

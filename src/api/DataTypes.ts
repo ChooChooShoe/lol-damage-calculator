@@ -45,7 +45,7 @@ export interface SkillModel {
 }
 export interface SubSkill {
   img?: string;
-  desciption: string;
+  description: string;
   leveling: RootRatio[];
 }
 
