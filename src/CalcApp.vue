@@ -1,14 +1,14 @@
 <template>
   <!-- <SettingsModel ref="settings"></SettingsModel> -->
 
-  <SideBody :damageSources="damageSources" :player="player" :target="target"></SideBody>
+  <SideBody></SideBody>
 
   <div class="flex main">
     <ChampionDiv mode="player" :obj="player"></ChampionDiv>
     <ChampionDiv mode="target" :obj="target"></ChampionDiv>
 
     <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
-    <!-- <AADamageSource :damageSources="damageSources" :player="player" :target="target"></AADamageSource> -->
+    <!-- <AADamageSource></AADamageSource> -->
     <ChampionSpellDamageSource v-for="(spellObj, idx) in activeChampionModel.skills" :key="spellObj.name" :spell="spellObj" :champion="player.champ" v-if="player.champ" :idx="`skill_${idx}`"></ChampionSpellDamageSource>
 
     <CustomDamageSource v-for="(ds, idx) in customDamageSources" :key="idx" :index="idx" ></CustomDamageSource>
@@ -35,6 +35,7 @@ import { onBeforeRouteUpdate, useRouter, useRoute, RouteLocationNormalizedLoaded
 import { ChampionName, ChampObjModel } from "./model/ChampObj";
 import { DamageSource } from "./javascript/league_data";
 import { ChampionListSkills, SkillModel } from "./api/DataTypes";
+import { player, target } from "./global/state";
 
 const router = useRouter();
 
@@ -68,9 +69,8 @@ onBeforeRouteUpdate(async (to, from) => {
 });
 
 const n = validateNames(useRoute());
-
-const player = reactive<ChampObjModel>(new ChampObjModel('player', n.player));
-const target = reactive<ChampObjModel>(new ChampObjModel('target', n.target));
+player.champ = n.player;
+target.champ = n.target;
 
 // const activeChampionModel = computed(() => ChampionListSkills[player.champ as keyof typeof ChampionListSkills])
 const activeChampionModel = reactive<ChampionListSkills>({ skills: {} });
@@ -89,23 +89,12 @@ watchEffect(async () => {
 const aaDamageSources = ref({});
 const champDamageSources = ref({});
 
-const damageSources: Ref<{ [key: string]: DamageSource }> = ref({});
-
 provide("player", player);
 provide("target", target);
-provide("damageSources", damageSources);
 
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);
 const customDamageSources = ref([]);
-
-const skillpoints_used = () => {
-  let sum = 0;
-  for (const x in damageSources) {
-    // sum += (damageSources.value[x].spellrankindex || 0) + 1;
-  }
-  return sum;
-};
 
 // mounted: function () {
 //   console.log("process.env", process.env);

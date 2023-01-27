@@ -4,30 +4,48 @@
     <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
     <span>
       <RecursiveRatioDisplay :val="ratios" display="value"> </RecursiveRatioDisplay>
-      <DamageTypeField v-model="damage_type"></DamageTypeField>
+
+      <EffectTypeField v-model="effectType"></EffectTypeField>
+      <DamageTypeField v-model="damage_type" v-if="effectType === 'Damage' || effectType === 'Shield'"></DamageTypeField>
     </span>
 
-    <span class="ad spelleffect__title">Pre-Mitigation: </span>
-    <div>
-      <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
-      <span class="spelleffect__total">{{ ` = ${Math.round(dmg_premitigation)} ` }}</span>
-      <template v-if="repeat !== 1">
-        <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
-        <span class="spelleffect__total">{{ Math.round(dmg_premitigation * repeat) }}</span>
-        <span class="spelleffect__total">&nbsp;</span>
-      </template>
-    </div>
-    <span class="ap spelleffect__title">Post-Mitigation: </span>
-    <div>
-      <RecursiveRatioDisplay :val="ratios" display="dmg_postmitigation"> </RecursiveRatioDisplay>
-      <span class="spelleffect__total">{{ ` = ${Math.round(dmg_postmitigation)} ` }}</span>
-      <template v-if="repeat !== 1">
-        <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
-        <span class="spelleffect__total">{{ Math.round(dmg_postmitigation * repeat) }}</span>
-        <span class="spelleffect__total">&nbsp;</span>
-      </template>
-      <span v-html="damage_type_user(damage_type)"></span>
-    </div>
+    <template v-if="effectType === 'Shield'">
+      <span class="ad spelleffect__title">Shield Strength: </span>
+      <div>
+        <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
+        <span class="spelleffect__total">{{ ` = ${Math.round(ratios.damagePreTotal.value)} ` }}</span>
+        <template v-if="repeat !== 1">
+          <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
+          <span class="spelleffect__total">{{ Math.round(dmg_premitigation * repeat) }}</span>
+          <span class="spelleffect__total">&nbsp;</span>
+        </template>
+      </div>
+    </template>
+
+
+    <template v-if="effectType === 'Damage'">
+      <span class="ad spelleffect__title">Pre-Mitigation: </span>
+      <div>
+        <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
+        <span class="spelleffect__total">{{ ` = ${Math.round(dmg_premitigation)} ` }}</span>
+        <template v-if="repeat !== 1">
+          <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
+          <span class="spelleffect__total">{{ Math.round(dmg_premitigation * repeat) }}</span>
+          <span class="spelleffect__total">&nbsp;</span>
+        </template>
+      </div>
+      <span class="ap spelleffect__title">Post-Mitigation: </span>
+      <div>
+        <RecursiveRatioDisplay :val="ratios" display="dmg_postmitigation"> </RecursiveRatioDisplay>
+        <span class="spelleffect__total">{{ ` = ${Math.round(dmg_postmitigation)} ` }}</span>
+        <template v-if="repeat !== 1">
+          <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
+          <span class="spelleffect__total">{{ Math.round(dmg_postmitigation * repeat) }}</span>
+          <span class="spelleffect__total">&nbsp;</span>
+        </template>
+        <span v-html="damage_type_user(damage_type)"></span>
+      </div>
+    </template>
     <div class="spelleff--content" :class="{ active: editMode }" v-if="editMode">
       <hr />
       <div class="column">
@@ -87,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { calc_dmg_onhit, spell_ratios, CORE_STATS, DamageSource, DamageType } from "../../javascript/league_data";
+import { calc_dmg_onhit, spell_ratios, CORE_STATS, DamageSource } from "../../javascript/league_data";
 
 import { damage_type_user } from "./SpellHelper";
 import SpellField from "./SpellField.vue";
@@ -100,9 +118,12 @@ import { computed, inject, onMounted, onUnmounted, provide, reactive, Ref, ref, 
 import NumInput from "../simple/NumInput.vue";
 import RecursiveRatioDisplay from "./RecursiveRatioDisplay.vue";
 import { RatioObjComputed, stat_to_display } from "./ratios_info";
-import { RootRatio, SkillModel, SubRatio } from "../../api/DataTypes";
+import { DamageType, EffectType, RootRatio, SkillModel, SubRatio } from "../../api/DataTypes";
 import { RefUnwrapBailTypes } from "@vue/reactivity";
 import { ChampObjModel } from "../../model/ChampObj";
+import { damageSources, player, target } from "../../global/state";
+import DropdownSelect from "../simple/DropdownSelect.vue";
+import EffectTypeField from "../effects/EffectTypeField.vue";
 
 const CORE_RATIOS = [
   "player_total_ap",
@@ -129,11 +150,10 @@ const { effect, effectindex, pkey, custom } = defineProps<{
   custom: boolean,
 }>()
 
-const rootData = { player: inject<ChampObjModel>("player")!, target: inject<ChampObjModel>("target")! };
-
 
 const rankindex = inject<Ref<number>>("rankindex")!;
-const damage_type = ref("Magic");
+const damage_type = ref<DamageType>("Magic");
+const effectType = ref<EffectType>("Damage");
 const damageSource = new DamageSource('Magic', 8);
 
 const skillbase = inject<SkillModel>('skillbase');
@@ -147,36 +167,37 @@ watchEffect(() => {
   // }
   // console.log("computed() ratios", ratios, effect.ratio_obj);
 });
-watchEffect(() => {
-  // auto updates values when effect
-  // damage_type.value = effect.damage_type;
-  damage_type.value = skillbase?.damagetype[0] || 'None';
-
-  // if(clear) {
-
-  // }
-});
 
 
-
+function makeRatio(val: RootRatio): RootRatio & RatioObjComputed;
+function makeRatio(val: SubRatio): SubRatio & RatioObjComputed;
 function makeRatio(val: SubRatio): SubRatio & RatioObjComputed {
-  const damageValue = computed(() => Array.isArray(val.values) ? val.values[rankindex.value] : val.values);
+  const damageValue = computed((): number => {
+    let v = 0;
+    if (Array.isArray(val.values)) {
+      if (val.apply === 'based_on_level') v = val.values[17];
+      else v = val.values[rankindex.value];
+    }
+    else v = val.values;
+    if (val.apply === '%')
+      v = v / 100;
+    return v;
+
+  });
   const damagePreValue = computed((): number => {
     let value = damageValue.value;
-    if (val.apply === '%')
-      value = value / 100;
 
     if (val.units === '' || val.units === 'percent' || val.user === 'none')
       return value;
-    const user = val.user === 'target' ? rootData.target : rootData.player;
+    const user = val.user === 'target' ? target : player;
     const statValue = Number(user[val.stat as keyof typeof user]);
     if (isNaN(statValue)) {
-      console.warn('StatMissing', val.units, 'for ratio', val, 'missing for obj', user);
-      return 0;
+      console.warn('StatMissing', val, 'for ratio', user, 'missing for value=', value);
+      return value;
     }
     return statValue * value;
   });
-  const damagePostValue = computed(() => calc_dmg_onhit(rootData.player, rootData.target, damagePreValue.value, damage_type.value))
+  const damagePostValue = computed(() => calc_dmg_onhit(player, target, damagePreValue.value, damage_type.value))
   const sub_calcs: Array<SubRatio & RatioObjComputed> = [];
   if (val.sub_ratios) {
     for (let r of val.sub_ratios) {
@@ -212,6 +233,17 @@ defineExpose({
   ratios,
 });
 
+watchEffect(() => {
+  // auto updates values when effect
+  // damage_type.value = effect.damage_type;
+  damage_type.value = ratios.damagetype || skillbase?.damagetype[0] || 'None';
+  effectType.value = ratios.effectType || 'Damage';
+
+  // if(clear) {
+
+  // }
+});
+
 function addRatio(x: string) {
   const made = makeRatio({
     values: 1,
@@ -224,9 +256,6 @@ function addRatio(x: string) {
   ratios.sub_ratios?.push(made);
   ratios.sub_calcs.push(made);
 }
-interface DamageSources { [key: string]: DamageSource[] }
-const damageSources = inject<Ref<DamageSources>>("damageSources")?.value;
-
 onMounted(() => {
   if (damageSources) damageSources[pkey] = [damageSource];
 });

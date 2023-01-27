@@ -33,7 +33,7 @@ export interface SkillModel {
   display_name: string;
   maxrank: number | undefined;
   image: Image | undefined;
-  targeting: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector'  | undefined;
+  targeting: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector' | undefined;
   affects: string | undefined;
   damagetype: ("Physical" | "Magic" | "True")[];
   spelleffects: 'Proc' | 'Area' | 'Spell' | 'See Notes' | 'Basic' | 'Default' | 'AOE DOT' | 'DOT' | 'Pet' | 'Non-Damaging' | undefined;
@@ -52,7 +52,32 @@ export interface SubSkill {
 export interface RootRatio extends SubRatio {
   name: string;
   raw: string;
+  damagetype?: DamageType;
+  effectType?: EffectType;
+  gainStat?: string;
 }
+export type DamageType = "Physical" | "Magic" | "True" | "None";
+export type EffectType = "Damage" | "Heal" | "Shield" | "Gain" | "Unique";
+
+export enum ValidDamageType  {
+  physical = "Physical",
+  magic = "Magic",
+  true = "True",
+  none = "None",
+}
+export enum ValidEffectType  {
+  damage = "Damage",
+  heal = "Heal",
+  shield = "Shield",
+  block = "Shield",
+  gain = "Gain",
+  bonus = "Gain",
+  ad = "Gain",
+  unique = "Unique",
+}
+
+
+
 export interface SubRatio {
   values: number | number[];
   apply?: "%" | 'based_on_level',

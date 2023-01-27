@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
+import _ from "lodash";
 import { saveFile } from "./fetch_utils.js";
+import { Overwrite } from "./OverwritePerks.js"
 
 console.log("Runes from CommunityDragon");
 
@@ -26,16 +28,8 @@ async function main() {
       i.root_ratios = [];
       for (const p of [wiki.description, wiki.description2, wiki.description3, wiki.description4]) {
         if (p && p.textContent && p.textContent.trim()) {
-          const text = p.textContent.trim().split('. ');
-          const leveling: RootRatio[] = [];
-          for (const i in text) {
-            const ratio = ratios_from_text(text[i]);
-            if (ratio.values !== 0)
-              leveling.push(Object.assign({ name: `Rune ${1 + Number(i)}:`, raw: text[i] }, ratio));
-
-          }
-          i.root_ratios.push({ description: p.innerHTML.trim(), leveling });
-
+          const subSkill = mutateDescriptionLine(p.textContent.trim(), p);
+          if (subSkill) i.root_ratios.push(subSkill);
         }
       }
       perks.set(i.id, i);
@@ -46,12 +40,6 @@ async function main() {
     }
   }
   // Attack model information to some runes.
-  perks.get(5001).stats = { HealthScaling: [15, 140] };
-  perks.get(5002).stats = { armor: 6 };
-  perks.get(5003).stats = { mr: 8 };
-  perks.get(5005).stats = { as: 10 };
-  perks.get(5007).stats = { ah: 8 };
-  perks.get(5008).stats = { Adaptive: 9 };
 
   let perkStyles: { [key: string]: any } = {};
   // '/lol-game-data/assets/' ''https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/
@@ -77,8 +65,9 @@ async function main() {
   }
   // const statmods = mutate_statmods(perks);
   const statmods = Object.fromEntries([...perks]);
-
-  saveFile("./src/runes/perks.json", { styles: perkStyles, perks: statmods });
+  const output = { styles: perkStyles, perks: statmods };
+  _.merge(output, Overwrite)
+  saveFile("./src/runes/perks.json", output);
   console.log("Goodbye");
 }
 function mutate_slots(
@@ -159,3 +148,16 @@ async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
   }
   return map;
 }
+function mutateDescriptionLine(text: string, p: HTMLElement): { description: string; leveling: RootRatio[]; } | null {
+  const textLines = text.split('. ');
+  console.log(`[INFO] Found line (${textLines.length}):`, text)
+  const leveling: RootRatio[] = [];
+  for (const i in textLines) {
+    const ratio = ratios_from_text(textLines[i]);
+    if (ratio.values !== 0)
+      leveling.push(Object.assign({ name: `Rune ${1 + Number(i)}:`, raw: textLines[i] }, ratio));
+
+  }
+  return { description: p.innerHTML.trim(), leveling }
+}
+

@@ -7,7 +7,7 @@
       <span v-else-if="modelValue  === 'Heal'" class="shield">healing</span>
       <span v-else-if="modelValue  === 'Shield'" class="shield">shielding</span>
       <span v-else-if="modelValue  === 'Unknown'" class="true">unknown damage</span>
-      <span v-else class="true">non-damaging ability</span>
+      <span v-else class="true">None</span>
     </template>
     <button :class="{ success: modelValue === 'none' }" @click="$emit('update:modelValue', 'none')">None</button>
     <button class="ad" :class="{ success: modelValue === 'Physical' }" @click="$emit('update:modelValue', 'Physical')">Physical</button>

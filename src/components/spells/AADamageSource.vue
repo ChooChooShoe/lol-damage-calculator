@@ -102,6 +102,7 @@
 
 <script>
 import { DamageSource, DamageType } from "../../javascript/league_data";
+import { damageSources, player } from "../../global/state";
 import NumInput from "../simple/NumInput.vue";
 
 export default {
@@ -109,7 +110,6 @@ export default {
   components: {
     NumInput,
 },
-  props: ["damageSources", "player", "target"],
   data: function () {
     return {
       customEffects: [0],
@@ -125,17 +125,17 @@ export default {
   mounted: function () {
     // Sets this.ds_ad.dmg_premitigation to always be player.total_ad
     // TODO: Kalista
-    let x = this.player;
+    let x = player;
     Object.defineProperty(this.ds_ad, "dmg_premitigation", {
       get() {
         return x.total_ad;
       },
     });
-    this.damageSources.AA = [this.ds_ad, this.ds_ph, this.ds_mg, this.ds_tr];
+    damageSources.AA = [this.ds_ad, this.ds_ph, this.ds_mg, this.ds_tr];
   },
   unmounted: function () {
     console.log("UNMOUNT AADamageSource")
-    delete this.damageSources.AA;
+    delete damageSources.AA;
   },
   watch: {
     repeat: function (val, old) {
@@ -148,10 +148,10 @@ export default {
   computed: {
     attack_damage: {
       get() {
-        return this.player.total_ad;
+        return player.total_ad;
       },
       set(value) {
-        this.player.total_ad = value;
+        player.total_ad = value;
       },
     },
   },

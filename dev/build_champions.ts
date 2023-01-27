@@ -1,7 +1,10 @@
-import { ChampionListSkills, StaticStats, WikiChampionData, WikiModuleChamptionData } from "../src/api/DataTypes.js";
+import { ChampionListSkills, StaticStats, WikiChampionData } from "../src/api/DataTypes.js";
 import { fetchAndSaveRealms, fetch_Module_ChampionData, saveFile } from "./fetch_utils.js";
 import { fetch_ddragon, fetch_live_wiki_skills, NeededRiotValues } from "./live_wiki_fetch.js";
 
+import _ from "lodash";
+import { Overwrite as OverwriteChampionList } from "./OverwriteChampions.js";
+import { Overwrite as OverwriteSkillList } from "./OverwriteSkills.js";
 console.log('Live Wiki Fetching for all data.');
 const DEBUG = false;
 
@@ -40,7 +43,9 @@ async function main() {
     }
     console.log("Awaiting all Promises");
     await Promise.all(promises);
+    _.merge(ChampionList, OverwriteChampionList)
     saveFile('./src/api/ChampionList.json', ChampionList)
+    _.merge(SkillList, OverwriteSkillList)
     saveFile('./src/api/ChampionListSkills.json', SkillList)
     console.log("Goodbye");
 

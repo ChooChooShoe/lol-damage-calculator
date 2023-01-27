@@ -1,6 +1,7 @@
 import parenthesis, { ArrayTree } from "parenthesis";
-import { RootRatio, SubRatio } from "../src/api/DataTypes.js";
+import { DamageType, EffectType, RootRatio, SubRatio, ValidDamageType, ValidEffectType } from "../src/api/DataTypes.js";
 import { saveFile } from "./fetch_utils.js";
+import { list_check, table_check } from "./mutate_untils.js";
 
 const DEBUG = false;
 
@@ -36,14 +37,6 @@ const keyword_to_type_ext = {
   bonus: "bonus",
   base: "base",
 };
-function table_check<T>(
-  table: { [key: string]: T },
-  search: string,
-  fallback: T
-): T {
-  for (const key in table) if (search.includes(key)) return table[key];
-  return fallback;
-}
 
 function units_to_user_and_stat(unit: string | undefined | null): {
   user: "none" | "player" | "target";
@@ -52,11 +45,11 @@ function units_to_user_and_stat(unit: string | undefined | null): {
   if (!unit) return { user: "none", stat: "" };
   const tunit = unit.toLowerCase().trim();
 
-  const player_stat = table_check(keyword_to_player_stat, tunit, tunit);
+  const player_stat = table_check(tunit, keyword_to_player_stat, tunit);
   let bbt: string;
   if (player_stat === "hp")
-    bbt = table_check(keyword_to_type_ext, tunit, "total");
-  else bbt = table_check(keyword_to_type, tunit, "total");
+    bbt = table_check(tunit, keyword_to_type_ext, "total");
+  else bbt = table_check(tunit, keyword_to_type, "total");
   let stat = `${bbt}_${player_stat}`;
 
   let user: "player" | "target" = tunit.includes("target")
@@ -82,6 +75,36 @@ if (DEBUG) {
 export function ratios_from_text(full_text: string): SubRatio {
   let root = parenthesis.parse(full_text);
   return makeRatioObj(root);
+}
+
+export function spellEffectFromDescription(name: string, desc: string): RootRatio {
+  let damagetype: DamageType = table_check(desc, ValidDamageType, 'None');
+  let effectType: EffectType | undefined = table_check(desc, ValidEffectType, 'Unique');
+  let gainStat = undefined;
+  let tree_root = parenthesis.parse(desc);
+
+  console.log(`[DEBUG] spellEffectFromDescription => ${name} ${desc}`)
+  return Object.assign({
+    name: desc.split(':')[0] || name,
+    raw: desc,
+    damagetype,
+    effectType,
+    gainStat,
+  }, makeRatioObj(tree_root))
+}
+export function spellEffectFromStrings(name: string, raw: string): RootRatio {
+  let damagetype: DamageType = table_check(name, ValidDamageType, 'None');
+  let effectType: EffectType | undefined = table_check(name, ValidEffectType, 'Unique');
+  let gainStat = undefined;
+  let tree_root = parenthesis.parse(raw);
+  // console.log(`[DEBUG] spellEffectFromStrings => ${name}: ${raw}`)
+  return Object.assign({
+    name,
+    raw,
+    damagetype,
+    effectType,
+    gainStat,
+  }, makeRatioObj(tree_root))
 }
 export function makeRatioObj(root: ArrayTree): SubRatio {
   let pre_arr: any = [],
@@ -127,7 +150,7 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
     units = "";
   }
   if (post) {
-    console.log("[WARN] Replacing units '", units, "' becouse of post ", post);
+    console.log("[WARN] Replacing units '", units, "' because of post ", post);
     units = level_to_ratio(post).units;
   }
   const { user, stat } = units_to_user_and_stat(units);
@@ -141,12 +164,12 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
     stat,
   };
 }
-function level_to_ratio(fulltext: string): {
+function level_to_ratio(fullText: string): {
   values: number | number[];
   apply: "%" | undefined;
   units: string;
 } {
-  let s = fulltext.trim().replace(/^\+/, "").split("%", 2);
+  let s = fullText.trim().replace(/^\+/, "").split("%", 2);
   const leveling = s[0];
   let apply: "%" | undefined = undefined;
   let units: string = "";
@@ -156,9 +179,9 @@ function level_to_ratio(fulltext: string): {
     apply = "%";
     units = s[1] || "";
   }
-  // if (fulltext === 'based on level') return { values: -1, units: leveling, utype: 'internal' };
+  // if (fullText === 'based on level') return { values: -1, units: leveling, utype: 'internal' };
   // if (leveling.trim() === "0.5 +  0.175") return { values: [0.5, 0.675], units: "with_infinity_edge", utype: 'internal' };
-  // if (fulltext === "+ Siphoning Strike stacks") return { values: [1], units: "Siphoning Strike stacks", utype: 'internal' };
+  // if (fullText === "+ Siphoning Strike stacks") return { values: [1], units: "Siphoning Strike stacks", utype: 'internal' };
 
   let fail_count = 0;
   const arr = leveling.split(/[/−]/).map((x: string) => {

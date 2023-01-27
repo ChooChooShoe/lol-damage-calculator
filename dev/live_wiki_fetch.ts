@@ -3,7 +3,7 @@ import { JSDOM } from 'jsdom';
 import parenthesis, { ArrayTree } from 'parenthesis';
 import { ChampionListSkills, Image, RootRatio, ScaleValue, SkillModel, SubRatio } from "../src/api/DataTypes.js";
 import { fileExists, saveFile, saveFileBlob } from './fetch_utils.js';
-import { makeRatioObj } from './skill_ratios_parse.js';
+import { makeRatioObj, spellEffectFromDescription, spellEffectFromStrings } from './skill_ratios_parse.js';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
@@ -184,9 +184,9 @@ class SkillObj implements SkillModel {
 
     this.spelleffects = mutate_val("spelleffects", valid_spelleffects, undefined);
     this.spellshield = mutate_val("spellshield", valid_spellshield, undefined);
-    this.projectile =  mutate_val("projectile", valid_projectile, undefined);
-    this.grounded =  mutate_val("grounded", valid_grounded, undefined);
-    this.knockdown =  mutate_val("knockdown", valid_knockdown, undefined);
+    this.projectile = mutate_val("projectile", valid_projectile, undefined);
+    this.grounded = mutate_val("grounded", valid_grounded, undefined);
+    this.knockdown = mutate_val("knockdown", valid_knockdown, undefined);
     // model.skill[name].notes = null; 
 
     // this.img = [...main_div.querySelectorAll('img')].map(img => img.src)
@@ -201,20 +201,28 @@ class SkillObj implements SkillModel {
       //If an odd about of table divs, just skip it. See Aatrox "World Ender"
       if (!div_2) continue;
 
-      const description = div_2.querySelector('p')?.innerHTML || '';
+      const leveling: RootRatio[] = [];
+      const descriptionHtml = div_2.querySelector('p')?.innerHTML || '';
+      const descriptionText = div_2.querySelector('p')?.textContent || '';
+
+      const desc_ratios = descriptionText.split(".").map((x, idx) => spellEffectFromDescription(`Line ${idx + 1}:`, x));
+      leveling.push(...desc_ratios.filter(x => {
+        // Number 0 or number with no sub_ratios
+        if (typeof x.values === 'number') {
+          if (x.values === 0 || !x.sub_ratios) return false;
+        }
+        return true;
+      }));
 
       const dt_list = [...div_2.querySelectorAll('dt')].map(x => x.textContent || "");
       const dd_list = [...div_2.querySelectorAll('dd')].map(x => x.textContent || "");
 
-      const leveling: RootRatio[] = [];
 
       for (const idx in dt_list) {
-        let fulltext = dd_list[idx];
-        let root = parenthesis.parse(fulltext);
-        let ratio_root = { name: dt_list[idx], raw: fulltext };
-        leveling.push(Object.assign(ratio_root, makeRatioObj(root)));
+        const root_ratio = spellEffectFromStrings(dt_list[idx], dd_list[idx])
+        leveling.push(root_ratio);
       }
-      this.subskills.push({ img, description, leveling });
+      this.subskills.push({ img, description: descriptionHtml, leveling });
     }
 
     // this.leveling = [...main_div.querySelectorAll('.skill_leveling')]
@@ -267,4 +275,3 @@ const valid_spellshield = ['Blocked', "Not Blocked", "See Notes", "Missing"]
 const valid_projectile = ['Blocked', "See Notes"]
 const valid_grounded = ['Disabled', "See Notes", 'Not Disabled']
 const valid_knockdown = ['Interrupted', "See Notes", 'Not Interrupted']
-

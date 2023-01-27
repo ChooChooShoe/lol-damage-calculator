@@ -198,13 +198,23 @@ export class ChampObjModel {
     get total_critdamage() { return this.base_critdamage + this.bonus_critdamage }
     set total_critdamage(v) { this.bonus_critdamage = v - this.base_critdamage }
 
+    runes: Rune[] = Array(9)
+    items: Item[] = Array(6)
+
     constructor(user: string, champ: ChampionName) {
         this.user = user
         this._champ = champ;
         this.updateBaseStats();
     }
 }
+class Item {
 
+}
+class Rune {
+    constructor(id: number) {
+
+    }
+}
 // Stats Gernerator
 function statsGen(): string {
     let s = [];

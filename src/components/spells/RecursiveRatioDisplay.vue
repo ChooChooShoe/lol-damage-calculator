@@ -19,11 +19,14 @@ import { SubRatio } from '../../api/DataTypes';
 const props = defineProps<{ val: SubRatio & RatioObjComputed, recursive?: boolean | undefined, display: 'value' | 'dmg_premitigation' | 'dmg_postmitigation' }>()
 
 const dispPre = computed(() => {
-  if (props.display === 'value') return props.val.apply || '';
+  if (props.display === 'value') {
+    if (props.val.apply === 'based_on_level') return " (based on level)";
+    return props.val.apply || '';
+  }
   return '';
 });
 const dispPost = computed(() => {
-  if (props.display === 'value') return props.val.units;
+  if (props.display === 'value') return props.val.post || props.val.units;
   return '';
   // return props.val.units.slice(1).replace('bonus', '<i>bonus</i>');
 });
@@ -31,9 +34,12 @@ const data = computed(() => stat_to_display[props.val.stat || 'base'] || default
 
 const values = computed(() => {
   switch (props.display) {
-    case 'value': return props.val.values;
-    case 'dmg_premitigation': return Math.round(props.val.damagePostValue);
-    case 'dmg_postmitigation': return Math.round(props.val.damagePostValue);
+    case 'value': {
+      if (props.val.apply === 'based_on_level' && Array.isArray(props.val.values)) return `${props.val.values[0]} − ${props.val.values[props.val.values.length - 1]}`
+      return props.val.values;
+    }
+    case 'dmg_premitigation': return Math.round(props.val.damagePreValue.value) || Math.round(props.val.damagePreValue) || 0;
+    case 'dmg_postmitigation': return Math.round(props.val.damagePostValue.value) || Math.round(props.val.damagePostValue) || 0;
     default: return 0;
   }
 });

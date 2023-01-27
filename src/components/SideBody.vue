@@ -27,10 +27,10 @@
 <script>
 // import SettingsModel from "./SettingsModel.vue"
 import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
+import { damageSources, player, target } from "../global/state";
 import DamageBlock from "./sidebar/DamageBlock.vue";
 export default {
   name: "SideBody",
-  props: ["damageSources", "player", "target"],
   components: { DamageBlock },
   methods: {
     rnd: function (n, digits) {
@@ -95,8 +95,8 @@ export default {
       ];
     },
     output: function () {
-      const p = this.player;
-      const t = this.target;
+      const p = player;
+      const t = target;
       let output = {
         preTotalDmg: 0,
         preMagicDmg: 0,
@@ -114,15 +114,15 @@ export default {
         console.log("Re-calc 4.0 failed, missing player and target.");
         return output;
       }
-      console.log("Re-calc 4.0 start",p,t,this.damageSources);
-      
-      for (const [key, sourceArray] of Object.entries(this.damageSources)) {
-        console.log("Calc for", key, "effecis is", sourceArray);
+      console.log("Re-calc 4.0 start", p, t, damageSources);
+
+      for (const [key, sourceArray] of Object.entries(damageSources)) {
+        console.log("Calc for", key, "effects is", sourceArray);
         for (const source of sourceArray) {
           const times_hit = Math.max(source.repeat, 0) || 0;
           let pre = source.dmg_premitigation;
           let post = source.dmg_postmitigation;
-          // A postIsManual damageSource has the dmg_postmitigation cauculated for us.
+          // A postIsManual damageSource has the dmg_postmitigation calculated for us.
           if (source.postIsManual) {
             post = calc_dmg_onhit(p, t, pre, source.damage_type);
             source.dmg_postmitigation = post;
@@ -184,6 +184,7 @@ export default {
   width: 20em;
   float: right;
 }
+
 @media (max-width: 40em) {
   .sidebody {
     position: inherit;
