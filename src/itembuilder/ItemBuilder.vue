@@ -1,13 +1,4 @@
 <template>
-  <header>
-    <h1 class="title">League of Legends Damage Calculator: version {{ appVersion }} for LoL patch {{ displayVersion }}</h1>
-    <p class="subtitle">
-      With Data from
-      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki"> League of Legends Wiki </a>
-      - Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> - View
-      <a href="https://github.com/ChooChooShoe/lol-damage-calculator"> source on GitHub </a>
-    </p>
-  </header>
   <div class="main-full itembuilder">
     <ChampionDiv value="player"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>

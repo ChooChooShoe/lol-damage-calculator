@@ -5,16 +5,11 @@
 </template>
 
 <script setup lang="ts">
-
-import { RootRatio } from "../../api/DataTypes";
+import { SubSkill } from "../../api/DataTypes";
 import SubSkillVue from "./SubSkillVue.vue";
 
 const { subskills, custom } = defineProps<{
-    subskills: {
-        img?: string;
-        description: string;
-        leveling: RootRatio[];
-    }[],
+    subskills: SubSkill[],
     idx: string,
     custom: boolean,
 }>()

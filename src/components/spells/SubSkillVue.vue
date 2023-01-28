@@ -8,7 +8,7 @@
         <div class="subskill__img ttam__toggle">
             <SpellImage :iconPath="img"></SpellImage>
             <label class="ttam__toggletitle" title="Click to enable/disable" v-if="!shortMode">
-                {{ String.fromCharCode(65 + idx) }}
+                {{ String.fromCharCode(65 + Number(idx.charAt(idx.length-1))) }}
                 <input type="checkbox" v-model="active" />
             </label>
         </div>

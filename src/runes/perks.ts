@@ -14,20 +14,20 @@ export type Perk = {
   longDesc: string;
   iconPath: string;
   endOfGameStatDescs: string[];
-  stats?: { [key: string]: any };
   released?: string;
   path?: string;
   slot?: string;
   cooldown?: string;
-  root_ratios?: { description: string, leveling: RootRatio[] }[]
+  subskills?: { description: string, leveling: RootRatio[] }[];
+  stats?: { [key: string]: any };
 };
 
 function isPerkKey(s: string): s is PerkKey { return s in perksObj.perks }
 function isStyleKey(s: string): s is StyleKey { return s in perksObj.styles }
 
-export function perk(perk: number) {
+export function perk(perk: number): Perk | undefined {
   const k = String(perk);
-  if (isPerkKey(k)) return perksObj.perks[k];
+  if (isPerkKey(k)) return perksObj.perks[k] as Perk;
 }
 export function perkStyle(style: number) {
   return perksObj.styles[style.toString() as StyleKey];

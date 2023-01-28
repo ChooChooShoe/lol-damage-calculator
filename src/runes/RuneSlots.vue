@@ -3,7 +3,7 @@
         <template v-for="(p, idx) in runeslot.perks.map(pid => perk(pid))" :key="p.id">
             <SinglePerk :is-key-stone="runeslot.slotLabel === ''" :name="p.name" :iconPath="p.iconPath" :tooltip="p.longDesc" :data-selected="selection ? selection === p.id : 'none'" @click="$emit('update:selection', p.id)"></SinglePerk>
 
-            <!-- <SubSkillList :subskills="p.root_ratios" :idx="'rune_' + String(idx)" :custom="false"></SubSkillList> -->
+            <!-- <SubSkillList :subskills="p.subskills" :idx="'rune_' + String(idx)" :custom="false"></SubSkillList> -->
         </template>
     </div>
 </template>

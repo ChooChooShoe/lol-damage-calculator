@@ -12,11 +12,12 @@
     <router-view></router-view>
   </main>
   <footer>
-    <!-- <p>
+    <p>
       <router-link class="link" to="/">Home</router-link>
       <router-link class="link" to="/c/p/vs/t">Exmaple</router-link>
-      <router-link class="link" to="/404">404</router-link>
-    </p> -->
+      <router-link class="link" to="/runes">Runes</router-link>
+      <router-link class="link" to="/itembuilder">Item Builder</router-link>
+    </p>
   </footer>
   <datalist id="list-of-champions">
     <template v-for="item in Object.keys(championList)" :key="item">

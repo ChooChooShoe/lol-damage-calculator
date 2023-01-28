@@ -176,7 +176,7 @@ async function onItemsJsonResponse(riotJson: { data: { [x: string]: RiotItemEntr
 
         const xxx:any = [];
         for (const [key, value] of Object.entries(wikiItems)) {
-            value.effects = undefined;
+            // value.effects = undefined;
             xxx.push(Object.assign({name:key}, value))
         }
         await saveFile("./.debug/Module_ItemData.json", xxx);

@@ -49,6 +49,15 @@ export interface SubSkill {
   leveling: RootRatio[];
 }
 
+export interface SubRatio {
+  values: number | number[];
+  apply?: "%" | 'based_on_level',
+  units: string;
+  sub_ratios?: SubRatio[];
+  post?: string;
+  user?: "none" | "player" | "target";
+  stat: string;
+}
 export interface RootRatio extends SubRatio {
   name: string;
   raw: string;
@@ -74,18 +83,6 @@ export enum ValidEffectType  {
   bonus = "Gain",
   ad = "Gain",
   unique = "Unique",
-}
-
-
-
-export interface SubRatio {
-  values: number | number[];
-  apply?: "%" | 'based_on_level',
-  units: string;
-  sub_ratios?: SubRatio[];
-  post?: string;
-  user?: "none" | "player" | "target";
-  stat: string;
 }
 
 export type RatioValue = number | number[];
