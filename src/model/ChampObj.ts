@@ -1,5 +1,6 @@
 
 import championList from "../api/ChampionList.json";
+import { Perk, PerkSelections } from "../runes/perks";
 
 export function getBaseStatsObjForChampion(champ: keyof typeof championList | null): BaseStatsObj {
     if (champ && champ in championList)
@@ -96,6 +97,11 @@ export class ChampObjModel {
 
     lifesteal = 0
     spellvamp = 0
+    omnivamp = 0;
+    pysicalvamp = 0;
+
+    tenacity = 0;
+    slow_resist = 0;
 
     base_hp = 0
     bonus_hp = 0
@@ -198,13 +204,29 @@ export class ChampObjModel {
     get total_critdamage() { return this.base_critdamage + this.bonus_critdamage }
     set total_critdamage(v) { this.bonus_critdamage = v - this.base_critdamage }
 
-    runes: Rune[] = Array(9)
+    // runes: Perk[] = Array(9)
     items: Item[] = Array(6)
+
+
+    bountyHunterStacks = 0;
+    darkHarvestStacks = 0;
+    legendStacks = 0;
+    runes: PerkSelections;
+
 
     constructor(user: string, champ: ChampionName) {
         this.user = user
         this._champ = champ;
         this.updateBaseStats();
+        this.runes = new PerkSelections();
+    }
+
+    public isRuneActive(runename: string): boolean {
+        for (const p of this.runes.primarySelections) {
+            if (runename === p.name)
+                return true;
+        }
+        return false;
     }
 }
 class Item {

@@ -1,138 +1,129 @@
 <template>
-  <div class="blockstat" :class="[totalClass, bonusClass]">
-    <NumInput ref="input" class="blockstat__-input total" :mode="mode" :modelValue="total" @update:modelValue="x => $emit('update:total', x)"> </NumInput>
+  <div :class="[totalClass, bonusClass]" class="blockstat field col-12 md:col-6">
+    <!-- <NumInput ref="input" class="blockstat__-input total" :mode="mode" :modelValue="total"
+      @update:modelValue="x => $emit('update:total', x)"> </NumInput> -->
 
-    <div ref="local" class="blockstat__tooltipcontent simplebg">
+    <label :for="inputId" :class="labelClass">{{ title }}</label>
+
+
+    <div class="p-inputgroup">
+      <!-- <span class="p-inputgroup-addon">$</span> -->
+
+      <slot name="input">
+        <InputNumber :inputId="inputId" :modelValue="total" inputClass="blockstat__-input total"
+          @update:modelValue="x => $emit('update:total', x)" mode="decimal" locale="en-US" :maxFractionDigits="3"
+          :suffix="suffix" :useGrouping="false" :allowEmpty="false" showButtons :highlightOnFocus="true"
+          @focus="(e) => { tooltip = true; }" @blur="tooltip = false" :step="step" :min="min" :max="max" />
+      </slot>
+      <Button icon="pi pi-delete-left" class="p-button-danger backspace-icon" :class="[totalClass]"
+        @click="clearStat()" />
+    </div>
+
+    <div ref="local" class="blockstat__tooltipcontent simplebg" :data-visable="tooltip">
       <p v-html="title"></p>
       <hr />
-      <p><slot name="default"></slot></p>
-      <hr />
-      <p v-if="!hideBase">
-        Current {{ title }}: <b class="total">{{ input?.displayValue }}</b
-        >{{ suffix }}
-        <span v-if="hasBase">
-          (<b class="base">{{ rnd(base) }}</b
-          >{{ suffix }} base + <b class="bonus">{{ rnd(bonus) }}</b
-          >{{ suffix }} bonus)
-        </span>
+      <p>
+        <slot name="default"></slot>
       </p>
-      <slot name="footer"></slot>
+      <hr />
+      <slot name="footer">
+        <p>
+          Current {{ title }}: <b class="total">{{ total }}</b>{{ suffix }}
+          <span v-if="hasBase">
+            (<b class="base">{{ Math.round(base!) }}</b>{{ suffix }} base + <b class="bonus">{{
+              Math.round(bonus!)
+            }}</b>{{ suffix }}
+            bonus)
+          </span>
+        </p>
+      </slot>
     </div>
   </div>
-  <i class="backspace-icon" :class="[totalClass]" @click="clearStat()">
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M19,5H9.83a3,3,0,0,0-2.12.88L2.29,11.29a1,1,0,0,0,0,1.42l5.42,5.41A3,3,0,0,0,9.83,19H19a3,3,0,0,0,3-3V8A3,3,0,0,0,19,5Zm1,11a1,1,0,0,1-1,1H9.83a1.05,1.05,0,0,1-.71-.29L4.41,12,9.12,7.29A1.05,1.05,0,0,1,9.83,7H19a1,1,0,0,1,1,1ZM16.71,9.29a1,1,0,0,0-1.42,0L14,10.59l-1.29-1.3a1,1,0,0,0-1.42,1.42L12.59,12l-1.3,1.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L14,13.41l1.29,1.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L15.41,12l1.3-1.29A1,1,0,0,0,16.71,9.29Z"
-      />
-    </svg>
-  </i>
 </template>
 
-<script>
+<script lang="ts">
+//Ouside of the setup scope so all BlockStats will update the number.
+let refCount = 0;
+</script>
+
+<script setup lang="ts">
 import { computed, inject, onMounted, ref, toRefs } from "vue";
 import NumInput from "./NumInput.vue";
-export default {
-  props: {
-    base: Number,
-    bonus: Number,
-    total: Number,
-    title: String,
-    stat: String,
-    mode: String,
-    readonly: Boolean,
-    suffix: String,
-    hideBase: Boolean,
-    min: {
-      type: Number,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      default: Infinity,
-    },
-  },
-  setup(props) {
-    const { base, bonus, total, suffix } = toRefs(props);
-    const local = ref(null);
-    const input = ref(null);
-    const hasBase = base.value;
-    let statname = `Attack Damage`;
-    return {
-      local,
-      input,
-      validity: true,
-      validationMessage: "",
-      subtitle: `Basic attacks deal <span class="physical-damage">physical damage sources</span>`,
-      body: ``,
-      statname,
-      rnd: (val) => Math.round(val),
-      hasBase,
-      totalClass: computed(() => {
-        if (hasBase) return bonus.value < -0.005 ? "total-lowerd" : total.value > base.value + 0.005 ? "total-bonus" : "";
-        else return total.value < -0.005 ? "total-lowerd" : total.value > 0.005 ? "total-bonus" : "";
-      }),
-      bonusClass: computed(() => {
-        return hasBase && bonus.value < -0.5 ? "bonus-lowerd" : "";
-      }),
-    };
-  },
-  methods: {
-    clearStat() {
-      if (this.hasBase) {
-        this.$emit("update:bonus", 0);
-      } else {
-        this.$emit("update:total", 0);
-      }
-    },
-  },
-  components: { NumInput },
+import InputNumber from 'primevue/inputnumber';
+import Button from "primevue/button";
+
+const props = defineProps<{
+  base?: number
+  bonus?: number
+  total: number
+  title: string
+  // mode?: string
+  suffix?: string
+  min?: number
+  max?: number
+  labelClass?: string
+  step?: number
+}>();
+
+
+const local = ref(null);
+const input = ref(null);
+const tooltip = ref(false);
+const hasBase = props.base !== undefined && props.bonus !== undefined;
+const inputId = `BlockStat_${refCount++}`;
+
+const totalClass = computed(() => {
+  if (hasBase) return props.bonus < -0.005 ? "total-lowerd" : props.total > props.base + 0.005 ? "total-bonus" : "";
+  else return props.total < -0.005 ? "total-lowerd" : props.total > 0.005 ? "total-bonus" : "";
+});
+const bonusClass = computed(() => {
+  return hasBase && props.bonus < -0.5 ? "bonus-lowerd" : "";
+});
+
+const emit = defineEmits(["update:bonus", "update:total"]);
+const clearStat = () => {
+  if (hasBase) {
+    emit("update:bonus", 0);
+  } else {
+    emit("update:total", 0);
+  }
 };
 </script>
 
 <style>
 .backspace-icon {
-  /* background-image: url("./src/assets/icons/Backspace.svg"); */
-  background-size: 24px 24px;
-  width: 24px;
-  height: 24px;
-  margin: 0 2px;
-  fill: transparent;
+  visibility: hidden;
 }
 
 .backspace-icon.total-lowerd,
 .backspace-icon.total-bonus {
+  visibility: visible;
   fill: #94989c;
-}
-
-.backspace-icon:hover,
-.backspace-icon:focus {
-  fill: #db2525;
-}
-.backspace-icon:active {
-  fill: #77cf24;
 }
 
 .blockstat {
   display: block;
 }
+
 .blockstat .total,
 .blockstat .base {
   color: #bdb2fa;
 }
+
 .blockstat.total-bonus .total,
 .blockstat .bonus {
   color: #56b952;
 }
+
 .blockstat.total-lowerd .total,
 .blockstat.bonus-lowerd .bonus {
   color: #c02b2b;
 }
 
-.blockstat__-input:focus-within+ 
-.blockstat__tooltipcontent{
+.blockstat__tooltipcontent[data-visable="true"] {
   display: block;
-
 }
+
 .blockstat__tooltipcontent {
   display: none;
   position: absolute;
@@ -141,6 +132,7 @@ export default {
   max-width: 550px;
   z-index: 500;
 }
+
 .blockstat__tooltipcontent.simplebg {
   background: #121a1b;
   padding: 3px;

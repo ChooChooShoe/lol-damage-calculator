@@ -151,7 +151,7 @@ async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
   return map;
 }
 
-const AUTO_MAKE_LEVEING = false;
+const AUTO_MAKE_LEVEING = true;
 function mutateDescriptionLine(p: HTMLElement | undefined): SubSkill | undefined {
   const text = p?.textContent?.trim();
   if (!text || !p) return undefined;

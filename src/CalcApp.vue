@@ -92,6 +92,9 @@ const champDamageSources = ref({});
 provide("player", player);
 provide("target", target);
 
+// obj is also the player but should refrance both in the future.
+provide("obj", player);
+
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);
 const customDamageSources = ref([]);

@@ -1,7 +1,8 @@
-import * as Vue from 'vue'
+import { createApp } from 'vue'
 import * as VueRouter from 'vue-router';
 // import Root from './Root.vue'
 import App from './App.vue';
+import PrimeVue from 'primevue/config';
 import WikiRedirect from './WikiRedirect.vue';
 const CalcApp = () => import('./CalcApp.vue');
 const NotFound = () => import('./NotFound.vue');
@@ -11,6 +12,12 @@ const RunesView = () => import("./runes/RunesView.vue");
 import './index.css'
 import './wikistyles.css'
 import './icons.css'
+
+import 'primevue/resources/themes/arya-blue/theme.css'
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+import Tooltip from 'primevue/tooltip';
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
@@ -33,7 +40,9 @@ const router = VueRouter.createRouter({
   ],
 })
 
-const app = Vue.createApp(App)
+const app = createApp(App);
 app.config.unwrapInjectedRef = true
-app.use(router)
-app.mount('#app')
+app.use(PrimeVue);
+app.use(router);
+app.directive('tooltip', Tooltip);
+app.mount('#app');

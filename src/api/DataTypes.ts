@@ -1,3 +1,5 @@
+import { ChampObjModel } from "../model/ChampObj";
+
 /**
  * From DataDragon image
  * @example
@@ -47,6 +49,7 @@ export interface SubSkill {
   img?: string;
   description: string;
   leveling: RootRatio[];
+  hidden: true | false | undefined
 }
 
 export interface SubRatio {
@@ -54,9 +57,10 @@ export interface SubRatio {
   apply?: "%" | 'based_on_level',
   units: string;
   sub_ratios?: SubRatio[];
+  pre?: string;
   post?: string;
   user?: "none" | "player" | "target";
-  stat: string;
+  stat: keyof ChampObjModel;
 }
 export interface RootRatio extends SubRatio {
   name: string;

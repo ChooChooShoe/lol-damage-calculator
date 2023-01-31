@@ -1,11 +1,12 @@
-import { RootRatio, SubRatio } from "../api/DataTypes";
+import { RootRatio, SubRatio, SubSkill } from "../api/DataTypes";
 import perksObj from "./perks.json";
 
 export const perkstyles = perksObj.styles;
+export const perks = perksObj.perks;
 export type StyleKey = keyof typeof perksObj.styles;
 // export type Style = typeof perksObj.styles["8400"];
 export type PerkKey = keyof typeof perksObj.perks;
-export type Perk = {
+export interface Perk {
   id: number;
   name: string;
   majorChangePatchVersion: string;
@@ -18,9 +19,11 @@ export type Perk = {
   path?: string;
   slot?: string;
   cooldown?: string;
-  subskills?: { description: string, leveling: RootRatio[] }[];
+  subskills?: SubSkill[];
   stats?: { [key: string]: any };
 };
+
+export interface PerkStyle { id: number; name: string; tooltip: string; iconPath: string; isAdvanced: boolean; allowedSubStyles: number[]; slots: { KeyStone: { slotLabel: string; perks: number[]; }; Mixed1: { slotLabel: string; perks: number[]; }; Mixed2: { slotLabel: string; perks: number[]; }; Mixed3: { slotLabel: string; perks: number[]; }; }; defaultPageName: string; defaultSubStyle: number; defaultPerks: number[]; defaultPerksWhenSplashed: number[]; defaultStatModsPerSubStyle: { id: string; perks: number[]; }[]; }
 
 function isPerkKey(s: string): s is PerkKey { return s in perksObj.perks }
 function isStyleKey(s: string): s is StyleKey { return s in perksObj.styles }
@@ -29,7 +32,7 @@ export function perk(perk: number): Perk | undefined {
   const k = String(perk);
   if (isPerkKey(k)) return perksObj.perks[k] as Perk;
 }
-export function perkStyle(style: number) {
+export function perkStyle(style: number): PerkStyle {
   return perksObj.styles[style.toString() as StyleKey];
 }
 export function tryGetPerk(perk: number) {
@@ -42,12 +45,13 @@ export function tryGetPerkStyle(style: number) {
 
 export class PerkSelections {
   statPerks = { defense: 0, flex: 0, offense: 0, }
-  primaryStyle = {
-      style: 0,
-      selections: [0, 0, 0, 0],
-  }
-  subStyle = {
-      style: 0,
-      selections: [0, 0],
+  primaryStyle = 8000
+  primarySelections: [number, number, number, number] = [0, 0, 0, 0]
+  subStyle = 8100
+  subSelections: [number, number] = [0, 0]
+
+  constructor() {
+    console.log("New PerkSelections");
+
   }
 }
