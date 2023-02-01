@@ -1,10 +1,25 @@
+import { Dictionary } from "lodash";
 import parenthesis, { ArrayTree } from "parenthesis";
-import { DamageType, EffectType, RootRatio, SubRatio, ValidDamageType, ValidEffectType } from "../src/api/DataTypes.js";
+import { DamageType, EffectType, RootRatio, SubRatio, ChampionStatUnits, ValidDamageType, ValidEffectType } from "../src/api/DataTypes.js";
+import { Stat } from "../src/model/ChampObj.js";
 import { saveFile } from "./fetch_utils.js";
-import { list_check, table_check } from "./mutate_untils.js";
+import { list_check, matchKeyword, table_check } from "./mutate_untils.js";
 
 const DEBUG = false;
 
+const keyword_to_basic_stat: Dictionary<Stat> = {
+  tenacity: "tenacity",
+  lifesteal: "lifesteal",
+  spellvamp: "spellvamp",
+  omnivamp: "omnivamp",
+  pysicalvamp: "pysicalvamp",
+  "legend stack": "legendStacks",
+  "bounty hunter stack": "bountyHunterStacks",
+  "soul": "darkHarvestStacks",
+  "slow resist": "slow_resist",
+  "ap": "total_ap",
+  "gold": "gold",
+}
 export const keyword_to_player_stat = {
   ap: "ap",
   ad: "ad",
@@ -38,24 +53,29 @@ const keyword_to_type_ext = {
   base: "base",
 };
 
-function units_to_user_and_stat(unit: string | undefined | null): {
+function convertUnitsToUserAndUnits(unit: string | undefined | null): {
   user: "none" | "player" | "target";
-  stat: string;
+  unitsParsed: ChampionStatUnits;
 } {
-  if (!unit) return { user: "none", stat: "" };
-  const tunit = unit.toLowerCase().trim();
+  if (!unit) return { user: "none", unitsParsed: "" };
+  unit = unit.toLowerCase().trim();
 
-  const player_stat = table_check(tunit, keyword_to_player_stat, tunit);
+  const basic_stat = matchKeyword(unit, keyword_to_basic_stat);
+  if (basic_stat) {
+    return { user: "player", unitsParsed: basic_stat };
+  }
+
+  const player_stat = table_check(unit, keyword_to_player_stat, unit);
   let bbt: string;
   if (player_stat === "hp")
-    bbt = table_check(tunit, keyword_to_type_ext, "total");
-  else bbt = table_check(tunit, keyword_to_type, "total");
-  let stat = `${bbt}_${player_stat}`;
+    bbt = table_check(unit, keyword_to_type_ext, "total");
+  else bbt = table_check(unit, keyword_to_type, "total");
+  let unitsParsed = `${bbt}_${player_stat}`;
 
-  let user: "player" | "target" = tunit.includes("target")
+  let user: "player" | "target" = unit.includes("target")
     ? "target"
     : "player";
-  return { user, stat };
+  return { user, unitsParsed: unitsParsed as Stat };
 }
 
 if (DEBUG) {
@@ -78,24 +98,27 @@ export function ratios_from_text(full_text: string): SubRatio {
 }
 
 export function spellEffectFromDescription(name: string, desc: string): RootRatio {
+  const nameSplit = desc.split(/:(.*)/s);
+  const betterName = nameSplit[0] + ':';
+  desc = nameSplit[1] || nameSplit[0];
   let damagetype: DamageType = table_check(desc, ValidDamageType, 'None');
   let effectType: EffectType | undefined = table_check(desc, ValidEffectType, 'Unique');
-  let gainStat = undefined;
+  let increasedStat = undefined;
   let tree_root = parenthesis.parse(desc);
 
-  console.log(`[DEBUG] spellEffectFromDescription => ${name} ${desc}`)
+  console.log(`[DEBUG] spellEffectFromDescription => betterName:${betterName} name:${name} desc:${desc}`)
   return Object.assign({
-    name: desc.split(':')[0] || name,
+    name: betterName || name,
     raw: desc,
     damagetype,
     effectType,
-    gainStat,
+    increasedStat,
   }, makeRatioObj(tree_root))
 }
 export function spellEffectFromStrings(name: string, raw: string): RootRatio {
   let damagetype: DamageType = table_check(name, ValidDamageType, 'None');
   let effectType: EffectType | undefined = table_check(name, ValidEffectType, 'Unique');
-  let gainStat = undefined;
+  let increasedStat = undefined;
   let tree_root = parenthesis.parse(raw);
   // console.log(`[DEBUG] spellEffectFromStrings => ${name}: ${raw}`)
   return Object.assign({
@@ -103,7 +126,7 @@ export function spellEffectFromStrings(name: string, raw: string): RootRatio {
     raw,
     damagetype,
     effectType,
-    gainStat,
+    increasedStat,
   }, makeRatioObj(tree_root))
 }
 export function makeRatioObj(root: ArrayTree): SubRatio {
@@ -116,7 +139,7 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
   for (const [idx, ratio] of Object.entries(root)) {
     if (Array.isArray(ratio)) {
       let sub = makeRatioObj(ratio as parenthesis.ArrayTree);
-      if (sub.units === "based on level") {
+      if (sub.post === "based on level") {
         // set flag, do not add as sub_ratio
         // Ex. 50 − 305 (based on level) (+ 80% bonus AD)
         is_based_on_level = true;
@@ -153,15 +176,17 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
     console.log("[WARN] Replacing units '", units, "' because of post ", post);
     units = level_to_ratio(post).units;
   }
-  const { user, stat } = units_to_user_and_stat(units);
+  const { user, unitsParsed: unitsParsed } = convertUnitsToUserAndUnits(units);
   return {
     values,
-    apply: apply || undefined,
-    units,
-    sub_ratios: sub_ratios.length > 0 ? sub_ratios : undefined,
-    post: post,
+    valuesRanged: undefined,
+    valuesIsPercent: apply === '%' || undefined,
+    valuesIsBasedOnLevel: is_based_on_level || undefined,
     user,
-    stat,
+    units: unitsParsed,
+    pre,
+    post,
+    children: sub_ratios.length > 0 ? sub_ratios : undefined,
   };
 }
 function level_to_ratio(fullText: string): {

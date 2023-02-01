@@ -1,6 +1,6 @@
 <template>
     <div class="subskills__grid">
-        <SubSkillVue v-for="(sub_skill, index) in subskills" :custom="custom" :idx="`${idx}_${index}`" :img="sub_skill.img" :description="sub_skill.description" :leveling="sub_skill.leveling"></SubSkillVue>
+        <SubSkillVue v-for="(sub_skill, index) in subskills" :custom="custom" :idx="`${idx}_${index}`" :skill="sub_skill"></SubSkillVue>
     </div>
 </template>
 

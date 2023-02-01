@@ -1,4 +1,4 @@
-import { ChampObjModel } from "../model/ChampObj";
+import { ChampObjModel, Stat } from "../model/ChampObj";
 
 /**
  * From DataDragon image
@@ -48,37 +48,70 @@ export interface SkillModel {
 export interface SubSkill {
   img?: string;
   description: string;
-  leveling: RootRatio[];
-  hidden: true | false | undefined
+  leveling?: RootRatio[];
+  hidden?: boolean
+  locked?: boolean;
 }
 
+export type ChampionStatUnits = Stat | undefined | "";
 export interface SubRatio {
-  values: number | number[];
-  apply?: "%" | 'based_on_level',
-  units: string;
-  sub_ratios?: SubRatio[];
+  values: ScaleValue;
+  valuesRanged?: ScaleValue;
+  valuesIsPercent?: boolean;
+  valuesIsBasedOnLevel?: boolean;
+  // apply?: "%" | 'based_on_level';
+  user?: "none" | "player" | "target";
+  units: ChampionStatUnits;
   pre?: string;
   post?: string;
-  user?: "none" | "player" | "target";
-  stat: keyof ChampObjModel;
+  children?: SubRatio[];
 }
-export interface RootRatio extends SubRatio {
-  name: string;
-  raw: string;
-  damagetype?: DamageType;
-  effectType?: EffectType;
-  gainStat?: string;
-}
-export type DamageType = "Physical" | "Magic" | "True" | "None";
-export type EffectType = "Damage" | "Heal" | "Shield" | "Gain" | "Unique";
 
-export enum ValidDamageType  {
+export type EffectType = "Damage" | "Heal" | "Shield" | "Gain" | "Unique" | "Stacks";
+export interface GainEffect extends RootEffect {
+  effectType: "Gain";
+  increasedStat: Stat;
+  gainDuration?: number;
+}
+
+export type DamageType = "Physical" | "Magic" | "True" | "None" | "Adaptive";
+export interface DamageEffect {
+  effectType: "Damage";
+  damagetype: DamageType;
+}
+
+export interface HealShieldEffect {
+  effectType: "Heal" | "Shield";
+  isRegen?: boolean
+}
+export interface UniqueEffect {
+  effectType: "Unique";
+}
+export interface StacksEffect extends RootEffect {
+  effectType: "Stacks";
+  user?: "none" | "player" | "target";
+  increasedStat: Stat;
+  longtitle?: string
+  title: string
+  min?: number,
+  max?: number,
+  description?: string
+}
+export interface RootEffect extends SubRatio {
+  name: string;
+  raw?: string;
+}
+export type RootRatio = StacksEffect | GainEffect | (RootEffect &
+  (DamageEffect | HealShieldEffect | UniqueEffect))
+
+
+export enum ValidDamageType {
   physical = "Physical",
   magic = "Magic",
   true = "True",
   none = "None",
 }
-export enum ValidEffectType  {
+export enum ValidEffectType {
   damage = "Damage",
   heal = "Heal",
   shield = "Shield",

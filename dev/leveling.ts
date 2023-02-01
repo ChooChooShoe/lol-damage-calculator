@@ -33,7 +33,7 @@ const test1 =
 const res1 = descriptionToLeveling(test1);
 console.log(res1);
 
-function descriptionToLeveling(full_text: string): RootRatio {
+function descriptionToLeveling(full_text: string) {
   let root = parenthesis.parse(full_text);
   let ratio_root = { name: "description", raw: full_text };
 

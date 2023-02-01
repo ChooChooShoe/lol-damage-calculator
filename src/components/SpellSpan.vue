@@ -13,16 +13,17 @@
   </span>
 </template>
 
-<script>
+<script setup lang="ts">
 // A SpellSpan
 // ex. 15 / 14 / 13 / 12 / 11
-export default {
-  name: "SpellSpan",
-  props: {
-    list: [Array, Number, String],
-  },
-  inject: ["rankindex"],
-};
+
+import { inject } from 'vue';
+
+const props = defineProps<{
+  list: Array<Number | String> | Number | String
+}>()
+
+const rankindex = inject<number>('rankindex', 0);
 </script>
 
 <style>
@@ -31,10 +32,12 @@ export default {
   padding: 0.5em;
   margin: -0.5em;
 }
+
 .ss-noclick {
   pointer-events: none;
   margin: 0.33em;
 }
+
 .ss-click:hover {
   color: yellow;
 }

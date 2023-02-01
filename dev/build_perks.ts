@@ -4,7 +4,7 @@ import { saveFile } from "./fetch_utils.js";
 import { Overwrite, dynamicOverwrites } from "./OverwritePerks.js"
 
 import { JSDOM } from "jsdom";
-import { ratios_from_text } from "./skill_ratios_parse.js";
+import { ratios_from_text, spellEffectFromDescription } from "./skill_ratios_parse.js";
 import { RootRatio, SubSkill } from "../src/api/DataTypes.js";
 import { fix_wiki_img } from "./live_wiki_fetch.js";
 
@@ -77,7 +77,7 @@ async function main() {
   const output = { styles: perkStyles, perks: statmods };
   _.merge(output, Overwrite);
   dynamicOverwrites(output);
-  saveFile("./src/runes/perks.json", output);
+  saveFile("./src/runes/perks_gen.json", output);
   console.log("Goodbye");
 }
 function mutate_slots(
@@ -162,8 +162,8 @@ function mutateDescriptionLine(p: HTMLElement | undefined): SubSkill | undefined
     const textLines = text.split('. ');
     console.log(`[INFO] Found line (${textLines.length}):`, text)
     for (const i in textLines) {
-      const ratio = ratios_from_text(textLines[i]);
-      leveling.push(Object.assign({ name: `Rune ${1 + Number(i)}:`, raw: textLines[i] }, ratio));
+      const ratio = spellEffectFromDescription(`Name ${i+1}:`, textLines[i]);
+      leveling.push(ratio);
   
     }
   }

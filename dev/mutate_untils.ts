@@ -13,6 +13,14 @@ export function table_check<T>(search: string, valid_table: { [key: string]: str
     return fallback_value;
 }
 
+export function matchKeyword<T>(search: string, validation_table: { [key: string]: T }): T | null {
+    search = search.toLowerCase();
+    for (const key in validation_table)
+        if (search.includes(key))
+            return validation_table[key];
+    return null;
+}
+
 
 export const valid_targeting = ['Passive', 'Direction', 'Location', 'Auto', 'Unit', 'Vector']
 export const valid_spelleffects = ['Proc', 'Area', 'Spell', 'See Notes', 'Basic', 'Default', 'AOE DOT', 'DOT', 'Pet', 'Non-Damaging']

@@ -209,7 +209,7 @@ class SkillObj implements SkillModel {
       leveling.push(...desc_ratios.filter(x => {
         // Number 0 or number with no sub_ratios
         if (typeof x.values === 'number') {
-          if (x.values === 0 || !x.sub_ratios) return false;
+          if (x.values === 0 || !x.children) return false;
         }
         return true;
       }));

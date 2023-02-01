@@ -1,15 +1,23 @@
 <template>
-  <div class="float-clear spelleffect__div">
+
+  <StacksEffectsVue class="float-clear spelleffect__div" v-if="ratios.effectType === 'Stacks'" :effect="ratios">
+  </StacksEffectsVue>
+
+  <GainEffectsVue v-else-if="ratios.effectType === 'Gain'" :effect="ratios">
+  </GainEffectsVue>
+
+  <div v-else class="float-clear spelleffect__div">
     <EditBtn class="spelleffect__editbtn" v-model="editMode"></EditBtn>
     <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
     <span>
       <RecursiveRatioDisplay :val="ratios" display="value"> </RecursiveRatioDisplay>
 
       <EffectTypeField v-model="effectType"></EffectTypeField>
-      <DamageTypeField v-model="damage_type" v-if="effectType === 'Damage' || effectType === 'Shield'"></DamageTypeField>
+      <DamageTypeField v-model="damage_type" v-if="effectType === 'Damage' || effectType === 'Shield'">
+      </DamageTypeField>
     </span>
 
-    <template v-if="effectType === 'Shield'">
+    <template v-if="ratios.effectType === 'Shield'">
       <span class="ad spelleffect__title">Shield Strength: </span>
       <div>
         <RecursiveRatioDisplay :val="ratios" display="dmg_premitigation" :index="index"> </RecursiveRatioDisplay>
@@ -50,20 +58,24 @@
       <hr />
       <div class="column">
         Before resistances, this effect will deal
-        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span>. <br />This target will take {{ Math.round(dmg_postmitigation) }} <span v-html="damage_type_user(damage_type)"></span> after reductions<span class="gold">{{
-            repeat === 1 ? "" : " per hit"
-        }}</span>.
+        {{ Math.round(dmg_premitigation) }} raw damage<span class="gold">{{ repeat === 1 ? "" : " per hit" }}</span>.
+        <br />This target will take {{ Math.round(dmg_postmitigation) }} <span
+          v-html="damage_type_user(damage_type)"></span> after reductions<span class="gold">{{
+  repeat === 1 ? "" : " per hit"
+          }}</span>.
       </div>
       <label class="column">
         This effect will hit
         <NumInput v-model="repeat" class="collapse"></NumInput>
         time{{ repeat === 1 ? "" : "s" }}.
-        <input v-for="(item, index) in [1, 2, 3, 5, 10]" :key="index" type="button" class="repeat" :value="item + 'x'" @click="repeat = item" :class="{ success: repeat == item }" />
+        <input v-for="(item, index) in [1, 2, 3, 5, 10]" :key="index" type="button" class="repeat" :value="item + 'x'"
+          @click="repeat = item" :class="{ success: repeat == item }" />
       </label>
       <div v-if="repeat != 1" class="column">
         In total, this effect deals
         {{ Math.round(dmg_premitigation * repeat) }}
-        <span v-html="damage_type_user(damage_type)"></span> before resistances. <br />This damage will cause the target to
+        <span v-html="damage_type_user(damage_type)"></span> before resistances. <br />This damage will cause the target
+        to
         <span class="spelleffect">lose {{ Math.round(dmg_postmitigation * repeat) }} health</span>.
       </div>
 
@@ -124,6 +136,8 @@ import { ChampObjModel } from "../../model/ChampObj";
 import { damageSources, player, target } from "../../global/state";
 import DropdownSelect from "../simple/DropdownSelect.vue";
 import EffectTypeField from "../effects/EffectTypeField.vue";
+import StacksEffectsVue from "./typedspelleffects/StacksEffectsVue.vue";
+import GainEffectsVue from "./typedspelleffects/GainEffectsVue.vue";
 
 const CORE_RATIOS = [
   "player_total_ap",

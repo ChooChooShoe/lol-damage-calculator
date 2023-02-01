@@ -1,5 +1,6 @@
 <template>
   <span :class="data.color" :title="val.stat || 'base'">
+    <!-- {{ val.pre }} -->
     {{ recursive ? '(+' : '' }}
     <SpellSpan :class="data.color" :list="values"></SpellSpan>{{ dispPre }}
     <RecursiveRatioDisplay :recursive="true" :display="display" :val="v" :key="v.stat" v-for="(v, k) in (val.sub_calcs || val.sub_ratios)">
@@ -16,7 +17,11 @@ import { stat_to_display, default_spell_ratios, RatioObjComputed } from './ratio
 import SpellSpan from '../SpellSpan.vue';
 import { SubRatio } from '../../api/DataTypes';
 
-const props = defineProps<{ val: SubRatio & RatioObjComputed, recursive?: boolean | undefined, display: 'value' | 'dmg_premitigation' | 'dmg_postmitigation' }>()
+const props = defineProps<{ 
+  val: SubRatio & RatioObjComputed, 
+  recursive?: boolean | undefined, 
+  display: 'value' | 'dmg_premitigation' | 'dmg_postmitigation'
+ }>()
 
 const dispPre = computed(() => {
   if (props.display === 'value') {

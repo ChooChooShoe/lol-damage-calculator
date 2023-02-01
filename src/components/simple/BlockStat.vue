@@ -3,7 +3,7 @@
     <!-- <NumInput ref="input" class="blockstat__-input total" :mode="mode" :modelValue="total"
       @update:modelValue="x => $emit('update:total', x)"> </NumInput> -->
 
-    <label :for="inputId" :class="labelClass">{{ title }}</label>
+    <label :for="inputId" :class="labelClass">{{ longtitle || title }}</label>
 
 
     <div class="p-inputgroup">
@@ -56,6 +56,7 @@ const props = defineProps<{
   base?: number
   bonus?: number
   total: number
+  longtitle?: string
   title: string
   // mode?: string
   suffix?: string

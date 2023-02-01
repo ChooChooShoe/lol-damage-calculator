@@ -1,22 +1,32 @@
 <template>
-    <template v-if="shortMode">
-        <SpellImage v-if="img" :iconPath="img"></SpellImage>
-        <span v-else></span>
-        <p v-html="description" class="subskill__desciption shortmode"></p>
+    <template v-if="nonLeveling">
+        <SpellImage :iconPath="skill.img"></SpellImage>
+        <p v-html="skill.description" class="subskill__desciption shortmode"></p>
     </template>
-    <template v-else>
+    <template  v-else-if="!skill.locked">
         <div class="subskill__img ttam__toggle">
-            <SpellImage :iconPath="img"></SpellImage>
-            <label class="ttam__toggletitle" title="Click to enable/disable" v-if="!shortMode">
-                {{ String.fromCharCode(65 + Number(idx.charAt(idx.length-1))) }}
+            <SpellImage :iconPath="skill.img"></SpellImage>
+            <label class="ttam__toggletitle" title="Click to enable/disable" v-if="!nonLeveling">
+                {{ String.fromCharCode(65 + Number(idx.charAt(idx.length - 1))) }}
                 <input type="checkbox" v-model="active" />
             </label>
         </div>
-        <p v-html="description" class="subskill__desciption" :class="{ cliptext: !active, shortMode }" @click="active = true"></p>
+        <p v-html="skill.description" class="subskill__desciption"
+            :class="{ cliptext: !active, shortmode: nonLeveling }" @click="active = true"></p>
         <div class="subskill__effects" v-if="active">
-            <SpellEffects v-for="(value, leveling_idx) in leveling" :custom="custom" :key="leveling_idx" :pkey="`${idx}_${leveling_idx}`" :effect="value" :effectindex="leveling_idx"></SpellEffects>
+            <SpellEffects v-for="(value, leveling_idx) in skill.leveling" :custom="false" :key="leveling_idx"
+                :pkey="`${idx}_${leveling_idx}`" :effect="value" :effectindex="leveling_idx"></SpellEffects>
         </div>
         <i v-else></i>
+    </template>
+    <template v-else>
+        <SpellImage :iconPath="skill.img" class="subskill__img"></SpellImage>
+        <p v-html="skill.description" class="subskill__desciption"
+            :class="{ cliptext: !active, shortmode: nonLeveling }" @click="active = true"></p>
+        <div class="subskill__effects">
+            <SpellEffects v-for="(value, leveling_idx) in skill.leveling" :custom="false" :key="leveling_idx"
+                :pkey="`${idx}_${leveling_idx}`" :effect="value" :effectindex="leveling_idx"></SpellEffects>
+        </div>
     </template>
 </template>
 <script setup lang="ts">
@@ -27,15 +37,12 @@ import SpellImage from '../../timeline/SpellImage.vue';
 
 
 const props = defineProps<{
-    img?: string,
-    description: string,
-    leveling: RootRatio[],
-    custom: boolean,
+    skill: SubSkill,
     idx: string
 }>();
 
-const shortMode = computed(() => (props.description.length < 3000) && props.leveling.length === 0);
-const active = ref(props.leveling.length > 0);
+const nonLeveling = computed(() => !props.skill.leveling || props.skill.leveling.length === 0);
+const active = ref(props.skill.leveling && props.skill.leveling.length > 0);
 </script>
 <style>
 .subskill__img {

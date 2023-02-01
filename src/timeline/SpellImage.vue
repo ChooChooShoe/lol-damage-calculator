@@ -22,8 +22,9 @@ const style = computed(() => {
   }
   if (props.iconPath)
     return `background: url('${props.iconPath}') 0px 0px; background-size:contain;`;
-  return `background: transparent; background-size:contain;`
+  return `background: transparent; background-size:contain; height: 0;`
 });
+
 </script>
 
 <style>

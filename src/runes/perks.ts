@@ -1,11 +1,12 @@
 import { RootRatio, SubRatio, SubSkill } from "../api/DataTypes";
 import perksObj from "./perks.json";
 
+export type StyleKey = keyof typeof perksObj.styles;
+export type PerkKey = keyof typeof perksObj.perks;
+
 export const perkstyles = perksObj.styles;
 export const perks = perksObj.perks;
-export type StyleKey = keyof typeof perksObj.styles;
 // export type Style = typeof perksObj.styles["8400"];
-export type PerkKey = keyof typeof perksObj.perks;
 export interface Perk {
   id: number;
   name: string;
@@ -28,9 +29,9 @@ export interface PerkStyle { id: number; name: string; tooltip: string; iconPath
 function isPerkKey(s: string): s is PerkKey { return s in perksObj.perks }
 function isStyleKey(s: string): s is StyleKey { return s in perksObj.styles }
 
-export function perk(perk: number): Perk | undefined {
+export function perk(perk: number) {
   const k = String(perk);
-  if (isPerkKey(k)) return perksObj.perks[k] as Perk;
+  if (isPerkKey(k)) return perksObj.perks[k];
 }
 export function perkStyle(style: number): PerkStyle {
   return perksObj.styles[style.toString() as StyleKey];

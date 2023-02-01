@@ -9,8 +9,9 @@ export function getBaseStatsObjForChampion(champ: keyof typeof championList | nu
 }
 export type ChampionName = keyof typeof championList;
 
-export class ChampObjModel {
+export type Stat = keyof Omit<ChampObjModel, "runes" | "items" | "clearStats" | "champ" | "_champ" | "user" | "isRuneActive" | "updateBaseStats" | "growth">;
 
+export class ChampObjModel {
     /**
      * per_level stat to stat at current level.
      */
@@ -65,6 +66,8 @@ export class ChampObjModel {
         this.total_shield = 0;
         this.total_ap = 0;
         this.ability_haste = 0;
+
+        this.gold = 0;
     }
 
     _champ: ChampionName
@@ -211,7 +214,21 @@ export class ChampObjModel {
     bountyHunterStacks = 0;
     darkHarvestStacks = 0;
     legendStacks = 0;
+    lethalTempoStacks = 0;
+    conquerorStacks = 0;
+    gold = 0;
+    healAndShieldPower = 0;
     runes: PerkSelections;
+
+    // Fizz, Leona, Guardian's Horn
+    flatDamageReductionPreMitigation = 0;
+    // Amumu's Tantrum, Frozen Heart, Randuin's Omen, Warden's Mail
+    flatDamageReductionPostMitigation = 0;
+    // for Bone Plateing
+    flatTrueDamageReduction = 0;
+
+    // Coup de Grace
+    percentDamageIncrease = 0;
 
 
     constructor(user: string, champ: ChampionName) {
@@ -223,8 +240,8 @@ export class ChampObjModel {
 
     public isRuneActive(runename: string): boolean {
         for (const p of this.runes.primarySelections) {
-            if (runename === p.name)
-                return true;
+            // if (runename === p.name)
+            return true;
         }
         return false;
     }
@@ -238,16 +255,16 @@ class Rune {
     }
 }
 // Stats Gernerator
-function statsGen(): string {
-    let s = [];
-    for (const stat of ["ad", "hp", "mana", "movespeed", "armor", "mr", "attackrange", "hpregen", "manaregen", "critchance", "critdamage"]) {
-        s.push(`base_${stat}: 0,`);
-        s.push(`bonus_${stat}: 0,`);
-        s.push(`get total_${stat}() {return this.base_${stat} + this.bonus_${stat}},`);
-        s.push(`set total_${stat}(v) { this.bonus_${stat} = v - this.base_${stat}},`);
-    }
-    return s.join('\n')
-}
+// function statsGen(): string {
+//     let s = [];
+//     for (const stat of ["ad", "hp", "mana", "movespeed", "armor", "mr", "attackrange", "hpregen", "manaregen", "critchance", "critdamage"]) {
+//         s.push(`base_${stat}: 0,`);
+//         s.push(`bonus_${stat}: 0,`);
+//         s.push(`get total_${stat}() {return this.base_${stat} + this.bonus_${stat}},`);
+//         s.push(`set total_${stat}(v) { this.bonus_${stat} = v - this.base_${stat}},`);
+//     }
+//     return s.join('\n')
+// }
 
 // export interface FullChampJson {
 //     skills: ChampionSkills,

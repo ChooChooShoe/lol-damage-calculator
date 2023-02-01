@@ -2,6 +2,64 @@
   <div>
     <div class="runespage">
       <span>obj.runes = {{ obj.runes }}</span>
+      <RecursiveRatioDisplay2 :val="{
+        values: 100,
+        valuesRanged: 69,
+        apply: '%',
+        units: 'units',
+        pre: 'PRE',
+        post: 'post',
+        user: 'player',
+        stat: 'bonus_armor',
+        sub_ratios: [{
+          values: 452452,
+          valuesRanged: 69,
+          units: 'units',
+          pre: 'PRE',
+          post: 'post',
+          user: 'player',
+          stat: 'bonus_armor',
+          sub_ratios: [{
+            values: 48282,
+            valuesRanged: 69,
+            apply: '%',
+            units: 'units',
+            pre: 'PRE',
+            post: 'post',
+            user: 'player',
+            stat: 'bonus_armor',
+      
+      
+          }, {
+            values: 4245,
+            valuesRanged: 69,
+            units: 'units',
+            pre: 'PRE',
+            post: 'post',
+            user: 'player',
+            stat: 'bonus_armor',
+      
+      
+          }]
+      
+      
+        }, {
+          values: 12015,
+          valuesRanged: 69,
+          apply: '%',
+          units: 'units',
+          pre: 'PRE',
+          post: 'post',
+          user: 'player',
+          stat: 'bonus_armor',
+      
+      
+        }]
+      
+      
+      }" :recursive="false" display="value">
+
+      </RecursiveRatioDisplay2>
     </div>
     <PerkPicker v-model:runes="obj.runes"></PerkPicker>
 
@@ -14,9 +72,9 @@
     </div>
     <div>
       <h1>All Runes as CommonRune</h1>
-    <div>
+      <div>
         <CommonRune v-for="p in perks" :p="p"></CommonRune>
-    </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +92,7 @@ import { ChampObjModel } from "../model/ChampObj";
 import { DamageSource } from "../javascript/league_data";
 import PerkPicker from "./PerkPicker.vue";
 import CommonRune from "./perks/CommonRune.vue";
+import RecursiveRatioDisplay2 from "../components/spells/typedspelleffects/RecursiveRatioDisplay2.vue";
 
 const obj = reactive(new ChampObjModel("Test", "Bard"));
 
