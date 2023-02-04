@@ -28,10 +28,8 @@
 </template>
 
 <script>
-
-
 export default {
-  name: "SettingsModel",
+  name: 'SettingsModel',
   data: function () {
     return {
       shopEnabled: false,
@@ -40,14 +38,14 @@ export default {
   watch: {
     shopEnabled(newVal) {
       this.$root.data.config.shopEnabled = newVal;
-      console.log("shopEnabled.", newVal, this.$root.data.config.shopEnabled);
+      console.log('shopEnabled.', newVal, this.$root.data.config.shopEnabled);
     },
   },
   methods: {
     closeBg(e) {
       if (e.currentTarget === e.target) {
-        window.location.replace("#_");
-        history.replaceState({}, "", window.location.href.slice(0, -2));
+        window.location.replace('#_');
+        history.replaceState({}, '', window.location.href.slice(0, -2));
       }
     },
   },
@@ -70,27 +68,27 @@ export default {
   pointer-events: none;
   transition: all 0.3s;
 }
-  .modal-window:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .modal-window > div {
-    width: 400px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2em;
-    background: #282f2f;
-  }
-  header {
-    font-weight: bold;
-  }
-  h1 {
-    font-size: 150%;
-    margin: 0 0 15px;
-  }
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window > div {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: #282f2f;
+}
+header {
+  font-weight: bold;
+}
+h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
 
 .modal-close {
   color: #aaa;
@@ -103,9 +101,9 @@ export default {
   width: 70px;
   text-decoration: none;
 }
-  .modal-close:hover {
-    color: black;
-  }
+.modal-close:hover {
+  color: black;
+}
 
 .opt {
   display: block;
@@ -149,7 +147,7 @@ export default {
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "✔";
+  content: '✔';
   position: relative;
   left: 4px;
   top: -3px;

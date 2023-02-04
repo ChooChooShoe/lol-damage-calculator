@@ -2,9 +2,24 @@
   <div class="data_holder col fill ChampionSpellDamageSource">
     <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
 
-    <span class="ds__title">{{ spell.display_name }} ({{ spell.name.toUpperCase() }})</span>
-    <DropdownSelect class="spellrank2" v-if="spell.maxrank && spell.maxrank > 0" label="Rank" :value="String(rankindex + 1)">
-      <input v-for="(_, index) in Array(spell.maxrank || 5)" :class="{ success: rankindex === index }" :key="index" @click="rankindex = index" type="button" :value="index + 1" :title="'Rank ' + (index + 1)" />
+    <span class="ds__title"
+      >{{ spell.display_name }} ({{ spell.name.toUpperCase() }})</span
+    >
+    <DropdownSelect
+      class="spellrank2"
+      v-if="spell.maxrank && spell.maxrank > 0"
+      label="Rank"
+      :value="String(rankindex + 1)"
+    >
+      <input
+        v-for="(_, index) in Array(spell.maxrank || 5)"
+        :class="{ success: rankindex === index }"
+        :key="index"
+        @click="rankindex = index"
+        type="button"
+        :value="index + 1"
+        :title="'Rank ' + (index + 1)"
+      />
     </DropdownSelect>
     <!-- <span class="ds__data" v-if="spell.cooldown">
       Cooldown:
@@ -58,36 +73,58 @@
 
     <hr />
 
-    <SubSkillList :custom="false" :subskills="spell.subskills" :idx="idx"></SubSkillList>
+    <SubSkillList
+      :custom="false"
+      :subskills="spell.subskills"
+      :idx="idx"
+    ></SubSkillList>
 
-    <SubSkillList :custom="true" :subskills="customEffects" :idx="'c' + idx"></SubSkillList>
+    <SubSkillList
+      :custom="true"
+      :subskills="customEffects"
+      :idx="'c' + idx"
+    ></SubSkillList>
 
-    <input name="add_effect" type="button" class="button is-primary" value="Add Effect +" @click="addEffect()" />
+    <input
+      name="add_effect"
+      type="button"
+      class="button is-primary"
+      value="Add Effect +"
+      @click="addEffect()"
+    />
 
     <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRefs, watchEffect, provide, reactive, Ref } from "vue";
-import SpellImage from "../../timeline/SpellImage.vue";
-import SpellEffects from "./SpellEffects.vue";
+import {
+  ref,
+  computed,
+  toRefs,
+  watchEffect,
+  provide,
+  reactive,
+  Ref,
+} from 'vue';
+import SpellImage from '../../timeline/SpellImage.vue';
+import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from ".././SimpleTooltip.vue";
-import SpellNotes from ".././SpellNotes.vue";
-import SpellSpan from ".././SpellSpan.vue";
-import { spriteBaseUri } from "../../javascript/league_data";
-import DropdownSelect from "../simple/DropdownSelect.vue";
-import { SkillModel } from "../../api/DataTypes";
-import SubSkillList from "./SubSkillList.vue";
+import SpellNotes from '.././SpellNotes.vue';
+import SpellSpan from '.././SpellSpan.vue';
+import { spriteBaseUri } from '../../javascript/league_data';
+import DropdownSelect from '../simple/DropdownSelect.vue';
+import { SkillModel } from '../../api/DataTypes';
+import SubSkillList from './SubSkillList.vue';
 
 interface ReactSkill {
-  rankindex: Ref<number>
+  rankindex: Ref<number>;
 }
 const props = defineProps<{
-  spell: SkillModel,
-  champion: string,
-  idx: string,
-}>()
+  spell: SkillModel;
+  champion: string;
+  idx: string;
+}>();
 
 const rankindex = ref(0);
 const customEffects = ref([]);
@@ -96,8 +133,8 @@ const lastEffectIndex = ref(0);
 watchEffect(() => {
   rankindex.value = (props.spell.maxrank || 1) - 1;
 });
-provide("rankindex", rankindex);
-provide("skillbase", props.spell);
+provide('rankindex', rankindex);
+provide('skillbase', props.spell);
 
 const imageStyle = computed(() => {
   const i = props.spell.image!;
@@ -107,8 +144,8 @@ const imageStyle = computed(() => {
 });
 
 const wikiHref = computed(() => {
-  const champName = props.champion?.replace(/ /g, "_");
-  const spellName = props.spell?.name.replace(/ /g, "_");
+  const champName = props.champion?.replace(/ /g, '_');
+  const spellName = props.spell?.name.replace(/ /g, '_');
   return `https://leagueoflegends.fandom.com/wiki/${champName}/LoL#${spellName}`;
 });
 
@@ -127,12 +164,13 @@ const addEffect = () => {
 };
 
 function load(event: any) {
-  console.log("load", event);
+  console.log('load', event);
 }
 </script>
 
 <style>
-.ChampionSpellDamageSource {}
+.ChampionSpellDamageSource {
+}
 
 .ds__spellimage {
   margin: 0.2rem 1rem 0.2rem 0.2rem;
@@ -199,7 +237,7 @@ function load(event: any) {
   background: #fff700;
 }
 
-.spellrank input:checked~input {
+.spellrank input:checked ~ input {
   background: #f1f1f1;
 }
 
@@ -208,16 +246,16 @@ function load(event: any) {
   color: #eee;
 }
 
-.dd-content input:hover~input {
+.dd-content input:hover ~ input {
   background-color: #282f2f !important;
   color: #eee;
 }
 
-.cost-container [data-active="true"] {
+.cost-container [data-active='true'] {
   color: #1e8ad6;
 }
 
-.cooldown-container [data-active="true"] {
+.cooldown-container [data-active='true'] {
   color: #1e8ad6;
 }
 

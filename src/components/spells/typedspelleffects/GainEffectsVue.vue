@@ -1,16 +1,24 @@
 <template>
-  <div class="float-clear spelleffect__div" >
+  <div class="float-clear spelleffect__div">
     <EditBtn class="spelleffect__editbtn" v-model="editMode"></EditBtn>
-    <span class="spelleffect__title" :title="effect.raw" v-html="effect.name"></span>
-    <span> GAIN EFFECT START
-      <RecursiveRatioDisplay2 :val="effect" display="value"> </RecursiveRatioDisplay2>
+    <span
+      class="spelleffect__title"
+      :title="effect.raw"
+      v-html="effect.name"
+    ></span>
+    <span>
+      GAIN EFFECT START
+      <RecursiveRatioDisplay2 :val="effect" display="value">
+      </RecursiveRatioDisplay2>
 
       <EffectTypeField v-model="effectType"></EffectTypeField>
-      <DamageTypeField v-model="damage_type" v-if="effectType === 'Damage' || effectType === 'Shield'">
+      <DamageTypeField
+        v-model="damage_type"
+        v-if="effectType === 'Damage' || effectType === 'Shield'"
+      >
       </DamageTypeField>
       END
     </span>
-    
   </div>
 </template>
 
@@ -25,15 +33,11 @@ import DamageTypeField from '../DamageTypeField.vue';
 import { RatioObjComputed } from '../ratios_info';
 import RecursiveRatioDisplay2 from './RecursiveRatioDisplay2.vue';
 
-
 defineProps<{
-  effect: GainEffect
+  effect: GainEffect;
 }>();
-const obj = inject<ChampObjModel>("obj")!;
-
+const obj = inject<ChampObjModel>('obj')!;
 
 const repeat = ref(1);
 const editMode = ref(false);
-
-
 </script>

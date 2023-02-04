@@ -1,17 +1,23 @@
 <template>
-    <div>
-        <CommonRune v-if="primaryStyle[0]" :p="perk(primaryStyle[0])!"></CommonRune>
-        <CommonRune v-if="primaryStyle[1]" :p="perk(primaryStyle[1])!"></CommonRune>
-        <CommonRune v-if="primaryStyle[2]" :p="perk(primaryStyle[2])!"></CommonRune>
-        <CommonRune v-if="primaryStyle[3]" :p="perk(primaryStyle[3])!"></CommonRune>
-        <CommonRune v-if="secondaryStyle[0]" :p="perk(secondaryStyle[0])!"></CommonRune>
-        <CommonRune v-if="secondaryStyle[1]" :p="perk(secondaryStyle[1])!"></CommonRune>
-    </div>
+  <div>
+    <CommonRune v-if="primaryStyle[0]" :p="perk(primaryStyle[0])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[1]" :p="perk(primaryStyle[1])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[2]" :p="perk(primaryStyle[2])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[3]" :p="perk(primaryStyle[3])!"></CommonRune>
+    <CommonRune
+      v-if="secondaryStyle[0]"
+      :p="perk(secondaryStyle[0])!"
+    ></CommonRune>
+    <CommonRune
+      v-if="secondaryStyle[1]"
+      :p="perk(secondaryStyle[1])!"
+    ></CommonRune>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { perk } from './perks'
-import CommonRune from './perks/CommonRune.vue'
+import { perk } from './perks';
+import CommonRune from './perks/CommonRune.vue';
 
 // const perkComponents = { Precision: { keyStone: [PresstheAttack, LethalTempo, FleetFootwork, Conqueror], mixed1: [Overheal, Triumph, PresenceofMind], mixed2: [LegendAlacrity, LegendTenacity, LegendBloodline], mixed3: [CoupdeGrace, CutDown, LastStand] }, Domination: { keyStone: [Electrocute, Predator, DarkHarvest, HailofBlades], mixed1: [CheapShot, TasteofBlood, SuddenImpact], mixed2: [ZombieWard, GhostPoro, EyeballCollection], mixed3: [TreasureHunter, IngeniousHunter, RelentlessHunter, UltimateHunter] }, Sorcery: { keyStone: [SummonAery, ArcaneComet, PhaseRush], mixed1: [NullifyingOrb, ManaflowBand, NimbusCloak], mixed2: [Transcendence, Celerity, AbsoluteFocus], mixed3: [Scorch, Waterwalking, GatheringStorm] }, Inspiration: { keyStone: [GlacialAugment, UnsealedSpellbook, FirstStrike], mixed1: [HextechFlashtraption, MagicalFootwear, PerfectTiming], mixed2: [FuturesMarket, MinionDematerializer, BiscuitDelivery], mixed3: [CosmicInsight, ApproachVelocity, TimeWarpTonic] }, Resolve: { keyStone: [GraspoftheUndying, Aftershock, Guardian], mixed1: [Demolish, FontofLife, ShieldBash], mixed2: [Conditioning, SecondWind, BonePlating], mixed3: [Overgrowth, Revitalize, Unflinching] } };
 // const perkComponents: { [k: number]: any } = { 8005: PresstheAttack, 8008: LethalTempo, 8009: PresenceofMind, 8010: Conqueror, 8014: CoupdeGrace, 8017: CutDown, 8021: FleetFootwork, 8105: RelentlessHunter, 8106: UltimateHunter, 8112: Electrocute, 8120: GhostPoro, 8124: Predator, 8126: CheapShot, 8128: DarkHarvest, 8134: IngeniousHunter, 8135: TreasureHunter, 8136: ZombieWard, 8138: EyeballCollection, 8139: TasteofBlood, 8143: SuddenImpact, 8210: Transcendence, 8214: SummonAery, 8224: NullifyingOrb, 8226: ManaflowBand, 8229: ArcaneComet, 8230: PhaseRush, 8232: Waterwalking, 8233: AbsoluteFocus, 8234: Celerity, 8236: GatheringStorm, 8237: Scorch, 8242: Unflinching, 8275: NimbusCloak, 8299: LastStand, 8304: MagicalFootwear, 8306: HextechFlashtraption, 8313: PerfectTiming, 8316: MinionDematerializer, 8321: FuturesMarket, 8345: BiscuitDelivery, 8347: CosmicInsight, 8351: GlacialAugment, 8352: TimeWarpTonic, 8360: UnsealedSpellbook, 8369: FirstStrike, 8401: ShieldBash, 8410: ApproachVelocity, 8429: Conditioning, 8437: GraspoftheUndying, 8439: Aftershock, 8444: SecondWind, 8446: Demolish, 8451: Overgrowth, 8453: Revitalize, 8463: FontofLife, 8465: Guardian, 8473: BonePlating, 9101: Overheal, 9103: LegendBloodline, 9104: LegendAlacrity, 9105: LegendTenacity, 9111: Triumph, 9923: HailofBlades };
@@ -19,7 +25,7 @@ import CommonRune from './perks/CommonRune.vue'
 
 // type Style = keyof typeof perkComponents;
 const props = defineProps<{
-    primaryStyle: [number, number, number, number],
-    secondaryStyle: [number, number],
-}>()
+  primaryStyle: [number, number, number, number];
+  secondaryStyle: [number, number];
+}>();
 </script>

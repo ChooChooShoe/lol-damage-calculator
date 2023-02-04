@@ -15,15 +15,19 @@
       :readonly="readonly"
       :placeholder="'0'"
     />
-    <span class="numinput__textoverlay" @click="input.focus()">{{ displayValue }}</span>
+    <span class="numinput__textoverlay" @click="input.focus()">{{
+      displayValue
+    }}</span>
     <span class="numinput__alerticon">
-      <div ref="local" class="numinput__tooltip">{{ input?.validationMessage }}</div>
+      <div ref="local" class="numinput__tooltip">
+        {{ input?.validationMessage }}
+      </div>
     </span>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed } from 'vue';
 
 const props = defineProps({
   modelValue: [Array, Number],
@@ -32,15 +36,15 @@ const props = defineProps({
   readonly: Boolean,
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 const input = ref(null);
 const local = ref(null);
 
 const displayValue = computed(() => {
-  let val = encode(props.modelValue);
+  const val = encode(props.modelValue);
   const x = Math.round(val * 100) / 100;
-  if (props.mode === "percent") return String(x) + "%";
+  if (props.mode === 'percent') return String(x) + '%';
   return x;
 });
 onMounted(() => {
@@ -51,12 +55,12 @@ function encode(value) {
   let val = value;
   if (Array.isArray(value)) val = value[props.index];
 
-  if (props.mode === "percent") return +(Math.round(val + "e+12") + "e-10");
-  return +(Math.round(val + "e+10") + "e-10");
+  if (props.mode === 'percent') return +(Math.round(val + 'e+12') + 'e-10');
+  return +(Math.round(val + 'e+10') + 'e-10');
 }
 
 function decode(val) {
-  if (props.mode === "percent") return parseFloat(val) / 100 || 0;
+  if (props.mode === 'percent') return parseFloat(val) / 100 || 0;
   return parseFloat(val) || 0;
 }
 
@@ -64,9 +68,9 @@ function onInput(ev) {
   const decoded = decode(ev.target.valueAsNumber);
   if (Array.isArray(props.modelValue)) {
     props.modelValue[props.index] = decoded;
-    emit("update:modelValue", props.modelValue);
+    emit('update:modelValue', props.modelValue);
   } else {
-    emit("update:modelValue", decoded);
+    emit('update:modelValue', decoded);
   }
 }
 function onFocus(ev) {
@@ -95,13 +99,13 @@ defineExpose({
   top: 0;
   left: 0;
 }
-input[type="number"].numinput__input:focus + .numinput__textoverlay,
-input[type="number"].numinput__input:hover + .numinput__textoverlay,
-input[type="number"].numinput__input + .numinput__textoverlay:hover {
+input[type='number'].numinput__input:focus + .numinput__textoverlay,
+input[type='number'].numinput__input:hover + .numinput__textoverlay,
+input[type='number'].numinput__input + .numinput__textoverlay:hover {
   display: none;
 }
 
-input[type="number"].numinput__input,
+input[type='number'].numinput__input,
 .numinput__textoverlay {
   font-size: 1.1rem;
   padding: 0.2em 0.5em 0.2em;
@@ -129,7 +133,7 @@ input[type="number"].numinput__input,
 }
 .numinput__alerticon::before {
   font-size: 1.4rem;
-  content: "⚠";
+  content: '⚠';
 }
 
 .numinput__input:invalid:hover + .numinput__alerticon > .numinput__tooltip,

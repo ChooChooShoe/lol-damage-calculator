@@ -1,25 +1,29 @@
 <template>
-    <div class="subskills__grid">
-        <SubSkillVue v-for="(sub_skill, index) in subskills" :custom="custom" :idx="`${idx}_${index}`" :skill="sub_skill"></SubSkillVue>
-    </div>
+  <div class="subskills__grid">
+    <SubSkillVue
+      v-for="(sub_skill, index) in subskills"
+      :custom="custom"
+      :idx="`${idx}_${index}`"
+      :skill="sub_skill"
+    ></SubSkillVue>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { SubSkill } from "../../api/DataTypes";
-import SubSkillVue from "./SubSkillVue.vue";
+import { SubSkill } from '../../api/DataTypes';
+import SubSkillVue from './SubSkillVue.vue';
 
 const { subskills, custom } = defineProps<{
-    subskills: SubSkill[],
-    idx: string,
-    custom: boolean,
-}>()
-
+  subskills: SubSkill[];
+  idx: string;
+  custom: boolean;
+}>();
 </script>
 <style>
 .subskills__grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    row-gap: 0em;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  row-gap: 0em;
 }
 </style>

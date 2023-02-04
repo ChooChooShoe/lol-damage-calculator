@@ -1,10 +1,12 @@
 <template>
   <DropdownSelect label="" value="Add Ratio">
     <template v-for="(r, i) in stat_to_display" :key="i">
-      <div  @click="$emit('addRatio', r)" class="dropdown-item">
-        <a :class="r.color">{{ r.prefex }} {{ r.sufex }}
-          {{ r.ispercent == false ? "Ratio" : "" }}</a>
-          <span v-html="r.html"></span>
+      <div @click="$emit('addRatio', r)" class="dropdown-item">
+        <a :class="r.color"
+          >{{ r.prefex }} {{ r.sufex }}
+          {{ r.ispercent == false ? 'Ratio' : '' }}</a
+        >
+        <span v-html="r.html"></span>
       </div>
       <!-- <hr class="dropdown-divider" /> -->
     </template>
@@ -14,12 +16,11 @@
 <script setup lang="ts">
 import { stat_to_display } from './ratios_info';
 
-import DropdownSelect from "../simple/DropdownSelect.vue";
+import DropdownSelect from '../simple/DropdownSelect.vue';
 
 const emit = defineEmits<{
-  (e: 'addRatio', x: any): void
-}>()
-
+  (e: 'addRatio', x: any): void;
+}>();
 </script>
 
 <style>

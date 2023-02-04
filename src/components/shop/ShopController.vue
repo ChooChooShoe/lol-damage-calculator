@@ -1,4 +1,3 @@
-
 <template>
   <div id="shop-controller">
     <ShopModal></ShopModal>
@@ -11,11 +10,11 @@
 </template>
 
 <script>
-import ShopModal from "./ShopModal.vue";
-import ItemTooltip from "./ItemTooltip.vue";
+import ShopModal from './ShopModal.vue';
+import ItemTooltip from './ItemTooltip.vue';
 
 export default {
-  name: "ShopController",
+  name: 'ShopController',
   components: {
     ShopModal,
     ItemTooltip,

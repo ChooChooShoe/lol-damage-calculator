@@ -1,4 +1,3 @@
-
 <template>
   <div class="modal-window" @click="closeBg" id="shop">
     <div class="shop-content">
@@ -94,15 +93,14 @@
 </template>
 
 <script>
-
-import Item from "./Item.vue";
-import SimpleTooltip from "../SimpleTooltip.vue";
-import ShopItemInfo from "../../itembuilder/components/ShopItemInfo.vue";
+import Item from './Item.vue';
+import SimpleTooltip from '../SimpleTooltip.vue';
+import ShopItemInfo from '../../itembuilder/components/ShopItemInfo.vue';
 // import DataInput from "./DataInput.vue";
-import league_items from "../../javascript/league_items.js";
+import league_items from '../../javascript/league_items.js';
 
 export default {
-  name: "ShopModal",
+  name: 'ShopModal',
   components: {
     Item,
     ShopItemInfo,
@@ -111,12 +109,12 @@ export default {
   data: function () {
     return {
       visible: false,
-      userid: "player",
+      userid: 'player',
       selectedItem: null,
-      mapfilter: "11",
+      mapfilter: '11',
       hide_event: true,
       rift_only: true,
-      search: "",
+      search: '',
     };
   },
   computed: {
@@ -128,10 +126,10 @@ export default {
       return null;
     },
     emptyImage() {
-      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
     },
     username: function () {
-      if (this.userid === "player") return "Player's Champion";
+      if (this.userid === 'player') return "Player's Champion";
       return "Target's";
     },
     sumData() {
@@ -149,7 +147,7 @@ export default {
       }
       return {
         cost: total_cost,
-        stats: stats,
+        stats,
       };
     },
     visibleItems() {
@@ -204,14 +202,14 @@ export default {
   methods: {
     closeBg(e) {
       if (e.currentTarget === e.target) {
-        window.location.replace("#_");
-        history.replaceState({}, "", window.location.href.slice(0, -2));
+        window.location.replace('#_');
+        history.replaceState({}, '', window.location.href.slice(0, -2));
       }
     },
     image(index) {
       const d = this.itemdata(index);
       if (d) return d.imageFull;
-      return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+      return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
     },
     json(a) {
       if (!window.a) window.a = {};
@@ -292,9 +290,9 @@ div.shop-content {
   grid-template-columns: auto auto;
   grid-template-rows: auto 65vh auto;
   grid-template-areas:
-    "header header"
-    "side main"
-    "footer footer";
+    'header header'
+    'side main'
+    'footer footer';
   gap: 10px;
   background-color: #293844;
   padding: 10px;

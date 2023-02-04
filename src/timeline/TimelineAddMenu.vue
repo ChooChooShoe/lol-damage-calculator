@@ -4,7 +4,9 @@
 
     <div>
       <div class="ttam__toggle">
-        <SpellImage iconPath="/src/assets/icons/Attack_damage_icon.png"></SpellImage>
+        <SpellImage
+          iconPath="/src/assets/icons/Attack_damage_icon.png"
+        ></SpellImage>
         <span class="ttam__toggletitle">AA</span>
       </div>
       <div class="ttam__toggle" v-for="spell of models" :key="spell.name">
@@ -25,10 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { SkillModel } from "../api/DataTypes";
-import SpellImage from "./SpellImage.vue";
+import { SkillModel } from '../api/DataTypes';
+import SpellImage from './SpellImage.vue';
 const props = defineProps<{ models: { [key: string]: SkillModel } }>();
-
 </script>
 
 <style>
@@ -45,7 +46,7 @@ const props = defineProps<{ models: { [key: string]: SkillModel } }>();
   border-color: darkorange;
 }
 
-.ttam__toggle>input:checked {
+.ttam__toggle > input:checked {
   border-color: #5b2381;
 }
 

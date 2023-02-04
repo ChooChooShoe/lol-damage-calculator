@@ -1,5 +1,5 @@
 <template>
-  <div :id="`itemtip-${this.itemId}`" class="itemtip" style="display:none;">
+  <div :id="`itemtip-${this.itemId}`" class="itemtip" style="display: none">
     <div class="bg">
       <div class="header">
         <div class="itemspriteimage" :style="value.spriteStyle"></div>
@@ -23,20 +23,20 @@
 
 <script>
 export default {
-  props: ["itemId", "value"],
-  name: "ItemTooltip",
+  props: ['itemId', 'value'],
+  name: 'ItemTooltip',
   data() {
     return {};
   },
   computed: {
     displayCost: function () {
       if (this.value.requiredBuffCurrencyName) {
-        if (this.value.requiredBuffCurrencyName === "GangplankBilgewaterToken")
+        if (this.value.requiredBuffCurrencyName === 'GangplankBilgewaterToken')
           return `${this.value.requiredBuffCurrencyCost}  Silver Serpents`;
         return `${this.value.requiredBuffCurrencyCost} ${this.value.requiredBuffCurrencyName}`;
       }
       const cost = this.value.priceTotal;
-      return cost === 0 ? "Free" : cost;
+      return cost === 0 ? 'Free' : cost;
     },
   },
 };

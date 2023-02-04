@@ -1,5 +1,5 @@
-import { RootRatio, SubRatio, SubSkill } from "../api/DataTypes";
-import PerksData from "./PerksData";
+import { RootRatio, SubRatio, SubSkill } from '../api/DataTypes';
+import PerksData from './PerksData';
 
 export type StyleId = keyof typeof PerksData.styles;
 export type PerkId = keyof typeof PerksData.perks;
@@ -35,7 +35,7 @@ export interface PerkStyle {
   isAdvanced: boolean;
   allowedSubStyles: readonly [StyleId, StyleId, StyleId, StyleId];
   slots: {
-    readonly KeyStone: { slotLabel: ""; perks: readonly PerkId[] };
+    readonly KeyStone: { slotLabel: ''; perks: readonly PerkId[] };
     readonly Mixed1: { slotLabel: string; perks: readonly PerkId[] };
     readonly Mixed2: { slotLabel: string; perks: readonly PerkId[] };
     readonly Mixed3: { slotLabel: string; perks: readonly PerkId[] };
@@ -71,19 +71,22 @@ export function perkStyle(
 }
 
 export class PerkSelections {
-  statPerks: { defense: PerkIdOrNone; flex: PerkIdOrNone; offense: PerkIdOrNone } = {
+  statPerks: {
+    defense: PerkIdOrNone;
+    flex: PerkIdOrNone;
+    offense: PerkIdOrNone;
+  } = {
     defense: 0,
     flex: 0,
     offense: 0,
   };
   primaryStyle: StyleIdOrNone = 8000;
-  primarySelections: [PerkIdOrNone, PerkIdOrNone, PerkIdOrNone, PerkIdOrNone] = [
-    0, 0, 0, 0,
-  ];
+  primarySelections: [PerkIdOrNone, PerkIdOrNone, PerkIdOrNone, PerkIdOrNone] =
+    [0, 0, 0, 0];
   subStyle: StyleIdOrNone = 8100;
   subSelections: [PerkIdOrNone, PerkIdOrNone] = [0, 0];
 
   constructor() {
-    console.log("New PerkSelections");
+    console.log('New PerkSelections');
   }
 }

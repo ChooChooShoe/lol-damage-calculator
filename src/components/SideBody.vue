@@ -26,11 +26,11 @@
 
 <script>
 // import SettingsModel from "./SettingsModel.vue"
-import { calc_dmg_onhit, DamageType } from "./../javascript/league_data";
-import { damageSources, player, target } from "../global/state";
-import DamageBlock from "./sidebar/DamageBlock.vue";
+import { calc_dmg_onhit, DamageType } from './../javascript/league_data';
+import { damageSources, player, target } from '../global/state';
+import DamageBlock from './sidebar/DamageBlock.vue';
 export default {
-  name: "SideBody",
+  name: 'SideBody',
   components: { DamageBlock },
   methods: {
     rnd: function (n, digits) {
@@ -39,7 +39,7 @@ export default {
       return +n.toFixed(digits);
     },
     percentf: function (value) {
-      return parseFloat(value).toFixed(2) + "%";
+      return parseFloat(value).toFixed(2) + '%';
     },
     addCustomDamageSource() {
       this.$root.addCustomDamageSource();
@@ -69,7 +69,7 @@ export default {
       const p6 = this.output.trueDmg / t2;
       return [
         {
-          left: "0%",
+          left: '0%',
           width: this.percentf(p1),
         },
         {
@@ -81,7 +81,7 @@ export default {
           width: this.percentf(p3),
         },
         {
-          left: "0%",
+          left: '0%',
           width: this.percentf(p4),
         },
         {
@@ -97,7 +97,7 @@ export default {
     output: function () {
       const p = player;
       const t = target;
-      let output = {
+      const output = {
         preTotalDmg: 0,
         preMagicDmg: 0,
         prePhysicalDmg: 0,
@@ -105,19 +105,19 @@ export default {
         magicDmg: 0,
         physicalDmg: 0,
         trueDmg: 0,
-        status: "Unknown",
+        status: 'Unknown',
         overkill: 0,
         hpRemaining: 0,
         hpRemainingPercent: 0,
       };
       if (!p || !t) {
-        console.log("Re-calc 4.0 failed, missing player and target.");
+        console.log('Re-calc 4.0 failed, missing player and target.');
         return output;
       }
-      console.log("Re-calc 4.0 start", p, t, damageSources);
+      console.log('Re-calc 4.0 start', p, t, damageSources);
 
       for (const [key, sourceArray] of Object.entries(damageSources)) {
-        console.log("Calc for", key, "effects is", sourceArray);
+        console.log('Calc for', key, 'effects is', sourceArray);
         for (const source of sourceArray) {
           const times_hit = Math.max(source.repeat, 0) || 0;
           let pre = source.dmg_premitigation;
@@ -146,7 +146,11 @@ export default {
             case DamageType.UNKNOWN:
               continue;
             default:
-              console.log('Unknown Damage Type "', source.damage_type, '" Caculations may be incorrect.');
+              console.log(
+                'Unknown Damage Type "',
+                source.damage_type,
+                '" Caculations may be incorrect.'
+              );
               continue;
           }
           // Add totals if magic/phys/true damage
@@ -157,15 +161,15 @@ export default {
 
       const hp_diff = t.current_hp - output.totalDmg;
       if (hp_diff < 0) {
-        output.status = "Dead";
+        output.status = 'Dead';
         output.hpRemaining = 0;
         output.hpRemainingPercent = 0;
         output.overkill = this.rnd(-hp_diff);
       } else {
-        output.status = "Alive";
+        output.status = 'Alive';
         output.hpRemaining = hp_diff;
         output.hpRemainingPercent = hp_diff / t.maximum_hp;
-        output.overkill = "N/A";
+        output.overkill = 'N/A';
       }
       return output;
     },

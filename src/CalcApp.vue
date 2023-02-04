@@ -9,9 +9,20 @@
 
     <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
     <!-- <AADamageSource></AADamageSource> -->
-    <ChampionSpellDamageSource v-for="(spellObj, idx) in activeChampionModel.skills" :key="spellObj.name" :spell="spellObj" :champion="player.champ" v-if="player.champ" :idx="`skill_${idx}`"></ChampionSpellDamageSource>
+    <ChampionSpellDamageSource
+      v-for="(spellObj, idx) in activeChampionModel.skills"
+      :key="spellObj.name"
+      :spell="spellObj"
+      :champion="player.champ"
+      v-if="player.champ"
+      :idx="`skill_${idx}`"
+    ></ChampionSpellDamageSource>
 
-    <CustomDamageSource v-for="(ds, idx) in customDamageSources" :key="idx" :index="idx" ></CustomDamageSource>
+    <CustomDamageSource
+      v-for="(ds, idx) in customDamageSources"
+      :key="idx"
+      :index="idx"
+    ></CustomDamageSource>
   </div>
   <!-- <footer>
     <div class="buttons">
@@ -21,21 +32,34 @@
 </template>
 
 <script setup lang="ts">
-import championList from "./api/ChampionList.json";
-import TimelineAddMenu from "./timeline/TimelineAddMenu.vue";
-import SideBody from "./components/SideBody.vue";
-import ChampionDiv from "./components/ChampionDiv.vue";
-import AADamageSource from "./components/spells/AADamageSource.vue";
-import ChampionSpellDamageSource from "./components/spells/ChampionSpellDamageSource.vue";
-import CustomDamageSource from "./components/spells/CustomDamageSource.vue";
+import championList from './api/ChampionList.json';
+import TimelineAddMenu from './timeline/TimelineAddMenu.vue';
+import SideBody from './components/SideBody.vue';
+import ChampionDiv from './components/ChampionDiv.vue';
+import AADamageSource from './components/spells/AADamageSource.vue';
+import ChampionSpellDamageSource from './components/spells/ChampionSpellDamageSource.vue';
+import CustomDamageSource from './components/spells/CustomDamageSource.vue';
 
-import { ref, reactive, provide, computed, Ref, watchPostEffect, watchEffect } from "vue";
-import { onBeforeRouteUpdate, useRouter, useRoute, RouteLocationNormalizedLoaded } from "vue-router";
+import {
+  ref,
+  reactive,
+  provide,
+  computed,
+  Ref,
+  watchPostEffect,
+  watchEffect,
+} from 'vue';
+import {
+  onBeforeRouteUpdate,
+  useRouter,
+  useRoute,
+  RouteLocationNormalizedLoaded,
+} from 'vue-router';
 
-import { ChampionName, ChampObjModel } from "./model/ChampObj";
-import { DamageSource } from "./javascript/league_data";
-import { ChampionListSkills, SkillModel } from "./api/DataTypes";
-import { player, target } from "./global/state";
+import { ChampionName, ChampObjModel } from './model/ChampObj';
+import { DamageSource } from './javascript/league_data';
+import { ChampionListSkills, SkillModel } from './api/DataTypes';
+import { player, target } from './global/state';
 
 const router = useRouter();
 
@@ -46,20 +70,20 @@ function validateName(value: string): ChampionName | null {
       return el as ChampionName;
     }
   }
-  console.log("[WARN] validateNames: invalid", value);
+  console.log('[WARN] validateNames: invalid', value);
   return null;
-};
+}
 function validateNames(route: RouteLocationNormalizedLoaded) {
-  const player = validateName(route.params.player as string) || "Poppy";
-  const target = validateName(route.params.target as string) || "Taric";
+  const player = validateName(route.params.player as string) || 'Poppy';
+  const target = validateName(route.params.target as string) || 'Taric';
   if (player !== route.params.player || target !== route.params.target) {
-    console.log("validateNames: Route Name Error", player, target);
-    router.push({ params: { player, target } })
+    console.log('validateNames: Route Name Error', player, target);
+    router.push({ params: { player, target } });
   } else {
     localStorage.setItem(`sv_champ_player`, player);
     localStorage.setItem(`sv_champ_target`, target);
   }
-  return { player, target }
+  return { player, target };
 }
 
 onBeforeRouteUpdate(async (to, from) => {
@@ -77,23 +101,23 @@ const activeChampionModel = reactive<ChampionListSkills>({ skills: {} });
 
 watchEffect(async () => {
   const champ = player.champ;
-  const ChampionListSkills = (await import("./api/ChampionListSkills.json")).default;
+  const ChampionListSkills = (await import('./api/ChampionListSkills.json'))
+    .default;
   if (champ in ChampionListSkills) {
     activeChampionModel.skills = ChampionListSkills[champ].skills;
   } else {
     activeChampionModel.skills = {};
   }
-})
-
+});
 
 const aaDamageSources = ref({});
 const champDamageSources = ref({});
 
-provide("player", player);
-provide("target", target);
+provide('player', player);
+provide('target', target);
 
 // obj is also the player but should refrance both in the future.
-provide("obj", player);
+provide('obj', player);
 
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);

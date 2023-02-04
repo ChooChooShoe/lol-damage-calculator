@@ -2,7 +2,15 @@
   <div v-if="value" class="item shopinfo" :data-category="value.category">
     <div class="shopinfo__block">
       <span class="shopinfo__title">Builds Into:</span>
-      <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" v-for="x in value.to" :key="x" :value="items[x]"> </Item>
+      <Item
+        display="icon"
+        @buyItem="$emit('buyItem', $event)"
+        @showInfo="$emit('showInfo', $event)"
+        v-for="x in value.to"
+        :key="x"
+        :value="items[x]"
+      >
+      </Item>
     </div>
     <div class="shopinfo__underline"></div>
 
@@ -10,7 +18,12 @@
       <div class="item__img" :style="value.spriteStyle"></div>
       <span class="item__name" v-html="value.name"></span>
       <span class="item__id">&nbsp;({{ value.id }})</span>
-      <input type="button" value="BUY" class="buy" @click="$emit('buyItem', value.id)" />
+      <input
+        type="button"
+        value="BUY"
+        class="buy"
+        @click="$emit('buyItem', value.id)"
+      />
       <img class="intoimage inline" src="../../assets/Gold.png" />
       <span class="inline gold">{{ displayCost }}</span>
       <!-- <div class="inline" v-if="value.gold.sell != value.gold.total">
@@ -30,13 +43,21 @@
 
       <div class="shopinfo__underline"></div>
       <h4 v-if="value.requiredAlly">Required Ally: {{ value.requiredAlly }}</h4>
-      <h4 v-if="value.requiredChampion">Required Champion: {{ value.requiredChampion }}</h4>
+      <h4 v-if="value.requiredChampion">
+        Required Champion: {{ value.requiredChampion }}
+      </h4>
       <div class="item description" v-html="value.description"></div>
       <div class="shopinfo__underline"></div>
       <div class="shopinfo__block">
         <span class="shopinfo__title">Recipe:</span>
         <template v-for="(x, i) in value.from" :key="i">
-          <Item display="icon" @buyItem="$emit('buyItem', $event)" @showInfo="$emit('showInfo', $event)" :value="items[x]"> </Item>
+          <Item
+            display="icon"
+            @buyItem="$emit('buyItem', $event)"
+            @showInfo="$emit('showInfo', $event)"
+            :value="items[x]"
+          >
+          </Item>
           <span>+</span>
         </template>
         <img src="../../assets/Gold.png" />
@@ -52,20 +73,22 @@
 </template>
 
 <script setup>
-import { reactive, ref, computed } from "vue";
-import SimpleTooltip from "../../components/SimpleTooltip.vue";
-import Item from "./Item.vue";
-import items from "/src/api/items/items.json";
+import { reactive, ref, computed } from 'vue';
+import SimpleTooltip from '../../components/SimpleTooltip.vue';
+import Item from './Item.vue';
+import items from '../../../../src/api/items/items.json';
 
-let props = defineProps({
+const props = defineProps({
   itemId: Number,
 });
-defineEmits(["showInfo", "buyItem"]);
+defineEmits(['showInfo', 'buyItem']);
 const visable = ref(false);
 const clientX = ref(0);
 const clientY = ref(0);
 const value = computed(() => items[props.itemId]);
-const displayCost = computed(() => (value.value.priceTotal === 0 ? "Free" : value.value.priceTotal));
+const displayCost = computed(() =>
+  value.value.priceTotal === 0 ? 'Free' : value.value.priceTotal
+);
 </script>
 
 <style>

@@ -1,11 +1,19 @@
 <template>
   <header class="main__header">
-    <h1 class="main__title">League of Legends Damage Calculator: version {{ appVersion }} for LoL patch {{ dv }}</h1>
+    <h1 class="main__title">
+      League of Legends Damage Calculator: version {{ appVersion }} for LoL
+      patch {{ dv }}
+    </h1>
     <h2 class="main__subtitle">
       With Data from
-      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki"> League of Legends Wiki </a>
-      – Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> – View
-      <a href="https://github.com/ChooChooShoe/lol-damage-calculator"> source on GitHub </a>
+      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">
+        League of Legends Wiki
+      </a>
+      – Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> –
+      View
+      <a href="https://github.com/ChooChooShoe/lol-damage-calculator">
+        source on GitHub
+      </a>
     </h2>
   </header>
   <main>
@@ -27,14 +35,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, provide, computed } from "vue";
-import { dv } from "./api/version.json";
-import championList from "./api/ChampionList.json";
+import { ref, reactive, provide, computed } from 'vue';
+import { dv } from './api/version.json';
+import championList from './api/ChampionList.json';
 
 function loadLocalConfig() {
-  console.log("loading config...");
+  console.log('loading config...');
   return {
-    shopEnabled: localStorage.getItem("shopEnabled") == "true",
+    shopEnabled: localStorage.getItem('shopEnabled') == 'true',
   };
 }
 // function saveLocalConfig(config) {
@@ -44,7 +52,7 @@ function loadLocalConfig() {
 
 const globalToolTips = ref({});
 const config = ref(loadLocalConfig());
-const appVersion = "4.01";
+const appVersion = '4.01';
 </script>
 
 <style>

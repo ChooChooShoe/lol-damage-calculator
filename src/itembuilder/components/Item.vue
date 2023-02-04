@@ -2,7 +2,13 @@
   <div v-if="!value" data-category="missing" class="item item-icon">
     <div class="item__img emptyimage"></div>
   </div>
-  <div v-else-if="display === 'full'" class="item item-block" @click="$emit('showInfo', value.id)" @dblclick="$emit('buyItem', value.id)" @contextmenu="$emit('buyItem', value.id)">
+  <div
+    v-else-if="display === 'full'"
+    class="item item-block"
+    @click="$emit('showInfo', value.id)"
+    @dblclick="$emit('buyItem', value.id)"
+    @contextmenu="$emit('buyItem', value.id)"
+  >
     <div class="item__img" :style="value.spriteStyle"></div>
     <span class="item__name" v-html="value.name"></span>
     <span class="item__id">&nbsp;({{ value.id }})</span>
@@ -42,17 +48,19 @@ const props = defineProps({
   display: String,
 });
 
-defineEmits(["showInfo", "buyItem"]);
+defineEmits(['showInfo', 'buyItem']);
 
-let displayCost = "Free";
+let displayCost = 'Free';
 
 // props.value may be undefined if the item does not exist.
 if (props.value) {
   if (props.value.priceTotal) displayCost = `${props.value.priceTotal}`;
 
   if (props.value.requiredBuffCurrencyCost) {
-    if (props.value.requiredBuffCurrencyName === "GangplankBilgewaterToken") displayCost = `${props.value.requiredBuffCurrencyCost} Silver Serpents`;
-    else displayCost = `${props.value.requiredBuffCurrencyCost} ${props.value.requiredBuffCurrencyName}`;
+    if (props.value.requiredBuffCurrencyName === 'GangplankBilgewaterToken')
+      displayCost = `${props.value.requiredBuffCurrencyCost} Silver Serpents`;
+    else
+      displayCost = `${props.value.requiredBuffCurrencyCost} ${props.value.requiredBuffCurrencyName}`;
   }
 }
 </script>
@@ -126,30 +134,31 @@ if (props.value) {
   display: inline-block;
 }
 
-.item[data-category="ornnitems"] > .item__img::after {
-  content: "";
+.item[data-category='ornnitems'] > .item__img::after {
+  content: '';
   position: relative;
   top: -2px;
   left: -2px;
   width: 52px;
   height: 52px;
   display: block;
-  background: url("./bordertreatmentornn.png") 0 0;
+  background: url('./bordertreatmentornn.png') 0 0;
   background-size: contain;
 }
-.item[data-category="mythics"] > .item__img::after {
-  content: "";
+.item[data-category='mythics'] > .item__img::after {
+  content: '';
   position: relative;
   top: -2px;
   left: -2px;
   width: 52px;
   height: 52px;
   display: block;
-  background: url("./bordertreatmentmythic.png") 0 0;
+  background: url('./bordertreatmentmythic.png') 0 0;
   background-size: contain;
 }
 .emptyimage {
-  background: url("data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=") -0px 0px;
+  background: url('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=') -0px
+    0px;
   width: 48px;
   height: 48px;
 }

@@ -1,337 +1,438 @@
-
 import fs from 'fs';
 import fetch from 'node-fetch';
-import { matchReplaceSpellEffects, numberExpand } from '../src/javascript/matchreplace.mjs';
+import {
+  matchReplaceSpellEffects,
+  numberExpand,
+} from '../src/javascript/matchreplace.mjs';
 
-import { make_wiki_skill_model, fetch_mod_data, saveFile } from './fetch_utils.mjs';
+import {
+  make_wiki_skill_model,
+  fetch_mod_data,
+  saveFile,
+} from './fetch_utils.mjs';
 
 const SKIP_RIOTDATA_FOR_STATS = true;
 const DEBUG = true;
 
 async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
-    const rcr = await riotChampPromise;
-    const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : { spells: [] };
-    console.log("File got (wikia) ", wikiaChamp.name, wikiaChamp.apiname);
-    ChampionListEntry.image = riotChamp.image
-    // Clone ChampionListEntry so skills are not added back to it.
-    const model = Object.assign({}, ChampionListEntry);
-    model.skills = {};
+  const rcr = await riotChampPromise;
+  const riotChamp = rcr ? rcr.data[Object.keys(rcr.data)[0]] : { spells: [] };
+  console.log('File got (wikia) ', wikiaChamp.name, wikiaChamp.apiname);
+  ChampionListEntry.image = riotChamp.image;
+  // Clone ChampionListEntry so skills are not added back to it.
+  const model = Object.assign({}, ChampionListEntry);
+  model.skills = {};
 
-    // Missing skills in wiki data.
-    if (wikiaChamp.name === "Kled & Skaarl")
-        wikiaChamp.skills = { "1": "Skaarl the Cowardly Lizard", "2": "Bear Trap on a Rope", "3": "Violent Tendencies", "4": "Jousting", "5": "Chaaaaaaaarge!!!" };
-
-    // Remove extra skills.
-    if (wikiaChamp.name === "Kled")
-        wikiaChamp.skills = { "1": "Dismounted Skaarl the Cowardly Lizard", "2": "Pocket Pistol", "3": "Violent Tendencies", "4": "Unmounted Jousting", "5": "Unmounted Chaaaaaaaarge!!!" }
-
-    // Missing skills in wiki data.
-    if (wikiaChamp.name === "Mega Gnar")
-        wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
-
-    if (wikiaChamp.name === "Elise")
-        wikiaChamp.skill_r = ["Spider Form / Human Form"]
-    // Remove extra skills.
-    // if (wikiaChamp.name === "Gnar")
-    // wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
-
-
-    const named_skills = {
-        i: Object.values(wikiaChamp.skill_i) || [],
-        q: Object.values(wikiaChamp.skill_q) || [],
-        w: Object.values(wikiaChamp.skill_w) || [],
-        e: Object.values(wikiaChamp.skill_e) || [],
-        r: Object.values(wikiaChamp.skill_r) || []
+  // Missing skills in wiki data.
+  if (wikiaChamp.name === 'Kled & Skaarl')
+    wikiaChamp.skills = {
+      1: 'Skaarl the Cowardly Lizard',
+      2: 'Bear Trap on a Rope',
+      3: 'Violent Tendencies',
+      4: 'Jousting',
+      5: 'Chaaaaaaaarge!!!',
     };
 
-    const merged_skills = { A: [], I: [], Q: [], W: [], E: [], R: [] };
+  // Remove extra skills.
+  if (wikiaChamp.name === 'Kled')
+    wikiaChamp.skills = {
+      1: 'Dismounted Skaarl the Cowardly Lizard',
+      2: 'Pocket Pistol',
+      3: 'Violent Tendencies',
+      4: 'Unmounted Jousting',
+      5: 'Unmounted Chaaaaaaaarge!!!',
+    };
 
-    if (!wikiaChamp.skills)
-        return console.log("[SKILL] not found for", wikiaChamp);
+  // Missing skills in wiki data.
+  if (wikiaChamp.name === 'Mega Gnar')
+    wikiaChamp.skills = {
+      1: 'Rage Gene',
+      2: 'Boulder Toss',
+      3: 'Wallop',
+      4: 'Crunch',
+      5: 'GNAR!',
+    };
 
-    outer: for (const x of Object.values(wikiaChamp.skills)) {
-        for (const key of ['i', 'q', 'w', 'e', 'r']) {
-            const index = named_skills[key].indexOf(x);
-            if (index > -1) {
-                named_skills[key].splice(index, 1);
-                merged_skills[key.toUpperCase()].push(x);
-                continue outer;
-            }
-        }
-        // For Senna, Jhin and Samira
-        if (x === 'Basic Attack' || x === 'Taunt') {
-            merged_skills.A.push(x);
-            continue outer;
-        }
-        // Fallthrough
-        console.log("[SKILL] Could not be found in QWER", x, "for", wikiaChamp.apiname, ':', Object.values(wikiaChamp.skills), "vs", wikiaChamp.skill_i, wikiaChamp.skill_q, wikiaChamp.skill_w, wikiaChamp.skill_e, wikiaChamp.skill_r)
-    }
+  if (wikiaChamp.name === 'Elise')
+    wikiaChamp.skill_r = ['Spider Form / Human Form'];
+  // Remove extra skills.
+  // if (wikiaChamp.name === "Gnar")
+  // wikiaChamp.skills = { "1": "Rage Gene", "2": "Boulder Toss", "3": "Wallop", "4": "Crunch", "5": "GNAR!" };
+
+  const named_skills = {
+    i: Object.values(wikiaChamp.skill_i) || [],
+    q: Object.values(wikiaChamp.skill_q) || [],
+    w: Object.values(wikiaChamp.skill_w) || [],
+    e: Object.values(wikiaChamp.skill_e) || [],
+    r: Object.values(wikiaChamp.skill_r) || [],
+  };
+
+  const merged_skills = { A: [], I: [], Q: [], W: [], E: [], R: [] };
+
+  if (!wikiaChamp.skills)
+    return console.log('[SKILL] not found for', wikiaChamp);
+
+  outer: for (const x of Object.values(wikiaChamp.skills)) {
     for (const key of ['i', 'q', 'w', 'e', 'r']) {
-        const x = named_skills[key];
-        if (x.length > 0) {
-            if (x[0].indexOf('2') === -1) {
-                console.log("[SKILL] Extra Skills", key, x, "for", wikiaChamp.apiname, ':', Object.values(wikiaChamp.skills), "vs", wikiaChamp.skill_i, wikiaChamp.skill_q, wikiaChamp.skill_w, wikiaChamp.skill_e, wikiaChamp.skill_r)
-
-            }
-            // Add all anyway.
-            merged_skills[key.toUpperCase()] = merged_skills[key.toUpperCase()].concat(x);
-        }
+      const index = named_skills[key].indexOf(x);
+      if (index > -1) {
+        named_skills[key].splice(index, 1);
+        merged_skills[key.toUpperCase()].push(x);
+        continue outer;
+      }
     }
+    // For Senna, Jhin and Samira
+    if (x === 'Basic Attack' || x === 'Taunt') {
+      merged_skills.A.push(x);
+      continue outer;
+    }
+    // Fallthrough
+    console.log(
+      '[SKILL] Could not be found in QWER',
+      x,
+      'for',
+      wikiaChamp.apiname,
+      ':',
+      Object.values(wikiaChamp.skills),
+      'vs',
+      wikiaChamp.skill_i,
+      wikiaChamp.skill_q,
+      wikiaChamp.skill_w,
+      wikiaChamp.skill_e,
+      wikiaChamp.skill_r
+    );
+  }
+  for (const key of ['i', 'q', 'w', 'e', 'r']) {
+    const x = named_skills[key];
+    if (x.length > 0) {
+      if (x[0].indexOf('2') === -1) {
+        console.log(
+          '[SKILL] Extra Skills',
+          key,
+          x,
+          'for',
+          wikiaChamp.apiname,
+          ':',
+          Object.values(wikiaChamp.skills),
+          'vs',
+          wikiaChamp.skill_i,
+          wikiaChamp.skill_q,
+          wikiaChamp.skill_w,
+          wikiaChamp.skill_e,
+          wikiaChamp.skill_r
+        );
+      }
+      // Add all anyway.
+      merged_skills[key.toUpperCase()] =
+        merged_skills[key.toUpperCase()].concat(x);
+    }
+  }
 
-    //Done in order.
-    if (merged_skills.A.length > 0)
-        await fetchSkills('A', merged_skills.A, {}, false, model).catch(err => { console.error(err) });
+  // Done in order.
+  if (merged_skills.A.length > 0)
+    await fetchSkills('A', merged_skills.A, {}, false, model).catch((err) => {
+      console.error(err);
+    });
 
-    await fetchSkills('I', merged_skills.I, riotChamp.passive, true, model).catch(err => { console.error(err) });
-    await fetchSkills('Q', merged_skills.Q, riotChamp.spells[0], false, model).catch(err => { console.error(err) });
-    await fetchSkills('W', merged_skills.W, riotChamp.spells[1], false, model).catch(err => { console.error(err) });
-    await fetchSkills('E', merged_skills.E, riotChamp.spells[2], false, model).catch(err => { console.error(err) });
-    await fetchSkills('R', merged_skills.R, riotChamp.spells[3], false, model).catch(err => { console.error(err) });
+  await fetchSkills('I', merged_skills.I, riotChamp.passive, true, model).catch(
+    (err) => {
+      console.error(err);
+    }
+  );
+  await fetchSkills(
+    'Q',
+    merged_skills.Q,
+    riotChamp.spells[0],
+    false,
+    model
+  ).catch((err) => {
+    console.error(err);
+  });
+  await fetchSkills(
+    'W',
+    merged_skills.W,
+    riotChamp.spells[1],
+    false,
+    model
+  ).catch((err) => {
+    console.error(err);
+  });
+  await fetchSkills(
+    'E',
+    merged_skills.E,
+    riotChamp.spells[2],
+    false,
+    model
+  ).catch((err) => {
+    console.error(err);
+  });
+  await fetchSkills(
+    'R',
+    merged_skills.R,
+    riotChamp.spells[3],
+    false,
+    model
+  ).catch((err) => {
+    console.error(err);
+  });
 
-    return model;
+  return model;
 }
 async function fetchSkills(letter, skills, riotData, isPassive, champModel) {
-    const final_skills = {};
-    for (const skill_name of skills) {
-        const { url, model } = await make_wiki_skill_model(champModel.name, skill_name)
-        // Use the fist model for each url.
-        if (url in final_skills) {
-            console.log(`[WARN] Skill ${skill_name} had it's url redirected to another skill ${url}`);
-            continue;
-        };
-        if (model) final_skills[url] = model;
+  const final_skills = {};
+  for (const skill_name of skills) {
+    const { url, model } = await make_wiki_skill_model(
+      champModel.name,
+      skill_name
+    );
+    // Use the fist model for each url.
+    if (url in final_skills) {
+      console.log(
+        `[WARN] Skill ${skill_name} had it's url redirected to another skill ${url}`
+      );
+      continue;
     }
-    let skill_id = 0;
-    const multi = Object.values(final_skills).length > 1
-    for (const model of Object.values(final_skills)) {
-        skill_id++;
-        const skill_key = letter.toUpperCase() + (multi ? skill_id : '');
-        model.skillletter = letter.toUpperCase();
-        model.skillkey = skill_key;
-        model.skillid = skill_id;
-        champModel.skills[skill_key] = buildSkill(model, riotData, isPassive, champModel);
-    }
+    if (model) final_skills[url] = model;
+  }
+  let skill_id = 0;
+  const multi = Object.values(final_skills).length > 1;
+  for (const model of Object.values(final_skills)) {
+    skill_id++;
+    const skill_key = letter.toUpperCase() + (multi ? skill_id : '');
+    model.skillletter = letter.toUpperCase();
+    model.skillkey = skill_key;
+    model.skillid = skill_id;
+    champModel.skills[skill_key] = buildSkill(
+      model,
+      riotData,
+      isPassive,
+      champModel
+    );
+  }
 }
 
 function buildChangesField(changes) {
-    let nums = changes.replace('V', '').replace('b', '.2').split('.')
-    if (nums.length == 2)
-        return '' + nums[0] + '.' + nums[1] + '.1';
-    else
-        return '' + nums[0] + '.' + nums[1] + '.' + nums[2];
+  const nums = changes.replace('V', '').replace('b', '.2').split('.');
+  if (nums.length == 2) return '' + nums[0] + '.' + nums[1] + '.1';
+  else return '' + nums[0] + '.' + nums[1] + '.' + nums[2];
 }
 function makeDescriptionHtml(skillout) {
-    let html = [];
-    for (const line of skillout.description) {
-        let x = matchReplaceSpellEffects(line, skillout);
-        html.push(x.str);
-    }
-    return html.join('<br />');
+  const html = [];
+  for (const line of skillout.description) {
+    const x = matchReplaceSpellEffects(line, skillout);
+    html.push(x.str);
+  }
+  return html.join('<br />');
 }
 
 function buildSkill(model, riotData, is_passive, champModel) {
-    stackData(model, ["description", "leveling", "blurb", "icon"]);
-    const skillout = {
-        // riotId: riotSpell.id || '',
-        name: model.name || riotData?.name,
-        // disp_name: model.disp_name || model.name,
-        champion: model.champion !== champModel.name ? model.champion : undefined,
-        // skill: model.skill,
-        maxrank: riotData?.maxrank || 0,
+  stackData(model, ['description', 'leveling', 'blurb', 'icon']);
+  const skillout = {
+    // riotId: riotSpell.id || '',
+    name: model.name || riotData?.name,
+    // disp_name: model.disp_name || model.name,
+    champion: model.champion !== champModel.name ? model.champion : undefined,
+    // skill: model.skill,
+    maxrank: riotData?.maxrank || 0,
 
-        cooldown: model.cooldown,
-        cost: model.cost,
-        costtype: model.costtype,
-        targeting: model.targeting,
-        range: model.range,
-        target_range: model.target_range,
-        image: riotData?.image || {},
-        attack_range: model.attack_range,
-        travel_distance: model.travel_distance,
-        collision_radius: model.collision_radius,
-        effect_radius: model.effect_radius,
-        width: model.width,
-        angle: model.angle,
-        inner_radius: model.inner_radius,
-        tether_radius: model.tether_radius,
-        speed: model.speed,
-        cast_time: model.cast_time,
-        static: model.static,
-        ontargetcd: model.ontargetcd,
-        ontargetcdstatic: model.ontargetcdstatic,
-        recharge: model.recharge,
-        rechargestatic: model.rechargestatic,
-        customlabel: model.customlabel,
-        custominfo: model.custominfo,
-        // icon: model.icon,
-        // blurb: model.blurb,
-        description: model.description || [],
-        descriptionHtml: null,
-        leveling: model.leveling || [],
-        // riotDescription: riotSpell.description,
-        affects: model.affects,
-        damagetype: model.damagetype,
-        spelleffects: model.spelleffects,
-        onhiteffects: model.onhiteffects,
-        occurrence: model.occurrence,
-        spellshield: model.spellshield,
-        projectile: model.projectile,
-        callforhelp: model.callforhelp,
-        additional: model.additional,
-        notes: model.notes || "",
-        // flavorsound: model.flavorsound,
-        // video: model.video,
-        // video2: model.video2,
-        // yvideo: model.yvideo,
-        // yvideo2: model.yvideo2,
+    cooldown: model.cooldown,
+    cost: model.cost,
+    costtype: model.costtype,
+    targeting: model.targeting,
+    range: model.range,
+    target_range: model.target_range,
+    image: riotData?.image || {},
+    attack_range: model.attack_range,
+    travel_distance: model.travel_distance,
+    collision_radius: model.collision_radius,
+    effect_radius: model.effect_radius,
+    width: model.width,
+    angle: model.angle,
+    inner_radius: model.inner_radius,
+    tether_radius: model.tether_radius,
+    speed: model.speed,
+    cast_time: model.cast_time,
+    static: model.static,
+    ontargetcd: model.ontargetcd,
+    ontargetcdstatic: model.ontargetcdstatic,
+    recharge: model.recharge,
+    rechargestatic: model.rechargestatic,
+    customlabel: model.customlabel,
+    custominfo: model.custominfo,
+    // icon: model.icon,
+    // blurb: model.blurb,
+    description: model.description || [],
+    descriptionHtml: null,
+    leveling: model.leveling || [],
+    // riotDescription: riotSpell.description,
+    affects: model.affects,
+    damagetype: model.damagetype,
+    spelleffects: model.spelleffects,
+    onhiteffects: model.onhiteffects,
+    occurrence: model.occurrence,
+    spellshield: model.spellshield,
+    projectile: model.projectile,
+    callforhelp: model.callforhelp,
+    additional: model.additional,
+    notes: model.notes || '',
+    // flavorsound: model.flavorsound,
+    // video: model.video,
+    // video2: model.video2,
+    // yvideo: model.yvideo,
+    // yvideo2: model.yvideo2,
 
+    // TODO FIX THIS MESS
+    skillletter: model.skillletter,
+    skillkey: model.skillkey,
+    skillid: model.skillid,
+    skillwiki: model.skill,
+    effects: [],
+  };
 
-        //TODO FIX THIS MESS
-        skillletter: model.skillletter,
-        skillkey: model.skillkey,
-        skillid: model.skillid,
-        skillwiki: model.skill,
-        effects: []
-    };
+  skillout.descriptionHtml = makeDescriptionHtml(skillout);
 
-    skillout.descriptionHtml = makeDescriptionHtml(skillout);
+  if (!is_passive) {
+    const old_val = (model.cost || '0').toString();
+    let value = old_val;
 
-    if (!is_passive) {
-        let old_val = (model.cost || '0').toString();
-        let value = old_val;
-
-        if (value.includes('{{')) {
-            const list = burnify(value, skillout.maxrank);
-            value = list.join('/');
-            skillout.cost = list;
-        } else {
-            // Cost does not sacle with level.
-            skillout.cost = +parseFloat(value).toFixed(3);
-        }
+    if (value.includes('{{')) {
+      const list = burnify(value, skillout.maxrank);
+      value = list.join('/');
+      skillout.cost = list;
+    } else {
+      // Cost does not sacle with level.
+      skillout.cost = +parseFloat(value).toFixed(3);
     }
-    if (!is_passive) {
-        let old_val = (model.cooldown || '0').toString();
-        let value = old_val;
+  }
+  if (!is_passive) {
+    const old_val = (model.cooldown || '0').toString();
+    let value = old_val;
 
-        if (value.includes('{{')) {
-            // Cooldown sacles with level.
-            const list = burnify(value, skillout.maxrank);
-            value = list.join('/');
-            skillout.cooldown = list;
-        } else {
-            // Cooldown does not sacle with level.
-            skillout.cooldown = +parseFloat(value).toFixed(3);
-        }
+    if (value.includes('{{')) {
+      // Cooldown sacles with level.
+      const list = burnify(value, skillout.maxrank);
+      value = list.join('/');
+      skillout.cooldown = list;
+    } else {
+      // Cooldown does not sacle with level.
+      skillout.cooldown = +parseFloat(value).toFixed(3);
     }
+  }
 
-    for (let leveling_index in skillout.leveling) {
-        let effect = {}
-        skillout.effects[leveling_index] = effect;
-        const levelingtext = skillout.leveling[leveling_index];
-        // effect.levelingtext = levelingtext;
-        let x = matchReplaceSpellEffects(levelingtext, skillout);
-        effect.raw = levelingtext;
-        effect.str = x.str;
-        effect.vars = x.vars;
+  for (const leveling_index in skillout.leveling) {
+    const effect = {};
+    skillout.effects[leveling_index] = effect;
+    const levelingtext = skillout.leveling[leveling_index];
+    // effect.levelingtext = levelingtext;
+    const x = matchReplaceSpellEffects(levelingtext, skillout);
+    effect.raw = levelingtext;
+    effect.str = x.str;
+    effect.vars = x.vars;
 
-        // if (x.vars.ap_progressions.length == 0) continue;
-        effect.subeffects = [];
-        // as_ratios are deivded evenly between st_slices
-        const as_ratios_per_st = (x.vars.as_ratios.length / x.vars.st_slices.length) || 0;
-        for (const subindex in x.vars.st_slices) {
-            const title = x.vars.st_slices[subindex][0] || '';
-            let damage_type = matchDamageType(title.toLowerCase());
-            if (damage_type === 'none' || damage_type === 'unknown')
-                damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
-            if (damage_type === 'unknown') {
-                console.log("[WARN] Using adaptivetype as damage_type for skill", title);
-                damage_type = champModel.adaptivetype;
-            }
-            let ratios = {}
+    // if (x.vars.ap_progressions.length == 0) continue;
+    effect.subeffects = [];
+    // as_ratios are deivded evenly between st_slices
+    const as_ratios_per_st =
+      x.vars.as_ratios.length / x.vars.st_slices.length || 0;
+    for (const subindex in x.vars.st_slices) {
+      const title = x.vars.st_slices[subindex][0] || '';
+      let damage_type = matchDamageType(title.toLowerCase());
+      if (damage_type === 'none' || damage_type === 'unknown')
+        damage_type = matchDamageType(skillout.descriptionHtml.toLowerCase());
+      if (damage_type === 'unknown') {
+        console.log(
+          '[WARN] Using adaptivetype as damage_type for skill',
+          title
+        );
+        damage_type = champModel.adaptivetype;
+      }
+      const ratios = {};
 
-            if (damage_type != 'none') {
-                ratios.base_damage = x.vars.ap_progressions[subindex];
-            }
-            for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
-                for (const r in x.vars.as_ratios[ratio_index])
-                    ratios[r] = x.vars.as_ratios[ratio_index][r];
-            }
+      if (damage_type != 'none') {
+        ratios.base_damage = x.vars.ap_progressions[subindex];
+      }
+      for (let ratio_index = 0; ratio_index < as_ratios_per_st; ratio_index++) {
+        for (const r in x.vars.as_ratios[ratio_index])
+          ratios[r] = x.vars.as_ratios[ratio_index][r];
+      }
 
-            effect.subeffects[subindex] = {
-                index: parseInt(subindex),
-                title: title,
-                damage_type: damage_type,
-                ratios: ratios,
-                // str: x.vars.st_slices[subindex][1] || '',
-            }
-        }
+      effect.subeffects[subindex] = {
+        index: parseInt(subindex),
+        title,
+        damage_type,
+        ratios,
+        // str: x.vars.st_slices[subindex][1] || '',
+      };
     }
-    return skillout;
+  }
+  return skillout;
 }
 const keyword_to_damage_type = {
-    magic: "magic",
-    true: "true",
-    physical: "physical",
-    none: "none",
-    slow: "none",
-    heal: "heal",
-    shield: "shield",
-    minion: "none",
-    speed: "none",
-}
+  magic: 'magic',
+  true: 'true',
+  physical: 'physical',
+  none: 'none',
+  slow: 'none',
+  heal: 'heal',
+  shield: 'shield',
+  minion: 'none',
+  speed: 'none',
+};
 function matchDamageType(text) {
-    for (const key in keyword_to_damage_type) {
-        if (text.indexOf(key) > -1) {
-            return keyword_to_damage_type[key];
-        }
+  for (const key in keyword_to_damage_type) {
+    if (text.indexOf(key) > -1) {
+      return keyword_to_damage_type[key];
     }
-    return 'unknown'
+  }
+  return 'unknown';
 }
 
 /// Takes each string in toStack array are stakcs 1-5 elements into one array of the orijonal name for the given obj.
 function stackData(obj, toStack) {
-    for (const stackIter of toStack) {
-        obj[stackIter] = [
-            (obj[`${stackIter}`] || null),
-            (obj[`${stackIter}2`] || null),
-            (obj[`${stackIter}3`] || null),
-            (obj[`${stackIter}4`] || null),
-            (obj[`${stackIter}5`] || null),
-        ].filter(el => el !== null && el !== undefined);
-    }
+  for (const stackIter of toStack) {
+    obj[stackIter] = [
+      obj[`${stackIter}`] || null,
+      obj[`${stackIter}2`] || null,
+      obj[`${stackIter}3`] || null,
+      obj[`${stackIter}4`] || null,
+      obj[`${stackIter}5`] || null,
+    ].filter((el) => el !== null && el !== undefined);
+  }
 }
 
 function burnify(param, forceRange, round) {
-    return numberExpand(param.split('|').slice(1), forceRange, round);
+  return numberExpand(param.split('|').slice(1), forceRange, round);
 }
 
-let noRepeatDesc = new Set();
+const noRepeatDesc = new Set();
 
-let cdn = "", lang = "", version = "", dispVersion = "";
+let cdn = '';
+let lang = '';
+let version = '';
+let dispVersion = '';
 
 /**
  * From https://ddragon.leagueoflegends.com/api/versions.json
  * @param body JSON Object
  */
 async function onRealmJsonResponse(body) {
-    cdn = "https://ddragon.leagueoflegends.com/cdn";
-    // Use the lateset version.
-    version = body[0];
-    // Cuts the last .1 off of ddragon patch versions to look like normal patches.
-    dispVersion = version.replace(/\.1$/, "")
-    lang = "en_US";
-    console.log("Using ddragon version:", version);
+  cdn = 'https://ddragon.leagueoflegends.com/cdn';
+  // Use the lateset version.
+  version = body[0];
+  // Cuts the last .1 off of ddragon patch versions to look like normal patches.
+  dispVersion = version.replace(/\.1$/, '');
+  lang = 'en_US';
+  console.log('Using ddragon version:', version);
 
-    saveFile(`./src/api/version.json`, {
-        v: version,
-        dv: dispVersion,
-        l: lang,
-        cdn: cdn,
-    });
+  saveFile(`./src/api/version.json`, {
+    v: version,
+    dv: dispVersion,
+    l: lang,
+    cdn,
+  });
 
-
-    console.log("Building Champion Json (No Riot Data)");
-    return makeChampionList(await fetch_mod_data());
+  console.log('Building Champion Json (No Riot Data)');
+  return makeChampionList(await fetch_mod_data());
 }
 
 /**
@@ -339,81 +440,91 @@ async function onRealmJsonResponse(body) {
  * @param ModuleChampionData JSON Object
  */
 async function makeChampionList(ModuleChampionData) {
-    let ChampionList = {};
-    let promises = []
-    for (const [champ, data] of Object.entries(ModuleChampionData)) {
-        data.name = champ;
-        ChampionList[champ] = {
-            id: data.apiname === "GnarBig" ? "Gnar" : data.apiname,
-            name: champ,  // Ex. Rammus
-            //id: data.id, // Ex. 33,
-            //apiname: data.apiname, // Ex.  'Rammus',
-            title: data.title, // Ex.  'the Armordillo',
-            image: null,
-            // attack: data.attack, // Ex.  4,
-            // defense: data.defense, // Ex.  10,
-            // magic: data.magic, // Ex.  5,
-            // difficulty: data.difficulty, // Ex.  1,
-            herotype: data.herotype, // Ex.  'Tank',
-            alttype: data.alttype, // Ex.  'Fighter',
-            resource: data.resource, // Ex.  'Mana',
-            stats: data.stats,
-            rangetype: data.rangetype, // Ex.  'Melee',
-            date: data.date, // Ex.  '2009-07-10',
-            patch: data.patch, // Ex.  'July 10, 2009 Patch',
-            changes: buildChangesField(data.changes || "V0.0"), // Ex.  'V12.10',
-            role: data.role, // Ex.  ['Vanguard'],
-            positions: data.positions, // Ex.  ['Jungle'],
-            op_positions: data.op_positions, // Ex.  ['Jungle'],
-            // damage: data.damage, // Ex.  2,
-            // toughness: data.toughness, // Ex.  3,
-            // control: data.control, // Ex.  3,
-            // mobility: data.mobility, // Ex.  2,
-            // utility: data.utility, // Ex.  1,
-            // style: data.style, // Ex.  65,
-            adaptivetype: data.adaptivetype, // Ex.  'Physical',
-            be: data.be, // Ex.  1350,
-            rp: data.rp, // Ex.  585,
-            // skill_i: data.skill_i,// Ex.: ['Spiked Shell'],
-            // skill_q: data.skill_q,// Ex.: ['Powerball'],
-            // skill_w: data.skill_w,// Ex.: ['Defensive Ball Curl'],
-            // skill_e: data.skill_e,// Ex.: ['Frenzying Taunt'],
-            // skill_r: data.skill_r,// Ex.: ['Soaring Slam'],
-            // skills: {
-            //     '1': 'Spiked Shell',
-            //     '2': 'Powerball',
-            //     '3': 'Defensive Ball Curl',
-            //     '4': 'Frenzying Taunt',
-            //     '5': 'Soaring Slam'
-            // }
+  const ChampionList = {};
+  const promises = [];
+  for (const [champ, data] of Object.entries(ModuleChampionData)) {
+    data.name = champ;
+    ChampionList[champ] = {
+      id: data.apiname === 'GnarBig' ? 'Gnar' : data.apiname,
+      name: champ, // Ex. Rammus
+      // id: data.id, // Ex. 33,
+      // apiname: data.apiname, // Ex.  'Rammus',
+      title: data.title, // Ex.  'the Armordillo',
+      image: null,
+      // attack: data.attack, // Ex.  4,
+      // defense: data.defense, // Ex.  10,
+      // magic: data.magic, // Ex.  5,
+      // difficulty: data.difficulty, // Ex.  1,
+      herotype: data.herotype, // Ex.  'Tank',
+      alttype: data.alttype, // Ex.  'Fighter',
+      resource: data.resource, // Ex.  'Mana',
+      stats: data.stats,
+      rangetype: data.rangetype, // Ex.  'Melee',
+      date: data.date, // Ex.  '2009-07-10',
+      patch: data.patch, // Ex.  'July 10, 2009 Patch',
+      changes: buildChangesField(data.changes || 'V0.0'), // Ex.  'V12.10',
+      role: data.role, // Ex.  ['Vanguard'],
+      positions: data.positions, // Ex.  ['Jungle'],
+      op_positions: data.op_positions, // Ex.  ['Jungle'],
+      // damage: data.damage, // Ex.  2,
+      // toughness: data.toughness, // Ex.  3,
+      // control: data.control, // Ex.  3,
+      // mobility: data.mobility, // Ex.  2,
+      // utility: data.utility, // Ex.  1,
+      // style: data.style, // Ex.  65,
+      adaptivetype: data.adaptivetype, // Ex.  'Physical',
+      be: data.be, // Ex.  1350,
+      rp: data.rp, // Ex.  585,
+      // skill_i: data.skill_i,// Ex.: ['Spiked Shell'],
+      // skill_q: data.skill_q,// Ex.: ['Powerball'],
+      // skill_w: data.skill_w,// Ex.: ['Defensive Ball Curl'],
+      // skill_e: data.skill_e,// Ex.: ['Frenzying Taunt'],
+      // skill_r: data.skill_r,// Ex.: ['Soaring Slam'],
+      // skills: {
+      //     '1': 'Spiked Shell',
+      //     '2': 'Powerball',
+      //     '3': 'Defensive Ball Curl',
+      //     '4': 'Frenzying Taunt',
+      //     '5': 'Soaring Slam'
+      // }
+    };
+    // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
+    const url = `${cdn}/${version}/data/${lang}/champion/${ChampionList[champ].id}.json`;
+    console.log('Fetching (ddragon)', url);
+    const fullDataPromise = fetch(url).then((response) => {
+      if (response.ok) return response.json();
+      console.error(url, 'url is invalid');
+      // TODO fix GnarBig
+      return null;
+    });
+    promises.push(
+      doMergeData(fullDataPromise, data, ChampionList[champ]).then(
+        (merged_data) => {
+          return saveFile(`./public/api/champion/${champ}.json`, merged_data);
         }
-        // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
-        const url = `${cdn}/${version}/data/${lang}/champion/${ChampionList[champ].id}.json`;
-        console.log('Fetching (ddragon)', url)
-        const fullDataPromise = fetch(url).then((response) => {
-            if (response.ok) return response.json();
-            console.error(url, "url is invalid")
-            // TODO fix GnarBig
-            return null;
-        });
-        promises.push(doMergeData(fullDataPromise, data, ChampionList[champ]).then((merged_data) => {
-            return saveFile(`./public/api/champion/${champ}.json`, merged_data);
-        }));
-    }
-    console.log("Awaiting all Promises");
-    await Promise.all(promises);
-    // console.log("freeze data");
-    // Object.freeze(returnData);
-    const sorted = Object.entries(ChampionList).sort((a, b) => a[1].name > b[1].name ? 1 : -1)
+      )
+    );
+  }
+  console.log('Awaiting all Promises');
+  await Promise.all(promises);
+  // console.log("freeze data");
+  // Object.freeze(returnData);
+  const sorted = Object.entries(ChampionList).sort((a, b) =>
+    a[1].name > b[1].name ? 1 : -1
+  );
 
-    saveFile('./src/api/ChampionList.json', Object.fromEntries(sorted));
-    return ChampionList;
+  saveFile('./src/api/ChampionList.json', Object.fromEntries(sorted));
+  return ChampionList;
 }
 console.log('Hello');
 
-fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => { if (err && err.code !== 'EEXIST') console.info(err) })
+fs.mkdirSync('./public/api/champion/', { recursive: true }, (err) => {
+  if (err && err.code !== 'EEXIST') console.info(err);
+});
 
-//https://ddragon.leagueoflegends.com/realms/na.json
-await fetch("https://ddragon.leagueoflegends.com/api/versions.json")
-    .then((response) => { return response.json(); })
-    .then(onRealmJsonResponse);
+// https://ddragon.leagueoflegends.com/realms/na.json
+await fetch('https://ddragon.leagueoflegends.com/api/versions.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then(onRealmJsonResponse);

@@ -1,2 +1,1 @@
-export const Overwrite: any = {
-}
+export const Overwrite: any = {};

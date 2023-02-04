@@ -1,18 +1,27 @@
-
 <template>
   <div class="item-section">
     <div class="inv__itemgrid">
       <Item :data-number="1" display="icon" :value="item(0)"> </Item>
       <Item :data-number="2" display="icon" :value="item(1)"> </Item>
       <Item :data-number="3" display="icon" :value="item(2)"> </Item>
-      <Item class="inv__trinket" :data-number="4" display="icon" :value="item(3)"> </Item>
+      <Item
+        class="inv__trinket"
+        :data-number="4"
+        display="icon"
+        :value="item(3)"
+      >
+      </Item>
       <Item :data-number="5" display="icon" :value="item(4)"> </Item>
       <Item :data-number="6" display="icon" :value="item(5)"> </Item>
       <Item :data-number="7" display="icon" :value="item(6)"> </Item>
     </div>
     <div class="inv__buttons">
       <input type="button" value="Clear Items" @click="sellAll" />
-      <input type="button" value="Buy All Items" @click="inv = Object.keys(items)" />
+      <input
+        type="button"
+        value="Buy All Items"
+        @click="inv = Object.keys(items)"
+      />
       <input type="button" value="Save Items" />
       <a class="button" href="#shop">Shop</a>
     </div>
@@ -43,25 +52,25 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import items from "/src/api/items/items.json";
-import StatsDiv from "./StatsDiv.vue";
-import Item from "./Item.vue";
+import { computed } from 'vue';
+import items from '../../../../src/api/items/items.json';
+import StatsDiv from './StatsDiv.vue';
+import Item from './Item.vue';
 
 const props = defineProps({ inv: Array });
-const emit = defineEmits(["sellItem"]);
+const emit = defineEmits(['sellItem']);
 
 const item = (index) => {
   return items[props.inv[index]];
 };
 const sellAll = () => {
-  console.log("Selling all");
+  console.log('Selling all');
   for (const [i, value] of props.inv.entries()) {
-    if (value) emit("sellItem", i);
+    if (value) emit('sellItem', i);
   }
 };
 
-///TEST
+/// TEST
 // const ret = { stats: {}, spec: [] };
 // for (const item of Object.values(items)) {
 //   if (!item || !item.stats) continue;
@@ -72,7 +81,7 @@ const sellAll = () => {
 //   }
 // }
 // console.log(ret);
-///TEST
+/// TEST
 // const ret = { effects: {}, spec: [] };
 // for (const item of Object.values(items)) {
 //   if (!item || !item.effects) continue;
@@ -84,7 +93,7 @@ const sellAll = () => {
 //   }
 // }
 // console.log(ret);
-///TEST
+/// TEST
 
 const collect = (key) => {
   const coll = [];
@@ -112,7 +121,7 @@ const statsTotal = computed(() => {
     const item = items[props.inv[index]];
     if (!item || !item.stats) continue;
     for (const [stat, val] of Object.entries(item.stats)) {
-      if (stat.startsWith("spec")) {
+      if (stat.startsWith('spec')) {
         // spec and spec2 are unique.
         if (!ret.spec.includes(val)) ret.spec.push(val);
       } else ret.stats[stat] = (ret.stats[stat] || 0) + val;
@@ -132,9 +141,11 @@ const passiveTotal = computed(() => {
     if (item.effects.pass5) passiveTotal.push(item.effects.pass5);
     if (item.effects.pass6) passiveTotal.push(item.effects.pass6);
   }
-  var seen = {};
+  const seen = {};
   return passiveTotal.filter(function (item) {
-    return seen.hasOwnProperty(item.description) ? false : (seen[item.description] = true);
+    return seen.hasOwnProperty(item.description)
+      ? false
+      : (seen[item.description] = true);
   });
 });
 const activeTotal = computed(() => {
@@ -145,9 +156,11 @@ const activeTotal = computed(() => {
     if (item.effects.act) activeTotal.push(item.effects.act);
     if (item.effects.act2) activeTotal.push(item.effects.act2);
   }
-  var seen = {};
+  const seen = {};
   return activeTotal.filter(function (item) {
-    return seen.hasOwnProperty(item.description) ? false : (seen[item.description] = true);
+    return seen.hasOwnProperty(item.description)
+      ? false
+      : (seen[item.description] = true);
   });
 });
 </script>
@@ -177,7 +190,8 @@ const activeTotal = computed(() => {
   margin: 34px 0 0 -3px;
   font-size: 17px;
   text-decoration-color: #121a1b;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 .inv__buttons {
   display: inline-block;

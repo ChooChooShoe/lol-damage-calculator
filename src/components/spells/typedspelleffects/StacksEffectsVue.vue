@@ -2,8 +2,15 @@
   <div>
     <span class="ad spelleffect__title"></span>
     <div>
-      <BlockStat v-model:total="obj[effect.increasedStat]" :longtitle="effect.longtitle" :title="effect.title" labelClass="lifesteal"
-        suffix=" stacks" :min="effect.min" :max="effect.max">
+      <BlockStat
+        v-model:total="obj[effect.increasedStat]"
+        :longtitle="effect.longtitle"
+        :title="effect.title"
+        labelClass="lifesteal"
+        suffix=" stacks"
+        :min="effect.min"
+        :max="effect.max"
+      >
         <p v-html="effect.description || effect.longtitle"></p>
       </BlockStat>
     </div>
@@ -18,10 +25,8 @@ import BlockStat from '../../simple/BlockStat.vue';
 import { RatioObjComputed } from '../ratios_info';
 import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
 
-
 defineProps<{
-  effect: StacksEffect
+  effect: StacksEffect;
 }>();
-const obj = inject<ChampObjModel>("obj")!;
-
+const obj = inject<ChampObjModel>('obj')!;
 </script>

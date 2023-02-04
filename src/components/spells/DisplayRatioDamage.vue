@@ -1,6 +1,6 @@
-
 <template>
-  <SpellSpan v-if="index === 0" :class="data.color" :list="damageValue"> </SpellSpan>
+  <SpellSpan v-if="index === 0" :class="data.color" :list="damageValue">
+  </SpellSpan>
   <span v-else :class="data.color">
     (+ <SpellSpan :list="damageValue" :class="data.color"> </SpellSpan>)
   </span>
@@ -8,11 +8,14 @@
 </template>
 
 <script setup>
-import { computed, inject, toRefs } from "vue";
-import { spell_ratios, default_spell_ratios } from "../../javascript/league_data";
-import SpellSpan from "../SpellSpan.vue";
+import { computed, inject, toRefs } from 'vue';
+import {
+  spell_ratios,
+  default_spell_ratios,
+} from '../../javascript/league_data';
+import SpellSpan from '../SpellSpan.vue';
 
-const { ratioKey, damageValue, index }  = defineProps({
+const { ratioKey, damageValue, index } = defineProps({
   ratioKey: String,
   damageValue: Number,
   index: Number,

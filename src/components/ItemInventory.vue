@@ -1,10 +1,9 @@
-
 <template>
   <div class="item-section">
     <div class="item-grid-container">
-      <div v-for="(n,i) in 6" :key="i">
+      <div v-for="(n, i) in 6" :key="i">
         <img class="full-image" :src="image(i)" width="64" height="64" />
-        <span>{{n}}</span>
+        <span>{{ n }}</span>
       </div>
     </div>
     <div class="itemcontrol-grid-container">
@@ -18,20 +17,19 @@
 </template>
 
 <script>
-const emptyImage = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
-
+const emptyImage = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
 export default {
-  name: "ItemInventory",
-  props: ["userid"],
+  name: 'ItemInventory',
+  props: ['userid'],
   data: function () {
     return {
-      items: ["1001", "1004", null, null, null, null],
+      items: ['1001', '1004', null, null, null, null],
     };
   },
   computed: {
     username: function () {
-      if (this.userid === "player") return "Player's Champion";
+      if (this.userid === 'player') return "Player's Champion";
       return "Target's";
     },
   },
@@ -42,7 +40,7 @@ export default {
       const d = this.itemdata(index);
       if (d) {
         return (
-          "https://raw.communitydragon.org/latest/game/data/items/icons2d/" +
+          'https://raw.communitydragon.org/latest/game/data/items/icons2d/' +
           d.iconPath.toLowerCase()
         );
       }
@@ -57,11 +55,11 @@ export default {
       return null;
     },
     sellAllItems() {
-      console.log("Selling all items");
+      console.log('Selling all items');
       this.items = [];
     },
     sellItem(slot) {
-      console.log("Selling item at slot", slot);
+      console.log('Selling item at slot', slot);
       this.$set(this.items, slot, null);
     },
     buyItem(itemId) {
@@ -72,7 +70,7 @@ export default {
       if (openIndex >= 5) {
         openIndex = 5;
       }
-      console.log("Buying item:", itemId, "for slot", openIndex);
+      console.log('Buying item:', itemId, 'for slot', openIndex);
       this.$set(this.items, openIndex, itemId);
     },
   },

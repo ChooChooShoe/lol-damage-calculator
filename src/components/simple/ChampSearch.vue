@@ -5,12 +5,18 @@
     </div> -->
     <DropdownSelect label="Champion">
       <template v-slot:value>
-        <SpellImage size="tiny" :image="championList[champ]?.image"></SpellImage>
+        <SpellImage
+          size="tiny"
+          :image="championList[champ]?.image"
+        ></SpellImage>
         <span class="champsearch__name">{{ champ }}</span>
       </template>
       <ul class="dd__champlist">
-        <li :data-name="c.name" v-for="c in championList" :class="{ 'hidden': c.name.toLowerCase().indexOf(searchLower) === -1 }">
-
+        <li
+          :data-name="c.name"
+          v-for="c in championList"
+          :class="{ hidden: c.name.toLowerCase().indexOf(searchLower) === -1 }"
+        >
           <a class="flex__center" @click="to(c.name, $event)" :key="c.name">
             <SpellImage size="tiny" :image="c.image"></SpellImage>
             <span class="champsearch__name">{{ c.name }}</span>
@@ -18,31 +24,38 @@
         </li>
       </ul>
       <div class="multiColumnsFilterSearchField">
-        <input type="text" v-model="search" placeholder="Search Champion" autocomplete="off">
+        <input
+          type="text"
+          v-model="search"
+          placeholder="Search Champion"
+          autocomplete="off"
+        />
       </div>
     </DropdownSelect>
   </div>
 </template>
 
 <script setup lang="ts">
-import championList from "./../../api/ChampionList.json";
+import championList from './../../api/ChampionList.json';
 import { useRouter } from 'vue-router';
-import SpellImage from "../../timeline/SpellImage.vue";
-import { ref } from "vue";
-import { computed } from "@vue/reactivity";
-import DropdownSelect from "./DropdownSelect.vue";
+import SpellImage from '../../timeline/SpellImage.vue';
+import { ref } from 'vue';
+import { computed } from 'vue';
+import DropdownSelect from './DropdownSelect.vue';
 
 const props = defineProps<{
-  champ: keyof typeof championList,
-  mode: "target" | "player" | "emit",
+  champ: keyof typeof championList;
+  mode: 'target' | 'player' | 'emit';
 }>();
 
-const input = ref(null)
+const input = ref(null);
 
-const search = ref("");
-const searchLower = computed(() => { return search.value.toLowerCase() });
+const search = ref('');
+const searchLower = computed(() => {
+  return search.value.toLowerCase();
+});
 
-const emit = defineEmits(["update:champ"]);
+const emit = defineEmits(['update:champ']);
 const router = useRouter();
 
 function to(champ: string, event: Event) {
@@ -52,7 +65,7 @@ function to(champ: string, event: Event) {
   } else if (props.mode === 'target') {
     router.push({ params: { target: champ } });
   } else {
-    emit("update:champ", champ);
+    emit('update:champ', champ);
   }
 }
 </script>

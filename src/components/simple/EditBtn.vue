@@ -16,11 +16,11 @@ export default {
 
 <style>
 .simple--edit-btn:before {
-  content: "\25bc  Edit";
+  content: '\25bc  Edit';
   color: #ddd;
 }
 .simple--edit-btn.active:before {
-  content: "\25b2  Done";
+  content: '\25b2  Done';
   color: #52ff52;
 }
 .simple--edit-btn {

@@ -144,9 +144,9 @@
 </template>
 
 <script setup lang="ts">
-import { provide, reactive, ref, Ref } from "vue";
-import SinglePerk from "./SinglePerk.vue";
-import { computed } from "@vue/reactivity";
+import { provide, reactive, ref, Ref } from 'vue';
+import SinglePerk from './SinglePerk.vue';
+import { computed } from 'vue';
 import {
   perkStyle,
   perkstyles,
@@ -154,7 +154,7 @@ import {
   perk,
   StyleIdOrNone,
   PerkIdOrNone,
-} from "./perks";
+} from './perks';
 
 const props = defineProps<{ runes: PerkSelections }>();
 

@@ -12,15 +12,22 @@
       </span>
     </p>
     <p v-else-if="k === 'cooldown' || k === 'cost'">
-      <span class="key image-key">{{ k }}:</span> <span class="val">{{ v }}</span> : <SpellSpan :list="v"></SpellSpan>
+      <span class="key image-key">{{ k }}:</span>
+      <span class="val">{{ v }}</span> : <SpellSpan :list="v"></SpellSpan>
     </p>
     <p v-else-if="typeof v === 'object'">
       <span class="key">{{ k }}:</span> {
       <RecusiveView :val="v" :filter="filter"></RecusiveView>
       }
     </p>
-    <p v-else-if="(k && k.indexOf && k.indexOf('Html') != -1) || (v && v.indexOf && v.indexOf('<') >= 0)">
-      <span class="key">{{ k }}:</span> <span class="val html-val" v-html="v"></span>
+    <p
+      v-else-if="
+        (k && k.indexOf && k.indexOf('Html') != -1) ||
+        (v && v.indexOf && v.indexOf('<') >= 0)
+      "
+    >
+      <span class="key">{{ k }}:</span>
+      <span class="val html-val" v-html="v"></span>
     </p>
     <p v-else>
       <span class="key">{{ k }}:</span> <span class="val">{{ v }}</span>
@@ -28,13 +35,13 @@
   </template>
 </template>
 
-<script setup  lang="ts">
-import SpellImage from "../timeline/SpellImage.vue";
-import SpellSpan from "../components/SpellSpan.vue";
-import { provide, reactive, ref } from "@vue/runtime-core";
+<script setup lang="ts">
+import SpellImage from '../timeline/SpellImage.vue';
+import SpellSpan from '../components/SpellSpan.vue';
+import { provide, reactive, ref } from 'vue';
 const props = defineProps({ val: Object, filter: String });
 
-provide("rankindex", ref(0));
+provide('rankindex', ref(0));
 </script>
 
 <style>

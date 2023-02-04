@@ -1,8 +1,12 @@
-
 <template>
-  <span v-if="dname" class="tooltiplink" @mousemove="draw($event)" @mouseout="hide($event)">
-    {{dname}}
-    <div ref="local" class="tooltipcontent simplebg" style="display:none;">
+  <span
+    v-if="dname"
+    class="tooltiplink"
+    @mousemove="draw($event)"
+    @mouseout="hide($event)"
+  >
+    {{ dname }}
+    <div ref="local" class="tooltipcontent simplebg" style="display: none">
       <slot></slot>
     </div>
   </span>
@@ -13,34 +17,34 @@
 
 <script>
 export default {
-  props: ["dname", "globalId"],
-  name: "simple-tooltip",
-  data: function() {
+  props: ['dname', 'globalId'],
+  name: 'simple-tooltip',
+  data: function () {
     return {
       visable: false,
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     };
   },
   computed: {
     globalEl() {
       return document.getElementById(this.globalId);
-    }
+    },
   },
   unmounted() {
-    if (this.globalEl) this.globalEl.setAttribute("style", `display:none;`);
+    if (this.globalEl) this.globalEl.setAttribute('style', `display:none;`);
   },
   methods: {
-    draw: function(e) {
+    draw: function (e) {
       const element = this.globalEl || this.$refs.local;
       const style = `left:${e.clientX + 10}px;top:${e.clientY + 10}px;`;
-      element.setAttribute("style", style);
+      element.setAttribute('style', style);
     },
-    hide: function() {
+    hide: function () {
       const element = this.globalEl || this.$refs.local;
-      element.setAttribute("style", `display:none;`);
-    }
-  }
+      element.setAttribute('style', `display:none;`);
+    },
+  },
 };
 </script>
 

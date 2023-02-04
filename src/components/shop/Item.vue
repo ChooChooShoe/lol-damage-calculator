@@ -2,7 +2,10 @@
   <div
     @click="showInfo()"
     @dblclick="buySelf()"
-    @contextmenu="showInfo();buySelf();"
+    @contextmenu="
+      showInfo();
+      buySelf();
+    "
     @mousemove.passive="draw"
     @mouseout.passive="hide"
     class="item item-container"
@@ -17,24 +20,24 @@
 </template>
 
 <script>
-import { spriteBaseUri } from "../../javascript/league_data";
+import { spriteBaseUri } from '../../javascript/league_data';
 
 export default {
-  props: ["itemId", "value"],
-  name: "Item",
+  props: ['itemId', 'value'],
+  name: 'Item',
   computed: {
     displayCost: function () {
       if (this.value.requiredBuffCurrencyName) {
-        if (this.value.requiredBuffCurrencyName === "GangplankBilgewaterToken")
+        if (this.value.requiredBuffCurrencyName === 'GangplankBilgewaterToken')
           return `${this.value.requiredBuffCurrencyCost}  Silver Serpents`;
         return `${this.value.requiredBuffCurrencyCost} ${this.value.requiredBuffCurrencyName}`;
       }
       const cost = this.value.priceTotal;
-      return cost === 0 ? "Free" : cost;
+      return cost === 0 ? 'Free' : cost;
     },
     itemTipEl() {
       return document.getElementById(`itemtip-${this.itemId}`);
-    }
+    },
   },
   methods: {
     showInfo() {
@@ -45,10 +48,10 @@ export default {
     },
     draw(e) {
       const style = `transform: translate(${e.clientX}px, ${e.clientY}px);`;
-      this.itemTipEl.setAttribute("style", style);
+      this.itemTipEl.setAttribute('style', style);
     },
     hide(e) {
-      this.itemTipEl.setAttribute("style", `display:none;`);
+      this.itemTipEl.setAttribute('style', `display:none;`);
     },
   },
 };
@@ -67,7 +70,7 @@ export default {
   padding: 3px;
   margin: 3px;
   color: #b4b4b4;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .item-container.small {

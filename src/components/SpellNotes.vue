@@ -1,10 +1,11 @@
-
 <template>
   <div class="spell-notes">
     <label class="lbl-toggle">
       <input v-model="isopen" class="is-hidden" type="checkbox" />
       More Info
-      <span class="blue" style="user-select: none;cursor: pointer;">[{{ isopen ? 'Hide' : 'Show'}}]</span>
+      <span class="blue" style="user-select: none; cursor: pointer"
+        >[{{ isopen ? 'Hide' : 'Show' }}]</span
+      >
     </label>
     <div class="collapsible-content" ref="content" :style="calcheight">
       <span v-html="text"></span>
@@ -14,54 +15,54 @@
 
 <script>
 export default {
-  name: "spell-notes",
-  props: ["spell", "id"],
-  data: function() {
+  name: 'spell-notes',
+  props: ['spell', 'id'],
+  data: function () {
     return {
-      isopen: false
+      isopen: false,
     };
   },
   computed: {
-    text: function() {
-      let notes = "";
+    text: function () {
+      let notes = '';
       let level = 0;
-      const arr = this.spell.notes.split("\n");
+      const arr = this.spell.notes.split('\n');
       for (let i = 0; i < arr.length; i++) {
         const el = arr[i];
-        const indent = el.slice(0, el.indexOf(" ")).length;
+        const indent = el.slice(0, el.indexOf(' ')).length;
         let diff = indent - level;
         while (diff > 0) {
-          notes += "<ul>";
+          notes += '<ul>';
           diff--;
           level++;
         }
         while (diff < 0) {
-          notes += "</ul>";
+          notes += '</ul>';
           diff++;
           level--;
         }
-        notes += "<li>" + el.slice(el.indexOf(" ") + 1) + "</li>";
+        notes += '<li>' + el.slice(el.indexOf(' ') + 1) + '</li>';
       }
       let diff = 0 - level;
       while (diff > 0) {
-        notes += "<ul>";
+        notes += '<ul>';
         diff--;
         level++;
       }
       while (diff < 0) {
-        notes += "</ul>";
+        notes += '</ul>';
         diff++;
         level--;
       }
       return notes;
     },
-    calcheight: function() {
+    calcheight: function () {
       const len = this.$refs.content ? this.$refs.content.scrollHeight : 0;
       return this.isopen
-        ? "max-height: " + (len+2) + "px;"
-        : "max-height: 0px;";
-    }
-  }
+        ? 'max-height: ' + (len + 2) + 'px;'
+        : 'max-height: 0px;';
+    },
+  },
 };
 </script>
 

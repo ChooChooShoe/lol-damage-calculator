@@ -1,8 +1,6 @@
-
 <template>
   <TabView class="data_holder c50" v-model:activeIndex="active">
     <TabPanel header="Stats">
-
       <!-- <EditBtn v-model="editMode"></EditBtn> -->
       <h2>{{ username }}</h2>
       <ChampSearch :champ="obj.champ" :mode="mode"></ChampSearch>
@@ -13,23 +11,31 @@
             :minFractionDigits="2" suffix="%" showButtons />
           <label for="username">Username</label>
         </span> -->
-      <ChampionStats :obj="obj" :showDamage="showDamage" :showDefence="showDefence" :showExtra="showExtra">
+      <ChampionStats
+        :obj="obj"
+        :showDamage="showDamage"
+        :showDefence="showDefence"
+        :showExtra="showExtra"
+      >
       </ChampionStats>
 
-      <input class="clear--button button" type="button" value="Clear" @click="obj.clearStats()" />
+      <input
+        class="clear--button button"
+        type="button"
+        value="Clear"
+        @click="obj.clearStats()"
+      />
     </TabPanel>
     <TabPanel header="Runes">
       <h2>{{ username }} Runes</h2>
       <!-- <span>obj.runes = {{ obj.runes }}</span> -->
       <PerkPicker v-model:runes="obj.runes"></PerkPicker>
 
-      <ChampionStackingBuffs :obj="obj">
-      </ChampionStackingBuffs>
+      <ChampionStackingBuffs :obj="obj"> </ChampionStackingBuffs>
       <Button @click="active = 0" class="p-button-text" label="Save" />
     </TabPanel>
     <TabPanel header="Settings">
       <div class="buttons">
-
         <label class="switch button">
           <input type="checkbox" v-model="showDamage" />
           <span class="switch--text">Show Offensive</span>
@@ -55,21 +61,24 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 
-import ChampSearch from "./simple/ChampSearch.vue";
-import ChampLevelSelect from "./simple/ChampLevelSelect.vue";
-import BlockStat from "./simple/BlockStat.vue";
-import { ref, defineProps } from "vue";
-import { ChampObjModel } from "../model/ChampObj";
+import ChampSearch from './simple/ChampSearch.vue';
+import ChampLevelSelect from './simple/ChampLevelSelect.vue';
+import BlockStat from './simple/BlockStat.vue';
+import { ref, defineProps } from 'vue';
+import { ChampObjModel } from '../model/ChampObj';
 import ChampionStats from '../itembuilder/components/ChampionStats.vue';
 import ChampionStackingBuffs from '../itembuilder/components/ChampionStackingBuffs.vue';
 import PerkPicker from '../runes/PerkPicker.vue';
 import Panel from 'primevue/panel';
 
-const props = defineProps<{ mode: "target" | "player" | "emit", obj: ChampObjModel }>()
+const props = defineProps<{
+  mode: 'target' | 'player' | 'emit';
+  obj: ChampObjModel;
+}>();
 
 if (!props.obj.champ) {
-  console.log("Loading Champ from storage", props.mode);
-  props.obj.champ = (window.localStorage.getItem(`sv_champ_${props.mode}`) || "");
+  console.log('Loading Champ from storage', props.mode);
+  props.obj.champ = window.localStorage.getItem(`sv_champ_${props.mode}`) || '';
 }
 
 const showDamage = ref(true);
@@ -78,10 +87,9 @@ const showExtra = ref(false);
 const showBreakdown = ref(true);
 const readonly_base_values = true;
 const editMode = ref(true);
-const username = props.mode === "player" ? "Attacking Champion" : "Target Data";
+const username = props.mode === 'player' ? 'Attacking Champion' : 'Target Data';
 
 const active = ref(0);
-
 </script>
 
 <style>
@@ -103,7 +111,7 @@ table {
   margin: 0 0 0 0.5em;
 }
 
-input:checked+.switch--text {
+input:checked + .switch--text {
   color: #9ebbf0;
 }
 </style>

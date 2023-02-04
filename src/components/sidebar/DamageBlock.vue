@@ -40,17 +40,17 @@
   </p>
 </template>
 <script>
-import { h, ref, reactive, toRefs, watchEffect, computed } from "vue";
+import { h, ref, reactive, toRefs, watchEffect, computed } from 'vue';
 
 export default {
-  name: "DamageBlock",
-  props: ["output", "isPre"],
+  name: 'DamageBlock',
+  props: ['output', 'isPre'],
   setup(props) {
     const { output } = toRefs(props);
     const isPre = props.isPre;
 
     const percentf = (value) => {
-      return parseFloat(value < 1 ? value * 100 : value).toFixed(2)+"%";
+      return parseFloat(value < 1 ? value * 100 : value).toFixed(2) + '%';
     };
 
     const d = computed(() => {
@@ -63,7 +63,7 @@ export default {
 
       const mRatio = percentf(magicDmg / totalDmg);
       const pRatio = percentf(physicalDmg / totalDmg);
-      const mpRatio = percentf((magicDmg / totalDmg) + (physicalDmg / totalDmg));
+      const mpRatio = percentf(magicDmg / totalDmg + physicalDmg / totalDmg);
       const tRatio = percentf(trueDmg / totalDmg);
 
       return {

@@ -21,7 +21,11 @@
       </div>
     </div>
     <hr />
-    <SpellEffects v-for="i in customEffects" :key="'SpellEffects' + i" :index="i"></SpellEffects>
+    <SpellEffects
+      v-for="i in customEffects"
+      :key="'SpellEffects' + i"
+      :index="i"
+    ></SpellEffects>
 
     <input
       name="add_effect"
@@ -41,17 +45,17 @@ import SpellEffects from './SpellEffects.vue';
 // import { spriteBaseUri } from '../javascript/league_data';
 
 export default {
-  name: "CustomDamageSource",
+  name: 'CustomDamageSource',
   components: {
     SpellEffects,
     // SimpleTooltip,
     // SpellNotes,
     // SpellSpan,
   },
-  props: ["index"],
+  props: ['index'],
   data: function () {
     return {
-      title: "Custom Damage Source " + (this.index + 1),
+      title: 'Custom Damage Source ' + (this.index + 1),
       customEffects: [0],
       lastEffectIndex: 1,
       enabled: true,

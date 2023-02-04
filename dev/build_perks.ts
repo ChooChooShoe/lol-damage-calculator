@@ -1,24 +1,32 @@
-import fetch from "node-fetch";
-import _ from "lodash";
-import { saveTSFile } from "./fetch_utils.js";
-import { Overwrite, dynamicOverwrites } from "./OverwritePerks.js"
+import fetch from 'node-fetch';
+import _ from 'lodash';
+import { saveTSFile } from './fetch_utils.js';
+import { Overwrite, dynamicOverwrites } from './OverwritePerks.js';
 
-import { JSDOM } from "jsdom";
-import { ratios_from_text, spellEffectFromDescription } from "./skill_ratios_parse.js";
-import { RootRatio, SubSkill } from "../src/api/DataTypes.js";
-import { fix_wiki_img } from "./live_wiki_fetch.js";
-import { Perk, PerkStyle } from "../src/runes/perks.js";
+import { JSDOM } from 'jsdom';
+import {
+  ratios_from_text,
+  spellEffectFromDescription,
+} from './skill_ratios_parse.js';
+import { RootRatio, SubSkill } from '../src/api/DataTypes.js';
+import { fix_wiki_img } from './live_wiki_fetch.js';
+import { Perk, PerkStyle } from '../src/runes/perks.js';
 
+const CDRAGON_PERKS_JSON =
+  'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json';
+const CDRAGON_PERKSTYLES_JSON =
+  'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json';
 
-const CDRAGON_PERKS_JSON = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json";
-const CDRAGON_PERKSTYLES_JSON = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json";
-
-console.log("Runes from CommunityDragon");
+console.log('Runes from CommunityDragon');
 
 main();
 async function main() {
-  const perks_json: Promise<CDragonPerk[]> = fetch(CDRAGON_PERKS_JSON).then((x) => x.json() as unknown as CDragonPerk[]);
-  const perkstyles_json: Promise<CDragonPerkStyles> = fetch(CDRAGON_PERKSTYLES_JSON).then((x) => x.json() as unknown as CDragonPerkStyles);
+  const perks_json: Promise<CDragonPerk[]> = fetch(CDRAGON_PERKS_JSON).then(
+    (x) => x.json() as unknown as CDragonPerk[]
+  );
+  const perkstyles_json: Promise<CDragonPerkStyles> = fetch(
+    CDRAGON_PERKSTYLES_JSON
+  ).then((x) => x.json() as unknown as CDragonPerkStyles);
 
   const perks: Map<number, Perk> = new Map();
 
@@ -31,22 +39,28 @@ async function main() {
       if (i.id >= 5001 && i.id <= 5008) perks.set(i.id, i);
       continue;
     }
-    if (wiki.removed?.innerText === 'true')
-      continue;
-    i.released = wiki.released?.innerHTML?.trim() || "";
-    i.path = wiki.path?.innerHTML?.trim() || "";
-    i.slot = wiki.slot?.innerHTML?.trim() || "";
+    if (wiki.removed?.innerText === 'true') continue;
+    i.released = wiki.released?.innerHTML?.trim() || '';
+    i.path = wiki.path?.innerHTML?.trim() || '';
+    i.slot = wiki.slot?.innerHTML?.trim() || '';
     i.cooldown = wiki.cooldown?.innerHTML?.trim() || undefined;
     i.range = wiki.range?.innerHTML?.trim() || undefined;
     i.subskills = [];
-    for (const p of [wiki.description, wiki.description2, wiki.description3, wiki.description4]) {
+    for (const p of [
+      wiki.description,
+      wiki.description2,
+      wiki.description3,
+      wiki.description4,
+    ]) {
       const subskill = mutateDescriptionLine(p);
       if (subskill) i.subskills.push(subskill);
     }
 
     // Add the image to the first leveling if defined.
     if (i.subskills[0]) {
-      i.subskills[0].img = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${i.iconPath.slice(22).toLowerCase()}`
+      i.subskills[0].img = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${i.iconPath
+        .slice(22)
+        .toLowerCase()}`;
     }
     perks.set(i.id, i);
   }
@@ -79,13 +93,10 @@ async function main() {
   const output = { styles: perkStyles, perks: statmods };
   _.merge(output, Overwrite);
   dynamicOverwrites(output);
-  saveTSFile("./src/runes/PerksData.ts", output);
-  console.log("Goodbye");
+  saveTSFile('./src/runes/PerksData.ts', output);
+  console.log('Goodbye');
 }
-function mutate_slots(
-  slots: Slot[],
-  perks: Map<number, Perk>
-) {
+function mutate_slots(slots: Slot[], perks: Map<number, Perk>) {
   return {
     KeyStone: {
       slotLabel: slots[0].slotLabel,
@@ -117,7 +128,7 @@ function mutate_statmods(perks: Map<number, any>) {
 
 // see: https://leagueoflegends.fandom.com/wiki/Template:Rune_data_Cheap_Shot
 export interface TemplateRuneData {
-  "1"?: HTMLElement; // Cheap Shot
+  '1'?: HTMLElement; // Cheap Shot
   disp_name?: HTMLElement; // Only necessary if the value differs from Cheap Shot
   released?: HTMLElement; //	2018	Season
   path?: HTMLElement; // Domination	Rune path
@@ -135,13 +146,13 @@ export interface TemplateRuneData {
 async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
   const url = `https://leagueoflegends.fandom.com/wiki/Template:Rune_data_${name
     .trim()
-    .replace(/ /g, "_")}`;
+    .replace(/ /g, '_')}`;
   const response = await fetch(url);
   const dom = new JSDOM(await response.text());
   const document = dom.window.document;
   const inputs = document
-    .querySelector("table.article-table.grid")
-    ?.querySelectorAll<HTMLElement>("td.te-input");
+    .querySelector('table.article-table.grid')
+    ?.querySelectorAll<HTMLElement>('td.te-input');
 
   if (!inputs) return null;
 
@@ -156,7 +167,9 @@ async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
 }
 
 const AUTO_MAKE_LEVEING = true;
-function mutateDescriptionLine(p: HTMLElement | undefined): SubSkill | undefined {
+function mutateDescriptionLine(
+  p: HTMLElement | undefined
+): SubSkill | undefined {
   const text = p?.textContent?.trim();
   if (!text || !p) return undefined;
 
@@ -164,18 +177,20 @@ function mutateDescriptionLine(p: HTMLElement | undefined): SubSkill | undefined
 
   if (AUTO_MAKE_LEVEING) {
     const textLines = text.split('. ');
-    console.log(`[INFO] Found line (${textLines.length}):`, text)
+    console.log(`[INFO] Found line (${textLines.length}):`, text);
     for (const i in textLines) {
       const ratio = spellEffectFromDescription(`Name ${i + 1}:`, textLines[i]);
       leveling.push(ratio);
-
     }
   }
   if (leveling.length === 0) leveling = undefined;
 
-  return { description: p.innerHTML.trim(), leveling, locked: leveling !== undefined }
+  return {
+    description: p.innerHTML.trim(),
+    leveling,
+    locked: leveling !== undefined,
+  };
 }
-
 
 export interface RecommendationDescriptorAttributes {
   kUtility?: number;

@@ -2,9 +2,9 @@
   <div class="dd-control">
     <label class="dd-label">
       {{ label }}
-      <button type="button" class="button dd-select" >
+      <button type="button" class="button dd-select">
         <slot name="value">{{ value }}</slot>
-        <div class="dd-content" :class="{ 'selected': selected }">
+        <div class="dd-content" :class="{ selected: selected }">
           <slot></slot>
         </div>
       </button>
@@ -18,8 +18,8 @@ import { ref } from 'vue';
 const selected = ref(false);
 
 const props = defineProps<{
-  label: string,
-  value?: any,
+  label: string;
+  value?: any;
 }>();
 function click(event: MouseEvent) {
   selected.value = true;
@@ -53,8 +53,8 @@ function click(event: MouseEvent) {
   z-index: 400;
 }
 
-.dd-select:focus>.dd-content,
-.dd-select:focus-within>.dd-content,
+.dd-select:focus > .dd-content,
+.dd-select:focus-within > .dd-content,
 .dd-content:active {
   display: block;
 }
