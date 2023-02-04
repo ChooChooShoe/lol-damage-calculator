@@ -32,6 +32,10 @@ export function saveFile(path: fs.PathLike | fs.promises.FileHandle, data: any):
     console.log(`Saving file '${path}'...`);
     return fs.promises.writeFile(path, JSON.stringify(data || {}, null, 2));
 }
+export function saveTSFile(path: fs.PathLike | fs.promises.FileHandle, data: any): Promise<void> {
+    console.log(`Saving file '${path}' as typescript...`);
+    return fs.promises.writeFile(path, `export default ${JSON5.stringify(data || {}, null, 2)} as const;`);
+}
 
 export async function saveFileBlob(path: fs.PathLike | fs.promises.FileHandle, blob: Blob): Promise<void> {
     console.log(`Saving file (BLOB) '${path}'...`);

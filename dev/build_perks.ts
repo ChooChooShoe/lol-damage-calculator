@@ -1,12 +1,13 @@
 import fetch from "node-fetch";
 import _ from "lodash";
-import { saveFile } from "./fetch_utils.js";
+import { saveTSFile } from "./fetch_utils.js";
 import { Overwrite, dynamicOverwrites } from "./OverwritePerks.js"
 
 import { JSDOM } from "jsdom";
 import { ratios_from_text, spellEffectFromDescription } from "./skill_ratios_parse.js";
 import { RootRatio, SubSkill } from "../src/api/DataTypes.js";
 import { fix_wiki_img } from "./live_wiki_fetch.js";
+import { Perk, PerkStyle } from "../src/runes/perks.js";
 
 
 const CDRAGON_PERKS_JSON = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json";
@@ -19,38 +20,39 @@ async function main() {
   const perks_json: Promise<CDragonPerk[]> = fetch(CDRAGON_PERKS_JSON).then((x) => x.json() as unknown as CDragonPerk[]);
   const perkstyles_json: Promise<CDragonPerkStyles> = fetch(CDRAGON_PERKSTYLES_JSON).then((x) => x.json() as unknown as CDragonPerkStyles);
 
-  const perks: Map<number, any> = new Map();
+  const perks: Map<number, Perk> = new Map();
 
-  for (let x of await perks_json ) {
-    const i = x as CDragonPerk & CDragonPerkEx;
+  for (const x of await perks_json) {
+    const i = x as CDragonPerk & CDragonPerkEx as Perk;
     const wiki = await fetchWikiRune(i.name);
     // Only wiki runes are used.
-    if (wiki) {
-      i.released = wiki.released?.innerHTML?.trim() || undefined;
-      i.path = wiki.path?.innerHTML?.trim() || undefined;
-      i.slot = wiki.slot?.innerHTML?.trim() || undefined;
-      i.cooldown = wiki.cooldown?.innerHTML?.trim() || undefined;
-      i.range = wiki.range?.innerHTML?.trim() || undefined;
-      i.subskills = [];
-      for (const p of [wiki.description, wiki.description2, wiki.description3, wiki.description4]) {
-        let subskill = mutateDescriptionLine(p);
-        if (subskill) i.subskills.push(subskill);
-      }
+    if (!wiki) {
+      //For StatStones
+      if (i.id >= 5001 && i.id <= 5008) perks.set(i.id, i);
+      continue;
+    }
+    if (wiki.removed?.innerText === 'true')
+      continue;
+    i.released = wiki.released?.innerHTML?.trim() || "";
+    i.path = wiki.path?.innerHTML?.trim() || "";
+    i.slot = wiki.slot?.innerHTML?.trim() || "";
+    i.cooldown = wiki.cooldown?.innerHTML?.trim() || undefined;
+    i.range = wiki.range?.innerHTML?.trim() || undefined;
+    i.subskills = [];
+    for (const p of [wiki.description, wiki.description2, wiki.description3, wiki.description4]) {
+      const subskill = mutateDescriptionLine(p);
+      if (subskill) i.subskills.push(subskill);
+    }
 
-      // Add the image to the first leveling if defined.
-      if (i.subskills[0]) {
-        i.subskills[0].img = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${i.iconPath.slice(22).toLowerCase()}`
-      }
-      perks.set(i.id, i);
+    // Add the image to the first leveling if defined.
+    if (i.subskills[0]) {
+      i.subskills[0].img = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${i.iconPath.slice(22).toLowerCase()}`
     }
-    // For StatStones
-    else if (i.id >= 5001 && i.id <= 5008) {
-      perks.set(i.id, i);
-    }
+    perks.set(i.id, i);
   }
   // Attack model information to some runes.
 
-  let perkStyles: { [key: string]: any } = {};
+  const perkStyles: { [key: number]: PerkStyle } = {};
   // '/lol-game-data/assets/' ''https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/
 
   const cDragonPerkStyles = await perkstyles_json;
@@ -77,12 +79,12 @@ async function main() {
   const output = { styles: perkStyles, perks: statmods };
   _.merge(output, Overwrite);
   dynamicOverwrites(output);
-  saveFile("./src/runes/perks_gen.json", output);
+  saveTSFile("./src/runes/PerksData.ts", output);
   console.log("Goodbye");
 }
 function mutate_slots(
   slots: Slot[],
-  perks: Map<number, any>
+  perks: Map<number, Perk>
 ) {
   return {
     KeyStone: {
@@ -127,6 +129,8 @@ export interface TemplateRuneData {
   description4?: HTMLElement; //Description (line 4)
   cooldown?: HTMLElement; //4	Cooldown
   range?: HTMLElement; //Range
+  removed?: HTMLElement; //If the item is removed from game, set the value to true. Value can be empty.
+  wr?: HTMLElement; //If the item is from Wild Rift, set the value to true. Value can be empty.
 }
 async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
   const url = `https://leagueoflegends.fandom.com/wiki/Template:Rune_data_${name
@@ -156,19 +160,20 @@ function mutateDescriptionLine(p: HTMLElement | undefined): SubSkill | undefined
   const text = p?.textContent?.trim();
   if (!text || !p) return undefined;
 
-  const leveling: RootRatio[] = [];
+  let leveling: RootRatio[] | undefined = [];
 
-  if(AUTO_MAKE_LEVEING) {
+  if (AUTO_MAKE_LEVEING) {
     const textLines = text.split('. ');
     console.log(`[INFO] Found line (${textLines.length}):`, text)
     for (const i in textLines) {
-      const ratio = spellEffectFromDescription(`Name ${i+1}:`, textLines[i]);
+      const ratio = spellEffectFromDescription(`Name ${i + 1}:`, textLines[i]);
       leveling.push(ratio);
-  
+
     }
   }
+  if (leveling.length === 0) leveling = undefined;
 
-  return { description: p.innerHTML.trim(), leveling }
+  return { description: p.innerHTML.trim(), leveling, locked: leveling !== undefined }
 }
 
 
@@ -197,12 +202,12 @@ export interface CDragonPerk {
 }
 
 export interface CDragonPerkEx {
-  released?: string;
-  path?: string;
-  slot?: string;
+  released: string;
+  path: string;
+  slot: string;
   cooldown?: string;
   range?: string;
-  subskills?: SubSkill[];
+  subskills: SubSkill[];
 }
 
 export interface AssetMap {

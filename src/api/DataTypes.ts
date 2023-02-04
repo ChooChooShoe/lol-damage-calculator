@@ -62,6 +62,7 @@ export interface SubRatio {
   // apply?: "%" | 'based_on_level';
   user?: "none" | "player" | "target";
   units: ChampionStatUnits;
+  unitsText?: string;
   pre?: string;
   post?: string;
   children?: SubRatio[];
@@ -75,16 +76,16 @@ export interface GainEffect extends RootEffect {
 }
 
 export type DamageType = "Physical" | "Magic" | "True" | "None" | "Adaptive";
-export interface DamageEffect {
+export interface DamageEffect extends RootEffect {
   effectType: "Damage";
   damagetype: DamageType;
 }
 
-export interface HealShieldEffect {
+export interface HealShieldEffect extends RootEffect {
   effectType: "Heal" | "Shield";
   isRegen?: boolean
 }
-export interface UniqueEffect {
+export interface UniqueEffect extends RootEffect {
   effectType: "Unique";
 }
 export interface StacksEffect extends RootEffect {
@@ -97,13 +98,13 @@ export interface StacksEffect extends RootEffect {
   max?: number,
   description?: string
 }
+
 export interface RootEffect extends SubRatio {
   name: string;
   raw?: string;
+  // [x: string | number | symbol]: unknown;
 }
-export type RootRatio = StacksEffect | GainEffect | (RootEffect &
-  (DamageEffect | HealShieldEffect | UniqueEffect))
-
+export type RootRatio = StacksEffect | GainEffect | DamageEffect | HealShieldEffect | UniqueEffect
 
 export enum ValidDamageType {
   physical = "Physical",

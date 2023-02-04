@@ -86,7 +86,7 @@ import PerkStyle from "./PerkStyle.vue";
 import PlayerStats from "./PlayerStats.vue";
 import { StatMod, StatBlock } from "./Stats";
 import { computed } from "@vue/reactivity";
-import { tryGetPerkStyle, perkStyle, perk, perks, PerkSelections } from "./perks";
+import { perkStyle, perk, perks, PerkSelections } from "./perks";
 import SpellEffects from "../components/spells/SpellEffects.vue";
 import { ChampObjModel } from "../model/ChampObj";
 import { DamageSource } from "../javascript/league_data";

@@ -99,7 +99,7 @@ export function ratios_from_text(full_text: string): SubRatio {
 
 export function spellEffectFromDescription(name: string, desc: string): RootRatio {
   const nameSplit = desc.split(/:(.*)/s);
-  const betterName = nameSplit[0] + ':';
+  const betterName = nameSplit[1] ? name : nameSplit[0] + ':';
   desc = nameSplit[1] || nameSplit[0];
   let damagetype: DamageType = table_check(desc, ValidDamageType, 'None');
   let effectType: EffectType | undefined = table_check(desc, ValidEffectType, 'Unique');
@@ -174,7 +174,7 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
   }
   if (post) {
     console.log("[WARN] Replacing units '", units, "' because of post ", post);
-    units = level_to_ratio(post).units;
+    units = post;
   }
   const { user, unitsParsed: unitsParsed } = convertUnitsToUserAndUnits(units);
   return {
@@ -184,6 +184,7 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
     valuesIsBasedOnLevel: is_based_on_level || undefined,
     user,
     units: unitsParsed,
+    unitsText: units,
     pre,
     post,
     children: sub_ratios.length > 0 ? sub_ratios : undefined,
