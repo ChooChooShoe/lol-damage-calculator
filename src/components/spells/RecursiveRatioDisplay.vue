@@ -7,9 +7,10 @@
       :recursive="true"
       :display="display"
       :val="v"
+      :computedVals="computedVals.children[k]"
       :key="v.units"
       :valueResolver="valueResolver"
-      v-for="(v, k) in val.children"
+      v-for="(v, k) in val.children || []"
     >
     </RecursiveRatioDisplay>
     {{ dispPost }}
@@ -27,11 +28,13 @@ import {
 } from './ratios_info';
 import SpellSpan from '../SpellSpan.vue';
 import type { SubRatio } from '../../api/DataTypes';
+import { assert } from '@vue/compiler-core';
 
 const props = defineProps<{
-  val: SubRatio & SubRatioComputed;
+  val: SubRatio;
+  computedVals: SubRatioComputed;
   recursive?: boolean | undefined;
-  display: 'value' | 'dmg_premitigation' | 'dmg_postmitigation';
+  display: 'value' | 'scaledValue' | 'resolverValue';
   valueResolver?: Function;
 }>();
 
@@ -64,9 +67,9 @@ const values = computed(() => {
         }`;
       return props.val.values;
     }
-    case 'dmg_premitigation':
-      return Math.round(props.val.scaledValue.value);
-    case 'dmg_postmitigation':
+    case 'scaledValue':
+      return Math.round(props.computedVals.scaledValue.value);
+    case 'resolverValue':
       //return Math.round(props.val.damagePostValue.value) || 0;
       return 100;
     default:

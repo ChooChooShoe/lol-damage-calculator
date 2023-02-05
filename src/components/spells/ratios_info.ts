@@ -1,7 +1,7 @@
 import type { ChampObjModel } from '@/model/ChampObj';
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
-import type { RootRatio, SubRatio } from '../../api/DataTypes';
+import type { RootRatio, StacksEffect, SubRatio } from '../../api/DataTypes';
 
 export const default_spell_ratios: RatioData = {
   prefex: 'Default',
@@ -189,27 +189,32 @@ export interface SubRatioComputed {
   baseValue: ComputedRef<number>;
   scaledValue: ComputedRef<number>;
   // damagePostValue: ComputedRef<number>;
-  children: Array<SubRatio & SubRatioComputed>;
+  children: Array<SubRatioComputed>;
 }
 
 export interface RootRatioComputed extends SubRatioComputed {
   scaledValueTotal: ComputedRef<number>;
   // damagePostTotal: ComputedRef<number>;
 }
-import type { Ref } from 'vue';
+import { type Ref, reactive } from 'vue';
 import { calc_dmg_onhit } from '@/model/league_data';
 import { player, target } from '@/global/state';
 
 export function makeRootRatio(
-  ratio: RootRatio,
-  spellRankIndex: Ref<number>,
+  ratio: Exclude<RootRatio, StacksEffect>,
+  spellRankIndex: Ref<number> | undefined,
   obj: ChampObjModel
-): RootRatio & RootRatioComputed {
-  const newRoot = makeSubRatio(ratio, spellRankIndex, obj) as RootRatio &
+): RootRatioComputed {
+  const reactiveRatio = reactive(ratio);
+
+  const newRoot = makeSubRatio(reactiveRatio, spellRankIndex, obj) as Exclude<
+    RootRatio,
+    StacksEffect
+  > &
     SubRatioComputed;
 
   const scaledValueTotal = computed((): number => {
-    let value = newRoot.scaledValue.value;
+    let value = newRoot.scaledValue.value || 0;
     for (const r of newRoot.children) {
       value = value + (r.scaledValue.value || 0);
     }
@@ -222,9 +227,7 @@ export function makeRootRatio(
   //   }
   //   return value;
   // });
-  return Object.assign(newRoot, {
-    scaledValueTotal,
-  });
+  return Object.assign(newRoot, { scaledValueTotal });
 }
 /**
  * Convers a SubRatio to a SubRatio & SubRatioComputed by adding the needed auto-calc fields.
@@ -234,7 +237,7 @@ export function makeSubRatio(
   ratio: SubRatio,
   spellRankIndex: Ref<number> | undefined,
   obj: ChampObjModel | undefined
-): SubRatio & SubRatioComputed {
+): SubRatioComputed {
   const baseValue = computed((): number => {
     console.log('baseValue');
     let v: number;
@@ -247,38 +250,31 @@ export function makeSubRatio(
     return v;
   });
   const scaledValue = computed((): number => {
+    // const tempo = player.lethalTempoStacks;
+    const user = ratio.user;
+    const units = ratio.units;
+    const base = baseValue.value;
+
     console.log('scaledValue');
-    if (ratio.units === '' || ratio.user === 'none') return baseValue.value;
+    if (units === '' || user === 'none') return base;
     /// ratio.user undefined is a "player"
-    const user = ratio.user === 'target' ? target : player;
-    const statValue = user[ratio.units];
+    const obj = ratio.user === 'target' ? target : player;
+    const statValue = obj[units];
     if (isNaN(statValue)) {
       console.warn(
-        'StatMissing',
-        ratio,
-        'for ratio',
-        user,
-        'missing for value=',
-        baseValue.value
+        `StatMissing '${units}' for ${obj.champ} with value of ${base}`
       );
-      return baseValue.value;
+      return base;
     }
-    return statValue * baseValue.value;
+    return statValue * base;
   });
   // const damagePostValue = computed(() =>
   //   calc_dmg_onhit(player, target, damagePreValue.value, damage_type.value)
   // );
-  const children: (SubRatio & SubRatioComputed)[] = [];
+  const children: SubRatioComputed[] = [];
   if (ratio.children)
-    for (const [key, child] of ratio.children.entries()) {
-      children[key] = makeSubRatio(child, spellRankIndex, obj);
-    }
+    for (const child of ratio.children)
+      children.push(makeSubRatio(child, spellRankIndex, obj));
 
-  return Object.assign(ratio, {
-    baseValue,
-    scaledValue,
-    // damagePostValue,
-    // sub_calcs,
-    children,
-  });
+  return { baseValue, scaledValue, children };
 }

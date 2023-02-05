@@ -129,7 +129,7 @@ export class ChampObjModel {
     this.clearStats();
     this.updateBaseStats();
   }
-  user: string;
+  user: 'player' | 'target';
   _level = 18;
   public get level(): number {
     return this._level;
@@ -335,6 +335,8 @@ export class ChampObjModel {
   zombieWardsPlaced = 0;
   gold = 0;
   healAndShieldPower = 0;
+  itemHaste = 0;
+  summonerSpellHaste = 0;
   runes: PerkSelections;
 
   // Fizz, Leona, Guardian's Horn
@@ -347,7 +349,7 @@ export class ChampObjModel {
   // Coup de Grace
   percentDamageIncrease = 0;
 
-  constructor(user: string, champ: ChampionName) {
+  constructor(user: 'player' | 'target', champ: ChampionName) {
     this.user = user;
     this._champ = champ;
     this.updateBaseStats();

@@ -1,5 +1,5 @@
 <template>
-  <SpellSpan v-if="index === 0" :class="data.color" :list="damageValue">
+  <SpellSpan v-if="index === 0" :class="data.color" :list="damageValue || 0">
   </SpellSpan>
   <span v-else :class="data.color">
     (+ <SpellSpan :list="damageValue" :class="data.color"> </SpellSpan>)

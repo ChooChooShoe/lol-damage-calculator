@@ -4,7 +4,7 @@
     <div>
       <BlockStat
         :total="obj[effect.units]"
-        @update:total="obj[effect.units] = $event"
+        @update:total="Object.assign(obj, { [effect.units]: $event })"
         :longtitle="effect.title"
         :title="effect.title || effect.unitsText || 'Stacks'"
         labelClass="ap"

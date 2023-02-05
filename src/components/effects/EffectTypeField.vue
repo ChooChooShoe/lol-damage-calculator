@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { EffectType } from '../../api/DataTypes';
+import type { EffectType } from '../../api/DataTypes';
 import DropdownSelect from '../simple/DropdownSelect.vue';
 defineProps<{ modelValue: EffectType }>();
 defineEmits(['update:modelValue']);

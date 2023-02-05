@@ -18,7 +18,7 @@
     <div>
       <h1>All Runes as CommonRune</h1>
       <div>
-        <CommonRune v-for="p in perks" :p="p"></CommonRune>
+        <CommonRune v-for="p in perks" :p="p" :key="p.id"></CommonRune>
       </div>
     </div>
   </div>
@@ -37,11 +37,8 @@ import { ChampObjModel } from '../model/ChampObj';
 import { DamageSource } from '../model/league_data';
 import PerkPicker from './PerkPicker.vue';
 import CommonRune from './perks/CommonRune.vue';
-import RecursiveRatioDisplay from '@/components/spells/RecursiveRatioDisplay.vue';
+import { player as obj } from '@/global/state';
 
-const obj = reactive(new ChampObjModel('Test', 'Bard'));
-
-provide('player', obj);
 provide('obj', obj);
 
 const primaryPathKey: Ref<number> = ref(0);

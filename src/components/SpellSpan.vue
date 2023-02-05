@@ -12,7 +12,7 @@
     </template>
   </span>
   <span v-else class="spelleffect">
-    {{ list }}
+    {{ list || '0' }}
   </span>
 </template>
 
@@ -23,7 +23,7 @@
 import { inject } from 'vue';
 
 defineProps<{
-  list: Array<number | string> | number | string;
+  list: Array<number | string> | number | string | undefined | null;
 }>();
 
 const rankindex = inject<number>('rankindex', 0);
