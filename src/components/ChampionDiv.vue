@@ -12,7 +12,6 @@
           <label for="username">Username</label>
         </span> -->
       <ChampionStats
-        :obj="obj"
         :showDamage="showDamage"
         :showDefence="showDefence"
         :showExtra="showExtra"
@@ -29,7 +28,7 @@
     <TabPanel header="Runes">
       <h2>{{ username }} Runes</h2>
       <!-- <span>obj.runes = {{ obj.runes }}</span> -->
-      <PerkPicker v-model:runes="obj.runes"></PerkPicker>
+      <PerkPicker></PerkPicker>
 
       <ChampionStackingBuffs :obj="obj"> </ChampionStackingBuffs>
       <Button @click="active = 0" class="p-button-text" label="Save" />
@@ -64,21 +63,31 @@ import InputNumber from 'primevue/inputnumber';
 import ChampSearch from './simple/ChampSearch.vue';
 import ChampLevelSelect from './simple/ChampLevelSelect.vue';
 import BlockStat from './simple/BlockStat.vue';
-import { ref, defineProps } from 'vue';
-import { ChampObjModel } from '../model/ChampObj';
+import { ref, defineProps, provide } from 'vue';
+import { validateName, type ChampObjModel } from '../model/ChampObj';
 import ChampionStats from '../itembuilder/components/ChampionStats.vue';
 import ChampionStackingBuffs from '../itembuilder/components/ChampionStackingBuffs.vue';
 import PerkPicker from '../runes/PerkPicker.vue';
 import Panel from 'primevue/panel';
+import { target, player } from '@/global/state';
 
 const props = defineProps<{
-  mode: 'target' | 'player' | 'emit';
-  obj: ChampObjModel;
+  mode: 'target' | 'player';
 }>();
 
-if (!props.obj.champ) {
+let obj: ChampObjModel;
+if (props.mode === 'target') {
+  obj = target;
+  provide('obj', target);
+  console.log('Providing obj (target) as', target);
+} else {
+  obj = player;
+}
+
+if (!obj.champ) {
   console.log('Loading Champ from storage', props.mode);
-  props.obj.champ = window.localStorage.getItem(`sv_champ_${props.mode}`) || '';
+  const readName = window.localStorage.getItem(`sv_champ_${props.mode}`);
+  obj.champ = validateName(readName) || 'Leona';
 }
 
 const showDamage = ref(true);

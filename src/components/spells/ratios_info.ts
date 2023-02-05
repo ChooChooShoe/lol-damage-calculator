@@ -1,5 +1,7 @@
-import { ComputedRef } from 'vue';
-import { SubRatio } from '../../api/DataTypes';
+import type { ChampObjModel } from '@/model/ChampObj';
+import { computed } from '@vue/reactivity';
+import type { ComputedRef } from 'vue';
+import type { RootRatio, SubRatio } from '../../api/DataTypes';
 
 export const default_spell_ratios: RatioData = {
   prefex: 'Default',
@@ -183,11 +185,100 @@ const x = {
   },
 };
 
-export interface RatioObjComputed {
-  damageValue: ComputedRef<number>;
-  damagePreValue: ComputedRef<number>;
-  damagePostValue: ComputedRef<number>;
-  damagePreTotal: ComputedRef<number>;
-  damagePostTotal: ComputedRef<number>;
-  sub_calcs: Array<SubRatio & RatioObjComputed>;
+export interface SubRatioComputed {
+  baseValue: ComputedRef<number>;
+  scaledValue: ComputedRef<number>;
+  // damagePostValue: ComputedRef<number>;
+  children: Array<SubRatio & SubRatioComputed>;
+}
+
+export interface RootRatioComputed extends SubRatioComputed {
+  scaledValueTotal: ComputedRef<number>;
+  // damagePostTotal: ComputedRef<number>;
+}
+import type { Ref } from 'vue';
+import { calc_dmg_onhit } from '@/model/league_data';
+import { player, target } from '@/global/state';
+
+export function makeRootRatio(
+  ratio: RootRatio,
+  spellRankIndex: Ref<number>,
+  obj: ChampObjModel
+): RootRatio & RootRatioComputed {
+  const newRoot = makeSubRatio(ratio, spellRankIndex, obj) as RootRatio &
+    SubRatioComputed;
+
+  const scaledValueTotal = computed((): number => {
+    let value = newRoot.scaledValue.value;
+    for (const r of newRoot.children) {
+      value = value + (r.scaledValue.value || 0);
+    }
+    return value;
+  });
+  // const damagePostTotal = computed(() => {
+  //   let value = damagePostValue.value;
+  //   for (const r of sub_calcs) {
+  //     value = value + (r.damagePostValue?.value || 0);
+  //   }
+  //   return value;
+  // });
+  return Object.assign(newRoot, {
+    scaledValueTotal,
+  });
+}
+/**
+ * Convers a SubRatio to a SubRatio & SubRatioComputed by adding the needed auto-calc fields.
+ * @param ratio
+ */
+export function makeSubRatio(
+  ratio: SubRatio,
+  spellRankIndex: Ref<number> | undefined,
+  obj: ChampObjModel | undefined
+): SubRatio & SubRatioComputed {
+  const baseValue = computed((): number => {
+    console.log('baseValue');
+    let v: number;
+    if (Array.isArray(ratio.values)) {
+      if (ratio.valuesIsBasedOnLevel) v = ratio.values[(obj?.level || 1) - 1];
+      else v = ratio.values[spellRankIndex?.value || 0];
+    } else v = ratio.values;
+    if (!Number.isFinite(v)) v = 0;
+    if (ratio.valuesIsPercent) v = v / 100;
+    return v;
+  });
+  const scaledValue = computed((): number => {
+    console.log('scaledValue');
+    if (ratio.units === '' || ratio.user === 'none') return baseValue.value;
+    /// ratio.user undefined is a "player"
+    const user = ratio.user === 'target' ? target : player;
+    const statValue = user[ratio.units];
+    if (isNaN(statValue)) {
+      console.warn(
+        'StatMissing',
+        ratio,
+        'for ratio',
+        user,
+        'missing for value=',
+        baseValue.value
+      );
+      return baseValue.value;
+    }
+    return statValue * baseValue.value;
+  });
+  // const damagePostValue = computed(() =>
+  //   calc_dmg_onhit(player, target, damagePreValue.value, damage_type.value)
+  // );
+  const children: (SubRatio & SubRatioComputed)[] = [];
+  if (ratio.children)
+    for (const [key, child] of ratio.children.entries()) {
+      children[key] = makeSubRatio(child, spellRankIndex, obj);
+    }
+
+  return Object.assign(ratio, {
+    baseValue,
+    scaledValue,
+    // damagePostValue,
+    // sub_calcs,
+    children,
+  });
 }

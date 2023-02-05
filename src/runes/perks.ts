@@ -1,13 +1,13 @@
-import { RootRatio, SubRatio, SubSkill } from '../api/DataTypes';
-import PerksData from './PerksData';
+import type { RootRatio, SubRatio, SubSkill } from '../api/DataTypes';
+import { styles, perks } from './PerksData';
 
-export type StyleId = keyof typeof PerksData.styles;
-export type PerkId = keyof typeof PerksData.perks;
+export { styles as perkstyles } from './PerksData';
+export { perks } from './PerksData';
+
+export type StyleId = keyof typeof styles;
+export type PerkId = keyof typeof perks;
 export type StyleIdOrNone = StyleId | 0;
 export type PerkIdOrNone = PerkId | 0;
-
-export const perkstyles: typeof PerksData.styles = PerksData.styles;
-export const perks = PerksData.perks;
 
 export interface Perk {
   id: PerkId;
@@ -16,15 +16,17 @@ export interface Perk {
   tooltip: string;
   shortDesc: string;
   longDesc: string;
+  recommendationDescriptor: string;
   iconPath: string;
-  endOfGameStatDescs?: readonly string[];
+  endOfGameStatDescs?: string[];
+  recommendationDescriptorAttributes: {};
   released?: string;
-  path?: string;
-  slot?: string;
-  cooldown?: string;
-  range?: string;
-  subskills?: Readonly<SubSkill>[];
-  stats?: { [key: string]: number };
+  path?: 'Precision' | 'Domination' | 'Sorcery' | 'Resolve' | 'Inspiration';
+  slot?: 'Keystone' | 1 | 2 | 3;
+  cooldown?: string | number;
+  range?: string | number;
+  subskills?: SubSkill[];
+  stats?: { [key: string]: number | number[] };
 }
 
 export interface PerkStyle {
@@ -33,41 +35,37 @@ export interface PerkStyle {
   tooltip: string;
   iconPath: string;
   isAdvanced: boolean;
-  allowedSubStyles: readonly [StyleId, StyleId, StyleId, StyleId];
+  allowedSubStyles: [StyleId, StyleId, StyleId, StyleId];
   slots: {
-    readonly KeyStone: { slotLabel: ''; perks: readonly PerkId[] };
-    readonly Mixed1: { slotLabel: string; perks: readonly PerkId[] };
-    readonly Mixed2: { slotLabel: string; perks: readonly PerkId[] };
-    readonly Mixed3: { slotLabel: string; perks: readonly PerkId[] };
+    KeyStone: { slotLabel: ''; perks: PerkId[] };
+    Mixed1: { slotLabel: string; perks: PerkId[] };
+    Mixed2: { slotLabel: string; perks: PerkId[] };
+    Mixed3: { slotLabel: string; perks: PerkId[] };
   };
   defaultPageName: string;
   defaultSubStyle: StyleId;
-  defaultPerks: readonly PerkId[];
-  defaultPerksWhenSplashed: readonly PerkId[];
-  defaultStatModsPerSubStyle: readonly {
+  defaultPerks: PerkId[];
+  defaultPerksWhenSplashed: PerkId[];
+  defaultStatModsPerSubStyle: {
     id: StyleId;
-    perks: readonly PerkId[];
+    perks: PerkId[];
   }[];
 }
 
-function isPerkKey(
-  posibleId: number
-): posibleId is keyof typeof PerksData.perks {
-  return posibleId in PerksData.perks;
+function isPerkKey(posibleId: number): posibleId is keyof typeof perks {
+  return posibleId in perks;
 }
-function isStyleKey(
-  possibleId: number
-): possibleId is keyof typeof PerksData.styles {
-  return possibleId in PerksData.styles;
+function isStyleKey(possibleId: number): possibleId is keyof typeof styles {
+  return possibleId in styles;
 }
 
 export function perk(perk: number | undefined | null): Perk | undefined {
-  if (perk && isPerkKey(perk)) return PerksData.perks[perk] as Perk;
+  if (perk && isPerkKey(perk)) return perks[perk] as Perk;
 }
 export function perkStyle(
   style: number | undefined | null
 ): PerkStyle | undefined {
-  if (style && isStyleKey(style)) return PerksData.styles[style];
+  if (style && isStyleKey(style)) return styles[style];
 }
 
 export class PerkSelections {

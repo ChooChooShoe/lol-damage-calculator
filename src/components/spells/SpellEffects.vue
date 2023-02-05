@@ -38,7 +38,7 @@
         >
         </RecursiveRatioDisplay>
         <span class="spelleffect__total">{{
-          ` = ${Math.round(ratios.damagePreTotal.value)} `
+          ` = ${Math.round(ratios.damagePreTotal)} `
         }}</span>
         <template v-if="repeat !== 1">
           <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
@@ -174,76 +174,54 @@
 </template>
 
 <script setup lang="ts">
-import {
-  calc_dmg_onhit,
-  spell_ratios,
-  CORE_STATS,
-  DamageSource,
-} from '../../javascript/league_data';
+import { DamageSource } from '@/model/league_data';
 
 import { damage_type_user } from './SpellHelper';
 import SpellField from './SpellField.vue';
 import DamageTypeField from './DamageTypeField.vue';
 import AddRatioDropDown from './AddRatioDropDown.vue';
-import DisplayRatio from './DisplayRatio.vue';
-import DisplayRatioDamage from './DisplayRatioDamage.vue';
 import EditBtn from '../simple/EditBtn.vue';
 import {
   computed,
   inject,
   onMounted,
   onUnmounted,
-  provide,
-  reactive,
-  Ref,
+  type Ref,
   ref,
-  toRefs,
   watchEffect,
 } from 'vue';
 import NumInput from '../simple/NumInput.vue';
 import RecursiveRatioDisplay from './RecursiveRatioDisplay.vue';
-import { RatioObjComputed, stat_to_display } from './ratios_info';
 import {
+  makeRootRatio,
+  makeSubRatio,
+  type RootRatioComputed,
+  type SubRatioComputed,
+} from './ratios_info';
+import type {
+  ChampionStatUnits,
   DamageType,
   EffectType,
   RootRatio,
   SkillModel,
   SubRatio,
 } from '../../api/DataTypes';
-import { RefUnwrapBailTypes } from '@vue/reactivity';
-import { ChampObjModel } from '../../model/ChampObj';
+import type { ChampObjModel } from '../../model/ChampObj';
 import { damageSources, player, target } from '../../global/state';
 import DropdownSelect from '../simple/DropdownSelect.vue';
 import EffectTypeField from '../effects/EffectTypeField.vue';
 import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
 import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
 
-const CORE_RATIOS = [
-  'player_total_ap',
-  'player_total_ad',
-  'player_bonus_ad',
-  'player_total_hp',
-  'player_bonus_hp',
-  'player_missing_hp',
-  'target_total_hp',
-  'target_bonus_hp',
-  'target_current_hp',
-  'target_missing_hp',
-  'player_bonus_armor',
-  'player_total_armor',
-  'player_bonus_mr',
-  'player_total_mr',
-  'target_total_ap',
-];
-
-const { effect, effectindex, pkey, custom } = defineProps<{
+const props = defineProps<{
   effect: RootRatio;
   effectindex: number;
   pkey: string;
   custom: boolean;
 }>();
 
-const rankindex = inject<Ref<number>>('rankindex')!;
+const rankindex = inject<Ref<number>>('rankindex');
+const obj = inject<ChampObjModel>('obj');
 const damage_type = ref<DamageType>('Magic');
 const effectType = ref<EffectType>('Damage');
 const damageSource = new DamageSource('Magic', 8);
@@ -260,72 +238,8 @@ watchEffect(() => {
   // console.log("computed() ratios", ratios, effect.ratio_obj);
 });
 
-function makeRatio(val: RootRatio): RootRatio & RatioObjComputed;
-function makeRatio(val: SubRatio): SubRatio & RatioObjComputed;
-function makeRatio(val: SubRatio): SubRatio & RatioObjComputed {
-  const damageValue = computed((): number => {
-    let v = 0;
-    if (Array.isArray(val.values)) {
-      if (val.apply === 'based_on_level') v = val.values[17];
-      else v = val.values[rankindex.value];
-    } else v = val.values;
-    if (val.apply === '%') v = v / 100;
-    return v;
-  });
-  const damagePreValue = computed((): number => {
-    let value = damageValue.value;
+const ratios = makeRootRatio(props.effect, rankindex, obj);
 
-    if (val.units === '' || val.units === 'percent' || val.user === 'none')
-      return value;
-    const user = val.user === 'target' ? target : player;
-    const statValue = Number(user[val.stat as keyof typeof user]);
-    if (isNaN(statValue)) {
-      console.warn(
-        'StatMissing',
-        val,
-        'for ratio',
-        user,
-        'missing for value=',
-        value
-      );
-      return value;
-    }
-    return statValue * value;
-  });
-  const damagePostValue = computed(() =>
-    calc_dmg_onhit(player, target, damagePreValue.value, damage_type.value)
-  );
-  const sub_calcs: Array<SubRatio & RatioObjComputed> = [];
-  if (val.sub_ratios) {
-    for (let r of val.sub_ratios) {
-      sub_calcs.push(makeRatio(r));
-    }
-  }
-
-  const damagePreTotal = computed((): number => {
-    let value = damagePreValue.value;
-    for (const r of sub_calcs) {
-      value = value + (r.damagePreValue?.value || 0);
-    }
-    return value;
-  });
-  const damagePostTotal = computed(() => {
-    let value = damagePostValue.value;
-    for (const r of sub_calcs) {
-      value = value + (r.damagePostValue?.value || 0);
-    }
-    return value;
-  });
-  return Object.assign(val, {
-    damageValue,
-    damagePreValue,
-    damagePostValue,
-    damagePreTotal,
-    damagePostTotal,
-    sub_calcs,
-  });
-}
-const ratios = makeRatio(effect);
 defineExpose({
   ratios,
 });
@@ -341,30 +255,28 @@ watchEffect(() => {
   // }
 });
 
-function addRatio(x: string) {
-  const made = makeRatio({
-    values: 1,
-    user: 'player',
-    stat: x,
-    units: x,
-    apply: '%',
-    // fulltext: 'CUSTOM'
-  });
-  ratios.sub_ratios?.push(made);
-  ratios.sub_calcs.push(made);
+function addRatio(x: ChampionStatUnits) {
+  const made = makeSubRatio(
+    {
+      values: 1,
+      valuesIsPercent: true,
+      user: 'player',
+      units: x,
+    },
+    rankindex,
+    obj
+  );
+  ratios.children.push(made);
 }
 onMounted(() => {
-  if (damageSources) damageSources[pkey] = [damageSource];
+  if (damageSources) damageSources[props.pkey] = [damageSource];
 });
 onUnmounted(() => {
-  if (damageSources) delete damageSources[pkey];
+  if (damageSources) delete damageSources[props.pkey];
 });
 
 const repeat = ref(1);
 const editMode = ref(false);
-const doesDoDamage = computed(() =>
-  ['magic', 'physical', 'true'].includes(damage_type.value)
-);
 
 const dmg_premitigation = ratios.damagePreTotal;
 const dmg_postmitigation = ratios.damagePostValue;

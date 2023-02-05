@@ -111,15 +111,13 @@ import InputNumber from 'primevue/inputnumber';
 import SelectButton from 'primevue/selectbutton';
 
 import { toRefs, inject, ref, computed, watchEffect } from 'vue';
-import { ChampObjModel } from '../../model/ChampObj';
+import type { ChampObjModel } from '../../model/ChampObj';
 
 const op = ref<InstanceType<typeof OverlayPanel> | null>(null);
 
 const hunterStacks = ref(0);
 
-const props = defineProps<{
-  obj: ChampObjModel;
-}>();
+const obj = inject<ChampObjModel>('obj')!;
 
 const toggle = (event: Event) => {
   op.value?.toggle(event);

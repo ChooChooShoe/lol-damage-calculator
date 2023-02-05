@@ -3,15 +3,16 @@
     <span class="ad spelleffect__title"></span>
     <div>
       <BlockStat
-        v-model:total="obj[effect.increasedStat]"
-        :longtitle="effect.longtitle"
-        :title="effect.title"
-        labelClass="lifesteal"
-        suffix=" stacks"
+        :total="obj[effect.units]"
+        @update:total="obj[effect.units] = $event"
+        :longtitle="effect.title"
+        :title="effect.title || effect.unitsText || 'Stacks'"
+        labelClass="ap"
+        :suffix="effect.unitsText || ' stacks'"
         :min="effect.min"
         :max="effect.max"
       >
-        <p v-html="effect.description || effect.longtitle"></p>
+        <p v-html="effect.description"></p>
       </BlockStat>
     </div>
   </div>
@@ -19,14 +20,10 @@
 
 <script setup lang="ts">
 import { inject } from 'vue';
-import { RootEffect, StacksEffect } from '../../../api/DataTypes';
-import { ChampObjModel } from '../../../model/ChampObj';
-import BlockStat from '../../simple/BlockStat.vue';
-import { RatioObjComputed } from '../ratios_info';
-import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
+import type { StacksEffect } from '@/api/DataTypes';
+import type { ChampObjModel } from '@/model/ChampObj';
+import BlockStat from '@/components/simple/BlockStat.vue';
 
-defineProps<{
-  effect: StacksEffect;
-}>();
+defineProps<{ effect: StacksEffect }>();
 const obj = inject<ChampObjModel>('obj')!;
 </script>

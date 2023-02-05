@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import BlockStat from '@/components/simple/BlockStat.vue';
+import Dropdown from 'primevue/dropdown';
+import { inject } from 'vue';
+import type { ChampObjModel } from '@/model/ChampObj';
+
+const obj = inject<ChampObjModel>('obj')!;
+
+defineProps<{
+  showDamage: boolean;
+  showDefence: boolean;
+  showExtra: boolean;
+}>();
+</script>
+
 <template>
   <div class="p-fluid grid formgrid">
     <BlockStat
@@ -19,8 +34,8 @@
       title="Ability Power"
       labelClass="ap"
     >
-      Increases the amount of damage you deal with AP scaling Spells.</BlockStat
-    >
+      Increases the amount of damage you deal with AP scaling Spells.
+    </BlockStat>
 
     <BlockStat
       v-if="showDefence"
@@ -31,8 +46,8 @@
       title="Armor"
       labelClass="armor"
     >
-      <template v-slot:default
-        >Reduces the amount of damage taken from
+      <template v-slot:default>
+        Reduces the amount of damage taken from
         <span class="physical-damage">physical damage sources</span>
       </template>
       <template v-slot:footer>
@@ -104,10 +119,10 @@
       labelClass="mana"
       sufix="%"
     >
-      <template v-slot:default
-        >Measured in percentages of how much the duration of most disables will
-        be reduced.</template
-      >
+      <template v-slot:default>
+        Measured in percentages of how much the duration of most disables will
+        be reduced.
+      </template>
     </BlockStat>
 
     <BlockStat
@@ -117,10 +132,10 @@
       labelClass="mana"
       sufix="%"
     >
-      <template v-slot:default
-        >Measured in percentages of how much the strength of slows will be
-        reduced.</template
-      >
+      <template v-slot:default>
+        Measured in percentages of how much the strength of slows will be
+        reduced.
+      </template>
     </BlockStat>
 
     <BlockStat
@@ -131,8 +146,8 @@
       labelClass="mana"
     >
       <template v-slot:default>
-        Ability Haste does not affect calculations</template
-      >
+        Ability Haste does not affect calculations
+      </template>
       <template v-slot:footer>
         <p>
           Equivalent to having
@@ -337,17 +352,3 @@
     </BlockStat>
   </div>
 </template>
-
-<script setup lang="ts">
-import BlockStat from '../../components/simple/BlockStat.vue';
-import Dropdown from 'primevue/dropdown';
-import { toRefs, inject, ref, computed, watchEffect } from 'vue';
-import { ChampObjModel } from '../../model/ChampObj';
-
-const props = defineProps<{
-  obj: ChampObjModel;
-  showDamage: boolean;
-  showDefence: boolean;
-  showExtra: boolean;
-}>();
-</script>

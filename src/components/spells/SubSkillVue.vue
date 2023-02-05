@@ -55,9 +55,9 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { RootRatio, SubSkill } from '../../api/DataTypes.js';
+import type { SubSkill } from '@/api/DataTypes.js';
 import SpellEffects from './SpellEffects.vue';
-import SpellImage from '../../timeline/SpellImage.vue';
+import SpellImage from '@/timeline/SpellImage.vue';
 
 const props = defineProps<{
   skill: SubSkill;

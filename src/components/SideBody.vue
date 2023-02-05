@@ -12,7 +12,7 @@
     <p>Overkill Damage: {{ output.overkill }}</p>
     <p>
       Health Remaining:
-      <span class="health">{{ rnd(output.hpRemaining) }} HP</span>
+      <span class="health">{{ output.hpRemaining.toFixed() }} HP</span>
     </p>
     <p>{{ percentf(output.hpRemainingPercent) }} Health Remaining</p>
     <hr />
@@ -24,25 +24,20 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // import SettingsModel from "./SettingsModel.vue"
-import { calc_dmg_onhit, DamageType } from './../javascript/league_data';
+import { calc_dmg_onhit } from '../model/league_data';
 import { damageSources, player, target } from '../global/state';
 import DamageBlock from './sidebar/DamageBlock.vue';
 export default {
   name: 'SideBody',
   components: { DamageBlock },
   methods: {
-    rnd: function (n, digits) {
-      if (n === undefined || isNaN(n)) n = 0;
-      if (digits === undefined) digits = 0;
-      return +n.toFixed(digits);
-    },
-    percentf: function (value) {
-      return parseFloat(value).toFixed(2) + '%';
+    percentf: function (value: number): string {
+      return value.toFixed(2) + '%';
     },
     addCustomDamageSource() {
-      this.$root.addCustomDamageSource();
+      // this.$root.addCustomDamageSource();
     },
   },
   computed: {
@@ -106,14 +101,10 @@ export default {
         physicalDmg: 0,
         trueDmg: 0,
         status: 'Unknown',
-        overkill: 0,
+        overkill: '0',
         hpRemaining: 0,
         hpRemainingPercent: 0,
       };
-      if (!p || !t) {
-        console.log('Re-calc 4.0 failed, missing player and target.');
-        return output;
-      }
       console.log('Re-calc 4.0 start', p, t, damageSources);
 
       for (const [key, sourceArray] of Object.entries(damageSources)) {
@@ -131,25 +122,22 @@ export default {
           post = post * times_hit;
 
           switch (source.damage_type) {
-            case DamageType.PHYSICAL:
+            case 'Physical':
               output.prePhysicalDmg += pre;
               output.physicalDmg += post;
               break;
-            case DamageType.MAGIC:
+            case 'Magic':
               output.preMagicDmg += pre;
               output.magicDmg += post;
               break;
-            case DamageType.TRUE:
+            case 'True':
               output.trueDmg += post;
               break;
-            case DamageType.NONE:
-            case DamageType.UNKNOWN:
+            case 'None':
               continue;
             default:
               console.log(
-                'Unknown Damage Type "',
-                source.damage_type,
-                '" Caculations may be incorrect.'
+                `Unknown Damage Type "${source.damage_type}" Caculations may be incorrect.`
               );
               continue;
           }
@@ -164,7 +152,7 @@ export default {
         output.status = 'Dead';
         output.hpRemaining = 0;
         output.hpRemainingPercent = 0;
-        output.overkill = this.rnd(-hp_diff);
+        output.overkill = (-hp_diff).toFixed();
       } else {
         output.status = 'Alive';
         output.hpRemaining = hp_diff;

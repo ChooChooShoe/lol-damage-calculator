@@ -97,7 +97,7 @@ import Item from './Item.vue';
 import SimpleTooltip from '../SimpleTooltip.vue';
 import ShopItemInfo from '../../itembuilder/components/ShopItemInfo.vue';
 // import DataInput from "./DataInput.vue";
-import league_items from '../../javascript/league_items.js';
+import league_items from '../../model/league_items.js';
 
 export default {
   name: 'ShopModal',
@@ -296,22 +296,21 @@ div.shop-content {
   gap: 10px;
   background-color: #293844;
   padding: 10px;
-
-  & > .header {
-    grid-area: header;
-  }
-  & > .side {
-    grid-area: side;
-  }
-  & > .main {
-    grid-area: main;
-  }
-  & > .right {
-    grid-area: right;
-  }
-  & > .footer {
-    grid-area: footer;
-  }
+}
+div.shop-content > .header {
+  grid-area: header;
+}
+div.shop-content > .side {
+  grid-area: side;
+}
+div.shop-content > .main {
+  grid-area: main;
+}
+div.shop-content > .right {
+  grid-area: right;
+}
+div.shop-content > .footer {
+  grid-area: footer;
 }
 
 div.shop-content > div {

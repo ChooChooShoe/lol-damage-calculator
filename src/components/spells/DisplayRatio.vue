@@ -13,7 +13,7 @@ import { computed, inject, toRefs } from 'vue';
 import {
   spell_ratios,
   default_spell_ratios,
-} from '../../javascript/league_data';
+} from '../../model/league_data';
 import SpellSpan from '../SpellSpan.vue';
 
 export default {

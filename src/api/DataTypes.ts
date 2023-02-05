@@ -1,4 +1,4 @@
-import { ChampObjModel, Stat } from '../model/ChampObj';
+import type { ChampObjModel, Stat } from '../model/ChampObj';
 
 /**
  * From DataDragon image
@@ -73,10 +73,10 @@ export interface SubSkill {
   locked?: boolean;
 }
 
-export type ChampionStatUnits = Stat | undefined | '';
+export type ChampionStatUnits = Stat | '';
 export interface SubRatio {
-  values: ScaleValue;
-  valuesRanged?: ScaleValue;
+  values: RatioValue;
+  valuesRanged?: RatioValue;
   valuesIsPercent?: boolean;
   valuesIsBasedOnLevel?: boolean;
   // apply?: "%" | 'based_on_level';
@@ -85,7 +85,7 @@ export interface SubRatio {
   unitsText?: string;
   pre?: string;
   post?: string;
-  children?: SubRatio[];
+  children?: Array<SubRatio>;
 }
 
 export type EffectType =
@@ -97,7 +97,7 @@ export type EffectType =
   | 'Stacks';
 export interface GainEffect extends RootEffect {
   effectType: 'Gain';
-  increasedStat: Stat;
+  increasedStat: Stat | [Stat];
   gainDuration?: number;
 }
 
@@ -107,24 +107,27 @@ export interface DamageEffect extends RootEffect {
   damagetype: DamageType;
 }
 
-export interface HealShieldEffect extends RootEffect {
-  effectType: 'Heal' | 'Shield';
+export interface HealEffect extends RootEffect {
+  effectType: 'Heal';
   isRegen?: boolean;
+}
+export interface ShieldEffect extends RootEffect {
+  effectType: 'Shield';
+  damagetype?: DamageType;
 }
 export interface UniqueEffect extends RootEffect {
   effectType: 'Unique';
 }
-export interface StacksEffect extends RootEffect {
+export interface StacksEffect {
   effectType: 'Stacks';
-  user?: 'none' | 'player' | 'target';
-  increasedStat: Stat;
-  longtitle?: string;
-  title: string;
   min?: number;
   max?: number;
+  user?: 'none' | 'player' | 'target';
+  units: Stat;
+  unitsText?: string;
+  title?: string;
   description?: string;
 }
-
 export interface RootEffect extends SubRatio {
   name: string;
   raw?: string;
@@ -134,7 +137,8 @@ export type RootRatio =
   | StacksEffect
   | GainEffect
   | DamageEffect
-  | HealShieldEffect
+  | HealEffect
+  | ShieldEffect
   | UniqueEffect;
 
 export enum ValidDamageType {

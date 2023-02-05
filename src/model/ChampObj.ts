@@ -1,5 +1,5 @@
 import championList from '../api/ChampionList.json';
-import { Perk, PerkSelections } from '../runes/perks';
+import { PerkSelections } from '../runes/perks';
 
 export function getBaseStatsObjForChampion(
   champ: keyof typeof championList | null
@@ -28,6 +28,25 @@ export function getBaseStatsObjForChampion(
   };
 }
 export type ChampionName = keyof typeof championList;
+export function isChampionName(
+  name: string | undefined | null
+): name is ChampionName {
+  return !!name && name in championList;
+}
+
+export function validateName(
+  value: string | undefined | null
+): ChampionName | undefined {
+  if (isChampionName(value)) return value;
+  if (!value) return undefined;
+  for (const el of Object.keys(championList)) {
+    if (el.toLowerCase().includes(value.toLowerCase())) {
+      return el as ChampionName;
+    }
+  }
+  console.log('[WARN] validateNames: invalid', value);
+  return undefined;
+}
 
 export type Stat = keyof Omit<
   ChampObjModel,
@@ -96,6 +115,7 @@ export class ChampObjModel {
     this.total_shield = 0;
     this.total_ap = 0;
     this.ability_haste = 0;
+    this.ultimateHaste = 0;
 
     this.gold = 0;
   }
@@ -111,7 +131,7 @@ export class ChampObjModel {
   }
   user: string;
   _level = 18;
-  public get level() {
+  public get level(): number {
     return this._level;
   }
   public set level(value: number) {
@@ -161,6 +181,7 @@ export class ChampObjModel {
   total_shield = 0;
   total_ap = 0;
   ability_haste = 0;
+  ultimateHaste = 0;
   get cdr() {
     return this.ability_haste / (this.ability_haste + 100.0);
   }
@@ -311,6 +332,7 @@ export class ChampObjModel {
   legendStacks = 0;
   lethalTempoStacks = 0;
   conquerorStacks = 0;
+  zombieWardsPlaced = 0;
   gold = 0;
   healAndShieldPower = 0;
   runes: PerkSelections;

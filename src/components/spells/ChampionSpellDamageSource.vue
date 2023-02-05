@@ -73,17 +73,9 @@
 
     <hr />
 
-    <SubSkillList
-      :custom="false"
-      :subskills="spell.subskills"
-      :idx="idx"
-    ></SubSkillList>
+    <SubSkillList :subskills="spell.subskills" :idx="idx" />
 
-    <SubSkillList
-      :custom="true"
-      :subskills="customEffects"
-      :idx="'c' + idx"
-    ></SubSkillList>
+    <SubSkillList :subskills="customEffects" :idx="`custom_${idx}`" />
 
     <input
       name="add_effect"
@@ -105,16 +97,16 @@ import {
   watchEffect,
   provide,
   reactive,
-  Ref,
+  type Ref,
 } from 'vue';
 import SpellImage from '../../timeline/SpellImage.vue';
 import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from '.././SpellNotes.vue';
 import SpellSpan from '.././SpellSpan.vue';
-import { spriteBaseUri } from '../../javascript/league_data';
+import { spriteBaseUri } from '../../model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
-import { SkillModel } from '../../api/DataTypes';
+import type { SkillModel } from '../../api/DataTypes';
 import SubSkillList from './SubSkillList.vue';
 
 interface ReactSkill {

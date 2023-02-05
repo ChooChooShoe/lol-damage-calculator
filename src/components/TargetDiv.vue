@@ -343,7 +343,7 @@
 import ChampSearch from './simple/ChampSearch.vue';
 import ChampLevelSelect from './simple/ChampLevelSelect.vue';
 import EditBtn from './simple/EditBtn.vue';
-import { default_stats } from '../javascript/league_data';
+import { default_stats } from '../model/league_data';
 import { reactive, inject, ref, computed } from 'vue';
 import NumInput from './simple/NumInput.vue';
 

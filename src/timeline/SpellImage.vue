@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import { cdn, v } from '../../../../src/api/version.json';
+import { cdn, v } from '@/api/version.json';
 
-import { ref, reactive, provide, computed, inject } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   iconPath: String,

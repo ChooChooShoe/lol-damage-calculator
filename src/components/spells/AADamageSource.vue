@@ -168,8 +168,8 @@
 </template>
 
 <script>
-import { DamageSource, DamageType } from '../../javascript/league_data';
-import { damageSources, player } from '../../global/state';
+import { DamageSource } from '@model/league_data';
+import { damageSources, player } from '@global/state';
 import NumInput from '../simple/NumInput.vue';
 
 export default {
@@ -183,10 +183,10 @@ export default {
       lastEffectIndex: 1,
       repeat: 0,
       ratios: {},
-      ds_ad: new DamageSource(DamageType.PHYSICAL, 0),
-      ds_ph: new DamageSource(DamageType.PHYSICAL, 0),
-      ds_mg: new DamageSource(DamageType.MAGIC, 0),
-      ds_tr: new DamageSource(DamageType.TRUE, 0),
+      ds_ad: new DamageSource('Physical', 0),
+      ds_ph: new DamageSource('Physical', 0),
+      ds_mg: new DamageSource('Magic', 0),
+      ds_tr: new DamageSource('True', 0),
     };
   },
   mounted: function () {

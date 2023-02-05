@@ -5,13 +5,13 @@
     </th>
     <td>
       <NumInput
-        v-model="val.damageValue"
+        v-model="val.baseValue"
         :format="val.apply"
         :index="rankindex"
       ></NumInput>
     </td>
     <td>
-      <NumInput :readonly="true" :modelValue="val.damagePreValue"></NumInput>
+      <NumInput :readonly="true" :modelValue="val.scaledValue"></NumInput>
     </td>
     <td>
       <NumInput :readonly="true" :modelValue="val.damagePostValue"></NumInput>
@@ -22,11 +22,11 @@
 
 <script setup lang="ts">
 import { inject, Ref } from 'vue';
-import { SubRatio } from '../../api/DataTypes';
+import type { SubRatio } from '../../api/DataTypes';
 import NumInput from '../simple/NumInput.vue';
-import { RatioObjComputed, stat_to_display } from './ratios_info';
+import { type SubRatioComputed, stat_to_display } from './ratios_info';
 
-const { val } = defineProps<{ val: SubRatio & RatioObjComputed }>();
-const data = stat_to_display[val.stat] || {};
+const props = defineProps<{ val: SubRatio & SubRatioComputed }>();
+const data = stat_to_display[props.val.units] || {};
 const rankindex = inject<Ref<number>>('rankindex')!;
 </script>

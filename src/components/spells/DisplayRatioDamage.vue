@@ -8,24 +8,23 @@
 </template>
 
 <script setup>
-import { computed, inject, toRefs } from 'vue';
-import {
-  spell_ratios,
-  default_spell_ratios,
-} from '../../javascript/league_data';
+import { computed } from 'vue';
+import { spell_ratios, default_spell_ratios } from '../../model/league_data';
 import SpellSpan from '../SpellSpan.vue';
 
-const { ratioKey, damageValue, index } = defineProps({
+const props = defineProps({
   ratioKey: String,
   damageValue: Number,
   index: Number,
 });
-const data = computed(() => spell_ratios[ratioKey] || default_spell_ratios);
+const data = computed(
+  () => spell_ratios[props.ratioKey] || default_spell_ratios
+);
 const displayValueArray = function (v) {
   if (data.value.flat) return `${+v.toFixed(3)}`;
   return `${+(v * 100).toFixed(3)}`;
 };
 const innerList = computed(() => {
-  return displayValueArray(damageValue);
+  return displayValueArray(props.damageValue);
 });
 </script>

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChampionSkills } from '../model/ChampObj';
+import type { ChampionSkills } from '../model/ChampObj';
 import SpellImage from './SpellImage.vue';
 const props = defineProps<{ skills: ChampionSkills | undefined }>();
 console.log('SpellImage', JSON.stringify(props, null, 4));

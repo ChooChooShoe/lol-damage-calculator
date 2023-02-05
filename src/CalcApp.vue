@@ -4,8 +4,8 @@
   <SideBody></SideBody>
 
   <div class="flex main">
-    <ChampionDiv mode="player" :obj="player"></ChampionDiv>
-    <ChampionDiv mode="target" :obj="target"></ChampionDiv>
+    <ChampionDiv mode="player"></ChampionDiv>
+    <ChampionDiv mode="target"></ChampionDiv>
 
     <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
     <!-- <AADamageSource></AADamageSource> -->
@@ -14,7 +14,6 @@
       :key="spellObj.name"
       :spell="spellObj"
       :champion="player.champ"
-      v-if="player.champ"
       :idx="`skill_${idx}`"
     ></ChampionSpellDamageSource>
 
@@ -40,42 +39,29 @@ import AADamageSource from './components/spells/AADamageSource.vue';
 import ChampionSpellDamageSource from './components/spells/ChampionSpellDamageSource.vue';
 import CustomDamageSource from './components/spells/CustomDamageSource.vue';
 
-import {
-  ref,
-  reactive,
-  provide,
-  computed,
-  Ref,
-  watchPostEffect,
-  watchEffect,
-} from 'vue';
+import { ref, reactive, provide, watchEffect } from 'vue';
 import {
   onBeforeRouteUpdate,
   useRouter,
   useRoute,
-  RouteLocationNormalizedLoaded,
+  type RouteLocationNormalizedLoaded,
 } from 'vue-router';
 
-import { ChampionName, ChampObjModel } from './model/ChampObj';
-import { DamageSource } from './javascript/league_data';
-import { ChampionListSkills, SkillModel } from './api/DataTypes';
+import { validateName, type ChampionName } from './model/ChampObj';
+import type { ChampionListSkills } from './api/DataTypes';
 import { player, target } from './global/state';
+
+provide('obj', player);
+console.log('Providing obj (player) as', player);
 
 const router = useRouter();
 
-function validateName(value: string): ChampionName | null {
-  if (value in championList) return value as ChampionName;
-  for (const el of Object.keys(championList)) {
-    if (el.toLowerCase().includes(value.toLowerCase())) {
-      return el as ChampionName;
-    }
-  }
-  console.log('[WARN] validateNames: invalid', value);
-  return null;
-}
-function validateNames(route: RouteLocationNormalizedLoaded) {
-  const player = validateName(route.params.player as string) || 'Poppy';
-  const target = validateName(route.params.target as string) || 'Taric';
+function validateNames(route: RouteLocationNormalizedLoaded): {
+  player: ChampionName;
+  target: ChampionName;
+} {
+  const player = validateName(route.params.player.toString()) || 'Poppy';
+  const target = validateName(route.params.target.toString()) || 'Taric';
   if (player !== route.params.player || target !== route.params.target) {
     console.log('validateNames: Route Name Error', player, target);
     router.push({ params: { player, target } });
@@ -86,7 +72,7 @@ function validateNames(route: RouteLocationNormalizedLoaded) {
   return { player, target };
 }
 
-onBeforeRouteUpdate(async (to, from) => {
+onBeforeRouteUpdate(async (to, _from) => {
   const ns = validateNames(to);
   player.champ = ns.player;
   target.champ = ns.target;
@@ -110,14 +96,8 @@ watchEffect(async () => {
   }
 });
 
-const aaDamageSources = ref({});
-const champDamageSources = ref({});
-
 provide('player', player);
 provide('target', target);
-
-// obj is also the player but should refrance both in the future.
-provide('obj', player);
 
 // expose to template
 const lastCustomDamageSourcesIndex = ref(0);

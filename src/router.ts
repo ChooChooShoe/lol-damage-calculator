@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import WikiRedirect from './WikiRedirect.vue';
 
 const CalcApp = () => import('./CalcApp.vue');
 const NotFound = () => import('./NotFound.vue');

@@ -144,39 +144,34 @@
 </template>
 
 <script setup lang="ts">
-import { provide, reactive, ref, Ref } from 'vue';
+import { inject, reactive, type Ref } from 'vue';
 import SinglePerk from './SinglePerk.vue';
 import { computed } from 'vue';
-import {
-  perkStyle,
-  perkstyles,
-  PerkSelections,
-  perk,
-  StyleIdOrNone,
-  PerkIdOrNone,
-} from './perks';
+import { perkStyle, perkstyles, perk } from './perks';
+import type { StyleIdOrNone, PerkIdOrNone } from './perks';
+import type { ChampObjModel } from '@/model/ChampObj';
 
-const props = defineProps<{ runes: PerkSelections }>();
+const runes = inject<ChampObjModel>('obj')!.runes;
 
-const primaryPath = computed(() => perkStyle(props.runes.primaryStyle));
-const secondaryPath = computed(() => perkStyle(props.runes.subStyle));
+const primaryPath = computed(() => perkStyle(runes.primaryStyle));
+const secondaryPath = computed(() => perkStyle(runes.subStyle));
 
 function setPrimary(id: StyleIdOrNone): void {
-  if (id === props.runes.primaryStyle) return;
-  props.runes.primarySelections = [0, 0, 0, 0];
-  props.runes.primaryStyle = id;
-  if (props.runes.subStyle === id) {
+  if (id === runes.primaryStyle) return;
+  runes.primarySelections = [0, 0, 0, 0];
+  runes.primaryStyle = id;
+  if (runes.subStyle === id) {
     setSecondary(0);
   }
 }
 function setSecondary(id: StyleIdOrNone): void {
-  if (id === props.runes.subStyle) return;
-  props.runes.subSelections = [0, 0];
+  if (id === runes.subStyle) return;
+  runes.subSelections = [0, 0];
   subStyleSelectionsDisplay[0] = 0;
   subStyleSelectionsDisplay[1] = 0;
   subStyleSelectionsDisplay[2] = 0;
   secondaryIdx = [];
-  props.runes.subStyle = id;
+  runes.subStyle = id;
 }
 
 const subStyleSelectionsDisplay: [PerkIdOrNone, PerkIdOrNone, PerkIdOrNone] =
@@ -193,8 +188,8 @@ function updateSecondary(id: PerkIdOrNone, idx: number) {
       }
     }
   }
-  props.runes.subSelections[0] = subStyleSelectionsDisplay[secondaryIdx[0]];
-  props.runes.subSelections[1] = subStyleSelectionsDisplay[secondaryIdx[1]];
+  runes.subSelections[0] = subStyleSelectionsDisplay[secondaryIdx[0]];
+  runes.subSelections[1] = subStyleSelectionsDisplay[secondaryIdx[1]];
 }
 </script>
 

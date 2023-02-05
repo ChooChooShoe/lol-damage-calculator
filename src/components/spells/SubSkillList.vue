@@ -2,23 +2,23 @@
   <div class="subskills__grid">
     <SubSkillVue
       v-for="(sub_skill, index) in subskills"
-      :custom="custom"
-      :idx="`${idx}_${index}`"
+      :key="`${idx}_${index}`"
       :skill="sub_skill"
+      :idx="`${idx}_${index}`"
     ></SubSkillVue>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SubSkill } from '../../api/DataTypes';
+import type { SubSkill } from '../../api/DataTypes';
 import SubSkillVue from './SubSkillVue.vue';
 
-const { subskills, custom } = defineProps<{
+defineProps<{
   subskills: SubSkill[];
   idx: string;
-  custom: boolean;
 }>();
 </script>
+
 <style>
 .subskills__grid {
   width: 100%;

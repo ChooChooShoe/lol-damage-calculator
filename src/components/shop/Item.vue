@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { spriteBaseUri } from '../../javascript/league_data';
+import { spriteBaseUri } from '../../model/league_data';
 
 export default {
   props: ['itemId', 'value'],

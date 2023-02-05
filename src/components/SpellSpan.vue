@@ -22,8 +22,8 @@
 
 import { inject } from 'vue';
 
-const props = defineProps<{
-  list: Array<Number | String> | Number | String;
+defineProps<{
+  list: Array<number | string> | number | string;
 }>();
 
 const rankindex = inject<number>('rankindex', 0);
