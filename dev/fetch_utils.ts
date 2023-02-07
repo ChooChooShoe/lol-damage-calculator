@@ -1,9 +1,9 @@
 import * as fs from 'fs';
-import fetch, { RequestInfo } from 'node-fetch';
+import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
 
-const DEBUG = false;
+const DEBUG = true;
 
 if (DEBUG) {
   mkdir(`./.debug/`);
@@ -42,12 +42,16 @@ export function saveFile(
 }
 export function saveTSFile(
   path: fs.PathLike | fs.promises.FileHandle,
-  data: any
+  data: any,
+  preText: string,
+  postText: string
 ): Promise<void> {
   console.log(`Saving file '${path}' as typescript...`);
   return fs.promises.writeFile(
     path,
-    `export default ${JSON5.stringify(data || {}, null, 2)} as const;`
+    `${preText}\n${JSON5.stringify(data || {}, {
+      space: 2,
+    })}\n${postText}`
   );
 }
 

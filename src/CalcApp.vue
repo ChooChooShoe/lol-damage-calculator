@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import championList from './api/ChampionList.json';
 import TimelineAddMenu from './timeline/TimelineAddMenu.vue';
 import SideBody from './components/SideBody.vue';
 import ChampionDiv from './components/ChampionDiv.vue';

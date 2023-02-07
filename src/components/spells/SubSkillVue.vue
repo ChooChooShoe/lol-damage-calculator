@@ -55,7 +55,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { SubSkill } from '@/api/DataTypes.js';
+import type { SubSkill } from '@/api/DataTypes';
 import SpellEffects from './SpellEffects.vue';
 import SpellImage from '@/timeline/SpellImage.vue';
 

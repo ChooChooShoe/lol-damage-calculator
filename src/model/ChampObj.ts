@@ -1,45 +1,38 @@
-import championList from '../api/ChampionList.json';
+// import championList from '../api/ChampionList.json';
 import { PerkSelections } from '../runes/perks';
 
-export function getBaseStatsObjForChampion(
-  champ: keyof typeof championList | null
-): BaseStatsObj {
-  if (champ && champ in championList) return championList[champ].stats;
+function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
+  if (isChampionName(champ)) return ChampionListData[champ].stats;
   return {
-    hp_base: 0,
-    hp_lvl: 0,
-    mp_base: 0,
-    mp_lvl: 0,
-    arm_base: 0,
-    arm_lvl: 0,
-    mr_base: 0,
-    mr_lvl: 0,
-    hp5_base: 0,
-    hp5_lvl: 0,
-    mp5_base: 0,
-    mp5_lvl: 0,
-    dam_base: 0,
-    dam_lvl: 0,
-    as_base: 0,
-    as_lvl: 0,
-    range: 0,
-    ms: 0,
-    as_ratio: 0,
+    hp_base: 100,
+    hp_lvl: 10,
+    mp_base: 400,
+    mp_lvl: 50,
+    arm_base: 40,
+    arm_lvl: 5,
+    mr_base: 30,
+    mr_lvl: 2,
+    hp5_base: 3,
+    hp5_lvl: 0.6,
+    mp5_base: 11.5,
+    mp5_lvl: 0.7,
+    dam_base: 50,
+    dam_lvl: 2,
+    as_base: 0.625,
+    as_ratio: 0.625,
+    as_lvl: 1.75,
+    range: 125,
+    ms: 330,
   };
 }
-export type ChampionName = keyof typeof championList;
-export function isChampionName(
-  name: string | undefined | null
-): name is ChampionName {
-  return !!name && name in championList;
+export function isChampionName(name?: string | null): name is ChampionName {
+  return !!name && name in ChampionListData;
 }
 
-export function validateName(
-  value: string | undefined | null
-): ChampionName | undefined {
+export function validateName(value?: string | null): ChampionName | undefined {
   if (isChampionName(value)) return value;
   if (!value) return undefined;
-  for (const el of Object.keys(championList)) {
+  for (const el of Object.keys(ChampionListData)) {
     if (el.toLowerCase().includes(value.toLowerCase())) {
       return el as ChampionName;
     }
@@ -70,7 +63,7 @@ export class ChampObjModel {
   }
 
   updateBaseStats() {
-    const bs = getBaseStatsObjForChampion(this.champ);
+    const bs = getBaseStatsObj(this.champ);
     this.base_ad = bs.dam_base + this.growth(bs.dam_lvl);
     this.base_hp = bs.hp_base + this.growth(bs.hp_lvl);
     this.base_mana = bs.mp_base + this.growth(bs.mp_lvl);
@@ -339,6 +332,10 @@ export class ChampObjModel {
   summonerSpellHaste = 0;
   runes: PerkSelections;
 
+  kindredMarks = 0;
+  feastStacks = 0;
+  siphoningStrikeStacks = 0;
+
   // Fizz, Leona, Guardian's Horn
   flatDamageReductionPreMitigation = 0;
   // Amumu's Tantrum, Frozen Heart, Randuin's Omen, Warden's Mail
@@ -348,6 +345,9 @@ export class ChampObjModel {
 
   // Coup de Grace
   percentDamageIncrease = 0;
+
+  // For First Strike
+  postMitigationBaseDamageTotal = 0;
 
   constructor(user: 'player' | 'target', champ: ChampionName) {
     this.user = user;
@@ -459,7 +459,67 @@ export interface Image {
 //     // per-direction_cooldown: number[];
 // }
 
-export interface BaseStatsObj {
+import { ChampionListData, type ChampionName } from './ChampionListData';
+
+export function getChampListEntry(champ: ChampionName): ChampListEntry {
+  return ChampionListData[champ];
+}
+
+// prettier-ignore
+export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';
+export type Position = 'Top' | 'Middle' | 'Bottom' | 'Jungle' | 'Support';
+// prettier-ignore
+export type HeroType = 'Support' | 'Mage' | 'Fighter' | 'Assassin' | 'Marksman' | 'Tank';
+
+export type ChampListEntry = {
+  name: ChampionName;
+  image: {
+    full: `${string}.png`;
+    sprite: `champion${number}.png`;
+    group: 'champion';
+    x: number;
+    y: number;
+    w: 48;
+    h: 48;
+  };
+  id: number;
+  apiname: string;
+  title: string;
+  attack: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  defense: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  magic: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  difficulty: 1 | 2 | 3;
+  herotype: HeroType;
+  alttype?: HeroType | '';
+  resource: Resource;
+  stats: BaseStatsObj;
+  rangetype: 'Melee' | 'Ranged';
+  date: string;
+  patch: string;
+  changes: string;
+  role: string[];
+  positions: Position[];
+  op_positions: Position[];
+  damage: 1 | 2 | 3;
+  toughness: 1 | 2 | 3;
+  control: 1 | 2 | 3;
+  mobility: 1 | 2 | 3;
+  utility: 0 | 1 | 2 | 3;
+  style: number;
+  adaptivetype: 'Physical' | 'Magic';
+  be: number;
+  rp: number;
+  skill_i: string[];
+  skill_q: string[];
+  skill_w: string[];
+  skill_e: string[];
+  skill_r: string[];
+  skills: string[];
+  fullname?: string;
+  nickname?: string;
+};
+
+export type BaseStatsObj = {
   hp_base: number;
   hp_lvl: number;
   mp_base: number;
@@ -474,23 +534,38 @@ export interface BaseStatsObj {
   mp5_lvl: number;
   dam_base: number;
   dam_lvl: number;
-  as_base: number;
-  as_lvl: number;
-  range: number;
-  ms: number;
-  acquisition_radius?: number;
-  selection_radius?: number;
-  pathing_radius?: number;
-  gameplay_radius?: number;
-  as_ratio: number;
-  attack_total_time?: number;
-  attack_cast_time?: number;
-  aram_dmg_dealt?: number;
-  aram_dmg_taken?: number;
-  aram_healing?: number;
-  nb_dmg_taken?: number;
-  ofa_dmg_dealt?: number;
-  ofa_dmg_taken?: number;
-  urf_dmg_dealt?: number;
-  urf_dmg_taken?: number;
-}
+  as_base: number; // champion's base attack speed as decimal
+  as_ratio: number; // champion's attack speed ratio as decimal
+  as_lvl: number; // champion's bonus_as growth as whole number
+  missile_speed?: number; // missile speed for ranged basic attacks (0 = Non-Projectile)
+  attack_cast_time?: number; // only used to calculated 'windup_percent'
+  attack_total_time?: number; // only used to calculated 'windup_percent'
+  attack_delay_offset?: number; // only used to calculated 'windup_percent'
+  // windup_percent: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
+  windup_modifier?: number; // champion's modifier to windup growth
+  crit_base?: number; // champion's base critical strike damage (defaults to 175%)
+  crit_mod?: number; // champion's total critical strike damage modifier
+  range: number; // champion's range
+  ms: number; // champion's movement speed
+  gameplay_radius?: number; // champion's hitbox for most purposes (defaults to 65)
+  acquisition_radius?: number; // champion's auto-attack range (defaults to 800)
+  selection_radius?: number; // champion's mouse-over selection radius (defaults to 100)
+  pathing_radius?: number; // champion's pathing radius (defaults to 35)
+  aram?: Partial<AramBalanceChanges>; // aram balance changes
+  nb?: Partial<AramBalanceChanges>; // nexus blitz-specific balance changes (see aram for parameters)
+  ofa?: Partial<AramBalanceChanges>; // one for all-specific balance changes (see aram for parameters)
+  urf?: Partial<AramBalanceChanges>; // ultimate rapid fire-specific balance changes (see aram for parameters)
+  usb?: Partial<AramBalanceChanges>; // ultimate spell book-specific balance changes (see aram for parameters)
+};
+export type AramBalanceChanges = {
+  dmg_dealt: number; // damage dealt modifier in aram as decimal (defaults to 1.0)
+  dmg_taken: number; // damage taken modifier in aram as decimal (defaults to 1.0)
+  healing: number; // healing modifier in aram as decimal
+  shielding: number; // shielding modifier in aram as decimal
+  ability_haste: number; // initial ability haste in aram as integer
+  mana_regen: number; // mana regeneration modifier in aram as decimal
+  energy_regen: number; // energy regeneration modifier in aram as decimal
+  attack_speed: number; // total attack speed modifier in aram as decimal
+  movement_speed: number; // movement speed modifier in aram as decimal
+  tenacity: number; // tenacity and slow resistance modifier in aram as decimal (defaults to 1.0)
+};

@@ -1,5 +1,5 @@
 <template>
-  <span :class="data.color" :title="val.units || 'base'">
+  <span :class="rootClass" :title="val.units || 'base'">
     <!-- {{ val.pre }} -->
     {{ recursive ? '(+' : '' }}
     <SpellSpan :class="data.color" :list="values"></SpellSpan>{{ dispPre }}
@@ -13,8 +13,7 @@
       v-for="(v, k) in val.children || []"
     >
     </RecursiveRatioDisplay>
-    {{ dispPost }}
-    <!-- <span v-if="data.html && display == 'value'" v-html="data.html"></span> -->
+    <span v-if="display == 'value'" v-html="dispPost"></span>
     {{ recursive ? ') ' : '' }}
   </span>
 </template>
@@ -76,4 +75,17 @@ const values = computed(() => {
       return 0;
   }
 });
+
+const rootClass =
+  data.value.color + props.val.valuesIsBasedOnLevel
+    ? +' spelleff__basedonlevel'
+    : '';
 </script>
+
+<style>
+.spelleff__basedonlevel {
+  position: relative;
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+</style>

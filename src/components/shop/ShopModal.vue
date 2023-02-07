@@ -97,7 +97,7 @@ import Item from './Item.vue';
 import SimpleTooltip from '../SimpleTooltip.vue';
 import ShopItemInfo from '../../itembuilder/components/ShopItemInfo.vue';
 // import DataInput from "./DataInput.vue";
-import league_items from '../../model/league_items.js';
+import league_items from '../../model/league_items';
 
 export default {
   name: 'ShopModal',

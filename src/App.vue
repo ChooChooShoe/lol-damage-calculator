@@ -27,17 +27,11 @@
       <router-link class="link" to="/itembuilder">Item Builder</router-link>
     </p>
   </footer>
-  <datalist id="list-of-champions">
-    <template v-for="item in Object.keys(championList)" :key="item">
-      <option :value="item"></option>
-    </template>
-  </datalist>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, provide, computed } from 'vue';
 import { dv } from './api/version.json';
-import championList from './api/ChampionList.json';
 
 function loadLocalConfig() {
   console.log('loading config...');

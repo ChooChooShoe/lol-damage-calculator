@@ -1,4 +1,4 @@
-import type { ChampObjModel, Stat } from '../model/ChampObj';
+import type { BaseStatsObj, Stat } from '../model/ChampObj';
 
 /**
  * From DataDragon image
@@ -30,24 +30,17 @@ export interface DataDragonChamp {
   [s: string]: string | Image | JsonObj;
 }
 export interface ChampionListSkills {
-  skills: { [key: string]: SkillModel };
+  skills: { [key in string]: Partial<SkillModel> };
 }
 export interface SkillModel {
   name: string;
   display_name: string;
-  maxrank: number | undefined;
-  image: Image | undefined;
-  targeting:
-    | 'Passice'
-    | 'Direction'
-    | 'Location'
-    | 'Auto'
-    | 'Unit'
-    | 'Vector'
-    | undefined;
-  affects: string | undefined;
+  maxrank?: number;
+  image?: Image;
+  targeting?: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector';
+  affects?: string;
   damagetype: ('Physical' | 'Magic' | 'True')[];
-  spelleffects:
+  spelleffects?:
     | 'Proc'
     | 'Area'
     | 'Spell'
@@ -57,13 +50,19 @@ export interface SkillModel {
     | 'AOE DOT'
     | 'DOT'
     | 'Pet'
-    | 'Non-Damaging'
-    | undefined;
-  spellshield: 'Blocked' | 'Not Blocked' | 'See Notes' | 'Missing' | undefined;
-  projectile: 'Blocked' | 'See Notes' | undefined;
-  grounded: 'Disabled' | 'See Notes' | 'Not Disabled' | undefined;
-  knockdown: 'Interrupted' | 'See Notes' | 'Not Interrupted' | undefined;
+    | 'Non-Damaging';
+  spellshield?: 'Blocked' | 'Not Blocked' | 'See Notes' | 'Missing';
+  projectile?: 'Blocked' | 'See Notes';
+  grounded?: 'Disabled' | 'See Notes' | 'Not Disabled';
+  knockdown?: 'Interrupted' | 'See Notes' | 'Not Interrupted';
   subskills: SubSkill[];
+  static?: ScaleValue;
+  cost?: ScaleValue;
+  cast_time?: ScaleValue;
+  cooldown?: ScaleValue;
+  target_range?: ScaleValue;
+  ontargetcdstatic?: ScaleValue;
+  [otherOptions: string]: unknown;
 }
 export interface SubSkill {
   img?: string;
@@ -97,7 +96,7 @@ export type EffectType =
   | 'Stacks';
 export interface GainEffect extends RootEffect {
   effectType: 'Gain';
-  increasedStat: Stat | [Stat];
+  increasedStat?: ChampionStatUnits | [ChampionStatUnits];
   gainDuration?: number;
 }
 
@@ -107,26 +106,101 @@ export interface DamageEffect extends RootEffect {
   damagetype: DamageType;
 }
 
+export type HealType =
+  | 'HealthRegen'
+  | 'LifeSteal'
+  | 'Omnivamp'
+  | 'PhysicalVamp'
+  | 'SpellVamp'
+  | 'DrainEffect'
+  | 'SelfHeal'
+  | 'IncomingHeals'
+  | 'OutgoingHeals'
+  | 'BonusHealth';
+export type ShieldType = 'SelfShield' | 'IncomingShields' | 'OutgoingShields';
+
+export function usesHealShieldPower(shieldOrHeal: HealType | ShieldType) {
+  return (
+    shieldOrHeal === 'DrainEffect' ||
+    shieldOrHeal === 'SelfHeal' ||
+    shieldOrHeal === 'SelfShield' ||
+    shieldOrHeal === 'OutgoingHeals' ||
+    shieldOrHeal === 'OutgoingShields'
+  );
+}
+export function usesSpiritVisage(shieldOrHeal: HealType | ShieldType) {
+  return (
+    shieldOrHeal !== 'OutgoingHeals' &&
+    shieldOrHeal !== 'OutgoingShields' &&
+    shieldOrHeal !== 'BonusHealth'
+  );
+}
+export function usesRevitalize(shieldOrHeal: HealType | ShieldType) {
+  return shieldOrHeal !== 'HealthRegen' && shieldOrHeal !== 'BonusHealth';
+}
+export function usesGrievousWounds(shieldOrHeal: HealType | ShieldType) {
+  return (
+    shieldOrHeal !== 'SelfShield' &&
+    shieldOrHeal !== 'IncomingShields' &&
+    shieldOrHeal !== 'OutgoingShields' &&
+    shieldOrHeal !== 'OutgoingHeals' &&
+    shieldOrHeal !== 'BonusHealth'
+  );
+}
+export function usesSerpentsFang(shieldOrHeal: HealType | ShieldType) {
+  return shieldOrHeal == 'SelfShield' || shieldOrHeal !== 'IncomingShields';
+}
 export interface HealEffect extends RootEffect {
   effectType: 'Heal';
-  isRegen?: boolean;
+  healType: HealType;
 }
 export interface ShieldEffect extends RootEffect {
   effectType: 'Shield';
   damagetype?: DamageType;
+  shieldType: ShieldType;
 }
 export interface UniqueEffect extends RootEffect {
   effectType: 'Unique';
 }
-export interface StacksEffect {
+export interface StacksEffect extends RootEffect {
   effectType: 'Stacks';
-  min?: number;
-  max?: number;
+  min: number;
+  max: number;
   user?: 'none' | 'player' | 'target';
-  units: Stat;
+  units: ChampionStatUnits;
   unitsText?: string;
   title?: string;
   description?: string;
+}
+
+export type CrowdControlType =
+  | 'Airborne'
+  | 'Blind'
+  | 'Cripple'
+  | 'Disarm'
+  | 'Disrupt'
+  | 'Drowsy'
+  | 'Sleep'
+  | 'Berserk'
+  | 'Charm'
+  | 'Flee'
+  | 'Taunt'
+  | 'Ground'
+  | 'Kinematics'
+  | 'Knockdown'
+  | 'Nearsight'
+  | 'Root'
+  | 'Silence'
+  | 'Polymorph'
+  | 'Slow'
+  | 'Stasis'
+  | 'Stun'
+  | 'Suspension'
+  | 'Suppression';
+export interface CrowdControlEffect extends RootEffect {
+  effectType: 'CrowdControl';
+  crowdControl: CrowdControlType;
+  crowdControlDuration: number;
 }
 export interface RootEffect extends SubRatio {
   name: string;
@@ -139,24 +213,8 @@ export type RootRatio =
   | DamageEffect
   | HealEffect
   | ShieldEffect
-  | UniqueEffect;
-
-export enum ValidDamageType {
-  physical = 'Physical',
-  magic = 'Magic',
-  true = 'True',
-  none = 'None',
-}
-export enum ValidEffectType {
-  damage = 'Damage',
-  heal = 'Heal',
-  shield = 'Shield',
-  block = 'Shield',
-  gain = 'Gain',
-  bonus = 'Gain',
-  ad = 'Gain',
-  unique = 'Unique',
-}
+  | UniqueEffect
+  | CrowdControlEffect;
 
 export type RatioValue = number | number[];
 export type ScaleValue = number | (number | string)[] | string;
@@ -202,55 +260,7 @@ export interface WikiModuleChamptionData {
   herotype: string; // archaic primary role
   alttype: string; // archaic secondary role
   resource: string; // champion's resource
-  stat: {
-    hp_base: number;
-    hp_lvl: number;
-    mp_base: number;
-    mp_lvl: number;
-    arm_base: number;
-    arm_lvl: number;
-    mr_base: number;
-    mr_lvl: number;
-    hp5_base: number;
-    hp5_lvl: number;
-    mp5_base: number;
-    mp5_lvl: number;
-    dam_base: number;
-    dam_lvl: number;
-    as_base: number; // champion's base attack speed as decimal
-    as_ratio: number; // champion's attack speed ratio as decimal
-    as_lvl: number; // champion's bonus_as growth as whole number
-    missile_speed?: number; // missile speed for ranged basic attacks (0 = Non-Projectile)
-    attack_cast_time?: number; // only used to calculated 'windup_percent'
-    attack_total_time?: number; // only used to calculated 'windup_percent'
-    attack_delay_offset?: number; // only used to calculated 'windup_percent'
-    windup_percent: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
-    windup_modifier?: number; // champion's modifier to windup growth
-    crit_base?: number; // champion's base critical strike damage (defaults to 175%)
-    crit_mod?: number; // champion's total critical strike damage modifier
-    range: number; // champion's range
-    ms: number; // champion's movement speed
-    gameplay_radius?: number; // champion's hitbox for most purposes (defaults to 65)
-    acquisition_radius?: number; // champion's auto-attack range (defaults to 800)
-    selection_radius?: number; // champion's mouse-over selection radius (defaults to 100)
-    pathing_radius?: number; // champion's pathing radius (defaults to 35)
-    aram_dmg_dealt?: number; // damage dealt modifier in aram as decimal (defaults to 1.0)
-    aram_dmg_taken?: number; // damage taken modifier in aram as decimal (defaults to 1.0)
-    aram_healing?: number; // healing modifier in aram as decimal (defaults to 1.0)
-    aram_shielding?: number; // shielding modifier in aram as decimal (defaults to 1.0)
-    nb_dmg_dealt?: number; // damage dealt modifier in nb as decimal (defaults to 1.0)
-    nb_dmg_taken?: number; // damage taken modifier in nb as decimal (defaults to 1.0)
-    nb_healing?: number; // healing modifier in nb as decimal (defaults to 1.0)
-    nb_shielding?: number; // shielding modifier in nb as decimal (defaults to 1.0)
-    ofa_dmg_dealt?: number; // damage dealt modifier in ofa as decimal (defaults to 1.0)
-    ofa_dmg_taken?: number; // damage taken modifier in ofa as decimal (defaults to 1.0)
-    ofa_healing?: number; // healing modifier in ofa as decimal (defaults to 1.0)
-    ofa_shielding?: number; // shielding modifier in ofa as decimal (defaults to 1.0)
-    urf_dmg_dealt?: number; // damage dealt modifier in urf as decimal (defaults to 1.0)
-    urf_dmg_taken?: number; // damage taken modifier in urf as decimal (defaults to 1.0)
-    urf_healing?: number; // healing modifier in urf as decimal (defaults to 1.0)
-    urf_shielding?: number; // shielding modifier in urf as decimal (defaults to 1.0)
-  };
+  stat: BaseStatsObj;
   rangetype: string; // Melee or Ranged
   date: string; // release date
   patch: string; // release patch ID (e.g. V4.20)
@@ -292,7 +302,7 @@ export interface WikiChampionData {
   herotype: string;
   alttype?: string;
   resource: string;
-  stats: StaticStats;
+  stats: BaseStatsObj;
   rangetype: string;
   date: Date | string;
   patch: string;
@@ -318,63 +328,4 @@ export interface WikiChampionData {
   fullname?: string;
   nickname?: string;
   secondary_attributes?: string;
-}
-// Stats given by wiki.
-export interface StaticStats {
-  hp_base: number;
-  hp_lvl: number;
-  mp_base: number;
-  mp_lvl: number;
-  arm_base: number;
-  arm_lvl: number;
-  mr_base: number;
-  mr_lvl: number;
-  hp5_base: number;
-  hp5_lvl: number;
-  mp5_base: number;
-  mp5_lvl: number;
-  dam_base: number;
-  dam_lvl: number;
-
-  as_base: number; // champion's base attack speed as decimal
-  as_ratio: number; // champion's attack speed ratio as decimal
-  as_lvl: number; // champion's bonus_as growth as whole number
-  range: number; // champion's range
-  range_lvl?: number;
-  ms: number; // champion's movement speed
-
-  usb_dmg_taken?: number;
-  usb_dmg_dealt?: number;
-  ofa_shield?: number;
-  usb_healing?: number;
-  usb_shielding?: number;
-
-  missile_speed?: number; // missile speed for ranged basic attacks (0 = Non-Projectile)
-  attack_cast_time?: number; // only used to calculated 'windup_percent'
-  attack_total_time?: number; // only used to calculated 'windup_percent'
-  attack_delay_offset?: number; // only used to calculated 'windup_percent'
-  windup_percent?: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
-  windup_modifier?: number; // champion's modifier to windup growth
-  crit_base?: number; // champion's base critical strike damage (defaults to 175%)
-  crit_mod?: number; // champion's total critical strike damage modifier
-  gameplay_radius?: number; // champion's hitbox for most purposes (defaults to 65)
-  acquisition_radius?: number; // champion's auto-attack range (defaults to 800)
-  selection_radius?: number; // champion's mouse-over selection radius (defaults to 100)
-  pathing_radius?: number; // champion's pathing radius (defaults to 35)
-  aram_dmg_dealt?: number; // damage dealt modifier in aram as decimal (defaults to 1.0)
-  aram_dmg_taken?: number; // damage taken modifier in aram as decimal (defaults to 1.0)
-  aram_healing?: number; // healing modifier in aram as decimal (defaults to 1.0)
-  aram_shielding?: number; // shielding modifier in aram as decimal (defaults to 1.0)
-  nb_dmg_dealt?: number; // damage dealt modifier in nb as decimal (defaults to 1.0)
-  nb_dmg_taken?: number; // damage taken modifier in nb as decimal (defaults to 1.0)
-  nb_healing?: number; // healing modifier in nb as decimal (defaults to 1.0)
-  nb_shielding?: number; // shielding modifier in nb as decimal (defaults to 1.0)
-  ofa_dmg_dealt?: number; // damage dealt modifier in ofa as decimal (defaults to 1.0)
-  ofa_dmg_taken?: number; // damage taken modifier in ofa as decimal (defaults to 1.0)
-  ofa_healing?: number; // healing modifier in ofa as decimal (defaults to 1.0)
-  ofa_shielding?: number; // shielding modifier in ofa as decimal (defaults to 1.0)
-  urf_dmg_dealt?: number; // damage dealt modifier in urf as decimal (defaults to 1.0)
-  urf_dmg_taken?: number; // damage taken modifier in urf as decimal (defaults to 1.0)
-  urf_healing?: number; // healing modifier in urf as decimal (defaults to 1.0)
-  urf_shielding?: number; // shielding modifier in urf as decimal (defaults to 1.0)
 }

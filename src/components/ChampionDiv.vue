@@ -63,7 +63,7 @@ import InputNumber from 'primevue/inputnumber';
 import ChampSearch from './simple/ChampSearch.vue';
 import ChampLevelSelect from './simple/ChampLevelSelect.vue';
 import BlockStat from './simple/BlockStat.vue';
-import { ref, defineProps, provide } from 'vue';
+import { ref, provide } from 'vue';
 import { validateName, type ChampObjModel } from '../model/ChampObj';
 import ChampionStats from '../itembuilder/components/ChampionStats.vue';
 import ChampionStackingBuffs from '../itembuilder/components/ChampionStackingBuffs.vue';

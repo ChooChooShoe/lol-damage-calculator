@@ -1,34 +1,18 @@
-import {
-  ChampionListSkills,
-  StaticStats,
-  WikiChampionData,
-} from '../src/api/DataTypes.js';
+import type { ChampionListSkills, WikiChampionData } from '@/api/DataTypes';
 import {
   fetchAndSaveRealms,
   fetch_Module_ChampionData,
-  saveFile,
-} from './fetch_utils.js';
+  saveTSFile,
+} from './fetch_utils';
 import {
   fetch_ddragon,
   fetch_live_wiki_skills,
-  NeededRiotValues,
-} from './live_wiki_fetch.js';
+  type NeededRiotValues,
+} from './live_wiki_fetch';
 
-import _ from 'lodash';
-import { Overwrite as OverwriteChampionList } from './OverwriteChampions.js';
-import { Overwrite as OverwriteSkillList } from './OverwriteSkills.js';
+import { BaseStatsObj } from '@/model/ChampObj';
 console.log('Live Wiki Fetching for all data.');
-const DEBUG = false;
 
-// for (const [key, value] of Object.entries(await x)) {
-//     const q = value as any
-//     if(q.skill_i) q.skill_i = Object.values(q.skill_i);
-//     if(q.skill_q) q.skill_q = Object.values(q.skill_q);
-//     if(q.skill_w) q.skill_w = Object.values(q.skill_w);
-//     if(q.skill_e) q.skill_e = Object.values(q.skill_e);
-//     if(q.skill_r) q.skill_r = Object.values(q.skill_r);
-//     if(q.skills ) q.skills  = Object.values(q.skills);
-// }
 main();
 async function main() {
   const realms = fetchAndSaveRealms();
@@ -64,10 +48,27 @@ async function main() {
   }
   console.log('Awaiting all Promises');
   await Promise.all(promises);
-  _.merge(ChampionList, OverwriteChampionList);
-  saveFile('./src/api/ChampionList.json', ChampionList);
-  _.merge(SkillList, OverwriteSkillList);
-  saveFile('./src/api/ChampionListSkills.json', SkillList);
+  // _.merge(ChampionList, OverwriteChampionList);
+  saveTSFile(
+    './src/model/ChampionListData.ts',
+    ChampionList,
+    `import type { ChampListEntry } from './ChampObj';
+
+  // prettier-ignore
+  export type ChampionName = "${Object.keys(ChampionList).join(`" | "`)}";
+  
+  export const ChampionListData: Record<ChampionName, ChampListEntry> = `,
+    `export default ChampionListData;\n`
+  );
+  // _.merge(SkillList, OverwriteSkillList);
+  saveTSFile(
+    './src/model/ChampionSkillsData.ts',
+    SkillList,
+    `import type { ChampionListSkills } from '@/api/DataTypes';
+  import type { ChampionName } from './ChampionListData';\n
+  export const ChampionSkillsData: Record<ChampionName, ChampionListSkills> = `,
+    `export default ChampionSkillsData;\n`
+  );
   console.log('Goodbye');
 }
 
@@ -153,7 +154,9 @@ function test(val: Typed, type: Typed): Typed {
     for (const itype of type) {
       try {
         return test(val, itype);
-      } catch (_) {}
+      } catch (_) {
+        /* empty */
+      }
     }
     return invalidValue(type, val);
   }
@@ -174,7 +177,7 @@ function test(val: Typed, type: Typed): Typed {
   return invalidValue(typeof type, val);
 }
 
-function mutateStats(o: any): StaticStats {
+function mutateStats(o: any): BaseStatsObj {
   const s = {
     hp_base: test(o.hp_base, 0),
     hp_lvl: test(o.hp_lvl, 0),
@@ -190,50 +193,29 @@ function mutateStats(o: any): StaticStats {
     mp5_lvl: test(o.mp5_lvl, 0),
     dam_base: test(o.dam_base, 0),
     dam_lvl: test(o.dam_lvl, 0),
-
     as_base: test(o.as_base, 0),
     as_ratio: test(o.as_ratio, 0),
     as_lvl: test(o.as_lvl, 0),
+
+    missile_speed: test(o.missile_speed, 0), // (0 = Non-Projectile)
+    attack_cast_time: test(o.attack_cast_time, 0), // only used to calculated 'windup_percent'
+    attack_total_time: test(o.attack_total_time, 0), // only used to calculated 'windup_percent'
+    attack_delay_offset: test(o.attack_delay_offset, 0.3), // only used to calculated 'windup_percent'
+    // windup_percent: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
+    windup_modifier: test(o.windup_modifier, 0), // champion's modifier to windup growth
+    crit_base: test(o.crit_base, 175), // champion's base critical strike damage (defaults to 175%)
+    crit_mod: test(o.crit_mod, 0), // champion's total critical strike damage modifier
     range: test(o.range, 0),
     ms: test(o.ms, 0),
+    gameplay_radius: test(o.gameplay_radius, 65), // champion's hitbox for most purposes (defaults to 65)
+    acquisition_radius: test(o.acquisition_radius, 800), // champion's auto-attack range (defaults to 800)
+    selection_radius: test(o.selection_radius, 100), // champion's mouse-over selection radius (defaults to 100)
+    pathing_radius: test(o.pathing_radius, 35), // champion's pathing radius (defaults to 35)
+    aram: o.aram, // aram balance changes
+    nb: o.nb, // nexus blitz-specific balance changes (see aram for parameters)
+    ofa: o.ofa, // one for all-specific balance changes (see aram for parameters)
+    urf: o.urf, // ultimate rapid fire-specific balance changes (see aram for parameters)
+    usb: o.usb, // ultimate spell book-specific balance changes (see aram for parameters)
   };
-  // All the known optonal props.
-  for (const key of [
-    'usb_dmg_taken',
-    'usb_dmg_dealt',
-    'ofa_shield',
-    'usb_healing',
-    'usb_shielding',
-    'missile_speed',
-    'attack_cast_time',
-    'attack_total_time',
-    'attack_delay_offset',
-    'windup_percent',
-    'windup_modifier',
-    'crit_base',
-    'crit_mod',
-    'gameplay_radius',
-    'acquisition_radius',
-    'selection_radius',
-    'pathing_radius',
-    'aram_dmg_dealt',
-    'aram_dmg_taken',
-    'aram_healing',
-    'aram_shielding',
-    'nb_dmg_dealt',
-    'nb_dmg_taken',
-    'nb_healing',
-    'nb_shielding',
-    'ofa_dmg_dealt',
-    'ofa_dmg_taken',
-    'ofa_healing',
-    'ofa_shielding',
-    'urf_dmg_dealt',
-    'urf_dmg_taken',
-    'urf_healing',
-    'urf_shielding',
-  ]) {
-    s[key] = test(o[key], [0, undefined]);
-  }
   return s;
 }

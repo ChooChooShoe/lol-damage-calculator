@@ -1,16 +1,13 @@
 import fetch from 'node-fetch';
 import _ from 'lodash';
-import { saveTSFile } from './fetch_utils.js';
-import { Overwrite, dynamicOverwrites } from './OverwritePerks.js';
+import { saveTSFile } from './fetch_utils';
+import { Overwrite, dynamicOverwrites } from './OverwritePerks';
 
 import { JSDOM } from 'jsdom';
-import {
-  ratios_from_text,
-  spellEffectFromDescription,
-} from './skill_ratios_parse.js';
-import { RootRatio, SubSkill } from '../src/api/DataTypes.js';
-import { fix_wiki_img } from './live_wiki_fetch.js';
-import { Perk, PerkStyle } from '../src/runes/perks.js';
+import { spellEffectFromDescription } from './skill_ratios_parse';
+import type { RootRatio, SubSkill } from '../src/api/DataTypes';
+import { fix_wiki_img } from './live_wiki_fetch';
+import type { Perk, PerkStyle } from '../src/runes/perks';
 
 const CDRAGON_PERKS_JSON =
   'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json';
@@ -41,8 +38,8 @@ async function main() {
     }
     if (wiki.removed?.innerText === 'true') continue;
     i.released = wiki.released?.innerHTML?.trim() || '';
-    i.path = wiki.path?.innerHTML?.trim() || '';
-    i.slot = wiki.slot?.innerHTML?.trim() || '';
+    i.path = (wiki.path?.innerHTML?.trim() || '') as any;
+    i.slot = (wiki.slot?.innerHTML?.trim() || '') as any;
     i.cooldown = wiki.cooldown?.innerHTML?.trim() || undefined;
     i.range = wiki.range?.innerHTML?.trim() || undefined;
     i.subskills = [];
@@ -73,19 +70,19 @@ async function main() {
   console.assert(cDragonPerkStyles.schemaVersion === 2);
   for (const i of cDragonPerkStyles.styles) {
     perkStyles[i.id] = {
-      id: i.id,
+      id: i.id as any,
       name: i.name,
       tooltip: i.tooltip,
       iconPath: i.iconPath,
       isAdvanced: i.isAdvanced,
-      allowedSubStyles: i.allowedSubStyles,
+      allowedSubStyles: i.allowedSubStyles as any,
       // subStyleBonus: i.subStyleBonus, // Outdated.
-      slots: mutate_slots(i.slots, perks),
+      slots: mutate_slots(i.slots) as any,
       defaultPageName: i.defaultPageName,
-      defaultSubStyle: i.defaultSubStyle, // id
-      defaultPerks: i.defaultPerks, // id[]
-      defaultPerksWhenSplashed: i.defaultPerksWhenSplashed, // id[]
-      defaultStatModsPerSubStyle: i.defaultStatModsPerSubStyle, // { id: id, perks: id[] }[]
+      defaultSubStyle: i.defaultSubStyle as any, // id
+      defaultPerks: i.defaultPerks as any, // id[]
+      defaultPerksWhenSplashed: i.defaultPerksWhenSplashed as any, // id[]
+      defaultStatModsPerSubStyle: i.defaultStatModsPerSubStyle as any, // { id: id, perks: id[] }[]
     };
   }
   // const statmods = mutate_statmods(perks);
@@ -93,13 +90,13 @@ async function main() {
   const output = { styles: perkStyles, perks: statmods };
   _.merge(output, Overwrite);
   dynamicOverwrites(output);
-  saveTSFile('./src/runes/PerksData.ts', output);
+  saveTSFile('./src/runes/PerksData.ts', output, 'export default ', '');
   console.log('Goodbye');
 }
-function mutate_slots(slots: Slot[], perks: Map<number, Perk>) {
+function mutate_slots(slots: Slot[]) {
   return {
     KeyStone: {
-      slotLabel: slots[0].slotLabel,
+      slotLabel: '',
       perks: slots[0].perks,
     },
     Mixed1: {
@@ -142,6 +139,7 @@ export interface TemplateRuneData {
   range?: HTMLElement; //Range
   removed?: HTMLElement; //If the item is removed from game, set the value to true. Value can be empty.
   wr?: HTMLElement; //If the item is from Wild Rift, set the value to true. Value can be empty.
+  [key: string]: HTMLElement | undefined;
 }
 async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
   const url = `https://leagueoflegends.fandom.com/wiki/Template:Rune_data_${name

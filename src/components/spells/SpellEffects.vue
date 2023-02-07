@@ -16,6 +16,11 @@
     :pkey="pkey"
     :effect="effect"
   />
+  <CrowdControlEffectsVue
+    v-else-if="effect.effectType === 'CrowdControl'"
+    :pkey="pkey"
+    :effect="effect"
+  />
 
   <div v-else>Unique Effect...</div>
 </template>
@@ -29,6 +34,7 @@ import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
 import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
 import DamageSpellEffectsVue from './typedspelleffects/DamageSpellEffectsVue.vue';
 import HealShieldSpellEffectsVue from './typedspelleffects/HealShieldSpellEffectsVue.vue';
+import CrowdControlEffectsVue from './typedspelleffects/CrowdControlEffectsVue.vue';
 
 const props = defineProps<{
   effect: RootRatio;
@@ -85,9 +91,12 @@ input[type='button'].repeat {
 }
 
 .spelleffect__title {
-  color: #8e7dad;
+  color: white;
   white-space: nowrap;
   justify-self: end;
+  font-weight: bold;
+  font-size: 80%;
+  text-transform: uppercase;
 }
 
 .spelleffect__editbtn {

@@ -42,9 +42,10 @@ import SpellImage from '../../timeline/SpellImage.vue';
 import { ref } from 'vue';
 import { computed } from 'vue';
 import DropdownSelect from './DropdownSelect.vue';
+import type { ChampionName } from '@/model/ChampObj';
 
 const props = defineProps<{
-  champ: keyof typeof championList;
+  champ: ChampionName;
   mode: 'target' | 'player' | 'emit';
 }>();
 

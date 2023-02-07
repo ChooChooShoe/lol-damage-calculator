@@ -1,32 +1,41 @@
-import { Dictionary } from 'lodash';
-import parenthesis, { ArrayTree } from 'parenthesis';
-import {
+import { numberExpandOnLevel } from './leveling';
+import type { Dictionary } from 'lodash';
+import parenthesis, { type ArrayTree } from 'parenthesis';
+import type {
   DamageType,
   EffectType,
   RootRatio,
   SubRatio,
   ChampionStatUnits,
-  ValidDamageType,
-  ValidEffectType,
-} from '../src/api/DataTypes.js';
-import { Stat } from '../src/model/ChampObj.js';
-import { saveFile } from './fetch_utils.js';
-import { list_check, matchKeyword, table_check } from './mutate_untils.js';
+  RootEffect,
+  HealType,
+  ShieldType,
+} from '@/api/DataTypes';
+import type { Stat } from '@/model/ChampObj';
+import { saveFile } from './fetch_utils';
+import { matchKeyword, table_check } from './mutate_untils';
 
 const DEBUG = false;
 
 const keyword_to_basic_stat: Dictionary<Stat> = {
   tenacity: 'tenacity',
-  lifesteal: 'lifesteal',
   spellvamp: 'spellvamp',
+  'spell vamp': 'spellvamp',
+  lifesteal: 'lifesteal',
+  'life steal': 'lifesteal',
   omnivamp: 'omnivamp',
   pysicalvamp: 'pysicalvamp',
+  'pysical vamp': 'pysicalvamp',
   'legend stack': 'legendStacks',
   'bounty hunter stack': 'bountyHunterStacks',
   soul: 'darkHarvestStacks',
   'slow resist': 'slow_resist',
   ap: 'total_ap',
   gold: 'gold',
+  mark: 'kindredMarks',
+  'siphoning strike': 'siphoningStrikeStacks',
+  feast: 'feastStacks',
+  stack: 'feastStacks',
 };
 export const keyword_to_player_stat = {
   ap: 'ap',
@@ -41,8 +50,6 @@ export const keyword_to_player_stat = {
   hp: 'hp',
   mana: 'mana',
   ability: 'ap',
-  mark: 'kindred_mark',
-  stack: 'feast_stack',
   nasus_stack: 'stack',
   percent: 'percent',
 };
@@ -73,7 +80,8 @@ function convertUnitsToUserAndUnits(unit: string | undefined | null): {
     return { user: 'player', unitsParsed: basic_stat };
   }
 
-  const player_stat = table_check(unit, keyword_to_player_stat, unit);
+  const player_stat = table_check(unit, keyword_to_player_stat, '');
+  if (player_stat === '') return { user: 'none', unitsParsed: '' };
   let bbt: string;
   if (player_stat === 'hp')
     bbt = table_check(unit, keyword_to_type_ext, 'total');
@@ -112,63 +120,58 @@ export function spellEffectFromDescription(
   const nameSplit = desc.split(/:(.*)/s);
   const betterName = nameSplit[1] ? name : nameSplit[0] + ':';
   desc = nameSplit[1] || nameSplit[0];
-  const damagetype: DamageType = table_check(desc, ValidDamageType, 'None');
-  const effectType: EffectType | undefined = table_check(
-    desc,
-    ValidEffectType,
-    'Unique'
-  );
-  const increasedStat = undefined;
-  const tree_root = parenthesis.parse(desc);
 
-  console.log(
-    `[DEBUG] spellEffectFromDescription => betterName:${betterName} name:${name} desc:${desc}`
-  );
-  return Object.assign(
-    {
-      name: betterName || name,
-      raw: desc,
-      damagetype,
-      effectType,
-      increasedStat,
-    },
-    makeRatioObj(tree_root)
-  );
+  return spellEffectFromStrings(name, desc, desc);
 }
-export function spellEffectFromStrings(name: string, raw: string): RootRatio {
-  const damagetype: DamageType = table_check(name, ValidDamageType, 'None');
-  const effectType: EffectType | undefined = table_check(
+export function spellEffectFromStrings(
+  name: string,
+  keywords: string,
+  raw: string
+): RootRatio {
+  const target: Partial<RootRatio> = {
+    effectType: matchKeyword(keywords, validEffectTypes) || 'Unique',
     name,
-    ValidEffectType,
-    'Unique'
-  );
-  const increasedStat = undefined;
+    raw,
+  };
   const tree_root = parenthesis.parse(raw);
+  if (name.length > 38) {
+    console.log(`Name ${name} is longer than 38 chars. trimming to 'Passive:'`);
+    name = 'Passive:';
+  }
+  const ratio = makeRatioObj(tree_root);
+  if (target.effectType === 'Gain' && ratio.units) {
+    target.increasedStat = ratio.units || 'bonus_movespeed';
+    ratio.units = '';
+  }
+  if (target.effectType === 'Damage') {
+    target.damagetype = matchKeyword(keywords, validDamageTypes) || 'None';
+  } else if (target.effectType === 'Shield') {
+    target.damagetype = matchKeyword(keywords, validDamageTypes) || 'None';
+    target.shieldType =
+      matchKeyword(keywords, validShieldTypes) || 'SelfShield';
+  } else if (target.effectType === 'Heal') {
+    target.healType = matchKeyword(keywords, validHealTypes) || 'SelfHeal';
+  } else if (target.effectType === 'Stacks') {
+    target.min = 0;
+    target.max = 10;
+    target.description = raw;
+  }
   // console.log(`[DEBUG] spellEffectFromStrings => ${name}: ${raw}`)
-  return Object.assign(
-    {
-      name,
-      raw,
-      damagetype,
-      effectType,
-      increasedStat,
-    },
-    makeRatioObj(tree_root)
-  );
+  return Object.assign(target as RootRatio, ratio);
 }
 export function makeRatioObj(root: ArrayTree): SubRatio {
-  const pre_arr: any = [],
-    sub_ratios: SubRatio[] = [],
-    post_arr: any = [];
+  const pre_arr: string[] = [];
+  const sub_ratios: SubRatio[] = [];
+  const post_arr: string[] = [];
   let arr = pre_arr;
   let is_based_on_level = false;
 
   for (const [idx, ratio] of Object.entries(root)) {
     if (Array.isArray(ratio)) {
       const sub = makeRatioObj(ratio as parenthesis.ArrayTree);
-      if (sub.post === 'based on level') {
+      if (sub.unitsText === 'based on level') {
         // set flag, do not add as sub_ratio
-        // Ex. 50 − 305 (based on level) (+ 80% bonus AD)
+        // Ex. 50 − 305 (based on level) (+ 80% bonus AD)
         is_based_on_level = true;
       } else {
         sub_ratios.push(sub);
@@ -191,27 +194,31 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
   const pre_vals = level_to_ratio(pre);
 
   let values = pre_vals.values;
-  let apply: '%' | 'based_on_level' | undefined = pre_vals.apply;
-  let units = pre_vals.units;
+  let unitsText = pre_vals.units;
 
   if (is_based_on_level) {
     values = numberExpandOnLevel(pre);
-    apply = 'based_on_level';
-    units = '';
+    unitsText = '';
   }
   if (post) {
-    console.log("[WARN] Replacing units '", units, "' because of post ", post);
-    units = post;
+    console.log(
+      "[WARN] Replacing units '",
+      unitsText,
+      "' because of post ",
+      post
+    );
+    unitsText = post;
   }
-  const { user, unitsParsed: unitsParsed } = convertUnitsToUserAndUnits(units);
+  const { user, unitsParsed: unitsParsed } =
+    convertUnitsToUserAndUnits(unitsText);
   return {
     values,
     valuesRanged: undefined,
-    valuesIsPercent: apply === '%' || undefined,
+    valuesIsPercent: pre_vals.apply === '%' || undefined,
     valuesIsBasedOnLevel: is_based_on_level || undefined,
     user,
     units: unitsParsed,
-    unitsText: units,
+    unitsText: unitsText,
     pre,
     post,
     children: sub_ratios.length > 0 ? sub_ratios : undefined,
@@ -233,7 +240,7 @@ function level_to_ratio(fullText: string): {
     units = s[1] || '';
   }
   // if (fullText === 'based on level') return { values: -1, units: leveling, utype: 'internal' };
-  // if (leveling.trim() === "0.5 +  0.175") return { values: [0.5, 0.675], units: "with_infinity_edge", utype: 'internal' };
+  // if (leveling.trim() === "0.5 +  0.175") return { values: [0.5, 0.675], units: "with_infinity_edge", utype: 'internal' };
   // if (fullText === "+ Siphoning Strike stacks") return { values: [1], units: "Siphoning Strike stacks", utype: 'internal' };
 
   let fail_count = 0;
@@ -279,18 +286,41 @@ function level_to_ratio(fullText: string): {
   };
 }
 
-function numberExpandOnLevel(values: string): number[] {
-  const list: number[] = [];
-  //Ex. 'Damaging basic attacks and ability damage deal 10 − 45'
-  const found = values.match(/([\d.]+) − ([\d.]+)/);
-  if (!found) return [];
-  const start = Number(found[1]);
-  const end = Number(found[2]);
-  const range = 18;
-  const diff = (end - start) / (range - 1);
-  for (let i = 0; i < range; i++) {
-    const answer = +(start + diff * i);
-    list.push(+answer.toFixed(2) || i);
-  }
-  return list;
-}
+const validEffectTypes: Dictionary<EffectType> = {
+  heal: 'Heal',
+  shield: 'Shield',
+  gain: 'Gain',
+  grant: 'Gain',
+  unique: 'Unique',
+  stack: 'Stacks',
+  damage: 'Damage',
+};
+
+const validDamageTypes: Dictionary<DamageType> = {
+  physical: 'Physical',
+  magic: 'Magic',
+  true: 'True',
+  none: 'None',
+};
+const validHealTypes: Dictionary<HealType> = {
+  regen: 'HealthRegen',
+  omnivamp: 'Omnivamp',
+  physical: 'PhysicalVamp',
+  incoming: 'IncomingHeals',
+  outgoing: 'OutgoingHeals',
+  target: 'OutgoingHeals',
+  bonus: 'BonusHealth',
+  health: 'BonusHealth',
+  self: 'SelfHeal',
+  spell: 'SpellVamp',
+  drain: 'DrainEffect',
+  life: 'LifeSteal',
+  steal: 'LifeSteal',
+  heal: 'DrainEffect',
+};
+const validShieldTypes: Dictionary<ShieldType> = {
+  self: 'SelfShield',
+  incoming: 'IncomingShields',
+  outgoing: 'OutgoingShields',
+  target: 'OutgoingShields',
+};

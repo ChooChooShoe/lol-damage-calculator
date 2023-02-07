@@ -3,10 +3,11 @@ import {
   fetch_wiki,
   saveFile,
   wiki_Module_to_JSON,
-} from './fetch_utils.js';
+} from './fetch_utils';
 import fs from 'fs/promises';
-import { Image } from '../src/api/DataTypes.js';
+import type { Image } from '../src/api/DataTypes';
 import fetch from 'node-fetch';
+import type { Dictionary } from 'lodash';
 
 const USE_FIXED_REALMS = true;
 const ITEMS_TO_ITEM_ARRAYS = false;
@@ -177,7 +178,7 @@ async function onItemsJsonResponse(
     return { riot: x, cdragon: y, wiki: z };
   }
 
-  const allItems = {};
+  const allItems: Dictionary<any> = {};
   for (const [key, wikiItem] of Object.entries(wikiItems)) {
     // Ohmwrecker (Turret Item) has no id.
     if (!wikiItem.id) continue;
@@ -332,7 +333,7 @@ function takeRiftItem(a: CDragonItemEntry, b: RiotItemEntry, c: WikiItemEntry) {
     return 'unsorted';
   }
   function make_stats() {
-    const ret = c.stats || {};
+    const ret: Dictionary<any> = c.stats || {};
     for (const key of ['spec', 'spec2']) {
       if (ret[key])
         // Matches [[ thing ]] captures thing
@@ -411,7 +412,7 @@ function takeRiftItem(a: CDragonItemEntry, b: RiotItemEntry, c: WikiItemEntry) {
   };
 }
 
-function map_number_to_names(maps) {
+function map_number_to_names(maps: any): (string | null)[] {
   console.assert(Object.keys(maps).length == 4, 'Maps not length 4');
   return [
     maps['11'] === true ? 'SR' : null,

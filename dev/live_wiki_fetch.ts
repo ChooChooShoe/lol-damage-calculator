@@ -1,20 +1,19 @@
 import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
-import parenthesis, { ArrayTree } from 'parenthesis';
-import {
+import parenthesis, { type ArrayTree } from 'parenthesis';
+import type {
   ChampionListSkills,
   Image,
   RootRatio,
   ScaleValue,
   SkillModel,
-  SubRatio,
-} from '../src/api/DataTypes.js';
-import { fileExists, saveFile, saveFileBlob } from './fetch_utils.js';
+} from '../src/api/DataTypes';
+import { fileExists, saveFileBlob } from './fetch_utils';
 import {
-  makeRatioObj,
   spellEffectFromDescription,
   spellEffectFromStrings,
-} from './skill_ratios_parse.js';
+} from './skill_ratios_parse';
+import { levelingToVal, mutate_damagetype } from './leveling';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
@@ -48,21 +47,6 @@ export async function fetch_ddragon(
       if (data) return data[Object.keys(data)[0]];
       return {};
     });
-}
-
-function levelingToVal(leveling: string): ScaleValue;
-function levelingToVal(
-  leveling: string | null | undefined
-): ScaleValue | undefined;
-function levelingToVal(
-  leveling: string | null | undefined
-): ScaleValue | undefined {
-  if (!leveling) return undefined;
-  const arr = leveling
-    .split('/')
-    .map((x: string) => Number(x.trim()) || x.trim());
-  if (arr.length === 1) return arr[0];
-  return arr;
 }
 
 const known_skill_names = {
@@ -222,6 +206,8 @@ class SkillObj implements SkillModel {
   knockdown: 'Interrupted' | 'See Notes' | 'Not Interrupted' | undefined;
   subskills: { img?: string; description: string; leveling: RootRatio[] }[];
 
+  // [key: string]: ScaleValue | any;
+
   constructor(
     name: string,
     main_div: HTMLElement,
@@ -259,8 +245,14 @@ class SkillObj implements SkillModel {
     }
 
     this.name = name;
-    this.maxrank = riot.spell_maxranks[name.charAt(0).toLocaleLowerCase()];
-    this.image = riot.spell_images[name.charAt(0).toLocaleLowerCase()];
+    const spellKeyboardKey = name.charAt(0).toLocaleLowerCase() as
+      | 'i'
+      | 'q'
+      | 'w'
+      | 'e'
+      | 'r';
+    this.maxrank = riot.spell_maxranks[spellKeyboardKey];
+    this.image = riot.spell_images[spellKeyboardKey];
     const header = main_div.querySelector('.champion-ability__header')!;
     const grid = main_div.querySelector('.champion-ability__header+div')!;
     this.display_name = header.querySelector('h3')?.textContent || '';
@@ -286,7 +278,7 @@ class SkillObj implements SkillModel {
       undefined;
     this.damagetype = mutate_damagetype(
       infobox?.querySelector(`div[data-source="damagetype"]`)?.textContent || ''
-    );
+    ) as any;
 
     this.spelleffects = mutate_val(
       'spelleffects',
@@ -336,7 +328,11 @@ class SkillObj implements SkillModel {
       );
 
       for (const idx in dt_list) {
-        const root_ratio = spellEffectFromStrings(dt_list[idx], dd_list[idx]);
+        const root_ratio = spellEffectFromStrings(
+          dt_list[idx],
+          dd_list[idx],
+          dd_list[idx]
+        );
         leveling.push(root_ratio);
       }
       this.subskills.push({ img, description: descriptionHtml, leveling });
@@ -386,15 +382,6 @@ export function fix_wiki_img(document: ParentNode) {
       delete img.dataset.src;
     }
   }
-}
-function mutate_damagetype(
-  damagetype: string
-): ('Physical' | 'Magic' | 'True')[] {
-  const res: ('Physical' | 'Magic' | 'True')[] = [];
-  if (damagetype.includes('Physical')) res.push('Physical');
-  if (damagetype.includes('Magic')) res.push('Magic');
-  if (damagetype.includes('True')) res.push('True');
-  return res;
 }
 const valid_targeting = [
   'Passice',

@@ -74,7 +74,7 @@ export type PerkId =
   | 9111
   | 9923;
 
-export const styles: Record<StyleId, PerkStyle> = {
+export const styles: Record<StyleId, any> = {
   8000: {
     id: 8000,
     name: 'Precision',
@@ -316,7 +316,7 @@ export const styles: Record<StyleId, PerkStyle> = {
     ],
   },
 };
-export const perks: Record<PerkId, Perk> = {
+export const perks: Record<PerkId, any> = {
   5001: {
     id: 5001,
     name: 'Health Scaling',
@@ -425,7 +425,7 @@ export const perks: Record<PerkId, Perk> = {
     released: '2018',
     path: 'Precision',
     slot: 'Keystone',
-    cooldown: `<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts post-effect (after consuming a target\'s stacks)">6</span>`,
+    cooldown: `<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts post-effect (after consuming a target's stacks)">6</span>`,
     subskills: [
       {
         description: `<span class="template_sbc"><b>Passive:</b></span> <a href="/wiki/Basic_attack" title="Basic attack">Basic attacks</a> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> against enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span> apply a <a href="/wiki/Stack" title="Stack">stack</a> for 4 seconds, refreshing on subsequent applications, expiring upon attacking a new champion, and stacking up to 3 times. The third stack consumes all stacks to deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="40;" data-finish="180;" data-bot_values="40;48.24;56.47;64.71;72.94;81.18;89.41;97.65;105.88;114.12;122.35;130.59;138.82;147.06;155.29;163.53;171.76;180" data-top_values="">40 − 180 (based on level)</span> <b>bonus</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Adaptive damage"><a href="/wiki/Adaptive_force#Adaptive_damage" title="Adaptive force#Adaptive damage"><img alt="Attack damage.png" src="/wiki/images/Attack_damage.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a><a href="/wiki/Adaptive_force#Adaptive_damage" title="Adaptive force#Adaptive damage"><img alt="Magic damage.png" src="/wiki/images/Magic_damage.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Adaptive_force#Adaptive_damage" title="Adaptive force">Adaptive damage</a></span> and render the target <i>Exposed</i> for 6 seconds, causing them to take <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="8;" data-finish="12;" data-bot_values="8;8.24;8.47;8.71;8.94;9.18;9.41;9.65;9.88;10.12;10.35;10.59;10.82;11.06;11.29;11.53;11.76;12" data-top_values="" data-bot_key="%">8% − 12% (based on level)</span> increased damage (except <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="True damage"><a href="/wiki/True_damage" title="True damage"><img alt="Hybrid penetration.png" src="/wiki/images/Hybrid_penetration.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/True_damage" title="True damage">true damage</a></span>) from <b>all</b> sources for the duration.`,
@@ -459,7 +459,7 @@ export const perks: Record<PerkId, Perk> = {
         img: `${cDragonBaseUri}/v1/perk-images/styles/precision/presstheattack/presstheattack.png`,
       },
       {
-        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect\'s damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect\'s particular default.\n</p>`,
+        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect's damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect's particular default.\n</p>`,
         leveling: [],
       },
     ],
@@ -486,9 +486,9 @@ export const perks: Record<PerkId, Perk> = {
             effectType: 'Stacks',
             min: 0,
             max: 6,
-            unitsText: 'Lethal Tempo Stacks',
             user: 'player',
             units: 'lethalTempoStacks',
+            unitsText: ' Lethal Tempo Stacks',
             description: `<a href="/wiki/Basic_attack" title="Basic attack">Basic attacks</a> <a href="/wiki/On-attack" class="mw-redirect" title="On-attack">on-attack</a> against enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champions"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span> grant a <a href="/wiki/Stack" title="Stack">stack</a> for 6 seconds, refreshing on subsequent attacks and stacking up to 6 times.`,
           },
           {
@@ -1274,7 +1274,7 @@ export const perks: Record<PerkId, Perk> = {
         locked: true,
       },
       {
-        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect\'s damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect\'s particular default.\n</p>`,
+        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect's damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect's particular default.\n</p>`,
         leveling: [
           {
             name: 'Adaptive Damage:',
@@ -1527,7 +1527,7 @@ export const perks: Record<PerkId, Perk> = {
         ],
       },
       {
-        description: `<i>Zombie Wards</i> grant <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> over the surrounding 900 units, are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon.png" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> to your team, are visible to the enemy team, have <span style="white-space:nowrap"><a href="/wiki/Health" title="Health"><img alt="Health icon.png" src="/wiki/images/Health_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #1F995C; white-space:normal">1 health</span></span>, last for 120 seconds and don\'t count towards your ward limit.`,
+        description: `<i>Zombie Wards</i> grant <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> over the surrounding 900 units, are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon.png" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> to your team, are visible to the enemy team, have <span style="white-space:nowrap"><a href="/wiki/Health" title="Health"><img alt="Health icon.png" src="/wiki/images/Health_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #1F995C; white-space:normal">1 health</span></span>, last for 120 seconds and don't count towards your ward limit.`,
       },
     ],
   },
@@ -2215,7 +2215,7 @@ export const perks: Record<PerkId, Perk> = {
     slot: 3,
     subskills: [
       {
-        description: `<span class="template_sbc"><b>Passive:</b></span> While in the <a href="/wiki/Summoner%27s_Rift" title="Summoner\'s Rift">river</a>, you gain <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal">25</span> <span style="color: #F5EE99; white-space:normal"><b>bonus</b> movement speed</span></span> and <span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="3;" data-finish="18;" data-bot_values="3;3.88;4.76;5.65;6.53;7.41;8.29;9.18;10.06;10.94;11.82;12.71;13.59;14.47;15.35;16.24;17.12;18" data-top_values="">3 − 18 (based on level)</span> <b>bonus</b> Attack Damage</span> or <span style="color: #7A6DFF; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="5;" data-finish="30;" data-bot_values="5;6.47;7.94;9.41;10.88;12.35;13.82;15.29;16.76;18.24;19.71;21.18;22.65;24.12;25.59;27.06;28.53;30" data-top_values="">5 − 30 (based on level)</span> Ability Power</span> (<a href="/wiki/Adaptive_force" title="Adaptive force">Adaptive</a>).`,
+        description: `<span class="template_sbc"><b>Passive:</b></span> While in the <a href="/wiki/Summoner%27s_Rift" title="Summoner's Rift">river</a>, you gain <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal">25</span> <span style="color: #F5EE99; white-space:normal"><b>bonus</b> movement speed</span></span> and <span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="3;" data-finish="18;" data-bot_values="3;3.88;4.76;5.65;6.53;7.41;8.29;9.18;10.06;10.94;11.82;12.71;13.59;14.47;15.35;16.24;17.12;18" data-top_values="">3 − 18 (based on level)</span> <b>bonus</b> Attack Damage</span> or <span style="color: #7A6DFF; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="5;" data-finish="30;" data-bot_values="5;6.47;7.94;9.41;10.88;12.35;13.82;15.29;16.76;18.24;19.71;21.18;22.65;24.12;25.59;27.06;28.53;30" data-top_values="">5 − 30 (based on level)</span> Ability Power</span> (<a href="/wiki/Adaptive_force" title="Adaptive force">Adaptive</a>).`,
         leveling: [
           {
             name: 'Passive:',
@@ -2527,7 +2527,7 @@ export const perks: Record<PerkId, Perk> = {
     slot: 3,
     subskills: [
       {
-        description: `<span class="template_sbc"><b>Passive:</b></span> Gain <span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="missing health" data-displayformula="2% per 7% of \'\'\'missing\'\'\' health" data-bot_values="5;7;9;11;13;15;17;19;21;23;25" data-top_values="0;7;14;21;28;35;42;49;56;63;70" data-bot_key="%" data-top_key="%">5% − 25% (based on <b>missing</b> health)</span></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon.png" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resist</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon.png" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span>.`,
+        description: `<span class="template_sbc"><b>Passive:</b></span> Gain <span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="missing health" data-displayformula="2% per 7% of '''missing''' health" data-bot_values="5;7;9;11;13;15;17;19;21;23;25" data-top_values="0;7;14;21;28;35;42;49;56;63;70" data-bot_key="%" data-top_key="%">5% − 25% (based on <b>missing</b> health)</span></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon.png" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resist</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon.png" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span>.`,
         leveling: [
           {
             name: 'Passive:',
@@ -2710,7 +2710,7 @@ export const perks: Record<PerkId, Perk> = {
     released: '2018',
     path: 'Inspiration',
     slot: 1,
-    cooldown: `<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts after channel\'s completion">20</span>`,
+    cooldown: `<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts after channel's completion">20</span>`,
     range: `<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="channel time" data-displayformula="200 + 40 every 0.3 seconds" data-bot_values="200;240;280;320;360;400" data-top_values="1;1.3;1.6;1.9;2.2;2.5">200 − 400 (based on channel time)</span>`,
     subskills: [
       {
@@ -2718,7 +2718,7 @@ export const perks: Record<PerkId, Perk> = {
         img: `${cDragonBaseUri}/v1/perk-images/styles/inspiration/hextechflashtraption/hextechflashtraption.png`,
       },
       {
-        description: `<span class="template_sbc"><b>Active:</b></span> You begin <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">charging</a></span> for up to 2.<small>5</small> seconds, increasing <i>Hexflash\'s</i> range over the duration. After at least 1 second, you can reactivate the spell, which is automatically done so when the charge completes without reactivation. Releasing the charge earlier than 1 second or entering combat with an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> will put <i>Hexflash</i> on <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span> for 10 seconds.`,
+        description: `<span class="template_sbc"><b>Active:</b></span> You begin <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">charging</a></span> for up to 2.<small>5</small> seconds, increasing <i>Hexflash's</i> range over the duration. After at least 1 second, you can reactivate the spell, which is automatically done so when the charge completes without reactivation. Releasing the charge earlier than 1 second or entering combat with an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> will put <i>Hexflash</i> on <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span> for 10 seconds.`,
       },
       {
         description: `<span class="template_sbc"><b>Recast:</b></span> You <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blink"><a href="/wiki/Blink" title="Blink"><img alt="Flash.png" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blink</a></span> to the target location within range.`,
@@ -2899,50 +2899,25 @@ export const perks: Record<PerkId, Perk> = {
     cooldown: 25,
     subskills: [
       {
-        description: `<span class="template_sbc"><b>Passive:</b></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control#Immobilizing"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">Immobilizing</a></span> an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> will cause 3 glacial rays to emanate from them towards you and other nearby enemy champions, creating icy zones that last for 3 (+ 100% of the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Duration after being modified by tenacity">immobilizing effect\'s duration</span>) seconds.`,
-        leveling: [
-          {
-            name: 'Passive:',
-            raw: `  Immobilizing an enemy  champion will cause 3 glacial rays to emanate from them towards you and other nearby enemy champions, creating icy zones that last for 3 (+ 100% of the immobilizing effect's duration) seconds.`,
-            damagetype: 'None',
-            effectType: 'Unique',
-            values: 3,
-            unitsText: 'seconds.',
-            children: [
-              {
-                values: 100,
-                valuesIsPercent: true,
-                unitsText: `of the immobilizing effect's duration`,
-                pre: `+ 100% of the immobilizing effect's duration`,
-                user: 'player',
-                units: `total_of the immobilizing effect's duration`,
-              },
-            ],
-            pre: `Immobilizing an enemy  champion will cause 3 glacial rays to emanate from them towards you and other nearby enemy champions, creating icy zones that last for 3`,
-            post: 'seconds.',
-            user: 'player',
-            units: 'total_seconds.',
-          },
-        ],
+        description: `<span class="template_sbc"><b>Passive:</b></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control#Immobilizing"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">Immobilizing</a></span> an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> will cause 3 glacial rays to emanate from them towards you and other nearby enemy champions, creating icy zones that last for 3 (+ 100% of the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Duration after being modified by tenacity">immobilizing effect's duration</span>) seconds.`,
         img: `${cDragonBaseUri}/v1/perk-images/styles/inspiration/glacialaugment/glacialaugment.png`,
       },
       {
         description: `Enemies within the icy zones are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowed</a></span> by 30% <span style="color: #7A6DFF; white-space:normal">(+&nbsp;3% per 100 AP)</span> <span style="color:orange; white-space:normal">(+&nbsp;4% per 100 <b>bonus</b> AD)</span> (+ 9% per 10% heal and shield power) and have their damage reduced by 15% against your allies, excluding yourself.`,
         leveling: [
           {
-            name: 'Passive:',
+            name: 'Slow:',
             raw: `Enemies within the icy zones are  slowed by 30% (+ 3% per 100 AP) (+ 4% per 100 bonus AD) (+ 9% per 10% heal and shield power) and have their damage reduced by 15% against your allies, excluding yourself.`,
-            damagetype: 'None',
-            effectType: 'Damage',
-            values: 3,
+            effectType: 'CrowdControl',
+            crowdControl: 'Slow',
+            crowdControlDuration: 3,
+            values: 30,
             valuesIsPercent: true,
-            unitsText: `against your allies, excluding yourself.have their damage reduced by 15`,
             children: [
               {
                 values: 3,
                 valuesIsPercent: true,
                 unitsText: 'per 100 AP',
-                pre: '+ 3% per 100 AP',
                 user: 'player',
                 units: 'total_ap',
               },
@@ -2950,23 +2925,20 @@ export const perks: Record<PerkId, Perk> = {
                 values: 4,
                 valuesIsPercent: true,
                 unitsText: 'per 100 bonus AD',
-                pre: '+ 4% per 100 bonus AD',
                 user: 'player',
                 units: 'bonus_ad',
               },
               {
                 values: 9,
                 valuesIsPercent: true,
-                unitsText: 'per 10',
-                pre: `+ 9% per 10% heal and shield power`,
+                unitsText: 'per 10% heal and shield power',
                 user: 'player',
-                units: 'total_per 10',
+                units: 'healAndShieldPower',
               },
             ],
-            pre: `Enemies within the icy zones are  slowed by 30%`,
             post: `and have their damage reduced by 15% against your allies, excluding yourself.`,
             user: 'player',
-            units: `total_against your allies, excluding yourself.have their damage reduced by 15`,
+            units: '',
           },
         ],
       },
@@ -2995,54 +2967,7 @@ export const perks: Record<PerkId, Perk> = {
     slot: 3,
     subskills: [
       {
-        description: `<span class="template_sbc"><b>Passive:</b></span> Consuming a potion or <a href="/wiki/Total_Biscuit_of_Everlasting_Will" title="Total Biscuit of Everlasting Will">biscuit</a> immediately restores 30% of the <a href="/wiki/Health" title="Health">health</a> and <a href="/wiki/Mana" title="Mana">mana</a> (if applicable) it would restore. Health/mana per tick is then reduced by 30% for the effect\'s regular duration. If consumables are stacked, the instant restoration is applied after the duration of the initial consumable ends.`,
-        leveling: [
-          {
-            name: 'Passive:',
-            raw: ` Consuming a potion or biscuit immediately restores 30% of the health and mana (if applicable) it would restore`,
-            damagetype: 'None',
-            effectType: 'Heal',
-            values: 3,
-            valuesIsPercent: true,
-            unitsText: 'it would restore',
-            children: [
-              {
-                values: 0,
-                unitsText: 'if applicable',
-                pre: 'if applicable',
-                user: 'player',
-                units: 'total_ap',
-              },
-            ],
-            pre: `Consuming a potion or biscuit immediately restores 30% of the health and mana`,
-            post: 'it would restore',
-            user: 'player',
-            units: 'total_it would restore',
-          },
-          {
-            name: 'Passive:',
-            raw: `Health/mana per tick is then reduced by 30% for the effect's regular duration`,
-            damagetype: 'None',
-            effectType: 'Heal',
-            values: [0, 3],
-            valuesIsPercent: true,
-            unitsText: `Health/mana per tick is then reduced by 30`,
-            pre: `Health/mana per tick is then reduced by 30% for the effect's regular duration`,
-            user: 'player',
-            units: 'total_hp',
-          },
-          {
-            name: 'Passive:',
-            raw: `If consumables are stacked, the instant restoration is applied after the duration of the initial consumable ends.`,
-            damagetype: 'None',
-            effectType: 'Unique',
-            values: 0,
-            unitsText: `If consumables are stacked, the instant restoration is applied after the duration of the initial consumable ends.`,
-            pre: `If consumables are stacked, the instant restoration is applied after the duration of the initial consumable ends.`,
-            user: 'player',
-            units: 'total_ap',
-          },
-        ],
+        description: `<span class="template_sbc"><b>Passive:</b></span> Consuming a potion or <a href="/wiki/Total_Biscuit_of_Everlasting_Will" title="Total Biscuit of Everlasting Will">biscuit</a> immediately restores 30% of the <a href="/wiki/Health" title="Health">health</a> and <a href="/wiki/Mana" title="Mana">mana</a> (if applicable) it would restore. Health/mana per tick is then reduced by 30% for the effect's regular duration. If consumables are stacked, the instant restoration is applied after the duration of the initial consumable ends.`,
         img: `${cDragonBaseUri}/v1/perk-images/styles/inspiration/timewarptonic/timewarptonic.png`,
       },
       {
@@ -3051,16 +2976,16 @@ export const perks: Record<PerkId, Perk> = {
           {
             name: 'Additionally:',
             raw: `Additionally, you gain  2% bonus total movement speed while under the effect of a potion or biscuit.`,
-            damagetype: 'None',
+            increasedStat: 'bonus_movespeed',
             effectType: 'Gain',
             values: 2,
             valuesIsPercent: true,
-            unitsText: `bonus total movement speed while under the effect of a potion or biscuit.you gain  2`,
-            pre: `Additionally, you gain  2% bonus total movement speed while under the effect of a potion or biscuit.`,
+            unitsText: `bonus total movement speed.`,
             user: 'player',
-            units: `total_bonus total movement speed while under the effect of a potion or biscuit.you gain  2`,
+            units: ``,
           },
         ],
+        locked: true,
       },
     ],
   },
@@ -3078,7 +3003,7 @@ export const perks: Record<PerkId, Perk> = {
     released: '2018',
     path: 'Inspiration',
     slot: 'Keystone',
-    cooldown: `<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="unique swaps" data-displayformula="300-25 per unique swap. \'\'This is capped at 150 seconds at 6 swaps.\'\'" data-bot_values="300;275;250;225;200;175;150" data-top_values="0;1;2;3;4;5;6">300 − 150 (based on unique swaps)</span>`,
+    cooldown: `<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="unique swaps" data-displayformula="300-25 per unique swap. ''This is capped at 150 seconds at 6 swaps.''" data-bot_values="300;275;250;225;200;175;150" data-top_values="0;1;2;3;4;5;6">300 − 150 (based on unique swaps)</span>`,
     subskills: [
       {
         description: `<span class="template_sbc"><b>Passive:</b></span> While not channeling <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Teleport" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Teleport" title="Teleport"><img alt="Teleport" src="/wiki/images/Teleport.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Teleport" title="Teleport">Teleport</a></span></span> and being <a href="/wiki/Combat_status" title="Combat status">out-of-combat</a> for 5 seconds, you can swap one of your equipped <a href="/wiki/Summoner_spell" title="Summoner spell">summoner spells</a> to a new, single use summoner spell. You cannot select a summoner spell you have already equipped.`,
@@ -3120,36 +3045,28 @@ export const perks: Record<PerkId, Perk> = {
             raw: ` Dealing damage or applying a  crowd control effect to an enemy champion within the first 0.25 seconds of champion combat, grants  5 and First Strike for 3 seconds, causing all of your post-mitigation damage dealt against champions to deal 9% bonus true damage`,
             damagetype: 'True',
             effectType: 'Damage',
-            values: 0,
+            values: 9,
             valuesIsPercent: true,
-            unitsText: `bonus true damagedamage or applying a  crowd control effect to an enemy champion within the first 0.25 seconds of champion combat, grants  5 and First Strike for 3 seconds, causing all of your post-mitigation damage dealt against champions to deal 9`,
-            pre: `Dealing damage or applying a  crowd control effect to an enemy champion within the first 0.25 seconds of champion combat, grants  5 and First Strike for 3 seconds, causing all of your post-mitigation damage dealt against champions to deal 9% bonus true damage`,
+            unitsText: `bonus true damage.`,
             user: 'player',
-            units: 'total_ap',
+            units: 'postMitigationBaseDamageTotal',
           },
           {
             name: 'Afterwards:',
             raw: `Afterwards, you are granted  gold equal to ( 100% /  70%) of all bonus damage dealt within the duration.`,
-            damagetype: 'None',
-            effectType: 'Damage',
-            values: 0,
-            unitsText: `of all bonus damage dealt within the duration.`,
-            children: [
-              {
-                values: 100,
-                valuesIsPercent: true,
-                unitsText: '/  70',
-                pre: '100% /  70%',
-                user: 'player',
-                units: '',
-              },
-            ],
+            increasedStat: 'gold',
+            effectType: 'Gain',
+            values: 9,
+            valuesRanged: 9 * 0.7,
+            valuesIsPercent: true,
+            unitsText: `Gold.`,
             pre: `Afterwards, you are granted  gold equal to`,
-            post: `of all bonus damage dealt within the duration.`,
+            post: `of all bonus damage dealt within the duration as Gold.`,
             user: 'player',
-            units: '',
+            units: 'postMitigationBaseDamageTotal',
           },
         ],
+        locked: true,
         img: `${cDragonBaseUri}/v1/perk-images/styles/inspiration/firststrike/firststrike.png`,
       },
       {
@@ -3176,10 +3093,10 @@ export const perks: Record<PerkId, Perk> = {
     slot: 1,
     subskills: [
       {
-        description: `<span class="template_sbc"><b>Passive:</b></span> While you have a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span>, gain <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="1;" data-finish="10;" data-bot_values="1;1.53;2.06;2.59;3.12;3.65;4.18;4.71;5.24;5.76;6.29;6.82;7.35;7.88;8.41;8.94;9.47;10" data-top_values="">1 − 10 (based on level)</span> <span style="white-space:nowrap"><a href="/wiki/Armor" title="Armor"><img alt="Armor icon.png" src="/wiki/images/Armor_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal"><b>bonus</b> armor</span></span> and <span style="white-space:nowrap"><a href="/wiki/Magic_resistance" title="Magic resistance"><img alt="Magic resistance icon.png" src="/wiki/images/Magic_resistance_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span></span>.`,
+        description: ``,
         leveling: [
           {
-            name: 'While you have a shield:',
+            name: 'Passive:',
             raw: ` While you have a  shield, gain 1 − 10 (based on level)  bonus armor and  bonus magic resistance.`,
             effectType: 'Gain',
             increasedStat: ['bonus_armor', 'bouns_mr'],
@@ -3189,8 +3106,8 @@ export const perks: Record<PerkId, Perk> = {
             ],
             valuesIsBasedOnLevel: true,
             unitsText: `bonus armor and  bonus magic resistance.`,
-            pre: `While you have a  shield, gain 1 − 10`,
-            post: `bonus armor and  bonus magic resistance.`,
+            pre: `While you have a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span>, gain `,
+            post: `<span style="white-space:nowrap"><a href="/wiki/Armor" title="Armor"><img alt="Armor icon.png" src="/wiki/images/Armor_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal"><b>bonus</b> armor</span></span> and <span style="white-space:nowrap"><a href="/wiki/Magic_resistance" title="Magic resistance"><img alt="Magic resistance icon.png" src="/wiki/images/Magic_resistance_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span></span>`,
             units: '',
           },
         ],
@@ -3225,7 +3142,7 @@ export const perks: Record<PerkId, Perk> = {
                 unitsText: 'shield amount',
                 pre: '+ 8.5% shield amount',
                 user: 'player',
-                units: 'total_shield amount',
+                units: 'total_shield',
               },
             ],
             pre: `Whenever you gain a  shield, your next basic attack against an enemy  champion is empowered to deal 5 − 30`,
@@ -3236,7 +3153,7 @@ export const perks: Record<PerkId, Perk> = {
         ],
       },
       {
-        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect\'s damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect\'s particular default.\n</p>`,
+        description: `<span class="template_sbc"><b>Adaptive Damage:</b></span> This effect deals either physical or magic damage depending on the damage contribution from your <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;attack damage</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;ability power</span></span> to the effect's damage formula.\n<ul><li>Greater <b>bonus damage</b> from the <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD ratio</span></span> → <span style="color: #FF8C34; white-space:normal">Physical damage</span></li>\n<li>Greater <b>bonus damage</b> from the <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP ratio</span></span> → <span style="color: #00B0F0; white-space:normal">Magic damage</span></li></ul>\n<p>If the damage contribution of <span style="color:orange; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AD</span></span> and <span style="color: #7A6DFF; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;AP</span></span> are zero or otherwise equal, the damage type depends on the effect's particular default.\n</p>`,
         leveling: [
           {
             name: 'Adaptive Damage:',
@@ -3315,12 +3232,14 @@ export const perks: Record<PerkId, Perk> = {
             effectType: 'Gain',
             increasedStat: 'bonus_armor',
             values: 8,
+            units: '',
           },
           {
             name: 'Bouns Magic Resistance:',
             effectType: 'Gain',
             increasedStat: 'bonus_mr',
             values: 8,
+            units: '',
           },
           {
             name: 'Armor increase:',
@@ -3779,7 +3698,7 @@ export const perks: Record<PerkId, Perk> = {
         img: `${cDragonBaseUri}/v1/perk-images/styles/resolve/guardian/guardian.png`,
       },
       {
-        description: `If you or a <i>Guarded</i> ally would take <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="90;" data-finish="250;" data-bot_values="90;99.41;108.82;118.24;127.65;137.06;146.47;155.88;165.29;174.71;184.12;193.53;202.94;212.35;221.76;231.18;240.59;250" data-top_values="">90 − 250 (based on level)</span> damage within 2.<small>5</small> seconds or lethal damage from an enemy champion, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">turret</a></span>, you both gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="45;" data-finish="120;" data-bot_values="45;49.41;53.82;58.24;62.65;67.06;71.47;75.88;80.29;84.71;89.12;93.53;97.94;102.35;106.76;111.18;115.59;120" data-top_values="">45 − 120 (based on level)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;12.<small>5</small>% of Guardian\'s AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;8% of Guardian\'s <b>bonus</b> health)</span> for 2 seconds.`,
+        description: `If you or a <i>Guarded</i> ally would take <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="90;" data-finish="250;" data-bot_values="90;99.41;108.82;118.24;127.65;137.06;146.47;155.88;165.29;174.71;184.12;193.53;202.94;212.35;221.76;231.18;240.59;250" data-top_values="">90 − 250 (based on level)</span> damage within 2.<small>5</small> seconds or lethal damage from an enemy champion, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">turret</a></span>, you both gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="45;" data-finish="120;" data-bot_values="45;49.41;53.82;58.24;62.65;67.06;71.47;75.88;80.29;84.71;89.12;93.53;97.94;102.35;106.76;111.18;115.59;120" data-top_values="">45 − 120 (based on level)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;12.<small>5</small>% of Guardian's AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;8% of Guardian's <b>bonus</b> health)</span> for 2 seconds.`,
         leveling: [
           {
             name: 'Shield:',
