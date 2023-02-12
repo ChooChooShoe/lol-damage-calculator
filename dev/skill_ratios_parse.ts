@@ -1,19 +1,18 @@
 import { numberExpandOnLevel } from './leveling';
 import type { Dictionary } from 'lodash';
 import parenthesis, { type ArrayTree } from 'parenthesis';
-import type {
-  DamageType,
-  EffectType,
-  RootRatio,
-  SubRatio,
-  ChampionStatUnits,
-  RootEffect,
-  HealType,
-  ShieldType,
-} from '@/api/DataTypes';
-import type { Stat } from '@/model/ChampObj';
 import { saveFile } from './fetch_utils';
 import { matchKeyword, table_check } from './mutate_untils';
+import {
+  SubRatio,
+  RootRatio,
+  EffectType,
+  DamageType,
+  HealType,
+  ShieldType,
+  OptionalStat,
+} from '../src/api/DataTypes';
+import { Stat } from '../src/api/ChampObjStats';
 
 const DEBUG = false;
 
@@ -70,7 +69,7 @@ const keyword_to_type_ext = {
 
 function convertUnitsToUserAndUnits(unit: string | undefined | null): {
   user: 'none' | 'player' | 'target';
-  unitsParsed: ChampionStatUnits;
+  unitsParsed: OptionalStat;
 } {
   if (!unit) return { user: 'none', unitsParsed: '' };
   unit = unit.toLowerCase().trim();

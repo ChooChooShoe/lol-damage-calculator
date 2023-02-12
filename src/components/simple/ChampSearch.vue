@@ -7,15 +7,16 @@
       <template v-slot:value>
         <SpellImage
           size="tiny"
-          :image="championList[champ]?.image"
+          :image="ChampionListData[champ]?.image"
         ></SpellImage>
         <span class="champsearch__name">{{ champ }}</span>
       </template>
       <ul class="dd__champlist">
         <li
           :data-name="c.name"
-          v-for="c in championList"
+          v-for="c in ChampionListData"
           :class="{ hidden: c.name.toLowerCase().indexOf(searchLower) === -1 }"
+          :key="c.id"
         >
           <a class="flex__center" @click="to(c.name, $event)" :key="c.name">
             <SpellImage size="tiny" :image="c.image"></SpellImage>
@@ -36,13 +37,12 @@
 </template>
 
 <script setup lang="ts">
-import championList from './../../api/ChampionList.json';
 import { useRouter } from 'vue-router';
 import SpellImage from '../../timeline/SpellImage.vue';
 import { ref } from 'vue';
 import { computed } from 'vue';
 import DropdownSelect from './DropdownSelect.vue';
-import type { ChampionName } from '@/model/ChampObj';
+import { ChampionListData, type ChampionName } from '@/model/ChampionListData';
 
 const props = defineProps<{
   champ: ChampionName;

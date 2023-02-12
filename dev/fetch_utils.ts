@@ -2,32 +2,32 @@ import * as fs from 'fs';
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
+import { DataDragon } from './datadragon';
+import { fetchWiki } from './LeagueWiki';
 
 const DEBUG = true;
 
 if (DEBUG) {
   mkdir(`./.debug/`);
-  fetch_Module_ChampionData();
+  // fetch_Module_ChampionData();
 }
 
 export async function fetchAndSaveRealms(): Promise<{
   v: string;
+  dv: string;
   l: string;
   cdn: string;
 }> {
-  const realms: any = await (
-    await fetch('https://ddragon.leagueoflegends.com/realms/na.json')
-  ).json();
-
-  console.log('Using ddragon version:', realms.v);
-  await saveFile(`./src/api/version.json`, {
+  const realms = await DataDragon.getRealms();
+  const myRealms = {
     v: realms.v,
     dv: realms.v.replace(/\.1$/, ''),
     l: realms.l,
     cdn: realms.cdn,
-  });
-
-  return realms;
+  };
+  console.log('Using ddragon version:', realms.v);
+  await saveFile(`./src/api/version.json`, myRealms);
+  return myRealms;
 }
 
 export function mkdir(folder: fs.PathLike) {
@@ -54,6 +54,13 @@ export function saveTSFile(
     })}\n${postText}`
   );
 }
+export function saveStringFile(
+  path: fs.PathLike | fs.promises.FileHandle,
+  data: string
+): Promise<void> {
+  console.log(`Saving file '${path}' as string...`);
+  return fs.promises.writeFile(path, data);
+}
 
 export async function saveFileBlob(
   path: fs.PathLike | fs.promises.FileHandle,
@@ -67,70 +74,6 @@ export function fileExists(path: fs.PathLike): boolean {
   return fs.existsSync(path);
 }
 
-/**
- * Fetches in a wiki data page and returns the textarea content as json object.
- * @param {RequestInfo} url
- * @returns string
- */
-export async function fetch_wiki(url: RequestInfo) {
-  console.log('Fetching (wiki):', url);
-  const response = await fetch(url);
-  if (response.redirected)
-    console.info('[WARN] Page redirected', url, 'to', response.url);
-
-  const dom = new JSDOM(await response.text());
-  const text = dom.window.document.querySelector('pre.mw-code.mw-script');
-  if (text) return { text: text.textContent || '', response };
-  console.info('[ERROR] Page had no content', response.url);
-  return { text: '', response };
-}
-
-export async function wiki_Module_to_JSON(text: string): Promise<any> {
-  // Converts Lua data to json data.
-  const results: string[] = [];
-  for (const line of text.split('\n')) {
-    const tline = line.trim();
-    if (tline === '' || tline.startsWith('--')) continue;
-    if (tline.startsWith('return')) {
-      results.push('{');
-      continue;
-    }
-    results.push(
-      tline
-        //replaces [" and "] with "
-        .replace(/\["|"]/g, `"`)
-        //replaces = with :
-        .replace(/=/g, `:`)
-        //replaces [1] : with nothing if line has a { or is after a ', '
-        .replace(/, \[\d] : /g, `, `)
-        .replace(/{\[\d] : /g, `{`)
-        //replaces { and } with [ and ] only if line has both
-        .replace(/{(.*)}/g, `[$1]`)
-        //replaces [12] : with "12" :
-        .replace(/\[(\d+)] : /g, `"$1" : `)
-        //replaces -- with //
-        .replace(/--/g, '//')
-    );
-  }
-  // return parsed JSON as a javascript object.
-  return JSON5.parse(results.join(''));
-}
-
-export async function fetch_Module_ChampionData(): Promise<{
-  [key: string]: any;
-}> {
-  const raw = await fetch_wiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`
-  );
-
-  const x = wiki_Module_to_JSON(raw.text);
-
-  if (DEBUG) {
-    await saveFile('./.debug/Module_ChampionData.json', await x);
-  }
-  return x;
-}
-
 export async function make_wiki_skill_model(
   champ_name: string,
   skill_name: string
@@ -138,20 +81,16 @@ export async function make_wiki_skill_model(
   const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name
     .trim()
     .replace(/ /g, '_')}/${skill_name.trim().replace(/ /g, '_')}?action=edit`;
-  const raw = await fetch_wiki(skillDataUrl);
-  if (!raw.text) return { url: decodeURI(raw.response.url), model: null };
+  const raw = await fetchWiki(skillDataUrl);
+  if (!raw) return { url: decodeURI(skillDataUrl), model: null };
 
   const obj = {
     name: skill_name,
-    url: decodeURI(raw.response.url),
-    redirected: raw.response.redirected,
+    url: decodeURI(skillDataUrl),
+    redirected: false,
   };
   // Trims {{ and \n}}  splits lines and create an iterator
-  const splitIter = raw.text
-    .trim()
-    .slice(2, -3)
-    .split('\n|')
-    [Symbol.iterator]();
+  const splitIter = raw.trim().slice(2, -3).split('\n|')[Symbol.iterator]();
 
   // skip first line
   splitIter.next();
@@ -171,7 +110,7 @@ export async function make_wiki_skill_model(
       obj
     );
   }
-  return { url: decodeURI(raw.response.url), model: obj };
+  return { url: skillDataUrl, model: obj };
 }
 function autoCast(s: string): string | number | boolean;
 function autoCast(s: null | undefined): null;

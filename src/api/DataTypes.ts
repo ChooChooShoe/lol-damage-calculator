@@ -1,4 +1,4 @@
-import type { BaseStatsObj, Stat } from '../model/ChampObj';
+import type { BaseStatsObj, Stat } from './ChampObjStats';
 
 /**
  * From DataDragon image
@@ -30,7 +30,7 @@ export interface DataDragonChamp {
   [s: string]: string | Image | JsonObj;
 }
 export interface ChampionListSkills {
-  skills: { [key in string]: Partial<SkillModel> };
+  skills: { [key in string]: SkillModel };
 }
 export interface SkillModel {
   name: string;
@@ -38,7 +38,7 @@ export interface SkillModel {
   maxrank?: number;
   image?: Image;
   targeting?: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector';
-  affects?: string;
+  // affects?: string;
   damagetype: ('Physical' | 'Magic' | 'True')[];
   spelleffects?:
     | 'Proc'
@@ -55,14 +55,20 @@ export interface SkillModel {
   projectile?: 'Blocked' | 'See Notes';
   grounded?: 'Disabled' | 'See Notes' | 'Not Disabled';
   knockdown?: 'Interrupted' | 'See Notes' | 'Not Interrupted';
-  subskills: SubSkill[];
+  subskills?: SubSkill[];
   static?: ScaleValue;
   cost?: ScaleValue;
   cast_time?: ScaleValue;
   cooldown?: ScaleValue;
   target_range?: ScaleValue;
   ontargetcdstatic?: ScaleValue;
-  [otherOptions: string]: unknown;
+  effect_radius?: ScaleValue;
+  speed?: ScaleValue;
+  custominfo?: ScaleValue;
+  attack_range?: ScaleValue;
+  width?: ScaleValue;
+  range?: ScaleValue;
+  // [otherOptions: string]: unknown;
 }
 export interface SubSkill {
   img?: string;
@@ -72,7 +78,7 @@ export interface SubSkill {
   locked?: boolean;
 }
 
-export type ChampionStatUnits = Stat | '';
+export type OptionalStat = Stat | '';
 export interface SubRatio {
   values: RatioValue;
   valuesRanged?: RatioValue;
@@ -80,7 +86,7 @@ export interface SubRatio {
   valuesIsBasedOnLevel?: boolean;
   // apply?: "%" | 'based_on_level';
   user?: 'none' | 'player' | 'target';
-  units: ChampionStatUnits;
+  units: OptionalStat;
   unitsText?: string;
   pre?: string;
   post?: string;
@@ -96,7 +102,7 @@ export type EffectType =
   | 'Stacks';
 export interface GainEffect extends RootEffect {
   effectType: 'Gain';
-  increasedStat?: ChampionStatUnits | [ChampionStatUnits];
+  increasedStat?: OptionalStat | [OptionalStat];
   gainDuration?: number;
 }
 
@@ -167,7 +173,7 @@ export interface StacksEffect extends RootEffect {
   min: number;
   max: number;
   user?: 'none' | 'player' | 'target';
-  units: ChampionStatUnits;
+  units: OptionalStat;
   unitsText?: string;
   title?: string;
   description?: string;

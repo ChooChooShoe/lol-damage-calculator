@@ -152,7 +152,7 @@
 
 <script setup lang="ts">
 import type {
-  ChampionStatUnits,
+  OptionalStat,
   DamageEffect,
   DamageType,
   EffectType,
@@ -175,6 +175,7 @@ import {
 import DamageTypeField from '../DamageTypeField.vue';
 import { makeRootRatio, makeSubRatio } from '../ratios_info';
 import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
+import SpellField from '../SpellField.vue';
 import { damage_type_user } from '../SpellHelper';
 
 const props = defineProps<{
@@ -218,7 +219,7 @@ watchEffect(() => {
   // }
 });
 
-function addRatio(x: ChampionStatUnits) {
+function addRatio(x: OptionalStat) {
   const made = makeSubRatio(
     {
       values: 1,

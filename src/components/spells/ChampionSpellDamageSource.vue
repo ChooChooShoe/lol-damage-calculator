@@ -1,5 +1,5 @@
 <template>
-  <div class="data_holder col fill ChampionSpellDamageSource">
+  <div class="data_holder col-12 ChampionSpellDamageSource">
     <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
 
     <span class="ds__title"

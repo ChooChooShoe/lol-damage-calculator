@@ -3,9 +3,9 @@
 
   <SideBody></SideBody>
 
-  <div class="flex main">
-    <ChampionDiv mode="player"></ChampionDiv>
-    <ChampionDiv mode="target"></ChampionDiv>
+  <div class="grid">
+    <ChampionDiv mode="player" class="col-6"></ChampionDiv>
+    <ChampionDiv mode="target" class="col-6"></ChampionDiv>
 
     <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
     <!-- <AADamageSource></AADamageSource> -->
@@ -86,7 +86,7 @@ const activeChampionModel = reactive<ChampionListSkills>({ skills: {} });
 
 watchEffect(async () => {
   const champ = player.champ;
-  const ChampionListSkills = (await import('./api/ChampionListSkills.json'))
+  const ChampionListSkills = (await import('@/model/ChampionSkillsData'))
     .default;
   if (champ in ChampionListSkills) {
     activeChampionModel.skills = ChampionListSkills[champ].skills;

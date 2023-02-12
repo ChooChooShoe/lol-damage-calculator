@@ -57,7 +57,7 @@
 <script setup>
 import { reactive, ref } from 'vue';
 
-import items from '../../../../src/api/items/items.json';
+import items from '@/api/items/items.json';
 import ChampionDiv from './components/ChampionStats.vue';
 import ItemInventory from './components/ItemInventory.vue';
 import ShopItemInfo from './components/ShopItemInfo.vue';

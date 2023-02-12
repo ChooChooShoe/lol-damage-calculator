@@ -7,6 +7,7 @@ import type {
   RootRatio,
   ScaleValue,
   SkillModel,
+  SubSkill,
 } from '../src/api/DataTypes';
 import { fileExists, saveFileBlob } from './fetch_utils';
 import {
@@ -14,40 +15,12 @@ import {
   spellEffectFromStrings,
 } from './skill_ratios_parse';
 import { levelingToVal, mutate_damagetype } from './leveling';
+import { ChampionComplex, DataDragon } from './datadragon';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
 
 const DEBUG = false;
-
-export interface NeededRiotValues {
-  image: Image;
-  passive: { image: Image };
-  spells: { image: Image; maxrank: number }[];
-}
-
-export async function fetch_ddragon(
-  realms: { cdn: string; v: string; l: string },
-  champ_id: string
-): Promise<{ [s: string]: any }> {
-  if (champ_id === 'GnarBig') champ_id = 'Gnar';
-  // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/Aatrox.json
-
-  const url = `${realms.cdn}/${realms.v}/data/${realms.l}/champion/${champ_id}.json`;
-  console.log('Fetching (ddragon)', url);
-  return fetch(url)
-    .then((response) => {
-      if (response.ok) return response.json();
-      console.error(url, 'url is invalid');
-      // TODO fix GnarBig
-      return null;
-    })
-    .then((json) => {
-      const data = (json as any)?.data;
-      if (data) return data[Object.keys(data)[0]];
-      return {};
-    });
-}
 
 const known_skill_names = {
   basic_attack: 'A',
@@ -66,11 +39,10 @@ const known_skill_names = {
  */
 export async function fetch_live_wiki_skills(
   champ_name: string,
-  riot: NeededRiotValues
+  riot: ChampionComplex
 ): Promise<ChampionListSkills> {
-  const url = `https://leagueoflegends.fandom.com/wiki/${champ_name
-    .trim()
-    .replace(/ /g, '_')}/LoL`;
+  const cleanedName = champ_name.trim().replace(/ /g, '_');
+  const url = `https://leagueoflegends.fandom.com/wiki/${cleanedName}/LoL`;
   const response = await fetch(url);
   const dom = new JSDOM(await response.text());
   const document = dom.window.document;
@@ -176,7 +148,7 @@ export async function fetch_live_wiki_skills(
 class SkillObj implements SkillModel {
   name: string;
   display_name: string;
-  maxrank: number | undefined;
+  maxrank?: number;
   image: Image | undefined;
   targeting:
     | 'Passice'
@@ -204,7 +176,7 @@ class SkillObj implements SkillModel {
   projectile: 'Blocked' | 'See Notes' | undefined;
   grounded: 'Disabled' | 'See Notes' | 'Not Disabled' | undefined;
   knockdown: 'Interrupted' | 'See Notes' | 'Not Interrupted' | undefined;
-  subskills: { img?: string; description: string; leveling: RootRatio[] }[];
+  subskills: SubSkill[];
 
   // [key: string]: ScaleValue | any;
 

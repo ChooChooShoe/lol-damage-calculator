@@ -1,8 +1,8 @@
 import {
   fetchAndSaveRealms,
-  fetch_wiki,
+  fetchWiki,
   saveFile,
-  wiki_Module_to_JSON,
+  moduleToJSON,
 } from './fetch_utils';
 import fs from 'fs/promises';
 import type { Image } from '../src/api/DataTypes';
@@ -22,9 +22,9 @@ async function main() {
     'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json';
   console.log('Fetching (CommunityDragon):', cd_url);
   const bodyCDragon = fetch(cd_url).then((response) => response.json());
-  const wikiBody = fetch_wiki(
+  const wikiBody = fetchWiki(
     `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`
-  ).then((x) => wiki_Module_to_JSON(x.text));
+  ).then((x) => moduleToJSON<{ [s: string]: WikiItemEntry }>(x));
 
   // const bodyCDragon = fs.readFile('./src/api/items/cdragonItems.json').then(x => JSON.parse(x.toString()));
   // const wikiBody = fs.readFile('./src/api/items/wikiItems.json').then(x => JSON.parse(x.toString()));

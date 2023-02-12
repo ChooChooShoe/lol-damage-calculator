@@ -17,7 +17,7 @@
       <NumInput :readonly="true" :modelValue="val.damagePostValue"></NumInput>
     </td>
   </tr>
-  <SpellField v-for="x in val.sub_calcs" :val="x" :key="x.stat"></SpellField>
+  <SpellField v-for="x in val.children" :val="x" :key="x.stat"></SpellField>
 </template>
 
 <script setup lang="ts">

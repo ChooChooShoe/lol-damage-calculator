@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, provide, computed } from 'vue';
+import { ref } from 'vue';
 import { dv } from './api/version.json';
 
 function loadLocalConfig() {
@@ -60,6 +60,7 @@ const appVersion = '4.01';
   margin: 0.25rem 0.5rem;
 }
 .data_holder {
+  border-left: 1px solid #1e8ad6;
   border-right: 1px solid #1e8ad6;
   border-bottom: 1px solid #1e8ad6;
   background-color: #121a1b;

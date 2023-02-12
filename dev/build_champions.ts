@@ -1,47 +1,60 @@
-import type { ChampionListSkills, WikiChampionData } from '@/api/DataTypes';
+import JSON5 from 'json5';
+import { BaseStatsObj } from '../src/api/ChampObjStats';
 import {
-  fetchAndSaveRealms,
-  fetch_Module_ChampionData,
-  saveTSFile,
-} from './fetch_utils';
-import {
-  fetch_ddragon,
-  fetch_live_wiki_skills,
-  type NeededRiotValues,
-} from './live_wiki_fetch';
+  ChampionListSkills,
+  SubSkill,
+  WikiChampionData,
+} from '../src/api/DataTypes';
+import { ChampionComplex, DataDragon } from './datadragon';
+import { fetchAndSaveRealms, saveStringFile, saveTSFile } from './fetch_utils';
+import { fetch_Module_ChampionData, ModuleChampionData } from './LeagueWiki';
+import { fetch_live_wiki_skills } from './live_wiki_fetch';
 
-import { BaseStatsObj } from '@/model/ChampObj';
 console.log('Live Wiki Fetching for all data.');
 
 main();
 async function main() {
-  const realms = fetchAndSaveRealms();
-  const ModuleChampionDataFile = fetch_Module_ChampionData();
+  const realms = await fetchAndSaveRealms();
 
-  const ChampionList: { [key: string]: WikiChampionData | null } = {};
-  const SkillList: { [key: string]: ChampionListSkills | null } = {};
+  const dataDragon = new DataDragon({
+    version: realms.v,
+    lang: 'en_US',
+  });
+
+  const ModuleChampionDataFile = await fetch_Module_ChampionData();
+
+  const ChampionList: Record<string, WikiChampionData | null> = {};
+  const SkillList: Record<string, ChampionListSkills | null> = {};
+  const SubSkillList: Record<string, Record<string, SubSkill[]>> = {};
   const promises: Array<Promise<void>> = [];
   // const ChampionModule = await fetch_mod_data();
-  for (const [name, raw_data] of Object.entries(await ModuleChampionDataFile)) {
+  for (const [name, raw_data] of Object.entries(ModuleChampionDataFile)) {
     if (raw_data.date === 'Upcoming') continue;
 
     ChampionList[name] = null;
     SkillList[name] = null;
+    SubSkillList[name] = {};
 
-    const ddragonFull = fetch_ddragon(await realms, raw_data.apiname);
+    const ddragonFull = dataDragon.findChampion(raw_data.apiname);
 
     promises.push(
       ddragonFull
-        .then(async (riot_model) => {
-          SkillList[name] = await fetch_live_wiki_skills(
-            name,
-            riot_model as NeededRiotValues
-          );
+        .then(async (riot_model): Promise<void> => {
+          const liveData = await fetch_live_wiki_skills(name, riot_model);
+          SkillList[name] = liveData;
+
           ChampionList[name] = mutateWikiChampionData(
             name,
             raw_data,
-            riot_model as NeededRiotValues
+            riot_model
           );
+
+          for (const [k, v] of Object.entries(liveData.skills)) {
+            if (v.subskills) {
+              SubSkillList[name][k] = v.subskills;
+              delete v.subskills;
+            }
+          }
         })
         .catch((e) => console.log(e))
     );
@@ -60,7 +73,41 @@ async function main() {
   export const ChampionListData: Record<ChampionName, ChampListEntry> = `,
     `export default ChampionListData;\n`
   );
-  // _.merge(SkillList, OverwriteSkillList);
+  //Save champion/CHAMPIONNAME.ts
+  const saveCHAMPIONNAME = false;
+  if (saveCHAMPIONNAME) {
+    const index: string[] = [];
+    for (const [champKey, subskillObj] of Object.entries(SubSkillList)) {
+      const jsKey = champKey.replaceAll(/[ &'.]/g, '');
+      const skillText: string[] = [];
+      for (const [k, v] of Object.entries(subskillObj)) {
+        skillText.push(
+          `const ${k}: SubSkill[] = ${JSON5.stringify(v, {
+            space: 2,
+          })}`
+        );
+      }
+
+      saveStringFile(
+        `./src/model/champion/${champKey}.ts`,
+        `import type { SubSkill } from '@/api/DataTypes';
+      import type { ChampionName } from '../ChampionListData';
+      
+      export const name: ChampionName = '${champKey}';
+      ${skillText.join(';\n')}
+    export const ${jsKey} = {${Object.keys(subskillObj).toString()}}`
+      );
+      index.push(`import ${jsKey} from "./${champKey}"`);
+    }
+    index.push(
+      `export ChampSkills = ${Object.keys(SkillList).forEach((x) =>
+        x.replaceAll(/[ &'.]/g, '')
+      )};`
+    );
+    //Save champion/index.ts
+    saveStringFile(`./src/model/champion/index.ts`, index.join('\n'));
+  }
+  //Save ChampionSkillsData.ts
   saveTSFile(
     './src/model/ChampionSkillsData.ts',
     SkillList,
@@ -69,20 +116,22 @@ async function main() {
   export const ChampionSkillsData: Record<ChampionName, ChampionListSkills> = `,
     `export default ChampionSkillsData;\n`
   );
+
   console.log('Goodbye');
 }
 
-function invalidValue(val: any, type: any): never {
-  throw Error(
+function invalidValue(val: string | any[], type: any): null {
+  console.log(
     `Invalid value: Expected type '${JSON.stringify(
       val
     )}' but got ${JSON.stringify(type)}`
   );
+  return null;
 }
 function mutateWikiChampionData(
   name: string,
-  o: any,
-  riot: NeededRiotValues
+  o: ModuleChampionData,
+  riot: ChampionComplex
 ): WikiChampionData {
   return {
     name,
@@ -174,10 +223,12 @@ function test(val: Typed, type: Typed): Typed {
     }
     return val;
   }
+  // undefined values will set type as the default.
+  if (typeof val === 'undefined') return type;
   return invalidValue(typeof type, val);
 }
 
-function mutateStats(o: any): BaseStatsObj {
+function mutateStats(o: Partial<BaseStatsObj>): BaseStatsObj {
   const s = {
     hp_base: test(o.hp_base, 0),
     hp_lvl: test(o.hp_lvl, 0),

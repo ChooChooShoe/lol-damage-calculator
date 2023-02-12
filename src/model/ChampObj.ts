@@ -1,4 +1,4 @@
-// import championList from '../api/ChampionList.json';
+import type { BaseStatsObj, ChampObjStats } from '@/api/ChampObjStats';
 import { PerkSelections } from '../runes/perks';
 
 function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
@@ -21,8 +21,19 @@ function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
     as_base: 0.625,
     as_ratio: 0.625,
     as_lvl: 1.75,
+    missile_speed: 0,
+    attack_cast_time: 0,
+    attack_total_time: 0,
+    attack_delay_offset: 0,
+    windup_modifier: 0,
+    crit_base: 175,
+    crit_mod: 0,
     range: 125,
     ms: 330,
+    gameplay_radius: 65,
+    acquisition_radius: 800,
+    selection_radius: 100,
+    pathing_radius: 35,
   };
 }
 export function isChampionName(name?: string | null): name is ChampionName {
@@ -41,20 +52,7 @@ export function validateName(value?: string | null): ChampionName | undefined {
   return undefined;
 }
 
-export type Stat = keyof Omit<
-  ChampObjModel,
-  | 'runes'
-  | 'items'
-  | 'clearStats'
-  | 'champ'
-  | '_champ'
-  | 'user'
-  | 'isRuneActive'
-  | 'updateBaseStats'
-  | 'growth'
->;
-
-export class ChampObjModel {
+export class ChampObjModel implements ChampObjStats {
   /**
    * per_level stat to stat at current level.
    */
@@ -460,10 +458,12 @@ export interface Image {
 // }
 
 import { ChampionListData, type ChampionName } from './ChampionListData';
+import { ChampionSkillsData } from './ChampionSkillsData';
 
 export function getChampListEntry(champ: ChampionName): ChampListEntry {
   return ChampionListData[champ];
 }
+export { ChampionListData, ChampionSkillsData, type ChampionName };
 
 // prettier-ignore
 export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';
@@ -515,57 +515,7 @@ export type ChampListEntry = {
   skill_e: string[];
   skill_r: string[];
   skills: string[];
-  fullname?: string;
-  nickname?: string;
-};
-
-export type BaseStatsObj = {
-  hp_base: number;
-  hp_lvl: number;
-  mp_base: number;
-  mp_lvl: number;
-  arm_base: number;
-  arm_lvl: number;
-  mr_base: number;
-  mr_lvl: number;
-  hp5_base: number;
-  hp5_lvl: number;
-  mp5_base: number;
-  mp5_lvl: number;
-  dam_base: number;
-  dam_lvl: number;
-  as_base: number; // champion's base attack speed as decimal
-  as_ratio: number; // champion's attack speed ratio as decimal
-  as_lvl: number; // champion's bonus_as growth as whole number
-  missile_speed?: number; // missile speed for ranged basic attacks (0 = Non-Projectile)
-  attack_cast_time?: number; // only used to calculated 'windup_percent'
-  attack_total_time?: number; // only used to calculated 'windup_percent'
-  attack_delay_offset?: number; // only used to calculated 'windup_percent'
-  // windup_percent: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
-  windup_modifier?: number; // champion's modifier to windup growth
-  crit_base?: number; // champion's base critical strike damage (defaults to 175%)
-  crit_mod?: number; // champion's total critical strike damage modifier
-  range: number; // champion's range
-  ms: number; // champion's movement speed
-  gameplay_radius?: number; // champion's hitbox for most purposes (defaults to 65)
-  acquisition_radius?: number; // champion's auto-attack range (defaults to 800)
-  selection_radius?: number; // champion's mouse-over selection radius (defaults to 100)
-  pathing_radius?: number; // champion's pathing radius (defaults to 35)
-  aram?: Partial<AramBalanceChanges>; // aram balance changes
-  nb?: Partial<AramBalanceChanges>; // nexus blitz-specific balance changes (see aram for parameters)
-  ofa?: Partial<AramBalanceChanges>; // one for all-specific balance changes (see aram for parameters)
-  urf?: Partial<AramBalanceChanges>; // ultimate rapid fire-specific balance changes (see aram for parameters)
-  usb?: Partial<AramBalanceChanges>; // ultimate spell book-specific balance changes (see aram for parameters)
-};
-export type AramBalanceChanges = {
-  dmg_dealt: number; // damage dealt modifier in aram as decimal (defaults to 1.0)
-  dmg_taken: number; // damage taken modifier in aram as decimal (defaults to 1.0)
-  healing: number; // healing modifier in aram as decimal
-  shielding: number; // shielding modifier in aram as decimal
-  ability_haste: number; // initial ability haste in aram as integer
-  mana_regen: number; // mana regeneration modifier in aram as decimal
-  energy_regen: number; // energy regeneration modifier in aram as decimal
-  attack_speed: number; // total attack speed modifier in aram as decimal
-  movement_speed: number; // movement speed modifier in aram as decimal
-  tenacity: number; // tenacity and slow resistance modifier in aram as decimal (defaults to 1.0)
+  fullname: string;
+  nickname: string;
+  secondary_attributes: '';
 };
