@@ -2,9 +2,9 @@
   <div class="data_holder col-12 ChampionSpellDamageSource">
     <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
 
-    <span class="ds__title"
-      >{{ spell.display_name }} ({{ spell.name.toUpperCase() }})</span
-    >
+    <span class="ds__title">
+      {{ spell.display_name }} − {{ spell.name }} ({{ spell.skill }})
+    </span>
     <DropdownSelect
       class="spellrank2"
       v-if="spell.maxrank && spell.maxrank > 0"
@@ -73,7 +73,10 @@
 
     <hr />
 
-    <SubSkillList :subskills="spell.subskills" :idx="idx" />
+    <SubSkillList
+      :subskills="champion ? getSubSkills(champion)[spell.name] : []"
+      :idx="idx"
+    />
 
     <SubSkillList :subskills="customEffects" :idx="`custom_${idx}`" />
 
@@ -106,15 +109,16 @@ import SpellNotes from '.././SpellNotes.vue';
 import SpellSpan from '.././SpellSpan.vue';
 import { spriteBaseUri } from '../../model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
-import type { SkillModel } from '../../api/DataTypes';
+import type { SkillData, SkillModel } from '../../api/DataTypes';
 import SubSkillList from './SubSkillList.vue';
+import { getSubSkills, type ChampionName } from '@/model/ChampObj';
 
 interface ReactSkill {
   rankindex: Ref<number>;
 }
 const props = defineProps<{
-  spell: SkillModel;
-  champion: string;
+  spell: SkillData;
+  champion: ChampionName | '';
   idx: string;
 }>();
 

@@ -76,7 +76,7 @@
 import { reactive, ref, computed } from 'vue';
 import SimpleTooltip from '../../components/SimpleTooltip.vue';
 import Item from './Item.vue';
-import items from '../../../../src/api/items/items.json';
+import items from '@/api/items/items.json';
 
 const props = defineProps({
   itemId: Number,

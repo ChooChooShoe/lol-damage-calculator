@@ -2,11 +2,10 @@ import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import parenthesis, { type ArrayTree } from 'parenthesis';
 import type {
-  ChampionListSkills,
   Image,
   RootRatio,
-  ScaleValue,
   SkillModel,
+  SkillModelOld,
   SubSkill,
 } from '../src/api/DataTypes';
 import { fileExists, saveFileBlob } from './fetch_utils';
@@ -16,6 +15,7 @@ import {
 } from './skill_ratios_parse';
 import { levelingToVal, mutate_damagetype } from './leveling';
 import { ChampionComplex, DataDragon } from './datadragon';
+import { ModuleChampionData } from './LeagueWiki';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js
@@ -39,8 +39,9 @@ const known_skill_names = {
  */
 export async function fetch_live_wiki_skills(
   champ_name: string,
+  o: ModuleChampionData,
   riot: ChampionComplex
-): Promise<ChampionListSkills> {
+): Promise<{ skills: { [key: string]: SkillModel } }> {
   const cleanedName = champ_name.trim().replace(/ /g, '_');
   const url = `https://leagueoflegends.fandom.com/wiki/${cleanedName}/LoL`;
   const response = await fetch(url);
@@ -140,12 +141,12 @@ export async function fetch_live_wiki_skills(
       header_aside,
       infobox,
       riot_data
-    );
+    ) as any;
   }
   return { skills };
 }
 
-class SkillObj implements SkillModel {
+class SkillObj implements SkillModelOld {
   name: string;
   display_name: string;
   maxrank?: number;

@@ -1,37 +1,41 @@
-import type { SubSkill } from '@/api/DataTypes';
-import type { ChampionName } from '../ChampionListData';
-import ChampionListData from '../ChampionListData';
+import type { SkillData, SkillModel, SubSkill } from '@/api/DataTypes';
+import ChampionSkillsData from '../ChampionSkillsData';
 export const name = 'Aatrox';
-const I: SubSkill[] = [
-  {
-    img: '/wiki/images/Aatrox_Deathbringer_Stance.png',
-    description:
-      '<span class="template_sbc"><b>Innate:</b></span> Periodically, <b>Aatrox</b> empowers his next <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> to gain <span style="white-space:nowrap"><a href="/wiki/Range" title="Range"><img alt="Range icon.png" src="/wiki/images/Range_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;50 <b>bonus</b> range</span> and deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> equal to <span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="4;" data-finish="10;" data-bot_values="4;4.35;4.71;5.06;5.41;5.76;6.12;6.47;6.82;7.18;7.53;7.88;8.24;8.59;8.94;9.29;9.65;10" data-top_values="" data-bot_key="%">4% − 10% (based on level)</span> of the target\'s <b>maximum</b> health</span>, capped at 100 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.<br> <b>Aatrox</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> for 80% of the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation <b>bonus</b> damage</span> dealt, reduced to 25% against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minions"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span>.',
-    leveling: [
-      {
-        effectType: 'Heal',
-        name: 'Line 1:',
-        raw: " Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10% (based on level) of the target's maximum health, capped at 100 against  monsters",
-        healType: 'PhysicalVamp',
-        values: [],
-        valuesIsPercent: true,
-        valuesIsBasedOnLevel: true,
-        user: 'player',
-        units: 'total_ap',
-        unitsText:
-          "of the target's maximum health, capped at 100 against  monsters",
-        pre: 'Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10%',
-        post: "of the target's maximum health, capped at 100 against  monsters",
-      },
-    ],
-  },
-  {
-    description:
-      'Whenever <b>Aatrox</b> hits at least one enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> or large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span> with a basic attack <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> or an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, the <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span> of <i>Deathbringer Stance</i> is reduced by 2 seconds, modified to 4 if he hits with the <span style="color: #E34D4C; white-space:normal">Sweetspot</span> of <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Aatrox" data-ability="The Darkin Blade" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Aatrox/LoL#The_Darkin_Blade" title="The Darkin Blade"><img alt="The Darkin Blade" src="/wiki/images/Aatrox_The_Darkin_Blade.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Aatrox/LoL#The_Darkin_Blade" title="Aatrox/LoL">The Darkin Blade</a></span></span></i>.',
-    leveling: [],
-  },
-];
-const Q: SubSkill[] = [
+
+const skillData = ChampionSkillsData['Aatrox'];
+const I: SkillModel = {
+  data: skillData['Deathbringer Stance'] satisfies SkillData,
+  effects: [
+    {
+      img: '/wiki/images/Aatrox_Deathbringer_Stance.png',
+      description: skillData['Deathbringer Stance'].description[0],
+      leveling: [
+        {
+          effectType: 'Heal',
+          name: 'Line 1:',
+          raw: " Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10% (based on level) of the target's maximum health, capped at 100 against  monsters",
+          healType: 'PhysicalVamp',
+          values: [],
+          valuesIsPercent: true,
+          valuesIsBasedOnLevel: true,
+          user: 'player',
+          units: 'total_ap',
+          unitsText:
+            "of the target's maximum health, capped at 100 against  monsters",
+          pre: 'Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10%',
+          post: "of the target's maximum health, capped at 100 against  monsters",
+        },
+      ],
+    },
+    {
+      description:
+        'Whenever <b>Aatrox</b> hits at least one enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> or large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span> with a basic attack <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> or an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, the <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span> of <i>Deathbringer Stance</i> is reduced by 2 seconds, modified to 4 if he hits with the <span style="color: #E34D4C; white-space:normal">Sweetspot</span> of <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Aatrox" data-ability="The Darkin Blade" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Aatrox/LoL#The_Darkin_Blade" title="The Darkin Blade"><img alt="The Darkin Blade" src="/wiki/images/Aatrox_The_Darkin_Blade.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Aatrox/LoL#The_Darkin_Blade" title="Aatrox/LoL">The Darkin Blade</a></span></span></i>.',
+      leveling: [],
+    },
+  ],
+};
+
+const Q: SkillModel = [
   {
     description:
       '<span class="template_sbc"><b>Active:</b></span> <b>Aatrox</b> can activate <i>The Darkin Blade</i> three times before the ability goes on cooldown, with a 1 second <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Unaffected by ability haste">static cooldown</span> between casts. If <b>Aatrox</b> does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
@@ -210,7 +214,7 @@ const Q: SubSkill[] = [
     ],
   },
 ];
-const W: SubSkill[] = [
+const W: SkillModel = [
   {
     img: '/wiki/images/Aatrox_Infernal_Chains.png',
     description:
@@ -290,7 +294,7 @@ const W: SubSkill[] = [
     ],
   },
 ];
-const E: SubSkill[] = [
+const E: SkillModel = [
   {
     description:
       '<span class="template_sbc"><b>Passive:</b></span> <b>Aatrox</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> for a portion of the non-<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Persistent damage"><a href="/wiki/Damage" title="Damage"><img alt="Blaze.png" src="/wiki/images/Brand_Blaze.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">persistent</a></span> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation damage</span> he deals against enemy champions, increased during <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Aatrox" data-ability="World Ender" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Aatrox/LoL#World_Ender" title="World Ender"><img alt="World Ender" src="/wiki/images/Aatrox_World_Ender.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Aatrox/LoL#World_Ender" title="Aatrox/LoL">World Ender</a></span></span></i>.',
@@ -331,7 +335,7 @@ const E: SubSkill[] = [
     leveling: [],
   },
 ];
-const R: SubSkill[] = [
+const R: SkillModel = [
   {
     img: '/wiki/images/Aatrox_World_Ender.png',
     description:
@@ -384,4 +388,4 @@ const R: SubSkill[] = [
     ],
   },
 ];
-export const Aatrox = { I, Q, W, E, R };
+export const Aatrox: SkillModel[] = [I, Q, W, E, R];

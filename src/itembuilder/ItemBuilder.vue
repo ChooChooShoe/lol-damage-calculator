@@ -63,7 +63,7 @@ import ItemInventory from './components/ItemInventory.vue';
 import ShopItemInfo from './components/ShopItemInfo.vue';
 import Item from './components/Item.vue';
 
-import { dv as displayVersion } from '../../../../src/api/version.json';
+// import { dv as displayVersion } from '../../../../src/api/version.json';
 const appVersion = '0.1.0';
 // const tags = {};
 // for (const x in items) {

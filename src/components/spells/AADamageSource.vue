@@ -168,8 +168,8 @@
 </template>
 
 <script>
-import { DamageSource } from '@model/league_data';
-import { damageSources, player } from '@global/state';
+import { DamageSource } from '@/model/league_data.ts';
+import { damageSources, player } from '@/global/state.ts';
 import NumInput from '../simple/NumInput.vue';
 
 export default {

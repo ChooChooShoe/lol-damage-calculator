@@ -1,4 +1,5 @@
 import type { BaseStatsObj, ChampObjStats } from '@/api/ChampObjStats';
+import type { SkillKey, SubSkill } from '@/api/DataTypes';
 import { PerkSelections } from '../runes/perks';
 
 function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
@@ -459,11 +460,16 @@ export interface Image {
 
 import { ChampionListData, type ChampionName } from './ChampionListData';
 import { ChampionSkillsData } from './ChampionSkillsData';
+import { ChampionSkillsModel } from './ChampionSkillsModel';
 
 export function getChampListEntry(champ: ChampionName): ChampListEntry {
   return ChampionListData[champ];
 }
 export { ChampionListData, ChampionSkillsData, type ChampionName };
+
+export function getSubSkills(champ: ChampionName) {
+  return ChampionSkillsModel[champ];
+}
 
 // prettier-ignore
 export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';

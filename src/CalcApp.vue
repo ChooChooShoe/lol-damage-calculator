@@ -7,10 +7,10 @@
     <ChampionDiv mode="player" class="col-6"></ChampionDiv>
     <ChampionDiv mode="target" class="col-6"></ChampionDiv>
 
-    <TimelineAddMenu :models="activeChampionModel.skills"></TimelineAddMenu>
+    <TimelineAddMenu :models="activeChampionModel"></TimelineAddMenu>
     <!-- <AADamageSource></AADamageSource> -->
     <ChampionSpellDamageSource
-      v-for="(spellObj, idx) in activeChampionModel.skills"
+      v-for="(spellObj, idx) in activeChampionModel"
       :key="spellObj.name"
       :spell="spellObj"
       :champion="player.champ"
@@ -46,9 +46,17 @@ import {
   type RouteLocationNormalizedLoaded,
 } from 'vue-router';
 
-import { validateName, type ChampionName } from './model/ChampObj';
-import type { ChampionListSkills } from './api/DataTypes';
+import {
+  ChampionSkillsData,
+  validateName,
+  type ChampionName,
+} from './model/ChampObj';
+import type { ChampionListSkills, SubSkill } from './api/DataTypes';
 import { player, target } from './global/state';
+import {
+  ChampionSkillsModel,
+  type ChampionSkillsModelEntry,
+} from './model/ChampionSkillsModel';
 
 provide('obj', player);
 console.log('Providing obj (player) as', player);
@@ -82,16 +90,15 @@ player.champ = n.player;
 target.champ = n.target;
 
 // const activeChampionModel = computed(() => ChampionListSkills[player.champ as keyof typeof ChampionListSkills])
-const activeChampionModel = reactive<ChampionListSkills>({ skills: {} });
+const activeChampionModel = ref<ChampionListSkills>();
 
 watchEffect(async () => {
   const champ = player.champ;
-  const ChampionListSkills = (await import('@/model/ChampionSkillsData'))
-    .default;
-  if (champ in ChampionListSkills) {
-    activeChampionModel.skills = ChampionListSkills[champ].skills;
+  if (champ in ChampionSkillsModel) {
+    activeChampionModel.value = ChampionSkillsData[champ];
+    // activeChampionModel.value = ChampionSkillsModel[champ];
   } else {
-    activeChampionModel.skills = {};
+    activeChampionModel.value = {};
   }
 });
 

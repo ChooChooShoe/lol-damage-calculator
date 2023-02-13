@@ -1,10 +1,11 @@
-import { type Image } from '@/api/DataTypes';
+import { SkillData, Spellshield } from '@/api/DataTypes';
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
-import { saveFile } from './fetch_utils';
+import { saveFile, stackData } from './fetch_utils';
 import { BaseStatsObj } from '@/api/ChampObjStats';
 import { fix_wiki_img } from './live_wiki_fetch';
+import { ChampionComplex } from './datadragon';
 
 export type Version = string;
 export type Key = string;
@@ -103,12 +104,12 @@ export interface ModuleChampionData {
   adaptivetype: string; // champion's adaptive force type
   be: number; // champion's Blue Essence cost
   rp: number; // champion's RP cost
-  skill_i: string[];
-  skill_q: string[];
-  skill_w: string[];
-  skill_e: string[];
-  skill_r: string[];
-  skills: string[];
+  skill_i: string[] | Record<string, string>;
+  skill_q: string[] | Record<string, string>;
+  skill_w: string[] | Record<string, string>;
+  skill_e: string[] | Record<string, string>;
+  skill_r: string[] | Record<string, string>;
+  skills?: string[] | Record<string, string>;
   fullname?: string;
   nickname?: string;
   secondary_attributes?: string;
@@ -117,7 +118,7 @@ export interface ModuleChampionData {
 export async function fetchTemplateChampionSkillData(
   champ_name: string,
   skill_name: string
-): Promise<TemplateChampionSkillData | null> {
+): Promise<Partial<TemplateChampionSkillData>> {
   champ_name = cleanName(champ_name);
   skill_name = cleanName(skill_name);
   const url = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name}/${skill_name}`;
@@ -130,24 +131,18 @@ export async function fetchTemplateChampionSkillData(
 
   if (!inputs) {
     console.log(`[ERROR] Champ ${champ_name}'s ${skill_name} has no Wiki data`);
-    return null;
+    return {};
   }
 
-  const map = {};
-  for (const r of inputs) {
-    fix_wiki_img(r);
-    const key = r.dataset.name!.replaceAll(/ /g, '_');
-    const val = r;
-    if (val) map[key] = val;
+  const map: Partial<TemplateChampionSkillData> = {};
+  for (const htmlElement of inputs) {
+    if (!htmlElement.dataset.name) continue;
+    fix_wiki_img(htmlElement);
+    const key = htmlElement.dataset.name.replaceAll(/ /g, '_');
+    map[key] = htmlElement;
   }
-  // Does not teset for type just assums that all the values there.
-  return map as TemplateChampionSkillData;
-}
-
-if (DEBUG) {
-  const q = await fetchTemplateChampionSkillData('Qiyana', 'Edge_of_Ixtal');
-  console.log(q);
-  console.log(q?.[1]);
+  // Does not test for type just assumes that all the values there.
+  return map;
 }
 
 export interface TemplateChampionSkillData {
@@ -212,9 +207,138 @@ export interface TemplateChampionSkillData {
   video2: HTMLElement; // video 2
   yvideo: HTMLElement; // YouTube video
   yvideo2: HTMLElement; // YouTube video 2
-  [key: string]: HTMLElement | undefined;
+  // [key: string]: HTMLElement | undefined;
 }
 
 export function cleanName(string: string): string {
   return string.trim().replace(/ /g, '_');
+}
+
+export async function getSkillModelsForChamp(
+  champ_name: string,
+  o: ModuleChampionData,
+  riot: ChampionComplex
+): Promise<Record<string, SkillData>> {
+  // Flatten all arrays for all skills.
+  o.skill_i = Object.values(o.skill_i);
+  o.skill_q = Object.values(o.skill_q);
+  o.skill_w = Object.values(o.skill_w);
+  o.skill_e = Object.values(o.skill_e);
+  o.skill_r = Object.values(o.skill_r);
+  o.skills = Object.values(o.skills || []);
+  const sl = [o.skill_i, o.skill_q, o.skill_w, o.skill_e, o.skill_r].flat();
+  if (sl.length !== o.skills.length) {
+    console.log('Champ has missmatched skills length:', sl, o.skills);
+  }
+
+  const riot_data = {
+    I: { image: riot.passive.image, maxrank: undefined },
+    Q: { image: riot.spells[0].image, maxrank: riot.spells[0].maxrank || 5 },
+    W: { image: riot.spells[1].image, maxrank: riot.spells[1].maxrank || 5 },
+    E: { image: riot.spells[2].image, maxrank: riot.spells[2].maxrank || 5 },
+    R: { image: riot.spells[3].image, maxrank: riot.spells[3].maxrank || 5 },
+  };
+
+  const skillmodels: Record<string, SkillData> = {};
+  for (const skill_name of o.skills) {
+    const html = await fetchTemplateChampionSkillData(champ_name, skill_name);
+    skillmodels[skill_name] = toSkillData(skill_name, html, riot_data);
+  }
+
+  return skillmodels;
+}
+
+function textOrNone(el: Node | null | undefined): string | undefined {
+  const t = el?.textContent?.trim();
+  return t === '' ? undefined : t;
+}
+function htmlOrNone(el: HTMLElement | null | undefined): string | undefined {
+  const t = el?.innerHTML?.trim();
+  return t === '' ? undefined : t;
+}
+
+export function toSkillData(
+  skill_name: string,
+  skill: Partial<TemplateChampionSkillData>,
+  riot_data: any
+): SkillData {
+  const description = stackData(skill, 'description');
+  const leveling = stackData(skill, 'leveling');
+  const blurb = stackData(skill, 'blurb');
+  const icon = stackData(skill, 'icon');
+  const skillKey = textOrNone(skill.skill) || 'X';
+
+  const descObj = [icon, description, leveling].map(
+    ([icon, description, leveling]) => {
+      return {
+        icon: icon.innerHTML.trim(),
+        description: description.innerHTML.trim(),
+        descriptionText: description.textContent?.trim(),
+        leveling: leveling.innerHTML.trim(),
+        levelingText: leveling.textContent?.trim().split('\n'),
+      };
+    }
+  );
+
+  const ss = htmlOrNone(skill.spellshield)?.toLocaleLowerCase();
+  const spellshield: Spellshield | undefined =
+    ss === 'true'
+      ? true
+      : ss === 'false'
+      ? false
+      : ss === 'special'
+      ? 'Special'
+      : ss === 'unknown'
+      ? 'Unknown'
+      : undefined;
+
+  const inner_name = textOrNone(skill[1]) || skill_name;
+  return {
+    name: inner_name,
+    display_name: textOrNone(skill.disp_name) || inner_name,
+    champion: textOrNone(skill.champion) as any,
+    skill: skillKey as any,
+    maxrank: riot_data[skillKey] ? riot_data[skillKey].maxrank : undefined,
+    image: riot_data[skillKey] ? riot_data[skillKey].image : undefined,
+    range: textOrNone(skill.range), // target range
+    target_range: textOrNone(skill.target_range), // target range
+    attack_range: textOrNone(skill.attack_range), // attack range
+    travel_distance: htmlOrNone(skill.travel_distance), // travel distance
+    collision_radius: htmlOrNone(skill.collision_radius), // collision radius
+    effect_radius: htmlOrNone(skill.effect_radius), // effect radius
+    width: htmlOrNone(skill.width), // width
+    angle: htmlOrNone(skill.angle), // angle
+    inner_radius: htmlOrNone(skill.inner_radius), // inner radius
+    tether_radius: htmlOrNone(skill.tether_radius), // tether radius
+    speed: htmlOrNone(skill.speed), // speed
+    cast_time: htmlOrNone(skill.cast_time), // cast time
+    cost: htmlOrNone(skill.cost), // cost
+    costtype: htmlOrNone(skill.costtype) as any, // costtype
+    static: htmlOrNone(skill.static), // static
+    cooldown: htmlOrNone(skill.cooldown), // cooldown
+    ontargetcd: htmlOrNone(skill.ontargetcd), // ontargetcd
+    ontargetcdstatic: htmlOrNone(skill.ontargetcdstatic), // ontargetcdstatic
+    recharge: htmlOrNone(skill.recharge), // recharge
+    rechargestatic: htmlOrNone(skill.rechargestatic), // rechargestatic
+    customlabel: htmlOrNone(skill.customlabel), // customlabel
+    custominfo: htmlOrNone(skill.custominfo), // custominfo
+    blurb: blurb.map((x) => x.innerHTML?.trim() || '').filter((x) => x !== ''),
+    description: descObj,
+    targeting: htmlOrNone(skill.targeting) || '', // Permafrost is a single target ability.
+    affects: htmlOrNone(skill.affects) || '', // Permafrost affects enemy champions and large monsters
+    damagetype: htmlOrNone(skill.damagetype), // Permafrost deals magic damage.
+    spelleffects: htmlOrNone(skill.spelleffects) as any, // spelleffects
+    onhiteffects: htmlOrNone(skill.onhiteffects), // onhiteffects can be set to 'true', for abilities that apply on-hit effects (from items or other abilities)
+    occurrence: htmlOrNone(skill.occurrence), // occurrence can either be set to 'hit' or 'attack', and refers to on-hit effects
+    spellshield, // spellshield can either be set to true, or written with a custom description.
+    projectile: htmlOrNone(skill.projectile), // true
+    callforhelp: htmlOrNone(skill.callforhelp), // callforhelp determines whether minion aggro will transfer to the caster
+    additional: htmlOrNone(skill.additional), // Displays additional information in a smaller window below the template.
+    notes: htmlOrNone(skill.notes) || '', // notes
+    flavorsound: textOrNone(skill.flavorsound), // For abilities where the SFX/quote is an important part of the gameplay - e.g. Kled or Sion ulting.
+    video: textOrNone(skill.video), // video
+    video2: textOrNone(skill.video2), // video 2
+    yvideo: textOrNone(skill.yvideo), // YouTube video
+    yvideo2: textOrNone(skill.yvideo2), // YouTube video 2
+  };
 }

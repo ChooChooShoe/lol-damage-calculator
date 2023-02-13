@@ -12,7 +12,7 @@
       <div class="ttam__toggle" v-for="spell of models" :key="spell.name">
         <SpellImage :image="spell.image"></SpellImage>
         <label class="ttam__toggletitle" :title="spell.display_name">
-          {{ spell.name }}
+          {{ spell.skill }}
           <input class="hidden" type="checkbox" :value="true" />
         </label>
       </div>
@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { SkillModel } from '../api/DataTypes';
+import type { SkillData } from '@/api/DataTypes';
 import SpellImage from './SpellImage.vue';
-const props = defineProps<{ models: { [key: string]: SkillModel } }>();
+defineProps<{ models: { [key: string]: SkillData } }>();
 </script>
 
 <style>

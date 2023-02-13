@@ -1,3 +1,6 @@
+import type { ChampionName } from '@/model/ChampionListData';
+// type ChampionName = string;
+
 import type { BaseStatsObj, Stat } from './ChampObjStats';
 
 /**
@@ -30,9 +33,9 @@ export interface DataDragonChamp {
   [s: string]: string | Image | JsonObj;
 }
 export interface ChampionListSkills {
-  skills: { [key in string]: SkillModel };
+  [key: string]: SkillData;
 }
-export interface SkillModel {
+export interface SkillModelOld {
   name: string;
   display_name: string;
   maxrank?: number;
@@ -70,6 +73,19 @@ export interface SkillModel {
   range?: ScaleValue;
   // [otherOptions: string]: unknown;
 }
+
+type DeepReadonly<T> = {
+  readonly [P in keyof T]: T[P] extends Record<string, unknown>
+    ? DeepReadonly<T[P]>
+    : T[P];
+};
+
+export interface SkillModel {
+  data: SkillData;
+  effects: SubSkill[];
+}
+
+export type SkillKey = 'I' | 'A' | 'Q' | 'W' | 'E' | 'R' | 'CTRL+2'; // skill
 export interface SubSkill {
   img?: string;
   description: string;
@@ -77,6 +93,73 @@ export interface SubSkill {
   hidden?: boolean;
   locked?: boolean;
 }
+
+export type Spellshield = true | false | 'Special' | 'Unknown';
+export const SpellshieldText = [
+  'Blocked',
+  'Not Blocked',
+  'See Notes',
+  'Missing',
+];
+
+export interface SkillData {
+  name: string; // Necessary: Used for identification.
+  display_name?: string; // Name of the ability Only necessary if the value differs from Edge of Ixtal.
+  champion: ChampionName; // champion
+  skill: SkillKey; // skill
+  // from riot
+  maxrank?: number;
+  image?: Image;
+  // from wiki
+  range?: string; // range
+  target_range?: string; // target range
+  attack_range?: string; // attack range
+  travel_distance?: string; // travel distance
+  collision_radius?: string; // collision radius
+  effect_radius?: string; // effect radius
+  width?: string; // width
+  angle?: string; // angle
+  inner_radius?: string; // inner radius
+  tether_radius?: string; // tether radius
+  speed?: string; // speed
+  cast_time?: string; // cast time
+  cost?: string; // cost
+  costtype?: 'Mana' | 'mana' | 'energy' | 'mana per second' | string; // costtype
+  static?: string; // static
+  cooldown?: string; // cooldown
+  ontargetcd?: string; // ontargetcd
+  ontargetcdstatic?: string; // ontargetcdstatic
+  recharge?: string; // recharge
+  rechargestatic?: string; // rechargestatic
+  customlabel?: string; // customlabel
+  custominfo?: string; // custominfo
+  blurb: string[];
+  description: SkillDesciptionData[];
+  targeting: string; // Permafrost is a single target ability.
+  affects: string; // Permafrost affects enemy champions and large monsters
+  damagetype?: string; // Permafrost deals magic damage.
+  spelleffects?: string; // spelleffects
+  onhiteffects?: string; // onhiteffects can be set to 'true', for abilities that apply on-hit effects (from items or other abilities)
+  occurrence?: string; // occurrence can either be set to 'hit' or 'attack', and refers to on-hit effects
+  spellshield?: Spellshield; // spellshield can either be set to true, or written with a custom description.
+  projectile?: string; // true
+  callforhelp?: string; // callforhelp determines whether minion aggro will transfer to the caster
+  additional?: string; // Displays additional information in a smaller window below the template.
+  notes: string; // notes
+  flavorsound?: string; // For abilities where the SFX/quote is an important part of the gameplay - e.g. Kled or Sion ulting.
+  video?: string; // video
+  video2?: string; // video 2
+  yvideo?: string; // YouTube video
+  yvideo2?: string; // YouTube video 2
+}
+
+export type SkillDesciptionData = {
+  icon?: string;
+  description: string;
+  descriptionText: string;
+  leveling: string;
+  levelingText: string[];
+};
 
 export type OptionalStat = Stat | '';
 export interface SubRatio {

@@ -813,7 +813,7 @@ export function wikiToHTML(text) {
     rbrace: '}}',
     lsq: '[[',
     rsq: ']]',
-    string: { match: /[^\n{}\[\]]+/, value: (s) => s },
+    string: { match: /[^\n{}[\]]+/, value: (s) => s },
     NL: { match: /\n/, lineBreaks: true },
   });
 

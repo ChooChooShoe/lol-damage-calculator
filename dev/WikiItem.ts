@@ -178,7 +178,9 @@ function transform(val: any, typ: any, getProps: any, key: any = ''): any {
       const typ = typs[i];
       try {
         return transform(val, typ, getProps);
-      } catch (_) {}
+      } catch (_) {
+        /* empty */
+      }
     }
     return invalidValue(typs, val);
   }

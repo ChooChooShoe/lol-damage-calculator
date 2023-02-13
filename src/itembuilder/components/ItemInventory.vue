@@ -53,7 +53,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import items from '../../../../src/api/items/items.json';
+import items from '@/api/items/items.json';
 import StatsDiv from './StatsDiv.vue';
 import Item from './Item.vue';
 

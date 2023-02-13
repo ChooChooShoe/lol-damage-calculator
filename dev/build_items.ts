@@ -1,13 +1,9 @@
-import {
-  fetchAndSaveRealms,
-  fetchWiki,
-  saveFile,
-  moduleToJSON,
-} from './fetch_utils';
+import { fetchAndSaveRealms, saveFile } from './fetch_utils';
 import fs from 'fs/promises';
 import type { Image } from '../src/api/DataTypes';
 import fetch from 'node-fetch';
 import type { Dictionary } from 'lodash';
+import { fetchWiki, moduleToJSON } from './LeagueWiki';
 
 const USE_FIXED_REALMS = true;
 const ITEMS_TO_ITEM_ARRAYS = false;
