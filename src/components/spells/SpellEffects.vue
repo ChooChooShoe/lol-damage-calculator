@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { DamageSource } from '@/model/league_data';
 import { onMounted, onUnmounted } from 'vue';
-import type { RootRatio } from '@/api/DataTypes';
+import type { RootRatio, SkillLevelingData } from '@/api/DataTypes';
 import { damageSources } from '@/global/state';
 import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
 import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
@@ -37,6 +37,7 @@ import HealShieldSpellEffectsVue from './typedspelleffects/HealShieldSpellEffect
 import CrowdControlEffectsVue from './typedspelleffects/CrowdControlEffectsVue.vue';
 
 const props = defineProps<{
+  details: SkillLevelingData;
   effect: RootRatio;
   effectindex: number;
   pkey: string;

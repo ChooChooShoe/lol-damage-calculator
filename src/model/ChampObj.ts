@@ -468,7 +468,7 @@ export function getChampListEntry(champ: ChampionName): ChampListEntry {
 export { ChampionListData, ChampionSkillsData, type ChampionName };
 
 export function getSubSkills(champ: ChampionName) {
-  return ChampionSkillsModel[champ];
+  return ChampionSkillsData[champ];
 }
 
 // prettier-ignore

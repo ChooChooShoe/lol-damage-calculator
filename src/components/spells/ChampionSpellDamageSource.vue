@@ -2,8 +2,8 @@
   <div class="data_holder col-12 ChampionSpellDamageSource">
     <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
 
-    <span class="ds__title">
-      {{ spell.display_name }} − {{ spell.name }} ({{ spell.skill }})
+    <span class="ds__title" :title="spell.name">
+      {{ spell.display_name || spell.name }} ({{ spell.skill }})
     </span>
     <DropdownSelect
       class="spellrank2"
@@ -55,38 +55,21 @@
       </fieldset>
     </div> -->
 
-    <div>
-      <!-- <div v-if="spell.customlabel">
-        <span v-html="matchReplace(spell.customlabel)"></span>:
-        <span class="blue" v-html="matchReplace(spell.custominfo)"></span>
-      </div> -->
-      <!-- <div v-if="spell.target_range">
-        Target Range:
-        <span class="blue" v-html="targetRange"></span>
-      </div> -->
-      <!-- <div v-if="spell.effect_range">Effect Range: <span class="blue" v-html="matchReplace(spell.effect_range)"></span></div> -->
-      <!-- <div v-if="spell.targeting">
-        Targeting:
-        <span class="blue" v-html="targeting"></span>
-      </div> -->
-    </div>
+    <AbilityInfo :skill="spell" />
 
     <hr />
 
-    <SubSkillList
-      :subskills="champion ? getSubSkills(champion)[spell.name] : []"
-      :idx="idx"
-    />
+    <SubSkillList :subskills="spell.description" :idx="idx" />
 
     <SubSkillList :subskills="customEffects" :idx="`custom_${idx}`" />
 
-    <input
+    <!-- <input
       name="add_effect"
       type="button"
       class="button is-primary"
       value="Add Effect +"
       @click="addEffect()"
-    />
+    /> -->
 
     <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
   </div>
@@ -111,7 +94,8 @@ import { spriteBaseUri } from '../../model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
 import type { SkillData, SkillModel } from '../../api/DataTypes';
 import SubSkillList from './SubSkillList.vue';
-import { getSubSkills, type ChampionName } from '@/model/ChampObj';
+import type { ChampionName } from '@/model/ChampObj';
+import AbilityInfo from '@/wiki/AbilityInfo.vue';
 
 interface ReactSkill {
   rankindex: Ref<number>;

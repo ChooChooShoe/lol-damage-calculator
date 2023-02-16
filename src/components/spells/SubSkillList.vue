@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import type { SubSkill } from '../../api/DataTypes';
+import type { SkillDesciptionData } from '../../api/DataTypes';
 import SubSkillVue from './SubSkillVue.vue';
 
 defineProps<{
-  subskills: SubSkill[];
+  subskills: SkillDesciptionData[];
   idx: string;
 }>();
 </script>

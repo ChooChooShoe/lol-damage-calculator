@@ -127,12 +127,15 @@ function autoCast(
   return s;
 }
 
-export function stackData<T>(obj: Record<string, T>, toStack: string): T[] {
+export function stackData<T>(
+  obj: Record<string, T>,
+  toStack: string
+): [T | undefined, T | undefined, T | undefined, T | undefined, T | undefined] {
   return [
     obj[`${toStack}`],
     obj[`${toStack}2`],
     obj[`${toStack}3`],
     obj[`${toStack}4`],
     obj[`${toStack}5`],
-  ].filter((el) => el !== null && el !== undefined);
+  ];
 }

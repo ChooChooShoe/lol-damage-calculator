@@ -1,4 +1,10 @@
-import { SkillData, Spellshield } from '@/api/DataTypes';
+import type {
+  SkillData,
+  Spellshield,
+  SkillLevelingData,
+  SkillDesciptionData,
+  WikiChampionData,
+} from '@/api/DataTypes';
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
@@ -6,6 +12,8 @@ import { saveFile, stackData } from './fetch_utils';
 import { BaseStatsObj } from '@/api/ChampObjStats';
 import { fix_wiki_img } from './live_wiki_fetch';
 import { ChampionComplex } from './datadragon';
+import _ from 'lodash';
+import { test, mutateStats } from './WikiChampListFetch';
 
 export type Version = string;
 export type Key = string;
@@ -121,6 +129,7 @@ export async function fetchTemplateChampionSkillData(
 ): Promise<Partial<TemplateChampionSkillData>> {
   champ_name = cleanName(champ_name);
   skill_name = cleanName(skill_name);
+  console.log(`Fetching: Template:Data_${champ_name}/${skill_name}`);
   const url = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name}/${skill_name}`;
   const response = await fetch(url);
   const dom = new JSDOM(await response.text());
@@ -140,6 +149,7 @@ export async function fetchTemplateChampionSkillData(
     fix_wiki_img(htmlElement);
     const key = htmlElement.dataset.name.replaceAll(/ /g, '_');
     map[key] = htmlElement;
+    6;
   }
   // Does not test for type just assumes that all the values there.
   return map;
@@ -207,7 +217,6 @@ export interface TemplateChampionSkillData {
   video2: HTMLElement; // video 2
   yvideo: HTMLElement; // YouTube video
   yvideo2: HTMLElement; // YouTube video 2
-  // [key: string]: HTMLElement | undefined;
 }
 
 export function cleanName(string: string): string {
@@ -219,6 +228,7 @@ export async function getSkillModelsForChamp(
   o: ModuleChampionData,
   riot: ChampionComplex
 ): Promise<Record<string, SkillData>> {
+  console.log(`Making SkillModels for ${champ_name}`);
   // Flatten all arrays for all skills.
   o.skill_i = Object.values(o.skill_i);
   o.skill_q = Object.values(o.skill_q);
@@ -262,23 +272,36 @@ export function toSkillData(
   skill: Partial<TemplateChampionSkillData>,
   riot_data: any
 ): SkillData {
-  const description = stackData(skill, 'description');
-  const leveling = stackData(skill, 'leveling');
-  const blurb = stackData(skill, 'blurb');
-  const icon = stackData(skill, 'icon');
+  const descriptions = stackData(skill, 'description');
+  const levelings = stackData(skill, 'leveling');
+  const blurbs = stackData(skill, 'blurb');
+  const icons = stackData(skill, 'icon');
   const skillKey = textOrNone(skill.skill) || 'X';
-
-  const descObj = [icon, description, leveling].map(
-    ([icon, description, leveling]) => {
-      return {
-        icon: icon.innerHTML.trim(),
-        description: description.innerHTML.trim(),
-        descriptionText: description.textContent?.trim(),
-        leveling: leveling.innerHTML.trim(),
-        levelingText: leveling.textContent?.trim().split('\n'),
-      };
+  const descZip = _.zip(icons, descriptions, levelings);
+  const descObj: SkillDesciptionData[] = [];
+  for (const [iconEl, descriptionEl, levelingEl] of descZip) {
+    const skillTabsList =
+      levelingEl?.querySelectorAll<HTMLDListElement>('dl.skill-tabs') || [];
+    const leveling: SkillLevelingData[] = [];
+    for (const skillTab of skillTabsList) {
+      const name = skillTab.querySelector('dt')?.textContent?.trim() || '';
+      const valuesElement = skillTab.querySelector('dd');
+      const values = valuesElement?.textContent?.trim() || '';
+      const valuesHTML = valuesElement?.innerHTML.trim() || '';
+      leveling.push({ name, values, valuesHTML });
     }
-  );
+    const icon = iconEl?.innerHTML.trim() || undefined;
+    const description = descriptionEl?.textContent?.trim() || '';
+    const descriptionHTML = descriptionEl?.innerHTML.trim() || '';
+    //if one is non-empty add to the array;
+    if (icon || description || descriptionHTML || leveling.length > 0)
+      descObj.push({
+        icon,
+        description,
+        descriptionHTML,
+        leveling,
+      });
+  }
 
   const ss = htmlOrNone(skill.spellshield)?.toLocaleLowerCase();
   const spellshield: Spellshield | undefined =
@@ -322,7 +345,9 @@ export function toSkillData(
     rechargestatic: htmlOrNone(skill.rechargestatic), // rechargestatic
     customlabel: htmlOrNone(skill.customlabel), // customlabel
     custominfo: htmlOrNone(skill.custominfo), // custominfo
-    blurb: blurb.map((x) => x.innerHTML?.trim() || '').filter((x) => x !== ''),
+    blurb: blurbs
+      .map((x) => x?.innerHTML?.trim() || '')
+      .filter((x) => x !== ''),
     description: descObj,
     targeting: htmlOrNone(skill.targeting) || '', // Permafrost is a single target ability.
     affects: htmlOrNone(skill.affects) || '', // Permafrost affects enemy champions and large monsters

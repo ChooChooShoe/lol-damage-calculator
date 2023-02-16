@@ -25,11 +25,11 @@
 </template>
 
 <script setup lang="ts">
-import { provide, reactive, ref, Ref } from 'vue';
+import { provide, reactive, ref, type Ref } from 'vue';
 
 import PerkStyle from './PerkStyle.vue';
 import PlayerStats from './PlayerStats.vue';
-import { StatMod, StatBlock } from './Stats';
+import { StatMod } from './Stats';
 import { computed } from 'vue';
 import { perkStyle, perk, perks, PerkSelections } from './perks';
 import SpellEffects from '../components/spells/SpellEffects.vue';

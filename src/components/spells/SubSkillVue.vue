@@ -1,11 +1,11 @@
 <template>
   <template v-if="nonLeveling">
-    <SpellImage :iconPath="skill.img"></SpellImage>
+    <SpellImage :iconPath="skill.icon"></SpellImage>
     <p v-html="skill.description" class="subskill__desciption shortmode"></p>
   </template>
   <template v-else-if="!skill.locked">
     <div class="subskill__img ttam__toggle">
-      <SpellImage :iconPath="skill.img"></SpellImage>
+      <SpellImage :iconPath="skill.icon"></SpellImage>
       <label
         class="ttam__toggletitle"
         title="Click to enable/disable"
@@ -27,6 +27,7 @@
         :custom="false"
         :key="leveling_idx"
         :pkey="`${idx}_${leveling_idx}`"
+        :details="value"
         :effect="value"
         :effectindex="leveling_idx"
       ></SpellEffects>
@@ -34,7 +35,7 @@
     <i v-else></i>
   </template>
   <template v-else>
-    <SpellImage :iconPath="skill.img" class="subskill__img"></SpellImage>
+    <SpellImage :iconPath="skill.icon" class="subskill__img"></SpellImage>
     <p
       v-html="skill.description"
       class="subskill__desciption"
@@ -47,6 +48,7 @@
         :custom="false"
         :key="leveling_idx"
         :pkey="`${idx}_${leveling_idx}`"
+        :details="value"
         :effect="value"
         :effectindex="leveling_idx"
       ></SpellEffects>
@@ -55,12 +57,12 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { SubSkill } from '@/api/DataTypes';
+import type { SkillDesciptionData } from '@/api/DataTypes';
 import SpellEffects from './SpellEffects.vue';
 import SpellImage from '@/timeline/SpellImage.vue';
 
 const props = defineProps<{
-  skill: SubSkill;
+  skill: SkillDesciptionData;
   idx: string;
 }>();
 

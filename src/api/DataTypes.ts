@@ -81,7 +81,6 @@ type DeepReadonly<T> = {
 };
 
 export interface SkillModel {
-  data: SkillData;
   effects: SubSkill[];
 }
 
@@ -105,7 +104,7 @@ export const SpellshieldText = [
 export interface SkillData {
   name: string; // Necessary: Used for identification.
   display_name?: string; // Name of the ability Only necessary if the value differs from Edge of Ixtal.
-  champion: ChampionName; // champion
+  champion: ChampionName | 'Nunu'; // champion TODO fix Nunu
   skill: SkillKey; // skill
   // from riot
   maxrank?: number;
@@ -156,9 +155,13 @@ export interface SkillData {
 export type SkillDesciptionData = {
   icon?: string;
   description: string;
-  descriptionText: string;
-  leveling: string;
-  levelingText: string[];
+  descriptionHTML: string;
+  leveling: SkillLevelingData[];
+};
+export type SkillLevelingData = {
+  name: string;
+  values: string;
+  valuesHTML: string;
 };
 
 export type OptionalStat = Stat | '';

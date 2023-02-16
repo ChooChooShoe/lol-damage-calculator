@@ -6,6 +6,7 @@ const NotFound = () => import('./NotFound.vue');
 const ItemBuilder = () => import('./itembuilder/ItemBuilder.vue');
 const DataView = () => import('./dataview/DataView.vue');
 const RunesView = () => import('./runes/RunesView.vue');
+const TestView = () => import('./wiki/TestView.vue');
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: '/itembuilder', component: ItemBuilder },
     { path: '/runes', component: RunesView },
     { path: '/dataview', component: DataView },
+    { path: '/testview', component: TestView },
     {
       path: '/wiki/:pathMatch(.*)*',
       name: 'WikiRedirect',
