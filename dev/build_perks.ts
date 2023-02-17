@@ -171,7 +171,7 @@ function mutateDescriptionLine(
   const text = p?.textContent?.trim();
   if (!text || !p) return undefined;
 
-  let leveling: RootRatio[] | undefined = [];
+  const leveling: RootRatio[] = [];
 
   if (AUTO_MAKE_LEVEING) {
     const textLines = text.split('. ');
@@ -181,7 +181,6 @@ function mutateDescriptionLine(
       leveling.push(ratio);
     }
   }
-  if (leveling.length === 0) leveling = undefined;
 
   return {
     description: p.innerHTML.trim(),

@@ -161,7 +161,7 @@ import type {
 import EffectTypeField from '@/components/effects/EffectTypeField.vue';
 import EditBtn from '@/components/simple/EditBtn.vue';
 import NumInput from '@/components/simple/NumInput.vue';
-import { damageSources } from '@/global/state';
+import { damageSources, useDamageSources } from '@/global/state';
 import type { ChampObjModel } from '@/model/ChampObj';
 import { DamageSource } from '@/model/league_data';
 import {
@@ -172,6 +172,7 @@ import {
   onMounted,
   onUnmounted,
 } from 'vue';
+import AddRatioDropDown from '../AddRatioDropDown.vue';
 import DamageTypeField from '../DamageTypeField.vue';
 import { makeRootRatio, makeSubRatio } from '../ratios_info';
 import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
@@ -232,11 +233,13 @@ function addRatio(x: OptionalStat) {
   );
   computedRatioValues?.children.push(made);
 }
+const store = useDamageSources();
+
 onMounted(() => {
-  if (damageSources) damageSources[props.pkey] = [damageSource];
+  if (damageSources) store.addSource(props.pkey, damageSource);
 });
 onUnmounted(() => {
-  if (damageSources) delete damageSources[props.pkey];
+  store.removeSource(props.pkey);
 });
 
 const repeat = ref(1);

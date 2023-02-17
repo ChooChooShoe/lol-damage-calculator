@@ -7,19 +7,14 @@ defineProps<{ skill: SkillData }>();
 <template>
   <div class="ability-info-container">
     <div class="champion-ability__header">
-      <h3>{{ skill.display_name || skill.name }}</h3>
+      <!-- <h3>{{ skill.display_name || skill.name }} ({{ skill.skill }})</h3> -->
 
-      <infobox theme="champion-ability">
-        <title>
-          <default>{{ skill.display_name || skill.name }}
-          </default>
-        </title>
-
+      <div class="champion-ability infobox">
         <!-- <image source="skill.primary_icon" /> -->
 
-        <group name="champion-ability-params">
+        <div class="group" name="champion-ability-params">
           <data v-if="skill.cost">
-            <label>COST: </label>
+            <span class="data-label">COST: </span>
 
             <span class="format"
               >{{ skill.cost }} {{ skill.costtype || 'Mana' }}
@@ -27,158 +22,177 @@ defineProps<{ skill: SkillData }>();
           </data>
 
           <data v-if="skill.cooldown">
-            <!-- <label
+            <!-- <span
               >((tt|((#switch:((cdstart|}}|on-cast = <sup>• </sup>|post-effect =
               <sub>• </sub>|}}COOLDOWN|((#switch:((cdstart|}}|on-cast
               =On-cast|post-effect =Post-effect|}}}:
-            </label> -->
-            <label>
+            </span> -->
+            <span class="data-label">
               <!-- <TextTip tooltip="On-cast"> <sup>• </sup>COOLDOWN</TextTip>: -->
               <!-- <TextTip tooltip="Post-effect"> <sup>• </sup>COOLDOWN</TextTip>: -->
               COOLDOWN:
-            </label>
+            </span>
 
             <span class="format" v-html="skill.cooldown"></span>
           </data>
 
           <data v-if="skill.cast_time">
-            <label>CAST TIME: </label>
+            <span class="data-label">CAST TIME: </span>
 
-            <span class="format"
-              >{{ skill.cast_time === 'false' ? 'None' : skill.cast_time }}
-            </span>
+            <span
+              class="format"
+              v-html="skill.cast_time === 'false' ? 'None' : skill.cast_time"
+            ></span>
           </data>
 
           <data v-if="skill.static">
-            <label
+            <span
               >((#switch:((cdstart|}}|on-cast = <sup>• </sup>|post-effect =
               <sub>• </sub>|}}((tt|STATIC|Unaffected by ability haste}}
               ((tt|COOLDOWN|((#switch:((cdstart|}}|on-cast =On-cast|post-effect
               =Post-effect|}}}:
-            </label>
+            </span>
 
-            <span class="format">{{ skill.static }} </span>
+            <span class="format" v-html="skill.static"></span>
           </data>
 
           <data v-if="skill.ontargetcdstatic">
-            <label
-              ><TextTip tooltip="Unaffected by ability haste"
+            <span
+              ><TextTip tooltip="Unaffected by ability haste" class="data-label"
                 >TARGET IMMUNITY</TextTip
-              >:</label
+              >:</span
             >
 
-            <span class="format">{{ skill.ontargetcdstatic }} </span>
+            <span class="format" v-html="skill.ontargetcdstatic"></span>
           </data>
 
           <data v-if="skill.ontargetcd">
-            <label>((tt|TARGET IMMUNITY|Affected by ability haste}}: </label>
+            <span
+              ><TextTip tooltip="Unaffected by ability haste" class="data-label"
+                >TARGET IMMUNITY</TextTip
+              >:</span
+            >
 
-            <span class="format">{{ skill.ontargetcd }} </span>
+            <span class="format" v-html="skill.ontargetcd"></span>
           </data>
 
           <data v-if="skill.recharge">
-            <label>RECHARGE: </label>
+            <span class="data-label">RECHARGE: </span>
 
-            <span class="format">{{ skill.recharge }} </span>
+            <span class="format" v-html="skill.recharge"></span>
           </data>
 
           <data v-if="skill.rechargestatic">
-            <label>
+            <span class="data-label">
               <TextTip tooltip="Unaffected by ability haste"
                 >STATIC RECHARGE</TextTip
               >:
-            </label>
+            </span>
 
-            <span class="format">{{ skill.rechargestatic }} </span>
+            <span class="format" v-html="skill.rechargestatic"></span>
           </data>
 
           <data v-if="skill.target_range">
-            <label>TARGET RANGE: </label>
+            <span class="data-label">TARGET RANGE: </span>
 
-            <span class="format">{{ skill.target_range }} </span>
+            <span class="format" v-html="skill.target_range"></span>
           </data>
 
           <data v-if="skill.range">
-            <label>RANGE: </label>
+            <span class="data-label">RANGE: </span>
 
-            <span class="format">{{ skill.range }} </span>
+            <span class="format" v-html="skill.range"> </span>
           </data>
 
           <data v-if="skill.attack_range">
-            <label>ATTACK RANGE: </label>
+            <span class="data-label">ATTACK RANGE: </span>
 
-            <span class="format">{{ skill.attack_range }} </span>
+            <span class="format" v-html="skill.attack_range"></span>
           </data>
 
           <!-- <data v-if="skill.ai_range">
-            <label>ACQUISITION RANGE: </label>
+            <span class="data-label">ACQUISITION RANGE: </span>
 
             <span class="format">{{ skill.ai_range }} </span>
           </data> -->
 
           <!-- <data v-if="skill.windup">
-            <label>WINDUP PERCENTAGE: </label>
+            <span class="data-label">WINDUP PERCENTAGE: </span>
 
             <span class="format">{{ skill.windup }}%</span>
           </data> -->
 
           <data v-if="skill.travel_distance">
-            <label>TRAVEL DISTANCE: </label>
+            <span class="data-label">TRAVEL DISTANCE: </span>
 
-            <span class="format">{{ skill.travel_distance }}</span>
+            <span class="format" v-html="skill.travel_distance"></span>
           </data>
 
           <data v-if="skill.collision_radius">
-            <label>COLLISION RADIUS: </label>
+            <span class="data-label">COLLISION RADIUS: </span>
 
-            <span class="format">{{ skill.collision_radius }}</span>
+            <span class="format" v-html="skill.collision_radius"></span>
           </data>
 
           <data v-if="skill.effect_radius">
-            <label>EFFECT RADIUS: </label>
+            <span class="data-label">EFFECT RADIUS: </span>
 
-            <span class="format">{{ skill.effect_radius }} </span>
+            <span class="format" v-html="skill.effect_radius"></span>
           </data>
 
           <data v-if="skill.width">
-            <label>WIDTH: </label>
+            <span class="data-label">WIDTH: </span>
 
-            <span class="format">{{ skill.width }} </span>
+            <span class="format" v-html="skill.width"></span>
           </data>
 
           <data v-if="skill.angle">
-            <label>ANGLE: </label>
+            <span class="data-label">ANGLE: </span>
 
-            <span class="format">{{ skill.angle }} </span>
+            <span class="format" v-html="skill.angle"></span>
           </data>
 
           <data v-if="skill.inner_radius">
-            <label>INNER RADIUS: </label>
+            <span class="data-label">INNER RADIUS: </span>
 
-            <span class="format">{{ skill.inner_radius }} </span>
+            <span class="format" v-html="skill.inner_radius"></span>
           </data>
 
           <data v-if="skill.tether_radius">
-            <label>TETHER RADIUS: </label>
+            <span class="data-label">TETHER RADIUS: </span>
 
-            <span class="format">{{ skill.tether_radius }} </span>
+            <span class="format" v-html="skill.tether_radius"> </span>
           </data>
 
           <data v-if="skill.speed">
-            <label>SPEED: </label>
+            <span class="data-label">SPEED: </span>
 
-            <span class="format">{{ skill.speed }} </span>
+            <span class="format" v-html="skill.speed"></span>
           </data>
 
           <data v-if="skill.custominfo">
-            <label>{{ skill.customlabel }}: </label>
+            <span class="data-label">{{ skill.customlabel }}: </span>
 
-            <span class="format">{{ skill.custominfo }} </span>
+            <span class="format" v-html="skill.custominfo"></span>
           </data>
-        </group>
-      </infobox>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style></style>
+
+<style>
+.data-label {
+  display: inline-block;
+  overflow: initial;
+  color: #9797fc;
+  padding-left: 5px;
+}
+.format {
+  text-transform: uppercase;
+  display: inline-block;
+  padding-left: 5px;
+}
+</style>

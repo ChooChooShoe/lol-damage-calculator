@@ -88,7 +88,7 @@ export type SkillKey = 'I' | 'A' | 'Q' | 'W' | 'E' | 'R' | 'CTRL+2'; // skill
 export interface SubSkill {
   img?: string;
   description: string;
-  leveling?: RootRatio[];
+  leveling: RootRatio[];
   hidden?: boolean;
   locked?: boolean;
 }
@@ -170,7 +170,7 @@ export interface SubRatio {
   valuesRanged?: RatioValue;
   valuesIsPercent?: boolean;
   valuesIsBasedOnLevel?: boolean;
-  // apply?: "%" | 'based_on_level';
+  basedOn?: 'level' | 'critical strike chance';
   user?: 'none' | 'player' | 'target';
   units: OptionalStat;
   unitsText?: string;

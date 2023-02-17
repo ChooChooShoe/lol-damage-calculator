@@ -7,14 +7,14 @@
     <ChampionDiv mode="player" class="col-6"></ChampionDiv>
     <ChampionDiv mode="target" class="col-6"></ChampionDiv>
 
-    <TimelineAddMenu :models="activeChampionModel"></TimelineAddMenu>
+    <!-- <TimelineAddMenu :models="activeChampionModel"></TimelineAddMenu> -->
     <!-- <AADamageSource></AADamageSource> -->
     <ChampionSpellDamageSource
       v-for="(spellObj, idx) in activeChampionModel"
       :key="spellObj.name"
       :spell="spellObj"
       :champion="player.champ"
-      :idx="`skill_${idx}`"
+      :idx="String(idx)"
     ></ChampionSpellDamageSource>
 
     <CustomDamageSource
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import TimelineAddMenu from './timeline/TimelineAddMenu.vue';
-import SideBody from './components/SideBody.vue';
+import SideBody from './components/sidebar/SideBody.vue';
 import ChampionDiv from './components/ChampionDiv.vue';
 import AADamageSource from './components/spells/AADamageSource.vue';
 import ChampionSpellDamageSource from './components/spells/ChampionSpellDamageSource.vue';
@@ -48,6 +48,7 @@ import {
 
 import {
   ChampionSkillsData,
+  getSkillModel,
   validateName,
   type ChampionName,
 } from './model/ChampObj';

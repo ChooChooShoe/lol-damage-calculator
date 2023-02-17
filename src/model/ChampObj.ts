@@ -1,5 +1,10 @@
 import type { BaseStatsObj, ChampObjStats } from '@/api/ChampObjStats';
-import type { SkillKey, SubSkill } from '@/api/DataTypes';
+import type {
+  SkillData,
+  SkillKey,
+  SkillModel,
+  SubSkill,
+} from '@/api/DataTypes';
 import { PerkSelections } from '../runes/perks';
 
 function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
@@ -347,6 +352,7 @@ export class ChampObjModel implements ChampObjStats {
 
   // For First Strike
   postMitigationBaseDamageTotal = 0;
+  energy = 0;
 
   constructor(user: 'player' | 'target', champ: ChampionName) {
     this.user = user;
@@ -467,8 +473,12 @@ export function getChampListEntry(champ: ChampionName): ChampListEntry {
 }
 export { ChampionListData, ChampionSkillsData, type ChampionName };
 
-export function getSubSkills(champ: ChampionName) {
-  return ChampionSkillsData[champ];
+export function getSkillModel(
+  champ: ChampionName,
+  skill_name: string
+): SkillModel {
+  const skillmodels: { [s in string]: SkillModel } = ChampionSkillsModel[champ];
+  return skillmodels[skill_name];
 }
 
 // prettier-ignore

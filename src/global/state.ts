@@ -19,12 +19,16 @@ export class StatusEffect {
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0);
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
+export const useDamageSources = defineStore('damageSources', () => {
+  const damageSources: Record<string, DamageSource[]> = reactive({});
+  // const iter = computed(() => count.value * 2);
+  function addSource(name: string, ...src: DamageSource[]) {
+    if (name in damageSources) {
+      damageSources[name].push(...src);
+    } else damageSources[name] = src;
   }
-
-  return { count, doubleCount, increment };
+  function removeSource(name: string) {
+    delete damageSources[name];
+  }
+  return { damageSources, addSource, removeSource };
 });

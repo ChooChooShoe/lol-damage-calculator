@@ -1,81 +1,101 @@
 <template>
-  <div class="data_holder col-12 ChampionSpellDamageSource">
-    <!-- <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage> -->
+  <TabView class="data_holder col-12" v-model:activeIndex="activeTab">
+    <TabPanel :header="spell.display_name || spell.name">
+      <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage>
 
-    <span class="ds__title" :title="spell.name">
-      {{ spell.display_name || spell.name }} ({{ spell.skill }})
-    </span>
-    <DropdownSelect
-      class="spellrank2"
-      v-if="spell.maxrank && spell.maxrank > 0"
-      label="Rank"
-      :value="String(rankindex + 1)"
-    >
-      <input
-        v-for="(_, index) in Array(spell.maxrank || 5)"
-        :class="{ success: rankindex === index }"
-        :key="index"
-        @click="rankindex = index"
-        type="button"
-        :value="index + 1"
-        :title="'Rank ' + (index + 1)"
-      />
-    </DropdownSelect>
-    <!-- <span class="ds__data" v-if="spell.cooldown">
-      Cooldown:
-      <SpellSpan :list="spell.cooldown"></SpellSpan>
-    </span> -->
-    <!-- <span class="ds__data" v-if="spell.cost">
-      Cost:
-      <SpellSpan :list="spell.cost"></SpellSpan>&nbsp;
-      <span v-html="costtype"></span>
-    </span> -->
-    <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
-
-    <!-- <div class="ds__description" tabindex="0" @load="load">
-      <p v-for="x in spell.description" v-html="x"></p>
-    </div> -->
-
-    <!-- <div v-if="spell.maxrank > 0">
-      <span>
-        Spell Rank (
-        <span class="spelleffect">{{ spell.rankindex + 1 }}</span>
-        / {{ spell.maxrank }} )
+      <span class="ds__title" :title="spell.name">
+        {{ spell.display_name || spell.name }} ({{ spell.skill }})
       </span>
-      <fieldset class="spellrank">
+      <DropdownSelect
+        class="spellrank2"
+        v-if="spell.maxrank && spell.maxrank > 0"
+        label="Rank"
+        :value="String(rankindex + 1)"
+      >
         <input
-          v-for="(_, index) in Array(spell.maxrank)"
+          v-for="(_, index) in Array(spell.maxrank || 5)"
+          :class="{ success: rankindex === index }"
           :key="index"
-          v-model.number="spell.rankindex"
-          type="radio"
-          name="spellrank"
-          :value="index"
+          @click="rankindex = index"
+          type="button"
+          :value="index + 1"
           :title="'Rank ' + (index + 1)"
         />
-      </fieldset>
-    </div> -->
+      </DropdownSelect>
 
-    <AbilityInfo :skill="spell" />
+      <AbilityInfo :skill="spell" />
 
-    <hr />
+      <a class="float-right" target="_blank" :href="wikiHref">↪Wiki&nbsp;</a>
 
-    <SubSkillList :subskills="spell.description" :idx="idx" />
+      <!-- <div class="ds__description" tabindex="0">
+        <p
+          v-for="(x, i) in spell.description"
+          v-html="x.descriptionHTML"
+          :key="i"
+        ></p>
+      </div> -->
 
-    <SubSkillList :subskills="customEffects" :idx="`custom_${idx}`" />
+      <hr />
 
-    <!-- <input
-      name="add_effect"
-      type="button"
-      class="button is-primary"
-      value="Add Effect +"
-      @click="addEffect()"
-    /> -->
+      <SubSkillList
+        :subskills="spell.description"
+        :skill-model="skillModel"
+        :idx="idx"
+      />
+      <div class="subskills__grid">
+        <SubSkillVue
+          v-for="(sub_skill, index) in customEffects"
+          :key="`${idx}_${index}`"
+          :skill="sub_skill"
+          :sub-skills="skillModel.effects[index]"
+          :idx="`Custom: ${idx}_${index}`"
+        ></SubSkillVue>
+      </div>
 
-    <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
-  </div>
+      <!-- <input
+          name="add_effect"
+          type="button"
+          class="button is-primary"
+          value="Add Effect +"
+          @click="addEffect()"
+        /> -->
+
+      <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
+    </TabPanel>
+    <TabPanel header="Simple">
+      <p v-for="x in spell.blurb" v-html="x" :key="x"></p>
+    </TabPanel>
+    <TabPanel header="Details">
+      <p
+        v-for="(x, i) in spell.description"
+        v-html="x.descriptionHTML"
+        :key="i"
+      ></p>
+    </TabPanel>
+    <TabPanel header="Settings">
+      <div class="buttons">
+        <label class="switch button">
+          <input type="checkbox" v-model="showDamage" />
+          <span class="switch--text">Show Offensive</span>
+        </label>
+        <label class="switch button">
+          <input type="checkbox" v-model="showDefence" />
+          <span class="switch--text">Show Defensive</span>
+        </label>
+        <label class="switch button">
+          <input type="checkbox" v-model="showExtra" />
+          <span class="switch--text">Show Extras</span>
+        </label>
+      </div>
+      <Button @click="activeTab = 0" class="p-button-text" label="Save" />
+    </TabPanel>
+  </TabView>
 </template>
 
 <script setup lang="ts">
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+import Button from 'primevue/button';
 import {
   ref,
   computed,
@@ -94,18 +114,22 @@ import { spriteBaseUri } from '../../model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
 import type { SkillData, SkillModel } from '../../api/DataTypes';
 import SubSkillList from './SubSkillList.vue';
-import type { ChampionName } from '@/model/ChampObj';
+import { getSkillModel, type ChampionName } from '@/model/ChampObj';
 import AbilityInfo from '@/wiki/AbilityInfo.vue';
+import SubSkillVue from './SubSkillVue.vue';
 
 interface ReactSkill {
   rankindex: Ref<number>;
 }
 const props = defineProps<{
   spell: SkillData;
-  champion: ChampionName | '';
+  champion: ChampionName;
   idx: string;
 }>();
 
+const activeTab = ref(0);
+
+const skillModel = getSkillModel(props.champion, props.spell.name);
 const rankindex = ref(0);
 const customEffects = ref([]);
 const lastEffectIndex = ref(0);

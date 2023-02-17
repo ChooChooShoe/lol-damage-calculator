@@ -1,435 +1,324 @@
-import type { SubSkill } from '@/api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 import type { ChampionName } from '../ChampionListData';
-import ChampionListData from '../ChampionListData';
+import { ChampionSkillsData } from '../ChampionSkillsData';
 export const name: ChampionName = 'Fiddlesticks';
-const I: SubSkill[] = [
-  {
-    img: '/wiki/images/Fiddlesticks_A_Harmless_Scarecrow.png',
-    description:
-      '<span class="template_sbc"><b>Innate - Scarecrow Effigy:</b></span> <b>Fiddlesticks</b> begins the game with an exclusive <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Scarecrow Effigy" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Scarecrow_Effigy" title="Scarecrow Effigy"><img alt="Scarecrow Effigy" src="/wiki/images/Scarecrow_Effigy_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Scarecrow_Effigy" title="Scarecrow Effigy">Scarecrow Effigy</a></span></span>, which permanently occupies the <a href="/wiki/Trinket_item" title="Trinket item">trinket</a> slot. <b>Fiddlesticks</b> can pretend to be an <i>Effigy</i> by standing still and not acting nor being acted upon for 2 seconds, during which it adjusts its body into a scarecrow and extends its arm out to expose its lantern.',
-    leveling: [],
-  },
-  {
-    img: '/wiki/images/Fiddlesticks_A_Harmless_Scarecrow_2.png',
-    description:
-      '<span class="template_sbc"><b>Innate - A Harmless Scarecrow:</b></span> From <a href="/wiki/Experience_(champion)" title="Experience (champion)">level</a> 6 onward, placing an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Effigy"><a href="/wiki/Ward" title="Ward"><img alt="Totem Ward icon.png" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward" title="Ward">Effigy</a></span> also summons a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sweeper drone"><a href="/wiki/Oracle_Lens" title="Oracle Lens"><img alt="Sweeper Drone icon.png" src="/wiki/images/Sweeper_Drone_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Oracle_Lens" title="Oracle Lens">Sweeper Drone</a></span> at the location for 6 seconds.',
-    leveling: [],
-  },
-];
-const Q: SubSkill[] = [
-  {
-    description:
-      '<span class="template_sbc"><b>Passive:</b></span> While <b>Fiddlesticks</b> has been <a href="/wiki/Combat_status" title="Combat status">out of combat</a> for at least <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Estimated">2.<small>5</small> seconds</span> and is not <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> to the enemy team, or is pretending to be an <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Fiddlesticks" data-ability="A Harmless Scarecrow" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Fiddlesticks/LoL#A_Harmless_Scarecrow" title="Effigy"><img alt="Effigy" src="/wiki/images/Fiddlesticks_A_Harmless_Scarecrow.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Fiddlesticks/LoL#A_Harmless_Scarecrow" title="Fiddlesticks/LoL">Effigy</a></span></span></i>, its next damaging ability will additionally <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Fear"><a href="/wiki/Flee" title="Flee"><img alt="Flee icon.png" src="/wiki/images/Flee_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Flee" class="mw-redirect" title="Flee">fear</a></span> targets hit for a duration.',
-    leveling: [
+export const skillsData = ChampionSkillsData['Fiddlesticks'];
+
+export const Fiddlesticks = {
+  'A Harmless Scarecrow': {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Fear Duration:',
-        raw: '1.25 / 1.5 / 1.75 / 2 / 2.25',
-        values: [1.25, 1.5, 1.75, 2, 2.25],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '1.25 / 1.5 / 1.75 / 2 / 2.25',
+        img: 'A Harmless Scarecrow.png',
+        description:
+          'Innate - Scarecrow Effigy: Fiddlesticks begins the game with an exclusive  Scarecrow Effigy, which permanently occupies the trinket slot. Fiddlesticks can pretend to be an Effigy by standing still and not acting nor being acted upon for 2 seconds, during which it adjusts its body into a scarecrow and extends its arm out to expose its lantern.',
+        leveling: [],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: 'A Harmless Scarecrow 2.png',
+        description:
+          'Innate - A Harmless Scarecrow: From level 6 onward, placing an  Effigy also summons a  Sweeper Drone at the location for 6 seconds.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    img: '/wiki/images/Fiddlesticks_Terrify.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Fiddlesticks</b> launches a crow at the target enemy that deals <span style="color: #00B0F0; white-space:normal">magic damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Fear"><a href="/wiki/Flee" title="Flee"><img alt="Flee icon.png" src="/wiki/images/Flee_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Flee" class="mw-redirect" title="Flee">fears</a></span> them for a duration. <i>Terrify</i> has a minimum damage threshold and is capped at 400 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
-    leveling: [
+  Terrify: {
+    effects: [
       {
-        effectType: 'Heal',
-        name: 'Magic Damage:',
-        raw: "6 / 7 / 8 / 9 / 10% (+ 2% per 100 AP) of target's current health",
-        healType: 'OutgoingHeals',
-        values: [6, 7, 8, 9, 10],
-        valuesIsPercent: true,
-        user: 'target',
-        units: 'current_hp',
-        unitsText: "of target's current health",
-        pre: '6 / 7 / 8 / 9 / 10%',
-        post: "of target's current health",
-        children: [
+        img: 'false',
+        description:
+          'Passive: While Fiddlesticks has been out of combat for at least 2.5 seconds and is not  visible to the enemy team, or is pretending to be an  Effigy, its next damaging ability will additionally  fear targets hit for a duration.',
+        leveling: [
           {
-            values: 2,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'per 100 AP',
-            pre: '+ 2% per 100 AP',
+            effectType: 'Unique',
+            name: 'Fear Duration:',
+            raw: '1.25 / 1.5 / 1.75 / 2 / 2.25',
+            values: [1.25, 1.5, 1.75, 2, 2.25],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '1.25 / 1.5 / 1.75 / 2 / 2.25',
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Unique',
-        name: 'Minimum Damage:',
-        raw: '40 / 60 / 80 / 100 / 120',
-        values: [40, 60, 80, 100, 120],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '40 / 60 / 80 / 100 / 120',
-      },
-      {
-        effectType: 'Unique',
-        name: 'Fear Duration:',
-        raw: '1.25 / 1.5 / 1.75 / 2 / 2.25',
-        values: [1.25, 1.5, 1.75, 2, 2.25],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '1.25 / 1.5 / 1.75 / 2 / 2.25',
-      },
-    ],
-  },
-  {
-    description:
-      'Targets feared by <b>Fiddlesticks</b> by any means cannot be affected by it again for a duration equal to <i>Terrify\'s</i> cooldown. Against these targets, <i>Terrify\'s</i> <a href="/wiki/Critical_strike#Cosmetic_critical_strikes" title="Critical strike#Cosmetic critical strikes"><img alt="Critical strike magic icon.png" src="/wiki/images/Critical_strike_magic_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Cosmetic critical strike">damage</span> and minimum threshold are doubled.',
-    leveling: [
-      {
-        effectType: 'Heal',
-        name: 'Increased Magic Damage:',
-        raw: "12 / 14 / 16 / 18 / 20% (+ 4% per 100 AP) of target's current health",
-        healType: 'OutgoingHeals',
-        values: [12, 14, 16, 18, 20],
-        valuesIsPercent: true,
-        user: 'target',
-        units: 'current_hp',
-        unitsText: "of target's current health",
-        pre: '12 / 14 / 16 / 18 / 20%',
-        post: "of target's current health",
-        children: [
+        img: 'Terrify.png',
+        description:
+          'Active: Fiddlesticks launches a crow at the target enemy that deals magic damage and  fears them for a duration. Terrify has a minimum damage threshold and is capped at 400 against  monsters.',
+        leveling: [
           {
-            values: 4,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'per 100 AP',
-            pre: '+ 4% per 100 AP',
-          },
-        ],
-      },
-      {
-        effectType: 'Unique',
-        name: 'Increased Minimum Damage:',
-        raw: '80 / 120 / 160 / 200 / 240',
-        values: [80, 120, 160, 200, 240],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '80 / 120 / 160 / 200 / 240',
-      },
-    ],
-  },
-  {
-    description:
-      '<i>Terrify</i> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> affected targets by 90%.',
-    leveling: [],
-  },
-];
-const W: SubSkill[] = [
-  {
-    img: '/wiki/images/Fiddlesticks_Bountiful_Harvest.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Fiddlesticks</b> forms a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tether"><a href="/wiki/Tether" title="Tether"><img alt="Focused Resolve.png" src="/wiki/images/Karma_Focused_Resolve.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tether" title="Tether">tether</a></span> between itself and each nearby enemy over the cast time, then <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">channels</a></span> for up to 2 seconds to harvest their souls, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="True sight"><a href="/wiki/Sight#True_sight" title="Sight#True sight"><img alt="True Sight icon.png" src="/wiki/images/True_Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight#True_sight" title="Sight">revealing</a></span> them in the process.',
-    leveling: [],
-  },
-  {
-    description:
-      'While <b>Fiddlesticks</b> is channeling, the tethered enemies are dealt <span style="color: #00B0F0; white-space:normal">magic damage</span> every 0.<small>25</small> seconds, with the final tick at the end of the channel dealing additional <span style="color: #00B0F0; white-space:normal">magic damage</span>. <i>Bountiful Harvest</i> deals 135% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span> and 50% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minions"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span>.',
-    leveling: [
-      {
-        effectType: 'Unique',
-        name: 'Magic Damage per Tick:',
-        raw: '15 / 22.5 / 30 / 37.5 / 45 (+ 8.75% AP)',
-        values: [15, 22.5, 30, 37.5, 45],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '15 / 22.5 / 30 / 37.5 / 45',
-        children: [
-          {
-            values: 8.75,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 8.75% AP',
-          },
-        ],
-      },
-      {
-        effectType: 'Heal',
-        name: 'Last Tick of Damage:',
-        raw: "15 / 22.5 / 30 / 37.5 / 45 (+ 8.75% AP) (+ 12 / 14.5 / 17 / 19.5 / 22% of target's missing health)",
-        healType: 'OutgoingHeals',
-        values: [15, 22.5, 30, 37.5, 45],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '15 / 22.5 / 30 / 37.5 / 45',
-        children: [
-          {
-            values: 8.75,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 8.75% AP',
-          },
-          {
-            values: [12, 14.5, 17, 19.5, 22],
+            effectType: 'Heal',
+            name: 'Magic Damage:',
+            raw: "6 / 7 / 8 / 9 / 10% (+ 2% per 100 AP) of target's current health",
+            healType: 'OutgoingHeals',
+            values: [6, 7, 8, 9, 10],
             valuesIsPercent: true,
             user: 'target',
-            units: 'missing_hp',
-            unitsText: "of target's missing health",
-            pre: "+ 12 / 14.5 / 17 / 19.5 / 22% of target's missing health",
+            units: 'current_hp',
+            unitsText: "of target's current health",
+            pre: '6 / 7 / 8 / 9 / 10%',
+            post: "of target's current health",
+            children: [
+              {
+                values: 2,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'per 100 AP',
+                pre: '+ 2% per 100 AP',
+              },
+            ],
+          },
+          {
+            effectType: 'Unique',
+            name: 'Minimum Damage:',
+            raw: '40 / 60 / 80 / 100 / 120',
+            values: [40, 60, 80, 100, 120],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '40 / 60 / 80 / 100 / 120',
+          },
+          {
+            effectType: 'Unique',
+            name: 'Fear Duration:',
+            raw: '1.25 / 1.5 / 1.75 / 2 / 2.25',
+            values: [1.25, 1.5, 1.75, 2, 2.25],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '1.25 / 1.5 / 1.75 / 2 / 2.25',
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Heal',
-        name: 'Total Magic Damage:',
-        raw: "120 / 180 / 240 / 300 / 360 (+ 70% AP) (+ 12 / 14.5 / 17 / 19.5 / 22% of target's missing health)",
-        healType: 'OutgoingHeals',
-        values: [120, 180, 240, 300, 360],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '120 / 180 / 240 / 300 / 360',
-        children: [
+        img: '',
+        description:
+          "Targets feared by Fiddlesticks by any means cannot be affected by it again for a duration equal to Terrify's cooldown. Against these targets, Terrify's  damage and minimum threshold are doubled.",
+        leveling: [
           {
-            values: 70,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 70% AP',
-          },
-          {
-            values: [12, 14.5, 17, 19.5, 22],
+            effectType: 'Heal',
+            name: 'Increased Magic Damage:',
+            raw: "12 / 14 / 16 / 18 / 20% (+ 4% per 100 AP) of target's current health",
+            healType: 'OutgoingHeals',
+            values: [12, 14, 16, 18, 20],
             valuesIsPercent: true,
             user: 'target',
-            units: 'missing_hp',
-            unitsText: "of target's missing health",
-            pre: "+ 12 / 14.5 / 17 / 19.5 / 22% of target's missing health",
+            units: 'current_hp',
+            unitsText: "of target's current health",
+            pre: '12 / 14 / 16 / 18 / 20%',
+            post: "of target's current health",
+            children: [
+              {
+                values: 4,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'per 100 AP',
+                pre: '+ 4% per 100 AP',
+              },
+            ],
+          },
+          {
+            effectType: 'Unique',
+            name: 'Increased Minimum Damage:',
+            raw: '80 / 120 / 160 / 200 / 240',
+            values: [80, 120, 160, 200, 240],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '80 / 120 / 160 / 200 / 240',
           },
         ],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description: 'Terrify  slows affected targets by 90%.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description:
-      '<b>Fiddlesticks</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> itself for a percentage of the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage dealt before modifiers">pre-mitigation damage</span> dealt, modified to 45% against monsters and 15% against minions.',
-    leveling: [
+  'Bountiful Harvest': {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Champion Heal Percentage:',
-        raw: '25 / 32.5 / 40 / 47.5 / 55%',
-        values: [25, 32.5, 40, 47.5, 55],
-        valuesIsPercent: true,
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '25 / 32.5 / 40 / 47.5 / 55%',
+        img: 'Bountiful Harvest.png',
+        description:
+          'Active: Fiddlesticks forms a  tether between itself and each nearby enemy over the cast time, then  channels for up to 2 seconds to harvest their souls,  revealing them in the process.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Heal',
-        name: 'Total Heal per Champion:',
-        raw: "30 / 58.5 / 96 / 142.5 / 198 (+ 17.5 / 22.75 / 28 / 33.25 / 38.5% AP) (+ 3 / 4.7125 / 6.8 / 9.2625 / 12.1% of target's missing health)",
-        healType: 'OutgoingHeals',
-        values: [30, 58.5, 96, 142.5, 198],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '30 / 58.5 / 96 / 142.5 / 198',
-        children: [
+        img: '',
+        description:
+          'While Fiddlesticks is channeling, the tethered enemies are dealt magic damage every 0.25 seconds, with the final tick at the end of the channel dealing additional magic damage. Bountiful Harvest deals 135% damage against  monsters and 50% damage against  minions.',
+        leveling: [
           {
-            values: [17.5, 22.75, 28, 33.25, 38.5],
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 17.5 / 22.75 / 28 / 33.25 / 38.5% AP',
-          },
-          {
-            values: [3, 4.7125, 6.8, 9.2625, 12.1],
-            valuesIsPercent: true,
-            user: 'target',
-            units: 'missing_hp',
-            unitsText: "of target's missing health",
-            pre: "+ 3 / 4.7125 / 6.8 / 9.2625 / 12.1% of target's missing health",
+            effectType: 'Damage',
+            name: 'Magic Damage per Tick:',
+            raw: '15 / 22.5 / 30 / 37.5 / 45 (+ 8.75% AP)',
+            damagetype: 'None',
+            values: [15, 22.5, 30, 37.5, 45],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '15 / 22.5 / 30 / 37.5 / 45',
+            children: [
+              {
+                values: 8.75,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 8.75% AP',
+              },
+            ],
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Heal',
-        name: 'Total Heal per Monster:',
-        raw: "72.9 / 109.35 / 145.8 / 182.25 / 218.7 (+ 42.525% AP) (+ 7.29 / 8.80875 / 10.3275 / 11.84625 / 13.365% of target's missing health)",
-        healType: 'OutgoingHeals',
-        values: [72.9, 109.35, 145.8, 182.25, 218.7],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '72.9 / 109.35 / 145.8 / 182.25 / 218.7',
-        children: [
+        img: '',
+        description:
+          'Fiddlesticks  heals itself for a percentage of the pre-mitigation damage dealt, modified to 45% against monsters and 15% against minions.',
+        leveling: [
           {
-            values: 42.525,
+            effectType: 'Unique',
+            name: 'Champion Heal Percentage:',
+            raw: '25 / 32.5 / 40 / 47.5 / 55%',
+            values: [25, 32.5, 40, 47.5, 55],
             valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 42.525% AP',
-          },
-          {
-            values: [7.29, 8.80875, 10.3275, 11.84625, 13.365],
-            valuesIsPercent: true,
-            user: 'target',
-            units: 'missing_hp',
-            unitsText: "of target's missing health",
-            pre: "+ 7.29 / 8.80875 / 10.3275 / 11.84625 / 13.365% of target's missing health",
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '25 / 32.5 / 40 / 47.5 / 55%',
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Heal',
-        name: 'Total Heal per Minion:',
-        raw: "9 / 13.5 / 18 / 22.5 / 27 (+ 5.25% AP) (+ 0.9 / 1.0875 / 1.275 / 1.4625 / 1.65% of target's missing health)",
-        healType: 'OutgoingHeals',
-        values: [9, 13.5, 18, 22.5, 27],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '9 / 13.5 / 18 / 22.5 / 27',
-        children: [
-          {
-            values: 5.25,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 5.25% AP',
-          },
-          {
-            values: [0.9, 1.0875, 1.275, 1.4625, 1.65],
-            valuesIsPercent: true,
-            user: 'target',
-            units: 'missing_hp',
-            unitsText: "of target's missing health",
-            pre: "+ 0.9 / 1.0875 / 1.275 / 1.4625 / 1.65% of target's missing health",
-          },
-        ],
+        img: '',
+        description:
+          'Bountiful Harvest ends if all targets have died or broken their tethers. If the channel was not interrupted, 60% of the  current cooldown is refunded.',
+        leveling: [],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description:
+          'A nearby enemy is required to cast this ability. The target does not have to be  visible to be tethered by this ability.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description:
-      '<i>Bountiful Harvest</i> ends if all targets have died or broken their tethers. If the channel was not <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="e.g. by Fiddlesticks or crowd control effects">interrupted</span>, 60% of the <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>current</b> cooldown</span> is refunded.',
-    leveling: [],
-  },
-  {
-    description:
-      '<i>A nearby enemy is required to cast this ability. The target does not have to be <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> to be tethered by this ability.</i>',
-    leveling: [],
-  },
-];
-const E: SubSkill[] = [
-  {
-    img: '/wiki/images/Fiddlesticks_Reap.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Fiddlesticks</b> slashes the target location with its scythe, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemies within the area and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span> them for 1.<small>25</small> seconds.',
-    leveling: [
+  Reap: {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Magic Damage:',
-        raw: '70 / 105 / 140 / 175 / 210 (+ 50% AP)',
-        values: [70, 105, 140, 175, 210],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '70 / 105 / 140 / 175 / 210',
-        children: [
+        img: 'Reap.png',
+        description:
+          'Active: Fiddlesticks slashes the target location with its scythe, dealing magic damage to enemies within the area and  slowing them for 1.25 seconds.',
+        leveling: [
           {
-            values: 50,
+            effectType: 'Damage',
+            name: 'Magic Damage:',
+            raw: '70 / 105 / 140 / 175 / 210 (+ 50% AP)',
+            damagetype: 'None',
+            values: [70, 105, 140, 175, 210],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '70 / 105 / 140 / 175 / 210',
+            children: [
+              {
+                values: 50,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 50% AP',
+              },
+            ],
+          },
+          {
+            effectType: 'Unique',
+            name: 'Slow:',
+            raw: '30 / 35 / 40 / 45 / 50%',
+            values: [30, 35, 40, 45, 50],
             valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 50% AP',
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '30 / 35 / 40 / 45 / 50%',
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Unique',
-        name: 'Slow:',
-        raw: '30 / 35 / 40 / 45 / 50%',
-        values: [30, 35, 40, 45, 50],
-        valuesIsPercent: true,
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '30 / 35 / 40 / 45 / 50%',
+        img: '',
+        description:
+          'Enemies hit in the center of the area are also  silenced for 1.25 seconds.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description:
-      'Enemies hit in the center of the area are also <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Silence"><a href="/wiki/Silence" title="Silence"><img alt="Silence icon.png" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Silence" class="mw-redirect" title="Silence">silenced</a></span> for 1.<small>25</small> seconds.',
-    leveling: [],
-  },
-];
-const R: SubSkill[] = [
-  {
-    img: '/wiki/images/Fiddlesticks_Crowstorm.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Fiddlesticks</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">channels</a></span> for 1.<small>5</small> seconds, then <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blink"><a href="/wiki/Blink" title="Blink"><img alt="Flash.png" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blinks</a></span> to the target location upon completion with a murder of crows flying wildly around it for 5 seconds, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> every 0.<small>25</small> seconds to nearby enemies.',
-    leveling: [
+  Crowstorm: {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Magic Damage per Tick:',
-        raw: '37.5 / 62.5 / 87.5 (+ 12.5% AP)',
-        values: [37.5, 62.5, 87.5],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '37.5 / 62.5 / 87.5',
-        children: [
+        img: 'Crowstorm.png',
+        description:
+          'Active: Fiddlesticks  channels for 1.5 seconds, then  blinks to the target location upon completion with a murder of crows flying wildly around it for 5 seconds, dealing magic damage every 0.25 seconds to nearby enemies.',
+        leveling: [
           {
-            values: 12.5,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 12.5% AP',
+            effectType: 'Damage',
+            name: 'Magic Damage per Tick:',
+            raw: '37.5 / 50 / 62.5 / 75 / 87.5 (+ 12.5% AP)',
+            damagetype: 'None',
+            values: [37.5, 50, 62.5, 75, 87.5],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '37.5 / 50 / 62.5 / 75 / 87.5',
+            children: [
+              {
+                values: 12.5,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 12.5% AP',
+              },
+            ],
           },
         ],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Unique',
-        name: 'Total Magic Damage:',
-        raw: '750 / 1250 / 1750 (+ 250% AP)',
-        values: [750, 1250, 1750],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '750 / 1250 / 1750',
-        children: [
-          {
-            values: 250,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 250% AP',
-          },
-        ],
+        img: '',
+        description: 'Crowstorm will cast at max range if cast beyond that.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description: '<i>Crowstorm will cast at max range if cast beyond that.</i>',
-    leveling: [],
-  },
-];
-export const Fiddlesticks = { I, Q, W, E, R };
+} satisfies { [skillName in string]: SkillModel };

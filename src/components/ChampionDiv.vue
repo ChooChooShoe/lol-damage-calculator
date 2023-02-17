@@ -57,18 +57,14 @@
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import Button from 'primevue/button';
-import InputText from 'primevue/inputtext';
-import InputNumber from 'primevue/inputnumber';
 
 import ChampSearch from './simple/ChampSearch.vue';
 import ChampLevelSelect from './simple/ChampLevelSelect.vue';
-import BlockStat from './simple/BlockStat.vue';
 import { ref, provide } from 'vue';
 import { validateName, type ChampObjModel } from '../model/ChampObj';
 import ChampionStats from '../itembuilder/components/ChampionStats.vue';
 import ChampionStackingBuffs from '../itembuilder/components/ChampionStackingBuffs.vue';
 import PerkPicker from '../runes/PerkPicker.vue';
-import Panel from 'primevue/panel';
 import { target, player } from '@/global/state';
 
 const props = defineProps<{
@@ -93,9 +89,6 @@ if (!obj.champ) {
 const showDamage = ref(true);
 const showDefence = ref(true);
 const showExtra = ref(false);
-const showBreakdown = ref(true);
-const readonly_base_values = true;
-const editMode = ref(true);
 const username = props.mode === 'player' ? 'Attacking Champion' : 'Target Data';
 
 const active = ref(0);

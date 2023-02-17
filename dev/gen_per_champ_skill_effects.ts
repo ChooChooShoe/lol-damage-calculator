@@ -2,9 +2,9 @@ import { RootRatio, SkillModel } from '@/api/DataTypes';
 import {
   ChampionSkillsData,
   type ChampionSkillsDataType,
-} from '@/model/ChampionSkillsData';
+} from '../src/model/ChampionSkillsData';
 import json5 from 'json5';
-import { saveStringFile } from './fetch_utils';
+import { saveStringFile, mkdir } from './fetch_utils';
 import { spellEffectFromStrings } from './skill_ratios_parse';
 
 makePerChampnionTsFiles(ChampionSkillsData);
@@ -21,7 +21,23 @@ async function makePerChampnionTsFiles(
       model[skillName] = { effects: [] };
 
       for (const [idx, sdd] of Object.entries(skilldata.description)) {
+        const descgArr: RootRatio[] = [];
         const levelingArr: RootRatio[] = [];
+
+        //Try to make leveling from text;
+        const descriptionText = sdd.description.split('. ');
+        for (const [index, descTextLine] of Object.entries(descriptionText)) {
+          const root_ratio = spellEffectFromStrings(
+            `Line ${index + 1}:`,
+            descTextLine,
+            descTextLine
+          );
+          // Filter the empty ones. values is 0 and has no children.
+          if (root_ratio.values === 0) if (!root_ratio.children) continue;
+
+          descgArr.push(root_ratio);
+        }
+
         for (const leveling of sdd.leveling) {
           const root_ratio = spellEffectFromStrings(
             leveling.name,
@@ -32,41 +48,59 @@ async function makePerChampnionTsFiles(
         }
         model[skillName].effects[idx] = {
           img: sdd.icon,
-          description: sdd.descriptionHTML,
-          leveling: levelingArr,
+          description: sdd.description,
+          descriptionRatios: descgArr,
+          leveling: sdd.leveling,
+          levelingRatios: levelingArr,
+          hidden: false,
+          locked: true,
         };
       }
     }
     SubSkillList[champName] = model;
   }
   const index: string[] = [];
+  const indexExport: string[] = [];
   for (const [champKey, subskillObj] of Object.entries(SubSkillList)) {
     const jsKey = champKey.replaceAll(/[ &'.]/g, '');
     const skillText: string[] = [];
     for (const [k, v] of Object.entries(subskillObj)) {
       skillText.push(
-        `const ${k}: SubSkill[] = ${json5.stringify(v, {
+        `"${k}": ${json5.stringify(v, {
           space: 2,
         })}`
       );
     }
 
+    mkdir('./src/model/champion/');
     saveStringFile(
       `./src/model/champion/${champKey}.ts`,
-      `import type { SubSkill } from '@/api/DataTypes';
+      `import type { SkillModel } from '@/api/DataTypes';
 import type { ChampionName } from '../ChampionListData';
+import { ChampionSkillsData } from '../ChampionSkillsData';
+export const name: ChampionName = "${champKey}";
+export const skillsData = ChampionSkillsData["${champKey}"];
 
-export const name: ChampionName = '${champKey}';
-${skillText.join(';\n')}
-export const ${jsKey} = {${Object.keys(subskillObj).toString()}}`
+export const ${jsKey} = {${skillText.join(
+        ',\n'
+      )}} satisfies { [skillName in string]: SkillModel };`
     );
-    index.push(`import ${jsKey} from "./${champKey}"`);
+    index.push(`import { ${jsKey} } from "./champion/${champKey}"`);
+    indexExport.push(`"${champKey}": ${jsKey},`);
   }
+  index.push(`
+import type { ChampionName } from './ChampObj';
+import type { SkillModel } from '@/api/DataTypes';
+export type ChampionSkillsModelType = {
+  [key in ChampionName]: {
+    [skillName in string]: SkillModel;
+  };
+};`);
   index.push(
-    `export ChampSkills = ${Object.keys(SubSkillList).forEach((x) =>
-      x.replaceAll(/[ &'.]/g, '')
-    )};`
+    `export const ChampionSkillsModel = {
+${indexExport.join('\n')}
+} satisfies ChampionSkillsModelType;`
   );
   //Save champion/index.ts
-  saveStringFile(`./src/model/champion/index.ts`, index.join('\n'));
+  saveStringFile(`./src/model/ChampionSkillsModel.ts`, index.join('\n'));
 }

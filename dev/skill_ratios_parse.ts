@@ -96,7 +96,7 @@ function convertUnitsToUserAndUnits(unit: string | undefined | null): {
 if (DEBUG) {
   const out_file: any = {};
   for (const fulltext of []) {
-    const a = makeRatioObj(parenthesis.parse(fulltext));
+    const a = makeRatioObj(parenthesis.parse(fulltext), false);
     // if (a.sub?.length > 1)
     //   out_file[fulltext] = a;
     out_file[fulltext] = a;
@@ -109,7 +109,7 @@ if (DEBUG) {
 
 export function ratios_from_text(full_text: string): SubRatio {
   const root = parenthesis.parse(full_text);
-  return makeRatioObj(root);
+  return makeRatioObj(root, false);
 }
 
 export function spellEffectFromDescription(
@@ -133,11 +133,11 @@ export function spellEffectFromStrings(
     raw,
   };
   const tree_root = parenthesis.parse(raw);
-  if (name.length > 38) {
-    console.log(`Name ${name} is longer than 38 chars. trimming to 'Passive:'`);
+  if (name.length > 48) {
+    console.log(`Name ${name} is longer than 48 chars. trimming to 'Passive:'`);
     name = 'Passive:';
   }
-  const ratio = makeRatioObj(tree_root);
+  const ratio = makeRatioObj(tree_root, false);
   if (target.effectType === 'Gain' && ratio.units) {
     target.increasedStat = ratio.units || 'bonus_movespeed';
     ratio.units = '';
@@ -158,20 +158,27 @@ export function spellEffectFromStrings(
   // console.log(`[DEBUG] spellEffectFromStrings => ${name}: ${raw}`)
   return Object.assign(target as RootRatio, ratio);
 }
-export function makeRatioObj(root: ArrayTree): SubRatio {
+
+export function RatioFromString(str: string): SubRatio {
+  const tree_root = parenthesis.parse(str);
+  return makeRatioObj(tree_root, true);
+}
+export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
   const pre_arr: string[] = [];
   const sub_ratios: SubRatio[] = [];
   const post_arr: string[] = [];
+  let basedOn: any = undefined;
   let arr = pre_arr;
-  let is_based_on_level = false;
+  // let is_based_on_level = false;
 
   for (const [idx, ratio] of Object.entries(root)) {
     if (Array.isArray(ratio)) {
-      const sub = makeRatioObj(ratio as parenthesis.ArrayTree);
-      if (sub.unitsText === 'based on level') {
+      const sub = makeRatioObj(ratio as parenthesis.ArrayTree, strictMode);
+      if (sub.unitsText?.startsWith('based on')) {
         // set flag, do not add as sub_ratio
         // Ex. 50 − 305 (based on level) (+ 80% bonus AD)
-        is_based_on_level = true;
+        basedOn = sub.unitsText.slice(8);
+        // is_based_on_level = true;
       } else {
         sub_ratios.push(sub);
       }
@@ -195,7 +202,7 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
   let values = pre_vals.values;
   let unitsText = pre_vals.units;
 
-  if (is_based_on_level) {
+  if (basedOn === 'level') {
     values = numberExpandOnLevel(pre);
     unitsText = '';
   }
@@ -214,8 +221,9 @@ export function makeRatioObj(root: ArrayTree): SubRatio {
     values,
     valuesRanged: undefined,
     valuesIsPercent: pre_vals.apply === '%' || undefined,
-    valuesIsBasedOnLevel: is_based_on_level || undefined,
-    user,
+    // valuesIsBasedOnLevel: is_based_on_level || undefined,
+    basedOn,
+    user: user !== 'player' ? user : undefined,
     units: unitsParsed,
     unitsText: unitsText,
     pre,
@@ -293,6 +301,11 @@ const validEffectTypes: Dictionary<EffectType> = {
   unique: 'Unique',
   stack: 'Stacks',
   damage: 'Damage',
+  magic: 'Damage',
+  physical: 'Damage',
+  ad: 'Damage',
+  ap: 'Damage',
+  true: 'Damage',
 };
 
 const validDamageTypes: Dictionary<DamageType> = {

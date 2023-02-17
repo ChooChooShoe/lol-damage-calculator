@@ -1,328 +1,284 @@
-import type { SubSkill } from '@/api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 import type { ChampionName } from '../ChampionListData';
-import ChampionListData from '../ChampionListData';
+import { ChampionSkillsData } from '../ChampionSkillsData';
 export const name: ChampionName = 'Kassadin';
-const I: SubSkill[] = [
-  {
-    img: '/wiki/images/Kassadin_Void_Stone.png',
-    description:
-      '<span class="template_sbc"><b>Innate:</b></span> <b>Kassadin</b> is permanently <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosted"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost.png" src="/wiki/images/Ghost.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosted</a></span> and takes 10% reduced <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Magic damage"><a href="/wiki/Magic_damage" title="Magic damage"><img alt="Magic damage.png" src="/wiki/images/Magic_damage.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Magic_damage" title="Magic damage"><span style="color: #00B0F0; white-space:normal">magic damage</span></a></span>.',
-    leveling: [],
-  },
-];
-const Q: SubSkill[] = [
-  {
-    img: '/wiki/images/Kassadin_Null_Sphere.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Kassadin</b> fires an orb of void energy at the target enemy that deals <span style="color: #00B0F0; white-space:normal">magic damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disrupt"><a href="/wiki/Types_of_Crowd_Control#Disrupt" title="Types of Crowd Control#Disrupt"><img alt="Silence icon.png" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Types_of_Crowd_Control#Disrupt" title="Types of Crowd Control">disrupts</a></span> their ongoing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">channels</a></span>.',
-    leveling: [
+export const skillsData = ChampionSkillsData['Kassadin'];
+
+export const Kassadin = {
+  'Void Stone': {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Magic Damage:',
-        raw: '65 / 95 / 125 / 155 / 185 (+ 70% AP)',
-        values: [65, 95, 125, 155, 185],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '65 / 95 / 125 / 155 / 185',
-        children: [
-          {
-            values: 70,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 70% AP',
-          },
-        ],
+        img: 'Void Stone.png',
+        description:
+          'Innate: Kassadin is permanently  ghosted and takes 10% reduced  magic damage.',
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description:
-      'He also gains a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> that absorbs <span style="color: #00B0F0; white-space:normal">magic damage</span> for 1.<small>5</small> seconds.',
-    leveling: [
+  'Null Sphere': {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Magic Shield Strength:',
-        raw: '80 / 110 / 140 / 170 / 200 (+ 30% AP)',
-        values: [80, 110, 140, 170, 200],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '80 / 110 / 140 / 170 / 200',
-        children: [
+        img: 'Null Sphere.png',
+        description:
+          'Active: Kassadin fires an orb of void energy at the target enemy that deals magic damage and  disrupts their ongoing  channels.',
+        leveling: [
           {
-            values: 30,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 30% AP',
+            effectType: 'Damage',
+            name: 'Magic Damage:',
+            raw: '65 / 95 / 125 / 155 / 185 (+ 70% AP)',
+            damagetype: 'None',
+            values: [65, 95, 125, 155, 185],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '65 / 95 / 125 / 155 / 185',
+            children: [
+              {
+                values: 70,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 70% AP',
+              },
+            ],
           },
         ],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description:
+          'He also gains a  shield that absorbs magic damage for 1.5 seconds.',
+        leveling: [
+          {
+            effectType: 'Damage',
+            name: 'Magic Shield Strength:',
+            raw: '80 / 110 / 140 / 170 / 200 (+ 30% AP)',
+            damagetype: 'None',
+            values: [80, 110, 140, 170, 200],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '80 / 110 / 140 / 170 / 200',
+            children: [
+              {
+                values: 30,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 30% AP',
+              },
+            ],
+          },
+        ],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-];
-const W: SubSkill[] = [
-  {
-    description:
-      '<span class="template_sbc"><b>Passive:</b></span> <b>Kassadin\'s</b> <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> deal <span style="color: #00B0F0; white-space:normal">20</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;10% AP)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span>.',
-    leveling: [
+  'Nether Blade': {
+    effects: [
       {
-        effectType: 'Damage',
-        name: 'Line 1:',
-        raw: " Kassadin's basic attacks deal 20 (+ 10% AP) bonus magic damage  on-hit",
-        damagetype: 'Magic',
-        values: 2,
-        user: 'none',
-        units: '',
-        unitsText: 'bonus magic damage  on-hit',
-        pre: "Kassadin's basic attacks deal 20",
-        post: 'bonus magic damage  on-hit',
-        children: [
+        img: 'false',
+        description:
+          "Passive: Kassadin's basic attacks deal 20 (+ 10% AP) bonus magic damage  on-hit.",
+        leveling: [],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: 'Nether Blade.png',
+        description:
+          'Active: Kassadin empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal increased bonus magic damage, and restore  mana, with the restoration amount quintupled against  champions.',
+        leveling: [
           {
-            values: 10,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 10% AP',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    img: '/wiki/images/Kassadin_Nether_Blade.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Kassadin</b> empowers his next basic attack within 5 seconds to have an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Uncancellable windup"><a href="/wiki/Basic_attack#Uncancellable_Windup" title="Basic attack#Uncancellable Windup"><img alt="Relentless Force 2.png" src="/wiki/images/Vi_Relentless_Force_2.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Uncancellable_Windup" title="Basic attack">uncancellable windup</a></span>, gain <span style="white-space:nowrap"><a href="/wiki/Range" title="Range"><img alt="Range icon.png" src="/wiki/images/Range_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;50 <b>bonus</b> range</span>, deal increased <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span>, and restore <span style="white-space:nowrap"><a href="/wiki/Mana" title="Mana"><img alt="Mana icon.png" src="/wiki/images/Mana_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #0099CC; white-space:normal">mana</span></span>, with the restoration amount quintupled against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span>.',
-    leveling: [
-      {
-        effectType: 'Unique',
-        name: 'Increased Bonus Magic Damage:',
-        raw: '50 / 75 / 100 / 125 / 150 (+ 80% AP)',
-        values: [50, 75, 100, 125, 150],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '50 / 75 / 100 / 125 / 150',
-        children: [
-          {
-            values: 80,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 80% AP',
-          },
-        ],
-      },
-      {
-        effectType: 'Unique',
-        name: 'Mana Restored:',
-        raw: '4 / 4.5 / 5 / 5.5 / 6% of missing mana',
-        values: [4, 4.5, 5, 5.5, 6],
-        valuesIsPercent: true,
-        user: 'player',
-        units: 'total_mana',
-        unitsText: 'of missing mana',
-        pre: '4 / 4.5 / 5 / 5.5 / 6% of missing mana',
-      },
-      {
-        effectType: 'Unique',
-        name: 'Mana Restored Against Champions:',
-        raw: '20 / 22.5 / 25 / 27.5 / 30% of missing mana',
-        values: [20, 22.5, 25, 27.5, 30],
-        valuesIsPercent: true,
-        user: 'player',
-        units: 'total_mana',
-        unitsText: 'of missing mana',
-        pre: '20 / 22.5 / 25 / 27.5 / 30% of missing mana',
-      },
-    ],
-  },
-  {
-    description:
-      '<i>Nether Blade <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Kassadin\'s</b> basic attack timer.</i>',
-    leveling: [],
-  },
-];
-const E: SubSkill[] = [
-  {
-    description:
-      '<span class="template_sbc"><b>Passive:</b></span> Each time <b>Kassadin</b> or a nearby <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> casts an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, <i>Force Pulse\'s</i> <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>current</b> cooldown</span> is reduced by 0.<small>75</small> seconds.',
-    leveling: [],
-  },
-  {
-    img: '/wiki/images/Kassadin_Force_Pulse.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Kassadin</b> emits a pulse of void energy in a cone in the target direction that deals <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemies hit and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> them for 1 second.',
-    leveling: [
-      {
-        effectType: 'Unique',
-        name: 'Magic Damage:',
-        raw: '60 / 90 / 120 / 150 / 180 (+ 85% AP)',
-        values: [60, 90, 120, 150, 180],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '60 / 90 / 120 / 150 / 180',
-        children: [
-          {
-            values: 85,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 85% AP',
-          },
-        ],
-      },
-      {
-        effectType: 'Unique',
-        name: 'Slow:',
-        raw: '50 / 60 / 70 / 80 / 90%',
-        values: [50, 60, 70, 80, 90],
-        valuesIsPercent: true,
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '50 / 60 / 70 / 80 / 90%',
-      },
-    ],
-  },
-];
-const R: SubSkill[] = [
-  {
-    img: '/wiki/images/Kassadin_Riftwalk.png',
-    description:
-      '<span class="template_sbc"><b>Active:</b></span> <b>Kassadin</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blinks"><a href="/wiki/Blink" title="Blink"><img alt="Flash.png" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blinks</a></span> toward the target location, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to all nearby enemies upon arrival. He then gains a stack of <i>Riftwalk</i> for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
-    leveling: [
-      {
-        effectType: 'Unique',
-        name: 'Magic Damage:',
-        raw: '70 / 90 / 110 (+ 40% AP) (+ 2% maximum mana)',
-        values: [70, 90, 110],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '70 / 90 / 110',
-        children: [
-          {
-            values: 40,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 40% AP',
+            effectType: 'Damage',
+            name: 'Increased Bonus Magic Damage:',
+            raw: '50 / 75 / 100 / 125 / 150 (+ 80% AP)',
+            damagetype: 'None',
+            values: [50, 75, 100, 125, 150],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '50 / 75 / 100 / 125 / 150',
+            children: [
+              {
+                values: 80,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 80% AP',
+              },
+            ],
           },
           {
-            values: 2,
+            effectType: 'Unique',
+            name: 'Mana Restored:',
+            raw: '4 / 4.5 / 5 / 5.5 / 6% of missing mana',
+            values: [4, 4.5, 5, 5.5, 6],
             valuesIsPercent: true,
             user: 'player',
             units: 'total_mana',
-            unitsText: 'maximum mana',
-            pre: '+ 2% maximum mana',
+            unitsText: 'of missing mana',
+            pre: '4 / 4.5 / 5 / 5.5 / 6% of missing mana',
           },
         ],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description: "Nether Blade  resets Kassadin's basic attack timer.",
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description:
-      '<span class="template_sbc"><b>Riftwalk:</b></span> For each stack, <i>Riftwalk</i> deals <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> at an increased <span style="white-space:nowrap"><a href="/wiki/Mana" title="Mana"><img alt="Mana icon.png" src="/wiki/images/Mana_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #0099CC; white-space:normal">mana cost</span></span>.',
-    leveling: [
+  'Force Pulse': {
+    effects: [
       {
-        effectType: 'Unique',
-        name: 'Bonus Damage Per Stack:',
-        raw: '35 / 45 / 55 (+ 10% AP) (+ 1% maximum mana)',
-        values: [35, 45, 55],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '35 / 45 / 55',
-        children: [
-          {
-            values: 10,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 10% AP',
-          },
-          {
-            values: 1,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_mana',
-            unitsText: 'maximum mana',
-            pre: '+ 1% maximum mana',
-          },
-        ],
+        img: 'false',
+        description:
+          "Passive: Each time Kassadin or a nearby  champion casts an ability, Force Pulse's  current cooldown is reduced by 0.75 seconds.",
+        leveling: [],
+        hidden: false,
+        locked: true,
       },
       {
-        effectType: 'Unique',
-        name: 'Maximum Bonus Damage:',
-        raw: '140 / 180 / 220 (+ 40% AP) (+ 4% maximum mana)',
-        values: [140, 180, 220],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '140 / 180 / 220',
-        children: [
+        img: 'Force Pulse.png',
+        description:
+          'Active: Kassadin emits a pulse of void energy in a cone in the target direction that deals magic damage to enemies hit and  slows them for 1 second.',
+        leveling: [
           {
-            values: 40,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 40% AP',
+            effectType: 'Damage',
+            name: 'Magic Damage:',
+            raw: '60 / 90 / 120 / 150 / 180 (+ 85% AP)',
+            damagetype: 'None',
+            values: [60, 90, 120, 150, 180],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '60 / 90 / 120 / 150 / 180',
+            children: [
+              {
+                values: 85,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 85% AP',
+              },
+            ],
           },
           {
-            values: 4,
+            effectType: 'Unique',
+            name: 'Slow:',
+            raw: '50 / 60 / 70 / 80 / 90%',
+            values: [50, 60, 70, 80, 90],
             valuesIsPercent: true,
-            user: 'player',
-            units: 'total_mana',
-            unitsText: 'maximum mana',
-            pre: '+ 4% maximum mana',
-          },
-        ],
-      },
-      {
-        effectType: 'Unique',
-        name: 'Maximum Magic Damage:',
-        raw: '210 / 270 / 330 (+ 80% AP) (+ 6% maximum mana)',
-        values: [210, 270, 330],
-        user: 'none',
-        units: '',
-        unitsText: '',
-        pre: '210 / 270 / 330',
-        children: [
-          {
-            values: 80,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_ap',
-            unitsText: 'AP',
-            pre: '+ 80% AP',
-          },
-          {
-            values: 6,
-            valuesIsPercent: true,
-            user: 'player',
-            units: 'total_mana',
-            unitsText: 'maximum mana',
-            pre: '+ 6% maximum mana',
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '50 / 60 / 70 / 80 / 90%',
           },
         ],
+        hidden: false,
+        locked: true,
       },
     ],
   },
-  {
-    description: '<i>Riftwalk will cast at max range if cast beyond that.</i>',
-    leveling: [],
+  Riftwalk: {
+    effects: [
+      {
+        img: 'Riftwalk.png',
+        description:
+          'Active: Kassadin  blinks toward the target location, dealing magic damage to all nearby enemies upon arrival. He then gains a stack of Riftwalk for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
+        leveling: [
+          {
+            effectType: 'Damage',
+            name: 'Magic Damage:',
+            raw: '70 / 80 / 90 / 100 / 110 (+ 40% AP) (+ 2% maximum mana)',
+            damagetype: 'None',
+            values: [70, 80, 90, 100, 110],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '70 / 80 / 90 / 100 / 110',
+            children: [
+              {
+                values: 40,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 40% AP',
+              },
+              {
+                values: 2,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_mana',
+                unitsText: 'maximum mana',
+                pre: '+ 2% maximum mana',
+              },
+            ],
+          },
+        ],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description:
+          'Riftwalk: For each stack, Riftwalk deals bonus magic damage at an increased  mana cost.',
+        leveling: [
+          {
+            effectType: 'Damage',
+            name: 'Bonus Damage Per Stack:',
+            raw: '35 / 40 / 45 / 50 / 55 (+ 10% AP) (+ 1% maximum mana)',
+            damagetype: 'None',
+            values: [35, 40, 45, 50, 55],
+            user: 'none',
+            units: '',
+            unitsText: '',
+            pre: '35 / 40 / 45 / 50 / 55',
+            children: [
+              {
+                values: 10,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_ap',
+                unitsText: 'AP',
+                pre: '+ 10% AP',
+              },
+              {
+                values: 1,
+                valuesIsPercent: true,
+                user: 'player',
+                units: 'total_mana',
+                unitsText: 'maximum mana',
+                pre: '+ 1% maximum mana',
+              },
+            ],
+          },
+        ],
+        hidden: false,
+        locked: true,
+      },
+      {
+        img: '',
+        description: 'Riftwalk will cast at max range if cast beyond that.',
+        leveling: [],
+        hidden: false,
+        locked: true,
+      },
+    ],
   },
-];
-export const Kassadin = { I, Q, W, E, R };
+} satisfies { [skillName in string]: SkillModel };

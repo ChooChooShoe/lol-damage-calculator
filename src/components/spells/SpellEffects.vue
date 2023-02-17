@@ -1,35 +1,51 @@
 <template>
+  <div v-if="!effect">
+    <span class="spelleffect__title" v-html="details.name"></span>&nbsp;
+    <span
+      class="spelleffect__title"
+      :title="details.values"
+      v-html="details.valuesHTML"
+    ></span>
+  </div>
   <StacksEffectsVue
     class="float-clear spelleffect__div"
-    v-if="effect.effectType === 'Stacks'"
+    v-else-if="effect.effectType === 'Stacks'"
+    :details="details"
     :effect="effect"
   />
 
-  <GainEffectsVue v-else-if="effect.effectType === 'Gain'" :effect="effect" />
+  <GainEffectsVue
+    v-else-if="effect.effectType === 'Gain'"
+    :details="details"
+    :effect="effect"
+  />
   <DamageSpellEffectsVue
     v-else-if="effect.effectType === 'Damage'"
+    :details="details"
     :effect="effect"
     :pkey="pkey"
   />
   <HealShieldSpellEffectsVue
     v-else-if="effect.effectType === 'Heal' || effect.effectType === 'Shield'"
     :pkey="pkey"
+    :details="details"
     :effect="effect"
   />
   <CrowdControlEffectsVue
     v-else-if="effect.effectType === 'CrowdControl'"
     :pkey="pkey"
+    :details="details"
     :effect="effect"
   />
 
-  <div v-else>Unique Effect...</div>
+  <div v-else>Unique Effect {{ details.name }}</div>
 </template>
 
 <script setup lang="ts">
 import { DamageSource } from '@/model/league_data';
 import { onMounted, onUnmounted } from 'vue';
 import type { RootRatio, SkillLevelingData } from '@/api/DataTypes';
-import { damageSources } from '@/global/state';
+import { damageSources, useDamageSources } from '@/global/state';
 import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
 import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
 import DamageSpellEffectsVue from './typedspelleffects/DamageSpellEffectsVue.vue';
@@ -38,19 +54,18 @@ import CrowdControlEffectsVue from './typedspelleffects/CrowdControlEffectsVue.v
 
 const props = defineProps<{
   details: SkillLevelingData;
-  effect: RootRatio;
-  effectindex: number;
+  effect: RootRatio | undefined;
   pkey: string;
-  custom: boolean;
 }>();
 
 const damageSource = new DamageSource('Magic', 8);
 
+const store = useDamageSources();
 onMounted(() => {
-  if (damageSources) damageSources[props.pkey] = [damageSource];
+  if (damageSources) store.addSource(props.pkey, damageSource);
 });
 onUnmounted(() => {
-  if (damageSources) delete damageSources[props.pkey];
+  store.removeSource(props.pkey);
 });
 
 // const dmg_premitigation = computedRatioValues.damagePreTotal;

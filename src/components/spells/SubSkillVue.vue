@@ -1,9 +1,12 @@
 <template>
   <template v-if="nonLeveling">
     <SpellImage :iconPath="skill.icon"></SpellImage>
-    <p v-html="skill.description" class="subskill__desciption shortmode"></p>
+    <p
+      v-html="skill.descriptionHTML"
+      class="subskill__desciption shortmode"
+    ></p>
   </template>
-  <template v-else-if="!skill.locked">
+  <template v-else-if="!subSkills?.locked">
     <div class="subskill__img ttam__toggle">
       <SpellImage :iconPath="skill.icon"></SpellImage>
       <label
@@ -16,7 +19,7 @@
       </label>
     </div>
     <p
-      v-html="skill.description"
+      v-html="skill.descriptionHTML"
       class="subskill__desciption"
       :class="{ cliptext: !active, shortmode: nonLeveling }"
       @click="active = true"
@@ -26,9 +29,9 @@
         v-for="(value, leveling_idx) in skill.leveling"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}_${leveling_idx}`"
+        :pkey="`${idx}:${leveling_idx})`"
         :details="value"
-        :effect="value"
+        :effect="subSkills?.leveling[leveling_idx]"
         :effectindex="leveling_idx"
       ></SpellEffects>
     </div>
@@ -37,7 +40,7 @@
   <template v-else>
     <SpellImage :iconPath="skill.icon" class="subskill__img"></SpellImage>
     <p
-      v-html="skill.description"
+      v-html="skill.descriptionHTML"
       class="subskill__desciption"
       :class="{ cliptext: !active, shortmode: nonLeveling }"
       @click="active = true"
@@ -47,9 +50,9 @@
         v-for="(value, leveling_idx) in skill.leveling"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}_${leveling_idx}`"
+        :pkey="`${idx}:${leveling_idx})`"
         :details="value"
-        :effect="value"
+        :effect="subSkills.leveling[leveling_idx]"
         :effectindex="leveling_idx"
       ></SpellEffects>
     </div>
@@ -57,19 +60,23 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { SkillDesciptionData } from '@/api/DataTypes';
+import type { SkillDesciptionData, SubSkill } from '@/api/DataTypes';
 import SpellEffects from './SpellEffects.vue';
 import SpellImage from '@/timeline/SpellImage.vue';
 
 const props = defineProps<{
   skill: SkillDesciptionData;
+  subSkills: SubSkill | undefined;
   idx: string;
 }>();
 
 const nonLeveling = computed(
-  () => !props.skill.leveling || props.skill.leveling.length === 0
+  () =>
+    !props.skill || !props.skill.leveling || props.skill.leveling.length === 0
 );
-const active = ref(props.skill.leveling && props.skill.leveling.length > 0);
+const active = ref(
+  props.skill && props.skill.leveling && props.skill.leveling.length > 0
+);
 </script>
 <style>
 .subskill__img {

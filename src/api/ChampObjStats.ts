@@ -102,6 +102,8 @@ export interface ChampObjStats {
 
   // For First Strike
   postMitigationBaseDamageTotal: number;
+
+  energy: number;
 }
 
 export type BaseStatsObj = {

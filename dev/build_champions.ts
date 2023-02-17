@@ -1,13 +1,10 @@
 import JSON5 from 'json5';
-import { BaseStatsObj } from '../src/api/ChampObjStats';
-import { SkillData, SubSkill, WikiChampionData } from '../src/api/DataTypes';
-import { ChampionComplex, DataDragon } from './datadragon';
+import { SkillData, WikiChampionData } from '../src/api/DataTypes';
+import { DataDragon } from './datadragon';
 import { fetchAndSaveRealms, saveStringFile } from './fetch_utils';
 import {
   fetch_Module_ChampionData,
   getSkillModelsForChamp,
-  ModuleChampionData,
-  ModuleChampionDataFile,
 } from './LeagueWiki';
 import { fetch_live_wiki_skills } from './live_wiki_fetch';
 import { mutateWikiChampionData } from './WikiChampListFetch';
