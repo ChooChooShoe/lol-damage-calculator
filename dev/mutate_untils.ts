@@ -42,6 +42,12 @@ export function matchKeyword<T>(
   search = search.toLowerCase();
   for (const key in validation_table)
     if (search.includes(key)) return validation_table[key];
+
+  console.log(
+    `[WARN] matchKeyword no results from table "${Object.keys(
+      validation_table
+    ).join(',')}" for search "${search}"`
+  );
   return null;
 }
 

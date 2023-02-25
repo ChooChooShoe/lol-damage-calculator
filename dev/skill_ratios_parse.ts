@@ -118,7 +118,7 @@ export function spellEffectFromDescription(
 ): RootRatio {
   const nameSplit = descTextLine.split(/: (.*)/s);
   const betterName = nameSplit[1] ? nameSplit[0] + ':' : lineNumber;
-  descTextLine = nameSplit[1] || nameSplit[0];
+  descTextLine = nameSplit[1].trim() || nameSplit[0];
 
   return spellEffectFromStrings(betterName, descTextLine, descTextLine);
 }
